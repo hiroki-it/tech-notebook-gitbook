@@ -63,9 +63,9 @@
     * [Terraform](public/infrastructure_terraform.md)
 * インフラストラクチャ｜仮想化サーバ，コンテナ
     * [仮想化技術の比較](public/infrastructure_virtualization_comparison.md)
-    * [コンテナ](public/infrastructure_virtualization_server.md)
-    * [コンテナオーケストレーション](public/infrastructure_virtualization_container.md)
-    * [仮想サーバ（仮想マシン）](public/infrastructure_virtualization_container_orchestration.md)
+    * [コンテナ](public/infrastructure_virtualization_container.md)
+    * [コンテナオーケストレーション](public/infrastructure_virtualization_container_orchestration.md)
+    * [仮想サーバ（仮想マシン）](public/infrastructure_virtualization_server.md)
 * インフラストラクチャ｜CI/CD
     * [CircleCI，Capistrano](public/infrastructure_ci_cd.md)
 * ハードウェア
