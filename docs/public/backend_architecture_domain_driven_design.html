@@ -1,0 +1,2159 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ドメイン駆動設計 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="backend_architecture_cqrs.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索すると入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    はじめに
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    このサイトについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    自己紹介
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="self_introduction.html">
+            
+                <a href="self_introduction.html">
+            
+                    
+                    長谷川広樹と申します
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    PHP｜オブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="backend_object_oriented_analysis_and_design.html">
+            
+                <a href="backend_object_oriented_analysis_and_design.html">
+            
+                    
+                    オブジェクト指向分析／設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="backend_object_oriented_programming_class.html">
+            
+                <a href="backend_object_oriented_programming_class.html">
+            
+                    
+                    オブジェクト指向設計／プログラミング（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="backend_object_oriented_programming_method_data.html">
+            
+                <a href="backend_object_oriented_programming_method_data.html">
+            
+                    
+                    オブジェクト指向設計／プログラミング （2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    PHP｜ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="backend_logic_validation.html">
+            
+                <a href="backend_logic_validation.html">
+            
+                    
+                    バックエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="backend_logic_iteration.html">
+            
+                <a href="backend_logic_iteration.html">
+            
+                    
+                    繰り返しロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    PHP｜API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="backend_api_restful.html">
+            
+                <a href="backend_api_restful.html">
+            
+                    
+                    RESTful APIの概念と実装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    PHP｜ライブラリ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="backend_library.html">
+            
+                <a href="backend_library.html">
+            
+                    
+                    ライブラリ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="backend_framework_symfony.html">
+            
+                <a href="backend_framework_symfony.html">
+            
+                    
+                    Symfony
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="backend_framework_laravel.html">
+            
+                <a href="backend_framework_laravel.html">
+            
+                    
+                    Laravel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="backend_testing.html">
+            
+                <a href="backend_testing.html">
+            
+                    
+                    テストフレームワークとテスト仕様書
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    PHP｜アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1" data-path="backend_architecture_domain_driven_design.html">
+            
+                <a href="backend_architecture_domain_driven_design.html">
+            
+                    
+                    ドメイン駆動設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="backend_architecture_cqrs.html">
+            
+                <a href="backend_architecture_cqrs.html">
+            
+                    
+                    CQRS設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    フロントエンドとバックエンド間のデータ通信
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="frontend_and_backend_authentication_authorization.html">
+            
+                <a href="frontend_and_backend_authentication_authorization.html">
+            
+                    
+                    認証と認可
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="frontend_and_backend_json.html">
+            
+                <a href="frontend_and_backend_json.html">
+            
+                    
+                    JSON
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    JS｜オブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="frontend_object_oriented_based_prototype_method_data.html">
+            
+                <a href="frontend_object_oriented_based_prototype_method_data.html">
+            
+                    
+                    プロトタイプベースのオブジェクト指向
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    JS｜ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="frontend_logic_validation.html">
+            
+                <a href="frontend_logic_validation.html">
+            
+                    
+                    フロントエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    JS｜アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="frontend_architecture_spa_vuejs.html">
+            
+                <a href="frontend_architecture_spa_vuejs.html">
+            
+                    
+                    Single Page Application設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    PHP / JS｜デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="backend_debug.html">
+            
+                <a href="backend_debug.html">
+            
+                    
+                    バックエンドのデバッグの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="frontend_debug.html">
+            
+                <a href="frontend_debug.html">
+            
+                    
+                    フロントエンドのデバッグの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    JS / HTML｜ブラウザレンダリング
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="frontend_browser_rendering.html">
+            
+                <a href="frontend_browser_rendering.html">
+            
+                    
+                    ブラウザレンダリングの仕組み
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    データベース
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="backend_database_operation.html">
+            
+                <a href="backend_database_operation.html">
+            
+                    
+                    データベースの操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="backend_database_mysql.html">
+            
+                <a href="backend_database_mysql.html">
+            
+                    
+                    SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    ネットワーク｜構造
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="infrastructure_network_internet.html">
+            
+                <a href="infrastructure_network_internet.html">
+            
+                    
+                    ネットワークの構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" >
+            
+                <span>
+            
+                    
+                    ネットワーク｜セキュリティ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="infrastructure_network_cyber_attacks.html">
+            
+                <a href="infrastructure_network_cyber_attacks.html">
+            
+                    
+                    サイバー攻撃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="infrastructure_network_encryption_technology.html">
+            
+                <a href="infrastructure_network_encryption_technology.html">
+            
+                    
+                    通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="infrastructure_software.html">
+            
+                <a href="infrastructure_software.html">
+            
+                    
+                    ソフトウェアの種類
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜ミドルウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="infrastructure_software_middleware_nginx.html">
+            
+                <a href="infrastructure_software_middleware_nginx.html">
+            
+                    
+                    Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="infrastructure_software_middleware_apache.html">
+            
+                <a href="infrastructure_software_middleware_apache.html">
+            
+                    
+                    Apache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜CentOSの構成
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="infrastructure_software_centos.html">
+            
+                <a href="infrastructure_software_centos.html">
+            
+                    
+                    CentOSの構成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜機械語と進数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="infrastructure_software_machine_language_and_radix.html">
+            
+                <a href="infrastructure_software_machine_language_and_radix.html">
+            
+                    
+                    機械語と進数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" >
+            
+                <span>
+            
+                    
+                    クラウドインフラストラクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="infrastructure_cloud_computing.html">
+            
+                <a href="infrastructure_cloud_computing.html">
+            
+                    
+                    クラウドコンピューティング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="infrastructure_cloud_computing_aws.html">
+            
+                <a href="infrastructure_cloud_computing_aws.html">
+            
+                    
+                    Amazon Web Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="infrastructure_cloud_computing_gcp.html">
+            
+                <a href="infrastructure_cloud_computing_gcp.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" >
+            
+                <span>
+            
+                    
+                    IaC｜種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="infrastructure_as_code.html">
+            
+                <a href="infrastructure_as_code.html">
+            
+                    
+                    Infrastructure as Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" >
+            
+                <span>
+            
+                    
+                    IaC｜Terraform
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="infrastructure_terraform.html">
+            
+                <a href="infrastructure_terraform.html">
+            
+                    
+                    Terraform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" >
+            
+                <span>
+            
+                    
+                    インフラストラクチャ｜仮想化サーバ，コンテナ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.1" data-path="infrastructure_virtualization_comparison.html">
+            
+                <a href="infrastructure_virtualization_comparison.html">
+            
+                    
+                    仮想化技術の比較
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="infrastructure_virtualization_container.html">
+            
+                <a href="infrastructure_virtualization_container.html">
+            
+                    
+                    コンテナ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.3" data-path="infrastructure_virtualization_container_orchestration.html">
+            
+                <a href="infrastructure_virtualization_container_orchestration.html">
+            
+                    
+                    コンテナオーケストレーション
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4" data-path="infrastructure_virtualization_server.html">
+            
+                <a href="infrastructure_virtualization_server.html">
+            
+                    
+                    仮想サーバ（仮想マシン）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" >
+            
+                <span>
+            
+                    
+                    インフラストラクチャ｜CI/CD
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="infrastructure_ci_cd.html">
+            
+                <a href="infrastructure_ci_cd.html">
+            
+                    
+                    CircleCI，Capistrano
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" >
+            
+                <span>
+            
+                    
+                    ハードウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="hardware.html">
+            
+                <a href="hardware.html">
+            
+                    
+                    ハードウェア
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="hardware_embedded_system.html">
+            
+                <a href="hardware_embedded_system.html">
+            
+                    
+                    組み込み機器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" >
+            
+                <span>
+            
+                    
+                    開発フロー
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="management_development_flow.html">
+            
+                <a href="management_development_flow.html">
+            
+                    
+                    システム開発フローの全体像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" >
+            
+                <span>
+            
+                    
+                    git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.28.1" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    Gitの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" >
+            
+                <span>
+            
+                    
+                    アルゴリズム
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.29.1" data-path="backend_logic_algorithm.html">
+            
+                <a href="backend_logic_algorithm.html">
+            
+                    
+                    アルゴリズムのロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" >
+            
+                <span>
+            
+                    
+                    r言語
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.30.1" data-path="statistic_analysis.html">
+            
+                <a href="statistic_analysis.html">
+            
+                    
+                    統計解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            GitBookで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ドメイン駆動設計</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;">&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;</h1>
+<h2 id="01-mvc">01. MVC</h2>
+<h3 id="mvc&#x3068;&#x306F;">MVC&#x3068;&#x306F;</h3>
+<p>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x304C;&#x8003;&#x6848;&#x3055;&#x308C;&#x308B;&#x4EE5;&#x524D;&#xFF0C;MVC&#x306E;&#x8003;&#x3048;&#x65B9;&#x304C;&#x4E3B;&#x6D41;&#x3067;&#x3042;&#x3063;&#x305F;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/MVC&#x30E2;&#x30C7;&#x30EB;.png" alt="MVC&#x30E2;&#x30C6;&#x3099;&#x30EB;"></p>
+<p><br></p>
+<h3 id="mvc&#x304B;&#x3089;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3078;&#x306E;&#x767A;&#x5C55;">MVC&#x304B;&#x3089;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3078;&#x306E;&#x767A;&#x5C55;</h3>
+<h4 id="&#x30FB;mvc&#x306E;&#x554F;&#x984C;&#x70B9;">&#x30FB;MVC&#x306E;&#x554F;&#x984C;&#x70B9;</h4>
+<p>&#x3057;&#x304B;&#x3057;&#xFF0C;&#x7279;&#x306B;Model&#x306E;&#x5F79;&#x5272;&#x304C;&#x62BD;&#x8C61;&#x7684;&#x904E;&#x304E;&#x305F;&#x305F;&#x3081;&#xFF0C;&#x958B;&#x767A;&#x898F;&#x6A21;&#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#x306B;&#x3064;&#x308C;&#x3066;&#xFF0C;Model&#x306B;&#x5F79;&#x5272;&#x3092;&#x96C6;&#x4E2D;&#x3055;&#x305B;&#x904E;&#x304E;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x3063;&#x305F;&#xFF0E;</p>
+<h4 id="&#x30FB;mvc&#x304B;&#x3089;ddd&#x3078;&#x306E;&#x79FB;&#x884C;">&#x30FB;MVC&#x304B;&#x3089;DDD&#x3078;&#x306E;&#x79FB;&#x884C;</h4>
+<p>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x304C;&#x767B;&#x5834;&#x3057;&#x305F;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;MVC&#x306F;&#x767A;&#x5C55;&#x3057;&#xFF0C;M&#x30FB;V&#x30FB;C&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x5F79;&#x5272;&#x304C;&#x3088;&#x308A;&#x5177;&#x4F53;&#x7684;&#x3067;&#x7CBE;&#x5BC6;&#x306B;&#x306A;&#x3063;&#x305F;&#xFF0E;Model&#x306E;&#x80A5;&#x5927;&#x5316;&#x306F;&#xFF0C;Model&#x304C;&#x3082;&#x3064;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;Domain&#x5C64;&#xFF0C;&#x307E;&#x305F;CRUD&#x51E6;&#x7406;&#x3092;Infrastructure&#x5C64;&#x3068;&#x3057;&#x3066;&#x5206;&#x5272;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5BFE;&#x51E6;&#x3055;&#x308C;&#x305F;&#xFF0E;</p>
+<p><br></p>
+<h2 id="02-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306F;">02. &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306F;</h2>
+<h3 id="&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x5206;&#x6790;&#x3068;&#x8A2D;&#x8A08;">&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x5206;&#x6790;&#x3068;&#x8A2D;&#x8A08;</h3>
+<h4 id="&#x30FB;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30A8;&#x30AD;&#x30B9;&#x30D1;&#x30FC;&#x30C8;&#xFF0C;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x3068;&#x306F;">&#x30FB;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30A8;&#x30AD;&#x30B9;&#x30D1;&#x30FC;&#x30C8;&#xFF0C;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x3068;&#x306F;</h4>
+<p>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30A8;&#x30AD;&#x30B9;&#x30D1;&#x30FC;&#x30C8;&#xFF08;&#x73FE;&#x5B9F;&#x4E16;&#x754C;&#x306E;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x8A73;&#x3057;&#x304F;&#xFF0C;&#x307E;&#x305F;&#x5B9F;&#x969B;&#x306B;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3092;&#x4F7F;&#x3046;&#x4EBA;&#xFF09;&#x3068;&#xFF0C;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;&#x304C;&#x8A71;&#x3057;&#x5408;&#x3044;&#x306A;&#x304C;&#x3089;&#xFF0C;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x5206;&#x6790;&#x3068;&#x8A2D;&#x8A08;&#x3092;&#x884C;&#x3063;&#x3066;&#x3044;&#x304F;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30A8;&#x30AD;&#x30B9;&#x30D1;&#x30FC;&#x30C8;&#x3068;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;&#x306E;&#x8A71;&#x3057;&#x5408;&#x3044;&#x306B;&#x9F5F;&#x9F6C;&#x304C;&#x751F;&#x307E;&#x308C;&#x306C;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#xFF08;&#x696D;&#x52D9;&#x5185;&#x5BB9;&#x306B;&#x3064;&#x3044;&#x3066;&#x5171;&#x901A;&#x306E;&#x7528;&#x8A9E;&#xFF09;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x6226;&#x7565;&#x7684;&#x8A2D;&#x8A08;&#x306E;&#x624B;&#x9806;">&#x30FB;&#x6226;&#x7565;&#x7684;&#x8A2D;&#x8A08;&#x306E;&#x624B;&#x9806;</h4>
+<ol>
+<li>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30A8;&#x30AD;&#x30B9;&#x30D1;&#x30FC;&#x30C8;&#x3068;&#x8A71;&#x3057;&#x5408;&#x3044;&#xFF0C;&#x73FE;&#x5B9F;&#x4E16;&#x754C;&#x306E;&#x696D;&#x52D9;&#x5185;&#x5BB9;&#x306B;&#x542B;&#x307E;&#x308C;&#x308B;&#x300E;&#x540D;&#x8A5E;&#x300F;&#x3068;&#x300E;&#x632F;&#x821E;&#x300F;&#x306B;&#x7740;&#x76EE;&#xFF0E;</li>
+<li>&#x300E;&#x540D;&#x8A5E;&#x300F;&#x3068;&#x300E;&#x632F;&#x821E;&#x300F;&#x3092;&#x8981;&#x7D20;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x5206;&#x6790;&#x3068;&#x8A2D;&#x8A08;&#x3092;&#x884C;&#x3044;&#xFF0C;Entity&#x3084;Value Object&#x3092;&#x62BD;&#x51FA;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</li>
+<li>Entity&#x3084;Value Object&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EA;&#x30F3;&#x30B0;&#xFF08;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#xFF09;&#x3092;&#x884C;&#x3046;&#xFF0E;</li>
+</ol>
+<h4 id="&#x30FB;&#x6226;&#x8853;&#x7684;&#x8A2D;&#x8A08;&#x306E;&#x624B;&#x9806;">&#x30FB;&#x6226;&#x8853;&#x7684;&#x8A2D;&#x8A08;&#x306E;&#x624B;&#x9806;</h4>
+<p>&#x6226;&#x7565;&#x7684;&#x8A2D;&#x8A08;&#x3092;&#x57FA;&#x306B;&#xFF0C;&#x5404;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x95A2;&#x9023;&#x6027;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
+<p><img src="https://user-images.githubusercontent.com/42175286/61179612-d305c800-a640-11e9-8c4a-3d31225af633.jpg" alt="DDD&#x306E;&#x6982;&#x5FF5;"></p>
+<p><br></p>
+<h3 id="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306E;&#x6D3E;&#x751F;&#x578B;">&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306E;&#x6D3E;&#x751F;&#x578B;</h3>
+<p>&#x73FE;&#x5728;&#x307E;&#x3067;&#x306B;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306E;&#x6D3E;&#x751F;&#x578B;&#x304C;&#x3044;&#x304F;&#x3064;&#x304B;&#x63D0;&#x5531;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;layered&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;">&#x30FB;Layered&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;</h4>
+<h4 id="&#x30FB;hexagonal&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;">&#x30FB;Hexagonal&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;</h4>
+<h4 id="&#x30FB;onion&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;">&#x30FB;Onion&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;</h4>
+<p>  <br></p>
+<h2 id="02-02-layered&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x578B;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;">02-02. Layered&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x578B;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;</h2>
+<h3 id="&#x8CAC;&#x52D9;&#x306E;&#x5206;&#x62C5;&#x65B9;&#x6CD5;">&#x8CAC;&#x52D9;&#x306E;&#x5206;&#x62C5;&#x65B9;&#x6CD5;</h3>
+<p><img src="https://user-images.githubusercontent.com/42175286/58724663-2ec11c80-8418-11e9-96e9-bfc6848e9374.png" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;"></p>
+<p>Layered&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x578B;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;MVC&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;4&#x5C64;&#x306B;&#x518D;&#x7DE8;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;user-interface&#x5C64;">&#x30FB;User Interface&#x5C64;</h4>
+<h4 id="&#x30FB;application&#x5C64;">&#x30FB;Application&#x5C64;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Controller</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Application Service</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Validation</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Converter</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;domain&#x5C64;&#xFF08;&#x30D3;&#x30B8;&#x30CD;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#xFF09;">&#x30FB;Domain&#x5C64;&#xFF08;&#x30D3;&#x30B8;&#x30CD;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#xFF09;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entity</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Specification</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Value Object</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Type Code</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Domain Service</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;infrastructure&#x5C64;&#xFF08;db&#x3068;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#xFF09;">&#x30FB;Infrastructure&#x5C64;&#xFF08;DB&#x3068;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#xFF09;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Factory</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="dip&#x306B;&#x57FA;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;">DIP&#x306B;&#x57FA;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;</h3>
+<h4 id="&#x30FB;&#x4F9D;&#x5B58;&#x6027;&#x3092;&#x9006;&#x8EE2;&#x3055;&#x305B;&#x308B;&#x65B9;&#x6CD5;">&#x30FB;&#x4F9D;&#x5B58;&#x6027;&#x3092;&#x9006;&#x8EE2;&#x3055;&#x305B;&#x308B;&#x65B9;&#x6CD5;</h4>
+<ol>
+<li>Repository&#x306E;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x3088;&#x308A;&#x4E0A;&#x4F4D;&#x306E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</li>
+<li>Repository&#x306E;&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x3088;&#x308A;&#x4E0B;&#x4F4D;&#x306E;Infrastructure&#x5C64;&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x4E21;&#x65B9;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#xFF08;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#xFF09;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x5B9F;&#x969B;&#x306B;&#x306F;&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x3053;&#x308C;&#x3089;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x4F9D;&#x5B58;&#x6027;&#x304C;&#x9006;&#x8EE2;&#x3059;&#x308B;&#xFF0E;&#x4F9D;&#x5B58;&#x6027;&#x9006;&#x8EE2;&#x306E;&#x539F;&#x5247;&#x306B;&#x57FA;&#x3065;&#x304F;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x3078;&#x306E;&#x5F71;&#x97FF;&#x306A;&#x304F;&#xFF0C;Repository&#x306E;&#x4EA4;&#x63DB;&#x304C;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x308B;&#xFF0E;</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x4F9D;&#x5B58;&#x6027;&#x9006;&#x8EE2;&#x306E;&#x539F;&#x5247;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x9006;&#x8EE2;&#x4F9D;&#x5B58;&#x6027;&#x306E;&#x539F;&#x5247;"></p>
+<h4 id="&#x30FB;domain&#x5C64;&#x3068;infrastructure&#x5C64;&#x306E;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;">&#x30FB;Domain&#x5C64;&#x3068;Infrastructure&#x5C64;&#x306E;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;</h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+</code></pre>
+<p><br></p>
+<h2 id="03-application&#x5C64;&#xFF08;usecase&#x5C64;&#xFF09;">03. Application&#x5C64;&#xFF08;UseCase&#x5C64;&#xFF09;</h2>
+<h3 id="controller">Controller</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x306E;&#x4ED5;&#x7D44;&#x307F;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;&#x308F;&#x3051;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x4EE5;&#x5916;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3067;&#x3042;&#x308B;&#xFF0E;CRUD&#x306E;Read&#x306E;&#x5834;&#x5408;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x624B;&#x9806;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;Use case&#xFF08;&#x4F7F;&#x7528;&#x4E8B;&#x4F8B;&#xFF09;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
+<ol>
+<li>&#x6700;&#x521D;&#x306B;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;&#x3088;&#x308B;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x9001;&#x4FE1;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308B;&#xFF0E;</li>
+<li>JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x30D1;&#x30FC;&#x30B9;&#x3059;&#x308B;&#xFF0E;</li>
+<li>Repository&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3092;&#x6E21;&#x3057;&#x3066;DB&#x304B;&#x3089;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;Read&#x3059;&#x308B;&#xFF0E;</li>
+<li>Read&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x6700;&#x5F8C;&#x306B;&#xFF0C;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3092;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30D1;&#x30FC;&#x30B9;&#x3057;&#xFF0C;JavaScript&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30B7;&#x30EA;&#x30A2;&#x30E9;&#x30A4;&#x30BA;&#x3068;&#x30C7;&#x30B7;&#x30EA;&#x30A2;&#x30E9;&#x30A4;&#x30BA;.png" alt="&#x30B7;&#x30EA;&#x30A2;&#x30E9;&#x30A4;&#x30BA;&#x3068;&#x30C7;&#x30B7;&#x30EA;&#x30A2;&#x30E9;&#x30A4;&#x30BA;"></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AcceptOrdersController</span>
+</span>{
+    <span class="hljs-comment">// &#x5358;&#x306A;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;Use case&#x3068;&#x306A;&#x308B;&#x3088;&#x3046;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">acceptOrders</span><span class="hljs-params">()</span>
+    </span>{
+
+    }
+
+}
+</code></pre>
+<p><strong>&#xFF0A;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x30AA;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30B7;&#x30E7;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x306B;&#x304A;&#x3051;&#x308B;Use case</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x56F3;.png" alt="&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x56F3;"></p>
+<p><br></p>
+<h3 id="application-service">Application Service</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>Application&#x5C64;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x6C4E;&#x7528;&#x7684;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5207;&#x308A;&#x5206;&#x3051;&#x3089;&#x308C;&#x305F;&#x3082;&#x306E;&#xFF0E;Controller&#x306B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;Domain&#x5C64;&#x306E;Domain Service&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x306E;&#x3067;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SlackNotificationService</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">notify</span><span class="hljs-params">(SlackMessage $message)</span>
+    </span>{
+       <span class="hljs-comment">// Slack&#x306E;API&#x306B;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x51E6;&#x7406;</span>
+    }
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306E;validation&#x30D1;&#x30BF;&#x30FC;&#x30F3;">&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306E;Validation&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x30B5;&#x30FC;&#x30D0;&#x30B5;&#x30A4;&#x30C9;&#x306B;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x8CAC;&#x52D9;&#x3092;&#x6301;&#x3064;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;UserInterface&#x5C64;&#x304B;&#x3089;Application&#x5C64;&#x306B;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;JSON&#x5F62;&#x5F0F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Respect</span>\<span class="hljs-title">Validation</span>\<span class="hljs-title">Validator</span>; <span class="hljs-comment">// Validation&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormatValidator</span>
+</span>{
+    <span class="hljs-comment">// &#x65E5;&#x6642;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateFormat</span><span class="hljs-params">($dateTime)</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>($dateTime)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }  
+
+        <span class="hljs-keyword">if</span>(!Validator::date(\DateTime::ATOM)-&gt;validate($dateTime)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}
+</code></pre>
+<p><br></p>
+<h3 id="converter&#x30D1;&#x30BF;&#x30FC;&#x30F3;">Converter&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x3092;&#x5909;&#x63DB;&#x3059;&#x308B;&#x8CAC;&#x52D9;&#x3092;&#x6301;&#x3064;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;Application&#x5C64;&#x304B;&#x3089;UserInterface&#x5C64;&#x3078;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#xFF0C;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#xFF08;Route Entity&#xFF09;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Converter</span>
+</span>{
+    <span class="hljs-comment">// &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x8A70;&#x3081;&#x66FF;&#x3048;&#x308B;&#x51E6;&#x7406;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToArray</span><span class="hljs-params">(XxxEntity $xxxEntity)</span>
+    </span>{
+        $xxxArray[<span class="hljs-string">&apos;id&apos;</span>] = $xxxEntity-&gt;id;
+        $xxxArray[<span class="hljs-string">&apos;name&apos;</span>] = $xxxEntity-&gt;name;
+        $xxxArray[<span class="hljs-string">&apos;email&apos;</span>] = $xxxEntity-&gt;email;
+    }
+}
+</code></pre>
+<p><br></p>
+<h2 id="04-domain&#x5C64;">04. Domain&#x5C64;</h2>
+<h3 id="repository&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#xFF08;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#xFF09;">Repository&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#xFF08;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#xFF09;</h3>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Repository.png" alt="Repository"></p>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x8CAC;&#x52D9;&#x3092;&#x6301;&#x3064;&#xFF0E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x9001;&#x4FE1;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#xFF0E;Controller&#x306F;&#xFF0C;Domain&#x5C64;&#x306E;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;DB&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;CRUD&#x3092;&#x884C;&#x3046;&#xFF0E;DIP&#x306B;&#x57FA;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306E;&#x5834;&#x5408;&#xFF0C;Repository&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">GetDogToyEntityRepository</span>
+</span>{
+
+    <span class="hljs-comment">// &#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x5177;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Infrastructure&#x5C64;&#x306E;Repository&#x306B;&#x5B9F;&#x88C5;&#xFF0E;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayDogToyEntities</span><span class="hljs-params">()</span></span>;
+
+}
+</code></pre>
+<p><br></p>
+<h3 id="entity">Entity</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><br></p>
+<h3 id="specification&#x30D1;&#x30BF;&#x30FC;&#x30F3;">Specification&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x691C;&#x8A3C;&#xFF0C;&#x691C;&#x7D22;&#x6761;&#x4EF6;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x751F;&#x6210;&#x306F;&#x3001;Entitiy&#x3084;Value Object&#x306B;&#x6301;&#x305F;&#x305B;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x80A5;&#x5927;&#x5316;&#x306E;&#x539F;&#x56E0;&#x3068;&#x306A;&#x308A;&#xFF0C;&#x53EF;&#x8AAD;&#x6027;&#x3068;&#x4FDD;&#x5B88;&#x6027;&#x304C;&#x60AA;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x3053;&#x3046;&#x3044;&#x3063;&#x305F;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3092;Specification&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306E;validation">&#x30FB;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306E;Validation</h4>
+<pre><code class="lang-isXxxx()```&#x306E;&#x771F;&#x507D;&#x5024;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x3066;&#x3001;&#x4ED5;&#x69D8;&#x3092;&#x8981;&#x6C42;&#x3092;&#x6E80;&#x305F;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x3001;&#x4F55;&#x3089;&#x304B;&#x306E;&#x76EE;&#x7684;&#x306E;&#x305F;&#x3081;&#x306E;&#x7528;&#x610F;&#x304C;&#x3067;&#x304D;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x8ABF;&#x3079;&#x308B;&#x51E6;&#x7406;&#x3059;&#x308B;&#xFF0E;">
+**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
+
+```PHP
+&lt;?php
+class XxxSpecification
+{
+    public function isSatisfiedBy($XxxEntity)
+    {
+       // &#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#xFF0E;
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;&#x691C;&#x7D22;&#x6761;&#x4EF6;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x751F;&#x6210;">&#x30FB;&#x691C;&#x7D22;&#x6761;&#x4EF6;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x751F;&#x6210;</h4>
+<p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x691C;&#x7D22;&#x6761;&#x4EF6;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x306E;Validation&#x3092;&#x884C;&#x3046;Specification&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x533A;&#x5225;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;Criteria&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x3068;&#x3057;&#x3066;&#x3082;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XxxCriteria</span>
+</span>{
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-keyword">private</span> $name;
+
+    <span class="hljs-keyword">private</span> $email;
+
+    <span class="hljs-comment">// &#x691C;&#x7D22;&#x6761;&#x4EF6;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span><span class="hljs-params">(array $array)</span>
+    </span>{
+        <span class="hljs-comment">// &#x81EA;&#x8EAB;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#xFF0E;</span>
+        $criteria = <span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>();
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($array[<span class="hljs-string">&apos;id&apos;</span>])) {
+            $criteria-&gt;id = $array[<span class="hljs-string">&apos;id&apos;</span>];
+        }
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($array[<span class="hljs-string">&apos;name&apos;</span>])) {
+            $criteria-&gt;id = $array[<span class="hljs-string">&apos;name&apos;</span>];
+        }
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($array[<span class="hljs-string">&apos;email&apos;</span>])) {
+            $criteria-&gt;id = $array[<span class="hljs-string">&apos;email&apos;</span>];
+        }
+
+        <span class="hljs-keyword">return</span> $criteria;
+    }  
+
+}
+</code></pre>
+<p><br></p>
+<h3 id="value-object">Value Object</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><br></p>
+<h3 id="type-code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;">Type Code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><br></p>
+<h3 id="domain-service">Domain Service</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><br></p>
+<h2 id="04-02-domain&#x5C64;&#xFF5C;entity-&#x306E;&#x8CAC;&#x52D9;">04-02. Domain&#x5C64;&#xFF5C;Entity &#x306E;&#x8CAC;&#x52D9;</h2>
+<h3 id="entity&#x306E;&#x5177;&#x4F53;&#x4F8B;">Entity&#x306E;&#x5177;&#x4F53;&#x4F8B;</h3>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;"></p>
+<p><br></p>
+<h3 id="&#x4FDD;&#x6301;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x4E00;&#x5B9A;&#x3067;&#x306A;&#x3044;">&#x4FDD;&#x6301;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x4E00;&#x5B9A;&#x3067;&#x306A;&#x3044;</h3>
+<p>&#x72B6;&#x614B;&#x3092;&#x5909;&#x5316;&#x3055;&#x305B;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x3064;</p>
+<p><br></p>
+<h3 id="&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x540C;&#x3058;&#x3067;&#x3082;&#x533A;&#x5225;&#x3067;&#x304D;&#x308B;">&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x540C;&#x3058;&#x3067;&#x3082;&#x533A;&#x5225;&#x3067;&#x304D;&#x308B;</h3>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x30A2;&#x30A4;&#x30C7;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x4ED6;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x540C;&#x3058;&#x5C5E;&#x6027;&#x3092;&#x3082;&#x3063;&#x3066;&#x3044;&#x3066;&#x3082;&#xFF0C;&#x533A;&#x5225;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ToyOrderEntity</span>
+</span>{
+    <span class="hljs-comment">// &#x72AC;&#x7528;&#x304A;&#x3082;&#x3061;&#x3083;</span>
+    <span class="hljs-keyword">private</span> $dogToyEntity;
+
+    <span class="hljs-comment">// &#x732B;&#x7528;&#x304A;&#x3082;&#x3061;&#x3083;</span>
+    <span class="hljs-keyword">private</span> $catToyEntity;
+
+    <span class="hljs-comment">// Setter&#x3092;&#x5B9F;&#x88C5;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>
+    <span class="hljs-params">(
+        DogToyEntity $dogToyEntity,
+        CatToyEntity $catToyEntity
+    )</span>
+    </span>{
+        $this-&gt;dogToyEntity = $dogToyEntity;
+        $this-&gt;catToyEntity = $catToyEntity;
+    }
+
+    <span class="hljs-comment">//     Getter&#x3092;&#x5B9F;&#x88C5;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getXXX</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">//  Read&#x51E6;&#x7406;;</span>
+    }  
+
+}
+</code></pre>
+<p><br></p>
+<h3 id="route-entity&#x3068;&#x306F;">Route Entity&#x3068;&#x306F;</h3>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x96C6;&#x7D04;&#x95A2;&#x4FC2;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x96C6;&#x7D04;&#x95A2;&#x4FC2;"></p>
+<p>  Entity&#x3084;Value Object&#x304B;&#x3089;&#x306A;&#x308B;&#x96C6;&#x7D04;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306B;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x3078;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x96C6;&#x7D04;&#x3092;&#xFF0C;&#x300E;RouteEntity&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DogToyEntity</span>
+</span>{
+    <span class="hljs-comment">// &#x304A;&#x3082;&#x3061;&#x3083;&#x30BF;&#x30A4;&#x30D7;</span>
+    <span class="hljs-keyword">private</span> $toyType;
+
+    <span class="hljs-comment">// &#x304A;&#x3082;&#x3061;&#x3083;&#x5546;&#x54C1;&#x540D;</span>
+    <span class="hljs-keyword">private</span> $toyName;
+
+    <span class="hljs-comment">// &#x6570;&#x91CF;</span>
+    <span class="hljs-keyword">private</span> $number;
+
+    <span class="hljs-comment">// &#x4FA1;&#x683C;VO</span>
+    <span class="hljs-keyword">private</span> $priceVO;
+
+    <span class="hljs-comment">// &#x8272;VO</span>
+    <span class="hljs-keyword">private</span> $colorVO;
+
+
+    <span class="hljs-comment">// Setter&#x3092;&#x5B9F;&#x88C5;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>
+    <span class="hljs-params">(
+        int $toyType,
+        string $toyName,
+        int $number,
+        priceVO $priceVO,
+        ColorVO $colorVO
+    )</span>
+    </span>{
+        $this-&gt;toyType = $toyType;
+        $this-&gt;toyName = $toyName;
+        $this-&gt;number = $number;
+        $this-&gt;priceVO = $priceVO;
+        $this-&gt;colorVO = $colorVO;
+    }
+
+    <span class="hljs-comment">// Getter&#x3092;&#x5B9F;&#x88C5;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toyNameWithColor</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> sprintf(
+            <span class="hljs-string">&apos;%s&#xFF08;%s&#xFF09;&apos;</span>,
+            $this-&gt;toyName,
+            $this-&gt;colorVO-&gt;colorName()
+        );
+    }
+
+}
+</code></pre>
+<p><br></p>
+<h2 id="04-03-domain&#xFF5C;value-object-&#x306E;&#x8CAC;&#x52D9;">04-03. Domain&#xFF5C;Value Object &#x306E;&#x8CAC;&#x52D9;</h2>
+<h3 id="value-object&#x306E;&#x5177;&#x4F53;&#x4F8B;">Value Object&#x306E;&#x5177;&#x4F53;&#x4F8B;</h3>
+<p>&#x91D1;&#x984D;&#xFF0C;&#x6570;&#x5B57;&#xFF0C;&#x96FB;&#x8A71;&#x756A;&#x53F7;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#xFF0C;&#x65E5;&#x4ED8;&#xFF0C;&#x6C0F;&#x540D;&#xFF0C;&#x8272;&#x306A;&#x3069;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x6271;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E00;&#x610F;&#x3067;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>$id</code>&#x30C7;&#x30FC;&#x30BF;&#xFF09;&#x3092;&#x3082;&#x305F;&#x306A;&#x3044;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x307E;&#x3068;&#x3081;&#x3066;&#x304A;&#x304F;&#x3079;&#x304D;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#xFF0C;Value Object&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">/**
+ * &#x652F;&#x6255;&#x60C5;&#x5831;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaymentInfoVO</span>
+</span>{
+    <span class="hljs-comment">// &#x4E88;&#x3081;&#x5B9F;&#x88C5;&#x3057;&#x305F;ImmutableObject&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;&#x3092;&#x5B9F;&#x73FE;</span>
+    <span class="hljs-keyword">use</span> <span class="hljs-title">ImmutableObject</span>;
+
+    <span class="hljs-comment">/**
+     * &#x652F;&#x6255;&#x3044;ID
+     *
+     * <span class="hljs-doctag">@var</span> PaymentId
+     */</span>
+    <span class="hljs-keyword">private</span> $PaymentId;
+
+    <span class="hljs-comment">/**
+     * &#x652F;&#x6255;&#x3044;&#x65B9;&#x6CD5;
+     *
+     * <span class="hljs-doctag">@var</span> PaymentType
+     */</span>
+    <span class="hljs-keyword">private</span> $PaymentType;
+
+    <span class="hljs-comment">/**
+     * &#x9023;&#x7D61;&#x5148;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+     *
+     * <span class="hljs-doctag">@var</span> string|null
+     */</span>
+    <span class="hljs-keyword">private</span> $contactMail;
+
+    <span class="hljs-comment">/**
+     * &#x91D1;&#x984D;
+     *
+     * <span class="hljs-doctag">@var</span> Money
+     */</span>
+    <span class="hljs-keyword">private</span> $price;    
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;">&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;</h3>
+<h4 id="&#x30FB;&#x91D1;&#x984D;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x8A08;&#x7B97;">&#x30FB;&#x91D1;&#x984D;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x8A08;&#x7B97;</h4>
+<p>&#x91D1;&#x984D;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8A08;&#x7B97;&#x3092;Controller&#x5185;&#x51E6;&#x7406;&#x3084;Entity&#x5185;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x884C;&#x3046;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x91D1;&#x984D;&#x8A08;&#x7B97;&#x3092;&#x884C;&#x3046;Value Object&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x6240;&#x8981;&#x6642;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x8A08;&#x7B97;">&#x30FB;&#x6240;&#x8981;&#x6642;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x8A08;&#x7B97;</h4>
+<p>&#x6240;&#x8981;&#x6642;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8A08;&#x7B97;&#x3092;Controller&#x5185;&#x51E6;&#x7406;&#x3084;Entity&#x5185;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x884C;&#x3046;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x6240;&#x8981;&#x6642;&#x9593;&#x8A08;&#x7B97;&#x3092;&#x884C;&#x3046;Value Object&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x4F4F;&#x6240;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x51E6;&#x7406;">&#x30FB;&#x4F4F;&#x6240;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x51E6;&#x7406;</h4>
+<p>&#x90F5;&#x4FBF;&#x756A;&#x53F7;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x305D;&#x306E;&#x51E6;&#x7406;&#x3092;Value Object&#x3068;&#x3057;&#x3066;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6301;&#x3064;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;">&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6301;&#x3064;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;</h3>
+<h4 id="&#x30FB;&#x4E0D;&#x5909;&#x6027;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;">&#x30FB;&#x4E0D;&#x5909;&#x6027;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;</h4>
+<p>Entity&#x3068;Value Object&#x306E;&#x3069;&#x3061;&#x3089;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30E2;&#x30C7;&#x30EA;&#x30F3;&#x30B0;&#xFF0F;&#x5B9F;&#x88C5;&#x3059;&#x3079;&#x304D;&#x306A;&#x306E;&#x304B;&#x306B;&#x3064;&#x3044;&#x3066;&#x8003;&#x3048;&#x308B;&#xFF0E;&#x305D;&#x3082;&#x305D;&#x3082;&#xFF0C;&#x5927;&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x300E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6301;&#x3064;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x3067;&#x304D;&#x308B;&#x3060;&#x3051;&#x4E0D;&#x5909;&#x306B;&#x3059;&#x3079;&#x304D;&#x300F;&#x3068;&#x3044;&#x3046;&#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x305D;&#x306E;&#x7D50;&#x679C;&#xFF0C;Value Object&#x3068;&#x3044;&#x3046;&#x304C;&#x751F;&#x307E;&#x308C;&#x305F;&#x3068;&#x8003;&#x3048;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x5B9F;&#x306F;&#xFF0C;Value Object&#x3092;&#x4F7F;&#x308F;&#x305A;&#x306B;&#x5168;&#x3066;Entity&#x3068;&#x3057;&#x3066;&#x30E2;&#x30C7;&#x30EA;&#x30F3;&#x30B0;&#xFF0F;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;&#x4E0D;&#x5909;&#x306B;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#x3068;&#x3053;&#x308D;&#x3082;&#x53EF;&#x5909;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x53EF;&#x8AAD;&#x6027;&#x3084;&#x4FE1;&#x983C;&#x6027;&#x3092;&#x4E0B;&#x3052;&#x3066;&#x3057;&#x307E;&#x3046;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x666E;&#x904D;&#x6027;&#x3092;&#x30B3;&#x30FC;&#x30C9;&#x3067;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x65B9;&#x6CD5;">&#x30FB;&#x666E;&#x904D;&#x6027;&#x3092;&#x30B3;&#x30FC;&#x30C9;&#x3067;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x65B9;&#x6CD5;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;<code>__construct()</code>&#x3092;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x3044;&#x51E6;&#x7406;&#x3092;&#x8A18;&#x8FF0;&#x3067;&#x304D;&#x308B;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct()</code>&#x3067;&#x306E;&#x307F;&#x5024;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x3048;&#x3070;&#xFF0C;Value Object&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleVO</span>
+</span>{
+
+    <span class="hljs-keyword">private</span> $propertyA;
+
+    <span class="hljs-keyword">private</span> $propertyB;
+
+    <span class="hljs-keyword">private</span> $propertyC;
+
+    <span class="hljs-comment">// &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x3067;$property&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($param)</span>
+    </span>{
+        $this-&gt;propertyA = $param[<span class="hljs-string">&apos;a&apos;</span>];
+        $this-&gt;propertyB = $param[<span class="hljs-string">&apos;b&apos;</span>];
+        $this-&gt;propertyC = $param[<span class="hljs-string">&apos;c&apos;</span>];
+    }   
+}
+</code></pre>
+<h4 id="&#x30FB;&#x300E;immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;">&#x30FB;&#x300E;Immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;</h4>
+<p>Test01&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property01</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;Setter&#x3092;&#x547C;&#x3073;&#x51FA;&#x3059;&#xFF0E;Setter&#x306F;&#x4F55;&#x5EA6;&#x3067;&#x3082;&#x547C;&#x3073;&#x51FA;&#x305B;&#xFF0C;&#x305D;&#x306E;&#x5EA6;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$test01 = <span class="hljs-keyword">new</span> Test01;
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p>&#x4E00;&#x65B9;&#x3067;&#xFF0C;Test02&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x308A;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x3064;&#x307E;&#x308A;&#xFF0C;&#x4EE5;&#x524D;&#x306B;&#x4F5C;&#x3063;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306E;&#x5024;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct()</code>&#x3060;&#x3051;&#x3092;&#x6301;&#x305F;&#x305B;&#x308C;&#x3070;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p><br></p>
+<h3 id="&#x6982;&#x5FF5;&#x7684;&#x306A;&#x7D71;&#x4E00;&#x4F53;">&#x6982;&#x5FF5;&#x7684;&#x306A;&#x7D71;&#x4E00;&#x4F53;</h3>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;">&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;</h3>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x65B0;&#x3057;&#x304F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4EE5;&#x524D;&#x306B;&#x540C;&#x4E00;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;&#x65B0;&#x3057;&#x304F;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;">&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;</h3>
+<p>&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x4ED6;&#x306E;VO&#x3068;&#x540C;&#x3058;&#x5834;&#x5408;&#xFF0C;&#x540C;&#x4E00;&#x306E;VO&#x3068;&#x898B;&#x306A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p> <br></p>
+<h3 id="&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;">&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;</h3>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#xFF08;1&#xFF09;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x306E;&#x6C0F;&#x540D;&#x3092;&#x6271;&#x3046;VO</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NameVO</span>
+</span>{
+        <span class="hljs-comment">// &#xFF08;2&#xFF09;&#x4E88;&#x3081;&#x5B9F;&#x88C5;&#x3057;&#x305F;ImmutableObject&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;&#x3092;&#x5B9F;&#x73FE;</span>
+    <span class="hljs-keyword">use</span> <span class="hljs-title">ImmutableObject</span>;
+
+    <span class="hljs-comment">// &#x82D7;&#x5B57;&#x30C7;&#x30FC;&#x30BF;</span>
+    <span class="hljs-keyword">private</span> $lastName;
+
+    <span class="hljs-comment">// &#x540D;&#x524D;&#x30C7;&#x30FC;&#x30BF;</span>
+    <span class="hljs-keyword">private</span> $firstName;
+
+    <span class="hljs-comment">// &#xFF08;6&#xFF09; &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fullName</span><span class="hljs-params">()</span>: <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;lastName . $this-&gt;firstName;
+    }
+
+    <span class="hljs-comment">// </span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computedPropertyNames</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">&apos;fullName&apos;</span>
+        ];
+    }
+}
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x540C;&#x69D8;&#x306B;&#xFF0C;Immutable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x57FA;&#x306B;&#xFF0C;VO&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x306E;&#x91D1;&#x984D;&#x3092;&#x6271;&#x3046;VO</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Money</span>
+</span>{
+
+}
+</code></pre>
+<p><br></p>
+<h2 id="04-04-domain&#x5C64;&#xFF5C;type-code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;">04-04. Domain&#x5C64;&#xFF5C;Type Code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;</h2>
+<h3 id="&#x533A;&#x5206;&#x3084;&#x7A2E;&#x985E;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x6301;&#x3059;&#x308B;">&#x533A;&#x5206;&#x3084;&#x7A2E;&#x985E;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x6301;&#x3059;&#x308B;</h3>
+<p>Type Code&#x306F;&#x6982;&#x5FF5;&#x7684;&#x306A;&#x547C;&#x3073;&#x540D;&#x3067;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#xFF0C;&#x6A19;&#x6E96;&#x7684;&#x306A;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x3057;&#x3066;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;Enum&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306E;&#x4E2D;&#x3067;&#x3082;&#xFF0C;&#x7279;&#x306B;&#x300E;&#x533A;&#x5206;&#x300F;&#x3084;&#x300E;&#x7A2E;&#x985E;&#x300F;&#x306A;&#x3069;&#x306F;&#xFF0C;Value Object&#x3068;&#x3057;&#x3066;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;Enum&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x3057;&#x3066;&#x30E2;&#x30C7;&#x30EA;&#x30F3;&#x30B0;&#xFF0F;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="enum&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7528;&#x3044;&#x305F;type-code&#x306E;&#x5B9F;&#x88C5;">Enum&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7528;&#x3044;&#x305F;Type Code&#x306E;&#x5B9F;&#x88C5;</h3>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ColorVO</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Enum</span>
+</span>{
+    <span class="hljs-keyword">const</span> RED = <span class="hljs-string">&apos;1&apos;</span>;
+    <span class="hljs-keyword">const</span> BLUE = <span class="hljs-string">&apos;2&apos;</span>;
+
+
+    <span class="hljs-comment">// &#x300E;self::&#x5B9A;&#x6570;&#x540D;&#x300F;&#x3067;&#xFF0C;&#x5B9A;&#x7FA9;&#x306E;&#x5024;&#x3078;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">private</span> $defs = [
+        <span class="hljs-keyword">self</span>::RED =&gt; [<span class="hljs-string">&apos;color_name&apos;</span> =&gt; <span class="hljs-string">&apos;&#x30EC;&#x30C3;&#x30C9;&apos;</span>],
+        <span class="hljs-keyword">self</span>::BLUE =&gt; [<span class="hljs-string">&apos;color_name&apos;</span> =&gt; <span class="hljs-string">&apos;&#x30D6;&#x30EB;&#x30FC;&apos;</span>]
+    ];
+
+
+    <span class="hljs-comment">// &#x8272;&#x5024;&#x30C7;&#x30FC;&#x30BF;</span>
+    <span class="hljs-keyword">private</span> $colorValue;
+
+
+    <span class="hljs-comment">// &#x8272;&#x540D;&#x30C7;&#x30FC;&#x30BF;&#xFF0E;</span>
+    <span class="hljs-keyword">private</span> $colorName;
+
+
+    <span class="hljs-comment">// &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x306E;&#x6642;&#x306B;&#xFF0C;&#x300E;&#x8272;&#x306E;&#x533A;&#x5206;&#x5024;&#x300F;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>
+    <span class="hljs-params">(
+        String $value
+    )</span>
+    </span>{
+        <span class="hljs-comment">// $kbnValue&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;&#x8272;&#x540D;&#x3092;colorname&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30BB;&#x30C3;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
+        $this-&gt;colorValue = $value;
+        $this-&gt;colorname = $this-&gt;defs[$value][<span class="hljs-string">&apos;color_name&apos;</span>];
+    }
+
+
+    <span class="hljs-comment">// construct&#x306B;&#x3088;&#x3063;&#x3066;&#x30BB;&#x30C3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x8272;&#x5024;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">colorValue</span><span class="hljs-params">()</span> :<span class="hljs-title">int</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;colorValue;
+    } 
+
+
+    <span class="hljs-comment">// construct&#x306B;&#x3088;&#x3063;&#x3066;&#x30BB;&#x30C3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x8272;&#x540D;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">colorName</span><span class="hljs-params">()</span> :<span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;colorName;
+    } 
+
+}
+</code></pre>
+<p><br></p>
+<h2 id="04-05-domain-service">04-05. Domain Service</h2>
+<p>&#x8981;&#x52C9;&#x5F37;&#xFF0E;</p>
+<p><br></p>
+<h2 id="05-infrastructure&#x5C64;">05. Infrastructure&#x5C64;</h2>
+<h3 id="repository&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#xFF08;&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#xFF09;">Repository&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#xFF08;&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#xFF09;</h3>
+<h4 id="&#x30FB;db&#x306B;&#x5BFE;&#x3059;&#x308B;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x8CAC;&#x52D9;&#xFF08;create&#xFF0C;update&#xFF0C;delete&#xFF09;">&#x30FB;DB&#x306B;&#x5BFE;&#x3059;&#x308B;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x8CAC;&#x52D9;&#xFF08;Create&#xFF0C;Update&#xFF0C;Delete&#xFF09;</h4>
+<p>DB&#x306B;&#x5BFE;&#x3059;&#x308B;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x64CD;&#x4F5C;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<ol>
+<li><p>GET&#x307E;&#x305F;&#x306F;POST&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x304B;&#x3089;&#x5024;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+</li>
+<li><p>Factory&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;&#x5024;&#x304B;&#x3089;Entity&#x3084;Value Object&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x3055;&#x3089;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x3089;&#x304B;&#x3089;&#x96C6;&#x7D04;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+<li><p>Repository&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+<li><p>Repository&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x96C6;&#x7D04;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x5206;&#x89E3;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+<li><p><code>add()</code>&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;Repository&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#xFF0C;&#x96C6;&#x7D04;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+<li><p><code>store()</code>&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;Transaction&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#xFF0C;Repository&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+<li><p>DB&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;_&#x30C7;&#x30FC;&#x30BF;&#x66F4;&#x65B0;.png" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;_&#x30C7;&#x30FC;&#x30BF;&#x66F4;&#x65B0;"></p>
+</li>
+</ol>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x96C6;&#x7D04;&#x306E;&#x69CB;&#x6210;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x8FFD;&#x52A0;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">setDogToyEntityRepository</span>
+</span>{
+
+    <span class="hljs-comment">// &#x63A5;&#x7D9A;&#x5148;&#x3057;&#x305F;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;</span>
+    <span class="hljs-keyword">private</span> $dbs;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setDataSet</span><span class="hljs-params">(Request $request)</span>
+    </span>{
+
+        $dogToyEntity = <span class="hljs-keyword">new</span> DogToyEntity;
+
+
+        <span class="hljs-comment">// &#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;&#x5024;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3057;&#x3066;&#x683C;&#x7D0D;&#x3057;&#xFF0C;&#x96C6;&#x7D04;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+        $dogToyEntity-&gt;toyType = $request-&gt;xxx();
+        $dogToyEntity-&gt;toyName    = $request-&gt;xxx();
+        $dogToyEntity-&gt;number = $request-&gt;xxx();
+        $dogToyEntity-&gt;priceVO = $request-&gt;xxx(<span class="hljs-keyword">new</span> PriceVO());
+        $dogToyEntity-&gt;colorVO = $request-&gt;xxx(<span class="hljs-keyword">new</span> ColorVO());
+
+
+        <span class="hljs-comment">// &#x96C6;&#x7D04;&#x3092;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x5206;&#x89E3;&#x3059;&#x308B;&#xFF0E;</span>
+        $data = [
+            <span class="hljs-string">&apos;type&apos;</span> =&gt; $dogToyEntity-&gt;toyType,
+            <span class="hljs-string">&apos;name&apos;</span> =&gt; $dogToyEntity-&gt;toyName,
+            <span class="hljs-string">&apos;number&apos;</span> =&gt; $dogToyEntity-&gt;number,
+            <span class="hljs-string">&apos;price&apos;</span> =&gt; $dogToyEntity-&gt;priceVO-&gt;price(),
+            <span class="hljs-string">&apos;color_value&apos;</span> =&gt; $dogToyEntity-&gt;colorVO-&gt;value(),
+        ];
+
+
+        <span class="hljs-comment">// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x633F;&#x5165;&#x3059;&#x308B;&#xFF0E;</span>
+        $this-&gt;dbs[<span class="hljs-string">&apos;app&apos;</span>]-&gt;insert(dog_toy_table, $data);
+
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;db&#x306B;&#x5BFE;&#x3059;&#x308B;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x8CAC;&#x52D9;&#xFF08;read&#xFF09;">&#x30FB;DB&#x306B;&#x5BFE;&#x3059;&#x308B;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x8CAC;&#x52D9;&#xFF08;Read&#xFF09;</h4>
+<p>DB&#x306B;&#x5BFE;&#x3059;&#x308B;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x64CD;&#x4F5C;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<ol>
+<li>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x304B;&#x3089;&#x96C6;&#x7D04;&#x304C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
+<li>DB&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x3092;&#x884C;&#x3046;&#xFF0E;</li>
+<li>Factory&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;&#x5024;&#x304B;&#x3089;Entity&#x3084;Value Object&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x3055;&#x3089;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x3089;&#x304B;&#x3089;&#x96C6;&#x7D04;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</li>
+<li>Repository&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x518D;&#x69CB;&#x6210;&#x3055;&#x308C;&#x305F;&#x96C6;&#x7D04;&#x3092;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x306B;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;_&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;_&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;"></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x30C7;&#x30FC;&#x30BF;&#x306E;Read&#x3068;&#x96C6;&#x7D04;&#x518D;&#x69CB;&#x6210;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">getDogToyEntityRepository</span>
+</span>{
+  <span class="hljs-comment">// &#x63A5;&#x7D9A;&#x5148;&#x3057;&#x305F;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;</span>
+    <span class="hljs-keyword">private</span> $dbs;
+
+
+    <span class="hljs-comment">// &#x9023;&#x60F3;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x300E;RouteEntity&#x300F;&#x306E;&#x96C6;&#x7D04;&#x3092;&#x69CB;&#x6210;&#x3057;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayDogToyEntities</span><span class="hljs-params">()</span>: <span class="hljs-title">DogToyEntities</span>
+    </span>{
+        $dogToyEntities = [];
+        <span class="hljs-keyword">foreach</span>($this-&gt;fetchDataSet() <span class="hljs-keyword">as</span> $fetchedData){
+            $dogToyEntities[] = $this-&gt;aggregateDogToyEntity($fetchedData)
+        }
+
+        <span class="hljs-keyword">return</span> $dogToyEntities;
+    }
+
+
+    <span class="hljs-comment">// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304B;&#x3089;&#x30C7;&#x30FC;&#x30BF;&#x3092;Read&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchDataSet</span><span class="hljs-params">()</span>
+    </span>{
+        $select = [
+            <span class="hljs-string">&apos;dog_toy.type AS dog_type&apos;</span>,
+            <span class="hljs-string">&apos;dog_toy.name AS dog_toy_name&apos;</span>,
+            <span class="hljs-string">&apos;dog_toy.number AS number&apos;</span>,
+            <span class="hljs-string">&apos;dog_toy.price AS dog_toy_price&apos;</span>,
+            <span class="hljs-string">&apos;dog_toy.color_value AS color_value&apos;</span>
+        ];
+
+        $query = $this-&gt;getFecthQuery($select);
+        <span class="hljs-keyword">return</span> $query-&gt;getConnection()-&gt;executeQuery()-&gt;fetchAll(); 
+    }
+
+
+    <span class="hljs-comment">// &#x96C6;&#x7D04;&#x3092;&#x884C;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aggregateDogToyEntity</span><span class="hljs-params">(Array $fetchedData)</span>
+    </span>{
+        $dogToyEntity = <span class="hljs-keyword">new</span> DogToyEntity;
+        $dogToyEntity-&gt;toyType = $fetchedData[<span class="hljs-string">&apos;dog_toy_type&apos;</span>];
+        $dogToyEntity-&gt;toyName = $fetchedData[<span class="hljs-string">&apos;dog_toy_name&apos;</span>];
+        $dogToyEntity-&gt;number = $fetchedData[<span class="hljs-string">&apos;number&apos;</span>];
+        $dogToyEntity-&gt;priceVO = <span class="hljs-keyword">new</span> PriceVO($fetchedData[<span class="hljs-string">&apos;dog_toy_price&apos;</span>]);
+        $dogToyEntity-&gt;colorVO = <span class="hljs-keyword">new</span> ColorVO($fetchedData[<span class="hljs-string">&apos;color_value&apos;</span>]);
+    }
+
+}
+</code></pre>
+<p><br></p>
+<h3 id="factory">Factory</h3>
+<h4 id="&#x30FB;&#x8CAC;&#x52D9;">&#x30FB;&#x8CAC;&#x52D9;</h4>
+<p>&#x8CAC;&#x52D9;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x69CB;&#x6210;&#x3057;&#x305F;&#x96C6;&#x7D04;&#x95A2;&#x4FC2;&#x3092;&#x52A0;&#x5DE5;&#x3057;&#x3066;&#x65B0;&#x305F;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x518D;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x69CB;&#x6210;&#x3057;&#x305F;&#x96C6;&#x7D04;&#x95A2;&#x4FC2;&#x3092;&#x52A0;&#x5DE5;&#x3057;&#x3066;&#x65B0;&#x305F;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x518D;&#x69CB;&#x6210;&#x3059;&#x308B;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Factory</span>
+</span>{
+
+    <span class="hljs-keyword">private</span> $factory;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Factory $factory)</span>
+    </span>{
+        $this-&gt;$factory = $factory;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factoryToyOrderEntity</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($this-&gt;factory)){
+            $toyOrderEntity = ;<span class="hljs-comment">//&#x306A;&#x3093;&#x3089;&#x304B;&#x306E;&#x96C6;&#x7D04;&#x51E6;&#x7406;;</span>
+            }
+
+        <span class="hljs-keyword">return</span> $toyOrderEntity;
+    }
+
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="backend_architecture_cqrs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: CQRS設計">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"next":{"title":"CQRS設計","level":"1.7.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]},"previous":{"title":"PHP｜アーキテクチャ","level":"1.7","depth":1,"ref":"","articles":[{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},{"title":"CQRS設計","level":"1.7.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"public/backend_architecture_domain_driven_design.md","mtime":"2020-10-22T18:33:18.952Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-23T01:46:16.930Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
