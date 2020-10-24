@@ -1,4 +1,10 @@
-# このサイトについて
+## このサイトについて
+
+GitBookを使用して作成したサイトです．
+
+[tech-notebook](https://github.com/Hiroki-IT/tech-notebook) の代替として使用しております．
+
+静的ファイルの生成元になっているマークダウンは，[publicディレクトリ](https://github.com/Hiroki-IT/tech-notebook_gitbook/tree/main/public) で管理しております．
 
 ## サイトの目的
 
