@@ -5,10 +5,10 @@
     
 * 自己紹介
     * [長谷川広樹と申します](public/self_introduction.md)
-* PHP｜オブジェクト指向
-    * [オブジェクト指向分析／設計](public/backend_object_oriented_analysis_and_design.md)
-    * [オブジェクト指向設計／プログラミング（1）](public/backend_object_oriented_programming_class.md)
-    * [オブジェクト指向設計／プログラミング （2）](public/backend_object_oriented_programming_method_data.md)
+* PHP｜クラスベースオブジェクト指向
+    * [オブジェクト指向分析／設計／プログラミング](public/backend_object_orientation_analysis_design_programming.md)
+    * [クラスベースのプログラミング（1）](public/backend_object_orientation_class.md)
+    * [クラスベースのプログラミング（2）](public/backend_object_orientation_method_data.md)
 * PHP｜ロジック
     * [バックエンド側の検証ロジック](public/backend_logic_validation.md)
     * [繰り返しロジック](public/backend_logic_iteration.md)
@@ -25,8 +25,9 @@
 * フロントエンドとバックエンド間のデータ通信
     * [認証と認可](public/frontend_and_backend_authentication_authorization.md)
     * [JSON](public/frontend_and_backend_json.md)
-* JS｜オブジェクト指向
-    * [プロトタイプベースのオブジェクト指向](public/frontend_object_oriented_based_prototype_method_data.md)
+* JS｜プロトタイプベースオブジェクト指向
+    * [プロトタイプベースのプログラミング（1）](public/frontend_object_orientation_prototype.md)
+    * [プロトタイプベースのプログラミング（2）](public/frontend_object_orientation_method_data.md)
 * JS｜ロジック
     * [フロントエンド側の検証ロジック](public/frontend_logic_validation.md)
 * JS｜アーキテクチャ
