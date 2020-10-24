@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-navigator/plugin.css">
                 
             
                 
@@ -1343,26 +1343,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="nginx">Nginx</h1>
-<h2 id="01-tips">01. Tips</h2>
-<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
-<h4 id="&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;">&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;</h4>
+                                <h1 id="Nginx">Nginx</h1>
+<h2 id="01__Tips">1. 01. Tips</h2>
+<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">1.1. &#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<h4 id="&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;">1.1.1. &#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;</h4>
 <pre><code class="lang-bash">$ systemctl start nginx
 $ systemctl stop nginx
 </code></pre>
-<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">1.1.2. &#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
 <pre><code class="lang-bash">$ service nginx configtest
 
 <span class="hljs-comment"># &#x3082;&#x3057;&#x304F;&#x306F;&#x3053;&#x3061;&#x3089;</span>
 $ nginx -t
 </code></pre>
-<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">1.1.3. &#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
 <pre><code class="lang-bash">$ <span class="hljs-built_in">kill</span> <span class="hljs-_">-s</span> HUP NINGXPID
 </code></pre>
 <p><br></p>
-<h2 id="02-nginx&#x306E;&#x7528;&#x9014;">02. Nginx&#x306E;&#x7528;&#x9014;</h2>
-<h3 id="web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
-<h4 id="&#x30FB;php-fpm&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
+<h2 id="02__Nginx&#x306E;&#x7528;&#x9014;">2. 02. Nginx&#x306E;&#x7528;&#x9014;</h2>
+<h3 id="Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.1. Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
+<h4 id="&#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">2.1.1. &#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#xFF0C;FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4ECB;&#x3057;&#x3066;&#xFF0C;PHP-FPM&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;.png" alt="Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -1404,7 +1404,7 @@ $ php-fpm -t
     }
 }
 </code></pre>
-<h4 id="&#x30FB;fastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;</h4>
+<h4 id="&#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;">2.1.2. &#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;</h4>
 <p><code>/etc/nginx/fastcgi_params</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;Nginx&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;OS&#x3084;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306B;&#x63A5;&#x7D9A;&#x3057;&#xFF0C;&#x4E0A;&#x66F8;&#x304D;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x3082;&#x306E;&#x3068;&#x4E0D;&#x8981;&#x306A;&#x3082;&#x306E;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306F;&#xFF0C;Debian 10&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-comment">#--------------------------------------</span>
@@ -1436,7 +1436,7 @@ $ php-fpm -t
 <span class="hljs-comment"># PHP&#x3060;&#x3051;&#x3067;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;</span>
 <span class="hljs-attribute">fastcgi_param</span>  REDIRECT_STATUS    <span class="hljs-number">200</span>;
 </code></pre>
-<h4 id="&#x30FB;wwwconf&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;www.conf&#x306B;&#x3064;&#x3044;&#x3066;</h4>
+<h4 id="&#x30FB;www_conf&#x306B;&#x3064;&#x3044;&#x3066;">2.1.3. &#x30FB;www.conf&#x306B;&#x3064;&#x3044;&#x3066;</h4>
 <pre><code class="lang-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;">
 ```ini
 [www]
@@ -1478,7 +1478,7 @@ php_value[session.save_path]    = &quot;tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.a
 php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 </code></pre>
 <p><br></p>
-<h3 id="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
+<h3 id="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.2. &#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3067;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#xFF0C;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-comment">#-------------------------------------</span>
@@ -1516,7 +1516,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 }
 </code></pre>
 <p><br></p>
-<h3 id="&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
+<h3 id="&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.3. &#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304B;&#x3089;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x305F;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x9759;&#x7684;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#xFF08;Nginx&#xFF09;&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#xFF0E;Web&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x5FC5;&#x305A;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#xFF0C;&#x52D5;&#x7684;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-comment">#-------------------------------------</span>
@@ -1544,7 +1544,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 }
 </code></pre>
 <p><br></p>
-<h2 id="03-01-main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-01. Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
+<h2 id="03-01__Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">3. 03-01. Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">user</span>                  www www;
 <span class="hljs-attribute">worker_processes</span>      <span class="hljs-number">5</span>;
@@ -1553,54 +1553,54 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 <span class="hljs-attribute">worker_rlimit_nofile</span>  <span class="hljs-number">8192</span>;
 </code></pre>
 <p><br></p>
-<h3 id="user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>user</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h3 id="user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.1. user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <p>&#x672C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;&#x3068;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x3092;&#x5165;&#x529B;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x540C;&#x3058;&#x3082;&#x306E;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">user</span>  www www;
 </code></pre>
 <p><br></p>
-<h3 id="workerprocesses&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_processes</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h3 id="worker_processes&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.2. worker_processes&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <pre><code class="lang-nginx"><span class="hljs-attribute">worker_processes</span>  <span class="hljs-number">5</span>;
 </code></pre>
 <p><br></p>
-<h3 id="errorlog&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>error_log</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h3 id="error_log&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.3. error_log&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <pre><code class="lang-nginx"><span class="hljs-attribute">error_log</span>  logs/error.log;
 </code></pre>
 <p><br></p>
-<h3 id="pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>pid</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h3 id="pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.4. pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <pre><code class="lang-nginx"><span class="hljs-attribute">pid</span>  logs/nginx.pid;
 </code></pre>
 <p><br></p>
-<h3 id="workerrlimitnofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_rlimit_nofile</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h3 id="worker_rlimit_nofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.5. worker_rlimit_nofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <pre><code class="lang-nginx"><span class="hljs-attribute">worker_rlimit_nofile</span>  <span class="hljs-number">8192</span>;
 </code></pre>
 <p><br></p>
-<h2 id="03-02-configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-02. Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
-<h3 id="include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>include</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<h4 id="&#x30FB;mimetypes&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;mime.types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
+<h2 id="03-02__Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">4. 03-02. Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
+<h3 id="include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">4.1. include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
+<h4 id="&#x30FB;mime_types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">4.1.1. &#x30FB;mime.types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
 <p>&#x4ED6;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /etc/nginx/mime.types;
 </code></pre>
 <p>&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x3082;&#x53EF;&#x80FD;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /etc/nginx/<span class="hljs-regexp">*.types</span>;
 </code></pre>
-<h4 id="&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
+<h4 id="&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">4.1.2. &#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
 <pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;
 </code></pre>
 <p><br></p>
-<h2 id="03-03-events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-03. Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
-<h3 id="events&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>events</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
+<h2 id="03-03__Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">5. 03-03. Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
+<h3 id="events&#x30D6;&#x30ED;&#x30C3;&#x30AF;">5.1. events&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-section">events</span> {
   <span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;
 }
 </code></pre>
-<h4 id="&#x30FB;workerconnections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>worker_connections</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h4 id="&#x30FB;worker_connections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">5.1.1. &#x30FB;worker_connections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>worker&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x540C;&#x6642;&#x306B;&#x51E6;&#x7406;&#x53EF;&#x80FD;&#x306A;&#x30B3;&#x30CD;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6700;&#x5927;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;
 </code></pre>
 <p><br></p>
-<h2 id="03-04-httpcore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-04. HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
-<h3 id="http&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>http</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
+<h2 id="03-04__HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">6. 03-04. HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
+<h3 id="http&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.1. http&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <pre><code class="lang-nginx"><span class="hljs-section">http</span> {
     <span class="hljs-attribute">server_tokens</span>      <span class="hljs-literal">off</span>;
     <span class="hljs-attribute">include</span>            /etc/nginx/mime.types;
@@ -1619,57 +1619,57 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
     <span class="hljs-comment">#----- &#x7701;&#x7565; -----#</span>
 }
 </code></pre>
-<h4 id="&#x30FB;sendfile">&#x30FB;<code>sendfile</code></h4>
+<h4 id="&#x30FB;sendfile">6.1.1. &#x30FB;sendfile</h4>
 <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x306E;&#x305F;&#x3081;&#x306B;Linux&#x306E;sendfile&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;OS&#x5185;&#x3067;&#x884C;&#x3046;&#x305F;&#x3081;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901F;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;Nginx&#x304C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#x81EA;&#x8EAB;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">sendfile</span> <span class="hljs-literal">on</span>;
 </code></pre>
-<h4 id="&#x30FB;tcpnopush">&#x30FB;<code>tcp_nopush</code></h4>
+<h4 id="&#x30FB;tcp_nopush">6.1.2. &#x30FB;tcp_nopush</h4>
 <p>&#x4E0A;&#x8FF0;&#x306E;Linux&#x306E;<code>sendfile</code>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#xFF0C;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x4E00;&#x3064;&#x306E;&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">tcp_nopush</span> <span class="hljs-literal">on</span>;
 </code></pre>
-<h4 id="&#x30FB;defaulttype">&#x30FB;<code>default_type</code></h4>
+<h4 id="&#x30FB;default_type">6.1.3. &#x30FB;default_type</h4>
 <p>Content-Type&#x304C;&#xFF0C;mime.types&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306A;&#x3044;MIME type&#x3067;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3059;&#x308B;MIME type&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-comment"># application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
 <span class="hljs-attribute">default_type</span> application/octet-stream
 </code></pre>
-<h4 id="&#x30FB;etcnginxmimetypes">&#x30FB;<code>/etc/nginx/mime.types</code></h4>
+<h4 id="&#x30FB;_etc_nginx_mime_types">6.1.4. &#x30FB;/etc/nginx/mime.types</h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;Content-Type&#x306E;MIME&#x30BF;&#x30A4;&#x30D7;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x9593;&#x306E;&#xFF0C;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">include</span> /etc/nginx/mime.types;
 </code></pre>
-<h4 id="&#x30FB;etcnginxconfdconf">&#x30FB;<code>/etc/nginx/conf.d/*.conf</code></h4>
+<h4 id="&#x30FB;_etc_nginx_conf_d___conf">6.1.5. &#x30FB;/etc/nginx/conf.d/*.conf</h4>
 <p>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;nginx.conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x308F;&#x306A;&#x3044;&#x304B;&#x3092;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;
 </code></pre>
 <p><br></p>
-<h3 id="server&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>server</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
-<h4 id="&#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>listen</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h3 id="server&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.2. server&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
+<h4 id="&#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.1. &#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>80</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
 </code></pre>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>443</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;
 </code></pre>
-<h4 id="&#x30FB;servername&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>server_name</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h4 id="&#x30FB;server_name&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.2. &#x30FB;server_name&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">server_name</span> example.com;
 </code></pre>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x76F4;&#x63A5;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">server_name</span> <span class="hljs-number">192.168.0.0</span>;
 </code></pre>
-<h4 id="&#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h4 id="&#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.3. &#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>Nginx&#x3067;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;ssl&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
 </code></pre>
-<h4 id="&#x30FB;sslcertificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h4 id="&#x30FB;ssl_certificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.4. &#x30FB;ssl_certificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">ssl_certificate</span> /etc/nginx/ssl/server.crt;
 </code></pre>
-<h4 id="&#x30FB;sslcertificatekey&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate_key</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
+<h4 id="&#x30FB;ssl_certificate_key&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.5. &#x30FB;ssl_certificate_key&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">ssl_certificate_key</span> /etc/nginx/ssl/server.key;
 </code></pre>
 <p><br></p>
-<h3 id="location&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>location</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
+<h3 id="location&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.3. location&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;URL&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-comment"># 1. &#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
@@ -1744,7 +1744,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 </tbody>
 </table>
 <p><br></p>
-<h3 id="upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>upstream</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
+<h3 id="upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.4. upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-nginx"><span class="hljs-attribute">upstream</span> big_server_com {
     <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.3:8000</span> weight=<span class="hljs-number">5</span>;
@@ -1753,7 +1753,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
     <span class="hljs-attribute">server</span> <span class="hljs-number">192.168.0.1:8001</span>;
 }
 </code></pre>
-
+<div id="anchors-navbar"><i class="fa fa-anchor"></i><ul><p><a href="#Nginx">Nginx</a></p><li><a href="#01__Tips">1. 01. Tips</a></li><ul><li><a href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;">1.1. &#x30B3;&#x30DE;&#x30F3;&#x30C9;</a></li><ul><li><a href="#&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;">1.1.1. &#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;</a></li><li><a href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">1.1.2. &#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</a></li><li><a href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">1.1.3. &#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</a></li></ul></ul><li><a href="#02__Nginx&#x306E;&#x7528;&#x9014;">2. 02. Nginx&#x306E;&#x7528;&#x9014;</a></li><ul><li><a href="#Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.1. Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</a></li><ul><li><a href="#&#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">2.1.1. &#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</a></li><li><a href="#&#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;">2.1.2. &#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;</a></li><li><a href="#&#x30FB;www_conf&#x306B;&#x3064;&#x3044;&#x3066;">2.1.3. &#x30FB;www.conf&#x306B;&#x3064;&#x3044;&#x3066;</a></li></ul><li><a href="#&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.2. &#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</a></li><li><a href="#&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">2.3. &#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</a></li></ul><li><a href="#03-01__Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">3. 03-01. Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</a></li><ul><li><a href="#user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.1. user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#worker_processes&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.2. worker_processes&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#error_log&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.3. error_log&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.4. pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#worker_rlimit_nofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">3.5. worker_rlimit_nofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li></ul><li><a href="#03-02__Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">4. 03-02. Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</a></li><ul><li><a href="#include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">4.1. include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><ul><li><a href="#&#x30FB;mime_types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">4.1.1. &#x30FB;mime.types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</a></li><li><a href="#&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">4.1.2. &#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</a></li></ul></ul><li><a href="#03-03__Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">5. 03-03. Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</a></li><ul><li><a href="#events&#x30D6;&#x30ED;&#x30C3;&#x30AF;">5.1. events&#x30D6;&#x30ED;&#x30C3;&#x30AF;</a></li><ul><li><a href="#&#x30FB;worker_connections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">5.1.1. &#x30FB;worker_connections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li></ul></ul><li><a href="#03-04__HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">6. 03-04. HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</a></li><ul><li><a href="#http&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.1. http&#x30D6;&#x30ED;&#x30C3;&#x30AF;</a></li><ul><li><a href="#&#x30FB;sendfile">6.1.1. &#x30FB;sendfile</a></li><li><a href="#&#x30FB;tcp_nopush">6.1.2. &#x30FB;tcp_nopush</a></li><li><a href="#&#x30FB;default_type">6.1.3. &#x30FB;default_type</a></li><li><a href="#&#x30FB;_etc_nginx_mime_types">6.1.4. &#x30FB;/etc/nginx/mime.types</a></li><li><a href="#&#x30FB;_etc_nginx_conf_d___conf">6.1.5. &#x30FB;/etc/nginx/conf.d/*.conf</a></li></ul><li><a href="#server&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.2. server&#x30D6;&#x30ED;&#x30C3;&#x30AF;</a></li><ul><li><a href="#&#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.1. &#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#&#x30FB;server_name&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.2. &#x30FB;server_name&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#&#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.3. &#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#&#x30FB;ssl_certificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.4. &#x30FB;ssl_certificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li><li><a href="#&#x30FB;ssl_certificate_key&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">6.2.5. &#x30FB;ssl_certificate_key&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a></li></ul><li><a href="#location&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.3. location&#x30D6;&#x30ED;&#x30C3;&#x30AF;</a></li><li><a href="#upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;">6.4. upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;</a></li></ul></ul></div><a href="#01__Tips" id="goTop"><i class="fa fa-arrow-up"></i></a>
                                 
                                 </section>
                             
@@ -1792,7 +1792,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":false,"label":{"ja":"この記事の目次"},"maxDepth":3,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-10-22T16:42:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:48:16.992Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["navigator","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"navigator":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-10-24T11:54:43.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:57:44.239Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1800,18 +1800,6 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>

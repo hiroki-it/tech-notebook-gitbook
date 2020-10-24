@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-navigator/plugin.css">
                 
             
                 
@@ -1341,21 +1341,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="terraform">Terraform</h1>
-<h2 id="01-&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;">01. &#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;</h2>
-<h4 id="&#x30FB;validate&#xFF1A;">&#x30FB;<code>validate</code>&#xFF1A;</h4>
+                                <h1 id="Terraform">Terraform</h1>
+<h2 id="01__&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;">1. 01. &#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;</h2>
+<h4 id="&#x30FB;validate&#xFF1A;">1.0.1. &#x30FB;validate&#xFF1A;</h4>
 <p>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x691C;&#x8A3C;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform validate
 
 Success! The configuration is valid.
 </code></pre>
-<h4 id="&#x30FB;fmt&#xFF1A;">&#x30FB;<code>fmt</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;fmt&#xFF1A;">1.0.2. &#x30FB;fmt&#xFF1A;</h4>
 <p>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x3092;&#x63C3;&#x3048;&#x308B;&#xFF0E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3063;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform fmt
 
 main.tf
 </code></pre>
-<h4 id="&#x30FB;import&#xFF1A;">&#x30FB;<code>import</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;import&#xFF1A;">1.0.3. &#x30FB;import&#xFF1A;</h4>
 <p>terraform&#x306B;&#x3088;&#x308B;&#x69CB;&#x7BC9;&#x3067;&#x306F;&#x306A;&#x3044;&#x65B9;&#x6CD5;&#x3067;&#xFF0C;&#x3059;&#x3067;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x4E0A;&#x306B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x308C;&#x3092;terraform&#x306E;&#x7BA1;&#x7406;&#x4E0B;&#x306B;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform import -var-file=config.tfvars {&#x30EA;&#x30BD;&#x30FC;&#x30B9;}.{&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;} {AWS&#x4E0A;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;}
 </code></pre>
@@ -1372,11 +1372,11 @@ main.tf
 <p>&#xFF08;&#x30A8;&#x30E9;&#x30FC;&#x4F8B;2&#xFF09;</p>
 <pre><code class="lang-bash">Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name <span class="hljs-string">&apos;tech-notebook_www&apos;</span> already exists <span class="hljs-keyword">in</span> the registry with id <span class="hljs-string">&apos;XXXXXXXXXXXX&apos;</span>
 </code></pre>
-<h4 id="&#x30FB;refresh&#xFF1A;">&#x30FB;<code>refresh</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;refresh&#xFF1A;">1.0.4. &#x30FB;refresh&#xFF1A;</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x53CD;&#x6620;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform refresh -var-file=config.tfvars
 </code></pre>
-<h4 id="&#x30FB;plan&#xFF1A;">&#x30FB;<code>plan</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;plan&#xFF1A;">1.0.5. &#x30FB;plan&#xFF1A;</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x53CD;&#x6620;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A18;&#x8FF0;&#x3068;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#xFF0C;<code>variable</code>&#x3067;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x5909;&#x6570;&#x306B;&#xFF0C;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform plan -var-file=XXX.tfvars
 </code></pre>
@@ -1390,14 +1390,14 @@ actions need to be performed.
 <p>&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;<code>-refresh=true</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308C;&#x3070;&#xFF0C;<code>refresh</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x540C;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform plan -var-file=XXX.tfvars -refresh=<span class="hljs-literal">true</span>
 </code></pre>
-<h4 id="&#x30FB;apply&#xFF1A;">&#x30FB;<code>apply</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;apply&#xFF1A;">1.0.6. &#x30FB;apply&#xFF1A;</h4>
 <p>AWS&#x4E0A;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform apply -var-file XXX.tfvars
 </code></pre>
 <p>&#x6210;&#x529F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">Apply complete! Resources: X added, 0 changed, 0 destroyed.
 </code></pre>
-<h4 id="&#x30FB;state-list&#xFF1A;">&#x30FB;<code>state list</code>&#xFF1A;</h4>
+<h4 id="&#x30FB;state_list&#xFF1A;">1.0.7. &#x30FB;state list&#xFF1A;</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ terraform state list
 </code></pre>
@@ -1421,11 +1421,11 @@ module.vpc_module.aws_subnet.subnet_public_1c
 module.vpc_module.aws_vpc.vpc
 </code></pre>
 <p><br></p>
-<h3 id="01-02-tips">01-02. Tips</h3>
-<h4 id="&#x30FB;ecs&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;">&#x30FB;ECS&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;</h4>
+<h3 id="01-02__Tips">1.1. 01-02. Tips</h3>
+<h4 id="&#x30FB;ECS&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;">1.1.1. &#x30FB;ECS&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;</h4>
 <p>Terraform&#x3067;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x73FE;&#x5728;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308B;ECS&#x3067;&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x306E;&#x300C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x300D;&#x3068;&#x540C;&#x3058;&#x6319;&#x52D5;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x5897;&#x3048;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x4E00;&#x89A7;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B21;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h2 id="02-&#x74B0;&#x5883;&#x5909;&#x6570;">02. &#x74B0;&#x5883;&#x5909;&#x6570;</h2>
+<h2 id="02__&#x74B0;&#x5883;&#x5909;&#x6570;">2. 02. &#x74B0;&#x5883;&#x5909;&#x6570;</h2>
 <p>&#x5B9F;&#x884C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5165;&#x529B;&#x3057;&#x305F;&#x3044;&#x5024;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x5404;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x9593;&#x3067;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x304C;&#x540C;&#x3058;&#x305F;&#x3081;&#xFF0C;VPC&#x306E;&#x307F;&#x4F8B;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-tf">#======
@@ -1433,7 +1433,7 @@ module.vpc_module.aws_vpc.vpc
 #======
 vpc_cidr_block = &quot;n.n.n.n/n&quot; // IPv4&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x7BC4;&#x56F2;
 </code></pre>
-<h3 id="variable">variable</h3>
+<h3 id="variable">2.1. variable</h3>
 <p>&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5909;&#x6570;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-tf">#=============
@@ -1444,8 +1444,8 @@ variable &quot;credential&quot; {
   type = map(string)
 }
 </code></pre>
-<h2 id="03-root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">03. Root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
-<h3 id="provider">provider</h3>
+<h2 id="03__Root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">3. 03. Root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
+<h3 id="provider">3.1. provider</h3>
 <p>AWS&#x306E;&#x4ED6;&#xFF0C;GCP&#x306A;&#x3069;&#x306E;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x306E;&#x8A8D;&#x8A3C;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-tf">provider &quot;aws&quot; {
@@ -1455,7 +1455,7 @@ variable &quot;credential&quot; {
   version    = &quot;~2.7&quot; // &#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5909;&#x66F4;&#x6642;&#x306F; init&#x3092;&#x5B9F;&#x884C;
 }
 </code></pre>
-<h3 id="module">module</h3>
+<h3 id="module">3.2. module</h3>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#xFF0C;&#x5909;&#x6570;&#x3092;&#x6E21;&#x3059;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>ALB&#x306E;&#x5834;&#x5408;</p>
@@ -1481,8 +1481,8 @@ module &quot;alb_module&quot; {
   ssl_policy            = var.ssl_policy
 }
 </code></pre>
-<h2 id="04-&#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">04. &#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
-<h3 id="resource">resource</h3>
+<h2 id="04__&#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">4. 04. &#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
+<h3 id="resource">4.1. resource</h3>
 <p>aws-cli&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>ALB&#x306E;&#x5834;&#x5408;</p>
@@ -1496,7 +1496,7 @@ resource &quot;aws_lb&quot; &quot;alb&quot; {
   subnets            = [var.subnet_public_1a_id, var.subnet_public_1c_id]
 }
 </code></pre>
-<h3 id="data-resource">data resource</h3>
+<h3 id="data_resource">4.2. data resource</h3>
 <pre><code class="lang-data```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304B;&#x3089;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x65B9;&#x304C;&#x5206;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#xFF0E;">
 #### &#x30FB;Role
 
@@ -1508,7 +1508,7 @@ data &quot;aws_iam_role&quot; &quot;ecs_task_execution_role&quot; {
   name = &quot;xxxxxECSTaskExecutionRole&quot;
 }
 </code></pre>
-<h4 id="&#x30FB;ami">&#x30FB;AMI</h4>
+<h4 id="&#x30FB;AMI">4.2.1. &#x30FB;AMI</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x3000;AMI&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x4E0A;&#x3067;&#xFF0C;AWS&#x304B;&#x3089;&#x7279;&#x5B9A;&#x306E;AMI&#x306E;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-tf">#==============
@@ -1544,9 +1544,9 @@ data &quot;aws_ami&quot; &quot;amazon_linux_2&quot; {
   }
 }
 </code></pre>
-<h3 id="output">output</h3>
+<h3 id="output">4.3. output</h3>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3067;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x3082;&#x3064;&#x7279;&#x5B9A;&#x306E;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;alb">&#x30FB;ALB</h4>
+<h4 id="&#x30FB;ALB">4.3.1. &#x30FB;ALB</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>ALB&#x306E;&#x5834;&#x5408;</p>
 <pre><code class="lang-tf">#====================
@@ -1579,10 +1579,10 @@ output &quot;alb_listener_green_arn&quot; {
   value = aws_lb_listener.lb_listener_green.arn
 }
 </code></pre>
-<h2 id="05-&#x30E1;&#x30BF;&#x5F15;&#x6570;">05. &#x30E1;&#x30BF;&#x5F15;&#x6570;</h2>
-<h3 id="&#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;">&#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;</h3>
+<h2 id="05__&#x30E1;&#x30BF;&#x5F15;&#x6570;">5. 05. &#x30E1;&#x30BF;&#x5F15;&#x6570;</h2>
+<h3 id="&#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;">5.1. &#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;</h3>
 <p>&#x5168;&#x3066;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<h3 id="dependson"><code>depends_on</code></h3>
+<h3 id="depends_on">5.2. depends_on</h3>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x5F8C;&#x306B;&#x69CB;&#x7BC9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <pre><code class="lang-tf">resource &quot;aws_iam_role_policy&quot; &quot;example&quot; {
   name   = &quot;example&quot;
@@ -1605,7 +1605,7 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
   ]
 }
 </code></pre>
-<h3 id="count"><code>count</code></h3>
+<h3 id="count">5.3. count</h3>
 <pre><code class="lang-tf">resource &quot;aws_instance&quot; &quot;server&quot; {
   count = 4 # create four similar EC2 instances
 
@@ -1617,9 +1617,9 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
   }
 }
 </code></pre>
-<h3 id="foreach"><code>for_each</code></h3>
-<h3 id="lifecycle"><code>lifecycle</code></h3>
-<h4 id="&#x30FB;createbeforedestroy">&#x30FB;<code>create_before_destroy</code></h4>
+<h3 id="for_each">5.4. for_each</h3>
+<h3 id="lifecycle">5.5. lifecycle</h3>
+<h4 id="&#x30FB;create_before_destroy">5.5.1. &#x30FB;create_before_destroy</h4>
 <pre><code class="lang-tf">resource &quot;azurerm_resource_group&quot; &quot;example&quot; {
 
   lifecycle {
@@ -1627,7 +1627,7 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
   }
 }
 </code></pre>
-<h4 id="&#x30FB;ignorechanges">&#x30FB;<code>ignore_changes</code></h4>
+<h4 id="&#x30FB;ignore_changes">5.5.2. &#x30FB;ignore_changes</h4>
 <p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x5185;&#x3067;&#x5909;&#x66F4;&#x3092;&#x7121;&#x8996;&#x3059;&#x308B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-tf">resource &quot;aws_instance&quot; &quot;example&quot; {
 
@@ -1653,12 +1653,12 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
     ignore_changes = all
 }
 </code></pre>
-<h2 id="06-&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;">06. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;</h2>
-<h3 id="iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;json">IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON</h3>
+<h2 id="06__&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;">6. 06. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;</h2>
+<h3 id="IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON">6.1. IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON</h3>
 <pre><code>// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
-</code></pre><h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;json">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON</h3>
+</code></pre><h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON">6.2. &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON</h3>
 <pre><code>// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
-</code></pre>
+</code></pre><div id="anchors-navbar"><i class="fa fa-anchor"></i><ul><p><a href="#Terraform">Terraform</a></p><li><a href="#01__&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;">1. 01. &#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;</a></li><ul><li><a href="#">none</a></li><ul><li><a href="#&#x30FB;validate&#xFF1A;">1.0.1. &#x30FB;validate&#xFF1A;</a></li><li><a href="#&#x30FB;fmt&#xFF1A;">1.0.2. &#x30FB;fmt&#xFF1A;</a></li><li><a href="#&#x30FB;import&#xFF1A;">1.0.3. &#x30FB;import&#xFF1A;</a></li><li><a href="#&#x30FB;refresh&#xFF1A;">1.0.4. &#x30FB;refresh&#xFF1A;</a></li><li><a href="#&#x30FB;plan&#xFF1A;">1.0.5. &#x30FB;plan&#xFF1A;</a></li><li><a href="#&#x30FB;apply&#xFF1A;">1.0.6. &#x30FB;apply&#xFF1A;</a></li><li><a href="#&#x30FB;state_list&#xFF1A;">1.0.7. &#x30FB;state list&#xFF1A;</a></li></ul><li><a href="#01-02__Tips">1.1. 01-02. Tips</a></li><ul><li><a href="#&#x30FB;ECS&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;">1.1.1. &#x30FB;ECS&#x30BF;&#x30B9;&#x30AF;&#x7A3C;&#x50CD;&#x4E2D;&#x306B;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF1F;</a></li></ul></ul><li><a href="#02__&#x74B0;&#x5883;&#x5909;&#x6570;">2. 02. &#x74B0;&#x5883;&#x5909;&#x6570;</a></li><ul><li><a href="#variable">2.1. variable</a></li></ul><li><a href="#03__Root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">3. 03. Root&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</a></li><ul><li><a href="#provider">3.1. provider</a></li><li><a href="#module">3.2. module</a></li></ul><li><a href="#04__&#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">4. 04. &#x5404;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</a></li><ul><li><a href="#resource">4.1. resource</a></li><li><a href="#data_resource">4.2. data resource</a></li><ul><li><a href="#&#x30FB;AMI">4.2.1. &#x30FB;AMI</a></li></ul><li><a href="#output">4.3. output</a></li><ul><li><a href="#&#x30FB;ALB">4.3.1. &#x30FB;ALB</a></li></ul></ul><li><a href="#05__&#x30E1;&#x30BF;&#x5F15;&#x6570;">5. 05. &#x30E1;&#x30BF;&#x5F15;&#x6570;</a></li><ul><li><a href="#&#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;">5.1. &#x30E1;&#x30BF;&#x5F15;&#x6570;&#x3068;&#x306F;</a></li><li><a href="#depends_on">5.2. depends_on</a></li><li><a href="#count">5.3. count</a></li><li><a href="#for_each">5.4. for_each</a></li><li><a href="#lifecycle">5.5. lifecycle</a></li><ul><li><a href="#&#x30FB;create_before_destroy">5.5.1. &#x30FB;create_before_destroy</a></li><li><a href="#&#x30FB;ignore_changes">5.5.2. &#x30FB;ignore_changes</a></li></ul></ul><li><a href="#06__&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;">6. 06. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;</a></li><ul><li><a href="#IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON">6.1. IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON</a></li><li><a href="#&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON">6.2. &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON</a></li></ul></ul></div><a href="#01__&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x96C6;" id="goTop"><i class="fa fa-arrow-up"></i></a>
                                 
                                 </section>
                             
@@ -1693,7 +1693,7 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":false,"label":{"ja":"この記事の目次"},"maxDepth":3,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-10-22T16:42:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:48:16.992Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["navigator","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"navigator":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-10-24T11:54:43.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:57:44.239Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1701,18 +1701,6 @@ resource &quot;aws_instance&quot; &quot;example&quot; {
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>

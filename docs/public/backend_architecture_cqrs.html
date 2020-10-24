@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-navigator/plugin.css">
                 
             
                 
@@ -1343,13 +1343,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cqrs&#x8A2D;&#x8A08;">CQRS&#x8A2D;&#x8A08;</h1>
-<h2 id="01-cqrs&#x8A2D;&#x8A08;&#xFF1A;command-query-responsibility-segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;">01. CQRS&#x8A2D;&#x8A08;&#xFF1A;Command Query Responsibility Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;</h2>
-<h3 id="cqrs&#x8A2D;&#x8A08;&#x3068;&#x306F;">CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;</h3>
+                                <h1 id="CQRS&#x8A2D;&#x8A08;">CQRS&#x8A2D;&#x8A08;</h1>
+<h2 id="01__CQRS&#x8A2D;&#x8A08;&#xFF1A;Command_Query_Responsibility_Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;">1. 01. CQRS&#x8A2D;&#x8A08;&#xFF1A;Command Query Responsibility Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;</h2>
+<h3 id="CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;">1.1. CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;</h3>
 <p>DB&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x51E6;&#x7406;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3068;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x306B;&#x5206;&#x96E2;&#x3059;&#x308B;&#x8A2D;&#x8A08;&#x306E;&#x3053;&#x3068;&#xFF0E;DDD&#x306B;&#x90E8;&#x5206;&#x7684;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>N+&#xFF11;</code>&#x554F;&#x984C;&#x306B;&#x3082;&#xFF0C;&#x5BFE;&#x51E6;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DDD&#x306B;CQRS&#x3092;&#x7D44;&#x307F;&#x8FBC;&#x3080;.png" alt="DDD&#x306B;CQRS&#x3092;&#x7D44;&#x307F;&#x8FBC;&#x3080;"></p>
 <p><br></p>
-<h3 id="command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;">Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;</h3>
+<h3 id="Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;">1.2. Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;</h3>
 <p>&#x5177;&#x4F53;&#x7684;&#x306B;&#x306F;&#xFF0C;DB&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;Create&#xFF0C;Read&#xFF0C;Delete&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x6307;&#x3059;&#xFF0E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x3092;&#x7D4C;&#x7531;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x69CB;&#x6210;&#x3055;&#x308C;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F;&#xFF0C;&#x96C6;&#x7D04;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <ol>
 <li>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x3068;Domain&#x5C64;&#x3092;&#x7D4C;&#x7531;&#x3057;&#xFF0C;Infrastracture&#x5C64;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7528;Repository&#x3067;Domain&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x52A0;&#x5473;&#x3057;&#x305F;SELECT&#x6587;&#x3092;&#x4F5C;&#x308B;&#xFF0E;</li>
@@ -1358,7 +1358,7 @@
 <li>&#x96C6;&#x7D04;&#x3092;&#x5206;&#x89E3;&#x3057;&#xFF0C;DB&#x3078;&#x65B0;&#x3057;&#x3044;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;</li>
 </ol>
 <p><br></p>
-<h3 id="query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;">Query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;</h3>
+<h3 id="Query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;">1.3. Query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;</h3>
 <p>&#x5177;&#x4F53;&#x7684;&#x306B;&#x306F;&#xFF0C;DB&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;Read&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x6307;&#x3059;&#xFF0E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#x3092;&#x7D4C;&#x7531;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x69CB;&#x6210;&#x3055;&#x308C;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F;&#xFF0C;&#x96C6;&#x7D04;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;DTO&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <ol>
 <li>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x3092;&#x7D4C;&#x7531;&#x3057;&#xFF08;Domain&#x5C64;&#x306F;&#x7D4C;&#x7531;&#x3057;&#x306A;&#x3044;&#xFF09;&#xFF0C;Infrastructure&#x5C64;&#x306E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x7528;&#x306E;Repository&#x3067;Domain&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3068;&#x306F;&#x7121;&#x95A2;&#x4FC2;&#x306E;SELECT&#x6587;&#x3092;&#x4F5C;&#x308B;&#xFF0E;</li>
@@ -1366,7 +1366,7 @@
 <li>&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x305F;DTO&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;</li>
 <li>DTO&#x306F;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x3092;&#x7D4C;&#x7531;&#x3057;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 </ol>
-
+<div id="anchors-navbar"><i class="fa fa-anchor"></i><ul><p><a href="#CQRS&#x8A2D;&#x8A08;">CQRS&#x8A2D;&#x8A08;</a></p><li><a href="#01__CQRS&#x8A2D;&#x8A08;&#xFF1A;Command_Query_Responsibility_Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;">1. 01. CQRS&#x8A2D;&#x8A08;&#xFF1A;Command Query Responsibility Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;</a></li><ul><li><a href="#CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;">1.1. CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;</a></li><li><a href="#Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;">1.2. Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;</a></li><li><a href="#Query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;">1.3. Query&#xFF08;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF09;</a></li></ul></ul></div><a href="#01__CQRS&#x8A2D;&#x8A08;&#xFF1A;Command_Query_Responsibility_Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;" id="goTop"><i class="fa fa-arrow-up"></i></a>
                                 
                                 </section>
                             
@@ -1405,7 +1405,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CQRS設計","level":"1.7.2","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.8","depth":1,"ref":"","articles":[{"title":"認証と認可","level":"1.8.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"JSON","level":"1.8.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]}]},"previous":{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":false,"label":{"ja":"この記事の目次"},"maxDepth":3,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_cqrs.md","mtime":"2020-10-22T02:43:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:48:16.992Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CQRS設計","level":"1.7.2","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.8","depth":1,"ref":"","articles":[{"title":"認証と認可","level":"1.8.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"JSON","level":"1.8.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]}]},"previous":{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},"dir":"ltr"},"config":{"plugins":["navigator","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"navigator":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_cqrs.md","mtime":"2020-10-24T11:54:43.439Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:57:44.239Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1413,18 +1413,6 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
