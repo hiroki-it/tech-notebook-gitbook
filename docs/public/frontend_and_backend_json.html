@@ -1374,9 +1374,9 @@
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-javascript"><span class="hljs-comment">// &#x3069;&#x3093;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x542B;&#x3080;JSON&#x306A;&#x306E;&#x304B;&#x308F;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x65B9;&#x6CD5;</span>
 <span class="hljs-keyword">const</span> json = {
-    name: <span class="hljs-literal">null</span>,
-    age: <span class="hljs-literal">null</span>,
-    tel: <span class="hljs-literal">null</span>
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-string">&quot;tel&quot;</span>: <span class="hljs-literal">null</span>
 }
 
 json.name = <span class="hljs-string">&quot;taro&quot;</span>;
@@ -1394,9 +1394,9 @@ json.prefecture = <span class="hljs-string">&quot;Tokyo&quot;</span>;
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> json = {
-    name: <span class="hljs-string">&quot;taro&quot;</span>,
-    age: <span class="hljs-number">30</span>,
-    tel: <span class="hljs-string">&quot;090-0123-4567&quot;</span>
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;taro&quot;</span>,
+    <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-string">&quot;tel&quot;</span>: <span class="hljs-string">&quot;090-0123-4567&quot;</span>
 }
 
 <span class="hljs-comment">// area&#x3068;&#x3044;&#x3046;&#x30AD;&#x30FC;&#x540D;&#x306E;&#x5024;&#x3092;&#x8FFD;&#x52A0;</span>
@@ -1416,20 +1416,22 @@ json.prefecture = <span class="hljs-string">&quot;Tokyo&quot;</span>;
 <h4 id="&#x30FB;JavaScript&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">2.2.1. &#x30FB;JavaScript&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
 <p>PHP&#x3067;&#x3044;&#x3046;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x540C;&#x3058;&#x3088;&#x3046;&#x306A;&#x5F62;&#x3092;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30AD;&#x30FC;&#x540D;&#x306F;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x56F2;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x7121;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x30AF;&#x30E9;&#x30B9;&#x5BA3;&#x8A00;&#xFF0E;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> object = {
     fruit: [<span class="hljs-string">&quot;&#x3070;&#x306A;&#x306A;&quot;</span>, <span class="hljs-string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span>];
     account: <span class="hljs-number">200</span>;
 }
-
-<span class="hljs-comment">// &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;  </span>
-<span class="hljs-built_in">module</span>.exports = Example;
+</code></pre>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{
+    <span class="hljs-keyword">constructor</span>(x, y) {
+        <span class="hljs-keyword">this</span>.fruit = x
+        <span class="hljs-keyword">this</span>.account = y    
+    }
+}
 </code></pre>
 <h4 id="&#x30FB;JSON&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">2.2.2. &#x30FB;JSON&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6587;&#x5B57;&#x5217;&#x306E;&#x307F;&#xFF0C;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x56F2;&#x3046;&#xFF0E;&#x30AD;&#x30FC;&#x540D;&#x3082;&#x5024;&#x3082;&#xFF0C;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x56F2;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x7121;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-json"><span class="hljs-comment">// &#x4E00;&#x756A;&#x5916;&#x5074;&#x3092;&#x6CE2;&#x62EC;&#x5F27;&#x3067;&#x56F2;&#x3046;&#xFF0E;</span>
-{
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> json = {
   <span class="hljs-string">&quot;Example&quot;</span>: {
     <span class="hljs-string">&quot;fruit&quot;</span>: [<span class="hljs-string">&quot;&#x3070;&#x306A;&#x306A;&quot;</span>, <span class="hljs-string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span>],
     <span class="hljs-string">&quot;account&quot;</span>: <span class="hljs-number">200</span>
@@ -1439,6 +1441,7 @@ json.prefecture = <span class="hljs-string">&quot;Tokyo&quot;</span>;
 <h4 id="&#x30FB;PHP&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">2.2.3. &#x30FB;PHP&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
 </span>{
     <span class="hljs-keyword">private</span> $fruit;
@@ -1546,7 +1549,7 @@ json.prefecture = <span class="hljs-string">&quot;Tokyo&quot;</span>;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JSON","level":"1.8.2","depth":2,"next":{"title":"JS｜プロトタイプベースオブジェクト指向","level":"1.9","depth":1,"ref":"","articles":[{"title":"プロトタイプベースのプログラミング（1）","level":"1.9.1","depth":2,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},{"title":"プロトタイプベースのプログラミング（2）","level":"1.9.2","depth":2,"path":"public/frontend_object_orientation_method_data.md","ref":"public/frontend_object_orientation_method_data.md","articles":[]}]},"previous":{"title":"認証と認可","level":"1.8.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},"dir":"ltr"},"config":{"plugins":["navigator","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"navigator":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_and_backend_json.md","mtime":"2020-10-24T11:54:43.462Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-24T11:57:44.239Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JSON","level":"1.8.2","depth":2,"next":{"title":"JS｜プロトタイプベースオブジェクト指向","level":"1.9","depth":1,"ref":"","articles":[{"title":"プロトタイプベースのプログラミング（1）","level":"1.9.1","depth":2,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},{"title":"プロトタイプベースのプログラミング（2）","level":"1.9.2","depth":2,"path":"public/frontend_object_orientation_method_data.md","ref":"public/frontend_object_orientation_method_data.md","articles":[]}]},"previous":{"title":"認証と認可","level":"1.8.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},"dir":"ltr"},"config":{"plugins":["navigator","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"navigator":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_and_backend_json.md","mtime":"2020-10-26T19:00:50.245Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-26T19:09:33.340Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
