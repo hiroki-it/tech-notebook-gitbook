@@ -1412,7 +1412,7 @@ main.tf
 <h3 id="plan">plan</h3>
 <h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x53CD;&#x6620;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A18;&#x8FF0;&#x3068;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#xFF0C;<code>variable</code>&#x3067;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x5909;&#x6570;&#x306B;&#xFF0C;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash">$ terraform plan -var-file=XXX.tfvars
+<pre><code class="lang-bash">$ terraform plan -var-file=config.tfvars
 </code></pre>
 <p>&#x5DEE;&#x5206;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">No changes. Infrastructure is up-to-date.
@@ -1424,13 +1424,13 @@ actions need to be performed.
 <h4 id="&#x30FB;-refresh">&#x30FB;-refresh</h4>
 <pre><code class="lang--refresh=true```&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308C;&#x3070;&#xFF0C;```refresh```&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x540C;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;">
 ```bash
-$ terraform plan -var-file=XXX.tfvars -refresh=true
+$ terraform plan -var-file=config.tfvars -refresh=true
 </code></pre>
 <p><br></p>
 <h3 id="apply">apply</h3>
 <h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>AWS&#x4E0A;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash">$ terraform apply -var-file XXX.tfvars
+<pre><code class="lang-bash">$ terraform apply -var-file config.tfvars
 </code></pre>
 <p>&#x6210;&#x529F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">Apply complete! Resources: X added, 0 changed, 0 destroyed.
@@ -1797,10 +1797,10 @@ resource &quot;aws_iam_user&quot; &quot;users&quot; {
 }
 </code></pre>
 <p><br></p>
-<h2 id="06-&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;">06. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x306E;&#x5207;&#x308A;&#x51FA;&#x3057;</h2>
-<h3 id="iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;json">IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;JSON</h3>
+<h2 id="06-json&#x306E;&#x5B9F;&#x88C5;">06. JSON&#x306E;&#x5B9F;&#x88C5;</h2>
+<h3 id="iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;">IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h3>
 <pre><code>// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
-</code></pre><h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;json">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;JSON</h3>
+</code></pre><h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;</h3>
 <pre><code>// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
 </code></pre><p><br></p>
 <h2 id="07-&#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;">07. &#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;</h2>
@@ -1826,7 +1826,18 @@ resource &quot;aws_iam_user&quot; &quot;users&quot; {
 &#x251C;&#x2500;&#x2500; main.tf
 &#x251C;&#x2500;&#x2500; outputs.tf
 &#x2514;&#x2500;&#x2500; variables.tf
-</code></pre><h3 id="&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;">&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;</h3>
+</code></pre><p><br></p>
+<h3 id="&#x5909;&#x6570;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;">&#x5909;&#x6570;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;</h3>
+<h4 id="&#x30FB;&#x5358;&#x6570;&#x5F62;&#x3068;&#x8907;&#x6570;&#x5F62;&#x306E;&#x547D;&#x540D;&#x5206;&#x3051;">&#x30FB;&#x5358;&#x6570;&#x5F62;&#x3068;&#x8907;&#x6570;&#x5F62;&#x306E;&#x547D;&#x540D;&#x5206;&#x3051;</h4>
+<p>&#x8907;&#x6570;&#x306E;&#x5024;&#x3092;&#x3082;&#x3064;list&#x578B;&#x306E;&#x5909;&#x6570;&#x3067;&#x3042;&#x308C;&#x3070;&#x8907;&#x6570;&#x5F62;&#x3067;&#x547D;&#x540D;&#x3059;&#x308B;&#xFF0E;&#x4E00;&#x65B9;&#x3067;&#xFF0C;string&#x578B;&#x306A;&#x3069;&#x5024;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3051;&#x308C;&#x3070;&#x5358;&#x6570;&#x5F62;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">vpc_availability_zones             = [&quot;a&quot;, &quot;c&quot;]
+vpc_cidr                           = &quot;n.n.n.n/23&quot;
+vpc_subnet_private_datastore_cidrs = [&quot;n.n.n.n/27&quot;, &quot;n.n.n.n/27&quot;]
+vpc_subnet_private_app_cidrs       = [&quot;n.n.n.n/25&quot;, &quot;n.n.n.n/25&quot;]
+vpc_subnet_public_cidrs            = [&quot;n.n.n.n/27&quot;, &quot;n.n.n.n/27&quot;]
+</code></pre>
+<p><br></p>
+<h3 id="&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;">&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;</h3>
 <h4 id="&#x30FB;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3055;&#x306A;&#x3044;">&#x30FB;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3055;&#x306A;&#x3044;</h4>
 <p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3055;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -1870,13 +1881,11 @@ resource &quot;aws_route_table&quot; &quot;private&quot; {}
   }
 }
 </code></pre>
-<h4 id="&#x30FB;output&#x306E;&#x547D;&#x540D;">&#x30FB;output&#x306E;&#x547D;&#x540D;</h4>
-<p>&#x8FD4;&#x5374;&#x5024;&#x304C;&#x5206;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x3088;&#x3046;&#x306B;&#x547D;&#x540D;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x306E;&#xFF0C;<code>this</code>,<code>public</code>&#xFF0C;<code>private</code>&#x3092;&#x540D;&#x524D;&#x306B;&#x5165;&#x308C;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;">&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x306E;&#x547D;&#x540D;&#x898F;&#x5247;</h3>
+<h4 id="&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x308F;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x3088;&#x3046;&#x306B;">&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x308F;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x3088;&#x3046;&#x306B;</h4>
+<p>&#x8FD4;&#x5374;&#x5024;&#x304C;&#x5206;&#x304B;&#x308A;&#x3084;&#x3059;&#x3044;&#x3088;&#x3046;&#x306B;&#x547D;&#x540D;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x306B;<code>public</code>&#xFF0C;<code>private</code>&#x3092;&#x540D;&#x524D;&#x306B;&#x5165;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-tf">output &quot;this_nat_gateway_id&quot; {
-  // NATGateway&#x306E;ID&#x3092;&#x8FD4;&#x3059; 
-}
-</code></pre>
 <pre><code class="lang-tf">output &quot;public_subnet_id&quot; {
   // &#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;Subnet&#x306E;ID&#x3092;&#x8FD4;&#x3059; 
 }
@@ -1885,17 +1894,31 @@ output &quot;private_subnet_id&quot; {
   // &#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;Subnet&#x306E;ID&#x3092;&#x8FD4;&#x3059; 
 }
 </code></pre>
+<h4 id="&#x30FB;this">&#x30FB;this</h4>
+<pre><code class="lang-this```&#x306F;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;">
+**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
+
+```tf
+output &quot;this_nat_gateway_id&quot; {
+  // this&#x3068;&#x3044;&#x3046;NATGateway&#x306E;ID&#x3092;&#x8FD4;&#x3059; 
+}
+
+output &quot;nat_gateway_id&quot; {
+  // this&#x3068;&#x3044;&#x3046;NATGateway&#x306E;ID&#x3092;&#x8FD4;&#x3059; 
+}
+</code></pre>
 <p><br></p>
 <h3 id="iam">IAM</h3>
 <h4 id="&#x30FB;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#x306E;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;">&#x30FB;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#x306E;&#x7BA1;&#x7406;&#x65B9;&#x6CD5;</h4>
 <p>&#x4F8B;&#x3048;&#xFF0C;<code>.gitignore</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x3092;&#x7BA1;&#x7406;&#x3057;&#x3066;&#x3044;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x8AA4;&#x3063;&#x3066;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;&#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code>provider &quot;aws&quot; {
+<pre><code class="lang-tf">provider &quot;aws&quot; {
   region     = &quot;&lt;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&gt;&quot;
   access_key = &quot;&lt;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;&gt;&quot;
   secret_key = &quot;&lt;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30AD;&#x30FC;&gt;&quot;
 }
-</code></pre><p>&#x63A8;&#x5968;&#x306E;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#xFF0C;AWS&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#x306F;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+</code></pre>
+<p>&#x63A8;&#x5968;&#x306E;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#xFF0C;AWS&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#x306F;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-tf">provider &quot;aws&quot; {
  region = &quot;&lt;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&gt;&quot;
@@ -1945,7 +1968,7 @@ aws_secret_access_key = &lt;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-11-03T18:43:21.308Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-08T09:23:19.751Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-11-08T18:44:05.374Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-08T18:45:08.462Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
