@@ -2828,6 +2828,39 @@ SELECT * FROM users;
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;dns&#x540D;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#xFF0C;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x540D;">&#x30FB;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#xFF0C;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x540D;</h4>
+<p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#x6C7A;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7A2E;&#x5225;</th>
+<th>&#x30EA;&#x30BD;&#x30FC;&#x30B9;</th>
+<th>&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS&#x540D;</td>
+<td>ALB</td>
+<td><code>&lt;ALB&#x540D;&gt;-&lt;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&gt;.&lt;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&gt;.elb.amazonaws.com</code></td>
+</tr>
+<tr>
+<td></td>
+<td>EC2</td>
+<td><code>ec2-&lt;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x3092;&#x30CF;&#x30A4;&#x30D5;&#x30F3;&#x533A;&#x5207;&#x308A;&#x306B;&#x3057;&#x305F;&#x3082;&#x306E;&gt;.&lt;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&gt;.compute.amazonaws.com</code></td>
+</tr>
+<tr>
+<td>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;</td>
+<td>CloudFront</td>
+<td><code>&lt;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&gt;.cloudfront.net</code></td>
+</tr>
+<tr>
+<td>&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x540D;</td>
+<td>S3</td>
+<td><code>&lt;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;.&lt;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&gt;.amazonaws.com</code></td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x30FB;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30BF;&#x30A4;&#x30D7;&#x306E;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;">&#x30FB;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30BF;&#x30A4;&#x30D7;&#x306E;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/URL&#x3068;&#x96FB;&#x5B50;&#x30E1;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x9020;.png" alt="URL&#x3068;&#x96FB;&#x5B50;&#x30E1;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x9020;"></p>
 <table>
@@ -3032,8 +3065,8 @@ SELECT * FROM users;
 <tbody>
 <tr>
 <td>Origin Domain Name</td>
-<td>CloudFront&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-<td>&#x5225;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</td>
+<td>CloudFront&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3084;DNS&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30FB;&#x4F8B;&#x3048;&#x3070;&#xFF0C;S3&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF0C;ALB&#x306E;DNS&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x30FB;&#x5225;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</td>
 </tr>
 <tr>
 <td>Origin Access Identity</td>
@@ -4724,7 +4757,7 @@ aws sts assume-role \
   --query <span class="hljs-string">&quot;Credentials&quot;</span> \
   --output <span class="hljs-string">&quot;json&quot;</span>
 </code></pre>
-<p>STS&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x7D50;&#x679C;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x65B0;&#x3057;&#x3044;IAM&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x60C5;&#x5831;&#x306B;&#x306F;&#x6709;&#x52B9;&#x671F;&#x9650;&#x304C;&#x5B58;&#x5728;&#x3057;&#xFF0C;&#x671F;&#x9650;&#x304C;&#x904E;&#x304E;&#x308B;&#x3068;&#x65B0;&#x3057;&#x3044;IAM&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p>STS&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x7D50;&#x679C;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x65B0;&#x3057;&#x3044;IAM&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x60C5;&#x5831;&#x306B;&#x306F;&#x6709;&#x52B9;&#x79D2;&#x6570;&#x304C;&#x5B58;&#x5728;&#x3057;&#xFF0C;&#x671F;&#x9650;&#x304C;&#x904E;&#x304E;&#x308B;&#x3068;&#x65B0;&#x3057;&#x3044;IAM&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x79D2;&#x6570;&#x306E;&#x6700;&#x5927;&#x5024;&#x306F;&#xFF0C;&#x8A72;&#x5F53;&#x3059;&#x308B;IAM&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x6982;&#x8981;&#x306E;&#x6700;&#x5927;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x6642;&#x9593;&#x304B;&#x3089;&#x5909;&#x66F4;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/AssumeRole.png" alt="AssumeRole"></p>
 <p>&#x53D6;&#x5F97;&#x3055;&#x308C;&#x308B;JSON&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#xFF0E;</p>
 <pre><code class="lang-json">{
@@ -4739,6 +4772,9 @@ aws sts assume-role \
     <span class="hljs-string">&quot;AccessKeyId&quot;</span>: <span class="hljs-string">&quot;&lt;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;ID&gt;&quot;</span>
   }
 }
+</code></pre>
+<pre><code class="lang-bash">$ aws s3 ls --profile &lt;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;
+2020-xx-xx xx:xx:xx &lt;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;
 </code></pre>
 <p><br></p>
 <h2 id="13-&#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;">13. &#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;</h2>
@@ -4802,7 +4838,7 @@ aws sts assume-role \
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2020-11-17T17:32:01.761Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-21T10:27:27.768Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2020-11-22T14:52:31.042Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-23T11:34:44.155Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
