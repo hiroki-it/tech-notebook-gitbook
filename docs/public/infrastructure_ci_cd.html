@@ -1873,8 +1873,67 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <span class="hljs-attr">      - attach_workspace:</span>
 <span class="hljs-attr">        at:</span> .
 </code></pre>
+<p><br></p>
+<h2 id="02-04-commands">02-04. commands</h2>
+<h3 id="commands&#x3068;&#x306F;">commands&#x3068;&#x306F;</h3>
+<p>&#x8A2D;&#x5B9A;&#x3092;&#x90E8;&#x54C1;&#x5316;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>job</code>&#x3067;<code>step</code>&#x3068;&#x3057;&#x3066;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;">&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;</h3>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">commands:</span>
+<span class="hljs-attr">  sayhello:</span>
+<span class="hljs-attr">    description:</span> <span class="hljs-string">&quot;Echo hello world&quot;</span>
+<span class="hljs-attr">    parameters:</span>
+<span class="hljs-attr">      text:</span>
+<span class="hljs-attr">        type:</span> string
+<span class="hljs-attr">        default:</span> <span class="hljs-string">&quot;Hello World&quot;</span>
+<span class="hljs-attr">    steps:</span>
+      <span class="hljs-comment"># parameters&#x306E;&#x5024;&#x3092;&#x6E21;&#x3059;</span>
+<span class="hljs-attr">      - run:</span> echo &lt;&lt; parameters.text &gt;<span class="hljs-string">&gt;
+
+</span><span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  myjob:</span>
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> <span class="hljs-string">&quot;circleci/node:9.6.1&quot;</span>
+<span class="hljs-attr">    steps:</span>
+      <span class="hljs-comment"># command&#x540D;</span>
+<span class="hljs-attr">      - sayhello:</span>
+          <span class="hljs-comment"># &#x5F15;&#x6570;&#x540D;: &#x6E21;&#x3059;&#x5024;</span>
+<span class="hljs-attr">          text:</span> <span class="hljs-string">&quot;Lev&quot;</span>
+</code></pre>
+<p><br></p>
+<h2 id="02-05-executors">02-05. executors</h2>
+<h3 id="executors&#x3068;&#x306F;">executors&#x3068;&#x306F;</h3>
+<p>&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x3092;&#x90E8;&#x54C1;&#x5316;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>job</code>&#x3067;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;">&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;</h3>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">executors:</span>
+  <span class="hljs-comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;&#x540D;</span>
+<span class="hljs-attr">  my-executor:</span>
+    <span class="hljs-comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;</span>
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> circleci/ruby:<span class="hljs-number">2.5</span><span class="hljs-number">.1</span>-node-browsers
+<span class="hljs-attr">    working_directory:</span> ~/example_project
+<span class="hljs-attr">    environment:</span>
+<span class="hljs-attr">      XX:</span> xx
+<span class="hljs-attr">      YY:</span> yy
+
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  my-job:</span>
+<span class="hljs-attr">    executor:</span> my-executor
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span> echo <span class="hljs-string">&quot;${XX}&#x3068;${YY}&#x3067;&#x3059;&quot;</span>
+</code></pre>
+<p><br></p>
+<h2 id="02-06-workflow">02-06. Workflow</h2>
+<h3 id="&#x7279;&#x6B8A;&#x306A;steps">&#x7279;&#x6B8A;&#x306A;steps</h3>
 <h4 id="&#x30FB;pre-steps&#xFF0C;post-steps">&#x30FB;pre-steps&#xFF0C;post-steps</h4>
-<p>&#x4E8B;&#x524D;&#x306B;<code>job</code>&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;<code>workspace</code>&#x3067;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;<code>job</code>&#x306E;&#x524D;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x4E8B;&#x524D;&#x306B;<code>job</code>&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;<code>workspace</code>&#x3067;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;<code>job</code>&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x305D;&#x306E;<code>job</code>&#x5185;&#x306E;&#x6700;&#x521D;&#x3068;&#x6700;&#x5F8C;&#x306B;&#xFF0C;<code>steps</code>&#x3092;&#x8FFD;&#x52A0;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
@@ -1923,60 +1982,48 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <span class="hljs-attr">          tag:</span> xxx
 </code></pre>
 <p><br></p>
-<h2 id="02-04-commands">02-04. commands</h2>
-<h3 id="commands&#x3068;&#x306F;">commands&#x3068;&#x306F;</h3>
-<p>&#x8A2D;&#x5B9A;&#x3092;&#x90E8;&#x54C1;&#x5316;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>job</code>&#x3067;<code>step</code>&#x3068;&#x3057;&#x3066;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><br></p>
-<h3 id="&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;">&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;</h3>
+<h3 id="branches">branches</h3>
+<h4 id="&#x30FB;branches&#x3068;&#x306F;">&#x30FB;branches&#x3068;&#x306F;</h4>
+<p>&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;<code>job</code>&#x304C;&#x767A;&#x706B;&#x3059;&#x308B;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&#xFF0C;&#x3042;&#x308B;&#x3044;&#x306F;&#x767A;&#x706B;&#x3057;&#x306A;&#x3044;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&#xFF0C;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3067;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x3088;&#x304F;&#x3042;&#x308B;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/.*/</code></td>
+<td>&#x5168;&#x3066;&#x306E;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x6307;&#x5B9A;</td>
+</tr>
+<tr>
+<td><code>/feature.*/</code></td>
+<td>&#x300C;feature&#x300D;&#x3068;&#x540D;&#x524D;&#x306E;&#x3064;&#x3044;&#x305F;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x6307;&#x5B9A;</td>
+</tr>
+</tbody>
+</table>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
-
-<span class="hljs-attr">commands:</span>
-<span class="hljs-attr">  sayhello:</span>
-<span class="hljs-attr">    description:</span> <span class="hljs-string">&quot;Echo hello world&quot;</span>
-<span class="hljs-attr">    parameters:</span>
-<span class="hljs-attr">      text:</span>
-<span class="hljs-attr">        type:</span> string
-<span class="hljs-attr">        default:</span> <span class="hljs-string">&quot;Hello World&quot;</span>
-<span class="hljs-attr">    steps:</span>
-      <span class="hljs-comment"># parameters&#x306E;&#x5024;&#x3092;&#x6E21;&#x3059;</span>
-<span class="hljs-attr">      - run:</span> echo &lt;&lt; parameters.text &gt;<span class="hljs-string">&gt;
-
-</span><span class="hljs-attr">jobs:</span>
-<span class="hljs-attr">  myjob:</span>
-<span class="hljs-attr">    docker:</span>
-<span class="hljs-attr">      - image:</span> <span class="hljs-string">&quot;circleci/node:9.6.1&quot;</span>
-<span class="hljs-attr">    steps:</span>
-      <span class="hljs-comment"># command&#x540D;</span>
-<span class="hljs-attr">      - sayhello:</span>
-          <span class="hljs-comment"># &#x5F15;&#x6570;&#x540D;: &#x6E21;&#x3059;&#x5024;</span>
-<span class="hljs-attr">          text:</span> <span class="hljs-string">&quot;Lev&quot;</span>
+<pre><code class="lang-yaml"><span class="hljs-attr">workflows:</span>
+<span class="hljs-attr">  version:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">  build:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - example:</span>
+<span class="hljs-attr">          branches:</span>
+<span class="hljs-attr">            only:</span>
+<span class="hljs-bullet">              -</span> /.*/
+</code></pre>
+<pre><code class="lang-yaml"><span class="hljs-attr">workflows:</span>
+<span class="hljs-attr">  version:</span> <span class="hljs-number">2.1</span>
+<span class="hljs-attr">  build:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - example:</span>
+<span class="hljs-attr">          branches:</span>
+<span class="hljs-attr">            ignore:</span>
+<span class="hljs-bullet">              -</span> /feature.*/
 </code></pre>
 <p><br></p>
-<h2 id="02-05-executors">02-05. executors</h2>
-<h3 id="executors&#x3068;&#x306F;">executors&#x3068;&#x306F;</h3>
-<p>&#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x3092;&#x90E8;&#x54C1;&#x5316;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>job</code>&#x3067;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><br></p>
-<h3 id="&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;">&#x90E8;&#x54C1;&#x5316;&#x3068;&#x518D;&#x5229;&#x7528;</h3>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
-
-<span class="hljs-attr">executors:</span>
-  <span class="hljs-comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;&#x540D;</span>
-<span class="hljs-attr">  my-executor:</span>
-    <span class="hljs-comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;</span>
-<span class="hljs-attr">    docker:</span>
-<span class="hljs-attr">      - image:</span> circleci/ruby:<span class="hljs-number">2.5</span><span class="hljs-number">.1</span>-node-browsers
-
-<span class="hljs-attr">jobs:</span>
-<span class="hljs-attr">  my-job:</span>
-<span class="hljs-attr">    executor:</span> my-executor
-<span class="hljs-attr">    steps:</span>
-<span class="hljs-attr">      - run:</span> echo <span class="hljs-string">&quot;Executor &#x306E;&#x5916;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x307E;&#x3057;&#x305F;&quot;</span>
-</code></pre>
-<p><br></p>
-<p><br></p>
-<h2 id="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;">02-06. &#x74B0;&#x5883;&#x5909;&#x6570;</h2>
+<h2 id="02-07-&#x74B0;&#x5883;&#x5909;&#x6570;">02-07. &#x74B0;&#x5883;&#x5909;&#x6570;</h2>
 <h3 id="circleci&#x306B;&#x304A;&#x3051;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x306F;">CircleCI&#x306B;&#x304A;&#x3051;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x306F;</h3>
 <h4 id="&#x30FB;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x7A2E;&#x985E;&#x3068;&#x53C2;&#x7167;&#x7BC4;&#x56F2;">&#x30FB;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x7A2E;&#x985E;&#x3068;&#x53C2;&#x7167;&#x7BC4;&#x56F2;</h4>
 <table>
@@ -2062,7 +2109,7 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <h4 id="&#x30FB;grobal&#x30EC;&#x30D9;&#x30EB;">&#x30FB;Grobal&#x30EC;&#x30D9;&#x30EB;</h4>
 <p>Project&#x30EC;&#x30D9;&#x30EB;&#x3088;&#x308A;&#x53C2;&#x7167;&#x7BC4;&#x56F2;&#x304C;&#x5927;&#x304D;&#x304F;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x30D7;&#x30ED;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#xFF0C;&#x3059;&#x306A;&#x308F;&#x3061;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x9593;&#x3067;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;Contexts&#x6A5F;&#x80FD;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h2 id="02-07-circleci&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">02-07. CircleCI&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="02-08-circleci&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">02-08. CircleCI&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
 <h3 id="orbs">orbs</h3>
 <h4 id="&#x30FB;orbs&#x3068;&#x306F;">&#x30FB;orbs&#x3068;&#x306F;</h4>
 <p>CircleCI&#x304B;&#x3089;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x6C4E;&#x7528;&#x7684;&#x306A;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x4F7F;&#x7528;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</p>
@@ -2388,7 +2435,7 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CircleCI，Capistrano","level":"1.25.1","depth":2,"next":{"title":"ハードウェア","level":"1.26","depth":1,"ref":"","articles":[{"title":"ハードウェア","level":"1.26.1","depth":2,"path":"public/hardware.md","ref":"public/hardware.md","articles":[]},{"title":"組み込み機器","level":"1.26.2","depth":2,"path":"public/hardware_embedded_system.md","ref":"public/hardware_embedded_system.md","articles":[]}]},"previous":{"title":"インフラストラクチャ｜CI/CD","level":"1.25","depth":1,"ref":"","articles":[{"title":"CircleCI，Capistrano","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_ci_cd.md","mtime":"2020-11-23T14:56:33.199Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-25T13:37:03.133Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CircleCI，Capistrano","level":"1.25.1","depth":2,"next":{"title":"ハードウェア","level":"1.26","depth":1,"ref":"","articles":[{"title":"ハードウェア","level":"1.26.1","depth":2,"path":"public/hardware.md","ref":"public/hardware.md","articles":[]},{"title":"組み込み機器","level":"1.26.2","depth":2,"path":"public/hardware_embedded_system.md","ref":"public/hardware_embedded_system.md","articles":[]}]},"previous":{"title":"インフラストラクチャ｜CI/CD","level":"1.25","depth":1,"ref":"","articles":[{"title":"CircleCI，Capistrano","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_ci_cd.md","mtime":"2020-11-26T12:15:25.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-28T12:11:42.250Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
