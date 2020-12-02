@@ -107,33 +107,6 @@ $ . hello.sh
 $ ./hello.sh
 ```
 
-#### ・for
-
-```bash
-#!/bin/bash
- 
-for i in 1 2 3 4 5
-do
-   echo $i
-done
-```
-
-#### ・getopt
-
-```bash
-#! /bin/bash
-
-while getopts :abc OPT
-do
-  case $OPT in
-     a) echo "[-a] が指定された";;
-     b) echo "[-b] が指定された";;
-     c) echo "[-c] が指定された";;
-     *) echo "$OPTARGは定義されていません（OPT=$OPT）";;
-  esac
-done
-```
-
 <br>
 
 ### pipeline
@@ -160,15 +133,6 @@ $ find /* -type f |xargs grep "<検索文字>"
 ```bash
 # フィルタリングされたプロセスを削除する．
 $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
-```
-
-#### ・sortとの組み合わせ
-
-出力結果に対して，並び順を変更する．
-
-```bash
-# 表示された環境変数をAZ昇順に並び替える．
-$ printenv | sort -f
 ```
 
 <br>
@@ -756,17 +720,7 @@ $ history | grep <過去のコマンド>
 
 <br>
 
-### tr
 
-```bash
-#!/bin/bash
-
-cat ./src.txt | tr '\n' ',' > ./dst.txt
-```
-
-#### 
-
-<br>
 
 ## 02-06. 環境変数系
 
