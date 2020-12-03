@@ -1583,23 +1583,23 @@ module.vpc_module.aws_vpc.vpc
 &#x2502;       &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;       &#x251C;&#x2500;&#x2500; output.tf
 &#x2502;       &#x2514;&#x2500;&#x2500; variables.tf
-&#x251C;&#x2500;&#x2500; dev
+&#x251C;&#x2500;&#x2500; feat
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
-&#x2502;   &#x251C;&#x2500;&#x2500; outputs.tf
-&#x2502;   &#x251C;&#x2500;&#x2500; provider.tf
+&#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
+&#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
 &#x251C;&#x2500;&#x2500; prod
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
-&#x2502;   &#x251C;&#x2500;&#x2500; outputs.tf
-&#x2502;   &#x251C;&#x2500;&#x2500; provider.tf
+&#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
+&#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
 &#x2514;&#x2500;&#x2500; stg
     &#x251C;&#x2500;&#x2500; config.tfvars
     &#x251C;&#x2500;&#x2500; main.tf
-    &#x251C;&#x2500;&#x2500; outputs.tf
-    &#x251C;&#x2500;&#x2500; provider.tf
+    &#x251C;&#x2500;&#x2500; providers.tf
+    &#x251C;&#x2500;&#x2500; tfnotify.yml
     &#x2514;&#x2500;&#x2500; variables.tf
 </code></pre><p><br></p>
 <h3 id="tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;">tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
@@ -2088,8 +2088,10 @@ resource &quot;aws_lb_target_group&quot; &quot;this&quot; {
 <h4 id="&#x30FB;foreach&#x3068;&#x306F;">&#x30FB;for_each&#x3068;&#x306F;</h4>
 <p>&#x4E8B;&#x524D;&#x306B;<code>for_each</code>&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;map&#x578B;&#x306E;<code>key</code>&#x306E;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x6642;&#x306B;&#xFF0C;<code>count</code>&#x3068;&#x306F;&#x9055;&#x3044;&#xFF0C;&#x8981;&#x7D20;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>for_each</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;<code>aws_subnet</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#xFF0C;<code>for_each</code>&#x306E;&#x6301;&#x3064;<code>value</code>&#x306E;&#x6570;&#x3060;&#x3051;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-tf"># map&#x578B;&#x5909;&#x6570;
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;subnet&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# Variables
+###############################################
 vpc_availability_zones             = { a = &quot;a&quot;, c = &quot;c&quot; }
 vpc_cidr                           = &quot;n.n.n.n/23&quot;
 vpc_subnet_private_datastore_cidrs = { a = &quot;n.n.n.n/27&quot;, c = &quot;n.n.n.n/27&quot; }
@@ -2120,6 +2122,76 @@ resource &quot;aws_subnet&quot; &quot;public&quot; {
 <h3 id="dynamic">dynamic</h3>
 <h4 id="&#x30FB;dynamic&#x3068;&#x306F;">&#x30FB;dynamic&#x3068;&#x306F;</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;RDS&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;<code>parameter</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#xFF0C;map&#x578B;&#x5909;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# RDS Cluster Parameter Group
+###############################################
+resource &quot;aws_rds_cluster_parameter_group&quot; &quot;this&quot; {
+  name        = &quot;${var.environment}-${var.service}-cluster-pg&quot;
+  description = &quot;The cluster parameter group for ${var.environment}-${var.service}-rds&quot;
+  family      = &quot;aurora-mysql5.7&quot;
+
+  dynamic &quot;parameter&quot; {
+    for_each = var.rds_parameter_group_values
+
+    content {
+      name  = parameter.key
+      value = parameter.value
+    }
+  }
+
+  tags = {
+    Environment = var.environment
+  }
+}
+</code></pre>
+<pre><code class="lang-tf">###############################################
+# Variables
+###############################################
+rds_parameter_group_values = {
+  time_zone                = &quot;asia/tokyo&quot;
+  character_set_client     = &quot;utf8mb4&quot;
+  character_set_connection = &quot;utf8mb4&quot;
+  character_set_database   = &quot;utf8mb4&quot;
+  character_set_results    = &quot;utf8mb4&quot;
+  character_set_server     = &quot;utf8mb4&quot;
+  server_audit_events      = &quot;connect,query,query_dcl,query_ddl,query_dml,table&quot;
+  server_audit_logging     = 1
+  server_audit_logs_upload = 1
+  general_log              = 1
+  slow_query_log           = 1
+  long_query_time          = 3
+}
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;WAF&#x306E;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x30BB;&#x30C3;&#x30C8;&#x306E;<code>regular_expression</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#xFF0C;list&#x578B;&#x5909;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# WAF Regex Pattern Sets
+###############################################
+resource &quot;aws_wafv2_regex_pattern_set&quot; &quot;cloudfront&quot; {
+  name        = &quot;blocked-user-agents&quot;
+  description = &quot;Blocked user agents&quot;
+  scope       = &quot;CLOUDFRONT&quot;
+
+  dynamic &quot;regular_expression&quot; {
+    for_each = var.waf_blocked_user_agents
+
+    content {
+      regex_string = regular_expression.value
+    }
+  }
+}
+</code></pre>
+<pre><code class="lang-tf">###############################################
+# Variables
+###############################################
+waf_blocked_user_agents = [
+  &quot;ExampleCrawler&quot;,
+  &quot;EXampleSpider&quot;,
+  &quot;ExampleBot&quot;,
+]
+</code></pre>
 <p><br></p>
 <h3 id="lifecycle">lifecycle</h3>
 <h4 id="&#x30FB;lifecycle&#x3068;&#x306F;">&#x30FB;lifecycle&#x3068;&#x306F;</h4>
@@ -2658,6 +2730,44 @@ output &quot;nginx_ecr_repository_url&quot; {
 </code></pre>
 <p><br></p>
 <h2 id="08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;">08. &#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;</h2>
+<h3 id="alb">ALB</h3>
+<pre><code>###############################################
+# ALB target group
+###############################################
+resource &quot;random_integer&quot; &quot;suffix&quot; {    
+  min = 1    
+  max = 10000    
+}
+
+resource &quot;aws_lb_target_group&quot; &quot;this&quot; {
+  name                 = &quot;${var.environment}-${var.service}-alb-tg-${random_integer.suffix.result}&quot;
+  port                 = var.ecs_container_nginx_port_http
+  protocol             = &quot;HTTP&quot;
+  vpc_id               = var.vpc_id
+  deregistration_delay = &quot;60&quot;
+  target_type          = &quot;ip&quot;
+  slow_start           = &quot;60&quot;
+
+  health_check {
+    interval            = 30
+    path                = &quot;/healthcheck&quot;
+    protocol            = &quot;HTTP&quot;
+    timeout             = 5
+    unhealthy_threshold = 2
+    matcher             = 200
+  }
+
+  tags = {
+    Environment = var.environment
+  }
+
+  depends_on = [aws_lb.this]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+</code></pre><p><br></p>
 <h3 id="cloudfront">CloudFront</h3>
 <h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code class="lang-tf">resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
@@ -2912,13 +3022,21 @@ resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
 <p><br></p>
 <h2 id="09-circleci&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">09. CircleCI&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h2>
 <h3 id="tfnotify">tfnotify</h3>
+<h4 id="&#x30FB;tfnotify&#x3068;&#x306F;">&#x30FB;tfnotify&#x3068;&#x306F;</h4>
+<p>terraform&#x306E;<code>plan</code>&#x307E;&#x305F;&#x306F;<code>apply</code>&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#xFF0C;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
-<p>tfnotify&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-bash">$ terraform plan | tfnotify --config ./<span class="hljs-variable">${ENV}</span>/tfnotify.yml plan
+<p>CircleCI&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;command&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x4EE5;&#x4E0B;&#x304B;&#x3089;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x305F;tfnotify&#x306E;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
+<p><a href="https://github.com/mercari/tfnotify/releases/tag/v0.7.0" target="_blank">https://github.com/mercari/tfnotify/releases/tag/v0.7.0</a></p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+terraform plan | ./bin/tfnotify --config ./<span class="hljs-variable">${ENV}</span>/tfnotify.yml plan
 </code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;GitHub&#x306E;&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x30D7;&#x30EB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-yaml"><span class="hljs-comment"># https://github.com/mercari/tfnotify</span>
-<span class="hljs-comment"># https://github.com/mercari/tfnotify/releases/tag/v0.7.0</span>
 <span class="hljs-meta">---</span>
 <span class="hljs-attr">ci:</span> circleci
 
@@ -2926,8 +3044,8 @@ resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
 <span class="hljs-attr">  github:</span>
 <span class="hljs-attr">    token:</span> &lt;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x767B;&#x9332;&#x3057;&#x305F;GitHubToken<span class="hljs-string">&gt;
 </span><span class="hljs-attr">    repository:</span>
-<span class="hljs-attr">      owner:</span> <span class="hljs-string">&quot;&lt;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D44;&#x7E54;&#x540D;&gt;&quot;</span>
-<span class="hljs-attr">      name:</span> <span class="hljs-string">&quot;&lt;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x540D;&gt;&quot;</span>
+<span class="hljs-attr">      owner:</span> <span class="hljs-string">&quot;&lt;&#x9001;&#x4FE1;&#x5148;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D44;&#x7E54;&#x540D;&gt;&quot;</span>
+<span class="hljs-attr">      name:</span> <span class="hljs-string">&quot;&lt;&#x9001;&#x4FE1;&#x5148;&#x306E;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x540D;&gt;&quot;</span>
 
 <span class="hljs-attr">terraform:</span>
 <span class="hljs-attr">  plan:</span>
@@ -2990,7 +3108,7 @@ resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-11-28T16:11:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-30T13:20:37.053Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-02T17:12:01.267Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-03T12:58:57.454Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
