@@ -68,7 +68,9 @@
     * [コンテナオーケストレーション](public/infrastructure_virtualization_container_orchestration.md)
     * [仮想サーバ（仮想マシン）](public/infrastructure_virtualization_server.md)
 * インフラストラクチャ｜CI/CD
-    * [CircleCI，Capistrano](public/infrastructure_ci_cd.md)
+    * [CI & CD](public/infrastructure_ci_cd.md)
+    * [CircleCI](public/infrastructure_circleci.md)
+    * [Capistrano](public/infrastructure_capistrano.md)
 * ハードウェア
     * [ハードウェア](public/hardware.md)
     * [組み込み機器](public/hardware_embedded_system.md)
