@@ -1112,7 +1112,33 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    CircleCI，Capistrano
+                    CI & CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="infrastructure_circleci.html">
+            
+                <a href="infrastructure_circleci.html">
+            
+                    
+                    CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="infrastructure_capistrano.html">
+            
+                <a href="infrastructure_capistrano.html">
+            
+                    
+                    Capistrano
             
                 </a>
             
@@ -1545,6 +1571,33 @@ EXEC SelectContact
 </code></pre>
 <p><br></p>
 <h3 id="grant">GRANT</h3>
+<h4 id="&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;">&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x7A2E;&#x985E;</th>
+<th>&#x6A29;&#x9650;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</td>
+<td><code>GRANT ALL PRIVILEGES ON `%`.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;</code></td>
+</tr>
+<tr>
+<td>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x30E6;&#x30FC;&#x30B6;</td>
+<td><code>GRANT ALL PRIVILEGES ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;</code></td>
+</tr>
+<tr>
+<td>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x30E6;&#x30FC;&#x30B6;</td>
+<td><code>GRANT SELECT ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;</code></td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4ED8;&#x4E0E;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4ED8;&#x4E0E;</h4>
 <table>
 <thead>
@@ -1571,7 +1624,8 @@ GRANT ALL PRIVILEGES ON *.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
 -- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;
 GRANT ALL PRIVILEGES ON `%`.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;;
 </code></pre>
-<pre><code class="lang-mysql">-- &#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;
+<pre><code class="lang-mysql">-- Amazon Aurora&#x3082;&#x540C;&#x3058;&#x304F;
+-- &#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;
 GRANT ALL PRIVILEGES ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
 </code></pre>
 <pre><code class="lang-mysql">-- &#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x6A29;&#x9650;&#x306E;&#x307F;&#x4ED8;&#x4E0E;
@@ -1592,6 +1646,8 @@ GRANT SELECT ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apo
 <p>&#x5168;&#x6A29;&#x9650;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;GRANT&#x6A29;&#x9650;&#x3092;USAGE&#x306B;&#x623B;&#x3059;&#xFF0E;</p>
 <pre><code class="lang-mysql">-- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;
 REVOKE ALL PRIVILEGES ON `%`.* FROM &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+
+REVOKE ALL PRIVILEGES ON {DB&#x540D;}.* FROM &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
 </code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;</h4>
 <pre><code class="lang-mysql">RENAME USER &apos;{ &#x53E4;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos; TO &apos;{ &#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
@@ -2167,7 +2223,7 @@ $dbh = <span class="hljs-keyword">null</span>;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.14.2","depth":2,"next":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"previous":{"title":"データベースの操作","level":"1.14.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2020-10-30T09:47:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-04T12:37:59.613Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.14.2","depth":2,"next":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"previous":{"title":"データベースの操作","level":"1.14.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2020-12-03T02:19:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-06T18:30:26.105Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

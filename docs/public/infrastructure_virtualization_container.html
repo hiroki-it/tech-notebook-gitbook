@@ -1114,7 +1114,33 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    CircleCI，Capistrano
+                    CI & CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="infrastructure_circleci.html">
+            
+                <a href="infrastructure_circleci.html">
+            
+                    
+                    CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="infrastructure_capistrano.html">
+            
+                <a href="infrastructure_capistrano.html">
+            
+                    
+                    Capistrano
             
                 </a>
             
@@ -1766,11 +1792,6 @@ ARG <span class="hljs-keyword">LABEL</span>=&quot;Hiroki &lt;hasegawafeedshop@gm
 <pre><code class="lang-bash"><span class="hljs-comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3092;&#x751F;&#x6210;&#x3057;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x69CB;&#x7BC9;&#xFF0E;&#x8D77;&#x52D5;&#x306F;&#x3057;&#x306A;&#x3044;&#xFF0E;</span>
 $ docker create &lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt; &lt;&#x4F7F;&#x7528;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;&gt;
 </code></pre>
-<h4 id="&#x30FB;&#x69CB;&#x7BC9;&#x306B;&#x5931;&#x6557;&#x3057;&#x305F;&#x6642;&#x306E;&#x30C7;&#x30D0;&#x30C3;&#x30B0;">&#x30FB;&#x69CB;&#x7BC9;&#x306B;&#x5931;&#x6557;&#x3057;&#x305F;&#x6642;&#x306E;&#x30C7;&#x30D0;&#x30C3;&#x30B0;</h4>
-<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-bash"><span class="hljs-comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x884C;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3057;&#x7D9A;&#x3051;&#x308B;&#xFF0E;</span>
-$ docker logs --follow=<span class="hljs-literal">true</span> --tail=500 &lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt;
-</code></pre>
 <h4 id="&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8D77;&#x52D5;">&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8D77;&#x52D5;</h4>
 <p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;<code>start</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#xFF0C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x30E2;&#x30FC;&#x30C9;&#x3067;&#x3057;&#x304B;&#x8D77;&#x52D5;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
@@ -2113,6 +2134,57 @@ $ curl --fail http://&lt;nginx&#x306B;&#x767B;&#x9332;&#x3057;&#x305F;&#x30C9;&#
 <span class="hljs-attr">      o:</span> <span class="hljs-string">&quot;addr=10.40.0.199,nolock,soft,rw&quot;</span>
 <span class="hljs-attr">      device:</span> <span class="hljs-string">&quot;:/nfs/example&quot;</span>
 </code></pre>
+<p><br></p>
+<h2 id="06-&#x30ED;&#x30AE;&#x30F3;&#x30B0;">06. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
+<h3 id="&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;">&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;</h3>
+<h4 id="&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;">&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
+<p>&#x516C;&#x5F0F;&#x306E;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/access.log</code>&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;<code>/dev/stderr</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/error.log</code>&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;">&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
+<p>&#x8981;&#x52C9;&#x5F37;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<h4 id="&#x30FB;docker-logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;">&#x30FB;docker logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</h4>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x307E;&#x3068;&#x3081;&#x3066;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x78BA;&#x8A8D;">&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x78BA;&#x8A8D;</h4>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x884C;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
+$ docker logs --follow=<span class="hljs-literal">true</span> --tail=500 &lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt;
+</code></pre>
+<p><br></p>
+<h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;">&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;">&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;</h4>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x540D;</th>
+<th>&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json-file</td>
+<td><code>/var/lib/docker/containers/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;-json.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</td>
+<td>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF0E;</td>
+</tr>
+<tr>
+<td>none</td>
+<td>&#x30ED;&#x30B0;&#x3092;&#x8A18;&#x9332;&#x3057;&#x306A;&#x3044;&#xFF0E;</td>
+<td></td>
+</tr>
+<tr>
+<td>awslogs</td>
+<td>CloudWatch Logs&#x306E;API</td>
+<td><code>docker logs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
+</tr>
+<tr>
+<td>gcplogs</td>
+<td>Google Cloud Logging&#x306E;API</td>
+<td><code>docker logs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -2156,7 +2228,7 @@ $ curl --fail http://&lt;nginx&#x306B;&#x767B;&#x9332;&#x3057;&#x305F;&#x30C9;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"コンテナ","level":"1.24.2","depth":2,"next":{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2020-11-01T10:26:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-04T12:37:59.613Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"コンテナ","level":"1.24.2","depth":2,"next":{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2020-12-06T18:29:16.489Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-06T18:30:26.105Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

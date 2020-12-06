@@ -1110,7 +1110,33 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    CircleCI，Capistrano
+                    CI & CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="infrastructure_circleci.html">
+            
+                <a href="infrastructure_circleci.html">
+            
+                    
+                    CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="infrastructure_capistrano.html">
+            
+                <a href="infrastructure_capistrano.html">
+            
+                    
+                    Capistrano
             
                 </a>
             
@@ -1531,7 +1557,7 @@ $ <span class="hljs-built_in">which</span> python3
 <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello Tokyo!&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;">&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;</h4>
-<p>&#x4EE5;&#x4E0B;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x306E;&#x65B9;&#x6CD5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x3044;&#x305A;&#x308C;&#x304B;&#x306E;&#x65B9;&#x6CD5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash"><span class="hljs-comment"># source&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
 $ <span class="hljs-built_in">source</span> hello.sh
 </code></pre>
@@ -1544,6 +1570,36 @@ $ . hello.sh
 <pre><code class="lang-bash"><span class="hljs-comment"># &#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3092;&#x6307;&#x5B9A;</span>
 <span class="hljs-comment"># &#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x3042;&#x308B;hello.sh&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;</span>
 $ ./hello.sh
+</code></pre>
+<h4 id="&#x30FB;for">&#x30FB;for</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> 1 2 3 4 5
+<span class="hljs-keyword">do</span>
+   <span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span>
+<span class="hljs-keyword">done</span>
+</code></pre>
+<h4 id="&#x30FB;switch-case">&#x30FB;switch-case</h4>
+<p>&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x305F;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x5206;&#x3051;&#x308B;&#xFF0E;&#x5168;&#x3066;&#x306E;&#x5834;&#x5408;&#x4EE5;&#x5916;&#x3092;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">case</span> <span class="hljs-variable">$ENV</span> <span class="hljs-keyword">in</span>
+    <span class="hljs-string">&quot;test&quot;</span>)
+        value=<span class="hljs-string">&quot;XXXXX&quot;</span>
+    ;;
+    <span class="hljs-string">&quot;stg&quot;</span>)
+        value=<span class="hljs-string">&quot;YYYYY&quot;</span>
+    ;;
+    <span class="hljs-string">&quot;prd&quot;</span>)
+        value=<span class="hljs-string">&quot;ZZZZZ&quot;</span>
+    ;;
+    *)
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The parameter <span class="hljs-variable">${ENV}</span> is invalid.&quot;</span>
+        <span class="hljs-built_in">exit</span> 1
+    ;;
+<span class="hljs-keyword">esac</span>
 </code></pre>
 <p><br></p>
 <h3 id="pipeline">pipeline</h3>
@@ -1560,6 +1616,37 @@ $ find /* -type f |xargs grep <span class="hljs-string">&quot;&lt;&#x691C;&#x7D2
 <pre><code class="lang-bash"><span class="hljs-comment"># &#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</span>
 $ sudo pgrep <span class="hljs-_">-f</span> &lt;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&gt; | sudo xargs <span class="hljs-built_in">kill</span> -9
 </code></pre>
+<h4 id="&#x30FB;sort&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;sort&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
+<p>&#x51FA;&#x529B;&#x7D50;&#x679C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x4E26;&#x3073;&#x9806;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x8868;&#x793A;&#x3055;&#x308C;&#x305F;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;AZ&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x308B;&#xFF0E;</span>
+$ printenv | sort <span class="hljs-_">-f</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x6A19;&#x6E96;&#x5165;&#x51FA;&#x529B;">&#x6A19;&#x6E96;&#x5165;&#x51FA;&#x529B;</h3>
+<h4 id="&#x30FB;&#x6A19;&#x6E96;&#x5165;&#x51FA;&#x529B;&#x3068;&#x306F;">&#x30FB;&#x6A19;&#x6E96;&#x5165;&#x51FA;&#x529B;&#x3068;&#x306F;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stddin&#xFF08;&#x6A19;&#x6E96;&#x5165;&#x529B;&#xFF09;</td>
+<td>&#x30AD;&#x30FC;&#x30DC;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5165;&#x529B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;</td>
+</tr>
+<tr>
+<td>stdout&#xFF08;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF09;</td>
+<td>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x4EE5;&#x5916;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;</td>
+</tr>
+<tr>
+<td>stderr&#xFF08;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#xFF09;</td>
+<td>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x6A19;&#x6E96;&#x5165;&#x529B;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x30A8;&#x30E9;&#x30FC;.jpg" alt="&#x6A19;&#x6E96;&#x5165;&#x529B;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x30A8;&#x30E9;&#x30FC;"></p>
 <p><br></p>
 <h2 id="02-02-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;">02-02. &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;</h2>
 <h3 id="chmod&#xFF1A;change-mode">chmod&#xFF1A;change mode</h3>
@@ -1708,9 +1795,11 @@ $ find /* -type f | xargs grep <span class="hljs-string">&quot;&lt;&#x691C;&#x7D
 </code></pre>
 <p><br></p>
 <h3 id="ln">ln</h3>
+<h4 id="&#x30FB;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3068;&#x306F;">&#x30FB;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3068;&#x306F;</h4>
+<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30B7;&#x30E7;&#x30FC;&#x30C8;&#x30AB;&#x30C3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x51E6;&#x7406;&#x306F;&#xFF0C;&#x30EA;&#x30F3;&#x30AF;&#x5143;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;-s">&#x30FB;-s</h4>
-<p>&#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#xFF0C;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash">$ ln <span class="hljs-_">-s</span> &lt;&#x30EA;&#x30F3;&#x30AF;&#x5148;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x307E;&#x3067;&#x306E;&#x30D1;&#x30B9;&gt; &lt;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;&gt;
+<p>&#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#xFF0C;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x5143;&#x306B;&#x306A;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3084;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-bash">$ ln <span class="hljs-_">-s</span> &lt;&#x30EA;&#x30F3;&#x30AF;&#x5143;&#x307E;&#x3067;&#x306E;&#x30D1;&#x30B9;&gt; &lt;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;&gt;
 </code></pre>
 <p><br></p>
 <h3 id="ls">ls</h3>
@@ -2055,6 +2144,13 @@ directory=/var/www/tech-notebook
 <p>&#x5C65;&#x6B74;1000&#x4EF6;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-bash">$ <span class="hljs-built_in">history</span> | grep &lt;&#x904E;&#x53BB;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&gt;
 </code></pre>
+<p><br></p>
+<h3 id="tr">tr</h3>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+cat ./src.txt | tr <span class="hljs-string">&apos;\n&apos;</span> <span class="hljs-string">&apos;,&apos;</span> &gt; ./dst.txt
+</code></pre>
+<h4 id=""> </h4>
 <p><br></p>
 <h2 id="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;">02-06. &#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;</h2>
 <h3 id="export">export</h3>
@@ -2452,6 +2548,7 @@ $ pyenv <span class="hljs-built_in">which</span> python
 <p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;">&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;</h4>
 <p>&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><br></p>
 <h3 id="&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;">&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;</h3>
 <p>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x8A00;&#x8A9E;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#xFF0C;&#x8A00;&#x8A9E;&#x30D7;&#x30ED;&#x30BB;&#x30C3;&#x30B5;&#x306B;&#x3088;&#x3063;&#x3066;&#x6A5F;&#x68B0;&#x8A9E;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x305F;&#x5F8C;&#xFF0C;CPU&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x3057;&#x3066;&#xFF0C;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x66F8;&#x304B;&#x308C;&#x305F;&#x69D8;&#x3005;&#x306A;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;">&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;</h4>
@@ -2767,7 +2864,7 @@ SELINUXTYPE=targeted
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CentOSの構成","level":"1.19.1","depth":2,"next":{"title":"ソフトウェア｜機械語と進数","level":"1.20","depth":1,"ref":"","articles":[{"title":"機械語と進数","level":"1.20.1","depth":2,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2020-12-02T03:01:30.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-04T12:37:59.613Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CentOSの構成","level":"1.19.1","depth":2,"next":{"title":"ソフトウェア｜機械語と進数","level":"1.20","depth":1,"ref":"","articles":[{"title":"機械語と進数","level":"1.20.1","depth":2,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2020-12-06T18:29:16.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-06T18:30:26.105Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
