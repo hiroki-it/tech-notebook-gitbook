@@ -1600,6 +1600,7 @@ module.vpc_module.aws_vpc.vpc
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;">&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h3>
 <h4 id="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;">&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;</h4>
 <pre><code>terraform_project/
+&#x2502;
 &#x251C;&#x2500;&#x2500; modules
 &#x2502;   &#x251C;&#x2500;&#x2500; ec2
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
@@ -1609,19 +1610,31 @@ module.vpc_module.aws_vpc.vpc
 &#x2502;       &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;       &#x251C;&#x2500;&#x2500; output.tf
 &#x2502;       &#x2514;&#x2500;&#x2500; variables.tf
-&#x251C;&#x2500;&#x2500; feat
+&#x2502;
+&#x251C;&#x2500;&#x2500; ops (GitHub&#x304B;&#x3089;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x5834;&#x5408;)
+&#x2502;   &#x251C;&#x2500;&#x2500; assume.sh
+&#x2502;   &#x251C;&#x2500;&#x2500; terraform_apply.sh
+&#x2502;   &#x251C;&#x2500;&#x2500; terraform_destroy_test.sh
+&#x2502;   &#x251C;&#x2500;&#x2500; terraform_fmt.sh
+&#x2502;   &#x251C;&#x2500;&#x2500; terraform_init.sh
+&#x2502;   &#x251C;&#x2500;&#x2500; terraform_plan.sh
+&#x2502;   &#x2514;&#x2500;&#x2500; terraform_validate.sh
+&#x2502;
+&#x251C;&#x2500;&#x2500; prd
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
-&#x251C;&#x2500;&#x2500; prod
+&#x2502;
+&#x251C;&#x2500;&#x2500; stg
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
-&#x2514;&#x2500;&#x2500; stg
+&#x2502;
+&#x2514;&#x2500;&#x2500; test
     &#x251C;&#x2500;&#x2500; config.tfvars
     &#x251C;&#x2500;&#x2500; main.tf
     &#x251C;&#x2500;&#x2500; providers.tf
@@ -2145,13 +2158,33 @@ resource &quot;aws_nat_gateway&quot; &quot;this&quot; {
 </code></pre>
 <h4 id="&#x30FB;s3&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x30DD;&#x30EA;&#x30B7;&#x30FC;-vs-&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;S3&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x30DD;&#x30EA;&#x30B7;&#x30FC; vs. &#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
 <p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;S3&#x3092;&#x793A;&#x3059;&#xFF0E;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3068;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x540C;&#x6642;&#x306B;&#x69CB;&#x7BC9;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x69CB;&#x7BC9;&#x306E;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x304C;&#x91CD;&#x306A;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-tf">resource &quot;aws_s3_bucket_policy&quot; &quot;example&quot; {
+<pre><code class="lang-tf">###############################################
+# S3
+###############################################
+
+# Example bucket
+resource &quot;aws_s3_bucket&quot; &quot;example&quot; {
+  bucket = &quot;${var.environment}-${var.service}-example-bucket&quot;
+  acl    = &quot;private&quot;
+}
+
+# Public access block
+resource &quot;aws_s3_bucket_public_access_block&quot; &quot;example&quot; {
+  bucket                  = aws_s3_bucket.example.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Bucket policy attachment
+resource &quot;aws_s3_bucket_policy&quot; &quot;example&quot; {
   bucket = aws_s3_bucket.example.id
   policy = templatefile(
     &quot;${path.module}/policies/example_bucket_policy.tpl&quot;,
     {
-      example_s3_bucket_arn                                = aws_s3_bucket.example.arn
-      s3_example_cloudfront_origin_access_identity_iam_arn = var.s3_example_cloudfront_origin_access_identity_iam_arn
+      example_s3_bucket_arn                        = aws_s3_bucket.example.arn
+      s3_cloudfront_origin_access_identity_iam_arn = var.s3_cloudfront_origin_access_identity_iam_arn
     }
   )
 
@@ -2883,7 +2916,7 @@ output &quot;nginx_ecr_repository_url&quot; {
 <p><br></p>
 <h2 id="08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;">08. &#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;</h2>
 <h3 id="cloudfront">CloudFront</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
+<h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code class="lang-tf">resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
 
   price_class      = &quot;PriceClass_200&quot;
@@ -3021,7 +3054,7 @@ resource &quot;aws_ecs_service&quot; &quot;this&quot; {
 <p>Terraform&#x3067;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x73FE;&#x5728;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308B;ECS&#x3067;&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x306E;&#x300C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x300D;&#x3068;&#x540C;&#x3058;&#x6319;&#x52D5;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x5897;&#x3048;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x4E00;&#x89A7;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B21;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="ec2">EC2</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
+<h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code>###############################################
 # For bastion
 ###############################################
@@ -3042,6 +3075,104 @@ resource &quot;aws_instance&quot; &quot;bastion&quot; {
 }
 </code></pre><h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;">&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;</h4>
 <p>&#x8AA4;&#x3063;&#x3066;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x307E;&#x305F;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x3092;&#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3067;&#x4F5C;&#x6210;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>key_name</code>&#x3067;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="iam-role">IAM Role</h3>
+<h4 id="&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code>###############################################
+# IAM Role For ECS Task Execution
+###############################################
+resource &quot;aws_iam_role&quot; &quot;ecs_task_execution&quot; {
+  name        = &quot;${var.environment}-${var.service}-ecs-task-execution-role&quot;
+  description = &quot;The role for ${var.environment}-${var.service}-ecs-task&quot;
+  assume_role_policy = templatefile(
+    &quot;${path.module}/policies/trust_policies/ecs_task_policy.tpl&quot;,
+    {}
+  )
+}
+
+###############################################
+# IAM Role For ECS Task
+###############################################
+resource &quot;aws_iam_role&quot; &quot;ecs_task&quot; {
+  name        = &quot;${var.environment}-${var.service}-ecs-task-role&quot;
+  description = &quot;The role for ${var.environment}-${var.service}-ecs-task&quot;
+  assume_role_policy = templatefile(
+    &quot;${path.module}/policies/trust_policies/ecs_task_policy.tpl&quot;,
+    {}
+  )
+}
+</code></pre><h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code>###############################################
+# IAM Role For ECS Task
+###############################################
+resource &quot;aws_iam_role_policy&quot; &quot;ecs_task&quot; {
+  name = &quot;${var.environment}-${var.service}-ssm-read-only-access-policy&quot;
+  role = aws_iam_role.ecs_task_execution.id
+  policy = templatefile(
+    &quot;${path.module}/policies/inline_policies/ecs_task_policy.tpl&quot;,
+    {}
+  )
+}
+</code></pre><h4 id="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code>###############################################
+# IAM Role For ECS Task Execution
+###############################################
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs_task_execution&quot; {
+  role       = aws_iam_role.ecs_task_execution.name
+  policy_arn = &quot;arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy&quot;
+}
+</code></pre><h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code>###############################################
+# IAM Role For ECS Task
+###############################################
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs_task&quot; {
+  role       = aws_iam_role.ecs_task.name
+  policy_arn = aws_iam_policy.ecs_task.arn
+}
+
+resource &quot;aws_iam_policy&quot; &quot;ecs_task&quot; {
+  name        = &quot;${var.environment}-${var.service}-cloudwatch-logs-access-policy&quot;
+  description = &quot;Provides access to CloudWatch Logs&quot;
+  policy = templatefile(
+    &quot;${path.module}/policies/customer_managed_policies/cloudwatch_logs_access_policy.tpl&quot;,
+    {}
+  )
+}
+</code></pre><h4 id="&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;">&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;</h4>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x6210;&#x3055;&#x308C;&#xFF0C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#x30ED;&#x30FC;&#x30EB;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x3042;&#x308B;&#xFF0E;<code>aws_iam_service_linked_role</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x6570;&#x304C;&#x591A;&#x304F;&#x5B9F;&#x88C5;&#x306E;&#x8CA0;&#x62C5;&#x306B;&#x3082;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3042;&#x3048;&#x3066;&#x7BA1;&#x7406;&#x5916;&#x3068;&#x3057;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-tf">###############################################
+# IAM Role For ECS Service
+###############################################
+# Service Linked Role
+resource &quot;aws_iam_service_linked_role&quot; &quot;ecs_service_auto_scaling&quot; {
+  aws_service_name = &quot;ecs.application-autoscaling.amazonaws.com&quot;
+}
+</code></pre>
+<pre><code class="lang-tf">###############################################
+# Output IAM Role
+###############################################
+output &quot;ecs_service_auto_scaling_iam_service_linked_role_arn&quot; {
+  value = aws_iam_service_linked_role.ecs_service_auto_scaling.arn
+}
+</code></pre>
+<pre><code class="lang-tf">#########################################
+# Application Auto Scaling For ECS
+#########################################
+resource &quot;aws_appautoscaling_target&quot; &quot;ecs&quot; {
+  service_namespace  = &quot;ecs&quot;
+  resource_id        = &quot;service/${var.ecs_cluster_name}/${var.ecs_service_name}&quot;
+  scalable_dimension = &quot;ecs:service:DesiredCount&quot;
+  max_capacity       = var.auto_scaling_ecs_task_max_capacity
+  min_capacity       = var.auto_scaling_ecs_task_min_capacity
+  # &#x3053;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#xFF0C;AutoScaling&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#xFF0E;
+  role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
+}
+</code></pre>
 <p><br></p>
 <h3 id="network-interface">Network Interface</h3>
 <h4 id="&#x30FB;network-interface&#x3092;&#x30C7;&#x30BF;&#x30C3;&#x30C1;&#x3067;&#x304D;&#x306A;&#x3044;">&#x30FB;Network Interface&#x3092;&#x30C7;&#x30BF;&#x30C3;&#x30C1;&#x3067;&#x304D;&#x306A;&#x3044;</h4>
@@ -3085,7 +3216,7 @@ resource &quot;aws_instance&quot; &quot;bastion&quot; {
 </table>
 <p><br></p>
 <h3 id="route53">Route53</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
+<h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code class="lang-tf">###############################################
 # For api domain
 ###############################################
@@ -3109,7 +3240,7 @@ resource &quot;aws_route53_record&quot; &quot;example&quot; {
 <p>&#x30DB;&#x30B9;&#x30C8;&#x30BE;&#x30FC;&#x30F3;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30CD;&#x30FC;&#x30E0;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x60C5;&#x5831;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306F;&#xFF0C;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="rds">RDS</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
+<h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code>#########################################
 # RDS Cluster
 #########################################
@@ -3170,7 +3301,7 @@ resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
 <p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x3068;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x4E21;&#x65B9;&#x306B;&#xFF0C;<code>preferred_backup_window</code>&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;RDS&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x306F;&#x3044;&#x3051;&#x306A;&#x3044;&#xFF0E;</p>
 <p><br></p>
 <h3 id="vpc--&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;">VPC  &#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5B9F;&#x88C5;&#x4F8B;</h4>
+<h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code>###############################################
 # Route table (public)
 ###############################################
@@ -3239,6 +3370,337 @@ resource &quot;aws_route_table&quot; &quot;private_app&quot; {
 <p>Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x306F;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x304B;&#x3089;&#xFF0C;&#x300C;<code>Not managed by = Terraform</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
 <p><br></p>
 <h2 id="09-circleci&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">09. CircleCI&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h2>
+<h3 id="circleci">circleci</h3>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<table>
+<thead>
+<tr>
+<th>jobs</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plan</td>
+<td>aws-cli&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304B;&#x3089;<code>terraform plan -out</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x307E;&#x3067;&#x306E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x627F;&#x8A8D;&#x30B8;&#x30E7;&#x30D6;</td>
+<td></td>
+</tr>
+<tr>
+<td>apply</td>
+<td>develop&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+<tr>
+<td>terraform_destroy_test</td>
+<td>main&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>workflows</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feature</td>
+<td>feature&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#x30C6;&#x30B9;&#x30C8;&#x958B;&#x767A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>develop&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+<tr>
+<td>main</td>
+<td>main&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">executors:</span>
+<span class="hljs-attr">  primary_container:</span>
+<span class="hljs-attr">    parameters:</span>
+<span class="hljs-attr">      env:</span>
+<span class="hljs-attr">        type:</span> enum
+<span class="hljs-attr">        enum:</span> [ <span class="hljs-string">&quot;dev&quot;</span>, <span class="hljs-string">&quot;stg&quot;</span>, <span class="hljs-string">&quot;prd&quot;</span> ]
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> hashicorp/terraform:x.xx.x
+<span class="hljs-attr">    working_directory:</span> ~/example_infrastructure
+<span class="hljs-attr">    environment:</span>
+<span class="hljs-attr">      ENV:</span> &lt;&lt; parameters.env &gt;<span class="hljs-string">&gt;
+
+</span><span class="hljs-attr">commands:</span>
+  <span class="hljs-comment"># AWS&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x74B0;&#x5883;&#x3092;&#x69CB;&#x7BC9;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="hljs-attr">  aws_setup:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Install jq
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            apk add curl
+            curl -o /usr/bin/jq -L https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+            chmod +x /usr/bin/jq
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Install aws-cli
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            apk add python3
+            apk add py-pip
+            pip3 install awscli
+            aws --version
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Assume role
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            source ./ops/assume.sh
+
+  # terraform init&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;
+</span><span class="hljs-attr">  terraform_init:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Terraform init
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            source ./ops/terraform_init.sh
+
+  # terraform fmt&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;
+</span><span class="hljs-attr">  terraform_fmt:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Terraform fmt
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            source ./ops/terraform_fmt.sh
+
+  # terraform plan&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;
+</span><span class="hljs-attr">  terraform_plan:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Terraform plan
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            source ./ops/terraform_plan.sh
+            ls -la
+
+  # terraform apply&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;
+</span><span class="hljs-attr">  terraform_apply:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Terraform apply
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            ls -la
+            source ./ops/terraform_apply.sh
+
+  # test&#x74B0;&#x5883;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;terraform destroy&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;
+</span><span class="hljs-attr">  terraform_destroy_test:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Terraform destroy test
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -x
+            source ./ops/terraform_destroy_test.sh
+
+</span><span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  plan:</span>
+<span class="hljs-attr">    parameters:</span>
+<span class="hljs-attr">      exr:</span>
+<span class="hljs-attr">        type:</span> executor
+<span class="hljs-attr">    executor:</span> &lt;&lt; parameters.exr &gt;<span class="hljs-string">&gt;
+</span><span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-bullet">      -</span> aws_setup
+<span class="hljs-bullet">      -</span> terraform_init
+<span class="hljs-bullet">      -</span> terraform_fmt
+<span class="hljs-bullet">      -</span> terraform_plan
+<span class="hljs-attr">      - persist_to_workspace:</span>
+<span class="hljs-attr">          root:</span> .
+<span class="hljs-attr">          paths:</span>
+<span class="hljs-bullet">            -</span> .
+
+<span class="hljs-attr">  apply:</span>
+<span class="hljs-attr">    parameters:</span>
+<span class="hljs-attr">      exr:</span>
+<span class="hljs-attr">        type:</span> executor
+<span class="hljs-attr">    executor:</span> &lt;&lt; parameters.exr &gt;<span class="hljs-string">&gt;
+</span><span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - attach_workspace:</span>
+<span class="hljs-attr">          at:</span> .
+<span class="hljs-bullet">      -</span> terraform_apply
+
+<span class="hljs-attr">  destroy_test:</span>
+<span class="hljs-attr">    parameters:</span>
+<span class="hljs-attr">      exr:</span>
+<span class="hljs-attr">        type:</span> executor
+<span class="hljs-attr">    executor:</span> &lt;&lt; parameters.exr &gt;<span class="hljs-string">&gt;
+</span><span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-bullet">      -</span> aws_setup
+<span class="hljs-bullet">      -</span> terraform_init
+<span class="hljs-bullet">      -</span> terraform_destroy_test
+
+<span class="hljs-attr">workflows:</span>
+  <span class="hljs-comment"># Test env</span>
+<span class="hljs-attr">  feature:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - plan:</span>
+<span class="hljs-attr">          name:</span> plan_test
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> test
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> /feature.*/
+<span class="hljs-attr">      - apply:</span>
+<span class="hljs-attr">          name:</span> apply_test
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> test
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> plan_test
+
+  <span class="hljs-comment"># Staging env</span>
+<span class="hljs-attr">  develop:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - plan:</span>
+<span class="hljs-attr">          name:</span> plan_stg
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+<span class="hljs-attr">      - hold_apply:</span>
+<span class="hljs-attr">          name:</span> hold_apply_stg
+<span class="hljs-attr">          type:</span> approval
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> plan_stg
+<span class="hljs-attr">      - apply:</span>
+<span class="hljs-attr">          name:</span> apply_stg
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> stg
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> hold_apply_stg
+<span class="hljs-attr">      - hold_destroy_test:</span>
+<span class="hljs-attr">          type:</span> approval
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> apply_stg
+<span class="hljs-attr">      - destroy_test:</span>
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> test
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> hold_destroy_test
+
+  <span class="hljs-comment"># Production env</span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - plan:</span>
+<span class="hljs-attr">          name:</span> plan_prd
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> prd
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
+<span class="hljs-attr">      - hold_apply:</span>
+<span class="hljs-attr">          name:</span> hold_apply_prd
+<span class="hljs-attr">          type:</span> approval
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> plan_prd
+<span class="hljs-attr">      - apply:</span>
+<span class="hljs-attr">          name:</span> apply_prd
+<span class="hljs-attr">          exr:</span>
+<span class="hljs-attr">            name:</span> primary_container
+<span class="hljs-attr">            env:</span> prd
+<span class="hljs-attr">          requires:</span>
+<span class="hljs-bullet">            -</span> hold_apply_prd
+</code></pre>
+<p><br></p>
+<h3 id="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;">&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h3>
+<h4 id="&#x30FB;assumerolesh">&#x30FB;assume_role.sh</h4>
+<p>AWS&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
+<h4 id="&#x30FB;terraformapplysh">&#x30FB;terraform_apply.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+<span class="hljs-comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="hljs-built_in">source</span> ./aws_envs.sh
+
+terraform apply \
+  -parallelism=30 \
+  <span class="hljs-variable">${ENV}</span>.tfplan | ./ops/tfnotify --config ./<span class="hljs-variable">${ENV}</span>/tfnotify.yml apply
+</code></pre>
+<h4 id="&#x30FB;terraformdestroytestsh">&#x30FB;terraform_destroy_test.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+<span class="hljs-keyword">if</span> [ <span class="hljs-variable">$ENV</span> = <span class="hljs-string">&quot;test&quot;</span> ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+    <span class="hljs-built_in">source</span> ./aws_envs.sh
+    terraform destroy -var-file=./<span class="hljs-built_in">test</span>/config.tfvars ./<span class="hljs-built_in">test</span>
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;The parameter <span class="hljs-variable">${ENV}</span> is invalid.&quot;</span>
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+</code></pre>
+<h4 id="&#x30FB;terraformfmtsh">&#x30FB;terraform_fmt.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+terraform fmt \
+  -recursive \
+  -check
+</code></pre>
+<h4 id="&#x30FB;terraforminitsh">&#x30FB;terraform_init.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+<span class="hljs-comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="hljs-built_in">source</span> ./aws_envs.sh
+
+terraform init \
+  -upgrade \
+  -reconfigure \
+  -backend=<span class="hljs-literal">true</span> \
+  -backend-config=<span class="hljs-string">&quot;bucket=<span class="hljs-variable">${ENV}</span>-lumonde-tfstate-bucket&quot;</span> \
+  -backend-config=<span class="hljs-string">&quot;key=terraform.tfstate&quot;</span> \
+  -backend-config=<span class="hljs-string">&quot;encrypt=true&quot;</span> \
+  ./<span class="hljs-variable">${ENV}</span>
+</code></pre>
+<h4 id="&#x30FB;terraformplansh">&#x30FB;terraform_plan.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+<span class="hljs-comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="hljs-built_in">source</span> ./aws_envs.sh
+
+terraform plan \
+  -var-file=./<span class="hljs-variable">${ENV}</span>/config.tfvars \
+  -out=<span class="hljs-variable">${ENV}</span>.tfplan \
+  -parallelism=30 \
+  ./<span class="hljs-variable">${ENV}</span> | ./ops/tfnotify --config ./<span class="hljs-variable">${ENV}</span>/tfnotify.yml plan
+</code></pre>
+<h4 id="&#x30FB;terraformvalidatesh">&#x30FB;terraform_validate.sh</h4>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-built_in">set</span> -xeuo pipefail
+
+terraform validate <span class="hljs-variable">$ENV</span>
+</code></pre>
+<p><br></p>
 <h3 id="tfnotify">tfnotify</h3>
 <h4 id="&#x30FB;tfnotify&#x3068;&#x306F;">&#x30FB;tfnotify&#x3068;&#x306F;</h4>
 <p>terraform&#x306E;<code>plan</code>&#x307E;&#x305F;&#x306F;<code>apply</code>&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#xFF0C;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
@@ -3326,7 +3788,7 @@ terraform plan | ./bin/tfnotify --config ./<span class="hljs-variable">${ENV}</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-10T15:30:52.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T11:12:22.296Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-13T18:49:00.276Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T19:16:17.018Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

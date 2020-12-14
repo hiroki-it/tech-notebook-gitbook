@@ -1374,6 +1374,48 @@
 <h4 id="&#x30FB;cicd&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;">&#x30FB;CICD&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;</h4>
 <p>Commit&#x304B;&#x3089;&#x672C;&#x756A;&#x74B0;&#x5883;&#x3078;&#x306E;Deploy&#x307E;&#x3067;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x7D99;&#x7D9A;&#x7684;&#x306B;&#x884C;&#x3046;&#x3053;&#x3068;&#xFF0E;CI&#xFF1A;Continuous Integration&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x5909;&#x66F4;&#x5185;&#x5BB9;&#x3092;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306A;&#x3069;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x53CD;&#x6620;&#x3057;&#xFF0C;&#x7D99;&#x7D9A;&#x7684;&#x306B;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#xFF0C;CD&#xFF1A;Continuous Delivery&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CICD&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;.png" alt="CICD&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;"></p>
+<h4 id="&#x30FB;&#x81EA;&#x52D5;&#x5316;&#x3067;&#x304D;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3068;&#x3067;&#x304D;&#x306A;&#x3044;&#x30D7;&#x30ED;&#x30BB;&#x30B9;">&#x30FB;&#x81EA;&#x52D5;&#x5316;&#x3067;&#x304D;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3068;&#x3067;&#x304D;&#x306A;&#x3044;&#x30D7;&#x30ED;&#x30BB;&#x30B9;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30D7;&#x30ED;&#x30BB;&#x30B9;</th>
+<th>&#x81EA;&#x52D5;&#x5316;&#x306E;&#x53EF;&#x5426;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build</td>
+<td>&#x3007;</td>
+<td>CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3068;IaC&#x30C4;&#x30FC;&#x30EB;&#x3067;&#x81EA;&#x52D5;&#x5316;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td>Unit&#x30C6;&#x30B9;&#x30C8;&#xFF0C;Functional&#x30C6;&#x30B9;&#x30C8;</td>
+<td>&#x3007;</td>
+<td>CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3068;PHPUnit&#x3067;&#x81EA;&#x52D5;&#x5316;&#x53EF;&#x80FD;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Integration&#x30C6;&#x30B9;&#x30C8;</td>
+<td>&#x2715;</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x4ED5;&#x69D8;&#x66F8;&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x52D5;&#x4F5C;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>&#x2715;</td>
+<td>GitHub&#x4E0A;&#x3067;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x3078;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+<td>&#x3007;</td>
+<td>CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3067;&#x81EA;&#x52D5;&#x5316;&#x53EF;&#x80FD;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x672C;&#x756A;&#x74B0;&#x5883;&#x3078;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+<td>&#x3007;</td>
+<td>CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3067;&#x81EA;&#x52D5;&#x5316;&#x53EF;&#x80FD;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -1413,7 +1455,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CI & CD","level":"1.25.1","depth":2,"next":{"title":"CircleCI","level":"1.25.2","depth":2,"path":"public/infrastructure_circleci.md","ref":"public/infrastructure_circleci.md","articles":[]},"previous":{"title":"インフラストラクチャ｜CI/CD","level":"1.25","depth":1,"ref":"","articles":[{"title":"CI & CD","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},{"title":"CircleCI","level":"1.25.2","depth":2,"path":"public/infrastructure_circleci.md","ref":"public/infrastructure_circleci.md","articles":[]},{"title":"Capistrano","level":"1.25.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_ci_cd.md","mtime":"2020-12-10T15:30:52.247Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T11:12:22.296Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CI & CD","level":"1.25.1","depth":2,"next":{"title":"CircleCI","level":"1.25.2","depth":2,"path":"public/infrastructure_circleci.md","ref":"public/infrastructure_circleci.md","articles":[]},"previous":{"title":"インフラストラクチャ｜CI/CD","level":"1.25","depth":1,"ref":"","articles":[{"title":"CI & CD","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},{"title":"CircleCI","level":"1.25.2","depth":2,"path":"public/infrastructure_circleci.md","ref":"public/infrastructure_circleci.md","articles":[]},{"title":"Capistrano","level":"1.25.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_ci_cd.md","mtime":"2020-12-13T18:49:00.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T19:16:17.018Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
