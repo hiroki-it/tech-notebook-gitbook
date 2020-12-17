@@ -1688,18 +1688,18 @@ module.vpc_module.aws_vpc.vpc
   }
 }
 </code></pre>
-<p>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x306F;&#xFF0C;&#x3069;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x3082;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
+<p>&#x3069;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x3082;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-json">{
-  <span class="hljs-string">&quot;Statement&quot;</span>: [
-    {
-      <span class="hljs-string">&quot;Sid&quot;</span>: <span class="hljs-string">&quot;DenyDeleteBucket&quot;</span>,
-      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Deny&quot;</span>,
-      <span class="hljs-string">&quot;Principal&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
-      <span class="hljs-string">&quot;Action&quot;</span>: <span class="hljs-string">&quot;s3:DeleteBucket&quot;</span>,
-      <span class="hljs-string">&quot;Resource&quot;</span>: <span class="hljs-string">&quot;arn:aws:s3:::&lt;tfstate&#x306E;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;&quot;</span>
-    }
-  ]
+    <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2008-10-17&quot;</span>,
+    <span class="hljs-string">&quot;Statement&quot;</span>: [
+        {
+            <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Deny&quot;</span>,
+            <span class="hljs-string">&quot;Principal&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
+            <span class="hljs-string">&quot;Action&quot;</span>: <span class="hljs-string">&quot;s3:DeleteObject&quot;</span>,
+            <span class="hljs-string">&quot;Resource&quot;</span>: <span class="hljs-string">&quot;arn:aws:s3:::&lt;tfstate&#x306E;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;/*&quot;</span>
+        }
+    ]
 }
 </code></pre>
 <p><br></p>
@@ -2439,6 +2439,37 @@ resource &quot;aws_ecs_service&quot; &quot;this&quot; {
       task_definition,
     ]
   }
+}
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;Redis&#x3092;&#x793A;&#x3059;&#xFF0E;Redis&#x3067;&#x306F;&#xFF0C;AutoScaling&#x306B;&#x3088;&#x3063;&#x3066;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x6570;&#x3068;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x6570;&#x304C;&#x5897;&#x6E1B;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x3092;&#x7121;&#x8996;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# Redis Cluster
+###############################################
+resource &quot;aws_elasticache_replication_group&quot; &quot;redis&quot; {
+  replication_group_id          = &quot;${var.environment}-${var.service}-redis-cluster&quot;
+  replication_group_description = &quot;The cluster of ${var.environment}-${var.service}-redis&quot;
+  engine_version                = &quot;5.0.6&quot;
+  port                          = var.redis_port_ssm_parameter_value
+  parameter_group_name          = aws_elasticache_parameter_group.redis.name
+  node_type                     = var.redis_node_type
+  number_cache_clusters         = 2
+  availability_zones            = [&quot;${var.region}${var.vpc_availability_zones.a}&quot;, &quot;${var.region}${var.vpc_availability_zones.c}&quot;]
+  subnet_group_name             = aws_elasticache_subnet_group.redis.id
+  security_group_ids            = [var.redis_security_group_id]
+  automatic_failover_enabled    = true
+  maintenance_window            = &quot;sun:17:00-sun:18:00&quot;
+  snapshot_retention_limit      = 0
+  snapshot_window               = &quot;19:00-20:00&quot;
+  apply_immediately             = true
+
+  lifecycle {
+    ignore_changes = [
+      # &#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x6570;&#x3068;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x6570;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x7121;&#x8996;&#x3057;&#x307E;&#x3059;&#xFF0E;
+      number_cache_clusters
+    ]
+  }
+}
 }
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -3343,7 +3374,7 @@ resource &quot;aws_route_table&quot; &quot;private_app&quot; {
 <p><br></p>
 <h3 id="&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;">&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;</h3>
 <h4 id="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;">&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;</h4>
-<p>&#x65E2;&#x5B58;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;<code>destroy</code>&#x3067;&#x524A;&#x9664;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x7121;&#x52B9;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x524A;&#x9664;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x3089;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x7121;&#x52B9;&#x306B;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>destroy</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x65E2;&#x5B58;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;<code>destroy</code>&#x3067;&#x524A;&#x9664;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x7121;&#x52B9;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x524A;&#x9664;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x3089;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x4E8B;&#x524D;&#x306B;<code>false</code>&#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>destroy</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <table>
 <thead>
 <tr>
@@ -3788,7 +3819,7 @@ terraform plan | ./bin/tfnotify --config ./<span class="hljs-variable">${ENV}</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-14T19:17:25.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-16T12:05:38.841Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-17T19:05:51.679Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-17T19:06:46.215Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
