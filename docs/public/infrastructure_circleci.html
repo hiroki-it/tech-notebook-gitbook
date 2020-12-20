@@ -1594,7 +1594,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
         <span class="hljs-comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;</span>
 <span class="hljs-attr">        default:</span> <span class="hljs-string">&quot;test&quot;</span>
 <span class="hljs-attr">        type:</span> enum
-<span class="hljs-attr">        enum:</span> [<span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;staging&quot;</span>, <span class="hljs-string">&quot;production&quot;</span>]
+<span class="hljs-attr">        enum:</span> [<span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;stg&quot;</span>, <span class="hljs-string">&quot;prd&quot;</span>]
 <span class="hljs-attr">    steps:</span>
 <span class="hljs-attr">      - run:</span>
         <span class="hljs-comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;test&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3068;&#x304D;&#x306F;&#x4F55;&#x3082;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</span>
@@ -1607,7 +1607,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <span class="hljs-attr">    jobs:</span>
 <span class="hljs-attr">      - deploy:</span>
           <span class="hljs-comment"># workflow&#x306B;&#x3066;enum&#x578B;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
-<span class="hljs-attr">          environment:</span> <span class="hljs-string">&quot;staging&quot;</span>
+<span class="hljs-attr">          environment:</span> stg
 </code></pre>
 <p><br></p>
 <h3 id="executors-parameter">executors parameter</h3>
@@ -1846,25 +1846,61 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 </code></pre>
 <h4 id="&#x30FB;restorecache&#xFF0C;savecache">&#x30FB;restore_cache&#xFF0C;save_cache</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CircleCI&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;.png" alt="CircleCI&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;"></p>
-<p>&#x751F;&#x6210;&#x3057;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;&#x4F7F;&#x3044;&#x6240;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306F;composer.json&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;&#xFF0C;&#x540C;&#x3058;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;CircleCI&#x306E;Workflow&#x306E;&#x305F;&#x3073;&#x306B;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x306E;&#x306F;&#x975E;&#x52B9;&#x7387;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;&#xFF0C;&#x524D;&#x56DE;&#x306E;Workflow&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;vendor&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4E00;&#x3064;&#x306E;Workflow&#x306E;&#x4E2D;&#x3067;&#x3082;&#xFF0C;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x751F;&#x6210;&#x3057;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;&#x4F7F;&#x3044;&#x6240;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x4F8B;&#x3048;&#x3070;&#xFF0C;Composer&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306F;composer.json&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;&#xFF0C;&#x6BCE;&#x56DE;&#x306E;Workflow&#x3067;&#x540C;&#x3058;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;CircleCI&#x306E;Workflow&#x306E;&#x305F;&#x3073;&#x306B;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x306E;&#x306F;&#x975E;&#x52B9;&#x7387;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;&#xFF0C;&#x524D;&#x56DE;&#x306E;Workflow&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;vendor&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4E00;&#x3064;&#x306E;Workflow&#x306E;&#x4E2D;&#x3067;&#x3082;&#xFF0C;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>composer&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x524D;&#x56DE;&#x306E;&#x7D50;&#x679C;&#x3092;&#x518D;&#x5229;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">jobs:</span>
 <span class="hljs-attr">  build:</span>
 <span class="hljs-attr">    steps:</span>
-    <span class="hljs-comment"># composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#xFF0E;</span>
+      <span class="hljs-comment"># composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#xFF0E;</span>
 <span class="hljs-attr">      - restore_cache:</span>
 <span class="hljs-attr">          key:</span>
-<span class="hljs-bullet">            -</span> v1-dependecies-{{ checksum composer.json }}
+<span class="hljs-bullet">            -</span> v1-dependecies-{{ checksum <span class="hljs-string">&quot;composer.json&quot;</span> }}
+<span class="hljs-bullet">            -</span> v1-dependencies-
       <span class="hljs-comment"># &#x53D6;&#x5F97;&#x3057;&#x305F;composer.json&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5DEE;&#x5206;&#x306E;vendor&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
-<span class="hljs-attr">      - run:</span> composer install
-      <span class="hljs-comment"># &#x6700;&#x65B0;&#x306E;vendor&#x3092;&#x4FDD;&#x5B58;</span>
-<span class="hljs-attr">      - save_cache:</span>
-<span class="hljs-attr">          key:</span> v1-dependecies-{{ checksum composer.json }}
+<span class="hljs-attr">      - run:</span> 
+<span class="hljs-attr">          name:</span> Run composer install
+<span class="hljs-attr">          commands:</span> <span class="hljs-string">|
+            composer install -n --prefer-dist
+      # &#x6700;&#x65B0;&#x306E;vendor&#x3092;&#x4FDD;&#x5B58;
+</span><span class="hljs-attr">      - save_cache:</span>
+<span class="hljs-attr">          key:</span> v1-dependecies-{{ checksum <span class="hljs-string">&quot;composer.json&quot;</span> }}
 <span class="hljs-attr">          paths:</span>
-<span class="hljs-bullet">            -</span> /vendor
+<span class="hljs-bullet">            -</span> ./vendor
 </code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>yarn&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x524D;&#x56DE;&#x306E;&#x7D50;&#x679C;&#x3092;&#x518D;&#x5229;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  build_and_test:</span>
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> circleci/python:<span class="hljs-number">3.8</span>-node
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-attr">      - restore_cache:</span>
+<span class="hljs-attr">          keys:</span>
+<span class="hljs-bullet">            -</span> v1-dependencies-{{ checksum <span class="hljs-string">&quot;package.json&quot;</span> }}
+<span class="hljs-bullet">            -</span> v1-dependencies-
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Run yarn install
+<span class="hljs-attr">          commands:</span> <span class="hljs-string">|
+            yarn install
+</span><span class="hljs-attr">      - save_cache:</span>
+<span class="hljs-attr">          paths:</span>
+<span class="hljs-bullet">            -</span> node_modules
+<span class="hljs-attr">          key:</span> v1-dependencies-{{ checksum <span class="hljs-string">&quot;yarn.lock&quot;</span> }}
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Run yarn build
+          commands : <span class="hljs-string">|
+            yarn build
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Run yarn test
+          commands : <span class="hljs-string">|
+            yarn test
+</span></code></pre>
 <p>&#x305F;&#x3060;&#xFF0C;&#x3053;&#x306E;&#x6A5F;&#x80FD;&#x306F;commands&#x3067;&#x5171;&#x901A;&#x5316;&#x3057;&#x305F;&#x65B9;&#x304C;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
@@ -1875,19 +1911,28 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
       <span class="hljs-comment"># composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#xFF0E;</span>
 <span class="hljs-attr">      - restore_cache:</span>
 <span class="hljs-attr">          key:</span>
-<span class="hljs-bullet">            -</span> v1-dependecies-{{ checksum composer.json }}
-  <span class="hljs-comment"># &#x53D6;&#x5F97;&#x3057;&#x305F;composer.json&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5DEE;&#x5206;&#x306E;vendor&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF0E;</span>
-<span class="hljs-attr">  install_vendor:</span>
-<span class="hljs-attr">     steps:</span>
-<span class="hljs-attr">       - run:</span> composer install
+<span class="hljs-bullet">            -</span> v1-dependecies-{{ checksum <span class="hljs-string">&quot;composer.json&quot;</span> }}
+<span class="hljs-bullet">            -</span> v1-dependencies-
+
 <span class="hljs-attr">  save_vendor:</span>
 <span class="hljs-attr">    steps:</span>
       <span class="hljs-comment"># &#x6700;&#x65B0;&#x306E;vendor&#x3092;&#x4FDD;&#x5B58;&#xFF0E;</span>
 <span class="hljs-attr">      - save_cache:</span>
-<span class="hljs-attr">          key:</span> v1-dependecies-{{ checksum composer.json }}
+<span class="hljs-attr">          key:</span> v1-dependecies-{{ checksum <span class="hljs-string">&quot;composer.json&quot;</span> }}
 <span class="hljs-attr">          paths:</span>
-<span class="hljs-bullet">            -</span> /vendor
-</code></pre>
+<span class="hljs-bullet">            -</span> ./vendor
+
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  build:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> restore_vendor
+      <span class="hljs-comment"># &#x53D6;&#x5F97;&#x3057;&#x305F;composer.json&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5DEE;&#x5206;&#x306E;vendor&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<span class="hljs-attr">      - run:</span> 
+<span class="hljs-attr">          name:</span> Run composer install
+<span class="hljs-attr">          commands:</span> <span class="hljs-string">|
+            composer install -n --prefer-dist
+      - save_vendor
+</span></code></pre>
 <h4 id="&#x30FB;persisttoworkspace&#xFF0C;attachworkspace">&#x30FB;persist_to_workspace&#xFF0C;attach_workspace</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/workflow_workspace_cache.png" alt="workflow_workspace_cache"></p>
 <p>CircleCI&#x3067;&#x306F;&#xFF0C;job&#x3054;&#x3068;&#x306B;&#x7570;&#x306A;&#x308B;&#x4EEE;&#x60F3;&#x74B0;&#x5883;&#x304C;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x4ED6;&#x306E;<code>job</code>&#x3067;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x305F;&#x4E00;&#x6642;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x518D;&#x5229;&#x7528;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x4F7F;&#x3046;&#xFF0E;</p>
@@ -1992,7 +2037,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <h4 id="&#x30FB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x5225;">&#x30FB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x5225;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-yaml"><span class="hljs-attr">workflows:</span>
-  <span class="hljs-comment"># Review feature</span>
+  <span class="hljs-comment"># Feature&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x30EC;&#x30D3;&#x30E5;&#x30FC;</span>
 <span class="hljs-attr">  feature:</span>
 <span class="hljs-attr">    jobs:</span>
 <span class="hljs-attr">      - build:</span>
@@ -2006,7 +2051,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <span class="hljs-attr">          requires:</span>
 <span class="hljs-bullet">            -</span> build_feat
 
-  <span class="hljs-comment"># Deploy staging env</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
 <span class="hljs-attr">  develop:</span>
 <span class="hljs-attr">    jobs:</span>
 <span class="hljs-attr">      - build:</span>
@@ -2024,7 +2069,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <span class="hljs-attr">          requires:</span>
 <span class="hljs-bullet">            -</span> test_stg
 
-  <span class="hljs-comment"># Deploy production env</span>
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
 <span class="hljs-attr">  main:</span>
 <span class="hljs-attr">    jobs:</span>
 <span class="hljs-attr">      - build:</span>
@@ -2148,7 +2193,7 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 <tr>
 <td>Bash</td>
 <td><code>export</code>&#xFF0C;<code>source</code>&#xFF0C;<code>$BASH_ENV</code></td>
-<td><code>run</code>&#x306B;&#x304A;&#x3051;&#x308B;<code>command</code>&#x5185;&#x306E;&#x307F;&#x3067;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
+<td><code>run</code>&#x306B;&#x304A;&#x3051;&#x308B;<code>command</code>&#x5185;&#x306E;&#x307F;&#x3067;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;<code>$BASH_ENV</code>&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>commands</code>&#x9593;&#x3067;&#x5024;&#x3092;&#x5171;&#x6709;&#x53EF;&#x80FD;&#xFF0E;</td>
 </tr>
 <tr>
 <td>Container</td>
@@ -2172,19 +2217,44 @@ $ circleci <span class="hljs-built_in">local</span> execute -c .circleci/process
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;commands&#x306B;&#x304A;&#x3051;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x51FA;&#x529B;&#x65B9;&#x6CD5;">&#x30FB;commands&#x306B;&#x304A;&#x3051;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x51FA;&#x529B;&#x65B9;&#x6CD5;</h4>
+<p>&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;<code>echo</code>&#x306E;&#x5F15;&#x6570;&#x306B;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;<code>base64 --decode</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x6697;&#x53F7;&#x5316;&#x3057;&#x305F;&#x72B6;&#x614B;&#x3067;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">jobs:</span>
+  build_and_
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> circleci/python:<span class="hljs-number">3.8</span>-node
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Make env file
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            echo $API_URL_BROWSER | base64 --decode &gt; .env
+            echo $API_URL | base64 --decode &gt;&gt; .env
+            echo $OAUTH_CLIENT_ID | base64 --decode &gt;&gt; .env
+            echo $OAUTH_CLIENT_SECRET | base64 --decode &gt;&gt; .env
+            echo $GOOGLE_MAP_QUERY_URL | base64 --decode &gt;&gt; .env
+</span><span class="hljs-attr">       - run:</span>
+<span class="hljs-attr">           name:</span> Install node module
+<span class="hljs-attr">           commands:</span> <span class="hljs-string">|
+             yarn install
+</span><span class="hljs-attr">       - run:</span> 
+<span class="hljs-attr">           name:</span> Generate nuxt-ts
+<span class="hljs-attr">           commands:</span> <span class="hljs-string">|
+             yarn nuxt-ts generate
+</span></code></pre>
+<p>&#x306A;&#x304A;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x4E2D;&#x306B;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;&#x306E;&#x5834;&#x5408;&#xFF0C;<code>${}</code>&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># &#x5909;&#x6570;&#x5C55;&#x958B;&#x306E;&#x5834;&#x5408;</span>
+<span class="hljs-attr">steps:</span>
+<span class="hljs-bullet">  -</span> checkout
+<span class="hljs-attr">  - run:</span>
+<span class="hljs-attr">      name:</span> XXXXX
+<span class="hljs-attr">      commands:</span> <span class="hljs-string">|
+        echo &quot;This is ${XXXXX}&quot;
+</span></code></pre>
 <p><br></p>
 <h3 id="&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;">&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;</h3>
-<h4 id="&#x30FB;&#x5024;&#x306E;&#x51FA;&#x529B;&#x65B9;&#x6CD5;">&#x30FB;&#x5024;&#x306E;&#x51FA;&#x529B;&#x65B9;&#x6CD5;</h4>
-<p>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3084;<code>echo</code>&#x306E;&#x5F15;&#x6570;&#x306B;&#x3066;&#xFF0C;<code>$</code>&#x30DE;&#x30FC;&#x30AF;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-yaml"><span class="hljs-comment"># &#x51FA;&#x529B;</span>
-echo $XXXXX
-</code></pre>
-<p>&#x6587;&#x5B57;&#x5217;&#x306E;&#x4E2D;&#x306B;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;<code>${}</code>&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-yaml"><span class="hljs-comment"># &#x5909;&#x6570;&#x5C55;&#x958B;</span>
-echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
-</code></pre>
 <h4 id="&#x30FB;bash&#x30EC;&#x30D9;&#x30EB;">&#x30FB;Bash&#x30EC;&#x30D9;&#x30EB;</h4>
-<p>&#x4E00;&#x756A;&#x53C2;&#x7167;&#x7BC4;&#x56F2;&#x304C;&#x5C0F;&#x3055;&#x304F;&#xFF0C;<code>run</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x540C;&#x3058;<code>command</code>&#x5185;&#x306E;&#x307F;&#x3067;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>export</code>&#xFF0C;<code>source</code>&#xFF0C;<code>$BASH_ENV</code>&#xFF0C;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x4E00;&#x756A;&#x53C2;&#x7167;&#x7BC4;&#x56F2;&#x304C;&#x5C0F;&#x3055;&#x304F;&#xFF0C;<code>run</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x540C;&#x3058;<code>command</code>&#x5185;&#x306E;&#x307F;&#x3067;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;<code>$BASH_ENV</code>&#x306B;&#x5BFE;&#x3057;&#x3066;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x5024;&#x3092;&#x4FDD;&#x6301;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;<code>command</code>&#x3067;&#x5171;&#x6709;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span> 
 
 <span class="hljs-attr">jobs:</span>
@@ -2248,9 +2318,9 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <p>&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x306B;machine&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x9078;&#x629E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x3059;&#x3067;&#x306B;docker-compose&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8" target="_blank">https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8</a></p>
 <p><br></p>
-<h3 id="dockerize&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">dockerize&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h3>
+<h3 id="docker-compose--dockerize">docker-compose &amp; dockerize</h3>
 <h4 id="&#x30FB;dockerinstall-dockerize">&#x30FB;docker/install-dockerize</h4>
-<p>CircleCI&#x3067;Docker Compose&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;Docker Compose&#x306F;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x306E;&#x9806;&#x756A;&#x3092;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#x3082;&#x306E;&#x306E;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;&#x6C17;&#x306B;&#x3057;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x5F8C;&#x306B;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x5B8C;&#x5168;&#x306B;&#x8D77;&#x52D5;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x306E;&#x306B;&#x3082;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#xFF0C;&#x6B21;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x958B;&#x59CB;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x5B8C;&#x5168;&#x306B;&#x8D77;&#x52D5;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6B21;&#x306B;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x63A5;&#x7D9A;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x9632;&#x3050;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x3092;&#x5F85;&#x6A5F;&#x3057;&#x3066;&#x304B;&#x3089;&#xFF0C;&#x63A5;&#x7D9A;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>CircleCI&#x3067;Docker Compose&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;Docker Compose&#x306F;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x306E;&#x9806;&#x756A;&#x3092;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#x3082;&#x306E;&#x306E;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;&#x6C17;&#x306B;&#x3057;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x5F8C;&#x306B;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x5B8C;&#x5168;&#x306B;&#x8D77;&#x52D5;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x306E;&#x306B;&#x3082;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#xFF0C;&#x6B21;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x958B;&#x59CB;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x5B8C;&#x5168;&#x306B;&#x8D77;&#x52D5;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6B21;&#x306B;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x63A5;&#x7D9A;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x9632;&#x3050;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x3092;&#x5F85;&#x6A5F;&#x3057;&#x3066;&#x304B;&#x3089;&#xFF0C;&#x63A5;&#x7D9A;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;dockerize&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306E;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#xFF0C;sleep&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/docker/compose/issues/374#issuecomment-126312313" target="_blank">https://github.com/docker/compose/issues/374#issuecomment-126312313</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>Laravel&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;MySQL&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x5834;&#x5408;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
@@ -2265,9 +2335,8 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <span class="hljs-attr">      - restore_cache:</span>
 <span class="hljs-attr">          key:</span>
 <span class="hljs-bullet">            -</span> v1-dependecies-{{ checksum composer.json }}
-<span class="hljs-attr">  install_vendor:</span>
-<span class="hljs-attr">     steps:</span>
-<span class="hljs-attr">       - run:</span> composer install -n --prefer-dist
+<span class="hljs-bullet">            -</span> v1-dependencies-
+
 <span class="hljs-attr">  save_vendor:</span>
 <span class="hljs-attr">    steps:</span>
 <span class="hljs-attr">      - save_cache:</span>
@@ -2279,23 +2348,29 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <span class="hljs-attr">  build_and_test:</span>
     <span class="hljs-comment"># Docker Compose&#x306E;&#x6642;&#x306F;machine&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;</span>
 <span class="hljs-attr">    machine:</span>
-<span class="hljs-attr">      - image:</span> ubuntu<span class="hljs-bullet">-1604</span>:<span class="hljs-number">201903</span><span class="hljs-bullet">-01</span>
+<span class="hljs-attr">      image:</span> ubuntu<span class="hljs-bullet">-1604</span>:<span class="hljs-number">201903</span><span class="hljs-bullet">-01</span>
 <span class="hljs-attr">    steps:</span>
 <span class="hljs-bullet">      -</span> checkout
 <span class="hljs-attr">      - run:</span>
 <span class="hljs-attr">          name:</span> Make env file
-<span class="hljs-attr">          command:</span> echo $ENV_TESTING | base64 -di &gt; .env
-<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            echo $ENV | base64 --decode &gt; .env
+</span><span class="hljs-attr">      - run:</span>
 <span class="hljs-attr">          name:</span> Make env docker file
-<span class="hljs-attr">          command:</span> cp .env.docker.example .env.docker
-<span class="hljs-attr">      - run:</span>
-<span class="hljs-attr">          name:</span> Docker Compose
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            cp .env.docker.example .env.docker
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Docker compose up
 <span class="hljs-attr">          command:</span> <span class="hljs-string">|
             set -xe
             docker network create example-network
             docker-compose up --build -d
       - restore_vendor
-      - install_vendor
+      # Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;comspoer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Composer install
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            docker exec -it laravel-container composer install -n --prefer-dist
       - save_vendor
       # Dockerize&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;
       - docker/install-dockerize:
@@ -2303,20 +2378,78 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <span class="hljs-attr">      - run:</span>
 <span class="hljs-attr">          name:</span> Wait for MySQL to be ready
 <span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            # &#x4EE3;&#x308F;&#x308A;&#x306B;sleep&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x3082;&#x3088;&#x3044;&#xFF0E;
             dockerize -wait tcp://localhost:3306 -timeout 1m
-            sleep 30
+      # Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;
 </span><span class="hljs-attr">      - run:</span>
-<span class="hljs-attr">          name:</span> Run migration test
+<span class="hljs-attr">          name:</span> Run artisan migration
 <span class="hljs-attr">          command:</span> <span class="hljs-string">|
             docker exec -it laravel-container php artisan migrate --force
+      # Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;PHP-Unit&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;
 </span><span class="hljs-attr">      - run:</span>
-<span class="hljs-attr">          name:</span> Run unit teest
+<span class="hljs-attr">          name:</span> Run unit test
 <span class="hljs-attr">          command:</span> <span class="hljs-string">|
             docker exec -it laravel-container ./vendor/bin/phpunit
+      # Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;PHP-Stan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;  
 </span><span class="hljs-attr">      - run:</span>
 <span class="hljs-attr">          name:</span> Run static test
 <span class="hljs-attr">          command:</span> <span class="hljs-string">|
             docker exec -it laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M
+</span></code></pre>
+<p><br></p>
+<h3 id="dlc&#xFF1A;docker-layer-cache">DLC&#xFF1A;Docker Layer Cache</h3>
+<h4 id="&#x30FB;dlc&#x3068;&#x306F;">&#x30FB;DLC&#x3068;&#x306F;</h4>
+<p>CircleCI&#x3067;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x5404;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3092;DLC&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306B;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x3057;&#x3066;&#xFF0C;&#x6B21;&#x56DE;&#x4EE5;&#x964D;&#x306E;&#x30D3;&#x30EB;&#x30C9;&#x6642;&#x306B;&#xFF0C;&#x5DEE;&#x5206;&#x304C;&#x306A;&#x3044;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3092;DLC&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x304B;&#x3089;&#x30D7;&#x30EB;&#x3057;&#x3066;&#x518D;&#x5229;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;&#x6642;&#x9593;&#x3092;&#x77ED;&#x7E2E;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DockerLayerCache.png" alt="DockerLayerCache"></p>
+<h4 id="&#x30FB;&#x4F7F;&#x7528;&#x4F8B;">&#x30FB;&#x4F7F;&#x7528;&#x4F8B;</h4>
+<p>machine&#x30BF;&#x30A4;&#x30D7;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;machine&#x30AD;&#x30FC;&#x306E;&#x4E0B;&#x3067;<code>docker_layer_caching</code>&#x3092;&#x4F7F;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">orbs:</span>
+<span class="hljs-attr">  docker:</span> circleci/docker@x.y.z
+
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  build_and_test:</span>
+    <span class="hljs-comment"># Docker Compose&#x306E;&#x6642;&#x306F;machine&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;</span>
+<span class="hljs-attr">    machine:</span>
+<span class="hljs-attr">      image:</span> ubuntu<span class="hljs-bullet">-1604</span>:<span class="hljs-number">201903</span><span class="hljs-bullet">-01</span>
+      <span class="hljs-comment"># DLC&#x3092;&#x6709;&#x52B9;&#x5316;</span>
+<span class="hljs-attr">      docker_layer_caching:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Make env file
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            echo $ENV_TESTING | base64 --decode &gt; .env
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Make env docker file
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            cp .env.docker.example .env.docker
+</span><span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Docker compose up
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            set -xe
+            docker network create example-network
+            docker-compose up --build -d
+</span></code></pre>
+<p>docker&#x30BF;&#x30A4;&#x30D7;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;docker&#x30AD;&#x30FC;&#x306E;&#x4E0B;&#x3067;<code>docker_layer_caching</code>&#x3092;&#x4F7F;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  build_and_push:</span>
+<span class="hljs-attr">    executor:</span> docker/docker
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> setup_remote_docker
+          <span class="hljs-comment"># DLC&#x3092;&#x6709;&#x52B9;&#x5316;</span>
+<span class="hljs-attr">          docker_layer_caching:</span> <span class="hljs-literal">true</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-bullet">      -</span> docker/check
+<span class="hljs-bullet">      -</span> docker/build:
+<span class="hljs-attr">          image:</span> &lt;&#x30E6;&#x30FC;&#x30B6;&#x540D;&gt;/&lt;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x540D;<span class="hljs-string">&gt;
+      - docker/push:
+</span><span class="hljs-attr">          image:</span> &lt;&#x30E6;&#x30FC;&#x30B6;&#x540D;&gt;/&lt;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x540D;<span class="hljs-string">&gt;
 </span></code></pre>
 <p><br></p>
 <h2 id="02-09-circleci&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">02-09. CircleCI&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
@@ -2349,7 +2482,7 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 </tr>
 <tr>
 <td>commands</td>
-<td><code>job</code>&#x306B;&#x3066;&#xFF0C;``step```&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
+<td><code>job</code>&#x306B;&#x3066;&#xFF0C;<code>step</code>&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>executors</td>
@@ -2363,12 +2496,19 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  aws-ecr:</span> circleci/aws-xxx@x.y.z
+<span class="hljs-attr">  aws-xxx:</span> circleci/aws-xxx@x.y.z
 
-<span class="hljs-attr">workflows:</span>
-<span class="hljs-attr">  build_and_push_image:</span>
-<span class="hljs-attr">    jobs:</span>
-<span class="hljs-bullet">      -</span> aws-xxx/yyy-yyy-yyy:
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  xxx_xxx_xxx:</span>
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> circleci/python:x.y.z
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-attr">      - attach_workspace:</span>
+<span class="hljs-attr">          at:</span> .
+<span class="hljs-attr">      - setup_remote_docker:</span>
+<span class="hljs-bullet">      -</span> aws-cli/install
+<span class="hljs-bullet">      -</span> aws-cli/setup
+<span class="hljs-bullet">      -</span> aws-xxx/xxx-xxx-xxx:
           <span class="hljs-comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x540D;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x8A18;&#x8FF0;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;</span>
 <span class="hljs-attr">          account-url:</span> $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
 <span class="hljs-attr">          aws-access-key-id:</span> $ACCESS_KEY_ID_ENV_VAR_NAME
@@ -2376,105 +2516,233 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <span class="hljs-attr">          region:</span> $AWS_REGION_ENV_VAR_NAME
 </code></pre>
 <p><br></p>
-<h3 id="aws-ecr">aws-ecr</h3>
-<h4 id="&#x30FB;jobs&#xFF1A;build-and-push-image">&#x30FB;jobs&#xFF1A;build-and-push-image</h4>
-<p>CircleCI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3057;&#xFF0C;ECR&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h3 id="aws-cli">aws-cli</h3>
+<h4 id="&#x30FB;commands-install--setup">&#x30FB;commands: install / setup</h4>
+<p>aws-cli&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3084;Credentials&#x60C5;&#x5831;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x3046;&#xFF0E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x4F7F;&#x7528;&#x4F8B;&#xFF1A;cloudfront&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;">&#x30FB;&#x4F7F;&#x7528;&#x4F8B;&#xFF1A;Cloudfront&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;</h4>
+<p>CloudFront&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;Cache&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;CloudFront&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;Cache&#x3092;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x9650;&#x308A;&#xFF0C;Cache&#x304C;Hit&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x306F;&#x904E;&#x53BB;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;S3&#x3078;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x5F8C;&#x306B;&#xFF0C;Cache&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  aws-ecr:</span> circleci/aws-ecr@x.y.z
+<span class="hljs-attr">  aws-cli:</span> circleci/aws-cli@<span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
 
-<span class="hljs-attr">workflows:</span>
-<span class="hljs-attr">  build_and_push_image:</span>
+<span class="hljs-attr">jobs:</span>
+<span class="hljs-attr">  cloudfront_create_invalidation:</span>
+<span class="hljs-attr">    docker:</span>
+<span class="hljs-attr">      - image:</span> cimg/python:<span class="hljs-number">3.9</span>-node
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> checkout
+<span class="hljs-bullet">      -</span> aws-cli/install
+<span class="hljs-bullet">      -</span> aws-cli/setup
+<span class="hljs-attr">      - run:</span>
+<span class="hljs-attr">          name:</span> Run create invalidation
+<span class="hljs-attr">          command:</span> <span class="hljs-string">|
+            echo $AWS_CLOUDFRONT_ID |
+            base64 --decode |
+            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths &quot;/*&quot;
+
+</span><span class="hljs-attr">workflows:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
 <span class="hljs-attr">    jobs:</span>
-<span class="hljs-bullet">      -</span> aws-ecr/build-and-push-image:
-<span class="hljs-attr">          account-url:</span> $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
-<span class="hljs-attr">          aws-access-key-id:</span> $ACCESS_KEY_ID_ENV_VAR_NAME
-<span class="hljs-attr">          aws-secret-access-key:</span> $SECRET_ACCESS_KEY_ENV_VAR_NAME
-<span class="hljs-attr">          region:</span> $AWS_REGION_ENV_VAR_NAME
-          <span class="hljs-comment"># &#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304C;&#x306A;&#x3044;&#x6642;&#x306B;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0E;</span>
-<span class="hljs-attr">          create-repo:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">          no-output-timeout:</span> <span class="hljs-number">20</span>m
-          <span class="hljs-comment"># project&#x3092;&#x4F5C;&#x696D;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3068;&#x3057;&#x305F;&#x6642;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;</span>
-<span class="hljs-attr">          dockerfile:</span> ./infra/docker/Dockerfile
-<span class="hljs-attr">          path:</span> <span class="hljs-string">&apos;.&apos;</span>
-<span class="hljs-attr">          profile-name:</span> myProfileName
-<span class="hljs-attr">          repo:</span> <span class="hljs-string">&apos;{$APP_NAME}-repository&apos;</span>
-          <span class="hljs-comment"># CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;</span>
-<span class="hljs-attr">          tag:</span> $CIRCLE_SHA1
-          <span class="hljs-comment"># job&#x5185;&#x306B;&#x3066;&#xFF0C;attach_workspace&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="hljs-attr">          attach-workspace:</span> <span class="hljs-literal">true</span>
-          <span class="hljs-comment"># attach_workspace&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x5B9F;&#x884C;&#x6642;&#x306E;root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
-<span class="hljs-attr">          workspace-root:</span> &lt;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="hljs-string">&gt;
+      <span class="hljs-comment"># &#x76F4;&#x524D;&#x306B;&#x627F;&#x8A8D;&#x30B8;&#x30E7;&#x30D6;&#x3092;&#x633F;&#x5165;&#x3059;&#x308B;</span>
+<span class="hljs-attr">      - hold:</span>
+<span class="hljs-attr">          name:</span> hold_create_invalidation_stg
+<span class="hljs-attr">          type:</span> approval
+<span class="hljs-attr">      - cloudfront_create_invalidation:</span>
+<span class="hljs-attr">          name:</span> cloudfront_create_invalidation_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+      <span class="hljs-comment"># &#x76F4;&#x524D;&#x306B;&#x627F;&#x8A8D;&#x30B8;&#x30E7;&#x30D6;&#x3092;&#x633F;&#x5165;&#x3059;&#x308B;</span>
+<span class="hljs-attr">      - hold:</span>
+<span class="hljs-attr">          name:</span> hold_create_invalidation_prd
+<span class="hljs-attr">          type:</span> approval    
+<span class="hljs-attr">      - cloudfront_create_invalidation:</span>
+<span class="hljs-attr">          name:</span> cloudfront_create_invalidation_prd
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
+</code></pre>
+<p><br></p>
+<h3 id="aws-ecr">aws-ecr</h3>
+<h4 id="&#x30FB;jobs&#xFF1A;build-and-push-image">&#x30FB;jobs&#xFF1A;build-and-push-image</h4>
+<p>CircleCI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3057;&#xFF0C;ECR&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#xFF0E;<code>remote-docker-layer-caching</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;Docker Layer Cache&#x3092;&#x6709;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">orbs:</span>
+<span class="hljs-attr">  aws-cli:</span> circleci/aws-cli@<span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
+<span class="hljs-attr">  aws-ecr:</span> circleci/aws-ecr@<span class="hljs-number">6.15</span><span class="hljs-number">.2</span>
+
+<span class="hljs-attr">jobs:</span>
+  aws-ecr/build-and-push-image:
+<span class="hljs-attr">    name:</span> ecr_build_and_push_image
+    <span class="hljs-comment"># Docker Layer Cache&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF08;&#x6709;&#x6599;&#xFF09;</span>
+<span class="hljs-attr">    remote-docker-layer-caching:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-comment"># &#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304C;&#x306A;&#x3044;&#x6642;&#x306B;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0E;</span>
+<span class="hljs-attr">    create-repo:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    no-output-timeout:</span> <span class="hljs-number">20</span>m
+    <span class="hljs-comment"># project&#x3092;&#x4F5C;&#x696D;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3068;&#x3057;&#x305F;&#x6642;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;</span>
+<span class="hljs-attr">    dockerfile:</span> ./infra/docker/Dockerfile
+<span class="hljs-attr">    path:</span> <span class="hljs-string">&apos;.&apos;</span>
+<span class="hljs-attr">    profile-name:</span> myProfileName
+<span class="hljs-attr">    repo:</span> <span class="hljs-string">&apos;{$SERVICE}-repository&apos;</span>
+    <span class="hljs-comment"># CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;</span>
+<span class="hljs-attr">    tag:</span> $CIRCLE_SHA1
+    <span class="hljs-comment"># job&#x5185;&#x306B;&#x3066;&#xFF0C;attach_workspace&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
+<span class="hljs-attr">    attach-workspace:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-comment"># attach_workspace&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x5B9F;&#x884C;&#x6642;&#x306E;root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+<span class="hljs-attr">    workspace-root:</span> &lt;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="hljs-string">&gt;
 </span></code></pre>
 <p><br></p>
 <h3 id="aws-ecs">aws-ecs</h3>
-<h4 id="&#x30FB;jobs&#xFF1A;deploy-service-update">&#x30FB;jobs&#xFF1A;deploy-service-update</h4>
-<p>ECS&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;aws-cli&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash">$ aws ecs update-service &lt;&#x8907;&#x6570;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&gt;
-</code></pre>
+<h4 id="&#x30FB;jobs&#xFF1A;update-service&#xFF08;&#x30ED;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x4F7F;&#x7528;&#x6642;&#xFF09;">&#x30FB;jobs&#xFF1A;update-service&#xFF08;&#x30ED;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x4F7F;&#x7528;&#x6642;&#xFF09;</h4>
+<p>ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x3055;&#x3089;&#x306B;&#xFF0C;&#x30ED;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x304C;&#x305D;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#xFF0C;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;<code>verify-revision-is-deployed</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x305F;&#x5F8C;&#xFF0C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306B;&#x5408;&#x81F4;&#x3057;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x76E3;&#x8996;&#x3059;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x300C;Runnning&#x300D;&#x306B;&#x306A;&#x3089;&#x305A;&#x306B;&#x300C;Stopped&#x300D;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x5834;&#x5408;&#x3084;&#xFF0C;&#x65E2;&#x5B58;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x300C;Stopped&#x300D;&#x306B;&#x306A;&#x3089;&#x305A;&#x306B;&#x300C;Running&#x300D;&#x306E;&#x307E;&#x307E;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x72B6;&#x614B;&#x306F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306B;&#x5408;&#x81F4;&#x3057;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x691C;&#x77E5;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  aws-ecr:</span> circleci/aws-ecr@x.y.z
-<span class="hljs-attr">  aws-ecs:</span> circleci/aws-ecs@x.y.z
+<span class="hljs-attr">  aws-cli:</span> circleci/aws-cli@<span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
+<span class="hljs-attr">  aws-ecs:</span> circleci/aws-ecs@<span class="hljs-number">1.4</span><span class="hljs-number">.0</span>
+
+<span class="hljs-attr">jobs:</span>
+  aws-ecs/update-service:
+<span class="hljs-attr">    name:</span> ecs_update_service_by_rolling_update
+    <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    family:</span> <span class="hljs-string">&apos;${SERVICE}-ecs-task-definition&apos;</span>
+    <span class="hljs-comment"># &#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    cluster-name:</span> <span class="hljs-string">&apos;${SERVICE}-cluster&apos;</span>
+    <span class="hljs-comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    service-name:</span> <span class="hljs-string">&apos;${SERVICE}-service&apos;</span>
+    <span class="hljs-comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
+<span class="hljs-attr">    container-image-name-updates:</span> <span class="hljs-string">&apos;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&apos;</span>
+    <span class="hljs-comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x66F4;&#x65B0;&#x5F8C;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x76E3;&#x8996;</span>
+<span class="hljs-attr">    verify-revision-is-deployed:</span> <span class="hljs-literal">true</span>
 
 <span class="hljs-attr">workflows:</span>
-<span class="hljs-attr">  build-and-deploy:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
 <span class="hljs-attr">    jobs:</span>
-<span class="hljs-bullet">      -</span> aws-ecr/build-and-push-image:
+<span class="hljs-attr">      - ecs_update_service_by_rolling_update:</span>
+<span class="hljs-attr">          name:</span> ecs_update_service_by_rolling_update_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
 
-      <span class="hljs-comment"># ~~~ &#x7701;&#x7565; ~~~ #</span>
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - ecs_update_service_by_rolling_update:</span>
+<span class="hljs-attr">          name:</span> ecs_update_service_by_rolling_update_production
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
+</code></pre>
+<h4 id="&#x30FB;jobs&#xFF1A;update-service&#xFF08;bg&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x30E1;&#x30F3;&#x30C8;&#x4F7F;&#x7528;&#x6642;&#xFF09;">&#x30FB;jobs&#xFF1A;update-service&#xFF08;B/G&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x30E1;&#x30F3;&#x30C8;&#x4F7F;&#x7528;&#x6642;&#xFF09;</h4>
+<p>ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x3055;&#x3089;&#x306B;&#xFF0C;Blue/Green&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x30E1;&#x30F3;&#x30C8;&#x304C;&#x305D;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#xFF0C;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x30ED;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;&#x3068;&#x540C;&#x69D8;&#x306B;&#x3057;&#x3066;&#xFF0C;<code>verify-revision-is-deployed</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
-<span class="hljs-bullet">      -</span> aws-ecs/deploy-service-update:
-<span class="hljs-attr">          requires:</span>
-<span class="hljs-bullet">            -</span> aws-ecr/build-and-push-image
-          <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="hljs-attr">          family:</span> <span class="hljs-string">&apos;${APP_NAME}-ecs-task-definition&apos;</span>
-          <span class="hljs-comment"># &#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="hljs-attr">          cluster-name:</span> <span class="hljs-string">&apos;${APP_NAME}-cluster&apos;</span>
-          <span class="hljs-comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="hljs-attr">          service-name:</span> <span class="hljs-string">&apos;${APP_NAME}-service&apos;</span>
-          <span class="hljs-comment"># CodeDeploy&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x8A2D;&#x5B9A;</span>
-<span class="hljs-attr">          deployment-controller:</span> CODE_DEPLOY
-<span class="hljs-attr">          codedeploy-application-name:</span> $APP_NAME}
-<span class="hljs-attr">          codedeploy-deployment-group-name:</span> <span class="hljs-string">&quot;${APP_NAME}-deployment-group&quot;</span>
-<span class="hljs-attr">          codedeploy-load-balanced-container-name:</span> www-container
-<span class="hljs-attr">          codedeploy-load-balanced-container-port:</span> <span class="hljs-number">80</span>
-          <span class="hljs-comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
-<span class="hljs-attr">          container-image-name-updates:</span> <span class="hljs-string">&apos;container=${APP_NAME}-container,tag=${CIRCLE_SHA1}&apos;</span>
+<span class="hljs-attr">orbs:</span>
+<span class="hljs-attr">  aws-cli:</span> circleci/aws-cli@<span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
+<span class="hljs-attr">  aws-ecs:</span> circleci/aws-ecs@<span class="hljs-number">1.4</span><span class="hljs-number">.0</span>
+
+<span class="hljs-attr">jobs:</span>
+  aws-ecs/update-service:
+<span class="hljs-attr">    name:</span> ecs_update_service_by_code_deploy
+    <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    family:</span> <span class="hljs-string">&apos;${SERVICE}-ecs-task-definition&apos;</span>
+    <span class="hljs-comment"># &#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    cluster-name:</span> <span class="hljs-string">&apos;${SERVICE}-cluster&apos;</span>
+    <span class="hljs-comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="hljs-attr">    service-name:</span> <span class="hljs-string">&apos;${SERVICE}-service&apos;</span>
+    <span class="hljs-comment"># CodeDeploy&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x8A2D;&#x5B9A;</span>
+<span class="hljs-attr">    deployment-controller:</span> CODE_DEPLOY
+<span class="hljs-attr">    codedeploy-application-name:</span> $SERVICE
+<span class="hljs-attr">    codedeploy-deployment-group-name:</span> <span class="hljs-string">&quot;${SERVICE}-deployment-group&quot;</span>
+<span class="hljs-attr">    codedeploy-load-balanced-container-name:</span> www-container
+<span class="hljs-attr">    codedeploy-load-balanced-container-port:</span> <span class="hljs-number">80</span>
+    <span class="hljs-comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
+<span class="hljs-attr">    container-image-name-updates:</span> <span class="hljs-string">&apos;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&apos;</span>
+    <span class="hljs-comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x66F4;&#x65B0;&#x5F8C;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x76E3;&#x8996;</span>
+<span class="hljs-attr">    verify-revision-is-deployed:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">workflows:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - ecs_update_service_by_code_deploy:</span>
+<span class="hljs-attr">          name:</span> ecs_update_service_by_code_deploy_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - ecs_update_service_by_code_deploy:</span>
+<span class="hljs-attr">          name:</span> ecs_update_service_by_code_deploy_production
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
 </code></pre>
 <h4 id="&#x30FB;jobs&#xFF1A;run-task">&#x30FB;jobs&#xFF1A;run-task</h4>
-<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x5185;&#x5305;&#x3055;&#x308C;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x73FE;&#x5728;&#x8D77;&#x52D5;&#x4E2D;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x3068;&#x306F;&#x5225;&#x306E;&#x3082;&#x306E;&#x3092;&#x65B0;&#x3057;&#x304F;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;aws-cli&#x3092;&#x5185;&#x90E8;&#x3067;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash">$ aws ecs run-task &lt;&#x8907;&#x6570;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&gt;
-</code></pre>
+<p>&#x65E2;&#x5B58;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x4E00;&#x90E8;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x3066;&#xFF0C;&#x73FE;&#x5728;&#x8D77;&#x52D5;&#x4E2D;&#x306E;ECS&#x30BF;&#x30B9;&#x30AF;&#x3068;&#x306F;&#x5225;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x3082;&#x306E;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x7528;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x3092;&#x8D77;&#x52D5;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x624B;&#x6CD5;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x7528;&#x306E;ECS&#x30BF;&#x30B9;&#x30AF;&#x3092;&#x8D77;&#x52D5;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x624B;&#x6CD5;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  aws-ecs:</span> circleci/aws-ecs@x.y.z
+<span class="hljs-attr">  aws-cli:</span> circleci/aws-cli@<span class="hljs-number">1.3</span><span class="hljs-number">.1</span>
+<span class="hljs-attr">  aws-ecs:</span> circleci/aws-ecs@<span class="hljs-number">1.4</span><span class="hljs-number">.0</span>
+
+<span class="hljs-attr">jobs:</span>
+  aws-ecs/run-task:
+<span class="hljs-attr">    name:</span> ecs_run_task_for_migration
+<span class="hljs-attr">    cluster:</span> <span class="hljs-string">&quot;${SERVICE}-ecs-cluster&quot;</span>
+    <span class="hljs-comment"># LATEST&#x3068;&#x3059;&#x308B;&#x3068;&#x305D;&#x306E;&#x6642;&#x70B9;&#x306E;&#x6700;&#x65B0;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x3067;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
+<span class="hljs-attr">    platform-version:</span> <span class="hljs-number">1.4</span><span class="hljs-number">.0</span>
+<span class="hljs-attr">    awsvpc:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">    launch-type:</span> FARGATE
+    <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#xFF0E;&#x6700;&#x65B0;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x304C;&#x81EA;&#x52D5;&#x88DC;&#x5B8C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+<span class="hljs-attr">    task-definition:</span> <span class="hljs-string">&quot;${SERVICE}-ecs-task-definition&quot;</span>
+<span class="hljs-attr">    subnet-ids:</span> $AWS_SUBNET_IDS
+<span class="hljs-attr">    security-group-ids:</span> $AWS_SECURITY_GROUPS
+    <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;</span>
+<span class="hljs-attr">    overrides:</span> <span class="hljs-string">&quot;{\\\&quot;containerOverrides\\\&quot;:[{\\\&quot;name\\\&quot;: \\\&quot;laravel\\\&quot;,\\\&quot;command\\\&quot;: [\\\&quot;php\\\&quot;, \\\&quot;artisan\\\&quot;, \\\&quot;migrate\\\&quot;, \\\&quot;--force\\\&quot;]}]}&quot;</span>
 
 <span class="hljs-attr">workflows:</span>
-<span class="hljs-attr">  version:</span> <span class="hljs-number">2.1</span>
-<span class="hljs-attr">  run-task:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
 <span class="hljs-attr">    jobs:</span>
-<span class="hljs-bullet">      -</span> aws-ecs/run-task:
-<span class="hljs-attr">          name:</span> run-task-fargate
-<span class="hljs-attr">          cluster:</span> <span class="hljs-string">&quot;${APP_NAME}-ecs-cluster&quot;</span>
-          <span class="hljs-comment"># LATEST&#x3068;&#x3059;&#x308B;&#x3068;&#x305D;&#x306E;&#x6642;&#x70B9;&#x306E;&#x6700;&#x65B0;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x3067;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
-<span class="hljs-attr">          platform-version:</span> <span class="hljs-number">1.3</span><span class="hljs-number">.0</span>
-<span class="hljs-attr">          assign-public-ip:</span> ENABLED
-<span class="hljs-attr">          awsvpc:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">          launch-type:</span> FARGATE
-          <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#xFF0E;&#x6700;&#x65B0;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x304C;&#x81EA;&#x52D5;&#x88DC;&#x5B8C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-<span class="hljs-attr">          task-definition:</span> <span class="hljs-string">&quot;${APP_NAME}-ecs-task-definition&quot;</span>
-<span class="hljs-attr">          subnet-ids:</span> $AWS_SUBNET_IDS
-<span class="hljs-attr">          security-group-ids:</span> $AWS_SECURITY_GROUPS
-          <span class="hljs-comment"># &#x30BF;&#x30B9;&#x30AF;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;</span>
-<span class="hljs-attr">          overrides:</span> <span class="hljs-string">&quot;{\\\&quot;containerOverrides\\\&quot;:[{\\\&quot;name\\\&quot;: \\\&quot;app\\\&quot;,\\\&quot;command\\\&quot;: [\\\&quot;php\\\&quot;, \\\&quot;artisan\\\&quot;, \\\&quot;migrate\\\&quot;, \\\&quot;--force\\\&quot;]}]}&quot;</span>
+<span class="hljs-attr">      - ecs_run_task_for_migration:</span>
+<span class="hljs-attr">          name:</span> ecs_run_task_for_migration_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - ecs_run_task_for_migration:</span>
+<span class="hljs-attr">          name:</span> ecs_run_task_for_migration_production
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
 </code></pre>
 <p><br></p>
 <h3 id="aws-code-deploy">aws-code-deploy</h3>
@@ -2484,53 +2752,94 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  aws-code-deploy:</span> circleci/aws-ecs@x.y.z
+<span class="hljs-attr">  aws-code-deploy:</span> circleci/aws-code-deploy@<span class="hljs-number">1.0</span><span class="hljs-number">.1</span>
+
+<span class="hljs-attr">jobs:</span>
+  aws-code-deploy/deploy:
+<span class="hljs-attr">    name:</span> code_deploy
+<span class="hljs-attr">    application-name:</span> $SERVICE}
+    <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;</span>
+<span class="hljs-attr">    bundle-bucket:</span> <span class="hljs-string">&quot;${SERVICE}-bucket&quot;</span>
+    <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3042;&#x308B;&#x30D5;&#x30A9;&#x30EB;&#x30C0;</span>
+<span class="hljs-attr">    bundle-source:</span> ./infra/aws_codedeploy
+    <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x3067;&#x4FDD;&#x5B58;</span>
+<span class="hljs-attr">    bundle-type:</span> zip
+    <span class="hljs-comment"># zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x540D;</span>
+<span class="hljs-attr">    bundle-key:</span> xxx-bundle
+<span class="hljs-attr">    deployment-config:</span> CodeDeployDefault.ECSAllAtOnce
+<span class="hljs-attr">    deployment-group:</span> <span class="hljs-string">&quot;${SERVICE}-deployment-group&quot;</span>
+    <span class="hljs-comment"># ECS&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;CodeDeploy&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30ED;&#x30FC;&#x30EB;</span>
+<span class="hljs-attr">    service-role-arn:</span> $CODE_DEPLOY_ROLE_FOR_ECS
 
 <span class="hljs-attr">workflows:</span>
-<span class="hljs-attr">  run-task:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
 <span class="hljs-attr">    jobs:</span>
-<span class="hljs-bullet">      -</span> aws-code-deploy/deploy:
-<span class="hljs-attr">          requires:</span>
-<span class="hljs-bullet">            -</span> build-and-push-image-www
-<span class="hljs-attr">          name:</span> deploy-source-code
-<span class="hljs-attr">          application-name:</span> $APP_NAME}
-          <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;</span>
-<span class="hljs-attr">          bundle-bucket:</span> <span class="hljs-string">&quot;${APP_NAME}-bucket&quot;</span>
-          <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3042;&#x308B;&#x30D5;&#x30A9;&#x30EB;&#x30C0;</span>
-<span class="hljs-attr">          bundle-source:</span> ./infra/aws_codedeploy
-          <span class="hljs-comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x3067;&#x4FDD;&#x5B58;</span>
-<span class="hljs-attr">          bundle-type:</span> zip
-          <span class="hljs-comment"># zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x540D;</span>
-<span class="hljs-attr">          bundle-key:</span> xxx-bundle
-<span class="hljs-attr">          deployment-config:</span> CodeDeployDefault.ECSAllAtOnce
-<span class="hljs-attr">          deployment-group:</span> <span class="hljs-string">&quot;${APP_NAME}-deployment-group&quot;</span>
-          <span class="hljs-comment"># ECS&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;CodeDeploy&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30ED;&#x30FC;&#x30EB;</span>
-<span class="hljs-attr">          service-role-arn:</span> $CODE_DEPLOY_ROLE_FOR_ECS
+<span class="hljs-attr">      - code_deploy:</span>
+<span class="hljs-attr">          name:</span> code_deploy_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - code_deploy:</span>
+<span class="hljs-attr">          name:</span> code_deploy_production
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
 </code></pre>
 <p><br></p>
 <h3 id="slack">slack</h3>
-<h4 id="&#x30FB;commands&#xFF1A;status">&#x30FB;commands&#xFF1A;status</h4>
+<h4 id="&#x30FB;commands&#xFF1A;notify">&#x30FB;commands&#xFF1A;notify</h4>
 <p>&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x7D42;&#x4E86;&#x6642;&#x306B;&#xFF0C;&#x6210;&#x529F;&#x307E;&#x305F;&#x306F;&#x5931;&#x6557;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#xFF0C;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x901A;&#x77E5;&#x3059;&#x308B;&#xFF0E;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x6700;&#x5F8C;&#x306E;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
 
 <span class="hljs-attr">orbs:</span>
-<span class="hljs-attr">  slack:</span> circleci/slack@x.y.z
+<span class="hljs-attr">  slack:</span> circleci/slack@<span class="hljs-number">4.1</span>
+
+<span class="hljs-attr">commands:</span>
+  <span class="hljs-comment"># &#x4ED6;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#x5185;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;command&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;</span>
+<span class="hljs-attr">  slack_notify:</span>
+<span class="hljs-attr">    steps:</span>
+<span class="hljs-bullet">      -</span> slack/notify:
+<span class="hljs-attr">          event:</span> fail
+<span class="hljs-attr">          template:</span> basic_fail_1
 
 <span class="hljs-attr">jobs:</span>
-<span class="hljs-attr">  build:</span>
-<span class="hljs-attr">    docker:</span>
-<span class="hljs-attr">      - image:</span> &lt;docker image<span class="hljs-string">&gt;
-</span><span class="hljs-attr">    steps:</span>
-<span class="hljs-attr">      - run:</span> exit <span class="hljs-number">0</span>
-<span class="hljs-bullet">      -</span> slack/status:
-          <span class="hljs-comment"># &#x6210;&#x529F;&#x3057;&#x305F;&#x5834;&#x5408;</span>
-<span class="hljs-attr">          success_message:</span> <span class="hljs-string">&apos;:tada: A $CIRCLE_job job has succeeded!&apos;</span>
-          <span class="hljs-comment"># &#x5931;&#x6557;&#x3057;&#x305F;&#x5834;&#x5408;</span>
-<span class="hljs-attr">          failure_message:</span> <span class="hljs-string">&apos;:red_circle: A $CIRCLE_job job has failed!&apos;</span>
-          <span class="hljs-comment"># &#x901A;&#x77E5;&#x5148;&#x306E;USERID&#x3092;&#x30AB;&#x30F3;&#x30DE;&#x533A;&#x5207;&#x308A;&#x3067;&#x6307;&#x5B9A;</span>
-<span class="hljs-attr">          mentions:</span> <span class="hljs-string">&apos;USERID1,USERID2&apos;</span>
-          <span class="hljs-comment"># Slack&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x306E;WebhookURL&#xFF08;CircleCI&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x767B;&#x9332;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#x8A2D;&#x5B9A;&#x4E0D;&#x8981;&#xFF09;</span>
-<span class="hljs-attr">          webhook:</span> webhook
+<span class="hljs-attr">  deploy:</span>
+<span class="hljs-attr">    steps:</span>
+    <span class="hljs-comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
+
+<span class="hljs-attr">workflows:</span>
+  <span class="hljs-comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
+<span class="hljs-attr">  develop:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - deploy:</span>
+<span class="hljs-attr">          name:</span> deploy_stg
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> develop
+          <span class="hljs-comment"># &#x5931;&#x6557;&#x6642;&#x306B;&#x901A;&#x77E5;</span>
+<span class="hljs-attr">          post-steps:</span>
+<span class="hljs-attr">            - slack_notify:</span>
+
+  <span class="hljs-comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;                </span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    jobs:</span>
+<span class="hljs-attr">      - deploy:</span>
+<span class="hljs-attr">          name:</span> deploy_production
+<span class="hljs-attr">          filters:</span>
+<span class="hljs-attr">            branches:</span>
+<span class="hljs-attr">              only:</span>
+<span class="hljs-bullet">                -</span> main
+          <span class="hljs-comment"># &#x5931;&#x6557;&#x6642;&#x306B;&#x901A;&#x77E5;</span>
+<span class="hljs-attr">          post-steps:</span>
+<span class="hljs-attr">            - slack_notify:</span>
 </code></pre>
 
                                 
@@ -2575,7 +2884,7 @@ echo <span class="hljs-string">&quot;This is ${XXXXX}&quot;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CircleCI","level":"1.25.2","depth":2,"next":{"title":"Capistrano","level":"1.25.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"CI & CD","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2020-12-17T19:08:07.562Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-19T11:37:25.376Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CircleCI","level":"1.25.2","depth":2,"next":{"title":"Capistrano","level":"1.25.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"CI & CD","level":"1.25.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2020-12-20T17:49:03.745Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-20T17:51:17.434Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

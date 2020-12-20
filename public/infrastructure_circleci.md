@@ -275,7 +275,7 @@ jobs:
         # デフォルト値
         default: "test"
         type: enum
-        enum: ["test", "staging", "production"]
+        enum: ["test", "stg", "prd"]
     steps:
       - run:
         # デフォルト値testを与えるときは何も設定しない
@@ -288,7 +288,7 @@ workflows:
     jobs:
       - deploy:
           # workflowにてenum型の値を設定
-          environment: "staging"
+          environment: stg
 ```
 
 <br>
@@ -570,9 +570,11 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-生成したファイルをキャッシュとして保存する．使い所として，例えば，ライブラリはcomposer.jsonの設定が変更されない限り，同じライブラリがインストールされる．しかし，CircleCIのWorkflowのたびに，ライブラリをインストールするのは非効率である．そこで，composer.jsonが変更されない限り，前回のWorkflow時に生成されたvendorディレクトリを繰り返し利用するようにする．また，一つのWorkflowの中でも，繰り返し利用できる．
+生成したファイルをキャッシュとして保存する．使い所として，例えば，Composerにおいて，ライブラリはcomposer.jsonの設定が変更されない限り，毎回のWorkflowで同じライブラリがインストールされる．しかし，CircleCIのWorkflowのたびに，ライブラリをインストールするのは非効率である．そこで，composer.jsonが変更されない限り，前回のWorkflow時に生成されたvendorディレクトリを繰り返し利用するようにする．また，一つのWorkflowの中でも，繰り返し利用できる．
 
 **＊実装例＊**
+
+composerを使用してライブラリをインストールする時に，前回の結果を再利用する．
 
 ```yaml
 version: 2.1
@@ -580,17 +582,56 @@ version: 2.1
 jobs:
   build:
     steps:
-    # composer.jsonが変更されている場合は処理をスキップ．
+      # composer.jsonが変更されている場合は処理をスキップ．
       - restore_cache:
           key:
-            - v1-dependecies-{{ checksum composer.json }}
+            - v1-dependecies-{{ checksum "composer.json" }}
+            - v1-dependencies-
       # 取得したcomposer.jsonを元に，差分のvendorをインストール
-      - run: composer install
+      - run: 
+          name: Run composer install
+          commands: |
+            composer install -n --prefer-dist
       # 最新のvendorを保存
       - save_cache:
-          key: v1-dependecies-{{ checksum composer.json }}
+          key: v1-dependecies-{{ checksum "composer.json" }}
           paths:
-            - /vendor
+            - ./vendor
+```
+
+**＊実装例＊**
+
+yarnを使用してライブラリをインストールする時に，前回の結果を再利用する．
+
+```yaml
+version: 2.1
+
+jobs:
+  build_and_test:
+    docker:
+      - image: circleci/python:3.8-node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Run yarn install
+          commands: |
+            yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Run yarn build
+          commands : |
+            yarn build
+      - run:
+          name: Run yarn test
+          commands : |
+            yarn test
 ```
 
 ただ，この機能はcommandsで共通化した方が可読性が良い．
@@ -606,18 +647,27 @@ commands:
       # composer.jsonが変更されている場合は処理をスキップ．
       - restore_cache:
           key:
-            - v1-dependecies-{{ checksum composer.json }}
-  # 取得したcomposer.jsonを元に，差分のvendorをインストール．
-  install_vendor:
-     steps:
-       - run: composer install
+            - v1-dependecies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+       
   save_vendor:
     steps:
       # 最新のvendorを保存．
       - save_cache:
-          key: v1-dependecies-{{ checksum composer.json }}
+          key: v1-dependecies-{{ checksum "composer.json" }}
           paths:
-            - /vendor
+            - ./vendor
+            
+jobs:
+  build:
+    steps:
+      - restore_vendor
+      # 取得したcomposer.jsonを元に，差分のvendorをインストール
+      - run: 
+          name: Run composer install
+          commands: |
+            composer install -n --prefer-dist
+      - save_vendor
 ```
 
 #### ・persist_to_workspace，attach_workspace
@@ -759,7 +809,7 @@ jobs:
 
 ```yaml
 workflows:
-  # Review feature
+  # Featureブランチをレビュー
   feature:
     jobs:
       - build:
@@ -773,7 +823,7 @@ workflows:
           requires:
             - build_feat
             
-  # Deploy staging env
+  # ステージング環境にデプロイ
   develop:
     jobs:
       - build:
@@ -791,7 +841,7 @@ workflows:
           requires:
             - test_stg
         
-  # Deploy production env
+  # 本番環境にデプロイ
   main:
     jobs:
       - build:
@@ -915,37 +965,62 @@ workflows:
 
 #### ・環境変数の種類と参照範囲
 
-| 参照レベル | 方法                                        | 説明                                               |
-| ---------- | ------------------------------------------- | -------------------------------------------------- |
-| Bash       | ```export```，```source```，```$BASH_ENV``` | ```run```における```command```内のみで参照できる． |
-| Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる．      |
-| Job        | ```environment```                           | ```job```内のみで参照できる．                      |
-| Project    | Environment Variables機能                   | リポジトリ内のみ参照できる．                       |
-| Global     | Contexts機能                                | 異なるリポジトリ間で参照できる．                   |
+| 参照レベル | 方法                                        | 説明                                                         |
+| ---------- | ------------------------------------------- | ------------------------------------------------------------ |
+| Bash       | ```export```，```source```，```$BASH_ENV``` | ```run```における```command```内のみで参照できる．ただし，```$BASH_ENV```を使用すれば，異なる```commands```間で値を共有可能． |
+| Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる．                |
+| Job        | ```environment```                           | ```job```内のみで参照できる．                                |
+| Project    | Environment Variables機能                   | リポジトリ内のみ参照できる．                                 |
+| Global     | Contexts機能                                | 異なるリポジトリ間で参照できる．                             |
+
+#### ・commandsにおける環境変数の出力方法
+
+環境変数を```echo```の引数に指定する．パイプラインで```base64 --decode```を実行することにより，暗号化した状態で環境変数を渡すことができる．
+
+```yaml
+jobs:
+  build_and_
+    docker:
+      - image: circleci/python:3.8-node
+    steps:
+      - checkout
+      - run:
+          name: Make env file
+          command: |
+            echo $API_URL_BROWSER | base64 --decode > .env
+            echo $API_URL | base64 --decode >> .env
+            echo $OAUTH_CLIENT_ID | base64 --decode >> .env
+            echo $OAUTH_CLIENT_SECRET | base64 --decode >> .env
+            echo $GOOGLE_MAP_QUERY_URL | base64 --decode >> .env
+       - run:
+           name: Install node module
+           commands: |
+             yarn install
+       - run: 
+           name: Generate nuxt-ts
+           commands: |
+             yarn nuxt-ts generate
+```
+
+なお，文字列の中に値を出力する変数展開の場合，```${}```を使用する．
+
+```yaml
+# 変数展開の場合
+steps:
+  - checkout
+  - run:
+      name: XXXXX
+      commands: |
+        echo "This is ${XXXXX}"
+```
 
 <br>
 
 ### 定義方法の違い
 
-#### ・値の出力方法
-
-オプションや```echo```の引数にて，```$```マークを使用して，値を出力する．
-
-```yaml
-# 出力
-echo $XXXXX
-```
-
-文字列の中に値を出力する場合，```${}```を使用する．
-
-```yaml
-# 変数展開
-echo "This is ${XXXXX}"
-```
-
 #### ・Bashレベル
 
-一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．```export```，```source```，```$BASH_ENV```，を使用する．
+一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．ただし，```$BASH_ENV```に対して環境変数を出力することにより，値を保持し，異なる```command```で共有できるようになる．
 
 ```yaml
 version: 2.1 
@@ -1032,11 +1107,11 @@ jobs:
 
 <br>
 
-### dockerizeのインストール
+### docker-compose & dockerize
 
 #### ・docker/install-dockerize
 
-CircleCIでDocker Composeを使用する場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにもかかわらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．
+CircleCIでDocker Composeを使用する場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにもかかわらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．dockerizeの代わりの方法として，sleepコマンドを使用してもよい．
 
 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
@@ -1056,9 +1131,8 @@ commands:
       - restore_cache:
           key:
             - v1-dependecies-{{ checksum composer.json }}
-  install_vendor:
-     steps:
-       - run: composer install -n --prefer-dist
+            - v1-dependencies-
+            
   save_vendor:
     steps:
       - save_cache:
@@ -1070,23 +1144,29 @@ jobs:
   build_and_test:
     # Docker Composeの時はmachineタイプを使用する
     machine:
-      - image: ubuntu-1604:201903-01
+      image: ubuntu-1604:201903-01
     steps:
       - checkout
       - run:
           name: Make env file
-          command: echo $ENV_TESTING | base64 -di > .env
+          command: |
+            echo $ENV | base64 --decode > .env
       - run:
           name: Make env docker file
-          command: cp .env.docker.example .env.docker
+          command: |
+            cp .env.docker.example .env.docker
       - run:
-          name: Docker Compose
+          name: Docker compose up
           command: |
             set -xe
             docker network create example-network
             docker-compose up --build -d
       - restore_vendor
-      - install_vendor
+      # Dockerコンテナに対してcomspoerコマンドを送信
+      - run:
+          name: Composer install
+          command: |
+            docker exec -it laravel-container composer install -n --prefer-dist
       - save_vendor
       # Dockerizeをインストール
       - docker/install-dockerize:
@@ -1094,20 +1174,92 @@ jobs:
       - run:
           name: Wait for MySQL to be ready
           command: |
+            # 代わりにsleepコマンドでもよい．
             dockerize -wait tcp://localhost:3306 -timeout 1m
-            sleep 30
+      # Dockerコンテナに対してマイグレーションコマンドを送信
       - run:
-          name: Run migration test
+          name: Run artisan migration
           command: |
             docker exec -it laravel-container php artisan migrate --force
+      # Dockerコンテナに対してPHP-Unitコマンドを送信
       - run:
-          name: Run unit teest
+          name: Run unit test
           command: |
             docker exec -it laravel-container ./vendor/bin/phpunit
+      # Dockerコンテナに対してPHP-Stanコマンドを送信  
       - run:
           name: Run static test
           command: |
             docker exec -it laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M
+```
+
+<br>
+
+### DLC：Docker Layer Cache
+
+#### ・DLCとは
+
+CircleCIでDockerイメージをビルドした後，各イメージレイヤーをDLCボリュームにキャッシュする．そして，次回以降のビルド時に，差分がないイメージレイヤーをDLCボリュームからプルして再利用する．これにより，Dockerイメージのビルド時間を短縮できる．
+
+![DockerLayerCache](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DockerLayerCache.png)
+
+#### ・使用例
+
+machineタイプで使用する場合，machineキーの下で```docker_layer_caching```を使う．
+
+**＊実装例＊**
+
+```yaml
+version: 2.1
+
+orbs:
+  docker: circleci/docker@x.y.z
+            
+jobs:
+  build_and_test:
+    # Docker Composeの時はmachineタイプを使用する
+    machine:
+      image: ubuntu-1604:201903-01
+      # DLCを有効化
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Make env file
+          command: |
+            echo $ENV_TESTING | base64 --decode > .env
+      - run:
+          name: Make env docker file
+          command: |
+            cp .env.docker.example .env.docker
+      - run:
+          name: Docker compose up
+          command: |
+            set -xe
+            docker network create example-network
+            docker-compose up --build -d
+```
+
+dockerタイプで使用する場合，dockerキーの下で```docker_layer_caching```を使う．
+
+**＊実装例＊**
+
+```yaml
+version: 2.1
+
+jobs:
+  build_and_push:
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+          # DLCを有効化
+          docker_layer_caching: true
+      - checkout
+      - docker/check
+      - docker/build:
+          image: <ユーザ名>/<リポジトリ名>
+      - docker/push:
+          image: <ユーザ名>/<リポジトリ名>
 ```
 
 <br>
@@ -1140,7 +1292,7 @@ workflows:
 | 構造      | 説明                                                         |
 | --------- | ------------------------------------------------------------ |
 | jobs      | workflowsにて，Orbsから```job```として使用できる．           |
-| commands  | ```job```にて，``step```として使用できる．                   |
+| commands  | ```job```にて，```step```として使用できる．                  |
 | executors | ```exexutor```にて，事前定義されたexecutorsとして使用できる． |
 
 #### ・オプションへの引数の渡し方
@@ -1153,12 +1305,19 @@ AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-xxx@x.y.z
+  aws-xxx: circleci/aws-xxx@x.y.z
 
-workflows:
-  build_and_push_image:
-    jobs:
-      - aws-xxx/yyy-yyy-yyy:
+jobs:
+  xxx_xxx_xxx:
+    docker:
+      - image: circleci/python:x.y.z
+    steps:
+      - attach_workspace:
+          at: .
+      - setup_remote_docker:
+      - aws-cli/install
+      - aws-cli/setup
+      - aws-xxx/xxx-xxx-xxx:
           # デフォルト名であれば，記述しなくても自動的に入力してくれる．
           account-url: $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
           aws-access-key-id: $ACCESS_KEY_ID_ENV_VAR_NAME
@@ -1168,11 +1327,15 @@ workflows:
 
 <br>
 
-### aws-ecr
+### aws-cli
 
-#### ・jobs：build-and-push-image
+#### ・commands: install / setup
 
-CircleCIコンテナでDockerイメージをビルドし，ECRにデプロイできる．
+aws-cliコマンドのインストールやCredentials情報の設定を行う．AWSリソースを操作するために使用する．
+
+#### ・使用例：Cloudfrontのキャッシュを削除
+
+CloudFrontに保存されているCacheを削除する．フロントエンドをデプロイしたとしても，CloudFrontに保存されているCacheを削除しない限り，CacheがHitしたユーザには過去のファイルがレスポンスされてしまう．そのため，S3へのデプロイ後に，Cacheを削除する必要がある．
 
 **＊実装例＊**
 
@@ -1180,43 +1343,98 @@ CircleCIコンテナでDockerイメージをビルドし，ECRにデプロイで
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@x.y.z
+  aws-cli: circleci/aws-cli@1.3.1
 
+jobs:
+  cloudfront_create_invalidation:
+    docker:
+      - image: cimg/python:3.9-node
+    steps:
+      - checkout
+      - aws-cli/install
+      - aws-cli/setup
+      - run:
+          name: Run create invalidation
+          command: |
+            echo $AWS_CLOUDFRONT_ID |
+            base64 --decode |
+            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"
+            
 workflows:
-  build_and_push_image:
+  # ステージング環境にデプロイ
+  develop:
     jobs:
-      - aws-ecr/build-and-push-image:
-          account-url: $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
-          aws-access-key-id: $ACCESS_KEY_ID_ENV_VAR_NAME
-          aws-secret-access-key: $SECRET_ACCESS_KEY_ENV_VAR_NAME
-          region: $AWS_REGION_ENV_VAR_NAME
-          # リポジトリがない時に作成するかどうか．
-          create-repo: true
-          no-output-timeout: 20m
-          # projectを作業ディレクトリとした時の相対パス
-          dockerfile: ./infra/docker/Dockerfile
-          path: '.'
-          profile-name: myProfileName
-          repo: '{$APP_NAME}-repository'
-          # CircleCIのハッシュ値によるバージョニング
-          tag: $CIRCLE_SHA1
-          # job内にて，attach_workspaceステップを実行．
-          attach-workspace: true
-          # attach_workspaceステップ実行時のrootディレクトリ
-          workspace-root: <ディレクトリ名>
+      # 直前に承認ジョブを挿入する
+      - hold:
+          name: hold_create_invalidation_stg
+          type: approval
+      - cloudfront_create_invalidation:
+          name: cloudfront_create_invalidation_stg
+          filters:
+            branches:
+              only:
+                - develop
+                
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      # 直前に承認ジョブを挿入する
+      - hold:
+          name: hold_create_invalidation_prd
+          type: approval    
+      - cloudfront_create_invalidation:
+          name: cloudfront_create_invalidation_prd
+          filters:
+            branches:
+              only:
+                - main   
+```
+
+<br>
+
+### aws-ecr
+
+#### ・jobs：build-and-push-image
+
+CircleCIコンテナでDockerイメージをビルドし，ECRにデプロイする．```remote-docker-layer-caching```を使用して，Docker Layer Cacheを有効化できる．
+
+**＊実装例＊**
+
+```yaml
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@1.3.1
+  aws-ecr: circleci/aws-ecr@6.15.2
+
+jobs:
+  aws-ecr/build-and-push-image:
+    name: ecr_build_and_push_image
+    # Docker Layer Cacheを使用するかどうか（有料）
+    remote-docker-layer-caching: true
+    # リポジトリがない時に作成するかどうか．
+    create-repo: true
+    no-output-timeout: 20m
+    # projectを作業ディレクトリとした時の相対パス
+    dockerfile: ./infra/docker/Dockerfile
+    path: '.'
+    profile-name: myProfileName
+    repo: '{$SERVICE}-repository'
+    # CircleCIのハッシュ値によるバージョニング
+    tag: $CIRCLE_SHA1
+    # job内にて，attach_workspaceステップを実行．
+    attach-workspace: true
+    # attach_workspaceステップ実行時のrootディレクトリ
+    workspace-root: <ディレクトリ名>
 ```
 
 <br>
 
 ### aws-ecs
 
-#### ・jobs：deploy-service-update
+#### ・jobs：update-service（ローリングアップデート使用時）
 
-ECSのサービスのリビジョンを更新する．以下のaws-cliに対応している．
-
-```bash
-$ aws ecs update-service <複数のオプション>
-```
+ECSタスク定義を更新する．さらに，ローリングアップデートがそのタスク定義を指定し，ECSサービスを更新する．``` verify-revision-is-deployed```オプションを使用して，ECSサービスが更新された後，実行されているタスクがタスク定義に合致しているかを監視する．例えば，タスクが「Runnning」にならずに「Stopped」になってしまう場合や，既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合，この状態はタスク定義に合致しないので，検知できる．
 
 **＊実装例＊**
 
@@ -1224,71 +1442,151 @@ $ aws ecs update-service <複数のオプション>
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@x.y.z
-  aws-ecs: circleci/aws-ecs@x.y.z
+  aws-cli: circleci/aws-cli@1.3.1
+  aws-ecs: circleci/aws-ecs@1.4.0
   
+jobs:
+  aws-ecs/update-service:
+    name: ecs_update_service_by_rolling_update
+    # タスク定義名を指定
+    family: '${SERVICE}-ecs-task-definition'
+    # クラスター名を指定
+    cluster-name: '${SERVICE}-cluster'
+    # サービス名を指定
+    service-name: '${SERVICE}-service'
+    # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    container-image-name-updates: 'container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}'
+    # サービス更新後のタスク監視
+    verify-revision-is-deployed: true
+          
 workflows:
-  build-and-deploy:
+  # ステージング環境にデプロイ
+  develop:
     jobs:
-      - aws-ecr/build-and-push-image:
-      
-      # ~~~ 省略 ~~~ #
-      
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          # タスク定義名を指定
-          family: '${APP_NAME}-ecs-task-definition'
-          # クラスター名を指定
-          cluster-name: '${APP_NAME}-cluster'
-          # サービス名を指定
-          service-name: '${APP_NAME}-service'
-          # CodeDeployにおけるデプロイの作成を設定
-          deployment-controller: CODE_DEPLOY
-          codedeploy-application-name: $APP_NAME}
-          codedeploy-deployment-group-name: "${APP_NAME}-deployment-group"
-          codedeploy-load-balanced-container-name: www-container
-          codedeploy-load-balanced-container-port: 80
-          # コンテナ名とイメージタグを上書き．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
-          container-image-name-updates: 'container=${APP_NAME}-container,tag=${CIRCLE_SHA1}'
+      - ecs_update_service_by_rolling_update:
+          name: ecs_update_service_by_rolling_update_stg
+          filters:
+            branches:
+              only:
+                - develop
+                
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      - ecs_update_service_by_rolling_update:
+          name: ecs_update_service_by_rolling_update_production
+          filters:
+            branches:
+              only:
+                - main               
+          
+```
+
+#### ・jobs：update-service（B/Gデプロイメント使用時）
+
+ECSタスク定義を更新する．さらに，Blue/Greenデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを使用できる．
+
+**＊実装例＊**
+
+```yaml
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@1.3.1
+  aws-ecs: circleci/aws-ecs@1.4.0
+  
+jobs:
+  aws-ecs/update-service:
+    name: ecs_update_service_by_code_deploy
+    # タスク定義名を指定
+    family: '${SERVICE}-ecs-task-definition'
+    # クラスター名を指定
+    cluster-name: '${SERVICE}-cluster'
+    # サービス名を指定
+    service-name: '${SERVICE}-service'
+    # CodeDeployにおけるデプロイの作成を設定
+    deployment-controller: CODE_DEPLOY
+    codedeploy-application-name: $SERVICE
+    codedeploy-deployment-group-name: "${SERVICE}-deployment-group"
+    codedeploy-load-balanced-container-name: www-container
+    codedeploy-load-balanced-container-port: 80
+    # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    container-image-name-updates: 'container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}'
+    # サービス更新後のタスク監視
+    verify-revision-is-deployed: true
+          
+workflows:
+  # ステージング環境にデプロイ
+  develop:
+    jobs:
+      - ecs_update_service_by_code_deploy:
+          name: ecs_update_service_by_code_deploy_stg
+          filters:
+            branches:
+              only:
+                - develop
+                
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      - ecs_update_service_by_code_deploy:
+          name: ecs_update_service_by_code_deploy_production
+          filters:
+            branches:
+              only:
+                - main       
 ```
 
 #### ・jobs：run-task
 
-サービスに内包されるタスクを指定して，設定したオプションで，現在起動中のタスクとは別のものを新しく起動する．以下のaws-cliを内部で実行している．
-
-```bash
-$ aws ecs run-task <複数のオプション>
-```
+既存のタスク定義を一部上書きして，現在起動中のECSタスクとは別に，新しいものを起動する．
 
 **＊実装例＊**
 
-例えば，マイグレーション用のタスクを起動し，データベースを更新する手法がある．
+例えば，マイグレーション用のECSタスクを起動し，データベースを更新する手法がある．
 
 ```yaml
 version: 2.1
 
 orbs:
-  aws-ecs: circleci/aws-ecs@x.y.z
+  aws-cli: circleci/aws-cli@1.3.1
+  aws-ecs: circleci/aws-ecs@1.4.0
 
+jobs:
+  aws-ecs/run-task:
+    name: ecs_run_task_for_migration
+    cluster: "${SERVICE}-ecs-cluster"
+    # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう．
+    platform-version: 1.4.0
+    awsvpc: true
+    launch-type: FARGATE
+    # タスク定義名．最新リビジョン番号が自動補完される．
+    task-definition: "${SERVICE}-ecs-task-definition"
+    subnet-ids: $AWS_SUBNET_IDS
+    security-group-ids: $AWS_SECURITY_GROUPS
+    # タスク起動時にマイグレーションコマンドを実行
+    overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
+          
 workflows:
-  version: 2.1
-  run-task:
+  # ステージング環境にデプロイ
+  develop:
     jobs:
-      - aws-ecs/run-task:
-          name: run-task-fargate
-          cluster: "${APP_NAME}-ecs-cluster"
-          # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう．
-          platform-version: 1.3.0
-          assign-public-ip: ENABLED
-          awsvpc: true
-          launch-type: FARGATE
-          # タスク定義名．最新リビジョン番号が自動補完される．
-          task-definition: "${APP_NAME}-ecs-task-definition"
-          subnet-ids: $AWS_SUBNET_IDS
-          security-group-ids: $AWS_SECURITY_GROUPS
-          # タスク起動時にマイグレーションコマンドを実行
-          overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"app\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
+      - ecs_run_task_for_migration:
+          name: ecs_run_task_for_migration_stg
+          filters:
+            branches:
+              only:
+                - develop
+                
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      - ecs_run_task_for_migration:
+          name: ecs_run_task_for_migration_production
+          filters:
+            branches:
+              only:
+                - main
 ```
 
 <br>
@@ -1306,35 +1604,52 @@ S3にソースコードとappspecファイルをデプロイできる．また�
 version: 2.1
 
 orbs:
-  aws-code-deploy: circleci/aws-ecs@x.y.z
+  aws-code-deploy: circleci/aws-code-deploy@1.0.1
 
+jobs:
+  aws-code-deploy/deploy:
+    name: code_deploy
+    application-name: $SERVICE}
+    # appspecファイルを保存するバケット名
+    bundle-bucket: "${SERVICE}-bucket"
+    # appspecファイルのあるフォルダ
+    bundle-source: ./infra/aws_codedeploy
+    # appspecファイルをzipフォルダで保存
+    bundle-type: zip
+    # zipフォルダ名
+    bundle-key: xxx-bundle
+    deployment-config: CodeDeployDefault.ECSAllAtOnce
+    deployment-group: "${SERVICE}-deployment-group"
+    # ECSにアクセスできるCodeDeployサービスロール
+    service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
+ 
 workflows:
-  run-task:
+  # ステージング環境にデプロイ
+  develop:
     jobs:
-      - aws-code-deploy/deploy:
-          requires:
-            - build-and-push-image-www
-          name: deploy-source-code
-          application-name: $APP_NAME}
-          # appspecファイルを保存するバケット名
-          bundle-bucket: "${APP_NAME}-bucket"
-          # appspecファイルのあるフォルダ
-          bundle-source: ./infra/aws_codedeploy
-          # appspecファイルをzipフォルダで保存
-          bundle-type: zip
-          # zipフォルダ名
-          bundle-key: xxx-bundle
-          deployment-config: CodeDeployDefault.ECSAllAtOnce
-          deployment-group: "${APP_NAME}-deployment-group"
-          # ECSにアクセスできるCodeDeployサービスロール
-          service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
+      - code_deploy:
+          name: code_deploy_stg
+          filters:
+            branches:
+              only:
+                - develop
+                
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      - code_deploy:
+          name: code_deploy_production
+          filters:
+            branches:
+              only:
+                - main
 ```
 
 <br>
 
 ### slack
 
-#### ・commands：status
+#### ・commands：notify
 
 ジョブの終了時に，成功または失敗に基づいて，ステータスを通知する．ジョブの最後のステップとして設定しなければならない．
 
@@ -1342,22 +1657,46 @@ workflows:
 version: 2.1
 
 orbs:
-  slack: circleci/slack@x.y.z
+  slack: circleci/slack@4.1
+
+commands:
+  # 他のジョブ内で使用できるようにcommandとして定義
+  slack_notify:
+    steps:
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
 
 jobs:
-  build:
-    docker:
-      - image: <docker image>
+  deploy:
     steps:
-      - run: exit 0
-      - slack/status:
-          # 成功した場合
-          success_message: ':tada: A $CIRCLE_job job has succeeded!'
-          # 失敗した場合
-          failure_message: ':red_circle: A $CIRCLE_job job has failed!'
-          # 通知先のUSERIDをカンマ区切りで指定
-          mentions: 'USERID1,USERID2'
-          # SlackチャンネルのWebhookURL（CircleCI環境変数として登録していれば設定不要）
-          webhook: webhook
+    # ～ 省略 ～
+
+workflows:
+  # ステージング環境にデプロイ
+  develop:
+    jobs:
+      - deploy:
+          name: deploy_stg
+          filters:
+            branches:
+              only:
+                - develop
+          # 失敗時に通知
+          post-steps:
+            - slack_notify:
+            
+  # 本番環境にデプロイ                
+  main:
+    jobs:
+      - deploy:
+          name: deploy_production
+          filters:
+            branches:
+              only:
+                - main
+          # 失敗時に通知
+          post-steps:
+            - slack_notify:
 ```
 
