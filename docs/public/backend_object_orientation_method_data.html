@@ -1,0 +1,2984 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>クラスベースのプログラミング（2） · 僕のドキュメントサイト【GitBook版】</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="backend_object_orientation_class.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索すると入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    はじめに
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    このサイトについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    自己紹介
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="self_introduction.html">
+            
+                <a href="self_introduction.html">
+            
+                    
+                    長谷川広樹と申します
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    PHP｜クラスベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="backend_object_orientation_analysis_design_programming.html">
+            
+                <a href="backend_object_orientation_analysis_design_programming.html">
+            
+                    
+                    オブジェクト指向分析／設計／プログラミング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="backend_object_orientation_class.html">
+            
+                <a href="backend_object_orientation_class.html">
+            
+                    
+                    クラスベースのプログラミング（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="backend_object_orientation_method_data.html">
+            
+                <a href="backend_object_orientation_method_data.html">
+            
+                    
+                    クラスベースのプログラミング（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    PHP｜ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="backend_logic_validation.html">
+            
+                <a href="backend_logic_validation.html">
+            
+                    
+                    バックエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="backend_logic_iteration.html">
+            
+                <a href="backend_logic_iteration.html">
+            
+                    
+                    繰り返しロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    PHP｜API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="backend_api_restful.html">
+            
+                <a href="backend_api_restful.html">
+            
+                    
+                    RESTful APIの概念と実装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    PHP｜ライブラリ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="backend_library.html">
+            
+                <a href="backend_library.html">
+            
+                    
+                    ライブラリ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="backend_framework_symfony.html">
+            
+                <a href="backend_framework_symfony.html">
+            
+                    
+                    Symfony
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="backend_framework_laravel.html">
+            
+                <a href="backend_framework_laravel.html">
+            
+                    
+                    Laravel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="backend_testing.html">
+            
+                <a href="backend_testing.html">
+            
+                    
+                    テストフレームワークとテスト仕様書
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    PHP｜アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="backend_architecture_domain_driven_design.html">
+            
+                <a href="backend_architecture_domain_driven_design.html">
+            
+                    
+                    ドメイン駆動設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="backend_architecture_cqrs.html">
+            
+                <a href="backend_architecture_cqrs.html">
+            
+                    
+                    CQRS設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    フロントエンドとバックエンド間のデータ通信
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="frontend_and_backend_authentication_authorization.html">
+            
+                <a href="frontend_and_backend_authentication_authorization.html">
+            
+                    
+                    認証と認可
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="frontend_and_backend_json.html">
+            
+                <a href="frontend_and_backend_json.html">
+            
+                    
+                    JSON
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    JS｜プロトタイプベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="frontend_object_orientation_prototype.html">
+            
+                <a href="frontend_object_orientation_prototype.html">
+            
+                    
+                    プロトタイプベースのプログラミング（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="frontend_object_orientation_method_data.html">
+            
+                <a href="frontend_object_orientation_method_data.html">
+            
+                    
+                    プロトタイプベースのプログラミング（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    JS｜ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="frontend_logic_validation.html">
+            
+                <a href="frontend_logic_validation.html">
+            
+                    
+                    フロントエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    JS｜アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="frontend_architecture_spa_vuejs.html">
+            
+                <a href="frontend_architecture_spa_vuejs.html">
+            
+                    
+                    Single Page Application設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    PHP / JS｜デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="backend_debug.html">
+            
+                <a href="backend_debug.html">
+            
+                    
+                    バックエンドのデバッグの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="frontend_debug.html">
+            
+                <a href="frontend_debug.html">
+            
+                    
+                    フロントエンドのデバッグの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    JS / HTML｜ブラウザレンダリング
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="frontend_browser_rendering.html">
+            
+                <a href="frontend_browser_rendering.html">
+            
+                    
+                    ブラウザレンダリングの仕組み
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    データベース
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="backend_database_operation.html">
+            
+                <a href="backend_database_operation.html">
+            
+                    
+                    データベースの操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="backend_database_mysql.html">
+            
+                <a href="backend_database_mysql.html">
+            
+                    
+                    SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    ネットワーク｜構造
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="infrastructure_network_internet.html">
+            
+                <a href="infrastructure_network_internet.html">
+            
+                    
+                    ネットワークの構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" >
+            
+                <span>
+            
+                    
+                    ネットワーク｜セキュリティ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="infrastructure_network_cyber_attacks.html">
+            
+                <a href="infrastructure_network_cyber_attacks.html">
+            
+                    
+                    サイバー攻撃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="infrastructure_network_encryption_technology.html">
+            
+                <a href="infrastructure_network_encryption_technology.html">
+            
+                    
+                    通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="infrastructure_software.html">
+            
+                <a href="infrastructure_software.html">
+            
+                    
+                    ソフトウェアの種類
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜ミドルウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="infrastructure_software_middleware_nginx.html">
+            
+                <a href="infrastructure_software_middleware_nginx.html">
+            
+                    
+                    Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="infrastructure_software_middleware_apache.html">
+            
+                <a href="infrastructure_software_middleware_apache.html">
+            
+                    
+                    Apache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜CentOSの構成
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="infrastructure_software_centos.html">
+            
+                <a href="infrastructure_software_centos.html">
+            
+                    
+                    CentOSの構成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" >
+            
+                <span>
+            
+                    
+                    ソフトウェア｜機械語と進数
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="infrastructure_software_machine_language_and_radix.html">
+            
+                <a href="infrastructure_software_machine_language_and_radix.html">
+            
+                    
+                    機械語と進数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" >
+            
+                <span>
+            
+                    
+                    クラウドインフラストラクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="infrastructure_cloud_computing.html">
+            
+                <a href="infrastructure_cloud_computing.html">
+            
+                    
+                    クラウドコンピューティング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="infrastructure_cloud_computing_aws.html">
+            
+                <a href="infrastructure_cloud_computing_aws.html">
+            
+                    
+                    Amazon Web Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="infrastructure_cloud_computing_gcp.html">
+            
+                <a href="infrastructure_cloud_computing_gcp.html">
+            
+                    
+                    Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" >
+            
+                <span>
+            
+                    
+                    IaC｜種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="infrastructure_as_code.html">
+            
+                <a href="infrastructure_as_code.html">
+            
+                    
+                    Infrastructure as Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" >
+            
+                <span>
+            
+                    
+                    IaC｜Terraform
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="infrastructure_terraform.html">
+            
+                <a href="infrastructure_terraform.html">
+            
+                    
+                    Terraform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" >
+            
+                <span>
+            
+                    
+                    インフラストラクチャ｜仮想化サーバ，コンテナ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.1" data-path="infrastructure_virtualization_comparison.html">
+            
+                <a href="infrastructure_virtualization_comparison.html">
+            
+                    
+                    仮想化技術の比較
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="infrastructure_virtualization_container.html">
+            
+                <a href="infrastructure_virtualization_container.html">
+            
+                    
+                    コンテナ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.3" data-path="infrastructure_virtualization_container_orchestration.html">
+            
+                <a href="infrastructure_virtualization_container_orchestration.html">
+            
+                    
+                    コンテナオーケストレーション
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.4" data-path="infrastructure_virtualization_server.html">
+            
+                <a href="infrastructure_virtualization_server.html">
+            
+                    
+                    仮想サーバ（仮想マシン）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" >
+            
+                <span>
+            
+                    
+                    インフラストラクチャ｜CI/CD
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="infrastructure_ci_cd.html">
+            
+                <a href="infrastructure_ci_cd.html">
+            
+                    
+                    CI & CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="infrastructure_circleci.html">
+            
+                <a href="infrastructure_circleci.html">
+            
+                    
+                    CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="infrastructure_capistrano.html">
+            
+                <a href="infrastructure_capistrano.html">
+            
+                    
+                    Capistrano
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" >
+            
+                <span>
+            
+                    
+                    ハードウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="hardware.html">
+            
+                <a href="hardware.html">
+            
+                    
+                    ハードウェア
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="hardware_embedded_system.html">
+            
+                <a href="hardware_embedded_system.html">
+            
+                    
+                    組み込み機器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" >
+            
+                <span>
+            
+                    
+                    開発フロー
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="management_development_flow.html">
+            
+                <a href="management_development_flow.html">
+            
+                    
+                    システム開発フローの全体像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" >
+            
+                <span>
+            
+                    
+                    git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.28.1" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    Gitの豆知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" >
+            
+                <span>
+            
+                    
+                    アルゴリズム
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.29.1" data-path="backend_logic_algorithm.html">
+            
+                <a href="backend_logic_algorithm.html">
+            
+                    
+                    アルゴリズムのロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" >
+            
+                <span>
+            
+                    
+                    r言語
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.30.1" data-path="statistic_analysis.html">
+            
+                <a href="statistic_analysis.html">
+            
+                    
+                    統計解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            GitBookで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >クラスベースのプログラミング（2）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30AF;&#x30E9;&#x30B9;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30DF;&#x30F3;&#x30B0;&#xFF08;&#xFF12;&#xFF09;">&#x30AF;&#x30E9;&#x30B9;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30DF;&#x30F3;&#x30B0;&#xFF08;&#xFF12;&#xFF09;</h1>
+<h2 id="01-&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;">01. &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;</h2>
+<p>&#x672C;&#x8CC7;&#x6599;&#x306E;&#x4EE5;&#x964D;&#x3067;&#x306F;&#xFF0C;&#x5927;&#x304D;&#x304F;&#xFF0C;&#x64CD;&#x4F5C;&#xFF08;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;&#x306B;&#x5206;&#x3051;&#x3066;&#xFF0C;&#x8AAC;&#x660E;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
+<h3 id="&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
+<h4 id="&#x30FB;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;">&#x30FB;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;</h4>
+<p>&#x30AF;&#x30E9;&#x30B9;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-comment">// &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x6301;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">private</span> $data;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">data</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;data;
+    }
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;">&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;</h3>
+<h4 id="&#x30FB;-&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;&#x3068;&#x306F;">&#x30FB; &#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#xFF09;&#x3068;&#x306F;</h4>
+<p>&#x30AF;&#x30E9;&#x30B9;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x3064;&#xFF0E;&#x3053;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3068;&#x3082;&#x547C;&#x3070;&#x308C;&#x308B;&#xFF0E;&#x672C;&#x30CE;&#x30FC;&#x30C8;&#x3067;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x610F;&#x8B58;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3068;&#x3044;&#x3046;&#x8A00;&#x8449;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-keyword">private</span> $data;
+
+  &#x3000;<span class="hljs-comment">// &#x81EA;&#x4FE1;&#x304C;&#x6301;&#x3064;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;.</span>
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">data</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;data;
+    }
+}
+</code></pre>
+<p><br></p>
+<h2 id="02-&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;">02. &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;</h2>
+<h3 id="public">public</h3>
+<h4 id="&#x30FB;public&#x3068;&#x306F;">&#x30FB;<code>public</code>&#x3068;&#x306F;</h4>
+<p>&#x3069;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3082;&#x547C;&#x3073;&#x51FA;&#x305B;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-keyword">public</span> $data;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($data)</span>
+    </span>{
+        $this-&gt;data = $data;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">data</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;data;
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;</h4>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;<code>public</code>&#x3067;&#x3042;&#x308B;&#x306A;&#x3089;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306B;&#x304A;&#x3051;&#x308B;&#x96A0;&#x853D;&#x306E;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x306F;&#xFF0C;&#x7279;&#x306B;&#x306A;&#x3044;&#x304B;&#x3082;&#x3057;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($data)</span></span>{
+    <span class="hljs-keyword">return</span> $data;
+}
+
+$data = <span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;&quot;</span>;
+example($data);
+</code></pre>
+<p><br></p>
+<h3 id="protected">protected</h3>
+<p>&#x30FB;<code>protected</code>&#x3068;&#x306F;</p>
+<p>&#x540C;&#x3058;&#x30AF;&#x30E9;&#x30B9;&#x5185;&#x3068;&#xFF0C;&#x305D;&#x306E;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x305D;&#x306E;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306E;&#x307F;&#x547C;&#x3073;&#x51FA;&#x305B;&#x308B;&#xFF0E;</p>
+<p><a href="https://qiita.com/miyapei/items/6c43e8b38317afb5fdce" target="_blank">https://qiita.com/miyapei/items/6c43e8b38317afb5fdce</a></p>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;</h4>
+<p>&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x6B21;&#x7B2C;&#x3067;&#x306F;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x51E6;&#x7406;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;<code>$data</code>&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x96A0;&#x853D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ParentExample</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($data)</span>
+    </span>{
+        $this-&gt;data = $data;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// data&#x306F;&#x89AA;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B; </span>
+        <span class="hljs-keyword">return</span> $this-&gt;data;
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;</h4>
+<p>&#x51E6;&#x7406;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;<code>$data</code>&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x96A0;&#x853D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x5371;&#x967A;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($data)</span></span>{
+    <span class="hljs-keyword">return</span> $data;
+}
+
+$data = <span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;&quot;</span>;
+example($data);
+</code></pre>
+<p><br></p>
+<h3 id="private">private</h3>
+<p>&#x30FB;<code>private</code>&#x3068;&#x306F;</p>
+<p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x5185;&#x3067;&#x306E;&#x307F;&#x547C;&#x3073;&#x51FA;&#x305B;&#x308B;&#xFF0E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x3092;&#x6700;&#x5927;&#x9650;&#x306B;&#x5F97;&#x3089;&#x308C;&#x308B;&#x6A5F;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306E;&#x5834;&#x5408;</h4>
+<p>&#x51E6;&#x7406;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;<code>$data</code>&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x96A0;&#x853D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-keyword">private</span> $data;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($data)</span>
+    </span>{
+        $this-&gt;data = $data;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;data.$this-&gt;Desu();
+    }
+
+    <span class="hljs-comment">// &#x30AF;&#x30E9;&#x30B9;&#x5185;&#x304B;&#x3089;&#x3057;&#x304B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x306A;&#x3044;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Desu</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;</h4>
+<p>&#x51E6;&#x7406;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;<code>$data</code>&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x96A0;&#x853D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x5371;&#x967A;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($data)</span></span>{
+    <span class="hljs-keyword">return</span> $data;
+}
+
+$data = <span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;&quot;</span>;
+example($data);
+</code></pre>
+<h4 id="&#x30FB;encapsulation&#xFF08;&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;&#xFF09;">&#x30FB;Encapsulation&#xFF08;&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;&#xFF09;</h4>
+<p>&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;&#x3068;&#x306F;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x5916;&#x90E8;&#x304B;&#x3089;&#x96A0;&#x3059;&#x3053;&#x3068;&#xFF0E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x5185;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x306B;&#x306F;&#xFF0C;&#x76F4;&#x63A5;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6271;&#x3046;&#x4E8B;&#x306F;&#x3067;&#x304D;&#x305A;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x5185;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
+<p><img src="https://user-images.githubusercontent.com/42175286/59212717-160def00-8bee-11e9-856c-fae97786ae6c.gif" alt="&#x30AB;&#x30D7;&#x30BB;&#x30EB;&#x5316;"></p>
+<p><br></p>
+<h3 id="static">static</h3>
+<h4 id="&#x30FB;static&#x3068;&#x306F;">&#x30FB;<code>static</code>&#x3068;&#x306F;</h4>
+<p>&#x5225;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x547C;&#x3073;&#x51FA;&#x3057;&#x306B;&#x306F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;static&#x4FEE;&#x98FE;&#x5B50;&#x3092;&#x3064;&#x3051;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3057;&#x306A;&#x304F;&#x3068;&#x3082;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x5024;&#x306F;&#x7528;&#x3044;&#x305A;&#xFF08;&#x9759;&#x7684;&#xFF09;&#xFF0C;&#x5F15;&#x6570;&#x306E;&#x5024;&#x306E;&#x307F;&#x3092;&#x7528;&#x3044;&#x3066;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DogToyEntity</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+    }
+
+    <span class="hljs-comment">// &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x96C6;&#x7D04;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x5024;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x5E38;&#x306B;&#x540C;&#x4E00;&#x306E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aggregateDogToyEntity</span><span class="hljs-params">(array $fetchedData)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DogToyEntity(
+            <span class="hljs-keyword">new</span> ColorVO($fetchedData[<span class="hljs-string">&apos;dog_toy_type&apos;</span>]),
+            $fetchedData[<span class="hljs-string">&apos;dog_toy_name&apos;</span>],
+            $fetchedData[<span class="hljs-string">&apos;number&apos;</span>],
+            <span class="hljs-keyword">new</span> PriceVO($fetchedData[<span class="hljs-string">&apos;dog_toy_price&apos;</span>]),
+            <span class="hljs-keyword">new</span> ColorVO($fetchedData[<span class="hljs-string">&apos;color_value&apos;</span>])
+        );
+    }
+}
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-comment">// &#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;Order&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x304B;&#x3089;&#x5024;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#x3060;&#x3051;&#x3067;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x5024;&#x306F;&#x547C;&#x3073;&#x51FA;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computeExampleFee</span><span class="hljs-params">(Entity $order)</span>: <span class="hljs-title">Money</span>
+    </span>{
+        $money = <span class="hljs-keyword">new</span> Money($order-&gt;exampleFee);
+        <span class="hljs-keyword">return</span> $money;
+    }
+}
+</code></pre>
+<p><br></p>
+<h2 id="02-02-&#x30E1;&#x30BD;&#x30C3;&#x30C9;">02-02. &#x30E1;&#x30BD;&#x30C3;&#x30C9;</h2>
+<h3 id="&#x307E;&#x305A;&#x8AAD;&#x3080;&#x3079;&#x304D;&#x8A18;&#x4E8B;">&#x307E;&#x305A;&#x8AAD;&#x3080;&#x3079;&#x304D;&#x8A18;&#x4E8B;</h3>
+<h4 id="&#x30FB;&#x30B2;&#x30C3;&#x30BF;&#x30FC;&#x3068;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306E;&#x30D7;&#x30EC;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x30B9;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x60AA;">&#x30FB;&#x30B2;&#x30C3;&#x30BF;&#x30FC;&#x3068;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306E;&#x30D7;&#x30EC;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x30B9;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x60AA;</h4>
+<p>&#x548C;&#x8A33;&#xFF1A;<a href="https://www.kaitoy.xyz/2015/07/22/getters-setters-evil/" target="_blank">https://www.kaitoy.xyz/2015/07/22/getters-setters-evil/</a></p>
+<p>&#x539F;&#x5178;&#xFF1A;<a href="https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html" target="_blank">https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html</a></p>
+<h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x306B;&#x3088;&#x308B;&#x4F9D;&#x5B58;&#x6027;&#x6CE8;&#x5165;&#x306F;&#x60AA;">&#x30FB;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x306B;&#x3088;&#x308B;&#x4F9D;&#x5B58;&#x6027;&#x6CE8;&#x5165;&#x306F;&#x60AA;</h4>
+<p>&#x539F;&#x5178;&#xFF1A;<a href="https://www.yegor256.com/2014/10/03/di-containers-are-evil.html" target="_blank">https://www.yegor256.com/2014/10/03/di-containers-are-evil.html</a></p>
+<p><br></p>
+<h3 id="&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B5;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;">&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B5;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;</h3>
+<h4 id="&#x30FB;getter">&#x30FB;Getter</h4>
+<p>Getter&#x3067;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3060;&#x3051;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x4F55;&#x304B;&#x3057;&#x3089;&#x306E;&#x51E6;&#x7406;&#x3092;&#x52A0;&#x3048;&#x305F;&#x3046;&#x3048;&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ABC</span> </span>{
+
+    <span class="hljs-keyword">private</span> $property; 
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">property</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// &#x5358;&#x306A;&#x308B;Getter&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3082;&#x52A0;&#x3048;&#x308B;&#xFF0E;</span>
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>($this-&gt;property)){
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ErrorException(<span class="hljs-string">&apos;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5024;&#x304C;&#x30BB;&#x30C3;&#x30C8;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;</span>);
+        }
+        <span class="hljs-keyword">return</span> $this-&gt;property;
+    }
+
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B5;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;">&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B5;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;</h3>
+<h4 id="&#x30FB;setter">&#x30FB;Setter</h4>
+<p>&#x300E;Mutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test01</span> </span>{
+
+    <span class="hljs-keyword">private</span> $property01;
+
+    <span class="hljs-comment">// Setter&#x3067;$property01&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setProperty</span><span class="hljs-params">($property01)</span>
+    </span>{
+        $this-&gt;property01 = $property01;
+    }
+
+}
+</code></pre>
+<h4 id="&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;construct&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x3053;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#x3068;&#x3044;&#x5236;&#x7D04;&#x3092;&#x660E;&#x793A;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x3067;&#x304D;&#x308B;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3060;&#x3051;&#x3092;&#x6301;&#x305F;&#x305B;&#x308C;&#x3070;&#xFF0C;ValueObject&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test02</span> </span>{
+
+    <span class="hljs-keyword">private</span> $property02;
+
+    <span class="hljs-comment">// &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x3067;$property02&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($property02)</span>
+    </span>{
+        $this-&gt;property02 = $property02;
+    }
+}
+</code></pre>
+<h4 id="&#x30FB;&#x300E;mutable&#x300F;&#x3068;&#x300E;immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;">&#x30FB;&#x300E;Mutable&#x300F;&#x3068;&#x300E;Immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;</h4>
+<p>Test01&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property01</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;Setter&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Setter&#x306F;&#x4F55;&#x5EA6;&#x3067;&#x3082;&#x547C;&#x3073;&#x51FA;&#x305B;&#xFF0C;&#x305D;&#x306E;&#x5EA6;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test01</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$test01 = <span class="hljs-keyword">new</span> Test01;
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p>&#x4E00;&#x65B9;&#x3067;&#xFF0C;Test02&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x308A;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x3064;&#x307E;&#x308A;&#xFF0C;&#x4EE5;&#x524D;&#x306B;&#x4F5C;&#x3063;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306E;&#x5024;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3060;&#x3051;&#x3092;&#x6301;&#x305F;&#x305B;&#x308C;&#x3070;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test02</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p>Entity&#x306F;&#xFF0C;Mutable&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;Setter&#x3068;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x6301;&#x3064;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;ValueObject&#x306F;&#xFF0C;Immutable&#x306E;&#x305F;&#x3081;&#xFF0C;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3057;&#x304B;&#x6301;&#x3064;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;getter&#x7CFB;&#xFF09;">&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;Getter&#x7CFB;&#xFF09;</h3>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x7279;&#x5B9A;&#x306E;&#x64CD;&#x4F5C;&#x304C;&#x884C;&#x308F;&#x308C;&#x305F;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x7279;&#x6B8A;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x4ED5;&#x7D44;&#x307F;&#x306F;&#x8B0E;&#xFF0E;&#x5171;&#x901A;&#x306E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;Getter&#xFF08;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3060;&#x3051;&#x306E;Getter&#x306A;&#x3069;&#xFF09;&#x3092;&#x7121;&#x95C7;&#x306B;&#x5897;&#x3084;&#x3057;&#x305F;&#x304F;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30B3;&#x30FC;&#x30C9;&#x91CF;&#x306E;&#x80A5;&#x5927;&#x5316;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;PHP&#x306B;&#x306F;&#x6700;&#x521D;&#x304B;&#x3089;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x7D44;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;&#x81EA;&#x8EAB;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3055;&#x308C;&#x3066;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;get&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__get</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x306E;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x3088;&#x3046;&#x306A;&#x72B6;&#x6CC1;&#x3067;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+
+    <span class="hljs-keyword">private</span> $example = [];
+
+    <span class="hljs-comment">// &#x5F15;&#x6570;&#x3068;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__get</span><span class="hljs-params">(string $name)</span>: <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;{$name}&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span>;
+    }
+
+}
+
+<span class="hljs-comment">// &#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
+$example = <span class="hljs-keyword">new</span> Example();
+$example-&gt;hoge;
+
+<span class="hljs-comment">// &#x7D50;&#x679C;</span>
+<span class="hljs-comment">// hoge&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x5024;&#x3092;&#x547C;&#x3073;&#x51FA;&#x305B;&#x307E;&#x305B;&#x3093;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;call&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__call</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x306E;&#x306A;&#x3044;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x3088;&#x3046;&#x306A;&#x72B6;&#x6CC1;&#x3067;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;callstatic&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__callStatic</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p><br></p>
+<h3 id="&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;setter&#x7CFB;&#xFF09;">&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;Setter&#x7CFB;&#xFF09;</h3>
+<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x306E;&#x306A;&#x3044;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x4ED5;&#x7D44;&#x307F;&#x306F;&#x8B0E;&#xFF0E;&#x5171;&#x901A;&#x306E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;Setter&#xFF08;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3060;&#x3051;&#x306E;Setter&#x306A;&#x3069;&#xFF09;&#x3092;&#x7121;&#x95C7;&#x306B;&#x5897;&#x3084;&#x3057;&#x305F;&#x304F;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30B3;&#x30FC;&#x30C9;&#x91CF;&#x306E;&#x80A5;&#x5927;&#x5316;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;PHP&#x306B;&#x306F;&#x6700;&#x521D;&#x304B;&#x3089;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x7D44;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;&#x81EA;&#x8EAB;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3055;&#x308C;&#x3066;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;set&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__set</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x306E;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4E0D;&#x5909;&#x6027;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;&#xFF08;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF09;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+
+    <span class="hljs-keyword">private</span> $example = [];
+
+    <span class="hljs-comment">// &#x5F15;&#x6570;&#x3068;&#x8FD4;&#x308A;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__set</span><span class="hljs-params">(String $name, String $value)</span>: <span class="hljs-title">String</span>
+    </span>{
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;{$name}&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;{$value}&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span>;
+    }
+
+}
+</code></pre>
+<pre><code class="lang-PHP"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+<span class="hljs-comment">// &#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5024;&#x3092;&#x30BB;&#x30C3;&#x30C8;&#xFF0E;</span>
+$example = <span class="hljs-keyword">new</span> Example();
+$example-&gt;hoge = <span class="hljs-string">&quot;HOGE&quot;</span>;
+
+<span class="hljs-comment">// &#x7D50;&#x679C;</span>
+<span class="hljs-comment">// hoge&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;HOGE&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;construct&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x3044;&#x51E6;&#x7406;&#x3092;&#x8A18;&#x8FF0;&#x3067;&#x304D;&#x308B;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x306E;&#x307F;&#x5024;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x3048;&#x3070;&#xFF0C;ValueObject&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test02</span> </span>{
+
+    <span class="hljs-keyword">private</span> $property02;
+
+    <span class="hljs-comment">// &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x3067;$property02&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($property02)</span>
+    </span>{
+        $this-&gt;property02 = $property02;
+    }
+
+}
+</code></pre>
+<h4 id="&#x30FB;&#x300E;mutable&#x300F;&#x3068;&#x300E;immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;&#x3011;">&#x30FB;&#x300E;Mutable&#x300F;&#x3068;&#x300E;Immutable&#x300F;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#x7406;&#x7531;&#x3011;</h4>
+<p>Test01&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property01</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;Setter&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Setter&#x306F;&#x4F55;&#x5EA6;&#x3067;&#x3082;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#xFF0C;&#x305D;&#x306E;&#x5EA6;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$test01 = <span class="hljs-keyword">new</span> Test01;
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+
+$test01-&gt;setProperty01(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;01&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p>&#x4E00;&#x65B9;&#x3067;&#xFF0C;Test02&#x30AF;&#x30E9;&#x30B9;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x308A;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x3064;&#x307E;&#x308A;&#xFF0C;&#x4EE5;&#x524D;&#x306B;&#x4F5C;&#x3063;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>$property02</code>&#x306E;&#x5024;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;Setter&#x3092;&#x6301;&#x305F;&#x305B;&#x305A;&#x306B;&#xFF0C;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3060;&#x3051;&#x3092;&#x6301;&#x305F;&#x305B;&#x308C;&#x3070;&#xFF0C;&#x300E;Immutable&#x300F;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+
+$test02 = <span class="hljs-keyword">new</span> Test02(<span class="hljs-string">&quot;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;02&#x306E;&#x5024;&quot;</span>);
+</code></pre>
+<p><br></p>
+<h3 id="&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x305D;&#x306E;&#x4ED6;&#xFF09;">&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x305D;&#x306E;&#x4ED6;&#xFF09;</h3>
+<h4 id="&#x30FB;invoke&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__invoke</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<pre><code class="lang-__invoke```&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#xFF0C;&#x95A2;&#x6570;&#x306E;&#x3088;&#x3046;&#x306B;&#x6271;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;```__invoke```&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x81EA;&#x4F53;&#x306F;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x308F;&#x308C;&#x308B;&#xFF0E;">
+```php
+&lt;?php
+
+class Example
+{
+    public function __invoke(array $array)
+    {
+        print_r($array);
+    }
+}
+
+$example = new Example();
+$example([1, 2, 3]);
+
+// &#x7D50;&#x679C;
+// Array
+// (
+//    [0] =&gt; 1
+//    [1] =&gt; 2
+//    [2] =&gt; 3
+// )
+</code></pre>
+<h4 id="&#x30FB;clone&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>__clone</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<pre><code class="lang-php"><span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x751F;&#x6210;&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x751F;&#x6210;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
+<h4 id="&#x30FB;static&#x30E1;&#x30BD;&#x30C3;&#x30C9;-&#x3068;-self&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;">&#x30FB;<code>static</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9; &#x3068; <code>self</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;</h4>
+<p>&#x3069;&#x3061;&#x3089;&#x3082;&#xFF0C;new&#x6F14;&#x7B97;&#x5B50;&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x81EA;&#x8EAB;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x751F;&#x6210;&#x306E;&#x5BFE;&#x8C61;&#x306B;&#x306A;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_self</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">self</span>();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_static</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>();
+    }
+}
+</code></pre>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> </span>{}
+</code></pre>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#xFF0C;<code>self</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;&#x4E00;&#x65B9;&#x3067;&#xFF0C;<code>static</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;&#x81EA;&#x8EAB;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x51E6;&#x7406;&#x304C;&#x7D99;&#x627F;&#x3055;&#x308C;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;<code>static</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">echo</span> get_class(B::get_self());   <span class="hljs-comment">// &#x7D99;&#x627F;&#x5143;&#x306E;&#x30AF;&#x30E9;&#x30B9;A</span>
+
+<span class="hljs-keyword">echo</span> get_class(B::get_static()); <span class="hljs-comment">// &#x7D99;&#x627F;&#x5148;&#x306E;&#x30AF;&#x30E9;&#x30B9;B</span>
+
+<span class="hljs-keyword">echo</span> get_class(A::get_static()); <span class="hljs-comment">// &#x7D99;&#x627F;&#x5143;&#x306E;&#x30AF;&#x30E9;&#x30B9;A</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30EB;">&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30EB;</h3>
+<h4 id="&#x30FB;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;">&#x30FB;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;</h4>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;A&#x3092;&#x6700;&#x5916;&#x5C64;&#x3068;&#x3057;&#x305F;&#x95A2;&#x4FC2;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x3010;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;A&#xFF08;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;B&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x6301;&#x3064;&#xFF09;&#x3011;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Obj_A</span></span>{
+    <span class="hljs-keyword">private</span> $objB;
+
+    <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objB</span><span class="hljs-params">()</span>: <span class="hljs-title">ObjB</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;objB;
+    }
+}
+</code></pre>
+<p>&#x3010;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;B&#xFF08;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;C&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x6301;&#x3064;&#xFF09;&#x3011;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Obj_B</span></span>{
+    <span class="hljs-keyword">private</span> $objC;
+
+    <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objC</span><span class="hljs-params">()</span>: <span class="hljs-title">ObjC</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;objC;
+    }
+}
+</code></pre>
+<p>&#x3010;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;C&#xFF08;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;D&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x6301;&#x3064;&#xFF09;&#x3011;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Obj_C</span></span>{
+    <span class="hljs-keyword">private</span> $objD;
+
+    <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objD</span><span class="hljs-params">()</span>: <span class="hljs-title">ObjD</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $this-&gt;objD;
+    }
+}
+</code></pre>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x3088;&#x308A;&#x6DF1;&#x3044;&#x5C64;&#x306B;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x3066;&#x3044;&#x304F;&#x5834;&#x5408;&#x2026;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$ObjA = <span class="hljs-keyword">new</span> Obj_A;
+
+$ObjB = $ObjA-&gt;objB();
+
+$ObjC = $ObjB-&gt;objB();
+
+$ObjD = $ObjC-&gt;objD();
+</code></pre>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x3068;&#x3044;&#x3046;&#x66F8;&#x304D;&#x65B9;&#x304C;&#x53EF;&#x80FD;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$D = objB()-&gt;objC()-&gt;objC();
+
+<span class="hljs-comment">// $D &#x306B;&#x306F; ObjD &#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;recursive-call&#xFF1A;&#x518D;&#x5E30;&#x7684;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;">&#x30FB;Recursive call&#xFF1A;&#x518D;&#x5E30;&#x7684;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;</h4>
+<p>&#x81EA;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x304B;&#x3089;&#x81EA;&#x8EAB;&#x81EA;&#x8EAB;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x3042;&#x308B;&#x95A2;&#x6570; <code>f</code>&#x306E;&#x5B9A;&#x7FA9;&#x306E;&#x4E2D;&#x306B; <code>f</code>&#x81EA;&#x8EAB;&#x3092;&#x547C;&#x3073;&#x51FA;&#x3057;&#x3066;&#x3044;&#x308B;&#x7B87;&#x6240;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x518D;&#x5E30;&#x7684;.png" alt="&#x518D;&#x5E30;&#x7684;"></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x306E;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#xFF08;&#x203B;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x5225;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#xFF09;</p>
+<ol>
+<li>&#x9069;&#x5F53;&#x306A;&#x5024;&#x3092;&#x57FA;&#x6E96;&#x5024;&#xFF08;Pivot&#xFF09;&#x3068;&#x3059;&#x308B; &#xFF08;&#x203B;&#x3067;&#x304D;&#x308C;&#x3070;&#x4E2D;&#x592E;&#x5024;&#x304C;&#x671B;&#x307E;&#x3057;&#x3044;&#xFF09;</li>
+<li>Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x3092;&#x524D;&#x65B9;&#xFF0C;&#x5927;&#x304D;&#x3044;&#x6570;&#x3092;&#x5F8C;&#x65B9;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x4E8C;&#x5206;&#x5272;&#x3055;&#x308C;&#x305F;&#x5404;&#x3005;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x30BD;&#x30FC;&#x30C8;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span></span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(array $array)</span>: <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-comment">// &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="hljs-keyword">if</span> (count($array) &lt;= <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">return</span> $array;
+        }
+
+        <span class="hljs-comment">// &#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+        $pivot = array_shift($array);
+
+        <span class="hljs-comment">// &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;</span>
+        $left = $right = [];
+
+        <span class="hljs-keyword">foreach</span> ($array <span class="hljs-keyword">as</span> $value) {
+
+            <span class="hljs-keyword">if</span> ($value &lt; $pivot) {
+
+                <span class="hljs-comment">// Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
+                $left[] = $value;
+
+            } <span class="hljs-keyword">else</span> {
+
+                <span class="hljs-comment">// Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
+                $right[] = $value;
+
+            }
+
+        }
+
+        <span class="hljs-comment">// &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;</span>
+        <span class="hljs-keyword">return</span> array_merge
+        (
+        <span class="hljs-comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
+            quickSort($left),
+
+            <span class="hljs-comment">// Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+            <span class="hljs-keyword">array</span>($pivot),
+
+            <span class="hljs-comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
+            quickSort($right)
+        ); 
+    }
+}
+
+<span class="hljs-comment">// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;</span>
+$array = <span class="hljs-keyword">array</span>(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-number">1</span>);
+$result = quickSort($array);
+var_dump($result); 
+
+<span class="hljs-comment">// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// 1, 2, 3, 4, 5, 6, 7, 8</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x5F15;&#x6570;">&#x5F15;&#x6570;</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5F15;&#x6570;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5F15;&#x6570;</h4>
+<p>&#x5F15;&#x6570;&#x304C;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x6307;&#x5B9A;&#x306E;&#x5024;&#x3092;&#x6E21;&#x3059;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-php"><span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x5024;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x524D;&#x306E;&#x9014;&#x4E2D;&#x7D42;&#x4E86;">&#x5024;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x524D;&#x306E;&#x9014;&#x4E2D;&#x7D42;&#x4E86;</h3>
+<h4 id="&#x30FB;return">&#x30FB;<code>return;</code></h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span></span>{
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">returnMethod</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;returnMethod()&#x3067;&#x3059;&#x3002;\n&quot;</span>;
+        <span class="hljs-keyword">return</span>; <span class="hljs-comment">// &#x4F55;&#x3082;&#x8FD4;&#x3055;&#x306A;&#x3044;&#xFF0E;</span>
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example();
+$example-&gt;returnMethod(); <span class="hljs-comment">// returnMethod()&#x3067;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x51E6;&#x7406;&#x306F;&#x7D9A;&#x304F;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;exit">&#x30FB;<code>exit;</code></h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span></span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">exitMethod</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;exitMethod()&#x3067;&#x3059;&#x3002;\n&quot;</span>;
+        <span class="hljs-keyword">exit</span>;
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example();
+$example-&gt;exitMethod(); <span class="hljs-comment">// exitMethod()&#x3067;&#x3059;&#x3002;</span>
+<span class="hljs-comment">// &#x3053;&#x3053;&#x3067;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x5168;&#x4F53;&#x306E;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x5024;&#x306E;&#x8FD4;&#x5374;">&#x5024;&#x306E;&#x8FD4;&#x5374;</h3>
+<h4 id="&#x30FB;return">&#x30FB;<code>return</code></h4>
+<p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x5834;&#x6240;&#x306B;&#x5024;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x305D;&#x306E;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;yield">&#x30FB;<code>yield</code></h4>
+<p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x5834;&#x6240;&#x306B;&#x5024;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x305D;&#x3053;&#x3067;&#x7D42;&#x308F;&#x3089;&#x305A;&#xFF0C;<code>yield</code>&#x306E;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x304C;&#x7D9A;&#x304F;&#xFF0E;&#x8FD4;&#x5374;&#x5024;&#x306F;&#xFF0C;array&#x578B;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">oneToThree</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span>
+    </span>{
+        <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">1</span>; $i &lt;= <span class="hljs-number">3</span>; $i++) {
+            <span class="hljs-comment">// yield &#x3092;&#x8FD4;&#x5374;&#x3057;&#x305F;&#x5F8C;&#x3001;$i &#x306E;&#x5024;&#x304C;&#x7DAD;&#x6301;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+            <span class="hljs-keyword">yield</span> $i;
+        }
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example();
+$oneToThree = $example-&gt;oneToThree();
+
+<span class="hljs-keyword">foreach</span> ($oneToThree <span class="hljs-keyword">as</span> $value) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;{$value}\n&quot;</span>;
+}
+
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
+</code></pre>
+<p><br></p>
+<h3 id="dispatcher">Dispatcher</h3>
+<h4 id="&#x30FB;dispatcher&#x3068;&#x306F;">&#x30FB;Dispatcher&#x3068;&#x306F;</h4>
+<p>&#x7279;&#x5B9A;&#x306E;&#x6587;&#x5B57;&#x5217;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x52D5;&#x7684;&#x306B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;Dispatcher&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dispatcher</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$dispatcher = <span class="hljs-keyword">new</span> Dispatcher;
+
+$name = <span class="hljs-string">&quot;example&quot;</span>;
+$listener = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($param)</span></span>{
+<span class="hljs-comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
+};
+
+<span class="hljs-comment">// &#x6587;&#x5B57;&#x5217;&#x3068;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x767B;&#x9332;.</span>
+$dispatcher-&gt;addListener($name, $listener);
+
+<span class="hljs-comment">// &#x6587;&#x5B57;&#x5217;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;.</span>
+$dispatcher-&gt;dispatch(<span class="hljs-string">&quot;example&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>);
+</code></pre>
+<h4 id="&#x30FB;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">&#x30FB;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
+<p>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&#x3092;&#x6587;&#x5B57;&#x5217;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x306B;&#x5BFE;&#x5FDC;&#x3065;&#x3051;&#x3089;&#x308C;&#x305F;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;<code>EventDispatcher</code>&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x306E;&#x304C;&#x3088;&#x3044;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventDispatcher</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleEventDispatcher</span>
+</span>{
+   <span class="hljs-comment">// &#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#xFF0E; </span>
+}
+</code></pre>
+<h4 id="&#x30FB;&#x8A08;&#x7B97;&#x51E6;&#x7406;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x4FDD;&#x6301;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">&#x30FB;&#x8A08;&#x7B97;&#x51E6;&#x7406;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x4FDD;&#x6301;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
+<p>&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x96C6;&#x8A08;&#x3059;&#x308B;&#x306F;&#xFF0C;&#x305D;&#x306E;&#x51E6;&#x7406;&#x306B;&#x6642;&#x9593;&#x304C;&#x304B;&#x304B;&#x308B;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x305D;&#x306E;&#x3088;&#x3046;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x306F;&#xFF0C;&#x4E00;&#x5EA6;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x96C6;&#x8A08;&#x3092;&#x884C;&#x3063;&#x305F;&#x5F8C;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;&#x305D;&#x3057;&#x3066;&#xFF0C;&#x518D;&#x3073;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#x306F;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResultCacher</span>
+</span>{
+    <span class="hljs-keyword">private</span> $resultCollection;
+
+    <span class="hljs-keyword">private</span> $funcCollection;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
+    </span>{
+        $this-&gt;funcCollection = $this-&gt;addListener();
+    }
+
+
+    <span class="hljs-comment">// &#x96C6;&#x8A08;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">computeRevenue</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// &#x6642;&#x9593;&#x306E;&#x304B;&#x304B;&#x308B;&#x96C6;&#x8A08;&#x51E6;&#x7406;;</span>
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funcNameListener</span><span class="hljs-params">(string $funcName)</span>
+    </span>{
+        <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;.</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($this-&gt;resultCollection[$funcName])) {
+
+            <span class="hljs-comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x3092;Collection&#x306B;&#x8A2D;&#x5B9A;&#xFF0E;</span>
+            $this-&gt;resultCollection[$funcName] = $this-&gt;dispatch($funcName);
+        }
+
+        <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x305F;&#x5834;&#x5408;,&#x305D;&#x306E;&#x307E;&#x307E;&#x4F7F;&#x3046;&#xFF0E;</span>
+        <span class="hljs-keyword">return</span> $this-&gt;resultCollection[$funcName];
+    }
+
+
+    <span class="hljs-comment">// &#x8FD4;&#x5374;&#x5024;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3057;&#x305F;&#x3044;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x3092;&#x767B;&#x9332;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addListener</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [
+          <span class="hljs-string">&quot;computeRevenue&quot;</span> =&gt; [$this, <span class="hljs-string">&quot;computeRevenue&quot;</span>]
+        ];
+    }
+
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatch</span><span class="hljs-params">(string $funcName)</span>
+    </span>{
+        <span class="hljs-comment">// call_user_func&#x3067;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;</span>
+        <span class="hljs-keyword">return</span> call_user_func(
+          <span class="hljs-comment">// &#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x304B;&#x3089;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;Dispatch.</span>
+          $this-&gt;funcCollection[$funcName]
+        );
+    }
+}
+</code></pre>
+<p><br></p>
+<h2 id="02-03-&#x7121;&#x540D;&#x95A2;&#x6570;">02-03. &#x7121;&#x540D;&#x95A2;&#x6570;</h2>
+<p>&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x304C;&#xFF0C;<code>private</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x5207;&#x308A;&#x5206;&#x3051;&#x308B;&#x307B;&#x3069;&#x3067;&#x3082;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4ED6;&#x306E;&#x90E8;&#x5206;&#x3068;&#x660E;&#x793A;&#x7684;&#x306B;&#x533A;&#x5206;&#x3051;&#x305F;&#x3044;&#x6642;&#x306F;&#xFF0C;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
+<h3 id="closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x5B9A;&#x7FA9;&#xFF0C;&#x5909;&#x6570;&#x683C;&#x7D0D;&#x5F8C;&#x306E;&#x30B3;&#x30FC;&#x30EB;">Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x5B9A;&#x7FA9;&#xFF0C;&#x5909;&#x6570;&#x683C;&#x7D0D;&#x5F8C;&#x306E;&#x30B3;&#x30FC;&#x30EB;</h3>
+<h4 id="&#x30FB;use&#x306E;&#x307F;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#x5834;&#x5408;">&#x30FB;<code>use()</code>&#x306E;&#x307F;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#x5834;&#x5408;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$item = <span class="hljs-keyword">new</span> Item;
+
+<span class="hljs-comment">// &#x6700;&#x521D;&#x306E;&#x62EC;&#x5F27;&#x3092;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x666E;&#x6BB5;&#x3088;&#x304F;&#x3084;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x6E21;&#x3057;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3068;&#x540C;&#x3058;&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// use()&#x306B;&#xFF0C;&#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;$optionName&#xFF09;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;$item&#x3092;&#x6E21;&#x3059;&#xFF0E;</span>
+$optionName = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($item)</span> </span>{
+    $item-&gt;optionName();
+};
+
+<span class="hljs-comment">// function()&#x306B;&#x306F;&#x5F15;&#x6570;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x5F15;&#x6570;&#x306F;&#x4E0D;&#x8981;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> $optionName;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;A</span>
+</code></pre>
+<h4 id="&#x30FB;function&#x3068;use&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#x5834;&#x5408;">&#x30FB;<code>function()</code>&#x3068;<code>use()</code>&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#x5834;&#x5408;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$item = <span class="hljs-keyword">new</span> Item;
+
+<span class="hljs-comment">// &#x6700;&#x521D;&#x306E;&#x62EC;&#x5F27;&#x3092;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x666E;&#x6BB5;&#x3088;&#x304F;&#x3084;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x6E21;&#x3057;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3068;&#x540C;&#x3058;&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// &#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;$optionName&#xFF09;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;$item&#x3092;&#xFF0C;use()&#x306B;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="hljs-comment">// $param&#x306F;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x4F7F;&#x3046;&#x5909;&#x6570;&#xFF0E;</span>
+$optionName = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($para)</span> <span class="hljs-title">use</span> <span class="hljs-params">($item)</span> </span>{
+    $item-&gt;optionName() . $para;
+};
+
+<span class="hljs-comment">// &#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#xFF0C;$param&#x3092;function()&#x306B;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> $optionName(<span class="hljs-string">&quot;BC&quot;</span>);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;ABC</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x304A;&#x304F;&#x88CF;&#x6280;">&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x304A;&#x304F;&#x88CF;&#x6280;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Option</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$item = <span class="hljs-keyword">new</span> Item;
+
+<span class="hljs-comment">// &#x6700;&#x521D;&#x306E;&#x62EC;&#x5F27;&#x3092;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x666E;&#x6BB5;&#x3088;&#x304F;&#x3084;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x6E21;&#x3057;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3068;&#x540C;&#x3058;&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// use()&#x306B;&#xFF0C;&#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;$item&#x3092;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="hljs-comment">// $param&#x306F;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x4F7F;&#x3046;&#x5909;&#x6570;&#xFF0E;</span>
+$option = <span class="hljs-keyword">new</span> Option;
+
+<span class="hljs-comment">// &#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x306B;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+$option-&gt;name = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($para)</span> <span class="hljs-title">use</span> <span class="hljs-params">($item)</span> </span>{
+    $item-&gt;optionName() . $para;
+};
+
+<span class="hljs-comment">// &#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#xFF0C;$param&#x3092;function()&#x306B;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> $option-&gt;name(<span class="hljs-string">&quot;BC&quot;</span>);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;ABC</span>
+</code></pre>
+<p><br></p>
+<h3 id="closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x5B9A;&#x7FA9;&#x3068;&#x5373;&#x30B3;&#x30FC;&#x30EB;">Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x5B9A;&#x7FA9;&#x3068;&#x5373;&#x30B3;&#x30FC;&#x30EB;</h3>
+<p>&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x305D;&#x306E;&#x5834;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x300E;&#x5373;&#x6642;&#x95A2;&#x6570;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x6642;&#x306F;&#xFF0C;<code>call_user_func</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> </span>{
+<span class="hljs-comment">// &#x4E2D;&#x8EAB;&#x306F;&#x7701;&#x7565;</span>
+}
+
+$item = <span class="hljs-keyword">new</span> Item;
+$param = <span class="hljs-string">&quot;BC&quot;</span>;
+
+<span class="hljs-comment">// use()&#x306B;&#xFF0C;&#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;$item&#x3092;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="hljs-comment">// &#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x540C;&#x6642;&#x306B;call_user_func()&#x3067;&#x5373;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// $param&#x306F;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x4F7F;&#x3046;&#x5909;&#x6570;&#xFF0E;</span>
+$optionName = call_user_func(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($param)</span> <span class="hljs-title">use</span> <span class="hljs-params">($item)</span> </span>{
+    $item-&gt;optionName() . $param;
+});
+
+<span class="hljs-comment">// $param&#x306F;&#x3059;&#x3067;&#x306B;&#x5373;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x6E21;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// &#x3053;&#x308C;&#x306F;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x5373;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x51FA;&#x529B;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> $optionName;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;ABC</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3068;closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3068;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h3>
+<p>&#x95A2;&#x6570;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x308A;&#xFF0C;&#x95A2;&#x6570;&#x81EA;&#x4F53;&#x3092;&#x8FD4;&#x3057;&#x305F;&#x308A;&#x3059;&#x308B;&#x95A2;&#x6570;&#x3092;&#x300E;&#x9AD8;&#x968E;&#x95A2;&#x6570;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;">&#x30FB;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x306E;&#x307F;&#x306E;&#x5834;&#x5408;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+     <span class="hljs-comment">// &#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">($callback)</span>
+    </span>{
+        <span class="hljs-keyword">echo</span> $callback();
+    }
+
+    <span class="hljs-comment">// &#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x5B9A;&#x7FA9;</span>
+    <span class="hljs-comment">// &#x95A2;&#x6570;&#x306E;&#x4E2D;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x300C;&#x5F8C;&#x3067;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x300D;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x304B;&#x3089;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3068;&#x3044;&#x3048;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callbackMethod</span><span class="hljs-params">()</span>: <span class="hljs-title">string</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span>;
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example();
+<span class="hljs-comment">// &#x9AD8;&#x968E;&#x95A2;&#x6570;&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x6E21;&#x3059;</span>
+$example-&gt;test(<span class="hljs-string">&quot;callbackMethod&quot;</span>);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</span>
+</code></pre>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3068;&#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x306E;&#x5834;&#x5408;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-comment">// &#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">higherOrder</span><span class="hljs-params">($param, $callback)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $callback($param);
+    }
+
+    <span class="hljs-comment">// &#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callbackMethod</span><span class="hljs-params">($param)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> $param.<span class="hljs-string">&quot;&#x306E;&#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span>;
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example();
+<span class="hljs-comment">// &#x9AD8;&#x968E;&#x95A2;&#x6570;&#x306E;&#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306E;&#x5F15;&#x6570;&#xFF0C;&#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x6E21;&#x3059;</span>
+$example-&gt;higherOrder(<span class="hljs-string">&quot;&#x7B2C;&#x4E00;&#x5F15;&#x6570;&quot;</span>, <span class="hljs-string">&quot;callbackMethod&quot;</span>);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x306E;&#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;">&#x30FB;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+    <span class="hljs-comment">// &#x9AD8;&#x968E;&#x95A2;&#x6570;&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x95A2;&#x6570;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">higherOrder</span><span class="hljs-params">($parentVar, $callback)</span>
+    </span>{
+        $parentVar = <span class="hljs-string">&quot;&amp;&#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;&#x5909;&#x6570;&quot;</span>;
+        <span class="hljs-keyword">return</span> $callback($parentVar);
+    }
+}
+
+$example = <span class="hljs-keyword">new</span> Example;
+<span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x306E;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF0E;&#x95A2;&#x6570;&#x306E;&#x4E2D;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x300C;&#x5F8C;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x300D;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x304B;&#x3089;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x3068;&#x3044;&#x3048;&#x308B;&#xFF0E;</span>
+<span class="hljs-comment">// &#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306F;&#x518D;&#x5229;&#x7528;&#x3055;&#x308C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x540D;&#x524D;&#x3092;&#x3064;&#x3051;&#x305A;&#x306B;&#x7121;&#x540D;&#x95A2;&#x6570;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</span>
+<span class="hljs-comment">// &#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5909;&#x6570;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;&#xFF08;&#x666E;&#x6BB5;&#x3088;&#x304F;&#x3084;&#x3063;&#x3066;&#x3044;&#x308B;&#x5024;&#x6E21;&#x3057;&#x3068;&#x540C;&#x3058;&#xFF09;</span>
+$example-&gt;higherOrder($parentVar, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> <span class="hljs-title">use</span> <span class="hljs-params">($parentVar)</span> </span>{
+    <span class="hljs-keyword">return</span> $parentVar . <span class="hljs-string">&quot;&#x306E;&#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span>;
+}
+);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-comment">// &#x89AA;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;&#x5909;&#x6570;&#x306E;&#x51FA;&#x529B;&#x306B;&#x6210;&#x529F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x3044;&#x3053;&#x306A;&#x3059;&#xFF01;">&#x9AD8;&#x968E;&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x3044;&#x3053;&#x306A;&#x3059;&#xFF01;</h3>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
+</span>{
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">protected</span> $properties;
+
+    <span class="hljs-comment">// &#x975E;&#x7121;&#x540D;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3042;&#x308B;&#x3044;&#x306F;&#x7121;&#x540D;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3059;&#xFF0E;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Shiborikomi</span><span class="hljs-params">($callback)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!is_callable($callback)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \LogicException;
+        }
+
+        <span class="hljs-comment">// &#x81EA;&#x8EAB;&#x304C;&#x6301;&#x3064;&#x914D;&#x5217;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52A0;&#x5DE5;&#x3057;&#xFF0C;&#x518D;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+        $properties = [];
+        <span class="hljs-keyword">foreach</span> ($this-&gt;properties <span class="hljs-keyword">as</span> $property) {
+
+            <span class="hljs-comment">// &#x5F15;&#x6570;&#x306E;&#x7121;&#x540D;&#x95A2;&#x6570;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x52A0;&#x5DE5;&#x65B9;&#x6CD5;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</span>
+            <span class="hljs-comment">// &#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x5224;&#x5B9A;&#x3067;TRUE&#x306E;&#x3082;&#x306E;&#x306E;&#x307F;&#x3092;&#x8FD4;&#x3059;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6E21;&#x3059;&#x3068;&#xFF0C;&#x81EA;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7D5E;&#x308A;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3048;&#x308B;&#xFF0E;</span>
+            $returned = call_user_func($property, $callback);
+            <span class="hljs-keyword">if</span> ($returned) {
+
+                <span class="hljs-comment">// &#x518D;&#x683C;&#x7D0D;&#xFF0E;</span>
+                $properties[] = $returned;
+            }
+        }
+
+        <span class="hljs-comment">// &#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x9759;&#x7684;&#x306B;&#x6271;&#x3063;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x81EA;&#x8EAB;&#x3092;&#x8FD4;&#x3059;&#xFF0E;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">static</span>($properties);
+    }
+}
+</code></pre>
+<p><br></p>
+<h2 id="03-&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;">03. &#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
+<p>&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x304C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x6642;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408;&#x3092;&#x52B9;&#x7387;&#x7684;&#x306B;&#x6271;&#x3046;&#x305F;&#x3081;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;PHP&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
+<h3 id="array&#x578B;">Array&#x578B;</h3>
+<p>&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;">&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;</h4>
+<p>&#x756A;&#x53F7;&#x30AD;&#x30FC;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<pre><code>Array
+(
+  [0] =&gt; A
+  [1] =&gt; B
+  [2] =&gt; C
+)
+</code></pre><h4 id="&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;">&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;</h4>
+<p>&#x914D;&#x5217;&#x306E;&#x4E2D;&#x306B;&#x914D;&#x5217;&#x3092;&#x3082;&#x3064;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x5165;&#x308C;&#x5B50;&#x69CB;&#x9020;&#x304C;&#xFF12;&#x6BB5;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x300E;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
+<pre><code>( 
+  [0] =&gt; Array
+         (
+            [0] =&gt; &#x30EA;&#x30F3;&#x30B4;
+            [1] =&gt; &#x30A4;&#x30C1;&#x30B4;
+            [2] =&gt; &#x30C8;&#x30DE;&#x30C8;
+         )
+
+  [1] =&gt; Array
+         (
+            [0] =&gt; &#x30E1;&#x30ED;&#x30F3;
+            [1] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
+            [2] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
+         )
+)
+</code></pre><h4 id="&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;">&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;</h4>
+<p>&#x30AD;&#x30FC;&#x540D;&#xFF08;&#x8D64;&#xFF0C;&#x7DD1;&#xFF0C;&#x9EC4;&#xFF0C;&#x679C;&#x7269;&#xFF0C;&#x91CE;&#x83DC;&#xFF09;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4E0B;&#x306E;&#x4F8B;&#x306F;&#xFF0C;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x304B;&#x3064;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre><code>Array
+(
+    [&#x8D64;] =&gt; Array
+        (
+            [&#x679C;&#x7269;] =&gt; &#x30EA;&#x30F3;&#x30B4;
+            [&#x679C;&#x7269;] =&gt; &#x30A4;&#x30C1;&#x30B4;
+            [&#x91CE;&#x83DC;] =&gt; &#x30C8;&#x30DE;&#x30C8;
+        )
+
+    [&#x7DD1;] =&gt; Array
+        (
+            [&#x679C;&#x7269;] =&gt; &#x30E1;&#x30ED;&#x30F3;
+            [&#x91CE;&#x83DC;] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
+            [&#x91CE;&#x83DC;] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
+        )
+)
+</code></pre><h4 id="&#x30FB;&#x914D;&#x5217;&#x5185;&#x306E;&#x8981;&#x7D20;&#x306E;&#x8D70;&#x67FB;&#xFF08;&#x30B9;&#x30AD;&#x30E3;&#x30F3;&#xFF09;">&#x30FB;&#x914D;&#x5217;&#x5185;&#x306E;&#x8981;&#x7D20;&#x306E;&#x8D70;&#x67FB;&#xFF08;&#x30B9;&#x30AD;&#x30E3;&#x30F3;&#xFF09;</h4>
+<p>&#x914D;&#x5217;&#x5185;&#x306E;&#x8981;&#x7D20;&#x3092;&#x9806;&#x306B;&#x8ABF;&#x3079;&#x3066;&#x3044;&#x304F;&#x3053;&#x3068;&#x3092;&#x300E;&#x8D70;&#x67FB;&#xFF08;&#x30B9;&#x30AD;&#x30E3;&#x30F3;&#xFF09;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>foreach</code>&#x306F;&#xFF0C;&#x914D;&#x5217;&#x5185;&#x306E;&#x5168;&#x3066;&#x306E;&#x8981;&#x7D20;&#x3092;&#x8D70;&#x67FB;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x4E0B;&#x56F3;&#x3067;&#x306F;&#xFF0C;&#x9023;&#x60F3;&#x914D;&#x5217;&#x304C;&#x8868;&#x73FE;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x914D;&#x5217;&#x306E;&#x8D70;&#x67FB;.png" alt="&#x914D;&#x5217;&#x306E;&#x8D70;&#x67FB;"></p>
+<h4 id="&#x30FB;&#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x7528;&#x3044;&#x305F;&#x914D;&#x5217;&#x8981;&#x7D20;&#x306E;&#x51FA;&#x529B;">&#x30FB;&#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x7528;&#x3044;&#x305F;&#x914D;&#x5217;&#x8981;&#x7D20;&#x306E;&#x51FA;&#x529B;</h4>
+<p>&#x300E;&#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x300F;&#x3068;&#x306F;&#xFF0C;&#x914D;&#x5217;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x53C2;&#x7167;&#x3057;&#x305F;&#x3044;&#x8981;&#x7D20;&#x3092;&#x4F4D;&#x7F6E;&#x3067;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30AB;&#x30FC;&#x30BD;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$array = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;&#x3042;&quot;</span>, <span class="hljs-string">&quot;&#x3044;&quot;</span>, <span class="hljs-string">&quot;&#x3046;&quot;</span>);
+
+<span class="hljs-comment">// &#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x304C;&#x73FE;&#x5728;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x8981;&#x7D20;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> current($array); <span class="hljs-comment">// &#x3042;</span>
+
+<span class="hljs-comment">// &#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x4E00;&#x3064;&#x9032;&#x3081;&#xFF0C;&#x8981;&#x7D20;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> next($array); <span class="hljs-comment">// &#x3044;</span>
+
+<span class="hljs-comment">// &#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x4E00;&#x3064;&#x623B;&#x3057;&#xFF0C;&#x8981;&#x7D20;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> prev($array); <span class="hljs-comment">// &#x3042;</span>
+
+<span class="hljs-comment">// &#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x6700;&#x5F8C;&#x307E;&#x3067;&#x9032;&#x3081;&#xFF0C;&#x8981;&#x7D20;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+<span class="hljs-keyword">echo</span> end($array); <span class="hljs-comment">// &#x3046;</span>
+
+<span class="hljs-comment">// &#x5185;&#x90E8;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3092;&#x6700;&#x521D;&#x307E;&#x3067;&#x623B;&#x3057;&#xFF0C;&#x8981;&#x7D20;&#x3092;&#x51FA;&#x529B;</span>
+<span class="hljs-keyword">echo</span> reset($array); <span class="hljs-comment">// &#x3042;</span>
+</code></pre>
+<p><br></p>
+<h3 id="linkedlist&#x578B;">LinkedList&#x578B;</h3>
+<p>PHP&#x3067;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#x3042;&#x307E;&#x308A;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#xFF0E;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;Java&#x306B;&#x304A;&#x3051;&#x308B;LinkedList&#x578B;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
+<h4 id="&#x30FB;php&#x306E;list&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;">&#x30FB;PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;</h4>
+<p>PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;List&#x578B;&#x3068;&#x306F;&#x610F;&#x5473;&#x5408;&#x3044;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x4E00;&#x3064;&#x4E00;&#x3064;&#x3092;&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#xFF0C;List&#x578B;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5197;&#x9577;&#x3067;&#x306F;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$array = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;&#x3042;&quot;</span>, <span class="hljs-string">&quot;&#x3044;&quot;</span>, <span class="hljs-string">&quot;&#x3046;&quot;</span>);
+$a = $array[<span class="hljs-number">0</span>];
+$i = $array[<span class="hljs-number">1</span>];
+$u = $array[<span class="hljs-number">2</span>];
+
+<span class="hljs-keyword">echo</span> $a.$i.$u; <span class="hljs-comment">// &#x3042;&#x3044;&#x3046;</span>
+</code></pre>
+<p>&#x3057;&#x304B;&#x3057;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x4E00;&#x884C;&#x3067;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">list</span>($a, $i, $u) = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;&#x3042;&quot;</span>, <span class="hljs-string">&quot;&#x3044;&quot;</span>, <span class="hljs-string">&quot;&#x3046;&quot;</span>);
+
+<span class="hljs-keyword">echo</span> $a.$i.$u; <span class="hljs-comment">// &#x3042;&#x3044;&#x3046;</span>
+</code></pre>
+<h3 id="queue&#x578B;">Queue&#x578B;</h3>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue1.gif" alt="Queue1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue2.gif" alt="Queue2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue3.gif" alt="Queue3"></p>
+<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_shift</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$array = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;Blue&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);
+
+<span class="hljs-comment">// &#x5F15;&#x6570;&#x3092;&#xFF0C;&#x914D;&#x5217;&#x306E;&#x6700;&#x5F8C;&#x306B;&#xFF0C;&#x8981;&#x7D20;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</span>
+array_push($array, <span class="hljs-string">&quot;Red&quot;</span>);
+print_r($array);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+
+<span class="hljs-comment">//    Array</span>
+<span class="hljs-comment">//    (</span>
+<span class="hljs-comment">//        [0] =&gt; Blue</span>
+<span class="hljs-comment">//        [1] =&gt; Green</span>
+<span class="hljs-comment">//        [2] =&gt; Red</span>
+<span class="hljs-comment">//    )</span>
+
+<span class="hljs-comment">// &#x914D;&#x5217;&#x306E;&#x6700;&#x521D;&#x306E;&#x8981;&#x7D20;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
+$theFirst= array_shift($array);
+print_r($array);
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+
+<span class="hljs-comment">//    Array</span>
+<span class="hljs-comment">//    (</span>
+<span class="hljs-comment">//    [0] =&gt; Green</span>
+<span class="hljs-comment">//    [1] =&gt; Red</span>
+<span class="hljs-comment">//    )</span>
+
+<span class="hljs-comment">// &#x53D6;&#x308A;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5024;&#x306E;&#x78BA;&#x8A8D;</span>
+<span class="hljs-keyword">echo</span> $theFirst; <span class="hljs-comment">// Blue</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;queue">&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue</h4>
+<p>&#x9001;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#xFF09;&#x3092;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue&#x306B;&#x8FFD;&#x52A0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x53D7;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;.jpg" alt="&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B7;&#x3099;&#x30AD;&#x30E5;&#x30FC;"></p>
+<p><br></p>
+<h3 id="stack&#x578B;">Stack&#x578B;</h3>
+<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_pop</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack1.gif" alt="Stack1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack2.gif" alt="Stack2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack3.gif" alt="Stack3"></p>
+<p><br></p>
+<h3 id="tree&#x578B;">Tree&#x578B;</h3>
+<h4 id="&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;">&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;</h4>
+<p>  &#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;1.gif" alt="&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;"></p>
+<h4 id="&#x30FB;&#x30D2;&#x30FC;&#x30D7;">&#x30FB;&#x30D2;&#x30FC;&#x30D7;</h4>
+<p>  Priority Queue&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x3068;&#x304D;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;1.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;2.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;3.gif" alt="&#x30D2;&#x30FC;&#x30D7;2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;4.gif" alt=". "></p>
+<p><br></p>
+<h2 id="03-02-java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;">03-02. Java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;Java&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
+<h3 id="array&#x578B;">Array&#x578B;</h3>
+<h4 id="&#x30FB;arraylist">&#x30FB;ArrayList</h4>
+<p>ArrayList&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;Array&#x578B;&#xFF0E;PHP&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;hashmap">&#x30FB;HashMap</h4>
+<p>HashMap&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;Array&#x578B;&#xFF0E;PHP&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="linkedlist&#x578B;">LinkedList&#x578B;</h3>
+<p>&#x5024;&#x3092;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x306B;&#x3088;&#x3063;&#x3066;&#x9806;&#x5E8F;&#x901A;&#x308A;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x5358;&#x65B9;&#x5411;list">&#x30FB;&#x5358;&#x65B9;&#x5411;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-1.gif" alt="p555-1"></p>
+<h4 id="&#x30FB;&#x53CC;&#x65B9;&#x5411;list">&#x30FB;&#x53CC;&#x65B9;&#x5411;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-2.gif" alt="p555-2"></p>
+<h4 id="&#x30FB;&#x5FAA;&#x74B0;list">&#x30FB;&#x5FAA;&#x74B0;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-3.gif" alt="p555-3"></p>
+<p><br></p>
+<h3 id="queue&#x578B;">Queue&#x578B;</h3>
+<p><br></p>
+<h3 id="stack&#x578B;">Stack&#x578B;</h3>
+<p><br></p>
+<h3 id="tree&#x578B;">Tree&#x578B;</h3>
+<p><br></p>
+<h2 id="05-03-&#x30C7;&#x30FC;&#x30BF;&#x578B;">05-03. &#x30C7;&#x30FC;&#x30BF;&#x578B;</h2>
+<h3 id="&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;">&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;</h3>
+<h4 id="&#x30FB;int">&#x30FB;int</h4>
+<h4 id="&#x30FB;float">&#x30FB;float</h4>
+<h4 id="&#x30FB;string">&#x30FB;string</h4>
+<h4 id="&#x30FB;boolean">&#x30FB;boolean</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">T&#xFF0F;F</th>
+<th>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>FALSE</strong></td>
+<td><code>$var =</code></td>
+<td>&#x4F55;&#x3082;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5909;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>False</code></td>
+<td>&#x6587;&#x5B57;&#x3068;&#x3057;&#x3066;&#x306E;False</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>0</code></td>
+<td>&#x6570;&#x5B57;&#x3001;&#x6587;&#x5B57;&#x5217;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>&quot;&quot;</code></td>
+<td>&#x7A7A;&#x6587;&#x5B57;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td>array()</td>
+<td>&#x8981;&#x7D20;&#x6570;&#x304C;0&#x500B;&#x306E;&#x914D;&#x5217;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td>NULL</td>
+<td>NULL&#x5024;</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>TRUE</strong></td>
+<td>&#x4E0A;&#x8A18;&#x4EE5;&#x5916;&#x306E;&#x5024;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x8907;&#x5408;&#x578B;">&#x8907;&#x5408;&#x578B;</h3>
+<h4 id="&#x30FB;array">&#x30FB;array</h4>
+<h4 id="&#x30FB;object">&#x30FB;object</h4>
+<pre><code>Fruit Object
+(
+    [id:private] =&gt; 1
+    [name:private] =&gt; &#x30EA;&#x30F3;&#x30B4;
+    [price:private] =&gt; 100
+)
+</code></pre><p><br></p>
+<h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;</h3>
+<h4 id="&#x30FB;null">&#x30FB;null</h4>
+<h4 id="&#x30FB;date">&#x30FB;date</h4>
+<p>&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4FBF;&#x5B9C;&#x4E0A;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3068;&#x306F;&#xFF0C;&#x5354;&#x5B9A;&#x4E16;&#x754C;&#x6642;(UTC)&#x3092;&#x57FA;&#x6E96;&#x306B;&#x3057;&#x305F;1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;&#x3092;&#x8868;&#x3057;&#x305F;&#x3082;&#x306E;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</th>
+<th>&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x65E5;&#x4ED8;</td>
+<td>2019-07-07</td>
+<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x30C9;&#x30C3;&#x30C8;&#x3001;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x306A;&#x3069;&#x3082;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td>&#x6642;&#x9593;</td>
+<td>19:07:07</td>
+<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x3082;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td>&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x9593;</td>
+<td>2019-07-07 19:07:07</td>
+<td>&#x540C;&#x4E0A;</td>
+</tr>
+<tr>
+<td>&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#xFF08;&#x79D2;&#xFF09;</td>
+<td>1562494027</td>
+<td>1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;2019-07-07 19:07:07 &#x307E;&#x3067;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;">&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;</h3>
+<h4 id="&#x30FB;string">&#x30FB;<code>(string)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$var = <span class="hljs-number">10</span>; <span class="hljs-comment">// $var&#x306F;Int&#x578B;&#xFF0E;</span>
+
+<span class="hljs-comment">// &#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;&#x3067;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x63DB;</span>
+$var = (string) $var; <span class="hljs-comment">// $var&#x306F;String&#x578B;</span>
+</code></pre>
+<h4 id="&#x30FB;int">&#x30FB;<code>(int)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$var = <span class="hljs-string">&quot;1&quot;</span>;
+
+<span class="hljs-comment">// Int&#x578B;</span>
+$var = (int) $var;
+
+<span class="hljs-comment">// 1</span>
+</code></pre>
+<h4 id="&#x30FB;bool">&#x30FB;<code>(bool)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$var = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">// Boolean&#x578B;</span>
+$var = (bool) $var;
+
+<span class="hljs-comment">// true</span>
+</code></pre>
+<h4 id="&#x30FB;float">&#x30FB;<code>(float)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+$var = <span class="hljs-string">&quot;1.0&quot;</span>;
+
+<span class="hljs-comment">// Float&#x578B;</span>
+$var = (float) $var;
+
+<span class="hljs-comment">// 1.0</span>
+</code></pre>
+<h4 id="&#x30FB;array">&#x30FB;<code>(array)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Array&#x578B;</span>
+$var = (<span class="hljs-keyword">array</span>) $var;
+</code></pre>
+<h4 id="&#x30FB;object">&#x30FB;<code>(object)</code></h4>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Object&#x578B;</span>
+$var = (object) $var;
+</code></pre>
+<p><br></p>
+<h2 id="04-&#x5B9A;&#x6570;">04. &#x5B9A;&#x6570;</h2>
+<h3 id="&#x5B9A;&#x6570;&#x304C;&#x5F79;&#x306B;&#x7ACB;&#x3064;&#x5834;&#x9762;">&#x5B9A;&#x6570;&#x304C;&#x5F79;&#x306B;&#x7ACB;&#x3064;&#x5834;&#x9762;</h3>
+<p>&#x8A08;&#x7B97;&#x51E6;&#x7406;&#x3067;&#x306F;&#xFF0C;&#x53EF;&#x8AAD;&#x6027;&#x306E;&#x89B3;&#x70B9;&#x304B;&#x3089;&#xFF0C;&#x3067;&#x304D;&#x308B;&#x3060;&#x3051;&#x6570;&#x5024;&#x3092;&#x76F4;&#x66F8;&#x304D;&#x3057;&#x306A;&#x3044;&#xFF0E;&#x6570;&#x5024;&#x306B;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#xFF0C;&#x5B9A;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;&#x3068;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;ValueObject&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9A;&#x6570;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">requiredTime</span>
+</span>{
+    <span class="hljs-comment">// &#x5224;&#x5B9A;&#x5024;&#xFF0C;&#x6B69;&#x884C;&#x901F;&#x5EA6;&#x306E;&#x76EE;&#x5B89;&#xFF0C;&#x8ECA;&#x901F;&#x5EA6;&#x306E;&#x76EE;&#x5B89;&#xFF0C;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="hljs-keyword">const</span> JUDGMENT_MINUTE = <span class="hljs-number">21</span>;
+    <span class="hljs-keyword">const</span> WALKING_SPEED_PER_MINUTE = <span class="hljs-number">80</span>;
+    <span class="hljs-keyword">const</span> CAR_SPEED_PER_MINUTE = <span class="hljs-number">400</span>;
+
+
+    <span class="hljs-keyword">private</span> $distance;
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(int $distance)</span>
+    </span>{
+        $this-&gt;distance = $distance;
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isMinuteByWalking</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($this-&gt;distance * <span class="hljs-number">1000</span> / <span class="hljs-keyword">self</span>::WALKING_SPEED_PER_MINUTE &lt; <span class="hljs-keyword">self</span>::JUDGMENT_MINUTE) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">TRUE</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">FALSE</span>;
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minuteByWalking</span><span class="hljs-params">()</span>
+    </span>{
+        $minute = $this-&gt;distance * <span class="hljs-number">1000</span> / <span class="hljs-keyword">self</span>::WALKING_SPEED_PER_MINUTE;
+        <span class="hljs-keyword">return</span> ceil($minute);
+    }
+
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minuteByCar</span><span class="hljs-params">()</span>
+    </span>{
+        $minute = $this-&gt;distance * <span class="hljs-number">1000</span> / <span class="hljs-keyword">self</span>::CAR_SPEED_PER_MINUTE;
+        <span class="hljs-keyword">return</span> ceil($minute);
+    }
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x30DE;&#x30B8;&#x30AB;&#x30EB;&#x5B9A;&#x6570;">&#x30DE;&#x30B8;&#x30AB;&#x30EB;&#x5B9A;&#x6570;</h3>
+<p>&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5B9A;&#x6570;&#xFF0E;</p>
+<h4 id="&#x30FB;dir">&#x30FB;<code>__DIR__</code></h4>
+<p>&#x3053;&#x306E;&#x5B9A;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8A2D;&#x7F6E;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30D1;&#x30B9;&#x304C;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x57FA;&#x6E96;&#x3067;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x6301;&#x3064;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x300C;<code>/var/www/app</code>&#x300D;&#x4E0B;&#x306B;&#x7F6E;&#x3044;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x300C;<code>/vendor/autoload.php</code>&#x300D;&#x3068;&#x7D50;&#x5408;&#x3057;&#x3066;&#x30D1;&#x30B9;&#x3092;&#x901A;&#x3059;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment"># /var/www/app/vendor/autoload.php</span>
+<span class="hljs-keyword">require_once</span> realpath(<span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/vendor/autoload.php&apos;</span>);
+</code></pre>
+<h4 id="&#x30FB;function">&#x30FB;<code>__FUNCTION__</code></h4>
+<p>&#x3053;&#x306E;&#x5B9A;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleA</span>
+</span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span><span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-keyword">__FUNCTION__</span>;
+  }
+}
+</code></pre>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleA</span> </span>{
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span><span class="hljs-params">()</span></span>{}
+}
+$exampleA = <span class="hljs-keyword">new</span> ExampleA;
+$exampleA-&gt;a(); <span class="hljs-comment">// a &#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;method">&#x30FB;<code>__METHOD__</code></h4>
+<p>&#x3053;&#x306E;&#x5B9A;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x3068;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x304C;&#xFF0C;<code>{&#x30AF;&#x30E9;&#x30B9;&#x540D;}::{&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;}</code>&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleB</span>
+</span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span><span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-keyword">echo</span> <span class="hljs-keyword">__METHOD__</span>;
+  }
+}
+</code></pre>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$exampleB = <span class="hljs-keyword">new</span> ExmapleB;
+$exampleB-&gt;b(); <span class="hljs-comment">// ExampleB::b &#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+</code></pre>
+<p><br></p>
+<h2 id="05-&#x5909;&#x6570;">05. &#x5909;&#x6570;</h2>
+<h3 id="&#x5909;&#x6570;&#x5C55;&#x958B;">&#x5909;&#x6570;&#x5C55;&#x958B;</h3>
+<p>&#x6587;&#x5B57;&#x5217;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#x3053;&#x3068;&#x3092;&#x300E;&#x5909;&#x6570;&#x5C55;&#x958B;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
+<p>&#x203B;Paiza&#x3067;&#x691C;&#x8A3C;&#x6E08;&#x307F;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;">&#x30FB;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;</h4>
+<p>&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4E2D;&#x8EAB;&#x306F;&#x5168;&#x3066;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#xFF0C;&#x5909;&#x6570;&#x306F;&#x5C55;&#x958B;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$fruit = <span class="hljs-string">&quot;&#x30EA;&#x30F3;&#x30B4;&quot;</span>;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x3053;&#x308C;&#x306F;$fruit&#x3067;&#x3059;&#xFF0E;&apos;</span>; <span class="hljs-comment">// &#x3053;&#x308C;&#x306F;&#xFF0C;$fruit&#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x6CE2;&#x62EC;&#x5F27;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;">&#x30FB;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x6CE2;&#x62EC;&#x5F27;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;</h4>
+<p>&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4E2D;&#x8EAB;&#x306F;&#x5168;&#x3066;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#xFF0C;&#x5909;&#x6570;&#x306F;&#x5C55;&#x958B;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$fruit = <span class="hljs-string">&quot;&#x30EA;&#x30F3;&#x30B4;&quot;</span>;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x3053;&#x308C;&#x306F;{$fruit}&#x3067;&#x3059;&#xFF0E;&apos;</span>; <span class="hljs-comment">// &#x3053;&#x308C;&#x306F;&#xFF0C;{$fruit}&#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;">&#x30FB;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;</h4>
+<p>&#x5909;&#x6570;&#x306E;&#x524D;&#x5F8C;&#x306B;&#x534A;&#x89D2;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x3092;&#x7F6E;&#x3044;&#x305F;&#x5834;&#x5408;&#x306B;&#x306E;&#x307F;&#xFF0C;&#x5909;&#x6570;&#x306F;&#x5C55;&#x958B;&#x3055;&#x308C;&#x308B;&#xFF0E;&#xFF08;&#x203B;&#x534A;&#x89D2;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x304C;&#x306A;&#x3044;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF09;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+
+$fruit = <span class="hljs-string">&quot;&#x30EA;&#x30F3;&#x30B4;&quot;</span>;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&#x3053;&#x308C;&#x306F; $fruit &#x3067;&#x3059;&#xFF0E;&quot;</span>; <span class="hljs-comment">// &#x3053;&#x308C;&#x306F; &#x30EA;&#x30F3;&#x30B4; &#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x6CE2;&#x62EC;&#x5F27;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;">&#x30FB;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x6CE2;&#x62EC;&#x5F27;&#x306B;&#x3088;&#x308B;&#x5909;&#x6570;&#x5C55;&#x958B;</h4>
+<p>&#x6CE2;&#x62EC;&#x5F27;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;&#xFF0C;&#x660E;&#x793A;&#x7684;&#x306B;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x524D;&#x5F8C;&#x306B;&#x534A;&#x89D2;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x3092;&#x7F6E;&#x304B;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x5909;&#x6570;&#x306F;&#x5C55;&#x958B;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$fruit = <span class="hljs-string">&quot;&#x30EA;&#x30F3;&#x30B4;&quot;</span>;
+
+<span class="hljs-comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&#x3053;&#x308C;&#x306F;{$fruit}&#x3067;&#x3059;&#xFF0E;&quot;</span>; <span class="hljs-comment">// &#x3053;&#x308C;&#x306F;&#xFF0C;&#x30EA;&#x30F3;&#x30B4;&#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x53C2;&#x7167;&#x6E21;&#x3057;&#x3068;&#x5024;&#x6E21;&#x3057;">&#x53C2;&#x7167;&#x6E21;&#x3057;&#x3068;&#x5024;&#x6E21;&#x3057;</h3>
+<h4 id="&#x30FB;&#x53C2;&#x7167;&#x6E21;&#x3057;">&#x30FB;&#x53C2;&#x7167;&#x6E21;&#x3057;</h4>
+<p>&#x300C;&#x53C2;&#x7167;&#x6E21;&#x3057;&#x300D;&#x3068;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3057;&#x305F;&#x5024;&#x306E;&#x53C2;&#x7167;&#x5148;&#xFF08;&#x30E1;&#x30E2;&#x30EA;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#xFF09;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$value = <span class="hljs-number">1</span>;
+$result = &amp;$value; <span class="hljs-comment">// &#x5024;&#x306E;&#x5165;&#x308C;&#x7269;&#x3092;&#x53C2;&#x7167;&#x5148;&#x3068;&#x3057;&#x3066;&#x4EE3;&#x5165;</span>
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-$b```&#x306B;&#x306F;&#xFF0C;```$a```&#x306E;&#x53C2;&#x7167;&#x306B;&#x3088;&#x3063;&#x3066;10&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;">
+```PHP
+&lt;?php
+
+$a = 2;
+$b = &amp;$a;  // &#x5909;&#x6570;a&#x3092;&amp;&#x3092;&#x3064;&#x3051;&#x3066;&#x4EE3;&#x5165;
+$a = 10;    // &#x5909;&#x6570;a&#x306E;&#x5024;&#x3092;&#x5909;&#x66F4;
+
+// &#x51FA;&#x529B;&#x7D50;&#x679C;
+echo $b; // 10
+</code></pre>
+<h4 id="&#x30FB;&#x5024;&#x6E21;&#x3057;">&#x30FB;&#x5024;&#x6E21;&#x3057;</h4>
+<p>&#x300C;&#x5024;&#x6E21;&#x3057;&#x300D;&#x3068;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3057;&#x305F;&#x5024;&#x306E;&#x30B3;&#x30D4;&#x30FC;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#xFF0E;</p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+$value = <span class="hljs-number">1</span>;
+$result = $value; <span class="hljs-comment">// 1&#x3092;&#x30B3;&#x30D4;&#x30FC;&#x3057;&#x3066;&#x4EE3;&#x5165;</span>
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-$b```&#x306B;&#x306F;&#xFF0C;```$a```&#x306E;&#x4E00;&#x884C;&#x76EE;&#x306E;&#x683C;&#x7D0D;&#x306B;&#x3088;&#x3063;&#x3066;2&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;">
+```PHP
+&lt;?php
+
+$a = 2;
+$b = $a;  // &#x5909;&#x6570;a&#x3092;&#x4EE3;&#x5165;
+$a = 10;  // &#x5909;&#x6570;a&#x306E;&#x5024;&#x3092;&#x5909;&#x66F4;
+
+
+// &#x51FA;&#x529B;&#x7D50;&#x679C;
+echo $b; // 2
+</code></pre>
+<p><br></p>
+<h2 id="07-&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30E9;&#x30C3;&#x30D1;&#x30FC;&#x95A2;&#x6570;">07. &#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30E9;&#x30C3;&#x30D1;&#x30FC;&#x95A2;&#x6570;</h2>
+<h3 id="&#x5165;&#x51FA;&#x529B;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;">&#x5165;&#x51FA;&#x529B;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;</h3>
+<h4 id="&#x30FB;&#x5165;&#x51FA;&#x529B;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x3068;&#x306F;">&#x30FB;&#x5165;&#x51FA;&#x529B;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x3068;&#x306F;</h4>
+<p>&#x4E00;&#x5EA6;&#x306B;&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5165;&#x51FA;&#x529B;&#x3059;&#x308B;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x5C11;&#x3057;&#x305A;&#x3064;&#x5165;&#x51FA;&#x529B;&#x3059;&#x308B;&#x51E6;&#x7406;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;phpstdin">&#x30FB;php://stdin</h4>
+<p>stdin&#xFF1A;standard in&#xFF08;&#x6A19;&#x6E96;&#x5165;&#x529B;&#xFF09;&#x3092;&#x610F;&#x5473;&#x3059;&#x308B;&#xFF0E;PHP&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#xFF0C;&#x6A19;&#x6E96;&#x5165;&#x529B;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x51E6;&#x7406;&#x3092;&#x9001;&#x4FE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// &#x30ED;&#x30B0;&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;</span>
+$stdin = fopen(<span class="hljs-string">&apos;php://stdin&apos;</span>, <span class="hljs-string">&apos;r&apos;</span>);
+</code></pre>
+<h4 id="&#x30FB;phpstdout">&#x30FB;php://stdout</h4>
+<p>stdout&#xFF1A;standard out&#xFF08;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF09;&#x3092;&#x610F;&#x5473;&#x3059;&#x308B;&#xFF0E;PHP&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x51E6;&#x7406;&#x3092;&#x9001;&#x4FE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// &#x30ED;&#x30B0;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;</span>
+$stderr = fopen(<span class="hljs-string">&apos;php://stdout&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>);
+fwrite($stderr, <span class="hljs-string">&apos;&#x30ED;&#x30B0;&#x3067;&#x3059;&#xFF0E;&apos;</span>);
+</code></pre>
+<h4 id="&#x30FB;phpstderr">&#x30FB;php://stderr</h4>
+<p>stderr&#xFF1A;standard error&#xFF08;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x30A8;&#x30E9;&#x30FC;&#xFF09;&#x3092;&#x610F;&#x5473;&#x3059;&#x308B;&#xFF0E;PHP&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#xFF0C;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x51E6;&#x7406;&#x3092;&#x9001;&#x4FE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// &#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;</span>
+$stderr = fopen(<span class="hljs-string">&apos;php://stderr&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>);
+fwrite($stderr, <span class="hljs-string">&apos;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3067;&#x3059;&#xFF0E;&apos;</span>);
+</code></pre>
+<p><br></p>
+<h2 id="08-&#x305D;&#x306E;&#x4ED6;&#x306E;&#x95A2;&#x6570;">08. &#x305D;&#x306E;&#x4ED6;&#x306E;&#x95A2;&#x6570;</h2>
+<h3 id="&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x95A2;&#x6570;">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x95A2;&#x6570;</h3>
+<h4 id="&#x30FB;fileputcontents">&#x30FB;file_put_contents</h4>
+<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x6587;&#x5B57;&#x5217;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+
+$array = [];
+
+<span class="hljs-comment">// array&#x578B;&#x3092;JSON&#x578B;&#x306B;&#x5909;&#x63DB;</span>
+$json = json_encode($array);
+
+<span class="hljs-comment">// fopen()&#xFF0C;fwrite()&#xFF0C;fclose()&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+file_put_contents(
+    <span class="hljs-string">&apos;data.json&apos;</span>,
+    $json
+);
+</code></pre>
+<p><br></p>
+<h2 id="09-&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3068;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;">09. &#x6B63;&#x898F;&#x8868;&#x73FE;&#x3068;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;</h2>
+<h3 id="&#x6B63;&#x898F;&#x8868;&#x73FE;">&#x6B63;&#x898F;&#x8868;&#x73FE;</h3>
+<h4 id="&#x30FB;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3092;&#x7528;&#x3044;&#x305F;&#x6587;&#x5B57;&#x5217;&#x691C;&#x7D22;">&#x30FB;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3092;&#x7528;&#x3044;&#x305F;&#x6587;&#x5B57;&#x5217;&#x691C;&#x7D22;</h4>
+<pre><code class="lang-PHP"><span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;">&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x306E;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x306E;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x6F14;&#x7B97;&#x5B50;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x6587;&#x5B57;&#x5217;</span>
+$x = <span class="hljs-string">&quot;&quot;</span>;
+
+<span class="hljs-comment">// jpeg&#x306E;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;</span>
+preg_match(
+    <span class="hljs-string">&apos;/jpeg$/i&apos;</span>,
+    $x
+);
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="backend_object_orientation_class.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: クラスベースのプログラミング（1）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"クラスベースのプログラミング（2）","level":"1.3.3","depth":2,"next":{"title":"PHP｜ロジック","level":"1.4","depth":1,"ref":"","articles":[{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"previous":{"title":"クラスベースのプログラミング（1）","level":"1.3.2","depth":2,"path":"public/backend_object_orientation_class.md","ref":"public/backend_object_orientation_class.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_method_data.md","mtime":"2020-12-20T17:43:34.861Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T03:48:36.068Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
