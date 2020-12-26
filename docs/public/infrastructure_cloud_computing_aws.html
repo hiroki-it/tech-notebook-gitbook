@@ -1674,18 +1674,15 @@ exports.handler = (event, context, callback) =&gt; {
 
     <span class="hljs-keyword">const</span> request = event.Records[<span class="hljs-number">0</span>].cf.request;
     <span class="hljs-comment">// &#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306B;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="hljs-built_in">console</span>.dir({request});
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify({request}, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
 
     <span class="hljs-keyword">const</span> headers = request.headers;
-    <span class="hljs-comment">// &#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306B;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="hljs-built_in">console</span>.dir({headers});
-
-    <span class="hljs-keyword">const</span> s3Backet = getBacketBasedOnUserAgent(headers);
+    <span class="hljs-keyword">const</span> s3Backet = getBacketBasedOnDeviceType(headers);
 
     request.origin.s3.domainName = s3Backet
     request.headers.host[<span class="hljs-number">0</span>].value = s3Backet
     <span class="hljs-comment">// &#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306B;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="hljs-built_in">console</span>.dir({request});
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify({request}, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
 
     <span class="hljs-keyword">return</span> callback(<span class="hljs-literal">null</span>, request);
 };
@@ -1693,13 +1690,14 @@ exports.handler = (event, context, callback) =&gt; {
 <span class="hljs-comment">/**
  * &#x30C7;&#x30D0;&#x30A4;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x3001;&#x30AA;&#x30EA;&#x30B8;&#x30F3;&#x3092;&#x5207;&#x308A;&#x66FF;&#x3048;&#x308B;&#xFF0E;
  * 
- * @param   headers
- * @returns string
+ * @param   {Object} headers
+ * @param   {string} env
+ * @returns {string} pcBucket|spBucket
  */</span>
 <span class="hljs-keyword">const</span> getBacketBasedOnDeviceType = (headers) =&gt; {
 
-    <span class="hljs-keyword">const</span> pcBucket = <span class="hljs-string">&apos;pc-bucket.s3.amazonaws.com&apos;</span>;
-    <span class="hljs-keyword">const</span> spBucket = <span class="hljs-string">&apos;sp-bucket.s3.amazonaws.com&apos;</span>;
+    <span class="hljs-keyword">const</span> pcBucket = env + <span class="hljs-string">&apos;-bucket.s3.amazonaws.com&apos;</span>;
+    <span class="hljs-keyword">const</span> spBucket = env + <span class="hljs-string">&apos;-bucket.s3.amazonaws.com&apos;</span>;
 
     <span class="hljs-keyword">if</span> (headers[<span class="hljs-string">&apos;cloudfront-is-desktop-viewer&apos;</span>]
         &amp;&amp; headers[<span class="hljs-string">&apos;cloudfront-is-desktop-viewer&apos;</span>][<span class="hljs-number">0</span>].value === <span class="hljs-string">&apos;true&apos;</span>) {
@@ -1731,12 +1729,12 @@ exports.handler = (event, context, callback) =&gt; {
             <span class="hljs-string">&quot;encoding&quot;</span>: <span class="hljs-string">&quot;base64&quot;</span>,
             <span class="hljs-string">&quot;inputTruncated&quot;</span>: <span class="hljs-literal">false</span>
           },
-          <span class="hljs-string">&quot;clientIp&quot;</span>: <span class="hljs-string">&quot;203.0.113.178&quot;</span>,
+          <span class="hljs-string">&quot;clientIp&quot;</span>: <span class="hljs-string">&quot;nnn.n.nnn.nnn&quot;</span>,
           <span class="hljs-string">&quot;headers&quot;</span>: {
             <span class="hljs-string">&quot;host&quot;</span>: [
               {
                 <span class="hljs-string">&quot;key&quot;</span>: <span class="hljs-string">&quot;Host&quot;</span>,
-                <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;example-bucket.s3.ap-northeast-1.amazonaws.com&quot;</span>
+                <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;prd-sp-bucket.s3.ap-northeast-1.amazonaws.com&quot;</span>
               }
             ],
             <span class="hljs-string">&quot;cloudfront-is-mobile-viewer&quot;</span>: [
@@ -1773,17 +1771,24 @@ exports.handler = (event, context, callback) =&gt; {
           <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;GET&quot;</span>,
           <span class="hljs-string">&quot;origin&quot;</span>: {
             <span class="hljs-string">&quot;s3&quot;</span>: {
-              <span class="hljs-string">&quot;customHeaders&quot;</span>: {},
-              <span class="hljs-string">&quot;domainName&quot;</span>: <span class="hljs-string">&quot;example-bucket.s3.amazonaws.com&quot;</span>,
-              <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/images/12345&quot;</span>,
+              <span class="hljs-string">&quot;authMethod&quot;</span>: <span class="hljs-string">&quot;origin-access-identity&quot;</span>,                
+              <span class="hljs-string">&quot;customHeaders&quot;</span>: {
+                  <span class="hljs-string">&quot;env&quot;</span>: [
+                      {
+                          <span class="hljs-string">&quot;key&quot;</span>: <span class="hljs-string">&quot;env&quot;</span>,
+                          <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;prd&quot;</span>
+                      }
+                  ]
+              },
+              <span class="hljs-string">&quot;domainName&quot;</span>: <span class="hljs-string">&quot;prd-sp-bucket.s3.amazonaws.com&quot;</span>,
+              <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
               <span class="hljs-string">&quot;port&quot;</span>: <span class="hljs-number">443</span>,
               <span class="hljs-string">&quot;protocol&quot;</span>: <span class="hljs-string">&quot;https&quot;</span>,
-              <span class="hljs-string">&quot;authMethod&quot;</span>: <span class="hljs-string">&quot;origin-access-identity&quot;</span>,
               <span class="hljs-string">&quot;region&quot;</span>: <span class="hljs-string">&quot;ap-northeast-1&quot;</span>
             }
           },
           <span class="hljs-string">&quot;querystring&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
-          <span class="hljs-string">&quot;uri&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>
+          <span class="hljs-string">&quot;uri&quot;</span>: <span class="hljs-string">&quot;/images/12345&quot;</span>
         }
       }
     }
@@ -2941,17 +2946,17 @@ $ aws s3 ls s3://&lt;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;
 </thead>
 <tbody>
 <tr>
-<td><strong>&#x5225;&#x540D;</strong></td>
+<td>&#x5225;&#x540D;</td>
 <td>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</td>
 <td>&#x30EA;&#x30FC;&#x30C9;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</td>
 </tr>
 <tr>
-<td><strong>CRUD&#x5236;&#x9650;</strong></td>
+<td>CRUD&#x5236;&#x9650;</td>
 <td>&#x5236;&#x9650;&#x306A;&#x3057;&#xFF0E;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x306B;&#x4F9D;&#x5B58;&#x3059;&#x308B;&#xFF0E;</td>
 <td>&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x306E;&#x6A29;&#x9650;&#x306B;&#x95A2;&#x4FC2;&#x306A;&#x304F;&#xFF0C;READ&#x3057;&#x304B;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
 </tr>
 <tr>
-<td><strong>&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;</strong></td>
+<td>&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;</td>
 <td>&#x5404;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#xFF0C;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x305F;&#x30A8;&#x30F3;&#x30C2;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304C;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
 <td>&#x5404;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#xFF0C;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x305F;&#x30A8;&#x30F3;&#x30C2;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304C;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
 </tr>
@@ -3772,8 +3777,8 @@ jq  <span class="hljs-string">&apos;.prefixes[] | select(.service==&quot;CLOUDFR
 </tbody>
 </table>
 <h4 id="&#x30FB;behavior&#x306E;&#x8A73;&#x7D30;&#x9805;&#x76EE;">&#x30FB;Behavior&#x306E;&#x8A73;&#x7D30;&#x9805;&#x76EE;</h4>
-<p>&#x4F55;&#x306B;&#x57FA;&#x3065;&#x3044;&#x305F;Cache&#x3092;&#x884C;&#x3046;&#x304B;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x2605;&#x30DE;&#x30FC;&#x30AF;&#x306E;&#x9805;&#x76EE;&#x3067;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x2605;&#x30DE;&#x30FC;&#x30AF;&#x3067;&#xFF0C;&#x5404;&#x9805;&#x76EE;&#x306E;&#x5168;&#x3066;&#x5024;&#x304C;&#xFF0C;&#x904E;&#x53BB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;&#x5408;&#x81F4;&#x3057;&#x305F;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x305D;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x904E;&#x53BB;&#x306E;&#x3082;&#x306E;&#x304C;&#x540C;&#x4E00;&#x3067;&#x3042;&#x308B;&#x3068;&#x898B;&#x306A;&#x3059;&#x4ED5;&#x7D44;&#x307F;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;HIT&#x7387;&#x6539;&#x5584;&#x306E;&#x65B9;&#x6CD5;&#x306F;&#x4EE5;&#x4E0B;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
-<p><a href="https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters</a></p>
+<p>&#x4F55;&#x306B;&#x57FA;&#x3065;&#x3044;&#x305F;Cache&#x3092;&#x884C;&#x3046;&#x304B;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x2605;&#x30DE;&#x30FC;&#x30AF;&#x306E;&#x9805;&#x76EE;&#x3067;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x2605;&#x30DE;&#x30FC;&#x30AF;&#x3067;&#xFF0C;&#x5404;&#x9805;&#x76EE;&#x306E;&#x5168;&#x3066;&#x5024;&#x304C;&#xFF0C;&#x904E;&#x53BB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;&#x5408;&#x81F4;&#x3057;&#x305F;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x305D;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x904E;&#x53BB;&#x306E;&#x3082;&#x306E;&#x304C;&#x540C;&#x4E00;&#x3067;&#x3042;&#x308B;&#x3068;&#x898B;&#x306A;&#x3059;&#x4ED5;&#x7D44;&#x307F;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5224;&#x5B9A;&#x6642;&#x306E;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3092;&#x6E1B;&#x3089;&#x3057;&#xFF0C;HIT&#x7387;&#x3092;&#x6539;&#x5584;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x2605;&#x30DE;&#x30FC;&#x30AF;&#x3067;&#x53EF;&#x80FD;&#x306A;&#x9650;&#x308A;&#x300C;None&#x300D;&#x3092;&#x9078;&#x629E;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x6539;&#x5584;&#x65B9;&#x6CD5;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters</a></p>
 <table>
 <thead>
 <tr>
@@ -3826,7 +3831,7 @@ jq  <span class="hljs-string">&apos;.prefixes[] | select(.service==&quot;CLOUDFR
 <tr>
 <td>TTL</td>
 <td>CloudFront&#x306B;Cache&#x3092;&#x4FDD;&#x5B58;&#x3057;&#x3066;&#x304A;&#x304F;&#x79D2;&#x6570;&#x3092;&#x8A73;&#x7D30;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-<td>&#x30FB;Min&#xFF0C;Max&#xFF0C;Default&#xFF0C;&#x306E;&#x5168;&#x3066;&#x3092;0&#x79D2;&#x3068;&#x3059;&#x308B;&#x3068;&#xFF0C;Cache&#x3092;&#x7121;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;<br>&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;Cache-Control Max-Age&#x304C;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;Min&#x3068;Max&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#xFF0C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;Default TTL&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x30FB;&#x300C;Cache Based on Selected Request Headers = All&#x300D;&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;Cache&#x304C;&#x5B9F;&#x8CEA;&#x7121;&#x52B9;&#x3068;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x6700;&#x5C0F;TTL&#x306F;&#x30BC;&#x30ED;&#x3067;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</td>
+<td>&#x30FB;Min&#xFF0C;Max&#xFF0C;Default&#xFF0C;&#x306E;&#x5168;&#x3066;&#x3092;0&#x79D2;&#x3068;&#x3059;&#x308B;&#x3068;&#xFF0C;Cache&#x3092;&#x7121;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;<br>&#x30FB;&#x300C;Cache Based on Selected Request Headers = All&#x300D;&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;Cache&#x304C;&#x5B9F;&#x8CEA;&#x7121;&#x52B9;&#x3068;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x6700;&#x5C0F;TTL&#x306F;&#x30BC;&#x30ED;&#x3067;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</td>
 </tr>
 <tr>
 <td>&#x2605;Farward Cookies<br>&#xFF08;&#x2605;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x8868;&#x4E0A;&#x90E8;&#x53C2;&#x7167;&#xFF09;</td>
@@ -3879,6 +3884,9 @@ CloudFront-Is-Desktop-Viewer: false
 CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 </code></pre>
+<h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6642;&#x9593;&#x306E;&#x6C7A;&#x307E;&#x308A;&#x65B9;">&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6642;&#x9593;&#x306E;&#x6C7A;&#x307E;&#x308A;&#x65B9;</h4>
+<p>&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6642;&#x9593;&#x306F;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#xFF08;<code>Cache-Control</code>&#xFF0C;<code>Expires</code>&#xFF09;&#x306E;&#x5024;&#x3068;CloudFront&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;TTL&#xFF09;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x306B;&#x3088;&#x3063;&#x3066;&#x6C7A;&#x307E;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;CloudFront&#x306E;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;TTL&#x3092;&#x5168;&#x3066;&#xFF10;&#x79D2;&#x306B;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x5B8C;&#x5168;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x7167;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist</a></p>
 <p><br></p>
 <h3 id="reports--analytics">Reports &amp; analytics</h3>
 <h4 id="&#x30FB;cache-statistics">&#x30FB;Cache statistics</h4>
@@ -4757,7 +4765,7 @@ $ service awslogs start
 </code></pre>
 <h4 id="&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30A4;&#x30D9;&#x30F3;&#x30C8;">&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30A4;&#x30D9;&#x30F3;&#x30C8;</h4>
 <p><br></p>
-<h2 id="09-&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x30A8;&#x30F3;&#x30B2;&#x30FC;&#x30B8;&#x30E1;&#x30F3;&#x30C8;">09. &#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x30A8;&#x30F3;&#x30B2;&#x30FC;&#x30B8;&#x30E1;&#x30F3;&#x30C8;</h2>
+<h2 id="09-&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x30A8;&#x30F3;&#x30B2;&#x30FC;&#x30B8;&#x30E1;&#x30F3;&#x30C8;&#xFF5C;ses">09. &#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x30A8;&#x30F3;&#x30B2;&#x30FC;&#x30B8;&#x30E1;&#x30F3;&#x30C8;&#xFF5C;SES</h2>
 <h3 id="ses&#xFF1A;simple-email-service">SES&#xFF1A;Simple Email Service</h3>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/SES&#x3068;&#x306F;.png" alt="SES&#x3068;&#x306F;"></p>
 <h4 id="&#x30FB;ses&#x3068;&#x306F;">&#x30FB;SES&#x3068;&#x306F;</h4>
@@ -4802,6 +4810,27 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;rule-sets">&#x30FB;Rule Sets</h4>
+<table>
+<thead>
+<tr>
+<th>&#x8A2D;&#x5B9A;&#x9805;&#x76EE;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recipiet</td>
+<td>&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3067;&#xFF0C;&#x4F55;&#x306E;&#x5B9B;&#x5148;&#x306E;&#x6642;&#x306B;&#x3053;&#x308C;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>&#x53D7;&#x4FE1;&#x3092;&#x8A31;&#x53EF;&#x3057;&#x305F;&#x5F8C;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30C8;&#x30EA;&#x30AC;&#x30FC;&#x3068;&#x3057;&#x3066;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x4ED5;&#x69D8;&#x4E0A;&#x306E;&#x5236;&#x7D04;">&#x4ED5;&#x69D8;&#x4E0A;&#x306E;&#x5236;&#x7D04;</h3>
 <h4 id="&#x30FB;&#x69CB;&#x7BC9;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x5236;&#x7D04;">&#x30FB;&#x69CB;&#x7BC9;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x5236;&#x7D04;</h4>
 <p>SES&#x306F;&#x9023;&#x643A;&#x3059;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3068;&#x540C;&#x3058;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x69CB;&#x7BC9;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;sandbox&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x89E3;&#x9664;">&#x30FB;Sandbox&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x89E3;&#x9664;</h4>
@@ -4824,27 +4853,10 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="smtp-auth">SMTP-AUTH</h3>
 <h4 id="&#x30FB;aws&#x306B;&#x304A;&#x3051;&#x308B;smtp-auth&#x306E;&#x4ED5;&#x7D44;&#x307F;">&#x30FB;AWS&#x306B;&#x304A;&#x3051;&#x308B;SMTP-AUTH&#x306E;&#x4ED5;&#x7D44;&#x307F;</h4>
 <p>&#x4E00;&#x822C;&#x7684;&#x306A;SMTP-AUTH&#x3067;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x8A8D;&#x8A3C;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x540C;&#x69D8;&#x306B;&#x3057;&#x3066;&#xFF0C;AWS&#x306B;&#x304A;&#x3044;&#x3066;&#x3082;&#x3053;&#x308C;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308A;&#xFF0C;IAM&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x7528;&#x3044;&#x3066;&#x3053;&#x308C;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#xFF0E;&#x9001;&#x4FE1;&#x5143;&#x3068;&#x306A;&#x308B;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;IAM&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x7D10;&#x4ED8;&#x3051;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;SES&#x3092;&#x4ECB;&#x3057;&#x3066;&#x30E1;&#x30FC;&#x30EB;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;IAM&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x3082;&#x3064;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x8A8D;&#x8A3C;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x306F;&#x5F8C;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30E1;&#x30E2;&#x3057;&#x3066;&#x304A;&#x304F;&#x3053;&#x3068;&#xFF0E;SMTP-AUTH&#x306E;&#x4ED5;&#x7D44;&#x307F;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x5225;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
-<h4 id="&#x30FB;rule-sets">&#x30FB;Rule Sets</h4>
-<table>
-<thead>
-<tr>
-<th>&#x8A2D;&#x5B9A;&#x9805;&#x76EE;</th>
-<th>&#x8AAC;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Recipiet</td>
-<td>&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3067;&#xFF0C;&#x4F55;&#x306E;&#x5B9B;&#x5148;&#x306E;&#x6642;&#x306B;&#x3053;&#x308C;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-<tr>
-<td>Actions</td>
-<td>&#x53D7;&#x4FE1;&#x3092;&#x8A31;&#x53EF;&#x3057;&#x305F;&#x5F8C;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30C8;&#x30EA;&#x30AC;&#x30FC;&#x3068;&#x3057;&#x3066;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-</tbody>
-</table>
 <p><br></p>
 <h2 id="10-&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">10. &#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h2>
 <h3 id="workmail">WorkMail</h3>
@@ -4876,7 +4888,7 @@ $ service awslogs start
 </tbody>
 </table>
 <p><br></p>
-<h2 id="11-&#x6697;&#x53F7;&#x5316;&#x3068;pki">11. &#x6697;&#x53F7;&#x5316;&#x3068;PKI</h2>
+<h2 id="11-&#x6697;&#x53F7;&#x5316;&#x3068;pki&#xFF5C;certificate-manager">11. &#x6697;&#x53F7;&#x5316;&#x3068;PKI&#xFF5C;Certificate Manager</h2>
 <h3 id="certificate-manager">Certificate Manager</h3>
 <h4 id="&#x30FB;certificate-manager&#x3068;&#x306F;">&#x30FB;Certificate Manager&#x3068;&#x306F;</h4>
 <p>&#x8A8D;&#x8A3C;&#x5C40;&#x3067;&#x3042;&#x308B;ATS&#x306B;&#x3088;&#x3063;&#x3066;&#x8A8D;&#x8A3C;&#x3055;&#x308C;&#x305F;SSL&#x30B5;&#x30FC;&#x30D0;&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#xFF0E;</p>
@@ -4912,6 +4924,12 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306E;&#x627F;&#x8A8D;&#x65B9;&#x6CD5;">&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306E;&#x627F;&#x8A8D;&#x65B9;&#x6CD5;</h3>
+<h4 id="&#x30FB;dns&#x691C;&#x8A3C;">&#x30FB;DNS&#x691C;&#x8A3C;</h4>
+<p>CNAME&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x306E;&#x6240;&#x6709;&#x8005;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x8A3C;&#x660E;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;ACM&#x306B;&#x3088;&#x3063;&#x3066;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;CNAME&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x304C;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x3053;&#x308C;&#x3092;Route53&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x3051;&#x3070;&#xFF0C;ACM&#x304C;&#x3053;&#x308C;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x767A;&#x884C;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x8A3C;&#x660E;&#x66F8;">&#x8A3C;&#x660E;&#x66F8;</h3>
 <h4 id="&#x30FB;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
 <p>&#x8A31;&#x53EF;&#x3059;&#x308B;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x30EB;&#x30FC;&#x30EB;&#x3053;&#x3068;&#xFF0E;SSL/TLS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A31;&#x53EF;&#x3057;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x5BFE;&#x5FDC;&#x3067;&#x304D;&#x308B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x304C;&#x7570;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x304C;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;SSL/TLS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x304B;&#x3092;&#x8A8D;&#x8B58;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <table>
@@ -4944,8 +4962,6 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;dns&#x691C;&#x8A3C;">&#x30FB;DNS&#x691C;&#x8A3C;</h4>
-<p>CNAME&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x306E;&#x6240;&#x6709;&#x8005;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x8A3C;&#x660E;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;ACM&#x306B;&#x3088;&#x3063;&#x3066;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;CNAME&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x304C;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x3053;&#x308C;&#x3092;Route53&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x3051;&#x3070;&#xFF0C;ACM&#x304C;&#x3053;&#x308C;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x767A;&#x884C;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;ssl&#x30B5;&#x30FC;&#x30D0;&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x7A2E;&#x985E;">&#x30FB;SSL&#x30B5;&#x30FC;&#x30D0;&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x7A2E;&#x985E;</h4>
 <p>DNS&#x691C;&#x8A3C;&#x307E;&#x305F;&#x306F;E&#x30E1;&#x30FC;&#x30EB;&#x691C;&#x8A3C;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x306E;&#x6240;&#x6709;&#x8005;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x304C;&#x8A3C;&#x660E;&#x3055;&#x308C;&#x308B;&#x3068;&#xFF0C;&#x767A;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x8A3C;&#x660E;&#x66F8;&#x306F;&#xFF0C;PKI&#x306B;&#x3088;&#x308B;&#x516C;&#x958B;&#x9375;&#x691C;&#x8A3C;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <table>
@@ -5015,7 +5031,7 @@ $ service awslogs start
 </tbody>
 </table>
 <p><br></p>
-<h2 id="12-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;">12. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;</h2>
+<h2 id="12-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;waf">12. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;WAF</h2>
 <h3 id="aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;-vs-&#x30B5;&#x30A4;&#x30D0;&#x30FC;&#x653B;&#x6483;">AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9; vs. &#x30B5;&#x30A4;&#x30D0;&#x30FC;&#x653B;&#x6483;</h3>
 <table>
 <thead>
@@ -5101,8 +5117,9 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;web-acls&#x306B;&#x304A;&#x3051;&#x308B;&#x30EB;&#x30FC;&#x30EB;">&#x30FB;Web ACLs&#x306B;&#x304A;&#x3051;&#x308B;&#x30EB;&#x30FC;&#x30EB;</h4>
-<p>&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8A31;&#x53EF;&#xFF0F;&#x62D2;&#x5426;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="web-acls">Web ACLs</h3>
+<h4 id="&#x30FB;web-acls&#x306E;&#x8A73;&#x7D30;&#x9805;&#x76EE;">&#x30FB;Web ACLs&#x306E;&#x8A73;&#x7D30;&#x9805;&#x76EE;</h4>
 <table>
 <thead>
 <tr>
@@ -5133,8 +5150,29 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x4F8B;">&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x4F8B;</h4>
+<h4 id="&#x30FB;overview&#x306B;&#x304A;&#x3051;&#x308B;sampled-requests&#x306E;&#x898B;&#x65B9;">&#x30FB;Overview&#x306B;&#x304A;&#x3051;&#x308B;Sampled requests&#x306E;&#x898B;&#x65B9;</h4>
+<p>&#x300C;&#x5168;&#x3066;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x300D;&#x307E;&#x305F;&#x306F;&#x300C;&#x500B;&#x5225;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x300D;&#x306B;&#x304A;&#x3051;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x8A31;&#x53EF;&#xFF0F;&#x62D2;&#x5426;&#x306E;&#x5C65;&#x6B74;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;ALB&#x3084;CloudFront&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3088;&#x308A;&#x3082;&#x89E3;&#x308A;&#x3084;&#x3059;&#x304F;&#xFF0C;&#x69D8;&#x3005;&#x306A;&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x306B;&#x5F79;&#x7ACB;&#x3064;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#xFF13;&#x6642;&#x9593;&#x5206;&#x3057;&#x304B;&#x6B8B;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x4E00;&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;CloudFront&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3057;&#x305F;WAF&#x3067;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#x30ED;&#x30B0;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
+<pre><code class="lang-http">GET /example/
+# &#x30DB;&#x30B9;&#x30C8;
+host: example.jp
+upgrade-insecure-requests: 1
+# &#x30E6;&#x30FC;&#x30B6;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+sec-fetch-site: none
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+accept-encoding: gzip, deflate, br
+accept-language: ja,en;q=0.9
+# Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;
+cookie: PHPSESSID=xxxxx; ___ua=1787709890.1608200633; accessId=xxxxx; style=null; bookmark=45; _gid=GA1.2.1643243662.1608715225; __ulfpc=202012231820255572; _ga=GA1.1.859191015.1558955663; _a1_f=8bd85d6d-0f18-41f1-a65d-ac6607316f6e; _a1_u=966b06f3-d387-476a-9a02-49192641c0f2; _td=5fd55a8a-1602-45ec-bbf7-96d75974f37a; _fbp=fb.1.1608715230439.1917315302; _ts_yjad=1608715232002; _ga_68HTFJXME5=GS1.1.1608722059.2.0.1608722059.60
+</code></pre>
+<p><br></p>
+<h3 id="rules&#x306E;&#x4F8B;">Rules&#x306E;&#x4F8B;</h3>
+<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x7C92;&#x5EA6;">&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x7C92;&#x5EA6;</h4>
 <p>&#x308F;&#x304B;&#x308A;&#x3084;&#x3059;&#x3055;&#x306E;&#x89B3;&#x70B9;&#x304B;&#x3089;&#xFF0C;&#x53EF;&#x80FD;&#x306A;&#x9650;&#x308A;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x5C11;&#x306A;&#x304F;&#x3057;&#xFF0C;&#x4E00;&#x3064;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x4E00;&#x3064;&#x306E;&#x610F;&#x5473;&#x5408;&#x3044;&#x3060;&#x3051;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x3088;&#x3046;&#x306B;&#x547D;&#x540D;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x62D2;&#x5426;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x62D2;&#x5426;</h4>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x60AA;&#x610F;&#x306E;&#x3042;&#x308B;&#x30E6;&#x30FC;&#x30B6;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3092;&#x62D2;&#x5426;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x30EB;&#x30FC;&#x30EB;&#xFF1A;block-user-agents</p>
@@ -5176,6 +5214,7 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;cicd&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;">&#x30FB;CI/CD&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;</h4>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x793E;&#x5185;&#x306E;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x307F;&#x8A31;&#x53EF;&#x3057;&#x305F;&#x72B6;&#x614B;&#x3067;&#xFF0C;CircleCI&#x306A;&#x3069;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304C;&#x793E;&#x5185;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x30EB;&#x30FC;&#x30EB;&#xFF1A;allow-request-including-access-token</p>
@@ -5219,6 +5258,7 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;&#x7279;&#x5B9A;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x793E;&#x5185;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x9650;&#x5B9A;">&#x30FB;&#x7279;&#x5B9A;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x793E;&#x5185;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x9650;&#x5B9A;</h4>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x7279;&#x5B9A;&#x306E;URL&#x30D1;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#xFF0C;&#x793E;&#x5185;&#x3060;&#x3051;&#x306B;&#x5236;&#x9650;&#x3059;&#x308B;&#xFF0E;&#x4E8C;&#x3064;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x30EB;&#x30FC;&#x30EB;&#xFF1A;allow-access--to-url-path</p>
@@ -5297,6 +5337,7 @@ $ service awslogs start
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;&#x793E;&#x5185;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x9650;&#x5B9A;">&#x30FB;&#x793E;&#x5185;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x9650;&#x5B9A;</h4>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5168;&#x4F53;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#xFF0C;&#x7279;&#x5B9A;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3060;&#x3051;&#x306B;&#x5236;&#x9650;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x30EB;&#x30FC;&#x30EB;&#xFF1A;allow-global-ip-addresses</p>
@@ -5348,8 +5389,8 @@ $ service awslogs start
 </tbody>
 </table>
 <p><br></p>
-<h2 id="12-02-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;iam&#xFF1A;identify-and-access-management">12-02. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;IAM&#xFF1A;Identify and Access Management</h2>
-<h3 id="iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#xFF0C;iam&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;">IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#xFF0C;IAM&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;</h3>
+<h2 id="12-02-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;iam">12-02. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;IAM</h2>
+<h3 id="iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#xFF0C;iam&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#xFF1A;identify-and-access-management">IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#xFF0C;IAM&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#xFF1A;Identify and Access Management</h3>
 <h4 id="&#x30FB;iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3068;&#x306F;">&#x30FB;IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3068;&#x306F;</h4>
 <p>&#x5B9F;&#x884C;&#x6A29;&#x9650;&#x306E;&#x3042;&#x308B;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;IAM&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x6301;&#x3064;&#xFF0C;JSON&#x578B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
 <h4 id="&#x30FB;iam&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x7A2E;&#x985E;">&#x30FB;IAM&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x7A2E;&#x985E;</h4>
@@ -5668,8 +5709,8 @@ aws_secret_access_key=&lt;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30A
 <p>&#x307E;&#x305A;&#xFF0C;IAM&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;IAM&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;&#x305D;&#x306E;IAM&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;IAM&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x4ED8;&#x4E0E;&#x3057;&#x305F;&#x3044;IAM&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x8FFD;&#x52A0;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x6240;&#x5C5E;&#x3059;&#x308B;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x4ED8;&#x4E0E;.png" alt="&#x30AF;&#x3099;&#x30EB;&#x30FC;&#x30D5;&#x309A;&#x306B;&#x6240;&#x5C5E;&#x3059;&#x308B;&#x30E6;&#x30FC;&#x30B5;&#x3099;&#x306B;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x4ED8;&#x4E0E;"></p>
 <p><br></p>
-<h2 id="12-03-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;sts&#xFF1A;security-token-service">12-03. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;STS&#xFF1A;Security Token Service</h2>
-<h3 id="sts">STS</h3>
+<h2 id="12-03-&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;sts">12-03. &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#xFF5C;STS</h2>
+<h3 id="sts&#xFF1A;security-token-service">STS&#xFF1A;Security Token Service</h3>
 <h4 id="&#x30FB;sts&#x3068;&#x306F;">&#x30FB;STS&#x3068;&#x306F;</h4>
 <p>AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x4E00;&#x6642;&#x7684;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#xFF08;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;&#xFF0C;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#xFF09;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x8A8D;&#x8A3C;&#x60C5;&#x5831;&#x306F;&#xFF0C;&#x4E00;&#x6642;&#x7684;&#x306A;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/STS.jpg" alt="STS"></p>
@@ -5884,7 +5925,7 @@ aws s3 ls --profile &lt;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2020-12-23T03:56:00.732Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T04:01:49.415Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2020-12-26T10:12:13.491Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-26T10:37:34.467Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -5911,10 +5952,6 @@ aws s3 ls --profile &lt;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;
     
         
         <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

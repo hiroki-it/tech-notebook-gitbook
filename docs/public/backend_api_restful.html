@@ -1660,6 +1660,8 @@ GET http://127.0.0.1/testform.php?text1=a&amp;text2=b HTTP/1.1
 HOST: 127.0.0.1
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
+# &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6700;&#x5927;&#x6709;&#x52B9;&#x671F;&#x9650;
+Cache-Control: max-age=31536000
 # &#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x60C5;&#x5831;&#x7B49;
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
 # &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3067;&#x9001;&#x4FE1;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;MIME&#x30BF;&#x30A4;&#x30D7;
@@ -1679,7 +1681,8 @@ POST http://127.0.0.1/testform.php HTTP/1.1
 HOST: 127.0.0.1
 Connection: keep-alive
 Content-Length: 15
-Cache-Control: max-age=0
+# &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x7121;&#x52B9;&#x5316;
+Cache-Control: no-store
 # &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#xFF0B;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#xFF0B;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#xFF09;
 Origin: http://127.0.0.1
 Upgrade-Insecure-Requests: 1
@@ -2108,7 +2111,7 @@ session.save_path = &quot;tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"next":{"title":"PHP｜ライブラリ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"previous":{"title":"PHP｜API","level":"1.5","depth":1,"ref":"","articles":[{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2020-12-23T03:56:00.722Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-23T04:01:49.415Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"next":{"title":"PHP｜ライブラリ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"previous":{"title":"PHP｜API","level":"1.5","depth":1,"ref":"","articles":[{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2020-12-26T10:12:13.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-26T10:37:34.467Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2135,10 +2138,6 @@ session.save_path = &quot;tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.
     
         
         <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
