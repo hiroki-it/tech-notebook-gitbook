@@ -2521,7 +2521,7 @@ resource &quot;aws_s3_bucket_policy&quot; &quot;alb&quot; {
 </code></pre>
 <p><br></p>
 <h3 id="&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;">&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;</h3>
-<h4 id="&#x30FB;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
+<h4 id="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
 <p>AWS&#x304B;&#x3089;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306F;&#xFF0C;json&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;ARN&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x4E0A;&#x3067;&#xFF0C;<code>aws_iam_role_policy_attachment</code>&#x3067;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;ecs-task-execution&#x30ED;&#x30FC;&#x30EB;&#x3078;&#x306E;ECSTaskExecutionRole&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
@@ -2946,6 +2946,29 @@ output &quot;nginx_ecr_repository_url&quot; {
 </code></pre>
 <p><br></p>
 <h2 id="08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;">08. &#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;</h2>
+<h3 id="ami">AMI</h3>
+<h4 id="&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;">&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;</h4>
+<p>&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5E38;&#x306B;&#x6700;&#x65B0;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0C;EC2&#x304C;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# For bastion
+###############################################
+data &quot;aws_ami&quot; &quot;bastion&quot; {
+  # EC2&#x304C;&#xFF0C;&#x610F;&#x56F3;&#x305B;&#x305A;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3057;&#x307E;&#x3059;&#xFF0E;
+  most_recent = false
+  owners      = [&quot;amazon&quot;]
+
+  filter {
+    name   = &quot;name&quot;
+    values = [&quot;amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2&quot;]
+  }
+
+  filter {
+    name   = &quot;image-id&quot;
+    values = [&quot;ami-040c9333a9c90b2b6&quot;]
+  }
+}
+</code></pre>
+<p><br></p>
 <h3 id="cloudfront">CloudFront</h3>
 <h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
 <pre><code class="lang-tf">resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
@@ -3022,17 +3045,17 @@ output &quot;nginx_ecr_repository_url&quot; {
 
   default_cache_behavior {
     target_origin_id       = &quot;ELB-${var.alb_name}&quot;
-    viewer_protocol_policy = &quot;allow-all&quot;
+    viewer_protocol_policy = &quot;redirect-to-https&quot;
     allowed_methods        = [&quot;GET&quot;, &quot;HEAD&quot;, &quot;OPTIONS&quot;, &quot;PUT&quot;, &quot;POST&quot;, &quot;PATCH&quot;, &quot;DELETE&quot;]
     cached_methods         = [&quot;GET&quot;, &quot;HEAD&quot;]
     min_ttl                = 0
-    default_ttl            = 86400
     max_ttl                = 31536000
+    default_ttl            = 86400
     compress               = true
 
     forwarded_values {
-      headers      = [&quot;*&quot;]
       query_string = true
+      headers      = [&quot;*&quot;]
 
       cookies {
         forward = &quot;all&quot;
@@ -3046,7 +3069,7 @@ output &quot;nginx_ecr_repository_url&quot; {
 <p><br></p>
 <h3 id="ecs">ECS</h3>
 <h4 id="&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;">&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;</h4>
-<pre><code>###############################################
+<pre><code class="lang-tf">###############################################
 # ECS Service
 ###############################################
 resource &quot;aws_ecs_service&quot; &quot;this&quot; {
@@ -3081,12 +3104,13 @@ resource &quot;aws_ecs_service&quot; &quot;this&quot; {
     ]
   }
 }
-</code></pre><h4 id="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;">&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;</h4>
+</code></pre>
+<h4 id="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;">&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;</h4>
 <p>Terraform&#x3067;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x73FE;&#x5728;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308B;ECS&#x3067;&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x306E;&#x300C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x300D;&#x3068;&#x540C;&#x3058;&#x6319;&#x52D5;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x5897;&#x3048;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x4E00;&#x89A7;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B21;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="ec2">EC2</h3>
 <h4 id="&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;">&#x30FB;&#x5168;&#x4F53;&#x306E;&#x5B9F;&#x88C5;&#x4F8B;</h4>
-<pre><code>###############################################
+<pre><code class="lang-tf">###############################################
 # For bastion
 ###############################################
 resource &quot;aws_instance&quot; &quot;bastion&quot; {
@@ -3104,13 +3128,78 @@ resource &quot;aws_instance&quot; &quot;bastion&quot; {
 
   depends_on = [var.internet_gateway]
 }
-</code></pre><h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;">&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;</h4>
+</code></pre>
+<h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;">&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;</h4>
 <p>&#x8AA4;&#x3063;&#x3066;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x307E;&#x305F;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x3092;&#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3067;&#x4F5C;&#x6210;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>key_name</code>&#x3067;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h3 id="iam-role">IAM Role</h3>
-<h4 id="&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+<h3 id="iam&#x30E6;&#x30FC;&#x30B6;">IAM&#x30E6;&#x30FC;&#x30B6;</h3>
+<h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;tpl&#x5F62;&#x5F0F;&#x306E;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;IAM&#x30ED;&#x30FC;&#x30EB;&#x306B;&#xFF0C;<code>aws_iam_policy</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;IAM&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code>###############################################
+<p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x304B;&#x3089;AWS CLI&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x7279;&#x5B9A;&#x306E;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x7279;&#x5B9A;&#x306E;&#x3082;&#x306E;&#x306B;&#x9650;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x4E8B;&#x524D;&#x306B;&#xFF0C;list&#x578B;&#x3067;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# IP addresses
+###############################################
+global_ip_addresses = [
+  &quot;nn.nnn.nnn.nnn/32&quot;,
+  &quot;nn.nnn.nnn.nnn/32&quot;
+]
+</code></pre>
+<p>&#x307E;&#x305F;&#x4E8B;&#x524D;&#x306B;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x4EE5;&#x5916;&#x3092;&#x62D2;&#x5426;&#x3059;&#x308B;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2012-10-17&quot;</span>,
+  <span class="hljs-string">&quot;Statement&quot;</span>: {
+    <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Deny&quot;</span>,
+    <span class="hljs-string">&quot;Action&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
+    <span class="hljs-string">&quot;Resource&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>,
+    <span class="hljs-string">&quot;Condition&quot;</span>: {
+      <span class="hljs-string">&quot;NotIpAddress&quot;</span>: {
+        <span class="hljs-string">&quot;aws:SourceIp&quot;</span>: ${global_ip_addresses}
+      }
+    }
+  }
+}
+</code></pre>
+<p>&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3067;&#x4F5C;&#x6210;&#x6E08;&#x307F;&#x306E;IAM&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x540D;&#x524D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;tpl&#x5F62;&#x5F0F;&#x306E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306B;list&#x578B;&#x306E;&#x5024;&#x3092;&#x6E21;&#x3059;&#x6642;&#xFF0C;<code>jsonencode</code>&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
+# For IAM User
+###############################################
+data &quot;aws_iam_user&quot; &quot;aws_cli_command_executor&quot; {
+  user_name = &quot;aws_cli_command_executor&quot;
+}
+
+resource &quot;aws_iam_policy&quot; &quot;aws_cli_command_executor_ip_address_restriction&quot; {
+  name        = &quot;${var.environment}-aws-cli-command-executor-ip-address-restriction-policy&quot;
+  description = &quot;Allow global IP addresses&quot;
+  policy = templatefile(
+    &quot;${path.module}/policies/customer_managed_policies/aws_cli_command_executor_ip_address_restriction_policy.tpl&quot;,
+    {
+      global_ip_addresses = jsonencode(var.global_ip_addresses)
+    }
+  )
+}
+</code></pre>
+<p><br></p>
+<h3 id="iam&#x30ED;&#x30FC;&#x30EB;">IAM&#x30ED;&#x30FC;&#x30EB;</h3>
+<h4 id="&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;tpl&#x5F62;&#x5F0F;&#x306E;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>aws_iam_role</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;IAM&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3068;&#x540C;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x306B;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x305F;&#x3081;&#x306E;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2012-10-17&quot;</span>,
+  <span class="hljs-string">&quot;Statement&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Allow&quot;</span>,
+      <span class="hljs-string">&quot;Principal&quot;</span>: {
+        <span class="hljs-string">&quot;Service&quot;</span>: <span class="hljs-string">&quot;ecs-tasks.amazonaws.com&quot;</span>
+      },
+      <span class="hljs-string">&quot;Action&quot;</span>: <span class="hljs-string">&quot;sts:AssumeRole&quot;</span>
+    }
+  ]
+}
+</code></pre>
+<p>ECS&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3068;ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x4FE1;&#x983C;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
 # IAM Role For ECS Task Execution
 ###############################################
 resource &quot;aws_iam_role&quot; &quot;ecs_task_execution&quot; {
@@ -3133,9 +3222,26 @@ resource &quot;aws_iam_role&quot; &quot;ecs_task&quot; {
     {}
   )
 }
-</code></pre><h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+</code></pre>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;tpl&#x5F62;&#x5F0F;&#x306E;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>aws_iam_role_policy</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3068;&#x540C;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x306B;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code>###############################################
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x5FC5;&#x8981;&#x6700;&#x4F4E;&#x9650;&#x306E;&#x6A29;&#x9650;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2012-10-17&quot;</span>,
+  <span class="hljs-string">&quot;Statement&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Allow&quot;</span>,
+      <span class="hljs-string">&quot;Action&quot;</span>: [
+        <span class="hljs-string">&quot;ssm:GetParameters&quot;</span>
+      ],
+      <span class="hljs-string">&quot;Resource&quot;</span>: <span class="hljs-string">&quot;*&quot;</span>
+    }
+  ]
+}
+</code></pre>
+<p>ECS&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3068;ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
 # IAM Role For ECS Task
 ###############################################
 resource &quot;aws_iam_role_policy&quot; &quot;ecs_task&quot; {
@@ -3146,25 +3252,42 @@ resource &quot;aws_iam_role_policy&quot; &quot;ecs_task&quot; {
     {}
   )
 }
-</code></pre><h4 id="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;">&#x30FB;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x65B9;&#x6CD5;</h4>
+</code></pre>
+<h4 id="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;tpl&#x5F62;&#x5F0F;&#x306E;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>aws_iam_role_policy_attachment</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306B;&#x3042;&#x308B;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;IAM&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;ARN&#x306F;&#xFF0C;AWS&#x306E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code>###############################################
+<pre><code class="lang-tf">###############################################
 # IAM Role For ECS Task Execution
 ###############################################
 resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs_task_execution&quot; {
   role       = aws_iam_role.ecs_task_execution.name
   policy_arn = &quot;arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy&quot;
 }
-</code></pre><h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;">&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
+</code></pre>
+<h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;tpl&#x5F62;&#x5F0F;&#x306E;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>aws_iam_role_policy</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;<code>aws_iam_role_policy_attachment</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;IAM&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code>###############################################
+<p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x5FC5;&#x8981;&#x6700;&#x4F4E;&#x9650;&#x306E;&#x6A29;&#x9650;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;Version&quot;</span>: <span class="hljs-string">&quot;2012-10-17&quot;</span>,
+  <span class="hljs-string">&quot;Statement&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;Effect&quot;</span>: <span class="hljs-string">&quot;Allow&quot;</span>,
+      <span class="hljs-string">&quot;Action&quot;</span>: [
+        <span class="hljs-string">&quot;logs:CreateLogStream&quot;</span>,
+        <span class="hljs-string">&quot;logs:PutLogEvents&quot;</span>
+      ],
+      <span class="hljs-string">&quot;Resource&quot;</span>: [
+        <span class="hljs-string">&quot;arn:aws:logs:*:*:*&quot;</span>
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>ECS&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<pre><code class="lang-tf">###############################################
 # IAM Role For ECS Task
 ###############################################
-resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs_task&quot; {
-  role       = aws_iam_role.ecs_task.name
-  policy_arn = aws_iam_policy.ecs_task.arn
-}
-
 resource &quot;aws_iam_policy&quot; &quot;ecs_task&quot; {
   name        = &quot;${var.environment}-${var.service}-cloudwatch-logs-access-policy&quot;
   description = &quot;Provides access to CloudWatch Logs&quot;
@@ -3173,9 +3296,16 @@ resource &quot;aws_iam_policy&quot; &quot;ecs_task&quot; {
     {}
   )
 }
-</code></pre><h4 id="&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;">&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;</h4>
-<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x6210;&#x3055;&#x308C;&#xFF0C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#x30ED;&#x30FC;&#x30EB;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x3042;&#x308B;&#xFF0E;<code>aws_iam_service_linked_role</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x6570;&#x304C;&#x591A;&#x304F;&#x5B9F;&#x88C5;&#x306E;&#x8CA0;&#x62C5;&#x306B;&#x3082;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3042;&#x3048;&#x3066;&#x7BA1;&#x7406;&#x5916;&#x3068;&#x3057;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+
+resource &quot;aws_iam_role_policy_attachment&quot; &quot;ecs_task&quot; {
+  role       = aws_iam_role.ecs_task.name
+  policy_arn = aws_iam_policy.ecs_task.arn
+}
+</code></pre>
+<h4 id="&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;">&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;</h4>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x6210;&#x3055;&#x308C;&#xFF0C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x3042;&#x308B;&#xFF0E;<code>aws_iam_service_linked_role</code>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x624B;&#x52D5;&#x3067;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x6570;&#x304C;&#x591A;&#x304F;&#x5B9F;&#x88C5;&#x306E;&#x8CA0;&#x62C5;&#x306B;&#x3082;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3042;&#x3048;&#x3066;&#x7BA1;&#x7406;&#x5916;&#x3068;&#x3057;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;Application Auto Scaling&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-tf">###############################################
 # IAM Role For ECS Service
 ###############################################
@@ -3191,6 +3321,7 @@ output &quot;ecs_service_auto_scaling_iam_service_linked_role_arn&quot; {
   value = aws_iam_service_linked_role.ecs_service_auto_scaling.arn
 }
 </code></pre>
+<p>Application Auto Scaling&#x306B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <pre><code class="lang-tf">#########################################
 # Application Auto Scaling For ECS
 #########################################
@@ -3715,7 +3846,7 @@ terraform init \
   -upgrade \
   -reconfigure \
   -backend=<span class="hljs-literal">true</span> \
-  -backend-config=<span class="hljs-string">&quot;bucket=<span class="hljs-variable">${ENV}</span>-lumonde-tfstate-bucket&quot;</span> \
+  -backend-config=<span class="hljs-string">&quot;bucket=<span class="hljs-variable">${ENV}</span>-tfstate-bucket&quot;</span> \
   -backend-config=<span class="hljs-string">&quot;key=terraform.tfstate&quot;</span> \
   -backend-config=<span class="hljs-string">&quot;encrypt=true&quot;</span> \
   ./<span class="hljs-variable">${ENV}</span>
@@ -3829,7 +3960,7 @@ terraform plan | ./bin/tfnotify --config ./<span class="hljs-variable">${ENV}</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-26T10:38:43.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T11:39:47.912Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Terraform","level":"1.23.1","depth":2,"next":{"title":"インフラストラクチャ｜仮想化サーバ，コンテナ","level":"1.24","depth":1,"ref":"","articles":[{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"コンテナ","level":"1.24.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"仮想サーバ（仮想マシン）","level":"1.24.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"IaC｜Terraform","level":"1.23","depth":1,"ref":"","articles":[{"title":"Terraform","level":"1.23.1","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":1,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2020-12-29T19:27:20.767Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:28:43.923Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
