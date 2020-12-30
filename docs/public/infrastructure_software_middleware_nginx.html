@@ -1373,17 +1373,24 @@
 <h2 id="01-tips">01. Tips</h2>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;">&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;</h4>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">start</span>&#xA0;<span class="sunlight-ident">nginx</span>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7387-line-1" href="#sunlight-7387-line-1">1</a>
+<a name="sunlight-7387-line-2" href="#sunlight-7387-line-2">2</a>
+</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">start</span>&#xA0;<span class="sunlight-ident">nginx</span>
 <span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">stop</span>&#xA0;<span class="sunlight-ident">nginx</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">service</span>&#xA0;<span class="sunlight-ident">nginx</span>&#xA0;<span class="sunlight-ident">configtest</span>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7388-line-1" href="#sunlight-7388-line-1">1</a>
+<a name="sunlight-7388-line-2" href="#sunlight-7388-line-2">2</a>
+<a name="sunlight-7388-line-3" href="#sunlight-7388-line-3">3</a>
+<a name="sunlight-7388-line-4" href="#sunlight-7388-line-4">4</a>
+</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">service</span>&#xA0;<span class="sunlight-ident">nginx</span>&#xA0;<span class="sunlight-ident">configtest</span>
 
 <span class="sunlight-comment">#&#xA0;&#x3082;&#x3057;&#x304F;&#x306F;&#x3053;&#x3061;&#x3089;</span>
 <span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">nginx</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">t</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">kill</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">s</span>&#xA0;<span class="sunlight-ident">HUP</span>&#xA0;<span class="sunlight-ident">NINGXPID</span>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7389-line-1" href="#sunlight-7389-line-1">1</a>
+</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">kill</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">s</span>&#xA0;<span class="sunlight-ident">HUP</span>&#xA0;<span class="sunlight-ident">NINGXPID</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-nginx&#x306E;&#x7528;&#x9014;">02. Nginx&#x306E;&#x7528;&#x9014;</h2>
@@ -1392,11 +1399,46 @@
 <p>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#xFF0C;FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4ECB;&#x3057;&#x3066;&#xFF0C;PHP-FPM&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;.png" alt="Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</span>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7390-line-1" href="#sunlight-7390-line-1">1</a>
+<a name="sunlight-7390-line-2" href="#sunlight-7390-line-2">2</a>
+</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</span>
 <span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">php</span><span class="sunlight-operator">-</span><span class="sunlight-ident">fpm</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">t</span>
 </span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7391-line-1" href="#sunlight-7391-line-1">1</a>
+<a name="sunlight-7391-line-2" href="#sunlight-7391-line-2">2</a>
+<a name="sunlight-7391-line-3" href="#sunlight-7391-line-3">3</a>
+<a name="sunlight-7391-line-4" href="#sunlight-7391-line-4">4</a>
+<a name="sunlight-7391-line-5" href="#sunlight-7391-line-5">5</a>
+<a name="sunlight-7391-line-6" href="#sunlight-7391-line-6">6</a>
+<a name="sunlight-7391-line-7" href="#sunlight-7391-line-7">7</a>
+<a name="sunlight-7391-line-8" href="#sunlight-7391-line-8">8</a>
+<a name="sunlight-7391-line-9" href="#sunlight-7391-line-9">9</a>
+<a name="sunlight-7391-line-10" href="#sunlight-7391-line-10">10</a>
+<a name="sunlight-7391-line-11" href="#sunlight-7391-line-11">11</a>
+<a name="sunlight-7391-line-12" href="#sunlight-7391-line-12">12</a>
+<a name="sunlight-7391-line-13" href="#sunlight-7391-line-13">13</a>
+<a name="sunlight-7391-line-14" href="#sunlight-7391-line-14">14</a>
+<a name="sunlight-7391-line-15" href="#sunlight-7391-line-15">15</a>
+<a name="sunlight-7391-line-16" href="#sunlight-7391-line-16">16</a>
+<a name="sunlight-7391-line-17" href="#sunlight-7391-line-17">17</a>
+<a name="sunlight-7391-line-18" href="#sunlight-7391-line-18">18</a>
+<a name="sunlight-7391-line-19" href="#sunlight-7391-line-19">19</a>
+<a name="sunlight-7391-line-20" href="#sunlight-7391-line-20">20</a>
+<a name="sunlight-7391-line-21" href="#sunlight-7391-line-21">21</a>
+<a name="sunlight-7391-line-22" href="#sunlight-7391-line-22">22</a>
+<a name="sunlight-7391-line-23" href="#sunlight-7391-line-23">23</a>
+<a name="sunlight-7391-line-24" href="#sunlight-7391-line-24">24</a>
+<a name="sunlight-7391-line-25" href="#sunlight-7391-line-25">25</a>
+<a name="sunlight-7391-line-26" href="#sunlight-7391-line-26">26</a>
+<a name="sunlight-7391-line-27" href="#sunlight-7391-line-27">27</a>
+<a name="sunlight-7391-line-28" href="#sunlight-7391-line-28">28</a>
+<a name="sunlight-7391-line-29" href="#sunlight-7391-line-29">29</a>
+<a name="sunlight-7391-line-30" href="#sunlight-7391-line-30">30</a>
+<a name="sunlight-7391-line-31" href="#sunlight-7391-line-31">31</a>
+<a name="sunlight-7391-line-32" href="#sunlight-7391-line-32">32</a>
+<a name="sunlight-7391-line-33" href="#sunlight-7391-line-33">33</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
 <span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
@@ -1433,7 +1475,35 @@
 <h4 id="&#x30FB;fastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;</h4>
 <p><code>/etc/nginx/fastcgi_params</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;Nginx&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;OS&#x3084;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306B;&#x63A5;&#x7D9A;&#x3057;&#xFF0C;&#x4E0A;&#x66F8;&#x304D;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x3082;&#x306E;&#x3068;&#x4E0D;&#x8981;&#x306A;&#x3082;&#x306E;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306F;&#xFF0C;Debian 10&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#--------------------------------------</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7392-line-1" href="#sunlight-7392-line-1">1</a>
+<a name="sunlight-7392-line-2" href="#sunlight-7392-line-2">2</a>
+<a name="sunlight-7392-line-3" href="#sunlight-7392-line-3">3</a>
+<a name="sunlight-7392-line-4" href="#sunlight-7392-line-4">4</a>
+<a name="sunlight-7392-line-5" href="#sunlight-7392-line-5">5</a>
+<a name="sunlight-7392-line-6" href="#sunlight-7392-line-6">6</a>
+<a name="sunlight-7392-line-7" href="#sunlight-7392-line-7">7</a>
+<a name="sunlight-7392-line-8" href="#sunlight-7392-line-8">8</a>
+<a name="sunlight-7392-line-9" href="#sunlight-7392-line-9">9</a>
+<a name="sunlight-7392-line-10" href="#sunlight-7392-line-10">10</a>
+<a name="sunlight-7392-line-11" href="#sunlight-7392-line-11">11</a>
+<a name="sunlight-7392-line-12" href="#sunlight-7392-line-12">12</a>
+<a name="sunlight-7392-line-13" href="#sunlight-7392-line-13">13</a>
+<a name="sunlight-7392-line-14" href="#sunlight-7392-line-14">14</a>
+<a name="sunlight-7392-line-15" href="#sunlight-7392-line-15">15</a>
+<a name="sunlight-7392-line-16" href="#sunlight-7392-line-16">16</a>
+<a name="sunlight-7392-line-17" href="#sunlight-7392-line-17">17</a>
+<a name="sunlight-7392-line-18" href="#sunlight-7392-line-18">18</a>
+<a name="sunlight-7392-line-19" href="#sunlight-7392-line-19">19</a>
+<a name="sunlight-7392-line-20" href="#sunlight-7392-line-20">20</a>
+<a name="sunlight-7392-line-21" href="#sunlight-7392-line-21">21</a>
+<a name="sunlight-7392-line-22" href="#sunlight-7392-line-22">22</a>
+<a name="sunlight-7392-line-23" href="#sunlight-7392-line-23">23</a>
+<a name="sunlight-7392-line-24" href="#sunlight-7392-line-24">24</a>
+<a name="sunlight-7392-line-25" href="#sunlight-7392-line-25">25</a>
+<a name="sunlight-7392-line-26" href="#sunlight-7392-line-26">26</a>
+<a name="sunlight-7392-line-27" href="#sunlight-7392-line-27">27</a>
+<a name="sunlight-7392-line-28" href="#sunlight-7392-line-28">28</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#--------------------------------------</span>
 <span class="sunlight-comment">#&#xA0;FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8EE2;&#x9001;&#xFF0C;&#x53D7;&#x4FE1;</span>
 <span class="sunlight-comment">#&#xA0;OS&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
 <span class="sunlight-comment">#--------------------------------------</span>
@@ -1463,7 +1533,46 @@
 <span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REDIRECT_STATUS</span>&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-number">200</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;wwwconf&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;www.conf&#x306B;&#x3064;&#x3044;&#x3066;</h4>
-<pre><code class="lang-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
+<pre><code class="lang-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7393-line-1" href="#sunlight-7393-line-1">1</a>
+<a name="sunlight-7393-line-2" href="#sunlight-7393-line-2">2</a>
+<a name="sunlight-7393-line-3" href="#sunlight-7393-line-3">3</a>
+<a name="sunlight-7393-line-4" href="#sunlight-7393-line-4">4</a>
+<a name="sunlight-7393-line-5" href="#sunlight-7393-line-5">5</a>
+<a name="sunlight-7393-line-6" href="#sunlight-7393-line-6">6</a>
+<a name="sunlight-7393-line-7" href="#sunlight-7393-line-7">7</a>
+<a name="sunlight-7393-line-8" href="#sunlight-7393-line-8">8</a>
+<a name="sunlight-7393-line-9" href="#sunlight-7393-line-9">9</a>
+<a name="sunlight-7393-line-10" href="#sunlight-7393-line-10">10</a>
+<a name="sunlight-7393-line-11" href="#sunlight-7393-line-11">11</a>
+<a name="sunlight-7393-line-12" href="#sunlight-7393-line-12">12</a>
+<a name="sunlight-7393-line-13" href="#sunlight-7393-line-13">13</a>
+<a name="sunlight-7393-line-14" href="#sunlight-7393-line-14">14</a>
+<a name="sunlight-7393-line-15" href="#sunlight-7393-line-15">15</a>
+<a name="sunlight-7393-line-16" href="#sunlight-7393-line-16">16</a>
+<a name="sunlight-7393-line-17" href="#sunlight-7393-line-17">17</a>
+<a name="sunlight-7393-line-18" href="#sunlight-7393-line-18">18</a>
+<a name="sunlight-7393-line-19" href="#sunlight-7393-line-19">19</a>
+<a name="sunlight-7393-line-20" href="#sunlight-7393-line-20">20</a>
+<a name="sunlight-7393-line-21" href="#sunlight-7393-line-21">21</a>
+<a name="sunlight-7393-line-22" href="#sunlight-7393-line-22">22</a>
+<a name="sunlight-7393-line-23" href="#sunlight-7393-line-23">23</a>
+<a name="sunlight-7393-line-24" href="#sunlight-7393-line-24">24</a>
+<a name="sunlight-7393-line-25" href="#sunlight-7393-line-25">25</a>
+<a name="sunlight-7393-line-26" href="#sunlight-7393-line-26">26</a>
+<a name="sunlight-7393-line-27" href="#sunlight-7393-line-27">27</a>
+<a name="sunlight-7393-line-28" href="#sunlight-7393-line-28">28</a>
+<a name="sunlight-7393-line-29" href="#sunlight-7393-line-29">29</a>
+<a name="sunlight-7393-line-30" href="#sunlight-7393-line-30">30</a>
+<a name="sunlight-7393-line-31" href="#sunlight-7393-line-31">31</a>
+<a name="sunlight-7393-line-32" href="#sunlight-7393-line-32">32</a>
+<a name="sunlight-7393-line-33" href="#sunlight-7393-line-33">33</a>
+<a name="sunlight-7393-line-34" href="#sunlight-7393-line-34">34</a>
+<a name="sunlight-7393-line-35" href="#sunlight-7393-line-35">35</a>
+<a name="sunlight-7393-line-36" href="#sunlight-7393-line-36">36</a>
+<a name="sunlight-7393-line-37" href="#sunlight-7393-line-37">37</a>
+<a name="sunlight-7393-line-38" href="#sunlight-7393-line-38">38</a>
+<a name="sunlight-7393-line-39" href="#sunlight-7393-line-39">39</a>
+</div><pre class="sunlight-highlight-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 ```ini
 [www]
 
@@ -1507,7 +1616,40 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 <h3 id="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3067;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#xFF0C;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7394-line-1" href="#sunlight-7394-line-1">1</a>
+<a name="sunlight-7394-line-2" href="#sunlight-7394-line-2">2</a>
+<a name="sunlight-7394-line-3" href="#sunlight-7394-line-3">3</a>
+<a name="sunlight-7394-line-4" href="#sunlight-7394-line-4">4</a>
+<a name="sunlight-7394-line-5" href="#sunlight-7394-line-5">5</a>
+<a name="sunlight-7394-line-6" href="#sunlight-7394-line-6">6</a>
+<a name="sunlight-7394-line-7" href="#sunlight-7394-line-7">7</a>
+<a name="sunlight-7394-line-8" href="#sunlight-7394-line-8">8</a>
+<a name="sunlight-7394-line-9" href="#sunlight-7394-line-9">9</a>
+<a name="sunlight-7394-line-10" href="#sunlight-7394-line-10">10</a>
+<a name="sunlight-7394-line-11" href="#sunlight-7394-line-11">11</a>
+<a name="sunlight-7394-line-12" href="#sunlight-7394-line-12">12</a>
+<a name="sunlight-7394-line-13" href="#sunlight-7394-line-13">13</a>
+<a name="sunlight-7394-line-14" href="#sunlight-7394-line-14">14</a>
+<a name="sunlight-7394-line-15" href="#sunlight-7394-line-15">15</a>
+<a name="sunlight-7394-line-16" href="#sunlight-7394-line-16">16</a>
+<a name="sunlight-7394-line-17" href="#sunlight-7394-line-17">17</a>
+<a name="sunlight-7394-line-18" href="#sunlight-7394-line-18">18</a>
+<a name="sunlight-7394-line-19" href="#sunlight-7394-line-19">19</a>
+<a name="sunlight-7394-line-20" href="#sunlight-7394-line-20">20</a>
+<a name="sunlight-7394-line-21" href="#sunlight-7394-line-21">21</a>
+<a name="sunlight-7394-line-22" href="#sunlight-7394-line-22">22</a>
+<a name="sunlight-7394-line-23" href="#sunlight-7394-line-23">23</a>
+<a name="sunlight-7394-line-24" href="#sunlight-7394-line-24">24</a>
+<a name="sunlight-7394-line-25" href="#sunlight-7394-line-25">25</a>
+<a name="sunlight-7394-line-26" href="#sunlight-7394-line-26">26</a>
+<a name="sunlight-7394-line-27" href="#sunlight-7394-line-27">27</a>
+<a name="sunlight-7394-line-28" href="#sunlight-7394-line-28">28</a>
+<a name="sunlight-7394-line-29" href="#sunlight-7394-line-29">29</a>
+<a name="sunlight-7394-line-30" href="#sunlight-7394-line-30">30</a>
+<a name="sunlight-7394-line-31" href="#sunlight-7394-line-31">31</a>
+<a name="sunlight-7394-line-32" href="#sunlight-7394-line-32">32</a>
+<a name="sunlight-7394-line-33" href="#sunlight-7394-line-33">33</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
 <span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
@@ -1545,7 +1687,30 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 <h3 id="&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304B;&#x3089;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x305F;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x9759;&#x7684;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#xFF08;Nginx&#xFF09;&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#xFF0E;Web&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x5FC5;&#x305A;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#xFF0C;&#x52D5;&#x7684;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7395-line-1" href="#sunlight-7395-line-1">1</a>
+<a name="sunlight-7395-line-2" href="#sunlight-7395-line-2">2</a>
+<a name="sunlight-7395-line-3" href="#sunlight-7395-line-3">3</a>
+<a name="sunlight-7395-line-4" href="#sunlight-7395-line-4">4</a>
+<a name="sunlight-7395-line-5" href="#sunlight-7395-line-5">5</a>
+<a name="sunlight-7395-line-6" href="#sunlight-7395-line-6">6</a>
+<a name="sunlight-7395-line-7" href="#sunlight-7395-line-7">7</a>
+<a name="sunlight-7395-line-8" href="#sunlight-7395-line-8">8</a>
+<a name="sunlight-7395-line-9" href="#sunlight-7395-line-9">9</a>
+<a name="sunlight-7395-line-10" href="#sunlight-7395-line-10">10</a>
+<a name="sunlight-7395-line-11" href="#sunlight-7395-line-11">11</a>
+<a name="sunlight-7395-line-12" href="#sunlight-7395-line-12">12</a>
+<a name="sunlight-7395-line-13" href="#sunlight-7395-line-13">13</a>
+<a name="sunlight-7395-line-14" href="#sunlight-7395-line-14">14</a>
+<a name="sunlight-7395-line-15" href="#sunlight-7395-line-15">15</a>
+<a name="sunlight-7395-line-16" href="#sunlight-7395-line-16">16</a>
+<a name="sunlight-7395-line-17" href="#sunlight-7395-line-17">17</a>
+<a name="sunlight-7395-line-18" href="#sunlight-7395-line-18">18</a>
+<a name="sunlight-7395-line-19" href="#sunlight-7395-line-19">19</a>
+<a name="sunlight-7395-line-20" href="#sunlight-7395-line-20">20</a>
+<a name="sunlight-7395-line-21" href="#sunlight-7395-line-21">21</a>
+<a name="sunlight-7395-line-22" href="#sunlight-7395-line-22">22</a>
+<a name="sunlight-7395-line-23" href="#sunlight-7395-line-23">23</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
 <span class="sunlight-comment">#-------------------------------------</span>
 <span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
@@ -1572,7 +1737,12 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 <p><br></p>
 <h2 id="03-01-main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-01. Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7396-line-1" href="#sunlight-7396-line-1">1</a>
+<a name="sunlight-7396-line-2" href="#sunlight-7396-line-2">2</a>
+<a name="sunlight-7396-line-3" href="#sunlight-7396-line-3">3</a>
+<a name="sunlight-7396-line-4" href="#sunlight-7396-line-4">4</a>
+<a name="sunlight-7396-line-5" href="#sunlight-7396-line-5">5</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
 <span class="sunlight-keyword">worker_processes</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
 <span class="sunlight-keyword">error_log</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">;</span>
 <span class="sunlight-keyword">pid</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">pid</span><span class="sunlight-punctuation">;</span>
@@ -1581,53 +1751,82 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 <p><br></p>
 <h3 id="user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>user</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <p>&#x672C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;&#x3068;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x3092;&#x5165;&#x529B;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x540C;&#x3058;&#x3082;&#x306E;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7397-line-1" href="#sunlight-7397-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="workerprocesses&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_processes</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_processes</span>&#xA0;&#xA0;<span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7398-line-1" href="#sunlight-7398-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_processes</span>&#xA0;&#xA0;<span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="errorlog&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>error_log</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">error_log</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7399-line-1" href="#sunlight-7399-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">error_log</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>pid</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">pid</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">pid</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7400-line-1" href="#sunlight-7400-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">pid</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">pid</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="workerrlimitnofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_rlimit_nofile</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_rlimit_nofile</span>&#xA0;&#xA0;<span class="sunlight-number">8192</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7401-line-1" href="#sunlight-7401-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_rlimit_nofile</span>&#xA0;&#xA0;<span class="sunlight-number">8192</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-02-configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-02. Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>include</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;mimetypes&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;mime.types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
 <p>&#x4ED6;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7402-line-1" href="#sunlight-7402-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p>&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x3082;&#x53EF;&#x80FD;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7403-line-1" href="#sunlight-7403-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">usr</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">share</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">modules</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7404-line-1" href="#sunlight-7404-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">usr</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">share</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">modules</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-03-events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-03. Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="events&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>events</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-ident">events</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7405-line-1" href="#sunlight-7405-line-1">1</a>
+<a name="sunlight-7405-line-2" href="#sunlight-7405-line-2">2</a>
+<a name="sunlight-7405-line-3" href="#sunlight-7405-line-3">3</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-ident">events</span>&#xA0;<span class="sunlight-punctuation">{</span>
 &#xA0;&#xA0;<span class="sunlight-keyword">worker_connections</span>&#xA0;&#xA0;<span class="sunlight-number">1024</span><span class="sunlight-punctuation">;</span>
 <span class="sunlight-punctuation">}</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;workerconnections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>worker_connections</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>worker&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x540C;&#x6642;&#x306B;&#x51E6;&#x7406;&#x53EF;&#x80FD;&#x306A;&#x30B3;&#x30CD;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6700;&#x5927;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_connections</span>&#xA0;&#xA0;<span class="sunlight-number">1024</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7406-line-1" href="#sunlight-7406-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_connections</span>&#xA0;&#xA0;<span class="sunlight-number">1024</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-04-httpcore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-04. HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="http&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>http</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">http</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7407-line-1" href="#sunlight-7407-line-1">1</a>
+<a name="sunlight-7407-line-2" href="#sunlight-7407-line-2">2</a>
+<a name="sunlight-7407-line-3" href="#sunlight-7407-line-3">3</a>
+<a name="sunlight-7407-line-4" href="#sunlight-7407-line-4">4</a>
+<a name="sunlight-7407-line-5" href="#sunlight-7407-line-5">5</a>
+<a name="sunlight-7407-line-6" href="#sunlight-7407-line-6">6</a>
+<a name="sunlight-7407-line-7" href="#sunlight-7407-line-7">7</a>
+<a name="sunlight-7407-line-8" href="#sunlight-7407-line-8">8</a>
+<a name="sunlight-7407-line-9" href="#sunlight-7407-line-9">9</a>
+<a name="sunlight-7407-line-10" href="#sunlight-7407-line-10">10</a>
+<a name="sunlight-7407-line-11" href="#sunlight-7407-line-11">11</a>
+<a name="sunlight-7407-line-12" href="#sunlight-7407-line-12">12</a>
+<a name="sunlight-7407-line-13" href="#sunlight-7407-line-13">13</a>
+<a name="sunlight-7407-line-14" href="#sunlight-7407-line-14">14</a>
+<a name="sunlight-7407-line-15" href="#sunlight-7407-line-15">15</a>
+<a name="sunlight-7407-line-16" href="#sunlight-7407-line-16">16</a>
+<a name="sunlight-7407-line-17" href="#sunlight-7407-line-17">17</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">http</span>&#xA0;<span class="sunlight-punctuation">{</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_tokens</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">off</span><span class="sunlight-punctuation">;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">default_type</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">application</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">octet-stream</span><span class="sunlight-punctuation">;</span>
@@ -1647,59 +1846,99 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sendfile">&#x30FB;<code>sendfile</code></h4>
 <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x306E;&#x305F;&#x3081;&#x306B;Linux&#x306E;sendfile&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;OS&#x5185;&#x3067;&#x884C;&#x3046;&#x305F;&#x3081;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901F;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;Nginx&#x304C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#x81EA;&#x8EAB;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">sendfile</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7408-line-1" href="#sunlight-7408-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">sendfile</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;tcpnopush">&#x30FB;<code>tcp_nopush</code></h4>
 <p>&#x4E0A;&#x8FF0;&#x306E;Linux&#x306E;<code>sendfile</code>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#xFF0C;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x4E00;&#x3064;&#x306E;&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">tcp_nopush</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7409-line-1" href="#sunlight-7409-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">tcp_nopush</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;defaulttype">&#x30FB;<code>default_type</code></h4>
 <p>Content-Type&#x304C;&#xFF0C;mime.types&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306A;&#x3044;MIME type&#x3067;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3059;&#x308B;MIME type&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME&#xA0;type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7410-line-1" href="#sunlight-7410-line-1">1</a>
+<a name="sunlight-7410-line-2" href="#sunlight-7410-line-2">2</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME&#xA0;type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
 <span class="sunlight-keyword">default_type</span>&#xA0;<span class="sunlight-ident">application</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">octet-stream</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;etcnginxmimetypes">&#x30FB;<code>/etc/nginx/mime.types</code></h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;Content-Type&#x306E;MIME&#x30BF;&#x30A4;&#x30D7;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x9593;&#x306E;&#xFF0C;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7411-line-1" href="#sunlight-7411-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;etcnginxconfdconf">&#x30FB;<code>/etc/nginx/conf.d/*.conf</code></h4>
 <p>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;nginx.conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x308F;&#x306A;&#x3044;&#x304B;&#x3092;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7412-line-1" href="#sunlight-7412-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="server&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>server</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>listen</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>80</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7413-line-1" href="#sunlight-7413-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>443</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">443</span>&#xA0;<span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7414-line-1" href="#sunlight-7414-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">443</span>&#xA0;<span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;servername&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>server_name</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7415-line-1" href="#sunlight-7415-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x76F4;&#x63A5;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.0</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7416-line-1" href="#sunlight-7416-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.0</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>Nginx&#x3067;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;ssl&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7417-line-1" href="#sunlight-7417-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sslcertificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">crt</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7418-line-1" href="#sunlight-7418-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">crt</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sslcertificatekey&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate_key</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate_key</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">key</span><span class="sunlight-punctuation">;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7419-line-1" href="#sunlight-7419-line-1">1</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate_key</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">key</span><span class="sunlight-punctuation">;</span>
 </span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="location&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>location</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;&#x8272;&#x3005;&#x306A;&#x30D1;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;&#x8272;&#x3005;&#x306A;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;URL&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;1.&#xA0;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7420-line-1" href="#sunlight-7420-line-1">1</a>
+<a name="sunlight-7420-line-2" href="#sunlight-7420-line-2">2</a>
+<a name="sunlight-7420-line-3" href="#sunlight-7420-line-3">3</a>
+<a name="sunlight-7420-line-4" href="#sunlight-7420-line-4">4</a>
+<a name="sunlight-7420-line-5" href="#sunlight-7420-line-5">5</a>
+<a name="sunlight-7420-line-6" href="#sunlight-7420-line-6">6</a>
+<a name="sunlight-7420-line-7" href="#sunlight-7420-line-7">7</a>
+<a name="sunlight-7420-line-8" href="#sunlight-7420-line-8">8</a>
+<a name="sunlight-7420-line-9" href="#sunlight-7420-line-9">9</a>
+<a name="sunlight-7420-line-10" href="#sunlight-7420-line-10">10</a>
+<a name="sunlight-7420-line-11" href="#sunlight-7420-line-11">11</a>
+<a name="sunlight-7420-line-12" href="#sunlight-7420-line-12">12</a>
+<a name="sunlight-7420-line-13" href="#sunlight-7420-line-13">13</a>
+<a name="sunlight-7420-line-14" href="#sunlight-7420-line-14">14</a>
+<a name="sunlight-7420-line-15" href="#sunlight-7420-line-15">15</a>
+<a name="sunlight-7420-line-16" href="#sunlight-7420-line-16">16</a>
+<a name="sunlight-7420-line-17" href="#sunlight-7420-line-17">17</a>
+<a name="sunlight-7420-line-18" href="#sunlight-7420-line-18">18</a>
+<a name="sunlight-7420-line-19" href="#sunlight-7420-line-19">19</a>
+<a name="sunlight-7420-line-20" href="#sunlight-7420-line-20">20</a>
+<a name="sunlight-7420-line-21" href="#sunlight-7420-line-21">21</a>
+<a name="sunlight-7420-line-22" href="#sunlight-7420-line-22">22</a>
+<a name="sunlight-7420-line-23" href="#sunlight-7420-line-23">23</a>
+<a name="sunlight-7420-line-24" href="#sunlight-7420-line-24">24</a>
+<a name="sunlight-7420-line-25" href="#sunlight-7420-line-25">25</a>
+<a name="sunlight-7420-line-26" href="#sunlight-7420-line-26">26</a>
+<a name="sunlight-7420-line-27" href="#sunlight-7420-line-27">27</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;1.&#xA0;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
 <span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
 <span class="sunlight-punctuation">}</span>
@@ -1772,7 +2011,11 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 </table>
 <h4 id="&#x30FB;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;">&#x30FB;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;</h4>
 <p>&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x5C02;&#x7528;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x7528;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#x6642;&#xFF0C;nginx&#x3067;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306E;&#x30D1;&#x30B9;&#x3067;&#xFF0C;<code>access_log</code>&#x3092;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">healthcheck</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7421-line-1" href="#sunlight-7421-line-1">1</a>
+<a name="sunlight-7421-line-2" href="#sunlight-7421-line-2">2</a>
+<a name="sunlight-7421-line-3" href="#sunlight-7421-line-3">3</a>
+<a name="sunlight-7421-line-4" href="#sunlight-7421-line-4">4</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">healthcheck</span>&#xA0;<span class="sunlight-punctuation">{</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try_files</span>&#xA0;<span class="sunlight-variable">$uri</span>&#xA0;<span class="sunlight-variable">$uri</span><span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span><span class="sunlight-punctuation">?</span><span class="sunlight-variable">$query_string</span><span class="sunlight-punctuation">;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">access_log</span>&#xA0;<span class="sunlight-ident">off</span><span class="sunlight-punctuation">;</span>
 <span class="sunlight-punctuation">}</span>
@@ -1780,7 +2023,13 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
 <p><br></p>
 <h3 id="upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>upstream</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">upstream</span>&#xA0;<span class="sunlight-ident">big_server_com</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-7422-line-1" href="#sunlight-7422-line-1">1</a>
+<a name="sunlight-7422-line-2" href="#sunlight-7422-line-2">2</a>
+<a name="sunlight-7422-line-3" href="#sunlight-7422-line-3">3</a>
+<a name="sunlight-7422-line-4" href="#sunlight-7422-line-4">4</a>
+<a name="sunlight-7422-line-5" href="#sunlight-7422-line-5">5</a>
+<a name="sunlight-7422-line-6" href="#sunlight-7422-line-6">6</a>
+</div><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">upstream</span>&#xA0;<span class="sunlight-ident">big_server_com</span>&#xA0;<span class="sunlight-punctuation">{</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.3</span><span class="sunlight-operator">:</span><span class="sunlight-number">8000</span>&#xA0;<span class="sunlight-ident">weight</span><span class="sunlight-operator">=</span><span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.3</span><span class="sunlight-operator">:</span><span class="sunlight-number">8001</span>&#xA0;<span class="sunlight-ident">weight</span><span class="sunlight-operator">=</span><span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
 &#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.1</span><span class="sunlight-operator">:</span><span class="sunlight-number">8000</span><span class="sunlight-punctuation">;</span>
@@ -1826,7 +2075,7 @@ php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-12-29T19:29:55.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-12-29T19:29:55.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:51:44.814Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
