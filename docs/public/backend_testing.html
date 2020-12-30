@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1389,147 +1389,147 @@
 <p>&#x30C6;&#x30B9;&#x30C8;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x304A;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E00;&#x90E8;&#x307E;&#x305F;&#x306F;&#x5168;&#x4F53;&#x3092;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x6301;&#x305F;&#x306A;&#x3044;&#x3082;&#x306E;&#xFF08;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF09;&#x306B;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;mock">&#x30FB;<code>mock()</code></h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x540D;&#xFF08;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF09;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x30AF;&#x30E9;&#x30B9;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;</span>
-$mock = Phake::mock(Example::class);
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;
+$mock&#xA0;=&#xA0;Phake::mock(Example::class);
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;when">&#x30FB;<code>when()</code></h4>
 <p>&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// $mock&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;method()&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;$param&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;[]&#xFF08;&#x7A7A;&#x914D;&#x5217;&#xFF09;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;$mock&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;method()&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;$param&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;[]&#xFF08;&#x7A7A;&#x914D;&#x5217;&#xFF09;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;&#xFF0E;
 \Phake::when($mock)
-    -&gt;method($param)
-    -&gt;thenReturn([]);
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;method($param)
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;thenReturn([]);
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;verify">&#x30FB;<code>verify()</code></h4>
 <p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;n&#x56DE;&#x4EE5;&#x4E0A;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-$mock = Phake::mock(Example::class);
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
+$mock&#xA0;=&#xA0;Phake::mock(Example::class);
 
-<span class="hljs-comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+//&#xA0;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;
 \Phake::when($mock)
-    -&gt;method($param)
-    -&gt;thenReturn([]);
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;method($param)
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;thenReturn([]);
 
-<span class="hljs-comment">// &#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
-$mock-&gt;method(<span class="hljs-string">&quot;A&quot;</span>);
+//&#xA0;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
+$mock-&gt;method(&quot;A&quot;);
 
-<span class="hljs-comment">// $mock&#x306E;method()&#x304C;$n&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;$param&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
-Phake::verify($mock, Phake::times($n))-&gt;method($param);
-</code></pre>
+//&#xA0;$mock&#x306E;method()&#x304C;$n&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;$param&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
+Phake::verify($mock,&#xA0;Phake::times($n))-&gt;method($param);
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x5148;&#x306B;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x3042;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Aggregation</span>
-</span>{
-    <span class="hljs-keyword">private</span> $example;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;Aggregation
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$example;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($example)</span>
-    </span>{
-        $this-&gt;example = $example;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct($example)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;example&#xA0;=&#xA0;$example;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">aggMethod</span><span class="hljs-params">($param)</span>
-    </span>{
-        <span class="hljs-comment">// private&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;</span>
-        $param = $this-&gt;addB($param);
-        <span class="hljs-comment">// Example&#x30AF;&#x30E9;&#x30B9;&#x306E;exaMethod&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
-        <span class="hljs-keyword">return</span> $this-&gt;example-&gt;exaMethod($param);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;aggMethod($param)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;private&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$param&#xA0;=&#xA0;$this-&gt;addB($param);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Example&#x30AF;&#x30E9;&#x30B9;&#x306E;exaMethod&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;example-&gt;exaMethod($param);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addB</span><span class="hljs-params">($param)</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $param.<span class="hljs-string">&apos;B&apos;</span>;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;function&#xA0;addB($param)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$param.&apos;B&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p>&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-$mock = Phake::mock(Example::class);
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
+$mock&#xA0;=&#xA0;Phake::mock(Example::class);
 
-<span class="hljs-comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-$aggregation = <span class="hljs-keyword">new</span> Aggregation($mock);
+//&#xA0;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x751F;&#x6210;&#xFF0E;
+$aggregation&#xA0;=&#xA0;new&#xA0;Aggregation($mock);
 
-<span class="hljs-comment">// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+//&#xA0;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;
 \Phake::when($mock)
-    -&gt;exaMethod($param)
-    -&gt;thenReturn([]);
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;exaMethod($param)
+&#xA0;&#xA0;&#xA0;&#xA0;-&gt;thenReturn([]);
 
-<span class="hljs-comment">// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x9593;&#x63A5;&#x7684;&#x306B;$mock&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
-<span class="hljs-comment">// &#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;addB()&#x306F;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x306E;exaMethod()&#x3068;&#x306F;&#x7570;&#x306A;&#x3063;&#x3066;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901A;&#x308B;&#xFF0E;</span>
-$aggregation-&gt;aggMethod(<span class="hljs-string">&quot;A&quot;</span>);
+//&#xA0;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x9593;&#x63A5;&#x7684;&#x306B;$mock&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
+//&#xA0;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;addB()&#x306F;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x306E;exaMethod()&#x3068;&#x306F;&#x7570;&#x306A;&#x3063;&#x3066;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901A;&#x308B;&#xFF0E;
+$aggregation-&gt;aggMethod(&quot;A&quot;);
 
-<span class="hljs-comment">// $mock&#x306E;exaMethod()&#x304C;1&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;AB&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
-Phake::verify($mock, Phake::times(<span class="hljs-number">1</span>))-&gt;exaMethod(<span class="hljs-string">&quot;AB&quot;</span>);
-</code></pre>
+//&#xA0;$mock&#x306E;exaMethod()&#x304C;1&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;AB&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
+Phake::verify($mock,&#xA0;Phake::times(1))-&gt;exaMethod(&quot;AB&quot;);
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;">&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;</h3>
 <h4 id="&#x30FB;setup">&#x30FB;<code>setUp()</code></h4>
 <p>&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306A;&#x3069;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x6E96;&#x5099;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleUseCaseTest</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">PHPUnit_Framework_TestCase</span>
-</span>{
-    <span class="hljs-keyword">protected</span> $exampleService;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ExampleUseCaseTest&#xA0;extends&#xA0;\PHPUnit_Framework_TestCase
+{
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;$exampleService;
 
-    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUp</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="hljs-keyword">parent</span>::setUp();
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;function&#xA0;setUp()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;parent::setUp();
 
-        $this-&gt;exampleService = Phake::mock(ExampleService::class);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;exampleService&#xA0;=&#xA0;Phake::mock(ExampleService::class);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;teardown">&#x30FB;<code>tearDown()</code></h4>
 <p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#xFF0C;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3084;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x5F8C;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x3082;&#x305D;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8AA4;&#x3063;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5F8C;&#x7247;&#x4ED8;&#x3051;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleUseCaseTest</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">PHPUnit_Framework_TestCase</span>
-</span>{
-    <span class="hljs-keyword">protected</span> $container;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ExampleUseCaseTest&#xA0;extends&#xA0;\PHPUnit_Framework_TestCase
+{
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;$container;
 
-    <span class="hljs-comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUp</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
-        $this-&gt;container[<span class="hljs-string">&apos;option&apos;</span>];
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;function&#xA0;setUp()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;container[&apos;option&apos;];
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tearDown</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x6B21;&#x306B;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
-        $this-&gt;container = <span class="hljs-keyword">null</span>;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;function&#xA0;tearDown()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6B21;&#x306B;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;container&#xA0;=&#xA0;null;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h3 id="&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;">&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;</h3>
 <h4 id="&#x30FB;data-provider">&#x30FB;Data Provider</h4>
 <p>&#x30C6;&#x30B9;&#x30C8;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#xFF0C;<code>@dataProvider {&#x30C7;&#x30FC;&#x30BF;&#x540D;}</code>&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xxxTest</span>
-</span>{
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">class&#xA0;xxxTest
+{
 
-    <span class="hljs-comment">/* <span class="hljs-doctag">@test</span>
-     * <span class="hljs-doctag">@dataProvider</span> provideData
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testMethod</span><span class="hljs-params">($paramA, $paramB, $paramC)</span>
-    </span>{
-        <span class="hljs-comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406; </span>
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;/*&#xA0;@test
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@dataProvider&#xA0;provideData
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;testMethod($paramA,&#xA0;$paramB,&#xA0;$paramC)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">provideData</span><span class="hljs-params">()</span>: <span class="hljs-title">array</span>
-    </span>{
-        <span class="hljs-keyword">return</span> [
-            <span class="hljs-comment">// &#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8907;&#x6570;&#x3042;&#x3063;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0C;</span>
-            <span class="hljs-comment">// testMethod()&#x306E;&#x5F15;&#x6570;&#x3068;&#x540C;&#x3058;&#x9806;&#x756A;&#x3067;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8981;&#x7D20;&#x304C;&#x4E26;&#x3076;&#xFF0E;</span>
-            [<span class="hljs-string">&quot;&#x3042;&quot;</span>, <span class="hljs-string">&quot;&#x3044;&quot;</span>, <span class="hljs-string">&quot;&#x3046;&quot;</span>],
-            [<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>]
-        ];
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;provideData():&#xA0;array
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;[
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8907;&#x6570;&#x3042;&#x3063;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0C;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;testMethod()&#x306E;&#x5F15;&#x6570;&#x3068;&#x540C;&#x3058;&#x9806;&#x756A;&#x3067;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8981;&#x7D20;&#x304C;&#x4E26;&#x3076;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[&quot;&#x3042;&quot;,&#xA0;&quot;&#x3044;&quot;,&#xA0;&quot;&#x3046;&quot;],
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[&quot;1&quot;,&#xA0;&quot;2&quot;,&#xA0;&quot;3&quot;]
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;];
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x5B9F;&#x969B;&#x5024;&#x3068;&#x671F;&#x5F85;&#x5024;&#x306E;&#x6BD4;&#x8F03;">&#x5B9F;&#x969B;&#x5024;&#x3068;&#x671F;&#x5F85;&#x5024;&#x306E;&#x6BD4;&#x8F03;</h3>
 <p><a href="https://phpunit.readthedocs.io/ja/latest/assertions.html" target="_blank">https://phpunit.readthedocs.io/ja/latest/assertions.html</a></p>
@@ -1538,26 +1538,26 @@ Phake::verify($mock, Phake::times(<span class="hljs-number">1</span>))-&gt;exaMe
 <h3 id="unit&#x30C6;&#x30B9;&#x30C8;">Unit&#x30C6;&#x30B9;&#x30C8;</h3>
 <h4 id="&#x30FB;unit&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;">&#x30FB;Unit&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x3084;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5358;&#x4F53;&#x3067;&#x51E6;&#x7406;&#x304C;&#x6B63;&#x3057;&#x304F;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="functional&#x30C6;&#x30B9;&#x30C8;">Functional&#x30C6;&#x30B9;&#x30C8;</h3>
 <h4 id="&#x30FB;functional&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;">&#x30FB;Functional&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;</h4>
 <p>Controller&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x6B63;&#x3057;&#x304F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF08;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;200&#x756A;&#x53F0;&#x304B;&#xFF09;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF08;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;<code>200</code>&#x756A;&#x53F0;&#x304B;&#xFF09;</h4>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;-&#xFF06;-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B; &#xFF06; &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;</h4>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;-&#xFF06;-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x671F;&#x5F85;&#x5024;&#x3068;&#x540C;&#x3058;&#x304B;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B; &#xFF06; &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x671F;&#x5F85;&#x5024;&#x3068;&#x540C;&#x3058;&#x304B;</h4>
 <p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x671F;&#x5F85;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30C3;&#x30C8;&#x3092;<code>@dataProvider</code>&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x7528;&#x610F;&#x3057;&#x3066;&#x304A;&#x3044;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#xFF0C;<code>@dataProvider</code>&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3067;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-03-&#x30C6;&#x30B9;&#x30C8;&#x4ED5;&#x69D8;&#x66F8;&#x306B;&#x57FA;&#x3065;&#x304F;unit-&#x30C6;&#x30B9;&#x30C8;">03-03. &#x30C6;&#x30B9;&#x30C8;&#x4ED5;&#x69D8;&#x66F8;&#x306B;&#x57FA;&#x3065;&#x304F;Unit &#x30C6;&#x30B9;&#x30C8;</h2>
 <p>PHPUnit&#x3067;&#x306E;Unit&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;&#x610F;&#x5473;&#x5408;&#x3044;&#x304C;&#x7570;&#x306A;&#x308B;&#x306E;&#x3067;&#x6CE8;&#x610F;&#xFF0E;</p>
@@ -1682,7 +1682,7 @@ A = 0&#xFF0C;B = 0 &#x306E;&#x6642;&#xFF0C;<code>return X</code> &#x304C;&#x5B9F
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"next":{"title":"PHP｜アーキテクチャ","level":"1.7","depth":1,"ref":"","articles":[{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},{"title":"CQRS設計","level":"1.7.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]}]},"previous":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2020-12-20T17:43:34.862Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"next":{"title":"PHP｜アーキテクチャ","level":"1.7","depth":1,"ref":"","articles":[{"title":"ドメイン駆動設計","level":"1.7.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},{"title":"CQRS設計","level":"1.7.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]}]},"previous":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2020-12-20T17:43:34.862Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1701,10 +1701,6 @@ A = 0&#xFF0C;B = 0 &#x306E;&#x6642;&#xFF0C;<code>return X</code> &#x304C;&#x5B9F
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

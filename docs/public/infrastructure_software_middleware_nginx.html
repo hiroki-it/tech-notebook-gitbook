@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1373,18 +1373,18 @@
 <h2 id="01-tips">01. Tips</h2>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;">&#x30FB;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;</h4>
-<pre><code class="lang-bash">$ systemctl start nginx
-$ systemctl stop nginx
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">start</span>&#xA0;<span class="sunlight-ident">nginx</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">stop</span>&#xA0;<span class="sunlight-ident">nginx</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre><code class="lang-bash">$ service nginx configtest
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">service</span>&#xA0;<span class="sunlight-ident">nginx</span>&#xA0;<span class="sunlight-ident">configtest</span>
 
-<span class="hljs-comment"># &#x3082;&#x3057;&#x304F;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-$ nginx -t
-</code></pre>
+<span class="sunlight-comment">#&#xA0;&#x3082;&#x3057;&#x304F;&#x306F;&#x3053;&#x3061;&#x3089;</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">nginx</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">t</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre><code class="lang-bash">$ <span class="hljs-built_in">kill</span> <span class="hljs-_">-s</span> HUP NINGXPID
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">kill</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">s</span>&#xA0;<span class="sunlight-ident">HUP</span>&#xA0;<span class="sunlight-ident">NINGXPID</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-nginx&#x306E;&#x7528;&#x9014;">02. Nginx&#x306E;&#x7528;&#x9014;</h2>
 <h3 id="web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
@@ -1392,341 +1392,341 @@ $ nginx -t
 <p>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#xFF0C;Nginx&#x306F;&#xFF0C;FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4ECB;&#x3057;&#x3066;&#xFF0C;PHP-FPM&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;.png" alt="Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-bash"><span class="hljs-comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</span>
-$ php-fpm -t
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">php</span><span class="sunlight-operator">-</span><span class="sunlight-ident">fpm</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">t</span>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-comment"># HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-<span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-section">server</span> {
-    <span class="hljs-attribute">listen</span>      <span class="hljs-number">80</span>;
-    <span class="hljs-attribute">server_name</span> example.com;
-    <span class="hljs-attribute">root</span>        /var/www/example/public;
-    <span class="hljs-attribute">index</span>       index.php index.html;
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+<span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">listen</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">root</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">var</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">public</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">index</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-attribute">include</span> /etc/nginx/default/xxx.conf;
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">default</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-comment">#&#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-    <span class="hljs-attribute">location</span> / {
-        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php?<span class="hljs-variable">$query_string</span>;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try_files</span>&#xA0;<span class="sunlight-variable">$uri</span>&#xA0;<span class="sunlight-variable">$uri</span><span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span><span class="sunlight-punctuation">?</span><span class="sunlight-variable">$query_string</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
 
-    <span class="hljs-comment">#--------------------------------------------------</span>
-    <span class="hljs-comment"># FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8EE2;&#x9001;&#xFF0C;&#x53D7;&#x4FE1;</span>
-    <span class="hljs-comment"># OS&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
-    <span class="hljs-comment">#--------------------------------------------------</span>
-    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ \.php$</span> {
-        <span class="hljs-comment"># &#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5148;&#x306E;TCP&#x30BD;&#x30B1;&#x30C3;&#x30C8;</span>
-        <span class="hljs-attribute">fastcgi_pass</span>   <span class="hljs-number">127.0.0.1:9000</span>;
-        <span class="hljs-comment"># &#x3082;&#x3057;&#x304F;&#x306F;&#xFF0C;Unix&#x30BD;&#x30B1;&#x30C3;&#x30C8;</span>
-        <span class="hljs-comment"># fastcgi_pass unix:/run/php-fpm/www.sock;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#--------------------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8EE2;&#x9001;&#xFF0C;&#x53D7;&#x4FE1;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;OS&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#--------------------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">~</span>&#xA0;<span class="sunlight-regexLiteral">\.php$</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5148;&#x306E;TCP&#x30BD;&#x30B1;&#x30C3;&#x30C8;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">fastcgi_pass</span>&#xA0;&#xA0;&#xA0;<span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.1</span><span class="sunlight-operator">:</span><span class="sunlight-number">9000</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x3082;&#x3057;&#x304F;&#x306F;&#xFF0C;Unix&#x30BD;&#x30B1;&#x30C3;&#x30C8;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;fastcgi_pass&#xA0;unix:/run/php-fpm/www.sock;</span>
 
-        <span class="hljs-comment"># &#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5148;&#x306E;URL&#xFF08;root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x5024;+&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF09;</span>
-        <span class="hljs-attribute">fastcgi_param</span>  SCRIPT_FILENAME <span class="hljs-variable">$document_root</span><span class="hljs-variable">$fastcgi_script_name</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5148;&#x306E;URL&#xFF08;root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x5024;+&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF09;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SCRIPT_FILENAME</span>&#xA0;<span class="sunlight-variable">$document_root</span><span class="sunlight-variable">$fastcgi_script_name</span><span class="sunlight-punctuation">;</span>
 
-        <span class="hljs-comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;</span>
-        <span class="hljs-attribute">include</span>        fastcgi_params;
-    }
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">fastcgi_params</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;fastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;</h4>
 <p><code>/etc/nginx/fastcgi_params</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;Nginx&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;OS&#x3084;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306B;&#x63A5;&#x7D9A;&#x3057;&#xFF0C;&#x4E0A;&#x66F8;&#x304D;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x3082;&#x306E;&#x3068;&#x4E0D;&#x8981;&#x306A;&#x3082;&#x306E;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306F;&#xFF0C;Debian 10&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-comment">#--------------------------------------</span>
-<span class="hljs-comment"># FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8EE2;&#x9001;&#xFF0C;&#x53D7;&#x4FE1;</span>
-<span class="hljs-comment"># OS&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
-<span class="hljs-comment">#--------------------------------------</span>
-<span class="hljs-attribute">fastcgi_param</span>  QUERY_STRING       <span class="hljs-variable">$query_string</span>;
-<span class="hljs-attribute">fastcgi_param</span>  REQUEST_METHOD     <span class="hljs-variable">$request_method</span>;
-<span class="hljs-attribute">fastcgi_param</span>  CONTENT_TYPE       <span class="hljs-variable">$content_type</span>;
-<span class="hljs-attribute">fastcgi_param</span>  CONTENT_LENGTH     <span class="hljs-variable">$content_length</span>;
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#--------------------------------------</span>
+<span class="sunlight-comment">#&#xA0;FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8EE2;&#x9001;&#xFF0C;&#x53D7;&#x4FE1;</span>
+<span class="sunlight-comment">#&#xA0;OS&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
+<span class="sunlight-comment">#--------------------------------------</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">QUERY_STRING</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$query_string</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REQUEST_METHOD</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$request_method</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">CONTENT_TYPE</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$content_type</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">CONTENT_LENGTH</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$content_length</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-attribute">fastcgi_param</span>  SCRIPT_NAME        <span class="hljs-variable">$fastcgi_script_name</span>;
-<span class="hljs-attribute">fastcgi_param</span>  REQUEST_URI        <span class="hljs-variable">$request_uri</span>;
-<span class="hljs-attribute">fastcgi_param</span>  DOCUMENT_URI       <span class="hljs-variable">$document_uri</span>;
-<span class="hljs-attribute">fastcgi_param</span>  DOCUMENT_ROOT      <span class="hljs-variable">$document_root</span>;
-<span class="hljs-attribute">fastcgi_param</span>  SERVER_PROTOCOL    <span class="hljs-variable">$server_protocol</span>;
-<span class="hljs-attribute">fastcgi_param</span>  REQUEST_SCHEME     <span class="hljs-variable">$scheme</span>;
-<span class="hljs-attribute">fastcgi_param</span>  HTTPS              <span class="hljs-variable">$https</span> if_not_empty;
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SCRIPT_NAME</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$fastcgi_script_name</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REQUEST_URI</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$request_uri</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">DOCUMENT_URI</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$document_uri</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">DOCUMENT_ROOT</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$document_root</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SERVER_PROTOCOL</span>&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$server_protocol</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REQUEST_SCHEME</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$scheme</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">HTTPS</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$https</span>&#xA0;<span class="sunlight-ident">if_not_empty</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-attribute">fastcgi_param</span>  GATEWAY_INTERFACE  CGI/<span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
-<span class="hljs-attribute">fastcgi_param</span>  SERVER_SOFTWARE    nginx/<span class="hljs-variable">$nginx_version</span>;
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">GATEWAY_INTERFACE</span>&#xA0;&#xA0;<span class="sunlight-ident">CGI</span><span class="sunlight-punctuation">/</span><span class="sunlight-number">1.1</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SERVER_SOFTWARE</span>&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-variable">$nginx_version</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-attribute">fastcgi_param</span>  REMOTE_ADDR        <span class="hljs-variable">$remote_addr</span>;
-<span class="hljs-attribute">fastcgi_param</span>  REMOTE_PORT        <span class="hljs-variable">$remote_port</span>;
-<span class="hljs-attribute">fastcgi_param</span>  SERVER_ADDR        <span class="hljs-variable">$server_addr</span>;
-<span class="hljs-attribute">fastcgi_param</span>  SERVER_PORT        <span class="hljs-variable">$server_port</span>;
-<span class="hljs-attribute">fastcgi_param</span>  SERVER_NAME        <span class="hljs-variable">$server_name</span>;
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REMOTE_ADDR</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$remote_addr</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REMOTE_PORT</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$remote_port</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SERVER_ADDR</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$server_addr</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SERVER_PORT</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$server_port</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">SERVER_NAME</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$server_name</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-comment"># PHP&#x3060;&#x3051;&#x3067;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;</span>
-<span class="hljs-attribute">fastcgi_param</span>  REDIRECT_STATUS    <span class="hljs-number">200</span>;
-</code></pre>
+<span class="sunlight-comment">#&#xA0;PHP&#x3060;&#x3051;&#x3067;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;</span>
+<span class="sunlight-keyword">fastcgi_param</span>&#xA0;&#xA0;<span class="sunlight-ident">REDIRECT_STATUS</span>&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-number">200</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;wwwconf&#x306B;&#x3064;&#x3044;&#x3066;">&#x30FB;www.conf&#x306B;&#x3064;&#x3044;&#x3066;</h4>
-<pre><code class="lang-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;">
+<pre><code class="lang-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-/etc/php-fpm.d/www.conf```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;PHP-FPM&#x306B;&#x95A2;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308A;&#xFF0C;php.ini&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;php.ini&#x3088;&#x308A;&#x3082;&#x512A;&#x5148;&#x3055;&#x308C;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 ```ini
 [www]
 
-# &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF0C;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;
-user = nginx
-group = nginx
+#&#xA0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF0C;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;
+user&#xA0;=&#xA0;nginx
+group&#xA0;=&#xA0;nginx
 
-# Unix&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x306E;&#x30D1;&#x30B9;
-listen = /run/php-fpm/www.sock
+#&#xA0;Unix&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x306E;&#x30D1;&#x30B9;
+listen&#xA0;=&#xA0;/run/php-fpm/www.sock
 
-# PHP-FPM&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3092;&#x6307;&#x5B9A;&#xFF08;apache&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#xFF09;
-listen.owner = nginx
-listen.group = nginx
+#&#xA0;PHP-FPM&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3092;&#x6307;&#x5B9A;&#xFF08;apache&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#xFF09;
+listen.owner&#xA0;=&#xA0;nginx
+listen.group&#xA0;=&#xA0;nginx
 
-# &#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x30A2;&#x30A6;&#x30C8;&#x63A8;&#x5968; 
-;listen.acl_users = apache,nginx
+#&#xA0;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x30A2;&#x30A6;&#x30C8;&#x63A8;&#x5968;&#xA0;
+;listen.acl_users&#xA0;=&#xA0;apache,nginx
 
-# TCP&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;
-listen.allowed_clients = 127.0.0.1
+#&#xA0;TCP&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+listen.allowed_clients&#xA0;=&#xA0;127.0.0.1
 
-pm = dynamic
-pm.max_children = 50
-pm.start_servers = 5
-pm.min_spare_servers = 5
-pm.max_spare_servers = 35
+pm&#xA0;=&#xA0;dynamic
+pm.max_children&#xA0;=&#xA0;50
+pm.start_servers&#xA0;=&#xA0;5
+pm.min_spare_servers&#xA0;=&#xA0;5
+pm.max_spare_servers&#xA0;=&#xA0;35
 
-# &#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;
-slowlog = /var/log/php-fpm/www-slow.log
-php_admin_value[error_log] = /var/log/php-fpm/www-error.log
-php_admin_flag[log_errors] = on
+#&#xA0;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;
+slowlog&#xA0;=&#xA0;/var/log/php-fpm/www-slow.log
+php_admin_value[error_log]&#xA0;=&#xA0;/var/log/php-fpm/www-error.log
+php_admin_flag[log_errors]&#xA0;=&#xA0;on
 
-# &#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4FDD;&#x5B58;&#x65B9;&#x6CD5;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;redis&#x306E;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#xFF08;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;files&#xFF09;
-php_value[session.save_handler] = redis
-# &#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4FDD;&#x5B58;&#x5834;&#x6240;&#xFF08;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;&#xFF0C;/var/lib/php/session&#xFF09;
-php_value[session.save_path]    = &quot;tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.amazonaws.com:6379&quot;
+#&#xA0;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4FDD;&#x5B58;&#x65B9;&#x6CD5;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;redis&#x306E;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#xFF08;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;files&#xFF09;
+php_value[session.save_handler]&#xA0;=&#xA0;redis
+#&#xA0;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4FDD;&#x5B58;&#x5834;&#x6240;&#xFF08;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;&#xFF0C;/var/lib/php/session&#xFF09;
+php_value[session.save_path]&#xA0;&#xA0;&#xA0;&#xA0;=&#xA0;&quot;tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.amazonaws.com:6379&quot;
 
-# 
-php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
-</code></pre>
+#&#xA0;
+php_value[soap.wsdl_cache_dir]&#xA0;&#xA0;=&#xA0;/var/lib/php/wsdlcache
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3067;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#xFF0C;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-comment"># HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-<span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-section">server</span> {
-    <span class="hljs-attribute">server_name</span> example.com;
-    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
-    <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;
-}
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+<span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">return</span>&#xA0;<span class="sunlight-number">301</span>&#xA0;<span class="sunlight-ident">https</span><span class="sunlight-operator">:</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">/</span><span class="sunlight-variable">$host</span><span class="sunlight-variable">$request_uri</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-comment"># HTTPS&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-<span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-section">server</span> {
-    <span class="hljs-attribute">server_name</span> example.com;
-    <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl http2;
-    <span class="hljs-attribute">index</span> index.php index.html;
+<span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-comment">#&#xA0;HTTPS&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+<span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">443</span>&#xA0;<span class="sunlight-ident">ssl</span>&#xA0;<span class="sunlight-ident">http2</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">index</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-comment"># SSL</span>
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
-    <span class="hljs-attribute">ssl_certificate</span> /etc/nginx/ssl/server.crt;
-    <span class="hljs-attribute">ssl_certificate_key</span> /etc/nginx/ssl/server.key;
-    <span class="hljs-attribute">add_header</span> Strict-Transport-Security <span class="hljs-string">&apos;max-age=86400&apos;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;SSL</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ssl</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ssl_certificate</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">crt</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ssl_certificate_key</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">key</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">add_header</span>&#xA0;<span class="sunlight-ident">Strict-Transport-Security</span>&#xA0;<span class="sunlight-string">&apos;max-age=86400&apos;</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-attribute">location</span> / {
-        <span class="hljs-attribute">proxy_pass</span> http://app1;
-        <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$host</span>;
-        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-Proto <span class="hljs-variable">$scheme</span>;
-        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
-        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-Port <span class="hljs-variable">$remote_port</span>;
-    }
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_pass</span>&#xA0;<span class="sunlight-ident">http</span><span class="sunlight-operator">:</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">app1</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_set_header</span>&#xA0;<span class="sunlight-ident">Host</span>&#xA0;<span class="sunlight-variable">$host</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_set_header</span>&#xA0;<span class="sunlight-ident">X-Forwarded-Proto</span>&#xA0;<span class="sunlight-variable">$scheme</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_set_header</span>&#xA0;<span class="sunlight-ident">X-Forwarded-For</span>&#xA0;<span class="sunlight-variable">$proxy_add_x_forwarded_for</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_set_header</span>&#xA0;<span class="sunlight-ident">X-Forwarded-Port</span>&#xA0;<span class="sunlight-variable">$remote_port</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304B;&#x3089;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x305F;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x9759;&#x7684;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#xFF08;Nginx&#xFF09;&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#xFF0E;Web&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x5FC5;&#x305A;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#xFF0C;&#x52D5;&#x7684;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-comment"># HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-<span class="hljs-comment">#-------------------------------------</span>
-<span class="hljs-section">server</span> {
-    <span class="hljs-attribute">server_name</span> example.com;
-    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
-    <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-comment">#&#xA0;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+<span class="sunlight-comment">#-------------------------------------</span>
+<span class="sunlight-context">server</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">return</span>&#xA0;<span class="sunlight-number">301</span>&#xA0;<span class="sunlight-ident">https</span><span class="sunlight-operator">:</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">/</span><span class="sunlight-variable">$host</span><span class="sunlight-variable">$request_uri</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-comment"># &#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Nginx&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ ^/(images|javascript|js|css|flash|media|static)/</span> {
-        <span class="hljs-attribute">root</span> /var/www/example/static;
-        <span class="hljs-attribute">expires</span> <span class="hljs-number">30d</span>;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Nginx&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">~</span>&#xA0;<span class="sunlight-regexLiteral">^/(images|javascript|js|css|flash|media|static)/</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">root</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">var</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">static</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">expires</span>&#xA0;<span class="sunlight-number">30d</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
 
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-comment"># &#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Web&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x8EE2;&#x9001;</span>
-    <span class="hljs-comment">#-------------------------------------</span>
-    <span class="hljs-attribute">location</span> / {
-        <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:8080;
-    }
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Web&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x8EE2;&#x9001;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-------------------------------------</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">proxy_pass</span>&#xA0;<span class="sunlight-ident">http</span><span class="sunlight-operator">:</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">/</span><span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.1</span><span class="sunlight-operator">:</span><span class="sunlight-number">8080</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-01-main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-01. Main&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">user</span>                  www www;
-<span class="hljs-attribute">worker_processes</span>      <span class="hljs-number">5</span>;
-<span class="hljs-attribute">error_log</span>             logs/error.log;
-<span class="hljs-attribute">pid</span>                   logs/nginx.pid;
-<span class="hljs-attribute">worker_rlimit_nofile</span>  <span class="hljs-number">8192</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">worker_processes</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">error_log</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">pid</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">pid</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">worker_rlimit_nofile</span>&#xA0;&#xA0;<span class="sunlight-number">8192</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="user&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>user</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <p>&#x672C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;&#x3068;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x3092;&#x5165;&#x529B;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x540C;&#x3058;&#x3082;&#x306E;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">user</span>  www www;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">user</span>&#xA0;&#xA0;<span class="sunlight-ident">www</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="workerprocesses&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_processes</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><span class="hljs-attribute">worker_processes</span>  <span class="hljs-number">5</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_processes</span>&#xA0;&#xA0;<span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="errorlog&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>error_log</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><span class="hljs-attribute">error_log</span>  logs/error.log;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">error_log</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="pid&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>pid</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><span class="hljs-attribute">pid</span>  logs/nginx.pid;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">pid</span>&#xA0;&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">pid</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="workerrlimitnofile&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>worker_rlimit_nofile</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
-<pre><code class="lang-nginx"><span class="hljs-attribute">worker_rlimit_nofile</span>  <span class="hljs-number">8192</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_rlimit_nofile</span>&#xA0;&#xA0;<span class="sunlight-number">8192</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-02-configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-02. Configuration&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="include&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><code>include</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;mimetypes&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;mime.types&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
 <p>&#x4ED6;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /etc/nginx/mime.types;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p>&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x3082;&#x53EF;&#x80FD;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /etc/nginx/<span class="hljs-regexp">*.types</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;modules&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
-<pre><code class="lang-nginx"><span class="hljs-attribute">include</span>  /usr/share/nginx/modules/<span class="hljs-regexp">*.conf</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">usr</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">share</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">modules</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-03-events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-03. Events&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="events&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>events</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-section">events</span> {
-  <span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;
-}
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-ident">events</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;<span class="sunlight-keyword">worker_connections</span>&#xA0;&#xA0;<span class="sunlight-number">1024</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;workerconnections&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>worker_connections</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>worker&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304C;&#x540C;&#x6642;&#x306B;&#x51E6;&#x7406;&#x53EF;&#x80FD;&#x306A;&#x30B3;&#x30CD;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6700;&#x5927;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">worker_connections</span>&#xA0;&#xA0;<span class="sunlight-number">1024</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-04-httpcore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">03-04. HTTPCore&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h2>
 <h3 id="http&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>http</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
-<pre><code class="lang-nginx"><span class="hljs-section">http</span> {
-    <span class="hljs-attribute">server_tokens</span>      <span class="hljs-literal">off</span>;
-    <span class="hljs-attribute">include</span>            /etc/nginx/mime.types;
-    <span class="hljs-attribute">default_type</span>       application/octet-stream;
-    <span class="hljs-attribute">log_format</span>         main  <span class="hljs-string">&apos;<span class="hljs-variable">$remote_addr</span> - <span class="hljs-variable">$remote_user</span> [<span class="hljs-variable">$time_local</span>] &quot;<span class="hljs-variable">$request</span>&quot; &apos;</span>
-                             <span class="hljs-string">&apos;<span class="hljs-variable">$status</span> <span class="hljs-variable">$body_bytes_sent</span> &quot;<span class="hljs-variable">$http_referer</span>&quot; &apos;</span>
-                             <span class="hljs-string">&apos;&quot;<span class="hljs-variable">$http_user_agent</span>&quot; &quot;<span class="hljs-variable">$http_x_forwarded_for</span>&quot;&apos;</span>;
-    <span class="hljs-attribute">access_log</span>         /var/log/nginx/access.log  main;
-    <span class="hljs-attribute">sendfile</span>           <span class="hljs-literal">on</span>;
-    <span class="hljs-attribute">tcp_nopush</span>         <span class="hljs-literal">on</span>;
-    <span class="hljs-attribute">keepalive_timeout</span>  <span class="hljs-number">65</span>;
-    <span class="hljs-attribute">default_type</span>       application/octet-stream;
-    <span class="hljs-attribute">include</span>            /etc/nginx/mime.types;
-    <span class="hljs-attribute">include</span>            /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">http</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server_tokens</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">off</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">default_type</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">application</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">octet-stream</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">log_format</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">main</span>&#xA0;&#xA0;<span class="sunlight-string">&apos;$remote_addr&#xA0;-&#xA0;$remote_user&#xA0;[$time_local]&#xA0;&quot;$request&quot;&#xA0;&apos;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-string">&apos;$status&#xA0;$body_bytes_sent&#xA0;&quot;$http_referer&quot;&#xA0;&apos;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-string">&apos;&quot;$http_user_agent&quot;&#xA0;&quot;$http_x_forwarded_for&quot;&apos;</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">access_log</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">var</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">access</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">log</span>&#xA0;&#xA0;<span class="sunlight-ident">main</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">sendfile</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">tcp_nopush</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">keepalive_timeout</span>&#xA0;&#xA0;<span class="sunlight-number">65</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">default_type</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">application</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">octet-stream</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">include</span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-comment">#----- &#x7701;&#x7565; -----#</span>
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#-----&#xA0;&#x7701;&#x7565;&#xA0;-----#</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sendfile">&#x30FB;<code>sendfile</code></h4>
 <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x306E;&#x305F;&#x3081;&#x306B;Linux&#x306E;sendfile&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;OS&#x5185;&#x3067;&#x884C;&#x3046;&#x305F;&#x3081;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901F;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;Nginx&#x304C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#x81EA;&#x8EAB;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x9001;&#x4FE1;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">sendfile</span> <span class="hljs-literal">on</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">sendfile</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;tcpnopush">&#x30FB;<code>tcp_nopush</code></h4>
 <p>&#x4E0A;&#x8FF0;&#x306E;Linux&#x306E;<code>sendfile</code>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#xFF0C;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x4E00;&#x3064;&#x306E;&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">tcp_nopush</span> <span class="hljs-literal">on</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">tcp_nopush</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;defaulttype">&#x30FB;<code>default_type</code></h4>
 <p>Content-Type&#x304C;&#xFF0C;mime.types&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306A;&#x3044;MIME type&#x3067;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x9069;&#x7528;&#x3059;&#x308B;MIME type&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-comment"># application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
-<span class="hljs-attribute">default_type</span> application/octet-stream
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME&#xA0;type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
+<span class="sunlight-keyword">default_type</span>&#xA0;<span class="sunlight-ident">application</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">octet-stream</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;etcnginxmimetypes">&#x30FB;<code>/etc/nginx/mime.types</code></h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;Content-Type&#x306E;MIME&#x30BF;&#x30A4;&#x30D7;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x9593;&#x306E;&#xFF0C;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">include</span> /etc/nginx/mime.types;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mime</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">types</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;etcnginxconfdconf">&#x30FB;<code>/etc/nginx/conf.d/*.conf</code></h4>
 <p>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;nginx.conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x308F;&#x306A;&#x3044;&#x304B;&#x3092;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">include</span> /etc/nginx/conf.d/<span class="hljs-regexp">*.conf</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">include</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="server&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>server</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;listen&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>listen</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>80</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">80</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p>&#x958B;&#x653E;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;<code>443</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">listen</span>&#xA0;<span class="sunlight-number">443</span>&#xA0;<span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;servername&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>server_name</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">server_name</span> example.com;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p>&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x76F4;&#x63A5;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">server_name</span> <span class="hljs-number">192.168.0.0</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">server_name</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.0</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;ssl&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>Nginx&#x3067;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;ssl&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl</span>&#xA0;<span class="sunlight-ident">on</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sslcertificate&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">ssl_certificate</span> /etc/nginx/ssl/server.crt;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">crt</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;sslcertificatekey&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">&#x30FB;<code>ssl_certificate_key</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h4>
 <p>PEM&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">ssl_certificate_key</span> /etc/nginx/ssl/server.key;
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-keyword">ssl_certificate_key</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">nginx</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">ssl</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">key</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="location&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>location</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;&#x8272;&#x3005;&#x306A;&#x30D1;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;&#x8272;&#x3005;&#x306A;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;URL&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-comment"># 1. &#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-attribute">location</span> = / {
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-comment">#&#xA0;1.&#xA0;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-}
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-comment"># 2. &#x300E;/images/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-attribute">location</span><span class="hljs-regexp"> ^~</span> /images/ {
+<span class="sunlight-comment">#&#xA0;2.&#xA0;&#x300E;/images/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">^~</span>&#xA0;<span class="sunlight-regexLiteral">/images/</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-}
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-comment"># 3&#x3068;4. &#x672B;&#x5C3E;&#x304C;&#x3001;&#x300E;gif&#xFF0C;jpg&#xFF0C;jpeg&#x306E;&#x5F62;&#x5F0F;&#x300F; &#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-comment"># &#x30D0;&#x30C3;&#x30AF;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x3067;&#x30C9;&#x30C3;&#x30C8;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x6587;&#x5B57;&#x3067;&#x306F;&#x306A;&#x304F;&#x300C;&#x30C9;&#x30C3;&#x30C8;&#x6587;&#x5B57;&#x300D;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</span>
-<span class="hljs-attribute">location</span> <span class="hljs-regexp">~* \.(gif|jpg|jpeg)$</span> {
+<span class="sunlight-comment">#&#xA0;3&#x3068;4.&#xA0;&#x672B;&#x5C3E;&#x304C;&#x3001;&#x300E;gif&#xFF0C;jpg&#xFF0C;jpeg&#x306E;&#x5F62;&#x5F0F;&#x300F;&#xA0;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-comment">#&#xA0;&#x30D0;&#x30C3;&#x30AF;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x3067;&#x30C9;&#x30C3;&#x30C8;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x6587;&#x5B57;&#x3067;&#x306F;&#x306A;&#x304F;&#x300C;&#x30C9;&#x30C3;&#x30C8;&#x6587;&#x5B57;&#x300D;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-operator">~*</span>&#xA0;<span class="sunlight-regexLiteral">\.(gif|jpg|jpeg)$</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-}
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-comment"># 5-1. &#x300E;/docs/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-attribute">location</span> /docs/ {
+<span class="sunlight-comment">#&#xA0;5-1.&#xA0;&#x300E;/docs/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">docs</span><span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-}
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-comment"># 5-2. &#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-attribute">location</span> / {
-    <span class="hljs-comment"># &#x300E;/.aaa.html&#x300F;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x300E;/.aaa.html/&#x300F;&#x3082;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x300E;/index.html&#x300F;&#x3067;200&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-    <span class="hljs-comment"># &#x5168;&#x3066;&#x304C;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;404&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</span>
-    <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html =<span class="hljs-number">404</span>;
-}
-</code></pre>
+<span class="sunlight-comment">#&#xA0;5-2.&#xA0;&#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x300E;/.aaa.html&#x300F;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x300E;/.aaa.html/&#x300F;&#x3082;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x300E;/index.html&#x300F;&#x3067;200&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">#&#xA0;&#x5168;&#x3066;&#x304C;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;404&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try_files</span>&#xA0;<span class="sunlight-variable">$uri</span>&#xA0;<span class="sunlight-variable">$uri</span><span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span>&#xA0;<span class="sunlight-operator">=</span><span class="sunlight-number">404</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p>&#x30EB;&#x30FC;&#x30C8;&#x306E;&#x4E00;&#x81F4;&#x6761;&#x4EF6;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <table>
 <thead>
@@ -1772,21 +1772,21 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 </table>
 <h4 id="&#x30FB;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;">&#x30FB;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;</h4>
 <p>&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x5C02;&#x7528;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x7528;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#x6642;&#xFF0C;nginx&#x3067;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306E;&#x30D1;&#x30B9;&#x3067;&#xFF0C;<code>access_log</code>&#x3092;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">location</span> /healthcheck {
-    <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php?<span class="hljs-variable">$query_string</span>;
-    <span class="hljs-attribute">access_log</span> <span class="hljs-literal">off</span>;
-}
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">location</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">healthcheck</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try_files</span>&#xA0;<span class="sunlight-variable">$uri</span>&#xA0;<span class="sunlight-variable">$uri</span><span class="sunlight-punctuation">/</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span><span class="sunlight-punctuation">?</span><span class="sunlight-variable">$query_string</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">access_log</span>&#xA0;<span class="sunlight-ident">off</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="upstream&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><code>upstream</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-nginx"><span class="hljs-attribute">upstream</span> big_server_com {
-    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.3:8000</span> weight=<span class="hljs-number">5</span>;
-    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.3:8001</span> weight=<span class="hljs-number">5</span>;
-    <span class="hljs-attribute">server</span> <span class="hljs-number">192.168.0.1:8000</span>;
-    <span class="hljs-attribute">server</span> <span class="hljs-number">192.168.0.1:8001</span>;
-}
-</code></pre>
+<pre><code class="lang-nginx"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-nginx sunlight-highlighted"><span class="sunlight-nginx"><span class="sunlight-context">upstream</span>&#xA0;<span class="sunlight-ident">big_server_com</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.3</span><span class="sunlight-operator">:</span><span class="sunlight-number">8000</span>&#xA0;<span class="sunlight-ident">weight</span><span class="sunlight-operator">=</span><span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">127.0</span><span class="sunlight-number">.0</span><span class="sunlight-number">.3</span><span class="sunlight-operator">:</span><span class="sunlight-number">8001</span>&#xA0;<span class="sunlight-ident">weight</span><span class="sunlight-operator">=</span><span class="sunlight-number">5</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.1</span><span class="sunlight-operator">:</span><span class="sunlight-number">8000</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">server</span>&#xA0;<span class="sunlight-number">192.168</span><span class="sunlight-number">.0</span><span class="sunlight-number">.1</span><span class="sunlight-operator">:</span><span class="sunlight-number">8001</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 
                                 
                                 </section>
@@ -1826,7 +1826,7 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-12-29T19:29:55.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nginx","level":"1.18.1","depth":2,"next":{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]},"previous":{"title":"ソフトウェア｜ミドルウェア","level":"1.18","depth":1,"ref":"","articles":[{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},{"title":"Apache","level":"1.18.2","depth":2,"path":"public/infrastructure_software_middleware_apache.md","ref":"public/infrastructure_software_middleware_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_nginx.md","mtime":"2020-12-29T19:29:55.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1845,10 +1845,6 @@ php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

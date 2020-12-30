@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1457,46 +1457,46 @@
 <h4 id="&#x30FB;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x308B;&#x5BFE;&#x7B56;">&#x30FB;<strong>&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x308B;&#x5BFE;&#x7B56;</strong></h4>
 <p>&#x30D7;&#x30EA;&#x30DA;&#x30A2;&#x30FC;&#x30C9;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;SQL&#x4E2D;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x5024;&#x3092;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x6E21;&#x3057;&#x305F;&#x4E0A;&#x3067;&#xFF0C;SQL&#x3068;&#x3057;&#x3066;&#x767A;&#x884C;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;&#x51E6;&#x7406;&#x901F;&#x5EA6;&#x304C;&#x901F;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x8AA4;&#x3063;&#x3066;SQL&#x304C;&#x6E21;&#x3055;&#x308C;&#x3066;&#x3082;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x306A;&#x304F;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;SQL&#x30A4;&#x30F3;&#x30B8;&#x30A7;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5BFE;&#x7B56;&#x306B;&#x306A;&#x308B;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP">use Doctrine\DBAL\Connection;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">use&#xA0;Doctrine\DBAL\Connection;
 
 
-class dogToyQuey(Value $toyType): array
+class&#xA0;dogToyQuey(Value&#xA0;$toyType):&#xA0;array
 {
-  // QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;
-  $queryBuilder = $this-&gt;createQueryBuilder();
+&#xA0;&#xA0;//&#xA0;QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;
+&#xA0;&#xA0;$queryBuilder&#xA0;=&#xA0;$this-&gt;createQueryBuilder();
 
-  // SELECT&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;
-  $queryBuilder-&gt;select([
-                  &apos;dog_toy.type AS dog_toy_type&apos;,
-                  &apos;dog_toy.name AS dog_toy_name&apos;,
-                  &apos;dog_toy.number AS number&apos;,
-                  &apos;dog_toy.price AS dog_toy_price&apos;,
-                  &apos;dog_toy.color_value AS color_value&apos;
-                  ])
+&#xA0;&#xA0;//&#xA0;SELECT&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;
+&#xA0;&#xA0;$queryBuilder-&gt;select([
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;dog_toy.type&#xA0;AS&#xA0;dog_toy_type&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;dog_toy.name&#xA0;AS&#xA0;dog_toy_name&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;dog_toy.number&#xA0;AS&#xA0;number&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;dog_toy.price&#xA0;AS&#xA0;dog_toy_price&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;dog_toy.color_value&#xA0;AS&#xA0;color_value&apos;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;])
 
-                  // FROM&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;
-                  -&gt;from(&apos;mst_dog_toy&apos;, &apos;dog_toy&apos;)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;FROM&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;from(&apos;mst_dog_toy&apos;,&#xA0;&apos;dog_toy&apos;)
 
-                  // WHERE&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x5024;&#x306F;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;
-                  -&gt;where(&apos;dog_toy.type = :type&apos;)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;WHERE&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x5024;&#x306F;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;where(&apos;dog_toy.type&#xA0;=&#xA0;:type&apos;)
 
-                  // &#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3059;&#x300E;$toyType&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;
-                  -&gt;setParameter(&apos;type&apos;, $toyType);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3059;&#x300E;$toyType&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;setParameter(&apos;type&apos;,&#xA0;$toyType);
 
 
-  // &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304B;&#x3089;&#x300E;$toyType&#x300F;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
-  return $queryBuilder-&gt;getConnection()
+&#xA0;&#xA0;//&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304B;&#x3089;&#x300E;$toyType&#x300F;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;return&#xA0;$queryBuilder-&gt;getConnection()
 
-                      // &#x8A2D;&#x5B9A;&#x3057;&#x305F;SQL&#x3068;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
-                      -&gt;executeQuery($queryBuilder-&gt;getSQL(),
-                                      $queryBuilder-&gt;getParameters(),
-                      )
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x8A2D;&#x5B9A;&#x3057;&#x305F;SQL&#x3068;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;executeQuery($queryBuilder-&gt;getSQL(),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$queryBuilder-&gt;getParameters(),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;)
 
-                      // &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
-                      -&gt;fetchAll();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;fetchAll();
 
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="xss&#xFF1A;cross-site-scripting">XSS&#xFF1A;Cross Site Scripting</h3>
 <h4 id="&#x30FB;xss&#x3068;&#x306F;">&#x30FB;XSS&#x3068;&#x306F;</h4>
@@ -1590,7 +1590,7 @@ class dogToyQuey(Value $toyType): array
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"サイバー攻撃","level":"1.16.1","depth":2,"next":{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]},"previous":{"title":"ネットワーク｜セキュリティ","level":"1.16","depth":1,"ref":"","articles":[{"title":"サイバー攻撃","level":"1.16.1","depth":2,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_network_cyber_attacks.md","mtime":"2020-12-20T17:43:34.897Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"サイバー攻撃","level":"1.16.1","depth":2,"next":{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]},"previous":{"title":"ネットワーク｜セキュリティ","level":"1.16","depth":1,"ref":"","articles":[{"title":"サイバー攻撃","level":"1.16.1","depth":2,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_network_cyber_attacks.md","mtime":"2020-12-20T17:43:34.897Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1609,10 +1609,6 @@ class dogToyQuey(Value $toyType): array
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

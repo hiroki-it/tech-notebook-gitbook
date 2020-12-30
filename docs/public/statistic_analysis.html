@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1379,29 +1379,29 @@
 <p>&#x30C7;&#x30FC;&#x30BF;&#x306B;&#xFF0C;&#x3069;&#x306E;&#x7A0B;&#x5EA6;&#x306E;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#x304B;&#x3092;&#x691C;&#x51FA;&#x3059;&#x308B;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#x304B;&#x5426;&#x304B;&#x306E;&#x5224;&#x65AD;&#x6750;&#x6599;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x76F8;&#x95A2;&#x5206;&#x6790;.png" alt="&#x76F8;&#x95A2;&#x5206;&#x6790;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample &lt;- read.table(<span class="hljs-string">&quot;sample_edit.txt&quot;</span>, header = <span class="hljs-literal">T</span>)
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample&#xA0;&lt;-&#xA0;read.table(&quot;sample_edit.txt&quot;,&#xA0;header&#xA0;=&#xA0;T)
 
 
-<span class="hljs-comment"># &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x6563;&#x5E03;&#x56F3;&#x3092;&#x4F5C;&#x6210;&#xFF0E;</span>
-g &lt;- ggplot(sample, aes(x = &#x7D14;&#x5E83;&#x544A;, y = CV_&#x7D14;&#x5E83;&#x544A;))
-g &lt;- g + geom_point()
+#&#xA0;&#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x6563;&#x5E03;&#x56F3;&#x3092;&#x4F5C;&#x6210;&#xFF0E;
+g&#xA0;&lt;-&#xA0;ggplot(sample,&#xA0;aes(x&#xA0;=&#xA0;&#x7D14;&#x5E83;&#x544A;,&#xA0;y&#xA0;=&#xA0;CV_&#x7D14;&#x5E83;&#x544A;))
+g&#xA0;&lt;-&#xA0;g&#xA0;+&#xA0;geom_point()
 plot(g)
 
 
-<span class="hljs-comment"># &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x76F8;&#x95A2;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-ts&lt;-ts(sample[,<span class="hljs-number">2</span>:<span class="hljs-number">5</span>])
-cor(ts, method = <span class="hljs-string">&quot;pearson&quot;</span>)
+#&#xA0;&#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x76F8;&#x95A2;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;
+ts&lt;-ts(sample[,2:5])
+cor(ts,&#xA0;method&#xA0;=&#xA0;&quot;pearson&quot;)
 
 
-<span class="hljs-comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">#                    &#x7D14;&#x5E83;&#x544A;      &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  CV_&#x7D14;&#x5E83;&#x544A;    CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;</span>
-<span class="hljs-comment"># &#x7D14;&#x5E83;&#x544A;           1.00000000    0.5247992  0.1065025     -0.09415535</span>
-<span class="hljs-comment"># &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;      0.52479919    1.0000000 -0.2360605      0.20821230</span>
-<span class="hljs-comment"># CV_&#x7D14;&#x5E83;&#x544A;        0.10650249   -0.2360605  1.0000000      0.19500011</span>
-<span class="hljs-comment"># CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  -0.09415535    0.2082123  0.1950001      1.00000000</span>
-<span class="hljs-comment"># // &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x9593;&#x306B;&#x306F;&#xFF0C;&#x5F31;&#x3044;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#xFF0E;</span>
-</code></pre>
+#&#xA0;&#x5206;&#x6790;&#x7D50;&#x679C;
+#&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#x7D14;&#x5E83;&#x544A;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#xA0;&#xA0;CV_&#x7D14;&#x5E83;&#x544A;&#xA0;&#xA0;&#xA0;&#xA0;CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;
+#&#xA0;&#x7D14;&#x5E83;&#x544A;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.00000000&#xA0;&#xA0;&#xA0;&#xA0;0.5247992&#xA0;&#xA0;0.1065025&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-0.09415535
+#&#xA0;&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;0.52479919&#xA0;&#xA0;&#xA0;&#xA0;1.0000000&#xA0;-0.2360605&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;0.20821230
+#&#xA0;CV_&#x7D14;&#x5E83;&#x544A;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;0.10650249&#xA0;&#xA0;&#xA0;-0.2360605&#xA0;&#xA0;1.0000000&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;0.19500011
+#&#xA0;CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#xA0;&#xA0;-0.09415535&#xA0;&#xA0;&#xA0;&#xA0;0.2082123&#xA0;&#xA0;0.1950001&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.00000000
+#&#xA0;//&#xA0;&#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x9593;&#x306B;&#x306F;&#xFF0C;&#x5F31;&#x3044;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#xFF0E;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;">02. &#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;</h2>
 <p>&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#x305D;&#x3046;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6A2A;&#x8EF8;&#x3092;&#x539F;&#x56E0;&#xFF0C;&#x307E;&#x305F;&#x7E26;&#x8EF8;&#x3092;&#x7D50;&#x679C;&#x3068;&#x3057;&#xFF0C;&#x6700;&#x3082;&#x5F53;&#x3066;&#x306F;&#x307E;&#x308A;&#x306E;&#x826F;&#x3044;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x63A8;&#x5B9A;&#x3059;&#x308B;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x7CBE;&#x5EA6;&#x304C;&#x9AD8;&#x3051;&#x308C;&#x3070;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x306E;&#x8A3C;&#x660E;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x307E;&#x305F;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x539F;&#x56E0;&#x3092;&#x4EE3;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x7D50;&#x679C;&#x3092;&#x4E88;&#x6E2C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -1411,29 +1411,29 @@ cor(ts, method = <span class="hljs-string">&quot;pearson&quot;</span>)
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;">&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x5358;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x5358;&#x56DE;&#x5E30;&#x5F0F;"></p>
 <h5 id="&#x5206;&#x6790;&#x4F8B;">&#x5206;&#x6790;&#x4F8B;</h5>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample &lt;- read.table(<span class="hljs-string">&quot;sample_edit.txt&quot;</span>, header = <span class="hljs-literal">T</span>)
-ts &lt;- ts(sample[,<span class="hljs-number">2</span>:<span class="hljs-number">5</span>])
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample&#xA0;&lt;-&#xA0;read.table(&quot;sample_edit.txt&quot;,&#xA0;header&#xA0;=&#xA0;T)
+ts&#xA0;&lt;-&#xA0;ts(sample[,2:5])
 
 
-<span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;&#xFF0E;</span>
-df &lt;- data.frame(ts)
+#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;&#xFF0E;
+df&#xA0;&lt;-&#xA0;data.frame(ts)
 
 
-<span class="hljs-comment"># CV_&#x7D14;&#x5E83;&#x544A;&#x3068;&#x7D14;&#x5E83;&#x544A;&#x306B;&#x57FA;&#x3065;&#x304F;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-Reg &lt;- lm(CV_&#x7D14;&#x5E83;&#x544A; ~ &#x7D14;&#x5E83;&#x544A;,df)
+#&#xA0;CV_&#x7D14;&#x5E83;&#x544A;&#x3068;&#x7D14;&#x5E83;&#x544A;&#x306B;&#x57FA;&#x3065;&#x304F;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;
+Reg&#xA0;&lt;-&#xA0;lm(CV_&#x7D14;&#x5E83;&#x544A;&#xA0;~&#xA0;&#x7D14;&#x5E83;&#x544A;,df)
 
 
-<span class="hljs-comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
+#&#xA0;&#x5206;&#x6790;&#x7D50;&#x679C;
 summary(Reg)
 
 
-<span class="hljs-comment"># Coefficients:</span>
-<span class="hljs-comment">#              Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="hljs-comment"># (Intercept) 1.099e+01  2.405e+00   4.571 3.11e-05 *** </span>
-<span class="hljs-comment"># &#x7D14;&#x5E83;&#x544A;      2.239e-05  2.927e-05   0.765    0.448</span>
-<span class="hljs-comment"># // &#x7D14;&#x5E83;&#x544A;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &gt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;</span>
-</code></pre>
+#&#xA0;Coefficients:
+#&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Estimate&#xA0;Std.&#xA0;Error&#xA0;t&#xA0;value&#xA0;Pr(&gt;|t|)&#xA0;&#xA0;&#xA0;&#xA0;
+#&#xA0;(Intercept)&#xA0;1.099e+01&#xA0;&#xA0;2.405e+00&#xA0;&#xA0;&#xA0;4.571&#xA0;3.11e-05&#xA0;***&#xA0;
+#&#xA0;&#x7D14;&#x5E83;&#x544A;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;2.239e-05&#xA0;&#xA0;2.927e-05&#xA0;&#xA0;&#xA0;0.765&#xA0;&#xA0;&#xA0;&#xA0;0.448
+#&#xA0;//&#xA0;&#x7D14;&#x5E83;&#x544A;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024;&#xA0;&gt;&#xA0;0.05&#xA0;&#x3088;&#x308A;&#xFF0C;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;">&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;</h3>
 <p>&#x539F;&#x56E0;&#x304C;&#x4E8C;&#x3064;&#x4EE5;&#x4E0A;&#x3067;&#x7D50;&#x679C;&#x304C;&#x4E00;&#x3064;&#x3068;&#x4EEE;&#x5B9A;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x6700;&#x3082;&#x5F53;&#x3066;&#x306F;&#x307E;&#x308A;&#x306E;&#x826F;&#x3044;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x63A8;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x30B0;&#x30E9;&#x30D5;&#x3067;&#x306F;&#xFF0C;&#x30E2;&#x30C7;&#x30EB;&#x306F;&#x5E73;&#x9762;&#x3067;&#x8868;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
@@ -1441,50 +1441,50 @@ summary(Reg)
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;">&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x91CD;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x91CD;&#x56DE;&#x5E30;&#x5F0F;"></p>
 <h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;">&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample &lt;- read.table(<span class="hljs-string">&quot;sample_edit.txt&quot;</span>, header = <span class="hljs-literal">T</span>)
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample&#xA0;&lt;-&#xA0;read.table(&quot;sample_edit.txt&quot;,&#xA0;header&#xA0;=&#xA0;T)
 
 
-days &lt;- weekdays(as.Date(sample$DATE))
+days&#xA0;&lt;-&#xA0;weekdays(as.Date(sample$DATE))
 sample1&lt;-transform(sample,days=days)
 
-<span class="hljs-keyword">library</span>(caret)
+library(caret)
 
-<span class="hljs-comment"># &#x66DC;&#x65E5;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;</span>
-tmp &lt;- dummyVars(~days, data=sample1)
-days1 &lt;- as.data.frame(predict(tmp, sample1))
-
-
-<span class="hljs-comment"># &#x66DC;&#x65E5;&#x306E;&#x9806;&#x756A;&#x3092;&#x6574;&#x5F62;</span>
-days2 &lt;- days1 [ c(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>) ]
+#&#xA0;&#x66DC;&#x65E5;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;
+tmp&#xA0;&lt;-&#xA0;dummyVars(~days,&#xA0;data=sample1)
+days1&#xA0;&lt;-&#xA0;as.data.frame(predict(tmp,&#xA0;sample1))
 
 
-<span class="hljs-comment"># &#x5E83;&#x544A;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x66DC;&#x65E5;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7D50;&#x5408;</span>
-ts1 &lt;- cbind(sample, days2)
+#&#xA0;&#x66DC;&#x65E5;&#x306E;&#x9806;&#x756A;&#x3092;&#x6574;&#x5F62;
+days2&#xA0;&lt;-&#xA0;days1&#xA0;[&#xA0;c(3,1,4,7,2,5,6)&#xA0;]
 
 
-<span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;</span>
-df &lt;- data.frame(ts1)
+#&#xA0;&#x5E83;&#x544A;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x66DC;&#x65E5;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7D50;&#x5408;
+ts1&#xA0;&lt;-&#xA0;cbind(sample,&#xA0;days2)
 
 
-<span class="hljs-comment"># &#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-Reg&lt;-lm(CV_&#x7D14;&#x5E83;&#x544A; ~ days.&#x6708;&#x66DC;&#x65E5;+days.&#x706B;&#x66DC;&#x65E5;+days.&#x6C34;&#x66DC;&#x65E5;+days.&#x6728;&#x66DC;&#x65E5;+days.&#x91D1;&#x66DC;&#x65E5;,df)
+#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;
+df&#xA0;&lt;-&#xA0;data.frame(ts1)
 
 
-<span class="hljs-comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
+#&#xA0;&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;
+Reg&lt;-lm(CV_&#x7D14;&#x5E83;&#x544A;&#xA0;~&#xA0;days.&#x6708;&#x66DC;&#x65E5;+days.&#x706B;&#x66DC;&#x65E5;+days.&#x6C34;&#x66DC;&#x65E5;+days.&#x6728;&#x66DC;&#x65E5;+days.&#x91D1;&#x66DC;&#x65E5;,df)
+
+
+#&#xA0;&#x5206;&#x6790;&#x7D50;&#x679C;
 summary(Reg)
 
 
-<span class="hljs-comment"># Coefficients:</span>
-<span class="hljs-comment">#             Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="hljs-comment"># (Intercept)    8.857      1.007   8.797 1.69e-11 ***</span>
-<span class="hljs-comment"># days.&#x6708;&#x66DC;&#x65E5;     5.286      1.744   3.031 0.003957 ** </span>
-<span class="hljs-comment"># days.&#x706B;&#x66DC;&#x65E5;     4.893      1.670   2.930 0.005212 ** </span>
-<span class="hljs-comment"># days.&#x6C34;&#x66DC;&#x65E5;     6.143      1.670   3.679 0.000601 ***</span>
-<span class="hljs-comment"># days.&#x6728;&#x66DC;&#x65E5;     5.893      1.670   3.529 0.000944 ***</span>
-<span class="hljs-comment"># days.&#x91D1;&#x66DC;&#x65E5;     4.393      1.670   2.631 0.011479 *  </span>
-<span class="hljs-comment"># // &#x6708;&#xFF0C;&#x6C34;&#xFF0C;&#x91D1;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &lt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x6708;&#x6C34;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x706B;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;</span>
-</code></pre>
+#&#xA0;Coefficients:
+#&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;Estimate&#xA0;Std.&#xA0;Error&#xA0;t&#xA0;value&#xA0;Pr(&gt;|t|)&#xA0;&#xA0;&#xA0;&#xA0;
+#&#xA0;(Intercept)&#xA0;&#xA0;&#xA0;&#xA0;8.857&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.007&#xA0;&#xA0;&#xA0;8.797&#xA0;1.69e-11&#xA0;***
+#&#xA0;days.&#x6708;&#x66DC;&#x65E5;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;5.286&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.744&#xA0;&#xA0;&#xA0;3.031&#xA0;0.003957&#xA0;**&#xA0;
+#&#xA0;days.&#x706B;&#x66DC;&#x65E5;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;4.893&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.670&#xA0;&#xA0;&#xA0;2.930&#xA0;0.005212&#xA0;**&#xA0;
+#&#xA0;days.&#x6C34;&#x66DC;&#x65E5;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;6.143&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.670&#xA0;&#xA0;&#xA0;3.679&#xA0;0.000601&#xA0;***
+#&#xA0;days.&#x6728;&#x66DC;&#x65E5;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;5.893&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.670&#xA0;&#xA0;&#xA0;3.529&#xA0;0.000944&#xA0;***
+#&#xA0;days.&#x91D1;&#x66DC;&#x65E5;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;4.393&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;1.670&#xA0;&#xA0;&#xA0;2.631&#xA0;0.011479&#xA0;*&#xA0;&#xA0;
+#&#xA0;//&#xA0;&#x6708;&#xFF0C;&#x6C34;&#xFF0C;&#x91D1;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024;&#xA0;&lt;&#xA0;0.05&#xA0;&#x3088;&#x308A;&#xFF0C;&#x6708;&#x6C34;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x706B;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-02-&#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;">02-02. &#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;</h2>
 <p>&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#x305D;&#x3046;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6A2A;&#x8EF8;&#x3092;&#x539F;&#x56E0;&#xFF0C;&#x307E;&#x305F;&#x7E26;&#x8EF8;&#x3092;&#x7D50;&#x679C;&#x3068;&#x3057;&#xFF0C;&#x6700;&#x3082;&#x5F53;&#x3066;&#x306F;&#x307E;&#x308A;&#x306E;&#x826F;&#x3044;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x63A8;&#x5B9A;&#x3059;&#x308B;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x7CBE;&#x5EA6;&#x304C;&#x9AD8;&#x3051;&#x308C;&#x3070;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x306E;&#x8A3C;&#x660E;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x307E;&#x305F;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x539F;&#x56E0;&#x3092;&#x4EE3;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x7D50;&#x679C;&#x3092;&#x4E88;&#x6E2C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x63A8;&#x5B9A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4E00;&#x822C;&#x5316;&#x3057;&#xFF0C;&#x4E00;&#x822C;&#x5316;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3068;&#x3057;&#x3066;&#x51E6;&#x7406;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
@@ -1494,22 +1494,22 @@ summary(Reg)
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;">&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30ED;&#x30B8;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x30ED;&#x30B8;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;&#x56DE;&#x5E30;&#x5F0F;"></p>
 <h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;">&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample&lt;-read.csv(<span class="hljs-string">&quot;CV_data2.csv&quot;</span>,header=<span class="hljs-literal">T</span>)
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample&lt;-read.csv(&quot;CV_data2.csv&quot;,header=T)
 
 
-<span class="hljs-comment"># &#x30EA;&#x30F3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x30ED;&#x30B8;&#x30C3;&#x30C8;&#x3068;&#x3057;&#xFF0C;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4E00;&#x822C;&#x5316;&#x3059;&#x308B;&#xFF0E;</span>
-result_lg = glm(CP&#x7533;&#x8FBC;&#x307F; ~ &#x6027;&#x5225;+&#x7D4C;&#x6E08;&#x95A2;&#x9023;, sample, family=binomial)
+#&#xA0;&#x30EA;&#x30F3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x30ED;&#x30B8;&#x30C3;&#x30C8;&#x3068;&#x3057;&#xFF0C;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4E00;&#x822C;&#x5316;&#x3059;&#x308B;&#xFF0E;
+result_lg&#xA0;=&#xA0;glm(CP&#x7533;&#x8FBC;&#x307F;&#xA0;~&#xA0;&#x6027;&#x5225;+&#x7D4C;&#x6E08;&#x95A2;&#x9023;,&#xA0;sample,&#xA0;family=binomial)
 
 
-<span class="hljs-comment"># &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x3092;&#x51FA;&#x529B;</span>
+#&#xA0;&#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x3092;&#x51FA;&#x529B;
 exp(result_lg2$coefficients)
 
 
-<span class="hljs-comment"># &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;</span>
-<span class="hljs-comment"># (Intercept)        &#x6027;&#x5225;    &#x7D4C;&#x6E08;&#x95A2;&#x9023; </span>
-<span class="hljs-comment"># 0.08930881 14.98017457  1.75649720</span>
-</code></pre>
+#&#xA0;&#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;
+#&#xA0;(Intercept)&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#x6027;&#x5225;&#xA0;&#xA0;&#xA0;&#xA0;&#x7D4C;&#x6E08;&#x95A2;&#x9023;&#xA0;
+#&#xA0;0.08930881&#xA0;14.98017457&#xA0;&#xA0;1.75649720
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;">03. &#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;</h2>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x3082;&#x5F53;&#x3066;&#x306F;&#x307E;&#x308A;&#x306E;&#x826F;&#x3044;&#x6C7A;&#x5B9A;&#x6728;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x63A8;&#x5B9A;&#x3059;&#x308B;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;</p>
@@ -1522,55 +1522,55 @@ exp(result_lg2$coefficients)
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_2.png" alt="&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_2"></p>
 <h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;">&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample &lt;- read.csv(<span class="hljs-string">&quot;CV_data.csv&quot;</span>, header = <span class="hljs-literal">T</span>)
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample&#xA0;&lt;-&#xA0;read.csv(&quot;CV_data.csv&quot;,&#xA0;header&#xA0;=&#xA0;T)
 
 
-<span class="hljs-comment"># &#x8B58;&#x5225;&#x5024;&#x306E;id&#x3092;&#x8AAC;&#x660E;&#x5909;&#x6570;&#x304B;&#x3089;&#x9664;&#x3044;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x69CB;&#x7BC9;&#xFF0E;</span>
-<span class="hljs-keyword">library</span>(rpart)
-tree &lt;- rpart(CV~AGE + SEX + AD, data = sample)
+#&#xA0;&#x8B58;&#x5225;&#x5024;&#x306E;id&#x3092;&#x8AAC;&#x660E;&#x5909;&#x6570;&#x304B;&#x3089;&#x9664;&#x3044;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x69CB;&#x7BC9;&#xFF0E;
+library(rpart)
+tree&#xA0;&lt;-&#xA0;rpart(CV~AGE&#xA0;+&#xA0;SEX&#xA0;+&#xA0;AD,&#xA0;data&#xA0;=&#xA0;sample)
 
 
-<span class="hljs-comment"># partykit&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
-<span class="hljs-keyword">library</span>(partykit)
-plot(as.party(tree), tp_args = <span class="hljs-literal">T</span>)
+#&#xA0;partykit&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
+library(partykit)
+plot(as.party(tree),&#xA0;tp_args&#xA0;=&#xA0;T)
 
 
-<span class="hljs-comment"># rattle&#x3068;rpart.plot&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
-<span class="hljs-keyword">library</span>(rattle)
-<span class="hljs-keyword">library</span>(rpart.plot)
+#&#xA0;rattle&#x3068;rpart.plot&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
+library(rattle)
+library(rpart.plot)
 fancyRpartPlot(tree)
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;">04. &#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;</h2>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x4F3C;&#x3066;&#x3044;&#x308B;&#x9806;&#x306B;&#x968E;&#x5C64;&#x7684;&#x306B;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#xFF08;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#xFF09;&#x3057;&#x3066;&#x3044;&#x304F;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x9593;&#x306E;&#x540C;&#x4E00;&#x6027;&#x3092;&#x660E;&#x3089;&#x304B;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x89E3;&#x6790;.png" alt="&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x89E3;&#x6790;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-R"><span class="hljs-comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-sample1 &lt;- read.csv(<span class="hljs-string">&quot;CV_data.csv&quot;</span>)
+<pre><code class="lang-R"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-R sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+sample1&#xA0;&lt;-&#xA0;read.csv(&quot;CV_data.csv&quot;)
 
 
-<span class="hljs-comment"># &#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x60C5;&#x5831;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-<span class="hljs-keyword">library</span>(caret)
-tmp  &lt;-  dummyVars(~.,  data = sample1)
+#&#xA0;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x60C5;&#x5831;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
+library(caret)
+tmp&#xA0;&#xA0;&lt;-&#xA0;&#xA0;dummyVars(~.,&#xA0;&#xA0;data&#xA0;=&#xA0;sample1)
 
 
-<span class="hljs-comment"># &#x30EA;&#x30B9;&#x30C8;&#x3092;&#x57FA;&#x306B;&#xFF0C;sample1&#x306E;&#x8CEA;&#x7684;&#x5909;&#x6570;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#xFF0E;</span>
-sample1.dummy  &lt;-  as.data.frame(predict(tmp,  sample1))
+#&#xA0;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x57FA;&#x306B;&#xFF0C;sample1&#x306E;&#x8CEA;&#x7684;&#x5909;&#x6570;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#xFF0E;
+sample1.dummy&#xA0;&#xA0;&lt;-&#xA0;&#xA0;as.data.frame(predict(tmp,&#xA0;&#xA0;sample1))
 
 
-<span class="hljs-comment"># id&#x4EE5;&#x5916;&#x306E;&#x5217;&#x3092;&#x6A19;&#x6E96;&#x5316;&#xFF0E;</span>
-scale.dummy &lt;- scale(sample1.dummy[, <span class="hljs-number">2</span>:<span class="hljs-number">9</span>])
+#&#xA0;id&#x4EE5;&#x5916;&#x306E;&#x5217;&#x3092;&#x6A19;&#x6E96;&#x5316;&#xFF0E;
+scale.dummy&#xA0;&lt;-&#xA0;scale(sample1.dummy[,&#xA0;2:9])
 
 
-<span class="hljs-comment"># &#x8DDD;&#x96E2;&#x884C;&#x5217;&#x3092;&#x8A08;&#x7B97;&#xFF0E;</span>
-d1 &lt;- dist(scale.dummy)
+#&#xA0;&#x8DDD;&#x96E2;&#x884C;&#x5217;&#x3092;&#x8A08;&#x7B97;&#xFF0E;
+d1&#xA0;&lt;-&#xA0;dist(scale.dummy)
 
 
-<span class="hljs-comment"># &#x30A6;&#x30A9;&#x30FC;&#x30C9;&#x6CD5;&#x306B;&#x3088;&#x308B;&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
-cluster1 &lt;- hclust(d1, method = <span class="hljs-string">&quot;ward.D2&quot;</span>)
+#&#xA0;&#x30A6;&#x30A9;&#x30FC;&#x30C9;&#x6CD5;&#x306B;&#x3088;&#x308B;&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
+cluster1&#xA0;&lt;-&#xA0;hclust(d1,&#xA0;method&#xA0;=&#xA0;&quot;ward.D2&quot;)
 plot(cluster1)
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="05-&#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;">05. &#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;</h2>
 <h3 id="ggplot"><code>ggplot()</code></h3>
@@ -1615,7 +1615,7 @@ plot(cluster1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"統計解析","level":"1.30.1","depth":2,"previous":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/statistic_analysis.md","mtime":"2020-12-20T17:43:34.921Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"統計解析","level":"1.30.1","depth":2,"previous":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/statistic_analysis.md","mtime":"2020-12-20T17:43:34.921Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1634,10 +1634,6 @@ plot(cluster1)
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

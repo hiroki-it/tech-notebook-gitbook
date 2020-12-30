@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1423,122 +1423,122 @@
 </code></pre><p><br></p>
 <h2 id="02-&#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">02. &#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;Symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Application</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">LockableTrait</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Input</span>\<span class="hljs-title">InputArgument</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Input</span>\<span class="hljs-title">InputInterface</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Output</span>\<span class="hljs-title">OutputInterface</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Console\Application;
+use&#xA0;Symfony\Component\Console\Command\LockableTrait;
+use&#xA0;Symfony\Component\Console\Input\InputArgument;
+use&#xA0;Symfony\Component\Console\Input\InputInterface;
+use&#xA0;Symfony\Component\Console\Output\OutputInterface;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="httpfoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">HttpFoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">Request</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">Response</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">ResponseHeaderBag</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">BinaryFileResponse</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">JsonResponse</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">RedirectResponse</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\HttpFoundation\Request;
+use&#xA0;Symfony\Component\HttpFoundation\Response;
+use&#xA0;Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use&#xA0;Symfony\Component\HttpFoundation\BinaryFileResponse;
+use&#xA0;Symfony\Component\HttpFoundation\JsonResponse;
+use&#xA0;Symfony\Component\HttpFoundation\RedirectResponse;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="httpkernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">HttpKernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpKernel</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">FilterResponseEvent</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpKernel</span>\<span class="hljs-title">Event</span>\<span class="hljs-title">GetResponseEvent</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpKernel</span>\<span class="hljs-title">Exception</span>\<span class="hljs-title">BadRequestHttpException</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpKernel</span>\<span class="hljs-title">Exception</span>\<span class="hljs-title">NotFoundHttpException</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use&#xA0;Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use&#xA0;Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use&#xA0;Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Pimple</span>\<span class="hljs-title">ConfigSupport</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Pimple</span>\<span class="hljs-title">Container</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Pimple</span>\<span class="hljs-title">DiSupport</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Pimple</span>\<span class="hljs-title">ServiceProviderInterface</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Pimple\ConfigSupport;
+use&#xA0;Pimple\Container;
+use&#xA0;Pimple\DiSupport;
+use&#xA0;Pimple\ServiceProviderInterface;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="security&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Security&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Security</span>\<span class="hljs-title">Core</span>\<span class="hljs-title">AuthenticationEvents</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Security</span>\<span class="hljs-title">Csrf</span>\<span class="hljs-title">CsrfToken</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Security</span>\<span class="hljs-title">Csrf</span>\<span class="hljs-title">CsrfTokenManager</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Security\Core\AuthenticationEvents;
+use&#xA0;Symfony\Component\Security\Csrf\CsrfToken;
+use&#xA0;Symfony\Component\Security\Csrf\CsrfTokenManager;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="eventdispatcher&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">EventDispatcher&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">Event</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventDispatcherInterface</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">EventDispatcher</span>\<span class="hljs-title">EventSubscriberInterface</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\EventDispatcher\Event;
+use&#xA0;Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use&#xA0;Symfony\Component\EventDispatcher\EventSubscriberInterface;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Loader</span>\<span class="hljs-title">Configurator</span>\<span class="hljs-title">RoutingConfigurator</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Cache</span>\<span class="hljs-title">Adapter</span>\<span class="hljs-title">FilesystemAdapter</span>;
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Cache\Adapter\FilesystemAdapter;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03. Console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="cli&#xFF1A;command-line-interface">CLI&#xFF1A;Command Line Interface</h3>
 <h4 id="&#x30FB;cli&#x3068;&#x306F;">&#x30FB;CLI&#x3068;&#x306F;</h4>
 <p>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#xFF08;<code>.sh</code>&#xFF09;&#xFF0C;&#x307E;&#x305F;&#x306F;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>.bat</code>&#xFF09;&#x306B;&#x304A;&#x3051;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">LockableTrait</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Input</span>\<span class="hljs-title">InputArgument</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Input</span>\<span class="hljs-title">InputInterface</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Output</span>\<span class="hljs-title">OutputInterface</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Console\Command\LockableTrait;
+use&#xA0;Symfony\Component\Console\Input\InputArgument;
+use&#xA0;Symfony\Component\Console\Input\InputInterface;
+use&#xA0;Symfony\Component\Console\Output\OutputInterface;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">createExampleCommand</span> <span class="hljs-keyword">extends</span> \<span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">Command</span>
-</span>{
-    <span class="hljs-comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;</span>
-    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configure</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;</span>
-        $this-&gt;setName(<span class="hljs-string">&apos;create:example&apos;</span>);
+class&#xA0;createExampleCommand&#xA0;extends&#xA0;\Symfony\Component\Console\Command\Command
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;function&#xA0;configure()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;setName(&apos;create:example&apos;);
 
-        <span class="hljs-comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&#x306E;&#x5F8C;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x5F15;&#x6570;&#x540D;</span>
-        $this-&gt;addArgument(
-          <span class="hljs-string">&apos;year-month&apos;</span>,
-          InputArgument::REQUIRED,
-          <span class="hljs-string">&apos;&#x51E6;&#x7406;&#x5E74;&#x6708;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;</span>
-        );
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&#x306E;&#x5F8C;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x5F15;&#x6570;&#x540D;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;addArgument(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;year-month&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;InputArgument::REQUIRED,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;&#x51E6;&#x7406;&#x5E74;&#x6708;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;</span>
-    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">execute</span><span class="hljs-params">(InputeInterface $input, OutputInterface $output)</span>
-    </span>{
-        <span class="hljs-keyword">try</span> {
-                <span class="hljs-comment">// &#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
-                $year_month = Carbon::createFromFormat(
-                  <span class="hljs-string">&apos;Y-m&apos;</span>,
-                  $input-&gt;getArgument(<span class="hljs-string">&apos;year-month&apos;</span>)
-                );
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;
+&#xA0;&#xA0;&#xA0;&#xA0;protected&#xA0;function&#xA0;execute(InputeInterface&#xA0;$input,&#xA0;OutputInterface&#xA0;$output)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$year_month&#xA0;=&#xA0;Carbon::createFromFormat(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;Y-m&apos;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$input-&gt;getArgument(&apos;year-month&apos;)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
 
-        } <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $e) {
-            <span class="hljs-comment">// &#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x4F5C;&#x6210;</span>
-        }
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\Exception&#xA0;$e)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x4F5C;&#x6210;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="cli&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">CLI&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
 <h4 id="&#x30FB;for">&#x30FB;<code>for</code></h4>
-<pre><code class="lang-bash"><span class="hljs-comment"># txt&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5909;&#x6570;f&#x306B;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x683C;&#x7D0D;&#x3057;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-<span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *txt <span class="hljs-keyword">do</span> <span class="hljs-built_in">echo</span> <span class="hljs-variable">$f</span>; <span class="hljs-keyword">done</span>;
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;txt&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5909;&#x6570;f&#x306B;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x683C;&#x7D0D;&#x3057;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+<span class="sunlight-keyword">for</span>&#xA0;<span class="sunlight-ident">f</span>&#xA0;<span class="sunlight-keyword">in</span>&#xA0;<span class="sunlight-operator">*</span><span class="sunlight-ident">txt</span>&#xA0;<span class="sunlight-keyword">do</span>&#xA0;<span class="sunlight-command">echo</span>&#xA0;<span class="sunlight-variable">$f</span><span class="sunlight-operator">;</span>&#xA0;<span class="sunlight-keyword">done</span><span class="sunlight-operator">;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;cron&#x306B;&#x3088;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x81EA;&#x52D5;&#x5B9F;&#x884C;">&#x30FB;Cron&#x306B;&#x3088;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x81EA;&#x52D5;&#x5B9F;&#x884C;</h4>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>10&#x79D2;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># 10&#x79D2;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> `seq 0 10 59`; <span class="hljs-keyword">do</span> (sleep {<span class="hljs-variable">$f</span>}; create:example) &amp; <span class="hljs-keyword">done</span>;
-</code></pre>
-<pre><code class="lang-bash"><span class="hljs-comment"># 15&#x6642;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
-0 15 * * * * create:example;
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;10&#x79D2;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
+<span class="sunlight-keyword">for</span>&#xA0;<span class="sunlight-ident">f</span>&#xA0;<span class="sunlight-keyword">in</span>&#xA0;<span class="sunlight-verbatimCommand">`seq&#xA0;0&#xA0;10&#xA0;59`</span><span class="sunlight-operator">;</span>&#xA0;<span class="sunlight-keyword">do</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-command">sleep</span>&#xA0;<span class="sunlight-punctuation">{</span><span class="sunlight-variable">$f</span><span class="sunlight-punctuation">}</span><span class="sunlight-operator">;</span>&#xA0;<span class="sunlight-ident">create</span><span class="sunlight-operator">:</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">&amp;</span>&#xA0;<span class="sunlight-keyword">done</span><span class="sunlight-operator">;</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;15&#x6642;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
+<span class="sunlight-number">0</span>&#xA0;<span class="sunlight-number">15</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-ident">create</span><span class="sunlight-operator">:</span><span class="sunlight-ident">example</span><span class="sunlight-operator">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-02-httpfoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-02. HttpFoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="appkernel">AppKernel</h3>
@@ -1563,48 +1563,48 @@
 &#x3053;&#x306E;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x3092;&#xFF0C;&#x7279;&#x5225;&#x306B;&#x300E;HTTP&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</li>
 </ol>
 <p><strong>&#x3010;app.php&#x306E;&#x5B9F;&#x88C5;&#x4F8B;&#x3011;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">Request</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\HttpFoundation\Request;
 
 
-$kernel = <span class="hljs-keyword">new</span> AppKernel(<span class="hljs-string">&apos;dev&apos;</span>, <span class="hljs-keyword">true</span>);
+$kernel&#xA0;=&#xA0;new&#xA0;AppKernel(&apos;dev&apos;,&#xA0;true);
 
-<span class="hljs-keyword">if</span> (PHP_VERSION_ID &lt; <span class="hljs-number">70000</span>) {
-    $kernel-&gt;loadClassCache();
+if&#xA0;(PHP_VERSION_ID&#xA0;&lt;&#xA0;70000)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;$kernel-&gt;loadClassCache();
 }
 
-$request = Request::createFromGlobals();  <span class="hljs-comment">//&#xFF08;&#xFF11;&#xFF09;</span>
+$request&#xA0;=&#xA0;Request::createFromGlobals();&#xA0;&#xA0;//&#xFF08;&#xFF11;&#xFF09;
 
-<span class="hljs-comment">// &#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</span>
-$response = $kernel-&gt;handle($request); <span class="hljs-comment">//&#xFF08;&#xFF12;&#xFF09;</span>
+//&#xA0;&#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;
+$response&#xA0;=&#xA0;$kernel-&gt;handle($request);&#xA0;//&#xFF08;&#xFF12;&#xFF09;
 
-$response-&gt;send(); <span class="hljs-comment">//&#xFF08;&#xFF13;&#xFF09;</span>
+$response-&gt;send();&#xA0;//&#xFF08;&#xFF13;&#xFF09;
 
-$kernel-&gt;terminate($request, $response);
-</code></pre>
+$kernel-&gt;terminate($request,&#xA0;$response);
+</span></pre></div></div></code></pre>
 <p>&#x4E0A;&#x8A18;&#x306E;<code>handle()</code>&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;<code>handle()</code>&#x304C;&#xFF0C;C/A&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x306E;&#x7279;&#x5B9A;&#xFF0C;&#x7279;&#x5B9A;&#x3055;&#x308C;&#x305F;C/A&#x306E;&#x5B9F;&#x884C;&#xFF0C;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handle</span>
-<span class="hljs-params">(
-    Request $request,
-    $type = HttpKernelInterface::MASTER_REQUEST,
-    $catch = true
-)</span>
-</span>{
-    $this-&gt;boot();
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+public&#xA0;function&#xA0;handle
+(
+&#xA0;&#xA0;&#xA0;&#xA0;Request&#xA0;$request,
+&#xA0;&#xA0;&#xA0;&#xA0;$type&#xA0;=&#xA0;HttpKernelInterface::MASTER_REQUEST,
+&#xA0;&#xA0;&#xA0;&#xA0;$catch&#xA0;=&#xA0;true
+)
+{
+&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;boot();
 
-    ++$this-&gt;requestStackSize;
+&#xA0;&#xA0;&#xA0;&#xA0;++$this-&gt;requestStackSize;
 
-    $this-&gt;resetServices = <span class="hljs-keyword">true</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;resetServices&#xA0;=&#xA0;true;
 
-    <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">return</span> $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
+&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;getHttpKernel()-&gt;handle($request,&#xA0;$type,&#xA0;$catch);
 
-    } <span class="hljs-keyword">finally</span> {
-        --$this-&gt;requestStackSize;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;finally&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;--$this-&gt;requestStackSize;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="request&#xFF0C;response">Request&#xFF0C;Response</h3>
 <h4 id="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;&#xFF0C;json&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;">&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;&#xFF0C;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h4>
@@ -1612,34 +1612,34 @@ $kernel-&gt;terminate($request, $response);
 <li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0C;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3057;&#xFF0C;&#x304B;&#x3064;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#xFF0E;</li>
 <li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x307F;</li>
 </ol>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FrameworkBundle</span>\<span class="hljs-title">Controller</span>\<span class="hljs-title">AbstractController</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">JsonResponse</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">Request</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Repository</span>\<span class="hljs-title">XxxReposiroy</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use&#xA0;Symfony\Component\HttpFoundation\JsonResponse;
+use&#xA0;Symfony\Component\HttpFoundation\Request;
+use&#xA0;App\Repository\XxxReposiroy;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractController</span> 
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span class="hljs-params">(Request $req)</span>
-    </span>{
-        <span class="hljs-comment">// Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span> ($req-&gt;headers-&gt;get(<span class="hljs-string">&apos;content-type&apos;</span>) === <span class="hljs-string">&apos;application/json&apos;</span>) {
+class&#xA0;ExampleController&#xA0;extends&#xA0;AbstractController&#xA0;
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;get(Request&#xA0;$req)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($req-&gt;headers-&gt;get(&apos;content-type&apos;)&#xA0;===&#xA0;&apos;application/json&apos;)&#xA0;{
 
-            $xxxRepository = <span class="hljs-keyword">new</span> XxxRepository;
-            $entityObject = $xxxRepository-&gt;getEntity();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$xxxRepository&#xA0;=&#xA0;new&#xA0;XxxRepository;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$entityObject&#xA0;=&#xA0;$xxxRepository-&gt;getEntity();
 
-            <span class="hljs-comment">//-- entity&#x3092;Object&#x578B;&#x304B;&#x3089;Array&#x578B;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xFF0E;--//</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//--&#xA0;entity&#x3092;Object&#x578B;&#x304B;&#x3089;Array&#x578B;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xFF0E;--//
 
-            <span class="hljs-comment">// Ajax&#x306B;&#x30EC;&#x30F3;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JsonResponse([ 
-                <span class="hljs-string">&apos;value&apos;</span> =&gt; $entityArray
-              ]);
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Ajax&#x306B;&#x30EC;&#x30F3;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;new&#xA0;JsonResponse([&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&apos;value&apos;&#xA0;=&gt;&#xA0;$entityArray
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;]);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> $this-&gt;render(<span class="hljs-string">&apos;.../xxx.twig&apos;</span>)-&gt;setStatusCode(<span class="hljs-number">200</span>);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;render(&apos;.../xxx.twig&apos;)-&gt;setStatusCode(200);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-03-httpkernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-03. HttpKernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="httpkernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;">HttpKernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h3>
@@ -1653,45 +1653,45 @@ $kernel-&gt;terminate($request, $response);
 <h3 id="routingconfigurator">RoutingConfigurator</h3>
 <h4 id="&#x30FB;routingconfigurator&#x3068;&#x306F;">&#x30FB;RoutingConfigurator&#x3068;&#x306F;</h4>
 <p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Controller</span>\<span class="hljs-title">BlogApiController</span>; <span class="hljs-comment">// &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Loader</span>\<span class="hljs-title">Configurator</span>\<span class="hljs-title">RoutingConfigurator</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;App\Controller\BlogApiController;&#xA0;//&#xA0;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;
+use&#xA0;Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-<span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(RoutingConfigurator $routes)</span> </span>{
-    $routes-&gt;add(<span class="hljs-string">&apos;api_post_show&apos;</span>, <span class="hljs-string">&apos;/api/posts/{id}&apos;</span>)
-        -&gt;controller([BlogApiController::class, <span class="hljs-string">&apos;show&apos;</span>])
-        -&gt;methods([<span class="hljs-string">&apos;GET&apos;</span>, <span class="hljs-string">&apos;HEAD&apos;</span>])
-    ;
-    $routes-&gt;add(<span class="hljs-string">&apos;api_post_edit&apos;</span>, <span class="hljs-string">&apos;/api/posts/{id}&apos;</span>)
-        -&gt;controller([BlogApiController::class, <span class="hljs-string">&apos;edit&apos;</span>])
-        -&gt;methods([<span class="hljs-string">&apos;PUT&apos;</span>])
-    ;
+return&#xA0;function&#xA0;(RoutingConfigurator&#xA0;$routes)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;$routes-&gt;add(&apos;api_post_show&apos;,&#xA0;&apos;/api/posts/{id}&apos;)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;controller([BlogApiController::class,&#xA0;&apos;show&apos;])
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;methods([&apos;GET&apos;,&#xA0;&apos;HEAD&apos;])
+&#xA0;&#xA0;&#xA0;&#xA0;;
+&#xA0;&#xA0;&#xA0;&#xA0;$routes-&gt;add(&apos;api_post_edit&apos;,&#xA0;&apos;/api/posts/{id}&apos;)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;controller([BlogApiController::class,&#xA0;&apos;edit&apos;])
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;-&gt;methods([&apos;PUT&apos;])
+&#xA0;&#xA0;&#xA0;&#xA0;;
 };
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-06-cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-06. Cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="filesystemadapter">FilesystemAdapter</h3>
 <h4 id="&#x30FB;filesystemadapter&#x3068;&#x306F;">&#x30FB;FilesystemAdapter&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5B58;&#x7D9A;&#x6642;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30EB;&#x30FC;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Cache</span>\<span class="hljs-title">Adapter</span>\<span class="hljs-title">FilesystemAdapter</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-$cache = <span class="hljs-keyword">new</span> FilesystemAdapter(<span class="hljs-string">&apos;&apos;</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&apos;example/cache/&apos;</span>);
+$cache&#xA0;=&#xA0;new&#xA0;FilesystemAdapter(&apos;&apos;,&#xA0;0,&#xA0;&apos;example/cache/&apos;);
 
-<span class="hljs-comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;</span>
-$cacheItemObj = $cache-&gt;getItem(<span class="hljs-string">&apos;stats.products_count&apos;</span>);
+//&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;
+$cacheItemObj&#xA0;=&#xA0;$cache-&gt;getItem(&apos;stats.products_count&apos;);
 
-<span class="hljs-comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;</span>
-<span class="hljs-keyword">if</span> (!$cacheItemObj-&gt;isHit()) {
-  <span class="hljs-comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;</span>
-  $cacheItemObj-&gt;set(<span class="hljs-number">777</span>);
-  <span class="hljs-comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;</span>
-  $cache-&gt;save($cacheItemObj);
+//&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;
+if&#xA0;(!$cacheItemObj-&gt;isHit())&#xA0;{
+&#xA0;&#xA0;//&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;
+&#xA0;&#xA0;$cacheItemObj-&gt;set(777);
+&#xA0;&#xA0;//&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;
+&#xA0;&#xA0;$cache-&gt;save($cacheItemObj);
 }
 
-<span class="hljs-comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
-$cacheItemObj = $cache-&gt;get();
-</code></pre>
+//&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#xFF0E;
+$cacheItemObj&#xA0;=&#xA0;$cache-&gt;get();
+</span></pre></div></div></code></pre>
 
                                 
                                 </section>
@@ -1735,7 +1735,7 @@ $cacheItemObj = $cache-&gt;get();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Symfony","level":"1.6.2","depth":2,"next":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2020-12-20T17:43:34.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Symfony","level":"1.6.2","depth":2,"next":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2020-12-20T17:43:34.844Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1754,10 +1754,6 @@ $cacheItemObj = $cache-&gt;get();
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

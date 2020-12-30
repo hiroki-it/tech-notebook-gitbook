@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1434,210 +1434,210 @@
 <p>&#x66DC;&#x65E5;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;if-elseif-else">&#x30FB;if-elseif-else</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;</span>
-$weeks = <span class="hljs-string">&apos;Tue&apos;</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5909;&#x6570;&#x306B;&#xA0;Tue&#xA0;&#x3092;&#x683C;&#x7D0D;
+$weeks&#xA0;=&#xA0;&apos;Tue&apos;;
 
-<span class="hljs-comment">// if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
-<span class="hljs-keyword">if</span> ($weeks == <span class="hljs-string">&apos;Mon&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">elseif</span> ($weeks == <span class="hljs-string">&apos;Tue&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">elseif</span> ($weeks == <span class="hljs-string">&apos;Wed&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">elseif</span> ($weeks == <span class="hljs-string">&apos;Thu&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">elseif</span> ($weeks == <span class="hljs-string">&apos;Fri&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">elseif</span> ($weeks == <span class="hljs-string">&apos;Sat&apos;</span>) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span>;
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span>;
+//&#xA0;if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;
+if&#xA0;($weeks&#xA0;==&#xA0;&apos;Mon&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6708;&#x66DC;&#x65E5;&apos;;
+}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Tue&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x706B;&#x66DC;&#x65E5;&apos;;
+}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Wed&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
+}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Thu&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6728;&#x66DC;&#x65E5;&apos;;
+}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Fri&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
+}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Sat&apos;)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x571F;&#x66DC;&#x65E5;&apos;;
+}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
 }
 
-<span class="hljs-comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">// &#x706B;&#x66DC;&#x65E5;</span>
-</code></pre>
+//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
+//&#xA0;&#x706B;&#x66DC;&#x65E5;
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;switch-case-break">&#x30FB;switch-case-break</h4>
 <p>&#x5B9A;&#x6570;&#x3054;&#x3068;&#x306B;&#x51E6;&#x7406;&#x304C;&#x5909;&#x308F;&#x308B;&#x6642;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x306E;&#x65B9;&#x304C;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;</span>
-$weeks = <span class="hljs-string">&apos;Tue&apos;</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5909;&#x6570;&#x306B;&#xA0;Tue&#xA0;&#x3092;&#x683C;&#x7D0D;
+$weeks&#xA0;=&#xA0;&apos;Tue&apos;;
 
-<span class="hljs-comment">// &#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
-<span class="hljs-keyword">switch</span> ($weeks) {
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Mon&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Tue&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Wed&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Thu&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Fri&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Sat&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;Sun&apos;</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span>;
-    <span class="hljs-keyword">break</span>;
-  <span class="hljs-keyword">default</span>:
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;</span>;  
+//&#xA0;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;
+switch&#xA0;($weeks)&#xA0;{
+&#xA0;&#xA0;case&#xA0;&apos;Mon&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6708;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Tue&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x706B;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Wed&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Thu&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6728;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Fri&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Sat&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x571F;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;case&#xA0;&apos;Sun&apos;:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
+&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;default:
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;;&#xA0;&#xA0;
 }
 
-<span class="hljs-comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">// &#x706B;&#x66DC;&#x65E5;</span>
-</code></pre>
+//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
+//&#xA0;&#x706B;&#x66DC;&#x65E5;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
 <h4 id="&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */</span>
-    <span class="hljs-keyword">const</span> noOptionItem = <span class="hljs-number">0</span>;
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
 
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@var</span> Entity
-     */</span>
-    <span class="hljs-keyword">private</span> $routeEntity;
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($result)</span>
-    </span>{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
+&#xA0;&#xA0;&#xA0;&#xA0;{
 
-        <span class="hljs-comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($this-&gt;routeEntity-&gt;options)) {
-            <span class="hljs-keyword">foreach</span> ($this-&gt;routeEntity-&gt;options <span class="hljs-keyword">as</span> $option) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
 
-                <span class="hljs-comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-                <span class="hljs-comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemA()) {
-                    $result[<span class="hljs-string">&apos;optionItemA&apos;</span>] = $option-&gt;optionItemA();
-                } <span class="hljs-keyword">else</span> {
-                    $result[<span class="hljs-string">&apos;optionItemA&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
-                }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemA())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;$option-&gt;optionItemA();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemB()) {
-                    $result[<span class="hljs-string">&apos;optionItemB&apos;</span>] = $option-&gt;optionItemB();
-                } <span class="hljs-keyword">else</span> {
-                    $result[<span class="hljs-string">&apos;optionItemB&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
-                }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemB())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;$option-&gt;optionItemB();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemC()) {
-                    $result[<span class="hljs-string">&apos;optionItemC&apos;</span>] = $option-&gt;optionItemC();
-                } <span class="hljs-keyword">else</span> {
-                    $result[<span class="hljs-string">&apos;optionItemC&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
-                }
-            }
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemC())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;$option-&gt;optionItemC();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> $result;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */</span>
-    <span class="hljs-keyword">const</span> noOptionItem = <span class="hljs-number">0</span>;
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
 
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@var</span> Entity
-     */</span>
-    <span class="hljs-keyword">private</span> $routeEntity;
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($result)</span>
-    </span>{
-        <span class="hljs-comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>($this-&gt;routeEntity-&gt;options)) {
-            <span class="hljs-keyword">foreach</span> ($this-&gt;routeEntity-&gt;options <span class="hljs-keyword">as</span> $option) {
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
 
-                <span class="hljs-comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-                <span class="hljs-comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-                $result[<span class="hljs-string">&apos;optionItemA&apos;</span>] = ($option-&gt;isOptionItemA())
-                    ? $option-&gt;optionItemA()
-                    : <span class="hljs-keyword">self</span>::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemA())
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemA()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
 
-                $result[<span class="hljs-string">&apos;optionItemB&apos;</span>] = ($option-&gt;isOptionItemB())
-                    ? $option-&gt;optionItemB()
-                    : <span class="hljs-keyword">self</span>::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemB())
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemB()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
 
-                $result[<span class="hljs-string">&apos;optionItemC&apos;</span>] = ($option-&gt;isOptionItemC())
-                    ? $option-&gt;optionItemC()
-                    : <span class="hljs-keyword">self</span>::noOptionItem;
-            };
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemC())
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemC()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> $result;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */</span>
-    <span class="hljs-keyword">const</span> noOptionItem = <span class="hljs-number">0</span>;
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
 
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@var</span> Entity
-     */</span>
-    <span class="hljs-keyword">private</span> $routeEntity;
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">($result)</span>
-    </span>{
-        <span class="hljs-comment">// &#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;</span>
-        $result[<span class="hljs-string">&apos;optionItemA&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
-        $result[<span class="hljs-string">&apos;optionItemB&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
-        $result[<span class="hljs-string">&apos;optionItemC&apos;</span>] = <span class="hljs-keyword">self</span>::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;self::noOptionItem;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;self::noOptionItem;
 
-        <span class="hljs-comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">empty</span>($this-&gt;routeEntity-&gt;options)) {
-            <span class="hljs-keyword">foreach</span> ($this-&gt;routeEntity-&gt;options <span class="hljs-keyword">as</span> $option) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
 
-                <span class="hljs-comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-                <span class="hljs-comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</span>
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemA()) {
-                    $result[<span class="hljs-string">&apos;optionItemA&apos;</span>] = $option-&gt;optionItemA();
-                }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemA())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;$option-&gt;optionItemA();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemB()) {
-                    $result[<span class="hljs-string">&apos;optionItemB&apos;</span>] = $option-&gt;optionItemB();
-                }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemB())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;$option-&gt;optionItemB();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-                <span class="hljs-keyword">if</span> ($option-&gt;isOptionItemC()) {
-                    $result[<span class="hljs-string">&apos;optionItemC&apos;</span>] = $option-&gt;optionItemC();
-                }
-            };
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemC())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;$option-&gt;optionItemC();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> $result;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
 <h4 id="&#x30FB;&#x6C7A;&#x5B9A;&#x8868;&#x3092;&#x7528;&#x3044;&#x305F;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306E;&#x6574;&#x7406;">&#x30FB;&#x6C7A;&#x5B9A;&#x8868;&#x3092;&#x7528;&#x3044;&#x305F;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306E;&#x6574;&#x7406;</h4>
@@ -1652,404 +1652,404 @@ $weeks = <span class="hljs-string">&apos;Tue&apos;</span>;
 <h4 id="&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;">&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
-$year = N;
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+$year&#xA0;=&#xA0;N;
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">leapYear</span><span class="hljs-params">(int $year)</span>: <span class="hljs-title">string</span>
-</span>{
-    <span class="hljs-comment">// (5)</span>
-    <span class="hljs-keyword">if</span> ($year &lt;= <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span>);
-
-    <span class="hljs-comment">// (4)</span>
-    } <span class="hljs-keyword">elseif</span> ($year % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x5E73;&#x5E74;&quot;</span>;
-
-    <span class="hljs-comment">// (3)</span>
-    } <span class="hljs-keyword">elseif</span> ($year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span>;
-
-    <span class="hljs-comment">// (2)</span>
-    } <span class="hljs-keyword">elseif</span> ($year % <span class="hljs-number">400</span> != <span class="hljs-number">0</span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x5E73;&#x5E74;&quot;</span>;
-
-    <span class="hljs-comment">// (1)</span>
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span>;
-    }
-}
-</code></pre>
-<h4 id="&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
-<pre><code class="lang-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;">
-**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
-
-```PHP
-&lt;?php
-
-// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-$year = N;
-
-function leapYear(int $year): string
+function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
 {
-    // (5)
-    if($year &lt;= 0){
-        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
+&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($year&#xA0;&lt;=&#xA0;0)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
 
-    // (4)
-    if($year % 4 != 0 ){
-        return &quot;&#x5E73;&#x5E74;&quot;;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
 
-    // (3)
-    if($year % 100 != 0){
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
-    // (2)
-    if($year % 400 != 0){
-        return &quot;&#x5E73;&#x5E74;&quot;;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
 
-    // (1)
-    return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<h4 id="&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
-<pre><code class="lang-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;">
+</span></pre></div></div></code></pre>
+<h4 id="&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
+<pre><code class="lang-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```PHP
 &lt;?php
 
-function leapYear(int $year): string
-{   
-    switch(true) {
+//&#xA0;&#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+$year&#xA0;=&#xA0;N;
 
-    // (5)
-    case($year &lt;= 0):
-        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;&lt;=&#xA0;0){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    // (4)
-        case($year % 4 != 0 ):
-        return &quot;&#x5E73;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    // (3)
-    case($year % 100 != 0):
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    // (2)
-    case($year % 400 != 0):
-        return &quot;&#x5E73;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    // (1)
-    dafault:
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
+&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
 }
-</code></pre>
+</span></pre></div></div></code></pre>
+<h4 id="&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
+<pre><code class="lang-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
+**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
+
+```PHP
+&lt;?php
+
+function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+{&#xA0;&#xA0;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;switch(true)&#xA0;{
+
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
+&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;&lt;=&#xA0;0):
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;):
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
+&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0):
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
+&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0):
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
+&#xA0;&#xA0;&#xA0;&#xA0;dafault:
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
+
+}
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x306E;if&#x6587;&#x306E;&#x6CE2;&#x62EC;&#x5F27;&#x3092;&#x7701;&#x7565;&#x3057;&#x305F;&#x8A18;&#x6CD5;&#x3092;&#xFF0C;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">leapYear</span><span class="hljs-params">(int $year)</span>: <span class="hljs-title">string</span>
-</span>{
-    <span class="hljs-comment">// (5)</span>
-    <span class="hljs-keyword">if</span>($year &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span>);
+function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;&lt;=&#xA0;0)&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
 
-    <span class="hljs-comment">// (4)</span>
-    <span class="hljs-keyword">if</span>($year % <span class="hljs-number">4</span> != <span class="hljs-number">0</span> ) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x5E73;&#x5E74;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;)&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
 
-    <span class="hljs-comment">// (3)</span>
-    <span class="hljs-keyword">if</span>($year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0)&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
-    <span class="hljs-comment">// (2)</span>
-    <span class="hljs-keyword">if</span>($year % <span class="hljs-number">400</span> != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x5E73;&#x5E74;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
+&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0)&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
 
-    <span class="hljs-comment">// (1)</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
+&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-02-&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;">02-02. &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;</h2>
 <h3 id="&#x7B49;&#x4FA1;&#x6F14;&#x7B97;&#x5B50;">&#x7B49;&#x4FA1;&#x6F14;&#x7B97;&#x5B50;</h3>
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{};
+class&#xA0;Example&#xA0;{};
 
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">new</span> Example == <span class="hljs-keyword">new</span> Example){
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span>;
-} <span class="hljs-keyword">else</span> { <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span>; }
+if(new&#xA0;Example&#xA0;==&#xA0;new&#xA0;Example){
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+}&#xA0;else&#xA0;{&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;&#xA0;}
 
-<span class="hljs-comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">// &#x540C;&#x3058;&#x3067;&#x3059;</span>
-</code></pre>
+//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
+//&#xA0;&#x540C;&#x3058;&#x3067;&#x3059;
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x7570;&#x306A;&#x308B;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{};
+class&#xA0;Example&#xA0;{};
 
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> Example === <span class="hljs-keyword">new</span> Example) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span>;
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span>;
+if&#xA0;(new&#xA0;Example&#xA0;===&#xA0;new&#xA0;Example)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
 }
 
-<span class="hljs-comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">// &#x7570;&#x306A;&#x308A;&#x307E;&#x3059;</span>
-</code></pre>
+//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
+//&#xA0;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;
+</span></pre></div></div></code></pre>
 <p>&#x540C;&#x4E00;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;&#x306E;&#x307F;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{};
+class&#xA0;Example&#xA0;{};
 
-$a = $b = <span class="hljs-keyword">new</span> Example;
+$a&#xA0;=&#xA0;$b&#xA0;=&#xA0;new&#xA0;Example;
 
-<span class="hljs-keyword">if</span> ($a === $b) {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span>;
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span>;
+if&#xA0;($a&#xA0;===&#xA0;$b)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+}&#xA0;else&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
 }
 
-<span class="hljs-comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
-<span class="hljs-comment">// &#x540C;&#x3058;&#x3067;&#x3059;</span>
-</code></pre>
+//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
+//&#xA0;&#x540C;&#x3058;&#x3067;&#x3059;
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="03-&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3068;&#x30ED;&#x30AE;&#x30F3;&#x30B0;">03. &#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3068;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
 <h3 id="&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;">&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h3>
 <h4 id="&#x30FB;if-throw&#x6587;">&#x30FB;if-throw&#x6587;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x306B;&#xFF0C;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x4F8B;&#x5916;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x305D;&#x308C;&#x3092;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x3057;&#x3066;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3042;&#x308B;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x6295;&#x3052;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">value</span><span class="hljs-params">(int $value)</span> </span>{
+function&#xA0;value(int&#xA0;$value)&#xA0;{
 
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($value)) {
-        <span class="hljs-comment">// &#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;</span>
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;Value is empty&apos;</span>);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(empty($value))&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&apos;Value&#xA0;is&#xA0;empty&apos;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3053;&#x308C;&#x306F; ${value} &#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3053;&#x308C;&#x306F;&#xA0;${value}&#xA0;&#x3067;&#x3059;&#xFF0E;&quot;;
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;exception&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;">&#x30FB;Exception&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-comment">// &#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExampleNotFoundException</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Exception</span>
-</span>{
-    <span class="hljs-comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;</span>
+//&#xA0;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;ExampleNotFoundException&#xA0;extends&#xA0;Exception
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;
 }
-</code></pre>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-keyword">use</span> <span class="hljs-title">Exception</span>\<span class="hljs-title">ExampleNotFound</span>;
+<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">ExampleNotFound</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">(string $example)</span> </span>{
+<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">(</span><span class="sunlight-keyword">string</span>&#xA0;<span class="sunlight-variable">$example</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($exmaple)) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ExampleNotFoundException(<span class="hljs-string">&apos;Example is not found.&apos;</span>);;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-languageConstruct">empty</span><span class="sunlight-punctuation">(</span><span class="sunlight-variable">$exmaple</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExampleNotFoundException</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;Example&#xA0;is&#xA0;not&#xA0;found.&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
 
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x3053;&#x308C;&#x306F; ${example} &#x3067;&#x3059;&#xFF0E;&quot;</span>;
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;&#x3053;&#x308C;&#x306F;&#xA0;${example}&#xA0;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="try-catch-finally&#x6587;">try-catch-finally&#x6587;</h3>
 <h4 id="&#x30FB;&#x5358;&#x306A;&#x308B;if-throw&#x6587;">&#x30FB;&#x5358;&#x306A;&#x308B;if-throw&#x6587;</h4>
 <p>if-throw&#x3067;&#x306F;&#xFF0C;&#x90FD;&#x5EA6;&#x4F8B;&#x5916;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x69D8;&#x3005;&#x306A;&#x53EF;&#x80FD;&#x6027;&#x3092;&#x8003;&#x616E;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">empty</span>($){
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ExternalApiException();
-}
+<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-languageConstruct">empty</span><span class="sunlight-punctuation">(</span><span class="sunlight-variable">$</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExternalApiException</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
 
-<span class="hljs-keyword">if</span> (example){
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ExampleInvalidArgumentException();
-}
-</code></pre>
+<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExampleInvalidArgumentException</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;">&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;</h4>
 <p>try-catch-finally&#x3067;&#x306F;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x8D77;&#x3053;&#x308B;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x4F8B;&#x5916;&#x3092;&#x6349;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x6587;&#x306F;&#xFF0C;&#x30C7;&#x30D0;&#x30C3;&#x30AF;&#x753B;&#x9762;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">ExternalApiErrorException</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">HttpRequestErrorException</span>;
+use&#xA0;\Exception\ExternalApiErrorException;
+use&#xA0;\Exception\HttpRequestErrorException;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@param</span> message $message
-     * <span class="hljs-doctag">@return</span> bool
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message $message)</span>
-    </span>{
-        <span class="hljs-keyword">try</span> {
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;sendMessage(Message&#xA0;$message)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
 
-            <span class="hljs-comment">// ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;
 
-        } <span class="hljs-keyword">catch</span> (ExternalApiErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(ExternalApiErrorException&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-        } <span class="hljs-keyword">catch</span> (HttpRequestErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(HttpRequestErrorException&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-        } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(Exception&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-        } <span class="hljs-keyword">finally</span> {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;finally&#xA0;{
 
-            <span class="hljs-comment">// &#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;</span>
-            <span class="hljs-comment">// try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
 
-        }
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;">&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;</h4>
 <p>finally&#x53E5;&#x306F;&#xFF0C;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;finally&#x53E5;&#x3067;&#x306F;&#xFF0C;<code>return</code>&#x3084;<code>continue</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">ExternalApiErrorException</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">HttpRequestErrorException</span>;
+<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-operator">\</span><span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">ExternalApiErrorException</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-operator">\</span><span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">HttpRequestErrorException</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@param</span> message $message
-     * <span class="hljs-doctag">@return</span> bool
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message $message)</span>
-    </span>{
-        <span class="hljs-keyword">try</span> {
+<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">sendMessage</span><span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">Message</span>&#xA0;<span class="sunlight-variable">$message</span><span class="sunlight-punctuation">)</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-            <span class="hljs-comment">// &#xFF08;&#xFF11;&#xFF09;</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF11;&#xFF09;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-        } <span class="hljs-keyword">catch</span> (ExternalApiErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">ExternalApiErrorException</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-            <span class="hljs-comment">// &#xFF08;&#xFF12;&#xFF09;</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF12;&#xFF09;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-        } <span class="hljs-keyword">catch</span> (HttpRequestErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">HttpRequestErrorException</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-            <span class="hljs-comment">// &#xFF08;&#xFF13;&#xFF09;</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF13;&#xFF09;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-        } <span class="hljs-keyword">catch</span> (<span class="hljs-keyword">Exception</span> $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">Exception</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-            <span class="hljs-comment">// &#xFF08;&#xFF14;&#xFF09;</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF14;&#xFF09;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-        } <span class="hljs-keyword">finally</span> {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-ident">finally</span>&#xA0;<span class="sunlight-punctuation">{</span>
 
-            <span class="hljs-comment">// return&#x3084;continue&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;E&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;return&#x3084;continue&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;E&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-        }
-    }
-}
-</code></pre>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <p>&#xFF08;&#xFF11;&#xFF09;&#xFF5E;&#xFF08;&#xFF14;&#xFF09;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x3067;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x8FD4;&#x5374;&#x306E;&#x76F4;&#x524D;&#x306B;finally&#x53E5;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><span class="hljs-comment">// &#xFF08;&#xFF11;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-comment">// A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// A&#x3067;&#x3059;&#xFF0E;</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF11;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-comment">//&#xA0;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;A&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="hljs-comment">// &#xFF08;&#xFF12;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-comment">// B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// B&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF12;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-comment">//&#xA0;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;B&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="hljs-comment">// &#xFF08;&#xFF13;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-comment">// C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// C&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF13;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-comment">//&#xA0;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;C&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="hljs-comment">// &#xFF08;&#xFF14;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="hljs-comment">// D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="hljs-comment">// D&#x3067;&#x3059;&#xFF0E;</span>
-</code></pre>
+<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF14;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="sunlight-comment">//&#xA0;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="sunlight-comment">//&#xA0;D&#x3067;&#x3059;&#xFF0E;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;">&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h3>
 <h4 id="&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x5206;&#x3051;">&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x5206;&#x3051;</h4>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30A2;&#x30D7;&#x30EA;&#x306E;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x751F;&#x6210;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3068;&#xFF0C;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#x305D;&#x306E;&#x4ED6;&#x539F;&#x56E0;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">ExternalApiErrorException</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Exception</span>\<span class="hljs-title">HttpRequestErrorException</span>;
+use&#xA0;\Exception\ExternalApiErrorException;
+use&#xA0;\Exception\HttpRequestErrorException;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-comment">/**
-     * <span class="hljs-doctag">@param</span> message $message
-     * <span class="hljs-doctag">@return</span> bool
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message $message)</span>
-    </span>{
-        <span class="hljs-keyword">try</span> {
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;/**
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;sendMessage(Message&#xA0;$message)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
 
-            <span class="hljs-comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
-            <span class="hljs-comment">// &#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-            <span class="hljs-comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
 
-        } <span class="hljs-keyword">catch</span> (\HttpRequestErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\HttpRequestErrorException&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            error_log(
-                $exception-&gt;getMessage(),
-                <span class="hljs-number">3</span>,
-                <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/http_request_error.log&apos;</span>
-            );
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/http_request_error.log&apos;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
 
-        } <span class="hljs-keyword">catch</span> (\ExternalApiErrorException $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\ExternalApiErrorException&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            error_log(
-                $exception-&gt;getMessage(),
-                <span class="hljs-number">3</span>,
-                <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/external_api_error.log&apos;</span>
-            );
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/external_api_error.log&apos;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
 
-        } <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $exception) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\Exception&#xA0;$exception)&#xA0;{
 
-            <span class="hljs-comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            error_log(
-                $exception-&gt;getMessage(),
-                <span class="hljs-number">3</span>,
-                <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/app_error.log&apos;</span>
-            );
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/app_error.log&apos;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-comment">// &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;true;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 
                                 
                                 </section>
@@ -2089,7 +2089,7 @@ $a = $b = <span class="hljs-keyword">new</span> Example;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"next":{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"PHP｜ロジック","level":"1.4","depth":1,"ref":"","articles":[{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2020-12-20T17:43:34.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"next":{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"PHP｜ロジック","level":"1.4","depth":1,"ref":"","articles":[{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2020-12-20T17:43:34.852Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2108,10 +2108,6 @@ $a = $b = <span class="hljs-keyword">new</span> Example;
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

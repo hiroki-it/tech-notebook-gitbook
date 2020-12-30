@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1477,160 +1477,160 @@
 <h4 id="&#x30FB;aggregation&#x3068;&#x306F;">&#x30FB;Aggregation&#x3068;&#x306F;</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4ED6;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>__construct()</code>&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#x3059;&#x308B;&#x95A2;&#x4FC2;&#x6027;&#x306F;&#xFF0C;&#x300E;&#x96C6;&#x7D04;&#x300F;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#xFF0A;Tire&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tire</span> </span>{}
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;Tire&#xA0;{}
+</span></pre></div></div></code></pre>
 <p>&#xFF0A;CarX&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">//CarX&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CarX</span>
-</span>{
-    <span class="hljs-keyword">private</span> $tire1;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//CarX&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;
+class&#xA0;CarX
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire1;
 
-    <span class="hljs-keyword">private</span> $tire2;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire2;
 
-    <span class="hljs-keyword">private</span> $tire3;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire3;
 
-    <span class="hljs-keyword">private</span> $tire4;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire4;
 
-    <span class="hljs-comment">//CarX&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30BF;&#x30A4;&#x30E4;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Tire $t1, Tire $t2, Tire $t3, Tire $t4)</span>
-    </span>{
-        <span class="hljs-comment">// Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;</span>
-        $this-&gt;tire1 = $t1;
-        $this-&gt;tire2 = $t2;
-        $this-&gt;tire3 = $t3;
-        $this-&gt;tire4 = $t4;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//CarX&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30BF;&#x30A4;&#x30E4;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct(Tire&#xA0;$t1,&#xA0;Tire&#xA0;$t2,&#xA0;Tire&#xA0;$t3,&#xA0;Tire&#xA0;$t4)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire1&#xA0;=&#xA0;$t1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire2&#xA0;=&#xA0;$t2;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire3&#xA0;=&#xA0;$t3;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire4&#xA0;=&#xA0;$t4;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p>&#xFF0A;CarY&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">//CarY&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CarY</span>
-</span>{
-    <span class="hljs-keyword">private</span> $tire1;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//CarY&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;
+class&#xA0;CarY
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire1;
 
-    <span class="hljs-keyword">private</span> $tire2;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire2;
 
-    <span class="hljs-keyword">private</span> $tire3;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire3;
 
-    <span class="hljs-keyword">private</span> $tire4;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$tire4;
 
-    <span class="hljs-comment">//CarY&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30BF;&#x30A4;&#x30E4;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(Tire $t1, Tire $t2, Tire $t3, Tire $t4)</span>
-    </span>{
-        <span class="hljs-comment">// Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#xFF0E;</span>
-        $this-&gt;tire1 = $t1;
-        $this-&gt;tire2 = $t2;
-        $this-&gt;tire3 = $t3;
-        $this-&gt;tire4 = $t4;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//CarY&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30BF;&#x30A4;&#x30E4;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct(Tire&#xA0;$t1,&#xA0;Tire&#xA0;$t2,&#xA0;Tire&#xA0;$t3,&#xA0;Tire&#xA0;$t4)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire1&#xA0;=&#xA0;$t1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire2&#xA0;=&#xA0;$t2;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire3&#xA0;=&#xA0;$t3;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;tire4&#xA0;=&#xA0;$t4;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#xFF0C;CarX&#x30AF;&#x30E9;&#x30B9;&#x3068;CarY&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">//Tire&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;</span>
-$tire1 = <span class="hljs-keyword">new</span> Tire();
-$tire2 = <span class="hljs-keyword">new</span> Tire();
-$tire3 = <span class="hljs-keyword">new</span> Tire();
-$tire4 = <span class="hljs-keyword">new</span> Tire();
-$tire5 = <span class="hljs-keyword">new</span> Tire();
-$tire6 = <span class="hljs-keyword">new</span> Tire();
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//Tire&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;
+$tire1&#xA0;=&#xA0;new&#xA0;Tire();
+$tire2&#xA0;=&#xA0;new&#xA0;Tire();
+$tire3&#xA0;=&#xA0;new&#xA0;Tire();
+$tire4&#xA0;=&#xA0;new&#xA0;Tire();
+$tire5&#xA0;=&#xA0;new&#xA0;Tire();
+$tire6&#xA0;=&#xA0;new&#xA0;Tire();
 
-<span class="hljs-comment">//Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;</span>
-$suv = <span class="hljs-keyword">new</span> CarX($tire1, $tire2, $tire3, $tire4);
+//Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;
+$suv&#xA0;=&#xA0;new&#xA0;CarX($tire1,&#xA0;$tire2,&#xA0;$tire3,&#xA0;$tire4);
 
-<span class="hljs-comment">//Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;</span>
-$suv = <span class="hljs-keyword">new</span> CarY($tire1, $tire2, $tire5, $tire6);
-</code></pre>
+//Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;
+$suv&#xA0;=&#xA0;new&#xA0;CarY($tire1,&#xA0;$tire2,&#xA0;$tire5,&#xA0;$tire6);
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="composition&#xFF08;&#x5408;&#x6210;&#xFF09;">Composition&#xFF08;&#x5408;&#x6210;&#xFF09;</h3>
 <h4 id="&#x30FB;composition&#x3068;&#x306F;">&#x30FB;Composition&#x3068;&#x306F;</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#xFF0C;&#x4ED6;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;<code>__constructor</code>&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#x3059;&#x308B;&#x95A2;&#x4FC2;&#x6027;&#x306F;&#xFF0C;&#x300E;&#x5408;&#x6210;&#x300F;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#xFF0A;Lock&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">//Lock&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lock</span> </span>{}
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//Lock&#x30AF;&#x30E9;&#x30B9;&#x5B9A;&#x7FA9;
+class&#xA0;Lock&#xA0;{}
+</span></pre></div></div></code></pre>
 <p>&#xFF0A;Car&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">//Car&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>
-</span>{
-    <span class="hljs-keyword">private</span> $lock;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//Car&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;
+class&#xA0;Car
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$lock;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x5F15;&#x6570;Lock&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;</span>
-        <span class="hljs-comment">// Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#xFF0E;</span>
-        $this-&gt;lock = <span class="hljs-keyword">new</span> Lock();
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5F15;&#x6570;Lock&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Tire&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;lock&#xA0;=&#xA0;new&#xA0;Lock();
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;Lock&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306F;&#xFF0C;Car&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;Lock&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x306F;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;Car&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;Lock&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306F;&#x8D77;&#x52D5;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x3053;&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;Lock&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;Car&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x65B9;&#x5411;&#x306B;&#x306F;&#xFF0C;Composition&#x306E;&#x95A2;&#x4FC2;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// Car&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;Lock&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-$car = <span class="hljs-keyword">new</span> Car();
-</code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;Car&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;Lock&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x308B;&#xFF0E;
+$car&#xA0;=&#xA0;new&#xA0;Car();
+</span></pre></div></div></code></pre>
 <h2 id="04-&#x30AF;&#x30E9;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;">04. &#x30AF;&#x30E9;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;</h2>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30AF;&#x30E9;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x56F3;.png" alt="&#x30AF;&#x30E9;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x56F3;"></p>
 <h3 id="generalization&#xFF08;&#x6C4E;&#x5316;&#xFF09;">Generalization&#xFF08;&#x6C4E;&#x5316;&#xFF09;</h3>
 <h4 id="&#x30FB;&#x6C4E;&#x5316;&#x306B;&#x304A;&#x3051;&#x308B;override">&#x30FB;&#x6C4E;&#x5316;&#x306B;&#x304A;&#x3051;&#x308B;Override</h4>
 <p>&#x6C4E;&#x5316;&#x306E;&#x6642;&#xFF0C;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x518D;&#x3073;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#xFF0A;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Goods</span>
-</span>{
-    <span class="hljs-comment">// &#x5546;&#x54C1;&#x540D;&#x30C7;&#x30FC;&#x30BF;</span>
-    <span class="hljs-keyword">private</span> $name = <span class="hljs-string">&quot;&quot;</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;Goods
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x540D;&#x30C7;&#x30FC;&#x30BF;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$name&#xA0;=&#xA0;&quot;&quot;;
 
-    <span class="hljs-comment">// &#x5546;&#x54C1;&#x4FA1;&#x683C;&#x30C7;&#x30FC;&#x30BF;</span>
-    <span class="hljs-keyword">private</span> $price = <span class="hljs-number">0</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x4FA1;&#x683C;&#x30C7;&#x30FC;&#x30BF;
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$price&#xA0;=&#xA0;0;
 
-    <span class="hljs-comment">// &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#xFF0E;&#x5546;&#x54C1;&#x540D;&#x3068;&#x5546;&#x54C1;&#x4FA1;&#x683C;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $name, int $price)</span>
-    </span>{
-        $this-&gt;name = $name;
-        $this-&gt;price = $price;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#xFF0E;&#x5546;&#x54C1;&#x540D;&#x3068;&#x5546;&#x54C1;&#x4FA1;&#x683C;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct(string&#xA0;$name,&#xA0;int&#xA0;$price)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;name&#xA0;=&#xA0;$name;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;price&#xA0;=&#xA0;$price;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x6CE8;&#x76EE;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>
-    <span class="hljs-comment">// &#x5546;&#x54C1;&#x540D;&#x3068;&#x4FA1;&#x683C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPrice</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span>
-    </span>{
-        <span class="hljs-keyword">print</span>($this-&gt;name.<span class="hljs-string">&quot;&#x306E;&#x4FA1;&#x683C;: &#xFFE5;&quot;</span>.$this-&gt;price.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x6CE8;&#x76EE;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x540D;&#x3068;&#x4FA1;&#x683C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;printPrice():&#xA0;void
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;print($this-&gt;name.&quot;&#x306E;&#x4FA1;&#x683C;:&#xA0;&#xFFE5;&quot;.$this-&gt;price.&quot;&lt;br&gt;&quot;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x5546;&#x54C1;&#x540D;&#x306E;&#x30B2;&#x30C3;&#x30BF;&#x30FC;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span><span class="hljs-params">()</span>: <span class="hljs-title">string</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $this-&gt;name;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x540D;&#x306E;&#x30B2;&#x30C3;&#x30BF;&#x30FC;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;getName():&#xA0;string
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;name;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x5546;&#x54C1;&#x4FA1;&#x683C;&#x306E;&#x30B2;&#x30C3;&#x30BF;&#x30FC;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrice</span><span class="hljs-params">()</span>: <span class="hljs-title">int</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $this-&gt;price;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x4FA1;&#x683C;&#x306E;&#x30B2;&#x30C3;&#x30BF;&#x30FC;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;getPrice():&#xA0;int
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;price;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p>&#xFF0A;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#xFF0A;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoodsWithTax</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Goods</span>
-</span>{
-    <span class="hljs-comment">// &#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x6CE8;&#x76EE;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>
-    <span class="hljs-comment">// printPrice&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPrice</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x5546;&#x54C1;&#x4FA1;&#x683C;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;&#x3092;&#x8A08;&#x7B97;&#x3057;&#xFF0C;&#x8868;&#x793A;</span>
-        $priceWithTax = round($this-&gt;getPrice() * <span class="hljs-number">1.08</span>);  <span class="hljs-comment">// &#xFF08;1&#xFF09;</span>
-        <span class="hljs-keyword">print</span>($this-&gt;getName().<span class="hljs-string">&quot;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;: &#xFFE5;&quot;</span>.$priceWithTax.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>);  <span class="hljs-comment">// &#xFF08;2&#xFF09;</span>
-    }
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;GoodsWithTax&#xA0;extends&#xA0;Goods
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x6CE8;&#x76EE;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;printPrice&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;Override
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;printPrice()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5546;&#x54C1;&#x4FA1;&#x683C;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;&#x3092;&#x8A08;&#x7B97;&#x3057;&#xFF0C;&#x8868;&#x793A;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$priceWithTax&#xA0;=&#xA0;round($this-&gt;getPrice()&#xA0;*&#xA0;1.08);&#xA0;&#xA0;//&#xA0;&#xFF08;1&#xFF09;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;print($this-&gt;getName().&quot;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;:&#xA0;&#xFFE5;&quot;.$priceWithTax.&quot;&lt;br&gt;&quot;);&#xA0;&#xA0;//&#xA0;&#xFF08;2&#xFF09;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;">&#x30FB;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;</h4>
 <p>&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3068;&#x3057;&#x3066;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x591A;&#x91CD;&#x7D99;&#x627F;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
 <p>  <strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
@@ -1660,65 +1660,65 @@ $car = <span class="hljs-keyword">new</span> Car();
 <p>&#x62BD;&#x8C61;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;&#xFF0C;2&#x3064;&#x306E;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x3092;&#x751F;&#x304B;&#x3057;&#x3064;&#x3064;&#xFF0C;&#x30C7;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x3092;&#x89E3;&#x6D88;&#x53EF;&#x80FD;&#xFF0E;</p>
 <p><img src="https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG" alt="&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;-2"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#xFF0E;&#x578B;&#x3068;&#x3057;&#x3066;&#x63D0;&#x4F9B;&#x3057;&#x305F;&#x3044;&#x3082;&#x306E;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
-<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShainManagement</span>
-</span>{
-    <span class="hljs-comment">// &#x5B9A;&#x6570;&#x306E;&#x5B9A;&#x7FA9;</span>
-    <span class="hljs-keyword">const</span> TIME_TO_ARRIVE = strtotime(<span class="hljs-string">&apos;10:00:00&apos;</span>);
-    <span class="hljs-keyword">const</span> TIME_TO_LEAVE = strtotime(<span class="hljs-string">&apos;19:00:00&apos;</span>);
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#xFF0E;&#x578B;&#x3068;&#x3057;&#x3066;&#x63D0;&#x4F9B;&#x3057;&#x305F;&#x3044;&#x3082;&#x306E;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;
+abstract&#xA0;class&#xA0;ShainManagement
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5B9A;&#x6570;&#x306E;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;TIME_TO_ARRIVE&#xA0;=&#xA0;strtotime(&apos;10:00:00&apos;);
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;TIME_TO_LEAVE&#xA0;=&#xA0;strtotime(&apos;19:00:00&apos;);
 
-    <span class="hljs-comment">// &#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;</span>
-    <span class="hljs-comment">// &#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;Override&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</span>
-    <span class="hljs-keyword">abstract</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toWork</span><span class="hljs-params">()</span></span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;Override&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;abstract&#xA0;function&#xA0;toWork();
 
-    <span class="hljs-comment">// &#x5177;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;&#x51FA;&#x52E4;&#x6642;&#x523B;&#x3092;&#x8868;&#x793A;&#xFF0E;&#x3082;&#x3057;&#x9045;&#x523B;&#x3057;&#x3066;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x5DEE;&#x5206;&#x3092;&#x8868;&#x793A;&#xFF0E;</span>
-    <span class="hljs-comment">// &#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3078;&#x305D;&#x306E;&#x307E;&#x307E;&#x7D99;&#x627F;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toArrive</span><span class="hljs-params">()</span>
-    </span>{
-        $nowTime = strtotime( date(<span class="hljs-string">&apos;H:i:s&apos;</span>) );
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5177;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;&#x51FA;&#x52E4;&#x6642;&#x523B;&#x3092;&#x8868;&#x793A;&#xFF0E;&#x3082;&#x3057;&#x9045;&#x523B;&#x3057;&#x3066;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x5DEE;&#x5206;&#x3092;&#x8868;&#x793A;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3078;&#x305D;&#x306E;&#x307E;&#x307E;&#x7D99;&#x627F;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;toArrive()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$nowTime&#xA0;=&#xA0;strtotime(&#xA0;date(&apos;H:i:s&apos;)&#xA0;);
 
-        <span class="hljs-comment">// &#x51FA;&#x793E;&#x6642;&#x9593;&#x3088;&#x308A;&#x9045;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x9045;&#x523B;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span>($nowTime &gt; <span class="hljs-keyword">self</span>::TIME_TO_ARRIVE){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51FA;&#x793E;&#x6642;&#x9593;&#x3088;&#x308A;&#x9045;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x9045;&#x523B;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($nowTime&#xA0;&gt;&#xA0;self::TIME_TO_ARRIVE){
 
-            <span class="hljs-keyword">return</span> sprintf(
-                <span class="hljs-string">&quot;%s &#x306E;&#x9045;&#x523B;&#x3067;&#x3059;&#xFF0E;&quot;</span>,
-                date(<span class="hljs-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span>, $nowTime - <span class="hljs-keyword">self</span>::TIME_TO_ARRIVE)
-            );
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sprintf(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;%s&#xA0;&#x306E;&#x9045;&#x523B;&#x3067;&#x3059;&#xFF0E;&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;date(&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;,&#xA0;$nowTime&#xA0;-&#xA0;self::TIME_TO_ARRIVE)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> sprintf(
-            <span class="hljs-string">&quot;%s &#x306B;&#x51FA;&#x52E4;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span>,
-            date(<span class="hljs-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span>, $nowTime)
-        );
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sprintf(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;%s&#xA0;&#x306B;&#x51FA;&#x52E4;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;date(&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;,&#xA0;$nowTime)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
 
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x5177;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;&#x9000;&#x793E;&#x6642;&#x9593;&#x3068;&#x6B8B;&#x696D;&#x6642;&#x9593;&#x3092;&#x8868;&#x793A;&#xFF0E;</span>
-    <span class="hljs-comment">// &#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3078;&#x305D;&#x306E;&#x307E;&#x307E;&#x7D99;&#x627F;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toLeave</span><span class="hljs-params">()</span>
-    </span>{
-        $nowTime = strtotime( date(<span class="hljs-string">&apos;H:i:s&apos;</span>) );
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5177;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;&#x9000;&#x793E;&#x6642;&#x9593;&#x3068;&#x6B8B;&#x696D;&#x6642;&#x9593;&#x3092;&#x8868;&#x793A;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3078;&#x305D;&#x306E;&#x307E;&#x307E;&#x7D99;&#x627F;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30E9;&#x30A4;&#x30C9;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;toLeave()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$nowTime&#xA0;=&#xA0;strtotime(&#xA0;date(&apos;H:i:s&apos;)&#xA0;);
 
-        <span class="hljs-keyword">return</span> sprintf(
-            <span class="hljs-string">&quot;%s&#x306B;&#x9000;&#x793E;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;%s &#x306E;&#x6B8B;&#x696D;&#x3067;&#x3059;&#xFF0E;&quot;</span>,
-            date(<span class="hljs-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span>, $nowTime),
-            date(<span class="hljs-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span>, $nowTime - <span class="hljs-keyword">self</span>::TIME_TO_LEAVE)
-        );
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sprintf(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;%s&#x306B;&#x9000;&#x793E;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;%s&#xA0;&#x306E;&#x6B8B;&#x696D;&#x3067;&#x3059;&#xFF0E;&quot;,
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;date(&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;,&#xA0;$nowTime),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;date(&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;,&#xA0;$nowTime&#xA0;-&#xA0;self::TIME_TO_LEAVE)
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5B50;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EnginnerShainManagement</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ShainManagement</span>
-</span>{
-    <span class="hljs-comment">// &#x92F3;&#x578B;&#x3068;&#x306A;&#x3063;&#x305F;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Override&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toWork</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x51E6;&#x7406;&#x5185;&#x5BB9;&#xFF1B;</span>
-    }
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5B50;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;EnginnerShainManagement&#xA0;extends&#xA0;ShainManagement
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x92F3;&#x578B;&#x3068;&#x306A;&#x3063;&#x305F;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x62BD;&#x8C61;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Override&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;toWork()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#xFF1B;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30D7;&#x30EA;&#x30A6;&#x30B9;&#x3068;&#x5404;&#x4E16;&#x4EE3;&#x30D7;&#x30EA;&#x30A6;&#x30B9;&#x304C;&#xFF0C;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x5B50;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x95A2;&#x4FC2;&#x306B;&#x3042;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;.png" alt="&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;"></p>
@@ -1734,37 +1734,37 @@ $car = <span class="hljs-keyword">new</span> Car();
 <p>&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x8A18;&#x8FF0;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x3059;&#x306A;&#x308F;&#x3061;&#xFF0C;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x578B;&#x306E;&#x307F;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x5834;&#x5408;&#x3068;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x591A;&#x91CD;&#x7D99;&#x627F;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x5B50;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x591A;&#x91CD;&#x7D99;&#x627F;_2.png" alt="&#x5B50;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x591A;&#x91CD;&#x7D99;&#x627F;_2"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x30B3;&#x30DF;&#x30E5;&#x30CB;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x5F37;&#x5236;&#x3059;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Communication</span>
-</span>{
-     <span class="hljs-comment">// &#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x3067;&#x306F;&#xFF0C;&#x5B9F;&#x88C5;&#x3092;&#x4F34;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5BA3;&#x8A00;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;</span>
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>;
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">touch</span><span class="hljs-params">()</span></span>;
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gesture</span><span class="hljs-params">()</span></span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x30B3;&#x30DF;&#x30E5;&#x30CB;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x5F37;&#x5236;&#x3059;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;
+interface&#xA0;Communication
+{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x3067;&#x306F;&#xFF0C;&#x5B9F;&#x88C5;&#x3092;&#x4F34;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5BA3;&#x8A00;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;talk();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;touch();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;gesture();
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x6B63;&#x5E38;&#x306B;&#x6A5F;&#x80FD;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30B3;&#x30DF;&#x30E5;&#x30CB;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x5F37;&#x5236;&#x3059;&#x308B;&#xFF0E;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Human</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Communication</span>
-</span>{
-    <span class="hljs-comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;</span>
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span>
-     </span>{
-          <span class="hljs-comment">// &#x8A71;&#x3059;</span>
-     }
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x6B63;&#x5E38;&#x306B;&#x6A5F;&#x80FD;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30B3;&#x30DF;&#x30E5;&#x30CB;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x5F37;&#x5236;&#x3059;&#x308B;&#xFF0E;
+class&#xA0;Human&#xA0;implements&#xA0;Communication
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;talk()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x8A71;&#x3059;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">touch</span><span class="hljs-params">()</span>
-     </span>{
-          <span class="hljs-comment">// &#x89E6;&#x308B;</span>
-     }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;touch()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x89E6;&#x308B;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gesture</span><span class="hljs-params">()</span>
-     </span>{
-          <span class="hljs-comment">// &#x8EAB;&#x632F;&#x308A;&#x624B;&#x632F;&#x308A;</span>
-     }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;gesture()
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x8EAB;&#x632F;&#x308A;&#x624B;&#x632F;&#x308A;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x9055;&#x3044;">&#x901A;&#x5E38;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x62BD;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x9055;&#x3044;</h3>
 <table>
@@ -1832,210 +1832,210 @@ $car = <span class="hljs-keyword">new</span> Car();
 <h3 id="&#x30AF;&#x30E9;&#x30B9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x306B;&#x3088;&#x308B;&#x7D99;&#x627F;&#x5143;&#x306E;&#x53C2;&#x7167;">&#x30AF;&#x30E9;&#x30B9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x306B;&#x3088;&#x308B;&#x7D99;&#x627F;&#x5143;&#x306E;&#x53C2;&#x7167;</h3>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x6642;&#xFF0C;&#x305D;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3053;&#x308C;&#x3089;&#x304C;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x7D99;&#x627F;&#x5143;&#x307E;&#x3067;&#x53C2;&#x7167;&#x3057;&#x306B;&#x3044;&#x304F;&#x4ED5;&#x7D44;&#x307F;&#x3092;&#x300E;&#x30AF;&#x30E9;&#x30B9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x985E;&#x4F3C;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30D7;&#x30ED;&#x30C8;&#x30BF;&#x30A4;&#x30D7;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x30D7;&#x30ED;&#x30C8;&#x30BF;&#x30A4;&#x30D7;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x6307;&#x5411;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-comment">// &#x7D99;&#x627F;&#x5143;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-keyword">private</span> $value1;
+//&#xA0;&#x7D99;&#x627F;&#x5143;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$value1;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getValue</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $this-&gt;value1; 
-    }  
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;getValue()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;value1;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;&#xA0;
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-comment">// &#x7D99;&#x627F;&#x5148;&#x30AF;&#x30E9;&#x30B9;</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubExample</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-keyword">public</span> $subValue;
+//&#xA0;&#x7D99;&#x627F;&#x5148;&#x30AF;&#x30E9;&#x30B9;
+class&#xA0;SubExample&#xA0;extends&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;$subValue;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSubValue</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $this-&gt;subValue; 
-    }  
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;getSubValue()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;subValue;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;&#xA0;
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-$subExample = <span class="hljs-keyword">new</span> SubExample;
+$subExample&#xA0;=&#xA0;new&#xA0;SubExample;
 
-<span class="hljs-comment">// SubExample&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x306F;getValue()&#x306F;&#x7121;&#x3044;&#xFF0E;</span>
-<span class="hljs-comment">// &#x7D99;&#x627F;&#x5143;&#x307E;&#x3067;&#x8FBF;&#x308A;&#xFF0C;Example&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF08;&#x30AF;&#x30E9;&#x30B9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#xFF09;&#xFF0E;</span>
-<span class="hljs-keyword">echo</span> $subExample-&gt;getValue();
-</code></pre>
+//&#xA0;SubExample&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x306F;getValue()&#x306F;&#x7121;&#x3044;&#xFF0E;
+//&#xA0;&#x7D99;&#x627F;&#x5143;&#x307E;&#x3067;&#x8FBF;&#x308A;&#xFF0C;Example&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF08;&#x30AF;&#x30E9;&#x30B9;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#xFF09;&#xFF0E;
+echo&#xA0;$subExample-&gt;getValue();
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x7D99;&#x627F;&#x5143;&#x306E;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53C2;&#x7167;">&#x7D99;&#x627F;&#x5143;&#x306E;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53C2;&#x7167;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> 
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x51E6;&#x7406;&#x5185;&#x5BB9;;</span>
-    }
+abstract&#xA0;class&#xA0;Example&#xA0;
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51E6;&#x7406;&#x5185;&#x5BB9;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SubExample</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">subExample</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-comment">// &#x7D99;&#x627F;&#x5143;&#x306E;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53C2;&#x7167;&#xFF0E;</span>
-        $example = <span class="hljs-keyword">parent</span>::example();
-    } 
+class&#xA0;SubExample&#xA0;extends&#xA0;Example
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;subExample()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x7D99;&#x627F;&#x5143;&#x306E;&#x9759;&#x7684;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53C2;&#x7167;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$example&#xA0;=&#xA0;parent::example();
+&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="trait">Trait</h3>
 <h4 id="&#x30FB;trait&#x3068;&#x306F;">&#x30FB;Trait&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Trait.png" alt="Trait"></p>
 <p>&#x518D;&#x5229;&#x7528;&#x3057;&#x305F;&#x3044;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x90E8;&#x54C1;&#x5316;&#x3057;&#xFF0C;&#x5229;&#x7528;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x53D6;&#x308A;&#x8FBC;&#x3080;&#xFF0E;Trait&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;&#x304D;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x5185;&#x3067;Trait&#x3092;use&#x5BA3;&#x8A00;&#x3059;&#x308B;&#xFF0E;Trait&#x81EA;&#x4F53;&#x306F;&#x4E0D;&#x5B8C;&#x5168;&#x306A;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3042;&#x308A;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-keyword">trait</span> ExampleTrait
-{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello World&quot;</span>;
-    }
-}
-</code></pre>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="sunlight-ident">trait</span>&#xA0;<span class="sunlight-ident">ExampleTrait</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;Hello&#xA0;World&quot;</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>
-</span>{
-    <span class="hljs-keyword">use</span> <span class="hljs-title">ExampleTrait</span>;
-}
+<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-named-ident">ExampleTrait</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
 
-$exmaple = <span class="hljs-keyword">new</span> Example();
-$example-&gt;example(); <span class="hljs-comment">// Hello World</span>
-</code></pre>
+<span class="sunlight-variable">$exmaple</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">Example</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-variable">$example</span><span class="sunlight-operator">-&gt;</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>&#xA0;<span class="sunlight-comment">//&#xA0;Hello&#xA0;World</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-03-&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">04-03. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h2>
 <h3 id="requireonce&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;"><code>require_once</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h3>
 <h4 id="&#x30FB;requireonce&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;">&#x30FB;<code>require_once</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;</h4>
 <p>&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x3092;&#x4E00;&#x5EA6;&#x3060;&#x3051;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#xFF0E;&#x52D5;&#x7684;&#x306A;&#x5024;&#x306F;&#x6301;&#x305F;&#x305A;&#xFF0C;&#x9759;&#x7684;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x30C1;&#x30FC;&#x30E0;&#x306E;&#x5404;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;&#x304C;&#x597D;&#x304D;&#x306A;&#x7269;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x30B9;&#x30D1;&#x30B2;&#x30C3;&#x30C6;&#x30A3;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x306A;&#x308A;&#x304B;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x30C1;&#x30FC;&#x30E0;&#x3067;&#x306E;&#x958B;&#x767A;&#x3067;&#x306F;&#xFF0C;&#x8A18;&#x8FF0;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x3051;&#x3066;&#xFF0C;<code>require_once</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x826F;&#x3044;&#x3082;&#x306E;&#x3092;&#x6C7A;&#x3081;&#x3066;&#x304A;&#x304F;&#x3068;&#x826F;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;">&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;</h4>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example1</span>
-</span>{
-    <span class="hljs-keyword">const</span> VALUE = <span class="hljs-string">&quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;</span>;
+<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example1</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">const</span>&#xA0;<span class="sunlight-ident">VALUE</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">className</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;</span>;
-    }
-}
-</code></pre>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">className</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-comment">// &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&apos;Example1.php&apos;</span>);
+<span class="sunlight-comment">//&#xA0;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+<span class="sunlight-languageConstruct">require_once</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;Example1.php&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example2</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">method</span><span class="hljs-params">()</span>
-    </span>{
-        $e1 = <span class="hljs-keyword">new</span> Example1:
-        $e1-&gt;className();
-    }
-}
-</code></pre>
+<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example2</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">method</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$e1</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">Example1</span><span class="sunlight-operator">:</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-variable">$e1</span><span class="sunlight-operator">-&gt;</span><span class="sunlight-ident">className</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x5B9A;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;">&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x5B9A;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;</h4>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-comment">// &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-<span class="hljs-keyword">require_once</span>(<span class="hljs-string">&apos;Example1.php&apos;</span>);
+<span class="sunlight-comment">//&#xA0;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+<span class="sunlight-languageConstruct">require_once</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;Example1.php&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example2</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">method</span><span class="hljs-params">()</span>
-    </span>{    
-        <span class="hljs-comment">// Example1&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5B9A;&#x6570;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
-        <span class="hljs-keyword">return</span> Example1::VALUE;
-    }
-}
-</code></pre>
+<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example2</span>
+<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">method</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;&#xA0;&#xA0;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;Example1&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5B9A;&#x6570;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-named-ident">Example1</span><span class="sunlight-operator">::</span><span class="sunlight-ident">VALUE</span><span class="sunlight-punctuation">;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;">&#x30FB;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;</h4>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printTest</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span>  <span class="hljs-string">&apos;test&apos;</span>;
-}
-</code></pre>
-<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">printTest</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;&#xA0;<span class="sunlight-string">&apos;test&apos;</span><span class="sunlight-punctuation">;</span>
+<span class="sunlight-punctuation">}</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
 
-<span class="hljs-comment">// &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-<span class="hljs-keyword">require_once</span> (<span class="hljs-string">&apos;printTestFunction.php&apos;</span>);
+<span class="sunlight-comment">//&#xA0;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+<span class="sunlight-languageConstruct">require_once</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;printTestFunction.php&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
 
-printTest();
-</code></pre>
+<span class="sunlight-ident">printTest</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="use&#x306B;&#x3088;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;"><code>use</code>&#x306B;&#x3088;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h3>
 <h4 id="&#x30FB;use&#x3068;&#x306F;">&#x30FB;<code>use</code>&#x3068;&#x306F;</h4>
 <p>PHP<code>5.3</code>&#x4EE5;&#x964D;&#x3067;&#x306F;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>namespace</code>&#x3092;&#xFF0C;<code>use</code>&#x3067;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x305D;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x307F;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#xFF0E;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x52D5;&#x7684;&#x306A;&#x5024;&#x306F;&#x6301;&#x305F;&#x305A;&#xFF0C;&#x9759;&#x7684;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x30C1;&#x30FC;&#x30E0;&#x306E;&#x5404;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;&#x304C;&#x597D;&#x304D;&#x306A;&#x7269;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x30B9;&#x30D1;&#x30B2;&#x30C3;&#x30C6;&#x30A3;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x306A;&#x308A;&#x304B;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x30C1;&#x30FC;&#x30E0;&#x3067;&#x306E;&#x958B;&#x767A;&#x3067;&#x306F;&#xFF0C;&#x8A18;&#x8FF0;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x3051;&#x3066;&#xFF0C;<code>use</code>&#x3067;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x826F;&#x3044;&#x3082;&#x306E;&#x3092;&#x6C7A;&#x3081;&#x3066;&#x304A;&#x304F;&#x3068;&#x826F;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;">&#x30FB;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;</h4>
-<pre><code class="lang-use```&#x6587;&#x3067;```namespace```&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#xFF0E;">
+<pre><code class="lang-use```&#x6587;&#x3067;```namespace```&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-use```&#x6587;&#x3067;```namespace```&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3081;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```PHP
 &lt;?php
 
-// &#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;
-namespace Domain\Entity;
+//&#xA0;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;
+namespace&#xA0;Domain\Entity;
 
-class Example1
+class&#xA0;Example1
 {
-    // &#x5B9A;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;
-    const VALUE = &quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5B9A;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;VALUE&#xA0;=&#xA0;&quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;;
 
-    public function className()
-    {
-        return &quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;className()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-keyword">namespace</span> <span class="hljs-title">Domain</span>\<span class="hljs-title">Entity</span>;
+namespace&#xA0;Domain\Entity;
 
-<span class="hljs-comment">// namespace&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Domain</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Example1</span>;
+//&#xA0;namespace&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+use&#xA0;Domain\Entity\Example1;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example2</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">method</span><span class="hljs-params">()</span>
-    </span>{
-        $e1 = <span class="hljs-keyword">new</span> Example1:
-        $e1-&gt;className();
-    }
+class&#xA0;Example2
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;method()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$e1&#xA0;=&#xA0;new&#xA0;Example1:
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$e1-&gt;className();
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x5B9A;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;">&#x30FB;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x5B9A;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
 
-<span class="hljs-keyword">namespace</span> <span class="hljs-title">Domain</span>\<span class="hljs-title">Entity</span>;
+namespace&#xA0;Domain\Entity;
 
-<span class="hljs-comment">// namespace&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Domain</span>\<span class="hljs-title">Entity1</span>\<span class="hljs-title">Example1</span>;
+//&#xA0;namespace&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+use&#xA0;Domain\Entity1\Example1;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example2</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">method</span><span class="hljs-params">()</span>
-    </span>{    
-        <span class="hljs-comment">// Example1&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5B9A;&#x6570;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
-        <span class="hljs-keyword">echo</span> Example1::VALUE;
-    }
+class&#xA0;Example2
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;method()
+&#xA0;&#xA0;&#xA0;&#xA0;{&#xA0;&#xA0;&#xA0;&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Example1&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5B9A;&#x6570;&#x3092;&#x51FA;&#x529B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;Example1::VALUE;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="05-&#x30AF;&#x30E9;&#x30B9;&#x9593;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x9593;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;">05. &#x30AF;&#x30E9;&#x30B9;&#x9593;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x9593;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x6027;</h2>
 <h3 id="dependency&#xFF08;&#x4F9D;&#x5B58;&#xFF09;">Dependency&#xFF08;&#x4F9D;&#x5B58;&#xFF09;</h3>
@@ -2058,91 +2058,91 @@ class Example1
 <p>&#x6700;&#x3082;&#x7406;&#x60F3;&#x7684;&#x306A;&#x7D50;&#x5408;&#xFF0E;&#x30B9;&#x30AB;&#x30E9;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30B5;&#x30D7;&#x30E9;&#x30A4;&#x30E4;&#x30FC;&#x5074;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306A;&#x95A2;&#x4FC2;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>ModuleA&#x3068;ModuleB&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x7D50;&#x5408;&#x306E;&#x95A2;&#x4FC2;&#x306B;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleA</span> // &#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x5074;
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">methodA</span><span class="hljs-params">(int $a, int $b, string $c)</span>
-    </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;$a + $b&quot;</span>.$c;
-    }
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ModuleA&#xA0;//&#xA0;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x5074;
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;methodA(int&#xA0;$a,&#xA0;int&#xA0;$b,&#xA0;string&#xA0;$c)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;$a&#xA0;+&#xA0;$b&quot;.$c;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleB</span> // &#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x5074;
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">methodB</span><span class="hljs-params">()</span>
-    </span>{
-        $moduleA= <span class="hljs-keyword">new</span> ModuleA();
-        $result = $moduleA-&gt;methodA(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;&#x3067;&#x3059;.&quot;</span>); <span class="hljs-comment">// &#x30B9;&#x30AB;&#x30E9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3060;&#x3051;</span>
-    }
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ModuleB&#xA0;//&#xA0;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x5074;
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;methodB()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$moduleA=&#xA0;new&#xA0;ModuleA();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result&#xA0;=&#xA0;$moduleA-&gt;methodA(1,&#xA0;2,&#xA0;&quot;&#x3067;&#x3059;.&quot;);&#xA0;//&#xA0;&#x30B9;&#x30AB;&#x30E9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3060;&#x3051;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;Factory&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#xFF0C;&#x30B9;&#x30AB;&#x30E9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x308A;&#x5206;&#x3051;&#x308B;&#xFF0E;Factory&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3068;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x4ED6;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9; &#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x7D50;&#x5408;&#x306E;&#x95A2;&#x4FC2;&#x306B;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">/**
- * &#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x5074;
- *
- * &#x8DDD;&#x96E2;&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;&#x79FB;&#x52D5;&#x624B;&#x6BB5;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x308A;&#x5206;&#x3051;&#x308B;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x30EA;&#x30AF;&#x30E9;&#x30B9;
- */</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransportationMethodsFactory</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createInstance</span><span class="hljs-params">($distance)</span>
-    </span>{
-        $walking = <span class="hljs-keyword">new</span> Walking($distance);
-        $car = <span class="hljs-keyword">new</span> Car($distance);
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+/**
+&#xA0;*&#xA0;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x5074;
+&#xA0;*
+&#xA0;*&#xA0;&#x8DDD;&#x96E2;&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;&#x79FB;&#x52D5;&#x624B;&#x6BB5;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x308A;&#x5206;&#x3051;&#x308B;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x30EA;&#x30AF;&#x30E9;&#x30B9;
+&#xA0;*/
+class&#xA0;TransportationMethodsFactory
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;static&#xA0;function&#xA0;createInstance($distance)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$walking&#xA0;=&#xA0;new&#xA0;Walking($distance);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$car&#xA0;=&#xA0;new&#xA0;Car($distance);
 
-        <span class="hljs-keyword">if</span>($walking-&gt;needsWalking()) {
-            <span class="hljs-keyword">return</span> $walking;
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($walking-&gt;needsWalking())&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$walking;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">return</span> $car;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$car;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x7D50;&#x5408;&#x3068;&#x306F;">&#x30FB;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x7D50;&#x5408;&#x3068;&#x306F;</h4>
 <p>object&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30B5;&#x30D7;&#x30E9;&#x30A4;&#x30E4;&#x30FC;&#x5074;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#x95A2;&#x4FC2;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>ModuleA&#x3068;ModuleB&#x306F;&#xFF0C;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x7D50;&#x5408;&#x306E;&#x95A2;&#x4FC2;&#x306B;&#x3042;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Common</span>
-</span>{
-    <span class="hljs-keyword">private</span> $value;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;Common
+{
+&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$value;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(int $value)</span> 
-    </span>{
-        $this-&gt;value = $value;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct(int&#xA0;$value)&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;value&#xA0;=&#xA0;$value;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
 
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getValue</span><span class="hljs-params">()</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $this-&gt;value;
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;getValue()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$this-&gt;value;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleA</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">methodA</span><span class="hljs-params">()</span>
-    </span>{
-        $common = <span class="hljs-keyword">new</span> Common(<span class="hljs-number">1</span>);
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ModuleA
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;methodA()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$common&#xA0;=&#xA0;new&#xA0;Common(1);
 
-        $moduleB = <span class="hljs-keyword">new</span> ModuleB;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$moduleB&#xA0;=&#xA0;new&#xA0;ModuleB;
 
-        <span class="hljs-keyword">return</span> $moduleB-&gt;methodB($common); <span class="hljs-comment">// 1</span>
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$moduleB-&gt;methodB($common);&#xA0;//&#xA0;1
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleB</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">methodB</span><span class="hljs-params">(Common $common)</span>
-    </span>{
-        <span class="hljs-keyword">return</span> $common-&gt;getValue(); <span class="hljs-comment">// 1</span>
-    }
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;ModuleB
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;methodB(Common&#xA0;$common)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$common-&gt;getValue();&#xA0;//&#xA0;1
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="&#x51DD;&#x96C6;&#x5EA6;">&#x51DD;&#x96C6;&#x5EA6;</h3>
 <h4 id="&#x30FB;&#x51DD;&#x96C6;&#x5EA6;&#x3068;&#x306F;">&#x30FB;&#x51DD;&#x96C6;&#x5EA6;&#x3068;&#x306F;</h4>
@@ -2167,58 +2167,58 @@ class Example1
 <p>&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x3092;&#x767B;&#x9332;&#xFF08;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#xFF09;&#x3057;&#x305F;&#x3060;&#x3051;&#x3067;&#x65B0;&#x3057;&#x3044;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#xFF08;&#x30EA;&#x30BE;&#x30EB;&#x30D6;&#xFF09;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x300E;ServiceContainer&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>Pimple&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;</p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-keyword">use</span> <span class="hljs-title">Pimple</span>\<span class="hljs-title">Container</span>;
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+use&#xA0;Pimple\Container;
 
-<span class="hljs-keyword">use</span> <span class="hljs-title">XxxLogger</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">YyyNotification</span>;
+use&#xA0;XxxLogger;
+use&#xA0;YyyNotification;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Container</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">()</span>
-    </span>{
-        $container[<span class="hljs-string">&apos;xxx.logger&apos;</span>] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($container)</span> </span>{
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> XxxLogger();
-        };
+class&#xA0;Container
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct()
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$container[&apos;xxx.logger&apos;]&#xA0;=&#xA0;function&#xA0;($container)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;new&#xA0;XxxLogger();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
 
-        $container[<span class="hljs-string">&apos;yyy.notification&apos;</span>] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($container)</span> </span>{
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> YyyNotification();
-        };
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$container[&apos;yyy.notification&apos;]&#xA0;=&#xA0;function&#xA0;($container)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;new&#xA0;YyyNotification();
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
 
-        $container[<span class="hljs-string">&apos;sample&apos;</span>] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($container)</span> </span>{
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Sample($container[<span class="hljs-string">&apos;xxx.logger&apos;</span>], $container[<span class="hljs-string">&apos;yyy.notification&apos;</span>]);
-        };
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$container[&apos;sample&apos;]&#xA0;=&#xA0;function&#xA0;($container)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;new&#xA0;Sample($container[&apos;xxx.logger&apos;],&#xA0;$container[&apos;yyy.notification&apos;]);
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// autoload.php &#x3067;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x81EA;&#x4F53;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x751F;&#x6210;&#xFF0E;</span>
-$container = <span class="hljs-keyword">new</span> Container();
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</span>
-<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">&apos;/autoload.php&apos;</span>;
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;autoload.php&#xA0;&#x3067;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x81EA;&#x4F53;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x751F;&#x6210;&#xFF0E;
+$container&#xA0;=&#xA0;new&#xA0;Container();
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;
+require_once&#xA0;__DIR__&#xA0;.&#xA0;&apos;/autoload.php&apos;;
 
-<span class="hljs-comment">// &#x30AF;&#x30E9;&#x30B9;&#x540D;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
-$sample = $container[<span class="hljs-string">&apos;sample&apos;</span>];
-</code></pre>
+//&#xA0;&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#xFF0E;
+$sample&#xA0;=&#xA0;$container[&apos;sample&apos;];
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x30A2;&#x30F3;&#x30C1;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;service-locater-pattern">&#x30FB;&#x30A2;&#x30F3;&#x30C1;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;Service Locater Pattern</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3078;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x6E21;&#x3057;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x88C5;&#x305B;&#x305A;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x81EA;&#x4F53;&#x3092;&#x6CE8;&#x5165;&#x3057;&#x3066;&#x3044;&#x307E;&#x3046;&#x8AA4;&#x3063;&#x305F;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sample</span>
-</span>{
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($container)</span>
-    </span>{
-        $this-&gt;logger            = $container[<span class="hljs-string">&apos;xxx.logger&apos;</span>];
-        $this-&gt;notification      = $container[<span class="hljs-string">&apos;yyy.notification&apos;</span>];
-    }
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+class&#xA0;Sample
+{
+&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;__construct($container)
+&#xA0;&#xA0;&#xA0;&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;logger&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;=&#xA0;$container[&apos;xxx.logger&apos;];
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$this-&gt;notification&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;=&#xA0;$container[&apos;yyy.notification&apos;];
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x81EA;&#x4F53;&#x3092;&#x30A4;&#x30F3;&#x30B8;&#x30A7;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3068;&#xFF0C;&#x4E0D;&#x8981;&#x306A;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x3082;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
-$sample = <span class="hljs-keyword">new</span> Sample($container);
-</code></pre>
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x81EA;&#x4F53;&#x3092;&#x30A4;&#x30F3;&#x30B8;&#x30A7;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3068;&#xFF0C;&#x4E0D;&#x8981;&#x306A;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x3082;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;
+$sample&#xA0;=&#xA0;new&#xA0;Sample($container);
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="05-02-dependency-inversion-principle&#xFF08;&#x4F9D;&#x5B58;&#x6027;&#x9006;&#x8EE2;&#x306E;&#x539F;&#x5247;&#xFF09;">05-02. Dependency Inversion Principle&#xFF08;&#x4F9D;&#x5B58;&#x6027;&#x9006;&#x8EE2;&#x306E;&#x539F;&#x5247;&#xFF09;</h2>
 <h3 id="dip&#x3068;&#x306F;">DIP&#x3068;&#x306F;</h3>
@@ -2286,7 +2286,7 @@ $sample = <span class="hljs-keyword">new</span> Sample($container);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"クラスベースのプログラミング（1）","level":"1.3.2","depth":2,"next":{"title":"クラスベースのプログラミング（2）","level":"1.3.3","depth":2,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"オブジェクト指向分析／設計／プログラミング","level":"1.3.1","depth":2,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2020-12-20T17:43:34.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"クラスベースのプログラミング（1）","level":"1.3.2","depth":2,"next":{"title":"クラスベースのプログラミング（2）","level":"1.3.3","depth":2,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"オブジェクト指向分析／設計／プログラミング","level":"1.3.1","depth":2,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2020-12-20T17:43:34.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2305,10 +2305,6 @@ $sample = <span class="hljs-keyword">new</span> Sample($container);
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

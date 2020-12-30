@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1381,51 +1381,51 @@
 <li>&#x6B21;&#x306B;&#xFF0C;&#x6B8B;&#x308A;&#x306E;n-1&#x500B;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x3082;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5B57;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3092;2&#x756A;&#x76EE;&#x306E;&#x6570;&#x5B57;&#x3068;&#x5165;&#x308C;&#x66FF;&#x3048;&#x308B;&#xFF0E;</li>
 <li>&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;n-1&#x56DE;&#x7E70;&#x308A;&#x8FD4;&#x3059;&#xFF0E;</li>
 </ol>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">minSelectSort</span><span class="hljs-params">(array $array)</span>: <span class="hljs-title">array</span>
-</span>{
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+function&#xA0;minSelectSort(array&#xA0;$array):&#xA0;array
+{
 
-    <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
-    <span class="hljs-keyword">for</span>($i = <span class="hljs-number">0</span>; $i &lt; count($array)<span class="hljs-number">-1</span>; $i++){
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;for($i&#xA0;=&#xA0;0;&#xA0;$i&#xA0;&lt;&#xA0;count($array)-1;&#xA0;$i++){
 
-        <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;</span>
-        $min = $array[$i];
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$min&#xA0;=&#xA0;$array[$i];
 
-        <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;</span>
-        $position = $i;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$position&#xA0;=&#xA0;$i;
 
-        <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
-        <span class="hljs-keyword">for</span>($j = $position + <span class="hljs-number">1</span>; $j &lt; count($array); $j++){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for($j&#xA0;=&#xA0;$position&#xA0;+&#xA0;1;&#xA0;$j&#xA0;&lt;&#xA0;count($array);&#xA0;$j++){
 
-            <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;</span>
-            <span class="hljs-keyword">if</span>($min &gt; $array[$j]){
-                $position = $j;
-                $min = $array[$j];
-            }
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($min&#xA0;&gt;&#xA0;$array[$j]){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$position&#xA0;=&#xA0;$j;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$min&#xA0;=&#xA0;$array[$j];
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;</span>
-        <span class="hljs-keyword">if</span>($i == $position){
-            <span class="hljs-keyword">break</span>;
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($i&#xA0;==&#xA0;$position){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-comment">// &#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;</span>
-        $array[$i] = $min;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$array[$i]&#xA0;=&#xA0;$min;
 
-        <span class="hljs-comment">// &#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
-    }
-    <span class="hljs-keyword">return</span> $array;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$array;
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;</span>
-$array = <span class="hljs-keyword">array</span>(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>,<span class="hljs-number">12</span>,<span class="hljs-number">7</span>,<span class="hljs-number">16</span>,<span class="hljs-number">8</span>,<span class="hljs-number">13</span>)
-$result = selectSort($array);
-var_dump($result); 
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
+$array&#xA0;=&#xA0;array(10,2,12,7,16,8,13)
+$result&#xA0;=&#xA0;selectSort($array);
+var_dump($result);&#xA0;
 
-<span class="hljs-comment">// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
-<span class="hljs-comment">// 2, 7, 8, 10, 12, 13, 16</span>
-</code></pre>
+//&#xA0;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
+//&#xA0;2,&#xA0;7,&#xA0;8,&#xA0;10,&#xA0;12,&#xA0;13,&#xA0;16
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x4E2D;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#xFF0C;&#x6B21;&#x306B;&#x305D;&#x308C;&#x3092;&#x9664;&#x3044;&#x305F;&#x90E8;&#x5206;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x9078;&#x629E;&#x30BD;&#x30FC;&#x30C8;1.gif" alt="&#x9078;&#x629E;&#x30BD;&#x30FC;&#x30C8;1"></p>
@@ -1444,60 +1444,60 @@ var_dump($result);
 <li>&#x4E8C;&#x5206;&#x5272;&#x3055;&#x308C;&#x305F;&#x5404;&#x3005;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30BD;&#x30FC;&#x30C8;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(array $array)</span>: <span class="hljs-title">array</span> 
-</span>{
-    <span class="hljs-comment">// &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="hljs-keyword">if</span> (count($array) &lt;= <span class="hljs-number">1</span>) {
-        <span class="hljs-keyword">return</span> $array;
-    }
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+function&#xA0;quickSort(array&#xA0;$array):&#xA0;array&#xA0;
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(count($array)&#xA0;&lt;=&#xA0;1)&#xA0;{
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$array;
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
-    $pivot = array_shift($array); 
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;$pivot&#xA0;=&#xA0;array_shift($array);&#xA0;
 
-    <span class="hljs-comment">// &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;</span>
-    $left = $right = [];
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;$left&#xA0;=&#xA0;$right&#xA0;=&#xA0;[];
 
-    <span class="hljs-keyword">foreach</span> ($array <span class="hljs-keyword">as</span> $value) {
+&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($array&#xA0;as&#xA0;$value)&#xA0;{
 
-        <span class="hljs-keyword">if</span> ($value &lt; $pivot) {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($value&#xA0;&lt;&#xA0;$pivot)&#xA0;{
 
-            <span class="hljs-comment">// Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
-            $left[] = $value;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$left[]&#xA0;=&#xA0;$value;
 
-        } <span class="hljs-keyword">else</span> {
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
 
-            <span class="hljs-comment">// Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
-            $right[] = $value;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$right[]&#xA0;=&#xA0;$value;
 
-            }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;</span>
-    <span class="hljs-keyword">return</span> array_merge
-    (
-        <span class="hljs-comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
-        quickSort($left),
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;array_merge
+&#xA0;&#xA0;&#xA0;&#xA0;(
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;quickSort($left),
 
-        <span class="hljs-comment">// Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
-        <span class="hljs-keyword">array</span>($pivot),
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;array($pivot),
 
-        <span class="hljs-comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
-        quickSort($right)
-    );
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;quickSort($right)
+&#xA0;&#xA0;&#xA0;&#xA0;);
 
 }
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;</span>
-$array = <span class="hljs-keyword">array</span>(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-number">1</span>);
-$result = quickSort($array);
-var_dump($result); 
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
+$array&#xA0;=&#xA0;array(6,&#xA0;4,&#xA0;3,&#xA0;7,&#xA0;8,&#xA0;5,&#xA0;2,&#xA0;9,&#xA0;1);
+$result&#xA0;=&#xA0;quickSort($array);
+var_dump($result);&#xA0;
 
-<span class="hljs-comment">// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
-<span class="hljs-comment">// 1, 2, 3, 4, 5, 6, 7, 8</span>
-</code></pre>
+//&#xA0;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
+//&#xA0;1,&#xA0;2,&#xA0;3,&#xA0;4,&#xA0;5,&#xA0;6,&#xA0;7,&#xA0;8
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x9069;&#x5F53;&#x306A;&#x5024;&#x3092;&#x57FA;&#x6E96;&#x5024;&#xFF08;Pivot&#xFF09;&#x3068;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3088;&#x308A;&#x5C0F;&#x3055;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3068;&#x5927;&#x304D;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x540C;&#x69D8;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4E21;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x4E2D;&#x3067;Pivot&#x3092;&#x9078;&#x3073;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5185;&#x306E;&#x5024;&#x304C;&#x4E00;&#x3064;&#x306B;&#x306A;&#x308B;&#x307E;&#x3067;&#xFF0C;&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;-1.jpg" alt="&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;-1"></p>
@@ -1574,83 +1574,83 @@ var_dump($result);
 <p>&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x8868;&#x3067;&#x8868;&#x3059;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x540C;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;0&#x300F;&#xFF0C;&#x96A3;&#x308A;&#x5408;&#x308F;&#x306A;&#x3044;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;-1&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;.png" alt="&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;</span>
-$matrix = <span class="hljs-keyword">array</span>(
-    <span class="hljs-string">&apos;P0&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>),
-    <span class="hljs-string">&apos;P1&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>),
-    <span class="hljs-string">&apos;P2&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">8</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">-1</span>),
-    <span class="hljs-string">&apos;P3&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">4</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">8</span>, <span class="hljs-number">-1</span>),
-    <span class="hljs-string">&apos;P4&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">9</span>),
-    <span class="hljs-string">&apos;P5&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>),
-    <span class="hljs-string">&apos;P6&apos;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>)
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;
+$matrix&#xA0;=&#xA0;array(
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P0&apos;&#xA0;=&gt;&#xA0;array(0,&#xA0;2,&#xA0;8,&#xA0;4,&#xA0;-1,&#xA0;-1,&#xA0;-1),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P1&apos;&#xA0;=&gt;&#xA0;array(2,&#xA0;0,&#xA0;-1,&#xA0;-1,&#xA0;3,&#xA0;-1,&#xA0;-1),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P2&apos;&#xA0;=&gt;&#xA0;array(8,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;2,&#xA0;3,&#xA0;-1),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P3&apos;&#xA0;=&gt;&#xA0;array(4,&#xA0;-1,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;8,&#xA0;-1),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P4&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;3,&#xA0;2,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;9),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P5&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;-1,&#xA0;3,&#xA0;8,&#xA0;-1,&#xA0;0,&#xA0;3),
+&#xA0;&#xA0;&#xA0;&#xA0;&apos;P6&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;-1,&#xA0;-1,&#xA0;-1,&#xA0;9,&#xA0;3,&#xA0;0)
 );
-</code></pre>
-<pre><code class="lang-PHP"><span class="hljs-meta">&lt;?php</span>
-<span class="hljs-comment">// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bestFirstSearchByDijkstra</span><span class="hljs-params">(
-    array $matrix,
-    int $startPoint,
-    int $goalPoint
-)</span>
-</span>{
-    <span class="hljs-comment">// &#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
-    define(<span class="hljs-string">&apos;POINT_NUMBER&apos;</span>, count($matrix));
+</span></pre></div></div></code></pre>
+<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+//&#xA0;&#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;
+function&#xA0;bestFirstSearchByDijkstra(
+&#xA0;&#xA0;&#xA0;&#xA0;array&#xA0;$matrix,
+&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;$startPoint,
+&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;$goalPoint
+)
+{
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;POINT_NUMBER&apos;,&#xA0;count($matrix));
 
-    <span class="hljs-keyword">if</span>($startPoint &lt; <span class="hljs-keyword">self</span>::POINT_NUMBER
-        || <span class="hljs-keyword">self</span>::POINT_NUMBER &lt; $goalPoint){
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">Exception</span>(<span class="hljs-string">&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;</span>);
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;if($startPoint&#xA0;&lt;&#xA0;self::POINT_NUMBER
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;||&#xA0;self::POINT_NUMBER&#xA0;&lt;&#xA0;$goalPoint){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;);
+&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
-    define(<span class="hljs-string">&apos;START_POINT&apos;</span>, $startPoint);
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;START_POINT&apos;,&#xA0;$startPoint);
 
-    <span class="hljs-comment">// &#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
-    define(<span class="hljs-string">&apos;GOAL_POINT&apos;</span>, $goalPoint));
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;GOAL_POINT&apos;,&#xA0;$goalPoint));
 
-    <span class="hljs-comment">// &#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;</span>
-    <span class="hljs-comment">// &#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;</span>
-    <span class="hljs-keyword">for</span>($i = <span class="hljs-number">0</span>; $i &lt; <span class="hljs-keyword">self</span>::POINT_NUMBER; $i ++){
-        $route[$i] = <span class="hljs-number">-1</span>;
-        $distance[$i] = <span class="hljs-number">-1</span>;
-        $fixFlg[$i] = <span class="hljs-keyword">false</span>;
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;for($i&#xA0;=&#xA0;0;&#xA0;$i&#xA0;&lt;&#xA0;self::POINT_NUMBER;&#xA0;$i&#xA0;++){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$route[$i]&#xA0;=&#xA0;-1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$distance[$i]&#xA0;=&#xA0;-1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$fixFlg[$i]&#xA0;=&#xA0;false;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-    <span class="hljs-comment">// &#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;</span>
-    <span class="hljs-comment">// $cost = array_fill(0, self::POINT_NUMBER, -1);</span>
-    <span class="hljs-comment">// $distance = array_fill(0, self::POINT_NUMBER, -1);</span>
-    <span class="hljs-comment">// $fix = array_fill(0, self::POINT_NUMBER, false);</span>
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$cost&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;-1);
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$distance&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;-1);
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$fix&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;false);
 
-    <span class="hljs-comment">// &#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
-    $distance[<span class="hljs-keyword">self</span>::START_POINT] = <span class="hljs-number">0</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;
+&#xA0;&#xA0;&#xA0;&#xA0;$distance[self::START_POINT]&#xA0;=&#xA0;0;
 
-    <span class="hljs-comment">// </span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){
-        $i = <span class="hljs-number">0</span>;
+&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;
+&#xA0;&#xA0;&#xA0;&#xA0;while(true){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;=&#xA0;0;
 
-        <span class="hljs-keyword">while</span>($i &lt; <span class="hljs-keyword">self</span>::POINT_NUMBER){
-            <span class="hljs-keyword">if</span>(!$fixFlg[$i]){
-                <span class="hljs-keyword">break</span> <span class="hljs-number">1</span>;
-            }
-            $i += <span class="hljs-number">1</span>;
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;while($i&#xA0;&lt;&#xA0;self::POINT_NUMBER){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!$fixFlg[$i]){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break&#xA0;1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;+=&#xA0;1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">if</span>($i === <span class="hljs-keyword">self</span>::POINT_NUMBER){
-            <span class="hljs-keyword">break</span> <span class="hljs-number">1</span>;
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($i&#xA0;===&#xA0;self::POINT_NUMBER){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break&#xA0;1;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-keyword">for</span>($j = $i + <span class="hljs-number">1</span>; j &lt; <span class="hljs-keyword">self</span>::POINT_NUMBER; $j ++){
-            <span class="hljs-keyword">if</span>(!$fixFlg[$i] &amp;&amp; $distance[$j] &lt; $distance[$i]){
-                $i = $j;
-            }
-        }
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for($j&#xA0;=&#xA0;$i&#xA0;+&#xA0;1;&#xA0;j&#xA0;&lt;&#xA0;self::POINT_NUMBER;&#xA0;$j&#xA0;++){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!$fixFlg[$i]&#xA0;&amp;&amp;&#xA0;$distance[$j]&#xA0;&lt;&#xA0;$distance[$i]){
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;=&#xA0;$j;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
 
-        <span class="hljs-comment">// &#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;</span>
-        <span class="hljs-comment">// &#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;
 
-    }
+&#xA0;&#xA0;&#xA0;&#xA0;}
 }
-</code></pre>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x6700;&#x77ED;&#x7D4C;&#x8DEF;&#x63A2;&#x7D22;&#x51E6;&#x7406;&#x306E;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>$startPoint = 0</p>
 <p>$goalPoint = 6</p>
@@ -1743,7 +1743,7 @@ $matrix = <span class="hljs-keyword">array</span>(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"next":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.29","depth":1,"ref":"","articles":[{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2020-12-20T17:43:34.847Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"next":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.29","depth":1,"ref":"","articles":[{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2020-12-20T17:43:34.847Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1762,10 +1762,6 @@ $matrix = <span class="hljs-keyword">array</span>(
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         

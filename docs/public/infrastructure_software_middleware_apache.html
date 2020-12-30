@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
                 
             
                 
@@ -1373,21 +1373,21 @@
 <h2 id="01-tips">01. Tips</h2>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre><code class="lang-bash"><span class="hljs-comment"># systemctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306F;&#x7121;&#x3044;</span>
-$ service httpd configtest
-$ apachectl configtest
-$ apachectl -t
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;systemctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306F;&#x7121;&#x3044;</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-command">service</span>&#xA0;<span class="sunlight-ident">httpd</span>&#xA0;<span class="sunlight-ident">configtest</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">apachectl</span>&#xA0;<span class="sunlight-ident">configtest</span>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">apachectl</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">t</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;&#xFF0F;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;&#xFF0F;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre><code class="lang-bash">$ systemctl start httpd
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">start</span>&#xA0;<span class="sunlight-ident">httpd</span>
 
-$ systemctl stop httpd
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">stop</span>&#xA0;<span class="sunlight-ident">httpd</span>
 
-$ systemctl restart httpd
-</code></pre>
+<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">systemctl</span>&#xA0;<span class="sunlight-ident">restart</span>&#xA0;<span class="sunlight-ident">httpd</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre><code class="lang-bash">$ apachectl -k graceful
-</code></pre>
+<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">apachectl</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">k</span>&#xA0;<span class="sunlight-ident">graceful</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="02-apache&#x306E;&#x7528;&#x9014;">02. Apache&#x306E;&#x7528;&#x9014;</h2>
 <h3 id="web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;">Web&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
@@ -1399,30 +1399,30 @@ $ systemctl restart httpd
 <p>&#x4ED6;&#x306E;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#xFF0C;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x901A;&#x5E38;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;etc&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x306B;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">ServerRoot</span></span> /etc/httpd
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">ServerRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd</span>
+</span></pre></div></div></code></pre>
 <p>CentOS&#x306E;EPEL&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x7D4C;&#x7531;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;Apache&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x5F8C;&#x306B;&#xFF0C;opt&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x306B;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8A2D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">ServerRoot</span></span> /opt/rh/httpd24/root/etc/httpd
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">ServerRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">opt</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">rh</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd24</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">root</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="virtualhost">VirtualHost</h3>
 <h4 id="&#x30FB;virtualhost&#x3068;&#x306F;">&#x30FB;VirtualHost&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x56F2;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x7279;&#x5B9A;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x3084;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x3042;&#x3063;&#x305F;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;VirtualHost&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x901A;&#x308A;&#xFF0C;1 &#x3064;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x4E0A;&#x3067;&#xFF0C;&#x4EEE;&#x60F3;&#x7684;&#x306B;&#x8907;&#x6570;&#x306E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x3092;&#x6271;&#x3046;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x3082;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x8907;&#x6570;&#x306E;VirtualHost&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x304C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x8A2D;&#x5B9A;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">Listen</span></span> 80
-<span class="hljs-attribute">NameVirtualHost</span> *:80
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">Listen</span>&#xA0;<span class="sunlight-number">80</span>
+<span class="sunlight-keyword">NameVirtualHost</span>&#xA0;<span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">:</span><span class="sunlight-number">80</span>
 
-<span class="hljs-comment"># Default&#x30B5;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;&#xFF0E;</span>
-<span class="hljs-section">&lt;VirtualHost *:80&gt;</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /www/example1
-    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> www.example.com
-<span class="hljs-section">&lt;/VirtualHost&gt;</span>
+<span class="sunlight-comment">#&#xA0;Default&#x30B5;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x6271;&#x3046;&#xFF0E;</span>
+<span class="sunlight-operator">&lt;</span><span class="sunlight-context">VirtualHost</span>&#xA0;<span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">:</span><span class="sunlight-number">80</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DocumentRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example1</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ServerName</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">VirtualHost</span><span class="sunlight-operator">&gt;</span>
 
-<span class="hljs-section">&lt;VirtualHost *:80&gt;</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /www/example2
-    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> www.example.org
-<span class="hljs-section">&lt;/VirtualHost&gt;</span>
-</code></pre>
+<span class="sunlight-operator">&lt;</span><span class="sunlight-context">VirtualHost</span>&#xA0;<span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">:</span><span class="sunlight-number">80</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DocumentRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example2</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ServerName</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">org</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">VirtualHost</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;ip&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;IP&#x30D9;&#x30FC;&#x30B9;VirtualHost</h4>
 <p>&#x5404;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306B;&#x7570;&#x306A;&#x308B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5272;&#x308A;&#x632F;&#x308B;&#x30D0;&#x30FC;&#x30C1;&#x30E3;&#x30EB;&#x30DB;&#x30B9;&#x30C8;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;VirtualHost</h4>
@@ -1432,58 +1432,58 @@ $ systemctl restart httpd
 <h4 id="&#x30FB;documentroot&#x3068;&#x306F;">&#x30FB;DocumentRoot&#x3068;&#x306F;</h4>
 <p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x306B;&#x300C;<code>index.html</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;<code>index.html</code>&#x304C;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3057;&#x3066;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-section">&lt;VirtualHost *:80&gt;</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /www/example1
-    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> www.example.com
-<span class="hljs-section">&lt;/VirtualHost&gt;</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-operator">&lt;</span><span class="sunlight-context">VirtualHost</span>&#xA0;<span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">:</span><span class="sunlight-number">80</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DocumentRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example1</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ServerName</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">VirtualHost</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <p>index.html&#x4EE5;&#x5916;&#x306E;&#x540D;&#x524D;&#x3092;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-section">&lt;VirtualHost *:80&gt;</span>
-    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /www/example1/start-up.html
-    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> www.example.com
-<span class="hljs-section">&lt;/VirtualHost&gt;</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-operator">&lt;</span><span class="sunlight-context">VirtualHost</span>&#xA0;<span class="sunlight-punctuation">*</span><span class="sunlight-punctuation">:</span><span class="sunlight-number">80</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DocumentRoot</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">www</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">example1</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">start</span><span class="sunlight-punctuation">-</span><span class="sunlight-ident">up</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ServerName</span>&#xA0;<span class="sunlight-ident">www</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">com</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">VirtualHost</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <h3 id="directory">Directory</h3>
 <h4 id="&#x30FB;directory&#x3068;&#x306F;">&#x30FB;Directory&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x56F2;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x3042;&#x3063;&#x305F;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-section">&lt;Directory &quot;/var/www/example&quot;&gt;</span>
-    <span class="hljs-attribute">DirectoryIndex</span> index.php
-    <span class="hljs-attribute">AllowOverride</span> <span class="hljs-literal">All</span>
-<span class="hljs-section">&lt;/Directory&gt;</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-operator">&lt;</span><span class="sunlight-context">Directory</span>&#xA0;<span class="sunlight-string">&quot;/var/www/example&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DirectoryIndex</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">AllowOverride</span>&#xA0;<span class="sunlight-ident">All</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">Directory</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="user&#xFF0C;group">User&#xFF0C;Group</h3>
 <h4 id="&#x30FB;user&#x3068;&#x306F;">&#x30FB;User&#x3068;&#x306F;</h4>
 <p>httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6240;&#x6709;&#x8005;&#x540D;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x3082;&#x306E;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">User</span> apache
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">User</span>&#xA0;<span class="sunlight-ident">apache</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;group&#x3068;&#x306F;">&#x30FB;Group&#x3068;&#x306F;</h4>
 <p>httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x3082;&#x306E;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">Group</span> apache
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">Group</span>&#xA0;<span class="sunlight-ident">apache</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="keepalive&#xFF0C;maxkeepaliverequests&#xFF0C;keepalivetimeout">KeepAlive&#xFF0C;MaxKeepAliveRequests&#xFF0C;KeepAliveTimeout</h3>
 <h4 id="&#x30FB;keepalive&#x3068;&#x306F;">&#x30FB;KeepAlive&#x3068;&#x306F;</h4>
 <p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0C;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">KeepAlive</span> <span class="hljs-literal">On</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">KeepAlive</span>&#xA0;<span class="sunlight-ident">On</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;keepalivetimeout">&#x30FB;KeepAliveTimeout</h4>
 <p>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x4E2D;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x518D;&#x3073;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x307E;&#x3067;&#x306B;&#x4F55;&#x79D2;&#x9593;&#x7A7A;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7834;&#x68C4;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-comment"># KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
-<span class="hljs-attribute">KeepAliveTimeout</span> 5
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-comment">#&#xA0;KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
+<span class="sunlight-keyword">KeepAliveTimeout</span>&#xA0;<span class="sunlight-number">5</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;maxkeepaliverequests">&#x30FB;MaxKeepAliveRequests</h4>
 <p>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x4E2D;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6700;&#x5927;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-comment"># KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
-<span class="hljs-attribute">MaxKeepAliveRequests</span> 1000
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-comment">#&#xA0;KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
+<span class="sunlight-keyword">MaxKeepAliveRequests</span>&#xA0;<span class="sunlight-number">1000</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04. mod_so&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="loadmodule">LoadModule</h3>
@@ -1491,82 +1491,82 @@ $ systemctl restart httpd
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#xFF0C;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5BA3;&#x8A00;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#xFF0C;ServerRoot&#x3092;&#x9069;&#x7528;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;httpd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;modules&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x304C;&#x53C2;&#x7167;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-comment"># ServerRoot &#x304C; /opt/rh/httpd24/root/etc/httpd &#x3060;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-comment">#&#xA0;ServerRoot&#xA0;&#x304C;&#xA0;/opt/rh/httpd24/root/etc/httpd&#xA0;&#x3060;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
 
-<span class="hljs-attribute"><span class="hljs-nomarkup">LoadModule</span></span> dir_module modules/mod_dir.so
-</code></pre>
+<span class="sunlight-keyword">LoadModule</span>&#xA0;<span class="sunlight-ident">dir_module</span>&#xA0;<span class="sunlight-ident">modules</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">mod_dir</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">so</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-02-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-02. mod_dir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="directoryindex">DirectoryIndex</h3>
 <h4 id="&#x30FB;directoryindex&#x3068;&#x306F;">&#x30FB;DirectoryIndex&#x3068;&#x306F;</h4>
 <p>Directory&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306B;&#x3088;&#x3063;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-section">&lt;Directory &quot;/var/www/example&quot;&gt;</span>
-    <span class="hljs-attribute">DirectoryIndex</span> index.html index.php
-<span class="hljs-section">&lt;/Directory&gt;</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-operator">&lt;</span><span class="sunlight-context">Directory</span>&#xA0;<span class="sunlight-string">&quot;/var/www/example&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DirectoryIndex</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">Directory</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-section">&lt;Directory &quot;/var/www/example&quot;&gt;</span>
-    <span class="hljs-attribute">DirectoryIndex</span> index.html
-    <span class="hljs-attribute">DirectoryIndex</span> index.php
-<span class="hljs-section">&lt;/Directory&gt;</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-operator">&lt;</span><span class="sunlight-context">Directory</span>&#xA0;<span class="sunlight-string">&quot;/var/www/example&quot;</span><span class="sunlight-operator">&gt;</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DirectoryIndex</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">html</span>
+&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">DirectoryIndex</span>&#xA0;<span class="sunlight-ident">index</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">php</span>
+<span class="sunlight-operator">&lt;/</span><span class="sunlight-context">Directory</span><span class="sunlight-operator">&gt;</span>
+</span></pre></div></div></code></pre>
 <h3 id="allowoverride">AllowOverride</h3>
 <h4 id="&#x30FB;allowoverride&#x3068;&#x306F;">&#x30FB;AllowOverride&#x3068;&#x306F;</h4>
-<pre><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;">
+<pre><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```apacheconf
-&lt;Directory &quot;/var/www/example&quot;&gt;
-    DirectoryIndex index.php
-    AllowOverride All
+&lt;Directory&#xA0;&quot;/var/www/example&quot;&gt;
+&#xA0;&#xA0;&#xA0;&#xA0;DirectoryIndex&#xA0;index.php
+&#xA0;&#xA0;&#xA0;&#xA0;AllowOverride&#xA0;All
 &lt;/Directory&gt;
-</code></pre>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;all">&#x30FB;All</h4>
-<pre><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;">
+<pre><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```apacheconf
-AllowOverride All
-</code></pre>
+AllowOverride&#xA0;All
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;none">&#x30FB;None</h4>
 <p>&#x5168;&#x3066;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">AllowOverride</span> None
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">AllowOverride</span>&#xA0;<span class="sunlight-ident">None</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;indexes">&#x30FB;Indexes</h4>
 <p>htaccess&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;DirectoryIndex&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">AllowOverride</span> Indexes
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">AllowOverride</span>&#xA0;<span class="sunlight-ident">Indexes</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-03-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-03. mod_write&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="rewritecond">RewriteCond</h3>
 <h4 id="&#x30FB;rewritecond&#x3068;&#x306F;">&#x30FB;RewriteCond&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#xFF0C;&#x305D;&#x308C;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> %&#x5909;&#x6570;&#x540D; &#x6761;&#x4EF6;
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">RewriteCond</span>&#xA0;<span class="sunlight-punctuation">%</span><span class="sunlight-regexLiteral">&#x5909;&#x6570;&#x540D;</span>&#xA0;<span class="sunlight-punctuation">&#x6761;</span><span class="sunlight-punctuation">&#x4EF6;</span>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{HTTP:X-Forwarded-Port}</span> !^443$
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">RewriteCond</span>&#xA0;<span class="sunlight-environmentVariable">%{HTTP:X-Forwarded-Port}</span>&#xA0;<span class="sunlight-regexLiteral">!^443$</span>
+</span></pre></div></div></code></pre>
 <h3 id="rewriterule">RewriteRule</h3>
 <h4 id="&#x30FB;rewriterule&#x3068;&#x306F;">&#x30FB;RewriteRule&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> URL&#x66F8;&#x63DB;&#xFF06;&#x8EE2;&#x9001;&#x306E;&#x8A18;&#x8FF0;
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">RewriteRule</span>&#xA0;<span class="sunlight-regexLiteral">URL&#x66F8;&#x63DB;&#xFF06;&#x8EE2;&#x9001;&#x306E;&#x8A18;&#x8FF0;</span>
+</span></pre></div></div></code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> ^(.*)?$ https://<span class="hljs-variable">%{HTTP_HOST}</span><span class="hljs-number">$1</span><span class="hljs-meta"> [R=301,L]</span>
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">RewriteRule</span>&#xA0;<span class="sunlight-regexLiteral">^(.*)?$</span>&#xA0;<span class="sunlight-ident">https</span><span class="sunlight-punctuation">:</span><span class="sunlight-punctuation">/</span><span class="sunlight-punctuation">/</span><span class="sunlight-environmentVariable">%{HTTP_HOST}</span><span class="sunlight-punctuation">$</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">[</span><span class="sunlight-ident">R</span><span class="sunlight-punctuation">=</span><span class="sunlight-number">301</span><span class="sunlight-punctuation">,</span><span class="sunlight-ident">L</span><span class="sunlight-punctuation">]</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="04-04-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-04. mod_setenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="setenvif">SetEnvIf</h3>
 <h4 id="&#x30FB;setenvif&#x3068;&#x306F;">&#x30FB;SetEnvIf&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-apacheconf"><span class="hljs-comment"># &#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x4EE5;&#x4E0B;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x5834;&#x5408;&#x306B;&#xFF0C;</span>
-<span class="hljs-attribute">SetEnvIf</span> Request_URI <span class="hljs-string">&quot;\.(gif|jpe?g|png|js|css)$&quot;</span> object-is-ignore
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-comment">#&#xA0;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x4EE5;&#x4E0B;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x5834;&#x5408;&#x306B;&#xFF0C;</span>
+<span class="sunlight-keyword">SetEnvIf</span>&#xA0;<span class="sunlight-ident">Request_URI</span>&#xA0;<span class="sunlight-string">&quot;\.(gif|jpe?g|png|js|css)$&quot;</span>&#xA0;<span class="sunlight-ident">object</span><span class="sunlight-punctuation">-</span><span class="sunlight-ident">is</span><span class="sunlight-punctuation">-</span><span class="sunlight-ident">ignore</span>
+</span></pre></div></div></code></pre>
 <h4 id="&#x30FB;nolog">&#x30FB;nolog</h4>
 <p>&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><br></p>
@@ -1577,14 +1577,14 @@ AllowOverride All
 <h4 id="&#x30FB;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;">&#x30FB;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;</h4>
 <p>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x5408;&#x308F;&#x305B;&#x3066;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-comment"># common&#x5F62;&#x5F0F;</span>
-<span class="hljs-attribute">CustomLog</span> logs/access_log common
-<span class="hljs-attribute">LogFormat</span> <span class="hljs-string">&quot;%h %l %u %t &quot;</span>%r<span class="hljs-string">&quot; %&gt;s %b&quot;</span> common
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-comment">#&#xA0;common&#x5F62;&#x5F0F;</span>
+<span class="sunlight-keyword">CustomLog</span>&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">access_log</span>&#xA0;<span class="sunlight-ident">common</span>
+<span class="sunlight-keyword">LogFormat</span>&#xA0;<span class="sunlight-string">&quot;%h&#xA0;%l&#xA0;%u&#xA0;%t&#xA0;&quot;</span><span class="sunlight-punctuation">%</span><span class="sunlight-ident">r</span><span class="sunlight-string">&quot;&#xA0;%&gt;s&#xA0;%b&quot;</span>&#xA0;<span class="sunlight-ident">common</span>
 
-<span class="hljs-comment"># combine&#x5F62;&#x5F0F;</span>
-<span class="hljs-attribute">CustomLog</span> logs/access_log combined
-<span class="hljs-attribute">LogFormat</span> <span class="hljs-string">&quot;%h %l %u %t &quot;</span>%r<span class="hljs-string">&quot; %&gt;s %b &quot;</span><span class="hljs-variable">%{Referer}</span>i<span class="hljs-string">&quot; &quot;</span><span class="hljs-variable">%{User-Agent}</span>i<span class="hljs-string">&quot;&quot;</span> combined
-</code></pre>
+<span class="sunlight-comment">#&#xA0;combine&#x5F62;&#x5F0F;</span>
+<span class="sunlight-keyword">CustomLog</span>&#xA0;<span class="sunlight-ident">logs</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">access_log</span>&#xA0;<span class="sunlight-ident">combined</span>
+<span class="sunlight-keyword">LogFormat</span>&#xA0;<span class="sunlight-string">&quot;%h&#xA0;%l&#xA0;%u&#xA0;%t&#xA0;&quot;</span><span class="sunlight-punctuation">%</span><span class="sunlight-ident">r</span><span class="sunlight-string">&quot;&#xA0;%&gt;s&#xA0;%b&#xA0;&quot;</span><span class="sunlight-environmentVariable">%{Referer}</span><span class="sunlight-ident">i</span><span class="sunlight-string">&quot;&#xA0;&quot;</span><span class="sunlight-environmentVariable">%{User-Agent}</span><span class="sunlight-ident">i</span><span class="sunlight-string">&quot;&quot;</span>&#xA0;<span class="sunlight-ident">combined</span>
+</span></pre></div></div></code></pre>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30ED;&#x30B0;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <pre><code># common&#x5F62;&#x5F0F;
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] &quot;GET /home/name/category/web HTTP/1.1&quot; 200 11815
@@ -1655,8 +1655,8 @@ AllowOverride All
 <h4 id="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;">&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;</h4>
 <p>&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">ErrorLog</span> /var/log/httpd/error_log
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">ErrorLog</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">var</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">log</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">error_log</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h3 id="loglevel">LogLevel</h3>
 <h4 id="&#x30FB;loglevel&#x3068;&#x306F;">&#x30FB;LogLevel&#x3068;&#x306F;</h4>
@@ -1717,14 +1717,14 @@ AllowOverride All
 <h4 id="&#x30FB;sslcertificatefile&#x3068;&#x306F;">&#x30FB;SSLCertificateFile&#x3068;&#x306F;</h4>
 <p>PKI&#x306B;&#x304A;&#x3051;&#x308B;&#x516C;&#x958B;&#x9375;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x5FC5;&#x8981;&#x306A;SSL&#x30B5;&#x30FC;&#x30D0;&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x306F;AWS&#x306E;ACM&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x306A;&#x7528;&#x9014;&#x3068;&#x3057;&#x3066;&#x306F;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x958B;&#x767A;&#x3067;&#x306E;&#x30AA;&#x30EC;&#x30AA;&#x30EC;&#x8A3C;&#x660E;&#x66F8;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">SSLCertificateFile</span> /etc/httpd/conf.d/server.crt
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">SSLCertificateFile</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">crt</span>
+</span></pre></div></div></code></pre>
 <h3 id="sslcertificatekeyfile">SSLCertificateKeyFile</h3>
 <h4 id="&#x30FB;sslcertificatekeyfile&#x3068;&#x306F;">&#x30FB;SSLCertificateKeyFile&#x3068;&#x306F;</h4>
 <p>PKI&#x306B;&#x304A;&#x3051;&#x308B;&#x516C;&#x958B;&#x9375;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-apacheconf"><span class="hljs-attribute">SSLCertificateKeyFile</span> /etc/httpd/conf.d/server.key
-</code></pre>
+<pre><code class="lang-apacheconf"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container"><pre class="sunlight-highlight-httpd sunlight-highlighted"><span class="sunlight-httpd"><span class="sunlight-keyword">SSLCertificateKeyFile</span>&#xA0;<span class="sunlight-punctuation">/</span><span class="sunlight-ident">etc</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">httpd</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">conf</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">d</span><span class="sunlight-punctuation">/</span><span class="sunlight-ident">server</span><span class="sunlight-punctuation">.</span><span class="sunlight-ident">key</span>
+</span></pre></div></div></code></pre>
 <p><br></p>
 <h2 id="05-htaccess">05. htaccess</h2>
 <h3 id="&#x5F71;&#x97FF;&#x7BC4;&#x56F2;">&#x5F71;&#x97FF;&#x7BC4;&#x56F2;</h3>
@@ -1773,7 +1773,7 @@ AllowOverride All
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","copy-code-button","advanced-emoji","back-to-top-button","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2020-12-20T17:43:34.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-29T19:32:12.224Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":false,"theme":"dark","lineNumber":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2020-12-20T17:43:34.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T16:30:36.389Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1792,10 +1792,6 @@ AllowOverride All
     
         
         <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
         
     
         
