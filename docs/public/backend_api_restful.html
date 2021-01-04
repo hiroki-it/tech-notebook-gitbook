@@ -1699,10 +1699,13 @@ GET&#xA0;http://www.example.co.jp/user/12345
 <a name="sunlight-172-line-16" href="#sunlight-172-line-16">16</a>
 <a name="sunlight-172-line-17" href="#sunlight-172-line-17">17</a>
 <a name="sunlight-172-line-18" href="#sunlight-172-line-18">18</a>
+<a name="sunlight-172-line-19" href="#sunlight-172-line-19">19</a>
+<a name="sunlight-172-line-20" href="#sunlight-172-line-20">20</a>
+<a name="sunlight-172-line-21" href="#sunlight-172-line-21">21</a>
 </div><pre class="sunlight-highlight-http sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
 GET&#xA0;http://127.0.0.1/testform.php?text1=a&amp;text2=b&#xA0;HTTP/1.1
-#&#xA0;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;
-HOST:&#xA0;127.0.0.1
+#&#xA0;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;
+Host:&#xA0;127.0.0.1
 Connection:&#xA0;keep-alive
 Upgrade-Insecure-Requests:&#xA0;1
 #&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6700;&#x5927;&#x6709;&#x52B9;&#x671F;&#x9650;
@@ -1717,6 +1720,9 @@ Referer:&#xA0;http://127.0.0.1/
 Accept-Encondig:&#xA0;gzip,&#xA0;deflate,&#xA0;br
 #&#xA0;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3067;&#x9001;&#x4FE1;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;&#x8A00;&#x8A9E;
 Accept-Language:&#xA0;ja,&#xA0;en-US;&#xA0;q=0.9,&#xA0;en;&#xA0;q=0.8
+#&#xA0;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+#&#xA0;&#x203B;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#xFF08;ALB&#x3084;CloudFront&#x306A;&#x3069;&#x3082;&#x542B;&#x3080;&#xFF09;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x3089;&#x5168;&#x3066;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3082;&#x9806;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;
+X-Forwarded-For:&#xA0;&lt;client&gt;,&#xA0;&lt;proxy1&gt;,&#xA0;&lt;proxy2&gt;
 </span></pre></div></div></code></pre>
 <h4 id="&#x30FB;post&#x9001;&#x4FE1;&#x306E;&#x5834;&#x5408;">&#x30FB;POST&#x9001;&#x4FE1;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#xFF0C;URL&#x306B;&#x8A18;&#x8FF0;&#x305B;&#x305A;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x9001;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;&#x4EE5;&#x4E0B;&#x3067;&#x306F;&#xFF0C;Web API&#x306E;&#x3046;&#x3061;&#xFF0C;&#x7279;&#x306B;RESTfulAPI&#x306B;&#x5BFE;&#x3057;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x69CB;&#x9020;&#x3092;&#x8AAC;&#x660E;&#x3059;&#x308B;&#xFF0E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x60C5;&#x5831;&#x304C;&#x8A18;&#x8FF0;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x5C65;&#x6B74;&#x3067;&#x306F;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;SSL&#x306B;&#x3088;&#x3063;&#x3066;&#x6697;&#x53F7;&#x5316;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x508D;&#x53D7;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x8981;&#x7D20;&#x306B;&#x5206;&#x985E;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -1747,10 +1753,13 @@ Accept-Language:&#xA0;ja,&#xA0;en-US;&#xA0;q=0.9,&#xA0;en;&#xA0;q=0.8
 <a name="sunlight-173-line-25" href="#sunlight-173-line-25">25</a>
 <a name="sunlight-173-line-26" href="#sunlight-173-line-26">26</a>
 <a name="sunlight-173-line-27" href="#sunlight-173-line-27">27</a>
-</div><pre class="sunlight-highlight-http sunlight-highlighted"><span class="sunlight-plaintext">&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
+<a name="sunlight-173-line-28" href="#sunlight-173-line-28">28</a>
+<a name="sunlight-173-line-29" href="#sunlight-173-line-29">29</a>
+<a name="sunlight-173-line-30" href="#sunlight-173-line-30">30</a>
+</div><pre class="sunlight-highlight-http sunlight-highlighted"><span class="sunlight-plaintext">#&#xA0;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
 POST&#xA0;http://127.0.0.1/testform.php&#xA0;HTTP/1.1
-#&#xA0;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;
-HOST:&#xA0;127.0.0.1
+#&#xA0;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;
+Host:&#xA0;127.0.0.1
 Connection:&#xA0;keep-alive
 Content-Length:&#xA0;15
 #&#xA0;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x7121;&#x52B9;&#x5316;
@@ -1769,8 +1778,11 @@ Referer:&#xA0;http://127.0.0.1/
 Accept-Encondig:&#xA0;gzip,&#xA0;deflate,&#xA0;br
 #&#xA0;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3067;&#x9001;&#x4FE1;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;&#x8A00;&#x8A9E;
 Accept-Language:&#xA0;ja,&#xA0;en-US;&#xA0;q=0.9,&#xA0;en;&#xA0;q=0.8
-#&#xA0;&#x4E8C;&#x56DE;&#x76EE;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#xFF08;name=value&#xFF09;
-Cookie:&#xA0;PHPSESSID=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;;&#xA0;csrftoken=u32t4o3tb3gg43;&#xA0;_gat=1
+#&#xA0;&#x5404;Cookie&#x306E;&#x5024;&#xFF08;&#x4E8C;&#x56DE;&#x76EE;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF09;
+Cookie:&#xA0;PHPSESSID=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;;&#xA0;csrftoken=&lt;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&gt;;&#xA0;_gat=1
+#&#xA0;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+#&#xA0;&#x203B;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#xFF08;ALB&#x3084;CloudFront&#x306A;&#x3069;&#x3082;&#x542B;&#x3080;&#xFF09;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x3089;&#x5168;&#x3066;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3082;&#x9806;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;
+X-Forwarded-For:&#xA0;&lt;client&gt;,&#xA0;&lt;proxy1&gt;,&#xA0;&lt;proxy2&gt;
 
 #&#xA0;&#x30DC;&#x30C7;&#x30A3;&#xFF0E;&#xFF08;SSL&#x306B;&#x3088;&#x3063;&#x3066;&#x6697;&#x53F7;&#x5316;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#x95B2;&#x89A7;&#x4E0D;&#x53EF;&#xFF09;
 text=a&amp;text2=b
@@ -2331,7 +2343,7 @@ session.save_path&#xA0;=&#xA0;&quot;tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"next":{"title":"PHP｜ライブラリ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"previous":{"title":"PHP｜API","level":"1.5","depth":1,"ref":"","articles":[{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2020-12-31T18:30:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-31T19:03:36.668Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"next":{"title":"PHP｜ライブラリ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"previous":{"title":"PHP｜API","level":"1.5","depth":1,"ref":"","articles":[{"title":"RESTful APIの概念と実装","level":"1.5.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2021-01-02T12:44:32.765Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-04T07:09:30.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
