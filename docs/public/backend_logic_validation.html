@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
                 
             
                 
@@ -1434,395 +1434,210 @@
 <p>&#x66DC;&#x65E5;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;if-elseif-else">&#x30FB;if-elseif-else</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-119-line-1" href="#sunlight-119-line-1">1</a>
-<a name="sunlight-119-line-2" href="#sunlight-119-line-2">2</a>
-<a name="sunlight-119-line-3" href="#sunlight-119-line-3">3</a>
-<a name="sunlight-119-line-4" href="#sunlight-119-line-4">4</a>
-<a name="sunlight-119-line-5" href="#sunlight-119-line-5">5</a>
-<a name="sunlight-119-line-6" href="#sunlight-119-line-6">6</a>
-<a name="sunlight-119-line-7" href="#sunlight-119-line-7">7</a>
-<a name="sunlight-119-line-8" href="#sunlight-119-line-8">8</a>
-<a name="sunlight-119-line-9" href="#sunlight-119-line-9">9</a>
-<a name="sunlight-119-line-10" href="#sunlight-119-line-10">10</a>
-<a name="sunlight-119-line-11" href="#sunlight-119-line-11">11</a>
-<a name="sunlight-119-line-12" href="#sunlight-119-line-12">12</a>
-<a name="sunlight-119-line-13" href="#sunlight-119-line-13">13</a>
-<a name="sunlight-119-line-14" href="#sunlight-119-line-14">14</a>
-<a name="sunlight-119-line-15" href="#sunlight-119-line-15">15</a>
-<a name="sunlight-119-line-16" href="#sunlight-119-line-16">16</a>
-<a name="sunlight-119-line-17" href="#sunlight-119-line-17">17</a>
-<a name="sunlight-119-line-18" href="#sunlight-119-line-18">18</a>
-<a name="sunlight-119-line-19" href="#sunlight-119-line-19">19</a>
-<a name="sunlight-119-line-20" href="#sunlight-119-line-20">20</a>
-<a name="sunlight-119-line-21" href="#sunlight-119-line-21">21</a>
-<a name="sunlight-119-line-22" href="#sunlight-119-line-22">22</a>
-<a name="sunlight-119-line-23" href="#sunlight-119-line-23">23</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5909;&#x6570;&#x306B;&#xA0;Tue&#xA0;&#x3092;&#x683C;&#x7D0D;
-$weeks&#xA0;=&#xA0;&apos;Tue&apos;;
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;
+$weeks = &apos;Tue&apos;;
 
-//&#xA0;if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;
-if&#xA0;($weeks&#xA0;==&#xA0;&apos;Mon&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6708;&#x66DC;&#x65E5;&apos;;
-}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Tue&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x706B;&#x66DC;&#x65E5;&apos;;
-}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Wed&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
-}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Thu&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6728;&#x66DC;&#x65E5;&apos;;
-}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Fri&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
-}&#xA0;elseif&#xA0;($weeks&#xA0;==&#xA0;&apos;Sat&apos;)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x571F;&#x66DC;&#x65E5;&apos;;
-}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
+// if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;
+if ($weeks == &apos;Mon&apos;) {
+    echo &apos;&#x6708;&#x66DC;&#x65E5;&apos;;
+} elseif ($weeks == &apos;Tue&apos;) {
+    echo &apos;&#x706B;&#x66DC;&#x65E5;&apos;;
+} elseif ($weeks == &apos;Wed&apos;) {
+    echo &apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
+} elseif ($weeks == &apos;Thu&apos;) {
+    echo &apos;&#x6728;&#x66DC;&#x65E5;&apos;;
+} elseif ($weeks == &apos;Fri&apos;) {
+    echo &apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
+} elseif ($weeks == &apos;Sat&apos;) {
+    echo &apos;&#x571F;&#x66DC;&#x65E5;&apos;;
+} else {
+    echo &apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
 }
 
-//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
-//&#xA0;&#x706B;&#x66DC;&#x65E5;
-</span></pre></div></div></code></pre>
+// &#x5B9F;&#x884C;&#x7D50;&#x679C;
+// &#x706B;&#x66DC;&#x65E5;
+</code></pre>
 <h4 id="&#x30FB;switch-case-break">&#x30FB;switch-case-break</h4>
 <p>&#x5B9A;&#x6570;&#x3054;&#x3068;&#x306B;&#x51E6;&#x7406;&#x304C;&#x5909;&#x308F;&#x308B;&#x6642;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x306E;&#x65B9;&#x304C;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-120-line-1" href="#sunlight-120-line-1">1</a>
-<a name="sunlight-120-line-2" href="#sunlight-120-line-2">2</a>
-<a name="sunlight-120-line-3" href="#sunlight-120-line-3">3</a>
-<a name="sunlight-120-line-4" href="#sunlight-120-line-4">4</a>
-<a name="sunlight-120-line-5" href="#sunlight-120-line-5">5</a>
-<a name="sunlight-120-line-6" href="#sunlight-120-line-6">6</a>
-<a name="sunlight-120-line-7" href="#sunlight-120-line-7">7</a>
-<a name="sunlight-120-line-8" href="#sunlight-120-line-8">8</a>
-<a name="sunlight-120-line-9" href="#sunlight-120-line-9">9</a>
-<a name="sunlight-120-line-10" href="#sunlight-120-line-10">10</a>
-<a name="sunlight-120-line-11" href="#sunlight-120-line-11">11</a>
-<a name="sunlight-120-line-12" href="#sunlight-120-line-12">12</a>
-<a name="sunlight-120-line-13" href="#sunlight-120-line-13">13</a>
-<a name="sunlight-120-line-14" href="#sunlight-120-line-14">14</a>
-<a name="sunlight-120-line-15" href="#sunlight-120-line-15">15</a>
-<a name="sunlight-120-line-16" href="#sunlight-120-line-16">16</a>
-<a name="sunlight-120-line-17" href="#sunlight-120-line-17">17</a>
-<a name="sunlight-120-line-18" href="#sunlight-120-line-18">18</a>
-<a name="sunlight-120-line-19" href="#sunlight-120-line-19">19</a>
-<a name="sunlight-120-line-20" href="#sunlight-120-line-20">20</a>
-<a name="sunlight-120-line-21" href="#sunlight-120-line-21">21</a>
-<a name="sunlight-120-line-22" href="#sunlight-120-line-22">22</a>
-<a name="sunlight-120-line-23" href="#sunlight-120-line-23">23</a>
-<a name="sunlight-120-line-24" href="#sunlight-120-line-24">24</a>
-<a name="sunlight-120-line-25" href="#sunlight-120-line-25">25</a>
-<a name="sunlight-120-line-26" href="#sunlight-120-line-26">26</a>
-<a name="sunlight-120-line-27" href="#sunlight-120-line-27">27</a>
-<a name="sunlight-120-line-28" href="#sunlight-120-line-28">28</a>
-<a name="sunlight-120-line-29" href="#sunlight-120-line-29">29</a>
-<a name="sunlight-120-line-30" href="#sunlight-120-line-30">30</a>
-<a name="sunlight-120-line-31" href="#sunlight-120-line-31">31</a>
-<a name="sunlight-120-line-32" href="#sunlight-120-line-32">32</a>
-<a name="sunlight-120-line-33" href="#sunlight-120-line-33">33</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5909;&#x6570;&#x306B;&#xA0;Tue&#xA0;&#x3092;&#x683C;&#x7D0D;
-$weeks&#xA0;=&#xA0;&apos;Tue&apos;;
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;
+$weeks = &apos;Tue&apos;;
 
-//&#xA0;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;
-switch&#xA0;($weeks)&#xA0;{
-&#xA0;&#xA0;case&#xA0;&apos;Mon&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6708;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Tue&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x706B;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Wed&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Thu&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x6728;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Fri&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Sat&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x571F;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;case&#xA0;&apos;Sun&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
-&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;default:
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;;&#xA0;&#xA0;
+// &#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;
+switch ($weeks) {
+  case &apos;Mon&apos;:
+    echo &apos;&#x6708;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Tue&apos;:
+    echo &apos;&#x706B;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Wed&apos;:
+    echo &apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Thu&apos;:
+    echo &apos;&#x6728;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Fri&apos;:
+    echo &apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Sat&apos;:
+    echo &apos;&#x571F;&#x66DC;&#x65E5;&apos;;
+    break;
+  case &apos;Sun&apos;:
+    echo &apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
+    break;
+  default:
+    echo &apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;;  
 }
 
-//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
-//&#xA0;&#x706B;&#x66DC;&#x65E5;
-</span></pre></div></div></code></pre>
+// &#x5B9F;&#x884C;&#x7D50;&#x679C;
+// &#x706B;&#x66DC;&#x65E5;
+</code></pre>
 <p><br></p>
 <h3 id="if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
 <h4 id="&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-121-line-1" href="#sunlight-121-line-1">1</a>
-<a name="sunlight-121-line-2" href="#sunlight-121-line-2">2</a>
-<a name="sunlight-121-line-3" href="#sunlight-121-line-3">3</a>
-<a name="sunlight-121-line-4" href="#sunlight-121-line-4">4</a>
-<a name="sunlight-121-line-5" href="#sunlight-121-line-5">5</a>
-<a name="sunlight-121-line-6" href="#sunlight-121-line-6">6</a>
-<a name="sunlight-121-line-7" href="#sunlight-121-line-7">7</a>
-<a name="sunlight-121-line-8" href="#sunlight-121-line-8">8</a>
-<a name="sunlight-121-line-9" href="#sunlight-121-line-9">9</a>
-<a name="sunlight-121-line-10" href="#sunlight-121-line-10">10</a>
-<a name="sunlight-121-line-11" href="#sunlight-121-line-11">11</a>
-<a name="sunlight-121-line-12" href="#sunlight-121-line-12">12</a>
-<a name="sunlight-121-line-13" href="#sunlight-121-line-13">13</a>
-<a name="sunlight-121-line-14" href="#sunlight-121-line-14">14</a>
-<a name="sunlight-121-line-15" href="#sunlight-121-line-15">15</a>
-<a name="sunlight-121-line-16" href="#sunlight-121-line-16">16</a>
-<a name="sunlight-121-line-17" href="#sunlight-121-line-17">17</a>
-<a name="sunlight-121-line-18" href="#sunlight-121-line-18">18</a>
-<a name="sunlight-121-line-19" href="#sunlight-121-line-19">19</a>
-<a name="sunlight-121-line-20" href="#sunlight-121-line-20">20</a>
-<a name="sunlight-121-line-21" href="#sunlight-121-line-21">21</a>
-<a name="sunlight-121-line-22" href="#sunlight-121-line-22">22</a>
-<a name="sunlight-121-line-23" href="#sunlight-121-line-23">23</a>
-<a name="sunlight-121-line-24" href="#sunlight-121-line-24">24</a>
-<a name="sunlight-121-line-25" href="#sunlight-121-line-25">25</a>
-<a name="sunlight-121-line-26" href="#sunlight-121-line-26">26</a>
-<a name="sunlight-121-line-27" href="#sunlight-121-line-27">27</a>
-<a name="sunlight-121-line-28" href="#sunlight-121-line-28">28</a>
-<a name="sunlight-121-line-29" href="#sunlight-121-line-29">29</a>
-<a name="sunlight-121-line-30" href="#sunlight-121-line-30">30</a>
-<a name="sunlight-121-line-31" href="#sunlight-121-line-31">31</a>
-<a name="sunlight-121-line-32" href="#sunlight-121-line-32">32</a>
-<a name="sunlight-121-line-33" href="#sunlight-121-line-33">33</a>
-<a name="sunlight-121-line-34" href="#sunlight-121-line-34">34</a>
-<a name="sunlight-121-line-35" href="#sunlight-121-line-35">35</a>
-<a name="sunlight-121-line-36" href="#sunlight-121-line-36">36</a>
-<a name="sunlight-121-line-37" href="#sunlight-121-line-37">37</a>
-<a name="sunlight-121-line-38" href="#sunlight-121-line-38">38</a>
-<a name="sunlight-121-line-39" href="#sunlight-121-line-39">39</a>
-<a name="sunlight-121-line-40" href="#sunlight-121-line-40">40</a>
-<a name="sunlight-121-line-41" href="#sunlight-121-line-41">41</a>
-<a name="sunlight-121-line-42" href="#sunlight-121-line-42">42</a>
-<a name="sunlight-121-line-43" href="#sunlight-121-line-43">43</a>
-<a name="sunlight-121-line-44" href="#sunlight-121-line-44">44</a>
-<a name="sunlight-121-line-45" href="#sunlight-121-line-45">45</a>
-<a name="sunlight-121-line-46" href="#sunlight-121-line-46">46</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example
+class Example
 {
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
+    /**
+     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+     */
+    const noOptionItem = 0;
 
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
+    /**
+     * @var Entity
+     */
+    private $routeEntity;
 
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
-&#xA0;&#xA0;&#xA0;&#xA0;{
+    public function example($result)
+    {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
+        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+        if (!empty($this-&gt;routeEntity-&gt;options)) {
+            foreach ($this-&gt;routeEntity-&gt;options as $option) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemA())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;$option-&gt;optionItemA();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+                if ($option-&gt;isOptionItemA()) {
+                    $result[&apos;optionItemA&apos;] = $option-&gt;optionItemA();
+                } else {
+                    $result[&apos;optionItemA&apos;] = self::noOptionItem;
+                }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemB())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;$option-&gt;optionItemB();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                if ($option-&gt;isOptionItemB()) {
+                    $result[&apos;optionItemB&apos;] = $option-&gt;optionItemB();
+                } else {
+                    $result[&apos;optionItemB&apos;] = self::noOptionItem;
+                }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemC())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;$option-&gt;optionItemC();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                if ($option-&gt;isOptionItemC()) {
+                    $result[&apos;optionItemC&apos;] = $option-&gt;optionItemC();
+                } else {
+                    $result[&apos;optionItemC&apos;] = self::noOptionItem;
+                }
+            }
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+        return $result;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-122-line-1" href="#sunlight-122-line-1">1</a>
-<a name="sunlight-122-line-2" href="#sunlight-122-line-2">2</a>
-<a name="sunlight-122-line-3" href="#sunlight-122-line-3">3</a>
-<a name="sunlight-122-line-4" href="#sunlight-122-line-4">4</a>
-<a name="sunlight-122-line-5" href="#sunlight-122-line-5">5</a>
-<a name="sunlight-122-line-6" href="#sunlight-122-line-6">6</a>
-<a name="sunlight-122-line-7" href="#sunlight-122-line-7">7</a>
-<a name="sunlight-122-line-8" href="#sunlight-122-line-8">8</a>
-<a name="sunlight-122-line-9" href="#sunlight-122-line-9">9</a>
-<a name="sunlight-122-line-10" href="#sunlight-122-line-10">10</a>
-<a name="sunlight-122-line-11" href="#sunlight-122-line-11">11</a>
-<a name="sunlight-122-line-12" href="#sunlight-122-line-12">12</a>
-<a name="sunlight-122-line-13" href="#sunlight-122-line-13">13</a>
-<a name="sunlight-122-line-14" href="#sunlight-122-line-14">14</a>
-<a name="sunlight-122-line-15" href="#sunlight-122-line-15">15</a>
-<a name="sunlight-122-line-16" href="#sunlight-122-line-16">16</a>
-<a name="sunlight-122-line-17" href="#sunlight-122-line-17">17</a>
-<a name="sunlight-122-line-18" href="#sunlight-122-line-18">18</a>
-<a name="sunlight-122-line-19" href="#sunlight-122-line-19">19</a>
-<a name="sunlight-122-line-20" href="#sunlight-122-line-20">20</a>
-<a name="sunlight-122-line-21" href="#sunlight-122-line-21">21</a>
-<a name="sunlight-122-line-22" href="#sunlight-122-line-22">22</a>
-<a name="sunlight-122-line-23" href="#sunlight-122-line-23">23</a>
-<a name="sunlight-122-line-24" href="#sunlight-122-line-24">24</a>
-<a name="sunlight-122-line-25" href="#sunlight-122-line-25">25</a>
-<a name="sunlight-122-line-26" href="#sunlight-122-line-26">26</a>
-<a name="sunlight-122-line-27" href="#sunlight-122-line-27">27</a>
-<a name="sunlight-122-line-28" href="#sunlight-122-line-28">28</a>
-<a name="sunlight-122-line-29" href="#sunlight-122-line-29">29</a>
-<a name="sunlight-122-line-30" href="#sunlight-122-line-30">30</a>
-<a name="sunlight-122-line-31" href="#sunlight-122-line-31">31</a>
-<a name="sunlight-122-line-32" href="#sunlight-122-line-32">32</a>
-<a name="sunlight-122-line-33" href="#sunlight-122-line-33">33</a>
-<a name="sunlight-122-line-34" href="#sunlight-122-line-34">34</a>
-<a name="sunlight-122-line-35" href="#sunlight-122-line-35">35</a>
-<a name="sunlight-122-line-36" href="#sunlight-122-line-36">36</a>
-<a name="sunlight-122-line-37" href="#sunlight-122-line-37">37</a>
-<a name="sunlight-122-line-38" href="#sunlight-122-line-38">38</a>
-<a name="sunlight-122-line-39" href="#sunlight-122-line-39">39</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example
+class Example
 {
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
+    /**
+     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+     */
+    const noOptionItem = 0;
 
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
+    /**
+     * @var Entity
+     */
+    private $routeEntity;
 
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
+    public function example($result)
+    {
+        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+        if (!empty($this-&gt;routeEntity-&gt;options)) {
+            foreach ($this-&gt;routeEntity-&gt;options as $option) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemA())
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemA()
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
+                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+                $result[&apos;optionItemA&apos;] = ($option-&gt;isOptionItemA())
+                    ? $option-&gt;optionItemA()
+                    : self::noOptionItem;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemB())
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemB()
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
+                $result[&apos;optionItemB&apos;] = ($option-&gt;isOptionItemB())
+                    ? $option-&gt;optionItemB()
+                    : self::noOptionItem;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;($option-&gt;isOptionItemC())
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;?&#xA0;$option-&gt;optionItemC()
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;:&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                $result[&apos;optionItemC&apos;] = ($option-&gt;isOptionItemC())
+                    ? $option-&gt;optionItemC()
+                    : self::noOptionItem;
+            };
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+        return $result;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-123-line-1" href="#sunlight-123-line-1">1</a>
-<a name="sunlight-123-line-2" href="#sunlight-123-line-2">2</a>
-<a name="sunlight-123-line-3" href="#sunlight-123-line-3">3</a>
-<a name="sunlight-123-line-4" href="#sunlight-123-line-4">4</a>
-<a name="sunlight-123-line-5" href="#sunlight-123-line-5">5</a>
-<a name="sunlight-123-line-6" href="#sunlight-123-line-6">6</a>
-<a name="sunlight-123-line-7" href="#sunlight-123-line-7">7</a>
-<a name="sunlight-123-line-8" href="#sunlight-123-line-8">8</a>
-<a name="sunlight-123-line-9" href="#sunlight-123-line-9">9</a>
-<a name="sunlight-123-line-10" href="#sunlight-123-line-10">10</a>
-<a name="sunlight-123-line-11" href="#sunlight-123-line-11">11</a>
-<a name="sunlight-123-line-12" href="#sunlight-123-line-12">12</a>
-<a name="sunlight-123-line-13" href="#sunlight-123-line-13">13</a>
-<a name="sunlight-123-line-14" href="#sunlight-123-line-14">14</a>
-<a name="sunlight-123-line-15" href="#sunlight-123-line-15">15</a>
-<a name="sunlight-123-line-16" href="#sunlight-123-line-16">16</a>
-<a name="sunlight-123-line-17" href="#sunlight-123-line-17">17</a>
-<a name="sunlight-123-line-18" href="#sunlight-123-line-18">18</a>
-<a name="sunlight-123-line-19" href="#sunlight-123-line-19">19</a>
-<a name="sunlight-123-line-20" href="#sunlight-123-line-20">20</a>
-<a name="sunlight-123-line-21" href="#sunlight-123-line-21">21</a>
-<a name="sunlight-123-line-22" href="#sunlight-123-line-22">22</a>
-<a name="sunlight-123-line-23" href="#sunlight-123-line-23">23</a>
-<a name="sunlight-123-line-24" href="#sunlight-123-line-24">24</a>
-<a name="sunlight-123-line-25" href="#sunlight-123-line-25">25</a>
-<a name="sunlight-123-line-26" href="#sunlight-123-line-26">26</a>
-<a name="sunlight-123-line-27" href="#sunlight-123-line-27">27</a>
-<a name="sunlight-123-line-28" href="#sunlight-123-line-28">28</a>
-<a name="sunlight-123-line-29" href="#sunlight-123-line-29">29</a>
-<a name="sunlight-123-line-30" href="#sunlight-123-line-30">30</a>
-<a name="sunlight-123-line-31" href="#sunlight-123-line-31">31</a>
-<a name="sunlight-123-line-32" href="#sunlight-123-line-32">32</a>
-<a name="sunlight-123-line-33" href="#sunlight-123-line-33">33</a>
-<a name="sunlight-123-line-34" href="#sunlight-123-line-34">34</a>
-<a name="sunlight-123-line-35" href="#sunlight-123-line-35">35</a>
-<a name="sunlight-123-line-36" href="#sunlight-123-line-36">36</a>
-<a name="sunlight-123-line-37" href="#sunlight-123-line-37">37</a>
-<a name="sunlight-123-line-38" href="#sunlight-123-line-38">38</a>
-<a name="sunlight-123-line-39" href="#sunlight-123-line-39">39</a>
-<a name="sunlight-123-line-40" href="#sunlight-123-line-40">40</a>
-<a name="sunlight-123-line-41" href="#sunlight-123-line-41">41</a>
-<a name="sunlight-123-line-42" href="#sunlight-123-line-42">42</a>
-<a name="sunlight-123-line-43" href="#sunlight-123-line-43">43</a>
-<a name="sunlight-123-line-44" href="#sunlight-123-line-44">44</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example
+class Example
 {
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;const&#xA0;noOptionItem&#xA0;=&#xA0;0;
+    /**
+     * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
+     */
+    const noOptionItem = 0;
 
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@var&#xA0;Entity
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;private&#xA0;$routeEntity;
+    /**
+     * @var Entity
+     */
+    private $routeEntity;
 
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;example($result)
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;self::noOptionItem;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;self::noOptionItem;
+    public function example($result)
+    {
+        // &#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;
+        $result[&apos;optionItemA&apos;] = self::noOptionItem;
+        $result[&apos;optionItemB&apos;] = self::noOptionItem;
+        $result[&apos;optionItemC&apos;] = self::noOptionItem;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!empty($this-&gt;routeEntity-&gt;options))&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($this-&gt;routeEntity-&gt;options&#xA0;as&#xA0;$option)&#xA0;{
+        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
+        if(!empty($this-&gt;routeEntity-&gt;options)) {
+            foreach ($this-&gt;routeEntity-&gt;options as $option) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemA())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemA&apos;]&#xA0;=&#xA0;$option-&gt;optionItemA();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;
+                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;
+                if ($option-&gt;isOptionItemA()) {
+                    $result[&apos;optionItemA&apos;] = $option-&gt;optionItemA();
+                }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemB())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemB&apos;]&#xA0;=&#xA0;$option-&gt;optionItemB();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                if ($option-&gt;isOptionItemB()) {
+                    $result[&apos;optionItemB&apos;] = $option-&gt;optionItemB();
+                }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($option-&gt;isOptionItemC())&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$result[&apos;optionItemC&apos;]&#xA0;=&#xA0;$option-&gt;optionItemC();
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;};
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+                if ($option-&gt;isOptionItemC()) {
+                    $result[&apos;optionItemC&apos;] = $option-&gt;optionItemC();
+                }
+            };
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$result;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+        return $result;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><br></p>
 <h3 id="if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
 <h4 id="&#x30FB;&#x6C7A;&#x5B9A;&#x8868;&#x3092;&#x7528;&#x3044;&#x305F;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306E;&#x6574;&#x7406;">&#x30FB;&#x6C7A;&#x5B9A;&#x8868;&#x3092;&#x7528;&#x3044;&#x305F;&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306E;&#x6574;&#x7406;</h4>
@@ -1837,746 +1652,404 @@ class&#xA0;Example
 <h4 id="&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;">&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-124-line-1" href="#sunlight-124-line-1">1</a>
-<a name="sunlight-124-line-2" href="#sunlight-124-line-2">2</a>
-<a name="sunlight-124-line-3" href="#sunlight-124-line-3">3</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-$year&#xA0;=&#xA0;N;
-</span></pre></div></div></code></pre>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-125-line-1" href="#sunlight-125-line-1">1</a>
-<a name="sunlight-125-line-2" href="#sunlight-125-line-2">2</a>
-<a name="sunlight-125-line-3" href="#sunlight-125-line-3">3</a>
-<a name="sunlight-125-line-4" href="#sunlight-125-line-4">4</a>
-<a name="sunlight-125-line-5" href="#sunlight-125-line-5">5</a>
-<a name="sunlight-125-line-6" href="#sunlight-125-line-6">6</a>
-<a name="sunlight-125-line-7" href="#sunlight-125-line-7">7</a>
-<a name="sunlight-125-line-8" href="#sunlight-125-line-8">8</a>
-<a name="sunlight-125-line-9" href="#sunlight-125-line-9">9</a>
-<a name="sunlight-125-line-10" href="#sunlight-125-line-10">10</a>
-<a name="sunlight-125-line-11" href="#sunlight-125-line-11">11</a>
-<a name="sunlight-125-line-12" href="#sunlight-125-line-12">12</a>
-<a name="sunlight-125-line-13" href="#sunlight-125-line-13">13</a>
-<a name="sunlight-125-line-14" href="#sunlight-125-line-14">14</a>
-<a name="sunlight-125-line-15" href="#sunlight-125-line-15">15</a>
-<a name="sunlight-125-line-16" href="#sunlight-125-line-16">16</a>
-<a name="sunlight-125-line-17" href="#sunlight-125-line-17">17</a>
-<a name="sunlight-125-line-18" href="#sunlight-125-line-18">18</a>
-<a name="sunlight-125-line-19" href="#sunlight-125-line-19">19</a>
-<a name="sunlight-125-line-20" href="#sunlight-125-line-20">20</a>
-<a name="sunlight-125-line-21" href="#sunlight-125-line-21">21</a>
-<a name="sunlight-125-line-22" href="#sunlight-125-line-22">22</a>
-<a name="sunlight-125-line-23" href="#sunlight-125-line-23">23</a>
-<a name="sunlight-125-line-24" href="#sunlight-125-line-24">24</a>
-<a name="sunlight-125-line-25" href="#sunlight-125-line-25">25</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+$year = N;
+</code></pre>
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+function leapYear(int $year): string
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
-&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($year&#xA0;&lt;=&#xA0;0)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+    // (5)
+    if ($year &lt;= 0) {
+        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
-&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (4)
+    } elseif ($year % 4 != 0) {
+        return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
-&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    // (3)
+    } elseif ($year % 100 != 0) {
+        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
-&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;elseif&#xA0;($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (2)
+    } elseif ($year % 400 != 0) {
+        return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
-&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (1)
+    } else {
+        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
-<pre><code class="lang-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-126-line-1" href="#sunlight-126-line-1">1</a>
-<a name="sunlight-126-line-2" href="#sunlight-126-line-2">2</a>
-<a name="sunlight-126-line-3" href="#sunlight-126-line-3">3</a>
-<a name="sunlight-126-line-4" href="#sunlight-126-line-4">4</a>
-<a name="sunlight-126-line-5" href="#sunlight-126-line-5">5</a>
-<a name="sunlight-126-line-6" href="#sunlight-126-line-6">6</a>
-<a name="sunlight-126-line-7" href="#sunlight-126-line-7">7</a>
-<a name="sunlight-126-line-8" href="#sunlight-126-line-8">8</a>
-<a name="sunlight-126-line-9" href="#sunlight-126-line-9">9</a>
-<a name="sunlight-126-line-10" href="#sunlight-126-line-10">10</a>
-<a name="sunlight-126-line-11" href="#sunlight-126-line-11">11</a>
-<a name="sunlight-126-line-12" href="#sunlight-126-line-12">12</a>
-<a name="sunlight-126-line-13" href="#sunlight-126-line-13">13</a>
-<a name="sunlight-126-line-14" href="#sunlight-126-line-14">14</a>
-<a name="sunlight-126-line-15" href="#sunlight-126-line-15">15</a>
-<a name="sunlight-126-line-16" href="#sunlight-126-line-16">16</a>
-<a name="sunlight-126-line-17" href="#sunlight-126-line-17">17</a>
-<a name="sunlight-126-line-18" href="#sunlight-126-line-18">18</a>
-<a name="sunlight-126-line-19" href="#sunlight-126-line-19">19</a>
-<a name="sunlight-126-line-20" href="#sunlight-126-line-20">20</a>
-<a name="sunlight-126-line-21" href="#sunlight-126-line-21">21</a>
-<a name="sunlight-126-line-22" href="#sunlight-126-line-22">22</a>
-<a name="sunlight-126-line-23" href="#sunlight-126-line-23">23</a>
-<a name="sunlight-126-line-24" href="#sunlight-126-line-24">24</a>
-<a name="sunlight-126-line-25" href="#sunlight-126-line-25">25</a>
-<a name="sunlight-126-line-26" href="#sunlight-126-line-26">26</a>
-<a name="sunlight-126-line-27" href="#sunlight-126-line-27">27</a>
-<a name="sunlight-126-line-28" href="#sunlight-126-line-28">28</a>
-<a name="sunlight-126-line-29" href="#sunlight-126-line-29">29</a>
-<a name="sunlight-126-line-30" href="#sunlight-126-line-30">30</a>
-<a name="sunlight-126-line-31" href="#sunlight-126-line-31">31</a>
-<a name="sunlight-126-line-32" href="#sunlight-126-line-32">32</a>
-<a name="sunlight-126-line-33" href="#sunlight-126-line-33">33</a>
-<a name="sunlight-126-line-34" href="#sunlight-126-line-34">34</a>
-<a name="sunlight-126-line-35" href="#sunlight-126-line-35">35</a>
-</div><pre class="sunlight-highlight-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
+<pre class="language-"><code class="lang-return```&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;```if```&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```PHP
 &lt;?php
 
-//&#xA0;&#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-$year&#xA0;=&#xA0;N;
+// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
+$year = N;
 
-function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+function leapYear(int $year): string
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;&lt;=&#xA0;0){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (5)
+    if($year &lt;= 0){
+        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (4)
+    if($year % 4 != 0 ){
+        return &quot;&#x5E73;&#x5E74;&quot;;
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (3)
+    if($year % 100 != 0){
+        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (2)
+    if($year % 400 != 0){
+        return &quot;&#x5E73;&#x5E74;&quot;;
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    // (1)
+    return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
-<pre><code class="lang-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-127-line-1" href="#sunlight-127-line-1">1</a>
-<a name="sunlight-127-line-2" href="#sunlight-127-line-2">2</a>
-<a name="sunlight-127-line-3" href="#sunlight-127-line-3">3</a>
-<a name="sunlight-127-line-4" href="#sunlight-127-line-4">4</a>
-<a name="sunlight-127-line-5" href="#sunlight-127-line-5">5</a>
-<a name="sunlight-127-line-6" href="#sunlight-127-line-6">6</a>
-<a name="sunlight-127-line-7" href="#sunlight-127-line-7">7</a>
-<a name="sunlight-127-line-8" href="#sunlight-127-line-8">8</a>
-<a name="sunlight-127-line-9" href="#sunlight-127-line-9">9</a>
-<a name="sunlight-127-line-10" href="#sunlight-127-line-10">10</a>
-<a name="sunlight-127-line-11" href="#sunlight-127-line-11">11</a>
-<a name="sunlight-127-line-12" href="#sunlight-127-line-12">12</a>
-<a name="sunlight-127-line-13" href="#sunlight-127-line-13">13</a>
-<a name="sunlight-127-line-14" href="#sunlight-127-line-14">14</a>
-<a name="sunlight-127-line-15" href="#sunlight-127-line-15">15</a>
-<a name="sunlight-127-line-16" href="#sunlight-127-line-16">16</a>
-<a name="sunlight-127-line-17" href="#sunlight-127-line-17">17</a>
-<a name="sunlight-127-line-18" href="#sunlight-127-line-18">18</a>
-<a name="sunlight-127-line-19" href="#sunlight-127-line-19">19</a>
-<a name="sunlight-127-line-20" href="#sunlight-127-line-20">20</a>
-<a name="sunlight-127-line-21" href="#sunlight-127-line-21">21</a>
-<a name="sunlight-127-line-22" href="#sunlight-127-line-22">22</a>
-<a name="sunlight-127-line-23" href="#sunlight-127-line-23">23</a>
-<a name="sunlight-127-line-24" href="#sunlight-127-line-24">24</a>
-<a name="sunlight-127-line-25" href="#sunlight-127-line-25">25</a>
-<a name="sunlight-127-line-26" href="#sunlight-127-line-26">26</a>
-<a name="sunlight-127-line-27" href="#sunlight-127-line-27">27</a>
-<a name="sunlight-127-line-28" href="#sunlight-127-line-28">28</a>
-<a name="sunlight-127-line-29" href="#sunlight-127-line-29">29</a>
-<a name="sunlight-127-line-30" href="#sunlight-127-line-30">30</a>
-<a name="sunlight-127-line-31" href="#sunlight-127-line-31">31</a>
-<a name="sunlight-127-line-32" href="#sunlight-127-line-32">32</a>
-</div><pre class="sunlight-highlight-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
+<pre class="language-"><code class="lang-switch-case-break```&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;```break```&#x3067;&#x306F;&#x306A;&#x304F;```return```&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;">
 **&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
 
 ```PHP
 &lt;?php
 
-function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
-{&#xA0;&#xA0;&#xA0;
-&#xA0;&#xA0;&#xA0;&#xA0;switch(true)&#xA0;{
+function leapYear(int $year): string
+{   
+    switch(true) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
-&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;&lt;=&#xA0;0):
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+    // (5)
+    case($year &lt;= 0):
+        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;):
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (4)
+        case($year % 4 != 0 ):
+        return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
-&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0):
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    // (3)
+    case($year % 100 != 0):
+        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
-&#xA0;&#xA0;&#xA0;&#xA0;case($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0):
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (2)
+    case($year % 400 != 0):
+        return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
-&#xA0;&#xA0;&#xA0;&#xA0;dafault:
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // (1)
+    dafault:
+        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    }
 
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x306E;if&#x6587;&#x306E;&#x6CE2;&#x62EC;&#x5F27;&#x3092;&#x7701;&#x7565;&#x3057;&#x305F;&#x8A18;&#x6CD5;&#x3092;&#xFF0C;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-128-line-1" href="#sunlight-128-line-1">1</a>
-<a name="sunlight-128-line-2" href="#sunlight-128-line-2">2</a>
-<a name="sunlight-128-line-3" href="#sunlight-128-line-3">3</a>
-<a name="sunlight-128-line-4" href="#sunlight-128-line-4">4</a>
-<a name="sunlight-128-line-5" href="#sunlight-128-line-5">5</a>
-<a name="sunlight-128-line-6" href="#sunlight-128-line-6">6</a>
-<a name="sunlight-128-line-7" href="#sunlight-128-line-7">7</a>
-<a name="sunlight-128-line-8" href="#sunlight-128-line-8">8</a>
-<a name="sunlight-128-line-9" href="#sunlight-128-line-9">9</a>
-<a name="sunlight-128-line-10" href="#sunlight-128-line-10">10</a>
-<a name="sunlight-128-line-11" href="#sunlight-128-line-11">11</a>
-<a name="sunlight-128-line-12" href="#sunlight-128-line-12">12</a>
-<a name="sunlight-128-line-13" href="#sunlight-128-line-13">13</a>
-<a name="sunlight-128-line-14" href="#sunlight-128-line-14">14</a>
-<a name="sunlight-128-line-15" href="#sunlight-128-line-15">15</a>
-<a name="sunlight-128-line-16" href="#sunlight-128-line-16">16</a>
-<a name="sunlight-128-line-17" href="#sunlight-128-line-17">17</a>
-<a name="sunlight-128-line-18" href="#sunlight-128-line-18">18</a>
-<a name="sunlight-128-line-19" href="#sunlight-128-line-19">19</a>
-<a name="sunlight-128-line-20" href="#sunlight-128-line-20">20</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-function&#xA0;leapYear(int&#xA0;$year):&#xA0;string
+function leapYear(int $year): string
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(5)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;&lt;=&#xA0;0)&#xA0;throw&#xA0;new&#xA0;Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+    // (5)
+    if($year &lt;= 0) throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(4)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;4&#xA0;!=&#xA0;0&#xA0;)&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (4)
+    if($year % 4 != 0 ) return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(3)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;100&#xA0;!=&#xA0;0)&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    // (3)
+    if($year % 100 != 0) return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(2)
-&#xA0;&#xA0;&#xA0;&#xA0;if($year&#xA0;%&#xA0;400&#xA0;!=&#xA0;0)&#xA0;return&#xA0;&quot;&#x5E73;&#x5E74;&quot;;
+    // (2)
+    if($year % 400 != 0) return &quot;&#x5E73;&#x5E74;&quot;;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;(1)
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    // (1)
+    return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
 
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><br></p>
 <h2 id="02-02-&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;">02-02. &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;</h2>
 <h3 id="&#x7B49;&#x4FA1;&#x6F14;&#x7B97;&#x5B50;">&#x7B49;&#x4FA1;&#x6F14;&#x7B97;&#x5B50;</h3>
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-129-line-1" href="#sunlight-129-line-1">1</a>
-<a name="sunlight-129-line-2" href="#sunlight-129-line-2">2</a>
-<a name="sunlight-129-line-3" href="#sunlight-129-line-3">3</a>
-<a name="sunlight-129-line-4" href="#sunlight-129-line-4">4</a>
-<a name="sunlight-129-line-5" href="#sunlight-129-line-5">5</a>
-<a name="sunlight-129-line-6" href="#sunlight-129-line-6">6</a>
-<a name="sunlight-129-line-7" href="#sunlight-129-line-7">7</a>
-<a name="sunlight-129-line-8" href="#sunlight-129-line-8">8</a>
-<a name="sunlight-129-line-9" href="#sunlight-129-line-9">9</a>
-<a name="sunlight-129-line-10" href="#sunlight-129-line-10">10</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example&#xA0;{};
+class Example {};
 
-if(new&#xA0;Example&#xA0;==&#xA0;new&#xA0;Example){
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-}&#xA0;else&#xA0;{&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;&#xA0;}
+if(new Example == new Example){
+    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+} else { echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;; }
 
-//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
-//&#xA0;&#x540C;&#x3058;&#x3067;&#x3059;
-</span></pre></div></div></code></pre>
+// &#x5B9F;&#x884C;&#x7D50;&#x679C;
+// &#x540C;&#x3058;&#x3067;&#x3059;
+</code></pre>
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x7570;&#x306A;&#x308B;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-130-line-1" href="#sunlight-130-line-1">1</a>
-<a name="sunlight-130-line-2" href="#sunlight-130-line-2">2</a>
-<a name="sunlight-130-line-3" href="#sunlight-130-line-3">3</a>
-<a name="sunlight-130-line-4" href="#sunlight-130-line-4">4</a>
-<a name="sunlight-130-line-5" href="#sunlight-130-line-5">5</a>
-<a name="sunlight-130-line-6" href="#sunlight-130-line-6">6</a>
-<a name="sunlight-130-line-7" href="#sunlight-130-line-7">7</a>
-<a name="sunlight-130-line-8" href="#sunlight-130-line-8">8</a>
-<a name="sunlight-130-line-9" href="#sunlight-130-line-9">9</a>
-<a name="sunlight-130-line-10" href="#sunlight-130-line-10">10</a>
-<a name="sunlight-130-line-11" href="#sunlight-130-line-11">11</a>
-<a name="sunlight-130-line-12" href="#sunlight-130-line-12">12</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example&#xA0;{};
+class Example {};
 
-if&#xA0;(new&#xA0;Example&#xA0;===&#xA0;new&#xA0;Example)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
+if (new Example === new Example) {
+    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+} else {
+    echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
 }
 
-//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
-//&#xA0;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;
-</span></pre></div></div></code></pre>
+// &#x5B9F;&#x884C;&#x7D50;&#x679C;
+// &#x7570;&#x306A;&#x308A;&#x307E;&#x3059;
+</code></pre>
 <p>&#x540C;&#x4E00;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;&#x306E;&#x307F;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-131-line-1" href="#sunlight-131-line-1">1</a>
-<a name="sunlight-131-line-2" href="#sunlight-131-line-2">2</a>
-<a name="sunlight-131-line-3" href="#sunlight-131-line-3">3</a>
-<a name="sunlight-131-line-4" href="#sunlight-131-line-4">4</a>
-<a name="sunlight-131-line-5" href="#sunlight-131-line-5">5</a>
-<a name="sunlight-131-line-6" href="#sunlight-131-line-6">6</a>
-<a name="sunlight-131-line-7" href="#sunlight-131-line-7">7</a>
-<a name="sunlight-131-line-8" href="#sunlight-131-line-8">8</a>
-<a name="sunlight-131-line-9" href="#sunlight-131-line-9">9</a>
-<a name="sunlight-131-line-10" href="#sunlight-131-line-10">10</a>
-<a name="sunlight-131-line-11" href="#sunlight-131-line-11">11</a>
-<a name="sunlight-131-line-12" href="#sunlight-131-line-12">12</a>
-<a name="sunlight-131-line-13" href="#sunlight-131-line-13">13</a>
-<a name="sunlight-131-line-14" href="#sunlight-131-line-14">14</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-class&#xA0;Example&#xA0;{};
+class Example {};
 
-$a&#xA0;=&#xA0;$b&#xA0;=&#xA0;new&#xA0;Example;
+$a = $b = new Example;
 
-if&#xA0;($a&#xA0;===&#xA0;$b)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-}&#xA0;else&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;echo&#xA0;&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
+if ($a === $b) {
+    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
+} else {
+    echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
 }
 
-//&#xA0;&#x5B9F;&#x884C;&#x7D50;&#x679C;
-//&#xA0;&#x540C;&#x3058;&#x3067;&#x3059;
-</span></pre></div></div></code></pre>
+// &#x5B9F;&#x884C;&#x7D50;&#x679C;
+// &#x540C;&#x3058;&#x3067;&#x3059;
+</code></pre>
 <p><br></p>
 <h2 id="03-&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3068;&#x30ED;&#x30AE;&#x30F3;&#x30B0;">03. &#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3068;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
 <h3 id="&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;">&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h3>
 <h4 id="&#x30FB;if-throw&#x6587;">&#x30FB;if-throw&#x6587;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x306B;&#xFF0C;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x4F8B;&#x5916;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x305D;&#x308C;&#x3092;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x3057;&#x3066;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3042;&#x308B;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x6295;&#x3052;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-132-line-1" href="#sunlight-132-line-1">1</a>
-<a name="sunlight-132-line-2" href="#sunlight-132-line-2">2</a>
-<a name="sunlight-132-line-3" href="#sunlight-132-line-3">3</a>
-<a name="sunlight-132-line-4" href="#sunlight-132-line-4">4</a>
-<a name="sunlight-132-line-5" href="#sunlight-132-line-5">5</a>
-<a name="sunlight-132-line-6" href="#sunlight-132-line-6">6</a>
-<a name="sunlight-132-line-7" href="#sunlight-132-line-7">7</a>
-<a name="sunlight-132-line-8" href="#sunlight-132-line-8">8</a>
-<a name="sunlight-132-line-9" href="#sunlight-132-line-9">9</a>
-<a name="sunlight-132-line-10" href="#sunlight-132-line-10">10</a>
-<a name="sunlight-132-line-11" href="#sunlight-132-line-11">11</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-function&#xA0;value(int&#xA0;$value)&#xA0;{
+function value(int $value) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(empty($value))&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&apos;Value&#xA0;is&#xA0;empty&apos;);
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    if (empty($value)) {
+        // &#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;
+        throw new Exception(&apos;Value is empty&apos;);
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;&#x3053;&#x308C;&#x306F;&#xA0;${value}&#xA0;&#x3067;&#x3059;&#xFF0E;&quot;;
+    return &quot;&#x3053;&#x308C;&#x306F; ${value} &#x3067;&#x3059;&#xFF0E;&quot;;
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;exception&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;">&#x30FB;Exception&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-133-line-1" href="#sunlight-133-line-1">1</a>
-<a name="sunlight-133-line-2" href="#sunlight-133-line-2">2</a>
-<a name="sunlight-133-line-3" href="#sunlight-133-line-3">3</a>
-<a name="sunlight-133-line-4" href="#sunlight-133-line-4">4</a>
-<a name="sunlight-133-line-5" href="#sunlight-133-line-5">5</a>
-<a name="sunlight-133-line-6" href="#sunlight-133-line-6">6</a>
-<a name="sunlight-133-line-7" href="#sunlight-133-line-7">7</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-//&#xA0;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;
-class&#xA0;ExampleNotFoundException&#xA0;extends&#xA0;Exception
+// &#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;
+class ExampleNotFoundException extends Exception
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;
+    // &#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;
 }
-</span></pre></div></div></code></pre>
-<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-134-line-1" href="#sunlight-134-line-1">1</a>
-<a name="sunlight-134-line-2" href="#sunlight-134-line-2">2</a>
-<a name="sunlight-134-line-3" href="#sunlight-134-line-3">3</a>
-<a name="sunlight-134-line-4" href="#sunlight-134-line-4">4</a>
-<a name="sunlight-134-line-5" href="#sunlight-134-line-5">5</a>
-<a name="sunlight-134-line-6" href="#sunlight-134-line-6">6</a>
-<a name="sunlight-134-line-7" href="#sunlight-134-line-7">7</a>
-<a name="sunlight-134-line-8" href="#sunlight-134-line-8">8</a>
-<a name="sunlight-134-line-9" href="#sunlight-134-line-9">9</a>
-<a name="sunlight-134-line-10" href="#sunlight-134-line-10">10</a>
-<a name="sunlight-134-line-11" href="#sunlight-134-line-11">11</a>
-<a name="sunlight-134-line-12" href="#sunlight-134-line-12">12</a>
-</div><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
+</code></pre>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">ExampleNotFound</span><span class="sunlight-punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>ExampleNotFound</span><span class="token punctuation">;</span>
 
-<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">example</span><span class="sunlight-punctuation">(</span><span class="sunlight-keyword">string</span>&#xA0;<span class="sunlight-variable">$example</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$example</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-languageConstruct">empty</span><span class="sunlight-punctuation">(</span><span class="sunlight-variable">$exmaple</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExampleNotFoundException</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;Example&#xA0;is&#xA0;not&#xA0;found.&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span><span class="sunlight-punctuation">;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$exmaple</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExampleNotFoundException</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;Example is not found.&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;&#x3053;&#x308C;&#x306F;&#xA0;${example}&#xA0;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F; ${example} &#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p><br></p>
 <h3 id="try-catch-finally&#x6587;">try-catch-finally&#x6587;</h3>
 <h4 id="&#x30FB;&#x5358;&#x306A;&#x308B;if-throw&#x6587;">&#x30FB;&#x5358;&#x306A;&#x308B;if-throw&#x6587;</h4>
 <p>if-throw&#x3067;&#x306F;&#xFF0C;&#x90FD;&#x5EA6;&#x4F8B;&#x5916;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x69D8;&#x3005;&#x306A;&#x53EF;&#x80FD;&#x6027;&#x3092;&#x8003;&#x616E;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-135-line-1" href="#sunlight-135-line-1">1</a>
-<a name="sunlight-135-line-2" href="#sunlight-135-line-2">2</a>
-<a name="sunlight-135-line-3" href="#sunlight-135-line-3">3</a>
-<a name="sunlight-135-line-4" href="#sunlight-135-line-4">4</a>
-<a name="sunlight-135-line-5" href="#sunlight-135-line-5">5</a>
-<a name="sunlight-135-line-6" href="#sunlight-135-line-6">6</a>
-<a name="sunlight-135-line-7" href="#sunlight-135-line-7">7</a>
-<a name="sunlight-135-line-8" href="#sunlight-135-line-8">8</a>
-<a name="sunlight-135-line-9" href="#sunlight-135-line-9">9</a>
-</div><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-languageConstruct">empty</span><span class="sunlight-punctuation">(</span><span class="sunlight-variable">$</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExternalApiException</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span>$<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExternalApiException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="sunlight-keyword">if</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-ident">example</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">throw</span>&#xA0;<span class="sunlight-keyword">new</span>&#xA0;<span class="sunlight-named-ident">ExampleInvalidArgumentException</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>example<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExampleInvalidArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;">&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;</h4>
 <p>try-catch-finally&#x3067;&#x306F;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x8D77;&#x3053;&#x308B;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x4F8B;&#x5916;&#x3092;&#x6349;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x6587;&#x306F;&#xFF0C;&#x30C7;&#x30D0;&#x30C3;&#x30AF;&#x753B;&#x9762;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-136-line-1" href="#sunlight-136-line-1">1</a>
-<a name="sunlight-136-line-2" href="#sunlight-136-line-2">2</a>
-<a name="sunlight-136-line-3" href="#sunlight-136-line-3">3</a>
-<a name="sunlight-136-line-4" href="#sunlight-136-line-4">4</a>
-<a name="sunlight-136-line-5" href="#sunlight-136-line-5">5</a>
-<a name="sunlight-136-line-6" href="#sunlight-136-line-6">6</a>
-<a name="sunlight-136-line-7" href="#sunlight-136-line-7">7</a>
-<a name="sunlight-136-line-8" href="#sunlight-136-line-8">8</a>
-<a name="sunlight-136-line-9" href="#sunlight-136-line-9">9</a>
-<a name="sunlight-136-line-10" href="#sunlight-136-line-10">10</a>
-<a name="sunlight-136-line-11" href="#sunlight-136-line-11">11</a>
-<a name="sunlight-136-line-12" href="#sunlight-136-line-12">12</a>
-<a name="sunlight-136-line-13" href="#sunlight-136-line-13">13</a>
-<a name="sunlight-136-line-14" href="#sunlight-136-line-14">14</a>
-<a name="sunlight-136-line-15" href="#sunlight-136-line-15">15</a>
-<a name="sunlight-136-line-16" href="#sunlight-136-line-16">16</a>
-<a name="sunlight-136-line-17" href="#sunlight-136-line-17">17</a>
-<a name="sunlight-136-line-18" href="#sunlight-136-line-18">18</a>
-<a name="sunlight-136-line-19" href="#sunlight-136-line-19">19</a>
-<a name="sunlight-136-line-20" href="#sunlight-136-line-20">20</a>
-<a name="sunlight-136-line-21" href="#sunlight-136-line-21">21</a>
-<a name="sunlight-136-line-22" href="#sunlight-136-line-22">22</a>
-<a name="sunlight-136-line-23" href="#sunlight-136-line-23">23</a>
-<a name="sunlight-136-line-24" href="#sunlight-136-line-24">24</a>
-<a name="sunlight-136-line-25" href="#sunlight-136-line-25">25</a>
-<a name="sunlight-136-line-26" href="#sunlight-136-line-26">26</a>
-<a name="sunlight-136-line-27" href="#sunlight-136-line-27">27</a>
-<a name="sunlight-136-line-28" href="#sunlight-136-line-28">28</a>
-<a name="sunlight-136-line-29" href="#sunlight-136-line-29">29</a>
-<a name="sunlight-136-line-30" href="#sunlight-136-line-30">30</a>
-<a name="sunlight-136-line-31" href="#sunlight-136-line-31">31</a>
-<a name="sunlight-136-line-32" href="#sunlight-136-line-32">32</a>
-<a name="sunlight-136-line-33" href="#sunlight-136-line-33">33</a>
-<a name="sunlight-136-line-34" href="#sunlight-136-line-34">34</a>
-<a name="sunlight-136-line-35" href="#sunlight-136-line-35">35</a>
-<a name="sunlight-136-line-36" href="#sunlight-136-line-36">36</a>
-<a name="sunlight-136-line-37" href="#sunlight-136-line-37">37</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-use&#xA0;\Exception\ExternalApiErrorException;
-use&#xA0;\Exception\HttpRequestErrorException;
+use \Exception\ExternalApiErrorException;
+use \Exception\HttpRequestErrorException;
 
-class&#xA0;Example
+class Example
 {
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;sendMessage(Message&#xA0;$message)
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
+    /**
+     * @param message $message
+     * @return bool
+     */
+    public function sendMessage(Message $message)
+    {
+        try {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;
+            // ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(ExternalApiErrorException&#xA0;$exception)&#xA0;{
+        } catch (ExternalApiErrorException $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            // ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(HttpRequestErrorException&#xA0;$exception)&#xA0;{
+        } catch (HttpRequestErrorException $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            // HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(Exception&#xA0;$exception)&#xA0;{
+        } catch (Exception $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            // &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;finally&#xA0;{
+        } finally {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
+            // &#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;
+            // try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;}
+        }
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <h4 id="&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;">&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;</h4>
 <p>finally&#x53E5;&#x306F;&#xFF0C;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;finally&#x53E5;&#x3067;&#x306F;&#xFF0C;<code>return</code>&#x3084;<code>continue</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-137-line-1" href="#sunlight-137-line-1">1</a>
-<a name="sunlight-137-line-2" href="#sunlight-137-line-2">2</a>
-<a name="sunlight-137-line-3" href="#sunlight-137-line-3">3</a>
-<a name="sunlight-137-line-4" href="#sunlight-137-line-4">4</a>
-<a name="sunlight-137-line-5" href="#sunlight-137-line-5">5</a>
-<a name="sunlight-137-line-6" href="#sunlight-137-line-6">6</a>
-<a name="sunlight-137-line-7" href="#sunlight-137-line-7">7</a>
-<a name="sunlight-137-line-8" href="#sunlight-137-line-8">8</a>
-<a name="sunlight-137-line-9" href="#sunlight-137-line-9">9</a>
-<a name="sunlight-137-line-10" href="#sunlight-137-line-10">10</a>
-<a name="sunlight-137-line-11" href="#sunlight-137-line-11">11</a>
-<a name="sunlight-137-line-12" href="#sunlight-137-line-12">12</a>
-<a name="sunlight-137-line-13" href="#sunlight-137-line-13">13</a>
-<a name="sunlight-137-line-14" href="#sunlight-137-line-14">14</a>
-<a name="sunlight-137-line-15" href="#sunlight-137-line-15">15</a>
-<a name="sunlight-137-line-16" href="#sunlight-137-line-16">16</a>
-<a name="sunlight-137-line-17" href="#sunlight-137-line-17">17</a>
-<a name="sunlight-137-line-18" href="#sunlight-137-line-18">18</a>
-<a name="sunlight-137-line-19" href="#sunlight-137-line-19">19</a>
-<a name="sunlight-137-line-20" href="#sunlight-137-line-20">20</a>
-<a name="sunlight-137-line-21" href="#sunlight-137-line-21">21</a>
-<a name="sunlight-137-line-22" href="#sunlight-137-line-22">22</a>
-<a name="sunlight-137-line-23" href="#sunlight-137-line-23">23</a>
-<a name="sunlight-137-line-24" href="#sunlight-137-line-24">24</a>
-<a name="sunlight-137-line-25" href="#sunlight-137-line-25">25</a>
-<a name="sunlight-137-line-26" href="#sunlight-137-line-26">26</a>
-<a name="sunlight-137-line-27" href="#sunlight-137-line-27">27</a>
-<a name="sunlight-137-line-28" href="#sunlight-137-line-28">28</a>
-<a name="sunlight-137-line-29" href="#sunlight-137-line-29">29</a>
-<a name="sunlight-137-line-30" href="#sunlight-137-line-30">30</a>
-<a name="sunlight-137-line-31" href="#sunlight-137-line-31">31</a>
-<a name="sunlight-137-line-32" href="#sunlight-137-line-32">32</a>
-<a name="sunlight-137-line-33" href="#sunlight-137-line-33">33</a>
-<a name="sunlight-137-line-34" href="#sunlight-137-line-34">34</a>
-<a name="sunlight-137-line-35" href="#sunlight-137-line-35">35</a>
-<a name="sunlight-137-line-36" href="#sunlight-137-line-36">36</a>
-<a name="sunlight-137-line-37" href="#sunlight-137-line-37">37</a>
-<a name="sunlight-137-line-38" href="#sunlight-137-line-38">38</a>
-<a name="sunlight-137-line-39" href="#sunlight-137-line-39">39</a>
-<a name="sunlight-137-line-40" href="#sunlight-137-line-40">40</a>
-<a name="sunlight-137-line-41" href="#sunlight-137-line-41">41</a>
-<a name="sunlight-137-line-42" href="#sunlight-137-line-42">42</a>
-<a name="sunlight-137-line-43" href="#sunlight-137-line-43">43</a>
-<a name="sunlight-137-line-44" href="#sunlight-137-line-44">44</a>
-<a name="sunlight-137-line-45" href="#sunlight-137-line-45">45</a>
-</div><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-openTag">&lt;?php</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-operator">\</span><span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">ExternalApiErrorException</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-keyword">use</span>&#xA0;<span class="sunlight-operator">\</span><span class="sunlight-ident">Exception</span><span class="sunlight-operator">\</span><span class="sunlight-named-ident">HttpRequestErrorException</span><span class="sunlight-punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
 
-<span class="sunlight-keyword">class</span>&#xA0;<span class="sunlight-named-ident">Example</span>
-<span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">public</span>&#xA0;<span class="sunlight-keyword">function</span>&#xA0;<span class="sunlight-ident">sendMessage</span><span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">Message</span>&#xA0;<span class="sunlight-variable">$message</span><span class="sunlight-punctuation">)</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">try</span>&#xA0;<span class="sunlight-punctuation">{</span>
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @param message $message
+     * @return bool
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF11;&#xFF09;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+            <span class="token comment">// &#xFF08;&#xFF11;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">ExternalApiErrorException</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF12;&#xFF09;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+            <span class="token comment">// &#xFF08;&#xFF12;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">HttpRequestErrorException</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF13;&#xFF09;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+            <span class="token comment">// &#xFF08;&#xFF13;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">catch</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-named-ident">Exception</span>&#xA0;<span class="sunlight-variable">$exception</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF14;&#xFF09;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">return</span>&#xA0;<span class="sunlight-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+            <span class="token comment">// &#xFF08;&#xFF14;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-ident">finally</span>&#xA0;<span class="sunlight-punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">//&#xA0;return&#x3084;continue&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-languageConstruct">echo</span>&#xA0;<span class="sunlight-string">&quot;E&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="sunlight-punctuation">;</span>
+            <span class="token comment">// return&#x3084;continue&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;E&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>&#xFF08;&#xFF11;&#xFF09;&#xFF5E;&#xFF08;&#xFF14;&#xFF09;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x3067;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x8FD4;&#x5374;&#x306E;&#x76F4;&#x524D;&#x306B;finally&#x53E5;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-php"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-138-line-1" href="#sunlight-138-line-1">1</a>
-<a name="sunlight-138-line-2" href="#sunlight-138-line-2">2</a>
-<a name="sunlight-138-line-3" href="#sunlight-138-line-3">3</a>
-<a name="sunlight-138-line-4" href="#sunlight-138-line-4">4</a>
-<a name="sunlight-138-line-5" href="#sunlight-138-line-5">5</a>
-<a name="sunlight-138-line-6" href="#sunlight-138-line-6">6</a>
-<a name="sunlight-138-line-7" href="#sunlight-138-line-7">7</a>
-<a name="sunlight-138-line-8" href="#sunlight-138-line-8">8</a>
-<a name="sunlight-138-line-9" href="#sunlight-138-line-9">9</a>
-<a name="sunlight-138-line-10" href="#sunlight-138-line-10">10</a>
-<a name="sunlight-138-line-11" href="#sunlight-138-line-11">11</a>
-<a name="sunlight-138-line-12" href="#sunlight-138-line-12">12</a>
-<a name="sunlight-138-line-13" href="#sunlight-138-line-13">13</a>
-<a name="sunlight-138-line-14" href="#sunlight-138-line-14">14</a>
-<a name="sunlight-138-line-15" href="#sunlight-138-line-15">15</a>
-<a name="sunlight-138-line-16" href="#sunlight-138-line-16">16</a>
-<a name="sunlight-138-line-17" href="#sunlight-138-line-17">17</a>
-<a name="sunlight-138-line-18" href="#sunlight-138-line-18">18</a>
-<a name="sunlight-138-line-19" href="#sunlight-138-line-19">19</a>
-</div><pre class="sunlight-highlight-php sunlight-highlighted"><span class="sunlight-php"><span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF11;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-comment">//&#xA0;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;A&#x3067;&#x3059;&#xFF0E;</span>
+<pre class="language-"><code class="lang-php"><span class="token comment">// &#xFF08;&#xFF11;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// A&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF12;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-comment">//&#xA0;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;B&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// &#xFF08;&#xFF12;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// B&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF13;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-comment">//&#xA0;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;C&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// &#xFF08;&#xFF13;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// C&#x3067;&#x3059;&#xFF0E;</span>
 
-<span class="sunlight-comment">//&#xA0;&#xFF08;&#xFF14;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-comment">//&#xA0;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;E&#x3067;&#x3059;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;D&#x3067;&#x3059;&#xFF0E;</span>
-</span></pre></div></div></code></pre>
+<span class="token comment">// &#xFF08;&#xFF14;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// D&#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
 <p><br></p>
 <h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;">&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h3>
 <h4 id="&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x5206;&#x3051;">&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x5206;&#x3051;</h4>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30A2;&#x30D7;&#x30EA;&#x306E;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x751F;&#x6210;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3068;&#xFF0C;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#x305D;&#x306E;&#x4ED6;&#x539F;&#x56E0;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-139-line-1" href="#sunlight-139-line-1">1</a>
-<a name="sunlight-139-line-2" href="#sunlight-139-line-2">2</a>
-<a name="sunlight-139-line-3" href="#sunlight-139-line-3">3</a>
-<a name="sunlight-139-line-4" href="#sunlight-139-line-4">4</a>
-<a name="sunlight-139-line-5" href="#sunlight-139-line-5">5</a>
-<a name="sunlight-139-line-6" href="#sunlight-139-line-6">6</a>
-<a name="sunlight-139-line-7" href="#sunlight-139-line-7">7</a>
-<a name="sunlight-139-line-8" href="#sunlight-139-line-8">8</a>
-<a name="sunlight-139-line-9" href="#sunlight-139-line-9">9</a>
-<a name="sunlight-139-line-10" href="#sunlight-139-line-10">10</a>
-<a name="sunlight-139-line-11" href="#sunlight-139-line-11">11</a>
-<a name="sunlight-139-line-12" href="#sunlight-139-line-12">12</a>
-<a name="sunlight-139-line-13" href="#sunlight-139-line-13">13</a>
-<a name="sunlight-139-line-14" href="#sunlight-139-line-14">14</a>
-<a name="sunlight-139-line-15" href="#sunlight-139-line-15">15</a>
-<a name="sunlight-139-line-16" href="#sunlight-139-line-16">16</a>
-<a name="sunlight-139-line-17" href="#sunlight-139-line-17">17</a>
-<a name="sunlight-139-line-18" href="#sunlight-139-line-18">18</a>
-<a name="sunlight-139-line-19" href="#sunlight-139-line-19">19</a>
-<a name="sunlight-139-line-20" href="#sunlight-139-line-20">20</a>
-<a name="sunlight-139-line-21" href="#sunlight-139-line-21">21</a>
-<a name="sunlight-139-line-22" href="#sunlight-139-line-22">22</a>
-<a name="sunlight-139-line-23" href="#sunlight-139-line-23">23</a>
-<a name="sunlight-139-line-24" href="#sunlight-139-line-24">24</a>
-<a name="sunlight-139-line-25" href="#sunlight-139-line-25">25</a>
-<a name="sunlight-139-line-26" href="#sunlight-139-line-26">26</a>
-<a name="sunlight-139-line-27" href="#sunlight-139-line-27">27</a>
-<a name="sunlight-139-line-28" href="#sunlight-139-line-28">28</a>
-<a name="sunlight-139-line-29" href="#sunlight-139-line-29">29</a>
-<a name="sunlight-139-line-30" href="#sunlight-139-line-30">30</a>
-<a name="sunlight-139-line-31" href="#sunlight-139-line-31">31</a>
-<a name="sunlight-139-line-32" href="#sunlight-139-line-32">32</a>
-<a name="sunlight-139-line-33" href="#sunlight-139-line-33">33</a>
-<a name="sunlight-139-line-34" href="#sunlight-139-line-34">34</a>
-<a name="sunlight-139-line-35" href="#sunlight-139-line-35">35</a>
-<a name="sunlight-139-line-36" href="#sunlight-139-line-36">36</a>
-<a name="sunlight-139-line-37" href="#sunlight-139-line-37">37</a>
-<a name="sunlight-139-line-38" href="#sunlight-139-line-38">38</a>
-<a name="sunlight-139-line-39" href="#sunlight-139-line-39">39</a>
-<a name="sunlight-139-line-40" href="#sunlight-139-line-40">40</a>
-<a name="sunlight-139-line-41" href="#sunlight-139-line-41">41</a>
-<a name="sunlight-139-line-42" href="#sunlight-139-line-42">42</a>
-<a name="sunlight-139-line-43" href="#sunlight-139-line-43">43</a>
-<a name="sunlight-139-line-44" href="#sunlight-139-line-44">44</a>
-<a name="sunlight-139-line-45" href="#sunlight-139-line-45">45</a>
-<a name="sunlight-139-line-46" href="#sunlight-139-line-46">46</a>
-<a name="sunlight-139-line-47" href="#sunlight-139-line-47">47</a>
-<a name="sunlight-139-line-48" href="#sunlight-139-line-48">48</a>
-<a name="sunlight-139-line-49" href="#sunlight-139-line-49">49</a>
-<a name="sunlight-139-line-50" href="#sunlight-139-line-50">50</a>
-<a name="sunlight-139-line-51" href="#sunlight-139-line-51">51</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
+<pre class="language-"><code class="lang-PHP">&lt;?php
 
-use&#xA0;\Exception\ExternalApiErrorException;
-use&#xA0;\Exception\HttpRequestErrorException;
+use \Exception\ExternalApiErrorException;
+use \Exception\HttpRequestErrorException;
 
-class&#xA0;Example
+class Example
 {
-&#xA0;&#xA0;&#xA0;&#xA0;/**
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@param&#xA0;message&#xA0;$message
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*&#xA0;@return&#xA0;bool
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;*/
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;function&#xA0;sendMessage(Message&#xA0;$message)
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;try&#xA0;{
+    /**
+     * @param message $message
+     * @return bool
+     */
+    public function sendMessage(Message $message)
+    {
+        try {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
+            // &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
+            // &#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;
+            // &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\HttpRequestErrorException&#xA0;$exception)&#xA0;{
+        } catch (\HttpRequestErrorException $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/http_request_error.log&apos;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+            // &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+            error_log(
+                $exception-&gt;getMessage(),
+                3,
+                __DIR__ . &apos;/http_request_error.log&apos;
+            );
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\ExternalApiErrorException&#xA0;$exception)&#xA0;{
+        } catch (\ExternalApiErrorException $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/external_api_error.log&apos;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
+            // &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+            error_log(
+                $exception-&gt;getMessage(),
+                3,
+                __DIR__ . &apos;/external_api_error.log&apos;
+            );
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;catch&#xA0;(\Exception&#xA0;$exception)&#xA0;{
+        } catch (\Exception $exception) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;error_log(
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$exception-&gt;getMessage(),
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;3,
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;__DIR__&#xA0;.&#xA0;&apos;/app_error.log&apos;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;);
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+            // &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
+            error_log(
+                $exception-&gt;getMessage(),
+                3,
+                __DIR__ . &apos;/app_error.log&apos;
+            );
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;true;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+        // &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;
+        return true;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 
                                 
                                 </section>
@@ -2616,7 +2089,7 @@ class&#xA0;Example
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"next":{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"PHP｜ロジック","level":"1.4","depth":1,"ref":"","articles":[{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2020-10-28T18:08:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:00:21.031Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"next":{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"PHP｜ロジック","level":"1.4","depth":1,"ref":"","articles":[{"title":"バックエンド側の検証ロジック","level":"1.4.1","depth":2,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"繰り返しロジック","level":"1.4.2","depth":2,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2020-10-28T18:08:47.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:28:04.905Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2639,6 +2112,14 @@ class&#xA0;Example
     
         
         <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

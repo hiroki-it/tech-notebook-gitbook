@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
                 
             
                 
@@ -1373,106 +1373,67 @@
 <h2 id="01-&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;">01. &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;</h2>
 <h3 id="mysql&#x306E;&#x6E96;&#x5099;">MySQL&#x306E;&#x6E96;&#x5099;</h3>
 <h4 id="&#x30FB;centos&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;CentOS&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-573-line-1" href="#sunlight-573-line-1">1</a>
-<a name="sunlight-573-line-2" href="#sunlight-573-line-2">2</a>
-</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;mysql&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x307F;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">dnf</span>&#xA0;<span class="sunlight-command">install</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">y</span>&#xA0;<span class="sunlight-ident">mysql</span>
-</span></pre></div></div></code></pre>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-574-line-1" href="#sunlight-574-line-1">1</a>
-<a name="sunlight-574-line-2" href="#sunlight-574-line-2">2</a>
-</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-comment">#&#xA0;mysql&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x6A5F;&#x80FD;&#xFF0C;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">dnf</span>&#xA0;<span class="sunlight-command">install</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">y</span>&#xA0;<span class="sunlight-ident">mysql</span><span class="sunlight-operator">-</span><span class="sunlight-ident">server</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># mysql&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x307F;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
+$ dnf <span class="token function">install</span> -y mysql
+</code></pre>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># mysql&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x6A5F;&#x80FD;&#xFF0C;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
+$ dnf <span class="token function">install</span> -y mysql-server
+</code></pre>
 <p><br></p>
 <h3 id="&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;">&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</h3>
 <h4 id="&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8868;&#x793A;">&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8868;&#x793A;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-575-line-1" href="#sunlight-575-line-1">1</a>
-<a name="sunlight-575-line-2" href="#sunlight-575-line-2">2</a>
-<a name="sunlight-575-line-3" href="#sunlight-575-line-3">3</a>
-<a name="sunlight-575-line-4" href="#sunlight-575-line-4">4</a>
-<a name="sunlight-575-line-5" href="#sunlight-575-line-5">5</a>
-<a name="sunlight-575-line-6" href="#sunlight-575-line-6">6</a>
-<a name="sunlight-575-line-7" href="#sunlight-575-line-7">7</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#xFF0F;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;</span>
-<span class="sunlight-keyword">SHOW</span>&#xA0;<span class="sunlight-ident">SESSION</span>&#xA0;<span class="sunlight-ident">VARIABLES</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-keyword">SHOW</span>&#xA0;<span class="sunlight-ident">GLOBAL</span>&#xA0;<span class="sunlight-ident">VARIABLES</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-mysql">-- &#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#xFF0F;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;
+SHOW SESSION VARIABLES;
+SHOW GLOBAL VARIABLES;
 
-<span class="sunlight-comment">--&#xA0;OS&#x3068;DB&#x306E;&#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;</span>
-<span class="sunlight-keyword">SHOW</span>&#xA0;<span class="sunlight-ident">SESSION</span>&#xA0;<span class="sunlight-ident">VARIABLES</span>&#xA0;<span class="sunlight-keyword">LIKE</span>&#xA0;<span class="sunlight-string">&apos;%time_zone&apos;</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-keyword">SHOW</span>&#xA0;<span class="sunlight-ident">GLOBAL</span>&#xA0;<span class="sunlight-ident">VARIABLES</span>&#xA0;<span class="sunlight-keyword">LIKE</span>&#xA0;<span class="sunlight-string">&apos;%time_zone&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+-- OS&#x3068;DB&#x306E;&#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;
+SHOW SESSION VARIABLES LIKE &apos;%time_zone&apos;;
+SHOW GLOBAL VARIABLES LIKE &apos;%time_zone&apos;;
+</code></pre>
 <h4 id="&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8A2D;&#x5B9A;">&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8A2D;&#x5B9A;</h4>
-<pre><code class="lang-sql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-576-line-1" href="#sunlight-576-line-1">1</a>
-<a name="sunlight-576-line-2" href="#sunlight-576-line-2">2</a>
-<a name="sunlight-576-line-3" href="#sunlight-576-line-3">3</a>
-<a name="sunlight-576-line-4" href="#sunlight-576-line-4">4</a>
-<a name="sunlight-576-line-5" href="#sunlight-576-line-5">5</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-keyword">SET</span>&#xA0;<span class="sunlight-ident">GLOBAL</span>&#xA0;<span class="sunlight-ident">time_zone</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&apos;Asia/Tokyo&apos;</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token comment">-- &#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
+<span class="token keyword">SET</span> <span class="token keyword">GLOBAL</span> time_zone <span class="token operator">=</span> <span class="token string">&apos;Asia/Tokyo&apos;</span><span class="token punctuation">;</span>
 
-<span class="sunlight-comment">--&#xA0;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-keyword">SET</span>&#xA0;<span class="sunlight-ident">time_zone</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&apos;Asia/Tokyo&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<span class="token comment">-- &#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
+<span class="token keyword">SET</span> time_zone <span class="token operator">=</span> <span class="token string">&apos;Asia/Tokyo&apos;</span><span class="token punctuation">;</span>
+</code></pre>
 <p><br></p>
 <h2 id="02-&#x30C6;&#x30FC;&#x30D6;&#x30EB;">02. &#x30C6;&#x30FC;&#x30D6;&#x30EB;</h2>
 <h3 id="create-table&#x53E5;"><code>CREATE TABLE</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-577-line-1" href="#sunlight-577-line-1">1</a>
-<a name="sunlight-577-line-2" href="#sunlight-577-line-2">2</a>
-<a name="sunlight-577-line-3" href="#sunlight-577-line-3">3</a>
-<a name="sunlight-577-line-4" href="#sunlight-577-line-4">4</a>
-<a name="sunlight-577-line-5" href="#sunlight-577-line-5">5</a>
-<a name="sunlight-577-line-6" href="#sunlight-577-line-6">6</a>
-<a name="sunlight-577-line-7" href="#sunlight-577-line-7">7</a>
-<a name="sunlight-577-line-8" href="#sunlight-577-line-8">8</a>
-<a name="sunlight-577-line-9" href="#sunlight-577-line-9">9</a>
-<a name="sunlight-577-line-10" href="#sunlight-577-line-10">10</a>
-<a name="sunlight-577-line-11" href="#sunlight-577-line-11">11</a>
-<a name="sunlight-577-line-12" href="#sunlight-577-line-12">12</a>
-<a name="sunlight-577-line-13" href="#sunlight-577-line-13">13</a>
-<a name="sunlight-577-line-14" href="#sunlight-577-line-14">14</a>
-<a name="sunlight-577-line-15" href="#sunlight-577-line-15">15</a>
-<a name="sunlight-577-line-16" href="#sunlight-577-line-16">16</a>
-<a name="sunlight-577-line-17" href="#sunlight-577-line-17">17</a>
-<a name="sunlight-577-line-18" href="#sunlight-577-line-18">18</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x6CE8;&#x6587;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x4F5C;&#x6210;</span>
-<span class="sunlight-keyword">CREATE</span>&#xA0;<span class="sunlight-keyword">TABLE</span>&#xA0;<span class="sunlight-ident">order_data</span>&#xA0;<span class="sunlight-punctuation">(</span>
+<pre class="language-"><code class="lang-mysql">-- &#x6CE8;&#x6587;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x4F5C;&#x6210;
+CREATE TABLE order_data (
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;Primary&#xA0;Key&#x5236;&#x7D04;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">order_id</span>&#xA0;<span class="sunlight-keyword">INT</span><span class="sunlight-punctuation">(</span><span class="sunlight-number">10</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-keyword">PRIMARY</span>&#xA0;<span class="sunlight-keyword">KEY</span>&#xA0;<span class="sunlight-ident">COMMENT</span>&#xA0;<span class="sunlight-string">&apos;&#x6CE8;&#x6587;ID&apos;</span><span class="sunlight-punctuation">,</span>
+    -- Primary Key&#x5236;&#x7D04;
+    order_id INT(10) PRIMARY KEY COMMENT &apos;&#x6CE8;&#x6587;ID&apos;,
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;Not&#xA0;Null&#x5236;&#x7D04;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">order_kbn</span>&#xA0;<span class="sunlight-keyword">INT</span><span class="sunlight-punctuation">(</span><span class="sunlight-number">3</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-keyword">NOT</span>&#xA0;<span class="sunlight-keyword">NULL</span>&#xA0;<span class="sunlight-ident">COMMENT</span>&#xA0;<span class="sunlight-string">&apos;&#x6CE8;&#x6587;&#x533A;&#x5206;&apos;</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">system_create_date_time</span>&#xA0;<span class="sunlight-ident">DATETIME</span>&#xA0;<span class="sunlight-keyword">NOT</span>&#xA0;<span class="sunlight-keyword">NULL</span>&#xA0;<span class="sunlight-ident">COMMENT</span>&#xA0;<span class="sunlight-string">&apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x767B;&#x9332;&#x65E5;&#x6642;&apos;</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">system_update_date_time</span>&#xA0;<span class="sunlight-ident">DATETIME</span>&#xA0;<span class="sunlight-keyword">NOT</span>&#xA0;<span class="sunlight-keyword">NULL</span>&#xA0;<span class="sunlight-ident">COMMENT</span>&#xA0;<span class="sunlight-string">&apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x66F4;&#x65B0;&#x65E5;&#x6642;&apos;</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">delete_flg</span>&#xA0;<span class="sunlight-keyword">INT</span><span class="sunlight-punctuation">(</span><span class="sunlight-number">1</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-keyword">DEFAULT</span>&#xA0;<span class="sunlight-number">0</span>&#xA0;<span class="sunlight-keyword">NOT</span>&#xA0;<span class="sunlight-keyword">NULL</span>&#xA0;<span class="sunlight-ident">COMMENT</span>&#xA0;<span class="sunlight-string">&apos;0&#xFF1A;&#x901A;&#x5E38;&#xFF0C;1&#xFF1A;&#x524A;&#x9664;&#x6E08;&apos;</span><span class="sunlight-punctuation">,</span>
+    -- Not Null&#x5236;&#x7D04;
+    order_kbn INT(3) NOT NULL COMMENT &apos;&#x6CE8;&#x6587;&#x533A;&#x5206;&apos;,
+    system_create_date_time DATETIME NOT NULL COMMENT &apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x767B;&#x9332;&#x65E5;&#x6642;&apos;,
+    system_update_date_time DATETIME NOT NULL COMMENT &apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x66F4;&#x65B0;&#x65E5;&#x6642;&apos;,
+    delete_flg INT(1) DEFAULT 0 NOT NULL COMMENT &apos;0&#xFF1A;&#x901A;&#x5E38;&#xFF0C;1&#xFF1A;&#x524A;&#x9664;&#x6E08;&apos;,
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x8907;&#x5408;Primary&#xA0;Key&#x5236;&#x7D04;&#xFF08;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E0A;&#x8A18;&#x306E;Primary&#xA0;Key&#x5236;&#x7D04;&#x306E;&#x8A18;&#x8FF0;&#x306F;&#x4E0D;&#x8981;&#xFF09;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">PRIMARY</span>&#xA0;<span class="sunlight-keyword">KEY</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">order_id</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-ident">order_kbn</span><span class="sunlight-punctuation">)</span>
+    -- &#x8907;&#x5408;Primary Key&#x5236;&#x7D04;&#xFF08;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E0A;&#x8A18;&#x306E;Primary Key&#x5236;&#x7D04;&#x306E;&#x8A18;&#x8FF0;&#x306F;&#x4E0D;&#x8981;&#xFF09;
+    PRIMARY KEY(order_id, order_kbn)
 
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x53C2;&#x7167;&#x5236;&#x7D04;&#x30AD;&#x30FC;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">FOREIGN</span>&#xA0;<span class="sunlight-keyword">KEY</span>&#xA0;<span class="sunlight-ident">order_kbn</span>&#xA0;<span class="sunlight-keyword">REFERENCES</span>&#xA0;<span class="sunlight-ident">order_kbn_data</span>
-<span class="sunlight-punctuation">)</span>
-</span></pre></div></div></code></pre>
+    -- &#x53C2;&#x7167;&#x5236;&#x7D04;&#x30AD;&#x30FC;
+    FOREIGN KEY order_kbn REFERENCES order_kbn_data
+)
+</code></pre>
 <p><br></p>
 <h3 id="create-view&#x53E5;"><code>CREATE VIEW</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>&#x30D3;&#x30E5;&#x30FC;&#x3068;&#x306F;&#x3042;&#x308B;&#x8868;&#x306E;&#x7279;&#x5B9A;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3084;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6761;&#x4EF6;&#x306B;&#x5408;&#x81F4;&#x3059;&#x308B;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306A;&#x3069;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3057;&#x305F;&#x4EEE;&#x60F3;&#x306E;&#x8868;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x8868;&#x3092;&#x7D50;&#x5408;&#x3057;&#x305F;&#x30D3;&#x30E5;&#x30FC;&#x3092;&#x4F5C;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D3;&#x30E5;&#x30FC;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x5FC5;&#x8981;&#x6700;&#x5C0F;&#x9650;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3084;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3055;&#x305B;&#x308B;&#x4E8B;&#x304C;&#x3067;&#x304D;&#xFF0C;&#x307E;&#x305F;&#x7D50;&#x5408;&#x6761;&#x4EF6;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x65E2;&#x306B;&#x7D50;&#x5408;&#x3055;&#x308C;&#x305F;&#x8868;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#xFF0E;
 &#x21D2;&#x3088;&#x304F;&#x308F;&#x304B;&#x3089;&#x3093;&#x2026;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-578-line-1" href="#sunlight-578-line-1">1</a>
-<a name="sunlight-578-line-2" href="#sunlight-578-line-2">2</a>
-<a name="sunlight-578-line-3" href="#sunlight-578-line-3">3</a>
-<a name="sunlight-578-line-4" href="#sunlight-578-line-4">4</a>
-<a name="sunlight-578-line-5" href="#sunlight-578-line-5">5</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">CREATE</span>&#xA0;<span class="sunlight-ident">VIEW</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">AS</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">CREATE VIEW { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; } AS
+SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <p><br></p>
 <h3 id="&#x5236;&#x7D04;">&#x5236;&#x7D04;</h3>
 <h4 id="&#x30FB;primary-key&#xFF08;&#x4E3B;&#x30AD;&#x30FC;&#xFF09;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x4E3B;&#x30AD;&#x30FC;&#x5236;&#x7D04;">&#x30FB;Primary key&#xFF08;&#x4E3B;&#x30AD;&#x30FC;&#xFF09;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x4E3B;&#x30AD;&#x30FC;&#x5236;&#x7D04;</h4>
@@ -1524,36 +1485,26 @@
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p><code>SELECT</code>&#x6587;&#x306E;stored procedure&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-579-line-1" href="#sunlight-579-line-1">1</a>
-<a name="sunlight-579-line-2" href="#sunlight-579-line-2">2</a>
-<a name="sunlight-579-line-3" href="#sunlight-579-line-3">3</a>
-<a name="sunlight-579-line-4" href="#sunlight-579-line-4">4</a>
-<a name="sunlight-579-line-5" href="#sunlight-579-line-5">5</a>
-<a name="sunlight-579-line-6" href="#sunlight-579-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;PROCEDURE&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</span>
-<span class="sunlight-keyword">CREATE</span>&#xA0;<span class="sunlight-keyword">PROCEDURE</span>&#xA0;<span class="sunlight-ident">SelectContact</span>&#xA0;<span class="sunlight-keyword">AS</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-580-line-1" href="#sunlight-580-line-1">1</a>
-<a name="sunlight-580-line-2" href="#sunlight-580-line-2">2</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;PROCEDURE&#x3092;&#x5B9F;&#x884C;</span>
-<span class="sunlight-ident">EXEC</span>&#xA0;<span class="sunlight-ident">SelectContact</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- PROCEDURE&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;
+CREATE PROCEDURE SelectContact AS
+SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; }
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+</code></pre>
+<pre class="language-"><code class="lang-mysql">-- PROCEDURE&#x3092;&#x5B9F;&#x884C;
+EXEC SelectContact
+</code></pre>
 <p><br></p>
 <h3 id="&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;">&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</h3>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;">&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;</h4>
 <p>DB&#x304B;&#x3089;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3057;&#x305F;&#x3044;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x9023;&#x306D;&#x308B;</p>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-581-line-1" href="#sunlight-581-line-1">1</a>
-</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash"><span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">mysqldump</span>&#xA0;<span class="sunlight-operator">--</span><span class="sunlight-ident">force</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">u</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#xA0;}&apos;&#xA0;-p&#xA0;-h&#xA0;&apos;{&#xA0;DB&#x306E;&#x30DB;&#x30B9;&#x30C8;&#xA0;}&apos;&#xA0;&apos;{&#xA0;DB&#x540D;&#xA0;}&apos;&#xA0;&apos;{&#xA0;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1&#xA0;}&apos;&#xA0;&apos;{&#xA0;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2&#xA0;}&apos;&#xA0;&gt;&#xA0;table.sql
-</span></span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-bash">$ mysqldump --force -u <span class="token string">&apos;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&apos;</span> -p -h <span class="token string">&apos;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&apos;</span> <span class="token string">&apos;{ DB&#x540D; }&apos;</span> <span class="token string">&apos;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }&apos;</span> <span class="token string">&apos;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 }&apos;</span> <span class="token operator">&gt;</span> table.sql
+</code></pre>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;">&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</h4>
 <p>DB&#x306B;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;force&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x51FA;&#x3066;&#x3082;&#x5F37;&#x5236;&#x7684;&#x306B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#xFF0E;</p>
-<pre><code class="lang-bash"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-582-line-1" href="#sunlight-582-line-1">1</a>
-</div><pre class="sunlight-highlight-bash sunlight-highlighted"><span class="sunlight-bash">&#xA0;<span class="sunlight-variable">$</span>&#xA0;<span class="sunlight-ident">mysql</span>&#xA0;<span class="sunlight-operator">--</span><span class="sunlight-ident">force</span>&#xA0;<span class="sunlight-operator">-</span><span class="sunlight-ident">u</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#xA0;}&apos;&#xA0;-p&#xA0;-h&#xA0;&apos;{&#xA0;DB&#x306E;&#x30DB;&#x30B9;&#x30C8;&#xA0;}&apos;&#xA0;&apos;{&#xA0;DB&#x540D;&#xA0;}&apos;&#xA0;&lt;&#xA0;table.sql
-</span></span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-bash"> $ mysql --force -u <span class="token string">&apos;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&apos;</span> -p -h <span class="token string">&apos;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&apos;</span> <span class="token string">&apos;{ DB&#x540D; }&apos;</span> <span class="token operator">&lt;</span> table.sql
+</code></pre>
 <p><br></p>
 <h3 id="&#x30C7;&#x30FC;&#x30BF;&#x578B;">&#x30C7;&#x30FC;&#x30BF;&#x578B;</h3>
 <h4 id="&#x30FB;&#x6570;&#x5024;&#x578B;">&#x30FB;&#x6570;&#x5024;&#x578B;</h4>
@@ -1612,55 +1563,39 @@
 <h2 id="03-&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x7BA1;&#x7406;">03. &#x30E6;&#x30FC;&#x30B6;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="create">CREATE</h3>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4F5C;&#x6210;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4F5C;&#x6210;</h4>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-583-line-1" href="#sunlight-583-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">CREATE</span>&#xA0;<span class="sunlight-ident">USER</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span>&#xA0;<span class="sunlight-ident">IDENTIFIED</span>&#xA0;<span class="sunlight-keyword">BY</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">CREATE USER &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos; IDENTIFIED BY &apos;{ &#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9; }&apos;;
+</code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4E00;&#x89A7;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4E00;&#x89A7;</h4>
 <p>&#x3053;&#x3053;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x7279;&#x6A29;&#x3068;&#xFF0E;ALL&#x7279;&#x6A29;&#x306F;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-584-line-1" href="#sunlight-584-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">FROM</span>&#xA0;<span class="sunlight-named-ident">mysql</span><span class="sunlight-operator">.</span><span class="sunlight-named-ident">user</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT * FROM mysql.user;
+</code></pre>
 <p><br></p>
 <h3 id="drop">DROP</h3>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x524A;&#x9664;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x524A;&#x9664;</h4>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-585-line-1" href="#sunlight-585-line-1">1</a>
-<a name="sunlight-585-line-2" href="#sunlight-585-line-2">2</a>
-<a name="sunlight-585-line-3" href="#sunlight-585-line-3">3</a>
-<a name="sunlight-585-line-4" href="#sunlight-585-line-4">4</a>
-<a name="sunlight-585-line-5" href="#sunlight-585-line-5">5</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x5225;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306E;&#x78BA;&#x8A8D;</span>
-<span class="sunlight-keyword">SELECT</span>&#xA0;<span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">FROM</span>&#xA0;<span class="sunlight-named-ident">mysql</span><span class="sunlight-operator">.</span><span class="sunlight-named-ident">user</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-mysql">-- &#x30E6;&#x30FC;&#x30B6;&#x5225;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306E;&#x78BA;&#x8A8D;
+SELECT * FROM mysql.user;
 
-<span class="sunlight-comment">--&#xA0;&#x30DB;&#x30B9;&#x30C8;&#x304C;&#x300C;%&#x300D;&#x3060;&#x3063;&#x305F;&#x5834;&#x5408;</span>
-<span class="sunlight-keyword">DROP</span>&#xA0;<span class="sunlight-ident">USER</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30E6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30B6;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">@</span><span class="sunlight-quotedIdent">`%`</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+-- &#x30DB;&#x30B9;&#x30C8;&#x304C;&#x300C;%&#x300D;&#x3060;&#x3063;&#x305F;&#x5834;&#x5408;
+DROP USER { &#x30E6;&#x30FC;&#x30B6;&#x540D; }@`%`;
+</code></pre>
 <p><br></p>
 <h3 id="grant">GRANT</h3>
 <h4 id="&#x30FB;&#x5168;&#x3066;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;">&#x30FB;&#x5168;&#x3066;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x540D;&#x306F;&#xFF0C;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x56F2;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x7121;&#x3044;&#xFF0E;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;<code>PRIVILEGES</code>&#x306F;&#x7701;&#x7565;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x7701;&#x7565;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x307B;&#x3046;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-586-line-1" href="#sunlight-586-line-1">1</a>
-<a name="sunlight-586-line-2" href="#sunlight-586-line-2">2</a>
-<a name="sunlight-586-line-3" href="#sunlight-586-line-3">3</a>
-<a name="sunlight-586-line-4" href="#sunlight-586-line-4">4</a>
-<a name="sunlight-586-line-5" href="#sunlight-586-line-5">5</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</span>
-<span class="sunlight-keyword">GRANT</span>&#xA0;<span class="sunlight-keyword">ALL</span>&#xA0;<span class="sunlight-ident">PRIVILEGES</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-operator">*</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-mysql">-- &#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;
+GRANT ALL PRIVILEGES ON *.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
 
-<span class="sunlight-comment">--&#xA0;Amazon&#xA0;Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-<span class="sunlight-keyword">GRANT</span>&#xA0;<span class="sunlight-keyword">ALL</span>&#xA0;<span class="sunlight-ident">PRIVILEGES</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-quotedIdent">`%`</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-587-line-1" href="#sunlight-587-line-1">1</a>
-<a name="sunlight-587-line-2" href="#sunlight-587-line-2">2</a>
-<a name="sunlight-587-line-3" href="#sunlight-587-line-3">3</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;Amazon&#xA0;Aurora&#x3082;&#x540C;&#x3058;&#x304F;</span>
-<span class="sunlight-comment">--&#xA0;&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</span>
-<span class="sunlight-keyword">GRANT</span>&#xA0;<span class="sunlight-keyword">ALL</span>&#xA0;<span class="sunlight-ident">PRIVILEGES</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-punctuation">{</span><span class="sunlight-ident">DB</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+-- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;
+GRANT ALL PRIVILEGES ON `%`.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;;
+</code></pre>
+<pre class="language-"><code class="lang-mysql">-- Amazon Aurora&#x3082;&#x540C;&#x3058;&#x304F;
+-- &#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;
+GRANT ALL PRIVILEGES ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+</code></pre>
 <h4 id="&#x30FB;&#x4E00;&#x90E8;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;">&#x30FB;&#x4E00;&#x90E8;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x6A29;&#x9650;&#x306E;&#x307F;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-588-line-1" href="#sunlight-588-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">GRANT</span>&#xA0;<span class="sunlight-keyword">SELECT</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-punctuation">{</span><span class="sunlight-ident">DB</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">GRANT SELECT ON {DB&#x540D;}.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+</code></pre>
 <h4 id="&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;">&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;</h4>
 <table>
 <thead>
@@ -1691,151 +1626,104 @@
 <p><br></p>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4E00;&#x89A7;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4E00;&#x89A7;</h4>
 <p>&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x6A29;&#x9650;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-589-line-1" href="#sunlight-589-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SHOW</span>&#xA0;<span class="sunlight-ident">GRANTS</span>&#xA0;<span class="sunlight-keyword">FOR</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SHOW GRANTS FOR &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+</code></pre>
 <p>&#x4F5C;&#x6210;&#x3057;&#x305F;&#x3060;&#x3051;&#x3067;&#x6A29;&#x9650;&#x3092;&#x4F55;&#x3082;&#x4ED8;&#x4E0E;&#x3057;&#x3066;&#x306A;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x300C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306E;&#x5168;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3057;&#x3066;&#xFF0C;&#x5168;&#x6A29;&#x9650;&#x306A;&#x3057;&#x300D;&#x3092;&#x8868;&#x3059;<code>USAGE</code>&#x3068;&#x3057;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-590-line-1" href="#sunlight-590-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">GRANT</span>&#xA0;<span class="sunlight-keyword">USAGE</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-operator">*</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">GRANT USAGE ON *.* TO &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;;
+</code></pre>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3068;&#xFF0C;&#x4E0A;&#x8A18;&#x306B;&#x52A0;&#x3048;&#x3066;&#xFF0C;&#x4ED8;&#x4E0E;&#x3057;&#x305F;GRANT&#x6A29;&#x9650;&#x3082;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="revoke">REVOKE</h3>
 <h4 id="&#x30FB;&#x5168;&#x6A29;&#x9650;&#x524A;&#x9664;">&#x30FB;&#x5168;&#x6A29;&#x9650;&#x524A;&#x9664;</h4>
 <p>&#x5168;&#x6A29;&#x9650;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;GRANT&#x6A29;&#x9650;&#x3092;USAGE&#x306B;&#x623B;&#x3059;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-591-line-1" href="#sunlight-591-line-1">1</a>
-<a name="sunlight-591-line-2" href="#sunlight-591-line-2">2</a>
-<a name="sunlight-591-line-3" href="#sunlight-591-line-3">3</a>
-<a name="sunlight-591-line-4" href="#sunlight-591-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;Amazon&#xA0;Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;</span>
-<span class="sunlight-keyword">REVOKE</span>&#xA0;<span class="sunlight-keyword">ALL</span>&#xA0;<span class="sunlight-ident">PRIVILEGES</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-quotedIdent">`%`</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">FROM</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-mysql">-- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;
+REVOKE ALL PRIVILEGES ON `%`.* FROM &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
 
-<span class="sunlight-keyword">REVOKE</span>&#xA0;<span class="sunlight-keyword">ALL</span>&#xA0;<span class="sunlight-ident">PRIVILEGES</span>&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-punctuation">{</span><span class="sunlight-ident">DB</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-operator">*</span>&#xA0;<span class="sunlight-keyword">FROM</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+REVOKE ALL PRIVILEGES ON {DB&#x540D;}.* FROM &apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+</code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;</h4>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-592-line-1" href="#sunlight-592-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">RENAME</span>&#xA0;<span class="sunlight-ident">USER</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x53E4;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span>&#xA0;<span class="sunlight-keyword">TO</span>&#xA0;<span class="sunlight-string">&apos;{&#xA0;&#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xA0;}&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">RENAME USER &apos;{ &#x53E4;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos; TO &apos;{ &#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;;
+</code></pre>
 <p><br></p>
 <h2 id="04-&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF1A;read">04. &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF1A;READ</h2>
 <h3 id="&#x306F;&#x3058;&#x3081;&#x306B;">&#x306F;&#x3058;&#x3081;&#x306B;</h3>
 <h4 id="&#x30FB;&#x53E5;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;">&#x30FB;&#x53E5;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;</h4>
-<pre><code>FROM ---&gt; JOIN ---&gt; WHERE ---&gt; GROUP BY ---&gt; HAVING ---&gt; SELECT ---&gt; ORDER BY
+<pre class="language-"><code>FROM ---&gt; JOIN ---&gt; WHERE ---&gt; GROUP BY ---&gt; HAVING ---&gt; SELECT ---&gt; ORDER BY
 </code></pre><p><br></p>
 <h3 id="select&#x53E5;"><code>SELECT</code>&#x53E5;</h3>
 <h4 id="&#x30FB;sum">&#x30FB;<code>SUM()</code></h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5408;&#x8A08;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-593-line-1" href="#sunlight-593-line-1">1</a>
-<a name="sunlight-593-line-2" href="#sunlight-593-line-2">2</a>
-<a name="sunlight-593-line-3" href="#sunlight-593-line-3">3</a>
-<a name="sunlight-593-line-4" href="#sunlight-593-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">SUM</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    SUM({ &#x30AB;&#x30E9;&#x30E0;&#x540D; })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <h4 id="&#x30FB;avg">&#x30FB;<code>AVG()</code></h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5E73;&#x5747;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-594-line-1" href="#sunlight-594-line-1">1</a>
-<a name="sunlight-594-line-2" href="#sunlight-594-line-2">2</a>
-<a name="sunlight-594-line-3" href="#sunlight-594-line-3">3</a>
-<a name="sunlight-594-line-4" href="#sunlight-594-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">AVG</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    AVG({ &#x30AB;&#x30E9;&#x30E0;&#x540D; })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <h4 id="&#x30FB;min">&#x30FB;<code>MIN()</code></h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-595-line-1" href="#sunlight-595-line-1">1</a>
-<a name="sunlight-595-line-2" href="#sunlight-595-line-2">2</a>
-<a name="sunlight-595-line-3" href="#sunlight-595-line-3">3</a>
-<a name="sunlight-595-line-4" href="#sunlight-595-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">MIN</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    MIN({ &#x30AB;&#x30E9;&#x30E0;&#x540D; })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <h4 id="&#x30FB;max">&#x30FB;<code>MAX()</code></h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5927;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-596-line-1" href="#sunlight-596-line-1">1</a>
-<a name="sunlight-596-line-2" href="#sunlight-596-line-2">2</a>
-<a name="sunlight-596-line-3" href="#sunlight-596-line-3">3</a>
-<a name="sunlight-596-line-4" href="#sunlight-596-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">MAX</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    MAX({ &#x30AB;&#x30E9;&#x30E0;&#x540D; })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <h4 id="&#x30FB;count">&#x30FB;<code>COUNT()</code></h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x500B;&#x6570;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-597-line-1" href="#sunlight-597-line-1">1</a>
-<a name="sunlight-597-line-2" href="#sunlight-597-line-2">2</a>
-<a name="sunlight-597-line-3" href="#sunlight-597-line-3">3</a>
-<a name="sunlight-597-line-4" href="#sunlight-597-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-function">COUNT</span><span class="sunlight-punctuation">(</span><span class="sunlight-operator">*</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } COUNT(*)
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <p><strong>&#x203B;&#x6D88;&#x53BB;&#x6CD5;&#x306E;&#x5C0F;&#x6280;&#xFF1A;&#x96C6;&#x5408;&#x95A2;&#x6570;&#x3092;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;</strong></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x96C6;&#x5408;&#x95A2;&#x6570;&#x3092;&#x96C6;&#x5408;&#x95A2;&#x6570;&#x306E;&#x4E2D;&#x306B;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-598-line-1" href="#sunlight-598-line-1">1</a>
-<a name="sunlight-598-line-2" href="#sunlight-598-line-2">2</a>
-<a name="sunlight-598-line-3" href="#sunlight-598-line-3">3</a>
-<a name="sunlight-598-line-4" href="#sunlight-598-line-4">4</a>
-<a name="sunlight-598-line-5" href="#sunlight-598-line-5">5</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">AVG</span><span class="sunlight-punctuation">(</span><span class="sunlight-function">SUM</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- 
+SELECT
+    AVG(SUM({ &#x30AB;&#x30E9;&#x30E0;&#x540D; }))
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3082;&#x542B;&#x3080;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-599-line-1" href="#sunlight-599-line-1">1</a>
-<a name="sunlight-599-line-2" href="#sunlight-599-line-2">2</a>
-<a name="sunlight-599-line-3" href="#sunlight-599-line-3">3</a>
-<a name="sunlight-599-line-4" href="#sunlight-599-line-4">4</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-function">COUNT</span><span class="sunlight-punctuation">(</span><span class="sunlight-operator">*</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } COUNT(*)
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; };
+</code></pre>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3092;&#x9664;&#x3044;&#x305F;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-600-line-1" href="#sunlight-600-line-1">1</a>
-<a name="sunlight-600-line-2" href="#sunlight-600-line-2">2</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-function">COUNT</span><span class="sunlight-punctuation">(</span><span class="sunlight-operator">*</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } COUNT(*);
+</code></pre>
 <h4 id="&#x30FB;lastinsertid">&#x30FB;<code>LAST_INSERT_ID()</code></h4>
 <p>&#x6700;&#x5F8C;&#x306B;&#x633F;&#x5165;&#x3055;&#x308C;&#x305F;ID&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-601-line-1" href="#sunlight-601-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>&#xA0;<span class="sunlight-function">LAST_INSERT_ID</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT LAST_INSERT_ID();
+</code></pre>
 <h4 id="&#x30FB;md5">&#x30FB;<code>MD5()</code></h4>
 <p>&#x6587;&#x5B57;&#x5217;&#x3092;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5316;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-602-line-1" href="#sunlight-602-line-1">1</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>&#xA0;<span class="sunlight-function">MD5</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&apos;xxxxx&apos;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT MD5(&apos;xxxxx&apos;);
+</code></pre>
 <p><br></p>
 <h3 id="case&#x53E5;"><code>CASE</code>&#x53E5;</h3>
 <p> &#x30AB;&#x30E9;&#x30E0;1&#x304C;<code>true</code>&#x3060;&#x3063;&#x305F;&#x3089;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;2&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;<code>false</code>&#x3067;&#x3042;&#x3063;&#x305F;&#x3089;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;3&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-603-line-1" href="#sunlight-603-line-1">1</a>
-<a name="sunlight-603-line-2" href="#sunlight-603-line-2">2</a>
-<a name="sunlight-603-line-3" href="#sunlight-603-line-3">3</a>
-<a name="sunlight-603-line-4" href="#sunlight-603-line-4">4</a>
-<a name="sunlight-603-line-5" href="#sunlight-603-line-5">5</a>
-<a name="sunlight-603-line-6" href="#sunlight-603-line-6">6</a>
-<a name="sunlight-603-line-7" href="#sunlight-603-line-7">7</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">CASE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">WHEN</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30A8;</span><span class="sunlight-punctuation">&#x30A4;</span><span class="sunlight-punctuation">&#x30EA;</span><span class="sunlight-punctuation">&#x30A2;</span><span class="sunlight-punctuation">&#x30B9;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-number">1</span>&#xA0;<span class="sunlight-keyword">THEN</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30A8;</span><span class="sunlight-punctuation">&#x30A4;</span><span class="sunlight-punctuation">&#x30EA;</span><span class="sunlight-punctuation">&#x30A2;</span><span class="sunlight-punctuation">&#x30B9;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ELSE</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30A8;</span><span class="sunlight-punctuation">&#x30A4;</span><span class="sunlight-punctuation">&#x30EA;</span><span class="sunlight-punctuation">&#x30A2;</span><span class="sunlight-punctuation">&#x30B9;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">3</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">END</span>&#xA0;<span class="sunlight-keyword">AS</span>&#xA0;<span class="sunlight-ident">name</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">AS</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30A8;</span><span class="sunlight-punctuation">&#x30A4;</span><span class="sunlight-punctuation">&#x30EA;</span><span class="sunlight-punctuation">&#x30A2;</span><span class="sunlight-punctuation">&#x30B9;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    CASE
+        WHEN { &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9; }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;1 } = 1 THEN { &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9; }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;2 }
+        ELSE { &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9; }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;3 }
+    END AS name
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; } AS { &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9; };
+</code></pre>
 <p><br></p>
 <h3 id="from&#x53E5;"><code>FROM</code>&#x53E5;</h3>
 <h4 id="&#x30FB;join&#x53E5;&#x306E;&#x7A2E;&#x985E;">&#x30FB;<code>JOIN</code>&#x53E5;&#x306E;&#x7A2E;&#x985E;</h4>
@@ -1849,680 +1737,392 @@
 <h4 id="&#x30FB;&#x5185;&#x90E8;&#x7D50;&#x5408;&#x306B;where&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;">&#x30FB;&#x5185;&#x90E8;&#x7D50;&#x5408;&#x306B;<code>WHERE</code>&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;</h4>
 <p>2&#x3064;&#x306E;<code>WHERE</code>&#x6587;&#x304C;&#xFF0C;<code>AND</code>&#x3067;&#x7D50;&#x3073;&#x3064;&#x3051;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x6642;&#xFF0C;&#x307E;&#x305A;&#x4E00;&#x3064;&#x76EE;&#x306E;<code>WHERE</code>&#x3092;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E2D;&#x304B;&#x3089;&#xFF0C;&#x4E8C;&#x3064;&#x76EE;&#x306E;<code>WHERE</code>&#x3092;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-604-line-1" href="#sunlight-604-line-1">1</a>
-<a name="sunlight-604-line-2" href="#sunlight-604-line-2">2</a>
-<a name="sunlight-604-line-3" href="#sunlight-604-line-3">3</a>
-<a name="sunlight-604-line-4" href="#sunlight-604-line-4">4</a>
-<a name="sunlight-604-line-5" href="#sunlight-604-line-5">5</a>
-<a name="sunlight-604-line-6" href="#sunlight-604-line-6">6</a>
-<a name="sunlight-604-line-7" href="#sunlight-604-line-7">7</a>
-<a name="sunlight-604-line-8" href="#sunlight-604-line-8">8</a>
-<a name="sunlight-604-line-9" href="#sunlight-604-line-9">9</a>
-<a name="sunlight-604-line-10" href="#sunlight-604-line-10">10</a>
-<a name="sunlight-604-line-11" href="#sunlight-604-line-11">11</a>
-<a name="sunlight-604-line-12" href="#sunlight-604-line-12">12</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x300E;&#x30AB;&#x30E9;&#x30E0;&#x300F;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x3069;&#x306E;&#x300E;&#x8868;&#x300F;&#x306A;&#x306E;&#x7269;&#x306A;&#x306E;&#x304B;&#x3082;&#x6307;&#x5B9A;</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x8907;&#x6570;&#x306E;&#x8868;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x307E;&#x305A;&#xFF0C;1&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;2&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304C;&#x540C;&#x3058;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x6B21;&#x306B;&#xFF0C;&#x4E0A;&#x8A18;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6B21;&#x306E;&#x6761;&#x4EF6;&#x3082;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">AND</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">3</span>&#xA0;<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- &#x300E;&#x30AB;&#x30E9;&#x30E0;&#x300F;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x3069;&#x306E;&#x300E;&#x8868;&#x300F;&#x306A;&#x306E;&#x7269;&#x306A;&#x306E;&#x304B;&#x3082;&#x6307;&#x5B9A;
+SELECT
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;1 },
+    -- &#x8907;&#x6570;&#x306E;&#x8868;&#x3092;&#x6307;&#x5B9A;
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 },
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 },
+    -- &#x307E;&#x305A;&#xFF0C;1&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;2&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304C;&#x540C;&#x3058;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#xFF0E;
+WHERE
+    -- &#x6B21;&#x306B;&#xFF0C;&#x4E0A;&#x8A18;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6B21;&#x306E;&#x6761;&#x4EF6;&#x3082;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#xFF0E;
+    { &#x30ED;&#x30FC;&#x540D;1 } = { &#x30ED;&#x30FC;&#x540D;2 }
+    AND { &#x30ED;&#x30FC;&#x540D;2 } = { &#x30ED;&#x30FC;&#x540D;3 }
+</code></pre>
 <h4 id="&#x30FB;&#x5185;&#x90E8;&#x7D50;&#x5408;&#x306B;inner-join-on&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;">&#x30FB;&#x5185;&#x90E8;&#x7D50;&#x5408;&#x306B;<code>INNER JOIN ON</code>&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-605-line-1" href="#sunlight-605-line-1">1</a>
-<a name="sunlight-605-line-2" href="#sunlight-605-line-2">2</a>
-<a name="sunlight-605-line-3" href="#sunlight-605-line-3">3</a>
-<a name="sunlight-605-line-4" href="#sunlight-605-line-4">4</a>
-<a name="sunlight-605-line-5" href="#sunlight-605-line-5">5</a>
-<a name="sunlight-605-line-6" href="#sunlight-605-line-6">6</a>
-<a name="sunlight-605-line-7" href="#sunlight-605-line-7">7</a>
-<a name="sunlight-605-line-8" href="#sunlight-605-line-8">8</a>
-<a name="sunlight-605-line-9" href="#sunlight-605-line-9">9</a>
-<a name="sunlight-605-line-10" href="#sunlight-605-line-10">10</a>
-<a name="sunlight-605-line-11" href="#sunlight-605-line-11">11</a>
-<a name="sunlight-605-line-12" href="#sunlight-605-line-12">12</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;&#x300E;&#x30AB;&#x30E9;&#x30E0;&#x300F;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x3069;&#x306E;&#x300E;&#x8868;&#x300F;&#x306A;&#x306E;&#x7269;&#x306A;&#x306E;&#x304B;&#x3082;&#x6307;&#x5B9A;</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;&#x8907;&#x6570;&#x306E;&#x8868;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;2&#x3064;&#x76EE;&#x306E;&#x8868;&#x306E;&#x300E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x300F;&#x3068;&#x7167;&#x5408;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">INNER</span>&#xA0;<span class="sunlight-keyword">JOIN</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;3&#x3064;&#x76EE;&#x306E;&#x8868;&#x306E;&#x300E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x300F;&#x3068;&#x7167;&#x5408;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">INNER</span>&#xA0;<span class="sunlight-keyword">JOIN</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">3</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">ON</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">3</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">3</span>&#xA0;<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- &#x300E;&#x30AB;&#x30E9;&#x30E0;&#x300F;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x3069;&#x306E;&#x300E;&#x8868;&#x300F;&#x306A;&#x306E;&#x7269;&#x306A;&#x306E;&#x304B;&#x3082;&#x6307;&#x5B9A;
+SELECT
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;1 },
+    -- &#x8907;&#x6570;&#x306E;&#x8868;&#x3092;&#x6307;&#x5B9A;
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }
+    -- 2&#x3064;&#x76EE;&#x306E;&#x8868;&#x306E;&#x300E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x300F;&#x3068;&#x7167;&#x5408;
+    INNER JOIN { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 }
+    ON { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;1 } = { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;2 }
+    -- 3&#x3064;&#x76EE;&#x306E;&#x8868;&#x306E;&#x300E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x300F;&#x3068;&#x7167;&#x5408;
+    INNER JOIN { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;3 }
+    ON { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;1 } = { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;3 }.{ &#x30AB;&#x30E9;&#x30E0;&#x540D;3 }
+</code></pre>
 <p><br></p>
 <h3 id="order-by&#x53E5;"><code>ORDER BY</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-606-line-1" href="#sunlight-606-line-1">1</a>
-<a name="sunlight-606-line-2" href="#sunlight-606-line-2">2</a>
-<a name="sunlight-606-line-3" href="#sunlight-606-line-3">3</a>
-<a name="sunlight-606-line-4" href="#sunlight-606-line-4">4</a>
-<a name="sunlight-606-line-5" href="#sunlight-606-line-5">5</a>
-<a name="sunlight-606-line-6" href="#sunlight-606-line-6">6</a>
-<a name="sunlight-606-line-7" href="#sunlight-606-line-7">7</a>
-<a name="sunlight-606-line-8" href="#sunlight-606-line-8">8</a>
-<a name="sunlight-606-line-9" href="#sunlight-606-line-9">9</a>
-<a name="sunlight-606-line-10" href="#sunlight-606-line-10">10</a>
-<a name="sunlight-606-line-11" href="#sunlight-606-line-11">11</a>
-<a name="sunlight-606-line-12" href="#sunlight-606-line-12">12</a>
-<a name="sunlight-606-line-13" href="#sunlight-606-line-13">13</a>
-<a name="sunlight-606-line-14" href="#sunlight-606-line-14">14</a>
-<a name="sunlight-606-line-15" href="#sunlight-606-line-15">15</a>
-<a name="sunlight-606-line-16" href="#sunlight-606-line-16">16</a>
-<a name="sunlight-606-line-17" href="#sunlight-606-line-17">17</a>
-<a name="sunlight-606-line-18" href="#sunlight-606-line-18">18</a>
-<a name="sunlight-606-line-19" href="#sunlight-606-line-19">19</a>
-<a name="sunlight-606-line-20" href="#sunlight-606-line-20">20</a>
-<a name="sunlight-606-line-21" href="#sunlight-606-line-21">21</a>
-<a name="sunlight-606-line-22" href="#sunlight-606-line-22">22</a>
-<a name="sunlight-606-line-23" href="#sunlight-606-line-23">23</a>
-<a name="sunlight-606-line-24" href="#sunlight-606-line-24">24</a>
-<a name="sunlight-606-line-25" href="#sunlight-606-line-25">25</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-$joinedIdList&#xA0;=&#xA0;implode(&apos;,&apos;,&#xA0;$idList);
+<pre class="language-"><code class="lang-PHP">&lt;?php
+$joinedIdList = implode(&apos;,&apos;, $idList);
 
-//&#xA0;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x6761;&#x4EF6;&#x3092;&#x8A2D;&#x5B9A;
-$expression&#xA0;=&#xA0;call_user_func(function&#xA0;()&#xA0;use&#xA0;($orders,&#xA0;$joinedIdList)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($orders)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($orders&#xA0;as&#xA0;$key&#xA0;=&gt;&#xA0;$order)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;switch&#xA0;($key)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;case&#xA0;&apos;id&apos;:
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sprintf(&apos;ss.id&#xA0;%s&apos;,&#xA0;$order);
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;}
+// &#x4E26;&#x3073;&#x66FF;&#x3048;&#x6761;&#x4EF6;&#x3092;&#x8A2D;&#x5B9A;
+$expression = call_user_func(function () use ($orders, $joinedIdList) {
+    if ($orders) {
+        foreach ($orders as $key =&gt; $order) {
+            switch ($key) {
+                case &apos;id&apos;:
+                    return sprintf(&apos;ss.id %s&apos;, $order);
+            }
+        }
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;IN&#x53E5;&#x9806;&#x306E;&#x5834;&#x5408;
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;sprintf(&apos;FIELD(ss.id,&#xA0;%s)&apos;,&#xA0;$idList);
+    // IN&#x53E5;&#x9806;&#x306E;&#x5834;&#x5408;
+    return sprintf(&apos;FIELD(ss.id, %s)&apos;, $idList);
 });
 
-$sql&#xA0;=&#xA0;&lt;&lt;&lt;SQL
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;SELECT&#xA0;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;name
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;FROM
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;table
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ORDER&#xA0;BY&#xA0;{$expression}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;SQL;
-</span></pre></div></div></code></pre>
+$sql = &lt;&lt;&lt;SQL
+            SELECT 
+                name
+            FROM
+                table
+            ORDER BY {$expression}
+        SQL;
+</code></pre>
 <p><br></p>
 <h3 id="in&#x53E5;&#xFF0C;any&#x53E5;&#x306E;&#x9055;&#x3044;"><code>IN</code>&#x53E5;&#xFF0C;<code>ANY</code>&#x53E5;&#x306E;&#x9055;&#x3044;</h3>
 <h4 id="&#x30FB;in&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;<code>IN</code>&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>  &#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x3068;&#x540C;&#x3058;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-607-line-1" href="#sunlight-607-line-1">1</a>
-<a name="sunlight-607-line-2" href="#sunlight-607-line-2">2</a>
-<a name="sunlight-607-line-3" href="#sunlight-607-line-3">3</a>
-<a name="sunlight-607-line-4" href="#sunlight-607-line-4">4</a>
-<a name="sunlight-607-line-5" href="#sunlight-607-line-5">5</a>
-<a name="sunlight-607-line-6" href="#sunlight-607-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-function">in</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">,</span><span class="sunlight-operator">.</span><span class="sunlight-operator">.</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } in (xxx, xxx,...);
+</code></pre>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-608-line-1" href="#sunlight-608-line-1">1</a>
-<a name="sunlight-608-line-2" href="#sunlight-608-line-2">2</a>
-<a name="sunlight-608-line-3" href="#sunlight-608-line-3">3</a>
-<a name="sunlight-608-line-4" href="#sunlight-608-line-4">4</a>
-<a name="sunlight-608-line-5" href="#sunlight-608-line-5">5</a>
-<a name="sunlight-608-line-6" href="#sunlight-608-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">not</span>&#xA0;<span class="sunlight-function">in</span>&#xA0;<span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span><span class="sunlight-operator">.</span><span class="sunlight-operator">.</span><span class="sunlight-operator">.</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; } 
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } not in ({ &#x30ED;&#x30FC;&#x540D;1 }, { &#x30ED;&#x30FC;&#x540D;2 },...);
+</code></pre>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;<code>SELECT</code>&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-609-line-1" href="#sunlight-609-line-1">1</a>
-<a name="sunlight-609-line-2" href="#sunlight-609-line-2">2</a>
-<a name="sunlight-609-line-3" href="#sunlight-609-line-3">3</a>
-<a name="sunlight-609-line-4" href="#sunlight-609-line-4">4</a>
-<a name="sunlight-609-line-5" href="#sunlight-609-line-5">5</a>
-<a name="sunlight-609-line-6" href="#sunlight-609-line-6">6</a>
-<a name="sunlight-609-line-7" href="#sunlight-609-line-7">7</a>
-<a name="sunlight-609-line-8" href="#sunlight-609-line-8">8</a>
-<a name="sunlight-609-line-9" href="#sunlight-609-line-9">9</a>
-<a name="sunlight-609-line-10" href="#sunlight-609-line-10">10</a>
-<a name="sunlight-609-line-11" href="#sunlight-609-line-11">11</a>
-<a name="sunlight-609-line-12" href="#sunlight-609-line-12">12</a>
-<a name="sunlight-609-line-13" href="#sunlight-609-line-13">13</a>
-<a name="sunlight-609-line-14" href="#sunlight-609-line-14">14</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">not</span>&#xA0;<span class="sunlight-function">in</span>&#xA0;<span class="sunlight-punctuation">(</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">&gt;=</span>&#xA0;<span class="sunlight-number">160</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } not in (
+        -- 
+        SELECT
+            { &#x30AB;&#x30E9;&#x30E0;&#x540D; }
+        FROM
+            { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+        WHERE
+            { &#x30ED;&#x30FC;&#x540D; } &gt;= 160
+    );
+</code></pre>
 <p><strong>&#x3010;IN&#x53E5;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x3011;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-610-line-1" href="#sunlight-610-line-1">1</a>
-<a name="sunlight-610-line-2" href="#sunlight-610-line-2">2</a>
-<a name="sunlight-610-line-3" href="#sunlight-610-line-3">3</a>
-<a name="sunlight-610-line-4" href="#sunlight-610-line-4">4</a>
-<a name="sunlight-610-line-5" href="#sunlight-610-line-5">5</a>
-<a name="sunlight-610-line-6" href="#sunlight-610-line-6">6</a>
-<a name="sunlight-610-line-7" href="#sunlight-610-line-7">7</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-named-ident">fruit</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">name</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">OR</span>&#xA0;<span class="sunlight-ident">name</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    fruit
+WHERE
+    name = &quot;&#x307F;&#x304B;&#x3093;&quot;
+    OR name = &quot;&#x308A;&#x3093;&#x3054;&quot;;
+</code></pre>
 <p><strong>&#x3010;IN&#x53E5;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3011;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-611-line-1" href="#sunlight-611-line-1">1</a>
-<a name="sunlight-611-line-2" href="#sunlight-611-line-2">2</a>
-<a name="sunlight-611-line-3" href="#sunlight-611-line-3">3</a>
-<a name="sunlight-611-line-4" href="#sunlight-611-line-4">4</a>
-<a name="sunlight-611-line-5" href="#sunlight-611-line-5">5</a>
-<a name="sunlight-611-line-6" href="#sunlight-611-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-named-ident">fruit</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">name</span>&#xA0;<span class="sunlight-function">IN</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    fruit
+WHERE
+    name IN(&quot;&#x307F;&#x304B;&#x3093;&quot;, &quot;&#x308A;&#x3093;&#x3054;&quot;);
+</code></pre>
 <h4 id="&#x30FB;any&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;<code>ANY</code>&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>  &#x66F8;&#x304D;&#x65B9;&#x304C;&#x7570;&#x306A;&#x308B;&#x3060;&#x3051;&#x3067;&#xFF0C;<code>in</code>&#x3068;&#x540C;&#x3058;&#x51FA;&#x529B;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-612-line-1" href="#sunlight-612-line-1">1</a>
-<a name="sunlight-612-line-2" href="#sunlight-612-line-2">2</a>
-<a name="sunlight-612-line-3" href="#sunlight-612-line-3">3</a>
-<a name="sunlight-612-line-4" href="#sunlight-612-line-4">4</a>
-<a name="sunlight-612-line-5" href="#sunlight-612-line-5">5</a>
-<a name="sunlight-612-line-6" href="#sunlight-612-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-ident">ANY</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">,</span>&#xA0;<span class="sunlight-ident">xxx</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } = ANY(xxx, xxx, xxx);
+</code></pre>
 <p><br></p>
 <h3 id="group-by&#x53E5;"><code>GROUP BY</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#xFF0C;&#x96C6;&#x5408;&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306E;&#x5024;&#x3092;&#x8A08;&#x7B97;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#xFF0C;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306E;&#x5024;&#x306E;&#x5E73;&#x5747;&#x5024;&#x3092;&#x7B97;&#x51FA;&#x3059;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-613-line-1" href="#sunlight-613-line-1">1</a>
-<a name="sunlight-613-line-2" href="#sunlight-613-line-2">2</a>
-<a name="sunlight-613-line-3" href="#sunlight-613-line-3">3</a>
-<a name="sunlight-613-line-4" href="#sunlight-613-line-4">4</a>
-<a name="sunlight-613-line-5" href="#sunlight-613-line-5">5</a>
-<a name="sunlight-613-line-6" href="#sunlight-613-line-6">6</a>
-<a name="sunlight-613-line-7" href="#sunlight-613-line-7">7</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">AVG</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">GROUP</span>&#xA0;<span class="sunlight-keyword">BY</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D;1 },
+    AVG({ &#x30AB;&#x30E9;&#x30E0;&#x540D;2 })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+GROUP BY
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D;1 };
+</code></pre>
 <p><br></p>
 <h3 id="having&#x53E5;"><code>HAVING</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>&#x5404;&#x53E5;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;&#x304B;&#x3089;&#x8003;&#x616E;&#x3057;&#x3066;&#xFF0C;<code>GROUP BY</code>&#x3067;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x304B;&#x3089;&#xFF0C;<code>HAVING</code>&#x3067;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#xFF0E;<code>SELECT</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x304C;&#xFF0C;<code>HAVING</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x306E;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x305B;&#x3088;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-614-line-1" href="#sunlight-614-line-1">1</a>
-<a name="sunlight-614-line-2" href="#sunlight-614-line-2">2</a>
-<a name="sunlight-614-line-3" href="#sunlight-614-line-3">3</a>
-<a name="sunlight-614-line-4" href="#sunlight-614-line-4">4</a>
-<a name="sunlight-614-line-5" href="#sunlight-614-line-5">5</a>
-<a name="sunlight-614-line-6" href="#sunlight-614-line-6">6</a>
-<a name="sunlight-614-line-7" href="#sunlight-614-line-7">7</a>
-<a name="sunlight-614-line-8" href="#sunlight-614-line-8">8</a>
-<a name="sunlight-614-line-9" href="#sunlight-614-line-9">9</a>
-<a name="sunlight-614-line-10" href="#sunlight-614-line-10">10</a>
-<a name="sunlight-614-line-11" href="#sunlight-614-line-11">11</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;HAVING&#x306B;&#x3088;&#x308B;&#x96C6;&#x8A08;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x51FA;&#x529B;&#xFF0E;</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">COUNT</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">2</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">GROUP</span>&#xA0;<span class="sunlight-keyword">BY</span>
-<span class="sunlight-comment">--&#xA0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x3092;&#x96C6;&#x8A08;&#x3057;&#xFF0C;&#xFF12;&#x500B;&#x4EE5;&#x4E0A;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span><span class="sunlight-number">1</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">HAVING</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">COUNT</span><span class="sunlight-punctuation">(</span><span class="sunlight-operator">*</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-operator">&gt;=</span>&#xA0;<span class="sunlight-number">2</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- HAVING&#x306B;&#x3088;&#x308B;&#x96C6;&#x8A08;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x51FA;&#x529B;&#xFF0E;
+SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D;1 },
+    COUNT({ &#x30AB;&#x30E9;&#x30E0;&#x540D;2 })
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+GROUP BY
+-- &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x3092;&#x96C6;&#x8A08;&#x3057;&#xFF0C;&#xFF12;&#x500B;&#x4EE5;&#x4E0A;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D;1 }
+HAVING
+    COUNT(*) &gt;= 2;
+</code></pre>
 <p>&#x203B;&#x4EE5;&#x4E0B;&#x306E;&#x5834;&#x5408;&#xFF0C;<code>GROUP BY + HAVING</code>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3082;&#xFF0C;<code>WHERE</code>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x540C;&#x3058;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-615-line-1" href="#sunlight-615-line-1">1</a>
-<a name="sunlight-615-line-2" href="#sunlight-615-line-2">2</a>
-<a name="sunlight-615-line-3" href="#sunlight-615-line-3">3</a>
-<a name="sunlight-615-line-4" href="#sunlight-615-line-4">4</a>
-<a name="sunlight-615-line-5" href="#sunlight-615-line-5">5</a>
-<a name="sunlight-615-line-6" href="#sunlight-615-line-6">6</a>
-<a name="sunlight-615-line-7" href="#sunlight-615-line-7">7</a>
-<a name="sunlight-615-line-8" href="#sunlight-615-line-8">8</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">GROUP</span>&#xA0;<span class="sunlight-keyword">BY</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">HAVING</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-616-line-1" href="#sunlight-616-line-1">1</a>
-<a name="sunlight-616-line-2" href="#sunlight-616-line-2">2</a>
-<a name="sunlight-616-line-3" href="#sunlight-616-line-3">3</a>
-<a name="sunlight-616-line-4" href="#sunlight-616-line-4">4</a>
-<a name="sunlight-616-line-5" href="#sunlight-616-line-5">5</a>
-<a name="sunlight-616-line-6" href="#sunlight-616-line-6">6</a>
-<a name="sunlight-616-line-7" href="#sunlight-616-line-7">7</a>
-<a name="sunlight-616-line-8" href="#sunlight-616-line-8">8</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30ED;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">GROUP</span>&#xA0;<span class="sunlight-keyword">BY</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; }
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+GROUP BY
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; }
+HAVING
+    { &#x30ED;&#x30FC;&#x540D; };
+</code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; }
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30ED;&#x30FC;&#x540D; }
+GROUP BY
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; };
+</code></pre>
 <p><br></p>
 <h3 id="wildcard&#x53E5;"><code>WILDCARD</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-617-line-1" href="#sunlight-617-line-1">1</a>
-<a name="sunlight-617-line-2" href="#sunlight-617-line-2">2</a>
-<a name="sunlight-617-line-3" href="#sunlight-617-line-3">3</a>
-<a name="sunlight-617-line-4" href="#sunlight-617-line-4">4</a>
-<a name="sunlight-617-line-5" href="#sunlight-617-line-5">5</a>
-<a name="sunlight-617-line-6" href="#sunlight-617-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">LIKE</span>&#xA0;<span class="sunlight-string">&apos;%&#x55B6;&#x696D;&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-618-line-1" href="#sunlight-618-line-1">1</a>
-<a name="sunlight-618-line-2" href="#sunlight-618-line-2">2</a>
-<a name="sunlight-618-line-3" href="#sunlight-618-line-3">3</a>
-<a name="sunlight-618-line-4" href="#sunlight-618-line-4">4</a>
-<a name="sunlight-618-line-5" href="#sunlight-618-line-5">5</a>
-<a name="sunlight-618-line-6" href="#sunlight-618-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-keyword">LIKE</span>&#xA0;<span class="sunlight-string">&apos;_&#x55B6;&#x696D;&apos;</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } LIKE &apos;%&#x55B6;&#x696D;&apos;;
+</code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } LIKE &apos;_&#x55B6;&#x696D;&apos;;
+</code></pre>
 <p><br></p>
 <h3 id="between&#x53E5;"><code>BETWEEN</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;1&#x4EE5;&#x4E0A;10&#x4EE5;&#x4E0B;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-619-line-1" href="#sunlight-619-line-1">1</a>
-<a name="sunlight-619-line-2" href="#sunlight-619-line-2">2</a>
-<a name="sunlight-619-line-3" href="#sunlight-619-line-3">3</a>
-<a name="sunlight-619-line-4" href="#sunlight-619-line-4">4</a>
-<a name="sunlight-619-line-5" href="#sunlight-619-line-5">5</a>
-<a name="sunlight-619-line-6" href="#sunlight-619-line-6">6</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">BETWEEN</span>&#xA0;<span class="sunlight-number">1</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">AND</span>&#xA0;<span class="sunlight-number">10</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+    BETWEEN 1
+    AND 10;
+</code></pre>
 <p><br></p>
 <h3 id="set&#x53E5;"><code>SET</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-620-line-1" href="#sunlight-620-line-1">1</a>
-<a name="sunlight-620-line-2" href="#sunlight-620-line-2">2</a>
-<a name="sunlight-620-line-3" href="#sunlight-620-line-3">3</a>
-<a name="sunlight-620-line-4" href="#sunlight-620-line-4">4</a>
-<a name="sunlight-620-line-5" href="#sunlight-620-line-5">5</a>
-<a name="sunlight-620-line-6" href="#sunlight-620-line-6">6</a>
-<a name="sunlight-620-line-7" href="#sunlight-620-line-7">7</a>
-<a name="sunlight-620-line-8" href="#sunlight-620-line-8">8</a>
-<a name="sunlight-620-line-9" href="#sunlight-620-line-9">9</a>
-<a name="sunlight-620-line-10" href="#sunlight-620-line-10">10</a>
-<a name="sunlight-620-line-11" href="#sunlight-620-line-11">11</a>
-<a name="sunlight-620-line-12" href="#sunlight-620-line-12">12</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SET</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">@</span><span class="sunlight-ident">A</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30D1;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E1;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30BF;</span><span class="sunlight-punctuation">&#x5024;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-mysql">SET
+    @A = { &#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5024; };
 
-<span class="sunlight-keyword">SET</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">@</span><span class="sunlight-ident">B</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30D1;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E1;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30BF;</span><span class="sunlight-punctuation">&#x5024;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">;</span>
+SET
+    @B = { &#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5024; };
 
-<span class="sunlight-keyword">UPDATE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">SET</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">@</span><span class="sunlight-ident">A</span><span class="sunlight-punctuation">,</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">@</span><span class="sunlight-ident">B</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+UPDATE
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+SET
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } = @A,
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } = @B;
+</code></pre>
 <p><br></p>
 <h3 id="&#x30B5;&#x30D6;&#x30AF;&#x30A8;&#x30EA;">&#x30B5;&#x30D6;&#x30AF;&#x30A8;&#x30EA;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>&#x639B;&#x3051;&#x7B97;&#x3068;&#x540C;&#x69D8;&#x306B;&#xFF0C;&#x62EC;&#x5F27;&#x5185;&#x304B;&#x3089;&#x5148;&#x306B;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-621-line-1" href="#sunlight-621-line-1">1</a>
-<a name="sunlight-621-line-2" href="#sunlight-621-line-2">2</a>
-<a name="sunlight-621-line-3" href="#sunlight-621-line-3">3</a>
-<a name="sunlight-621-line-4" href="#sunlight-621-line-4">4</a>
-<a name="sunlight-621-line-5" href="#sunlight-621-line-5">5</a>
-<a name="sunlight-621-line-6" href="#sunlight-621-line-6">6</a>
-<a name="sunlight-621-line-7" href="#sunlight-621-line-7">7</a>
-<a name="sunlight-621-line-8" href="#sunlight-621-line-8">8</a>
-<a name="sunlight-621-line-9" href="#sunlight-621-line-9">9</a>
-<a name="sunlight-621-line-10" href="#sunlight-621-line-10">10</a>
-<a name="sunlight-621-line-11" href="#sunlight-621-line-11">11</a>
-<a name="sunlight-621-line-12" href="#sunlight-621-line-12">12</a>
-<a name="sunlight-621-line-13" href="#sunlight-621-line-13">13</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-comment">--&#xA0;Main-query</span>
-<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-operator">*</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>&#xA0;<span class="sunlight-operator">!=</span>&#xA0;<span class="sunlight-punctuation">(</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-comment">--&#xA0;Sub-query</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">max</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span><span class="sunlight-punctuation">)</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x30C6;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30D6;</span><span class="sunlight-punctuation">&#x30EB;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">-- Main-query
+SELECT
+    *
+FROM
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+WHERE
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } != (
+        -- Sub-query
+        SELECT
+            max({ &#x30AB;&#x30E9;&#x30E0;&#x540D; })
+        FROM
+            { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
+    );
+</code></pre>
 <p><br></p>
 <h3 id="tips">Tips</h3>
 <h4 id="&#x30FB;&#x5404;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x5BB9;&#x91CF;">&#x30FB;&#x5404;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x5BB9;&#x91CF;</h4>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-622-line-1" href="#sunlight-622-line-1">1</a>
-<a name="sunlight-622-line-2" href="#sunlight-622-line-2">2</a>
-<a name="sunlight-622-line-3" href="#sunlight-622-line-3">3</a>
-<a name="sunlight-622-line-4" href="#sunlight-622-line-4">4</a>
-<a name="sunlight-622-line-5" href="#sunlight-622-line-5">5</a>
-<a name="sunlight-622-line-6" href="#sunlight-622-line-6">6</a>
-<a name="sunlight-622-line-7" href="#sunlight-622-line-7">7</a>
-<a name="sunlight-622-line-8" href="#sunlight-622-line-8">8</a>
-<a name="sunlight-622-line-9" href="#sunlight-622-line-9">9</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">table_schema</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">sum</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">data_length</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-operator">/</span>&#xA0;<span class="sunlight-number">1024</span>&#xA0;<span class="sunlight-operator">/</span>&#xA0;<span class="sunlight-number">1024</span>&#xA0;<span class="sunlight-keyword">AS</span>&#xA0;<span class="sunlight-ident">mb</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-named-ident">information_schema</span><span class="sunlight-operator">.</span><span class="sunlight-named-ident">tables</span>
-<span class="sunlight-keyword">GROUP</span>&#xA0;<span class="sunlight-keyword">BY</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">table_schema</span>
-<span class="sunlight-keyword">ORDER</span>&#xA0;<span class="sunlight-keyword">BY</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-function">sum</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">data_length</span>&#xA0;<span class="sunlight-operator">+</span>&#xA0;<span class="sunlight-ident">index_length</span><span class="sunlight-punctuation">)</span>&#xA0;<span class="sunlight-keyword">DESC</span><span class="sunlight-punctuation">;</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    table_schema,
+    sum(data_length) / 1024 / 1024 AS mb
+FROM
+    information_schema.tables
+GROUP BY
+    table_schema
+ORDER BY
+    sum(data_length + index_length) DESC;
+</code></pre>
 <h4 id="&#x30FB;&#x30AB;&#x30E9;&#x30E0;&#x691C;&#x7D22;">&#x30FB;&#x30AB;&#x30E9;&#x30E0;&#x691C;&#x7D22;</h4>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-623-line-1" href="#sunlight-623-line-1">1</a>
-<a name="sunlight-623-line-2" href="#sunlight-623-line-2">2</a>
-<a name="sunlight-623-line-3" href="#sunlight-623-line-3">3</a>
-<a name="sunlight-623-line-4" href="#sunlight-623-line-4">4</a>
-<a name="sunlight-623-line-5" href="#sunlight-623-line-5">5</a>
-<a name="sunlight-623-line-6" href="#sunlight-623-line-6">6</a>
-<a name="sunlight-623-line-7" href="#sunlight-623-line-7">7</a>
-<a name="sunlight-623-line-8" href="#sunlight-623-line-8">8</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql"><span class="sunlight-keyword">SELECT</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">table_name</span><span class="sunlight-punctuation">,</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">column_name</span>
-<span class="sunlight-keyword">FROM</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-named-ident">information_schema</span><span class="sunlight-operator">.</span><span class="sunlight-named-ident">columns</span>
-<span class="sunlight-keyword">WHERE</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">column_name</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x691C;</span><span class="sunlight-punctuation">&#x7D22;</span><span class="sunlight-punctuation">&#x3057;</span><span class="sunlight-punctuation">&#x305F;</span><span class="sunlight-punctuation">&#x3044;</span><span class="sunlight-punctuation">&#x30AB;</span><span class="sunlight-punctuation">&#x30E9;</span><span class="sunlight-punctuation">&#x30E0;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-keyword">AND</span>&#xA0;<span class="sunlight-ident">table_schema</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-punctuation">{</span>&#xA0;<span class="sunlight-punctuation">&#x691C;</span><span class="sunlight-punctuation">&#x7D22;</span><span class="sunlight-punctuation">&#x5BFE;</span><span class="sunlight-punctuation">&#x8C61;</span><span class="sunlight-punctuation">&#x306E;</span><span class="sunlight-punctuation">&#x30C7;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30BF;</span><span class="sunlight-punctuation">&#x30D9;</span><span class="sunlight-punctuation">&#x30FC;</span><span class="sunlight-punctuation">&#x30B9;</span><span class="sunlight-punctuation">&#x540D;</span>&#xA0;<span class="sunlight-punctuation">}</span>
-</span></pre></div></div></code></pre>
+<pre class="language-"><code class="lang-mysql">SELECT
+    table_name,
+    column_name
+FROM
+    information_schema.columns
+WHERE
+    column_name = { &#x691C;&#x7D22;&#x3057;&#x305F;&#x3044;&#x30AB;&#x30E9;&#x30E0;&#x540D; }
+    AND table_schema = { &#x691C;&#x7D22;&#x5BFE;&#x8C61;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x540D; }
+</code></pre>
 <p><br></p>
 <h2 id="04-02-&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x53D6;&#x5F97;">04-02. &#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x53D6;&#x5F97;</h2>
 <h3 id="fetch"><code>FETCH</code></h3>
 <h4 id="&#x30FB;fetch&#x3068;&#x306F;">&#x30FB;<code>FETCH</code>&#x3068;&#x306F;</h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x306B;&#x4E00;&#x5EA6;&#x306B;&#x5168;&#x3066;&#x53D6;&#x5F97;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3068;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x5074;&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x3092;&#x5727;&#x8FEB;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x5C11;&#x3057;&#x305A;&#x3064;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;fetch&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;">&#x30FB;<code>FETCH</code>&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;</h4>
-<pre><code class="lang-FETCH()```&#x7CFB;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x304C;&#x7570;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x3082;&#x540C;&#x3058;&#x5206;&#x3060;&#x3051;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#xFF0E;"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-624-line-1" href="#sunlight-624-line-1">1</a>
-<a name="sunlight-624-line-2" href="#sunlight-624-line-2">2</a>
-<a name="sunlight-624-line-3" href="#sunlight-624-line-3">3</a>
-<a name="sunlight-624-line-4" href="#sunlight-624-line-4">4</a>
-</div><pre class="sunlight-highlight-FETCH()```&#x7CFB;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x304C;&#x7570;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x3082;&#x540C;&#x3058;&#x5206;&#x3060;&#x3051;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#xFF0E; sunlight-highlighted"><span class="sunlight-plaintext">
-&lt;br&gt;
+<pre class="language-"><code class="lang-FETCH()```&#x7CFB;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x304C;&#x7570;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x3082;&#x540C;&#x3058;&#x5206;&#x3060;&#x3051;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#xFF0E;">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
 
-###&#xA0;PDO&#x306B;&#x304A;&#x3051;&#x308B;```FETCH
-</span></pre></div></div></code></pre>
+### PDO&#x306B;&#x304A;&#x3051;&#x308B;```FETCH
+</code></pre>
 <h4 id="&#x30FB;fetcharray">&#x30FB;<code>fetch():array</code></h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5168;&#x3066;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x4E00;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;fetchallarray">&#x30FB;<code>fetchAll():array</code></h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-625-line-1" href="#sunlight-625-line-1">1</a>
-<a name="sunlight-625-line-2" href="#sunlight-625-line-2">2</a>
-<a name="sunlight-625-line-3" href="#sunlight-625-line-3">3</a>
-<a name="sunlight-625-line-4" href="#sunlight-625-line-4">4</a>
-<a name="sunlight-625-line-5" href="#sunlight-625-line-5">5</a>
-<a name="sunlight-625-line-6" href="#sunlight-625-line-6">6</a>
-<a name="sunlight-625-line-7" href="#sunlight-625-line-7">7</a>
-<a name="sunlight-625-line-8" href="#sunlight-625-line-8">8</a>
-<a name="sunlight-625-line-9" href="#sunlight-625-line-9">9</a>
-<a name="sunlight-625-line-10" href="#sunlight-625-line-10">10</a>
-<a name="sunlight-625-line-11" href="#sunlight-625-line-11">11</a>
-<a name="sunlight-625-line-12" href="#sunlight-625-line-12">12</a>
-<a name="sunlight-625-line-13" href="#sunlight-625-line-13">13</a>
-<a name="sunlight-625-line-14" href="#sunlight-625-line-14">14</a>
-<a name="sunlight-625-line-15" href="#sunlight-625-line-15">15</a>
-<a name="sunlight-625-line-16" href="#sunlight-625-line-16">16</a>
-<a name="sunlight-625-line-17" href="#sunlight-625-line-17">17</a>
-<a name="sunlight-625-line-18" href="#sunlight-625-line-18">18</a>
-<a name="sunlight-625-line-19" href="#sunlight-625-line-19">19</a>
-<a name="sunlight-625-line-20" href="#sunlight-625-line-20">20</a>
-<a name="sunlight-625-line-21" href="#sunlight-625-line-21">21</a>
-<a name="sunlight-625-line-22" href="#sunlight-625-line-22">22</a>
-<a name="sunlight-625-line-23" href="#sunlight-625-line-23">23</a>
-<a name="sunlight-625-line-24" href="#sunlight-625-line-24">24</a>
-<a name="sunlight-625-line-25" href="#sunlight-625-line-25">25</a>
-<a name="sunlight-625-line-26" href="#sunlight-625-line-26">26</a>
-<a name="sunlight-625-line-27" href="#sunlight-625-line-27">27</a>
-<a name="sunlight-625-line-28" href="#sunlight-625-line-28">28</a>
-<a name="sunlight-625-line-29" href="#sunlight-625-line-29">29</a>
-<a name="sunlight-625-line-30" href="#sunlight-625-line-30">30</a>
-<a name="sunlight-625-line-31" href="#sunlight-625-line-31">31</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql&#xA0;=&#xA0;&quot;SELECT&#xA0;*&#xA0;FROM&#xA0;doraemon_characters&quot;;
-$stmt&#xA0;=&#xA0;$dbh-&gt;prepare($sql);
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
+$sql = &quot;SELECT * FROM doraemon_characters&quot;;
+$stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
 
-//&#xA0;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;
-$data&#xA0;=&#xA0;$stmt-&gt;fetchAll();
+// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;
+$data = $stmt-&gt;fetchAll();
 
-//&#xA0;&#x51FA;&#x529B;
+// &#x51FA;&#x529B;
 print_r($data);
 
-//&#xA0;&#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;
-//&#xA0;Array
-//&#xA0;(
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[0]&#xA0;=&gt;&#xA0;Array
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;(
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[id]&#xA0;=&gt;&#xA0;1
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[name]&#xA0;=&gt;&#xA0;&#x306E;&#x3073;&#x592A;
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[gender]&#xA0;=&gt;&#xA0;man
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[type]&#xA0;=&gt;&#xA0;human
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;)
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[1]&#xA0;=&gt;&#xA0;Array
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;(
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[id]&#xA0;=&gt;&#xA0;2
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[name]&#xA0;=&gt;&#xA0;&#x30C9;&#x30E9;&#x3048;&#x3082;&#x3093;
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[gender]&#xA0;=&gt;&#xA0;man
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;[type]&#xA0;=&gt;&#xA0;robot
-//&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;)
-//&#xA0;)
-</span></pre></div></div></code></pre>
+// &#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;
+// Array
+// (
+//     [0] =&gt; Array
+//     (
+//         [id] =&gt; 1
+//         [name] =&gt; &#x306E;&#x3073;&#x592A;
+//         [gender] =&gt; man
+//         [type] =&gt; human
+//     )
+//     [1] =&gt; Array
+//     (
+//         [id] =&gt; 2
+//         [name] =&gt; &#x30C9;&#x30E9;&#x3048;&#x3082;&#x3093;
+//         [gender] =&gt; man
+//         [type] =&gt; robot
+//     )
+// )
+</code></pre>
 <h4 id="&#x30FB;fetchcolumnmixed">&#x30FB;<code>fetchColumn():mixed</code></h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x6DF7;&#x5408;&#x578B;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x4E3B;&#x306B;&#xFF0C;<code>COUNT()</code>&#x306E;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;</p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-626-line-1" href="#sunlight-626-line-1">1</a>
-<a name="sunlight-626-line-2" href="#sunlight-626-line-2">2</a>
-<a name="sunlight-626-line-3" href="#sunlight-626-line-3">3</a>
-<a name="sunlight-626-line-4" href="#sunlight-626-line-4">4</a>
-<a name="sunlight-626-line-5" href="#sunlight-626-line-5">5</a>
-<a name="sunlight-626-line-6" href="#sunlight-626-line-6">6</a>
-<a name="sunlight-626-line-7" href="#sunlight-626-line-7">7</a>
-<a name="sunlight-626-line-8" href="#sunlight-626-line-8">8</a>
-<a name="sunlight-626-line-9" href="#sunlight-626-line-9">9</a>
-<a name="sunlight-626-line-10" href="#sunlight-626-line-10">10</a>
-<a name="sunlight-626-line-11" href="#sunlight-626-line-11">11</a>
-<a name="sunlight-626-line-12" href="#sunlight-626-line-12">12</a>
-<a name="sunlight-626-line-13" href="#sunlight-626-line-13">13</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql&#xA0;=&#xA0;&quot;SELECT&#xA0;{&#xA0;&#x30AB;&#x30E9;&#x30E0;&#x540D;&#xA0;}OUNT(*)&#xA0;FROM&#xA0;doraemon_characters&quot;;
-$stmt&#xA0;=&#xA0;$dbh-&gt;prepare($sql);
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
+$sql = &quot;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&quot;;
+$stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
-//&#xA0;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;
-$data&#xA0;=&#xA0;$stmt-&gt;fetchColumn();
+// &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;
+$data = $stmt-&gt;fetchColumn();
 
-//&#xA0;&#x51FA;&#x529B;
-print_r($data);&#xA0;
+// &#x51FA;&#x529B;
+print_r($data); 
 
-//&#xA0;10&#xA0;(&#x4EF6;)
-</span></pre></div></div></code></pre>
+// 10 (&#x4EF6;)
+</code></pre>
 <p><br></p>
 <h3 id="java&#x306E;&#x5834;&#x5408;">Java&#x306E;&#x5834;&#x5408;</h3>
 <p>PHP&#x3068;&#x306F;&#x7570;&#x306A;&#x308A;&#xFF0C;&#x5909;&#x6570;&#x5B9A;&#x7FA9;&#x306B;&#x300E;$&#x300F;&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-java"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-627-line-1" href="#sunlight-627-line-1">1</a>
-<a name="sunlight-627-line-2" href="#sunlight-627-line-2">2</a>
-<a name="sunlight-627-line-3" href="#sunlight-627-line-3">3</a>
-<a name="sunlight-627-line-4" href="#sunlight-627-line-4">4</a>
-<a name="sunlight-627-line-5" href="#sunlight-627-line-5">5</a>
-<a name="sunlight-627-line-6" href="#sunlight-627-line-6">6</a>
-<a name="sunlight-627-line-7" href="#sunlight-627-line-7">7</a>
-<a name="sunlight-627-line-8" href="#sunlight-627-line-8">8</a>
-<a name="sunlight-627-line-9" href="#sunlight-627-line-9">9</a>
-<a name="sunlight-627-line-10" href="#sunlight-627-line-10">10</a>
-<a name="sunlight-627-line-11" href="#sunlight-627-line-11">11</a>
-<a name="sunlight-627-line-12" href="#sunlight-627-line-12">12</a>
-<a name="sunlight-627-line-13" href="#sunlight-627-line-13">13</a>
-<a name="sunlight-627-line-14" href="#sunlight-627-line-14">14</a>
-<a name="sunlight-627-line-15" href="#sunlight-627-line-15">15</a>
-</div><pre class="sunlight-highlight-java sunlight-highlighted"><span class="sunlight-java"><span class="sunlight-comment">//&#xA0;SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="sunlight-named-ident">String</span>&#xA0;<span class="sunlight-ident">sql</span>&#xA0;<span class="sunlight-operator">=</span>&#xA0;<span class="sunlight-string">&quot;SELECT&#xA0;*&#xA0;FROM&#xA0;doraemon_characters&quot;</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-named-ident">ResultSet</span>&#xA0;<span class="sunlight-named-ident">result</span>&#xA0;<span class="sunlight-ident">statement</span><span class="sunlight-operator">.</span><span class="sunlight-ident">executeQuery</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
+<pre class="language-"><code class="lang-java"><span class="token comment">// SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;</span>
+<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">&quot;SELECT * FROM doraemon_characters&quot;</span><span class="token punctuation">;</span>
+<span class="token class-name">ResultSet</span> result statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-<span class="sunlight-comment">//&#xA0;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
-<span class="sunlight-keyword">while</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">result</span><span class="sunlight-operator">.</span><span class="sunlight-ident">next</span><span class="sunlight-punctuation">(</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">{</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">System</span><span class="sunlight-operator">.</span><span class="sunlight-ident">out</span><span class="sunlight-operator">.</span><span class="sunlight-ident">println</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">result</span><span class="sunlight-operator">.</span><span class="sunlight-ident">getInt</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&quot;id&quot;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">System</span><span class="sunlight-operator">.</span><span class="sunlight-ident">out</span><span class="sunlight-operator">.</span><span class="sunlight-ident">println</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">result</span><span class="sunlight-operator">.</span><span class="sunlight-ident">getString</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&quot;name&quot;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">System</span><span class="sunlight-operator">.</span><span class="sunlight-ident">out</span><span class="sunlight-operator">.</span><span class="sunlight-ident">println</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">result</span><span class="sunlight-operator">.</span><span class="sunlight-ident">getString</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&quot;gender&quot;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-&#xA0;&#xA0;&#xA0;&#xA0;<span class="sunlight-ident">System</span><span class="sunlight-operator">.</span><span class="sunlight-ident">out</span><span class="sunlight-operator">.</span><span class="sunlight-ident">println</span><span class="sunlight-punctuation">(</span><span class="sunlight-ident">result</span><span class="sunlight-operator">.</span><span class="sunlight-ident">getString</span><span class="sunlight-punctuation">(</span><span class="sunlight-string">&quot;typeL&quot;</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">)</span><span class="sunlight-punctuation">;</span>
-<span class="sunlight-punctuation">}</span>
+<span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;gender&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;typeL&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="sunlight-comment">//&#xA0;&#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
-<span class="sunlight-comment">//&#xA0;&#x3053;&#x3053;&#x306B;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x66F8;&#x304F;&#xFF0E;</span>
-</span></pre></div></div></code></pre>
+<span class="token comment">// &#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x66F8;&#x304F;&#xFF0E;</span>
+</code></pre>
 <p><br></p>
 <h2 id="05-&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;-&#xFF1A;create&#xFF0C;update&#xFF0C;delete">05. &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F; &#xFF1A;CREATE&#xFF0C;UPDATE&#xFF0C;DELETE</h2>
 <h3 id="insert"><code>INSERT</code></h3>
 <h4 id="&#x30FB;pdo&#x306E;&#x5834;&#x5408;">&#x30FB;PDO&#x306E;&#x5834;&#x5408;</h4>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-628-line-1" href="#sunlight-628-line-1">1</a>
-<a name="sunlight-628-line-2" href="#sunlight-628-line-2">2</a>
-<a name="sunlight-628-line-3" href="#sunlight-628-line-3">3</a>
-<a name="sunlight-628-line-4" href="#sunlight-628-line-4">4</a>
-<a name="sunlight-628-line-5" href="#sunlight-628-line-5">5</a>
-<a name="sunlight-628-line-6" href="#sunlight-628-line-6">6</a>
-<a name="sunlight-628-line-7" href="#sunlight-628-line-7">7</a>
-<a name="sunlight-628-line-8" href="#sunlight-628-line-8">8</a>
-<a name="sunlight-628-line-9" href="#sunlight-628-line-9">9</a>
-<a name="sunlight-628-line-10" href="#sunlight-628-line-10">10</a>
-<a name="sunlight-628-line-11" href="#sunlight-628-line-11">11</a>
-<a name="sunlight-628-line-12" href="#sunlight-628-line-12">12</a>
-<a name="sunlight-628-line-13" href="#sunlight-628-line-13">13</a>
-<a name="sunlight-628-line-14" href="#sunlight-628-line-14">14</a>
-<a name="sunlight-628-line-15" href="#sunlight-628-line-15">15</a>
-<a name="sunlight-628-line-16" href="#sunlight-628-line-16">16</a>
-<a name="sunlight-628-line-17" href="#sunlight-628-line-17">17</a>
-<a name="sunlight-628-line-18" href="#sunlight-628-line-18">18</a>
-<a name="sunlight-628-line-19" href="#sunlight-628-line-19">19</a>
-<a name="sunlight-628-line-20" href="#sunlight-628-line-20">20</a>
-<a name="sunlight-628-line-21" href="#sunlight-628-line-21">21</a>
-<a name="sunlight-628-line-22" href="#sunlight-628-line-22">22</a>
-<a name="sunlight-628-line-23" href="#sunlight-628-line-23">23</a>
-<a name="sunlight-628-line-24" href="#sunlight-628-line-24">24</a>
-<a name="sunlight-628-line-25" href="#sunlight-628-line-25">25</a>
-<a name="sunlight-628-line-26" href="#sunlight-628-line-26">26</a>
-<a name="sunlight-628-line-27" href="#sunlight-628-line-27">27</a>
-<a name="sunlight-628-line-28" href="#sunlight-628-line-28">28</a>
-<a name="sunlight-628-line-29" href="#sunlight-628-line-29">29</a>
-<a name="sunlight-628-line-30" href="#sunlight-628-line-30">30</a>
-<a name="sunlight-628-line-31" href="#sunlight-628-line-31">31</a>
-<a name="sunlight-628-line-32" href="#sunlight-628-line-32">32</a>
-<a name="sunlight-628-line-33" href="#sunlight-628-line-33">33</a>
-<a name="sunlight-628-line-34" href="#sunlight-628-line-34">34</a>
-<a name="sunlight-628-line-35" href="#sunlight-628-line-35">35</a>
-<a name="sunlight-628-line-36" href="#sunlight-628-line-36">36</a>
-<a name="sunlight-628-line-37" href="#sunlight-628-line-37">37</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;$_POST&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;post&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#xFF0C;&#x5C5E;&#x6027;&#x304B;&#x3089;&#x5404;&#x5024;&#x3092;&#x53D6;&#x5F97;
-$staff_name&#xA0;=&#xA0;$_POST[&apos;name&apos;];
-$staff_pass&#xA0;=&#xA0;$_POST[&apos;pass&apos;];
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// $_POST&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;post&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#xFF0C;&#x5C5E;&#x6027;&#x304B;&#x3089;&#x5404;&#x5024;&#x3092;&#x53D6;&#x5F97;
+$staff_name = $_POST[&apos;name&apos;];
+$staff_pass = $_POST[&apos;pass&apos;];
 
 
-//&#xA0;HTML&#x3068;&#x3057;&#x3066;&#x5909;&#x6570;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x969B;&#xFF0C;&#x300C;&lt;&#x300D;&#x300C;&gt;&#x300D;&#x306A;&#x3069;&#x306E;&#x7279;&#x6B8A;&#x6587;&#x5B57;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#xFF08;&#x7121;&#x5BB3;&#x5316;&#xFF09;
-$staff_name&#xA0;=&#xA0;htmlspecialchars($staff_name,&#xA0;ENT_QUOTES,&#xA0;&apos;UTF-8&apos;);
-$staff_pass&#xA0;=&#xA0;htmlspecialchars($staff_pass,&#xA0;ENT_QUOTES,&#xA0;&apos;UTF-8&apos;);
+// HTML&#x3068;&#x3057;&#x3066;&#x5909;&#x6570;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x969B;&#xFF0C;&#x300C;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x300D;&#x300C;</span><span class="token punctuation">&gt;</span></span>&#x300D;&#x306A;&#x3069;&#x306E;&#x7279;&#x6B8A;&#x6587;&#x5B57;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#xFF08;&#x7121;&#x5BB3;&#x5316;&#xFF09;
+$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, &apos;UTF-8&apos;);
+$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, &apos;UTF-8&apos;);
 
 
-//&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x63A5;&#x7D9A;&#xFF08;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x306E;&#x9593;&#x306B;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x3092;&#x5165;&#x308C;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF09;
-$dsn&#xA0;=&#xA0;&apos;mysql:dbname=kizukeba_pronami_php;
+// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x63A5;&#x7D9A;&#xFF08;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x306E;&#x9593;&#x306B;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x3092;&#x5165;&#x308C;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF09;
+$dsn = &apos;mysql:dbname=kizukeba_pronami_php;
 host=kizukebapronamiphp
 charaset=UTF-8&apos;;
-$user&#xA0;=&#xA0;&apos;root&apos;;
-$password&#xA0;=&#xA0;&apos;&apos;;
-$dbh&#xA0;=&#xA0;new&#xA0;PDO($dsn,&#xA0;$user,&#xA0;$password);
+$user = &apos;root&apos;;
+$password = &apos;&apos;;
+$dbh = new PDO($dsn, $user, $password);
 $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
-//&#xA0;&#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
-$sql=&apos;INSERT&#xA0;INTO&#xA0;mst_staff&#xA0;(name,password)&#xA0;VALUES&#xA0;(?,?)&apos;;
-$stmt&#xA0;=&#xA0;$dbh-&gt;prepare($sql);
+// &#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
+$sql=&apos;INSERT INTO mst_staff (name,password) VALUES (?,?)&apos;;
+$stmt = $dbh-&gt;prepare($sql);
 
 
-//&#xA0;&#x914D;&#x5217;&#x306B;&#x5024;&#x3092;&#x683C;&#x7D0D;&#xFF08;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5024;&#x306E;&#x9806;&#x756A;&#x3068;&#xFF0C;SQL&#x3067;&#x306E;&#x5F15;&#x6570;&#x306E;&#x9806;&#x756A;&#x306F;&#xFF0C;&#x5408;&#x308F;&#x305B;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF09;
-$data[]&#xA0;=&#xA0;$staff_name;
-$data[]&#xA0;=&#xA0;$staff_pass;
+// &#x914D;&#x5217;&#x306B;&#x5024;&#x3092;&#x683C;&#x7D0D;&#xFF08;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5024;&#x306E;&#x9806;&#x756A;&#x3068;&#xFF0C;SQL&#x3067;&#x306E;&#x5F15;&#x6570;&#x306E;&#x9806;&#x756A;&#x306F;&#xFF0C;&#x5408;&#x308F;&#x305B;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF09;
+$data[] = $staff_name;
+$data[] = $staff_pass;
 
 
-//&#xA0;SQL&#x3092;&#x5B9F;&#x884C;
+// SQL&#x3092;&#x5B9F;&#x884C;
 $stmt-&gt;execute($data);
 
 
-//&#xA0;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x3092;&#x5207;&#x65AD;
-$dbh&#xA0;=&#xA0;null;
-</span></pre></div></div></code></pre>
+// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x3092;&#x5207;&#x65AD;
+$dbh = null;
+</code></pre>
 <h4 id="&#x30FB;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x547C;&#x3070;&#x308C;&#x308B;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x65B0;&#x898F;&#x4F5C;&#x6210;&#x3084;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x8FFD;&#x52A0;&#x306F;&#x3053;&#x306E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <ol>
@@ -2534,43 +2134,28 @@ $dbh&#xA0;=&#xA0;null;
 </li>
 </ol>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-629-line-1" href="#sunlight-629-line-1">1</a>
-<a name="sunlight-629-line-2" href="#sunlight-629-line-2">2</a>
-<a name="sunlight-629-line-3" href="#sunlight-629-line-3">3</a>
-<a name="sunlight-629-line-4" href="#sunlight-629-line-4">4</a>
-<a name="sunlight-629-line-5" href="#sunlight-629-line-5">5</a>
-<a name="sunlight-629-line-6" href="#sunlight-629-line-6">6</a>
-<a name="sunlight-629-line-7" href="#sunlight-629-line-7">7</a>
-<a name="sunlight-629-line-8" href="#sunlight-629-line-8">8</a>
-<a name="sunlight-629-line-9" href="#sunlight-629-line-9">9</a>
-<a name="sunlight-629-line-10" href="#sunlight-629-line-10">10</a>
-<a name="sunlight-629-line-11" href="#sunlight-629-line-11">11</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-namespace&#xA0;Migration;
+<pre class="language-"><code class="lang-PHP">&lt;?php
+namespace Migration;
 
-class&#xA0;ItemQuery
+class ItemQuery
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
-&#xA0;&#xA0;&#xA0;&#xA0;public&#xA0;static&#xA0;function&#xA0;insert()
-&#xA0;&#xA0;&#xA0;&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;&quot;INSERT&#xA0;INTO&#xA0;item_table&#xA0;VALUES(1,&#xA0;&apos;&#x5546;&#x54C1;A&apos;,&#xA0;1000,&#xA0;&apos;2019-07-24&#xA0;07:07:07&apos;);&quot;;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // &#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
+    public static function insert()
+    {
+        return &quot;INSERT INTO item_table VALUES(1, &apos;&#x5546;&#x54C1;A&apos;, 1000, &apos;2019-07-24 07:07:07&apos;);&quot;;
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><br></p>
 <h3 id="update"><code>UPDATE</code></h3>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-630-line-1" href="#sunlight-630-line-1">1</a>
-<a name="sunlight-630-line-2" href="#sunlight-630-line-2">2</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql">
+<pre class="language-"><code class="lang-mysql">
 
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><br></p>
 <h3 id="delete"><code>DELETE</code></h3>
-<pre><code class="lang-mysql"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-631-line-1" href="#sunlight-631-line-1">1</a>
-<a name="sunlight-631-line-2" href="#sunlight-631-line-2">2</a>
-</div><pre class="sunlight-highlight-mysql sunlight-highlighted"><span class="sunlight-mysql">
+<pre class="language-"><code class="lang-mysql">
 
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><br></p>
 <h2 id="06-&#x305D;&#x306E;&#x4ED6;">06. &#x305D;&#x306E;&#x4ED6;</h2>
 <h3 id="&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x7A81;&#x304D;&#x5408;&#x308F;&#x305B;&#x51E6;&#x7406;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;">&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x7A81;&#x304D;&#x5408;&#x308F;&#x305B;&#x51E6;&#x7406;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;</h3>
@@ -2630,7 +2215,7 @@ class&#xA0;ItemQuery
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.14.2","depth":2,"next":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"previous":{"title":"データベースの操作","level":"1.14.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2020-12-17T15:41:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:00:21.031Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL","level":"1.14.2","depth":2,"next":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"previous":{"title":"データベースの操作","level":"1.14.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2020-12-17T15:41:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:28:04.905Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2653,6 +2238,14 @@ class&#xA0;ItemQuery
     
         
         <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

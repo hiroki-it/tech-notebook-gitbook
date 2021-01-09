@@ -29,7 +29,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-sunlight-highlighter/sunlight.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
                 
             
                 
@@ -1381,94 +1381,51 @@
 <li>&#x6B21;&#x306B;&#xFF0C;&#x6B8B;&#x308A;&#x306E;n-1&#x500B;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x3082;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5B57;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3092;2&#x756A;&#x76EE;&#x306E;&#x6570;&#x5B57;&#x3068;&#x5165;&#x308C;&#x66FF;&#x3048;&#x308B;&#xFF0E;</li>
 <li>&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;n-1&#x56DE;&#x7E70;&#x308A;&#x8FD4;&#x3059;&#xFF0E;</li>
 </ol>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1166-line-1" href="#sunlight-1166-line-1">1</a>
-<a name="sunlight-1166-line-2" href="#sunlight-1166-line-2">2</a>
-<a name="sunlight-1166-line-3" href="#sunlight-1166-line-3">3</a>
-<a name="sunlight-1166-line-4" href="#sunlight-1166-line-4">4</a>
-<a name="sunlight-1166-line-5" href="#sunlight-1166-line-5">5</a>
-<a name="sunlight-1166-line-6" href="#sunlight-1166-line-6">6</a>
-<a name="sunlight-1166-line-7" href="#sunlight-1166-line-7">7</a>
-<a name="sunlight-1166-line-8" href="#sunlight-1166-line-8">8</a>
-<a name="sunlight-1166-line-9" href="#sunlight-1166-line-9">9</a>
-<a name="sunlight-1166-line-10" href="#sunlight-1166-line-10">10</a>
-<a name="sunlight-1166-line-11" href="#sunlight-1166-line-11">11</a>
-<a name="sunlight-1166-line-12" href="#sunlight-1166-line-12">12</a>
-<a name="sunlight-1166-line-13" href="#sunlight-1166-line-13">13</a>
-<a name="sunlight-1166-line-14" href="#sunlight-1166-line-14">14</a>
-<a name="sunlight-1166-line-15" href="#sunlight-1166-line-15">15</a>
-<a name="sunlight-1166-line-16" href="#sunlight-1166-line-16">16</a>
-<a name="sunlight-1166-line-17" href="#sunlight-1166-line-17">17</a>
-<a name="sunlight-1166-line-18" href="#sunlight-1166-line-18">18</a>
-<a name="sunlight-1166-line-19" href="#sunlight-1166-line-19">19</a>
-<a name="sunlight-1166-line-20" href="#sunlight-1166-line-20">20</a>
-<a name="sunlight-1166-line-21" href="#sunlight-1166-line-21">21</a>
-<a name="sunlight-1166-line-22" href="#sunlight-1166-line-22">22</a>
-<a name="sunlight-1166-line-23" href="#sunlight-1166-line-23">23</a>
-<a name="sunlight-1166-line-24" href="#sunlight-1166-line-24">24</a>
-<a name="sunlight-1166-line-25" href="#sunlight-1166-line-25">25</a>
-<a name="sunlight-1166-line-26" href="#sunlight-1166-line-26">26</a>
-<a name="sunlight-1166-line-27" href="#sunlight-1166-line-27">27</a>
-<a name="sunlight-1166-line-28" href="#sunlight-1166-line-28">28</a>
-<a name="sunlight-1166-line-29" href="#sunlight-1166-line-29">29</a>
-<a name="sunlight-1166-line-30" href="#sunlight-1166-line-30">30</a>
-<a name="sunlight-1166-line-31" href="#sunlight-1166-line-31">31</a>
-<a name="sunlight-1166-line-32" href="#sunlight-1166-line-32">32</a>
-<a name="sunlight-1166-line-33" href="#sunlight-1166-line-33">33</a>
-<a name="sunlight-1166-line-34" href="#sunlight-1166-line-34">34</a>
-<a name="sunlight-1166-line-35" href="#sunlight-1166-line-35">35</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-function&#xA0;minSelectSort(array&#xA0;$array):&#xA0;array
+<pre class="language-"><code class="lang-PHP">&lt;?php
+function minSelectSort(array $array): array
 {
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;for($i&#xA0;=&#xA0;0;&#xA0;$i&#xA0;&lt;&#xA0;count($array)-1;&#xA0;$i++){
+    // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;
+    for($i = 0; $i &lt; count($array)-1; $i++){
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$min&#xA0;=&#xA0;$array[$i];
+        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;
+        $min = $array[$i];
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$position&#xA0;=&#xA0;$i;
+        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;
+        $position = $i;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for($j&#xA0;=&#xA0;$position&#xA0;+&#xA0;1;&#xA0;$j&#xA0;&lt;&#xA0;count($array);&#xA0;$j++){
+        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
+        for($j = $position + 1; $j &lt; count($array); $j++){
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($min&#xA0;&gt;&#xA0;$array[$j]){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$position&#xA0;=&#xA0;$j;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$min&#xA0;=&#xA0;$array[$j];
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+            // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
+            if($min &gt; $array[$j]){
+                $position = $j;
+                $min = $array[$j];
+            }
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($i&#xA0;==&#xA0;$position){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;
+        if($i == $position){
+            break;
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$array[$i]&#xA0;=&#xA0;$min;
+        // &#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
+        $array[$i] = $min;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$array;
+        // &#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
+    }
+    return $array;
 }
-</span></pre></div></div></code></pre>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1167-line-1" href="#sunlight-1167-line-1">1</a>
-<a name="sunlight-1167-line-2" href="#sunlight-1167-line-2">2</a>
-<a name="sunlight-1167-line-3" href="#sunlight-1167-line-3">3</a>
-<a name="sunlight-1167-line-4" href="#sunlight-1167-line-4">4</a>
-<a name="sunlight-1167-line-5" href="#sunlight-1167-line-5">5</a>
-<a name="sunlight-1167-line-6" href="#sunlight-1167-line-6">6</a>
-<a name="sunlight-1167-line-7" href="#sunlight-1167-line-7">7</a>
-<a name="sunlight-1167-line-8" href="#sunlight-1167-line-8">8</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
-$array&#xA0;=&#xA0;array(10,2,12,7,16,8,13)
-$result&#xA0;=&#xA0;selectSort($array);
-var_dump($result);&#xA0;
+</code></pre>
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
+$array = array(10,2,12,7,16,8,13)
+$result = selectSort($array);
+var_dump($result); 
 
-//&#xA0;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
-//&#xA0;2,&#xA0;7,&#xA0;8,&#xA0;10,&#xA0;12,&#xA0;13,&#xA0;16
-</span></pre></div></div></code></pre>
+// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
+// 2, 7, 8, 10, 12, 13, 16
+</code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x4E2D;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#xFF0C;&#x6B21;&#x306B;&#x305D;&#x308C;&#x3092;&#x9664;&#x3044;&#x305F;&#x90E8;&#x5206;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x9078;&#x629E;&#x30BD;&#x30FC;&#x30C8;1.gif" alt="&#x9078;&#x629E;&#x30BD;&#x30FC;&#x30C8;1"></p>
@@ -1487,112 +1444,60 @@ var_dump($result);&#xA0;
 <li>&#x4E8C;&#x5206;&#x5272;&#x3055;&#x308C;&#x305F;&#x5404;&#x3005;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30BD;&#x30FC;&#x30C8;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1168-line-1" href="#sunlight-1168-line-1">1</a>
-<a name="sunlight-1168-line-2" href="#sunlight-1168-line-2">2</a>
-<a name="sunlight-1168-line-3" href="#sunlight-1168-line-3">3</a>
-<a name="sunlight-1168-line-4" href="#sunlight-1168-line-4">4</a>
-<a name="sunlight-1168-line-5" href="#sunlight-1168-line-5">5</a>
-<a name="sunlight-1168-line-6" href="#sunlight-1168-line-6">6</a>
-<a name="sunlight-1168-line-7" href="#sunlight-1168-line-7">7</a>
-<a name="sunlight-1168-line-8" href="#sunlight-1168-line-8">8</a>
-<a name="sunlight-1168-line-9" href="#sunlight-1168-line-9">9</a>
-<a name="sunlight-1168-line-10" href="#sunlight-1168-line-10">10</a>
-<a name="sunlight-1168-line-11" href="#sunlight-1168-line-11">11</a>
-<a name="sunlight-1168-line-12" href="#sunlight-1168-line-12">12</a>
-<a name="sunlight-1168-line-13" href="#sunlight-1168-line-13">13</a>
-<a name="sunlight-1168-line-14" href="#sunlight-1168-line-14">14</a>
-<a name="sunlight-1168-line-15" href="#sunlight-1168-line-15">15</a>
-<a name="sunlight-1168-line-16" href="#sunlight-1168-line-16">16</a>
-<a name="sunlight-1168-line-17" href="#sunlight-1168-line-17">17</a>
-<a name="sunlight-1168-line-18" href="#sunlight-1168-line-18">18</a>
-<a name="sunlight-1168-line-19" href="#sunlight-1168-line-19">19</a>
-<a name="sunlight-1168-line-20" href="#sunlight-1168-line-20">20</a>
-<a name="sunlight-1168-line-21" href="#sunlight-1168-line-21">21</a>
-<a name="sunlight-1168-line-22" href="#sunlight-1168-line-22">22</a>
-<a name="sunlight-1168-line-23" href="#sunlight-1168-line-23">23</a>
-<a name="sunlight-1168-line-24" href="#sunlight-1168-line-24">24</a>
-<a name="sunlight-1168-line-25" href="#sunlight-1168-line-25">25</a>
-<a name="sunlight-1168-line-26" href="#sunlight-1168-line-26">26</a>
-<a name="sunlight-1168-line-27" href="#sunlight-1168-line-27">27</a>
-<a name="sunlight-1168-line-28" href="#sunlight-1168-line-28">28</a>
-<a name="sunlight-1168-line-29" href="#sunlight-1168-line-29">29</a>
-<a name="sunlight-1168-line-30" href="#sunlight-1168-line-30">30</a>
-<a name="sunlight-1168-line-31" href="#sunlight-1168-line-31">31</a>
-<a name="sunlight-1168-line-32" href="#sunlight-1168-line-32">32</a>
-<a name="sunlight-1168-line-33" href="#sunlight-1168-line-33">33</a>
-<a name="sunlight-1168-line-34" href="#sunlight-1168-line-34">34</a>
-<a name="sunlight-1168-line-35" href="#sunlight-1168-line-35">35</a>
-<a name="sunlight-1168-line-36" href="#sunlight-1168-line-36">36</a>
-<a name="sunlight-1168-line-37" href="#sunlight-1168-line-37">37</a>
-<a name="sunlight-1168-line-38" href="#sunlight-1168-line-38">38</a>
-<a name="sunlight-1168-line-39" href="#sunlight-1168-line-39">39</a>
-<a name="sunlight-1168-line-40" href="#sunlight-1168-line-40">40</a>
-<a name="sunlight-1168-line-41" href="#sunlight-1168-line-41">41</a>
-<a name="sunlight-1168-line-42" href="#sunlight-1168-line-42">42</a>
-<a name="sunlight-1168-line-43" href="#sunlight-1168-line-43">43</a>
-<a name="sunlight-1168-line-44" href="#sunlight-1168-line-44">44</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-function&#xA0;quickSort(array&#xA0;$array):&#xA0;array&#xA0;
+<pre class="language-"><code class="lang-PHP">&lt;?php
+function quickSort(array $array): array 
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;(count($array)&#xA0;&lt;=&#xA0;1)&#xA0;{
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;$array;
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    // &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;
+    if (count($array) &lt;= 1) {
+        return $array;
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;$pivot&#xA0;=&#xA0;array_shift($array);&#xA0;
+    // &#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;
+    $pivot = array_shift($array); 
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;
-&#xA0;&#xA0;&#xA0;&#xA0;$left&#xA0;=&#xA0;$right&#xA0;=&#xA0;[];
+    // &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;
+    $left = $right = [];
 
-&#xA0;&#xA0;&#xA0;&#xA0;foreach&#xA0;($array&#xA0;as&#xA0;$value)&#xA0;{
+    foreach ($array as $value) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if&#xA0;($value&#xA0;&lt;&#xA0;$pivot)&#xA0;{
+        if ($value &lt; $pivot) {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$left[]&#xA0;=&#xA0;$value;
+            // Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
+            $left[] = $value;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;else&#xA0;{
+        } else {
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$right[]&#xA0;=&#xA0;$value;
+            // Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
+            $right[] = $value;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+            }
 
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;return&#xA0;array_merge
-&#xA0;&#xA0;&#xA0;&#xA0;(
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;quickSort($left),
+    // &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;
+    return array_merge
+    (
+        // &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
+        quickSort($left),
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;array($pivot),
+        // Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
+        array($pivot),
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;quickSort($right)
-&#xA0;&#xA0;&#xA0;&#xA0;);
+        // &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
+        quickSort($right)
+    );
 
 }
-</span></pre></div></div></code></pre>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1169-line-1" href="#sunlight-1169-line-1">1</a>
-<a name="sunlight-1169-line-2" href="#sunlight-1169-line-2">2</a>
-<a name="sunlight-1169-line-3" href="#sunlight-1169-line-3">3</a>
-<a name="sunlight-1169-line-4" href="#sunlight-1169-line-4">4</a>
-<a name="sunlight-1169-line-5" href="#sunlight-1169-line-5">5</a>
-<a name="sunlight-1169-line-6" href="#sunlight-1169-line-6">6</a>
-<a name="sunlight-1169-line-7" href="#sunlight-1169-line-7">7</a>
-<a name="sunlight-1169-line-8" href="#sunlight-1169-line-8">8</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
-$array&#xA0;=&#xA0;array(6,&#xA0;4,&#xA0;3,&#xA0;7,&#xA0;8,&#xA0;5,&#xA0;2,&#xA0;9,&#xA0;1);
-$result&#xA0;=&#xA0;quickSort($array);
-var_dump($result);&#xA0;
+</code></pre>
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
+$array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
+$result = quickSort($array);
+var_dump($result); 
 
-//&#xA0;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
-//&#xA0;1,&#xA0;2,&#xA0;3,&#xA0;4,&#xA0;5,&#xA0;6,&#xA0;7,&#xA0;8
-</span></pre></div></div></code></pre>
+// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
+// 1, 2, 3, 4, 5, 6, 7, 8
+</code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x9069;&#x5F53;&#x306A;&#x5024;&#x3092;&#x57FA;&#x6E96;&#x5024;&#xFF08;Pivot&#xFF09;&#x3068;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3088;&#x308A;&#x5C0F;&#x3055;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3068;&#x5927;&#x304D;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x540C;&#x69D8;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4E21;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x4E2D;&#x3067;Pivot&#x3092;&#x9078;&#x3073;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5185;&#x306E;&#x5024;&#x304C;&#x4E00;&#x3064;&#x306B;&#x306A;&#x308B;&#x307E;&#x3067;&#xFF0C;&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;-1.jpg" alt="&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;-1"></p>
@@ -1669,158 +1574,83 @@ var_dump($result);&#xA0;
 <p>&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x8868;&#x3067;&#x8868;&#x3059;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x540C;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;0&#x300F;&#xFF0C;&#x96A3;&#x308A;&#x5408;&#x308F;&#x306A;&#x3044;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;-1&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;.png" alt="&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1170-line-1" href="#sunlight-1170-line-1">1</a>
-<a name="sunlight-1170-line-2" href="#sunlight-1170-line-2">2</a>
-<a name="sunlight-1170-line-3" href="#sunlight-1170-line-3">3</a>
-<a name="sunlight-1170-line-4" href="#sunlight-1170-line-4">4</a>
-<a name="sunlight-1170-line-5" href="#sunlight-1170-line-5">5</a>
-<a name="sunlight-1170-line-6" href="#sunlight-1170-line-6">6</a>
-<a name="sunlight-1170-line-7" href="#sunlight-1170-line-7">7</a>
-<a name="sunlight-1170-line-8" href="#sunlight-1170-line-8">8</a>
-<a name="sunlight-1170-line-9" href="#sunlight-1170-line-9">9</a>
-<a name="sunlight-1170-line-10" href="#sunlight-1170-line-10">10</a>
-<a name="sunlight-1170-line-11" href="#sunlight-1170-line-11">11</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;
-$matrix&#xA0;=&#xA0;array(
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P0&apos;&#xA0;=&gt;&#xA0;array(0,&#xA0;2,&#xA0;8,&#xA0;4,&#xA0;-1,&#xA0;-1,&#xA0;-1),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P1&apos;&#xA0;=&gt;&#xA0;array(2,&#xA0;0,&#xA0;-1,&#xA0;-1,&#xA0;3,&#xA0;-1,&#xA0;-1),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P2&apos;&#xA0;=&gt;&#xA0;array(8,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;2,&#xA0;3,&#xA0;-1),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P3&apos;&#xA0;=&gt;&#xA0;array(4,&#xA0;-1,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;8,&#xA0;-1),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P4&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;3,&#xA0;2,&#xA0;-1,&#xA0;0,&#xA0;-1,&#xA0;9),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P5&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;-1,&#xA0;3,&#xA0;8,&#xA0;-1,&#xA0;0,&#xA0;3),
-&#xA0;&#xA0;&#xA0;&#xA0;&apos;P6&apos;&#xA0;=&gt;&#xA0;array(-1,&#xA0;-1,&#xA0;-1,&#xA0;-1,&#xA0;9,&#xA0;3,&#xA0;0)
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;
+$matrix = array(
+    &apos;P0&apos; =&gt; array(0, 2, 8, 4, -1, -1, -1),
+    &apos;P1&apos; =&gt; array(2, 0, -1, -1, 3, -1, -1),
+    &apos;P2&apos; =&gt; array(8, -1, 0, -1, 2, 3, -1),
+    &apos;P3&apos; =&gt; array(4, -1, -1, 0, -1, 8, -1),
+    &apos;P4&apos; =&gt; array(-1, 3, 2, -1, 0, -1, 9),
+    &apos;P5&apos; =&gt; array(-1, -1, 3, 8, -1, 0, 3),
+    &apos;P6&apos; =&gt; array(-1, -1, -1, -1, 9, 3, 0)
 );
-</span></pre></div></div></code></pre>
-<pre><code class="lang-PHP"><div class="sunlight-container sunlight-theme-dark"><div class="sunlight-code-container" style="border-width: 1px; border-style: solid;"><div class="sunlight-line-number-margin"><a name="sunlight-1171-line-1" href="#sunlight-1171-line-1">1</a>
-<a name="sunlight-1171-line-2" href="#sunlight-1171-line-2">2</a>
-<a name="sunlight-1171-line-3" href="#sunlight-1171-line-3">3</a>
-<a name="sunlight-1171-line-4" href="#sunlight-1171-line-4">4</a>
-<a name="sunlight-1171-line-5" href="#sunlight-1171-line-5">5</a>
-<a name="sunlight-1171-line-6" href="#sunlight-1171-line-6">6</a>
-<a name="sunlight-1171-line-7" href="#sunlight-1171-line-7">7</a>
-<a name="sunlight-1171-line-8" href="#sunlight-1171-line-8">8</a>
-<a name="sunlight-1171-line-9" href="#sunlight-1171-line-9">9</a>
-<a name="sunlight-1171-line-10" href="#sunlight-1171-line-10">10</a>
-<a name="sunlight-1171-line-11" href="#sunlight-1171-line-11">11</a>
-<a name="sunlight-1171-line-12" href="#sunlight-1171-line-12">12</a>
-<a name="sunlight-1171-line-13" href="#sunlight-1171-line-13">13</a>
-<a name="sunlight-1171-line-14" href="#sunlight-1171-line-14">14</a>
-<a name="sunlight-1171-line-15" href="#sunlight-1171-line-15">15</a>
-<a name="sunlight-1171-line-16" href="#sunlight-1171-line-16">16</a>
-<a name="sunlight-1171-line-17" href="#sunlight-1171-line-17">17</a>
-<a name="sunlight-1171-line-18" href="#sunlight-1171-line-18">18</a>
-<a name="sunlight-1171-line-19" href="#sunlight-1171-line-19">19</a>
-<a name="sunlight-1171-line-20" href="#sunlight-1171-line-20">20</a>
-<a name="sunlight-1171-line-21" href="#sunlight-1171-line-21">21</a>
-<a name="sunlight-1171-line-22" href="#sunlight-1171-line-22">22</a>
-<a name="sunlight-1171-line-23" href="#sunlight-1171-line-23">23</a>
-<a name="sunlight-1171-line-24" href="#sunlight-1171-line-24">24</a>
-<a name="sunlight-1171-line-25" href="#sunlight-1171-line-25">25</a>
-<a name="sunlight-1171-line-26" href="#sunlight-1171-line-26">26</a>
-<a name="sunlight-1171-line-27" href="#sunlight-1171-line-27">27</a>
-<a name="sunlight-1171-line-28" href="#sunlight-1171-line-28">28</a>
-<a name="sunlight-1171-line-29" href="#sunlight-1171-line-29">29</a>
-<a name="sunlight-1171-line-30" href="#sunlight-1171-line-30">30</a>
-<a name="sunlight-1171-line-31" href="#sunlight-1171-line-31">31</a>
-<a name="sunlight-1171-line-32" href="#sunlight-1171-line-32">32</a>
-<a name="sunlight-1171-line-33" href="#sunlight-1171-line-33">33</a>
-<a name="sunlight-1171-line-34" href="#sunlight-1171-line-34">34</a>
-<a name="sunlight-1171-line-35" href="#sunlight-1171-line-35">35</a>
-<a name="sunlight-1171-line-36" href="#sunlight-1171-line-36">36</a>
-<a name="sunlight-1171-line-37" href="#sunlight-1171-line-37">37</a>
-<a name="sunlight-1171-line-38" href="#sunlight-1171-line-38">38</a>
-<a name="sunlight-1171-line-39" href="#sunlight-1171-line-39">39</a>
-<a name="sunlight-1171-line-40" href="#sunlight-1171-line-40">40</a>
-<a name="sunlight-1171-line-41" href="#sunlight-1171-line-41">41</a>
-<a name="sunlight-1171-line-42" href="#sunlight-1171-line-42">42</a>
-<a name="sunlight-1171-line-43" href="#sunlight-1171-line-43">43</a>
-<a name="sunlight-1171-line-44" href="#sunlight-1171-line-44">44</a>
-<a name="sunlight-1171-line-45" href="#sunlight-1171-line-45">45</a>
-<a name="sunlight-1171-line-46" href="#sunlight-1171-line-46">46</a>
-<a name="sunlight-1171-line-47" href="#sunlight-1171-line-47">47</a>
-<a name="sunlight-1171-line-48" href="#sunlight-1171-line-48">48</a>
-<a name="sunlight-1171-line-49" href="#sunlight-1171-line-49">49</a>
-<a name="sunlight-1171-line-50" href="#sunlight-1171-line-50">50</a>
-<a name="sunlight-1171-line-51" href="#sunlight-1171-line-51">51</a>
-<a name="sunlight-1171-line-52" href="#sunlight-1171-line-52">52</a>
-<a name="sunlight-1171-line-53" href="#sunlight-1171-line-53">53</a>
-<a name="sunlight-1171-line-54" href="#sunlight-1171-line-54">54</a>
-<a name="sunlight-1171-line-55" href="#sunlight-1171-line-55">55</a>
-<a name="sunlight-1171-line-56" href="#sunlight-1171-line-56">56</a>
-<a name="sunlight-1171-line-57" href="#sunlight-1171-line-57">57</a>
-<a name="sunlight-1171-line-58" href="#sunlight-1171-line-58">58</a>
-<a name="sunlight-1171-line-59" href="#sunlight-1171-line-59">59</a>
-<a name="sunlight-1171-line-60" href="#sunlight-1171-line-60">60</a>
-<a name="sunlight-1171-line-61" href="#sunlight-1171-line-61">61</a>
-<a name="sunlight-1171-line-62" href="#sunlight-1171-line-62">62</a>
-<a name="sunlight-1171-line-63" href="#sunlight-1171-line-63">63</a>
-<a name="sunlight-1171-line-64" href="#sunlight-1171-line-64">64</a>
-</div><pre class="sunlight-highlight-PHP sunlight-highlighted"><span class="sunlight-plaintext">&lt;?php
-//&#xA0;&#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;
-function&#xA0;bestFirstSearchByDijkstra(
-&#xA0;&#xA0;&#xA0;&#xA0;array&#xA0;$matrix,
-&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;$startPoint,
-&#xA0;&#xA0;&#xA0;&#xA0;int&#xA0;$goalPoint
+</code></pre>
+<pre class="language-"><code class="lang-PHP">&lt;?php
+// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;
+function bestFirstSearchByDijkstra(
+    array $matrix,
+    int $startPoint,
+    int $goalPoint
 )
 {
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;POINT_NUMBER&apos;,&#xA0;count($matrix));
+    // &#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+    define(&apos;POINT_NUMBER&apos;, count($matrix));
 
-&#xA0;&#xA0;&#xA0;&#xA0;if($startPoint&#xA0;&lt;&#xA0;self::POINT_NUMBER
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;||&#xA0;self::POINT_NUMBER&#xA0;&lt;&#xA0;$goalPoint){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;throw&#xA0;new&#xA0;Exception(&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;);
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    if($startPoint &lt; self::POINT_NUMBER
+        || self::POINT_NUMBER &lt; $goalPoint){
+            throw new Exception(&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;);
+    }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;START_POINT&apos;,&#xA0;$startPoint);
+    // &#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+    define(&apos;START_POINT&apos;, $startPoint);
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-&#xA0;&#xA0;&#xA0;&#xA0;define(&apos;GOAL_POINT&apos;,&#xA0;$goalPoint));
+    // &#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
+    define(&apos;GOAL_POINT&apos;, $goalPoint));
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;for($i&#xA0;=&#xA0;0;&#xA0;$i&#xA0;&lt;&#xA0;self::POINT_NUMBER;&#xA0;$i&#xA0;++){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$route[$i]&#xA0;=&#xA0;-1;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$distance[$i]&#xA0;=&#xA0;-1;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$fixFlg[$i]&#xA0;=&#xA0;false;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+    // &#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;
+    // &#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
+    for($i = 0; $i &lt; self::POINT_NUMBER; $i ++){
+        $route[$i] = -1;
+        $distance[$i] = -1;
+        $fixFlg[$i] = false;
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$cost&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;-1);
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$distance&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;-1);
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;$fix&#xA0;=&#xA0;array_fill(0,&#xA0;self::POINT_NUMBER,&#xA0;false);
+    // &#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;
+    // $cost = array_fill(0, self::POINT_NUMBER, -1);
+    // $distance = array_fill(0, self::POINT_NUMBER, -1);
+    // $fix = array_fill(0, self::POINT_NUMBER, false);
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;
-&#xA0;&#xA0;&#xA0;&#xA0;$distance[self::START_POINT]&#xA0;=&#xA0;0;
+    // &#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;
+    $distance[self::START_POINT] = 0;
 
-&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;
-&#xA0;&#xA0;&#xA0;&#xA0;while(true){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;=&#xA0;0;
+    // 
+    while(true){
+        $i = 0;
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;while($i&#xA0;&lt;&#xA0;self::POINT_NUMBER){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!$fixFlg[$i]){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break&#xA0;1;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;+=&#xA0;1;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+        while($i &lt; self::POINT_NUMBER){
+            if(!$fixFlg[$i]){
+                break 1;
+            }
+            $i += 1;
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if($i&#xA0;===&#xA0;self::POINT_NUMBER){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;break&#xA0;1;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+        if($i === self::POINT_NUMBER){
+            break 1;
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;for($j&#xA0;=&#xA0;$i&#xA0;+&#xA0;1;&#xA0;j&#xA0;&lt;&#xA0;self::POINT_NUMBER;&#xA0;$j&#xA0;++){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;if(!$fixFlg[$i]&#xA0;&amp;&amp;&#xA0;$distance[$j]&#xA0;&lt;&#xA0;$distance[$i]){
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;$i&#xA0;=&#xA0;$j;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+        for($j = $i + 1; j &lt; self::POINT_NUMBER; $j ++){
+            if(!$fixFlg[$i] &amp;&amp; $distance[$j] &lt; $distance[$i]){
+                $i = $j;
+            }
+        }
 
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;
-&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;//&#xA0;&#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;
+        // &#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;
+        // &#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;
 
-&#xA0;&#xA0;&#xA0;&#xA0;}
+    }
 }
-</span></pre></div></div></code></pre>
+</code></pre>
 <p><strong>&#xFF0A;&#x6700;&#x77ED;&#x7D4C;&#x8DEF;&#x63A2;&#x7D22;&#x51E6;&#x7406;&#x306E;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>$startPoint = 0</p>
 <p>$goalPoint = 6</p>
@@ -1913,7 +1743,7 @@ function&#xA0;bestFirstSearchByDijkstra(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"next":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.29","depth":1,"ref":"","articles":[{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","-highlight","sunlight-highlighter"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"sunlight-highlighter":{"lineNumbers":true,"theme":"dark"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2020-10-22T16:46:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:00:21.031Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"next":{"title":"r言語","level":"1.30","depth":1,"ref":"","articles":[{"title":"統計解析","level":"1.30.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.29","depth":1,"ref":"","articles":[{"title":"アルゴリズムのロジック","level":"1.29.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2020-10-22T16:46:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T15:28:04.905Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1936,6 +1766,14 @@ function&#xA0;bestFirstSearchByDijkstra(
     
         
         <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
