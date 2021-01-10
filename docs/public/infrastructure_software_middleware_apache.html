@@ -1373,20 +1373,20 @@
 <h2 id="01-tips">01. Tips</h2>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># systemctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306F;&#x7121;&#x3044;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># systemctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306F;&#x7121;&#x3044;</span>
 $ <span class="token function">service</span> httpd configtest
 $ apachectl configtest
 $ apachectl -t
 </code></pre>
 <h4 id="&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;&#xFF0F;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;&#xFF0F;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre class="language-"><code class="lang-bash">$ systemctl start httpd
+<pre class="language-"><code class="lang-sh">$ systemctl start httpd
 
 $ systemctl stop httpd
 
 $ systemctl restart httpd
 </code></pre>
 <h4 id="&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;">&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre class="language-"><code class="lang-bash">$ apachectl -k graceful
+<pre class="language-"><code class="lang-sh">$ apachectl -k graceful
 </code></pre>
 <p><br></p>
 <h2 id="02-apache&#x306E;&#x7528;&#x9014;">02. Apache&#x306E;&#x7528;&#x9014;</h2>
@@ -1511,31 +1511,28 @@ $ systemctl restart httpd
     <span class="token directive-inline property">DirectoryIndex</span> index.php
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
+<p><br></p>
 <h3 id="allowoverride">AllowOverride</h3>
 <h4 id="&#x30FB;allowoverride&#x3068;&#x306F;">&#x30FB;AllowOverride&#x3068;&#x306F;</h4>
-<pre class="language-"><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;">
-**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
-
-```apacheconf
-&lt;Directory &quot;/var/www/example&quot;&gt;
-    DirectoryIndex index.php
-    AllowOverride All
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>
+<p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;</span>Directory</span><span class="token directive-block-parameter attr-value"> <span class="token string">&quot;/var/www/example&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token directive-inline property">DirectoryIndex</span> index.php
+    <span class="token directive-inline property">AllowOverride</span> All
+<span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <h4 id="&#x30FB;all">&#x30FB;All</h4>
-<pre class="language-"><code class="lang-htaccess```&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;">
-**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
-
-```apacheconf
-AllowOverride All
+<p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> All
 </code></pre>
 <h4 id="&#x30FB;none">&#x30FB;None</h4>
-<p>&#x5168;&#x3066;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> None
 </code></pre>
 <h4 id="&#x30FB;indexes">&#x30FB;Indexes</h4>
-<p>htaccess&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;DirectoryIndex&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;DirectoryIndex&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> Indexes
 </code></pre>
@@ -1773,7 +1770,7 @@ AllowOverride All
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2020-10-22T16:41:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T16:18:14.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2021-01-10T16:52:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T17:30:28.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1800,10 +1797,6 @@ AllowOverride All
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

@@ -1409,7 +1409,7 @@
 </table>
 <h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306E;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;">&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306E;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;</h4>
 <p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306B;&#x7F6E;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x79D8;&#x5BC6;&#x9375;&#x304C;&#xFF0C;&#x8A72;&#x5F53;&#x3059;&#x308B;EC2&#x306B;&#x7F6E;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x516C;&#x958B;&#x9375;&#x3068;&#x30DA;&#x30A2;&#x306A;&#x306E;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0C;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;&#x3092;&#x7167;&#x5408;&#x3057;&#x3066;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x65B9;&#x6CD5;</p>
-<pre class="language-"><code class="lang-bash">$ openssl pkcs8 -in <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;<span class="token operator">&gt;</span>.pem -inform PEM -outform DER -topk8 -nocrypt <span class="token operator">|</span> openssl sha1 -c
+<pre class="language-"><code class="lang-sh">$ openssl pkcs8 -in <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;<span class="token operator">&gt;</span>.pem -inform PEM -outform DER -topk8 -nocrypt <span class="token operator">|</span> openssl sha1 -c
 </code></pre>
 <h4 id="&#x30FB;ec2&#x3078;&#x306E;ssh&#x63A5;&#x7D9A;">&#x30FB;EC2&#x3078;&#x306E;SSH&#x63A5;&#x7D9A;</h4>
 <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;SSH&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3082;&#x3064;&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x306F;&#xFF0C;&#x307E;&#x305A;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x3092;&#x901A;&#x904E;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5F8C;&#xFF0C;Route53&#xFF0C;ALB&#x3092;&#x7D4C;&#x7531;&#x305B;&#x305A;&#xFF0C;&#x305D;&#x306E;&#x307E;&#x307E;EC2&#x3078;&#x5411;&#x304B;&#x3046;&#xFF0E;</p>
@@ -2254,7 +2254,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <p>&#x73FE;&#x5728;&#x8D77;&#x52D5;&#x4E2D;&#x306E;ECS&#x30BF;&#x30B9;&#x30AF;&#x3068;&#x306F;&#x5225;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30BF;&#x30B9;&#x30AF;&#x3092;&#x4E00;&#x6642;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;&#x8D77;&#x52D5;&#x6642;&#x306B;&#xFF0C;<code>overrides</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8A2D;&#x5B9A;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x3055;&#x3089;&#x306B;JSON&#x3067;&#x306F;&#x300C;<code>\</code>&#x300D;&#x3092;&#x300C;<code>\\</code>&#x300D;&#x306B;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x5F8C;&#x306B;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x81EA;&#x52D5;&#x7684;&#x306B;Stopped&#x72B6;&#x614B;&#x306B;&#x306A;&#x308B;&#xFF0E;CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x4EE5;&#x5916;&#x306B;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x304B;&#x3089;&#x624B;&#x52D5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#x3082;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>Laravel&#x306E;Seeder&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3084;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/usr/bin/env bash</span>
 
 <span class="token builtin class-name">set</span> -x
 
@@ -2618,9 +2618,9 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 </table>
 <h4 id="&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
 <p>DNS&#x7D4C;&#x7531;&#x3067;&#xFF0C;EFS&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30D8;&#x30EB;&#x30D1;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">mount</span> -t <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span> -o tls <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;ID<span class="token operator">&gt;</span>:/ <span class="token operator">&lt;</span>&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">mount</span> -t <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span> -o tls <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;ID<span class="token operator">&gt;</span>:/ <span class="token operator">&lt;</span>&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Amazon EFS&#x3067;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x767B;&#x9332;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Amazon EFS&#x3067;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x767B;&#x9332;</span>
 $ <span class="token function">mount</span> -t efs -o tls fs-xxxxx:/ /var/www/app
 
 <span class="token comment"># &#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x89E3;&#x9664;</span>
@@ -2744,9 +2744,56 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 </tr>
 </tbody>
 </table>
+<h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x8A2D;&#x5B9A;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x8A2D;&#x5B9A;</h4>
+<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x57CB;&#x3081;&#x8FBC;&#x3080;HTTP&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#xFF0C;&#x30E1;&#x30BF;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x30D8;&#x30C3;&#x30C0;&#x30FC;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ETag</td>
+<td>&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x4E00;&#x610F;&#x306A;&#x8B58;&#x5225;&#x5B50;&#xFF0E;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306B;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Cache-Control</td>
+<td>Expires&#x3068;&#x540C;&#x69D8;&#x306B;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306B;&#x304A;&#x3051;&#x308B;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6709;&#x52B9;&#x671F;&#x9650;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306B;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;MIME&#x30BF;&#x30A4;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306B;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>Cache-Control&#x3068;&#x540C;&#x69D8;&#x306B;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306B;&#x304A;&#x3051;&#x308B;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x6709;&#x52B9;&#x671F;&#x9650;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;Cache-Control&#x306E;&#x65B9;&#x304C;&#x512A;&#x5148;&#x5EA6;&#x304C;&#x9AD8;&#x3044;&#xFF0E;</td>
+<td></td>
+</tr>
+<tr>
+<td>Content-Disposition</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>x-amz-website-redirect-location</td>
+<td>&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5148;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x30FB;aws-cli">&#x30FB;AWS-CLI</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x8868;&#x793A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x8868;&#x793A;</span>
 $ aws s3 <span class="token function">ls</span> s3://<span class="token operator">&lt;</span>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
@@ -3141,18 +3188,18 @@ xxxxx-cluster.cluster-ro-abcde12345.ap-northeast-1.rds.amazonaws.com
 <p><br></p>
 <h3 id="redis">Redis</h3>
 <h4 id="&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
 $ /usr/local/sbin/redis-stable/src/redis-cli -c -h <span class="token operator">&lt;</span>Redis&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">6379</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># &#x5168;&#x3066;&#x306E;&#x30AD;&#x30FC;&#x3092;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> keys *
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># &#x30AD;&#x30FC;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x5024;&#x3092;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> <span class="token builtin class-name">type</span> <span class="token operator">&lt;</span>&#x30AD;&#x30FC;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># Redis&#x304C;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> monitor
 </code></pre>
@@ -3167,7 +3214,7 @@ redis xxxxx:637<span class="token operator"><span class="token file-descriptor i
 <pre class="language-"><code class="lang-mysql"># &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;SQL&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;
 SELECT * FROM users;
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x307E;&#x3060;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x307E;&#x3060;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;</span>
 *** no cache ***
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;1&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;alice&quot;</span><span class="token punctuation">}</span>
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;2&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;bob&quot;</span><span class="token punctuation">}</span>
@@ -3186,7 +3233,7 @@ SELECT * FROM users;
 <pre class="language-"><code class="lang-mysql"># &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#xFF11;&#x756A;&#x3068;&#x540C;&#x3058;SQL&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;
 SELECT * FROM users;
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x65E2;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x65E2;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;</span>
 *** cache hit ***
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;1&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;alice&quot;</span><span class="token punctuation">}</span>
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;2&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;bob&quot;</span><span class="token punctuation">}</span>
@@ -3624,7 +3671,7 @@ SELECT * FROM users;
 <p>CloudFront&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;CloudFront&#x306E;CNAME&#x3092;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;&#x3068;&#x3059;&#x308B;&#x3068;&#xFF0C;CloudFront&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#xFF08;<code>xxxxx.cloudfront.net.</code>&#xFF09;&#x304C;&#xFF0C;&#x5165;&#x529B;&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;route53&#x3092;&#x542B;&#x3080;&#x591A;&#x6570;&#x306E;dns&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x3055;&#x308C;&#x308B;&#x4ED5;&#x7D44;&#x307F;">&#x30FB;Route53&#x3092;&#x542B;&#x3080;&#x591A;&#x6570;&#x306E;DNS&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x3055;&#x308C;&#x308B;&#x4ED5;&#x7D44;&#x307F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Route53&#x3092;&#x542B;&#x3080;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="Route53&#x3092;&#x542B;&#x3080;&#x540D;&#x524D;&#x89E3;&#x6C7A;&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
-<p>&#xFF08;1&#xFF09;&#x5B8C;&#x5168;&#x4FEE;&#x98FE;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</p>
+<p>=== &#xFF08;1&#xFF09;&#x5B8C;&#x5168;&#x4FEE;&#x98FE;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9; ===</p>
 <ol>
 <li>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;PC&#x306F;&#xFF0C;&#x81EA;&#x8EAB;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x308B;<code>www.example.jp</code>&#xFF08;&#x5B8C;&#x5168;&#x4FEE;&#x98FE;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;&#xFF09;&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x7121;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;PC&#x306F;<code>www.example.jp</code>&#x3092;&#xFF0C;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#xFF08;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;DNS&#x30B5;&#x30FC;&#x30D0;&#xFF09;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0E;</li>
@@ -3656,7 +3703,7 @@ SELECT * FROM users;
 <li>&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;PC&#x306B;&#x4EE3;&#x7406;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</li>
 <li>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;PC&#x306F;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<p>&#xFF08;2&#xFF09;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;Web&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</p>
+<p>=== &#xFF08;2&#xFF09;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;Web&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9; ===</p>
 <ol>
 <li>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;PC&#x306F;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x57FA;&#x306B;&#xFF0C;Web&#x30DA;&#x30FC;&#x30B8;&#x3092;&#xFF0C;&#x30EA;&#x30D0;&#x30FC;&#x30B9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0E;</li>
 <li>&#x30EA;&#x30D0;&#x30FC;&#x30B9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;Web&#x30DA;&#x30FC;&#x30B8;&#x3092;&#xFF0C;&#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;ALB&#x306B;&#x4EE3;&#x7406;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0E;</li>
@@ -3697,14 +3744,14 @@ SELECT * FROM users;
 </table>
 <h4 id="&#x30FB;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;">&#x30FB;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;</h4>
 <p>CloudFront&#x306B;&#x306F;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6570;&#x3060;&#x3051;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x5404;&#x30B5;&#x30FC;&#x30D0;&#x306B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> https://ip-ranges.amazonaws.com/ip-ranges.json <span class="token operator">|</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">curl</span> https://ip-ranges.amazonaws.com/ip-ranges.json <span class="token operator">|</span>
 jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDFRONT&quot;) | .ip_prefix&apos;</span>
 </code></pre>
 <p>&#x3082;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x76F4;&#x63A5;&#x53C2;&#x7167;&#x3057;&#xFF0C;&#x300C;<code>&quot;service&quot;: &quot;CLOUDFRONT&quot;</code>&#x300D;&#x3068;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x90E8;&#x5206;&#x3092;&#x63A2;&#x3059;&#xFF0E;</p>
 <p>&#x53C2;&#x7167;&#x30EA;&#x30F3;&#x30AF;&#xFF1A;<a href="https://ip-ranges.amazonaws.com/ip-ranges.json" target="_blank">https://ip-ranges.amazonaws.com/ip-ranges.json</a></p>
 <h4 id="&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;">&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;</h4>
 <p>CloudFront&#x306B;&#x306F;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x5404;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3042;&#x308B;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x305F;&#x6587;&#x5B57;&#x5217;<span class="token operator">&gt;</span>.cloudfront.net
+<pre class="language-"><code class="lang-sh">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x305F;&#x6587;&#x5B57;&#x5217;<span class="token operator">&gt;</span>.cloudfront.net
 </code></pre>
 <p><br></p>
 <h3 id="distributions">Distributions</h3>
@@ -4645,7 +4692,7 @@ jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDF
 <h3 id="cloudwatch">CloudWatch</h3>
 <h4 id="&#x30FB;aws-cli">&#x30FB;AWS-CLI</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CloudWatch&#x306E;&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CloudWatch&#x306E;&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
 aws cloudwatch set-alarm-state --alarm-name <span class="token string">&quot;Alarm&#x540D;&quot;</span> --state-value ALARM --state-reason <span class="token string">&quot;&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x6587;&#x8A00;&quot;</span>
 </code></pre>
 <p><br></p>
@@ -4681,13 +4728,13 @@ aws cloudwatch set-alarm-state --alarm-name <span class="token string">&quot;Ala
 </table>
 <p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>amazon-cloudwatch-agent-ctl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
 
 <span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x78BA;&#x8A8D;</span>
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
 
 <span class="token comment">### CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
 $ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
@@ -4861,7 +4908,7 @@ initial_position = start_of_file
 log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 </code></pre><p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>awslogs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
 <span class="token comment"># &#x6CE8;&#x610F;: restart&#x3060;&#x3068;CloudWatch&#x306B;&#x53CD;&#x6620;&#x3055;&#x308C;&#x306A;&#x3044;&#x6642;&#x304C;&#x3042;&#x308B;&#xFF0E;</span>
 $ <span class="token function">service</span> awslogs restart
 
@@ -5822,12 +5869,12 @@ $ <span class="token function">service</span> awslogs start
 <h4 id="&#x30FB;iam&#x30E6;&#x30FC;&#x30B6;&#x3068;&#x306F;">&#x30FB;IAM&#x30E6;&#x30FC;&#x30B6;&#x3068;&#x306F;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x6A29;&#x9650;&#x3092;&#x3082;&#x3063;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
 <h4 id="&#x30FB;aws-cli">&#x30FB;AWS-CLI</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
 $ aws iam update-user --user-name <span class="token operator">&lt;</span>&#x73FE;&#x884C;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span> --new-user-name <span class="token operator">&lt;</span>&#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;aws-cli&#x306E;&#x305F;&#x3081;&#x306E;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;AWS-CLI&#x306E;&#x305F;&#x3081;&#x306E;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <p>AWS-CLI&#x3067;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ aws configure <span class="token builtin class-name">set</span> aws_access_key_id <span class="token string">&quot;XXXXX&quot;</span>
+<pre class="language-"><code class="lang-sh">$ aws configure <span class="token builtin class-name">set</span> aws_access_key_id <span class="token string">&quot;XXXXX&quot;</span>
 $ aws configure <span class="token builtin class-name">set</span> aws_secret_access_key <span class="token string">&quot;XXXXX&quot;</span>
 $ aws configure <span class="token builtin class-name">set</span> aws_default_region <span class="token string">&quot;ap-northeast-1&quot;</span>
 </code></pre>
@@ -5909,7 +5956,7 @@ aws_secret_access_key=<span class="token tag"><span class="token tag"><span clas
 </code></pre>
 <h4 id="2-&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;">2. &#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</h4>
 <p>&#x4FE1;&#x983C;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#xFF08;&#x30E6;&#x30FC;&#x30B6;&#xFF09;&#x304B;&#x3089;&#xFF0C;STS&#xFF08;<code>https://sts.amazonaws.com</code>&#xFF09;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 <span class="token builtin class-name">set</span> -u
@@ -5973,7 +6020,7 @@ aws configure <span class="token builtin class-name">set</span> aws_default_regi
 <h4 id="3-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;">3. &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;</h4>
 <p>jq&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;JSON&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#xFF0E;</p>
 <p>jq&#xFF1A;<a href="https://stedolan.github.io/jq/" target="_blank">https://stedolan.github.io/jq/</a></p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> assumed_user.sh</span>
 export AWS_ACCESS_KEY_ID=&quot;<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$aws_sts_credentials</span>&quot;</span> <span class="token operator">|</span> jq -r <span class="token string">&apos;.AccessKeyId&apos;</span><span class="token variable">)</span></span>&quot;
@@ -5998,7 +6045,7 @@ EOF</span>
 </code></pre>
 <h4 id="5-&#x63A5;&#x7D9A;&#x78BA;&#x8A8D;">5. &#x63A5;&#x7D9A;&#x78BA;&#x8A8D;</h4>
 <p>&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x65B0;&#x3057;&#x3044;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#x3067;&#x304D;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 aws s3 <span class="token function">ls</span> --profile <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 <span class="token number">2020</span>-xx-xx xx:xx:xx <span class="token operator">&lt;</span>tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span>
@@ -6096,7 +6143,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-01-03T11:42:43.919Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T16:18:14.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Amazon Web Service","level":"1.21.2","depth":2,"next":{"title":"Google Cloud Platform","level":"1.21.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"クラウドコンピューティング","level":"1.21.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-01-10T15:50:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T17:30:28.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -6123,10 +6170,6 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

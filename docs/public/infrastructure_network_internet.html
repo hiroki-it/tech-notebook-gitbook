@@ -1937,30 +1937,30 @@ $_SERVER[&apos;AUTH_TYPE&apos;]             HTTP&#x8A8D;&#x8A3C;&#x6642;&#x306E;
 <p>GET&#x5909;&#x6570;&#xFF08;<code>$_GET</code>&#xFF09;&#xFF0C;POST&#x5909;&#x6570;&#xFF08;<code>$_POST</code>&#xFF09;&#xFF0C;COOKIE&#xFF08;<code>$_COOKIE</code>&#xFF09;&#x3092;&#x307E;&#x3068;&#x3081;&#x305F;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#xFF08;session&#xFF09;">&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#xFF08;<code>$_SESSION</code>&#xFF09;</h4>
 <h4 id="&#x30FB;symfony&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x3088;&#x308B;&#x5404;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;">&#x30FB;Symfony&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x3088;&#x308B;&#x5404;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;</h4>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// $_GET[&apos;hoge&apos;]
-$request-&gt;query-&gt;get(&apos;hoge&apos;);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// $_GET[&apos;hoge&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">query</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $_POST[&apos;hoge&apos;]
-$request-&gt;request-&gt;get(&apos;hoge&apos;);
+<span class="token comment">// $_POST[&apos;hoge&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">request</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF; / ex) @Route(&apos;/{hoge}&apos;)
-$request-&gt;attributes-&gt;get(&apos;hoge&apos;);
+<span class="token comment">// &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF; / ex) @Route(&apos;/{hoge}&apos;)</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">attributes</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $_COOKIE[&apos;hoge&apos;]
-$request-&gt;cookies-&gt;get(&apos;hoge&apos;);
+<span class="token comment">// $_COOKIE[&apos;hoge&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">cookies</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $_FILES[&apos;hoge&apos;]
-$request-&gt;files-&gt;get(&apos;hoge&apos;);
+<span class="token comment">// $_FILES[&apos;hoge&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">files</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $_SERVER[&apos;SCRIPT_FILENAME&apos;]
-$request-&gt;server-&gt;get(&apos;SCRIPT_FILENAME&apos;);
+<span class="token comment">// $_SERVER[&apos;SCRIPT_FILENAME&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">server</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SCRIPT_FILENAME&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $_SERVER[&apos;HTTP_USER_AGENT&apos;]
-$request-&gt;headers-&gt;get(&apos;User-Agent&apos;);
+<span class="token comment">// $_SERVER[&apos;HTTP_USER_AGENT&apos;]</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token property">headers</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;User-Agent&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// query &gt; attribute  &gt; request &#x306E;&#x9806;&#x3067;&#x691C;&#x7D22;
-$request-&gt;get(&apos;hoge&apos;);
+<span class="token comment">// query &gt; attribute  &gt; request &#x306E;&#x9806;&#x3067;&#x691C;&#x7D22;</span>
+<span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;hoge&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="ap&#x30B5;&#x30FC;&#x30D0;">AP&#x30B5;&#x30FC;&#x30D0;</h3>
@@ -2118,7 +2118,7 @@ $request-&gt;get(&apos;hoge&apos;);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ネットワークの構造","level":"1.15.1","depth":2,"next":{"title":"ネットワーク｜セキュリティ","level":"1.16","depth":1,"ref":"","articles":[{"title":"サイバー攻撃","level":"1.16.1","depth":2,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]},"previous":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_network_internet.md","mtime":"2020-11-06T02:21:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T16:18:14.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ネットワークの構造","level":"1.15.1","depth":2,"next":{"title":"ネットワーク｜セキュリティ","level":"1.16","depth":1,"ref":"","articles":[{"title":"サイバー攻撃","level":"1.16.1","depth":2,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"通信データの暗号化技術","level":"1.16.2","depth":2,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]},"previous":{"title":"ネットワーク｜構造","level":"1.15","depth":1,"ref":"","articles":[{"title":"ネットワークの構造","level":"1.15.1","depth":2,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_network_internet.md","mtime":"2021-01-10T15:50:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T17:30:28.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2145,10 +2145,6 @@ $request-&gt;get(&apos;hoge&apos;);
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

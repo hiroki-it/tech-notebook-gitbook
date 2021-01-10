@@ -1467,18 +1467,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>
 </code></pre>
-<h4 id="&#x30FB;undefined&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8FD4;&#x5374;">&#x30FB;undefined&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8FD4;&#x5374;</h4>
-<pre class="language-"><code class="lang-undifined```&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;```return```&#x306E;&#x307F;&#x3092;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;">
-**&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;**
+<h4 id="&#x30FB;undefined&#x306E;&#x8FD4;&#x5374;">&#x30FB;undefined&#x306E;&#x8FD4;&#x5374;</h4>
+<p>undefined&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;<code>return</code>&#x306E;&#x307F;&#x3092;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">hoge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token comment">// &#x7A7A;&#x306E;&#x300E;return&#x6587;&#x300F;&#x3067;&#x3059;&#x3002;&#x7A7A;&#x306A;&#x306E;&#x3067;&#x300E;undefined&#x300F;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+<span class="token punctuation">}</span>
 
-```JavaScript
-function hoge(){
-    return; // &#x7A7A;&#x306E;&#x300E;return&#x6587;&#x300F;&#x3067;&#x3059;&#x3002;&#x7A7A;&#x306A;&#x306E;&#x3067;&#x300E;undefined&#x300F;&#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;&#x3002;
-}
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">hoge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5909;&#x6570;&#x300E;x&#x300F;&#x306B;&#x306F;&#x95A2;&#x6570;&#x300E;hoge&#x300F;&#x304B;&#x3089;&#x8FD4;&#x3063;&#x3066;&#x304D;&#x305F;&#x300E;undefined&#x300F;&#x304C;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</span>
 
-const x = hoge(); // &#x5909;&#x6570;&#x300E;x&#x300F;&#x306B;&#x306F;&#x95A2;&#x6570;&#x300E;hoge&#x300F;&#x304B;&#x3089;&#x8FD4;&#x3063;&#x3066;&#x304D;&#x305F;&#x300E;undefined&#x300F;&#x304C;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
-
-console.log(x); // &#x300E;undefined&#x300F;&#x304C;&#x51FA;&#x529B;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x300E;undefined&#x300F;&#x304C;&#x51FA;&#x529B;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-&#x5909;&#x6570;">03. &#x5909;&#x6570;</h2>
@@ -1566,7 +1564,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h4 id="&#x30FB;&#x5DFB;&#x304D;&#x4E0A;&#x3052;&#x306E;&#x5BFE;&#x7B56;">&#x30FB;&#x5DFB;&#x304D;&#x4E0A;&#x3052;&#x306E;&#x5BFE;&#x7B56;</h4>
 <p>&#x610F;&#x56F3;&#x3057;&#x306A;&#x3044;&#x6319;&#x52D5;&#x3092;&#x9632;&#x3050;&#x305F;&#x3081;&#xFF0C;javascript&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x5BA3;&#x8A00;&#x3068;&#x4EE3;&#x5165;&#x306F;&#xFF0C;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#x306E;&#x6700;&#x521D;&#x306B;&#x884C;&#x3046;&#xFF0E;</p>
 <h4 id="&#x30FB;var">&#x30FB;<code>var</code></h4>
-<p><code>console.log()</code>&#x3092;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;<code>x</code>&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x300C;x is not defined &#x300D;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x305D;&#x3046;&#x3060;&#x304C;&#xFF0C;<code>x</code>&#x306B;&#x5024;&#x304C;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x793A;&#x3059;&#x300C;undefined&#x300D;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
+<p>&#x78BA;&#x8A8D;&#x306E;&#x305F;&#x3081;<code>console.log</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;<code>x</code>&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x300C;x is not defined &#x300D;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308A;&#x305D;&#x3046;&#x3060;&#x304C;&#xFF0C;<code>x</code>&#x306B;&#x5024;&#x304C;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x793A;&#x3059;&#x300C;undefined&#x300D;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
 
 <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">&apos;hoge&apos;</span><span class="token punctuation">;</span>
@@ -1579,11 +1577,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">&apos;hoge&apos;</span><span class="token punctuation">;</span> <span class="token comment">// &#x5BA3;&#x8A00;&#x3068;&#x4EE3;&#x5165;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;</span>
 </code></pre>
 <h4 id="&#x30FB;letconst">&#x30FB;<code>let</code>,<code>const</code></h4>
-<pre class="language-"><code class="lang-let```&#xFF0C;```const```&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x5DFB;&#x304D;&#x4E0A;&#x3052;&#x306F;&#x8D77;&#x3053;&#x3089;&#x306A;&#x3044;&#xFF0E;">
-```javascript
-console.log(x); // x is not defined
+<p>&#x5BA3;&#x8A00;&#x306B;<code>let</code>&#xFF0C;<code>const</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x5DFB;&#x304D;&#x4E0A;&#x3052;&#x306F;&#x8D77;&#x3053;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// x is not defined</span>
 
-let x = &apos;hoge&apos;;
+<span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&apos;hoge&apos;</span><span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -1624,7 +1621,7 @@ let x = &apos;hoge&apos;;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"プロトタイプベースのプログラミング（2）","level":"1.9.2","depth":2,"next":{"title":"JS｜ロジック","level":"1.10","depth":1,"ref":"","articles":[{"title":"フロントエンド側の検証ロジック","level":"1.10.1","depth":2,"path":"public/frontend_logic_validation.md","ref":"public/frontend_logic_validation.md","articles":[]}]},"previous":{"title":"プロトタイプベースのプログラミング（1）","level":"1.9.1","depth":2,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_object_orientation_method_data.md","mtime":"2020-10-29T19:10:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T16:18:14.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"プロトタイプベースのプログラミング（2）","level":"1.9.2","depth":2,"next":{"title":"JS｜ロジック","level":"1.10","depth":1,"ref":"","articles":[{"title":"フロントエンド側の検証ロジック","level":"1.10.1","depth":2,"path":"public/frontend_logic_validation.md","ref":"public/frontend_logic_validation.md","articles":[]}]},"previous":{"title":"プロトタイプベースのプログラミング（1）","level":"1.9.1","depth":2,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_object_orientation_method_data.md","mtime":"2021-01-10T17:14:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T17:30:28.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1651,10 +1648,6 @@ let x = &apos;hoge&apos;;
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

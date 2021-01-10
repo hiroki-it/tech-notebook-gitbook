@@ -1550,7 +1550,7 @@ $ <span class="token function">which</span> python3
 <h4 id="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;">&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;</h4>
 <p>&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x306E;&#x51E6;&#x7406;&#x3092;&#x624B;&#x7D9A;&#x304D;&#x7684;&#x306B;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x6700;&#x521D;&#x306E;&#x300C;<code>#!</code>&#x300D;&#x3092;&#x30B7;&#x30A7;&#x30D0;&#x30F3;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello World!&quot;</span>
 <span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello Japan!&quot;</span>
@@ -1558,22 +1558,22 @@ $ <span class="token function">which</span> python3
 </code></pre>
 <h4 id="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;">&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;</h4>
 <p>&#x3044;&#x305A;&#x308C;&#x304B;&#x306E;&#x65B9;&#x6CD5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># source&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># source&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
 $ <span class="token builtin class-name">source</span> hello.sh
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># bash&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># bash&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
 $ <span class="token function">bash</span> hello.sh
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30C9;&#x30C3;&#x30C8;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30C9;&#x30C3;&#x30C8;</span>
 $ <span class="token builtin class-name">.</span> hello.sh
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3092;&#x6307;&#x5B9A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3092;&#x6307;&#x5B9A;</span>
 <span class="token comment"># &#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x3042;&#x308B;hello.sh&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;</span>
 $ ./hello.sh
 </code></pre>
 <h4 id="&#x30FB;for">&#x30FB;for</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span>
 <span class="token keyword">do</span>
@@ -1583,7 +1583,7 @@ $ ./hello.sh
 <h4 id="&#x30FB;switch-case">&#x30FB;switch-case</h4>
 <p>&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x305F;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x5206;&#x3051;&#x308B;&#xFF0E;&#x5168;&#x3066;&#x306E;&#x5834;&#x5408;&#x4EE5;&#x5916;&#x3092;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token keyword">case</span> <span class="token variable">$ENV</span> <span class="token keyword">in</span>
     <span class="token string">&quot;test&quot;</span><span class="token punctuation">)</span>
@@ -1608,17 +1608,17 @@ $ ./hello.sh
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/pipeline.png" alt="pipeline"></p>
 <h4 id="&#x30FB;grep&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;grep&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x300C;<code>|</code>&#x300D;&#x306E;&#x7E26;&#x68D2;&#x8A18;&#x53F7;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x3092;&#x8868;&#x793A;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x6B21;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>find</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x3092;<code>grep</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x6E21;&#x3057;&#xFF0C;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># find ---&gt; grep</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># find ---&gt; grep</span>
 $ <span class="token function">find</span> /* -type f <span class="token operator">|</span><span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x7D50;&#x679C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>kill</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</span>
 $ <span class="token function">sudo</span> pgrep -f <span class="token operator">&lt;</span>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
 </code></pre>
 <h4 id="&#x30FB;sort&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;sort&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x51FA;&#x529B;&#x7D50;&#x679C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x4E26;&#x3073;&#x9806;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8868;&#x793A;&#x3055;&#x308C;&#x305F;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;AZ&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8868;&#x793A;&#x3055;&#x308C;&#x305F;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;AZ&#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x308B;&#xFF0E;</span>
 $ <span class="token function">printenv</span> <span class="token operator">|</span> <span class="token function">sort</span> -f
 </code></pre>
 <p><br></p>
@@ -1652,11 +1652,11 @@ $ <span class="token function">printenv</span> <span class="token operator">|</s
 <h3 id="chmod&#xFF1A;change-mode">chmod&#xFF1A;change mode</h3>
 <h4 id="&#x30FB;&#x6570;&#x5B57;">&#x30FB;&lt;&#x6570;&#x5B57;&gt;</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6A29;&#x9650;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;&#x3088;&#x304F;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#x30D1;&#x30FC;&#x30DF;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306F;&#x6B21;&#x306E;&#x901A;&#x308A;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">chmod</span> <span class="token number">600</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">chmod</span> <span class="token number">600</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-r-&#x6570;&#x5B57;">&#x30FB;-R &lt;&#x6570;&#x5B57;&gt;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x518D;&#x5E30;&#x7684;&#x306B;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">chmod</span> -R <span class="token number">600</span> <span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">chmod</span> -R <span class="token number">600</span> <span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;100&#x756A;&#x523B;&#x307F;&#x306E;&#x898F;&#x5247;&#x6027;">&#x30FB;100&#x756A;&#x523B;&#x307F;&#x306E;&#x898F;&#x5247;&#x6027;</h4>
 <p>&#x6240;&#x6709;&#x8005;&#x4EE5;&#x5916;&#x306B;&#x5168;&#x6A29;&#x9650;&#x304C;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
@@ -1762,21 +1762,21 @@ $ <span class="token function">printenv</span> <span class="token operator">|</s
 <h3 id="cp">cp</h3>
 <h4 id="&#x30FB;-rp">&#x30FB;-Rp</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5C5E;&#x6027;&#x60C5;&#x5831;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x9020;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x96A0;&#x3057;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306B;&#x30B3;&#x30D4;&#x30FC;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x96A0;&#x3057;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x4E2D;&#x8EAB;&#x3092;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306B;&#x30B3;&#x30D4;&#x30FC;</span>
 <span class="token comment"># &#x300C;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x300D;&#x3067;&#x306A;&#x304F;&#x300C;&#x30C9;&#x30C3;&#x30C8;&#x300D;&#x306B;&#x3059;&#x308B;</span>
 $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>/. /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-p">&#x30FB;-p</h4>
 <p>&#x300E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;.YYYYmmdd&#x300F;&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">cp</span> -p <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +<span class="token string">&apos;%Y%m%d&apos;</span><span class="token variable">`</span></span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">cp</span> -p <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +<span class="token string">&apos;%Y%m%d&apos;</span><span class="token variable">`</span></span>
 </code></pre>
 <p><br></p>
 <h3 id="echo">echo</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x5909;&#x6570;&#x540D;&#x306B;&#x306F;<code>$</code>&#x30DE;&#x30FC;&#x30AF;&#x3092;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token operator">&lt;</span>&#x5909;&#x6570;&#x540D;<span class="token operator">&gt;</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x5024;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token operator">&lt;</span>&#x5909;&#x6570;&#x540D;<span class="token operator">&gt;</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x5024;<span class="token operator">&gt;</span>
 
 $ <span class="token builtin class-name">echo</span> $<span class="token operator">&lt;</span>&#x5909;&#x6570;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
@@ -1784,14 +1784,14 @@ $ <span class="token builtin class-name">echo</span> $<span class="token operato
 <h3 id="find">find</h3>
 <h4 id="&#x30FB;-type">&#x30FB;-type</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3092;&#x4ED8;&#x3051;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x304C;&#x50CD;&#x304F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D1;&#x30FC;&#x30DF;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30A8;&#x30E9;&#x30FC;&#x306A;&#x3069;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x7834;&#x68C4;&#x3057;&#x3066;&#x691C;&#x7D22;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D1;&#x30FC;&#x30DF;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30A8;&#x30E9;&#x30FC;&#x306A;&#x3069;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x7834;&#x68C4;&#x3057;&#x3066;&#x691C;&#x7D22;&#xFF0E;</span>
 $ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span> <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /dev/null
 </code></pre>
 <h4 id="&#x30FB;-name&#xFF0C;-type">&#x30FB;-name&#xFF0C;-type</h4>
 <p>&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x3067;&#xFF0C; example &#x3068;&#x3044;&#x3046;&#x6587;&#x5B57;&#x3092;&#x3082;&#x3061;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
 <h3 id="ln">ln</h3>
@@ -1799,77 +1799,77 @@ $ <span class="token function">find</span> /* -type f <span class="token operato
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30B7;&#x30E7;&#x30FC;&#x30C8;&#x30AB;&#x30C3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x51E6;&#x7406;&#x306F;&#xFF0C;&#x30EA;&#x30F3;&#x30AF;&#x5143;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;-s">&#x30FB;-s</h4>
 <p>&#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#xFF0C;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x5143;&#x306B;&#x306A;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3084;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">ln</span> -s <span class="token operator">&lt;</span>&#x30EA;&#x30F3;&#x30AF;&#x5143;&#x307E;&#x3067;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">ln</span> -s <span class="token operator">&lt;</span>&#x30EA;&#x30F3;&#x30AF;&#x5143;&#x307E;&#x3067;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="ls">ls</h3>
 <h4 id="&#x30FB;-l&#xFF0C;-a">&#x30FB;-l&#xFF0C;-a</h4>
 <p>&#x96A0;&#x3057;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x96A0;&#x3057;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x8A73;&#x7D30;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">ls</span> -l -a
+<pre class="language-"><code class="lang-sh">$ <span class="token function">ls</span> -l -a
 </code></pre>
 <p><br></p>
 <h3 id="mkdir">mkdir</h3>
 <h4 id="&#x30FB;-p">&#x30FB;-p</h4>
 <p>&#x8907;&#x6570;&#x968E;&#x5C64;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">mkdir</span> -p /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">mkdir</span> -p /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>/<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="rm">rm</h3>
 <h4 id="&#x30FB;-r">&#x30FB;-R</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x81EA;&#x4F53;&#x3068;&#x4E2D;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">rm</span> -R <span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">rm</span> -R <span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="od&#xFF1A;octal-dump">od&#xFF1A;octal dump</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;8&#x9032;&#x6570;&#x306E;&#x6A5F;&#x68B0;&#x8A9E;&#x3067;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ od <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ od <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-ad&#xFF0C;-tx">&#x30FB;-Ad&#xFF0C;-tx</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;16&#x9032;&#x6570;&#x306E;&#x6A5F;&#x68B0;&#x8A9E;&#x3067;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ od -Ad -tx <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ od -Ad -tx <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="set">set</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x73FE;&#x5728;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x4E00;&#x89A7;&#x3067;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span>
 </code></pre>
 <h4 id="&#x30FB;-n">&#x30FB;-n</h4>
 <p>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x69CB;&#x6587;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span> -n
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span> -n
 </code></pre>
 <h4 id="&#x30FB;-e">&#x30FB;-e</h4>
 <p>&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9014;&#x4E2D;&#x3067;<code>0</code>&#x4EE5;&#x5916;&#x306E;&#x7D42;&#x4E86;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x304C;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span> -e
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span> -e
 </code></pre>
 <h4 id="&#x30FB;-x">&#x30FB;-x</h4>
 <p>&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x60C5;&#x5831;&#x3068;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span> -x
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span> -x
 </code></pre>
 <h4 id="&#x30FB;-u">&#x30FB;-u</h4>
 <p>&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x672A;&#x5B9A;&#x7FA9;&#x306E;&#x5909;&#x6570;&#x304C;&#x5B58;&#x5728;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span> -u
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span> -u
 </code></pre>
 <h4 id="&#x30FB;-o-pipefail">&#x30FB;-o pipefail</h4>
 <p>&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#xFF08;<code>|</code>&#xFF09;&#x5185;&#x306E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9014;&#x4E2D;&#x3067;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x305D;&#x306E;&#x7D42;&#x4E86;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x51FA;&#x529B;&#x3057;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">set</span> -o pipefail
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">set</span> -o pipefail
 </code></pre>
 <p><br></p>
 <h3 id="unlink">unlink</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ unlink <span class="token operator">&lt;</span>&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ unlink <span class="token operator">&lt;</span>&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;">02-03. &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;</h2>
 <h3 id="ssh&#xFF1A;secure-shell">ssh&#xFF1A;secure shell</h3>
 <h4 id="&#x30FB;-l&#xFF0C;-p&#xFF0C;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;-i&#xFF0C;-t">&#x30FB;-l&#xFF0C;-p&#xFF0C;&lt;&#x30DD;&#x30FC;&#x30C8;&gt;&#xFF0C;-i&#xFF0C;-T</h4>
 <p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#x300C;600&#x300D;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;tty&#xFF08;&#x64EC;&#x4F3C;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#xFF09;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;<code>-T</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">ssh</span> -l <span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>@<span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">22</span> -i <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> -T
+<pre class="language-"><code class="lang-sh">$ <span class="token function">ssh</span> -l <span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>@<span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">22</span> -i <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> -T
 </code></pre>
 <h4 id="&#x30FB;-l&#xFF0C;-p&#xFF0C;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;-i&#xFF0C;-t&#xFF0C;-vvv">&#x30FB;-l&#xFF0C;-p&#xFF0C;&lt;&#x30DD;&#x30FC;&#x30C8;&gt;&#xFF0C;-i&#xFF0C;-T&#xFF0C;-vvv</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># -vvv&#xFF1A;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># -vvv&#xFF1A;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;</span>
 $ <span class="token function">ssh</span> -l <span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>@<span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">22</span> -i <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> -T -vvv
 </code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;sshconfig&#xFF09;">&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>~/.ssh/config</code>&#xFF09;</h4>
@@ -1888,7 +1888,7 @@ Host <span class="token tag"><span class="token tag"><span class="token punctuat
     HostName <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#xFF12;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;</span><span class="token punctuation">&gt;</span></span>
     IdentityFile <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x79D8;&#x5BC6;&#x3078;&#x306E;&#x30D1;&#x30B9;</span><span class="token punctuation">&gt;</span></span>
 </code></pre><p>&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x5B9F;&#x884C;&#x6642;&#x306E;&#x5024;&#x6E21;&#x3057;&#x3092;&#x7701;&#x7565;&#x3067;&#x304D;&#x308B;&#xFF0E;tty&#xFF08;&#x64EC;&#x4F3C;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#xFF09;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;-T&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#xFF0C;&#x4E8B;&#x524D;&#x306B;&#x300C;600&#x300D;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#xFF0C;&#x4E8B;&#x524D;&#x306B;&#x300C;600&#x300D;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;</span>
 $ <span class="token function">ssh</span> <span class="token operator">&lt;</span>&#x63A5;&#x7D9A;&#x540D;<span class="token operator">&gt;</span> -T
 </code></pre>
 <p><br></p>
@@ -1896,7 +1896,7 @@ $ <span class="token function">ssh</span> <span class="token operator">&lt;</spa
 <h3 id="ps&#xFF1A;-process-status">ps&#xFF1A; process status</h3>
 <h4 id="&#x30FB;aux">&#x30FB;aux</h4>
 <p>&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8A73;&#x7D30;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x8A73;&#x7D30;&#x60C5;&#x5831;&#x306B;&#x300C;xxx&#x300D;&#x3092;&#x542B;&#x3080;&#x3082;&#x306E;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x8A73;&#x7D30;&#x60C5;&#x5831;&#x306B;&#x300C;xxx&#x300D;&#x3092;&#x542B;&#x3080;&#x3082;&#x306E;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
 $ <span class="token function">ps</span> aux <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
@@ -1905,7 +1905,7 @@ $ <span class="token function">ps</span> aux <span class="token operator">|</spa
 <p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;systemd&#x3092;&#x5236;&#x5FA1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;</p>
 <h4 id="&#x30FB;list-unit-files">&#x30FB;list-unit-files</h4>
 <p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;Unit&#x3092;&#x4E00;&#x89A7;&#x3067;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl list-unit-files --type<span class="token operator">=</span>service
+<pre class="language-"><code class="lang-sh">$ systemctl list-unit-files --type<span class="token operator">=</span>service
 
 crond.service           enabled  <span class="token comment"># enable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;</span>
 supervisord.service     disabled <span class="token comment"># disable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;</span>
@@ -1913,7 +1913,7 @@ systemd-reboot.service  static   <span class="token comment"># enable&#xFF1A;&#x
 </code></pre>
 <h4 id="&#x30FB;enable">&#x30FB;enable</h4>
 <p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 
 <span class="token comment"># &#x4F8B;&#xFF1A;Cron&#xFF0C;Apache</span>
 $ systemctl <span class="token builtin class-name">enable</span> crond.service
@@ -1921,7 +1921,7 @@ $ systemctl <span class="token builtin class-name">enable</span> httpd.service
 </code></pre>
 <h4 id="&#x30FB;disable">&#x30FB;disable</h4>
 <p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl disable <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ systemctl disable <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 
 <span class="token comment"># &#x4F8B;&#xFF1A;Cron&#xFF0C;Apache</span>
 $ systemctl disable crond.service
@@ -1957,10 +1957,10 @@ $ systemctl disable httpd.service
 <h3 id="kill">kill</h3>
 <h4 id="&#x30FB;-9">&#x30FB;-9</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;PID&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">kill</span> -9 <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID&#xFF08;PID&#xFF09;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">kill</span> -9 <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID&#xFF08;PID&#xFF09;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x5168;&#x3066;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> pgrep -f <span class="token operator">&lt;</span>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
+<pre class="language-"><code class="lang-sh">$ <span class="token function">sudo</span> pgrep -f <span class="token operator">&lt;</span>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
 </code></pre>
 <p><br></p>
 <h3 id="crontab">crontab</h3>
@@ -1968,7 +1968,7 @@ $ systemctl disable httpd.service
 <p>cron&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;&#x52D5;&#x4F5C;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;crontab&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x4F5C;&#x6210;&#x3057;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># crontab&#xFF1A;command run on table</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># crontab&#xFF1A;command run on table</span>
 $ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
@@ -1977,7 +1977,7 @@ $ <span class="token function">crontab</span> <span class="token operator">&lt;<
 <p>cron&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;</p>
 <h4 id="&#x30FB;-n">&#x30FB;-n</h4>
 <p>&#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3068;&#x3057;&#x3066;cron&#x3092;&#x8D77;&#x52D5;</p>
-<pre class="language-"><code class="lang-bash">$ crond -n
+<pre class="language-"><code class="lang-sh">$ crond -n
 </code></pre>
 <h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <table>
@@ -2021,7 +2021,7 @@ $ <span class="token function">crontab</span> <span class="token operator">&lt;<
 <li>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x5404;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</li>
 <li>cron&#x3068;&#x3057;&#x3066;&#x767B;&#x9332;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;<code>run-parts</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6642;&#x9593;&#x306B;&#xFF0C;&#x5404;cron&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4E00;&#x62EC;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8A2D;&#x5B9A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8A2D;&#x5B9A;</span>
 <span class="token assign-left variable"><span class="token environment constant">SHELL</span></span><span class="token operator">=</span>/bin/bash
 <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/sbin:/bin:/usr/sbin:/usr/bin
 <span class="token assign-left variable">MAILTO</span><span class="token operator">=</span><span class="token string">&quot;hasegawafeedshop@gmail.com&quot;</span>
@@ -2048,35 +2048,35 @@ $ <span class="token function">crontab</span> <span class="token operator">&lt;<
 @reboot <span class="token function">make</span> clean html <span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6BCE;&#x6642;&#x30FB;1&#x5206;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6BCE;&#x6642;&#x30FB;1&#x5206;</span>
 <span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6BCE;&#x65E5;&#x30FB;2&#x6642;5&#x5206;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6BCE;&#x65E5;&#x30FB;2&#x6642;5&#x5206;</span>
 <span class="token number">5</span> <span class="token number">2</span> * * * root run-parts /etc/cron.daily
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6BCE;&#x9031;&#x65E5;&#x66DC;&#x65E5;&#x30FB;2&#x6642;20&#x5206;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6BCE;&#x9031;&#x65E5;&#x66DC;&#x65E5;&#x30FB;2&#x6642;20&#x5206;</span>
 <span class="token number">20</span> <span class="token number">2</span> * * <span class="token number">0</span> root run-parts /etc/cron.weekly
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
 <span class="token number">40</span> <span class="token number">2</span> <span class="token number">1</span> * * root run-parts /etc/cron.monthly
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
 @reboot <span class="token function">make</span> clean html
 </code></pre>
 <ol>
 <li>&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x4F53;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x3068;&#xFF0C;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#x767B;&#x9332;&#x3057;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <ol>
 <li>&#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">crontab</span> -l
+<pre class="language-"><code class="lang-sh">$ <span class="token function">crontab</span> -l
 </code></pre>
 <ol>
 <li>&#x30ED;&#x30B0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">cd</span> /var/log
+<pre class="language-"><code class="lang-sh">$ <span class="token builtin class-name">cd</span> /var/log
 $ <span class="token function">tail</span> -f <span class="token function">cron</span>
 </code></pre>
 <h4 id="&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
@@ -2099,10 +2099,10 @@ $ <span class="token function">tail</span> -f <span class="token function">cron<
 </table>
 <h4 id="&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;">&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#xFF0C;OS&#x4E0A;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 $ pip3 <span class="token function">install</span> supervisor
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># /etc/supervisor/supervisord.conf &#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x3044;&#x3066;&#x8D77;&#x52D5;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># /etc/supervisor/supervisord.conf &#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x3044;&#x3066;&#x8D77;&#x52D5;&#xFF0E;</span>
 $ /usr/local/bin/supervisord
 </code></pre>
 <p>&#x4EE5;&#x4E0B;&#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4F8B;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
@@ -2136,17 +2136,17 @@ directory=/var/www/tech-notebook
 <h3 id="vim&#xFF1A;vi-imitaion&#xFF0C;vi-improved">vim&#xFF1A;Vi Imitaion&#xFF0C;Vi Improved</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>vim&#x4E0A;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x958B;&#x304F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">vim</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">vim</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="history">history</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x5C65;&#x6B74;1000&#x4EF6;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">history</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&lt;</span>&#x904E;&#x53BB;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">history</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&lt;</span>&#x904E;&#x53BB;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="tr">tr</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token function">cat</span> ./src.txt <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">&apos;<span class="token entity" title="\n">\n</span>&apos;</span> <span class="token string">&apos;,&apos;</span> <span class="token operator">&gt;</span> ./dst.txt
 </code></pre>
@@ -2156,23 +2156,23 @@ directory=/var/www/tech-notebook
 <h3 id="export">export</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x57FA;&#x672C;&#x7684;&#x306A;&#x624B;&#x9806;&#x3068;&#x3057;&#x3066;&#x306F;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x8A2D;&#x5B9A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x8A2D;&#x5B9A;</span>
 $ <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:<span class="token operator">&lt;</span>&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x3042;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 <span class="token comment"># &#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x8FFD;&#x52A0;</span>
 $ <span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>
 </code></pre>
 <p>&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x306E;&#x8A2D;&#x5B9A;&#x3068;&#xFF0C;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3078;&#x306E;&#x8FFD;&#x52A0;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x540C;&#x6642;&#x306B;&#x8A18;&#x8FF0;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x74B0;&#x72B6;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;bin&#xFF09;&#x306E;&#x3042;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3092;&#x8FFD;&#x52A0;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x74B0;&#x72B6;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;bin&#xFF09;&#x306E;&#x3042;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3092;&#x8FFD;&#x52A0;&#xFF0E;</span>
 <span class="token comment"># &#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5165;&#x529B;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;</span>
 $ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:<span class="token operator">&lt;</span>&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x3042;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x4E0D;&#x8981;&#x306A;&#x30D1;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x4E0D;&#x8981;&#x306A;&#x30D1;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
 <span class="token comment"># &#x74B0;&#x72B6;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;bin&#xFF09;&#x306E;&#x3042;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3092;&#x4E0A;&#x66F8;&#x304D;</span>
 $ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/sbin:/bin:/usr/sbin:/usr/bin
 </code></pre>
 <h4 id="&#x30FB;bashrc&#x3078;&#x306E;&#x8FFD;&#x8A18;">&#x30FB;<code>.bashrc</code>&#x3078;&#x306E;&#x8FFD;&#x8A18;</h4>
 <p>export&#x306E;&#x7D50;&#x679C;&#x306F;&#xFF0C;OS&#x306E;&#x518D;&#x8D77;&#x52D5;&#x3067;&#x521D;&#x671F;&#x5316;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x518D;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#xFF0C;<code>/home/centos/.bashrc</code>&#x306B;&#x8FFD;&#x8A18;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># Source global definitions</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># Source global definitions</span>
 <span class="token keyword">if</span> <span class="token punctuation">[</span> -f /etc/bashrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
     <span class="token builtin class-name">.</span> /etc/bashrc
 <span class="token keyword">fi</span>
@@ -2194,12 +2194,12 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 <h3 id="printenv">printenv</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x5168;&#x3066;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">printenv</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">printenv</span>
 </code></pre>
 <p><br></p>
 <h3 id="timedatactl">timedatactl</h3>
 <h4 id="&#x30FB;set-timezone">&#x30FB;set-timezone</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x3092;&#x65E5;&#x672C;&#x6642;&#x9593;&#x306B;&#x5909;&#x66F4;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x3092;&#x65E5;&#x672C;&#x6642;&#x9593;&#x306B;&#x5909;&#x66F4;</span>
 $ timedatectl set-timezone Asia/Tokyo
 
 <span class="token comment"># &#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
@@ -2210,17 +2210,17 @@ $ <span class="token function">date</span>
 <h3 id="top">top</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x5404;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7A3C;&#x50CD;&#x60C5;&#x5831;&#xFF08;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF0C;CPU&#xFF0C;&#x30E1;&#x30E2;&#x30EA;&#xFF09;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E; CPU&#x4F7F;&#x7528;&#x7387;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3079;&#x308B;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">top</span>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">top</span>
 </code></pre>
 <h4 id="&#x30FB;-a">&#x30FB;-a</h4>
 <p>&#x30E1;&#x30E2;&#x30EA;&#x4F7F;&#x7528;&#x7387;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3079;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">top</span> -a
+<pre class="language-"><code class="lang-sh">$ <span class="token function">top</span> -a
 </code></pre>
 <p><br></p>
 <h3 id="free">free</h3>
 <h4 id="&#x30FB;-m&#xFF0C;-total">&#x30FB;-m&#xFF0C;-total</h4>
 <p>&#x7269;&#x7406;&#x30E1;&#x30E2;&#x30EA;&#xFF0C;&#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#xFF0C;&#x306E;&#x4F7F;&#x7528;&#x72B6;&#x6CC1;&#x3092;&#x30E1;&#x30AC;&#x30D0;&#x30A4;&#x30C8;&#x3067;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># m&#xFF1A;Mega Bytes</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># m&#xFF1A;Mega Bytes</span>
 <span class="token comment"># t: -total</span>
 $ <span class="token function">free</span> -m -total
 </code></pre>
@@ -2228,7 +2228,7 @@ $ <span class="token function">free</span> -m -total
 <h3 id="df">df</h3>
 <h4 id="&#x30FB;-h&#xFF0C;-m&#xFF0C;-t">&#x30FB;-h&#xFF0C;-m&#xFF0C;-t</h4>
 <p>&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306E;&#x4F7F;&#x7528;&#x72B6;&#x6CC1;&#x3092;&#x30E1;&#x30AC;&#x30D0;&#x30A4;&#x30C8;&#x3067;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># h&#xFF1A;--human-readable</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># h&#xFF1A;--human-readable</span>
 <span class="token comment"># t: -total</span>
 $ <span class="token function">df</span> -h -m -t
 </code></pre>
@@ -2238,17 +2238,17 @@ $ <span class="token function">df</span> -h -m -t
 <p>&#x7269;&#x7406;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x7A7A;&#x9593;&#x7BA1;&#x7406;&#x306E;&#x65B9;&#x6CD5;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30B9;&#x30EF;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x65B9;&#x5F0F;.png" alt="&#x30B9;&#x30EF;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x65B9;&#x5F0F;"></p>
 <h4 id="&#x30FB;&#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x306E;&#x4F5C;&#x6210;&#x65B9;&#x6CD5;">&#x30FB;&#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x306E;&#x4F5C;&#x6210;&#x65B9;&#x6CD5;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;</span>
 $ <span class="token function">mkswap</span> /swap_volume
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3092;&#x6709;&#x52B9;&#x5316;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3092;&#x6709;&#x52B9;&#x5316;</span>
 <span class="token comment"># &#x512A;&#x5148;&#x5EA6;&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x304C;&#xFF0C;&#x30E1;&#x30E2;&#x30EA;&#x304B;&#x3089;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#xFF0C;&#x4E00;&#x6642;&#x7684;&#x306B;&#x9000;&#x907F;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;</span>
 $ <span class="token function">swapon</span> /swap_volume
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x306E;&#x4F7F;&#x7528;&#x72B6;&#x6CC1;&#x3092;&#x78BA;&#x8A8D;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x306E;&#x4F7F;&#x7528;&#x72B6;&#x6CC1;&#x3092;&#x78BA;&#x8A8D;</span>
 $ <span class="token function">swapon</span> -s
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3092;&#x7121;&#x52B9;&#x5316;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30B9;&#x30EF;&#x30C3;&#x30D7;&#x9818;&#x57DF;&#x3092;&#x7121;&#x52B9;&#x5316;</span>
 $ swapoff /swap_volume
 </code></pre>
 <p><br></p>
@@ -2348,10 +2348,10 @@ $ swapoff /swap_volume
 <h3 id="pip">pip</h3>
 <h4 id="&#x30FB;install">&#x30FB;install</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># /usr/local &#x4EE5;&#x4E0B;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># /usr/local &#x4EE5;&#x4E0B;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 $ pip <span class="token function">install</span> --user <span class="token operator">&lt;</span>&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># requirements.txt &#x3092;&#x5143;&#x306B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># requirements.txt &#x3092;&#x5143;&#x306B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 $ pip <span class="token function">install</span> -r requirements.txt
 
 <span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
@@ -2359,11 +2359,11 @@ pip <span class="token function">install</span> -r requirements.txt&#x3000;--pre
 </code></pre>
 <h4 id="&#x30FB;freeze">&#x30FB;freeze</h4>
 <p>pip&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x8981;&#x4EF6;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ pip freeze <span class="token operator">&gt;</span> requirements.txt
+<pre class="language-"><code class="lang-sh">$ pip freeze <span class="token operator">&gt;</span> requirements.txt
 </code></pre>
 <h4 id="&#x30FB;show">&#x30FB;show</h4>
 <p>pip&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ pip show sphinx
+<pre class="language-"><code class="lang-sh">$ pip show sphinx
 
 Name: Sphinx
 Version: <span class="token number">3.2</span>.1
@@ -2382,7 +2382,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 <p><br></p>
 <h3 id="npm">npm</h3>
 <h4 id="&#x30FB;&#x5165;&#x624B;&#x65B9;&#x6CD5;">&#x30FB;&#x5165;&#x624B;&#x65B9;&#x6CD5;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x4F5C;&#x6210;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x4F5C;&#x6210;</span>
 $ <span class="token function">curl</span> -sL https://rpm.nodesource.com/setup_<span class="token operator">&lt;</span>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;<span class="token operator">&gt;</span>.x <span class="token operator">|</span> <span class="token function">bash</span> -
 
 <span class="token comment"># nodejs&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306B;npm&#x3082;&#x542B;&#x307E;&#x308C;&#x308B;</span>
@@ -2390,14 +2390,14 @@ $ yum <span class="token function">install</span> nodejs
 </code></pre>
 <h4 id="&#x30FB;init">&#x30FB;init</h4>
 <p>package.json&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">npm</span> init
+<pre class="language-"><code class="lang-sh">$ <span class="token function">npm</span> init
 </code></pre>
 <h4 id="&#x30FB;install">&#x30FB;install</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 $ <span class="token function">npm</span> <span class="token function">install</span> <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF08;&#x3042;&#x307E;&#x308A;&#x4F7F;&#x308F;&#x306A;&#x3044;&#xFF09;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF08;&#x3042;&#x307E;&#x308A;&#x4F7F;&#x308F;&#x306A;&#x3044;&#xFF09;</span>
 $ <span class="token function">npm</span> <span class="token function">install</span> -g <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
@@ -2405,34 +2405,34 @@ $ <span class="token function">npm</span> <span class="token function">install</
 <h3 id="rpm">rpm</h3>
 <h4 id="&#x30FB;-ivh">&#x30FB;-ivh</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x307E;&#x305F;&#x306F;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x4E00;&#x5EA6;&#x306B;&#x8907;&#x6570;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x9593;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x89E3;&#x6C7A;&#x3067;&#x304D;&#x306A;&#x3044;&#x306E;&#x3067;&#x6CE8;&#x610F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 <span class="token comment"># -ivh&#xFF1A;--install -v --hash </span>
 $ <span class="token function">rpm</span> -ivh <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;</span>
 <span class="token comment"># -Uvh&#xFF1A;--upgrade -v --hash </span>
 $ <span class="token function">rpm</span> -Uvh <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-qa">&#x30FB;-qa</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6587;&#x5B57;&#x3092;&#x540D;&#x524D;&#x306B;&#x542B;&#x3080;&#x3082;&#x306E;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># -qa&#xFF1A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># -qa&#xFF1A;</span>
 $ <span class="token function">rpm</span> -qa <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&lt;</span>&#x691C;&#x7D22;&#x6587;&#x5B57;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-ql">&#x30FB;-ql</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3067;&#xFF0C;&#x95A2;&#x9023;&#x3059;&#x308B;&#x5168;&#x3066;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># -ql&#xFF1A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># -ql&#xFF1A;</span>
 $ <span class="token function">rpm</span> -ql <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-qi">&#x30FB;-qi</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3067;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x65E5;&#x306A;&#x3069;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># -qi&#xFF1A;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># -qi&#xFF1A;</span>
 $ <span class="token function">rpm</span> -qi <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="yum&#xFF0C;dnf">yum&#xFF0C;dnf</h3>
 <h4 id="&#x30FB;install&#xFF0C;reinstall">&#x30FB;install&#xFF0C;reinstall</h4>
 <p>rpm&#x3068;&#x540C;&#x69D8;&#x306E;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x9593;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x89E3;&#x6C7A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
 $ yum <span class="token function">install</span> -y <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
 
 <span class="token comment"># &#x518D;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#x306F;&#xFF0C;reinstall&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;</span>
@@ -2440,7 +2440,7 @@ $ yum reinstall -y <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30
 </code></pre>
 <h4 id="&#x30FB;list">&#x30FB;list</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x6587;&#x5B57;&#x3092;&#x540D;&#x524D;&#x306B;&#x542B;&#x3080;&#x3082;&#x306E;&#x3092;&#x8868;&#x793A;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x6307;&#x5B9A;&#x3057;&#x305F;&#x6587;&#x5B57;&#x3092;&#x540D;&#x524D;&#x306B;&#x542B;&#x3080;&#x3082;&#x306E;&#x3092;&#x8868;&#x793A;&#xFF0E;</span>
 $ yum list <span class="token operator">|</span> <span class="token function">grep</span> <span class="token operator">&lt;</span>&#x691C;&#x7D22;&#x6587;&#x5B57;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;epel&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#xFF0C;remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;">&#x30FB;EPEL&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#xFF0C;Remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;</h4>
@@ -2448,7 +2448,7 @@ $ yum list <span class="token operator">|</span> <span class="token function">gr
 <ol>
 <li>CentOS&#x306E;EPEL&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;/etc/yu.repos.d/* &#x306B;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CentOS7&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CentOS7&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
 $ yum <span class="token function">install</span> -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 <span class="token comment"># CentOS8&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
@@ -2460,7 +2460,7 @@ $ yum <span class="token function">install</span> -y epel-release &#x3067;&#x308
 <ol>
 <li>CentOS&#x306E;Remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF0E;Remi&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;CentOS&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8981;&#x78BA;&#x8A8D;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;<code>/etc/yu.repos.d/*</code>&#x306B;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CentOS7&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CentOS7&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
 $ yum <span class="token function">install</span> -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
 <span class="token comment"># CentOS8&#x7CFB;&#x306E;&#x5834;&#x5408;</span>
@@ -2498,7 +2498,7 @@ gpgcheck=1
 </code></pre><ol>
 <li>Remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x6709;&#x52B9;&#x5316;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x6C38;&#x7D9A;&#x7684;&#x306B;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
 $ yum <span class="token function">install</span> -y yum-utils
 <span class="token comment"># &#x6C38;&#x7D9A;&#x7684;&#x306B;&#x6709;&#x52B9;&#x5316;</span>
 $ yum-config-manager --enable remi-php74
@@ -2510,7 +2510,7 @@ $ dnf module <span class="token builtin class-name">enable</span> php:remi-7.4
 <ol>
 <li>remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;php&#xFF0C;php-mbstring&#xFF0C;php-mcrypt&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Remi&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306F;<code>/opt/remi/*</code>&#x306B;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
 <span class="token comment"># &#x4E00;&#x6642;&#x7684;&#x306B;&#x6709;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5229;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x660E;&#x793A;&#x7684;&#x306B;remi&#x3092;&#x6307;&#x5B9A;</span>
 $ yum <span class="token function">install</span> --enablerepo<span class="token operator">=</span>remi,remi-php74 -y php php-mbstring php-mcrypt
 
@@ -2522,7 +2522,7 @@ $ dnf <span class="token function">install</span> -y php php-mbstring php-mcrypt
 <ol>
 <li>&#x518D;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#x306F;&#xFF0C;reinstall&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># CentOS7&#x306E;&#x5834;&#x5408;</span>
 <span class="token comment"># &#x4E00;&#x6642;&#x7684;&#x306B;&#x6709;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5229;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x660E;&#x793A;&#x7684;&#x306B;remi&#x3092;&#x6307;&#x5B9A;</span>
 $ yum reinstall --enablerepo<span class="token operator">=</span>remi,remi-php74 -y php php-mbstring php-mcrypt
 
@@ -2535,7 +2535,7 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 <h2 id="03-04-&#x8A00;&#x8A9E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;">03-04. &#x8A00;&#x8A9E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;</h2>
 <h3 id="pyenv">pyenv</h3>
 <h4 id="&#x30FB;which">&#x30FB;which</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># python&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x78BA;&#x8A8D;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># python&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x78BA;&#x8A8D;</span>
 $ pyenv <span class="token function">which</span> python
 /.pyenv/versions/3.8.0/bin/python
 </code></pre>
@@ -2646,7 +2646,7 @@ $kernel-&gt;terminate($request, $response);
 <p><br></p>
 <h3 id="make&#x306B;&#x3088;&#x308B;&#x30D3;&#x30EB;&#x30C9;">make&#x306B;&#x3088;&#x308B;&#x30D3;&#x30EB;&#x30C9;</h3>
 <h4 id="1-&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">1. &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x516C;&#x5F0F;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x89E3;&#x7B54;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x516C;&#x5F0F;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x89E3;&#x7B54;</span>
 $ <span class="token function">wget</span> <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30EA;&#x30F3;&#x30AF;<span class="token operator">&gt;</span>
 $ <span class="token function">tar</span> <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x540D;<span class="token operator">&gt;</span>
 
@@ -2656,24 +2656,24 @@ $ <span class="token builtin class-name">cd</span> build
 </code></pre>
 <h4 id="2-&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;">2. &#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;</h4>
 <p>configure&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;Makefile&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># configure&#x3078;&#x306E;&#x30D1;&#x30B9;&#x306B;&#x6CE8;&#x610F;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># configure&#x3078;&#x306E;&#x30D1;&#x30B9;&#x306B;&#x6CE8;&#x610F;&#xFF0E;</span>
 $ <span class="token punctuation">..</span>/configure --prefix<span class="token operator">=</span><span class="token string">&quot;&lt;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x5148;&#x306E;&#x30D1;&#x30B9;&gt;&quot;</span>
 </code></pre>
 <h4 id="3-&#x30D3;&#x30EB;&#x30C9;-&#xFF08;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#xFF0B;&#x30EA;&#x30F3;&#x30AF;&#xFF09;">3. &#x30D3;&#x30EB;&#x30C9; &#xFF08;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#xFF0B;&#x30EA;&#x30F3;&#x30AF;&#xFF09;</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;exe&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># -j &#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30B3;&#x30A2;&#x6570;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#xFF0C;&#x51E6;&#x7406;&#x306E;&#x901F;&#x5EA6;&#x3092;&#x4E0A;&#x3052;&#x3089;&#x308C;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># -j &#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30B3;&#x30A2;&#x6570;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#xFF0C;&#x51E6;&#x7406;&#x306E;&#x901F;&#x5EA6;&#x3092;&#x4E0A;&#x3052;&#x3089;&#x308C;&#x308B;&#xFF0E;</span>
 $ <span class="token function">make</span> -j4
 </code></pre>
 <p>&#x4EFB;&#x610F;&#x3067;&#xFF0C;exe&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3048;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">make</span> check
+<pre class="language-"><code class="lang-sh">$ <span class="token function">make</span> check
 </code></pre>
 <h4 id="4-exe&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x884C;">4. exe&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x884C;</h4>
 <p>&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># install&#x3068;&#x547D;&#x4EE4;&#x3059;&#x308B;&#x304C;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x30B3;&#x30D4;&#x30FC;&#xFF0E;sudo&#x3092;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># install&#x3068;&#x547D;&#x4EE4;&#x3059;&#x308B;&#x304C;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x30B3;&#x30D4;&#x30FC;&#xFF0E;sudo&#x3092;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</span>
 $ <span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
 </code></pre>
 <p>&#x5143;&#x3068;&#x306A;&#x3063;&#x305F;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3084;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x524A;&#x9664;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">make</span> clean
+<pre class="language-"><code class="lang-sh">$ <span class="token function">make</span> clean
 </code></pre>
 <p><br></p>
 <h2 id="04-03-&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;&#x578B;&#x8A00;&#x8A9E;&#x306E;&#x6A5F;&#x68B0;&#x8A9E;&#x7FFB;&#x8A33;">04-03. &#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;&#x578B;&#x8A00;&#x8A9E;&#x306E;&#x6A5F;&#x68B0;&#x8A9E;&#x7FFB;&#x8A33;</h2>
@@ -2682,7 +2682,7 @@ $ <span class="token function">sudo</span> <span class="token function">make</sp
 <p>&#x30B3;&#x30FC;&#x30C9;&#x3092;&#xFF0C;&#x4E00;&#x884C;&#x305A;&#x3064;&#x6A5F;&#x68B0;&#x8A9E;&#x306B;&#x5909;&#x63DB;&#x3057;&#xFF0C;&#x305D;&#x306E;&#x90FD;&#x5EA6;&#xFF0C;CPU&#x306B;&#x5BFE;&#x3057;&#x3066;&#x547D;&#x4EE4;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;&#x8A00;&#x8A9E;.png" alt="&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;&#x8A00;&#x8A9E;"></p>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x305D;&#x306E;&#x307E;&#x307E;&#x5165;&#x529B;&#x3057;&#xFF0C;&#x6A5F;&#x68B0;&#x8A9E;&#x7FFB;&#x8A33;&#x3068;&#x5B9F;&#x884C;&#x3092;&#x884C;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment">#===========</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment">#===========</span>
 <span class="token comment"># PHP&#x306E;&#x5834;&#x5408;</span>
 <span class="token comment">#===========</span>
 
@@ -2698,7 +2698,7 @@ $ php -r <span class="token string">&apos;phpinfo();&apos;</span>
 <span class="token comment"># &#xFF08;&#x304A;&#x307E;&#x3051;&#xFF09;phpinfo&#x306E;&#x51FA;&#x529B;&#x3092;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4FDD;&#x5B58;</span>
 $ php -r <span class="token string">&apos;phpinfo();&apos;</span> <span class="token operator">&gt;</span> phpinfo.txt
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># php.ini&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x72B6;&#x6CC1;&#x3092;&#x51FA;&#x529B;</span>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># php.ini&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x72B6;&#x6CC1;&#x3092;&#x51FA;&#x529B;</span>
 $ php --ini
 </code></pre>
 <h4 id="&#x30FB;&#x4ED5;&#x7D44;&#x307F;&#xFF08;&#x3058;&#xFF0C;&#x3053;&#xFF0C;&#x3044;&#xFF0C;&#x5B9F;&#x884C;&#xFF09;">&#x30FB;&#x4ED5;&#x7D44;&#x307F;&#xFF08;&#x3058;&#xFF0C;&#x3053;&#xFF0C;&#x3044;&#xFF0C;&#x5B9F;&#x884C;&#xFF09;</h4>
@@ -2753,7 +2753,7 @@ $ php --ini
 <ol>
 <li>SELinux&#x306E;&#x72B6;&#x614B;&#x3092;&#x78BA;&#x8A8D;</li>
 </ol>
-<pre class="language-"><code class="lang-bash">$ getenforce
+<pre class="language-"><code class="lang-sh">$ getenforce
 
 <span class="token comment"># &#x6709;&#x52B9;&#x306E;&#x5834;&#x5408;</span>
 Enforcing
@@ -2864,7 +2864,7 @@ SELINUXTYPE=targeted
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CentOSの構成","level":"1.19.1","depth":2,"next":{"title":"ソフトウェア｜機械語と進数","level":"1.20","depth":1,"ref":"","articles":[{"title":"機械語と進数","level":"1.20.1","depth":2,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2020-12-05T17:55:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-09T16:18:14.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CentOSの構成","level":"1.19.1","depth":2,"next":{"title":"ソフトウェア｜機械語と進数","level":"1.20","depth":1,"ref":"","articles":[{"title":"機械語と進数","level":"1.20.1","depth":2,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-01-10T15:48:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-10T17:30:28.532Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2891,10 +2891,6 @@ SELINUXTYPE=targeted
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
