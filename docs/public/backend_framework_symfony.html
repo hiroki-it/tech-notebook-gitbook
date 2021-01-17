@@ -1372,7 +1372,10 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="symfony">Symfony</h1>
-<h2 id="01-symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;">01. Symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h2>
+<h2 id="01-&#x53C2;&#x8003;&#x306B;&#x306A;&#x308B;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;">01. &#x53C2;&#x8003;&#x306B;&#x306A;&#x308B;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;</h2>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://symfony.com/doc/current/the-fast-track/ja/index.html" target="_blank">https://symfony.com/doc/current/the-fast-track/ja/index.html</a></p>
+<p><br></p>
+<h2 id="01-02-symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;">01-02. Symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h2>
 <pre class="language-"><code>Symfony
 &#x251C;&#x2500;&#x2500; config&#x3000;#&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306E;&#x305F;&#x3081;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x5B9A;&#x7FA9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x7B49;&#xFF09;
 &#x2502;
@@ -1422,7 +1425,7 @@
     &#x2514;&#x2500;&#x2500; js #javascript&#x30D5;&#x30A1;&#x30A4;&#x30EB;
 </code></pre><p><br></p>
 <h2 id="02-&#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">02. &#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;Symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
-<h3 id="console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="console">Console</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\LockableTrait;
@@ -1431,7 +1434,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 </code></pre>
 <p><br></p>
-<h3 id="httpfoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">HttpFoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="httpfoundation">HttpFoundation</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -1441,7 +1444,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 </code></pre>
 <p><br></p>
-<h3 id="httpkernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">HttpKernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="httpkernel">HttpKernel</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -1449,7 +1452,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 </code></pre>
 <p><br></p>
-<h3 id="pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="pimple">Pimple</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Pimple\ConfigSupport;
 use Pimple\Container;
@@ -1457,31 +1460,31 @@ use Pimple\DiSupport;
 use Pimple\ServiceProviderInterface;
 </code></pre>
 <p><br></p>
-<h3 id="security&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Security&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="security">Security</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\Security\Core\AuthenticationEvents;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 </code></pre>
 <p><br></p>
-<h3 id="eventdispatcher&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">EventDispatcher&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="eventdispatcher">EventDispatcher</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 </code></pre>
 <p><br></p>
-<h3 id="routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="routing">Routing</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 </code></pre>
 <p><br></p>
-<h3 id="cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">Cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h3>
+<h3 id="cache">Cache</h3>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 </code></pre>
 <p><br></p>
-<h2 id="03-console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03. Console&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-console">03. Console</h2>
 <h3 id="cli&#xFF1A;command-line-interface">CLI&#xFF1A;Command Line Interface</h3>
 <h4 id="&#x30FB;cli&#x3068;&#x306F;">&#x30FB;CLI&#x3068;&#x306F;</h4>
 <p>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#xFF08;<code>.sh</code>&#xFF09;&#xFF0C;&#x307E;&#x305F;&#x306F;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>.bat</code>&#xFF09;&#x306B;&#x304A;&#x3051;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -1540,7 +1543,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 <span class="token number">0</span> <span class="token number">15</span> * * * * create:example<span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-02-httpfoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-02. HttpFoundation&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-02-httpfoundation">03-02. HttpFoundation</h2>
 <h3 id="appkernel">AppKernel</h3>
 <p><img src="https://user-images.githubusercontent.com/42175286/57711074-08c21b00-76a9-11e9-959e-b3777f70d2c6.png" alt="&#x56F3;2-9-ver2"></p>
 <h4 id="&#x30FB;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">&#x30FB;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
@@ -1641,15 +1644,15 @@ class ExampleController extends AbstractController
 }
 </code></pre>
 <p><br></p>
-<h2 id="03-03-httpkernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-03. HttpKernel&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-03-httpkernel">03-03. HttpKernel</h2>
 <h3 id="httpkernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;">HttpKernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h3>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Symfony&#x306E;HttpKernel&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="Symfony&#x306E;HttpKernel&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
 <p><br></p>
-<h2 id="03-04-pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-04. Pimple&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-04-pimple">03-04. Pimple</h2>
 <h3 id="service-container">Service Container</h3>
 <p>Symfony&#x304B;&#x3089;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
 <p><br></p>
-<h2 id="03-05-routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-05. Routing&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-05-routing">03-05. Routing</h2>
 <h3 id="routingconfigurator">RoutingConfigurator</h3>
 <h4 id="&#x30FB;routingconfigurator&#x3068;&#x306F;">&#x30FB;RoutingConfigurator&#x3068;&#x306F;</h4>
 <p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1669,10 +1672,10 @@ return function (RoutingConfigurator $routes) {
 };
 </code></pre>
 <p><br></p>
-<h2 id="03-06-cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">03-06. Cache&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
+<h2 id="03-06-cache">03-06. Cache</h2>
 <h3 id="filesystemadapter">FilesystemAdapter</h3>
 <h4 id="&#x30FB;filesystemadapter&#x3068;&#x306F;">&#x30FB;FilesystemAdapter&#x3068;&#x306F;</h4>
-<p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5B58;&#x7D9A;&#x6642;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30EB;&#x30FC;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5B58;&#x7D9A;&#x6642;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30EB;&#x30FC;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -1735,7 +1738,7 @@ $cacheItemObj = $cache-&gt;get();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Symfony","level":"1.6.2","depth":2,"next":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2021-01-10T15:52:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-11T19:04:01.671Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Symfony","level":"1.6.2","depth":2,"next":{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2021-01-15T16:25:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-17T18:55:35.534Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
