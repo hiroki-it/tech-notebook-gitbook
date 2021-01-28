@@ -1786,6 +1786,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 <h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3068;&#x306F;">&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3068;&#x306F;</h4>
 <p>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306E;&#x4E0A;&#x306B;&#x7A4D;&#x307F;&#x91CD;&#x306D;&#x3089;&#x308C;&#x308B;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x4E0A;&#x3078;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306E;&#x7A4D;&#x307F;&#x91CD;&#x306D;.png" alt="&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x4E0A;&#x3078;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306E;&#x7A4D;&#x307F;&#x91CD;&#x306D;"></p>
+<p><br></p>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x751F;&#x6210;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x69CB;&#x7BC9;">&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x751F;&#x6210;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x69CB;&#x7BC9;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
@@ -1808,14 +1809,8 @@ $ docker run -a -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30
 <span class="token comment"># &#x30C7;&#x30BF;&#x30C3;&#x30C1;&#x30C9;&#x30E2;&#x30FC;&#x30C9;&#x306B;&#x3088;&#x308B;&#x8D77;&#x52D5;&#xFF0E;&#x30D0;&#x30C3;&#x30AF;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</span>
 $ docker run -d -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span> /bin/bash
 </code></pre>
-<h4 id="&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x505C;&#x6B62;&#xFF0F;&#x524A;&#x9664;">&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x505C;&#x6B62;&#xFF0F;&#x524A;&#x9664;</h4>
+<h4 id="&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x524A;&#x9664;">&#x30FB;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x524A;&#x9664;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8D77;&#x52D5;&#x4E2D;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;</span>
-$ docker stop <span class="token operator">&lt;</span>&#x8D77;&#x52D5;&#x4E2D;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span>
-</code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;</span>
-$ docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> --all --quiet<span class="token variable">)</span></span>
-</code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x505C;&#x6B62;&#x4E2D;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x307F;&#x3092;&#x5168;&#x3066;&#x524A;&#x9664;</span>
 $ docker container prune
 </code></pre>
@@ -1848,6 +1843,13 @@ $ docker <span class="token function">ps</span> -a
 <span class="token comment"># grep&#x3068;&#x3082;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;</span>
 $ docker inspect <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID<span class="token operator">&gt;</span>
 $ docker inspect <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">grep</span> IPAddress
+</code></pre>
+<h4 id="&#x30FB;&#x8D77;&#x52D5;&#x4E2D;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;">&#x30FB;&#x8D77;&#x52D5;&#x4E2D;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;</h4>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8D77;&#x52D5;&#x4E2D;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;</span>
+$ docker stop <span class="token operator">&lt;</span>&#x8D77;&#x52D5;&#x4E2D;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x505C;&#x6B62;</span>
+$ docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> --all --quiet<span class="token variable">)</span></span>
 </code></pre>
 <h4 id="&#x30FB;&#x8D77;&#x52D5;&#x4E2D;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x63A5;&#x7D9A;">&#x30FB;&#x8D77;&#x52D5;&#x4E2D;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x63A5;&#x7D9A;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
@@ -2228,7 +2230,7 @@ $ docker logs --follow<span class="token operator">=</span>true --tail<span clas
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"コンテナ","level":"1.24.2","depth":2,"next":{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2021-01-10T15:46:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-24T18:54:45.144Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"コンテナ","level":"1.24.2","depth":2,"next":{"title":"コンテナオーケストレーション","level":"1.24.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"仮想化技術の比較","level":"1.24.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2021-01-27T17:26:04.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-28T18:53:56.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2255,6 +2257,10 @@ $ docker logs --follow<span class="token operator">=</span>true --tail<span clas
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

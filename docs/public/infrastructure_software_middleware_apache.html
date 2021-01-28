@@ -1427,7 +1427,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="03-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">03. Core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="serverroot">ServerRoot</h3>
-<h4 id="&#x30FB;serverroot&#x3068;&#x306F;">&#x30FB;ServerRoot&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;serverroot&#x3068;&#x306F;">&#x30FB;<code>ServerRoot</code>&#x3068;&#x306F;</h4>
 <p>&#x4ED6;&#x306E;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#xFF0C;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x901A;&#x5E38;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;etc&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x306B;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
@@ -1438,7 +1438,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </code></pre>
 <p><br></p>
 <h3 id="virtualhost">VirtualHost</h3>
-<h4 id="&#x30FB;virtualhost&#x3068;&#x306F;">&#x30FB;VirtualHost&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;virtualhost&#x3068;&#x306F;">&#x30FB;<code>VirtualHost</code>&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x56F2;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x7279;&#x5B9A;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x3084;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x3042;&#x3063;&#x305F;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;VirtualHost&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x901A;&#x308A;&#xFF0C;1 &#x3064;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x4E0A;&#x3067;&#xFF0C;&#x4EEE;&#x60F3;&#x7684;&#x306B;&#x8907;&#x6570;&#x306E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x3092;&#x6271;&#x3046;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x3082;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x8907;&#x6570;&#x306E;VirtualHost&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x304C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x8A2D;&#x5B9A;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Listen</span> 80
@@ -1455,14 +1455,14 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     <span class="token directive-inline property">ServerName</span> www.example.org
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
-<h4 id="&#x30FB;ip&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;IP&#x30D9;&#x30FC;&#x30B9;VirtualHost</h4>
+<h4 id="&#x30FB;ip&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;IP&#x30D9;&#x30FC;&#x30B9;<code>VirtualHost</code></h4>
 <p>&#x5404;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306B;&#x7570;&#x306A;&#x308B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5272;&#x308A;&#x632F;&#x308B;&#x30D0;&#x30FC;&#x30C1;&#x30E3;&#x30EB;&#x30DB;&#x30B9;&#x30C8;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;VirtualHost</h4>
+<h4 id="&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;virtualhost">&#x30FB;&#x540D;&#x524D;&#x30D9;&#x30FC;&#x30B9;<code>VirtualHost</code></h4>
 <p>&#x5168;&#x3066;&#x306E;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306B;&#x540C;&#x3058;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5272;&#x308A;&#x632F;&#x308B;&#x30D0;&#x30FC;&#x30C1;&#x30E3;&#x30EB;&#x30DB;&#x30B9;&#x30C8;&#xFF0E;</p>
 <p><br></p>
 <h3 id="documentroot">DocumentRoot</h3>
-<h4 id="&#x30FB;documentroot&#x3068;&#x306F;">&#x30FB;DocumentRoot&#x3068;&#x306F;</h4>
-<p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x306B;&#x300C;<code>index.html</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;<code>index.html</code>&#x304C;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3057;&#x3066;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;documentroot&#x3068;&#x306F;">&#x30FB;<code>DocumentRoot</code>&#x3068;&#x306F;</h4>
+<p>&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x306B;&#x300C;<code>index.html</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;<code>index.html</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3057;&#x3066;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;</span>VirtualHost</span><span class="token directive-block-parameter attr-value"> *<span class="token punctuation">:</span>80</span><span class="token punctuation">&gt;</span></span>
     <span class="token directive-inline property">DocumentRoot</span> /www/example1
@@ -1477,7 +1477,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <h3 id="directory">Directory</h3>
-<h4 id="&#x30FB;directory&#x3068;&#x306F;">&#x30FB;Directory&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;directory&#x3068;&#x306F;">&#x30FB;<code>Directory</code>&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x56F2;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x4E00;&#x3064;&#xFF0E;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x3042;&#x3063;&#x305F;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;</span>Directory</span><span class="token directive-block-parameter attr-value"> <span class="token string">&quot;/var/www/example&quot;</span></span><span class="token punctuation">&gt;</span></span>
@@ -1487,30 +1487,30 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </code></pre>
 <p><br></p>
 <h3 id="user&#xFF0C;group">User&#xFF0C;Group</h3>
-<h4 id="&#x30FB;user&#x3068;&#x306F;">&#x30FB;User&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;user&#x3068;&#x306F;">&#x30FB;<code>User</code>&#x3068;&#x306F;</h4>
 <p>httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6240;&#x6709;&#x8005;&#x540D;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x3082;&#x306E;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">User</span> apache
 </code></pre>
-<h4 id="&#x30FB;group&#x3068;&#x306F;">&#x30FB;Group&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;group&#x3068;&#x306F;">&#x30FB;<code>Group</code>&#x3068;&#x306F;</h4>
 <p>httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;httpd&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x3082;&#x306E;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Group</span> apache
 </code></pre>
 <p><br></p>
 <h3 id="keepalive&#xFF0C;maxkeepaliverequests&#xFF0C;keepalivetimeout">KeepAlive&#xFF0C;MaxKeepAliveRequests&#xFF0C;KeepAliveTimeout</h3>
-<h4 id="&#x30FB;keepalive&#x3068;&#x306F;">&#x30FB;KeepAlive&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;keepalive&#x3068;&#x306F;">&#x30FB;<code>KeepAlive</code>&#x3068;&#x306F;</h4>
 <p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0C;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">KeepAlive</span> On
 </code></pre>
-<h4 id="&#x30FB;keepalivetimeout">&#x30FB;KeepAliveTimeout</h4>
+<h4 id="&#x30FB;keepalivetimeout">&#x30FB;<code>KeepAliveTimeout</code></h4>
 <p>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x4E2D;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x518D;&#x3073;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x307E;&#x3067;&#x306B;&#x4F55;&#x79D2;&#x9593;&#x7A7A;&#x3044;&#x305F;&#x3089;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7834;&#x68C4;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token comment"># KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
 <span class="token directive-inline property">KeepAliveTimeout</span> 5
 </code></pre>
-<h4 id="&#x30FB;maxkeepaliverequests">&#x30FB;MaxKeepAliveRequests</h4>
+<h4 id="&#x30FB;maxkeepaliverequests">&#x30FB;<code>MaxKeepAliveRequests</code></h4>
 <p>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x4ED8;&#x4E0E;&#x4E2D;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6700;&#x5927;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token comment"># KeepAlive&#x304C;On&#x306E;&#x6642;&#x306E;&#x307F;</span>
@@ -1545,7 +1545,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </code></pre>
 <p><br></p>
 <h3 id="allowoverride">AllowOverride</h3>
-<h4 id="&#x30FB;allowoverride&#x3068;&#x306F;">&#x30FB;AllowOverride&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;allowoverride&#x3068;&#x306F;">&#x30FB;<code>AllowOverride</code>&#x3068;&#x306F;</h4>
 <p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;</span>Directory</span><span class="token directive-block-parameter attr-value"> <span class="token string">&quot;/var/www/example&quot;</span></span><span class="token punctuation">&gt;</span></span>
@@ -1553,17 +1553,17 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     <span class="token directive-inline property">AllowOverride</span> All
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
-<h4 id="&#x30FB;all">&#x30FB;All</h4>
+<h4 id="&#x30FB;all">&#x30FB;<code>All</code></h4>
 <p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> All
 </code></pre>
-<h4 id="&#x30FB;none">&#x30FB;None</h4>
+<h4 id="&#x30FB;none">&#x30FB;<code>None</code></h4>
 <p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#x306A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5168;&#x3066;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> None
 </code></pre>
-<h4 id="&#x30FB;indexes">&#x30FB;Indexes</h4>
+<h4 id="&#x30FB;indexes">&#x30FB;<code>Indexes</code></h4>
 <p>&#x5225;&#x306B;&#x7528;&#x610F;&#x3057;&#x305F;<code>.htaccess</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;DirectoryIndex&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> Indexes
@@ -1571,7 +1571,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="04-03-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-03. mod_write&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="rewritecond">RewriteCond</h3>
-<h4 id="&#x30FB;rewritecond&#x3068;&#x306F;">&#x30FB;RewriteCond&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;rewritecond&#x3068;&#x306F;">&#x30FB;<code>RewriteCond</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#xFF0C;&#x305D;&#x308C;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteCond</span> %&#x5909;&#x6570;&#x540D; &#x6761;&#x4EF6;
@@ -1579,8 +1579,9 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteCond</span> <span class="token variable">%{HTTP:X-Forwarded-Port}</span><span class="token regex"> !^443$</span>
 </code></pre>
+<p><br></p>
 <h3 id="rewriterule">RewriteRule</h3>
-<h4 id="&#x30FB;rewriterule&#x3068;&#x306F;">&#x30FB;RewriteRule&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;rewriterule&#x3068;&#x306F;">&#x30FB;<code>RewriteRule</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteRule</span> URL&#x66F8;&#x63DB;&#xFF06;&#x8EE2;&#x9001;&#x306E;&#x8A18;&#x8FF0;
 </code></pre>
@@ -1591,7 +1592,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="04-04-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-04. mod_setenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="setenvif">SetEnvIf</h3>
-<h4 id="&#x30FB;setenvif&#x3068;&#x306F;">&#x30FB;SetEnvIf&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;setenvif&#x3068;&#x306F;">&#x30FB;<code>SetEnvIf</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token comment"># &#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x4EE5;&#x4E0B;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x5834;&#x5408;&#x306B;&#xFF0C;</span>
 <span class="token directive-inline property">SetEnvIf</span> Request_URI <span class="token string">&quot;\.(gif|jpe?g|png|js|css)$&quot;</span> object-is-ignore
@@ -1601,7 +1602,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="04-05-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-05. mod_log_config&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="logformat">LogFormat</h3>
-<h4 id="&#x30FB;logformat&#x3068;&#x306F;">&#x30FB;LogFormat&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;logformat&#x3068;&#x306F;">&#x30FB;<code>LogFormat</code>&#x3068;&#x306F;</h4>
 <p>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F8;&#x5F0F;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;">&#x30FB;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;</h4>
 <p>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x5408;&#x308F;&#x305B;&#x3066;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1679,7 +1680,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </table>
 <p><br></p>
 <h3 id="errorlog">ErrorLog</h3>
-<h4 id="&#x30FB;errorlog&#x3068;&#x306F;">&#x30FB;ErrorLog&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;errorlog&#x3068;&#x306F;">&#x30FB;<code>ErrorLog</code>&#x3068;&#x306F;</h4>
 <p>&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F8;&#x5F0F;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;">&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3068;&#x51FA;&#x529B;&#x5185;&#x5BB9;</h4>
 <p>&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1688,7 +1689,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </code></pre>
 <p><br></p>
 <h3 id="loglevel">LogLevel</h3>
-<h4 id="&#x30FB;loglevel&#x3068;&#x306F;">&#x30FB;LogLevel&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;loglevel&#x3068;&#x306F;">&#x30FB;<code>LogLevel</code>&#x3068;&#x306F;</h4>
 <p>&#x3069;&#x306E;&#x30EC;&#x30D9;&#x30EB;&#x307E;&#x3067;&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x304B;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <table>
 <thead>
@@ -1743,13 +1744,14 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="04-06-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-06. mod_ssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="sslcertificatefile">SSLCertificateFile</h3>
-<h4 id="&#x30FB;sslcertificatefile&#x3068;&#x306F;">&#x30FB;SSLCertificateFile&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;sslcertificatefile&#x3068;&#x306F;">&#x30FB;<code>SSLCertificateFile</code>&#x3068;&#x306F;</h4>
 <p>PKI&#x306B;&#x304A;&#x3051;&#x308B;&#x516C;&#x958B;&#x9375;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x5FC5;&#x8981;&#x306A;SSL&#x30B5;&#x30FC;&#x30D0;&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x306F;AWS&#x306E;ACM&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x306A;&#x7528;&#x9014;&#x3068;&#x3057;&#x3066;&#x306F;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x958B;&#x767A;&#x3067;&#x306E;&#x30AA;&#x30EC;&#x30AA;&#x30EC;&#x8A3C;&#x660E;&#x66F8;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">SSLCertificateFile</span> /etc/httpd/conf.d/server.crt
 </code></pre>
+<p><br></p>
 <h3 id="sslcertificatekeyfile">SSLCertificateKeyFile</h3>
-<h4 id="&#x30FB;sslcertificatekeyfile&#x3068;&#x306F;">&#x30FB;SSLCertificateKeyFile&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;sslcertificatekeyfile&#x3068;&#x306F;">&#x30FB;<code>SSLCertificateKeyFile</code>&#x3068;&#x306F;</h4>
 <p>PKI&#x306B;&#x304A;&#x3051;&#x308B;&#x516C;&#x958B;&#x9375;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">SSLCertificateKeyFile</span> /etc/httpd/conf.d/server.key
@@ -1757,14 +1759,24 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p><br></p>
 <h2 id="04-07-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;">04-07. mod_headers&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="header">Header</h3>
-<h4 id="&#x30FB;header&#x3068;&#x306F;">&#x30FB;Header&#x3068;&#x306F;</h4>
-<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;<code>set</code>&#xFF0C;<code>append</code>&#xFF0C;<code>add</code>&#xFF0C;<code>unset</code>&#xFF0C;<code>echo</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;header&#x3068;&#x306F;">&#x30FB;<code>Header</code>&#x3068;&#x306F;</h4>
+<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;<code>set</code>&#xFF0C;<code>append</code>&#xFF0C;<code>add</code>&#xFF0C;<code>unset</code>&#xFF0C;<code>echo</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6A19;&#x6E96;&#x3067;&#x306F;<code>2xx</code>&#x3068;<code>3xx</code>&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3067;&#x8A2D;&#x5B9A;&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>always</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3067;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;set">&#x30FB;<code>set</code></h4>
+<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-apacheconf"><span class="token comment"># Referrer-Policy&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;</span>
-<span class="token directive-inline property">Header</span> set Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span>
-
-<span class="token comment"># Referrer-Policy&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;</span>
-<span class="token directive-inline property">Header</span> unset Referrer-Policy &quot;no-referrer-when-downgrade
+<p>Referrer-Policy&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8FFD;&#x52A0;&#x3057;&#xFF0C;&#x5024;&#x3092;<code>no-referrer-when-downgrade</code>&#x3068;&#x3059;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;Chrome85&#x4EE5;&#x964D;&#x306E;Referrer-Policy&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x521D;&#x671F;&#x5024;&#x306E;&#x4ED5;&#x69D8;&#x5909;&#x66F4;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.chromestatus.com/feature/6251880185331712" target="_blank">https://www.chromestatus.com/feature/6251880185331712</a></p>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Header</span> set Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span>
+</code></pre>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Header</span> set Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span> always
+</code></pre>
+<h4 id="&#x30FB;unset">&#x30FB;<code>unset</code></h4>
+<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>Referrer-Policy&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;</p>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Header</span> unset Referrer-Policy &quot;no-referrer-when-downgrade
+</code></pre>
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Header</span> unset Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span> always
 </code></pre>
 <p><br></p>
 <h2 id="05-htaccess">05. htaccess</h2>
@@ -1814,7 +1826,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2021-01-22T04:42:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-24T18:54:45.144Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Apache","level":"1.18.2","depth":2,"next":{"title":"ソフトウェア｜CentOSの構成","level":"1.19","depth":1,"ref":"","articles":[{"title":"CentOSの構成","level":"1.19.1","depth":2,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"previous":{"title":"Nginx","level":"1.18.1","depth":2,"path":"public/infrastructure_software_middleware_nginx.md","ref":"public/infrastructure_software_middleware_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_middleware_apache.md","mtime":"2021-01-27T16:18:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-28T18:53:56.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1841,6 +1853,10 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     
         
         <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
