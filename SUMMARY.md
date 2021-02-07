@@ -14,8 +14,8 @@
     * [繰り返しロジック](public/backend_logic_iteration.md)
 * PHP｜API
     * [RESTful APIの概念と実装](public/backend_api_restful.md)
-* PHP｜ライブラリ／フレームワーク
-    * [ライブラリ](public/backend_library.md)
+* PHP｜パッケージ／フレームワーク
+    * [バックエンドライブラリ](public/backend_package.md)
     * [Symfony](public/backend_framework_symfony.md)
     * [Laravel](public/backend_framework_laravel.md)
     * [テストフレームワークとテスト仕様書](public/backend_testing.md)
