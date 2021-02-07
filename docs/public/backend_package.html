@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>ライブラリ · 僕のドキュメントサイト【GitBook版】</title>
+        <title>バックエンドライブラリ · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -295,7 +295,7 @@
                 <span>
             
                     
-                    PHP｜ライブラリ／フレームワーク
+                    PHP｜パッケージ／フレームワーク
             
                 </span>
             
@@ -304,12 +304,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.1" data-path="backend_library.html">
+        <li class="chapter active" data-level="1.6.1" data-path="backend_package.html">
             
-                <a href="backend_library.html">
+                <a href="backend_package.html">
             
                     
-                    ライブラリ
+                    バックエンドライブラリ
             
                 </a>
             
@@ -1354,7 +1354,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >ライブラリ</a>
+        <a href=".." >バックエンドライブラリ</a>
     </h1>
 </div>
 
@@ -1369,58 +1369,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h1>
-<h2 id="01-composer&#x306B;&#x3088;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x7BA1;&#x7406;">01. composer&#x306B;&#x3088;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x7BA1;&#x7406;</h2>
-<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
-<h4 id="&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x8FFD;&#x52A0;">&#x30FB;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x8FFD;&#x52A0;</h4>
-<p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306F;&#x884C;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#x81EA;&#x5206;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> require <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:^x.x
-</code></pre>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x305F;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5168;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span>
-</code></pre>
-<h4 id="&#x30FB;&#x7279;&#x5B9A;&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x7279;&#x5B9A;&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>require&#x30BF;&#x30B0;&#x5185;&#x306E;&#x7279;&#x5B9A;&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>
-</code></pre>
-<h4 id="&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>Composer&#x306E;&#x914D;&#x5E03;&#x30B5;&#x30A4;&#x30C8;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>prefer-source</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x901F;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;dist&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x5BA3;&#x8A00;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-dist
-</code></pre>
-<h4 id="&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>GitHub&#x306E;Composer&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Composer&#x306E;&#x958B;&#x767A;&#x8005;&#x7528;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-source
-</code></pre>
-<h4 id="&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>php&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x7121;&#x3057;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4EFB;&#x610F;&#x306E;composer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;php&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token assign-left variable">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span>-1 <span class="token function">composer</span> update
-</code></pre>
-<h4 id="&#x30FB;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3057;&#x3064;&#x3064;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3057;&#x3064;&#x3064;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8868;&#x793A;&#x3057;&#x306A;&#x304C;&#x3089;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> update -vvv
-</code></pre>
-<h4 id="&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
-<p>require-dev&#x30BF;&#x30B0;&#x5185;&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306F;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --no-dev
-</code></pre>
-<h4 id="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x8868;&#x8A18;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;">&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x8868;&#x8A18;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30C7;&#x30FC;&#x30C8;</h4>
-<p>&#x5168;&#x3066;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x6700;&#x65B0;&#x7248;&#x306B;&#x66F4;&#x65B0;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">composer</span> update
-</code></pre>
-<h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;">&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;</h4>
-<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> clear-cache
-</code></pre>
-<p><br></p>
-<h3 id="composerjson&#x306E;&#x5B9F;&#x88C5;">composer.json&#x306E;&#x5B9F;&#x88C5;</h3>
+                                <h1 id="&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h1>
+<h2 id="01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;">01. composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
+<h3 id="composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;">composer.json&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;</h3>
 <h4 id="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;">&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;</h4>
 <pre class="language-"><code class="lang-json"><span class="token comment">// &#x500B;&#x4EBA;&#x7684;&#x306B;&#x4E00;&#x756A;&#x304A;&#x3059;&#x3059;&#x3081;</span>
 <span class="token comment">// &#x30AD;&#x30E3;&#x30EC;&#x30C3;&#x30C8;&#x8868;&#x8A18;</span>
 <span class="token punctuation">{</span>
   <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;2.0.0</span>
-    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=0.1.1 and &lt;0.2.0</span>
+    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;1.2.0</span>
+    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// &gt;=1.1.0 and &lt;1.2.0</span>
     <span class="token property">&quot;hoge&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.0.1&quot;</span>  <span class="token comment">// &gt;=0.0.1 and &lt;0.0.2</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -1428,8 +1386,8 @@
 <pre class="language-"><code class="lang-json"><span class="token comment">// &#x30C1;&#x30EB;&#x30C0;&#x8868;&#x8A18;</span>
 <span class="token punctuation">{</span>
   <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;1.2.0</span>
-    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// &gt;=1.1.0 and &lt;1.2.0</span>
+    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;2.0.0</span>
+    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// &gt;=1.1.0 and &lt;2.0.0</span>
     <span class="token property">&quot;hoge&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1&quot;</span>      <span class="token comment">// &gt;=1.1.0 and &lt;2.0.0</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -1462,18 +1420,66 @@
 <pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> dump-autoload
 </code></pre>
 <p><br></p>
-<h2 id="02-&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">02. &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h2>
+<h3 id="require">require</h3>
+<h4 id="&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;">&#x30FB;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;</h4>
+<p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306F;&#x884C;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#x81EA;&#x5206;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> require <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:^x.x
+</code></pre>
+<p><br></p>
+<h3 id="install">install</h3>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>&#x521D;&#x3081;&#x3066;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#xFF0C;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5168;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span>
+</code></pre>
+<h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;">&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
+<p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
+</code></pre>
+<h4 id="&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>require-dev&#x30BF;&#x30B0;&#x5185;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --no-dev
+</code></pre>
+<h4 id="&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>Composer&#x306E;&#x914D;&#x5E03;&#x30B5;&#x30A4;&#x30C8;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>prefer-source</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x901F;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;dist&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x5BA3;&#x8A00;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-dist
+</code></pre>
+<h4 id="&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>GitHub&#x306E;Composer&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Composer&#x306E;&#x958B;&#x767A;&#x8005;&#x7528;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-source
+</code></pre>
+<p><br></p>
+<h3 id="update">update</h3>
+<h4 id="&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;">&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5B9A;&#x7FA9;&#x3092;&#x3082;&#x3068;&#x306B;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x306A;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> update
+</code></pre>
+<h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;">&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
+<p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
+</code></pre>
+<h4 id="&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>php&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x7121;&#x3057;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4EFB;&#x610F;&#x306E;composer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;php&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x8A2D;&#x5B9A;&#x753B;&#x9762;&#x304B;&#x3089;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;CPU&#x3084;&#x30E1;&#x30E2;&#x30EA;&#x3092;&#x5897;&#x8A2D;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token assign-left variable">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span>-1 <span class="token function">composer</span> update -vvv
+</code></pre>
+<p><br></p>
+<h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;">&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> clear-cache
+</code></pre>
+<p><br></p>
+<h2 id="02-&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">02. &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h2>
 <h3 id="&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;autoloadphp&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;<code>autoload.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h3>
-<p>&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x304C;&#xFF0C;<code>vendor</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3073;&#x306B;&#xFF0C;&#x5404;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306F;&#x624B;&#x9593;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF08;<code>index.php</code>&#xFF09;&#x3042;&#x308B;&#x3044;&#x306F;<code>bootstrap.php</code>&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x304A;&#x304D;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x306A;&#x304F;&#x3066;&#x826F;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#xFF0C;<code>vendor</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3073;&#x306B;&#xFF0C;&#x5404;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306F;&#x624B;&#x9593;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF08;<code>index.php</code>&#xFF09;&#x3042;&#x308B;&#x3044;&#x306F;<code>bootstrap.php</code>&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x304A;&#x304D;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x306A;&#x304F;&#x3066;&#x826F;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 
 require_once realpath(__DIR__ . &apos;/vendor/autoload.php&apos;);
 </code></pre>
 <p><br></p>
-<h2 id="03-doctrine&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">03. Doctrine&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="03-doctrine&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">03. Doctrine&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="doctrine&#x3068;&#x306F;">Doctrine&#x3068;&#x306F;</h3>
-<p>RDB&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x7CFB;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x884C;&#x3046;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#xFF0E;&#x4ED6;&#x306E;&#x540C;&#x69D8;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x3057;&#x3066;&#xFF0C;PDO&#x304C;&#x3042;&#x308B;&#xFF0E;PDO&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;DB&#x306E;&#x64CD;&#x4F5C;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
+<p>RDB&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x7CFB;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x884C;&#x3046;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#xFF0E;&#x4ED6;&#x306E;&#x540C;&#x69D8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x3057;&#x3066;&#xFF0C;PDO&#x304C;&#x3042;&#x308B;&#xFF0E;PDO&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;DB&#x306E;&#x64CD;&#x4F5C;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
 <p><br></p>
 <h3 id="sql&#x306E;&#x5B9A;&#x7FA9;">SQL&#x306E;&#x5B9A;&#x7FA9;</h3>
 <h4 id="1-createquerybuilder&#x30E1;&#x30BD;&#x30C3;&#x30C9;">1. <code>createQueryBuilder</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
@@ -1631,7 +1637,7 @@ try{
 }
 </code></pre>
 <p><br></p>
-<h2 id="04-carbon&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">04. Carbon&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="04-carbon&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">04. Carbon&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="date&#x578B;">Date&#x578B;</h3>
 <p>&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4FBF;&#x5B9C;&#x4E0A;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3068;&#x306F;&#xFF0C;&#x5354;&#x5B9A;&#x4E16;&#x754C;&#x6642;(UTC)&#x3092;&#x57FA;&#x6E96;&#x306B;&#x3057;&#x305F;1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;&#x3092;&#x8868;&#x3057;&#x305F;&#x3082;&#x306E;&#xFF0E;</p>
 <table>
@@ -1735,9 +1741,9 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 $carbon = Carbon::parse(&apos;2019-07-07 19:07:07&apos;)
 </code></pre>
 <p><br></p>
-<h2 id="05-pinq&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">05. Pinq&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="05-pinq&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">05. Pinq&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="pinq&#x3068;&#x306F;&#xFF1A;php-integrated-query">Pinq&#x3068;&#x306F;&#xFF1A;Php Integrated Query</h3>
-<p>&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30A8;&#x30EA;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x4ED6;&#x306E;&#x540C;&#x69D8;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x3057;&#x3066;&#xFF0C;Linq&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30AF;&#x30A8;&#x30EA;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x4ED6;&#x306E;&#x540C;&#x69D8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x3057;&#x3066;&#xFF0C;Linq&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="traversablefrom&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>Traversable::from</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>SQL&#x306E;<code>SELECT</code>&#x3084;<code>WHERE</code>&#x3068;&#x3044;&#x3063;&#x305F;&#x5358;&#x8A9E;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;<code>foreach</code>&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5404;&#x8981;&#x7D20;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3048;&#x308B;&#xFF0E;</p>
@@ -1766,9 +1772,9 @@ class Example
 }
 </code></pre>
 <p><br></p>
-<h2 id="06-guzzle&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">06. Guzzle&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
-<h3 id="guzzle&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x306F;">Guzzle&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x306F;</h3>
-<p>&#x901A;&#x5E38;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x9001;&#x53D7;&#x4FE1;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;Postman&#x3084;curl&#x95A2;&#x6570;&#x306A;&#x3069;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x884C;&#x3046;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;Guzzle&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;Client&#x3092;&#x4F7F;&#x3048;&#x3070;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x304B;&#x3089;&#x4ED6;&#x30B5;&#x30FC;&#x30D0;&#xFF08;&#x5916;&#x90E8;&#x306E;API&#x306A;&#x3069;&#xFF09;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x9001;&#x53D7;&#x4FE1;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h2 id="06-guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">06. Guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
+<h3 id="guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;">Guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;</h3>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x9001;&#x53D7;&#x4FE1;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;Postman&#x3084;curl&#x95A2;&#x6570;&#x306A;&#x3069;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x884C;&#x3046;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;Guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;Client&#x3092;&#x4F7F;&#x3048;&#x3070;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x304B;&#x3089;&#x4ED6;&#x30B5;&#x30FC;&#x30D0;&#xFF08;&#x5916;&#x90E8;&#x306E;API&#x306A;&#x3069;&#xFF09;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x9001;&#x53D7;&#x4FE1;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="client&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;">Client&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</h3>
 <h4 id="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;get&#x9001;&#x4FE1;">&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;GET&#x9001;&#x4FE1;</h4>
@@ -1793,9 +1799,9 @@ $response = $client-&gt;request(&quot;POST&quot;, <span class="token tag"><span 
 $body = json_decode($response-&gt;getBody(), true);
 </code></pre>
 <p><br></p>
-<h2 id="07-knpsnappy&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">07. Knp/Snappy&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="07-knpsnappy&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">07. Knp/Snappy&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="knpsnappy&#x3068;&#x306F;">Knp/Snappy&#x3068;&#x306F;</h3>
-<p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x307E;&#x305F;&#x306F;&#x6307;&#x5B9A;&#x3057;&#x305F;URL&#x306E;html&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#xFF0C;PDF&#x3084;&#x753B;&#x50CF;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#xFF0E;</p>
+<p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x307E;&#x305F;&#x306F;&#x6307;&#x5B9A;&#x3057;&#x305F;URL&#x306E;html&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#xFF0C;PDF&#x3084;&#x753B;&#x50CF;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#xFF0E;</p>
 <h3 id="&#x30FB;generatefromhtml&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>generateFromHtml</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>html&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;PDF&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -1806,7 +1812,7 @@ $snappy = new Pdf(&apos;/usr/local/bin/wkhtmltopdf&apos;);
 $snappy-&gt;generateFromHtml(&apos;example.html&apos;, &apos;.../example.pdf&apos;);
 </code></pre>
 <p><br></p>
-<h2 id="08-respectvalidation&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;">08. Respect/Validation&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;</h2>
+<h2 id="08-respectvalidation&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">08. Respect/Validation&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="respectvalidation&#x3068;&#x306F;">Respect/Validation&#x3068;&#x306F;</h3>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x30B5;&#x30A4;&#x30C9;&#x5074;&#x3067;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x95A2;&#x3057;&#x3066;&#x306F;&#xFF0C;JavaScript&#x3068;PHP&#x306E;&#x4E21;&#x65B9;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
@@ -1852,7 +1858,7 @@ $snappy-&gt;generateFromHtml(&apos;example.html&apos;, &apos;.../example.pdf&apo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ライブラリ","level":"1.6.1","depth":2,"next":{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"previous":{"title":"PHP｜ライブラリ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"ライブラリ","level":"1.6.1","depth":2,"path":"public/backend_library.md","ref":"public/backend_library.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_library.md","mtime":"2021-01-25T17:45:25.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-02T01:47:09.986Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"バックエンドライブラリ","level":"1.6.1","depth":2,"next":{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"previous":{"title":"PHP｜パッケージ／フレームワーク","level":"1.6","depth":1,"ref":"","articles":[{"title":"バックエンドライブラリ","level":"1.6.1","depth":2,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},{"title":"Symfony","level":"1.6.2","depth":2,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"Laravel","level":"1.6.3","depth":2,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"テストフレームワークとテスト仕様書","level":"1.6.4","depth":2,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_package.md","mtime":"2021-02-06T16:53:37.835Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T18:57:41.021Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

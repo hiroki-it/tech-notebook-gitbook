@@ -297,7 +297,7 @@
                 <span>
             
                     
-                    PHP｜ライブラリ／フレームワーク
+                    PHP｜パッケージ／フレームワーク
             
                 </span>
             
@@ -306,12 +306,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="backend_library.html">
+        <li class="chapter " data-level="1.6.1" data-path="backend_package.html">
             
-                <a href="backend_library.html">
+                <a href="backend_package.html">
             
                     
-                    ライブラリ
+                    バックエンドライブラリ
             
                 </a>
             
@@ -1916,6 +1916,45 @@ class SubExample extends Example
 <span class="token variable">$exmaple</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$example</span><span class="token operator">-&gt;</span><span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Hello World</span>
 </code></pre>
+<h4 id="&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7981;&#x6B62;&#x3059;&#x308B;trait">&#x30FB;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7981;&#x6B62;&#x3059;&#x308B;Trait</h4>
+<p>&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x591A;&#x304F;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x304C;&#x60AA;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x5404;&#x30AF;&#x30E9;&#x30B9;&#x3067;trait&#x3092;&#x4F7F;&#x7528;&#x3057;&#xFF0C;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x958B;&#x767A;&#x8005;&#x5411;&#x3051;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3055;&#x305B;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30B2;&#x30C3;&#x30BF;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x3092;&#x7981;&#x6B62;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">declare</span><span class="token punctuation">(</span>strict_types<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Traits</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * &#x4F7F;&#x7528;&#x5236;&#x9650;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30C8;&#x30EC;&#x30A4;&#x30C8;
+ */</span>
+<span class="token keyword">trait</span> <span class="token class-name">UnsupportedMagicMethodTrait</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * &#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306E;&#x89B3;&#x70B9;&#x304B;&#x3089;&#xFF0C;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30B2;&#x30C3;&#x30BF;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4F7F;&#x7528;&#x3092;&#x5236;&#x9650;&#x3057;&#x307E;&#x3059;&#xFF0E;
+     *
+     * @param $name
+     * @throws \Exception
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__get</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;This method is not supported&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * &#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306E;&#x89B3;&#x70B9;&#x304B;&#x3089;&#xFF0C;&#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4F7F;&#x7528;&#x3092;&#x5236;&#x9650;&#x3057;&#x307E;&#x3059;&#xFF0E;
+     *
+     * @param $name
+     * @param $value
+     * @throws \Exception
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__set</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;This method is not supported&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p><br></p>
 <h2 id="04-03-&#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">04-03. &#x5916;&#x90E8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h2>
 <h3 id="requireonce&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;"><code>require_once</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#xFF0C;&#x975E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h3>
@@ -2286,7 +2325,7 @@ $sample = new Sample($container);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"クラスベースのプログラミング（1）","level":"1.3.2","depth":2,"next":{"title":"クラスベースのプログラミング（2）","level":"1.3.3","depth":2,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"オブジェクト指向分析／設計／プログラミング","level":"1.3.1","depth":2,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2021-01-31T17:00:59.970Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-02T01:47:09.986Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"クラスベースのプログラミング（1）","level":"1.3.2","depth":2,"next":{"title":"クラスベースのプログラミング（2）","level":"1.3.3","depth":2,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"オブジェクト指向分析／設計／プログラミング","level":"1.3.1","depth":2,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2021-02-03T17:54:54.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-07T18:57:41.021Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
