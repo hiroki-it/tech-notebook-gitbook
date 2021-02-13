@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Infrastructure as Code · 僕のドキュメントサイト【GitBook版】</title>
+        <title>フロントエンドパッケージ · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="infrastructure_terraform.html" />
+    <link rel="next" href="frontend_framework_vuejs.html" />
     
     
 
@@ -639,7 +639,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.4.1" data-path="frontend_package.html">
+        <li class="chapter active" data-level="1.5.4.1" data-path="frontend_package.html">
             
                 <a href="frontend_package.html">
             
@@ -1112,7 +1112,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.11.1" data-path="infrastructure_as_code.html">
+        <li class="chapter " data-level="1.11.1" data-path="infrastructure_as_code.html">
             
                 <a href="infrastructure_as_code.html">
             
@@ -1475,7 +1475,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Infrastructure as Code</a>
+        <a href=".." >フロントエンドパッケージ</a>
     </h1>
 </div>
 
@@ -1490,108 +1490,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="infrastructure-as-code">Infrastructure as Code</h1>
-<h2 id="01-&#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;&#x4EEE;&#x60F3;&#x30DE;&#x30B7;&#x30F3;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;">01. &#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;(&#x4EEE;&#x60F3;&#x30DE;&#x30B7;&#x30F3;)&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;</h2>
-<h3 id="&#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x69CB;&#x6210;&#x7BA1;&#x7406;">&#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x69CB;&#x6210;&#x7BA1;&#x7406;</h3>
-<h4 id="&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;">&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x30C4;&#x30FC;&#x30EB;&#x540D;</th>
-<th>&#x5BFE;&#x8C61;&#x306E;Provider</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ansible</td>
-<td>&#x8981;&#x52C9;&#x5F37;</td>
-</tr>
-<tr>
-<td>Puppet</td>
-<td>&#x8981;&#x52C9;&#x5F37;</td>
-</tr>
-<tr>
-<td>Chef</td>
-<td>&#x8981;&#x52C9;&#x5F37;</td>
-</tr>
-</tbody>
-</table>
-<h4 id="&#x30FB;ansible">&#x30FB;Ansible</h4>
-<p>Ansible&#x3067;&#x306F;&#xFF0C;yml&#x306E;&#x6587;&#x6CD5;&#x3092;&#x7528;&#x3044;&#x3066;&#x95A2;&#x6570;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<table>
-<thead>
-<tr>
-<th>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</th>
-<th>&#x5F79;&#x5272;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>playbook.yml</td>
-<td>&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x624B;&#x9806;</td>
-</tr>
-<tr>
-<td>inventory/*</td>
-<td>&#x53CD;&#x6620;&#x5148;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x60C5;&#x5831;</td>
-</tr>
-<tr>
-<td>group_vars/*</td>
-<td>&#x8907;&#x6570;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8A2D;&#x5B9A;</td>
-</tr>
-<tr>
-<td>host_vars/*</td>
-<td>&#x5358;&#x4E00;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x8A2D;&#x5B9A;</td>
-</tr>
-</tbody>
-</table>
+                                <h1 id="&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h1>
+<h2 id="01-npm&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;">01. npm&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
+<h2 id="packagejson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;"><code>package.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;</h2>
+<h4 id="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;">&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;</h4>
+<h3 id="install">install</h3>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">npm</span> <span class="token function">install</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306E;&#x5B9F;&#x884C;&#x6A29;&#x9650;&#x3092;&#x7121;&#x8996;&#x3059;&#x308B;">&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306E;&#x5B9F;&#x884C;&#x6A29;&#x9650;&#x3092;&#x7121;&#x8996;&#x3059;&#x308B;</h4>
+<p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5B9F;&#x884C;&#x6A29;&#x9650;&#x4E0D;&#x8DB3;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304C;&#x505C;&#x6B62;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x7121;&#x8996;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">npm</span> <span class="token function">install</span> --force
+</code></pre>
 <p><br></p>
-<h2 id="02-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;">02. &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;</h2>
-<h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x6210;&#x7BA1;&#x7406;">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x6210;&#x7BA1;&#x7406;</h3>
-<h4 id="&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;">&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x540D;&#x524D;</th>
-<th>&#x5BFE;&#x8C61;&#x306E;Provider</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dockerfile</td>
-<td>Docker</td>
-</tr>
-<tr>
-<td>Ansible Container</td>
-<td>&#x8981;&#x52C9;&#x5F37;</td>
-</tr>
-</tbody>
-</table>
+<h3 id="update">update</h3>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5B9A;&#x7FA9;&#x3092;&#x3082;&#x3068;&#x306B;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x306A;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">npm</span> update
+</code></pre>
 <p><br></p>
-<h2 id="03-&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;">03. &#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x306E;&#x30B3;&#x30FC;&#x30C9;&#x5316;</h2>
-<h3 id="&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;">&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
-<h4 id="&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;">&#x30FB;&#x30B3;&#x30FC;&#x30C9;&#x5316;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x540D;&#x524D;</th>
-<th>&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30A6;&#x30C9;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Terraform</td>
-<td>&#x3044;&#x308D;&#x3044;&#x308D;</td>
-</tr>
-<tr>
-<td>AWS CloudFormation</td>
-<td>AWS</td>
-</tr>
-<tr>
-<td>Azure Resource Manager</td>
-<td>Azure</td>
-</tr>
-</tbody>
-</table>
+<h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
+<p>&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh">$ <span class="token function">npm</span> run <span class="token operator">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x3092;<code>scripts</code>&#x30AD;&#x30FC;&#x4E0B;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#x518D;&#x5EA6;<code>npm run <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span></code>&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;&lt;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&gt;&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&lt;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&gt;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run development&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;development&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;watch&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run development -- --watch&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;watch-poll&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run watch -- --watch-poll&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;hot&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;prod&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run production&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;production&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1620,7 +1556,7 @@
             
                 
                 
-                <a href="infrastructure_terraform.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Terraform">
+                <a href="frontend_framework_vuejs.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Vue.js">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1631,7 +1567,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Infrastructure as Code","level":"1.11.1","depth":2,"next":{"title":"Terraform","level":"1.11.2","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]},"previous":{"title":"IaC","level":"1.11","depth":1,"ref":"","articles":[{"title":"Infrastructure as Code","level":"1.11.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},{"title":"Terraform","level":"1.11.2","depth":2,"path":"public/infrastructure_terraform.md","ref":"public/infrastructure_terraform.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code.md","mtime":"2020-10-22T16:24:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-13T14:22:13.623Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"フロントエンドパッケージ","level":"1.5.4.1","depth":3,"next":{"title":"Vue.js","level":"1.5.4.2","depth":3,"path":"public/frontend_framework_vuejs.md","ref":"public/frontend_framework_vuejs.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.5.4","depth":2,"ref":"","articles":[{"title":"フロントエンドパッケージ","level":"1.5.4.1","depth":3,"path":"public/frontend_package.md","ref":"public/frontend_package.md","articles":[]},{"title":"Vue.js","level":"1.5.4.2","depth":3,"path":"public/frontend_framework_vuejs.md","ref":"public/frontend_framework_vuejs.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_package.md","mtime":"2021-02-13T14:00:14.568Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-13T14:22:13.623Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
