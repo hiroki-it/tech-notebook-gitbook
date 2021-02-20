@@ -5,10 +5,12 @@
     
 * 自己紹介
     * [▶ ︎長谷川広樹と申します](public/self_introduction.md)
-* PHP
-  * アーキテクチャ
+* アーキテクチャ
     * [▶ ︎ドメイン駆動設計](public/backend_architecture_domain_driven_design.md)
     * [▶ ︎CQRS設計](public/backend_architecture_cqrs.md)
+    * [▶ ︎マイクロサービス](public/frontend_and_backend_architecture_microservice.md)
+    * [▶ ︎フロントエンドアーキテクチャ](public/frontend_architecture.md)
+* PHP
   * クラスベースオブジェクト指向
     * [▶ ︎オブジェクト指向分析／設計／プログラミング](public/backend_object_orientation_analysis_design_programming.md)
     * [▶ ︎クラスベースのプログラミング（1）](public/backend_object_orientation_class.md)
@@ -29,8 +31,6 @@
     * [▶ ︎認証と認可](public/frontend_and_backend_authentication_authorization.md)
     * [▶ ︎JSON](public/frontend_and_backend_json.md)
 * JavaScript
-  * アーキテクチャ
-    * [▶ ︎フロントエンドアーキテクチャ](public/frontend_architecture.md)
   * プロトタイプベースオブジェクト指向
     * [▶ ︎プロトタイプベースのプログラミング（1）](public/frontend_object_orientation_prototype.md)
     * [▶ ︎プロトタイプベースのプログラミング（2）](public/frontend_object_orientation_method_data.md)
@@ -83,10 +83,10 @@
     * [▶ ︎組み込み機器](public/hardware_embedded_system.md)
 * 開発フロー
     * [▶ ︎システム開発フローの全体像](public/management_development_flow.md)
-* git
+* Git
     * [▶ ︎Gitコマンド](public/git.md)
 * アルゴリズム
     * [▶ ︎アルゴリズムのロジック](public/backend_logic_algorithm.md)
-* r言語
+* R言語
     * [▶ ︎統計解析](public/statistic_analysis.md)
 
