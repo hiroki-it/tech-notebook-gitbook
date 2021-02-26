@@ -963,7 +963,7 @@ class ResultCacher
 
 <br>
 
-## 02-03. 無名関数
+## 02-03. Closure（無名関数）
 
 特定の処理が，```private```メソッドとして切り分けるほどでもないが，他の部分と明示的に区分けたい時は，無名関数を用いるとよい．
 
@@ -1170,8 +1170,7 @@ $example = new Example;
 // 親メソッドのスコープで定義されている変数を引数として渡す．（普段よくやっている値渡しと同じ）
 $example->higherOrder($parentVar, function () use ($parentVar) {
     return $parentVar . "の出力に成功しました．";
-}
-);
+});
 
 // 出力結果
 // 親メソッドのスコープの変数の出力に成功しました．
