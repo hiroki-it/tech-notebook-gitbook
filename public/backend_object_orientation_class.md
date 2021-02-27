@@ -151,6 +151,7 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 ```PHP
 <?php
+    
 class Tire {}
 ```
 
@@ -158,6 +159,7 @@ class Tire {}
 
 ```PHP
 <?php
+    
 //CarXクラス定義
 class CarX
 {
@@ -185,6 +187,7 @@ class CarX
 
 ```PHP
 <?php
+    
 //CarYクラス定義
 class CarY
 {
@@ -212,6 +215,7 @@ class CarY
 
 ```PHP
 <?php
+    
 //Tireクラスをインスタンス化
 $tire1 = new Tire();
 $tire2 = new Tire();
@@ -239,6 +243,7 @@ $suv = new CarY($tire1, $tire2, $tire5, $tire6);
 
 ```PHP
 <?php
+    
 //Lockクラス定義
 class Lock {}
 ```
@@ -247,6 +252,7 @@ class Lock {}
 
 ```PHP
 <?php
+    
 //Carクラスを定義
 class Car
 {
@@ -285,6 +291,7 @@ $car = new Car();
 
 ```PHP
 <?php
+    
 // 通常クラス
 class Goods
 {
@@ -326,6 +333,7 @@ class Goods
 
 ```PHP
 <?php
+    
 // 通常クラス
 class GoodsWithTax extends Goods
 {
@@ -380,6 +388,7 @@ class GoodsWithTax extends Goods
 
 ```PHP
 <?php
+    
 // 抽象クラス．型として提供したいものを定義する．
 abstract class ShainManagement
 {
@@ -430,6 +439,7 @@ abstract class ShainManagement
 
 ```PHP
 <?php
+    
 // 子クラス
 class EnginnerShainManagement extends ShainManagement
 {
@@ -473,35 +483,35 @@ class EnginnerShainManagement extends ShainManagement
 
 ```PHP
 <?php
-// コミュニケーションのメソッドの実装を強制するインターフェース
-interface Communication
+    
+interface Animal
 {
      // インターフェイスでは，実装を伴うメソッドやデータの宣言はできない
-     public function talk();
-     public function touch();
-     public function gesture();
+     public function eat();
+     public function sleep();
+     public function mating();
 }
 ```
 
 ```PHP
 <?php
-// 正常に機能するように，コミュニケーションのメソッドの実装を強制する．
-class Human implements Communication
+
+class Mammal implements Animal
 {
-    // メソッドの処理内容を定義しなければならない．
-     public function talk()
+    // 実装クラスが正常に機能するために最低限必要なメソッドの実装を強制する．
+     public function eat()
      {
-          // 話す
+          // 食べる
      }
      
-     public function touch()
+     public function sleep()
      {
-          // 触る
+          // 眠る
      }
      
-     public function gesture()
+     public function mating()
      {
-          // 身振り手振り
+          // 交尾する
      }
 }
 ```
