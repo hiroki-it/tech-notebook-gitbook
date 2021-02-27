@@ -47,7 +47,7 @@
     * [▶ ︎データベースの操作](public/backend_database_operation.md)
     * [▶ ︎SQL](public/backend_database_mysql.md)
 * Go
-    * [▶ ︎超入門](public/infrastructure_go.md)
+    * [▶ 文法](public/infrastructure_go.md)
 * ネットワーク
     * 構造
       * [▶ ︎ネットワーク構造](public/infrastructure_network_internet.md)
