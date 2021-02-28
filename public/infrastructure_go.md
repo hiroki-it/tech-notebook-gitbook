@@ -2,7 +2,33 @@
 
 ## Goとは
 
+### 特徴
+
 手続き型言語．構造体と関数を組み合わせて処理を実装する．言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現することもできる．
+
+<br>
+
+### GOPATH
+
+#### ・構造
+
+```
+$GOPATH
+│
+├── bin（ビルドされたバイナリファイル）
+│   └── fuga
+├── pkg（ビルドされたパッケージ群）
+│   └── darwin_amd64
+│       └── hoge.go
+│
+└── src
+    ├── dir_a（mainパッケージ）
+    │   └── main.go
+    └── dir_b（自作パッケージ）
+        └── hoge.go
+```
+
+
 
 <br>
 
@@ -14,11 +40,11 @@
 
 基本型には，以下のデータ型が存在している．
 
-| データ型 | 宣言方法   | 初期値             |
-| -------- | ---------- | ------------------ |
-| 数値     | int，float | ```0```            |
-| 文字列   | string     | ```""```（空文字） |
-| 真偽値   | boolean    | ```false```        |
+| データ型 | 表記                   | 初期値             |
+| -------- | ---------------------- | ------------------ |
+| 数値     | ```int```，```float``` | ```0```            |
+| 文字列   | ```string```           | ```""```（空文字） |
+| 真偽値   | ```boolean```          | ```false```        |
 
 **＊実装例＊**
 
@@ -56,17 +82,44 @@ type MyAppWriter io.Writer
 
 #### ・合成型に属するデータ型
 
-| データ型 | 宣言方法 | 初期値 |
-| -------- | -------- | ------ |
-| 構造体   | struct   |        |
-| 配列     |          |        |
+| データ型 | 表記         | 初期値 |
+| -------- | ------------ | ------ |
+| 構造体   | ```struct``` |        |
+| 配列     | ```[n]```    |        |
+
+#### ・構造体
+
+他の言語でいう『データのみを保持するオブジェクト』に相当する．
 
 **＊実装例＊**
+
+構造体を定義し，変数に代入する．
 
 ```go
 var person struct {
     Name string
 }
+```
+
+#### ・配列
+
+他の言語でいう『固定長配列』に相当する．
+
+**＊実装例＊**
+
+配列を定義し，変数に代入する．
+
+```go
+// 定義と代入を同時に行う．また，要素数を省略できる．
+names := [...]string {"Hiroki", "Gopher"}
+
+// 定義と代入を同時に行う．また，要素数の定義が必要．
+var names[2] string = [2]string {"Hiroki", "Gopher"}
+
+// 定義と代入を別々に行う．また，要素数の定義が必要．
+var names[2] string
+names[0] = "Hiroki"
+names[1] = "Gopher"
 ```
 
 #### ・独自の合成型
@@ -83,84 +136,31 @@ type Person struct {
 }
 ```
 
-#### ・構造体の初期化
-
-構造体を初期化する．いくつか記法があり，タグ付きリテラルが推奨される．まずは，タグ付きリテラル表記．
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-type Person struct {
-    Name string
-}
-
-func main () {
-    // タグ付きリテラル表記
-    person := Person {Name: "Hiroki"}
-    
-    fmt.Println(person.Name)
-}
-```
-
-二つ目に，タグ無しリテラル表記がある．
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-type Person struct {
-    Name string
-}
-
-func main () {
-    // タグ無しリテラル表記
-    person := Person {"Hiroki"}
-    
-    fmt.Println(person.Name)
-}
-```
-
-三つ目に，```new```関数とフィールド代入による初期化がある．```new```関数は，構造体以外のデータ型でも使用できるが，あまり使わない．
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-type Person struct {
-    Name string
-}
-
-func main(){
-    // new関数を使用する
-    person := new(Person)
-    
-    // フィールドに代入する
-    person.Name = "Hiroki"
-    
-    fmt.Println(person.Name)
-}
-```
-
 <br>
 
 ### 参照型
 
 #### ・参照型に属するデータ型
 
-| データ型 | 宣言合法 |
-| -------- | -------- |
-| ポインタ |          |
-| スライス |          |
-| マップ   |          |
-| チャネル |          |
-| 関数     |          |
+| データ型 | 表記     | 初期値                 |
+| -------- | -------- | ---------------------- |
+| ポインタ | ```*```  |                        |
+| スライス | ```[]``` | ```nil```（要素数：0） |
+| マップ   |          |                        |
+| チャネル |          |                        |
+| 関数     |          |                        |
+
+#### ・スライス
+
+他の言語でいう『可変長配列』に相当する．
+
+```go
+// 定義と代入を同時に行う．
+names := []string {"Hiroki", "Gopher"}
+
+// 定義と代入を別々に行う．
+var names []string
+```
 
 <br>
 
@@ -274,6 +274,101 @@ func main(){
     var x interface{}
     
     fmt.Printf("%#v", x) // <nil>
+}
+```
+
+### 構造体の機能
+
+#### ・初期化
+
+すでに値が代入されている構造体を初期化する場合，いくつか記法がある．その中では，タグ付きリテラルが推奨される．
+
+**＊実装例＊**
+
+まずは，タグ付きリテラル表記．
+
+```go
+package main
+import "fmt"
+
+type Person struct {
+    Name string
+}
+
+func main () {
+    // タグ付きリテラル表記
+    person := Person {Name: "Hiroki"}
+    
+    fmt.Println(person.Name)
+}
+```
+
+二つ目に，タグ無しリテラル表記がある．
+
+```go
+package main
+import "fmt"
+
+type Person struct {
+    Name string
+}
+
+func main () {
+    // タグ無しリテラル表記
+    person := Person {"Hiroki"}
+    
+    fmt.Println(person.Name)
+}
+```
+
+三つ目に，```new```関数とフィールド代入による初期化がある．```new```関数は，構造体以外のデータ型でも使用できるが，あまり使わない．
+
+```go
+package main
+import "fmt"
+
+type Person struct {
+    Name string
+}
+
+func main(){
+    // new関数を使用する
+    person := new(Person)
+    
+    // フィールドに代入する
+    person.Name = "Hiroki"
+    
+    fmt.Println(person.Name)
+}
+```
+
+#### ・JSONとのマッピング
+
+構造体をJSONにパースする時，事前に構造体の各フィールドと，JSONのキー名を，マッピングしておくことができる．
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "encoding/json"
+    "fmt"
+)
+
+type Person struct {
+    Name string `json:"Name"`
+}
+
+func main () {
+    person := Person {Name: "Hiroki"}
+    
+    json, err := json.Marshal(person)
+    if err != nil {
+        fmt.Println("JSONエンコードに失敗しました。")
+    }
+ 
+    // エンコード結果を出力
+    fmt.Println(string(json))
 }
 ```
 
@@ -557,11 +652,174 @@ var (
 
 <br>
 
-## 例外処理とロギング
+## エラーキャッチ，エラー返却，ロギング
 
+### エラーキャッチとエラー返却
 
+#### ・例外スローのある言語の場合
 
+例外スローの意義は，以下の参考にせよ．
 
+参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_logic_validation.html
+
+#### ・Goには例外スローが無い
+
+エラーをキャッチした場合に，例外をスローするべきであるが，Goには例外が無い．
+
+<br>
+
+### 返却されるエラー
+
+#### ・標準エラー
+
+Goでは複数の値を返却できるため，多くの関数では標準で，最後にerrorインターフェースが返却されるようになっている．これから，エラーメッセージを取り出せる．
+
+```go
+type error interface {
+    Error() string
+}
+```
+
+**＊実装例＊**
+
+osパッケージの```Open```メソッドからerrorインターフェースが返却される．これから，エラーメッセージを取り出し，標準エラー出力に出力する．
+
+```go
+package main
+import (
+    "log"
+    "os"
+)
+
+func main() {
+    // 処理結果とerrorインターフェースが返却される．
+    file, err := os.Open("filename.ext")
+    
+    if err != nil {
+        // エラーの内容を出力する．
+        log.Printf("ERROR: %+v\n", err)
+    }
+}
+```
+
+#### ・独自エラー
+
+errorsパッケージの```New```メソッドにエラーメッセージを設定し，エラーをキャッチできた時に，設定したエラーを返却するようにする．
+
+参考：https://golang.org/pkg/errors/#New
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "errors"
+    "log"
+    "os"
+)
+
+func throwErrorsNew() error {
+    return errors.New("<エラーメッセージ>")
+}
+
+func main() {
+    file, err := os.Open("filename.ext")
+    
+    if err != nil {
+        // 独自エラーメッセージを設定する．
+        myErr := throwErrorsNew()
+        log.Printf("ERROR: %+v\n", myErr)
+    }
+}
+```
+
+他には，```Errorf```メソッドでも独自エラーを作成できる．事前に定義したフォーマットを元にエラーメッセージを設定する．
+
+参考：https://golang.org/pkg/fmt/#Errorf
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "errors"
+    "log"
+    "os"
+)
+
+func throwErrorf() error {
+    return fmt.Errorf("%s %s", x, y)
+}
+
+func main() {
+    file, err := os.Open("filename.ext")
+    
+    if err != nil {
+        // 独自エラーメッセージを設定する．
+        myErr := throwErrorf()
+        log.Printf("ERROR: %+v\n", myErr)
+    }
+}
+```
+
+<br>
+
+### エラーキャッチ
+
+#### ・nilの比較検証
+
+関数から返却されたerrインターフェースが，```nil```出なかった場合に，エラーであると見なすようにする．
+
+```go
+if err != nil {
+    // 何らかの処理
+}
+```
+
+<br>
+
+### ロギング
+
+#### ・logパッケージ
+
+Goには標準で，ロギング用パッケージが用意されている．ただし，機能が乏しいので，外部パッケージ（例：logrus）も推奨である．
+
+参考：
+
+- https://pkg.go.dev/log
+- https://github.com/sirupsen/logrus
+
+#### ・接尾辞```Print```メソッド
+
+引数に渡されたエラーを標準出力に出力する．
+
+```go
+if err != nil {
+    log.Printf("ERROR: %+v\n", err)
+}
+```
+
+#### ・接尾辞```Fatal```メソッド
+
+引数に渡されたエラーを標準出力に出力し，```os.Exit(1)```を実行して処理を停止する．
+
+```go
+if err != nil {
+    // 内部でos.Exit(1)を実行する．
+    log.Fatalf("ERROR: %+v\n", err)
+}
+```
+
+#### ・接尾辞```Panic```メソッド
+
+引数に渡されたエラーを標準出力に出力し，予期せぬエラーが起きたと見なして```panic```メソッドを実行する．ちなみに，```panic```メソッドによって，エラーメッセージ出力，スタックトレース出力，処理停止が行われる．
+
+```go
+if err != nil {
+    // panicメソッドを実行する．
+    log.Panicf("ERROR: %+v\n", err)
+}
+```
 
 <br>
 
