@@ -38,7 +38,7 @@ $GOPATH
 
 #### ・基本型に属するデータ型
 
-基本型には，以下のデータ型が存在している．
+各データ型で，値が代入されていない時，初期値が代入されている．
 
 | データ型 | 表記                   | 初期値             |
 | -------- | ---------------------- | ------------------ |
@@ -82,6 +82,8 @@ type MyAppWriter io.Writer
 
 #### ・合成型に属するデータ型
 
+各データ型で，値が代入されていない時，初期値が代入されている．
+
 | データ型 | 表記         | 初期値 |
 | -------- | ------------ | ------ |
 | 構造体   | ```struct``` |        |
@@ -110,7 +112,7 @@ var person struct {
 配列を定義し，変数に代入する．
 
 ```go
-// 定義と代入を同時に行う．また，要素数を省略できる．
+// 定義と代入を同時に行う．また，型推論と要素数省略を行う．
 names := [...]string {"Hiroki", "Gopher"}
 
 // 定義と代入を同時に行う．また，要素数の定義が必要．
@@ -142,24 +144,66 @@ type Person struct {
 
 #### ・参照型に属するデータ型
 
-| データ型 | 表記     | 初期値                 |
-| -------- | -------- | ---------------------- |
-| ポインタ | ```*```  |                        |
-| スライス | ```[]``` | ```nil```（要素数：0） |
-| マップ   |          |                        |
-| チャネル |          |                        |
-| 関数     |          |                        |
+各データ型で，値が代入されていない時，初期値が代入されている．
+
+| データ型 | 表記     | 初期値                   |
+| -------- | -------- | ------------------------ |
+| ポインタ | ```*```  | ```(nil)```              |
+| スライス | ```[]``` | ```<nil>```（要素数は0） |
+| マップ   |          |                          |
+| チャネル |          |                          |
+| 関数     |          |                          |
+
+#### ・ポインタ
+
+メモリアドレスを代入できるデータ型のこと．定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを抽出できる．抽出したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくてよい．
+
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    x := "a"
+    
+    // ポインタ型の変数を定義代入
+    var p *string = &x
+    // p := &x と同じ
+    
+    // メモリアドレスを抽出しない場合
+    fmt.Printf("%#v\n", x) // "a"
+    
+    // メモリアドレスを抽出する場合
+    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+}
+```
 
 #### ・スライス
 
 他の言語でいう『可変長配列』に相当する．
 
+**＊実装例＊**
+
 ```go
 // 定義と代入を同時に行う．
-names := []string {"Hiroki", "Gopher"}
+names := []string{"Hiroki", "Gopher"}
 
-// 定義と代入を別々に行う．
-var names []string
+// 定義と代入を同時に行う．また，型推論を行う．
+var names []string = []string{"Hiroki", "Gopher"}
+```
+
+スライスを使用して，バイト配列を定義できる．
+
+```go
+package main
+import "fmt"
+
+func main(){
+    x := []byte("abc")
+    
+    fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
+}
 ```
 
 <br>
@@ -260,11 +304,36 @@ cannot use insect (type Insect) as type Animal in assignment:
 Insect does not implement Animal (missing Eat method)
 ```
 
+<br>
 
+### nil
 
-####  ・nil
+#### ・ポインタ型の場合
 
-インターフェース型の初期値のこと．
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    
+    x := "x"
+    
+    // ポインタ型の定義のみ
+    var p1 *string
+    
+    // ポインタ型の変数を定義代入
+    var p2 *string = &x
+
+    fmt.Printf("%#v\n", p1) // (*string)(nil)
+    fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
+}
+```
+
+####  ・インターフェース型の場合
+
+**＊実装例＊**
 
 ```go
 package main
@@ -273,9 +342,11 @@ import "fmt"
 func main(){
     var x interface{}
     
-    fmt.Printf("%#v", x) // <nil>
+    fmt.Printf("%#v\n", x) // <nil>
 }
 ```
+
+<br>
 
 ### 構造体の機能
 
@@ -295,11 +366,11 @@ type Person struct {
     Name string
 }
 
-func main () {
+func main() {
     // タグ付きリテラル表記
-    person := Person {Name: "Hiroki"}
+    person := Person{Name: "Hiroki"}
     
-    fmt.Println(person.Name)
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -313,11 +384,11 @@ type Person struct {
     Name string
 }
 
-func main () {
+func main() {
     // タグ無しリテラル表記
-    person := Person {"Hiroki"}
+    person := Person{"Hiroki"}
     
-    fmt.Println(person.Name)
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -338,7 +409,7 @@ func main(){
     // フィールドに代入する
     person.Name = "Hiroki"
     
-    fmt.Println(person.Name)
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -353,22 +424,23 @@ package main
 import (
     "encoding/json"
     "fmt"
+    "log"
 )
 
 type Person struct {
     Name string `json:"Name"`
 }
 
-func main () {
-    person := Person {Name: "Hiroki"}
+func main() {
+    person := Person{Name: "Hiroki"}
     
     json, err := json.Marshal(person)
     if err != nil {
-        fmt.Println("JSONエンコードに失敗しました。")
+        log.Println("JSONエンコードに失敗しました。")
     }
  
     // エンコード結果を出力
-    fmt.Println(string(json))
+    fmt.Printf("%#v\n", string(json))// "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -389,7 +461,7 @@ package main
 import "fmt"
 
 func main(){
-    fmt.Println("Hello world!")
+    fmt.Printf("%#v\n", "Hello world!")
 }
 ```
 
@@ -454,7 +526,7 @@ func main() {
         return "Closure is working!"
     }()
     
-    fmt.Println(result)
+    fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -475,7 +547,7 @@ func main() {
     // 引数に値を渡す
     }("Closure is working!")
     
-    fmt.Println(result)
+    fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -505,10 +577,10 @@ func (age Age) printAge() string {
     return fmt.Sprintf("%dです．", age)
 }
 
-func main () {
+func main() {
     var age Age = 20
     
-    fmt.Println(age.printAge())
+    fmt.Printf("%#v\n", age.printAge())
 }
 ```
 
@@ -531,11 +603,11 @@ func (person Person) GetName() string {
 }
 
 // 構造体から関数をコール
-func main () {
+func main() {
     // 構造体を初期化
-    person := Person {Name: "Hiroki"}
+    person := Person{Name: "Hiroki"}
     
-    fmt.Println(person.GetName()) // Hiroki
+    fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -570,7 +642,7 @@ func main() {
 
 	person.SetName("Hiroki")
     
-    fmt.Println(person.GetName()) // Gopher
+    fmt.Printf("%#v\n", person.GetName()) // "Gopher"
 }
 ```
 
@@ -603,7 +675,7 @@ func main() {
 
 	person.SetName("Hiroki")
     
-	fmt.Println(person.GetName()) // Hiroki
+	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -652,6 +724,30 @@ var (
 
 <br>
 
+### 変数の破棄
+
+#### ・アンダースコア
+
+関数から複数の値が返却される時，使わない値をアンダースコアに代入することで，これを破棄できる．
+
+```go
+package main
+import (
+    "fmt"
+    "os"
+)
+
+func main() {
+    // errorインターフェースを破棄
+    file, _ := os.Open("filename.ext")
+    
+    // エラーキャッチする必要がなくなる
+    fmt.Printf("%#v\n", flle)
+}
+```
+
+<br>
+
 ## エラーキャッチ，エラー返却，ロギング
 
 ### エラーキャッチとエラー返却
@@ -687,6 +783,7 @@ osパッケージの```Open```メソッドからerrorインターフェースが
 ```go
 package main
 import (
+    "fmt"
     "log"
     "os"
 )
@@ -697,8 +794,10 @@ func main() {
     
     if err != nil {
         // エラーの内容を出力する．
-        log.Printf("ERROR: %+v\n", err)
+        log.Printf("ERROR: %#v\n", err)
     }
+    
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -714,6 +813,7 @@ errorsパッケージの```New```メソッドにエラーメッセージを設�
 package main
 import (
     "errors"
+    "fmt"
     "log"
     "os"
 )
@@ -728,8 +828,10 @@ func main() {
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := throwErrorsNew()
-        log.Printf("ERROR: %+v\n", myErr)
+        log.Printf("ERROR: %#v\n", myErr)
     }
+    
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -743,6 +845,7 @@ func main() {
 package main
 import (
     "errors"
+    "fmt"
     "log"
     "os"
 )
@@ -757,8 +860,10 @@ func main() {
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := throwErrorf()
-        log.Printf("ERROR: %+v\n", myErr)
+        log.Printf("ERROR: %#v\n", myErr)
     }
+    
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -795,7 +900,7 @@ Goには標準で，ロギング用パッケージが用意されている．た
 
 ```go
 if err != nil {
-    log.Printf("ERROR: %+v\n", err)
+    log.Printf("ERROR: %#v\n", err)
 }
 ```
 
@@ -806,7 +911,7 @@ if err != nil {
 ```go
 if err != nil {
     // 内部でos.Exit(1)を実行する．
-    log.Fatalf("ERROR: %+v\n", err)
+    log.Fatalf("ERROR: %#v\n", err)
 }
 ```
 
@@ -817,7 +922,7 @@ if err != nil {
 ```go
 if err != nil {
     // panicメソッドを実行する．
-    log.Panicf("ERROR: %+v\n", err)
+    log.Panicf("ERROR: %#v\n", err)
 }
 ```
 
@@ -828,6 +933,80 @@ if err != nil {
 ### パッケージのソースコード
 
 参考：https://golang.org/pkg/
+
+<br>
+
+### encoding/json
+
+#### ・Marshal
+
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．
+
+参考：https://golang.org/pkg/encoding/json/#Marshal
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+)
+
+type Person struct {
+    Name string `json:"Name"`
+}
+
+func main() {
+    person := Person{Name: "Hiroki"}
+    
+    json, err := json.Marshal(person)
+    
+    if err != nil {
+        log.Println("JSONへの変換に失敗しました．")
+    }
+ 
+    // エンコード結果を出力
+    fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
+}
+```
+
+#### ・Unmarshal
+
+JSONを構造体に変換する．
+
+参考：https://golang.org/pkg/encoding/json/#Unmarshal
+
+**＊実装例＊**
+
+```go
+package main
+ 
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+ 
+type Person struct {
+	Name string
+}
+ 
+func main() {
+    byte := []byte(`{"name":"Hiroki"}`)
+    
+    var person Person
+    
+    err := json.Unmarshal(byte, &person)
+    
+	if err != nil {
+		log.Println("構造体への変換に失敗しました．")
+	}
+    
+	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}
+}
+```
 
 <br>
 
@@ -853,35 +1032,7 @@ func main() {
     
     buffer.WriteString("world!")
 
-    fmt.Println(buffer.String()) // Hello world! 
-}
-```
-
-<br>
-
-### strings
-
-#### ・```Builder```メソッド
-
-渡された文字列を結合し，標準出力に出力する．
-
-**＊実装例＊**
-
-```go
-package main
-import (
-    "fmt"
-    "strings"
-)
-
-func main() {
-    var builder strings.Builder
-    
-    builder.WriteString("Hello ")
-    
-    builder.WriteString("world!")
-    
-    fmt.Println(builder.String()) // Hello world! 
+    fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
 }
 ```
 
@@ -1079,6 +1230,34 @@ func main() {
     var last string = "Hasegawa"
     
     fmt.Printf("I'm %s %s", first, last)// I'm Hiroki Hasegawa
+}
+```
+
+<br>
+
+### strings
+
+#### ・```Builder```メソッド
+
+渡された文字列を結合し，標準出力に出力する．
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "fmt"
+    "strings"
+)
+
+func main() {
+    var builder strings.Builder
+    
+    builder.WriteString("Hello ")
+    
+    builder.WriteString("world!")
+    
+    fmt.Println(builder.String()) // Hello world! 
 }
 ```
 
