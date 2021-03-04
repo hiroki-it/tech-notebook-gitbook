@@ -34,17 +34,42 @@ $GOPATH
 
 ## データ型
 
-### 基本型
+### データ型の種類
+
+#### ・データ型の初期値
+
+データ型には，値が代入されていない時，初期値が代入されている．
 
 #### ・基本型に属するデータ型
-
-各データ型で，値が代入されていない時，初期値が代入されている．
 
 | データ型 | 表記                   | 初期値             |
 | -------- | ---------------------- | ------------------ |
 | 数値     | ```int```，```float``` | ```0```            |
 | 文字列   | ```string```           | ```""```（空文字） |
 | 真偽値   | ```boolean```          | ```false```        |
+
+#### ・合成型に属するデータ型
+
+| データ型 | 表記         | 初期値 |
+| -------- | ------------ | ------ |
+| 構造体   | ```struct``` |        |
+| 配列     | ```[n]```    |        |
+
+#### ・参照型に属するデータ型
+
+| データ型 | 表記     | 初期値                         |
+| -------- | -------- | ------------------------------ |
+| ポインタ | ```*```  | ```(nil)```                    |
+| スライス | ```[]``` | ```<nil>```（要素数，容量：0） |
+| マップ   |          |                                |
+| チャネル |          |                                |
+| 関数     |          |                                |
+
+<br>
+
+### 基本型のまとめ
+
+####  ・基本型とは
 
 **＊実装例＊**
 
@@ -70,26 +95,42 @@ type Age int
 
 **＊実装例＊**
 
-パッケージの型を元に，MyAppWriterを定義する．
+パッケージの型を元に，MyAppWriter型を定義する．
 
 ```go
 type MyAppWriter io.Writer
 ```
 
+#### ・基本型とメモリの関係
+
+基本型の変数を定義すると，データ型のバイト数に応じて，空いているメモリ領域に，変数が割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
+
+![basic-variable_memory](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/basic-variable_memory.png)
+
+#### ・各データ型のサイズ
+
+| 種類                 | 型名       | サイズ(bit)          | 説明                         |
+| -------------------- | ---------- | -------------------- | ---------------------------- |
+| int（符号付き整数）  | int8       | ```8```              |                              |
+|                      | int16      | ```16```             |                              |
+|                      | int32      | ```32```             |                              |
+|                      | int64      | ```64```             |                              |
+|                      | int        | ```32``` or ```64``` | 実装環境によって異なる．     |
+| uint（符号なし整数） | uint8      | ```8```              |                              |
+|                      | uint16     | ```16```             |                              |
+|                      | unit32     | ```32```             |                              |
+|                      | uint64     | ```64```             |                              |
+|                      | uint       | ```32``` or ```64``` | 実装環境によって異なる．     |
+| float（浮動小数点）  | float32    | ```32```             |                              |
+|                      | float64    | ```64```             |                              |
+| complex（複素数）    | complex64  | ```64```             | 実部：float32，虚部：float32 |
+|                      | complex128 | ```128```            | 実部：float64，虚部：float64 |
+
 <br>
 
-### 合成型
+### 構造体
 
-#### ・合成型に属するデータ型
-
-各データ型で，値が代入されていない時，初期値が代入されている．
-
-| データ型 | 表記         | 初期値 |
-| -------- | ------------ | ------ |
-| 構造体   | ```struct``` |        |
-| 配列     | ```[n]```    |        |
-
-#### ・構造体
+#### ・構造体とは
 
 他の言語でいう『データのみを保持するオブジェクト』に相当する．
 
@@ -103,28 +144,7 @@ var person struct {
 }
 ```
 
-#### ・配列
-
-他の言語でいう『固定長配列』に相当する．
-
-**＊実装例＊**
-
-配列を定義し，変数に代入する．
-
-```go
-// 定義と代入を同時に行う．また，型推論と要素数省略を行う．
-names := [...]string {"Hiroki", "Gopher"}
-
-// 定義と代入を同時に行う．また，要素数の定義が必要．
-var names[2] string = [2]string {"Hiroki", "Gopher"}
-
-// 定義と代入を別々に行う．また，要素数の定義が必要．
-var names[2] string
-names[0] = "Hiroki"
-names[1] = "Gopher"
-```
-
-#### ・独自の合成型
+#### ・独自の構造体
 
 type宣言を使用して，独自の構造体を定義する．
 
@@ -137,218 +157,6 @@ type Person struct {
     Name string
 }
 ```
-
-<br>
-
-### 参照型
-
-#### ・参照型に属するデータ型
-
-各データ型で，値が代入されていない時，初期値が代入されている．
-
-| データ型 | 表記     | 初期値                   |
-| -------- | -------- | ------------------------ |
-| ポインタ | ```*```  | ```(nil)```              |
-| スライス | ```[]``` | ```<nil>```（要素数は0） |
-| マップ   |          |                          |
-| チャネル |          |                          |
-| 関数     |          |                          |
-
-#### ・ポインタ
-
-メモリアドレスを代入できるデータ型のこと．定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを抽出できる．抽出したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくてよい．
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-func main(){
-    x := "a"
-    
-    // ポインタ型の変数を定義代入
-    var p *string = &x
-    // p := &x と同じ
-    
-    // メモリアドレスを抽出しない場合
-    fmt.Printf("%#v\n", x) // "a"
-    
-    // メモリアドレスを抽出する場合
-    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
-}
-```
-
-#### ・スライス
-
-他の言語でいう『可変長配列』に相当する．
-
-**＊実装例＊**
-
-```go
-// 定義と代入を同時に行う．
-names := []string{"Hiroki", "Gopher"}
-
-// 定義と代入を同時に行う．また，型推論を行う．
-var names []string = []string{"Hiroki", "Gopher"}
-```
-
-スライスを使用して，バイト配列を定義できる．
-
-```go
-package main
-import "fmt"
-
-func main(){
-    x := []byte("abc")
-    
-    fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
-}
-```
-
-<br>
-
-### インターフェース型
-
-####  ・特徴
-
-Goでは，様々な値をインターフェース型として定義できる．また，メソッドを定義できる．
-
-**＊実装例＊**
-
-様々な値をインターフェースに変換できる．
-
-```go
-var x interface{}
-
-x = 1
-x = 3.14
-x = "Hiroki"
-x = [...]uint8[1, 2, 3, 4, 5]
-```
-
-なお，インターフェース型データは演算できない．
-
-```go
-var x, y interface{}
-
-x,y = 1, 2
-
-// エラーになる．
-z := x + y
-```
-
-**＊実装例＊**
-
-Animalインターフェースに変換すると，```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の実装が強制される．
-
-```go
-package main  
-import "fmt"
-
-// インターフェースとそのメソッドを定義する．
-type Animal interface {
-    Eat()
-    Sleep()
-    Mating()
-}
-
-// 構造体に関数を定義する．
-type Insect struct {
-    Name string
-}
-
-type Fish struct {
-    Name string
-}
-
-type Mammal struct {
-    Name string    
-}
-
-// 構造体に関数を関連付ける．インターフェースのメソッドの関連付けが強制される．
-func (insect Insect) Eat(){
-    fmt.Println("雑食")
-}
-
-func (insect Insect) Sleep(){
-    fmt.Println("眠る")    
-}
-
-func (insect Insect) Mating(){
-    fmt.Println("単為生殖")       
-}
-
-func main() {
-    // Animalインターフェース型の変数を定義する．
-    var animal Animal
-    
-    // 構造体の変数を定義する．
-    insect := Insect {Name : "Ant"}
-    
-    // 構造体をインターフェースに変換する．
-    animal = insect
-    
-    // メソッドを実行する．
-    animal.Eat()
-    animal.Sleep()
-    animal.Mating()
-}
-```
-
-もし，構造体に関連付けられたメソッドに不足があると，エラーが起こる．
-
-```sh
-# Eatメソッドを関連付けていない場合
-cannot use insect (type Insect) as type Animal in assignment:
-Insect does not implement Animal (missing Eat method)
-```
-
-<br>
-
-### nil
-
-#### ・ポインタ型の場合
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-func main(){
-    
-    x := "x"
-    
-    // ポインタ型の定義のみ
-    var p1 *string
-    
-    // ポインタ型の変数を定義代入
-    var p2 *string = &x
-
-    fmt.Printf("%#v\n", p1) // (*string)(nil)
-    fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
-}
-```
-
-####  ・インターフェース型の場合
-
-**＊実装例＊**
-
-```go
-package main
-import "fmt"
-
-func main(){
-    var x interface{}
-    
-    fmt.Printf("%#v\n", x) // <nil>
-}
-```
-
-<br>
-
-### 構造体の機能
 
 #### ・初期化
 
@@ -441,6 +249,335 @@ func main() {
  
     // エンコード結果を出力
     fmt.Printf("%#v\n", string(json))// "{\"Name\":\"Hiroki\"}"
+}
+```
+
+<br>
+
+### 配列
+
+#### ・配列とは
+
+要素，各要素のメモリアドレス，からなるデータのこと．
+
+![aggregate-type_array](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/aggregate-type_array.png)
+
+**＊実装例＊**
+
+配列を定義し，変数に代入する．
+
+```go
+package main
+import "fmt"
+
+func main(){
+    // 定義と代入を同時に行う．また，型推論と要素数省略を行う．
+    x := [...]string {"Hiroki", "Gopher"}
+    
+    fmt.Printf("%#v\n", x) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
+    
+    // 定義と代入を同時に行う．また，要素数の定義が必要．
+    var y[2] string = [2]string {"Hiroki", "Gopher"}
+    
+    fmt.Printf("%#v\n", y) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
+    
+    // 定義と代入を別々に行う．また，要素数の定義が必要．
+    var z[2] string
+    z[0] = "Hiroki"
+    z[1] = "Gopher"
+    
+    fmt.Printf("%#v\n", z) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
+}
+```
+
+#### ・配列とメモリの関係
+
+配列型の変数を定義すると，空いているメモリ領域に，配列がまとまって割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
+
+![array-variable_memory](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/array-variable_memory.png)
+
+<br>
+
+### ポインタ
+
+#### ・ポインタとは
+
+メモリアドレスを代入できるデータ型のこと．定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを抽出できる．抽出したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくてよい．PHPにおけるポインタは，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_object_orientation_method_data.html
+
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    x := "a"
+    
+    // ポインタ型の変数を定義代入
+    var p *string = &x
+    // p := &x と同じ
+    
+    // メモリアドレスを抽出しない場合
+    fmt.Printf("%#v\n", x) // "a"
+    
+    // メモリアドレスを抽出する場合
+    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+}
+```
+
+<br>
+
+### スライス
+
+#### ・スライスとは
+
+参照先の配列に対するポインタ，長さ，容量を持つデータ型である．
+
+![reference-types_slice](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/reference-types_slice.png)
+
+```go
+// Goのソースコードより
+type slice struct {
+	array unsafe.Pointer
+	len   int
+	cap   int
+}
+```
+
+参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
+
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    // 定義と代入を同時に行う．
+    x := []string{"Hiroki", "Gopher"}
+    
+    fmt.Printf("%+v\n", x) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
+    
+    // 定義と代入を同時に行う．また，型推論を行う．
+    var y []string = []string{"Hiroki", "Gopher"}
+    
+    fmt.Printf("%+v\n", y) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", y) // []string{"Hiroki", "Gopher"}
+}
+```
+
+全てのスライスが共通の配列を参照しているため，例えば，```xb```変数しか上書きしていないのにもかかわらず，他のスライスにもその上書きが反映される．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    x := [5]string{"あ", "い", "う", "え","お",}
+    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
+
+    xa := x[0:3]
+    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
+    
+    xb := x[2:5]
+    fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
+
+    // xbスライスの0番目（"う"）を上書き
+    xb[0] = "Hiroki"
+    
+    // xbしか上書きしていないが，他のスライスにも反映される．
+    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
+    fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
+    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "Hiroki", "え", "お"}
+}
+```
+
+#### ・配列の参照
+
+**＊実装例＊**
+
+バイト配列を参照する．
+
+```go
+package main
+import "fmt"
+
+func main(){
+    x := []byte("abc")
+    
+    fmt.Printf("%+v\n", x) // [97 98 99]
+    fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
+}
+```
+
+構造体配列を参照する．
+
+```go
+package main
+import "fmt"
+
+type Person struct{
+    Name string
+}
+
+func main(){
+    person := []Person{{Name: "Hiroki"}}
+    
+    fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
+    fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
+}
+```
+
+<br>
+
+### インターフェース
+
+####  ・インターフェースとは
+
+Goでは，様々な値をインターフェース型として定義できる．また，メソッドを定義できる．
+
+**＊実装例＊**
+
+Animalインターフェースに変換すると，```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の実装が強制される．
+
+```go
+package main  
+import "fmt"
+
+// インターフェースとそのメソッドを定義する．
+type Animal interface {
+    Eat()
+    Sleep()
+    Mating()
+}
+
+// 構造体に関数を定義する．
+type Insect struct {
+    Name string
+}
+
+type Fish struct {
+    Name string
+}
+
+type Mammal struct {
+    Name string    
+}
+
+// 構造体に関数を関連付ける．インターフェースのメソッドの関連付けが強制される．
+func (insect Insect) Eat(){
+    fmt.Println("雑食")
+}
+
+func (insect Insect) Sleep(){
+    fmt.Println("眠る")    
+}
+
+func (insect Insect) Mating(){
+    fmt.Println("単為生殖")       
+}
+
+func main() {
+    // Animalインターフェース型の変数を定義する．
+    var animal Animal
+    
+    // 構造体の変数を定義する．
+    insect := Insect {Name : "Ant"}
+    
+    // 構造体をインターフェースに変換する．
+    animal = insect
+    
+    // メソッドを実行する．
+    animal.Eat()
+    animal.Sleep()
+    animal.Mating()
+}
+```
+
+もし，構造体に関連付けられたメソッドに不足があると，エラーが起こる．
+
+```sh
+# Eatメソッドを関連付けていない場合
+cannot use insect (type Insect) as type Animal in assignment:
+Insect does not implement Animal (missing Eat method)
+```
+
+#### ・他のデータ型からの変換
+
+様々な値をインターフェースに変換できる．
+
+**＊実装例＊**
+
+```go
+var x interface{}
+
+x = 1
+x = 3.14
+x = "Hiroki"
+x = [...]uint8[1, 2, 3, 4, 5]
+```
+
+なお，インターフェース型データは演算できない．
+
+```go
+var x, y interface{}
+
+x,y = 1, 2
+
+// エラーになる．
+z := x + y
+```
+
+<br>
+
+### nil
+
+#### ・nilとは
+
+いくつかのデータ型における初期値のこと．
+
+#### ・ポインタの場合
+
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    
+    x := "x"
+    
+    // ポインタ型の定義のみ
+    var p1 *string
+    
+    // ポインタ型の変数を定義代入
+    var p2 *string = &x
+
+    fmt.Printf("%#v\n", p1) // (*string)(nil)
+    fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
+}
+```
+
+####  ・インターフェースの場合
+
+**＊実装例＊**
+
+```go
+package main
+import "fmt"
+
+func main(){
+    var x interface{}
+    
+    fmt.Printf("%#v\n", x) // <nil>
 }
 ```
 
@@ -794,7 +931,7 @@ func main() {
     
     if err != nil {
         // エラーの内容を出力する．
-        log.Printf("ERROR: %#v\n", err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
     
     fmt.Printf("%#v\n", flle)
@@ -828,7 +965,7 @@ func main() {
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := throwErrorsNew()
-        log.Printf("ERROR: %#v\n", myErr)
+        log.Fatalf("ERROR: %#v\n", myErr)
     }
     
     fmt.Printf("%#v\n", flle)
@@ -860,7 +997,7 @@ func main() {
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := throwErrorf()
-        log.Printf("ERROR: %#v\n", myErr)
+        log.Fatalf("ERROR: %#v\n", myErr)
     }
     
     fmt.Printf("%#v\n", flle)
@@ -936,6 +1073,34 @@ if err != nil {
 
 <br>
 
+### bytes
+
+#### ・```Buffer```メソッド
+
+渡された文字列を結合し，標準出力に出力する．
+
+**＊実装例＊**
+
+```go
+package main
+import (
+    "bytes"
+    "fmt"
+)
+
+func main() {
+    var buffer bytes.Buffer
+
+    buffer.WriteString("Hello ")
+    
+    buffer.WriteString("world!")
+
+    fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
+}
+```
+
+<br>
+
 ### encoding/json
 
 #### ・Marshal
@@ -964,7 +1129,7 @@ func main() {
     json, err := json.Marshal(person)
     
     if err != nil {
-        log.Println("JSONへの変換に失敗しました．")
+        log.Fatalf("ERROR: %#v\n", err)
     }
  
     // エンコード結果を出力
@@ -974,7 +1139,7 @@ func main() {
 
 #### ・Unmarshal
 
-JSONを構造体に変換する．
+JSONを構造体に変換する．変換後の構造体をポインタ型として渡す必要がある．
 
 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -1000,39 +1165,11 @@ func main() {
     
     err := json.Unmarshal(byte, &person)
     
-	if err != nil {
-		log.Println("構造体への変換に失敗しました．")
-	}
+    if err != nil {
+        log.Fatalf("ERROR: %#v\n", err)
+    }
     
 	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}
-}
-```
-
-<br>
-
-### bytes
-
-#### ・```Buffer```メソッド
-
-渡された文字列を結合し，標準出力に出力する．
-
-**＊実装例＊**
-
-```go
-package main
-import (
-    "bytes"
-    "fmt"
-)
-
-func main() {
-    var buffer bytes.Buffer
-
-    buffer.WriteString("Hello ")
-    
-    buffer.WriteString("world!")
-
-    fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
 }
 ```
 
@@ -1230,6 +1367,94 @@ func main() {
     var last string = "Hasegawa"
     
     fmt.Printf("I'm %s %s", first, last)// I'm Hiroki Hasegawa
+}
+```
+
+<br>
+
+### net/http
+
+#### ・Client，NewRequest
+
+参考：
+
+- https://golang.org/pkg/net/http/#Client
+
+- https://golang.org/pkg/net/http/#NewRequest
+
+**＊実装例＊**
+
+SlackにメッセージをPOST送信する．
+
+```go
+package main
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "log"
+    "net/http"
+)
+
+// 構造体を定義し，JSONにマッピング
+type SlackMessage struct {
+    Token       string   `json:"token"`
+    Channel     string   `json:"channel"`
+    Text        string   `json:"text"`
+    Username    string   `json:"username"`
+    Attachments []string `json:"attachments"`
+}
+
+func main() {
+    // URL
+    url := "https://xxxx.slack.com"
+
+    // ボディを定義する．
+    slackMessage := SlackMessage {
+        Token: "<トークン文字列>",
+        Channel: "<チャンネル名，もしくは@ユーザ名>",
+        Text: "<メッセージ>",
+        Username: "<as_userオプションがfalseの場合にBot名>",
+        Attachments: [{
+          // 任意のオプション     
+          // 参考：
+          // https://api.slack.com/messaging/composing/layouts#attachments
+        }]
+    }
+    
+    // マッピングを元に，構造体をJSONに変換する．
+    json, err := json.Marshal(slackMessage)
+
+    if err != nil {
+        log.Fatalf("ERROR: %#v\n", err)
+    }
+
+    // リクエストメッセージを定義する．
+    request, err := http.NewRequest(
+        "POST",
+        url,
+        bytes.NewBuffer(json),
+    )
+
+    if err != nil {
+        log.Fatalf("ERROR: %#v\n", err)
+    }
+
+    // ヘッダーを定義する．
+    request.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client {}
+
+    // HTTPリクエスト
+    response, err := client.Do(request)
+
+    if err != nil {
+        log.Fatalf("ERROR: %#v\n", err)
+    }
+
+    fmt.Printf("INFO: %#v\n", response)
+
+    defer response.Body.Close()
 }
 ```
 

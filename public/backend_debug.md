@@ -25,7 +25,7 @@ var_dump($var);
 ```php
 <?php
 
-throw new \Exception(var_dump($var););
+throw new \Exception(var_dump($var));
 ```
 
 <br>
