@@ -116,12 +116,21 @@ $ docker build --file Dockerfile \
 **＊コマンド例＊**
 
 ```sh
-# コンテナからイメージを作成
-$ docker commit -a <作成者名> <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョンタグ>
-```
-```sh
 # ホストOSで作成したイメージをレジストリ側にアップロード
 $ docker push <Docker Hubユーザ名>/<イメージ名>:<バージョンタグ>
+```
+
+#### ・イメージのデバッグ
+
+**＊コマンド例＊**
+
+```sh
+# ビルドに失敗したイメージからコンテナを構築し，接続する．
+# rmオプション：接続の切断後にコンテナを削除する．
+docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+
+# コンテナの中
+root@xxxxxxxxxx: 
 ```
 
 <br>
@@ -492,7 +501,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 ```sh
 # コンテナレイヤーを生成し，コンテナを構築．起動はしない．
-$ docker create <コンテナ名> <使用イメージ名>
+$ docker create <コンテナ名> <使用イメージ名>:<タグ>
 ```
 
 #### ・構築されたコンテナを起動
@@ -514,10 +523,10 @@ $ docker start -i <停止中コンテナ名>
 # コンテナレイヤーを生成し，コンテナを構築，起動までを行う．
 
 # アタッチモードによる起動．フォアグラウンドで起動する．
-$ docker run -a -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
 # デタッチドモードによる起動．バックグラウンドで起動する．
-$ docker run -d -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 
 #### ・構築されたコンテナを削除
@@ -533,6 +542,17 @@ $ docker container prune
 $ docker rm --force $(docker ps --all --quiet)
 ```
 
+#### ・構築されたコンテナからイメージを作成
+
+**＊コマンド例＊**
+
+```sh
+# コンテナからイメージを作成
+$ docker commit <コンテナ名> <コンテナID>
+
+$ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョンタグ>
+```
+
 <br>
 
 ### 起動モードの違い
@@ -545,7 +565,7 @@ $ docker rm --force $(docker ps --all --quiet)
 
 ```sh
 # -a：atattch mode
-$ docker run -a -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 
 #### ・デタッチドモード起動
@@ -557,8 +577,22 @@ $ docker run -a -it --name <コンテナ名> <使用イメージ名> /bin/bash
 
 ```sh
 # -d；detached mode
-$ docker run -d -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
+
+#### ・エラーの場合
+
+コマンドの引数に```/bin/bash```を使用して，以下のようなエラーが出た時，使用するバイナリファイルを```sh```にするとよい
+
+```sh
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
+```
+
+```sh
+$ docker run -it --name <コンテナ名> <使用イメージ名>:<タグ> sh
+```
+
+
 
 <br>
 
@@ -638,7 +672,7 @@ $ docker logs <コンテナ名>
 
 ```sh
 # デタッチドモードで起動
-$ docker run -d -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
 # デタッチドモードのコンテナに接続
 $ docker attach <起動中コンテナ名>
@@ -662,7 +696,7 @@ $ docker container ps -a # ==> コンテナのSTATUSがEXITedになっている
 
 ```sh
 # デタッチドモードで起動
-$ docker run -d -it --name <コンテナ名> <使用イメージ名> /bin/bash
+$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
 # 対話モードで，デタッチドモードのコンテナに接続
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
@@ -837,7 +871,7 @@ aeef782b227d        tech-notebook_default   bridge              local
 **＊コマンド例＊**
 
 ```sh
-$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> <使用するイメージ名> /bin/bash
+$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> <使用するイメージ名>:<タグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 [root@<ホスト名>:/] cat /etc/hosts

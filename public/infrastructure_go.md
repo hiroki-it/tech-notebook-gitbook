@@ -12,23 +12,47 @@
 
 #### ・構造
 
+参考：https://github.com/golang-standards/project-layout
+
 ```
 $GOPATH
-│
-├── bin（ビルドされたバイナリファイル）
-│   └── fuga
-├── pkg（ビルドされたパッケージ群）
-│   └── darwin_amd64
-│       └── hoge.go
-│
-└── src
-    ├── dir_a（mainパッケージ）
-    │   └── main.go
-    └── dir_b（自作パッケージ）
-        └── hoge.go
+├── build（Dockerfileを配置する）
+├── cmd（mainファイルを配置する）
+│   └── app
+│       └── main.go
+├── configs
+│   └── envrc.template
+├── docs（ドキュメントを配置する）
+│   ├── BUG.md
+│   ├── ROUTING.md
+│   └── TODO.md
+├── internal（cmdディレクトリ内でインポートさせないファイルを配置する）
+│   └── pkg
+├── pkg（cmdディレクトリ内でインポートするファイルを配置する）
+│   └── public
+│       └── add.go
+├── scripts
+│   └── Makefile
+├── test
+│   └── test.go
+└── web（画像，CSS，など）
+    ├── static
+    └── template
 ```
 
+<br>
 
+### パッケージ管理
+
+#### ・go.mod
+
+ライブラリ間の依存関係が実装されたファイル．
+
+参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+
+#### ・go.sum
+
+ライブラリのチェックサムが記録される．前回のインストール時と比較して，ライブラリに変更があるかどうかを検知できる．
 
 <br>
 
@@ -818,6 +842,49 @@ func main() {
 
 <br>
 
+### defer関数
+
+#### ・defer関数とは
+
+全ての処理の最後に必ず実行される遅延実行関数のこと．たとえ，ランタイムエラーのように処理が強制的に途中終了しても実行される．
+
+**＊実装例＊**
+
+即時関数をdefer関数化している．処理の最後にランタイムエラーが起こったとき，これを```recover```メソッドで吸収できる．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Start")
+    
+    // あらかじめdefer関数を定義しておく
+    defer func() {        
+        err := recover()
+        
+        if err != nil {
+            fmt.Printf("Recover: %#v\n", err)
+        }
+        
+        fmt.Println("End")
+    }()
+    
+    // ここで意図的に処理を停止させている．
+    panic("Runtime error")
+}
+```
+
+```sh
+# 結果
+Start
+Recover: "Runtime error"
+End
+```
+
+<br>
+
 ## 変数
 
 ### 定義
@@ -1010,7 +1077,7 @@ func main() {
 
 #### ・nilの比較検証
 
-関数から返却されたerrインターフェースが，```nil```出なかった場合に，エラーであると見なすようにする．
+関数から返却されたerrインターフェースが，```nil```でなかった場合に，エラーであると見なすようにする．
 
 ```go
 if err != nil {
@@ -1103,7 +1170,7 @@ func main() {
 
 ### encoding/json
 
-#### ・Marshal
+#### ・```Marshal```メソッド
 
 構造体をJSONに変換する．変換前に，マッピングを行うようにする．
 
@@ -1137,9 +1204,9 @@ func main() {
 }
 ```
 
-#### ・Unmarshal
+#### ・```Unmarshal```メソッド
 
-JSONを構造体に変換する．変換後の構造体をポインタ型として渡す必要がある．
+JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```メソッドの第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．
 
 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -1159,17 +1226,21 @@ type Person struct {
 }
  
 func main() {
+    // リクエストを受信した場合を想定する．
     byte := []byte(`{"name":"Hiroki"}`)
     
     var person Person
     
+    fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
+    
+    // person変数を変換後の値に書き換えている．
     err := json.Unmarshal(byte, &person)
     
     if err != nil {
         log.Fatalf("ERROR: %#v\n", err)
     }
     
-	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}
+	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}（変数が書き換えられた）
 }
 ```
 
@@ -1374,13 +1445,13 @@ func main() {
 
 ### net/http
 
-#### ・Client，NewRequest
+#### ・Client構造体，Requst構造体，Response構造体
 
 参考：
 
 - https://golang.org/pkg/net/http/#Client
-
-- https://golang.org/pkg/net/http/#NewRequest
+- https://golang.org/pkg/net/http/#Requst
+- https://golang.org/pkg/net/http/#Response
 
 **＊実装例＊**
 
@@ -1445,16 +1516,21 @@ func main() {
 
     client := &http.Client {}
 
-    // HTTPリクエスト
+    // HTTPリクエストを送信する．
     response, err := client.Do(request)
-
+    
+    // deferで宣言しておき，HTTP通信を必ず終了できるようにする．
+    defer response.Body.Close()
+    
     if err != nil {
         log.Fatalf("ERROR: %#v\n", err)
     }
-
+    
+    if response.StatusCode != 200 {
+        log.Fatalf("ERROR: %#v\n", response)
+    }
+    
     fmt.Printf("INFO: %#v\n", response)
-
-    defer response.Body.Close()
 }
 ```
 
