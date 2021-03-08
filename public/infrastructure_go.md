@@ -1,10 +1,39 @@
 # Go
 
-## Goとは
+## 導入
 
-### 特徴
+### Goとは
 
 手続き型言語．構造体と関数を組み合わせて処理を実装する．言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現することもできる．
+
+<br>
+
+### build
+
+#### ・ビルド対象の指定
+
+指定したパスをビルド対象として，ビルドのアーティファクトを生成する．
+
+```sh
+# cmdディレクトリをビルド対象として，ルートディレクトリにcmdアーティファクトを生成する．
+$ go build ./cmd
+```
+
+#### ・```-o```
+
+指定したパスにビルドのアーティファクトを生成する．
+
+```sh
+# ルートディレクトリをビルド対象として，cmdディレクトリにルートディレクトリ名アーティファクトを生成する．
+$ go build -o ./cmd
+```
+
+また，指定したパスをビルド対象として，指定したパスにビルドのアーティファクトを生成することもできる．
+
+```sh
+# cmdディレクトリをビルド対象として，$HOME/goディレクトリにbinアーティファクトを生成する．
+$ go build -o $HOME/go/bin ./cmd
+```
 
 <br>
 
@@ -12,32 +41,37 @@
 
 #### ・構造
 
+ディレクトリ構造のベストプラクティスは以下を参考にせよ．
+
 参考：https://github.com/golang-standards/project-layout
 
-```
-$GOPATH
-├── build（Dockerfileを配置する）
-├── cmd（mainファイルを配置する）
-│   └── app
-│       └── main.go
-├── configs
-│   └── envrc.template
-├── docs（ドキュメントを配置する）
-│   ├── BUG.md
-│   ├── ROUTING.md
-│   └── TODO.md
-├── internal（cmdディレクトリ内でインポートさせないファイルを配置する）
-│   └── pkg
-├── pkg（cmdディレクトリ内でインポートするファイルを配置する）
-│   └── public
-│       └── add.go
-├── scripts
-│   └── Makefile
-├── test
-│   └── test.go
-└── web（画像，CSS，など）
-    ├── static
-    └── template
+```sh
+$GOPATH # 例えば，「$HOME/go」とする．
+├── bin # アーティファクトを配置するディレクトリ
+├── pkg # 外部からインストールしたパッケージを配置するディレクトリ
+└── src
+    ├── build # Dockerfileを配置するディレクトリ
+    ├── cmd # main.goファイルを配置するディレクトリ
+    │   └── app
+    │       └── main.go
+    ├── configs
+    │   └── envrc.template
+    ├── docs（ドキュメントを配置する）
+    │   ├── BUG.md
+    │   ├── ROUTING.md
+    │   └── TODO.md
+    ├── internal # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
+    │   └── pkg
+    ├── pkg # cmdディレクトリ内でインポートする独自goパッケージを配置するディレクトリ
+    │   └── public
+    │       └── add.go
+    ├── scripts
+    │   └── Makefile
+    ├── test
+    │   └── test.go
+    └── web（画像，CSS，など）
+        ├── static
+        └── template
 ```
 
 <br>

@@ -570,7 +570,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドの成果物をキャッシュとして保存する．この機能を使用しない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じライブラリがインストールされる．しかし，Workflowのたびに，ライブラリをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリに配置された成果物を再利用するようにする．この機能は，複数のWorkflowの間だけでなく，一つのWorkflowの中でも利用できる．
+ビルドのアーティファクトをキャッシュとして保存する．この機能を使用しない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じライブラリがインストールされる．しかし，Workflowのたびに，ライブラリをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリに配置されたアーティファクトを再利用するようにする．この機能は，複数のWorkflowの間だけでなく，一つのWorkflowの中でも利用できる．
 
 **＊実装例＊**
 
