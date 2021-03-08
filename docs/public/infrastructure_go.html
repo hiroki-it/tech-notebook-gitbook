@@ -1515,37 +1515,58 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="go">Go</h1>
-<h2 id="go&#x3068;&#x306F;">Go&#x3068;&#x306F;</h2>
-<h3 id="&#x7279;&#x5FB4;">&#x7279;&#x5FB4;</h3>
+<h2 id="&#x5C0E;&#x5165;">&#x5C0E;&#x5165;</h2>
+<h3 id="go&#x3068;&#x306F;">Go&#x3068;&#x306F;</h3>
 <p>&#x624B;&#x7D9A;&#x304D;&#x578B;&#x8A00;&#x8A9E;&#xFF0E;&#x69CB;&#x9020;&#x4F53;&#x3068;&#x95A2;&#x6570;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;&#x8A00;&#x8A9E;&#x3068;&#x3057;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3044;&#x3046;&#x6A5F;&#x80FD;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x6570;&#x3092;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x64EC;&#x4F3C;&#x7684;&#x306B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8868;&#x73FE;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="build">build</h3>
+<h4 id="&#x30FB;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x306E;&#x6307;&#x5B9A;">&#x30FB;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x306E;&#x6307;&#x5B9A;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cmd&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build ./cmd
+</code></pre>
+<h4 id="&#x30FB;-o">&#x30FB;<code>-o</code></h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306B;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build -o ./cmd
+</code></pre>
+<p>&#x307E;&#x305F;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306B;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sh"><span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;$HOME/go&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;bin&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build -o <span class="token environment constant">$HOME</span>/go/bin ./cmd
+</code></pre>
 <p><br></p>
 <h3 id="gopath">GOPATH</h3>
 <h4 id="&#x30FB;&#x69CB;&#x9020;">&#x30FB;&#x69CB;&#x9020;</h4>
+<p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x9020;&#x306E;&#x30D9;&#x30B9;&#x30C8;&#x30D7;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30B9;&#x306F;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/golang-standards/project-layout" target="_blank">https://github.com/golang-standards/project-layout</a></p>
-<pre class="language-"><code>$GOPATH
-&#x251C;&#x2500;&#x2500; build&#xFF08;Dockerfile&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
-&#x251C;&#x2500;&#x2500; cmd&#xFF08;main&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
-&#x2502;   &#x2514;&#x2500;&#x2500; app
-&#x2502;       &#x2514;&#x2500;&#x2500; main.go
-&#x251C;&#x2500;&#x2500; configs
-&#x2502;   &#x2514;&#x2500;&#x2500; envrc.template
-&#x251C;&#x2500;&#x2500; docs&#xFF08;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
-&#x2502;   &#x251C;&#x2500;&#x2500; BUG.md
-&#x2502;   &#x251C;&#x2500;&#x2500; ROUTING.md
-&#x2502;   &#x2514;&#x2500;&#x2500; TODO.md
-&#x251C;&#x2500;&#x2500; internal&#xFF08;cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x3067;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3055;&#x305B;&#x306A;&#x3044;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
-&#x2502;   &#x2514;&#x2500;&#x2500; pkg
-&#x251C;&#x2500;&#x2500; pkg&#xFF08;cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x3067;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
-&#x2502;   &#x2514;&#x2500;&#x2500; public
-&#x2502;       &#x2514;&#x2500;&#x2500; add.go
-&#x251C;&#x2500;&#x2500; scripts
-&#x2502;   &#x2514;&#x2500;&#x2500; Makefile
-&#x251C;&#x2500;&#x2500; test
-&#x2502;   &#x2514;&#x2500;&#x2500; test.go
-&#x2514;&#x2500;&#x2500; web&#xFF08;&#x753B;&#x50CF;&#xFF0C;CSS&#xFF0C;&#x306A;&#x3069;&#xFF09;
-    &#x251C;&#x2500;&#x2500; static
-    &#x2514;&#x2500;&#x2500; template
-</code></pre><p><br></p>
+<pre class="language-"><code class="lang-sh"><span class="token variable">$GOPATH</span> <span class="token comment"># &#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x300C;$HOME/go&#x300D;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+&#x251C;&#x2500;&#x2500; bin <span class="token comment"># &#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+&#x251C;&#x2500;&#x2500; pkg <span class="token comment"># &#x5916;&#x90E8;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+&#x2514;&#x2500;&#x2500; src
+    &#x251C;&#x2500;&#x2500; build <span class="token comment"># Dockerfile&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+    &#x251C;&#x2500;&#x2500; cmd <span class="token comment"># main.go&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; app
+    &#x2502;       &#x2514;&#x2500;&#x2500; main.go
+    &#x251C;&#x2500;&#x2500; configs
+    &#x2502;   &#x2514;&#x2500;&#x2500; envrc.template
+    &#x251C;&#x2500;&#x2500; docs&#xFF08;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF09;
+    &#x2502;   &#x251C;&#x2500;&#x2500; BUG.md
+    &#x2502;   &#x251C;&#x2500;&#x2500; ROUTING.md
+    &#x2502;   &#x2514;&#x2500;&#x2500; TODO.md
+    &#x251C;&#x2500;&#x2500; internal <span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x3067;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3055;&#x305B;&#x306A;&#x3044;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; pkg
+    &#x251C;&#x2500;&#x2500; pkg <span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x3067;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x72EC;&#x81EA;go&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; public
+    &#x2502;       &#x2514;&#x2500;&#x2500; add.go
+    &#x251C;&#x2500;&#x2500; scripts
+    &#x2502;   &#x2514;&#x2500;&#x2500; Makefile
+    &#x251C;&#x2500;&#x2500; <span class="token builtin class-name">test</span>
+    &#x2502;   &#x2514;&#x2500;&#x2500; test.go
+    &#x2514;&#x2500;&#x2500; web&#xFF08;&#x753B;&#x50CF;&#xFF0C;CSS&#xFF0C;&#x306A;&#x3069;&#xFF09;
+        &#x251C;&#x2500;&#x2500; static
+        &#x2514;&#x2500;&#x2500; template
+</code></pre>
+<p><br></p>
 <h3 id="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x7BA1;&#x7406;">&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x7BA1;&#x7406;</h3>
 <h4 id="&#x30FB;gomod">&#x30FB;go.mod</h4>
 <p>&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x9593;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x304C;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;</p>
@@ -2910,7 +2931,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-05T11:11:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-07T10:25:51.734Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-08T13:36:14.322Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T15:08:24.663Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
