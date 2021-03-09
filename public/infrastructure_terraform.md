@@ -384,7 +384,6 @@ module.vpc_module.aws_vpc.vpc
 
 ```
 terraform_project/
-│
 ├── modules
 │   ├── ec2
 │   │   ├── main.tf
