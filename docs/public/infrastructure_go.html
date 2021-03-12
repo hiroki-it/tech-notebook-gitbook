@@ -2228,18 +2228,19 @@ runtime.main: undefined: main.main
 <p><br></p>
 <h3 id="&#x72EC;&#x81EA;&#x95A2;&#x6570;">&#x72EC;&#x81EA;&#x95A2;&#x6570;</h3>
 <h4 id="&#x30FB;&#x95A2;&#x6570;&#x3068;&#x306F;">&#x30FB;&#x95A2;&#x6570;&#x3068;&#x306F;</h4>
-<p>&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x3089;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x95A2;&#x6570;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<p>&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x3089;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x95A2;&#x6570;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x95A2;&#x6570;&#x306E;&#x982D;&#x6587;&#x5B57;&#x306F;&#x5927;&#x6587;&#x5B57;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
 
-<span class="token keyword">func</span> <span class="token function">example</span><span class="token punctuation">(</span>x <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+<span class="token comment">// &#x982D;&#x6587;&#x5B57;&#x3092;&#x5927;&#x6587;&#x5B57;&#x3059;&#x308B;</span>
+<span class="token keyword">func</span> <span class="token function">Example</span><span class="token punctuation">(</span>x <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">example</span><span class="token punctuation">(</span><span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x306F;">&#x30FB;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x306F;</h4>
@@ -2292,7 +2293,7 @@ runtime.main: undefined: main.main
 
 <span class="token keyword">type</span> Age <span class="token builtin">int</span>
 
-<span class="token keyword">func</span> <span class="token punctuation">(</span>age Age<span class="token punctuation">)</span> <span class="token function">printAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>age Age<span class="token punctuation">)</span> <span class="token function">PrintAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -2519,8 +2520,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <span class="token string">&quot;log&quot;</span>
     <span class="token string">&quot;os&quot;</span>
 <span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">throwErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+<span class="token keyword">func</span> <span class="token function">ThrowErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&lt;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&quot;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -2529,7 +2529,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         <span class="token comment">// &#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
-        myErr <span class="token operator">:=</span> <span class="token function">throwErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        myErr <span class="token operator">:=</span> <span class="token function">ThrowErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
@@ -2548,7 +2548,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <span class="token string">&quot;os&quot;</span>
 <span class="token punctuation">)</span>
 
-<span class="token keyword">func</span> <span class="token function">throwErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+<span class="token keyword">func</span> <span class="token function">ThrowErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;%s %s&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -2557,7 +2557,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         <span class="token comment">// &#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
-        myErr <span class="token operator">:=</span> <span class="token function">throwErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        myErr <span class="token operator">:=</span> <span class="token function">ThrowErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
@@ -3022,7 +3022,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-09T16:41:29.728Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-09T16:53:29.642Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-10T05:44:07.558Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-12T11:10:20.012Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
