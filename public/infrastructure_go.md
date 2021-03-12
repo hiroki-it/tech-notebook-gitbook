@@ -781,7 +781,7 @@ runtime.main: undefined: main.main
 
 #### ・関数とは
 
-構造体に関連付けられていない関数のこと．
+構造体に関連付けられていない関数のこと．関数の頭文字は大文字にする必要がある．
 
 **＊実装例＊**
 
@@ -790,12 +790,13 @@ package main
 
 import "fmt"
 
-func example(x string) string {
+// 頭文字を大文字する
+func Example(x string) string {
     fmt.Println(x)
 }
 
 func main(){
-    example("Hello world!")
+    Example("Hello world!")
 }
 ```
 
@@ -870,7 +871,7 @@ import "fmt"
 
 type Age int
 
-func (age Age) printAge() string {
+func (age Age) PrintAge() string {
     return fmt.Sprintf("%dです．", age)
 }
 
@@ -1163,8 +1164,7 @@ import (
     "log"
     "os"
 )
-
-func throwErrorsNew() error {
+func ThrowErrorsNew() error {
     return errors.New("<エラーメッセージ>")
 }
 
@@ -1173,7 +1173,7 @@ func main() {
     
     if err != nil {
         // 独自エラーメッセージを設定する．
-        myErr := throwErrorsNew()
+        myErr := ThrowErrorsNew()
         log.Fatalf("ERROR: %#v\n", myErr)
     }
     
@@ -1197,7 +1197,7 @@ import (
     "os"
 )
 
-func throwErrorf() error {
+func ThrowErrorf() error {
     return fmt.Errorf("%s %s", x, y)
 }
 
@@ -1206,7 +1206,7 @@ func main() {
     
     if err != nil {
         // 独自エラーメッセージを設定する．
-        myErr := throwErrorf()
+        myErr := ThrowErrorf()
         log.Fatalf("ERROR: %#v\n", myErr)
     }
     
