@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>▶ ︎Symfony · 僕のドキュメントサイト【GitBook版】</title>
+        <title>▶ ︎データ構造 · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="backend_framework_laravel.html" />
     
-    
-    <link rel="prev" href="backend_package.html" />
+    <link rel="prev" href="backend_object_orientation_method_data.html" />
     
 
     </head>
@@ -295,7 +293,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.1.4" data-path="backend_object_orientation_data_structure.html">
+        <li class="chapter active" data-level="1.4.1.4" data-path="backend_object_orientation_data_structure.html">
             
                 <a href="backend_object_orientation_data_structure.html">
             
@@ -417,7 +415,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.4.2" data-path="backend_framework_symfony.html">
+        <li class="chapter " data-level="1.4.4.2" data-path="backend_framework_symfony.html">
             
                 <a href="backend_framework_symfony.html">
             
@@ -1516,7 +1514,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >▶ ︎Symfony</a>
+        <a href=".." >▶ ︎データ構造</a>
     </h1>
 </div>
 
@@ -1531,329 +1529,308 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="symfony">Symfony</h1>
-<h2 id="01-&#x53C2;&#x8003;&#x306B;&#x306A;&#x308B;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;">01. &#x53C2;&#x8003;&#x306B;&#x306A;&#x308B;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;</h2>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://symfony.com/doc/current/the-fast-track/ja/index.html" target="_blank">https://symfony.com/doc/current/the-fast-track/ja/index.html</a></p>
-<p><br></p>
-<h2 id="01-02-symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;">01-02. Symfony&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h2>
-<pre class="language-"><code>Symfony
-&#x251C;&#x2500;&#x2500; config&#x3000;#&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306E;&#x305F;&#x3081;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x5B9A;&#x7FA9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x7B49;&#xFF09;
-&#x2502;
-&#x251C;&#x2500;&#x2500; bin&#x3000;#&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x30C4;&#x30FC;&#x30EB;
-&#x2502;   &#x251C;&#x2500;&#x2500; console #bin/console&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-&#x2502;   &#x2514;&#x2500;&#x2500; symfony_requirements
-&#x2502;
-&#x251C;&#x2500;&#x2500; public    
-|   &#x251C;&#x2500;&#x2500; index.php #&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x3001;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x3068;&#x3057;&#x3066;&#x52D5;&#x304F;
-|   &#x2514;&#x2500;&#x2500; index_dev.php #&#x958B;&#x767A;&#x74B0;&#x5883;&#x3067;&#x3001;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x3068;&#x3057;&#x3066;&#x52D5;&#x304F;
-&#x2502;
-&#x251C;&#x2500;&#x2500; src&#x3000;#&#x4E3B;&#x8981;&#x306A;PHP&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-&#x2502;   &#x251C;&#x2500;&#x2500; AppBundle #&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;
-&#x2502;   &#x2502;  &#x251C;&#x2500;&#x2500; Controller&#x3000;#UserCase&#x5C64;
-&#x2502;   &#x2502;  &#x251C;&#x2500;&#x2500; Entity #&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x3000;&#x21D2;&#x3000;Domain&#x5C64;
-&#x2502;   &#x2502;  &#x251C;&#x2500;&#x2500; Repository #&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA; &#x21D2; Infrastructure&#x5C64;
-&#x2502;   &#x2502;  &#x251C;&#x2500;&#x2500; Form #&#x30D5;&#x30A9;&#x30FC;&#x30E0;
-&#x2502;   &#x2502;  &#x2514;&#x2500;&#x2500; Resources
-&#x2502;   &#x2502;       &#x2514;&#x2500;&#x2500; views #&#x753B;&#x9762;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#xFF08;&#x203B;&#x672C;&#x66F8;&#x3067;&#x306F;&#x6271;&#x308F;&#x306A;&#x3044;&#xFF09; 
-&#x2502;   &#x2502;           
-&#x2502;   &#x2514;&#x2500;&#x2500; &#x305D;&#x306E;&#x4ED6;&#x306E;Bundle #&#x6C4E;&#x7528;&#x7684;&#x306A;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#xFF08;&#x203B;&#x672C;&#x66F8;&#x3067;&#x306F;&#x6271;&#x308F;&#x306A;&#x3044;&#xFF09;
-|
-&#x251C;&#x2500;&#x2500; templates&#x3000;#UserInterface&#x5C64;
-&#x2502;   
-&#x251C;&#x2500;&#x2500; test #&#x81EA;&#x52D5;&#x30C6;&#x30B9;&#x30C8;&#xFF08;Unit tests&#x7B49;&#xFF09;
-&#x2502;  
-&#x251C;&#x2500;&#x2500; var #&#x81EA;&#x52D5;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-&#x2502;   &#x251C;&#x2500;&#x2500; cache #&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-&#x2502;   &#x251C;&#x2500;&#x2500; logs #&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-&#x2502;   &#x2514;&#x2500;&#x2500; sessions
-&#x2502;
-&#x251C;&#x2500;&#x2500; vendor #&#x5916;&#x90E8;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;
-&#x2502;   &#x251C;&#x2500;&#x2500; doctrine #&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;
-&#x2502;   &#x251C;&#x2500;&#x2500; league #&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;
-&#x2502;   &#x251C;&#x2500;&#x2500; sensio
-&#x2502;   &#x251C;&#x2500;&#x2500; swiftmailer #&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;
-&#x2502;   &#x251C;&#x2500;&#x2500; symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8; #&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8; 
-&#x2502;   &#x2514;&#x2500;&#x2500; twig #&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;
-&#x2502;
-&#x2514;&#x2500;&#x2500; asset #&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x306B;&#x516C;&#x958B;&#x3055;&#x308C;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;css, javascript, image&#x7B49;&#xFF09;
-    &#x251C;&#x2500;&#x2500; admin
-    &#x251C;&#x2500;&#x2500; bootstrap
-    &#x251C;&#x2500;&#x2500; css
-    &#x251C;&#x2500;&#x2500; fontawesome
-    &#x251C;&#x2500;&#x2500; img #&#x753B;&#x50CF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;
-    &#x251C;&#x2500;&#x2500; jquery #jquery&#xFF08;javascript&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#xFF09;
-    &#x2514;&#x2500;&#x2500; js #javascript&#x30D5;&#x30A1;&#x30A4;&#x30EB;
+                                <h1 id="&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;">&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;</h1>
+<h2 id="01-&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;">01. &#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
+<p>&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x304C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x6642;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408;&#x3092;&#x52B9;&#x7387;&#x7684;&#x306B;&#x6271;&#x3046;&#x305F;&#x3081;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;PHP&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
+<h3 id="array&#x578B;">Array&#x578B;</h3>
+<p>&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;">&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;</h4>
+<p>&#x756A;&#x53F7;&#x30AD;&#x30FC;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<pre class="language-"><code>Array
+(
+  [0] =&gt; A
+  [1] =&gt; B
+  [2] =&gt; C
+)
+</code></pre><h4 id="&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;">&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;</h4>
+<p>&#x914D;&#x5217;&#x306E;&#x4E2D;&#x306B;&#x914D;&#x5217;&#x3092;&#x3082;&#x3064;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x5165;&#x308C;&#x5B50;&#x69CB;&#x9020;&#x304C;&#xFF12;&#x6BB5;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x300E;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
+<pre class="language-"><code>( 
+  [0] =&gt; Array
+         (
+            [0] =&gt; &#x30EA;&#x30F3;&#x30B4;
+            [1] =&gt; &#x30A4;&#x30C1;&#x30B4;
+            [2] =&gt; &#x30C8;&#x30DE;&#x30C8;
+         )
+
+  [1] =&gt; Array
+         (
+            [0] =&gt; &#x30E1;&#x30ED;&#x30F3;
+            [1] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
+            [2] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
+         )
+)
+</code></pre><h4 id="&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;">&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;</h4>
+<p>&#x30AD;&#x30FC;&#x540D;&#xFF08;&#x8D64;&#xFF0C;&#x7DD1;&#xFF0C;&#x9EC4;&#xFF0C;&#x679C;&#x7269;&#xFF0C;&#x91CE;&#x83DC;&#xFF09;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;Array&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4E0B;&#x306E;&#x4F8B;&#x306F;&#xFF0C;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x304B;&#x3064;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code>Array
+(
+    [&#x8D64;] =&gt; Array
+        (
+            [&#x679C;&#x7269;] =&gt; &#x30EA;&#x30F3;&#x30B4;
+            [&#x679C;&#x7269;] =&gt; &#x30A4;&#x30C1;&#x30B4;
+            [&#x91CE;&#x83DC;] =&gt; &#x30C8;&#x30DE;&#x30C8;
+        )
+
+    [&#x7DD1;] =&gt; Array
+        (
+            [&#x679C;&#x7269;] =&gt; &#x30E1;&#x30ED;&#x30F3;
+            [&#x91CE;&#x83DC;] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
+            [&#x91CE;&#x83DC;] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
+        )
+)
 </code></pre><p><br></p>
-<h2 id="02-&#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">02. &#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;Symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
-<h3 id="console">Console</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Command\LockableTrait;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-</code></pre>
-<p><br></p>
-<h3 id="httpfoundation">HttpFoundation</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-</code></pre>
-<p><br></p>
-<h3 id="httpkernel">HttpKernel</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-</code></pre>
-<p><br></p>
-<h3 id="pimple">Pimple</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Pimple\ConfigSupport;
-use Pimple\Container;
-use Pimple\DiSupport;
-use Pimple\ServiceProviderInterface;
-</code></pre>
-<p><br></p>
-<h3 id="security">Security</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Security\Core\AuthenticationEvents;
-use Symfony\Component\Security\Csrf\CsrfToken;
-use Symfony\Component\Security\Csrf\CsrfTokenManager;
-</code></pre>
-<p><br></p>
-<h3 id="eventdispatcher">EventDispatcher</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\EventDispatcher\Event;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-</code></pre>
-<p><br></p>
-<h3 id="routing">Routing</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-</code></pre>
-<p><br></p>
-<h3 id="cache">Cache</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-</code></pre>
-<p><br></p>
-<h2 id="03-console">03. Console</h2>
-<h3 id="cli&#xFF1A;command-line-interface">CLI&#xFF1A;Command Line Interface</h3>
-<h4 id="&#x30FB;cli&#x3068;&#x306F;">&#x30FB;CLI&#x3068;&#x306F;</h4>
-<p>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#xFF08;<code>.sh</code>&#xFF09;&#xFF0C;&#x307E;&#x305F;&#x306F;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>.bat</code>&#xFF09;&#x306B;&#x304A;&#x3051;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h3 id="linkedlist&#x578B;">LinkedList&#x578B;</h3>
+<p>PHP&#x3067;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#x3042;&#x307E;&#x308A;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#xFF0E;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;Java&#x306B;&#x304A;&#x3051;&#x308B;LinkedList&#x578B;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
+<h4 id="&#x30FB;php&#x306E;list&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;">&#x30FB;PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;</h4>
+<p>PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;List&#x578B;&#x3068;&#x306F;&#x610F;&#x5473;&#x5408;&#x3044;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x4E00;&#x3064;&#x4E00;&#x3064;&#x3092;&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#xFF0C;List&#x578B;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5197;&#x9577;&#x3067;&#x306F;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Console\Command\LockableTrait;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class createExampleCommand extends \Symfony\Component\Console\Command\Command
-{
-    // &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;
-    protected function configure()
-    {
-        // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;
-        $this-&gt;setName(&apos;create:example&apos;);
+<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$i</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$u</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&#x306E;&#x5F8C;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x5F15;&#x6570;&#x540D;
-        $this-&gt;addArgument(
-          &apos;year-month&apos;,
-          InputArgument::REQUIRED,
-          &apos;&#x51E6;&#x7406;&#x5E74;&#x6708;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;
-        );
-    }
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$i</span><span class="token operator">.</span><span class="token variable">$u</span><span class="token punctuation">;</span> <span class="token comment">// &#x3042;&#x3044;&#x3046;</span>
+</code></pre>
+<p>&#x3057;&#x304B;&#x3057;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x4E00;&#x884C;&#x3067;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-    // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;
-    protected function execute(InputeInterface $input, OutputInterface $output)
-    {
-        try {
-                // &#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-                $year_month = Carbon::createFromFormat(
-                  &apos;Y-m&apos;,
-                  $input-&gt;getArgument(&apos;year-month&apos;)
-                );
+<span class="token keyword">list</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$i</span><span class="token punctuation">,</span> <span class="token variable">$u</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        } catch (\Exception $e) {
-            // &#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x4F5C;&#x6210;
-        }
-    }
-}
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$i</span><span class="token operator">.</span><span class="token variable">$u</span><span class="token punctuation">;</span> <span class="token comment">// &#x3042;&#x3044;&#x3046;</span>
 </code></pre>
 <p><br></p>
-<h3 id="cli&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">CLI&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
-<h4 id="&#x30FB;for">&#x30FB;<code>for</code></h4>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># txt&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5909;&#x6570;f&#x306B;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x683C;&#x7D0D;&#x3057;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-<span class="token keyword">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword">in</span> *txt <span class="token keyword">do</span> <span class="token builtin class-name">echo</span> <span class="token variable">$f</span><span class="token punctuation">;</span> <span class="token keyword">done</span><span class="token punctuation">;</span>
+<h3 id="queue&#x578B;">Queue&#x578B;</h3>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue1.gif" alt="Queue1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue2.gif" alt="Queue2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue3.gif" alt="Queue3"></p>
+<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_shift</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;Blue&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;Green&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x5F15;&#x6570;&#x3092;&#xFF0C;&#x914D;&#x5217;&#x306E;&#x6700;&#x5F8C;&#x306B;&#xFF0C;&#x8981;&#x7D20;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token function">array_push</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;Red&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+
+<span class="token comment">//    Array</span>
+<span class="token comment">//    (</span>
+<span class="token comment">//        [0] =&gt; Blue</span>
+<span class="token comment">//        [1] =&gt; Green</span>
+<span class="token comment">//        [2] =&gt; Red</span>
+<span class="token comment">//    )</span>
+
+<span class="token comment">// &#x914D;&#x5217;&#x306E;&#x6700;&#x521D;&#x306E;&#x8981;&#x7D20;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
+<span class="token variable">$theFirst</span><span class="token operator">=</span> <span class="token function">array_shift</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+
+<span class="token comment">//    Array</span>
+<span class="token comment">//    (</span>
+<span class="token comment">//    [0] =&gt; Green</span>
+<span class="token comment">//    [1] =&gt; Red</span>
+<span class="token comment">//    )</span>
+
+<span class="token comment">// &#x53D6;&#x308A;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5024;&#x306E;&#x78BA;&#x8A8D;</span>
+<span class="token keyword">echo</span> <span class="token variable">$theFirst</span><span class="token punctuation">;</span> <span class="token comment">// Blue</span>
 </code></pre>
-<h4 id="&#x30FB;cron&#x306B;&#x3088;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x81EA;&#x52D5;&#x5B9F;&#x884C;">&#x30FB;Cron&#x306B;&#x3088;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x81EA;&#x52D5;&#x5B9F;&#x884C;</h4>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<p>10&#x79D2;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># 10&#x79D2;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="token keyword">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">seq</span> <span class="token number">0</span> <span class="token number">10</span> <span class="token number">59</span><span class="token variable">`</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token punctuation">(</span>sleep <span class="token punctuation">{</span><span class="token variable">$f</span><span class="token punctuation">}</span><span class="token punctuation">;</span> create:example<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token keyword">done</span><span class="token punctuation">;</span>
-</code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># 15&#x6642;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="token number">0</span> <span class="token number">15</span> * * * * create:example<span class="token punctuation">;</span>
-</code></pre>
+<h4 id="&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;queue">&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue</h4>
+<p>&#x9001;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#xFF09;&#x3092;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue&#x306B;&#x8FFD;&#x52A0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x53D7;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;.jpg" alt="&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B7;&#x3099;&#x30AD;&#x30E5;&#x30FC;"></p>
 <p><br></p>
-<h2 id="03-02-httpfoundation">03-02. HttpFoundation</h2>
-<h3 id="appkernel">AppKernel</h3>
-<p><img src="https://user-images.githubusercontent.com/42175286/57711074-08c21b00-76a9-11e9-959e-b3777f70d2c6.png" alt="&#x56F3;2-9-ver2"></p>
-<h4 id="&#x30FB;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;">&#x30FB;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h4>
-<ol>
-<li><p>Request&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</p>
-<p>&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x304B;&#x3089;&#x53CE;&#x96C6;&#x3057;&#x305F;&#x60C5;&#x5831;&#x3084;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D8;&#x30C3;&#x30C0;&#x60C5;&#x5831;&#x3084;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x60C5;&#x5831;&#x3092;&#x4FDD;&#x6301;</p>
-</li>
-<li><p>&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;<code>handle()</code></p>
-<p>&#x9001;&#x3089;&#x308C;&#x3066;&#x304D;&#x305F;URL&#x3092;&#x57FA;&#x306B;&#x3057;&#x305F;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x306E;&#x7279;&#x5B9A;&#xFF0C;&#x7279;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5B9F;&#x884C;&#xFF0C;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;</p>
-</li>
-<li><p>Response&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</p>
-<p>HTTP&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30D8;&#x30C3;&#x30C0;&#x60C5;&#x5831;&#x3084;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x60C5;&#x5831;&#x306A;&#x3069;&#x306E;&#x60C5;&#x5831;&#x3092;&#x4FDD;&#x6301;</p>
-</li>
-</ol>
-<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x53D6;&#x308A;&#x51FA;&#x3055;&#x308C;&#x305F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5F79;&#x5272;">&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x53D6;&#x308A;&#x51FA;&#x3055;&#x308C;&#x305F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5F79;&#x5272;</h4>
-<ol>
-<li>&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x304C;&#xFF0C;&#x30AF;&#x30E9;&#x30A2;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x306E;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x53D7;&#x3051;&#x53D6;&#x308B;&#xFF0E;</li>
-<li>&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x304C;&#xFF0C;&#x9001;&#x3089;&#x308C;&#x3066;&#x304D;&#x305F;URL&#x3068;&#x30EB;&#x30FC;&#x30C8;&#x5B9A;&#x7FA9;&#x3092;&#x57FA;&#x306B;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x5B9F;&#x884C;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x304C;URL&#x3092;&#x751F;&#x6210;&#xFF0E;</li>
-<li>&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x304C;&#xFF0C;&#x305D;&#x306E;&#x7D50;&#x679C;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x8FD4;&#x3059;&#xFF0E;
-&#x3053;&#x306E;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x3092;&#xFF0C;&#x7279;&#x5225;&#x306B;&#x300E;HTTP&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</li>
-</ol>
-<p><strong>&#x3010;app.php&#x306E;&#x5B9F;&#x88C5;&#x4F8B;&#x3011;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">use</span> <span class="token attr-name">Symfony\Component\HttpFoundation\Request;</span>
+<h3 id="stack&#x578B;">Stack&#x578B;</h3>
+<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_pop</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack1.gif" alt="Stack1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack2.gif" alt="Stack2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack3.gif" alt="Stack3"></p>
+<p><br></p>
+<h3 id="tree&#x578B;">Tree&#x578B;</h3>
+<h4 id="&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;">&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;</h4>
+<p>  &#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;1.gif" alt="&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;"></p>
+<h4 id="&#x30FB;&#x30D2;&#x30FC;&#x30D7;">&#x30FB;&#x30D2;&#x30FC;&#x30D7;</h4>
+<p>  Priority Queue&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x3068;&#x304D;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;1.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;2.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;3.gif" alt="&#x30D2;&#x30FC;&#x30D7;2"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;4.gif" alt=". "></p>
+<p><br></p>
+<h2 id="01-02-java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;">01-02. Java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;Java&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
+<h3 id="array&#x578B;">Array&#x578B;</h3>
+<h4 id="&#x30FB;arraylist">&#x30FB;ArrayList</h4>
+<p>ArrayList&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;Array&#x578B;&#xFF0E;PHP&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;hashmap">&#x30FB;HashMap</h4>
+<p>HashMap&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;Array&#x578B;&#xFF0E;PHP&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="linkedlist&#x578B;">LinkedList&#x578B;</h3>
+<p>&#x5024;&#x3092;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x306B;&#x3088;&#x3063;&#x3066;&#x9806;&#x5E8F;&#x901A;&#x308A;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x5358;&#x65B9;&#x5411;list">&#x30FB;&#x5358;&#x65B9;&#x5411;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-1.gif" alt="p555-1"></p>
+<h4 id="&#x30FB;&#x53CC;&#x65B9;&#x5411;list">&#x30FB;&#x53CC;&#x65B9;&#x5411;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-2.gif" alt="p555-2"></p>
+<h4 id="&#x30FB;&#x5FAA;&#x74B0;list">&#x30FB;&#x5FAA;&#x74B0;List</h4>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-3.gif" alt="p555-3"></p>
+<p><br></p>
+<h3 id="queue&#x578B;">Queue&#x578B;</h3>
+<p><br></p>
+<h3 id="stack&#x578B;">Stack&#x578B;</h3>
+<p><br></p>
+<h3 id="tree&#x578B;">Tree&#x578B;</h3>
+<p><br></p>
+<h2 id="02-&#x30C7;&#x30FC;&#x30BF;&#x578B;">02. &#x30C7;&#x30FC;&#x30BF;&#x578B;</h2>
+<h3 id="&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;">&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;</h3>
+<h4 id="&#x30FB;int">&#x30FB;int</h4>
+<h4 id="&#x30FB;float">&#x30FB;float</h4>
+<h4 id="&#x30FB;string">&#x30FB;string</h4>
+<h4 id="&#x30FB;boolean">&#x30FB;boolean</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">T&#xFF0F;F</th>
+<th>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>FALSE</strong></td>
+<td><code>$var =</code></td>
+<td>&#x4F55;&#x3082;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5909;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>False</code></td>
+<td>&#x6587;&#x5B57;&#x3068;&#x3057;&#x3066;&#x306E;False</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>0</code></td>
+<td>&#x6570;&#x5B57;&#x3001;&#x6587;&#x5B57;&#x5217;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td><code>&quot;&quot;</code></td>
+<td>&#x7A7A;&#x6587;&#x5B57;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td>array()</td>
+<td>&#x8981;&#x7D20;&#x6570;&#x304C;0&#x500B;&#x306E;&#x914D;&#x5217;</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td>NULL</td>
+<td>NULL&#x5024;</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>TRUE</strong></td>
+<td>&#x4E0A;&#x8A18;&#x4EE5;&#x5916;&#x306E;&#x5024;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x8907;&#x5408;&#x578B;">&#x8907;&#x5408;&#x578B;</h3>
+<h4 id="&#x30FB;array">&#x30FB;array</h4>
+<h4 id="&#x30FB;object">&#x30FB;object</h4>
+<pre class="language-"><code>Fruit Object
+(
+    [id:private] =&gt; 1
+    [name:private] =&gt; &#x30EA;&#x30F3;&#x30B4;
+    [price:private] =&gt; 100
+)
+</code></pre><p><br></p>
+<h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;</h3>
+<h4 id="&#x30FB;null">&#x30FB;null</h4>
+<h4 id="&#x30FB;date">&#x30FB;date</h4>
+<p>&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4FBF;&#x5B9C;&#x4E0A;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3068;&#x306F;&#xFF0C;&#x5354;&#x5B9A;&#x4E16;&#x754C;&#x6642;(UTC)&#x3092;&#x57FA;&#x6E96;&#x306B;&#x3057;&#x305F;1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;&#x3092;&#x8868;&#x3057;&#x305F;&#x3082;&#x306E;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</th>
+<th>&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</th>
+<th>&#x5099;&#x8003;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x65E5;&#x4ED8;</td>
+<td>2019-07-07</td>
+<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x30C9;&#x30C3;&#x30C8;&#x3001;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x306A;&#x3069;&#x3082;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td>&#x6642;&#x9593;</td>
+<td>19:07:07</td>
+<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x3082;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td>&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x9593;</td>
+<td>2019-07-07 19:07:07</td>
+<td>&#x540C;&#x4E0A;</td>
+</tr>
+<tr>
+<td>&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#xFF08;&#x79D2;&#xFF09;</td>
+<td>1562494027</td>
+<td>1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;2019-07-07 19:07:07 &#x307E;&#x3067;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;">&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;</h3>
+<h4 id="&#x30FB;string">&#x30FB;<code>(string)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// $var&#x306F;Int&#x578B;&#xFF0E;</span>
 
-
-<span class="token attr-name">$kernel</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> new</span> <span class="token attr-name">AppKernel(&apos;dev&apos;,</span> <span class="token attr-name">true);</span>
-
-<span class="token attr-name">if</span> <span class="token attr-name">(PHP_VERSION_ID</span> <span class="token attr-name">&lt;</span> <span class="token attr-name">70000)</span> <span class="token attr-name">{</span>
-    <span class="token attr-name">$kernel-</span><span class="token punctuation">&gt;</span></span>loadClassCache();
-}
-
-$request = Request::createFromGlobals();  //&#xFF08;&#xFF11;&#xFF09;
-
-// &#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;
-$response = $kernel-&gt;handle($request); //&#xFF08;&#xFF12;&#xFF09;
-
-$response-&gt;send(); //&#xFF08;&#xFF13;&#xFF09;
-
-$kernel-&gt;terminate($request, $response);
+<span class="token comment">// &#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;&#x3067;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x63DB;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span> <span class="token comment">// $var&#x306F;String&#x578B;</span>
 </code></pre>
-<p>&#x4E0A;&#x8A18;&#x306E;<code>handle()</code>&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;<code>handle()</code>&#x304C;&#xFF0C;C/A&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x306E;&#x7279;&#x5B9A;&#xFF0C;&#x7279;&#x5B9A;&#x3055;&#x308C;&#x305F;C/A&#x306E;&#x5B9F;&#x884C;&#xFF0C;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">public</span> <span class="token attr-name">function</span> <span class="token attr-name">handle</span>
-<span class="token attr-name">(</span>
-    <span class="token attr-name">Request</span> <span class="token attr-name">$request,</span>
-    <span class="token attr-name">$type</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> HttpKernelInterface::MASTER_REQUEST,</span>
-    <span class="token attr-name">$catch</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> true</span>
-<span class="token attr-name">)</span>
-<span class="token attr-name">{</span>
-    <span class="token attr-name">$this-</span><span class="token punctuation">&gt;</span></span>boot();
+<h4 id="&#x30FB;int">&#x30FB;<code>(int)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">;</span>
 
-    ++$this-&gt;requestStackSize;
+<span class="token comment">// Int&#x578B;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
 
-    $this-&gt;resetServices = true;
-
-    try {
-        return $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
-
-    } finally {
-        --$this-&gt;requestStackSize;
-    }
-}
+<span class="token comment">// 1</span>
 </code></pre>
-<p><br></p>
-<h3 id="request&#xFF0C;response">Request&#xFF0C;Response</h3>
-<h4 id="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;&#xFF0C;json&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;">&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x53D6;&#x5F97;&#xFF0C;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h4>
-<ol>
-<li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0C;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3057;&#xFF0C;&#x304B;&#x3064;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#xFF0E;</li>
-<li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x307F;</li>
-</ol>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use App\Repository\XxxReposiroy;
+<h4 id="&#x30FB;bool">&#x30FB;<code>(bool)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-class ExampleController extends AbstractController 
-{
-    public function get(Request $req)
-    {
-        // Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0E;
-        if ($req-&gt;headers-&gt;get(&apos;content-type&apos;) === &apos;application/json&apos;) {
+<span class="token comment">// Boolean&#x578B;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">bool</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
 
-            $xxxRepository = new XxxRepository;
-            $entityObject = $xxxRepository-&gt;getEntity();
-
-            //-- entity&#x3092;Object&#x578B;&#x304B;&#x3089;Array&#x578B;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xFF0E;--//
-
-            // Ajax&#x306B;&#x30EC;&#x30F3;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;
-            return new JsonResponse([ 
-                &apos;value&apos; =&gt; $entityArray
-              ]);
-        }
-
-        return $this-&gt;render(&apos;.../xxx.twig&apos;)-&gt;setStatusCode(200);
-    }
-}
+<span class="token comment">// true</span>
 </code></pre>
-<p><br></p>
-<h2 id="03-03-httpkernel">03-03. HttpKernel</h2>
-<h3 id="httpkernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;">HttpKernel&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3068;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h3>
-<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Symfony&#x306E;HttpKernel&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="Symfony&#x306E;HttpKernel&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
-<p><br></p>
-<h2 id="03-04-pimple">03-04. Pimple</h2>
-<h3 id="service-container">Service Container</h3>
-<p>Symfony&#x304B;&#x3089;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<p><br></p>
-<h2 id="03-05-routing">03-05. Routing</h2>
-<h3 id="routingconfigurator">RoutingConfigurator</h3>
-<h4 id="&#x30FB;routingconfigurator&#x3068;&#x306F;">&#x30FB;RoutingConfigurator&#x3068;&#x306F;</h4>
-<p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use App\Controller\BlogApiController; // &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+<h4 id="&#x30FB;float">&#x30FB;<code>(float)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;1.0&quot;</span><span class="token punctuation">;</span>
 
-return function (RoutingConfigurator $routes) {
-    $routes-&gt;add(&apos;api_post_show&apos;, &apos;/api/posts/{id}&apos;)
-        -&gt;controller([BlogApiController::class, &apos;show&apos;])
-        -&gt;methods([&apos;GET&apos;, &apos;HEAD&apos;])
-    ;
-    $routes-&gt;add(&apos;api_post_edit&apos;, &apos;/api/posts/{id}&apos;)
-        -&gt;controller([BlogApiController::class, &apos;edit&apos;])
-        -&gt;methods([&apos;PUT&apos;])
-    ;
-};
+<span class="token comment">// Float&#x578B;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">float</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1.0</span>
 </code></pre>
-<p><br></p>
-<h2 id="03-06-cache">03-06. Cache</h2>
-<h3 id="filesystemadapter">FilesystemAdapter</h3>
-<h4 id="&#x30FB;filesystemadapter&#x3068;&#x306F;">&#x30FB;FilesystemAdapter&#x3068;&#x306F;</h4>
-<p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5B58;&#x7D9A;&#x6642;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30EB;&#x30FC;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-
-$cache = new FilesystemAdapter(&apos;&apos;, 0, &apos;example/cache/&apos;);
-
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;
-$cacheItemObj = $cache-&gt;getItem(&apos;stats.products_count&apos;);
-
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;
-if (!$cacheItemObj-&gt;isHit()) {
-  // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;
-  $cacheItemObj-&gt;set(777);
-  // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;
-  $cache-&gt;save($cacheItemObj);
-}
-
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#xFF0E;
-$cacheItemObj = $cache-&gt;get();
+<h4 id="&#x30FB;array">&#x30FB;<code>(array)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// Array&#x578B;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">array</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="&#x30FB;object">&#x30FB;<code>(object)</code></h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// Object&#x578B;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">object</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -1882,14 +1859,10 @@ $cacheItemObj = $cache-&gt;get();
 
             
                 
-                <a href="backend_package.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎バックエンドパッケージ">
+                <a href="backend_object_orientation_method_data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ▶ ︎クラスベース（2）">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="backend_framework_laravel.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎Laravel">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1898,7 +1871,7 @@ $cacheItemObj = $cache-&gt;get();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"next":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2021-01-15T16:25:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎データ構造","level":"1.4.1.4","depth":3,"next":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎繰り返しロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"previous":{"title":"▶ ︎クラスベース（2）","level":"1.4.1.3","depth":3,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_data_structure.md","mtime":"2021-03-14T04:41:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
