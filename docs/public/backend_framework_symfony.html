@@ -1586,62 +1586,62 @@
 </code></pre><p><br></p>
 <h2 id="02-&#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;">02. &#x7279;&#x306B;&#x6C4E;&#x7528;&#x7684;&#x306A;Symfony&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</h2>
 <h3 id="console">Console</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Command\LockableTrait;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Application</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Command<span class="token punctuation">\</span>LockableTrait</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Input<span class="token punctuation">\</span>InputArgument</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Input<span class="token punctuation">\</span>InputInterface</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Output<span class="token punctuation">\</span>OutputInterface</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="httpfoundation">HttpFoundation</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Response</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>ResponseHeaderBag</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>BinaryFileResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>JsonResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>RedirectResponse</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="httpkernel">HttpKernel</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>FilterResponseEvent</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Event<span class="token punctuation">\</span>GetResponseEvent</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>BadRequestHttpException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpKernel<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>NotFoundHttpException</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="pimple">Pimple</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Pimple\ConfigSupport;
-use Pimple\Container;
-use Pimple\DiSupport;
-use Pimple\ServiceProviderInterface;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Pimple<span class="token punctuation">\</span>ConfigSupport</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Pimple<span class="token punctuation">\</span>Container</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Pimple<span class="token punctuation">\</span>DiSupport</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Pimple<span class="token punctuation">\</span>ServiceProviderInterface</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="security">Security</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Security\Core\AuthenticationEvents;
-use Symfony\Component\Security\Csrf\CsrfToken;
-use Symfony\Component\Security\Csrf\CsrfTokenManager;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Security<span class="token punctuation">\</span>Core<span class="token punctuation">\</span>AuthenticationEvents</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Security<span class="token punctuation">\</span>Csrf<span class="token punctuation">\</span>CsrfToken</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Security<span class="token punctuation">\</span>Csrf<span class="token punctuation">\</span>CsrfTokenManager</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="eventdispatcher">EventDispatcher</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\EventDispatcher\Event;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>Event</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>EventDispatcherInterface</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>EventDispatcher<span class="token punctuation">\</span>EventSubscriberInterface</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="routing">Routing</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Loader<span class="token punctuation">\</span>Configurator<span class="token punctuation">\</span>RoutingConfigurator</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="cache">Cache</h3>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>Adapter<span class="token punctuation">\</span>FilesystemAdapter</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-console">03. Console</h2>
@@ -1649,43 +1649,43 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 <h4 id="&#x30FB;cli&#x3068;&#x306F;">&#x30FB;CLI&#x3068;&#x306F;</h4>
 <p>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#xFF08;<code>.sh</code>&#xFF09;&#xFF0C;&#x307E;&#x305F;&#x306F;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>.bat</code>&#xFF09;&#x306B;&#x304A;&#x3051;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Console\Command\LockableTrait;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Command<span class="token punctuation">\</span>LockableTrait</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Input<span class="token punctuation">\</span>InputArgument</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Input<span class="token punctuation">\</span>InputInterface</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Output<span class="token punctuation">\</span>OutputInterface</span><span class="token punctuation">;</span>
 
-class createExampleCommand extends \Symfony\Component\Console\Command\Command
-{
-    // &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;
-    protected function configure()
-    {
-        // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;
-        $this-&gt;setName(&apos;create:example&apos;);
+<span class="token keyword">class</span> <span class="token class-name">createExampleCommand</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Console<span class="token punctuation">\</span>Command<span class="token punctuation">\</span>Command</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;create:example&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&#x306E;&#x5F8C;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x5F15;&#x6570;&#x540D;
-        $this-&gt;addArgument(
-          &apos;year-month&apos;,
-          InputArgument::REQUIRED,
-          &apos;&#x51E6;&#x7406;&#x5E74;&#x6708;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;
-        );
-    }
+        <span class="token comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;&#x306E;&#x5F8C;&#x306B;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x3044;&#x5F15;&#x6570;&#x540D;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">addArgument</span><span class="token punctuation">(</span>
+          <span class="token string single-quoted-string">&apos;year-month&apos;</span><span class="token punctuation">,</span>
+          <span class="token class-name static-context">InputArgument</span><span class="token operator">::</span><span class="token constant">REQUIRED</span><span class="token punctuation">,</span>
+          <span class="token string single-quoted-string">&apos;&#x51E6;&#x7406;&#x5E74;&#x6708;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;
-    protected function execute(InputeInterface $input, OutputInterface $output)
-    {
-        try {
-                // &#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-                $year_month = Carbon::createFromFormat(
-                  &apos;Y-m&apos;,
-                  $input-&gt;getArgument(&apos;year-month&apos;)
-                );
+    <span class="token comment">// &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x5185;&#x5BB9;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token class-name type-declaration">InputeInterface</span> <span class="token variable">$input</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">OutputInterface</span> <span class="token variable">$output</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token comment">// &#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+                <span class="token variable">$year_month</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">createFromFormat</span><span class="token punctuation">(</span>
+                  <span class="token string single-quoted-string">&apos;Y-m&apos;</span><span class="token punctuation">,</span>
+                  <span class="token variable">$input</span><span class="token operator">-&gt;</span><span class="token function">getArgument</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;year-month&apos;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        } catch (\Exception $e) {
-            // &#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x4F5C;&#x6210;
-        }
-    }
-}
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x306E;&#x6587;&#x7AE0;&#x3092;&#x4F5C;&#x6210;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="cli&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">CLI&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D0;&#x30C3;&#x30C1;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
@@ -1726,47 +1726,47 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 &#x3053;&#x306E;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x3092;&#xFF0C;&#x7279;&#x5225;&#x306B;&#x300E;HTTP&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</li>
 </ol>
 <p><strong>&#x3010;app.php&#x306E;&#x5B9F;&#x88C5;&#x4F8B;&#x3011;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">use</span> <span class="token attr-name">Symfony\Component\HttpFoundation\Request;</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
 
 
-<span class="token attr-name">$kernel</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> new</span> <span class="token attr-name">AppKernel(&apos;dev&apos;,</span> <span class="token attr-name">true);</span>
+<span class="token variable">$kernel</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AppKernel</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;dev&apos;</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token attr-name">if</span> <span class="token attr-name">(PHP_VERSION_ID</span> <span class="token attr-name">&lt;</span> <span class="token attr-name">70000)</span> <span class="token attr-name">{</span>
-    <span class="token attr-name">$kernel-</span><span class="token punctuation">&gt;</span></span>loadClassCache();
-}
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">PHP_VERSION_ID</span> <span class="token operator">&lt;</span> <span class="token number">70000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$kernel</span><span class="token operator">-&gt;</span><span class="token function">loadClassCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-$request = Request::createFromGlobals();  //&#xFF08;&#xFF11;&#xFF09;
+<span class="token variable">$request</span> <span class="token operator">=</span> <span class="token class-name static-context">Request</span><span class="token operator">::</span><span class="token function">createFromGlobals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//&#xFF08;&#xFF11;&#xFF09;</span>
 
-// &#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;
-$response = $kernel-&gt;handle($request); //&#xFF08;&#xFF12;&#xFF09;
+<span class="token comment">// &#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</span>
+<span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$kernel</span><span class="token operator">-&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#xFF08;&#xFF12;&#xFF09;</span>
 
-$response-&gt;send(); //&#xFF08;&#xFF13;&#xFF09;
+<span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&#xFF08;&#xFF13;&#xFF09;</span>
 
-$kernel-&gt;terminate($request, $response);
+<span class="token variable">$kernel</span><span class="token operator">-&gt;</span><span class="token function">terminate</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$response</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>&#x4E0A;&#x8A18;&#x306E;<code>handle()</code>&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;<code>handle()</code>&#x304C;&#xFF0C;C/A&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x306E;&#x7279;&#x5B9A;&#xFF0C;&#x7279;&#x5B9A;&#x3055;&#x308C;&#x305F;C/A&#x306E;&#x5B9F;&#x884C;&#xFF0C;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">public</span> <span class="token attr-name">function</span> <span class="token attr-name">handle</span>
-<span class="token attr-name">(</span>
-    <span class="token attr-name">Request</span> <span class="token attr-name">$request,</span>
-    <span class="token attr-name">$type</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> HttpKernelInterface::MASTER_REQUEST,</span>
-    <span class="token attr-name">$catch</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> true</span>
-<span class="token attr-name">)</span>
-<span class="token attr-name">{</span>
-    <span class="token attr-name">$this-</span><span class="token punctuation">&gt;</span></span>boot();
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">handle
+</span><span class="token punctuation">(</span>
+    <span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">,</span>
+    <span class="token variable">$type</span> <span class="token operator">=</span> <span class="token class-name static-context">HttpKernelInterface</span><span class="token operator">::</span><span class="token constant">MASTER_REQUEST</span><span class="token punctuation">,</span>
+    <span class="token variable">$catch</span> <span class="token operator">=</span> <span class="token constant boolean">true</span>
+<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    ++$this-&gt;requestStackSize;
+    <span class="token operator">++</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">requestStackSize</span><span class="token punctuation">;</span>
 
-    $this-&gt;resetServices = true;
+    <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">resetServices</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
 
-    try {
-        return $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">getHttpKernel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">handle</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">,</span> <span class="token variable">$type</span><span class="token punctuation">,</span> <span class="token variable">$catch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    } finally {
-        --$this-&gt;requestStackSize;
-    }
-}
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token operator">--</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">requestStackSize</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="request&#xFF0C;response">Request&#xFF0C;Response</h3>
@@ -1775,33 +1775,33 @@ $kernel-&gt;terminate($request, $response);
 <li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0C;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3057;&#xFF0C;&#x304B;&#x3064;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#xFF0E;</li>
 <li>Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30DA;&#x30FC;&#x30B8;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x307F;</li>
 </ol>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use App\Repository\XxxReposiroy;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Bundle<span class="token punctuation">\</span>FrameworkBundle<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>AbstractController</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>JsonResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>HttpFoundation<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Repository<span class="token punctuation">\</span>XxxReposiroy</span><span class="token punctuation">;</span>
 
-class ExampleController extends AbstractController 
-{
-    public function get(Request $req)
-    {
-        // Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0E;
-        if ($req-&gt;headers-&gt;get(&apos;content-type&apos;) === &apos;application/json&apos;) {
+<span class="token keyword">class</span> <span class="token class-name">ExampleController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractController</span> 
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$req</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Ajax&#x306B;&#x3088;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0E;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$req</span><span class="token operator">-&gt;</span><span class="token property">headers</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;content-type&apos;</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string single-quoted-string">&apos;application/json&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            $xxxRepository = new XxxRepository;
-            $entityObject = $xxxRepository-&gt;getEntity();
+            <span class="token variable">$xxxRepository</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XxxRepository</span><span class="token punctuation">;</span>
+            <span class="token variable">$entityObject</span> <span class="token operator">=</span> <span class="token variable">$xxxRepository</span><span class="token operator">-&gt;</span><span class="token function">getEntity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            //-- entity&#x3092;Object&#x578B;&#x304B;&#x3089;Array&#x578B;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xFF0E;--//
+            <span class="token comment">//-- entity&#x3092;Object&#x578B;&#x304B;&#x3089;Array&#x578B;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;&#xFF0E;--//</span>
 
-            // Ajax&#x306B;&#x30EC;&#x30F3;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;
-            return new JsonResponse([ 
-                &apos;value&apos; =&gt; $entityArray
-              ]);
-        }
+            <span class="token comment">// Ajax&#x306B;&#x30EC;&#x30F3;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0E;</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JsonResponse</span><span class="token punctuation">(</span><span class="token punctuation">[</span> 
+                <span class="token string single-quoted-string">&apos;value&apos;</span> <span class="token operator">=&gt;</span> <span class="token variable">$entityArray</span>
+              <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return $this-&gt;render(&apos;.../xxx.twig&apos;)-&gt;setStatusCode(200);
-    }
-}
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;.../xxx.twig&apos;</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">setStatusCode</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-03-httpkernel">03-03. HttpKernel</h2>
@@ -1816,44 +1816,44 @@ class ExampleController extends AbstractController
 <h3 id="routingconfigurator">RoutingConfigurator</h3>
 <h4 id="&#x30FB;routingconfigurator&#x3068;&#x306F;">&#x30FB;RoutingConfigurator&#x3068;&#x306F;</h4>
 <p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use App\Controller\BlogApiController; // &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Controller<span class="token punctuation">\</span>BlogApiController</span><span class="token punctuation">;</span> <span class="token comment">// &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Routing<span class="token punctuation">\</span>Loader<span class="token punctuation">\</span>Configurator<span class="token punctuation">\</span>RoutingConfigurator</span><span class="token punctuation">;</span>
 
-return function (RoutingConfigurator $routes) {
-    $routes-&gt;add(&apos;api_post_show&apos;, &apos;/api/posts/{id}&apos;)
-        -&gt;controller([BlogApiController::class, &apos;show&apos;])
-        -&gt;methods([&apos;GET&apos;, &apos;HEAD&apos;])
-    ;
-    $routes-&gt;add(&apos;api_post_edit&apos;, &apos;/api/posts/{id}&apos;)
-        -&gt;controller([BlogApiController::class, &apos;edit&apos;])
-        -&gt;methods([&apos;PUT&apos;])
-    ;
-};
+<span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token class-name type-declaration">RoutingConfigurator</span> <span class="token variable">$routes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$routes</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;api_post_show&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;/api/posts/{id}&apos;</span><span class="token punctuation">)</span>
+        <span class="token operator">-&gt;</span><span class="token function">controller</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token class-name static-context">BlogApiController</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;show&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">-&gt;</span><span class="token function">methods</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;GET&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;HEAD&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span>
+    <span class="token variable">$routes</span><span class="token operator">-&gt;</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;api_post_edit&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;/api/posts/{id}&apos;</span><span class="token punctuation">)</span>
+        <span class="token operator">-&gt;</span><span class="token function">controller</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token class-name static-context">BlogApiController</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;edit&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">-&gt;</span><span class="token function">methods</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;PUT&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-06-cache">03-06. Cache</h2>
 <h3 id="filesystemadapter">FilesystemAdapter</h3>
 <h4 id="&#x30FB;filesystemadapter&#x3068;&#x306F;">&#x30FB;FilesystemAdapter&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x5B58;&#x7D9A;&#x6642;&#x9593;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30EB;&#x30FC;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">Symfony<span class="token punctuation">\</span>Component<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>Adapter<span class="token punctuation">\</span>FilesystemAdapter</span><span class="token punctuation">;</span>
 
-$cache = new FilesystemAdapter(&apos;&apos;, 0, &apos;example/cache/&apos;);
+<span class="token variable">$cache</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilesystemAdapter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;&apos;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;example/cache/&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;
-$cacheItemObj = $cache-&gt;getItem(&apos;stats.products_count&apos;);
+<span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token variable">$cacheItemObj</span> <span class="token operator">=</span> <span class="token variable">$cache</span><span class="token operator">-&gt;</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;stats.products_count&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;
-if (!$cacheItemObj-&gt;isHit()) {
-  // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;
-  $cacheItemObj-&gt;set(777);
-  // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;
-  $cache-&gt;save($cacheItemObj);
-}
+<span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$cacheItemObj</span><span class="token operator">-&gt;</span><span class="token function">isHit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;</span>
+  <span class="token variable">$cacheItemObj</span><span class="token operator">-&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">777</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#xFF0E;</span>
+  <span class="token variable">$cache</span><span class="token operator">-&gt;</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token variable">$cacheItemObj</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#xFF0E;
-$cacheItemObj = $cache-&gt;get();
+<span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x30A2;&#x30A4;&#x30C6;&#x30E0;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
+<span class="token variable">$cacheItemObj</span> <span class="token operator">=</span> <span class="token variable">$cache</span><span class="token operator">-&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -1898,7 +1898,7 @@ $cacheItemObj = $cache-&gt;get();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"next":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2021-01-15T16:25:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"next":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"previous":{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_symfony.md","mtime":"2021-03-14T23:44:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T23:45:58.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

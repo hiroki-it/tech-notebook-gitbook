@@ -1549,147 +1549,156 @@
 <p>&#x30C6;&#x30B9;&#x30C8;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x304A;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E00;&#x90E8;&#x307E;&#x305F;&#x306F;&#x5168;&#x4F53;&#x3092;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x6301;&#x305F;&#x306A;&#x3044;&#x3082;&#x306E;&#xFF08;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF09;&#x306B;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;mock&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>mock</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x540D;&#xFF08;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF09;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x30AF;&#x30E9;&#x30B9;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;
-$mock = Phake::mock(Example::class);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token comment">// &#x30AF;&#x30E9;&#x30B9;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3059;&#xFF0E;</span>
+<span class="token variable">$mock</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Example</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;when&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>when</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// $mock&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;method()&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;$param&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;[]&#xFF08;&#x7A7A;&#x914D;&#x5217;&#xFF09;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;&#xFF0E;
-\Phake::when($mock)
-    -&gt;method($param)
-    -&gt;thenReturn([]);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token comment">// $mock&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;method()&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;$param&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;[]&#xFF08;&#x7A7A;&#x914D;&#x5217;&#xFF09;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x3082;&#x306E;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token class-name class-name-fully-qualified static-context"><span class="token punctuation">\</span>Phake</span><span class="token operator">::</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">thenReturn</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;verify&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>verify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;n&#x56DE;&#x4EE5;&#x4E0A;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
-$mock = Phake::mock(Example::class);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;
-\Phake::when($mock)
-    -&gt;method($param)
-    -&gt;thenReturn([]);
+<span class="token comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+<span class="token variable">$mock</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Example</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
-$mock-&gt;method(&quot;A&quot;);
+<span class="token comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+<span class="token class-name class-name-fully-qualified static-context"><span class="token punctuation">\</span>Phake</span><span class="token operator">::</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">thenReturn</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $mock&#x306E;method()&#x304C;$n&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;$param&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
-Phake::verify($mock, Phake::times($n))-&gt;method($param);
+<span class="token comment">// &#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
+<span class="token variable">$mock</span><span class="token operator">-&gt;</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;A&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// $mock&#x306E;method()&#x304C;$n&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;$param&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
+<span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">verify</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">,</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">times</span><span class="token punctuation">(</span><span class="token variable">$n</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x5148;&#x306B;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x3042;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">class</span> <span class="token attr-name">Aggregation</span>
-<span class="token attr-name">{</span>
-    <span class="token attr-name">private</span> <span class="token attr-name">$example;</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-    <span class="token attr-name">public</span> <span class="token attr-name">function</span> <span class="token attr-name">__construct($example)</span>
-    <span class="token attr-name">{</span>
-        <span class="token attr-name">$this-</span><span class="token punctuation">&gt;</span></span>example = $example;
-    }
+<span class="token keyword">class</span> <span class="token class-name">Aggregation</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$example</span><span class="token punctuation">;</span>
 
-    public function aggMethod($param)
-    {
-        // private&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;
-        $param = $this-&gt;addB($param);
-        // Example&#x30AF;&#x30E9;&#x30B9;&#x306E;exaMethod&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
-        return $this-&gt;example-&gt;exaMethod($param);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$example</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">example</span> <span class="token operator">=</span> <span class="token variable">$example</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    private function addB($param)
-    {
-        return $param.&apos;B&apos;;
-    }
-}
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">aggMethod</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// private&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;</span>
+        <span class="token variable">$param</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">addB</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Example&#x30AF;&#x30E9;&#x30B9;&#x306E;exaMethod&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">example</span><span class="token operator">-&gt;</span><span class="token function">exaMethod</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">addB</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$param</span><span class="token operator">.</span><span class="token string single-quoted-string">&apos;B&apos;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
-$mock = Phake::mock(Example::class);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x751F;&#x6210;&#xFF0E;
-$aggregation = new Aggregation($mock);
+<span class="token comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+<span class="token variable">$mock</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Example</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;
-\Phake::when($mock)
-    -&gt;exaMethod($param)
-    -&gt;thenReturn([]);
+<span class="token comment">// &#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+<span class="token variable">$aggregation</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Aggregation</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x9593;&#x63A5;&#x7684;&#x306B;$mock&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;
-// &#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;addB()&#x306F;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x306E;exaMethod()&#x3068;&#x306F;&#x7570;&#x306A;&#x3063;&#x3066;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901A;&#x308B;&#xFF0E;
-$aggregation-&gt;aggMethod(&quot;A&quot;);
+<span class="token comment">// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+<span class="token class-name class-name-fully-qualified static-context"><span class="token punctuation">\</span>Phake</span><span class="token operator">::</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">exaMethod</span><span class="token punctuation">(</span><span class="token variable">$param</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">thenReturn</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// $mock&#x306E;exaMethod()&#x304C;1&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;AB&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
-Phake::verify($mock, Phake::times(1))-&gt;exaMethod(&quot;AB&quot;);
+<span class="token comment">// &#x5B9F;&#x4F53;&#x7684;&#x306A;&#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x9593;&#x63A5;&#x7684;&#x306B;$mock&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#xFF0E;</span>
+<span class="token comment">// &#x96C6;&#x7D04;&#x306E;&#x3082;&#x3064;addB()&#x306F;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#x306E;exaMethod()&#x3068;&#x306F;&#x7570;&#x306A;&#x3063;&#x3066;&#x5B9F;&#x4F53;&#x7684;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x51E6;&#x7406;&#x304C;&#x901A;&#x308B;&#xFF0E;</span>
+<span class="token variable">$aggregation</span><span class="token operator">-&gt;</span><span class="token function">aggMethod</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;A&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// $mock&#x306E;exaMethod()&#x304C;1&#x56DE;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x5F15;&#x6570;&#x304C;AB&#x3067;&#x3042;&#x3063;&#x305F;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
+<span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">verify</span><span class="token punctuation">(</span><span class="token variable">$mock</span><span class="token punctuation">,</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">times</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">exaMethod</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;AB&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;">&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;</h3>
 <h4 id="&#x30FB;setup&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>setUp</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306A;&#x3069;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x6E96;&#x5099;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
-{
-    protected $exampleService;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-    protected function setUp()
-    {
-        // &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;
-        parent::setUp();
+<span class="token keyword">class</span> <span class="token class-name">ExampleUseCaseTest</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>PHPUnit_Framework_TestCase</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token variable">$exampleService</span><span class="token punctuation">;</span>
 
-        $this-&gt;exampleService = Phake::mock(ExampleService::class);
-    }
-}
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token keyword static-context">parent</span><span class="token operator">::</span><span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">exampleService</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">ExampleService</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;teardown&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>tearDown</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#xFF0C;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3084;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x5F8C;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x3082;&#x305D;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8AA4;&#x3063;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5F8C;&#x7247;&#x4ED8;&#x3051;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
-{
-    protected $container;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-    // &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
-    protected function setUp()
-    {
-        // DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-        $this-&gt;container[&apos;option&apos;];
-    }
+<span class="token keyword">class</span> <span class="token class-name">ExampleUseCaseTest</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>PHPUnit_Framework_TestCase</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token variable">$container</span><span class="token punctuation">;</span>
 
-    // &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
-    protected function tearDown()
-    {
-        // &#x6B21;&#x306B;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-        $this-&gt;container = null;
-    }
-}
+    <span class="token comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">container</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;option&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x6B21;&#x306B;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">container</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;">&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;</h3>
 <h4 id="&#x30FB;data-provider">&#x30FB;Data Provider</h4>
 <p>&#x30C6;&#x30B9;&#x30C8;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#xFF0C;<code>@dataProvider {&#x30C7;&#x30FC;&#x30BF;&#x540D;}</code>&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">class xxxTest
-{
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-    /* @test
+<span class="token keyword">class</span> <span class="token class-name">xxxTest</span>
+<span class="token punctuation">{</span>
+
+    <span class="token comment">/* @test
      * @dataProvider provideData
-     */
-    public function testMethod($paramA, $paramB, $paramC)
-    {
-        // &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406; 
-    }
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">testMethod</span><span class="token punctuation">(</span><span class="token variable">$paramA</span><span class="token punctuation">,</span> <span class="token variable">$paramB</span><span class="token punctuation">,</span> <span class="token variable">$paramC</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406; </span>
+    <span class="token punctuation">}</span>
 
-    public function provideData(): array
-    {
-        return [
-            // &#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8907;&#x6570;&#x3042;&#x3063;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0C;
-            // testMethod()&#x306E;&#x5F15;&#x6570;&#x3068;&#x540C;&#x3058;&#x9806;&#x756A;&#x3067;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8981;&#x7D20;&#x304C;&#x4E26;&#x3076;&#xFF0E;
-            [&quot;&#x3042;&quot;, &quot;&#x3044;&quot;, &quot;&#x3046;&quot;],
-            [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]
-        ];
-    }
-}
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">provideData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token comment">// &#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8907;&#x6570;&#x3042;&#x3063;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0C;</span>
+            <span class="token comment">// testMethod()&#x306E;&#x5F15;&#x6570;&#x3068;&#x540C;&#x3058;&#x9806;&#x756A;&#x3067;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8981;&#x7D20;&#x304C;&#x4E26;&#x3076;&#xFF0E;</span>
+            <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;2&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;3&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x5B9F;&#x969B;&#x5024;&#x3068;&#x671F;&#x5F85;&#x5024;&#x306E;&#x6BD4;&#x8F03;">&#x5B9F;&#x969B;&#x5024;&#x3068;&#x671F;&#x5F85;&#x5024;&#x306E;&#x6BD4;&#x8F03;</h3>
@@ -1699,25 +1708,25 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 <h3 id="unit&#x30C6;&#x30B9;&#x30C8;">Unit&#x30C6;&#x30B9;&#x30C8;</h3>
 <h4 id="&#x30FB;unit&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;">&#x30FB;Unit&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x3084;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5358;&#x4F53;&#x3067;&#x51E6;&#x7406;&#x304C;&#x6B63;&#x3057;&#x304F;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
 </code></pre>
 <p><br></p>
 <h3 id="functional&#x30C6;&#x30B9;&#x30C8;">Functional&#x30C6;&#x30B9;&#x30C8;</h3>
 <h4 id="&#x30FB;functional&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;">&#x30FB;Functional&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;</h4>
 <p>Controller&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x6B63;&#x3057;&#x304F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF08;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;200&#x756A;&#x53F0;&#x304B;&#xFF09;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF08;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;<code>200</code>&#x756A;&#x53F0;&#x304B;&#xFF09;</h4>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;-&#xFF06;-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B; &#xFF06; &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;</h4>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;-&#xFF06;-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x671F;&#x5F85;&#x5024;&#x3068;&#x540C;&#x3058;&#x304B;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B; &#xFF06; &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x671F;&#x5F85;&#x5024;&#x3068;&#x540C;&#x3058;&#x304B;</h4>
 <p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x671F;&#x5F85;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30C3;&#x30C8;&#x3092;<code>@dataProvider</code>&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x7528;&#x610F;&#x3057;&#x3066;&#x304A;&#x3044;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#xFF0C;<code>@dataProvider</code>&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3067;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-03-&#x30C6;&#x30B9;&#x30C8;&#x4ED5;&#x69D8;&#x66F8;&#x306B;&#x57FA;&#x3065;&#x304F;unit&#x30C6;&#x30B9;&#x30C8;">03-03. &#x30C6;&#x30B9;&#x30C8;&#x4ED5;&#x69D8;&#x66F8;&#x306B;&#x57FA;&#x3065;&#x304F;Unit&#x30C6;&#x30B9;&#x30C8;</h2>
@@ -1951,7 +1960,7 @@ A = 0&#xFF0C;B = 0 &#x306E;&#x6642;&#xFF0C;<code>return X</code> &#x304C;&#x5B9F
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎テストフレームワークとテスト仕様書","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-02-25T17:46:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎テストフレームワークとテスト仕様書","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-03-14T23:43:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T23:45:58.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

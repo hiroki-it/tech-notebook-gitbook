@@ -1594,209 +1594,209 @@
 <p>&#x66DC;&#x65E5;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;if-elseif-else">&#x30FB;if-elseif-else</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;
-$weeks = &apos;Tue&apos;;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;</span>
+<span class="token variable">$weeks</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">;</span>
 
-// if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;
-if ($weeks == &apos;Mon&apos;) {
-    echo &apos;&#x6708;&#x66DC;&#x65E5;&apos;;
-} elseif ($weeks == &apos;Tue&apos;) {
-    echo &apos;&#x706B;&#x66DC;&#x65E5;&apos;;
-} elseif ($weeks == &apos;Wed&apos;) {
-    echo &apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
-} elseif ($weeks == &apos;Thu&apos;) {
-    echo &apos;&#x6728;&#x66DC;&#x65E5;&apos;;
-} elseif ($weeks == &apos;Fri&apos;) {
-    echo &apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
-} elseif ($weeks == &apos;Sat&apos;) {
-    echo &apos;&#x571F;&#x66DC;&#x65E5;&apos;;
-} else {
-    echo &apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
-}
+<span class="token comment">// if&#x6587;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Mon&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Wed&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Thu&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Fri&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;Sat&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// &#x5B9F;&#x884C;&#x7D50;&#x679C;
-// &#x706B;&#x66DC;&#x65E5;
+<span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
+<span class="token comment">// &#x706B;&#x66DC;&#x65E5;</span>
 </code></pre>
 <h4 id="&#x30FB;switch-case-break">&#x30FB;switch-case-break</h4>
 <p>&#x5B9A;&#x6570;&#x3054;&#x3068;&#x306B;&#x51E6;&#x7406;&#x304C;&#x5909;&#x308F;&#x308B;&#x6642;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x306E;&#x65B9;&#x304C;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;
-$weeks = &apos;Tue&apos;;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;</span>
+<span class="token variable">$weeks</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">;</span>
 
-// &#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;
-switch ($weeks) {
-  case &apos;Mon&apos;:
-    echo &apos;&#x6708;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Tue&apos;:
-    echo &apos;&#x706B;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Wed&apos;:
-    echo &apos;&#x6C34;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Thu&apos;:
-    echo &apos;&#x6728;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Fri&apos;:
-    echo &apos;&#x91D1;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Sat&apos;:
-    echo &apos;&#x571F;&#x66DC;&#x65E5;&apos;;
-    break;
-  case &apos;Sun&apos;:
-    echo &apos;&#x65E5;&#x66DC;&#x65E5;&apos;;
-    break;
-  default:
-    echo &apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;;  
-}
+<span class="token comment">// &#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
+<span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Mon&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Wed&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Thu&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Fri&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sat&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sun&apos;</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">default</span><span class="token punctuation">:</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
 
-// &#x5B9F;&#x884C;&#x7D50;&#x679C;
-// &#x706B;&#x66DC;&#x65E5;
+<span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
+<span class="token comment">// &#x706B;&#x66DC;&#x65E5;</span>
 </code></pre>
 <p><br></p>
 <h3 id="if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
 <h4 id="&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;if-else&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example
-{
-    /**
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
      * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */
-    const noOptionItem = 0;
+     */</span>
+    <span class="token keyword">const</span> noOptionItem <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    /**
+    <span class="token comment">/**
      * @var Entity
-     */
-    private $routeEntity;
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$routeEntity</span><span class="token punctuation">;</span>
 
-    public function example($result)
-    {
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
 
-        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-        if (!empty($this-&gt;routeEntity-&gt;options)) {
-            foreach ($this-&gt;routeEntity-&gt;options as $option) {
+        <span class="token comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span> <span class="token keyword">as</span> <span class="token variable">$option</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-                if ($option-&gt;isOptionItemA()) {
-                    $result[&apos;optionItemA&apos;] = $option-&gt;optionItemA();
-                } else {
-                    $result[&apos;optionItemA&apos;] = self::noOptionItem;
-                }
+                <span class="token comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-                if ($option-&gt;isOptionItemB()) {
-                    $result[&apos;optionItemB&apos;] = $option-&gt;optionItemB();
-                } else {
-                    $result[&apos;optionItemB&apos;] = self::noOptionItem;
-                }
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-                if ($option-&gt;isOptionItemC()) {
-                    $result[&apos;optionItemC&apos;] = $option-&gt;optionItemC();
-                } else {
-                    $result[&apos;optionItemC&apos;] = self::noOptionItem;
-                }
-            }
-        }
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        return $result;
-    }
-}
+        <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x4E09;&#x9805;&#x6F14;&#x7B97;&#x5B50;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example
-{
-    /**
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
      * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */
-    const noOptionItem = 0;
+     */</span>
+    <span class="token keyword">const</span> noOptionItem <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    /**
+    <span class="token comment">/**
      * @var Entity
-     */
-    private $routeEntity;
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$routeEntity</span><span class="token punctuation">;</span>
 
-    public function example($result)
-    {
-        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-        if (!empty($this-&gt;routeEntity-&gt;options)) {
-            foreach ($this-&gt;routeEntity-&gt;options as $option) {
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span> <span class="token keyword">as</span> <span class="token variable">$option</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-                $result[&apos;optionItemA&apos;] = ($option-&gt;isOptionItemA())
-                    ? $option-&gt;optionItemA()
-                    : self::noOptionItem;
+                <span class="token comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
 
-                $result[&apos;optionItemB&apos;] = ($option-&gt;isOptionItemB())
-                    ? $option-&gt;optionItemB()
-                    : self::noOptionItem;
+                <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
 
-                $result[&apos;optionItemC&apos;] = ($option-&gt;isOptionItemC())
-                    ? $option-&gt;optionItemC()
-                    : self::noOptionItem;
-            };
-        }
+                <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return $result;
-    }
-}
+        <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;">&#x30FB;&#x521D;&#x671F;&#x5024;&#x3068;&#x4E0A;&#x66F8;&#x304D;&#x306E;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x3092;&#x7528;&#x3044;&#x305F;&#x5834;&#x5408;</h4>
 <p>&#x3088;&#x308A;&#x3059;&#x3063;&#x304D;&#x308A;&#x3057;&#x305F;&#x66F8;&#x304D;&#x65B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example
-{
-    /**
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
      * &#x30DE;&#x30B8;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;
-     */
-    const noOptionItem = 0;
+     */</span>
+    <span class="token keyword">const</span> noOptionItem <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    /**
+    <span class="token comment">/**
      * @var Entity
-     */
-    private $routeEntity;
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$routeEntity</span><span class="token punctuation">;</span>
 
-    public function example($result)
-    {
-        // &#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;
-        $result[&apos;optionItemA&apos;] = self::noOptionItem;
-        $result[&apos;optionItemB&apos;] = self::noOptionItem;
-        $result[&apos;optionItemC&apos;] = self::noOptionItem;
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x521D;&#x671F;&#x5024;0&#x3092;&#x8A2D;&#x5B9A;</span>
+        <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+        <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword static-context">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
 
-        // RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;
-        if(!empty($this-&gt;routeEntity-&gt;options)) {
-            foreach ($this-&gt;routeEntity-&gt;options as $option) {
+        <span class="token comment">// RouteEntity&#x304B;&#x3089;options&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;option&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">routeEntity</span><span class="token operator">-&gt;</span><span class="token property">options</span> <span class="token keyword">as</span> <span class="token variable">$option</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-                // if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-                // &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;
-                if ($option-&gt;isOptionItemA()) {
-                    $result[&apos;optionItemA&apos;] = $option-&gt;optionItemA();
-                }
+                <span class="token comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#x521D;&#x671F;&#x5024;0&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x521D;&#x671F;&#x5024;0&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-                if ($option-&gt;isOptionItemB()) {
-                    $result[&apos;optionItemB&apos;] = $option-&gt;optionItemB();
-                }
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-                if ($option-&gt;isOptionItemC()) {
-                    $result[&apos;optionItemC&apos;] = $option-&gt;optionItemC();
-                }
-            };
-        }
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return $result;
-    }
-}
+        <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;">if-elseif-else&#x306E;&#x56DE;&#x907F;&#x65B9;&#x6CD5;</h3>
@@ -1812,126 +1812,126 @@ class Example
 <h4 id="&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;">&#x30FB;if-elseif-else&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;</h4>
 <p>&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x60AA;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x907F;&#x3051;&#x308B;&#x3079;&#x304D;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-$year = N;
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token variable">$year</span> <span class="token operator">=</span> <span class="token constant">N</span><span class="token punctuation">;</span>
 </code></pre>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-function leapYear(int $year): string
-{
-    // (5)
-    if ($year &lt;= 0) {
-        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+<span class="token keyword">function</span> <span class="token function">leapYear</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$year</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// (5)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // (4)
-    } elseif ($year % 4 != 0) {
-        return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (4)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (3)
-    } elseif ($year % 100 != 0) {
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    <span class="token comment">// (3)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (2)
-    } elseif ($year % 400 != 0) {
-        return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (2)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">400</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (1)
-    } else {
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-    }
-}
+    <span class="token comment">// (1)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;if&#x3068;return&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x5404;if&#x6587;&#x3067;<code>return</code>&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;<code>if</code>&#x304C;&#x5165;&#x308C;&#x5B50;&#x72B6;&#x306B;&#x306A;&#x308B;&#x3053;&#x3068;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#xFF0C;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;
-$year = N;
+<span class="token comment">// &#x897F;&#x66A6;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token variable">$year</span> <span class="token operator">=</span> <span class="token constant">N</span><span class="token punctuation">;</span>
 
-function leapYear(int $year): string
-{
-    // (5)
-    if($year &lt;= 0){
-        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
-    }
+<span class="token keyword">function</span> <span class="token function">leapYear</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$year</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// (5)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // (4)
-    if($year % 4 != 0 ){
-        return &quot;&#x5E73;&#x5E74;&quot;;
-    }
+    <span class="token comment">// (4)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // (3)
-    if($year % 100 != 0){
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-    }
+    <span class="token comment">// (3)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // (2)
-    if($year % 400 != 0){
-        return &quot;&#x5E73;&#x5E74;&quot;;
-    }
+    <span class="token comment">// (2)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">400</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // (1)
-    return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    <span class="token comment">// (1)</span>
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-}
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;switch-case-break&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>if&#x6587;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;<code>switch-case-break</code>&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#xFF0C;&#x300E;&#x25EF;&#x25EF;&#x306E;&#x5834;&#x5408;&#x306B;&#x5207;&#x308A;&#x63DB;&#x3048;&#x308B;&#x300F;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3092;&#x6301;&#x305F;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x60F3;&#x5B9A;&#x3057;&#x3066;&#xFF0C;<code>break</code>&#x3067;&#x306F;&#x306A;&#x304F;<code>return</code>&#x3092;&#x7528;&#x3044;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-function leapYear(int $year): string
-{   
-    switch(true) {
+<span class="token keyword">function</span> <span class="token function">leapYear</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$year</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token punctuation">{</span>   
+    <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    // (5)
-    case($year &lt;= 0):
-        throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+    <span class="token comment">// (5)</span>
+    <span class="token keyword">case</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // (4)
-        case($year % 4 != 0 ):
-        return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (4)</span>
+        <span class="token keyword">case</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (3)
-    case($year % 100 != 0):
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    <span class="token comment">// (3)</span>
+    <span class="token keyword">case</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (2)
-    case($year % 400 != 0):
-        return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (2)</span>
+    <span class="token keyword">case</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">400</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (1)
-    dafault:
-        return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
-    }
+    <span class="token comment">// (1)</span>
+    <span class="token argument-name">dafault</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;">&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3092;&#x7528;&#x3044;&#x305F;&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;</h4>
 <p>&#x65E9;&#x671F;&#x30EA;&#x30BF;&#x30FC;&#x30F3;&#x306E;if&#x6587;&#x306E;&#x6CE2;&#x62EC;&#x5F27;&#x3092;&#x7701;&#x7565;&#x3057;&#x305F;&#x8A18;&#x6CD5;&#x3092;&#xFF0C;&#x30AC;&#x30FC;&#x30C9;&#x7BC0;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-function leapYear(int $year): string
-{
-    // (5)
-    if($year &lt;= 0) throw new Exception(&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;);
+<span class="token keyword">function</span> <span class="token function">leapYear</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$year</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// (5)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x8CA0;&#x306E;&#x6570;&#x306F;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // (4)
-    if($year % 4 != 0 ) return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (4)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (3)
-    if($year % 100 != 0) return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    <span class="token comment">// (3)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (2)
-    if($year % 400 != 0) return &quot;&#x5E73;&#x5E74;&quot;;
+    <span class="token comment">// (2)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$year</span> <span class="token operator">%</span> <span class="token number">400</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x5E73;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-    // (1)
-    return &quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;;
+    <span class="token comment">// (1)</span>
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3046;&#x308B;&#x3046;&#x5E74;&quot;</span><span class="token punctuation">;</span>
 
-}
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-02-&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;">02-02. &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x691C;&#x8A3C;</h2>
@@ -1939,49 +1939,49 @@ function leapYear(int $year): string
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;2&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example {};
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-if(new Example == new Example){
-    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-} else { echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;; }
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Example</span> <span class="token operator">==</span> <span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 
-// &#x5B9F;&#x884C;&#x7D50;&#x679C;
-// &#x540C;&#x3058;&#x3067;&#x3059;
+<span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
+<span class="token comment">// &#x540C;&#x3058;&#x3067;&#x3059;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x304C;3&#x3064;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x540C;&#x3058;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x5225;&#x3005;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x300E;&#x7570;&#x306A;&#x308B;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example {};
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-if (new Example === new Example) {
-    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-} else {
-    echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
-}
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Example</span> <span class="token operator">===</span> <span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// &#x5B9F;&#x884C;&#x7D50;&#x679C;
-// &#x7570;&#x306A;&#x308A;&#x307E;&#x3059;
+<span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
+<span class="token comment">// &#x7570;&#x306A;&#x308A;&#x307E;&#x3059;</span>
 </code></pre>
 <p>&#x540C;&#x4E00;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;&#x306E;&#x307F;&#xFF0C;&#x300E;&#x540C;&#x3058;&#x3082;&#x306E;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class Example {};
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-$a = $b = new Example;
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">;</span>
 
-if ($a === $b) {
-    echo &apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;;
-} else {
-    echo &apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;;
-}
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">===</span> <span class="token variable">$b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x540C;&#x3058;&#x3067;&#x3059;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x7570;&#x306A;&#x308A;&#x307E;&#x3059;&apos;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// &#x5B9F;&#x884C;&#x7D50;&#x679C;
-// &#x540C;&#x3058;&#x3067;&#x3059;
+<span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
+<span class="token comment">// &#x540C;&#x3058;&#x3067;&#x3059;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#xFF0C;&#x30ED;&#x30AE;&#x30F3;&#x30B0;">03. &#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#xFF0C;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
@@ -1998,12 +1998,12 @@ if ($a === $b) {
 <p>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x300C;Example&#x5909;&#x6570;&#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x3044;&#x300D;&#x3068;&#x3044;&#x3046;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-class ExampleNotFoundException extends Exception
-{
-    // &#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;
-}
+<span class="token keyword">class</span> <span class="token class-name">ExampleNotFoundException</span> <span class="token keyword">extends</span> <span class="token class-name">Exception</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -2023,17 +2023,17 @@ class ExampleNotFoundException extends Exception
 <h4 id="&#x30FB;if-throw&#x6587;">&#x30FB;if-throw&#x6587;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x306B;&#xFF0C;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x4F8B;&#x5916;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x305D;&#x308C;&#x3092;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x3057;&#x3066;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3042;&#x308B;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x6295;&#x3052;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-function value(int $value) {
+<span class="token keyword">function</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    if (empty($value)) {
-        // &#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;
-        throw new Exception(&apos;Value is empty&apos;);
-    }
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;Value is empty&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return &quot;&#x3053;&#x308C;&#x306F; ${value} &#x3067;&#x3059;&#xFF0E;&quot;;
-}
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F; ${value} &#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x305F;&#x3060;&#x3057;&#xFF0C;if-throw&#x3067;&#x306F;&#xFF0C;&#x90FD;&#x5EA6;&#x4F8B;&#x5916;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x69D8;&#x3005;&#x306A;&#x53EF;&#x80FD;&#x6027;&#x3092;&#x8003;&#x616E;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
@@ -2054,43 +2054,43 @@ function value(int $value) {
 <h4 id="&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;">&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;</h4>
 <p>try-catch-finally&#x3067;&#x306F;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x8D77;&#x3053;&#x308B;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x4F8B;&#x5916;&#x3092;&#x6349;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x6587;&#x306F;&#xFF0C;&#x30C7;&#x30D0;&#x30C3;&#x30AF;&#x753B;&#x9762;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-use \Exception\ExternalApiErrorException;
-use \Exception\HttpRequestErrorException;
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
 
-class Example
-{
-    /**
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
      * @param message $message
      * @return bool
-     */
-    public function sendMessage(Message $message)
-    {
-        try {
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
-            // ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;
+            <span class="token comment">// ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;</span>
 
-        } catch (ExternalApiErrorException $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            <span class="token comment">// ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
 
-        } catch (HttpRequestErrorException $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            <span class="token comment">// HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
 
-        } catch (Exception $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;
+            <span class="token comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
 
-        } finally {
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
 
-            // &#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;
-            // try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;
+            <span class="token comment">// &#x3069;&#x306E;&#x4F8B;&#x5916;&#x3092;catch&#x3057;&#x305F;&#x5834;&#x5408;&#x3067;&#x3082;&#x5FC5;&#x305A;&#x884C;&#x308F;&#x308C;&#x308B;</span>
+            <span class="token comment">// try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
 
-        }
-    }
-}
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;">&#x30FB;finally&#x53E5;&#x306E;&#x4ED5;&#x69D8;</h4>
 <p>finally&#x53E5;&#x306F;&#xFF0C;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;finally&#x53E5;&#x3067;&#x306F;&#xFF0C;<code>return</code>&#x3084;<code>continue</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2175,57 +2175,57 @@ class Example
 <h4 id="&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;">&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h4>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30A2;&#x30D7;&#x30EA;&#x306E;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x751F;&#x6210;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3068;&#xFF0C;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#x305D;&#x306E;&#x4ED6;&#x539F;&#x56E0;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-use \Exception\ExternalApiErrorException;
-use \Exception\HttpRequestErrorException;
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
 
-class Example
-{
-    /**
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
      * @param message $message
      * @return bool
-     */
-    public function sendMessage(Message $message)
-    {
-        try {
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
-            // &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;
-            // &#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;
-            // &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;</span>
 
-        } catch (\HttpRequestErrorException $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-            error_log(
-                $exception-&gt;getMessage(),
-                3,
-                __DIR__ . &apos;/http_request_error.log&apos;
-            );
+            <span class="token comment">// &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token function">error_log</span><span class="token punctuation">(</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">3</span><span class="token punctuation">,</span>
+                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string single-quoted-string">&apos;/http_request_error.log&apos;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        } catch (\ExternalApiErrorException $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-            error_log(
-                $exception-&gt;getMessage(),
-                3,
-                __DIR__ . &apos;/external_api_error.log&apos;
-            );
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token function">error_log</span><span class="token punctuation">(</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">3</span><span class="token punctuation">,</span>
+                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string single-quoted-string">&apos;/external_api_error.log&apos;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        } catch (\Exception $exception) {
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;
-            error_log(
-                $exception-&gt;getMessage(),
-                3,
-                __DIR__ . &apos;/app_error.log&apos;
-            );
-        }
+            <span class="token comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token function">error_log</span><span class="token punctuation">(</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">3</span><span class="token punctuation">,</span>
+                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string single-quoted-string">&apos;/app_error.log&apos;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        // &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;
-        return true;
-    }
-}
+        <span class="token comment">// &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 
                                 
@@ -2266,7 +2266,7 @@ class Example
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎繰り返しロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎繰り返しロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-02-28T15:13:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎繰り返しロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎繰り返しロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-03-14T23:44:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T23:45:58.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

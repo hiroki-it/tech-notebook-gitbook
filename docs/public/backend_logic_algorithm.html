@@ -1541,50 +1541,50 @@
 <li>&#x6B21;&#x306B;&#xFF0C;&#x6B8B;&#x308A;&#x306E;n-1&#x500B;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x3082;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5B57;&#x3092;&#x63A2;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3092;2&#x756A;&#x76EE;&#x306E;&#x6570;&#x5B57;&#x3068;&#x5165;&#x308C;&#x66FF;&#x3048;&#x308B;&#xFF0E;</li>
 <li>&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;n-1&#x56DE;&#x7E70;&#x308A;&#x8FD4;&#x3059;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-function minSelectSort(array $array): array
-{
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">function</span> <span class="token function">minSelectSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+<span class="token punctuation">{</span>
 
-    // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;
-    for($i = 0; $i &lt; count($array)-1; $i++){
+    <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;
-        $min = $array[$i];
+        <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x4EEE;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#xFF0E;</span>
+        <span class="token variable">$min</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;
-        $position = $i;
+        <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x3092;&#x5B9A;&#x7FA9;</span>
+        <span class="token variable">$position</span> <span class="token operator">=</span> <span class="token variable">$i</span><span class="token punctuation">;</span>
 
-        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
-        for($j = $position + 1; $j &lt; count($array); $j++){
+        <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x3067;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x9806;&#x756A;&#x306B;&#x8A55;&#x4FA1;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$j</span> <span class="token operator">=</span> <span class="token variable">$position</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token variable">$j</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$j</span><span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-            // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
-            if($min &gt; $array[$j]){
-                $position = $j;
-                $min = $array[$j];
-            }
-        }
+            <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x4EE5;&#x964D;&#x306B;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x5024;&#x304C;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$min</span> <span class="token operator">&gt;</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$position</span> <span class="token operator">=</span> <span class="token variable">$j</span><span class="token punctuation">;</span>
+                <span class="token variable">$min</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        // &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;
-        if($i == $position){
-            break;
-        }
+        <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x306E;&#x4F4D;&#x7F6E;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x89AA;&#x306E;for&#x6587;&#x304B;&#x3089;&#x629C;&#x3051;&#x308B;&#xFF0E;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">==</span> <span class="token variable">$position</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        // &#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;
-        $array[$i] = $min;
+        <span class="token comment">// &#x89AA;&#x306E;for&#x6587;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x66F4;&#x65B0;&#xFF0E;</span>
+        <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$min</span><span class="token punctuation">;</span>
 
-        // &#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;
-    }
-    return $array;
-}
+        <span class="token comment">// &#x6B21;&#x306B;2&#x756A;&#x76EE;&#x3092;&#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3068;&#x3057;&#xFF0C;&#x540C;&#x3058;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$array</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
-$array = array(10,2,12,7,16,8,13)
-$result = selectSort($array);
-var_dump($result); 
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;</span>
+<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">)</span>
+<span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">selectSort</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
-// 2, 7, 8, 10, 12, 13, 16
+<span class="token comment">// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
+<span class="token comment">// 2, 7, 8, 10, 12, 13, 16</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x4E2D;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#xFF0C;&#x6B21;&#x306B;&#x305D;&#x308C;&#x3092;&#x9664;&#x3044;&#x305F;&#x90E8;&#x5206;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x6C42;&#x3081;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
@@ -1604,59 +1604,59 @@ var_dump($result);
 <li>&#x4E8C;&#x5206;&#x5272;&#x3055;&#x308C;&#x305F;&#x5404;&#x3005;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30BD;&#x30FC;&#x30C8;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-function quickSort(array $array): array 
-{
-    // &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;
-    if (count($array) &lt;= 1) {
-        return $array;
-    }
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">function</span> <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> 
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$array</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // &#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;
-    $pivot = array_shift($array); 
+    <span class="token comment">// &#x4E00;&#x756A;&#x6700;&#x521D;&#x306E;&#x5024;&#x3092;Pivot&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token variable">$pivot</span> <span class="token operator">=</span> <span class="token function">array_shift</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-    // &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;
-    $left = $right = [];
+    <span class="token comment">// &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x5B9A;&#x7FA9;</span>
+    <span class="token variable">$left</span> <span class="token operator">=</span> <span class="token variable">$right</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    foreach ($array as $value) {
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$array</span> <span class="token keyword">as</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        if ($value &lt; $pivot) {
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$value</span> <span class="token operator">&lt;</span> <span class="token variable">$pivot</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-            // Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
-            $left[] = $value;
+            <span class="token comment">// Pivot&#x3088;&#x308A;&#x5C0F;&#x3055;&#x3044;&#x6570;&#x306F;&#x5DE6;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
+            <span class="token variable">$left</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
 
-        } else {
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
 
-            // Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;
-            $right[] = $value;
+            <span class="token comment">// Pivot&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6570;&#x306F;&#x53F3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x683C;&#x7D0D;</span>
+            <span class="token variable">$right</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
 
-            }
+            <span class="token punctuation">}</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-    // &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;
-    return array_merge
-    (
-        // &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
-        quickSort($left),
+    <span class="token comment">// &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;</span>
+    <span class="token keyword">return</span> <span class="token function">array_merge
+    </span><span class="token punctuation">(</span>
+        <span class="token comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
+        <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token variable">$left</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-        // Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-        array($pivot),
+        <span class="token comment">// Pivot&#x3092;&#x7D50;&#x679C;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+        <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$pivot</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-        // &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;
-        quickSort($right)
-    );
+        <span class="token comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
+        <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token variable">$right</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}
+<span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;
-$array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
-$result = quickSort($array);
-var_dump($result); 
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5B9F;&#x969B;&#x306B;&#x4F7F;&#x3063;&#x3066;&#x307F;&#x308B;&#xFF0E;</span>
+<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$result</span> <span class="token operator">=</span> <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;
-// 1, 2, 3, 4, 5, 6, 7, 8
+<span class="token comment">// &#x6607;&#x9806;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
+<span class="token comment">// 1, 2, 3, 4, 5, 6, 7, 8</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x30A2;&#x30EB;&#x30B4;&#x30EA;&#x30BA;&#x30E0;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>&#x9069;&#x5F53;&#x306A;&#x5024;&#x3092;&#x57FA;&#x6E96;&#x5024;&#xFF08;Pivot&#xFF09;&#x3068;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x3088;&#x308A;&#x5C0F;&#x3055;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3068;&#x5927;&#x304D;&#x306A;&#x5024;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x540C;&#x69D8;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4E21;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x4E2D;&#x3067;Pivot&#x3092;&#x9078;&#x3073;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5185;&#x306E;&#x5024;&#x304C;&#x4E00;&#x3064;&#x306B;&#x306A;&#x308B;&#x307E;&#x3067;&#xFF0C;&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
@@ -1734,82 +1734,82 @@ var_dump($result);
 <p>&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x8868;&#x3067;&#x8868;&#x3059;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x540C;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;0&#x300F;&#xFF0C;&#x96A3;&#x308A;&#x5408;&#x308F;&#x306A;&#x3044;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x306F;&#x300E;-1&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;.png" alt="&#x30C0;&#x30A4;&#x30AF;&#x30B9;&#x30C8;&#x30E9;&#x6CD5;_&#x8DDD;&#x96E2;&#x30C6;&#x30FC;&#x30D6;&#x30EB;"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;
-$matrix = array(
-    &apos;P0&apos; =&gt; array(0, 2, 8, 4, -1, -1, -1),
-    &apos;P1&apos; =&gt; array(2, 0, -1, -1, 3, -1, -1),
-    &apos;P2&apos; =&gt; array(8, -1, 0, -1, 2, 3, -1),
-    &apos;P3&apos; =&gt; array(4, -1, -1, 0, -1, 8, -1),
-    &apos;P4&apos; =&gt; array(-1, 3, 2, -1, 0, -1, 9),
-    &apos;P5&apos; =&gt; array(-1, -1, 3, 8, -1, 0, 3),
-    &apos;P6&apos; =&gt; array(-1, -1, -1, -1, 9, 3, 0)
-);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x4E8C;&#x6B21;&#x5143;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x5B9A;&#x7FA9;</span>
+<span class="token variable">$matrix</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token string single-quoted-string">&apos;P0&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P1&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P2&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P3&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P4&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P5&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">&apos;P6&apos;</span> <span class="token operator">=&gt;</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre class="language-"><code class="lang-PHP">&lt;?php
-// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;
-function bestFirstSearchByDijkstra(
-    array $matrix,
-    int $startPoint,
-    int $goalPoint
-)
-{
-    // &#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-    define(&apos;POINT_NUMBER&apos;, count($matrix));
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;</span>
+<span class="token keyword">function</span> <span class="token function">bestFirstSearchByDijkstra</span><span class="token punctuation">(</span>
+    <span class="token keyword type-hint">array</span> <span class="token variable">$matrix</span><span class="token punctuation">,</span>
+    <span class="token keyword type-hint">int</span> <span class="token variable">$startPoint</span><span class="token punctuation">,</span>
+    <span class="token keyword type-hint">int</span> <span class="token variable">$goalPoint</span>
+<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x5730;&#x70B9;&#x6570;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;POINT_NUMBER&apos;</span><span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$matrix</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    if($startPoint &lt; self::POINT_NUMBER
-        || self::POINT_NUMBER &lt; $goalPoint){
-            throw new Exception(&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;);
-    }
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$startPoint</span> <span class="token operator">&lt;</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token class-name">POINT_NUMBER</span>
+        <span class="token operator">||</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">POINT_NUMBER</span> <span class="token operator">&lt;</span> <span class="token variable">$goalPoint</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5730;&#x70B9;&#x756A;&#x53F7;&#x306F;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#xFF0E;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // &#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-    define(&apos;START_POINT&apos;, $startPoint);
+    <span class="token comment">// &#x51FA;&#x767A;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;START_POINT&apos;</span><span class="token punctuation">,</span> <span class="token variable">$startPoint</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // &#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;
-    define(&apos;GOAL_POINT&apos;, $goalPoint));
+    <span class="token comment">// &#x5230;&#x7740;&#x5730;&#x70B9;&#x3092;&#x5B9A;&#x6570;&#x3067;&#x5B9A;&#x7FA9;</span>
+    <span class="token function">define</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;GOAL_POINT&apos;</span><span class="token punctuation">,</span> <span class="token variable">$goalPoint</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // &#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;
-    // &#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;
-    for($i = 0; $i &lt; self::POINT_NUMBER; $i ++){
-        $route[$i] = -1;
-        $distance[$i] = -1;
-        $fixFlg[$i] = false;
-        }
+    <span class="token comment">// &#x7121;&#x9650;&#x5927;&#x306E;&#x5B9A;&#x6570;&#x306E;INF&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x304C;&#xFF0C;&#x5B9A;&#x6570;&#x306F;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;-1&#x3092;&#x4F7F;&#x7528;&#xFF0E;</span>
+    <span class="token comment">// &#x5404;&#x9802;&#x70B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6700;&#x77ED;&#x30EB;&#x30FC;&#x30C8;&#x5730;&#x70B9;&#x756A;&#x53F7;&#xFF0C;&#x5730;&#x70B9;&#x9593;&#x8DDD;&#x96E2;&#x306E;&#x521D;&#x671F;&#x5024;&#xFF0C;&#x6700;&#x77ED;&#x8DDD;&#x96E2;&#x78BA;&#x5B9A;&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">POINT_NUMBER</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$route</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token variable">$distance</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token variable">$fixFlg</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    // &#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;
-    // $cost = array_fill(0, self::POINT_NUMBER, -1);
-    // $distance = array_fill(0, self::POINT_NUMBER, -1);
-    // $fix = array_fill(0, self::POINT_NUMBER, false);
+    <span class="token comment">// &#xFF0A;&#x5225;&#x306E;&#x66F8;&#x304D;&#x65B9;&#xFF0A;</span>
+    <span class="token comment">// $cost = array_fill(0, self::POINT_NUMBER, -1);</span>
+    <span class="token comment">// $distance = array_fill(0, self::POINT_NUMBER, -1);</span>
+    <span class="token comment">// $fix = array_fill(0, self::POINT_NUMBER, false);</span>
 
-    // &#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;
-    $distance[self::START_POINT] = 0;
+    <span class="token comment">// &#x51FA;&#x767A;&#x5730;&#x70B9;&#x304B;&#x3089;&#x51FA;&#x767A;&#x5730;&#x70B9;&#x3078;&#x306E;&#x8DDD;&#x96E2;&#x3092;&#x30BC;&#x30ED;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token variable">$distance</span><span class="token punctuation">[</span><span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">START_POINT</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    // 
-    while(true){
-        $i = 0;
+    <span class="token comment">// </span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-        while($i &lt; self::POINT_NUMBER){
-            if(!$fixFlg[$i]){
-                break 1;
-            }
-            $i += 1;
-        }
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">POINT_NUMBER</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$fixFlg</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">break</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$i</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if($i === self::POINT_NUMBER){
-            break 1;
-        }
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">===</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">POINT_NUMBER</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">break</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        for($j = $i + 1; j &lt; self::POINT_NUMBER; $j ++){
-            if(!$fixFlg[$i] &amp;&amp; $distance[$j] &lt; $distance[$i]){
-                $i = $j;
-            }
-        }
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$j</span> <span class="token operator">=</span> <span class="token variable">$i</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">POINT_NUMBER</span><span class="token punctuation">;</span> <span class="token variable">$j</span> <span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$fixFlg</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$distance</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token variable">$distance</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$i</span> <span class="token operator">=</span> <span class="token variable">$j</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        // &#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;
-        // &#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;
+        <span class="token comment">// &#x4ECA;&#x306E;&#x81EA;&#x5206;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x4EE5;&#x4E0A;&#x306F;&#x96E3;&#x3057;&#x3044;&#x2026;</span>
+        <span class="token comment">// &#x672A;&#x6765;&#x306E;&#x4FFA;&#xFF0C;&#x9811;&#x5F35;&#x3063;&#x3066;&#x304F;&#x308C;&#x2026;</span>
 
-    }
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x6700;&#x77ED;&#x7D4C;&#x8DEF;&#x63A2;&#x7D22;&#x51E6;&#x7406;&#x306E;&#x89E3;&#x8AAC;&#xFF0A;</strong></p>
 <p>$startPoint = 0</p>
@@ -1903,7 +1903,7 @@ function bestFirstSearchByDijkstra(
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"next":{"title":"R言語","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.19","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2020-10-22T16:46:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T05:15:00.196Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"next":{"title":"R言語","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.19","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2021-03-14T05:20:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-14T23:45:58.205Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
