@@ -25,8 +25,9 @@
 
 クラス名（名前空間）を元に，モックオブジェクトを生成する．
 
-```PHP
+```php
 <?php
+
 // クラスの名前空間を引数として渡す．
 $mock = Phake::mock(Example::class);
 ```
@@ -35,8 +36,9 @@ $mock = Phake::mock(Example::class);
 
 モックオブジェクトに対して，スタブを生成する．
 
-```PHP
+```php
 <?php
+
 // $mockに対して，method()を設定し，$paramが渡された時に，[]（空配列）を返却するものとする．
 \Phake::when($mock)
     ->method($param)
@@ -49,8 +51,9 @@ $mock = Phake::mock(Example::class);
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
+
 // モックオブジェクトを生成．
 $mock = Phake::mock(Example::class);
 
@@ -70,8 +73,9 @@ Phake::verify($mock, Phake::times($n))->method($param);
 
 先に，以下のような，実体的なクラスがあるとする．
 
-```PHP
+```php
 <?php
+
 class Aggregation
 {
     private $example;
@@ -98,8 +102,9 @@ class Aggregation
 
 実体的なオブジェクトに対して，モックオブジェクトを設定していく．
 
-```PHP
+```php
 <?php
+
 // モックオブジェクトを生成．
 $mock = Phake::mock(Example::class);
 
@@ -127,8 +132,9 @@ Phake::verify($mock, Phake::times(1))->exaMethod("AB");
 
 モックオブジェクトなどを事前に準備するために用いられる．
 
-```PHP
+```php
 <?php
+
 class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 {
     protected $exampleService;
@@ -147,8 +153,9 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 
 テスト時に，グローバル変数やDIコンテナにデータを格納する場合，後のテストでもそのデータが誤って使用されてしまう可能性がある．そのために，テストの後片付けを行う．
 
-```PHP
+```php
 <?php
+
 class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 {
     protected $container;
@@ -177,7 +184,9 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 
 テストメソッドのアノテーションに，```@dataProvider {データ名}```とすることで，テストメソッドに定義した配列データを渡すことができる．
 
-```PHP
+```php
+<?php
+
 class xxxTest
 {
     
@@ -217,7 +226,7 @@ https://phpunit.readthedocs.io/ja/latest/assertions.html
 
 クラスやメソッドが単体で処理が正しく動作するかをテストする方法．
 
-```PHP
+```php
 <?php
 // ここに実装例
 ```
@@ -232,14 +241,14 @@ Controllerに対してリクエストを行い，正しくレスポンスが行�
 
 #### ・レスポンスが成功するか（ステータスコードが```200```番台か）
 
-```PHP
+```php
 <?php
 // ここに実装例
 ```
 
 #### ・レスポンスが成功するか ＆ レスポンスされるエラーメッセージが正しいか
 
-```PHP
+```php
 <?php
 // ここに実装例
 ```
@@ -248,7 +257,7 @@ Controllerに対してリクエストを行い，正しくレスポンスが行�
 
 レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかでテストする．
 
-```PHP
+```php
 <?php
 // ここに実装例
 ```

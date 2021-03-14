@@ -19,7 +19,7 @@
 3. 次に，残りのn-1個の中から最も小さい数字を探し，それを2番目の数字と入れ替える．
 4. この処理をn-1回繰り返す．
 
-```PHP
+```php
 <?php
 function minSelectSort(array $array): array
 {
@@ -57,7 +57,7 @@ function minSelectSort(array $array): array
 }
 ```
 
-```PHP
+```php
 <?php
 // 実際に使ってみる．
 $array = array(10,2,12,7,16,8,13)
@@ -97,7 +97,7 @@ var_dump($result);
 3. 二分割された各々のデータを，それぞれソートする．
 4. ソートを繰り返し実行する．
 
-```PHP
+```php
 <?php
 function quickSort(array $array): array 
 {
@@ -144,7 +144,7 @@ function quickSort(array $array): array
 }
 ```
 
-```PHP
+```php
 <?php
 // 実際に使ってみる．
 $array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
@@ -318,7 +318,7 @@ var_dump($result);
 ![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
 
 
-```PHP
+```php
 <?php
 // 各地点間の距離を二次元の連想配列で定義
 $matrix = array(
@@ -332,7 +332,7 @@ $matrix = array(
 );
 ```
 
-```PHP
+```php
 <?php
 // 各地点間の距離，出発地点，開始地点を引数にとる．
 function bestFirstSearchByDijkstra(

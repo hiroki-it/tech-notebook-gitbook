@@ -37,7 +37,7 @@
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 // 変数に Tue を格納
 $weeks = 'Tue';
@@ -69,7 +69,7 @@ if ($weeks == 'Mon') {
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 // 変数に Tue を格納
 $weeks = 'Tue';
@@ -115,7 +115,7 @@ switch ($weeks) {
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 class Example
@@ -171,7 +171,7 @@ class Example
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 class Example
@@ -220,7 +220,7 @@ class Example
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 class Example
@@ -290,13 +290,13 @@ class Example
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 // 西暦を格納する．
 $year = N;
 ```
 
-```PHP
+```php
 <?php
     
 function leapYear(int $year): string
@@ -330,7 +330,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // 西暦を格納する．
@@ -370,7 +370,7 @@ if文の代わりに，```switch-case-break```によって，実装に，『◯�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 function leapYear(int $year): string
@@ -407,7 +407,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 function leapYear(int $year): string
@@ -442,7 +442,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 class Example {};
@@ -461,7 +461,7 @@ if(new Example == new Example){
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 class Example {};
@@ -480,7 +480,7 @@ if (new Example === new Example) {
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 class Example {};
@@ -527,7 +527,7 @@ if ($a === $b) {
 
 「Example変数が見つからない」というエラーに対応する例外クラスを定義する．
 
-```PHP
+```php
 <?php
 
 class ExampleNotFoundException extends Exception
@@ -560,7 +560,7 @@ function example(string $example) {
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 function value(int $value) {
@@ -599,7 +599,7 @@ try-catch-finallyでは，特定の処理の中で起こる想定できない例
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 use \Exception\ExternalApiErrorException;
@@ -740,7 +740,7 @@ error_log(
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 use \Exception\ExternalApiErrorException;

@@ -1,37 +1,12 @@
 
 
-# 繰り返しロジック
+# 反復ロジック
 
-## 01. foreach
+## 01. 反復対象のデータ
 
-### 文法
+### 配列
 
-#### ・基本
-
-![流れ図_foreach文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_foreach文.png)
-
-```PHP
-<?php
-    
-$a = [1, -1, 2];
-$sum = 0;
-
-foreach ($a as $x) {
-    if ($x > 0) {
-        $sum += $x;
-    }
-}
-```
-
-#### ・```continue```
-
-配列の走査が特定の条件に当てはまったときに，この走査をスキップする．
-
-<br>
-
-### 走査（スキャン）
-
-#### ・走査とは
+#### ・走査（スキャン）
 
 配列内の要素を順に調べていくことを『走査（スキャン）』という．例えば，```foreach```は，配列内の全ての要素を走査する処理である．下図では，連想配列が表現されている．
 
@@ -48,7 +23,7 @@ foreach ($a as $x) {
 ```php
 <?php
     
-$array = array("あ", "い", "う");
+$array = []"あ", "い", "う"];
 
 // 内部ポインタが現在指定している要素を出力．
 echo current($array); // あ
@@ -66,11 +41,58 @@ echo end($array); // う
 echo reset($array); // あ
 ```
 
+<br>
+
+## 02. foreach
+
+### 文法
+
+#### ・基本
+
+配列を走査する．
+
+```php
+<?php
+
+$array = [1, 2, 3, 4];
+foreach ($array as &$value) {
+    $value = $value * 2;
+    echo $value
+}
+```
+
+#### ・制御文
+
+![流れ図_foreach文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_foreach文.png)
+
+```php
+<?php
+    
+$a = [1, -1, 2];
+$sum = 0;
+
+foreach ($a as $x) {
+    if ($x > 0) {
+        $sum += $x;
+    }
+}
+```
+
+<br>
+
+### 一次元配列の走査
+
+#### ・配列関数
+
+複雑な走査を行うために，組み込み関数が用意されている．
+
+https://www.php.net/manual/ja/ref.array.php
+
 #### ・配列の値へのアクセス
 
 単に配列を作るだけでなく，要素にアクセスするためにも使われる．
 
-```PHP
+```php
 <?php
 
 class Example
@@ -105,7 +127,7 @@ class Example
 }
 ```
 
-#### ・配列の値を加算代入
+#### ・配列の各値を加算代入
 
 ```php
 <?php
@@ -173,7 +195,7 @@ function iteration($M, $A) {
 
 コールバック関数の使用が必要になる．```call_user_func_array```メソッドの第一引数に，コールバック関数の```array_merge```メソッドの文字列を渡し，第二引数に二次元配列を渡す．その結果，平坦になって一次元配列になる．例えば，不要なインデックス（0）で入れ子になっている場合に役に立つ．
 
-```PHP
+```php
 <?php
     
 $twoDimension = [
@@ -200,7 +222,7 @@ $oneDimension = call_user_func_array(
 
 例えば，以下のような多次元配列があったとする．
 
-```PHP
+```php
 <?php
     
 $twoDimension = [
@@ -228,33 +250,59 @@ $oneDimension = array_column($twoDimension, "score");
 
 <br>
 
-## 02. while
+## 03. while
 
 ### 文法
 
 #### ・基本
 
+配列の走査を含む反復処理を行う．ただし，配列の走査は，```while```ではなく```foreach```を用いるようにする．また，```for```とは異なり，反復回数が決まっていない場合に使用する．
+
+```php
+<?php
+    
+$count = 0
+// 反復回数が決まっていないので，満たせたらbreakで停止する．
+while(true) {
+    
+    if($count = 10){
+        break;
+    }
+    
+    $count++
+}
+
+echo $count
+```
+
+#### ・制御文
+
 ![流れ図_while文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_while文.png)
 
-```PHP
+```php
 <?php
     
 $a = [1, -1, 2];
 $sum = 0;
 
-// 反復数の初期値
 $i = 0;
-
-while ($i < 2) {
+while (true) {
+    
+    // 全て走査したら停止
+    if($count == count($a)) {
+        break;
+    }
+    
     $x = $a[$i];
-    if ($x > 0) {
+    
+    if($x > 0) {
         $sum += $x;
     }
-    $i += 1;
+    
+    // 代入加算
+    $count ++;
 }
 ```
-
-#### ・```break```
 
 <br>
 
@@ -266,15 +314,32 @@ while ($i < 2) {
 
 <br>
 
-## 03. for
+## 04. for
 
 ### 文法
 
 #### ・基本
 
+配列の走査を含む反復処理を行う．ただし，配列の走査は，```for```ではなく```foreach```を用いるようにする．また，```while```とは異なり，反復回数が決まっている場合に使用する．
+
+```php
+<?php
+    
+// 10回反復することが決まっている．
+for($i = 1; $i <= 10; $i++){
+    $count++
+}
+
+echo $count
+```
+
+
+
+#### ・制御文
+
 ![流れ図_for文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_for文.png)
 
-```PHP
+```php
 <?php
     
 $a = [1, -1, 2];
@@ -287,4 +352,55 @@ for ($i = 0; $i < 2; $i++) {
     }
 }
 ```
+
+<br>
+
+## 05. 反復回数の変更
+
+### continue
+
+#### ・スキップ
+
+反復回をスキップし，以降を再び続行する．
+
+```php
+<?php
+
+foreach ($array as $key => $value) {
+    
+    // キーが偶数の組をスキップする．
+    if (!($key % 2 == 0)) {
+        continue;
+    }
+    
+    echo $value . "は奇数です";
+}
+```
+
+<br>
+
+### break
+
+#### ・途中停止
+
+反復を停止する．
+
+```php
+<?php
+
+$array = ["one", "two", "three", "four", "", "five"];
+
+foreach ($array as $value) {
+    
+    // 空の値で繰り返しを停止する．
+    if (empty($value)) {
+        break;
+    }
+    
+    echo $value;
+}
+
+```
+
+
 
