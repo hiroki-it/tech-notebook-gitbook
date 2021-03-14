@@ -13,8 +13,9 @@
 * PHP
   * クラスベースオブジェクト指向
     * [▶ ︎オブジェクト指向分析／設計／プログラミング](public/backend_object_orientation_analysis_design_programming.md)
-    * [▶ ︎クラスベースのプログラミング（1）](public/backend_object_orientation_class.md)
-    * [▶ ︎クラスベースのプログラミング（2）](public/backend_object_orientation_method_data.md)
+    * [▶ ︎クラスベース（1）](public/backend_object_orientation_class.md)
+    * [▶ ︎クラスベース（2）](public/backend_object_orientation_method_data.md)
+    * [▶ ︎データ構造](public/backend_object_orientation_data_structure.md)
   * ロジック
     * [▶ ︎バックエンド側の検証ロジック](public/backend_logic_validation.md)
     * [▶ ︎繰り返しロジック](public/backend_logic_iteration.md)
@@ -32,8 +33,8 @@
     * [▶ ︎JSON](public/frontend_and_backend_json.md)
 * JavaScript
   * プロトタイプベースオブジェクト指向
-    * [▶ ︎プロトタイプベースのプログラミング（1）](public/frontend_object_orientation_prototype.md)
-    * [▶ ︎プロトタイプベースのプログラミング（2）](public/frontend_object_orientation_method_data.md)
+    * [▶ ︎プロトタイプベース（1）](public/frontend_object_orientation_prototype.md)
+    * [▶ ︎プロトタイプベース（2）](public/frontend_object_orientation_method_data.md)
   * ロジック
     * [▶ ︎フロントエンド側の検証ロジック](public/frontend_logic_validation.md)
   * パッケージ／フレームワーク
