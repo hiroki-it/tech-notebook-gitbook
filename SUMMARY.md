@@ -18,7 +18,7 @@
     * [▶ ︎データ構造](public/backend_object_orientation_data_structure.md)
   * ロジック
     * [▶ ︎バックエンド側の検証ロジック](public/backend_logic_validation.md)
-    * [▶ ︎繰り返しロジック](public/backend_logic_iteration.md)
+    * [▶ ︎反復ロジック](public/backend_logic_iteration.md)
   * API
     * [▶ ︎RESTful APIの概念と実装](public/backend_api_restful.md)
   * パッケージ／フレームワーク
