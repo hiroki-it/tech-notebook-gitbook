@@ -58,13 +58,13 @@ HTML，XHTML，CSS，JavaScript，DOM，XML，XSLT，を組み合わせて非同
 
 <br>
 
-## 02. JQueryパッケージ
+## 02. JQueryパッケージによる非同期処理
 
-### ```ajax```メソッドによるAjaxの実現
+### ```ajax```メソッド
 
 #### ・```ajax```メソッドとは
 
-HTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
+Ajaxを実現する．HTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
 
 参考：https://api.jquery.com/jquery.ajax
 
@@ -88,13 +88,13 @@ class Example {
             // ###################
             
             // HTTPメソッドを指定
-            type: 'POST',
+            type: "POST",
             
             // ルートとパスパラメータを指定
-            url: '/xxx/xxx/' + this.id + '/', 
+            url: "/xxx/xxx/" + this.id + "/", 
 
             // 送信するデータの形式を指定
-            contentType: 'application/json',
+            contentType: "application/json",
 
             // メッセージボディ
             data: {
@@ -107,7 +107,7 @@ class Example {
             // ###################
             
             // 受信するメッセージボディのデータ型を指定
-            dataType: 'json',
+            dataType: "json",
         })
     }
 }
@@ -125,19 +125,19 @@ Promiseオブジェクトがもつメソッド．```ajax```メソッドによっ
 
 ```javascript
 class Example {
-    
+
     constructor(properties) {
         this.id = properties.id;
     }
-    
+
     /**
      * ajaxメソッドのラッパーメソッド
      */
     static find() {
         return $.ajax({
-            type: 'POST',
-            url: '/xxx/xxx/' + this.id + '/', 
-            contentType: 'application/json',
+            type: "POST",
+            url: "/xxx/xxx/" + this.id + "/",
+            contentType: "application/json",
             data: {
                 param1: "AAA",
                 param2: "BBB"
@@ -147,12 +147,12 @@ class Example {
             .done((data) => {
 
             })
-        
+
             // 非同期通信の失敗時のコールバック処理
             .fail((data) => {
-                toastr.error('', 'エラーが発生しました．');
+                toastr.error("", "エラーが発生しました．");
             })
-        
+
             // 非同期通信の成功失敗に関わらず常に実行する処理
             .always((data) => {
                 this.isLoaded = false;
@@ -179,9 +179,9 @@ class Example {
      */
     static find() {
         return $.ajax({
-            type: 'POST',
-            url: '/xxx/xxx/' + this.id + '/', 
-            contentType: 'application/json',
+            type: "POST",
+            url: "/xxx/xxx/" + this.id + "/", 
+            contentType: "application/json",
             data: {
                 param1: "AAA",
                 param2: "BBB"
@@ -209,9 +209,9 @@ class Example {
 
 <br>
 
-## 02-02. Axiosパッケージ
+## 02-02. Axiosパッケージによる非同期処理
 
-### axiosオブジェクトによるAjaxの実現
+### axiosオブジェクト
 
 #### ・axiosオブジェクトとは
 
@@ -221,59 +221,132 @@ class Example {
 
 ## 02-03. async/await宣言
 
-### async/await宣言による非同期関数化
+### 非同期関数化
 
-#### ・async/await宣言とは
+#### ・async宣言
 
-宣言することにより，非同期関数として定義できる．定義された非同期関数は，Promiseオブジェクトを返却する．
+非同期関数として定義する．async関数は，Promiseオブジェクトを返却する．
 
 **＊実装例＊**
 
 ```javascript
-async function example() {
+// アロー関数記法
+const asyncFunc = async () => {
+    // 何らかの処理
+}
+
+async function asyncFunc() {
     // 何らかの処理
 }
 ```
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
-#### ・resolveとreject
+#### ・await宣言
+
+
+Promiseオブジェクトの```then```メソッドと同じ機能を持つ．async関数がPromiseオブジェクトを返却した後に実行される．
+```javascript
+// awaitを使用した場合
+const asyncFunc = async () => {
+
+    const res = await axios.get("/some/path");
+
+    console.log(res.data); // "some data"
+}
+
+// Promiseオブジェクトのthenメソッドを使用した場合
+const asyncFunc = async () => {
+
+    axios.get("/some/path")
+        .then((res) => {
+            console.log(res.data); // "some data"
+        });
+}
+```
+
+await宣言により，コールバック地獄のソースコードが分かりやすくなる．
+
+```js
+// awaitを使用した場合
+const asyncFunc = async () => {
+
+    const res1 = await axios.get("/some/path1");
+
+    const res2 = await axios.get("/some/path2");
+
+    console.log(res1.data + res2.data); // "some data"
+}
+
+// Promiseオブジェクトのthenメソッドを使用した場合
+const asyncFunc = async () => {
+
+    // コールバック関数地獄になっている．
+    axios.get("/some/path1")
+        .then((res) => {
+            const res1 = res;
+            axios.get("/some/path1")
+                .then((res) => {
+                    const res2 = res;
+                    console.log(res1.data + res2.data); // "some data"
+                });
+        })
+}
+```
+
+#### ・resolveとthen
 
 **＊実装例＊**
 
 ```javascript
-// resolve1!!をreturnしているため、この値がresolveされる
-async function resolveExample() {
-  return 'resolve!!';
+// asyncを使用した場合
+const resolveFunc = async () => {
+    // resolve!!をreturnしているため、この値がresolveされる
+    return "resolve!!";
 }
 
-// resolveExampleがPromiseを返し、resolve!!がresolveされるため
-// then()が実行されコンソールにresolve!!が表示される
-resolveExample().then(value => {
-  console.log(value); // => resolve!!
+// Promiseオブジェクトを使用した場合
+const resolveFunc = new Promise((resolve, reject) => {
+    resolve("resolve!!");
 });
 
 
-// reject!!をthrowしているため、この値がrejectされる
-async function rejectExample() {
-  throw new Error('reject!!');
+resolveFunc.then((value) => {
+    // resolveFuncがPromiseを返し、resolve!!がresolveされるため
+    // then()が実行されコンソールにresolve!!が表示される
+    console.log(value); // resolve!!
+});
+```
+
+```javascript
+const resolveFunc = () => {
+    // resolveFuncはasync functionではないため、Promiseを返さない
+    return "resolve!!";
 }
 
-// rejectExampleがPromiseを返し、reject!!がrejectされるため
-// catch()が実行されコンソールにreject!!が表示される
-rejectExample().catch(err => {
-  console.log(err); // => reject!!
+resolveFunc.then((value) => {
+    // resolveFuncはPromiseを返さないため、エラーが発生して動かない
+    // Uncaught TypeError: resolveError(...).then is not a function
+    console.log(value);
+});
+```
+
+#### ・rejectとcatch
+
+```javascript
+// asyncを使用した場合
+const rejectFunc = async () => {
+    // reject!!をthrowしているため、この値がrejectされる
+    throw new Error("reject!!");
+}
+
+const rejectFunc = new Promise((resolve, reject) => {
+    reject(new Error("reject!!"));
 });
 
-
-// resolveErrorはasync functionではないため、Promiseを返さない
-function resolveError() {
-  return 'resolveError!!';
-}
-
-// resolveErrorはPromiseを返さないため、エラーが発生して動かない
-// Uncaught TypeError: resolveError(...).then is not a function
-resolveError().then(value => {
-  console.log(value);
+rejectFunc.catch((err) => {
+    // rejectFuncがPromiseを返し、reject!!がrejectされるため
+    // catch()が実行されコンソールにreject!!が表示される
+    console.log(err); // reject!!
 });
 ```

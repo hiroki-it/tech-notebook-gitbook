@@ -149,7 +149,7 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 ＊Tireクラス＊
 
-```PHP
+```php
 <?php
     
 class Tire {}
@@ -157,7 +157,7 @@ class Tire {}
 
 ＊CarXクラス＊
 
-```PHP
+```php
 <?php
     
 //CarXクラス定義
@@ -185,7 +185,7 @@ class CarX
 
 ＊CarYクラス＊
 
-```PHP
+```php
 <?php
     
 //CarYクラス定義
@@ -213,7 +213,7 @@ class CarY
 
 以下の様に，Tireクラスのインスタンスを，CarXクラスとCarYクラスの引数として用いている．
 
-```PHP
+```php
 <?php
     
 //Tireクラスをインスタンス化
@@ -241,7 +241,7 @@ $suv = new CarY($tire1, $tire2, $tire5, $tire6);
 
 ＊Lockクラス＊
 
-```PHP
+```php
 <?php
     
 //Lockクラス定義
@@ -250,7 +250,7 @@ class Lock {}
 
 ＊Carクラス＊
 
-```PHP
+```php
 <?php
     
 //Carクラスを定義
@@ -269,7 +269,7 @@ class Car
 
 以下の様に，Lockインスタンスは，Carクラスの中で定義されているため，Lockインスタンスにはアクセスできない．また，Carクラスが起動しなければ，Lockインスタンスは起動できない．さらに，Carクラスが削除されれば，Lockクラスも削除される．このように，LockインスタンスからCarクラスの方向には，Compositionの関係性がある．
 
-```PHP
+```php
 <?php
 // Carクラスのインスタンスの中で，Lockクラスがインスタンス化される．
 $car = new Car();
@@ -289,7 +289,7 @@ $car = new Car();
 
 ＊親クラス＊
 
-```PHP
+```php
 <?php
     
 // 通常クラス
@@ -331,7 +331,7 @@ class Goods
 
 ＊子クラス＊
 
-```PHP
+```php
 <?php
     
 // 通常クラス
@@ -386,7 +386,7 @@ class GoodsWithTax extends Goods
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // 抽象クラス．型として提供したいものを定義する．
@@ -437,7 +437,7 @@ abstract class ShainManagement
 }
 ```
 
-```PHP
+```php
 <?php
     
 // 子クラス
@@ -481,7 +481,7 @@ class EnginnerShainManagement extends ShainManagement
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 interface Animal
@@ -493,7 +493,7 @@ interface Animal
 }
 ```
 
-```PHP
+```php
 <?php
 
 class Mammal implements Animal
@@ -553,7 +553,7 @@ class Mammal implements Animal
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
   
 // 継承元クラス
@@ -568,7 +568,7 @@ class Example
 }
 ```
 
-```PHP
+```php
 <?php
   
 // 継承先クラス
@@ -583,7 +583,7 @@ class SubExample extends Example
 }
 ```
 
-```PHP
+```php
 <?php
   
 $subExample = new SubExample;
@@ -599,7 +599,7 @@ echo $subExample->getValue();
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
   
 abstract class Example 
@@ -611,7 +611,7 @@ abstract class Example
 }
 ```
 
-```PHP
+```php
 <?php
   
 class SubExample extends Example
@@ -799,7 +799,7 @@ PHP```5.3```以降では，外部ファイルとして定義されたクラス�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
   
 // 名前空間を定義．
@@ -817,7 +817,7 @@ class Example1
 }
 ```
 
-```PHP
+```php
 <?php
 
 namespace Domain\Entity;
@@ -839,7 +839,7 @@ class Example2
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 
 namespace Domain\Entity;
@@ -903,7 +903,7 @@ https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-
 
 ModuleAとModuleBは，データ結合の関係にある．
 
-```PHP
+```php
 <?php
 class ModuleA // コールされる側
 {
@@ -914,7 +914,7 @@ class ModuleA // コールされる側
 }
 ```
 
-```PHP
+```php
 <?php
 class ModuleB // コールする側
 {
@@ -930,7 +930,7 @@ class ModuleB // コールする側
 
 デザインパターンのFactoryクラスでは，スカラ型データの値に応じて，インスタンスを作り分ける．Factoryクラスのインスタンスと，これをコールする他インスタンス は，データ結合の関係にある．
 
-```PHP
+```php
 <?php
 /**
  * コールされる側
@@ -961,7 +961,7 @@ object型のデータをサプライヤー側として，クライアント側�
 
 ModuleAとModuleBは，スタンプ結合の関係にある．
 
-```PHP
+```php
 <?php
 class Common
 {
@@ -980,7 +980,7 @@ class Common
 }
 ```
 
-```PHP
+```php
 <?php
 class ModuleA
 {
@@ -995,7 +995,7 @@ class ModuleA
 }
 ```
 
-```PHP
+```php
 <?php
 class ModuleB
 {
@@ -1057,7 +1057,7 @@ class ModuleB
 
 Pimpleライブラリを使用した場合
 
-```PHP
+```php
 <?php
 use Pimple\Container;
 
@@ -1083,13 +1083,13 @@ class Container
 }
 ```
 
-```PHP
+```php
 <?php
 // autoload.php で，DIコンテナ自体のインスタンスを事前に生成．
 $container = new Container();
 ```
 
-```PHP
+```php
 <?php
 // DIコンテナの読み込み
 require_once __DIR__ . '/autoload.php';
@@ -1104,7 +1104,7 @@ $sample = $container['sample'];
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 class Sample
 {
@@ -1115,7 +1115,7 @@ class Sample
     }
 }
 ```
-```PHP
+```php
 <?php
 // DIコンテナ自体をインジェクションしてしまうと，不要なインスタンスにも依存してしまう．
 $sample = new Sample($container);
