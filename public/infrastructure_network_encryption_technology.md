@@ -193,7 +193,7 @@ Webコンテンツデータ，メールデータ，その他
 [local pc] $ ssh -L20000:xxxx.rds.amazonaws.com:3306 username@fumidai.com 
 ```
 
-![SSHポートフォワード](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/SSHポートフォワード.png)
+![ssh-port-forward](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ssh-port-forward.png)
 
 **＊具体例＊**
 

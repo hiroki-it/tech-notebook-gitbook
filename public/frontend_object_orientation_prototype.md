@@ -349,13 +349,17 @@ console.log(
 
 ### 糖衣構文の```class```の使用
 
+#### ・JavaScriptのクラスとは
+
 ES6から，糖衣構文の```class```によって，オブジェクトを宣言できるようになった．クラス宣言あるいはクラス式で記述する．オブジェクトの生成時，```constructor()```でオブジェクトの初期化を行う．パスカルケース（大文字から始める記法）を用いる．
+
+#### ・クラス宣言記法
 
 **＊実装例＊**
 
 ```javascript
-// クラス宣言
-class Example {
+// named exportによる出力
+export class Example {
     
     // classでしか使えない．
     // Setterの代わりにコンストラクタでImmutableを実現．
@@ -371,8 +375,21 @@ class Example {
 ```
 
 ```javascript
-// クラス式
-const Example = class {
+// ファイルの読み込み
+import {Example} from "./example.js";
+
+// 生成，初期化
+const example = new Example(1);
+
+// メソッドのコール
+example.getValue();
+```
+
+#### ・クラス式記法
+
+```javascript
+// named exportによる出力
+export const Example = class {
     
     // classでしか使えない．
     // Setterの代わりにコンストラクタでImmutableを実現．
@@ -388,8 +405,14 @@ const Example = class {
 ```
 
 ```javascript
+// ファイルの読み込み
+import {Example} from "./example.js";
+
 // 生成，初期化
-const example = new Example(1)
+const example = new Example(1);
+
+// メソッドのコール
+example.getValue();
 ```
 
 <br>

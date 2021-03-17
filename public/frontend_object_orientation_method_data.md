@@ -84,7 +84,7 @@ $.get() {
 #### ・コールバック関数
 
 ```javascript
-function asyncFunc(param, callback) {
+const asyncFunc => (param, callback) {
   setTimeout(() => {
     
     // getDataメソッドは，数値を渡すとdataを取得してくれると仮定します．
