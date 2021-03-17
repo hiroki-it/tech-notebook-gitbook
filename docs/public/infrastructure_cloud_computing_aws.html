@@ -1670,29 +1670,38 @@
 <p>Lambda&#x306F;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x540C;&#x671F;&#x95A2;&#x6570;&#x3068;&#x3057;&#x3066;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x5F15;&#x6570;&#xFF08;event&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF0C;context&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF0C;callback&#x95A2;&#x6570;&#xFF09;&#x306B;&#x5024;&#x3092;&#x308F;&#x305F;&#x3059;&#xFF0E;&#x3053;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x306F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#xFF0E;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x306E;&#x521D;&#x671F;&#x540D;&#x306F;<code>handler</code>&#x3067;&#x3042;&#x308B;&#x304C;&#x5225;&#x540D;&#x3067;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync&#xFF08;&#x203B;&#x300E;Non&#x300F;&#x304C;&#x7FFB;&#x8A33;&#x3092;&#x304A;&#x304B;&#x3057;&#x304F;&#x3057;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x82F1;&#x8A9E;&#x7248;&#x3092;&#x63A8;&#x5968;&#xFF09;" target="_blank">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync&#xFF08;&#x203B;&#x300E;Non&#x300F;&#x304C;&#x7FFB;&#x8A33;&#x3092;&#x304A;&#x304B;&#x3057;&#x304F;&#x3057;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x82F1;&#x8A9E;&#x7248;&#x3092;&#x63A8;&#x5968;&#xFF09;</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>Node.js&#x306E;&#x5834;&#x5408;&#x3092;&#x793A;&#x3059;&#xFF0E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306F;&#xFF0C;&#x5927;&#x304D;&#x304F;&#x4E09;&#x7A2E;&#x985E;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>Node.js&#x306E;&#x5834;&#x5408;&#x3092;&#x793A;&#x3059;&#xFF0E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x306B;&#x306F;&#xFF0C;<code>done</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>succeed</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>callback</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x308B;&#x5834;&#x5408;&#x306F;<code>return</code>&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-js">exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// &#x306A;&#x3093;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
 
-    <span class="token comment">// &#x6700;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#xFF08;&#x5F85;&#x6A5F;&#x306F;&#x3057;&#x306A;&#x3044;&#xFF09;</span>
+    <span class="token comment">// context&#x4EE5;&#x524D;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5F85;&#x6A5F;&#x306F;&#x3057;&#x306A;&#x3044;</span>
     context<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">/*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x308B;&#x5834;&#x5408;</span>
+    <span class="token comment">// return context.done(null, /*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-js">exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// &#x306A;&#x3093;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
 
-    <span class="token comment">// &#x6700;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#xFF08;&#x5F85;&#x6A5F;&#x306F;&#x3057;&#x306A;&#x3044;&#xFF09;</span>
+    <span class="token comment">// context&#x4EE5;&#x524D;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5F85;&#x6A5F;&#x306F;&#x3057;&#x306A;&#x3044;</span>
     context<span class="token punctuation">.</span><span class="token function">succeed</span><span class="token punctuation">(</span> <span class="token comment">/*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/</span> <span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x308B;&#x5834;&#x5408;</span>
+    <span class="token comment">// return context.succeed( /*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/ )</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-javascript">exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// &#x306A;&#x3093;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
 
-    <span class="token comment">// &#x6700;&#x5F8C;&#x307E;&#x3067;&#x5F85;&#x6A5F;&#x3057;&#x3066;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;</span>
+    <span class="token comment">// callback&#x4EE5;&#x524D;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5F85;&#x6A5F;&#x3059;&#x308B;&#xFF0E;</span>
     <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">/*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x308B;&#x5834;&#x5408;</span>
+    <span class="token comment">// return callback(null, /*&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;*/)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x4E88;&#x7D04;&#x3055;&#x308C;&#x305F;&#x5F15;&#x6570;&#x306E;&#x8AAC;&#x660E;">&#x30FB;&#x4E88;&#x7D04;&#x3055;&#x308C;&#x305F;&#x5F15;&#x6570;&#x306E;&#x8AAC;&#x660E;</h4>
@@ -1757,11 +1766,25 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images" target="_blank">https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images</a></p>
 <p><br></p>
 <h3 id="nodejs&#x3092;&#x7528;&#x3044;&#x305F;&#x95A2;&#x6570;&#x4F8B;">Node.js&#x3092;&#x7528;&#x3044;&#x305F;&#x95A2;&#x6570;&#x4F8B;</h3>
-<h4 id="&#x30FB;aws-sdk&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30FB;AWS-SDK&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h4>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-javascript"><span class="token comment">// AWS SDK for JavaScript &#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;</span>
-<span class="token keyword">const</span> aws <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;aws-sdk&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<h4 id="&#x30FB;&#x6A19;&#x6E96;&#x3067;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x306A;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;">&#x30FB;&#x6A19;&#x6E96;&#x3067;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x306A;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x540D;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js&#x306E;&#x6A19;&#x6E96;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</td>
+<td>&#x53C2;&#x8003;&#xFF1A;<a href="https://nodejs.org/api/index.html" target="_blank">https://nodejs.org/api/index.html</a></td>
+</tr>
+<tr>
+<td>aws-sdk</td>
+<td>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/" target="_blank">https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/</a></td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x30FB;api-gateway--lambda--s3">&#x30FB;API Gateway &amp; Lambda &amp; S3</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-javascript"><span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
@@ -7083,7 +7106,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-03-16T01:25:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-16T02:57:09.345Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-03-16T10:42:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T11:20:12.865Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
