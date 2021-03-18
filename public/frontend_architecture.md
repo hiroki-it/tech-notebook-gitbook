@@ -66,28 +66,28 @@ HTML，XHTML，CSS，JavaScript，DOM，XML，XSLT，を組み合わせて非同
 
 歴史的に，非同期処理を実装するための方法がいくつかある．
 
-| 種類                   | 説明                                                         | 補足                                                         |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ビルトインオブジェクト | XMLHttpRequestクラス．今では使うことは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
-| ビルトイン関数         | ```fetch```メソッド．                                        | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
-| JQueryパッケージ       | ```get```メソッド，```post```メソッド，```ajax```メソッドを使用する． | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
-| Axiosパッケージ        | axiosオブジェクトを使用する．                                | 参考：https://github.com/axios/axios#request-method-aliases  |
+| 種類                 | 提供                   | 説明                                                         | 補足                                                         |
+| -------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| XMLHttpRequestクラス | ビルトインオブジェクト | 今では使うことは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
+| ```fetch```メソッド  | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
+| JQueryオブジェクト   | JQueryパッケージ       | ```get```メソッド，```post```メソッド，```ajax```メソッドを使用する． | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
+| axiosオブジェクト    | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |
 
 #### ・応用実装
 
 コールバック関数地獄など，非同期処理の実装時に起こる問題点を解決するための方法がある．
 
-| 種類                   | 説明                                                         | 補足                                                         |
-| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ビルトインオブジェクト | Promiseオブジェクト．JQueryのPromiseオブジェクトを参考にして，ES2015から新しく使用できるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
-| ビルトインオブジェクト | 任意の関数にてasync/awaitを宣言する．ES2017から新しく使用できるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
-| JQueryパッケージ       | Deferredオブジェクト．                                       | 参考：https://api.jquery.com/category/deferred-object/       |
+| 種類                 | 提供                   | 説明                                                         | 補足                                                         |
+| -------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promiseオブジェクト  | ビルトインオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく使用できるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
+| async/awaitを宣言    | ビルトインオブジェクト | ES2017から新しく使用できるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| Deferredオブジェクト | JQueryパッケージ       |                                                              | 参考：https://api.jquery.com/category/deferred-object/       |
 
 <br>
 
 ## 02-02. 基本実装
 
-### JQueryパッケージの場合
+### JQueryオブジェクトの場合
 
 #### ・```get```メソッド，```post```メソッド
 
@@ -150,9 +150,9 @@ $.ajax({
 
 <br>
 
-### Axiosパッケージの場合
+### Axiosオブジェクトの場合
 
-#### ・axiosオブジェクト
+#### ・axiosオブジェクトとは
 
 Ajaxを実現する．HTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
 
@@ -162,9 +162,9 @@ Ajaxを実現する．HTTPメソッド，URL，ヘッダー，メッセージボ
 
 ## 02-03. 応用実装
 
-### JQueryパッケージの場合
+### JQueryオブジェクトの場合
 
-#### ・```done```メソッド，```fail```メソッド，```always```メソッドとは
+#### ・```done```メソッド，```fail```メソッド，```always```メソッド
 
 Promiseオブジェクトがもつメソッド．```ajax```メソッドによってレスポンスを受信した後，その結果を```done```，```fail```，```always```の三つに分類し，これに応じたコールバック処理を実行する方法．
 
@@ -231,7 +231,7 @@ $.ajax({
     });
 ```
 
-#### ・```then```メソッドとは
+#### ・```then```メソッド
 
 Promiseオブジェクトがもつメソッド．```ajax```メソッドによってレスポンスを受信した後，その結果を```then```メソッドの引数の順番で分類し，これに応じたコールバック処理を実行する方法．非同期処理の後に同期処理を行いたい場合に用いる．
 
@@ -271,7 +271,60 @@ $.ajax({
 
 <br>
 
-### ビルトインオブジェクトの場合
+### Promiseオブジェクトの場合
+
+#### ・Promiseオブジェクトとは
+
+非同期処理の結果をデータとして保持する．
+
+参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+#### ・```then```メソッド，```catch```メソッド，```finally```メソッド
+
+参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+
+**＊実装例＊**
+
+```javascript
+const resolveFunc = new Promise((resolve, reject) => {
+    resolve("resolve!!");
+});
+
+resolveFunc.then((value) => {
+    // resolveFuncがPromiseを返し、resolve!!がresolveされるため
+    // then()が実行されコンソールにresolve!!が表示される
+    console.log(value); // resolve!!
+});
+```
+
+```javascript
+const resolveFunc = () => {
+    // resolveFuncはasync functionではないため、Promiseを返さない
+    return "resolve!!";
+}
+
+resolveFunc.then((value) => {
+    // resolveFuncはPromiseを返さないため、エラーが発生して動かない
+    // Uncaught TypeError: resolveError(...).then is not a function
+    console.log(value);
+});
+```
+
+```javascript
+const rejectFunc = new Promise((resolve, reject) => {
+    reject(new Error("reject!!"));
+});
+
+rejectFunc.catch((err) => {
+    // rejectFuncがPromiseを返し、reject!!がrejectされるため
+    // catch()が実行されコンソールにreject!!が表示される
+    console.log(err); // reject!!
+});
+```
+
+<br>
+
+### async/await宣言
 
 #### ・async宣言
 
@@ -294,11 +347,19 @@ async function asyncFunc() {
 
 #### ・await宣言
 
-Promiseオブジェクトの```then```メソッドと同じ機能を持つ．async関数がPromiseオブジェクトを返却した後に実行される．
+Promiseオブジェクトの```then```メソッドと同じ機能を持つ．```then```メソッドのようにメソッドチェーンする必要はなくなる．
 
 **＊実装例＊**
 
 ```javascript
+// Promiseオブジェクトのthenメソッドを使用した場合
+const asyncFunc = async () => {
+
+    axios.get("/some/path").then((res) => {
+        console.log(res.data); // "some data"
+    });
+}
+
 // awaitを使用した場合
 const asyncFunc = async () => {
 
@@ -307,19 +368,24 @@ const asyncFunc = async () => {
     console.log(res.data); // "some data"
 }
 
-// Promiseオブジェクトのthenメソッドを使用した場合
-const asyncFunc = async () => {
-
-    axios.get("/some/path")
-        .then((res) => {
-            console.log(res.data); // "some data"
-        });
-}
 ```
 
 await宣言により，コールバック地獄のソースコードが分かりやすくなる．
 
 ```js
+// Promiseオブジェクトのthenメソッドを使用した場合
+const asyncFunc = async () => {
+
+    // コールバック関数地獄になっている．
+    axios.get("/some/path1").then((res) => {
+        const res1 = res;
+        axios.get("/some/path1").then((res) => {
+            const res2 = res;
+            console.log(res1.data + res2.data); // "some data"
+        });
+    })
+}
+
 // awaitを使用した場合
 const asyncFunc = async () => {
 
@@ -329,76 +395,50 @@ const asyncFunc = async () => {
 
     console.log(res1.data + res2.data); // "some data"
 }
-
-// Promiseオブジェクトのthenメソッドを使用した場合
-const asyncFunc = async () => {
-
-    // コールバック関数地獄になっている．
-    axios.get("/some/path1")
-        .then((res) => {
-            const res1 = res;
-            axios.get("/some/path1")
-                .then((res) => {
-                    const res2 = res;
-                    console.log(res1.data + res2.data); // "some data"
-                });
-        })
-}
 ```
 
-#### ・```then```メソッド，```catch```メソッド
+#### ・エラーハンドリング
+
+Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，```try-catch```構文とawait宣言を組み合わせて，より可読性良く実装できる．
+
+参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
 **＊実装例＊**
 
 ```javascript
-// asyncを使用した場合
-const resolveFunc = async () => {
-    // returnする時，resolveメソッドが実行される．
-    return "resolve!!";
+const asyncFunc = async () => {
+
+    return axios.get("/some/path1")
+        .catch((error) => {
+            console.error(error);
+        })
+        .then((data) => {
+            console.info(data);
+        });
 }
-
-// Promiseオブジェクトを使用した場合
-const resolveFunc = new Promise((resolve, reject) => {
-    resolve("resolve!!");
-});
-
-resolveFunc
-    .then((value) => {
-        // resolveFuncがPromiseを返し、resolve!!がresolveされるため
-        // then()が実行されコンソールにresolve!!が表示される
-        console.log(value); // resolve!!
-    });
 ```
 
 ```javascript
-const resolveFunc = () => {
-    // resolveFuncはasync functionではないため、Promiseを返さない
-    return "resolve!!";
+const asyncFunc = async () => {
+    
+    // 初期化
+    let response;
+    
+    try {
+        
+        response = await axios.get("/some/path1")
+        console.info(response);
+        
+    } catch (error) {
+        
+        console.error(error);
+        
+    }
+    
+    return response;
 }
-
-resolveFunc
-    .then((value) => {
-        // resolveFuncはPromiseを返さないため、エラーが発生して動かない
-        // Uncaught TypeError: resolveError(...).then is not a function
-        console.log(value);
-    });
 ```
 
-```javascript
-// asyncを使用した場合
-const rejectFunc = async () => {
-    // throwする時，rejectメソッドが内部で実行される．
-    throw new Error("reject!!");
-}
 
-const rejectFunc = new Promise((resolve, reject) => {
-    reject(new Error("reject!!"));
-});
 
-rejectFunc
-    .catch((err) => {
-        // rejectFuncがPromiseを返し、reject!!がrejectされるため
-        // catch()が実行されコンソールにreject!!が表示される
-        console.log(err); // reject!!
-    });
-```
+#### 
