@@ -1644,7 +1644,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <table>
 <thead>
 <tr>
-<th style="text-align:left"></th>
+<th style="text-align:left">&#x9805;&#x76EE;</th>
 <th style="text-align:left">var</th>
 <th style="text-align:left">let</th>
 <th>const</th>
@@ -1652,19 +1652,25 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>&#x518D;&#x5BA3;&#x8A00;</strong></td>
+<td style="text-align:left">&#x518D;&#x5BA3;&#x8A00;</td>
 <td style="text-align:left">&#x53EF;&#x80FD;</td>
 <td style="text-align:left">&#x4E0D;&#x53EF;&#x80FD;</td>
 <td>&#x4E0D;&#x53EF;&#x80FD;</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>&#x518D;&#x4EE3;&#x5165;</strong></td>
+<td style="text-align:left">&#x518D;&#x4EE3;&#x5165;</td>
 <td style="text-align:left">&#x53EF;&#x80FD;</td>
 <td style="text-align:left">&#x53EF;&#x80FD;</td>
 <td>&#x4E0D;&#x53EF;&#x80FD;</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>&#x30B9;&#x30B3;&#x30FC;&#x30D7;</strong></td>
+<td style="text-align:left">&#x521D;&#x671F;&#x5316;&#xFF08;<code>undefined</code>&#x5316;&#xFF09;</td>
+<td style="text-align:left">&#x53EF;&#x80FD;</td>
+<td style="text-align:left">&#x53EF;&#x80FD;</td>
+<td>&#x4E0D;&#x53EF;&#x80FD;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30B9;&#x30B3;&#x30FC;&#x30D7;</td>
 <td style="text-align:left">&#x95A2;&#x6570;&#x30B9;&#x30B3;&#x30FC;&#x30D7;</td>
 <td style="text-align:left">&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x30B9;&#x30B3;&#x30FC;&#x30D7;</td>
 <td>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x30B9;&#x30B3;&#x30FC;&#x30D7;</td>
@@ -1702,6 +1708,26 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token comment">// &#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5185;&#x306E;let&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x4E0D;&#x53EF;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
+</code></pre>
+<p>&#x307E;&#x305F;&#xFF0C;<code>try-catch</code>&#x69CB;&#x6587;&#x3067;&#x306F;&#x5909;&#x6570;&#x3078;&#x306E;&#x4EE3;&#x5165;&#x304C;&#x4FDD;&#x8A3C;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;<code>let</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x521D;&#x671F;&#x5316;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">const</span> <span class="token function-variable function">asyncFunc</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// &#x521D;&#x671F;&#x5316;&#x3059;&#x308B;&#x3068;undefined&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+    <span class="token keyword">let</span> response<span class="token punctuation">;</span>
+
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+        response <span class="token operator">=</span> <span class="token keyword">await</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/some/path1&quot;</span><span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;-var">&#x30FB; <code>var</code></h4>
 <pre class="language-"><code class="lang-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1780,7 +1806,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎プロトタイプベース（2）","level":"1.6.1.2","depth":3,"next":{"title":"ロジック","level":"1.6.2","depth":2,"ref":"","articles":[{"title":"▶ ︎フロントエンド側の検証ロジック","level":"1.6.2.1","depth":3,"path":"public/frontend_logic_validation.md","ref":"public/frontend_logic_validation.md","articles":[]}]},"previous":{"title":"▶ ︎プロトタイプベース（1）","level":"1.6.1.1","depth":3,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_object_orientation_method_data.md","mtime":"2021-03-17T04:59:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T11:20:12.865Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎プロトタイプベース（2）","level":"1.6.1.2","depth":3,"next":{"title":"ロジック","level":"1.6.2","depth":2,"ref":"","articles":[{"title":"▶ ︎フロントエンド側の検証ロジック","level":"1.6.2.1","depth":3,"path":"public/frontend_logic_validation.md","ref":"public/frontend_logic_validation.md","articles":[]}]},"previous":{"title":"▶ ︎プロトタイプベース（1）","level":"1.6.1.1","depth":3,"path":"public/frontend_object_orientation_prototype.md","ref":"public/frontend_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_object_orientation_method_data.md","mtime":"2021-03-18T02:16:11.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-18T02:17:08.510Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
