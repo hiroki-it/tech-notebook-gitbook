@@ -275,9 +275,47 @@ $.ajax({
 
 #### ・Promiseオブジェクトとは
 
-非同期処理の結果をデータとして保持する．
+非同期処理を監視し，処理の結果と，その結果のステータスを返却する．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+#### ・```resolve```メソッド，```reject```メソッド
+
+結果のステータスが成功であれば```resolve```メソッドを実行し，反対に失敗であれば```reject```メソッドを実行する．Promiseオブジェクト内では暗黙的に```try-catch```が実行されており，非同期処理の結果に合わせて選択する，両方を実装すると良しなに実行してくれる．
+
+```javascript
+const asyncFunc = () => {
+
+    return new Promise((resolve, reject) => {
+
+        // ステータスが成功の場合に選択される．
+        resolve("SUCCESS") // Promise { "SUCCESS" }
+
+        // ステータスが失敗の場合に選択される．
+        reject("FAILED") // Promise { "FAILED" }
+    })
+}
+
+const asyncFunc = () => {
+
+    // ステータスが成功の場合に選択される．
+    Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
+
+    // ステータスが失敗の場合に選択される．
+    Promise.reject("FAILED") // Promise { "FAILED" }
+}
+
+asyncFunc()
+    // 失敗時に返却されたrejectをハンドリング
+    .catch((reject) => {
+        // rejectメソッドを実行
+        console.error(reject)
+    })
+    .then((resolve) => {
+        // resolveメソッドを実行
+        console.info(resolve)
+    })
+```
 
 #### ・```then```メソッド，```catch```メソッド，```finally```メソッド
 
@@ -287,10 +325,12 @@ $.ajax({
 
 ```javascript
 const resolveFunc = new Promise((resolve, reject) => {
+    
     resolve("resolve!!");
 });
 
 resolveFunc.then((value) => {
+    
     // resolveFuncがPromiseを返し、resolve!!がresolveされるため
     // then()が実行されコンソールにresolve!!が表示される
     console.log(value); // resolve!!
@@ -299,11 +339,13 @@ resolveFunc.then((value) => {
 
 ```javascript
 const resolveFunc = () => {
+    
     // resolveFuncはasync functionではないため、Promiseを返さない
     return "resolve!!";
 }
 
 resolveFunc.then((value) => {
+    
     // resolveFuncはPromiseを返さないため、エラーが発生して動かない
     // Uncaught TypeError: resolveError(...).then is not a function
     console.log(value);
@@ -312,10 +354,12 @@ resolveFunc.then((value) => {
 
 ```javascript
 const rejectFunc = new Promise((resolve, reject) => {
+    
     reject(new Error("reject!!"));
 });
 
 rejectFunc.catch((err) => {
+    
     // rejectFuncがPromiseを返し、reject!!がrejectされるため
     // catch()が実行されコンソールにreject!!が表示される
     console.log(err); // reject!!
@@ -328,26 +372,62 @@ rejectFunc.catch((err) => {
 
 #### ・async宣言
 
-任意の関数を，非同期関数化する．Promiseオブジェクトを返却するようになる．
+任意の関数を非同期関数化する．Promiseオブジェクトを返却するように定義しなくとも，Promiseオブジェクト返却してくれるため，可読性が高まる．ただし，Promiseオブジェクトを返すようにしても，入れ子にならないように処理してくれる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
 **＊実装例＊**
 
+以下の全ては，同じ処理を定義している．
+
 ```javascript
-// アロー関数記法
+// 単にreturnとしてもPromiseオブジェクトが返却される．
 const asyncFunc = async () => {
-    // 何らかの処理
+    
+    return "SUCCESS"
 }
 
-async function asyncFunc() {
-    // 何らかの処理
+console.log(asyncFunc()); // Promise { "SUCCESS" }
+```
+```javascript
+// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
+const asyncFunc = async () => {
+    
+    return new Promise((resolve, reject) => {
+        resolve("SUCCESS") // Promise { "SUCCESS" }
+    })
+}
+
+console.log(asyncFunc()); // Promise { "SUCCESS" }
+```
+```javascript
+// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
+const asyncFunc = async () => {
+    
+    return Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
+}
+
+console.log(asyncFunc()); // Promise { "SUCCESS" }
+```
+また，axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを使用してもよい．
+
+**＊実装例＊**
+
+非道処理としてGETでリクエストを送信している．
+
+```javascript
+// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する．
+const asyncFunc = async () => {
+    
+    axios.get("/some/path").then((res) => {
+        console.log(res.data); // "some data"
+    });
 }
 ```
 
 #### ・await宣言
 
-Promiseオブジェクトの```then```メソッドと同じ機能を持つ．```then```メソッドのようにメソッドチェーンする必要はなくなる．
+以降の全処理を```then```メソッドに渡す．Promiseオブジェクトの```then```メソッドに相当するが，```then```メソッドのようにメソッドチェーンする必要はなくなるため，可読性が高い．時間のかかる非同期処理で宣言すると，予期せず処理が流れてしまうことを防げる．
 
 **＊実装例＊**
 
@@ -363,6 +443,7 @@ const asyncFunc = async () => {
 // awaitを使用した場合
 const asyncFunc = async () => {
 
+    // 以降の全処理がthenメソッドに渡される．
     const res = await axios.get("/some/path");
 
     console.log(res.data); // "some data"
@@ -399,7 +480,7 @@ const asyncFunc = async () => {
 
 #### ・エラーハンドリング
 
-Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，```try-catch```構文とawait宣言を組み合わせて，より可読性良く実装できる．
+Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，```try-catch```構文とawait宣言を組み合わせて，より可読性高く実装できる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -438,7 +519,3 @@ const asyncFunc = async () => {
     return response;
 }
 ```
-
-
-
-#### 
