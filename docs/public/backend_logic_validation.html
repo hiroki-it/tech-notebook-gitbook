@@ -1622,34 +1622,35 @@
 <p>&#x5B9A;&#x6570;&#x3054;&#x3068;&#x306B;&#x51E6;&#x7406;&#x304C;&#x5909;&#x308F;&#x308B;&#x6642;&#xFF0C;&#x3053;&#x3061;&#x3089;&#x306E;&#x65B9;&#x304C;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
 <span class="token comment">// &#x5909;&#x6570;&#x306B; Tue &#x3092;&#x683C;&#x7D0D;</span>
 <span class="token variable">$weeks</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">;</span>
 
 <span class="token comment">// &#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3067;Tue&#x306B;&#x8A72;&#x5F53;&#x3057;&#x305F;&#x3089;&apos;&#x706B;&#x66DC;&#x65E5;&apos;&#x3068;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;break&#x3067;if&#x6587;&#x3092;&#x629C;&#x3051;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5168;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
 <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$weeks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Mon&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Wed&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Thu&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Fri&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sat&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sun&apos;</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
-    <span class="token keyword">break</span><span class="token punctuation">;</span>
-  <span class="token keyword">default</span><span class="token punctuation">:</span>
-    <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;</span><span class="token punctuation">;</span>  
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Mon&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6708;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Tue&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x706B;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Wed&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6C34;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Thu&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x6728;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Fri&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x91D1;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sat&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x571F;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string single-quoted-string">&apos;Sun&apos;</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x65E5;&#x66DC;&#x65E5;&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">&apos;&#x66DC;&#x65E5;&#x304C;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&apos;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x5B9F;&#x884C;&#x7D50;&#x679C;</span>
@@ -1733,16 +1734,16 @@
                 <span class="token comment">// if&#x6587;&#x3092;&#x901A;&#x904E;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
                 <span class="token comment">// &#x901A;&#x904E;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x5B9A;&#x6570;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
                 <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemA&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                  <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemA</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                  <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
 
                 <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemB&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                  <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                  <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
 
                 <span class="token variable">$result</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;optionItemC&apos;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">isOptionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                    <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
+                  <span class="token operator">?</span> <span class="token variable">$option</span><span class="token operator">-&gt;</span><span class="token function">optionItemC</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                  <span class="token punctuation">:</span> <span class="token keyword return-type">self</span><span class="token operator">::</span>noOptionItem<span class="token punctuation">;</span>
             <span class="token punctuation">}</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
@@ -2266,7 +2267,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-03-14T23:44:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-19T11:56:14.170Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-03-20T08:55:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-21T05:59:09.611Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

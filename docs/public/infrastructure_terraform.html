@@ -1534,14 +1534,14 @@
 <h3 id="init">init</h3>
 <h4 id="&#x30FB;-backendfalse">&#x30FB;-backend=false</h4>
 <p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306B;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform init -backend<span class="token operator">=</span>false
+<pre class="language-"><code class="lang-shell">$ terraform init -backend<span class="token operator">=</span>false
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
 $ terraform init -backend<span class="token operator">=</span>false <span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-backendtrue--backend-config">&#x30FB;-backend=true, -backend-config</h4>
 <p>&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306B;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;<code>terraform settings</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5185;&#x306E;<code>backend</code>&#x3067;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform init <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform init <span class="token punctuation">\</span>
     -backend<span class="token operator">=</span>true <span class="token punctuation">\</span>
     -reconfigure <span class="token punctuation">\</span>
     -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=&lt;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&gt;&quot;</span> <span class="token punctuation">\</span>
@@ -1552,32 +1552,32 @@ $ terraform init -backend<span class="token operator">=</span>false <span class=
 </code></pre>
 <h4 id="&#x30FB;-reconfigure">&#x30FB;-reconfigure</h4>
 <p>&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x306E;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;&#x65B0;&#x3057;&#x304F;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform init -reconfigure
+<pre class="language-"><code class="lang-shell">$ terraform init -reconfigure
 </code></pre>
 <h4 id="&#x30FB;-upgrade">&#x30FB;-upgrade</h4>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3068;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform init -upgrade
+<pre class="language-"><code class="lang-shell">$ terraform init -upgrade
 </code></pre>
 <p><br></p>
 <h3 id="validate">validate</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x691C;&#x8A3C;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform validate
+<pre class="language-"><code class="lang-shell">$ terraform validate
 
 Success<span class="token operator">!</span> The configuration is valid.
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
 $ terraform validate <span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="fmt">fmt</h3>
 <h4 id="&#x30FB;-check">&#x30FB;-check</h4>
 <p>&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x3092;&#x63C3;&#x3048;&#x308B;&#x3079;&#x304D;&#x7B87;&#x6240;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x5224;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3082;&#x3057;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#x300C;<code>1</code>&#x300D;&#xFF0C;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#x300C;<code>0</code>&#x300D;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform <span class="token function">fmt</span> -check
+<pre class="language-"><code class="lang-shell">$ terraform <span class="token function">fmt</span> -check
 </code></pre>
 <h4 id="&#x30FB;-recursive">&#x30FB;-recursive</h4>
 <p>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x3092;&#x63C3;&#x3048;&#x308B;&#xFF0E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3063;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># -recursive: &#x30B5;&#x30D6;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x542B;&#x3080;&#x5168;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># -recursive: &#x30B5;&#x30D6;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x542B;&#x3080;&#x5168;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</span>
 $ terraform <span class="token function">fmt</span> -recursive
 
 main.tf
@@ -1586,38 +1586,38 @@ main.tf
 <h3 id="import">import</h3>
 <h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>terraform&#x306B;&#x3088;&#x308B;&#x69CB;&#x7BC9;&#x3067;&#x306F;&#x306A;&#x3044;&#x65B9;&#x6CD5;&#x3067;&#xFF0C;&#x3059;&#x3067;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x4E0A;&#x306B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x308C;&#x3092;terraform&#x306E;&#x7BA1;&#x7406;&#x4E0B;&#x306B;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x3068;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#xFF0C;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;&#x73FE;&#x72B6;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x4E00;&#x62EC;&#x3057;&#x3066;<code>import</code>&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x7121;&#x3044;&#xFF0E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;ID&#x306F;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x7570;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;&#x306E;&#x300C;Import&#x300D;&#x307E;&#x305F;&#x306F;&#x300C;Attributes Reference&#x306E;<code>id</code>&#x300D;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#xFF0C;ACM&#x306B;&#x3068;&#x3063;&#x3066;&#x306E;ID&#x306F;ARN&#x3060;&#x304C;&#xFF0C;S3&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x306B;&#x3068;&#x3063;&#x3066;&#x306E;ID&#x306F;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;&#x3067;&#x3042;&#x308B;&#xFF09;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     <span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>AWS&#x4E0A;&#x30EA;&#x30BD;&#x30FC;&#x30B9;ID<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x6307;&#x5B9A;&#x306E;&#x65B9;&#x6CD5;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     module.<span class="token operator">&lt;</span>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>AWS&#x4E0A;&#x30EA;&#x30BD;&#x30FC;&#x30B9;ID<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;AWS&#x4E0A;&#x306B;&#x3059;&#x3067;&#x306B;ECR&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x3053;&#x308C;&#x3092;terraform&#x306E;&#x7BA1;&#x7406;&#x4E0B;&#x306B;&#x304A;&#x304F;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform <span class="token function">import</span> <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     module.ecr.aws_ecr_repository.www xxxxxxxxx
 </code></pre>
 <p>&#x305D;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306E;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x5DEE;&#x5206;&#x304C;&#x7121;&#x304F;&#x306A;&#x308B;&#x307E;&#x3067;&#xFF0C;<code>import</code>&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3059;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
+<pre class="language-"><code class="lang-shell">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
 
 No changes. Infrastructure is up-to-date.
 </code></pre>
 <h4 id="&#x30FB;import&#x3092;&#x884C;&#x308F;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306E;&#x30A8;&#x30E9;&#x30FC;">&#x30FB;import&#x3092;&#x884C;&#x308F;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306E;&#x30A8;&#x30E9;&#x30FC;</h4>
 <p>&#x3082;&#x3057;<code>import</code>&#x3092;&#x884C;&#x308F;&#x306A;&#x3044;&#x3068;&#xFF0C;&#x3059;&#x3067;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x4E0A;&#x306B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#x306B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x69CB;&#x7BC9;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0C;&#x3068;&#x3044;&#x3046;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p>&#xFF08;&#x30A8;&#x30E9;&#x30FC;&#x4F8B;1&#xFF09;</p>
-<pre class="language-"><code class="lang-sh">Error: InvalidParameterException: Creation of <span class="token function">service</span> was not idempotent.
+<pre class="language-"><code class="lang-shell">Error: InvalidParameterException: Creation of <span class="token function">service</span> was not idempotent.
 </code></pre>
 <p>&#xFF08;&#x30A8;&#x30E9;&#x30FC;&#x4F8B;2&#xFF09;</p>
-<pre class="language-"><code class="lang-sh">Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name <span class="token string">&apos;tech-notebook_www&apos;</span> already exists <span class="token keyword">in</span> the registry with <span class="token function">id</span> <span class="token string">&apos;XXXXXXXXXXXX&apos;</span>
+<pre class="language-"><code class="lang-shell">Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name <span class="token string">&apos;tech-notebook_www&apos;</span> already exists <span class="token keyword">in</span> the registry with <span class="token function">id</span> <span class="token string">&apos;XXXXXXXXXXXX&apos;</span>
 </code></pre>
 <p><br></p>
 <h3 id="refresh">refresh</h3>
 <h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x53CD;&#x6620;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform refresh -var-file<span class="token operator">=</span>config.tfvars
+<pre class="language-"><code class="lang-shell">$ terraform refresh -var-file<span class="token operator">=</span>config.tfvars
 </code></pre>
 <p><br></p>
 <h3 id="plan">plan</h3>
@@ -1628,16 +1628,16 @@ No changes. Infrastructure is up-to-date.
 - destroy
 </code></pre><h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x53CD;&#x6620;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A18;&#x8FF0;&#x3068;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#xFF0C;<code>variable</code>&#x3067;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x5909;&#x6570;&#x306B;&#xFF0C;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
+<pre class="language-"><code class="lang-shell">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
 <span class="token comment"># &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#x5909;&#x6570;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#xFF0C;&#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x3067;&#x3092;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;</span>
 $ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>/config.tfvars <span class="token punctuation">\</span>
     <span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x5DEE;&#x5206;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">No changes. Infrastructure is up-to-date.
+<pre class="language-"><code class="lang-shell">No changes. Infrastructure is up-to-date.
 
 This means that Terraform did not detect any differences between your
 configuration and real physical resources that exist. As a result, no
@@ -1645,31 +1645,31 @@ actions need to be performed.
 </code></pre>
 <h4 id="&#x30FB;-target">&#x30FB;-target</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>plan</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -target<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x6307;&#x5B9A;&#x306E;&#x65B9;&#x6CD5;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -target<span class="token operator">=</span>module.<span class="token operator">&lt;</span>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-refresh">&#x30FB;-refresh</h4>
 <p>&#x3053;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308C;&#x3070;&#xFF0C;<code>refresh</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x540C;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;&#x305F;&#x3060;&#xFF0C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;<code>true</code>&#x306A;&#x306E;&#x3067;&#xFF0C;&#x4E0D;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -refresh<span class="token operator">=</span>true
 </code></pre>
 <p><a href="https://github.com/hashicorp/terraform/issues/17311" target="_blank">https://github.com/hashicorp/terraform/issues/17311</a></p>
 <h4 id="&#x30FB;-parallelism">&#x30FB;-parallelism</h4>
 <p>&#x4E26;&#x5217;&#x51E6;&#x7406;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;<code>10</code>&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -parallelism<span class="token operator">=</span><span class="token number">30</span>
 </code></pre>
 <h4 id="&#x30FB;-out">&#x30FB;-out</h4>
 <p>&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform plan <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -out<span class="token operator">=</span><span class="token operator">&lt;</span>&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.tfplan
 </code></pre>
@@ -1677,48 +1677,48 @@ actions need to be performed.
 <h3 id="apply">apply</h3>
 <h4 id="&#x30FB;-var-file">&#x30FB;-var-file</h4>
 <p>AWS&#x4E0A;&#x306B;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform apply -var-file config.tfvars
+<pre class="language-"><code class="lang-shell">$ terraform apply -var-file config.tfvars
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
 <span class="token comment"># &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#x5909;&#x6570;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#xFF0C;&#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x3067;&#x3092;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;</span>
 $ terraform apply <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>/config.tfvars <span class="token punctuation">\</span>
     <span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x6210;&#x529F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">Apply complete<span class="token operator">!</span> Resources: X added, <span class="token number">0</span> changed, <span class="token number">0</span> destroyed.
+<pre class="language-"><code class="lang-shell">Apply complete<span class="token operator">!</span> Resources: X added, <span class="token number">0</span> changed, <span class="token number">0</span> destroyed.
 </code></pre>
 <h4 id="&#x30FB;-target">&#x30FB;-target</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform apply <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform apply <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -target<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x6307;&#x5B9A;&#x306E;&#x65B9;&#x6CD5;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform apply <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform apply <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -target<span class="token operator">=</span>module.<span class="token operator">&lt;</span>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-parallelism">&#x30FB;-parallelism</h4>
 <p>&#x4E26;&#x5217;&#x51E6;&#x7406;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;<code>10</code>&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform apply <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform apply <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     -parallelism<span class="token operator">=</span><span class="token number">30</span>
 </code></pre>
 <h4 id="&#x30FB;&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;<code>plan</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#xFF0C;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x3092;&#x6E21;&#x3059;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x5909;&#x6570;&#x3092;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform apply <span class="token operator">&lt;</span>&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.tfplan
+<pre class="language-"><code class="lang-shell">$ terraform apply <span class="token operator">&lt;</span>&#x5B9F;&#x884C;&#x30D7;&#x30E9;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.tfplan
 </code></pre>
 <p><br></p>
 <h3 id="taint">taint</h3>
 <h4 id="&#x30FB;-var-file-&#x30EA;&#x30BD;&#x30FC;&#x30B9;">&#x30FB;-var-file &lt;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&gt;</h4>
 <p>state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;<code>tainted</code>&#x30D5;&#x30E9;&#x30B0;&#x3092;&#x7ACB;&#x3066;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>apply</code>&#x3057;&#x305F;&#x304C;&#xFF0C;&#x9014;&#x4E2D;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x3066;&#x3057;&#x307E;&#x3044;&#xFF0C;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306B;&#x4E2D;&#x9014;&#x534A;&#x7AEF;&#x306F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#xFF0C;<code>tainted</code>&#x3092;&#x7ACB;&#x3066;&#x3066;&#x304A;&#x304F;&#x3068;&#xFF0C;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3068;&#x60F3;&#x5B9A;&#x3057;&#x305F;<code>plan</code>&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform taint <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ terraform taint <span class="token punctuation">\</span>
     -var-file<span class="token operator">=</span>config.tfvars <span class="token punctuation">\</span>
     module.<span class="token operator">&lt;</span>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span>.<span class="token operator">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x3053;&#x306E;&#x5F8C;&#x306E;<code>plan</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30ED;&#x30B0;&#x304B;&#x3089;&#x3082;&#xFF0C;<code>-/+</code>&#x3067;&#x524A;&#x9664;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x60F3;&#x5B9A;&#x3067;&#xFF0C;&#x5DEE;&#x5206;&#x3092;&#x6BD4;&#x8F03;&#x3057;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
+<pre class="language-"><code class="lang-shell">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
 
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
@@ -1736,10 +1736,10 @@ Plan: <span class="token number">1</span> to add, <span class="token number">0</
 <h3 id="state-list">state list</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;">&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3044;&#x308B;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ terraform state list
+<pre class="language-"><code class="lang-shell">$ terraform state list
 </code></pre>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#xFF0C;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">aws_instance.www-1a
+<pre class="language-"><code class="lang-shell">aws_instance.www-1a
 aws_instance.www-1c
 aws_key_pair.key_pair
 module.alb_module.aws_alb.alb
@@ -1761,7 +1761,7 @@ module.vpc_module.aws_vpc.vpc
 <h2 id="02-&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;">02. &#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;">&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h3>
 <h4 id="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;">&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;</h4>
-<pre class="language-"><code>terraform_project/
+<pre class="language-"><code class="lang-shell">terraform_project/
 &#x251C;&#x2500;&#x2500; modules
 &#x2502;   &#x251C;&#x2500;&#x2500; ec2
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
@@ -1772,7 +1772,7 @@ module.vpc_module.aws_vpc.vpc
 &#x2502;       &#x251C;&#x2500;&#x2500; output.tf
 &#x2502;       &#x2514;&#x2500;&#x2500; variables.tf
 &#x2502;
-&#x251C;&#x2500;&#x2500; ops (GitHub&#x304B;&#x3089;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x5834;&#x5408;)
+&#x251C;&#x2500;&#x2500; ops <span class="token punctuation">(</span>GitHub&#x304B;&#x3089;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x5834;&#x5408;<span class="token punctuation">)</span>
 &#x2502;   &#x251C;&#x2500;&#x2500; assume.sh
 &#x2502;   &#x251C;&#x2500;&#x2500; terraform_apply.sh
 &#x2502;   &#x251C;&#x2500;&#x2500; terraform_destroy_test.sh
@@ -1795,13 +1795,14 @@ module.vpc_module.aws_vpc.vpc
 &#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
 &#x2502;
-&#x2514;&#x2500;&#x2500; test
+&#x2514;&#x2500;&#x2500; <span class="token builtin class-name">test</span>
     &#x251C;&#x2500;&#x2500; config.tfvars
     &#x251C;&#x2500;&#x2500; main.tf
     &#x251C;&#x2500;&#x2500; providers.tf
     &#x251C;&#x2500;&#x2500; tfnotify.yml
     &#x2514;&#x2500;&#x2500; variables.tf
-</code></pre><p><br></p>
+</code></pre>
+<p><br></p>
 <h3 id="tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;">tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
 <h4 id="&#x30FB;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;">&#x30FB;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;</h4>
 <p>&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;json&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x521D;&#x56DE;&#x6642;&#xFF0C;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x6210;&#x529F;&#x3082;&#x3057;&#x304F;&#x306F;&#x5931;&#x6557;&#x3057;&#x305F;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
@@ -2021,7 +2022,7 @@ aws_secret_access_key=<span class="token tag"><span class="token tag"><span clas
 </code></pre>
 <h4 id="&#x30FB;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x5B9A;">&#x30FB;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x5B9A;</h4>
 <p>Credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;<code>export</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x5FC5;&#x8981;&#x306A;&#x60C5;&#x5831;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x540D;&#x306F;&#x6C7A;&#x307E;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># region&#x306E;&#x4EE3;&#x308F;&#x308A;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># region&#x306E;&#x4EE3;&#x308F;&#x308A;</span>
 $ <span class="token builtin class-name">export</span> <span class="token assign-left variable">AWS_DEFAULT_REGION</span><span class="token operator">=</span><span class="token string">&quot;ap-northeast-1&quot;</span>
 
 <span class="token comment"># access_key&#x306E;&#x4EE3;&#x308F;&#x308A;</span>
@@ -3895,7 +3896,7 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <h4 id="&#x30FB;assumerolesh">&#x30FB;assume_role.sh</h4>
 <p>AWS&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
 <h4 id="&#x30FB;terraformapplysh">&#x30FB;terraform_apply.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3907,7 +3908,7 @@ terraform apply <span class="token punctuation">\</span>
   <span class="token variable">${ENV}</span>.tfplan <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml apply
 </code></pre>
 <h4 id="&#x30FB;terraformdestroytestsh">&#x30FB;terraform_destroy_test.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3921,7 +3922,7 @@ terraform apply <span class="token punctuation">\</span>
 <span class="token keyword">fi</span>
 </code></pre>
 <h4 id="&#x30FB;terraformfmtsh">&#x30FB;terraform_fmt.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3930,7 +3931,7 @@ terraform <span class="token function">fmt</span> <span class="token punctuation
   -check
 </code></pre>
 <h4 id="&#x30FB;terraforminitsh">&#x30FB;terraform_init.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3947,7 +3948,7 @@ terraform init <span class="token punctuation">\</span>
   ./<span class="token variable">${ENV}</span>
 </code></pre>
 <h4 id="&#x30FB;terraformplansh">&#x30FB;terraform_plan.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3961,7 +3962,7 @@ terraform plan <span class="token punctuation">\</span>
   ./<span class="token variable">${ENV}</span> <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml plan
 </code></pre>
 <h4 id="&#x30FB;terraformvalidatesh">&#x30FB;terraform_validate.sh</h4>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -3974,7 +3975,7 @@ terraform validate ./<span class="token variable">${ENV}</span>
 <h4 id="&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
 <p>CircleCI&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;command&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x4EE5;&#x4E0B;&#x304B;&#x3089;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x305F;tfnotify&#x306E;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
 <p><a href="https://github.com/mercari/tfnotify/releases/tag/v0.7.0" target="_blank">https://github.com/mercari/tfnotify/releases/tag/v0.7.0</a></p>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 
@@ -4059,7 +4060,7 @@ terraform plan <span class="token operator">|</span> ./bin/tfnotify --config ./<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"▶ ︎コンテナ","level":"1.14.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2021-03-09T04:38:20.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-19T11:56:14.170Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"▶ ︎コンテナ","level":"1.14.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2021-03-20T09:04:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-21T05:59:09.611Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

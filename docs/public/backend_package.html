@@ -1580,59 +1580,59 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> dump-autoload
+<pre class="language-"><code class="lang-shell">$ composer dump-autoload
 </code></pre>
 <p><br></p>
 <h3 id="require">require</h3>
 <h4 id="&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;">&#x30FB;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306F;&#x884C;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#x81EA;&#x5206;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> require <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:^x.x
+<pre class="language-"><code class="lang-shell">$ composer require <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;</span><span class="token punctuation">&gt;</span></span>:^x.x
 </code></pre>
 <p><br></p>
 <h3 id="install">install</h3>
 <h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
 <p>&#x521D;&#x3081;&#x3066;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#xFF0C;<code>composer.lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5168;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>composer.lock</code>&#x306E;&#x304A;&#x304B;&#x3052;&#x3067;&#xFF0C;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x5229;&#x7528;&#x8005;&#x304C;&#xFF0C;<code>composer install</code>&#x306E;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5171;&#x901A;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span>
+<pre class="language-"><code class="lang-shell">$ composer install
 </code></pre>
 <h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;">&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
+<pre class="language-"><code class="lang-shell">$ composer install -vvv
 </code></pre>
 <h4 id="&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
 <p>require-dev&#x30BF;&#x30B0;&#x5185;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --no-dev
+<pre class="language-"><code class="lang-shell">$ composer install --no-dev
 </code></pre>
 <h4 id="&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
 <p>Composer&#x306E;&#x914D;&#x5E03;&#x30B5;&#x30A4;&#x30C8;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>prefer-source</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x901F;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;dist&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x5BA3;&#x8A00;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-dist
+<pre class="language-"><code class="lang-shell">$ composer install --prefer-dist
 </code></pre>
 <h4 id="&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
 <p>GitHub&#x306E;Composer&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Composer&#x306E;&#x958B;&#x767A;&#x8005;&#x7528;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-source
+<pre class="language-"><code class="lang-shell">$ composer install --prefer-source
 </code></pre>
 <p><br></p>
 <h3 id="update">update</h3>
 <h4 id="&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;">&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x3055;&#x3089;&#x306B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5B9A;&#x7FA9;&#x3092;&#x3082;&#x3068;&#x306B;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x306A;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;<code>composer.lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x60C5;&#x5831;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#x305F;&#x3081;&#xFF0C;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x5229;&#x7528;&#x8005;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306B;&#x3082;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> update
+<pre class="language-"><code class="lang-shell">$ composer update
 </code></pre>
 <h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;">&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
+<pre class="language-"><code class="lang-shell">$ composer install -vvv
 </code></pre>
 <h4 id="&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;">&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
 <p>php&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x7121;&#x3057;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4EFB;&#x610F;&#x306E;composer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;php&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x8A2D;&#x5B9A;&#x753B;&#x9762;&#x304B;&#x3089;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;CPU&#x3084;&#x30E1;&#x30E2;&#x30EA;&#x3092;&#x5897;&#x8A2D;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token assign-left variable">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span>-1 <span class="token function">composer</span> update -vvv
+<pre class="language-"><code class="lang-shell">$ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 </code></pre>
 <p><br></p>
 <h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;">&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> clear-cache
+<pre class="language-"><code class="lang-shell">$ composer clear-cache
 </code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
 <p>&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">composer</span> <span class="token operator">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-shell">$ composer <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x3092;<code>scripts</code>&#x30AD;&#x30FC;&#x4E0B;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
@@ -1658,9 +1658,9 @@
 <h3 id="&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;autoloadphp&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;">&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;<code>autoload.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;</h3>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#xFF0C;<code>vendor</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3073;&#x306B;&#xFF0C;&#x5404;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306F;&#x624B;&#x9593;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF08;<code>index.php</code>&#xFF09;&#x3042;&#x308B;&#x3044;&#x306F;<code>bootstrap.php</code>&#x3067;&#xFF0C;&#x6700;&#x521D;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3093;&#x3067;&#x304A;&#x304D;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x306A;&#x304F;&#x3066;&#x826F;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-require_once realpath(__DIR__ . &apos;/vendor/autoload.php&apos;);
+<span class="token keyword">require_once</span> <span class="token function">realpath</span><span class="token punctuation">(</span><span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string single-quoted-string">&apos;/vendor/autoload.php&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-doctrine&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">03. Doctrine&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
@@ -1673,132 +1673,132 @@ require_once realpath(__DIR__ . &apos;/vendor/autoload.php&apos;);
 <p><a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html" target="_blank">https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/query-builder.html</a></p>
 <p>CRUD&#x51E6;&#x7406;&#x306B;&#x5FC5;&#x8981;&#x306A;SQL&#x3092;&#x4FDD;&#x6301;&#x3057;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;SQL&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;
-$queryBuilder = $this-&gt;createQueryBuilder();
+<span class="token comment">// QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;</span>
+<span class="token variable">$queryBuilder</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">createQueryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="2-create&#x51E6;&#x7406;">2. CREATE&#x51E6;&#x7406;</h4>
 <p>QueryBuilder&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x304A;&#x3051;&#x308B;<code>insert</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token attr-name">$queryBuilder</span>
-    <span class="token attr-name">-</span><span class="token punctuation">&gt;</span></span>insert(&apos;mst_users&apos;)
+<span class="token variable">$queryBuilder</span>
+    <span class="token operator">-&gt;</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mst_users&apos;</span><span class="token punctuation">)</span>
 </code></pre>
 <h4 id="3-read&#x51E6;&#x7406;">3. READ&#x51E6;&#x7406;</h4>
 <p>QueryBuilder&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x304A;&#x3051;&#x308B;<code>select</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token attr-name">$queryBuilder</span>
-    <span class="token attr-name">-</span><span class="token punctuation">&gt;</span></span>select(&apos;id&apos;, &apos;name&apos;)
-    -&gt;from(&apos;mst_users&apos;);
+<span class="token variable">$queryBuilder</span>
+    <span class="token operator">-&gt;</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;id&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;name&apos;</span><span class="token punctuation">)</span>
+    <span class="token operator">-&gt;</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mst_users&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="4-update&#x51E6;&#x7406;">4. UPDATE&#x51E6;&#x7406;</h4>
 <p>QueryBuilder&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x304A;&#x3051;&#x308B;<code>update</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token attr-name">$queryBuilder</span>
-    <span class="token attr-name">-</span><span class="token punctuation">&gt;</span></span>update(&apos;mst_users&apos;);
+<span class="token variable">$queryBuilder</span>
+    <span class="token operator">-&gt;</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mst_users&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="5-delete&#x51E6;&#x7406;">5. DELETE&#x51E6;&#x7406;</h4>
 <p>QueryBuilder&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x304A;&#x3051;&#x308B;<code>delete</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#xFF0C;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>?php</span>
-<span class="token attr-name">$queryBuilder</span>
-    <span class="token attr-name">-</span><span class="token punctuation">&gt;</span></span>delete(&apos;mst_users&apos;);
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$queryBuilder</span>
+    <span class="token operator">-&gt;</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mst_users&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="6-&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x306E;&#x63A5;&#x7D9A;&#xFF0C;sql&#x306E;&#x5B9F;&#x884C;">6. &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3078;&#x306E;&#x63A5;&#x7D9A;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x63A5;&#x7D9A;&#x306B;&#x95A2;&#x308F;&#x308B;<code>getConnection</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x8D77;&#x70B9;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x8FD4;&#x308A;&#x5024;&#x304B;&#x3089;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;<code>fetchAll</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30AF;&#x30A8;&#x30EA;&#x540D;&#x3092;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x305F;&#x9023;&#x60F3;&#x914D;&#x5217;&#x304C;&#x8FD4;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#xFF0E;
-$queryBuilder-&gt;getConnection()
-    // SQL&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;
-    -&gt;executeQuery($queryBuilder-&gt;getSQL(),
-          $queryBuilder-&gt;getParameters()
-    )-&gt;fetchAll();
+<span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#xFF0E;</span>
+<span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// SQL&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;</span>
+    <span class="token operator">-&gt;</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getSQL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;">&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</h3>
 <h4 id="&#x30FB;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#xFF08;&#x30D7;&#x30EA;&#x30DA;&#x30A2;&#x30FC;&#x30C9;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#xFF09;">&#x30FB;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#xFF08;&#x30D7;&#x30EA;&#x30DA;&#x30A2;&#x30FC;&#x30C9;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#xFF09;</h4>
 <p>&#x30D7;&#x30EA;&#x30DA;&#x30A2;&#x30FC;&#x30C9;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;SQL&#x4E2D;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x5024;&#x3092;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x6E21;&#x3057;&#x305F;&#x4E0A;&#x3067;&#xFF0C;SQL&#x3068;&#x3057;&#x3066;&#x767A;&#x884C;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#xFF0E;&#x51E6;&#x7406;&#x901F;&#x5EA6;&#x304C;&#x901F;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;&#x8AA4;&#x3063;&#x3066;SQL&#x304C;&#x6E21;&#x3055;&#x308C;&#x3066;&#x3082;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x306A;&#x304F;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;SQL&#x30A4;&#x30F3;&#x30B8;&#x30A7;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5BFE;&#x7B56;&#x306B;&#x3082;&#x306A;&#x308B;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-use Doctrine\DBAL\Connection;
+<span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>DBAL<span class="token punctuation">\</span>Connection</span><span class="token punctuation">;</span>
 
-class DogToyQuery
-{
-    // READ&#x51E6;&#x7406;&#x306E;SQL&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;
-    public function read(Value $toyType): Array
-    {
-        // QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;
-        $queryBuilder = $this-&gt;createQueryBuilder();
+<span class="token keyword">class</span> <span class="token class-name">DogToyQuery</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// READ&#x51E6;&#x7406;&#x306E;SQL&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0E;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Value</span> <span class="token variable">$toyType</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">Array</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;</span>
+        <span class="token variable">$queryBuilder</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">createQueryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // SQL&#x306E;&#x5B9A;&#x7FA9;
-        $queryBuilder-&gt;select([
-          &apos;dog_toy.type AS dog_toy_type&apos;,
-          &apos;dog_toy.name AS dog_toy_name&apos;,
-          &apos;dog_toy.number AS number&apos;,
-          &apos;dog_toy.price AS dog_toy_price&apos;,
-          &apos;dog_toy.color_value AS color_value&apos;
-        ])
+        <span class="token comment">// SQL&#x306E;&#x5B9A;&#x7FA9;</span>
+        <span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+          <span class="token string single-quoted-string">&apos;dog_toy.type AS dog_toy_type&apos;</span><span class="token punctuation">,</span>
+          <span class="token string single-quoted-string">&apos;dog_toy.name AS dog_toy_name&apos;</span><span class="token punctuation">,</span>
+          <span class="token string single-quoted-string">&apos;dog_toy.number AS number&apos;</span><span class="token punctuation">,</span>
+          <span class="token string single-quoted-string">&apos;dog_toy.price AS dog_toy_price&apos;</span><span class="token punctuation">,</span>
+          <span class="token string single-quoted-string">&apos;dog_toy.color_value AS color_value&apos;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-          // FROM&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;
-          -&gt;from(&apos;mst_dog_toy&apos;, &apos;dog_toy&apos;)
+          <span class="token comment">// FROM&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
+          <span class="token operator">-&gt;</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mst_dog_toy&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;dog_toy&apos;</span><span class="token punctuation">)</span>
 
-          // WHERE&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x5024;&#x306F;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;
-          -&gt;where(&apos;dog_toy.type = :type&apos;)
+          <span class="token comment">// WHERE&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x5024;&#x306F;&#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</span>
+          <span class="token operator">-&gt;</span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;dog_toy.type = :type&apos;</span><span class="token punctuation">)</span>
 
-          // &#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3059;&#x300E;$toyType&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;
-          -&gt;setParameter(&apos;type&apos;, $toyType);
+          <span class="token comment">// &#x30D7;&#x30EC;&#x30FC;&#x30B9;&#x30DB;&#x30EB;&#x30C0;&#x30FC;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x3067;&#x6E21;&#x3059;&#x300E;$toyType&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;</span>
+          <span class="token operator">-&gt;</span><span class="token function">setParameter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;type&apos;</span><span class="token punctuation">,</span> <span class="token variable">$toyType</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#xFF0E;
-        return $queryBuilder-&gt;getConnection()
+        <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-          // SQL&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;
-          -&gt;executeQuery($queryBuilder-&gt;getSQL(),
-            $queryBuilder-&gt;getParameters()
-          )-&gt;fetchAll();
-    }
-}
+          <span class="token comment">// SQL&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;</span>
+          <span class="token operator">-&gt;</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getSQL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;">&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;</h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x7CFB;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-use Doctrine\Common\Cache\FilesystemCache;
-use Doctrine\DBAL\Cache\QueryCacheProfile;
+<span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>Common<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>FilesystemCache</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Doctrine<span class="token punctuation">\</span>DBAL<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>QueryCacheProfile</span><span class="token punctuation">;</span>
 
-class Example
-{
-    public function find()
-    {
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
 
-        // QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;
-        $queryBuilder = $this-&gt;createQueryBuilder();
+        <span class="token comment">// QueryBuilder&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#xFF0E;</span>
+        <span class="token variable">$queryBuilder</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">createQueryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // &#x4F55;&#x3089;&#x304B;&#x306E;SQL&#x3092;&#x5B9A;&#x7FA9;
-        $query = $queryBuilder-&gt;select()-&gt;from()
+        <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;SQL&#x3092;&#x5B9A;&#x7FA9;</span>
+        <span class="token variable">$query</span> <span class="token operator">=</span> <span class="token variable">$queryBuilder</span><span class="token operator">-&gt;</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-        // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#xFF0C;ArrayStatement&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x683C;&#x7D0D;
-        // &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;ResultCacheStatement&#x3092;&#x683C;&#x7D0D;
-        $statement = $this-&gt;connection-&gt;executeQuery(
-          $query-&gt;getSQL(),
-          $query-&gt;getParameters(),
-          $queryParameterTypes(),
-          new QueryCacheProfile()
-        );
+        <span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#xFF0C;ArrayStatement&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x683C;&#x7D0D;</span>
+        <span class="token comment">// &#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;ResultCacheStatement&#x3092;&#x683C;&#x7D0D;</span>
+        <span class="token variable">$statement</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">connection</span><span class="token operator">-&gt;</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>
+          <span class="token variable">$query</span><span class="token operator">-&gt;</span><span class="token function">getSQL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token variable">$query</span><span class="token operator">-&gt;</span><span class="token function">getParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token variable">$queryParameterTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token keyword">new</span> <span class="token class-name">QueryCacheProfile</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        $result = $statement-&gt;fetchAll();
-        $statement-&gt;closeCursor();
-        return $result;
-    }
-}
+        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$statement</span><span class="token operator">-&gt;</span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$statement</span><span class="token operator">-&gt;</span><span class="token function">closeCursor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;">&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</h3>
@@ -1807,21 +1807,21 @@ class Example
 <p>RDB&#x306E;&#x51E6;&#x7406;&#x7528;&#x8A9E;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;<code>beginTransaction</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>commit</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>rollBack</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;RDB&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x7167;&#xFF1A;<a href="https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html" target="_blank">https://www.doctrine-project.org/projects/doctrine-dbal/en/2.10/reference/transactions.html</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$conn = new Doctrine\DBAL\Connection
+<span class="token variable">$conn</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">Doctrine<span class="token punctuation">\</span>DBAL<span class="token punctuation">\</span>Connection</span>
 
-// &#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x958B;&#x59CB; 
-$conn-&gt;beginTransaction();
-try{
-    // &#x30B3;&#x30DF;&#x30C3;&#x30C8;
-    $conn-&gt;commit();
-} catch (\Exception $e) {
+<span class="token comment">// &#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x958B;&#x59CB; </span>
+<span class="token variable">$conn</span><span class="token operator">-&gt;</span><span class="token function">beginTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token comment">// &#x30B3;&#x30DF;&#x30C3;&#x30C8;</span>
+    <span class="token variable">$conn</span><span class="token operator">-&gt;</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    // &#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;
-    $conn-&gt;rollBack();
-    throw $e;
-}
+    <span class="token comment">// &#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;</span>
+    <span class="token variable">$conn</span><span class="token operator">-&gt;</span><span class="token function">rollBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> <span class="token variable">$e</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h2 id="04-carbon&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">04. Carbon&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
@@ -1861,71 +1861,71 @@ try{
 <p><br></p>
 <h3 id="instance&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>instance</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>DateTime&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$datetime = new \DateTime(&apos;2019-07-07 19:07:07&apos;);
-$carbon = Carbon::instance($datetime);
+<span class="token variable">$datetime</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>DateTime</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;2019-07-07 19:07:07&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$carbon</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">instance</span><span class="token punctuation">(</span><span class="token variable">$datetime</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbon; // 2019-07-07 19:07:07
+<span class="token keyword">echo</span> <span class="token variable">$carbon</span><span class="token punctuation">;</span> <span class="token comment">// 2019-07-07 19:07:07</span>
 </code></pre>
 <p><br></p>
 <h3 id="create&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>create</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>&#x65E5;&#x6642;&#x306E;&#x6587;&#x5B57;&#x5217;&#x304B;&#x3089;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
+<span class="token variable">$carbon</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token number">2019</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbon; // 2019-07-07 19:07:07
+<span class="token keyword">echo</span> <span class="token variable">$carbon</span><span class="token punctuation">;</span> <span class="token comment">// 2019-07-07 19:07:07</span>
 </code></pre>
 <p><br></p>
 <h3 id="createfromxxx&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>createFromXXX</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>&#x6307;&#x5B9A;&#x306E;&#x6587;&#x5B57;&#x5217;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x65E5;&#x6642;&#x6570;&#x5B57;&#x304B;&#x3089;">&#x30FB;&#x65E5;&#x6642;&#x6570;&#x5B57;&#x304B;&#x3089;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x65E5;&#x6642;&#x6570;&#x5B57;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-$carbonFromeDate = Carbon::createFromDate(2019, 07, 07);
+<span class="token comment">// &#x65E5;&#x6642;&#x6570;&#x5B57;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token variable">$carbonFromeDate</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">createFromDate</span><span class="token punctuation">(</span><span class="token number">2019</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbonFromeDate; // 2019-07-07
+<span class="token keyword">echo</span> <span class="token variable">$carbonFromeDate</span><span class="token punctuation">;</span> <span class="token comment">// 2019-07-07</span>
 </code></pre>
 <h4 id="&#x30FB;&#x6642;&#x9593;&#x6570;&#x5B57;&#x304B;&#x3089;">&#x30FB;&#x6642;&#x9593;&#x6570;&#x5B57;&#x304B;&#x3089;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x6642;&#x9593;&#x6570;&#x5B57;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-$carbonFromTime = Carbon::createFromTime(19, 07, 07);
+<span class="token comment">// &#x6642;&#x9593;&#x6570;&#x5B57;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token variable">$carbonFromTime</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">createFromTime</span><span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">,</span> <span class="token number">07</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbonFromTime; // 19:07:07
+<span class="token keyword">echo</span> <span class="token variable">$carbonFromTime</span><span class="token punctuation">;</span> <span class="token comment">// 19:07:07</span>
 </code></pre>
 <h4 id="&#x30FB;&#x65E5;&#x4ED8;&#xFF0C;&#x6642;&#x9593;&#xFF0C;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;">&#x30FB;&#x65E5;&#x4ED8;&#xFF0C;&#x6642;&#x9593;&#xFF0C;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;</h4>
 <p>&#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x65E5;&#x4ED8;&#xFF0C;&#x6642;&#x9593;&#xFF0C;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-// &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;
-$carbonFromFormat = Carbon::createFromFormat(&apos;Y-m-d H:m:s&apos;, &apos;2019-07-07 19:07:07&apos;);
+<span class="token comment">// &#x65E5;&#x4ED8;&#xFF0C;&#x6642;&#x9593;&#xFF0C;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token comment">// &#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</span>
+<span class="token variable">$carbonFromFormat</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">createFromFormat</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;Y-m-d H:m:s&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;2019-07-07 19:07:07&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbonFromFormat; // 2019-07-07 19:07:07
+<span class="token keyword">echo</span> <span class="token variable">$carbonFromFormat</span><span class="token punctuation">;</span> <span class="token comment">// 2019-07-07 19:07:07</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;">&#x30FB;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-$carbonFromTimestamp = Carbon::createFromTimestamp(1562494027);
+<span class="token comment">// &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token variable">$carbonFromTimestamp</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">createFromTimestamp</span><span class="token punctuation">(</span><span class="token number">1562494027</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo $carbonFromTimestamp; // 2019-07-07 19:07:07
+<span class="token keyword">echo</span> <span class="token variable">$carbonFromTimestamp</span><span class="token punctuation">;</span> <span class="token comment">// 2019-07-07 19:07:07</span>
 </code></pre>
 <p><br></p>
 <h3 id="parse&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>parse</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>&#x65E5;&#x4ED8;&#xFF0C;&#x6642;&#x9593;&#xFF0C;&#x65E5;&#x6642;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x304B;&#x3089;&#xFF0C;Carbon&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;<code>createFromFormat</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x7570;&#x306A;&#x308A;&#xFF0C;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$carbon = Carbon::parse(&apos;2019-07-07 19:07:07&apos;)
+<span class="token variable">$carbon</span> <span class="token operator">=</span> <span class="token class-name static-context">Carbon</span><span class="token operator">::</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;2019-07-07 19:07:07&apos;</span><span class="token punctuation">)</span>
 </code></pre>
 <p><br></p>
 <h2 id="05-pinq&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">05. Pinq&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
@@ -1935,28 +1935,28 @@ $carbon = Carbon::parse(&apos;2019-07-07 19:07:07&apos;)
 <h3 id="traversablefrom&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><code>Traversable::from</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>SQL&#x306E;<code>SELECT</code>&#x3084;<code>WHERE</code>&#x3068;&#x3044;&#x3063;&#x305F;&#x5358;&#x8A9E;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;<code>foreach</code>&#x306E;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x3084;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5404;&#x8981;&#x7D20;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3048;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-use Pinq\Traversable;
+<span class="token keyword">use</span> <span class="token package">Pinq<span class="token punctuation">\</span>Traversable</span><span class="token punctuation">;</span>
 
-class Example
-{
+<span class="token keyword">class</span> <span class="token class-name">Example</span>
+<span class="token punctuation">{</span>
 
-    public function getData(array $entities)
-    {
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$entities</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
 
-        return [
-          &apos;data&apos; =&gt; Traversable::from($entities)
-            // &#x4E00;&#x3064;&#x305A;&#x3064;&#x8981;&#x7D20;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3057;&#xFF0C;&#x95A2;&#x6570;&#x306B;&#x6E21;&#x3059;&#xFF0E;
-            -&gt;select(
-              function ($entity) {
-                  return $this-&gt;convertToArray($entity);
-              })
-            // index&#x304B;&#x3089;&#x306A;&#x308B;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x8FD4;&#x5374;&#xFF0E;
-            -&gt;asArray(),
-        ];
-    }
-}
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+          <span class="token string single-quoted-string">&apos;data&apos;</span> <span class="token operator">=&gt;</span> <span class="token class-name static-context">Traversable</span><span class="token operator">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token variable">$entities</span><span class="token punctuation">)</span>
+            <span class="token comment">// &#x4E00;&#x3064;&#x305A;&#x3064;&#x8981;&#x7D20;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3057;&#xFF0C;&#x95A2;&#x6570;&#x306B;&#x6E21;&#x3059;&#xFF0E;</span>
+            <span class="token operator">-&gt;</span><span class="token function">select</span><span class="token punctuation">(</span>
+              <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$entity</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">convertToArray</span><span class="token punctuation">(</span><span class="token variable">$entity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token comment">// index&#x304B;&#x3089;&#x306A;&#x308B;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x8FD4;&#x5374;&#xFF0E;</span>
+            <span class="token operator">-&gt;</span><span class="token function">asArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h2 id="06-guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">06. Guzzle&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
@@ -1966,24 +1966,24 @@ class Example
 <h3 id="client&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;">Client&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;</h3>
 <h4 id="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;get&#x9001;&#x4FE1;">&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;GET&#x9001;&#x4FE1;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$client = new Client();
+<span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// GET&#x9001;&#x4FE1;
-$response = $client-&gt;request(&quot;GET&quot;, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x305F;&#x3044;URL</span><span class="token punctuation">&gt;</span></span>);
+<span class="token comment">// GET&#x9001;&#x4FE1;</span>
+<span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;GET&quot;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x305F;&#x3044;<span class="token constant">URL</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x30DC;&#x30C7;&#x30A3;&#x3092;&#x53D6;&#x5F97;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x30DC;&#x30C7;&#x30A3;&#x3092;&#x53D6;&#x5F97;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$client = new Client();
+<span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// POST&#x9001;&#x4FE1;
-$response = $client-&gt;request(&quot;POST&quot;, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x305F;&#x3044;URL</span><span class="token punctuation">&gt;</span></span>);
+<span class="token comment">// POST&#x9001;&#x4FE1;</span>
+<span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;POST&quot;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3057;&#x305F;&#x3044;<span class="token constant">URL</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;
-$body = json_decode($response-&gt;getBody(), true);
+<span class="token comment">// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token variable">$body</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="07-knpsnappy&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">07. Knp/Snappy&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
@@ -1992,19 +1992,19 @@ $body = json_decode($response-&gt;getBody(), true);
 <h3 id="&#x30FB;generatefromhtml&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>generateFromHtml</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h3>
 <p>html&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;PDF&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-$snappy = new Pdf(&apos;/usr/local/bin/wkhtmltopdf&apos;);
+<span class="token variable">$snappy</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pdf</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;/usr/local/bin/wkhtmltopdf&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-$snappy-&gt;generateFromHtml(&apos;example.html&apos;, &apos;.../example.pdf&apos;);
+<span class="token variable">$snappy</span><span class="token operator">-&gt;</span><span class="token function">generateFromHtml</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;example.html&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;.../example.pdf&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="08-respectvalidation&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;">08. Respect/Validation&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="respectvalidation&#x3068;&#x306F;">Respect/Validation&#x3068;&#x306F;</h3>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x30B5;&#x30A4;&#x30C9;&#x5074;&#x3067;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x95A2;&#x3057;&#x3066;&#x306F;&#xFF0C;JavaScript&#x3068;PHP&#x306E;&#x4E21;&#x65B9;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-PHP">&lt;?php
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;
+<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
 </code></pre>
 
                                 
@@ -2045,7 +2045,7 @@ $snappy-&gt;generateFromHtml(&apos;example.html&apos;, &apos;.../example.pdf&apo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.4","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"▶ ︎テストフレームワークとテスト仕様書","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_package.md","mtime":"2021-03-18T02:34:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-19T11:56:14.170Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.4","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンドパッケージ","level":"1.4.4.1","depth":3,"path":"public/backend_package.md","ref":"public/backend_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},{"title":"▶ ︎テストフレームワークとテスト仕様書","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_package.md","mtime":"2021-03-20T12:14:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-21T05:59:09.611Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
