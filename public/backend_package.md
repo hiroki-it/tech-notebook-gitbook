@@ -64,7 +64,7 @@
 
 その後，名前空間の読み込みを登録する．
 
-```sh
+```shell
 $ composer dump-autoload
 ```
 
@@ -76,7 +76,7 @@ $ composer dump-autoload
 
 パッケージ名を```composer.json```ファイルを書き込む．インストールは行わない．コマンドを使用せずに自分で実装しても良い．
 
-```sh
+```shell
 $ composer require <パッケージ名>:^x.x
 ```
 
@@ -88,7 +88,7 @@ $ composer require <パッケージ名>:^x.x
 
 初めてパッケージをインストールする時，```composer.lock```ファイルにあるパッケージを全てインストールする．```composer.lock```のおかげで，リポジトリの利用者が，```composer install```の実行時に，共通のバージョンのパッケージをインストールできる．
 
-```sh
+```shell
 $ composer install 
 ```
 
@@ -96,7 +96,7 @@ $ composer install
 
 コマンド処理中のログを表示する
 
-```sh
+```shell
 $ composer install -vvv
 ```
 
@@ -104,7 +104,7 @@ $ composer install -vvv
 
 require-devタグ内のパッケージは除いてインストール
 
-```sh
+```shell
 $ composer install --no-dev
 ```
 
@@ -112,7 +112,7 @@ $ composer install --no-dev
 
 Composerの配布サイトからインストールする．```prefer-source```オプションを使用するよりも高速でインストールできる．デフォルトでdistを使用するため，実際は宣言しなくても問題ない．
 
-```sh
+```shell
 $ composer install --prefer-dist
 ```
 
@@ -120,7 +120,7 @@ $ composer install --prefer-dist
 
 GitHubのComposerリポジトリからインストールする．Composerの開発者用である．
 
-```sh
+```shell
 $ composer install --prefer-source
 ```
 
@@ -132,7 +132,7 @@ $ composer install --prefer-source
 
 パッケージ名を```composer.json```ファイルを元にして，インストールされていないパッケージをインストールし，さらにバージョン定義をもとに更新可能なパッケージを更新する．また，```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．
 
-```sh
+```shell
 $ composer update
 ```
 
@@ -140,7 +140,7 @@ $ composer update
 
 コマンド処理中のログを表示する
 
-```sh
+```shell
 $ composer install -vvv
 ```
 
@@ -148,7 +148,7 @@ $ composer install -vvv
 
 phpのメモリ上限を無しにして，任意のcomposerコマンドを実行する．phpバイナリファイルを使用する．Dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．．
 
-```sh
+```shell
 $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 ```
 
@@ -160,7 +160,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 インストール時に生成されたキャッシュを削除する．
 
-```sh
+```shell
 $ composer clear-cache
 ```
 
@@ -168,7 +168,7 @@ $ composer clear-cache
 
 ユーザが定義したエイリアス名のコマンドを実行する．
 
-```sh
+```shell
 $ composer <エイリアス名>
 ```
 
@@ -204,7 +204,7 @@ $ composer <エイリアス名>
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 require_once realpath(__DIR__ . '/vendor/autoload.php');
@@ -232,7 +232,7 @@ CRUD処理に必要なSQLを保持し，トランザクションによってSQL�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // QueryBuilderインスタンスを作成．
@@ -245,7 +245,7 @@ QueryBuilderクラスにおける```insert```メソッドに，値を設定す�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $queryBuilder
@@ -258,7 +258,7 @@ QueryBuilderクラスにおける```select```メソッドに，値を設定す�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $queryBuilder
@@ -272,7 +272,7 @@ QueryBuilderクラスにおける```update```メソッドに，値を設定す�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $queryBuilder
@@ -285,7 +285,7 @@ QueryBuilderクラスにおける```delete```メソッドに，値を設定す�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 $queryBuilder
     ->delete('mst_users');
@@ -297,7 +297,7 @@ $queryBuilder
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // データベースに接続．
@@ -318,7 +318,7 @@ $queryBuilder->getConnection()
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 use Doctrine\DBAL\Connection;
@@ -364,7 +364,7 @@ class DogToyQuery
 
 読み出し系で取得したデータをキャッシュすることができる．
 
-```PHP
+```php
 <?php
     
 use Doctrine\Common\Cache\FilesystemCache;
@@ -412,7 +412,7 @@ RDBの処理用語に相当する```beginTransaction```メソッド，```commit`
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $conn = new Doctrine\DBAL\Connection
@@ -451,7 +451,7 @@ try{
 
 DateTimeインスタンスを引数として，Carbonインスタンスを作成する．
 
-```PHP
+```php
 <?php
     
 $datetime = new \DateTime('2019-07-07 19:07:07');
@@ -468,7 +468,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
@@ -486,7 +486,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // 日時数字から，Carbonインスタンスを作成する．
@@ -499,7 +499,7 @@ echo $carbonFromeDate; // 2019-07-07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // 時間数字から，Carbonインスタンスを作成する．
@@ -514,7 +514,7 @@ echo $carbonFromTime; // 19:07:07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // 日付，時間，日時フォーマットから，Carbonインスタンスを作成する．
@@ -528,7 +528,7 @@ echo $carbonFromFormat; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 // タイムスタンプフォーマットから，Carbonインスタンスを作成する．
@@ -545,7 +545,7 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $carbon = Carbon::parse('2019-07-07 19:07:07')
@@ -567,7 +567,7 @@ SQLの```SELECT```や```WHERE```といった単語を用いて，```foreach```�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 use Pinq\Traversable;
@@ -608,7 +608,7 @@ class Example
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $client = new Client();
@@ -621,7 +621,7 @@ $response = $client->request("GET", <アクセスしたいURL>);
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $client = new Client();
@@ -647,7 +647,7 @@ htmlファイルを元にして，ローカルディレクトリにPDFファイ�
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
@@ -663,7 +663,7 @@ $snappy->generateFromHtml('example.html', '.../example.pdf');
 
 リクエストされたデータが正しいかを，サーバサイド側で検証する．フロントエンドからリクエストされるデータに関しては，JavaScriptとPHPの両方によるバリデーションが必要である．
 
-```PHP
+```php
 <?php
     
 // ここに実装例

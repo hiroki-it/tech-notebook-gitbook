@@ -20,13 +20,13 @@
 
 特定のディレクティブを実装するべき設定ファイルを一覧で表示する．
 
-```sh
+```shell
 $ sudo httpd -L
 ```
 
 #### ・設定ファイルのバリデーション
 
-```sh
+```shell
 # systemctlコマンドでは実行不可能
 
 $ sudo service httpd configtest
@@ -40,7 +40,7 @@ $ sudo apachectl -t
 
 コンパイル済みのモジュールを一覧で表示する．表示されているからといって，読み込まれているとは限らない．
 
-```sh
+```shell
 $ sudo httpd -l
 ```
 
@@ -48,7 +48,7 @@ $ sudo httpd -l
 
 コンパイル済みのモジュールのうちで，実際に読み込まれているモジュールを表示する．
 
-```sh
+```shell
 $ sudo httpd -M
 ```
 
@@ -56,19 +56,19 @@ $ sudo httpd -M
 
 読み込まれた```conf```ファイルを一覧で表示する．この結果から，使われていない```conf```ファイルもを検出できる．
 
-```sh
+```shell
 $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep '# In' | awk '{print $4}'
 ```
 
 #### ・読み込まれるVirtualHost設定の一覧
 
-```sh
+```shell
 $ sudo httpd -S
 ```
 
 #### ・強制的な起動／停止／再起動
 
-```sh
+```shell
 # 起動
 $ sudo systemctl start httpd
 
@@ -83,7 +83,7 @@ $ sudo systemctl restart httpd
 
 Apacheを段階的に再起動する．安全に再起動できる．
 
-```sh
+```shell
 $ sudo apachectl graceful
 ```
 

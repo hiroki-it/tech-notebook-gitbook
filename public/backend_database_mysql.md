@@ -6,12 +6,12 @@
 
 #### ・CentOSにインストール
 
-```sh
+```shell
 # mysqlコマンドのみをインストールしたい場合はこちら
 $ dnf install -y mysql
 ```
 
-```sh
+```shell
 # mysqlコマンド，データベースサーバ機能，をインストールしたい場合はこちら
 $ dnf install -y mysql-server
 ```
@@ -164,7 +164,7 @@ EXEC SelectContact
 
 DBからテーブルをエクスポートする．エクスポートしたいテーブルの数だけ，テーブル名を連ねる
 
-```sh
+```shell
 $ mysqldump --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名 }' '{ テーブル名1 }' '{ テーブル名2 }' > table.sql
 ```
 
@@ -172,7 +172,7 @@ $ mysqldump --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名
 
 DBにテーブルをインポートする．forceオプションで，エラーが出ても強制的にインポート．
 
-```sh
+```shell
  $ mysql --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名 }' < table.sql
 ```
 

@@ -71,34 +71,35 @@ if ($weeks == 'Mon') {
 
 ```php
 <?php
+
 // 変数に Tue を格納
 $weeks = 'Tue';
- 
+
 // 条件分岐でTueに該当したら'火曜日'と表示する．breakでif文を抜けなければ，全て実行されてしまう．
 switch ($weeks) {
-  case 'Mon':
-    echo '月曜日';
-    break;
-  case 'Tue':
-    echo '火曜日';
-    break;
-  case 'Wed':
-    echo '水曜日';
-    break;
-  case 'Thu':
-    echo '木曜日';
-    break;
-  case 'Fri':
-    echo '金曜日';
-    break;
-  case 'Sat':
-    echo '土曜日';
-    break;
-  case 'Sun':
-    echo '日曜日';
-    break;
-  default:
-    echo '曜日がありません';  
+    case 'Mon':
+        echo '月曜日';
+        break;
+    case 'Tue':
+        echo '火曜日';
+        break;
+    case 'Wed':
+        echo '水曜日';
+        break;
+    case 'Thu':
+        echo '木曜日';
+        break;
+    case 'Fri':
+        echo '金曜日';
+        break;
+    case 'Sat':
+        echo '土曜日';
+        break;
+    case 'Sun':
+        echo '日曜日';
+        break;
+    default:
+        echo '曜日がありません';
 }
 
 // 実行結果
@@ -162,7 +163,6 @@ class Example
         return $result;
     }
 }
-
 ```
 
 #### ・三項演算子を用いた場合
@@ -180,38 +180,37 @@ class Example
      * マジックナンバー
      */
     const noOptionItem = 0;
-    
+
     /**
      * @var Entity
      */
     private $routeEntity;
-    
+
     public function example($result)
     {
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す．
         if (!empty($this->routeEntity->options)) {
             foreach ($this->routeEntity->options as $option) {
-                
+
                 // if文を通過した場合，メソッドの返却値が格納される．
                 // 通過しない場合，定数が格納される．
                 $result['optionItemA'] = ($option->isOptionItemA())
-                    ? $option->optionItemA()
-                    : self::noOptionItem;
-                
+                  ? $option->optionItemA()
+                  : self::noOptionItem;
+
                 $result['optionItemB'] = ($option->isOptionItemB())
-                    ? $option->optionItemB()
-                    : self::noOptionItem;
-                
+                  ? $option->optionItemB()
+                  : self::noOptionItem;
+
                 $result['optionItemC'] = ($option->isOptionItemC())
-                    ? $option->optionItemC()
-                    : self::noOptionItem;
+                  ? $option->optionItemC()
+                  : self::noOptionItem;
             };
         }
-        
+
         return $result;
     }
 }
-
 ```
 
 #### ・初期値と上書きのロジックを用いた場合

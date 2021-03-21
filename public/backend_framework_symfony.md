@@ -210,7 +210,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
 #### ・```for```
 
-```sh
+```shell
 # txtファイルを変数fに繰り返し格納し，処理を行う．
 for f in *txt do echo $f; done;
 ```
@@ -221,12 +221,12 @@ for f in *txt do echo $f; done;
 
 10秒ごとに，コマンドを自動実行する．
 
-```sh
+```shell
 # 10秒ごとに，コマンド処理を実行．
 for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 ```
 
-```sh
+```shell
 # 15時ごとに，コマンド処理を実行．
 0 15 * * * * create:example;
 ```

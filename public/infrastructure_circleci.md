@@ -36,7 +36,7 @@ workflows:
 
 ホストOS側で，以下のコマンドを実行する．
 
-```bash
+```shell
 $ circleci config validate
 
 # 以下の文章が表示されれば問題ない．
@@ -47,7 +47,7 @@ $ circleci config validate
 
 設定ファイルを実行した時の処理を展開し，ファイルに出力できる
 
-```bash
+```shell
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 ```
 
@@ -55,7 +55,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 コマンドにより，テストに必要なDockerイメージをpullし，コンテナを構築する．続いて，コンテナ内でCircleCIを実行する．バージョン2.1以降では，事前に，設定ファイルの処理を展開しておく必要がある．
 
-```bash
+```shell
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
@@ -67,7 +67,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 CircleCIコンテナにssh接続し，コンテナ内で生成されたファイルを確認することができる．
 
-```bash
+```shell
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵名>
 ```
 

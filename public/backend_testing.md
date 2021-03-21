@@ -1,4 +1,4 @@
-# テストフレームワークとテスト仕様書
+# テスト
 
 ## 01. テスト全体の手順
 
@@ -15,11 +15,27 @@
 
 <br>
 
-## 03.  PHPUnitによるUnit／Functionalテストの要素
+## 02.  モックオブジェクトとスタブ
 
-### Phakeによるモックオブジェクトとスタブの定義
+### モックオブジェクトとは
 
-テストコードにおいては，クラスの一部または全体を，処理を持たないもの（モックオブジェクト）に置き換える．
+コードにおいては，テスト対象のクラス以外のクラスやメソッドの詳細な処理は実装しない．クラスの一部または全体を，処理を持たないモックオブジェクトに置き換える．
+
+<br>
+
+### スタブとは
+
+Unitテストのように，特に一連の処理の一部分だけをテストするために頻繁に用いる．ただし，Functionalテストで用いることもある．UnitテストとFunctionalテストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
+
+<br>
+
+### Phake
+
+#### ・Phakeとは
+
+モックオブジェクトとスタブを簡単に実装するライブラリ．
+
+参考：https://github.com/mlively/Phake#phake
 
 #### ・```mock```メソッド
 
@@ -36,10 +52,13 @@ $mock = Phake::mock(Example::class);
 
 モックオブジェクトに対して，スタブを生成する．
 
+**＊実装例＊**
+
+ モックオブジェクト（```mock```変数）に対して，```method```メソッドを定義する．これに```param```変数が渡された時に，空配列を返却する．
+
 ```php
 <?php
 
-// $mockに対して，method()を設定し，$paramが渡された時に，[]（空配列）を返却するものとする．
 \Phake::when($mock)
     ->method($param)
     ->thenReturn([]);
@@ -47,86 +66,97 @@ $mock = Phake::mock(Example::class);
 
 #### ・```verify```メソッド
 
-メソッドがn回以上コールされたかを検証できる．
+メソッドがn回実行できたことを検証できる．一連の処理の中で最後に実行されるメソッドのスタブを対象とすることが多い．
 
 **＊実装例＊**
+
+一連の処理の中で，QueryObjectクラスが正しく初期化されるかをテストする．そのため，QueryObjectクラスは実体を用意する．それ以外の処理はスタブで定義する．実際はもう少し複雑な処理をテストするが，例のため簡単な処理をテストしている．
 
 ```php
 <?php
 
-// モックオブジェクトを生成．
-$mock = Phake::mock(Example::class);
+class QueryObjectTest extends \PHPUnit_Framework_TestCase
+{   
+    public function testNewQueryObject()
+    {    
+        // 対象以外の処理をモックオブジェクトとして定義する．
+        $mock = Phake::mock(Example::class);
+        
+        // テストしたい処理
+        $queryObject = new QueryObject();
 
-// モックオブジェクトに対してスタブを生成．
-\Phake::when($mock)
-    ->method($param)
-    ->thenReturn([]);
+        // モックオブジェクトに対してスタブを定義する．
+        \Phake::when($mock)
+            ->find($queryObject)
+            ->thenReturn([]);
 
-// スタブをコール．
-$mock->method("A");
-
-// $mockのmethod()が$n回コールされ，その時の引数が$paramであったかを検証．
-Phake::verify($mock, Phake::times($n))->method($param);
-```
-
-**＊実装例＊**
-
-先に，以下のような，実体的なクラスがあるとする．
-
-```php
-<?php
-
-class Aggregation
-{
-    private $example;
-    
-    public function __construct($example)
-    {
-        $this->example = $example;
-    }
-    
-    public function aggMethod($param)
-    {
-        // privateメソッドをコール
-        $param = $this->addB($param);
-        // ExampleクラスのexaMethodをコール．
-        return $this->example->exaMethod($param);
-    }
-    
-    private function addB($param)
-    {
-        return $param.'B';
+        // findメソッドを1回実行できたことをテストする．
+        Phake::verify($mock, Phake::times(1))->find($queryObject);
     }
 }
 ```
 
-実体的なオブジェクトに対して，モックオブジェクトを設定していく．
+<br>
+
+## 03. PHPUnit
+
+### Unitテスト
+
+#### ・Unitテストとは
+
+クラスやメソッドが単体で処理が正しく動作するかをテストする方法．テスト対象以外の処理はスタブとして定義する．
+
+<br>
+
+### Functionalテスト
+
+#### ・Functionalテストとは
+
+Controllerに対してリクエストを行い，正しくレスポンスが行われるかをテストする方法．スタブを使用することは少ない．
+
+#### ・レスポンスステータステスト
+
+レスポンスが成功するか（ステータスコードが```200```番台か）をテストする．
 
 ```php
 <?php
 
-// モックオブジェクトを生成．
-$mock = Phake::mock(Example::class);
+class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+{
+    public function testCanGetPage()
+    {
+        $client = new GuzzleHttp\Client();
 
-// モックオブジェクトをもつ実体的な集約を生成．
-$aggregation = new Aggregation($mock);
+        $client->request('GET', '/xxx/yyy/');
+        $response = $client->getResponse();
 
-// 実体的な集約のもつモックオブジェクトに対してスタブを生成．
-\Phake::when($mock)
-    ->exaMethod($param)
-    ->thenReturn([]);
+        // 200ステータステスト
+        $this->assertTrue($response->isOk());
+    }
+}
+```
 
-// 実体的な集約のもつ実体的なメソッドをコールし，間接的に$mockのスタブをコール．
-// 集約のもつaddB()は，スタブのexaMethod()とは異なって実体的なので，処理が通る．
-$aggregation->aggMethod("A");
+#### ・レスポンスエラーメッセージテスト
 
-// $mockのexaMethod()が1回コールされ，その時の引数がABであったかを検証．
-Phake::verify($mock, Phake::times(1))->exaMethod("AB");
+レスポンスが成功するか，またレスポンスされるエラーメッセージが正しいかをテストする．
+
+```php
+<?php
+// ここに実装例
+```
+
+#### ・レスポンスデータテスト
+
+レスポンスが成功するか，またレスポンスされた配列データが期待値と同じかをテストする．レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかで検証する．
+
+```php
+<?php
+// ここに実装例
 ```
 
 <br>
 
-### テストの事前準備と後片付け
+### 事前準備と後片付け
 
 #### ・```setUp```メソッド
 
@@ -135,16 +165,16 @@ Phake::verify($mock, Phake::times(1))->exaMethod("AB");
 ```php
 <?php
 
-class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
+class ExampleTest extends \PHPUnit_Framework_TestCase
 {
-    protected $exampleService;
+    protected $example;
     
     protected function setUp()
     {
         // 基本的には，一番最初に記述する．
         parent::setUp();
         
-        $this->exampleService = Phake::mock(ExampleService::class);
+        $this->example= Phake::mock(Example::class);
     }
 }
 ```
@@ -156,7 +186,7 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 ```php
 <?php
 
-class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
+class ExampleTest extends \PHPUnit_Framework_TestCase
 {
     protected $container;
     
@@ -178,7 +208,7 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 
 <br>
 
-### テストデータの準備
+### テストデータ
 
 #### ・Data Provider
 
@@ -187,9 +217,8 @@ class ExampleUseCaseTest extends \PHPUnit_Framework_TestCase
 ```php
 <?php
 
-class xxxTest
+class ExampleControllerTest
 {
-    
     /* @test
      * @dataProvider provideData
      */
@@ -212,59 +241,7 @@ class xxxTest
 
 <br>
 
-### 実際値と期待値の比較
-
-https://phpunit.readthedocs.io/ja/latest/assertions.html
-
-<br>
-
-## 03-02. PHPUnitによるUnit／Functionalテストの実装まとめ
-
-### Unitテスト
-
-#### ・Unitテストとは
-
-クラスやメソッドが単体で処理が正しく動作するかをテストする方法．
-
-```php
-<?php
-// ここに実装例
-```
-
-<br>
-
-### Functionalテスト
-
-#### ・Functionalテストとは
-
-Controllerに対してリクエストを行い，正しくレスポンスが行われるかをテストする方法．
-
-#### ・レスポンスが成功するか（ステータスコードが```200```番台か）
-
-```php
-<?php
-// ここに実装例
-```
-
-#### ・レスポンスが成功するか ＆ レスポンスされるエラーメッセージが正しいか
-
-```php
-<?php
-// ここに実装例
-```
-
-#### ・レスポンスが成功するか ＆ レスポンスされた配列データが期待値と同じか
-
-レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかでテストする．
-
-```php
-<?php
-// ここに実装例
-```
-
-<br>
-
-## 03-03. テスト仕様書に基づくUnitテスト
+## 04. テスト仕様書に基づくUnitテスト
 
 PHPUnitでのUnitテストとは意味合いが異なるので注意．
 
@@ -284,7 +261,7 @@ PHPUnitでのUnitテストとは意味合いが異なるので注意．
 
 **＊実装例＊**
 
-```
+```php
 if (A = 1 && B = 1) {
 　return X;
 }
@@ -344,7 +321,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
  <br>
 
-## 03-04. テスト仕様書に基づくIntegrationテスト（結合テスト）
+## 04-02. テスト仕様書に基づく結合テスト
 
 単体テストの次に行うテスト．複数のモジュールを繋げ，モジュール間のインターフェイスが適切に動いているかを検証．
 
@@ -373,7 +350,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 <br>
 
 
-## 04. テスト仕様書に基づくシステムテスト（User Acceptanceテスト，総合テスト）
+## 04-03. テスト仕様書に基づくシステムテスト
 
 ### システムテスト
 
@@ -448,7 +425,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 <br>
 
-## 04-02. Regressionテスト（退行テスト）
+## 05. Regressionテスト（退行テスト）
 
 システムを変更した後，他のプログラムに悪影響を与えていないかを検証．
 
@@ -456,7 +433,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 <br>
 
-## 05. グラフによるテストの可視化
+## 06. グラフによるテストの可視化
 
 ### バグ管理図
 

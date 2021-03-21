@@ -74,7 +74,7 @@ $ which python3
 
 **＊実装例＊**
 
-```sh
+```shell
 #!/bin/bash
 
 echo "Hello World!"
@@ -86,22 +86,22 @@ echo "Hello Tokyo!"
 
 いずれかの方法で実行する．
 
-```sh
+```shell
 # sourceコマンド
 $ source hello.sh
 ```
 
-```sh
+```shell
 # bashコマンド
 $ bash hello.sh
 ```
 
-```sh
+```shell
 # ドット
 $ . hello.sh
 ```
 
-```sh
+```shell
 # 相対パスもしくは絶対パスでシェルスクリプトを指定
 # カレントディレクトリにあるhello.shを実行することはできない
 $ ./hello.sh
@@ -111,7 +111,7 @@ $ ./hello.sh
 
 **＊実装例＊**
 
-```sh
+```shell
 #!/bin/bash
  
 for i in 1 2 3 4 5
@@ -126,7 +126,7 @@ done
 
 **＊実装例＊**
 
-```sh
+```shell
 #!/bin/bash
 
 case $ENV in
@@ -164,7 +164,7 @@ esac
 
 検索されたファイル内で，さらに文字列を検索する．
 
-```sh
+```shell
 $ find /* -type f | xargs grep "<検索文字>"
 ```
 
@@ -176,7 +176,7 @@ $ find /* -type f | xargs grep "<検索文字>"
 
 フィルタリングされたプロセスを削除する．
 
-```sh
+```shell
 $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 ```
 
@@ -188,7 +188,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 検索されたファイルの容量を合計する．
 
-```sh
+```shell
 $ find ./* -name "*.js" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
 $ find ./* -name "*.css" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
 $ find ./* -name "*.png" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
@@ -202,7 +202,7 @@ $ find ./* -name "*.png" -type f -printf "%s\n" | awk '{ sum += $1; } END { prin
 
 表示された環境変数をAZ昇順に並び替える．
 
-```sh
+```shell
 $ printenv | sort -f
 ```
 
@@ -230,7 +230,7 @@ $ printenv | sort -f
 
 ファイルの権限を変更する．よく使用されるパーミッションのパターンは次の通り．
 
-```sh
+```shell
 $ chmod 600 <ファイル名>
 ```
 
@@ -238,7 +238,7 @@ $ chmod 600 <ファイル名>
 
 ディレクトリ内のファイルに対して，再帰的に権限を付与する．
 
-```sh
+```shell
 $ chmod -R 600 <ディレクトリ名>
 ```
 
@@ -277,11 +277,11 @@ $ chmod -R 600 <ディレクトリ名>
 
 ディレクトリの属性情報も含めて，ディレクトリ構造とファイルを再帰的にコピー．
 
-```sh
+```shell
 $ cp -Rp /<ディレクトリ名1>/<ディレクトリ名2> /<ディレクトリ名1>/<ディレクトリ名2>
 ```
 
-```sh
+```shell
 # 隠しファイルも含めて，ディレクトリの中身を他のディレクトリ内にコピー
 # 「アスタリスク」でなく「ドット」にする
 $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名> 
@@ -291,7 +291,7 @@ $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名>
 
 『ファイル名.YYYYmmdd』の形式でバックアップファイルを作成
 
-```sh
+```shell
 $ cp -p <ファイル名> <ファイル名>.`date +'%Y%m%d'`
 ```
 
@@ -303,7 +303,7 @@ $ cp -p <ファイル名> <ファイル名>.`date +'%Y%m%d'`
 
 定義されたシェル変数を出力する．変数名には```$```マークを付ける．
 
-```sh
+```shell
 $ <変数名>=<値>
 
 $ echo $<変数名>
@@ -317,11 +317,11 @@ $ echo $<変数名>
 
 ファイルを検索するためのユーティリティ．アスタリスクを付けなくとも，自動的にワイルドカードが働く．
 
-```sh
+```shell
 $ find /* -type f | xargs grep "<検索文字>"
 ```
 
-```sh
+```shell
 # パーミッションエラーなどのログを破棄して検索．
 $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 ```
@@ -330,7 +330,7 @@ $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 
 ルートディレクトリ以下で， example という文字をもち，ファイル名が .conf で終わるファイルを全て検索する．
 
-```sh
+```shell
 $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
 ```
 
@@ -346,7 +346,7 @@ $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
 
 カレントディレクトリに，シンボリックリンクを作成する．リンクの元になるディレクトリやファイルのパスを指定する．
 
-```sh
+```shell
 $ ln -s <リンク元までのパス> <シンボリックリンク名> 
 ```
 
@@ -358,7 +358,7 @@ $ ln -s <リンク元までのパス> <シンボリックリンク名>
 
 隠しファイルや隠しディレクトリも含めて，全ての詳細を表示する．
 
-```sh
+```shell
 $ ls -l -a
 ```
 
@@ -370,7 +370,7 @@ $ ls -l -a
 
 複数階層のディレクトリを作成する．
 
-```sh
+```shell
 $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 ```
 
@@ -382,7 +382,7 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 
 ディレクトリ自体と中のファイルを再帰的に削除する．
 
-```sh
+```shell
 $ rm -R <ディレクトリ名> 
 ```
 
@@ -394,7 +394,7 @@ $ rm -R <ディレクトリ名>
 
 ファイルを8進数の機械語で出力する．
 
-```sh
+```shell
 $ od <ファイル名>
 ```
 
@@ -402,7 +402,7 @@ $ od <ファイル名>
 
 ファイルを16進数の機械語で出力する．
 
-```sh
+```shell
 $ od -Ad -tx <ファイル名>
 ```
 
@@ -414,7 +414,7 @@ $ od -Ad -tx <ファイル名>
 
 現在設定されているシェル変数を一覧で表示する．
 
-```sh
+```shell
 $ set
 ```
 
@@ -422,7 +422,7 @@ $ set
 
 シェルスクリプトの構文解析を行う．
 
-```sh
+```shell
 $ set -n
 ```
 
@@ -430,7 +430,7 @@ $ set -n
 
 一連の処理の途中で```0```以外の終了ステータスが出力された場合，全ての処理を終了する．
 
-```sh
+```shell
 $ set -e
 ```
 
@@ -438,7 +438,7 @@ $ set -e
 
 一連の処理をデバッグ情報として出力する．
 
-```sh
+```shell
 $ set -x
 ```
 
@@ -446,7 +446,7 @@ $ set -x
 
 一連の処理の中で，未定義の変数が存在した場合，全ての処理を終了する．
 
-```sh
+```shell
 $ set -u
 ```
 
@@ -454,7 +454,7 @@ $ set -u
 
 パイプライン（```|```）内の一連の処理の途中で，エラーが発生した場合，その終了ステータスを出力し，全ての処理を終了する．
 
-```sh
+```shell
 $ set -o pipefail
 ```
 
@@ -466,7 +466,7 @@ $ set -o pipefail
 
 カレントディレクトリのシンボリックリンクを削除する．
 
-```sh
+```shell
 $ unlink <シンボリックリンク名>
 ```
 
@@ -480,13 +480,13 @@ $ unlink <シンボリックリンク名>
 
 事前に，秘密鍵の権限は「600」にしておく．tty（擬似ターミナル）を使用する場合は，```-T```オプションをつける．
 
-```sh
+```shell
 $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T
 ```
 
 #### ・-l，-p，<ポート>，-i，-T，-vvv
 
-```sh
+```shell
 # -vvv：ログを出力する
 $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
 ```
@@ -513,7 +513,7 @@ Host <接続名２>
 
 これにより，コマンド実行時の値渡しを省略できる．tty（擬似ターミナル）を使用する場合は，-Tオプションをつける．
 
-```sh
+```shell
 # 秘密鍵の権限は，事前に「600」にしておく
 $ ssh <接続名> -T
 ```
@@ -528,7 +528,7 @@ $ ssh <接続名> -T
 
 稼働しているプロセスの詳細情報を表示するためのユーティリティ．
 
-```sh
+```shell
 # 稼働しているプロセスのうち，詳細情報に「xxx」を含むものを表示する．
 $ ps aux | grep "<検索文字>"
 ```
@@ -545,7 +545,7 @@ $ ps aux | grep "<検索文字>"
 
 デーモンのUnitを一覧で確認する．
 
-```sh
+```shell
 $ systemctl list-unit-files --type=service
 
 crond.service           enabled  # enable：自動起動する
@@ -557,7 +557,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 
 マシン起動時にデーモンが自動起動するように設定する．
 
-```sh
+```shell
 $ systemctl enable <プロセス名>
 
 # 例：Cron，Apache
@@ -568,7 +568,7 @@ $ systemctl enable httpd.service
 
 マシン起動時にデーモンが自動起動しないように設定する．
 
-```sh
+```shell
 $ systemctl disable <プロセス名>
 
 # 例：Cron，Apache
@@ -592,13 +592,13 @@ $ systemctl disable httpd.service
 
 指定したPIDのプロセスを削除する．
 
-```sh
+```shell
 $ kill -9 <プロセスID（PID）>
 ```
 
 指定したコマンドによるプロセスを全て削除する．
 
-```sh
+```shell
 $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 ```
 
@@ -614,7 +614,7 @@ cronデーモンの動作が定義されたcrontabファイルを操作するた
 
 作成したcronファイルを登録する．cron.dファイルは操作できない．
 
-```sh
+```shell
 # crontab：command run on table
 $ crontab <ファイルパス>
 ```
@@ -631,7 +631,7 @@ cronデーモンを起動するためのプログラム
 
 フォアグラウンドプロセスとしてcronを起動
 
-```sh
+```shell
 $ crond -n
 ```
 
@@ -651,7 +651,7 @@ $ crond -n
 1. あらかじめ，各ディレクトリにcronファイルを配置しておく．
 2. cronとして登録するファイルを作成する．```run-parts```コマンドで，指定した時間に，各cronディレクトリ内のcronファイルを一括で実行するように記述しておく．
 
-```sh
+```shell
 # 設定
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
@@ -681,46 +681,46 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 
 **＊実装例＊**
 
-```sh
+```shell
 # 毎時・1分
 1 * * * * root run-parts /etc/cron.hourly
 ```
 
-```sh
+```shell
 # 毎日・2時5分
 5 2 * * * root run-parts /etc/cron.daily
 ```
 
-```sh
+```shell
 # 毎週日曜日・2時20分
 20 2 * * 0 root run-parts /etc/cron.weekly
 ```
 
-```sh
+```shell
 # 毎月一日・2時40分
 40 2 1 * * root run-parts /etc/cron.monthly
 ```
 
-```sh
+```shell
 # cron起動時に一度だけ
 @reboot make clean html
 ```
 
 3. このファイルをcrontabコマンドで登録する．cronファイルの実体はないことと，変更した場合は登録し直さなければいけないことに注意する．
 
-```sh
+```shell
 $ crontab <ファイルパス>
 ```
 
 4. 登録されている処理を確認する．
 
-```sh
+```shell
 $ crontab -l
 ```
 
 5. ログに表示されているかを確認．
 
-```sh
+```shell
 $ cd /var/log
 $ tail -f cron
 ```
@@ -738,12 +738,12 @@ $ tail -f cron
 
 ユーザーが，OS上のプロセスを制御できるようにするためのプログラム．
 
-```sh
+```shell
 # インストール
 $ pip3 install supervisor
 ```
 
-```sh
+```shell
 # /etc/supervisor/supervisord.conf に設定ファイルを置いて起動．
 $ /usr/local/bin/supervisord
 ```
@@ -789,7 +789,7 @@ directory=/var/www/tech-notebook
 
 vim上でファイルを開く．
 
-```sh
+```shell
 $ vim <ファイル名>
 ```
 
@@ -801,7 +801,7 @@ $ vim <ファイル名>
 
 履歴1000件の中からコマンドを検索する．
 
-```sh
+```shell
 $ history | grep <過去のコマンド>
 ```
 
@@ -809,7 +809,7 @@ $ history | grep <過去のコマンド>
 
 ### tr
 
-```sh
+```shell
 #!/bin/bash
 
 cat ./src.txt | tr '\n' ',' > ./dst.txt
@@ -828,7 +828,7 @@ cat ./src.txt | tr '\n' ',' > ./dst.txt
 
 基本的な手順としては，シェル変数を設定し，これを環境変数に追加する．
 
-```sh
+```shell
 # シェル変数を設定
 $ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
 # 環境変数に追加
@@ -837,13 +837,13 @@ $ export PATH
 
 シェル変数の設定と，環境変数への追加は，以下の通り同時に記述できる．
 
-```sh
+```shell
 # 環状変数として，指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを追加．
 # バイナリファイルを入力すると，絶対パス
 $ export PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
 ```
 
-```sh
+```shell
 # 不要なパスを削除したい場合はこちら
 # 環状変数として，指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを上書き
 $ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
@@ -854,7 +854,7 @@ $ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 exportの結果は，OSの再起動で初期化されてしまう．そのため，再起動時に自動的に実行されるよう，```/home/centos/.bashrc```に追記しておく．
 
-```sh
+```shell
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -882,7 +882,7 @@ export PATH
 
 全ての環境変数を表示する．
 
-```sh
+```shell
 $ printenv
 ```
 
@@ -892,7 +892,7 @@ $ printenv
 
 #### ・set-timezone
 
-```sh
+```shell
 # タイムゾーンを日本時間に変更
 $ timedatectl set-timezone Asia/Tokyo
 
@@ -911,7 +911,7 @@ $ date
 
 各プロセスの稼働情報（ユーザ名，CPU，メモリ）を確認する． CPU使用率昇順に並べる
 
-```sh
+```shell
 $ top
 ```
 
@@ -919,7 +919,7 @@ $ top
 
 メモリ使用率昇順に並べる．
 
-```sh
+```shell
 $ top -a
 ```
 
@@ -931,7 +931,7 @@ $ top -a
 
 物理メモリ，スワップ領域，の使用状況をメガバイトで確認する．
 
-```sh
+```shell
 # m：Mega Bytes
 # t: -total
 $ free -m -total
@@ -945,7 +945,7 @@ $ free -m -total
 
 ストレージの使用状況をメガバイトで確認する．
 
-```sh
+```shell
 # h：--human-readable
 # t: -total
 $ df -h -m -t
@@ -963,20 +963,20 @@ $ df -h -m -t
 
 #### ・スワップ領域の作成方法
 
-```sh
+```shell
 # 指定したディレクトリをスワップ領域として使用
 $ mkswap /swap_volume
 ```
-```sh
+```shell
 # スワップ領域を有効化
 # 優先度のプログラムが，メモリからディレクトリに，一時的に退避されるようになる
 $ swapon /swap_volume
 ```
-```sh
+```shell
 # スワップ領域の使用状況を確認
 $ swapon -s
 ```
-```sh
+```shell
 # スワップ領域を無効化
 $ swapoff /swap_volume
 ```
@@ -1030,11 +1030,11 @@ $ swapoff /swap_volume
 
 指定したライブラリをインストールする．
 
-```sh
+```shell
 # /usr/local 以下にインストール
 $ pip install --user <ライブラリ名>
 ```
-```sh
+```shell
 # requirements.txt を元にライブラリをインストール
 $ pip install -r requirements.txt
 
@@ -1046,7 +1046,7 @@ pip install -r requirements.txt　--prefix=/usr/local
 
 pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
-```sh
+```shell
 $ pip freeze > requirements.txt
 ```
 
@@ -1054,7 +1054,7 @@ $ pip freeze > requirements.txt
 
 pipでインストールしたパッケージ情報を表示する．
 
-```sh
+```shell
 $ pip show sphinx
 
 Name: Sphinx
@@ -1078,7 +1078,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 #### ・入手方法
 
-```sh
+```shell
 # リポジトリの作成
 $ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
 
@@ -1090,7 +1090,7 @@ $ yum install nodejs
 
 package.jsonを生成する．
 
-```sh
+```shell
 $ npm init
 ```
 
@@ -1098,12 +1098,12 @@ $ npm init
 
 ディレクトリにパッケージをインストール
 
-```sh
+```shell
 # ローカルディレクトリにパッケージをインストール
 $ npm install <パッケージ名>
 ```
 
-```sh
+```shell
 # グローバルディレクトリにインストール（あまり使わない）
 $ npm install -g <パッケージ名>
 ```
@@ -1118,13 +1118,13 @@ $ npm install -g <パッケージ名>
 
 パッケージをインストールまたは更新する．一度に複数のオプションを組み合わせて記述する．インストール時にパッケージ間の依存関係を解決できないので注意．
 
-```sh
+```shell
 # パッケージをインストール
 # -ivh：--install -v --hash 
 $ rpm -ivh <パッケージ名>
 ```
 
-```sh
+```shell
 # パッケージを更新
 # -Uvh：--upgrade -v --hash 
 $ rpm -Uvh <パッケージ名>
@@ -1134,7 +1134,7 @@ $ rpm -Uvh <パッケージ名>
 
 インストールされた全てのパッケージの中で，指定した文字を名前に含むものを表示する．
 
-```sh
+```shell
 # -qa：
 $ rpm -qa | grep <検索文字>
 ```
@@ -1143,7 +1143,7 @@ $ rpm -qa | grep <検索文字>
 
 指定したパッケージ名で，関連する全てのファイルの場所を表示する．
 
-```sh
+```shell
 # -ql：
 $ rpm -ql <パッケージ名>
 ```
@@ -1152,7 +1152,7 @@ $ rpm -ql <パッケージ名>
 
 指定したパッケージ名で，インストール日などの情報を表示する．
 
-```sh
+```shell
 # -qi：
 $ rpm -qi <パッケージ名>
 ```
@@ -1165,7 +1165,7 @@ $ rpm -qi <パッケージ名>
 
 rpmと同様の使い方ができる．また，インストール時にパッケージ間の依存関係を解決できる．
 
-```sh
+```shell
 # パッケージをインストール
 $ yum install -y <パッケージ名>
 
@@ -1177,7 +1177,7 @@ $ yum reinstall -y <パッケージ名>
 
 インストールされた全てのパッケージを表示する．
 
-```sh
+```shell
 # 指定した文字を名前に含むものを表示．
 $ yum list | grep <検索文字>
 ```
@@ -1188,7 +1188,7 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 
 1. CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，/etc/yu.repos.d/* に配置される．
 
-```sh
+```shell
 # CentOS7系の場合
 $ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
@@ -1200,7 +1200,7 @@ $ yum install -y epel-release でもよい
 ```
 2. CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d/*```に配置される．
 
-```sh
+```shell
 # CentOS7系の場合
 $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
@@ -1241,7 +1241,7 @@ gpgcheck=1
 
 5. Remiリポジトリの有効化オプションを永続的に使用できるようにする．
 
-```sh
+```shell
 # CentOS7の場合
 $ yum install -y yum-utils
 # 永続的に有効化
@@ -1254,7 +1254,7 @@ $ dnf module enable php:remi-7.4
 
 6. remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
 
-```sh
+```shell
 # CentOS7の場合
 # 一時的に有効化できるオプションを利用して，明示的にremiを指定
 $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
@@ -1267,7 +1267,7 @@ $ dnf install -y php php-mbstring php-mcrypt
 
 7. 再インストールする時は，reinstallとすること．
 
-```sh
+```shell
 # CentOS7の場合
 # 一時的に有効化できるオプションを利用して，明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
@@ -1286,7 +1286,7 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ・which
 
-```sh
+```shell
 # pythonのインストールディレクトリを確認
 $ pyenv which python
 /.pyenv/versions/3.8.0/bin/python
@@ -1451,7 +1451,7 @@ public class Age
 
 #### 1. パッケージをインストール
 
-```sh
+```shell
 # パッケージを公式からインストールと解答
 $ wget <パッケージのリンク>
 $ tar <パッケージのフォルダ名>
@@ -1465,7 +1465,7 @@ $ cd build
 
 configureファイルを元に，ルールが定義されたMakefileを作成する．
 
-```sh
+```shell
 # configureへのパスに注意．
 $ ../configure --prefix="<ソースコードのインストール先のパス>"
 ```
@@ -1474,14 +1474,14 @@ $ ../configure --prefix="<ソースコードのインストール先のパス>"
 
 パッケージのソースコードからexeファイルをビルドする．
 
-```sh
+```shell
 # -j で使用するコア数を宣言し，処理の速度を上げられる．
 $ make -j4
 ```
 
 任意で，exeファイルのテストを行える．
 
-```sh
+```shell
 $ make check
 ```
 
@@ -1489,14 +1489,14 @@ $ make check
 
 生成されたソースコードのファイルを，指定したディレクトリにコピー．
 
-```sh
+```shell
 # installと命令するが，実際はコピー．sudoを付ける．
 $ sudo make install
 ```
 
 元となったソースコードやオブジェクトコードを削除．
 
-```sh
+```shell
 $ make clean
 ```
 
@@ -1514,7 +1514,7 @@ $ make clean
 
 コマンドラインでそのまま入力し，機械語翻訳と実行を行うことができる．
 
-```sh
+```shell
 #===========
 # PHPの場合
 #===========
@@ -1532,7 +1532,7 @@ $ php -r 'phpinfo();'
 $ php -r 'phpinfo();' > phpinfo.txt
 ```
 
-```sh
+```shell
 # php.iniの読み込み状況を出力
 $ php --ini
 ```
@@ -1613,7 +1613,7 @@ Linuxに標準で導入されているミドルウェア．ただし，アプリ
 
 1. SELinuxの状態を確認
 
-```sh
+```shell
 $ getenforce
 
 # 有効の場合

@@ -14,14 +14,14 @@
 
 #### ・起動／停止
 
-```sh
+```shell
 $ sudo systemctl start nginx
 $ sudo systemctl stop nginx
 ```
 
 #### ・設定ファイルのバリデーション
 
-```sh
+```shell
 $ sudo service nginx configtest
 
 # もしくはこちら
@@ -30,7 +30,7 @@ $ sudo nginx -t
 
 #### ・設定ファイルの反映と安全な再起動
 
-```sh
+```shell
 $ sudo systemctl reload nginx
 ```
 
@@ -38,7 +38,7 @@ $ sudo systemctl reload nginx
 
 読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容を展開して表示する．
 
-```sh
+```shell
 $ sudo nginx -T
 ```
 
@@ -56,7 +56,7 @@ $ sudo nginx -T
 
 **＊実装例＊**
 
- ```sh
+ ```shell
 # 設定ファイルのバリデーション
 $ php-fpm -t
  ```
