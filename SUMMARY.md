@@ -25,7 +25,7 @@
     * [▶ ︎バックエンドパッケージ](public/backend_package.md)
     * [▶ ︎Symfony](public/backend_framework_symfony.md)
     * [▶ ︎Laravel](public/backend_framework_laravel.md)
-    * [▶ ︎テストフレームワークとテスト仕様書](public/backend_testing.md)
+    * [▶ ︎テスト](public/backend_testing.md)
   * デバッグ
     * [▶ ︎デバッグのコツ](public/backend_debug.md)
 * フロントエンドとバックエンド間のデータ通信
