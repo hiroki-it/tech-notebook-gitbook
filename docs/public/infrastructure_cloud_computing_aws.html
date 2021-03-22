@@ -1570,7 +1570,7 @@
 <h3 id="&#x30AD;&#x30FC;&#x30DA;&#x30A2;">&#x30AD;&#x30FC;&#x30DA;&#x30A2;</h3>
 <h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306E;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;">&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306E;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;</h4>
 <p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306B;&#x7F6E;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x79D8;&#x5BC6;&#x9375;&#x304C;&#xFF0C;&#x8A72;&#x5F53;&#x3059;&#x308B;EC2&#x306B;&#x7F6E;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x516C;&#x958B;&#x9375;&#x3068;&#x30DA;&#x30A2;&#x306A;&#x306E;&#x304B;&#x3069;&#x3046;&#x304B;&#xFF0C;&#x30D5;&#x30A3;&#x30F3;&#x30AC;&#x30FC;&#x30D7;&#x30EA;&#x30F3;&#x30C8;&#x5024;&#x3092;&#x7167;&#x5408;&#x3057;&#x3066;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x65B9;&#x6CD5;</p>
-<pre class="language-"><code class="lang-sh">$ openssl pkcs8 -in <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;<span class="token operator">&gt;</span>.pem -inform PEM -outform DER -topk8 -nocrypt <span class="token operator">|</span> openssl sha1 -c
+<pre class="language-"><code class="lang-shell">$ openssl pkcs8 -in <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;<span class="token operator">&gt;</span>.pem -inform PEM -outform DER -topk8 -nocrypt <span class="token operator">|</span> openssl sha1 -c
 </code></pre>
 <h4 id="&#x30FB;ec2&#x3078;&#x306E;ssh&#x63A5;&#x7D9A;">&#x30FB;EC2&#x3078;&#x306E;SSH&#x63A5;&#x7D9A;</h4>
 <p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;SSH&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3082;&#x3064;&#x30D1;&#x30B1;&#x30C3;&#x30C8;&#x306F;&#xFF0C;&#x307E;&#x305A;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x3092;&#x901A;&#x904E;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5F8C;&#xFF0C;Route53&#xFF0C;ALB&#x3092;&#x7D4C;&#x7531;&#x305B;&#x305A;&#xFF0C;&#x305D;&#x306E;&#x307E;&#x307E;EC2&#x3078;&#x5411;&#x304B;&#x3046;&#xFF0E;</p>
@@ -1801,8 +1801,9 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;api-gateway--lambda--s3">&#x30FB;API Gateway &amp; Lambda &amp; S3</h4>
+<h4 id="&#x30FB;api-gateway--s3">&#x30FB;API Gateway &amp; S3</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>APIGateway&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;S3&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;Lambda&#x304C;S3&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x4E8B;&#x524D;&#x306B;&#xFF0C;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x300C;<code>AWSLambdaExecute</code>&#x300D;&#x304C;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;Lambda&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-javascript"><span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> aws <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;aws-sdk&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1811,7 +1812,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
-    <span class="token comment">// API Gateway&#x3068;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x3092;&#x610F;&#x8B58;&#x3057;&#x305F;JSON&#x69CB;&#x9020;&#x306B;&#x3059;&#x308B;</span>
+    <span class="token comment">// API Gateway&#x3068;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x3092;&#x610F;&#x8B58;&#x3057;&#x305F;JSON&#x69CB;&#x9020;&#x306B;&#x3059;&#x308B;    </span>
     <span class="token comment">// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x521D;&#x671F;&#x5024;</span>
     <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token punctuation">{</span>
         <span class="token string">&quot;statusCode&quot;</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
@@ -1849,7 +1850,186 @@ exports<span class="token punctuation">.</span><span class="token function-varia
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>&#x307E;&#x305F;&#xFF0C;Lambda&#x304C;S3&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30A2;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x4E8B;&#x524D;&#x306B;&#xFF0C;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x300C;<code>AWSLambdaExecute</code>&#x300D;&#x304C;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;Lambda&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;amplify--eventbridge--slackapi">&#x30FB;Amplify &amp; EventBridge &amp; SlackAPI</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>Amplify&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;EventBridge&#x3067;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;Lambda&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;Lambda&#x3067;&#x306F;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x69CB;&#x6210;&#x3057;&#xFF0C;SlackAPI&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-javascript"><span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> https <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;https&apos;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>format<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;util&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**1
+ * &#x975E;&#x540C;&#x671F;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;
+ *
+ * @param event
+ * @returns boolean
+ */</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>event<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> result<span class="token punctuation">;</span>
+
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token function">buildMessage</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">postMessageToSlack</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x4F5C;&#x6210;&#x3057;&#x307E;&#x3059;&#xFF0E;
+ *
+ * @param event
+ * @returns {string}
+ */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">buildMessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            channel<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">SLACK_CHANNEL_ID</span><span class="token punctuation">,</span>
+            text<span class="token operator">:</span> <span class="token string">&quot;dev&#x74B0;&#x5883; &#x901A;&#x77E5;&quot;</span><span class="token punctuation">,</span>
+            attachments<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                color<span class="token operator">:</span> event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>jobStatus <span class="token operator">===</span> <span class="token string">&quot;SUCCEED&quot;</span> <span class="token operator">?</span> <span class="token string">&quot;#00FF00&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;#ff0000&quot;</span><span class="token punctuation">,</span>
+                blocks<span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;section&quot;</span><span class="token punctuation">,</span>
+                        text<span class="token operator">:</span> <span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;%s&#x74B0;&#x5883;&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>appId <span class="token operator">===</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">AMPLIFY_APP_ID_PC</span> <span class="token operator">?</span> <span class="token string">&quot;PC&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;SP&quot;</span>
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;context&quot;</span><span class="token punctuation">,</span>
+                        elements<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;*&#x7D50;&#x679C;*: %s&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>jobStatus <span class="token operator">===</span> <span class="token string">&quot;SUCCEED&quot;</span> <span class="token operator">?</span> <span class="token string">&quot;&#x6210;&#x529F;&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;&#x5931;&#x6557;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;context&quot;</span><span class="token punctuation">,</span>
+                        elements<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;*&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;*: %s&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>branchName
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;context&quot;</span><span class="token punctuation">,</span>
+                        elements<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;*&#x30D7;&#x30EB;&#x30EA;&#x30AF;URL*: https://github.com/Hiroki-IT/xxx_repository/compare/%s&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>branchName
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;context&quot;</span><span class="token punctuation">,</span>
+                        elements<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;*&#x691C;&#x8A3C;URL*: https://%s.%s.amplifyapp.com&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>branchName<span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>appId
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;context&quot;</span><span class="token punctuation">,</span>
+                        elements<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                            type<span class="token operator">:</span> <span class="token string">&quot;mrkdwn&quot;</span><span class="token punctuation">,</span>
+                            text<span class="token operator">:</span> <span class="token function">format</span><span class="token punctuation">(</span>
+                                <span class="token string">&quot;&lt;https://%s.console.aws.amazon.com/amplify/home?region=%s#/%s/%s/%s|:amplify: *Amplify&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x306F;&#x3053;&#x3061;&#x3089;*&gt;&quot;</span><span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>region<span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>region<span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>appId<span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>branchName<span class="token punctuation">,</span>
+                                event<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>jobId
+                            <span class="token punctuation">)</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        type<span class="token operator">:</span> <span class="token string">&quot;divider&quot;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x307E;&#x3059;&#xFF0E;
+ *
+ * @param message
+ */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">postMessageToSlack</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
+            host<span class="token operator">:</span> <span class="token string">&quot;slack.com&quot;</span><span class="token punctuation">,</span>
+            path<span class="token operator">:</span> <span class="token string">&quot;/api/chat.postMessage&quot;</span><span class="token punctuation">,</span>
+            method<span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+            headers<span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">&quot;Content-Type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">,</span>
+                <span class="token string">&quot;Authorization&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bearer &quot;</span> <span class="token operator">+</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">SLACK_API_TOKEN</span><span class="token punctuation">,</span>
+                <span class="token string">&quot;Content-Length&quot;</span><span class="token operator">:</span> Buffer<span class="token punctuation">.</span><span class="token function">byteLength</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">const</span> request <span class="token operator">=</span> https<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>options<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">let</span> body<span class="token punctuation">;</span>
+
+            response<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                body <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            response<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                body <span class="token operator">=</span> error<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            response<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&quot;end&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token punctuation">{</span>statusCode<span class="token operator">:</span> response<span class="token punctuation">.</span>statusCode<span class="token punctuation">,</span> body<span class="token operator">:</span> body<span class="token punctuation">}</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>statusCode <span class="token operator">&gt;=</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> response<span class="token punctuation">.</span>statusCode <span class="token operator">&lt;=</span> <span class="token number">299</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        request<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>error<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+        request<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        request<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>request<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
 <p><br></p>
 <h2 id="01-03-&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#xFF5C;lambdaedge">01-03. &#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#xFF5C;Lambda@Edge</h2>
 <h3 id="&#x901A;&#x5E38;&#x306E;lambda&#x3068;&#x306E;&#x9055;&#x3044;">&#x901A;&#x5E38;&#x306E;Lambda&#x3068;&#x306E;&#x9055;&#x3044;</h3>
@@ -2366,7 +2546,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <tr>
 <td>ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</td>
 <td>&#x76E3;&#x8996;&#x5BFE;&#x8C61;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-<td>&#x300C;&#x5E73;&#x5747;CPU&#x300D;&#xFF0C;&#x300C;&#x5E73;&#x5747;&#x30E1;&#x30E2;&#x30EA;&#x300D;&#xFF0C;&#x300C;&#x30BF;&#x30B9;&#x30AF;&#x5F53;&#x305F;&#x308A;&#x306E;ALB&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6570;&#x300D;&#x3092;&#x76E3;&#x8996;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
+<td>&#x300C;&#x5E73;&#x5747;CPU&#x300D;&#xFF0C;&#x300C;&#x5E73;&#x5747;&#x30E1;&#x30E2;&#x30EA;&#x300D;&#xFF0C;&#x300C;&#x30BF;&#x30B9;&#x30AF;&#x5F53;&#x305F;&#x308A;&#x306E;ALB&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6570;&#x300D;&#x3092;&#x76E3;&#x8996;&#x3067;&#x304D;&#x308B;&#xFF0E;SLI&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;CloudWatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3082;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</td>
 </tr>
 <tr>
 <td>&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x5024;</td>
@@ -2494,7 +2674,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <p>&#x73FE;&#x5728;&#x8D77;&#x52D5;&#x4E2D;&#x306E;ECS&#x30BF;&#x30B9;&#x30AF;&#x3068;&#x306F;&#x5225;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30BF;&#x30B9;&#x30AF;&#x3092;&#x4E00;&#x6642;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;CI/CD&#x30C4;&#x30FC;&#x30EB;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x4EE5;&#x5916;&#x306B;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x304B;&#x3089;&#x624B;&#x52D5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#x3082;&#x3042;&#x308B;&#xFF0E;&#x8D77;&#x52D5;&#x6642;&#x306B;&#xFF0C;<code>overrides</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8A2D;&#x5B9A;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x3055;&#x3089;&#x306B;JSON&#x3067;&#x306F;&#x300C;<code>\</code>&#x300D;&#x3092;&#x300C;<code>\\</code>&#x300D;&#x306B;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x5F8C;&#x306B;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x81EA;&#x52D5;&#x7684;&#x306B;Stopped&#x72B6;&#x614B;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>Laravel&#x306E;Seeder&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3084;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;PC&#x304B;&#x3089;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -x
 
@@ -3079,12 +3259,12 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <h4 id="&#x30FB;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8868;&#x793A;">&#x30FB;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8868;&#x793A;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ aws s3 <span class="token function">ls</span> s3://<span class="token operator">&lt;</span>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-shell">$ aws s3 <span class="token function">ls</span> s3://<span class="token operator">&lt;</span>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x5BB9;&#x91CF;&#x3092;&#x5408;&#x8A08;">&#x30FB;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x5BB9;&#x91CF;&#x3092;&#x5408;&#x8A08;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5BB9;&#x91CF;&#x3092;&#x5408;&#x8A08;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ aws s3 <span class="token function">ls</span> s3://<span class="token operator">&lt;</span>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span> --summarize --recursive --human-readable
+<pre class="language-"><code class="lang-shell">$ aws s3 <span class="token function">ls</span> s3://<span class="token operator">&lt;</span>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span> --summarize --recursive --human-readable
 </code></pre>
 <p><br></p>
 <h2 id="03-02-&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#xFF5C;&#x305D;&#x306E;&#x4ED6;">03-02. &#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#xFF5C;&#x305D;&#x306E;&#x4ED6;</h2>
@@ -3195,7 +3375,7 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <p>&#x5143;&#x3005;&#x306E;&#x6B8B;&#x9AD8;&#x306F;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x30B9;&#x30BF;&#x30F3;&#x30C0;&#x30FC;&#x30C9;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5BB9;&#x91CF;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits" target="_blank">https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits</a></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/burst-mode_credit-balance-size.png" alt="burst-mode_credit"></p>
-<p>&#x6B8B;&#x9AD8;&#x306F;&#xFF0C;BurstCreditBalance&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x304C;&#x5E38;&#x306B;&#x6E1B;&#x5C11;&#x3057;&#x7D9A;&#x3051;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x30D7;&#x30ED;&#x30D3;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x65B9;&#x304C;&#x3088;&#x308A;&#x9069;&#x5207;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x6B8B;&#x9AD8;&#x306F;&#xFF0C;<code>BurstCreditBalance</code>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x304C;&#x5E38;&#x306B;&#x6E1B;&#x5C11;&#x3057;&#x7D9A;&#x3051;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x30D7;&#x30ED;&#x30D3;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x65B9;&#x304C;&#x3088;&#x308A;&#x9069;&#x5207;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode" target="_blank">https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode</a></p>
 <h4 id="&#x30FB;&#x30D7;&#x30ED;&#x30D3;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x4ED5;&#x7D44;&#x307F;">&#x30FB;&#x30D7;&#x30ED;&#x30D3;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;&#x30E2;&#x30FC;&#x30C9;&#x306E;&#x4ED5;&#x7D44;&#x307F;</h4>
 <p>&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#x6027;&#x80FD;&#x306E;&#x81EA;&#x52D5;&#x30B9;&#x30B1;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x6A5F;&#x80FD;&#x306F;&#x7121;&#x3044;&#x304C;&#xFF0C;&#x4E00;&#x5B9A;&#x306E;&#x6027;&#x80FD;&#x306F;&#x4FDD;&#x8A3C;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
@@ -3203,9 +3383,9 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/provisioning-mode_credit-balance-size.png" alt="burst-mode_credit"></p>
 <h4 id="&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30B3;&#x30DE;&#x30F3;&#x30C9;">&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
 <p>DNS&#x7D4C;&#x7531;&#x3067;&#xFF0C;EFS&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30D8;&#x30EB;&#x30D1;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">mount</span> -t <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span> -o tls <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;ID<span class="token operator">&gt;</span>:/ <span class="token operator">&lt;</span>&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">mount</span> -t <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30BF;&#x30A4;&#x30D7;<span class="token operator">&gt;</span> -o tls <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;ID<span class="token operator">&gt;</span>:/ <span class="token operator">&lt;</span>&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># EFS&#x3067;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x767B;&#x9332;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># EFS&#x3067;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x767B;&#x9332;</span>
 $ <span class="token function">mount</span> -t efs -o tls fs-xxxxx:/ /var/www/app
 
 <span class="token comment"># &#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x89E3;&#x9664;</span>
@@ -3579,7 +3759,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 <ol>
 <li>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#xFF0C;RDS&#x306E;&#x524D;&#x306B;&#xFF0C;Redis&#x306B;&#x5BFE;&#x3057;&#x3066;SQL&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-mysql">SELECT * FROM users;
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> users<span class="token punctuation">;</span>
 </code></pre>
 <ol>
 <li>&#x59CB;&#x3081;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;SQL&#x306E;&#x5834;&#x5408;&#xFF0C;Redis&#x306F;SQL&#x3092;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#x3057;&#xFF0C;Cache&#x304C;&#x7121;&#x3044;&#x3053;&#x3068;&#x304C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</li>
@@ -3587,7 +3767,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 <li>&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 <li>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;Redis&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x307E;&#x3060;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x307E;&#x3060;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;</span>
 
 *** no cache ***
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;1&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;alice&quot;</span><span class="token punctuation">}</span>
@@ -3605,12 +3785,12 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 <ol>
 <li>&#x6B21;&#x56DE;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#xFF0C;RDS&#x306E;&#x524D;&#x306B;&#xFF0C;Redis&#x306B;&#x5BFE;&#x3057;&#x3066;SQL&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-mysql">SELECT * FROM users;
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> users<span class="token punctuation">;</span>
 </code></pre>
 <ol>
 <li>Redis&#x306F;&#xFF0C;SQL&#x3092;&#x30AD;&#x30FC;&#x306B;&#x3057;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7279;&#x5B9A;&#x3057;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x65E2;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># ElastiCache&#x306B;&#x306F;&#xFF0C;SQL&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x304C;&#x65E2;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;</span>
 
 *** cache hit ***
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;1&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;alice&quot;</span><span class="token punctuation">}</span>
@@ -3625,18 +3805,18 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 <span class="token punctuation">{</span><span class="token string">&quot;id&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;10&quot;</span>, <span class="token string">&quot;name&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;jonny&quot;</span><span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30AF;&#x30A8;&#x30EA;cache&#x306E;&#x64CD;&#x4F5C;">&#x30FB;&#x30AF;&#x30A8;&#x30EA;Cache&#x306E;&#x64CD;&#x4F5C;</h4>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
 $ /usr/local/sbin/redis-stable/src/redis-cli -c -h <span class="token operator">&lt;</span>Redis&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">6379</span>
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># &#x5168;&#x3066;&#x306E;&#x30AD;&#x30FC;&#x3092;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> keys *
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># &#x30AD;&#x30FC;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x5024;&#x3092;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> <span class="token builtin class-name">type</span> <span class="token operator">&lt;</span>&#x30AD;&#x30FC;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># Redis&#x63A5;&#x7D9A;&#x4E2D;&#x306E;&#x72B6;&#x614B;</span>
 <span class="token comment"># Redis&#x304C;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x8868;&#x793A;</span>
 redis xxxxx:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> monitor
 </code></pre>
@@ -4028,11 +4208,11 @@ redis xxxxx:637<span class="token operator"><span class="token file-descriptor i
 <tbody>
 <tr>
 <td>CloudWatch&#x8A2D;&#x5B9A;</td>
-<td>CloudWatch Logs&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>CloudWatch Logs&#x306B;API Gateway&#x306E;&#x5B9F;&#x884C;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x8A18;&#x9332;</td>
-<td></td>
+<td>CloudWatch Logs&#x306B;API Gateway&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>X-Ray&#x30C8;&#x30EC;&#x30FC;&#x30B9;</td>
@@ -4377,7 +4557,7 @@ redis xxxxx:637<span class="token operator"><span class="token file-descriptor i
 <tbody>
 <tr>
 <td>Origin Domain Name</td>
-<td>Cloud Front&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3084;DNS&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>Cloud Front&#x3092;&#x30EA;&#x30D0;&#x30FC;&#x30B9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x3068;&#x3057;&#x3066;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3084;DNS&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;</td>
 <td>&#x30FB;&#x4F8B;&#x3048;&#x3070;&#xFF0C;S3&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF0C;ALB&#x306E;DNS&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x30FB;&#x5225;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;DNS&#x540D;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</td>
 </tr>
 <tr>
@@ -4534,14 +4714,14 @@ redis xxxxx:637<span class="token operator"><span class="token file-descriptor i
 <h3 id="&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;">&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;</h3>
 <h4 id="&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;">&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;</h4>
 <p>Cloud Front&#x306B;&#x306F;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6570;&#x3060;&#x3051;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x5404;&#x30B5;&#x30FC;&#x30D0;&#x306B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30C3;&#x30B8;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">curl</span> https://ip-ranges.amazonaws.com/ip-ranges.json <span class="token operator">|</span>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">curl</span> https://ip-ranges.amazonaws.com/ip-ranges.json <span class="token operator">|</span>
 jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDFRONT&quot;) | .ip_prefix&apos;</span>
 </code></pre>
 <p>&#x3082;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x76F4;&#x63A5;&#x53C2;&#x8003;&#x3057;&#xFF0C;&#x300C;<code>&quot;service&quot;: &quot;CLOUDFRONT&quot;</code>&#x300D;&#x3068;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x90E8;&#x5206;&#x3092;&#x63A2;&#x3059;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://ip-ranges.amazonaws.com/ip-ranges.json" target="_blank">https://ip-ranges.amazonaws.com/ip-ranges.json</a></p>
 <h4 id="&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;">&#x30FB;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;</h4>
 <p>Cloud Front&#x306B;&#x306F;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x5404;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#xFF0C;&#x30A8;&#x30C3;&#x30B8;&#x30ED;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3042;&#x308B;&#x4F7F;&#x7528;&#x4E2D;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x305F;&#x6587;&#x5B57;&#x5217;<span class="token operator">&gt;</span>.cloudfront.net
+<pre class="language-"><code class="lang-shell">$ <span class="token function">nslookup</span> <span class="token operator">&lt;</span>&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x305F;&#x6587;&#x5B57;&#x5217;<span class="token operator">&gt;</span>.cloudfront.net
 </code></pre>
 <p><br></p>
 <h2 id="05-04-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AD;&#x30F3;&#x30B0;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x914D;&#x4FE1;&#xFF5C;alb&#xFF1A;application-load-balancing">05-04. &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AD;&#x30F3;&#x30B0;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x914D;&#x4FE1;&#xFF5C;ALB&#xFF1A;Application Load Balancing</h2>
@@ -4648,6 +4828,7 @@ jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDF
 <p>ALB&#x3092;&#x7D4C;&#x7531;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;<code>HTTP_X_FORWARDED_PROTO</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x304C;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x306F;&#xFF0C;ALB&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306E;&#x7A2E;&#x985E;&#x304C;&#xFF0E;&#x6587;&#x5B57;&#x5217;&#x3067;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x304C;&#x300C;HTTPS&#x300D;&#x3060;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;HTTPS&#x3067;&#x3042;&#x308B;&#x3068;&#x307F;&#x306A;&#x3059;&#x3088;&#x3046;&#x306B;&#xFF0C;<code>index.php</code>&#x306B;&#x8FFD;&#x52A0;&#x5B9F;&#x88C5;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
 <span class="token comment">// index.php</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;HTTP_X_FORWARDED_PROTO&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token operator">&amp;&amp;</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;HTTP_X_FORWARDED_PROTO&quot;</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string single-quoted-string">&apos;https&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -5024,7 +5205,7 @@ jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDF
 </tr>
 </tbody>
 </table>
-<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Subnet&#x306E;&#x7A2E;&#x985E;.png" alt="Subnet&#x306E;&#x7A2E;&#x985E;"></p>
+<p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/subnet-types.png" alt="subnet-types"></p>
 <p><br></p>
 <h3 id="vpc&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;">VPC&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;</h3>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/VPC&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;.png" alt="VPC&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;"></p>
@@ -5137,7 +5318,7 @@ jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDF
 <h2 id="06-&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30A6;&#x30A7;&#x30D6;&#xFF0C;&#x30E2;&#x30D0;&#x30A4;&#x30EB;">06. &#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30A6;&#x30A7;&#x30D6;&#xFF0C;&#x30E2;&#x30D0;&#x30A4;&#x30EB;</h2>
 <h3 id="amplify">Amplify</h3>
 <h4 id="&#x30FB;&#x542B;&#x307E;&#x308C;&#x308B;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;">&#x30FB;&#x542B;&#x307E;&#x308C;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;</h4>
-<p>&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x306E;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#xFF0E;SSG&#x306E;&#x5834;&#x5408;&#xFF0C;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x3055;&#x3048;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x306E;&#x8981;&#x4EF6;&#x304C;&#x5168;&#x3066;&#x6574;&#x3046;&#xFF0E;SPA&#x306E;&#x5834;&#x5408;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x30EC;&#x30B9;&#x306E;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x3092;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;&#x3057;&#x3066;&#x304F;&#x308C;&#xFF0C;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x3055;&#x3048;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x8981;&#x4EF6;&#x304C;&#x5168;&#x3066;&#x6574;&#x3046;&#xFF0E;&#x3053;&#x308C;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;CloudFormation&#x306B;&#x3088;&#x3063;&#x3066;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x304C;&#xFF0C;Amplify&#x7D4C;&#x7531;&#x3067;&#x3057;&#x304B;&#x8A2D;&#x5B9A;&#x3092;&#x5909;&#x66F4;&#x3067;&#x304D;&#x305A;&#xFF0C;&#x5404;AWS&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3092;&#x898B;&#x3066;&#x3082;&#xFF0C;&#x975E;&#x8868;&#x793A;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p>&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x306E;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#xFF0E;SSG&#x306E;&#x5834;&#x5408;&#xFF0C;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x3055;&#x3048;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x306E;&#x8981;&#x4EF6;&#x304C;&#x5168;&#x3066;&#x6574;&#x3046;&#xFF0E;SPA&#x306E;&#x5834;&#x5408;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x30EC;&#x30B9;&#x306E;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x3092;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;&#x3057;&#x3066;&#x304F;&#x308C;&#xFF0C;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3057;&#x3055;&#x3048;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x8981;&#x4EF6;&#x304C;&#x5168;&#x3066;&#x6574;&#x3046;&#xFF0E;&#x3053;&#x308C;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;CloudFormation&#x306B;&#x3088;&#x3063;&#x3066;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x304C;&#xFF0C;Amplify&#x7D4C;&#x7531;&#x3067;&#x3057;&#x304B;&#x8A2D;&#x5B9A;&#x3092;&#x5909;&#x66F4;&#x3067;&#x304D;&#x305A;&#xFF0C;&#x5404;AWS&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3092;&#x898B;&#x3066;&#x3082;&#xFF0C;&#x975E;&#x8868;&#x793A;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;Route53&#x306E;&#x8A2D;&#x5B9A;&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;Amplify&#x304C;&#x8FFD;&#x52A0;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x7DE8;&#x96C6;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf" target="_blank">https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf</a></p>
 <table>
 <thead>
@@ -5207,15 +5388,17 @@ jq  <span class="token string">&apos;.prefixes[] | select(.service==&quot;CLOUDF
   <span class="token key atrule">phases</span><span class="token punctuation">:</span>
     <span class="token key atrule">preBuild</span><span class="token punctuation">:</span>
       <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> echo $API_URL <span class="token punctuation">|</span> base64 <span class="token punctuation">-</span><span class="token punctuation">-</span>decode <span class="token punctuation">&gt;</span> .env
-        <span class="token punctuation">-</span> echo $API_URL_BROWSER <span class="token punctuation">|</span> base64 <span class="token punctuation">-</span><span class="token punctuation">-</span>decode <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
-        <span class="token punctuation">-</span> echo $OAUTH_CLIENT_ID <span class="token punctuation">|</span> base64 <span class="token punctuation">-</span><span class="token punctuation">-</span>decode <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
-        <span class="token punctuation">-</span> echo $OAUTH_CLIENT_SECRET <span class="token punctuation">|</span> base64 <span class="token punctuation">-</span><span class="token punctuation">-</span>decode <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
-        <span class="token punctuation">-</span> echo $GOOGLE_MAP_QUERY_URL <span class="token punctuation">|</span> base64 <span class="token punctuation">-</span><span class="token punctuation">-</span>decode <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
-        <span class="token punctuation">-</span> npm install
+        <span class="token punctuation">-</span> npm install 
+        <span class="token punctuation">-</span> echo &quot;API_BASE_URL=$API_BASE_URL&quot;                  <span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> echo &quot;API_BROWSER_BASE_URL=$API_BROWSER_BASE_URL&quot; <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> echo &quot;CLIENT_SECRET=$CLIENT_SECRET&quot;               <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> echo &quot;GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY&quot;   <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> echo &quot;GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID&quot;   <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> echo &quot;HTTPS_PORTAL_DOMAIN=$HTTPS_PORTAL_DOMAIN&quot;   <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> .env
+        <span class="token punctuation">-</span> cat .env
     <span class="token key atrule">build</span><span class="token punctuation">:</span>
       <span class="token key atrule">commands</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> nuxt generate
+        <span class="token punctuation">-</span> nuxt generate <span class="token punctuation">-</span><span class="token punctuation">-</span>fail<span class="token punctuation">-</span>on<span class="token punctuation">-</span>error
         <span class="token punctuation">-</span> ls <span class="token punctuation">-</span>la ./dist
   <span class="token key atrule">artifacts</span><span class="token punctuation">:</span>
     <span class="token comment"># &#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x5BFE;&#x8C61;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;  </span>
@@ -5507,7 +5690,58 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <p><br></p>
 <h2 id="08-&#x7BA1;&#x7406;&#xFF0C;&#x30AC;&#x30D0;&#x30CA;&#x30F3;&#x30B9;&#xFF5C;cloudwatch">08. &#x7BA1;&#x7406;&#xFF0C;&#x30AC;&#x30D0;&#x30CA;&#x30F3;&#x30B9;&#xFF5C;CloudWatch</h2>
 <h3 id="cloudwatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;">CloudWatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</h3>
+<h4 id="&#x30FB;cloudwatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3068;&#x306F;">&#x30FB;CloudWatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3068;&#x306F;</h4>
 <p>&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;sli&#xFF0C;slo">&#x30FB;SLI&#xFF0C;SLO</h4>
+<table>
+<thead>
+<tr>
+<th>&#x9805;&#x76EE;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLI&#xFF1A;Service Level Indicator&#xFF08;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x6307;&#x6A19;&#xFF09;</td>
+<td>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x306E;&#x6307;&#x6A19;&#x3068;&#x3059;&#x308B;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7A3C;&#x50CD;&#x7387;&#xFF0C;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x7387;&#xFF0C;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#xFF0C;&#x306A;&#x3069;&#x304C;&#x63A1;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>SLO&#xFF1A;Service Level Objective&#xFF08;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x76EE;&#x6A19;&#xFF09;</td>
+<td>SLI&#x3068;&#x3057;&#x3066;&#x63A1;&#x7528;&#x3057;&#x305F;&#x6307;&#x6A19;&#x306E;&#x76EE;&#x6A19;&#x5024;&#x306E;&#x3053;&#x3068;&#xFF0E;99.9%&#x306E;&#x6210;&#x529F;&#x7387;&#x3092;&#x76EE;&#x6A19;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;sli&#x306B;&#x95A2;&#x9023;&#x3059;&#x308B;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;">&#x30FB;SLI&#x306B;&#x95A2;&#x9023;&#x3059;&#x308B;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x6307;&#x6A19;</th>
+<th>&#x95A2;&#x9023;&#x3059;&#x308B;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;</td>
+<td>ECS<br>&#x30FB;<code>RunningTaskCount</code></td>
+<td>&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x8FFD;&#x8DE1;&#x30B9;&#x30B1;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3082;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7A3C;&#x50CD;&#x7387;</td>
+<td>RDS&#xFF1A;<br>&#x30FB;<code>CPUUtilization</code><br>&#x30FB;<code>FreeableMemory</code></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;</td>
+<td>API Gateway&#xFF1A;<br>&#x30FB;<code>Latency</code><br>&#x30FB;<code>IntegrationLatency</code></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x7387;</td>
+<td>ALB&#xFF1A;<br>&#x30FB;<code>HTTPCode_ELB_4XX_Count</code><br>&#x30FB;<code>HTTPCode_ELB_5XX_Count</code><br>&#x30FB;<code>HTTPCode_TARGET_4XX_Count</code><br>&#x30FB;<code>HTTPCode_TARGET_5XX_Count</code><br>&#x30FB;<code>RejectedConnectionCount</code><br>&#x30FB;<code>HealthyHostCount</code><br>&#x30FB;<code>TargetConnectionErrorCount</code><br>&#x30FB;<code>TargetTLSNegotiationErrorCount</code><br><br>API Gateway&#xFF1A;<br>&#x30FB;<code>4XXError</code><br>&#x30FB;<code>5XXError</code></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h3 id="cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;">CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;</h3>
 <h4 id="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;">&#x30FB;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
@@ -5541,13 +5775,13 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 </table>
 <p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>amazon-cloudwatch-agent-ctl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
 
 <span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x78BA;&#x8A8D;</span>
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
 </code></pre>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
 
 <span class="token comment">### CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
 $ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
@@ -5652,76 +5886,80 @@ $ systemctl list-unit-files --type<span class="token operator">=</span>service
 </tbody>
 </table>
 <h4 id="&#x30FB;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30FC;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;">&#x30FB;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30FC;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;</h4>
-<pre class="language-"><code># OR&#x6761;&#x4EF6;&#x3067;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x8003;&#x616E;&#x3057;&#xFF0C;&#x300C;XXXXX:&#x300D;&#x3092;&#x691C;&#x51FA;
-?&quot;WARNING:&quot; ?&quot;Warning:&quot; ?&quot;ERROR:&quot; ?&quot;Error:&quot; ?&quot;CRITICAL:&quot; ?&quot;Critical:&quot; ?&quot;EMERGENCY:&quot; ?&quot;Emergency:&quot; ?&quot;ALERT:&quot; ?&quot;Alert:&quot;
-</code></pre><pre class="language-"><code># OR&#x6761;&#x4EF6;&#x3067;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x8003;&#x616E;&#x3057;&#xFF0C;&#x300C;XXXXX message&#x300D;&#x3092;&#x691C;&#x51FA;
-?&quot;WARNING message&quot; ?&quot;Warning message&quot; ?&quot;ERROR message&quot; ?&quot;Error message&quot; ?&quot;CRITICAL message&quot; ?&quot;Critical message&quot; ?&quot;EMERGENCY message&quot; ?&quot;Emergency message&quot; ?&quot;ALERT message&quot; ?&quot;Alert message&quot;
-</code></pre><h4 id="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;">&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># OR&#x6761;&#x4EF6;&#x3067;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x8003;&#x616E;&#x3057;&#xFF0C;&#x300C;XXXXX:&#x300D;&#x3092;&#x691C;&#x51FA;</span>
+?<span class="token string">&quot;WARNING:&quot;</span> ?<span class="token string">&quot;Warning:&quot;</span> ?<span class="token string">&quot;ERROR:&quot;</span> ?<span class="token string">&quot;Error:&quot;</span> ?<span class="token string">&quot;CRITICAL:&quot;</span> ?<span class="token string">&quot;Critical:&quot;</span> ?<span class="token string">&quot;EMERGENCY:&quot;</span> ?<span class="token string">&quot;Emergency:&quot;</span> ?<span class="token string">&quot;ALERT:&quot;</span> ?<span class="token string">&quot;Alert:&quot;</span>
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># OR&#x6761;&#x4EF6;&#x3067;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x8003;&#x616E;&#x3057;&#xFF0C;&#x300C;XXXXX message&#x300D;&#x3092;&#x691C;&#x51FA;</span>
+?<span class="token string">&quot;WARNING message&quot;</span> ?<span class="token string">&quot;Warning message&quot;</span> ?<span class="token string">&quot;ERROR message&quot;</span> ?<span class="token string">&quot;Error message&quot;</span> ?<span class="token string">&quot;CRITICAL message&quot;</span> ?<span class="token string">&quot;Critical message&quot;</span> ?<span class="token string">&quot;EMERGENCY message&quot;</span> ?<span class="token string">&quot;Emergency message&quot;</span> ?<span class="token string">&quot;ALERT message&quot;</span> ?<span class="token string">&quot;Alert message&quot;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;">&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;.png" alt="&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;"></p>
 <h4 id="&#x30FB;cloudwatch-logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;">&#x30FB;CloudWatch Logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;</h4>
 <p>2020/10/05&#x73FE;&#x5728;&#x306F;&#x975E;&#x63A8;&#x5968;&#x3067;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x8A2D;&#x5B9A;&#x306E;&#x79FB;&#x884C;&#x304C;&#x63A8;&#x5968;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;EC2&#x5185;&#x306E;<code>etc</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x8A2D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code>#############################
-# /var/awslogs/awscli.conf
-#############################
+<pre class="language-"><code class="lang-shell"><span class="token comment">#############################</span>
+<span class="token comment"># /var/awslogs/awscli.conf</span>
+<span class="token comment">#############################</span>
 
-[plugins]
-cwlogs = cwlogs
-[default]
-region = ap-northeast-1
-</code></pre><p>OS&#xFF0C;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#xFF0C;&#x306E;&#x5404;&#x5C64;&#x3067;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#x306E;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
+<span class="token punctuation">[</span>plugins<span class="token punctuation">]</span>
+cwlogs <span class="token operator">=</span> cwlogs
+<span class="token punctuation">[</span>default<span class="token punctuation">]</span>
+region <span class="token operator">=</span> ap-northeast-1
+</code></pre>
+<p>OS&#xFF0C;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#xFF0C;&#x306E;&#x5404;&#x5C64;&#x3067;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#x306E;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code>#############################
-# /var/awslogs/awslogs.conf
-#############################
+<pre class="language-"><code class="lang-shell"><span class="token comment">#############################</span>
+<span class="token comment"># /var/awslogs/awslogs.conf</span>
+<span class="token comment">#############################</span>
 
-# ------------------------------------------
-# CentOS CloudWatch Logs
-# ------------------------------------------
-[/var/log/messages]
+<span class="token comment"># ------------------------------------------</span>
+<span class="token comment"># CentOS CloudWatch Logs</span>
+<span class="token comment"># ------------------------------------------</span>
+<span class="token punctuation">[</span>/var/log/messages<span class="token punctuation">]</span>
 
-# &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;
-#&#xFF08;&#x4F8B;&#xFF09;Jan 1 00:00:00
-datetime_format = %b %d %H:%M:%S
-#&#xFF08;&#x4F8B;&#xFF09;2020-01-01 00:00:00
-# datetime_format = %Y-%m-%d %H:%M:%S
+<span class="token comment"># &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;</span>
+<span class="token comment">#&#xFF08;&#x4F8B;&#xFF09;Jan 1 00:00:00</span>
+datetime_format <span class="token operator">=</span> %b %d %H:%M:%S
+<span class="token comment">#&#xFF08;&#x4F8B;&#xFF09;2020-01-01 00:00:00</span>
+<span class="token comment"># datetime_format = %Y-%m-%d %H:%M:%S</span>
 
-# &#x53CE;&#x96C6;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;CentOS&#x306E;&#x30ED;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;
-file = /var/log/messages
+<span class="token comment"># &#x53CE;&#x96C6;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;CentOS&#x306E;&#x30ED;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;</span>
+<span class="token function">file</span> <span class="token operator">=</span> /var/log/messages
 
-# &#x8981;&#x52C9;&#x5F37;
-buffer_duration = 5000
-initial_position = start_of_file
+<span class="token comment"># &#x8981;&#x52C9;&#x5F37;</span>
+buffer_duration <span class="token operator">=</span> <span class="token number">5000</span>
+initial_position <span class="token operator">=</span> start_of_file
 
-# &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;ID
-log_stream_name = {instance_id}
+<span class="token comment"># &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;ID</span>
+log_stream_name <span class="token operator">=</span> <span class="token punctuation">{</span>instance_id<span class="token punctuation">}</span>
 
-# AWS&#x4E0A;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;
-log_group_name = /var/log/messages
+<span class="token comment"># AWS&#x4E0A;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;</span>
+log_group_name <span class="token operator">=</span> /var/log/messages
 
-# ------------------------------------------
-# Nginx CloudWatch Logs
-# ------------------------------------------
-[/var/log/nginx/error.log]
-file             = /var/log/nginx/error.log
-buffer_duration  = 5000
-log_stream_name  = {instance_id}
-initial_position = start_of_file
-log_group_name   = /var/log/nginx/error_log.production
+<span class="token comment"># ------------------------------------------</span>
+<span class="token comment"># Nginx CloudWatch Logs</span>
+<span class="token comment"># ------------------------------------------</span>
+<span class="token punctuation">[</span>/var/log/nginx/error.log<span class="token punctuation">]</span>
+<span class="token function">file</span>             <span class="token operator">=</span> /var/log/nginx/error.log
+buffer_duration  <span class="token operator">=</span> <span class="token number">5000</span>
+log_stream_name  <span class="token operator">=</span> <span class="token punctuation">{</span>instance_id<span class="token punctuation">}</span>
+initial_position <span class="token operator">=</span> start_of_file
+log_group_name   <span class="token operator">=</span> /var/log/nginx/error_log.production
 
-# ------------------------------------------
-# Application CloudWatch Logs
-# ------------------------------------------
-[/var/www/project/app/storage/logs/laravel.log]
-file             = /var/www/project/app/storage/logs/laravel.log
-buffer_duration  = 5000
-log_stream_name  = {instance_id}
-initial_position = start_of_file
-log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
-</code></pre><p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>awslogs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</p>
+<span class="token comment"># ------------------------------------------</span>
+<span class="token comment"># Application CloudWatch Logs</span>
+<span class="token comment"># ------------------------------------------</span>
+<span class="token punctuation">[</span>/var/www/project/app/storage/logs/laravel.log<span class="token punctuation">]</span>
+<span class="token function">file</span>             <span class="token operator">=</span> /var/www/project/app/storage/logs/laravel.log
+buffer_duration  <span class="token operator">=</span> <span class="token number">5000</span>
+log_stream_name  <span class="token operator">=</span> <span class="token punctuation">{</span>instance_id<span class="token punctuation">}</span>
+initial_position <span class="token operator">=</span> start_of_file
+log_group_name   <span class="token operator">=</span> /var/www/project/app/storage/logs/laravel_log.production
+</code></pre>
+<p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>awslogs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
 <span class="token comment"># &#x6CE8;&#x610F;: restart&#x3060;&#x3068;CloudWatch&#x306B;&#x53CD;&#x6620;&#x3055;&#x308C;&#x306A;&#x3044;&#x6642;&#x304C;&#x3042;&#x308B;&#xFF0E;</span>
 $ <span class="token function">service</span> awslogs restart
 
@@ -5735,7 +5973,7 @@ $ <span class="token function">service</span> awslogs start
 <h3 id="cli">CLI</h3>
 <h4 id="&#x30FB;cloudwatch&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x5909;&#x66F4;">&#x30FB;CloudWatch&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x5909;&#x66F4;</h4>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># CloudWatch&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># CloudWatch&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x306E;&#x72B6;&#x614B;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
 aws cloudwatch set-alarm-state --alarm-name <span class="token string">&quot;Alarm&#x540D;&quot;</span> --state-value ALARM --state-reason <span class="token string">&quot;&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x6587;&#x8A00;&quot;</span>
 </code></pre>
 <p><br></p>
@@ -6849,21 +7087,22 @@ aws cloudwatch set-alarm-state --alarm-name <span class="token string">&quot;Ala
 <p>&#x7279;&#x5B9A;&#x306E;&#x6A29;&#x9650;&#x3092;&#x3082;&#x3063;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
 <h4 id="&#x30FB;credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;">&#x30FB;<code>credentials</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <p>AWS CLI&#x3067;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;<code>credentials</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh">$ aws configure <span class="token builtin class-name">set</span> aws_access_key_id <span class="token string">&quot;XXXXX&quot;</span>
+<pre class="language-"><code class="lang-shell">$ aws configure <span class="token builtin class-name">set</span> aws_access_key_id <span class="token string">&quot;XXXXX&quot;</span>
 $ aws configure <span class="token builtin class-name">set</span> aws_secret_access_key <span class="token string">&quot;XXXXX&quot;</span>
 $ aws configure <span class="token builtin class-name">set</span> aws_default_region <span class="token string">&quot;ap-northeast-1&quot;</span>
 </code></pre>
-<pre class="language-"><code># Linux&#xFF0C;Unix&#x306E;&#x5834;&#x5408;&#xFF1A;$HOME/.aws/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span><span class="token punctuation">&gt;</span></span>
-# Windows&#x306E;&#x5834;&#x5408;&#xFF1A;%USERPROFILE%\.aws\<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># Linux&#xFF0C;Unix&#x306E;&#x5834;&#x5408;&#xFF1A;$HOME/.aws/&lt;credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</span>
+<span class="token comment"># Windows&#x306E;&#x5834;&#x5408;&#xFF1A;%USERPROFILE%\.aws\&lt;credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</span>
 
-[default]
-aws_access_key_id=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;</span><span class="token punctuation">&gt;</span></span>
-aws_secret_access_key=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30AD;&#x30FC;</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">[</span>default<span class="token punctuation">]</span>
+<span class="token assign-left variable">aws_access_key_id</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
+<span class="token assign-left variable">aws_secret_access_key</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
 
-[user1]
-aws_access_key_id=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;</span><span class="token punctuation">&gt;</span></span>
-aws_secret_access_key=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30AD;&#x30FC;</span><span class="token punctuation">&gt;</span></span>
-</code></pre><p><br></p>
+<span class="token punctuation">[</span>user1<span class="token punctuation">]</span>
+<span class="token assign-left variable">aws_access_key_id</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
+<span class="token assign-left variable">aws_secret_access_key</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
+</code></pre>
+<p><br></p>
 <h3 id="iam&#x30B0;&#x30EB;&#x30FC;&#x30D7;">IAM&#x30B0;&#x30EB;&#x30FC;&#x30D7;</h3>
 <h4 id="&#x30FB;iam&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3068;&#x306F;">&#x30FB;IAM&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3068;&#x306F;</h4>
 <p>IAM&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x3082;&#x306E;&#xFF0E;IAM&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3054;&#x3068;&#x306B;IAM&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308C;&#x3070;&#xFF0C;IAM&#x30E6;&#x30FC;&#x30B6;&#x306E;IAM&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x7BA1;&#x7406;&#x3057;&#x3084;&#x3059;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
@@ -6923,7 +7162,7 @@ aws_secret_access_key=<span class="token tag"><span class="token tag"><span clas
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;</h4>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># &#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;</span>
 $ aws iam update-user --user-name <span class="token operator">&lt;</span>&#x73FE;&#x884C;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span> --new-user-name <span class="token operator">&lt;</span>&#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
@@ -6955,7 +7194,7 @@ $ aws iam update-user --user-name <span class="token operator">&lt;</span>&#x73F
 </code></pre>
 <h4 id="2-&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;">2. &#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</h4>
 <p>&#x4FE1;&#x983C;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#xFF08;&#x30E6;&#x30FC;&#x30B6;&#xFF09;&#x304B;&#x3089;&#xFF0C;STS&#xFF08;<code>https://sts.amazonaws.com</code>&#xFF09;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token builtin class-name">set</span> -xeuo pipefail
 <span class="token builtin class-name">set</span> -u
@@ -7019,7 +7258,7 @@ aws configure <span class="token builtin class-name">set</span> aws_default_regi
 <h4 id="3-&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;">3. &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;</h4>
 <p>jq&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;JSON&#x30C7;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://stedolan.github.io/jq/" target="_blank">https://stedolan.github.io/jq/</a></p>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> assumed_user.sh</span>
 export AWS_ACCESS_KEY_ID=&quot;<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$aws_sts_credentials</span>&quot;</span> <span class="token operator">|</span> jq -r <span class="token string">&apos;.AccessKeyId&apos;</span><span class="token variable">)</span></span>&quot;
@@ -7033,7 +7272,7 @@ EOF</span>
 <p>&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x65B0;&#x3057;&#x3044;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x60C5;&#x5831;&#x3092;&#xFF0C;<code>credentials</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
-aws configure --profile <span class="token variable">${ENV}</span>-lumonde <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+aws configure --profile <span class="token variable">${ENV}</span>-repository <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
 <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$aws_sts_credentials</span>&quot;</span> <span class="token operator">|</span> jq -r <span class="token string">&apos;.AccessKeyId&apos;</span><span class="token variable">)</span></span>
 <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$aws_sts_credentials</span>&quot;</span> <span class="token operator">|</span> jq -r <span class="token string">&apos;.SecretAccessKey&apos;</span><span class="token variable">)</span></span>
 ap-northeast-1
@@ -7044,7 +7283,7 @@ EOF</span>
 </code></pre>
 <h4 id="5-&#x63A5;&#x7D9A;&#x78BA;&#x8A8D;">5. &#x63A5;&#x7D9A;&#x78BA;&#x8A8D;</h4>
 <p>&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x5F15;&#x304D;&#x53D7;&#x3051;&#x305F;&#x65B0;&#x3057;&#x3044;&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x63A5;&#x7D9A;&#x3067;&#x304D;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sh"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
 
 aws s3 <span class="token function">ls</span> --profile <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
 <span class="token number">2020</span>-xx-xx xx:xx:xx <span class="token operator">&lt;</span>tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span>
@@ -7059,6 +7298,66 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/distributed_load_testing.png" alt="distributed_load_testing"></p>
 <p><br></p>
 <h2 id="16-&#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;">16. &#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;</h2>
+<h3 id="sla&#xFF1A;service-level-agreement">SLA&#xFF1A;Service Level Agreement</h3>
+<h4 id="&#x30FB;sla&#x3068;&#x306F;">&#x30FB;SLA&#x3068;&#x306F;</h4>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x5408;&#x610F;&#x3068;&#x8A33;&#x305B;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x6700;&#x4F4E;&#x9650;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30EC;&#x30D9;&#x30EB;&#x3092;&#x4FDD;&#x8A3C;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x4E0B;&#x56DE;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#x306F;&#x8FD4;&#x91D1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x5408;&#x610F;&#x3059;&#x308B;&#x3082;&#x306E;&#xFF0E;SLA&#x3068;&#x3057;&#x3066;&#xFF0C;&#x4F8B;&#x3048;&#x3070;&#x4EE5;&#x4E0B;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x9805;&#x76EE;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x30EC;&#x30D9;&#x30EB;&#x4F8B;</th>
+<th>&#x8FD4;&#x91D1;&#x7387;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;</td>
+<td>&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x6642;&#x9593;&#x5F53;&#x305F;&#x308A;&#x306E;&#x7A3C;&#x50CD;&#x7387;</td>
+<td>99.9%&#x4EE5;&#x4E0A;</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x6642;&#x9593;</td>
+<td>&#x969C;&#x5BB3;&#x304C;&#x8D77;&#x3053;&#x3063;&#x3066;&#x304B;&#x3089;&#x56DE;&#x5FA9;&#x3059;&#x308B;&#x307E;&#x3067;&#x306E;&#x6642;&#x9593;</td>
+<td>2&#x6642;&#x9593;&#x4EE5;&#x5185;</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>&#x969C;&#x5BB3;&#x304A;&#x554F;&#x3044;&#x5408;&#x308F;&#x305B;</td>
+<td>&#x969C;&#x5BB3;&#x767A;&#x751F;&#x6642;&#x306E;&#x304A;&#x554F;&#x3044;&#x5408;&#x308F;&#x305B;&#x53EF;&#x80FD;&#x6642;&#x9593;&#x5E2F;</td>
+<td>24&#x6642;&#x9593;365&#x65E5;</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;aws&#x306E;sla">&#x30FB;AWS&#x306E;SLA</h4>
+<p>AWS&#x3067;&#x306F;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x306E;&#x9805;&#x76EE;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;&#x3092;&#x63A1;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x307B;&#x3068;&#x3093;&#x3069;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;SLA&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x6BCE;&#x6708;&#x306E;&#x7A3C;&#x50CD;&#x7387;</th>
+<th>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30AF;&#x30EC;&#x30B8;&#x30C3;&#x30C8;&#x306E;&#x5272;&#x5408;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99.0&#xFF05;&#x4EE5;&#x4E0A;SLA&#x672A;&#x6E80;</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>95.0&#xFF05;&#x4EE5;&#x4E0A;99.0&#xFF05;&#x672A;&#x6E80;</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>95.0%&#x672A;&#x6E80;</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;SLA&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;EC2&#x3084;ECS&#x306E;SLA&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://d1.awsstatic.com/legal/AmazonComputeServiceLevelAgreement/Amazon%20Compute%20Service%20Level%20Agreement_Japanese_2020-07-22_Updated.pdf" target="_blank">https://d1.awsstatic.com/legal/AmazonComputeServiceLevelAgreement/Amazon%20Compute%20Service%20Level%20Agreement_Japanese_2020-07-22_Updated.pdf</a></p>
+<p><br></p>
 <h3 id="&#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;&#x306E;&#x89B3;&#x70B9;">&#x30B3;&#x30B9;&#x30C8;&#x7BA1;&#x7406;&#x306E;&#x89B3;&#x70B9;</h3>
 <h4 id="&#x30FB;&#x30B9;&#x30DA;&#x30C3;&#x30AF;">&#x30FB;&#x30B9;&#x30DA;&#x30C3;&#x30AF;</h4>
 <h4 id="&#x30FB;&#x6642;&#x9593;&#x5358;&#x4FA1;">&#x30FB;&#x6642;&#x9593;&#x5358;&#x4FA1;</h4>
@@ -7150,7 +7449,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-03-21T06:01:07.028Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-21T06:20:44.347Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-03-22T10:36:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:46:22.264Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
