@@ -1998,8 +1998,8 @@ $sql = &lt;&lt;&lt;SQL
 <span class="token keyword">FROM</span>
     fruit
 <span class="token keyword">WHERE</span>
-    name <span class="token operator">=</span> <span class="token string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span>
-    <span class="token operator">OR</span> name <span class="token operator">=</span> <span class="token string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="token punctuation">;</span>
+    name <span class="token operator">=</span> <span class="token string">&apos;&#x307F;&#x304B;&#x3093;&apos;</span>
+    <span class="token operator">OR</span> name <span class="token operator">=</span> <span class="token string">&apos;&#x308A;&#x3093;&#x3054;&apos;</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>&#x3010;IN&#x53E5;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3011;</strong></p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
@@ -2007,7 +2007,7 @@ $sql = &lt;&lt;&lt;SQL
 <span class="token keyword">FROM</span>
     fruit
 <span class="token keyword">WHERE</span>
-    name <span class="token operator">IN</span><span class="token punctuation">(</span><span class="token string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    name <span class="token operator">IN</span><span class="token punctuation">(</span><span class="token string">&apos;&#x307F;&#x304B;&#x3093;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;&#x308A;&#x3093;&#x3054;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;any&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;<code>ANY</code>&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>  &#x66F8;&#x304D;&#x65B9;&#x304C;&#x7570;&#x306A;&#x308B;&#x3060;&#x3051;&#x3067;&#xFF0C;<code>in</code>&#x3068;&#x540C;&#x3058;&#x51FA;&#x529B;</p>
@@ -2173,7 +2173,7 @@ $sql = &lt;&lt;&lt;SQL
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 // SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql = &quot;SELECT * FROM doraemon_characters&quot;;
+$sql = &apos;SELECT * FROM doraemon_characters&apos;;
 $stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
@@ -2207,7 +2207,7 @@ print_r($data);
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x6DF7;&#x5408;&#x578B;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x4E3B;&#x306B;&#xFF0C;<code>COUNT()</code>&#x306E;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;</p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 // SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql = &quot;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&quot;;
+$sql = &apos;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&apos;;
 $stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
@@ -2224,16 +2224,16 @@ print_r($data);
 <p>PHP&#x3068;&#x306F;&#x7570;&#x306A;&#x308A;&#xFF0C;&#x5909;&#x6570;&#x5B9A;&#x7FA9;&#x306B;&#x300E;$&#x300F;&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-java"><span class="token comment">// SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">&quot;SELECT * FROM doraemon_characters&quot;</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">&apos;SELECT * FROM doraemon_characters&apos;</span><span class="token punctuation">;</span>
 <span class="token class-name">ResultSet</span> result statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
 <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;gender&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;typeL&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&apos;id&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;gender&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;typeL&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
@@ -2300,7 +2300,7 @@ class ItemQuery
     // &#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
     public static function insert()
     {
-        return &quot;INSERT INTO item_table VALUES(1, &apos;&#x5546;&#x54C1;A&apos;, 1000, &apos;2019-07-24 07:07:07&apos;);&quot;;
+        return &apos;INSERT INTO item_table VALUES(1, &apos;&#x5546;&#x54C1;A&apos;, 1000, &apos;2019-07-24 07:07:07&apos;);&apos;;
     }
 }
 </code></pre>
@@ -2373,7 +2373,7 @@ class ItemQuery
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.8.2","depth":2,"next":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.8.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-03-20T08:51:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:51:34.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.8.2","depth":2,"next":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.8.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-03-23T01:24:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

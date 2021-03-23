@@ -1601,7 +1601,7 @@ require (
     github.com/hoge/fuga v1.3.0
     github.com/internal/example_repository v1.0.0
 )
-</code></pre><pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&quot;github.com/hoge/fuga&quot;</span>
+</code></pre><pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&apos;github.com/hoge/fuga&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
@@ -1631,7 +1631,7 @@ replace (
 
 go 1.16
 </code></pre><p>&#x3053;&#x308C;&#x3089;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306E;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&quot;local.packages/local-pkg&quot;</span>
+<pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token string">&apos;local.packages/local-pkg&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
@@ -1874,7 +1874,7 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p>&#x307E;&#x305A;&#x306F;&#xFF0C;&#x30BF;&#x30B0;&#x4ED8;&#x304D;&#x30EA;&#x30C6;&#x30E9;&#x30EB;&#x8868;&#x8A18;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
@@ -1882,14 +1882,14 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x30BF;&#x30B0;&#x4ED8;&#x304D;&#x30EA;&#x30C6;&#x30E9;&#x30EB;&#x8868;&#x8A18;</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &quot;Hiroki&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &apos;Hiroki&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4E8C;&#x3064;&#x76EE;&#x306B;&#xFF0C;&#x30BF;&#x30B0;&#x7121;&#x3057;&#x30EA;&#x30C6;&#x30E9;&#x30EB;&#x8868;&#x8A18;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
@@ -1897,15 +1897,15 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x30BF;&#x30B0;&#x7121;&#x3057;&#x30EA;&#x30C6;&#x30E9;&#x30EB;&#x8868;&#x8A18;</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &quot;Hiroki&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &apos;Hiroki&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4E09;&#x3064;&#x76EE;&#x306B;&#xFF0C;<code>new</code>&#x95A2;&#x6570;&#x3068;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x4EE3;&#x5165;&#x306B;&#x3088;&#x308B;&#x521D;&#x671F;&#x5316;&#x304C;&#x3042;&#x308B;&#xFF0E;<code>new</code>&#x95A2;&#x6570;&#x306F;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x4EE5;&#x5916;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x3082;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;&#x3042;&#x307E;&#x308A;&#x4F7F;&#x308F;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
@@ -1916,9 +1916,9 @@ number <span class="token operator">=</span> <span class="token number">5</span>
     person <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>Person<span class="token punctuation">)</span>
 
     <span class="token comment">// &#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306B;&#x4EE3;&#x5165;&#x3059;&#x308B;</span>
-    person<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+    person<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &quot;Hiroki&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span>Name<span class="token punctuation">)</span> <span class="token comment">// &apos;Hiroki&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;json&#x3068;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;">&#x30FB;JSON&#x3068;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</h4>
@@ -1927,25 +1927,25 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;encoding/json&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
+    <span class="token string">&apos;encoding/json&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Name <span class="token builtin">string</span> <span class="token string">`json:&quot;Name&quot;`</span>
+    Name <span class="token builtin">string</span> <span class="token string">`json:&apos;Name&apos;`</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span>
 
     json<span class="token punctuation">,</span> err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;JSON&#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x5931;&#x6557;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;&quot;</span><span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;JSON&#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x5931;&#x6557;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;&apos;</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x7D50;&#x679C;&#x3092;&#x51FA;&#x529B;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// &quot;{\&quot;Name\&quot;:\&quot;Hiroki\&quot;}&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// &apos;{\&apos;Name\&apos;:\&apos;Hiroki\&apos;}&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -1957,28 +1957,28 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p>&#x914D;&#x5217;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">// &#x5B9A;&#x7FA9;&#x3068;&#x4EE3;&#x5165;&#x3092;&#x540C;&#x6642;&#x306B;&#x884C;&#x3046;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x578B;&#x63A8;&#x8AD6;&#x3068;&#x8981;&#x7D20;&#x6570;&#x7701;&#x7565;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token punctuation">{</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token punctuation">{</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [2]string{&apos;Hiroki&apos;, &apos;Gopher&apos;}</span>
 
     <span class="token comment">// &#x5B9A;&#x7FA9;&#x3068;&#x4EE3;&#x5165;&#x3092;&#x540C;&#x6642;&#x306B;&#x884C;&#x3046;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x8981;&#x7D20;&#x6570;&#x306E;&#x5B9A;&#x7FA9;&#x304C;&#x5FC5;&#x8981;&#xFF0E;</span>
-    <span class="token keyword">var</span> y<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token punctuation">{</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    <span class="token keyword">var</span> y<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token punctuation">{</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [2]string{&apos;Hiroki&apos;, &apos;Gopher&apos;}</span>
 
     <span class="token comment">// &#x5B9A;&#x7FA9;&#x3068;&#x4EE3;&#x5165;&#x3092;&#x5225;&#x3005;&#x306B;&#x884C;&#x3046;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x8981;&#x7D20;&#x6570;&#x306E;&#x5B9A;&#x7FA9;&#x304C;&#x5FC5;&#x8981;&#xFF0E;</span>
     <span class="token keyword">var</span> z<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token builtin">string</span>
-    z<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
-    z<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Gopher&quot;</span>
+    z<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
+    z<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;Gopher&apos;</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token comment">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token comment">// [2]string{&apos;Hiroki&apos;, &apos;Gopher&apos;}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x914D;&#x5217;&#x3068;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x95A2;&#x4FC2;">&#x30FB;&#x914D;&#x5217;&#x3068;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x95A2;&#x4FC2;</h4>
@@ -1992,20 +1992,20 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    x <span class="token operator">:=</span> <span class="token string">&quot;a&quot;</span>
+    x <span class="token operator">:=</span> <span class="token string">&apos;a&apos;</span>
 
     <span class="token comment">// &#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x578B;&#x306E;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x4EE3;&#x5165;</span>
     <span class="token keyword">var</span> p <span class="token operator">*</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>x
     <span class="token comment">// p := &amp;x &#x3068;&#x540C;&#x3058;</span>
 
     <span class="token comment">// &#x30E1;&#x30E2;&#x30EA;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x62BD;&#x51FA;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// &quot;a&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// &apos;a&apos;</span>
 
     <span class="token comment">// &#x30E1;&#x30E2;&#x30EA;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#x5834;&#x5408;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token comment">// (*string)(0xc0000841e0)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token comment">// (*string)(0xc0000841e0)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2024,44 +2024,44 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">// &#x5B9A;&#x7FA9;&#x3068;&#x4EE3;&#x5165;&#x3092;&#x540C;&#x6642;&#x306B;&#x884C;&#x3046;&#xFF0E;</span>
-    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%+v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%+v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;Hiroki&apos;, &apos;Gopher&apos;}</span>
 
     <span class="token comment">// &#x5B9A;&#x7FA9;&#x3068;&#x4EE3;&#x5165;&#x3092;&#x540C;&#x6642;&#x306B;&#x884C;&#x3046;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x578B;&#x63A8;&#x8AD6;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-    <span class="token keyword">var</span> y <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    <span class="token keyword">var</span> y <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%+v\n&quot;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%+v\n&apos;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// [Hiroki Gopher]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;Hiroki&apos;, &apos;Gopher&apos;}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x5168;&#x3066;&#x306E;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x304C;&#x5171;&#x901A;&#x306E;&#x914D;&#x5217;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>xb</code>&#x5909;&#x6570;&#x3057;&#x304B;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x306E;&#x306B;&#x3082;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#xFF0C;&#x4ED6;&#x306E;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306B;&#x3082;&#x305D;&#x306E;&#x4E0A;&#x66F8;&#x304D;&#x304C;&#x53CD;&#x6620;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x3046;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x3048;&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;&#x304A;&quot;</span><span class="token punctuation">,</span><span class="token punctuation">}</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [5]string{&quot;&#x3042;&quot;, &quot;&#x3044;&quot;, &quot;&#x3046;&quot;, &quot;&#x3048;&quot;, &quot;&#x304A;&quot;}</span>
+    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&apos;&#x3042;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;&#x3044;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;&#x3046;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;&#x3048;&apos;</span><span class="token punctuation">,</span><span class="token string">&apos;&#x304A;&apos;</span><span class="token punctuation">,</span><span class="token punctuation">}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [5]string{&apos;&#x3042;&apos;, &apos;&#x3044;&apos;, &apos;&#x3046;&apos;, &apos;&#x3048;&apos;, &apos;&#x304A;&apos;}</span>
 
     xa <span class="token operator">:=</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> xa<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;&#x3042;&quot;, &quot;&#x3044;&quot;, &quot;&#x3046;&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> xa<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;&#x3042;&apos;, &apos;&#x3044;&apos;, &apos;&#x3046;&apos;}</span>
 
     xb <span class="token operator">:=</span> x<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> xb<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;&#x3046;&quot;, &quot;&#x3048;&quot;, &quot;&#x304A;&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> xb<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;&#x3046;&apos;, &apos;&#x3048;&apos;, &apos;&#x304A;&apos;}</span>
 
-    <span class="token comment">// xb&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;0&#x756A;&#x76EE;&#xFF08;&quot;&#x3046;&quot;&#xFF09;&#x3092;&#x4E0A;&#x66F8;&#x304D;</span>
-    xb<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+    <span class="token comment">// xb&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;0&#x756A;&#x76EE;&#xFF08;&apos;&#x3046;&apos;&#xFF09;&#x3092;&#x4E0A;&#x66F8;&#x304D;</span>
+    xb<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
 
     <span class="token comment">// xb&#x3057;&#x304B;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4ED6;&#x306E;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306B;&#x3082;&#x53CD;&#x6620;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> xa<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;&#x3042;&quot;, &quot;&#x3044;&quot;, &quot;Hiroki&quot;}</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> xb<span class="token punctuation">)</span> <span class="token comment">// []string{&quot;Hiroki&quot;, &quot;&#x3048;&quot;, &quot;&#x304A;&quot;}</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [5]string{&quot;&#x3042;&quot;, &quot;&#x3044;&quot;, &quot;Hiroki&quot;, &quot;&#x3048;&quot;, &quot;&#x304A;&quot;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> xa<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;&#x3042;&apos;, &apos;&#x3044;&apos;, &apos;Hiroki&apos;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> xb<span class="token punctuation">)</span> <span class="token comment">// []string{&apos;Hiroki&apos;, &apos;&#x3048;&apos;, &apos;&#x304A;&apos;}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [5]string{&apos;&#x3042;&apos;, &apos;&#x3044;&apos;, &apos;Hiroki&apos;, &apos;&#x3048;&apos;, &apos;&#x304A;&apos;}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x914D;&#x5217;&#x306E;&#x53C2;&#x7167;">&#x30FB;&#x914D;&#x5217;&#x306E;&#x53C2;&#x7167;</h4>
@@ -2069,29 +2069,29 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p>&#x30D0;&#x30A4;&#x30C8;&#x914D;&#x5217;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token string">&quot;abc&quot;</span><span class="token punctuation">)</span>
+    x <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token string">&apos;abc&apos;</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%+v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [97 98 99]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// []byte{0x61, 0x62, 0x63}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%+v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// [97 98 99]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// []byte{0x61, 0x62, 0x63}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x69CB;&#x9020;&#x4F53;&#x914D;&#x5217;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span><span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    person <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>Person<span class="token punctuation">{</span><span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>Person<span class="token punctuation">{</span><span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%+v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// [{Name:Hiroki}]</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// []main.Person{main.Person{Name:&quot;Hiroki&quot;}}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%+v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// [{Name:Hiroki}]</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// []main.Person{main.Person{Name:&apos;Hiroki&apos;}}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2102,7 +2102,7 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 <p>Animal&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x3068;&#xFF0C;<code>Eat</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>Sleep</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>Mating</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x306E;&#x5B9F;&#x88C5;&#x304C;&#x5F37;&#x5236;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token comment">// &#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3068;&#x305D;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
 <span class="token keyword">type</span> Animal <span class="token keyword">interface</span> <span class="token punctuation">{</span>
@@ -2126,15 +2126,15 @@ number <span class="token operator">=</span> <span class="token number">5</span>
 
 <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x6570;&#x3092;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x304C;&#x5F37;&#x5236;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
 <span class="token keyword">func</span> <span class="token punctuation">(</span>insect Insect<span class="token punctuation">)</span> <span class="token function">Eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x96D1;&#x98DF;&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;&#x96D1;&#x98DF;&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token punctuation">(</span>insect Insect<span class="token punctuation">)</span> <span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7720;&#x308B;&quot;</span><span class="token punctuation">)</span>    
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;&#x7720;&#x308B;&apos;</span><span class="token punctuation">)</span>    
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token punctuation">(</span>insect Insect<span class="token punctuation">)</span> <span class="token function">Mating</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;&#x5358;&#x70BA;&#x751F;&#x6B96;&quot;</span><span class="token punctuation">)</span>       
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;&#x5358;&#x70BA;&#x751F;&#x6B96;&apos;</span><span class="token punctuation">)</span>       
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -2142,7 +2142,7 @@ number <span class="token operator">=</span> <span class="token number">5</span>
     <span class="token keyword">var</span> animal Animal
 
     <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x306E;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
-    insect <span class="token operator">:=</span> Insect <span class="token punctuation">{</span>Name <span class="token punctuation">:</span> <span class="token string">&quot;Ant&quot;</span><span class="token punctuation">}</span>
+    insect <span class="token operator">:=</span> Insect <span class="token punctuation">{</span>Name <span class="token punctuation">:</span> <span class="token string">&apos;Ant&apos;</span><span class="token punctuation">}</span>
 
     <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x3092;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#xFF0E;</span>
     animal <span class="token operator">=</span> insect
@@ -2165,7 +2165,7 @@ Insect does not implement Animal <span class="token punctuation">(</span>missing
 
 x <span class="token operator">=</span> <span class="token number">1</span>
 x <span class="token operator">=</span> <span class="token number">3.14</span>
-x <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+x <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
 x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token builtin">uint8</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
 </code></pre>
 <p>&#x306A;&#x304A;&#xFF0C;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x6F14;&#x7B97;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
@@ -2184,11 +2184,11 @@ z <span class="token operator">:=</span> x <span class="token operator">+</span>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-    x <span class="token operator">:=</span> <span class="token string">&quot;x&quot;</span>
+    x <span class="token operator">:=</span> <span class="token string">&apos;x&apos;</span>
 
     <span class="token comment">// &#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x578B;&#x306E;&#x5B9A;&#x7FA9;&#x306E;&#x307F;</span>
     <span class="token keyword">var</span> p1 <span class="token operator">*</span><span class="token builtin">string</span>
@@ -2196,20 +2196,20 @@ z <span class="token operator">:=</span> x <span class="token operator">+</span>
     <span class="token comment">// &#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x578B;&#x306E;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x4EE3;&#x5165;</span>
     <span class="token keyword">var</span> p2 <span class="token operator">*</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>x
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> p1<span class="token punctuation">)</span> <span class="token comment">// (*string)(nil)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> p2<span class="token punctuation">)</span> <span class="token comment">// (*string)(0xc0000841e0)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> p1<span class="token punctuation">)</span> <span class="token comment">// (*string)(nil)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> p2<span class="token punctuation">)</span> <span class="token comment">// (*string)(0xc0000841e0)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x5834;&#x5408;">&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x5834;&#x5408;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">var</span> x <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// &lt;nil&gt;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token comment">// &lt;nil&gt;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2220,10 +2220,10 @@ z <span class="token operator">:=</span> x <span class="token operator">+</span>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x5F53;&#x7136;&#xFF0C;<code>main</code>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3084;<code>main</code>&#x95A2;&#x6570;&#x304C;&#x7121;&#x3044;&#x3068;&#xFF0C;go&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2245,7 +2245,7 @@ runtime.main: undefined: main.main
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token comment">// &#x982D;&#x6587;&#x5B57;&#x3092;&#x5927;&#x6587;&#x5B57;&#x3059;&#x308B;</span>
 <span class="token keyword">func</span> <span class="token function">Example</span><span class="token punctuation">(</span>x <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
@@ -2253,7 +2253,7 @@ runtime.main: undefined: main.main
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
+    <span class="token function">Example</span><span class="token punctuation">(</span><span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x306F;">&#x30FB;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x306F;</h4>
@@ -2264,21 +2264,21 @@ runtime.main: undefined: main.main
 <p>main&#x95A2;&#x6570;&#x3067;&#x5373;&#x6642;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     result <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">&quot;Closure is working!&quot;</span>
+        <span class="token keyword">return</span> <span class="token string">&apos;Closure is working!&apos;</span>
     <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x5373;&#x6642;&#x95A2;&#x6570;&#x306B;&#x5F15;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x4EEE;&#x5F15;&#x6570;&#x3068;&#x5F15;&#x6570;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x4EEE;&#x5F15;&#x6570;&#x3092;&#x8A2D;&#x5B9A;</span>
@@ -2287,9 +2287,9 @@ runtime.main: undefined: main.main
         <span class="token keyword">return</span> x
 
     <span class="token comment">// &#x5F15;&#x6570;&#x306B;&#x5024;&#x3092;&#x6E21;&#x3059;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token string">&quot;Closure is working!&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token string">&apos;Closure is working!&apos;</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2302,25 +2302,25 @@ runtime.main: undefined: main.main
 <p>int&#x578B;&#x3092;&#x5024;&#x30EC;&#x30B7;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3057;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x6570;&#x3092;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Age <span class="token builtin">int</span>
 
 <span class="token keyword">func</span> <span class="token punctuation">(</span>age Age<span class="token punctuation">)</span> <span class="token function">PrintAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&apos;%d&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">,</span> age<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> age Age <span class="token operator">=</span> <span class="token number">20</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> age<span class="token punctuation">.</span><span class="token function">printAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> age<span class="token punctuation">.</span><span class="token function">printAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x69CB;&#x9020;&#x4F53;&#x3092;&#x5024;&#x30EC;&#x30B7;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3057;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x6570;&#x3092;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x3092;&#x5B9A;&#x7FA9;</span>
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
@@ -2335,9 +2335,9 @@ runtime.main: undefined: main.main
 <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x304B;&#x3089;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;</span>
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x3092;&#x521D;&#x671F;&#x5316;</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;Hiroki&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &apos;Hiroki&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x5024;&#x30EC;&#x30B7;&#x30FC;&#x30D0;">&#x30FB;&#x5024;&#x30EC;&#x30B7;&#x30FC;&#x30D0;</h4>
@@ -2346,7 +2346,7 @@ runtime.main: undefined: main.main
 <p>&#x69CB;&#x9020;&#x4F53;&#x3092;&#x5024;&#x30EC;&#x30B7;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3057;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;&#x95A2;&#x6570;&#x3092;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
@@ -2363,11 +2363,11 @@ runtime.main: undefined: main.main
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    person<span class="token punctuation">.</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">)</span>
+    person<span class="token punctuation">.</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;Gopher&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &apos;Gopher&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x30EC;&#x30B7;&#x30FC;&#x30D0;">&#x30FB;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x30EC;&#x30B7;&#x30FC;&#x30D0;</h4>
@@ -2375,7 +2375,7 @@ runtime.main: undefined: main.main
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name <span class="token builtin">string</span>
@@ -2392,11 +2392,11 @@ runtime.main: undefined: main.main
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Gopher&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Gopher&apos;</span><span class="token punctuation">}</span>
 
-    person<span class="token punctuation">.</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">)</span>
+    person<span class="token punctuation">.</span><span class="token function">SetName</span><span class="token punctuation">(</span><span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;Hiroki&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">.</span><span class="token function">GetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &apos;Hiroki&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2407,29 +2407,29 @@ runtime.main: undefined: main.main
 <p>&#x5373;&#x6642;&#x95A2;&#x6570;&#x3092;defer&#x95A2;&#x6570;&#x5316;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x51E6;&#x7406;&#x306E;&#x6700;&#x5F8C;&#x306B;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#xFF0C;&#x3053;&#x308C;&#x3092;<code>recover</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5438;&#x53CE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;Start&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;Start&apos;</span><span class="token punctuation">)</span>
 
     <span class="token comment">// &#x3042;&#x3089;&#x304B;&#x3058;&#x3081;defer&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;</span>
     <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
         err <span class="token operator">:=</span> <span class="token function">recover</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Recover: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+            fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;Recover: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
         <span class="token punctuation">}</span>
 
-        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;End&quot;</span><span class="token punctuation">)</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;End&apos;</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token comment">// &#x3053;&#x3053;&#x3067;&#x610F;&#x56F3;&#x7684;&#x306B;&#x51E6;&#x7406;&#x3092;&#x505C;&#x6B62;&#x3055;&#x305B;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
-    <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;Runtime error&quot;</span><span class="token punctuation">)</span>
+    <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&apos;Runtime error&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 Start
-Recover: <span class="token string">&quot;Runtime error&quot;</span>
+Recover: <span class="token string">&apos;Runtime error&apos;</span>
 End
 </code></pre>
 <p><br></p>
@@ -2454,14 +2454,14 @@ x<span class="token punctuation">,</span> y<span class="token punctuation">,</sp
 w <span class="token operator">:=</span> <span class="token number">1</span>
 x <span class="token operator">:=</span> <span class="token boolean">true</span>
 y <span class="token operator">:=</span> <span class="token number">3.14</span>
-z <span class="token operator">:=</span> <span class="token string">&quot;abc&quot;</span>
+z <span class="token operator">:=</span> <span class="token string">&apos;abc&apos;</span>
 
 <span class="token keyword">var</span> w <span class="token operator">=</span> <span class="token number">1</span>
 
 <span class="token keyword">var</span> <span class="token punctuation">(</span>
     x <span class="token operator">=</span> <span class="token boolean">true</span>
     y <span class="token operator">=</span> <span class="token number">3.14</span>
-    z <span class="token operator">=</span> <span class="token string">&quot;abc&quot;</span>
+    z <span class="token operator">=</span> <span class="token string">&apos;abc&apos;</span>
 <span class="token punctuation">)</span>
 </code></pre>
 <p><br></p>
@@ -2471,16 +2471,16 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;os&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// error&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x7834;&#x68C4;</span>
-    file<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;filename.ext&quot;</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&apos;filename.ext&apos;</span><span class="token punctuation">)</span>
 
     <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x304F;&#x306A;&#x308B;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2504,21 +2504,21 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
-    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
+    <span class="token string">&apos;os&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x51E6;&#x7406;&#x7D50;&#x679C;&#x3068;error&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;filename.ext&quot;</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&apos;filename.ext&apos;</span><span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;">&#x30FB;&#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;</h4>
@@ -2528,25 +2528,25 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;errors&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
-    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&apos;errors&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
+    <span class="token string">&apos;os&apos;</span>
 <span class="token punctuation">)</span>
 <span class="token keyword">func</span> <span class="token function">ThrowErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;&lt;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&apos;&lt;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;filename.ext&quot;</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&apos;filename.ext&apos;</span><span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         <span class="token comment">// &#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
         myErr <span class="token operator">:=</span> <span class="token function">ThrowErrorsNew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x4ED6;&#x306B;&#x306F;&#xFF0C;<code>Errorf</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3082;&#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x4F5C;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4E8B;&#x524D;&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3092;&#x5143;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2555,26 +2555,26 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;errors&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
-    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&apos;errors&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
+    <span class="token string">&apos;os&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">func</span> <span class="token function">ThrowErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;%s %s&quot;</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&apos;%s %s&apos;</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&quot;filename.ext&quot;</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">&apos;filename.ext&apos;</span><span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         <span class="token comment">// &#x72EC;&#x81EA;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
         myErr <span class="token operator">:=</span> <span class="token function">ThrowErrorf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> myErr<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2597,21 +2597,21 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <h4 id="&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;print&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;<code>Print</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-    log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;fatal&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;<code>Fatal</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3057;&#xFF0C;<code>os.Exit(1)</code>&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x51E6;&#x7406;&#x3092;&#x505C;&#x6B62;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x5185;&#x90E8;&#x3067;os.Exit(1)&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
-    log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;panic&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;&#x63A5;&#x5C3E;&#x8F9E;<code>Panic</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x5F15;&#x6570;&#x306B;&#x6E21;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3057;&#xFF0C;&#x4E88;&#x671F;&#x305B;&#x306C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x304D;&#x305F;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;<code>panic</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;<code>panic</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x51FA;&#x529B;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x51FA;&#x529B;&#xFF0C;&#x51E6;&#x7406;&#x505C;&#x6B62;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
     <span class="token comment">// panic&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
-    log<span class="token punctuation">.</span><span class="token function">Panicf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    log<span class="token punctuation">.</span><span class="token function">Panicf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2626,18 +2626,18 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;bytes&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&apos;bytes&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> buffer bytes<span class="token punctuation">.</span>Buffer
 
-    buffer<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&quot;Hello &quot;</span><span class="token punctuation">)</span>
+    buffer<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&apos;Hello &apos;</span><span class="token punctuation">)</span>
 
-    buffer<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
+    buffer<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> buffer<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;Hello world!&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> buffer<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &apos;Hello world!&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2649,26 +2649,26 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;encoding/json&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
+    <span class="token string">&apos;encoding/json&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Name <span class="token builtin">string</span> <span class="token string">`json:&quot;Name&quot;`</span>
+    Name <span class="token builtin">string</span> <span class="token string">`json:&apos;Name&apos;`</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;Hiroki&quot;</span><span class="token punctuation">}</span>
+    person <span class="token operator">:=</span> Person<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&apos;Hiroki&apos;</span><span class="token punctuation">}</span>
 
     json<span class="token punctuation">,</span> err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x7D50;&#x679C;&#x3092;&#x51FA;&#x529B;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;{\&quot;Name\&quot;:\&quot;Hiroki\&quot;}&quot;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &apos;{\&apos;Name\&apos;:\&apos;Hiroki\&apos;}&apos;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;unmarshal&#x30E1;&#x30BD;&#x30C3;&#x30C9;">&#x30FB;<code>Unmarshal</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
@@ -2678,9 +2678,9 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;encoding/json&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
+    <span class="token string">&apos;encoding/json&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
@@ -2689,20 +2689,20 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x5834;&#x5408;&#x3092;&#x60F3;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="token builtin">byte</span> <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token string">`{&quot;name&quot;:&quot;Hiroki&quot;}`</span><span class="token punctuation">)</span>
+    <span class="token builtin">byte</span> <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token string">`{&apos;name&apos;:&apos;Hiroki&apos;}`</span><span class="token punctuation">)</span>
 
     <span class="token keyword">var</span> person Person
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// main.Person{Name:&quot;&quot;}&#xFF08;&#x5909;&#x6570;&#x306F;&#x307E;&#x3060;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF09;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// main.Person{Name:&apos;&apos;}&#xFF08;&#x5909;&#x6570;&#x306F;&#x307E;&#x3060;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF09;</span>
 
     <span class="token comment">// person&#x5909;&#x6570;&#x3092;&#x5909;&#x63DB;&#x5F8C;&#x306E;&#x5024;&#x306B;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
     err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Unmarshal</span><span class="token punctuation">(</span><span class="token builtin">byte</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>person<span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// main.Person{Name:&quot;Hiroki&quot;}&#xFF08;&#x5909;&#x6570;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x305F;&#xFF09;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;%#v\n&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// main.Person{Name:&apos;Hiroki&apos;}&#xFF08;&#x5909;&#x6570;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x305F;&#xFF09;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2718,16 +2718,16 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span> <span class="token comment">// Hello world! </span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span> <span class="token comment">// Hello world! </span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
@@ -2738,21 +2738,21 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p>&#x305F;&#x3060;&#x3057;&#xFF0C;&#x5F15;&#x6570;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x304C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x5024;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x304C;&#x633F;&#x5165;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// &#x3044;&#x305A;&#x308C;&#x304B;&#x304C;&#x6587;&#x5B57;&#x5217;</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;world!&quot;</span><span class="token punctuation">,</span> <span class="token number">12345</span><span class="token punctuation">)</span> <span class="token comment">// Helloworld!12345</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;world!&apos;</span><span class="token punctuation">,</span> <span class="token number">12345</span><span class="token punctuation">)</span> <span class="token comment">// Helloworld!12345</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x307E;&#x305F;&#xFF0C;&#x9023;&#x7D9A;&#x3067;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x6539;&#x884C;&#x304C;&#x633F;&#x5165;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
 
     <span class="token comment">// Hello world!Hello world!</span>
 <span class="token punctuation">}</span>
@@ -2768,7 +2768,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
@@ -2788,11 +2788,11 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p>&#x6587;&#x5B57;&#x3092;&#x9023;&#x7D9A;&#x3067;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
 
     <span class="token comment">// Hello world!</span>
     <span class="token comment">// Hello world!</span>
@@ -2841,20 +2841,20 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p>&#x6E21;&#x3055;&#x308C;&#x305F;&#x5F15;&#x6570;&#x3092;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x7D50;&#x5408;&#x3059;&#x308B;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;String is %s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;String is %s&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x307E;&#x305F;&#xFF0C;&#x9023;&#x7D9A;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x6539;&#x884C;&#x306F;&#x633F;&#x5165;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;String is %s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;String is %s&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hello world!&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;String is %s&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;String is %s&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Hello world!&apos;</span><span class="token punctuation">)</span>
 
     <span class="token comment">// String is Hello world!String is Hello world!</span>
 <span class="token punctuation">}</span>
@@ -2863,7 +2863,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <p>&#x6E21;&#x3055;&#x308C;&#x305F;&#x5F15;&#x6570;&#x3092;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x3068;&#x3057;&#x3066;&#x7D50;&#x5408;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">type</span> Person <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     Name     <span class="token builtin">string</span>
@@ -2872,23 +2872,23 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     person<span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span>Person<span class="token punctuation">)</span>
 
-    person<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+    person<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Pointer is %p&quot;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// 0xc0000821e0</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;Pointer is %p&apos;</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span> <span class="token comment">// 0xc0000821e0</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x6E21;&#x3055;&#x308C;&#x305F;&#x8907;&#x6570;&#x306E;&#x5F15;&#x6570;&#x3092;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x7D50;&#x5408;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+<span class="token keyword">import</span> <span class="token string">&apos;fmt&apos;</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> first <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+    <span class="token keyword">var</span> first <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&apos;Hiroki&apos;</span>
 
-    <span class="token keyword">var</span> last <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&quot;Hasegawa&quot;</span>
+    <span class="token keyword">var</span> last <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">&apos;Hasegawa&apos;</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;I&apos;m %s %s&quot;</span><span class="token punctuation">,</span> first<span class="token punctuation">,</span> last<span class="token punctuation">)</span><span class="token comment">// I&apos;m Hiroki Hasegawa</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;I&apos;</span>m <span class="token operator">%</span>s <span class="token operator">%</span>s<span class="token string">&apos;, first, last)// I&apos;</span>m Hiroki Hasegawa
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2905,32 +2905,32 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;bytes&quot;</span>
-    <span class="token string">&quot;encoding/json&quot;</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;log&quot;</span>
-    <span class="token string">&quot;net/http&quot;</span>
+    <span class="token string">&apos;bytes&apos;</span>
+    <span class="token string">&apos;encoding/json&apos;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;log&apos;</span>
+    <span class="token string">&apos;net/http&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment">// &#x69CB;&#x9020;&#x4F53;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;JSON&#x306B;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</span>
 <span class="token keyword">type</span> SlackMessage <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Token       <span class="token builtin">string</span>   <span class="token string">`json:&quot;token&quot;`</span>
-    Channel     <span class="token builtin">string</span>   <span class="token string">`json:&quot;channel&quot;`</span>
-    Text        <span class="token builtin">string</span>   <span class="token string">`json:&quot;text&quot;`</span>
-    Username    <span class="token builtin">string</span>   <span class="token string">`json:&quot;username&quot;`</span>
-    Attachments <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token string">`json:&quot;attachments&quot;`</span>
+    Token       <span class="token builtin">string</span>   <span class="token string">`json:&apos;token&apos;`</span>
+    Channel     <span class="token builtin">string</span>   <span class="token string">`json:&apos;channel&apos;`</span>
+    Text        <span class="token builtin">string</span>   <span class="token string">`json:&apos;text&apos;`</span>
+    Username    <span class="token builtin">string</span>   <span class="token string">`json:&apos;username&apos;`</span>
+    Attachments <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token string">`json:&apos;attachments&apos;`</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// URL</span>
-    url <span class="token operator">:=</span> <span class="token string">&quot;https://xxxx.slack.com&quot;</span>
+    url <span class="token operator">:=</span> <span class="token string">&apos;https://xxxx.slack.com&apos;</span>
 
     <span class="token comment">// &#x30DC;&#x30C7;&#x30A3;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
     slackMessage <span class="token operator">:=</span> SlackMessage <span class="token punctuation">{</span>
-        Token<span class="token punctuation">:</span> <span class="token string">&quot;&lt;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x6587;&#x5B57;&#x5217;&gt;&quot;</span><span class="token punctuation">,</span>
-        Channel<span class="token punctuation">:</span> <span class="token string">&quot;&lt;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x540D;&#xFF0C;&#x3082;&#x3057;&#x304F;&#x306F;@&#x30E6;&#x30FC;&#x30B6;&#x540D;&gt;&quot;</span><span class="token punctuation">,</span>
-        Text<span class="token punctuation">:</span> <span class="token string">&quot;&lt;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&quot;</span><span class="token punctuation">,</span>
-        Username<span class="token punctuation">:</span> <span class="token string">&quot;&lt;as_user&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;false&#x306E;&#x5834;&#x5408;&#x306B;Bot&#x540D;&gt;&quot;</span><span class="token punctuation">,</span>
+        Token<span class="token punctuation">:</span> <span class="token string">&apos;&lt;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x6587;&#x5B57;&#x5217;&gt;&apos;</span><span class="token punctuation">,</span>
+        Channel<span class="token punctuation">:</span> <span class="token string">&apos;&lt;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x540D;&#xFF0C;&#x3082;&#x3057;&#x304F;&#x306F;@&#x30E6;&#x30FC;&#x30B6;&#x540D;&gt;&apos;</span><span class="token punctuation">,</span>
+        Text<span class="token punctuation">:</span> <span class="token string">&apos;&lt;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&apos;</span><span class="token punctuation">,</span>
+        Username<span class="token punctuation">:</span> <span class="token string">&apos;&lt;as_user&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;false&#x306E;&#x5834;&#x5408;&#x306B;Bot&#x540D;&gt;&apos;</span><span class="token punctuation">,</span>
         Attachments<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
           <span class="token comment">// &#x4EFB;&#x610F;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;     </span>
           <span class="token comment">// &#x53C2;&#x8003;&#xFF1A;</span>
@@ -2942,22 +2942,22 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     json<span class="token punctuation">,</span> err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>slackMessage<span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
     request<span class="token punctuation">,</span> err <span class="token operator">:=</span> http<span class="token punctuation">.</span><span class="token function">NewRequest</span><span class="token punctuation">(</span>
-        <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&apos;POST&apos;</span><span class="token punctuation">,</span>
         url<span class="token punctuation">,</span>
         bytes<span class="token punctuation">.</span><span class="token function">NewBuffer</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</span>
-    request<span class="token punctuation">.</span>Header<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">&quot;Content-Type&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">)</span>
+    request<span class="token punctuation">.</span>Header<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">&apos;Content-Type&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;application/json&apos;</span><span class="token punctuation">)</span>
 
     client <span class="token operator">:=</span> <span class="token operator">&amp;</span>http<span class="token punctuation">.</span>Client <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
@@ -2968,14 +2968,14 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <span class="token keyword">defer</span> response<span class="token punctuation">.</span>Body<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">if</span> response<span class="token punctuation">.</span>StatusCode <span class="token operator">!=</span> <span class="token number">200</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;ERROR: %#v\n&quot;</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&apos;ERROR: %#v\n&apos;</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;INFO: %#v\n&quot;</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&apos;INFO: %#v\n&apos;</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -2986,16 +2986,16 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;strings&quot;</span>
+    <span class="token string">&apos;fmt&apos;</span>
+    <span class="token string">&apos;strings&apos;</span>
 <span class="token punctuation">)</span>
 
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> builder strings<span class="token punctuation">.</span>Builder
 
-    builder<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&quot;Hello &quot;</span><span class="token punctuation">)</span>
+    builder<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&apos;Hello &apos;</span><span class="token punctuation">)</span>
 
-    builder<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&quot;world!&quot;</span><span class="token punctuation">)</span>
+    builder<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span><span class="token string">&apos;world!&apos;</span><span class="token punctuation">)</span>
 
     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>builder<span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// Hello world! </span>
 <span class="token punctuation">}</span>
@@ -3035,7 +3035,7 @@ z <span class="token operator">:=</span> <span class="token string">&quot;abc&qu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-18T02:39:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:51:34.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-03-23T01:36:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

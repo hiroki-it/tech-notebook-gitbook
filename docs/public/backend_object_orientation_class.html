@@ -1751,7 +1751,7 @@
 <span class="token keyword">class</span> <span class="token class-name">Goods</span>
 <span class="token punctuation">{</span>
     <span class="token comment">// &#x5546;&#x54C1;&#x540D;&#x30C7;&#x30FC;&#x30BF;</span>
-    <span class="token keyword">private</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;&apos;</span><span class="token punctuation">;</span>
 
     <span class="token comment">// &#x5546;&#x54C1;&#x4FA1;&#x683C;&#x30C7;&#x30FC;&#x30BF;</span>
     <span class="token keyword">private</span> <span class="token variable">$price</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -1767,7 +1767,7 @@
     <span class="token comment">// &#x5546;&#x54C1;&#x540D;&#x3068;&#x4FA1;&#x683C;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">printPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">name</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;&#x306E;&#x4FA1;&#x683C;: &#xFFE5;&quot;</span><span class="token operator">.</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;&lt;br&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">name</span><span class="token operator">.</span><span class="token string single-quoted-string">&apos;&#x306E;&#x4FA1;&#x683C;: &#xFFE5;&apos;</span><span class="token operator">.</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">.</span><span class="token string single-quoted-string">&apos;&lt;br&gt;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x5546;&#x54C1;&#x540D;&#x306E;&#x30B2;&#x30C3;&#x30BF;&#x30FC;</span>
@@ -1795,7 +1795,7 @@
     <span class="token punctuation">{</span>
         <span class="token comment">// &#x5546;&#x54C1;&#x4FA1;&#x683C;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;&#x3092;&#x8A08;&#x7B97;&#x3057;&#xFF0C;&#x8868;&#x793A;</span>
         <span class="token variable">$priceWithTax</span> <span class="token operator">=</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.08</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#xFF08;1&#xFF09;</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;: &#xFFE5;&quot;</span><span class="token operator">.</span><span class="token variable">$priceWithTax</span><span class="token operator">.</span><span class="token string double-quoted-string">&quot;&lt;br&gt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#xFF08;2&#xFF09;</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">&apos;&#x306E;&#x7A0E;&#x8FBC;&#x307F;&#x4FA1;&#x683C;: &#xFFE5;&apos;</span><span class="token operator">.</span><span class="token variable">$priceWithTax</span><span class="token operator">.</span><span class="token string single-quoted-string">&apos;&lt;br&gt;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#xFF08;2&#xFF09;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -1851,13 +1851,13 @@
         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$nowTime</span> <span class="token operator">&gt;</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">TIME_TO_ARRIVE</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
             <span class="token keyword">return</span> <span class="token function">sprintf</span><span class="token punctuation">(</span>
-                <span class="token string double-quoted-string">&quot;%s &#x306E;&#x9045;&#x523B;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">,</span>
+                <span class="token string single-quoted-string">&apos;%s &#x306E;&#x9045;&#x523B;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">,</span>
                 <span class="token function">date</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span><span class="token punctuation">,</span> <span class="token variable">$nowTime</span> <span class="token operator">-</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">TIME_TO_ARRIVE</span><span class="token punctuation">)</span>
             <span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
         <span class="token keyword">return</span> <span class="token function">sprintf</span><span class="token punctuation">(</span>
-            <span class="token string double-quoted-string">&quot;%s &#x306B;&#x51FA;&#x52E4;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;%s &#x306B;&#x51FA;&#x52E4;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&apos;</span><span class="token punctuation">,</span>
             <span class="token function">date</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span><span class="token punctuation">,</span> <span class="token variable">$nowTime</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1870,7 +1870,7 @@
         <span class="token variable">$nowTime</span> <span class="token operator">=</span> <span class="token function">strtotime</span><span class="token punctuation">(</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;H:i:s&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">return</span> <span class="token function">sprintf</span><span class="token punctuation">(</span>
-            <span class="token string double-quoted-string">&quot;%s&#x306B;&#x9000;&#x793E;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;%s &#x306E;&#x6B8B;&#x696D;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;%s&#x306B;&#x9000;&#x793E;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;%s &#x306E;&#x6B8B;&#x696D;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">,</span>
             <span class="token function">date</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span><span class="token punctuation">,</span> <span class="token variable">$nowTime</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
             <span class="token function">date</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;H&#x6642;i&#x5206;s&#x79D2;&apos;</span><span class="token punctuation">,</span> <span class="token variable">$nowTime</span> <span class="token operator">-</span> <span class="token keyword static-context">self</span><span class="token operator">::</span><span class="token constant">TIME_TO_LEAVE</span><span class="token punctuation">)</span>
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2077,7 +2077,7 @@
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;Hello World&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">&apos;Hello World&apos;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -2140,11 +2140,11 @@
 
 <span class="token keyword">class</span> <span class="token class-name">Example1</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token constant">VALUE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">VALUE</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">className</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">&apos;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -2206,11 +2206,11 @@
 <span class="token keyword">class</span> <span class="token class-name">Example1</span>
 <span class="token punctuation">{</span>
     <span class="token comment">// &#x5B9A;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;</span>
-    <span class="token keyword">const</span> <span class="token constant">VALUE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">VALUE</span> <span class="token operator">=</span> <span class="token string single-quoted-string">&apos;&#x3053;&#x308C;&#x306F;&#x5B9A;&#x6570;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">;</span>
 
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">className</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">&apos;example1&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3059;&#xFF0E;&apos;</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -2276,7 +2276,7 @@
 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">methodA</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$b</span><span class="token punctuation">,</span> <span class="token keyword type-hint">string</span> <span class="token variable">$c</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;<span class="token interpolation"><span class="token variable">$a</span></span> + <span class="token interpolation"><span class="token variable">$b</span></span>&quot;</span><span class="token operator">.</span><span class="token variable">$c</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">&apos;$a + $b&apos;</span><span class="token operator">.</span><span class="token variable">$c</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -2286,7 +2286,7 @@
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">methodB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$moduleA</span><span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ModuleA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$moduleA</span><span class="token operator">-&gt;</span><span class="token function">methodA</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3067;&#x3059;.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x30B9;&#x30AB;&#x30E9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3060;&#x3051;</span>
+        <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$moduleA</span><span class="token operator">-&gt;</span><span class="token function">methodA</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;&#x3067;&#x3059;.&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x30B9;&#x30AB;&#x30E9;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#x3060;&#x3051;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -2500,7 +2500,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎クラスベース（1）","level":"1.4.1.2","depth":3,"next":{"title":"▶ ︎クラスベース（2）","level":"1.4.1.3","depth":3,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"▶ ︎オブジェクト指向分析／設計／プログラミング","level":"1.4.1.1","depth":3,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2021-03-14T23:51:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:51:34.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎クラスベース（1）","level":"1.4.1.2","depth":3,"next":{"title":"▶ ︎クラスベース（2）","level":"1.4.1.3","depth":3,"path":"public/backend_object_orientation_method_data.md","ref":"public/backend_object_orientation_method_data.md","articles":[]},"previous":{"title":"▶ ︎オブジェクト指向分析／設計／プログラミング","level":"1.4.1.1","depth":3,"path":"public/backend_object_orientation_analysis_design_programming.md","ref":"public/backend_object_orientation_analysis_design_programming.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_object_orientation_class.md","mtime":"2021-03-23T01:26:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

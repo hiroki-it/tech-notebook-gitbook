@@ -1613,27 +1613,103 @@
 
 <span class="token keyword">class</span> <span class="token class-name">ExampleControllerTest</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>PHPUnit_Framework_TestCase</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">testCanGetPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">canGetPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;GET&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;/xxx/yyy/&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// GET&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+        <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span>
+            <span class="token string single-quoted-string">&apos;GET&apos;</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;/xxx/yyy/&apos;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
         <span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">getResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// 200&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;</span>
+        <span class="token comment">// 200&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">assertTrue</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">isOk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30C6;&#x30B9;&#x30C8;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30C6;&#x30B9;&#x30C8;</h4>
-<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x307E;&#x305F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
-</code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x30C6;&#x30B9;&#x30C8;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x30C6;&#x30B9;&#x30C8;</h4>
 <p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x307E;&#x305F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x671F;&#x5F85;&#x5024;&#x3068;&#x540C;&#x3058;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x671F;&#x5F85;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30C3;&#x30C8;&#x3092;<code>@dataProvider</code>&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x7528;&#x610F;&#x3057;&#x3066;&#x304A;&#x3044;&#x305F;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#xFF0C;<code>@dataProvider</code>&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3067;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token comment">// &#x3053;&#x3053;&#x306B;&#x5B9F;&#x88C5;&#x4F8B;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ExampleControllerTest</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>PHPUnit_Framework_TestCase</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">canPostMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// API&#x306B;POST&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+        <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span>
+            <span class="token string single-quoted-string">&apos;POST&apos;</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;/xxx/yyy/&apos;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span>
+                <span class="token string single-quoted-string">&apos;channel_id&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;XXXXX&apos;</span><span class="token punctuation">,</span> 
+                <span class="token string single-quoted-string">&apos;text&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;Hello World!&apos;</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span>
+                <span class="token string single-quoted-string">&apos;HTTP_X_API_Token&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;Bearer xxxxxx&apos;</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">getResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 200&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">assertTrue</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">isOk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$actual</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;text&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$excepted</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+            <span class="token string single-quoted-string">&apos;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x53D7;&#x4FE1;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&apos;</span>
+        <span class="token punctuation">]</span>
+
+        <span class="token comment">// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">assertSame</span><span class="token punctuation">(</span><span class="token variable">$excepted</span><span class="token punctuation">,</span> <span class="token variable">$actual</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30A8;&#x30E9;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x30C6;&#x30B9;&#x30C8;">&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30A8;&#x30E9;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x30C6;&#x30B9;&#x30C8;</h4>
+<p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x307E;&#x305F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ExampleControllerTest</span> <span class="token keyword">extends</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>PHPUnit_Framework_TestCase</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">canFailToPostMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// API&#x306B;POST&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
+        <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">request</span><span class="token punctuation">(</span>
+            <span class="token string single-quoted-string">&apos;POST&apos;</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;/xxx/yyy/&apos;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span>
+                <span class="token string single-quoted-string">&apos;channel_id&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;&apos;</span><span class="token punctuation">,</span> 
+                <span class="token string single-quoted-string">&apos;text&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;&apos;</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span>
+                <span class="token string single-quoted-string">&apos;HTTP_X_API_Token&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;Bearer xxxxxx&apos;</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-&gt;</span><span class="token function">getResponse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 200&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">assertTrue</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">isOk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$actual</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-&gt;</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;errors&apos;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token variable">$excepted</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+            <span class="token string single-quoted-string">&apos;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;ID&#x306F;&#x5FC5;&#x305A;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;</span>
+            <span class="token string single-quoted-string">&apos;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306F;&#x5FC5;&#x305A;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&apos;</span>
+        <span class="token punctuation">]</span>
+
+        <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x6B63;&#x3057;&#x3044;&#x304B;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">assertSame</span><span class="token punctuation">(</span><span class="token variable">$excepted</span><span class="token punctuation">,</span> <span class="token variable">$actual</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;">&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;</h3>
@@ -1650,7 +1726,7 @@
         <span class="token comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</span>
         <span class="token keyword static-context">parent</span><span class="token operator">::</span><span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">example</span><span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Example</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">example</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Example</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -1698,8 +1774,8 @@
         <span class="token keyword">return</span> <span class="token punctuation">[</span>
             <span class="token comment">// &#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8907;&#x6570;&#x3042;&#x3063;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0C;</span>
             <span class="token comment">// testMethod()&#x306E;&#x5F15;&#x6570;&#x3068;&#x540C;&#x3058;&#x9806;&#x756A;&#x3067;&#xFF0C;&#x914D;&#x5217;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x8981;&#x7D20;&#x304C;&#x4E26;&#x3076;&#xFF0E;</span>
-            <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;2&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;3&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;&#x3042;&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;&#x3044;&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;&#x3046;&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">[</span><span class="token string single-quoted-string">&apos;1&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;2&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;3&apos;</span><span class="token punctuation">]</span>
         <span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -1937,7 +2013,7 @@ A = 0&#xFF0C;B = 0 &#x306E;&#x6642;&#xFF0C;<code>return X</code> &#x304C;&#x5B9F
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-03-20T12:04:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:51:34.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-03-23T01:19:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

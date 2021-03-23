@@ -1646,13 +1646,13 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 
 <span class="token key atrule">commands</span><span class="token punctuation">:</span>
   <span class="token key atrule">sayhello</span><span class="token punctuation">:</span>
-    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&quot;Echo hello world&quot;</span>
+    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&apos;Echo hello world&apos;</span>
     <span class="token comment"># &#x5F15;&#x6570;&#x306E;&#x5B9A;&#x7FA9;</span>
     <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
       <span class="token key atrule">to</span><span class="token punctuation">:</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> string
         <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;</span>
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;Hello World&quot;</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;Hello World&apos;</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &lt;&lt; parameters.to <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
 </code></pre>
@@ -1667,11 +1667,11 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 
 <span class="token key atrule">commands</span><span class="token punctuation">:</span>
   <span class="token key atrule">sayhello</span><span class="token punctuation">:</span>
-    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&quot;Echo hello world&quot;</span>
+    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&apos;Echo hello world&apos;</span>
     <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
       <span class="token key atrule">to</span><span class="token punctuation">:</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;Hello World&quot;</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;Hello World&apos;</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &lt;&lt; parameters.to <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
 </code></pre>
@@ -1727,7 +1727,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
           <span class="token comment"># &#x5F15;&#x6570;&#x304C;true&#x306E;&#x5834;&#x5408;</span>
           <span class="token key atrule">condition</span><span class="token punctuation">:</span> &lt;&lt; parameters.custom_checkout <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
           <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &quot;my custom checkout&quot;
+            <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &apos;my custom checkout&apos;
       <span class="token punctuation">-</span> <span class="token key atrule">unless</span><span class="token punctuation">:</span>
           <span class="token comment"># &#x5F15;&#x6570;&#x306E;false&#x306E;&#x5834;&#x5408;</span>
           <span class="token key atrule">condition</span><span class="token punctuation">:</span> &lt;&lt; parameters.custom_checkout <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
@@ -1752,9 +1752,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token comment"># &#x5F15;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
       <span class="token key atrule">environment</span><span class="token punctuation">:</span>
         <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;</span>
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;test&quot;</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;test&apos;</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> enum
-        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;stg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;prd&quot;</span><span class="token punctuation">]</span>
+        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;test&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;stg&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;prd&apos;</span><span class="token punctuation">]</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
         <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;test&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3068;&#x304D;&#x306F;&#x4F55;&#x3082;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</span>
@@ -1797,9 +1797,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">executor</span><span class="token punctuation">:</span>
       <span class="token key atrule">name</span><span class="token punctuation">:</span> python
-      <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&quot;2.7&quot;</span>
+      <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&apos;2.7&apos;</span>
       <span class="token comment"># job&#x306B;&#x3066;&#x6587;&#x5B57;&#x5217;&#x578B;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;</span>
-      <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&quot;myspecialvalue&quot;</span>
+      <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&apos;myspecialvalue&apos;</span>
 </code></pre>
 <h4 id="&#x30FB;workflow&#x3067;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;">&#x30FB;workflow&#x3067;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;</h4>
 <p>&#x516C;&#x5F0F;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;&#x306B;&#x306F;&#x8F09;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x306F;&#x975E;&#x63A8;&#x5968;&#xFF0E;<code>parameter</code>&#x3092;&#x6E21;&#x3057;&#x305F;&#x3044;<code>executor</code>&#x3092;&#x4F7F;&#x3044;&#x307E;&#x308F;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1811,7 +1811,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
       <span class="token key atrule">env</span><span class="token punctuation">:</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> enum
-        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">&quot;2.7&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;3.5&quot;</span> <span class="token punctuation">]</span>
+        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">&apos;2.7&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;3.5&apos;</span> <span class="token punctuation">]</span>
       <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> string
     <span class="token key atrule">docker</span><span class="token punctuation">:</span>
@@ -1837,14 +1837,14 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
            <span class="token key atrule">executor_param</span><span class="token punctuation">:</span>
              <span class="token key atrule">name</span><span class="token punctuation">:</span> python
              <span class="token comment"># &#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;3.5&#x3092;&#x8A2D;&#x5B9A;</span>
-             <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&quot;2.7&quot;</span>
-             <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&quot;myspecialvalue&quot;</span>
+             <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&apos;2.7&apos;</span>
+             <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&apos;myspecialvalue&apos;</span>
        <span class="token punctuation">-</span> <span class="token key atrule">build</span><span class="token punctuation">:</span>
            <span class="token key atrule">executor_param</span><span class="token punctuation">:</span>
              <span class="token key atrule">name</span><span class="token punctuation">:</span> python
              <span class="token comment"># &#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;3.5&#x3092;&#x8A2D;&#x5B9A;</span>
-             <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&quot;3.5&quot;</span>
-             <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&quot;myspecialvalue&quot;</span>
+             <span class="token key atrule">tag</span><span class="token punctuation">:</span> <span class="token string">&apos;3.5&apos;</span>
+             <span class="token key atrule">myspecialvar</span><span class="token punctuation">:</span> <span class="token string">&apos;myspecialvalue&apos;</span>
 </code></pre>
 <p><br></p>
 <h3 id="pipeline-parameters">pipeline parameters</h3>
@@ -1860,10 +1860,10 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">image-tag</span><span class="token punctuation">:</span>
     <span class="token key atrule">type</span><span class="token punctuation">:</span> string
     <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;</span>
-    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;latest&quot;</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;latest&apos;</span>
   <span class="token key atrule">workingdir</span><span class="token punctuation">:</span>
     <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;~/main&quot;</span>
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;~/main&apos;</span>
 
 <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
@@ -1876,16 +1876,16 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token key atrule">IMAGETAG</span><span class="token punctuation">:</span> &lt;&lt; pipeline.parameters.image<span class="token punctuation">-</span>tag <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
     <span class="token key atrule">working_directory</span><span class="token punctuation">:</span> &lt;&lt; pipeline.parameters.workingdir <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &quot;Image tag used was $<span class="token punctuation">{</span>IMAGETAG<span class="token punctuation">}</span>&quot;
-      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &quot;$(pwd) == &lt;&lt; pipeline.parameters.workingdir <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>&quot;
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &apos;Image tag used was $<span class="token punctuation">{</span>IMAGETAG<span class="token punctuation">}</span>&apos;
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &apos;$(pwd) == &lt;&lt; pipeline.parameters.workingdir <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>&apos;
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
   <span class="token key atrule">my-workflow</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">build</span><span class="token punctuation">:</span>
           <span class="token comment"># &#x5F15;&#x6570;&#x540D;: &#x6E21;&#x3059;&#x5024; </span>
-          <span class="token key atrule">image-tag</span><span class="token punctuation">:</span> <span class="token string">&quot;1.0&quot;</span>
-          <span class="token key atrule">workdir</span><span class="token punctuation">:</span> <span class="token string">&quot;/tmp&quot;</span>
+          <span class="token key atrule">image-tag</span><span class="token punctuation">:</span> <span class="token string">&apos;1.0&apos;</span>
+          <span class="token key atrule">workdir</span><span class="token punctuation">:</span> <span class="token string">&apos;/tmp&apos;</span>
 </code></pre>
 <h2 id="02-04-jobs">02-04. jobs</h2>
 <h3 id="jobs">jobs</h3>
@@ -1937,7 +1937,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
      <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x5165;&#x308C;&#x5B50;&#x306B;&#x306A;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</span>
      <span class="token punctuation">-</span> setup_remote_docker
      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span> <span class="token comment"># DockerHub&#x3078;&#x306E;&#x30ED;&#x30B0;&#x30A4;&#x30F3;</span>
-         echo &quot;$DOCKER_PASS&quot; <span class="token punctuation">|</span> docker login <span class="token punctuation">-</span><span class="token punctuation">-</span>username $DOCKER_USER <span class="token punctuation">-</span><span class="token punctuation">-</span>password<span class="token punctuation">-</span>stdin
+         echo &apos;$DOCKER_PASS&apos; <span class="token punctuation">|</span> docker login <span class="token punctuation">-</span><span class="token punctuation">-</span>username $DOCKER_USER <span class="token punctuation">-</span><span class="token punctuation">-</span>password<span class="token punctuation">-</span>stdin
          docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span><span class="token punctuation">-</span>name db company/proprietary<span class="token punctuation">-</span>db<span class="token punctuation">:</span>1.2.3
 
      <span class="token comment"># Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;</span>
@@ -1958,7 +1958,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
      <span class="token punctuation">-</span> checkout
      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span> <span class="token comment"># DockerHub&#x3078;&#x306E;&#x30ED;&#x30B0;&#x30A4;&#x30F3;</span>
-         echo &quot;$DOCKER_PASS&quot; <span class="token punctuation">|</span> docker login <span class="token punctuation">-</span><span class="token punctuation">-</span>username $DOCKER_USER <span class="token punctuation">-</span><span class="token punctuation">-</span>password<span class="token punctuation">-</span>stdin
+         echo &apos;$DOCKER_PASS&apos; <span class="token punctuation">|</span> docker login <span class="token punctuation">-</span><span class="token punctuation">-</span>username $DOCKER_USER <span class="token punctuation">-</span><span class="token punctuation">-</span>password<span class="token punctuation">-</span>stdin
          docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span><span class="token punctuation">-</span>name db company/proprietary<span class="token punctuation">-</span>db<span class="token punctuation">:</span>1.2.3
 
      <span class="token comment"># Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;</span>
@@ -1989,7 +1989,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> <span class="token key atrule">when</span><span class="token punctuation">:</span>
           <span class="token key atrule">condition</span><span class="token punctuation">:</span> &lt;&lt; parameters.custom_checkout_parameters <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
           <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &quot;&#x72EC;&#x81EA;&#x306E;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30A2;&#x30A6;&#x30C8;&#x51E6;&#x7406;&quot;
+            <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &apos;&#x72EC;&#x81EA;&#x306E;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30A2;&#x30A6;&#x30C8;&#x51E6;&#x7406;&apos;
       <span class="token comment"># &#x5F15;&#x6570;&#x304C;false&#x306E;&#x5834;&#x5408;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">unless</span><span class="token punctuation">:</span>
           <span class="token key atrule">condition</span><span class="token punctuation">:</span> &lt;&lt; parameters.custom_checkout_parameters <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
@@ -2017,7 +2017,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token comment"># composer.json&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#xFF0E;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">restore_cache</span><span class="token punctuation">:</span>
           <span class="token key atrule">key</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependecies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;composer.json&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependecies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;composer.json&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
             <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span>
       <span class="token comment"># &#x53D6;&#x5F97;&#x3057;&#x305F;composer.json&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5DEE;&#x5206;&#x306E;vendor&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> 
@@ -2026,7 +2026,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
             composer install -n --prefer-dist</span>
       <span class="token comment"># &#x6700;&#x65B0;&#x306E;vendor&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">save_cache</span><span class="token punctuation">:</span>
-          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependecies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;composer.json&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependecies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;composer.json&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
           <span class="token key atrule">paths</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> ./vendor
 </code></pre>
@@ -2042,7 +2042,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> checkout
       <span class="token punctuation">-</span> <span class="token key atrule">restore_cache</span><span class="token punctuation">:</span>
           <span class="token key atrule">keys</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;package.json&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;package.json&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
             <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Run yarn install
@@ -2051,7 +2051,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> <span class="token key atrule">save_cache</span><span class="token punctuation">:</span>
           <span class="token key atrule">paths</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> node_modules
-          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;yarn.lock&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;yarn.lock&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Run yarn build
           <span class="token key atrule">commands</span> <span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
@@ -2071,14 +2071,14 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token comment"># composer.json&#x306E;&#x5B9F;&#x88C5;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#xFF0E;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">restore_cache</span><span class="token punctuation">:</span>
           <span class="token key atrule">key</span><span class="token punctuation">:</span>
-            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;composer.json&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;composer.json&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
             <span class="token punctuation">-</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span>
 
   <span class="token key atrule">save_vendor</span><span class="token punctuation">:</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token comment"># &#x6700;&#x65B0;&#x306E;vendor&#x3092;&#x4FDD;&#x5B58;&#xFF0E;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">save_cache</span><span class="token punctuation">:</span>
-          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &quot;composer.json&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> v1<span class="token punctuation">-</span>dependencies<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> checksum &apos;composer.json&apos; <span class="token punctuation">}</span><span class="token punctuation">}</span>
           <span class="token key atrule">paths</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> ./vendor
 
@@ -2106,7 +2106,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> <span class="token key atrule">persist_to_workspace</span><span class="token punctuation">:</span>
           <span class="token comment"># jobA&#x306B;&#x3066;&#xFF0C;Workspace&#x3068;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;root</span>
           <span class="token key atrule">root</span><span class="token punctuation">:</span> /tmp/workspace
-          <span class="token comment"># Root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x57FA;&#x6E96;&#x3068;&#x3057;&#x305F;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#xFF08;&quot;./&quot;&#x4EE5;&#x5916;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x4F5C;&#x6210;&#x304C;&#x5FC5;&#x8981;&#xFF09;</span>
+          <span class="token comment"># Root&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x57FA;&#x6E96;&#x3068;&#x3057;&#x305F;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#xFF08;&apos;./&apos;&#x4EE5;&#x5916;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x4F5C;&#x6210;&#x304C;&#x5FC5;&#x8981;&#xFF09;</span>
           <span class="token comment"># &#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306F;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3067;&#x304D;&#x306A;&#x3044;&#x306E;&#x3067;&#x6CE8;&#x610F;</span>
           <span class="token key atrule">paths</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> target/application.jar
@@ -2145,11 +2145,11 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 
 <span class="token key atrule">commands</span><span class="token punctuation">:</span>
   <span class="token key atrule">sayhello</span><span class="token punctuation">:</span>
-    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&quot;Echo hello world&quot;</span>
+    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">&apos;Echo hello world&apos;</span>
     <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
       <span class="token key atrule">text</span><span class="token punctuation">:</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;Hello World&quot;</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&apos;Hello World&apos;</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token comment"># parameters&#x306E;&#x5024;&#x3092;&#x6E21;&#x3059;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &lt;&lt; parameters.text <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
@@ -2157,12 +2157,12 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
   <span class="token key atrule">myjob</span><span class="token punctuation">:</span>
     <span class="token key atrule">docker</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> <span class="token string">&quot;circleci/node:9.6.1&quot;</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> <span class="token string">&apos;circleci/node:9.6.1&apos;</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token comment"># command&#x540D;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">sayhello</span><span class="token punctuation">:</span>
           <span class="token comment"># &#x5F15;&#x6570;&#x540D;: &#x6E21;&#x3059;&#x5024;</span>
-          <span class="token key atrule">text</span><span class="token punctuation">:</span> <span class="token string">&quot;Lev&quot;</span>
+          <span class="token key atrule">text</span><span class="token punctuation">:</span> <span class="token string">&apos;Lev&apos;</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-05-executors">02-05. executors</h2>
@@ -2189,7 +2189,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">my-job</span><span class="token punctuation">:</span>
     <span class="token key atrule">executor</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>executor
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &quot;$<span class="token punctuation">{</span>XX<span class="token punctuation">}</span>&#x3068;$<span class="token punctuation">{</span>YY<span class="token punctuation">}</span>&#x3067;&#x3059;&quot;
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo &apos;$<span class="token punctuation">{</span>XX<span class="token punctuation">}</span>&#x3068;$<span class="token punctuation">{</span>YY<span class="token punctuation">}</span>&#x3067;&#x3059;&apos;
 </code></pre>
 <p><br></p>
 <h2 id="02-06-workflow">02-06. Workflow</h2>
@@ -2260,9 +2260,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> checkout
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-          <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;building&quot;
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;building&apos;
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-          <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;testing&quot;
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;testing&apos;
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
@@ -2271,11 +2271,11 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
           <span class="token comment"># Workspace&#x524D;&#x306B;&#x884C;&#x3046;&#x51E6;&#x7406;</span>
           <span class="token key atrule">pre-steps</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;install custom dependency&quot;
+                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;install custom dependency&apos;
           <span class="token comment"># Workspace&#x5F8C;&#x306B;&#x884C;&#x3046;&#x51E6;&#x7406;</span>
           <span class="token key atrule">post-steps</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;upload artifact to s3&quot;
+                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;upload artifact to s3&apos;
 </code></pre>
 <p>Orbs&#x3092;&#x4F7F;&#x3046;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#x524D;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -2286,11 +2286,11 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
           <span class="token comment"># Workspace&#x524D;&#x306B;&#x884C;&#x3046;&#x51E6;&#x7406;</span>
           <span class="token key atrule">pre-steps</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;XXX&quot;
+                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;XXX&apos;
           <span class="token comment"># Workspace&#x5F8C;&#x306B;&#x884C;&#x3046;&#x51E6;&#x7406;</span>
           <span class="token key atrule">post-steps</span><span class="token punctuation">:</span>
             <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
-                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &quot;XXX&quot;
+                <span class="token key atrule">command</span><span class="token punctuation">:</span> echo &apos;XXX&apos;
           <span class="token comment"># Orbs&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
           <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> xxx
@@ -2410,7 +2410,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
       <span class="token key atrule">name</span><span class="token punctuation">:</span> XXXXX
       <span class="token key atrule">commands</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-        echo &quot;This is ${XXXXX}&quot;</span>
+        echo &apos;This is ${XXXXX}&apos;</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;">&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306E;&#x9055;&#x3044;</h3>
@@ -2624,7 +2624,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token key atrule">hello</span><span class="token punctuation">:</span> circleci/hello<span class="token punctuation">-</span>build@0.0.5
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
-    <span class="token key atrule">&quot;Hello Workflow&quot;</span><span class="token punctuation">:</span>
+    <span class="token key atrule">&apos;Hello Workflow&apos;</span><span class="token punctuation">:</span>
         <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
           <span class="token punctuation">-</span> hello/hello<span class="token punctuation">-</span>build
 </code></pre>
@@ -2701,7 +2701,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             echo $AWS_CLOUDFRONT_ID |
             base64 --decode |
-            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths &quot;/*&quot;</span>
+            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths &apos;/*&apos;</span>
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
   <span class="token comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
@@ -2830,7 +2830,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token comment"># CodeDeploy&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x4F5C;&#x6210;&#x3092;&#x8A2D;&#x5B9A;</span>
     <span class="token key atrule">deployment-controller</span><span class="token punctuation">:</span> CODE_DEPLOY
     <span class="token key atrule">codedeploy-application-name</span><span class="token punctuation">:</span> $SERVICE
-    <span class="token key atrule">codedeploy-deployment-group-name</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-deployment-group&quot;</span>
+    <span class="token key atrule">codedeploy-deployment-group-name</span><span class="token punctuation">:</span> <span class="token string">&apos;${SERVICE}-deployment-group&apos;</span>
     <span class="token key atrule">codedeploy-load-balanced-container-name</span><span class="token punctuation">:</span> www<span class="token punctuation">-</span>container
     <span class="token key atrule">codedeploy-load-balanced-container-port</span><span class="token punctuation">:</span> <span class="token number">80</span>
     <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
@@ -2873,7 +2873,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
   <span class="token key atrule">aws-ecs/run-task</span><span class="token punctuation">:</span>
     <span class="token key atrule">name</span><span class="token punctuation">:</span> ecs_run_task_for_migration
-    <span class="token key atrule">cluster</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-ecs-cluster&quot;</span>
+    <span class="token key atrule">cluster</span><span class="token punctuation">:</span> <span class="token string">&apos;${SERVICE}-ecs-cluster&apos;</span>
     <span class="token comment"># LATEST&#x3068;&#x3059;&#x308B;&#x3068;&#x305D;&#x306E;&#x6642;&#x70B9;&#x306E;&#x6700;&#x65B0;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x3067;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;</span>
     <span class="token key atrule">platform-version</span><span class="token punctuation">:</span> 1.4.0
     <span class="token key atrule">awsvpc</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -2881,9 +2881,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token key atrule">subnet-ids</span><span class="token punctuation">:</span> $AWS_SUBNET_IDS
     <span class="token key atrule">security-group-ids</span><span class="token punctuation">:</span> $AWS_SECURITY_GROUPS
     <span class="token comment"># &#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x540D;&#xFF0E;&#x6700;&#x65B0;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x304C;&#x81EA;&#x52D5;&#x88DC;&#x5B8C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
-    <span class="token key atrule">task-definition</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-ecs-task-definition&quot;</span>
+    <span class="token key atrule">task-definition</span><span class="token punctuation">:</span> <span class="token string">&apos;${SERVICE}-ecs-task-definition&apos;</span>
     <span class="token comment"># &#x30BF;&#x30B9;&#x30AF;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;Laravel&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x3000;command&#x30AD;&#x30FC;&#x3092;&#x4E0A;&#x66F8;&#x304D;</span>
-    <span class="token key atrule">overrides</span><span class="token punctuation">:</span> <span class="token string">&quot;{\\\&quot;containerOverrides\\\&quot;:[{\\\&quot;name\\\&quot;: \\\&quot;laravel-container\\\&quot;,\\\&quot;command\\\&quot;: [\\\&quot;php\\\&quot;, \\\&quot;artisan\\\&quot;, \\\&quot;migrate\\\&quot;, \\\&quot;--force\\\&quot;]}]}&quot;</span>
+    <span class="token key atrule">overrides</span><span class="token punctuation">:</span> <span class="token string">&apos;{\\\&apos;containerOverrides\\\&apos;:[{\\\&apos;name\\\&apos;: \\\&apos;laravel-container\\\&apos;,\\\&apos;command\\\&apos;: [\\\&apos;php\\\&apos;, \\\&apos;artisan\\\&apos;, \\\&apos;migrate\\\&apos;, \\\&apos;--force\\\&apos;]}]}&apos;</span>
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
   <span class="token comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</span>
@@ -2921,7 +2921,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token key atrule">name</span><span class="token punctuation">:</span> code_deploy
     <span class="token key atrule">application-name</span><span class="token punctuation">:</span> $SERVICE<span class="token punctuation">}</span>
     <span class="token comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;</span>
-    <span class="token key atrule">bundle-bucket</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-bucket&quot;</span>
+    <span class="token key atrule">bundle-bucket</span><span class="token punctuation">:</span> <span class="token string">&apos;${SERVICE}-bucket&apos;</span>
     <span class="token comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3042;&#x308B;&#x30D5;&#x30A9;&#x30EB;&#x30C0;</span>
     <span class="token key atrule">bundle-source</span><span class="token punctuation">:</span> ./infra/aws_codedeploy
     <span class="token comment"># appspec&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x3067;&#x4FDD;&#x5B58;</span>
@@ -2929,7 +2929,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token comment"># zip&#x30D5;&#x30A9;&#x30EB;&#x30C0;&#x540D;</span>
     <span class="token key atrule">bundle-key</span><span class="token punctuation">:</span> xxx<span class="token punctuation">-</span>bundle
     <span class="token key atrule">deployment-config</span><span class="token punctuation">:</span> CodeDeployDefault.ECSAllAtOnce
-    <span class="token key atrule">deployment-group</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-deployment-group&quot;</span>
+    <span class="token key atrule">deployment-group</span><span class="token punctuation">:</span> <span class="token string">&apos;${SERVICE}-deployment-group&apos;</span>
     <span class="token comment"># ECS&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;CodeDeploy&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30ED;&#x30FC;&#x30EB;</span>
     <span class="token key atrule">service-role-arn</span><span class="token punctuation">:</span> $CODE_DEPLOY_ROLE_FOR_ECS
 
@@ -3046,7 +3046,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-03-20T09:00:01.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-22T10:51:34.494Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-03-23T01:36:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
