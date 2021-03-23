@@ -334,7 +334,7 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
 -/+ <リソースタイプ>.<リソース名> (tainted) (new resource required)
-      id: "1492336661259070634" => <computed> (forces new resource)
+      id: '1492336661259070634' => <computed> (forces new resource)
 
 
 Plan: 1 to add, 0 to change, 1 to destroy.

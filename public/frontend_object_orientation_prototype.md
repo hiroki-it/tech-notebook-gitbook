@@ -41,7 +41,7 @@ var obj = new Object();
 **＊実装例＊**
 
 ```javascript
-var array = ['a', 'b', 'c'];
+var array = ["a", "b", "c"];
 
 // key，valueを取得できる．
 var iterator = array.entries();
@@ -51,9 +51,9 @@ for (const value of iterator) {
   console.log(e);
 }
 
-// [0, 'a']
-// [1, 'b']
-// [2, 'c']
+// [0, "a"]
+// [1, "b"]
+// [2, "c"]
 ```
 
 #### ・```Array.prototype.map()```
@@ -80,7 +80,7 @@ for (const value of iterator) {
 **＊実装例＊**
 
 ```javascript
-const clothing = ['shoes', 'shirts', 'socks', 'sweaters'];
+const clothing = ["shoes", "shirts", "socks", "sweaters"];
 
 console.log(
     clothing.length
@@ -104,12 +104,12 @@ console.log(
     JSON.stringify({
         x : 1,
         y : 5,
-        z : 'test'
+        z : "test"
     })
 );
 
 // JSON形式オブジェクト
-// '{'x':5, 'y':5 'z':'test'}'
+// "{"x":5, "y":5 "z":"test"}"
 ```
 
 #### ・```stringify```メソッド
@@ -121,14 +121,14 @@ JSONからJavaScriptにデシリアライズする．
 ```javascript
 console.log(
     JSON.parse({
-        'x' : 1,
-        'y' : 5,
-        'z' : 'test'
+        "x" : 1,
+        "y" : 5,
+        "z" : "test"
      })
 );
 
 // JavaScriptオブジェクト
-// {x:5, y:5 z:'test'}
+// {x:5, y:5 z:"test"}
 ```
 
 <br>
@@ -146,16 +146,16 @@ console.log(
 ```html
 <html>
  <body>
-  <p id='myid'>Hello world!</p>
+  <p id="myid">Hello world!</p>
   <script>
-   console.log(document.getElementById('myid'));
+   console.log(document.getElementById("myid"));
   </script>
  </body>
 </html>
 ```
 
 ```javascript
-// <p id='myid'>Hello world!</p>
+// <p id="myid">Hello world!</p>
 ```
 
 <br>
@@ -169,12 +169,12 @@ console.log(
 **＊実装例＊**
 
 ```html
-<button id='btn'>表示</button>
+<button id="btn">表示</button>
 
 <script>
-const btn = document.getElementById('btn');
-btn.addEventListener('click', function() {
-    console.log('クリックされました！');
+const btn = document.getElementById("btn");
+btn.addEventListener("click", function() {
+    console.log("クリックされました！");
     },
     false
     );
@@ -376,7 +376,7 @@ export class Example {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from './example.js';
+import {Example} from "./example.js";
 
 // 生成，初期化
 const example = new Example(1);
@@ -406,7 +406,7 @@ export const Example = class {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from './example.js';
+import {Example} from "./example.js";
 
 // 生成，初期化
 const example = new Example(1);
@@ -516,11 +516,11 @@ console.log(result);
 SubExample.prototype = Object.create(Example.prototype, {
 
     // データを定義
-    subProperty: 'テスト'
+    subProperty: "テスト"
     
     // メソッドを定義
     printSubValue: function() {
-        return 'これは' + this.subProperty + 'です．';
+        return "これは" + this.subProperty + "です．";
     }
   
 });
@@ -574,7 +574,7 @@ example.getValue(); // 1
 
 ```javascript
 // 一番外側はWindowオブジェクト
-param = 'global param';
+param = "global param";
 
 // 関数宣言
 function printParam(){
@@ -583,13 +583,13 @@ function printParam(){
 
 // オブジェクト1
 const object1 = {
-  param: 'object1 param',
+  param: "object1 param",
   func: printParam
 }
 
 // オブジェクト2
 const object2 = {
-  param: 'object2 param',
+  param: "object2 param",
   func: printParam
 }
 ```
@@ -612,7 +612,7 @@ object2.printParam; // object2 param
 
 ```javascript
 // 一番外側はWindowオブジェクト
-param = 'global param';
+param = "global param";
 
 // アロー関数による省略記法
 const printParam = () => {
@@ -621,13 +621,13 @@ const printParam = () => {
 
 // オブジェクト1
 const object1 = {
-  param: 'object1 param',
+  param: "object1 param",
   func: printParam
 };
 
 // オブジェクト2
 const object2 = {
-  param: 'object2 param',
+  param: "object2 param",
   func: printParam
 }
 ```

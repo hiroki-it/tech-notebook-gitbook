@@ -10,10 +10,10 @@
 // 個人的に一番おすすめ
 // キャレット表記
 {
-  'require': {
-    'foo': '^1.1.1',  // >=1.1.1 and <1.2.0
-    'bar': '^1.1',    // >=1.1.0 and <1.2.0
-    'hoge': '^0.0.1'  // >=0.0.1 and <0.0.2
+  "require": {
+    "foo": "^1.1.1",  // >=1.1.1 and <1.2.0
+    "bar": "^1.1",    // >=1.1.0 and <1.2.0
+    "hoge": "^0.0.1"  // >=0.0.1 and <0.0.2
   }
 }
 ```
@@ -21,10 +21,10 @@
 ```json
 // チルダ表記
 {
-  'require': {
-    'foo': '~1.1.1',  // >=1.1.1 and <2.0.0
-    'bar': '~1.1',    // >=1.1.0 and <2.0.0
-    'hoge': '~1'      // >=1.1.0 and <2.0.0
+  "require": {
+    "foo": "~1.1.1",  // >=1.1.1 and <2.0.0
+    "bar": "~1.1",    // >=1.1.0 and <2.0.0
+    "hoge": "~1"      // >=1.1.0 and <2.0.0
   }
 }
 ```
@@ -32,11 +32,11 @@
 ```json
 // エックス，アスタリスク表記
 {
-  'require': {
-    'foo': '*',     // どんなバージョンでもOK
-    'bar': '1.1.x', // >=1.1.0 and <1.2.0 
-    'hoge': '1.X',  // >=1.0.0 and <2.0.0
-    'huga': ''      // '*'と同じことになる = どんなバージョンでもOK
+  "require": {
+    "foo": "*",     // どんなバージョンでもOK
+    "bar": "1.1.x", // >=1.1.0 and <1.2.0 
+    "hoge": "1.X",  // >=1.0.0 and <2.0.0
+    "huga": ""      // "*"と同じことになる = どんなバージョンでもOK
   }
 }
 ```
@@ -47,16 +47,16 @@
 
 ```json
 {
-    'autoload': {
-        'psr-4': {
-            '<名前空間>': '<ファイルパス>',
-            'App\\': 'app/',
-            'Database\\Factories\\Infrastructure\\DTO\\': 'database/factories/production',
-            'Database\\Seeders\\': 'database/seeds/production'
+    "autoload": {
+        "psr-4": {
+            "<名前空間>": "<ファイルパス>",
+            "App\\": "app/",
+            "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
+            "Database\\Seeders\\": "database/seeds/production"
         },
-        'classmap': [
-            'database/seeds',
-            'database/factories'
+        "classmap": [
+            "database/seeds",
+            "database/factories"
         ]
     }
 }
@@ -176,19 +176,19 @@ $ composer <エイリアス名>
 
 ```json
 {
-    'scripts': {
-        '<エイリアス名>': [
-            '@<実行するコマンド>'
+    "scripts": {
+        "<エイリアス名>": [
+            "@<実行するコマンド>"
         ],
-        'post-autoload-dump': [
-            'Illuminate\\Foundation\\ComposerScripts::postAutoloadDump',
-            '@php artisan package:discover --ansi'
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
         ],
-        'post-root-package-install': [
-            '@php -r \'file_exists('.env') || copy('.env.example', '.env');\''
+        "post-root-package-install": [
+            "@php -r \"file_exists(".env") || copy(".env.example", ".env");\""
         ],
-        'post-create-project-cmd': [
-            '@php artisan key:generate --ansi'
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
         ]
     }
 }
@@ -207,7 +207,7 @@ $ composer <エイリアス名>
 ```php
 <?php
     
-require_once realpath(__DIR__ . '/vendor/autoload.php');
+require_once realpath(__DIR__ . "/vendor/autoload.php");
 ```
 
 <br>
@@ -249,7 +249,7 @@ QueryBuilderクラスにおける```insert```メソッドに，値を設定す�
 <?php
     
 $queryBuilder
-    ->insert('mst_users')
+    ->insert("mst_users")
 ```
 
 #### 3. READ処理
@@ -262,8 +262,8 @@ QueryBuilderクラスにおける```select```メソッドに，値を設定す�
 <?php
     
 $queryBuilder
-    ->select('id', 'name')
-    ->from('mst_users');
+    ->select("id", "name")
+    ->from("mst_users");
 ```
 
 #### 4. UPDATE処理
@@ -276,7 +276,7 @@ QueryBuilderクラスにおける```update```メソッドに，値を設定す�
 <?php
     
 $queryBuilder
-    ->update('mst_users');
+    ->update("mst_users");
 ```
 
 #### 5. DELETE処理
@@ -288,7 +288,7 @@ QueryBuilderクラスにおける```delete```メソッドに，値を設定す�
 ```php
 <?php
 $queryBuilder
-    ->delete('mst_users');
+    ->delete("mst_users");
 ```
 
 #### 6. データベースへの接続，SQLの実行 
@@ -333,21 +333,21 @@ class DogToyQuery
         
         // SQLの定義
         $queryBuilder->select([
-          'dog_toy.type AS dog_toy_type',
-          'dog_toy.name AS dog_toy_name',
-          'dog_toy.number AS number',
-          'dog_toy.price AS dog_toy_price',
-          'dog_toy.color_value AS color_value'
+          "dog_toy.type AS dog_toy_type",
+          "dog_toy.name AS dog_toy_name",
+          "dog_toy.number AS number",
+          "dog_toy.price AS dog_toy_price",
+          "dog_toy.color_value AS color_value"
         ])
           
           // FROMを設定する．
-          ->from('mst_dog_toy', 'dog_toy')
+          ->from("mst_dog_toy", "dog_toy")
           
           // WHEREを設定する．この時，値はプレースホルダーとしておく．
-          ->where('dog_toy.type = :type')
+          ->where("dog_toy.type = :type")
           
           // プレースホルダーに値を設定する．ここでは，引数で渡す『$toyType』とする．
-          ->setParameter('type', $toyType);
+          ->setParameter("type", $toyType);
         
         // データベースに接続．
         return $queryBuilder->getConnection()
@@ -454,7 +454,7 @@ DateTimeインスタンスを引数として，Carbonインスタンスを作成
 ```php
 <?php
     
-$datetime = new \DateTime('2019-07-07 19:07:07');
+$datetime = new \DateTime("2019-07-07 19:07:07");
 $carbon = Carbon::instance($datetime);
 
 echo $carbon; // 2019-07-07 19:07:07
@@ -519,7 +519,7 @@ echo $carbonFromTime; // 19:07:07
     
 // 日付，時間，日時フォーマットから，Carbonインスタンスを作成する．
 // 第一引数でフォーマットを指定する必要がある．
-$carbonFromFormat = Carbon::createFromFormat('Y-m-d H:m:s', '2019-07-07 19:07:07');
+$carbonFromFormat = Carbon::createFromFormat("Y-m-d H:m:s", "2019-07-07 19:07:07");
 
 echo $carbonFromFormat; // 2019-07-07 19:07:07
 ```
@@ -548,7 +548,7 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 ```php
 <?php
     
-$carbon = Carbon::parse('2019-07-07 19:07:07')
+$carbon = Carbon::parse("2019-07-07 19:07:07")
 ```
 
 <br>
@@ -579,7 +579,7 @@ class Example
     {
         
         return [
-          'data' => Traversable::from($entities)
+          "data" => Traversable::from($entities)
             // 一つずつ要素を取り出し，関数に渡す．
             ->select(
               function ($entity) {
@@ -614,7 +614,7 @@ class Example
 $client = new Client();
 
 // GET送信
-$response = $client->request('GET', <アクセスしたいURL>);
+$response = $client->request("GET", <アクセスしたいURL>);
 ```
 
 #### ・レスポンスメッセージからボディを取得
@@ -627,7 +627,7 @@ $response = $client->request('GET', <アクセスしたいURL>);
 $client = new Client();
 
 // POST送信
-$response = $client->request('POST', <アクセスしたいURL>);
+$response = $client->request("POST", <アクセスしたいURL>);
 
 // レスポンスメッセージからボディのみを取得
 $body = json_decode($response->getBody(), true);
@@ -650,9 +650,9 @@ htmlファイルを元にして，ローカルディレクトリにPDFファイ�
 ```php
 <?php
     
-$snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
+$snappy = new Pdf("/usr/local/bin/wkhtmltopdf");
 
-$snappy->generateFromHtml('example.html', '.../example.pdf');
+$snappy->generateFromHtml("example.html", ".../example.pdf");
 ```
 
 <br>

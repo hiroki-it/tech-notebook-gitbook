@@ -322,13 +322,13 @@ var_dump($result);
 <?php
 // 各地点間の距離を二次元の連想配列で定義
 $matrix = array(
-    'P0' => array(0, 2, 8, 4, -1, -1, -1),
-    'P1' => array(2, 0, -1, -1, 3, -1, -1),
-    'P2' => array(8, -1, 0, -1, 2, 3, -1),
-    'P3' => array(4, -1, -1, 0, -1, 8, -1),
-    'P4' => array(-1, 3, 2, -1, 0, -1, 9),
-    'P5' => array(-1, -1, 3, 8, -1, 0, 3),
-    'P6' => array(-1, -1, -1, -1, 9, 3, 0)
+    "P0" => array(0, 2, 8, 4, -1, -1, -1),
+    "P1" => array(2, 0, -1, -1, 3, -1, -1),
+    "P2" => array(8, -1, 0, -1, 2, 3, -1),
+    "P3" => array(4, -1, -1, 0, -1, 8, -1),
+    "P4" => array(-1, 3, 2, -1, 0, -1, 9),
+    "P5" => array(-1, -1, 3, 8, -1, 0, 3),
+    "P6" => array(-1, -1, -1, -1, 9, 3, 0)
 );
 ```
 
@@ -342,18 +342,18 @@ function bestFirstSearchByDijkstra(
 )
 {
     // 地点数を定数で定義
-    define('POINT_NUMBER', count($matrix));
+    define("POINT_NUMBER", count($matrix));
     
     if($startPoint < self::POINT_NUMBER
         || self::POINT_NUMBER < $goalPoint){
-            throw new Exception('存在しない地点番号は設定できません．');
+            throw new Exception("存在しない地点番号は設定できません．");
     }
     
     // 出発地点を定数で定義
-    define('START_POINT', $startPoint);
+    define("START_POINT", $startPoint);
     
     // 到着地点を定数で定義
-    define('GOAL_POINT', $goalPoint));
+    define("GOAL_POINT", $goalPoint));
     
     // 無限大の定数のINFを使いたいが，定数は上書きできないため，代わりに-1を使用．
     // 各頂点に対して，最短ルート地点番号，地点間距離の初期値，最短距離確定フラグを設定．

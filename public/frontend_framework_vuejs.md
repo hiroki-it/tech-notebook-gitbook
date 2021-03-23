@@ -61,7 +61,7 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
 
 ```html
 <!-- divタグのidは『app』とする -->
-<div id='app'>
+<div id="app">
   
     <!-- 
     ・親コンポーネントタグを記述．
@@ -69,8 +69,8 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
     ・イベントとイベントハンドラ関数を対応づける．
     -->
     <v-example-component-1
-        :criteria='criteria'
-        v-on change='changeQuery'
+        :criteria="criteria"
+        v-on change="changeQuery"
     ></v-example-component-1>
 
     <!-- 親コンポーネントタグを記述 -->
@@ -87,7 +87,7 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
 
 <!-- ルートVueインスタンスの生成は外部スクリプトで行う． -->
 <script 
-    src='{{ asset('.../index.js') }}'>
+    <src={{ asset(".../index.js") }}>
 </script>
 ```
 #### (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数（```index.js```）
@@ -106,7 +106,7 @@ Vueコンストラクタ関数を用いて，インスタンス化すること�
 var vm = new Vue({
 
     //　Vueインスタンスを使用するdivタグを設定.
-    el: '#app',
+    el: "#app",
 
     /* dataオプション
     ・Vueインスタンスのデータを保持する
@@ -133,8 +133,8 @@ var vm = new Vue({
         // イベントハンドラ関数
         changeQuery(criteriaObj) {
             const keys = [
-                'criteria',
-                'limit',
+                "criteria",
+                "limit",
             ];
             for (const key of keys) {
                 if (key in criteriaObj) {
@@ -178,9 +178,9 @@ var vm = new Vue({
     component: {
 
         //『HTMLでのコンポーネントのタグ名：子コンポーネント』
-        'v-example-component-1': require('.../component/xxx-1.vue'),
-        'v-example-component-2': require('.../component/xxx-2.vue'),
-        'v-example-component-3': require('.../component/xxx-3.vue')
+        "v-example-component-1": require(".../component/xxx-1.vue"),
+        "v-example-component-2": require(".../component/xxx-2.vue"),
+        "v-example-component-3": require(".../component/xxx-3.vue")
     },
 })
 
@@ -206,16 +206,16 @@ var vm = new Vue({
   ・下方のdataオプションの値をpropsに渡すように設定．
   -->
   <v-example-component-4
-          :aaa='a'
-          :bbb='b'
+          :aaa="a"
+          :bbb="b"
   ></v-example-component-4>
 
   <!-- 条件付きレンダリングを行うディレクション -->
-  <template v-if='example.isOk()'>
+  <template v-if="example.isOk()">
     <!-- 孫コンポーネントタグを記述 -->
     <v-example-component-5
-            :ccc='c'
-            :ddd='d'
+            :ccc="c"
+            :ddd="d"
     ></v-example-component-5>
   </template>
 
@@ -233,12 +233,12 @@ var vm = new Vue({
     ・親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される．
     */
     props: {
-      'criteria': {
+      "criteria": {
         type: Object,
         required: true,
       },
 
-      'example': {
+      "example": {
         type: Object,
         required: true,
       }
@@ -250,10 +250,10 @@ var vm = new Vue({
     */
     data: function () {
       return {
-        a: 'a',
-        b: 'b',
-        c: 'c',
-        d: 'd',
+        a: "a",
+        b: "b",
+        c: "c",
+        d: "d",
       };
     },
 
@@ -266,8 +266,8 @@ var vm = new Vue({
         ・changeイベントの発火と，これのイベントハンドラ関数に引数を渡す．
         */
         this.$emit(
-                'change',
-                {'criteria': localCriteria}
+                "change",
+                {"criteria": localCriteria}
         );
       },
 
@@ -280,8 +280,8 @@ var vm = new Vue({
       component: {
           
         // 子コンポーネントと孫コンポーネントの対応関係
-        'v-example-component-4': require('./xxx/xxx/xxx-4'),
-        'v-example-component-5': require('./xxx/xxx/xxx-5'),
+        "v-example-component-4": require("./xxx/xxx/xxx-4"),
+        "v-example-component-5": require("./xxx/xxx/xxx-5"),
       },
     }
   }
@@ -330,33 +330,33 @@ class Example {
 View層（```template```タグ部分）のイベントを，ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし，イベントが発火した時点でイベントハンドラ関数をコールする．コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである「Props Down, Events Up」とは異なる概念なので注意する．
 
 ```vue
-v-on:{イベント名}='{イベントハンドラ関数（methods: 内にあるメソッド）}'
+v-on:{イベント名}="{イベントハンドラ関数（methods: 内にあるメソッド）}"
 ```
 
 または，省略して，
 
 ```vue
-@:{イベント名}='<イベントハンドラ関数>'
+@:{イベント名}="<イベントハンドラ関数>"
 ```
 
 で記述する．
 
-#### ・```v-on:submit='<イベントハンドラ関数>'```，```button```タグ
+#### ・```v-on:submit="<イベントハンドラ関数>"```，```button```タグ
 
 View層のフォーム送信イベントが起きた時点で，ViewModel層にバインディングされたイベントハンドラ関数をコールする．例えば，親コンポーネントでは，子コンポーネントによって発火させられる```search```イベントに対して，```result()```というイベントハンドラ関数を紐づけておく．
 
 **＊実装例＊**
 
 ```html
-<div id='app'>
+<div id="app">
   <v-example-component
-          v-on:search='result()'
+          v-on:search="result()"
   ></v-example-component>
 </div>
 
 <!-- Vueインスタンスの生成は外部スクリプトで行う． -->
 <script
-        src='{{ asset('.../index.js') }}'>
+        src="{{ asset(".../index.js") }}">
 </script>
 ```
 
@@ -369,7 +369,7 @@ index.jsの```methods:```内には，イベントハンドラ関数として```r
 var vm = new Vue({
     
     //　Vueインスタンスを使用するdivタグを設定.
-    el: '#app',
+    el: "#app",
     
     // イベントハンドラ関数
     method: {
@@ -388,9 +388,9 @@ var vm = new Vue({
 ```vue
 <template>
   <!-- submitイベントが発火すると，紐づくイベントハンドラ関数がコールされる -->
-  <form v-on:submit.prevent='search()'>
+  <form v-on:submit.prevent="search()">
     <!-- submitイベントを発火させるbuttonタグ．submitの場合は省略可能 -->
-    <button type='submit'>検索する</button>
+    <button type="submit">検索する</button>
   </form>
 </template>
 
@@ -402,14 +402,14 @@ var vm = new Vue({
     methods: {
       search() {
         // 親コンポーネントのsearchイベントを発火させる．
-        this.$emit('search')
+        this.$emit("search")
       },
     }
   })
 </script>
 ```
 
-#### ・```v-on:click='<イベントハンドラ関数>'```
+#### ・```v-on:click="<イベントハンドラ関数>"```
 
 View層でクリックイベントが起きた時点で発火し，ViewModel層でバインディングされたイベントハンドラ関数をコールする．
 
@@ -417,7 +417,7 @@ View層でクリックイベントが起きた時点で発火し，ViewModel層�
 
 ```
 
-#### ・```v-on:change='<イベントハンドラ関数>'```
+#### ・```v-on:change="<イベントハンドラ関数>"```
 
 View層で```input```タグや```select```タグで，値の入力後にマウスフォーカスがタグから外れた時点で発火し，ViewModel層でバインディングされたイベントハンドラ関数をコールする
 
@@ -425,7 +425,7 @@ View層で```input```タグや```select```タグで，値の入力後にマウ�
 
 ```
 
-#### ・```v-on:input='<イベントハンドラ関数>'```
+#### ・```v-on:input="<イベントハンドラ関数>"```
 
 View層で```input```タグで，一文字でも値が入力された時点で発火し，ViewModel層バインディングされたイベントハンドラ関数をコールする．```v-on:change```とは，イベントが発火するタイミングが異なるため，共存することが可能である．
 
@@ -439,7 +439,7 @@ View層で```input```タグで，一文字でも値が入力された時点で�
 
 #### ・```v-show```／```v-if```とは
 
-条件分岐を行うタグであり，```v-show```または```v-if```を使用して，プロパティ名を指定する．（```v-xxx='<propsのプロパティ名>'```）で記述する．親テンプレートから渡された```props```内のプロパティ名がもつ値が```TRUE```の時に表示し，```FALSE```の時に非表示にする．もし頻繁に表示と非表示の切り替えを行うようなら，```v-if```の方が，描画コストが重たくなるリスクが高くなる為，```v-show```推奨である．
+条件分岐を行うタグであり，```v-show```または```v-if```を使用して，プロパティ名を指定する．（```v-xxx="<propsのプロパティ名>"```）で記述する．親テンプレートから渡された```props```内のプロパティ名がもつ値が```TRUE```の時に表示し，```FALSE```の時に非表示にする．もし頻繁に表示と非表示の切り替えを行うようなら，```v-if```の方が，描画コストが重たくなるリスクが高くなる為，```v-show```推奨である．
 
 | タグ   | 使い分け                        |
 | ------ | :------------------------------ |
@@ -460,20 +460,20 @@ View層で```input```タグで，一文字でも値が入力された時点で�
 
 #### ・```v-model```とは
 
-実装方法は，```v-on:input='<イベントハンドラ関数>'```と同じである．例えば，以下の二つは同じである．
+実装方法は，```v-on:input="<イベントハンドラ関数>"```と同じである．例えば，以下の二つは同じである．
 
 ```vue
 <input
-    type='text'
-    v-model='example'>
+    type="text"
+    v-model="example">
 </input>
 ```
 
 ```vue
 <input 
-    type='text'
-    :value='example'
-    @input='eventHandler'>
+    type="text"
+    :value="example"
+    @input="eventHandler">
 </input>
 ```
 
@@ -496,13 +496,13 @@ View層で```input```タグで，一文字でも値が入力された時点で�
 **＊実装例＊**
 
 ```javascript
-Vue.component('v-example-component', {
-    template: require('./xxx/xxx/xxx')
+Vue.component("v-example-component", {
+    template: require("./xxx/xxx/xxx")
 });
 
 // 変数への格納を省略してもよい
 var vm = new Vue({
-    el: '#app'
+    el: "#app"
 })
 ```
 
@@ -513,17 +513,17 @@ var vm = new Vue({
 ```javascript
 var vExampleComponent = {
     // テンプレートと親コンポーネントの対応関係
-    template: require('./xxx/xxx/xxx'),
+    template: require("./xxx/xxx/xxx"),
 };
 
 // 変数への格納を省略してもよい
 var vm = new Vue({
 
-    el: '#app',
+    el: "#app",
 
     components: {
         // 親コンポーネントにオブジェクト名をつける．
-        'v-example-component': vExampleComponent
+        "v-example-component": vExampleComponent
     }
 
 })
@@ -537,11 +537,11 @@ var vm = new Vue({
 // 変数への格納を省略してもよい
 var vm = new Vue({
 
-    el: '#app',
+    el: "#app",
 
     components: {
         // テンプレートと親コンポーネントの対応関係
-        'v-example-component': require('./xxx/xxx/xxx'),
+        "v-example-component": require("./xxx/xxx/xxx"),
     }
 
 })
@@ -568,13 +568,13 @@ http://www.example.co.jp:80/{ルート}/{パスパラメータ}?text1=a&text2=b
 
 ```javascript
 // Vue-Routerライブラリを読み込む．
-const vueRouter = require('vue-router').default;
+const vueRouter = require("vue-router").default;
 
 // VueRouterインスタンスを作成する．
 const router = new VueRouter({
     routes: [
-        {path: '/', component: Home},
-        {path: '/example', component: Example}
+        {path: "/", component: Home},
+        {path: "/example", component: Example}
     ]
 })
 
@@ -585,7 +585,7 @@ module.exports = router;
 そして，Vue-Routerの機能を利用するために，```router```オプションをルートコンポーネントに注入する必要がある．
 
 ```javascript
-import router from './router'
+import router from "./router"
 
 // 変数への格納を省略してもよい
 var vm = new Vue({
@@ -596,7 +596,7 @@ var vm = new Vue({
     // watchオプション
     watch: {
         // スタック内で履歴の移動が起こった時に，対応付けた無名関数を実行．
-        '$route': function (to, from) {
+        "$route": function (to, from) {
             if (to.fullPath !== from.fullPath) {
                 // 何らかの処理．
             }
@@ -619,7 +619,7 @@ Webアプリケーション全体に1つ存在し，全体的なRouter機能を�
 
 ```javascript
 // users/?example=xyz が履歴スタックに追加される．
-this.$router.push({ path : '/users', query: { example : 'xyz' }});
+this.$router.push({ path : "/users", query: { example : "xyz" }});
 ```
 
 #### ・```$route```（Routeオブジェクト）
@@ -680,7 +680,7 @@ Vuejsでライブラリの一つで，MVVMアーキテクチャのモデルに�
 
 ```javascript
 // Vuexライブラリを読み込む．
-const vuex = require('vuex')
+const vuex = require("vuex")
 
 // 外部ファイルが，このStoreインスタンスを読み込めるようにする．
 module.exports = new Vuex.Store({
@@ -737,7 +737,7 @@ module.exports = new Vuex.Store({
     actions: {
         // 省略記法（Argument destructuring)
         mutate({commit}) {
-            commit('mutate');
+            commit("mutate");
         }
     }
 })
@@ -783,12 +783,12 @@ module.exports = new Vuex.Store({
 <script>
 
   // Vuex.Store()を読み込む．
-  const store = require('./_store')
+  const store = require("./_store")
 
   // Vuex.Store()のgetters，mutations，actionsをマッピングできるように読み込む．
-  const mapGetters = require('vuex').mapGetters;
-  const mapActions = require('vuex').mapActions;
-  const mapMutaions = require('vuex').mapMutaions;
+  const mapGetters = require("vuex").mapGetters;
+  const mapActions = require("vuex").mapActions;
+  const mapMutaions = require("vuex").mapMutaions;
 
 
   module.exports = {
@@ -800,7 +800,7 @@ module.exports = new Vuex.Store({
       StoreのGetterをローカルのcomputed:{}にマッピングし，コールできるように．
       */
       ...mapGetters([
-        'x-Function'
+        "x-Function"
       ])
 
     },
@@ -810,12 +810,12 @@ module.exports = new Vuex.Store({
 
       // mapMutationsヘルパー
       ...mapMutations([
-        'y-Function'
+        "y-Function"
       ]),
 
       // mapActionsヘルパー
       ...mapActions([
-        'z-Function'
+        "z-Function"
       ]),
     }
   }
@@ -868,7 +868,7 @@ new Vue({
     
   data(){
     return{
-      hoge:'Hiroki'
+      hoge:"Hiroki"
     }
   },
     
@@ -906,7 +906,7 @@ var vm = new Vue({
     
   data() {
     return{
-      name:'Hiroki'
+      name:"Hiroki"
     }
   },
     
@@ -919,7 +919,7 @@ var vm = new Vue({
 
 ```sh
 # 結果
-'Hiroki'
+"Hiroki"
 ```
 
 #### ・beforeMount
@@ -940,12 +940,12 @@ var vm = new Vue({
     
   data() {
     return{
-      name: ''
+      name: ""
     }
   },
     
   beforeMount() {
-    this.name = 'Hiroki'
+    this.name = "Hiroki"
   }
 }
 </script>
@@ -978,12 +978,12 @@ var vm = new Vue({
     
   data() {
     return{
-      name: ''
+      name: ""
     }
   },
     
   mounted() {
-    this.name = 'Hiroki'
+    this.name = "Hiroki"
   }
 }
 </script>
@@ -991,7 +991,7 @@ var vm = new Vue({
 
 ```sh
 # 結果
-'Hiroki'
+"Hiroki"
 ```
 
 ただし，全ての子コンポーネントでマウントが完了したことを待つために，```nextTick```メソッドを使用する必要がある．
@@ -1006,13 +1006,13 @@ var vm = new Vue({
     
   data() {
     return{
-      name: ''
+      name: ""
     }
   },
     
   mounted() {
       this.$nextTick(function () {
-          this.name = 'Hiroki'
+          this.name = "Hiroki"
       })
   }
 }
@@ -1039,13 +1039,13 @@ var vm = new Vue({
     
   data() {
     return{
-      name: ''
+      name: ""
     }
   },
     
   mounted() {
       this.$nextTick(function () {
-          this.name = 'Hiroki'
+          this.name = "Hiroki"
       })
   },
   
@@ -1058,7 +1058,7 @@ var vm = new Vue({
 
 ```sh
 # 結果
-'Hiroki'
+"Hiroki"
 ```
 
 #### ・updated
@@ -1075,13 +1075,13 @@ var vm = new Vue({
     
   data() {
     return{
-      name: ''
+      name: ""
     }
   },
     
   mounted() {
       this.$nextTick(function () {
-          this.name = 'Hiroki'
+          this.name = "Hiroki"
       })
   },
   
@@ -1094,7 +1094,7 @@ var vm = new Vue({
 
 ```sh
 # 結果
-'Hiroki'
+"Hiroki"
 ```
 
 #### ・beforeDestroy

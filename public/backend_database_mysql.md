@@ -30,18 +30,18 @@ SHOW SESSION VARIABLES;
 SHOW GLOBAL VARIABLES;
 
 -- OSとDBのタイムゾーンに関するパラメータを表示
-SHOW SESSION VARIABLES LIKE '%time_zone';
-SHOW GLOBAL VARIABLES LIKE '%time_zone';
+SHOW SESSION VARIABLES LIKE "%time_zone";
+SHOW GLOBAL VARIABLES LIKE "%time_zone";
 ```
 
 #### ・パラメータの設定
 
 ```sql
 -- グローバルパラメータの場合
-SET GLOBAL time_zone = 'Asia/Tokyo';
+SET GLOBAL time_zone = "Asia/Tokyo";
 
 -- セッションパラメータの場合
-SET time_zone = 'Asia/Tokyo';
+SET time_zone = "Asia/Tokyo";
 ```
 
 <br>
@@ -59,13 +59,13 @@ SET time_zone = 'Asia/Tokyo';
 CREATE TABLE order_data (
 
     -- Primary Key制約
-    order_id INT(10) PRIMARY KEY COMMENT '注文ID',
+    order_id INT(10) PRIMARY KEY COMMENT "注文ID",
 
     -- Not Null制約
-    order_kbn INT(3) NOT NULL COMMENT '注文区分',
-    system_create_date_time DATETIME NOT NULL COMMENT 'システム登録日時',
-    system_update_date_time DATETIME NOT NULL COMMENT 'システム更新日時',
-    delete_flg INT(1) DEFAULT 0 NOT NULL COMMENT '0：通常，1：削除済',
+    order_kbn INT(3) NOT NULL COMMENT "注文区分",
+    system_create_date_time DATETIME NOT NULL COMMENT "システム登録日時",
+    system_update_date_time DATETIME NOT NULL COMMENT "システム更新日時",
+    delete_flg INT(1) DEFAULT 0 NOT NULL COMMENT "0：通常，1：削除済",
   
     -- 複合Primary Key制約（これを指定する場合，上記のPrimary Key制約の記述は不要）
     PRIMARY KEY(order_id, order_kbn)
@@ -165,7 +165,7 @@ EXEC SelectContact
 DBからテーブルをエクスポートする．エクスポートしたいテーブルの数だけ，テーブル名を連ねる
 
 ```shell
-$ mysqldump --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名 }' '{ テーブル名1 }' '{ テーブル名2 }' > table.sql
+$ mysqldump --force -u "{ アカウント }" -p -h "{ DBのホスト }" "{ DB名 }" "{ テーブル名1 }" "{ テーブル名2 }" > table.sql
 ```
 
 #### ・テーブルのインポート
@@ -173,7 +173,7 @@ $ mysqldump --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名
 DBにテーブルをインポートする．forceオプションで，エラーが出ても強制的にインポート．
 
 ```shell
- $ mysql --force -u '{ アカウント }' -p -h '{ DBのホスト }' '{ DB名 }' < table.sql
+ $ mysql --force -u "{ アカウント }" -p -h "{ DBのホスト }" "{ DB名 }" < table.sql
 ```
 
 <br>
@@ -209,7 +209,7 @@ DBにテーブルをインポートする．forceオプションで，エラー�
 #### ・ユーザ作成
 
 ```sql
-CREATE USER '{ ユーザ名 }' IDENTIFIED BY '{ パスワード }';
+CREATE USER "{ ユーザ名 }" IDENTIFIED BY "{ パスワード }";
 ```
 
 #### ・ユーザ一覧
@@ -246,16 +246,16 @@ DROP USER { ユーザ名 }@`%`;
 
 ```sql
 -- 全てのデータベースに関する権限を付与
-GRANT ALL PRIVILEGES ON *.* TO '{ ユーザ名 }';
+GRANT ALL PRIVILEGES ON *.* TO "{ ユーザ名 }";
 
 -- Amazon AuroraまたはRDSの場合はこちら
-GRANT ALL PRIVILEGES ON `%`.* TO '{ ユーザー名 }';
+GRANT ALL PRIVILEGES ON `%`.* TO "{ ユーザー名 }";
 ```
 
 ```sql
 -- Amazon Auroraも同じく
 -- 特定のデータベースに関する全権限を付与
-GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザ名 }';
+GRANT ALL PRIVILEGES ON {DB名}.* TO "{ ユーザ名 }";
 ```
 
 #### ・一部の操作権限を付与
@@ -263,7 +263,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザ名 }';
 特定のデータベースに関する読み出し権限のみ付与する．
 
 ```sql
-GRANT SELECT ON {DB名}.* TO '{ ユーザ名 }';
+GRANT SELECT ON {DB名}.* TO "{ ユーザ名 }";
 ```
 
 #### ・権限の振り方
@@ -282,13 +282,13 @@ GRANT SELECT ON {DB名}.* TO '{ ユーザ名 }';
 ユーザに付与されている権限を表示する．
 
 ```sql
-SHOW GRANTS FOR '{ ユーザ名 }';
+SHOW GRANTS FOR "{ ユーザ名 }";
 ```
 
 作成しただけで権限を何も付与してないユーザの場合，「データベースサーバ内の全データベースに関して，全権限なし」を表す```USAGE```として表示される．
 
 ```sql
-GRANT USAGE ON *.* TO '{ ユーザー名 }';
+GRANT USAGE ON *.* TO "{ ユーザー名 }";
 ```
 
 特定のデータベースの操作権限を与えると，上記に加えて，付与したGRANT権限も表示されるようになる．
@@ -303,15 +303,15 @@ GRANT USAGE ON *.* TO '{ ユーザー名 }';
 
 ```sql
 -- Amazon AuroraまたはRDSの場合
-REVOKE ALL PRIVILEGES ON `%`.* FROM '{ ユーザ名 }';
+REVOKE ALL PRIVILEGES ON `%`.* FROM "{ ユーザ名 }";
 
-REVOKE ALL PRIVILEGES ON {DB名}.* FROM '{ ユーザ名 }';
+REVOKE ALL PRIVILEGES ON {DB名}.* FROM "{ ユーザ名 }";
 ```
 
 #### ・ユーザ名変更
 
 ```sql
-RENAME USER '{ 古いユーザ名 }' TO '{ 新しいユーザ名 }';
+RENAME USER "{ 古いユーザ名 }" TO "{ 新しいユーザ名 }";
 ```
 
 <br>
@@ -427,7 +427,7 @@ SELECT LAST_INSERT_ID();
 文字列をハッシュ化
 
 ```sql
-SELECT MD5('xxxxx');
+SELECT MD5("xxxxx");
 ```
 
 <br>
@@ -517,21 +517,21 @@ FROM
 
 ```PHP
 <?php
-$joinedIdList = implode(',', $idList);
+$joinedIdList = implode(",", $idList);
 
 // 並び替え条件を設定
 $expression = call_user_func(function () use ($orders, $joinedIdList) {
     if ($orders) {
         foreach ($orders as $key => $order) {
             switch ($key) {
-                case 'id':
-                    return sprintf('ss.id %s', $order);
+                case "id":
+                    return sprintf("ss.id %s", $order);
             }
         }
     }
     
     // IN句順の場合
-    return sprintf('FIELD(ss.id, %s)', $idList);
+    return sprintf("FIELD(ss.id, %s)", $idList);
 });
 
 $sql = <<<SQL
@@ -601,8 +601,8 @@ SELECT
 FROM
     fruit
 WHERE
-    name = 'みかん'
-    OR name = 'りんご';
+    name = "みかん"
+    OR name = "りんご";
 ```
 
 **【IN句を使用した場合】**
@@ -613,7 +613,7 @@ SELECT
 FROM
     fruit
 WHERE
-    name IN('みかん', 'りんご');
+    name IN("みかん", "りんご");
 ```
 
 #### ・```ANY```句の使い方
@@ -713,7 +713,7 @@ SELECT
 FROM
     { テーブル名 }
 WHERE
-    { カラム名 } LIKE '%営業';
+    { カラム名 } LIKE "%営業";
 ```
 
 ```sql
@@ -722,7 +722,7 @@ SELECT
 FROM
     { テーブル名 }
 WHERE
-    { カラム名 } LIKE '_営業';
+    { カラム名 } LIKE "_営業";
 ```
 
 <br>
@@ -855,7 +855,7 @@ WHERE
 ```PHP
 <?php
 // SELECT文を定義して実行．
-$sql = 'SELECT * FROM doraemon_characters';
+$sql = "SELECT * FROM doraemon_characters";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -893,7 +893,7 @@ print_r($data);
 ```PHP
 <?php
 // SELECT文を定義して実行．
-$sql = 'SELECT { カラム名 }OUNT(*) FROM doraemon_characters';
+$sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -916,16 +916,16 @@ PHPとは異なり，変数定義に『$』は用いないことに注意．
 
 ```java
 // SELECT文を定義して実行．
-String sql = 'SELECT * FROM doraemon_characters';
+String sql = "SELECT * FROM doraemon_characters";
 ResultSet result statement.executeQuery();
 
 
 // 全てのレコードを取得
 while(result.next()){
-    System.out.println(result.getInt('id'));
-    System.out.println(result.getString('name'));
-    System.out.println(result.getString('gender'));
-    System.out.println(result.getString('typeL'));
+    System.out.println(result.getInt("id"));
+    System.out.println(result.getString("name"));
+    System.out.println(result.getString("gender"));
+    System.out.println(result.getString("typeL"));
 }
 
 // カラム名と値の連想配列として取得できる．
@@ -944,27 +944,27 @@ while(result.next()){
 ```PHP
 <?php
 // $_POSTを用いて，送信されたpostメソッドのリクエストを受け取り，属性から各値を取得
-$staff_name = $_POST['name'];
-$staff_pass = $_POST['pass'];
+$staff_name = $_POST["name"];
+$staff_pass = $_POST["pass"];
 
 
 // HTMLとして変数の内容を出力する際，「<」「>」などの特殊文字をエスケープ（無害化）
-$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, 'UTF-8');
-$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, 'UTF-8');
+$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
+$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 
 
 // データベースと接続（イコールの間にスペースを入れるとエラーになる）
-$dsn = 'mysql:dbname=kizukeba_pronami_php;
+$dsn = "mysql:dbname=kizukeba_pronami_php;
 host=kizukebapronamiphp
-charaset=UTF-8';
-$user = 'root';
-$password = '';
+charaset=UTF-8";
+$user = "root";
+$password = "";
 $dbh = new PDO($dsn, $user, $password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
 // 列名と値を指定してINSERT
-$sql='INSERT INTO mst_staff (name,password) VALUES (?,?)';
+$sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
 $stmt = $dbh->prepare($sql);
 
 
@@ -1002,7 +1002,7 @@ class ItemQuery
     // 列名と値を指定してINSERT
     public static function insert()
     {
-        return 'INSERT INTO item_table VALUES(1, '商品A', 1000, '2019-07-24 07:07:07');';
+        return "INSERT INTO item_table VALUES(1, "商品A", 1000, "2019-07-24 07:07:07");";
     }
 }
 ```

@@ -259,9 +259,9 @@ class Converter
     */
     public function convertToArray(XxxEntity $xxxEntity)
     {
-        $xxxArray['id'] = $xxxEntity->id;
-        $xxxArray['name'] = $xxxEntity->name;
-        $xxxArray['email'] = $xxxEntity->email;
+        $xxxArray["id"] = $xxxEntity->id;
+        $xxxArray["name"] = $xxxEntity->name;
+        $xxxArray["email"] = $xxxEntity->email;
     }
 }  
 ```
@@ -358,16 +358,16 @@ class XxxCriteria
         // 自身をインスタンス化．
         $criteria = new static();
         
-        if(isset($array['id'])) {
-            $criteria->id = $array['id'];
+        if(isset($array["id"])) {
+            $criteria->id = $array["id"];
         }
       
-        if(isset($array['name'])) {
-            $criteria->id = $array['name'];
+        if(isset($array["name"])) {
+            $criteria->id = $array["name"];
         }
       
-        if(isset($array['email'])) {
-            $criteria->id = $array['email'];
+        if(isset($array["email"])) {
+            $criteria->id = $array["email"];
         }
       
         return $criteria;
@@ -486,7 +486,7 @@ class DogToy
     public function nameWithColor()
     {
         return sprintf(
-            '%s（%s）',
+            "%s（%s）",
             $this->name->value(),
             $this->colorVO->colorName()
         );
@@ -714,9 +714,9 @@ class ExampleVO
     
     public function __construct($param)
     {
-        $this->propertyA = $param['a'];
-        $this->propertyB = $param['b'];
-        $this->propertyC = $param['c'];
+        $this->propertyA = $param["a"];
+        $this->propertyB = $param["b"];
+        $this->propertyC = $param["c"];
     }   
 }
 ```
@@ -732,9 +732,9 @@ Test01クラスインスタンスの```$property01```に値を設定するため
 
 $test01 = new Test01;
 
-$test01->setProperty01('データ01の値');
+$test01->setProperty01("データ01の値");
 
-$test01->setProperty01('新しいデータ01の値');
+$test01->setProperty01("新しいデータ01の値");
 ```
 
 一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．Setterを持たせずに，```construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
@@ -744,9 +744,9 @@ $test01->setProperty01('新しいデータ01の値');
 ```php
 <?php
 
-$test02 = new Test02('データ02の値');
+$test02 = new Test02("データ02の値");
 
-$test02 = new Test02('新しいデータ02の値');
+$test02 = new Test02("新しいデータ02の値");
 ```
 
 <br>
@@ -814,7 +814,7 @@ class NameVO
     protected static function computedPropertyNames()
     {
         return [
-            'fullName'
+            "fullName"
         ];
     }
 }
@@ -857,7 +857,7 @@ class MoneyVO
      */    
     public function unit()
     {
-        return '円';
+        return "円";
     }
     
     /**
@@ -910,15 +910,15 @@ namespace App\Domain\ValueObject;
  */
 class ColorVO extends Enum
 {
-    const RED = '1';
-    const BLUE = '2';
+    const RED = "1";
+    const BLUE = "2";
     
     /**
      * 『self::定数名』で，定義の値へアクセスします．
      */
     private $defs = [
-        self::RED => ['color_name' => 'レッド'],
-        self::BLUE => ['color_name' => 'ブルー']
+        self::RED => ["color_name" => "レッド"],
+        self::BLUE => ["color_name" => "ブルー"]
     ];
 
     /**
@@ -936,7 +936,7 @@ class ColorVO extends Enum
     {
         // $kbnValueに応じて，色名をcolornameデータにセットする．
         $this->colorValue = $value;
-        $this->colorname = $this->defs[$value]['color_name'];
+        $this->colorname = $this->defs[$value]["color_name"];
     }
     
     /**
@@ -1024,13 +1024,13 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する．
-        $query->insert('dog_toy_table')
+        $query->insert("dog_toy_table")
             ->values([
                 // Route Entityの要素をカラム値として設定する．（IDはAutoIncrement）
-                'name'  => $dogToy->getName()->value(),
-                'type'  => $dogToy->getType()->value(),
-                'price' => $dogToy->getPriceVO()->value(),
-                'color' => $dogToy->getColorVO()->value(),
+                "name"  => $dogToy->getName()->value(),
+                "type"  => $dogToy->getType()->value(),
+                "price" => $dogToy->getPriceVO()->value(),
+                "color" => $dogToy->getColorVO()->value(),
         ]);
     }
 }
@@ -1060,13 +1060,13 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する．
-        $query->update('dog_toy_table', 'dog_toy')
+        $query->update("dog_toy_table", "dog_toy")
             // Route Entityの要素をカラム値として設定する．
-            ->set('dog_toy.name', $dogToy->getName()->value())
-            ->set('dog_toy.type', $dogToy->getType()->value())
-            ->set('dog_toy.price', $dogToy->getPriceVO()->value())
-            ->set('dog_toy.color', $dogToy->getColorVO()->value())
-            ->where('dog_toy.id', $dogToy->getId()->value();
+            ->set("dog_toy.name", $dogToy->getName()->value())
+            ->set("dog_toy.type", $dogToy->getType()->value())
+            ->set("dog_toy.price", $dogToy->getPriceVO()->value())
+            ->set("dog_toy.color", $dogToy->getColorVO()->value())
+            ->where("dog_toy.id", $dogToy->getId()->value();
     }
 }
 ```
@@ -1096,10 +1096,10 @@ class DogToyRepository
         $query = $this->createQueryBuilder();
         
         // SQLを定義する．
-        $query->update('dog_toy_table', 'dog_toy')
+        $query->update("dog_toy_table", "dog_toy")
             // 論理削除
-            ->set('dog_toy.is_deleted', FlagConstant::IS_ON)
-            ->where('dog_toy.id', $dogToy->getId()->value();
+            ->set("dog_toy.is_deleted", FlagConstant::IS_ON)
+            ->where("dog_toy.id", $dogToy->getId()->value();
     }
 }
 ```
@@ -1164,15 +1164,15 @@ class DogToyRepository
         
         // SQLを設定する．
         $query->select(
-            'dog_toy.id    AS dog_toy_id',
-            'dog_toy.name  AS dog_toy_name',
-            'dog_toy.type  AS dog_toy_type',
-            'dog_toy.price AS dog_toy_price',
-            'dog_toy.color AS dog_toy_color'
+            "dog_toy.id    AS dog_toy_id",
+            "dog_toy.name  AS dog_toy_name",
+            "dog_toy.type  AS dog_toy_type",
+            "dog_toy.price AS dog_toy_price",
+            "dog_toy.color AS dog_toy_color"
         )
-        ->from('dog_toy_table', 'dog_toy')
+        ->from("dog_toy_table", "dog_toy")
         // 論理削除されていないもののみ
-        ->where('dog_toy.is_deleted', FlagConstant::IS_OFF)
+        ->where("dog_toy.is_deleted", FlagConstant::IS_OFF)
         ->getQuery();    
         
         // SQLを実行する．
@@ -1185,11 +1185,11 @@ class DogToyRepository
     private function aggregateDogToy(array $fetched): DogToy
     {
         $dogToy = new DogToy(
-            $fetched['dog_toy_id'],
-            $fetched['dog_toy_name'],
-            $fetched['dog_toy_type'],
-            new PriceVO($fetched['dog_toy_price'],
-            new ColorVO($fetched['dog_toy_color']
+            $fetched["dog_toy_id"],
+            $fetched["dog_toy_name"],
+            $fetched["dog_toy_type"],
+            new PriceVO($fetched["dog_toy_price"],
+            new ColorVO($fetched["dog_toy_color"]
         );
         
         return $dogToy;
@@ -1228,18 +1228,18 @@ class DogComboFactory
     {
         return new DogCombo(
             new DogToy(
-                $data['dog_toy_id'],
-                $data['dog_toy_name'],
-                $data['dog_toy_type'],
-                $data['dog_toy_price'],
-                $data['dog_toy_color'],
+                $data["dog_toy_id"],
+                $data["dog_toy_name"],
+                $data["dog_toy_type"],
+                $data["dog_toy_price"],
+                $data["dog_toy_color"],
             ),
             new DogFood(
-                $data['dog_food_id'],
-                $data['dog_food_name'],
-                $data['dog_food_type'],
-                $data['dog_food_price'],
-                $data['dog_food_flavor'],
+                $data["dog_food_id"],
+                $data["dog_food_name"],
+                $data["dog_food_type"],
+                $data["dog_food_price"],
+                $data["dog_food_flavor"],
             )
         );
     } 

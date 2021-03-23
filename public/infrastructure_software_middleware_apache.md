@@ -57,7 +57,7 @@ $ sudo httpd -M
 読み込まれた```conf```ファイルを一覧で表示する．この結果から，使われていない```conf```ファイルもを検出できる．
 
 ```shell
-$ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep '# In' | awk '{print $4}'
+$ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 ```
 
 #### ・読み込まれるVirtualHost設定の一覧

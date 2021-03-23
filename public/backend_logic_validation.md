@@ -40,23 +40,23 @@
 ```php
 <?php
 // 変数に Tue を格納
-$weeks = 'Tue';
+$weeks = "Tue";
 
-// if文でTueに該当したら'火曜日'と表示する．
-if ($weeks == 'Mon') {
-    echo '月曜日';
-} elseif ($weeks == 'Tue') {
-    echo '火曜日';
-} elseif ($weeks == 'Wed') {
-    echo '水曜日';
-} elseif ($weeks == 'Thu') {
-    echo '木曜日';
-} elseif ($weeks == 'Fri') {
-    echo '金曜日';
-} elseif ($weeks == 'Sat') {
-    echo '土曜日';
+// if文でTueに該当したら"火曜日"と表示する．
+if ($weeks == "Mon") {
+    echo "月曜日";
+} elseif ($weeks == "Tue") {
+    echo "火曜日";
+} elseif ($weeks == "Wed") {
+    echo "水曜日";
+} elseif ($weeks == "Thu") {
+    echo "木曜日";
+} elseif ($weeks == "Fri") {
+    echo "金曜日";
+} elseif ($weeks == "Sat") {
+    echo "土曜日";
 } else {
-    echo '日曜日';
+    echo "日曜日";
 }
 
 // 実行結果
@@ -73,33 +73,33 @@ if ($weeks == 'Mon') {
 <?php
 
 // 変数に Tue を格納
-$weeks = 'Tue';
+$weeks = "Tue";
 
-// 条件分岐でTueに該当したら'火曜日'と表示する．breakでif文を抜けなければ，全て実行されてしまう．
+// 条件分岐でTueに該当したら"火曜日"と表示する．breakでif文を抜けなければ，全て実行されてしまう．
 switch ($weeks) {
-    case 'Mon':
-        echo '月曜日';
+    case "Mon":
+        echo "月曜日";
         break;
-    case 'Tue':
-        echo '火曜日';
+    case "Tue":
+        echo "火曜日";
         break;
-    case 'Wed':
-        echo '水曜日';
+    case "Wed":
+        echo "水曜日";
         break;
-    case 'Thu':
-        echo '木曜日';
+    case "Thu":
+        echo "木曜日";
         break;
-    case 'Fri':
-        echo '金曜日';
+    case "Fri":
+        echo "金曜日";
         break;
-    case 'Sat':
-        echo '土曜日';
+    case "Sat":
+        echo "土曜日";
         break;
-    case 'Sun':
-        echo '日曜日';
+    case "Sun":
+        echo "日曜日";
         break;
     default:
-        echo '曜日がありません';
+        echo "曜日がありません";
 }
 
 // 実行結果
@@ -141,21 +141,21 @@ class Example
                 // if文を通過した場合，メソッドの返却値が格納される．
                 // 通過しない場合，定数が格納される．
                 if ($option->isOptionItemA()) {
-                    $result['optionItemA'] = $option->optionItemA();
+                    $result["optionItemA"] = $option->optionItemA();
                 } else {
-                    $result['optionItemA'] = self::noOptionItem;
+                    $result["optionItemA"] = self::noOptionItem;
                 }
 
                 if ($option->isOptionItemB()) {
-                    $result['optionItemB'] = $option->optionItemB();
+                    $result["optionItemB"] = $option->optionItemB();
                 } else {
-                    $result['optionItemB'] = self::noOptionItem;
+                    $result["optionItemB"] = self::noOptionItem;
                 }
 
                 if ($option->isOptionItemC()) {
-                    $result['optionItemC'] = $option->optionItemC();
+                    $result["optionItemC"] = $option->optionItemC();
                 } else {
-                    $result['optionItemC'] = self::noOptionItem;
+                    $result["optionItemC"] = self::noOptionItem;
                 }
             }
         }
@@ -194,15 +194,15 @@ class Example
 
                 // if文を通過した場合，メソッドの返却値が格納される．
                 // 通過しない場合，定数が格納される．
-                $result['optionItemA'] = ($option->isOptionItemA())
+                $result["optionItemA"] = ($option->isOptionItemA())
                   ? $option->optionItemA()
                   : self::noOptionItem;
 
-                $result['optionItemB'] = ($option->isOptionItemB())
+                $result["optionItemB"] = ($option->isOptionItemB())
                   ? $option->optionItemB()
                   : self::noOptionItem;
 
-                $result['optionItemC'] = ($option->isOptionItemC())
+                $result["optionItemC"] = ($option->isOptionItemC())
                   ? $option->optionItemC()
                   : self::noOptionItem;
             };
@@ -237,9 +237,9 @@ class Example
     public function example($result)
     {
         // 初期値0を設定
-        $result['optionItemA'] = self::noOptionItem;
-        $result['optionItemB'] = self::noOptionItem;
-        $result['optionItemC'] = self::noOptionItem;
+        $result["optionItemA"] = self::noOptionItem;
+        $result["optionItemB"] = self::noOptionItem;
+        $result["optionItemC"] = self::noOptionItem;
     
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す．
         if(!empty($this->routeEntity->options)) {
@@ -248,15 +248,15 @@ class Example
                 // if文を通過した場合，メソッドの返却値によって初期値0が上書きされる．
                 // 通過しない場合，初期値0が用いられる．
                 if ($option->isOptionItemA()) {
-                    $result['optionItemA'] = $option->optionItemA();
+                    $result["optionItemA"] = $option->optionItemA();
                 }
             
                 if ($option->isOptionItemB()) {
-                    $result['optionItemB'] = $option->optionItemB();
+                    $result["optionItemB"] = $option->optionItemB();
                 }
             
                 if ($option->isOptionItemC()) {
-                    $result['optionItemC'] = $option->optionItemC();
+                    $result["optionItemC"] = $option->optionItemC();
                 }
             };
         }
@@ -302,23 +302,23 @@ function leapYear(int $year): string
 {
     // (5)
     if ($year <= 0) {
-        throw new Exception('負の数は検証できません．');
+        throw new Exception("負の数は検証できません．");
 
     // (4)
     } elseif ($year % 4 != 0) {
-        return '平年';
+        return "平年";
 
     // (3)
     } elseif ($year % 100 != 0) {
-        return 'うるう年';
+        return "うるう年";
 
     // (2)
     } elseif ($year % 400 != 0) {
-        return '平年';
+        return "平年";
 
     // (1)
     } else {
-        return 'うるう年';
+        return "うるう年";
     }
 }
 ```
@@ -339,26 +339,26 @@ function leapYear(int $year): string
 {
     // (5)
     if($year <= 0){
-        throw new Exception('負の数は検証できません．');
+        throw new Exception("負の数は検証できません．");
     }
 
     // (4)
     if($year % 4 != 0 ){
-        return '平年';
+        return "平年";
     }
 
     // (3)
     if($year % 100 != 0){
-        return 'うるう年';
+        return "うるう年";
     }
 
     // (2)
     if($year % 400 != 0){
-        return '平年';
+        return "平年";
     }
 
     // (1)
-    return 'うるう年';
+    return "うるう年";
     
 }
 ```
@@ -378,23 +378,23 @@ function leapYear(int $year): string
     
     // (5)
     case($year <= 0):
-        throw new Exception('負の数は検証できません．');
+        throw new Exception("負の数は検証できません．");
 
     // (4)
         case($year % 4 != 0 ):
-        return '平年';
+        return "平年";
 
     // (3)
     case($year % 100 != 0):
-        return 'うるう年';
+        return "うるう年";
 
     // (2)
     case($year % 400 != 0):
-        return '平年';
+        return "平年";
 
     // (1)
     dafault:
-        return 'うるう年';
+        return "うるう年";
     }
 
 }
@@ -412,19 +412,19 @@ function leapYear(int $year): string
 function leapYear(int $year): string
 {
     // (5)
-    if($year <= 0) throw new Exception('負の数は検証できません．');
+    if($year <= 0) throw new Exception("負の数は検証できません．");
 
     // (4)
-    if($year % 4 != 0 ) return '平年';
+    if($year % 4 != 0 ) return "平年";
 
     // (3)
-    if($year % 100 != 0) return 'うるう年';
+    if($year % 100 != 0) return "うるう年";
 
     // (2)
-    if($year % 400 != 0) return '平年';
+    if($year % 400 != 0) return "平年";
 
     // (1)
-    return 'うるう年';
+    return "うるう年";
     
 }
 ```
@@ -447,8 +447,8 @@ function leapYear(int $year): string
 class Example {};
 
 if(new Example == new Example){
-    echo '同じです';
-} else { echo '異なります'; }
+    echo "同じです";
+} else { echo "異なります"; }
 
 // 実行結果
 // 同じです
@@ -466,9 +466,9 @@ if(new Example == new Example){
 class Example {};
 
 if (new Example === new Example) {
-    echo '同じです';
+    echo "同じです";
 } else {
-    echo '異なります';
+    echo "異なります";
 }
 
 // 実行結果
@@ -487,9 +487,9 @@ class Example {};
 $a = $b = new Example;
 
 if ($a === $b) {
-    echo '同じです';
+    echo "同じです";
 } else {
-    echo '異なります';
+    echo "異なります";
 }
 
 // 実行結果
@@ -543,10 +543,10 @@ use Exception\ExampleNotFound;
 function example(string $example) {
     
     if (empty($exmaple)) {
-        throw new ExampleNotFoundException('Example is not found.');;
+        throw new ExampleNotFoundException("Example is not found.");;
     }
     
-    return 'これは ${example} です．';
+    return "これは ${example} です．";
 }
 ```
 <br>
@@ -566,10 +566,10 @@ function value(int $value) {
     
     if (empty($value)) {
         // 例外クラスを返却
-        throw new Exception('Value is empty');
+        throw new Exception("Value is empty");
     }
     
-    return 'これは ${value} です．';
+    return "これは ${value} です．";
 }
 ```
 
@@ -588,7 +588,7 @@ function value() {
         throw new ExampleInvalidArgumentException();
     }
         
-    return '成功です．'
+    return "成功です．"
 }
 ```
 
@@ -660,31 +660,31 @@ class Example
         try {
             
             // （１）
-            echo 'Aの直前です'
-            return 'Aです．';
+            echo "Aの直前です"
+            return "Aです．";
             
         } catch (ExternalApiErrorException $exception) {
   
             // （２）
-            echo 'Bの直前です'
-            return 'Bです．';
+            echo "Bの直前です"
+            return "Bです．";
             
         } catch (HttpRequestErrorException $exception) {
             
             // （３）
-            echo 'Cの直前です'
-            return 'Cです．';
+            echo "Cの直前です"
+            return "Cです．";
             
         } catch (Exception $exception) {
             
             // （４）
-            echo 'Dの直前です'
-            return 'Dです．';
+            echo "Dの直前です"
+            return "Dです．";
             
         } finally {
             
             // returnやcontinueを使用しない
-            echo 'Eです．';
+            echo "Eです．";
             
         }
     }
@@ -727,9 +727,9 @@ PHPには標準で，エラー処理関数が用意されている．その中�
 
 ```php
 error_log(
-    '<エラーメッセージ>',
-    '<メッセージの出力先（3の場合にファイル出力）>',
-    '<ログファイルの場所>'
+    "<エラーメッセージ>",
+    "<メッセージの出力先（3の場合にファイル出力）>",
+    "<ログファイルの場所>"
 )
 ```
 
@@ -765,7 +765,7 @@ class Example
             error_log(
                 $exception->getMessage(),
                 3,
-                __DIR__ . '/http_request_error.log'
+                __DIR__ . "/http_request_error.log"
             );
             
         } catch (\ExternalApiErrorException $exception) {
@@ -774,7 +774,7 @@ class Example
             error_log(
                 $exception->getMessage(),
                 3,
-                __DIR__ . '/external_api_error.log'
+                __DIR__ . "/external_api_error.log"
             );
             
         } catch (\Exception $exception) {
@@ -783,7 +783,7 @@ class Example
             error_log(
                 $exception->getMessage(),
                 3,
-                __DIR__ . '/app_error.log'
+                __DIR__ . "/app_error.log"
             );
         }
         

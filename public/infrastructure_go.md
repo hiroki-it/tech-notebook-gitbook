@@ -113,7 +113,7 @@ require (
 ```
 
 ```go
-import 'github.com/hoge/fuga'
+import "github.com/hoge/fuga"
 
 func main() {
     // 何らかの処理
@@ -159,7 +159,7 @@ go 1.16
 これらにより，ローカルのモジュールをインポートできるようになる．
 
 ```go
-import 'local.packages/local-pkg'
+import "local.packages/local-pkg"
 
 func main() {
     // 何らかの処理
@@ -313,7 +313,7 @@ type Person struct {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct {
     Name string
@@ -321,9 +321,9 @@ type Person struct {
 
 func main() {
     // タグ付きリテラル表記
-    person := Person{Name: 'Hiroki'}
+    person := Person{Name: "Hiroki"}
     
-    fmt.Printf('%#v\n', person.Name) // 'Hiroki'
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -331,7 +331,7 @@ func main() {
 
 ```go
 package main
-import 'fmt'
+import "fmt"
 
 type Person struct {
     Name string
@@ -339,9 +339,9 @@ type Person struct {
 
 func main() {
     // タグ無しリテラル表記
-    person := Person{'Hiroki'}
+    person := Person{"Hiroki"}
     
-    fmt.Printf('%#v\n', person.Name) // 'Hiroki'
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -350,7 +350,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct {
     Name string
@@ -361,9 +361,9 @@ func main(){
     person := new(Person)
     
     // フィールドに代入する
-    person.Name = 'Hiroki'
+    person.Name = "Hiroki"
     
-    fmt.Printf('%#v\n', person.Name) // 'Hiroki'
+    fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -377,25 +377,25 @@ func main(){
 package main
 
 import (
-    'encoding/json'
-    'fmt'
-    'log'
+    "encoding/json"
+    "fmt"
+    "log"
 )
 
 type Person struct {
-    Name string `json:'Name'`
+    Name string `json:"Name"`
 }
 
 func main() {
-    person := Person{Name: 'Hiroki'}
+    person := Person{Name: "Hiroki"}
     
     json, err := json.Marshal(person)
     if err != nil {
-        log.Println('JSONエンコードに失敗しました。')
+        log.Println("JSONエンコードに失敗しました。")
     }
  
     // エンコード結果を出力
-    fmt.Printf('%#v\n', string(json))// '{\'Name\':\'Hiroki\'}'
+    fmt.Printf("%#v\n", string(json))// "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -416,28 +416,28 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
     // 定義と代入を同時に行う．また，型推論と要素数省略を行う．
-    x := [...]string {'Hiroki', 'Gopher'}
+    x := [...]string {"Hiroki", "Gopher"}
     
-    fmt.Printf('%#v\n', x) // [Hiroki Gopher]
-    fmt.Printf('%#v\n', x) // [2]string{'Hiroki', 'Gopher'}
+    fmt.Printf("%#v\n", x) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
     
     // 定義と代入を同時に行う．また，要素数の定義が必要．
-    var y[2] string = [2]string {'Hiroki', 'Gopher'}
+    var y[2] string = [2]string {"Hiroki", "Gopher"}
     
-    fmt.Printf('%#v\n', y) // [Hiroki Gopher]
-    fmt.Printf('%#v\n', y) // [2]string{'Hiroki', 'Gopher'}
+    fmt.Printf("%#v\n", y) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
     
     // 定義と代入を別々に行う．また，要素数の定義が必要．
     var z[2] string
-    z[0] = 'Hiroki'
-    z[1] = 'Gopher'
+    z[0] = "Hiroki"
+    z[1] = "Gopher"
     
-    fmt.Printf('%#v\n', z) // [Hiroki Gopher]
-    fmt.Printf('%#v\n', z) // [2]string{'Hiroki', 'Gopher'}
+    fmt.Printf("%#v\n", z) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -462,20 +462,20 @@ func main(){
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
-    x := 'a'
+    x := "a"
     
     // ポインタ型の変数を定義代入
     var p *string = &x
     // p := &x と同じ
     
     // メモリアドレスを抽出しない場合
-    fmt.Printf('%#v\n', x) // 'a'
+    fmt.Printf("%#v\n", x) // "a"
     
     // メモリアドレスを抽出する場合
-    fmt.Printf('%#v\n', p) // (*string)(0xc0000841e0)
+    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -505,20 +505,20 @@ type slice struct {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
     // 定義と代入を同時に行う．
-    x := []string{'Hiroki', 'Gopher'}
+    x := []string{"Hiroki", "Gopher"}
     
-    fmt.Printf('%+v\n', x) // [Hiroki Gopher]
-    fmt.Printf('%#v\n', x) // []string{'Hiroki', 'Gopher'}
+    fmt.Printf("%+v\n", x) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
     
     // 定義と代入を同時に行う．また，型推論を行う．
-    var y []string = []string{'Hiroki', 'Gopher'}
+    var y []string = []string{"Hiroki", "Gopher"}
     
-    fmt.Printf('%+v\n', y) // [Hiroki Gopher]
-    fmt.Printf('%#v\n', y) // []string{'Hiroki', 'Gopher'}
+    fmt.Printf("%+v\n", y) // [Hiroki Gopher]
+    fmt.Printf("%#v\n", y) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -527,25 +527,25 @@ func main(){
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    x := [5]string{'あ', 'い', 'う', 'え','お',}
-    fmt.Printf('%#v\n', x) // [5]string{'あ', 'い', 'う', 'え', 'お'}
+    x := [5]string{"あ", "い", "う", "え","お",}
+    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
 
     xa := x[0:3]
-    fmt.Printf('%#v\n', xa) // []string{'あ', 'い', 'う'}
+    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
     
     xb := x[2:5]
-    fmt.Printf('%#v\n', xb) // []string{'う', 'え', 'お'}
+    fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
 
-    // xbスライスの0番目（'う'）を上書き
-    xb[0] = 'Hiroki'
+    // xbスライスの0番目（"う"）を上書き
+    xb[0] = "Hiroki"
     
     // xbしか上書きしていないが，他のスライスにも反映される．
-    fmt.Printf('%#v\n', xa) // []string{'あ', 'い', 'Hiroki'}
-    fmt.Printf('%#v\n', xb) // []string{'Hiroki', 'え', 'お'}
-    fmt.Printf('%#v\n', x) // [5]string{'あ', 'い', 'Hiroki', 'え', 'お'}
+    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
+    fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
+    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "Hiroki", "え", "お"}
 }
 ```
 
@@ -558,13 +558,13 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
-    x := []byte('abc')
+    x := []byte("abc")
     
-    fmt.Printf('%+v\n', x) // [97 98 99]
-    fmt.Printf('%#v\n', x) // []byte{0x61, 0x62, 0x63}
+    fmt.Printf("%+v\n", x) // [97 98 99]
+    fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
 }
 ```
 
@@ -573,17 +573,17 @@ func main(){
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct{
     Name string
 }
 
 func main(){
-    person := []Person{{Name: 'Hiroki'}}
+    person := []Person{{Name: "Hiroki"}}
     
-    fmt.Printf('%+v\n', person) // [{Name:Hiroki}]
-    fmt.Printf('%#v\n', person) // []main.Person{main.Person{Name:'Hiroki'}}
+    fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
+    fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
 }
 ```
 
@@ -602,7 +602,7 @@ Animalインターフェースに変換すると，```Eat```メソッド，```Sl
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 // インターフェースとそのメソッドを定義する．
 type Animal interface {
@@ -626,15 +626,15 @@ type Mammal struct {
 
 // 構造体に関数を関連付ける．インターフェースのメソッドの関連付けが強制される．
 func (insect Insect) Eat(){
-    fmt.Println('雑食')
+    fmt.Println("雑食")
 }
 
 func (insect Insect) Sleep(){
-    fmt.Println('眠る')    
+    fmt.Println("眠る")    
 }
 
 func (insect Insect) Mating(){
-    fmt.Println('単為生殖')       
+    fmt.Println("単為生殖")       
 }
 
 func main() {
@@ -642,7 +642,7 @@ func main() {
     var animal Animal
     
     // 構造体の変数を定義する．
-    insect := Insect {Name : 'Ant'}
+    insect := Insect {Name : "Ant"}
     
     // 構造体をインターフェースに変換する．
     animal = insect
@@ -673,7 +673,7 @@ var x interface{}
 
 x = 1
 x = 3.14
-x = 'Hiroki'
+x = "Hiroki"
 x = [...]uint8[1, 2, 3, 4, 5]
 ```
 
@@ -703,11 +703,11 @@ z := x + y
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
     
-    x := 'x'
+    x := "x"
     
     // ポインタ型の定義のみ
     var p1 *string
@@ -715,8 +715,8 @@ func main(){
     // ポインタ型の変数を定義代入
     var p2 *string = &x
 
-    fmt.Printf('%#v\n', p1) // (*string)(nil)
-    fmt.Printf('%#v\n', p2) // (*string)(0xc0000841e0)
+    fmt.Printf("%#v\n", p1) // (*string)(nil)
+    fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -727,12 +727,12 @@ func main(){
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
     var x interface{}
     
-    fmt.Printf('%#v\n', x) // <nil>
+    fmt.Printf("%#v\n", x) // <nil>
 }
 ```
 
@@ -751,10 +751,10 @@ goのエントリポイントとなる．goのプログラムが起動したと�
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main(){
-    fmt.Printf('%#v\n', 'Hello world!')
+    fmt.Printf("%#v\n", "Hello world!")
 }
 ```
 
@@ -788,7 +788,7 @@ runtime.main: undefined: main.main
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 // 頭文字を大文字する
 func Example(x string) string {
@@ -796,7 +796,7 @@ func Example(x string) string {
 }
 
 func main(){
-    Example('Hello world!')
+    Example("Hello world!")
 }
 ```
 
@@ -815,14 +815,14 @@ main関数で即時関数を実行する．
 ```go 
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
     result := func() string {
-        return 'Closure is working!'
+        return "Closure is working!"
     }()
     
-    fmt.Printf('%#v\n', result)
+    fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -833,7 +833,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
     // 仮引数を設定
@@ -842,9 +842,9 @@ func main() {
         return x
         
     // 引数に値を渡す
-    }('Closure is working!')
+    }("Closure is working!")
     
-    fmt.Printf('%#v\n', result)
+    fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -867,18 +867,18 @@ int型を値レシーバとして渡し，構造体に関数を関連付ける�
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Age int
 
 func (age Age) PrintAge() string {
-    return fmt.Sprintf('%dです．', age)
+    return fmt.Sprintf("%dです．", age)
 }
 
 func main() {
     var age Age = 20
     
-    fmt.Printf('%#v\n', age.printAge())
+    fmt.Printf("%#v\n", age.printAge())
 }
 ```
 
@@ -889,7 +889,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 // 構造体を定義
 type Person struct {
@@ -904,9 +904,9 @@ func (person Person) GetName() string {
 // 構造体から関数をコール
 func main() {
     // 構造体を初期化
-    person := Person{Name: 'Hiroki'}
+    person := Person{Name: "Hiroki"}
     
-    fmt.Printf('%#v\n', person.GetName()) // 'Hiroki'
+    fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -921,7 +921,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct {
 	Name string
@@ -938,11 +938,11 @@ func (person Person) GetName() string {
 }
 
 func main() {
-	person := Person{Name: 'Gopher'}
+	person := Person{Name: "Gopher"}
 
-	person.SetName('Hiroki')
+	person.SetName("Hiroki")
     
-    fmt.Printf('%#v\n', person.GetName()) // 'Gopher'
+    fmt.Printf("%#v\n", person.GetName()) // "Gopher"
 }
 ```
 
@@ -955,7 +955,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct {
 	Name string
@@ -972,11 +972,11 @@ func (person *Person) GetName() string {
 }
 
 func main() {
-	person := Person{Name: 'Gopher'}
+	person := Person{Name: "Gopher"}
 
-	person.SetName('Hiroki')
+	person.SetName("Hiroki")
     
-	fmt.Printf('%#v\n', person.GetName()) // 'Hiroki'
+	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -995,31 +995,31 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Println('Start')
+    fmt.Println("Start")
     
     // あらかじめdefer関数を定義しておく
     defer func() {        
         err := recover()
         
         if err != nil {
-            fmt.Printf('Recover: %#v\n', err)
+            fmt.Printf("Recover: %#v\n", err)
         }
         
-        fmt.Println('End')
+        fmt.Println("End")
     }()
     
     // ここで意図的に処理を停止させている．
-    panic('Runtime error')
+    panic("Runtime error")
 }
 ```
 
 ```sh
 # 結果
 Start
-Recover: 'Runtime error'
+Recover: "Runtime error"
 End
 ```
 
@@ -1055,14 +1055,14 @@ x, y, z = 1, 3, 5
 w := 1
 x := true
 y := 3.14
-z := 'abc'
+z := "abc"
 
 var w = 1
 
 var (
     x = true
     y = 3.14
-    z = 'abc'
+    z = "abc"
 )
 ```
 
@@ -1078,16 +1078,16 @@ var (
 package main
 
 import (
-    'fmt'
-    'os'
+    "fmt"
+    "os"
 )
 
 func main() {
     // errorインターフェースを破棄
-    file, _ := os.Open('filename.ext')
+    file, _ := os.Open("filename.ext")
     
     // エラーキャッチする必要がなくなる
-    fmt.Printf('%#v\n', flle)
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1129,21 +1129,21 @@ osパッケージの```Open```メソッドからerrorインターフェースが
 package main
 
 import (
-    'fmt'
-    'log'
-    'os'
+    "fmt"
+    "log"
+    "os"
 )
 
 func main() {
     // 処理結果とerrorインターフェースが返却される．
-    file, err := os.Open('filename.ext')
+    file, err := os.Open("filename.ext")
     
     if err != nil {
         // エラーの内容を出力する．
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
     
-    fmt.Printf('%#v\n', flle)
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1159,25 +1159,25 @@ errorsパッケージの```New```メソッドにエラーメッセージを設�
 package main
 
 import (
-    'errors'
-    'fmt'
-    'log'
-    'os'
+    "errors"
+    "fmt"
+    "log"
+    "os"
 )
 func ThrowErrorsNew() error {
-    return errors.New('<エラーメッセージ>')
+    return errors.New("<エラーメッセージ>")
 }
 
 func main() {
-    file, err := os.Open('filename.ext')
+    file, err := os.Open("filename.ext")
     
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := ThrowErrorsNew()
-        log.Fatalf('ERROR: %#v\n', myErr)
+        log.Fatalf("ERROR: %#v\n", myErr)
     }
     
-    fmt.Printf('%#v\n', flle)
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1191,26 +1191,26 @@ func main() {
 package main
 
 import (
-    'errors'
-    'fmt'
-    'log'
-    'os'
+    "errors"
+    "fmt"
+    "log"
+    "os"
 )
 
 func ThrowErrorf() error {
-    return fmt.Errorf('%s %s', x, y)
+    return fmt.Errorf("%s %s", x, y)
 }
 
 func main() {
-    file, err := os.Open('filename.ext')
+    file, err := os.Open("filename.ext")
     
     if err != nil {
         // 独自エラーメッセージを設定する．
         myErr := ThrowErrorf()
-        log.Fatalf('ERROR: %#v\n', myErr)
+        log.Fatalf("ERROR: %#v\n", myErr)
     }
     
-    fmt.Printf('%#v\n', flle)
+    fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1247,7 +1247,7 @@ Goには標準で，ロギング用パッケージが用意されている．た
 
 ```go
 if err != nil {
-    log.Printf('ERROR: %#v\n', err)
+    log.Printf("ERROR: %#v\n", err)
 }
 ```
 
@@ -1258,7 +1258,7 @@ if err != nil {
 ```go
 if err != nil {
     // 内部でos.Exit(1)を実行する．
-    log.Fatalf('ERROR: %#v\n', err)
+    log.Fatalf("ERROR: %#v\n", err)
 }
 ```
 
@@ -1269,7 +1269,7 @@ if err != nil {
 ```go
 if err != nil {
     // panicメソッドを実行する．
-    log.Panicf('ERROR: %#v\n', err)
+    log.Panicf("ERROR: %#v\n", err)
 }
 ```
 
@@ -1295,18 +1295,18 @@ if err != nil {
 package main
 
 import (
-    'bytes'
-    'fmt'
+    "bytes"
+    "fmt"
 )
 
 func main() {
     var buffer bytes.Buffer
 
-    buffer.WriteString('Hello ')
+    buffer.WriteString("Hello ")
     
-    buffer.WriteString('world!')
+    buffer.WriteString("world!")
 
-    fmt.Printf('%#v\n', buffer.String()) // 'Hello world!'
+    fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
 }
 ```
 
@@ -1326,26 +1326,26 @@ func main() {
 package main
 
 import (
-    'encoding/json'
-    'fmt'
-    'log'
+    "encoding/json"
+    "fmt"
+    "log"
 )
 
 type Person struct {
-    Name string `json:'Name'`
+    Name string `json:"Name"`
 }
 
 func main() {
-    person := Person{Name: 'Hiroki'}
+    person := Person{Name: "Hiroki"}
     
     json, err := json.Marshal(person)
     
     if err != nil {
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
  
     // エンコード結果を出力
-    fmt.Printf('%#v\n', string(json)) // '{\'Name\':\'Hiroki\'}'
+    fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -1361,9 +1361,9 @@ JSONを構造体に変換する．リクエストの受信によく使われる�
 package main
  
 import (
-	'encoding/json'
-	'fmt'
-	'log'
+	"encoding/json"
+	"fmt"
+	"log"
 )
  
 type Person struct {
@@ -1372,20 +1372,20 @@ type Person struct {
  
 func main() {
     // リクエストを受信した場合を想定する．
-    byte := []byte(`{'name':'Hiroki'}`)
+    byte := []byte(`{"name":"Hiroki"}`)
     
     var person Person
     
-    fmt.Printf('%#v\n', person) // main.Person{Name:''}（変数はまだ書き換えられていない）
+    fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
     
     // person変数を変換後の値に書き換えている．
     err := json.Unmarshal(byte, &person)
     
     if err != nil {
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
     
-	fmt.Printf('%#v\n', person) // main.Person{Name:'Hiroki'}（変数が書き換えられた）
+	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}（変数が書き換えられた）
 }
 ```
 
@@ -1408,10 +1408,10 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Print('Hello world!') // Hello world! 
+    fmt.Print("Hello world!") // Hello world! 
 }
 ```
 
@@ -1420,7 +1420,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
     
@@ -1434,11 +1434,11 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
     // いずれかが文字列
-    fmt.Print('Hello', 'world!', 12345) // Helloworld!12345
+    fmt.Print("Hello", "world!", 12345) // Helloworld!12345
 }
 ```
 
@@ -1447,11 +1447,11 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Print('Hello', 'world!')
-    fmt.Print('Hello', 'world!')
+    fmt.Print("Hello", "world!")
+    fmt.Print("Hello", "world!")
     
     // Hello world!Hello world!
 }
@@ -1472,7 +1472,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
     
@@ -1498,11 +1498,11 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Println('Hello', 'world!')
-    fmt.Println('Hello', 'world!')
+    fmt.Println("Hello", "world!")
+    fmt.Println("Hello", "world!")
     
     // Hello world!
     // Hello world!
@@ -1533,10 +1533,10 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Printf('String is %s', 'Hello world!')
+    fmt.Printf("String is %s", "Hello world!")
 }
 ```
 
@@ -1545,11 +1545,11 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    fmt.Printf('String is %s', 'Hello world!')
-    fmt.Printf('String is %s', 'Hello world!')
+    fmt.Printf("String is %s", "Hello world!")
+    fmt.Printf("String is %s", "Hello world!")
     
     // String is Hello world!String is Hello world!
 }
@@ -1562,7 +1562,7 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 type Person struct {
     Name     string
@@ -1571,9 +1571,9 @@ type Person struct {
 func main() {
     person:= new(Person)
     
-    person.Name = 'Hiroki'
+    person.Name = "Hiroki"
     
-    fmt.Printf('Pointer is %p', person) // 0xc0000821e0
+    fmt.Printf("Pointer is %p", person) // 0xc0000821e0
 }
 ```
 
@@ -1584,14 +1584,14 @@ func main() {
 ```go
 package main
 
-import 'fmt'
+import "fmt"
 
 func main() {
-    var first string = 'Hiroki'
+    var first string = "Hiroki"
     
-    var last string = 'Hasegawa'
+    var last string = "Hasegawa"
     
-    fmt.Printf('I'm %s %s', first, last)// I'm Hiroki Hasegawa
+    fmt.Printf("I"m %s %s", first, last)// I"m Hiroki Hasegawa
 }
 ```
 
@@ -1615,32 +1615,32 @@ SlackにメッセージをPOST送信する．
 package main
 
 import (
-    'bytes'
-    'encoding/json'
-    'fmt'
-    'log'
-    'net/http'
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "log"
+    "net/http"
 )
 
 // 構造体を定義し，JSONにマッピング
 type SlackMessage struct {
-    Token       string   `json:'token'`
-    Channel     string   `json:'channel'`
-    Text        string   `json:'text'`
-    Username    string   `json:'username'`
-    Attachments []string `json:'attachments'`
+    Token       string   `json:"token"`
+    Channel     string   `json:"channel"`
+    Text        string   `json:"text"`
+    Username    string   `json:"username"`
+    Attachments []string `json:"attachments"`
 }
 
 func main() {
     // URL
-    url := 'https://xxxx.slack.com'
+    url := "https://xxxx.slack.com"
 
     // ボディを定義する．
     slackMessage := SlackMessage {
-        Token: '<トークン文字列>',
-        Channel: '<チャンネル名，もしくは@ユーザ名>',
-        Text: '<メッセージ>',
-        Username: '<as_userオプションがfalseの場合にBot名>',
+        Token: "<トークン文字列>",
+        Channel: "<チャンネル名，もしくは@ユーザ名>",
+        Text: "<メッセージ>",
+        Username: "<as_userオプションがfalseの場合にBot名>",
         Attachments: [{
           // 任意のオプション     
           // 参考：
@@ -1652,22 +1652,22 @@ func main() {
     json, err := json.Marshal(slackMessage)
 
     if err != nil {
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
 
     // リクエストメッセージを定義する．
     request, err := http.NewRequest(
-        'POST',
+        "POST",
         url,
         bytes.NewBuffer(json),
     )
 
     if err != nil {
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
 
     // ヘッダーを定義する．
-    request.Header.Set('Content-Type', 'application/json')
+    request.Header.Set("Content-Type", "application/json")
 
     client := &http.Client {}
 
@@ -1678,14 +1678,14 @@ func main() {
     defer response.Body.Close()
     
     if err != nil {
-        log.Fatalf('ERROR: %#v\n', err)
+        log.Fatalf("ERROR: %#v\n", err)
     }
     
     if response.StatusCode != 200 {
-        log.Fatalf('ERROR: %#v\n', response)
+        log.Fatalf("ERROR: %#v\n", response)
     }
     
-    fmt.Printf('INFO: %#v\n', response)
+    fmt.Printf("INFO: %#v\n", response)
 }
 ```
 
@@ -1703,16 +1703,16 @@ func main() {
 package main
 
 import (
-    'fmt'
-    'strings'
+    "fmt"
+    "strings"
 )
 
 func main() {
     var builder strings.Builder
     
-    builder.WriteString('Hello ')
+    builder.WriteString("Hello ")
     
-    builder.WriteString('world!')
+    builder.WriteString("world!")
     
     fmt.Println(builder.String()) // Hello world! 
 }

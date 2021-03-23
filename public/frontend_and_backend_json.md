@@ -10,18 +10,18 @@
 
 ```json
 {
-  'fruit': ['banana', 'apple'],
-  'account': 200
+  "fruit": ["banana", "apple"],
+  "account": 200
 }
 ```
 
-#### ・YAML：YAML Ain't a Markup Language
+#### ・YAML：YAML Ain"t a Markup Language
 
 ```yaml
 {
   fruit:
-    - 'banana'
-    - 'apple'
+    - "banana"
+    - "apple"
   account: 200
 }  
 ```
@@ -50,7 +50,7 @@
 
 ```javascript
 const object = {
-  fruit: ['banana', 'apple'],
+  fruit: ["banana", "apple"],
   account: 200
 };
 ```
@@ -76,8 +76,8 @@ class Example {
 
 ```javascript
 const json = {
-  'fruit': ['banana', 'apple'],
-  'account': 200
+  "fruit": ["banana", "apple"],
+  "account": 200
 };
 ```
 
@@ -88,14 +88,14 @@ const json = {
 ```javascript
 // どんなデータを含むJSONなのかわかりやすい方法
 const json = {
-  'name': null,
-  'age': null,
-  'tel': null
+  "name": null,
+  "age": null,
+  "tel": null
 }
 
-json.name = 'taro';
+json.name = "taro";
 json.age = 30;
-json.tel = '090-0123-4567';
+json.tel = "090-0123-4567";
 ```
 
 **＊実装例＊**
@@ -104,29 +104,29 @@ json.tel = '090-0123-4567';
 const json = {}
 
 // areaというキーの値を追加
-json.prefecture = 'Tokyo';
+json.prefecture = "Tokyo";
 
 // もしくは，
-json['prefecture'] = 'Tokyo';
+json["prefecture"] = "Tokyo";
 
 // 以下は．undefined になる．二段階の定義はできない．
-//// json.prefecture.area = 'Shibuya';
+//// json.prefecture.area = "Shibuya";
 ```
 
 **＊実装例＊**
 
 ```javascript
 const json = {
-  'name': 'taro',
-  'age': 30,
-  'tel': '090-0123-4567'
+  "name": "taro",
+  "age": 30,
+  "tel": "090-0123-4567"
 }
 
 // areaというキーの値を追加
-json.prefecture = 'Tokyo';
+json.prefecture = "Tokyo";
 
 // もしくは，
-json['prefecture'] = 'Tokyo';
+json["prefecture"] = "Tokyo";
 ```
 
 ### PHP型オブジェクト
@@ -179,7 +179,7 @@ JS型オブジェクトからJSONへの変換には，```JSON.stringfy```メソ�
 
 ```javascript
 const object = {
-  fruit: ['banana', 'apple'],
+  fruit: ["banana", "apple"],
   account: 200
 };
 
@@ -187,7 +187,7 @@ const object = {
 const json = JSON.stringify(object);
 
 console.log(json);
-// '{ 'fruit': ['banana', 'apple'], 'account': 200 }'
+// "{ "fruit": ["banana", "apple"], "account": 200 }"
 ```
 
 #### ・デシリアライズ：JSONからJS型
@@ -198,15 +198,15 @@ JSONからJS型オブジェクトへの変換には，```JSON.parse```メソッ�
 
 ```javascript
 const json = {
-  'fruit': ['banana', 'apple'],
-  'account': 200
+  "fruit": ["banana", "apple"],
+  "account": 200
 };
 
 // デシリアライズ
 const object = JSON.parse(json);
 
 console.log(object);
-// { fruit: ['banana', 'apple'], account: 200 }
+// { fruit: ["banana", "apple"], account: 200 }
 ```
 
 #### ・相互パースメソッドをもつクラス
@@ -241,8 +241,8 @@ class StaffParser {
 
     // JSONの定義
     const json = {
-      'id' : null,
-      'name' : null
+      "id" : null,
+      "name" : null
     }
 
     // ID
@@ -271,21 +271,21 @@ JSONからPHP型オブジェクトの変換には．```json_decode```メソッ�
 <?php
 
 // リクエストで取得したJSON
-$json = '{ 'fruit': ['banana', 'apple'], 'account': 200 }';
+$json = "{ "fruit": ["banana", "apple"], "account": 200 }";
 
 // object形式オブジェクトに変換
 $object = json_decode($json, false);
 
 var_dump($object);
 //  object(stdClass)#1 (2) {
-//    ['fruit']=>
+//    ["fruit"]=>
 //    array(2) {
 //      [0]=>
-//      string(9) 'banana'
+//      string(9) "banana"
 //      [1]=>
-//      string(9) 'apple'
+//      string(9) "apple"
 //    }
-//    ['account']=>
+//    ["account"]=>
 //    int(200)
 //  }
 ```
@@ -296,21 +296,21 @@ var_dump($object);
 <?php
 
 // リクエストで取得したJSON
-$json = '{ 'fruit': ['banana', 'apple'], 'account': 200 }';
+$json = '{ "fruit": ["banana", "apple"], "account": 200 }';
 
 // 連想配列形式オブジェクトに変換
 $array = json_decode($json, true);
 
 var_dump($array);
 //  array(2) {
-//    ['fruit']=>
+//    ["fruit"]=>
 //    array(2) {
 //      [0]=>
-//      string(9) 'banana'
+//      string(9) "banana"
 //      [1]=>
-//      string(9) 'apple'
+//      string(9) "apple"
 //    }
-//    ['account']=>
+//    ["account"]=>
 //    int(200)
 //  }
 ```
@@ -320,14 +320,14 @@ var_dump($array);
 ```php
 <?php
 
-$json = '{ 'fruit': ['banana', 'apple'], 'account': 200 }';
+$json = '{ "fruit": ["banana", "apple"], "account": 200 }';
 $object = json_decode($json, false);
 
 // JSONに変換
 $json = json_encode($object);
 
 var_dump($json);
-// '{'fruit':['banana','apple'],'account':200}'
+// "{"fruit":["banana","apple"],"account":200}"
 ```
 
 <br>

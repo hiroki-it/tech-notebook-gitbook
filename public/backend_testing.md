@@ -129,8 +129,8 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
         // GETリクエスト
         $client->request(
-            'GET',
-            '/xxx/yyy/'
+            "GET",
+            "/xxx/yyy/"
         );
         
         $response = $client->getResponse();
@@ -156,14 +156,14 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
         // APIにPOSTリクエスト
         $client->request(
-            'POST',
-            '/xxx/yyy/',
+            "POST",
+            "/xxx/yyy/",
             [
-                'channel_id' => 'XXXXX', 
-                'text' => 'Hello World!'
+                "channel_id" => "XXXXX", 
+                "text" => "Hello World!"
             ],
             [
-                'HTTP_X_API_Token' => 'Bearer xxxxxx'
+                "HTTP_X_API_Token" => "Bearer xxxxxx"
             ]
         );
         
@@ -173,10 +173,10 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($response->isOk());
         
         // レスポンスデータを抽出する．
-        $actual = json_decode($response->getContent(), true)['text'];
+        $actual = json_decode($response->getContent(), true)["text"];
         
         $excepted = [
-            'メッセージを受信しました．'
+            "メッセージを受信しました．"
         ]
         
         // レスポンスデータが正しいかをテストする．
@@ -200,14 +200,14 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
         // APIにPOSTリクエスト
         $client->request(
-            'POST',
-            '/xxx/yyy/',
+            "POST",
+            "/xxx/yyy/",
             [
-                'channel_id' => '', 
-                'text' => ''
+                "channel_id" => "", 
+                "text" => ""
             ],
             [
-                'HTTP_X_API_Token' => 'Bearer xxxxxx'
+                "HTTP_X_API_Token" => "Bearer xxxxxx"
             ]
         );
         
@@ -217,11 +217,11 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($response->isOk());
         
         // レスポンスデータのエラーを抽出する．
-        $actual = json_decode($response->getContent(), true)['errors'];
+        $actual = json_decode($response->getContent(), true)["errors"];
         
         $excepted = [
-            'チャンネルIDは必ず入力してください．'
-            'メッセージは必ず入力してください．'
+            "チャンネルIDは必ず入力してください．"
+            "メッセージは必ず入力してください．"
         ]
         
         // エラーが正しいかをテストする．
@@ -270,7 +270,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         // DIコンテナにデータを格納する．
-        $this->container['option'];
+        $this->container["option"];
     }
     
     // メソッドの中で，最後に自動実行される．
@@ -308,8 +308,8 @@ class ExampleControllerTest
         return [
             // 配列データは複数あっても良い，
             // testMethod()の引数と同じ順番で，配列データの要素が並ぶ．
-            ['あ', 'い', 'う'],
-            ['1', '2', '3']
+            ["あ", "い", "う"],
+            ["1", "2", "3"]
         ];
     }
 }

@@ -215,7 +215,7 @@ server {
     ssl on;
     ssl_certificate /etc/nginx/ssl/server.crt;
     ssl_certificate_key /etc/nginx/ssl/server.key;
-    add_header Strict-Transport-Security 'max-age=86400';
+    add_header Strict-Transport-Security "max-age=86400";
 
     location / {
         proxy_pass http://app1;
@@ -390,9 +390,9 @@ http {
     server_tokens      off;
     include            /etc/nginx/mime.types;
     default_type       application/octet-stream;
-    log_format         main  '$remote_addr - $remote_user [$time_local] "$request" '
-                             '$status $body_bytes_sent "$http_referer" '
-                             '"$http_user_agent" "$http_x_forwarded_for"';
+    log_format         main  "$remote_addr - $remote_user [$time_local] "$request" "
+                             "$status $body_bytes_sent "$http_referer" "
+                             ""$http_user_agent" "$http_x_forwarded_for"";
     access_log         /var/log/nginx/access.log  main;
     sendfile           on;
     tcp_nopush         on;
@@ -488,7 +488,7 @@ location / {
 
 ```nginx
 # Referrer-Policyヘッダーに値を設定する
-add_header Referrer-Policy 'no-referrer-when-downgrade';
+add_header Referrer-Policy "no-referrer-when-downgrade";
 ```
 
 #### ・```default_type```

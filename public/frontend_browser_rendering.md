@@ -78,7 +78,7 @@ JavaScriptファイルを直接組み込む方法．
 
 ```html
 <script>
-document.write('JavaScriptを直接組み込んでいます。')
+document.write("JavaScriptを直接組み込んでいます。")
 </script>
 ```
 
@@ -87,14 +87,14 @@ document.write('JavaScriptを直接組み込んでいます。')
 外部JavaScriptファイルを組み込む方法．
 
 ```html
-<script src='sample.js'></sc
+<script src="sample.js"></sc
     ript>
 ```
 
 CDNの仕組みを用いて，Web上からリソースを取得することもできる．
 
 ```html
-<script src='https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js' integrity='sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=' crossorigin='anonymous'></script>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js" integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=" crossorigin="anonymous"></script>
 ```
 
 #### ・scriptタグが複数ある場合
@@ -119,11 +119,11 @@ globalNum = globalNum * 10;
 <p>見出し３</p>
 
 <script>
-document.write('<p>結果は' + globalNum + 'です</p>');
+document.write("<p>結果は" + globalNum + "です</p>");
 var hoge = true;
 </script>
 
-<script src='sample.js'></script>
+<script src="sample.js"></script>
 ```
 
 ```javascript
@@ -133,13 +133,13 @@ var hoge = true;
     
     // 外側の変数（hoge）を参照できる．
     if(hoge) {
-      console.log('外部ファイルを読み込みました');
+      console.log("外部ファイルを読み込みました");
     }
     
     var localNum = 20;
     function localMethod() {
         // 外側の変数（localNum）を参照できる．
-        console.log('localNum');
+        console.log("localNum");
     }
     
     // 定義したメソッドを実行
@@ -155,7 +155,7 @@ var globalNum = 10;
     
 localNum = localNum * 10;
     
-document.write('<p>結果は' + num + 'です</p>');
+document.write("<p>結果は" + num + "です</p>");
 var hoge = true;
 
 // 無名関数の即時実行．定義と呼び出しを同時に行う．
@@ -163,13 +163,13 @@ var hoge = true;
     
     // 外側の変数（hoge）を参照できる．
     if(hoge) {
-      console.log('外部ファイルを読み込みました');
+      console.log("外部ファイルを読み込みました");
     }
     
     var localNum = 20;
     function localMethod() {
         // 外側の変数（localNum）を参照できる．
-        console.log('localNum');
+        console.log("localNum");
     }
     
     // 定義したメソッドを実行
@@ -205,11 +205,11 @@ JavaScriptでは，画面上で何らかのイベントが発火し，これに�
 「要素のクリック」というイベントが発火すると，イベントハンドラ関数をコールする．
 
 ```html
-<input type='button' value='ボタン1' onclick='methodA()'>
+<input type="button" value="ボタン1" onclick="methodA()">
 
 <script>
 function methodA(){
-	console.log('イベントが発火しました');
+	console.log("イベントが発火しました");
 }
 </script>
 ```
@@ -225,8 +225,8 @@ function methodA(){
 
 ```javascript
 // 指定したIDで，クリックイベントが発火した時に，処理を行う．
-document.getElementById('btn').onclick = function(){
-	console.log('イベントが発火しました');
+document.getElementById("btn").onclick = function(){
+	console.log("イベントが発火しました");
 }
 ```
 
@@ -237,20 +237,20 @@ document.getElementById('btn').onclick = function(){
 
 ```javascript
 // DOMContentLoadedイベントが発火した時に，処理を行う．
-document.addEventListener('DOMContentLoaded', function(){
-	console.log('イベントが発火しました');
+document.addEventListener("DOMContentLoaded", function(){
+	console.log("イベントが発火しました");
 });
 ```
 
 ```javascript
 // 一つ目
-document.getElementById('btn').addEventListener('click', function(){
-	console.log('イベントが発火しました（１）');
+document.getElementById("btn").addEventListener("click", function(){
+	console.log("イベントが発火しました（１）");
 }, false);
 
 // 二つ目
-document.getElementById('btn').addEventListener('click', function(){
-	console.log('イベントが発火しました（２）');
+document.getElementById("btn").addEventListener("click", function(){
+	console.log("イベントが発火しました（２）");
 }, false);
 ```
 
@@ -291,17 +291,17 @@ Downloading処理の優先順位を上げるように宣言する方法．優先
 
 ```html
 <head>
-  <meta charset='utf-8'>
+  <meta charset="utf-8">
   <title>Title</title>
   <!-- preloadしたいものを宣言 -->
-  <link rel='preload' href='style.css' as='style'>
-  <link rel='preload' href='main.js' as='script'>
-  <link rel='stylesheet' href='style.css'>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="main.js" as="script">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <h1>Hello World</h1>
-  <script src='main.js' defer></script>
+  <script src="main.js" defer></script>
 </body>
 ```
 
@@ -349,15 +349,15 @@ Downloading処理によって読み込まれたリソースを翻訳するプロ
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
-    <link href='style.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="style.css" rel="stylesheet">
     <title>Critical Path</title>
   </head>
   <body>
     <p>Hello <span>web performance</span> students!</p>
-    <div><img src='awesome-photo.jpg'></div>
-    <div style='width: 50%'>
-      <div style='width: 50%'>Hello world!</div>
+    <div><img src="awesome-photo.jpg"></div>
+    <div style="width: 50%">
+      <div style="width: 50%">Hello world!</div>
     </div>
   </body>
 </html>

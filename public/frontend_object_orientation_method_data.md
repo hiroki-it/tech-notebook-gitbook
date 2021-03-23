@@ -13,7 +13,7 @@
 ```javascript
 // 定義
 const object = {
-  foo: 'bar',
+  foo: "bar",
   age: 42,
   baz: {myProp: 12},
 }
@@ -32,7 +32,7 @@ function car(make, model, year) {
 }
 
 // コール
-const mycar = new car('Eagle', 'Talon TSi', 1993);
+const mycar = new car("Eagle", "Talon TSi", 1993);
 ```
 
 <br>
@@ -48,7 +48,7 @@ const mycar = new car('Eagle', 'Talon TSi', 1993);
 ```javascript
 // 定義（コールする場所が前後しても無関係）
 function methodA(){
-    return 'A';
+    return "A";
 }
 ```
 
@@ -66,7 +66,7 @@ JavaScriptでよく見かけるドルマーク．これは，関数の名前と�
 ```javascript
 // 定義
 function $(){
-    return 'A';
+    return "A";
 }
 ```
 
@@ -77,7 +77,7 @@ jQueryでは，ライブラリの読み込み宣言時に，「Jquery」とい�
 ```javascript
 // jQuery.get() と同じ
 $.get() {
-    return 'A';
+    return "A";
 }
 ```
 
@@ -181,13 +181,13 @@ console.log(x); // 『undefined』が出力されます。
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  const x = 'hoge';
+  const x = "hoge";
     
   // 再宣言不可
-  const x = 'fuga'; // ERROR
+  const x = "fuga"; // ERROR
   
   // 再代入不可
-  x = 'fuga'; // ERROR
+  x = "fuga"; // ERROR
 }
 
 // ブロック内のconstにアクセス不可
@@ -202,13 +202,13 @@ console.log(x); // ERROR
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  let x = 'hoge';
+  let x = "hoge";
     
   // 再宣言不可
-  let x = 'fuga'; // ERROR
+  let x = "fuga"; // ERROR
   
   // 再代入可能
-  x = 'fuga';
+  x = "fuga";
 }
 
 // ブロック内のletにアクセス不可
@@ -225,7 +225,7 @@ const asyncFunc = async () => {
     
     try {
         
-        response = await axios.get('/some/path1')
+        response = await axios.get("/some/path1")
         console.info(response);
         
     } catch (error) {
@@ -244,13 +244,13 @@ const asyncFunc = async () => {
 ```javascript
 if (true) {
   // ブロック外からアクセス可
-  var x = 'hoge';
+  var x = "hoge";
     
   // 再宣言
-  var x = 'fuga';
+  var x = "fuga";
     
   // 再代入可能
-  x = 'fuga';
+  x = "fuga";
 }
 
 // ブロック内のvarにアクセス可能
@@ -272,7 +272,7 @@ console.log(x); // fuga
 ```javascript
 console.log(x); // undefined
 
-var x = 'hoge';
+var x = "hoge";
 ```
 
 これは，スコープの範囲内で宣言代入した変数において，宣言処理がスコープの最初に行ったことになるという仕様のためである．
@@ -282,7 +282,7 @@ var x // 宣言のみ行われる
 
 console.log(x); // undefined
 
-var x = 'hoge'; // 宣言と代入が行われる
+var x = "hoge"; // 宣言と代入が行われる
 ```
 
 #### ・```let```,```const```
@@ -292,6 +292,6 @@ var x = 'hoge'; // 宣言と代入が行われる
 ```javascript
 console.log(x); // x is not defined
 
-let x = 'hoge';
+let x = "hoge";
 ```
 

@@ -296,7 +296,7 @@ $car = new Car();
 class Goods
 {
     // 商品名データ
-    private $name = '';
+    private $name = "";
 
     // 商品価格データ
     private $price = 0;
@@ -312,7 +312,7 @@ class Goods
     // 商品名と価格を表示するメソッド
     public function printPrice(): void
     {
-        print($this->name.'の価格: ￥'.$this->price.'<br>');
+        print($this->name."の価格: ￥".$this->price."<br>");
     }
 
     // 商品名のゲッター
@@ -343,7 +343,7 @@ class GoodsWithTax extends Goods
     {
         // 商品価格の税込み価格を計算し，表示
         $priceWithTax = round($this->getPrice() * 1.08);  // （1）
-        print($this->getName().'の税込み価格: ￥'.$priceWithTax.'<br>');  // （2）
+        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  // （2）
     }
 }
 ```
@@ -393,8 +393,8 @@ class GoodsWithTax extends Goods
 abstract class ShainManagement
 {
     // 定数の定義
-    const TIME_TO_ARRIVE = strtotime('10:00:00');
-    const TIME_TO_LEAVE = strtotime('19:00:00');
+    const TIME_TO_ARRIVE = strtotime("10:00:00");
+    const TIME_TO_LEAVE = strtotime("19:00:00");
     
     // 抽象メソッド．
     // 処理内容を子クラスでOverrideしなければならない．
@@ -404,20 +404,20 @@ abstract class ShainManagement
     // 子クラスへそのまま継承される．子クラスでオーバーライドしなくても良い．
     public function toArrive()
     {
-        $nowTime = strtotime( date('H:i:s') );
+        $nowTime = strtotime( date("H:i:s") );
     
         // 出社時間より遅かった場合，遅刻と表示する．
         if($nowTime > self::TIME_TO_ARRIVE){
         
             return sprintf(
-                '%s の遅刻です．',
-                date('H時i分s秒', $nowTime - self::TIME_TO_ARRIVE)
+                "%s の遅刻です．",
+                date("H時i分s秒", $nowTime - self::TIME_TO_ARRIVE)
             );
         }
         
         return sprintf(
-            '%s に出勤しました．',
-            date('H時i分s秒', $nowTime)
+            "%s に出勤しました．",
+            date("H時i分s秒", $nowTime)
         );
     
     }
@@ -426,12 +426,12 @@ abstract class ShainManagement
     // 子クラスへそのまま継承される．子クラスでオーバーライドしなくても良い．
     public function toLeave()
     {
-        $nowTime = strtotime( date('H:i:s') );
+        $nowTime = strtotime( date("H:i:s") );
         
         return sprintf(
-            '%sに退社しました．%s の残業です．',
-            date('H時i分s秒', $nowTime),
-            date('H時i分s秒', $nowTime - self::TIME_TO_LEAVE)
+            "%sに退社しました．%s の残業です．",
+            date("H時i分s秒", $nowTime),
+            date("H時i分s秒", $nowTime - self::TIME_TO_LEAVE)
         );
     }
 }
@@ -643,7 +643,7 @@ trait ExampleTrait
 {
     public function example()
     {
-        return 'Hello World';
+        return "Hello World";
     }
 }
 ```
@@ -688,7 +688,7 @@ trait UnsupportedMagicMethodTrait
      */
     public function __get($name)
     {
-        throw new \Exception('This method is not supported');
+        throw new \Exception("This method is not supported");
     }
 
     /**
@@ -700,7 +700,7 @@ trait UnsupportedMagicMethodTrait
      */
     public function __set($name, $value)
     {
-        throw new \Exception('This method is not supported');
+        throw new \Exception("This method is not supported");
     }
 }
 ```
@@ -723,11 +723,11 @@ trait UnsupportedMagicMethodTrait
   
 class Example1
 {
-    const VALUE = 'これは定数です．';
+    const VALUE = "これは定数です．";
   
     public function className()
     {
-        return 'example1メソッドです．';
+        return "example1メソッドです．";
     }
 }
 ```
@@ -736,7 +736,7 @@ class Example1
 <?php
 
 // 外部ファイル名を指定して，クラスを読み込む．
-require_once('Example1.php');
+require_once("Example1.php");
 
 class Example2
 {
@@ -754,7 +754,7 @@ class Example2
 <?php
   
 // 外部ファイル名を指定して，クラスを読み込む．
-require_once('Example1.php');
+require_once("Example1.php");
 
 class Example2
 {
@@ -772,7 +772,7 @@ class Example2
 <?php
 
 function printTest() {
-    return  'test';
+    return  "test";
 }
 ```
 
@@ -780,7 +780,7 @@ function printTest() {
 <?php
 
 // 外部ファイル名を指定して読み込む．
-require_once ('printTestFunction.php');
+require_once ("printTestFunction.php");
 
 printTest();
 ```
@@ -808,11 +808,11 @@ namespace Domain\Entity;
 class Example1
 {
     // 定数を定義．
-    const VALUE = 'これは定数です．';
+    const VALUE = "これは定数です．";
   
     public function className()
     {
-        return 'example1メソッドです．';
+        return "example1メソッドです．";
     }
 }
 ```
@@ -909,7 +909,7 @@ class ModuleA // コールされる側
 {
     public function methodA(int $a, int $b, string $c)
     {
-        return '$a + $b'.$c;
+        return "$a + $b".$c;
     }
 }
 ```
@@ -921,7 +921,7 @@ class ModuleB // コールする側
     public function methodB()
     {
         $moduleA= new ModuleA();
-        $result = $moduleA->methodA(1, 2, 'です.'); // スカラ型データを渡すだけ
+        $result = $moduleA->methodA(1, 2, "です."); // スカラ型データを渡すだけ
     }
 }
 ```
@@ -1068,16 +1068,16 @@ class Container
 {
     public function __construct()
     {
-        $container['xxx.logger'] = function ($container) {
+        $container["xxx.logger"] = function ($container) {
             return new XxxLogger();
         };
         
-        $container['yyy.notification'] = function ($container) {
+        $container["yyy.notification"] = function ($container) {
             return new YyyNotification();
         };
         
-        $container['sample'] = function ($container) {
-            return new Sample($container['xxx.logger'], $container['yyy.notification']);
+        $container["sample"] = function ($container) {
+            return new Sample($container["xxx.logger"], $container["yyy.notification"]);
         };
     }
 }
@@ -1092,10 +1092,10 @@ $container = new Container();
 ```php
 <?php
 // DIコンテナの読み込み
-require_once __DIR__ . '/autoload.php';
+require_once __DIR__ . "/autoload.php";
 
 // クラス名を宣言してインスタンスを生成．
-$sample = $container['sample'];
+$sample = $container["sample"];
 ```
 
 #### ・アンチパターンのService Locater Pattern
@@ -1110,8 +1110,8 @@ class Sample
 {
     public function __construct($container)
     {
-        $this->logger            = $container['xxx.logger'];
-        $this->notification      = $container['yyy.notification'];
+        $this->logger            = $container["xxx.logger"];
+        $this->notification      = $container["yyy.notification"];
     }
 }
 ```

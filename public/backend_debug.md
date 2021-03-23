@@ -34,7 +34,7 @@ throw new \Exception(var_dump($var));
 
 #### ・処理の通過地点の特定
 
-処理が```var_dump```メソッドを通過していないことが原因．任意の場所に```var_dump('文字列')```を記述し，どこに記述した時に文字列が出力されるかを確認する．
+処理が```var_dump```メソッドを通過していないことが原因．任意の場所に```var_dump("文字列")```を記述し，どこに記述した時に文字列が出力されるかを確認する．
 
 **＊実装例＊**
 
@@ -46,7 +46,7 @@ if ($x = 1){
 }
 
 if ($x = 2){
-  var_dump('文字列'); // echo '文字列' でもよい．
+  var_dump("文字列"); // echo "文字列" でもよい．
   return 2;
 }
 
@@ -88,7 +88,7 @@ if ($x = 3){
 
 ```PHP
 <?php
-header('Content-Type: text/html; charset=UTF-8');
+header("Content-Type: text/html; charset=UTF-8");
 ```
 
 <br>
