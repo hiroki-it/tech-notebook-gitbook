@@ -1548,15 +1548,15 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">SHOW</span> <span class="token keyword">GLOBAL</span> VARIABLES<span class="token punctuation">;</span>
 
 <span class="token comment">-- OS&#x3068;DB&#x306E;&#x30BF;&#x30A4;&#x30E0;&#x30BE;&#x30FC;&#x30F3;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8868;&#x793A;</span>
-<span class="token keyword">SHOW</span> <span class="token keyword">SESSION</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">&apos;%time_zone&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword">SHOW</span> <span class="token keyword">GLOBAL</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">&apos;%time_zone&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">SESSION</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">&quot;%time_zone&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">GLOBAL</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">&quot;%time_zone&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8A2D;&#x5B9A;">&#x30FB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x8A2D;&#x5B9A;</h4>
 <pre class="language-"><code class="lang-sql"><span class="token comment">-- &#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
-<span class="token keyword">SET</span> <span class="token keyword">GLOBAL</span> time_zone <span class="token operator">=</span> <span class="token string">&apos;Asia/Tokyo&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">SET</span> <span class="token keyword">GLOBAL</span> time_zone <span class="token operator">=</span> <span class="token string">&quot;Asia/Tokyo&quot;</span><span class="token punctuation">;</span>
 
 <span class="token comment">-- &#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5834;&#x5408;</span>
-<span class="token keyword">SET</span> time_zone <span class="token operator">=</span> <span class="token string">&apos;Asia/Tokyo&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">SET</span> time_zone <span class="token operator">=</span> <span class="token string">&quot;Asia/Tokyo&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-&#x30C6;&#x30FC;&#x30D6;&#x30EB;">02. &#x30C6;&#x30FC;&#x30D6;&#x30EB;</h2>
@@ -1567,13 +1567,13 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> order_data <span class="token punctuation">(</span>
 
     <span class="token comment">-- Primary Key&#x5236;&#x7D04;</span>
-    order_id <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;&#x6CE8;&#x6587;ID&apos;</span><span class="token punctuation">,</span>
+    order_id <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">COMMENT</span> <span class="token string">&quot;&#x6CE8;&#x6587;ID&quot;</span><span class="token punctuation">,</span>
 
     <span class="token comment">-- Not Null&#x5236;&#x7D04;</span>
-    order_kbn <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;&#x6CE8;&#x6587;&#x533A;&#x5206;&apos;</span><span class="token punctuation">,</span>
-    system_create_date_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x767B;&#x9332;&#x65E5;&#x6642;&apos;</span><span class="token punctuation">,</span>
-    system_update_date_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x66F4;&#x65B0;&#x65E5;&#x6642;&apos;</span><span class="token punctuation">,</span>
-    delete_flg <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;0&#xFF1A;&#x901A;&#x5E38;&#xFF0C;1&#xFF1A;&#x524A;&#x9664;&#x6E08;&apos;</span><span class="token punctuation">,</span>
+    order_kbn <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&quot;&#x6CE8;&#x6587;&#x533A;&#x5206;&quot;</span><span class="token punctuation">,</span>
+    system_create_date_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&quot;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x767B;&#x9332;&#x65E5;&#x6642;&quot;</span><span class="token punctuation">,</span>
+    system_update_date_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&quot;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x66F4;&#x65B0;&#x65E5;&#x6642;&quot;</span><span class="token punctuation">,</span>
+    delete_flg <span class="token keyword">INT</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">&quot;0&#xFF1A;&#x901A;&#x5E38;&#xFF0C;1&#xFF1A;&#x524A;&#x9664;&#x6E08;&quot;</span><span class="token punctuation">,</span>
 
     <span class="token comment">-- &#x8907;&#x5408;Primary Key&#x5236;&#x7D04;&#xFF08;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E0A;&#x8A18;&#x306E;Primary Key&#x5236;&#x7D04;&#x306E;&#x8A18;&#x8FF0;&#x306F;&#x4E0D;&#x8981;&#xFF09;</span>
     <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>order_id<span class="token punctuation">,</span> order_kbn<span class="token punctuation">)</span>
@@ -1659,11 +1659,11 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h3 id="&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;">&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</h3>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;">&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;</h4>
 <p>DB&#x304B;&#x3089;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30AF;&#x30B9;&#x30DD;&#x30FC;&#x30C8;&#x3057;&#x305F;&#x3044;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x9023;&#x306D;&#x308B;</p>
-<pre class="language-"><code class="lang-shell">$ mysqldump --force -u <span class="token string">&apos;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&apos;</span> -p -h <span class="token string">&apos;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&apos;</span> <span class="token string">&apos;{ DB&#x540D; }&apos;</span> <span class="token string">&apos;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }&apos;</span> <span class="token string">&apos;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 }&apos;</span> <span class="token operator">&gt;</span> table.sql
+<pre class="language-"><code class="lang-shell">$ mysqldump --force -u <span class="token string">&quot;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&quot;</span> -p -h <span class="token string">&quot;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&quot;</span> <span class="token string">&quot;{ DB&#x540D; }&quot;</span> <span class="token string">&quot;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;1 }&quot;</span> <span class="token string">&quot;{ &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;2 }&quot;</span> <span class="token operator">&gt;</span> table.sql
 </code></pre>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;">&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</h4>
 <p>DB&#x306B;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#xFF0E;force&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x51FA;&#x3066;&#x3082;&#x5F37;&#x5236;&#x7684;&#x306B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell"> $ mysql --force -u <span class="token string">&apos;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&apos;</span> -p -h <span class="token string">&apos;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&apos;</span> <span class="token string">&apos;{ DB&#x540D; }&apos;</span> <span class="token operator">&lt;</span> table.sql
+<pre class="language-"><code class="lang-shell"> $ mysql --force -u <span class="token string">&quot;{ &#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8; }&quot;</span> -p -h <span class="token string">&quot;{ DB&#x306E;&#x30DB;&#x30B9;&#x30C8; }&quot;</span> <span class="token string">&quot;{ DB&#x540D; }&quot;</span> <span class="token operator">&lt;</span> table.sql
 </code></pre>
 <p><br></p>
 <h3 id="&#x30C7;&#x30FC;&#x30BF;&#x578B;">&#x30C7;&#x30FC;&#x30BF;&#x578B;</h3>
@@ -1723,7 +1723,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h2 id="03-&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x7BA1;&#x7406;">03. &#x30E6;&#x30FC;&#x30B6;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="create">CREATE</h3>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4F5C;&#x6210;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4F5C;&#x6210;</h4>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span> IDENTIFIED <span class="token keyword">BY</span> <span class="token string">&apos;{ &#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9; }&apos;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span> IDENTIFIED <span class="token keyword">BY</span> <span class="token string">&quot;{ &#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4E00;&#x89A7;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x4E00;&#x89A7;</h4>
 <p>&#x3053;&#x3053;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x7279;&#x6A29;&#x3068;&#xFF0E;ALL&#x7279;&#x6A29;&#x306F;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
@@ -1743,18 +1743,18 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h4 id="&#x30FB;&#x5168;&#x3066;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;">&#x30FB;&#x5168;&#x3066;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x540D;&#x306F;&#xFF0C;&#x30B7;&#x30F3;&#x30B0;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x56F2;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x7121;&#x3044;&#xFF0E;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;<code>PRIVILEGES</code>&#x306F;&#x7701;&#x7565;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x7701;&#x7565;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x307B;&#x3046;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token comment">-- &#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</span>
-<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 
 <span class="token comment">-- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token punctuation">`</span><span class="token operator">%</span><span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token punctuation">`</span><span class="token operator">%</span><span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sql"><span class="token comment">-- Amazon Aurora&#x3082;&#x540C;&#x3058;&#x304F;</span>
 <span class="token comment">-- &#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x5168;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</span>
-<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x4E00;&#x90E8;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;">&#x30FB;&#x4E00;&#x90E8;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x6A29;&#x9650;&#x306E;&#x307F;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;">&#x30FB;&#x6A29;&#x9650;&#x306E;&#x632F;&#x308A;&#x65B9;</h4>
 <table>
@@ -1786,10 +1786,10 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <p><br></p>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4E00;&#x89A7;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x6A29;&#x9650;&#x4E00;&#x89A7;</h4>
 <p>&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x6A29;&#x9650;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> GRANTS <span class="token keyword">FOR</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> GRANTS <span class="token keyword">FOR</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>&#x4F5C;&#x6210;&#x3057;&#x305F;&#x3060;&#x3051;&#x3067;&#x6A29;&#x9650;&#x3092;&#x4F55;&#x3082;&#x4ED8;&#x4E0E;&#x3057;&#x3066;&#x306A;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x300C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306E;&#x5168;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x3057;&#x3066;&#xFF0C;&#x5168;&#x6A29;&#x9650;&#x306A;&#x3057;&#x300D;&#x3092;&#x8868;&#x3059;<code>USAGE</code>&#x3068;&#x3057;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">GRANT</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">GRANT</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;&#x6A29;&#x9650;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3068;&#xFF0C;&#x4E0A;&#x8A18;&#x306B;&#x52A0;&#x3048;&#x3066;&#xFF0C;&#x4ED8;&#x4E0E;&#x3057;&#x305F;GRANT&#x6A29;&#x9650;&#x3082;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><br></p>
@@ -1797,12 +1797,12 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h4 id="&#x30FB;&#x5168;&#x6A29;&#x9650;&#x524A;&#x9664;">&#x30FB;&#x5168;&#x6A29;&#x9650;&#x524A;&#x9664;</h4>
 <p>&#x5168;&#x6A29;&#x9650;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;GRANT&#x6A29;&#x9650;&#x3092;USAGE&#x306B;&#x623B;&#x3059;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token comment">-- Amazon Aurora&#x307E;&#x305F;&#x306F;RDS&#x306E;&#x5834;&#x5408;</span>
-<span class="token keyword">REVOKE</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token punctuation">`</span><span class="token operator">%</span><span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">REVOKE</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token punctuation">`</span><span class="token operator">%</span><span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 
-<span class="token keyword">REVOKE</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token string">&apos;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">REVOKE</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> {DB&#x540D;}<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token string">&quot;{ &#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;">&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x5909;&#x66F4;</h4>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">RENAME</span> <span class="token keyword">USER</span> <span class="token string">&apos;{ &#x53E4;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span> <span class="token keyword">TO</span> <span class="token string">&apos;{ &#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&apos;</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">RENAME</span> <span class="token keyword">USER</span> <span class="token string">&quot;{ &#x53E4;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span> <span class="token keyword">TO</span> <span class="token string">&quot;{ &#x65B0;&#x3057;&#x3044;&#x30E6;&#x30FC;&#x30B6;&#x540D; }&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="04-&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF1A;read">04. &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF1A;READ</h2>
@@ -1871,7 +1871,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 </code></pre>
 <h4 id="&#x30FB;md5">&#x30FB;<code>MD5()</code></h4>
 <p>&#x6587;&#x5B57;&#x5217;&#x3092;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5316;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> MD5<span class="token punctuation">(</span><span class="token string">&apos;xxxxx&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> MD5<span class="token punctuation">(</span><span class="token string">&quot;xxxxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="case&#x53E5;"><code>CASE</code>&#x53E5;</h3>
@@ -1930,21 +1930,21 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
-$joinedIdList = implode(&apos;,&apos;, $idList);
+$joinedIdList = implode(&quot;,&quot;, $idList);
 
 // &#x4E26;&#x3073;&#x66FF;&#x3048;&#x6761;&#x4EF6;&#x3092;&#x8A2D;&#x5B9A;
 $expression = call_user_func(function () use ($orders, $joinedIdList) {
     if ($orders) {
         foreach ($orders as $key =&gt; $order) {
             switch ($key) {
-                case &apos;id&apos;:
-                    return sprintf(&apos;ss.id %s&apos;, $order);
+                case &quot;id&quot;:
+                    return sprintf(&quot;ss.id %s&quot;, $order);
             }
         }
     }
 
     // IN&#x53E5;&#x9806;&#x306E;&#x5834;&#x5408;
-    return sprintf(&apos;FIELD(ss.id, %s)&apos;, $idList);
+    return sprintf(&quot;FIELD(ss.id, %s)&quot;, $idList);
 });
 
 $sql = &lt;&lt;&lt;SQL
@@ -1998,8 +1998,8 @@ $sql = &lt;&lt;&lt;SQL
 <span class="token keyword">FROM</span>
     fruit
 <span class="token keyword">WHERE</span>
-    name <span class="token operator">=</span> <span class="token string">&apos;&#x307F;&#x304B;&#x3093;&apos;</span>
-    <span class="token operator">OR</span> name <span class="token operator">=</span> <span class="token string">&apos;&#x308A;&#x3093;&#x3054;&apos;</span><span class="token punctuation">;</span>
+    name <span class="token operator">=</span> <span class="token string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span>
+    <span class="token operator">OR</span> name <span class="token operator">=</span> <span class="token string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p><strong>&#x3010;IN&#x53E5;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3011;</strong></p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
@@ -2007,7 +2007,7 @@ $sql = &lt;&lt;&lt;SQL
 <span class="token keyword">FROM</span>
     fruit
 <span class="token keyword">WHERE</span>
-    name <span class="token operator">IN</span><span class="token punctuation">(</span><span class="token string">&apos;&#x307F;&#x304B;&#x3093;&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;&#x308A;&#x3093;&#x3054;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    name <span class="token operator">IN</span><span class="token punctuation">(</span><span class="token string">&quot;&#x307F;&#x304B;&#x3093;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x308A;&#x3093;&#x3054;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;any&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;">&#x30FB;<code>ANY</code>&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p>  &#x66F8;&#x304D;&#x65B9;&#x304C;&#x7570;&#x306A;&#x308B;&#x3060;&#x3051;&#x3067;&#xFF0C;<code>in</code>&#x3068;&#x540C;&#x3058;&#x51FA;&#x529B;</p>
@@ -2077,14 +2077,14 @@ $sql = &lt;&lt;&lt;SQL
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
 <span class="token keyword">WHERE</span>
-    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">LIKE</span> <span class="token string">&apos;%&#x55B6;&#x696D;&apos;</span><span class="token punctuation">;</span>
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">LIKE</span> <span class="token string">&quot;%&#x55B6;&#x696D;&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token operator">*</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
 <span class="token keyword">WHERE</span>
-    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">LIKE</span> <span class="token string">&apos;_&#x55B6;&#x696D;&apos;</span><span class="token punctuation">;</span>
+    { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">LIKE</span> <span class="token string">&quot;_&#x55B6;&#x696D;&quot;</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h3 id="between&#x53E5;"><code>BETWEEN</code>&#x53E5;</h3>
@@ -2173,7 +2173,7 @@ $sql = &lt;&lt;&lt;SQL
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 // SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql = &apos;SELECT * FROM doraemon_characters&apos;;
+$sql = &quot;SELECT * FROM doraemon_characters&quot;;
 $stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
@@ -2207,7 +2207,7 @@ print_r($data);
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x6DF7;&#x5408;&#x578B;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x4E3B;&#x306B;&#xFF0C;<code>COUNT()</code>&#x306E;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;</p>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 // SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;
-$sql = &apos;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&apos;;
+$sql = &quot;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&quot;;
 $stmt = $dbh-&gt;prepare($sql);
 $stmt-&gt;execute();
 
@@ -2224,16 +2224,16 @@ print_r($data);
 <p>PHP&#x3068;&#x306F;&#x7570;&#x306A;&#x308A;&#xFF0C;&#x5909;&#x6570;&#x5B9A;&#x7FA9;&#x306B;&#x300E;$&#x300F;&#x306F;&#x7528;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-java"><span class="token comment">// SELECT&#x6587;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x5B9F;&#x884C;&#xFF0E;</span>
-<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">&apos;SELECT * FROM doraemon_characters&apos;</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">&quot;SELECT * FROM doraemon_characters&quot;</span><span class="token punctuation">;</span>
 <span class="token class-name">ResultSet</span> result statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
 <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&apos;id&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;name&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;gender&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&apos;typeL&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;gender&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;typeL&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x30AB;&#x30E9;&#x30E0;&#x540D;&#x3068;&#x5024;&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3068;&#x3057;&#x3066;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
@@ -2245,27 +2245,27 @@ print_r($data);
 <h4 id="&#x30FB;pdo&#x306E;&#x5834;&#x5408;">&#x30FB;PDO&#x306E;&#x5834;&#x5408;</h4>
 <pre class="language-"><code class="lang-PHP">&lt;?php
 // $_POST&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;post&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#xFF0C;&#x5C5E;&#x6027;&#x304B;&#x3089;&#x5404;&#x5024;&#x3092;&#x53D6;&#x5F97;
-$staff_name = $_POST[&apos;name&apos;];
-$staff_pass = $_POST[&apos;pass&apos;];
+$staff_name = $_POST[&quot;name&quot;];
+$staff_pass = $_POST[&quot;pass&quot;];
 
 
 // HTML&#x3068;&#x3057;&#x3066;&#x5909;&#x6570;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x969B;&#xFF0C;&#x300C;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x300D;&#x300C;</span><span class="token punctuation">&gt;</span></span>&#x300D;&#x306A;&#x3069;&#x306E;&#x7279;&#x6B8A;&#x6587;&#x5B57;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#xFF08;&#x7121;&#x5BB3;&#x5316;&#xFF09;
-$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, &apos;UTF-8&apos;);
-$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, &apos;UTF-8&apos;);
+$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, &quot;UTF-8&quot;);
+$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, &quot;UTF-8&quot;);
 
 
 // &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x63A5;&#x7D9A;&#xFF08;&#x30A4;&#x30B3;&#x30FC;&#x30EB;&#x306E;&#x9593;&#x306B;&#x30B9;&#x30DA;&#x30FC;&#x30B9;&#x3092;&#x5165;&#x308C;&#x308B;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF09;
-$dsn = &apos;mysql:dbname=kizukeba_pronami_php;
+$dsn = &quot;mysql:dbname=kizukeba_pronami_php;
 host=kizukebapronamiphp
-charaset=UTF-8&apos;;
-$user = &apos;root&apos;;
-$password = &apos;&apos;;
+charaset=UTF-8&quot;;
+$user = &quot;root&quot;;
+$password = &quot;&quot;;
 $dbh = new PDO($dsn, $user, $password);
 $dbh-&gt;setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
 // &#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
-$sql=&apos;INSERT INTO mst_staff (name,password) VALUES (?,?)&apos;;
+$sql=&quot;INSERT INTO mst_staff (name,password) VALUES (?,?)&quot;;
 $stmt = $dbh-&gt;prepare($sql);
 
 
@@ -2300,7 +2300,7 @@ class ItemQuery
     // &#x5217;&#x540D;&#x3068;&#x5024;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;INSERT
     public static function insert()
     {
-        return &apos;INSERT INTO item_table VALUES(1, &apos;&#x5546;&#x54C1;A&apos;, 1000, &apos;2019-07-24 07:07:07&apos;);&apos;;
+        return &quot;INSERT INTO item_table VALUES(1, &quot;&#x5546;&#x54C1;A&quot;, 1000, &quot;2019-07-24 07:07:07&quot;);&quot;;
     }
 }
 </code></pre>
@@ -2373,7 +2373,7 @@ class ItemQuery
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.8.2","depth":2,"next":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.8.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-03-23T01:24:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T01:40:12.479Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.8.2","depth":2,"next":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.8.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-03-23T02:09:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-23T02:15:59.954Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
