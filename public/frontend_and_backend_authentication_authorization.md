@@ -28,7 +28,7 @@
 
 ```http
 # レスポンスヘッダーについて，詳しくは，以降の説明を参照せよ．
-WWW-Authenticate: Basic realm="Server Name", charaset="UTF-8"
+WWW-Authenticate: Basic realm='Server Name', charaset='UTF-8'
 ```
 
 3. クライアントは，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求める．そして，これをエンコードし，リクエストを送信する．
@@ -47,7 +47,7 @@ Authorization: Basic bG9naW46cGFzc3dvcmQ=
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm='<認証領域>', charaset='UTF-8'
 ```
 
 
@@ -67,12 +67,12 @@ Authorization: Basic <ユーザ名>:<パスワード>
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Basic realm='<認証領域>', charaset='UTF-8'
 ```
 
 ```http
 # リクエストヘッダー
-Authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
+Authorization: Digest realm='<認証領域>' nonce='<サーバ側が生成した任意の文字列>' algorithm='<ハッシュ関数名>' qoq='auth'
 ```
 
 <br>
@@ -87,7 +87,7 @@ Authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Bearer realm='<認証領域>', charaset='UTF-8'
 ```
 
 ```http
@@ -204,7 +204,7 @@ Oauth認証では，Bear認証スキームが用いられることが多いが�
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Bearer realm='<認証領域>', charaset='UTF-8'
 ```
 
 ```http
@@ -268,7 +268,7 @@ Personal Access Token（個人用アクセストークン）を使用する認�
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Bearer realm='<認証領域>', charaset='UTF-8'
 ```
 ```http
 # リクエストヘッダー
@@ -299,8 +299,8 @@ const token = base64urlEncoding(header) + '.' +
 
 ```javascript
 const header = {
-    "typ" : "JWT"    // JWTの使用
-    "alg" : "HS256", // 署名のための暗号化アルゴリズム
+    'typ' : 'JWT'    // JWTの使用
+    'alg' : 'HS256', // 署名のための暗号化アルゴリズム
 }
 ```
 
@@ -316,7 +316,7 @@ const header = {
 
 ```javascript
 const payload = {
-    "sub" : "123456789",
+    'sub' : '123456789',
 }
 ```
 
@@ -340,7 +340,7 @@ Authorization: Bearer <JWTの文字列>
 
 ```http
 # レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
+WWW-Authenticate: Bearer realm='<認証領域>', charaset='UTF-8'
 ```
 
 #### ・JWTを用いた認証と認可

@@ -81,7 +81,7 @@ PHPの```list```メソッドは，List型とは意味合いが異なる．配列
 ```php
 <?php
     
-$array = array("あ", "い", "う");
+$array = array('あ', 'い', 'う');
 $a = $array[0];
 $i = $array[1];
 $u = $array[2];
@@ -96,7 +96,7 @@ echo $a.$i.$u; // あいう
 ```php
 <?php
     
-list($a, $i, $u) = array("あ", "い", "う");
+list($a, $i, $u) = array('あ', 'い', 'う');
 
 echo $a.$i.$u; // あいう
 ```
@@ -125,10 +125,10 @@ PHPでは，```array_push```メソッドと```array_shift```メソッドを組�
 
 ```php
 <?php
-$array = array("Blue", "Green");
+$array = array('Blue', 'Green');
 
 // 引数を，配列の最後に，要素として追加する．
-array_push($array, "Red");
+array_push($array, 'Red');
 print_r($array);
 
 // 出力結果
@@ -333,7 +333,7 @@ $var = (string) $var; // $varはString型
 
 ```php
 <?php
-$var = "1";
+$var = '1';
 
 // Int型
 $var = (int) $var;
@@ -357,7 +357,7 @@ $var = (bool) $var;
 
 ```php
 <?php
-$var = "1.0";
+$var = '1.0';
 
 // Float型
 $var = (float) $var;

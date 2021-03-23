@@ -23,7 +23,7 @@
 ```php
 <?php
     
-$array = []"あ", "い", "う"];
+$array = ['あ', 'い', 'う'];
 
 // 内部ポインタが現在指定している要素を出力．
 echo current($array); // あ
@@ -102,21 +102,21 @@ class Example
      */
     public function printOption(array $options)
     {
-        $result = "何も設定されていません．"
+        $result = '何も設定されていません．'
         
         // $options配列には，OptionA,B,Cエンティティのいずれかが格納されていると想定
         foreach ($options as $option) {
             
-            if ($option->name() == "オプションA") {
-                $result = "オプションAが設定されています．";
+            if ($option->name() == 'オプションA') {
+                $result = 'オプションAが設定されています．';
             }
             
-            if ($option->name() == "オプションB") {
+            if ($option->name() == 'オプションB') {
                 $result = 'オプションBが設定されています．';
             }
             
-            if ($option->name() == "オプションC") {
-                $result = "オプションCが設定されています．";
+            if ($option->name() == 'オプションC') {
+                $result = 'オプションCが設定されています．';
             }
             
             return $result;
@@ -200,14 +200,14 @@ function iteration($M, $A) {
     
 $twoDimension = [
   [
-    "date"  => "2015/11/1",
-    "score" => 100,
-    "color" => "red",
+    'date'  => '2015/11/1',
+    'score' => 100,
+    'color' => 'red',
   ],
   [
-    "date"  => "2015/11/2",
-    "score" => 75,
-    "color" => "blue",
+    'date'  => '2015/11/2',
+    'score' => 75,
+    'color' => 'blue',
   ]
 ];
 
@@ -227,19 +227,19 @@ $oneDimension = call_user_func_array(
     
 $twoDimension = [
   [
-    "date"  => "2015/11/1",
-    "score" => 100,
-    "color" => "red",
+    'date'  => '2015/11/1',
+    'score' => 100,
+    'color' => 'red',
   ],
   [
-    "date"  => "2015/11/2",
-    "score" => 75,
-    "color" => "blue",
+    'date'  => '2015/11/2',
+    'score' => 75,
+    'color' => 'blue',
   ]
 ];
 
 // この配列のscoreキーから値を取り出し，一次元配列を生成する．
-$oneDimension = array_column($twoDimension, "score");
+$oneDimension = array_column($twoDimension, 'score');
 
 // Array
 // (
@@ -373,7 +373,7 @@ foreach ($array as $key => $value) {
         continue;
     }
     
-    echo $value . "は奇数です";
+    echo $value . 'は奇数です';
 }
 ```
 
@@ -388,7 +388,7 @@ foreach ($array as $key => $value) {
 ```php
 <?php
 
-$array = ["one", "two", "three", "four", "", "five"];
+$array = ['one', 'two', 'three', 'four', '', 'five'];
 
 foreach ($array as $value) {
     

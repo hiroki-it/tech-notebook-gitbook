@@ -10,10 +10,10 @@
 // 個人的に一番おすすめ
 // キャレット表記
 {
-  "require": {
-    "foo": "^1.1.1",  // >=1.1.1 and <1.2.0
-    "bar": "^1.1",    // >=1.1.0 and <1.2.0
-    "hoge": "^0.0.1"  // >=0.0.1 and <0.0.2
+  'require': {
+    'foo': '^1.1.1',  // >=1.1.1 and <1.2.0
+    'bar': '^1.1',    // >=1.1.0 and <1.2.0
+    'hoge': '^0.0.1'  // >=0.0.1 and <0.0.2
   }
 }
 ```
@@ -21,10 +21,10 @@
 ```json
 // チルダ表記
 {
-  "require": {
-    "foo": "~1.1.1",  // >=1.1.1 and <2.0.0
-    "bar": "~1.1",    // >=1.1.0 and <2.0.0
-    "hoge": "~1"      // >=1.1.0 and <2.0.0
+  'require': {
+    'foo': '~1.1.1',  // >=1.1.1 and <2.0.0
+    'bar': '~1.1',    // >=1.1.0 and <2.0.0
+    'hoge': '~1'      // >=1.1.0 and <2.0.0
   }
 }
 ```
@@ -32,11 +32,11 @@
 ```json
 // エックス，アスタリスク表記
 {
-  "require": {
-    "foo": "*",     // どんなバージョンでもOK
-    "bar": "1.1.x", // >=1.1.0 and <1.2.0 
-    "hoge": "1.X",  // >=1.0.0 and <2.0.0
-    "huga": ""      // "*"と同じことになる = どんなバージョンでもOK
+  'require': {
+    'foo': '*',     // どんなバージョンでもOK
+    'bar': '1.1.x', // >=1.1.0 and <1.2.0 
+    'hoge': '1.X',  // >=1.0.0 and <2.0.0
+    'huga': ''      // '*'と同じことになる = どんなバージョンでもOK
   }
 }
 ```
@@ -47,16 +47,16 @@
 
 ```json
 {
-    "autoload": {
-        "psr-4": {
-            "<名前空間>": "<ファイルパス>",
-            "App\\": "app/",
-            "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
-            "Database\\Seeders\\": "database/seeds/production"
+    'autoload': {
+        'psr-4': {
+            '<名前空間>': '<ファイルパス>',
+            'App\\': 'app/',
+            'Database\\Factories\\Infrastructure\\DTO\\': 'database/factories/production',
+            'Database\\Seeders\\': 'database/seeds/production'
         },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
+        'classmap': [
+            'database/seeds',
+            'database/factories'
         ]
     }
 }
@@ -176,19 +176,19 @@ $ composer <エイリアス名>
 
 ```json
 {
-    "scripts": {
-        "<エイリアス名>": [
-            "@<実行するコマンド>"
+    'scripts': {
+        '<エイリアス名>': [
+            '@<実行するコマンド>'
         ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+        'post-autoload-dump': [
+            'Illuminate\\Foundation\\ComposerScripts::postAutoloadDump',
+            '@php artisan package:discover --ansi'
         ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        'post-root-package-install': [
+            '@php -r \'file_exists('.env') || copy('.env.example', '.env');\''
         ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+        'post-create-project-cmd': [
+            '@php artisan key:generate --ansi'
         ]
     }
 }
@@ -614,7 +614,7 @@ class Example
 $client = new Client();
 
 // GET送信
-$response = $client->request("GET", <アクセスしたいURL>);
+$response = $client->request('GET', <アクセスしたいURL>);
 ```
 
 #### ・レスポンスメッセージからボディを取得
@@ -627,7 +627,7 @@ $response = $client->request("GET", <アクセスしたいURL>);
 $client = new Client();
 
 // POST送信
-$response = $client->request("POST", <アクセスしたいURL>);
+$response = $client->request('POST', <アクセスしたいURL>);
 
 // レスポンスメッセージからボディのみを取得
 $body = json_decode($response->getBody(), true);

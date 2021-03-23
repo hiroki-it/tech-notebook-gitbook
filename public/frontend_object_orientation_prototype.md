@@ -104,12 +104,12 @@ console.log(
     JSON.stringify({
         x : 1,
         y : 5,
-        z : "test"
+        z : 'test'
     })
 );
 
 // JSON形式オブジェクト
-// "{"x":5, "y":5 "z":"test"}"
+// '{'x':5, 'y':5 'z':'test'}'
 ```
 
 #### ・```stringify```メソッド
@@ -121,14 +121,14 @@ JSONからJavaScriptにデシリアライズする．
 ```javascript
 console.log(
     JSON.parse({
-        "x" : 1,
-        "y" : 5,
-        "z" : "test"
+        'x' : 1,
+        'y' : 5,
+        'z' : 'test'
      })
 );
 
 // JavaScriptオブジェクト
-// {x:5, y:5 z:"test"}
+// {x:5, y:5 z:'test'}
 ```
 
 <br>
@@ -146,16 +146,16 @@ console.log(
 ```html
 <html>
  <body>
-  <p id="myid">Hello world!</p>
+  <p id='myid'>Hello world!</p>
   <script>
-   console.log(document.getElementById("myid"));
+   console.log(document.getElementById('myid'));
   </script>
  </body>
 </html>
 ```
 
 ```javascript
-// <p id="myid">Hello world!</p>
+// <p id='myid'>Hello world!</p>
 ```
 
 <br>
@@ -169,7 +169,7 @@ console.log(
 **＊実装例＊**
 
 ```html
-<button id="btn">表示</button>
+<button id='btn'>表示</button>
 
 <script>
 const btn = document.getElementById('btn');
@@ -376,7 +376,7 @@ export class Example {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from "./example.js";
+import {Example} from './example.js';
 
 // 生成，初期化
 const example = new Example(1);
@@ -406,7 +406,7 @@ export const Example = class {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from "./example.js";
+import {Example} from './example.js';
 
 // 生成，初期化
 const example = new Example(1);
@@ -516,7 +516,7 @@ console.log(result);
 SubExample.prototype = Object.create(Example.prototype, {
 
     // データを定義
-    subProperty: "テスト"
+    subProperty: 'テスト'
     
     // メソッドを定義
     printSubValue: function() {

@@ -36,15 +36,15 @@ ProviderとProvisionerの操作を自動化できる．チームメンバーが�
 #=======================================
 # Webサーバ情報
 #=======================================
-WEB_HOST="XXX.X.X.X"
+WEB_HOST='XXX.X.X.X'
 
 #=======================================
 # データベースサーバ情報
 #=======================================
-DB_HOST="YYY.Y.Y.Y"
-DB_NAME="example"
-DB_USER="hiroki"
-DB_PASSWORD="12345"
+DB_HOST='YYY.Y.Y.Y'
+DB_NAME='example'
+DB_USER='hiroki'
+DB_PASSWORD='12345'
 ```
 
 #### ・主な```vagrant```コマンド

@@ -123,26 +123,22 @@ Controllerに対してリクエストを行い，正しくレスポンスが行�
 
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testCanGetPage()
+    public function canGetPage()
     {
         $client = new GuzzleHttp\Client();
 
-        $client->request('GET', '/xxx/yyy/');
+        // GETリクエスト
+        $client->request(
+            'GET',
+            '/xxx/yyy/'
+        );
+        
         $response = $client->getResponse();
 
-        // 200ステータステスト
+        // 200ステータスが返却されるかをテストする．
         $this->assertTrue($response->isOk());
     }
 }
-```
-
-#### ・レスポンスエラーメッセージテスト
-
-レスポンスが成功するか，またレスポンスされるエラーメッセージが正しいかをテストする．
-
-```php
-<?php
-// ここに実装例
 ```
 
 #### ・レスポンスデータテスト
@@ -151,7 +147,87 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
 ```php
 <?php
-// ここに実装例
+
+class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+{
+    public function canPostMessage()
+    {
+        $client = new GuzzleHttp\Client();
+
+        // APIにPOSTリクエスト
+        $client->request(
+            'POST',
+            '/xxx/yyy/',
+            [
+                'channel_id' => 'XXXXX', 
+                'text' => 'Hello World!'
+            ],
+            [
+                'HTTP_X_API_Token' => 'Bearer xxxxxx'
+            ]
+        );
+        
+        $response = $client->getResponse();
+
+        // 200ステータスが返却されるかをテストする．
+        $this->assertTrue($response->isOk());
+        
+        // レスポンスデータを抽出する．
+        $actual = json_decode($response->getContent(), true)['text'];
+        
+        $excepted = [
+            'メッセージを受信しました．'
+        ]
+        
+        // レスポンスデータが正しいかをテストする．
+        $this->assertSame($excepted, $actual)
+    }
+}
+```
+
+#### ・レスポンスエラーデータテスト
+
+レスポンスが成功するか，またレスポンスされるエラーが正しいかをテストする．
+
+```php
+<?php
+
+class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+{
+    public function canFailToPostMessage()
+    {
+        $client = new GuzzleHttp\Client();
+
+        // APIにPOSTリクエスト
+        $client->request(
+            'POST',
+            '/xxx/yyy/',
+            [
+                'channel_id' => '', 
+                'text' => ''
+            ],
+            [
+                'HTTP_X_API_Token' => 'Bearer xxxxxx'
+            ]
+        );
+        
+        $response = $client->getResponse();
+
+        // 200ステータスが返却されるかをテストする．
+        $this->assertTrue($response->isOk());
+        
+        // レスポンスデータのエラーを抽出する．
+        $actual = json_decode($response->getContent(), true)['errors'];
+        
+        $excepted = [
+            'チャンネルIDは必ず入力してください．'
+            'メッセージは必ず入力してください．'
+        ]
+        
+        // エラーが正しいかをテストする．
+        $this->assertSame($excepted, $actual)
+    }
+}
 ```
 
 <br>
@@ -174,7 +250,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         // 基本的には，一番最初に記述する．
         parent::setUp();
         
-        $this->example= Phake::mock(Example::class);
+        $this->example = Phake::mock(Example::class);
     }
 }
 ```
@@ -232,8 +308,8 @@ class ExampleControllerTest
         return [
             // 配列データは複数あっても良い，
             // testMethod()の引数と同じ順番で，配列データの要素が並ぶ．
-            ["あ", "い", "う"],
-            ["1", "2", "3"]
+            ['あ', 'い', 'う'],
+            ['1', '2', '3']
         ];
     }
 }

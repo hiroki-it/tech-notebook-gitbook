@@ -99,7 +99,7 @@ function example($data){
     return $data;
 }
 
-$data = "データ";
+$data = 'データ';
 example($data);
 ```
 
@@ -149,7 +149,7 @@ function example($data){
     return $data;
 }
 
-$data = "データ";
+$data = 'データ';
 example($data);
 ```
 
@@ -187,7 +187,7 @@ class Example
     // クラス内からしかアクセスできない
     private function Desu()
     {
-        return "です．";
+        return 'です．';
     }
 }
 ```
@@ -204,7 +204,7 @@ function example($data){
     return $data;
 }
 
-$data = "データ";
+$data = 'データ';
 example($data);
 ```
 
@@ -378,9 +378,9 @@ class Test01 {
 
 $test01 = new Test01;
 
-$test01->setProperty01("データ01の値");
+$test01->setProperty01('データ01の値');
 
-$test01->setProperty01("新しいデータ01の値");
+$test01->setProperty01('新しいデータ01の値');
 ```
 
 一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．Setterを持たせずに，```__construct```メソッドだけを持たせれば，『Immutable』なクラスとなる．
@@ -391,9 +391,9 @@ class Test02 {
 // 中身は省略
 }
 
-$test02 = new Test02("データ02の値");
+$test02 = new Test02('データ02の値');
 
-$test02 = new Test02("新しいデータ02の値");
+$test02 = new Test02('新しいデータ02の値');
 ```
 
 Entityは，Mutableであるため，Setterと```__construct```メソッドの両方を持つことができる．ValueObjectは，Immutableのため，```__construct```メソッドしか持つことができない．
@@ -420,7 +420,7 @@ class Example
     // 引数と返却値のデータ型を指定
     public function __get(string $name): string
     {
-        return "{$name}データは存在しないため，データ値を取得できません．";
+        return '{$name}データは存在しないため，データ値を取得できません．';
     }
 
 }
@@ -476,7 +476,7 @@ class Example {
 
 // 存在しないデータに値をセット．
 $example = new Example();
-$example->hoge = "HOGE";
+$example->hoge = 'HOGE';
 
 // 結果
 // hogeデータは存在しないため，HOGEを設定できません．
@@ -511,18 +511,18 @@ Test01クラスインスタンスの```$property01```に値を設定するため
 <?php
 $test01 = new Test01;
 
-$test01->setProperty01("データ01の値");
+$test01->setProperty01('データ01の値');
 
-$test01->setProperty01("新しいデータ01の値");
+$test01->setProperty01('新しいデータ01の値');
 ```
 
 一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．Setterを持たせずに，```__construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
 
 ```php
 <?php
-$test02 = new Test02("データ02の値");
+$test02 = new Test02('データ02の値');
 
-$test02 = new Test02("新しいデータ02の値");
+$test02 = new Test02('新しいデータ02の値');
 ```
 
 <br>
@@ -785,7 +785,7 @@ class Example{
   
     public function returnMethod()
     {
-        print "returnMethod()です。\n";
+        print 'returnMethod()です。\n';
         return; // 何も返さない．
     }
 }
@@ -805,7 +805,7 @@ class Example{
   
     function exitMethod()
     {
-        print "exitMethod()です。\n";
+        print 'exitMethod()です。\n';
         exit;
     }
 }
@@ -846,7 +846,7 @@ $example = new Example();
 $oneToThree = $example->oneToThree();
 
 foreach ($oneToThree as $value) {
-    echo "{$value}\n";
+    echo '{$value}\n';
 }
 
 // 1
@@ -870,7 +870,7 @@ class Dispatcher {
 
 $dispatcher = new Dispatcher;
 
-$name = "example";
+$name = 'example';
 $listener = function() use ($param){
 // 何らかの処理
 };
@@ -879,7 +879,7 @@ $listener = function() use ($param){
 $dispatcher->addListener($name, $listener);
 
 // 文字列からメソッドをコール.
-$dispatcher->dispatch("example", "test");
+$dispatcher->dispatch('example', 'test');
 ```
 
 #### ・イベント名に紐づくメソッドをコールするオブジェクト
@@ -945,7 +945,7 @@ class ResultCacher
     private function addListener()
     {
         return [
-          "computeRevenue" => [$this, "computeRevenue"]
+          'computeRevenue' => [$this, 'computeRevenue']
         ];
     }
   
@@ -1014,7 +1014,7 @@ $optionName = function ($para) use ($item) {
 };
 
 // コール時に，$paramをfunction()に渡す．
-echo $optionName("BC");
+echo $optionName('BC');
 
 // 出力結果
 // オプションABC
@@ -1047,7 +1047,7 @@ $option->name = function ($para) use ($item) {
 };
 
 // コール時に，$paramをfunction()に渡す．
-echo $option->name("BC");
+echo $option->name('BC');
 
 // 出力結果
 // オプションABC
@@ -1068,7 +1068,7 @@ class Item {
 }
 
 $item = new Item;
-$param = "BC";
+$param = 'BC';
 
 // use()に，親メソッドのスコープの$itemを渡す．
 // 無名関数を定義し，同時にcall_user_func()で即コールする．
@@ -1110,13 +1110,13 @@ class Example
     // 関数の中でコールされるため，「後で呼び出される」という意味合いから，コールバック関数といえる．
     public function callbackMethod(): string
     {
-        return "出力に成功しました．";
+        return '出力に成功しました．';
     }
 }
 
 $example = new Example();
 // 高階関数の引数として，コールバック関数を渡す
-$example->test("callbackMethod");
+$example->test('callbackMethod');
 
 // 出力結果
 // 出力に成功しました．
@@ -1136,13 +1136,13 @@ class Example
     // コールバック関数を定義
     public function callbackMethod($param)
     {
-        return $param."の出力に成功しました．";
+        return $param.'の出力に成功しました．';
     }
 }
 
 $example = new Example();
 // 高階関数の第一引数にコールバック関数の引数，第二引数にコールバック関数を渡す
-$example->higherOrder("第一引数", "callbackMethod");
+$example->higherOrder('第一引数', 'callbackMethod');
 
 // 出力結果
 // 第一引数の出力に成功しました．
@@ -1159,7 +1159,7 @@ class Example
     // 高階関数のように，関数を引数として渡す．
     public function higherOrder($parentVar, $callback)
     {
-        $parentVar = "&親メソッドのスコープの変数";
+        $parentVar = '&親メソッドのスコープの変数';
         return $callback($parentVar);
     }
 }
@@ -1169,7 +1169,7 @@ $example = new Example;
 // コールバック関数は再利用されないため，名前をつけずに無名関数とすることが多い．
 // 親メソッドのスコープで定義されている変数を引数として渡す．（普段よくやっている値渡しと同じ）
 $example->higherOrder($parentVar, function () use ($parentVar) {
-    return $parentVar . "の出力に成功しました．";
+    return $parentVar . 'の出力に成功しました．';
 });
 
 // 出力結果
@@ -1367,7 +1367,7 @@ $exampleB->b(); // ExampleB::b が返却される．
 ```php
 <?php
     
-$fruit = "リンゴ";
+$fruit = 'リンゴ';
 
 // 出力結果
 echo 'これは$fruitです．'; // これは，$fruitです．
@@ -1382,7 +1382,7 @@ echo 'これは$fruitです．'; // これは，$fruitです．
 ```php
 <?php
     
-$fruit = "リンゴ";
+$fruit = 'リンゴ';
 
 // 出力結果
 echo 'これは{$fruit}です．'; // これは，{$fruit}です．
@@ -1396,7 +1396,7 @@ echo 'これは{$fruit}です．'; // これは，{$fruit}です．
 <?php
     
     
-$fruit = "リンゴ";
+$fruit = 'リンゴ';
 
 // 出力結果
 echo "これは $fruit です．"; // これは リンゴ です．
@@ -1409,7 +1409,7 @@ echo "これは $fruit です．"; // これは リンゴ です．
 ```php
 <?php
     
-$fruit = "リンゴ";
+$fruit = 'リンゴ';
 
 // 出力結果
 echo "これは{$fruit}です．"; // これは，リンゴです．
@@ -1563,10 +1563,10 @@ file_put_contents(
 ```php
 <?php
 
-$var = "0123456789";
+$var = '0123456789';
 
 // OR条件と範囲指定
-$result = preg_match("/[0-9]/", $var)
+$result = preg_match('/[0-9]/', $var)
     
 var_dump($result); // true
 ```
@@ -1580,10 +1580,10 @@ var_dump($result); // true
 ```php
 <?php
 
-$var = "aAbBcC";
+$var = 'aAbBcC';
 
 // OR条件と範囲指定
-$result = preg_match("/[a-zA-Z]/", $var)
+$result = preg_match('/[a-zA-Z]/', $var)
     
 var_dump($result); // true
 ```
@@ -1599,10 +1599,10 @@ var_dump($result); // true
 ```php
 <?php
 
-$var = "?";
+$var = '?';
 
 // OR条件のみ
-$result = preg_match("/[\?.*$]/", $var)
+$result = preg_match('/[\?.*$]/', $var)
     
 var_dump($result); // true
 ```
@@ -1619,7 +1619,7 @@ var_dump($result); // true
 <?php
     
 // 何らかの文字列
-$x = "";
+$x = '';
 
 // jpegの大文字小文字
 preg_match(

@@ -77,9 +77,9 @@ $ which python3
 ```shell
 #!/bin/bash
 
-echo "Hello World!"
-echo "Hello Japan!"
-echo "Hello Tokyo!"
+echo 'Hello World!'
+echo 'Hello Japan!'
+echo 'Hello Tokyo!'
 ```
 
 #### ・シェルスクリプトの実行方法
@@ -130,17 +130,17 @@ done
 #!/bin/bash
 
 case $ENV in
-    "test")
-        value="XXXXX"
+    'test')
+        value='XXXXX'
     ;;
-    "stg")
-        value="YYYYY"
+    'stg')
+        value='YYYYY'
     ;;
-    "prd")
-        value="ZZZZZ"
+    'prd')
+        value='ZZZZZ'
     ;;
     *)
-        echo "The parameter ${ENV} is invalid."
+        echo 'The parameter ${ENV} is invalid.'
         exit 1
     ;;
 esac
@@ -165,7 +165,7 @@ esac
 検索されたファイル内で，さらに文字列を検索する．
 
 ```shell
-$ find /* -type f | xargs grep "<検索文字>"
+$ find /* -type f | xargs grep '<検索文字>'
 ```
 
 #### ・killとの組み合わせ
@@ -189,9 +189,9 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 検索されたファイルの容量を合計する．
 
 ```shell
-$ find ./* -name "*.js" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
-$ find ./* -name "*.css" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
-$ find ./* -name "*.png" -type f -printf "%s\n" | awk '{ sum += $1; } END { print sum; }'
+$ find ./* -name '*.js' -type f -printf '%s\n' | awk '{ sum += $1; } END { print sum; }'
+$ find ./* -name '*.css' -type f -printf '%s\n' | awk '{ sum += $1; } END { print sum; }'
+$ find ./* -name '*.png' -type f -printf '%s\n' | awk '{ sum += $1; } END { print sum; }'
 ```
 
 #### ・sortとの組み合わせ
@@ -318,12 +318,12 @@ $ echo $<変数名>
 ファイルを検索するためのユーティリティ．アスタリスクを付けなくとも，自動的にワイルドカードが働く．
 
 ```shell
-$ find /* -type f | xargs grep "<検索文字>"
+$ find /* -type f | xargs grep '<検索文字>'
 ```
 
 ```shell
 # パーミッションエラーなどのログを破棄して検索．
-$ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
+$ find /* -type f | xargs grep '<検索文字>' 2> /dev/null
 ```
 
 #### ・-name，-type
@@ -331,7 +331,7 @@ $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 ルートディレクトリ以下で， example という文字をもち，ファイル名が .conf で終わるファイルを全て検索する．
 
 ```shell
-$ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
+$ find /* -name '*.conf' -type f | xargs grep '<検索文字>'
 ```
 
 <br>
@@ -530,7 +530,7 @@ $ ssh <接続名> -T
 
 ```shell
 # 稼働しているプロセスのうち，詳細情報に「xxx」を含むものを表示する．
-$ ps aux | grep "<検索文字>"
+$ ps aux | grep '<検索文字>'
 ```
 
 <br>
@@ -655,7 +655,7 @@ $ crond -n
 # 設定
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO="hasegawafeedshop@gmail.com"
+MAILTO='hasegawafeedshop@gmail.com'
 LANG=ja_JP.UTF-8
 LC_ALL=ja_JP.UTF-8
 CONTENT_TYPE=text/plain; charset=UTF-8
@@ -861,7 +861,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+PATH='$HOME/.local/bin:$HOME/bin:$PATH'
 
 # xxxバイナリファイルのパスを追加 を追加 <--- ここに追加
 PATH=$PATH:/usr/local/sbin/xxxx
@@ -1383,11 +1383,11 @@ public class Age
     {
         // 定数を定義．
         final int age = 20;
-        System.out.println("私の年齢は" + age);
+        System.out.println('私の年齢は' + age);
 
         // 定数は再定義できないので，エラーになる．
         age = 31;
-        System.out.println("…いや，本当の年齢は" + age);
+        System.out.println('…いや，本当の年齢は' + age);
     }
 }
 ```
@@ -1467,7 +1467,7 @@ configureファイルを元に，ルールが定義されたMakefileを作成す
 
 ```shell
 # configureへのパスに注意．
-$ ../configure --prefix="<ソースコードのインストール先のパス>"
+$ ../configure --prefix='<ソースコードのインストール先のパス>'
 ```
 
 #### 3. ビルド （コンパイル＋リンク）
@@ -1523,7 +1523,7 @@ $ make clean
 $ php -r '<何らかの処理>'
 
 # Hello Worldを出力
-$ php -r 'echo "Hello World";'
+$ php -r 'echo 'Hello World';'
 
 # phpinfoを出力
 $ php -r 'phpinfo();'

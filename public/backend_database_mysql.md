@@ -601,8 +601,8 @@ SELECT
 FROM
     fruit
 WHERE
-    name = "みかん"
-    OR name = "りんご";
+    name = 'みかん'
+    OR name = 'りんご';
 ```
 
 **【IN句を使用した場合】**
@@ -613,7 +613,7 @@ SELECT
 FROM
     fruit
 WHERE
-    name IN("みかん", "りんご");
+    name IN('みかん', 'りんご');
 ```
 
 #### ・```ANY```句の使い方
@@ -855,7 +855,7 @@ WHERE
 ```PHP
 <?php
 // SELECT文を定義して実行．
-$sql = "SELECT * FROM doraemon_characters";
+$sql = 'SELECT * FROM doraemon_characters';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -893,7 +893,7 @@ print_r($data);
 ```PHP
 <?php
 // SELECT文を定義して実行．
-$sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
+$sql = 'SELECT { カラム名 }OUNT(*) FROM doraemon_characters';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -916,16 +916,16 @@ PHPとは異なり，変数定義に『$』は用いないことに注意．
 
 ```java
 // SELECT文を定義して実行．
-String sql = "SELECT * FROM doraemon_characters";
+String sql = 'SELECT * FROM doraemon_characters';
 ResultSet result statement.executeQuery();
 
 
 // 全てのレコードを取得
 while(result.next()){
-    System.out.println(result.getInt("id"));
-    System.out.println(result.getString("name"));
-    System.out.println(result.getString("gender"));
-    System.out.println(result.getString("typeL"));
+    System.out.println(result.getInt('id'));
+    System.out.println(result.getString('name'));
+    System.out.println(result.getString('gender'));
+    System.out.println(result.getString('typeL'));
 }
 
 // カラム名と値の連想配列として取得できる．
@@ -1002,7 +1002,7 @@ class ItemQuery
     // 列名と値を指定してINSERT
     public static function insert()
     {
-        return "INSERT INTO item_table VALUES(1, '商品A', 1000, '2019-07-24 07:07:07');";
+        return 'INSERT INTO item_table VALUES(1, '商品A', 1000, '2019-07-24 07:07:07');';
     }
 }
 ```

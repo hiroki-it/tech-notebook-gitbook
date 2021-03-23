@@ -141,13 +141,13 @@ version: 2.1
 
 commands:
   sayhello:
-    description: "Echo hello world"
+    description: 'Echo hello world'
     # 引数の定義
     parameters:
       to:
         type: string
         # デフォルト値
-        default: "Hello World"
+        default: 'Hello World'
     steps:
       - run: echo << parameters.to >>
 ```
@@ -173,11 +173,11 @@ version: 2.1
 
 commands:
   sayhello:
-    description: "Echo hello world"
+    description: 'Echo hello world'
     parameters:
       to:
         type: string
-        default: "Hello World"
+        default: 'Hello World'
     steps:
       - run: echo << parameters.to >>
 ```
@@ -243,7 +243,7 @@ jobs:
           # 引数がtrueの場合
           condition: << parameters.custom_checkout >>
           steps:
-            - run: echo "my custom checkout"
+            - run: echo 'my custom checkout'
       - unless:
           # 引数のfalseの場合
           condition: << parameters.custom_checkout >>
@@ -273,9 +273,9 @@ jobs:
       # 引数を定義
       environment:
         # デフォルト値
-        default: "test"
+        default: 'test'
         type: enum
-        enum: ["test", "stg", "prd"]
+        enum: ['test', 'stg', 'prd']
     steps:
       - run:
         # デフォルト値testを与えるときは何も設定しない
@@ -329,9 +329,9 @@ jobs:
   build:
     executor:
       name: python
-      tag: "2.7"
+      tag: '2.7'
       # jobにて文字列型の値を設定
-      myspecialvar: "myspecialvalue"
+      myspecialvar: 'myspecialvalue'
 ```
 
 #### ・workflowで値を設定する
@@ -347,7 +347,7 @@ executors:
     parameters:
       env:
         type: enum
-        enum: [ "2.7", "3.5" ]
+        enum: [ '2.7', '3.5' ]
       myspecialvar:
         type: string
     docker:
@@ -373,14 +373,14 @@ workflows:
            executor_param:
              name: python
              # バージョン3.5を設定
-             tag: "2.7"
-             myspecialvar: "myspecialvalue"
+             tag: '2.7'
+             myspecialvar: 'myspecialvalue'
        - build:
            executor_param:
              name: python
              # バージョン3.5を設定
-             tag: "3.5"
-             myspecialvar: "myspecialvalue"       
+             tag: '3.5'
+             myspecialvar: 'myspecialvalue'       
 ```
 
 <br>
@@ -407,10 +407,10 @@ parameters:
   image-tag:
     type: string
     # デフォルト値
-    default: "latest"
+    default: 'latest'
   workingdir:
     type: string
-    default: "~/main"
+    default: '~/main'
 
 jobs:
   build:
@@ -423,16 +423,16 @@ jobs:
       IMAGETAG: << pipeline.parameters.image-tag >>
     working_directory: << pipeline.parameters.workingdir >>
     steps:
-      - run: echo "Image tag used was ${IMAGETAG}"
-      - run: echo "$(pwd) == << pipeline.parameters.workingdir >>"
+      - run: echo 'Image tag used was ${IMAGETAG}'
+      - run: echo '$(pwd) == << pipeline.parameters.workingdir >>'
       
 workflows:
   my-workflow:
     jobs:
       - build:
           # 引数名: 渡す値 
-          image-tag: "1.0"
-          workdir: "/tmp"
+          image-tag: '1.0'
+          workdir: '/tmp'
 ```
 
 ## 02-04. jobs
@@ -482,7 +482,7 @@ jobs:
      # コンテナが入れ子にならないようにする．
      - setup_remote_docker
      - run: | # DockerHubへのログイン
-         echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+         echo '$DOCKER_PASS' | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
      # Dockerイメージのビルド
@@ -509,7 +509,7 @@ jobs:
    steps:
      - checkout
      - run: | # DockerHubへのログイン
-         echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+         echo '$DOCKER_PASS' | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
      # Dockerイメージのビルド
@@ -549,7 +549,7 @@ jobs:
       - when:
           condition: << parameters.custom_checkout_parameters >>
           steps:
-            - run: echo "独自のチェックアウト処理"
+            - run: echo '独自のチェックアウト処理'
       # 引数がfalseの場合
       - unless:
           condition: << parameters.custom_checkout_parameters >>
@@ -585,7 +585,7 @@ jobs:
       # composer.jsonが変更されている場合は処理をスキップ．
       - restore_cache:
           key:
-            - v1-dependecies-{{ checksum "composer.json" }}
+            - v1-dependecies-{{ checksum 'composer.json' }}
             - v1-dependencies-
       # 取得したcomposer.jsonを元に，差分のvendorをインストール
       - run: 
@@ -594,7 +594,7 @@ jobs:
             composer install -n --prefer-dist
       # 最新のvendorディレクトリをキャッシュとして保存
       - save_cache:
-          key: v1-dependecies-{{ checksum "composer.json" }}
+          key: v1-dependecies-{{ checksum 'composer.json' }}
           paths:
             - ./vendor
 ```
@@ -614,7 +614,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum 'package.json' }}
             - v1-dependencies-
       - run:
           name: Run yarn install
@@ -623,7 +623,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ checksum 'yarn.lock' }}
       - run:
           name: Run yarn build
           commands : |
@@ -647,14 +647,14 @@ commands:
       # composer.jsonの実装が変更されていない場合は処理をスキップ．
       - restore_cache:
           key:
-            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-{{ checksum 'composer.json' }}
             - v1-dependencies-
        
   save_vendor:
     steps:
       # 最新のvendorを保存．
       - save_cache:
-          key: v1-dependencies-{{ checksum "composer.json" }}
+          key: v1-dependencies-{{ checksum 'composer.json' }}
           paths:
             - ./vendor
             
@@ -688,7 +688,7 @@ jobs:
       - persist_to_workspace:
           # jobAにて，Workspaceとするディレクトリのroot
           root: /tmp/workspace
-          # Rootディレクトリを基準とした相対パス（"./"以外の場合は，ディレクトリの作成が必要）
+          # Rootディレクトリを基準とした相対パス（'./'以外の場合は，ディレクトリの作成が必要）
           # パラメータは環境変数として出力できないので注意
           paths:
             - target/application.jar
@@ -740,11 +740,11 @@ version: 2.1
 
 commands:
   sayhello:
-    description: "Echo hello world"
+    description: 'Echo hello world'
     parameters:
       text:
         type: string
-        default: "Hello World"
+        default: 'Hello World'
     steps:
       # parametersの値を渡す
       - run: echo << parameters.text >>
@@ -752,12 +752,12 @@ commands:
 jobs:
   myjob:
     docker:
-      - image: "circleci/node:9.6.1"
+      - image: 'circleci/node:9.6.1'
     steps:
       # command名
       - sayhello:
           # 引数名: 渡す値
-          text: "Lev"
+          text: 'Lev'
 ```
 
 <br>
@@ -794,7 +794,7 @@ jobs:
   my-job:
     executor: my-executor
     steps:
-      - run: echo "${XX}と${YY}です"
+      - run: echo '${XX}と${YY}です'
 ```
 
 <br>
@@ -879,9 +879,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: echo "building"
+          command: echo 'building'
       - run:
-          command: echo "testing"
+          command: echo 'testing'
           
 workflows:
   build:
@@ -890,11 +890,11 @@ workflows:
           # Workspace前に行う処理
           pre-steps:
             - run:
-                command: echo "install custom dependency"
+                command: echo 'install custom dependency'
           # Workspace後に行う処理
           post-steps:
             - run:
-                command: echo "upload artifact to s3"
+                command: echo 'upload artifact to s3'
 ```
 
 Orbsを使う場合は，オプションに引数を渡す前に定義する．
@@ -909,11 +909,11 @@ workflows:
           # Workspace前に行う処理
           pre-steps:
             - run:
-                command: echo "XXX"
+                command: echo 'XXX'
           # Workspace後に行う処理
           post-steps:
             - run:
-                command: echo "XXX"
+                command: echo 'XXX'
           # Orbsのオプション
           name: xxx
           dockerfile: xxx
@@ -1013,7 +1013,7 @@ steps:
   - run:
       name: XXXXX
       commands: |
-        echo "This is ${XXXXX}"
+        echo 'This is ${XXXXX}'
 ```
 
 <br>
@@ -1284,7 +1284,7 @@ orbs:
     hello: circleci/hello-build@0.0.5
     
 workflows:
-    "Hello Workflow":
+    'Hello Workflow':
         jobs:
           - hello/hello-build
 ```
@@ -1360,7 +1360,7 @@ jobs:
           command: |
             echo $AWS_CLOUDFRONT_ID |
             base64 --decode |
-            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"
+            aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths '/*'
             
 workflows:
   # ステージング環境にデプロイ
@@ -1509,7 +1509,7 @@ jobs:
     # CodeDeployにおけるデプロイの作成を設定
     deployment-controller: CODE_DEPLOY
     codedeploy-application-name: $SERVICE
-    codedeploy-deployment-group-name: "${SERVICE}-deployment-group"
+    codedeploy-deployment-group-name: '${SERVICE}-deployment-group'
     codedeploy-load-balanced-container-name: www-container
     codedeploy-load-balanced-container-port: 80
     # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
@@ -1559,7 +1559,7 @@ orbs:
 jobs:
   aws-ecs/run-task:
     name: ecs_run_task_for_migration
-    cluster: "${SERVICE}-ecs-cluster"
+    cluster: '${SERVICE}-ecs-cluster'
     # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう．
     platform-version: 1.4.0
     awsvpc: true
@@ -1567,9 +1567,9 @@ jobs:
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
     # タスク定義名．最新リビジョン番号が自動補完される．
-    task-definition: "${SERVICE}-ecs-task-definition"
+    task-definition: '${SERVICE}-ecs-task-definition'
     # タスク起動時にマイグレーションコマンドを実行するように，Laravelコンテナの　commandキーを上書き
-    overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
+    overrides: '{\\\'containerOverrides\\\':[{\\\'name\\\': \\\'laravel-container\\\',\\\'command\\\': [\\\'php\\\', \\\'artisan\\\', \\\'migrate\\\', \\\'--force\\\']}]}'
           
 workflows:
   # ステージング環境にデプロイ
@@ -1615,7 +1615,7 @@ jobs:
     name: code_deploy
     application-name: $SERVICE}
     # appspecファイルを保存するバケット名
-    bundle-bucket: "${SERVICE}-bucket"
+    bundle-bucket: '${SERVICE}-bucket'
     # appspecファイルのあるフォルダ
     bundle-source: ./infra/aws_codedeploy
     # appspecファイルをzipフォルダで保存
@@ -1623,7 +1623,7 @@ jobs:
     # zipフォルダ名
     bundle-key: xxx-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
-    deployment-group: "${SERVICE}-deployment-group"
+    deployment-group: '${SERVICE}-deployment-group'
     # ECSにアクセスできるCodeDeployサービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
  

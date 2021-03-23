@@ -514,11 +514,11 @@ JSONの場合，入れ子構造にすると，データ容量が増えてしま�
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "interest": {
-      "sports":["soccer", "baseball"],
-      "subjects": "math"
+    'name': 'Taro Yamada',
+    'age': 10,
+    'interest': {
+      'sports':['soccer', 'baseball'],
+      'subjects': 'math'
     }
 }
 ```
@@ -529,10 +529,10 @@ JSONの場合，入れ子構造にすると，データ容量が増えてしま�
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "sports":["soccer", "baseball"],
-    "subjects": "math"
+    'name': 'Taro Yamada',
+    'age': 10,
+    'sports':['soccer', 'baseball'],
+    'subjects': 'math'
 }
 ```
 
@@ -560,7 +560,10 @@ http://www.example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 ```json
 {
-  "message": "エラー：入力に不備があります。"
+  'errors': [
+      '〇〇は必ず入力してください．',
+      '□□は必ず入力してください．'
+      ]
 }
 ```
 
@@ -646,7 +649,7 @@ Set-Cookie: sessionId=<セッションID>
 session_start();
 
 // セッションファイルを作成
-$_SESSION['セッション名'] = "値"; 
+$_SESSION['セッション名'] = '値'; 
 ```
 
 #### ・セッションファイルの保存場所
@@ -659,7 +662,7 @@ $_SESSION['セッション名'] = "値";
 ### ファイル形式
 session.save_handler = files
 ### 保存場所
-session.save_path = "/tmp"
+session.save_path = '/tmp'
 ```
 
 セッションファイルは，サーバ外に保存することもできる．PHP-FPMを使用している場合は，```/etc/php-fpm.d/www.conf```の変更が必要．
@@ -670,7 +673,7 @@ session.save_path = "/tmp"
 ### Redis形式
 php_value[session.save_handler] = redis
 ### Amazon RedisのOrigin
-php_value[session.save_path] = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
+php_value[session.save_path] = 'tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379'
 ```
 
 PHP-FPMを使用していない場合は，```/etc/php.ini```の変更が必要．
@@ -681,7 +684,7 @@ PHP-FPMを使用していない場合は，```/etc/php.ini```の変更が必要�
 ### Redis形式
 session.save_handler = redis
 ### Amazon RedisのOrigin
-session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
+session.save_path = 'tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379'
 ```
 
 #### ・セッションIDの送受信の仕組み
@@ -709,10 +712,10 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "sports":["soccer", "baseball"],
-    "subjects": "math"
+    'name': 'Taro Yamada',
+    'age': 10,
+    'sports':['soccer', 'baseball'],
+    'subjects': 'math'
 }
 ```
 
@@ -720,26 +723,26 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 
 ```json
 {
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string"
+    'type': 'object',
+    'properties': {
+        'name': {
+            'type': 'string'
         },
-        "age": {
-            "type": "integer",
-            "minimum": 0
+        'age': {
+            'type': 'integer',
+            'minimum': 0
         },
-        "sports": {
-            "type": "array",
-            "items": {
-                "type": "string"
+        'sports': {
+            'type': 'array',
+            'items': {
+                'type': 'string'
             }
         },
-        "subjects": {
-            "type": "string"
+        'subjects': {
+            'type': 'string'
         }
     },
-    "required": ["name"]
+    'required': ['name']
 }
 ```
 

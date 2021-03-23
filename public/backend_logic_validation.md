@@ -302,23 +302,23 @@ function leapYear(int $year): string
 {
     // (5)
     if ($year <= 0) {
-        throw new Exception("負の数は検証できません．");
+        throw new Exception('負の数は検証できません．');
 
     // (4)
     } elseif ($year % 4 != 0) {
-        return "平年";
+        return '平年';
 
     // (3)
     } elseif ($year % 100 != 0) {
-        return "うるう年";
+        return 'うるう年';
 
     // (2)
     } elseif ($year % 400 != 0) {
-        return "平年";
+        return '平年';
 
     // (1)
     } else {
-        return "うるう年";
+        return 'うるう年';
     }
 }
 ```
@@ -339,26 +339,26 @@ function leapYear(int $year): string
 {
     // (5)
     if($year <= 0){
-        throw new Exception("負の数は検証できません．");
+        throw new Exception('負の数は検証できません．');
     }
 
     // (4)
     if($year % 4 != 0 ){
-        return "平年";
+        return '平年';
     }
 
     // (3)
     if($year % 100 != 0){
-        return "うるう年";
+        return 'うるう年';
     }
 
     // (2)
     if($year % 400 != 0){
-        return "平年";
+        return '平年';
     }
 
     // (1)
-    return "うるう年";
+    return 'うるう年';
     
 }
 ```
@@ -378,23 +378,23 @@ function leapYear(int $year): string
     
     // (5)
     case($year <= 0):
-        throw new Exception("負の数は検証できません．");
+        throw new Exception('負の数は検証できません．');
 
     // (4)
         case($year % 4 != 0 ):
-        return "平年";
+        return '平年';
 
     // (3)
     case($year % 100 != 0):
-        return "うるう年";
+        return 'うるう年';
 
     // (2)
     case($year % 400 != 0):
-        return "平年";
+        return '平年';
 
     // (1)
     dafault:
-        return "うるう年";
+        return 'うるう年';
     }
 
 }
@@ -412,19 +412,19 @@ function leapYear(int $year): string
 function leapYear(int $year): string
 {
     // (5)
-    if($year <= 0) throw new Exception("負の数は検証できません．");
+    if($year <= 0) throw new Exception('負の数は検証できません．');
 
     // (4)
-    if($year % 4 != 0 ) return "平年";
+    if($year % 4 != 0 ) return '平年';
 
     // (3)
-    if($year % 100 != 0) return "うるう年";
+    if($year % 100 != 0) return 'うるう年';
 
     // (2)
-    if($year % 400 != 0) return "平年";
+    if($year % 400 != 0) return '平年';
 
     // (1)
-    return "うるう年";
+    return 'うるう年';
     
 }
 ```
@@ -546,7 +546,7 @@ function example(string $example) {
         throw new ExampleNotFoundException('Example is not found.');;
     }
     
-    return "これは ${example} です．";
+    return 'これは ${example} です．';
 }
 ```
 <br>
@@ -569,7 +569,7 @@ function value(int $value) {
         throw new Exception('Value is empty');
     }
     
-    return "これは ${value} です．";
+    return 'これは ${value} です．';
 }
 ```
 
@@ -588,7 +588,7 @@ function value() {
         throw new ExampleInvalidArgumentException();
     }
         
-    return "成功です．"
+    return '成功です．'
 }
 ```
 
@@ -660,31 +660,31 @@ class Example
         try {
             
             // （１）
-            echo "Aの直前です"
-            return "Aです．";
+            echo 'Aの直前です'
+            return 'Aです．';
             
         } catch (ExternalApiErrorException $exception) {
   
             // （２）
-            echo "Bの直前です"
-            return "Bです．";
+            echo 'Bの直前です'
+            return 'Bです．';
             
         } catch (HttpRequestErrorException $exception) {
             
             // （３）
-            echo "Cの直前です"
-            return "Cです．";
+            echo 'Cの直前です'
+            return 'Cです．';
             
         } catch (Exception $exception) {
             
             // （４）
-            echo "Dの直前です"
-            return "Dです．";
+            echo 'Dの直前です'
+            return 'Dです．';
             
         } finally {
             
             // returnやcontinueを使用しない
-            echo "Eです．";
+            echo 'Eです．';
             
         }
     }
@@ -727,9 +727,9 @@ PHPには標準で，エラー処理関数が用意されている．その中�
 
 ```php
 error_log(
-    "<エラーメッセージ>",
-    "<メッセージの出力先（3の場合にファイル出力）>",
-    "<ログファイルの場所>"
+    '<エラーメッセージ>',
+    '<メッセージの出力先（3の場合にファイル出力）>',
+    '<ログファイルの場所>'
 )
 ```
 

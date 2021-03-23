@@ -32,7 +32,7 @@ function car(make, model, year) {
 }
 
 // コール
-const mycar = new car("Eagle", "Talon TSi", 1993);
+const mycar = new car('Eagle', 'Talon TSi', 1993);
 ```
 
 <br>
@@ -48,7 +48,7 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 ```javascript
 // 定義（コールする場所が前後しても無関係）
 function methodA(){
-    return "A";
+    return 'A';
 }
 ```
 
@@ -225,7 +225,7 @@ const asyncFunc = async () => {
     
     try {
         
-        response = await axios.get("/some/path1")
+        response = await axios.get('/some/path1')
         console.info(response);
         
     } catch (error) {

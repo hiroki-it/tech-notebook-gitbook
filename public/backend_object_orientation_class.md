@@ -296,7 +296,7 @@ $car = new Car();
 class Goods
 {
     // 商品名データ
-    private $name = "";
+    private $name = '';
 
     // 商品価格データ
     private $price = 0;
@@ -312,7 +312,7 @@ class Goods
     // 商品名と価格を表示するメソッド
     public function printPrice(): void
     {
-        print($this->name."の価格: ￥".$this->price."<br>");
+        print($this->name.'の価格: ￥'.$this->price.'<br>');
     }
 
     // 商品名のゲッター
@@ -343,7 +343,7 @@ class GoodsWithTax extends Goods
     {
         // 商品価格の税込み価格を計算し，表示
         $priceWithTax = round($this->getPrice() * 1.08);  // （1）
-        print($this->getName()."の税込み価格: ￥".$priceWithTax."<br>");  // （2）
+        print($this->getName().'の税込み価格: ￥'.$priceWithTax.'<br>');  // （2）
     }
 }
 ```
@@ -410,13 +410,13 @@ abstract class ShainManagement
         if($nowTime > self::TIME_TO_ARRIVE){
         
             return sprintf(
-                "%s の遅刻です．",
+                '%s の遅刻です．',
                 date('H時i分s秒', $nowTime - self::TIME_TO_ARRIVE)
             );
         }
         
         return sprintf(
-            "%s に出勤しました．",
+            '%s に出勤しました．',
             date('H時i分s秒', $nowTime)
         );
     
@@ -429,7 +429,7 @@ abstract class ShainManagement
         $nowTime = strtotime( date('H:i:s') );
         
         return sprintf(
-            "%sに退社しました．%s の残業です．",
+            '%sに退社しました．%s の残業です．',
             date('H時i分s秒', $nowTime),
             date('H時i分s秒', $nowTime - self::TIME_TO_LEAVE)
         );
@@ -643,7 +643,7 @@ trait ExampleTrait
 {
     public function example()
     {
-        return "Hello World";
+        return 'Hello World';
     }
 }
 ```
@@ -723,11 +723,11 @@ trait UnsupportedMagicMethodTrait
   
 class Example1
 {
-    const VALUE = "これは定数です．";
+    const VALUE = 'これは定数です．';
   
     public function className()
     {
-        return "example1メソッドです．";
+        return 'example1メソッドです．';
     }
 }
 ```
@@ -808,11 +808,11 @@ namespace Domain\Entity;
 class Example1
 {
     // 定数を定義．
-    const VALUE = "これは定数です．";
+    const VALUE = 'これは定数です．';
   
     public function className()
     {
-        return "example1メソッドです．";
+        return 'example1メソッドです．';
     }
 }
 ```
@@ -909,7 +909,7 @@ class ModuleA // コールされる側
 {
     public function methodA(int $a, int $b, string $c)
     {
-        return "$a + $b".$c;
+        return '$a + $b'.$c;
     }
 }
 ```
@@ -921,7 +921,7 @@ class ModuleB // コールする側
     public function methodB()
     {
         $moduleA= new ModuleA();
-        $result = $moduleA->methodA(1, 2, "です."); // スカラ型データを渡すだけ
+        $result = $moduleA->methodA(1, 2, 'です.'); // スカラ型データを渡すだけ
     }
 }
 ```

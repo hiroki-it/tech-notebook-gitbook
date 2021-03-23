@@ -92,16 +92,16 @@ HTML，XHTML，CSS，JavaScript，DOM，XML，XSLT，を組み合わせて非同
 #### ・```get```メソッド，```post```メソッド
 
 ```javascript
-const url = "https://www.google.co.jp/";
+const url = 'https://www.google.co.jp/';
 
 $.get(url);
 ```
 
 ```javascript
-const url = "https://www.google.co.jp/";
+const url = 'https://www.google.co.jp/';
 
 const params = {
-    name: "Hiroki",
+    name: 'Hiroki',
 };
 
 $.post(url, params);
@@ -125,18 +125,18 @@ $.ajax({
     // ###################
 
     // HTTPメソッドを指定
-    type: "POST",
+    type: 'POST',
 
     // ルートとパスパラメータを指定
-    url: "/xxx/xxx/" + id + "/",
+    url: '/xxx/xxx/' + id + '/',
 
     // 送信するデータの形式を指定
-    contentType: "application/json",
+    contentType: 'application/json',
 
     // メッセージボディ
     data: {
-        param1: "AAA",
-        param2: "BBB"
+        param1: 'AAA',
+        param2: 'BBB'
     },
 
     // ###################
@@ -144,7 +144,7 @@ $.ajax({
     // ###################
 
     // 受信するメッセージボディのデータ型を指定
-    dataType: "json",
+    dataType: 'json',
 })
 ```
 
@@ -173,7 +173,7 @@ Promiseオブジェクトがもつメソッド．```ajax```メソッドによっ
 JQueryパッケージの```get```メソッドや```post```メソッドを使用した場合．
 
 ```javascript
-const url = "https://www.google.co.jp/";
+const url = 'https://www.google.co.jp/';
 
 $.get(url)
     .done((data) => {
@@ -185,10 +185,10 @@ $.get(url)
 ```
 
 ```javascript
-const url = "https://www.google.co.jp/";
+const url = 'https://www.google.co.jp/';
 
 const params = {
-    name: "Hiroki",
+    name: 'Hiroki',
 };
 
 $.post(url, params)
@@ -206,12 +206,12 @@ JQueryパッケージの```ajax```メソッドを使用した場合．
 const id = 1;
 
 $.ajax({
-    type: "POST",
-    url: "/xxx/xxx/" + id + "/",
-    contentType: "application/json",
+    type: 'POST',
+    url: '/xxx/xxx/' + id + '/',
+    contentType: 'application/json',
     data: {
-        param1: "AAA",
-        param2: "BBB"
+        param1: 'AAA',
+        param2: 'BBB'
     },
 })
     // 非同期通信の成功時のコールバック処理
@@ -222,7 +222,7 @@ $.ajax({
     // 非同期通信の失敗時のコールバック処理
     .fail((error) => {
         console.log(data);
-        toastr.error("", "エラーが発生しました．");
+        toastr.error('', 'エラーが発生しました．');
     })
 
     // 非同期通信の成功失敗に関わらず常に実行する処理
@@ -243,12 +243,12 @@ JQueryパッケージの```ajax```メソッドを使用した場合．
 const id = 1;
 
 $.ajax({
-    type: "POST",
-    url: "/xxx/xxx/" + id + "/",
-    contentType: "application/json",
+    type: 'POST',
+    url: '/xxx/xxx/' + id + '/',
+    contentType: 'application/json',
     data: {
-        param1: "AAA",
-        param2: "BBB"
+        param1: 'AAA',
+        param2: 'BBB'
     },
 })
     // 最初のthen
@@ -289,20 +289,20 @@ const asyncFunc = () => {
     return new Promise((resolve, reject) => {
 
         // ステータスが成功の場合に選択される．
-        resolve("SUCCESS") // Promise { "SUCCESS" }
+        resolve('SUCCESS') // Promise { 'SUCCESS' }
 
         // ステータスが失敗の場合に選択される．
-        reject("FAILED") // Promise { "FAILED" }
+        reject('FAILED') // Promise { 'FAILED' }
     })
 }
 
 const asyncFunc = () => {
 
     // ステータスが成功の場合に選択される．
-    Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
+    Promise.resolve('SUCCESS') // Promise { 'SUCCESS' }
 
     // ステータスが失敗の場合に選択される．
-    Promise.reject("FAILED") // Promise { "FAILED" }
+    Promise.reject('FAILED') // Promise { 'FAILED' }
 }
 
 asyncFunc()
@@ -326,7 +326,7 @@ asyncFunc()
 ```javascript
 const resolveFunc = new Promise((resolve, reject) => {
     
-    resolve("resolve!!");
+    resolve('resolve!!');
 });
 
 resolveFunc.then((value) => {
@@ -341,7 +341,7 @@ resolveFunc.then((value) => {
 const resolveFunc = () => {
     
     // resolveFuncはasync functionではないため、Promiseを返さない
-    return "resolve!!";
+    return 'resolve!!';
 }
 
 resolveFunc.then((value) => {
@@ -355,7 +355,7 @@ resolveFunc.then((value) => {
 ```javascript
 const rejectFunc = new Promise((resolve, reject) => {
     
-    reject(new Error("reject!!"));
+    reject(new Error('reject!!'));
 });
 
 rejectFunc.catch((err) => {
@@ -384,30 +384,30 @@ rejectFunc.catch((err) => {
 // 単にreturnとしてもPromiseオブジェクトが返却される．
 const asyncFunc = async () => {
     
-    return "SUCCESS"
+    return 'SUCCESS'
 }
 
-console.log(asyncFunc()); // Promise { "SUCCESS" }
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
 ```javascript
 // Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 const asyncFunc = async () => {
     
     return new Promise((resolve, reject) => {
-        resolve("SUCCESS") // Promise { "SUCCESS" }
+        resolve('SUCCESS') // Promise { 'SUCCESS' }
     })
 }
 
-console.log(asyncFunc()); // Promise { "SUCCESS" }
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
 ```javascript
 // Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 const asyncFunc = async () => {
     
-    return Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
+    return Promise.resolve('SUCCESS') // Promise { 'SUCCESS' }
 }
 
-console.log(asyncFunc()); // Promise { "SUCCESS" }
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
 また，axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを使用してもよい．
 
@@ -419,8 +419,8 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 // axiosオブジェクトのメソッドはPromiseオブジェクトを返却する．
 const asyncFunc = async () => {
     
-    axios.get("/some/path").then((res) => {
-        console.log(res.data); // "some data"
+    axios.get('/some/path').then((res) => {
+        console.log(res.data); // 'some data'
     });
 }
 ```
@@ -435,8 +435,8 @@ const asyncFunc = async () => {
 // Promiseオブジェクトのthenメソッドを使用した場合
 const asyncFunc = async () => {
 
-    axios.get("/some/path").then((res) => {
-        console.log(res.data); // "some data"
+    axios.get('/some/path').then((res) => {
+        console.log(res.data); // 'some data'
     });
 }
 
@@ -444,9 +444,9 @@ const asyncFunc = async () => {
 const asyncFunc = async () => {
 
     // 以降の全処理がthenメソッドに渡される．
-    const res = await axios.get("/some/path");
+    const res = await axios.get('/some/path');
 
-    console.log(res.data); // "some data"
+    console.log(res.data); // 'some data'
 }
 
 ```
@@ -458,11 +458,11 @@ await宣言により，コールバック地獄のソースコードが分かり
 const asyncFunc = async () => {
 
     // コールバック関数地獄になっている．
-    axios.get("/some/path1").then((res) => {
+    axios.get('/some/path1').then((res) => {
         const res1 = res;
-        axios.get("/some/path1").then((res) => {
+        axios.get('/some/path1').then((res) => {
             const res2 = res;
-            console.log(res1.data + res2.data); // "some data"
+            console.log(res1.data + res2.data); // 'some data'
         });
     })
 }
@@ -470,11 +470,11 @@ const asyncFunc = async () => {
 // awaitを使用した場合
 const asyncFunc = async () => {
 
-    const res1 = await axios.get("/some/path1");
+    const res1 = await axios.get('/some/path1');
 
-    const res2 = await axios.get("/some/path2");
+    const res2 = await axios.get('/some/path2');
 
-    console.log(res1.data + res2.data); // "some data"
+    console.log(res1.data + res2.data); // 'some data'
 }
 ```
 
@@ -489,7 +489,7 @@ Promiseオブジェクトの```then```メソッド，```catch```メソッド，`
 ```javascript
 const asyncFunc = async () => {
 
-    return axios.get("/some/path1")
+    return axios.get('/some/path1')
         .catch((error) => {
             console.error(error);
         })
@@ -507,7 +507,7 @@ const asyncFunc = async () => {
     
     try {
         
-        response = await axios.get("/some/path1")
+        response = await axios.get('/some/path1')
         console.info(response);
         
     } catch (error) {

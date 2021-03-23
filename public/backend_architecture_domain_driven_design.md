@@ -732,9 +732,9 @@ Test01クラスインスタンスの```$property01```に値を設定するため
 
 $test01 = new Test01;
 
-$test01->setProperty01("データ01の値");
+$test01->setProperty01('データ01の値');
 
-$test01->setProperty01("新しいデータ01の値");
+$test01->setProperty01('新しいデータ01の値');
 ```
 
 一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．Setterを持たせずに，```construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
@@ -744,9 +744,9 @@ $test01->setProperty01("新しいデータ01の値");
 ```php
 <?php
 
-$test02 = new Test02("データ02の値");
+$test02 = new Test02('データ02の値');
 
-$test02 = new Test02("新しいデータ02の値");
+$test02 = new Test02('新しいデータ02の値');
 ```
 
 <br>

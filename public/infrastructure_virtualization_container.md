@@ -88,7 +88,7 @@ $ docker image prune
 ```
 ```shell
 # タグ名のないイメージのみを全て削除
-$ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet)
+$ docker rmi --force $(sudo docker images --filter 'dangling=true' --all --quiet)
 ```
 
 <br>
@@ -165,7 +165,7 @@ RUN yum update -y \
 COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
 
 # nginxをデーモン起動
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ['/usr/sbin/nginx', '-g', 'daemon off;']
 
 # 処理は発生しない．アプリケーションのポート番号80（HTTP）をドキュメンテーションとして記載
 EXPOSE 80
@@ -191,11 +191,11 @@ EXPOSE 80
 
 ```dockerfile
 # ENVは，OS上のコマンド処理で扱える変数を定義
-ARG PYTHON_VERSION="3.8.0"
+ARG PYTHON_VERSION='3.8.0'
 RUN pyenv install ${PYTHON_VERSION}
 
 # ARGは，OS上のコマンド処理では扱えない
-ARG PYTHON_VERSION="3.8.0"
+ARG PYTHON_VERSION='3.8.0'
 RUN pyenv install ${PYTHON_VERSION} # ===> 変数を展開できない
 ```
 
@@ -203,11 +203,11 @@ RUN pyenv install ${PYTHON_VERSION} # ===> 変数を展開できない
 
 ```dockerfile
 # ARGは,Dockerfikeの命令で扱える変数を定義
-ARG OS_VERSION="8"
+ARG OS_VERSION='8'
 FROM centos:${OS_VERSION}
 
 # ENVは，OS上のコマンド処理では扱えない
-ENV OS_VERSION "8"
+ENV OS_VERSION '8'
 FROM centos:${OS_VERSION} # ===> 変数を展開できない
 ```
 
@@ -215,8 +215,8 @@ FROM centos:${OS_VERSION} # ===> 変数を展開できない
 
 ```dockerfile
 # 最初に全て，ARGで定義
-ARG CENTOS_VERSION="8"
-ARG PYTHON_VERSION="3.8.0"
+ARG CENTOS_VERSION='8'
+ARG PYTHON_VERSION='3.8.0'
 
 # 変数展開できる
 FROM centos:${OS_VERSION}
@@ -338,7 +338,7 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
-CMD ["./app"]  
+CMD ['./app']  
 ```
 
 #### ・実行環境別にステージを分ける
@@ -349,8 +349,8 @@ CMD ["./app"]
 #===================
 # Global ARG
 #===================
-ARG NGINX_VERSION="1.19"
-ARG LABEL="Hiroki <hasegawafeedshop@gmail.com>"
+ARG NGINX_VERSION='1.19'
+ARG LABEL='Hiroki <hasegawafeedshop@gmail.com>'
 
 #===================
 # Build Stage
@@ -372,7 +372,7 @@ LABEL mantainer=${LABEL}
 
 COPY ./infra/docker/www/develop.nginx.conf /etc/nginx/nginx.conf
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ['/usr/sbin/nginx', '-g', 'daemon off;']
 
 #===================
 # Production Stage
@@ -382,7 +382,7 @@ LABEL mantainer=${LABEL}
 
 COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ['/usr/sbin/nginx', '-g', 'daemon off;']
 
 ```
 
@@ -441,7 +441,7 @@ RUN dnf upgrade -y \
 
 COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ['/usr/sbin/nginx', '-g', 'daemon off;']
 
 EXPOSE 80
 ```
@@ -585,7 +585,7 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 コマンドの引数に```/bin/bash```を使用して，以下のようなエラーが出た時，使用するバイナリファイルを```shell```にするとよい
 
 ```shell
-docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: '/bin/bash': stat /bin/bash: no such file or directory: unknown.
 ```
 
 ```shell
@@ -775,17 +775,17 @@ $ docker volume inspect <Volume名>
 
 [
     {
-        "CreatedAt": "2020-09-06T15:04:02Z",
-        "Driver": "local",
-        "Labels": {
-            "com.docker.compose.project": "<プロジェクト名>",
-            "com.docker.compose.version": "1.26.2",
-            "com.docker.compose.volume": "xxx"
+        'CreatedAt': '2020-09-06T15:04:02Z',
+        'Driver': 'local',
+        'Labels': {
+            'com.docker.compose.project': '<プロジェクト名>',
+            'com.docker.compose.version': '1.26.2',
+            'com.docker.compose.volume': 'xxx'
         },
-        "Mountpoint": "/var/lib/docker/volumes/<プロジェクト名>_xxx/_data",
-        "Name": "<プロジェクト名>_xxx",
-        "Options": null,
-        "Scope": "local"
+        'Mountpoint': '/var/lib/docker/volumes/<プロジェクト名>_xxx/_data',
+        'Name': '<プロジェクト名>_xxx',
+        'Options': null,
+        'Scope': 'local'
     }
 ]
 ```
@@ -803,7 +803,7 @@ DockerfileでVolumeマウントを行う場合，マウント先のコンテナ�
 ```dockerfile
 FROM ubuntu
 RUN mkdir /myvol
-RUN echo "hello world" > /myvol/greeting
+RUN echo 'hello world' > /myvol/greeting
 
 # マウント先のコンテナ側ディレクトリ名
 VOLUME /myvol
@@ -973,9 +973,9 @@ services:
 volumes:
   example:
     driver_opts: # NFSプラグインを使用し，NFSストレージに保存．
-      type: "nfs"
-      o: "addr=10.40.0.199,nolock,soft,rw"
-      device: ":/nfs/example"
+      type: 'nfs'
+      o: 'addr=10.40.0.199,nolock,soft,rw'
+      device: ':/nfs/example'
 ```
 
 <br>
