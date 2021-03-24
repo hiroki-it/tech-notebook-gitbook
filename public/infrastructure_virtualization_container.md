@@ -14,7 +14,7 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 
 ホストOS上で稼働し，Dockerの操作を担う．Dockerクライアントは，Dockerデーモンを通して，Docker全体を操作できる．
 
-![Dockerの仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerの仕組み.png)
+![docker-daemon](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/docker-daemon.png)
 
 <br>
 
@@ -22,13 +22,13 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 
 ### 手順の流れ
 
-![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
-
 1. Docker Hubから，ベースとなるイメージをインストールする．
 2. Dockerfileがイメージレイヤーからなるイメージをビルド．
 3. コマンドによって，イメージ上にコンテナレイヤーを生成し，コンテナを構築．
 4. コマンドによって，構築されたコンテナを起動．
 5. コマンドによって，起動中のコンテナに接続．
+
+![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
 
 <br>
 

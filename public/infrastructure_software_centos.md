@@ -752,7 +752,7 @@ $ /usr/local/bin/supervisord
 
 **＊実装例＊**
 
-```
+```shell
 [supervisord]
 # 実行ユーザ
 user=root
@@ -1210,7 +1210,7 @@ $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 4. 設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
 
-```
+```shell
 [epel]
 name=Extra Packages for Enterprise Linux 6 - $basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch

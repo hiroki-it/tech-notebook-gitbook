@@ -1,45 +1,10 @@
 # Go
 
-## 導入
+## 01. 導入
 
 ### Goとは
 
-手続き型言語．構造体と関数を組み合わせて処理を実装する．言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現することもできる．
-
-<br>
-
-### build
-
-#### ・ビルド対象の指定
-
-指定したパスをビルド対象として，ビルドのアーティファクトを生成する．
-
-```sh
-# cmdディレクトリをビルド対象として，ルートディレクトリにcmdアーティファクトを生成する．
-$ go build ./cmd
-```
-
-#### ・```-o```
-
-指定したパスにビルドのアーティファクトを生成する．ビルド対象パスを指定しない場合，ルートディレクトリのgoファイルをビルドの対象とする．
-
-```sh
-# ルートディレクトリ内のgoファイルをビルド対象として，cmdディレクトリにルートディレクトリ名アーティファクトを生成する．
-$ go build -o ./cmd
-```
-
-また，指定したパス内のgoファイルをビルド対象として，指定したパスにビルドのアーティファクトを生成することもできる．
-
-```sh
-# cmdディレクトリ内のgoファイルをビルド対象として，$HOME/goディレクトリにbinアーティファクトを生成する．
-$ go build -o $HOME/go/bin ./cmd
-```
-
- ちなみに，事前のインストールに失敗に，ビルド対象が存在していないと，以下のようなエラーになる．
-
-```sh
-package xxxxx is not in GOROOT (/usr/local/go/src/xxxxx)
-```
+手続き型言語であり，静的型付け言語．構造体と関数を組み合わせて処理を実装する．言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現することもできる．また，同期処理や非同期処理とは異なり，並列処理で実行される．
 
 <br>
 
@@ -51,30 +16,38 @@ Goのソースコードを置く．パスは好みであるが，```$HOME/go```�
 
 参考：https://github.com/golang-standards/project-layout
 
-```sh
+```shell
 $GOPATH # 例えば，「$HOME/go」とする．
-├── bin # アーティファクトを配置するディレクトリ
-├── pkg # 外部からインストールしたパッケージを配置するディレクトリ
-└── src
+├── bin # srcディレクトリからビルドされたアーティファクトを配置するディレクトリ
+├── pkg # 外部からインストールされたパッケージのアーティファクトを配置するディレクトリ
+└── src # ソースコードを配置するディレクトリ
     ├── build # Dockerfileを配置するディレクトリ
-    ├── cmd # main.goファイルを配置するディレクトリ
-    │   └── app
-    │       └── main.go
+    ├── cmd # main.goファイルや，サブmainパッケージを配置するディレクトリ
+    │   ├── main.go
+    │   └── example
+    │       └── example.go
+    │         
     ├── configs
     │   └── envrc.template
+    │     
     ├── docs（ドキュメントを配置する）
     │   ├── BUG.md
     │   ├── ROUTING.md
     │   └── TODO.md
+    │     
     ├── internal # cmdディレクトリ内でインポートさせないファイルを配置するディレクトリ
     │   └── pkg
+    
     ├── pkg # cmdディレクトリ内でインポートする独自goパッケージを配置するディレクトリ
     │   └── public
     │       └── add.go
+    │     
     ├── scripts
     │   └── Makefile
+    │     
     ├── test
     │   └── test.go
+    │     
     └── web（画像，CSS，など）
         ├── static
         └── template
@@ -88,95 +61,169 @@ $GOPATH # 例えば，「$HOME/go」とする．
 
 <br>
 
-### go.mod
+### ファイルの要素
 
-#### ・```go.mod```ファイルとは
+#### ・package
 
-PHPにおける```composer.json```ファイルに相当する．ライブラリ間の依存関係が実装されている．
-
-#### ・インターネットからインポート
-
-ドメイン名をルートとしたURLと，バージョンタグを用いて，インターネットからモジュールをインポートする．なお，パスの最初にはドットを含ませる必要がある．
-
-参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
-
-```
-module github.com/Hiroki-IT/example_repository
-
-go 1.16
-
-require (
-    <ドメインをルートとしたURL> <バージョンタグ>
-    github.com/hoge/fuga v1.3.0
-    github.com/internal/example_repository v1.0.0
-)
-```
+名前空間として，パッケージ名を定義する．一つのディレクトリ内では，一つのパッケージ名しか宣言できない．
 
 ```go
-import "github.com/hoge/fuga"
+package main
+```
 
-func main() {
-    // 何らかの処理
+#### ・import
+
+ビルトインパッケージ，内部パッケージ，事前にインストールされた外部パッケージを読み込む．
+
+```go
+import "<パッケージ名>"
+```
+
+#### ・func
+
+詳しくは，関数を参考にせよ．
+
+```go
+func xxx() {
+
 }
 ```
 
-#### ・ローカルPCからインポート
+#### ・文の区切り
 
-アプリケーションで使用する独自共有モジュールは，インターネット上での自身のリポジトリからインポートせずに，```replace```メソッドを使用してインポートする必要がある．実際，```unknown revision```のエラーで，バージョンを見つけられない．
+Goでは文の処理はセミコロンで区切られる．ただし，セミコロンはコンパイル時に補完され，実装時には省略できる．
 
-参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
+<br>
 
-```
-module example.com/Hiroki-IT/example_repository/local-pkg
+## 01-02. コマンド
 
-go 1.16
+### install
 
-replace (
-    github.com/example_repository/local-pkg/local-pkg => ./local-pkg
-)
-```
+#### ・オプション無し
 
-また，ルートディレクトリだけでなく，各モジュールにも```go.mod```ファイルを配置する必要がある．
+ソースコードと外部パッケージに対して```build```コマンドを実行し，```$GOPATH```以下の```bin```ディレクトリまたは```pkg```ディレクトリにインストール（配置）する．アーティファクトがソースコード由来であれば```bin```ディレクトリに配置し，一方で外部パッケージ由来であれば```pkg```ディレクトリに配置する．
 
-```
-example_repository
-├── cmd
-│   └── hello.go
-│ 
-├── go.mod
-├── go.sum
-└── local-pkg
-    ├── go.mod # 各モジュールにgo.modを配置する．
-    └── module.go
-```
-
-```
-module example.com/Hiroki-IT/example_repository/local-pkg
-
-go 1.16
-```
-
-これらにより，ローカルのモジュールをインポートできるようになる．
-
-```go
-import "local.packages/local-pkg"
-
-func main() {
-    // 何らかの処理
-}
+```shell
+$ go install
 ```
 
 <br>
 
-### go.sum
+### get
 
-#### ・```go.sum```ファイルとは
+#### ・オプション無し
 
-PHPにおける```composer.lock```ファイルに相当する．ライブラリのチェックサムが記録されるため，前回のインストール時と比較して，ライブラリに変更があるかどうかを検知できる．
+指定したパスからパッケージをダウンロードし，これに対して```install```コマンドを実行する．
+
+```shell
+$ go get <ドメインをルートとしたURL>
+```
 
 <br>
 
-## データ型
+### build
+
+#### ・オプション無し（ビルド対象の指定）
+
+指定したパスをビルド対象として，ビルドのアーティファクトを生成する．
+
+```shell
+# cmdディレクトリをビルド対象として，ルートディレクトリにcmdアーティファクトを生成する．
+$ go build ./cmd
+```
+
+#### ・```-o```
+
+指定したパスにビルドのアーティファクトを生成する．ビルド対象パスを指定しない場合，ルートディレクトリのgoファイルをビルドの対象とする．
+
+```shell
+# ルートディレクトリ内のgoファイルをビルド対象として，cmdディレクトリにルートディレクトリ名アーティファクトを生成する．
+$ go build -o ./cmd
+```
+
+また，指定したパス内のgoファイルをビルド対象として，指定したパスにビルドのアーティファクトを生成することもできる．
+
+```shell
+# cmdディレクトリ内のgoファイルをビルド対象として，$HOME/goディレクトリにbinアーティファクトを生成する．
+$ go build -o $HOME/go/bin ./cmd
+```
+
+ ちなみに，事前のインストールに失敗に，ビルド対象が存在していないと，以下のようなエラーになる．
+
+```shell
+package xxxxx is not in GOROOT (/usr/local/go/src/xxxxx)
+```
+
+<br>
+
+### fmt
+
+#### ・オプション無し
+
+指定したパスのファイルのインデントを整形する．再帰的に整形するのがおすすめ．
+
+```shell
+$ go fmt ./...
+```
+
+<br>
+
+### env
+
+#### ・オプション無し
+
+Goに関する環境変数を出力する．
+
+**＊実装例＊**
+
+```shell
+$ go env
+
+# go.modの有効化
+GO111MODULE="on"
+# コンパイラが実行されるCPUアーキテクチャ
+GOARCH="amd64"
+# installコマンドによるアーティファクトを配置するディレクトリ（指定無しの場合，$GOPATH/bin）
+GOBIN=""
+GOCACHE="/root/.cache/go-build"
+GOENV="/root/.config/go/env"
+GOEXE=""
+GOFLAGS=""
+GOHOSTARCH="amd64"
+# コンパイラが実行されるOS
+GOHOSTOS="linux"
+GOINSECURE=""
+GOMODCACHE="/go/pkg/mod"
+GONOPROXY=""
+GONOSUMDB=""
+GOOS="linux"
+# ソースコードが配置されるディレクトリ
+GOPATH="/go"
+GOPRIVATE=""
+GOPROXY="https://proxy.golang.org,direct"
+# Go本体を配置するディレクトリ
+GOROOT="/usr/local/go"
+GOSUMDB="sum.golang.org"
+GOTMPDIR=""
+GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"
+GCCGO="gccgo"
+AR="ar"
+CC="gcc"
+CXX="g++"
+CGO_ENABLED="0"
+GOMOD="/go/src/go.mod"
+CGO_CFLAGS="-g -O2"
+CGO_CPPFLAGS=""
+CGO_CXXFLAGS="-g -O2"
+CGO_FFLAGS="-g -O2"
+CGO_LDFLAGS="-g -O2"
+PKG_CONFIG="pkg-config"
+GOGCCFLAGS="-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches"
+```
+
+<br>
+
+## 02. データ型
 
 ### データ型の種類
 
@@ -356,13 +403,22 @@ type Person struct {
     Name string
 }
 
-func main(){
+/**
+ * 型のコンストラクタ
+ * ※スコープはパッケージ内のみとする．
+ */
+func newPerson(name string) *Person {
     // new関数を使用する
     person := new(Person)
     
     // フィールドに代入する
-    person.Name = "Hiroki"
+    person.Name = name
     
+    return person
+}
+
+func main(){
+    person := newPerson("Hiroki")
     fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
@@ -530,6 +586,7 @@ package main
 import "fmt"
 
 func main() {
+    // 最後の要素の後にもカンマが必要である．
     x := [5]string{"あ", "い", "う", "え","お",}
     fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
 
@@ -656,7 +713,7 @@ func main() {
 
 もし，構造体に関連付けられたメソッドに不足があると，エラーが起こる．
 
-```sh
+```shell
 # Eatメソッドを関連付けていない場合
 cannot use insect (type Insect) as type Animal in assignment:
 Insect does not implement Animal (missing Eat method)
@@ -674,7 +731,13 @@ var x interface{}
 x = 1
 x = 3.14
 x = "Hiroki"
-x = [...]uint8[1, 2, 3, 4, 5]
+x = [...]unit8{1, 2, 3, 4, 5}
+
+fmt.Printf("%#v\n", x)
+// 1
+// 3.14
+// "Hiroki"
+// [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
 ```
 
 なお，インターフェース型データは演算できない．
@@ -738,13 +801,13 @@ func main(){
 
 <br>
 
-## 関数
+## 03. 関数
 
 ### main関数
 
-#### ・```main```関数
+#### ・```main```関数とは
 
-goのエントリポイントとなる．goのプログラムが起動したときに，各パッケージの```init```関数が実行された後，```main```関数が実行される．```main```関数をビルド対象に指定すると，これを起点として読み込まれるファイルが枝分かれ状にビルドされていく．
+goのエントリポイントとなる．goのプログラムが起動したときに，各パッケージの```init```関数が実行された後，```main```関数が実行される．```main```関数をビルド対象に指定すると，これを起点として読み込まれるファイルが枝分かれ状にビルドされていく．ステータス「0」でプロセスを終了する．
 
 **＊実装例＊**
 
@@ -760,13 +823,13 @@ func main(){
 
 当然，```main```パッケージや```main```関数が無いと，goのプログラムの起動時にエラーが発生する．
 
-```sh
+```shell
 $ go run server.go
 
 go run: cannot run non-main package
 ```
 
-```sh
+```shell
 $ go run server.go
 
 # command-line-arguments
@@ -781,7 +844,7 @@ runtime.main: undefined: main.main
 
 #### ・関数とは
 
-構造体に関連付けられていない関数のこと．関数の頭文字は大文字にする必要がある．
+構造体に関連付けられていない関数のこと．
 
 **＊実装例＊**
 
@@ -1016,16 +1079,138 @@ func main() {
 }
 ```
 
-```sh
+```shell
 # 結果
 Start
 Recover: "Runtime error"
 End
 ```
 
+#### ・複数のdefer関数
+
+deferは複数の関数で宣言できる．複数宣言した場合，後に宣言されたものから実行される．
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    defer fmt.Println("1")
+    defer fmt.Println("2")
+    defer fmt.Println("3")
+}
+```
+
+```shell
+# 結果
+3
+2
+1
+```
+
 <br>
 
-## 変数
+### 返却値
+
+#### ・複数の返却値
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+func division(x int, y int) (int, int) {
+    
+    // 商を計算する．
+    quotient := x / y
+    
+    // 余りを計算する．
+    remainder := x % y
+    
+    // 商と余りを返却する．
+    return quotient, remainder
+}
+
+func main() {
+    // 10÷3を計算する．
+    q, r := division(10, 3)
+    fmt.Printf("商=%d，余り=%d", q, r)
+}
+```
+
+#### ・返却値の破棄
+
+関数から複数の値が返却される時，使わない値をアンダースコアに代入することで，これを破棄できる．
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+)
+
+func main() {
+    // errorインターフェースを破棄
+    file, _ := os.Open("filename.txt")
+    
+    // エラーキャッチする必要がなくなる
+    fmt.Printf("%#v\n", flle)
+}
+```
+
+<br>
+
+### スコープの種類
+
+#### ・パッケージ内外から参照可能
+
+関数名の頭文字を大文字すると，パッケージ内外で関数をコールできるようになる．
+
+**＊実装例＊**
+
+```go
+package example
+
+func Example() {
+    // 何らかの処理
+}
+```
+
+```go
+package main
+
+func main() {
+    Example()
+}
+```
+
+#### ・パッケージ内のみ参照可能
+
+関数名の頭文字を小文字すると，パッケージ外で関数をコールできず，パッケージ内の関数をコールできるようになる．
+
+**＊実装例＊**
+
+```go
+package main
+
+func example() {
+    // 何らかの処理
+}
+
+func main() {
+    example()
+}
+```
+
+<br>
+
+## 04. 変数
 
 ### 定義
 
@@ -1068,32 +1253,52 @@ var (
 
 <br>
 
-### 変数の破棄
+### 定義位置の種類
 
-#### ・アンダースコア
+#### ・パッケージ変数
 
-関数から複数の値が返却される時，使わない値をアンダースコアに代入することで，これを破棄できる．
+関数の外部で定義された変数のこと．スコープとして，宣言されたパッケージ外部でも使用できる．
+
+**＊実装例＊**
 
 ```go
 package main
 
 import (
     "fmt"
-    "os"
+)
+
+// パッケージ変数
+text := "Hello World!"
+
+func main() {
+    fmt.Printf("%#v\n", text)
+}
+```
+
+#### ・ローカル変数
+
+関数の内部で定義された変数のこと．スコープとして，宣言されたパッケージ内部でしか使用できない．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+    "fmt"
 )
 
 func main() {
-    // errorインターフェースを破棄
-    file, _ := os.Open("filename.ext")
-    
-    // エラーキャッチする必要がなくなる
-    fmt.Printf("%#v\n", flle)
+    // ローカル変数
+    text := "Hello World!"
+    fmt.Printf("%#v\n", text)
 }
 ```
 
 <br>
 
-## エラーキャッチ，エラー返却，ロギング
+## 05. エラーキャッチ，エラー返却，ロギング
 
 ### エラーキャッチとエラー返却
 
@@ -1136,7 +1341,7 @@ import (
 
 func main() {
     // 処理結果とerrorインターフェースが返却される．
-    file, err := os.Open("filename.ext")
+    file, err := os.Open("filename.txt")
     
     if err != nil {
         // エラーの内容を出力する．
@@ -1169,7 +1374,7 @@ func ThrowErrorsNew() error {
 }
 
 func main() {
-    file, err := os.Open("filename.ext")
+    file, err := os.Open("filename.txt")
     
     if err != nil {
         // 独自エラーメッセージを設定する．
@@ -1202,7 +1407,7 @@ func ThrowErrorf() error {
 }
 
 func main() {
-    file, err := os.Open("filename.ext")
+    file, err := os.Open("filename.txt")
     
     if err != nil {
         // 独自エラーメッセージを設定する．
@@ -1245,6 +1450,8 @@ Goには標準で，ロギング用パッケージが用意されている．た
 
 引数に渡されたエラーを標準出力に出力する．
 
+**＊実装例＊**
+
 ```go
 if err != nil {
     log.Printf("ERROR: %#v\n", err)
@@ -1253,7 +1460,9 @@ if err != nil {
 
 #### ・接尾辞```Fatal```メソッド
 
-引数に渡されたエラーを標準出力に出力し，```os.Exit(1)```を実行して処理を停止する．
+引数に渡されたエラーを標準出力に出力し，```os.Exit(1)```を実行して，ステータス「1」で処理を終了する．
+
+**＊実装例＊**
 
 ```go
 if err != nil {
@@ -1266,6 +1475,8 @@ if err != nil {
 
 引数に渡されたエラーを標準出力に出力し，予期せぬエラーが起きたと見なして```panic```メソッドを実行する．ちなみに，```panic```メソッドによって，エラーメッセージ出力，スタックトレース出力，処理停止が行われる．
 
+**＊実装例＊**
+
 ```go
 if err != nil {
     // panicメソッドを実行する．
@@ -1275,7 +1486,7 @@ if err != nil {
 
 <br>
 
-## 標準パッケージ
+## 06. ビルトインパッケージ
 
 ### パッケージのソースコード
 
@@ -1691,6 +1902,33 @@ func main() {
 
 <br>
 
+### os
+
+#### ・```Open```メソッド
+
+ファイルをReadOnly状態にする．
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+)
+
+func main() {
+    file, err := os.Open("filename.txt")
+    
+    if err != nil {
+        log.Fatalf("ERROR: %#v\n", err)
+    }
+    
+    fmt.Printf("%#v\n", file)
+}
+```
+
+<br>
+
 ### strings
 
 #### ・```Builder```メソッド
@@ -1717,4 +1955,94 @@ func main() {
     fmt.Println(builder.String()) // Hello world! 
 }
 ```
+
+<br>
+
+## 06-02. 外部パッケージ
+
+### go.modファイル
+
+#### ・```go.mod```ファイルとは
+
+PHPにおける```composer.json```ファイルに相当する．インストールする必要のあるパッケージを実装する．
+
+#### ・インターネットからインポート
+
+ドメイン名をルートとしたURLと，バージョンタグを用いて，インターネットからパッケージをインポートする．なお，パスの最初にはドットを含ませる必要がある．
+
+参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+
+```
+module github.com/Hiroki-IT/example_repository
+
+go 1.16
+
+require (
+    <ドメインをルートとしたURL> <バージョンタグ>
+    github.com/hoge/fuga v1.3.0
+    github.com/internal/example_repository v1.0.0
+)
+```
+
+```go
+import "github.com/hoge/fuga"
+
+func main() {
+    // 何らかの処理
+}
+```
+
+#### ・ローカルPCからインポート
+
+アプリケーションで使用する独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```メソッドを使用してインポートする必要がある．実際，```unknown revision```のエラーで，バージョンを見つけられない．
+
+参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
+
+```
+module example.com/Hiroki-IT/example_repository/local-pkg
+
+go 1.16
+
+replace (
+    github.com/example_repository/local-pkg/local-pkg => ./local-pkg
+)
+```
+
+また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．
+
+```
+example_repository
+├── cmd
+│   └── hello.go
+│ 
+├── go.mod
+├── go.sum
+└── local-pkg
+    ├── go.mod # 各パッケージにgo.modを配置する．
+    └── module.go
+```
+
+```
+module example.com/Hiroki-IT/example_repository/local-pkg
+
+go 1.16
+```
+
+これらにより，ローカルのパッケージをインポートできるようになる．
+
+```go
+import "local.packages/local-pkg"
+
+func main() {
+    // 何らかの処理
+}
+```
+
+<br>
+
+### go.sumファイル
+
+#### ・```go.sum```ファイルとは
+
+PHPにおける```composer.lock```ファイルに相当する．```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される．パッケージごとのチェックサムが記録されるため，前回のインストール時と比較して，ライブラリに変更があるかどうかを検知できる．
 
