@@ -2013,7 +2013,7 @@
 <span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$example</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$exmaple</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExampleNotFoundException</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;Example is not found.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExampleNotFoundException</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;Example is not found.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F; ${example} &#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
@@ -2062,10 +2062,6 @@
 
 <span class="token keyword">class</span> <span class="token class-name">Example</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * @param message $message
-     * @return bool
-     */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
@@ -2097,39 +2093,35 @@
 <p>finally&#x53E5;&#x306F;&#xFF0C;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;finally&#x53E5;&#x3067;&#x306F;&#xFF0C;<code>return</code>&#x3084;<code>continue</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Example</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * @param message $message
-     * @return bool
-     */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#xFF08;&#xFF11;&#xFF09;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#xFF08;&#xFF12;&#xFF09;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#xFF08;&#xFF13;&#xFF09;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#xFF08;&#xFF14;&#xFF09;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
             <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
@@ -2173,20 +2165,76 @@
     <span class="token string double-quoted-string">&quot;&lt;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&gt;&quot;</span>
 <span class="token punctuation">)</span>
 </code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token function">error_log</span><span class="token punctuation">(</span>
+                <span class="token function">sprintf</span><span class="token punctuation">(</span>
+                    <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">3</span><span class="token punctuation">,</span>
+                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;/error.log&quot;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4ED6;&#x306B;&#xFF0C;Logger&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x591A;&#x3044;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/php-fig/log" target="_blank">https://github.com/php-fig/log</a></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Psr<span class="token punctuation">\</span>Log<span class="token punctuation">\</span>LoggerInterface</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$logger</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span> <span class="token operator">=</span> <span class="token variable">$logger</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;">&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h4>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30A2;&#x30D7;&#x30EA;&#x306E;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x751F;&#x6210;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3068;&#xFF0C;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#x305D;&#x306E;&#x4ED6;&#x539F;&#x56E0;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Example</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * @param message $message
-     * @return bool
-     */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
@@ -2198,29 +2246,32 @@
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            <span class="token function">error_log</span><span class="token punctuation">(</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
                 <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">3</span><span class="token punctuation">,</span>
-                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;/http_request_error.log&quot;</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            <span class="token function">error_log</span><span class="token punctuation">(</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
                 <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">3</span><span class="token punctuation">,</span>
-                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;/external_api_error.log&quot;</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
             <span class="token comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
-            <span class="token function">error_log</span><span class="token punctuation">(</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
                 <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token number">3</span><span class="token punctuation">,</span>
-                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;/app_error.log&quot;</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
         <span class="token comment">// &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;</span>
@@ -2267,7 +2318,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-03-23T02:10:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-26T12:16:26.439Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"next":{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]},"previous":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_logic_validation.md","ref":"public/backend_logic_validation.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.4.2.2","depth":3,"path":"public/backend_logic_iteration.md","ref":"public/backend_logic_iteration.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["intopic-toc","advanced-emoji","back-to-top-button","copy-code-button","prism","-highlight","ga"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_validation.md","mtime":"2021-03-27T02:18:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-27T10:28:26.055Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
