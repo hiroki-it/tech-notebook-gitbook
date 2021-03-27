@@ -10,7 +10,6 @@
 ### テスト仕様書に基づくテスト
 
 1. テスト仕様書に基づく，Unitテスト，Integrationテスト，User Acceptanceテストを行う．
-
 2. グラフによるテストの可視化
 
 <br>
@@ -25,7 +24,7 @@
 
 ### スタブとは
 
-Unitテストのように，特に一連の処理の一部分だけをテストするために頻繁に用いる．ただし，Functionalテストで用いることもある．UnitテストとFunctionalテストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
+Unitテストのように，特に一連の処理の一部分だけを検証するために頻繁に用いる．ただし，Functionalテストで用いることもある．UnitテストとFunctionalテストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
 
 <br>
 
@@ -70,13 +69,16 @@ $mock = Phake::mock(Example::class);
 
 **＊実装例＊**
 
-一連の処理の中で，QueryObjectクラスが正しく初期化されるかをテストする．そのため，QueryObjectクラスは実体を用意する．それ以外の処理はスタブで定義する．実際はもう少し複雑な処理をテストするが，例のため簡単な処理をテストしている．
+一連の処理の中で，QueryObjectクラスが正しく初期化されるかを検証する．そのため，QueryObjectクラスは実体を用意する．それ以外の処理はスタブで定義する．実際はもう少し複雑な処理を検証するが，例のため簡単な処理をテストしている．
 
 ```php
 <?php
 
 class QueryObjectTest extends \PHPUnit_Framework_TestCase
 {   
+   /**
+    * @test
+    */    
     public function testNewQueryObject()
     {    
         // 対象以外の処理をモックオブジェクトとして定義する．
@@ -90,7 +92,7 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
             ->find($queryObject)
             ->thenReturn([]);
 
-        // findメソッドを1回実行できたことをテストする．
+        // findメソッドを1回実行できたことを検証する．
         Phake::verify($mock, Phake::times(1))->find($queryObject);
     }
 }
@@ -100,11 +102,204 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
 
 ## 03. PHPUnit
 
-### Unitテスト
+### ユニットテスト
 
-#### ・Unitテストとは
+#### ・ユニットテストとは
 
-クラスやメソッドが単体で処理が正しく動作するかをテストする方法．テスト対象以外の処理はスタブとして定義する．
+クラスやメソッドが単体で処理が正しく動作するかを検証する方法．テスト対象以外の処理はスタブとして定義する．以降のテスト例では，次のような通知クラスとメッセージクラスが前提にあるとする．
+
+```php
+<?php
+
+use CouldNotSendMessageException;
+    
+class ExampleNotification
+{
+    private $httpClient;
+        
+    private $token;
+    
+    private $logger;
+        
+    public function __construct(Clinet $httpClient, string $token, LoggerInterface $logger)
+    {
+        $this->httpClient = $httpClient;        
+        $this->token = $token;
+        $this->logger = $logger;
+    }
+    
+    public function sendMessage(ExampleMessage $exampleMessage)
+    {
+        if (empty($this->token)) {
+            throw new CouldNotSendMessageException("API requests is required.");
+        }
+        
+        if (empty($exampleMessage->channel_id)) {
+            throw new CouldNotSendMessageException("Channnel ID is required.");
+        }
+        
+        $json = json_encode($exampleMessage->message);
+        
+        try {
+            $this->httpClient->request(
+                "POST",
+                "https://xxxxxxxx",
+                [
+                    "headers" => [
+                        "Authorization" => $this->token,
+                        "Content-Length" => strlen($json),
+                        "Content-Type" => "application/json",
+                    ],
+                    "form_params" => [
+                        "body" =>  $exampleMessage->message
+                    ]
+                ]
+            );
+
+        } catch (ClientException $exception) {
+
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
+                $exception->getMessage(),
+                $exception->getFile(),
+                $exception->getLine()
+            ));
+
+            throw new CouldNotSendMessageException($exception->getMessage());
+        } catch (\Exception $exception) {
+
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
+                $exception->getMessage(),
+                $exception->getFile(),
+                $exception->getLine()
+            ));
+
+            throw new CouldNotSendMessageException($exception->getMessage());
+        }
+        
+        return true;
+    }
+}
+```
+
+```php
+<?php
+ 
+class ExampleMessage
+{
+    private $channel_id;
+    
+    private $message;
+
+    public function __construct(string $channel_id, string $message)
+    {
+        $this->channel_id = $channel_id;        
+        $this->message = $message;
+    }
+}
+```
+
+#### ・正常系テスト例
+
+メソッドのアノテーションで，```@test```を宣言する．
+
+**＊実装例＊**
+
+リクエストにて，チャンネルとメッセージを送信した時に，レスポンスとして```TRUE```が返信されるかを検証する．
+
+```php
+<?php
+
+use ExampleMessage;
+use ExampleNotifiation;
+
+class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
+{
+    private $logger;
+
+    private $client;
+
+    public function setUp()
+    {
+        $this->client = \Phake::mock(Client::class);
+        $this->logger = \Phake::mock(LoggerInterface::class);
+    }
+    
+   /**
+    * @test
+    */
+    public function testSendMessage()
+    {
+        $exampleNotification = new ExampleNotification(
+            $this->client,
+            "xxxxxxx",
+            $this->logger
+        );
+        
+        $exampleMessage = new ExampleMessage("test", "X-CHANNEL");
+        
+        $this->assertTrue(
+            $exampleNotification->sendMessage($exampleMessage)
+        );
+    }
+}
+```
+
+```shell
+# Time: x seconds
+# OK
+```
+
+#### ・異常系テスト例
+
+メソッドのアノテーションで，```@test```と```@expectedException```を宣言する．
+
+**＊実装例＊**
+
+リクエストにて，メッセージのみを送信しようとした時に，例外を発生させられるかを検証する．
+
+```php
+<?php
+
+use ExampleMessage;
+use ExampleNotifiation;
+
+class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
+{
+    private $logger;
+
+    private $client;
+
+    public function setUp()
+    {
+        $this->client = \Phake::mock(Client::class);
+        $this->logger = \Phake::mock(LoggerInterface::class);
+    }
+
+   /**
+    * @test
+    * @expectedException
+    */
+    public function testCouldNotSendMessageException()
+    {
+        $exampleNotification = new ExampleNotification(
+            $this->client,
+            "xxxxxxx",
+            $this->logger
+        );
+        
+        $exampleMessage = new ExampleMessage("test", "");
+
+        $exampleNotification->sendMessage($exampleMessage);
+    }
+}
+```
+
+```shell
+# Time: x seconds
+# OK
+```
 
 <br>
 
@@ -112,20 +307,61 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
 
 #### ・Functionalテストとは
 
-Controllerに対してリクエストを行い，正しくレスポンスが行われるかをテストする方法．スタブを使用することは少ない．
+アプリケーションのControllerに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．
 
-#### ・レスポンスステータステスト
+#### ・```assert```メソッド
 
-レスポンスが成功するか（ステータスコードが```200```番台か）をテストする．
+実際の値と期待値を比較し，結果に応じて```SUCCESS```または```FAILURES```を返却する．非staticまたはstaticとしてコールできる．
+
+参考：https://phpunit.readthedocs.io/ja/latest/assertions.html
+
+```php
+$this->assertTrue();
+```
+
+```php
+self::assertTrue()
+```
+
+#### ・テスト例
+
+| HTTPメソッド | 分類   | データの条件                                                 | ```assert```メソッドの検証内容                               |
+| ------------ | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| POST，PUT    | 正常系 | リクエストのボディにて，必須パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
+|              |        | リクエストのボディにて，任意パラメータにデータが割り当てられていない場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
+|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，データが割り当てられていない場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
+|              | 異常系 | リクエストのボディにて，必須パラメータにデータが割り当てられていない場合． | Controllerが400ステータスのレスポンスを返信すること．        |
+|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，空文字やnullが割り当てられている場合． | Controllerが400ステータスのレスポンスを返信すること．        |
+|              |        | リクエストのボディにて，パラメータのデータ型が誤っている場合． | Controllerが400ステータスのレスポンスを返信すること．        |
+| GET          | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，参照されたデータのIDが期待通りであること． |
+|              | 異常系 | リクエストのボディにて，パラメータに参照禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
+| DELETE       | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，削除されたデータのIDが期待通りであること． |
+|              | 異常系 | リクエストのボディにて，パラメータに削除禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが200ステータスのレスポンスを返信し，削除されたデータのIDが期待通りであること． |
+| 認証認可     | 正常系 | リクエストのヘッダーにて，認証されているトークンが割り当てられている場合（認証の成功）． | Controllerが200ステータスのレスポンスを返信すること．        |
+|              | 異常系 | リクエストのヘッダーにて，認証されていないトークンが割り当てられている場合（認証の失敗）． | Controllerが401ステータスのレスポンスを返信すること．        |
+|              |        | リクエストのボディにて，パラメータにアクセス禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
+
+#### ・正常系テスト例（１）
+
+メソッドのアノテーションで，```@test```を宣言する．
+
+**＊実装例＊**
+
+レスポンスが成功するか（ステータスコードが```200```番台か）を検証する．
 
 ```php
 <?php
+    
+use GuzzleHttp\Client;    
 
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-    public function canGetPage()
+   /**
+    * @test
+    */    
+    public function testGetPage()
     {
-        $client = new GuzzleHttp\Client();
+        $client = new Client();
 
         // GETリクエスト
         $client->request(
@@ -135,24 +371,33 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         
         $response = $client->getResponse();
 
-        // 200ステータスが返却されるかをテストする．
+        // 200ステータスが返却されるかを検証する．
         $this->assertTrue($response->isOk());
     }
 }
 ```
 
-#### ・レスポンスデータテスト
+#### ・正常系テスト例（２）
 
-レスポンスが成功するか，またレスポンスされた配列データが期待値と同じかをテストする．レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかで検証する．
+レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかで検証する．
+
+**＊実装例＊**
+
+レスポンスが成功するか，またレスポンスされた配列データが期待値と同じかを検証する．
 
 ```php
 <?php
 
+use GuzzleHttp\Client;    
+    
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-    public function canPostMessage()
+   /**
+    * @test
+    */    
+    public function testPostMessage()
     {
-        $client = new GuzzleHttp\Client();
+        $client = new Client();
 
         // APIにPOSTリクエスト
         $client->request(
@@ -169,7 +414,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         
         $response = $client->getResponse();
 
-        // 200ステータスが返却されるかをテストする．
+        // 200ステータスが返却されるかを検証する．
         $this->assertTrue($response->isOk());
         
         // レスポンスデータを抽出する．
@@ -179,24 +424,31 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
             "メッセージを受信しました．"
         ]
         
-        // レスポンスデータが正しいかをテストする．
+        // レスポンスデータが正しいかを検証する．
         $this->assertSame($excepted, $actual)
     }
 }
 ```
 
-#### ・レスポンスエラーデータテスト
+#### ・異常系テスト例
 
-レスポンスが成功するか，またレスポンスされるエラーが正しいかをテストする．
+レスポンスが成功するか，またレスポンスされるエラーが正しいかを検証する．
+
+**＊実装例＊**
 
 ```php
 <?php
+    
+use GuzzleHttp\Client;    
 
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-    public function canFailToPostMessage()
+   /**
+    * @test
+    */    
+    public function testErrorPostMessage()
     {
-        $client = new GuzzleHttp\Client();
+        $client = new Client();
 
         // APIにPOSTリクエスト
         $client->request(
@@ -213,7 +465,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         
         $response = $client->getResponse();
 
-        // 200ステータスが返却されるかをテストする．
+        // 200ステータスが返却されるかを検証する．
         $this->assertTrue($response->isOk());
         
         // レスポンスデータのエラーを抽出する．
@@ -224,8 +476,40 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
             "メッセージは必ず入力してください．"
         ]
         
-        // エラーが正しいかをテストする．
+        // エラーが正しいかを検証する．
         $this->assertSame($excepted, $actual)
+    }
+}
+```
+
+<br>
+
+### テストデータ
+
+#### ・Data Provider
+
+メソッドのアノテーションで，```@test```と```@dataProvider データプロバイダ名```を宣言する．データプロバイダの返却値として配列を設定し，配列の値の順番で，引数に値を渡すことができる．
+
+```php
+<?php
+
+class ExampleControllerTest
+{
+    /* @test
+     * @dataProvider provideData
+     */
+    public function testMethod($paramA, $paramB, $paramC)
+    {
+        // 何らかの処理 
+    }
+    
+    public function provideData(): array
+    {
+        return [
+            // 配列データは複数あっても良い，
+            ["あ", "い", "う"],
+            ["1", "2", "3"]
+        ];
     }
 }
 ```
@@ -237,6 +521,8 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 #### ・```setUp```メソッド
 
 モックオブジェクトなどを事前に準備するために用いられる．
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -284,46 +570,13 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
 <br>
 
-### テストデータ
+## 04. テスト仕様書に基づくユニットテスト
 
-#### ・Data Provider
-
-テストメソッドのアノテーションに，```@dataProvider {データ名}```とすることで，テストメソッドに定義した配列データを渡すことができる．
-
-```php
-<?php
-
-class ExampleControllerTest
-{
-    /* @test
-     * @dataProvider provideData
-     */
-    public function testMethod($paramA, $paramB, $paramC)
-    {
-        // 何らかの処理 
-    }
-    
-    public function provideData(): array
-    {
-        return [
-            // 配列データは複数あっても良い，
-            // testMethod()の引数と同じ順番で，配列データの要素が並ぶ．
-            ["あ", "い", "う"],
-            ["1", "2", "3"]
-        ];
-    }
-}
-```
-
-<br>
-
-## 04. テスト仕様書に基づくUnitテスト
-
-PHPUnitでのUnitテストとは意味合いが異なるので注意．
+PHPUnitでのユニットテストとは意味合いが異なるので注意．
 
 ### ブラックボックステスト
 
-実装内容は気にせず，入力に対して，適切な出力が行われているかをテストする．
+実装内容は気にせず，入力に対して，適切な出力が行われているかを検証する．
 
 ![p492-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p492-1.jpg)
 
@@ -331,7 +584,7 @@ PHPUnitでのUnitテストとは意味合いが異なるので注意．
 
 ### ホワイトボックステスト
 
-実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかをテストする．ホワイトボックステストには，以下の方法がある．何をテストするかに着目すれば，思い出しやすい．
+実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかを検証する．ホワイトボックステストには，以下の方法がある．何を検証するかに着目すれば，思い出しやすい．
 
 ![p492-2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p492-2.jpg)
 
@@ -430,13 +683,29 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 ### システムテスト
 
-結合テストの次に行うテスト．システム全体が適切に動いているかをテストする．User Acceptanceテスト，また総合テストともいう．
+#### ・システムテストとは
+
+結合テストの次に行うテスト．システム全体が適切に動いているかを検証する．User Acceptanceテスト，また総合テストともいう．
+
+#### ・テスト対象の操作例
+
+以下の操作を対象として検証するとよい．
+
+| 大分類 | 中分類           | テスト対象の操作                                             |
+| ------ | ---------------- | ------------------------------------------------------------ |
+| 機能   | 正常系           | 基本操作（登録，参照，更新，削除），画面遷移，状態遷移，セキュリティ，など |
+|        | 異常系           | 基本操作（登録，参照，更新，削除），など                     |
+|        | 組み合わせ       | 同時操作，割り込み操作，排他制御に関わる操作，など           |
+|        | 業務シナリオ     | シナリオに沿ったユーザによる一連の操作                       |
+|        | 開発者シナリオ   | シナリオに沿った開発者による一連の操作（手動コマンドなど）   |
+|        | 外部システム連携 | 外部のAPIとの連携処理に関わる操作                            |
+| 非機能 | 負荷耐性や性能   | 各種負荷テスト（性能テスト，限界テスト，耐久テスト）         |
 
 <br>
 
 ### Functionalテスト
 
-機能要件を満たせているかをテストする．PHPUnitでのFunctionalテストとは意味合いが異なるので注意．
+機能要件を満たせているかを検証する．PHPUnitでのFunctionalテストとは意味合いが異なるので注意．
 
 <br>
 
@@ -444,7 +713,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 #### ・負荷テストとは
 
-実際の運用時に，想定したリクエスト数に耐えられるか，をテストする．また，テスト結果から，運用時の監視で参考にするための，安全範囲（青信号），危険範囲（黄色信号），限界値（赤信号），を導く必要がある．
+実際の運用時に，想定したリクエスト数に耐えられるか，を検証する．また，テスト結果から，運用時の監視で参考にするための，安全範囲（青信号），危険範囲（黄色信号），限界値（赤信号），を導く必要がある．
 
 参考：https://www.oracle.com/jp/technical-resources/article/ats-tech/tech/useful-class-8.html
 
@@ -460,21 +729,25 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 ![スループットとレスポンスタイム](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/スループットとレスポンスタイム.png)
 
-一定時間内に，ユーザが一連のリクエスト（例：ログイン，閲覧，登録，ログアウト）を行った時に，システムのスループットとレスポンス時間にどのような変化があるかをテストする．具体的にはテスト時に，アクセス数を段階的に増加させて，その結果をグラフ化する．グラフ結果を元に，想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し，また性能の負荷が最大になる値を導く．これらを運用時の監視の参考値にする．
+一定時間内に，ユーザが一連のリクエスト（例：ログイン，閲覧，登録，ログアウト）を行った時に，システムのスループットとレスポンス時間にどのような変化があるかを検証する．具体的にはテスト時に，アクセス数を段階的に増加させて，その結果をグラフ化する．グラフ結果を元に，想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し，また性能の負荷が最大になる値を導く．これらを運用時の監視の参考値にする．
 
 #### ・限界テスト
 
-性能の限界値に達するほどのリクエスト数が送信された時に，障害回避処理（例：アクセスが込み合っている旨のページを表示）が実行されるかをテストする．具体的にはテスト時に，障害回避処理以外の動作（エラー，間違った処理，障害回復後にも復旧できない，システムダウン）が起こらないかを確認する．
+性能の限界値に達するほどのリクエスト数が送信された時に，障害回避処理（例：アクセスが込み合っている旨のページを表示）が実行されるかを検証する．具体的にはテスト時に，障害回避処理以外の動作（エラー，間違った処理，障害回復後にも復旧できない，システムダウン）が起こらないかを確認する．
 
 #### ・耐久テスト
 
-長時間の大量リクエストが送信された時に，短時間では検出できないどのような問題が存在するかをテストする．具体的にはテスト時に，長時間の大量リクエストを処理させ，問題（例：微量のメモリリークが蓄積してメモリを圧迫，セッション情報が蓄積してメモリやディスクを圧迫，ログが蓄積してディスクを圧迫，ヒープやトランザクションログがCPUやI/O処理を圧迫）
+長時間の大量リクエストが送信された時に，短時間では検出できないどのような問題が存在するかを検証する．具体的にはテスト時に，長時間の大量リクエストを処理させ，問題（例：微量のメモリリークが蓄積してメモリを圧迫，セッション情報が蓄積してメモリやディスクを圧迫，ログが蓄積してディスクを圧迫，ヒープやトランザクションログがCPUやI/O処理を圧迫）
 
-#### ・再現テスト
+<br>
 
-障害発生後の措置としてスペックを上げる場合，そのスペックが障害発生時の負荷に耐えられるかをテストする．
+### 再現テスト
 
-**＊障害とデータ例＊**
+#### ・再現テストとは
+
+障害発生後の措置としてスペックを上げる場合，そのスペックが障害発生時の負荷に耐えられるかを検証する．
+
+#### ・テスト例
 
 開始からピークまでに，次のようにリクエスト数が増し，障害が起こったとする．その後，データを収集した．
 

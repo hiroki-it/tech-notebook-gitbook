@@ -43,9 +43,8 @@ class Example
 class Example
 {
     private $data;
-  
-  　// 自信が持つデータを操作する.
-  
+
+    // 自信が持つデータを操作する.
     public function data()
     {
         return $this->data;
@@ -94,7 +93,7 @@ class Example
 
 ```php
 <?php
-  
+
 function example($data){
     return $data;
 }
@@ -121,7 +120,7 @@ https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 
 ```php
 <?php
-  
+
 class Example extends ParentExample
 {
     public function __construct($data)
@@ -227,38 +226,13 @@ example($data);
 
 ```php
 <?php
-class DogToyEntity
-{
-    public function __construct()
-    {
-        // 中身は省略
-    }
-    
-    // インスタンスを作成する集約メソッドは，データ値にアクセスしないため，常に同一の処理を行う．
-    public static function aggregateDogToyEntity(array $fetchedData)
-    {
-        return new DogToyEntity(
-            new ColorVO($fetchedData["dog_toy_type"]),
-            $fetchedData["dog_toy_name"],
-            $fetchedData["number"],
-            new PriceVO($fetchedData["dog_toy_price"]),
-            new ColorVO($fetchedData["color_value"])
-        );
-    }
-}
-```
 
-**＊実装例＊**
-
-```php
-<?php
 class Example
 {
     // 受け取ったOrderエンティティから値を取り出すだけで，データ値は呼び出していない．
     public static function computeExampleFee(Entity $order): Money
     {
-        $money = new Money($order->exampleFee);
-        return $money;
+        return new Money($order->exampleFee);
     }
 }
 ```
@@ -342,7 +316,6 @@ class Test01 {
     {
         $this->property01 = $property01;
     }
-    
 }    
 ```
 
@@ -372,8 +345,10 @@ Test01クラスインスタンスの```$property01```に値を設定するため
 
 ```php
 <?php
-class Test01 {
-// 中身は省略
+
+class Test01
+{
+    // 中身は省略
 }
 
 $test01 = new Test01;
@@ -387,8 +362,10 @@ $test01->setProperty01("新しいデータ01の値");
 
 ```php
 <?php
-class Test02 {
-// 中身は省略
+
+class Test02
+{
+    // 中身は省略
 }
 
 $test02 = new Test02("データ02の値");
@@ -416,7 +393,7 @@ class Example
 {
 
     private $example = [];
-    
+
     // 引数と返却値のデータ型を指定
     public function __get(string $name): string
     {
@@ -490,7 +467,9 @@ $example->hoge = "HOGE";
 
 ```php
 <?php
-class Test02 {
+    
+class Test02
+{
 
     private $property02;
 
@@ -509,6 +488,7 @@ Test01クラスインスタンスの```$property01```に値を設定するため
 
 ```php
 <?php
+    
 $test01 = new Test01;
 
 $test01->setProperty01("データ01の値");
@@ -520,6 +500,7 @@ $test01->setProperty01("新しいデータ01の値");
 
 ```php
 <?php
+    
 $test02 = new Test02("データ02の値");
 
 $test02 = new Test02("新しいデータ02の値");
@@ -596,6 +577,7 @@ class B extends A {}
 
 ```php
 <?php
+    
 echo get_class(B::get_self());   // 継承元のクラスA
 
 echo get_class(B::get_static()); // 継承先のクラスB
@@ -615,9 +597,11 @@ echo get_class(A::get_static()); // 継承元のクラスA
 
 ```php
 <?php
-class Obj_A{
+
+class Obj_A
+{
     private $objB;
-    
+
     // 返却値のデータ型を指定
     public function objB(): ObjB
     {
@@ -630,7 +614,9 @@ class Obj_A{
 
 ```php
 <?php
-class Obj_B{
+    
+class Obj_B
+{
     private $objC;
  
     // 返却値のデータ型を指定
@@ -645,7 +631,9 @@ class Obj_B{
 
 ```php
 <?php
-class Obj_C{
+    
+class Obj_C
+{
     private $objD;
  
     // 返却値のデータ型を指定
@@ -660,6 +648,7 @@ class Obj_C{
 
 ```php
 <?php
+    
 $ObjA = new Obj_A;
 
 $ObjB = $ObjA->objB();
@@ -673,6 +662,7 @@ $ObjD = $ObjC->objD();
 
 ```php
 <?php
+    
 $D = objB()->objC()->objC();
 
 // $D には ObjD が格納されている．
@@ -703,56 +693,56 @@ $D = objB()->objC()->objC();
 
 ```php
 <?php
-class Example{
-    
+
+class Example
+{
+
     public function quickSort(array $array): array
     {
         // 配列の要素数が一つしかない場合，クイックソートする必要がないので，返却する．
         if (count($array) <= 1) {
             return $array;
         }
-        
+
         // 一番最初の値をPivotとする．
         $pivot = array_shift($array);
-        
+
         // グループを定義
         $left = $right = [];
-        
+
         foreach ($array as $value) {
-            
+
             if ($value < $pivot) {
-                
+
                 // Pivotより小さい数は左グループに格納
                 $left[] = $value;
-                
             } else {
-                
+
                 // Pivotより大きい数は右グループに格納
                 $right[] = $value;
-                
             }
-            
+
         }
-        
+
         // 処理の周回ごとに，結果の配列を結合．
         return array_merge
         (
         // 左のグループを再帰的にクイックソート．
             quickSort($left),
-            
+
             // Pivotを結果に組み込む．
-            array($pivot),
-            
+            [$pivot],
+
             // 左のグループを再帰的にクイックソート．
             quickSort($right)
-        ); 
+        );
     }
 }
 
 // 実際に使ってみる．
-$array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
+$array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
 $result = quickSort($array);
-var_dump($result); 
+var_dump($result);
 
 // 昇順に並び替えられている．
 // 1, 2, 3, 4, 5, 6, 7, 8 
@@ -781,7 +771,9 @@ var_dump($result);
 
 ```php
 <?php
-class Example{
+    
+class Example
+{
   
     public function returnMethod()
     {
@@ -801,7 +793,9 @@ $example->returnMethod(); // returnMethod()です。
 
 ```php
 <?php
-class Example{
+    
+class Example
+{
   
     function exitMethod()
     {
@@ -831,9 +825,10 @@ $example->exitMethod(); // exitMethod()です。
 
 ```php
 <?php
+    
 class Example
 {
-    function oneToThree(): array
+    public function oneToThree(): array
     {
         for ($i = 1; $i <= 3; $i++) {
             // yield を返却した後、$i の値が維持される．
@@ -864,8 +859,10 @@ foreach ($oneToThree as $value) {
 
 ```php
 <?php
-class Dispatcher {
-// 中身は省略
+    
+class Dispatcher
+{
+    // 中身は省略
 }
 
 $dispatcher = new Dispatcher;
@@ -892,6 +889,7 @@ $dispatcher->dispatch("example", "test");
 
 ```php
 <?php
+    
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class ExampleEventDispatcher
@@ -908,54 +906,53 @@ class ExampleEventDispatcher
 
 ```php
 <?php
+
 class ResultCacher
 {
     private $resultCollection;
-    
+
     private $funcCollection;
-    
+
     public function __construct()
     {
         $this->funcCollection = $this->addListener();
     }
-  
-  
+
+
     // 集計メソッド
     public function computeRevenue()
     {
         // 時間のかかる集計処理;
     }
 
-  
+
     public function funcNameListener(string $funcName)
     {
         // 返却値が設定されていなかった場合，値を設定.
         if (!isset($this->resultCollection[$funcName])) {
-            
+
             // メソッドの返却値をCollectionに設定．
             $this->resultCollection[$funcName] = $this->dispatch($funcName);
         }
-        
+
         // 返却値が設定されていた場合,そのまま使う．
         return $this->resultCollection[$funcName];
     }
-  
-  
+
     // 返却値をキャッシュしたいメソッド名を登録しておく．
     private function addListener()
     {
         return [
-          "computeRevenue" => [$this, "computeRevenue"]
+            "computeRevenue" => [$this, "computeRevenue"]
         ];
     }
-  
-    
+
     private function dispatch(string $funcName)
     {
         // call_user_funcでメソッドを実行
         return call_user_func(
-          // 登録されているメソッド名から，メソッドをDispatch.
-          $this->funcCollection[$funcName]
+        // 登録されているメソッド名から，メソッドをDispatch.
+            $this->funcCollection[$funcName]
         );
     }
 }
@@ -975,8 +972,10 @@ class ResultCacher
 
 ```php
 <?php
-class Item {
-// 中身は省略
+
+class Item
+{
+    // 中身は省略
 }
 
 $item = new Item;
@@ -1000,7 +999,8 @@ echo $optionName;
 
 ```php
 <?php
-class Item {
+class Item 
+{
 // 中身は省略
 }
 
@@ -1026,11 +1026,13 @@ echo $optionName("BC");
 
 ```php
 <?php
-class Item {
+class Item 
+{
 // 中身は省略
 }
 
-class Option {
+class Option 
+{
 // 中身は省略
 }
 
@@ -1063,7 +1065,8 @@ echo $option->name("BC");
 
 ```php
 <?php
-class Item {
+class Item 
+{
 // 中身は省略
 }
 
@@ -1097,6 +1100,7 @@ echo $optionName;
 
 ```php
 <?php
+    
 // 第一引数のみの場合
 class Example
 {
@@ -1124,6 +1128,7 @@ $example->test("callbackMethod");
 
 ```php
 <?php
+    
 // 第一引数と第二引数の場合
 class Example
 {
@@ -1154,6 +1159,7 @@ $example->higherOrder("第一引数", "callbackMethod");
 
 ```php
 <?php
+    
 class Example
 {
     // 高階関数のように，関数を引数として渡す．
@@ -1239,9 +1245,7 @@ class requiredTime
     const WALKING_SPEED_PER_MINUTE = 80;
     const CAR_SPEED_PER_MINUTE = 400;
     
-    
     private $distance;
-    
     
     public function __construct(int $distance)
     {
@@ -1258,13 +1262,11 @@ class requiredTime
         return FALSE;
     }
     
-    
     public function minuteByWalking()
     {
         $minute = $this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE;
         return ceil($minute);
     }
-    
     
     public function minuteByCar()
     {
@@ -1303,22 +1305,24 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 
 ```php
 <?php
-    
+
 class ExampleA
 {
-  public function a()
-  {
-    echo __FUNCTION__;
-  }
+    public function a()
+    {
+        echo __FUNCTION__;
+    }
 }
 ```
 
 ```php
 <?php
-    
-class ExampleA {
-public function a(){}
+
+class ExampleA
+{
+    public function a(){}
 }
+
 $exampleA = new ExampleA;
 $exampleA->a(); // a が返却される．
 ```
@@ -1331,13 +1335,13 @@ $exampleA->a(); // a が返却される．
 
 ```php
 <?php
-    
+
 class ExampleB
 {
-  public function b()
-  {
-    echo __METHOD__;
-  }
+    public function b()
+    {
+        echo __METHOD__;
+    }
 }
 ```
 

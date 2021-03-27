@@ -289,13 +289,38 @@ HashMapクラスによって実装されるArray型．PHPの連想配列に相�
 
 #### ・object
 
-```
-Fruit Object
-(
-    [id:private] => 1
-    [name:private] => リンゴ
-    [price:private] => 100
-)
+```php
+<?php
+
+class A 
+{
+    private $name = "Hiroki";
+    
+    public function HelloWorld()
+    {
+        return sprintf(
+            "%s, %s",
+            $this->name,
+            "Hello World!"
+            );
+    }
+}
+
+$a = new A;
+
+var_dump($a);
+
+// object(A)#1 (1) {
+//  ["name":"A":private]=>
+//  string(6) "Hiroki"
+//}
+
+print_r($a);
+
+// A Object
+// (
+//     [name:A:private] => Hiroki
+// )
 ```
 
 <br>
@@ -323,6 +348,7 @@ Fruit Object
 
 ```php
 <?php
+    
 $var = 10; // $varはInt型．
 
 // キャスト演算子でデータ型を変換
@@ -333,6 +359,7 @@ $var = (string) $var; // $varはString型
 
 ```php
 <?php
+    
 $var = "1";
 
 // Int型
@@ -345,6 +372,7 @@ $var = (int) $var;
 
 ```php
 <?php
+    
 $var = 1;
 
 // Boolean型
@@ -357,6 +385,7 @@ $var = (bool) $var;
 
 ```php
 <?php
+    
 $var = "1.0";
 
 // Float型
@@ -369,6 +398,7 @@ $var = (float) $var;
 
 ```php
 <?php
+    
 // Array型
 $var = (array) $var;
 ```
@@ -377,6 +407,7 @@ $var = (array) $var;
 
 ```php
 <?php
+    
 // Object型
 $var = (object) $var;
 ```

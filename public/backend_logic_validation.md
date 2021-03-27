@@ -443,7 +443,7 @@ function leapYear(int $year): string
 
 ```php
 <?php
-    
+
 class Example {};
 
 if(new Example == new Example){
@@ -543,7 +543,7 @@ use Exception\ExampleNotFound;
 function example(string $example) {
     
     if (empty($exmaple)) {
-        throw new ExampleNotFoundException("Example is not found.");;
+        throw new ExampleNotFoundException("Example is not found.");
     }
     
     return "これは ${example} です．";
@@ -606,14 +606,10 @@ use \Exception\HttpRequestErrorException;
 
 class Example
 {
-    /**
-     * @param message $message
-     * @return bool
-     */
     public function sendMessage(Message $message)
     {
         try {
-            
+
             // ExternalApiErrorException，HttpRequestErrorException，Exceptionが起こる
 
         } catch (ExternalApiErrorException $exception) {
@@ -646,46 +642,42 @@ finally句は，try句やcatch句の返却処理が行われる直前に実行�
 ```php
 <?php
 
-use \Exception\ExternalApiErrorException;
-use \Exception\HttpRequestErrorException;
+use Exception\ExternalApiErrorException;
+use Exception\HttpRequestErrorException;
 
 class Example
 {
-    /**
-     * @param message $message
-     * @return bool
-     */
     public function sendMessage(Message $message)
     {
         try {
-            
+
             // （１）
-            echo "Aの直前です"
+            echo "Aの直前です";
             return "Aです．";
             
         } catch (ExternalApiErrorException $exception) {
-  
+
             // （２）
-            echo "Bの直前です"
+            echo "Bの直前です";
             return "Bです．";
             
         } catch (HttpRequestErrorException $exception) {
-            
+
             // （３）
-            echo "Cの直前です"
+            echo "Cの直前です";
             return "Cです．";
             
         } catch (Exception $exception) {
-            
+
             // （４）
-            echo "Dの直前です"
+            echo "Dの直前です";
             return "Dです．";
             
         } finally {
-            
+
             // returnやcontinueを使用しない
             echo "Eです．";
-            
+
         }
     }
 }
@@ -733,6 +725,72 @@ error_log(
 )
 ```
 
+**＊実装例＊**
+
+```php
+<?php
+
+class Notification
+{
+    public function sendMessage()
+    {
+        try {
+
+            // 何らかの処理
+
+        } catch (\exception $exception) {
+
+            error_log(
+                sprintf(
+                    "ERROR: %s at %s line %s",
+                    $exception->getMessage(),
+                    $exception->getFile(),
+                    $exception->getLine()
+                ),
+                3,
+                __DIR__ . "/error.log"
+            );
+        }
+    }
+}
+```
+他に，Loggerインターフェースを使用することも多い．
+
+参考：https://github.com/php-fig/log
+
+```php
+<?php
+
+use Psr\Log\LoggerInterface;
+
+class Notification
+{
+    private $logger;
+
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = $logger;
+    }
+
+    public function sendMessage()
+    {
+        try {
+
+            // 何らかの処理
+
+        } catch (\exception $exception) {
+
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
+                $exception->getMessage(),
+                $exception->getFile(),
+                $exception->getLine()
+            ));
+        }
+    }
+}
+```
+
 #### ・例外スローごとのロギング
 
 例えば，メッセージアプリのAPIに対してメッセージ生成のリクエストを送信する時，例外処理に合わせて，外部APIとの接続失敗によるエラーログを生成と，自社システムなどその他原因によるエラーログを生成を行う必要がある．
@@ -742,51 +800,50 @@ error_log(
 ```php
 <?php
 
-use \Exception\ExternalApiErrorException;
-use \Exception\HttpRequestErrorException;
+use Exception\ExternalApiErrorException;
+use Exception\HttpRequestErrorException;
 
 class Example
 {
-    /**
-     * @param message $message
-     * @return bool
-     */
     public function sendMessage(Message $message)
     {
         try {
-            
+
             // 外部APIのURL，送信方法，トークンなどのパラメータが存在するかを検証．
             // 外部APIのためのリクエストメッセージを生成．
             // 外部APIのURL，送信方法，トークンなどのパラメータを設定．
 
         } catch (\HttpRequestErrorException $exception) {
-             
+
             // 外部APIとの接続失敗によるエラーをロギング
-            error_log(
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
                 $exception->getMessage(),
-                3,
-                __DIR__ . "/http_request_error.log"
-            );
-            
+                $exception->getFile(),
+                $exception->getLine()
+            ));
+
         } catch (\ExternalApiErrorException $exception) {
 
             // 外部APIのシステムエラーをロギング
-            error_log(
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
                 $exception->getMessage(),
-                3,
-                __DIR__ . "/external_api_error.log"
-            );
-            
+                $exception->getFile(),
+                $exception->getLine()
+            ));
+
         } catch (\Exception $exception) {
-            
+
             // その他（自社システムなど）によるエラーをロギング
-            error_log(
+            $this->logger->error(sprintf(
+                "ERROR: %s at %s line %s",
                 $exception->getMessage(),
-                3,
-                __DIR__ . "/app_error.log"
-            );
+                $exception->getFile(),
+                $exception->getLine()
+            ));
         }
-        
+
         // 問題なければTRUEを返却．
         return true;
     }

@@ -602,20 +602,68 @@ class Example
 
 <br>
 
-### Clientインスタンス
+### リクエスト
 
-#### ・リクエストメッセージをGET送信
+#### ・GET送信
+
+参考：https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
 **＊実装例＊**
 
 ```php
 <?php
-    
+
+use GuzzleHttp\Client;
+
 $client = new Client();
 
 // GET送信
-$response = $client->request("GET", <アクセスしたいURL>);
+$response = $client->request(
+    "GET",
+    "https://xxxxxxxx",
+    [
+        "query" => [
+            "id" => 1
+        ]
+    ]
+);
 ```
+
+#### ・POST送信
+
+参考：https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+
+```php
+<?php
+
+use GuzzleHttp\Client;
+
+$client = new Client();
+
+$json = json_encode([
+    "message" => "Hello World!"
+]);
+
+// POST送信
+$response = $client->request(
+    "POST",
+    "https://xxxxxxxx",
+    [
+        "headers"     => [
+            "Authorization"  => $this->token,
+            "Content-Length" => strlen($json),
+            "Content-Type"   => "application/json",
+        ],
+        "form_params" => [
+            "body" => $message
+        ]
+    ]
+);
+```
+
+<br>
+
+###  レスポンス
 
 #### ・レスポンスメッセージからボディを取得
 
@@ -623,13 +671,31 @@ $response = $client->request("GET", <アクセスしたいURL>);
 
 ```php
 <?php
-    
+
+use GuzzleHttp\Client;
+
 $client = new Client();
 
-// POST送信
-$response = $client->request("POST", <アクセスしたいURL>);
+$json = json_encode([
+    "message" => "Hello World!"
+]);
 
-// レスポンスメッセージからボディのみを取得
+// POST送信
+$response = $client->request(
+    "POST",
+    "https://xxxxxxxx",
+    [
+        "headers"     => [
+            "Authorization"  => $this->token,
+            "Content-Length" => strlen($json),
+            "Content-Type"   => "application/json",
+        ],
+        "form_params" => [
+            "body" => $message
+        ]
+    ]
+);
+
 $body = json_decode($response->getBody(), true);
 ```
 

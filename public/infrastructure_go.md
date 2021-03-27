@@ -2010,7 +2010,7 @@ replace (
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．
 
-```
+```shell
 example_repository
 ├── cmd
 │   └── hello.go
