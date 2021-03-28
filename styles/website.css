@@ -1,11 +1,17 @@
-/* 左サイドバー */
-.book-summary {
-    width: 390px;
+.container {
+    max-width: 1200px;
 }
 
-/* 右サイドバー */
+/* 左サイドバー */
+.book-summary {
+}
+
+/* intopic-tocプラグインをオーバライド */
 nav.intopic-toc {
     width: 24%;
+}
+nav.intopic-toc.nested .nav > li > a {
+    font-size: 12px;
 }
 
 h1 {
@@ -97,8 +103,4 @@ h3:before {
 /* 項 */
 h4 {
     font-size: 1em;
-}
-
-.book .book-body .page-wrapper .page-inner {
-    max-width: 80%;
 }
