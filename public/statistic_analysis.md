@@ -16,7 +16,7 @@
 
 **＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample <- read.table("sample_edit.txt", header = T)
 
@@ -57,9 +57,9 @@ cor(ts, method = "pearson")
 
 ![単回帰式](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/単回帰式.png)
 
-##### 分析例
+**＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample <- read.table("sample_edit.txt", header = T)
 ts <- ts(sample[,2:5])
@@ -96,9 +96,9 @@ summary(Reg)
 
 ![重回帰式](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/重回帰式.png)
 
-#### ・分析例
+**＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample <- read.table("sample_edit.txt", header = T)
 
@@ -160,9 +160,9 @@ summary(Reg)
 
 ![ロジスティック回帰式](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ロジスティック回帰式.png)
 
-#### ・分析例
+**＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample<-read.csv("CV_data2.csv",header=T)
 
@@ -203,9 +203,9 @@ exp(result_lg2$coefficients)
 
 ![決定木分析_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/決定木分析_2.png)
 
-#### ・分析例
+**＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample <- read.csv("CV_data.csv", header = T)
 
@@ -237,7 +237,7 @@ fancyRpartPlot(tree)
 
 **＊実装例＊**
 
-```R
+```r
 # データを読み込む．
 sample1 <- read.csv("CV_data.csv")
 

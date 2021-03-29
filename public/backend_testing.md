@@ -5,11 +5,11 @@
 ### テスティングフレームワークによるテスト
 
 1. テスティングフレームワークによる，静的解析を行う．
-2. テスティングフレームワークによる，UnitテストとFunctionalテストを行う．
+2. テスティングフレームワークによる，ユニットテストと機能テストを行う．
 
 ### テスト仕様書に基づくテスト
 
-1. テスト仕様書に基づく，Unitテスト，Integrationテスト，User Acceptanceテストを行う．
+1. テスト仕様書に基づく，ユニットテスト，Integrationテスト，User Acceptanceテストを行う．
 2. グラフによるテストの可視化
 
 <br>
@@ -24,7 +24,7 @@
 
 ### スタブとは
 
-Unitテストのように，特に一連の処理の一部分だけを検証するために頻繁に用いる．ただし，Functionalテストで用いることもある．UnitテストとFunctionalテストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
+ユニットテストのように，特に一連の処理の一部分だけを検証するために頻繁に用いる．ただし，機能テストで用いることもある．ユニットテストと機能テストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
 
 <br>
 
@@ -303,9 +303,9 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
 <br>
 
-### Functionalテスト
+### 機能テスト
 
-#### ・Functionalテストとは
+#### ・機能テストとは
 
 アプリケーションのControllerに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．
 
@@ -325,29 +325,27 @@ self::assertTrue()
 
 #### ・テストケース例
 
-| HTTPメソッド | 分類   | データの条件                                                 | ```assert```メソッドの検証内容                               |
+| HTTPメソッド | 分類   | データの条件                                                 | ```assert```メソッドの検証内容例                             |
 | ------------ | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| POST，PUT    | 正常系 | リクエストのボディにて，必須パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
-|              |        | リクエストのボディにて，任意パラメータにデータが割り当てられていない場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
-|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，データが割り当てられていない場合． | Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること． |
-|              | 異常系 | リクエストのボディにて，必須パラメータにデータが割り当てられていない場合． | Controllerが400ステータスのレスポンスを返信すること．        |
-|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，空文字やnullが割り当てられている場合． | Controllerが400ステータスのレスポンスを返信すること．        |
-|              |        | リクエストのボディにて，パラメータのデータ型が誤っている場合． | Controllerが400ステータスのレスポンスを返信すること．        |
-| GET          | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，参照されたデータのIDが期待通りであること． |
+| POST，PUT    | 正常系 | リクエストのボディにて，必須パラメータにデータが割り当てられている場合． | ・Controllerが200ステータスのレスポンスを返信すること．<br>・更新されたデータのIDが期待通りであること．<br>・レスポンスされたデータが期待通りであること． |
+|              |        | リクエストのボディにて，任意パラメータにデータが割り当てられていない場合． | ・Controllerが200ステータスのレスポンスを返信すること．<br/>・更新されたデータのIDが期待通りであること．<br/>・レスポンスされたデータが期待通りであること． |
+|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，データが割り当てられていない場合． | ・Controllerが200ステータスのレスポンスを返信すること．<br/>・更新されたデータのIDが期待通りであること．<br/>・レスポンスされたデータが期待通りであること． |
+|              | 異常系 | リクエストのボディにて，必須パラメータにデータが割り当てられていない場合． | ・Controllerが400ステータスのレスポンスを返信すること．<br/>・レスポンスされたデータが期待通りであること． |
+|              |        | リクエストのボディにて，空文字やnullが許可されたパラメータに，空文字やnullが割り当てられている場合． | ・Controllerが400ステータスのレスポンスを返信すること．<br/>・レスポンスされたデータが期待通りであること． |
+|              |        | リクエストのボディにて，パラメータのデータ型が誤っている場合． | ・Controllerが400ステータスのレスポンスを返信すること．<br/>・レスポンスされたデータが期待通りであること． |
+| GET          | 正常系 | リクエストにて，パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信すること．        |
 |              | 異常系 | リクエストのボディにて，パラメータに参照禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
-| DELETE       | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | Controllerが200ステータスのレスポンスを返信し，削除されたデータのIDが期待通りであること． |
-|              | 異常系 | リクエストのボディにて，パラメータに削除禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが200ステータスのレスポンスを返信し，削除されたデータのIDが期待通りであること． |
+| DELETE       | 正常系 | リクエストのボディにて，パラメータにデータが割り当てられている場合． | ・Controllerが200ステータスのレスポンスを返信すること．<br/>・削除されたデータのIDが期待通りであること．<br/>・レスポンスされたデータが期待通りであること． |
+|              | 異常系 | リクエストのボディにて，パラメータに削除禁止のデータが割り当てられている場合（認可の失敗）． | ・Controllerが400ステータスのレスポンスを返信すること．<br/>・レスポンスされたデータが期待通りであること． |
 | 認証認可     | 正常系 | リクエストのヘッダーにて，認証されているトークンが割り当てられている場合（認証の成功）． | Controllerが200ステータスのレスポンスを返信すること．        |
 |              | 異常系 | リクエストのヘッダーにて，認証されていないトークンが割り当てられている場合（認証の失敗）． | Controllerが401ステータスのレスポンスを返信すること．        |
 |              |        | リクエストのボディにて，パラメータにアクセス禁止のデータが割り当てられている場合（認可の失敗）． | Controllerが403ステータスのレスポンスを返信すること．        |
 
-#### ・正常系テスト例（１）
+#### ・正常系GET
 
-メソッドのアノテーションで，```@test```を宣言する．
+Controllerが200ステータスのレスポンスを返信することを検証する．メソッドのアノテーションで，```@test```を宣言する．
 
 **＊実装例＊**
-
-レスポンスが成功するか（ステータスコードが```200```番台か）を検証する．
 
 ```php
 <?php
@@ -372,29 +370,27 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する．
-        $this->assertTrue($response->isOk());
+        $this->assertSame(200, $response->getStatusCode());
     }
 }
 ```
 
-#### ・正常系テスト例（２）
+#### ・正常系POST
 
-レスポンス期待値のデータセットを```@dataProvider```に定義し，データベースに用意しておいた配列データが，```@dataProvider```と一致するかで検証する．
+Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること．
 
 **＊実装例＊**
-
-レスポンスが成功するか，またレスポンスされた配列データが期待値と同じかを検証する．
 
 ```php
 <?php
 
-use GuzzleHttp\Client;    
-    
+use GuzzleHttp\Client;
+
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-   /**
-    * @test
-    */    
+    /**
+     * @test
+     */
     public function testPostMessage()
     {
         $client = new Client();
@@ -404,33 +400,37 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
             "POST",
             "/xxx/yyy/",
             [
-                "channel_id" => "XXXXX", 
-                "text" => "Hello World!"
+                "id"      => 1,
+                "message" => "Hello World!"
             ],
             [
                 "HTTP_X_API_Token" => "Bearer xxxxxx"
             ]
         );
-        
+
         $response = $client->getResponse();
 
         // 200ステータスが返却されるかを検証する．
-        $this->assertTrue($response->isOk());
-        
+        $this->assertSame(200, $response->getStatusCode());
+
         // レスポンスデータを抽出する．
-        $actual = json_decode($response->getContent(), true)["text"];
-        
-        $excepted = [
-            "メッセージを受信しました．"
-        ]
-        
-        // レスポンスデータが正しいかを検証する．
-        $this->assertSame($excepted, $actual)
+        $actual = json_decode($response->getContent(), true);
+
+        // 更新されたデータのIDが正しいかを検証する．
+        $this->assertSame(1, $actual["id"]);
+
+        // レスポンスされたメッセージが正しいかを検証する．
+        $this->assertSame(
+            [
+                "データを変更しました．"
+            ],
+            $actual["message"]
+        );
     }
 }
 ```
 
-#### ・異常系テスト例
+#### ・異常系POST
 
 レスポンスが成功するか，またレスポンスされるエラーが正しいかを検証する．
 
@@ -438,14 +438,14 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
 ```php
 <?php
-    
-use GuzzleHttp\Client;    
+
+use GuzzleHttp\Client;
 
 class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 {
-   /**
-    * @test
-    */    
+    /**
+     * @test
+     */
     public function testErrorPostMessage()
     {
         $client = new Client();
@@ -455,29 +455,30 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
             "POST",
             "/xxx/yyy/",
             [
-                "channel_id" => "", 
-                "text" => ""
+                "id"      => 1,
+                "message" => ""
             ],
             [
                 "HTTP_X_API_Token" => "Bearer xxxxxx"
             ]
         );
-        
+
         $response = $client->getResponse();
 
-        // 200ステータスが返却されるかを検証する．
-        $this->assertTrue($response->isOk());
-        
+        // 400ステータスが返却されるかを検証する．
+        $this->assertSame(400, $response->getStatusCode());
+
         // レスポンスデータのエラーを抽出する．
-        $actual = json_decode($response->getContent(), true)["errors"];
-        
-        $excepted = [
-            "チャンネルIDは必ず入力してください．"
-            "メッセージは必ず入力してください．"
-        ]
-        
-        // エラーが正しいかを検証する．
-        $this->assertSame($excepted, $actual)
+        $actual = json_decode($response->getContent(), true);
+
+        // レスポンスされたエラーメッセージが正しいかを検証する．
+        $this->assertSame(
+            [
+                "IDは必ず入力してください．",
+                "メッセージは必ず入力してください．"
+            ],
+            $actual["errors"]
+        );
     }
 }
 ```
@@ -702,9 +703,9 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 <br>
 
-### Functionalテスト
+### 機能テスト
 
-機能要件を満たせているかを検証する．PHPUnitでのFunctionalテストとは意味合いが異なるので注意．
+機能要件を満たせているかを検証する．PHPUnitでの機能テストとは意味合いが異なるので注意．
 
 <br>
 

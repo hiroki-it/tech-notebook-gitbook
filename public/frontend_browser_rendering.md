@@ -343,7 +343,7 @@ Downloading処理によって読み込まれたリソースを翻訳するプロ
 
 #### ・構造解析の流れ
 
-1. Downloading処理で読みこまれたバイト形式ファイルは，文字コードに基づいて，一連の文字列に変換される．ここでは，以下のHTML形式ファイルとCSS形式ファイル（```style.css```）に変換されたとする．
+Downloading処理で読みこまれたバイト形式ファイルは，文字コードに基づいて，一連の文字列に変換される．ここでは，以下のHTML形式ファイルとCSS形式ファイル（```style.css```）に変換されたとする．
 
 ```html
 <!DOCTYPE html>
@@ -372,21 +372,19 @@ p span { display: none }
 img { float: right }
 ```
 
-
-2. リソースの文字列からHTMLタグが認識され，トークンに変換される．
-3. 各トークンは，一つのオブジェクトに変換される．
+リソースの文字列からHTMLタグが認識され，トークンに変換される．各トークンは，一つのオブジェクトに変換される．
 
 ![DOMツリーが生成されるまで](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DOMツリーが生成されるまで.png)
 
-4. HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中で```<script>```に到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．
+HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．
 
-   DOMのインターフェースについては，こちら．
-   
-   https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+DOMのインターフェースについては，こちら．
+
+https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![DOMツリー](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DOMツリー.png)
 
-5. 同時に，CSSパーサーは，```<head>```にある```<link>```をもとにサーバにリクエストを行う．レスポンスされたcssファイルに対してDownloading処理を行った後，オブジェクトをノードとして，CSSOMツリーを生成する．
+同時に，CSSパーサーは，headタグにあるlinkタグをもとにサーバにリクエストを行う．レスポンスされたCSSファイルに対してDownloading処理を行った後，オブジェクトをノードとして，CSSOMツリーを生成する．
 
 ![CSSOMツリー](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CSSOMツリー.png)
 
@@ -419,7 +417,7 @@ JavaScriptエンジンによって，JavaScriptコードが機械語に翻訳さ
 
 #### ・JavaScriptエンジンとは
 
-JavaScriptのインタプリタのこと．JavaScriptエンジンは，レンダリングエンジンからHtmlに組み込まれたJavaScriptコードを受け取る．JavaScriptエンジンは，これを機械語に翻訳し，ハードウェアに対して，命令を実行する．
+JavaScriptのインタプリタのこと．JavaScriptエンジンは，レンダリングエンジンからHTMLファイルに組み込まれたJavaScriptのコードを受け取る．JavaScriptエンジンは，これを機械語に翻訳し，ハードウェアに対して，命令を実行する．
 
 ![JavascriptEngine](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/JavascriptEngine.png)
 

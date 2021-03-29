@@ -1665,7 +1665,7 @@ orbs:
 
 commands:
   # 他のジョブ内で使用できるようにcommandとして定義
-  slack_notify:
+  notify_of_failure:
     steps:
       - slack/notify:
           event: fail
@@ -1688,7 +1688,7 @@ workflows:
                 - develop
           # 失敗時に通知
           post-steps:
-            - slack_notify:
+            - notify_of_failure:
             
   # 本番環境にデプロイ                
   main:
@@ -1701,6 +1701,6 @@ workflows:
                 - main
           # 失敗時に通知
           post-steps:
-            - slack_notify:
+            - notify_of_failure:
 ```
 

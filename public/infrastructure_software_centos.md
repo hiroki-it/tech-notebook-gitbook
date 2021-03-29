@@ -815,8 +815,6 @@ $ history | grep <過去のコマンド>
 cat ./src.txt | tr "\n" "," > ./dst.txt
 ```
 
-#### 
-
 <br>
 
 ## 02-06. 環境変数系
@@ -1622,14 +1620,14 @@ Enforcing
 
 2. ```/etc/sellnux/config```を修正する．
 
-```config
+```shell
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 #     enforcing - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
 #     disabled - No SELinux policy is loaded.
 
-SELINUX=disabled <---- disabledに変更
+SELINUX=disabled # <---- disabledに変更
 
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,
