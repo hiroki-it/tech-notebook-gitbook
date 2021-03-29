@@ -2124,88 +2124,6 @@
 <h3 id="&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;"><a name="&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;</h3>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;.jpg" alt="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;_&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"></p>
 <p>&#x91D1;&#x984D;&#xFF0C;&#x6570;&#x5B57;&#xFF0C;&#x96FB;&#x8A71;&#x756A;&#x53F7;&#xFF0C;&#x6587;&#x5B57;&#x5217;&#xFF0C;&#x65E5;&#x4ED8;&#xFF0C;&#x6C0F;&#x540D;&#xFF0C;&#x8272;&#x306A;&#x3069;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x6271;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E00;&#x610F;&#x3067;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>$id</code>&#x30C7;&#x30FC;&#x30BF;&#xFF09;&#x3092;&#x3082;&#x305F;&#x306A;&#x3044;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x307E;&#x3068;&#x3081;&#x3066;&#x304A;&#x304F;&#x3079;&#x304D;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#xFF0C;&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Domain<span class="token punctuation">\</span>ValueObject</span><span class="token punctuation">;</span>
-
-<span class="token comment">/**
- * &#x72AC;&#x7528;&#x304A;&#x3082;&#x3061;&#x3083;ID
- */</span>
-<span class="token keyword">class</span> <span class="token class-name">DogToyId</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * &#x5024; 
-     */</span>
-    <span class="token keyword">private</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__constructor</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">value</span> <span class="token operator">=</span> <span class="token variable">$value</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">/**
-     * VO&#x306E;&#x5C5E;&#x6027;&#x306E;&#x7B49;&#x4FA1;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token keyword">instanceof</span> <span class="token variable">$this</span> <span class="token operator">||</span> <span class="token variable">$this</span> <span class="token keyword">instanceof</span> <span class="token variable">$id</span><span class="token punctuation">)</span>
-            <span class="token comment">// &#x5024;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$id</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Domain<span class="token punctuation">\</span>ValueObject</span><span class="token punctuation">;</span>    
-
-<span class="token comment">/**
- * &#x652F;&#x6255;&#x60C5;&#x5831;&#x306E;&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
- */</span>
-<span class="token keyword">class</span> <span class="token class-name">PaymentInfoVO</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">// &#x4E88;&#x3081;&#x5B9F;&#x88C5;&#x3057;&#x305F;ImmutableObject&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;&#x3092;&#x5B9F;&#x73FE;</span>
-    <span class="token keyword">use</span> <span class="token package">ImmutableObject</span><span class="token punctuation">;</span>
-
-    <span class="token comment">/**
-     * &#x652F;&#x6255;&#x3044;&#x65B9;&#x6CD5;
-     *
-     * @var PaymentType
-     */</span>
-    <span class="token keyword">private</span> <span class="token variable">$paymentType</span><span class="token punctuation">;</span>
-
-    <span class="token comment">/**
-     * &#x9023;&#x7D61;&#x5148;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;
-     *
-     * @var string|null
-     */</span>
-    <span class="token keyword">private</span> <span class="token variable">$contactMail</span><span class="token punctuation">;</span>
-
-    <span class="token comment">/**
-     * &#x91D1;&#x984D;
-     *
-     * @var Money
-     */</span>
-    <span class="token keyword">private</span> <span class="token variable">$price</span><span class="token punctuation">;</span>  
-
-    <span class="token comment">/**
-     * VO&#x306E;&#x5C5E;&#x6027;&#x306E;&#x7B49;&#x4FA1;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *
-     * &#x5168;&#x3066;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token variable">$paymentInfoVO</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token variable">$paymentInfoVO</span> <span class="token keyword">instanceof</span> <span class="token variable">$this</span> <span class="token operator">||</span> <span class="token variable">$this</span> <span class="token keyword">instanceof</span> <span class="token variable">$paymentInfoVO</span><span class="token punctuation">)</span>
-            <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">paymentType</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">paymentType</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">contactMail</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">contactMail</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
 <p><br></p>
 <h3 id="&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;"><a name="&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;" class="plugin-anchor" href="#&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3082;&#x305F;&#x305A;&#xFF0C;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30D3;&#x30AD;&#x30BF;&#x30B9;&#x8A00;&#x8A9E;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3064;</h3>
 <h4 id="&#x30FB;&#x91D1;&#x984D;"><a name="&#x30FB;&#x91D1;&#x984D;" class="plugin-anchor" href="#&#x30FB;&#x91D1;&#x984D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x91D1;&#x984D;</h4>
@@ -2459,15 +2377,94 @@
 <h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;"><a name="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;" class="plugin-anchor" href="#&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4EA4;&#x63DB;&#x53EF;&#x80FD;&#x6027;</h3>
 <p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x65B0;&#x3057;&#x304F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4EE5;&#x524D;&#x306B;&#x540C;&#x4E00;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304B;&#x3089;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;&#x65B0;&#x3057;&#x304F;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;"><a name="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;" class="plugin-anchor" href="#&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x9593;&#x306E;&#x7B49;&#x4FA1;&#x6027;</h3>
+<h3 id="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7B49;&#x4FA1;&#x6027;"><a name="&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7B49;&#x4FA1;&#x6027;" class="plugin-anchor" href="#&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7B49;&#x4FA1;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7B49;&#x4FA1;&#x6027;</h3>
 <p>&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x304C;&#x4ED6;&#x306E;VO&#x3068;&#x540C;&#x3058;&#x5834;&#x5408;&#xFF0C;&#x540C;&#x4E00;&#x306E;VO&#x3068;&#x898B;&#x306A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Domain<span class="token punctuation">\</span>ValueObject</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * &#x72AC;&#x7528;&#x304A;&#x3082;&#x3061;&#x3083;ID
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">DogToyId</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * &#x5024; 
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__constructor</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">value</span> <span class="token operator">=</span> <span class="token variable">$value</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * VO&#x306E;&#x5C5E;&#x6027;&#x306E;&#x7B49;&#x4FA1;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token keyword">instanceof</span> <span class="token variable">$this</span> <span class="token operator">||</span> <span class="token variable">$this</span> <span class="token keyword">instanceof</span> <span class="token variable">$id</span><span class="token punctuation">)</span>
+            <span class="token comment">// &#x5024;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$id</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Domain<span class="token punctuation">\</span>ValueObject</span><span class="token punctuation">;</span>    
+
+<span class="token comment">/**
+ * &#x652F;&#x6255;&#x60C5;&#x5831;&#x306E;&#x5024;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">PaymentInfoVO</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x4E88;&#x3081;&#x5B9F;&#x88C5;&#x3057;&#x305F;ImmutableObject&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E0D;&#x5909;&#x6027;&#x3092;&#x5B9F;&#x73FE;</span>
+    <span class="token keyword">use</span> <span class="token package">ImmutableObject</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * &#x652F;&#x6255;&#x3044;&#x65B9;&#x6CD5;
+     *
+     * @var PaymentType
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$paymentType</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * &#x9023;&#x7D61;&#x5148;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;
+     *
+     * @var string|null
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$contactMail</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * &#x91D1;&#x984D;
+     *
+     * @var Money
+     */</span>
+    <span class="token keyword">private</span> <span class="token variable">$price</span><span class="token punctuation">;</span>  
+
+    <span class="token comment">/**
+     * VO&#x306E;&#x5C5E;&#x6027;&#x306E;&#x7B49;&#x4FA1;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;
+     *
+     * &#x5168;&#x3066;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token variable">$paymentInfoVO</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token variable">$paymentInfoVO</span> <span class="token keyword">instanceof</span> <span class="token variable">$this</span> <span class="token operator">||</span> <span class="token variable">$this</span> <span class="token keyword">instanceof</span> <span class="token variable">$paymentInfoVO</span><span class="token punctuation">)</span>
+            <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">paymentType</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">paymentType</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">contactMail</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">contactMail</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$paymentInfoVO</span><span class="token operator">-&gt;</span><span class="token property">price</span><span class="token operator">-&gt;</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p> <br></p>
 <h3 id="&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;"><a name="&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x72B6;&#x614B;&#x304C;&#x5909;&#x308F;&#x3089;&#x306A;&#x3044;</h3>
 <p>&#x30BB;&#x30C3;&#x30BF;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x305B;&#x305A;&#x306B;<code>constructor</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x5916;&#x90E8;&#x304B;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5909;&#x66F4;&#x3067;&#x304D;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h2 id="04-04-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#xFF5C;type-code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;"><a name="04-04-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#xFF5C;type-code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;" class="plugin-anchor" href="#04-04-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#xFF5C;type-code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;"><i class="fa fa-link" aria-hidden="true"></i></a>04-04. &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x5C64;&#xFF5C;Type Code&#xFF08;&#x6A19;&#x6E96;&#x578B;&#xFF09;&#x306E;&#x8CAC;&#x52D9;</h2>
-<p><br></p>
-<h2 id="04-05-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;"><a name="04-05-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;" class="plugin-anchor" href="#04-05-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>04-05. &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;</h2>
+<h2 id="04-03-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;"><a name="04-03-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;" class="plugin-anchor" href="#04-03-&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>04-03. &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30B5;&#x30FC;&#x30D3;&#x30B9;</h2>
 <p>&#x8981;&#x52C9;&#x5F37;&#xFF0E;</p>
 <p><br></p>
 <h2 id="05-&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x5C64;"><a name="05-&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x5C64;" class="plugin-anchor" href="#05-&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x5C64;"><i class="fa fa-link" aria-hidden="true"></i></a>05. &#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x5C64;</h2>
@@ -2755,7 +2752,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎ドメイン駆動設計","level":"1.3.1","depth":2,"next":{"title":"▶ ︎CQRS設計","level":"1.3.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]},"previous":{"title":"アーキテクチャ","level":"1.3","depth":1,"ref":"","articles":[{"title":"▶ ︎ドメイン駆動設計","level":"1.3.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},{"title":"▶ ︎CQRS設計","level":"1.3.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]},{"title":"▶ ︎フロントエンドアーキテクチャ","level":"1.3.3","depth":2,"path":"public/frontend_architecture.md","ref":"public/frontend_architecture.md","articles":[]},{"title":"▶ ︎マイクロサービス","level":"1.3.4","depth":2,"path":"public/frontend_and_backend_architecture_microservice.md","ref":"public/frontend_and_backend_architecture_microservice.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_domain_driven_design.md","mtime":"2021-03-29T12:42:33.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T12:43:49.357Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎ドメイン駆動設計","level":"1.3.1","depth":2,"next":{"title":"▶ ︎CQRS設計","level":"1.3.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]},"previous":{"title":"アーキテクチャ","level":"1.3","depth":1,"ref":"","articles":[{"title":"▶ ︎ドメイン駆動設計","level":"1.3.1","depth":2,"path":"public/backend_architecture_domain_driven_design.md","ref":"public/backend_architecture_domain_driven_design.md","articles":[]},{"title":"▶ ︎CQRS設計","level":"1.3.2","depth":2,"path":"public/backend_architecture_cqrs.md","ref":"public/backend_architecture_cqrs.md","articles":[]},{"title":"▶ ︎フロントエンドアーキテクチャ","level":"1.3.3","depth":2,"path":"public/frontend_architecture.md","ref":"public/frontend_architecture.md","articles":[]},{"title":"▶ ︎マイクロサービス","level":"1.3.4","depth":2,"path":"public/frontend_and_backend_architecture_microservice.md","ref":"public/frontend_and_backend_architecture_microservice.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_domain_driven_design.md","mtime":"2021-03-29T12:51:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T12:52:41.469Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
