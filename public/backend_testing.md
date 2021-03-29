@@ -307,7 +307,24 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
 #### ・機能テストとは
 
-アプリケーションのControllerに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．
+アプリケーションのControllerに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．メソッドのアノテーションで，```@test```を宣言する必要がある．
+
+**＊実装例＊**
+
+```php
+<?php
+
+class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+{
+   /**
+    * @test
+    */    
+    public function testMethod()
+    {
+        // 何らかの検証
+    }
+}
+```
 
 #### ・```assert```メソッド
 
@@ -343,7 +360,7 @@ self::assertTrue()
 
 #### ・正常系GET
 
-Controllerが200ステータスのレスポンスを返信することを検証する．メソッドのアノテーションで，```@test```を宣言する．
+Controllerが200ステータスのレスポンスを返信することを検証する．
 
 **＊実装例＊**
 
@@ -377,7 +394,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
 #### ・正常系POST
 
-Controllerが200ステータスのレスポンスを返信し，更新されたデータのIDが期待通りであること．
+Controllerが200ステータスのレスポンスを返信すること，更新されたデータのIDが期待通りであること，レスポンスされたデータが期待通りであることを検証する．
 
 **＊実装例＊**
 
@@ -432,7 +449,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
 #### ・異常系POST
 
-レスポンスが成功するか，またレスポンスされるエラーが正しいかを検証する．
+Controllerが400ステータスのレスポンスを返信すること，レスポンスされたデータが期待通りであること，を検証する．
 
 **＊実装例＊**
 

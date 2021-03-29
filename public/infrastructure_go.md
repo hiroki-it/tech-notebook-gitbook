@@ -10,7 +10,7 @@
 
 ### ディレクトリ構造
 
-#### ・$GOPATH
+#### ・```$GOPATH```
 
 Goのソースコードを置く．パスは好みであるが，```$HOME/go```とすることが多い．ディレクトリ構造のベストプラクティスは以下を参考にせよ．
 
@@ -156,18 +156,6 @@ package xxxxx is not in GOROOT (/usr/local/go/src/xxxxx)
 
 <br>
 
-### fmt
-
-#### ・オプション無し
-
-指定したパスのファイルのインデントを整形する．再帰的に整形するのがおすすめ．
-
-```shell
-$ go fmt ./...
-```
-
-<br>
-
 ### env
 
 #### ・オプション無し
@@ -219,6 +207,30 @@ CGO_FFLAGS="-g -O2"
 CGO_LDFLAGS="-g -O2"
 PKG_CONFIG="pkg-config"
 GOGCCFLAGS="-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches"
+```
+
+<br>
+
+### fmt
+
+#### ・オプション無し
+
+指定したパスのファイルのインデントを整形する．パスとして『```./...```』を指定して，再帰的に実行するのがおすすめ．
+
+```shell
+$ go fmt ./...
+```
+
+<br>
+
+### vet
+
+#### ・オプション無し
+
+指定したパスのファイルに対して静的解析を行う．パスとして『```./...```』を指定して，再帰的に実行するのがおすすめ．
+
+```shell
+go vet ./...
 ```
 
 <br>

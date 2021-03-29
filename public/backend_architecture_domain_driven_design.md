@@ -18,7 +18,7 @@
 
 #### ・MVCからDDDへの移行
 
-ドメイン駆動設計が登場したことによって，MVCは発展し，M・V・Cそれぞれの役割がより具体的で精密になった．Modelの肥大化は，ModelがもつビジネスロジックをDomain層，またCRUD処理をInfrastructure層として分割することによって，対処された．
+ドメイン駆動設計が登場したことによって，MVCは発展し，M・V・Cそれぞれの役割がより具体的で精密になった．Modelの肥大化は，Modelがもつビジネスロジックをドメイン層，またCRUD処理をインフラストラクチャ層として分割することによって，対処された．
 
 <br>
 
@@ -32,8 +32,8 @@
 2. コンテキストマップを作成する．
 3. ユースケースとユースケースシナリオを作成する．
 4. ドメインエキスパートと話し合い，現実世界の業務内容に含まれる『名詞』と『振舞』を洗い出す．
-5. 『名詞』と『振舞』を要素として，オブジェクト指向分析と設計を行い，EntityやValue Objectを抽出していく．
-6. EntityやValue Objectを用いて，ドメインモデリング（オブジェクト間の関連付け）を行う．
+5. 『名詞』と『振舞』を要素として，オブジェクト指向分析と設計を行い，エンティティや値オブジェクトを抽出していく．
+6. エンティティや値オブジェクトを用いて，ドメインモデリング（オブジェクト間の関連付け）を行う．
 
 #### ・戦術的設計の手順
 
@@ -87,73 +87,29 @@
 
 ![ドメイン駆動設計](https://user-images.githubusercontent.com/42175286/58724663-2ec11c80-8418-11e9-96e9-bfc6848e9374.png)
 
-Layeredアーキテクチャ型ドメイン駆動設計において，MVCは，以下の4層に再編成できる．
-
-#### ・User Interface層
-
-#### ・Application層
-
-| デザインパターン    | 説明 | 備考 |
-| ------------------- | ---- | ---- |
-| Controller          |      |      |
-| Application Service |      |      |
-| Validation          |      |      |
-| Converter           |      |      |
-
-#### ・Domain層（ビジネロジックをコード化）
-
-| デザインパターン | 説明 | 備考 |
-| ---------------- | ---- | ---- |
-| Entity           |      |      |
-| Specification    |      |      |
-| Value Object     |      |      |
-| Type Code        |      |      |
-| Domain Service   |      |      |
-
-#### ・Infrastructure層（DBとマッピング）
-
-| デザインパターン | 説明 | 備考 |
-| ---------------- | ---- | ---- |
-| Repository       |      |      |
-| Factory          |      |      |
-
 <br>
 
 ### DIPに基づくドメイン駆動設計
 
 #### ・依存性を逆転させる方法
 
-1. Repositoryの抽象クラスを，より上位のドメイン層に配置する．
-2. Repositoryの実装クラスを，より下位のInfrastructure層に配置する．
+1. リポジトリの抽象クラスを，より上位のドメイン層に配置する．
+2. リポジトリの実装クラスを，より下位のインフラストラクチャ層に配置する．
 3. 両方のクラスに対して，バインディング（関連付け）を行い，抽象クラスをコールした時に，実際には実装クラスがコールされるようにする．
-4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，Repositoryの交換が可能になる．
+4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
-
-#### ・Domain層とInfrastructure層のバインディング
-
-```php
-<?php
-
-// ここに実装例
-```
 
 <br>
 
 
-## 03. Application層（UseCase層）
+## 03. アプリケーション層（ユースケース層）
 
-### Controller
+### コントローラ
 
-#### ・責務
+#### ・コントローラ
 
-ビジネスの仕組みを表しているわけではなく，以外のロジックである．CRUDのReadの場合，以下のような処理手順を組み合わせて，Use case（使用事例）を実装する．
-
-1. 最初に，リクエストによるJSON型データ送信を受け取る．
-2. JSON型データを連想配列にパースする．
-3. Repositoryからメソッドをコールし，連想配列を渡してDBからオブジェクトデータをReadする．
-4. Readしたオブジェクトデータを連想配列に変換する．
-5. 最後に，連想配列をJSON型データにパースし，JavaScriptに送信する．
+ドメイン層のロジックを組み合わせて，ユースケースを実装する．例えば，CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
 
 **＊実装例＊**
 
@@ -164,7 +120,7 @@ namespace App\Controller;
     
 class AcceptOrdersController
 {
-    // 単なるメソッドではなく，Use caseとなるようなメソッド
+    // 単なるメソッドではなく，ユースケースとなるようなメソッド
     public function acceptOrders()
     {
     
@@ -174,76 +130,106 @@ class AcceptOrdersController
 
 **＊ユースケース例＊**
 
-オンラインショッピングにおけるUse case
+オンラインショッピングにおけるユースケース．
 
 ![ユースケース図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ユースケース図.png)
 
 <br>
 
-### Application Service
+### アプリケーションサービス
 
-#### ・責務
+#### ・アプリケーションサービス
 
-Application層の中で，ドメイン層のオブジェクトを使用する汎用的なメソッドが切り分けられたもの．Controllerにメソッドを提供する．Domain層のDomain Serviceとは異なるので注意する．
+アプリケーション層の中で，ドメイン層のオブジェクトを使用する汎用的なメソッドが切り分けられたもの．コントローラにメソッドを提供する．ドメイン層のドメインサービスとは異なり，あくまでアプリケーション層のロジックが切り分けられたものである．
 
 **＊実装例＊**
+
+Slackへの通知処理をアプリケーションサービスとして切り分ける．
 
 ```php
 <?php
 
-namespace App\Service;    
-    
+namespace App\Service;
+
 class SlackNotificationService
 {
-    public function notify(SlackMessage $message)
+    private $message;
+
+    public function __construct(Message $message)
     {
-       // SlackのAPIにメッセージを送信する処理
+        $this->message = $message;
+    }
+
+    public function notify()
+    {
+        // SlackのAPIにメッセージを送信する処理
     }
 }
 ```
 
-<br>
-
-### 入力データに対するフォーマットのValidationパターン
-
-#### ・責務
-
-デザインパターンの一つ．フロントエンドからサーバサイドに送信されてきたデータのフォーマットを検証する責務を持つ．例えば，UserInterface層からApplication層に送信されてきたJSON形式データのフォーマットを検証する．
-
-**＊実装例＊**
+これを，アプリケーション層でコールするようにする．
 
 ```php
 <?php
 
-use Respect\Validation\Validator; // Validationのライブラリ
+namespace App\Controller;
 
-class FormatValidator
+use App\Service\SlackNotificationService;
+
+class ExampleController
 {
-   /**
-    * 日時データのフォーマットを検証します．
-    */    
-    public function validateFormat($dateTime)
+    public function example()
     {
-        if(empty($dateTime)) {
-            return false;
-        }  
-      
-        if(!Validator::date(\DateTime::ATOM)->validate($dateTime)) {
-            return false;
-        }
-      
-        return true;
+        $message = new Message(/* メッセージに関するデータを渡す */)
+        $slackNotificationService = new SlackNotificationService($message)
+        $slackNotificationService->notify();
     }
 }  
 ```
 
 <br>
 
+### 入力データに対するフォーマットのValidationパターン
+
+#### ・Validationパターンとは
+
+デザインパターンの一つ．フロントエンドからサーバサイドに送信されてきたデータのフォーマットを検証する責務を持つ．例えば，ユーザインターフェース層からアプリケーション層に送信されてきたJSON形式データのフォーマットを検証する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+// Validationのライブラリ
+use Respect\Validation\Validator;
+
+class FormatValidator
+{
+    /**
+     * 日時データのフォーマットを検証します．
+     */
+    public function validateFormat($dateTime)
+    {
+        if (empty($dateTime)) {
+            return false;
+        }
+
+        if (!Validator::date(\DateTime::ATOM)->validate($dateTime)) {
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+<br>
+
 ### Converterパターン
 
-#### ・責務
+#### ・Converterパターンとは
 
-デザインパターンの一つ．データ構造を変換する責務を持つ．例えば，Application層からUserInterface層へのデータのレスポンス時に，送信するオブジェクトデータ（Route Entity）を連想配列に変換する．
+デザインパターンの一つ．データ構造を変換する責務を持つ．例えば，アプリケーション層からユーザインターフェース層へのデータのレスポンス時に，送信するオブジェクトデータ（ルートエンティティ）を連想配列に変換する．
 
 **＊実装例＊**
 
@@ -269,15 +255,15 @@ class Converter
 <br>
 
 
-## 04. Domain層
+## 04. ドメイン層
 
-### Repositoryパターン（インターフェース）
+### リポジトリ（インターフェース）
+
+#### ・リポジトリ（インターフェース）とは
 
 ![Repository](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Repository.png)
 
-#### ・責務
-
-デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．Controllerは，Domain層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，Repositoryのインターフェースを配置する．
+デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．Controllerは，ドメイン層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，リポジトリのインターフェースを配置する．
 
 **＊実装例＊**
 
@@ -289,7 +275,7 @@ namespace App\Domain\Repository;
 interface DogToyRepository
 {
     /**
-     * 具象メソッドはInfrastructure層のRepositoryに実装．
+     * 具象メソッドはインフラストラクチャ層のリポジトリに実装．
      */
     function findAllDogToys();
 }
@@ -297,19 +283,171 @@ interface DogToyRepository
 
 <br>
 
-### Entity
+### エンティティ
 
-#### ・責務
+#### ・エンティティとは
 
-以降の説明を参照．
+![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
+
+#### ・保持するデータの値が一定でない
+
+状態を変化させる必要があるデータをもつ
+
+#### ・データの値が同じでも区別できる
+
+オブジェクトにアイデンティティがあり，他のオブジェクトと同じ属性をもっていても，区別される．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;
+
+/**
+ * 犬用おもちゃのエンティティ
+ */
+class DogToy
+{
+    /**
+     * 犬用おもちゃID
+     */
+    private $id;
+
+    /**
+     * 犬用おもちゃタイプ
+     */
+    private $type;
+
+    /**
+     * 犬用おもちゃ商品名
+     */
+    private $name;
+
+    /**
+     * 数量
+     */
+    private $number;
+
+    /**
+     * 価格の値オブジェクト
+     */
+    private $priceVO;
+
+    /**
+     * 色の値オブジェクト
+     */
+    private $colorVO;
+
+    public function __construct(int $type, string $name, int $number, priceVO $priceVO, ColorVO $colorVO)
+    {
+        $this->type = $type;
+        $this->name = $name;
+        $this->number = $number;
+        $this->priceVO = $priceVO;
+        $this->colorVO = $colorVO;
+    }
+
+    /**
+     * エンティティの等価性を検証します．
+     */
+    public function equals($dogToy)
+    {
+        return ($dogToy instanceof $this || $this instanceof $dogToy)
+            && $this->id->equals($dogToy->getId());
+    }
+
+    /**
+     * 犬用おもちゃ名（色）を返却します．
+     */
+    public function nameWithColor()
+    {
+        return sprintf(
+            "%s（%s）",
+            $this->name->value(),
+            $this->colorVO->name()
+        );
+    }
+}
+```
+
+#### ・ルートエンティティ
+
+![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
+
+ エンティティや値オブジェクトからなる集約の中で，最終的にアプリケーション層へレスポンスされる集約を，『ルートエンティティ』という．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\Entity;
+
+/**
+ * 犬用注文エンティティ
+ */
+class DogOrder
+{
+    /**
+     * 犬用商品コンボID
+     */
+    private $id;
+
+    /**
+     * 犬用おもちゃ
+     */
+    private $dogToy;
+
+    /**
+     * 犬用えさ
+     */
+    private $dogFood;
+
+    public function __construct(DogToy $dogToy, DogFood $dogFood)
+    {
+        $this->dogToy = $dogToy;
+        $this->dogFood = $dogFood;
+    }
+
+    /**
+     * エンティティの等価性を検証します．
+     *
+     * IDのみ検証する必要がある．
+     */
+    public function equals(DogOrder $dogOrder)
+    {
+        // データ型を検証します．
+        return ($dogOrder instanceof $this || $this instanceof $dogOrder)
+            // IDを検証します．
+            && $this->id->equals($dogOrder->getId());
+    }
+
+    /**
+     * 犬用おもちゃを返却します．
+     */
+    public function getDogToy()
+    {
+        return $this->dogToy;
+    }
+
+    /**
+     * 犬えさを返却します
+     */
+    public function getDogFood()
+    {
+        return $this->dogFood;
+    }
+}
+```
 
 <br>
 
 ### Specificationパターン
 
-#### ・責務
+#### ・Specificationパターンとは
 
-デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、EntitiyやValue Objectに持たせた場合，肥大化の原因となり，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトにまとめておく．
+デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、Entitiyや値オブジェクトに持たせた場合，肥大化の原因となり，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトにまとめておく．
 
 #### ・入力データに対するビジネスルールのValidation
 
@@ -320,13 +458,20 @@ interface DogToyRepository
 ```php
 <?php
 
-namespace App\Specification;    
-    
-class XxxSpecification
+namespace App\Specification;
+
+class ExampleSpecification
 {
-    public function isSatisfiedBy($XxxEntity)
+    /**
+     * ビジネスルールを判定します．
+     */
+    public function isSatisfiedBy(Entity $entity): bool
     {
-       // ビジネスルールのバリデーション処理．
+        if (!$entity->isX) return false;
+        if (!$entity->isY) return false;
+        if (!$entity->isZ) return false;
+
+        return true;
     }
 } 
 ```
@@ -341,46 +486,43 @@ class XxxSpecification
 <?php
 
 namespace App\Criteria;
-    
+
 class XxxCriteria
 {
     private $id;
-  
+
     private $name;
-  
+
     private $email;
-    
+
     /**
      * 検索条件のオブジェクトを生成します．
-     */      
+     */
     public function build(array $array)
     {
         // 自身をインスタンス化．
         $criteria = new static();
-        
-        if(isset($array["id"])) {
+
+        if (isset($array["id"])) {
             $criteria->id = $array["id"];
         }
-      
-        if(isset($array["name"])) {
+
+        if (isset($array["name"])) {
             $criteria->id = $array["name"];
         }
-      
-        if(isset($array["email"])) {
+
+        if (isset($array["email"])) {
             $criteria->id = $array["email"];
         }
-      
-        return $criteria;
-    }  
 
+        return $criteria;
+    }
 }
 ```
 
 <br>
 
-### Value Object
-
-#### ・責務
+### 値オブジェクト
 
 以降の説明を参照．
 
@@ -388,193 +530,211 @@ class XxxCriteria
 
 ### Type Code（標準型）
 
-#### ・責務
+#### ・Type Codeとは
 
-以降の説明を参照．
+Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，値オブジェクトとしてではなく，Enumクラスとしてモデリング／実装する．
 
-<br>
-
-### Domain Service
-
-#### ・責務
-
-以降の説明を参照．
-
-<br>
-
-## 04-02. Domain層｜Entity の責務
-
-### Entityの具体例
-
-![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
-
-<br>
-
-### 保持するデータの値が一定でない
-
-状態を変化させる必要があるデータをもつ
-
-<br>
-
-### データの値が同じでも区別できる
-
-オブジェクトにアイデンティティがあり，他のオブジェクトと同じ属性をもっていても，区別される．
+#### ・色
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\Domain\ValueObject;    
-    
+namespace App\Domain\ValueObject;
+
 /**
- * 犬用おもちゃのエンティティ
+ * 色の値オブジェクト
  */
-class DogToy
+class ColorVO
 {
+    const RED = "1";
+    const BLUE = "2";
+
     /**
-     * 犬用おもちゃID
+     * 『self::定数名』で，定義の値へアクセスします．
      */
-    private $id;    
-    
+    private $set = [
+        self::RED  => ["name" => "レッド"],
+        self::BLUE => ["name" => "ブルー"]
+    ];
+
     /**
-     * 犬用おもちゃタイプ
+     * 値 
      */
-    private $type;
-    
-     /**
-     * 犬用おもちゃ商品名
-     */    
+    private $value;
+
+    /**
+     * 色名
+     */
     private $name;
-    
-    /**
-     * 数量
-     */    
-    private $number;
-    
-     /**
-     * 価格VO
-     */    
-    private $priceVO;
-    
-    /**
-     * 色VO
-     */    
-    private $colorVO;
-    
-    public function __construct(int $type, string $name, int $number, priceVO $priceVO, ColorVO $colorVO)
+
+    // インスタンス化の時に，『色の区分値』を受け取る．
+    public function __construct(string $value)
     {
-        $this->type = $type;
-        $this->name = $name;
-        $this->number = $number;
-        $this->priceVO = $priceVO;
-        $this->colorVO = $colorVO;
+        // $kbnValueに応じて，色名をnameデータにセットする．
+        $this->value = $value;
+        $this->name = static::$set[$value]["name"];
     }
-    
+
     /**
-     * エンティティの等価性を検証します．
+     * 色値を返却します．
      */
-    public function equals($dogToy)
+    public function value(): int
     {
-        return ($dogToy instanceof $this || $this instanceof $dogToy)
-            && $this->id->equals($dogToy->getId());
+        return $this->value;
     }
-        
+
+
     /**
-     * 犬用おもちゃ名（色）を返却します．
+     * 色名を返却します．
      */
-    public function nameWithColor()
+    public function name(): string
     {
-        return sprintf(
-            "%s（%s）",
-            $this->name->value(),
-            $this->colorVO->colorName()
-        );
+        return $this->name;
     }
 }
 ```
 
-<br>
-
-### Route Entityとは
-
-![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
-
- EntityやValue Objectからなる集約の中で，最終的にアプリケーション層へレスポンスされる集約を，『RouteEntity』という．
-
-**＊実装例＊**
+#### ・性別
 
 ```php
 <?php
 
-namespace App\Domain\Entity;    
-    
 /**
- * 犬用注文エンティティ
+ * 性別の値オブジェクト
  */
-class DogOrder
+class SexVO
 {
-    /**
-     * 犬用商品コンボID
-     */    
-    private $id;
-    
-    /**
-     * 犬用おもちゃ
-     */    
-    private $dogToy;
-    
-    /**
-     * 犬用えさ
-     */    
-    private $dogFood;
-    
-    public function __construct(DogToy $dogToy, DogFood $dogFood)
-    {
-        $this->dogToy = $dogToy;
-        $this->dogFood = $dogFood;
-    }
-    
-    /**
-     * エンティティの等価性を検証します．
-     * 
-     * IDのみ検証する必要がある．
-     */
-    public function equals(DogOrder $dogOrder)
-    {
-        // データ型を検証します．
-        return ($dogOrder instanceof $this || $this instanceof $dogOrder)
-            // IDを検証します．
-            && $this->id->equals($dogOrder->getId()) ;
-    }
-    
-    /**
-     * 犬用おもちゃを返却します．
-     */
-    public function getDogToy()
-    {
-        return $this->dogToy;
-    }  
+    const MAN     = 1;
+    const WOMAN   = 2;
+    const UNKNOWN = 3;
+
+    private static $set = [
+        self::MAN     => ["name" => "男性"],
+        self::WOMAN   => ["name" => "女性"],
+        self::UNKNOWN => ["name" => "不明"],
+    ];
 
     /**
-     * 犬えさを返却します
+     * 値
      */
-    public function getDogFood()
+    private $value;
+    
+    /**
+     * 名前
+     */
+    private $name;
+
+    public function __construct($value)
     {
-        return $this->dogFood;
-    }  
+        $this->value = $value;
+        $this->name = static::$set[$value]["name"];
+    }
+    
+    /**
+     * 名前を返却します．
+     */
+    public function name()
+    {
+        return $this->name;
+    }
 }
+```
+
+#### ・年号
+
+```php
+<?php
+
+/**
+ * 年月日クラスの値オブジェクト
+ */
+class YmdVO
+{
+    const MEIJI   = "1"; // 明治
+    const TAISHO  = "2"; // 大正
+    const SHOWA   = "3"; // 昭和
+    const HEISEI  = "4"; // 平成
+    const REIWA   = "5"; // 令和
+    const SEIREKI = "9"; // 西暦
+
+    private static $set = [
+        self::MEIJI   => ["name" => "明治"],
+        self::TAISHO  => ["name" => "大正"],
+        self::SHOWA   => ["name" => "昭和"],
+        self::HEISEI  => ["name" => "平成"],
+        self::REIWA   => ["name" => "令和"],
+        self::SEIREKI => ["name" => "西暦"],
+    ];
+
+    private static $ymd = [
+        self::MEIJI  => [
+            "start" => [ "year" => 1868, "month" => 1, "day" => 25, ],
+            "end"   => [ "year" => 1912, "month" => 7, "day" => 29, ],
+        ],
+        self::TAISHO => [
+            "start" => [ "year" => 1912, "month" => 7,  "day" => 30, ],
+            "end"   => [ "year" => 1926, "month" => 12, "day" => 24, ],
+        ],
+        self::SHOWA  => [
+            "start" => [ "year" => 1926, "month" => 12, "day" => 25, ],
+            "end"   => [ "year" => 1989, "month" => 1,  "day" => 7, ],
+        ],
+        self::HEISEI => [
+            "start" => [ "year" => 1989, "month" => 1,  "day" => 8, ],
+            "end"   => [ "year" => 2019, "month" => 4, "day" => 30, ],
+        ],
+        self::REIWA => [
+            "start" => [ "year" => 2019, "month" => 5,  "day" => 1, ],
+            "end"   => [ "year" => 9999, "month" => 12, "day" => 31, ],
+        ],
+    ];
+    
+    /**
+     * 値 
+     */
+    private $value;
+    
+    /**
+     * 年号名
+     *
+     * @var string
+     */
+    private $name;
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+        $this->name = static::$set[$value]["name"];
+    }
+
+    /**
+     * 年号名を返却します．
+     */
+    public function name()
+    {
+        return $this->name;
+    }
+}
+
 ```
 
 <br>
 
-## 04-03. Domain｜Value Object の責務
+### ドメインサービス
 
-### Value Objectの具体例
+以降の説明を参照．
 
-金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，これを扱うメソッドを実装する場合，一意で識別できるデータ（例えば，```$id```データ）をもたないオブジェクトとして，これらの実装をまとめておくべきである．このオブジェクトを，Value Objectという．
+<br>
+
+## 04-02. 値オブジェクト
+
+### 値オブジェクトとは
 
 ![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
+
+金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，これを扱うメソッドを実装する場合，一意で識別できるデータ（例えば，```$id```データ）をもたないオブジェクトとして，これらの実装をまとめておくべきである．このオブジェクトを，値オブジェクトという．
 
 **＊実装例＊**
 
@@ -589,7 +749,7 @@ namespace App\Domain\ValueObject;
 class DogToyId
 {
     /**
-     * ID値 
+     * 値 
      */
     private $value;
     
@@ -611,8 +771,6 @@ class DogToyId
 }
 ```
 
-
-
 **＊実装例＊**
 
 ```php
@@ -621,7 +779,7 @@ class DogToyId
 namespace App\Domain\ValueObject;    
     
 /**
- * 支払情報のValue Object
+ * 支払情報の値オブジェクト
  */
 class PaymentInfoVO
 {
@@ -670,159 +828,11 @@ class PaymentInfoVO
 
 ### 一意に識別できるデータをもたず，対象のユビキタス言語に関するデータをメソッドを持つ
 
-#### ・金額データと計算
+#### ・金額
 
-金額データの計算をController内処理やEntity内メソッドで行うのではなく，金額計算を行うValue Objectのメソッドとして分割する．
-
-#### ・所要時間データと計算
-
-所要時間データの計算をController内処理やEntity内メソッドで行うのではなく，所要時間計算を行うValue Objectのメソッドとして分割する．
-
-#### ・住所データと処理
-
-郵便番号データとその処理をValue Objectとして分割する．
-
-<br>
-
-### オブジェクトの持つデータの不変性
-
-#### ・不変性に関するベストプラクティス
-
-EntityとValue Objectのどちらとして，オブジェクトをモデリング／実装すべきなのかについて考える．そもそも，大前提として，『オブジェクトの持つデータはできるだけ不変にすべき』というベストプラクティスがあり，その結果，Value Objectというが生まれたと考えられる．実は，Value Objectを使わずに全てEntityとしてモデリング／実装することは可能である．しかし，不変にしてもよいところも可変になり，可読性や信頼性を下げてしまう可能性がある．
-
-#### ・普遍性をコードで実現する方法
-
-インスタンス化時に自動的に呼び出される```construct```メソッドを用いる．インスタンス化時に実行したい処理を記述できる．Setterを持たせずに，```construct```メソッドでのみ値の設定を行えば，Value Objectのような，『Immutable』なオブジェクトを実現できる．
+金額データの計算をController内処理やエンティティ内メソッドで行うのではなく，金額計算を行う値オブジェクトのメソッドとして分割する．
 
 **＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\ValueObject;    
-    
-/**
- * Value Object
- */     
-class ExampleVO
-{
-    private $propertyA;
-    
-    private $propertyB;
-    
-    private $propertyC;
-    
-    public function __construct($param)
-    {
-        $this->propertyA = $param["a"];
-        $this->propertyB = $param["b"];
-        $this->propertyC = $param["c"];
-    }   
-}
-```
-
-#### ・『Immutable』を実現できる理由
-
-Test01クラスインスタンスの```$property01```に値を設定するためには，インスタンスからSetterを呼び出す．Setterは何度でも呼び出せ，その度にデータの値を上書きできてしまう．
-
-**＊実装例＊**
-
-```php
-<?php
-
-$test01 = new Test01;
-
-$test01->setProperty01("データ01の値");
-
-$test01->setProperty01("新しいデータ01の値");
-```
-
-一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．Setterを持たせずに，```construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
-
-**＊実装例＊**
-
-```php
-<?php
-
-$test02 = new Test02("データ02の値");
-
-$test02 = new Test02("新しいデータ02の値");
-```
-
-<br>
-
-### 概念的な統一体
-
-```php
-<?php
-
-// ここに実装例
-```
-
-<br>
-
-### オブジェクトの交換可能性
-
-オブジェクトが新しくインスタンス化された場合，以前に同一オブジェクトから生成されたインスタンスから新しく置き換える必要がある．
-
-<br>
-
-### オブジェクト間の等価性
-
-全てのデータの値が他のVOと同じ場合，同一のVOと見なされる．
-
- <br>
-
-### メソッドによってオブジェクトの状態が変わらない
-
-**＊実装例＊**
-
-```php
-<?php
-    
-namespace App\Domain\ValueObject;
-
-/**
- * 氏名のValue Object
- */    
-class NameVO
-{
-    /**
-     * 予め実装したImmutableObjectトレイトを用いて，データの不変性を実現
-     */   
-    use ImmutableObject;
-
-    /**
-     * 苗字
-     */
-    private $lastName;
-    
-    /**
-     * 名前
-     */
-    private $firstName;
-    
-     /**
-     * メソッドによってオブジェクトの状態が変わらない
-     */   
-    public function fullName(): string
-    {
-        return $this->lastName . $this->firstName;
-    }
-    
-    // 
-    protected static function computedPropertyNames()
-    {
-        return [
-            "fullName"
-        ];
-    }
-}
-```
-
-**＊実装例＊**
-
-同様に，Immutableトレイトを基に，VOを生成する．
 
 ```php
 <?php
@@ -830,7 +840,7 @@ class NameVO
 namespace App\Domain\ValueObject;
     
 /**
- * 金額のValue Object
+ * 金額の値オブジェクト
  */
 class MoneyVO
 {
@@ -886,90 +896,258 @@ class MoneyVO
 }
 ```
 
-<br>
+#### ・所要時間
 
-## 04-04. Domain層｜Type Code（標準型）の責務
+所要時間データの計算をController内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
 
-### 区分や種類のデータを保持する
+#### ・住所
 
-Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，Value Objectとしてではなく，Enumクラスとしてモデリング／実装する．
-
-<br>
-
-### Enumクラスを用いたType Codeの実装
+郵便番号データとその処理を値オブジェクトとして分割する．
 
 **＊実装例＊**
 
 ```php
 <?php
-   
-namespace App\Domain\ValueObject;
-    
+
 /**
- * 色のValue Object
+ * 住所クラス
  */
-class ColorVO extends Enum
+class Address
 {
-    const RED = "1";
-    const BLUE = "2";
-    
     /**
-     * 『self::定数名』で，定義の値へアクセスします．
+     * 住所の文字数上限
      */
-    private $defs = [
-        self::RED => ["color_name" => "レッド"],
-        self::BLUE => ["color_name" => "ブルー"]
-    ];
+    const ADDRESS_MAX_LENGTH = 512;
 
     /**
-     * 色値
+     * 郵便番号
+     *
+     * @var string|null
      */
-    private $colorValue;    
-    
+    private $zip;
+
     /**
-     * 色名
+     * 住所 (番地など)
      */
-    private $colorName;
-    
-    // インスタンス化の時に，『色の区分値』を受け取る．
-    public function __construct(string $value)
-    {
-        // $kbnValueに応じて，色名をcolornameデータにセットする．
-        $this->colorValue = $value;
-        $this->colorname = $this->defs[$value]["color_name"];
-    }
-    
+    private $address;
+
     /**
-     * 色値を返却します．
+     * 住所 カナ(番地など)
      */
-    public function colorValue() :int
+    private $kana;
+
+    /**
+     * 市区町村
+     */
+    private $city;
+
+    public function __construct(City $city, string $zip = null, string $address = null, string $kana = null)
     {
-        return $this->colorValue;
+        $this->zip = $zip;
+        $this->address = $address;
+        $this->kana = $kana;
+        $this->city = $city;
     }
 
+    /**
+     * 郵便番号を返却します.
+     */
+    public function zip()
+    {
+        if (!$this->zip) {
+            return '';
+        }
+
+        return sprintf(
+            "〒%s-%s",
+            substr($this->zip, 0, 3),
+            substr($this->zip, 3)
+        );
+    }
 
     /**
-     * 色名を返却します．
+     * 住所を返却します．
      */
-    public function colorName() :string
+    public function address(): string
     {
-        return $this->colorName;
-    } 
+        return sprintf(
+            "%s%s%s",
+            $this->city->prefecture->name ?? '',
+            $this->city->name ?? '',
+            $this->address ?? ''
+        );
+    }
 }
+```
+
+#### ・氏名
+
+氏名，性別，データとその処理を値オブジェクトとして分割する．
+
+```php
+<?php
+
+/**
+ * 氏名クラス
+ */
+class Name
+{
+     /**
+     * 名前の文字数上限下限
+     */
+    const MIN_NAME_LENGTH = 1;
+    const MAX_NAME_LENGTH = 64;
+
+    /**
+     * 姓
+     */
+    private $lastName;
+
+    /**
+     * 名
+     */
+    private $firstName;
+
+    /**
+     * セイ
+     */
+    private $lastKanaName;
+
+    /**
+     * メイ
+     */
+    private $firstKanaName;
+
+    /**
+     * 氏名を作成します．
+     */
+    public function fullName()
+    {
+        return $this->lastName . $this->firstName;
+    }
+
+    /**
+     * カナ氏名を作成します．
+     */
+    public function fullKanaName()
+    {
+        return $this->lastKanaName . $this->firstKanaName;
+    }
+}
+
 ```
 
 <br>
 
-## 04-05. Domain Service
+### オブジェクトの持つデータの不変性
+
+#### ・不変性に関するベストプラクティス
+
+エンティティと値オブジェクトのどちらとして，オブジェクトをモデリング／実装すべきなのかについて考える．そもそも，大前提として，『オブジェクトの持つデータはできるだけ不変にすべき』というベストプラクティスがあり，その結果，値オブジェクトというが生まれたと考えられる．実は，値オブジェクトを使わずに全てエンティティとしてモデリング／実装することは可能である．しかし，不変にしてもよいところも可変になり，可読性や信頼性を下げてしまう可能性がある．
+
+#### ・普遍性をコードで実現する方法
+
+インスタンス化時に自動的に呼び出される```construct```メソッドを用いる．インスタンス化時に実行したい処理を記述できる．セッターを持たせずに，```construct```メソッドでのみ値の設定を行えば，値オブジェクトのような，『Immutable』なオブジェクトを実現できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;    
+    
+/**
+ * 値オブジェクト
+ */     
+class ExampleVO
+{
+    private $propertyA;
+    
+    private $propertyB;
+    
+    private $propertyC;
+    
+    public function __construct($param)
+    {
+        $this->propertyA = $param["a"];
+        $this->propertyB = $param["b"];
+        $this->propertyC = $param["c"];
+    }   
+}
+```
+
+#### ・『Immutable』を実現できる理由
+
+Test01クラスインスタンスの```$property01```に値を設定するためには，インスタンスからセッターを呼び出す．セッターは何度でも呼び出せ，その度にデータの値を上書きできてしまう．
+
+**＊実装例＊**
+
+```php
+<?php
+
+$test01 = new Test01;
+
+$test01->setProperty01("データ01の値");
+
+$test01->setProperty01("新しいデータ01の値");
+```
+
+一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．セッターを持たせずに，```construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+$test02 = new Test02("データ02の値");
+
+$test02 = new Test02("新しいデータ02の値");
+```
+
+<br>
+
+### 概念的な統一体
+
+```php
+<?php
+
+// ここに実装例
+```
+
+<br>
+
+### オブジェクトの交換可能性
+
+オブジェクトが新しくインスタンス化された場合，以前に同一オブジェクトから生成されたインスタンスから新しく置き換える必要がある．
+
+<br>
+
+### オブジェクト間の等価性
+
+全てのデータの値が他のVOと同じ場合，同一のVOと見なされる．
+
+ <br>
+
+### メソッドによってオブジェクトの状態が変わらない
+
+セッターを定義せずに```constructor```メソッドを使用することにより，外部からメソッドをコールしてデータを変更できなくなる．
+
+<br>
+
+## 04-04. ドメイン層｜Type Code（標準型）の責務
+
+<br>
+
+## 04-05. ドメインサービス
 
 要勉強．
 
 <br>
 
 
-## 05. Infrastructure層
+## 05. インフラストラクチャ層
 
-### Repositoryパターン（実装クラス）
+### リポジトリ（実装クラス）
 
 #### ・DBに対する書き込み責務（Create，Update，Delete）
 
@@ -979,15 +1157,15 @@ DBに対する書き込み操作を行う．
 
 1. GETまたはPOSTによって，アプリケーション層から値が送信される．
 
-2. Factoryによって，送信された値からEntityやValue Objectを構成する．さらに，それらから集約を構成する．
+2. ファクトリによって，送信された値からエンティティや値オブジェクトを構成する．さらに，それらから集約を構成する．
 
-3. Repositoryによって，最終的な集約を構成する．
+3. リポジトリによって，最終的な集約を構成する．
 
-4. Repositoryによって，集約を連想配列に分解する．
+4. リポジトリによって，集約を連想配列に分解する．
 
-5. ```add()```によって，Repositoryクラスのデータに，集約を格納する．
+5. ```add()```によって，リポジトリのデータに，集約を格納する．
 
-6. ```store()```によって，Transactionクラスのデータに，Repositoryを格納する．
+6. ```store()```によって，Transactionクラスのデータに，リポジトリを格納する．
 
 7. DBに対して，書き込みを行う．
 
@@ -1016,7 +1194,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * Route Entityを書き込みます．
+     * ルートエンティティを書き込みます．
      */
     public function create(DogToy $dogToy)
     {
@@ -1026,7 +1204,7 @@ class DogToyRepository
         // SQLを定義する．
         $query->insert("dog_toy_table")
             ->values([
-                // Route Entityの要素をカラム値として設定する．（IDはAutoIncrement）
+                // ルートエンティティの要素をカラム値として設定する．（IDはAutoIncrement）
                 "name"  => $dogToy->getName()->value(),
                 "type"  => $dogToy->getType()->value(),
                 "price" => $dogToy->getPriceVO()->value(),
@@ -1052,7 +1230,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * Route Entityを書き込みます．
+     * ルートエンティティを書き込みます．
      */
     public function create(DogToy $dogToy)
     {
@@ -1061,7 +1239,7 @@ class DogToyRepository
         
         // SQLを定義する．
         $query->update("dog_toy_table", "dog_toy")
-            // Route Entityの要素をカラム値として設定する．
+            // ルートエンティティの要素をカラム値として設定する．
             ->set("dog_toy.name", $dogToy->getName()->value())
             ->set("dog_toy.type", $dogToy->getType()->value())
             ->set("dog_toy.price", $dogToy->getPriceVO()->value())
@@ -1088,7 +1266,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * Route Entityを書き込みます．
+     * ルート Entityを書き込みます．
      */
     public function create(DogToy $dogToy)
     {
@@ -1112,8 +1290,8 @@ DBに対する書き込み操作を行う．
 
 1. アプリケーション層から集約がリクエストされる．
 2. DBに対して，読み出しを行う．
-3. Factoryによって，送信された値からEntityやValue Objectを構成する．さらに，それらから集約を構成する．
-4. Repositoryによって，最終的な集約を構成する．
+3. ファクトリによって，送信された値からエンティティや値オブジェクトを構成する．さらに，それらから集約を構成する．
+4. リポジトリによって，最終的な集約を構成する．
 5. 再構成された集約をアプリケーション層にレスポンス．
 
 参考：
@@ -1141,7 +1319,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {   
      /**
-     * Route Entityのセットを生成します．
+     * ルートエンティティのセットを生成します．
      */
     public function findAllDogToys(): array
     {
@@ -1180,7 +1358,7 @@ class DogToyRepository
     }
 
     /**
-     * Route Entityを生成します．
+     * ルートエンティティを生成します．
      */
     private function aggregateDogToy(array $fetched): DogToy
     {
@@ -1199,7 +1377,7 @@ class DogToyRepository
 
 <br>
 
-### Factory
+### ファクトリ
 
 #### ・責務
 
