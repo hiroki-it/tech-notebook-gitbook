@@ -1802,7 +1802,7 @@ func main() {
     
     var last string = "Hasegawa"
     
-    fmt.Printf("I"m %s %s", first, last)// I"m Hiroki Hasegawa
+    fmt.Printf("Im %s %s", first, last) // Im Hiroki Hasegawa
 }
 ```
 
