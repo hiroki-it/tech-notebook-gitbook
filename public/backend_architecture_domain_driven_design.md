@@ -736,94 +736,6 @@ class YmdVO
 
 金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，これを扱うメソッドを実装する場合，一意で識別できるデータ（例えば，```$id```データ）をもたないオブジェクトとして，これらの実装をまとめておくべきである．このオブジェクトを，値オブジェクトという．
 
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\ValueObject;
-
-/**
- * 犬用おもちゃID
- */
-class DogToyId
-{
-    /**
-     * 値 
-     */
-    private $value;
-    
-    public function __constructor(string $value)
-    {
-        $this->value = $value
-    }
-    
-    /**
-     * VOの属性の等価性を検証します．
-     */
-    public function equals($id)
-    {
-        // データ型を検証します．
-        return ($id instanceof $this || $this instanceof $id)
-            // 値を検証します．
-            && $this->value() === $id->value();
-    }
-}
-```
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\ValueObject;    
-    
-/**
- * 支払情報の値オブジェクト
- */
-class PaymentInfoVO
-{
-    // 予め実装したImmutableObjectトレイトを用いて，データの不変性を実現
-    use ImmutableObject;
-
-    /**
-     * 支払い方法
-     *
-     * @var PaymentType
-     */
-    private $paymentType;
-    
-    /**
-     * 連絡先メールアドレス
-     *
-     * @var string|null
-     */
-    private $contactMail;
-    
-    /**
-     * 金額
-     *
-     * @var Money
-     */
-    private $price;  
-    
-    /**
-     * VOの属性の等価性を検証します．
-     *
-     * 全ての属性を検証する必要がある．
-     */
-    public function equals($paymentInfoVO)
-    {
-        // データ型を検証します．
-        return ($paymentInfoVO instanceof $this || $this instanceof $paymentInfoVO)
-            // 全ての属性を検証します．
-            && $this->paymentType->value() === $paymentInfoVO->paymentType->value()
-            && $this->contactMail->value() === $paymentInfoVO->contactMail->value()
-            && $this->price->value() === $paymentInfoVO->price->value();
-    }
-}
-```
-
 <br>
 
 ### 一意に識別できるデータをもたず，対象のユビキタス言語に関するデータをメソッドを持つ
@@ -1122,9 +1034,95 @@ $test02 = new Test02("新しいデータ02の値");
 
 <br>
 
-### オブジェクト間の等価性
+### オブジェクトの等価性
 
 全てのデータの値が他のVOと同じ場合，同一のVOと見なされる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;
+
+/**
+ * 犬用おもちゃID
+ */
+class DogToyId
+{
+    /**
+     * 値 
+     */
+    private $value;
+    
+    public function __constructor(string $value)
+    {
+        $this->value = $value
+    }
+    
+    /**
+     * VOの属性の等価性を検証します．
+     */
+    public function equals($id)
+    {
+        // データ型を検証します．
+        return ($id instanceof $this || $this instanceof $id)
+            // 値を検証します．
+            && $this->value() === $id->value();
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;    
+    
+/**
+ * 支払情報の値オブジェクト
+ */
+class PaymentInfoVO
+{
+    // 予め実装したImmutableObjectトレイトを用いて，データの不変性を実現
+    use ImmutableObject;
+
+    /**
+     * 支払い方法
+     *
+     * @var PaymentType
+     */
+    private $paymentType;
+    
+    /**
+     * 連絡先メールアドレス
+     *
+     * @var string|null
+     */
+    private $contactMail;
+    
+    /**
+     * 金額
+     *
+     * @var Money
+     */
+    private $price;  
+    
+    /**
+     * VOの属性の等価性を検証します．
+     *
+     * 全ての属性を検証する必要がある．
+     */
+    public function equals($paymentInfoVO)
+    {
+        // データ型を検証します．
+        return ($paymentInfoVO instanceof $this || $this instanceof $paymentInfoVO)
+            // 全ての属性を検証します．
+            && $this->paymentType->value() === $paymentInfoVO->paymentType->value()
+            && $this->contactMail->value() === $paymentInfoVO->contactMail->value()
+            && $this->price->value() === $paymentInfoVO->price->value();
+    }
+}
+```
 
  <br>
 
@@ -1134,11 +1132,7 @@ $test02 = new Test02("新しいデータ02の値");
 
 <br>
 
-## 04-04. ドメイン層｜Type Code（標準型）の責務
-
-<br>
-
-## 04-05. ドメインサービス
+## 04-03. ドメインサービス
 
 要勉強．
 
