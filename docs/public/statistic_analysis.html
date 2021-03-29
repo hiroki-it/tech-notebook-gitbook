@@ -1543,28 +1543,28 @@
 <p>&#x30C7;&#x30FC;&#x30BF;&#x306B;&#xFF0C;&#x3069;&#x306E;&#x7A0B;&#x5EA6;&#x306E;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#x304B;&#x3092;&#x691C;&#x51FA;&#x3059;&#x308B;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#x304B;&#x5426;&#x304B;&#x306E;&#x5224;&#x65AD;&#x6750;&#x6599;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x76F8;&#x95A2;&#x5206;&#x6790;.png" alt="&#x76F8;&#x95A2;&#x5206;&#x6790;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample &lt;- read.table(&quot;sample_edit.txt&quot;, header = T)
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample <span class="token operator">&lt;-</span> read.table<span class="token punctuation">(</span><span class="token string">&quot;sample_edit.txt&quot;</span><span class="token punctuation">,</span> header <span class="token operator">=</span> T<span class="token punctuation">)</span>
 
 
-# &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x6563;&#x5E03;&#x56F3;&#x3092;&#x4F5C;&#x6210;&#xFF0E;
-g &lt;- ggplot(sample, aes(x = &#x7D14;&#x5E83;&#x544A;, y = CV_&#x7D14;&#x5E83;&#x544A;))
-g &lt;- g + geom_point()
-plot(g)
+<span class="token comment"># &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x6563;&#x5E03;&#x56F3;&#x3092;&#x4F5C;&#x6210;&#xFF0E;</span>
+g <span class="token operator">&lt;-</span> ggplot<span class="token punctuation">(</span>sample<span class="token punctuation">,</span> aes<span class="token punctuation">(</span>x <span class="token operator">=</span> &#x7D14;&#x5E83;&#x544A;<span class="token punctuation">,</span> y <span class="token operator">=</span> CV_&#x7D14;&#x5E83;&#x544A;<span class="token punctuation">)</span><span class="token punctuation">)</span>
+g <span class="token operator">&lt;-</span> g <span class="token operator">+</span> geom_point<span class="token punctuation">(</span><span class="token punctuation">)</span>
+plot<span class="token punctuation">(</span>g<span class="token punctuation">)</span>
 
 
-# &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x76F8;&#x95A2;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;
-ts&lt;-ts(sample[,2:5])
-cor(ts, method = &quot;pearson&quot;)
+<span class="token comment"># &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x76F8;&#x95A2;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+ts<span class="token operator">&lt;-</span>ts<span class="token punctuation">(</span>sample<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+cor<span class="token punctuation">(</span>ts<span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">&quot;pearson&quot;</span><span class="token punctuation">)</span>
 
 
-# &#x5206;&#x6790;&#x7D50;&#x679C;
-#                    &#x7D14;&#x5E83;&#x544A;      &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  CV_&#x7D14;&#x5E83;&#x544A;    CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;
-# &#x7D14;&#x5E83;&#x544A;           1.00000000    0.5247992  0.1065025     -0.09415535
-# &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;      0.52479919    1.0000000 -0.2360605      0.20821230
-# CV_&#x7D14;&#x5E83;&#x544A;        0.10650249   -0.2360605  1.0000000      0.19500011
-# CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  -0.09415535    0.2082123  0.1950001      1.00000000
-# // &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x9593;&#x306B;&#x306F;&#xFF0C;&#x5F31;&#x3044;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#xFF0E;
+<span class="token comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
+<span class="token comment">#                    &#x7D14;&#x5E83;&#x544A;      &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  CV_&#x7D14;&#x5E83;&#x544A;    CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;</span>
+<span class="token comment"># &#x7D14;&#x5E83;&#x544A;           1.00000000    0.5247992  0.1065025     -0.09415535</span>
+<span class="token comment"># &#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;      0.52479919    1.0000000 -0.2360605      0.20821230</span>
+<span class="token comment"># CV_&#x7D14;&#x5E83;&#x544A;        0.10650249   -0.2360605  1.0000000      0.19500011</span>
+<span class="token comment"># CV_&#x30EA;&#x30B9;&#x30C6;&#x30A3;&#x30F3;&#x30B0;  -0.09415535    0.2082123  0.1950001      1.00000000</span>
+<span class="token comment"># // &#x7D14;&#x5E83;&#x544A;&#x3068;CV_&#x7D14;&#x5E83;&#x544A;&#x306E;&#x9593;&#x306B;&#x306F;&#xFF0C;&#x5F31;&#x3044;&#x76F4;&#x7DDA;&#x7684;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308B;&#xFF0E;</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;"><a name="02-&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;" class="plugin-anchor" href="#02-&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;</h2>
@@ -1574,29 +1574,29 @@ cor(ts, method = &quot;pearson&quot;)
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x5358;&#x56DE;&#x5E30;&#x5206;&#x6790;.png" width="60%"></p>
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><a name="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;" class="plugin-anchor" href="#&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x5358;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x5358;&#x56DE;&#x5E30;&#x5F0F;"></p>
-<h5 id="&#x5206;&#x6790;&#x4F8B;"><a name="&#x5206;&#x6790;&#x4F8B;" class="plugin-anchor" href="#&#x5206;&#x6790;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5206;&#x6790;&#x4F8B;</h5>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>-</span> <span class="token attr-name">read.table(&quot;sample_edit.txt&quot;,</span> <span class="token attr-name">header</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> T)</span>
-<span class="token attr-name">ts</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name"><span class="token namespace">ts(sample[,2:</span>5])</span>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample <span class="token operator">&lt;-</span> read.table<span class="token punctuation">(</span><span class="token string">&quot;sample_edit.txt&quot;</span><span class="token punctuation">,</span> header <span class="token operator">=</span> T<span class="token punctuation">)</span>
+ts <span class="token operator">&lt;-</span> ts<span class="token punctuation">(</span>sample<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;&#xFF0E;</span>
-<span class="token attr-name">df</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">data.frame(ts)</span>
+<span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;&#xFF0E;</span>
+df <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span>ts<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">CV_&#x7D14;&#x5E83;&#x544A;&#x3068;&#x7D14;&#x5E83;&#x544A;&#x306B;&#x57FA;&#x3065;&#x304F;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-<span class="token attr-name">Reg</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">lm(CV_&#x7D14;&#x5E83;&#x544A;</span> <span class="token attr-name">~</span> <span class="token attr-name">&#x7D14;&#x5E83;&#x544A;,df)</span>
+<span class="token comment"># CV_&#x7D14;&#x5E83;&#x544A;&#x3068;&#x7D14;&#x5E83;&#x544A;&#x306B;&#x57FA;&#x3065;&#x304F;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+Reg <span class="token operator">&lt;-</span> lm<span class="token punctuation">(</span>CV_&#x7D14;&#x5E83;&#x544A; <span class="token operator">~</span> &#x7D14;&#x5E83;&#x544A;<span class="token punctuation">,</span>df<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x5206;&#x6790;&#x7D50;&#x679C;</span>
-<span class="token attr-name">summary(Reg)</span>
+<span class="token comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
+summary<span class="token punctuation">(</span>Reg<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name"><span class="token namespace">Coefficients:</span></span>
-<span class="token attr-name">#</span>              <span class="token attr-name">Estimate</span> <span class="token attr-name">Std.</span> <span class="token attr-name">Error</span> <span class="token attr-name">t</span> <span class="token attr-name">value</span> <span class="token attr-name">Pr(</span><span class="token punctuation">&gt;</span></span>|t|)    
-# (Intercept) 1.099e+01  2.405e+00   4.571 3.11e-05 *** 
-# &#x7D14;&#x5E83;&#x544A;      2.239e-05  2.927e-05   0.765    0.448
-# // &#x7D14;&#x5E83;&#x544A;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &gt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;
+<span class="token comment"># Coefficients:</span>
+<span class="token comment">#              Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="token comment"># (Intercept) 1.099e+01  2.405e+00   4.571 3.11e-05 *** </span>
+<span class="token comment"># &#x7D14;&#x5E83;&#x544A;      2.239e-05  2.927e-05   0.765    0.448</span>
+<span class="token comment"># // &#x7D14;&#x5E83;&#x544A;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &gt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;"><a name="&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;" class="plugin-anchor" href="#&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;</h3>
@@ -1604,50 +1604,50 @@ sample <span class="token tag"><span class="token tag"><span class="token punctu
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;.png" alt="&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;"></p>
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><a name="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;" class="plugin-anchor" href="#&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x91CD;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x91CD;&#x56DE;&#x5E30;&#x5F0F;"></p>
-<h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;"><a name="&#x30FB;&#x5206;&#x6790;&#x4F8B;" class="plugin-anchor" href="#&#x30FB;&#x5206;&#x6790;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>-</span> <span class="token attr-name">read.table(&quot;sample_edit.txt&quot;,</span> <span class="token attr-name">header</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> T)</span>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample <span class="token operator">&lt;-</span> read.table<span class="token punctuation">(</span><span class="token string">&quot;sample_edit.txt&quot;</span><span class="token punctuation">,</span> header <span class="token operator">=</span> T<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">days</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">weekdays(as.Date(sample$DATE))</span>
-<span class="token attr-name">sample1&lt;-transform(sample,days</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>days)</span>
+days <span class="token operator">&lt;-</span> weekdays<span class="token punctuation">(</span>as.Date<span class="token punctuation">(</span>sample<span class="token operator">$</span>DATE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+sample1<span class="token operator">&lt;-</span>transform<span class="token punctuation">(</span>sample<span class="token punctuation">,</span>days<span class="token operator">=</span>days<span class="token punctuation">)</span>
 
-<span class="token attr-name">library(caret)</span>
+library<span class="token punctuation">(</span>caret<span class="token punctuation">)</span>
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x66DC;&#x65E5;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;</span>
-<span class="token attr-name">tmp</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">dummyVars(~days,</span> <span class="token attr-name">data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>sample1)</span>
-<span class="token attr-name">days1</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">as.data.frame(predict(tmp,</span> <span class="token attr-name">sample1))</span>
-
-
-<span class="token attr-name">#</span> <span class="token attr-name">&#x66DC;&#x65E5;&#x306E;&#x9806;&#x756A;&#x3092;&#x6574;&#x5F62;</span>
-<span class="token attr-name">days2</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">days1</span> <span class="token attr-name">[</span> <span class="token attr-name">c(3,1,4,7,2,5,6)</span> <span class="token attr-name">]</span>
+<span class="token comment"># &#x66DC;&#x65E5;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;</span>
+tmp <span class="token operator">&lt;-</span> dummyVars<span class="token punctuation">(</span><span class="token operator">~</span>days<span class="token punctuation">,</span> data<span class="token operator">=</span>sample1<span class="token punctuation">)</span>
+days1 <span class="token operator">&lt;-</span> as.data.frame<span class="token punctuation">(</span>predict<span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> sample1<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x5E83;&#x544A;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x66DC;&#x65E5;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7D50;&#x5408;</span>
-<span class="token attr-name">ts1</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">cbind(sample,</span> <span class="token attr-name">days2)</span>
+<span class="token comment"># &#x66DC;&#x65E5;&#x306E;&#x9806;&#x756A;&#x3092;&#x6574;&#x5F62;</span>
+days2 <span class="token operator">&lt;-</span> days1 <span class="token punctuation">[</span> c<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;</span>
-<span class="token attr-name">df</span> <span class="token attr-name">&lt;-</span> <span class="token attr-name">data.frame(ts1)</span>
+<span class="token comment"># &#x5E83;&#x544A;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x66DC;&#x65E5;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7D50;&#x5408;</span>
+ts1 <span class="token operator">&lt;-</span> cbind<span class="token punctuation">(</span>sample<span class="token punctuation">,</span> days2<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
-<span class="token attr-name">Reg&lt;-lm(CV_&#x7D14;&#x5E83;&#x544A;</span> <span class="token attr-name">~</span> <span class="token attr-name">days.&#x6708;&#x66DC;&#x65E5;+days.&#x706B;&#x66DC;&#x65E5;+days.&#x6C34;&#x66DC;&#x65E5;+days.&#x6728;&#x66DC;&#x65E5;+days.&#x91D1;&#x66DC;&#x65E5;,df)</span>
+<span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x66F4;</span>
+df <span class="token operator">&lt;-</span> data.frame<span class="token punctuation">(</span>ts1<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name">&#x5206;&#x6790;&#x7D50;&#x679C;</span>
-<span class="token attr-name">summary(Reg)</span>
+<span class="token comment"># &#x91CD;&#x56DE;&#x5E30;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;</span>
+Reg<span class="token operator">&lt;-</span>lm<span class="token punctuation">(</span>CV_&#x7D14;&#x5E83;&#x544A; <span class="token operator">~</span> days.&#x6708;&#x66DC;&#x65E5;<span class="token operator">+</span>days.&#x706B;&#x66DC;&#x65E5;<span class="token operator">+</span>days.&#x6C34;&#x66DC;&#x65E5;<span class="token operator">+</span>days.&#x6728;&#x66DC;&#x65E5;<span class="token operator">+</span>days.&#x91D1;&#x66DC;&#x65E5;<span class="token punctuation">,</span>df<span class="token punctuation">)</span>
 
 
-<span class="token attr-name">#</span> <span class="token attr-name"><span class="token namespace">Coefficients:</span></span>
-<span class="token attr-name">#</span>             <span class="token attr-name">Estimate</span> <span class="token attr-name">Std.</span> <span class="token attr-name">Error</span> <span class="token attr-name">t</span> <span class="token attr-name">value</span> <span class="token attr-name">Pr(</span><span class="token punctuation">&gt;</span></span>|t|)    
-# (Intercept)    8.857      1.007   8.797 1.69e-11 ***
-# days.&#x6708;&#x66DC;&#x65E5;     5.286      1.744   3.031 0.003957 ** 
-# days.&#x706B;&#x66DC;&#x65E5;     4.893      1.670   2.930 0.005212 ** 
-# days.&#x6C34;&#x66DC;&#x65E5;     6.143      1.670   3.679 0.000601 ***
-# days.&#x6728;&#x66DC;&#x65E5;     5.893      1.670   3.529 0.000944 ***
-# days.&#x91D1;&#x66DC;&#x65E5;     4.393      1.670   2.631 0.011479 *  
-# // &#x6708;&#xFF0C;&#x6C34;&#xFF0C;&#x91D1;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &lt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x6708;&#x6C34;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x706B;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;
+<span class="token comment"># &#x5206;&#x6790;&#x7D50;&#x679C;</span>
+summary<span class="token punctuation">(</span>Reg<span class="token punctuation">)</span>
+
+
+<span class="token comment"># Coefficients:</span>
+<span class="token comment">#             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="token comment"># (Intercept)    8.857      1.007   8.797 1.69e-11 ***</span>
+<span class="token comment"># days.&#x6708;&#x66DC;&#x65E5;     5.286      1.744   3.031 0.003957 ** </span>
+<span class="token comment"># days.&#x706B;&#x66DC;&#x65E5;     4.893      1.670   2.930 0.005212 ** </span>
+<span class="token comment"># days.&#x6C34;&#x66DC;&#x65E5;     6.143      1.670   3.679 0.000601 ***</span>
+<span class="token comment"># days.&#x6728;&#x66DC;&#x65E5;     5.893      1.670   3.529 0.000944 ***</span>
+<span class="token comment"># days.&#x91D1;&#x66DC;&#x65E5;     4.393      1.670   2.631 0.011479 *  </span>
+<span class="token comment"># // &#x6708;&#xFF0C;&#x6C34;&#xFF0C;&#x91D1;&#x306E;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;p&#x5024; &lt; 0.05 &#x3088;&#x308A;&#xFF0C;&#x6708;&#x6C34;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x706B;&#x91D1;&#x3067;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x304C;&#x306A;&#x3044;&#x53EF;&#x80FD;&#x6027;&#xFF0E;</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-02-&#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;"><a name="02-02-&#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;" class="plugin-anchor" href="#02-02-&#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x975E;&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x5206;&#x6790;</h2>
@@ -1657,22 +1657,22 @@ sample <span class="token tag"><span class="token tag"><span class="token punctu
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30ED;&#x30B8;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;&#x56DE;&#x5E30;&#x5206;&#x6790;.png" width="70%"></p>
 <h4 id="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><a name="&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;" class="plugin-anchor" href="#&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x56DE;&#x5E30;&#x65B9;&#x7A0B;&#x5F0F;</h4>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x30ED;&#x30B8;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;&#x56DE;&#x5E30;&#x5F0F;.png" alt="&#x30ED;&#x30B8;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;&#x56DE;&#x5E30;&#x5F0F;"></p>
-<h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;"><a name="&#x30FB;&#x5206;&#x6790;&#x4F8B;" class="plugin-anchor" href="#&#x30FB;&#x5206;&#x6790;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample&lt;-read.csv(&quot;CV_data2.csv&quot;,header=T)
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample<span class="token operator">&lt;-</span>read.csv<span class="token punctuation">(</span><span class="token string">&quot;CV_data2.csv&quot;</span><span class="token punctuation">,</span>header<span class="token operator">=</span>T<span class="token punctuation">)</span>
 
 
-# &#x30EA;&#x30F3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x30ED;&#x30B8;&#x30C3;&#x30C8;&#x3068;&#x3057;&#xFF0C;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4E00;&#x822C;&#x5316;&#x3059;&#x308B;&#xFF0E;
-result_lg = glm(CP&#x7533;&#x8FBC;&#x307F; ~ &#x6027;&#x5225;+&#x7D4C;&#x6E08;&#x95A2;&#x9023;, sample, family=binomial)
+<span class="token comment"># &#x30EA;&#x30F3;&#x30AF;&#x95A2;&#x6570;&#x3092;&#x30ED;&#x30B8;&#x30C3;&#x30C8;&#x3068;&#x3057;&#xFF0C;&#x975E;&#x7DDA;&#x5F62;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4E00;&#x822C;&#x5316;&#x3059;&#x308B;&#xFF0E;</span>
+result_lg <span class="token operator">=</span> glm<span class="token punctuation">(</span>CP&#x7533;&#x8FBC;&#x307F; <span class="token operator">~</span> &#x6027;&#x5225;<span class="token operator">+</span>&#x7D4C;&#x6E08;&#x95A2;&#x9023;<span class="token punctuation">,</span> sample<span class="token punctuation">,</span> family<span class="token operator">=</span>binomial<span class="token punctuation">)</span>
 
 
-# &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x3092;&#x51FA;&#x529B;
-exp(result_lg2$coefficients)
+<span class="token comment"># &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x3092;&#x51FA;&#x529B;</span>
+exp<span class="token punctuation">(</span>result_lg2<span class="token operator">$</span>coefficients<span class="token punctuation">)</span>
 
 
-# &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;
-# (Intercept)        &#x6027;&#x5225;    &#x7D4C;&#x6E08;&#x95A2;&#x9023; 
-# 0.08930881 14.98017457  1.75649720
+<span class="token comment"># &#x30AA;&#x30C3;&#x30BA;&#x6BD4;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;</span>
+<span class="token comment"># (Intercept)        &#x6027;&#x5225;    &#x7D4C;&#x6E08;&#x95A2;&#x9023; </span>
+<span class="token comment"># 0.08930881 14.98017457  1.75649720</span>
 </code></pre>
 <p><br></p>
 <h2 id="03-&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;"><a name="03-&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;" class="plugin-anchor" href="#03-&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;</h2>
@@ -1685,55 +1685,55 @@ exp(result_lg2$coefficients)
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_1.png" alt="&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_1"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_2.png" alt="&#x6C7A;&#x5B9A;&#x6728;&#x5206;&#x6790;_2"></p>
-<h4 id="&#x30FB;&#x5206;&#x6790;&#x4F8B;"><a name="&#x30FB;&#x5206;&#x6790;&#x4F8B;" class="plugin-anchor" href="#&#x30FB;&#x5206;&#x6790;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5206;&#x6790;&#x4F8B;</h4>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample &lt;- read.csv(&quot;CV_data.csv&quot;, header = T)
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample <span class="token operator">&lt;-</span> read.csv<span class="token punctuation">(</span><span class="token string">&quot;CV_data.csv&quot;</span><span class="token punctuation">,</span> header <span class="token operator">=</span> T<span class="token punctuation">)</span>
 
 
-# &#x8B58;&#x5225;&#x5024;&#x306E;id&#x3092;&#x8AAC;&#x660E;&#x5909;&#x6570;&#x304B;&#x3089;&#x9664;&#x3044;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x69CB;&#x7BC9;&#xFF0E;
-library(rpart)
-tree &lt;- rpart(CV~AGE + SEX + AD, data = sample)
+<span class="token comment"># &#x8B58;&#x5225;&#x5024;&#x306E;id&#x3092;&#x8AAC;&#x660E;&#x5909;&#x6570;&#x304B;&#x3089;&#x9664;&#x3044;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x69CB;&#x7BC9;&#xFF0E;</span>
+library<span class="token punctuation">(</span>rpart<span class="token punctuation">)</span>
+tree <span class="token operator">&lt;-</span> rpart<span class="token punctuation">(</span>CV<span class="token operator">~</span>AGE <span class="token operator">+</span> SEX <span class="token operator">+</span> AD<span class="token punctuation">,</span> data <span class="token operator">=</span> sample<span class="token punctuation">)</span>
 
 
-# partykit&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
-library(partykit)
-plot(as.party(tree), tp_args = T)
+<span class="token comment"># partykit&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
+library<span class="token punctuation">(</span>partykit<span class="token punctuation">)</span>
+plot<span class="token punctuation">(</span>as.party<span class="token punctuation">(</span>tree<span class="token punctuation">)</span><span class="token punctuation">,</span> tp_args <span class="token operator">=</span> T<span class="token punctuation">)</span>
 
 
-# rattle&#x3068;rpart.plot&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
-library(rattle)
-library(rpart.plot)
-fancyRpartPlot(tree)
+<span class="token comment"># rattle&#x3068;rpart.plot&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3067;&#x6C7A;&#x5B9A;&#x6728;&#x3092;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
+library<span class="token punctuation">(</span>rattle<span class="token punctuation">)</span>
+library<span class="token punctuation">(</span>rpart.plot<span class="token punctuation">)</span>
+fancyRpartPlot<span class="token punctuation">(</span>tree<span class="token punctuation">)</span>
 </code></pre>
 <p><br></p>
 <h2 id="04-&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;"><a name="04-&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;" class="plugin-anchor" href="#04-&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x5206;&#x6790;</h2>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;&#x4F3C;&#x3066;&#x3044;&#x308B;&#x9806;&#x306B;&#x968E;&#x5C64;&#x7684;&#x306B;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#xFF08;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#xFF09;&#x3057;&#x3066;&#x3044;&#x304F;&#x5206;&#x6790;&#x624B;&#x6CD5;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x9593;&#x306E;&#x540C;&#x4E00;&#x6027;&#x3092;&#x660E;&#x3089;&#x304B;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x89E3;&#x6790;.png" alt="&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x89E3;&#x6790;"></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-R"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-sample1 &lt;- read.csv(&quot;CV_data.csv&quot;)
+<pre class="language-"><code class="lang-r"><span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+sample1 <span class="token operator">&lt;-</span> read.csv<span class="token punctuation">(</span><span class="token string">&quot;CV_data.csv&quot;</span><span class="token punctuation">)</span>
 
 
-# &#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x60C5;&#x5831;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;
-library(caret)
-tmp  &lt;-  dummyVars(~.,  data = sample1)
+<span class="token comment"># &#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x60C5;&#x5831;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30B9;&#x30C8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+library<span class="token punctuation">(</span>caret<span class="token punctuation">)</span>
+tmp  <span class="token operator">&lt;-</span>  dummyVars<span class="token punctuation">(</span><span class="token operator">~</span>.<span class="token punctuation">,</span>  data <span class="token operator">=</span> sample1<span class="token punctuation">)</span>
 
 
-# &#x30EA;&#x30B9;&#x30C8;&#x3092;&#x57FA;&#x306B;&#xFF0C;sample1&#x306E;&#x8CEA;&#x7684;&#x5909;&#x6570;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#xFF0E;
-sample1.dummy  &lt;-  as.data.frame(predict(tmp,  sample1))
+<span class="token comment"># &#x30EA;&#x30B9;&#x30C8;&#x3092;&#x57FA;&#x306B;&#xFF0C;sample1&#x306E;&#x8CEA;&#x7684;&#x5909;&#x6570;&#x3092;&#x30C0;&#x30DF;&#x30FC;&#x5909;&#x6570;&#x306B;&#x5909;&#x63DB;&#xFF0E;</span>
+sample1.dummy  <span class="token operator">&lt;-</span>  as.data.frame<span class="token punctuation">(</span>predict<span class="token punctuation">(</span>tmp<span class="token punctuation">,</span>  sample1<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 
-# id&#x4EE5;&#x5916;&#x306E;&#x5217;&#x3092;&#x6A19;&#x6E96;&#x5316;&#xFF0E;
-scale.dummy &lt;- scale(sample1.dummy[, 2:9])
+<span class="token comment"># id&#x4EE5;&#x5916;&#x306E;&#x5217;&#x3092;&#x6A19;&#x6E96;&#x5316;&#xFF0E;</span>
+scale.dummy <span class="token operator">&lt;-</span> scale<span class="token punctuation">(</span>sample1.dummy<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">:</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 
-# &#x8DDD;&#x96E2;&#x884C;&#x5217;&#x3092;&#x8A08;&#x7B97;&#xFF0E;
-d1 &lt;- dist(scale.dummy)
+<span class="token comment"># &#x8DDD;&#x96E2;&#x884C;&#x5217;&#x3092;&#x8A08;&#x7B97;&#xFF0E;</span>
+d1 <span class="token operator">&lt;-</span> dist<span class="token punctuation">(</span>scale.dummy<span class="token punctuation">)</span>
 
 
-# &#x30A6;&#x30A9;&#x30FC;&#x30C9;&#x6CD5;&#x306B;&#x3088;&#x308B;&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;
-cluster1 &lt;- hclust(d1, method = &quot;ward.D2&quot;)
-plot(cluster1)
+<span class="token comment"># &#x30A6;&#x30A9;&#x30FC;&#x30C9;&#x6CD5;&#x306B;&#x3088;&#x308B;&#x968E;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#xFF0E;</span>
+cluster1 <span class="token operator">&lt;-</span> hclust<span class="token punctuation">(</span>d1<span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">&quot;ward.D2&quot;</span><span class="token punctuation">)</span>
+plot<span class="token punctuation">(</span>cluster1<span class="token punctuation">)</span>
 </code></pre>
 <p><br></p>
 <h2 id="05-&#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;"><a name="05-&#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;" class="plugin-anchor" href="#05-&#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>05. &#x30B0;&#x30E9;&#x30D5;&#x751F;&#x6210;&#x95A2;&#x6570;</h2>
@@ -1779,7 +1779,7 @@ plot(cluster1)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"previous":{"title":"R言語","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/statistic_analysis.md","mtime":"2020-10-22T16:49:18.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T01:54:05.340Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"previous":{"title":"R言語","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.20.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/statistic_analysis.md","mtime":"2021-03-28T03:39:21.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T01:59:14.712Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

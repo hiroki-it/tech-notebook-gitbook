@@ -2326,7 +2326,6 @@ $ /usr/local/bin/supervisord
 
 <span class="token function">cat</span> ./src.txt <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">&quot;<span class="token entity" title="\n">\n</span>&quot;</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">&gt;</span> ./dst.txt
 </code></pre>
-<h4 id=""><a name="" class="plugin-anchor" href="#"><i class="fa fa-link" aria-hidden="true"></i></a> </h4>
 <p><br></p>
 <h2 id="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><a name="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;" class="plugin-anchor" href="#02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-06. &#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;</h2>
 <h3 id="export"><a name="export" class="plugin-anchor" href="#export"><i class="fa fa-link" aria-hidden="true"></i></a>export</h3>
@@ -2940,19 +2939,19 @@ Enforcing
 <ol>
 <li><code>/etc/sellnux/config</code>&#x3092;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<pre class="language-"><code class="lang-config"># This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
+<pre class="language-"><code class="lang-shell"><span class="token comment"># This file controls the state of SELinux on the system.</span>
+<span class="token comment"># SELINUX= can take one of these three values:</span>
+<span class="token comment">#     enforcing - SELinux security policy is enforced.</span>
+<span class="token comment">#     permissive - SELinux prints warnings instead of enforcing.</span>
+<span class="token comment">#     disabled - No SELinux policy is loaded.</span>
 
-SELINUX=disabled &lt;---- disabled&#x306B;&#x5909;&#x66F4;
+<span class="token assign-left variable">SELINUX</span><span class="token operator">=</span>disabled <span class="token comment"># &lt;---- disabled&#x306B;&#x5909;&#x66F4;</span>
 
-# SELINUXTYPE= can take one of these three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected. 
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted
+<span class="token comment"># SELINUXTYPE= can take one of these three values:</span>
+<span class="token comment">#     targeted - Targeted processes are protected,</span>
+<span class="token comment">#     minimum - Modification of targeted policy. Only selected processes are protected. </span>
+<span class="token comment">#     mls - Multi Level Security protection.</span>
+<span class="token assign-left variable">SELINUXTYPE</span><span class="token operator">=</span>targeted
 </code></pre>
 <ol>
 <li>OS&#x3092;&#x518D;&#x8D77;&#x52D5;</li>
@@ -3043,7 +3042,7 @@ SELINUXTYPE=targeted
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-03-24T10:27:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T01:54:05.340Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-03-28T03:42:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-29T01:59:14.712Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
