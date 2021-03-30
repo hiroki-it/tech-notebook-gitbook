@@ -107,7 +107,7 @@
 
 ### コントローラ
 
-#### ・コントローラ
+#### ・コントローラとは
 
 ドメイン層のロジックを組み合わせて，ユースケースを実装する．例えば，CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
 
@@ -138,7 +138,7 @@ class AcceptOrdersController
 
 ### アプリケーションサービス
 
-#### ・アプリケーションサービス
+#### ・アプリケーションサービスとは
 
 アプリケーション層の中で，ドメイン層のオブジェクトを使用する汎用的なメソッドが切り分けられたもの．コントローラにメソッドを提供する．ドメイン層のドメインサービスとは異なり，あくまでアプリケーション層のロジックが切り分けられたものである．
 
@@ -532,7 +532,7 @@ class XxxCriteria
 
 #### ・Type Codeとは
 
-Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，値オブジェクトとしてではなく，Enumクラスとしてモデリング／実装する．
+Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，値オブジェクトとしてではなく，Enumクラスとしてモデリング／実装する．ただし，類似するパターンとして値オブジェクトのディレクトリ内に配置しても良い． 
 
 #### ・色
 
@@ -541,12 +541,12 @@ Type Codeは概念的な呼び名で，実際は，標準的なライブラリ�
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\ValueObject\Type;
 
 /**
- * 色の値オブジェクト
+ * 色タイプ
  */
-class ColorVO
+class ColorType
 {
     const RED = "1";
     const BLUE = "2";
@@ -578,7 +578,7 @@ class ColorVO
     }
 
     /**
-     * 色値を返却します．
+     * 値を返却します．
      */
     public function value(): int
     {
@@ -598,13 +598,17 @@ class ColorVO
 
 #### ・性別
 
+**＊実装例＊**
+
 ```php
 <?php
 
+namespace App\Domain\ValueObject\Type;
+
 /**
- * 性別の値オブジェクト
+ * 性別タイプ
  */
-class SexVO
+class SexType
 {
     const MAN     = 1;
     const WOMAN   = 2;
@@ -633,6 +637,13 @@ class SexVO
     }
     
     /**
+     * 値を返却します．
+     */
+    public function value(): int
+    {
+        return $this->value;
+    }    
+    /**
      * 名前を返却します．
      */
     public function name()
@@ -644,13 +655,17 @@ class SexVO
 
 #### ・年号
 
+**＊実装例＊**
+
 ```php
 <?php
+    
+namespace App\Domain\ValueObject\Type;
 
 /**
- * 年月日クラスの値オブジェクト
+ * 年月日タイプ
  */
-class YmdVO
+class YmdType
 {
     const MEIJI   = "1"; // 明治
     const TAISHO  = "2"; // 大正
@@ -698,11 +713,17 @@ class YmdVO
     
     /**
      * 年号名
-     *
-     * @var string
      */
     private $name;
-
+    
+    /**
+     * 値を返却します．
+     */
+    public function value(): int
+    {
+        return $this->value;
+    }
+    
     public function __construct($value)
     {
         $this->value = $value;
@@ -895,6 +916,8 @@ class Address
 #### ・氏名
 
 氏名，性別，データとその処理を値オブジェクトとして分割する．
+
+**＊実装例＊**
 
 ```php
 <?php

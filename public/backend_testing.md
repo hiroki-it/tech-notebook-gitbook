@@ -222,6 +222,7 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        // テスト対象外のクラスはモックとする．
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -273,6 +274,7 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        // テスト対象外のクラスはモックとする．
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -376,6 +378,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
     */    
     public function testGetPage()
     {
+        // 外部サービスがクライアントの場合はモックを使用する．
         $client = new Client();
 
         // GETリクエスト
@@ -409,7 +412,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
      * @test
      */
     public function testPostMessage()
-    {
+    {      
         $client = new Client();
 
         // APIにPOSTリクエスト
@@ -464,7 +467,7 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
      * @test
      */
     public function testErrorPostMessage()
-    {
+    {     
         $client = new Client();
 
         // APIにPOSTリクエスト

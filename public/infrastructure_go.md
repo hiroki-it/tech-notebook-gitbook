@@ -2058,3 +2058,8 @@ func main() {
 
 PHPにおける```composer.lock```ファイルに相当する．```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される．パッケージごとのチェックサムが記録されるため，前回のインストール時と比較して，ライブラリに変更があるかどうかを検知できる．
 
+<br>
+
+### testify
+
+参考：https://pkg.go.dev/github.com/stretchr/testify

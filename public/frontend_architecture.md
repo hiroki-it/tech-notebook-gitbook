@@ -36,7 +36,7 @@ HTML，XHTML，CSS，JavaScript，DOM，XML，XSLT，を組み合わせて非同
 
 #### ・MPAとSPAの処理速度の違い
 
-ャであるMPAと比較して，データを非同期的に通信できるため，1つのWebページの中で必要なデータだけを通信すればよく，レンダリングが速い．
+MPAと比較して，データを非同期的に通信できるため，1つのWebページの中で必要なデータだけを通信すればよく，レンダリングが速い．
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 
@@ -425,6 +425,8 @@ const asyncFunc = async () => {
 }
 ```
 
+一方で，Node.jsは標準で非同期処理
+
 #### ・await宣言
 
 以降の全処理を```then```メソッドに渡す．Promiseオブジェクトの```then```メソッドに相当するが，```then```メソッドのようにメソッドチェーンする必要はなくなるため，可読性が高い．時間のかかる非同期処理で宣言すると，予期せず処理が流れてしまうことを防げる．
@@ -519,3 +521,13 @@ const asyncFunc = async () => {
     return response;
 }
 ```
+
+#### ・スリープ
+
+指定した秒数だけ処理を待機する．
+
+```javascript
+// 5秒待機する．
+await new Promise(resolve => setTimeout(resolve, 5000));
+```
+
