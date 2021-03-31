@@ -1109,7 +1109,29 @@ Vueインスタンスが削除された後に実行する．インスタンス�
 
 ## 05. Nuxt.js
 
-### 環境変数
+### コマンド
+
+#### ・build
+
+Targetオプションに```server```を割り当て，アプリケーションをWebpackでビルドする．Webpackにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．
+
+```shell
+$ nuxt build
+```
+
+#### ・generate
+
+Targetオプションに```static```を割り当て，静的ファイルをビルドする．
+
+```shell
+$ nuxt generate
+```
+
+<br>
+
+### 設定ファイル
+
+#### ・```env```ファイル
 
 ```sh
 # API側のURL（フロントエンドからのリクエスト向け）
@@ -1123,6 +1145,20 @@ OAUTH_CLIENT_SECRET=
 GOOGLE_MAP_QUERY_URL=https://www.google.com/maps/search/?api=1&query=
 # ホームパス
 HOME_PATH=/
+```
+
+#### ・```nuxt.config.js```ファイル
+
+Nuxtが標準で用意している設定を上書きできる．
+
+参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const nuxtConfig: Configuration = {
+
+}
 ```
 
 

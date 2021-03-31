@@ -281,7 +281,7 @@ $.ajax({
 
 #### ・```resolve```メソッド，```reject```メソッド
 
-結果のステータスが成功であれば```resolve```メソッドを実行し，反対に失敗であれば```reject```メソッドを実行する．Promiseオブジェクト内では暗黙的に```try-catch```が実行されており，非同期処理の結果に合わせて選択する，両方を実装すると良しなに実行してくれる．
+Promiseオブジェクト内では暗黙的に```try-catch```が実行されており，結果のステータスが成功であれば```resolve```メソッドの結果を返却し，反対に失敗であれば```reject```メソッドを返却する．両方を実装すると良しなに実行してくれる．```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと，後続の処理も実行される．一つ目の書き方として，Promiseインスタンスのコールバック関数に渡す方法がある．
 
 ```javascript
 const asyncFunc = () => {
@@ -289,33 +289,99 @@ const asyncFunc = () => {
     return new Promise((resolve, reject) => {
 
         // ステータスが成功の場合に選択される．
-        resolve("SUCCESS") // Promise { "SUCCESS" }
+        resolve("SUCCESS"); // Promise { "SUCCESS" }
 
         // ステータスが失敗の場合に選択される．
-        reject("FAILED") // Promise { "FAILED" }
+        reject("FAILED"); // Promise { "FAILED" }
+        
+        console.log("test");
     })
+}
+
+console.log(asyncFunc()); 
+// 後続の処理も実行され，resolveメソッドの結果が返却される．
+// test
+// Promise { 'SUCCESS' }
+```
+一方で，```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用すると，後続の処理は実行されない．
+
+```javascript
+const asyncFunc = () => {
+
+    return new Promise((resolve, reject) => {
+
+        return resolve("SUCCESS");
+
+        reject("FAILED");
+        
+        console.log("test");
+    })
+}
+
+console.log(asyncFunc()); 
+// 後続の処理も実行されない．
+// Promise { 'SUCCESS' }
+```
+
+別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしてもよい．この場合，必ず```return```で返却する必要がある．```return```を使用しないと，何も返却されない．
+
+```javascript
+const asyncFunc = () => {
+
+    // ステータスが成功の場合に選択される．
+    return Promise.resolve("SUCCESS"); // Promise { "SUCCESS" }
 }
 
 const asyncFunc = () => {
 
-    // ステータスが成功の場合に選択される．
-    Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
-
     // ステータスが失敗の場合に選択される．
-    Promise.reject("FAILED") // Promise { "FAILED" }
+    return Promise.reject("FAILED"); // Promise { "FAILED" }
+}
+
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
+```
+
+```javascript
+const asyncFunc = () => {
+    return Promise.resolve("SUCCESS");
 }
 
 asyncFunc()
     // 失敗時に返却されたrejectをハンドリング
     .catch((reject) => {
         // rejectメソッドを実行
-        console.error(reject)
+        reject
     })
     .then((resolve) => {
         // resolveメソッドを実行
-        console.info(resolve)
+        resolve
     })
+    
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
 ```
+
+非同期処理内で両方をコールするとエラーになる．
+
+```javascript
+const asyncFunc = () => {
+
+    Promise.resolve("SUCCESS");
+    Promise.reject("FAILED");
+}
+
+console.log(asyncFunc()); // エラーになる
+```
+
+```shell
+UnhandledPromiseRejectionWarning: FAILED
+(Use `node --trace-warnings ...` to show where the warning was created)
+UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+[DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+```
+
+補足として，NodeのHTTPライブラリの関数は，Promiseインスタンスのコールバック関数として使用しないと，正しく挙動しない．
+
+参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 
 #### ・```then```メソッド，```catch```メソッド，```finally```メソッド
 
@@ -326,7 +392,7 @@ asyncFunc()
 ```javascript
 const resolveFunc = new Promise((resolve, reject) => {
     
-    resolve("resolve!!");
+    return resolve("resolve!!");
 });
 
 resolveFunc.then((value) => {
@@ -394,7 +460,7 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 const asyncFunc = async () => {
     
     return new Promise((resolve, reject) => {
-        resolve("SUCCESS") // Promise { "SUCCESS" }
+        return resolve("SUCCESS") // Promise { "SUCCESS" }
     })
 }
 
@@ -424,8 +490,6 @@ const asyncFunc = async () => {
     });
 }
 ```
-
-一方で，Node.jsは標準で非同期処理
 
 #### ・await宣言
 
@@ -528,6 +592,8 @@ const asyncFunc = async () => {
 
 ```javascript
 // 5秒待機する．
-await new Promise(resolve => setTimeout(resolve, 5000));
+await new Promise((resolve) => {
+    setTimeout(resolve, 5000)
+});
 ```
 

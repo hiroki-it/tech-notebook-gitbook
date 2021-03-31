@@ -187,26 +187,25 @@ const object = {
 const json = JSON.stringify(object);
 
 console.log(json);
-// "{ "fruit": ["banana", "apple"], "account": 200 }"
+// {"fruit":["banana","apple"],"account":200}
 ```
 
 #### ・デシリアライズ：JSONからJS型
 
-JSONからJS型オブジェクトへの変換には，```JSON.parse```メソッドを使用する．
+JSONからJS型オブジェクトへの変換には，```JSON.parse```メソッドを使用する．レスポンスされたJSONはエスケープされていることに注意する．
 
 **＊実装例＊**
 
 ```javascript
-const json = {
-  "fruit": ["banana", "apple"],
-  "account": 200
-};
+const escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}"
+
+console.log(escapedJson); // {"fruit":["banana","apple"],"account":200}
 
 // デシリアライズ
-const object = JSON.parse(json);
+const object = JSON.parse(escapedJson);
 
 console.log(object);
-// { fruit: ["banana", "apple"], account: 200 }
+// { fruit: [ 'banana', 'apple' ], account: 200 }
 ```
 
 #### ・相互パースメソッドをもつクラス
@@ -265,16 +264,16 @@ class StaffParser {
 
 #### ・デシリアライズ：JSONからPHP型
 
-JSONからPHP型オブジェクトの変換には．```json_decode```メソッドを使用する．第二引数が```false```の場合，object形式オブジェクトに変換する．
+JSONからPHP型オブジェクトの変換には．```json_decode```メソッドを使用する．第二引数が```false```の場合，object形式オブジェクトに変換する．リクエストで送信するJSONはエスケープする必要があることに注意する．
 
 ```php
 <?php
 
 // リクエストで取得したJSON
-$json = "{ "fruit": ["banana", "apple"], "account": 200 }";
+$escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}";
 
 // object形式オブジェクトに変換
-$object = json_decode($json, false);
+$object = json_decode($escapedJson, false);
 
 var_dump($object);
 //  object(stdClass)#1 (2) {
@@ -296,10 +295,10 @@ var_dump($object);
 <?php
 
 // リクエストで取得したJSON
-$json = '{ "fruit": ["banana", "apple"], "account": 200 }';
+$escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}";
 
 // 連想配列形式オブジェクトに変換
-$array = json_decode($json, true);
+$array = json_decode($escapedJson, true);
 
 var_dump($array);
 //  array(2) {
@@ -320,14 +319,13 @@ var_dump($array);
 ```php
 <?php
 
-$json = '{ "fruit": ["banana", "apple"], "account": 200 }';
-$object = json_decode($json, false);
+$object =  '{"fruit":["banana","apple"],"account":200}';
 
 // JSONに変換
 $json = json_encode($object);
 
 var_dump($json);
-// "{"fruit":["banana","apple"],"account":200}"
+// ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""
 ```
 
 <br>
