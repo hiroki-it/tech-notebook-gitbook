@@ -26,7 +26,57 @@
 
 ## 02. Docker Compose
 
-### オプション
+### コマンド
+
+#### ・up
+
+すでに起動中／停止中コンテナがある場合，それをデタッチドモードで再起動する．
+
+**＊コマンド例＊**
+
+```shell
+# イメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動
+$ docker-compose up -d
+```
+
+#### ・run
+
+すでに起動中／停止中コンテナがあっても，それを残して新しいコンテナを構築し，デタッチドモードで起動する．古いコンテナが削除されずに残ってしまう．
+
+**＊コマンド例＊**
+
+```shell
+# イメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動 
+$ docker-compose run -d -it <イメージ名>
+```
+
+#### ・stop
+
+起動中のコンテナを全て停止する．
+
+**＊コマンド例＊**
+
+```shell
+$ docker-compose stop
+```
+
+#### ・logs
+
+コンテナ内に入ることなく，起動プロセスから出力されるログを確認することできる．
+
+**＊コマンド例＊**
+
+```shell
+# コンテナ名でなくサービス名であることに注意
+$ docker-compose logs <サービス名>
+
+# フォアグラウンドでログを表示
+$ docker-compose logs -f <サービス名>
+```
+
+<br>
+
+### docker-compose.ymlファイル
 
 #### ・```container_name```
 
@@ -134,11 +184,11 @@ service:
   db:
     volumes:
       # volumeマウント
-      - db_volume:/var/www/lib/mysql
+      - mysql_volume:/var/www/lib/mysql
       
 volumes:
   # volume名
-  db_volume:
+  mysql_volume:
     # localで，ホストOSのDockerエリアを指定
     driver: local   
 ```
@@ -222,53 +272,57 @@ xxxxxxxxxxxx     <プロジェクト名>_default     bridge      local
 
 <br>
 
-### docker-composeコマンド
+### Tips
 
-#### ・up
+#### ・mysqlコンテナのビルド時に処理実行
 
-すでに起動中／停止中コンテナがある場合，それをデタッチドモードで再起動する．
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置されたSQLファイルやシェルスクリプトは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
 
-**＊コマンド例＊**
+参考：https://github.com/docker-library/mysql/blob/7f405f6ab5e99b1dd6e7a071969ae6abcc101655/8.0/Dockerfile.debian#L92-L93
 
-```shell
-# イメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動
-$ docker-compose up -d
+**＊実装例＊**
+
+mysqlコンテナに，PHPUnitの実行時のみ使用するデータベースを追加する．以下のような，```docker-compose.yml```ファイルを作成する．
+
+```yml
+version: "3.7"
+
+services:
+
+  db:
+    container_name: example-mysql
+    hostname: example-mysql
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_volume:/var/www/lib/mysql
+      # docker-entrypoint-initdb.dディレクトリにBindマウントを行う．
+      - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: example
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
+      TZ: "Asia/Tokyo"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    networks:
+      - default
+      
+  volumes:
+    mysql_volume:
 ```
 
-#### ・run
+また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下のSQLファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．これにより，mysqlの起動時に
 
-すでに起動中／停止中コンテナがあっても，それを残して新しいコンテナを構築し，デタッチドモードで起動する．古いコンテナが削除されずに残ってしまう．
-
-**＊コマンド例＊**
-
-```shell
-# イメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動 
-$ docker-compose run -d -it <イメージ名>
+```sql
+CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
+GRANT ALL ON *.* TO 'example'@'%' ;
 ```
 
-#### ・stop
+PHPUnitで接続するデータベースを指定する方法については，以下を参考にせよ．
 
-起動中のコンテナを全て停止する．
-
-**＊コマンド例＊**
-
-```shell
-$ docker-compose stop
-```
-
-#### ・logs
-
-コンテナ内に入ることなく，起動プロセスから出力されるログを確認することできる．
-
-**＊コマンド例＊**
-
-```shell
-# コンテナ名でなくサービス名であることに注意
-$ docker-compose logs <サービス名>
-
-# フォアグラウンドでログを表示
-$ docker-compose logs -f <サービス名>
-```
+参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_testing.html
 
 <br>
 
