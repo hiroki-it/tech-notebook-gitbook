@@ -404,7 +404,7 @@ func main() {
 }
 ```
 
-三つ目に，```new```関数とフィールド代入による初期化がある．```new```関数は，構造体以外のデータ型でも使用できるが，あまり使わない．
+三つ目に，```new```関数とフィールド代入による初期化がある．```new```関数は，構造体以外のデータ型でも使用できる．ポインタ型の構造体を返却する．
 
 ```go
 package main
@@ -412,7 +412,7 @@ package main
 import "fmt"
 
 type Person struct {
-    Name string
+	Name string
 }
 
 /**
@@ -420,18 +420,21 @@ type Person struct {
  * ※スコープはパッケージ内のみとする．
  */
 func newPerson(name string) *Person {
-    // new関数を使用する
-    person := new(Person)
-    
-    // フィールドに代入する
-    person.Name = name
-    
-    return person
+	// new関数を使用する
+	person := new(Person)
+	
+    // ポインタ型の初期化された構造体が返却される．
+	fmt.Printf("%#v\n", person) // &main.Person{Name:""}
+
+	// フィールドに代入する
+	person.Name = name
+
+	return person
 }
 
-func main(){
-    person := newPerson("Hiroki")
-    fmt.Printf("%#v\n", person.Name) // "Hiroki"
+func main() {
+	person := newPerson("Hiroki")
+	fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -445,25 +448,57 @@ func main(){
 package main
 
 import (
-    "encoding/json"
-    "fmt"
-    "log"
+	"encoding/json"
+	"fmt"
+	"log"
 )
 
 type Person struct {
-    Name string `json:"Name"`
+	Name string `json:"Name"`
 }
 
 func main() {
-    person := Person{Name: "Hiroki"}
-    
-    json, err := json.Marshal(person)
-    if err != nil {
-        log.Println("JSONエンコードに失敗しました。")
-    }
- 
-    // エンコード結果を出力
-    fmt.Printf("%#v\n", string(json))// "{\"Name\":\"Hiroki\"}"
+	person := Person{Name: "Hiroki"}
+
+	json, err := json.Marshal(person)
+	if err != nil {
+		log.Println("JSONエンコードに失敗しました。")
+	}
+
+	// エンコード結果を出力
+	fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
+}
+```
+
+#### ・埋め込み
+
+構造体のデータとして，別の構造体を埋め込む．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．
+
+```go
+package main
+
+import "fmt"
+
+// 埋め込む側
+type Name struct {
+	LastName  string
+	FirstName string
+}
+
+func (name Name) fullName() string {
+	return fmt.Sprintf("%s %s", name.FirstName, name.LastName)
+}
+
+// 埋め込まれる側
+type Person struct {
+	Name
+}
+
+func main() {
+	person := Person{Name{FirstName: "Hiroki", LastName: "Hasegawa"}}
+
+    // Person構造体から，Name構造体のメソッドをコールできる．
+	fmt.Printf("%#v\n", person.fullName()) // "Hiroki Hasegawa"
 }
 ```
 
@@ -486,26 +521,26 @@ package main
 
 import "fmt"
 
-func main(){
-    // 定義と代入を同時に行う．また，型推論と要素数省略を行う．
-    x := [...]string {"Hiroki", "Gopher"}
-    
-    fmt.Printf("%#v\n", x) // [Hiroki Gopher]
-    fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
-    
-    // 定義と代入を同時に行う．また，要素数の定義が必要．
-    var y[2] string = [2]string {"Hiroki", "Gopher"}
-    
-    fmt.Printf("%#v\n", y) // [Hiroki Gopher]
-    fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
-    
-    // 定義と代入を別々に行う．また，要素数の定義が必要．
-    var z[2] string
-    z[0] = "Hiroki"
-    z[1] = "Gopher"
-    
-    fmt.Printf("%#v\n", z) // [Hiroki Gopher]
-    fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
+func main() {
+	// 定義と代入を同時に行う．また，型推論と要素数省略を行う．
+	x := [...]string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%#v\n", x) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
+
+	// 定義と代入を同時に行う．また，要素数の定義が必要．
+	var y [2]string = [2]string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%#v\n", y) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
+
+	// 定義と代入を別々に行う．また，要素数の定義が必要．
+	var z [2]string
+	z[0] = "Hiroki"
+	z[1] = "Gopher"
+
+	fmt.Printf("%#v\n", z) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -535,15 +570,44 @@ import "fmt"
 func main(){
     x := "a"
     
-    // ポインタ型の変数を定義代入
+    // メモリアドレスを抽出する．
     var p *string = &x
     // p := &x と同じ
     
-    // メモリアドレスを抽出しない場合
+    // メモリアドレスを抽出する前
     fmt.Printf("%#v\n", x) // "a"
     
-    // メモリアドレスを抽出する場合
+    // メモリアドレスを抽出した後
     fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+}
+```
+
+#### ・メモリアドレスに割り当てられたデータ
+
+ポインタ型の変数に対してアスタリスクを宣言すると，メモリアドレスに割り当てられているデータの実体を取得できる．
+
+```go
+package main
+
+import "fmt"
+
+func main(){
+    
+    x := "a"    
+
+    p := &x
+    
+    // メモリアドレスの実体を取得する．
+    y := *p
+    
+    // メモリアドレスを抽出する前
+    fmt.Printf("%#v\n", x) // "a"
+    
+    // メモリアドレスを抽出した後
+    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+    
+    // メモリアドレスに割り当てられたデータ
+    fmt.Printf("%#v\n", y) // "a"
 }
 ```
 
@@ -598,23 +662,23 @@ package main
 import "fmt"
 
 func main() {
-    // 最後の要素の後にもカンマが必要である．
-    x := [5]string{"あ", "い", "う", "え","お",}
-    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
+	// 最後の要素の後にもカンマが必要である．
+	x := [5]string{"あ", "い", "う", "え", "お"}
+	fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
 
-    xa := x[0:3]
-    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
-    
-    xb := x[2:5]
-    fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
+	xa := x[0:3]
+	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
 
-    // xbスライスの0番目（"う"）を上書き
-    xb[0] = "Hiroki"
-    
-    // xbしか上書きしていないが，他のスライスにも反映される．
-    fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
-    fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
-    fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "Hiroki", "え", "お"}
+	xb := x[2:5]
+	fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
+
+	// xbスライスの0番目（"う"）を上書き
+	xb[0] = "Hiroki"
+
+	// xbしか上書きしていないが，他のスライスにも反映される．
+	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
+	fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
+	fmt.Printf("%#v\n", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
 }
 ```
 
@@ -675,51 +739,51 @@ import "fmt"
 
 // インターフェースとそのメソッドを定義する．
 type Animal interface {
-    Eat()
-    Sleep()
-    Mating()
+	Eat()
+	Sleep()
+	Mating()
 }
 
 // 構造体に関数を定義する．
 type Insect struct {
-    Name string
+	Name string
 }
 
 type Fish struct {
-    Name string
+	Name string
 }
 
 type Mammal struct {
-    Name string    
+	Name string
 }
 
 // 構造体に関数を関連付ける．インターフェースのメソッドの関連付けが強制される．
-func (insect Insect) Eat(){
-    fmt.Println("雑食")
+func (insect Insect) Eat() {
+	fmt.Println("雑食")
 }
 
-func (insect Insect) Sleep(){
-    fmt.Println("眠る")    
+func (insect Insect) Sleep() {
+	fmt.Println("眠る")
 }
 
-func (insect Insect) Mating(){
-    fmt.Println("単為生殖")       
+func (insect Insect) Mating() {
+	fmt.Println("単為生殖")
 }
 
 func main() {
-    // Animalインターフェース型の変数を定義する．
-    var animal Animal
-    
-    // 構造体の変数を定義する．
-    insect := Insect {Name : "Ant"}
-    
-    // 構造体をインターフェースに変換する．
-    animal = insect
-    
-    // メソッドを実行する．
-    animal.Eat()
-    animal.Sleep()
-    animal.Mating()
+	// Animalインターフェース型の変数を定義する．
+	var animal Animal
+
+	// 構造体の変数を定義する．
+	insect := Insect{Name: "Ant"}
+
+	// 構造体をインターフェースに変換する．
+	animal = insect
+
+	// メソッドを実行する．
+	animal.Eat()
+	animal.Sleep()
+	animal.Mating()
 }
 ```
 
@@ -780,18 +844,18 @@ package main
 
 import "fmt"
 
-func main(){
-    
-    x := "x"
-    
-    // ポインタ型の定義のみ
-    var p1 *string
-    
-    // ポインタ型の変数を定義代入
-    var p2 *string = &x
+func main() {
 
-    fmt.Printf("%#v\n", p1) // (*string)(nil)
-    fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
+	x := "x"
+
+	// ポインタ型の定義のみ
+	var p1 *string
+
+	// ポインタ型の変数を定義代入
+	var p2 *string = &x
+
+	fmt.Printf("%#v\n", p1) // (*string)(nil)
+	fmt.Printf("%#v\n", p2) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -911,15 +975,15 @@ package main
 import "fmt"
 
 func main() {
-    // 仮引数を設定
-    result := func(x string) string {
-        
-        return x
-        
-    // 引数に値を渡す
-    }("Closure is working!")
-    
-    fmt.Printf("%#v\n", result)
+	// 仮引数を設定
+	result := func(x string) string {
+
+		return x
+
+		// 引数に値を渡す
+	}("Closure is working!")
+
+	fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -1023,7 +1087,7 @@ func main() {
 
 #### ・ポインタレシーバ
 
-関連付け後，関数はメソッドと呼ばれるようになる．レシーバとして渡された引数をメソッド内でそのまま使用する．ポインタレシーバによって関連付けられると，そのメソッドは構造体の状態を変えられるようになるので，構造体をミュータブルにしたい場合は，ポインタレシーバを使うと良い．
+関連付け後，関数はメソッドと呼ばれるようになる．レシーバとして渡された引数をメソッド内でそのまま使用する．ポインタレシーバによって関連付けられると，そのメソッドは構造体の状態を変えられるようになるので，構造体をミュータブルにしたい場合は，ポインタレシーバを使うと良い．構造体を初期化する処理を持つコンストラクタ関数のみをポインタレシーバとし，他のメソッドを全て値レシーバとすると，最低限にミュータブルなプログラムを実装できる．
 
 **＊実装例＊**
 
@@ -1073,21 +1137,21 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Println("Start")
-    
-    // あらかじめdefer関数を定義しておく
-    defer func() {        
-        err := recover()
-        
-        if err != nil {
-            fmt.Printf("Recover: %#v\n", err)
-        }
-        
-        fmt.Println("End")
-    }()
-    
-    // ここで意図的に処理を停止させている．
-    panic("Runtime error")
+	fmt.Println("Start")
+
+	// あらかじめdefer関数を定義しておく
+	defer func() {
+		err := recover()
+
+		if err != nil {
+			fmt.Printf("Recover: %#v\n", err)
+		}
+
+		fmt.Println("End")
+	}()
+
+	// ここで意図的に処理を停止させている．
+	panic("Runtime error")
 }
 ```
 
@@ -1137,21 +1201,21 @@ package main
 import "fmt"
 
 func division(x int, y int) (int, int) {
-    
-    // 商を計算する．
-    quotient := x / y
-    
-    // 余りを計算する．
-    remainder := x % y
-    
-    // 商と余りを返却する．
-    return quotient, remainder
+
+	// 商を計算する．
+	quotient := x / y
+
+	// 余りを計算する．
+	remainder := x % y
+
+	// 商と余りを返却する．
+	return quotient, remainder
 }
 
 func main() {
-    // 10÷3を計算する．
-    q, r := division(10, 3)
-    fmt.Printf("商=%d，余り=%d", q, r)
+	// 10÷3を計算する．
+	q, r := division(10, 3)
+	fmt.Printf("商=%d，余り=%d", q, r)
 }
 ```
 
@@ -1173,50 +1237,6 @@ func main() {
     
     // エラーキャッチする必要がなくなる
     fmt.Printf("%#v\n", flle)
-}
-```
-
-<br>
-
-### スコープの種類
-
-#### ・パッケージ内外から参照可能
-
-関数名の頭文字を大文字すると，パッケージ内外で関数をコールできるようになる．
-
-**＊実装例＊**
-
-```go
-package example
-
-func Example() {
-    // 何らかの処理
-}
-```
-
-```go
-package main
-
-func main() {
-    Example()
-}
-```
-
-#### ・パッケージ内のみ参照可能
-
-関数名の頭文字を小文字すると，パッケージ外で関数をコールできず，パッケージ内の関数をコールできるようになる．
-
-**＊実装例＊**
-
-```go
-package main
-
-func example() {
-    // 何らかの処理
-}
-
-func main() {
-    example()
 }
 ```
 
@@ -1273,6 +1293,8 @@ var (
 
 **＊実装例＊**
 
+パッケージ変数を宣言し，関数内で値を代入する．
+
 ```go
 package main
 
@@ -1281,6 +1303,24 @@ import (
 )
 
 // パッケージ変数
+var text string
+
+func main() {
+    text = "Hello World!"
+    fmt.Printf("%#v\n", text)
+}
+```
+
+変数への値の代入は関数内でしかできないため，宣言と代入を同時に行う型推論を使用するとエラーになる．
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// エラーになる．
 text := "Hello World!"
 
 func main() {
@@ -1310,7 +1350,105 @@ func main() {
 
 <br>
 
-## 05. エラーキャッチ，エラー返却，ロギング
+## 05. スコープ
+
+### 変数，定数
+
+#### ・パッケージ内外から参照可能
+
+変数名または定数名の頭文字を大文字すると，パッケージ内外でこれをコールできるようになる．
+
+**＊実装例＊**
+
+```go
+package example
+
+// 定数を定義する．
+const (
+	X  = "X"
+)
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    fmt.Printf("%#v\n", X) // X
+}
+```
+
+#### ・パッケージ内のみ参照可能
+
+変数名または定数名の頭文字を小文字すると，パッケージ外でこれをコールできなくなる．
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// 定数を定義する．
+const (
+	yZ = "yZ"
+)
+
+func main() {
+    fmt.Printf("%#v\n", yZ) // yZ
+}
+```
+
+<br>
+
+### 関数
+
+#### ・パッケージ内外から参照可能
+
+関数名の頭文字を大文字すると，パッケージ内外でこれをコールできるようになる．
+
+**＊実装例＊**
+
+```go
+package example
+
+func Example() {
+    // 何らかの処理
+}
+```
+
+```go
+package main
+
+func main() {
+    Example()
+}
+```
+
+#### ・パッケージ内のみ参照可能
+
+関数名の頭文字を小文字すると，パッケージ外でこれをコールできなくなる．
+
+**＊実装例＊**
+
+```go
+package main
+
+func example() {
+    // 何らかの処理
+}
+
+func main() {
+    example()
+}
+```
+
+<br>
+
+## 06. エラーキャッチ，エラー返却，ロギング
 
 ### エラーキャッチとエラー返却
 
@@ -1346,21 +1484,21 @@ osパッケージの```Open```メソッドからerrorインターフェースが
 package main
 
 import (
-    "fmt"
-    "log"
-    "os"
+	"fmt"
+	"log"
+	"os"
 )
 
 func main() {
-    // 処理結果とerrorインターフェースが返却される．
-    file, err := os.Open("filename.txt")
-    
-    if err != nil {
-        // エラーの内容を出力する．
-        log.Fatalf("ERROR: %#v\n", err)
-    }
-    
-    fmt.Printf("%#v\n", flle)
+	// 処理結果とerrorインターフェースが返却される．
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		// エラーの内容を出力する．
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
+	fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1376,25 +1514,26 @@ errorsパッケージの```New```メソッドにエラーメッセージを設�
 package main
 
 import (
-    "errors"
-    "fmt"
-    "log"
-    "os"
+	"errors"
+	"fmt"
+	"log"
+	"os"
 )
+
 func ThrowErrorsNew() error {
-    return errors.New("<エラーメッセージ>")
+	return errors.New("<エラーメッセージ>")
 }
 
 func main() {
-    file, err := os.Open("filename.txt")
-    
-    if err != nil {
-        // 独自エラーメッセージを設定する．
-        myErr := ThrowErrorsNew()
-        log.Fatalf("ERROR: %#v\n", myErr)
-    }
-    
-    fmt.Printf("%#v\n", flle)
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		// 独自エラーメッセージを設定する．
+		myErr := ThrowErrorsNew()
+		log.Fatalf("ERROR: %#v\n", myErr)
+	}
+
+	fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1408,26 +1547,25 @@ func main() {
 package main
 
 import (
-    "errors"
-    "fmt"
-    "log"
-    "os"
+	"fmt"
+	"log"
+	"os"
 )
 
 func ThrowErrorf() error {
-    return fmt.Errorf("%s %s", x, y)
+	return fmt.Errorf("%s %s", x, y)
 }
 
 func main() {
-    file, err := os.Open("filename.txt")
-    
-    if err != nil {
-        // 独自エラーメッセージを設定する．
-        myErr := ThrowErrorf()
-        log.Fatalf("ERROR: %#v\n", myErr)
-    }
-    
-    fmt.Printf("%#v\n", flle)
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		// 独自エラーメッセージを設定する．
+		myErr := ThrowErrorf()
+		log.Fatalf("ERROR: %#v\n", myErr)
+	}
+
+	fmt.Printf("%#v\n", flle)
 }
 ```
 
@@ -1498,7 +1636,38 @@ if err != nil {
 
 <br>
 
-## 06. ビルトインパッケージ
+## 07. 制御文
+
+### 配列またはスライスの走査
+
+#### ・for ... range
+
+配列またはスライスを走査する．PHPの```foreach```に相当する．
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	slice := []string{"a", "b", "c"}
+
+	for key, value := range slice {
+		fmt.Println(key, value)
+	}
+}
+
+// 0 a
+// 1 b
+// 2 c
+```
+
+<br>
+
+## 08. ビルトインパッケージ
 
 ### パッケージのソースコード
 
@@ -1549,26 +1718,26 @@ func main() {
 package main
 
 import (
-    "encoding/json"
-    "fmt"
-    "log"
+	"encoding/json"
+	"fmt"
+	"log"
 )
 
 type Person struct {
-    Name string `json:"Name"`
+	Name string `json:"Name"`
 }
 
 func main() {
-    person := Person{Name: "Hiroki"}
-    
-    json, err := json.Marshal(person)
-    
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
- 
-    // エンコード結果を出力
-    fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
+	person := Person{Name: "Hiroki"}
+
+	json, err := json.Marshal(person)
+
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
+	// エンコード結果を出力
+	fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -1582,32 +1751,32 @@ JSONを構造体に変換する．リクエストの受信によく使われる�
 
 ```go
 package main
- 
+
 import (
 	"encoding/json"
 	"fmt"
 	"log"
 )
- 
+
 type Person struct {
 	Name string
 }
- 
+
 func main() {
-    // リクエストを受信した場合を想定する．
-    byte := []byte(`{"name":"Hiroki"}`)
-    
-    var person Person
-    
-    fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
-    
-    // person変数を変換後の値に書き換えている．
-    err := json.Unmarshal(byte, &person)
-    
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
-    
+	// リクエストを受信した場合を想定する．
+	byte := []byte(`{"name":"Hiroki"}`)
+
+	var person Person
+
+	fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
+
+	// person変数を変換後の値に書き換えている．
+	err := json.Unmarshal(byte, &person)
+
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
 	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}（変数が書き換えられた）
 }
 ```
@@ -1970,7 +2139,42 @@ func main() {
 
 <br>
 
-## 06-02. 外部パッケージ
+## 09. よく使う外部パッケージ
+
+### testify
+
+#### ・mock
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/mock
+
+#### ・assert
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/assert
+
+<br>
+
+### aws-sdk-go-v2
+
+#### ・awsパッケージ
+
+汎用的な関数が同梱されている．
+
+参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2#section-directories
+
+ポインタ型から文字列型に変換する```ToString```メソッドや，反対に文字列型からポインタ型に変換する```String```メソッドをよく使う．
+
+参考：
+
+- https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
+- https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
+
+#### ・serviceパッケージ
+
+参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service
+
+<br>
+
+## 09-02. 外部パッケージの管理
 
 ### go.modファイル
 
@@ -2057,9 +2261,3 @@ func main() {
 #### ・```go.sum```ファイルとは
 
 PHPにおける```composer.lock```ファイルに相当する．```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される．パッケージごとのチェックサムが記録されるため，前回のインストール時と比較して，ライブラリに変更があるかどうかを検知できる．
-
-<br>
-
-### testify
-
-参考：https://pkg.go.dev/github.com/stretchr/testify

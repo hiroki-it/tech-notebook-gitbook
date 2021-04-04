@@ -102,6 +102,77 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
 
 ## 03. PHPUnit
 
+### コマンド
+
+#### ・事前準備
+
+PHPunitの設定は，```phpunit.xml```ファイルで定義されている．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．テストのディレクトリ名やファイル名を追加変更したい場合は，```phpunit.xml```ファイルの```testsuites```タグを変更する．
+
+```xml
+<phpunit>
+    
+...
+    
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+ 
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    
+...
+    
+</phpunit>
+```
+
+#### ・オプション無し
+
+全てのテストファイルに定義されたメソッドを実行する．
+
+```shell
+$ vendor/bin/phpunit
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+
+...                                                   3 / 3 (100%)
+ 
+Time: 621 ms, Memory: 24.00 MB
+ 
+OK (3 tests, 3 assertions)
+```
+
+#### ・--filter
+
+特定のファイル名のテストファイルに定義されたメソッドを実行する．
+
+```shell
+$ vendor/bin/phpunit --filter Example
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+
+...                                                   1 / 1 (100%)
+ 
+Time: 207 ms, Memory: 8.00 MB
+ 
+OK (1 tests, 1 assertions)
+```
+
+#### ・--list-tests
+
+テストファイルに定義されたメソッドのうち，実行されるものを一覧で表示する．
+
+```shell
+$ vendor/bin/phpunit --list-tests
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+ 
+Available test(s):
+ - Tests\Unit\ExampleTest::testExampleMethod
+ - Tests\Feature\ExampleTest::testExampleMethod
+```
+
+<br>
+
 ### ユニットテスト
 
 #### ・ユニットテストとは

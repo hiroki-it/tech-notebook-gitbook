@@ -135,7 +135,7 @@ json["prefecture"] = "Tokyo";
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
     
 class Example 
@@ -270,7 +270,7 @@ JSONからPHP型オブジェクトの変換には．```json_decode```メソッ�
 <?php
 
 // リクエストで取得したJSON
-$escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}";
+$escapedJson = '{\"fruit\":[\"banana\",\"apple\"],\"account\":200}';
 
 // object形式オブジェクトに変換
 $object = json_decode($escapedJson, false);
@@ -295,7 +295,7 @@ var_dump($object);
 <?php
 
 // リクエストで取得したJSON
-$escapedJson = "{\"fruit\":[\"banana\",\"apple\"],\"account\":200}";
+$escapedJson = '{\"fruit\":[\"banana\",\"apple\"],\"account\":200}';
 
 // 連想配列形式オブジェクトに変換
 $array = json_decode($escapedJson, true);
@@ -319,7 +319,7 @@ var_dump($array);
 ```php
 <?php
 
-$object =  '{"fruit":["banana","apple"],"account":200}';
+$object = '{"fruit":["banana","apple"],"account":200}';
 
 // JSONに変換
 $json = json_encode($object);

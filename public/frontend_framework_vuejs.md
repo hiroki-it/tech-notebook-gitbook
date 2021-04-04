@@ -1113,7 +1113,7 @@ Vueインスタンスが削除された後に実行する．インスタンス�
 
 #### ・build
 
-Targetオプションに```server```を割り当て，アプリケーションをWebpackでビルドする．Webpackにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．
+Targetオプションに```server```を割り当て，アプリケーションをWebpackでビルドする．Webpackにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．テストフレームワークはNodeを使用して動かす必要があるため，SSGアプリケーションでもテスト時には```build```コマンドが必要になる．
 
 ```shell
 $ nuxt build
@@ -1121,7 +1121,7 @@ $ nuxt build
 
 #### ・generate
 
-Targetオプションに```static```を割り当て，静的ファイルをビルドする．
+Targetオプションに```static```を割り当て，静的ファイルをビルドする．データベースに格納したデータ（例：画像ファイルパス）を元にビルドすることも可能である．
 
 ```shell
 $ nuxt generate

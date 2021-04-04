@@ -1210,7 +1210,7 @@ class Example
         foreach ($this->properties as $property) {
 
             // 引数の無名関数によって，データに対する加工方法が異なる．
-            // 例えば，判定でTRUEのもののみを返すメソッドを渡すと，自データを絞り込むような処理を行える．
+            // 例えば，判定でtrueのもののみを返すメソッドを渡すと，自データを絞り込むような処理を行える．
             $returned = call_user_func($property, $callback);
             if ($returned) {
 
@@ -1256,10 +1256,10 @@ class requiredTime
     public function isMinuteByWalking()
     {
         if ($this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE < self::JUDGMENT_MINUTE) {
-            return TRUE;
+            return true;
         }
         
-        return FALSE;
+        return false;
     }
     
     public function minuteByWalking()
