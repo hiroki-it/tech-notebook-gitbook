@@ -102,11 +102,15 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
 
 ## 03. PHPUnit
 
-### コマンド
+### phpunit.xmlファイル
 
-#### ・事前準備
+#### ・```phpunit.xml```ファイルとは
 
-PHPunitの設定は，```phpunit.xml```ファイルで定義されている．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．テストのディレクトリ名やファイル名を追加変更したい場合は，```phpunit.xml```ファイルの```testsuites```タグを変更する．
+PHPUnitの設定は，```phpunit.xml```ファイルで定義されている．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．
+
+#### ・```testsuites```タグ
+
+```testsuites```タグを追加変更すると，テスト対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
 
 ```xml
 <phpunit>
@@ -117,7 +121,7 @@ PHPunitの設定は，```phpunit.xml```ファイルで定義されている．�
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
- 
+        
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
@@ -128,11 +132,48 @@ PHPunitの設定は，```phpunit.xml```ファイルで定義されている．�
 </phpunit>
 ```
 
+#### ・```php```タグ
+
+PHPUnitの実行前に設定する```ini_set```関数，```define```関数，グローバル変数，を定義できる．タグ名との対応関係については，以下を参考にせよ．
+
+参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
+
+**＊実装例＊**
+
+composerの実行時にメモリ不足にならないようにメモリを拡張する．また，テスト用のデータベースに接続できるよう，データベースに関する環境変数を設定する．
+
+```xml
+<phpunit>
+    
+...
+    
+    <php>
+        <!-- <グローバル変数名 name="キー名" value="値"/> -->
+        
+        <!-- composerの実行時にメモリ不足にならないようにする -->
+        <ini name="memory_limit" value="512M"/>
+        
+        <!-- データベースの接続情報 -->
+        <server name="DB_CONNECTION" value="mysql"/>
+        <server name="DB_DATABASE" value="test"/>
+        <server name="DB_USERNAME" value="test"/>
+        <server name="DB_PASSWORD" value="test"/>
+    </php>
+    
+...
+    
+</phpunit>
+```
+
+<br>
+
+### コマンド
+
 #### ・オプション無し
 
 全てのテストファイルに定義されたメソッドを実行する．
 
-```shell
+```bash
 $ vendor/bin/phpunit
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
 
