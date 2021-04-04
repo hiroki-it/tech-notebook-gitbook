@@ -316,6 +316,7 @@ services:
 また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下のSQLファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．これにより，mysqlの起動時に
 
 ```sql
+-- /infra/docker/mysql/initにSQLファイルを置く．
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
 GRANT ALL ON *.* TO 'example'@'%' ;
 ```

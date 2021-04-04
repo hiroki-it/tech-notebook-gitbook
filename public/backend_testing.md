@@ -4,27 +4,50 @@
 
 ### テスティングフレームワークによるテスト
 
-1. テスティングフレームワークによる，静的解析を行う．
-2. テスティングフレームワークによる，ユニットテストと機能テストを行う．
+#### ・テスト手順
+
+1. ソースコードを整形する．
+2. ソースコードの静的解析を行う．
+3. ユニットテストと機能テストを行う．
+
+#### ・整形ツール
+
+PhpStorm，PHP-CS-Fixer
+
+#### ・静的解析ツール
+
+PhpStorm，PHPStan，Larastan
+
+#### ・ユニットテストツール，機能テストツール
+
+PHPUnit
+
+<br>
 
 ### テスト仕様書に基づくテスト
+
+#### ・テスト手順
 
 1. テスト仕様書に基づく，ユニットテスト，Integrationテスト，User Acceptanceテストを行う．
 2. グラフによるテストの可視化
 
 <br>
 
-## 02.  モックオブジェクトとスタブ
+## 02.  処理の見せかけ
 
-### モックオブジェクトとは
+### モックオブジェクトとスタブ
 
-コードにおいては，テスト対象のクラス以外のクラスやメソッドの詳細な処理は実装しない．クラスの一部または全体を，処理を持たないモックオブジェクトに置き換える．
+#### ・モックオブジェクトとは
 
-<br>
+コードにおいては，テスト対象のクラス以外のクラスやメソッドの詳細な処理は実装せずに，クラス全体を処理を持たないモックオブジェクトに置き換える．
 
-### スタブとは
+#### ・スタブとは
 
-ユニットテストのように，特に一連の処理の一部分だけを検証するために頻繁に用いる．ただし，機能テストで用いることもある．ユニットテストと機能テストについては，以降の説明を参考にせよ．一連の処理の中で，テスト対象の処理以外の部分に実体があるように仮定したスタブとして定義しておく．これにより，テスト対象の処理のみが実体であっても一連の処理を再現できる．```verify```メソッドの実装例も参考にせよ．
+ユニットテストのように，特に一連の処理の一部分だけを検証するために用いる．ただし，機能テストで用いることもある．ユニットテストと機能テストについては，以降の説明を参考にせよ．一連の処理の中でテスト対象でない部分について，実際に処理の実体があるかのように見せかけることができる．これにより，テスト対象の処理のみに実体であっても，一連の処理を実行できる．```verify```メソッドの実装例も参考にせよ．
+
+#### ・モックオブジェクトツール，スタブツール
+
+Phake，Mockery
 
 <br>
 
@@ -57,6 +80,8 @@ $mock = Phake::mock(Example::class);
 
 ```php
 <?php
+
+$mock = Phake::mock(Example::class);
 
 \Phake::when($mock)
     ->method($param)
@@ -102,11 +127,58 @@ class QueryObjectTest extends \PHPUnit_Framework_TestCase
 
 ## 03. PHPUnit
 
+### コマンド
+
+#### ・オプション無し
+
+全てのテストファイルを対象として，定義されたメソッドを実行する．
+
+```bash
+$ vendor/bin/phpunit
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+
+...                                                   3 / 3 (100%)
+ 
+Time: 621 ms, Memory: 24.00 MB
+ 
+OK (3 tests, 3 assertions)
+```
+
+#### ・--filter
+
+特定のテストファイルを対象として，定義されたメソッドを実行する．
+
+```shell
+$ vendor/bin/phpunit --filter Example
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+
+...                                                   1 / 1 (100%)
+ 
+Time: 207 ms, Memory: 8.00 MB
+ 
+OK (1 tests, 1 assertions)
+```
+
+#### ・--list-tests
+
+実行の対象となるテストファイルを一覧で表示する．
+
+```shell
+$ vendor/bin/phpunit --list-tests
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+ 
+Available test(s):
+ - Tests\Unit\ExampleTest::testExampleMethod
+ - Tests\Feature\ExampleTest::testExampleMethod
+```
+
+<br>
+
 ### phpunit.xmlファイル
 
 #### ・```phpunit.xml```ファイルとは
 
-PHPUnitの設定は，```phpunit.xml```ファイルで定義されている．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．
+PHPUnitの設定を行う．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．
 
 #### ・```testsuites```タグ
 
@@ -163,53 +235,6 @@ composerの実行時にメモリ不足にならないようにメモリを拡張
 ...
     
 </phpunit>
-```
-
-<br>
-
-### コマンド
-
-#### ・オプション無し
-
-全てのテストファイルに定義されたメソッドを実行する．
-
-```bash
-$ vendor/bin/phpunit
-PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
-
-...                                                   3 / 3 (100%)
- 
-Time: 621 ms, Memory: 24.00 MB
- 
-OK (3 tests, 3 assertions)
-```
-
-#### ・--filter
-
-特定のファイル名のテストファイルに定義されたメソッドを実行する．
-
-```shell
-$ vendor/bin/phpunit --filter Example
-PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
-
-...                                                   1 / 1 (100%)
- 
-Time: 207 ms, Memory: 8.00 MB
- 
-OK (1 tests, 1 assertions)
-```
-
-#### ・--list-tests
-
-テストファイルに定義されたメソッドのうち，実行されるものを一覧で表示する．
-
-```shell
-$ vendor/bin/phpunit --list-tests
-PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
- 
-Available test(s):
- - Tests\Unit\ExampleTest::testExampleMethod
- - Tests\Feature\ExampleTest::testExampleMethod
 ```
 
 <br>
@@ -623,6 +648,8 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 
 メソッドのアノテーションで，```@test```と```@dataProvider データプロバイダ名```を宣言する．データプロバイダの返却値として配列を設定し，配列の値の順番で，引数に値を渡すことができる．
 
+**＊実装例＊**
+
 ```php
 <?php
 
@@ -678,6 +705,8 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
 テストクラスの中で，自動的に一番最後にコールされるメソッドである．例えば，グローバル変数やサービスコンテナにデータを格納する場合，後のテストでもそのデータが誤って使用されてしまわないように，サービスコンテナを破棄するために用いられる．
 
+**＊実装例＊**
+
 ```php
 <?php
 
@@ -702,7 +731,61 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
 <br>
 
-## 04. テスト仕様書に基づくユニットテスト
+## 04. PHPStan
+
+### コマンド
+
+#### ・オプション無し
+
+全てのファイルを対象として，静的解析を行う．
+
+```shell
+$ vendor/bin/phpstan analyse
+```
+
+<br>
+
+### phpstan.neonファイル
+
+#### ・```phpstan.neonファイル```とは
+
+PHPStanの設定を行う．
+
+#### ・```includes```
+
+```yml
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+```
+
+#### ・```parameters```
+
+静的解析の設定を行う．
+
+**＊実装例＊**
+
+```yml
+parameters:
+    # 解析対象のディレクトリ
+    paths:
+        - src
+    # 解析の厳格さ（最大レベルは８）．各レベルの解析項目については以下を参考にせよ．
+    # https://phpstan.org/user-guide/rule-levels
+    level: 5
+    # 発生を無視するエラーメッセージ
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+    # 解析対象として除外するディレクトリ
+    excludes_analyse:
+        - ./src/Example/*
+        
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
+```
+
+<br>
+
+## 05. テスト仕様書に基づくユニットテスト
 
 PHPUnitでのユニットテストとは意味合いが異なるので注意．
 
@@ -782,7 +865,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
  <br>
 
-## 04-02. テスト仕様書に基づく結合テスト
+## 05-02. テスト仕様書に基づく結合テスト
 
 単体テストの次に行うテスト．複数のモジュールを繋げ，モジュール間のインターフェイスが適切に動いているかを検証．
 
@@ -811,7 +894,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 <br>
 
 
-## 04-03. テスト仕様書に基づくシステムテスト
+## 05-03. テスト仕様書に基づくシステムテスト
 
 ### システムテスト
 
@@ -906,7 +989,9 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 <br>
 
-## 05. Regressionテスト（退行テスト）
+## 06. その他のテスト
+
+### Regressionテスト（退行テスト）
 
 システムを変更した後，他のプログラムに悪影響を与えていないかを検証．
 
@@ -914,7 +999,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 <br>
 
-## 06. グラフによるテストの可視化
+## 07. グラフによるテストの可視化
 
 ### バグ管理図
 
