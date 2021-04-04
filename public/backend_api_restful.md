@@ -135,22 +135,6 @@ http://www.example.co.jp:80/users/777?text1=a&text2=b
 
 ### エンドポイントの作り方
 
-#### ・見本
-
-```http
-GET http://www.example.co.jp/users/{id}
-```
-```http
-POST http://www.example.co.jp/users
-```
-```http
-PUT http://www.example.co.jp/users/{id}
-```
-```http
-DELETE http://www.example.co.jp/users/{id}
-```
-
-
 #### ・短くすること
 
 **＊悪い実装例＊**
@@ -160,6 +144,13 @@ DELETE http://www.example.co.jp/users/{id}
 
 ```http
 GET http://www.example.co.jp/service/api/users/12345
+```
+
+**＊良い実装例＊**
+
+
+```http
+GET http://www.example.co.jp/users/12345
 ```
 
 #### ・略称を使わないこと
@@ -172,6 +163,14 @@ GET http://www.example.co.jp/service/api/users/12345
 GET http://www.example.co.jp/u/12345
 ```
 
+**＊良い実装例＊**
+
+略称を使わずに，「users」とする．
+
+```http
+GET http://www.example.co.jp/users/12345
+```
+
 #### ・小文字を使うこと
 
 **＊悪い実装例＊**
@@ -180,17 +179,29 @@ GET http://www.example.co.jp/u/12345
 GET http://www.example.co.jp/Users/12345
 ```
 
+**＊良い実装例＊**
+
+```http
+GET http://www.example.co.jp/users/12345
+```
+
 #### ・ケバブケースを使うこと
 
 **＊悪い実装例＊**
-
-スネークケースやキャメケースを使わない
 
 ```http
 GET http://www.example.co.jp/users_id/12345
 ```
 
-ただ，そもそもケバブ方式も利用しないのも手である
+**＊良い実装例＊**
+
+スネークケースやキャメケースを使わずに，ケバブケースを使用する．
+
+```http
+GET http://www.example.co.jp/users-id/12345
+```
+
+ただ，そもそもケバブ方式も利用せずに，スラッシュで区切ってしまうのも手である
 
 ```http
 GET http://www.example.co.jp/users/id/12345
@@ -206,6 +217,12 @@ Usersという集合の中に，Idが存在しているため，単数形は使�
 GET http://www.example.co.jp/user/12345
 ```
 
+**＊良い実装例＊**
+
+```http
+GET http://www.example.co.jp/users/12345
+```
+
 #### ・システムの設計方法がバレないURIにすること
 
 **＊悪い実装例＊**
@@ -214,6 +231,12 @@ GET http://www.example.co.jp/user/12345
 
 ```http
 GET http://www.example.co.jp/cgi-bin/get_users.php
+```
+
+**＊良い実装例＊**
+
+```http
+GET http://www.example.co.jp/users/12345
 ```
 
 #### ・HTTPメソッドの名前を使用しないこと
@@ -239,9 +262,27 @@ PUT http://www.example.co.jp/users/update/12345
 DELETE http://www.example.co.jp/users/delete/12345
 ```
 
+**＊良い実装例＊**
+
+```http
+GET http://www.example.co.jp/users/{id}
+```
+
+```http
+POST http://www.example.co.jp/users
+```
+
+```http
+PUT http://www.example.co.jp/users/{id}
+```
+
+```http
+DELETE http://www.example.co.jp/users/{id}
+```
+
 #### ・数字，バージョン番号を使用しないこと
 
-**悪い実装例＊**
+**＊悪い実装例＊**
 
 ここで，```alpha```，```v2```，といったキーワードは，当時の設計者しかわからないため，あまり良くない．ただし，利便上，使う場合もある．
 
@@ -249,7 +290,13 @@ DELETE http://www.example.co.jp/users/delete/12345
 GET http://www.example.co.jp/v2/users/12345
 ```
 
-リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い．
+**＊良い実装例＊**
+
+```http
+GET http://www.example.co.jp/users/12345
+```
+
+URLにバージョンを表記しない代わりに，リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い．
 
 ```http
 X-Api-Version: 1

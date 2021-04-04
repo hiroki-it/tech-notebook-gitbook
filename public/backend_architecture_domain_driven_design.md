@@ -833,6 +833,57 @@ class MoneyVO
 
 所要時間データの計算をController内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
 
+**＊実装例＊**
+
+```php
+<?php
+    
+class requiredTime
+{
+    // 判定値，歩行速度の目安，車速度の目安，を定数で定義する．
+    const JUDGMENT_MINUTE = 21;
+    const WALKING_SPEED_PER_MINUTE = 80;
+    const CAR_SPEED_PER_MINUTE = 400;
+    
+    private $distance;
+    
+    public function __construct(int $distance)
+    {
+        $this->distance = $distance;
+    }
+    
+    /**
+     * 徒歩または車のどちらを使用するかを判定します．
+     */    
+    public function isMinuteByWalking()
+    {
+        if ($this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE < self::JUDGMENT_MINUTE) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * 徒歩での所要時間を計算します．
+     */    
+    public function minuteByWalking()
+    {
+        $minute = $this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE;
+        return ceil($minute);
+    }
+    
+    /**
+     * 車での所用時間を計算します．
+     */    
+    public function minuteByCar()
+    {
+        $minute = $this->distance * 1000 / self::CAR_SPEED_PER_MINUTE;
+        return ceil($minute);
+    }
+}
+```
+
 #### ・住所
 
 郵便番号データとその処理を値オブジェクトとして分割する．
