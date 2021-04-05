@@ -278,7 +278,7 @@ xxxxxxxxxxxx     <プロジェクト名>_default     bridge      local
 
 mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置されたSQLファイルやシェルスクリプトは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
 
-参考：https://github.com/docker-library/mysql/blob/7f405f6ab5e99b1dd6e7a071969ae6abcc101655/8.0/Dockerfile.debian#L92-L93
+参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
 **＊実装例＊**
 
