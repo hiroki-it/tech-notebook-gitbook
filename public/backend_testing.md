@@ -33,99 +33,7 @@ PHPUnit
 
 <br>
 
-## 02.  処理の見せかけ
-
-### モックオブジェクトとスタブ
-
-#### ・モックオブジェクトとは
-
-コードにおいては，テスト対象のクラス以外のクラスやメソッドの詳細な処理は実装せずに，クラス全体を処理を持たないモックオブジェクトに置き換える．
-
-#### ・スタブとは
-
-ユニットテストのように，特に一連の処理の一部分だけを検証するために用いる．ただし，機能テストで用いることもある．ユニットテストと機能テストについては，以降の説明を参考にせよ．一連の処理の中でテスト対象でない部分について，実際に処理の実体があるかのように見せかけることができる．これにより，テスト対象の処理のみに実体であっても，一連の処理を実行できる．```verify```メソッドの実装例も参考にせよ．
-
-#### ・モックオブジェクトツール，スタブツール
-
-Phake，Mockery
-
-<br>
-
-### Phake
-
-#### ・Phakeとは
-
-モックオブジェクトとスタブを簡単に実装するライブラリ．
-
-参考：https://github.com/mlively/Phake#phake
-
-#### ・```mock```メソッド
-
-クラス名（名前空間）を元に，モックオブジェクトを生成する．
-
-```php
-<?php
-
-// クラスの名前空間を引数として渡す．
-$mock = Phake::mock(Example::class);
-```
-
-#### ・```when```メソッド
-
-モックオブジェクトに対して，スタブを生成する．
-
-**＊実装例＊**
-
- モックオブジェクト（```mock```変数）に対して，```method```メソッドを定義する．これに```param```変数が渡された時に，空配列を返却する．
-
-```php
-<?php
-
-$mock = Phake::mock(Example::class);
-
-\Phake::when($mock)
-    ->method($param)
-    ->thenReturn([]);
-```
-
-#### ・```verify```メソッド
-
-メソッドがn回実行できたことを検証できる．一連の処理の中で最後に実行されるメソッドのスタブを対象とすることが多い．
-
-**＊実装例＊**
-
-一連の処理の中で，QueryObjectクラスが正しく初期化されるかを検証する．そのため，QueryObjectクラスは実体を用意する．それ以外の処理はスタブで定義する．実際はもう少し複雑な処理を検証するが，例のため簡単な処理をテストしている．
-
-```php
-<?php
-
-class QueryObjectTest extends \PHPUnit_Framework_TestCase
-{   
-   /**
-    * @test
-    */    
-    public function testNewQueryObject()
-    {    
-        // 対象以外の処理をモックオブジェクトとして定義する．
-        $mock = Phake::mock(Example::class);
-        
-        // テストしたい処理
-        $queryObject = new QueryObject();
-
-        // モックオブジェクトに対してスタブを定義する．
-        \Phake::when($mock)
-            ->find($queryObject)
-            ->thenReturn([]);
-
-        // findメソッドを1回実行できたことを検証する．
-        Phake::verify($mock, Phake::times(1))->find($queryObject);
-    }
-}
-```
-
-<br>
-
-## 03. PHPUnit
+## 02. PHPUnit
 
 ### コマンド
 
@@ -182,7 +90,7 @@ PHPUnitの設定を行う．標準の設定では，あらかじめルートデ�
 
 #### ・```testsuites```タグ
 
-```testsuites```タグを追加変更すると，テスト対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
+```testsuites```タグを追加変更すると，検証対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
 
 ```xml
 <phpunit>
@@ -243,7 +151,7 @@ composerの実行時にメモリ不足にならないようにメモリを拡張
 
 #### ・ユニットテストとは
 
-クラスやメソッドが単体で処理が正しく動作するかを検証する方法．テスト対象以外の処理はスタブとして定義する．以降のテスト例では，次のような通知クラスとメッセージクラスが前提にあるとする．
+クラスやメソッドが単体で処理が正しく動作するかを検証する方法．検証対象以外の処理はスタブとして定義する．以降のテスト例では，次のような通知クラスとメッセージクラスが前提にあるとする．
 
 ```php
 <?php
@@ -350,8 +258,9 @@ class ExampleMessage
 
 use ExampleMessage;
 use ExampleNotifiation;
+use PHPUnit\Framework\TestCase;
 
-class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
+class ExampleNotificationTest extends TestCase
 {
     private $logger;
 
@@ -359,7 +268,7 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        // テスト対象外のクラスはモックとする．
+        // 検証対象外のクラスはモックとする．
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -402,8 +311,9 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
 use ExampleMessage;
 use ExampleNotifiation;
+use PHPUnit\Framework\TestCase;
 
-class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
+class ExampleNotificationTest extends TestCase
 {
     private $logger;
 
@@ -411,7 +321,7 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        // テスト対象外のクラスはモックとする．
+        // 検証対象外のクラスはモックとする．
         $this->client = \Phake::mock(Client::class);
         $this->logger = \Phake::mock(LoggerInterface::class);
     }
@@ -453,7 +363,9 @@ class ExampleNotificationTest extends \PHPUnit_Framework_TestCase
 ```php
 <?php
 
-class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ExampleControllerTest extends TestCase
 {
    /**
     * @test
@@ -507,8 +419,9 @@ Controllerが200ステータスのレスポンスを返信することを検証�
 <?php
     
 use GuzzleHttp\Client;    
+use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+class ExampleControllerTest extends TestCase
 {
    /**
     * @test
@@ -542,8 +455,9 @@ Controllerが200ステータスのレスポンスを返信すること，更新�
 <?php
 
 use GuzzleHttp\Client;
+use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+class ExampleControllerTest extends TestCase
 {
     /**
      * @test
@@ -597,8 +511,9 @@ Controllerが400ステータスのレスポンスを返信すること，レス�
 <?php
 
 use GuzzleHttp\Client;
+use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends \PHPUnit_Framework_TestCase
+class ExampleControllerTest extends TestCase
 {
     /**
      * @test
@@ -653,7 +568,9 @@ class ExampleControllerTest extends \PHPUnit_Framework_TestCase
 ```php
 <?php
 
-class ExampleControllerTest
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
 {
     /* @test
      * @dataProvider provideData
@@ -686,8 +603,10 @@ class ExampleControllerTest
 
 ```php
 <?php
+    
+use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends \PHPUnit_Framework_TestCase
+class ExampleTest extends TestCase
 {
     protected $example;
     
@@ -703,14 +622,16 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
 #### ・```tearDown```メソッド
 
-テストクラスの中で，自動的に一番最後にコールされるメソッドである．例えば，グローバル変数やサービスコンテナにデータを格納する場合，後のテストでもそのデータが誤って使用されてしまわないように，サービスコンテナを破棄するために用いられる．
+テストクラスの中で，自動的に一番最後にコールされるメソッドである．例えば，グローバル変数やサービスコンテナにデータを格納する場合，後の検証でもそのデータが誤って使用されてしまわないように，サービスコンテナを破棄するために用いられる．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-class ExampleTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
 {
     protected $container;
     
@@ -725,6 +646,151 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     {
         // 次に，DIコンテナにデータを格納する．
         $this->container = null;
+    }
+}
+```
+
+<br>
+
+## 03.  Test Double（テストダブル）
+
+### テストダブルの種類
+
+#### ・モックオブジェクト
+
+上流クラスが下流クラスを正しくコールできるかどうかを検証したい時に，上流クラス以外の部分の処理は不要であり，下流クラスの実体があるかのように見せかける．この見せかけの下流クラスを『モックオブジェクト』という．この時，下流クラスのメソッドに正しいパラメータを渡し，メソッドを正しい回数実行できているかを検証する．
+
+#### ・スタブ
+
+クラスのメソッドの特定の処理を検証したい時に，対象以外の部分の処理は不要であり，処理の実体があるかのように見せかける．この見せかけの部分的処理を『スタブ』という．検証対象の処理のみに実体であっても，一連の処理を実行できる．実体のあるクラスに対してだけでなく，モックオブジェクトにもスタブを定義できる．
+
+#### ・モックオブジェクトツール，スタブツール
+
+PHPUnit，Phake，Mockery
+
+<br>
+
+### PHPUnit
+
+#### ・```createMock```メソッド
+
+クラスの名前空間を元に，モックオブジェクトを生成する．
+
+```php
+<?php
+    
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{   
+   /**
+    * @test
+    */    
+    public function testExample()
+    {    
+        $mock = $this->createMock(Example::class);
+    }
+}
+```
+
+#### ・```method```メソッド
+
+ モックオブジェクトに対してスタブを定義する．また，特定の変数が渡された時に，特定の値を返却させることができる．
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{   
+   /**
+    * @test
+    */    
+    public function testExample()
+    {    
+        $mock = $this->createMock(Example::class);
+        
+        $mock->method("find")
+            ->with(1)
+            ->willReturn([]);
+    }
+}
+```
+
+<br>
+
+### Phake
+
+#### ・Phakeとは
+
+モックオブジェクトとスタブを簡単に実装するライブラリ．
+
+参考：https://github.com/mlively/Phake#phake
+
+#### ・```mock```メソッド
+
+クラスの名前空間を元に，モックオブジェクトを生成する．
+
+```php
+<?php
+
+$mock = Phake::mock(Example::class);
+```
+
+#### ・```when```メソッド
+
+ モックオブジェクトに対してスタブを定義する．また，特定の変数が渡された時に，特定の値を返却させることができる．
+
+**＊実装例＊**
+
+モックオブジェクトの```find```メソッドは，```1```が渡された時に，空配列を返却する．
+
+```php
+<?php
+    
+$mock = Phake::mock(Example::class);
+
+\Phake::when($mock)
+    ->find(1)
+    ->thenReturn([]);
+```
+
+#### ・```verify```メソッド
+
+モックオブジェクトがメソッドが```n```回実行できたことを検証できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{   
+   /**
+    * @test
+    */    
+    public function testExample()
+    {    
+        // モックオブジェクトを定義する．
+        $mockExampleRepository = Phake::mock(ExampleRepository::class);
+        $exampleId = Phake::mock(ExampleId::class);
+
+        // モックオブジェクトにスタブを定義する．
+        \Phake::when($mockExampleRepository)
+            ->find($exampleId)
+            ->thenReturn(new User(1)); 
+        
+        // 上流クラスにモックオブジェクトを設定する．
+        $example = new Example($mockExampleRepository);
+        
+        // 上流クラスの内部にある下流モックオブジェクトのfindメソッドをコールする
+        $example->getUser($exampleId)
+
+        // 上流のクラスが，下流モックオブジェクトにパラメータを渡し，メソッドを実行したことを検証する．
+        Phake::verify($mockExampleRepository, Phake::times(1))->find($exampleId);
     }
 }
 ```
@@ -753,7 +819,7 @@ PHPStanの設定を行う．
 
 #### ・```includes```
 
-```yml
+```yaml
 includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 ```
@@ -764,7 +830,7 @@ includes:
 
 **＊実装例＊**
 
-```yml
+```yaml
 parameters:
     # 解析対象のディレクトリ
     paths:
@@ -787,9 +853,15 @@ parameters:
 
 ## 05. テスト仕様書に基づくユニットテスト
 
-PHPUnitでのユニットテストとは意味合いが異なるので注意．
+### 注意点
+
+PHPUnitでのユニットテストとは意味合いが異なるので注意する．
+
+<br>
 
 ### ブラックボックステスト
+
+#### ・ブラックボックステストとは
 
 実装内容は気にせず，入力に対して，適切な出力が行われているかを検証する．
 
@@ -798,6 +870,8 @@ PHPUnitでのユニットテストとは意味合いが異なるので注意．
 <br>
 
 ### ホワイトボックステスト
+
+#### ・ホワイトボックステストとは
 
 実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかを検証する．ホワイトボックステストには，以下の方法がある．何を検証するかに着目すれば，思い出しやすい．
 
@@ -813,34 +887,34 @@ if (A = 1 && B = 1) {
 
 上記のif文におけるテストとして，以下の４つの方法が考えられる．基本的には，複数条件網羅が用いられる．
 
-#### ・命令網羅（『全ての処理』が実行されるかをテスト）
+#### ・命令網羅
 
 ![p494-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-1.png)
 
-全ての命令が実行されるかをテスト（ここでは処理は1つ）．
+全ての命令が実行されるかを検証する．
 
-すなわち…
+**＊例＊**
 
 A = 1，B = 1 の時，```return X``` が実行されること．
 
-#### ・判定条件網羅（『全ての判定』が実行されるかをテスト）
+#### ・判定条件網羅
 
 ![p494-2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-2.png)
 
-全ての判定が実行されるかをテスト（ここでは判定は```TRUE```か```FALSE```の2つ）．
+全ての判定が実行されるかを検証する．
 
-すなわち…
+**＊例＊**
 
 A = 1，B = 1 の時，```return X``` が実行されること．
 A = 1，B = 0 の時，```return X``` が実行されないこと．
 
-#### ・条件網羅（『各条件の取り得る全ての値』が実行されるかをテスト）
+#### ・条件網羅
 
 ![p494-3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-3.png)
 
-各条件が，取り得る全ての値で実行されるかをテスト（ここでは，Aが0と1，Bが0と1になる組み合わせなので，2つ）
+各条件が，取り得る全ての値で実行されるかを検証する．
 
-すなわち…
+**＊例＊**
 
 A = 1，B = 0 の時，```return X``` が実行されないこと．
 A = 0，B = 1 の時，```return X``` が実行されないこと．
@@ -850,13 +924,13 @@ A = 0，B = 1 の時，```return X``` が実行されないこと．
 A = 1，B = 1 の時，```return X``` が実行されること．
 A = 0，B = 0 の時，```return X``` が実行されないこと．
 
-#### ・複数条件網羅（『各条件が取り得る全ての値』，かつ『全ての組み合わせ』が実行されるかをテスト）
+#### ・複数条件網羅
 
 ![p494-4](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-4.png)
 
-各条件が，取り得る全ての値で，かつ全ての組み合わせが実行されるかをテスト（ここでは4つ）
+各条件が，取り得る全ての値で，かつ全ての組み合わせが実行されるかを検証する．
 
-すなわち…
+**＊例＊**
 
 A = 1，B = 1 の時，```return X``` が実行されること．
 A = 1，B = 0 の時，```return X``` が実行されないこと．
@@ -867,21 +941,27 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 ## 05-02. テスト仕様書に基づく結合テスト
 
+### 結合テストとは
+
 単体テストの次に行うテスト．複数のモジュールを繋げ，モジュール間のインターフェイスが適切に動いているかを検証．
 
 ![結合テスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p491-1.jpg)
 
-### Top-downテスト
+<br>
 
-上位のモジュールから下位のモジュールに向かって，結合テストを行う場合，下位には Stub と呼ばれるダミーモジュールを作成する．
+### 結合テストの方向
+
+#### ・トップダウンテスト
+
+上流のモジュールから下流のモジュールに向かって，結合テストを行う．下流にはテストダブルのスタブを作成する．
 
 ![トップダウンテスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/トップダウンテスト.jpg)
 
 <br>
 
-### Bottom-upテスト
+#### ・ボトムアップテスト
 
-下位のモジュールから上位のモジュールに向かって，結合テストを行う場合，上位には Driver と呼ばれるダミーモジュールを作成する．
+下流のモジュールから上流のモジュールに向かって，結合テストを行う．上流にはテストダブルのドライバーを作成する．
 
 ![ボトムアップテスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ボトムアップテスト.jpg)
 
@@ -906,7 +986,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 以下の操作を対象として検証するとよい．
 
-| 大分類 | 中分類           | テスト対象の操作                                             |
+| 大分類 | 中分類           | 検証対象の操作                                               |
 | ------ | ---------------- | ------------------------------------------------------------ |
 | 機能   | 正常系           | 基本操作（登録，参照，更新，削除），画面遷移，状態遷移，セキュリティ，など |
 |        | 異常系           | 基本操作（登録，参照，更新，削除），など                     |

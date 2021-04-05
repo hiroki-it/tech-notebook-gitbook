@@ -1502,7 +1502,7 @@ func main() {
 }
 ```
 
-#### ・独自エラー
+#### ・独自エラー（１）
 
 errorsパッケージの```New```メソッドにエラーメッセージを設定し，エラーをキャッチできた時に，設定したエラーを返却するようにする．
 
@@ -1537,7 +1537,9 @@ func main() {
 }
 ```
 
-他には，```Errorf```メソッドでも独自エラーを作成できる．事前に定義したフォーマットを元にエラーメッセージを設定する．
+#### ・独自エラー（２）
+
+fmtパッケージの```Errorf```メソッドで独自エラーを作成できる．事前に定義したフォーマットを元にエラーメッセージを設定する．
 
 参考：https://golang.org/pkg/fmt/#Errorf
 
@@ -1548,21 +1550,53 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 )
 
-func ThrowErrorf() error {
-	return fmt.Errorf("%s %s", x, y)
-}
-
 func main() {
+    
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-		// 独自エラーメッセージを設定する．
-		myErr := ThrowErrorf()
-		log.Fatalf("ERROR: %#v\n", myErr)
+        fmt.Errorf("ERROR: %s", err)
+	}
+
+	fmt.Printf("%#v\n", flle)
+}
+```
+
+#### ・独自エラー（３）
+
+構造体に```Error```メソッドを定義すると，これにerrorインターフェースが構造体に自動的に埋め込まれる．この構造体は，コールされると```Error```メソッドを自動的に実行する．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+type Error struct {
+	Message string
+}
+
+func (error *Error) Error() string {
+	return fmt.Sprintf("ERROR: %s", error.Message)
+}
+
+func main() {
+
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+        // 構造体に値を設定する．
+		myError := &Error{Message: "エラーが発生したため，処理を終了しました．"}
+		// 構造体をコールするだけで，Errorメソッドが実行される．
+		fmt.Printf("%#v\n", myError)
+		os.Exit(1)
 	}
 
 	fmt.Printf("%#v\n", flle)
@@ -2007,78 +2041,79 @@ SlackにメッセージをPOST送信する．
 package main
 
 import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "log"
-    "net/http"
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
 )
 
 // 構造体を定義し，JSONにマッピング
 type SlackMessage struct {
-    Token       string   `json:"token"`
-    Channel     string   `json:"channel"`
-    Text        string   `json:"text"`
-    Username    string   `json:"username"`
-    Attachments []string `json:"attachments"`
+	Token       string   `json:"token"`
+	Channel     string   `json:"channel"`
+	Text        string   `json:"text"`
+	Username    string   `json:"username"`
+	Attachments []string `json:"attachments"`
 }
 
 func main() {
-    // URL
-    url := "https://xxxx.slack.com"
+	// URL
+	url := "https://xxxx.slack.com"
 
-    // ボディを定義する．
-    slackMessage := SlackMessage {
-        Token: "<トークン文字列>",
-        Channel: "<チャンネル名，もしくは@ユーザ名>",
-        Text: "<メッセージ>",
-        Username: "<as_userオプションがfalseの場合にBot名>",
-        Attachments: [{
+	// ボディを定義する．
+	slackMessage := SlackMessage{
+		Token:    "<トークン文字列>",
+		Channel:  "<チャンネル名，もしくは@ユーザ名>",
+		Text:     "<メッセージ>",
+		Username: "<as_userオプションがfalseの場合にBot名>",
+		Attachments: [{
           // 任意のオプション     
           // 参考：
           // https://api.slack.com/messaging/composing/layouts#attachments
         }]
-    }
-    
-    // マッピングを元に，構造体をJSONに変換する．
-    json, err := json.Marshal(slackMessage)
+	}
 
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
+	// マッピングを元に，構造体をJSONに変換する．
+	json, err := json.Marshal(slackMessage)
 
-    // リクエストメッセージを定義する．
-    request, err := http.NewRequest(
-        "POST",
-        url,
-        bytes.NewBuffer(json),
-    )
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
 
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
+	// リクエストメッセージを定義する．
+	request, err := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer(json),
+	)
 
-    // ヘッダーを定義する．
-    request.Header.Set("Content-Type", "application/json")
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
 
-    client := &http.Client {}
+	// ヘッダーを定義する．
+	request.Header.Set("Content-Type", "application/json")
 
-    // HTTPリクエストを送信する．
-    response, err := client.Do(request)
-    
-    // deferで宣言しておき，HTTP通信を必ず終了できるようにする．
-    defer response.Body.Close()
-    
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
-    
-    if response.StatusCode != 200 {
-        log.Fatalf("ERROR: %#v\n", response)
-    }
-    
-    fmt.Printf("INFO: %#v\n", response)
+	client := &http.Client{}
+
+	// HTTPリクエストを送信する．
+	response, err := client.Do(request)
+
+	// deferで宣言しておき，HTTP通信を必ず終了できるようにする．
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
+	if response.StatusCode != 200 {
+		log.Fatalf("ERROR: %#v\n", response)
+	}
+
+	fmt.Printf("INFO: %#v\n", response)
 }
+
 ```
 
 <br>
