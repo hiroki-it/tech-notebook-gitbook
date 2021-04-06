@@ -375,6 +375,12 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 ### RewriteRule
 
+#### ・リダイレクトとリライトの違い
+
+リダイレクトでは，リクエストされたURLをサーバ側で新しいURLに書き換え，リクエストを再送信する．そのため，クライアント側は新しいURLで改めてリクエストを送信することになる．一方で，リライトでは，リクエストされたURLをサーバ側で新しいURLに書き換え，そのURLでレンダリングを行う．そのため，クライアント側は古いURLのままリクエストを送信することになる．その他の違いについては，以下を参考にせよ．
+
+参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+
 #### ・```RewriteRule```とは
 
 条件分岐による処理を定義する．
