@@ -48,6 +48,12 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 | **BusyBox**      | ・OS：Linux（※ディストリビューションではない）<br>・パッケージ：基本ユーティリティツール<br>・パッケージマネージャ：無 | 組み込みシステム     |
 | **Alpine Linux** | ・OS：Linux（※ディストリビューションではない）<br/>・パッケージ：基本ユーティリティツール<br>・パッケージマネージャ：Apk | ？                   |
 
+#### ・CPUアーキテクチャの種類
+
+AMD系やARM系など，様々なCPUアーキテクチャが内蔵されたベースイメージを提供する．
+
+参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
+
 #### ・バージョン
 
 イメージのバージョンには種類があり，追跡できるバージョンアップが異なる．ここでは，composerのイメージを例に挙げる．
