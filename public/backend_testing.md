@@ -1022,7 +1022,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 #### ・性能テスト
 
-![スループットとレスポンスタイム](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/スループットとレスポンスタイム.png)
+![performance-test](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/performance-test.png)
 
 一定時間内に，ユーザが一連のリクエスト（例：ログイン，閲覧，登録，ログアウト）を行った時に，システムのスループットとレスポンス時間にどのような変化があるかを検証する．具体的にはテスト時に，アクセス数を段階的に増加させて，その結果をグラフ化する．グラフ結果を元に，想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し，また性能の負荷が最大になる値を導く．これらを運用時の監視の参考値にする．
 

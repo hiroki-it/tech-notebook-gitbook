@@ -11,3 +11,4 @@
 詳しくは，Wantedly履歴書ページをご覧いただけると幸いです．
 
 ▶ [https://www.wantedly.com/id/h_hasegawa](https://www.wantedly.com/id/h_hasegawa)
+
