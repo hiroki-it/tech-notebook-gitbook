@@ -217,7 +217,10 @@ CREATE USER "{ ユーザ名 }" IDENTIFIED BY "{ パスワード }";
 ここで表示される特権と．ALL特権は異なる．
 
 ```sql
-SELECT * FROM mysql.user;
+SELECT
+    *
+FROM
+    mysql.user;
 ```
 
 <br>
@@ -303,9 +306,13 @@ GRANT USAGE ON *.* TO "{ ユーザー名 }";
 
 ```sql
 -- Amazon AuroraまたはRDSの場合
-REVOKE ALL PRIVILEGES ON `%`.* FROM "{ ユーザ名 }";
+REVOKE ALL PRIVILEGES ON `%`.*
+FROM
+    "{ ユーザ名 }";
 
-REVOKE ALL PRIVILEGES ON {DB名}.* FROM "{ ユーザ名 }";
+REVOKE ALL PRIVILEGES ON { DB名 }.*
+FROM
+    "{ ユーザ名 }";
 ```
 
 #### ・ユーザ名変更
@@ -515,7 +522,7 @@ FROM
 **＊実装例＊**
 
 
-```PHP
+```php
 <?php
 $joinedIdList = implode(",", $idList);
 
@@ -795,6 +802,51 @@ WHERE
 
 <br>
 
+### ```EXPLAIN```句
+
+#### ・使い方
+
+指定した```SELECT```句が仮に実行された場合に，いずれのテーブルのいずれのカラムを取得することになるかを表示する．また，予想される実行時間も検出できるため，スロークエリの検出に役立つ．
+
+```sql
+EXPLAIN
+SELECT
+    *
+FROM
+    t1,
+    t2
+WHERE
+    t1.c1 = 1
+    AND t1.c2 = t2.c3 
+```
+
+```shell
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: t1
+         type: ref
+possible_keys: index_t1_on_c1_and_c2
+          key: index_t1_on_c1_and_c2
+      key_len: 5
+          ref: const
+         rows: 10
+        Extra: Using where; Using index
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: t2
+         type: ref
+possible_keys: index_t2_on_c3
+          key: index_t2_on_c3
+      key_len: 5
+          ref: sample.t1.c2
+         rows: 1
+        Extra: Using index   
+```
+
+<br>
+
 ### Tips
 
 #### ・各データベースの容量
@@ -852,7 +904,7 @@ WHERE
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 // SELECT文を定義して実行．
 $sql = "SELECT * FROM doraemon_characters";
@@ -890,7 +942,7 @@ print_r($data);
 
 読み出された全てのレコードのうち，最初のレコードの一番左のカラムのみを取得し，混合型で返却する．主に，```COUNT()```の場合に用いる
 
-```PHP
+```php
 <?php
 // SELECT文を定義して実行．
 $sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
@@ -941,7 +993,7 @@ while(result.next()){
 
 #### ・PDOの場合
 
-```PHP
+```php
 <?php
 // $_POSTを用いて，送信されたpostメソッドのリクエストを受け取り，属性から各値を取得
 $staff_name = $_POST["name"];
@@ -993,7 +1045,7 @@ $dbh = null;
 
 **＊実装例＊**
 
-```PHP
+```php
 <?php
 namespace Migration;
 
