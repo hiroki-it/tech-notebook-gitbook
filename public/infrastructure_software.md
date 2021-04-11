@@ -150,7 +150,29 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 <br>
 
-### Unix ｜ Linux系統
+### 基本ソフトウェア
+
+#### ・基本ソフトウェアの構成
+
+![基本ソフトウェアの構成](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/基本ソフトウェアの構成.png)
+
+#### ・ユーティリティ
+
+基本ソフトウェアのノートを参照．
+
+#### ・言語プロセッサ
+
+基本ソフトウェアのノートを参照．
+
+#### ・制御プログラム（カーネル）
+
+基本ソフトウェアのノートを参照．
+
+<br>
+
+## 04-02. Unix系OS
+
+### Linux系統
 
 #### ・OSとバージョンの確認コマンド
 
@@ -179,23 +201,23 @@ Slackware
 
 <br>
 
-### 基本ソフトウェア
+### BSD系統｜MacOS
 
-#### ・基本ソフトウェアの構成
+#### ・環境変数の確認
 
-![基本ソフトウェアの構成](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/基本ソフトウェアの構成.png)
+環境変数を確認する．全ての項目は，実際に実行して確認すること．
 
-#### ・ユーティリティ
+```shell
+$ export -p
 
-基本ソフトウェアのノートを参照．
-
-#### ・言語プロセッサ
-
-基本ソフトウェアのノートを参照．
-
-#### ・制御プログラム（カーネル）
-
-基本ソフトウェアのノートを参照．
+export EDITOR=vim
+export HOME=/Users/h.hasegawa
+export LANG=en_US.UTF-8
+export SHELL=/bin/zsh
+export USER=h.hasegawa
+export VISUAL=vim
+...
+```
 
 <br>
 
