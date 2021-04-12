@@ -865,7 +865,7 @@ PHPUnitでのユニットテストとは意味合いが異なるので注意す�
 
 実装内容は気にせず，入力に対して，適切な出力が行われているかを検証する．
 
-![p492-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p492-1.jpg)
+![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
 
 <br>
 
@@ -875,7 +875,7 @@ PHPUnitでのユニットテストとは意味合いが異なるので注意す�
 
 実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかを検証する．ホワイトボックステストには，以下の方法がある．何を検証するかに着目すれば，思い出しやすい．
 
-![p492-2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p492-2.jpg)
+![p492-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-2.jpg)
 
 **＊実装例＊**
 
@@ -889,7 +889,7 @@ if (A = 1 && B = 1) {
 
 #### ・命令網羅
 
-![p494-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-1.png)
+![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-1.png)
 
 全ての命令が実行されるかを検証する．
 
@@ -899,7 +899,7 @@ A = 1，B = 1 の時，```return X``` が実行されること．
 
 #### ・判定条件網羅
 
-![p494-2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-2.png)
+![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
 
 全ての判定が実行されるかを検証する．
 
@@ -910,7 +910,7 @@ A = 1，B = 0 の時，```return X``` が実行されないこと．
 
 #### ・条件網羅
 
-![p494-3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-3.png)
+![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
 
 各条件が，取り得る全ての値で実行されるかを検証する．
 
@@ -926,7 +926,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 #### ・複数条件網羅
 
-![p494-4](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p494-4.png)
+![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
 
 各条件が，取り得る全ての値で，かつ全ての組み合わせが実行されるかを検証する．
 
@@ -945,7 +945,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 単体テストの次に行うテスト．複数のモジュールを繋げ，モジュール間のインターフェイスが適切に動いているかを検証．
 
-![結合テスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p491-1.jpg)
+![結合テスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p491-1.jpg)
 
 <br>
 
@@ -955,7 +955,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 上流のモジュールから下流のモジュールに向かって，結合テストを行う．下流にはテストダブルのスタブを作成する．
 
-![トップダウンテスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/トップダウンテスト.jpg)
+![トップダウンテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トップダウンテスト.jpg)
 
 <br>
 
@@ -963,7 +963,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 下流のモジュールから上流のモジュールに向かって，結合テストを行う．上流にはテストダブルのドライバーを作成する．
 
-![ボトムアップテスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ボトムアップテスト.jpg)
+![ボトムアップテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ボトムアップテスト.jpg)
 
 <br>
 
@@ -1022,7 +1022,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 #### ・性能テスト
 
-![performance-test](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/performance-test.png)
+![performance-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/performance-test.png)
 
 一定時間内に，ユーザが一連のリクエスト（例：ログイン，閲覧，登録，ログアウト）を行った時に，システムのスループットとレスポンス時間にどのような変化があるかを検証する．具体的にはテスト時に，アクセス数を段階的に増加させて，その結果をグラフ化する．グラフ結果を元に，想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し，また性能の負荷が最大になる値を導く．これらを運用時の監視の参考値にする．
 
@@ -1075,7 +1075,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 システムを変更した後，他のプログラムに悪影響を与えていないかを検証．
 
-![p496](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p496.jpg)
+![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p496.jpg)
 
 <br>
 
@@ -1085,11 +1085,11 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 
 プロジェクトの時，残存テスト数と不良摘出数（バグ発見数）を縦軸にとり，時間を横軸にとることで，バグ管理図を作成する．それぞれの曲線の状態から，プロジェクトの進捗状況を読み取ることができる．
 
-![品質管理図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/品質管理図.jpg)
+![品質管理図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/品質管理図.jpg)
 
 不良摘出実績線（信頼度成長曲線）は，プログラムの品質の状態を表し，S字型でないものはプログラムの品質が良くないことを表す．
 
-![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/信頼度成長曲線の悪い例.jpg)
+![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/信頼度成長曲線の悪い例.jpg)
 
 
 

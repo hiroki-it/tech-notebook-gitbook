@@ -426,7 +426,7 @@ $example->hoge;
 
 定義されていないデータや，アクセス権のないデータに値を設定しようとした時に，代わりにコールされる．オブジェクトの不変性を実現するために使用される．オブジェクトの不変性は，以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_architecture_domain_driven_design.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -676,13 +676,13 @@ $D = objB()->objC()->objC();
 
 ある関数 ``` f  ```の定義の中に ``` f ```自身を呼び出している箇所がある．
 
-![再帰的](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/再帰的.png)
+![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再帰的.png)
 
 **＊実装例＊**
 
 以下のノートも参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_logic_algorithm.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_algorithm.html
 
 1. 適当な値を基準値（Pivot）とする （※できれば中央値が望ましい）
 2. Pivotより小さい数を前方，大きい数を後方に分割する．
@@ -883,7 +883,7 @@ $dispatcher->dispatch("example", "test");
 
 イベント名を文字列で定義し，特定のイベント名が渡された時に，それに対応づけられた関数をコールする．フレームワークの```EventDispatcher```を使用するのがよい．以下のノートも参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_framework_symfony.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html
 
 **＊実装例＊**
 

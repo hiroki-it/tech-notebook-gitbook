@@ -6,7 +6,7 @@
 
 ドメイン駆動設計が考案される以前，MVCの考え方が主流であった．
 
-![MVCモデル](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/MVCモデル.png)
+![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MVCモデル.png)
 
 <br>
 
@@ -47,25 +47,25 @@
 
 ドメインエキスパート（現実世界のビジネスルールに詳しく，また実際にシステムを使う人）と，エンジニアが話し合いながら，ビジネスルールに対して，オブジェクト指向分析と設計を行っていく．この時，ドメインエキスパートとエンジニアの話し合いに齟齬が生まれぬように，ユビキタス言語（業務内容について共通の用語）を設定しておく．
 
-![ドメインモデル](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/domain-model.png)
+![ドメインモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
 
 #### ・境界づけられたコンテキストとは
 
 コアドメインやサブドメインの内部を詳細にグループ化する時，ビジネスの関心事の視点で分割されたまとまりのこと．コンテキストの中は，さらに詳細なコンテキストにグループ化できる．両方のコンテキストで関心事が異なっていても，対象は同じドメインであることもある．
 
-![コアドメイン，サブドメイン，境界づけられたコンテキスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
+![コアドメイン，サブドメイン，境界づけられたコンテキスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
 
 **＊具体例＊**
 
 仕事仲介サイトでは，仕事の発注者のドメインに注目した時，発注時の視点で分割された仕事募集コンテキストと，同じく契約後の視点で分割された契約コンテキストにまとめることができる．モデリングされた「仕事」は，コンテキスト間で視点が異なるため，意味合いが異なる．
 
-![境界づけられたコンテキストの例](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/bounded-context_example.png)
+![境界づけられたコンテキストの例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example.png)
 
 #### ・コンテキストマップとは
 
 広義のドメイン全体の俯瞰する図のこと．コアドメイン，サブドメイン，境界づけられたコンテキストを定義した後，これらの関係性を視覚化する．
 
-![コンテキストマップ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/context-map.png)
+![コンテキストマップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
 <br>
 
@@ -98,7 +98,7 @@
 3. 両方のクラスに対して，バインディング（関連付け）を行い，抽象クラスをコールした時に，実際には実装クラスがコールされるようにする．
 4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
 
-![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
 <br>
 
@@ -132,7 +132,7 @@ class AcceptOrdersController
 
 オンラインショッピングにおけるユースケース．
 
-![ユースケース図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ユースケース図.png)
+![ユースケース図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ユースケース図.png)
 
 <br>
 
@@ -261,7 +261,7 @@ class Converter
 
 #### ・リポジトリ（インターフェース）とは
 
-![Repository](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Repository.png)
+![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
 
 デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．Controllerは，ドメイン層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，リポジトリのインターフェースを配置する．
 
@@ -287,7 +287,7 @@ interface DogToyRepository
 
 #### ・エンティティとは
 
-![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
+![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
 
 #### ・保持するデータの値が一定でない
 
@@ -373,7 +373,7 @@ class DogToy
 
 #### ・ルートエンティティ
 
-![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
+![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
 
  エンティティや値オブジェクトからなる集約の中で，最終的にアプリケーション層へレスポンスされる集約を，『ルートエンティティ』という．
 
@@ -753,7 +753,7 @@ class YmdType
 
 ### 値オブジェクトとは
 
-![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
+![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
 
 金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，これを扱うメソッドを実装する場合，一意で識別できるデータ（例えば，```$id```データ）をもたないオブジェクトとして，これらの実装をまとめておくべきである．このオブジェクトを，値オブジェクトという．
 
@@ -1219,7 +1219,7 @@ class PaymentInfoVO
 
 #### ・DBに対する書き込み責務（Create，Update，Delete）
 
-![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
+![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
 
 DBに対する書き込み操作を行う．
 
@@ -1352,7 +1352,7 @@ class DogToyRepository
 
 #### ・DBに対する読み出し責務（Read）
 
-![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
+![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
 
 DBに対する書き込み操作を行う．
 

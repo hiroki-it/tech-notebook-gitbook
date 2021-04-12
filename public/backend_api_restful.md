@@ -8,13 +8,13 @@
 
 分散型アプリケーションを構築する時に，それぞれアプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという．また，アーキテクチャスタイルについては，オブジェクト指向に関するノートを参照せよ．RESTは，以下の特徴を持つ．
 
-![REST](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/REST.jpg)
+![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/REST.jpg)
 
 #### ・RESTfulとRESTful APIとは
 
 RESTに基づいた設計をRESTfulという．RESTful設計が用いられたWebAPIをRESTful APIという．例えば，RESTful APIの場合，DBにおけるUserInfoのCRUDに対して，一つの「/UserInfo」というURIを対応づけている．
 
-![RESTfulAPIを用いたリクエスト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/RESTfulAPIを用いたリクエスト.png)
+![RESTfulAPIを用いたリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPIを用いたリクエスト.png)
 
 <br>
 
@@ -662,7 +662,7 @@ setcookie(Cookie名, Cookie値, 有効日時, パス, ドメイン, HTTPS接続�
 3. ブラウザは，そのCookie情報を保存する．
 4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダーのCookieヘッダーにCookie情報を埋め込んでサーバに送信する．サーバは，Cookie情報に紐づくクライアントのデータをReadする．
 
-![cookie](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/cookie.png)
+![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cookie.png)
 
 <br>
 
@@ -741,11 +741,11 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 3. ブラウザは，そのセッションIDを保存する．
 4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダ情報のCookieヘッダーを使用して，セッションIDをサーバに送信する．サーバは，セッションIDに紐づくクライアントのデータをReadする．
 
-![session-id](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/session-id.png)
+![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)
 
 #### ・ページ遷移とセッションID引継ぎ
 
-![session-id_page-transition](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/session-id_page-transition.png)
+![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
 
 <br>
 

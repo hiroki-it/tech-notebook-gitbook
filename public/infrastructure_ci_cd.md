@@ -6,7 +6,7 @@
 
 Commitから本番環境へのDeployまでのプロセスを『継続的に』行うことを，CI：Continuous Integration』という．また，変更内容をステージング環境などに自動的に反映し，『継続的に』リリースすることを，CD：Continuous Deliveryという．
 
-![CICDパイプライン](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CICDパイプライン.png)
+![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
 
 ####  ・自動化できるプロセスとできないプロセス
 

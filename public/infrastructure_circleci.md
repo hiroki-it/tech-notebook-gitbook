@@ -85,7 +85,7 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵�
 
 4. 結果を通知することも可能．
 
-![継続的インテグレーション](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/継続的インテグレーション.png)
+![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/継続的インテグレーション.png)
 
 ### PHPStanの自動実行
 
@@ -445,7 +445,7 @@ workflows:
 
 #### ・jobの粒度
 
-![CICDパイプライン](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CICDパイプライン.png)
+![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CICDパイプライン.png)
 
 | 粒度   | 説明                                                         | 備考                                                       |
 | ------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -465,7 +465,7 @@ jobを実行する仮想環境を選択できる．
 
 Dockerコンテナを実行環境として設定する．これを選択したうえで，Dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を使用して，実行環境Dockerコンテナとは別の環境で```job```を行う必要がある．```machine```タイプを選んだ場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
 
-![machine_executor](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/docker_executor.png)
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
 **＊実装例＊**
 
@@ -496,7 +496,7 @@ jobs:
 
 Linuxサーバを実行環境として設定する．
 
-![machine_executor](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/machine_executor.png)
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/machine_executor.png)
 
 **＊実装例＊**
 
@@ -568,7 +568,7 @@ workflows:
 
 #### ・restore_cache，save_cache
 
-![CircleCIキャッシュ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CircleCIキャッシュ.png)
+![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
 ビルドのアーティファクトをキャッシュとして保存する．この機能を使用しない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じライブラリがインストールされる．しかし，Workflowのたびに，ライブラリをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリに配置されたアーティファクトを再利用するようにする．この機能は，複数のWorkflowの間だけでなく，一つのWorkflowの中でも利用できる．
 
@@ -672,7 +672,7 @@ jobs:
 
 #### ・persist_to_workspace，attach_workspace
 
-![workflow_workspace_cache](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/workflow_workspace_cache.png)
+![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
 CircleCIでは，jobごとに異なる仮想環境が構築されるため，他の```job```で使用された一時ファイルを再利用したい場合に，これを使う．
 
@@ -977,7 +977,7 @@ workflows:
 
 環境変数を```echo```の引数に指定する．パイプラインで```base64 --decode```を実行することにより，暗号化した状態で環境変数を渡すことができる．ここで出力している環境変数は，以下のノートを参考にせよ
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/frontend_framework_vuejs.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_framework_vuejs.html
 
 ```yaml
 jobs:
@@ -1203,7 +1203,7 @@ jobs:
 
 CircleCIでDockerイメージをビルドした後，各イメージレイヤーをDLCボリュームにキャッシュする．そして，次回以降のビルド時に，差分がないイメージレイヤーをDLCボリュームからプルして再利用する．これにより，Dockerイメージのビルド時間を短縮できる．
 
-![DockerLayerCache](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DockerLayerCache.png)
+![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 
 #### ・使用例
 

@@ -8,7 +8,7 @@
 
 View層とModel層の間にViewModel層を置き，View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって，View層とModel層の間を疎結合にするための設計手法の一つ．
 
-![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
+![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
 
 #### ・ MVVMアーキテクチャにおける各層の責務
 
@@ -34,7 +34,7 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
 3. Model層では，Vuex（```store.js```)やJavaScriptからなるモデル（```xxx.js```）を設置する．
 4. これの元，双方向データバインディングが実現される仕組みとして，View層でイベントが起こると，ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる．
 
-![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/VueにおけるMVVMアーキテクチャ.png)
+![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VueにおけるMVVMアーキテクチャ.png)
 
 
 ### 親子コンポーネント間のデータ渡し
@@ -43,9 +43,9 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
 
 まず，双方向データバインディングとは異なる概念なので，混乱しないように注意する．コンポーネント（```xxx-component.vue```）の```script```タグ部分（ViewModel層）の親子間では，```props```と```$emit()```を用いて，データを渡す．この仕組みを，Props Down, Events Upという．
 
-![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/親子コンポーネント間の双方向データバインディング.png)
+![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子コンポーネント間の双方向データバインディング.png)
 
-![component-tree_communication](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/component-tree_communication.png)
+![component-tree_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/component-tree_communication.png)
 
 <br>
 
@@ -92,7 +92,7 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
 ```
 #### (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数（```index.js```）
 
-![vue-instance](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/vue-instance.png)
+![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-instance.png)
 
 Vueコンストラクタ関数を用いて，インスタンス化することによって，ルートVueインスタンスが生成される．インスタンスの変数名```vm```はVIewModelの意味である．インスタンス化時，全てのコンポーネントのデータが初期化される．各コンポーネントで個別に状態を変化させたいものは，```props```オプションではなく，```data```オプションとして扱う．
 
@@ -325,7 +325,7 @@ class Example {
 
 #### ・```v-on:```とは
 
-![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Vueにおけるemitとv-onの連携.png)
+![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vueにおけるemitとv-onの連携.png)
 
 View層（```template```タグ部分）のイベントを，ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし，イベントが発火した時点でイベントハンドラ関数をコールする．コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである「Props Down, Events Up」とは異なる概念なので注意する．
 
@@ -556,7 +556,7 @@ var vm = new Vue({
 
 #### ・Vue-Routerとは
 
-![vue-router](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/vue-router.png)
+![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-router.png)
 
 ルーティングライブラリの一つ．コンポーネントに対してルーティングを行い，```/{ルート}/パラメータ}```に応じて，コールするコンポーネントを動的に切り替えることができる．
 
@@ -650,7 +650,7 @@ Vuejsでライブラリの一つで，MVVMアーキテクチャのモデルに�
 
 ※Vuexからなるモデルはどうあるべきか，について要勉強
 
-![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/VueコンポーネントツリーとVuexの関係.png)
+![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VueコンポーネントツリーとVuexの関係.png)
 
 <br>
 

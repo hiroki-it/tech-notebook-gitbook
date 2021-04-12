@@ -222,7 +222,7 @@ environment:
 
 作成使用する内部／外部ネットワークを設定．
 
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
 **＊実装例＊**
 
@@ -323,19 +323,19 @@ GRANT ALL ON *.* TO 'example'@'%' ;
 
 PHPUnitで接続するデータベースを指定する方法については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_testing.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
 <br>
 
 ## 03. Docker Swarm
 
-![DockerSwarmの仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DockerSwarmの仕組み.png)
+![DockerSwarmの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerSwarmの仕組み.png)
 
 <br>
 
 ## 04. Google Kubernetes
 
-![Kubernetesの仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Kubernetesの仕組み.png)
+![Kubernetesの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Kubernetesの仕組み.png)
 
 ### Node
 

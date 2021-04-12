@@ -93,7 +93,7 @@ $ sudo apachectl graceful
 
 ### Webサーバのミドルウェアとして
 
-![Webサーバ，APサーバ，DBサーバ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Webサーバ，APサーバ，DBサーバ.png)
+![Webサーバ，APサーバ，DBサーバ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Webサーバ，APサーバ，DBサーバ.png)
 
 <br>
 
@@ -587,11 +587,11 @@ Header unset Referrer-Policy "no-referrer-when-downgrade" always
 
 全てのファイルに対して，ディレクティブが適用される．
 
-![htaccess影響範囲](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/htaccess影響範囲.png)
+![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲.png)
 
 #### ・それ以外のディレクトリの場合
 
 設置したディレクトリ以下の階層のファイルに対して適用される．
 
-![htaccess影響範囲_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/htaccess影響範囲_2.png)
+![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/htaccess影響範囲_2.png)
 

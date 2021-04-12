@@ -14,7 +14,7 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 
 ホストOS上で稼働し，Dockerの操作を担う．Dockerクライアントは，Dockerデーモンを通して，Docker全体を操作できる．
 
-![docker-daemon](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/docker-daemon.png)
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
 
 <br>
 
@@ -28,7 +28,7 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 4. コマンドによって，構築されたコンテナを起動．
 5. コマンドによって，起動中のコンテナに接続．
 
-![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
+![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
 
 <br>
 
@@ -145,7 +145,7 @@ root@xxxxxxxxxx:
 
 #### ・Dockerfileの仕組み
 
-![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/イメージのビルド.png)
+![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
 
 任意のイメージをベースとして，新しいイメージをビルドするためには，ベースのイメージの上に，他のイメージレイヤーを積み重ねる必要がある．この時，Dockerfileを用いて，各命令によってイメージレイヤーを積み重ねていく．
 
@@ -249,7 +249,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 Dockerfileを用いない場合，各イメージレイヤーのインストールを手動で行わなければならない．しかし，Dockerfileを用いることで，これを自動化することができる．
 
-![Dockerfileのメリット](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerfileのメリット.png)
+![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)
 
 ## 02-04 イメージの軽量化
 
@@ -257,7 +257,7 @@ Dockerfileを用いない場合，各イメージレイヤーのインストー�
 
 これは，Dockerの原則である．アプリケーションを稼働させるには，最低限，Webサーバミドルウェア，アプリケーション，DBMSが必要である．これらを，個別のコンテナで稼働させ，ネットワークで接続するようにする．
 
-![プロセス単位のコンテナ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/プロセス単位のコンテナ.png)
+![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/プロセス単位のコンテナ.png)
 
 <br>
 
@@ -495,7 +495,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 イメージレイヤーの上に積み重ねられる
 
-![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
+![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
 
 <br>
 
@@ -729,7 +729,7 @@ $ docker container ps -a # ==> コンテナのSTATUSがUPになっている
 
 ホストOSの```/Users```ディレクトリをコンテナ側にマウントする方法．コンテナで作成されたデータをホストOSに永続化する方法として，非推奨である．また，Dockerfileまたはdocker-composeファイルに記述する方法があるが，後者が推奨である．
 
-![bindマウント](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/bindマウント.png)
+![bindマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bindマウント.png)
 
 **＊コマンド例＊**
 
@@ -743,7 +743,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 以下の通り，ホストOSのマウント元のディレクトリにはいくつか選択肢がある．
 
-![マウントされるホスト側のディレクトリ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/マウントされるホスト側のディレクトリ.png)
+![マウントされるホスト側のディレクトリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マウントされるホスト側のディレクトリ.png)
 
 <br>
 
@@ -757,7 +757,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ホストOSにあるDockerエリアのマウントポイントをコンテナ側にマウントする方法．コンテナで作成されたデータをホストOSに永続化する方法として推奨である．
 
-![volumeマウント](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/volumeマウント.png)
+![volumeマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/volumeマウント.png)
 
 **＊コマンド例＊**
 
@@ -819,7 +819,7 @@ VOLUME /myvol
 
 Volumeを使用する場合のコンテナ配置手法の一つ．DockerエリアのVolumeをData Volumeをコンテナ （Data Volumeコンテナ）のディレクトリにマウントしておく．Volumeを使用する時は，Dockerエリアを参照するのではなく，Data Volumeコンテナを参照するようにする．
 
-![data-volumeコンテナ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/data-volumeコンテナ.png)
+![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
 
 **＊実装例＊**
 
@@ -842,7 +842,7 @@ Volumeを使用する場合のコンテナ配置手法の一つ．Dockerエリ�
 
 複数のコンテナ間に対して，仮想ネットワークで接続させる．また，仮想ネットワークを物理ネットワークの間を，仮想ブリッジを用いてbridge接続する．ほとんどの場合，この方法を用いる．
 
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
 物理サーバへのリクエストメッセージがコンテナに届くまでを以下に示す．ホストOSの```8080```番ポートと，WWWコンテナの```80```番ポートのアプリケーションの間で，ポートフォワーディングを行う．これにより，```http://<ホストOSのプライベートIPアドレス（localhost）>:8080```にリクエストを送信すると，WWWコンテナのポート番号のアプリケーションに転送されるようになる．
 
