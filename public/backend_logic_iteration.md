@@ -10,13 +10,13 @@
 
 配列内の要素を順に調べていくことを『走査（スキャン）』という．例えば，```foreach```は，配列内の全ての要素を走査する処理である．下図では，連想配列が表現されている．
 
-![配列の走査](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/配列の走査.png)
+![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/配列の走査.png)
 
 #### ・内部ポインタと配列の関係
 
 『内部ポインタ』とは，PHPの配列において，参照したい要素を位置で指定するためのカーソルのこと．Goにおけるポインタは，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/infrastructure_go.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_go.html
 
 **＊実装例＊**
 
@@ -63,7 +63,7 @@ foreach ($array as &$value) {
 
 #### ・制御文
 
-![流れ図_foreach文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_foreach文.png)
+![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_foreach文.png)
 
 ```php
 <?php
@@ -277,7 +277,7 @@ echo $count
 
 #### ・制御文
 
-![流れ図_while文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_while文.png)
+![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_while文.png)
 
 ```php
 <?php
@@ -337,7 +337,7 @@ echo $count
 
 #### ・制御文
 
-![流れ図_for文](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/流れ図_for文.png)
+![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/流れ図_for文.png)
 
 ```php
 <?php

@@ -4,7 +4,7 @@
 
 ### 基本ソフトウェアの構成
 
-![基本ソフトウェアの構成](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/基本ソフトウェアの構成.png)
+![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
 
 <br>
 
@@ -154,7 +154,7 @@ esac
 
 「```|```」の縦棒記号のこと．複数のプログラムの入出力を繋ぐことができる．
 
-![pipeline](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/pipeline.png)
+![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
 
 #### ・grepとの組み合わせ
 
@@ -218,7 +218,7 @@ $ printenv | sort -f
 | stdout（標準出力）       | コマンドからターミナルに対して，エラー以外のデータを出力するためのインターフェースのこと． |
 | stderr（標準エラー出力） | コマンドからターミナルに対して，エラーデータを出力するためのインターフェースのこと． |
 
-![標準入力，標準出力，標準出力エラー](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/標準入力，標準出力，標準出力エラー.jpg)
+![標準入力，標準出力，標準出力エラー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/標準入力，標準出力，標準出力エラー.jpg)
 
 <br>
 
@@ -957,7 +957,7 @@ $ df -h -m -t
 
 物理メモリのアドレス空間管理の方法の一つ．ハードウェアのノートを参照．
 
-![スワッピング方式](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/スワッピング方式.png)
+![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
 
 #### ・スワップ領域の作成方法
 
@@ -989,7 +989,7 @@ $ swapoff /swap_volume
 
 様々なレベルを対象にした管理ユーティリティがある．
 
-![ライブラリ，パッケージ，モジュールの違い](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ライブラリ，パッケージ，モジュールの違い.png)
+![ライブラリ，パッケージ，モジュールの違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ライブラリ，パッケージ，モジュールの違い.png)
 
 #### ・ライブラリ管理ユーティリティ
 
@@ -1326,7 +1326,7 @@ PHP，Ruby，JavaScript，Python，など．インタプリタという言語プ
 
 Scala，Groovy，Kotlin，など．Java仮想マシンによって，中間言語方式で翻訳される．
 
-![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
+![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
 
 <br>
 
@@ -1400,23 +1400,23 @@ public class Age
 
 コードを，バイナリ形式のオブジェクトコードとして，まとめて機械語に翻訳した後，CPUに対して命令が実行される．
 
-![コンパイラ言語](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/コンパイラ言語.png)
+![コンパイラ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイラ言語.png)
 
 #### ・ビルド（コンパイル＋リンク）
 
 コンパイルによって，ソースコードは機械語からなるオブジェクトコードに変換される．その後，各オブジェクトコードはリンクされ．exeファイルとなる．この一連のプロセスを『ビルド』という．また，ビルドによって生成されたファイルを『アーティファクト（成果物）』という．
 
-![ビルドとコンパイル](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ビルドとコンパイル.jpg)
+![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ビルドとコンパイル.jpg)
 
 #### ・仕組み（じ，こ，い，さい，せい，リンク，実行）
 
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
+![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
 
 1. **Lexical analysis（字句解析）**
 
    ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
 
-   ![構文規則と説明](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/構文規則と説明.png)
+   ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
 2. **Syntax analysis（構文解析）**
 
@@ -1508,7 +1508,7 @@ $ make clean
 
 コードを，一行ずつ機械語に変換し，その都度，CPUに対して命令が実行される．
 
-![インタプリタ言語](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/インタプリタ言語.png)
+![インタプリタ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インタプリタ言語.png)
 
 コマンドラインでそのまま入力し，機械語翻訳と実行を行うことができる．
 
@@ -1537,13 +1537,13 @@ $ php --ini
 
 #### ・仕組み（じ，こ，い，実行）
 
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
+![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
 
 1. **Lexical analysis（字句解析）**
 
    ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
 
-   ![構文規則と説明](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/構文規則と説明.png)
+   ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
 2. **Syntax analysis（構文解析）**
 
@@ -1575,19 +1575,19 @@ Webサーバを仮想的に構築する時，PHPの言語プロセッサが同�
 2. JVM：Java Virtual Machine内で，インタプリタによって，クラスデータを機械語に翻訳する．
 3. 結果的に，OS（制御プログラム？）に依存せずに，命令を実行できる．（C言語）
 
-![Javaによる言語処理_1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Javaによる言語処理_1.png)
+![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_1.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
-![Javaによる言語処理_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Javaによる言語処理_2.png)
+![Javaによる言語処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_2.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
-![Javaによる言語処理_3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Javaによる言語処理_3.png)
+![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_3.png)
 
 #### ・C言語とJavaのOSへの依存度比較
 
-![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
+![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
 
 - JVM言語
 
@@ -1646,7 +1646,7 @@ OSを再起動しないと設定が反映されない．
 
 クライアントは，マスタスケジュールに対して，ジョブを実行するための命令を与える．
 
-![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
+![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
 
 <br>
 
@@ -1680,13 +1680,13 @@ OSを再起動しないと設定が反映されない．
 
 Initiatorによって，ジョブはジョブステップに分解される．
 
-![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
+![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
 
 <br>
 
 ### タスク管理
 
-![ジョブステップからタスクの生成](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ジョブステップからタスクの生成.png)
+![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
 
 タスクとは，スレッドに似たような，単一のプロセスのこと．Initiatorによるジョブステップから，タスク管理によって，タスクが生成される．タスクが生成されると実行可能状態になる．ディスパッチャによって実行可能状態から実行状態になる．
 
@@ -1698,32 +1698,32 @@ Initiatorによって，ジョブはジョブステップに分解される．
 
 待ち行列に登録されたタスクから順に，ディスパッチしていく方式．
 
-![到着順方式_1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/到着順方式_1.png)
+![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
 
 **＊具体例＊**
 
 以下の様に，タスクがCPUに割り当てられていく．
 
-![到着順方式_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/到着順方式_2.png)
+![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_2.png)
 
 #### ・Round robin 方式
 
 Round robinは，『総当たり』の意味．一定時間（タイムクウォンタム）ごとに，実行状態にあるタスクが強制的に待ち行列に登録される．交代するように，他のタスクがディスパッチされる．
 
-![ラウンドロビン方式](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ラウンドロビン方式.png)
+![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
 
 **＊具体例＊**
 
 生成されたタスクの到着時刻と処理時間は以下のとおりである．強制的なディスパッチは，『20秒』ごとに起こるとする．
 
-![優先順方式_1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/優先順方式_1.png)
+![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
 
 1. タスクAが0秒に待ち行列へ登録される．
 2. 20秒間，タスクAは実行状態へ割り当てられる．
 3. 20秒時点で，タスクAは実行状態から待ち行列に追加される．同時に，待ち行列の先頭にいるタスクBは，実行可能状態から実行状態にディスパッチされる．
 4. 40秒時点で，タスクCは実行状態から待ち行列に追加される．同時に，待ち行列の先頭にいるタスクAは，実行可能状態から実行状態にディスパッチされる．
 
-![優先順方式_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/優先順方式_2.png)
+![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_2.png)
 
 <br>
 
@@ -1731,5 +1731,5 @@ Round robinは，『総当たり』の意味．一定時間（タイムクウォ
 
 アプリケーションから低速な周辺機器へデータを出力する時，まず，CPUはスプーラにデータを出力する．Spoolerは，全てのデータをまとめて出力するのではなく，一時的に補助記憶装置（Spool）にためておきながら，少しずつ出力する（Spooling）．
 
-![スプーリング](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/スプーリング.jpg)
+![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スプーリング.jpg)
 

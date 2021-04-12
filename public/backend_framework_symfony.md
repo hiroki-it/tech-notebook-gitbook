@@ -354,7 +354,7 @@ class ExampleController extends AbstractController
 
 ### HttpKernelによるリクエストとレスポンス
 
-![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/SymfonyのHttpKernelの仕組み.png)
+![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SymfonyのHttpKernelの仕組み.png)
 
 <br>
 

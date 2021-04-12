@@ -14,7 +14,7 @@
 
 #### ・Basic認証スキームとは
 
-![Basic認証](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Basic認証.png)
+![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
 
 
 | 役割         | 説明                                                         |
@@ -105,7 +105,7 @@ Authorization: Bearer <Bearerトークン，JWT，など>
 
 ログイン時にセッションを使用する認証方法のこと．認証スキームには属していない．認証方法以外のセッションの仕様については，以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
 
 #### ・Form認証の仕組み
 
@@ -166,7 +166,7 @@ Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 
 ### 認証と認可の違い
 
-![アクセストークンを用いたセキュリティ仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/アクセストークンを用いたセキュリティの仕組み.jpg)
+![アクセストークンを用いたセキュリティ仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/アクセストークンを用いたセキュリティの仕組み.jpg)
 
 認証と認可では，仕組みの中に，３つの役割が定義されている．
 
@@ -187,7 +187,7 @@ Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 
 #### ・Oauthプロトコル，Oauth認証とは
 
-![Oauthの具体例](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Oauthの具体例.png)
+![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
 
 ログイン時の認可で用いられるプロトコル．Oauthプロトコルによる認可を用いた認証認可フロー全体を，『Oauth認証』と呼ぶことに注意する．認証と認可では，３つの役割が定義されていることを説明したが，Oauthプロトコル```2.0```では，より具体的に４つの役割が定義されている．
 
@@ -345,4 +345,4 @@ WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 
 #### ・JWTを用いた認証と認可
 
-![JWT](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/JWT.png)
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)

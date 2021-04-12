@@ -260,7 +260,7 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 
 RDBの読み込み系／書き込み系の操作を行うパッケージ．他の同様パッケージとして，PDOがある．PDOについては，以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_database_operation.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html
 
 <br>
 
@@ -446,7 +446,7 @@ class Example
 
 #### ・トランザクション，コミット，ロールバック
 
-![コミットメント制御](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/コミットメント制御.jpg)
+![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
 RDBの処理用語に相当する```beginTransaction```メソッド，```commit```メソッド，```rollBack```メソッドを用いて，RDBを操作する．
 

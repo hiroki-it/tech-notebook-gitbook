@@ -281,7 +281,7 @@ class Example
 2. 記述内容を，条件部と動作部に分解し，決定表で表す．
 3. 決定表を，流れ図で表す．
 
-![決定表](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/決定表.png)
+![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/決定表.png)
 
 #### ・if-elseif-elseは用いない
 

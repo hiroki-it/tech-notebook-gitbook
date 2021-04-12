@@ -4,7 +4,7 @@
 
 ### オブジェクト指向設計に用いられるUMLダイアグラム
 
-![UML-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/UML-1.png)
+![UML-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/UML-1.png)
 
 <br>
 
@@ -32,19 +32,19 @@
 
 Association（関連），Aggregation（集約），Composition（合成）が用いられる．詳しくは，以降の説明を参照せよ．
 
-![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
+![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
 
 #### ・クラス間の関係性を表す図
 
 Generalization（汎化），Realization（実現）が用いられる．詳しくは，以降の説明を参照せよ．
 
-![クラス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/クラス間の関係性のクラス図.png)
+![クラス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間の関係性のクラス図.png)
 
 #### ・クラス間，インスタンス間，クラス／インスタンス間の関係性を表す図
 
 Dependency（依存）が用いられる．詳しくは，以降の説明を参照せよ．
 
-![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
+![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
 
 <br>
 
@@ -60,7 +60,7 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 「会社クラス」から見て，対する「社員クラス」の数は1つである．逆に，「社員クラス」から見て，対する「会社クラス」の数は0以上であるという表記．
 
-![多重度](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/多重度.png)
+![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重度.png)
 
 | 表記  |    対するクラスがいくつあるか    |
 | :---: | :------------------------------: |
@@ -114,14 +114,14 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 1. 5つのライフライン（店員オブジェクト，管理画面オブジェクト，検索画面オブジェクト，商品DBオブジェクト，商品詳細画面オブジェクト）を設定する．
 2. 各ライフラインで実行される実行仕様間の命令内容を，メッセージや複合フラグメントで示す．
 
-![シーケンス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/シーケンス図.png)
+![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図.png)
 
 #### ・設計例2
 
 1. 3つのライフラインを設定する．
 2. 各ライフラインで実行される実行仕様間の命令内容を，メッセージや複合フラグメントで示す．
 
-![シーケンス図_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/シーケンス図_2.png)
+![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図_2.png)
 
 <br>
 
@@ -129,7 +129,7 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．
 
-![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
+![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
 
 <br>
 
@@ -279,7 +279,7 @@ $car = new Car();
 
 ## 04. クラス間の関係性
 
-![クラス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/クラス間の関係性のクラス図.png)
+![クラス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間の関係性のクラス図.png)
 
 ### Generalization（汎化）
 
@@ -455,7 +455,7 @@ class EnginnerShainManagement extends ShainManagement
 
 プリウスと各世代プリウスが，抽象クラスと子クラスの関係にある．
 
-![抽象クラス](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/抽象クラス.png)
+![抽象クラス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/抽象クラス.png)
 
 <br>
 
@@ -473,11 +473,11 @@ class EnginnerShainManagement extends ShainManagement
 
 各車は，モーター機能を必ず持っていなければ，正常に働くことができない．そこで，モータ機能に最低限必要なメソッドの実装を強制する．
 
-![インターフェースとは](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/インターフェースとは.png)
+![インターフェースとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターフェースとは.png)
 
 実装クラスに処理内容を記述しなければならない．すなわち，抽象クラスにメソッドの型のみ定義した場合と同じである．多重継承できる．
 
-![子インターフェースの多重継承_2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/子インターフェースの多重継承_2.png)
+![子インターフェースの多重継承_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/子インターフェースの多重継承_2.png)
 
 **＊実装例＊**
 
@@ -535,7 +535,7 @@ class Mammal implements Animal
 1. 種々の車クラスの共通処理のをもつ抽象クラスとして，Carクラスを作成．
 2. 各車は，エンジン機能を必ず持っていなければ，正常に働くことができない．そこで，抽象メソッドによって，エンジン機能に最低限必要なメソッドの実装を強制する．
 
-![インターフェースと抽象クラスの使い分け](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/インターフェースと抽象クラスの使い分け.png)
+![インターフェースと抽象クラスの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インターフェースと抽象クラスの使い分け.png)
 
 <br>
 
@@ -548,8 +548,8 @@ class Mammal implements Animal
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook_gitbook/public/frontend_object_orientation_prototype.html
-- https://hiroki-it.github.io/tech-notebook_gitbook/public/frontend_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_object_orientation_prototype.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_object_orientation_method_data.html
 
 **＊実装例＊**
 
@@ -630,7 +630,7 @@ class SubExample extends Example
 
 #### ・Traitとは
 
-![Trait](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Trait.png)
+![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Trait.png)
 
 再利用したいメソッドやデータを部品化し，利用したい時にクラスに取り込む．Traitを用いるときは，クラス内でTraitをuse宣言する．Trait自体は不完全なクラスであり，インスタンス化できない．
 
@@ -867,7 +867,7 @@ class Example2
 
 クラス間，インスタンス間，クラス／インスタンス間について，依存される側が変更された場合に，依存する側で変更が起きる関係性は，『依存』である．Association，Aggregation，Compositionの関係性と，さらにデータをクラス／インスタンス内に保持しない以下の場合も含む．
 
-![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
+![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
 
 #### ・クラス間の場合
 
@@ -1024,7 +1024,7 @@ class ModuleB
 
 各モジュールは，結合度が低く，凝集度が高いほどよい．例として，以下の画像では，道具モジュールを，キッチン引き出しモジュールとガレージ工具箱モジュールに分け，各クラスの結合度を低く，凝集度を高くするように対応している・
 
-![低結合度高凝集度](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/低結合度高凝集度.png)
+![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/低結合度高凝集度.png)
 
 <br>
 
@@ -1143,13 +1143,13 @@ $sample = new Sample($container);
 
 より上位レイヤーのコール処理を配置し，より下位レイヤーでコールされる側の定義を行う．これによって，上位レイヤーのクラスが，下位レイヤーのクラスに依存する関係性になる．
 
-![DIPに基づかない設計の場合](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DIPに基づかない設計の場合.png)
+![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づかない設計の場合.png)
 
 #### ・DIPに基づく設計の場合
 
 抽象クラス（またはインターフェース）で抽象メソッドを記述することによって，実装クラスでの実装が強制される．つまり，実装クラスは抽象クラスに依存している．より上位レイヤーに抽象クラス（またはインターフェース）を配置することによって，下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作ることができる．
 
-![DIPに基づく設計の場合](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/DIPに基づく設計の場合.png)
+![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づく設計の場合.png)
 
 #### ・DIPに基づくドメイン駆動設計の場合
 
@@ -1158,6 +1158,6 @@ $sample = new Sample($container);
 3. 両方のクラスに対して，バインディング（関連付け）を行い，抽象クラスをコールした時に，実際には実装クラスがコールされるようにする．
 4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，Repositoryの交換が可能になる．
 
-![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
-![トレイト](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/トレイト.png)
+![トレイト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トレイト.png)

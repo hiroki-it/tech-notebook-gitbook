@@ -105,19 +105,19 @@ echo $a.$i.$u; // あいう
 
 ### Queue型
 
-![Queue1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue1.gif)
+![Queue1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
-
- 
-
-![Queue2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue2.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
  
 
-![Queue3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Queue3.gif)
+![Queue2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue2.gif)
+
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
+
+ 
+
+![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue3.gif)
 
 PHPでは，```array_push```メソッドと```array_shift```メソッドを組み合わせることで実装できる．
 
@@ -160,7 +160,7 @@ echo $theFirst; // Blue
 
 送信側の好きなタイミングでファイル（メッセージ）をメッセージQueueに追加できる．また，受信側の好きなタイミングでメッセージを取り出すことができる．
 
-![メッセージキュー](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/メッセージキュー.jpg)
+![メッセージキュー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メッセージキュー.jpg)
 
 <br>
 
@@ -168,19 +168,19 @@ echo $theFirst; // Blue
 
 PHPでは，```array_push```メソッドと```array_pop```メソッドで実装可能．
 
-![Stack1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack1.gif)
+![Stack1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
-
- 
-
-![Stack2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack2.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
  
 
-![Stack3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Stack3.gif)
+![Stack2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack2.gif)
+
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
+
+ 
+
+![Stack3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack3.gif)
 
 <br>
 
@@ -190,25 +190,25 @@ PHPでは，```array_push```メソッドと```array_pop```メソッドで実装�
 
   各ノードにデータが格納されている．
 
-![二分探索木](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/二分探索木1.gif)
+![二分探索木](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/二分探索木1.gif)
 
 #### ・ヒープ
 
   Priority Queueを実現するときに用いられる．各ノードにデータが格納されている．
 
-![ヒープ1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ヒープ1.gif)
+![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
-![ヒープ1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ヒープ2.gif)
+![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ2.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
-![ヒープ2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ヒープ3.gif)
+![ヒープ2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ3.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/矢印_80x82.jpg)
+![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
 
-![. ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/ヒープ4.gif)
+![. ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ヒープ4.gif)
 
 <br>
 
@@ -234,15 +234,15 @@ HashMapクラスによって実装されるArray型．PHPの連想配列に相�
 
 #### ・単方向List
 
-![p555-1](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-1.gif)
+![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-1.gif)
 
 #### ・双方向List
 
-![p555-2](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-2.gif)
+![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-2.gif)
 
 #### ・循環List
 
-![p555-3](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/p555-3.gif)
+![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-3.gif)
 
 <br>
 

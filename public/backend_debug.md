@@ -168,5 +168,5 @@ DBGプロトコルを使用し，エディタサーバとデバッガーエン�
 
 エディタは，デバッガーエンジンに対してソースコードを送信する．デバッガーエンジンは，Breakpointまでの各変数の中身を解析し，エディタサーバに返信する．
 
-![Xdebug仕組み](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/Xdebug仕組み.png)
+![Xdebug仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Xdebug仕組み.png)
 

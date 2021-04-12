@@ -312,7 +312,7 @@ type MyAppWriter io.Writer
 
 基本型の変数を定義すると，データ型のバイト数に応じて，空いているメモリ領域に，変数が割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
 
-![basic-variable_memory](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/basic-variable_memory.png)
+![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/basic-variable_memory.png)
 
 #### ・各データ型のサイズ
 
@@ -514,7 +514,7 @@ func main() {
 
 要素，各要素のメモリアドレス，からなるデータのこと．
 
-![aggregate-type_array](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/aggregate-type_array.png)
+![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aggregate-type_array.png)
 
 **＊実装例＊**
 
@@ -552,7 +552,7 @@ func main() {
 
 配列型の変数を定義すると，空いているメモリ領域に，配列がまとまって割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
 
-![array-variable_memory](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/array-variable_memory.png)
+![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/array-variable_memory.png)
 
 <br>
 
@@ -562,7 +562,7 @@ func main() {
 
 メモリアドレスを代入できるデータ型のこと．定義された変数に対して，&（アンパサンド）を宣言すると，メモリアドレスを抽出できる．抽出したメモリアドレス値は，ポインタ型の変数に代入する必要があるが，型推論で記述すればこれを意識しなくてよい．PHPにおけるポインタは，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_object_orientation_method_data.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
 
 **＊実装例＊**
 
@@ -623,7 +623,7 @@ func main(){
 
 参照先の配列に対するポインタ，長さ，容量を持つデータ型である．
 
-![reference-types_slice](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/reference-types_slice.png)
+![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/reference-types_slice.png)
 
 ```go
 // Goのソースコードより
@@ -1460,7 +1460,7 @@ func main() {
 
 例外スローの意義は，以下の参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/backend_logic_validation.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_validation.html
 
 #### ・Goには例外スローが無い
 
@@ -2222,7 +2222,7 @@ func main() {
 PHPにおける```composer.json```ファイルに相当する．インターネット上における自身のパッケージ名とGoバージョンを定義するために，全てのGoアプリケーションで必ず必要である．インストールしたい外部パッケージも定義できる．
 
 ```
-module github.com/Hiroki-IT/example_repository
+module github.com/hiroki-it/example_repository
 
 go 1.16
 ```
@@ -2234,7 +2234,7 @@ go 1.16
 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
 ```
-module github.com/Hiroki-IT/example_repository
+module github.com/hiroki-it/example_repository
 
 go 1.16
 
@@ -2260,7 +2260,7 @@ func main() {
 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```
-module example.com/Hiroki-IT/example_repository/local-pkg
+module example.com/hiroki-it/example_repository/local-pkg
 
 go 1.16
 
@@ -2284,7 +2284,7 @@ example_repository
 ```
 
 ```
-module example.com/Hiroki-IT/example_repository/local-pkg
+module example.com/hiroki-it/example_repository/local-pkg
 
 go 1.16
 ```

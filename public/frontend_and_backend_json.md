@@ -30,7 +30,7 @@
 
 詳しくは以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook_gitbook/public/frontend_browser_rendering.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_browser_rendering.html
 
 #### ・CSV：Comma Separated Vector
 
@@ -161,7 +161,7 @@ class Example
 
 データ送信のためにオブジェクト（JS型，PHP型）をJSONに変換する処理はシリアライズである．一方で，送信のためにJSONをオブジェクト（JS型，PHP型）に変換する処理はデシリアライズである．
 
-![シリアライズとデシリアライズ](https://raw.githubusercontent.com/Hiroki-IT/tech-notebook/master/images/シリアライズとデシリアライズ.png)
+![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シリアライズとデシリアライズ.png)
 
 #### ・バックエンドとデータベース間
 
