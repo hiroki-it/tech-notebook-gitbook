@@ -896,8 +896,8 @@ package main
 
 import "fmt"
 
-func main(){
-    fmt.Printf("%#v\n", "Hello world!")
+func main() {
+	fmt.Printf("%#v\n", "Hello world!")
 }
 ```
 
@@ -935,11 +935,11 @@ import "fmt"
 
 // 頭文字を大文字する
 func Example(x string) string {
-    fmt.Println(x)
+	fmt.Println(x)
 }
 
-func main(){
-    Example("Hello world!")
+func main() {
+	Example("Hello world!")
 }
 ```
 
@@ -961,11 +961,11 @@ package main
 import "fmt"
 
 func main() {
-    result := func() string {
-        return "Closure is working!"
-    }()
-    
-    fmt.Printf("%#v\n", result)
+	result := func() string {
+		return "Closure is working!"
+	}()
+
+	fmt.Printf("%#v\n", result)
 }
 ```
 
@@ -984,8 +984,7 @@ func main() {
 
 		return x
 
-		// 引数に値を渡す
-	}("Closure is working!")
+	}("Closure is working!") // 引数に値を渡す
 
 	fmt.Printf("%#v\n", result)
 }
@@ -1596,7 +1595,7 @@ func main() {
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-        // 構造体に値を設定する．
+		// 構造体に値を設定する．
 		myError := &Error{Message: "エラーが発生したため，処理を終了しました．"}
 		// 構造体をコールするだけで，Errorメソッドが実行される．
 		fmt.Printf("%#v\n", myError)
@@ -1746,7 +1745,7 @@ func main() {
 
 #### ・```Marshal```メソッド
 
-構造体をJSONに変換する．変換前に，マッピングを行うようにする．
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．
 
 参考：https://golang.org/pkg/encoding/json/#Marshal
 
@@ -1766,8 +1765,9 @@ type Person struct {
 }
 
 func main() {
-	person := Person{Name: "Hiroki"}
+	person := &Person{Name: "Hiroki"}
 
+	// ポインタ型と非ポインタ型の両方の引数に対応
 	json, err := json.Marshal(person)
 
 	if err != nil {
@@ -1867,8 +1867,8 @@ package main
 import "fmt"
 
 func main() {
-    // いずれかが文字列
-    fmt.Print("Hello", "world!", 12345) // Helloworld!12345
+	// いずれかが文字列
+	fmt.Print("Hello", "world!", 12345) // Helloworld!12345
 }
 ```
 
@@ -2029,6 +2029,124 @@ func main() {
 
 ### net/http
 
+#### ・```ListenAndServe```メソッド
+
+サーバを起動する．第一引数にサーバのURL，第二引数にServeMux関数（マルチプレクサ関数）を渡す．第二引数に```nil```を渡した場合，デフォルト引数として```http.DefaultServeMux```が渡される．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"net/http"
+	"log"
+)
+
+func main() {
+
+	err := http.ListenAndServe(":8080", nil)
+
+	// 以下でも同じ．
+	// http.ListenAndServe(":8080", http.DefaultServeMux)
+
+	if err != nil {
+		log.Fatal("Error ListenAndServe : ", err)
+	}
+}
+```
+
+#### ・```NewServeMux```メソッド
+
+サーバーを起動する```ListenAndServe```メソッドに対して，自身で定義したServeMux関数を渡す場合，```NewServeMux```メソッドを使用する必要がある．これの```HandleFunc```メソッドに対してルーティングと関数を定義する．
+
+**＊実装例＊**
+
+HTMLをレスポンスとして返信するサーバ（```http://localhost:8080/```）を起動する．
+
+```go
+package main
+
+import (
+	"net/http"
+	"log"
+)
+
+func myHandler(writer http.ResponseWriter, request *http.Request) {
+	// HTMLをレスポンスとして返信する．
+	fmt.Fprintf(writer, "<h1>Hello world!</h1>")
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	// ルーティングと関数を設定する．
+	mux.HandleFunc("/", myHandler)
+
+	// サーバを起動する．
+	err := http.ListenAndServe(":8080", mux)
+
+	if err != nil {
+		log.Fatal("Error ListenAndServe : ", err)
+	}
+}
+```
+
+JSONをレスポンスとして返信するサーバ（```http://localhost:8080/```）を起動する．
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+)
+
+type User struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// コンストラクタ
+func NewUser(id int, name string) *User {
+
+	return &User{
+		Id:   id,
+		Name: name,
+	}
+}
+
+func myHandler(writer http.ResponseWriter, request *http.Request) {
+
+	user := NewUser(1, "Hiroki")
+
+	json, err := json.Marshal(user)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// JSONをレスポンスとして返信する．
+	writer.Header().Set("Content-Type", "application/json; charset=utf-8")
+	writer.Write(json)
+}
+
+func main() {
+	mux := http.NewServeMux()
+
+	// ルーティングと関数を設定する．
+	mux.HandleFunc("/", myHandler)
+
+	// サーバを起動する．
+	err := http.ListenAndServe(":8080", mux)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
 #### ・Client構造体，Requst構造体，Response構造体
 
 参考：
@@ -2048,7 +2166,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -2079,45 +2196,43 @@ func main() {
 	}
 
 	// マッピングを元に，構造体をJSONに変換する．
-	json, err := json.Marshal(slackMessage)
+	json, err := json.Marshal(message)
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		return err
 	}
 
 	// リクエストメッセージを定義する．
 	request, err := http.NewRequest(
 		"POST",
-		url,
+		"https://slack.com/api/chat.postMessage",
 		bytes.NewBuffer(json),
 	)
 
 	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
+		return err
 	}
 
 	// ヘッダーを定義する．
 	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("SLACK_API_TOKEN")))
 
 	client := &http.Client{}
 
 	// HTTPリクエストを送信する．
 	response, err := client.Do(request)
 
+	if err != nil || response.StatusCode != 200 {
+		return err
+	}
+
 	// deferで宣言しておき，HTTP通信を必ず終了できるようにする．
 	defer response.Body.Close()
 
-	if err != nil {
-		log.Fatalf("ERROR: %#v\n", err)
-	}
+	fmt.Printf("Success: %#v\n", response)
 
-	if response.StatusCode != 200 {
-		log.Fatalf("ERROR: %#v\n", response)
-	}
-
-	fmt.Printf("INFO: %#v\n", response)
+	return nil
 }
-
 ```
 
 <br>
@@ -2161,18 +2276,18 @@ func main() {
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"strings"
 )
 
 func main() {
-    var builder strings.Builder
-    
-    builder.WriteString("Hello ")
-    
-    builder.WriteString("world!")
-    
-    fmt.Println(builder.String()) // Hello world! 
+	var builder strings.Builder
+
+	builder.WriteString("Hello ")
+
+	builder.WriteString("world!")
+
+	fmt.Println(builder.String()) // Hello world!
 }
 ```
 
