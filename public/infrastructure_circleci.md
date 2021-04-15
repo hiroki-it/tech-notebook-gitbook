@@ -922,16 +922,18 @@ workflows:
 
 <br>
 
-### branches
+### filters
 
-#### ・branchesとは
+#### ・filtersとは
 
 コミットされた時に```job```が発火するブランチ名，あるいは発火しないブランチ名，を設定する．正規表現で実装する必要がある．
 
-| よくあるパターン  | 説明                                    |
-| ----------------- | --------------------------------------- |
-| ```/.*/```        | 全てのブランチを明示的に指定            |
-| ```/feature.*/``` | 「feature」と名前のついたブランチを指定 |
+#### ・```only```，```ignore```
+
+| よくあるパターン    | 説明                                     |
+| ------------------- | ---------------------------------------- |
+| ```/.*/```          | 全てのブランチを明示的に指定             |
+| ```/feature\/.*/``` | 「feature/」と名前のついたブランチを指定 |
 
 **＊実装例＊**
 
@@ -941,9 +943,10 @@ workflows:
   build:
     jobs:
       - example:
-          branches:
-            only:
-              - /.*/
+          filters:      
+            branches:
+              only:
+                - /.*/
 ```
 
 ```yaml
@@ -952,9 +955,27 @@ workflows:
   build:
     jobs:
       - example:
-          branches:
-            ignore:
-              - /feature.*/
+          filters:      
+            branches:
+              ignore:
+                - /feature\/.*/
+```
+
+#### ・tags
+
+タグをつけたコミットに対して発火する．```ignore```キーで全てのブランチを指定することにより，マージによる発火を防ぐことができる．
+
+```yaml
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - example:
+          filters:
+            branches:
+               ignore: /.*/
+            tags:
+               only: /release\/.*/
 ```
 
 <br>

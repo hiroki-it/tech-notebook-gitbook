@@ -2301,9 +2301,10 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
           <span class="token key atrule">tag</span><span class="token punctuation">:</span> xxx
 </code></pre>
 <p><br></p>
-<h3 id="branches"><a name="branches" class="plugin-anchor" href="#branches"><i class="fa fa-link" aria-hidden="true"></i></a>branches</h3>
-<h4 id="&#x30FB;branches&#x3068;&#x306F;"><a name="&#x30FB;branches&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;branches&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;branches&#x3068;&#x306F;</h4>
+<h3 id="filters"><a name="filters" class="plugin-anchor" href="#filters"><i class="fa fa-link" aria-hidden="true"></i></a>filters</h3>
+<h4 id="&#x30FB;filters&#x3068;&#x306F;"><a name="&#x30FB;filters&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;filters&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;filters&#x3068;&#x306F;</h4>
 <p>&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;<code>job</code>&#x304C;&#x767A;&#x706B;&#x3059;&#x308B;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&#xFF0C;&#x3042;&#x308B;&#x3044;&#x306F;&#x767A;&#x706B;&#x3057;&#x306A;&#x3044;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&#xFF0C;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3067;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;only&#xFF0C;ignore"><a name="&#x30FB;only&#xFF0C;ignore" class="plugin-anchor" href="#&#x30FB;only&#xFF0C;ignore"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>only</code>&#xFF0C;<code>ignore</code></h4>
 <table>
 <thead>
 <tr>
@@ -2317,8 +2318,8 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 <td>&#x5168;&#x3066;&#x306E;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x6307;&#x5B9A;</td>
 </tr>
 <tr>
-<td><code>/feature.*/</code></td>
-<td>&#x300C;feature&#x300D;&#x3068;&#x540D;&#x524D;&#x306E;&#x3064;&#x3044;&#x305F;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x6307;&#x5B9A;</td>
+<td><code>/feature\/.*/</code></td>
+<td>&#x300C;feature/&#x300D;&#x3068;&#x540D;&#x524D;&#x306E;&#x3064;&#x3044;&#x305F;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x6307;&#x5B9A;</td>
 </tr>
 </tbody>
 </table>
@@ -2328,18 +2329,33 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
-          <span class="token key atrule">branches</span><span class="token punctuation">:</span>
-            <span class="token key atrule">only</span><span class="token punctuation">:</span>
-              <span class="token punctuation">-</span> /.<span class="token important">*/</span>
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>      
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> /.<span class="token important">*/</span>
 </code></pre>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">workflows</span><span class="token punctuation">:</span>
   <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
-          <span class="token key atrule">branches</span><span class="token punctuation">:</span>
-            <span class="token key atrule">ignore</span><span class="token punctuation">:</span>
-              <span class="token punctuation">-</span> /feature.<span class="token important">*/</span>
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>      
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">ignore</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> /feature\/.<span class="token important">*/</span>
+</code></pre>
+<h4 id="&#x30FB;tags"><a name="&#x30FB;tags" class="plugin-anchor" href="#&#x30FB;tags"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;tags</h4>
+<p>&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x305F;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x767A;&#x706B;&#x3059;&#x308B;&#xFF0E;<code>ignore</code>&#x30AD;&#x30FC;&#x3067;&#x5168;&#x3066;&#x306E;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30DE;&#x30FC;&#x30B8;&#x306B;&#x3088;&#x308B;&#x767A;&#x706B;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">workflows</span><span class="token punctuation">:</span>
+  <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+               <span class="token key atrule">ignore</span><span class="token punctuation">:</span> /.<span class="token important">*/</span>
+            <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+               <span class="token key atrule">only</span><span class="token punctuation">:</span> /release\/.<span class="token important">*/</span>
 </code></pre>
 <p><br></p>
 <h2 id="02-07-&#x74B0;&#x5883;&#x5909;&#x6570;"><a name="02-07-&#x74B0;&#x5883;&#x5909;&#x6570;" class="plugin-anchor" href="#02-07-&#x74B0;&#x5883;&#x5909;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>02-07. &#x74B0;&#x5883;&#x5909;&#x6570;</h2>
@@ -3050,7 +3066,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-04-12T12:57:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-13T15:14:01.796Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-04-15T12:14:03.344Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T12:34:10.287Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
