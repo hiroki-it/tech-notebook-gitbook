@@ -462,7 +462,7 @@ type Person struct {
 }
 
 func main() {
-	person := Person{Name: "Hiroki"}
+	person := &Person{Name: "Hiroki"}
 
 	json, err := json.Marshal(person)
 	if err != nil {
@@ -1745,7 +1745,7 @@ func main() {
 
 #### ・```Marshal```メソッド
 
-構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．
 
 参考：https://golang.org/pkg/encoding/json/#Marshal
 
@@ -2183,7 +2183,7 @@ func main() {
 	url := "https://xxxx.slack.com"
 
 	// ボディを定義する．
-	slackMessage := SlackMessage{
+	slackMessage := &SlackMessage{
 		Token:    "<トークン文字列>",
 		Channel:  "<チャンネル名，もしくは@ユーザ名>",
 		Text:     "<メッセージ>",
@@ -2196,7 +2196,7 @@ func main() {
 	}
 
 	// マッピングを元に，構造体をJSONに変換する．
-	json, err := json.Marshal(message)
+	json, err := json.Marshal(slackMessage)
 
 	if err != nil {
 		return err
