@@ -191,6 +191,16 @@ EXPOSE 80
 | **```ADD```**     | ・ホストOSのファイルを，コンテナの指定ディレクトリにコピー（**```COPY```と同じ**）<br>・インターネットからファイルをダウンロードし，解凍も行う．<br>・イメージのビルド時にコピーされるだけで，ビルド後のコードの変更は反映されない． |
 | **```WORKDIR```** | 絶対パスによる指定で，現在のディレクトリを変更.              |
 
+#### ・CMD
+
+指定したディレクトリのバイナリファイルにアクセスできない場合がある．この時は，一つ下のディレクトリにバイナリファイルを置くようにすると，アクセスできるようになる．
+
+```shell
+# /go/bin にアクセスできない時は，/go/bin/cmdにアーティファクトを置く．
+ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
+
+```
+
 #### ・ENVとARGの違い
 
 一つ目に，```ENV```が使えて，```ARG```が使えない例．
