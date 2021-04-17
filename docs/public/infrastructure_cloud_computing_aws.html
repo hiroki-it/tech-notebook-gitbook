@@ -1703,11 +1703,13 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-lambda-runtime-interface-emulator" target="_blank">https://github.com/aws/aws-lambda-runtime-interface-emulator</a></p>
 <p><strong>&#xFF0A;&#x53C2;&#x8003;&#xFF0A;</strong></p>
 <p>RIC&#x304C;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ docker run --rm <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ docker run -d <span class="token punctuation">\</span>
     -v ~/.aws-lambda-rie:/aws-lambda <span class="token punctuation">\</span>
     -p <span class="token number">9000</span>:8080 <span class="token punctuation">\</span>
     --entrypoint /aws-lambda/aws-lambda-rie <span class="token punctuation">\</span>
-    <span class="token operator">&lt;</span>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span> ./cmd/main.go <span class="token function">sh</span>
+    <span class="token operator">&lt;</span>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span> /go/bin/cmd
+</code></pre>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">curl</span> -XPOST <span class="token string">&quot;http://localhost:9000/2015-03-31/functions/function/invocations&quot;</span> -d <span class="token string">&apos;{}&apos;</span>
 </code></pre>
 <p><br></p>
 <h3 id="lambda&#x306E;&#x95A2;&#x6570;"><a name="lambda&#x306E;&#x95A2;&#x6570;" class="plugin-anchor" href="#lambda&#x306E;&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>Lambda&#x306E;&#x95A2;&#x6570;</h3>
@@ -1931,7 +1933,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
  * &#x975E;&#x540C;&#x671F;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;
  *
  * @param event
- * @returns {Promise&lt;*&gt;}
+ * @returns Promise&lt;json&gt;
  */</span>
 exports<span class="token punctuation">.</span><span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
@@ -1975,7 +1977,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
  *
  * @param event
  * @param app
- * @returns {string}
+ * @returns string
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">buildMessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> app</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
@@ -2062,7 +2064,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
  * &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x307E;&#x3059;&#xFF0E;
  *
  * @param message
- * @returns {Promise&lt;*&gt;}
+ * @returns Promise&lt;json&gt;
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">postMessageToSlack</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
@@ -7705,7 +7707,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-04-16T03:40:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-16T14:02:14.487Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-04-17T11:48:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-17T13:15:14.388Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
