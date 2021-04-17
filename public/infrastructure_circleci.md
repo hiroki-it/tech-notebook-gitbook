@@ -1140,7 +1140,7 @@ CircleCIでDocker Composeを使用する場合に必要である．Docker Compos
 
 **＊実装例＊**
 
-LaravelコンテナとMySQLコンテナの場合を示す．
+LaravelコンテナとMySQLコンテナの場合を示す．コンテナ内に対してコマンドを実行する時のディレクトリは，Dockerfileの```WORKDIR```によって決まるので注意する．
 
 ```yaml
 version: 2.1
