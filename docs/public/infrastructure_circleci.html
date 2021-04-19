@@ -2551,7 +2551,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Composer install
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            docker exec -it laravel-container composer install -n --prefer-dist</span>
+            docker-compose exec laravel-container composer install -n --prefer-dist</span>
       <span class="token punctuation">-</span> save_vendor
       <span class="token comment"># Dockerize&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">docker/install-dockerize</span><span class="token punctuation">:</span>
@@ -2565,17 +2565,17 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Run artisan migration
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            docker exec -it laravel-container php artisan migrate --force</span>
+            docker-compose exec laravel-container php artisan migrate --force</span>
       <span class="token comment"># Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;PHP-Unit&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Run unit test
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            docker exec -it laravel-container ./vendor/bin/phpunit</span>
+            dockercompose exec laravel-container ./vendor/bin/phpunit</span>
       <span class="token comment"># Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;PHP-Stan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;  </span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Run static test
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-            docker exec -it laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M</span>
+            docker-compose exec laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M</span>
 </code></pre>
 <p><br></p>
 <h3 id="dlc&#xFF1A;docker-layer-cache"><a name="dlc&#xFF1A;docker-layer-cache" class="plugin-anchor" href="#dlc&#xFF1A;docker-layer-cache"><i class="fa fa-link" aria-hidden="true"></i></a>DLC&#xFF1A;Docker Layer Cache</h3>
@@ -3066,7 +3066,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-04-17T07:44:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-17T13:15:14.388Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-04-18T14:47:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T11:57:03.467Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
