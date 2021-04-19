@@ -28,7 +28,15 @@
 
 ### コマンド
 
-#### ・up
+#### ・config
+
+バリデーションとして，```docker-compose.yml```ファイルを展開する．ファイル内で，相対パスや変数を使用している場合，これらが正しく設定されているかを確認できる．
+
+```shell
+$ docker-compose config
+```
+
+#### ・up -d
 
 すでに起動中／停止中コンテナがある場合，それをデタッチドモードで再起動する．
 
@@ -80,7 +88,7 @@ $ docker-compose logs -f <サービス名>
 
 #### ・```container_name```
 
-コンテナ名の命名．
+コンテナ名を命名する．
 
 **＊実装例＊**
 
@@ -131,9 +139,17 @@ build:
   context: .
 ```
 
+#### ・```stdin_open```
+
+内部的な```run```コマンドの実行時に```i```オプションを有効化する．
+
+```yaml
+stdin_open: true
+```
+
 #### ・```tty```
 
-```docker exec -it```に相当する．疑似ターミナルを割り当てるによって，```exit```の後もコンテナを起動させ続けられる．
+内部的な```run```コマンドの実行時に```t```オプションを有効化する．疑似ターミナルを割り当てるによって，```exit```の後もバックグラウンドでコンテナを起動させ続けられる．
 
 **＊実装例＊**
 
@@ -193,9 +209,24 @@ volumes:
     driver: local   
 ```
 
-#### ・```environment```
+#### ・```env_file```，```environment```
 
-mysqlイメージを使用した場合，環境変数を定義することによって，ルートユーザと一般ユーザを自動的に作成できる．ルートユーザ名は定義できず，「```root```」となる．
+コンテナで展開する環境変数を定義する．mysqlイメージを使用した場合，環境変数を定義することによって，ルートユーザと一般ユーザを自動的に作成できる．ルートユーザ名は定義できず，「```root```」となる．
+
+**＊実装例＊**
+
+```shell
+# .docker.envファイル
+MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
+MYSQL_DATABASE: example # データベース名
+MYSQL_USER: example_user # 一般ユーザ名
+MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
+```
+
+```yaml
+env_file:
+  - .docker.env
+```
 
 **＊実装例＊**
 
@@ -207,6 +238,23 @@ environment:
   MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
 ```
 
+#### ・```args```
+
+Dockerfileの```ARGS```に展開する変数を定義する．Dockerfileに直接実装することとの使い分けとして，Dockerfileの実装は簡単に変更できないが，```docker-compose.yml```ファイルにおける定義は変更しやすい．そのため，使用者に変更して欲しくない変数はDockerfileに実装し，変更しても問題ない変数はこのオプションを使用する．他に，マルチステージビルドを使用しており，全てのステージで共通した変数を展開したい場合，このオプションを使用すると展開する変数を共通化できる．
+
+**＊実装例＊**
+
+```yaml
+build:
+  args:
+    - PARAM=$PARAM
+```
+
+```dockerfile
+ARG PARAM
+
+ENV PARAM=${PARAM}
+```
 
 #### ・```depends_on```
 
@@ -270,13 +318,23 @@ xxxxxxxxxxxx     backend_default           bridge       local
 xxxxxxxxxxxx     <プロジェクト名>_default     bridge      local
 ```
 
+#### ・変数展開
+
+環境変数を```docker-compose.yml```ファイルに展開する．変数は，```.env```ファイルに定義しておく必要がある．この展開に```env_file```オプションを使用することはできない．そのため，例えば```.env```ファイル以外の名前の環境変数ファイルを変数展開のために使用することはできない．
+
+```yaml
+# .envファイルに定義しなければならない．
+build:
+  target: ${APP_ENV}
+```
+
 <br>
 
 ### Tips
 
 #### ・mysqlコンテナのビルド時に処理実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置された```sql```ファイルや```shell```は，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置された```sql```ファイルや```shell```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
 
 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 

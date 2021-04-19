@@ -1189,7 +1189,7 @@ jobs:
       - run:
           name: Composer install
           command: |
-            docker exec -it laravel-container composer install -n --prefer-dist
+            docker-compose exec laravel-container composer install -n --prefer-dist
       - save_vendor
       # Dockerizeをインストール
       - docker/install-dockerize:
@@ -1203,17 +1203,17 @@ jobs:
       - run:
           name: Run artisan migration
           command: |
-            docker exec -it laravel-container php artisan migrate --force
+            docker-compose exec laravel-container php artisan migrate --force
       # Dockerコンテナに対してPHP-Unitコマンドを送信
       - run:
           name: Run unit test
           command: |
-            docker exec -it laravel-container ./vendor/bin/phpunit
+            dockercompose exec laravel-container ./vendor/bin/phpunit
       # Dockerコンテナに対してPHP-Stanコマンドを送信  
       - run:
           name: Run static test
           command: |
-            docker exec -it laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M
+            docker-compose exec laravel-container ./vendor/bin/phpstan analyse --memory-limit=512M
 ```
 
 <br>

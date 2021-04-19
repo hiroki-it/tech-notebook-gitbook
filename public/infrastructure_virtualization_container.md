@@ -1,5 +1,3 @@
-
-
 # コンテナ
 
 ## 01. Dockerによるコンテナの構築
@@ -568,7 +566,7 @@ $ docker start -i <停止中コンテナ名>
 
 **＊コマンド例＊**
 
-コンテナを起動し，そのコンテナ内でコマンドを実行する．起動時に```shell````を実行すると，コンテナに接続できる．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．コンテナレイヤーを生成し，コンテナを構築，起動までを行う．Dockerfileの```CMD```の有無に関わらず，プロセス起動時のコマンドを引数として渡す必要がある．
+コンテナを起動し，そのコンテナ内でコマンドを実行する．起動時に```shell```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```shell```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．コンテナレイヤーを生成し，コンテナを構築，起動までを行う．
 
 ```shell
 # アタッチモードによる起動．フォアグラウンドで起動する．
@@ -576,6 +574,12 @@ $ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 
 # デタッチドモードによる起動．バックグラウンドで起動する．
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
+```
+
+コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行するようにする．
+
+```shell
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
 ```
 
 #### ・停止中のコンテナを削除
@@ -631,18 +635,6 @@ $ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 ```shell
 # -d；detached mode
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-```
-
-#### ・エラーの場合
-
-コマンドの引数に```/bin/bash```を使用して，以下のようなエラーが出た時，使用するバイナリファイルを```shell```にするとよい
-
-```shell
-docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
-```
-
-```shell
-$ docker run -it --name <コンテナ名> <使用イメージ名>:<タグ> sh
 ```
 
 <br>
