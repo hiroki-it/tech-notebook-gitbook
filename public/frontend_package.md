@@ -34,6 +34,8 @@ $ npm install --force
 
 ### update
 
+#### ・インストール，アップデート
+
 インストールされていないパッケージをインストールする．また，バージョン定義をもとに更新可能なパッケージを更新する．
 
 ```shell
@@ -66,3 +68,14 @@ $ npm run <エイリアス名>
     }
 }
 ```
+
+<br>
+
+### NODE_OPTIONS
+
+#### ・メモリ上限をなくす
+
+```shell
+$ export NODE_OPTIONS="--max-old-space-size=2048"
+```
+
