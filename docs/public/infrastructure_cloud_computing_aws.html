@@ -1701,12 +1701,37 @@
 <p>&#x958B;&#x767A;&#x74B0;&#x5883;&#x306B;&#x306F;Lambda&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;Lambda&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;RIE&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5168;&#x3066;&#x306E;&#x8A00;&#x8A9E;&#x3067;&#x5171;&#x901A;&#x306E;RIE&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x304C;&#x7528;&#x610F;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-lambda-runtime-interface-emulator" target="_blank">https://github.com/aws/aws-lambda-runtime-interface-emulator</a></p>
 <p><strong>&#xFF0A;&#x53C2;&#x8003;&#xFF0A;</strong></p>
-<p>RIC&#x304C;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ docker run -d <span class="token punctuation">\</span>
+<pre class="language-"><code class="lang-shell">$ docker run --rm <span class="token punctuation">\</span>
+    <span class="token comment"># &#x30A8;&#x30DF;&#x30E5;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x3092;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3059;&#x308B;&#xFF0E;</span>
     -v ~/.aws-lambda-rie:/aws-lambda <span class="token punctuation">\</span>
     -p <span class="token number">9000</span>:8080 <span class="token punctuation">\</span>
+    <span class="token comment"># &#x30A8;&#x30DF;&#x30E5;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x3092;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
     --entrypoint /aws-lambda/aws-lambda-rie <span class="token punctuation">\</span>
     <span class="token operator">&lt;</span>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span> /go/bin/cmd
+</code></pre>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">curl</span> -XPOST <span class="token string">&quot;http://localhost:9000/2015-03-31/functions/function/invocations&quot;</span> -d <span class="token string">&apos;{}&apos;</span>
+</code></pre>
+<p><strong>&#xFF0A;&#x53C2;&#x8003;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">&quot;3.7&quot;</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">lambda</span><span class="token punctuation">:</span>
+    <span class="token key atrule">build</span><span class="token punctuation">:</span>
+      <span class="token key atrule">context</span><span class="token punctuation">:</span> .
+      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> ./build/Dockerfile
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> lambda
+    <span class="token comment"># &#x30A8;&#x30DF;&#x30E5;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x3092;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /aws<span class="token punctuation">-</span>lambda/aws<span class="token punctuation">-</span>lambda<span class="token punctuation">-</span>rie
+    <span class="token key atrule">env_file</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> .docker.env
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> &lt;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token punctuation">&gt;</span><span class="token punctuation">:</span>&lt;&#x30BF;&#x30B0;&#x540D;<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9000<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token comment"># &#x30A8;&#x30DF;&#x30E5;&#x30EC;&#x30FC;&#x30BF;&#x30FC;&#x3092;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ~/.aws<span class="token punctuation">-</span>lambda<span class="token punctuation">-</span>rie<span class="token punctuation">:</span>/aws<span class="token punctuation">-</span>lambda
+</code></pre>
+<pre class="language-"><code class="lang-shell">$ docker-compose up lambda
 </code></pre>
 <pre class="language-"><code class="lang-shell">$ <span class="token function">curl</span> -XPOST <span class="token string">&quot;http://localhost:9000/2015-03-31/functions/function/invocations&quot;</span> -d <span class="token string">&apos;{}&apos;</span>
 </code></pre>
@@ -3663,6 +3688,11 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       <span class="
 <td>&#x5404;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#xFF0C;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x305F;&#x30A8;&#x30F3;&#x30C2;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304C;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
 <td>&#x5404;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#xFF0C;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x305F;&#x30A8;&#x30F3;&#x30C2;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304C;&#x5272;&#x308A;&#x632F;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
 </tr>
+<tr>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x540C;&#x671F;</td>
+<td>RDS&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x5909;&#x66F4;&#x3092;&#x53D7;&#x3051;&#x3064;&#x3051;&#x308B;&#xFF0E;</td>
+<td>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5909;&#x66F4;&#x304C;&#x540C;&#x671F;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -3804,7 +3834,7 @@ NOW<span class="token punctuation">(</span><span class="token punctuation">)</sp
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log.png" alt="rds-event-log"></p>
 <p><br></p>
 <h3 id="&#x8CA0;&#x8377;&#x5BFE;&#x7B56;"><a name="&#x8CA0;&#x8377;&#x5BFE;&#x7B56;" class="plugin-anchor" href="#&#x8CA0;&#x8377;&#x5BFE;&#x7B56;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8CA0;&#x8377;&#x5BFE;&#x7B56;</h3>
-<h4 id="&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;"><a name="&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;</h4>
+<h4 id="&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;"><a name="&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RDS&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;.png" alt="RDS&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;"></p>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x5FDC;&#x3058;&#x305F;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304C;&#x7528;&#x610F;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x306E;CRUD&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x5148;&#x3092;&#x632F;&#x308A;&#x5206;&#x3051;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x8CA0;&#x8377;&#x3092;&#x5206;&#x6563;&#x3055;&#x305B;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x30AA;&#x30F3;&#x30EA;&#x30FC;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;READ&#x4EE5;&#x5916;&#x306E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306A;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token comment">/* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */</span>
@@ -7758,7 +7788,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-04-19T11:45:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T11:57:03.467Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.2","depth":2,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.3","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎クラウドコンピューティング","level":"1.12.1","depth":2,"path":"public/infrastructure_cloud_computing.md","ref":"public/infrastructure_cloud_computing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-04-20T13:45:05.732Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-20T17:24:14.465Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
