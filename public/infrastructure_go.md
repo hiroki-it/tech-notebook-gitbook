@@ -586,18 +586,18 @@ package main
 
 import "fmt"
 
-func main(){
-    x := "a"
-    
-    // メモリアドレスを抽出する．
-    var p *string = &x
-    // p := &x と同じ
-    
-    // メモリアドレスを抽出する前
-    fmt.Printf("%#v\n", x) // "a"
-    
-    // メモリアドレスを抽出した後
-    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+func main() {
+	x := "a"
+
+	// メモリアドレスを抽出する．
+	var p *string = &x
+	// p := &x と同じ
+
+	// メモリアドレスを抽出する前
+	fmt.Printf("%#v\n", x) // "a"
+
+	// メモリアドレスを抽出した後
+	fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
 }
 ```
 
@@ -610,23 +610,23 @@ package main
 
 import "fmt"
 
-func main(){
-    
-    x := "a"    
+func main() {
 
-    p := &x
-    
-    // メモリアドレスの実体を取得する．
-    y := *p
-    
-    // メモリアドレスを抽出する前
-    fmt.Printf("%#v\n", x) // "a"
-    
-    // メモリアドレスを抽出した後
-    fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
-    
-    // メモリアドレスに割り当てられたデータ
-    fmt.Printf("%#v\n", y) // "a"
+	x := "a"
+
+	p := &x
+
+	// メモリアドレスの実体を取得する．
+	y := *p
+
+	// メモリアドレスを抽出する前
+	fmt.Printf("%#v\n", x) // "a"
+
+	// メモリアドレスを抽出した後
+	fmt.Printf("%#v\n", p) // (*string)(0xc0000841e0)
+
+	// メモリアドレスに割り当てられたデータ
+	fmt.Printf("%#v\n", y) // "a"
 }
 ```
 
@@ -658,18 +658,18 @@ package main
 
 import "fmt"
 
-func main(){
-    // 定義と代入を同時に行う．
-    x := []string{"Hiroki", "Gopher"}
-    
-    fmt.Printf("%+v\n", x) // [Hiroki Gopher]
-    fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
-    
-    // 定義と代入を同時に行う．また，型推論を行う．
-    var y []string = []string{"Hiroki", "Gopher"}
-    
-    fmt.Printf("%+v\n", y) // [Hiroki Gopher]
-    fmt.Printf("%#v\n", y) // []string{"Hiroki", "Gopher"}
+func main() {
+	// 定義と代入を同時に行う．
+	x := []string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%+v\n", x) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
+
+	// 定義と代入を同時に行う．また，型推論を行う．
+	var y []string = []string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%+v\n", y) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", y) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -712,11 +712,11 @@ package main
 
 import "fmt"
 
-func main(){
-    x := []byte("abc")
-    
-    fmt.Printf("%+v\n", x) // [97 98 99]
-    fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
+func main() {
+	x := []byte("abc")
+
+	fmt.Printf("%+v\n", x) // [97 98 99]
+	fmt.Printf("%#v\n", x) // []byte{0x61, 0x62, 0x63}
 }
 ```
 
@@ -727,15 +727,15 @@ package main
 
 import "fmt"
 
-type Person struct{
-    Name string
+type Person struct {
+	Name string
 }
 
-func main(){
-    person := []Person{{Name: "Hiroki"}}
-    
-    fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
-    fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
+func main() {
+	person := []Person{{Name: "Hiroki"}}
+
+	fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
+	fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
 }
 ```
 
@@ -743,13 +743,13 @@ func main(){
 
 ### インターフェース
 
-####  ・インターフェースとは
+####  ・埋め込み
 
-Goでは，様々な値をインターフェース型として定義できる．また，メソッドを定義できる．
+インターフェースを構造体に埋め込むことにより，構造体をインターフェースの実装として扱うことができる．
 
 **＊実装例＊**
 
-Animalインターフェースに変換すると，```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の実装が強制される．
+InspectImpl構造体にAnimalインターフェースを埋め込み，構造体に```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の実装を強制する．
 
 ```go
 package main
@@ -757,52 +757,58 @@ package main
 import "fmt"
 
 // インターフェースとそのメソッドを定義する．
-type Animal interface {
+type AnimalInterface interface {
+	Name()
 	Eat()
 	Sleep()
-	Mating()
 }
 
-// 構造体に関数を定義する．
-type Insect struct {
+// 構造体にインターフェースを埋め込む．インターフェースのメソッドの関連付けが強制される．
+type InsectImpl struct {
+	AnimalInterface
 	Name string
 }
 
-type Fish struct {
+type FishImpl struct {
+	AnimalInterface
 	Name string
 }
 
-type Mammal struct {
+type MammalImpl struct {
+	AnimalInterface
 	Name string
 }
 
-// 構造体に関数を関連付ける．インターフェースのメソッドの関連付けが強制される．
-func (insect Insect) Eat() {
-	fmt.Println("雑食")
+func (insect InsectImpl) GetName() {
+	fmt.Println(insect.Name)
 }
 
-func (insect Insect) Sleep() {
+// 構造体に関数を関連付ける．
+func (insect InsectImpl) Eat() {
+	fmt.Println("食べる")
+}
+
+func (insect InsectImpl) Sleep() {
 	fmt.Println("眠る")
 }
 
-func (insect Insect) Mating() {
-	fmt.Println("単為生殖")
+func NewInsect(name string) (*InsectImpl, error) {
+	return &InsectImpl{
+		Name: name,
+	}, nil
 }
 
 func main() {
-	// Animalインターフェース型の変数を定義する．
-	var animal Animal
+	insect, err := NewInsect("カブトムシ")
 
-	// 構造体の変数を定義する．
-	insect := Insect{Name: "Ant"}
-
-	// 構造体をインターフェースに変換する．
-	animal = insect
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	// メソッドを実行する．
-	animal.Eat()
-	animal.Sleep()
-	animal.Mating()
+	insect.GetName()
+	insect.Eat()
+	insect.Sleep()
 }
 ```
 
@@ -816,7 +822,7 @@ Insect does not implement Animal (missing Eat method)
 
 #### ・他のデータ型からの変換
 
-様々な値をインターフェースに変換できる．
+様々な値をインターフェース型として定義でき，これらをインターフェースに変換できる．
 
 **＊実装例＊**
 
@@ -887,10 +893,10 @@ package main
 
 import "fmt"
 
-func main(){
-    var x interface{}
-    
-    fmt.Printf("%#v\n", x) // <nil>
+func main() {
+	var x interface{}
+
+	fmt.Printf("%#v\n", x) // <nil>
 }
 ```
 
@@ -1015,7 +1021,7 @@ func main() {
 
 #### ・レシーバによる関連付け
 
-データ型や型リテラルなどを関数のレシーバとして渡すことによって，それに関数を関連づけられる．関連付け後，関数はメソッドと呼ばれるようになる．
+データ型や型リテラルなどを関数のレシーバとして渡すことによって，それに関数を関連づけられる．関連付け後，関数はメソッドと呼ばれるようになる．メソッド名とデータ名に同じ名前は使用できない．
 
 **＊実装例＊**
 
@@ -2312,23 +2318,151 @@ func main() {
 
 ### testify
 
-#### ・mock
+#### ・testifyとは
 
-参考：https://pkg.go.dev/github.com/stretchr/testify/mock
+モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．
 
-#### ・assert
+参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
-参考：https://pkg.go.dev/github.com/stretchr/testify/assert
+モックとスタブについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+#### ・モック化
+
+| よく使うメソッド | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
+
+**＊実装例＊**
+
+AWSクライアントをモック化する．
+
+```go
+package amplify
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+/**
+ * AWSクライアントをモック化します．
+ */
+type MockedAwsClient struct {
+	mock.Mock
+}
+```
+
+#### ・スタブ化
+
+| よく使うメソッド              | 説明                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する．関数に値が渡されたことをモックに伝える． |
+| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
+| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．エラーを返却する処理を定義する． |
+
+**＊実装例＊**
+
+関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
+
+```go
+package amplify
+
+import (
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	mock.Mock
+}
+
+/**
+ * AmplifyのGetBranch関数の処理をスタブ化します．
+ */
+func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
+	arguments := mock.Called(ctx, params, optFns)
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+```
+
+#### ・アサーションメソッドによる検証
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+
+| よく使うメソッド                      | 説明                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| ```Mock.On```メソッド                 | 関数の検証時に使用する．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
+| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する．関数内部のスタブが正しく実行されたかどうかを検証する． |
+| ```assert.Exactly```メソッド          | 関数の検証時に使用する．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
+
+**＊実装例＊**
+
+```go
+package amplify
+
+import (
+    "context"
+    "testing"
+    
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	MockedClient mock.Mock
+}
+
+type Branch struct {
+	DisplayName *string
+}
+
+func NewMockedAmplifyAPI() (*MockedAmplifyAPI, error) {
+	return new(MockedAmplifyAPI), nil
+}
+
+func (mockedClient *MockedClient) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
+	arguments := mockedClient.Called(ctx, params, optFns)
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+
+func TestGetBranchFromAmplify(t *testing.T) {
+
+	input := aws_amplify.GetBranchInput{
+		AppId:      aws.String("123456789"),
+		BranchName: aws.String("feature/test"),
+	}
+
+	api, _ := NewMockedAmplifyAPI()
+
+	// スタブに引数として渡される値と，その時の返却値を定義する．
+	api.MockedClient.On("GetBranch", context.TODO(), &input).Return(Branch{DisplayName: aws.String("feature-test")}, nil)
+
+	// 検証対象の関数を実行する．スタブを含む一連の処理が実行される．
+	response, _ := GetBranchFromAmplify(api)
+
+	//関数内部でスタブがコールされているかを検証する．
+	api.MockedClient.AssertExpectations(t)
+
+	// 最終的な返却値が正しいかを検証する．
+	assert.Exactly(t, aws.String("feature-test"), response.Branch.DisplayName)
+}
+```
 
 <br>
 
 ### aws-sdk-go-v2
 
-#### ・awsパッケージ
+#### ・aws-sdk-go-v2とは
+
+参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
+
+#### ・aws
 
 汎用的な関数が同梱されている．
 
-参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2#section-directories
+参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
 ポインタ型から文字列型に変換する```ToString```メソッドや，反対に文字列型からポインタ型に変換する```String```メソッドをよく使う．
 
@@ -2339,7 +2473,7 @@ func main() {
 
 #### ・serviceパッケージ
 
-参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service
+参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
 
 <br>
 
