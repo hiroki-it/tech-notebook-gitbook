@@ -1764,47 +1764,44 @@ module.vpc_module.aws_vpc.vpc
 <p><br></p>
 <h2 id="02-&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;"><a name="02-&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;" class="plugin-anchor" href="#02-&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9F;&#x88C5;</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;"><a name="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h3>
-<h4 id="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;"><a name="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3067;&#x533A;&#x5225;&#x3059;&#x308B;&#x5834;&#x5408;</h4>
+<h4 id="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#xFF06;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5225;&#x3067;&#x533A;&#x5225;"><a name="&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#xFF06;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5225;&#x3067;&#x533A;&#x5225;" class="plugin-anchor" href="#&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#xFF06;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5225;&#x3067;&#x533A;&#x5225;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#xFF06;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5225;&#x3067;&#x533A;&#x5225;</h4>
 <pre class="language-"><code class="lang-shell">terraform_project/
-&#x251C;&#x2500;&#x2500; modules
+&#x251C;&#x2500;&#x2500; .circleci <span class="token comment"># CI/CD&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
+&#x251C;&#x2500;&#x2500; ops <span class="token comment"># Terraform&#x306E;CI/CD&#x306E;&#x81EA;&#x52D5;&#x5316;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</span>
+&#x251C;&#x2500;&#x2500; modules <span class="token comment"># &#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</span>
 &#x2502;   &#x251C;&#x2500;&#x2500; ec2
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; output.tf
 &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
-&#x2502;   &#x2514;&#x2500;&#x2500; ami
-&#x2502;       &#x251C;&#x2500;&#x2500; main.tf
-&#x2502;       &#x251C;&#x2500;&#x2500; output.tf
-&#x2502;       &#x2514;&#x2500;&#x2500; variables.tf
+&#x2502;   &#x2502;
+&#x2502;   &#x2514;&#x2500;&#x2500; acm
+&#x2502;       &#x251C;&#x2500;&#x2500; ap-northeast-1 <span class="token comment"># &#x6771;&#x4EAC;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</span>
+&#x2502;       &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
+&#x2502;       &#x2502;   &#x251C;&#x2500;&#x2500; output.tf
+&#x2502;       &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
+&#x2502;       &#x2502;
+&#x2502;       &#x2514;&#x2500;&#x2500; us-east-1 <span class="token comment"># &#x30D0;&#x30FC;&#x30B8;&#x30CB;&#x30A2;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</span>
 &#x2502;
-&#x251C;&#x2500;&#x2500; ops <span class="token punctuation">(</span>GitHub&#x304B;&#x3089;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x5834;&#x5408;<span class="token punctuation">)</span>
-&#x2502;   &#x251C;&#x2500;&#x2500; assume.sh
-&#x2502;   &#x251C;&#x2500;&#x2500; terraform_apply.sh
-&#x2502;   &#x251C;&#x2500;&#x2500; terraform_destroy_test.sh
-&#x2502;   &#x251C;&#x2500;&#x2500; terraform_fmt.sh
-&#x2502;   &#x251C;&#x2500;&#x2500; terraform_init.sh
-&#x2502;   &#x251C;&#x2500;&#x2500; terraform_plan.sh
-&#x2502;   &#x2514;&#x2500;&#x2500; terraform_validate.sh
-&#x2502;
-&#x251C;&#x2500;&#x2500; prd
+&#x251C;&#x2500;&#x2500; feat <span class="token comment"># &#x958B;&#x767A;&#x74B0;&#x5883;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</span>
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
 &#x2502;
-&#x251C;&#x2500;&#x2500; stg
+&#x251C;&#x2500;&#x2500; prod <span class="token comment"># &#x672C;&#x756A;&#x74B0;&#x5883;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</span>
 &#x2502;   &#x251C;&#x2500;&#x2500; config.tfvars
 &#x2502;   &#x251C;&#x2500;&#x2500; main.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; providers.tf
 &#x2502;   &#x251C;&#x2500;&#x2500; tfnotify.yml
 &#x2502;   &#x2514;&#x2500;&#x2500; variables.tf
 &#x2502;
-&#x2514;&#x2500;&#x2500; <span class="token builtin class-name">test</span>
-    &#x251C;&#x2500;&#x2500; config.tfvars
-    &#x251C;&#x2500;&#x2500; main.tf
-    &#x251C;&#x2500;&#x2500; providers.tf
-    &#x251C;&#x2500;&#x2500; tfnotify.yml
-    &#x2514;&#x2500;&#x2500; variables.tf
+&#x2514;&#x2500;&#x2500; stg <span class="token comment"># &#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;</span>
+      &#x251C;&#x2500;&#x2500; config.tfvars
+      &#x251C;&#x2500;&#x2500; main.tf
+      &#x251C;&#x2500;&#x2500; providers.tf
+      &#x251C;&#x2500;&#x2500; tfnotify.yml
+      &#x2514;&#x2500;&#x2500; variables.tf
 </code></pre>
 <p><br></p>
 <h3 id="tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
@@ -2847,8 +2844,22 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 
 <span class="token punctuation">}</span>
 </code></pre>
+<h4 id="&#x30FB;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;"><a name="&#x30FB;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;" class="plugin-anchor" href="#&#x30FB;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;</h4>
+<ol>
+<li><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x63A5;&#x982D;&#x8F9E;</span><span class="token punctuation">&gt;</span></span>-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x7A2E;&#x985E;</span><span class="token punctuation">&gt;</span></span>-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x63A5;&#x5C3E;&#x8F9E;</span><span class="token punctuation">&gt;</span></span></code>&#x3068;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x63A5;&#x982D;&#x8F9E;&#x306F;&#xFF0C; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x7A3C;&#x50CD;&#x74B0;&#x5883;</span><span class="token punctuation">&gt;</span></span>-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span></code>&#x3068;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x63A5;&#x5C3E;&#x8F9E;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x3068;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;CloudWatch&#x3092;&#x793A;&#x3059;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x4ED6;&#x306E;resource&#x3068;&#x6BD4;&#x8F03;&#x3057;&#x3066;&#xFF0C;&#x7A2E;&#x985E;&#x306F;ALB&#x306E;HTTPCode_TARGET_4XX_Count&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30A2;&#x30E9;&#x30FC;&#x30E0;&#x3068;&#x898B;&#x306A;&#x305B;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;<code>alb_httpcode_4xx_count</code>&#x3068;&#x540D;&#x4ED8;&#x3051;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-tf">resource &quot;aws_cloudwatch_metric_alarm&quot; &quot;alb_httpcode_target_4xx_count&quot; {
+
+  alarm_name = &quot;${var.environment}-${var.service}-alb-httpcode-target-4xx-count-alarm&quot;
+
+}
+</code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x306E;&#x9806;&#x5E8F;&#xFF0C;&#x884C;&#x9593;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x306E;&#x9806;&#x5E8F;&#xFF0C;&#x884C;&#x9593;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x306E;&#x9806;&#x5E8F;&#xFF0C;&#x884C;&#x9593;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x306E;&#x9806;&#x5E8F;&#xFF0C;&#x884C;&#x9593;</h4>
-<p>&#x6700;&#x521D;&#x306B;<code>count</code>&#x3084;<code>for_each</code>&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x6539;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x5404;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x9593;&#x3092;&#x7A7A;&#x3051;&#x305A;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;<code>tags</code>&#xFF0C;<code>depends_on</code>&#xFF0C;<code>lifecycle</code>&#xFF0C;&#x306E;&#x9806;&#x3067;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#x5B9F;&#x969B;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x5168;&#x3066;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
+<p>&#x6700;&#x521D;&#x306B;<code>count</code>&#x3084;<code>for_each</code>&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x6539;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x5225;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x9593;&#x3092;&#x7A7A;&#x3051;&#x305A;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF08;&#x3053;&#x306E;&#x9806;&#x756A;&#x306B;&#x30EB;&#x30FC;&#x30EB;&#x306F;&#x306A;&#x3057;&#xFF09;&#xFF0E;&#x6700;&#x5F8C;&#x306B;&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>tags</code>&#xFF0C;<code>depends_on</code>&#xFF0C;<code>lifecycle</code>&#xFF0C;&#x306E;&#x9806;&#x3067;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#x5B9F;&#x969B;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x5168;&#x3066;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># EXAMPLE</span>
@@ -2879,6 +2890,11 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <h4 id="&#x30FB;&#x57FA;&#x672C;&#x30EB;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x57FA;&#x672C;&#x30EB;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x57FA;&#x672C;&#x30EB;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x57FA;&#x672C;&#x30EB;&#x30FC;&#x30EB;</h4>
 <p>&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x5024;&#x306E;&#x540D;&#x524D;&#x306F;&#xFF0C;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>_<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;</span><span class="token punctuation">&gt;</span></span>_<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>attribute&#x540D;</span><span class="token punctuation">&gt;</span></span></code>&#x3067;&#x547D;&#x540D;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;CloudWatch&#x3092;&#x793A;&#x3059;&#xFF0E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x306F;<code>ecs_container_nginx</code>&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x306F;<code>aws_cloudwatch_log_group</code>&#xFF0C;attribute&#x306F;<code>name</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code>output &quot;ecs_container_nginx_cloudwatch_log_group_name&quot; {
+  value = aws_cloudwatch_log_group.ecs_container_nginx.name
+}
+</code></pre><p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;IAM Role&#x3092;&#x793A;&#x3059;&#xFF0E;</p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># Output IAM Role</span>
@@ -3209,6 +3225,17 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
       <span class="token property">global_ip_addresses</span> <span class="token punctuation">=</span> jsonencode(var.global_ip_addresses)
     <span class="token punctuation">}</span>
   )
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;"><a name="&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;" class="plugin-anchor" href="#&#x30FB;aws&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
+<p>IAM&#x30E6;&#x30FC;&#x30B6;&#x306B;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># For IAM User</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_iam_user_policy_attachment&quot;</span></span> <span class="token string">&quot;aws_cli_command_executor_s3_read_only_access&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">user</span>       <span class="token punctuation">=</span> data.aws_iam_user.aws_cli_command_executor.user_name
+  <span class="token property">policy_arn</span> <span class="token punctuation">=</span> <span class="token string">&quot;arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess&quot;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
@@ -3603,9 +3630,23 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <h4 id="&#x30FB;&#x30E1;&#x30A4;&#x30F3;&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306F;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;"><a name="&#x30FB;&#x30E1;&#x30A4;&#x30F3;&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306F;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;" class="plugin-anchor" href="#&#x30FB;&#x30E1;&#x30A4;&#x30F3;&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306F;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E1;&#x30A4;&#x30F3;&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306F;&#x81EA;&#x52D5;&#x69CB;&#x7BC9;</h4>
 <p>Terraform&#x3092;&#x7528;&#x3044;&#x3066;VPC&#x3092;&#x69CB;&#x7BC9;&#x3057;&#x305F;&#x6642;&#xFF0C;&#x30E1;&#x30A4;&#x30F3;&#x30EB;&#x30FC;&#x30C8;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x306F;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><br></p>
+<h3 id="waf"><a name="waf" class="plugin-anchor" href="#waf"><i class="fa fa-link" aria-hidden="true"></i></a>WAF</h3>
+<h4 id="&#x30FB;ip&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;"><a name="&#x30FB;ip&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;" class="plugin-anchor" href="#&#x30FB;ip&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IP&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;</h4>
+<p>WAF&#x306E;IP&#x30BB;&#x30C3;&#x30C8;&#x306F;&#x4ED6;&#x8A2D;&#x5B9A;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306B;&#x7656;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;IP&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x65B0;&#x3057;&#x304F;&#x8A2D;&#x5B9A;&#x3057;&#x76F4;&#x3059;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x6BB5;&#x968E;&#x306B;&#x5206;&#x3051;&#x3066;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<ol>
+<li>&#x65B0;&#x3057;&#x3044;IP&#x30BB;&#x30C3;&#x30C8;&#x306E;resource&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;ACL&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x53E4;&#x3044;IP&#x30BB;&#x30C3;&#x30C8;&#x306E;resource&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<p><br></p>
 <h3 id="&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;"><a name="&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5171;&#x901A;&#x306E;&#x8A2D;&#x5B9A;</h3>
-<h4 id="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;"><a name="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;" class="plugin-anchor" href="#&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x4E8B;&#x524D;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x3079;&#x304D;</h4>
-<p>&#x65E2;&#x5B58;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;<code>destroy</code>&#x3067;&#x524A;&#x9664;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x7121;&#x52B9;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x524A;&#x9664;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x3089;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x4E8B;&#x524D;&#x306B;<code>false</code>&#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>destroy</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;terraform&#x7BA1;&#x7406;&#x5916;&#x306E;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;"><a name="&#x30FB;terraform&#x7BA1;&#x7406;&#x5916;&#x306E;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;" class="plugin-anchor" href="#&#x30FB;terraform&#x7BA1;&#x7406;&#x5916;&#x306E;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Terraform&#x7BA1;&#x7406;&#x5916;&#x306E;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;</h4>
+<p>Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x306F;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x304B;&#x3089;&#xFF0C;&#x300C;<code>Not managed by = Terraform</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306E;&#x3042;&#x308B;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;"><a name="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306E;&#x3042;&#x308B;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;" class="plugin-anchor" href="#&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306E;&#x3042;&#x308B;aws&#x30EA;&#x30BD;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306E;&#x3042;&#x308B;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;</h4>
+<p>&#x65E2;&#x5B58;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;<code>destroy</code>&#x3067;&#x524A;&#x9664;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x6A5F;&#x80FD;&#x306F;&#x7121;&#x52B9;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x524A;&#x9664;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x3089;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x6BB5;&#x968E;&#x306B;&#x5206;&#x3051;&#x3066;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<ol>
+<li>&#x524A;&#x9664;&#x4FDD;&#x8B77;&#x3092;&#x7121;&#x52B9;&#x5316;&#xFF08;<code>false</code>&#xFF09;&#x306B;&#x5909;&#x66F4;&#x3057;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -3628,8 +3669,6 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;&#x30BF;&#x30B0;&#x4ED8;&#x3051;"><a name="&#x30FB;&#x30BF;&#x30B0;&#x4ED8;&#x3051;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30B0;&#x4ED8;&#x3051;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30B0;&#x4ED8;&#x3051;</h4>
-<p>Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x306F;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x304B;&#x3089;&#xFF0C;&#x300C;<code>Not managed by = Terraform</code>&#x300D;&#x3068;&#x3044;&#x3046;&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
 <p><br></p>
 <h2 id="09-circleci&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="09-circleci&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#09-circleci&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>09. CircleCI&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h2>
 <h3 id="circleci"><a name="circleci" class="plugin-anchor" href="#circleci"><i class="fa fa-link" aria-hidden="true"></i></a>circleci</h3>
@@ -4064,7 +4103,7 @@ terraform plan <span class="token operator">|</span> ./bin/tfnotify --config ./<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"▶ ︎コンテナ","level":"1.14.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2021-03-23T01:57:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-25T13:14:18.883Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[]},{"title":"▶ ︎コンテナ","level":"1.14.2","depth":2,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.3","depth":2,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.4","depth":2,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_terraform.md","mtime":"2021-04-30T02:14:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-03T07:20:34.129Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
