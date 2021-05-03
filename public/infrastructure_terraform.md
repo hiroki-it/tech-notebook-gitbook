@@ -380,49 +380,46 @@ module.vpc_module.aws_vpc.vpc
 
 ### ディレクトリ構成
 
-#### ・実行環境で区別する場合
+#### ・実行環境＆リージョン別で区別
 
 ```shell
 terraform_project/
-├── modules
+├── .circleci # CI/CDツールの設定ファイル
+├── ops # TerraformのCI/CDの自動化シェルスクリプト
+├── modules # リソースのモジュール
 │   ├── ec2
 │   │   ├── main.tf
 │   │   ├── output.tf
 │   │   └── variables.tf
-│   └── ami
-│       ├── main.tf
-│       ├── output.tf
-│       └── variables.tf
+│   │
+│   └── acm
+│       ├── ap-northeast-1 # 東京リージョン
+│       │   ├── main.tf
+│       │   ├── output.tf
+│       │   └── variables.tf
+│       │
+│       └── us-east-1 # バージニアリージョン
 │
-├── ops (GitHubからデプロイする場合)
-│   ├── assume.sh
-│   ├── terraform_apply.sh
-│   ├── terraform_destroy_test.sh
-│   ├── terraform_fmt.sh
-│   ├── terraform_init.sh
-│   ├── terraform_plan.sh
-│   └── terraform_validate.sh
-│
-├── prd
+├── feat # 開発環境ルートモジュール
 │   ├── config.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-├── stg
+├── prod # 本番環境ルートモジュール
 │   ├── config.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-└── test
-    ├── config.tfvars
-    ├── main.tf
-    ├── providers.tf
-    ├── tfnotify.yml
-    └── variables.tf
+└── stg # ステージング環境ルートモジュール
+      ├── config.tfvars
+      ├── main.tf
+      ├── providers.tf
+      ├── tfnotify.yml
+      └── variables.tf
 ```
 
 <br>
@@ -1734,9 +1731,27 @@ resource "aws_internet_gateway" "this" {
 }
 ```
 
+#### ・AWSリソース名
+
+1. `<接頭辞>-<種類>-<接尾辞>`とする．
+2. 接頭辞は， `<稼働環境>-<サービス名>`とする．
+3. 接尾辞は，AWSリソース名とする．
+
+**＊実装例＊**
+
+例として，CloudWatchを示す．この時，他のresourceと比較して，種類はALBのHTTPCode_TARGET_4XX_Countメトリクスに関するアラームと見なせる．そのため，`alb_httpcode_4xx_count`と名付けている．
+
+```tf
+resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
+
+  alarm_name = "${var.environment}-${var.service}-alb-httpcode-target-4xx-count-alarm"
+  
+}
+```
+
 #### ・設定の順序，行間
 
-最初に```count```や```for_each```を設定し改行する．その後，各設定を行間を空けずに記述する．```tags```，```depends_on```，```lifecycle```，の順で配置する．ただし実際，これらの全ての設定が必要なリソースはない．
+最初に`count`や`for_each`を設定し改行する．その後，各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）．最後に共通の設定として，`tags`，`depends_on`，`lifecycle`，の順で配置する．ただし実際，これらの全ての設定が必要なリソースはない．
 
 **＊実装例＊**
 
@@ -1773,6 +1788,18 @@ resource "aws_example" "this" {
 #### ・基本ルール
 
 アウトプット値の名前は，```<リソース名>_<リソースタイプ>_<attribute名>```で命名する．
+
+**＊実装例＊**
+
+例として，CloudWatchを示す．リソース名は`ecs_container_nginx`，リソースタイプは`aws_cloudwatch_log_group`，attributeは`name`オプションである．
+
+```
+output "ecs_container_nginx_cloudwatch_log_group_name" {
+  value = aws_cloudwatch_log_group.ecs_container_nginx.name
+}
+```
+
+
 
 **＊実装例＊**
 
@@ -2175,6 +2202,22 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
       global_ip_addresses = jsonencode(var.global_ip_addresses)
     }
   )
+}
+```
+
+#### ・AWS管理ポリシー
+
+IAMユーザにAWS管理ポリシーをアタッチする．
+
+**＊実装例＊**
+
+```hcl
+###############################################
+# For IAM User
+###############################################
+resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only_access" {
+  user       = data.aws_iam_user.aws_cli_command_executor.user_name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
 }
 ```
 
@@ -2637,21 +2680,35 @@ Terraformを用いてVPCを構築した時，メインルートテーブルが�
 
 <br>
 
+### WAF
+
+#### ・IPセットの依存関係
+
+WAFのIPセットは他設定の依存関係に癖がある．そのため，IPセットを新しく設定し直す場合は，二つの段階に分けてデプロイするようにする．
+
+1. 新しいIPセットのresourceを実装し，ACLに関連付け，デプロイする．
+2. 古いIPセットのresourceを削除し，デプロイする．
+
+<br>
+
 ### 共通の設定
 
-#### ・削除保護機能は事前に無効化すべき
+#### ・Terraform管理外のAWSリソース
 
-既存のインフラを```destroy```で削除する時，削除保護機能は無効に変更されないため，削除処理が終わらなくなる．そのため，事前に```false```に変更した後，```destroy```を実行する必要がある．
+Terraformの管理外のリソースには，コンソール画面上から，「```Not managed by = Terraform```」というタグをつけた方が良い．
+
+#### ・削除保護機能のあるAWSリソース
+
+既存のインフラを```destroy```で削除する時，削除保護機能は無効に変更されないため，削除処理が終わらなくなる．そのため，二つの段階に分けてデプロイするようにする．
+
+1. 削除保護を無効化（`false`）に変更し，デプロイする．
+2. ソースコードを削除し，デプロイする．
 
 | AWSリソース名 | Terraform上での設定名            |
 | ------------- | -------------------------------- |
 | ALB           | ```enable_deletion_protection``` |
 | EC2           | ```disable_api_termination```    |
 | RDS           | ```deletion_protection```        |
-
-#### ・タグ付け
-
-Terraformの管理外のリソースには，コンソール画面上から，「```Not managed by = Terraform```」というタグをつけた方が良い．
 
 <br>
 

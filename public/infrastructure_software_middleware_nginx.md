@@ -136,7 +136,7 @@ fastcgi_param  SERVER_NAME        $server_name;
 fastcgi_param  REDIRECT_STATUS    200;
 ```
 
-#### ・www.confについて
+#### ・www.confファイルについて
 
 php.iniファイルによって読み込まれる```/etc/php-fpm.d/www.conf```ファイルは，PHP-FPMに関する設定が定義されたファイルである．php.iniよりも優先されるので，設定項目が重複している場合は，こちらを変更する．
 
@@ -180,7 +180,6 @@ php_value[session.save_path]    = "tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.amazon
 
 # 
 php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
-
 ```
 
 <br>

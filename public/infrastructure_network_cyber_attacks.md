@@ -146,11 +146,19 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ### DoS攻撃：Denial of Service
 
-#### ・DoS攻撃とは
+#### ・DoS攻撃，DDos攻撃とは
 
-アクセスが集中することでWebサーバーがパンクすることを利用し，悪意を持ってWebサーバーに大量のデータを送りつける手法．
+アクセスが集中することでWebサーバーがパンクすることを利用し，悪意を持ってWebサーバーに大量のデータを送りつける手法．リクエストの送信元が一つの場合はDos攻撃，複数の場合はDDos攻撃という．
 
 ![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DoS攻撃.png)
+
+#### ・php.iniファイルによる対策
+
+php.iniファイルにて，一度に受信できるPOSTリクエストの上限値を設定できる．
+
+```ini
+max_input_vars = 1000
+```
 
 <br>
 

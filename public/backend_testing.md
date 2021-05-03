@@ -399,7 +399,7 @@ class ExampleNotificationTest extends TestCase
 
 #### ・機能テストとは
 
-アプリケーションのControllerに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．メソッドのアノテーションで，```@test```を宣言する必要がある．
+アプリケーション自身のControllerクラスに対してリクエストを送信し，正しくレスポンスを返信するかどうかを検証する方法．スタブを使用することは少ない．メソッドのアノテーションで，```@test```を宣言する必要がある．
 
 **＊実装例＊**
 
@@ -407,15 +407,28 @@ class ExampleNotificationTest extends TestCase
 <?php
 
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Client;
 
 class ExampleControllerTest extends TestCase
 {
-   /**
-    * @test
-    */    
+    /**
+     * @test
+     */
     public function testMethod()
     {
-        // 何らかの検証
+        // アプリケーション自身のControllerクラスにリクエストを送信する処理．
+        $client = new Client();
+        $response = $client->request(
+            "GET",
+            "https://xxxxxxxx",
+            [
+                "query" => [
+                    "id" => 1
+                ]
+            ]
+        );
+        
+        // レスポンスの実際値と期待値の整合性を検証する．
     }
 }
 ```

@@ -216,7 +216,7 @@ GCCGO="gccgo"
 AR="ar"
 CC="gcc"
 CXX="g++"
-# c言語製のライブラリを使用するか否か．無効化しないと，vetコマンドが失敗する．
+# c言語製のライブラリの有効化．無効化しないと，vetコマンドが失敗する．
 CGO_ENABLED="0"
 GOMOD="/go/src/go.mod"
 CGO_CFLAGS="-g -O2"
@@ -382,7 +382,7 @@ type Person struct {
 
 #### ・初期化
 
-すでに値が代入されている構造体を初期化する場合，いくつか記法がある．その中では，タグ付きリテラルが推奨される．
+すでに値が代入されている構造体を初期化する場合，いくつか記法がある．その中では，タグ付きリテラルが推奨される．初期化によって構築する構造体は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型を構築することが多い．
 
 **＊実装例＊**
 
@@ -399,7 +399,7 @@ type Person struct {
 
 func main() {
     // タグ付きリテラル表記
-    person := Person{Name: "Hiroki"}
+    person := &Person{Name: "Hiroki"}
     
     fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
@@ -417,13 +417,13 @@ type Person struct {
 
 func main() {
     // タグ無しリテラル表記
-    person := Person{"Hiroki"}
+    person := &Person{"Hiroki"}
     
     fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
-三つ目に，```new```関数とフィールド代入による初期化がある．```new```関数は，構造体以外のデータ型でも使用できる．ポインタ型の構造体を返却する．
+三つ目に，```new```関数とデータ代入による初期化がある．```new```関数は，データが代入されていない構造体を作成するため，リテラル表記時でも表現できる．```new```関数は，構造体以外のデータ型でも使用できる．ポインタ型の構造体を返却する．
 
 ```go
 package main
@@ -439,7 +439,8 @@ type Person struct {
  * ※スコープはパッケージ内のみとする．
  */
 func newPerson(name string) *Person {
-	// new関数を使用する
+    // new関数を使用する．
+    // &Person{} に同じ．
 	person := new(Person)
 	
     // ポインタ型の初期化された構造体が返却される．
@@ -479,13 +480,14 @@ type Person struct {
 func main() {
 	person := &Person{Name: "Hiroki"}
 
-	json, err := json.Marshal(person)
+	byteJson, err := json.Marshal(person)
+    
 	if err != nil {
 		log.Println("JSONエンコードに失敗しました。")
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
+	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -514,7 +516,7 @@ type Person struct {
 }
 
 func main() {
-	person := Person{Name{FirstName: "Hiroki", LastName: "Hasegawa"}}
+	person := &Person{Name{FirstName: "Hiroki", LastName: "Hasegawa"}}
 
     // Person構造体から，Name構造体のメソッドをコールできる．
 	fmt.Printf("%#v\n", person.fullName()) // "Hiroki Hasegawa"
@@ -1789,14 +1791,14 @@ func main() {
 	person := &Person{Name: "Hiroki"}
 
 	// ポインタ型と非ポインタ型の両方の引数に対応
-	json, err := json.Marshal(person)
+	byteJson, err := json.Marshal(person)
 
 	if err != nil {
 		log.Fatalf("ERROR: %#v\n", err)
 	}
 
 	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(json)) // "{\"Name\":\"Hiroki\"}"
+	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
 }
 ```
 
@@ -1830,7 +1832,7 @@ func main() {
 	fmt.Printf("%#v\n", person) // main.Person{Name:""}（変数はまだ書き換えられていない）
 
 	// person変数を変換後の値に書き換えている．
-	err := json.Unmarshal(byte, &person)
+	err := json.Unmarshal(byteJson, &person)
 
 	if err != nil {
 		log.Fatalf("ERROR: %#v\n", err)
@@ -2050,6 +2052,152 @@ func main() {
 
 ### net/http
 
+#### ・httpパッケージとは
+
+HTTPクライアントまたはサーバを提供する．
+
+参考：https://golang.org/pkg/net/http/#pkg-index
+
+#### ・```Get```メソッド
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"fmt"
+    "log"
+	"net/http"
+)
+
+func main() {
+    
+	response, err := http.Get("http://xxx/api.com")
+
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.Body)
+}
+```
+
+#### ・```Post```メソッド
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type User struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// コンストラクタ
+func NewUser(id int, name string) *User {
+
+	return &User{
+		Id:   id,
+		Name: name,
+	}
+}
+
+func main() {
+
+	user := NewUser(1, "Hiroki")
+
+	byteJson, err := json.Marshal(user)
+
+	response, err := http.Post(
+		"http://xxx/api.com",  // URL
+		"application/json",    // Content-Type
+		bytes.NewBuffer(byteJson), // メッセージボディ
+	)
+
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.Body)
+}
+```
+
+#### ・```NewRequest```メソッド
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type User struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+// コンストラクタ
+func NewUser(id int, name string) *User {
+
+	return &User{
+		Id:   id,
+		Name: name,
+	}
+}
+
+func main() {
+
+	user := NewUser(1, "Hiroki")
+
+	byteJson, err := json.Marshal(user)
+
+	// リクエストを作成する．
+	request, err := http.NewRequest(
+		"POST",                    // HTTPメソッド
+		"http://xxx/api.com",      // URL
+		bytes.NewBuffer(byteJson), // メッセージボディ
+	)
+
+	// ヘッダーを作成する．
+	request.Header.Set("Content-Type", "application/json") // Content-Type
+
+	// クライアントを作成する．
+	client := new(http.Client)
+
+	// リクエストを送信する．
+	response, err := client.Do(request)
+
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+    // 代わりに，httputil.DumpResponseでレスポンス全体を取得してもよい．
+	fmt.Println(response.Body)
+}
+```
+
 #### ・```ListenAndServe```メソッド
 
 サーバを起動する．第一引数にサーバのURL，第二引数にServeMux関数（マルチプレクサ関数）を渡す．第二引数に```nil```を渡した場合，デフォルト引数として```http.DefaultServeMux```が渡される．
@@ -2142,7 +2290,7 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 
 	user := NewUser(1, "Hiroki")
 
-	json, err := json.Marshal(user)
+	byteJson, err := json.Marshal(user)
 
 	if err != nil {
 		log.Fatal(err)
@@ -2150,7 +2298,7 @@ func myHandler(writer http.ResponseWriter, request *http.Request) {
 
 	// JSONをレスポンスとして返信する．
 	writer.Header().Set("Content-Type", "application/json; charset=utf-8")
-	writer.Write(json)
+	writer.Write(byteJson)
 }
 
 func main() {
@@ -2165,94 +2313,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-```
-
-#### ・Client構造体，Requst構造体，Response構造体
-
-参考：
-
-- https://golang.org/pkg/net/http/#Client
-- https://golang.org/pkg/net/http/#Requst
-- https://golang.org/pkg/net/http/#Response
-
-**＊実装例＊**
-
-SlackにメッセージをPOST送信する．
-
-```go
-package main
-
-import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"net/http"
-)
-
-// 構造体を定義し，JSONにマッピング
-type SlackMessage struct {
-	Token       string   `json:"token"`
-	Channel     string   `json:"channel"`
-	Text        string   `json:"text"`
-	Username    string   `json:"username"`
-	Attachments []string `json:"attachments"`
-}
-
-func main() {
-	// URL
-	url := "https://xxxx.slack.com"
-
-	// ボディを定義する．
-	slackMessage := &SlackMessage{
-		Token:    "<トークン文字列>",
-		Channel:  "<チャンネル名，もしくは@ユーザ名>",
-		Text:     "<メッセージ>",
-		Username: "<as_userオプションがfalseの場合にBot名>",
-		Attachments: [{
-          // 任意のオプション     
-          // 参考：
-          // https://api.slack.com/messaging/composing/layouts#attachments
-        }]
-	}
-
-	// マッピングを元に，構造体をJSONに変換する．
-	json, err := json.Marshal(slackMessage)
-
-	if err != nil {
-		return err
-	}
-
-	// リクエストメッセージを定義する．
-	request, err := http.NewRequest(
-		"POST",
-		"https://slack.com/api/chat.postMessage",
-		bytes.NewBuffer(json),
-	)
-
-	if err != nil {
-		return err
-	}
-
-	// ヘッダーを定義する．
-	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("SLACK_API_TOKEN")))
-
-	client := &http.Client{}
-
-	// HTTPリクエストを送信する．
-	response, err := client.Do(request)
-
-	if err != nil || response.StatusCode != 200 {
-		return err
-	}
-
-	// deferで宣言しておき，HTTP通信を必ず終了できるようにする．
-	defer response.Body.Close()
-
-	fmt.Printf("Success: %#v\n", response)
-
-	return nil
 }
 ```
 
@@ -2320,11 +2380,7 @@ func main() {
 
 #### ・testifyとは
 
-モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．
-
-参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-モックとスタブについては，以下を参考にせよ．
+モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
@@ -2354,6 +2410,8 @@ type MockedAwsClient struct {
 ```
 
 #### ・スタブ化
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
 
 | よく使うメソッド              | 説明                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
@@ -2388,7 +2446,11 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ・アサーションメソッドによる検証
 
-参考：https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+参考：
+
+- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
+- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
 
 | よく使うメソッド                      | 説明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
