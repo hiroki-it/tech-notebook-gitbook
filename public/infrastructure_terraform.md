@@ -1741,7 +1741,7 @@ resource "aws_internet_gateway" "this" {
 
 例として，CloudWatchを示す．この時，他のresourceと比較して，種類はALBのHTTPCode_TARGET_4XX_Countメトリクスに関するアラームと見なせる．そのため，`alb_httpcode_4xx_count`と名付けている．
 
-```tf
+```hcl
 resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 
   alarm_name = "${var.environment}-${var.service}-alb-httpcode-target-4xx-count-alarm"
@@ -1793,7 +1793,7 @@ resource "aws_example" "this" {
 
 例として，CloudWatchを示す．リソース名は`ecs_container_nginx`，リソースタイプは`aws_cloudwatch_log_group`，attributeは`name`オプションである．
 
-```
+```hcl
 output "ecs_container_nginx_cloudwatch_log_group_name" {
   value = aws_cloudwatch_log_group.ecs_container_nginx.name
 }

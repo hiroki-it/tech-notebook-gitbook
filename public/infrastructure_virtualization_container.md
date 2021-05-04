@@ -922,7 +922,7 @@ Volumeを使用する場合のコンテナ配置手法の一つ．Dockerエリ�
 **＊コマンド例＊**
 
 ```shell
-$ docker network list
+$ docker network ls
 
 NETWORK ID          NAME                    DRIVER              SCOPE
 ae25b9b7740b        bridge                  bridge              local
@@ -948,6 +948,20 @@ ff00::0	ip6-mcastprefix
 ff02::1	ip6-allnodes
 ff02::2	ip6-allrouters
 172.18.0.2	<ホスト名>
+```
+
+#### ・未使用のネットワークを削除
+
+```sh
+$ docker network prune
+```
+
+#### ・ネットワークに接続するコンテナを確認
+
+複数のコンテナが起動している時に，コンテナがいずれのネットワークを使用しているかを確認する．
+
+```shell
+$ docker network inspect <ネットワーク名>
 ```
 
 <br>

@@ -112,26 +112,30 @@ $ docker-compose logs -f <サービス名>
 
 <br>
 
-### docker-compose.ymlファイル
+### services
 
-#### ・```container_name```
+#### ・```args```
 
-コンテナ名を命名する．
+Dockerfileの```ARGS```に展開する変数を定義する．Dockerfileに直接実装することとの使い分けとして，Dockerfileの実装は簡単に変更できないが，```docker-compose.yml```ファイルにおける定義は変更しやすい．そのため，使用者に変更して欲しくない変数はDockerfileに実装し，変更しても問題ない変数はこのオプションを使用する．他に，マルチステージビルドを使用しており，全てのステージで共通した変数を展開したい場合，このオプションを使用すると展開する変数を共通化できる．
 
 **＊実装例＊**
 
 ```yaml
-container_name: www
+build:
+  args:
+    - PARAM=$PARAM
 ```
 
-#### ・```hostname```
+```dockerfile
+ARG PARAM
+
+ENV PARAM=${PARAM}
+```
 
 **＊実装例＊**
 
-他のコンテナからアクセスする時のホスト名を指定する．もし設定しなかった場合，サービス名またはコンテナ名が，ホスト名として設定される．
-
 ```yaml
-hostname: www
+# ここに実装例
 ```
 
 #### ・```build: dockerfile```
@@ -145,17 +149,6 @@ build:
   dockerfile: ./infra/docker/www/Dockerfile
 ```
 
-#### ・```build: target```
-
-ビルドするステージ名．主に，マルチステージビルドの時に使用する．
-
-**＊実装例＊**
-
-```yaml
-build:
-  target: develop
-```
-
 #### ・```build: context```
 
 指定したDockerfileのあるディレクトリをカレントディレクトリとして，Dockerデーモン（Dockerエンジン）に送信するディレクトリを指定する． 
@@ -167,9 +160,202 @@ build:
   context: .
 ```
 
+#### ・```build: target```
+
+ビルドするステージ名．主に，マルチステージビルドの時に使用する．
+
+**＊実装例＊**
+
+```yaml
+build:
+  target: develop
+```
+
+#### ・```container_name```
+
+コンテナ名を命名する．
+
+**＊実装例＊**
+
+```yaml
+container_name: www
+```
+
+#### ・```depends_on```
+
+コンテナが起動する順番を設定する．
+
+**＊実装例＊**
+
+DBコンテナの起動後に，該当するコンテナを起動するようにする．
+
+```yaml
+depends_on:
+  - db
+```
+
+#### ・```env_file```，```environment```
+
+コンテナで展開する環境変数を定義する．Dockerfile内での環境変数とは異なり，マルチステージビルドの全ステージで使用できる．dotenv系ライブラリを使用しなくてもよくなる．mysqlイメージを使用した場合，環境変数を定義することによって，ルートユーザと一般ユーザを自動的に作成できる．ルートユーザ名は定義できず，「```root```」となる．GitHubに公開しない値は```env_file```キーで定義する．公開してもよい固定値は```environment```キーまたはDockerfile内で定義するようにする．
+
+**＊実装例＊**
+
+```shell
+# .docker.envファイル
+MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
+MYSQL_DATABASE: example # データベース名
+MYSQL_USER: example_user # 一般ユーザ名
+MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
+```
+
+```yaml
+env_file:
+  - .docker.env
+```
+
+**＊実装例＊**
+
+```yaml
+environment:
+  MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
+  MYSQL_DATABASE: example # データベース名
+  MYSQL_USER: example_user # 一般ユーザ名
+  MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
+```
+
+#### ・```hostname```
+
+**＊実装例＊**
+
+他のコンテナからアクセスする時のホスト名を指定する．もし設定しなかった場合，サービス名またはコンテナ名が，ホスト名として設定される．
+
+**＊実装例＊**
+
+```yaml
+hostname: www
+```
+
+#### ・```networks```
+
+![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+
+コンテナを接続する内部／外部ネットワークのエイリアス名を設定する．ネットワーク名ではなく，エイリアス名を指定することに注意する．
+
+**＊実装例＊**
+
+```yaml
+networks:
+  # 内部／外部ネットワークのエイリアス名を指定する．
+  - example-network
+```
+
+ネットワークに接続されているコンテナはコマンドで確認できる．
+
+```sh
+# 指定したネットワークに接続するコンテナを確認する．
+$ docker network inspect example-network
+
+[
+    {
+        "Name": "example-network",
+        
+        〜 省略 〜
+        
+        "Containers": {
+            "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""
+            "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""            
+            }
+        },
+        
+        〜 省略 〜
+        
+        "Labels": {
+            "com.docker.compose.network": "example-network",
+            "com.docker.compose.project": "<プロジェクト名>",
+            "com.docker.compose.version": "1.29.0"
+        }
+    }
+]
+```
+
+なお，接続するネットワークは明示的に指定しなくてもよい．その場合，「<プロジェクト名>_default」というネットワークが，「default」というエイリアス名で作成される．
+
+```yaml
+networks:
+  # 明示的にdefaultを指定してもしなくてもよい．
+  - default
+```
+
+```shell
+$ docker network inspect <プロジェクト名>_default
+
+[
+    {
+        "Name": "<プロジェクト名>_default",
+        
+        〜 省略 〜
+        
+        "Containers": {
+            "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""
+            "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""            
+            }
+        },
+        
+        〜 省略 〜
+        
+        "Labels": {
+            "com.docker.compose.network": "default",
+            "com.docker.compose.project": "<プロジェクト名>",
+            "com.docker.compose.version": "1.29.0"
+        }
+    }
+]
+```
+
+#### ・```image```
+
+**＊実装例＊**
+
+```yaml
+image: tech-notebook-www:<タグ名>
+```
+
+#### ・```ports```
+
+ホストOSとコンテナの間のポートフォワーディングを設定する．コンテナのみポート番号を指定した場合，ホストOS側のポート番号はランダムになる．
+
+**＊実装例＊**
+
+```yaml
+ports:
+  - "8080:80" # <ホストOS側のポート番号>:<コンテナのポート番号>
+```
+
 #### ・```stdin_open```
 
 内部的な```run```コマンドの実行時に```i```オプションを有効化する．
+
+**＊実装例＊**
 
 ```yaml
 stdin_open: true
@@ -183,26 +369,6 @@ stdin_open: true
 
 ```yaml
 tty: true
-```
-
-#### ・```image```
-
-**＊実装例＊**
-
-```yaml
-image: tech-notebook-www:<タグ名>
-```
-
-
-#### ・```ports```
-
-ホストOSとコンテナの間のポートフォワーディングを設定する．コンテナのみポート番号を指定した場合，ホストOS側のポート番号はランダムになる．
-
-**＊実装例＊**
-
-```yaml
-ports:
-  - "8080:80" # <ホストOS側のポート番号>:<コンテナのポート番号>
 ```
 
 #### ・```volumes```（Bindマウント）
@@ -237,72 +403,89 @@ volumes:
     driver: local   
 ```
 
-#### ・```env_file```，```environment```
+#### ・変数展開
 
-コンテナで展開する環境変数を定義する．mysqlイメージを使用した場合，環境変数を定義することによって，ルートユーザと一般ユーザを自動的に作成できる．ルートユーザ名は定義できず，「```root```」となる．
-
-**＊実装例＊**
-
-```shell
-# .docker.envファイル
-MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
-MYSQL_DATABASE: example # データベース名
-MYSQL_USER: example_user # 一般ユーザ名
-MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
-```
-
-```yaml
-env_file:
-  - .docker.env
-```
-
-**＊実装例＊**
-
-```yaml
-environment:
-  MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
-  MYSQL_DATABASE: example # データベース名
-  MYSQL_USER: example_user # 一般ユーザ名
-  MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
-```
-
-#### ・```args```
-
-Dockerfileの```ARGS```に展開する変数を定義する．Dockerfileに直接実装することとの使い分けとして，Dockerfileの実装は簡単に変更できないが，```docker-compose.yml```ファイルにおける定義は変更しやすい．そのため，使用者に変更して欲しくない変数はDockerfileに実装し，変更しても問題ない変数はこのオプションを使用する．他に，マルチステージビルドを使用しており，全てのステージで共通した変数を展開したい場合，このオプションを使用すると展開する変数を共通化できる．
+環境変数を```docker-compose.yml```ファイルに展開する．変数は，```.env```ファイルに定義しておく必要がある．この展開に```env_file```オプションを使用することはできない．そのため，例えば```.env```ファイル以外の名前の環境変数ファイルを変数展開のために使用することはできない．
 
 **＊実装例＊**
 
 ```yaml
 build:
-  args:
-    - PARAM=$PARAM
+  # 出力元の値は，.envファイルに定義しなければならない．
+  target: ${APP_ENV}
 ```
 
-```dockerfile
-ARG PARAM
+<br>
 
-ENV PARAM=${PARAM}
-```
+### networks
 
-#### ・```depends_on```
+#### ・default：name
 
-コンテナが起動する順番．
-
-**＊実装例＊**
+標準のネットワークを作成し，ネットワーク名（「<プロジェクト名>_default」）をユーザ定義名にする．
 
 ```yaml
-# ここに実装例
+networks:
+  default:
+    # ユーザ定義のネットワーク名とエイリアス名
+    name: example-network
 ```
 
-#### ・```networks```
+なお，このネットワークは，エイリアス名（default）で指定する．
 
-作成使用する内部／外部ネットワークを設定．
+```yaml
 
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+```
+
+```shell
+$ docker network ls
+
+NETWORK ID       NAME                DRIVER     SCOPE
+xxxxxxxxxxxx     example-network     bridge     local
+```
+
+```shell
+$ docker network inspect example-network
+
+[
+    {
+        "Name": "example-network",
+        
+        〜 省略 〜
+        
+        "Containers": {
+            "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""
+            "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
+                "Name": "<コンテナ名>",
+                "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
+                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "IPv4Address": "nnn.nn.n.n/nn",
+                "IPv6Address": ""            
+            }
+        },
+        
+        〜 省略 〜
+        
+        "Labels": {
+            "com.docker.compose.network": "example-network",
+            "com.docker.compose.project": "<プロジェクト名>",
+            "com.docker.compose.version": "1.29.0"
+        }
+    }
+]
+```
+
+#### ・external
+
+異なる```docker-compose.yml```ファイルから接続できるネットワークを作成する．作成されるネットワーク名とエイリアス名は，```external```キーの上部で設定したものになる．
 
 **＊実装例＊**
 
-バックエンドとフロントエンドが異なるdocker composeで管理されており，フロントエンドコンテナからバックエンドコンテナに接続する．
+バックエンドとフロントエンドが異なる```docker-compose.yml```ファイルで管理されている．フロントエンドコンテナからバックエンドコンテナに接続できるように，ネットワークを作成する．
 
 ```yaml
 # バックエンドのDocker-compose
@@ -313,17 +496,20 @@ services:
 # --- 省略 --- #
     
 networks:
-  backend: # 作成したい外部ネットワーク名
+  # 作成したい外部ネットワーク名とエイリアス名
+  backend:
     external: true  
 ```
+
+フロントエンドコンテナにて，エイリアス名にネットワーク名を指定して，
 
 ```yaml
 # フロントエンドのDocker-compose
 services:
   app:
     container_name: frontend-container
-    networks: # 接続した内部／外部ネットワークのいずれかを選択．
-      - default
+    # 内部／外部ネットワークのいずれかのエイリアス名を指定する．
+    networks:
       - backend
 
 # --- 省略 --- #
@@ -331,29 +517,19 @@ services:
 networks:
   default:
     external:
-      name: backend # 接続したい外部ネットワーク
+      # 接続したい外部ネットワーク名とエイリアス名
+      name: backend
 ```
 
-作成した内部／外部ネットワークは，以下のコマンドで確認できる．```xxx_default```という名前になる．
+作成した内部／外部ネットワークは，コマンドで確認できる．「<エイリアス名>_default」というネットワーク名になる．
 
 **＊コマンド例＊**
 
 ```shell
 $ docker network ls
 
-NETWORK ID       NAME                      DRIVER       SCOPE
-xxxxxxxxxxxx     backend_default           bridge       local
-xxxxxxxxxxxx     <プロジェクト名>_default     bridge      local
-```
-
-#### ・変数展開
-
-環境変数を```docker-compose.yml```ファイルに展開する．変数は，```.env```ファイルに定義しておく必要がある．この展開に```env_file```オプションを使用することはできない．そのため，例えば```.env```ファイル以外の名前の環境変数ファイルを変数展開のために使用することはできない．
-
-```yaml
-# .envファイルに定義しなければならない．
-build:
-  target: ${APP_ENV}
+NETWORK ID       NAME        DRIVER     SCOPE
+xxxxxxxxxxxx     backend     bridge     local
 ```
 
 <br>

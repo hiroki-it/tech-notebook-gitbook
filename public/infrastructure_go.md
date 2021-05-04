@@ -2182,7 +2182,7 @@ func main() {
 	request.Header.Set("Content-Type", "application/json") // Content-Type
 
 	// クライアントを作成する．
-	client := new(http.Client)
+    client := &http.Client{}
 
 	// リクエストを送信する．
 	response, err := client.Do(request)
