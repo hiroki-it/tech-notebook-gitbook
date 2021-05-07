@@ -292,7 +292,7 @@ $ docker network inspect example-network
 
 ```yaml
 networks:
-  # 明示的にdefaultを指定してもしなくてもよい．
+  # defaultは，明示的に指定してもしなくてもどちらでもよい．
   - default
 ```
 
@@ -430,10 +430,12 @@ networks:
     name: example-network
 ```
 
-なお，このネットワークは，エイリアス名（default）で指定する．
+なお，このネットワークを明示的に設定する場合は，エイリアス名（default）で指定する．
 
 ```yaml
-
+networks:
+  # defaultは，明示的に指定してもしなくてもどちらでもよい．
+  - default
 ```
 
 ```shell
