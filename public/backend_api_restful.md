@@ -63,7 +63,7 @@ POST送信とPUT送信の重要な違いについてまとめる．データを�
 |                    | POST送信                                           | PUT送信                                           |
 | ------------------ | -------------------------------------------------- | ------------------------------------------------- |
 | データ作成の冪等性 | リクエスト1つにつき，1つのデータを作成（非冪等的） | リクエスト数に限らず，1つのデータを作成（冪等的） |
-| 更新内容           | リクエストボディに格納（隠蔽可能）                 | パスパラメータに表示（隠蔽不可）                  |
+| 更新内容           | リクエストボディに設定（隠蔽可能）                 | パスパラメータに設定（隠蔽不可）                  |
 
 <br>
 
@@ -108,11 +108,11 @@ DELETE http://www.example.co.jp/users/{id}
 <br>
 
 
-### パスパラメータとクエリパラメータ
+### パラメータの割り当て方法
 
-#### ・パスパラメータ，クエリパラメータとは
+#### ・パス，クエリストリングへの割り当て
 
-URIの構造のうち，以下の部分を指す．
+URIの構造のうち，パスまたはクエリストリングにパラメータを割り当てて送信する．それぞれ，パスパラメータまたはクエリパラメータという．
 
 ```
 http://www.example.co.jp:80/users/777?text1=a&text2=b
@@ -130,6 +130,18 @@ http://www.example.co.jp:80/users/777?text1=a&text2=b
 | 複数条件で決まる検索処理 |       ✕        |        ◯         |
 | フィルタリング処理       |       ✕        |        ◯         |
 | ソーティング処理         |       ✕        |        ◯         |
+
+#### ・リクエストボディへの割り当て
+
+JSON型データ内に定義し，リクエストボディにパラメータを割り当てて送信する．
+
+```json
+{
+  "id":1,
+  "text1":"a",
+  "text2": "b"
+}
+```
 
 <br>
 
@@ -561,12 +573,12 @@ JSONの場合，入れ子構造にすると，データ容量が増えてしま�
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "interest": {
-      "sports":["soccer", "baseball"],
-      "subjects": "math"
-    }
+  "name": "Taro Yamada",
+  "age": 10,
+  "interest": {
+    "sports":["soccer", "baseball"],
+    "subjects": "math"
+  }
 }
 ```
 
@@ -576,10 +588,10 @@ JSONの場合，入れ子構造にすると，データ容量が増えてしま�
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "sports":["soccer", "baseball"],
-    "subjects": "math"
+  "name": "Taro Yamada",
+  "age": 10,
+  "sports":["soccer", "baseball"],
+  "subjects": "math"
 }
 ```
 
@@ -608,9 +620,9 @@ http://www.example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```json
 {
   "errors": [
-      "〇〇は必ず入力してください．",
-      "□□は必ず入力してください．"
-      ]
+    "〇〇は必ず入力してください．",
+    "□□は必ず入力してください．"
+  ]
 }
 ```
 
@@ -751,49 +763,405 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 
 ## 06. API仕様書
 
+### OpenAPI仕様
+
+#### ・OpenAPI仕様とは
+
+RESTful APIの仕様を実装により説明するためのフォーマットのこと．JSON型またはYAML型で実装できる．いくつかのフィールドから構成されている．
+
+参考：https://spec.openapis.org/oas/v3.1.0#fixed-fields
+
+```yaml
+openapi: # openapiフィールド
+
+info: # infoフィールド
+
+servers: # serversフィールド
+
+paths: # pathsフィールド
+
+webhooks: # webhooksフィールド
+
+components: # componentsフィールド
+
+security: # securityフィールド
+
+tags: # tagsフィールド
+
+externalDocs: # externalDocsフィールド
+```
+
+#### ・openapiフィールド（必須）
+
+OpenAPI仕様のバージョンを定義する．
+
+**＊実装例＊**
+
+```yaml
+openapi: 3.0.0
+```
+
+#### ・infoフィールド（必須）
+
+API名，作成者名，メールアドレス，ライセンス，などを定義する．
+
+**＊実装例＊**
+
+```yaml
+info:
+  title: Example API # API名
+  description: The API for Example. # APIの説明
+  termsOfService: http://example.com/terms/ # 利用規約
+  contact:
+    name: API support # 連絡先名
+    url: http://www.example.com/support # 連絡先に関するURL
+    email: support@example.com # メールアドレス
+  license:
+    name: Apache 2.0 # ライセンス
+    url: http://www.apache.org/licenses/LICENSE-2.0.html # URL
+  version: 1.0.0 # APIドキュメントのバージョン
+```
+
+#### ・serversフィールド
+
+API自体のURL，などを定義する．
+
+**＊実装例＊**
+
+```yaml
+servers:
+  - url: https://stg.example.com/v1
+    description: ステージング環境
+  - url: https://example.com/v1
+    description: 本番環境
+```
+
+#### ・pathsフィールド（必須）
+
+APIのエンドポイント，HTTPメソッド，ステータスコード，などを定義する．
+
+```yaml
+paths:
+  #======================
+  # pathsオブジェクト
+  #======================
+  /users:
+    #======================
+    # path itemオブジェクト
+    #======================
+    get: # GETメソッドを指定する．
+      tags:
+        - ユーザ情報
+      summary: ユーザ一覧取得
+      description: 全ユーザを取得する．
+      #======================
+      # リクエスト
+      #======================
+      parameters:
+        - in: query # クエリストリングにパラメータを割り当てる．
+          name: orderId
+          required: true          
+          description: 注文ID
+          schema:
+            type: string
+            example: # クエリパラメータ例
+              ?orderId
+      #======================
+      # レスポンス
+      #======================
+      responses:
+        200:
+          description: OK
+          content:
+            application/json: # Content-Type
+              example: # レスポンスボディ例
+                Users:
+                  User:
+                    userId: 1
+                    name: Hiroki
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/User" # Userモデルを参照する．
+        400:
+          description: Bad Request
+          content:
+            application/json: # Content-Type
+              example: # ボディ例
+                status: 400
+                title: Bad Request
+                errors:
+                messages: [
+                    "不正なリクエストです．"
+                ]
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
+    #======================
+    # path itemオブジェクト
+    #======================
+    post: # POSTメソッドを指定する．
+      tags:
+        - ユーザ情報
+      summary: ユーザ作成
+      description: ユーザを作成する．
+      #======================
+      # リクエスト
+      #======================
+      parameters: []
+      requestBody: # リクエストボディにパラメータを割り当てる．
+        description: OK
+        content:
+          application/json: # Content-Type
+            example: # リクエストボディ例
+              userId: 1
+            schema: # スキーマ
+              $ref: "#/components/schemas/User" # Userモデルを参照する．
+      #======================
+      # レスポンス
+      #======================
+      responses:
+        200:
+          description: OK
+          content:
+            application/json: # Content-Type
+              example: # レスポンスボディ例
+                userId: 1
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Normal" # スキーマとして，正常系モデルを参照する．
+        400:
+          description: Bad Request
+          content:
+            application/json: # Content-Type
+              example: # レスポンスボディ例
+                status: 400
+                title: Bad Request
+                errors:
+                  messages: [
+                      "ユーザIDは必ず指定してください．"
+                  ]
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Error" # スキーマとして，異常系モデルを参照する．
+
+  #======================
+  # pathsオブジェクト
+  #======================
+  /users/{userId}:
+    #======================
+    # path itemオブジェクト
+    #======================
+    get:
+      tags:
+        - ユーザ情報
+      summary: 指定ユーザ取得
+      description: 指定したユーザを取得する．
+      #======================
+      # リクエスト
+      #======================
+      parameters:
+        - in: path # パスにパラメータを割り当てる．
+          name: userId
+          required: true
+          description: ユーザID  
+          schema:
+            type: string
+            example: # パスパラメータ例
+              userId=1
+      #======================
+      # レスポンス
+      #======================
+      responses:
+        200:
+          description: OK
+          content:
+            application/json: # Content-Type
+              example: # ボディ例
+                userId: 1
+                name: Hiroki
+              schema: # スキーマ
+                type: object
+                items:
+                  $ref: "#/components/schemas/User" # Userモデルを参照する．
+        400:
+          description: Bad Request
+          content:
+            application/json: # Content-Type
+              example: # ボディ例
+                status: 400
+                title: Bad Request
+                errors:
+                  messages: [
+                      "ユーザIDは必ず指定してください．"
+                  ]
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
+
+        404:
+          description: Not Found
+          content:
+            application/json: # Content-Type
+              example: # ボディ例
+                status: 404
+                title: Not Found
+                errors:
+                  messages: [
+                      "対象のユーザが見つかりませんでした．"
+                  ]
+              schema:
+                type: object
+                items:
+                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
+```
+
+#### ・componentsフィールド（必須）
+
+スキーマなど，他の項目で共通して利用するものを定義する．
+
+```yaml
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+    Normal:
+      type: object
+      properties:
+        userId:
+          type: string
+    Error:
+      type: object
+      properties:
+        messages:
+          type: string
+          description: エラー内容
+  links: {}
+  callbacks: {}
+  securitySchemes:
+    XXXXXXX:
+      type: apiKey
+      name: api_key
+      in: header
+```
+
+**＊実装例＊**
+
+#### ・securityフィールド
+
+使用する認証方法を定義する．ルートで定義すると，全てのパスに適用できる．
+
+**＊実装例＊**
+
+```yaml
+security: 
+  # Non-OAuth setting
+  - api_key: []
+  # OAuth setting
+  - users_auth:
+    - write:users
+    - read:users
+```
+
+#### ・tagフィールド
+
+各項目に付けるタグを定義する．
+
+**＊実装例＊**
+
+```yaml
+tags:
+  - name: users
+    description: Access to Users
+  - name: products
+    description: Access to Products
+```
+
+#### ・externalDocsフィールド
+
+APIを説明するドキュメントのリンクを定義する．
+
+**＊実装例＊**
+
+```yaml
+description: Find more info here
+url: https://example.com
+```
+
+<br>
+
 ### スキーマ
 
 #### ・スキーマとは
 
-例えば，APIが，以下のようなJSON型データをレスポンスするとする．
+APIに対して送信されるリクエストメッセージのデータ，またはAPIから返信されるレスポンスメッセージのデータについて，データ型や必須データを，JSON型またはYAML型で実装しておいたもの．リクエスト時またはレスポンス時のデータのバリデーションに用いる．
+
+#### ・スキーマによるバリデーション
+
+データ型や必須データにより，リクエストまたはレスポンスのデータのバリデーションを行う．
+
+参考：https://spec.openapis.org/oas/v3.1.0#data-types
+
+**＊実装例＊**
+
+例えば，APIがレスポンス時に以下のようなJSON型データを返信するとする．
 
 ```json
 {
-    "name": "Taro Yamada",
-    "age": 10,
-    "sports":["soccer", "baseball"],
-    "subjects": "math"
+  "id": 1,
+  "name": "Taro Yamada",
+  "age": 10,
+  "sports":["soccer", "baseball"],
+  "subjects": "math"
 }
 ```
 
-ここで，以下のように，レスポンスデータの各データ型をJSON型（あるいはYAML型）で記述しておく．これをスキーマという，スキーマは，レスポンスデータのバリデーションを行う時に用いる．
+ここで，スキーマを以下のように定義しておき，APIからデータをレスポンスする時のバリデーションを行う．
 
 ```json
 {
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string"
-        },
-        "age": {
-            "type": "integer",
-            "minimum": 0
-        },
-        "sports": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "subjects": {
-            "type": "string"
-        }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1
     },
-    "required": ["name"]
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subjects": {
+      "type": "string"
+    }
+  },
+  "required": ["id"]
 }
 ```
 
+#### ・API Gatewayにおけるスキーマ設定
 
+API Gatewayにて，バリデーションのためにスキーマを設定できる．詳しくは，以下のノートを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
 
 

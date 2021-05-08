@@ -368,7 +368,7 @@ var person struct {
 
 #### ・独自の構造体
 
-type宣言を使用して，独自の構造体を定義する．
+type宣言を使用して，独自のデータ型の構造体を定義する．保持するデータの変数名の頭文字を大文字にした場合は，パッケージ外からのアクセスをパブリックに，小文字にした場合はプライベートになる．
 
 **＊実装例＊**
 
@@ -376,7 +376,15 @@ type宣言を使用して，独自の構造体を定義する．
 
 ```go
 type Person struct {
-    Name string
+	// パブリック
+	Name string
+}
+```
+
+```go
+type Person struct {
+	// プライベート
+	name string
 }
 ```
 
@@ -768,36 +776,37 @@ type AnimalInterface interface {
 // 構造体にインターフェースを埋め込む．インターフェースのメソッドの関連付けが強制される．
 type InsectImpl struct {
 	AnimalInterface
-	Name string
+	name string
 }
 
 type FishImpl struct {
 	AnimalInterface
-	Name string
+	name string
 }
 
 type MammalImpl struct {
 	AnimalInterface
-	Name string
+	name string
 }
 
-func (insect InsectImpl) GetName() {
-	fmt.Println(insect.Name)
+// コンストラクタ
+func NewInsect(name string) (*InsectImpl, error) {
+	return &InsectImpl{
+		name: name,
+	}, nil
 }
 
 // 構造体に関数を関連付ける．
-func (insect InsectImpl) Eat() {
-	fmt.Println("食べる")
+func (insect InsectImpl) GetName() string {
+	return insect.Name
 }
 
-func (insect InsectImpl) Sleep() {
-	fmt.Println("眠る")
+func (insect InsectImpl) Eat() string {
+	return "食べる"
 }
 
-func NewInsect(name string) (*InsectImpl, error) {
-	return &InsectImpl{
-		Name: name,
-	}, nil
+func (insect InsectImpl) Sleep() string {
+	return "眠る"
 }
 
 func main() {
@@ -808,9 +817,9 @@ func main() {
 	}
 
 	// メソッドを実行する．
-	insect.GetName()
-	insect.Eat()
-	insect.Sleep()
+	fmt.Println(insect.GetName())
+	fmt.Println(insect.Eat())
+	fmt.Println(insect.Sleep())
 }
 ```
 
@@ -1058,20 +1067,27 @@ import "fmt"
 
 // 構造体を定義
 type Person struct {
-    Name string
+	name string
+}
+
+// コンストラクタ
+func NewPerson(name string) *Person {
+	return &Person{
+		name: name,
+	}
 }
 
 // 構造体に関数を関連付ける．
 func (person Person) GetName() string {
-    return person.Name
+	return person.name
 }
 
 // 構造体から関数をコール
 func main() {
-    // 構造体を初期化
-    person := Person{Name: "Hiroki"}
-    
-    fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
+	// 構造体を初期化
+	person := NewPerson("Hiroki")
+
+	fmt.Printf("%#v\n", person.GetName()) // "Hiroki"
 }
 ```
 
@@ -1089,25 +1105,32 @@ package main
 import "fmt"
 
 type Person struct {
-	Name string
+	name string
+}
+
+// コンストラクタ
+func NewPerson(name string) *Person {
+	return &Person{
+		name: name,
+	}
 }
 
 // 値レシーバ
 func (person Person) SetName(name string) {
-    // 引数の構造体をコピーしてから使用
-	person.Name = name
+	// 引数の構造体をコピーしてから使用
+	person.name = name
 }
 
 func (person Person) GetName() string {
-    return person.Name
+	return person.name
 }
 
 func main() {
-	person := Person{Name: "Gopher"}
+	person := NewPerson("Gopher")
 
 	person.SetName("Hiroki")
-    
-    fmt.Printf("%#v\n", person.GetName()) // "Gopher"
+
+	fmt.Printf("%#v\n", person.GetName()) // "Gopher"
 }
 ```
 
@@ -1474,9 +1497,9 @@ func main() {
 
 <br>
 
-## 06. エラーキャッチ，エラー返却，ロギング
+## 06. エラーキャッチ，例外スロー
 
-### エラーキャッチとエラー返却
+### Goにおけるエラーキャッチと例外スロー
 
 #### ・例外スローのある言語の場合
 
@@ -1484,17 +1507,31 @@ func main() {
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_validation.html
 
-#### ・Goには例外スローが無い
+#### ・Goには例外が無い
 
-エラーをキャッチした場合に，例外をスローするべきであるが，Goには例外が無い．
+例えばPHPでは，エラーをキャッチし，システム開発者にわかる言葉に変換した例外としてスローする．Goには例外クラスに相当するものが無い．その代わり，エラーそのものがerrorインターフェースに保持されており，これを一つの値として扱える．下流で発生したerrorインターフェースを，そのまま上流に返却する．
 
 <br>
 
-### 返却されるエラー
+### エラーキャッチ
+
+#### ・nilの比較検証
+
+関数から返却されたerrインターフェースが，```nil```でなかった場合に，エラーであると見なすようにする．
+
+```go
+if err != nil {
+    // 何らかの処理
+}
+```
+
+<br>
+
+### errorインターフェース
 
 #### ・標準エラー
 
-Goでは複数の値を返却できるため，多くの関数では標準で，最後にerrorインターフェースが返却されるようになっている．これから，エラーメッセージを取り出せる．
+Goでは複数の値を返却できるため，多くの関数では標準で，最後にerrorインターフェースが返却されるようになっている．errorインターフェースは自動的に```Error```メソッドを実行する．
 
 ```go
 type error interface {
@@ -1504,7 +1541,7 @@ type error interface {
 
 **＊実装例＊**
 
-osパッケージの```Open```メソッドからerrorインターフェースが返却される．これから，エラーメッセージを取り出し，標準エラー出力に出力する．
+osパッケージの```Open```メソッドからerrorインターフェースが返却される．errorインターフェースはErrorメソッドを自動的に実行し，標準エラー出力に出力する．
 
 ```go
 package main
@@ -1528,9 +1565,9 @@ func main() {
 }
 ```
 
-#### ・独自エラー（１）
+#### ・```New```関数による独自エラー
 
-errorsパッケージの```New```メソッドにエラーメッセージを設定し，エラーをキャッチできた時に，設定したエラーを返却するようにする．
+errorsパッケージの```New```メソッドにエラーを設定する．これにより，独自のエラーを保持するerrorインターフェースを定義できる．errorインターフェースはErrorメソッドを自動的に実行する．
 
 参考：https://golang.org/pkg/errors/#New
 
@@ -1546,7 +1583,7 @@ import (
 	"os"
 )
 
-func ThrowErrorsNew() error {
+func NewError() error {
 	return errors.New("<エラーメッセージ>")
 }
 
@@ -1555,7 +1592,7 @@ func main() {
 
 	if err != nil {
 		// 独自エラーメッセージを設定する．
-		myErr := ThrowErrorsNew()
+		myErr := NewError()
 		log.Fatalf("ERROR: %#v\n", myErr)
 	}
 
@@ -1563,9 +1600,9 @@ func main() {
 }
 ```
 
-#### ・独自エラー（２）
+#### ・```fmt.Errorf```メソッドによる独自エラー
 
-fmtパッケージの```Errorf```メソッドで独自エラーを作成できる．事前に定義したフォーマットを元にエラーメッセージを設定する．
+fmtパッケージの```Errorf```メソッドで独自エラーを作成できる．事前に定義したフォーマットを元にエラーを設定する．これにより，独自のエラーを保持するerrorインターフェースを定義できる．errorインターフェースはErrorメソッドを自動的に実行する．
 
 参考：https://golang.org/pkg/fmt/#Errorf
 
@@ -1580,20 +1617,20 @@ import (
 )
 
 func main() {
-    
+
 	file, err := os.Open("filename.txt")
 
 	if err != nil {
-        fmt.Errorf("ERROR: %s", err)
+		fmt.Errorf("ERROR: %s", err)
 	}
 
 	fmt.Printf("%#v\n", flle)
 }
 ```
 
-#### ・独自エラー（３）
+#### ・構造体による独自エラー
 
-構造体に```Error```メソッドを定義すると，これにerrorインターフェースが構造体に自動的に埋め込まれる．この構造体は，コールされると```Error```メソッドを自動的に実行する．
+構造体に```Error```メソッドを定義すると，これにerrorインターフェースが構造体に自動的に埋め込まれる．これにより，独自のエラーを保持するerrorインターフェースを定義できる．errorインターフェースはErrorメソッドを自動的に実行する．
 
 **＊実装例＊**
 
@@ -1631,23 +1668,78 @@ func main() {
 
 <br>
 
-### エラーキャッチ
+### xerrorsパッケージ
 
-#### ・nilの比較検証
+#### ・xerrorsパッケージとは
 
-関数から返却されたerrインターフェースが，```nil```でなかった場合に，エラーであると見なすようにする．
+標準のerrorsパッケージには，エラーにスタックトレース情報が含まれていない．xerrorsパッケージによって生成されるerrorインターフェースには，errorインターフェースが返却された行数がスタックトレースとして含まれている．
+
+#### ・```New```関数によるトレース付与
+
+**＊実装例＊**
 
 ```go
-if err != nil {
-    // 何らかの処理
+package main
+
+import (
+	"fmt"
+	"golang.org/x/xerrors"
+	"log"
+	"os"
+)
+
+func NewErrorWithTrace() error {
+	return xerrors.New("<エラーメッセージ>")
+}
+
+func main() {
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		// errorインターフェースが返却された行数が付与される．
+		errWithStack := NewErrorWithTrace()
+		// %+v\n を使用する．
+		log.Fatalf("ERROR: %+v\n", errWithStack)
+	}
+
+	fmt.Printf("%#v\n", flle)
+}
+```
+
+#### ・```Errorf```メソッドによるトレース付与
+
+```go
+package main
+
+import (
+	"fmt"
+	"golang.org/x/xerrors"
+	"log"
+	"os"
+)
+
+func main() {
+
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		// errorインターフェースが返却された行数が付与される．
+		errWithStack := xerrors.Errorf("ERROR: %w", err)
+		// %+v\n を使用する．
+		log.Fatalf("ERROR: %+v\n", errWithStack)
+	}
+
+	fmt.Printf("%#v\n", flle)
 }
 ```
 
 <br>
 
-### ロギング
+## 06-02. ロギング
 
-#### ・logパッケージ
+### logパッケージ
+
+#### ・logパッケージとは
 
 Goには標準で，ロギング用パッケージが用意されている．ただし，機能が乏しいので，外部パッケージ（例：logrus）も推奨である．
 
@@ -1664,7 +1756,7 @@ Goには標準で，ロギング用パッケージが用意されている．た
 
 ```go
 if err != nil {
-    log.Printf("ERROR: %#v\n", err)
+	log.Printf("ERROR: %#v\n", err)
 }
 ```
 
@@ -1676,8 +1768,8 @@ if err != nil {
 
 ```go
 if err != nil {
-    // 内部でos.Exit(1)を実行する．
-    log.Fatalf("ERROR: %#v\n", err)
+	// 内部でos.Exit(1)を実行する．
+	log.Fatalf("ERROR: %#v\n", err)
 }
 ```
 
@@ -1747,18 +1839,18 @@ func main() {
 package main
 
 import (
-    "bytes"
-    "fmt"
+	"bytes"
+	"fmt"
 )
 
 func main() {
-    var buffer bytes.Buffer
+	var buffer bytes.Buffer
 
-    buffer.WriteString("Hello ")
-    
-    buffer.WriteString("world!")
+	buffer.WriteString("Hello ")
 
-    fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
+	buffer.WriteString("world!")
+
+	fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
 }
 ```
 

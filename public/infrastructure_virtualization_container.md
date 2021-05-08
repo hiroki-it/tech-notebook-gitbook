@@ -46,9 +46,9 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 | **BusyBox**      | ・OS：Linux（※ディストリビューションではない）<br>・パッケージ：基本ユーティリティツール<br>・パッケージマネージャ：無 | 組み込みシステム     |
 | **Alpine Linux** | ・OS：Linux（※ディストリビューションではない）<br/>・パッケージ：基本ユーティリティツール<br>・パッケージマネージャ：Apk | ？                   |
 
-#### ・CPUアーキテクチャの種類
+#### ・対応可能なCPUアーキテクチャの種類
 
-AMD系やARM系など，様々なCPUアーキテクチャが内蔵されたベースイメージを提供する．
+Dockerは全てのPCで稼働できるわけではなく，対応可能なCPUアーキテクチャ（AMD系，ARM系，など）がある．同じOSでも，機種ごとに搭載されるCPUアーキテクチャは異なる．例えば，MacBook 2020 にはIntel，またMacBook 2021（M1 Mac）にはARMベースの独自CPUが搭載されている．
 
 参考：https://github.com/docker-library/official-images#architectures-other-than-amd64
 
