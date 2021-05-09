@@ -143,6 +143,22 @@ JSON型データ内に定義し，リクエストボディにパラメータを�
 }
 ```
 
+#### ・リクエストヘッダーへの割り当て
+
+リクエストヘッダーにパラメータを割り当てて送信する．送信時のヘッダー名は大文字でも小文字でもいずれでも問題ないが，内部的に小文字に変換されるため，小文字が推奨である．APIキーのヘッダー名の頭文字に「```X```」を付けるのは，独自ヘッダーの頭文字に「```X```」を付ける慣習があったためである．ただし，現在は非推奨である．
+
+参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
+
+```http
+GET http://www.example.co.jp HTTP/1.1
+# MIME type
+content-type: application/json
+# Authorizationヘッダー
+authorization: Bearer ${Token}
+# APIキーヘッダー
+x-api-key: XXXXX
+```
+
 <br>
 
 ### エンドポイントの作り方
@@ -358,7 +374,6 @@ POST http://www.example.co.jp/users/12345/messages
 クエリパラメータに送信するデータを記述する方法．リクエストメッセージは，以下の要素に分類できる．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．
 
 ```http
-# エンドポイント
 GET http://127.0.0.1/testform.php?text1=a&text2=b HTTP/1.1
 # リクエストされたドメイン名
 Host: 127.0.0.1
@@ -387,7 +402,6 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 クエリパラメータを，URLに記述せず，メッセージボディに記述してリクエストメッセージを送る方法．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．メッセージボディに情報が記述されるため，履歴では確認できない．また，SSLによって暗号化されるため，傍受できない．リクエストメッセージは，以下の要素に分類できる．
 
 ```http
-# エンドポイント
 POST http://127.0.0.1/testform.php HTTP/1.1
 # リクエストされたドメイン名
 Host: 127.0.0.1
@@ -811,14 +825,14 @@ API名，作成者名，メールアドレス，ライセンス，などを定�
 info:
   title: Example API # API名
   description: The API for Example. # APIの説明
-  termsOfService: http://example.com/terms/ # 利用規約
+  termsOfService: https://www.example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: http://www.example.com/support # 連絡先に関するURL
+    url: https://www.example.com/support # 連絡先に関するURL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
-    url: http://www.apache.org/licenses/LICENSE-2.0.html # URL
+    url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
   version: 1.0.0 # APIドキュメントのバージョン
 ```
 
@@ -830,9 +844,9 @@ API自体のURL，などを定義する．
 
 ```yaml
 servers:
-  - url: https://stg.example.com/v1
+  - url: https://stg.example.com/api/v1
     description: ステージング環境
-  - url: https://example.com/v1
+  - url: https://www.example.com/api/v1
     description: 本番環境
 ```
 
@@ -842,36 +856,28 @@ APIのエンドポイント，HTTPメソッド，ステータスコード，な�
 
 ```yaml
 paths:
-  #======================
+  #===========================
   # pathsオブジェクト
-  #======================
+  #===========================
   /users:
-    #======================
+    #===========================
     # path itemオブジェクト
-    #======================
+    #===========================
     get: # GETメソッドを指定する．
       tags:
-        - ユーザ情報
+        - ユーザ情報取得エンドポイント
       summary: ユーザ一覧取得
       description: 全ユーザを取得する．
-      #======================
+      #===========================
       # リクエスト
-      #======================
-      parameters:
-        - in: query # クエリストリングにパラメータを割り当てる．
-          name: orderId
-          required: true          
-          description: 注文ID
-          schema:
-            type: string
-            example: # クエリパラメータ例
-              ?orderId
-      #======================
+      #===========================
+      parameters: []
+      #===========================
       # レスポンス
-      #======================
+      #===========================
       responses:
-        200:
-          description: OK
+        '200':
+          description: OK レスポンス
           content:
             application/json: # Content-Type
               example: # レスポンスボディ例
@@ -880,14 +886,12 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/User" # Userモデルを参照する．
-        400:
-          description: Bad Request
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
+        '400':
+          description: Bad Request レスポンス
           content:
             application/json: # Content-Type
-              example: # ボディ例
+              example: # レスポンスボディ例
                 status: 400
                 title: Bad Request
                 errors:
@@ -895,45 +899,43 @@ paths:
                     "不正なリクエストです．"
                 ]
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
-    #======================
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
+        '401':
+          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+    #===========================
     # path itemオブジェクト
-    #======================
+    #===========================
     post: # POSTメソッドを指定する．
       tags:
-        - ユーザ情報
+        - ユーザ情報作成エンドポイント
       summary: ユーザ作成
       description: ユーザを作成する．
-      #======================
+      #===========================
       # リクエスト
-      #======================
+      #===========================
       parameters: []
       requestBody: # リクエストボディにパラメータを割り当てる．
-        description: OK
+        description: ユーザID
         content:
           application/json: # Content-Type
             example: # リクエストボディ例
               userId: 1
             schema: # スキーマ
-              $ref: "#/components/schemas/User" # Userモデルを参照する．
-      #======================
+              $ref: "#/components/schemas/user" # Userモデルを参照する．
+      #===========================
       # レスポンス
-      #======================
+      #===========================
       responses:
-        200:
-          description: OK
+        '200':
+          description: OK レスポンス
           content:
             application/json: # Content-Type
               example: # レスポンスボディ例
                 userId: 1
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/Normal" # スキーマとして，正常系モデルを参照する．
-        400:
-          description: Bad Request
+                $ref: "#/components/schemas/normal" # スキーマとして，正常系モデルを参照する．
+        '400':
+          description: Bad Request レスポンス
           content:
             application/json: # Content-Type
               example: # レスポンスボディ例
@@ -944,51 +946,48 @@ paths:
                       "ユーザIDは必ず指定してください．"
                   ]
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/Error" # スキーマとして，異常系モデルを参照する．
-
-  #======================
+                $ref: "#/components/schemas/error" # スキーマとして，異常系モデルを参照する．
+        '401':
+          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+  #===========================
   # pathsオブジェクト
-  #======================
+  #===========================
   /users/{userId}:
-    #======================
+    #===========================
     # path itemオブジェクト
-    #======================
+    #===========================
     get:
       tags:
-        - ユーザ情報
+        - ユーザ情報取得エンドポイント
       summary: 指定ユーザ取得
       description: 指定したユーザを取得する．
-      #======================
+      #===========================
       # リクエスト
-      #======================
+      #===========================
       parameters:
         - in: path # パスにパラメータを割り当てる．
           name: userId
           required: true
-          description: ユーザID  
+          description: ユーザID
           schema:
             type: string
             example: # パスパラメータ例
               userId=1
-      #======================
+      #===========================
       # レスポンス
-      #======================
+      #===========================
       responses:
-        200:
-          description: OK
+        '200':
+          description: OK レスポンス
           content:
             application/json: # Content-Type
               example: # ボディ例
                 userId: 1
                 name: Hiroki
               schema: # スキーマ
-                type: object
-                items:
-                  $ref: "#/components/schemas/User" # Userモデルを参照する．
-        400:
-          description: Bad Request
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
+        '400':
+          description: Bad Request レスポンス
           content:
             application/json: # Content-Type
               example: # ボディ例
@@ -999,12 +998,11 @@ paths:
                       "ユーザIDは必ず指定してください．"
                   ]
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
-
-        404:
-          description: Not Found
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
+        '401':
+          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+        '404':
+          description: Not Found レスポンス
           content:
             application/json: # Content-Type
               example: # ボディ例
@@ -1015,9 +1013,7 @@ paths:
                       "対象のユーザが見つかりませんでした．"
                   ]
               schema:
-                type: object
-                items:
-                  $ref: "#/components/schemas/Error" # 異常系モデルを参照する．
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
 ```
 
 #### ・componentsフィールド（必須）
@@ -1026,31 +1022,76 @@ paths:
 
 ```yaml
 components:
+  #===========================
+  # callbackキーの共通化
+  #===========================
+  callbacks: { }
+  #===========================
+  # linkキーの共通化
+  #===========================
+  links: { }
+  #===========================
+  # responseキーの共通化
+  #===========================
+  responses:
+    unauthorized:
+      description: Unauthorized レスポンス
+      content:
+        application/json: # Content-Type
+          example: # ボディ例
+            status: 401
+            title: Unauthorized
+            errors:
+              messages: [
+                  "APIキーの認可に失敗しました．"
+              ]
+          schema:
+            $ref: "#/components/schemas/error" # 異常系モデルを参照する．              
+  #===========================
+  # schemaキーの共通化
+  #===========================
   schemas:
-    User:
+    # ユーザ
+    user:
       type: object
       properties:
         userId:
           type: string
         name:
           type: string
-    Normal:
+    # 正常系
+    normal:
       type: object
       properties:
         userId:
           type: string
-    Error:
+    # 異常系      
+    error:
       type: object
       properties:
         messages:
-          type: string
-          description: エラー内容
-  links: {}
-  callbacks: {}
+          type: array
+          items:
+            type: string
+  #===========================
+  # securityフィールドの共通化
+  #===========================
   securitySchemes:
-    XXXXXXX:
+    # Basic認証
+    basicAuth:
+      description: Basic認証
+      type: http
+      scheme: basic
+    # Bearer認証
+    bearerAuth:
+      description: Bearer認証
+      type: http
+      scheme: bearer
+    # APIキー認証
+    apiKeyAuth:
+      description: APIキー認証
       type: apiKey
-      name: api_key
+      name: x-api-key # ヘッダ名は「x-api-key」とする．小文字が推奨である．
       in: header
 ```
 
@@ -1058,32 +1099,25 @@ components:
 
 #### ・securityフィールド
 
-使用する認証方法を定義する．ルートで定義すると，全てのパスに適用できる．
+componentsフィールドで定義した認証方法を宣言する．ルートで宣言すると，全てのパスに適用できる．
 
 **＊実装例＊**
 
 ```yaml
 security: 
-  # Non-OAuth setting
-  - api_key: []
-  # OAuth setting
-  - users_auth:
-    - write:users
-    - read:users
+  - apiKeyAuth: []
 ```
 
-#### ・tagフィールド
+#### ・tagsフィールド
 
-各項目に付けるタグを定義する．
+各項目に付けるタグを定義する．同名のタグをつけると，自動的にまとめられる．
 
 **＊実装例＊**
 
 ```yaml
 tags:
-  - name: users
-    description: Access to Users
-  - name: products
-    description: Access to Products
+  - name: ユーザ情報
+    description: ユーザ情報取得エンドポイント
 ```
 
 #### ・externalDocsフィールド
