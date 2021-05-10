@@ -35,7 +35,7 @@ WWW-Authenticate: Basic realm="Server Name", charaset="UTF-8"
 
 ```http
 # リクエストヘッダーについて，詳しくは，以降の説明を参照せよ．
-Authorization: Basic bG9naW46cGFzc3dvcmQ=
+authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
 4. サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．
@@ -53,7 +53,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ```http
 # リクエストヘッダー
-Authorization: Basic <ユーザ名>:<パスワード>
+authorization: Basic <ユーザ名>:<パスワード>
 ```
 
 <br>
@@ -72,7 +72,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 
 ```http
 # リクエストヘッダー
-Authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
+authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
 <br>
@@ -96,7 +96,7 @@ WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 
 ```http
 # リクエストヘッダー
-Authorization: Bearer <Bearerトークン，JWT，など>
+authorization: Bearer <Bearerトークン，JWT，など>
 ```
 
 <br>
@@ -137,7 +137,7 @@ Set-Cookie: sessionId=<セッションID>
 
 ```http
 # リクエストヘッダーの場合
-Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
+cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 ```
 
 <br>
@@ -149,6 +149,17 @@ Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでクライアントを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+
+#### ・照合情報の送信方法
+
+独自ヘッダーとして，x-api-keyを定義し，これに割り当てて送信する．リクエストヘッダへのパラメータの割り当てについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+
+```http
+# リクエストヘッダー
+x-api-key: XXXXX（キー）
+```
 
 <br>
 
@@ -232,7 +243,7 @@ WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 
 ```http
 # リクエストヘッダー
-Authorization: Bearer <Bearerトークン，JWT，など>
+authorization: Bearer <Bearerトークン，JWT，など>
 ```
 
 #### ・付与タイプ
@@ -295,7 +306,7 @@ WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 ```
 ```http
 # リクエストヘッダー
-Authorization: Bearer <Bearerトークンの文字列>
+authorization: Bearer <Bearerトークンの文字列>
 ```
 
 <br>
@@ -358,7 +369,7 @@ const signature = HMACSHA256(
 
 ```http
 # リクエストヘッダー
-Authorization: Bearer <JWTの文字列>
+authorization: Bearer <JWTの文字列>
 ```
 
 ```http

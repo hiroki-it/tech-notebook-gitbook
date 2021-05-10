@@ -458,7 +458,7 @@ Webサーバ，APサーバ，DBサーバによるネットワークの仕組み�
 
 ミドルウェア（Apache，Nginxなど）がインストールされている．また，Web兼APサーバのミドルウェアとして機能する（NGINX Unit）がインストールされていることもある．
 
-![Nginxの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Nginxの仕組み.png)
+![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
 |                                | Webサーバ |  →   | APサーバ |  →   |  DBサーバ  |
 | ------------------------------ | :-------: | :--: | :------: | :--: | :--------: |
@@ -469,47 +469,49 @@ Webサーバ，APサーバ，DBサーバによるネットワークの仕組み�
 
 #### ・サーバ変数（```$_SERVER```）
 
-```
-$_SERVER['SERVER_ADDR']           サーバのIPアドレス(例:192.168.0.1)
-$_SERVER['SERVER_NAME']           サーバの名前(例:www.example.com)
-$_SERVER['SERVER_PORT']           サーバのポート番号(例:80)
-$_SERVER['SERVER_PROTOCOL']       サーバプロトコル(例:HTTP/1.1)
-$_SERVER['SERVER_ADMIN']          サーバの管理者(例:root@localhost)
-$_SERVER['SERVER_SIGNATURE']      サーバのシグニチャ(例:Apache/2.2.15...)
-$_SERVER['SERVER_SOFTWARE']       サーバソフトウェア(例:Apache/2.2.15...)
-$_SERVER['GATEWAY_INTERFACE']     CGIバージョン(例:CGI/1.1)
-$_SERVER['DOCUMENT_ROOT']         ドキュメントルート(例:/var/www/html)
-$_SERVER['PATH']                  環境変数PATHの値(例:/sbin:/usr/sbin:/bin:/usr/bin)
-$_SERVER['PATH_TRANSLATED']       スクリプトファイル名(例:/var/www/html/test.php)
-$_SERVER['SCRIPT_FILENAME']       スクリプトファイル名(例:/var/www/html/test.php)
-$_SERVER['REQUEST_URI']           リクエストのURI(例:/test.php)
-$_SERVER['PHP_SELF']              PHPスクリプト名(例:/test.php)
-$_SERVER['SCRIPT_NAME']           スクリプト名(例:/test.php)
-$_SERVER['PATH_INFO']             URLの引数に指定されたパス名(例:/test.php/aaa)
-$_SERVER['ORIG_PATH_INFO']        PHPで処理される前のPATH_INFO情報
-$_SERVER['QUERY_STRING']          URLの?以降に記述された引数(例:q=123)
-$_SERVER['REMOTE_ADDR']           クライアントのIPアドレス(例:192.168.0.123)
-$_SERVER['REMOTE_HOST']           クライアント名(例:client32.example.com)
-$_SERVER['REMOTE_PORT']           クライアントのポート番号(例:64799)
-$_SERVER['REMOTE_USER']           クライアントのユーザ名(例:tanaka)
-$_SERVER['REQUEST_METHOD']        リクエストメソッド(例:GET)
-$_SERVER['REQUEST_TIME']          リクエストのタイムスタンプ(例:1351987425)
-$_SERVER['REQUEST_TIME_FLOAT']    リクエストのタイムスタンプ(マイクロ秒)(PHP 5.1.0以降)
-$_SERVER['REDIRECT_REMOTE_USER']  リダイレクトされた場合の認証ユーザ(例:tanaka)
-$_SERVER['HTTP_ACCEPT']           リクエストのAccept:ヘッダの値(例:text/html)
-$_SERVER['HTTP_ACCEPT_CHARSET']   リクエストのAccept-Charset:ヘッダの値(例:utf-8)
-$_SERVER['HTTP_ACCEPT_ENCODING']  リクエストのAccept-Encoding:ヘッダの値(例:gzip)
-$_SERVER['HTTP_ACCEPT_LANGUAGE']  リクエストのAccept-Language:ヘッダの値(ja,en-US)
-$_SERVER['HTTP_CACHE_CONTROL']    リクエストのCache-Control:ヘッダの値(例:max-age=0)
-$_SERVER['HTTP_CONNECTION']       リクエストのConnection:ヘッダの値(例:keep-alive)
-$_SERVER['HTTP_HOST']             リクエストのHost:ヘッダの値(例:www.example.com)
-$_SERVER['HTTP_REFERER']          リンクの参照元URL(例:http://www.example.com/)
-$_SERVER['HTTP_USER_AGENT']       リクエストのUser-Agent:ヘッダの値(例:Mozilla/5.0...)
-$_SERVER['HTTPS']                 HTTPSを利用しているか否か(例:on)
-$_SERVER['PHP_AUTH_DIGEST']       ダイジェスト認証時のAuthorization:ヘッダの値
-$_SERVER['PHP_AUTH_USER']         HTTP認証時のユーザ名
-$_SERVER['PHP_AUTH_PW']           HTTP認証時のパスワード
-$_SERVER['AUTH_TYPE']             HTTP認証時の認証形式
+```php
+<?php
+    
+$_SERVER['SERVER_ADDR']           # サーバのIPアドレス(例:192.168.0.1)
+$_SERVER['SERVER_NAME']           # サーバの名前(例:www.example.com)
+$_SERVER['SERVER_PORT']           # サーバのポート番号(例:80)
+$_SERVER['SERVER_PROTOCOL']       # サーバプロトコル(例:HTTP/1.1)
+$_SERVER['SERVER_ADMIN']          # サーバの管理者(例:root@localhost)
+$_SERVER['SERVER_SIGNATURE']      # サーバのシグニチャ(例:Apache/2.2.15...)
+$_SERVER['SERVER_SOFTWARE']       # サーバソフトウェア(例:Apache/2.2.15...)
+$_SERVER['GATEWAY_INTERFACE']     # CGIバージョン(例:CGI/1.1)
+$_SERVER['DOCUMENT_ROOT']         # ドキュメントルート(例:/var/www/html)
+$_SERVER['PATH']                  # 環境変数PATHの値(例:/sbin:/usr/sbin:/bin:/usr/bin)
+$_SERVER['PATH_TRANSLATED']       # スクリプトファイル名(例:/var/www/html/test.php)
+$_SERVER['SCRIPT_FILENAME']       # スクリプトファイル名(例:/var/www/html/test.php)
+$_SERVER['REQUEST_URI']           # リクエストのURI(例:/test.php)
+$_SERVER['PHP_SELF']              # PHPスクリプト名(例:/test.php)
+$_SERVER['SCRIPT_NAME']           # スクリプト名(例:/test.php)
+$_SERVER['PATH_INFO']             # URLの引数に指定されたパス名(例:/test.php/aaa)
+$_SERVER['ORIG_PATH_INFO']        # PHPで処理される前のPATH_INFO情報
+$_SERVER['QUERY_STRING']          # URLの?以降に記述された引数(例:q=123)
+$_SERVER['REMOTE_ADDR']           # クライアントのIPアドレス(例:192.168.0.123)
+$_SERVER['REMOTE_HOST']           # クライアント名(例:client32.example.com)
+$_SERVER['REMOTE_PORT']           # クライアントのポート番号(例:64799)
+$_SERVER['REMOTE_USER']           # クライアントのユーザ名(例:tanaka)
+$_SERVER['REQUEST_METHOD']        # リクエストメソッド(例:GET)
+$_SERVER['REQUEST_TIME']          # リクエストのタイムスタンプ(例:1351987425)
+$_SERVER['REQUEST_TIME_FLOAT']    # リクエストのタイムスタンプ(マイクロ秒)(PHP 5.1.0以降)
+$_SERVER['REDIRECT_REMOTE_USER']  # リダイレクトされた場合の認証ユーザ(例:tanaka)
+$_SERVER['HTTP_ACCEPT']           # リクエストのAccept:ヘッダの値(例:text/html)
+$_SERVER['HTTP_ACCEPT_CHARSET']   # リクエストのAccept-Charset:ヘッダの値(例:utf-8)
+$_SERVER['HTTP_ACCEPT_ENCODING']  # リクエストのAccept-Encoding:ヘッダの値(例:gzip)
+$_SERVER['HTTP_ACCEPT_LANGUAGE']  # リクエストのAccept-Language:ヘッダの値(ja,en-US)
+$_SERVER['HTTP_CACHE_CONTROL']    # リクエストのCache-Control:ヘッダの値(例:max-age=0)
+$_SERVER['HTTP_CONNECTION']       # リクエストのConnection:ヘッダの値(例:keep-alive)
+$_SERVER['HTTP_HOST']             # リクエストのHost:ヘッダの値(例:www.example.com)
+$_SERVER['HTTP_REFERER']          # リンクの参照元URL(例:http://www.example.com/)
+$_SERVER['HTTP_USER_AGENT']       # リクエストのUser-Agent:ヘッダの値(例:Mozilla/5.0...)
+$_SERVER['HTTPS']                 # HTTPSを利用しているか否か(例:on)
+$_SERVER['PHP_AUTH_DIGEST']       # ダイジェスト認証時のAuthorization:ヘッダの値
+$_SERVER['PHP_AUTH_USER']         # HTTP認証時のユーザ名
+$_SERVER['PHP_AUTH_PW']           # HTTP認証時のパスワード
+$_SERVER['AUTH_TYPE']             # HTTP認証時の認証形式
 ```
 
 #### ・リクエスト変数（```$_REQUEST```）
@@ -522,6 +524,7 @@ GET変数（```$_GET```），POST変数（```$_POST```），COOKIE（```$_COOKIE
 
 ```php
 <?php
+    
 // $_GET['hoge']
 $request->query->get('hoge');
  

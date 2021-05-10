@@ -22,7 +22,7 @@ RESTに基づいた設計をRESTfulという．RESTful設計が用いられたWe
 
 #### ・Stateless
 
-クライアントに対してレスポンスを送信したら，クライアントの情報を保持せずに破棄する仕組みのこと．擬似的にStatefulな通信を行う時は，キャッシュ，Cookie，セッションIDを用いて，クライアントの情報を保持する．
+クライアントに対してレスポンスを返信した後に，クライアントの情報を保持せずに破棄する仕組みのこと．擬似的にStatefulな通信を行う時は，キャッシュ，Cookie，セッションIDを用いて，クライアントの情報を保持する．
 
 | Statelessプロトコル | Statefulプロトコル |
 | ------------------- | ------------------ |
@@ -150,7 +150,7 @@ JSON型データ内に定義し，リクエストボディにパラメータを�
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
-GET http://www.example.co.jp HTTP/1.1
+GET http://www.example.co.jp HTTP/2
 # MIME type
 content-type: application/json
 # Authorizationヘッダー
@@ -374,7 +374,7 @@ POST http://www.example.co.jp/users/12345/messages
 クエリパラメータに送信するデータを記述する方法．リクエストメッセージは，以下の要素に分類できる．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．
 
 ```http
-GET http://127.0.0.1/testform.php?text1=a&text2=b HTTP/1.1
+GET http://127.0.0.1/testform.php?text1=a&text2=b HTTP/2
 # リクエストされたドメイン名
 Host: 127.0.0.1
 Connection: keep-alive
@@ -402,7 +402,7 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 クエリパラメータを，URLに記述せず，メッセージボディに記述してリクエストメッセージを送る方法．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．メッセージボディに情報が記述されるため，履歴では確認できない．また，SSLによって暗号化されるため，傍受できない．リクエストメッセージは，以下の要素に分類できる．
 
 ```http
-POST http://127.0.0.1/testform.php HTTP/1.1
+POST http://127.0.0.1/testform.php HTTP/2
 # リクエストされたドメイン名
 Host: 127.0.0.1
 Connection: keep-alive
@@ -447,7 +447,7 @@ https://github.com/postmanlabs/postman-app-support/issues/131
 **＊具体例＊**
 
 ```http
-HTTP/1.1 200
+200 OK
 # レスポンスで送信するMIMEタイプ
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
@@ -573,8 +573,8 @@ Content-Type: application/json
 
 他に，URIでデータ型を記述する方法がある．
 
-```
-http://www.example.co.jp/users/12345?format=json
+```http
+GET http://www.example.co.jp/users/12345?format=json
 ```
 
 ### オブジェクトデータ構造の作り方
@@ -844,10 +844,15 @@ API自体のURL，などを定義する．
 
 ```yaml
 servers:
-  - url: https://stg.example.com/api/v1
-    description: ステージング環境
-  - url: https://www.example.com/api/v1
-    description: 本番環境
+  - url: https://{env}.example.com/api/v1
+    description: |
+    variables:
+      env:
+        default: stg
+        description: API environment
+        enum:
+          - stg
+          - www
 ```
 
 #### ・pathsフィールド（必須）
@@ -866,8 +871,8 @@ paths:
     get: # GETメソッドを指定する．
       tags:
         - ユーザ情報取得エンドポイント
-      summary: ユーザ一覧取得
-      description: 全ユーザを取得する．
+      summary: ユーザ情報取得
+      description: 全ユーザ情報を取得する．
       #===========================
       # リクエスト
       #===========================
@@ -879,7 +884,7 @@ paths:
         '200':
           description: OK レスポンス
           content:
-            application/json: # Content-Type
+            application/json: # MIME type
               example: # レスポンスボディ例
                 Users:
                   User:
@@ -890,7 +895,7 @@ paths:
         '400':
           description: Bad Request レスポンス
           content:
-            application/json: # Content-Type
+            application/json: # MIME type
               example: # レスポンスボディ例
                 status: 400
                 title: Bad Request
@@ -908,8 +913,8 @@ paths:
     post: # POSTメソッドを指定する．
       tags:
         - ユーザ情報作成エンドポイント
-      summary: ユーザ作成
-      description: ユーザを作成する．
+      summary: ユーザ情報作成
+      description: ユーザ情報を作成する．
       #===========================
       # リクエスト
       #===========================
@@ -917,7 +922,7 @@ paths:
       requestBody: # リクエストボディにパラメータを割り当てる．
         description: ユーザID
         content:
-          application/json: # Content-Type
+          application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
             schema: # スキーマ
@@ -929,7 +934,7 @@ paths:
         '200':
           description: OK レスポンス
           content:
-            application/json: # Content-Type
+            application/json: # MIME type
               example: # レスポンスボディ例
                 userId: 1
               schema:
@@ -937,7 +942,7 @@ paths:
         '400':
           description: Bad Request レスポンス
           content:
-            application/json: # Content-Type
+            application/json: # MIME type
               example: # レスポンスボディ例
                 status: 400
                 title: Bad Request
@@ -959,8 +964,69 @@ paths:
     get:
       tags:
         - ユーザ情報取得エンドポイント
-      summary: 指定ユーザ取得
-      description: 指定したユーザを取得する．
+      summary: 指定ユーザ情報取得
+      description: 指定したユーザ情報を取得する．
+      #===========================
+      # リクエスト
+      #===========================
+      parameters:
+        - in: path # パスにパラメータを割り当てる．
+          name: userId
+          required: true
+          description: ユーザID
+          schema:
+            type: string
+            example: # パスパラメータ例
+              userId=1
+      #===========================
+      # レスポンス
+      #===========================
+      responses:
+        '200':
+          description: OK レスポンス
+          content:
+            application/json: # MIME type
+              example: # ボディ例
+                userId: 1
+                name: Hiroki
+              schema: # スキーマ
+                $ref: "#/components/schemas/user" # Userモデルを参照する．
+        '400':
+          description: Bad Request レスポンス
+          content:
+            application/json: # MIME type
+              example: # ボディ例
+                status: 400
+                title: Bad Request
+                errors:
+                  messages: [
+                      "ユーザIDは必ず指定してください．"
+                  ]
+              schema:
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
+        '401':
+          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+        '404':
+          description: Not Found レスポンス
+          content:
+            application/json: # MIME type
+              example: # ボディ例
+                status: 404
+                title: Not Found
+                errors:
+                  messages: [
+                      "対象のユーザが見つかりませんでした．"
+                  ]
+              schema:
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
+    #===========================
+    # path itemオブジェクト
+    #===========================                
+    put:
+      tags:
+        - ユーザ情報更新エンドポイント
+      summary: 指定ユーザ更新
+      description: 指定したユーザ情報を更新する．
       #===========================
       # リクエスト
       #===========================
@@ -1013,7 +1079,7 @@ paths:
                       "対象のユーザが見つかりませんでした．"
                   ]
               schema:
-                $ref: "#/components/schemas/error" # 異常系モデルを参照する．
+                $ref: "#/components/schemas/error" # 異常系モデルを参照する．                 
 ```
 
 #### ・componentsフィールド（必須）
@@ -1037,7 +1103,7 @@ components:
     unauthorized:
       description: Unauthorized レスポンス
       content:
-        application/json: # Content-Type
+        application/json: # MIME type
           example: # ボディ例
             status: 401
             title: Unauthorized
@@ -1116,8 +1182,8 @@ security:
 
 ```yaml
 tags:
-  - name: ユーザ情報
-    description: ユーザ情報取得エンドポイント
+  - name: ユーザ情報取得エンドポイント
+    description: |
 ```
 
 #### ・externalDocsフィールド
@@ -1127,8 +1193,9 @@ APIを説明するドキュメントのリンクを定義する．
 **＊実装例＊**
 
 ```yaml
-description: Find more info here
-url: https://example.com
+externalDocs:
+  description: 補足情報はこちら
+  url: https://example.com
 ```
 
 <br>
