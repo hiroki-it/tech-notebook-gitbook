@@ -40,6 +40,7 @@
   * パッケージ／フレームワーク
     * [▶ ︎フロントエンドパッケージ](public/frontend_package.md)
     * [▶ ︎Vue.js](public/frontend_framework_vuejs.md)
+    * [▶ ︎Nuxt.js](public/frontend_framework_nuxtjs.md)    
   * デバッグ
     * [▶ ︎デバッグのコツ](public/frontend_debug.md)
 * ブラウザレンダリング
