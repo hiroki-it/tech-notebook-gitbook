@@ -372,7 +372,7 @@ type宣言を使用して，独自のデータ型の構造体を定義する．�
 
 **＊実装例＊**
 
-構造体を元に，Person型を定義する．
+パブリックなデータを持つ構造体は以下の通り．
 
 ```go
 type Person struct {
@@ -380,6 +380,8 @@ type Person struct {
 	Name string
 }
 ```
+
+プライベートなデータを持つ構造体は以下の通り．
 
 ```go
 type Person struct {
@@ -402,14 +404,16 @@ package main
 import "fmt"
 
 type Person struct {
-    Name string
+	Name string
 }
 
 func main() {
-    // タグ付きリテラル表記
-    person := &Person{Name: "Hiroki"}
-    
-    fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	person := &Person{
+		// タグ付きリテラル表記
+		Name: "Hiroki",
+	}
+
+	fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -417,17 +421,20 @@ func main() {
 
 ```go
 package main
+
 import "fmt"
 
 type Person struct {
-    Name string
+	Name string
 }
 
 func main() {
-    // タグ無しリテラル表記
-    person := &Person{"Hiroki"}
-    
-    fmt.Printf("%#v\n", person.Name) // "Hiroki"
+	person := &Person{
+		// タグ無しリテラル表記
+		"Hiroki",
+	}
+
+	fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -486,10 +493,12 @@ type Person struct {
 }
 
 func main() {
-	person := &Person{Name: "Hiroki"}
+	person := &Person{
+		Name: "Hiroki",
+	}
 
 	byteJson, err := json.Marshal(person)
-    
+
 	if err != nil {
 		log.Println("JSONエンコードに失敗しました。")
 	}
@@ -499,9 +508,11 @@ func main() {
 }
 ```
 
-#### ・埋め込み
+#### ・埋め込みによる入れ子構造体
 
-構造体のデータとして，別の構造体を埋め込む．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．
+構造体のデータとして，別の構造体を埋め込む．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．埋め込む側の構造体の初期化の記法に癖があるので注意する．
+
+**＊実装例＊**
 
 ```go
 package main
@@ -520,14 +531,49 @@ func (name Name) fullName() string {
 
 // 埋め込まれる側
 type Person struct {
-	Name
+	*Name
 }
 
 func main() {
-	person := &Person{Name{FirstName: "Hiroki", LastName: "Hasegawa"}}
+	// 埋め込まれた側の構造体の初期化
+	person := &Person{
+		// 埋め込む側の構造体の初期化
+		Name: &Name{
+			// タグ付きリテラル表記（タグ無しリテラル表記も可能）
+			FirstName: "Hiroki",
+			LastName:  "Hasegawa",
+		},
+	}
 
-    // Person構造体から，Name構造体のメソッドをコールできる．
+	// Person構造体から，Name構造体のメソッドをコールできる．
 	fmt.Printf("%#v\n", person.fullName()) // "Hiroki Hasegawa"
+}
+```
+
+#### ・無名構造体
+
+構造体の定義と初期化を同時に行う．
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+	Name string
+}
+
+func main() {
+	person := &struct {
+		Name string
+	}{
+		// タグ付きリテラル表記（タグ無しリテラル表記も可能）
+		Name: "Hiroki",
+	}
+
+	fmt.Printf("%#v\n", person.Name) // "Hiroki"
 }
 ```
 
@@ -1293,7 +1339,7 @@ func main() {
 
 ## 04. 変数
 
-### 定義
+### 定義（宣言＋代入）
 
 #### ・明示的な定義
 
@@ -1330,6 +1376,30 @@ var (
     y = 3.14
     z = "abc"
 )
+```
+
+#### ・再宣言
+
+基本的には，同じスコープ内で既存の変数を再宣言できない．ただし，複数の変数を宣言する時に，いずれかに新しい変数の宣言が含まれていれば，既存の変数を宣言したとして，代入のみが実行される．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	x := 1
+
+	// 新しい変数の宣言が含まれている
+	x, y := 2, 3
+
+	fmt.Printf("%#v\n", x) // 2
+	fmt.Printf("%#v\n", y) // 3
+}
 ```
 
 <br>
@@ -1433,6 +1503,8 @@ func main() {
 #### ・パッケージ内のみ参照可能
 
 変数名または定数名の頭文字を小文字すると，パッケージ外でこれをコールできなくなる．
+
+**＊実装例＊**
 
 ```go
 package main
@@ -1819,7 +1891,128 @@ func main() {
 
 <br>
 
-## 08. ビルトインパッケージ
+## 08. テスト
+
+### testify
+
+#### ・testifyとは
+
+モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+#### ・モック化
+
+| よく使うメソッド | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
+
+**＊実装例＊**
+
+AWSクライアントをモック化する．
+
+```go
+package amplify
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+/**
+ * AWSクライアントをモック化します．
+ */
+type MockedAwsClient struct {
+	mock.Mock
+}
+```
+
+#### ・スタブ化
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
+| よく使うメソッド              | 説明                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する．関数に値が渡されたことをモックに伝える． |
+| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
+| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．エラーを返却する処理を定義する． |
+
+**＊実装例＊**
+
+関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
+
+```go
+package amplify
+
+import (
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	mock.Mock
+}
+
+/**
+ * AmplifyのGetBranch関数の処理をスタブ化します．
+ */
+func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
+	arguments := mock.Called(ctx, params, optFns)
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+```
+
+#### ・アサーションメソッドによる検証
+
+参考：
+
+- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
+- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+
+| よく使うメソッド                      | 説明                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| ```Mock.On```メソッド                 | 関数の検証時に使用する．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
+| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する．関数内部のスタブが正しく実行されたかどうかを検証する． |
+| ```assert.Exactly```メソッド          | 関数の検証時に使用する．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
+
+**＊実装例＊**
+
+以下のファイルを参考にせよ．
+
+参考：https://github.com/hiroki-it/notify-slack-of-amplify-events/blob/develop/test/unit/amplify_test.go
+
+<br>
+
+### Tips
+
+#### ・テストデータの切り分け
+
+
+
+**＊実装例＊**
+
+```go
+package test
+
+import (
+	"io/ioutil"
+)
+
+/**
+ * mainメソッドをテストします．
+ */
+func TestMain(t *testing.T) {
+	// jsonファイルの読み出し
+	data, err := ioutil.ReadFile("../testdata/example.json")
+
+	// 以下にテストコードを実装していく
+
+}
+```
+
+<br>
+
+## 09. ビルトインパッケージ
 
 ### パッケージのソースコード
 
@@ -2274,19 +2467,22 @@ func main() {
 	request.Header.Set("Content-Type", "application/json") // Content-Type
 
 	// クライアントを作成する．
-    client := &http.Client{}
+	client := &http.Client{}
 
 	// リクエストを送信する．
 	response, err := client.Do(request)
 
 	defer response.Body.Close()
 
-	if err != nil {
+	if err != nil || response.StatusCode != 200 {
 		log.Fatal(err)
 	}
 
-    // 代わりに，httputil.DumpResponseでレスポンス全体を取得してもよい．
-	fmt.Println(response.Body)
+	// レスポンスのボディを取得する．
+	// 代わりに，httputil.DumpResponseを使用してもよい．
+	body, _ := ioutil.ReadAll(response.Body)
+
+	log.Println(string(body))
 }
 ```
 
@@ -2466,145 +2662,7 @@ func main() {
 
 <br>
 
-## 09. よく使う外部パッケージ
-
-### testify
-
-#### ・testifyとは
-
-モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
-
-#### ・モック化
-
-| よく使うメソッド | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
-
-**＊実装例＊**
-
-AWSクライアントをモック化する．
-
-```go
-package amplify
-
-import (
-	"github.com/stretchr/testify/mock"
-)
-
-/**
- * AWSクライアントをモック化します．
- */
-type MockedAwsClient struct {
-	mock.Mock
-}
-```
-
-#### ・スタブ化
-
-参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-| よく使うメソッド              | 説明                                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する．関数に値が渡されたことをモックに伝える． |
-| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
-| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．エラーを返却する処理を定義する． |
-
-**＊実装例＊**
-
-関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
-
-```go
-package amplify
-
-import (
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
-	"github.com/stretchr/testify/mock"
-)
-
-type MockedAmplifyAPI struct {
-	mock.Mock
-}
-
-/**
- * AmplifyのGetBranch関数の処理をスタブ化します．
- */
-func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
-	arguments := mock.Called(ctx, params, optFns)
-	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
-}
-```
-
-#### ・アサーションメソッドによる検証
-
-参考：
-
-- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
-
-| よく使うメソッド                      | 説明                                                         |
-| ------------------------------------- | ------------------------------------------------------------ |
-| ```Mock.On```メソッド                 | 関数の検証時に使用する．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
-| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する．関数内部のスタブが正しく実行されたかどうかを検証する． |
-| ```assert.Exactly```メソッド          | 関数の検証時に使用する．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
-
-**＊実装例＊**
-
-```go
-package amplify
-
-import (
-    "context"
-    "testing"
-    
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
-)
-
-type MockedAmplifyAPI struct {
-	MockedClient mock.Mock
-}
-
-type Branch struct {
-	DisplayName *string
-}
-
-func NewMockedAmplifyAPI() (*MockedAmplifyAPI, error) {
-	return new(MockedAmplifyAPI), nil
-}
-
-func (mockedClient *MockedClient) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
-	arguments := mockedClient.Called(ctx, params, optFns)
-	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
-}
-
-func TestGetBranchFromAmplify(t *testing.T) {
-
-	input := aws_amplify.GetBranchInput{
-		AppId:      aws.String("123456789"),
-		BranchName: aws.String("feature/test"),
-	}
-
-	api, _ := NewMockedAmplifyAPI()
-
-	// スタブに引数として渡される値と，その時の返却値を定義する．
-	api.MockedClient.On("GetBranch", context.TODO(), &input).Return(Branch{DisplayName: aws.String("feature-test")}, nil)
-
-	// 検証対象の関数を実行する．スタブを含む一連の処理が実行される．
-	response, _ := GetBranchFromAmplify(api)
-
-	//関数内部でスタブがコールされているかを検証する．
-	api.MockedClient.AssertExpectations(t)
-
-	// 最終的な返却値が正しいかを検証する．
-	assert.Exactly(t, aws.String("feature-test"), response.Branch.DisplayName)
-}
-```
-
-<br>
+## 09-02. AWSパッケージ
 
 ### aws-sdk-go-v2
 
@@ -2631,7 +2689,89 @@ func TestGetBranchFromAmplify(t *testing.T) {
 
 <br>
 
-## 09-02. 外部パッケージの管理
+### aws-lambda-go
+
+#### ・aws-lambda-goとは
+
+Lambdaで稼働するGoにおいて，Lambdaの機能を使用するためのパッケージのこと．イベント駆動であり，他のAWSリソースのイベントをパラメータとして受信できる．contextパラメータについては以下を参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
+
+#### ・SNSイベントの場合
+
+```go
+package main
+
+import (
+	"context"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/lambdacontext"
+)
+
+func main() {
+	lambda.Start(HandleRequest)
+}
+
+/**
+ * Lambdaハンドラー関数
+ */
+func HandleRequest(context context.Context, event events.SNSEvent) (string, error) {
+
+}
+```
+
+#### ・CloudWatchイベントの場合
+
+```go
+package main
+
+import (
+	"context"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/lambdacontext"
+)
+
+func main() {
+	lambda.Start(HandleRequest)
+}
+
+/**
+ * Lambdaハンドラー関数
+ */
+func HandleRequest(context context.Context, event events.CloudWatchEvent) (string, error) {
+
+}
+```
+
+#### ・APIGatewayイベントの場合
+
+```go
+package main
+
+import (
+	"context"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/lambdacontext"
+)
+
+func main() {
+	lambda.Start(HandleRequest)
+}
+
+/**
+ * Lambdaハンドラー関数
+ */
+func HandleRequest(context context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+
+}
+```
+
+<br>
+
+## 09-03. 外部パッケージの管理
 
 ### go.modファイル
 

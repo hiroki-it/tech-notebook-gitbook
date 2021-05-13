@@ -562,26 +562,6 @@ $ docker create <コンテナ名> <使用イメージ名>:<タグ>
 $ docker start -i <停止中コンテナ名>
 ```
 
-#### ・停止中のコンテナを起動し，コンテナ内でコマンドを実行
-
-**＊コマンド例＊**
-
-コンテナを起動し，そのコンテナ内でコマンドを実行する．起動時に```shell```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```shell```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．コンテナレイヤーを生成し，コンテナを構築，起動までを行う．
-
-```shell
-# アタッチモードによる起動．フォアグラウンドで起動する．
-$ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-
-# デタッチドモードによる起動．バックグラウンドで起動する．
-$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-```
-
-コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行するようにする．
-
-```shell
-docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
-```
-
 #### ・停止中のコンテナを削除
 
 **＊コマンド例＊**
@@ -608,6 +588,28 @@ $ docker rm --force $(docker ps --all --quiet)
 $ docker commit <コンテナ名> <コンテナID>
 
 $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョンタグ>
+```
+
+<br>
+
+#### ・コンテナを新しく構築し，コンテナ内でコマンドを実行
+
+**＊コマンド例＊**
+
+停止中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```shell```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```shell```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．
+
+```shell
+# アタッチモードによる起動．フォアグラウンドで起動する．
+$ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
+
+# デタッチドモードによる起動．バックグラウンドで起動する．
+$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
+```
+
+コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行するようにする．
+
+```shell
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
 ```
 
 <br>

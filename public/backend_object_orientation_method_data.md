@@ -1190,6 +1190,7 @@ $example->higherOrder($parentVar, function () use ($parentVar) {
 
 ```php
 <?php
+    
 class Example
 {
     
@@ -1231,7 +1232,41 @@ class Example
 
 ### 定数が役に立つ場面
 
-計算処理では，可読性の観点から，できるだけ数値を直書きしない．数値に意味合いを持たせ，定数として扱うと可読性が高くなる．例えば，ValueObjectにおける定数がある．
+#### ・フラグON/OFF
+
+```php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * フラグ定数クラス
+ */
+final class FlagConstant
+{
+    /**
+     * フラグが立っている状態
+     */
+    public const IS_ON = true;
+
+    /**
+     * フラグが立っていない状態
+     */
+    public const IS_OFF = false;
+}
+```
+
+#### ・区分値
+
+ドメイン駆動設計の値オブジェクトを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+
+#### ・数値計算，数値比較
+
+計算処理や数値比較処理では，可読性の観点から，できるだけ数値を直書きしない．数値に意味合いを持たせ，定数として扱うと可読性が高くなる．ドメイン駆動設計の値オブジェクトを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
 
 **＊実装例＊**
 
