@@ -68,7 +68,9 @@
       * [▶ ︎機械語と進数](public/infrastructure_software_machine_language_and_radix.md)
 * クラウドインフラストラクチャ
     * [▶ ︎クラウドコンピューティング](public/infrastructure_cloud_computing.md)
-    * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws.md)
+      * AWS
+        * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws.md)
+        * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws_api_gateway_import.md)
     * [▶ ︎Google Cloud Platform](public/infrastructure_cloud_computing_gcp.md)
 * IaC
     * [▶ ︎Infrastructure as Code](public/infrastructure_as_code.md)
