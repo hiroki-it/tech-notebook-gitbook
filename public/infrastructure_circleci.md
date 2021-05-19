@@ -718,7 +718,7 @@ jobs:
   jobB:
     steps:
       - attach_workspace:
-        at: .
+         at: .
 ```
 
 <br>
@@ -996,7 +996,7 @@ workflows:
 
 #### ・commandsにおける環境変数の出力方法
 
-環境変数を```echo```の引数に指定する．パイプラインで```base64 --decode```を実行することにより，暗号化した状態で環境変数を渡すことができる．ここで出力している環境変数は，以下のノートを参考にせよ
+環境変数を```echo```の引数に指定する．あらかじめエンコードされた環境変数を管理しておき，```base64 --decode```を実行して出力すると，安全に環境変数を管理できる．ここで出力している環境変数は，以下のノートを参考にせよ
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_framework_vuejs.html
 
@@ -1082,7 +1082,7 @@ jobs:
 
 #### ・Projectレベル
 
-Containerレベルより参照範囲が大きく，プロジェクト内，すなわちリポジトリ内のみで参照できる．Environment Variables機能を使用する．
+Containerレベルより参照範囲が大きく，プロジェクト内，すなわちリポジトリ内のみで参照できる．Environment Variables機能を使用する．環境変数の値が４文字未満，または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合，CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため，注意が必要である．
 
 
 #### ・Grobalレベル
@@ -1178,6 +1178,10 @@ jobs:
           name: Make env docker file
           command: |
             cp .env.docker.example .env.docker
+      - run:
+          name: Docker config
+          command: |
+            docker-compose config
       - run:
           name: Docker compose up
           command: |

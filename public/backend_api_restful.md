@@ -805,6 +805,12 @@ tags: # tagsフィールド
 externalDocs: # externalDocsフィールド
 ```
 
+#### ・API Gatewayによるインポート
+
+API GatewayによるOpenAPI仕様のインポートについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
+
 #### ・openapiフィールド（必須）
 
 OpenAPI仕様のバージョンを定義する．

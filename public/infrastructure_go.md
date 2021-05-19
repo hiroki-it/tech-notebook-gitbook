@@ -21,7 +21,7 @@ Goは開発者に実装方法を強制させられるため，可読性が高く
 参考：https://github.com/golang-standards/project-layout
 
 ```shell
-$GOPATH # 例えば，「$HOME/go」とする．
+$GOPATH # 例えば，『$HOME/go』とする．
 ├── bin
 ├── pkg
 └── src
@@ -139,7 +139,7 @@ $ go get <ドメインをルートとしたURL>
 
 ### build
 
-#### ・オプション無し（ビルド対象の指定）
+#### ・オプション無し
 
 指定したパスをビルド対象として，ビルドのアーティファクトを生成する．
 
@@ -249,7 +249,35 @@ $ go fmt ./...
 指定したパスのファイルに対して静的解析を行う．パスとして『```./...```』を指定して，再帰的に実行するのがおすすめ．
 
 ```shell
-go vet ./...
+$ go vet ./...
+```
+
+<br>
+
+### test
+
+#### ・オプション無し
+
+指定したパスのファイルで『```Test```』から始まるテスト関数を実行する．testディレクトリ内を再帰的に実行するのがおすすめ．
+
+```shell
+$ go test ./test/...
+```
+
+#### ・-v
+
+テスト時にテストの実行時間を出力する．
+
+```shell
+$ go test -v ./test/...
+```
+
+#### ・-cover
+
+テスト時にテストの網羅率を出力する．
+
+```shell
+$ go test -cover ./test/...
 ```
 
 <br>
@@ -296,7 +324,7 @@ go vet ./...
 **＊実装例＊**
 
 ```go
-// 定義（初期値として「0」が割り当てられる）
+// 定義（初期値として『0』が割り当てられる）
 var number int
 
 // 代入
@@ -390,6 +418,20 @@ type Person struct {
 }
 ```
 
+#### ・使用不可のデータ名
+
+小文字の```type```は予約語のため使用不可である．大文字の```Type```は可能．
+
+```go
+type Person struct {
+	// 定義不可エラー
+	type string
+
+	// 定義可能
+	Type string
+}
+```
+
 #### ・初期化
 
 すでに値が代入されている構造体を初期化する場合，いくつか記法がある．その中では，タグ付きリテラルが推奨される．初期化によって構築する構造体は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型を構築することが多い．
@@ -475,7 +517,7 @@ func main() {
 
 #### ・JSONとのマッピング
 
-構造体をJSONにパースする時，事前に構造体の各フィールドと，JSONのキー名を，マッピングしておくことができる．
+構造体とJSONの間でパースを実行する時，構造体の各フィールドと，JSONのキー名を，マッピングしておくことができる．
 
 **＊実装例＊**
 
@@ -965,7 +1007,7 @@ func main() {
 
 #### ・```main```関数とは
 
-goのエントリポイントとなる．goのプログラムが起動したときに，各パッケージの```init```関数が実行された後，```main```関数が実行される．```main```関数をビルド対象に指定すると，これを起点として読み込まれるファイルが枝分かれ状にビルドされていく．ステータス「0」でプロセスを終了する．
+goのエントリポイントとなる．goのプログラムが起動したときに，各パッケージの```init```関数が実行された後，```main```関数が実行される．```main```関数をビルド対象に指定すると，これを起点として読み込まれるファイルが枝分かれ状にビルドされていく．ステータス『0』でプロセスを終了する．
 
 **＊実装例＊**
 
@@ -1380,7 +1422,7 @@ var (
 
 #### ・再宣言
 
-基本的には，同じスコープ内で既存の変数を再宣言できない．ただし，複数の変数を宣言する時に，いずれかに新しい変数の宣言が含まれていれば，既存の変数を宣言したとして，代入のみが実行される．
+基本的には，同じスコープ内で既存の変数を再宣言できない．ただし，複数の変数を宣言する時に，いずれかに新しい変数の宣言が含まれていれば，既存の変数を宣言したとしても，代入のみが実行される．
 
 **＊実装例＊**
 
@@ -1834,7 +1876,7 @@ if err != nil {
 
 #### ・接尾辞```Fatal```メソッド
 
-引数に渡されたエラーを標準出力に出力し，```os.Exit(1)```を実行して，ステータス「1」で処理を終了する．
+引数に渡されたエラーを標準出力に出力し，```os.Exit(1)```を実行して，ステータス『1』で処理を終了する．
 
 **＊実装例＊**
 
@@ -1985,9 +2027,9 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 ### Tips
 
-#### ・テストデータの切り分け
+#### ・POSTデータの切り分け
 
-
+POSTリクエストを受信するテストを行う時に，JSONデータをファイルに切り分けておく．これを```ReadFile```関数で読み出すようにする．
 
 **＊実装例＊**
 
@@ -2009,6 +2051,12 @@ func TestMain(t *testing.T) {
 
 }
 ```
+
+#### ・回帰テスト
+
+回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
 <br>
 
@@ -2051,9 +2099,9 @@ func main() {
 
 ### encoding/json
 
-#### ・```Marshal```メソッド
+#### ・```Marshal```関数
 
-構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．```Marshal```関数に渡す構造体のデータはパブリックが必須である．
 
 参考：https://golang.org/pkg/encoding/json/#Marshal
 
@@ -2069,6 +2117,7 @@ import (
 )
 
 type Person struct {
+	// Marshalに渡す構造体のデータはパブリックが必須
 	Name string `json:"Name"`
 }
 
@@ -2087,9 +2136,9 @@ func main() {
 }
 ```
 
-#### ・```Unmarshal```メソッド
+#### ・```Unmarshal```関数
 
-JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```メソッドの第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．
+JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```関数の第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．```Unmarshal```関数に渡す構造体のデータはパブリックが必須である．
 
 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -2105,6 +2154,7 @@ import (
 )
 
 type Person struct {
+	// Unmarshalに渡す構造体のデータはパブリックが必須
 	Name string
 }
 
@@ -2124,6 +2174,54 @@ func main() {
 	}
 
 	fmt.Printf("%#v\n", person) // main.Person{Name:"Hiroki"}（変数が書き換えられた）
+}
+```
+
+#### ・```RawMessage```関数
+
+JSONから構造体にパースするために```Unmarshal```関数を実行した時に，部分的にパースせずにJSONのまま取得できる．
+
+**＊実装例＊**
+
+CloudWatchは様々なイベントを扱うため，一部のJSON構造が動的に変化する．そのため，```RawMessage```関数が使用されている．
+
+参考：https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_events.go
+
+```go
+package events
+
+import (
+	"encoding/json"
+	"time"
+)
+
+type CloudWatchEvent struct {
+	Version    string          `json:"version"`
+
+    // ～ 省略 ～
+    
+	Resources  []string        `json:"resources"`
+    
+    // 動的に変化するJSON構造
+	Detail     json.RawMessage `json:"detail"`
+}
+```
+
+イベントのJSONを文字列のまま取得できる．
+
+```go
+package handler
+
+import (
+	"fmt"
+)
+
+/**
+ * Lambdaハンドラー関数
+ */
+func HandleRequest(event events.CloudWatchEvent) (string) {
+    
+	return fmt.Printf("%#v\n", event.Detail)
 }
 ```
 
@@ -2386,16 +2484,16 @@ import (
 )
 
 type User struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
+	id   int    `json:"id"`
+	name string `json:"name"`
 }
 
 // コンストラクタ
 func NewUser(id int, name string) *User {
 
 	return &User{
-		Id:   id,
-		Name: name,
+		id:   id,
+		name: name,
 	}
 }
 
@@ -2437,16 +2535,16 @@ import (
 )
 
 type User struct {
-	Id   int    `json:"id"`
-	Name string `json:"name"`
+	id   int    `json:"id"`
+	name string `json:"name"`
 }
 
 // コンストラクタ
 func NewUser(id int, name string) *User {
 
 	return &User{
-		Id:   id,
-		Name: name,
+		id:   id,
+		name: name,
 	}
 }
 
@@ -2515,7 +2613,7 @@ func main() {
 
 #### ・```NewServeMux```メソッド
 
-サーバーを起動する```ListenAndServe```メソッドに対して，自身で定義したServeMux関数を渡す場合，```NewServeMux```メソッドを使用する必要がある．これの```HandleFunc```メソッドに対してルーティングと関数を定義する．
+サーバーを起動する```ListenAndServe```メソッドに対して，自身で定義したServeMux関数を渡す場合，```NewServeMux```メソッドを使用する必要がある．これの```HandleFunc```関数に対してルーティングと関数を定義する．
 
 **＊実装例＊**
 
@@ -2525,8 +2623,8 @@ HTMLをレスポンスとして返信するサーバ（```http://localhost:8080/
 package main
 
 import (
-	"net/http"
 	"log"
+	"net/http"
 )
 
 func myHandler(writer http.ResponseWriter, request *http.Request) {
@@ -2608,7 +2706,7 @@ func main() {
 
 ### os
 
-#### ・```Open```メソッド
+#### ・```Open```関数
 
 ファイルをReadOnly状態にする．
 
@@ -2635,7 +2733,7 @@ func main() {
 
 ### strings
 
-#### ・```Builder```メソッド
+#### ・```Builder```関数
 
 渡された文字列を結合し，標準出力に出力する．
 
@@ -2676,7 +2774,7 @@ func main() {
 
 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
-ポインタ型から文字列型に変換する```ToString```メソッドや，反対に文字列型からポインタ型に変換する```String```メソッドをよく使う．
+ポインタ型から文字列型に変換する```ToString```関数や，反対に文字列型からポインタ型に変換する```String```関数をよく使う．
 
 参考：
 
@@ -2704,6 +2802,7 @@ package main
 
 import (
 	"context"
+    
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -2728,6 +2827,7 @@ package main
 
 import (
 	"context"
+    
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -2752,6 +2852,7 @@ package main
 
 import (
 	"context"
+    
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -2813,7 +2914,7 @@ func main() {
 
 #### ・ローカルPCからインポート
 
-アプリケーションで使用する独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```メソッドを使用してインポートする必要がある．実際，```unknown revision```のエラーで，バージョンを見つけられない．
+アプリケーションで使用する独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を使用してインポートする必要がある．実際，```unknown revision```のエラーで，バージョンを見つけられない．
 
 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 

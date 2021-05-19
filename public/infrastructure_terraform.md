@@ -376,38 +376,40 @@ module.vpc_module.aws_vpc.vpc
 
 <br>
 
-##  02. ルートモジュールにおける実装
+##  01-02. ディレクトリ構成
 
-### ディレクトリ構成
+### ルートモジュールの構成
 
-#### ・実行環境＆リージョン別で区別
+#### ・稼働環境別
+
+稼働環境別に，```config.tfvars```ファイルで値を定義する．
 
 ```shell
 terraform_project/
-├── .circleci # CI/CDツールの設定ファイル
-├── ops # TerraformのCI/CDの自動化シェルスクリプト
-├── modules # リソースのモジュール
-│   ├── ec2
-│   │   ├── main.tf
-│   │   ├── output.tf
-│   │   └── variables.tf
-│   │
-│   └── acm
-│       ├── ap-northeast-1 # 東京リージョン
-│       │   ├── main.tf
-│       │   ├── output.tf
-│       │   └── variables.tf
-│       │
-│       └── us-east-1 # バージニアリージョン
-│
-├── feat # 開発環境ルートモジュール
+├── modules
+│   ├── route53 # Route53
+│   │   ├── dev # 開発
+│   |   ├── prd # 本番
+│   |   └── stg # ステージング
+│   | 
+│   ├── ssm # SSM
+|   |   ├── dev
+│   |   ├── prd
+│   |   └── stg
+│   | 
+│   └── waf # WAF
+|       ├── dev
+│       ├── prd
+│       └── stg
+|
+├── dev # 開発環境ルートモジュール
 │   ├── config.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
-├── prod # 本番環境ルートモジュール
+├── prd # 本番環境ルートモジュール
 │   ├── config.tfvars
 │   ├── main.tf
 │   ├── providers.tf
@@ -423,6 +425,118 @@ terraform_project/
 ```
 
 <br>
+
+### リソースのモジュールの構成
+
+####　・対象リソース別
+
+一つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．
+
+```shell
+terraform_project/
+└── modules
+    ├── cloudwatch # CloudWatch
+    │   ├── alb        # ALB
+    |   ├── cloudfront # CloudFront
+    |   ├── ecs        # ECS
+    |   ├── lambda     # Lambda
+    |   └── rds        # RDS    
+    |
+    └── waf # WAF
+        ├── dev
+        ├── prd
+        └── stg
+            ├── alb        # ALB
+            └── cloudfront # CloudFront
+```
+
+#### ・稼働環境別
+
+一つのリソースの設定が稼働環境ごとに異なる場合，冗長性よりも保守性を重視して，稼働環境に応じたディレクトリに分割する．
+
+```shell
+terraform_project/
+└── modules
+    ├── route53 # Route53
+    │   ├── dev # 開発
+    |   ├── prd # 本番
+    |   └── stg # ステージング
+    | 
+    ├── ssm # SSM
+    |   ├── dev
+    |   ├── prd
+    |   └── stg
+    | 
+    └── waf # WAF
+        ├── dev
+        ├── prd
+        └── stg
+```
+
+#### ・リージョン別
+
+一つのリソースの設定がリージョンごとに異なる場合，冗長性よりも保守性を重視して，リージョンに応じたディレクトリに分割する．
+
+```shell
+terraform_project/
+└── modules
+    └── acm # ACM
+        ├── ap-northeast-1 # 東京リージョン
+        └── us-east-1 # バージニアリージョン  
+```
+
+#### ・ファイルの切り分け
+
+ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，「カスタマー管理ポリシー」「インラインポリシー」「信頼ポリシー」も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```json```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
+
+``` shell
+terraform_project/
+└── modules 
+    ├── ecr #ECR
+    │   └── ecr_lifecycle_policy.tpl # ECRライフサイクル
+    │
+    ├── ecs # ECS
+    │   └── container_definitions.tpl # コンテナ定義
+    │
+    ├── iam # IAM
+    │   └── policies  
+    |       ├── customer_managed_policies # カスタム管理ポリシー
+    |       |   ├── aws_cli_executor_access_policy.tpl
+    |       |   ├── aws_cli_executor_access_address_restriction_policy.tpl
+    |       |   ├── cloudwatch_logs_access_policy.tpl
+    |       |   └── lambda_edge_execution_policy.tpl
+    |       |     
+    |       ├── inline_policies # インラインポリシー
+    |       |   └── ecs_task_policy.tpl
+    |       |     
+    |       └── trust_policies # 信頼ポリシー
+    |           ├── cloudwatch_events_policy.tpl
+    |           ├── ecs_task_policy.tpl
+    |           ├── lambda_policy.tpl
+    |           └── rds_policy.tpl
+    |
+    └── s3 # S3
+        └── policies # バケットポリシー
+            └── alb_bucket_policy.tpl
+```
+
+<br>
+
+### CI/CDディレクトリ
+
+#### ・opsディレクトリ
+
+TerraformのCI/CDで必要なシェルスクリプトは，```ops```ディレクトリで管理する．
+
+```shell
+terraform_project/
+├── .circleci # CI/CDツールの設定ファイル
+└── ops # TerraformのCI/CDの自動化シェルスクリプト
+```
+
+<br>
+
+## 02. ルートモジュールにおける実装
 
 ### tfstateファイル
 
@@ -514,7 +628,7 @@ terraform {
 
 #### ・providerとは
 
-プロバイダにおけるアカウント認証を行う．```terraform settings```で定義したプロバイダ名を指定する必要がある．
+Terraformがリクエストを送信するプロバイダ（AWS，GCP，Azure，など）を選択し，そのプロバイダにおけるアカウント認証を行う．```terraform settings```で定義したプロバイダ名を指定する必要がある．
 
 **＊実装例＊**
 
@@ -814,7 +928,7 @@ variable "credential" {
 
 <br>
 
-## 04. 子モジュールにおける実装
+## 04. リソースの実装
 
 ### resource
 
@@ -2727,7 +2841,7 @@ Terraformの管理外のリソースには，コンソール画面上から，�
 
 | workflows |                                               |
 | --------- | --------------------------------------------- |
-| feature   | featureブランチからテスト開発環境にデプロイ   |
+| feature   | featureブランチから開発環境にデプロイ         |
 | develop   | developブランチからステージング環境にデプロイ |
 | main      | mainブランチから本番環境にデプロイ            |
 
