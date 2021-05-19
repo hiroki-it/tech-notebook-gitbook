@@ -70,7 +70,7 @@
     * [▶ ︎クラウドコンピューティング](public/infrastructure_cloud_computing.md)
       * AWS
         * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws.md)
-        * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws_api_gateway_import.md)
+        * [▶ ︎API Gatewayインポート機能](public/infrastructure_cloud_computing_aws_api_gateway_import.md)
     * [▶ ︎Google Cloud Platform](public/infrastructure_cloud_computing_gcp.md)
 * IaC
     * [▶ ︎Infrastructure as Code](public/infrastructure_as_code.md)
