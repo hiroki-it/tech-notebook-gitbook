@@ -1586,7 +1586,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="api-gateway&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;"><a name="api-gateway&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#api-gateway&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>API Gateway&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;</h1>
+                                <h1 id="api-gateway&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;"><a name="api-gateway&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#api-gateway&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>API Gateway&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x6A5F;&#x80FD;</h1>
 <h2 id="01-apigateway&#x62E1;&#x5F35;&#x6A5F;&#x80FD;"><a name="01-apigateway&#x62E1;&#x5F35;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#01-apigateway&#x62E1;&#x5F35;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>01. APIGateway&#x62E1;&#x5F35;&#x6A5F;&#x80FD;</h2>
 <h4 id="&#x30FB;&#x5FC5;&#x8981;&#x306A;&#x30AD;&#x30FC;"><a name="&#x30FB;&#x5FC5;&#x8981;&#x306A;&#x30AD;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x5FC5;&#x8981;&#x306A;&#x30AD;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5FC5;&#x8981;&#x306A;&#x30AD;&#x30FC;</h4>
 <p>APIGateway&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x306B;&#x5F53;&#x305F;&#x308A;&#xFF0C;OpenAPI&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30AD;&#x30FC;&#x3092;&#x65B0;&#x305F;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
@@ -1612,7 +1612,7 @@
       <span class="token comment">#===========================</span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> <span class="token string">&quot;GET&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x3059;&#x308B;HTTP&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x306E;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;URL</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x306E;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;URL</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x3059;&#x308B;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;API&#x30AD;&#x30FC;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
@@ -1633,7 +1633,7 @@
     <span class="token key atrule">post</span><span class="token punctuation">:</span>
      <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
         <span class="token key atrule">requestTemplates</span><span class="token punctuation">:</span>
@@ -1838,7 +1838,7 @@
       <span class="token comment">#===========================          </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
@@ -1904,7 +1904,7 @@
       <span class="token comment">#===========================          </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
@@ -1987,7 +1987,7 @@
       <span class="token comment">#===========================                </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/{userId}&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
@@ -2067,7 +2067,7 @@
       <span class="token comment">#===========================               </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> PUT
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/{userId}&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
@@ -2244,7 +2244,7 @@
       <span class="token comment">#===========================          </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
@@ -2316,7 +2316,7 @@
       <span class="token comment">#===========================          </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
         <span class="token key atrule">requestTemplates</span><span class="token punctuation">:</span>
@@ -2408,7 +2408,7 @@
       <span class="token comment">#===========================                </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/{userId}&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
@@ -2496,7 +2496,7 @@
       <span class="token comment">#===========================               </span>
       <span class="token key atrule">x-amazon-apigateway-integration</span><span class="token punctuation">:</span>
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> PUT
-        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;https://stg.example.com/api/v1/users/{userId}&quot;</span>
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
           <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
@@ -3049,7 +3049,7 @@ X-API-Key&#xFF1A;XXXXX
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.2","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"path":"public/infrastructure_cloud_computing_aws.md","ref":"public/infrastructure_cloud_computing_aws.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","mtime":"2021-05-19T13:33:14.462Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-19T13:45:34.350Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"next":{"title":"▶ ︎Google Cloud Platform","level":"1.12.2","depth":2,"path":"public/infrastructure_cloud_computing_gcp.md","ref":"public/infrastructure_cloud_computing_gcp.md","articles":[]},"previous":{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"path":"public/infrastructure_cloud_computing_aws.md","ref":"public/infrastructure_cloud_computing_aws.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","mtime":"2021-05-21T04:58:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-21T13:47:44.886Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
