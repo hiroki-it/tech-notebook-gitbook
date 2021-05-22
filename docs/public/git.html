@@ -1167,12 +1167,21 @@
             
         </li>
     
-
-            </ul>
+        <li class="chapter " data-level="1.12.1.2" >
             
-        </li>
+                <span>
+            
+                    
+                    GCP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
     
-        <li class="chapter " data-level="1.12.2" data-path="infrastructure_cloud_computing_gcp.html">
+        <li class="chapter " data-level="1.12.1.2.1" data-path="infrastructure_cloud_computing_gcp.html">
             
                 <a href="infrastructure_cloud_computing_gcp.html">
             
@@ -1182,6 +1191,16 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1260,9 +1279,24 @@
             
 
             
-        </li>
+            <ul class="articles">
+                
     
-        <li class="chapter " data-level="1.14.2" data-path="infrastructure_virtualization_container.html">
+        <li class="chapter " data-level="1.14.1.1" >
+            
+                <span>
+            
+                    
+                    コンテナ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1.1" data-path="infrastructure_virtualization_container.html">
             
                 <a href="infrastructure_virtualization_container.html">
             
@@ -1275,7 +1309,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.3" data-path="infrastructure_virtualization_container_orchestration.html">
+        <li class="chapter " data-level="1.14.1.1.2" data-path="infrastructure_virtualization_container_orchestration.html">
             
                 <a href="infrastructure_virtualization_container_orchestration.html">
             
@@ -1288,7 +1322,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.4" data-path="infrastructure_virtualization_server.html">
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" >
+            
+                <span>
+            
+                    
+                    サーバ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.2.1" data-path="infrastructure_virtualization_server.html">
             
                 <a href="infrastructure_virtualization_server.html">
             
@@ -1298,6 +1351,16 @@
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -2145,6 +2208,16 @@ $ <span class="token function">git</span> pull --all
      GIT_COMMITTER_EMAIL=&quot;</span>hasegawafeedshop@gmail.com<span class="token string">&quot;;&quot;</span> <span class="token punctuation">\</span>
     HEAD
 </code></pre>
+<h4 id="&#x30FB;filter-branch--f---tree-filter"><a name="&#x30FB;filter-branch--f---tree-filter" class="plugin-anchor" href="#&#x30FB;filter-branch--f---tree-filter"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>filter-branch -f --tree-filter</code></h4>
+<p>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x52A0;&#x3048;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30AC;&#x30FC;&#x30D9;&#x30B8;&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x5B8C;&#x5168;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">git</span> filter-branch -f --tree-filter <span class="token punctuation">\</span>
+    <span class="token string">&apos;rm -f &lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&gt;&apos;</span> HEAD
+
+<span class="token comment"># &#x30AC;&#x30D9;&#x30FC;&#x30B8;&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;</span>
+$ <span class="token function">git</span> gc --aggressive --prune<span class="token operator">=</span>now
+</code></pre>
 <p><br></p>
 <h2 id="04-github&#x306B;&#x304A;&#x3051;&#x308B;issue&#x3068;pullreq&#x306E;&#x66F8;&#x304D;&#x65B9;"><a name="04-github&#x306B;&#x304A;&#x3051;&#x308B;issue&#x3068;pullreq&#x306E;&#x66F8;&#x304D;&#x65B9;" class="plugin-anchor" href="#04-github&#x306B;&#x304A;&#x3051;&#x308B;issue&#x3068;pullreq&#x306E;&#x66F8;&#x304D;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>04. GitHub&#x306B;&#x304A;&#x3051;&#x308B;Issue&#x3068;PullReq&#x306E;&#x66F8;&#x304D;&#x65B9;</h2>
 <p>GitHub&#x306E;&#x500B;&#x4EBA;&#x7684;&#x8C46;&#x77E5;&#x8B58;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x8A18;&#x3059;&#xFF0E;</p>
@@ -2223,7 +2296,7 @@ $ <span class="token function">git</span> pull --all
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Gitコマンド","level":"1.18.1","depth":2,"next":{"title":"アルゴリズム","level":"1.19","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"previous":{"title":"Git","level":"1.18","depth":1,"ref":"","articles":[{"title":"▶ ︎Gitコマンド","level":"1.18.1","depth":2,"path":"public/git.md","ref":"public/git.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/git.md","mtime":"2021-05-21T12:35:54.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-21T13:47:44.886Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Gitコマンド","level":"1.18.1","depth":2,"next":{"title":"アルゴリズム","level":"1.19","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.19.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"previous":{"title":"Git","level":"1.18","depth":1,"ref":"","articles":[{"title":"▶ ︎Gitコマンド","level":"1.18.1","depth":2,"path":"public/git.md","ref":"public/git.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/git.md","mtime":"2021-05-22T05:54:03.419Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-22T06:44:39.576Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
