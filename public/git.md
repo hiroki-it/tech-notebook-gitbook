@@ -750,6 +750,22 @@ $ git filter-branch -f --env-filter \
     HEAD
 ```
 
+#### ・```filter-branch -f --tree-filter```
+
+全てのコミットに対して，指定した処理を実行する．
+
+**＊具体例＊**
+
+全てのコミットに対して，特定のファイルを削除する処理を実行する．加えて，ローカルリポジトリに対してガーベジコレクションを実行すると，ローカルリポジトリから完全に削除できる．
+
+```shell
+$ git filter-branch -f --tree-filter \
+    'rm -f <ファイルパス>' HEAD
+
+# ガベージコレクションを実行
+$ git gc --aggressive --prune=now
+```
+
 <br>
 
 ## 04. GitHubにおけるIssueとPullReqの書き方
