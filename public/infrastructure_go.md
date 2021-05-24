@@ -1290,13 +1290,10 @@ func main() {
 	// ここで意図的に処理を停止させている．
 	panic("Runtime error")
 }
-```
 
-```shell
-# 結果
-Start
-Recover: "Runtime error"
-End
+// Start
+// Recover: "Runtime error"
+// End
 ```
 
 #### ・複数のdefer関数
@@ -1315,13 +1312,10 @@ func main() {
     defer fmt.Println("2")
     defer fmt.Println("3")
 }
-```
 
-```shell
-# 結果
-3
-2
-1
+// 3
+// 2
+// 1
 ```
 
 <br>
@@ -1360,6 +1354,8 @@ func main() {
 
 関数から複数の値が返却される時，使わない値をアンダースコアに代入することで，これを破棄できる．
 
+**＊実装例＊**
+
 ```go
 package main
 
@@ -1375,107 +1371,6 @@ func main() {
     // エラーキャッチする必要がなくなる
     fmt.Printf("%#v\n", flle)
 }
-```
-
-<br>
-
-### 処理の種類
-
-#### ・同期処理
-
-前の処理を待って，次の処理を開始する．
-
-**実装例**
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-	fmt.Println("1")
-	fmt.Println("2")
-	fmt.Println("3")
-}
-```
-
-```shell
-# 結果
-1
-2
-3
-```
-
-#### ・非同期処理（並行処理）
-
-前の処理の終了を待たずに次の処理を開始し，それぞれの処理が独立して終了する．結果，終了する順番は順不同になる．
-
-参考：https://golang.org/pkg/sync/
-
-**実装例**
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-	fmt.Println("1")
-	fmt.Println("2")
-	fmt.Println("3")
-}
-```
-
-#### ・並列処理
-
-指定した処理を同時に開始し，それぞれの処理が独立して終了する．結果，終了する順番は順不同になる．
-
-**実装例**
-
-実行完了に一秒かかる関数があるとする．反復処理でこの関数をコールする場合，毎回一秒かかるため，反復の回数だけ秒数が増える．しかし，```go```を宣言し並列化することにより，各回が全て並列に実行されるため，反復回数が何回であっても，一秒で処理が終わる．
-
-```go
-package main
-
-import (
-	"fmt"
-	"sync"
-	"time"
-)
-
-func print(key int, value string) {
-	fmt.Println(key, value)
-	time.Sleep(time.Second * 1)
-}
-
-func main() {
-
-	wg := &sync.WaitGroup{}
-
-	slice := []string{"a", "b", "c"}
-
-	start := time.Now()
-
-	for key, value := range slice {
-
-		wg.Add(1)
-
-		// 並列化する処理
-		go func(key int, value string) {
-			defer wg.Done()
-			print(key, value) // 時間のかかる関数
-		}(key, value)
-	}
-
-	wg.Wait()
-
-	fmt.Printf("経過: %vms\n", time.Since(start))
-}
-
-// 2 c
-// 0 a
-// 1 b
-// 経過: 1sms
 ```
 
 <br>
@@ -1712,7 +1607,188 @@ func main() {
 
 <br>
 
-## 06. エラーキャッチ，例外スロー
+## 06. 制御文
+
+### 配列またはスライスの走査
+
+#### ・```for ... range```
+
+配列またはスライスを走査する．PHPの```foreach```に相当する．
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	slice := []string{"a", "b", "c"}
+
+	for key, value := range slice {
+		fmt.Println(key, value)
+	}
+}
+
+// 0 a
+// 1 b
+// 2 c
+```
+
+<br>
+
+## 07. 処理の種類
+
+### 同期処理
+
+#### ・同期処理とは
+
+前の処理を待って，次の処理を開始する．
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("1")
+	fmt.Println("2")
+	fmt.Println("3")
+}
+
+// 1
+// 2
+// 3
+```
+
+<br>
+
+### 非同期処理（並行処理）
+
+#### ・非同期処理（並行処理）とは
+
+前の処理の終了を待たずに次の処理を開始し，それぞれの処理が独立して終了する．結果，終了する順番は順不同になる．
+
+参考：https://golang.org/pkg/sync/
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("1")
+	fmt.Println("2")
+	fmt.Println("3")
+}
+```
+
+<br>
+
+### 並列処理
+
+#### ・並列処理
+
+指定した処理を同時に開始し，それぞれの処理が独立して終了する．結果，終了する順番は順不同になる．関数でGoルーチンを宣言すると，その関数のコールを並列化できる．ただし，main関数はGoルーチン宣言された関数の完了を待たずに終了してしまうため，この関数の実行完了を待つようにする必要がある．方法には，以下の三つがある．
+
+#### ・channel
+
+キューとして機能する．値を格納し，また取り出せる．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// チャンネルを任意のデータ型で作成
+	channel := make(chan string)
+
+	go func() {
+		// チャンネルに値を格納
+		channel <- "ping"
+	}()
+
+	// チャンネルから値を取り出す
+	value := <-channel
+
+	fmt.Println(value)
+}
+```
+
+#### ・WaitGroup
+
+一つまたは複数の関数でGoルーチンを宣言したい時に使用する．
+
+**＊実装例＊**
+
+並列処理により，反復処理を素早く完了できる．実行完了に一秒かかる関数があると仮定する．反復処理でこの関数をコールする場合，毎回の走査に一秒かかるため，反復の回数だけ秒数が増える．しかし，Goルーチンを宣言し並列化することにより，各走査が全て並列に実行されるため，反復回数が何回であっても，一秒で処理が終わる．
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func print(key int, value string) {
+	fmt.Println(key, value)
+	time.Sleep(time.Second * 1) // 処理完了に一秒かかると仮定する．
+}
+
+func main() {
+	wg := &sync.WaitGroup{}
+
+	slice := []string{"a", "b", "c"}
+
+	// 処理の開始時刻を取得
+	start := time.Now()
+
+	for key, value := range slice {
+
+		wg.Add(1) // go routineの宣言の数
+
+		// Goルーチンを宣言して並列化
+		go func(key int, value string) {
+			defer wg.Done()
+			// 時間のかかる関数
+			print(key, value)
+		}(key, value)
+	}
+
+	// Add関数で指定した数のgo routineが実行されるまで待機
+	wg.Wait()
+
+	// 開始時刻から経過した秒数を取得
+	fmt.Printf("経過秒数: %s", time.Since(start))
+}
+
+// 2 c
+// 0 a
+// 1 b
+// 経過秒数: 1s
+```
+
+#### ・errgroup
+
+エラー処理を含む関数でGoルーチンを宣言したい時に使用する．
+
+**＊実装例＊**
+
+```go
+
+```
+
+<br>
+
+## 08. エラーキャッチ，例外スロー
 
 ### Goにおけるエラーキャッチと例外スロー
 
@@ -1950,7 +2026,7 @@ func main() {
 
 <br>
 
-## 06-02. ロギング
+## 08-02. ロギング
 
 ### logパッケージ
 
@@ -2003,38 +2079,7 @@ if err != nil {
 
 <br>
 
-## 07. 制御文
-
-### 配列またはスライスの走査
-
-#### ・for ... range
-
-配列またはスライスを走査する．PHPの```foreach```に相当する．
-
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-
-	slice := []string{"a", "b", "c"}
-
-	for key, value := range slice {
-		fmt.Println(key, value)
-	}
-}
-
-// 0 a
-// 1 b
-// 2 c
-```
-
-<br>
-
-## 08. テスト
+## 09. テスト
 
 ### testify
 
@@ -2161,7 +2206,7 @@ func TestMain(t *testing.T) {
 
 <br>
 
-## 09. ビルトインパッケージ
+## 10. ビルトインパッケージ
 
 ### パッケージのソースコード
 
@@ -2605,8 +2650,8 @@ func main() {
 	byteJson, err := json.Marshal(user)
 
 	response, err := http.Post(
-		"http://xxx/api.com",  // URL
-		"application/json",    // Content-Type
+		"http://xxx/api.com",      // URL
+		"application/json",        // Content-Type
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
 
@@ -2861,7 +2906,7 @@ func main() {
 
 <br>
 
-## 09-02. AWSパッケージ
+## 10-02. AWSパッケージ
 
 ### aws-sdk-go-v2
 
@@ -2973,7 +3018,7 @@ func HandleRequest(context context.Context, event events.APIGatewayProxyRequest)
 
 <br>
 
-## 09-03. 外部パッケージの管理
+## 10-03. 外部パッケージの管理
 
 ### go.modファイル
 
