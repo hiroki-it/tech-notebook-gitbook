@@ -66,88 +66,6 @@ $ which python3
 
 <br>
 
-### シェルスクリプト
-
-#### ・シェルスクリプトとは
-
-ユーティリティの処理を手続き的に実装したファイル．最初の「```#!```」をシェバンという．
-
-**＊実装例＊**
-
-```shell
-#!/bin/bash
-
-echo "Hello World!"
-echo "Hello Japan!"
-echo "Hello Tokyo!"
-```
-
-#### ・シェルスクリプトの実行方法
-
-いずれかの方法で実行する．
-
-```shell
-# sourceコマンド
-$ source hello.sh
-```
-
-```shell
-# bashコマンド
-$ bash hello.sh
-```
-
-```shell
-# ドット
-$ . hello.sh
-```
-
-```shell
-# 相対パスもしくは絶対パスでシェルスクリプトを指定
-# カレントディレクトリにあるhello.shを実行することはできない
-$ ./hello.sh
-```
-
-#### ・for
-
-**＊実装例＊**
-
-```shell
-#!/bin/bash
- 
-for i in 1 2 3 4 5
-do
-   echo $i
-done
-```
-
-#### ・switch-case
-
-変数に代入された値によって，処理を分ける．全ての場合以外をアスタリスクで定義する．
-
-**＊実装例＊**
-
-```shell
-#!/bin/bash
-
-case $ENV in
-    "test")
-        value="XXXXX"
-    ;;
-    "stg")
-        value="YYYYY"
-    ;;
-    "prd")
-        value="ZZZZZ"
-    ;;
-    *)
-        echo "The parameter ${ENV} is invalid."
-        exit 1
-    ;;
-esac
-```
-
-<br>
-
 ### pipeline
 
 #### ・pipelineとは
@@ -242,7 +160,122 @@ $ echo "stderr" >&2
 
 <br>
 
-## 02-02. ファイルシステム系
+## 02-02. シェルスクリプト
+
+### シェルスクリプトとは
+
+ユーティリティの処理を手続き的に実装したファイル．最初の「```#!```」をシェバンという．
+
+**＊実装例＊**
+
+```shell
+#!/bin/bash
+
+echo "Hello World!"
+echo "Hello Japan!"
+echo "Hello Tokyo!"
+```
+
+<br>
+
+### シェルスクリプトの実行方法
+
+#### ・source
+
+現在開かれているインタラクティブで処理を実行する．そのため，シェルスクリプト内で定義した変数は，シェルスクリプトの実行後も維持される．
+
+```shell
+$ source hello.sh
+```
+
+#### ・bash
+
+新しくインタラクティブを開き，処理を実行する．そのため，シェルスクリプト内で定義した変数は，シェルスクリプトの実行後に破棄される．
+
+```shell
+$ bash hello.sh
+```
+
+#### ・ドット
+
+```shell
+$ . hello.sh
+```
+
+#### ・パス指定
+
+相対パスもしくは絶対パスでシェルスクリプトを指定する．実行するファイルをカレントディレクトリに置くことはできない．
+
+```shell
+$ ./hello.sh
+```
+
+<br>
+
+### ロジック
+
+#### ・ヒアドキュメント
+
+ヒアドキュメントで作成したシェルスクリプトには，各行にechoが追加される．
+
+```shell
+#!/bin/bash
+
+cat << EOF > "echo.sh"
+#!/bin/bash
+hoge
+fuga
+EOF
+```
+
+```shell
+#!/bin/bash
+echo hoge
+echo fuga
+```
+
+#### ・for
+
+**＊実装例＊**
+
+```shell
+#!/bin/bash
+ 
+for i in 1 2 3 4 5
+do
+   echo "$i"
+done
+```
+
+#### ・switch-case
+
+変数に代入された値によって，処理を分ける．全ての場合以外をアスタリスクで定義する．
+
+**＊実装例＊**
+
+```shell
+#!/bin/bash
+
+case "$ENV" in
+    "test")
+        VAR="XXXXX"
+    ;;
+    "stg")
+        VAR="YYYYY"
+    ;;
+    "prd")
+        VAR="ZZZZZ"
+    ;;
+    *)
+        echo "The parameter ${ENV} is invalid."
+        exit 1
+    ;;
+esac
+```
+
+<br>
+
+## 02-03. ファイルシステム系
 
 ### chmod：change mode
 
@@ -321,12 +354,14 @@ $ cp -p <ファイル名> <ファイル名>.`date +"%Y%m%d"`
 
 #### ・オプション無し
 
-定義されたシェル変数を出力する．変数名には```$```マークを付ける．
+定義されたシェル変数を出力する．変数名には```$```マークを付ける．ダブルクオートはあってもなくてもよい．
 
 ```shell
 $ <変数名>=<値>
 
 $ echo $<変数名>
+
+$ echo "$<変数名>"
 ```
 
 <br>
@@ -492,7 +527,7 @@ $ unlink <シンボリックリンク名>
 
 <br>
 
-## 02-03. ネットワーク系
+## 02-04. ネットワーク系
 
 ### ssh：secure shell
 
@@ -540,7 +575,7 @@ $ ssh <接続名> -T
 
 <br>
 
-## 02-04. プロセス系
+## 02-05. プロセス系
 
 ### ps： process status
 
@@ -801,7 +836,7 @@ directory=/var/www/tech-notebook
 
 <br>
 
-## 02-05. テキスト処理系
+## 02-06. テキスト処理系
 
 ### vim：Vi Imitaion，Vi Improved  
 
@@ -837,7 +872,7 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 <br>
 
-## 02-06. 環境変数系
+## 02-07. 環境変数系
 
 
 ### export
@@ -904,6 +939,12 @@ export PATH
 $ printenv
 ```
 
+また，特定の環境変数を表示する．
+
+```shell
+$ printenv VAR
+```
+
 <br>
 
 ### timedatactl
@@ -920,7 +961,7 @@ $ date
 
 <br>
 
-## 02-07. ハードウェア系
+## 02-08. ハードウェア系
 
 
 ### top
@@ -1461,7 +1502,6 @@ public class Age
 7. **命令の実行**
 
    リンクされたオブジェクトコードを基に，命令が実行される．
-   
 
 <br>
 

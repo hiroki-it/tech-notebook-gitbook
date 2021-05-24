@@ -469,7 +469,9 @@ jobを実行する仮想環境を選択できる．
 
 #### ・dockerタイプとは
 
-Dockerコンテナを実行環境として設定する．これを選択したうえで，Dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を使用して，実行環境Dockerコンテナとは別の環境で```job```を行う必要がある．```machine```タイプを選んだ場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
+Dockerコンテナを実行環境として設定する．これを選択したうえで，Dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を使用して，実行環境Dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合に，```setup_remote_docker```を有効化すると，これを使用できるようになる．```machine```タイプを選んだ場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
+
+参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_executor.png)
 
@@ -577,6 +579,8 @@ workflows:
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
 ビルドのアーティファクトをキャッシュとして保存する．この機能を使用しない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じライブラリがインストールされる．しかし，Workflowのたびに，ライブラリをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリに配置されたアーティファクトを再利用するようにする．この機能は，複数のWorkflowの間だけでなく，一つのWorkflowの中でも利用できる．
+
+参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
@@ -1049,7 +1053,11 @@ steps:
 
 #### ・Bashレベル
 
-一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．ただし，```$BASH_ENV```に対して環境変数を出力することにより，値を保持し，異なる```command```で共有できるようになる．
+一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．```command```内で使用する環境変数を定義するためには，『```$BASH_ENV```』に```export```処理を格納する必要がある．定義したものを使用するためには，『```$BASH_ENV```』を```source```で読み込む必要があるために注意する．
+
+参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+
+**＊実装例＊**
 
 ```yaml
 version: 2.1 
@@ -1068,6 +1076,82 @@ jobs:
             echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
             echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
             source $BASH_ENV
+            echo "$PATH"
+            echo "$VERY_IMPORTANT"
+```
+
+環境変数に値を出力する処理はファイルに切り分けておくとよい．
+
+**＊実装例＊**
+
+```yaml
+version: 2.1 
+
+jobs:
+  build:
+    docker:
+      - image: smaant/lein-flyway:2.7.1-4.0.3
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - run:
+          name: Update PATH and Define Environment Variable at Runtime
+          command: |
+            source export_envs.sh
+            echo "$PATH"
+            echo "$VERY_IMPORTANT"
+```
+
+```shell
+#!/bin/bash
+
+set -xeuo pipefail
+
+echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
+echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
+
+# 環境変数を出力します．
+source $BASH_ENV
+```
+
+ちなみに，ヒアドキュメントでシェルスクリプトを作成する場合，echoが追加される．そのため，echoの実装が不要であることに中止する．
+
+```shell
+cat << EOF > "export_envs.sh"
+#!/bin/bash
+set -xeuo pipefail
+"export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
+"export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
+source $BASH_ENV
+EOF
+```
+
+また，```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるため，『```$BASH_ENV```』は複数の```run```間」で共有できる．ただし，Alpineベースのイメージでは，この共有機能を使えないため注意する．
+
+参考：https://github.com/circleci/circleci-docs/issues/1650
+
+```yaml
+version: 2.1 
+
+jobs:
+  build:
+    docker:
+      - image: smaant/lein-flyway:2.7.1-4.0.3
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - run:
+          name: Update PATH and Define Environment Variable at Runtime
+          command: |
+            echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
+            echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
+      - run:
+          name: Echo # BASH_ENVが自動的に読み込まれる．
+          command: |
+            echo "$PATH"
+            echo "$VERY_IMPORTANT"     
 ```
 
 #### ・Containerレベル
@@ -1328,9 +1412,11 @@ workflows:
 | commands  | ```job```にて，```step```として使用できる．                  |
 | executors | ```exexutor```にて，事前定義されたexecutorsとして使用できる． |
 
-#### ・オプションへの引数の渡し方
+#### ・オプションへの引数の渡し方と注意点
 
-AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．
+AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．オプションが```env_var_name```型は，基本的に全てのスコープレベルの環境変数を受け付ける．ただしAlpineベースのイメージでは，『```$BASH_ENV```』を用いて，複数の```run```間で環境変数を共有できず，orbsのステップに環境変数を渡せないため注意する．
+
+参考：https://github.com/circleci/circleci-docs/issues/1650
 
 **＊実装例＊**
 
@@ -1362,15 +1448,17 @@ jobs:
 
 ### aws-cli
 
-#### ・commands: install / setup
+#### ・commands: install
 
-aws-cliコマンドのインストールやCredentials情報の設定を行う．AWSリソースを操作するために使用する．
+aws-cliコマンドのインストールを行う．
 
-#### ・使用例：Cloudfrontのキャッシュを削除
+#### ・commands: setup
 
-CloudFrontに保存されているCacheを削除する．フロントエンドをデプロイしたとしても，CloudFrontに保存されているCacheを削除しない限り，CacheがHitしたユーザには過去のファイルがレスポンスされてしまう．そのため，S3へのデプロイ後に，Cacheを削除する必要がある．
+aws-cliコマンドのインストールと，Credentials情報の設定を行う．AWSリソースを操作するために使用する．
 
 **＊実装例＊**
+
+CloudFrontに保存されているCacheを削除する．フロントエンドをデプロイしたとしても，CloudFrontに保存されているCacheを削除しない限り，CacheがHitしたユーザには過去のファイルがレスポンスされてしまう．そのため，S3へのデプロイ後に，Cacheを削除する必要がある．
 
 ```yaml
 version: 2.1
@@ -1384,7 +1472,6 @@ jobs:
       - image: cimg/python:3.9-node
     steps:
       - checkout
-      - aws-cli/install
       - aws-cli/setup
       - run:
           name: Run create invalidation
@@ -1421,6 +1508,40 @@ workflows:
             branches:
               only:
                 - main   
+```
+
+ただし，```credentials```ファイルの作成では，orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない．
+
+```shell
+#!/bin/bash
+
+set -xeuo pipefail
+
+case "$APP_ENV" in
+    "stg")
+        AWS_ACCESS_KEY_ID=$STG_AWS_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY=$STG_AWS_SECRET_ACCESS_KEY
+    ;;
+    "prd")
+        AWS_ACCESS_KEY_ID="$PRD_AWS_ACCESS_KEY_ID"
+        AWS_SECRET_ACCESS_KEY="$PRD_AWS_SECRET_ACCESS_KEY"
+    ;;
+    *)
+        echo "The parameter ${APP_ENV} is invalid."
+        exit 1
+    ;;
+esac
+
+# defaultプロファイルにクレデンシャル情報を設定する．
+aws configure << EOF
+$(echo $AWS_ACCESS_KEY_ID)
+$(echo $AWS_SECRET_ACCESS_KEY)
+$(echo $AWS_DEFAULT_REGION)
+json
+EOF
+
+# 正しく設定されたかを確認する．
+aws configure list
 ```
 
 <br>

@@ -357,7 +357,31 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 05-04. Page fault発生時の処理
+## 05-04. メモリ，プロセス，スレッドの関係性
+
+### プロセス
+
+#### ・プロセスとは
+
+参考：https://jpazamu.com/thread_process/#index_id5
+
+<br>
+
+### スレッド
+
+#### ・スレッドとは
+
+#### ・マルチスレッド環境下での並列処理
+
+| 言語       | 方法                                                         |
+| ---------- | ------------------------------------------------------------ |
+| PHP        | parallelライブラリを使用する．<br>参考：https://github.com/krakjoe/parallel |
+| Go         | Goroutinesを使用する．<br>参考：https://golang.org/doc/effective_go#concurrency |
+| Javascript | WebWorkerを使用する．<br>参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers<br>マルチスレッド環境下の並行処理と似て非なるものとして，シングルスレッド環境下での非同期処理がある．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_architecture.html |
+
+<br>
+
+## 05-05. Page fault発生時の処理
 
 ### Page faultとは
 
@@ -385,7 +409,7 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 05-05. アドレス空間管理におけるプログラムの種類
+## 05-06. アドレス空間管理におけるプログラムの種類
 
 ### Reusable（再使用可能プログラム）
 

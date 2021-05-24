@@ -90,6 +90,18 @@ $ docker-compose run --rm -d --service-ports <サービス名>
 $ docker-compose stop <サービス名>
 ```
 
+#### ・down
+
+指定したリソースを削除する．
+
+**＊コマンド例＊**
+
+全てのリソース（イメージ，コンテナ，ボリューム，ネットワーク）を削除する．
+
+```shell
+$ docker-compose down --rmi all --volumes --remove-orphans
+```
+
 #### ・logs
 
 コンテナ内に入ることなく，起動プロセスから出力されるログを確認することできる．
