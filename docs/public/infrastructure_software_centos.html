@@ -1824,62 +1824,6 @@ $ <span class="token function">which</span> python3
 /usr/bin/python3
 </code></pre>
 <p><br></p>
-<h3 id="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><a name="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;" class="plugin-anchor" href="#&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h3>
-<h4 id="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;</h4>
-<p>&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x306E;&#x51E6;&#x7406;&#x3092;&#x624B;&#x7D9A;&#x304D;&#x7684;&#x306B;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x6700;&#x521D;&#x306E;&#x300C;<code>#!</code>&#x300D;&#x3092;&#x30B7;&#x30A7;&#x30D0;&#x30F3;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello World!&quot;</span>
-<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello Japan!&quot;</span>
-<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello Tokyo!&quot;</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;"><a name="&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;</h4>
-<p>&#x3044;&#x305A;&#x308C;&#x304B;&#x306E;&#x65B9;&#x6CD5;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># source&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
-$ <span class="token builtin class-name">source</span> hello.sh
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># bash&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
-$ <span class="token function">bash</span> hello.sh
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C9;&#x30C3;&#x30C8;</span>
-$ <span class="token builtin class-name">.</span> hello.sh
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3092;&#x6307;&#x5B9A;</span>
-<span class="token comment"># &#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x3042;&#x308B;hello.sh&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;</span>
-$ ./hello.sh
-</code></pre>
-<h4 id="&#x30FB;for"><a name="&#x30FB;for" class="plugin-anchor" href="#&#x30FB;for"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;for</h4>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span>
-<span class="token keyword">do</span>
-   <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
-<span class="token keyword">done</span>
-</code></pre>
-<h4 id="&#x30FB;switch-case"><a name="&#x30FB;switch-case" class="plugin-anchor" href="#&#x30FB;switch-case"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;switch-case</h4>
-<p>&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x305F;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x5206;&#x3051;&#x308B;&#xFF0E;&#x5168;&#x3066;&#x306E;&#x5834;&#x5408;&#x4EE5;&#x5916;&#x3092;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token keyword">case</span> <span class="token variable">$ENV</span> <span class="token keyword">in</span>
-    <span class="token string">&quot;test&quot;</span><span class="token punctuation">)</span>
-        <span class="token assign-left variable">value</span><span class="token operator">=</span><span class="token string">&quot;XXXXX&quot;</span>
-    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-    <span class="token string">&quot;stg&quot;</span><span class="token punctuation">)</span>
-        <span class="token assign-left variable">value</span><span class="token operator">=</span><span class="token string">&quot;YYYYY&quot;</span>
-    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-    <span class="token string">&quot;prd&quot;</span><span class="token punctuation">)</span>
-        <span class="token assign-left variable">value</span><span class="token operator">=</span><span class="token string">&quot;ZZZZZ&quot;</span>
-    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-    *<span class="token punctuation">)</span>
-        <span class="token builtin class-name">echo</span> <span class="token string">&quot;The parameter <span class="token variable">${ENV}</span> is invalid.&quot;</span>
-        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-    <span class="token punctuation">;</span><span class="token punctuation">;</span>
-<span class="token keyword">esac</span>
-</code></pre>
-<p><br></p>
 <h3 id="pipeline"><a name="pipeline" class="plugin-anchor" href="#pipeline"><i class="fa fa-link" aria-hidden="true"></i></a>pipeline</h3>
 <h4 id="&#x30FB;pipeline&#x3068;&#x306F;"><a name="&#x30FB;pipeline&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;pipeline&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;pipeline&#x3068;&#x306F;</h4>
 <p>&#x300C;<code>|</code>&#x300D;&#x306E;&#x7E26;&#x68D2;&#x8A18;&#x53F7;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x8907;&#x6570;&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x5165;&#x51FA;&#x529B;&#x3092;&#x7E4B;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -1947,7 +1891,81 @@ $ <span class="token function">find</span> ./* -name <span class="token string">
 <pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">echo</span> <span class="token string">&quot;stderr&quot;</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
 </code></pre>
 <p><br></p>
-<h2 id="02-02-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;"><a name="02-02-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;" class="plugin-anchor" href="#02-02-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;</h2>
+<h2 id="02-02-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><a name="02-02-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;" class="plugin-anchor" href="#02-02-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h2>
+<h3 id="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;"><a name="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3068;&#x306F;</h3>
+<p>&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x306E;&#x51E6;&#x7406;&#x3092;&#x624B;&#x7D9A;&#x304D;&#x7684;&#x306B;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0E;&#x6700;&#x521D;&#x306E;&#x300C;<code>#!</code>&#x300D;&#x3092;&#x30B7;&#x30A7;&#x30D0;&#x30F3;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello World!&quot;</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello Japan!&quot;</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello Tokyo!&quot;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;"><a name="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x65B9;&#x6CD5;</h3>
+<h4 id="&#x30FB;source"><a name="&#x30FB;source" class="plugin-anchor" href="#&#x30FB;source"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;source</h4>
+<p>&#x73FE;&#x5728;&#x958B;&#x304B;&#x308C;&#x3066;&#x3044;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5185;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x5909;&#x6570;&#x306F;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x5F8C;&#x3082;&#x7DAD;&#x6301;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">source</span> hello.sh
+</code></pre>
+<h4 id="&#x30FB;bash"><a name="&#x30FB;bash" class="plugin-anchor" href="#&#x30FB;bash"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;bash</h4>
+<p>&#x65B0;&#x3057;&#x304F;&#x30A4;&#x30F3;&#x30BF;&#x30E9;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x958B;&#x304D;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5185;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x5909;&#x6570;&#x306F;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x5F8C;&#x306B;&#x7834;&#x68C4;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">bash</span> hello.sh
+</code></pre>
+<h4 id="&#x30FB;&#x30C9;&#x30C3;&#x30C8;"><a name="&#x30FB;&#x30C9;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30C9;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C9;&#x30C3;&#x30C8;</h4>
+<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">.</span> hello.sh
+</code></pre>
+<h4 id="&#x30FB;&#x30D1;&#x30B9;&#x6307;&#x5B9A;"><a name="&#x30FB;&#x30D1;&#x30B9;&#x6307;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;&#x30D1;&#x30B9;&#x6307;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D1;&#x30B9;&#x6307;&#x5B9A;</h4>
+<p>&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30AB;&#x30EC;&#x30F3;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x7F6E;&#x304F;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ ./hello.sh
+</code></pre>
+<p><br></p>
+<h3 id="&#x30ED;&#x30B8;&#x30C3;&#x30AF;"><a name="&#x30ED;&#x30B8;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30ED;&#x30B8;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30B8;&#x30C3;&#x30AF;</h3>
+<h4 id="&#x30FB;&#x30D2;&#x30A2;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;"><a name="&#x30FB;&#x30D2;&#x30A2;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30D2;&#x30A2;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D2;&#x30A2;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;</h4>
+<p>&#x30D2;&#x30A2;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3067;&#x4F5C;&#x6210;&#x3057;&#x305F;&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x306B;&#x306F;&#xFF0C;&#x5404;&#x884C;&#x306B;echo&#x304C;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> <span class="token string">&quot;echo.sh&quot;</span></span>
+#!/bin/bash
+hoge
+fuga
+EOF</span>
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+<span class="token builtin class-name">echo</span> hoge
+<span class="token builtin class-name">echo</span> fuga
+</code></pre>
+<h4 id="&#x30FB;for"><a name="&#x30FB;for" class="plugin-anchor" href="#&#x30FB;for"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;for</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span>
+<span class="token keyword">do</span>
+   <span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token variable">$i</span>&quot;</span>
+<span class="token keyword">done</span>
+</code></pre>
+<h4 id="&#x30FB;switch-case"><a name="&#x30FB;switch-case" class="plugin-anchor" href="#&#x30FB;switch-case"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;switch-case</h4>
+<p>&#x5909;&#x6570;&#x306B;&#x4EE3;&#x5165;&#x3055;&#x308C;&#x305F;&#x5024;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x51E6;&#x7406;&#x3092;&#x5206;&#x3051;&#x308B;&#xFF0E;&#x5168;&#x3066;&#x306E;&#x5834;&#x5408;&#x4EE5;&#x5916;&#x3092;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">case</span> <span class="token string">&quot;<span class="token variable">$ENV</span>&quot;</span> <span class="token keyword">in</span>
+    <span class="token string">&quot;test&quot;</span><span class="token punctuation">)</span>
+        <span class="token assign-left variable">VAR</span><span class="token operator">=</span><span class="token string">&quot;XXXXX&quot;</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token string">&quot;stg&quot;</span><span class="token punctuation">)</span>
+        <span class="token assign-left variable">VAR</span><span class="token operator">=</span><span class="token string">&quot;YYYYY&quot;</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token string">&quot;prd&quot;</span><span class="token punctuation">)</span>
+        <span class="token assign-left variable">VAR</span><span class="token operator">=</span><span class="token string">&quot;ZZZZZ&quot;</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    *<span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">&quot;The parameter <span class="token variable">${ENV}</span> is invalid.&quot;</span>
+        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span>
+</code></pre>
+<p><br></p>
+<h2 id="02-03-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;"><a name="02-03-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;" class="plugin-anchor" href="#02-03-&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-03. &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7CFB;</h2>
 <h3 id="chmod&#xFF1A;change-mode"><a name="chmod&#xFF1A;change-mode" class="plugin-anchor" href="#chmod&#xFF1A;change-mode"><i class="fa fa-link" aria-hidden="true"></i></a>chmod&#xFF1A;change mode</h3>
 <h4 id="&#x30FB;&#x6570;&#x5B57;"><a name="&#x30FB;&#x6570;&#x5B57;" class="plugin-anchor" href="#&#x30FB;&#x6570;&#x5B57;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&lt;&#x6570;&#x5B57;&gt;</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6A29;&#x9650;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#xFF0E;&#x3088;&#x304F;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#x30D1;&#x30FC;&#x30DF;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x306F;&#x6B21;&#x306E;&#x901A;&#x308A;&#xFF0E;</p>
@@ -2074,10 +2092,12 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 <p><br></p>
 <h3 id="echo"><a name="echo" class="plugin-anchor" href="#echo"><i class="fa fa-link" aria-hidden="true"></i></a>echo</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
-<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x5909;&#x6570;&#x540D;&#x306B;&#x306F;<code>$</code>&#x30DE;&#x30FC;&#x30AF;&#x3092;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
+<p>&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x5909;&#x6570;&#x540D;&#x306B;&#x306F;<code>$</code>&#x30DE;&#x30FC;&#x30AF;&#x3092;&#x4ED8;&#x3051;&#x308B;&#xFF0E;&#x30C0;&#x30D6;&#x30EB;&#x30AF;&#x30AA;&#x30FC;&#x30C8;&#x306F;&#x3042;&#x3063;&#x3066;&#x3082;&#x306A;&#x304F;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token operator">&lt;</span>&#x5909;&#x6570;&#x540D;<span class="token operator">&gt;</span><span class="token operator">=</span><span class="token operator">&lt;</span>&#x5024;<span class="token operator">&gt;</span>
 
 $ <span class="token builtin class-name">echo</span> $<span class="token operator">&lt;</span>&#x5909;&#x6570;&#x540D;<span class="token operator">&gt;</span>
+
+$ <span class="token builtin class-name">echo</span> <span class="token string">&quot;$&lt;&#x5909;&#x6570;&#x540D;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
 <h3 id="find"><a name="find" class="plugin-anchor" href="#find"><i class="fa fa-link" aria-hidden="true"></i></a>find</h3>
@@ -2161,7 +2181,7 @@ $ <span class="token function">find</span> /* -type f <span class="token operato
 <pre class="language-"><code class="lang-shell">$ unlink <span class="token operator">&lt;</span>&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
-<h2 id="02-03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;"><a name="02-03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;" class="plugin-anchor" href="#02-03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-03. &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;</h2>
+<h2 id="02-04-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;"><a name="02-04-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;" class="plugin-anchor" href="#02-04-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-04. &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x7CFB;</h2>
 <h3 id="ssh&#xFF1A;secure-shell"><a name="ssh&#xFF1A;secure-shell" class="plugin-anchor" href="#ssh&#xFF1A;secure-shell"><i class="fa fa-link" aria-hidden="true"></i></a>ssh&#xFF1A;secure shell</h3>
 <h4 id="&#x30FB;-l&#xFF0C;-p&#xFF0C;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;-i&#xFF0C;-t"><a name="&#x30FB;-l&#xFF0C;-p&#xFF0C;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;-i&#xFF0C;-t" class="plugin-anchor" href="#&#x30FB;-l&#xFF0C;-p&#xFF0C;&#x30DD;&#x30FC;&#x30C8;&#xFF0C;-i&#xFF0C;-t"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-l&#xFF0C;-p&#xFF0C;&lt;&#x30DD;&#x30FC;&#x30C8;&gt;&#xFF0C;-i&#xFF0C;-T</h4>
 <p>&#x4E8B;&#x524D;&#x306B;&#xFF0C;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#x300C;600&#x300D;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;tty&#xFF08;&#x64EC;&#x4F3C;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#xFF09;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;<code>-T</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308B;&#xFF0E;</p>
@@ -2191,7 +2211,7 @@ Host <span class="token tag"><span class="token tag"><span class="token punctuat
 $ <span class="token function">ssh</span> <span class="token operator">&lt;</span>&#x63A5;&#x7D9A;&#x540D;<span class="token operator">&gt;</span> -T
 </code></pre>
 <p><br></p>
-<h2 id="02-04-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;"><a name="02-04-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;" class="plugin-anchor" href="#02-04-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-04. &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;</h2>
+<h2 id="02-05-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;"><a name="02-05-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;" class="plugin-anchor" href="#02-05-&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-05. &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x7CFB;</h2>
 <h3 id="ps&#xFF1A;-process-status"><a name="ps&#xFF1A;-process-status" class="plugin-anchor" href="#ps&#xFF1A;-process-status"><i class="fa fa-link" aria-hidden="true"></i></a>ps&#xFF1A; process status</h3>
 <h4 id="&#x30FB;aux"><a name="&#x30FB;aux" class="plugin-anchor" href="#&#x30FB;aux"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;aux</h4>
 <p>&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8A73;&#x7D30;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;</p>
@@ -2432,7 +2452,7 @@ $ /usr/local/bin/supervisord
 <span class="token assign-left variable">directory</span><span class="token operator">=</span>/var/www/tech-notebook
 </code></pre>
 <p><br></p>
-<h2 id="02-05-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;"><a name="02-05-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;" class="plugin-anchor" href="#02-05-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-05. &#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;</h2>
+<h2 id="02-06-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;"><a name="02-06-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;" class="plugin-anchor" href="#02-06-&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-06. &#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x51E6;&#x7406;&#x7CFB;</h2>
 <h3 id="vim&#xFF1A;vi-imitaion&#xFF0C;vi-improved"><a name="vim&#xFF1A;vi-imitaion&#xFF0C;vi-improved" class="plugin-anchor" href="#vim&#xFF1A;vi-imitaion&#xFF0C;vi-improved"><i class="fa fa-link" aria-hidden="true"></i></a>vim&#xFF1A;Vi Imitaion&#xFF0C;Vi Improved</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>vim&#x4E0A;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x958B;&#x304F;&#xFF0E;</p>
@@ -2451,7 +2471,7 @@ $ /usr/local/bin/supervisord
 <span class="token function">cat</span> ./src.txt <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">&quot;<span class="token entity" title="\n">\n</span>&quot;</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">&gt;</span> ./dst.txt
 </code></pre>
 <p><br></p>
-<h2 id="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><a name="02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;" class="plugin-anchor" href="#02-06-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-06. &#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;</h2>
+<h2 id="02-07-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><a name="02-07-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;" class="plugin-anchor" href="#02-07-&#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-07. &#x74B0;&#x5883;&#x5909;&#x6570;&#x7CFB;</h2>
 <h3 id="export"><a name="export" class="plugin-anchor" href="#export"><i class="fa fa-link" aria-hidden="true"></i></a>export</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x57FA;&#x672C;&#x7684;&#x306A;&#x624B;&#x9806;&#x3068;&#x3057;&#x3066;&#x306F;&#xFF0C;&#x30B7;&#x30A7;&#x30EB;&#x5909;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2495,6 +2515,9 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 <p>&#x5168;&#x3066;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token function">printenv</span>
 </code></pre>
+<p>&#x307E;&#x305F;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">printenv</span> VAR
+</code></pre>
 <p><br></p>
 <h3 id="timedatactl"><a name="timedatactl" class="plugin-anchor" href="#timedatactl"><i class="fa fa-link" aria-hidden="true"></i></a>timedatactl</h3>
 <h4 id="&#x30FB;set-timezone"><a name="&#x30FB;set-timezone" class="plugin-anchor" href="#&#x30FB;set-timezone"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;set-timezone</h4>
@@ -2505,7 +2528,7 @@ $ timedatectl set-timezone Asia/Tokyo
 $ <span class="token function">date</span>
 </code></pre>
 <p><br></p>
-<h2 id="02-07-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;"><a name="02-07-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;" class="plugin-anchor" href="#02-07-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-07. &#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;</h2>
+<h2 id="02-08-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;"><a name="02-08-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;" class="plugin-anchor" href="#02-08-&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-08. &#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x7CFB;</h2>
 <h3 id="top"><a name="top" class="plugin-anchor" href="#top"><i class="fa fa-link" aria-hidden="true"></i></a>top</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x5404;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7A3C;&#x50CD;&#x60C5;&#x5831;&#xFF08;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF0C;CPU&#xFF0C;&#x30E1;&#x30E2;&#x30EA;&#xFF09;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E; CPU&#x4F7F;&#x7528;&#x7387;&#x6607;&#x9806;&#x306B;&#x4E26;&#x3079;&#x308B;</p>
@@ -3166,7 +3189,7 @@ Enforcing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-04-17T07:26:12.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-22T06:44:39.576Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-05-24T05:49:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-24T14:54:08.760Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
