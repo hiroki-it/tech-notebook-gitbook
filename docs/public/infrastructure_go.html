@@ -2761,11 +2761,10 @@ runtime.main: undefined: main.main
     <span class="token comment">// &#x3053;&#x3053;&#x3067;&#x610F;&#x56F3;&#x7684;&#x306B;&#x51E6;&#x7406;&#x3092;&#x505C;&#x6B62;&#x3055;&#x305B;&#x3066;&#x3044;&#x308B;&#xFF0E;</span>
     <span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;Runtime error&quot;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x7D50;&#x679C;</span>
-Start
-Recover: <span class="token string">&quot;Runtime error&quot;</span>
-End
+
+<span class="token comment">// Start</span>
+<span class="token comment">// Recover: &quot;Runtime error&quot;</span>
+<span class="token comment">// End</span>
 </code></pre>
 <h4 id="&#x30FB;&#x8907;&#x6570;&#x306E;defer&#x95A2;&#x6570;"><a name="&#x30FB;&#x8907;&#x6570;&#x306E;defer&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;&#x8907;&#x6570;&#x306E;defer&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8907;&#x6570;&#x306E;defer&#x95A2;&#x6570;</h4>
 <p>defer&#x306F;&#x8907;&#x6570;&#x306E;&#x95A2;&#x6570;&#x3067;&#x5BA3;&#x8A00;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x8907;&#x6570;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x5F8C;&#x306B;&#x5BA3;&#x8A00;&#x3055;&#x308C;&#x305F;&#x3082;&#x306E;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
@@ -2779,11 +2778,10 @@ End
     <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span>
     <span class="token keyword">defer</span> fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;3&quot;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x7D50;&#x679C;</span>
-<span class="token number">3</span>
-<span class="token number">2</span>
-<span class="token number">1</span>
+
+<span class="token comment">// 3</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 1</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x8FD4;&#x5374;&#x5024;"><a name="&#x8FD4;&#x5374;&#x5024;" class="plugin-anchor" href="#&#x8FD4;&#x5374;&#x5024;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8FD4;&#x5374;&#x5024;</h3>
@@ -2813,6 +2811,7 @@ End
 </code></pre>
 <h4 id="&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x7834;&#x68C4;"><a name="&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x7834;&#x68C4;" class="plugin-anchor" href="#&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x7834;&#x68C4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x7834;&#x68C4;</h4>
 <p>&#x95A2;&#x6570;&#x304B;&#x3089;&#x8907;&#x6570;&#x306E;&#x5024;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x5024;&#x3092;&#x30A2;&#x30F3;&#x30C0;&#x30FC;&#x30B9;&#x30B3;&#x30A2;&#x306B;&#x4EE3;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x7834;&#x68C4;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
@@ -2827,86 +2826,6 @@ End
     <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x304F;&#x306A;&#x308B;</span>
     fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%#v\n&quot;</span><span class="token punctuation">,</span> flle<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p><br></p>
-<h3 id="&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;"><a name="&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;</h3>
-<h4 id="&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;"><a name="&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;</h4>
-<p>&#x524D;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5F85;&#x3063;&#x3066;&#xFF0C;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x3092;&#x958B;&#x59CB;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#x5B9F;&#x88C5;&#x4F8B;</strong></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;3&quot;</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x7D50;&#x679C;</span>
-<span class="token number">1</span>
-<span class="token number">2</span>
-<span class="token number">3</span>
-</code></pre>
-<h4 id="&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;"><a name="&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;" class="plugin-anchor" href="#&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;</h4>
-<p>&#x524D;&#x306E;&#x51E6;&#x7406;&#x306E;&#x7D42;&#x4E86;&#x3092;&#x5F85;&#x305F;&#x305A;&#x306B;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x3092;&#x958B;&#x59CB;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x51E6;&#x7406;&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;&#x7D50;&#x679C;&#xFF0C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#x9806;&#x756A;&#x306F;&#x9806;&#x4E0D;&#x540C;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://golang.org/pkg/sync/" target="_blank">https://golang.org/pkg/sync/</a></p>
-<p><strong>&#x5B9F;&#x88C5;&#x4F8B;</strong></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;3&quot;</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;"><a name="&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x51E6;&#x7406;&#x3092;&#x540C;&#x6642;&#x306B;&#x958B;&#x59CB;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x51E6;&#x7406;&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;&#x7D50;&#x679C;&#xFF0C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#x9806;&#x756A;&#x306F;&#x9806;&#x4E0D;&#x540C;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<p><strong>&#x5B9F;&#x88C5;&#x4F8B;</strong></p>
-<p>&#x5B9F;&#x884C;&#x5B8C;&#x4E86;&#x306B;&#x4E00;&#x79D2;&#x304B;&#x304B;&#x308B;&#x95A2;&#x6570;&#x304C;&#x3042;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x53CD;&#x5FA9;&#x51E6;&#x7406;&#x3067;&#x3053;&#x306E;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x6BCE;&#x56DE;&#x4E00;&#x79D2;&#x304B;&#x304B;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x53CD;&#x5FA9;&#x306E;&#x56DE;&#x6570;&#x3060;&#x3051;&#x79D2;&#x6570;&#x304C;&#x5897;&#x3048;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;<code>go</code>&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x4E26;&#x5217;&#x5316;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x5404;&#x56DE;&#x304C;&#x5168;&#x3066;&#x4E26;&#x5217;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x53CD;&#x5FA9;&#x56DE;&#x6570;&#x304C;&#x4F55;&#x56DE;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x4E00;&#x79D2;&#x3067;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;fmt&quot;</span>
-    <span class="token string">&quot;sync&quot;</span>
-    <span class="token string">&quot;time&quot;</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">print</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">,</span> value <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second <span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    wg <span class="token operator">:=</span> <span class="token operator">&amp;</span>sync<span class="token punctuation">.</span>WaitGroup<span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-    slice <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">}</span>
-
-    start <span class="token operator">:=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> slice <span class="token punctuation">{</span>
-
-        wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-        <span class="token comment">// &#x4E26;&#x5217;&#x5316;&#x3059;&#x308B;&#x51E6;&#x7406;</span>
-        <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">,</span> value <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">defer</span> wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token function">print</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token comment">// &#x6642;&#x9593;&#x306E;&#x304B;&#x304B;&#x308B;&#x95A2;&#x6570;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7D4C;&#x904E;: %vms\n&quot;</span><span class="token punctuation">,</span> time<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 2 c</span>
-<span class="token comment">// 0 a</span>
-<span class="token comment">// 1 b</span>
-<span class="token comment">// &#x7D4C;&#x904E;: 1sms</span>
 </code></pre>
 <p><br></p>
 <h2 id="04-&#x5909;&#x6570;"><a name="04-&#x5909;&#x6570;" class="plugin-anchor" href="#04-&#x5909;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x5909;&#x6570;</h2>
@@ -3080,7 +2999,147 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="06-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><a name="06-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;" class="plugin-anchor" href="#06-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>06. &#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h2>
+<h2 id="06-&#x5236;&#x5FA1;&#x6587;"><a name="06-&#x5236;&#x5FA1;&#x6587;" class="plugin-anchor" href="#06-&#x5236;&#x5FA1;&#x6587;"><i class="fa fa-link" aria-hidden="true"></i></a>06. &#x5236;&#x5FA1;&#x6587;</h2>
+<h3 id="&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;"><a name="&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;" class="plugin-anchor" href="#&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;</h3>
+<h4 id="&#x30FB;for--range"><a name="&#x30FB;for--range" class="plugin-anchor" href="#&#x30FB;for--range"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>for ... range</code></h4>
+<p>&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x3092;&#x8D70;&#x67FB;&#x3059;&#x308B;&#xFF0E;PHP&#x306E;<code>foreach</code>&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    slice <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> slice <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 0 a</span>
+<span class="token comment">// 1 b</span>
+<span class="token comment">// 2 c</span>
+</code></pre>
+<p><br></p>
+<h2 id="07-&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;"><a name="07-&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#07-&#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>07. &#x51E6;&#x7406;&#x306E;&#x7A2E;&#x985E;</h2>
+<h3 id="&#x540C;&#x671F;&#x51E6;&#x7406;"><a name="&#x540C;&#x671F;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x540C;&#x671F;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x540C;&#x671F;&#x51E6;&#x7406;</h3>
+<h4 id="&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;&#x3068;&#x306F;"><a name="&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540C;&#x671F;&#x51E6;&#x7406;&#x3068;&#x306F;</h4>
+<p>&#x524D;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5F85;&#x3063;&#x3066;&#xFF0C;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x3092;&#x958B;&#x59CB;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;3&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 3</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;"><a name="&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;" class="plugin-anchor" href="#&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;</h3>
+<h4 id="&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;&#x3068;&#x306F;"><a name="&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x975E;&#x540C;&#x671F;&#x51E6;&#x7406;&#xFF08;&#x4E26;&#x884C;&#x51E6;&#x7406;&#xFF09;&#x3068;&#x306F;</h4>
+<p>&#x524D;&#x306E;&#x51E6;&#x7406;&#x306E;&#x7D42;&#x4E86;&#x3092;&#x5F85;&#x305F;&#x305A;&#x306B;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x3092;&#x958B;&#x59CB;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x51E6;&#x7406;&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;&#x7D50;&#x679C;&#xFF0C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#x9806;&#x756A;&#x306F;&#x9806;&#x4E0D;&#x540C;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://golang.org/pkg/sync/" target="_blank">https://golang.org/pkg/sync/</a></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;2&quot;</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;3&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x4E26;&#x5217;&#x51E6;&#x7406;"><a name="&#x4E26;&#x5217;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x4E26;&#x5217;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E26;&#x5217;&#x51E6;&#x7406;</h3>
+<h4 id="&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;"><a name="&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4E26;&#x5217;&#x51E6;&#x7406;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x51E6;&#x7406;&#x3092;&#x540C;&#x6642;&#x306B;&#x958B;&#x59CB;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x51E6;&#x7406;&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;&#x7D50;&#x679C;&#xFF0C;&#x7D42;&#x4E86;&#x3059;&#x308B;&#x9806;&#x756A;&#x306F;&#x9806;&#x4E0D;&#x540C;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x3067;Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x305D;&#x306E;&#x95A2;&#x6570;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x3092;&#x4E26;&#x5217;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;main&#x95A2;&#x6570;&#x306F;Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x5BA3;&#x8A00;&#x3055;&#x308C;&#x305F;&#x95A2;&#x6570;&#x306E;&#x5B8C;&#x4E86;&#x3092;&#x5F85;&#x305F;&#x305A;&#x306B;&#x7D42;&#x4E86;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x306E;&#x95A2;&#x6570;&#x306E;&#x5B9F;&#x884C;&#x5B8C;&#x4E86;&#x3092;&#x5F85;&#x3064;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x65B9;&#x6CD5;&#x306B;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x4E09;&#x3064;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;channel"><a name="&#x30FB;channel" class="plugin-anchor" href="#&#x30FB;channel"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;channel</h4>
+<p>&#x30AD;&#x30E5;&#x30FC;&#x3068;&#x3057;&#x3066;&#x6A5F;&#x80FD;&#x3059;&#x308B;&#xFF0E;&#x5024;&#x3092;&#x683C;&#x7D0D;&#x3057;&#xFF0C;&#x307E;&#x305F;&#x53D6;&#x308A;&#x51FA;&#x305B;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x3092;&#x4EFB;&#x610F;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x4F5C;&#x6210;</span>
+    channel <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x306B;&#x5024;&#x3092;&#x683C;&#x7D0D;</span>
+        channel <span class="token operator">&lt;-</span> <span class="token string">&quot;ping&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x304B;&#x3089;&#x5024;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;</span>
+    value <span class="token operator">:=</span> <span class="token operator">&lt;-</span>channel
+
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;waitgroup"><a name="&#x30FB;waitgroup" class="plugin-anchor" href="#&#x30FB;waitgroup"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;WaitGroup</h4>
+<p>&#x4E00;&#x3064;&#x307E;&#x305F;&#x306F;&#x8907;&#x6570;&#x306E;&#x95A2;&#x6570;&#x3067;Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4E26;&#x5217;&#x51E6;&#x7406;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x53CD;&#x5FA9;&#x51E6;&#x7406;&#x3092;&#x7D20;&#x65E9;&#x304F;&#x5B8C;&#x4E86;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x5B9F;&#x884C;&#x5B8C;&#x4E86;&#x306B;&#x4E00;&#x79D2;&#x304B;&#x304B;&#x308B;&#x95A2;&#x6570;&#x304C;&#x3042;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x53CD;&#x5FA9;&#x51E6;&#x7406;&#x3067;&#x3053;&#x306E;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x6BCE;&#x56DE;&#x306E;&#x8D70;&#x67FB;&#x306B;&#x4E00;&#x79D2;&#x304B;&#x304B;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x53CD;&#x5FA9;&#x306E;&#x56DE;&#x6570;&#x3060;&#x3051;&#x79D2;&#x6570;&#x304C;&#x5897;&#x3048;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x4E26;&#x5217;&#x5316;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x5404;&#x8D70;&#x67FB;&#x304C;&#x5168;&#x3066;&#x4E26;&#x5217;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x53CD;&#x5FA9;&#x56DE;&#x6570;&#x304C;&#x4F55;&#x56DE;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x4E00;&#x79D2;&#x3067;&#x51E6;&#x7406;&#x304C;&#x7D42;&#x308F;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;sync&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">print</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">,</span> value <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Second <span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// &#x51E6;&#x7406;&#x5B8C;&#x4E86;&#x306B;&#x4E00;&#x79D2;&#x304B;&#x304B;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    wg <span class="token operator">:=</span> <span class="token operator">&amp;</span>sync<span class="token punctuation">.</span>WaitGroup<span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    slice <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// &#x51E6;&#x7406;&#x306E;&#x958B;&#x59CB;&#x6642;&#x523B;&#x3092;&#x53D6;&#x5F97;</span>
+    start <span class="token operator">:=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> slice <span class="token punctuation">{</span>
+
+        wg<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// go routine&#x306E;&#x5BA3;&#x8A00;&#x306E;&#x6570;</span>
+
+        <span class="token comment">// Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x3066;&#x4E26;&#x5217;&#x5316;</span>
+        <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">,</span> value <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">defer</span> wg<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment">// &#x6642;&#x9593;&#x306E;&#x304B;&#x304B;&#x308B;&#x95A2;&#x6570;</span>
+            <span class="token function">print</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Add&#x95A2;&#x6570;&#x3067;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6570;&#x306E;go routine&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x307E;&#x3067;&#x5F85;&#x6A5F;</span>
+    wg<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x958B;&#x59CB;&#x6642;&#x523B;&#x304B;&#x3089;&#x7D4C;&#x904E;&#x3057;&#x305F;&#x79D2;&#x6570;&#x3092;&#x53D6;&#x5F97;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7D4C;&#x904E;&#x79D2;&#x6570;: %s&quot;</span><span class="token punctuation">,</span> time<span class="token punctuation">.</span><span class="token function">Since</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 2 c</span>
+<span class="token comment">// 0 a</span>
+<span class="token comment">// 1 b</span>
+<span class="token comment">// &#x7D4C;&#x904E;&#x79D2;&#x6570;: 1s</span>
+</code></pre>
+<h4 id="&#x30FB;errgroup"><a name="&#x30FB;errgroup" class="plugin-anchor" href="#&#x30FB;errgroup"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;errgroup</h4>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x51E6;&#x7406;&#x3092;&#x542B;&#x3080;&#x95A2;&#x6570;&#x3067;Go&#x30EB;&#x30FC;&#x30C1;&#x30F3;&#x3092;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-go">
+
+</code></pre>
+<p><br></p>
+<h2 id="08-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><a name="08-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;" class="plugin-anchor" href="#08-&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>08. &#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h2>
 <h3 id="go&#x306B;&#x304A;&#x3051;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><a name="go&#x306B;&#x304A;&#x3051;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;" class="plugin-anchor" href="#go&#x306B;&#x304A;&#x3051;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>Go&#x306B;&#x304A;&#x3051;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h3>
 <h4 id="&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x3042;&#x308B;&#x8A00;&#x8A9E;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x3042;&#x308B;&#x8A00;&#x8A9E;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x3042;&#x308B;&#x8A00;&#x8A9E;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x3042;&#x308B;&#x8A00;&#x8A9E;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x610F;&#x7FA9;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
@@ -3266,7 +3325,7 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="06-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="06-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#06-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>06-02. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
+<h2 id="08-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="08-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#08-02-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>08-02. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
 <h3 id="log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h3>
 <h4 id="&#x30FB;log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;"><a name="&#x30FB;log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;log&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;</h4>
 <p>Go&#x306B;&#x306F;&#x6A19;&#x6E96;&#x3067;&#xFF0C;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x7528;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#x7528;&#x610F;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x6A5F;&#x80FD;&#x304C;&#x4E4F;&#x3057;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#xFF08;&#x4F8B;&#xFF1A;logrus&#xFF09;&#x3082;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
@@ -3299,31 +3358,7 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="07-&#x5236;&#x5FA1;&#x6587;"><a name="07-&#x5236;&#x5FA1;&#x6587;" class="plugin-anchor" href="#07-&#x5236;&#x5FA1;&#x6587;"><i class="fa fa-link" aria-hidden="true"></i></a>07. &#x5236;&#x5FA1;&#x6587;</h2>
-<h3 id="&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;"><a name="&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;" class="plugin-anchor" href="#&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x306E;&#x8D70;&#x67FB;</h3>
-<h4 id="&#x30FB;for--range"><a name="&#x30FB;for--range" class="plugin-anchor" href="#&#x30FB;for--range"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;for ... range</h4>
-<p>&#x914D;&#x5217;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30E9;&#x30A4;&#x30B9;&#x3092;&#x8D70;&#x67FB;&#x3059;&#x308B;&#xFF0E;PHP&#x306E;<code>foreach</code>&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;fmt&quot;</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    slice <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">}</span>
-
-    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> slice <span class="token punctuation">{</span>
-        fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 0 a</span>
-<span class="token comment">// 1 b</span>
-<span class="token comment">// 2 c</span>
-</code></pre>
-<p><br></p>
-<h2 id="08-&#x30C6;&#x30B9;&#x30C8;"><a name="08-&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#08-&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>08. &#x30C6;&#x30B9;&#x30C8;</h2>
+<h2 id="09-&#x30C6;&#x30B9;&#x30C8;"><a name="09-&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#09-&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>09. &#x30C6;&#x30B9;&#x30C8;</h2>
 <h3 id="testify"><a name="testify" class="plugin-anchor" href="#testify"><i class="fa fa-link" aria-hidden="true"></i></a>testify</h3>
 <h4 id="&#x30FB;testify&#x3068;&#x306F;"><a name="&#x30FB;testify&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;testify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;testify&#x3068;&#x306F;</h4>
 <p>&#x30E2;&#x30C3;&#x30AF;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#xFF0C;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#xFF0E;Go&#x3067;&#x306F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6982;&#x5FF5;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;&#x8A00;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30E2;&#x30C3;&#x30AF;&#x3068;&#x30B9;&#x30BF;&#x30D6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
@@ -3462,7 +3497,7 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <p>&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x904E;&#x53BB;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x5B58;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x4ECA;&#x56DE;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x304C;&#x904E;&#x53BB;&#x306E;&#x3082;&#x306E;&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;Go&#x3067;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x300E;Golden File&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;Golden&#xFF08;&#x91D1;&#xFF09;&#x306F;&#x5316;&#x5B66;&#x7684;&#x306B;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x7269;&#x8CEA;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x7531;&#x6765;&#x3057;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x300E;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x30D7;&#x30ED;&#x30C0;&#x30AF;&#x30C8;&#x300F;&#x3068;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
 <p><br></p>
-<h2 id="09-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="09-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#09-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>09. &#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
+<h2 id="10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>10. &#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;"><a name="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;</h3>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://golang.org/pkg/" target="_blank">https://golang.org/pkg/</a></p>
 <p><br></p>
@@ -3840,8 +3875,8 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
     byteJson<span class="token punctuation">,</span> err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span>
 
     response<span class="token punctuation">,</span> err <span class="token operator">:=</span> http<span class="token punctuation">.</span><span class="token function">Post</span><span class="token punctuation">(</span>
-        <span class="token string">&quot;http://xxx/api.com&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// URL</span>
-        <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// Content-Type</span>
+        <span class="token string">&quot;http://xxx/api.com&quot;</span><span class="token punctuation">,</span>      <span class="token comment">// URL</span>
+        <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">,</span>        <span class="token comment">// Content-Type</span>
         bytes<span class="token punctuation">.</span><span class="token function">NewBuffer</span><span class="token punctuation">(</span>byteJson<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;</span>
     <span class="token punctuation">)</span>
 
@@ -4063,7 +4098,7 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="09-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="09-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#09-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>09-02. AWS&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
+<h2 id="10-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="10-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#10-02-aws&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>10-02. AWS&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="aws-sdk-go-v2"><a name="aws-sdk-go-v2" class="plugin-anchor" href="#aws-sdk-go-v2"><i class="fa fa-link" aria-hidden="true"></i></a>aws-sdk-go-v2</h3>
 <h4 id="&#x30FB;aws-sdk-go-v2&#x3068;&#x306F;"><a name="&#x30FB;aws-sdk-go-v2&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;aws-sdk-go-v2&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;aws-sdk-go-v2&#x3068;&#x306F;</h4>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions" target="_blank">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions</a></p>
@@ -4150,7 +4185,7 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="09-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><a name="09-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#09-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>09-03. &#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
+<h2 id="10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><a name="10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>10-03. &#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>go.mod&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
 <h4 id="&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;"><a name="&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>go.mod</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;</h4>
 <p>PHP&#x306B;&#x304A;&#x3051;&#x308B;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x4E0A;&#x306B;&#x304A;&#x3051;&#x308B;&#x81EA;&#x8EAB;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3068;Go&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x5168;&#x3066;&#x306E;Go&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x5FC5;&#x305A;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x3044;&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3082;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -4245,7 +4280,7 @@ go 1.16
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-05-24T14:52:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-24T14:54:08.760Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.9.1","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"Go","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.9.1","depth":2,"path":"public/infrastructure_go.md","ref":"public/infrastructure_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_go.md","mtime":"2021-05-24T17:02:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-24T17:03:48.496Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
