@@ -2,13 +2,27 @@
 
 ## 01. Goとは
 
-### 特徴
+### 特長
 
-手続き型言語であり，静的型付け言語．構造体と関数を組み合わせて処理を実装する．言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現することもできる．また，同期処理や非同期処理とは異なり，並列処理で実行される．
+#### ・並列処理が実装可能
 
-### メリット
+個人的にGoで最大の特長．並列処理を簡単に実装できる．並行処理しても結果に影響しなければ，処理を高速化できる．後述の説明を参考にせよ．
 
-Goは開発者に実装方法を強制させられるため，可読性が高く，後続者が開発しやすい．また，静的解析のルールが厳しいため，バグを事前に見つけることができる．そのため，実装がスケーリングしやすく，特にバグが許されないような基盤部分に適している．
+#### ・ほどよくシンプル
+
+黒魔術的な関数やライブラリがない一方で，基本的な機能は揃っているため，処理の可読性が高い．そのため，後続者が開発しやすく，実装がスケーリングしやすい．
+
+#### ・型付けの厳格さと型推論
+
+型付けルールが厳しく，定義に必ず型付けが必要である一方で，型推論で型付けの実装を省略できる．そのため，型付けの実装なしに静的型付けのメリットを享受できる．特にバグが許されないような基盤部分に適している．
+
+#### ・高速なコンパイル
+
+他の静的型付け言語のJavaのコンパイルでは，ソースコードを一度中間言語に変換し，その後機械語に翻訳する．しかしGoのコンパイルでは，プログラムを直接機械語に翻訳するため，より高速である．
+
+#### ・メモリの安全性が高い
+
+メモリアドレスに割り当てられている数値同士を演算する『ポインタ演算』の機能を意図して廃止している．ポインタ演算の具体例として，10番アドレスと20番アドレスの数値を足して，30番アドレスに新しく割り当てる，といった処理を行う．この時，何らかの原因で片方のアドレスが文字列だった場合，30番アドレスに予期しない値（数値＋文字列）が割り当てられることになる．これは，不具合や悪意ある操作に繋がるため，Goではポインタ演算子の機能がない．
 
 <br>
 
@@ -515,41 +529,6 @@ func main() {
 }
 ```
 
-#### ・JSONとのマッピング
-
-構造体とJSONの間でパースを実行する時，構造体の各フィールドと，JSONのキー名を，マッピングしておくことができる．
-
-**＊実装例＊**
-
-```go
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"log"
-)
-
-type Person struct {
-	Name string `json:"Name"`
-}
-
-func main() {
-	person := &Person{
-		Name: "Hiroki",
-	}
-
-	byteJson, err := json.Marshal(person)
-
-	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
-	}
-
-	// エンコード結果を出力
-	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
-}
-```
-
 #### ・埋め込みによる入れ子構造体
 
 構造体のデータとして，別の構造体を埋め込む．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．埋め込む側の構造体の初期化の記法に癖があるので注意する．
@@ -616,6 +595,90 @@ func main() {
 	}
 
 	fmt.Printf("%#v\n", person.Name) // "Hiroki"
+}
+```
+
+<br>
+
+### JSON
+
+#### ・JSONと構造体のマッピング
+
+構造体とJSONの間でパースを実行する時，構造体の各フィールドと，JSONのキー名を，マッピングしておくことができる．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Person struct {
+	Name string `json:"name"`
+}
+
+func main() {
+	person := &Person{
+		Name: "Hiroki",
+	}
+
+	byteJson, err := json.Marshal(person)
+
+	if err != nil {
+		log.Println("JSONエンコードに失敗しました。")
+	}
+
+	// エンコード結果を出力
+	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+}
+```
+
+#### ・omitempty
+
+値が『```false```，```0```，```nil```，空配列，空slice，空map，空文字』の時に，JSONエンコードでこれを除外できる．構造体を除外したい場合は，nilになりうるポインタ型としておく．
+
+**＊実装例＊**
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Person struct {
+
+	// false，0，nil，空配列，空slice，空map，空文字を除外できる．
+	Id int `json:"id"`
+	
+	// 構造体はポインタ型としておく
+	Name *Name `json:"name,omitempty"`
+}
+
+type Name struct {
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+}
+
+func main() {
+	person := &Person{
+		Id: 1, // Name構造体はnilにしておく
+	}
+
+	byteJson, err := json.Marshal(person)
+
+	if err != nil {
+		log.Println("JSONエンコードに失敗しました。")
+	}
+
+	// エンコード結果を出力
+	fmt.Printf("%#v\n", string(byteJson)) // "{\"id\":1}"
 }
 ```
 
@@ -1116,7 +1179,7 @@ func main() {
 
 #### ・メソッドとは
 
-データ型や型リテラルに関連付けられている関数のこと．
+データ型や型リテラルに関連付けられている関数のこと．Goは，言語としてオブジェクトという機能を持っていないが，構造体に関数を関連付けることで，擬似的にオブジェクトを表現できる．
 
 #### ・レシーバによる関連付け
 
@@ -1677,15 +1740,7 @@ func main() {
 **＊実装例＊**
 
 ```go
-package main
 
-import "fmt"
-
-func main() {
-	fmt.Println("1")
-	fmt.Println("2")
-	fmt.Println("3")
-}
 ```
 
 <br>
@@ -1698,7 +1753,7 @@ func main() {
 
 #### ・channel
 
-キューとして機能する．値を格納し，また取り出せる．
+キューとして機能する．キューに値を格納し，またキューから値を取り出せる．
 
 ```go
 package main
@@ -2264,7 +2319,7 @@ import (
 
 type Person struct {
 	// Marshalに渡す構造体のデータはパブリックが必須
-	Name string `json:"Name"`
+	Name string `json:"name"`
 }
 
 func main() {

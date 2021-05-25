@@ -2774,6 +2774,10 @@ https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457
 
 S3アタッチされる，自身へのアクセスを制御するためにインラインポリシーのこと．詳しくは，AWSのノートを参照せよ．定義したバケットポリシーは，```aws_s3_bucket_policy```でロールにアタッチできる．
 
+#### ・ALBアクセスログ
+
+ALBがバケットにログを書き込めるように，『ELBのサービスアカウントID』を許可する必要がある．
+
 **＊実装例＊**
 
 ```hcl
@@ -2791,6 +2795,12 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
+ALBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい．
+
+東京リージョンのELBサービスアカウントIDは，『582318560864』である．
+
+参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+
 ```json
 {
   "Version": "2012-10-17",
@@ -2802,6 +2812,60 @@ resource "aws_s3_bucket_policy" "alb" {
       },
       "Action": "s3:PutObject",
       "Resource": "arn:aws:s3:::<バケット名>/*"
+    }
+  ]
+}
+```
+
+#### ・NLBアクセスログ
+
+ALBがバケットにログを書き込めるように，『```delivery.logs.amazonaws.com```』からのアクセスを許可する必要がある．
+
+**＊実装例＊**
+
+```hcl
+###############################################
+# S3 bucket policy
+###############################################
+
+# S3にバケットポリシーをアタッチします．
+resource "aws_s3_bucket_policy" "nlb" {
+  bucket = aws_s3_bucket.nlb_logs.id
+  policy = templatefile(
+    "${path.module}/policies/nlb_bucket_policy.tpl",
+    {}
+  )
+}
+```
+
+NLBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい．
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AWSLogDeliveryWrite",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "delivery.logs.amazonaws.com"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+      }
+    },
+    {
+      "Sid": "AWSLogDeliveryAclCheck",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "delivery.logs.amazonaws.com"
+      },
+      "Action": "s3:GetBucketAcl",
+      "Resource": "arn:aws:s3:::<バケット名>"
     }
   ]
 }
@@ -2862,7 +2926,7 @@ Terraformを用いてVPCを構築した時，メインルートテーブルが�
 
 #### ・IPセットの依存関係
 
-WAFのIPセットは他設定の依存関係に癖がある．そのため，IPセットを新しく設定し直す場合は，二つの段階に分けてデプロイするようにする．
+WAFのIPセットと他設定の依存関係に癖がある．新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする．もし同時に行った場合，Terraformは削除処理を先に実行するが，WAFは古いIPセットに紐づいているため，ここで異常が起こってしまう．そのため，IPセットを新しく設定し直す場合は，以下の通り二つの段階に分けてデプロイするようにする．
 
 1. 新しいIPセットのresourceを実装し，ACLに関連付け，デプロイする．
 2. 古いIPセットのresourceを削除し，デプロイする．
@@ -2877,7 +2941,7 @@ Terraformの管理外のリソースには，コンソール画面上から，�
 
 #### ・削除保護機能のあるAWSリソース
 
-既存のインフラを```destroy```で削除する時，削除保護機能は無効に変更されないため，削除処理が終わらなくなる．そのため，二つの段階に分けてデプロイするようにする．
+削除保護設定のあるAWSリソースに癖がある．削除保護の無効化とリソースを削除を同時にデプロイしないようにする．もし同時に行った場合，削除処理を先に実行するため，エラーになる．そのため，このAWSリソースを削除する時は，以下の通り二つの段階に分けてデプロイするようにする．
 
 1. 削除保護を無効化（`false`）に変更し，デプロイする．
 2. ソースコードを削除し，デプロイする．
