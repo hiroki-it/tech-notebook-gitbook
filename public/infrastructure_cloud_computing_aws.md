@@ -2,15 +2,17 @@
 
 ## 01. コンピューティング｜EC2：Elastic Computer Cloud
 
-### 設定項目
+### EC2とは
 
-#### ・EC2とは
-
-クラウドサーバとして働く．注意点があるものだけまとめる．ベストプラクティスについては，以下を参考にせよ．
+クラウドサーバとして働く．注意点があるものだけまとめる．ベストプラクティスについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-best-practices.html
 
-#### ・項目
+<br>
+
+### 設定項目
+
+#### ・一覧
 
 | 設定項目                  | 説明                                              | 補足                                                         |
 | ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -34,6 +36,31 @@
 
 <br>
 
+### スペック
+
+#### ・インスタンスタイプ
+
+『世代』と『大きさ』からなる名前で構成される．世代の数字が上がるにつれて，より小さな世代と同じ大きさであっても，パフォーマンスと低コストになる．コストについては，以下のリンクを参考にせよ．
+
+参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/
+
+|        | 種類                                                         |
+| ------ | ------------------------------------------------------------ |
+| 世代   | ```t2```，```t3```，```t3a```，```t4g```，```a1```           |
+| 大きさ | ```nano```，```small```，```medium```，```large```，```xlarge```，```2xlarge``` |
+
+#### ・ストレージ
+
+後述のEBSの説明を参考にせよ．
+
+#### ・CPUバーストモード
+
+バーストモードのインスタンスタイプの場合，一定水準のベースラインCPU使用率を提供しつつ，これを超過できる．CPU使用率がベースラインを超えたとき，超過した分だけEC2はCPUクレジットを消費する．CPUクレジットは一定の割合で回復する．蓄積できる最大CPUクレジット，クレジットの回復率，ベースラインCPU使用率は，インスタンスタイプによって異なる．詳しくは以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+
+<br>
+
 ### キーペア
 
 #### ・キーペアのフィンガープリント値
@@ -54,15 +81,17 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 ## 01-02. コンピューティング｜Lambda
 
-### 設定項目
-
-![サーバレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバレスアーキテクチャとは.png)
-
-#### ・Lambdaとは
+### Lambdaとは
 
 他のAWSリソースのイベントによって駆動する関数を管理できる．
 
-#### ・項目
+![サーバレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバレスアーキテクチャとは.png)
+
+<br>
+
+### 設定項目
+
+#### ・一覧
 
 | 設定項目                           | 説明                                                         | 補足                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -853,13 +882,15 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 01-04. コンピューティング｜Security Group
 
-### 設定項目
-
-#### ・Security Groupとは
+### Security Groupとは
 
 アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く．インバウンド通信（Privateネットワーク向き通信）では，プロトコルや受信元IPアドレスを設定でき，アウトバウンド通信（グローバルネットワーク向き通信）では，プロトコルや送信先プロトコルを設定できる．
 
-#### ・設定項目
+<br>
+
+### 設定項目
+
+#### ・一覧
 
 インバウンドルールとアウトバウンドルールを設定できる．
 
@@ -1355,11 +1386,13 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 ## 03. ストレージ｜S3：Simple Storage Service
 
-### 設定項目
-
-#### ・S3とは
+### S3とは
 
 クラウド外付けストレージとして働く．S3に保存するCSSファイルや画像ファイルを管理できる．
+
+<br>
+
+### 設定項目
 
 #### ・主要項目
 
@@ -1420,7 +1453,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 #### ・ALBのアクセスログの保存を許可
 
-パブリックアクセスが無効化されたS3に対して，ALBへのアクセスログを保存したい場合，バケットポリシーを設定する必要がある．バケットポリシーには，ALBからS3へのログ書き込み権限を実装する．『```"AWS": "arn:aws:iam::582318560864:root"```』において，```582318560864```は，ALBアカウントIDと呼ばれ，リージョンごとに値が決まっている．これは，東京リージョンのアカウントIDである．その他のリージョンのアカウントIDについては，以下を参考にせよ．
+パブリックアクセスが無効化されたS3に対して，ALBへのアクセスログを保存したい場合，バケットポリシーを設定する必要がある．バケットポリシーには，ALBからS3へのログ書き込み権限を実装する．『```"AWS": "arn:aws:iam::582318560864:root"```』において，```582318560864```は，ALBアカウントIDと呼ばれ，リージョンごとに値が決まっている．これは，東京リージョンのアカウントIDである．その他のリージョンのアカウントIDについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
@@ -1574,7 +1607,85 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 <br>
 
-## 03-02. ストレージ｜その他
+## 03-02. EFS：Elastic File System
+
+![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
+
+### EFSとは
+
+マウントターゲットと接続された片方のEC2インスタンスから，ファイルを読み込み，これをもう一方に出力する．ファイルの実体はいずれかのEC2に存在しているため，接続を切断している間，片方のEC2インスタンス内のファイルは無くなる．再接続すると，切断直前のファイルが再び表示されようになる．
+
+<br>
+
+### 設定項目
+
+#### ・一覧
+
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| パフォーマンスモード     |                                                              |                                                              |
+| スループットモード       | EFSのスループット性能を設定する．                            |                                                              |
+| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス（IA：Infrequent Access）ストレージクラスに移動保存するまでの期限を設定する． | ・ライフサイクルポリシーを有効にしない場合，スタンダードストレージクラスのみが使用される．<br>・画面から両ストレージの使用量を確認できる．<br>参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
+| ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する．       |                                                              |
+| 自動バックアップ         | AWS Backupに定期的に保存するかどうかを設定する．             |                                                              |
+| ネットワーク             | マウントターゲットを設置するサブネット，セキュリティグループを設定する． | ・サブネットは，ファイル供給の速度の観点から，マウントターゲットにアクセスするAWSリソースと同じにする．<br>・セキュリティグループは，EC2からのNFSプロトコルアクセスを許可したものを設定する．EC2のセキュリティグループを通過したアクセスだけを許可するために，IPアドレスでは，EC2のセキュリティグループを設定する． |
+
+<br>
+
+### スペック
+
+#### ・バーストモードの仕組み
+
+スループット性能の自動スケーリングに残高があり，ベースラインを超過した分だけ自動スケーリング残高が減っていく．また，ベースライン未満の分は残高として蓄積されていく．
+
+![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
+
+元々の残高は，ファイルシステムのスタンダードストレージクラスの容量に応じて大きくなる．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits
+
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
+
+残高は，```BurstCreditBalance```メトリクスから確認できる．このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode
+
+#### ・プロビジョニングモードの仕組み
+
+スループット性能の自動スケーリング機能は無いが，一定の性能は保証されている．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#provisioned-throughput
+
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
+
+<br>
+
+### コマンド
+
+#### ・マウント
+
+DNS経由で，EFSマウントヘルパーを使用した場合を示す．
+
+```shell
+$ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムID>:/ <マウントポイント>
+```
+
+```shell
+# EFSで，マウントポイントを登録
+$ mount -t efs -o tls fs-xxxxx:/ /var/www/app
+
+# マウントポイントを解除
+$ umount /var/www/app
+
+# dfコマンドでマウントしているディレクトリを確認できる
+$ df
+Filesystem                                1K-blocks Used Available Use% Mounted on
+fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
+```
+
+<br>
+
+## 03-03. ストレージ｜その他
 
 ### EBS：Elastic Block Storage
 
@@ -1603,70 +1714,6 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 | ------------ | ---------- | ---------------- |
 | Amazon Linux | t2.micro   | 8                |
 | CentOS       | t2.micro   | 10               |
-
-<br>
-
-### EFS：Elastic File System
-
-![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
-
-#### ・設定項目
-
-マウントターゲットと接続された片方のEC2インスタンスから，ファイルを読み込み，これをもう一方に出力する．ファイルの実体はいずれかのEC2に存在しているため，接続を切断している間，片方のEC2インスタンス内のファイルは無くなる．再接続すると，切断直前のファイルが再び表示されようになる．
-
-| 設定項目                 | 説明                                                         | 補足                                                         |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| パフォーマンスモード     |                                                              |                                                              |
-| スループットモード       | EFSのスループット性能を設定する．                            |                                                              |
-| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス（IA：Infrequent Access）ストレージクラスに移動保存するまでの期限を設定する． | ・ライフサイクルポリシーを有効にしない場合，スタンダードストレージクラスのみが使用される．<br>・画面から両ストレージの使用量を確認できる．<br>参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
-| ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する．       |                                                              |
-| 自動バックアップ         | AWS Backupに定期的に保存するかどうかを設定する．             |                                                              |
-| ネットワーク             | マウントターゲットを設置するサブネット，セキュリティグループを設定する． | ・サブネットは，ファイル供給の速度の観点から，マウントターゲットにアクセスするAWSリソースと同じにする．<br>・セキュリティグループは，EC2からのNFSプロトコルアクセスを許可したものを設定する．EC2のセキュリティグループを通過したアクセスだけを許可するために，IPアドレスでは，EC2のセキュリティグループを設定する． |
-
-#### ・バーストモードの仕組み
-
-スループット性能の自動スケーリングに残高があり，ベースラインを超過した分だけ自動スケーリング残高が減っていく．また，ベースライン未満の分は残高として蓄積されていく．
-
-![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
-
-元々の残高は，ファイルシステムのスタンダードストレージクラスの容量に応じて大きくなる．
-
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits
-
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
-
-残高は，```BurstCreditBalance```メトリクスから確認できる．このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である．
-
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode
-
-#### ・プロビジョニングモードの仕組み
-
-スループット性能の自動スケーリング機能は無いが，一定の性能は保証されている．
-
-参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#provisioned-throughput
-
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
-
-#### ・マウントコマンド
-
-DNS経由で，EFSマウントヘルパーを使用した場合を示す．
-
-```shell
-$ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムID>:/ <マウントポイント>
-```
-
-```shell
-# EFSで，マウントポイントを登録
-$ mount -t efs -o tls fs-xxxxx:/ /var/www/app
-
-# マウントポイントを解除
-$ umount /var/www/app
-
-# dfコマンドでマウントしているディレクトリを確認できる
-$ df
-Filesystem                                1K-blocks Used Available Use% Mounted on
-fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
-```
 
 <br>
 
@@ -1723,7 +1770,7 @@ RDSでは，DBMS，RDBを選べる．
 
 #### ・ダウンタイムの発生条件
 
-その他の全ての項目は，以下を参考にせよ．
+その他の全ての項目は，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
@@ -1863,7 +1910,7 @@ MySQLやRedisのクエリキャッシュ機能を利用する．ただし，MySQ
 
 #### ・ユニークキーまたはインデックスの利用
 
-スロークエリを検出し，そのSQLで対象としているカラムにユニークキーやインデックスを設定する．スロークエリを検出する方法として，RDSの```long_query_time```パラメータに基づいた検出や，```EXPLAIN```句による予想実行時間の比較などがある．ユニークキー，インデックス，```EXPLAIN```句，については以下を参考にせよ．
+スロークエリを検出し，そのSQLで対象としているカラムにユニークキーやインデックスを設定する．スロークエリを検出する方法として，RDSの```long_query_time```パラメータに基づいた検出や，```EXPLAIN```句による予想実行時間の比較などがある．ユニークキー，インデックス，```EXPLAIN```句，については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_mysql.html
 
@@ -2104,15 +2151,17 @@ redis xxxxx:6379> monitor
 
 ## 05. ネットワーキング，コンテンツ配信｜API Gateway
 
-### 設定項目
-
-![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/APIGatewayの仕組み.png)
-
-#### ・API Gatewayとは
+### API Gatewayとは
 
 異なるクライアントからのリクエストを受信して差分を吸収し，適切なAPIに振り分けられる．
 
-#### ・設定項目
+![API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/APIGatewayの仕組み.png)
+
+<br>
+
+### 設定項目
+
+#### ・一覧
 
 API Gatewayは，メソッドリクエスト，統合リクエスト，統合レスポンス，メソッドレスポンス，から構成される．
 
@@ -2122,13 +2171,13 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ステージ                 | API Gatewayをデプロイする環境を定義する．                    |                                                              |
 | オーソライザー           |                                                              |                                                              |
 | ゲートウェイのレスポンス |                                                              |                                                              |
-| モデル                   | リクエストまたはレスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
+| モデル                   | リクエストまたはレスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
 | リソースポリシー         |                                                              |                                                              |
 | ドキュメント             |                                                              |                                                              |
 | ダッシュボード           |                                                              |                                                              |
 | その他の設定             |                                                              |                                                              |
 | 使用量プラン             |                                                              |                                                              |
-| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 | クライアント証明書       | SSLサーバ証明書をAPI Gatewayに割り当てる．                   | APIが，API Gatewayから転送されたリクエストであること識別できるようになる． |
 | CloudWatch Logsの設定    | API GatewayがCloudWatch Logsにアクセスできるよう，ロールを設定する． | 一つのAWS環境につき，一つのロールを設定すればよい．          |
 
@@ -2280,7 +2329,7 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 #### ・ステージ変数
 
-デプロイされるステージ固有の環境変数を設定できる．Lambda関数名，エンドポイントURL，パラメータマッピング，マッピングテンプレートで値を出力できる．
+デプロイされるステージ固有の環境変数を設定できる．Lambda関数名，エンドポイントURL，パラメータマッピング，マッピングテンプレートで値を出力できる．以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
 
@@ -2299,7 +2348,7 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 ### OpenAPI仕様のインポート
 
-以下を参考にせよ．
+以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
 
@@ -2307,13 +2356,15 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 ## 05-02. ネットワーキング，コンテンツ配信｜Route53
 
-### 設定項目
-
-#### ・Route53とは
+### Route53とは
 
 クラウドDNSサーバーとして働く．リクエストされた完全修飾ドメイン名とEC2のグローバルIPアドレスをマッピングしている．
 
-#### ・項目
+<br>
+
+### 設定項目
+
+#### ・一覧
 
 | 設定項目       | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -2412,15 +2463,15 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 ## 05-03. ネットワーキング，コンテンツ配信｜Cloud Front
 
-### 設定項目
-
-![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
-
-#### ・CloudFrontとは
+### CloudFrontとは
 
 クラウドリバースプロキシサーバとして働く．VPCの外側（パブリックネットワーク）に設置されている．オリジンサーバ（コンテンツ提供元）をS3とした場合，動的コンテンツへのリクエストをEC2に振り分ける．また，静的コンテンツへのリクエストをCacheし，その上でS3へ振り分ける．次回以降の静的コンテンツのリンクエストは，Cloud Frontがレンスポンスを行う．
 
-#### ・項目
+![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
+
+### 設定項目
+
+#### ・一覧
 
 | 設定項目            | 説明 |
 | ------------------- | ---- |
@@ -2578,13 +2629,17 @@ $ nslookup <割り当てられた文字列>.cloudfront.net
 
 ## 05-04. ネットワーキング，コンテンツ配信｜ALB：Application Load Balancing
 
-### 設定項目
+### ALBとは
 
-#### ・主要項目
+クラウドリバースプロキシサーバ，かつクラウドロードバランサーとして働く．リクエストを代理で受信し，インスタンスへのアクセスをバランスよく分配することによって，サーバへの負荷を緩和する．
 
 ![ALBの機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBの機能.png)
 
-クラウドリバースプロキシサーバ，かつクラウドロードバランサーとして働く．リクエストを代理で受信し，インスタンスへのアクセスをバランスよく分配することによって，サーバへの負荷を緩和する．
+<br>
+
+### 設定項目
+
+#### ・主要項目
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2747,13 +2802,13 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 #### ・Internet Gatewayとは
 
-VPCの出入り口に設置され，グローバルネットワークとPrivateネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のPrivateIPを紐づけられる．NAT（静的NAT）については，以下を参考にせよ．
+VPCの出入り口に設置され，グローバルネットワークとPrivateネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のPrivateIPを紐づけられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
 
 #### ・NAT Gatewayとは
 
-NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のPrivateIPを紐づけられる．パブリックサブネットに置き，PrivateサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下を参考にせよ．
+NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のPrivateIPを紐づけられる．パブリックサブネットに置き，PrivateサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
 
@@ -3249,7 +3304,7 @@ Amplifyで起こったイベントのJSONを変数として取り出す．JSON�
 }
 ```
 
-これをSlackに送信するJSONに出力する．出力するときは，変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下を参考にせよ．
+これをSlackに送信するJSONに出力する．出力するときは，変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンクを参考にせよ．
 
 参考：https://app.slack.com/block-kit-builder
 
@@ -3329,8 +3384,8 @@ Amplifyで起こったイベントのJSONを変数として取り出す．JSON�
 
 | 種類             |      | 説明                                                         |
 | ---------------- | ---- | ------------------------------------------------------------ |
-| レイテンシー     |      | 以下を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
-| トラフィック     |      | 以下を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
+| レイテンシー     |      | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
+| トラフィック     |      | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
 | エラー           |      | 以下の２種類に分類できる．<br>・明示的エラー：400/500系のレスポンス<br>・暗黙的エラー：SLOに満たない200/300系のレスポンス，API仕様に合っていないレスポンス |
 | サチュレーション |      | システムの利用率の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．<br>・CPU利用率<br>・メモリ利用率<br>・ストレージ利用率<br> |
 
@@ -3357,7 +3412,7 @@ Amplifyで起こったイベントのJSONを変数として取り出す．JSON�
 
 #### ・パフォーマンスインサイト
 
-RDSの詳細なCloudWatchメトリクスを取得できる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下を参考にせよ．
+RDSの詳細なCloudWatchメトリクスを取得できる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
 
@@ -4009,7 +4064,7 @@ AWSの使用上，ACM証明書を設置できないAWSリソースに対して�
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Overview                 | WAFによって許可／拒否されたリクエストのアクセスログを確認できる． |                                                              |
-| Rules                    | 順番にルールを判定し，一致するルールがあればアクションを実行する．この時，一致するルールの後にあるルールは．判定されない． | AWSマネージドルールについては，以下を参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Rules                    | 順番にルールを判定し，一致するルールがあればアクションを実行する．この時，一致するルールの後にあるルールは．判定されない． | AWSマネージドルールについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
 | Associated AWS resources | WAFをアタッチするAWSリソースを設定する．                     | Cloud Front，ALBなどにアタッチできる．                       |
 | Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する． |                                                              |
 
@@ -4735,6 +4790,19 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 ### EC2
 
+#### ・料金体系
+
+以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+
+| 種類                     | 説明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| オンデマンドインスタンス |                                                              |
+| Savings Plans            |                                                              |
+| リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる． |
+| スポットインスタンス     |                                                              |
+
 #### ・料金発生の条件
 
 インスタンスのライフサイクルの状態に応じて，料金が発生する．
@@ -4749,10 +4817,6 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 | stopped            | なし           |                                                            |
 | shutting-down      | なし           |                                                            |
 | terminated         | なし           |                                                            |
-
-#### ・EC2リザーブドインスタンス
-
-EC2インスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる．
 
 <br>
 
@@ -4774,9 +4838,16 @@ EC2インスタンスの一定期間分の使用料金を前払いし，その�
 
 ### RDS
 
-#### ・RDSリザーブドインスタンス
+#### ・料金体系
 
-RDSインスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる．
+以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+
+| 種類                     | 説明                                                         |
+| :----------------------- | ------------------------------------------------------------ |
+| オンデマンドインスタンス | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html |
+| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
 
 <br>
 

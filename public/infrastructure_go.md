@@ -20,7 +20,7 @@
 
 他の静的型付け言語のJavaのコンパイルでは，ソースコードを一度中間言語に変換し，その後機械語に翻訳する．しかしGoのコンパイルでは，プログラムを直接機械語に翻訳するため，より高速である．
 
-#### ・メモリの安全性が高い
+#### ・メモリの安全性を担保する仕組み
 
 メモリアドレスに割り当てられている数値同士を演算する『ポインタ演算』の機能を意図して廃止している．ポインタ演算の具体例として，10番アドレスと20番アドレスの数値を足して，30番アドレスに新しく割り当てる，といった処理を行う．この時，何らかの原因で片方のアドレスが文字列だった場合，30番アドレスに予期しない値（数値＋文字列）が割り当てられることになる．これは，不具合や悪意ある操作に繋がるため，Goではポインタ演算子の機能がない．
 
@@ -529,9 +529,9 @@ func main() {
 }
 ```
 
-#### ・埋め込みによる入れ子構造体
+#### ・埋め込みによる擬似継承
 
-構造体のデータとして，別の構造体を埋め込む．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．埋め込む側の構造体の初期化の記法に癖があるので注意する．
+構造体のデータとして，別の構造体を埋め込むことにより，擬似的に継承を実現する．埋め込み自体は他言語でいう『集約』や『合成』の関係性を作るもののため，継承のデメリットを回避しつつ，継承を使える．埋め込まれた側の構造体は，データの構造体が持つメソッドをコールできるようになる．埋め込む側の構造体の初期化の記法に癖があるので注意する．
 
 **＊実装例＊**
 
@@ -540,34 +540,52 @@ package main
 
 import "fmt"
 
+//================
 // 埋め込む側
+//================
 type Name struct {
-	LastName  string
 	FirstName string
+	LastName  string
 }
 
-func (name Name) fullName() string {
+func NewName(firstName string, lastName string) *Name {
+
+	return &Name{
+		FirstName: firstName,
+		LastName:  lastName,
+	}
+}
+
+func (name *Name) fullName() string {
 	return fmt.Sprintf("%s %s", name.FirstName, name.LastName)
 }
 
+//================
 // 埋め込まれる側
-type Person struct {
+//================
+type MyName struct {
 	*Name
 }
 
-func main() {
-	// 埋め込まれた側の構造体の初期化
-	person := &Person{
-		// 埋め込む側の構造体の初期化
-		Name: &Name{
-			// タグ付きリテラル表記（タグ無しリテラル表記も可能）
-			FirstName: "Hiroki",
-			LastName:  "Hasegawa",
-		},
+func NewMyName(name *Name) *MyName {
+	return &MyName{
+		Name: name,
 	}
+}
 
-	// Person構造体から，Name構造体のメソッドをコールできる．
-	fmt.Printf("%#v\n", person.fullName()) // "Hiroki Hasegawa"
+//================
+// main
+//================
+func main() {
+
+	// 埋め込む側の構造体の初期化
+	name := NewName("Hiroki", "Hasegawa")
+
+	// コンストラクタインジェクションによる依存性注入
+	myName := NewMyName(name)
+
+	// MyName構造体から，Name構造体のメソッドをコールできる．
+	fmt.Printf("%#v\n", myName.fullName()) // "Hiroki Hasegawa"
 }
 ```
 
@@ -1477,6 +1495,25 @@ var (
     y = 3.14
     z = "abc"
 )
+```
+
+```go
+package main
+
+import "fmt"
+
+func quotient(x int, y int) int {
+
+	// 商を計算する．
+	quotient := x / y
+
+	// を返却する．
+	return quotient
+}
+
+func main() {
+	fmt.Println(quotient(2, 2))
+}
 ```
 
 #### ・再宣言
