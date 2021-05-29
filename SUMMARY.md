@@ -26,6 +26,8 @@
     * [▶ ︎テスト](public/backend_testing.md)
   * デバッグ
     * [▶ ︎デバッグのコツ](public/backend_debug.md)
+* Go
+  * [▶ 文法](public/backend_go.md)
 * フロントエンドとバックエンド間のデータ通信
   * [▶ ︎認証と認可](public/frontend_and_backend_authentication_authorization.md)
   * [▶ ︎JSON](public/frontend_and_backend_json.md)
@@ -46,8 +48,6 @@
 * データベース
   * [▶ ︎データベースの操作](public/backend_database_operation.md)
   * [▶ ︎SQL](public/backend_database_mysql.md)
-* Go
-  * [▶ 文法](public/infrastructure_go.md)
 * ネットワーク
   * 構造
     * [▶ ︎ネットワーク構造](public/infrastructure_network_internet.md)
