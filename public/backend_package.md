@@ -329,6 +329,7 @@ QueryBuilderクラスにおける```delete```メソッドに，値を設定す�
 
 ```php
 <?php
+    
 $queryBuilder
     ->delete("mst_users");
 ```

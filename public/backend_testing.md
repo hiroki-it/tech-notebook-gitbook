@@ -90,7 +90,7 @@ PHPUnitの設定を行う．標準の設定では，あらかじめルートデ�
 
 #### ・```testsuites```タグ
 
-PHPUnitの対象とするディレクトリ名やファイル名を定義できる．```testsuites```タグ内の```testsuites```タグを追加変更すると，検証対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
+テストスイート（テストの組）を定義できる．```testsuites```タグ内の```testsuites```タグを追加変更すると，検証対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
 
 ```xml
 <phpunit>
@@ -639,9 +639,32 @@ class ExampleTest extends TestCase
 
 #### ・```setUp```メソッド
 
-テストクラスの中で，自動的に一番最初にコールされるメソッドである．例えば，モックオブジェクトなどを事前に準備するために用いられる．
+テストクラスの中で，自動的に一番最初にコールされるメソッドである．
 
 **＊実装例＊**
+
+DIコンテナを事前に準備する．
+
+```php
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
+{
+    protected $container;
+    
+    protected function setUp()
+    {
+        // DIコンテナにデータを格納する．
+        $this->container["option"];
+    }
+}
+```
+
+**＊実装例＊**
+
+単体テストで検証するクラスが実際の処理の中でインスタンス化される時，依存対象のクラスはすでにインスタンス化されているはずである．そのため，これと同じように依存対象のクラスのモックオブジェクトを事前に準備しておく．
 
 ```php
 <?php
@@ -650,14 +673,23 @@ use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
-    protected $example;
+    protected $hoge;
     
     protected function setUp()
     {
         // 基本的には，一番最初に記述する．
         parent::setUp();
         
-        $this->example = Phake::mock(Example::class);
+        // 事前にモックオブジェクトを構築しておく．
+        $this->hoge = Phake::mock(Hoge::class);
+    }
+    
+    public function testXxx()
+    {
+        // 実際の処理では，インスタンス化時に，ExampleクラスはHogeクラスに依存している．
+        $example = new Example($this->hoge)
+            
+        // 何らかのテストコード
     }
 }
 ```
@@ -679,14 +711,13 @@ class ExampleTest extends TestCase
     
     protected function setUp()
     {
-        // DIコンテナにデータを格納する．
         $this->container["option"];
     }
     
     // メソッドの中で，最後に自動実行される．
     protected function tearDown()
     {
-        // 次に，DIコンテナにデータを格納する．
+        // 次に，DIコンテナにnullを格納する．
         $this->container = null;
     }
 }
@@ -700,11 +731,15 @@ class ExampleTest extends TestCase
 
 #### ・モックオブジェクト
 
-上流クラスが下流クラスを正しくコールできるかどうかを検証したい時に，上流クラス以外の部分の処理は不要であり，下流クラスの実体があるかのように見せかける．この見せかけの下流クラスを『モックオブジェクト』という．この時，下流クラスのモックオブジェクトにスタブを定義し，実体のある上流クラスが下流クラスにパラメータを渡した時に，下流クラスを正しい回数実行できているかを検証する．
+上流クラスが下流クラスを正しくコールできるかどうかを検証したい時に，上流クラス以外の部分の処理は不要であり，下流クラスの実体があるかのように見せかける．この見せかけの下流クラスを『モックオブジェクト』という．この時，下流クラスのモックオブジェクトにスタブを定義し，実体のある上流クラスが下流クラスにパラメータを渡した時に，下流クラスを正しい回数実行できているかを検証する．なお，用語の定義はテストフレームワークごとにやや異なることに注意する．PHPUnitにおけるモックオブジェクトについては，以下のリンクを参考にせよ．
+
+参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
 #### ・スタブ
 
-クラスのメソッドの特定の処理を検証したい時に，対象以外の部分の処理は不要であり，処理の実体があるかのように見せかける．この見せかけの部分的処理を『スタブ』という．この時，スタブは正しい処理を実行するように定義し，その他の実体のある処理が正しく実行されるかを検証する．検証対象の処理のみに実体であっても，一連の処理を実行できる．実体のあるクラスに対して，またモックオブジェクトに対して，スタブを定義できる．
+クラスのメソッドの特定の処理を検証したい時に，対象以外の部分の処理は不要であり，処理の実体があるかのように見せかける．この見せかけの部分的処理を『スタブ』という．この時，スタブは正しい処理を実行するように定義し，その他の実体のある処理が正しく実行されるかを検証する．検証対象の処理のみに実体であっても，一連の処理を実行できる．実体のあるクラスに対して，またモックオブジェクトに対して，スタブを定義できる．なお，用語の定義はテストフレームワークごとにやや異なることに注意する．PHPUnitにおけるスタブについては，以下のリンクを参考にせよ．
+
+参考：https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs
 
 #### ・モックオブジェクトツール，スタブツール
 
@@ -839,7 +874,111 @@ class ExampleTest extends TestCase
 
 <br>
 
-## 04. PHPStan
+## 04. ユニットテストにおける網羅
+
+### ブラックボックステスト
+
+#### ・ブラックボックステストとは
+
+実装内容は気にせず，入力に対して，適切な出力が行われているかを検証する．
+
+![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
+
+<br>
+
+### ホワイトボックステスト
+
+#### ・ホワイトボックステストとは
+
+![p492-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-2.jpg)
+
+実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかを検証する．網羅条件がいくつかあり，求められるソフトウェア品質に応じたものを採用する．
+
+**＊実装例＊**
+
+```php
+if (A = 1 && B = 1) {
+　return X;
+}
+```
+
+#### ・C０：Statement Coverage（命令網羅）
+
+![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-1.png)
+
+全ての命令が実行されるかを検証する．
+
+**＊例＊**
+
+AとBは，『1』または『0』になり得るとする．
+
+| 条件         | 処理実行の有無                    |
+| ------------ | --------------------------------- |
+| A = 1，B = 1 | ```return X``` が実行されること． |
+
+#### ・C１：Decision Coverage（判定条件網羅）
+
+![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
+
+全ての判定が実行されるかを検証する．
+
+**＊例＊**
+
+AとBは，『1』または『0』になり得るとする．
+
+| 条件         | 処理実行の有無                      |
+| ------------ | ----------------------------------- |
+| A = 1，B = 1 | ```return X``` が実行されること．   |
+| A = 1，B = 0 | ```return X``` が実行されないこと． |
+
+#### ・C２：Condition Coverage（条件網羅）
+
+![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
+
+各条件が，取り得る全ての値で実行されるかを検証する．
+
+**＊例＊**
+
+AとBは，『1』または『0』になり得るとする．
+
+| 条件         | 処理実行の有無                      |
+| ------------ | ----------------------------------- |
+| A = 1，B = 0 | ```return X``` が実行されないこと． |
+| A = 0，B = 1 | ```return X``` が実行されないこと． |
+
+または，次の組み合わせでもよい．
+
+| 条件         | 処理実行の有無                      |
+| ------------ | ----------------------------------- |
+| A = 1，B = 1 | ```return X``` が実行されること．   |
+| A = 0，B = 0 | ```return X``` が実行されないこと． |
+
+#### ・MCC：Multiple Condition Coverage（複数条件網羅）
+
+![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
+
+各条件が，取り得る全ての値で，かつ全ての組み合わせが実行されるかを検証する．Webシステムでは，一般的に複数条件網羅を採用すれば，最低限のソフトウェア品質を担保できていると言える．
+
+**＊例＊**
+
+AとBは，『1』または『0』になり得るとする．
+
+| 条件         | 処理実行の有無                      |
+| ------------ | ----------------------------------- |
+| A = 1，B = 1 | ```return X``` が実行されること．   |
+| A = 1，B = 0 | ```return X``` が実行されないこと． |
+| A = 0，B = 1 | ```return X``` が実行されないこと． |
+| A = 0，B = 0 | ```return X``` が実行されないこと． |
+
+#### ・網羅率
+
+採用した網羅で考えられる全ての条件のうち，検証できている割合のこと． PHPUnitで網羅率を解析する方法については，以下のリンクを参考にせよ．
+
+参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
+
+<br>
+
+## 05. PHPStan
 
 ### コマンド
 
@@ -893,95 +1032,7 @@ parameters:
 
 <br>
 
-## 05. テスト仕様書に基づくユニットテスト
-
-### 注意点
-
-PHPUnitでのユニットテストとは意味合いが異なるので注意する．
-
-<br>
-
-### ブラックボックステスト
-
-#### ・ブラックボックステストとは
-
-実装内容は気にせず，入力に対して，適切な出力が行われているかを検証する．
-
-![p492-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-1.jpg)
-
-<br>
-
-### ホワイトボックステスト
-
-#### ・ホワイトボックステストとは
-
-実装内容が適切かを確認しながら，入力に対して，適切な出力が行われているかを検証する．ホワイトボックステストには，以下の方法がある．何を検証するかに着目すれば，思い出しやすい．
-
-![p492-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p492-2.jpg)
-
-**＊実装例＊**
-
-```php
-if (A = 1 && B = 1) {
-　return X;
-}
-```
-
-上記のif文におけるテストとして，以下の４つの方法が考えられる．基本的には，複数条件網羅が用いられる．
-
-#### ・命令網羅
-
-![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-1.png)
-
-全ての命令が実行されるかを検証する．
-
-**＊例＊**
-
-A = 1，B = 1 の時，```return X``` が実行されること．
-
-#### ・判定条件網羅
-
-![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
-
-全ての判定が実行されるかを検証する．
-
-**＊例＊**
-
-A = 1，B = 1 の時，```return X``` が実行されること．
-A = 1，B = 0 の時，```return X``` が実行されないこと．
-
-#### ・条件網羅
-
-![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-3.png)
-
-各条件が，取り得る全ての値で実行されるかを検証する．
-
-**＊例＊**
-
-A = 1，B = 0 の時，```return X``` が実行されないこと．
-A = 0，B = 1 の時，```return X``` が実行されないこと．
-
-または，次の組み合わせでもよい．
-
-A = 1，B = 1 の時，```return X``` が実行されること．
-A = 0，B = 0 の時，```return X``` が実行されないこと．
-
-#### ・複数条件網羅
-
-![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-4.png)
-
-各条件が，取り得る全ての値で，かつ全ての組み合わせが実行されるかを検証する．
-
-**＊例＊**
-
-A = 1，B = 1 の時，```return X``` が実行されること．
-A = 1，B = 0 の時，```return X``` が実行されないこと．
-A = 0，B = 1 の時，```return X``` が実行されないこと．
-A = 0，B = 0 の時，```return X``` が実行されないこと．
-
- <br>
-
-## 05-02. テスト仕様書に基づく結合テスト
+## 06. テスト仕様書に基づく結合テスト
 
 ### 結合テストとは
 
@@ -1016,7 +1067,7 @@ A = 0，B = 0 の時，```return X``` が実行されないこと．
 <br>
 
 
-## 05-03. テスト仕様書に基づくシステムテスト
+## 06-02. テスト仕様書に基づくシステムテスト
 
 ### システムテスト
 

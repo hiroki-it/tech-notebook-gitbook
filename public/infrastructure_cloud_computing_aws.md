@@ -2233,6 +2233,8 @@ API GatewayとVPCリンクの間で，リクエストまたはレスポンスの
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-private-integration.html
 
+また，VPCリンクの設定によって，VPCエンドポイントサービスが構築される．VPCエンドポイントサービスについては，後述の説明を参考にせよ．
+
 | 設定項目                     | 説明                                                  |
 | ---------------------------- | ----------------------------------------------------- |
 | 統合タイプ                   | VPCリンクを選択する．                                 |
@@ -2949,9 +2951,13 @@ VPCのPrivateサブネット内のリソースが，VPC外のリソースに対�
 | Gateway型   | ルートテーブルにおける定義に則って，VPCエンドポイントに対してアウトバウンド通信を行う． | S3，DynamoDBのみ                 |
 | Interface型 | Privateリンクともいう．PrivateIPアドレスを持つENIに対して，アウトバウンド通信を行う． | S3，DynamoDB以外の全てのリソース |
 
-#### ・VPCエンドポイントサービス
+<br>
 
-VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイントとNLBを組み合わせることにより，異なるVPC間で通信できるようにする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．
+### VPCエンドポイントサービス
+
+#### ・VPCエンドポイントサービスとは
+
+VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイントをNLBに関連付けることにより，異なるVPC間で通信できるようにする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
 
 ![VPCエンドポイントサービス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイントサービス.png)
 

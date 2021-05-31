@@ -279,6 +279,7 @@ Getterでは，データを取得するだけではなく，何かしらの処�
 
 ```php
 <?php
+    
 class ABC {
 
     private $property; 
@@ -307,6 +308,7 @@ class ABC {
 
 ```php
 <?php
+    
 class Test01 {
 
     private $property01;
@@ -327,6 +329,7 @@ class Test01 {
 
 ```php
 <?php
+    
 class Test02 {
 
     private $property02;
