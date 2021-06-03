@@ -44,6 +44,8 @@ HOME_PATH=/
 
 ### ```nuxt.config.js```ファイル
 
+#### ・概要
+
 Nuxtが標準で用意している設定を上書きできる．
 
 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
@@ -56,5 +58,20 @@ const nuxtConfig: Configuration = {
 }
 ```
 
+#### ・hardSource
 
+ビルド時のキャッシュを有効化する．ビルドの完了が早くなる．
+
+参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const nuxtConfig: Configuration = {
+    
+  build: {
+    hardSource: true,
+  },
+}
+```
 

@@ -405,9 +405,9 @@ exports.handler = (event, context, callback) => {
         "body" : null
     };
 
-    // 認可バリデーション
+    // 認証バリデーション
     if (event.headers["X-API-Key"] !== process.env.X_API_KEY) {
-        response.statusCode = 403;
+        response.statusCode = 401;
         response.body = "An API key is invalid.";
         return callback(null, response);
     }
@@ -4063,7 +4063,17 @@ AWSの使用上，ACM証明書を設置できないAWSリソースに対して�
 
 <br>
 
-### Web ACLs
+### 設定項目
+
+#### ・主要項目
+
+| 設定項目           | 説明                                              | 補足                                                         |
+| ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
+| Web ACLs           | アクセス許可と拒否のルールを定義する．            |                                                              |
+| Bot Control        | Botに関するアクセス許可と拒否のルールを定義する． |                                                              |
+| IP Sets            | IPアドレスの共通部品を管理する．                  |                                                              |
+| Regex pattern sets | 正規表現パターンの共通部品を管理する．            |                                                              |
+| Rule groups        | ルールの共通部品を管理する．                      | 各WAFに同じルールを設定する場合，ルールグループを使用するべきである．ただ，ルールグループを使用すると，これらのルールを共通のメトリクスで監視しなければならなくなる．そのため，もしメトリクスを分けるのであれば，ルールグループを使用しないようにする． |
 
 #### ・Web ACLsの詳細
 

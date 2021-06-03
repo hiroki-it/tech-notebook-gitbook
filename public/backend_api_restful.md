@@ -12,7 +12,7 @@
 
 #### ・RESTfulとRESTful APIとは
 
-RESTに基づいた設計をRESTfulという．RESTful設計が用いられたWebAPIをRESTful APIという．例えば，RESTful APIの場合，DBにおけるUserInfoのCRUDに対して，一つの「/UserInfo」というURIを対応づけている．
+RESTに基づいた設計をRESTfulという．RESTful設計が用いられたWebAPIをRESTful APIという．例えば，RESTful APIの場合，DBにおけるUserInfoのCRUDに対して，一つの『/UserInfo』というURIを対応づけている．
 
 ![RESTfulAPIを用いたリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPIを用いたリクエスト.png)
 
@@ -33,7 +33,7 @@ RESTに基づいた設計をRESTfulという．RESTful設計が用いられたWe
 #### ・Connectability
 #### ・Uniform Interface
 
-HTTPプロトコルを使用したリクエストを，「リソースに対する操作」とらえ，リクエストにHTTPメソッドを対応づけるようにする．
+HTTPプロトコルを使用したリクエストを，『リソースに対する操作』とらえ，リクエストにHTTPメソッドを対応づけるようにする．
 
 #### ・Addressability
 
@@ -145,7 +145,7 @@ JSON型データ内に定義し，リクエストボディにパラメータを�
 
 #### ・リクエストヘッダーへの割り当て
 
-リクエストヘッダーにパラメータを割り当てて送信する．送信時のヘッダー名は大文字でも小文字でもいずれでも問題ないが，内部的に小文字に変換されるため，小文字が推奨である．APIキーのヘッダー名の頭文字に「```X```」を付けるのは，独自ヘッダーの頭文字に「```X```」を付ける慣習があったためである．ただし，現在は非推奨である．
+リクエストヘッダーにパラメータを割り当てて送信する．送信時のヘッダー名は大文字でも小文字でもいずれでも問題ないが，内部的に小文字に変換されるため，小文字が推奨である．APIキーのヘッダー名の頭文字に『```X```』を付けるのは，独自ヘッダーの頭文字に『```X```』を付ける慣習があったためである．ただし，現在は非推奨である．
 
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
@@ -158,6 +158,22 @@ authorization: Bearer ${Token}
 # APIキーヘッダー
 x-api-key: XXXXX
 ```
+
+<br>
+
+### レスポンスのステータスコード
+
+#### ・使い分け
+
+| コード | 概要                                     | 説明                                                         |
+| ------ | ---------------------------------------- | ------------------------------------------------------------ |
+| 200    | 成功                                     | 正しいリクエストである．                                     |
+| 401    | 認証エラー                               | 誤ったリクエストである．認証プロセスで正しいトークンが発行されず，認可プロセスのリクエストでこの誤ったトークンを送信したことを表している．認可の失敗ではなく，認証の失敗であることに注意する． |
+| 403    | 認可エラーによるトークン所有者の閲覧禁止 | 誤ったリクエストである．APIに認証プロセスが存在し，トークンの発行が必要だとする．認証プロセスにて正しいトークンが発行されたが，認可プロセスにてトークンの所有者に閲覧権限がないと判定されたことを表している．<br>・ |
+|        | 送信元IPアドレスの閲覧禁止               | 誤ったリクエストである．APIに認証認可プロセスが存在せず，トークン発行と閲覧権限検証が不要だとする．送信元IPアドレスに閲覧権限がないと判定されてことを表している． |
+| 404    | ページが見つからない                     | 誤ったリクエストである．存在しないデータをリクエストしていることを表している． |
+| 500    | サーバエラー                             | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| 503    | ビジネスロジックエラー                   | エラーは起こらないが，ビジネス上ありえないデータをリクエストしていることを表す． |
 
 <br>
 
@@ -185,7 +201,7 @@ GET http://www.example.co.jp/users/12345
 
 **＊悪い実装例＊**
 
-ここで，Usersを意味する「```u```」といった略称は，当時の設計者しかわからないため，不要である．
+ここで，Usersを意味する『```u```』といった略称は，当時の設計者しかわからないため，不要である．
 
 ```http
 GET http://www.example.co.jp/u/12345
@@ -193,7 +209,7 @@ GET http://www.example.co.jp/u/12345
 
 **＊良い実装例＊**
 
-略称を使わずに，「users」とする．
+略称を使わずに，『users』とする．
 
 ```http
 GET http://www.example.co.jp/users/12345
@@ -912,7 +928,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
     #===========================
     # path itemオブジェクト
     #===========================
@@ -959,7 +975,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # スキーマとして，異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
   #===========================
   # pathsオブジェクト
   #===========================
@@ -1011,7 +1027,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -1072,7 +1088,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -1163,7 +1179,7 @@ components:
     apiKeyAuth:
       description: APIキー認証
       type: apiKey
-      name: x-api-key # ヘッダ名は「x-api-key」とする．小文字が推奨である．
+      name: x-api-key # ヘッダ名は『x-api-key』とする．小文字が推奨である．
       in: header
 ```
 

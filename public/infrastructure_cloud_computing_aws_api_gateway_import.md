@@ -295,7 +295,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．     
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．     
       #===========================
       # 統合
       #===========================          
@@ -361,7 +361,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
       #===========================
       # 統合
       #===========================          
@@ -431,7 +431,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -511,7 +511,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -574,7 +574,7 @@ components:
             title: Unauthorized
             errors:
               messages: [
-                  "認可に失敗しました．"
+                  "認証に失敗しました．"
               ]
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する．                 
@@ -705,7 +705,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．     
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．     
       #===========================
       # 統合
       #===========================          
@@ -777,7 +777,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
       #===========================
       # 統合
       #===========================          
@@ -856,7 +856,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -944,7 +944,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -1013,7 +1013,7 @@ components:
             title: Unauthorized
             errors:
               messages: [
-                  "認可に失敗しました．"
+                  "認証に失敗しました．"
               ]
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する．                 
@@ -1153,7 +1153,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．     
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．     
       #===========================
       # 統合
       #===========================          
@@ -1220,7 +1220,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．              
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．              
       #===========================
       # 統合
       #===========================          
@@ -1293,7 +1293,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -1376,7 +1376,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する．
         '401':
-          $ref: "#/components/responses/unauthorized" # 認可エラーを参照する．
+          $ref: "#/components/responses/unauthorized" # 認証エラーを参照する．
         '404':
           description: Not Found レスポンス
           content:
@@ -1440,7 +1440,7 @@ components:
             title: Unauthorized
             errors:
               messages: [
-                  "認可に失敗しました．"
+                  "認証に失敗しました．"
               ]
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する．                 

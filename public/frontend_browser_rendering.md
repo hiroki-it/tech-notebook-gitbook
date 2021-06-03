@@ -198,11 +198,11 @@ JavaScriptでは，画面上で何らかのイベントが発火し，これに�
 
 #### ・```onload```
 
-「画面のローディング」というイベントが発火すると，イベントハンドラ関数をコールする．
+『画面のローディング』というイベントが発火すると，イベントハンドラ関数をコールする．
 
 #### ・```onclick```
 
-「要素のクリック」というイベントが発火すると，イベントハンドラ関数をコールする．
+『要素のクリック』というイベントが発火すると，イベントハンドラ関数をコールする．
 
 ```html
 <input type="button" value="ボタン1" onclick="methodA()">
@@ -262,7 +262,7 @@ document.getElementById("btn").addEventListener("click", function(){
 
 #### ・Polyfillとは
 
-JavaScriptやHTMLの更新にブラウザが追いついていない場合に，それを補完するように実装されたライブラリのこと．「Polyfilla」に由来している．
+JavaScriptやHTMLの更新にブラウザが追いついていない場合に，それを補完するように実装されたライブラリのこと．『Polyfilla』に由来している．
 
 <br>
 
@@ -319,7 +319,7 @@ scrollイベントとresizeイベントを監視し、これらのイベント�
 
 #### ・Intersection Observerによる要素の交差率に基づく読み込み
 
-Intersection Observerによる要素の交差率を監視し，指定の交差率を超えた要素を随時読み込む方法．例えば，交差率の閾値を「```0.5```」と設定すると，ターゲットエレメントの交差率が「```0.5```」を超えた要素を随時読み込む．
+Intersection Observerによる要素の交差率を監視し，指定の交差率を超えた要素を随時読み込む方法．例えば，交差率の閾値を『```0.5```』と設定すると，ターゲットエレメントの交差率が『```0.5```』を超えた要素を随時読み込む．
 
 ![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/intersection-observer.png)
 
