@@ -1,4 +1,4 @@
-# Amazon Web Service
+Amazon Web Service
 
 ## 01. コンピューティング｜EC2：Elastic Computer Cloud
 
@@ -115,15 +115,17 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 #### ・関数の実行環境とは
 
-Lambdaの実行環境は，API（拡張API，ランタイムAPI，ログAPI）と実行環境から構成されている．関数は実行環境に存在し，ランタイムAPIを介して，Lambdaによって実行される．
+Lambdaの実行環境は，API（ランタイムAPI，ログAPI，拡張API）と実行環境から構成されている．関数は実行環境に存在し，ランタイムAPIを介して，Lambdaによって実行される．
 
-![lambda-runtime-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-runtime-api.png)
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
+
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
 
 実行環境には，３つのフェーズがある．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
 
-![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-life-cycle.png)
+![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-lifecycle.png)
 
 #### ・Initフェーズ
 
