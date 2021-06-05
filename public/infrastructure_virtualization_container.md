@@ -1068,7 +1068,9 @@ NFSプラグインを使用することで，永続化データを```/var/lib/do
 
 **＊実装例＊**
 
-以下にdocker-composeを使用した場合を示す．docker-composeについては，コンテナオーケストレーションのノートを参照．
+以下にdocker-composeを使用した場合を示す．docker-composeについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_virtualization_container_orchestration.html
 
 ```yaml
 version: "3.7"

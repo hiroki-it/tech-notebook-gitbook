@@ -443,11 +443,9 @@ terraform_project/
     |   └── rds        # RDS    
     |
     └── waf # WAF
-        ├── dev
-        ├── prd
-        └── stg
-            ├── alb        # ALB
-            └── cloudfront # CloudFront
+        ├── alb         # ALB
+        ├── api_gateway # API Gateway
+        └── cloudfront  # CloudFront
 ```
 
 #### ・稼働環境別
@@ -468,9 +466,10 @@ terraform_project/
     |   └── stg
     | 
     └── waf # WAF
-        ├── dev
-        ├── prd
-        └── stg
+        └── alb 
+            ├── dev
+            ├── prd
+            └── stg
 ```
 
 #### ・リージョン別
@@ -482,7 +481,28 @@ terraform_project/
 └── modules
     └── acm # ACM
         ├── ap-northeast-1 # 東京リージョン
-        └── us-east-1 # バージニアリージョン  
+        └── us-east-1      # バージニアリージョン  
+```
+
+#### ・共通セット別
+
+WAFで使用するIPパターンセットと正規表現パターンセットには，CloudFrontタイプとRegionalタイプがある．Regionalタイプは，同じリージョンの異なるAWSリソース間で共通して使用できるため，共通セットとしてディレクトリ分割を行う．
+
+```shell
+terraform_project/
+└── modules
+    └── waf # WAF
+        ├── alb
+        ├── api_gateway
+        ├── cloudfront       
+        └── regional_sets # Regionalタイプのセット
+            ├── ip_sets   # IPセット
+            |   ├── prd
+            |   └── stg
+            |    
+            └── regex_pattern_sets # 正規表現パターンセット
+                ├── prd
+                └── stg
 ```
 
 #### ・ファイルの切り分け
@@ -2667,16 +2687,17 @@ Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbal
 
 #### ・Network Interfaceをデタッチできない
 
-Network Interfaceは特定のリソースの構築時に，自動で構築されるため，Terraformの管理外にある．また，このリソースを削除しない限り，デタッチできない．Network Interfaceをデタッチできないと，セキュリティグループを削除できないため，Terraformは永遠にリクエストを繰り返すことになる．
+Network Interfaceは特定のリソースの構築に伴って，自動で構築されるため，Terraformの管理外にある．また，これらのリソースはNetwork Interfaceに依存している．そのため，Terraformによるデプロイの事前操作として，画面上からNetworkInterfaceをデタッチしない限り，リソースを削除できない．
 
-| 関連付くリソース            | 備考                                          |
+| 関連付くリソース            | 役割                                          |
 | --------------------------- | --------------------------------------------- |
-| GlobalAccelerator           |                                               |
+| ALB                         | ALBのパブリックIPアドレスを決定する．         |
 | EC2                         | EC2のパブリックIPアドレスを決定する．         |
 | ECSタスク定義（Active状態） |                                               |
-| ALB                         | ALBのパブリックIPアドレスを決定する．         |
+| GlobalAccelerator           |                                               |
 | NAT Gateway                 | NAT GatewayのパブリックIPアドレスを決定する． |
 | RDS                         |                                               |
+| Security Group              |                                               |
 | VPC Endpoint                |                                               |
 
 <br>
@@ -2968,7 +2989,8 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | Global Accelerator           | セキュリティグループ                             | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
 | IAMユーザ                    | 全て                                             |                                                              |
 | IAMユーザグループ            | 全て                                             |                                                              |
-| IAMロール                    | ・ユーザに紐づくロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築と同時に，自動的に作られるため，Terraformで管理できない． |
+| IAMロール                    | ・ユーザに紐づくロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築に伴って，自動的に作られるため，Terraformで管理できない． |
+| Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために，mysql providerという機能を使用する必要がある．しかし，使用する上でディレクトリ構成戦略と相性が悪い． |
 | S3                           | tfstateの管理バケット                            | tfstateファイルを格納するため，Terraformのデプロイより先に存在している必要がある． |
 | SSMパラメータストア          | 全て                                             | ECSに機密な環境変数を出力するため．                          |
