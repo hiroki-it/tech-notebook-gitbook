@@ -73,7 +73,7 @@
       * [▶ ︎Google Cloud Platform](public/infrastructure_cloud_computing_gcp.md)
 * IaC
   * [▶ ︎Infrastructure as Code](public/infrastructure_as_code.md)
-  * [▶ ︎Terraform](public/infrastructure_terraform.md)
+  * [▶ ︎Terraform](public/infrastructure_as_code_terraform.md)
 * 仮想化技術
   * [▶ ︎仮想化技術の比較](public/infrastructure_virtualization_comparison.md)
     * コンテナ
