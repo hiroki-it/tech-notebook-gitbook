@@ -2309,46 +2309,47 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 <p>&#x5358;&#x4E00;&#x5024;&#xFF0C;list&#x578B;&#xFF0C;map&#x578B;&#x3067;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;AZ&#xFF0C;&#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#x306E;CIDR&#xFF0C;RDS&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5024;&#xFF0C;&#x306A;&#x3069;&#x306F;map&#x578B;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#xFF0C;&#x306A;&#x3069;&#x306F;list&#x578B;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;&#x306A;&#x304A;&#xFF0C;RDS&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x9069;&#x6B63;&#x5024;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code>###############################################
-# RDS
-###############################################
-rds_parameter_group_values = {
-  time_zone                = &quot;asia/tokyo&quot;
-  character_set_client     = &quot;utf8mb4&quot;
-  character_set_connection = &quot;utf8mb4&quot;
-  character_set_database   = &quot;utf8mb4&quot;
-  character_set_results    = &quot;utf8mb4&quot;
-  character_set_server     = &quot;utf8mb4&quot;
-  server_audit_events      = &quot;connect,query,query_dcl,query_ddl,query_dml,table&quot;
-  server_audit_logging     = 1
-  server_audit_logs_upload = 1
-  general_log              = 1
-  slow_query_log           = 1
-  long_query_time          = 3
-}
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># RDS</span>
+<span class="token comment">###############################################</span>
+<span class="token property">rds_parameter_group_values</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+  <span class="token property">time_zone</span>                <span class="token punctuation">=</span> <span class="token string">&quot;asia/tokyo&quot;</span>
+  <span class="token property">character_set_client</span>     <span class="token punctuation">=</span> <span class="token string">&quot;utf8mb4&quot;</span>
+  <span class="token property">character_set_connection</span> <span class="token punctuation">=</span> <span class="token string">&quot;utf8mb4&quot;</span>
+  <span class="token property">character_set_database</span>   <span class="token punctuation">=</span> <span class="token string">&quot;utf8mb4&quot;</span>
+  <span class="token property">character_set_results</span>    <span class="token punctuation">=</span> <span class="token string">&quot;utf8mb4&quot;</span>
+  <span class="token property">character_set_server</span>     <span class="token punctuation">=</span> <span class="token string">&quot;utf8mb4&quot;</span>
+  <span class="token property">server_audit_events</span>      <span class="token punctuation">=</span> <span class="token string">&quot;connect,query,query_dcl,query_ddl,query_dml,table&quot;</span>
+  <span class="token property">server_audit_logging</span>     <span class="token punctuation">=</span> <span class="token number">1</span>
+  <span class="token property">server_audit_logs_upload</span> <span class="token punctuation">=</span> <span class="token number">1</span>
+  <span class="token property">general_log</span>              <span class="token punctuation">=</span> <span class="token number">1</span>
+  <span class="token property">slow_query_log</span>           <span class="token punctuation">=</span> <span class="token number">1</span>
+  <span class="token property">long_query_time</span>          <span class="token punctuation">=</span> <span class="token number">3</span>
+<span class="token punctuation">}</span>
 
-###############################################
-# VPC
-###############################################
-vpc_availability_zones             = { a = &quot;a&quot;, c = &quot;c&quot; }
-vpc_cidr                           = &quot;n.n.n.n/23&quot;
-vpc_subnet_private_datastore_cidrs = { a = &quot;n.n.n.n/27&quot;, c = &quot;n.n.n.n/27&quot; }
-vpc_subnet_private_app_cidrs       = { a = &quot;n.n.n.n/25&quot;, c = &quot;n.n.n.n/25&quot; }
-vpc_subnet_public_cidrs            = { a = &quot;n.n.n.n/27&quot;, c = &quot;n.n.n.n/27&quot; }
+<span class="token comment">###############################################</span>
+<span class="token comment"># VPC</span>
+<span class="token comment">###############################################</span>
+<span class="token property">vpc_availability_zones</span>             <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token property">a</span> <span class="token punctuation">=</span> <span class="token string">&quot;a&quot;</span>, <span class="token property">c</span> <span class="token punctuation">=</span> <span class="token string">&quot;c&quot;</span> <span class="token punctuation">}</span>
+<span class="token property">vpc_cidr</span>                           <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/23&quot;</span>
+<span class="token property">vpc_subnet_private_datastore_cidrs</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token property">a</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/27&quot;</span>, <span class="token property">c</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/27&quot;</span> <span class="token punctuation">}</span>
+<span class="token property">vpc_subnet_private_app_cidrs</span>       <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token property">a</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/25&quot;</span>, <span class="token property">c</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/25&quot;</span> <span class="token punctuation">}</span>
+<span class="token property">vpc_subnet_public_cidrs</span>            <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token property">a</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/27&quot;</span>, <span class="token property">c</span> <span class="token punctuation">=</span> <span class="token string">&quot;n.n.n.n/27&quot;</span> <span class="token punctuation">}</span>
 
-###############################################
-# WAF
-###############################################
-waf_blocked_global_ip_addresses = [
-  &quot;n.n.n.n/32&quot;,
-  &quot;n.n.n.n/32&quot;,
-]
+<span class="token comment">###############################################</span>
+<span class="token comment"># WAF</span>
+<span class="token comment">###############################################</span>
+<span class="token property">waf_blocked_global_ip_addresses</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;n.n.n.n/32&quot;</span>,
+  <span class="token string">&quot;n.n.n.n/32&quot;</span>,
+<span class="token punctuation">]</span>
 
-waf_blocked_user_agents = [
-  &quot;XXXXX&quot;,
-  &quot;YYYYY&quot;
-]
-</code></pre><p><br></p>
+<span class="token property">waf_blocked_user_agents</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;XXXXX&quot;</span>,
+  <span class="token string">&quot;YYYYY&quot;</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p><br></p>
 <h3 id="variable"><a name="variable" class="plugin-anchor" href="#variable"><i class="fa fa-link" aria-hidden="true"></i></a>variable</h3>
 <h4 id="&#x30FB;variable&#x3068;&#x306F;"><a name="&#x30FB;variable&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;variable&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;variable&#x3068;&#x306F;</h4>
 <p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2618,30 +2619,31 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x306B;<code>count</code>&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x305D;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;list&#x578B;&#x3068;&#x3057;&#x3066;&#x6271;&#x308F;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x306F;list&#x578B;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;<code>for_each</code>&#x95A2;&#x6570;&#x3067;&#x69CB;&#x7BC9;&#x3057;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3067;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x6CE8;&#x610F;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;VPC&#x306E;&#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#x3092;&#x793A;&#x3059;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#xFF0C;application&#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#xFF0C;datastore&#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#xFF0C;&#x3092;<code>count</code>&#x95A2;&#x6570;&#x3067;&#x69CB;&#x7BC9;&#x3057;&#x305F;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code>###############################################
-# Public subnet
-###############################################
-resource &quot;aws_subnet&quot; &quot;public&quot; {
-  count = 2
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># Public subnet</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_subnet&quot;</span></span> <span class="token string">&quot;public&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">count</span> <span class="token punctuation">=</span> <span class="token number">2</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
-}
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
+<span class="token punctuation">}</span>
 
-###############################################
-# Private subnet
-###############################################
-resource &quot;aws_subnet&quot; &quot;private_app&quot; {
-  count = 2
+<span class="token comment">###############################################</span>
+<span class="token comment"># Private subnet</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_subnet&quot;</span></span> <span class="token string">&quot;private_app&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">count</span> <span class="token punctuation">=</span> <span class="token number">2</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
-}
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
+<span class="token punctuation">}</span>
 
-resource &quot;aws_subnet&quot; &quot;private_datastore&quot; {
-  count = 2
+<span class="token keyword">resource <span class="token type variable">&quot;aws_subnet&quot;</span></span> <span class="token string">&quot;private_datastore&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">count</span> <span class="token punctuation">=</span> <span class="token number">2</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
-}
-</code></pre><pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># Output VPC</span>
 <span class="token comment">###############################################</span>
 <span class="token keyword">output<span class="token type variable"> &quot;public_subnet_ids&quot; </span></span><span class="token punctuation">{</span>
@@ -2768,21 +2770,23 @@ resource &quot;aws_subnet&quot; &quot;private_datastore&quot; {
 </code></pre>
 <h4 id="&#x30FB;&#x5358;&#x4E00;&#x5024;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><a name="&#x30FB;&#x5358;&#x4E00;&#x5024;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x5358;&#x4E00;&#x5024;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5358;&#x4E00;&#x5024;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;</h4>
 <p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x306B;<code>for_each</code>&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x305D;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;map&#x578B;&#x3068;&#x3057;&#x3066;&#x6271;&#x308F;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code>###############################################
-# Variables
-###############################################
-vpc_availability_zones = { a = &quot;a&quot;, c = &quot;c&quot; }
-</code></pre><pre class="language-"><code>###############################################
-# Output VPC
-###############################################
-output &quot;public_a_subnet_id&quot; {
-  value = aws_subnet.public[var.vpc_availability_zones.a].id
-}
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># Variables</span>
+<span class="token comment">###############################################</span>
+<span class="token property">vpc_availability_zones</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token property">a</span> <span class="token punctuation">=</span> <span class="token string">&quot;a&quot;</span>, <span class="token property">c</span> <span class="token punctuation">=</span> <span class="token string">&quot;c&quot;</span> <span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># Output VPC</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">output<span class="token type variable"> &quot;public_a_subnet_id&quot; </span></span><span class="token punctuation">{</span>
+  <span class="token property">value</span> <span class="token punctuation">=</span> aws_subnet.public<span class="token punctuation">[</span>var.vpc_availability_zones.a<span class="token punctuation">]</span>.id
+<span class="token punctuation">}</span>
 
-output &quot;public_c_subnet_id&quot; {
-  value = aws_subnet.public[var.vpc_availability_zones.c].id
-}
-</code></pre><h4 id="&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><a name="&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;</h4>
+<span class="token keyword">output<span class="token type variable"> &quot;public_c_subnet_id&quot; </span></span><span class="token punctuation">{</span>
+  <span class="token property">value</span> <span class="token punctuation">=</span> aws_subnet.public<span class="token punctuation">[</span>var.vpc_availability_zones.c<span class="token punctuation">]</span>.id
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><a name="&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;map&#x578B;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># Variables</span>
@@ -3450,41 +3454,43 @@ output &quot;public_c_subnet_id&quot; {
 <p><br></p>
 <h3 id="cloudfront"><a name="cloudfront" class="plugin-anchor" href="#cloudfront"><i class="fa fa-link" aria-hidden="true"></i></a>CloudFront</h3>
 <h4 id="&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
-<pre class="language-"><code>resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
+<pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
 
-  # &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;S3&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;
-  origin {
-    domain_name = var.s3_bucket_regional_domain_name
-    origin_id   = &quot;S3-${var.s3_bucket_id}&quot;
+  <span class="token comment"># &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;S3&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;</span>
+  <span class="token keyword">origin</span> <span class="token punctuation">{</span>
+    <span class="token property">domain_name</span> <span class="token punctuation">=</span> var.s3_bucket_regional_domain_name
+    <span class="token property">origin_id</span>   <span class="token punctuation">=</span> <span class="token string">&quot;S3-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">s3_bucket_id</span><span class="token punctuation">}</span></span>&quot;</span>
 
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.s3_example.cloudfront_access_identity_path
-    }
-  }
+    <span class="token keyword">s3_origin_config</span> <span class="token punctuation">{</span>
+      <span class="token property">origin_access_identity</span> <span class="token punctuation">=</span> aws_cloudfront_origin_access_identity.s3_example.cloudfront_access_identity_path
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;  
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;  </span>
 
-}
-</code></pre><pre class="language-"><code>resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
 
-  # &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;ALB&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;
-  origin {
-    domain_name = var.alb_dns_name
-    origin_id   = &quot;ELB-${var.alb_name}&quot;
+  <span class="token comment"># &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;ALB&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;</span>
+  <span class="token keyword">origin</span> <span class="token punctuation">{</span>
+    <span class="token property">domain_name</span> <span class="token punctuation">=</span> var.alb_dns_name
+    <span class="token property">origin_id</span>   <span class="token punctuation">=</span> <span class="token string">&quot;ELB-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">alb_name</span><span class="token punctuation">}</span></span>&quot;</span>
 
-    custom_origin_config {
-      origin_ssl_protocols     = [&quot;TLSv1.2&quot;]
-      origin_protocol_policy   = &quot;match-viewer&quot;
-      origin_read_timeout      = 30
-      origin_keepalive_timeout = 5
-      http_port                = var.alb_listener_port_http
-      https_port               = var.alb_listener_port_https
-    }
-  }
+    <span class="token keyword">custom_origin_config</span> <span class="token punctuation">{</span>
+      <span class="token property">origin_ssl_protocols</span>     <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;TLSv1.2&quot;</span><span class="token punctuation">]</span>
+      <span class="token property">origin_protocol_policy</span>   <span class="token punctuation">=</span> <span class="token string">&quot;match-viewer&quot;</span>
+      <span class="token property">origin_read_timeout</span>      <span class="token punctuation">=</span> <span class="token number">30</span>
+      <span class="token property">origin_keepalive_timeout</span> <span class="token punctuation">=</span> <span class="token number">5</span>
+      <span class="token property">http_port</span>                <span class="token punctuation">=</span> var.alb_listener_port_http
+      <span class="token property">https_port</span>               <span class="token punctuation">=</span> var.alb_listener_port_https
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
-}
-</code></pre><h4 id="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cache_behavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cache_behavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
 <pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
 
   <span class="token keyword">ordered_cache_behavior</span> <span class="token punctuation">{</span>
@@ -3923,53 +3929,55 @@ output &quot;public_c_subnet_id&quot; {
 <p><br></p>
 <h3 id="lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;"><a name="lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;" class="plugin-anchor" href="#lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;"><i class="fa fa-link" aria-hidden="true"></i></a>LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</h3>
 <h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;NLB&#x306E;&#x5834;&#x5408;&#xFF09;</h4>
-<pre class="language-"><code>###############################################
-# NLB target group
-###############################################
-resource &quot;aws_lb_target_group&quot; &quot;this&quot; {
-  # &#x540D;&#x524D;
-  name = &quot;${var.environment}-${var.service}-nlb-tg&quot;
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># NLB target group</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_lb_target_group&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
+  <span class="token comment"># &#x540D;&#x524D;</span>
+  <span class="token property">name</span> <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-nlb-tg&quot;</span>
 
-  # &#x30DD;&#x30FC;&#x30C8;
-  port = var.ecs_container_nginx_port_http
+  <span class="token comment"># &#x30DD;&#x30FC;&#x30C8;</span>
+  <span class="token property">port</span> <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
 
-  # &#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;
-  protocol = &quot;TCP&quot;
+  <span class="token comment"># &#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;</span>
+  <span class="token property">protocol</span> <span class="token punctuation">=</span> <span class="token string">&quot;TCP&quot;</span>
 
-  # VPC
-  vpc_id = var.vpc_id
+  <span class="token comment"># VPC</span>
+  <span class="token property">vpc_id</span> <span class="token punctuation">=</span> var.vpc_id
 
-  # &#x9045;&#x5EF6;&#x767B;&#x9332;&#x6642;&#x9593;
-  deregistration_delay = &quot;60&quot;
+  <span class="token comment"># &#x9045;&#x5EF6;&#x767B;&#x9332;&#x6642;&#x9593;</span>
+  <span class="token property">deregistration_delay</span> <span class="token punctuation">=</span> <span class="token string">&quot;60&quot;</span>
 
-  # &#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x306E;&#x30BF;&#x30A4;&#x30D7;
-  target_type = &quot;ip&quot;
+  <span class="token comment"># &#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x306E;&#x30BF;&#x30A4;&#x30D7;</span>
+  <span class="token property">target_type</span> <span class="token punctuation">=</span> <span class="token string">&quot;ip&quot;</span>
 
-  # &#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;
-  slow_start = &quot;0&quot;
+  <span class="token comment"># &#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;</span>
+  <span class="token property">slow_start</span> <span class="token punctuation">=</span> <span class="token string">&quot;0&quot;</span>
 
-  # &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;
-  health_check {
-    protocol          = &quot;HTTP&quot;
-    healthy_threshold = 3
-    # &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;HTTP&#x307E;&#x305F;&#x306F;HTTPS&#x306E;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;
-    path = &quot;/healthcheck&quot;
-  }
+  <span class="token comment"># &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;</span>
+  <span class="token keyword">health_check</span> <span class="token punctuation">{</span>
+    <span class="token property">protocol</span>          <span class="token punctuation">=</span> <span class="token string">&quot;HTTP&quot;</span>
+    <span class="token property">healthy_threshold</span> <span class="token punctuation">=</span> <span class="token number">3</span>
+    <span class="token comment"># &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;HTTP&#x307E;&#x305F;&#x306F;HTTPS&#x306E;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+    <span class="token property">path</span> <span class="token punctuation">=</span> <span class="token string">&quot;/healthcheck&quot;</span>
+  <span class="token punctuation">}</span>
 
-  // &#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;
-  // stickiness {
-  //  type = &quot;&quot;
-  // }
+  <span class="token comment">// &#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9; &#x203B;&#x4EE5;&#x964D;&#x306B;&#x88DC;&#x8DB3;&#x8AAC;&#x660E;&#x3042;&#x308A;&#xFF0E;</span>
+  <span class="token comment">// stickiness {</span>
+  <span class="token comment">//  type = &quot;&quot;</span>
+  <span class="token comment">// }</span>
 
-  lifecycle {
-    create_before_destroy = false
-  }
-}
-</code></pre><h4 id="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><a name="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</h4>
+  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
+    <span class="token property">create_before_destroy</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><a name="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</h4>
 <p>LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x304C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;Terraform&#x304C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code>Error deleting Target Group: ResourceInUse: Target group &apos;arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/xxxxx-tg/xxxxx&apos; is currently in use by a listener or a rule
-    status code: 400, request id: xxxxx
-</code></pre><p>&#x3053;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x3082;&#x3046;&#x4E00;&#x5EA6;apply&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">Error deleting Target Group: ResourceInUse: Target group <span class="token string">&apos;arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/xxxxx-tg/xxxxx&apos;</span> is currently <span class="token keyword">in</span> use by a listener or a rule
+    status code: <span class="token number">400</span>, request id: xxxxx
+</code></pre>
+<p>&#x3053;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x3082;&#x3046;&#x4E00;&#x5EA6;apply&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529</a></p>
 <h4 id="&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><a name="&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;" class="plugin-anchor" href="#&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;NLB&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;</h4>
 <p>NLB&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
@@ -4072,52 +4080,55 @@ resource &quot;aws_lb_target_group&quot; &quot;this&quot; {
 <h4 id="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><a name="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;" class="plugin-anchor" href="#&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;AZ&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x3067;&#x306F;&#xFF0C;&#x30EC;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306B;&#xFF0C;&#xFF13;&#x3064;&#x306E;AZ&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;AZ&#x304C;&#xFF12;&#x3064;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#xFF13;&#x3064;&#x306E;AZ&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;Terraform&#x304C;&#x3053;&#x308C;&#x3092;&#x8A8D;&#x8B58;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;<code>ignore_changes</code>&#x3067;AZ&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p><a href="https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633</a></p>
-<pre class="language-"><code>#########################################
-# RDS Cluster
-#########################################
-resource &quot;aws_rds_cluster&quot; &quot;rds_cluster&quot; {
+<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
+<span class="token comment"># RDS Cluster</span>
+<span class="token comment">#########################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster&quot;</span></span> <span class="token string">&quot;rds_cluster&quot;</span> <span class="token punctuation">{</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-  availability_zones = [&quot;${var.region}${var.vpc_availability_zones.a}&quot;, &quot;${var.region}${var.vpc_availability_zones.c}&quot;]
+  <span class="token property">availability_zones</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>a<span class="token punctuation">}</span></span>&quot;</span>, <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>c<span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">]</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-  lifecycle {
-    ignore_changes = [
+  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
+    <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
       availability_zones
-    ]
-  }
-}
-</code></pre><h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;</h4>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;</h4>
 <p>&#x4E8B;&#x524D;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;AZ&#x3092;&#x8868;&#x3059;&#x8B58;&#x5225;&#x5B50;&#x3092;&#x5165;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;Terraform&#x306F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x3092;&#x9078;&#x3079;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;AZ&#x3068;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x95A2;&#x4FC2;&#x304C;&#x9006;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x5F8C;&#x306B;&#x624B;&#x52D5;&#x3067;&#x540D;&#x524D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308C;&#x3070;&#x3088;&#x3044;&#xFF0E;&#x3053;&#x306E;&#x5909;&#x66F4;&#x306F;&#xFF0C;Terraform&#x304C;&#x5DEE;&#x5206;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3057;&#x306A;&#x3044;&#x306E;&#x3067;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x3068;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x4E21;&#x65B9;&#x306B;&#xFF0C;<code>preferred_backup_window</code>&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;RDS&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x306F;&#x3044;&#x3051;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code>#########################################
-# RDS Cluster
-#########################################
-resource &quot;aws_rds_cluster_instance&quot; &quot;this&quot; {
+<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
+<span class="token comment"># RDS Cluster</span>
+<span class="token comment">#########################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster_instance&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-  preferred_backup_window = &quot;19:00-19:30&quot;
+  <span class="token property">preferred_backup_window</span> <span class="token punctuation">=</span> <span class="token string">&quot;19:00-19:30&quot;</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-}
-</code></pre><pre class="language-"><code>#########################################
-# RDS Cluster Instance
-#########################################
-resource &quot;aws_rds_cluster&quot; &quot;rds_cluster&quot; {
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
+<span class="token comment"># RDS Cluster Instance</span>
+<span class="token comment">#########################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster&quot;</span></span> <span class="token string">&quot;rds_cluster&quot;</span> <span class="token punctuation">{</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-  # preferred_backup_window = &quot;19:00-19:30&quot; # &#x203B;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;
+  <span class="token comment"># preferred_backup_window = &quot;19:00-19:30&quot; # &#x203B;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;</span>
 
-  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
-}
-</code></pre><p><br></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
 <h3 id="route53"><a name="route53" class="plugin-anchor" href="#route53"><i class="fa fa-link" aria-hidden="true"></i></a>Route53</h3>
 <h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
@@ -4940,7 +4951,7 @@ terraform plan <span class="token operator">|</span> ./bin/tfnotify --config ./<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-06-05T13:32:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-06T04:46:50.924Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-06-06T04:55:56.362Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-06T05:00:32.640Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
