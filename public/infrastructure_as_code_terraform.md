@@ -934,7 +934,7 @@ vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
 
 **＊実装例＊**
 
-```
+```hcl
 ###############################################
 # RDS
 ###############################################
@@ -1323,7 +1323,7 @@ resource "aws_instance" "server" {
 
 例として，VPCのサブネットを示す．ここでは，パブリックサブネット，applicationサブネット，datastoreサブネット，を```count```関数で構築したとする．
 
-```
+```hcl
 ###############################################
 # Public subnet
 ###############################################
@@ -1500,14 +1500,14 @@ resource "aws_nat_gateway" "this" {
 
 リソースの構築に```for_each```関数を使用した場合，そのリソースはmap型として扱われる．そのため，キー名を指定してアウトプットできる．
 
-```
+```hcl
 ###############################################
 # Variables
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
 
-```
+```hcl
 ###############################################
 # Output VPC
 ###############################################
@@ -2346,7 +2346,7 @@ resource "aws_api_gateway_stage" "example" {
 
 #### ・originブロック
 
-```
+```hcl
 resource "aws_cloudfront_distribution" "this" {
 
   # オリジン（ここではS3としている）
@@ -2364,7 +2364,7 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-```
+```hcl
 resource "aws_cloudfront_distribution" "this" {
 
   # オリジン（ここではALBとしている）
@@ -2933,7 +2933,7 @@ resource "aws_appautoscaling_target" "ecs" {
 
 #### ・よく使うオプション一覧（NLBの場合）
 
-```
+```hcl
 ###############################################
 # NLB target group
 ###############################################
@@ -2982,7 +2982,7 @@ resource "aws_lb_target_group" "this" {
 
 LBリスナーがターゲットグループに依存しているが，Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため，以下のようなエラーが発生する．
 
-```
+```shell
 Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/xxxxx-tg/xxxxx' is currently in use by a listener or a rule
 	status code: 400, request id: xxxxx
 ```
@@ -3112,7 +3112,7 @@ resource "aws_rds_cluster_instance" "this" {
 
 https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 
-```
+```hcl
 #########################################
 # RDS Cluster
 #########################################
@@ -3140,7 +3140,7 @@ resource "aws_rds_cluster" "rds_cluster" {
 
 クラスターとインスタンスの両方に，```preferred_backup_window```を設定できるが，RDSインスタンスに設定してはいけない．
 
-```
+```hcl
 #########################################
 # RDS Cluster
 #########################################
@@ -3155,7 +3155,7 @@ resource "aws_rds_cluster_instance" "this" {
 }
 ```
 
-```
+```hcl
 #########################################
 # RDS Cluster Instance
 #########################################
