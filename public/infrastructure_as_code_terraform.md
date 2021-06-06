@@ -587,7 +587,7 @@ terraform {
       # グローバルソースアドレスを指定
       source  = "hashicorp/aws"
       
-      // プロバイダーのバージョン変更時は initを実行
+      # プロバイダーのバージョン変更時は initを実行
       version = "3.0" 
     }
   }
@@ -603,7 +603,7 @@ stateファイルを管理する場所を設定する．S3などのリモート�
 ```hcl
 terraform {
 
-  // ローカルPCで管理するように設定
+  # ローカルPCで管理するように設定
   backend "local" {
     path = "${path.module}/terraform.tfstate"
   }
@@ -613,7 +613,7 @@ terraform {
 ```hcl
 terraform {
 
-  // S3で管理するように設定
+  # S3で管理するように設定
   backend "s3" {
     bucket                  = "<バケット名>"
     key                     = "<バケット内のディレクトリ>"
@@ -722,7 +722,7 @@ module "route53" {
     aws = aws.ue1
   }
   
-  // その他の設定値
+  # その他の設定値
 }
 ```
 
@@ -819,7 +819,7 @@ terraform {
     }
   }
   
-  // credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
+  # credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
   backend "s3" {
     bucket                  = "<バケット名>"
     key                     = "<バケット内のディレクトリ>"
@@ -829,7 +829,7 @@ terraform {
   }
 }
 
-// credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
+# credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
 provider "aws" {
   region                  = "ap-northeast-1"
   profile                 = "example"
@@ -871,14 +871,14 @@ terraform {
     }
   }
   
-  // リージョン，アクセスキー，シークレットアクセスキーは不要
+  # リージョン，アクセスキー，シークレットアクセスキーは不要
   backend "s3" {
     bucket  = "<バケット名>"
     key     = "<バケット内のディレクトリ>"
   }
 }
 
-// リージョン，アクセスキー，シークレットアクセスキーは不要
+# リージョン，アクセスキー，シークレットアクセスキーは不要
 provider "aws" {}
 ```
 
@@ -899,10 +899,10 @@ provider "aws" {}
 # ALB
 ###############################
 module "alb" {
-  // モジュールのResourceを参照
+  # モジュールのResourceを参照
   source = "../modules/alb"
   
-  // モジュールに他のモジュールのアウトプット値を渡す．
+  # モジュールに他のモジュールのアウトプット値を渡す．
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
@@ -923,7 +923,57 @@ module "alb" {
 ###############################
 # VPC
 ###############################
-vpc_cidr_block = "n.n.n.n/n" // IPv4アドレス範囲
+vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
+```
+
+#### ・値のデータ型
+
+単一値，list型，map型で定義できる．AZ，サブネットのCIDR，RDSのパラメータグループ値，などはmap型として保持しておくとよい．また，IPアドレスのセット，ユーザエージェント，などはlist型として保持しておくとよい．なお，RDSのパラメータグループの適正値については，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+
+**＊実装例＊**
+
+```
+###############################################
+# RDS
+###############################################
+rds_parameter_group_values = {
+  time_zone                = "asia/tokyo"
+  character_set_client     = "utf8mb4"
+  character_set_connection = "utf8mb4"
+  character_set_database   = "utf8mb4"
+  character_set_results    = "utf8mb4"
+  character_set_server     = "utf8mb4"
+  server_audit_events      = "connect,query,query_dcl,query_ddl,query_dml,table"
+  server_audit_logging     = 1
+  server_audit_logs_upload = 1
+  general_log              = 1
+  slow_query_log           = 1
+  long_query_time          = 3
+}
+
+###############################################
+# VPC
+###############################################
+vpc_availability_zones             = { a = "a", c = "c" }
+vpc_cidr                           = "n.n.n.n/23"
+vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
+vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
+
+###############################################
+# WAF
+###############################################
+waf_blocked_global_ip_addresses = [
+  "n.n.n.n/32",
+  "n.n.n.n/32",
+]
+
+waf_blocked_user_agents = [
+  "XXXXX",
+  "YYYYY"
+]
 ```
 
 <br>
@@ -932,16 +982,34 @@ vpc_cidr_block = "n.n.n.n/n" // IPv4アドレス範囲
 
 #### ・variableとは
 
-リソースで使用する変数を定義する．
+リソースで使用する変数のデータ型を定義する．
 
 **＊実装例＊**
 
 ```hcl
-###############################
-# Input Value
-###############################
-// AWSCredentials
-variable "credential" {
+###############################################
+# ECS
+###############################################
+variable "ecs_container_laravel_port_http" {
+  type = number
+}
+
+variable "ecs_container_nginx_port_http" {
+  type = number
+}
+
+###############################################
+# RDS
+###############################################
+variable "rds_auto_minor_version_upgrade" {
+  type = bool
+}
+
+variable "rds_instance_class" {
+  type = string
+}
+
+variable "rds_parameter_group_values" {
   type = map(string)
 }
 ```
@@ -1060,52 +1128,13 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
-#### ・map型でアウトプット
+#### ・count関数のアウトプット
 
-```hcl
-###############################################
-# Output VPC
-###############################################
-output "public_subnet_ids" {
-  value = {
-    a = aws_subnet.public[var.vpc_availability_zones.a].id,
-    c = aws_subnet.public[var.vpc_availability_zones.c].id
-  }
-}
+以降の説明を参考にせよ．
 
-output "private_app_subnet_ids" {
-  value = {
-    a = aws_subnet.private_app[var.vpc_availability_zones.a].id,
-    c = aws_subnet.private_app[var.vpc_availability_zones.c].id
-  }
-}
+#### ・for_each関数のアウトプット
 
-output "private_datastore_subnet_ids" {
-  value = {
-    a = aws_subnet.private_datastore[var.vpc_availability_zones.a].id,
-    c = aws_subnet.private_datastore[var.vpc_availability_zones.c].id
-  }
-}
-```
-
-```hcl
-###############################################
-# ALB
-###############################################
-resource "aws_lb" "this" {
-  name                       = "${var.environment}-${var.service}-alb"
-  subnets                    = values(private_app_subnet_ids)
-  security_groups            = [var.alb_security_group_id]
-  internal                   = false
-  idle_timeout               = 120
-  enable_deletion_protection = true
-
-  access_logs {
-    enabled = true
-    bucket  = var.alb_s3_bucket_id
-  }
-}
-```
+以降の説明を参考にせよ．
 
 <br>
 
@@ -1271,6 +1300,9 @@ resource "aws_s3_bucket_policy" "example" {
 **＊実装例＊**
 
 ```hcl
+###############################################
+# EC2
+###############################################
 resource "aws_instance" "server" {
   count = 4
   
@@ -1283,13 +1315,64 @@ resource "aws_instance" "server" {
 }
 ```
 
+#### ・list型でアウトプット
+
+リソースの構築に```count```関数を使用した場合，そのリソースはlist型として扱われる．そのため，キー名を指定してアウトプットできる．この時，アウトプットはlist型になる．ちなみに，```for_each```関数で構築したリソースはアスタリスクでインデックス名を指定できないので，注意．
+
+**＊実装例＊**
+
+例として，VPCのサブネットを示す．ここでは，パブリックサブネット，applicationサブネット，datastoreサブネット，を```count```関数で構築したとする．
+
+```
+###############################################
+# Public subnet
+###############################################
+resource "aws_subnet" "public" {
+  count = 2
+  
+  # ～ 省略 ～
+}
+
+###############################################
+# Private subnet
+###############################################
+resource "aws_subnet" "private_app" {
+  count = 2
+  
+  # ～ 省略 ～
+}
+
+resource "aws_subnet" "private_datastore" {
+  count = 2
+  
+  # ～ 省略 ～
+}
+```
+
+```hcl
+###############################################
+# Output VPC
+###############################################
+output "public_subnet_ids" {
+  value = aws_subnet.public[*].id
+}
+
+output "private_app_subnet_ids" {
+  value = aws_subnet.private_app[*].id
+}
+
+output "private_datastore_subnet_ids" {
+  value = aws_subnet.private_datastore[*].id
+}
+```
+
 <br>
 
 ### for_each
 
 #### ・for_eachとは
 
-事前に```for_each```に格納したmap型の```key```の数だけ，リソースを繰り返し実行する．繰り返し処理を行う時に，```count```とは違い，要素名を指定して出力することができる．
+事前に```for_each```に格納したmap型の```key```の数だけ，リソースを繰り返し実行する．繰り返し処理を行う時に，```count```とは違い，要素名を指定して出力できる．
 
 **＊実装例＊**
 
@@ -1323,6 +1406,172 @@ resource "aws_subnet" "public" {
       "${var.environment}-${var.service}-pub-%s-subnet",
       each.value
     )
+  }
+}
+```
+
+#### ・冗長化されたAZにおける設定
+
+冗長化されたAZで共通のルートテーブルを構築する場合，そこで，```for_each```関数を使用すると，少ない実装で構築できる．```for_each```関数で構築されたリソースは```apply```中にmap構造として扱われ，リソース名の下層にキー名でリソースが並ぶ構造になっている．これを参照するために，『```<リソースタイプ>.<リソース名>[each.key].<attribute>```』とする
+
+**＊実装例＊**
+
+パブリックサブネット，プライベートサブネット，プライベートサブネットに紐づくNAT Gatewayの設定が冗長化されたAZで共通の場合，```for_each```関数で構築する．
+
+```hcl
+###############################################
+# Variables
+###############################################
+vpc_availability_zones = { a = "a", c = "c" }
+```
+
+```hcl
+###############################################
+# Internet Gateway
+###############################################
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
+
+  tags = {
+    Name = "${var.environment}-${var.service}-igw"
+  }
+}
+
+###############################################
+# Route table (public)
+###############################################
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.this.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.this.id
+  }
+
+  tags = {
+    Name = "${var.environment}-${var.service}-pub-rtb"
+  }
+}
+
+###############################################
+# Route table (private)
+###############################################
+resource "aws_route_table" "private_app" {
+  for_each = var.vpc_availability_zones
+
+  vpc_id = aws_vpc.this.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.this[each.key].id
+  }
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-pvt-%s-app-rtb",
+      each.value
+    )
+  }
+}
+
+###############################################
+# NAT Gateway
+###############################################
+resource "aws_nat_gateway" "this" {
+  for_each = var.vpc_availability_zones
+
+  subnet_id     = aws_subnet.public[each.key].id
+  allocation_id = aws_eip.nat_gateway[each.key].id
+
+  tags = {
+    Name = format(
+      "${var.environment}-${var.service}-%s-ngw",
+      each.value
+    )
+  }
+
+  depends_on = [aws_internet_gateway.this]
+}
+```
+
+
+
+#### ・単一値でアウトプット
+
+リソースの構築に```for_each```関数を使用した場合，そのリソースはmap型として扱われる．そのため，キー名を指定してアウトプットできる．
+
+```
+###############################################
+# Variables
+###############################################
+vpc_availability_zones = { a = "a", c = "c" }
+```
+
+```
+###############################################
+# Output VPC
+###############################################
+output "public_a_subnet_id" {
+  value = aws_subnet.public[var.vpc_availability_zones.a].id
+}
+
+output "public_c_subnet_id" {
+  value = aws_subnet.public[var.vpc_availability_zones.c].id
+}
+```
+
+#### ・map型でアウトプット
+
+**＊実装例＊**
+
+```hcl
+###############################################
+# Variables
+###############################################
+vpc_availability_zones = { a = "a", c = "c" }
+```
+
+```hcl
+###############################################
+# Output VPC
+###############################################
+output "public_subnet_ids" {
+  value = {
+    a = aws_subnet.public[var.vpc_availability_zones.a].id,
+    c = aws_subnet.public[var.vpc_availability_zones.c].id
+  }
+}
+
+output "private_app_subnet_ids" {
+  value = {
+    a = aws_subnet.private_app[var.vpc_availability_zones.a].id,
+    c = aws_subnet.private_app[var.vpc_availability_zones.c].id
+  }
+}
+
+output "private_datastore_subnet_ids" {
+  value = {
+    a = aws_subnet.private_datastore[var.vpc_availability_zones.a].id,
+    c = aws_subnet.private_datastore[var.vpc_availability_zones.c].id
+  }
+}
+```
+
+```hcl
+###############################################
+# ALB
+###############################################
+resource "aws_lb" "this" {
+  name                       = "${var.environment}-${var.service}-alb"
+  subnets                    = values(private_app_subnet_ids)
+  security_groups            = [var.alb_security_group_id]
+  internal                   = false
+  idle_timeout               = 120
+  enable_deletion_protection = true
+
+  access_logs {
+    enabled = true
+    bucket  = var.alb_s3_bucket_id
   }
 }
 ```
@@ -1606,7 +1855,7 @@ resource "aws_elasticache_replication_group" "redis" {
 ```hcl
 resource "aws_example" "example" {
 
-  // 何らかの設定
+  # 何らかの設定
 
   lifecycle {
     ignore_changes = all
@@ -1894,21 +2143,19 @@ resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 # EXAMPLE
 ###############################################
 resource "aws_example" "this" {
-  // 最初にfor_each
-  for_each = var.vpc_availability_zones
-
-  // 各設定
-  subnet_id = aws_subnet.public[*].id
-
+  for_each = var.vpc_availability_zones # 最初にfor_each
+  # スペース
+  subnet_id = aws_subnet.public[*].id # 各設定
+  # スペース
   tags = {
     Name = format(
       "${var.environment}-${var.service}-%d-example",
       each.value
     )
   }
-  
+  # スペース
   depends_on = []
-
+  # スペース
   lifecycle {
     create_before_destroy = true
   }
@@ -1921,7 +2168,7 @@ resource "aws_example" "this" {
 
 #### ・基本ルール
 
-アウトプット値の名前は，```<リソース名>_<リソースタイプ>_<attribute名>```で命名する．
+アウトプット値の名前は，『```<リソース名>_<リソースタイプ>_<attribute名>```』で命名する．
 
 **＊実装例＊**
 
@@ -1932,8 +2179,6 @@ output "ecs_container_nginx_cloudwatch_log_group_name" {
   value = aws_cloudwatch_log_group.ecs_container_nginx.name
 }
 ```
-
-
 
 **＊実装例＊**
 
@@ -1953,31 +2198,6 @@ output "lambda_execute_iam_role_arn" {
 
 output "rds_enhanced_monitoring_iam_role_arn" {
   value = aws_iam_role.rds_enhanced_monitoring.arn
-}
-```
-
-#### ・list型アウトプット値は複数形
-
-countでループで構築したリソースは，list型でアウトプットすることができる．この時，アウトプットの変数名は複数形にする．ちなみに，for_eachで構築したリソースはアスタリスクでインデックス名を指定できないので，注意．
-
-**＊実装例＊**
-
-例として，VPCを示す．
-
-```hcl
-###############################################
-# Output VPC
-###############################################
-output "public_subnet_ids" {
-  value = aws_subnet.public[*].id
-}
-
-output "private_app_subnetids" {
-  value = aws_subnet.private_app[*].id
-}
-
-output "private_datastore_subnet_ids" {
-  value = aws_subnet.private_datastore[*].id
 }
 ```
 
@@ -2027,19 +2247,18 @@ output "nginx_ecr_repository_url" {
 
 ### AMI
 
-#### ・取得するAMIのバージョンを固定
-
-取得するAMIのバージョンを常に最新にしておく，EC2が再構築されなねない．そこで，特定のAMIを取得できるようにしておく．
+#### ・よく使うオプション一覧
 
 ```hcl
 ###############################################
 # For bastion
 ###############################################
 data "aws_ami" "bastion" {
-  # EC2が，意図せず再構築されないように，特定のAMIを取得します．
+  # 最新を取得するか否か
   most_recent = false
+  
+  # EC2が，意図せず再構築されないように，特定のAMIを取得する．
   owners      = ["amazon"]
-
   filter {
     name   = "name"
     values = ["amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2"]
@@ -2051,6 +2270,10 @@ data "aws_ami" "bastion" {
   }
 }
 ```
+
+#### ・取得するAMIのバージョンを固定
+
+取得するAMIのバージョンを常に最新にしておく，EC2が再構築されなねない．そこで，特定のAMIを取得できるようにしておく．
 
 <br>
 
@@ -2067,7 +2290,8 @@ data "aws_ami" "bastion" {
 resource "aws_api_gateway_rest_api" "example" {
   name        = "${var.environment}-${var.service}-api-for-example"
   description = "The API that enables two-way communication with ${var.environment}-example"
-  # VPCリンクのプロキシ統合のAPI
+  
+  # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
   body = templatefile(
     "${path.module}/open_api.yaml",
     {
@@ -2120,7 +2344,107 @@ resource "aws_api_gateway_stage" "example" {
 
 ### CloudFront
 
-#### ・全体の実装例
+#### ・originブロック
+
+```
+resource "aws_cloudfront_distribution" "this" {
+
+  # オリジン（ここではS3としている）
+  origin {
+    domain_name = var.s3_bucket_regional_domain_name
+    origin_id   = "S3-${var.s3_bucket_id}"
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.s3_example.cloudfront_access_identity_path
+    }
+  }
+  
+  # ～ 省略 ～  
+  
+}
+```
+
+```
+resource "aws_cloudfront_distribution" "this" {
+
+  # オリジン（ここではALBとしている）
+  origin {
+    domain_name = var.alb_dns_name
+    origin_id   = "ELB-${var.alb_name}"
+
+    custom_origin_config {
+      origin_ssl_protocols     = ["TLSv1.2"]
+      origin_protocol_policy   = "match-viewer"
+      origin_read_timeout      = 30
+      origin_keepalive_timeout = 5
+      http_port                = var.alb_listener_port_http
+      https_port               = var.alb_listener_port_https
+    }
+  }
+  
+  # ～ 省略 ～
+}
+```
+
+#### ・cache_behaviorブロック
+
+```hcl
+resource "aws_cloudfront_distribution" "this" {
+
+  ordered_cache_behavior {
+    path_pattern           = "/images/*"
+    target_origin_id       = "S3-${var.s3_bucket_id}"
+    viewer_protocol_policy = "redirect-to-https"
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods         = ["GET", "HEAD"]
+    min_ttl                = 0
+    max_ttl                = 31536000
+    default_ttl            = 86400
+    compress               = true
+
+    forwarded_values {
+      query_string = true
+
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  # ～ 省略 ～
+  
+}
+```
+
+```hcl
+resource "aws_cloudfront_distribution" "this" {
+
+  default_cache_behavior {
+    target_origin_id       = "ELB-${var.alb_name}"
+    viewer_protocol_policy = "redirect-to-https"
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods         = ["GET", "HEAD"]
+    min_ttl                = 0
+    max_ttl                = 31536000
+    default_ttl            = 86400
+    compress               = true
+
+    forwarded_values {
+      query_string = true
+      headers      = ["*"]
+
+      cookies {
+        forward = "all"
+      }
+    }
+  }
+  
+  # ～ 省略 ～
+  
+}
+```
+
+#### ・その他
 
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
@@ -2149,71 +2473,9 @@ resource "aws_cloudfront_distribution" "this" {
       restriction_type = "none"
     }
   }
-
-  # S3をオリジンに設定します．
-  origin {
-    domain_name = var.s3_bucket_regional_domain_name
-    origin_id   = "S3-${var.s3_bucket_id}"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.s3_example.cloudfront_access_identity_path
-    }
-  }
-
-  # ALBをオリジンに設定します．
-  origin {
-    domain_name = var.alb_dns_name
-    origin_id   = "ELB-${var.alb_name}"
-
-    custom_origin_config {
-      origin_ssl_protocols     = ["TLSv1.2"]
-      origin_protocol_policy   = "match-viewer"
-      origin_read_timeout      = 30
-      origin_keepalive_timeout = 5
-      http_port                = var.alb_listener_port_http
-      https_port               = var.alb_listener_port_https
-    }
-  }
-
-  ordered_cache_behavior {
-    path_pattern           = "/images/*"
-    target_origin_id       = "S3-${var.s3_bucket_id}"
-    viewer_protocol_policy = "redirect-to-https"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-    cached_methods         = ["GET", "HEAD"]
-    min_ttl                = 0
-    max_ttl                = 31536000
-    default_ttl            = 86400
-    compress               = true
-
-    forwarded_values {
-      query_string = true
-
-      cookies {
-        forward = "none"
-      }
-    }
-  }
-
-  default_cache_behavior {
-    target_origin_id       = "ELB-${var.alb_name}"
-    viewer_protocol_policy = "redirect-to-https"
-    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-    cached_methods         = ["GET", "HEAD"]
-    min_ttl                = 0
-    max_ttl                = 31536000
-    default_ttl            = 86400
-    compress               = true
-
-    forwarded_values {
-      query_string = true
-      headers      = ["*"]
-
-      cookies {
-        forward = "all"
-      }
-    }
-  }
+  
+  # ～ 省略 ～
+  
 }
 ```
 
@@ -2316,7 +2578,7 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 ### EC2
 
-#### ・全体の実装例
+#### ・よく使うオプション一覧
 
 ```hcl
 ###############################################
@@ -2659,6 +2921,7 @@ resource "aws_appautoscaling_target" "ecs" {
   scalable_dimension = "ecs:service:DesiredCount"
   max_capacity       = var.auto_scaling_ecs_task_max_capacity
   min_capacity       = var.auto_scaling_ecs_task_min_capacity
+  
   # この設定がなくとも，サービスリンクロールが自動的に構築され，AutoScalingにアタッチされる．
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
 }
@@ -2667,6 +2930,53 @@ resource "aws_appautoscaling_target" "ecs" {
 <br>
 
 ### LBリスナーとターゲットグループ
+
+#### ・よく使うオプション一覧（NLBの場合）
+
+```
+###############################################
+# NLB target group
+###############################################
+resource "aws_lb_target_group" "this" {
+  # 名前
+  name = "${var.environment}-${var.service}-nlb-tg"
+
+  # ポート
+  port = var.ecs_container_nginx_port_http
+
+  # プロトコル
+  protocol = "TCP"
+
+  # VPC
+  vpc_id = var.vpc_id
+
+  # 遅延登録時間
+  deregistration_delay = "60"
+
+  # ターゲットのタイプ
+  target_type = "ip"
+
+  # スロースタート ※以降に補足説明あり．
+  slow_start = "0"
+
+  # ヘルスチェック ※以降に補足説明あり．
+  health_check {
+    protocol          = "HTTP"
+    healthy_threshold = 3
+    # ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ，パスを設定できる．
+    path = "/healthcheck"
+  }
+
+  // スティッキーネス ※以降に補足説明あり．
+  // stickiness {
+  //  type = ""
+  // }
+
+  lifecycle {
+    create_before_destroy = false
+  }
+}
+```
 
 #### ・ターゲットグループの削除時にリスナーを先に削除できない．
 
@@ -2681,91 +2991,89 @@ Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbal
 
 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
-<br>
+#### ・NLBはスロースタートに非対応
 
-### Network Interface
+NLBに紐づくターゲットグループはスロースタートに非対応のため，これを明示的に無効化する必要がある．
 
-#### ・Network Interfaceをデタッチできない
+#### ・NLBヘルスチェックには設定可能な項目が少ない
 
-Network Interfaceは特定のリソースの構築に伴って，自動で構築されるため，Terraformの管理外にある．また，これらのリソースはNetwork Interfaceに依存している．そのため，Terraformによるデプロイの事前操作として，画面上からNetworkInterfaceをデタッチしない限り，リソースを削除できない．
+ターゲットグループの転送プロトコルがTCPの場合は，設定できないヘルスチェックオプションがいくつかある．
 
-| 関連付くリソース            | 役割                                          |
-| --------------------------- | --------------------------------------------- |
-| ALB                         | ALBのパブリックIPアドレスを決定する．         |
-| EC2                         | EC2のパブリックIPアドレスを決定する．         |
-| ECSタスク定義（Active状態） |                                               |
-| GlobalAccelerator           |                                               |
-| NAT Gateway                 | NAT GatewayのパブリックIPアドレスを決定する． |
-| RDS                         |                                               |
-| Security Group              |                                               |
-| VPC Endpoint                |                                               |
+参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
-<br>
+#### ・NLBスティッキーネスは明示的に無効化
 
-### Route53
+stickiness機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンク先のNOTE文を参考にせよ．
 
-#### ・全体の実装例
-
-```hcl
-###############################################
-# For api domain
-###############################################
-resource "aws_route53_zone" "example" {
-  name = var.route53_domain_example
-}
-
-resource "aws_route53_record" "example" {
-  zone_id = aws_route53_zone.example.id
-  name    = var.route53_domain_example
-  type    = "A"
-
-  alias {
-    name                   = var.alb_dns_name
-    zone_id                = var.alb_zone_id
-    evaluate_target_health = true
-  }
-}
-```
-
-#### ・ネームサーバレコードは管理外
-
-ホストゾーンを作成すると，レコードとして，ネームサーバの情報が自動的に設定される．これは，Terraformの管理外である．
+参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
 <br>
 
 ### RDS
 
-#### ・全体の実装例
+#### ・よく使うオプション一覧
 
 ```hcl
 #########################################
 # RDS Cluster
 #########################################
-resource "aws_rds_cluster" "rds_cluster" {
-  engine                          = "aurora-mysql"
-  engine_version                  = "5.7.mysql_aurora.2.08.3"
-  cluster_identifier              = "${var.environment}-${var.service}-rds-cluster"
-  master_username                 = var.rds_db_username_ssm_parameter_value
-  master_password                 = var.rds_db_password_ssm_parameter_value
-  availability_zones              = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
-  vpc_security_group_ids          = [var.rds_security_group_id]
-  db_subnet_group_name            = aws_db_subnet_group.this.name
-  port                            = var.rds_db_port_ssm_parameter_value
-  database_name                   = var.rds_db_name_ssm_parameter_value
+resource "aws_rds_cluster" "this" {
+  # エンジン
+  engine = "aurora-mysql"
+  
+  # エンジンバージョン
+  engine_version = "5.7.mysql_aurora.2.08.3"
+  
+  # クラスター名
+  cluster_identifier = "${var.environment}-${var.service}-rds-cluster"
+  
+  # マスターユーザ名．SSMパラメータス推奨．
+  master_username = var.rds_db_username_ssm_parameter_value
+  
+  # マスターユーザパス．SSMパラメータス推奨．
+  master_password = var.rds_db_password_ssm_parameter_value
+  
+  # AZ．※以降に補足説明あり．
+  availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
+  
+  # セキュリティグループ
+  vpc_security_group_ids = [var.rds_security_group_id]
+  
+  # サブネットグループ
+  db_subnet_group_name = aws_db_subnet_group.this.name
+  
+  # ポート．SSMパラメータス推奨．
+  port = var.rds_db_port_ssm_parameter_value
+  
+  # データベース名．SSMパラメータス推奨．
+  database_name = var.rds_db_name_ssm_parameter_value
+  
+  # パラメータグループ
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.this.id
+  
   storage_encrypted               = true
   backup_retention_period         = 7
+  
+  # バックアップウインドウの時間．※以降に補足説明あり．
   preferred_backup_window         = "19:00-19:30"
+  
   copy_tags_to_snapshot           = true
   final_snapshot_identifier       = "final-db-snapshot"
   skip_final_snapshot             = false
   enabled_cloudwatch_logs_exports = ["audit", "error", "general", "slowquery"]
+  
+  # メンテナンスウインドウの時間
   preferred_maintenance_window    = "sun:17:30-sun:18:00"
-  apply_immediately               = true
-  deletion_protection             = true
+  
+  # apply時に，すぐに適用するか，設定されたメンテナンスウインドウ時に実行するか．以降の説明を参考にせよ．
+  apply_immediately = true
+  
+  # 誤って，データベースが削除されないようにする．  
+  deletion_protection = true
 
   lifecycle {
     ignore_changes = [
+      # ※以降に補足説明あり．
       availability_zones
     ]
   }
@@ -2773,9 +3081,9 @@ resource "aws_rds_cluster" "rds_cluster" {
 ```
 
 ```hcl
-###############################################
+#########################################
 # RDS Cluster Instance
-###############################################
+#########################################
 resource "aws_rds_cluster_instance" "this" {
   for_each = var.vpc_availability_zones
 
@@ -2794,11 +3102,35 @@ resource "aws_rds_cluster_instance" "this" {
 }
 ```
 
+#### ・メンテナンスウインドウ時に変更適用
+
+メンテナンスウインドウ時の変更適用をTerraformで行う場合，一段階目に```apply_immediately```オプションを```false```に変更してapplyし，二段階目に修正をapplyする．
+
 #### ・クラスターにはAZが３つ必要
 
-クラスターでは，レプリケーションのために，３つのAZが必要である．そのため，指定したAZが２つであっても，３つのAZが設定される．```ignore_changes```でAZを指定しておく必要がある．
+クラスターでは，レプリケーションのために，３つのAZが必要である．そのため，指定したAZが２つであっても，コンソール画面上で３つのAZが自動的に設定される．Terraformがこれを認識しないように，```ignore_changes```でAZを指定しておく必要がある．
 
 https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
+
+```
+#########################################
+# RDS Cluster
+#########################################
+resource "aws_rds_cluster" "rds_cluster" {
+
+  # ～ 省略 ～
+
+  availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
+
+  # ～ 省略 ～
+
+  lifecycle {
+    ignore_changes = [
+      availability_zones
+    ]
+  }
+}
+```
 
 #### ・インスタンスを配置するAZは選べない
 
@@ -2807,6 +3139,80 @@ https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457
 #### ・インスタンスにバックアップウインドウは設定しない
 
 クラスターとインスタンスの両方に，```preferred_backup_window```を設定できるが，RDSインスタンスに設定してはいけない．
+
+```
+#########################################
+# RDS Cluster
+#########################################
+resource "aws_rds_cluster_instance" "this" {
+
+  # ～ 省略 ～
+
+  preferred_backup_window = "19:00-19:30"
+
+  # ～ 省略 ～
+
+}
+```
+
+```
+#########################################
+# RDS Cluster Instance
+#########################################
+resource "aws_rds_cluster" "rds_cluster" {
+
+  # ～ 省略 ～
+
+  # preferred_backup_window = "19:00-19:30" # ※実装しないようにする
+
+  # ～ 省略 ～
+
+}
+```
+
+<br>
+
+### Route53
+
+#### ・よく使うオプション一覧
+
+```hcl
+###############################################
+# For api domain
+###############################################
+resource "aws_route53_zone" "example" {
+  # ホストゾーン
+  name = var.route53_domain_example
+}
+
+resource "aws_route53_record" "example" {
+  # ホストゾーンID
+  zone_id = aws_route53_zone.example.id
+  
+  # ドメイン名
+  name    = var.route53_domain_example
+  
+  # レコードタイプ
+  type    = "A"
+
+  # ルーティング先のDNS情報（ここではALBとしている）
+  alias {
+    name                   = var.alb_dns_name
+    zone_id                = var.alb_zone_id
+    evaluate_target_health = true
+  }
+}
+```
+
+<br>
+
+
+
+### Route Table
+
+#### ・メインルートテーブルは自動構築
+
+Terraformを用いてVPCを構築した時，メインルートテーブルが自動的に構築される．そのため，これはTerraformの管理外である．
 
 <br>
 
@@ -2913,56 +3319,156 @@ NLBのアクセスログを送信するバケット内には，自動的に『/A
 
 <br>
 
-### VPC  ルートテーブル
+### WAF
 
-#### ・全体の実装例
+#### ・ruleブロック
+
+**＊実装例＊**
+
+API Gateway用のWAFに，特定のユーザエージェントを拒否するルールを設定する．
 
 ```hcl
-###############################################
-# Route table (public)
-###############################################
-resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.this.id
+resource "aws_wafv2_web_acl" "api_gateway" {
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.this.id
+  rule {
+    name     = "block-user-agents"
+    priority = 0
+
+    statement {
+
+      regex_pattern_set_reference_statement {
+        # 別ディレクトリのmain.tfファイルに分割した正規表現パターンセットを参照する．      
+        arn = var.wafv2_regex_pattern_set_regional_block_user_agents_arn
+
+        field_to_match {
+          # ヘッダーを検証する．
+          single_header {
+            name = "user-agent"
+          }
+        }
+
+        text_transformation {
+          priority = 0
+          type     = "NONE"
+        }
+      }
+    }
+
+    action {
+      block {}
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "APIGatewayWAFBlockUserAgentsRule"
+      sampled_requests_enabled   = true
+    }
+  }
+  
+  default_action {
+    allow {}
   }
 
-  tags = {
-    Name = "${var.environment}-${var.service}-pub-rtb"
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "APIGatewayALBWAFRules"
+    sampled_requests_enabled   = true
+  }  
+  
+  # ～ 省略 ～  
+  
+}  
+```
+**＊実装例＊**
+
+API Gateway用のWAFに，特定のグローバルIPアドレスを拒否するルールを設定する．
+
+```hcl
+resource "aws_wafv2_web_acl" "api_gateway" {
+
+  rule {
+    name     = "block-global-ip-addresses"
+    priority = 0
+
+    statement {
+
+      ip_set_reference_statement {
+        # 別ディレクトリのmain.tfファイルに分割したIPアドレスセットを参照する．
+        arn = var.waf_blocked_global_ip_addresses
+      }
+    }
+
+    action {
+      block {}
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "APIGatewayWAFBlockGlobalIPAddressesRule"
+      sampled_requests_enabled   = true
+    }
+   
   }
-}
-
-###############################################
-# Route table (private)
-###############################################
-resource "aws_route_table" "private_app" {
-  for_each = var.vpc_availability_zones
-
-  vpc_id = aws_vpc.this.id
-
-  route {
-    cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.this[each.key].id
+  
+  default_action {
+    allow {}
   }
 
-  tags = {
-    Name = format(
-      "${var.environment}-${var.service}-pvt-%s-app-rtb",
-      each.value
-    )
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "APIGatewayWAFRules"
+    sampled_requests_enabled   = true
+  }  
+  
+  # ～ 省略 ～
+  
+}  
+```
+**＊実装例＊**
+
+API Gateway用のWAFに，SQLインジェクションを拒否するマネージドルールを設定する．
+
+```hcl
+resource "aws_wafv2_web_acl" "api_gateway" {
+
+  rule {
+    name     = "block-sql-injection"
+    priority = 0
+
+    statement {
+
+      # マネージドルールを使用する．
+      managed_rule_group_statement {
+        vendor_name = "AWS"
+        name        = "AWSManagedRulesSQLiRuleSet"
+      }
+    }
+
+    override_action {
+      count {}
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "APIGatewayWAFBlockSQLInjectionRule"
+      sampled_requests_enabled   = true
+    }
   }
+  
+  default_action {
+    allow {}
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "APIGatewayWAFRules"
+    sampled_requests_enabled   = true
+  }  
+  
+  # ～ 省略 ～
+  
 }
 ```
-
-#### ・メインルートテーブルは自動構築
-
-Terraformを用いてVPCを構築した時，メインルートテーブルが自動的に構築される．そのため，これはTerraformの管理外である．
-
-<br>
-
-### WAF
 
 #### ・IPセットの依存関係
 
@@ -2977,7 +3483,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 
 ### 共通の設定
 
-#### ・Terraform管理外の方が良いAWSリソース
+#### ・Terraform管理外のAWSリソース
 
 以下のAWSリソースはTerraformで管理しない方が便利である．また，AWSの仕様上の理由で，管理外になってしまうものもある．Terraformの管理外のリソースには，コンソール画面上から，「```Not managed by = Terraform```」というタグをつけた方が良い．
 
@@ -2992,6 +3498,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | IAMロール                    | ・ユーザに紐づくロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築に伴って，自動的に作られるため，Terraformで管理できない． |
 | Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために，mysql providerという機能を使用する必要がある．しかし，使用する上でディレクトリ構成戦略と相性が悪い． |
+| Route53                      | ネームサーバーレコード                           | ホストゾーンを作成すると，レコードとして，ネームサーバレコードの情報が自動的に設定される．これは，Terraformの管理外である． |
 | S3                           | tfstateの管理バケット                            | tfstateファイルを格納するため，Terraformのデプロイより先に存在している必要がある． |
 | SSMパラメータストア          | 全て                                             | ECSに機密な環境変数を出力するため．                          |
 
@@ -3018,18 +3525,26 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 
 #### ・設定ファイル
 
-| jobs                   |                                                              |
-| ---------------------- | ------------------------------------------------------------ |
-| plan                   | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する． |
-| 承認ジョブ             |                                                              |
-| apply                  | developブランチからステージング環境にデプロイ                |
-| terraform_destroy_test | mainブランチから本番環境にデプロイ                           |
+CI/CDの構成は以下の通りとした．
 
-| workflows |                                               |
-| --------- | --------------------------------------------- |
-| feature   | featureブランチから開発環境にデプロイ         |
-| develop   | developブランチからステージング環境にデプロイ |
-| main      | mainブランチから本番環境にデプロイ            |
+| env  | 説明                                                         |
+| ---- | ------------------------------------------------------------ |
+| dev  | プルリクのレビュー時に，コードの変更を検証するためのインフラ環境 |
+| stg  | ステージング環境                                             |
+| prd  | 本番環境                                                     |
+
+| jobs        | 説明                                                         |
+| ----------- | ------------------------------------------------------------ |
+| plan        | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する． |
+| 承認ジョブ  |                                                              |
+| apply       | stg環境またはprd環境にデプロイ                               |
+| destroy_dev | プルリクでdev環境にデプロイしたインフラを削除する．          |
+
+| workflows | 説明                                 |
+| --------- | ------------------------------------ |
+| feature   | featureブランチからdev環境にデプロイ |
+| develop   | developブランチからstg環境にデプロイ |
+| main      | mainブランチからprd環境にデプロイ    |
 
 ```yaml
 version: 2.1
@@ -3116,14 +3631,14 @@ commands:
             ls -la
             source ./ops/terraform_apply.sh
 
-  # test環境に対して，terraform destroyを行います．
-  terraform_destroy_test:
+  # dev環境に対して，terraform destroyを行います．
+  terraform_destroy_dev:
     steps:
       - run:
-          name: Terraform destroy test
+          name: Terraform destroy dev
           command: |
             set -x
-            source ./ops/terraform_destroy_test.sh
+            source ./ops/terraform_destroy_dev.sh
 
 jobs:
   plan:
@@ -3153,7 +3668,7 @@ jobs:
           at: .
       - terraform_apply
 
-  destroy_test:
+  destroy_dev:
     parameters:
       exr:
         type: executor
@@ -3162,28 +3677,28 @@ jobs:
       - checkout
       - aws_setup
       - terraform_init
-      - terraform_destroy_test
+      - terraform_destroy_dev
 
 workflows:
-  # Test env
+  # Dev env
   feature:
     jobs:
       - plan:
-          name: plan_test
+          name: plan_dev
           exr:
             name: primary_container
-            env: test
+            env: dev
           filters:
             branches:
               only:
                 - /feature.*/
       - apply:
-          name: apply_test
+          name: apply_dev
           exr:
             name: primary_container
-            env: test
+            env: dev
           requires:
-            - plan_test
+            - plan_dev
 
   # Staging env
   develop:
@@ -3209,16 +3724,16 @@ workflows:
             env: stg
           requires:
             - hold_apply_stg
-      - hold_destroy_test:
+      - hold_destroy_dev:
           type: approval
           requires:
             - apply_stg
-      - destroy_test:
+      - destroy_dev:
           exr:
             name: primary_container
-            env: test
+            env: dev
           requires:
-            - hold_destroy_test
+            - hold_destroy_dev
 
   # Production env
   main:
@@ -3269,17 +3784,17 @@ terraform apply \
   ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
 ```
 
-#### ・terraform_destroy_test.sh
+#### ・terraform_destroy_dev.sh
 
 ```shell
 #!/bin/bash
 
 set -xeuo pipefail
 
-if [ $ENV = "test" ]; then
+if [ $ENV = "dev" ]; then
     # credentialsの情報を出力します．
     source ./aws_envs.sh
-    terraform destroy -var-file=./test/config.tfvars ./test
+    terraform destroy -var-file=./dev/config.tfvars ./dev
 else
     echo "The parameter ${ENV} is invalid."
     exit 1

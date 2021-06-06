@@ -108,7 +108,7 @@ TCP/IPモデルで用いられるプロトコルのうち，最も代表的な�
 
 #### ・物理層
 
-Network Interface Card（（例）LANアダプタ，LANボード，LANカード），リピータ，LANケーブル
+NIC：Network Interface Card（例：LANアダプタ，LANボード，LANカード），リピータ，LANケーブル
 
 <br>
 
