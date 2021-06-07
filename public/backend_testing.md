@@ -603,7 +603,9 @@ class ExampleControllerTest extends TestCase
 
 #### ・Data Provider
 
-メソッドのアノテーションで，```@test```と```@dataProvider データプロバイダ名```を宣言する．データプロバイダの返却値として配列を設定し，配列の値の順番で，引数に値を渡すことができる．
+テスト対象のメソッドの引数を事前に用意する．メソッドのアノテーションで，```@test```と```@dataProvider データプロバイダ名```を宣言する．データプロバイダの返却値として配列を設定し，配列の値の順番で，引数に値を渡すことができる．
+
+参考：https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
 **＊実装例＊**
 
@@ -614,19 +616,26 @@ use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /* @test
-     * @dataProvider provideData
+    /** 
+     * findメソッドをテストします．
+     *
+     * @test
+     * @dataProvider methodDataProvider
      */
-    public function testMethod($paramA, $paramB, $paramC)
+    public function testFind($paramA, $paramB, $paramC)
     {
         // 何らかの処理 
     }
     
-    public function provideData(): array
+    /** 
+     * findメソッドを引数を用意します．
+     *
+     * @return array
+     */    
+    public function methodDataProvider(): array
     {
         return [
             // 配列データは複数あっても良い，
-            ["あ", "い", "う"],
             ["1", "2", "3"]
         ];
     }
@@ -731,7 +740,7 @@ class ExampleTest extends TestCase
 
 #### ・モックツール，スタブツール
 
-PHPUnit，Phake，Mockery
+PHPUnit，Phake，Mockery，JUnit
 
 #### ・モック
 

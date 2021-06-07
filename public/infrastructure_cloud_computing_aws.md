@@ -1643,6 +1643,8 @@ CodeDeployを使用してデプロイを行う．本ノート内を検索せよ�
 
 #### ・awslogsドライバー
 
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | awslogs-group           | ログ送信先のCloudWatch Logsのロググループを設定する．        |                                                              |

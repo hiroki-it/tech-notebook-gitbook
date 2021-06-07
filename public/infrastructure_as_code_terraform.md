@@ -2145,7 +2145,7 @@ resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 resource "aws_example" "this" {
   for_each = var.vpc_availability_zones # 最初にfor_each
   # スペース
-  subnet_id = aws_subnet.public[*].id # 各設定
+  subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
   # スペース
   tags = {
     Name = format(
@@ -2967,10 +2967,10 @@ resource "aws_lb_target_group" "this" {
     path = "/healthcheck"
   }
 
-  // スティッキーネス ※以降に補足説明あり．
-  // stickiness {
-  //  type = ""
-  // }
+  # スティッキーネス ※以降に補足説明あり．
+  # stickiness {
+  #  type = ""
+  # }
 
   lifecycle {
     create_before_destroy = false
