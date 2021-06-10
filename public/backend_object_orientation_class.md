@@ -893,9 +893,9 @@ Generalizatoin，Realizationの関係性．
 
 参照リンク：
 
-https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
+- https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 
-https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
+- https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
 
 <br>
 
@@ -915,6 +915,7 @@ ModuleAとModuleBは，データ結合の関係にある．
 
 ```php
 <?php
+    
 class ModuleA // コールされる側
 {
     public function methodA(int $a, int $b, string $c)
@@ -926,6 +927,7 @@ class ModuleA // コールされる側
 
 ```php
 <?php
+    
 class ModuleB // コールする側
 {
     public function methodB()
@@ -942,6 +944,7 @@ class ModuleB // コールする側
 
 ```php
 <?php
+    
 /**
  * コールされる側
  *
@@ -973,6 +976,7 @@ ModuleAとModuleBは，スタンプ結合の関係にある．
 
 ```php
 <?php
+    
 class Common
 {
     private $value;
@@ -992,6 +996,7 @@ class Common
 
 ```php
 <?php
+    
 class ModuleA
 {
     public function methodA()
@@ -1007,6 +1012,7 @@ class ModuleA
 
 ```php
 <?php
+    
 class ModuleB
 {
     public function methodB(Common $common)
@@ -1050,10 +1056,28 @@ class ModuleB
 
 メソッドの特に，```construct```メソッド の引数から，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．Constructor Injectionのみが，```construct```メソッド によって，インスタンス作成のために依存関係の要件を強制できる．そのため，インジェクションの中で，システムの安全性のために最も優れている．
 
+```php
+<?php
+
+$supplier = new Supplier();
+    
+// ClientクラスはSuppierクラスに依存している．
+$client = new Client($supplier); 
+```
+
 #### ・Setter Injectionとは
 
-
 メソッドの特に，セッターの引数から，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．
+
+```php
+<?php
+
+$supplier = new Supplier();
+$client = new Client();
+
+// ClientクラスはSuppierクラスに依存している．
+$client->setSupplier($supplier)
+```
 
 #### ・Method Injectionとは
 
@@ -1065,7 +1089,7 @@ class ModuleB
 
 #### ・DI Container（依存性注入コンテナ），Service Containerとは
 
-クラス名を登録（バインド）しただけで新しいインスタンスを生成（リゾルブ）してくれるオブジェクトを『ServiceContainer』という．
+クラス名を登録（バインド）しただけで新しいインスタンスを生成（リゾルブ）してくれるオブジェクトを『Service Container』という．
 
 **＊実装例＊**
 
@@ -1073,6 +1097,7 @@ Pimpleライブラリを使用した場合
 
 ```php
 <?php
+    
 use Pimple\Container;
 
 use XxxLogger;
@@ -1082,14 +1107,17 @@ class Container
 {
     public function __construct()
     {
+        // XxxLoggerクラスのバインド
         $container["xxx.logger"] = function ($container) {
             return new XxxLogger();
         };
         
+        // YyyNotificationクラスのバインド
         $container["yyy.notification"] = function ($container) {
             return new YyyNotification();
         };
         
+        // Sampleクラスのバインド
         $container["sample"] = function ($container) {
             return new Sample($container["xxx.logger"], $container["yyy.notification"]);
         };
@@ -1099,12 +1127,14 @@ class Container
 
 ```php
 <?php
+    
 // autoload.php で，DIコンテナ自体のインスタンスを事前に生成．
 $container = new Container();
 ```
 
 ```php
 <?php
+    
 // DIコンテナの読み込み
 require_once __DIR__ . "/autoload.php";
 
@@ -1120,6 +1150,7 @@ $sample = $container["sample"];
 
 ```php
 <?php
+    
 class Sample
 {
     public function __construct($container)
@@ -1131,6 +1162,7 @@ class Sample
 ```
 ```php
 <?php
+    
 // DIコンテナ自体をインジェクションしてしまうと，不要なインスタンスにも依存してしまう．
 $sample = new Sample($container);
 ```

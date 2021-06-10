@@ -2,7 +2,7 @@
 
 ## 01. テスト全体の手順
 
-### テスティングフレームワークによるテスト
+### コードベースのテスト
 
 #### ・テスト手順
 
@@ -33,7 +33,17 @@ PHPUnit
 
 <br>
 
-## 02. PHPUnit
+## 02. ユニットテスト/機能テストの要素
+
+### 構成図
+
+各テストケース（テスト関数）はテストスイート（テストの組）から構成され，全てはテストプランでまとめられる．
+
+![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/test-plan_test-suite_test-case.jpg)
+
+<br>
+
+## 02-02. PHPUnitによるユニットテスト/機能テスト
 
 ### コマンド
 
@@ -88,9 +98,13 @@ Available test(s):
 
 PHPUnitの設定を行う．標準の設定では，あらかじめルートディレクトリに```tests```ディレクトリを配置し，これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく．また，```Test```で終わるphpファイルを作成しておく必要がある．
 
+参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
+
 #### ・```testsuites```タグ
 
-テストスイート（テストの組）を定義できる．```testsuites```タグ内の```testsuites```タグを追加変更すると，検証対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
+テストスイートを定義できる．```testsuites```タグ内の```testsuites```タグを追加変更すると，検証対象のディレクトリを増やし，また対象のディレクトリ名を変更できる．
+
+参考：https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites
 
 ```xml
 <phpunit>
@@ -734,7 +748,23 @@ class ExampleTest extends TestCase
 
 <br>
 
-## 03.  Test Double（テストダブル）
+### 命名規則
+
+#### ・テスト関数名
+
+『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する．
+
+参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+
+#### ・アサーションの比較値
+
+アサーションで値を比較する場合，値を定数として管理した方がよい．
+
+参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+
+<br>
+
+## 02-03.  Test Double（テストダブル）
 
 ### テストダブルの種類
 
@@ -919,7 +949,7 @@ class ExampleTest extends TestCase
 
 <br>
 
-## 04. ブラック/ホワイトボックステストにおける網羅
+## 03. ブラック/ホワイトボックステストにおける網羅
 
 ### ブラックボックステスト
 
@@ -1027,7 +1057,7 @@ AとBは，『1』または『0』になり得るとする．
 
 <br>
 
-## 05. PHPStan
+## 04. PHPStanによる静的解析
 
 ### コマンド
 
@@ -1081,7 +1111,7 @@ parameters:
 
 <br>
 
-## 06. テスト仕様書に基づく結合テスト
+## 05. テスト仕様書に基づく結合テスト
 
 ### 結合テストとは
 
@@ -1116,7 +1146,7 @@ parameters:
 <br>
 
 
-## 06-02. テスト仕様書に基づくシステムテスト
+## 05-02. テスト仕様書に基づくシステムテスト
 
 ### システムテスト
 

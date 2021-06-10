@@ -3470,6 +3470,84 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }
 ```
 
+**＊実装例＊**
+
+ALB用のWAFに，APIキーまたはBearerトークンをOR条件ルールを設定する．あくまで例としてで，本来であれば，別々のルールとした方が良い．
+
+```hcl
+resource "aws_wafv2_web_acl" "api_gateway" {
+
+  # x-api-keyヘッダーにAPIキーを含むリクエストを許可します．
+  rule {
+    name     = "allow-request-including-api-key"
+    priority = 3
+
+    statement {
+
+      or_statement {
+
+        # APIキーを持つのリクエストを許可します．
+        statement {
+
+          byte_match_statement {
+            positional_constraint = "EXACTLY"
+            search_string         = var.waf_api_key_ssm_parameter_value
+
+            field_to_match {
+
+              single_header {
+                name = "x-api-key"
+              }
+            }
+
+            text_transformation {
+              priority = 0
+              type     = "NONE"
+            }
+          }
+        }
+
+        # Bearerトークンを持つリクエストを許可します．        
+        statement {
+
+          byte_match_statement {
+            positional_constraint = "EXACTLY"
+            search_string         = var.waf_bearer_token_ssm_parameter_value
+
+            field_to_match {
+
+              single_header {
+                name = "authorization"
+              }
+            }
+
+            text_transformation {
+              priority = 0
+              type     = "NONE"
+            }
+          }
+        }
+      }
+    }
+
+    action {
+      allow {}
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "APIGatewayWAFAllowRequestIncludingAPIKeyRule"
+      sampled_requests_enabled   = true
+    }
+  }
+  
+  # ～ 省略 ～  
+  
+}  
+```
+
+
+
 #### ・IPセットの依存関係
 
 WAFのIPセットと他設定の依存関係に癖がある．新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする．もし同時に行った場合，Terraformは古いIPセットの削除処理を先に実行するが，これはWAFに紐づいているため，ここでエラーが起こってしまう．そのため，IPセットを新しく設定し直す場合は，以下の通り二つの段階に分けてデプロイするようにする．ちなみに，IPセットの名前を変更する場合は，更新処理ではなく削除を伴う再構築処理が実行されるため注意する．

@@ -229,7 +229,7 @@ $ go get <ドメインをルートとしたURL>
 
 #### ・オプション無し
 
-指定したパスをビルド対象として，ビルドのアーティファクトを生成する．
+指定したパスをビルド対象として，ビルドのアーティファクトを生成する．```xxxxx_test.go```ファイルはビルドから自動的に除外される．
 
 ```shell
 # cmdディレクトリをビルド対象として，ルートディレクトリにcmdアーティファクトを生成する．
@@ -346,10 +346,10 @@ $ go vet ./...
 
 #### ・オプション無し
 
-指定したパスのファイルで『```Test```』から始まるテスト関数を実行する．testディレクトリ内を再帰的に実行するのがおすすめ．
+指定したパスの```xxxxx_test.go```ファイルで『```Test```』から始まるテスト関数を実行する．testディレクトリ内を再帰的に実行するのがおすすめ．
 
 ```shell
-$ go test ./test/...
+$ go test ./...
 ```
 
 #### ・-v
@@ -357,15 +357,17 @@ $ go test ./test/...
 テスト時にテストの実行時間を出力する．
 
 ```shell
-$ go test -v ./test/...
+$ go test -v ./...
 ```
 
 #### ・-cover
 
-テスト時にテストの網羅率を出力する．
+テスト時にテストの命令網羅の網羅率を出力する．網羅条件については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
 ```shell
-$ go test -cover ./test/...
+$ go test -cover ./...
 ```
 
 <br>
@@ -603,6 +605,64 @@ func main() {
 }
 ```
 
+#### ・DI（依存性注入）
+
+構造体のデータとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+
+```go
+package main
+
+import "fmt"
+
+//========================
+// サプライヤー側
+//========================
+type Name struct {
+	FirstName string
+	LastName  string
+}
+
+func NewName(firstName string, lastName string) *Name {
+
+	return &Name{
+		FirstName: firstName,
+		LastName:  lastName,
+	}
+}
+
+func (n *Name) fullName() string {
+	return fmt.Sprintf("%s %s", n.FirstName, n.LastName)
+}
+
+//========================
+// クライアント側
+//========================
+type Person struct {
+	Name *Name
+}
+
+func NewPerson(name *Name) *Person {
+	return &Person{
+		Name: name,
+	}
+}
+
+func (p *Person) getName() *Name {
+	return p.Name
+}
+
+func main() {
+	name := NewName("Hiroki", "Hasegawa")
+
+	// コンストラクタインジェクションによるDI
+	person := NewPerson(name)
+
+	fmt.Printf("%#v\n", person.getName().fullName()) // "Hiroki Hasegawa"
+}
+```
+
 #### ・埋め込みによる委譲
 
 Goには継承がなく，代わりに委譲がある．構造体のデータとして別の構造体を埋め込むことにより，埋め込まれた構造体に処理の一部を委譲する．埋め込む側の構造体の初期化の記法に癖があるので注意する．インターフェースにおける委譲については，後述の説明を参考にせよ．
@@ -630,8 +690,8 @@ func NewName(firstName string, lastName string) *Name {
 	}
 }
 
-func (name *Name) fullName() string {
-	return fmt.Sprintf("%s %s", name.FirstName, name.LastName)
+func (n *Name) fullName() string {
+	return fmt.Sprintf("%s %s", n.FirstName, n.LastName)
 }
 
 //========================
@@ -651,11 +711,10 @@ func NewMyName(name *Name) *MyName {
 // main
 //================
 func main() {
-
 	// 埋め込む側の構造体の初期化
 	name := NewName("Hiroki", "Hasegawa")
 
-	// コンストラクタインジェクションによる依存性注入
+	// コンストラクタインジェクションによるDI
 	myName := NewMyName(name)
 
 	// myName構造体は，Name構造体のメソッドをコールできる．
@@ -1044,15 +1103,15 @@ func NewInsect(name string) (*InsectImpl, error) {
 }
 
 // 構造体に関数を関連付ける．
-func (insect InsectImpl) GetName() string {
-	return insect.Name
+func (i *InsectImpl) GetName() string {
+	return i.name
 }
 
-func (insect InsectImpl) Eat() string {
+func (i *InsectImpl) Eat() string {
 	return "食べる"
 }
 
-func (insect InsectImpl) Sleep() string {
+func (i *InsectImpl) Sleep() string {
 	return "眠る"
 }
 
@@ -1298,8 +1357,8 @@ import "fmt"
 
 type Age int
 
-func (age Age) PrintAge() string {
-    return fmt.Sprintf("%dです．", age)
+func (a Age) PrintAge() string {
+    return fmt.Sprintf("%dです．", a)
 }
 
 func main() {
@@ -1331,8 +1390,8 @@ func NewPerson(name string) *Person {
 }
 
 // 構造体に関数を関連付ける．
-func (person Person) GetName() string {
-	return person.name
+func (p Person) GetName() string {
+	return p.name
 }
 
 // 構造体から関数をコール
@@ -1369,13 +1428,13 @@ func NewPerson(name string) *Person {
 }
 
 // 値レシーバ
-func (person Person) SetName(name string) {
+func (p Person) SetName(name string) {
 	// 引数の構造体をコピーしてから使用
-	person.name = name
+	p.name = name
 }
 
-func (person Person) GetName() string {
-	return person.name
+func (p Person) GetName() string {
+	return p.name
 }
 
 func main() {
@@ -1403,13 +1462,13 @@ type Person struct {
 }
 
 // ポインタレシーバ
-func (person *Person) SetName(name string) {
+func (p *Person) SetName(name string) {
     // 引数の構造体をそのまま使用
-	person.Name = name
+	p.Name = name
 }
 
-func (person *Person) GetName() string {
-    return person.Name
+func (p *Person) GetName() string {
+    return p.Name
 }
 
 func main() {
@@ -2271,6 +2330,28 @@ if err != nil {
 
 ユニットテストは構造体を単位として行う．この時，検証する構造体が依存対象にある構造体をモックオブジェクトとして扱う必要がある．そのために，構造体をインターフェースの実装して用意しておき，この構造体を同じくインターフェースの実装としてのモックオブジェクトを用意しておく．これにより，構造体と同じ型でモックオブジェクトを扱えるようになる．
 
+#### ・構成
+
+ブラックボックステストとホワイトボックステストから構成される．以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+<br>
+
+### ブラックボックステスト
+
+#### ・実現方法
+
+テストファイルのパッケージ名が，同じディレクトリにある実際の処理ファイルに『```_test```』を加えたパッケージ名の場合，それはブラックボックステストになる．ちなみに，Goでは一つのディレクトリ内に一つのパッケージ名しか宣言できないが，ブラックボックステストのために『```_test```』を加えることは許されている．
+
+<br>
+
+### ホワイトボックステスト
+
+#### ・実現方法
+
+テストファイルのパッケージ名が，同じディレクトリにある実際の処理ファイルのパッケージ名と同じ場合，それはホワイトボックステストになる．
+
 #### ・網羅率
 
 網羅率はパッケージを単位として解析される．網羅については，以下のリンクを参考にせよ．
@@ -3104,7 +3185,7 @@ func main() {
 
 <br>
 
-## 10-02. AWSパッケージ
+## 10-02. 外部パッケージ
 
 ### aws-sdk-go-v2
 
