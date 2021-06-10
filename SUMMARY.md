@@ -91,7 +91,8 @@
 * 開発フロー
   * [▶ ︎システム開発フローの全体像](public/management_development_flow.md)
 * Git
-  * [▶ ︎Gitコマンド](public/git.md)
+  * [▶ ︎Git](public/git.md)
+  * [▶ ︎GitHub](public/github.md)
 * アルゴリズム
   * [▶ ︎アルゴリズムのロジック](public/backend_logic_algorithm.md)
 * R言語
