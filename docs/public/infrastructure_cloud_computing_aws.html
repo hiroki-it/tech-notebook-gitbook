@@ -2001,8 +2001,8 @@
 <td>API&#x304C;&#xFF0C;API Gateway&#x304B;&#x3089;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
-<td>CloudWatch Logs&#x306E;&#x8A2D;&#x5B9A;</td>
-<td>API Gateway&#x304C;CloudWatch Logs&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>CloudWatch&#x30ED;&#x30B0;&#x306E;&#x8A2D;&#x5B9A;</td>
+<td>API Gateway&#x304C;CloudWatch&#x30ED;&#x30B0;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 <td>&#x4E00;&#x3064;&#x306E;AWS&#x74B0;&#x5883;&#x306B;&#x3064;&#x304D;&#xFF0C;&#x4E00;&#x3064;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308C;&#x3070;&#x3088;&#x3044;&#xFF0E;</td>
 </tr>
 </tbody>
@@ -2296,11 +2296,11 @@
 <tbody>
 <tr>
 <td>CloudWatch&#x8A2D;&#x5B9A;</td>
-<td>CloudWatch Logs&#x306B;API Gateway&#x306E;&#x5B9F;&#x884C;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html" target="_blank">https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html</a></td>
+<td>CloudWatch&#x30ED;&#x30B0;&#x306B;API Gateway&#x306E;&#x5B9F;&#x884C;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html" target="_blank">https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html</a></td>
 </tr>
 <tr>
 <td>&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x8A18;&#x9332;</td>
-<td>CloudWatch Logs&#x306B;API Gateway&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html" target="_blank">https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html</a></td>
+<td>CloudWatch&#x30ED;&#x30B0;&#x306B;API Gateway&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html" target="_blank">https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html</a></td>
 </tr>
 <tr>
 <td>X-Ray&#x30C8;&#x30EC;&#x30FC;&#x30B9;</td>
@@ -2933,88 +2933,35 @@ jq  <span class="token string">&quot;.prefixes[] | select(.service==&quot;</span
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;"><a name="&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;</h4>
-<p>RDS&#x306E;&#x8A73;&#x7D30;&#x306A;CloudWatch&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;<code>performance_schema</code>&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3068;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html</a></p>
-<p><br></p>
-<h3 id="cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><a name="cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;" class="plugin-anchor" href="#cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;</h3>
-<h4 id="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
-<p>EC2&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x3067;&#x767A;&#x751F;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;CloudWatch&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3059;&#x308B;&#x5E38;&#x99D0;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<h4 id="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><a name="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;</h4>
-<p>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306F;&#xFF0C;<code>/opt/aws/amazon-cloudwatch-agent/bin/config.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;&#x5206;&#x5272;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;"><a name="&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;" class="plugin-anchor" href="#&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;</h4>
 <table>
 <thead>
 <tr>
-<th>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;</th>
-<th>&#x8AAC;&#x660E;</th>
+<th>&#x7A2E;&#x985E;</th>
+<th>&#x540D;&#x524D;</th>
 <th>&#x88DC;&#x8DB3;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>agent</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
-<td>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x5168;&#x4F53;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
-<td>&#x30FB;&#x30A6;&#x30A3;&#x30B6;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;&#x306F;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x30FB;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>RDS</td>
+<td>&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;</td>
+<td>RDS&#x306E;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;<code>performance_schema</code>&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3068;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm</a></td>
 </tr>
 <tr>
-<td><code>metrics</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
-<td></td>
-<td>&#x30FB;&#x30A6;&#x30A3;&#x30B6;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;&#x306F;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x30FB;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4F55;&#x3082;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</td>
+<td>ECS</td>
+<td>Container &#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;</td>
+<td>ECS&#x306E;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
-<td><code>logs</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
-<td></td>
+<td>Lambda</td>
+<td>Lambda&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;</td>
+<td>Lambda&#x306E;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</td>
 </tr>
 </tbody>
 </table>
-<p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>amazon-cloudwatch-agent-ctl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
-
-<span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x78BA;&#x8A8D;</span>
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
-
-<span class="token comment">### CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
-$ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
-
-<span class="token comment">### &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x69CB;&#x6587;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
-$ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
-
-<span class="token comment">### OS&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
-$ systemctl list-unit-files --type<span class="token operator">=</span>service
-</code></pre>
-<h4 id="&#x30FB;log&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;log&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;log&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;log&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5834;&#x5408;</h4>
-<p>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;CloudWatch&#x306B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3059;&#x308B;&#x3060;&#x3051;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>/opt/aws/amazon-cloudwatch-agent/bin/config.json</code>&#xFF09;&#x306B;&#x306F;<code>log</code>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5B9F;&#x88C5;&#x3067;&#x826F;&#x3044;&#xFF0E;<code>run_as_user</code>&#x306B;&#x306F;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF08;&#x4F8B;&#xFF1A;<code>cwagent</code>&#xFF09;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">&quot;agent&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;run_as_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cwagent&quot;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">&quot;logs&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;logs_collected&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token property">&quot;files&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;collect_list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-          <span class="token punctuation">{</span>
-            <span class="token property">&quot;file_path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/var/log/nginx/error.log&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;log_group_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/example-www/var/log/nginx/error_log&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;log_stream_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;{instance_id}&quot;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span>
-            <span class="token property">&quot;file_path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/var/log/php-fpm/error.log&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;log_group_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/example-www/var/log/php-fpm/error_log&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;log_stream_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;{instance_id}&quot;</span>
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">]</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
 <p><br></p>
-<h3 id="cloudwatch-logs"><a name="cloudwatch-logs" class="plugin-anchor" href="#cloudwatch-logs"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch Logs</h3>
+<h3 id="cloudwatch&#x30ED;&#x30B0;"><a name="cloudwatch&#x30ED;&#x30B0;" class="plugin-anchor" href="#cloudwatch&#x30ED;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30ED;&#x30B0;</h3>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x9805;&#x76EE;</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30ED;&#x30B0;&#x30B5;&#x30FC;&#x30D0;&#x3068;&#x3057;&#x3066;&#x50CD;&#x304F;&#xFF0E;&#x69D8;&#x3005;&#x306A;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x53CE;&#x96C6;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <table>
@@ -3042,7 +2989,7 @@ $ systemctl list-unit-files --type<span class="token operator">=</span>service
 <td></td>
 </tr>
 <tr>
-<td>Logs Insights</td>
+<td>Logs&#x30A4;&#x30F3;&#x30B5;&#x30A4;&#x30C8;</td>
 <td>&#x30AF;&#x30A8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30ED;&#x30B0;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 </tbody>
@@ -3064,12 +3011,12 @@ $ systemctl list-unit-files --type<span class="token operator">=</span>service
 </tr>
 <tr>
 <td>&#x540D;&#x524D;&#x7A7A;&#x9593;</td>
-<td>&#x7D10;&#x3065;&#x304F;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x5C5E;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;CloudWatch Logs&#x304C;&#xFF0C;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x5024;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x7D10;&#x3065;&#x304F;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x5C5E;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;CloudWatch&#x30ED;&#x30B0;&#x304C;&#xFF0C;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x5024;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 <td></td>
 </tr>
 <tr>
 <td>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</td>
-<td>&#x7D10;&#x3065;&#x304F;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x5C5E;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x5185;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;CloudWatch Logs&#x304C;&#xFF0C;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x5024;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x7D10;&#x3065;&#x304F;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x5C5E;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x5185;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;CloudWatch&#x30ED;&#x30B0;&#x304C;&#xFF0C;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x5024;&#x3092;&#x767A;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 <td></td>
 </tr>
 <tr>
@@ -3088,20 +3035,87 @@ $ systemctl list-unit-files --type<span class="token operator">=</span>service
 </code></pre>
 <h4 id="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;.png" alt="&#x540D;&#x524D;&#x7A7A;&#x9593;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0C;&#x30C7;&#x30A3;&#x30E1;&#x30F3;&#x30B7;&#x30E7;&#x30F3;"></p>
-<h4 id="&#x30FB;cloudwatch-logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;"><a name="&#x30FB;cloudwatch-logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;" class="plugin-anchor" href="#&#x30FB;cloudwatch-logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch Logs&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;</h4>
-<p>2020/10/05&#x73FE;&#x5728;&#x306F;&#x975E;&#x63A8;&#x5968;&#x3067;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x8A2D;&#x5B9A;&#x306E;&#x79FB;&#x884C;&#x304C;&#x63A8;&#x5968;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><a name="cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;" class="plugin-anchor" href="#cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x5E38;&#x99D0;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;CloudWatch&#x306B;&#x5BFE;&#x3057;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><a name="&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
+<td>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x5168;&#x4F53;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30FB;&#x30A6;&#x30A3;&#x30B6;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;&#x306F;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x30FB;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>metrics</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
+<td></td>
+<td>&#x30FB;&#x30A6;&#x30A3;&#x30B6;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;&#x306F;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x30FB;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x4F55;&#x3082;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>logs</code>&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306F;&#xFF0C;<code>/opt/aws/amazon-cloudwatch-agent/bin/config.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x5206;&#x5272;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>amazon-cloudwatch-agent-ctl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF0E;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;CloudWatch&#x306B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3060;&#x3051;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>/opt/aws/amazon-cloudwatch-agent/bin/config.json</code>&#xFF09;&#x306B;&#x306F;<code>log</code>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x307F;&#x306E;&#x5B9F;&#x88C5;&#x3067;&#x826F;&#x3044;&#xFF0E;<code>run_as_user</code>&#x306B;&#x306F;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF08;&#x4F8B;&#xFF1A;<code>cwagent</code>&#xFF09;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;EC2&#x5185;&#x306E;<code>etc</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x8A2D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell"><span class="token comment">#############################</span>
-<span class="token comment"># /var/awslogs/awscli.conf</span>
-<span class="token comment">#############################</span>
-
-<span class="token punctuation">[</span>plugins<span class="token punctuation">]</span>
-cwlogs <span class="token operator">=</span> cwlogs
-<span class="token punctuation">[</span>default<span class="token punctuation">]</span>
-region <span class="token operator">=</span> ap-northeast-1
+<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;agent&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;run_as_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cwagent&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;logs&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;logs_collected&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;files&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;collect_list&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;file_path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/var/log/nginx/error.log&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;log_group_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/example-www/var/log/nginx/error_log&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;log_stream_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;{instance_id}&quot;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">&quot;file_path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/var/log/php-fpm/error.log&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;log_group_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/example-www/var/log/php-fpm/error_log&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;log_stream_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;{instance_id}&quot;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>OS&#xFF0C;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#xFF0C;&#x306E;&#x5404;&#x5C64;&#x3067;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#x306E;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># EC2&#x5185;&#x306B;&#x3042;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x305B;&#x308B;&#xFF08;&#x518D;&#x8D77;&#x52D5;&#x3092;&#x542B;&#x3080;&#xFF09;</span>
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+<span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x78BA;&#x8A8D;</span>
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
+
+<span class="token comment">### CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
+$ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+<span class="token comment">### &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x69CB;&#x6587;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</span>
+$ <span class="token function">tail</span> -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+
+<span class="token comment">### OS&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;</span>
+$ systemctl list-unit-files --type<span class="token operator">=</span>service
+</code></pre>
+<p><br></p>
+<h3 id="cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><a name="cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;" class="plugin-anchor" href="#cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;"><a name="&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3068;&#x306F;&#xFF08;&#x975E;&#x63A8;&#x5968;&#xFF09;</h4>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x5E38;&#x99D0;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;CloudWatch&#x30ED;&#x30B0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;2020/10/05&#x73FE;&#x5728;&#x306F;&#x975E;&#x63A8;&#x5968;&#x3067;&#xFF0C;CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3078;&#x306E;&#x8A2D;&#x5B9A;&#x306E;&#x79FB;&#x884C;&#x304C;&#x63A8;&#x5968;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><a name="&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;cloudwatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CloudWatch&#x30ED;&#x30B0;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;</h4>
+<p>conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5185;&#x306E;<code>etc</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4E0B;&#x306B;&#x8A2D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;OS&#xFF0C;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#xFF0C;&#x306E;&#x5404;&#x5C64;&#x3067;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#x306E;&#x304C;&#x3088;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-shell"><span class="token comment">#############################</span>
 <span class="token comment"># /var/awslogs/awslogs.conf</span>
@@ -3151,6 +3165,16 @@ log_stream_name  <span class="token operator">=</span> <span class="token punctu
 initial_position <span class="token operator">=</span> start_of_file
 log_group_name   <span class="token operator">=</span> /var/www/project/app/storage/logs/laravel_log.production
 </code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment">#############################</span>
+<span class="token comment"># /var/awslogs/awscli.conf</span>
+<span class="token comment">#############################</span>
+
+<span class="token punctuation">[</span>plugins<span class="token punctuation">]</span>
+cwlogs <span class="token operator">=</span> cwlogs
+<span class="token punctuation">[</span>default<span class="token punctuation">]</span>
+region <span class="token operator">=</span> ap-northeast-1
+</code></pre>
+<h4 id="&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x64CD;&#x4F5C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
 <p>&#x8A2D;&#x5B9A;&#x5F8C;&#xFF0C;<code>awslogs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-shell"><span class="token comment"># CloudWatch&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
@@ -3826,7 +3850,7 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <h4 id="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;</h4>
 <p>&#x30BF;&#x30B9;&#x30AF;&#x5185;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#xFF0C;&#x4ED6;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;S3&#x3084;SSM&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x3092;&#x4E0E;&#x3048;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;&#x3067;&#x306F;&#x306A;&#x304F;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x6A29;&#x9650;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;CloudWatch Logs&#x306B;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;CloudWatch&#x30ED;&#x30B0;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
   <span class="token property">&quot;Version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2012-10-17&quot;</span><span class="token punctuation">,</span>
   <span class="token property">&quot;Statement&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -3859,7 +3883,7 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;</h4>
-<p>&#x30BF;&#x30B9;&#x30AF;&#x4E0A;&#x306B;&#x5B58;&#x5728;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x304C;&#xFF0C;&#x4ED6;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3067;&#x3042;&#x308B;&#x300E;<code>AmazonECSTaskExecutionRolePolicy</code>&#x300F;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306B;&#x306F;&#xFF0C;ECR&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x306E;&#x4ED6;&#xFF0C;CloudWatch Logs&#x306B;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x6A29;&#x9650;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30BF;&#x30B9;&#x30AF;&#x5185;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3068;&#x306F;&#x533A;&#x5225;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</p>
+<p>&#x30BF;&#x30B9;&#x30AF;&#x4E0A;&#x306B;&#x5B58;&#x5728;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x304C;&#xFF0C;&#x4ED6;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30ED;&#x30FC;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3067;&#x3042;&#x308B;&#x300E;<code>AmazonECSTaskExecutionRolePolicy</code>&#x300F;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306B;&#x306F;&#xFF0C;ECR&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x306E;&#x4ED6;&#xFF0C;CloudWatch&#x30ED;&#x30B0;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x6A29;&#x9650;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30BF;&#x30B9;&#x30AF;&#x5185;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30BF;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3068;&#x306F;&#x533A;&#x5225;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</p>
 <pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
   <span class="token property">&quot;Version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2012-10-17&quot;</span><span class="token punctuation">,</span>
   <span class="token property">&quot;Statement&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -4028,7 +4052,7 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 <tbody>
 <tr>
 <td>awslogs-group</td>
-<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch Logs&#x306E;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch&#x30ED;&#x30B0;&#x306E;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 <td></td>
 </tr>
 <tr>
@@ -4038,12 +4062,12 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 </tr>
 <tr>
 <td>awslogs-region</td>
-<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch Logs&#x306E;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch&#x30ED;&#x30B0;&#x306E;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 <td></td>
 </tr>
 <tr>
 <td>awslogs-stream-prefix</td>
-<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch Logs&#x306E;&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306E;&#x30D7;&#x30EC;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x30B9;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30ED;&#x30B0;&#x9001;&#x4FE1;&#x5148;&#x306E;CloudWatch&#x30ED;&#x30B0;&#x306E;&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306E;&#x30D7;&#x30EC;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x30B9;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</td>
 <td>&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x306B;&#x306F;&#xFF0C;&#x300C;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30EC;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;</span><span class="token punctuation">&gt;</span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30BF;&#x30B9;&#x30AF;ID</span><span class="token punctuation">&gt;</span></span></code>&#x300D;&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
 </tr>
 </tbody>
@@ -4098,7 +4122,7 @@ aws ecs <span class="token function">wait</span> tasks-stopped <span class="toke
 </thead>
 <tbody>
 <tr>
-<td>CloudWatch Logs</td>
+<td>CloudWatch&#x30ED;&#x30B0;</td>
 <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
 <td>ECS&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3092;POST&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0E;</td>
 </tr>
@@ -5054,6 +5078,12 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 <tr>
 <td>&#x30D7;&#x30ED;&#x30D3;&#x30B8;&#x30E7;&#x30CB;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x8A2D;&#x5B9A;</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x30E2;&#x30CB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;</td>
+<td>Lambda&#x3092;CloudWatch&#x307E;&#x305F;&#x306F;X-Ray&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x6B21;&#x306E;&#x65B9;&#x6CD5;&#x304C;&#x3042;&#x308B;<br>&#x30FB;CloudWatch&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;<br>&#x30FB;CloudWatch&#x306E;Lambda Insights&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30D1;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;<br>&#x30FB;X-Ray&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;API&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0C;Lambda&#x30B3;&#x30FC;&#x30EB;&#xFF0C;Lambda&#x306E;&#x4E0B;&#x6D41;&#x3068;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x901A;&#x4FE1;&#x3092;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x3092;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 </tbody>
 </table>
@@ -5223,7 +5253,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 </tbody>
 </table>
 <h4 id="&#x30FB;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x30C7;&#x30D0;&#x30C3;&#x30B0;"><a name="&#x30FB;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x30C7;&#x30D0;&#x30C3;&#x30B0;" class="plugin-anchor" href="#&#x30FB;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x30C7;&#x30D0;&#x30C3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x30C7;&#x30D0;&#x30C3;&#x30B0;</h4>
-<p>Lambda&#x3067;&#x95A2;&#x6570;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3068;&#xFF0C;CloudWatch Logs&#x306E;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#xFF0C;&#x300E;<code>/aws/lambda/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x95A2;&#x6570;&#x540D;</span><span class="token punctuation">&gt;</span></span></code>&#x300F;&#x3068;&#x3044;&#x3046;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;Lambda&#x306E;&#x95A2;&#x6570;&#x5185;&#x3067;&#x767A;&#x751F;&#x3057;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3084;<code>console.log</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30ED;&#x30B0;&#x306F;&#x3053;&#x3053;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x90FD;&#x5EA6;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</p>
+<p>Lambda&#x3067;&#x95A2;&#x6570;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3068;&#xFF0C;CloudWatch&#x30ED;&#x30B0;&#x306E;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#xFF0C;&#x300E;<code>/aws/lambda/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x95A2;&#x6570;&#x540D;</span><span class="token punctuation">&gt;</span></span></code>&#x300F;&#x3068;&#x3044;&#x3046;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;Lambda&#x306E;&#x95A2;&#x6570;&#x5185;&#x3067;&#x767A;&#x751F;&#x3057;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x3084;<code>console.log</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30ED;&#x30B0;&#x306F;&#x3053;&#x3053;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x90FD;&#x5EA6;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3053;&#x3068;&#xFF0E;</p>
 <p><br></p>
 <h3 id="&#x540C;&#x6642;&#x5B9F;&#x884C;"><a name="&#x540C;&#x6642;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x540C;&#x6642;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x540C;&#x6642;&#x5B9F;&#x884C;</h3>
 <h4 id="&#x30FB;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x306E;&#x4E88;&#x7D04;"><a name="&#x30FB;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x306E;&#x4E88;&#x7D04;" class="plugin-anchor" href="#&#x30FB;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x306E;&#x4E88;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x306E;&#x4E88;&#x7D04;</h4>
@@ -6604,7 +6634,7 @@ NOW<span class="token punctuation">(</span><span class="token punctuation">)</sp
 <pre class="language-"><code class="lang-json"><span class="token comment">// &#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306F;&#x4E0D;&#x8981;</span>
 </code></pre>
 <h4 id="&#x30FB;lambda&#x304B;&#x3089;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;"><a name="&#x30FB;lambda&#x304B;&#x3089;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;" class="plugin-anchor" href="#&#x30FB;lambda&#x304B;&#x3089;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Lambda&#x304B;&#x3089;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3092;&#x8A31;&#x53EF;</h4>
-<p>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306F;&#x4E0D;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x300E;<code>AWSLambdaExecute</code>&#x300F;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;Lambda&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306B;&#x306F;&#xFF0C;S3&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x306E;&#x4ED6;&#xFF0C;CloudWatch Logs&#x306B;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x6A29;&#x9650;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p>&#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306F;&#x4E0D;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;AWS&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306E;&#x300E;<code>AWSLambdaExecute</code>&#x300F;&#x304C;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30FC;&#x30EB;&#x3092;Lambda&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x306B;&#x306F;&#xFF0C;S3&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x306E;&#x4ED6;&#xFF0C;CloudWatch&#x30ED;&#x30B0;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x6A29;&#x9650;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
   <span class="token property">&quot;Version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2012-10-17&quot;</span><span class="token punctuation">,</span>
   <span class="token property">&quot;Statement&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -8382,7 +8412,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"next":{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","ref":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","articles":[]},"previous":{"title":"AWS","level":"1.12.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"path":"public/infrastructure_cloud_computing_aws.md","ref":"public/infrastructure_cloud_computing_aws.md","articles":[]},{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","ref":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-06-07T08:55:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-10T17:06:18.407Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"next":{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","ref":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","articles":[]},"previous":{"title":"AWS","level":"1.12.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎Amazon Web Service","level":"1.12.1.1.1","depth":4,"path":"public/infrastructure_cloud_computing_aws.md","ref":"public/infrastructure_cloud_computing_aws.md","articles":[]},{"title":"▶ ︎API Gatewayインポート機能","level":"1.12.1.1.2","depth":4,"path":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","ref":"public/infrastructure_cloud_computing_aws_api_gateway_import.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_cloud_computing_aws.md","mtime":"2021-06-12T02:35:04.496Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-13T09:50:02.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2268,11 +2268,11 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h3 id="&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;"><a name="&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;" class="plugin-anchor" href="#&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E8B;&#x524D;&#x6E96;&#x5099;&#x3068;&#x5F8C;&#x7247;&#x4ED8;&#x3051;</h3>
+<h3 id="&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;"><a name="&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;</h3>
 <h4 id="&#x30FB;setup&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;setup&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;setup&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>setUp</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>&#x30C6;&#x30B9;&#x30C8;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x524D;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x306E;&#x524D;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x6E96;&#x5099;&#x3059;&#x308B;&#xFF0E;</p>
+<p>DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">PHPUnit<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>TestCase</span><span class="token punctuation">;</span>
@@ -2281,6 +2281,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 <span class="token punctuation">{</span>
     <span class="token keyword">protected</span> <span class="token variable">$container</span><span class="token punctuation">;</span>
 
+    <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x306E;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
     <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
@@ -2289,7 +2290,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x5358;&#x4F53;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x5B9F;&#x969B;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x4F9D;&#x5B58;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3059;&#x3067;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x306F;&#x305A;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3068;&#x540C;&#x3058;&#x3088;&#x3046;&#x306B;&#x4F9D;&#x5B58;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x6E96;&#x5099;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<p>&#x5358;&#x4F53;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x5B9F;&#x969B;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x4F9D;&#x5B58;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3059;&#x3067;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x5316;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x306F;&#x305A;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3068;&#x540C;&#x3058;&#x3088;&#x3046;&#x306B;&#x4F9D;&#x5B58;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x4E8B;&#x524D;&#x306B;&#x751F;&#x6210;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">use</span> <span class="token package">PHPUnit<span class="token punctuation">\</span>Framework<span class="token punctuation">\</span>TestCase</span><span class="token punctuation">;</span>
@@ -2303,7 +2304,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
         <span class="token comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</span>
         <span class="token keyword static-context">parent</span><span class="token operator">::</span><span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// &#x4E8B;&#x524D;&#x306B;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x69CB;&#x7BC9;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</span>
+        <span class="token comment">// &#x4E8B;&#x524D;&#x306B;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x751F;&#x6210;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</span>
         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">hoge</span> <span class="token operator">=</span> <span class="token class-name static-context">Phake</span><span class="token operator">::</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token class-name static-context">Hoge</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -2317,7 +2318,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;teardown&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;teardown&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;teardown&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>tearDown</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>&#x30C6;&#x30B9;&#x30C8;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4E00;&#x756A;&#x6700;&#x5F8C;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3084;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x5F8C;&#x306E;&#x691C;&#x8A3C;&#x3067;&#x3082;&#x305D;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8AA4;&#x3063;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x308F;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x7834;&#x68C4;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x5F8C;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x306E;&#x5F8C;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x5909;&#x6570;&#x3084;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x5F8C;&#x306E;&#x691C;&#x8A3C;&#x3067;&#x3082;&#x305D;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x8AA4;&#x3063;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x308F;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x7834;&#x68C4;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -2332,10 +2333,10 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">container</span><span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;option&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment">// &#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+    <span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x306E;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
     <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">// &#x6B21;&#x306B;&#xFF0C;DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;null&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token comment">// DI&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;null&#x3092;&#x683C;&#x7D0D;&#x3059;&#x308B;&#xFF0E;</span>
         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">container</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -2506,7 +2507,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x7DB2;&#x7F85;"><a name="03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x7DB2;&#x7F85;" class="plugin-anchor" href="#03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x7DB2;&#x7F85;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x30D6;&#x30E9;&#x30C3;&#x30AF;/&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x7DB2;&#x7F85;</h2>
+<h2 id="03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30C6;&#x30B9;&#x30C8;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;"><a name="03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30C6;&#x30B9;&#x30C8;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#03-&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30C6;&#x30B9;&#x30C8;&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30C6;&#x30B9;&#x30C8;/&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;</h2>
 <h3 id="&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;"><a name="&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;</h3>
 <h4 id="&#x30FB;&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x306F;</h4>
 <p>&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x5B9F;&#x88C5;&#x5185;&#x5BB9;&#x306F;&#x6C17;&#x306B;&#x305B;&#x305A;&#xFF0C;&#x5165;&#x529B;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x9069;&#x5207;&#x306A;&#x51FA;&#x529B;&#x304C;&#x884C;&#x308F;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x30DB;&#x30EF;&#x30A4;&#x30C8;/&#x30D6;&#x30E9;&#x30C3;&#x30AF;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x95A2;&#x4FC2;&#x6027;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x66F8;&#x7C4D;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
@@ -2638,9 +2639,45 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x6307;&#x6A19;"><a name="&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x6307;&#x6A19;" class="plugin-anchor" href="#&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x6307;&#x6A19;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DB;&#x30EF;&#x30A4;&#x30C8;&#x30DC;&#x30C3;&#x30AF;&#x30B9;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x6307;&#x6A19;</h3>
 <h4 id="&#x30FB;&#x7DB2;&#x7F85;&#x7387;"><a name="&#x30FB;&#x7DB2;&#x7F85;&#x7387;" class="plugin-anchor" href="#&#x30FB;&#x7DB2;&#x7F85;&#x7387;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x7DB2;&#x7F85;&#x7387;</h4>
-<p>&#x63A1;&#x7528;&#x3057;&#x305F;&#x7DB2;&#x7F85;&#x3067;&#x8003;&#x3048;&#x3089;&#x308C;&#x308B;&#x5168;&#x3066;&#x306E;&#x6761;&#x4EF6;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x3066;&#x3044;&#x308B;&#x5272;&#x5408;&#x306E;&#x3053;&#x3068;&#xFF0E; &#x7DB2;&#x7F85;&#x7387;&#x306F;&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x3084;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5358;&#x4F4D;&#x3068;&#x3057;&#x3066;&#x89E3;&#x6790;&#x3055;&#x308C;&#xFF0C;&#x3053;&#x308C;&#x306F;&#x8A00;&#x8A9E;&#x5225;&#x306B;&#x7570;&#x306A;&#x308B;&#xFF0E;PHPUnit&#x3067;&#x7DB2;&#x7F85;&#x7387;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x63A1;&#x7528;&#x3057;&#x305F;&#x7DB2;&#x7F85;&#x3067;&#x8003;&#x3048;&#x3089;&#x308C;&#x308B;&#x5168;&#x3066;&#x306E;&#x6761;&#x4EF6;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x3066;&#x3044;&#x308B;&#x5272;&#x5408;&#x306E;&#x3053;&#x3068;&#xFF0E; &#x7DB2;&#x7F85;&#x7387;&#x306F;&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x3084;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5358;&#x4F4D;&#x3068;&#x3057;&#x3066;&#x89E3;&#x6790;&#x3055;&#x308C;&#xFF0C;&#x3053;&#x308C;&#x306F;&#x8A00;&#x8A9E;&#x5225;&#x306B;&#x7570;&#x306A;&#x308B;&#xFF0E;PHPUnit&#x3067;&#x7DB2;&#x7F85;&#x7387;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html" target="_blank">https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html</a></p>
+<h4 id="&#x30FB;&#x5FAA;&#x74B0;&#x7684;&#x8907;&#x96D1;&#x5EA6;"><a name="&#x30FB;&#x5FAA;&#x74B0;&#x7684;&#x8907;&#x96D1;&#x5EA6;" class="plugin-anchor" href="#&#x30FB;&#x5FAA;&#x74B0;&#x7684;&#x8907;&#x96D1;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5FAA;&#x74B0;&#x7684;&#x8907;&#x96D1;&#x5EA6;</h4>
+<p>&#x30C6;&#x30B9;&#x30C8;&#x5BFE;&#x8C61;&#x304C;&#x3069;&#x308C;&#x3060;&#x3051;&#x8907;&#x96D1;&#x306A;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x304B;&#x306E;&#x7A0B;&#x5EA6;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x304A;&#x304A;&#x305D;&#x3088;&#xFF0C;&#x5206;&#x5C90;&#x7DB2;&#x7F85;&#x306E;&#x7D4C;&#x8DEF;&#x6570;&#x306E;&#x7A0B;&#x5EA6;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://jp.mathworks.com/discovery/cyclomatic-complexity.html" target="_blank">https://jp.mathworks.com/discovery/cyclomatic-complexity.html</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x5FAA;&#x74B0;&#x7684;&#x8907;&#x96D1;&#x5EA6;</th>
+<th>&#x8907;&#x96D1;&#x3055;&#x306E;&#x72B6;&#x614B;</th>
+<th>&#x30D0;&#x30B0;&#x6DF7;&#x5165;&#x7387;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10</code>&#x4EE5;&#x4E0B;</td>
+<td>&#x975E;&#x5E38;&#x306B;&#x826F;&#x3044;</td>
+<td><code>25</code>%</td>
+</tr>
+<tr>
+<td><code>30</code>&#x4EE5;&#x4E0A;</td>
+<td>&#x69CB;&#x9020;&#x7684;&#x306A;&#x30EA;&#x30B9;&#x30AF;&#x3042;&#x308A;</td>
+<td><code>40</code>%</td>
+</tr>
+<tr>
+<td><code>50</code>&#x4EE5;&#x4E0A;</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x4E0D;&#x53EF;&#x80FD;</td>
+<td><code>70</code>%</td>
+</tr>
+<tr>
+<td><code>75</code>&#x4EE5;&#x4E0A;</td>
+<td>&#x5909;&#x66F4;&#x306B;&#x3088;&#x3063;&#x3066;&#x8AA4;&#x4FEE;&#x6B63;&#x304C;&#x751F;&#x3058;&#x308B;&#xFF0E;</td>
+<td><code>98</code>%</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h2 id="04-phpstan&#x306B;&#x3088;&#x308B;&#x9759;&#x7684;&#x89E3;&#x6790;"><a name="04-phpstan&#x306B;&#x3088;&#x308B;&#x9759;&#x7684;&#x89E3;&#x6790;" class="plugin-anchor" href="#04-phpstan&#x306B;&#x3088;&#x308B;&#x9759;&#x7684;&#x89E3;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>04. PHPStan&#x306B;&#x3088;&#x308B;&#x9759;&#x7684;&#x89E3;&#x6790;</h2>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
@@ -2948,7 +2985,7 @@ Available test<span class="token punctuation">(</span>s<span class="token punctu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-06-10T16:57:08.047Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-10T17:06:18.407Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"next":{"title":"デバッグ","level":"1.4.5","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.4.5.1","depth":3,"path":"public/backend_debug.md","ref":"public/backend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"path":"public/backend_framework_laravel.md","ref":"public/backend_framework_laravel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_testing.md","mtime":"2021-06-12T10:36:38.834Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-13T09:50:02.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1891,7 +1891,7 @@ $ go build -o <span class="token environment constant">$HOME</span>/go/bin ./cmd
 <pre class="language-"><code class="lang-shell">$ go <span class="token builtin class-name">test</span> -v ./<span class="token punctuation">..</span>.
 </code></pre>
 <h4 id="&#x30FB;-cover"><a name="&#x30FB;-cover" class="plugin-anchor" href="#&#x30FB;-cover"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-cover</h4>
-<p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x547D;&#x4EE4;&#x7DB2;&#x7F85;&#x306E;&#x7DB2;&#x7F85;&#x7387;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x7DB2;&#x7F85;&#x6761;&#x4EF6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#xFF0C;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x5185;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x547D;&#x4EE4;&#x7DB2;&#x7F85;&#x306E;&#x7DB2;&#x7F85;&#x7387;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#xFF0E;&#x53CD;&#x5BFE;&#x306B;&#xFF0C;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x305D;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7DB2;&#x7F85;&#x7387;&#x306F;&#x89E3;&#x6790;&#x3057;&#x306A;&#x3044;&#xFF0E;&#x7DB2;&#x7F85;&#x6761;&#x4EF6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
 <pre class="language-"><code class="lang-shell">$ go <span class="token builtin class-name">test</span> -cover ./<span class="token punctuation">..</span>.
 </code></pre>
@@ -3576,120 +3576,12 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <p>&#x7DB2;&#x7F85;&#x7387;&#x306F;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5358;&#x4F4D;&#x3068;&#x3057;&#x3066;&#x89E3;&#x6790;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x7DB2;&#x7F85;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
 <p><br></p>
-<h3 id="testify"><a name="testify" class="plugin-anchor" href="#testify"><i class="fa fa-link" aria-hidden="true"></i></a>testify</h3>
-<h4 id="&#x30FB;testify&#x3068;&#x306F;"><a name="&#x30FB;testify&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;testify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;testify&#x3068;&#x306F;</h4>
-<p>&#x30E2;&#x30C3;&#x30AF;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#xFF0C;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#xFF0E;Go&#x3067;&#x306F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6982;&#x5FF5;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;&#x8A00;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30E2;&#x30C3;&#x30AF;&#x3068;&#x30B9;&#x30BF;&#x30D6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<h3 id="&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306E;tips"><a name="&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306E;tips" class="plugin-anchor" href="#&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306E;tips"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306E;Tips</h3>
+<h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x30C9;&#x30EA;&#x30D6;&#x30F3;&#x30C6;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x30C9;&#x30EA;&#x30D6;&#x30F3;&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x30C9;&#x30EA;&#x30D6;&#x30F3;&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x30C9;&#x30EA;&#x30D6;&#x30F3;&#x30C6;&#x30B9;&#x30C8;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/golang/go/wiki/TableDrivenTests" target="_blank">https://github.com/golang/go/wiki/TableDrivenTests</a></p>
+<h4 id="&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;</h4>
+<p>&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x904E;&#x53BB;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x5B58;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x4ECA;&#x56DE;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x304C;&#x904E;&#x53BB;&#x306E;&#x3082;&#x306E;&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;Go&#x3067;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x300E;Golden File&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;Golden&#xFF08;&#x91D1;&#xFF09;&#x306F;&#x5316;&#x5B66;&#x7684;&#x306B;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x7269;&#x8CEA;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x7531;&#x6765;&#x3057;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x300E;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x30D7;&#x30ED;&#x30C0;&#x30AF;&#x30C8;&#x300F;&#x3068;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
-<h4 id="&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;"><a name="&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;" class="plugin-anchor" href="#&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
-<th>&#x8AAC;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x306A;&#x3057;</td>
-<td>&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;<code>Mock</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x305D;&#x306E;&#x69CB;&#x9020;&#x4F53;&#x306F;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> amplify
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">&quot;github.com/stretchr/testify/mock&quot;</span>
-<span class="token punctuation">)</span>
-
-<span class="token comment">/**
- * AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3057;&#x307E;&#x3059;&#xFF0E;
- */</span>
-<span class="token keyword">type</span> MockedAwsClient <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    mock<span class="token punctuation">.</span>Mock
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;"><a name="&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;" class="plugin-anchor" href="#&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;</h4>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></p>
-<table>
-<thead>
-<tr>
-<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
-<th>&#x8AAC;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Mock.Called</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x306B;&#x5024;&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x3053;&#x3068;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x306B;&#x4F1D;&#x3048;&#x308B;&#xFF0E;</td>
-</tr>
-<tr>
-<td><code>Arguments.Get</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x9806;&#x756A;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x72EC;&#x81EA;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-<tr>
-<td><code>Arguments.Error</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x9806;&#x756A;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;&#x30E2;&#x30C3;&#x30AF;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> amplify
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-    aws_amplify <span class="token string">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
-    <span class="token string">&quot;github.com/stretchr/testify/mock&quot;</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">type</span> MockedAmplifyAPI <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    mock<span class="token punctuation">.</span>Mock
-<span class="token punctuation">}</span>
-
-<span class="token comment">/**
- * Amplify&#x306E;GetBranch&#x95A2;&#x6570;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3057;&#x307E;&#x3059;&#xFF0E;
- */</span>
-<span class="token keyword">func</span> <span class="token punctuation">(</span>mock <span class="token operator">*</span>MockedAmplifyAPI<span class="token punctuation">)</span> <span class="token function">GetBranch</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> params <span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchInput<span class="token punctuation">,</span> optFns <span class="token operator">...</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>Options<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchOutput<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    arguments <span class="token operator">:=</span> mock<span class="token punctuation">.</span><span class="token function">Called</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> params<span class="token punctuation">,</span> optFns<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> arguments<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchOutput<span class="token punctuation">)</span><span class="token punctuation">,</span> arguments<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;"><a name="&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;" class="plugin-anchor" href="#&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;</h4>
-<p>&#x53C2;&#x8003;&#xFF1A;</p>
-<ul>
-<li><p><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></p>
-</li>
-<li><p><a href="https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions</a></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
-<th>&#x8AAC;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Mock.On</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x5185;&#x90E8;&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x306B;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3055;&#x308C;&#x308B;&#x5024;&#x3068;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-<tr>
-<td><code>Mock.AssertExpectations</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x5185;&#x90E8;&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x304C;&#x6B63;&#x3057;&#x304F;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;</td>
-</tr>
-<tr>
-<td><code>assert.Exactly</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
-<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x671F;&#x5F85;&#x5024;&#x3068;&#x5B9F;&#x969B;&#x5024;&#x306E;&#x6574;&#x5408;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x5024;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3082;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
-</tr>
-</tbody>
-</table>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4EE5;&#x4E0B;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/hiroki-it/notify-slack-of-amplify-events/blob/develop/test/unit/amplify_test.go" target="_blank">https://github.com/hiroki-it/notify-slack-of-amplify-events/blob/develop/test/unit/amplify_test.go</a></p>
-<p><br></p>
-<h3 id="tips"><a name="tips" class="plugin-anchor" href="#tips"><i class="fa fa-link" aria-hidden="true"></i></a>Tips</h3>
 <h4 id="&#x30FB;post&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5207;&#x308A;&#x5206;&#x3051;"><a name="&#x30FB;post&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5207;&#x308A;&#x5206;&#x3051;" class="plugin-anchor" href="#&#x30FB;post&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5207;&#x308A;&#x5206;&#x3051;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;POST&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5207;&#x308A;&#x5206;&#x3051;</h4>
 <p>POST&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3046;&#x6642;&#x306B;&#xFF0C;JSON&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5207;&#x308A;&#x5206;&#x3051;&#x3066;&#x304A;&#x304F;&#xFF0E;&#x3053;&#x308C;&#x3092;<code>ReadFile</code>&#x95A2;&#x6570;&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -3710,9 +3602,6 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;</h4>
-<p>&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x904E;&#x53BB;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4FDD;&#x5B58;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x4ECA;&#x56DE;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x7D50;&#x679C;&#x304C;&#x904E;&#x53BB;&#x306E;&#x3082;&#x306E;&#x3068;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;Go&#x3067;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x300E;Golden File&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;Golden&#xFF08;&#x91D1;&#xFF09;&#x306F;&#x5316;&#x5B66;&#x7684;&#x306B;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x7269;&#x8CEA;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x7531;&#x6765;&#x3057;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x300E;&#x5B89;&#x5B9A;&#x3057;&#x305F;&#x30D7;&#x30ED;&#x30C0;&#x30AF;&#x30C8;&#x300F;&#x3068;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x56DE;&#x5E30;&#x30C6;&#x30B9;&#x30C8;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
 <p><br></p>
 <h2 id="10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#10-&#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>10. &#x30D3;&#x30EB;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;"><a name="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;</h3>
@@ -4402,6 +4291,211 @@ text <span class="token operator">:=</span> <span class="token string">&quot;Hel
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
+<h3 id="testify"><a name="testify" class="plugin-anchor" href="#testify"><i class="fa fa-link" aria-hidden="true"></i></a>testify</h3>
+<h4 id="&#x30FB;testify&#x3068;&#x306F;"><a name="&#x30FB;testify&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;testify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;testify&#x3068;&#x306F;</h4>
+<p>&#x30E2;&#x30C3;&#x30AF;&#xFF0C;&#x30B9;&#x30BF;&#x30D6;&#xFF0C;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#xFF0E;Go&#x3067;&#x306F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x6982;&#x5FF5;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30E2;&#x30C3;&#x30AF;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;&#x8A00;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30E2;&#x30C3;&#x30AF;&#x3068;&#x30B9;&#x30BF;&#x30D6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
+<h4 id="&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;"><a name="&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;" class="plugin-anchor" href="#&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E2;&#x30C3;&#x30AF;&#x5316;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x306A;&#x3057;</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x306B;<code>Mock</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308C;&#x3070;&#xFF0C;&#x305D;&#x306E;&#x69CB;&#x9020;&#x4F53;&#x306F;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> amplify
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">/**
+ * AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x5316;&#x3057;&#x307E;&#x3059;&#xFF0E;
+ */</span>
+<span class="token keyword">type</span> MockedAwsClient <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    mock<span class="token punctuation">.</span>Mock
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;"><a name="&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;" class="plugin-anchor" href="#&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B9;&#x30BF;&#x30D6;&#x5316;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.Called</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x306B;&#x5024;&#x304C;&#x6E21;&#x3055;&#x308C;&#x305F;&#x3053;&#x3068;&#x3092;&#x30E2;&#x30C3;&#x30AF;&#x306B;&#x4F1D;&#x3048;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>Arguments.Get</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x9806;&#x756A;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x72EC;&#x81EA;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>Arguments.Error</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3059;&#x308B;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x8FD4;&#x5374;&#x5024;&#x306E;&#x9806;&#x756A;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x95A2;&#x6570;&#x306E;&#x4E00;&#x90E8;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;AWS&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;&#x30E2;&#x30C3;&#x30AF;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> amplify
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    aws_amplify <span class="token string">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+    <span class="token string">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">type</span> MockedAmplifyAPI <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    mock<span class="token punctuation">.</span>Mock
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Amplify&#x306E;GetBranch&#x95A2;&#x6570;&#x306E;&#x51E6;&#x7406;&#x3092;&#x30B9;&#x30BF;&#x30D6;&#x5316;&#x3057;&#x307E;&#x3059;&#xFF0E;
+ */</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>mock <span class="token operator">*</span>MockedAmplifyAPI<span class="token punctuation">)</span> <span class="token function">GetBranch</span><span class="token punctuation">(</span>ctx context<span class="token punctuation">.</span>Context<span class="token punctuation">,</span> params <span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchInput<span class="token punctuation">,</span> optFns <span class="token operator">...</span><span class="token keyword">func</span><span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>Options<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchOutput<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    arguments <span class="token operator">:=</span> mock<span class="token punctuation">.</span><span class="token function">Called</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> params<span class="token punctuation">,</span> optFns<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> arguments<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>aws_amplify<span class="token punctuation">.</span>GetBranchOutput<span class="token punctuation">)</span><span class="token punctuation">,</span> arguments<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;"><a name="&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;" class="plugin-anchor" href="#&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A2;&#x30B5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x691C;&#x8A3C;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><p><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></p>
+</li>
+<li><p><a href="https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions" target="_blank">https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions</a></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.On</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x5185;&#x90E8;&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x306B;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x3055;&#x308C;&#x308B;&#x5024;&#x3068;&#xFF0C;&#x305D;&#x306E;&#x6642;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>Mock.AssertExpectations</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x95A2;&#x6570;&#x5185;&#x90E8;&#x306E;&#x30B9;&#x30BF;&#x30D6;&#x304C;&#x6B63;&#x3057;&#x304F;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>assert.Exactly</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</td>
+<td>&#x95A2;&#x6570;&#x306E;&#x691C;&#x8A3C;&#x6642;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x671F;&#x5F85;&#x5024;&#x3068;&#x5B9F;&#x969B;&#x5024;&#x306E;&#x6574;&#x5408;&#x6027;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x5024;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3082;&#x691C;&#x8A3C;&#x3067;&#x304D;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;"><a name="&#x30FB;&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;" class="plugin-anchor" href="#&#x30FB;&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;</h4>
+<p>&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x76F4;&#x524D;&#x306B;&#xFF0C;&#x524D;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x30E2;&#x30C3;&#x30AF;&#x306E;&#x751F;&#x6210;&#x306E;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;PHPUnit&#x306B;&#x304A;&#x3051;&#x308B;&#x524D;&#x51E6;&#x7406;&#x3068;&#x5F8C;&#x51E6;&#x7406;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x95A2;&#x6570;</th>
+<th>&#x5B9F;&#x884C;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetupSuite</code></td>
+<td>1</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x524D;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x4E00;&#x56DE;&#x3060;&#x3051;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>SetupTest</code></td>
+<td>2</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5404;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x524D;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5EA6;&#x306B;&#x4E8B;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;<code>BeforeTest</code>&#x95A2;&#x6570;&#x3088;&#x308A;&#x3082;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>BeforeTest</code></td>
+<td>3</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5404;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x76F4;&#x524D;&#x306E;&#x524D;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5EA6;&#x306B;&#x4E8B;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5FC5;&#x305A;&#xFF0C;&#x300E;<code>suiteName</code>&#x300F;&#x300E;<code>testName</code>&#x300F;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>AfterTest</code></td>
+<td>4</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5404;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x76F4;&#x5F8C;&#x306E;&#x5F8C;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5EA6;&#x306B;&#x4E8B;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5FC5;&#x305A;&#xFF0C;&#x300E;<code>suiteName</code>&#x300F;&#x300E;<code>testName</code>&#x300F;&#x3092;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>TearDownTest</code></td>
+<td>5</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5404;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5F8C;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5EA6;&#x306B;&#x4E8B;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;<code>BeforeTest</code>&#x95A2;&#x6570;&#x3088;&#x308A;&#x3082;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td><code>TearDownSuite</code></td>
+<td>6</td>
+<td>&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x5185;&#x306E;&#x5168;&#x3066;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5F8C;&#x51E6;&#x7406;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x4E00;&#x56DE;&#x3060;&#x3051;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4E8B;&#x524D;&#x306B;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;<code>BeforeTest</code>&#x95A2;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> example
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;testing&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">/**
+ * &#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#xFF0E;
+ */</span>
+<span class="token keyword">type</span> ExampleSuite <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    suite<span class="token punctuation">.</span>Suite
+    exampleMock <span class="token operator">*</span>ExampleMock
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * &#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x76F4;&#x524D;&#x306E;&#x524D;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;
+ */</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>suite <span class="token operator">*</span>ExampleSuite<span class="token punctuation">)</span> <span class="token function">BeforeTest</span><span class="token punctuation">(</span>suiteName <span class="token builtin">string</span><span class="token punctuation">,</span> testName <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// &#x30E2;&#x30C3;&#x30AF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+    suite<span class="token punctuation">.</span>exampleMock <span class="token operator">=</span> <span class="token operator">&amp;</span>ExampleMock<span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * &#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x30C6;&#x30B9;&#x30C8;&#x30B9;&#x30A4;&#x30FC;&#x30C8;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;
+ */</span>
+<span class="token keyword">func</span> <span class="token function">TestExampleSuite</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    suite<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ExampleSuite<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> example
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">/**
+ * Method&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x30C6;&#x30B9;&#x30C8;&#x3059;&#x308B;&#xFF0E;
+ */</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>suite <span class="token operator">*</span>ExampleSuite<span class="token punctuation">)</span> <span class="token function">TestMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    suite<span class="token punctuation">.</span><span class="token function">T</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Helper</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x524D;&#x51E6;&#x7406;&#x3067;&#x751F;&#x6210;&#x3057;&#x305F;&#x30E2;&#x30C3;&#x30AF;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</span>
+    exampleMock <span class="token operator">:=</span> suite<span class="token punctuation">.</span>exampleMock
+
+    <span class="token comment">// &#x4EE5;&#x964D;&#x306B;&#x30C6;&#x30B9;&#x30C8;&#x51E6;&#x7406;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
 <h2 id="10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><a name="10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#10-03-&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>10-03. &#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>go.mod&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
 <h4 id="&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;"><a name="&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;gomod&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>go.mod</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x306F;</h4>
@@ -4497,7 +4591,7 @@ go 1.16
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.5.1","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.6","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.6.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.6.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]}]},"previous":{"title":"Go","level":"1.5","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.5.1","depth":2,"path":"public/backend_go.md","ref":"public/backend_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_go.md","mtime":"2021-06-10T16:01:39.553Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-10T17:06:18.407Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ 文法","level":"1.5.1","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.6","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.6.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.6.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]}]},"previous":{"title":"Go","level":"1.5","depth":1,"ref":"","articles":[{"title":"▶ 文法","level":"1.5.1","depth":2,"path":"public/backend_go.md","ref":"public/backend_go.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_go.md","mtime":"2021-06-12T13:49:32.680Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-13T09:50:02.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
