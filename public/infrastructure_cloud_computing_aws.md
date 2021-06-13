@@ -239,7 +239,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | 使用量プラン             |                                                              |                                                              |
 | APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 | クライアント証明書       | SSLサーバ証明書をAPI Gatewayに割り当てる．                   | APIが，API Gatewayから転送されたリクエストであること識別できるようになる． |
-| CloudWatch Logsの設定    | API GatewayがCloudWatch Logsにアクセスできるよう，ロールを設定する． | 一つのAWS環境につき，一つのロールを設定すればよい．          |
+| CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう，ロールを設定する． | 一つのAWS環境につき，一つのロールを設定すればよい．          |
 
 <br>
 
@@ -385,8 +385,8 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 | 設定項目                   | 説明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
-| CloudWatch設定             | CloudWatch LogsにAPI Gatewayの実行ログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
-| カスタムアクセスのログ記録 | CloudWatch LogsにAPI Gatewayのアクセスログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
+| CloudWatch設定             | CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
+| カスタムアクセスのログ記録 | CloudWatchログにAPI Gatewayのアクセスログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
 | X-Rayトレース              | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-xray.html |
 
 #### ・ステージ変数
@@ -755,11 +755,53 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 | レイテンシー                   | API Gateway：<br>・```Latency```<br>・```IntegrationLatency``` |                                                              |
 | レスポンスのステータスコード率 | ALB：<br>・```HTTPCode_ELB_4XX_Count```<br>・```HTTPCode_ELB_5XX_Count```<br>・```HTTPCode_TARGET_4XX_Count```<br>・```HTTPCode_TARGET_5XX_Count```<br>・```RejectedConnectionCount```<br>・```HealthyHostCount```<br>・```TargetConnectionErrorCount```<br>・```TargetTLSNegotiationErrorCount```<br><br>API Gateway：<br>・```4XXError```<br>・```5XXError``` |                                                              |
 
-#### ・パフォーマンスインサイト
+#### ・パフォーマンスに関するデータのメトリクス化
 
-RDSの詳細なCloudWatchメトリクスを取得できる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．
+| 種類   | 名前                     | 補足                                                         |
+| ------ | ------------------------ | ------------------------------------------------------------ |
+| RDS    | パフォーマンスインサイト | RDSのパフォーマンスに関するデータをメトリクス化できるようになる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm |
+| ECS    | Container インサイト     | ECSのパフォーマンスに関するデータをメトリクス化できるようになる． |
+| Lambda | Lambdaインサイト         | Lambdaのパフォーマンスに関するデータをメトリクス化できるようになる． |
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
+<br>
+
+### CloudWatchログ
+
+####  ・設定項目
+
+クラウドログサーバとして働く．様々なAWSリソースで生成されたログファイルを収集できる．
+
+| 設定項目                     | 説明                                                       | 補足                                                         |
+| ---------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する． | 基本的に，ログファイルはグループ化せずに，一つのロググループには一つのログストリームしか含まれないようにする．ただし，EC2インスタンスを冗長化しあばあ |
+| メトリクスフィルター         | 紐づくロググループで，出現を監視する文字列を設定する．     |                                                              |
+| サブスクリプションフィルター |                                                            |                                                              |
+| Logsインサイト               | クエリを使用してログを抽出する．                           |                                                              |
+
+#### ・メトリクスフィルターの詳細
+
+| 設定項目           | 説明                                                         | 補足                                                       |
+| ------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| フィルターパターン | 紐づくロググループで，メトリクス値増加のトリガーとする文字列を設定する． | 大文字と小文字を区別するため，網羅的に設定する必要がある． |
+| 名前空間           | 紐づくロググループが属する名前空間を設定する．CloudWatchログが，設定した名前空間に対して，値を発行する． |                                                            |
+| メトリクス         | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatchログが，設定したメトリクスに対して，値を発行する． |                                                            |
+| メトリクス値       | フィルターパターンで文字列が検出された時に，メトリクスに対して発行する値のこと． | 例えば「検出数」を発行する場合は，「１」を設定する．       |
+
+#### ・フィルターパターンのテンプレート
+
+```shell
+# OR条件で大文字小文字を考慮し，『XXXXX:』を検出
+?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
+```
+
+```shell
+# OR条件で大文字小文字を考慮し，『XXXXX message』を検出
+?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
+```
+
+#### ・名前空間，メトリクス，ディメンションとは
+
+![名前空間，メトリクス，ディメンション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前空間，メトリクス，ディメンション.png)
 
 <br>
 
@@ -767,11 +809,9 @@ RDSの詳細なCloudWatchメトリクスを取得できる．パラメータグ�
 
 #### ・CloudWatchエージェントとは
 
-EC2インスタンス内で発生したデータを収集し，CloudWatchに対してプッシュする常駐システムのこと．
+インスタンス内で稼働する常駐システムのこと．インスタンス内のデータを収集し，CloudWatchに対して送信する．
 
 #### ・CloudWatchエージェントの設定
-
-CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に，実行される．設定ファイルは，分割できる．
 
 | セクションの種類        | 説明                                   | 補足                                                         |
 | ----------------------- | -------------------------------------- | ------------------------------------------------------------ |
@@ -779,34 +819,7 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
 | ```metrics```セクション |                                        | ・ウィザードを使用した場合，このセクションの設定はスキップされる．<br>・実装しなかった場合，何も設定されない． |
 | ```logs```セクション    |                                        |                                                              |
 
-設定後，```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる．
-
-**＊コマンド例＊**
-
-```shell
-# EC2内にある設定ファイルを，CloudWatchエージェントに読み込ませる（再起動を含む）
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
-
-# プロセスのステータスを確認
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
-```
-
-```shell
-# 設定ファイルが読み込まれたかを確認
-
-### CloudWatchエージェントのプロセスのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
-
-### 設定ファイルの構文チェックのログファイル
-$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
-
-### OS起動時にデーモンが稼働するように設定されているかを確認
-$ systemctl list-unit-files --type=service
-```
-
-#### ・logセクションのみの場合
-
-CloudWatchエージェントを使用して，CloudWatchにログファイルをプッシュするだけであれば，設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い．```run_as_user```には，プロセスのユーザ名（例：```cwagent```）を設定する．
+CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config.json```ファイルの定義を元に，実行される．設定ファイルは分割できる．設定後，```amazon-cloudwatch-agent-ctl```コマンドで設定ファイルを読み込ませる．CloudWatchエージェントを使用して，CloudWatchにログファイルを送信するだけであれば，設定ファイル（```/opt/aws/amazon-cloudwatch-agent/bin/config.json```）には```log```セッションのみの実装で良い．```run_as_user```には，プロセスのユーザ名（例：```cwagent```）を設定する．
 
 **＊実装例＊**
 
@@ -836,66 +849,42 @@ CloudWatchエージェントを使用して，CloudWatchにログファイルを
 }
 ```
 
+#### ・操作コマンド
+
+**＊コマンド例＊**
+
+```shell
+# EC2内にある設定ファイルを，CloudWatchエージェントに読み込ませる（再起動を含む）
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+# プロセスのステータスを確認
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+```
+
+```shell
+# 設定ファイルが読み込まれたかを確認
+
+### CloudWatchエージェントのプロセスのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+### 設定ファイルの構文チェックのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+
+### OS起動時にデーモンが稼働するように設定されているかを確認
+$ systemctl list-unit-files --type=service
+```
+
 <br>
 
-### CloudWatch Logs
+### CloudWatchログエージェント
 
-####  ・設定項目
+#### ・CloudWatchログエージェントとは（非推奨）
 
-クラウドログサーバとして働く．様々なAWSリソースで生成されたログファイルを収集できる．
+インスタンス内で稼働する常駐システムのこと．インスタンス内のデータを収集し，CloudWatchログに対して送信する．2020/10/05現在は非推奨で，CloudWatchエージェントへの設定の移行が推奨されている．
 
-| 設定項目                     | 説明                                                       | 補足                                                         |
-| ---------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する． | 基本的に，ログファイルはグループ化せずに，一つのロググループには一つのログストリームしか含まれないようにする．ただし，EC2インスタンスを冗長化しあばあ |
-| メトリクスフィルター         | 紐づくロググループで，出現を監視する文字列を設定する．     |                                                              |
-| サブスクリプションフィルター |                                                            |                                                              |
-| Logs Insights                | クエリを使用してログを抽出する．                           |                                                              |
+#### ・CloudWatchログエージェントの設定
 
-#### ・メトリクスフィルターの詳細
-
-| 設定項目           | 説明                                                         | 補足                                                       |
-| ------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
-| フィルターパターン | 紐づくロググループで，メトリクス値増加のトリガーとする文字列を設定する． | 大文字と小文字を区別するため，網羅的に設定する必要がある． |
-| 名前空間           | 紐づくロググループが属する名前空間を設定する．CloudWatch Logsが，設定した名前空間に対して，値を発行する． |                                                            |
-| メトリクス         | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatch Logsが，設定したメトリクスに対して，値を発行する． |                                                            |
-| メトリクス値       | フィルターパターンで文字列が検出された時に，メトリクスに対して発行する値のこと． | 例えば「検出数」を発行する場合は，「１」を設定する．       |
-
-#### ・フィルターパターンのテンプレート
-
-```shell
-# OR条件で大文字小文字を考慮し，『XXXXX:』を検出
-?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
-```
-
-```shell
-# OR条件で大文字小文字を考慮し，『XXXXX message』を検出
-?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
-```
-
-#### ・名前空間，メトリクス，ディメンションとは
-
-![名前空間，メトリクス，ディメンション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前空間，メトリクス，ディメンション.png)
-
-#### ・CloudWatch Logsエージェントの設定（非推奨）
-
-2020/10/05現在は非推奨で，CloudWatchエージェントへの設定の移行が推奨されている．
-
-**＊実装例＊**
-
-confファイルを，EC2内の```etc```ディレクトリ下に設置する．
-
-```shell
-#############################
-# /var/awslogs/awscli.conf
-#############################
-
-[plugins]
-cwlogs = cwlogs
-[default]
-region = ap-northeast-1
-```
-
-OS，ミドルウェア，アプリケーション，の各層でログを収集するのがよい．
+confファイルを，インスタンス内の```etc```ディレクトリ下に設置する．OS，ミドルウェア，アプリケーション，の各層でログを収集するのがよい．
 
 **＊実装例＊**
 
@@ -948,6 +937,19 @@ log_stream_name  = {instance_id}
 initial_position = start_of_file
 log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 ```
+
+```shell
+#############################
+# /var/awslogs/awscli.conf
+#############################
+
+[plugins]
+cwlogs = cwlogs
+[default]
+region = ap-northeast-1
+```
+
+#### ・操作コマンド
 
 設定後，```awslogs```コマンドでプロセスを起動する．
 
@@ -1508,7 +1510,7 @@ exit ${EXIT_CODE}
 
 **＊実装例＊**
 
-アプリケーションからCloudWatch Logsにログを送信するために，ECSタスクロールにカスタマー管理ポリシーをアタッチする．
+アプリケーションからCloudWatchログにログを送信するために，ECSタスクロールにカスタマー管理ポリシーをアタッチする．
 
 ```json
 {
@@ -1549,7 +1551,7 @@ SSMパラメータストアから変数を取得するために，ECSタスク�
 
 #### ・タスク実行ロール
 
-タスク上に存在するコンテナエージェントが，他のリソースにアクセスするために必要なロールのこと．AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを，タスクにアタッチする必要がある．このポリシーには，ECRへのアクセス権限の他，CloudWatch Logsにログを生成するための権限が設定されている．タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること．
+タスク上に存在するコンテナエージェントが，他のリソースにアクセスするために必要なロールのこと．AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを，タスクにアタッチする必要がある．このポリシーには，ECRへのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること．
 
 ```json
 {
@@ -1647,10 +1649,10 @@ CodeDeployを使用してデプロイを行う．本ノート内を検索せよ�
 
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| awslogs-group           | ログ送信先のCloudWatch Logsのロググループを設定する．        |                                                              |
+| awslogs-group           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
 | awslogs-datetime-format | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない．例えば「```\\[%Y-%m-%d %H:%M:%S\\]```」となる． |
-| awslogs-region          | ログ送信先のCloudWatch Logsのリージョンを設定する．          |                                                              |
-| awslogs-stream-prefix   | ログ送信先のCloudWatch Logsのログストリームのプレフィックス名を設定する． | ログストリームには，「```<プレフィックス名>/<コンテナ名>/<タスクID>```」の形式で送信される． |
+| awslogs-region          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
+| awslogs-stream-prefix   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，「```<プレフィックス名>/<コンテナ名>/<タスクID>```」の形式で送信される． |
 
 <br>
 
@@ -1688,7 +1690,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 | VPCエンドポイントの接続先 | PrivateDNS名                                                 | 説明                                               |
 | ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| CloudWatch Logs           | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
+| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
 | ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．            |
 | S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
 | SSM                       | ```ssm.ap-northeast-1.amazonaws.com```                       | SSMパラメータストアにGETリクエストを送信するため． |
@@ -2558,6 +2560,7 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 | 環境変数                           | Lambdaの関数内に出力する環境変数を設定する．                 | 標準では，環境変数はAWSマネージド型KMSキーによって暗号化される． |
 | 同時実行数                         | 同時実行の予約を設定する．                                   |                                                              |
 | プロビジョニングされた同時実行設定 |                                                              |                                                              |
+| モニタリング                       | LambdaをCloudWatchまたはX-Rayを用いて，データをメトリクス化する． | 次の方法がある<br>・CloudWatchによって，データをメトリクス化する．<br>・CloudWatchのLambda Insightsによって，パフォーマンスに関するデータをメトリクス化する．<br>・X-Rayによって，APIへのリクエスト，Lambdaコール，Lambdaの下流とのデータ通信をトレースし，これらをスタックトレース化する． |
 
 <br>
 
@@ -2769,7 +2772,7 @@ exports.handler = (event, context, callback) => {
 
 #### ・テストとデバッグ
 
-Lambdaで関数を作成すると，CloudWatch Logsのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
+Lambdaで関数を作成すると，CloudWatchログのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
 
 <br>
 
@@ -3877,7 +3880,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 #### ・Lambdaからのアクセスを許可
 
-バケットポリシーは不要である．代わりに，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある．このポリシーには，S3へのアクセス権限の他，CloudWatch Logsにログを生成するための権限が設定されている．
+バケットポリシーは不要である．代わりに，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある．このポリシーには，S3へのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．
 
 ```json
 {

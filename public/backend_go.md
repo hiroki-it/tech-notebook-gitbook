@@ -362,7 +362,7 @@ $ go test -v ./...
 
 #### ・-cover
 
-テスト時にテストの命令網羅の網羅率を出力する．網羅条件については，以下のリンクを参考にせよ．
+テスト時に，```xxxxx_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する．反対に，```xxxxx_test.go```ファイルがなければ，そのパッケージの網羅率は解析しない．網羅条件については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
@@ -2360,97 +2360,17 @@ if err != nil {
 
 <br>
 
-### testify
+### テストの実装方法のTips
 
-#### ・testifyとは
+#### ・テーブルドリブンテスト
 
-モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
+参考：https://github.com/golang/go/wiki/TableDrivenTests
+
+#### ・回帰テスト
+
+回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
-
-#### ・モック化
-
-| よく使うメソッド | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
-
-**＊実装例＊**
-
-AWSクライアントをモック化する．
-
-```go
-package amplify
-
-import (
-	"github.com/stretchr/testify/mock"
-)
-
-/**
- * AWSクライアントをモック化します．
- */
-type MockedAwsClient struct {
-	mock.Mock
-}
-```
-
-#### ・スタブ化
-
-参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-| よく使うメソッド              | 説明                                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する．関数に値が渡されたことをモックに伝える． |
-| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
-| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．エラーを返却する処理を定義する． |
-
-**＊実装例＊**
-
-関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
-
-```go
-package amplify
-
-import (
-	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
-	"github.com/stretchr/testify/mock"
-)
-
-type MockedAmplifyAPI struct {
-	mock.Mock
-}
-
-/**
- * AmplifyのGetBranch関数の処理をスタブ化します．
- */
-func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
-	arguments := mock.Called(ctx, params, optFns)
-	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
-}
-```
-
-#### ・アサーションメソッドによる検証
-
-参考：
-
-- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
-
-- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
-
-| よく使うメソッド                      | 説明                                                         |
-| ------------------------------------- | ------------------------------------------------------------ |
-| ```Mock.On```メソッド                 | 関数の検証時に使用する．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
-| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する．関数内部のスタブが正しく実行されたかどうかを検証する． |
-| ```assert.Exactly```メソッド          | 関数の検証時に使用する．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
-
-**＊実装例＊**
-
-以下のファイルを参考にせよ．
-
-参考：https://github.com/hiroki-it/notify-slack-of-amplify-events/blob/develop/test/unit/amplify_test.go
-
-<br>
-
-### Tips
 
 #### ・POSTデータの切り分け
 
@@ -2476,12 +2396,6 @@ func TestMain(t *testing.T) {
 
 }
 ```
-
-#### ・回帰テスト
-
-回帰テストを実現するため，過去のテスト結果をテストデータを保存しておき，今回のテスト結果が過去のものと一致するかを確認する．Goでは，このテストデータをファイルを『Golden File』という．Golden（金）は化学的に安定した物質であることに由来しており，『安定したプロダクト』とかけている．回帰テストについては，以下を参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
 <br>
 
@@ -3292,6 +3206,162 @@ func main() {
  */
 func HandleRequest(context context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
+}
+```
+
+<br>
+
+### testify
+
+#### ・testifyとは
+
+モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+#### ・モック化
+
+| よく使うメソッド | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| なし             | データとして，構造体に```Mock```を設定すれば，その構造体はモック化される． |
+
+**＊実装例＊**
+
+AWSクライアントをモック化する．
+
+```go
+package amplify
+
+import (
+	"github.com/stretchr/testify/mock"
+)
+
+/**
+ * AWSクライアントをモック化します．
+ */
+type MockedAwsClient struct {
+	mock.Mock
+}
+```
+
+#### ・スタブ化
+
+参考：https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
+| よく使うメソッド              | 説明                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| ```Mock.Called```メソッド     | 関数の一部の処理をスタブ化する時に使用する．関数に値が渡されたことをモックに伝える． |
+| ```Arguments.Get```メソッド   | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．独自のデータ型を返却する処理を定義する． |
+| ```Arguments.Error```メソッド | 関数の一部の処理をスタブ化する時に使用する．引数として，返却値の順番を渡す．エラーを返却する処理を定義する． |
+
+**＊実装例＊**
+
+関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
+
+```go
+package amplify
+
+import (
+	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
+	"github.com/stretchr/testify/mock"
+)
+
+type MockedAmplifyAPI struct {
+	mock.Mock
+}
+
+/**
+ * AmplifyのGetBranch関数の処理をスタブ化します．
+ */
+func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify.GetBranchInput, optFns ...func(*aws_amplify.Options)) (*aws_amplify.GetBranchOutput, error) {
+	arguments := mock.Called(ctx, params, optFns)
+	return arguments.Get(0).(*aws_amplify.GetBranchOutput), arguments.Error(1)
+}
+```
+
+#### ・アサーションメソッドによる検証
+
+参考：
+
+- https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions
+
+- https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions
+
+| よく使うメソッド                      | 説明                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| ```Mock.On```メソッド                 | 関数の検証時に使用する．関数内部のスタブに引数として渡される値と，その時の返却値を定義する． |
+| ```Mock.AssertExpectations```メソッド | 関数の検証時に使用する．関数内部のスタブが正しく実行されたかどうかを検証する． |
+| ```assert.Exactly```メソッド          | 関数の検証時に使用する．期待値と実際値の整合性を検証する．値だけでなく，データ型も検証できる． |
+
+#### ・前処理と後処理
+
+テスト関数を実行する直前に，前処理を実行する．モックの生成のために使用するとよい．PHPUnitにおける前処理と後処理については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+| よく使う関数        | 実行タイミング | 説明                                                         |
+| ------------------- | -------------- | ------------------------------------------------------------ |
+| ```SetupSuite```    | 1              | テストスイート内の全てのテストの前処理として，一回だけ実行する． |
+| ```SetupTest```     | 2              | テストスイート内の各テストの前処理として，テストの度に事前に実行する．```BeforeTest```関数よりも前に実行されることに注意する． |
+| ```BeforeTest```    | 3              | テストスイート内の各テストの直前の前処理として，テストの度に事前に実行する．必ず，『```suiteName```』『```testName```』を引数として設定する必要がある． |
+| ```AfterTest```     | 4              | テストスイート内の各テストの直後の後処理として，テストの度に事後に実行する．必ず，『```suiteName```』『```testName```』を引数として設定する必要がある． |
+| ```TearDownTest```  | 5              | テストスイート内の各テストの後処理として，テストの度に事後に実行する．```BeforeTest```関数よりも後に実行されることに注意する． |
+| ```TearDownSuite``` | 6              | テストスイート内の全てのテストの後処理として，一回だけ実行する． |
+
+**＊実装例＊**
+
+事前にモックを生成するために，```BeforeTest```関数を使用する．
+
+```go
+package example
+
+import (
+	"testing"
+)
+
+/**
+ * ユニットテストのテストスイートを構成する．
+ */
+type ExampleSuite struct {
+	suite.Suite
+	exampleMock *ExampleMock
+}
+
+/**
+ * ユニットテストの直前の前処理を実行する．
+ */
+func (suite *ExampleSuite) BeforeTest(suiteName string, testName string) {
+
+	// モックを生成する．
+	suite.exampleMock = &ExampleMock{}
+}
+
+/**
+ * ユニットテストのテストスイートを実行する．
+ */
+func TestExampleSuite(t *testing.T) {
+	suite.Run(t, &ExampleSuite{})
+}
+```
+
+```go
+package example
+
+import (
+	"github.com/stretchr/testify/assert"
+)
+
+/**
+ * Methodメソッドが成功することをテストする．
+ */
+func (suite *ExampleSuite) TestMethod() {
+
+	suite.T().Helper()
+
+	// 前処理で生成したモックを使用する．
+	exampleMock := suite.exampleMock
+
+	// 以降にテスト処理
 }
 ```
 
