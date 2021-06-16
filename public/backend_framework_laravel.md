@@ -1791,7 +1791,64 @@ class ExecutorConstant
 
 <br>
 
-## 06. Facade
+## 06. Exception
+
+### 例外クラス
+
+```php
+<?php
+
+namespace App\Exceptions;
+
+use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+class Handler extends ExceptionHandler
+{
+    protected $dontReport = [
+        //
+    ];
+
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
+    ];
+
+    public function report(Throwable $exception)
+    {
+        parent::report($exception);
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        return parent::render($request, $exception);
+    }
+}
+```
+
+<br>
+
+###　独自例外クラス
+
+Laravelに標準搭載されているExceptionクラスを継承することにより，独自の例外クラスを定義できる．
+
+```php
+<?php
+
+namespace App\Exceptions;
+
+/**
+ * 送信例外クラス
+ */
+final class CouldNotSendMessageException extends \Exception
+{
+
+}
+```
+
+<br>
+
+## 07. Facade
 
 ### 静的プロキシ
 
@@ -1923,7 +1980,7 @@ $result = Example::method();
 
 <br>
 
-## 07. Factory
+## 08. Factory
 
 ### artisanコマンドによる操作
 
@@ -2092,7 +2149,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 08. File Systems
+## 09. File Systems
 
 ### ファイルの操作
 
@@ -2281,13 +2338,13 @@ Storage::put("file.txt", "file.txt");
 
 <br>
 
-## 09-01. HTTP｜Auth
+## 10-01. HTTP｜Auth
 
 詳しくは，```auth```ヘルパーを参考にせよ．
 
 <br>
 
-## 09-02. HTTP｜Controller
+## 10-02. HTTP｜Controller
 
 ### artisanコマンドによる操作
 
@@ -2361,7 +2418,7 @@ class ExampleController extends Controller
 
 <br>
 
-## 09-03. HTTP｜Middleware
+## 10-03. HTTP｜Middleware
 
 ### artisanコマンドによる操作
 
@@ -2513,7 +2570,7 @@ class RouteServiceProvider extends ServiceProvider
 
 <br>
 
-## 09-04. HTTP｜Request
+## 10-04. HTTP｜Request
 
 ### artisanコマンドによる操作
 
@@ -2901,7 +2958,7 @@ class LoginController extends Controller
 
 <br>
 
-## 10. Logging
+## 11. Logging
 
 ### ログの出力先
 
@@ -3096,7 +3153,7 @@ return [
 <br>
 
 
-## 11. Migration
+## 12. Migration
 
 ### artisanコマンドによる操作
 
@@ -3334,7 +3391,7 @@ Schema::create("examples", function (Blueprint $table) {
 
 <br>
 
-## 12. Notification
+## 13. Notification
 
 ### artisanコマンドによる操作
 
@@ -3565,7 +3622,7 @@ class ExampleController extends Controller
 
 <br>
 
-## 13. Resource
+## 14. Resource
 
 ### artisanコマンドによる操作
 
@@ -3651,7 +3708,7 @@ ModelのCollection型を配列に変換する．
 
 <br>
 
-## 14. Routing
+## 15. Routing
 
 ### artisanコマンドによる操作
 
@@ -3954,7 +4011,7 @@ Route::get("/healthcheck", function () {
 
 <br>
 
-## 15. Seeder
+## 16. Seeder
 
 ### artisanコマンドによる操作
 
@@ -4122,7 +4179,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 16. ServiceProvider
+## 17. ServiceProvider
 
 ### artisanコマンドによる操作
 
@@ -4732,7 +4789,7 @@ return [
 
 <br>
 
-## 17. Session
+## 18. Session
 
 ### セッションの操作
 
@@ -4813,7 +4870,7 @@ class ExampleController extends Controller
 
 <br>
 
-## 18. Views
+## 19. Views
 
 ### arisanによる操作
 
@@ -5141,7 +5198,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 <br>
 
-## 19. よく使うグローバルヘルパー関数
+## 20. よく使うグローバルヘルパー関数
 
 ### ヘルパー関数
 
@@ -5407,7 +5464,7 @@ $path = storage_path("app/file.txt");
 
 <br>
 
-## 20. Passportパッケージ
+## 21. Passportパッケージ
 
 ### Passportパッケージ
 
@@ -5737,7 +5794,7 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 <br>
 
-## 20-02. UIパッケージ
+## 21-02. UIパッケージ
 
 ### UIパッケージ
 
@@ -5772,7 +5829,7 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 20-03. Breezeパッケージ
+## 21-03. Breezeパッケージ
 
 ### Breezeパッケージ
 
@@ -5800,7 +5857,7 @@ $ php artisan breeze:install
 
 <br>
 
-## 20-04. Laravel Mixパッケージ
+## 21-04. Laravel Mixパッケージ
 
 ### Laravel Mixパッケージ
 
@@ -5832,7 +5889,7 @@ $ npm run watch
 
 <br>
 
-## 21. 非公式パッケージ
+## 22. 非公式パッケージ
 
 ### laravel-enum
 

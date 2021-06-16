@@ -484,7 +484,7 @@ var person struct {
 }
 ```
 
-#### ・独自の構造体
+#### ・パブリック，プライベート
 
 type宣言を使用して，独自のデータ型の構造体を定義する．保持するデータの変数名の頭文字を大文字にした場合は，パッケージ外からのアクセスをパブリックに，小文字にした場合はプライベートになる．
 
@@ -843,9 +843,13 @@ func main() {
 
 ![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aggregate-type_array.png)
 
+#### ・宣言と代入
+
+配列を宣言し，変数に代入する．
+
 **＊実装例＊**
 
-配列を定義し，変数に代入する．
+宣言と代入を別々に行う．また，要素数の定義が必要である．
 
 ```go
 package main
@@ -853,25 +857,45 @@ package main
 import "fmt"
 
 func main() {
-	// 定義と代入を同時に行う．また，型推論と要素数省略を行う．
-	x := [...]string{"Hiroki", "Gopher"}
 
-	fmt.Printf("%#v\n", x) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
-
-	// 定義と代入を同時に行う．また，要素数の定義が必要．
-	var y [2]string = [2]string{"Hiroki", "Gopher"}
-
-	fmt.Printf("%#v\n", y) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
-
-	// 定義と代入を別々に行う．また，要素数の定義が必要．
 	var z [2]string
 	z[0] = "Hiroki"
 	z[1] = "Gopher"
 
 	fmt.Printf("%#v\n", z) // [Hiroki Gopher]
 	fmt.Printf("%#v\n", z) // [2]string{"Hiroki", "Gopher"}
+}
+```
+
+宣言と代入を同時に行う．また，要素数の定義が必要である．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	var y [2]string = [2]string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%#v\n", y) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", y) // [2]string{"Hiroki", "Gopher"}
+}
+```
+
+宣言と代入を同時に行う．また，型推論と要素数省略を行う．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    
+	x := [...]string{"Hiroki", "Gopher"}
+
+	fmt.Printf("%#v\n", x) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", x) // [2]string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -967,7 +991,11 @@ type slice struct {
 
 参考：https://github.com/golang/go/blob/04a4dca2ac3d4f963e3c740045ce7a2959bf0319/src/runtime/slice.go#L13-L17
 
+#### ・宣言と代入
+
 **＊実装例＊**
+
+宣言と代入を同時に行う．
 
 ```go
 package main
@@ -975,13 +1003,7 @@ package main
 import "fmt"
 
 func main() {
-	// 定義と代入を同時に行う．
-	x := []string{"Hiroki", "Gopher"}
-
-	fmt.Printf("%+v\n", x) // [Hiroki Gopher]
-	fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
-
-	// 定義と代入を同時に行う．また，型推論を行う．
+    
 	var y []string = []string{"Hiroki", "Gopher"}
 
 	fmt.Printf("%+v\n", y) // [Hiroki Gopher]
@@ -989,7 +1011,7 @@ func main() {
 }
 ```
 
-全てのスライスが共通の配列を参照しているため，例えば，```xb```変数しか上書きしていないのにもかかわらず，他のスライスにもその上書きが反映される．
+文字列の宣言と代入を同時に行う．また，型推論を行う．
 
 ```go
 package main
@@ -997,31 +1019,15 @@ package main
 import "fmt"
 
 func main() {
-	// 最後の要素の後にもカンマが必要である．
-	x := [5]string{"あ", "い", "う", "え", "お"}
-	fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
+    
+	x := []string{"Hiroki", "Gopher"}
 
-	xa := x[0:3]
-	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
-
-	xb := x[2:5]
-	fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
-
-	// xbスライスの0番目（"う"）を上書き
-	xb[0] = "Hiroki"
-
-	// xbしか上書きしていないが，他のスライスにも反映される．
-	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
-	fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
-	fmt.Printf("%#v\n", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
+	fmt.Printf("%+v\n", x) // [Hiroki Gopher]
+	fmt.Printf("%#v\n", x) // []string{"Hiroki", "Gopher"}
 }
 ```
 
-#### ・配列の参照
-
-**＊実装例＊**
-
-バイトの配列を参照する．
+バイト文字列の宣言と代入を同時に行う．また，型推論を行う．
 
 ```go
 package main
@@ -1036,7 +1042,7 @@ func main() {
 }
 ```
 
-構造体の配列を参照する．
+構造体のスライスの宣言と代入を同時に行う．また，型推論を行う．
 
 ```go
 package main
@@ -1052,6 +1058,38 @@ func main() {
 
 	fmt.Printf("%+v\n", person) // [{Name:Hiroki}]
 	fmt.Printf("%#v\n", person) // []main.Person{main.Person{Name:"Hiroki"}}
+}
+```
+
+#### ・配列の値の参照
+
+全てのスライスが共通の配列を参照しているため，例えば，```xb```変数しか上書きしていないのにもかかわらず，他のスライスにもその上書きが反映される．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 最後の要素の後にもカンマが必要である．
+	x := [5]string{"あ", "い", "う", "え", "お"}
+	fmt.Printf("%#v\n", x) // [5]string{"あ", "い", "う", "え", "お"}
+
+    // 0から3番目を参照する．
+	xa := x[0:3]
+	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "う"}
+
+    // 2から5番目を参照する．
+	xb := x[2:5]
+	fmt.Printf("%#v\n", xb) // []string{"う", "え", "お"}
+
+	// xbスライスの0番目（"う"）を上書きする．
+	xb[0] = "Hiroki"
+
+	// xbしか上書きしていないが，他のスライスにも反映される．
+	fmt.Printf("%#v\n", xa) // []string{"あ", "い", "Hiroki"}
+	fmt.Printf("%#v\n", xb) // []string{"Hiroki", "え", "お"}
+	fmt.Printf("%#v\n", x)  // [5]string{"あ", "い", "Hiroki", "え", "お"}
 }
 ```
 
@@ -2328,7 +2366,9 @@ if err != nil {
 
 #### ・テストの単位
 
-ユニットテストは構造体を単位として行う．この時，検証する構造体が依存対象にある構造体をモックオブジェクトとして扱う必要がある．そのために，構造体をインターフェースの実装して用意しておき，この構造体を同じくインターフェースの実装としてのモックオブジェクトを用意しておく．これにより，構造体と同じ型でモックオブジェクトを扱えるようになる．
+ユニットテストは構造体をテストスイートの単位として行う．
+
+![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/test-plan_test-suite_test-case.jpg)
 
 #### ・構成
 
@@ -2362,7 +2402,11 @@ if err != nil {
 
 ### テストの実装方法のTips
 
-#### ・テーブルドリブンテスト
+#### ・インターフェースの導入
+
+テストできない構造体はモックに差し替えられることなる．この時，あらかじめ実際の構造体をインターフェースの実装にしておく．テスト時に，モックもインターフェイスの実装とすれば，モックが実際の構造体と同じデータ型として認識されるようになる．これにより，モックに差し替えられるようになる．
+
+#### ・テーブル駆動テスト
 
 参考：https://github.com/golang/go/wiki/TableDrivenTests
 

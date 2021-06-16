@@ -2,6 +2,12 @@
 
 ## 01. コマンド
 
+### global option
+
+参考：https://www.terraform.io/docs/cli/commands/index.html#switching-working-directory-with-chdir
+
+<br>
+
 ### init
 
 #### ・-backend=false
@@ -14,7 +20,7 @@ $ terraform init -backend=false
 
 ```shell
 # ディレクトリを指定することも可能
-$ terraform init -backend=false <ルートモジュールのディレクトリへの相対パス>
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> init -backend=false
 ```
 
 #### ・-backend=true, -backend-config
@@ -64,7 +70,7 @@ Success! The configuration is valid.
 
 ```shell
 # ディレクトリを指定することも可能
-$ terraform validate <ルートモジュールのディレクトリへの相対パス>
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate <ルートモジ
 ```
 
 <br>

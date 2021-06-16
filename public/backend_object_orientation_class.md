@@ -1099,7 +1099,6 @@ Pimpleライブラリを使用した場合
 <?php
     
 use Pimple\Container;
-
 use XxxLogger;
 use YyyNotification;
 
