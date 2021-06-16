@@ -85,6 +85,8 @@
   * [▶ ︎CI & CD](public/infrastructure_ci_cd.md)
   * [▶ ︎CircleCI](public/infrastructure_circleci.md)
   * [▶ ︎Capistrano](public/infrastructure_capistrano.md)
+* データ収集
+  * [▶ ︎ログ収集ツール](public/infrastructure_log_collector.md)
 * ハードウェア
   * [▶ ︎ハードウェア](public/hardware.md)
   * [▶ ︎組み込み機器](public/hardware_embedded_system.md)
