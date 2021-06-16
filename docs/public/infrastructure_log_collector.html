@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>▶ ︎Nuxt.js · 僕のドキュメントサイト【GitBook版】</title>
+        <title>▶ ︎ログ収集ツール · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,8 +65,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    
-    <link rel="prev" href="frontend_framework_vuejs.html" />
     
 
     </head>
@@ -708,7 +706,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.3.3" data-path="frontend_framework_nuxtjs.html">
+        <li class="chapter " data-level="1.7.3.3" data-path="frontend_framework_nuxtjs.html">
             
                 <a href="frontend_framework_nuxtjs.html">
             
@@ -1443,7 +1441,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.16.1" data-path="infrastructure_log_collector.html">
+        <li class="chapter active" data-level="1.16.1" data-path="infrastructure_log_collector.html">
             
                 <a href="infrastructure_log_collector.html">
             
@@ -1677,7 +1675,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >▶ ︎Nuxt.js</a>
+        <a href=".." >▶ ︎ログ収集ツール</a>
     </h1>
 </div>
 
@@ -1692,54 +1690,83 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="nuxtjs"><a name="nuxtjs" class="plugin-anchor" href="#nuxtjs"><i class="fa fa-link" aria-hidden="true"></i></a>Nuxt.js</h1>
-<h2 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h2>
-<h3 id="build"><a name="build" class="plugin-anchor" href="#build"><i class="fa fa-link" aria-hidden="true"></i></a>build</h3>
-<p>Target&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;<code>server</code>&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;Webpack&#x3067;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#xFF0E;Webpack&#x306B;&#x3088;&#x308A;&#xFF0C;JavaScript&#x3068;CSS&#x306F;minify&#x3055;&#x308C;&#x308B;&#xFF0E;minify&#x306B;&#x3088;&#x308A;&#xFF0C;&#x4E0D;&#x8981;&#x306A;&#x6539;&#x884C;&#x3084;&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#xFF0C;&#x52D5;&#x4F5C;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x3067;&#x5727;&#x7E2E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30C6;&#x30B9;&#x30C8;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306F;Node.js&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x52D5;&#x304B;&#x3059;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;SSG&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x3082;&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#x306F;<code>build</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ nuxt build
-</code></pre>
+                                <h1 id="&#x30ED;&#x30B0;&#x53CE;&#x96C6;&#x30C4;&#x30FC;&#x30EB;"><a name="&#x30ED;&#x30B0;&#x53CE;&#x96C6;&#x30C4;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30ED;&#x30B0;&#x53CE;&#x96C6;&#x30C4;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30B0;&#x53CE;&#x96C6;&#x30C4;&#x30FC;&#x30EB;</h1>
+<h2 id="cloudwatch&#x30ED;&#x30B0;"><a name="cloudwatch&#x30ED;&#x30B0;" class="plugin-anchor" href="#cloudwatch&#x30ED;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30ED;&#x30B0;</h2>
+<h3 id="cloudwatch&#x30ED;&#x30B0;&#x3068;&#x306F;"><a name="cloudwatch&#x30ED;&#x30B0;&#x3068;&#x306F;" class="plugin-anchor" href="#cloudwatch&#x30ED;&#x30B0;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>CloudWatch&#x30ED;&#x30B0;&#x3068;&#x306F;</h3>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html</a></p>
 <p><br></p>
-<h3 id="generate"><a name="generate" class="plugin-anchor" href="#generate"><i class="fa fa-link" aria-hidden="true"></i></a>generate</h3>
-<p>Target&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;<code>static</code>&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#xFF08;&#x4F8B;&#xFF1A;&#x753B;&#x50CF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#xFF09;&#x3092;&#x5143;&#x306B;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ nuxt generate
-</code></pre>
+<h2 id="fluentbit"><a name="fluentbit" class="plugin-anchor" href="#fluentbit"><i class="fa fa-link" aria-hidden="true"></i></a>Fluentbit</h2>
+<h3 id="fluentbit&#x3068;&#x306F;"><a name="fluentbit&#x3068;&#x306F;" class="plugin-anchor" href="#fluentbit&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>Fluentbit&#x3068;&#x306F;</h3>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x307E;&#x305F;&#x306F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30C1;&#x30E3;&#x304B;&#x3089;&#xFF0C;&#x30E1;&#x30C8;&#x30EA;&#x30C3;&#x30AF;&#x3084;&#x30ED;&#x30B0;&#x306A;&#x3069;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x5B9B;&#x5148;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h2 id="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h2>
-<h3 id="env&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="env&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#env&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a><code>env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
-<pre class="language-"><code class="lang-sh"><span class="token comment"># API&#x5074;&#x306E;URL&#xFF08;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x5411;&#x3051;&#xFF09;</span>
-<span class="token assign-left variable">API_URL</span><span class="token operator">=</span>http://web:80/
-<span class="token comment"># API&#x5074;&#x306E;URL&#xFF08;&#x5916;&#x90E8;&#x30B5;&#x30FC;&#x30D0;&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x5411;&#x3051;&#xFF09;</span>
-<span class="token assign-left variable">API_URL_BROWSER</span><span class="token operator">=</span>http://localhost:8500/
-<span class="token comment"># API&#x5074;&#x306E;Oauth&#x8A8D;&#x8A3C;&#x306E;&#x60C5;&#x5831;</span>
-<span class="token assign-left variable">OAUTH_CLIENT_ID</span><span class="token operator">=</span>
-<span class="token assign-left variable">OAUTH_CLIENT_SECRET</span><span class="token operator">=</span>
-<span class="token comment"># GoogleMap&#x306E;URL</span>
-<span class="token assign-left variable">GOOGLE_MAP_QUERY_URL</span><span class="token operator">=</span>https://www.google.com/maps/search/?api<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span><span class="token assign-left variable">query</span><span class="token operator">=</span>
-<span class="token comment"># &#x30DB;&#x30FC;&#x30E0;&#x30D1;&#x30B9;</span>
-<span class="token assign-left variable">HOME_PATH</span><span class="token operator">=</span>/
-</code></pre>
+<h3 id="&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;"><a name="&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;" class="plugin-anchor" href="#&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;</h3>
+<h4 id="&#x30FB;&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3068;&#x306F;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_log-pipeline.png" alt="fluent-bit-log-pipeline"></p>
 <p><br></p>
-<h3 id="nuxtconfigjs&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="nuxtconfigjs&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#nuxtconfigjs&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a><code>nuxt.config.js</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
-<h4 id="&#x30FB;&#x6982;&#x8981;"><a name="&#x30FB;&#x6982;&#x8981;" class="plugin-anchor" href="#&#x30FB;&#x6982;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6982;&#x8981;</h4>
-<p>Nuxt&#x304C;&#x6A19;&#x6E96;&#x3067;&#x7528;&#x610F;&#x3057;&#x3066;&#x3044;&#x308B;&#x8A2D;&#x5B9A;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs" target="_blank">https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs</a></p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Configuration <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;@nuxt/types&apos;</span>
-
-<span class="token keyword">const</span> nuxtConfig<span class="token operator">:</span> Configuration <span class="token operator">=</span> <span class="token punctuation">{</span>
-
-<span class="token punctuation">}</span>
+<h3 id="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
+<h4 id="&#x30FB;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file" target="_blank">https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file</a></p>
+<h4 id="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h4>
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>SERVICE<span class="token punctuation">]</span>
+    Flush <span class="token number">1</span>
+    Grace <span class="token number">30</span>
+    Log_Level info
+    Streams_File stream_processor.conf <span class="token comment"># Stream Processor&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;</span>
 </code></pre>
-<h4 id="&#x30FB;hardsource"><a name="&#x30FB;hardsource" class="plugin-anchor" href="#&#x30FB;hardsource"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;hardSource</h4>
-<p>&#x30D3;&#x30EB;&#x30C9;&#x6642;&#x306E;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x5B8C;&#x4E86;&#x304C;&#x65E9;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource" target="_blank">https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource</a></p>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Configuration <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;@nuxt/types&apos;</span>
+<h4 id="&#x30FB;input&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;input&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;input&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Input&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h4>
+<p>&#x30A4;&#x30F3;&#x30D7;&#x30C3;&#x30C8;&#x5143;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30F3;&#x30AF;&#x5148;&#x306E;&#x9818;&#x57DF;&#x304B;&#x3089;&#x9078;&#x629E;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/pipeline/inputs" target="_blank">https://docs.fluentbit.io/manual/pipeline/inputs</a></p>
+<h4 id="&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h4>
+<p>&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x5148;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30EA;&#x30F3;&#x30AF;&#x5148;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304B;&#x3089;&#x9078;&#x629E;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/pipeline/outputs" target="_blank">https://docs.fluentbit.io/manual/pipeline/outputs</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x5148;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Datadog</td>
+<td>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/pipeline/outputs/datadog" target="_blank">https://docs.fluentbit.io/manual/pipeline/outputs/datadog</a></td>
+</tr>
+<tr>
+<td>CloudWatch</td>
+<td>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/pipeline/outputs/cloudwatch" target="_blank">https://docs.fluentbit.io/manual/pipeline/outputs/cloudwatch</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x4E0A;&#x3067;&#x306E;&#x7A3C;&#x50CD;"><a name="firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x4E0A;&#x3067;&#x306E;&#x7A3C;&#x50CD;" class="plugin-anchor" href="#firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x4E0A;&#x3067;&#x306E;&#x7A3C;&#x50CD;"><i class="fa fa-link" aria-hidden="true"></i></a>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x4E0A;&#x3067;&#x306E;&#x7A3C;&#x50CD;</h3>
+<h4 id="&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><a name="&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png" alt="fluent-bit_aws-firelens"></p>
+<h4 id="&#x30FB;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><a name="&#x30FB;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;</h4>
+<p>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;fluentbit&#x306E;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3092;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;AWS&#x304B;&#x3089;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x304C;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-for-fluent-bit" target="_blank">https://github.com/aws/aws-for-fluent-bit</a></p>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<p>&#x3059;&#x3067;&#x306B;&#x30D9;&#x30FC;&#x30B9;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x7D44;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x8FFD;&#x52A0;&#x8A2D;&#x5B9A;&#x3092;&#x30AA;&#x30FC;&#x30D0;&#x30E9;&#x30A4;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf" target="_blank">https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf</a></p>
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
+    Name              datadog <span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x306E;&#x9001;&#x4FE1;&#x5148;&#x540D;</span>
+    Match             *
+    Host              http-intake.logs.datadoghq.com
+    TLS               on
+    compress          <span class="token function">gzip</span>
+    apikey            <span class="token operator">&lt;</span>Datadog&#x306E;API&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
+    dd_service        <span class="token operator">&lt;</span>Datadog&#x306E;&#x30ED;&#x30B0;&#x30A8;&#x30AF;&#x30B9;&#x30D7;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306B;&#x304A;&#x3051;&#x308B;service&#x540D;<span class="token operator">&gt;</span>
+    dd_source         <span class="token operator">&lt;</span>Datadog&#x306E;&#x30ED;&#x30B0;&#x30A8;&#x30AF;&#x30B9;&#x30D7;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306B;&#x304A;&#x3051;&#x308B;source&#x540D;<span class="token operator">&gt;</span>
+    dd_message_key    log
+    dd_tags           <span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span>
 
-<span class="token keyword">const</span> nuxtConfig<span class="token operator">:</span> Configuration <span class="token operator">=</span> <span class="token punctuation">{</span>
-
-  build<span class="token operator">:</span> <span class="token punctuation">{</span>
-    hardSource<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
+    Name              cloudwatch <span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x306E;&#x9001;&#x4FE1;&#x5148;&#x540D;</span>
+    Match             *
+    log_key           log
+    region            ap-northeast-1
+    log_group_name    <span class="token operator">&lt;</span>&#x9001;&#x4FE1;&#x5148;&#x306E;&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;<span class="token operator">&gt;</span>
+    log_stream_name   <span class="token operator">&lt;</span>&#x9001;&#x4FE1;&#x5148;&#x306E;&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 
                                 
@@ -1768,10 +1795,6 @@
 
             
                 
-                <a href="frontend_framework_vuejs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ▶ ︎Vue.js">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
                 
             
         
@@ -1780,7 +1803,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Nuxt.js","level":"1.7.3.3","depth":3,"next":{"title":"デバッグ","level":"1.7.4","depth":2,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.7.4.1","depth":3,"path":"public/frontend_debug.md","ref":"public/frontend_debug.md","articles":[]}]},"previous":{"title":"▶ ︎Vue.js","level":"1.7.3.2","depth":3,"path":"public/frontend_framework_vuejs.md","ref":"public/frontend_framework_vuejs.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_framework_nuxtjs.md","mtime":"2021-06-03T08:28:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-16T23:43:24.177Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎ログ収集ツール","level":"1.16.1","depth":2,"next":{"title":"ハードウェア","level":"1.17","depth":1,"ref":"","articles":[{"title":"▶ ︎ハードウェア","level":"1.17.1","depth":2,"path":"public/hardware.md","ref":"public/hardware.md","articles":[]},{"title":"▶ ︎組み込み機器","level":"1.17.2","depth":2,"path":"public/hardware_embedded_system.md","ref":"public/hardware_embedded_system.md","articles":[]}]},"previous":{"title":"データ収集","level":"1.16","depth":1,"ref":"","articles":[{"title":"▶ ︎ログ収集ツール","level":"1.16.1","depth":2,"path":"public/infrastructure_log_collector.md","ref":"public/infrastructure_log_collector.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_log_collector.md","mtime":"2021-06-16T23:32:10.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-16T23:43:24.177Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
