@@ -1136,11 +1136,11 @@ output "elb_service_account_arn" {
 ```
 #### ・count関数のアウトプット
 
-以降の説明を参考にせよ．
+後述の説明を参考にせよ．
 
 #### ・for_each関数のアウトプット
 
-以降の説明を参考にせよ．
+後述の説明を参考にせよ．
 
 <br>
 
@@ -2962,10 +2962,10 @@ resource "aws_lb_target_group" "this" {
   # ターゲットのタイプ
   target_type = "ip"
 
-  # スロースタート ※以降に補足説明あり．
+  # スロースタート ※後述の補足を参考にせよ
   slow_start = "0"
 
-  # ヘルスチェック ※以降に補足説明あり．
+  # ヘルスチェック ※後述の補足を参考にせよ
   health_check {
     protocol          = "HTTP"
     healthy_threshold = 3
@@ -2973,7 +2973,7 @@ resource "aws_lb_target_group" "this" {
     path = "/healthcheck"
   }
 
-  # スティッキーネス ※以降に補足説明あり．
+  # スティッキーネス ※後述の補足を参考にせよ
   # stickiness {
   #  type = ""
   # }
@@ -3039,7 +3039,7 @@ resource "aws_rds_cluster" "this" {
   # マスターユーザパス．SSMパラメータス推奨．
   master_password = var.rds_db_password_ssm_parameter_value
   
-  # AZ．※以降に補足説明あり．
+  # AZ．※後述の補足を参考にせよ
   availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
   
   # セキュリティグループ
@@ -3060,7 +3060,7 @@ resource "aws_rds_cluster" "this" {
   storage_encrypted               = true
   backup_retention_period         = 7
   
-  # バックアップウインドウの時間．※以降に補足説明あり．
+  # バックアップウインドウの時間．※後述の補足を参考にせよ
   preferred_backup_window         = "19:00-19:30"
   
   copy_tags_to_snapshot           = true
@@ -3071,7 +3071,7 @@ resource "aws_rds_cluster" "this" {
   # メンテナンスウインドウの時間
   preferred_maintenance_window    = "sun:17:30-sun:18:00"
   
-  # apply時に，すぐに適用するか，設定されたメンテナンスウインドウ時に実行するか．以降の説明を参考にせよ．
+  # apply時に，すぐに適用するか，設定されたメンテナンスウインドウ時に実行するか．後述の説明を参考にせよ．
   apply_immediately = true
   
   # 誤って，データベースが削除されないようにする．  
@@ -3079,7 +3079,7 @@ resource "aws_rds_cluster" "this" {
 
   lifecycle {
     ignore_changes = [
-      # ※以降に補足説明あり．
+      # ※後述の補足を参考にせよ
       availability_zones
     ]
   }

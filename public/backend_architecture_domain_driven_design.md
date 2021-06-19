@@ -105,7 +105,7 @@
 
 #### ・コントローラとは
 
-ユーザインターフェース層から出力されたデータのフォーマットを検証し，ユースケース層に入力できる構造に変換する．また反対に，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．他に，数値書式や文字色などのロジックもコントローラの責務である．コントローラのこれらの責務を，デザインパターンとして切り分けられると，よりスッキリする．
+ユーザインターフェース層から出力されたデータのフォーマットを検証し，ユースケース層に入力できる構造に変換する．また反対に，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．さらにこれらの責務は，デザインパターンとして切り分けられる．
 
 <br>
 
@@ -184,7 +184,7 @@ class Converter
 
 #### ・ユースケースとは
 
-ドメイン層のロジックを組み合わせて，システムの利用主体の動作（ユースケース）を具現化する．また，インフラストラクチャ層のロジックを組み合わせて，データを永続化する．CRUDのユースケース（登録，参照，更新，削除）ごとに異なるUseCaseクラスを定義する方法と，全てのユースケースを責務としてもつUseCaseクラスを定義する方法がある．
+ドメイン層のロジックを組み合わせて，システムの利用主体の動作（ユースケース）を具現化する．また，インフラストラクチャ層のロジックを組み合わせて，データを永続化する．CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
 
 **＊実装例＊**
 
@@ -193,53 +193,15 @@ class Converter
 
 namespace App\UseCase;        
     
-/**
- * 受注作成ユースケース
- * ※ ユースケースごとにクラスを定義する方法
- */
-class createOrdersUseCase
+class AcceptOrdersUseCase
 {
-    public function createOrders()
+    // 単なるメソッドではなく，ユースケースとなるようなメソッド
+    public function acceptOrders()
     {
     
     }
 }  
 ```
-
-```php
-<?php
-
-namespace App\UseCase;        
-    
-/**
- * 受注ユースケース
- * ※ 全てのユースケースをクラスを定義する方法
- */
-class ordersUseCase
-{
-    public function createOrders()
-    {
-    
-    }
-    
-    public function readOrders()
-    {
-    
-    }
-    
-    public function updateOrders()
-    {
-    
-    }
-    
-    public function deleteOrders()
-    {
-    
-    }
-}  
-```
-
-
 
 #### ・ユースケース図
 
@@ -570,7 +532,7 @@ Type Codeは概念的な呼び名で，実際は，標準的なライブラリ�
 namespace App\Domain\ValueObject\Type;
 
 /**
- * 色タイプ
+ * 色のタイプコード
  */
 class ColorType
 {
@@ -632,7 +594,7 @@ class ColorType
 namespace App\Domain\ValueObject\Type;
 
 /**
- * 性別タイプ
+ * 性別のタイプコード
  */
 class SexType
 {
@@ -685,13 +647,13 @@ class SexType
 
 ```php
 <?php
-    
+
 namespace App\Domain\ValueObject\Type;
 
 /**
- * 年月日タイプ
+ * 年月日のタイプコード
  */
-class YmdType
+class YmdType extends Type
 {
     const MEIJI   = "1"; // 明治
     const TAISHO  = "2"; // 大正
@@ -731,25 +693,34 @@ class YmdType
             "end"   => [ "year" => 9999, "month" => 12, "day" => 31, ],
         ],
     ];
-    
+
     /**
-     * 値 
+     * 値
+     * 
+     * @var string
      */
     private $value;
-    
+
     /**
      * 年号名
+     * 
+     * @var string 
      */
     private $name;
-    
+
     /**
-     * 値を返却します．
+     * 値を返却します
+     *
+     * @return string
      */
-    public function value(): int
+    public function value(): string
     {
         return $this->value;
     }
-    
+
+    /**
+     * @param $value
+     */
     public function __construct($value)
     {
         $this->value = $value;
@@ -757,14 +728,15 @@ class YmdType
     }
 
     /**
-     * 年号名を返却します．
+     * 年号名を返却します
+     * 
+     * @return string
      */
     public function name()
     {
         return $this->name;
     }
 }
-
 ```
 
 <br>
@@ -829,61 +801,80 @@ interface DogToyRepository
 <?php
 
 namespace App\Domain\ValueObject;
-    
+
 /**
  * 金額の値オブジェクト
  */
-class MoneyVO
+class MoneyVO extends ValueObject
 {
     /**
      * 金額
-     */        
+     * 
+     * @var float 
+     */
     private $amount;
 
-    public function __construct($amount = 0)
+    /**
+     *
+     * @param int $amount
+     */
+    public function __construct(int $amount = 0)
     {
         $this->amount = (float) $amount;
     }
-    
+
     /**
-     * 金額を返却します．
-     */        
+     * 金額を返却します
+     * 
+     * @return float
+     */
     public function amount()
     {
         return $this->amount;
     }
-    
+
     /**
-     * 単位を返却します．
-     */    
+     * 単位を返却します
+     * 
+     * @return string
+     */
     public function unit()
     {
         return "円";
     }
-    
+
     /**
-     * 足し算の結果を返却します．
-     */    
-    public function add(Money $rhs)
+     * 足し算の結果を返却します
+     * 
+     * @param Money $price
+     * @return $this
+     */
+    public function add(Money $price)
     {
-        return new static($this->amount + $rhs->amount);
+        return new static($this->amount + $price->amount);
     }
-    
+
     /**
      * 引き算の結果を返却します
+     * 
+     * @param Money $price
+     * @return $this
      */
-    public function substract(Money $rhs)
+    public function substract(Money $price)
     {
-        return new static($this->amount - $rhs->amount);
+        return new static($this->amount - $price->amount);
     }
-    
+
     /**
      * 掛け算の結果を返却します
-     */    
-    public function multiply($rhs)
+     *
+     * @param Money $price
+     * @return $this
+     */
+    public function multiply(Money $price)
     {
-        return new static($this->amount * $rhs);
-    }    
+        return new static($this->amount * $price);
+    }
 }
 ```
 
@@ -896,45 +887,66 @@ class MoneyVO
 ```php
 <?php
     
-class requiredTime
+namespace App\Domain\ValueObject;
+
+/**
+ * 所要時間の値オブジェクト
+ */
+class RequiredTime extends ValueObject
 {
-    // 判定値，歩行速度の目安，車速度の目安，を定数で定義する．
+    /**
+     * 判定値，歩行速度の目安，車速度の目安，を定数で定義する．
+     */
     const JUDGMENT_MINUTE = 21;
     const WALKING_SPEED_PER_MINUTE = 80;
     const CAR_SPEED_PER_MINUTE = 400;
-    
+
+    /**
+     * 距離
+     * 
+     * @var int 
+     */
     private $distance;
-    
+
+    /**
+     * @param int $distance
+     */
     public function __construct(int $distance)
     {
         $this->distance = $distance;
     }
-    
+
     /**
-     * 徒歩または車のどちらを使用するかを判定します．
-     */    
-    public function isMinuteByWalking()
+     * 徒歩または車のどちらを使用するかを判定します
+     * 
+     * @return bool
+     */
+    public function isMinuteByWalking(): bool
     {
         if ($this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE < self::JUDGMENT_MINUTE) {
             return true;
         }
-        
+
         return false;
     }
-    
+
     /**
-     * 徒歩での所要時間を計算します．
-     */    
-    public function minuteByWalking()
+     * 徒歩での所要時間を計算します
+     * 
+     * @return float
+     */
+    public function minuteByWalking(): float
     {
         $minute = $this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE;
         return ceil($minute);
     }
-    
+
     /**
-     * 車での所用時間を計算します．
-     */    
-    public function minuteByCar()
+     * 車での所用時間を計算します
+     * 
+     * @return float
+     */
+    public function minuteByCar(): float
     {
         $minute = $this->distance * 1000 / self::CAR_SPEED_PER_MINUTE;
         return ceil($minute);
@@ -951,10 +963,12 @@ class requiredTime
 ```php
 <?php
 
+namespace App\Domain\ValueObject;
+
 /**
- * 住所クラス
+ * 住所の値オブジェクト
  */
-class Address
+class Address extends ValueObject
 {
     /**
      * 住所の文字数上限
@@ -964,42 +978,44 @@ class Address
     /**
      * 郵便番号
      *
-     * @var string|null
+     * @var string
      */
     private $zip;
 
     /**
      * 住所 (番地など)
+     *
+     * @var string
      */
     private $address;
 
     /**
-     * 住所 カナ(番地など)
-     */
-    private $kana;
-
-    /**
      * 市区町村
+     *
+     * @var string
      */
     private $city;
 
-    public function __construct(City $city, string $zip = null, string $address = null, string $kana = null)
+    /**
+     * @param string $city
+     * @param string $zip
+     * @param string $address
+     * @param string $kana
+     */
+    public function __construct(string $city, string $zip, string $address, string $kana)
     {
+        $this->city = $city;
         $this->zip = $zip;
         $this->address = $address;
-        $this->kana = $kana;
-        $this->city = $city;
     }
 
     /**
-     * 郵便番号を返却します.
+     * 郵便番号を生成し，返却します
+     * 
+     * @return string
      */
     public function zip()
     {
-        if (!$this->zip) {
-            return '';
-        }
-
         return sprintf(
             "〒%s-%s",
             substr($this->zip, 0, 3),
@@ -1008,7 +1024,9 @@ class Address
     }
 
     /**
-     * 住所を返却します．
+     * 住所を生成し，返却します
+     * 
+     * @return string
      */
     public function address(): string
     {
@@ -1031,12 +1049,14 @@ class Address
 ```php
 <?php
 
+namespace App\Domain\ValueObject;
+
 /**
- * 氏名クラス
+ * 氏名クラスの値オブジェクト
  */
-class Name
+class Name extends ValueObject
 {
-     /**
+    /**
      * 名前の文字数上限下限
      */
     const MIN_NAME_LENGTH = 1;
@@ -1044,28 +1064,51 @@ class Name
 
     /**
      * 姓
+     * 
+     * @var
      */
     private $lastName;
 
     /**
      * 名
+     * 
+     * @var string 
      */
     private $firstName;
 
     /**
      * セイ
+     * 
+     * @var string 
      */
     private $lastKanaName;
 
     /**
      * メイ
+     * 
+     * @var string 
      */
     private $firstKanaName;
 
     /**
+     * @param string $lastName
+     * @param string $firstName
+     * @param string $lastKanaName
+     * @param string $firstKanaName
+     */
+    public function __construct(string $lastName, string $firstName, string $lastKanaName, string $firstKanaName)
+    {
+        $this->lastName = $lastName;
+        $this->firstName = $firstName;
+        $this->lastKanaName = $lastKanaName;
+        $this->firstKanaName = $firstKanaName;
+
+    }
+
+    /**
      * 氏名を作成します．
      */
-    public function fullName()
+    public function fullName(): string
     {
         return $this->lastName . $this->firstName;
     }
@@ -1073,12 +1116,11 @@ class Name
     /**
      * カナ氏名を作成します．
      */
-    public function fullKanaName()
+    public function fullKanaName(): string
     {
         return $this->lastKanaName . $this->firstKanaName;
     }
 }
-
 ```
 
 <br>
@@ -1098,25 +1140,41 @@ class Name
 ```php
 <?php
 
-namespace App\Domain\ValueObject;    
-    
+namespace App\Domain\ValueObject;
+
 /**
  * 値オブジェクト
- */     
-class ExampleVO
+ */
+class ExampleVO extends ValueObject
 {
+    /**
+     * @var 
+     */
     private $propertyA;
-    
+
+    /**
+     * @var 
+     */
     private $propertyB;
-    
+
+    /**
+     * @var 
+     */
     private $propertyC;
-    
-    public function __construct($param)
+
+    /**
+     * ExampleVO constructor.
+     *
+     * @param $propertyA
+     * @param $propertyB
+     * @param $propertyC
+     */
+    public function __construct($propertyA, $propertyB, $propertyC)
     {
-        $this->propertyA = $param["a"];
-        $this->propertyB = $param["b"];
-        $this->propertyC = $param["c"];
-    }   
+        $this->propertyA = $propertyA;
+        $this->propertyB = $propertyB;
+        $this->propertyC = $propertyC;
+    }
 }
 ```
 
@@ -1160,17 +1218,68 @@ $test02 = new Test02("新しいデータ02の値");
 
 <br>
 
-### オブジェクトの交換可能性
+### 交換可能性
 
 オブジェクトが新しくインスタンス化された場合，以前に同一オブジェクトから生成されたインスタンスから新しく置き換える必要がある．
 
 <br>
 
-### オブジェクトの等価性
+### 等価の必要性
 
-全てのデータの値が他のVOと同じ場合，同一のVOと見なされる．
+#### ・等価の必要性とは
 
-**＊実装例＊**
+保持する全ての値データが，対象の値オブジェクトと同じ場合，同一のものと見なされる．そのため，等価性を検証するメソッドが必要である．
+
+#### ・等価性の検証メソッド
+
+値データを一つだけ保持する値オブジェクトの場合，その値データの検証のみを行う．
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;   
+
+/**
+ * 連絡先メールアドレスの値オブジェクト
+ */
+final class ContactMail extends ValueObject
+{
+    /**
+     * @var string
+     */
+    private string $value;
+
+    /**
+     * @param string $value
+     */
+    public function __constructor(string $value)
+    {
+        $this->value = $value;
+    }
+
+    /**
+     * @return string
+     */
+    public function value(): string
+    {
+        return $this->value;
+    }
+
+    /**
+     * 値オブジェクトの等価性を検証します．
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 単一の値データを対象とする．
+        return $this->value() === $VO->value();
+    }
+}
+```
+
+値データを複数保持する値オブジェクトの場合，全ての値データの検証を行う．
 
 ```php
 <?php
@@ -1178,80 +1287,87 @@ $test02 = new Test02("新しいデータ02の値");
 namespace App\Domain\ValueObject;
 
 /**
- * 犬用おもちゃID
- */
-class DogToyId
-{
-    /**
-     * 値 
-     */
-    private $value;
-    
-    public function __constructor(string $value)
-    {
-        $this->value = $value
-    }
-    
-    /**
-     * VOの属性の等価性を検証します．
-     */
-    public function equals($id)
-    {
-        // データ型を検証します．
-        return ($id instanceof $this || $this instanceof $id)
-            // 値を検証します．
-            && $this->value() === $id->value();
-    }
-}
-```
-
-```php
-<?php
-
-namespace App\Domain\ValueObject;    
-    
-/**
  * 支払情報の値オブジェクト
  */
-class PaymentInfoVO
+final class PaymentInfoVO extends ValueObject
 {
-    // 予め実装したImmutableObjectトレイトを用いて，データの不変性を実現
-    use ImmutableObject;
-
     /**
      * 支払い方法
      *
      * @var PaymentType
      */
     private $paymentType;
-    
+
     /**
      * 連絡先メールアドレス
      *
-     * @var string|null
+     * @var ContactMail
      */
     private $contactMail;
-    
+
     /**
      * 金額
      *
      * @var Money
      */
-    private $price;  
-    
+    private $price;
+
     /**
-     * VOの属性の等価性を検証します．
-     *
-     * 全ての属性を検証する必要がある．
+     * @param PaymentType $paymentType
+     * @param ContactMail $contactMail
+     * @param Money       $price
      */
-    public function equals($paymentInfoVO)
+    public function __constructor(PaymentType $paymentType, ContactMail $contactMail, Money $price)
     {
-        // データ型を検証します．
-        return ($paymentInfoVO instanceof $this || $this instanceof $paymentInfoVO)
-            // 全ての属性を検証します．
-            && $this->paymentType->value() === $paymentInfoVO->paymentType->value()
-            && $this->contactMail->value() === $paymentInfoVO->contactMail->value()
-            && $this->price->value() === $paymentInfoVO->price->value();
+        $this->paymentType = $paymentType;
+        $this->contactMail = $contactMail;
+        $this->price = $price;
+    }
+
+    /**
+     * 値オブジェクトの等価性を検証します．
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 複数の値データを対象とする．
+        return $this->paymentType->value() === $VO->paymentType->value()
+            && $this->contactMail->value() === $VO->contactMail->value()
+            && $this->price->value() === $VO->price->value();
+    }
+}
+```
+
+ただし，実際のところ，全ての値オブジェクトに等価性の検証メソッドを持たせることをやめ，継承元の抽象クラスの値オブジェクトに定義してもよい．その時は，保持している値データを反復的に検証できるように実装するとよい．
+
+```php
+<?php
+
+namespace App\Domain;
+
+/**
+ * 値オブジェクト抽象クラス
+ */
+abstract class ValueObject
+{
+    /**
+     * 値オブジェクトの等価性を検証します．
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 全ての値データを反復的に検証します．
+        foreach (get_object_vars($this) as $key => $value) {
+            if ($this->__get($key) !== $VO->__get($key)) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
 ```
