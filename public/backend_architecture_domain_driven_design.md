@@ -118,100 +118,25 @@
 
 <br>
 
-
-## 03. アプリケーション層（ユースケース層）
+## 03. プレゼンテーション層
 
 ### コントローラ
 
 #### ・コントローラとは
 
-ドメイン層のロジックを組み合わせて，ユースケースを実装する．例えば，CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Controller;        
-    
-class AcceptOrdersController
-{
-    // 単なるメソッドではなく，ユースケースとなるようなメソッド
-    public function acceptOrders()
-    {
-    
-    }
-}  
-```
-
-**＊ユースケース例＊**
-
-オンラインショッピングにおけるユースケース．
-
-![ユースケース図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ユースケース図.png)
+ユーザインターフェース層から渡されたデータを，ユースケース層が処理できる構造に変換する．また，ユースケース層から渡されたデータを，ユーザインターフェース層が処理できる構造に変換する．
 
 <br>
 
-### アプリケーションサービス
-
-#### ・アプリケーションサービスとは
-
-アプリケーション層の中で，ドメイン層のオブジェクトを使用する汎用的なメソッドが切り分けられたもの．コントローラにメソッドを提供する．ドメイン層のドメインサービスとは異なり，あくまでアプリケーション層のロジックが切り分けられたものである．
-
-**＊実装例＊**
-
-Slackへの通知処理をアプリケーションサービスとして切り分ける．
-
-```php
-<?php
-
-namespace App\Service;
-
-class SlackNotificationService
-{
-    private $message;
-
-    public function __construct(Message $message)
-    {
-        $this->message = $message;
-    }
-
-    public function notify()
-    {
-        // SlackのAPIにメッセージを送信する処理
-    }
-}
-```
-
-これを，アプリケーション層でコールするようにする．
-
-```php
-<?php
-
-namespace App\Controller;
-
-use App\Service\SlackNotificationService;
-
-class ExampleController
-{
-    public function example()
-    {
-        $message = new Message(/* メッセージに関するデータを渡す */)
-        $slackNotificationService = new SlackNotificationService($message)
-        $slackNotificationService->notify();
-    }
-}  
-```
-
-<br>
-
-### 入力データに対するフォーマットのValidationパターン
+### Validationパターン
 
 #### ・Validationパターンとは
 
-デザインパターンの一つ．フロントエンドからサーバサイドに送信されてきたデータのフォーマットを検証する責務を持つ．例えば，ユーザインターフェース層からアプリケーション層に送信されてきたJSON形式データのフォーマットを検証する．
+デザインパターンの一つ．プレゼンテーション層にて，ユーザインターフェース層から渡されたデータのフォーマットを検証する責務を持つ．
 
 **＊実装例＊**
+
+日時データのフォーマットを検証する．
 
 ```php
 <?php
@@ -245,9 +170,11 @@ class FormatValidator
 
 #### ・Converterパターンとは
 
-デザインパターンの一つ．データ構造を変換する責務を持つ．例えば，アプリケーション層からユーザインターフェース層へのデータのレスポンス時に，送信するオブジェクトデータ（ルートエンティティ）を連想配列に変換する．
+デザインパターンの一つ．プレゼンテーション層にて，ユーザインターフェース層から渡されたデータの構造を変換する責務を持つ．
 
 **＊実装例＊**
+
+送信するオブジェクトデータ（ルートエンティティ）を連想配列に変換する．
 
 ```php
 <?php
@@ -270,34 +197,96 @@ class Converter
 
 <br>
 
+## 04. ユースケース層（アプリケーション層）
 
-## 04. ドメイン層
+### ユースケース
 
-### リポジトリ（インターフェース）
+#### ・ユースケースとは
 
-#### ・リポジトリ（インターフェース）とは
-
-![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
-
-デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．Controllerは，ドメイン層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，リポジトリのインターフェースを配置する．
-
-**＊実装例＊**
+ドメイン層のロジックを組み合わせて，システムの利用主体の動作（ユースケース）を具現化する．例えば，CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
 
 ```php
 <?php
 
-namespace App\Domain\Repository;    
+namespace App\UseCase;        
     
-interface DogToyRepository
+class AcceptOrdersUseCase
 {
-    /**
-     * 具象メソッドはインフラストラクチャ層のリポジトリに実装．
-     */
-    function findAllDogToys();
+    // 単なるメソッドではなく，ユースケースとなるようなメソッド
+    public function acceptOrders()
+    {
+    
+    }
+}  
+```
+
+#### ・ユースケース図
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
+
+**＊例＊**
+
+オンラインショッピングにおけるユースケース．
+
+![ユースケース図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ユースケース図.png)
+
+<br>
+
+### アプリケーションサービス
+
+#### ・アプリケーションサービスとは
+
+ユースケース層の中で，ドメイン層のオブジェクトを使用する汎用的なメソッドが切り分けられたもの．UseCaseクラスにメソッドを提供する．ドメイン層のドメインサービスとは異なり，あくまでユースケース層のロジックが切り分けられたものである．
+
+**＊実装例＊**
+
+Slackへの通知処理をアプリケーションサービスとして切り分ける．
+
+```php
+<?php
+
+namespace App\Service;
+
+class SlackNotificationService
+{
+    private $message;
+
+    public function __construct(Message $message)
+    {
+        $this->message = $message;
+    }
+
+    public function notify()
+    {
+        // SlackのAPIにメッセージを送信する処理
+    }
 }
 ```
 
+これを，ユースケース層でコールするようにする．
+
+```php
+<?php
+
+namespace App\UseCase;
+
+use App\Service\SlackNotificationService;
+
+class ExampleUseCase
+{
+    public function example()
+    {
+        $message = new Message(/* メッセージに関するデータを渡す */)
+        $slackNotificationService = new SlackNotificationService($message)
+        $slackNotificationService->notify();
+    }
+}  
+```
+
 <br>
+
+
+## 05. ドメイン層
 
 ### エンティティ
 
@@ -391,7 +380,7 @@ class DogToy
 
 ![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
 
- エンティティや値オブジェクトからなる集約の中で，最終的にアプリケーション層へレスポンスされる集約を，『ルートエンティティ』という．
+ エンティティや値オブジェクトからなる集約の中で，最終的にユースケース層へレスポンスされる集約を，『ルートエンティティ』という．
 
 **＊実装例＊**
 
@@ -463,7 +452,7 @@ class DogOrder
 
 #### ・Specificationパターンとは
 
-デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、Entitiyや値オブジェクトに持たせた場合，肥大化の原因となり，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトにまとめておく．
+デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、Entitiyや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
 
 #### ・入力データに対するビジネスルールのValidation
 
@@ -771,7 +760,33 @@ class YmdType
 
 <br>
 
-## 04-02. 値オブジェクト
+### リポジトリ（インターフェース）
+
+#### ・リポジトリ（インターフェース）とは
+
+![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
+
+デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．ユースケース層は，ドメイン層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，リポジトリのインターフェースを配置する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\Repository;    
+    
+interface DogToyRepository
+{
+    /**
+     * 具象メソッドはインフラストラクチャ層のリポジトリに実装．
+     */
+    function findAllDogToys();
+}
+```
+
+<br>
+
+## 05-02. 値オブジェクト
 
 ### 値オブジェクトとは
 
@@ -785,7 +800,7 @@ class YmdType
 
 #### ・金額
 
-金額データの計算をController内処理やエンティティ内メソッドで行うのではなく，金額計算を行う値オブジェクトのメソッドとして分割する．
+金額データの計算をUseCase内処理やエンティティ内メソッドで行うのではなく，金額計算を行う値オブジェクトのメソッドとして分割する．
 
 **＊実装例＊**
 
@@ -853,7 +868,7 @@ class MoneyVO
 
 #### ・所要時間
 
-所要時間データの計算をController内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
+所要時間データの計算をUseCaseクラス内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
 
 **＊実装例＊**
 
@@ -1229,7 +1244,7 @@ class PaymentInfoVO
 <br>
 
 
-## 05. インフラストラクチャ層
+## 06. インフラストラクチャ層
 
 ### リポジトリ（実装クラス）
 
@@ -1243,7 +1258,7 @@ DBに対してデータの書き込みまたは読み出しを行う．
 
 DBに対する書き込み操作を行う．
 
-1. GETまたはPOSTによって，アプリケーション層から値が送信される．
+1. GETまたはPOSTによって，ユースケース層から値が送信される．
 
 2. ファクトリによって，送信された値からエンティティや値オブジェクトを構成する．さらに，それらから集約を構成する．
 
@@ -1376,11 +1391,11 @@ class DogToyRepository
 
 DBに対する書き込み操作を行う．
 
-1. アプリケーション層から集約がリクエストされる．
+1. ユースケース層から集約がリクエストされる．
 2. DBに対して，読み出しを行う．
 3. ファクトリによって，送信された値からエンティティや値オブジェクトを構成する．さらに，それらから集約を構成する．
 4. リポジトリによって，最終的な集約を構成する．
-5. 再構成された集約をアプリケーション層にレスポンス．
+5. 再構成された集約をユースケース層にレスポンス．
 
 参考：
 
