@@ -81,19 +81,19 @@
 
 #### ・ヘキサゴナルアーキテクチャ
 
-別名『ポートアンドアダプターアーキテクチャ』という．レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．本質的には，他の『オニオンアーキテクチャ』『クリーンアーキテクチャ』に同じであり，実現方法の中ではオニオンアーキテクチャがおすすめである．
+別名『ポートアンドアダプターアーキテクチャ』という．レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．ドメイン層のオブジェクトは，ドメイン層の他のオブジェクトに依存する以外，何のオブジェクトにも外部ライブラリにも依存しない．逆に考えれば，これらに依存するものはドメイン層に置くべきではないと判断できる．本質的には，他の『オニオンアーキテクチャ』『クリーンアーキテクチャ』に同じであり，実現方法の中ではオニオンアーキテクチャがおすすめである．
 
 参考：https://www.amazon.co.jp/dp/B00UX9VJGW/ref=cm_sw_r_tw_dp_S20HJ24MHWTSED7T0ZCP
 
 #### ・オニオンアーキテクチャ
 
-レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．本質的には，他の『ヘキサゴナルアーキテクチャ』『クリーンアーキテクチャ』に同じであり，実現方法の中では本アーキテクチャがおすすめである．
+レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．ドメイン層のオブジェクトは，ドメイン層の他のオブジェクトに依存する以外，何のオブジェクトにも外部ライブラリにも依存しない．逆に考えれば，これらに依存するものはドメイン層に置くべきではないと判断できる．本質的には，他の『ヘキサゴナルアーキテクチャ』『クリーンアーキテクチャ』に同じであり，実現方法の中では本アーキテクチャがおすすめである．
 
 参考：https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
 
 #### ・クリーンアーキテクチャ
 
-レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．本質的には，他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じであり，実現方法の中ではオニオンアーキテクチャがおすすめである．
+レイヤードアーキテクチャのインフラストラクチャ層に対して，依存性逆転を組み込んだもの．ドメイン層のオブジェクトは，ドメイン層の他のオブジェクトに依存する以外，何のオブジェクトにも外部ライブラリにも依存しない．逆に考えれば，これらに依存するものはドメイン層に置くべきではないと判断できる．本質的には，他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じであり，実現方法の中ではオニオンアーキテクチャがおすすめである．
 
 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
@@ -105,7 +105,7 @@
 
 #### ・コントローラとは
 
-ユーザインターフェース層から出力されたデータのフォーマットを検証し，ユースケース層に入力できる構造に変換する．また反対に，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．さらにこれらの責務は，デザインパターンとして切り分けられる．
+ユーザインターフェース層から出力されたデータのフォーマットを検証し，ユースケース層に入力できる構造に変換する．また反対に，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．他に，書式変換，文言作成，レンダリング， JSON構造の定義，などのロジックもコントローラの責務である．コントローラのこれらの責務を，デザインパターンとして切り分けると，よりスッキリする．
 
 <br>
 
@@ -113,7 +113,7 @@
 
 #### ・Validationパターンとは
 
-デザインパターンの一つ．プレゼンテーション層にて，ユーザインターフェース層から出力されたデータに関して，フォーマットを検証する責務を持つ．
+デザインパターンの一つ．責務として，プレゼンテーション層にて，ユーザインターフェース層から出力されたデータのフォーマットを検証する．
 
 **＊実装例＊**
 
@@ -151,7 +151,7 @@ class FormatValidator
 
 #### ・Converterパターンとは
 
-デザインパターンの一つ．プレゼンテーション層にて，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する責務を持つ．
+デザインパターンの一つ．責務として，プレゼンテーション層にて，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．
 
 **＊実装例＊**
 
@@ -184,7 +184,7 @@ class Converter
 
 #### ・ユースケースとは
 
-ドメイン層のロジックを組み合わせて，システムの利用主体の動作（ユースケース）を具現化する．また，インフラストラクチャ層のロジックを組み合わせて，データを永続化する．CRUD処理がユーザにとってはどのように定義されているのか（登録，参照，更新，削除）に着目し，一つのメソッドのロジックの粒度を決めるようにする．
+ドメイン層のロジックを組み合わせて，システムの利用主体の動作（ユースケース）を具現化する．また，インフラストラクチャ層のロジックを組み合わせて，データを永続化する．CRUDのユースケース（登録，参照，更新，削除）ごとに異なるUseCaseクラスを定義する方法と，全てのユースケースを責務としてもつUseCaseクラスを定義する方法がある．
 
 **＊実装例＊**
 
@@ -193,15 +193,53 @@ class Converter
 
 namespace App\UseCase;        
     
-class AcceptOrdersUseCase
+/**
+ * 受注作成ユースケース
+ * ※ ユースケースごとにクラスを定義する方法
+ */
+class createOrdersUseCase
 {
-    // 単なるメソッドではなく，ユースケースとなるようなメソッド
-    public function acceptOrders()
+    public function createOrders()
     {
     
     }
 }  
 ```
+
+```php
+<?php
+
+namespace App\UseCase;        
+    
+/**
+ * 受注ユースケース
+ * ※ 全てのユースケースをクラスを定義する方法
+ */
+class ordersUseCase
+{
+    public function createOrders()
+    {
+    
+    }
+    
+    public function readOrders()
+    {
+    
+    }
+    
+    public function updateOrders()
+    {
+    
+    }
+    
+    public function deleteOrders()
+    {
+    
+    }
+}  
+```
+
+
 
 #### ・ユースケース図
 
@@ -275,244 +313,15 @@ class ExampleUseCase
 
 #### ・エンティティとは
 
-![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
-
-#### ・保持するデータの値が一定でない
-
-状態を変化させる必要があるデータをもつ．
-
-#### ・データの値が同じでも区別できる
-
-オブジェクトにアイデンティティがあり，他のオブジェクトと同じ属性をもっていても，区別される．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\ValueObject;
-
-/**
- * 犬用おもちゃのエンティティ
- */
-class DogToy
-{
-    /**
-     * 犬用おもちゃID
-     */
-    private $id;
-
-    /**
-     * 犬用おもちゃタイプ
-     */
-    private $type;
-
-    /**
-     * 犬用おもちゃ商品名
-     */
-    private $name;
-
-    /**
-     * 数量
-     */
-    private $number;
-
-    /**
-     * 価格の値オブジェクト
-     */
-    private $priceVO;
-
-    /**
-     * 色の値オブジェクト
-     */
-    private $colorVO;
-
-    public function __construct(int $type, string $name, int $number, priceVO $priceVO, ColorVO $colorVO)
-    {
-        $this->type = $type;
-        $this->name = $name;
-        $this->number = $number;
-        $this->priceVO = $priceVO;
-        $this->colorVO = $colorVO;
-    }
-
-    /**
-     * エンティティの等価性を検証します．
-     */
-    public function equals($dogToy)
-    {
-        return ($dogToy instanceof $this || $this instanceof $dogToy)
-            && $this->id->equals($dogToy->getId());
-    }
-
-    /**
-     * 犬用おもちゃ名（色）を返却します．
-     */
-    public function nameWithColor()
-    {
-        return sprintf(
-            "%s（%s）",
-            $this->name->value(),
-            $this->colorVO->name()
-        );
-    }
-}
-```
-
-#### ・ルートエンティティ
-
-![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
-
- エンティティや値オブジェクトからなる集約の中で，最終的にユースケース層へレスポンスされる集約を，『ルートエンティティ』という．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\Entity;
-
-/**
- * 犬用注文エンティティ
- */
-class DogOrder
-{
-    /**
-     * 犬用商品コンボID
-     */
-    private $id;
-
-    /**
-     * 犬用おもちゃ
-     */
-    private $dogToy;
-
-    /**
-     * 犬用えさ
-     */
-    private $dogFood;
-
-    public function __construct(DogToy $dogToy, DogFood $dogFood)
-    {
-        $this->dogToy = $dogToy;
-        $this->dogFood = $dogFood;
-    }
-
-    /**
-     * エンティティの等価性を検証します．
-     *
-     * IDのみ検証する必要がある．
-     */
-    public function equals(DogOrder $dogOrder)
-    {
-        // データ型を検証します．
-        return ($dogOrder instanceof $this || $this instanceof $dogOrder)
-            // IDを検証します．
-            && $this->id->equals($dogOrder->getId());
-    }
-
-    /**
-     * 犬用おもちゃを返却します．
-     */
-    public function getDogToy()
-    {
-        return $this->dogToy;
-    }
-
-    /**
-     * 犬えさを返却します
-     */
-    public function getDogFood()
-    {
-        return $this->dogFood;
-    }
-}
-```
-
-<br>
-
-### Specificationパターン
-
-#### ・Specificationパターンとは
-
-デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、Entitiyや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
-
-#### ・入力データに対するビジネスルールのValidation
-
-真偽値メソッド（```isXxxx```メソッド）のように，オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のための用意ができているかを調べる処理する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Specification;
-
-class ExampleSpecification
-{
-    /**
-     * ビジネスルールを判定します．
-     */
-    public function isSatisfiedBy(Entity $entity): bool
-    {
-        if (!$entity->isX) return false;
-        if (!$entity->isY) return false;
-        if (!$entity->isZ) return false;
-
-        return true;
-    }
-} 
-```
-
-#### ・検索条件オブジェクトの生成
-
-リクエストのパスパラメータとクエリパラメータを引数として，検索条件のオブジェクトを生成する．ビジネスルールのValidationを行うSpecificationクラスと区別するために，Criteriaオブジェクトという名前としても用いられる．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Criteria;
-
-class XxxCriteria
-{
-    private $id;
-
-    private $name;
-
-    private $email;
-
-    /**
-     * 検索条件のオブジェクトを生成します．
-     */
-    public function build(array $array)
-    {
-        // 自身をインスタンス化．
-        $criteria = new static();
-
-        if (isset($array["id"])) {
-            $criteria->id = $array["id"];
-        }
-
-        if (isset($array["name"])) {
-            $criteria->id = $array["name"];
-        }
-
-        if (isset($array["email"])) {
-            $criteria->id = $array["email"];
-        }
-
-        return $criteria;
-    }
-}
-```
+後述の説明を参照せよ．
 
 <br>
 
 ### 値オブジェクト
 
-以降の説明を参照．
+#### ・値オブジェクトとは
+
+後述の説明を参照せよ．
 
 <br>
 
@@ -520,7 +329,7 @@ class XxxCriteria
 
 #### ・Type Codeとは
 
-Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，値オブジェクトとしてではなく，Enumクラスとしてモデリング／実装する．ただし，類似するパターンとして値オブジェクトのディレクトリ内に配置しても良い． 
+Type Codeは概念的な呼び名で，実際は，標準的なライブラリとして利用できるEnumクラスに相当する．一意に識別する必要がないユビキタス言語の中でも，特に『区分』や『種類』などは，値オブジェクトとしてではなく，Enumクラスとしてモデリング／実装する．ただし，類似するパターンとして値オブジェクトのディレクトリ内に配置しても良い．
 
 #### ・色
 
@@ -749,7 +558,86 @@ class YmdType extends Type
 
 #### ・注意点
 
-ドメイン層のロジックをドメインサービスに切り分けすぎると，ドメイン層がドメイン貧血症になる．そのため，ドメインサービス層の構築は控えめにする．
+ドメイン層のロジックをドメインサービスに切り分けすぎると，ドメイン層がドメイン貧血症になる．そのため，ドメインサービス層の構築は控えめにし，可能な限りエンティティまたは値オブジェクトとして実装する．
+
+<br>
+
+### Specificationパターン
+
+#### ・Specificationパターンとは
+
+デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、エンティティや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
+
+#### ・入力データに対するビジネスルールのValidation
+
+真偽値メソッド（```isXxxx```メソッド）のように，オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のための用意ができているかを調べる処理する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Specification;
+
+class ExampleSpecification
+{
+    /**
+     * ビジネスルールを判定します．
+     */
+    public function isSatisfiedBy(Entity $entity): bool
+    {
+        if (!$entity->isX) return false;
+        if (!$entity->isY) return false;
+        if (!$entity->isZ) return false;
+
+        return true;
+    }
+} 
+```
+
+#### ・検索条件オブジェクトの生成
+
+リクエストのパスパラメータとクエリパラメータを引数として，検索条件のオブジェクトを生成する．ビジネスルールのValidationを行うSpecificationクラスと区別するために，Criteriaオブジェクトという名前としても用いられる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Criteria;
+
+class XxxCriteria
+{
+    private $id;
+
+    private $name;
+
+    private $email;
+
+    /**
+     * 検索条件のオブジェクトを生成します．
+     */
+    public function build(array $array)
+    {
+        // 自身をインスタンス化．
+        $criteria = new static();
+
+        if (isset($array["id"])) {
+            $criteria->id = $array["id"];
+        }
+
+        if (isset($array["name"])) {
+            $criteria->id = $array["name"];
+        }
+
+        if (isset($array["email"])) {
+            $criteria->id = $array["email"];
+        }
+
+        return $criteria;
+    }
+}
+```
 
 <br>
 
@@ -759,7 +647,7 @@ class YmdType extends Type
 
 ![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
 
-デザインパターンの一つ．データベースにアクセスする責務を持つ．リクエストによるデータ送信が行われる．ユースケース層は，ドメイン層の抽象メソッドをコールし，DBにおけるデータのCRUDを行う．DIPに基づくドメイン駆動設計の場合，リポジトリのインターフェースを配置する．
+依存性逆転の原則を導入する場合に，ドメイン層にインターフェースリポジトリを配置する．インフラストラクチャ層の実装リポジトリクラスと対応関係にある．実装リポジトリについては，後述の説明を参考にせよ．
 
 **＊実装例＊**
 
@@ -779,13 +667,109 @@ interface DogToyRepository
 
 <br>
 
-## 05-02. 値オブジェクト
+## 05-02. エンティティ
+
+### エンティティとは
+
+責務として，ビジネスのルールや制約の定義を持ち，値オブジェクトとは区別される．エンティティの責務をデザインパターンとして切り分けると，よりスッキリする．
+
+![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_エンティティ.jpg)
+
+<br>
+
+### 保持するデータの値が一定でない
+
+状態を変化させる必要があるデータをもつ．
+
+<br>
+
+### データの値が同じでも区別できる
+
+オブジェクトが識別子（例：IDなど）を持ち，他のオブジェクトと同じ属性をもっていても，区別される．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\ValueObject;
+
+/**
+ * 犬用おもちゃのエンティティ
+ */
+class DogToy
+{
+    /**
+     * 犬用おもちゃID
+     */
+    private $id;
+
+    /**
+     * 犬用おもちゃタイプ
+     */
+    private $type;
+
+    /**
+     * 犬用おもちゃ商品名
+     */
+    private $name;
+
+    /**
+     * 数量
+     */
+    private $number;
+
+    /**
+     * 価格の値オブジェクト
+     */
+    private $priceVO;
+
+    /**
+     * 色の値オブジェクト
+     */
+    private $colorVO;
+
+    public function __construct(int $type, string $name, int $number, priceVO $priceVO, ColorVO $colorVO)
+    {
+        $this->type = $type;
+        $this->name = $name;
+        $this->number = $number;
+        $this->priceVO = $priceVO;
+        $this->colorVO = $colorVO;
+    }
+
+    /**
+     * エンティティの等価性を検証します．
+     */
+    public function equals($dogToy)
+    {
+        return ($dogToy instanceof $this || $this instanceof $dogToy)
+            && $this->id->equals($dogToy->getId());
+    }
+
+    /**
+     * 犬用おもちゃ名（色）を返却します．
+     */
+    public function nameWithColor()
+    {
+        return sprintf(
+            "%s（%s）",
+            $this->name->value(),
+            $this->colorVO->name()
+        );
+    }
+}
+```
+
+<br>
+
+## 05-03. 値オブジェクト
 
 ### 値オブジェクトとは
 
-![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
+責務として，ビジネスのルールや制約の定義を持ち，エンティティと区別される．金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，一意で識別できるデータ（例えば，```$id```データ）を持つ．
 
-金額，数字，電話番号，文字列，日付，氏名，色などのユビキタス言語に関するデータと，これを扱うメソッドを実装する場合，一意で識別できるデータ（例えば，```$id```データ）をもたないオブジェクトとして，これらの実装をまとめておくべきである．このオブジェクトを，値オブジェクトという．
+![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
 
 <br>
 
@@ -1387,7 +1371,7 @@ abstract class ValueObject
 
 #### ・リポジトリ（実装クラス）とは
 
-DBに対してデータの書き込みまたは読み出しを行う．
+責務として，DBに対してデータの書き込みまたは読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として構成する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．
 
 #### ・DBに対する書き込み責務（Create，Update，Delete）
 
@@ -1621,7 +1605,7 @@ class DogToyRepository
 
 #### ・責務
 
-責務として，新たな集約を構成する．既存の集約を分解して再構成させてもよい．
+責務として，新たな集約の構成や，既存の集約の再構成を実行する．
 
 **＊実装例＊**
 
@@ -1682,4 +1666,5 @@ class DogComboFactory
 4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+
 
