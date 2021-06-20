@@ -1364,6 +1364,93 @@ abstract class ValueObject
 
 <br>
 
+## 05-04. ルートエンティティとトランザクション
+
+### ルートエンティティ
+
+#### ・ルートエンティティとは
+
+![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_集約関係.jpg)
+
+エンティティや値オブジェクトからなる集約の中で，最終的にユースケース層へレスポンスされる集約を，『ルートエンティティ』という．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\Entity;
+
+/**
+ * 犬用注文エンティティ
+ */
+class DogOrder
+{
+    /**
+     * 犬用商品コンボID
+     */
+    private $id;
+
+    /**
+     * 犬用おもちゃ
+     */
+    private $dogToy;
+
+    /**
+     * 犬用えさ
+     */
+    private $dogFood;
+
+    public function __construct(DogToy $dogToy, DogFood $dogFood)
+    {
+        $this->dogToy = $dogToy;
+        $this->dogFood = $dogFood;
+    }
+
+    /**
+     * エンティティの等価性を検証します．
+     *
+     * IDのみ検証する必要がある．
+     */
+    public function equals(DogOrder $dogOrder)
+    {
+        // データ型を検証します．
+        return ($dogOrder instanceof $this || $this instanceof $dogOrder)
+            // IDを検証します．
+            && $this->id->equals($dogOrder->getId());
+    }
+
+    /**
+     * 犬用おもちゃを返却します．
+     */
+    public function getDogToy()
+    {
+        return $this->dogToy;
+    }
+
+    /**
+     * 犬えさを返却します
+     */
+    public function getDogFood()
+    {
+        return $this->dogFood;
+    }
+}
+```
+
+#### ・集約とは
+
+保持するデータに整合性が必要なエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+
+<br>
+
+### トランザクションとの関係性
+
+インフラストラクチャ層のリポジトリでは，ルートエンティティの単位で，データの書き込みまたは読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
+
+<br>
 
 ## 06. インフラストラクチャ層
 
