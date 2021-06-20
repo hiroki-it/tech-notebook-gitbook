@@ -556,14 +556,20 @@ $example([1, 2, 3]);
 
 ```php
 <?php
-    
+
 class A
 {
+    /**
+     * @return A
+     */
     public static function get_self()
     {
         return new self();
     }
 
+    /**
+     * @return static
+     */
     public static function get_static()
     {
         return new static();
@@ -699,7 +705,10 @@ $D = objB()->objC()->objC();
 
 class Example
 {
-
+    /**
+     * @param array $array
+     * @return array
+     */
     public function quickSort(array $array): array
     {
         // 配列の要素数が一つしかない場合，クイックソートする必要がないので，返却する．
@@ -828,9 +837,12 @@ $example->exitMethod(); // exitMethod()です。
 
 ```php
 <?php
-    
+
 class Example
 {
+    /**
+     * @return array|Generator
+     */
     public function oneToThree(): array
     {
         for ($i = 1; $i <= 3; $i++) {
@@ -858,7 +870,7 @@ foreach ($oneToThree as $value) {
 
 #### ・Dispatcherとは
 
-特定の文字列によって，動的にメソッドをコールするオブジェクトをDispatcherという．
+特定の名前と関数を紐付け，名前を渡すことで関数をコールするオブジェクトをDispatcherという．
 
 ```php
 <?php
@@ -871,24 +883,28 @@ class Dispatcher
 $dispatcher = new Dispatcher;
 
 $name = "example";
+
+// 名前に紐づける関数を定義．
 $listener = function() use ($param){
-// 何らかの処理
+    // 何らかの処理
 };
 
-// 文字列とメソッドの登録.
+// 名前と関数の登録.
 $dispatcher->addListener($name, $listener);
 
-// 文字列からメソッドをコール.
+// 文字列からメソッドをコール．ついでに，引数を渡す．
 $dispatcher->dispatch("example", "test");
 ```
 
-#### ・イベント名に紐づくメソッドをコールするオブジェクト
+#### ・イベント名と関数の紐付け
 
-イベント名を文字列で定義し，特定のイベント名が渡された時に，それに対応づけられた関数をコールする．フレームワークの```EventDispatcher```を使用するのがよい．以下のノートも参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html
+名前としてイベント名を定義し，これに関数を紐づける．特定のイベント名が渡された時に，それに対応づけられた関数をコールする．
 
 **＊実装例＊**
+
+フレームワークの```EventDispatcher```クラスが簡単である．以下のノートを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html
 
 ```php
 <?php
@@ -912,23 +928,35 @@ class ExampleEventDispatcher
 
 class ResultCacher
 {
+    /**
+     * @var 
+     */
     private $resultCollection;
 
+    /**
+     * @var array[] 
+     */
     private $funcCollection;
 
+    /**
+     */
     public function __construct()
     {
         $this->funcCollection = $this->addListener();
     }
 
-
-    // 集計メソッド
+    /**
+     * 集計メソッド
+     */
     public function computeRevenue()
     {
         // 時間のかかる集計処理;
     }
 
-
+    /**
+     * @param string $funcName
+     * @return false|mixed
+     */
     public function funcNameListener(string $funcName)
     {
         // 返却値が設定されていなかった場合，値を設定.
@@ -942,7 +970,11 @@ class ResultCacher
         return $this->resultCollection[$funcName];
     }
 
-    // 返却値をキャッシュしたいメソッド名を登録しておく．
+    /**
+     * 返却値をキャッシュしたいメソッド名を登録しておく
+     * 
+     * @return array[]
+     */
     private function addListener()
     {
         return [
@@ -950,6 +982,10 @@ class ResultCacher
         ];
     }
 
+    /**
+     * @param string $funcName
+     * @return false|mixed
+     */
     private function dispatch(string $funcName)
     {
         // call_user_funcでメソッドを実行
@@ -1004,7 +1040,7 @@ echo $optionName;
 <?php
 class Item 
 {
-// 中身は省略
+    // 中身は省略
 }
 
 $item = new Item;
@@ -1029,14 +1065,15 @@ echo $optionName("BC");
 
 ```php
 <?php
-class Item 
+
+class Item
 {
-// 中身は省略
+    // 中身は省略
 }
 
-class Option 
+class Option
 {
-// 中身は省略
+    // 中身は省略
 }
 
 $item = new Item;
@@ -1068,9 +1105,10 @@ echo $option->name("BC");
 
 ```php
 <?php
+    
 class Item 
 {
-// 中身は省略
+    // 中身は省略
 }
 
 $item = new Item;
@@ -1103,18 +1141,26 @@ echo $optionName;
 
 ```php
 <?php
-    
+
 // 第一引数のみの場合
 class Example
 {
-     // 高階関数を定義
+    /**
+     * 高階関数を定義
+     * 
+     * @param $callback
+     */
     public function test($callback)
     {
         echo $callback();
     }
-
-    // コールバックを定義
-    // 関数の中でコールされるため，「後で呼び出される」という意味合いから，コールバック関数といえる．
+    
+    /**
+     * コールバックを定義
+     * 関数の中でコールされるため，「後で呼び出される」という意味合いから，コールバック関数といえる．
+     * 
+     * @return string
+     */
     public function callbackMethod(): string
     {
         return "出力に成功しました．";
@@ -1131,17 +1177,29 @@ $example->test("callbackMethod");
 
 ```php
 <?php
-    
+
 // 第一引数と第二引数の場合
 class Example
 {
-    // 高階関数を定義
+
+    /**
+     * 高階関数を定義
+     * 
+     * @param $param
+     * @param $callback
+     * @return mixed
+     */
     public function higherOrder($param, $callback)
     {
         return $callback($param);
     }
 
-    // コールバック関数を定義
+    /**
+     * コールバック関数を定義
+     * 
+     * @param $param
+     * @return string
+     */
     public function callbackMethod($param)
     {
         return $param."の出力に成功しました．";
@@ -1149,6 +1207,7 @@ class Example
 }
 
 $example = new Example();
+
 // 高階関数の第一引数にコールバック関数の引数，第二引数にコールバック関数を渡す
 $example->higherOrder("第一引数", "callbackMethod");
 
@@ -1162,10 +1221,16 @@ $example->higherOrder("第一引数", "callbackMethod");
 
 ```php
 <?php
-    
+
 class Example
 {
-    // 高階関数のように，関数を引数として渡す．
+    /**
+     * 高階関数のように，関数を引数として渡す．
+     * 
+     * @param $parentVar
+     * @param $callback
+     * @return mixed
+     */
     public function higherOrder($parentVar, $callback)
     {
         $parentVar = "&親メソッドのスコープの変数";
@@ -1174,6 +1239,7 @@ class Example
 }
 
 $example = new Example;
+
 // 第二引数の無名関数．関数の中でコールされるため，「後でコールされる」という意味合いから，コールバック関数といえる．
 // コールバック関数は再利用されないため，名前をつけずに無名関数とすることが多い．
 // 親メソッドのスコープで定義されている変数を引数として渡す．（普段よくやっている値渡しと同じ）
@@ -1193,16 +1259,21 @@ $example->higherOrder($parentVar, function () use ($parentVar) {
 
 ```php
 <?php
-    
+
 class Example
 {
-    
+
     /**
      * @var array
      */
     protected $properties;
 
-    // 非無名メソッドあるいは無名メソッドを引数で渡す．
+    /**
+     * 非無名メソッドあるいは無名メソッドを引数で渡す．
+     * 
+     * @param $callback
+     * @return $this
+     */
     public function Shiborikomi($callback)
     {
         if (!is_callable($callback)) {
@@ -1270,49 +1341,6 @@ final class FlagConstant
 計算処理や数値比較処理では，可読性の観点から，できるだけ数値を直書きしない．数値に意味合いを持たせ，定数として扱うと可読性が高くなる．ドメイン駆動設計の値オブジェクトを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
-
-**＊実装例＊**
-
-```php
-<?php
-    
-class requiredTime
-{
-    // 判定値，歩行速度の目安，車速度の目安，を定数で定義する．
-    const JUDGMENT_MINUTE = 21;
-    const WALKING_SPEED_PER_MINUTE = 80;
-    const CAR_SPEED_PER_MINUTE = 400;
-    
-    private $distance;
-    
-    public function __construct(int $distance)
-    {
-        $this->distance = $distance;
-    }
-    
-    
-    public function isMinuteByWalking()
-    {
-        if ($this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE < self::JUDGMENT_MINUTE) {
-            return true;
-        }
-        
-        return false;
-    }
-    
-    public function minuteByWalking()
-    {
-        $minute = $this->distance * 1000 / self::WALKING_SPEED_PER_MINUTE;
-        return ceil($minute);
-    }
-    
-    public function minuteByCar()
-    {
-        $minute = $this->distance * 1000 / self::CAR_SPEED_PER_MINUTE;
-        return ceil($minute);
-    }
-}
-```
 
 <br>
 

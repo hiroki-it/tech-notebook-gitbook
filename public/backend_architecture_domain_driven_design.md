@@ -6,7 +6,7 @@
 
 ドメイン駆動設計が考案される以前，MVCの考え方が主流であった．
 
-![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MVCモデル.png)
+![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MVCモデル.png)
 
 <br>
 
@@ -47,25 +47,25 @@
 
 ドメインエキスパート（現実世界のビジネスルールに詳しく，また実際にシステムを使う人）と，エンジニアが話し合いながら，ビジネスルールに対して，オブジェクト指向分析と設計を行っていく．この時，ドメインエキスパートとエンジニアの話し合いに齟齬が生まれぬように，ユビキタス言語（業務内容について共通の用語）を設定しておく．
 
-![ドメインモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
+![ドメインモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
 
 #### ・境界づけられたコンテキストとは
 
 コアドメインやサブドメインの内部を詳細にグループ化する時，ビジネスの関心事の視点で分割されたまとまりのこと．コンテキストの中は，さらに詳細なコンテキストにグループ化できる．両方のコンテキストで関心事が異なっていても，対象は同じドメインであることもある．
 
-![コアドメイン，サブドメイン，境界づけられたコンテキスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
+![コアドメイン，サブドメイン，境界づけられたコンテキスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
 
 **＊具体例＊**
 
 仕事仲介サイトでは，仕事の発注者のドメインに注目した時，発注時の視点で分割された仕事募集コンテキストと，同じく契約後の視点で分割された契約コンテキストにまとめることができる．モデリングされた『仕事』は，コンテキスト間で視点が異なるため，意味合いが異なる．
 
-![境界づけられたコンテキストの例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example.png)
+![境界づけられたコンテキストの例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example.png)
 
 #### ・コンテキストマップとは
 
 広義のドメイン全体の俯瞰する図のこと．コアドメイン，サブドメイン，境界づけられたコンテキストを定義した後，これらの関係性を視覚化する．
 
-![コンテキストマップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+![コンテキストマップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
 <br>
 
@@ -554,11 +554,19 @@ class YmdType extends Type
 
 #### ・ドメインサービスとは
 
-ドメイン層の中で，汎用的なメソッドが切り分けられたもの．ドメイン層にメソッドを提供する．ドメイン層の例外処理をまとめたDomainExceptionクラスもこれに当てはまる．
+ドメイン層の中で，汎用的なロジックがメソッドとして切り分けられたもの．ドメイン層にメソッドを提供する．ドメイン層の例外処理をまとめたDomainExceptionクラスもこれに当てはまる．
 
 #### ・注意点
 
-ドメイン層のロジックをドメインサービスに切り分けすぎると，ドメイン層がドメイン貧血症になる．そのため，ドメインサービス層の構築は控えめにし，可能な限りエンティティまたは値オブジェクトとして実装する．
+ドメイン層のロジックをドメインサービスに切り分けすぎると，ドメイン層がドメイン貧血症になる．そのため，ドメインサービス層の構築は控えめにし，可能な限りエンティティ／値オブジェクトとして実装する．
+
+<br>
+
+### ドメインイベント
+
+#### ・ドメインイベントとは
+
+ドメイン層の中で，ビジネス的な出来事とこれに紐づく処理のロジックを切り分けたもの．デザインパターンの一つである『Pub／Subパターン』の概念を用いて，ドメインイベントと処理の紐付きを表現する．
 
 <br>
 
@@ -677,59 +685,80 @@ interface DogToyRepository
 
 <br>
 
-### 保持するデータの値が一定でない
+### 識別子あり
 
-状態を変化させる必要があるデータをもつ．
+#### ・識別子ありとは
 
-<br>
-
-### データの値が同じでも区別できる
-
-オブジェクトが識別子（例：IDなど）を持ち，他のオブジェクトと同じ属性をもっていても，区別される．
-
-**＊実装例＊**
+オブジェクトが識別子（例：IDなど）を持ち，他のオブジェクトと同じ属性をもっていても，区別される．この識別子は，データベースのプライマリキーに対応している．
 
 ```php
 <?php
 
 namespace App\Domain\ValueObject;
 
+use App\Domain\Core\Entity;
+use App\Domain\Core\Id;
+use App\Domain\ValueObject\ToyName;
+use App\Domain\ValueObject\Number;
+use App\Domain\ValueObject\PriceVO;
+use App\Domain\ValueObject\ColorVO;
+
 /**
  * 犬用おもちゃのエンティティ
  */
-class DogToy
+class DogToy extends Entity
 {
     /**
      * 犬用おもちゃID
+     *
+     * @var Id
      */
     private $id;
 
     /**
      * 犬用おもちゃタイプ
+     *
+     * @var ToyType
      */
     private $type;
 
     /**
      * 犬用おもちゃ商品名
+     *
+     * @var ToyName
      */
     private $name;
 
     /**
      * 数量
+     *
+     * @var Number
      */
     private $number;
 
     /**
      * 価格の値オブジェクト
+     *
+     * @var PriceVO
      */
     private $priceVO;
 
     /**
      * 色の値オブジェクト
+     *
+     * @var ColorVO
      */
     private $colorVO;
 
-    public function __construct(int $type, string $name, int $number, priceVO $priceVO, ColorVO $colorVO)
+    /**
+     *
+     * @param ToyType $type
+     * @param ToyName $name
+     * @param Number  $number
+     * @param PriceVO $priceVO
+     * @param ColorVO $colorVO
+     */
+    public function __construct(ToyType $type, ToyName $name, Number $number, PriceVO $priceVO, ColorVO $colorVO)
     {
         $this->type = $type;
         $this->name = $name;
@@ -739,16 +768,9 @@ class DogToy
     }
 
     /**
-     * エンティティの等価性を検証します．
-     */
-    public function equals($dogToy)
-    {
-        return ($dogToy instanceof $this || $this instanceof $dogToy)
-            && $this->id->equals($dogToy->getId());
-    }
-
-    /**
      * 犬用おもちゃ名（色）を返却します．
+     *
+     * @return string
      */
     public function nameWithColor()
     {
@@ -763,6 +785,126 @@ class DogToy
 
 <br>
 
+### 識別子による等価性検証
+
+#### ・識別子による等価性検証とは
+
+等価性検証用の```equals```メソッドを持つ．保持する識別子が，対象のエンティティと同じ場合，同一のものと見なされる．
+
+#### ・等価性の検証方法
+
+全てのエンティティに等価性の検証メソッドを持たせると可読性が低い．そこで，全てのエンティティに等価性検証用の```equals```メソッドを持たせることをやめ，継承元の抽象クラスのエンティティにこれを定義するとよい．
+
+```php
+<?php
+
+namespace App\Domain\Core;
+
+/**
+ * エンティティ抽象クラス
+ */
+abstract class Entity
+{
+    /**
+     * IDクラス
+     *
+     * @var Id
+     */
+    protected Id $id;
+
+    /**
+     * エンティティの等価性を検証します．
+     *
+     * @param Entity $entity
+     * @return bool
+     */
+    public function equals(Entity $entity): bool
+    {
+        return ($entity instanceof $this || $this instanceof $entity) // エンティティのデータ型の等価性
+            && $this->id->equals($entity->id()); // IDオブジェクトの等価性
+    }
+
+    /**
+     * IDクラスを返却します．
+     */
+    public function id(): Id
+    {
+        return $this->id;
+    }
+}
+```
+
+#### ・複合主キーへの対応（PHPでは不要）
+
+以降の説明はJavaについて適用されるため，PHPでは不要である．複合主キーを持つオブジェクトに対応するために，主キーとなる方のオブジェクト側に，```equals```メソッドと```hash```メソッドを定義する．これにより，言語標準搭載の```equals```メソッドと```hash```メソッドをオーバーライドし，異なるセッションに渡ってオブジェクトを比較できるようにする．これらを定義しないと，オーバーライドされずに標準搭載のメソッドが使用される．標準搭載のメソッドでは，異なるセッションに渡ったオブジェクトの比較では，必ず異なるオブジェクトであると判定してしまう．
+
+**＊実装例＊**
+
+PHPでは不要であるが，参考までに，PHPで実装した．
+
+```php
+<?php
+
+namespace App\Domain\Core;
+
+/**
+ * ID抽象クラス
+ */
+abstract class Id
+{
+    /**
+     * ID
+     *
+     * @var string
+     */
+    private $id;
+
+    /**
+     * @param string $id
+     */
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * ハッシュ値を返却します．
+     *
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために，標準の関数をオーバーライドします．
+     *
+     * @return string
+     */
+    public function hash(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * オブジェクトの等価性を検証します．
+     *
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために，標準の関数をオーバーライドします．．
+     *
+     * @param Id $id
+     * @return bool
+     */
+    public function equals(Id $id): bool
+    {
+        return ($id instanceof $this || $this instanceof $id) // IDオブジェクトのデータ型の等価性
+            && $this->hash() == $id->hash(); // ハッシュ値の等価性
+    }
+}
+```
+
+<br>
+
+### データの可変性／不変性
+
+#### ・可変性／不変性の実現方法（Mutable／Immutable）
+
+エンティティは可変的／不変的であり，インスタンスとして生成されて以降，データは変更されてもされなくともよい．オブジェクトの可変性を実現するために，セッターを使用する．また，不変性を実現するために```constructor```メソッドを使用する．不変性の実現方法については，後述の説明を参考にせよ．
+
+<br>
+
 ## 05-03. 値オブジェクト
 
 ### 値オブジェクトとは
@@ -773,7 +915,11 @@ class DogToy
 
 <br>
 
-### 一意に識別できるデータをもたず，対象のユビキタス言語に関するデータをメソッドを持つ
+### 識別子なし
+
+#### ・識別子なしとは
+
+一意に識別できるデータをもたず，対象のユビキタス言語に関するデータをメソッドを持つ
 
 #### ・金額
 
@@ -1109,15 +1255,11 @@ class Name extends ValueObject
 
 <br>
 
-### オブジェクトの持つデータの不変性
+### データの不変性（Immutable）
 
-#### ・不変性に関するベストプラクティス
+#### ・不変性の実現方法
 
-エンティティと値オブジェクトのどちらとして，オブジェクトをモデリング／実装すべきなのかについて考える．そもそも，大前提として，『オブジェクトの持つデータはできるだけ不変にすべき』というベストプラクティスがあり，その結果，値オブジェクトというが生まれたと考えられる．実は，値オブジェクトを使わずに全てエンティティとしてモデリング／実装することは可能である．しかし，不変にしてもよいところも可変になり，可読性や信頼性を下げてしまう可能性がある．
-
-#### ・普遍性をコードで実現する方法
-
-インスタンス化時に自動的に呼び出される```construct```メソッドを用いる．インスタンス化時に実行したい処理を記述できる．セッターを持たせずに，```construct```メソッドでのみ値の設定を行えば，値オブジェクトのような，『Immutable』なオブジェクトを実現できる．
+値オブジェクトは不変的であり，インスタンスとして生成されて以降，データは変更されない．オブジェクトの不変性を実現するために，オブジェクトにセッターを定義しないようにし，データの設定には```construct```メソッドだけを使用するようにする．
 
 **＊実装例＊**
 
@@ -1162,11 +1304,11 @@ class ExampleVO extends ValueObject
 }
 ```
 
-#### ・『Immutable』を実現できる理由
-
-Test01クラスインスタンスの```$property01```に値を設定するためには，インスタンスからセッターを呼び出す．セッターは何度でも呼び出せ，その度にデータの値を上書きできてしまう．
+#### ・セッターでは不変的にならない理由
 
 **＊実装例＊**
+
+Test01クラスインスタンスの```$property01```データに値を設定するためには，インスタンスからセッターを呼び出す．セッターは何度でも呼び出せ，その度にデータの値を上書きできてしまう．
 
 ```php
 <?php
@@ -1178,9 +1320,7 @@ $test01->setProperty01("データ01の値");
 $test01->setProperty01("新しいデータ01の値");
 ```
 
-一方で，Test02クラスインスタンスの```$property02```に値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．セッターを持たせずに，```construct```メソッドだけを持たせれば，『Immutable』なオブジェクトとなる．
-
-**＊実装例＊**
+Test02クラスインスタンスの```$property02```データに値を設定するためには，インスタンスを作り直さなければならない．つまり，以前に作ったインスタンスの```$property02```の値は上書きできない．セッターを持たせずに，```construct```メソッドだけを持たせれば，不変的なオブジェクトとなる．
 
 ```php
 <?php
@@ -1208,15 +1348,17 @@ $test02 = new Test02("新しいデータ02の値");
 
 <br>
 
-### 等価の必要性
+### 属性による等価性
 
-#### ・等価の必要性とは
+#### ・属性による等価性検証とは
 
-保持する全ての値データが，対象の値オブジェクトと同じ場合，同一のものと見なされる．そのため，等価性を検証するメソッドが必要である．
+等価性を検証するメソッドを持つ．保持する全ての属性が，対象の値オブジェクトと同じ場合，同一のものと見なされる．
 
-#### ・等価性の検証メソッド
+#### ・等価性の検証方法
 
-値データを一つだけ保持する値オブジェクトの場合，その値データの検証のみを行う．
+**＊実装例＊**
+
+属性を一つだけ保持する場合，一つの属性のみを検証すれば良いため，以下の通りとなる．
 
 ```php
 <?php
@@ -1257,13 +1399,13 @@ final class ContactMail extends ValueObject
      */
     public function equals(ValueObject $VO): bool
     {
-        // 単一の値データを対象とする．
+        // 単一の属性を対象とする．
         return $this->value() === $VO->value();
     }
 }
 ```
 
-値データを複数保持する値オブジェクトの場合，全ての値データの検証を行う．
+属性を複数保持する値オブジェクトの場合，全ての属性を検証する必要があるため，以下の通りとなる．
 
 ```php
 <?php
@@ -1316,7 +1458,7 @@ final class PaymentInfoVO extends ValueObject
      */
     public function equals(ValueObject $VO): bool
     {
-        // 複数の値データを対象とする．
+        // 複数の属性を対象とする．
         return $this->paymentType->value() === $VO->paymentType->value()
             && $this->contactMail->value() === $VO->contactMail->value()
             && $this->price->value() === $VO->price->value();
@@ -1324,7 +1466,7 @@ final class PaymentInfoVO extends ValueObject
 }
 ```
 
-ただし，実際のところ，全ての値オブジェクトに等価性の検証メソッドを持たせることをやめ，継承元の抽象クラスの値オブジェクトに定義してもよい．その時は，保持している値データを反復的に検証できるように実装するとよい．
+全ての値オブジェクトに等価性の検証メソッドを持たせると可読性が低い．そこで，継承元の抽象クラスの値オブジェクトに定義するとよい．その時は，保持している属性を反復的に検証できるように実装するとよい．
 
 ```php
 <?php
@@ -1344,7 +1486,7 @@ abstract class ValueObject
      */
     public function equals(ValueObject $VO): bool
     {
-        // 全ての値データを反復的に検証します．
+        // 全ての属性を反復的に検証します．
         foreach (get_object_vars($this) as $key => $value) {
             if ($this->__get($key) !== $VO->__get($key)) {
                 return false;
@@ -1355,12 +1497,6 @@ abstract class ValueObject
     }
 }
 ```
-
- <br>
-
-### メソッドによってオブジェクトの状態が変わらない
-
-セッターを定義せずに```constructor```メソッドを使用することにより，外部からメソッドをコールしてデータを変更できなくなる．
 
 <br>
 
@@ -1381,6 +1517,11 @@ abstract class ValueObject
 
 namespace App\Domain\Entity;
 
+use App\Domain\Core\Entity;
+use App\Domain\Core\Id;
+use App\Domain\Entity\DogToy;
+use App\Domain\Entity\DogFood;
+
 /**
  * 犬用注文エンティティ
  */
@@ -1388,19 +1529,29 @@ class DogOrder
 {
     /**
      * 犬用商品コンボID
+     *
+     * @var Id
      */
     private $id;
 
     /**
      * 犬用おもちゃ
+     *
+     * @var DogToy
      */
     private $dogToy;
 
     /**
      * 犬用えさ
+     *
+     * @var DogFood
      */
     private $dogFood;
 
+    /**
+     * @param DogToy  $dogToy
+     * @param DogFood $dogFood
+     */
     public function __construct(DogToy $dogToy, DogFood $dogFood)
     {
         $this->dogToy = $dogToy;
@@ -1408,30 +1559,21 @@ class DogOrder
     }
 
     /**
-     * エンティティの等価性を検証します．
-     *
-     * IDのみ検証する必要がある．
-     */
-    public function equals(DogOrder $dogOrder)
-    {
-        // データ型を検証します．
-        return ($dogOrder instanceof $this || $this instanceof $dogOrder)
-            // IDを検証します．
-            && $this->id->equals($dogOrder->getId());
-    }
-
-    /**
      * 犬用おもちゃを返却します．
+     *
+     * @return DogToy
      */
-    public function getDogToy()
+    public function getDogToy(): DogToy
     {
         return $this->dogToy;
     }
 
     /**
-     * 犬えさを返却します
+     * 犬えさを返却します．
+     *
+     * @return DogFood
      */
-    public function getDogFood()
+    public function getDogFood(): DogFood
     {
         return $this->dogFood;
     }
@@ -1440,7 +1582,7 @@ class DogOrder
 
 #### ・集約とは
 
-保持するデータに整合性が必要なエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
+データに整合性が必要なエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 
@@ -1448,7 +1590,7 @@ class DogOrder
 
 ### トランザクションとの関係性
 
-インフラストラクチャ層のリポジトリでは，ルートエンティティの単位で，データの書き込みまたは読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
+インフラストラクチャ層のリポジトリでは，ルートエンティティの単位で，データの書き込み／読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
 
 <br>
 
@@ -1458,7 +1600,7 @@ class DogOrder
 
 #### ・リポジトリ（実装クラス）とは
 
-責務として，DBに対してデータの書き込みまたは読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として構成する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．
+責務として，DBに対してデータの書き込み／読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として構成する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．
 
 #### ・DBに対する書き込み責務（Create，Update，Delete）
 
@@ -1466,7 +1608,7 @@ class DogOrder
 
 DBに対する書き込み操作を行う．
 
-1. GETまたはPOSTによって，ユースケース層から値が送信される．
+1. GET／POSTによって，ユースケース層から値が送信される．
 
 2. ファクトリによって，送信された値からエンティティや値オブジェクトを構成する．さらに，それらから集約を構成する．
 
@@ -1753,5 +1895,4 @@ class DogComboFactory
 4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
-
 

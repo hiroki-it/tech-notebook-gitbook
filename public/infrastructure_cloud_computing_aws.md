@@ -231,7 +231,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ステージ                 | API Gatewayをデプロイする環境を定義する．                    |                                                              |
 | オーソライザー           |                                                              |                                                              |
 | ゲートウェイのレスポンス |                                                              |                                                              |
-| モデル                   | リクエストまたはレスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
+| モデル                   | リクエスト／レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
 | リソースポリシー         |                                                              |                                                              |
 | ドキュメント             |                                                              |                                                              |
 | ダッシュボード           |                                                              |                                                              |
@@ -289,7 +289,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 #### ・Private統合とは
 
-API GatewayとVPCリンクの間で，リクエストまたはレスポンスのJSONデータを自動的にマッピングする機能のこと．
+API GatewayとVPCリンクの間で，リクエスト／レスポンスのJSONデータを自動的にマッピングする機能のこと．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-private-integration.html
 
@@ -312,7 +312,7 @@ API GatewayとVPCリンクの間で，リクエストまたはレスポンスの
 
 #### ・Lambdaプロキシ統合とは
 
-API GatewayとLambdaの間で，リクエストまたはレスポンスのJSONデータを自動的にマッピングする機能のこと．プロキシ統合を使用すると，Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される．プロキシ統合を使用しない場合，LambdaとAPI Gatewayの間のマッピングを手動で行う必要がある．
+API GatewayとLambdaの間で，リクエスト／レスポンスのJSONデータを自動的にマッピングする機能のこと．プロキシ統合を使用すると，Lambdaに送信されたリクエストはハンドラ関数のeventオブジェクトに代入される．プロキシ統合を使用しない場合，LambdaとAPI Gatewayの間のマッピングを手動で行う必要がある．
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-lambda-integrations.html
 
@@ -1985,7 +1985,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 **＊実装例＊**
 
-Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```または```FAILED```だった場合に，これを転送する．
+Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
 
 ```json
 {
@@ -2216,7 +2216,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 | Statementの項目 | 説明                                             |
 | --------------- | ------------------------------------------------ |
 | Sid             | 任意の一意な文字列を設定する．空文字でもよい．   |
-| Effect          | 許可または拒否を設定する．                       |
+| Effect          | 許可／拒否を設定する．                           |
 | Action          | リソースに対して実行できるアクションを設定する． |
 | Resource        | アクションの実行対象に選べるリソースを設定する． |
 
