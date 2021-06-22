@@ -1,0 +1,2116 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>▶ ︎データベースの操作 · 僕のドキュメントサイト【GitBook版】</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="backend_database_mysql.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索すると入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    はじめに
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    ▶ ︎このサイトについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    自己紹介
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="self_introduction.html">
+            
+                <a href="self_introduction.html">
+            
+                    
+                    ▶ ︎長谷川広樹と申します
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="backend_architecture_domain_driven_design.html">
+            
+                <a href="backend_architecture_domain_driven_design.html">
+            
+                    
+                    ▶ ︎ドメイン駆動設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="backend_architecture_cqrs.html">
+            
+                <a href="backend_architecture_cqrs.html">
+            
+                    
+                    ▶ ︎CQRS設計
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="frontend_architecture.html">
+            
+                <a href="frontend_architecture.html">
+            
+                    
+                    ▶ ︎フロントエンドアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="frontend_and_backend_architecture_microservice.html">
+            
+                <a href="frontend_and_backend_architecture_microservice.html">
+            
+                    
+                    ▶ ︎マイクロサービス
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    PHP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    クラスベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="backend_object_orientation_analysis_design_programming.html">
+            
+                <a href="backend_object_orientation_analysis_design_programming.html">
+            
+                    
+                    ▶ ︎オブジェクト指向分析／設計／プログラミング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="backend_object_orientation_class.html">
+            
+                <a href="backend_object_orientation_class.html">
+            
+                    
+                    ▶ ︎クラスベース（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="backend_object_orientation_method_data.html">
+            
+                <a href="backend_object_orientation_method_data.html">
+            
+                    
+                    ▶ ︎クラスベース（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="backend_object_orientation_data_structure.html">
+            
+                <a href="backend_object_orientation_data_structure.html">
+            
+                    
+                    ▶ ︎データ構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="backend_logic_validation.html">
+            
+                <a href="backend_logic_validation.html">
+            
+                    
+                    ▶ ︎バックエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="backend_logic_iteration.html">
+            
+                <a href="backend_logic_iteration.html">
+            
+                    
+                    ▶ ︎反復ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="backend_api_restful.html">
+            
+                <a href="backend_api_restful.html">
+            
+                    
+                    ▶ ︎RESTful APIの概念と実装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    パッケージ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="backend_package.html">
+            
+                <a href="backend_package.html">
+            
+                    
+                    ▶ ︎バックエンドパッケージ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="backend_framework_symfony.html">
+            
+                <a href="backend_framework_symfony.html">
+            
+                    
+                    ▶ ︎Symfony
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="backend_framework_laravel.html">
+            
+                <a href="backend_framework_laravel.html">
+            
+                    
+                    ▶ ︎Laravel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.4" data-path="backend_testing.html">
+            
+                <a href="backend_testing.html">
+            
+                    
+                    ▶ ︎テスト
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" >
+            
+                <span>
+            
+                    
+                    デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.5.1" data-path="backend_debug.html">
+            
+                <a href="backend_debug.html">
+            
+                    
+                    ▶ ︎デバッグのコツ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    Go
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="backend_go.html">
+            
+                <a href="backend_go.html">
+            
+                    
+                    ▶ 文法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    フロントエンドとバックエンド間のデータ通信
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="frontend_and_backend_authentication_authorization.html">
+            
+                <a href="frontend_and_backend_authentication_authorization.html">
+            
+                    
+                    ▶ ︎認証と認可
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="frontend_and_backend_json.html">
+            
+                <a href="frontend_and_backend_json.html">
+            
+                    
+                    ▶ ︎JSON
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    JavaScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    プロトタイプベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="frontend_object_orientation_prototype.html">
+            
+                <a href="frontend_object_orientation_prototype.html">
+            
+                    
+                    ▶ ︎プロトタイプベース（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="frontend_object_orientation_method_data.html">
+            
+                <a href="frontend_object_orientation_method_data.html">
+            
+                    
+                    ▶ ︎プロトタイプベース（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="frontend_logic_validation.html">
+            
+                <a href="frontend_logic_validation.html">
+            
+                    
+                    ▶ ︎フロントエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    パッケージ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="frontend_package.html">
+            
+                <a href="frontend_package.html">
+            
+                    
+                    ▶ ︎フロントエンドパッケージ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="frontend_framework_vuejs.html">
+            
+                <a href="frontend_framework_vuejs.html">
+            
+                    
+                    ▶ ︎Vue.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="frontend_framework_nuxtjs.html">
+            
+                <a href="frontend_framework_nuxtjs.html">
+            
+                    
+                    ▶ ︎Nuxt.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" >
+            
+                <span>
+            
+                    
+                    デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="frontend_debug.html">
+            
+                <a href="frontend_debug.html">
+            
+                    
+                    ▶ ︎デバッグのコツ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    ブラウザレンダリング
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="frontend_browser_rendering.html">
+            
+                <a href="frontend_browser_rendering.html">
+            
+                    
+                    ▶ ︎ブラウザレンダリングの仕組み
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    データベース
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.9.1" data-path="backend_database_operation.html">
+            
+                <a href="backend_database_operation.html">
+            
+                    
+                    ▶ ︎データベースの操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="backend_database_mysql.html">
+            
+                <a href="backend_database_mysql.html">
+            
+                    
+                    ▶ ︎SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    ネットワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    構造
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="infrastructure_network_internet.html">
+            
+                <a href="infrastructure_network_internet.html">
+            
+                    
+                    ▶ ︎ネットワーク構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    セキュリティ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.2.1" data-path="infrastructure_network_cyber_attacks.html">
+            
+                <a href="infrastructure_network_cyber_attacks.html">
+            
+                    
+                    ▶ ︎サイバー攻撃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2" data-path="infrastructure_network_encryption_technology.html">
+            
+                <a href="infrastructure_network_encryption_technology.html">
+            
+                    
+                    ▶ ︎通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    ソフトウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1" data-path="infrastructure_software.html">
+            
+                <a href="infrastructure_software.html">
+            
+                    
+                    ▶ ︎ソフトウェアの種類
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" >
+            
+                <span>
+            
+                    
+                    ミドルウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.2.1" data-path="infrastructure_software_middleware_nginx.html">
+            
+                <a href="infrastructure_software_middleware_nginx.html">
+            
+                    
+                    ▶ ︎Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2.2" data-path="infrastructure_software_middleware_apache.html">
+            
+                <a href="infrastructure_software_middleware_apache.html">
+            
+                    
+                    ▶ ︎Apache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" >
+            
+                <span>
+            
+                    
+                    CentOS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.3.1" data-path="infrastructure_software_centos.html">
+            
+                <a href="infrastructure_software_centos.html">
+            
+                    
+                    ▶ ︎CentOSの構成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" >
+            
+                <span>
+            
+                    
+                    ハードウェアとのコミュニケーション
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.4.1" data-path="infrastructure_software_machine_language_and_radix.html">
+            
+                <a href="infrastructure_software_machine_language_and_radix.html">
+            
+                    
+                    ▶ ︎機械語と進数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    クラウドインフラストラクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="infrastructure_cloud_computing.html">
+            
+                <a href="infrastructure_cloud_computing.html">
+            
+                    
+                    ▶ ︎クラウドコンピューティング
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1" >
+            
+                <span>
+            
+                    
+                    AWS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1.1" data-path="infrastructure_cloud_computing_aws.html">
+            
+                <a href="infrastructure_cloud_computing_aws.html">
+            
+                    
+                    ▶ ︎Amazon Web Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.1.2" data-path="infrastructure_cloud_computing_aws_api_gateway_import.html">
+            
+                <a href="infrastructure_cloud_computing_aws_api_gateway_import.html">
+            
+                    
+                    ▶ ︎API Gatewayインポート機能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2" >
+            
+                <span>
+            
+                    
+                    GCP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.2.1" data-path="infrastructure_cloud_computing_gcp.html">
+            
+                <a href="infrastructure_cloud_computing_gcp.html">
+            
+                    
+                    ▶ ︎Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" >
+            
+                <span>
+            
+                    
+                    IaC
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="infrastructure_as_code.html">
+            
+                <a href="infrastructure_as_code.html">
+            
+                    
+                    ▶ ︎Infrastructure as Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="infrastructure_as_code_terraform.html">
+            
+                <a href="infrastructure_as_code_terraform.html">
+            
+                    
+                    ▶ ︎Terraform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" >
+            
+                <span>
+            
+                    
+                    仮想化技術
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="infrastructure_virtualization_comparison.html">
+            
+                <a href="infrastructure_virtualization_comparison.html">
+            
+                    
+                    ▶ ︎仮想化技術の比較
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1" >
+            
+                <span>
+            
+                    
+                    コンテナ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.1.1" data-path="infrastructure_virtualization_container.html">
+            
+                <a href="infrastructure_virtualization_container.html">
+            
+                    
+                    ▶ ︎コンテナ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.1.2" data-path="infrastructure_virtualization_container_orchestration.html">
+            
+                <a href="infrastructure_virtualization_container_orchestration.html">
+            
+                    
+                    ▶ ︎コンテナオーケストレーション
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.1.2" >
+            
+                <span>
+            
+                    
+                    サーバ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1.2.1" data-path="infrastructure_virtualization_server.html">
+            
+                <a href="infrastructure_virtualization_server.html">
+            
+                    
+                    ▶ ︎仮想サーバ（仮想マシン）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    CI/CD
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="infrastructure_ci_cd.html">
+            
+                <a href="infrastructure_ci_cd.html">
+            
+                    
+                    ▶ ︎CI & CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="infrastructure_circleci.html">
+            
+                <a href="infrastructure_circleci.html">
+            
+                    
+                    ▶ ︎CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="infrastructure_capistrano.html">
+            
+                <a href="infrastructure_capistrano.html">
+            
+                    
+                    ▶ ︎Capistrano
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" >
+            
+                <span>
+            
+                    
+                    データ収集
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="infrastructure_log_collector.html">
+            
+                <a href="infrastructure_log_collector.html">
+            
+                    
+                    ▶ ︎ログ収集ツール
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" >
+            
+                <span>
+            
+                    
+                    ハードウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="hardware.html">
+            
+                <a href="hardware.html">
+            
+                    
+                    ▶ ︎ハードウェア
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="hardware_embedded_system.html">
+            
+                <a href="hardware_embedded_system.html">
+            
+                    
+                    ▶ ︎組み込み機器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" >
+            
+                <span>
+            
+                    
+                    開発フロー
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="management_development_flow.html">
+            
+                <a href="management_development_flow.html">
+            
+                    
+                    ▶ ︎システム開発フローの全体像
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" >
+            
+                <span>
+            
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="git.html">
+            
+                <a href="git.html">
+            
+                    
+                    ▶ ︎Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.2" data-path="github.html">
+            
+                <a href="github.html">
+            
+                    
+                    ▶ ︎GitHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" >
+            
+                <span>
+            
+                    
+                    アルゴリズム
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="backend_logic_algorithm.html">
+            
+                <a href="backend_logic_algorithm.html">
+            
+                    
+                    ▶ ︎アルゴリズムのロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" >
+            
+                <span>
+            
+                    
+                    R言語
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="statistic_analysis.html">
+            
+                <a href="statistic_analysis.html">
+            
+                    
+                    ▶ ︎統計解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            GitBookで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >▶ ︎データベースの操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;"><a name="&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x64CD;&#x4F5C;</h1>
+<h2 id="01-rdb&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;"><a name="01-rdb&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;" class="plugin-anchor" href="#01-rdb&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>01. RDB&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;</h2>
+<h3 id="rdbms&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF09;&#x306E;&#x4ED5;&#x7D44;&#x307F;"><a name="rdbms&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF09;&#x306E;&#x4ED5;&#x7D44;&#x307F;" class="plugin-anchor" href="#rdbms&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF09;&#x306E;&#x4ED5;&#x7D44;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>RDBMS&#xFF08;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF09;&#x306E;&#x4ED5;&#x7D44;&#x307F;</h3>
+<p>RDB&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x540C;&#x58EB;&#x304C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x72B6;&#x306B;&#x95A2;&#x4FC2;&#x3092;&#x3082;&#x3064;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
+<p><br></p>
+<h3 id="rdbms&#x3068;rdb&#x306E;&#x7A2E;&#x985E;"><a name="rdbms&#x3068;rdb&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#rdbms&#x3068;rdb&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>RDBMS&#x3068;RDB&#x306E;&#x7A2E;&#x985E;</h3>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMS.jpg" alt="DBMS"></p>
+<h4 id="&#x30FB;mariadb"><a name="&#x30FB;mariadb" class="plugin-anchor" href="#&#x30FB;mariadb"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;MariaDB</h4>
+<p>  MariaDB&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x308B;RDBMS</p>
+<h4 id="&#x30FB;mysql"><a name="&#x30FB;mysql" class="plugin-anchor" href="#&#x30FB;mysql"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;MySQL</h4>
+<p>  MySQL&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x308B;RDBMS</p>
+<h4 id="&#x30FB;postgresql"><a name="&#x30FB;postgresql" class="plugin-anchor" href="#&#x30FB;postgresql"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;PostgreSQL</h4>
+<p>  PostgreSQL&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x308B;RDBMS</p>
+<p><br></p>
+<h3 id="rdbs&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A8;&#x30F3;&#x30B8;&#x30F3;"><a name="rdbs&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A8;&#x30F3;&#x30B8;&#x30F3;" class="plugin-anchor" href="#rdbs&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A8;&#x30F3;&#x30B8;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>RDBS&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A8;&#x30F3;&#x30B8;&#x30F3;</h3>
+<p>RDBMS&#x304C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x306E;CRUD&#x306E;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;innodb"><a name="&#x30FB;innodb" class="plugin-anchor" href="#&#x30FB;innodb"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;InnoDB</h4>
+<p><br></p>
+<h2 id="01-02-nosql&#xFF08;&#x975E;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;"><a name="01-02-nosql&#xFF08;&#x975E;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;" class="plugin-anchor" href="#01-02-nosql&#xFF08;&#x975E;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>01-02. NoSQL&#xFF08;&#x975E;&#x95A2;&#x4FC2;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#xFF09;&#x3068;&#x306F;</h2>
+<p>NoSQL&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x540C;&#x58EB;&#x304C;&#x95A2;&#x4FC2;&#x3092;&#x6301;&#x305F;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30E1;&#x30A4;&#x30F3;&#x30E1;&#x30E2;&#x30EA;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;</p>
+<h3 id="nosql&#x306E;&#x7A2E;&#x985E;"><a name="nosql&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#nosql&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>NoSQL&#x306E;&#x7A2E;&#x985E;</h3>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NoSQL&#x306E;&#x7A2E;&#x985E;.jpg" alt="NoSQL&#x306E;&#x5206;&#x985E;"></p>
+<p><br></p>
+<h2 id="01-03-rdb&#x306E;&#x8A2D;&#x8A08;"><a name="01-03-rdb&#x306E;&#x8A2D;&#x8A08;" class="plugin-anchor" href="#01-03-rdb&#x306E;&#x8A2D;&#x8A08;"><i class="fa fa-link" aria-hidden="true"></i></a>01-03. RDB&#x306E;&#x8A2D;&#x8A08;</h2>
+<h3 id="uml&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;"><a name="uml&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;" class="plugin-anchor" href="#uml&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;"><i class="fa fa-link" aria-hidden="true"></i></a>UML&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;</h3>
+<p>16&#x7AE0;&#x3092;&#x53C2;&#x7167;&#xFF0E;&#x3088;&#x304F;&#x3042;&#x308B;&#x8A2D;&#x8A08;&#x56F3;&#x3067;&#x306F;&#xFF0C;UML&#x3068;ER&#x56F3;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="er&#x56F3;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;&#xFF1A;entity-relation-diagram"><a name="er&#x56F3;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;&#xFF1A;entity-relation-diagram" class="plugin-anchor" href="#er&#x56F3;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;&#xFF1A;entity-relation-diagram"><i class="fa fa-link" aria-hidden="true"></i></a>ER&#x56F3;&#x306B;&#x3088;&#x308B;&#x8A2D;&#x8A08;&#xFF1A;Entity Relation Diagram</h3>
+<p>16&#x7AE0;&#x3092;&#x53C2;&#x7167;&#xFF0E;&#x3088;&#x304F;&#x3042;&#x308B;&#x8A2D;&#x8A08;&#x56F3;&#x3067;&#x306F;&#xFF0C;UML&#x3068;ER&#x56F3;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h2 id="01-04-&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;"><a name="01-04-&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;" class="plugin-anchor" href="#01-04-&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>01-04. &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;</h2>
+<h3 id="&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3042;&#x308B;&#x3044;&#x306F;&#x524A;&#x9664;&#x3059;&#x308B;&#x5834;&#x5408;&#x306E;&#x6CE8;&#x610F;&#x70B9;"><a name="&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3042;&#x308B;&#x3044;&#x306F;&#x524A;&#x9664;&#x3059;&#x308B;&#x5834;&#x5408;&#x306E;&#x6CE8;&#x610F;&#x70B9;" class="plugin-anchor" href="#&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3042;&#x308B;&#x3044;&#x306F;&#x524A;&#x9664;&#x3059;&#x308B;&#x5834;&#x5408;&#x306E;&#x6CE8;&#x610F;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3042;&#x308B;&#x3044;&#x306F;&#x524A;&#x9664;&#x3059;&#x308B;&#x5834;&#x5408;&#x306E;&#x6CE8;&#x610F;&#x70B9;</h3>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3042;&#x308B;&#x3044;&#x306F;&#x524A;&#x9664;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x884C;&#x3046;&#xFF0E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x5897;&#x6E1B;&#x306E;&#x51E6;&#x7406;&#x306B;&#x306F;&#x6642;&#x9593;&#x304C;&#x304B;&#x304B;&#x308B;&#xFF0E;&#x4E00;&#x65B9;&#x3067;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x306E;&#x51E6;&#x7406;&#x306B;&#x306F;&#x6642;&#x9593;&#x304C;&#x304B;&#x304B;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x2716;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x3007;-1.png" alt="&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x2716;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x3007;"></p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x8CDE;&#x4E0E;&#x3092;&#x5E74;1&#x56DE;&#x304B;&#x3089;&#xFF0C;2&#x56DE;&#x30FB;3&#x56DE;&#x3068;&#x5909;&#x3048;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#xFF0C;&#x65B0;&#x3057;&#x304F;&#x8CDE;&#x4E0E;&#x533A;&#x5206;&#x3068;&#x91D1;&#x984D;&#x533A;&#x5206;&#x3092;&#x4F5C;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x2716;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x3007;-2.png" alt="&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x2716;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5897;&#x6E1B;&#x306F;&#x3007;-2"></p>
+<p><br></p>
+<h3 id="&#x975E;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x6B63;&#x898F;&#x5316;"><a name="&#x975E;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x6B63;&#x898F;&#x5316;" class="plugin-anchor" href="#&#x975E;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x6B63;&#x898F;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x975E;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x6B63;&#x898F;&#x5316;</h3>
+<p>&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x8981;&#x7D20;&#x306E;&#x3042;&#x308B;&#x8868;&#x3092;&#x300E;&#x6B63;&#x898F;&#x5F62;&#x300F;&#xFF0C;&#x305D;&#x306E;&#x9006;&#x3092;&#x300E;&#x975E;&#x6B63;&#x898F;&#x5F62;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x975E;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x8868;&#x304B;&#x3089;&#xFF0C;&#x4ED6;&#x3068;&#x9023;&#x52D5;&#x3059;&#x308B;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#xFF0C;&#x6B63;&#x898F;&#x5F62;&#x306E;&#x8868;&#x306B;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x300E;&#x6B63;&#x898F;&#x5316;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x307E;&#x305A;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x304C;&#x53D7;&#x6CE8;No&#x3068;&#x5546;&#x54C1;ID&#x306E;2&#x3064;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x4E3B;&#x30AD;&#x30FC;&#x306F;&#xFF0C;&#x8907;&#x5408;&#x4E3B;&#x30AD;&#x30FC;&#x3067;&#x306F;&#x306A;&#x3044;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+<ol>
+<li><p><strong>&#x30A8;&#x30AF;&#x30BB;&#x30EB;&#x3067;&#x8868;&#x3092;&#x4F5C;&#x6210;</strong></p>
+<p>&#x30A8;&#x30AF;&#x30BB;&#x30EB;&#x3067;&#x4F5C;&#x3089;&#x308C;&#x305F;&#x4EE5;&#x4E0B;&#x306E;&#x8868;&#x304C;&#x3042;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#xFF0E;</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x975E;&#x6B63;&#x898F;&#x5F62;.png" alt="&#x975E;&#x6B63;&#x898F;&#x5F62;"></p>
+<ol>
+<li><p><strong>&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5316;&#xFF08;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x8981;&#x7D20;&#x306E;&#x6392;&#x9664;&#xFF09;</strong></p>
+<p>&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;1&#x3064;&#x305A;&#x3064;&#x306B;&#x5206;&#x5272;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5F62;.png" alt="&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5F62;"></p>
+</li>
+<li><p><strong>&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5316;&#xFF08;&#x4E3B;&#x30AD;&#x30FC;&#x306E;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x3092;&#x6392;&#x9664;&#xFF09;</strong></p>
+<p>&#x4E3B;&#x30AD;&#x30FC;&#x3068;&#x7279;&#x5B9A;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x304C;&#x9023;&#x52D5;&#x3059;&#x308B;&#xFF08;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF09;&#x5834;&#x5408;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x5DE6;&#x8868;&#x3068;&#x3057;&#x3066;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x4ECA;&#x56DE;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x304C;2&#x3064;&#x3042;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x307E;&#x305A;&#x53D7;&#x6CE8;No&#x304B;&#x3089;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x3092;&#x6392;&#x9664;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;&#x53D7;&#x6CE8;No&#x3068;&#x4ED6;3&#x30AB;&#x30E9;&#x30E0;&#x304C;&#x9023;&#x52D5;&#x3057;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x5DE6;&#x8868;&#x3068;&#x3057;&#x3066;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x4E3B;&#x30AD;&#x30FC;&#x3068;&#x9023;&#x52D5;&#x3057;&#x3066;&#x3044;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x9664;&#x3044;&#x305F;&#x3082;&#x306E;&#x3092;&#x53F3;&#x8868;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x304C;&#x91CD;&#x8907;&#x3059;&#x308B;&#x30ED;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-1.png" alt="&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-1"></p>
+<p>&#x6B21;&#x306B;&#xFF0C;&#x5546;&#x54C1;ID&#x306E;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x3092;&#x6392;&#x9664;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;&#x5546;&#x54C1;ID&#x3068;&#x4ED6;2&#x30AB;&#x30E9;&#x30E0;&#x306B;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x5DE6;&#x8868;&#x3068;&#x3057;&#x3066;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x4E3B;&#x30AD;&#x30FC;&#x3068;&#x9023;&#x52D5;&#x3057;&#x3066;&#x3044;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x9664;&#x3044;&#x305F;&#x3082;&#x306E;&#x3092;&#x53F3;&#x8868;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x304C;&#x91CD;&#x8907;&#x3059;&#x308B;&#x30ED;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3067;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x306E;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x306E;&#x6392;&#x9664;&#x306F;&#x7D42;&#x4E86;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-2.png" alt="&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-2"></p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-3.png" alt="&#x7B2C;&#x4E8C;&#x6B63;&#x898F;&#x5F62;-3"></p>
+</li>
+<li><p><strong>&#x7B2C;&#x4E09;&#x6B63;&#x898F;&#x5316;&#xFF08;&#x4E3B;&#x30AD;&#x30FC;&#x4EE5;&#x5916;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x3092;&#x6392;&#x9664;&#xFF09;</strong></p>
+<p>&#x6B21;&#x306B;&#x4E3B;&#x30AD;&#x30FC;&#x4EE5;&#x5916;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x95A2;&#x4FC2;&#x5F93;&#x5C5E;&#x6027;&#x3092;&#x6392;&#x9664;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;&#x4E0A;&#x8A18;&#x3067;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#x305F;3&#x3064;&#x306E;&#x8868;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x8868;&#x3067;&#xFF0C;&#x9867;&#x5BA2;ID&#x3068;&#x9867;&#x5BA2;&#x540D;&#x306B;&#x95A2;&#x6570;&#x5F93;&#x5C5E;&#x6027;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#xFF0C;&#x9867;&#x5BA2;ID&#x3092;&#x65B0;&#x3057;&#x3044;&#x4E3B;&#x30AD;&#x30FC;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x5DE6;&#x8868;&#x3068;&#x3057;&#x3066;&#x72EC;&#x7ACB;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x4E3B;&#x30AD;&#x30FC;&#x3068;&#x9023;&#x52D5;&#x3057;&#x3066;&#x3044;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x9664;&#x3044;&#x305F;&#x3082;&#x306E;&#x3092;&#x53F3;&#x8868;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E09;&#x6B63;&#x898F;&#x5F62;-1.png" alt="&#x7B2C;&#x4E09;&#x6B63;&#x898F;&#x5F62;"></p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E09;&#x6B63;&#x898F;&#x5F62;-2.png" alt="&#x7B2C;&#x4E09;&#x6B63;&#x898F;&#x5F62;-2"></p>
+<ol>
+<li><p><strong>&#x307E;&#x3068;&#x3081;</strong></p>
+<p>&#x4E3B;&#x30AD;&#x30FC;&#x306E;&#x95A2;&#x4FC2;&#x5F93;&#x5C5E;&#x6027;&#x306E;&#x6392;&#x9664;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x53D7;&#x6CE8;&#x8868;&#xFF0C;&#x5546;&#x54C1;&#x8868;&#xFF0C;&#x6570;&#x91CF;&#x8868;&#x306B;&#x5206;&#x5272;&#x3067;&#x304D;&#x305F;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4E3B;&#x30AD;&#x30FC;&#x4EE5;&#x5916;&#x306E;&#x95A2;&#x4FC2;&#x5F93;&#x5C5E;&#x6027;&#x306E;&#x6392;&#x9664;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x9867;&#x5BA2;ID&#x3092;&#x65B0;&#x3057;&#x3044;&#x4E3B;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x305F;&#x9867;&#x5BA2;&#x8868;&#x306B;&#x5206;&#x5272;&#x3067;&#x304D;&#x305F;&#xFF0E;</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6B63;&#x898F;&#x5316;&#x5F8C;&#x306B;&#x3069;&#x3093;&#x306A;&#x8868;&#x304C;&#x3067;&#x304D;&#x308B;&#x306E;&#x304B;.png" alt="&#x6B63;&#x898F;&#x5316;&#x5F8C;&#x306B;&#x3069;&#x3093;&#x306A;&#x8868;&#x304C;&#x3067;&#x304D;&#x308B;&#x306E;&#x304B;"></p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<ol>
+<li><p><strong>&#x30A8;&#x30AF;&#x30BB;&#x30EB;&#x3067;&#x8868;&#x3092;&#x4F5C;&#x6210;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x8868;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x884C;&#x3092;&#x5206;&#x5272;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x8868;&#x3068;&#x898B;&#x306A;&#x3059;&#xFF0E;</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x975E;&#x6B63;&#x898F;&#x5F62;-2.png" alt="&#x975E;&#x6B63;&#x898F;&#x5F62;-2"></p>
+<ol>
+<li><p><strong>&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5316;&#xFF08;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x8981;&#x7D20;&#x306E;&#x6392;&#x9664;&#xFF09;</strong></p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5F62;-2.png" alt="&#x7B2C;&#x4E00;&#x6B63;&#x898F;&#x5F62;-2"></p>
+</li>
+</ol>
+<p><br></p>
+<h2 id="02-rdb&#x306B;&#x5FC5;&#x8981;&#x306A;&#x6A5F;&#x80FD;"><a name="02-rdb&#x306B;&#x5FC5;&#x8981;&#x306A;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#02-rdb&#x306B;&#x5FC5;&#x8981;&#x306A;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>02. RDB&#x306B;&#x5FC5;&#x8981;&#x306A;&#x6A5F;&#x80FD;</h2>
+<h3 id="acid&#x7279;&#x6027;"><a name="acid&#x7279;&#x6027;" class="plugin-anchor" href="#acid&#x7279;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>ACID&#x7279;&#x6027;</h3>
+<p>&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#xFF14;&#x3064;&#x306E;&#x6A5F;&#x80FD;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;atomicity"><a name="&#x30FB;atomicity" class="plugin-anchor" href="#&#x30FB;atomicity"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Atomicity</h4>
+<p>  &#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;consistency"><a name="&#x30FB;consistency" class="plugin-anchor" href="#&#x30FB;consistency"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Consistency</h4>
+<p>  &#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x524D;&#x5F8C;&#x3067;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;isolation"><a name="&#x30FB;isolation" class="plugin-anchor" href="#&#x30FB;isolation"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Isolation</h4>
+<p>  &#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;durability"><a name="&#x30FB;durability" class="plugin-anchor" href="#&#x30FB;durability"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Durability</h4>
+<p>  &#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x5236;&#x5FA1;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h2 id="02-02-&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;&#x3068;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x5236;&#x5FA1;"><a name="02-02-&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;&#x3068;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x5236;&#x5FA1;" class="plugin-anchor" href="#02-02-&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;&#x3068;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x5236;&#x5FA1;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;&#x3068;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x5236;&#x5FA1;</h2>
+<h3 id="rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><a name="rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>RDB&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</h3>
+<h4 id="&#x30FB;rdb&#x306B;&#x5BFE;&#x3059;&#x308B;c&#xFF0F;u&#xFF0F;d&#x306E;&#x51E6;&#x7406;&#x306E;&#x5927;&#x307E;&#x304B;&#x306A;&#x6D41;&#x308C;"><a name="&#x30FB;rdb&#x306B;&#x5BFE;&#x3059;&#x308B;c&#xFF0F;u&#xFF0F;d&#x306E;&#x51E6;&#x7406;&#x306E;&#x5927;&#x307E;&#x304B;&#x306A;&#x6D41;&#x308C;" class="plugin-anchor" href="#&#x30FB;rdb&#x306B;&#x5BFE;&#x3059;&#x308B;c&#xFF0F;u&#xFF0F;d&#x306E;&#x51E6;&#x7406;&#x306E;&#x5927;&#x307E;&#x304B;&#x306A;&#x6D41;&#x308C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;RDB&#x306B;&#x5BFE;&#x3059;&#x308B;C&#xFF0F;U&#xFF0F;D&#x306E;&#x51E6;&#x7406;&#x306E;&#x5927;&#x307E;&#x304B;&#x306A;&#x6D41;&#x308C;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;.jpg" alt="&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x5236;&#x5FA1;"></p>
+<h4 id="&#x30FB;rdb&#x306E;&#x64CD;&#x4F5C;&#x3068;&#x5B9F;&#x969B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;"><a name="&#x30FB;rdb&#x306E;&#x64CD;&#x4F5C;&#x3068;&#x5B9F;&#x969B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;" class="plugin-anchor" href="#&#x30FB;rdb&#x306E;&#x64CD;&#x4F5C;&#x3068;&#x5B9F;&#x969B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;RDB&#x306E;&#x64CD;&#x4F5C;&#x3068;&#x5B9F;&#x969B;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">RDB&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</th>
+<th style="text-align:left">PDO&#x3067;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;</th>
+<th>&#x30E9;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</th>
+<th>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x306E;&#x8A18;&#x9332;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x958B;&#x59CB;</td>
+<td style="text-align:left"><code>beginTransaction()</code></td>
+<td><code>execute()</code>&#x958B;&#x59CB;</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td>&#x2B06;&#xFE0E;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30FB;C&#xFF0F;U&#xFF0F;D&#x306E;&#x51E6;&#x7406;<br>&#x30FB;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x7D42;&#x4E86;</td>
+<td style="text-align:left">&#x30FB;<code>insert()</code><br>&#x30FB;<code>update()</code><br>&#x30FB;<code>delete()</code></td>
+<td><code>flush()</code></td>
+<td>&#x2B06;&#xFE0E;&#x3000;<em>Roll back</em>&#xFF1A;<code>rollBack()</code></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td>&#x2B06;&#xFE0E;</td>
+</tr>
+<tr>
+<td style="text-align:left">Commit&#x306B;&#x3088;&#x308B;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF0E;</td>
+<td style="text-align:left"><code>commit()</code>&#x958B;&#x59CB;</td>
+<td>&#x2193;</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td>&#x2B07;&#xFE0E;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td>&#x2B07;&#xFE0E;&#x3000;<em>Roll forward</em></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x2193;</td>
+<td style="text-align:left">&#x2193;</td>
+<td>&#x2193;</td>
+<td>&#x2B07;&#xFE0E;</td>
+</tr>
+<tr>
+<td style="text-align:left">Check Point&#x306B;&#x3088;&#x308B;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x306E;DB&#x53CD;&#x6620;</td>
+<td style="text-align:left"><code>commit()</code>&#x7D42;&#x4E86;</td>
+<td><code>execute()</code>&#x7D42;&#x4E86;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;pdo&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><a name="&#x30FB;pdo&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x30FB;pdo&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;PDO&#x306B;&#x3088;&#x308B;RDB&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">try</span><span class="token punctuation">{</span>
+    <span class="token comment">// &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3068;&#x63A5;&#x7D9A;&#xFF0E;</span>
+    <span class="token variable">$db</span> <span class="token operator">=</span> <span class="token function">getDb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3092;&#x6709;&#x52B9;&#x5316;&#xFF0E;</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span> <span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// &#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x958B;&#x59CB;&#xFF0E;</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">beginTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// &#x3044;&#x304F;&#x3064;&#x304B;&#x306E;SQL&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x203B;&#x3082;&#x3057;&#x5931;&#x6557;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;ERRMODE_EXCEPTION&#x3092;&#x5B9F;&#x884C;&#xFF0E;</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span>&#x30CF;&#x30EA;&#x30DD;&#x30BF;<span class="token string double-quoted-string">&quot;, 2000)&quot;</span><span class="token punctuation">)</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span>&#x30B7;&#x30B9;&#x30BF;&#x30FC;<span class="token string double-quoted-string">&quot;, 2000)&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// &#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x306E;&#x4E00;&#x9023;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x304C;&#x6210;&#x529F;&#x3057;&#x305F;&#x3089;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#xFF0E;</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">{</span>
+    <span class="token comment">// &#x4F8B;&#x5916;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x3089;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3057;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x51FA;&#x529B;&#xFF0E;</span>
+    <span class="token variable">$db</span><span class="token operator">-&gt;</span><span class="token function">rollBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">print</span> <span class="token string double-quoted-string">&quot;&#x5931;&#x6557;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&#xFF1A;<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$e</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;doctrine&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><a name="&#x30FB;doctrine&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x30FB;doctrine&#x306B;&#x3088;&#x308B;rdb&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Doctrine&#x306B;&#x3088;&#x308B;RDB&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x7CFB;&#x306E;&#x64CD;&#x4F5C;</h4>
+<p>&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html</a></p>
+<p><br></p>
+<h3 id="&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><a name="&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;" class="plugin-anchor" href="#&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;</h3>
+<p><br></p>
+<h3 id="&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x3088;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><a name="&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x3088;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;" class="plugin-anchor" href="#&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x3088;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306B;&#x3088;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;</h3>
+<h4 id="&#x30FB;&#x30B3;&#x30DF;&#x30C3;&#x30C8;"><a name="&#x30FB;&#x30B3;&#x30DF;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30DF;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30DF;&#x30C3;&#x30C8;</h4>
+<p>&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x306E;&#x4E00;&#x9023;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3068;&#x3057;&#x3066;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x4E8C;&#x76F8;&#x30B3;&#x30DF;&#x30C3;&#x30C8;"><a name="&#x30FB;&#x4E8C;&#x76F8;&#x30B3;&#x30DF;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x4E8C;&#x76F8;&#x30B3;&#x30DF;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4E8C;&#x76F8;&#x30B3;&#x30DF;&#x30C3;&#x30C8;</h4>
+<p>&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x3092;&#x4EE5;&#x4E0B;&#x306E;&#x4E8C;&#x3064;&#x306E;&#x6BB5;&#x968E;&#x306B;&#x5206;&#x3051;&#x3066;&#x884C;&#x3046;&#x3053;&#x3068;&#xFF0E;ACID&#x306E;&#x3046;&#x3061;&#xFF0C;&#x539F;&#x5B50;&#x6027;&#x3068;&#x4E00;&#x8CAB;&#x6027;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<ol>
+<li>&#x4ED6;&#x306E;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;</li>
+<li>&#x5168;&#x30B5;&#x30A4;&#x30C8;&#x304B;&#x3089;&#x306E;&#x5408;&#x610F;&#x304C;&#x5F97;&#x3089;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x66F4;&#x65B0;&#x3092;&#x78BA;&#x5B9A;&#xFF0E;</li>
+</ol>
+<p><br></p>
+<h3 id="&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><a name="&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;" class="plugin-anchor" href="#&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;</h3>
+<p>&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7D42;&#x4E86;&#x5F8C;&#xFF0C;DBMS&#x306F;&#xFF0C;&#x51E6;&#x7406;&#x901F;&#x5EA6;&#x3092;&#x9AD8;&#x3081;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x3092;&#x3044;&#x3063;&#x305F;&#x3093;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DBMS&#x306B;&#x3088;&#x308B;&#x30E1;&#x30E2;&#x30EA;&#x3068;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;.jpg" alt="DBMS&#x306B;&#x3088;&#x308B;&#x30E1;&#x30E2;&#x30EA;&#x3068;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306E;&#x4F7F;&#x3044;&#x5206;&#x3051;"></p>
+<p>&#x305D;&#x3057;&#x3066;&#xFF0C;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3067;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x3092;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x4E0A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x53CD;&#x6620;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306F;&#xFF0C;&#x81EA;&#x52D5;&#x5B9F;&#x884C;&#x307E;&#x305F;&#x306F;&#x624B;&#x52D5;&#x5B9F;&#x884C;&#x3067;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;.jpg" alt="&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"></p>
+<p><br></p>
+<h3 id="&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;"><a name="&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;" class="plugin-anchor" href="#&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;</h3>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x969C;&#x5BB3;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;DBMS&#x3084;OS&#x306E;&#x30C8;&#x30E9;&#x30D6;&#x30EB;&#x7B49;&#x306B;&#x3088;&#x308A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x5168;&#x4F53;&#x304C;&#x505C;&#x6B62;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x969C;&#x5BB3;&#x306E;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x6A5F;&#x80FD;.jpg" alt="&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x6A5F;&#x80FD;"></p>
+<h4 id="&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;"><a name="&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;</h4>
+<p>&#x969C;&#x5BB3;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x306E;&#x4E00;&#x9023;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x304C;&#x3059;&#x3079;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x958B;&#x59CB;&#x524D;&#x306E;&#x72B6;&#x614B;&#x306B;&#x623B;&#x3059;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;"><a name="&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;</h4>
+<p>&#x969C;&#x5BB3;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7D42;&#x4E86;&#x5F8C;&#x306B;&#x4E00;&#x9023;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x66F4;&#x65B0;&#x7D50;&#x679C;&#x304C;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306B;&#x53CD;&#x6620;&#x3055;&#x308C;&#x306A;&#x304B;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x4E0A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x66F4;&#x65B0;&#x7D50;&#x679C;&#x3092;&#x53CD;&#x6620;&#x3055;&#x305B;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x300E;a&#x300F;&#x306E;&#x5024;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3080;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5F8C;&#x306B;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x7570;&#x5E38;&#x7D42;&#x4E86;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x300E;a = 5&#x300F;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x4E0A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x66F4;&#x65B0;&#x7D50;&#x679C;&#x3092;&#x53CD;&#x6620;&#x3055;&#x305B;&#x308B;&#xFF0E;&#xFF08;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;&#xFF09;</p>
+<p>&#x300E;b&#x300F;&#x306E;&#x5024;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3080;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x9014;&#x4E2D;&#x306B;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x7570;&#x5E38;&#x7D42;&#x4E86;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x524D;&#x30ED;&#x30B0;&#x300E;b = 1&#x300F;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x969C;&#x5BB3;&#x767A;&#x751F;&#x524D;&#x306E;&#x72B6;&#x614B;&#x306B;&#x623B;&#x3059;&#xFF0E;&#xFF08;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#xFF09;</p>
+<p><br></p>
+<h3 id="&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;"><a name="&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;" class="plugin-anchor" href="#&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x304B;&#x3089;&#x306E;&#x56DE;&#x5FA9;</h3>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x969C;&#x5BB3;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30CF;&#x30FC;&#x30C9;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306E;&#x969C;&#x5BB3;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x3092;&#x521D;&#x671F;&#x5316;&#xFF0F;&#x4EA4;&#x63DB;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x4FEE;&#x5FA9;&#x3057;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F4;&#x65B0;&#x5F8C;&#x30ED;&#x30B0;&#x300E;a = 5&#x300F;&#x300E;b = 1&#x300F;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x4FEE;&#x5FA9;&#x3067;&#x304D;&#x308B;&#x9650;&#x308A;&#x30ED;&#x30FC;&#x30EB;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x306E;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x6A5F;&#x80FD;.jpg" alt="&#x5A92;&#x4F53;&#x969C;&#x5BB3;&#x306E;&#x969C;&#x5BB3;&#x56DE;&#x5FA9;&#x6A5F;&#x80FD;"></p>
+<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x969B;&#x306E;&#x30B3;&#x30FC;&#x30C9;</p>
+<pre class="language-"><code class="lang-sql"><span class="token comment">-- --------------------------------------------------------</span>
+<span class="token comment">-- Host:                         xxxxx</span>
+<span class="token comment">-- Server version:               10.1.38-MariaDB - mariadb.org binary distribution</span>
+<span class="token comment">-- Server OS:                    Win64</span>
+<span class="token comment">-- HeidiSQL Version:             10.2.0.5611</span>
+<span class="token comment">-- --------------------------------------------------------</span>
+
+<span class="token comment">/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40101 SET NAMES utf8 */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!50503 SET NAMES utf8mb4 */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&quot;NO_AUTO_VALUE_ON_ZERO&quot; */</span><span class="token punctuation">;</span>
+
+<span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x4F5C;&#x6210;</span>
+<span class="token comment">-- Dumping database structure for kizukeba_pronami_php</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>kizukeba_pronami_php<span class="token punctuation">`</span> <span class="token comment">/*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */</span><span class="token punctuation">;</span>
+<span class="token keyword">USE</span> <span class="token punctuation">`</span>kizukeba_pronami_php<span class="token punctuation">`</span><span class="token punctuation">;</span>
+
+<span class="token comment"># &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;</span>
+<span class="token comment">-- Dumping structure for table kizukeba_pronami_php.mst_staff</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>mst_staff<span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>code<span class="token punctuation">`</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>name<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token keyword">COLLATE</span> utf8_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>password<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span> <span class="token keyword">COLLATE</span> utf8_unicode_ci <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>code<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">22</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8 <span class="token keyword">COLLATE</span><span class="token operator">=</span>utf8_unicode_ci<span class="token punctuation">;</span>
+
+<span class="token comment"># &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x4F5C;&#x6210;</span>
+<span class="token comment">-- Dumping data for table kizukeba_pronami_php.mst_staff: ~8 rows (approximately)</span>
+<span class="token comment">/*!40000 ALTER TABLE `mst_staff` DISABLE KEYS */</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token punctuation">`</span>mst_staff<span class="token punctuation">`</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>code<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>name<span class="token punctuation">`</span><span class="token punctuation">,</span> <span class="token punctuation">`</span>password<span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span>
+    <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x79E6;&#x57FA;&#x535A;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;xxxxxxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">&quot;&#x85E4;&#x539F;&#x57FA;&#x592E;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;xxxxxxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40000 ALTER TABLE `mst_staff` ENABLE KEYS */</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, &quot;&quot;) */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */</span><span class="token punctuation">;</span>
+<span class="token comment">/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */</span><span class="token punctuation">;</span>
+</code></pre>
+<p><br></p>
+<h2 id="02-03-&#x6392;&#x4ED6;&#x5236;&#x5FA1;"><a name="02-03-&#x6392;&#x4ED6;&#x5236;&#x5FA1;" class="plugin-anchor" href="#02-03-&#x6392;&#x4ED6;&#x5236;&#x5FA1;"><i class="fa fa-link" aria-hidden="true"></i></a>02-03. &#x6392;&#x4ED6;&#x5236;&#x5FA1;</h2>
+<h3 id="&#x306A;&#x305C;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x304C;&#x5FC5;&#x8981;&#x304B;"><a name="&#x306A;&#x305C;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x304C;&#x5FC5;&#x8981;&#x304B;" class="plugin-anchor" href="#&#x306A;&#x305C;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x304C;&#x5FC5;&#x8981;&#x304B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306A;&#x305C;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x304C;&#x5FC5;&#x8981;&#x304B;</h3>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6392;&#x4ED6;&#x5236;&#x5FA1;-1.png" alt="&#x6392;&#x4ED6;&#x5236;&#x5FA1;-1"></p>
+<h4 id="&#x30FB;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x3092;&#x884C;&#x3063;&#x305F;&#x7D50;&#x679C;"><a name="&#x30FB;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x3092;&#x884C;&#x3063;&#x305F;&#x7D50;&#x679C;" class="plugin-anchor" href="#&#x30FB;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x3092;&#x884C;&#x3063;&#x305F;&#x7D50;&#x679C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x3092;&#x884C;&#x3063;&#x305F;&#x7D50;&#x679C;</h4>
+<p>  <img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6392;&#x4ED6;&#x5236;&#x5FA1;-2.png" alt="&#x6392;&#x4ED6;&#x5236;&#x5FA1;-2"></p>
+<p>  <br></p>
+<h3 id="&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306E;&#x305F;&#x3081;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x64CD;&#x4F5C;"><a name="&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306E;&#x305F;&#x3081;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306E;&#x305F;&#x3081;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6392;&#x4ED6;&#x5236;&#x5FA1;&#x306E;&#x305F;&#x3081;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x64CD;&#x4F5C;</h3>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6392;&#x4ED6;&#x5236;&#x5FA1;-3.gif" alt="&#x6392;&#x4ED6;&#x5236;&#x5FA1;-3"></p>
+<h4 id="&#x30FB;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;</h4>
+<p>CRUD&#x306E;Read&#x4EE5;&#x5916;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x4E0D;&#x53EF;&#x80FD;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;Read&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x4ED6;&#x8005;&#x306B;&#x3088;&#x3063;&#x3066;Update&#x3055;&#x308C;&#x305F;&#x304F;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x300C;&#x5171;&#x6709;&#x300D;&#x306E;&#x540D;&#x306E;&#x901A;&#x308A;&#xFF0C;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x4ED6;&#x306E;&#x4EBA;&#x3082;&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;</h4>
+<p>CRUD&#x306E;&#x5168;&#x3066;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x4E0D;&#x53EF;&#x80FD;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;Update&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x4ED6;&#x8005;&#x306B;&#x3088;&#x3063;&#x3066;Update&#x3082;Read&#x3082;&#x3055;&#x308C;&#x305F;&#x304F;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30C7;&#x30C3;&#x30C9;&#x30ED;&#x30C3;&#x30AF;&#x73FE;&#x8C61;"><a name="&#x30FB;&#x30C7;&#x30C3;&#x30C9;&#x30ED;&#x30C3;&#x30AF;&#x73FE;&#x8C61;" class="plugin-anchor" href="#&#x30FB;&#x30C7;&#x30C3;&#x30C9;&#x30ED;&#x30C3;&#x30AF;&#x73FE;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C7;&#x30C3;&#x30C9;&#x30ED;&#x30C3;&#x30AF;&#x73FE;&#x8C61;</h4>
+<p>&#x8907;&#x6570;&#x306E;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#xFF0C;&#x4E92;&#x3044;&#x306B;&#x4ED6;&#x8005;&#x304C;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x30ED;&#x30C3;&#x30AF;&#x3057;&#x3066;&#x3057;&#x307E;&#x3044;&#xFF0C;&#x304A;&#x4E92;&#x3044;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x89E3;&#x9664;&#x3092;&#x5F85;&#x3061;&#x7D9A;&#x3051;&#x308B;&#x72B6;&#x614B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x3082;&#x3046;&#x4E00;&#x65B9;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x304C;&#x89E3;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x3068;&#xFF0C;&#x81EA;&#x8EAB;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x89E3;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#x6642;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x505C;&#x6B62;&#x3059;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x5B9F;&#x884C;</th>
+<th style="text-align:center">&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x5B9F;&#x884C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>&#x5171;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x3055;&#x308C;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;</strong></td>
+<td style="text-align:center">&#x3007;</td>
+<td style="text-align:center">&#x2715;</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>&#x5360;&#x6709;&#x30ED;&#x30C3;&#x30AF;&#x3055;&#x308C;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;</strong></td>
+<td style="text-align:center">&#x2715;</td>
+<td style="text-align:center">&#x2715;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30C7;&#x30C3;&#x30C9;&#x30ED;&#x30C3;&#x30AF;.gif" alt="Null"></p>
+<h4 id="&#x30FB;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;"><a name="&#x30FB;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;-1.png" alt="&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;"></p>
+<p>DB &#xFF1E; &#x30C6;&#x30FC;&#x30D6;&#x30EB; &#xFF1E; &#x30EC;&#x30B3;&#x30FC;&#x30C9; &#xFF1E; &#x30AB;&#x30E9;&#x30E0; &#x306E;&#x9806;&#x306B;&#xFF0C;&#x7C92;&#x5EA6;&#x306F;&#x5927;&#x304D;&#x3044;&#xFF0E;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;&#x304C;&#x7D30;&#x304B;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x540C;&#x6642;&#x5B9F;&#x884C;&#x6027;&#x304C;&#x9AD8;&#x304F;&#x306A;&#x3063;&#x3066;&#x52B9;&#x7387;&#x306F;&#x5411;&#x4E0A;&#x3059;&#x308B;&#xFF08;&#x8907;&#x6570;&#x306E;&#x4EBA;&#x304C;DB&#x306B;&#x5BFE;&#x3057;&#x3066;&#x4F5C;&#x696D;&#x3067;&#x304D;&#x308B;&#xFF09;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;&#x3092;&#x7D30;&#x304B;&#x304F;&#x3059;&#x308C;&#x3070;&#x3059;&#x308B;&#x307B;&#x3069;&#xFF0C;&#x305D;&#x308C;&#x3060;&#x3051;&#x30D9;&#x30FC;&#x30B9;&#x7BA1;&#x7406;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;CPU&#x8CA0;&#x8377;&#x306F;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;-2.jpg" alt="&#x30ED;&#x30C3;&#x30AF;&#x306E;&#x7C92;&#x5EA6;-2"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="backend_database_mysql.html" class="navigation navigation-next navigation-unique" aria-label="Next page: ▶ ︎SQL">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"next":{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"path":"public/backend_database_mysql.md","ref":"public/backend_database_mysql.md","articles":[]},"previous":{"title":"データベース","level":"1.9","depth":1,"ref":"","articles":[{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"path":"public/backend_database_mysql.md","ref":"public/backend_database_mysql.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_operation.md","mtime":"2021-05-21T13:24:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-22T11:49:47.836Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
