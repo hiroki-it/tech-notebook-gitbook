@@ -1596,6 +1596,23 @@ class DogOrder
 
 ## 06. インフラストラクチャ層
 
+### インフラストラクチャ層の依存性逆転
+
+#### ・DIP（依存性逆転の原則）とは
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+
+#### ・依存性を逆転させる方法
+
+1. リポジトリの抽象クラスを，より上位のドメイン層に配置する．
+2. リポジトリの実装クラスを，より下位のインフラストラクチャ層に配置する．
+3. 両方のクラスに対して，バインディング（関連付け）を行い，抽象クラスをコールした時に，実際には実装クラスがコールされるようにする．
+4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
+
+![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+
+<br>
+
 ### リポジトリ（実装クラス）
 
 #### ・リポジトリ（実装クラス）とは
@@ -1879,20 +1896,63 @@ class DogComboFactory
 
 <br>
 
-## 06-02. インフラストラクチャ層の依存性逆転
+## 07. アーキテクチャにおける層別の例外スロー
 
-### DIP（依存性逆転の原則）
+### スローされた例外の扱い
 
-#### ・依存性逆転の原則とは
+各層では例外をスローするだけに留まり，スローされた例外を対処する責務は，より上層に持たせる．より上層では，その層に合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_catch_error_throw_exception_logging.html
 
-#### ・依存性を逆転させる方法
+<br>
 
-1. リポジトリの抽象クラスを，より上位のドメイン層に配置する．
-2. リポジトリの実装クラスを，より下位のインフラストラクチャ層に配置する．
-3. 両方のクラスに対して，バインディング（関連付け）を行い，抽象クラスをコールした時に，実際には実装クラスがコールされるようにする．
-4. これらにより，依存性が逆転する．依存性逆転の原則に基づくことによって，ドメイン層への影響なく，リポジトリの交換が可能になる．
+### プレゼンテーション層
 
-![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+#### ・例外
+
+```php
+final class PresentationException extends Exception
+{
+    
+}
+```
+
+<br>
+
+### ユースケース層
+
+#### ・例外
+
+```php
+final class UseCaseException extends Exception
+{
+    
+}
+```
+
+<br>
+
+### ドメイン層
+
+#### ・例外
+
+```php
+final class DomainException extends Exception
+{
+    
+}
+```
+
+<br>
+
+### インフラストラクチャ層
+
+#### ・例外
+
+```php
+final class InfrastructureException extends Exception
+{
+    
+}
+```
 

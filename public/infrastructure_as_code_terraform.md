@@ -34,8 +34,7 @@ $ terraform init \
     -backend-config="bucket=<バケット名>" \
     -backend-config="key=terraform.tfstate" \
     -backend-config="profile=<プロファイル名>" \
-    -backend-config="encrypt=true" \
-    <ルートモジュールのディレクトリへの相対パス>
+    -backend-config="encrypt=true"
 ```
 
 #### ・-reconfigure
@@ -70,7 +69,7 @@ Success! The configuration is valid.
 
 ```shell
 # ディレクトリを指定することも可能
-$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate <ルートモジ
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate
 ```
 
 <br>
@@ -168,12 +167,13 @@ $ terraform refresh -var-file=config.tfvars
 
 #### ・シンボルの見方
 
-構築（```+```），更新（```~```），削除（```-```）で表現される．
+構築（```+```），更新（```~```），削除（```-```），再構築（```-/+```）で表現される．
 
 ```
 + create
 ~ update in-place
 - destroy
+-/+ destroy and then create replacement
 ```
 
 #### ・-var-file
@@ -187,9 +187,8 @@ $ terraform plan -var-file=config.tfvars
 ```shell
 # ディレクトリを指定することも可能
 # 第一引数で変数ファイルの相対パス，第二引数でをルートモジュールの相対パス
-$ terraform plan \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars \
-    <ルートモジュールのディレクトリへの相対パス>
+$ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars
 ```
 
 差分がなければ，以下の通りになる．
@@ -266,10 +265,8 @@ $ terraform apply -var-file config.tfvars
 
 ```shell
 # ディレクトリを指定することも可能
-# 第一引数で変数ファイルの相対パス，第二引数でをルートモジュールの相対パス
-$ terraform apply \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars \
-    <ルートモジュールのディレクトリへの相対パス>
+$ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars
 ```
 
 成功すると，以下のメッセージが表示される．
@@ -382,7 +379,35 @@ module.vpc_module.aws_vpc.vpc
 
 <br>
 
-##  01-02. ディレクトリ構成
+## 01-02. バージョン
+
+### Terraform／プロバイダーのアップグレード
+
+#### 1. 現在のTerraformのバージョンで```apply```コマンドを実行
+
+アップグレードと同時に新しいAWSリソースをデプロイせずに，アップグレードのみに専念する．そのために，現在のTerraformのバージョンで```apply```コマンドを実行し，差分が無いようにしておく．
+
+#### 2. アップグレード以外の作業を済ませておく
+
+低いバージョンのTerraformに対して，より高いバージョンをデプロイすることは可能である．反対に，高いバージョンのTerraoformに対して，より低いバージョンをデプロイできない．そのため，アップグレードしてしまうと，それ以外のTeraformバージョンの異なる作業に影響が出る．
+
+#### 3. メジャーバージョン単位でアップグレード
+
+Terraformでは，メジャーバージョン単位でアップグレードを行うことが推奨されている．そのため，現在のバージョンと最新バージョンがどんなに離れていても，必ず一つずつメジャーバージョンをアップグレードするように気をつける．
+
+参考：https://www.terraform.io/upgrade-guides/1-0.html 
+
+#### 4. ```plan```コマンドの警告／エラーを解消
+
+アップグレードに伴って，非推奨／廃止の機能がリリースされ，警告／エラーが出力される場合がある．警告／エラーを解消できるように，記法やオプション値を修正する．
+
+#### 5. Terraformの後にプロバイダーをアップグレード
+
+Terraformとプロバイダーのバージョンは独立して管理されている．一旦，Terraformのアップグレードを済ませてから，プロバイダーをアップグレードする．
+
+<br>
+
+##  01-03. ディレクトリ構成
 
 ### ルートモジュールの構成
 
@@ -3863,7 +3888,7 @@ set -xeuo pipefail
 # credentialsの情報を出力します．
 source ./aws_envs.sh
 
-terraform apply \
+terraform -chdir=./${ENV} apply \
   -parallelism=30 \
   ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
 ```
@@ -3878,7 +3903,7 @@ set -xeuo pipefail
 if [ $ENV = "dev" ]; then
     # credentialsの情報を出力します．
     source ./aws_envs.sh
-    terraform destroy -var-file=./dev/config.tfvars ./dev
+    terraform -chdir=./${ENV} destroy -var-file=config.tfvars
 else
     echo "The parameter ${ENV} is invalid."
     exit 1
@@ -3908,14 +3933,13 @@ set -xeuo pipefail
 # credentialsの情報を出力します．
 source ./aws_envs.sh
 
-terraform init \
+terraform -chdir=./${ENV} init \
   -upgrade \
   -reconfigure \
   -backend=true \
   -backend-config="bucket=${ENV}-tfstate-bucket" \
   -backend-config="key=terraform.tfstate" \
-  -backend-config="encrypt=true" \
-  ./${ENV}
+  -backend-config="encrypt=true"
 ```
 
 #### ・terraform_plan.sh
@@ -3928,11 +3952,10 @@ set -xeuo pipefail
 # credentialsの情報を出力します．
 source ./aws_envs.sh
 
-terraform plan \
+terraform -chdir=./${ENV} plan \
   -var-file=./${ENV}/config.tfvars \
   -out=${ENV}.tfplan \
-  -parallelism=30 \
-  ./${ENV} | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
+  -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
 ```
 
 #### ・terraform_validate.sh
@@ -3942,8 +3965,7 @@ terraform plan \
 
 set -xeuo pipefail
 
-terraform validate ./${ENV}
-
+terraform -chdir=./${ENV} validate
 ```
 
 <br>
@@ -3965,7 +3987,7 @@ https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
 set -xeuo pipefail
 
-terraform plan | ./bin/tfnotify --config ./${ENV}/tfnotify.yml plan
+terraform -chdir=./${ENV} plan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
 ```
 
 #### ・設定ファイル
