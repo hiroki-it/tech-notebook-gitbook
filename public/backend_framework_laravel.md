@@ -3401,11 +3401,11 @@ Schema::create("examples", function (Blueprint $table) {
 
 <br>
 
-### 通知
+### 通知内容
 
-#### ・Notificationの実装
+#### ・Notification
 
-SNSに送信するためには，MailMessageクラスやViewクラスの```render```メソッドで文字列に変換する必要がある．
+通知内容を定義する．SNSに送信するためには，MailMessageクラスやViewクラスの```render```メソッドで文字列に変換する必要がある．
 
 参考：
 
@@ -3498,13 +3498,17 @@ MailMessageクラスの```markdown```メソッドを使用することで，通�
 @endcomponent
 ```
 
-#### ・Channelの実装
+<br>
 
-送信方法を定義する．
+### 受信チャンネル
+
+#### ・Channel
+
+通知の受信チャンネルを定義する．
 
 **＊実装例＊**
 
-SNSを送信方法とする．AWSから配布されているパッケージが必要である．
+SNSを受信チャンネルとする．AWSから配布されているパッケージが必要である．
 
 ```shell
 $ composer require aws/aws-sdk-php-laravel
@@ -3571,9 +3575,13 @@ class AwsSnsChannel
 
 ```
 
-#### ・通知対象におけるNotifiableの使用
+<br>
 
-通知対象のクラスで，Notifiable Traitを継承する必要がある．これにより，```notify```メソッドを使用できるようになる．
+### 通知対象モデル
+
+#### ・Notifiable
+
+通知対象となるモデルを定義する．通知対象のクラスで，Notifiable Traitを継承する必要がある．これにより，```notify```メソッドを使用できるようになる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
@@ -3591,7 +3599,7 @@ class User extends Authenticatable
 }
 ```
 
-#### ・対象に通知
+#### ・```notify```メソッド
 
 通知対象のクラスから```notify```メソッドをコールし，任意のNotificationクラスを渡す．これにより，通知処理が実行される．
 

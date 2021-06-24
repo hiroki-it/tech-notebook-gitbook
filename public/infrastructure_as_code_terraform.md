@@ -14,6 +14,8 @@
 
 ローカルにstateファイルを作成する．
 
+参考：https://www.terraform.io/docs/language/settings/backends/index.html
+
 ```shell
 $ terraform init -backend=false
 ```
@@ -39,7 +41,9 @@ $ terraform init \
 
 #### ・-reconfigure
 
-指定されたバックエンドのstateファイルがある場合，これを削除し，新しくstateファイルを作成する．
+Terraformを初期化する．
+
+参考：https://www.terraform.io/docs/cli/commands/init.html#backend-initialization
 
 ```shell
 $ terraform init -reconfigure
@@ -47,7 +51,9 @@ $ terraform init -reconfigure
 
 #### ・-upgrade
 
-モジュールとプラグインを更新する．
+現在のバージョンに基づいて，```lock```ファイル，モジュール，プラグインのアップグレード／ダウングレードを行う．
+
+参考：https://www.terraform.io/docs/cli/commands/init.html#upgrade
 
 ```shell
 $ terraform init -upgrade
@@ -176,6 +182,35 @@ $ terraform refresh -var-file=config.tfvars
 -/+ destroy and then create replacement
 ```
 
+#### ・出力内容の読み方
+
+前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．ただの検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのソースコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
+
+```shell
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply":
+
+  # Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出．
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+  
+  # Terraformのソースコードの変更によって，実インフラがどのように変更されるか．
+  
+Plan: 0 to add, 1 to change, 0 to destroy.  
+```
+
 #### ・-var-file
 
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルには反映せずに，設定ファイルの記述との差分を検証する．スクリプト実行時に，変数が定義されたファイルを実行すると，```variable```で宣言した変数に，値が格納される．
@@ -272,7 +307,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 成功すると，以下のメッセージが表示される．
 
 ```shell
-Apply complete! Resources: X added, 0 changed, 0 destroyed.
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 #### ・-target
@@ -381,6 +416,14 @@ module.vpc_module.aws_vpc.vpc
 
 ## 01-02. バージョン
 
+### バージョン管理
+
+#### ・```lock```ファイル
+
+現在使用中のプロバイダーのバージョンが定義される．これにより，他の人がリポジトリを使用する時に，異なるバージョンのプロバイダーを宣言できないようにする．もし，異なるバージョンを使用したい場合は，コマンドを実行する．これにより，```lock```ファイルのアップグレード／ダウングレードが実行される．
+
+<br>
+
 ### Terraform／プロバイダーのアップグレード
 
 #### 1. 現在のTerraformのバージョンで```apply```コマンドを実行
@@ -403,7 +446,7 @@ Terraformでは，メジャーバージョン単位でアップグレードを�
 
 #### 5. Terraformの後にプロバイダーをアップグレード
 
-Terraformとプロバイダーのバージョンは独立して管理されている．一旦，Terraformのアップグレードを済ませてから，プロバイダーをアップグレードする．
+Terraformとプロバイダーのバージョンは独立して管理されている．プロバイダーはTerraformが土台になって稼働するため，一旦，Terraformのアップグレードを済ませてから，プロバイダーをアップグレードする．
 
 <br>
 
@@ -2278,17 +2321,19 @@ output "nginx_ecr_repository_url" {
 
 ### AMI
 
-#### ・よく使うオプション一覧
+#### ・まとめ
 
-```hcl
+**＊実装例＊**
+
+```
 ###############################################
 # For bastion
 ###############################################
 data "aws_ami" "bastion" {
-  # 最新を取得するか否か
+  # 後述の説明を参考にせよ．（１）
   most_recent = false
   
-  # EC2が，意図せず再構築されないように，特定のAMIを取得する．
+  # 後述の説明を参考にせよ．（１）
   owners      = ["amazon"]
   filter {
     name   = "name"
@@ -2302,19 +2347,19 @@ data "aws_ami" "bastion" {
 }
 ```
 
-#### ・取得するAMIのバージョンを固定
+#### （１）取得するAMIのバージョンを固定
 
-取得するAMIのバージョンを常に最新にしておく，EC2が再構築されなねない．そこで，特定のAMIを取得できるようにしておく．
+取得するAMIが常に最新になっていると，EC2が再構築されなねない．そこで，特定のAMIを取得できるようにしておく．```most_recent```は無効化しておき，特定のAMをフィルタリングする．
 
 <br>
 
 ### API Gateway
 
-#### ・OpenAPI仕様のインポートと差分認識
+#### ・まとめ
 
-あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし，これをインポートすることにより，APIを定義できる．YAMLファイルに変数を渡すこともできる．
+**＊実装例＊**
 
-```hcl
+```
 ###############################################
 # REST API
 ###############################################
@@ -2323,6 +2368,7 @@ resource "aws_api_gateway_rest_api" "example" {
   description = "The API that enables two-way communication with ${var.environment}-example"
   
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
+  # 後述の説明を参考にせよ．（１）
   body = templatefile(
     "${path.module}/open_api.yaml",
     {
@@ -2341,17 +2387,14 @@ resource "aws_api_gateway_rest_api" "example" {
     ]
   }
 }
-```
 
-APIの再デプロイのトリガーとして，```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする．これにより，インポート元のYAMLファイルに差分があった場合に，Terraformが```redeployment```パラメータの値の変化を認識できるようになり，再デプロイを実行できる．
-
-```hcl
 ###############################################
 # Deployment
 ###############################################
 resource "aws_api_gateway_deployment" "example" {
   rest_api_id = aws_api_gateway_rest_api.example.id
 
+  # 後述の説明を参考にせよ．（１）
   triggers = {
     redeployment = sha1(aws_api_gateway_rest_api.example.body)
   }
@@ -2371,14 +2414,67 @@ resource "aws_api_gateway_stage" "example" {
 }
 ```
 
+#### （１）OpenAPI仕様のインポートと差分認識
+
+あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし，これをインポートすることにより，APIを定義できる．YAMLファイルに変数を渡すこともできる．APIの再デプロイのトリガーとして，```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする．これにより，インポート元のYAMLファイルに差分があった場合に，Terraformが```redeployment```パラメータの値の変化を認識できるようになり，再デプロイを実行できる．
+
 <br>
 
 ### CloudFront
 
+#### ・まとめ
+
+**＊実装例＊**
+
+```
+resource "aws_cloudfront_distribution" "this" {
+
+  price_class      = "PriceClass_200"
+  web_acl_id       = var.cloudfront_wafv2_web_acl_arn
+  aliases          = [var.route53_domain_example]
+  comment          = "${var.environment}-${var.service}-cf-distribution"
+  enabled          = true
+  
+  # 後述の説明を参考にせよ．（１）
+  retain_on_delete = true
+
+  viewer_certificate {
+    acm_certificate_arn      = var.example_acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2019"
+  }
+
+  logging_config {
+    bucket          = var.cloudfront_s3_bucket_regional_domain_name
+    include_cookies = true
+  }
+
+  restrictions {
+
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+  
+  # ～ 省略 ～
+  
+}
+```
+
+#### （１）削除保持機能
+
+Terraformでは，```retain_on_delete```で設定できる．固有の設定で，AWSに対応するものは無い．
+
 #### ・originブロック
+
+Origins画面に設定するオリジンを定義する．
+
+**＊実装例＊**
 
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
+
+  # ～ 省略 ～  
 
   # オリジン（ここではS3としている）
   origin {
@@ -2397,6 +2493,8 @@ resource "aws_cloudfront_distribution" "this" {
 
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
+
+  # ～ 省略 ～  
 
   # オリジン（ここではALBとしている）
   origin {
@@ -2417,10 +2515,16 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-#### ・cache_behaviorブロック
+#### ・ordered_cache_behaviorブロック
+
+Behavior画面に設定するオリジンにルーティングするパスを定義する．
+
+**＊実装例＊**
 
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
+
+  # ～ 省略 ～
 
   ordered_cache_behavior {
     path_pattern           = "/images/*"
@@ -2446,6 +2550,12 @@ resource "aws_cloudfront_distribution" "this" {
   
 }
 ```
+
+#### ・default_cache_behavior
+
+Behavior画面に設定するオリジンにルーティングするデフォルトパスを定義する．
+
+**＊実装例＊**
 
 ```hcl
 resource "aws_cloudfront_distribution" "this" {
@@ -2474,45 +2584,6 @@ resource "aws_cloudfront_distribution" "this" {
   
 }
 ```
-
-#### ・その他
-
-```hcl
-resource "aws_cloudfront_distribution" "this" {
-
-  price_class      = "PriceClass_200"
-  web_acl_id       = var.cloudfront_wafv2_web_acl_arn
-  aliases          = [var.route53_domain_example]
-  comment          = "${var.environment}-${var.service}-cf-distribution"
-  enabled          = true
-  retain_on_delete = true
-
-  viewer_certificate {
-    acm_certificate_arn      = var.example_acm_certificate_arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2019"
-  }
-
-  logging_config {
-    bucket          = var.cloudfront_s3_bucket_regional_domain_name
-    include_cookies = true
-  }
-
-  restrictions {
-
-    geo_restriction {
-      restriction_type = "none"
-    }
-  }
-  
-  # ～ 省略 ～
-  
-}
-```
-
-#### ・削除保持機能
-
-Terraformでは，```retain_on_delete```で設定できる．固有の設定で，AWSに対応するものは無い．
 
 <br>
 
@@ -2557,7 +2628,9 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 ### ECS
 
-#### ・リモートのリビジョン番号の追跡
+#### ・まとめ
+
+**＊実装例＊**
 
 ```hcl
 ###############################################
@@ -2571,9 +2644,11 @@ resource "aws_ecs_service" "this" {
   desired_count                      = var.ecs_service_desired_count
   deployment_maximum_percent         = 200
   deployment_minimum_healthy_percent = 100
-  health_check_grace_period_seconds  = 300
 
-  # アプリケーションのデプロイによって，リモートのタスク定義のリビジョン番号が増加するため，これを追跡できるようにします．
+  # 後述の説明を参考にせよ．（１）
+  health_check_grace_period_seconds = 330
+
+  # 後述の説明を参考にせよ．（２）
   task_definition = "${aws_ecs_task_definition.this.family}:${max(aws_ecs_task_definition.this.revision, data.aws_ecs_task_definition.this.revision)}"
 
   network_configuration {
@@ -2588,20 +2663,52 @@ resource "aws_ecs_service" "this" {
     container_port   = var.ecs_container_nginx_port_http
   }
 
+  load_balancer {
+    target_group_arn = var.nlb_target_group_arn
+    container_name   = "nginx"
+    container_port   = var.ecs_container_nginx_port_http
+  }
+
+  depends_on = [
+    # 後述の説明を参考にせよ．（３）
+    var.alb_listener_https,
+    var.nlb_listener
+  ]
+
   lifecycle {
     ignore_changes = [
+      # ※後述の説明を参考にせよ（４）
       desired_count,
-      task_definition,
     ]
   }
 }
 ```
 
-#### ・タスク定義の更新
+#### （１）ヘルスチェック猶予期間
+
+タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し，Unhealthyと誤認してしまうため，タスクの起動完了を待機する．例えば，ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は，30秒単位で待機時間を増やし，適切な待機時間を見つけるようにする．
+
+#### （２）リモートのリビジョン番号の追跡
+
+アプリケーションのデプロイによって，リモートのタスク定義のリビジョン番号が増加するため，これを追跡できるようにする．
+
+参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
+
+#### （３）ALB/NLBリスナーの構築を待機
+
+Teraformは，特に依存関係を実装しない場合に，『ターゲットグループ → ALB/NLB → リスナー』の順でリソースを構築する．問題として，ALB/NLBやリスナーの構築が終わる前に，ECSサービスの構築が始まってしまう．ALB/NLBの構築（※リスナーも含む可能性）が完全に完了しない状態では，ターゲットグループはECSサービスに関連付けらず，これが完了する前にECSサービスがターゲットグループを参照しようとするため，エラーになる．リスナーの後にECSサービスを構築するようにし，『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順でリソースを構築できるようにする．
+
+参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
+
+#### （４）AutoScalingによるタスク数の増減を無視
+
+AutoScalingによって，タスク数が増減するため，これを無視する．
+
+#### （※）タスク定義の更新
 
 Terraformでタスク定義を更新すると，現在動いているECSで稼働しているタスクはそのままに，新しいリビジョン番号のタスク定義が作成される．コンソール画面の「新しいリビジョンの作成」と同じ挙動である．実際にタスクが増えていることは，サービスに紐づくタスク定義一覧から確認できる．次のデプロイ時に，このタスクが用いられる．
 
-#### ・サービスのデプロイの削除時間
+#### （※）サービスのデプロイの削除時間
 
 ECSサービスの削除には『ドレイニング』の時間が発生する．約2分30秒かかるため，気長に待つこと．
 
@@ -2609,9 +2716,11 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 ### EC2
 
-#### ・よく使うオプション一覧
+#### ・まとめ
 
-```hcl
+**＊実装例＊**
+
+```
 ###############################################
 # For bastion
 ###############################################
@@ -2620,22 +2729,31 @@ resource "aws_instance" "bastion" {
   instance_type               = "t2.micro"
   vpc_security_group_ids      = [var.ec2_bastion_security_group_id]
   subnet_id                   = var.public_a_subnet_id
-  key_name                    = "${var.environment}-${var.service}-bastion"
   associate_public_ip_address = true
-  disable_api_termination     = true
+
+  # ※後述の説明を参考にせよ（１）
+  key_name = "${var.environment}-${var.service}-bastion"
+
+  disable_api_termination = true
 
   tags = {
-    Name  = "${var.environment}-${var.service}-bastion"
+    Name = "${var.environment}-${var.service}-bastion"
   }
 
+  # ※後述の説明を参考にせよ（２）
   depends_on = [var.internet_gateway]
 }
-
 ```
 
-#### ・キーペアはコンソール上で設定
+#### （１）キーペアはコンソール上で設定
 
 誤って削除しないように，またソースコードに機密情報をハードコーディングしないように，キーペアはコンソール画面で作成した後，```key_name```でキー名を指定するようにする．
+
+#### （２）インターネットゲートウェイの後に構築
+
+インターネットゲートウェイの後にEC2を構築できるようにする．
+
+参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
 <br>
 
@@ -2940,7 +3058,7 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 }
 ```
 
-Application Auto Scalingにサービスリンクロールをアタッチする．
+Application Auto Scalingにサービスリンクロールをアタッチする．手動で設定することも可能であるが，Terraformの管理外で自動的にアタッチされるため，あえて妥協しても良い．
 
 ```hcl
 #########################################
@@ -2962,46 +3080,34 @@ resource "aws_appautoscaling_target" "ecs" {
 
 ### LBリスナーとターゲットグループ
 
-#### ・よく使うオプション一覧（NLBの場合）
+#### ・まとめ
+
+**＊実装例＊**
 
 ```hcl
 ###############################################
 # NLB target group
 ###############################################
 resource "aws_lb_target_group" "this" {
-  # 名前
-  name = "${var.environment}-${var.service}-nlb-tg"
-
-  # ポート
-  port = var.ecs_container_nginx_port_http
-
-  # プロトコル
-  protocol = "TCP"
-
-  # VPC
-  vpc_id = var.vpc_id
-
-  # 遅延登録時間
+  name                 = "${var.environment}-${var.service}-nlb-tg"
+  port                 = var.ecs_container_nginx_port_http
+  protocol             = "TCP"
+  vpc_id               = var.vpc_id
   deregistration_delay = "60"
+  target_type          = "ip"
 
-  # ターゲットのタイプ
-  target_type = "ip"
-
-  # スロースタート ※後述の補足を参考にせよ
+  # ※後述の説明を参考にせよ（１）
   slow_start = "0"
 
-  # ヘルスチェック ※後述の補足を参考にせよ
+  # ※後述の説明を参考にせよ（２）
   health_check {
     protocol          = "HTTP"
     healthy_threshold = 3
-    # ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ，パスを設定できる．
-    path = "/healthcheck"
+    path              = "/healthcheck"
   }
 
-  # スティッキーネス ※後述の補足を参考にせよ
-  # stickiness {
-  #  type = ""
-  # }
+  # stickiness ※後述の説明を参考にせよ（３）
+  # https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
   lifecycle {
     create_before_destroy = false
@@ -3009,7 +3115,23 @@ resource "aws_lb_target_group" "this" {
 }
 ```
 
-#### ・ターゲットグループの削除時にリスナーを先に削除できない．
+#### （１）NLBはスロースタートに非対応
+
+NLBに紐づくターゲットグループはスロースタートに非対応のため，これを明示的に無効化する必要がある．
+
+#### （２）NLBヘルスチェックには設定可能な項目が少ない
+
+ターゲットグループの転送プロトコルがTCPの場合は，設定できないヘルスチェックオプションがいくつかある．ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ，パスを設定できる．
+
+参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
+
+#### （３）NLBスティッキーネスは明示的に無効化
+
+スティッキネス機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンク先のNOTE文を参考にせよ．
+
+参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
+
+#### （※）ターゲットグループの削除時にリスナーを先に削除できない．
 
 LBリスナーがターゲットグループに依存しているが，Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため，以下のようなエラーが発生する．
 
@@ -3022,222 +3144,136 @@ Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbal
 
 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
-#### ・NLBはスロースタートに非対応
-
-NLBに紐づくターゲットグループはスロースタートに非対応のため，これを明示的に無効化する必要がある．
-
-#### ・NLBヘルスチェックには設定可能な項目が少ない
-
-ターゲットグループの転送プロトコルがTCPの場合は，設定できないヘルスチェックオプションがいくつかある．
-
-参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
-
-#### ・NLBスティッキーネスは明示的に無効化
-
-stickiness機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンク先のNOTE文を参考にせよ．
-
-参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
-
 <br>
 
 ### RDS
 
-#### ・よく使うオプション一覧
+#### ・まとめ
+
+**＊実装例＊**
 
 ```hcl
 #########################################
 # RDS Cluster
 #########################################
 resource "aws_rds_cluster" "this" {
-  # エンジン
-  engine = "aurora-mysql"
+  engine                          = "aurora-mysql"
+  engine_version                  = "5.7.mysql_aurora.2.08.3"
+  cluster_identifier              = "${var.environment}-${var.service}-rds-cluster"
   
-  # エンジンバージョン
-  engine_version = "5.7.mysql_aurora.2.08.3"
+  # 後述の説明を参考にせよ．（１）
+  master_username                 = var.rds_db_master_username_ssm_parameter_value
+  master_password                 = var.rds_db_master_password_ssm_parameter_value
+  port                            = var.rds_db_port_ssm_parameter_value
+  database_name                   = var.rds_db_name_ssm_parameter_value
   
-  # クラスター名
-  cluster_identifier = "${var.environment}-${var.service}-rds-cluster"
-  
-  # マスターユーザ名．SSMパラメータス推奨．
-  master_username = var.rds_db_username_ssm_parameter_value
-  
-  # マスターユーザパス．SSMパラメータス推奨．
-  master_password = var.rds_db_password_ssm_parameter_value
-  
-  # AZ．※後述の補足を参考にせよ
-  availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
-  
-  # セキュリティグループ
-  vpc_security_group_ids = [var.rds_security_group_id]
-  
-  # サブネットグループ
-  db_subnet_group_name = aws_db_subnet_group.this.name
-  
-  # ポート．SSMパラメータス推奨．
-  port = var.rds_db_port_ssm_parameter_value
-  
-  # データベース名．SSMパラメータス推奨．
-  database_name = var.rds_db_name_ssm_parameter_value
-  
-  # パラメータグループ
+  vpc_security_group_ids          = [var.rds_security_group_id]
+  db_subnet_group_name            = aws_db_subnet_group.this.name
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.this.id
-  
   storage_encrypted               = true
   backup_retention_period         = 7
-  
-  # バックアップウインドウの時間．※後述の補足を参考にせよ
-  preferred_backup_window         = "19:00-19:30"
-  
+  preferred_backup_window         = "00:00-00:30"
   copy_tags_to_snapshot           = true
   final_snapshot_identifier       = "final-db-snapshot"
   skip_final_snapshot             = false
   enabled_cloudwatch_logs_exports = ["audit", "error", "general", "slowquery"]
+  preferred_maintenance_window    = "sun:01:00-sun:01:30"
   
-  # メンテナンスウインドウの時間
-  preferred_maintenance_window    = "sun:17:30-sun:18:00"
-  
-  # apply時に，すぐに適用するか，設定されたメンテナンスウインドウ時に実行するか．後述の説明を参考にせよ．
+  # 後述の説明を参考にせよ．（２）
   apply_immediately = true
-  
-  # 誤って，データベースが削除されないようにする．  
+
+  # 後述の説明を参考にせよ．（３）
+  availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
+
   deletion_protection = true
 
   lifecycle {
     ignore_changes = [
-      # ※後述の補足を参考にせよ
+      # 後述の説明を参考にせよ．（４）
       availability_zones
     ]
   }
 }
-```
 
-```hcl
-#########################################
+###############################################
 # RDS Cluster Instance
-#########################################
+###############################################
 resource "aws_rds_cluster_instance" "this" {
   for_each = var.vpc_availability_zones
 
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.08.3"
   identifier                   = "${var.environment}-${var.service}-rds-instance-${each.key}"
-  cluster_identifier           = aws_rds_cluster.rds_cluster.id
+  cluster_identifier           = aws_rds_cluster.this.id
   instance_class               = var.rds_instance_class
   db_subnet_group_name         = aws_db_subnet_group.this.id
   db_parameter_group_name      = aws_db_parameter_group.this.id
   monitoring_interval          = 60
   monitoring_role_arn          = var.rds_iam_role_arn
-  auto_minor_version_upgrade   = false
-  preferred_maintenance_window = "sun:17:00-sun:17:30"
+  auto_minor_version_upgrade   = var.rds_auto_minor_version_upgrade
+  preferred_maintenance_window = "sun:01:00-sun:01:30"
   apply_immediately            = true
+
+  # 後述の説明を参考にせよ．（５）
+  # preferred_backup_window
 }
 ```
 
-#### ・メンテナンスウインドウ時に変更適用
+#### （１）SSMパラメータストア
+
+Terraformに値をハードコーディングしたくない場合は，SSMパラメータストアで値を管理し，これをデータリソースで取得するようにする．
+
+#### （２）メンテナンスウインドウ時に変更適用
 
 メンテナンスウインドウ時の変更適用をTerraformで行う場合，一段階目に```apply_immediately```オプションを```false```に変更してapplyし，二段階目に修正をapplyする．
 
-#### ・クラスターにはAZが３つ必要
+#### （３）クラスターにはAZが３つ必要
 
 クラスターでは，レプリケーションのために，３つのAZが必要である．そのため，指定したAZが２つであっても，コンソール画面上で３つのAZが自動的に設定される．Terraformがこれを認識しないように，```ignore_changes```でAZを指定しておく必要がある．
 
-https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
+参考：
 
-```hcl
-#########################################
-# RDS Cluster
-#########################################
-resource "aws_rds_cluster" "rds_cluster" {
+- https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
+- https://github.com/hashicorp/terraform-provider-aws/issues/1111
 
-  # ～ 省略 ～
+#### （４）インスタンスを配置するAZは選べない
 
-  availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
+事前にインスタンスにAZを表す識別子を入れたとしても，Terraformはインスタンスを配置するAZを選べない．そのため，AZと識別子の関係が逆になってしまうことがある．多くの場合， Cゾーンのインスタンスが最初に構築されるため，インスタンスのゾーン名と配置されるA/Cゾーンが逆になる．その場合は，デプロイ後に手動で名前を変更すればよい．この変更は，Terraformが差分として認識しないので問題ない．
 
-  # ～ 省略 ～
-
-  lifecycle {
-    ignore_changes = [
-      availability_zones
-    ]
-  }
-}
-```
-
-#### ・インスタンスを配置するAZは選べない
-
-事前にインスタンスにAZを表す識別子を入れたとしても，Terraformはインスタンスを配置するAZを選べない．そのため，AZと識別子の関係が逆になってしまうことがある．その場合は，デプロイ後に手動で名前を変更すればよい．この変更は，Terraformが差分として認識しないので問題ない．
-
-#### ・インスタンスにバックアップウインドウは設定しない
+#### （５）インスタンスにバックアップウインドウは設定しない
 
 クラスターとインスタンスの両方に，```preferred_backup_window```を設定できるが，RDSインスタンスに設定してはいけない．
-
-```hcl
-#########################################
-# RDS Cluster
-#########################################
-resource "aws_rds_cluster_instance" "this" {
-
-  # ～ 省略 ～
-
-  preferred_backup_window = "19:00-19:30"
-
-  # ～ 省略 ～
-
-}
-```
-
-```hcl
-#########################################
-# RDS Cluster Instance
-#########################################
-resource "aws_rds_cluster" "rds_cluster" {
-
-  # ～ 省略 ～
-
-  # preferred_backup_window = "19:00-19:30" # ※実装しないようにする
-
-  # ～ 省略 ～
-
-}
-```
 
 <br>
 
 ### Route53
 
-#### ・よく使うオプション一覧
+#### ・まとめ
+
+**＊実装例＊**
 
 ```hcl
 ###############################################
-# For api domain
+# For example domain
 ###############################################
 resource "aws_route53_zone" "example" {
-  # ホストゾーン
   name = var.route53_domain_example
 }
 
 resource "aws_route53_record" "example" {
-  # ホストゾーンID
   zone_id = aws_route53_zone.example.id
-  
-  # ドメイン名
   name    = var.route53_domain_example
-  
-  # レコードタイプ
   type    = "A"
 
-  # ルーティング先のDNS情報（ここではALBとしている）
   alias {
     name                   = var.alb_dns_name
     zone_id                = var.alb_zone_id
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 }
 ```
 
 <br>
-
-
 
 ### Route Table
 
@@ -3577,8 +3613,6 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }  
 ```
 
-
-
 #### ・IPセットの依存関係
 
 WAFのIPセットと他設定の依存関係に癖がある．新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする．もし同時に行った場合，Terraformは古いIPセットの削除処理を先に実行するが，これはWAFに紐づいているため，ここでエラーが起こってしまう．そのため，IPセットを新しく設定し直す場合は，以下の通り二つの段階に分けてデプロイするようにする．ちなみに，IPセットの名前を変更する場合は，更新処理ではなく削除を伴う再構築処理が実行されるため注意する．
@@ -3604,7 +3638,7 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 | Global Accelerator           | セキュリティグループ                             | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
 | IAMユーザ                    | 全て                                             |                                                              |
 | IAMユーザグループ            | 全て                                             |                                                              |
-| IAMロール                    | ・ユーザに紐づくロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築に伴って，自動的に作られるため，Terraformで管理できない． |
+| IAMロール                    | ・ユーザに紐づくロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築に伴って，自動的に作られるため，Terraformで管理できない．ただし，数が多いためあえて行わないが，Terraformで構築してAWSリソースに関連付けることもことも可能である． |
 | Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って，自動的に構築されるため，Terraformで管理できない． |
 | RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために，mysql providerという機能を使用する必要がある．しかし，使用する上でディレクトリ構成戦略と相性が悪い． |
 | Route53                      | ネームサーバーレコード                           | ホストゾーンを作成すると，レコードとして，ネームサーバレコードの情報が自動的に設定される．これは，Terraformの管理外である． |

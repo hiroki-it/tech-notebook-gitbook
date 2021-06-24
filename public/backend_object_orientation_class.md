@@ -707,7 +707,7 @@ trait UnsupportedMagicMethodTrait
 
 #### ・委譲とは
 
-処理の一部または全てを他のクラスに託すこと．PHPでは，依存性の注入により集約や合成の関係性を作り，委譲先クラスのメソッドでは委譲元のコールして，処理を追加実装することに相当する．他に，インターフェースでも実現できる．
+処理の一部または全てを他のクラスに託すこと．PHPでは，依存オブジェクト注入により集約や合成の関係性を作り，委譲先クラスのメソッドでは委譲元のコールして，処理を追加実装することに相当する．他に，インターフェースでも実現できる．
 
 #### ・継承よりも優れた点
 
@@ -813,14 +813,14 @@ PHP```5.3```以降では，外部ファイルとして定義されたクラス�
 <?php
   
 // 名前空間を定義．
-namespace Domain\Entity;
+namespace Domain\Examples;
 
 class Example1
 {
     // 定数を定義．
     const VALUE = "これは定数です．";
   
-    public function className()
+    public function method1()
     {
         return "example1メソッドです．";
     }
@@ -830,17 +830,17 @@ class Example1
 ```php
 <?php
 
-namespace Domain\Entity;
+namespace Domain\Examples;
 
 // namespaceを指定して，外部ファイルのクラスを読み込む．
-use Domain\Entity\Example1;
+use Domain\Example1;
 
 class Example2
 {
-    public function method()
+    public function method2()
     {
         $e1 = new Example1:
-        $e1->className();
+        $e1->method1();
     }
 }
 ```
@@ -852,10 +852,10 @@ class Example2
 ```php
 <?php
 
-namespace Domain\Entity;
+namespace Domain\Examples;
 
 // namespaceを指定して，外部ファイルのクラスを読み込む．
-use Domain\Entity1\Example1;
+use Domain\Example1;
 
 class Example2
 {
@@ -1044,13 +1044,16 @@ class ModuleB
 
 <br>
 
-### DI：Dependency Injection（サプライヤーの注入）
+### DI：Dependency Injection（依存オブジェクト注入）
 
 #### ・DIとは
 
-サプライヤー側の『インスタンス』を，クライアント側のインスタンスの外部から注入する実装方法．
+サプライヤー側の『インスタンス』を，クライアント側のインスタンスの外部から注入する実装方法．『依存性注入』と訳すのは混乱を招くため，『依存オブジェクト注入』と訳すようにする．
 
-参考：https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
+参考：
+
+- https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
+- https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
 
 #### ・Constructor Injectionとは
 
@@ -1085,11 +1088,11 @@ $client->setSupplier($supplier)
 
 <br>
 
-### DI Container（依存性注入コンテナ），Service Container
+### DI Container（依存オブジェクト注入コンテナ），Service Container
 
-#### ・DI Container（依存性注入コンテナ），Service Containerとは
+#### ・DI Container（依存オブジェクト注入コンテナ），Service Containerとは
 
-クラス名を登録（バインド）しただけで新しいインスタンスを生成（リゾルブ）してくれるオブジェクトを『Service Container』という．
+インスタンス生成とそれに伴う依存オブジェクト注入を一括で行うデザインパターンを『Service Container』という．あらかじめクラスを登録（バインド）しておき，必要な時にインスタンスを生成（リゾルブ）してくれる．
 
 **＊実装例＊**
 
@@ -1205,4 +1208,3 @@ $sample = new Sample($container);
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
-![トレイト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トレイト.png)
