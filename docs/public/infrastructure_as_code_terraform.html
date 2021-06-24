@@ -1700,6 +1700,7 @@
 <h3 id="init"><a name="init" class="plugin-anchor" href="#init"><i class="fa fa-link" aria-hidden="true"></i></a>init</h3>
 <h4 id="&#x30FB;-backendfalse"><a name="&#x30FB;-backendfalse" class="plugin-anchor" href="#&#x30FB;-backendfalse"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-backend=false</h4>
 <p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306B;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.terraform.io/docs/language/settings/backends/index.html" target="_blank">https://www.terraform.io/docs/language/settings/backends/index.html</a></p>
 <pre class="language-"><code class="lang-shell">$ terraform init -backend<span class="token operator">=</span>false
 </code></pre>
 <pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;</span>
@@ -1716,11 +1717,13 @@ $ terraform -chdir<span class="token operator">=</span><span class="token operat
     -backend-config<span class="token operator">=</span><span class="token string">&quot;encrypt=true&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;-reconfigure"><a name="&#x30FB;-reconfigure" class="plugin-anchor" href="#&#x30FB;-reconfigure"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-reconfigure</h4>
-<p>&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x306E;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x3042;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x524A;&#x9664;&#x3057;&#xFF0C;&#x65B0;&#x3057;&#x304F;state&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<p>Terraform&#x3092;&#x521D;&#x671F;&#x5316;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.terraform.io/docs/cli/commands/init.html#backend-initialization" target="_blank">https://www.terraform.io/docs/cli/commands/init.html#backend-initialization</a></p>
 <pre class="language-"><code class="lang-shell">$ terraform init -reconfigure
 </code></pre>
 <h4 id="&#x30FB;-upgrade"><a name="&#x30FB;-upgrade" class="plugin-anchor" href="#&#x30FB;-upgrade"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-upgrade</h4>
-<p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3068;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x73FE;&#x5728;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#xFF0C;<code>lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0C;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#xFF0C;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#xFF0F;&#x30C0;&#x30A6;&#x30F3;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.terraform.io/docs/cli/commands/init.html#upgrade" target="_blank">https://www.terraform.io/docs/cli/commands/init.html#upgrade</a></p>
 <pre class="language-"><code class="lang-shell">$ terraform init -upgrade
 </code></pre>
 <p><br></p>
@@ -1792,7 +1795,32 @@ No changes. Infrastructure is up-to-date.
 ~ update in-place
 - destroy
 -/+ destroy and then create replacement
-</code></pre><h4 id="&#x30FB;-var-file"><a name="&#x30FB;-var-file" class="plugin-anchor" href="#&#x30FB;-var-file"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-var-file</h4>
+</code></pre><h4 id="&#x30FB;&#x51FA;&#x529B;&#x5185;&#x5BB9;&#x306E;&#x8AAD;&#x307F;&#x65B9;"><a name="&#x30FB;&#x51FA;&#x529B;&#x5185;&#x5BB9;&#x306E;&#x8AAD;&#x307F;&#x65B9;" class="plugin-anchor" href="#&#x30FB;&#x51FA;&#x529B;&#x5185;&#x5BB9;&#x306E;&#x8AAD;&#x307F;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x51FA;&#x529B;&#x5185;&#x5BB9;&#x306E;&#x8AAD;&#x307F;&#x65B9;</h4>
+<p>&#x524D;&#x534A;&#x90E8;&#x5206;&#x3068;&#x5F8C;&#x534A;&#x90E8;&#x5206;&#x306B;&#x533A;&#x5225;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x524D;&#x534A;&#x90E8;&#x5206;&#x306F;&#xFF0C;Terraform&#x7BA1;&#x7406;&#x5916;&#x306E;&#x65B9;&#x6CD5;&#xFF08;&#x753B;&#x9762;&#x4E0A;&#xFF0C;&#x4ED6;&#x30C4;&#x30FC;&#x30EB;&#xFF09;&#x306B;&#x3088;&#x308B;&#x5B9F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x306E;&#x5909;&#x66F4;&#x306B;&#x3064;&#x3044;&#x3066;&#xFF0C;&#x305D;&#x306E;&#x5909;&#x66F4;&#x524D;&#x5F8C;&#x3092;&#x691C;&#x51FA;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x306E;&#x691C;&#x51FA;&#x306E;&#x305F;&#x3081;&#xFF0C;apply&#x306B;&#x3088;&#x3063;&#x3066;&#x5909;&#x66F4;&#x3055;&#x308C;&#x308B;&#x5B9F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;&#x308F;&#x3051;&#x3067;&#x306F;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3057;&#x3066;&#x5F8C;&#x534A;&#x90E8;&#x5206;&#x306F;&#xFF0C;Terraform&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5909;&#x66F4;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x304C;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x308B;&#x304B;&#xFF0C;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x7D50;&#x679C;&#x306E;&#x6700;&#x5F8C;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x5BFE;&#x8C61;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x6570;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x524D;&#x534A;&#x90E8;&#x5206;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306F;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last <span class="token string">&quot;terraform apply&quot;</span><span class="token builtin class-name">:</span>
+
+  <span class="token comment"># Terraform&#x7BA1;&#x7406;&#x5916;&#x306E;&#x65B9;&#x6CD5;&#xFF08;&#x753B;&#x9762;&#x4E0A;&#xFF0C;&#x4ED6;&#x30C4;&#x30FC;&#x30EB;&#xFF09;&#x306B;&#x3088;&#x308B;&#x5B9F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x306E;&#x5909;&#x66F4;&#x306B;&#x3064;&#x3044;&#x3066;&#xFF0C;&#x305D;&#x306E;&#x5909;&#x66F4;&#x524D;&#x5F8C;&#x3092;&#x691C;&#x51FA;&#xFF0E;</span>
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  <span class="token comment"># Terraform&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5909;&#x66F4;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x5B9F;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x304C;&#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x5909;&#x66F4;&#x3055;&#x308C;&#x308B;&#x304B;&#xFF0E;</span>
+
+Plan: <span class="token number">0</span> to add, <span class="token number">1</span> to change, <span class="token number">0</span> to destroy.
+</code></pre>
+<h4 id="&#x30FB;-var-file"><a name="&#x30FB;-var-file" class="plugin-anchor" href="#&#x30FB;-var-file"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-var-file</h4>
 <p>&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x3092;tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#x53CD;&#x6620;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A18;&#x8FF0;&#x3068;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5909;&#x6570;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#xFF0C;<code>variable</code>&#x3067;&#x5BA3;&#x8A00;&#x3057;&#x305F;&#x5909;&#x6570;&#x306B;&#xFF0C;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ terraform plan -var-file<span class="token operator">=</span>config.tfvars
 </code></pre>
@@ -1849,7 +1877,7 @@ $ terraform -chdir<span class="token operator">=</span><span class="token operat
     -var-file<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>/config.tfvars
 </code></pre>
 <p>&#x6210;&#x529F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">Apply complete<span class="token operator">!</span> Resources: X added, <span class="token number">0</span> changed, <span class="token number">0</span> destroyed.
+<pre class="language-"><code class="lang-shell">Apply complete<span class="token operator">!</span> Resources: <span class="token number">1</span> added, <span class="token number">0</span> changed, <span class="token number">0</span> destroyed.
 </code></pre>
 <h4 id="&#x30FB;-target"><a name="&#x30FB;-target" class="plugin-anchor" href="#&#x30FB;-target"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-target</h4>
 <p>&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1922,6 +1950,10 @@ module.vpc_module.aws_vpc.vpc
 </code></pre>
 <p><br></p>
 <h2 id="01-02-&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;"><a name="01-02-&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;" class="plugin-anchor" href="#01-02-&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>01-02. &#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</h2>
+<h3 id="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;"><a name="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;" class="plugin-anchor" href="#&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x7BA1;&#x7406;</h3>
+<h4 id="&#x30FB;lock&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;lock&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;lock&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<p>&#x73FE;&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#x306E;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x4ED6;&#x306E;&#x4EBA;&#x304C;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x5BA3;&#x8A00;&#x3067;&#x304D;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x3082;&#x3057;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;<code>lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#xFF0F;&#x30C0;&#x30A6;&#x30F3;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><br></p>
 <h3 id="terraform&#xFF0F;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;"><a name="terraform&#xFF0F;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;" class="plugin-anchor" href="#terraform&#xFF0F;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>Terraform&#xFF0F;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;</h3>
 <h4 id="1-&#x73FE;&#x5728;&#x306E;terraform&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;apply&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;"><a name="1-&#x73FE;&#x5728;&#x306E;terraform&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;apply&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;" class="plugin-anchor" href="#1-&#x73FE;&#x5728;&#x306E;terraform&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;apply&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x73FE;&#x5728;&#x306E;Terraform&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;</h4>
 <p>&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3068;&#x540C;&#x6642;&#x306B;&#x65B0;&#x3057;&#x3044;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x306B;&#x5C02;&#x5FF5;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x73FE;&#x5728;&#x306E;Terraform&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x5DEE;&#x5206;&#x304C;&#x7121;&#x3044;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
@@ -1933,7 +1965,7 @@ module.vpc_module.aws_vpc.vpc
 <h4 id="4-plan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x89E3;&#x6D88;"><a name="4-plan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x89E3;&#x6D88;" class="plugin-anchor" href="#4-plan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x89E3;&#x6D88;"><i class="fa fa-link" aria-hidden="true"></i></a>4. <code>plan</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x89E3;&#x6D88;</h4>
 <p>&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x306B;&#x4F34;&#x3063;&#x3066;&#xFF0C;&#x975E;&#x63A8;&#x5968;&#xFF0F;&#x5EC3;&#x6B62;&#x306E;&#x6A5F;&#x80FD;&#x304C;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3055;&#x308C;&#xFF0C;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x5834;&#x5408;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x8B66;&#x544A;&#xFF0F;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x89E3;&#x6D88;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x8A18;&#x6CD5;&#x3084;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5024;&#x3092;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="5-terraform&#x306E;&#x5F8C;&#x306B;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;"><a name="5-terraform&#x306E;&#x5F8C;&#x306B;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;" class="plugin-anchor" href="#5-terraform&#x306E;&#x5F8C;&#x306B;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>5. Terraform&#x306E;&#x5F8C;&#x306B;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;</h4>
-<p>Terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x4E00;&#x65E6;&#xFF0C;Terraform&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3092;&#x6E08;&#x307E;&#x305B;&#x3066;&#x304B;&#x3089;&#xFF0C;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#xFF0E;</p>
+<p>Terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306F;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306F;Terraform&#x304C;&#x571F;&#x53F0;&#x306B;&#x306A;&#x3063;&#x3066;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x4E00;&#x65E6;&#xFF0C;Terraform&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3092;&#x6E08;&#x307E;&#x305B;&#x3066;&#x304B;&#x3089;&#xFF0C;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h2 id="01-03-&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;"><a name="01-03-&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;" class="plugin-anchor" href="#01-03-&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>01-03. &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x6210;</h2>
 <h3 id="&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x6210;"><a name="&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x6210;" class="plugin-anchor" href="#&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EB;&#x30FC;&#x30C8;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x69CB;&#x6210;</h3>
@@ -3431,89 +3463,131 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <p><br></p>
 <h2 id="08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;"><a name="08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;" class="plugin-anchor" href="#08-&#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;"><i class="fa fa-link" aria-hidden="true"></i></a>08. &#x5404;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x30BF;&#x30A4;&#x30D7;&#x72EC;&#x81EA;&#x306E;&#x4ED5;&#x69D8;</h2>
 <h3 id="ami"><a name="ami" class="plugin-anchor" href="#ami"><i class="fa fa-link" aria-hidden="true"></i></a>AMI</h3>
-<h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># For bastion</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">data <span class="token type variable">&quot;aws_ami&quot;</span></span> <span class="token string">&quot;bastion&quot;</span> <span class="token punctuation">{</span>
-  <span class="token comment"># &#x6700;&#x65B0;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x304B;&#x5426;&#x304B;</span>
-  <span class="token property">most_recent</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code>###############################################
+# For bastion
+###############################################
+data &quot;aws_ami&quot; &quot;bastion&quot; {
+  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
+  most_recent = false
 
-  <span class="token comment"># EC2&#x304C;&#xFF0C;&#x610F;&#x56F3;&#x305B;&#x305A;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
-  <span class="token property">owners</span>      <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;amazon&quot;</span><span class="token punctuation">]</span>
-  <span class="token keyword">filter</span> <span class="token punctuation">{</span>
-    <span class="token property">name</span>   <span class="token punctuation">=</span> <span class="token string">&quot;name&quot;</span>
-    <span class="token property">values</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2&quot;</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
+  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
+  owners      = [&quot;amazon&quot;]
+  filter {
+    name   = &quot;name&quot;
+    values = [&quot;amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2&quot;]
+  }
 
-  <span class="token keyword">filter</span> <span class="token punctuation">{</span>
-    <span class="token property">name</span>   <span class="token punctuation">=</span> <span class="token string">&quot;image-id&quot;</span>
-    <span class="token property">values</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;ami-040c9333a9c90b2b6&quot;</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><a name="&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;</h4>
-<p>&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5E38;&#x306B;&#x6700;&#x65B0;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0C;EC2&#x304C;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+  filter {
+    name   = &quot;image-id&quot;
+    values = [&quot;ami-040c9333a9c90b2b6&quot;]
+  }
+}
+</code></pre><h4 id="&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><a name="&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;</h4>
+<p>&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x304C;&#x5E38;&#x306B;&#x6700;&#x65B0;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3068;&#xFF0C;EC2&#x304C;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>most_recent</code>&#x306F;&#x7121;&#x52B9;&#x5316;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AM&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="api-gateway"><a name="api-gateway" class="plugin-anchor" href="#api-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>API Gateway</h3>
-<h4 id="&#x30FB;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><a name="&#x30FB;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;" class="plugin-anchor" href="#&#x30FB;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;</h4>
-<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x7528;&#x610F;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;<code>body</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;API&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5909;&#x6570;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># REST API</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_rest_api&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
-  <span class="token property">name</span>        <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-api-for-example&quot;</span>
-  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">&quot;The API that enables two-way communication with <span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-example&quot;</span>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code>###############################################
+# REST API
+###############################################
+resource &quot;aws_api_gateway_rest_api&quot; &quot;example&quot; {
+  name        = &quot;${var.environment}-${var.service}-api-for-example&quot;
+  description = &quot;The API that enables two-way communication with ${var.environment}-example&quot;
 
-  <span class="token comment"># VPC&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x306E;API&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;</span>
-  <span class="token property">body</span> <span class="token punctuation">=</span> templatefile(
-    <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">path</span><span class="token punctuation">.</span><span class="token type variable">module</span><span class="token punctuation">}</span></span>/open_api.yaml&quot;</span>,
-    <span class="token punctuation">{</span>
-      <span class="token property">api_gateway_vpc_link_example_id</span> <span class="token punctuation">=</span> aws_api_gateway_vpc_link.example.id
-      <span class="token property">nlb_dns_name</span>                          <span class="token punctuation">=</span> var.nlb_dns_name
-    <span class="token punctuation">}</span>
+  # VPC&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x306E;API&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;
+  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
+  body = templatefile(
+    &quot;${path.module}/open_api.yaml&quot;,
+    {
+      api_gateway_vpc_link_example_id = aws_api_gateway_vpc_link.example.id
+      nlb_dns_name                          = var.nlb_dns_name
+    }
   )
 
-  <span class="token keyword">endpoint_configuration</span> <span class="token punctuation">{</span>
-    <span class="token property">types</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;REGIONAL&quot;</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
+  endpoint_configuration {
+    types = [&quot;REGIONAL&quot;]
+  }
 
-  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
-    <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+  lifecycle {
+    ignore_changes = [
       policy
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>API&#x306E;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x30C8;&#x30EA;&#x30AC;&#x30FC;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;<code>body</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3092;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5143;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5DEE;&#x5206;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;Terraform&#x304C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x306E;&#x5909;&#x5316;&#x3092;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># Deployment</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_deployment&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
-  <span class="token property">rest_api_id</span> <span class="token punctuation">=</span> aws_api_gateway_rest_api.example.id
+    ]
+  }
+}
 
-  <span class="token property">triggers</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
-    <span class="token property">redeployment</span> <span class="token punctuation">=</span> sha1(aws_api_gateway_rest_api.example.body)
-  <span class="token punctuation">}</span>
+###############################################
+# Deployment
+###############################################
+resource &quot;aws_api_gateway_deployment&quot; &quot;example&quot; {
+  rest_api_id = aws_api_gateway_rest_api.example.id
 
-  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
-    <span class="token property">create_before_destroy</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
+  triggers = {
+    redeployment = sha1(aws_api_gateway_rest_api.example.body)
+  }
 
-<span class="token comment">###############################################</span>
-<span class="token comment"># Stage</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_stage&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
-  <span class="token property">deployment_id</span> <span class="token punctuation">=</span> aws_api_gateway_deployment.example.id
-  <span class="token property">rest_api_id</span>   <span class="token punctuation">=</span> aws_api_gateway_rest_api.example.id
-  <span class="token property">stage_name</span>    <span class="token punctuation">=</span> var.environment
-<span class="token punctuation">}</span>
-</code></pre>
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+###############################################
+# Stage
+###############################################
+resource &quot;aws_api_gateway_stage&quot; &quot;example&quot; {
+  deployment_id = aws_api_gateway_deployment.example.id
+  rest_api_id   = aws_api_gateway_rest_api.example.id
+  stage_name    = var.environment
+}
+</code></pre><h4 id="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><a name="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;</h4>
+<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x7528;&#x610F;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;<code>body</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;API&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5909;&#x6570;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;API&#x306E;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x30C8;&#x30EA;&#x30AC;&#x30FC;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;<code>body</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3092;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5143;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5DEE;&#x5206;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;Terraform&#x304C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x306E;&#x5909;&#x5316;&#x3092;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="cloudfront"><a name="cloudfront" class="plugin-anchor" href="#cloudfront"><i class="fa fa-link" aria-hidden="true"></i></a>CloudFront</h3>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code>resource &quot;aws_cloudfront_distribution&quot; &quot;this&quot; {
+
+  price_class      = &quot;PriceClass_200&quot;
+  web_acl_id       = var.cloudfront_wafv2_web_acl_arn
+  aliases          = [var.route53_domain_example]
+  comment          = &quot;${var.environment}-${var.service}-cf-distribution&quot;
+  enabled          = true
+
+  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
+  retain_on_delete = true
+
+  viewer_certificate {
+    acm_certificate_arn      = var.example_acm_certificate_arn
+    ssl_support_method       = &quot;sni-only&quot;
+    minimum_protocol_version = &quot;TLSv1.2_2019&quot;
+  }
+
+  logging_config {
+    bucket          = var.cloudfront_s3_bucket_regional_domain_name
+    include_cookies = true
+  }
+
+  restrictions {
+
+    geo_restriction {
+      restriction_type = &quot;none&quot;
+    }
+  }
+
+  # &#xFF5E; &#x7701;&#x7565; &#xFF5E;
+
+}
+</code></pre><h4 id="&#xFF08;&#xFF11;&#xFF09;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;"><a name="&#xFF08;&#xFF11;&#xFF09;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;</h4>
+<p>Terraform&#x3067;&#x306F;&#xFF0C;<code>retain_on_delete</code>&#x3067;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x56FA;&#x6709;&#x306E;&#x8A2D;&#x5B9A;&#x3067;&#xFF0C;AWS&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x3082;&#x306E;&#x306F;&#x7121;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;origin&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
+<p>Origins&#x753B;&#x9762;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30AA;&#x30EA;&#x30B8;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
+
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;  </span>
 
   <span class="token comment"># &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;S3&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;</span>
   <span class="token keyword">origin</span> <span class="token punctuation">{</span>
@@ -3530,6 +3604,8 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <span class="token punctuation">}</span>
 </code></pre>
 <pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
+
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;  </span>
 
   <span class="token comment"># &#x30AA;&#x30EA;&#x30B8;&#x30F3;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;ALB&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;</span>
   <span class="token keyword">origin</span> <span class="token punctuation">{</span>
@@ -3549,8 +3625,12 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
   <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;cachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cache_behavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
+<h4 id="&#x30FB;orderedcachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30FB;orderedcachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;orderedcachebehavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ordered_cache_behavior&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h4>
+<p>Behavior&#x753B;&#x9762;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30AA;&#x30EA;&#x30B8;&#x30F3;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30D1;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
+
+  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
   <span class="token keyword">ordered_cache_behavior</span> <span class="token punctuation">{</span>
     <span class="token property">path_pattern</span>           <span class="token punctuation">=</span> <span class="token string">&quot;/images/*&quot;</span>
@@ -3576,6 +3656,9 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 
 <span class="token punctuation">}</span>
 </code></pre>
+<h4 id="&#x30FB;defaultcachebehavior"><a name="&#x30FB;defaultcachebehavior" class="plugin-anchor" href="#&#x30FB;defaultcachebehavior"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;default_cache_behavior</h4>
+<p>Behavior&#x753B;&#x9762;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x30AA;&#x30EA;&#x30B8;&#x30F3;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x30D1;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
 
   <span class="token keyword">default_cache_behavior</span> <span class="token punctuation">{</span>
@@ -3602,40 +3685,6 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x305D;&#x306E;&#x4ED6;"><a name="&#x30FB;&#x305D;&#x306E;&#x4ED6;" class="plugin-anchor" href="#&#x30FB;&#x305D;&#x306E;&#x4ED6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x305D;&#x306E;&#x4ED6;</h4>
-<pre class="language-"><code class="lang-hcl"><span class="token keyword">resource <span class="token type variable">&quot;aws_cloudfront_distribution&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
-
-  <span class="token property">price_class</span>      <span class="token punctuation">=</span> <span class="token string">&quot;PriceClass_200&quot;</span>
-  <span class="token property">web_acl_id</span>       <span class="token punctuation">=</span> var.cloudfront_wafv2_web_acl_arn
-  <span class="token property">aliases</span>          <span class="token punctuation">=</span> <span class="token punctuation">[</span>var.route53_domain_example<span class="token punctuation">]</span>
-  <span class="token property">comment</span>          <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-cf-distribution&quot;</span>
-  <span class="token property">enabled</span>          <span class="token punctuation">=</span> <span class="token boolean">true</span>
-  <span class="token property">retain_on_delete</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
-
-  <span class="token keyword">viewer_certificate</span> <span class="token punctuation">{</span>
-    <span class="token property">acm_certificate_arn</span>      <span class="token punctuation">=</span> var.example_acm_certificate_arn
-    <span class="token property">ssl_support_method</span>       <span class="token punctuation">=</span> <span class="token string">&quot;sni-only&quot;</span>
-    <span class="token property">minimum_protocol_version</span> <span class="token punctuation">=</span> <span class="token string">&quot;TLSv1.2_2019&quot;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">logging_config</span> <span class="token punctuation">{</span>
-    <span class="token property">bucket</span>          <span class="token punctuation">=</span> var.cloudfront_s3_bucket_regional_domain_name
-    <span class="token property">include_cookies</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">restrictions</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">geo_restriction</span> <span class="token punctuation">{</span>
-      <span class="token property">restriction_type</span> <span class="token punctuation">=</span> <span class="token string">&quot;none&quot;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;"><a name="&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x524A;&#x9664;&#x4FDD;&#x6301;&#x6A5F;&#x80FD;</h4>
-<p>Terraform&#x3067;&#x306F;&#xFF0C;<code>retain_on_delete</code>&#x3067;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x56FA;&#x6709;&#x306E;&#x8A2D;&#x5B9A;&#x3067;&#xFF0C;AWS&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x3082;&#x306E;&#x306F;&#x7121;&#x3044;&#xFF0E;</p>
 <p><br></p>
 <h3 id="ecr"><a name="ecr" class="plugin-anchor" href="#ecr"><i class="fa fa-link" aria-hidden="true"></i></a>ECR</h3>
 <h4 id="&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30DD;&#x30EA;&#x30B7;&#x30FC;"><a name="&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30DD;&#x30EA;&#x30B7;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30DD;&#x30EA;&#x30B7;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x30DD;&#x30EA;&#x30B7;&#x30FC;</h4>
@@ -3671,7 +3720,8 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 </code></pre>
 <p><br></p>
 <h3 id="ecs"><a name="ecs" class="plugin-anchor" href="#ecs"><i class="fa fa-link" aria-hidden="true"></i></a>ECS</h3>
-<h4 id="&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;"><a name="&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;" class="plugin-anchor" href="#&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;</h4>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># ECS Service</span>
 <span class="token comment">###############################################</span>
@@ -3683,9 +3733,11 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
   <span class="token property">desired_count</span>                      <span class="token punctuation">=</span> var.ecs_service_desired_count
   <span class="token property">deployment_maximum_percent</span>         <span class="token punctuation">=</span> <span class="token number">200</span>
   <span class="token property">deployment_minimum_healthy_percent</span> <span class="token punctuation">=</span> <span class="token number">100</span>
-  <span class="token property">health_check_grace_period_seconds</span>  <span class="token punctuation">=</span> <span class="token number">300</span>
 
-  <span class="token comment"># &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x304C;&#x5897;&#x52A0;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x8FFD;&#x8DE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">health_check_grace_period_seconds</span> <span class="token punctuation">=</span> <span class="token number">330</span>
+
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF12;&#xFF09;</span>
   <span class="token property">task_definition</span> <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span>aws_ecs_task_definition<span class="token punctuation">.</span>this<span class="token punctuation">.</span>family<span class="token punctuation">}</span></span>:<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token function">max</span><span class="token punctuation">(</span>aws_ecs_task_definition<span class="token punctuation">.</span>this<span class="token punctuation">.</span>revision<span class="token punctuation">,</span> <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token type variable">aws_ecs_task_definition</span><span class="token punctuation">.</span>this<span class="token punctuation">.</span>revision<span class="token punctuation">)</span><span class="token punctuation">}</span></span>&quot;</span>
 
   <span class="token keyword">network_configuration</span> <span class="token punctuation">{</span>
@@ -3700,42 +3752,71 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
     <span class="token property">container_port</span>   <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
   <span class="token punctuation">}</span>
 
+  <span class="token keyword">load_balancer</span> <span class="token punctuation">{</span>
+    <span class="token property">target_group_arn</span> <span class="token punctuation">=</span> var.nlb_target_group_arn
+    <span class="token property">container_name</span>   <span class="token punctuation">=</span> <span class="token string">&quot;nginx&quot;</span>
+    <span class="token property">container_port</span>   <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
+  <span class="token punctuation">}</span>
+
+  <span class="token property">depends_on</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+    <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF13;&#xFF09;</span>
+    var.alb_listener_https,
+    var.nlb_listener
+  <span class="token punctuation">]</span>
+
   <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
     <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
+      <span class="token comment"># &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF14;&#xFF09;</span>
       desired_count,
-      task_definition,
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;"><a name="&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;</h4>
+<h4 id="&#xFF08;&#xFF11;&#xFF09;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x7336;&#x4E88;&#x671F;&#x9593;"><a name="&#xFF08;&#xFF11;&#xFF09;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x7336;&#x4E88;&#x671F;&#x9593;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x7336;&#x4E88;&#x671F;&#x9593;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x7336;&#x4E88;&#x671F;&#x9593;</h4>
+<p>&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x8D77;&#x52D5;&#x304C;&#x5B8C;&#x4E86;&#x3059;&#x308B;&#x524D;&#x306B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304C;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3092;&#x691C;&#x8A3C;&#x3057;&#xFF0C;Unhealthy&#x3068;&#x8AA4;&#x8A8D;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x305F;&#x3081;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x8D77;&#x52D5;&#x5B8C;&#x4E86;&#x3092;&#x5F85;&#x6A5F;&#x3059;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304C;30&#x79D2;&#x9593;&#x9694;&#x3067;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;30&#x79D2;&#x5358;&#x4F4D;&#x3067;&#x5F85;&#x6A5F;&#x6642;&#x9593;&#x3092;&#x5897;&#x3084;&#x3057;&#xFF0C;&#x9069;&#x5207;&#x306A;&#x5F85;&#x6A5F;&#x6642;&#x9593;&#x3092;&#x898B;&#x3064;&#x3051;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#xFF12;&#xFF09;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;"><a name="&#xFF08;&#xFF12;&#xFF09;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;" class="plugin-anchor" href="#&#xFF08;&#xFF12;&#xFF09;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF12;&#xFF09;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x8FFD;&#x8DE1;</h4>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30EA;&#x30E2;&#x30FC;&#x30C8;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x304C;&#x5897;&#x52A0;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x8FFD;&#x8DE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition</a></p>
+<h4 id="&#xFF08;&#xFF13;&#xFF09;albnlb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x5F85;&#x6A5F;"><a name="&#xFF08;&#xFF13;&#xFF09;albnlb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x5F85;&#x6A5F;" class="plugin-anchor" href="#&#xFF08;&#xFF13;&#xFF09;albnlb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x5F85;&#x6A5F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF13;&#xFF09;ALB/NLB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x69CB;&#x7BC9;&#x3092;&#x5F85;&#x6A5F;</h4>
+<p>Teraform&#x306F;&#xFF0C;&#x7279;&#x306B;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x300E;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7; &#x2192; ALB/NLB &#x2192; &#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x300F;&#x306E;&#x9806;&#x3067;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#xFF0E;&#x554F;&#x984C;&#x3068;&#x3057;&#x3066;&#xFF0C;ALB/NLB&#x3084;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x69CB;&#x7BC9;&#x304C;&#x7D42;&#x308F;&#x308B;&#x524D;&#x306B;&#xFF0C;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x304C;&#x59CB;&#x307E;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;ALB/NLB&#x306E;&#x69CB;&#x7BC9;&#xFF08;&#x203B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3082;&#x542B;&#x3080;&#x53EF;&#x80FD;&#x6027;&#xFF09;&#x304C;&#x5B8C;&#x5168;&#x306B;&#x5B8C;&#x4E86;&#x3057;&#x306A;&#x3044;&#x72B6;&#x614B;&#x3067;&#x306F;&#xFF0C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306F;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x3089;&#x305A;&#xFF0C;&#x3053;&#x308C;&#x304C;&#x5B8C;&#x4E86;&#x3059;&#x308B;&#x524D;&#x306B;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3088;&#x3046;&#x3068;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x306E;&#x5F8C;&#x306B;ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#xFF0C;&#x300E;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7; &#x2192; ALB/NLB &#x2192; &#x30EA;&#x30B9;&#x30CA;&#x30FC; &#x2192; ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x300F;&#x306E;&#x9806;&#x3067;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x69CB;&#x7BC9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022" target="_blank">https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022</a></p>
+<h4 id="&#xFF08;&#xFF14;&#xFF09;autoscaling&#x306B;&#x3088;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x6570;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x7121;&#x8996;"><a name="&#xFF08;&#xFF14;&#xFF09;autoscaling&#x306B;&#x3088;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x6570;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x7121;&#x8996;" class="plugin-anchor" href="#&#xFF08;&#xFF14;&#xFF09;autoscaling&#x306B;&#x3088;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x6570;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x7121;&#x8996;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF14;&#xFF09;AutoScaling&#x306B;&#x3088;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x6570;&#x306E;&#x5897;&#x6E1B;&#x3092;&#x7121;&#x8996;</h4>
+<p>AutoScaling&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x6570;&#x304C;&#x5897;&#x6E1B;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x7121;&#x8996;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;"><a name="&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;" class="plugin-anchor" href="#&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x306E;&#x66F4;&#x65B0;</h4>
 <p>Terraform&#x3067;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x73FE;&#x5728;&#x52D5;&#x3044;&#x3066;&#x3044;&#x308B;ECS&#x3067;&#x7A3C;&#x50CD;&#x3057;&#x3066;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x306B;&#xFF0C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x306E;&#x300C;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x4F5C;&#x6210;&#x300D;&#x3068;&#x540C;&#x3058;&#x6319;&#x52D5;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x5897;&#x3048;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30B9;&#x30AF;&#x5B9A;&#x7FA9;&#x4E00;&#x89A7;&#x304B;&#x3089;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x6B21;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;"><a name="&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;" class="plugin-anchor" href="#&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;</h4>
+<h4 id="&#xFF08;&#x203B;&#xFF09;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;"><a name="&#xFF08;&#x203B;&#xFF09;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;" class="plugin-anchor" href="#&#xFF08;&#x203B;&#xFF09;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#x203B;&#xFF09;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x524A;&#x9664;&#x6642;&#x9593;</h4>
 <p>ECS&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x524A;&#x9664;&#x306B;&#x306F;&#x300E;&#x30C9;&#x30EC;&#x30A4;&#x30CB;&#x30F3;&#x30B0;&#x300F;&#x306E;&#x6642;&#x9593;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#xFF0E;&#x7D04;2&#x5206;30&#x79D2;&#x304B;&#x304B;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x6C17;&#x9577;&#x306B;&#x5F85;&#x3064;&#x3053;&#x3068;&#xFF0E;</p>
 <p><br></p>
 <h3 id="ec2"><a name="ec2" class="plugin-anchor" href="#ec2"><i class="fa fa-link" aria-hidden="true"></i></a>EC2</h3>
-<h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># For bastion</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_instance&quot;</span></span> <span class="token string">&quot;bastion&quot;</span> <span class="token punctuation">{</span>
-  <span class="token property">ami</span>                         <span class="token punctuation">=</span> var.bastion_ami_amazon_id
-  <span class="token property">instance_type</span>               <span class="token punctuation">=</span> <span class="token string">&quot;t2.micro&quot;</span>
-  <span class="token property">vpc_security_group_ids</span>      <span class="token punctuation">=</span> <span class="token punctuation">[</span>var.ec2_bastion_security_group_id<span class="token punctuation">]</span>
-  <span class="token property">subnet_id</span>                   <span class="token punctuation">=</span> var.public_a_subnet_id
-  <span class="token property">key_name</span>                    <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-bastion&quot;</span>
-  <span class="token property">associate_public_ip_address</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
-  <span class="token property">disable_api_termination</span>     <span class="token punctuation">=</span> <span class="token boolean">true</span>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code>###############################################
+# For bastion
+###############################################
+resource &quot;aws_instance&quot; &quot;bastion&quot; {
+  ami                         = var.bastion_ami_amazon_id
+  instance_type               = &quot;t2.micro&quot;
+  vpc_security_group_ids      = [var.ec2_bastion_security_group_id]
+  subnet_id                   = var.public_a_subnet_id
+  associate_public_ip_address = true
 
-  <span class="token property">tags</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
-    <span class="token property">Name</span>  <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-bastion&quot;</span>
-  <span class="token punctuation">}</span>
+  # &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF11;&#xFF09;
+  key_name = &quot;${var.environment}-${var.service}-bastion&quot;
 
-  <span class="token property">depends_on</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>var.internet_gateway<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;"><a name="&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;</h4>
+  disable_api_termination = true
+
+  tags = {
+    Name = &quot;${var.environment}-${var.service}-bastion&quot;
+  }
+
+  # &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF12;&#xFF09;
+  depends_on = [var.internet_gateway]
+}
+</code></pre><h4 id="&#xFF08;&#xFF11;&#xFF09;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;"><a name="&#xFF08;&#xFF11;&#xFF09;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x3067;&#x8A2D;&#x5B9A;</h4>
 <p>&#x8AA4;&#x3063;&#x3066;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x307E;&#x305F;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x6A5F;&#x5BC6;&#x60C5;&#x5831;&#x3092;&#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30AD;&#x30FC;&#x30DA;&#x30A2;&#x306F;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x3067;&#x4F5C;&#x6210;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>key_name</code>&#x3067;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#xFF12;&#xFF09;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x306E;&#x5F8C;&#x306B;&#x69CB;&#x7BC9;"><a name="&#xFF08;&#xFF12;&#xFF09;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x306E;&#x5F8C;&#x306B;&#x69CB;&#x7BC9;" class="plugin-anchor" href="#&#xFF08;&#xFF12;&#xFF09;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x306E;&#x5F8C;&#x306B;&#x69CB;&#x7BC9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF12;&#xFF09;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x306E;&#x5F8C;&#x306B;&#x69CB;&#x7BC9;</h4>
+<p>&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30B2;&#x30FC;&#x30C8;&#x30A6;&#x30A7;&#x30A4;&#x306E;&#x5F8C;&#x306B;EC2&#x3092;&#x69CB;&#x7BC9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference</a></p>
 <p><br></p>
 <h3 id="iam&#x30E6;&#x30FC;&#x30B6;"><a name="iam&#x30E6;&#x30FC;&#x30B6;" class="plugin-anchor" href="#iam&#x30E6;&#x30FC;&#x30B6;"><i class="fa fa-link" aria-hidden="true"></i></a>IAM&#x30E6;&#x30FC;&#x30B6;</h3>
 <h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30FC;&#x7BA1;&#x7406;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30FC;&#x30EB;</h4>
@@ -3970,7 +4051,7 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
   <span class="token property">value</span> <span class="token punctuation">=</span> aws_iam_service_linked_role.ecs_service_auto_scaling.arn
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Application Auto Scaling&#x306B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;</p>
+<p>Application Auto Scaling&#x306B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3059;&#x308B;&#xFF0E;&#x624B;&#x52D5;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x304C;&#xFF0C;Terraform&#x306E;&#x7BA1;&#x7406;&#x5916;&#x3067;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30A2;&#x30BF;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3042;&#x3048;&#x3066;&#x59A5;&#x5354;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
 <span class="token comment"># Application Auto Scaling For ECS</span>
 <span class="token comment">#########################################</span>
@@ -3987,232 +4068,156 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 </code></pre>
 <p><br></p>
 <h3 id="lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;"><a name="lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;" class="plugin-anchor" href="#lb&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;"><i class="fa fa-link" aria-hidden="true"></i></a>LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3068;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</h3>
-<h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;nlb&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;&#xFF08;NLB&#x306E;&#x5834;&#x5408;&#xFF09;</h4>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
 <span class="token comment"># NLB target group</span>
 <span class="token comment">###############################################</span>
 <span class="token keyword">resource <span class="token type variable">&quot;aws_lb_target_group&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
-  <span class="token comment"># &#x540D;&#x524D;</span>
-  <span class="token property">name</span> <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-nlb-tg&quot;</span>
-
-  <span class="token comment"># &#x30DD;&#x30FC;&#x30C8;</span>
-  <span class="token property">port</span> <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
-
-  <span class="token comment"># &#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;</span>
-  <span class="token property">protocol</span> <span class="token punctuation">=</span> <span class="token string">&quot;TCP&quot;</span>
-
-  <span class="token comment"># VPC</span>
-  <span class="token property">vpc_id</span> <span class="token punctuation">=</span> var.vpc_id
-
-  <span class="token comment"># &#x9045;&#x5EF6;&#x767B;&#x9332;&#x6642;&#x9593;</span>
+  <span class="token property">name</span>                 <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-nlb-tg&quot;</span>
+  <span class="token property">port</span>                 <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
+  <span class="token property">protocol</span>             <span class="token punctuation">=</span> <span class="token string">&quot;TCP&quot;</span>
+  <span class="token property">vpc_id</span>               <span class="token punctuation">=</span> var.vpc_id
   <span class="token property">deregistration_delay</span> <span class="token punctuation">=</span> <span class="token string">&quot;60&quot;</span>
+  <span class="token property">target_type</span>          <span class="token punctuation">=</span> <span class="token string">&quot;ip&quot;</span>
 
-  <span class="token comment"># &#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x306E;&#x30BF;&#x30A4;&#x30D7;</span>
-  <span class="token property">target_type</span> <span class="token punctuation">=</span> <span class="token string">&quot;ip&quot;</span>
-
-  <span class="token comment"># &#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8; &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
+  <span class="token comment"># &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF11;&#xFF09;</span>
   <span class="token property">slow_start</span> <span class="token punctuation">=</span> <span class="token string">&quot;0&quot;</span>
 
-  <span class="token comment"># &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF; &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
+  <span class="token comment"># &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF12;&#xFF09;</span>
   <span class="token keyword">health_check</span> <span class="token punctuation">{</span>
     <span class="token property">protocol</span>          <span class="token punctuation">=</span> <span class="token string">&quot;HTTP&quot;</span>
     <span class="token property">healthy_threshold</span> <span class="token punctuation">=</span> <span class="token number">3</span>
-    <span class="token comment"># &#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;HTTP&#x307E;&#x305F;&#x306F;HTTPS&#x306E;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
-    <span class="token property">path</span> <span class="token punctuation">=</span> <span class="token string">&quot;/healthcheck&quot;</span>
+    <span class="token property">path</span>              <span class="token punctuation">=</span> <span class="token string">&quot;/healthcheck&quot;</span>
   <span class="token punctuation">}</span>
 
-  <span class="token comment"># &#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9; &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
-  <span class="token comment"># stickiness {</span>
-  <span class="token comment">#  type = &quot;&quot;</span>
-  <span class="token comment"># }</span>
+  <span class="token comment"># stickiness &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF08;&#xFF13;&#xFF09;</span>
+  <span class="token comment"># https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness</span>
 
   <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
     <span class="token property">create_before_destroy</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><a name="&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</h4>
+<h4 id="&#xFF08;&#xFF11;&#xFF09;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><a name="&#xFF08;&#xFF11;&#xFF09;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;NLB&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;</h4>
+<p>NLB&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#xFF12;&#xFF09;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;"><a name="&#xFF08;&#xFF12;&#xFF09;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;" class="plugin-anchor" href="#&#xFF08;&#xFF12;&#xFF09;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF12;&#xFF09;NLB&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;</h4>
+<p>&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x8EE2;&#x9001;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;TCP&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3044;&#x304F;&#x3064;&#x304B;&#x3042;&#x308B;&#xFF0E;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;HTTP&#x307E;&#x305F;&#x306F;HTTPS&#x306E;&#x6642;&#x306E;&#x307F;&#xFF0C;&#x30D1;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check</a></p>
+<h4 id="&#xFF08;&#xFF13;&#xFF09;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;"><a name="&#xFF08;&#xFF13;&#xFF09;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;" class="plugin-anchor" href="#&#xFF08;&#xFF13;&#xFF09;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF13;&#xFF09;NLB&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;</h4>
+<p>&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30CD;&#x30B9;&#x6A5F;&#x80FD;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;AWS&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x6642;&#x306B;&#x554F;&#x984C;&#x304C;&#x8D77;&#x3053;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30EA;&#x30F3;&#x30AF;&#x5148;&#x306E;NOTE&#x6587;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness</a></p>
+<h4 id="&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><a name="&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;" class="plugin-anchor" href="#&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#x203B;&#xFF09;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</h4>
 <p>LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x304C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;&#x304C;&#xFF0C;Terraform&#x304C;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x524A;&#x9664;&#x6642;&#x306B;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x5148;&#x306B;&#x524A;&#x9664;&#x3057;&#x3088;&#x3046;&#x3068;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">Error deleting Target Group: ResourceInUse: Target group <span class="token string">&apos;arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/xxxxx-tg/xxxxx&apos;</span> is currently <span class="token keyword">in</span> use by a listener or a rule
     status code: <span class="token number">400</span>, request id: xxxxx
 </code></pre>
 <p>&#x3053;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;LB&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x3092;&#x524A;&#x9664;&#x3057;&#x305F;&#x3046;&#x3048;&#x3067;&#xFF0C;&#x3082;&#x3046;&#x4E00;&#x5EA6;apply&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529</a></p>
-<h4 id="&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><a name="&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;" class="plugin-anchor" href="#&#x30FB;nlb&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;NLB&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;</h4>
-<p>NLB&#x306B;&#x7D10;&#x3065;&#x304F;&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306F;&#x30B9;&#x30ED;&#x30FC;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x306B;&#x975E;&#x5BFE;&#x5FDC;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;"><a name="&#x30FB;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;nlb&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;NLB&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x306B;&#x306F;&#x8A2D;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x9805;&#x76EE;&#x304C;&#x5C11;&#x306A;&#x3044;</h4>
-<p>&#x30BF;&#x30FC;&#x30B2;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306E;&#x8EE2;&#x9001;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x304C;TCP&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x30D8;&#x30EB;&#x30B9;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3044;&#x304F;&#x3064;&#x304B;&#x3042;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check</a></p>
-<h4 id="&#x30FB;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;"><a name="&#x30FB;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;" class="plugin-anchor" href="#&#x30FB;nlb&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;NLB&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AD;&#x30FC;&#x30CD;&#x30B9;&#x306F;&#x660E;&#x793A;&#x7684;&#x306B;&#x7121;&#x52B9;&#x5316;</h4>
-<p>stickiness&#x6A5F;&#x80FD;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;AWS&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x6642;&#x306B;&#x554F;&#x984C;&#x304C;&#x8D77;&#x3053;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30EA;&#x30F3;&#x30AF;&#x5148;&#x306E;NOTE&#x6587;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness" target="_blank">https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness</a></p>
 <p><br></p>
 <h3 id="rds"><a name="rds" class="plugin-anchor" href="#rds"><i class="fa fa-link" aria-hidden="true"></i></a>RDS</h3>
-<h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
 <span class="token comment"># RDS Cluster</span>
 <span class="token comment">#########################################</span>
 <span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
-  <span class="token comment"># &#x30A8;&#x30F3;&#x30B8;&#x30F3;</span>
-  <span class="token property">engine</span> <span class="token punctuation">=</span> <span class="token string">&quot;aurora-mysql&quot;</span>
+  <span class="token property">engine</span>                          <span class="token punctuation">=</span> <span class="token string">&quot;aurora-mysql&quot;</span>
+  <span class="token property">engine_version</span>                  <span class="token punctuation">=</span> <span class="token string">&quot;5.7.mysql_aurora.2.08.3&quot;</span>
+  <span class="token property">cluster_identifier</span>              <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-rds-cluster&quot;</span>
 
-  <span class="token comment"># &#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</span>
-  <span class="token property">engine_version</span> <span class="token punctuation">=</span> <span class="token string">&quot;5.7.mysql_aurora.2.08.3&quot;</span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">master_username</span>                 <span class="token punctuation">=</span> var.rds_db_master_username_ssm_parameter_value
+  <span class="token property">master_password</span>                 <span class="token punctuation">=</span> var.rds_db_master_password_ssm_parameter_value
+  <span class="token property">port</span>                            <span class="token punctuation">=</span> var.rds_db_port_ssm_parameter_value
+  <span class="token property">database_name</span>                   <span class="token punctuation">=</span> var.rds_db_name_ssm_parameter_value
 
-  <span class="token comment"># &#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x540D;</span>
-  <span class="token property">cluster_identifier</span> <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-rds-cluster&quot;</span>
-
-  <span class="token comment"># &#x30DE;&#x30B9;&#x30BF;&#x30FC;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#xFF0E;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x63A8;&#x5968;&#xFF0E;</span>
-  <span class="token property">master_username</span> <span class="token punctuation">=</span> var.rds_db_username_ssm_parameter_value
-
-  <span class="token comment"># &#x30DE;&#x30B9;&#x30BF;&#x30FC;&#x30E6;&#x30FC;&#x30B6;&#x30D1;&#x30B9;&#xFF0E;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x63A8;&#x5968;&#xFF0E;</span>
-  <span class="token property">master_password</span> <span class="token punctuation">=</span> var.rds_db_password_ssm_parameter_value
-
-  <span class="token comment"># AZ&#xFF0E;&#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
-  <span class="token property">availability_zones</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>a<span class="token punctuation">}</span></span>&quot;</span>, <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>c<span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">]</span>
-
-  <span class="token comment"># &#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</span>
-  <span class="token property">vpc_security_group_ids</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>var.rds_security_group_id<span class="token punctuation">]</span>
-
-  <span class="token comment"># &#x30B5;&#x30D6;&#x30CD;&#x30C3;&#x30C8;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</span>
-  <span class="token property">db_subnet_group_name</span> <span class="token punctuation">=</span> aws_db_subnet_group.this.name
-
-  <span class="token comment"># &#x30DD;&#x30FC;&#x30C8;&#xFF0E;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x63A8;&#x5968;&#xFF0E;</span>
-  <span class="token property">port</span> <span class="token punctuation">=</span> var.rds_db_port_ssm_parameter_value
-
-  <span class="token comment"># &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x540D;&#xFF0E;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x63A8;&#x5968;&#xFF0E;</span>
-  <span class="token property">database_name</span> <span class="token punctuation">=</span> var.rds_db_name_ssm_parameter_value
-
-  <span class="token comment"># &#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</span>
+  <span class="token property">vpc_security_group_ids</span>          <span class="token punctuation">=</span> <span class="token punctuation">[</span>var.rds_security_group_id<span class="token punctuation">]</span>
+  <span class="token property">db_subnet_group_name</span>            <span class="token punctuation">=</span> aws_db_subnet_group.this.name
   <span class="token property">db_cluster_parameter_group_name</span> <span class="token punctuation">=</span> aws_rds_cluster_parameter_group.this.id
-
   <span class="token property">storage_encrypted</span>               <span class="token punctuation">=</span> <span class="token boolean">true</span>
   <span class="token property">backup_retention_period</span>         <span class="token punctuation">=</span> <span class="token number">7</span>
-
-  <span class="token comment"># &#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306E;&#x6642;&#x9593;&#xFF0E;&#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
-  <span class="token property">preferred_backup_window</span>         <span class="token punctuation">=</span> <span class="token string">&quot;19:00-19:30&quot;</span>
-
+  <span class="token property">preferred_backup_window</span>         <span class="token punctuation">=</span> <span class="token string">&quot;00:00-00:30&quot;</span>
   <span class="token property">copy_tags_to_snapshot</span>           <span class="token punctuation">=</span> <span class="token boolean">true</span>
   <span class="token property">final_snapshot_identifier</span>       <span class="token punctuation">=</span> <span class="token string">&quot;final-db-snapshot&quot;</span>
   <span class="token property">skip_final_snapshot</span>             <span class="token punctuation">=</span> <span class="token boolean">false</span>
   <span class="token property">enabled_cloudwatch_logs_exports</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;audit&quot;</span>, <span class="token string">&quot;error&quot;</span>, <span class="token string">&quot;general&quot;</span>, <span class="token string">&quot;slowquery&quot;</span><span class="token punctuation">]</span>
+  <span class="token property">preferred_maintenance_window</span>    <span class="token punctuation">=</span> <span class="token string">&quot;sun:01:00-sun:01:30&quot;</span>
 
-  <span class="token comment"># &#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306E;&#x6642;&#x9593;</span>
-  <span class="token property">preferred_maintenance_window</span>    <span class="token punctuation">=</span> <span class="token string">&quot;sun:17:30-sun:18:00&quot;</span>
-
-  <span class="token comment"># apply&#x6642;&#x306B;&#xFF0C;&#x3059;&#x3050;&#x306B;&#x9069;&#x7528;&#x3059;&#x308B;&#x304B;&#xFF0C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x304B;&#xFF0E;&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF12;&#xFF09;</span>
   <span class="token property">apply_immediately</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
 
-  <span class="token comment"># &#x8AA4;&#x3063;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;  </span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF13;&#xFF09;</span>
+  <span class="token property">availability_zones</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>a<span class="token punctuation">}</span></span>&quot;</span>, <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>c<span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">]</span>
+
   <span class="token property">deletion_protection</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
 
   <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
     <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
-      <span class="token comment"># &#x203B;&#x5F8C;&#x8FF0;&#x306E;&#x88DC;&#x8DB3;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;</span>
+      <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF14;&#xFF09;</span>
       availability_zones
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
+
+<span class="token comment">###############################################</span>
 <span class="token comment"># RDS Cluster Instance</span>
-<span class="token comment">#########################################</span>
+<span class="token comment">###############################################</span>
 <span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster_instance&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
   <span class="token property">for_each</span> <span class="token punctuation">=</span> var.vpc_availability_zones
 
   <span class="token property">engine</span>                       <span class="token punctuation">=</span> <span class="token string">&quot;aurora-mysql&quot;</span>
   <span class="token property">engine_version</span>               <span class="token punctuation">=</span> <span class="token string">&quot;5.7.mysql_aurora.2.08.3&quot;</span>
   <span class="token property">identifier</span>                   <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-rds-instance-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span>each<span class="token punctuation">.</span>key<span class="token punctuation">}</span></span>&quot;</span>
-  <span class="token property">cluster_identifier</span>           <span class="token punctuation">=</span> aws_rds_cluster.rds_cluster.id
+  <span class="token property">cluster_identifier</span>           <span class="token punctuation">=</span> aws_rds_cluster.this.id
   <span class="token property">instance_class</span>               <span class="token punctuation">=</span> var.rds_instance_class
   <span class="token property">db_subnet_group_name</span>         <span class="token punctuation">=</span> aws_db_subnet_group.this.id
   <span class="token property">db_parameter_group_name</span>      <span class="token punctuation">=</span> aws_db_parameter_group.this.id
   <span class="token property">monitoring_interval</span>          <span class="token punctuation">=</span> <span class="token number">60</span>
   <span class="token property">monitoring_role_arn</span>          <span class="token punctuation">=</span> var.rds_iam_role_arn
-  <span class="token property">auto_minor_version_upgrade</span>   <span class="token punctuation">=</span> <span class="token boolean">false</span>
-  <span class="token property">preferred_maintenance_window</span> <span class="token punctuation">=</span> <span class="token string">&quot;sun:17:00-sun:17:30&quot;</span>
+  <span class="token property">auto_minor_version_upgrade</span>   <span class="token punctuation">=</span> var.rds_auto_minor_version_upgrade
+  <span class="token property">preferred_maintenance_window</span> <span class="token punctuation">=</span> <span class="token string">&quot;sun:01:00-sun:01:30&quot;</span>
   <span class="token property">apply_immediately</span>            <span class="token punctuation">=</span> <span class="token boolean">true</span>
+
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF15;&#xFF09;</span>
+  <span class="token comment"># preferred_backup_window</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;"><a name="&#x30FB;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;" class="plugin-anchor" href="#&#x30FB;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;</h4>
+<h4 id="&#xFF08;&#xFF11;&#xFF09;ssm&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;"><a name="&#xFF08;&#xFF11;&#xFF09;ssm&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;ssm&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;</h4>
+<p>Terraform&#x306B;&#x5024;&#x3092;&#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x304F;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;SSM&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x5024;&#x3092;&#x7BA1;&#x7406;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#xFF12;&#xFF09;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;"><a name="&#xFF08;&#xFF12;&#xFF09;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;" class="plugin-anchor" href="#&#xFF08;&#xFF12;&#xFF09;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF12;&#xFF09;&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306B;&#x5909;&#x66F4;&#x9069;&#x7528;</h4>
 <p>&#x30E1;&#x30F3;&#x30C6;&#x30CA;&#x30F3;&#x30B9;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x6642;&#x306E;&#x5909;&#x66F4;&#x9069;&#x7528;&#x3092;Terraform&#x3067;&#x884C;&#x3046;&#x5834;&#x5408;&#xFF0C;&#x4E00;&#x6BB5;&#x968E;&#x76EE;&#x306B;<code>apply_immediately</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;<code>false</code>&#x306B;&#x5909;&#x66F4;&#x3057;&#x3066;apply&#x3057;&#xFF0C;&#x4E8C;&#x6BB5;&#x968E;&#x76EE;&#x306B;&#x4FEE;&#x6B63;&#x3092;apply&#x3059;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><a name="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;" class="plugin-anchor" href="#&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;AZ&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;</h4>
+<h4 id="&#xFF08;&#xFF13;&#xFF09;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><a name="&#xFF08;&#xFF13;&#xFF09;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;" class="plugin-anchor" href="#&#xFF08;&#xFF13;&#xFF09;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;az&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF13;&#xFF09;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;&#x306F;AZ&#x304C;&#xFF13;&#x3064;&#x5FC5;&#x8981;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x3067;&#x306F;&#xFF0C;&#x30EC;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306B;&#xFF0C;&#xFF13;&#x3064;&#x306E;AZ&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;AZ&#x304C;&#xFF12;&#x3064;&#x3067;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#xFF13;&#x3064;&#x306E;AZ&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;Terraform&#x304C;&#x3053;&#x308C;&#x3092;&#x8A8D;&#x8B58;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;<code>ignore_changes</code>&#x3067;AZ&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<p><a href="https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633</a></p>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
-<span class="token comment"># RDS Cluster</span>
-<span class="token comment">#########################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster&quot;</span></span> <span class="token string">&quot;rds_cluster&quot;</span> <span class="token punctuation">{</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-  <span class="token property">availability_zones</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>a<span class="token punctuation">}</span></span>&quot;</span>, <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">region</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">vpc_availability_zones</span><span class="token punctuation">.</span>c<span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">]</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
-    <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
-      availability_zones
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;</h4>
-<p>&#x4E8B;&#x524D;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;AZ&#x3092;&#x8868;&#x3059;&#x8B58;&#x5225;&#x5B50;&#x3092;&#x5165;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;Terraform&#x306F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x3092;&#x9078;&#x3079;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;AZ&#x3068;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x95A2;&#x4FC2;&#x304C;&#x9006;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x5F8C;&#x306B;&#x624B;&#x52D5;&#x3067;&#x540D;&#x524D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308C;&#x3070;&#x3088;&#x3044;&#xFF0E;&#x3053;&#x306E;&#x5909;&#x66F4;&#x306F;&#xFF0C;Terraform&#x304C;&#x5DEE;&#x5206;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3057;&#x306A;&#x3044;&#x306E;&#x3067;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633</a></li>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/1111" target="_blank">https://github.com/hashicorp/terraform-provider-aws/issues/1111</a></li>
+</ul>
+<h4 id="&#xFF08;&#xFF14;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><a name="&#xFF08;&#xFF14;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;" class="plugin-anchor" href="#&#xFF08;&#xFF14;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;az&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF14;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x306F;&#x9078;&#x3079;&#x306A;&#x3044;</h4>
+<p>&#x4E8B;&#x524D;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;AZ&#x3092;&#x8868;&#x3059;&#x8B58;&#x5225;&#x5B50;&#x3092;&#x5165;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;Terraform&#x306F;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;AZ&#x3092;&#x9078;&#x3079;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;AZ&#x3068;&#x8B58;&#x5225;&#x5B50;&#x306E;&#x95A2;&#x4FC2;&#x304C;&#x9006;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x591A;&#x304F;&#x306E;&#x5834;&#x5408;&#xFF0C; C&#x30BE;&#x30FC;&#x30F3;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304C;&#x6700;&#x521D;&#x306B;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x30BE;&#x30FC;&#x30F3;&#x540D;&#x3068;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;A/C&#x30BE;&#x30FC;&#x30F3;&#x304C;&#x9006;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x5F8C;&#x306B;&#x624B;&#x52D5;&#x3067;&#x540D;&#x524D;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308C;&#x3070;&#x3088;&#x3044;&#xFF0E;&#x3053;&#x306E;&#x5909;&#x66F4;&#x306F;&#xFF0C;Terraform&#x304C;&#x5DEE;&#x5206;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3057;&#x306A;&#x3044;&#x306E;&#x3067;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+<h4 id="&#xFF08;&#xFF15;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><a name="&#xFF08;&#xFF15;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;" class="plugin-anchor" href="#&#xFF08;&#xFF15;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF15;&#xFF09;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30A6;&#x30A4;&#x30F3;&#x30C9;&#x30A6;&#x306F;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</h4>
 <p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x3068;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x4E21;&#x65B9;&#x306B;&#xFF0C;<code>preferred_backup_window</code>&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;RDS&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x306F;&#x3044;&#x3051;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
-<span class="token comment"># RDS Cluster</span>
-<span class="token comment">#########################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster_instance&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-  <span class="token property">preferred_backup_window</span> <span class="token punctuation">=</span> <span class="token string">&quot;19:00-19:30&quot;</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">#########################################</span>
-<span class="token comment"># RDS Cluster Instance</span>
-<span class="token comment">#########################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_rds_cluster&quot;</span></span> <span class="token string">&quot;rds_cluster&quot;</span> <span class="token punctuation">{</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-  <span class="token comment"># preferred_backup_window = &quot;19:00-19:30&quot; # &#x203B;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;</span>
-
-  <span class="token comment"># &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
 <p><br></p>
 <h3 id="route53"><a name="route53" class="plugin-anchor" href="#route53"><i class="fa fa-link" aria-hidden="true"></i></a>Route53</h3>
-<h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
+<h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># For api domain</span>
+<span class="token comment"># For example domain</span>
 <span class="token comment">###############################################</span>
 <span class="token keyword">resource <span class="token type variable">&quot;aws_route53_zone&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
-  <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x30BE;&#x30FC;&#x30F3;</span>
   <span class="token property">name</span> <span class="token punctuation">=</span> var.route53_domain_example
 <span class="token punctuation">}</span>
 
 <span class="token keyword">resource <span class="token type variable">&quot;aws_route53_record&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
-  <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x30BE;&#x30FC;&#x30F3;ID</span>
   <span class="token property">zone_id</span> <span class="token punctuation">=</span> aws_route53_zone.example.id
-
-  <span class="token comment"># &#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x540D;</span>
   <span class="token property">name</span>    <span class="token punctuation">=</span> var.route53_domain_example
-
-  <span class="token comment"># &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x30BF;&#x30A4;&#x30D7;</span>
   <span class="token property">type</span>    <span class="token punctuation">=</span> <span class="token string">&quot;A&quot;</span>
 
-  <span class="token comment"># &#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;DNS&#x60C5;&#x5831;&#xFF08;&#x3053;&#x3053;&#x3067;&#x306F;ALB&#x3068;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF09;</span>
   <span class="token keyword">alias</span> <span class="token punctuation">{</span>
     <span class="token property">name</span>                   <span class="token punctuation">=</span> var.alb_dns_name
     <span class="token property">zone_id</span>                <span class="token punctuation">=</span> var.alb_zone_id
-    <span class="token property">evaluate_target_health</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+    <span class="token property">evaluate_target_health</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -4567,7 +4572,7 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <tr>
 <td>IAM&#x30ED;&#x30FC;&#x30EB;</td>
 <td>&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30ED;&#x30FC;&#x30EB;<br>&#x30FB;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;</td>
-<td>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x306B;&#x4F34;&#x3063;&#x3066;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;Terraform&#x3067;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
+<td>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EA;&#x30F3;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x306F;&#xFF0C;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x306B;&#x4F34;&#x3063;&#x3066;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x4F5C;&#x3089;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;Terraform&#x3067;&#x7BA1;&#x7406;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x6570;&#x304C;&#x591A;&#x3044;&#x305F;&#x3081;&#x3042;&#x3048;&#x3066;&#x884C;&#x308F;&#x306A;&#x3044;&#x304C;&#xFF0C;Terraform&#x3067;&#x69CB;&#x7BC9;&#x3057;&#x3066;AWS&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x95A2;&#x9023;&#x4ED8;&#x3051;&#x308B;&#x3053;&#x3068;&#x3082;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>Network Interface</td>
@@ -5080,7 +5085,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-06-22T02:22:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-22T11:49:47.836Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-06-24T17:32:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-24T18:08:16.310Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
