@@ -28,21 +28,21 @@
 
 ### クラス図
 
-#### ・インスタンス間の関係性を表す図
+#### ・データとして保持する関係性
 
-Association（関連），Aggregation（集約），Composition（合成）が用いられる．詳しくは，以降の説明を参照せよ．
+Association（関連），Aggregation（集約），Composition（合成）が用いられる．詳しくは，後述の説明を参照せよ．
 
 ![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
 
-#### ・クラス間の関係性を表す図
+#### ・親子の関係性
 
-Generalization（汎化），Realization（実現）が用いられる．詳しくは，以降の説明を参照せよ．
+Generalization（汎化），Realization（実現）が用いられる．詳しくは，後述の説明を参照せよ．
 
 ![クラス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間の関係性のクラス図.png)
 
-#### ・クラス間，インスタンス間，クラス／インスタンス間の関係性を表す図
+#### ・引数型／返却値型と使用する関係性
 
-Dependency（依存）が用いられる．詳しくは，以降の説明を参照せよ．
+Dependency（依存）が用いられる．詳しくは，後述の説明を参照せよ．
 
 ![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
 
@@ -52,7 +52,7 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 #### ・多重度とは
 
-クラスと別のクラスが，何個と何個で関係しているかを表記する方法．
+クラス間が，何個と何個で関係しているかを表記する方法．
 
 **＊具体例＊**
 
@@ -75,18 +75,20 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 【 営業部エンティティ 】
 
-◁ー【 1課エンティティ 】
+```
 
-◁ー【 2課エンティティ 】
+<-【 1課エンティティ 】
 
-◁ー【 3課エンティティ 】
+<-【 2課エンティティ 】
 
+<-【 3課エンティティ 】
 
+```
 
 親エンティティなし
-
-◁ー【 経営企画課エンティティ 】
-
+```
+<-【 経営企画課エンティティ 】
+```
 
 
 というクラスの継承関係があった時，これを抽象的にまとめると，
@@ -94,9 +96,9 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 
 【 部エンティティ(0.. *) 】
-
-◁ー【 (0.. 1)課エンティティ 】
-
+```
+<-【 (0.. 1)課エンティティ 】
+```
 
 
 部エンティティから見て，対する課エンティティは0個以上である．
@@ -125,11 +127,11 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 <br>
 
-## 03. インスタンス間の関係性
+## 03. データとして保持する関係性
 
 『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．
 
-![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
+![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
 <br>
 
@@ -137,7 +139,11 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 #### ・Associationとは
 
-関係性の種類と問わず，インスタンスを他インスタンスのデータとして保持する関係性は，『関連』である．
+クラスＡがクラスＢをデータとして保持する関係性のこと．引数型／返却値型として使用する『依存』とは区別する．
+
+#### ・Associationの種類
+
+保持される側のクラスのインスタンスが，データとして保持する側のクラスによって生成されるか否かによって，『Aggregation』または『Composition』に分類できる．
 
 <br>
 
@@ -145,32 +151,87 @@ Dependency（依存）が用いられる．詳しくは，以降の説明を参�
 
 #### ・Aggregationとは
 
-インスタンスを他インスタンスの```construct```メソッドやセッターの引数として渡し，データとして保持する関係性は，『集約』である．保持されるインスタンスは，保持するインスタンスによって生成されるわけではなく，それ自体で存在可能である．
+保持される側のクラスのインスタンスが，保持する側のクラスのインスタンスによって生成されずに外側から渡される時，クラス間が『Aggregation』の関係にある．
+
+#### ・例
+
+![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aggregation_example.png)
+
+UserはUserNameをデータとして保持する．
+
+```php
+<?php
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @var UserName 
+     */
+    private UserName $name; // データとして保持
+
+    /**
+     * @param UserName $name
+     */
+    public function __construct(UserName $name)
+    {
+        $this->name = $name;
+    }
+}
+
+```
+
+また，UserNameクラスのインスタンスは，Userクラスによって生成されずに外側から渡される．そのため，UserクラスとUserNameクラスは『Aggregation』の関係にある．
+
+```php
+<?php
+
+$name = new UserName();
+$user = new User($name); // 集約の関係
+```
 
 **＊実装例＊**
 
 ```php
 <?php
-    
-class Tire {}
-```
 
-```php
-<?php
-    
-//CarXクラス定義
-class CarX
+use App\Domain\Car\Entity\Tire1;
+use App\Domain\Car\Entity\Tire2;
+use App\Domain\Car\Entity\Tire3;
+use App\Domain\Car\Entity\Tire4;
+
+class Car
 {
+    /**
+     * @var Tire1
+     */
     private $tire1;
-    
+
+    /**
+     * @var Tire2
+     */
     private $tire2;
-    
+
+    /**
+     * @var Tire3
+     */
     private $tire3;
-    
+
+    /**
+     * @var Tire4
+     */
     private $tire4;
 
-    //CarXクラスがタイヤクラスを引数として扱えるように設定
-    public function __construct(Tire $t1, Tire $t2, Tire $t3, Tire $t4)
+    /**
+     * @param Tire1 $t1
+     * @param Tire2 $t2
+     * @param Tire3 $t3
+     * @param Tire4 $t4
+     */
+    public function __construct(Tire1 $t1, Tire2 $t2, Tire3 $t3, Tire4 $t4)
     {
         // Tireクラスのインスタンスをデータとして保持
         $this->tire1 = $t1;
@@ -181,50 +242,19 @@ class CarX
 }
 ```
 
-```php
-<?php
-    
-//CarYクラス定義
-class CarY
-{
-    private $tire1;
-    
-    private $tire2;
-    
-    private $tire3;
-    
-    private $tire4;
-    
-    //CarYクラスがタイヤクラスを引数として扱えるように設定
-    public function __construct(Tire $t1, Tire $t2, Tire $t3, Tire $t4)
-    {
-        // Tireクラスのインスタンスをデータとして保持．
-        $this->tire1 = $t1;
-        $this->tire2 = $t2;
-        $this->tire3 = $t3;
-        $this->tire4 = $t4;
-    }
-}
-```
-
-以下の様に，Tireクラスのインスタンスを，CarXクラスとCarYクラスの引数として用いている．
+また，Tireクラスのインスタンスは，Carクラスによって生成されずに外側から渡される．そのため，CarクラスとTireクラスは『Aggregation』の関係にある．
 
 ```php
 <?php
     
-//Tireクラスをインスタンス化
-$tire1 = new Tire();
-$tire2 = new Tire();
-$tire3 = new Tire();
-$tire4 = new Tire();
-$tire5 = new Tire();
-$tire6 = new Tire();
+// Tireクラスをインスタンス化
+$tire1 = new Tire1();
+$tire2 = new Tire2();
+$tire3 = new Tire3();
+$tire4 = new Tire4();
 
-//Tireクラスのインスタンスを引数として扱う
-$suv = new CarX($tire1, $tire2, $tire3, $tire4);
-
-//Tireクラスのインスタンスを引数として扱う
-$suv = new CarY($tire1, $tire2, $tire5, $tire6);
+// Tireクラスのインスタンスの生成，Carによって制限されない．
+$car = new Car($tire1, $tire2, $tire3, $tire4);
 ```
 
 <br>
@@ -233,47 +263,87 @@ $suv = new CarY($tire1, $tire2, $tire5, $tire6);
 
 #### ・Compositionとは
 
-インスタンスを，他インスタンスの```constructor```メソッドやセッターの引数として渡すのではなく，クラスの中でインスタンス化し，データとして保持する関係性は，『合成』である．保持されるインスタンスは，保持するインスタンスによって生成されるため，それ自体で存在できない．
+保持される側のクラスのインスタンスが，保持する側のクラスのインスタンスによって生成される時，クラス間が『Composition』の関係にある．
+
+#### ・例
 
 **＊実装例＊**
 
-```php
-<?php
-    
-//Lockクラス定義
-class Lock {}
-```
+![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composition_example.png)
+
+UserクラスはUserNameクラスをデータとして保持する．
 
 ```php
 <?php
-    
-//Carクラスを定義
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @var UserName
+     */
+    private UserName $name; // データとして保持
+
+    /**
+     * @return string
+     */
+    public function method(): string
+    {
+        $name = new UserName(); // 合成の関係
+
+        return "Hello! " . $name->getName();
+    }
+}
+
+```
+
+また，UserNameインスタンスは，Userクラスによって生成される．そのため，UserクラスとUserNameクラスは『Composition』の関係にある．
+
+```php
+<?php
+
+$user = new User();
+```
+
+**＊実装例＊**
+
+CarクラスはLockクラスをデータとして保持する．
+
+```php
+<?php
+
 class Car
 {
+    /**
+     * @var Lock 
+     */
     private $lock;
-    
+
     public function __construct()
     {
-        // 引数Lockクラスをインスタンス化
-        // Tireクラスのインスタンスをデータとして保持．
+        // Lockクラスのインスタンスをデータとして保持．
         $this->lock = new Lock();
     }
 }
 ```
 
-以下の様に，Lockインスタンスは，Carクラスの中で定義されているため，Lockインスタンスにはアクセスできない．また，Carクラスが起動しなければ，Lockインスタンスは起動できない．さらに，Carクラスが削除されれば，Lockクラスも削除される．このように，LockインスタンスからCarクラスの方向には，Compositionの関係性がある．
+また，Lockクラスのインスタンスは，Carクラスによって生成される．そのため，CarクラスとLockクラスは『Composition』の関係にある．
 
 ```php
 <?php
+    
 // Carクラスのインスタンスの中で，Lockクラスがインスタンス化される．
 $car = new Car();
 ```
 
 <br>
 
-## 04. クラス間の関係性
+## 04. 親子の関係性
 
-![クラス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間の関係性のクラス図.png)
+![親子の関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子の関係性.png)
 
 ### Generalization（汎化）
 
@@ -713,8 +783,6 @@ trait UnsupportedMagicMethodTrait
 
 参考：https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
 
-
-
 <br>
 
 ## 04-04. 外部ファイルの読み込み
@@ -869,33 +937,48 @@ class Example2
 
 <br>
 
-## 05. クラス間，インスタンス間，クラス／インスタンス間の関係性
+## 05. 引数型／返却値型として使用する関係性
 
 ###  Dependency（依存）
 
 #### ・Dependencyとは
 
-クラス間，インスタンス間，クラス／インスタンス間について，依存される側が変更された場合に，依存する側で変更が起きる関係性は，『依存』である．Association，Aggregation，Compositionの関係性と，さらにデータをクラス／インスタンス内に保持しない以下の場合も含む．
+![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
 
-![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
+クラスＡがクラスＢを引数型／返却値型として使用する関係性のこと．
 
-#### ・クラス間の場合
-
-Generalizatoin，Realizationの関係性．
-
-#### ・インスタンス間の場合
-
-この場合，依存する側をクライアント，依存される側をサプライヤーという．クライアント側はサプライヤー側をデータとして保持する．Association，Aggregation，Compositionの関係性．
-
-#### ・クラス／インスタンス間の場合
-
-この場合，依存する側をクライアント，依存される側をサプライヤーという．クライアント側はサプライヤー側をデータとして保持しない．サプライヤー側を読みこみ，メソッドの処理の中で，『一時的に』サプライヤー側のインスタンスを使用するような関係性．例えば，Controllerのメソッドが，ServiceやValidatorのインスタンスを使用する場合がある．
-
-参照リンク：
+参考：
 
 - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
-
 - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
+
+#### ・例
+
+**＊実装例＊**
+
+![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dependency_example.png)
+
+UserはUserNameを引数として使用する．UserはUserNameに依存している．
+
+```php
+<?php
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @param UserName $name
+     * @return string
+     */
+    public function method(UserName $name): string // 依存の関係
+    {
+        return "Hello! " . $name->getName();
+    }
+}
+```
 
 <br>
 
@@ -1048,7 +1131,7 @@ class ModuleB
 
 #### ・DIとは
 
-サプライヤー側の『インスタンス』を，クライアント側のインスタンスの外部から注入する実装方法．『依存性注入』と訳すのは混乱を招くため，『依存オブジェクト注入』と訳すようにする．
+サプライヤー側（依存対象）の『インスタンス』を，クライアント側のインスタンスの外部から『引数として』注入する実装方法．『依存性注入』と訳すのは混乱を招くため，『依存オブジェクト注入』と訳すようにする．
 
 参考：
 
@@ -1057,20 +1140,63 @@ class ModuleB
 
 #### ・Constructor Injectionとは
 
-メソッドの特に，```construct```メソッド の引数から，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．Constructor Injectionのみが，```construct```メソッド によって，インスタンス作成のために依存関係の要件を強制できる．そのため，インジェクションの中で，システムの安全性のために最も優れている．
+メソッドの特に，```construct```メソッド の引数として，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．Constructor Injectionのみが，```construct```メソッド によって，インスタンス作成のために依存関係の要件を強制できる．また，セッターを完全になくした場合に，インスタンス生成後にオブジェクトの状態を変更不可能になる．そのため，ビジネス上ありえないオブジェクトを生成できなくなり，インジェクションの中で，システムの安全性のために最も優れている．
+
+**＊実装例＊**
+
+依存対象のSupplierクラスを，```construct```メソッドの引数として，Clientクラスに注入する．
 
 ```php
 <?php
 
 $supplier = new Supplier();
     
-// ClientクラスはSuppierクラスに依存している．
+// 依存されるSupplierクラスをClientクラス
 $client = new Client($supplier); 
+```
+
+**＊実装例＊**
+
+依存対象のUserNameクラスを，```construct```メソッドの引数として，Userクラスに注入する．
+
+```php
+<?php
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @var UserName 
+     */
+    private UserName $name;
+
+    /**
+     * @param UserName $name
+     */
+    public function __construct(UserName $name)
+    {
+        $this->name = $name;
+    }
+}
+```
+
+```php
+<?php
+
+$name = new UserName();
+$user = new User($name); // インジェクション
 ```
 
 #### ・Setter Injectionとは
 
-メソッドの特に，セッターの引数から，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．
+メソッドの特に，セッターの引数として，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持させ，Aggregationの関係性を作ることができる．
+
+**＊実装例＊**
+
+依存対象のSupplierクラスを，セッターの引数として，Clientクラスに注入する．
 
 ```php
 <?php
@@ -1082,9 +1208,78 @@ $client = new Client();
 $client->setSupplier($supplier)
 ```
 
+**＊実装例＊**
+
+依存対象のUserNameクラスを，セッターの引数として，Userクラスに注入する．
+
+```php
+<?php
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @var UserName 
+     */
+    private UserName $name;
+
+    /**
+     * @param UserName $name
+     */
+    public function setUserName(UserName $name)
+    {
+        $this->name = $name;
+    }
+}
+```
+
+```php
+<?php
+
+$user = new User();
+$name = new UserName();
+$user->setUserName($name); // インジェクション
+```
+
 #### ・Method Injectionとは
 
-上記二つ以外のメソッドの引数から，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持せず，読み込んでメソッドを使用する．
+上記二つ以外のメソッドの引数として，サプライヤー側のインスタンスを注入する方法．サプライヤー側をデータとして保持せず，読み込んでメソッドを使用する．
+
+**＊実装例＊**
+
+依存対象のUserNameクラスを，メソッドの引数として，Userクラスに注入する．
+
+```php
+<?php
+
+namespace App\Domain\User\Entity;
+
+use App\Domain\User\ValueObject\UserName;
+
+final class User
+{
+    /**
+     * @param UserName $name
+     */
+    public function method(UserName $name)
+    {
+        $name = $name->getName();
+
+        // 何らかの処理
+    }
+}
+```
+
+```php
+<?php
+
+$user = new User();
+$name = new UserName();
+$user->method($name); // インジェクション
+```
 
 <br>
 
@@ -1092,7 +1287,7 @@ $client->setSupplier($supplier)
 
 #### ・DI Container（依存オブジェクト注入コンテナ），Service Containerとは
 
-インスタンス生成とそれに伴う依存オブジェクト注入を一括で行うデザインパターンを『Service Container』という．あらかじめクラスを登録（バインド）しておき，必要な時にインスタンスを生成（リゾルブ）してくれる．
+依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という．あらかじめクラスを登録（バインド）しておき，必要な時にインスタンスを生成（リゾルブ）してくれる．
 
 **＊実装例＊**
 
@@ -1100,28 +1295,26 @@ Pimpleライブラリを使用した場合
 
 ```php
 <?php
-    
+
 use Pimple\Container;
-use XxxLogger;
-use YyyNotification;
+use App\Domain\User\Entity\User;
+use App\Domain\User\ValueObject\UserName;
 
 class Container
 {
+    /**
+     * 
+     */
     public function __construct()
     {
-        // XxxLoggerクラスのバインド
-        $container["xxx.logger"] = function ($container) {
-            return new XxxLogger();
+        // UserNameクラスの準備
+        $container["user_name"] = function ($container) {
+            return new UserName("Hiroki");
         };
         
-        // YyyNotificationクラスのバインド
-        $container["yyy.notification"] = function ($container) {
-            return new YyyNotification();
-        };
-        
-        // Sampleクラスのバインド
-        $container["sample"] = function ($container) {
-            return new Sample($container["xxx.logger"], $container["yyy.notification"]);
+        // UserクラスにUserNameクラスを注入
+        $container["user"] = function ($container) {
+            return new User($container["user_name"]);
         };
     }
 }

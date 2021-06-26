@@ -4233,7 +4233,9 @@ $ php artisan make:provider <クラス名>
 
 #### ・ServiceContainer，バインド，リゾルブとは
 
-クラスをバインド（登録）しただけで新しいインスタンスをリゾルブ（生成）してくれるオブジェクトを『ServiceContainer』という．
+ServiceContainer，バインド，リゾルブについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 
 ```php
 <?php
