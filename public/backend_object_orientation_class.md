@@ -32,19 +32,19 @@
 
 Association（関連），Aggregation（集約），Composition（合成）が用いられる．詳しくは，後述の説明を参照せよ．
 
-![インスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インスタンス間の関係性のクラス図.png)
+![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
 #### ・親子の関係性
 
 Generalization（汎化），Realization（実現）が用いられる．詳しくは，後述の説明を参照せよ．
 
-![クラス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間の関係性のクラス図.png)
+![親子の関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子の関係性.png)
 
 #### ・引数型／返却値型と使用する関係性
 
 Dependency（依存）が用いられる．詳しくは，後述の説明を参照せよ．
 
-![クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クラス間，インスタンス間，クラスインスタンス間の関係性のクラス図.png)
+![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
 <br>
 
