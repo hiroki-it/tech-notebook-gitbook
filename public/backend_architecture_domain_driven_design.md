@@ -35,13 +35,7 @@
 
 #### ・戦術的設計の手順
 
-戦術的設計では，境界付けられたコンテキストをアーキテクチャに落とし込む．オブジェクト指向分析／設計／プログラミングについては，以下のリンクを参考にせよ．
-
-参考：
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
+戦術的設計では，境界付けられたコンテキストをアーキテクチャに落とし込む．
 
 1. ドメインエキスパートと話し合い，境界付けられたコンテキストに含まれる要件をヒアリングを行う．この時，ビジネスのルール／制約を十分にヒアリングする．
 2. 要件からユースケース図を作成する．この時，『システムが，〇〇を△△する．』と考えるとよい．
@@ -50,6 +44,16 @@
 5. ドメインモデル図を元に，クラス図を作成する．この時，モデルをエンティティや値オブジェクトを切り分けるようにする．
 6. アーキテクチャ（レイヤード型，ヘキサゴナル型，オニオン型，クリーンアーキテクチャ）を決め，クラス図を元にドメイン層を実装する．
 7. 運用後に問題が起こった場合，モデリングを修正する．
+
+なお，オブジェクト指向分析／設計／プログラミングについては，以下のリンクを参考にせよ．
+
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
+
+1. 
 
 <br>
 
