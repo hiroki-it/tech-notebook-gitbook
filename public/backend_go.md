@@ -153,11 +153,15 @@ Goでは文の処理はセミコロンで区切られる．ただし，セミコ
 
 httpClientであれば，修飾語は『```http```』被修飾語『```client```』である．そのため，レシーバ名または引数名では『```cl```』とする．`
 
-#### ・変数名，引数名
+#### ・一時的な変数名
 
-英単語の頭一文字または頭二文字を取って命名する．ただし，変数や引数が多くなると，その間で重複する可能性があるため，ローワーキャメルケースで命名してもよい．
+英単語の頭一文字，頭二文字，略語，で命名する．これは，実際の処理を強調し，変数を目立たなくするためである．ただし，スコープの大きな変数に省略した名前をつけると，重複する可能性があるため，省略せずにローワーキャメルケースで命名してもよい．
 
 参考：https://github.com/golang/go/wiki/CodeReviewComments#variable-names
+
+省略名については，略語検索サイトで探す．あるいは，Goリファレンスからその単語がどう省略されているかを探してもよい．
+
+参考：https://www.allacronyms.com/
 
 #### ・モックの変数
 
@@ -394,7 +398,7 @@ $ go test -cover ./...
 
 データ型には，値が代入されていない時，初期値が代入されている．
 
-#### ・基本型に属するデータ型
+#### ・プリミティブ型に属するデータ型
 
 | データ型 | 表記                   | 初期値             |
 | -------- | ---------------------- | ------------------ |
@@ -421,9 +425,9 @@ $ go test -cover ./...
 
 <br>
 
-### 基本型のまとめ
+### プリミティブ型のまとめ
 
-####  ・基本型とは
+####  ・プリミティブ型とは
 
 **＊実装例＊**
 
@@ -435,9 +439,9 @@ var number int
 number = 5
 ```
 
-#### ・Defined Typeによる独自の基本型
+#### ・Defined Typeによる独自のプリミティブ型
 
-Defined Typeを使用して，独自の基本型を定義する．元の基本型とは互換性がなくなる．
+Defined Typeを使用して，独自のプリミティブ型を定義する．元のプリミティブ型とは互換性がなくなる．
 
 **＊実装例＊**
 
@@ -455,9 +459,9 @@ type Age int
 type MyAppWriter io.Writer
 ```
 
-#### ・基本型とメモリの関係
+#### ・プリミティブ型とメモリの関係
 
-基本型の変数を定義すると，データ型のバイト数に応じて，空いているメモリ領域に，変数が割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
+プリミティブ型の変数を定義すると，データ型のバイト数に応じて，空いているメモリ領域に，変数が割り当てられる．一つのメモリアドレス当たり１バイトに相当する．
 
 ![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/basic-variable_memory.png)
 
@@ -1189,39 +1193,90 @@ cannot use insect (type Insect) as type Animal in assignment:
 Insect does not implement Animal (missing Eat method)
 ```
 
-#### ・他のデータ型からの変換
+#### ・緩い型としてのインターフェース
 
-様々な値をインターフェース型として定義でき，これらをインターフェースに変換できる．
+様々な値をインターフェース型として定義できる．また，他の型に変換することもできる．
 
 **＊実装例＊**
 
 ```go
-var x interface{}
+package main
 
-x = 1
-x = 3.14
-x = "Hiroki"
-x = [...]unit8{1, 2, 3, 4, 5}
+import (
+	"fmt"
+)
 
-fmt.Printf("%#v\n", x)
-// 1
-// 3.14
-// "Hiroki"
-// [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
+func main() {
+	var x interface{}
+
+	x = 1
+	fmt.Printf("%#v\n", x) // 1
+
+	x = 3.14
+	fmt.Printf("%#v\n", x) // 3.14
+
+	x = "Hiroki"
+	fmt.Printf("%#v\n", x) // "Hiroki"
+
+	x = [...]uint8{1, 2, 3, 4, 5}
+	fmt.Printf("%#v\n", x) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
+}
 ```
 
-なお，インターフェース型データは演算できない．
+なお，インターフェース型はは演算できない．
 
 ```go
-var x, y interface{}
+package main
 
-x,y = 1, 2
+import (
+	"fmt"
+)
 
-// エラーになる．
-z := x + y
+func main() {
+	var x, y interface{}
+
+	// インターフェース型
+	x, y = 1, 2
+	fmt.Printf("%#v\n", x) // 1
+	fmt.Printf("%#v\n", y) // 2
+
+	// エラーになる．
+	// invalid operation: x + y (operator + not defined on interface)
+	z := x + y
+
+	fmt.Printf("%#v\n", z)
+}
 ```
 
-#### ・標準のインターフェース
+#### ・型変換
+
+インターフェース型を他の型に変換する．インターフェース型の変数で『```.(データ型)```』を宣言する．
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var x, y interface{}
+
+	// インターフェース型
+	x, y = 1, 2
+
+	// インターフェース型から整数型に変換（変換しないと演算できない）
+	a := x.(int)
+	b := y.(int)
+	z := a + b
+
+	fmt.Printf("%#v\n", z)
+}
+```
+
+
+
+#### ・標準搭載のインターフェース
 
 Goには，標準搭載されているインターフェースがある．このインターフェースが強制するメソッドを実装した構造体を定義すると，自動的に委譲が行われる．
 

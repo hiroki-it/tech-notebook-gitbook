@@ -43,25 +43,33 @@
 
 <br>
 
-### オブジェクト指向分析で用いるダイアグラム図の種類
+### オブジェクト指向分析／設計で用いるダイアグラム図の種類
+
+![複数視点のモデル化とUML](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/複数視点のモデル化とUML.jpg)
 
 オブジェクト指向分析においては，ダイアグラム図を用いて，オブジェクトを表現することが必要になる．
 
-#### ・機能の視点による分析とは
+#### ・機能の視点による分析／設計とは
 
-システムの機能と処理の流れに注目し，分析する方法．詳しくは，以降の説明を参照せよ．
+システムの機能と処理の流れに注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．
 
-#### ・振舞の視点による分析とは
+#### ・振舞の視点による分析／設計とは
 
-システムを実行する順番やタイミングに注目し，分析する方法．詳しくは，以降の説明を参照せよ．
+システムを実行する順番やタイミングに注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．シーケンス図は設計の段階で使用する．
 
-#### ・構造の視点による分析とは
+参考：
 
-システムの構成要素とそれぞれの関係に注目し，分析する方法．詳しくは，以降の説明を参照せよ．
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
 
-※ただし，UMLにおけるクラス図に関しては設計段階で使用するため，このノートでは説明しない．
+#### ・構造の視点による分析／設計とは
 
-![複数視点のモデル化とUML](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/複数視点のモデル化とUML.jpg)
+システムの構成要素とそれぞれの関係に注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．クラス図は設計の段階で使用する．オブジェクト指向設計については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
 
 <br>
 
@@ -83,13 +91,22 @@
 
 ### DFD：Data Flow Diagram（データフロー図）
 
+#### ・データフロー図とは
+
 ![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データフロー図.jpg)
 
 <br>
 
 ### ユースケース図
 
+#### ・ユースケース図とは
+
 ユーザの要求に対するシステムの振舞のこと．『システムが，〇〇を△△する．』と考えるとよい．
+
+| ユースケース間の関係     | 説明                                                         | 補足                            |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------- |
+| A ```<< invokes >>``` B  | ユースケースAの実行中に、ユースケースBが実行される           | ```<<include>>```と同じである． |
+| A ```<< precedes >>``` B | ユースケースAが先に実行完了してから、ユースケースBが実行される |                                 |
 
 **＊具体例＊**
 
@@ -97,9 +114,15 @@
 
 ![ユースケース図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ユースケース図.png)
 
+#### ・注意点
+
+ユースケース図はシステムの複雑さを表現できないため，設計図としては役に立たない．そのため，ユースケース図は，設計図として作るのではなく，引き継ぎ時に最初に説明するドキュメントや非エンジニアのための資料として作るようにする．設計図としては，クラス図やシステムシーケンス図の方が適している．
+
 <br>
 
 ###  アクティビティ図
+
+#### ・アクティビティ図とは
 
 ビジネスロジックや業務フローを手続き的に表記する方法．
 
@@ -113,7 +136,9 @@
 
 #### ・システムシーケンス図とは
 
-アクターからアクターへの振舞の流れを，時間軸に沿って表記する方法．
+アクターからアクターへの振舞の流れを，時間軸に沿って表記する方法．シーケンス図とは異なる．シーケンス図については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 
 <br>
 
@@ -182,7 +207,7 @@
 
 ## 03. オブジェクト指向設計
 
-以下のノートを参考にせよ．
+以下のリンクを参考にせよ．
 
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
@@ -191,7 +216,7 @@
 
 ## 04. オブジェクト指向プログラミング
 
-以下のノートを参考にせよ．
+以下のリンクを参考にせよ．
 
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
