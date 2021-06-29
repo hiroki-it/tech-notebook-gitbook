@@ -59,7 +59,7 @@ Generalization（汎化），Realization（実現）が用いられる．詳し�
 
 Dependency（依存）が用いられる．詳しくは，後述の説明を参照せよ．
 
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
+![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
 
 <br>
 
@@ -792,7 +792,7 @@ trait UnsupportedMagicMethodTrait
 
 #### ・委譲とは
 
-処理の一部または全てを他のクラスに託すこと．PHPでは，依存オブジェクト注入により集約や合成の関係性を作り，委譲先クラスのメソッドでは委譲元のコールして，処理を追加実装することに相当する．他に，インターフェースでも実現できる．
+処理の一部または全てを他のクラスに託すこと．PHPでは，集約や合成の関係性を作り，委譲先クラスのメソッドでは委譲元のコールして，処理を追加実装することに相当する．他に，インターフェースによるRealizationの関係性でも実現できる．
 
 #### ・継承よりも優れた点
 

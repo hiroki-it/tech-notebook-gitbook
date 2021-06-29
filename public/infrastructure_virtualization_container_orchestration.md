@@ -661,6 +661,22 @@ PHPUnitで接続するデータベースを指定する方法については，�
 
 <br>
 
+## 02-03 コンテナデザインパターン
+
+### サイドカー・パターン
+
+#### ・サイドカー・パターンとは
+
+主となるコンテナと並べて，これを補助するコンテナを配置する．
+
+<br>
+
+### その他
+
+アンバサダー・パターン，アダプター・パターン，
+
+<br>
+
 ## 03. Docker Swarm
 
 ![DockerSwarmの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerSwarmの仕組み.png)
