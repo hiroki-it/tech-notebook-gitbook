@@ -1698,58 +1698,90 @@
 <h2 id="01-laravel&#x306E;&#x5168;&#x4F53;&#x50CF;"><a name="01-laravel&#x306E;&#x5168;&#x4F53;&#x50CF;" class="plugin-anchor" href="#01-laravel&#x306E;&#x5168;&#x4F53;&#x50CF;"><i class="fa fa-link" aria-hidden="true"></i></a>01. Laravel&#x306E;&#x5168;&#x4F53;&#x50CF;</h2>
 <h3 id="&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;"><a name="&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;" class="plugin-anchor" href="#&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;</h3>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/laravel-lifecycle.png" alt="laravel-lifecycle"></p>
+<p>&#x5927;&#x307E;&#x304B;&#x306A;&#x51E6;&#x7406;&#x30D5;&#x30ED;&#x30FC;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/" target="_blank">https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/</a></p>
 <table>
 <thead>
 <tr>
+<th></th>
 <th>&#x7528;&#x8A9E;</th>
 <th>&#x8AAC;&#x660E;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>1</td>
+<td>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
 <td><code>index.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</td>
 <td>&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x51E6;&#x7406;&#x304C;&#x59CB;&#x307E;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>3</td>
 <td>Autoload</td>
-<td><code>autoload.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x304C;&#x81EA;&#x52D5;&#x3067;&#x30ED;&#x30FC;&#x30C9;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td><code>autoload.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3092;&#x81EA;&#x52D5;&#x3067;&#x30ED;&#x30FC;&#x30C9;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>4</td>
 <td>Load App</td>
-<td><code>bootstrap/app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;ServiceContainer&#xFF08;<code>Illuminate\Foundation\Application.php</code>&#xFF09;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td><code>bootstrap/app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;ServiceContainer&#xFF08;<code>Illuminate\Foundation\Application.php</code>&#xFF09;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>5</td>
 <td>Http Kernel</td>
-<td>Kernel&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>Kernel&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>6</td>
 <td>&#x30FB;Register ServiceProviders<br>&#x30FB;Boot Service Providers</td>
-<td>ServiceProvider&#x306E;<code>register</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>boot</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;ServiceContainer&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>ServiceProvider&#x306E;<code>register</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>boot</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;ServiceContainer&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>7</td>
 <td>Middleware</td>
-<td>BeforeMiddleware&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>BeforeMiddleware&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>8</td>
 <td>&#x30FB;Dispatch by Router<br>&#x30FB;Routes Match</td>
-<td><code>web.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0C;<code>app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3069;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5B9A;&#x7FA9;&#x3092;&#x5143;&#x306B;&#xFF0C;Router&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td><code>web.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF0C;<code>app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3069;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5B9A;&#x7FA9;&#x3092;&#x5143;&#x306B;&#xFF0C;Router&#x304C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>9</td>
+<td>FormRequest</td>
+<td>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>10</td>
 <td>Controller</td>
 <td>Controller&#x3092;&#x57FA;&#x70B9;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x307E;&#x3067;&#x51E6;&#x7406;&#x304C;&#x8D70;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
-<td>Response</td>
-<td>Response&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+<td>11</td>
+<td>Resource</td>
+<td>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x914D;&#x5217;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>12</td>
+<td>Response</td>
+<td>Response&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x914D;&#x5217;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;JSON&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>13</td>
 <td>Terminate Middleware</td>
 <td>AfterMiddleware&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
+<td>14</td>
 <td>View</td>
 <td>blade&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>15</td>
+<td>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 </tbody>
 </table>
@@ -7016,7 +7048,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-06-24T18:27:40.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T17:39:05.707Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-06-28T15:05:05.030Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-29T15:27:23.108Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
