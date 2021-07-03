@@ -100,17 +100,16 @@ Route53から転送されるパブリックIPアドレスを受信できるよ�
 
 参考：https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_Amplify_A.pdf
 
-| 役割                   | 使用されているAWSリソース |
-| ---------------------- | ------------------------- |
-| 認証                   | Gognito                   |
-| 静的サイトホスティング | CloudFront，S3            |
-| API                    | API Gateway，AppSync      |
-| バックエンドロジック   | Lambda                    |
-| DBアクセスロジック     | AppSync GraphQL           |
-| DB                     | DynamoDB                  |
-| ストレージ             | S3                        |
-| 全文検索               | Elastic Search            |
-| リアルタイム通知       | AppSync，IoT Core         |
+| 役割                   | 使用されているAWSリソース    |
+| ---------------------- | ---------------------------- |
+| 認証                   | Gognito                      |
+| 静的サイトホスティング | CloudFront，S3               |
+| API                    | API Gateway，AppSync GraphQL |
+| バックエンドロジック   | Lambda                       |
+| DB                     | DynamoDB                     |
+| ストレージ             | S3                           |
+| 全文検索               | Elastic Search               |
+| リアルタイム通知       | AppSync，IoT Core            |
 
 <br>
 
