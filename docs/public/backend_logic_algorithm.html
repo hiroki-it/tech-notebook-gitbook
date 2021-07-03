@@ -37,7 +37,7 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro-fixed/search.css">
                 
             
                 
@@ -1705,7 +1705,7 @@
 <li>&#x3053;&#x306E;&#x51E6;&#x7406;&#x3092;n-1&#x56DE;&#x7E70;&#x308A;&#x8FD4;&#x3059;&#xFF0E;</li>
 </ol>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">function</span> <span class="token function">minSelectSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+<span class="token keyword">function</span> <span class="token function-definition function">minSelectSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
 <span class="token punctuation">{</span>
 
     <span class="token comment">// &#x6BD4;&#x8F03;&#x57FA;&#x6E96;&#x5024;&#x3092;&#x56FA;&#x5B9A;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x5024;&#x3068;&#x6BD4;&#x3079;&#x3066;&#x3044;&#x304F;&#xFF0E;</span>
@@ -1768,7 +1768,7 @@
 <li>&#x30BD;&#x30FC;&#x30C8;&#x3092;&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">function</span> <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> 
+<span class="token keyword">function</span> <span class="token function-definition function">quickSort</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span> 
 <span class="token punctuation">{</span>
     <span class="token comment">// &#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x6570;&#x304C;&#x4E00;&#x3064;&#x3057;&#x304B;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1798,8 +1798,8 @@
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x51E6;&#x7406;&#x306E;&#x5468;&#x56DE;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x7D50;&#x679C;&#x306E;&#x914D;&#x5217;&#x3092;&#x7D50;&#x5408;&#xFF0E;</span>
-    <span class="token keyword">return</span> <span class="token function">array_merge
-    </span><span class="token punctuation">(</span>
+    <span class="token keyword">return</span> <span class="token function">array_merge</span>
+    <span class="token punctuation">(</span>
         <span class="token comment">// &#x5DE6;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30AF;&#x30A4;&#x30C3;&#x30AF;&#x30BD;&#x30FC;&#x30C8;&#xFF0E;</span>
         <span class="token function">quickSort</span><span class="token punctuation">(</span><span class="token variable">$left</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
@@ -1911,7 +1911,7 @@
 </code></pre>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token comment">// &#x5404;&#x5730;&#x70B9;&#x9593;&#x306E;&#x8DDD;&#x96E2;&#xFF0C;&#x51FA;&#x767A;&#x5730;&#x70B9;&#xFF0C;&#x958B;&#x59CB;&#x5730;&#x70B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x3068;&#x308B;&#xFF0E;</span>
-<span class="token keyword">function</span> <span class="token function">bestFirstSearchByDijkstra</span><span class="token punctuation">(</span>
+<span class="token keyword">function</span> <span class="token function-definition function">bestFirstSearchByDijkstra</span><span class="token punctuation">(</span>
     <span class="token keyword type-hint">array</span> <span class="token variable">$matrix</span><span class="token punctuation">,</span>
     <span class="token keyword type-hint">int</span> <span class="token variable">$startPoint</span><span class="token punctuation">,</span>
     <span class="token keyword type-hint">int</span> <span class="token variable">$goalPoint</span>
@@ -2066,7 +2066,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎アルゴリズムのロジック","level":"1.20.1","depth":2,"next":{"title":"R言語","level":"1.21","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.21.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.20.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2021-04-12T12:49:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-29T15:27:23.108Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎アルゴリズムのロジック","level":"1.20.1","depth":2,"next":{"title":"R言語","level":"1.21","depth":1,"ref":"","articles":[{"title":"▶ ︎統計解析","level":"1.21.1","depth":2,"path":"public/statistic_analysis.md","ref":"public/statistic_analysis.md","articles":[]}]},"previous":{"title":"アルゴリズム","level":"1.20","depth":1,"ref":"","articles":[{"title":"▶ ︎アルゴリズムのロジック","level":"1.20.1","depth":2,"path":"public/backend_logic_algorithm.md","ref":"public/backend_logic_algorithm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_logic_algorithm.md","mtime":"2021-04-12T12:49:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-03T06:55:35.939Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2104,19 +2104,15 @@
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro-fixed/jquery.mark.min.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro-fixed/search.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
