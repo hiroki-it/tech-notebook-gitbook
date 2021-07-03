@@ -1001,8 +1001,6 @@ class ResultCacher
 
 ## 02-03. Closure（無名関数）
 
-特定の処理が，```private```メソッドとして切り分けるほどでもないが，他の部分と明示的に区分けたい時は，無名関数を用いるとよい．
-
 ### Closure（無名関数）の定義，変数格納後のコール
 
 #### ・```use()```のみに引数を渡す場合
@@ -1332,7 +1330,7 @@ final class FlagConstant
 
 #### ・区分値
 
-ドメイン駆動設計の値オブジェクトを参考にせよ．
+区分値を整数型の定数として扱う．区分値をデータとして持つオブジェクトについては，ドメイン駆動設計の値オブジェクトを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
 

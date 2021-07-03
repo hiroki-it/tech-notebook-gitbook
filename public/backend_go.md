@@ -504,11 +504,11 @@ var person struct {
 
 #### ・Defined Typeによる独自の構造体
 
-Defined Typeを使用して，独自のデータ型の構造体を定義する．保持するデータの変数名の頭文字を大文字にした場合は，パッケージ外からのアクセスをパブリックに，小文字にした場合はプライベートになる．
+Defined Typeを使用して，独自のデータ型の構造体を定義する．フィールド名の頭文字を大文字にした場合は，パッケージ外からのアクセスをパブリックに，小文字にした場合はプライベートになる．
 
 **＊実装例＊**
 
-パブリックなデータを持つ構造体は以下の通り．
+パブリックなフィールドを持つ構造体は以下の通り．
 
 ```go
 type Person struct {
@@ -517,7 +517,7 @@ type Person struct {
 }
 ```
 
-プライベートなデータを持つ構造体は以下の通り．
+プライベートなフィールドを持つ構造体は以下の通り．
 
 ```go
 type Person struct {
@@ -526,7 +526,7 @@ type Person struct {
 }
 ```
 
-#### ・使用不可のデータ名
+#### ・使用不可のフィールド名
 
 小文字の『```type```』は予約語のため使用不可である．大文字の```Type```は可能．
 
@@ -625,7 +625,7 @@ func main() {
 
 #### ・DI（依存性注入）
 
-構造体のデータとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンクを参考にせよ．
+構造体のフィールドとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
 
@@ -683,7 +683,7 @@ func main() {
 
 #### ・埋め込みによる委譲
 
-Goには継承がなく，代わりに委譲がある．構造体のデータとして別の構造体を埋め込むことにより，埋め込まれた構造体に処理の一部を委譲する．埋め込む側の構造体の初期化の記法に癖があるので注意する．インターフェースにおける委譲については，後述の説明を参考にせよ．
+Goには継承がなく，代わりに委譲がある．構造体のフィールドとして別の構造体を埋め込むことにより，埋め込まれた構造体に処理を委譲する．埋め込む側の構造体を宣言するだけでなく，フィールドとして渡す必要がある．インターフェースにおける委譲については，後述の説明を参考にせよ．
 
 **＊実装例＊**
 
@@ -1117,7 +1117,7 @@ func main() {
 
 ####  ・埋め込みによる委譲
 
-構造体のデータとして別のインターフェースを埋め込むことにより，埋め込まれた構造体に処理の全てを委譲する．構造体における委譲については，前述の説明を参考にせよ．
+構造体のフィールドとして別のインターフェースを埋め込むことにより，埋め込まれた構造体に処理の全てを委譲する．ただし，構造体に明示的にインターフェースを埋め込む必要はなく，インターフェースを満たす関数を構造体に関連づけると，インターフェースを暗黙的に実装できる．構造体における委譲については，前述の説明を参考にせよ．
 
 **＊実装例＊**
 
@@ -1130,24 +1130,20 @@ import "fmt"
 
 // インターフェースとそのメソッドを定義する．
 type AnimalInterface interface {
-	Name()
-	Eat()
-	Sleep()
+	Name() string
+	Eat() string
+	Sleep() string
 }
 
-// 構造体にインターフェースを埋め込む．インターフェースのメソッドの関連付けが強制される．
 type InsectImpl struct {
-	AnimalInterface
 	name string
 }
 
 type FishImpl struct {
-	AnimalInterface
 	name string
 }
 
 type MammalImpl struct {
-	AnimalInterface
 	name string
 }
 
@@ -1158,8 +1154,8 @@ func NewInsect(name string) (*InsectImpl, error) {
 	}, nil
 }
 
-// 構造体に関数を関連付ける．
-func (i *InsectImpl) GetName() string {
+// 構造体に関数を関連付ける．インターフェースを暗黙的に実装する．
+func (i *InsectImpl) Name() string {
 	return i.name
 }
 
@@ -1179,13 +1175,57 @@ func main() {
 	}
 
 	// メソッドを実行する．
-	fmt.Println(insect.GetName())
+	fmt.Println(insect.Name())
 	fmt.Println(insect.Eat())
 	fmt.Println(insect.Sleep())
 }
 ```
 
-もし，構造体に関連付けられたメソッドに不足があると，エラーが起こる．
+もし，構造体に実装されたメソッドに不足があると，委譲が自動的に取り消される．エラーは発生しないため，実装されたメソッドが十分であることを実装者が知らなければならない．意図的にエラーを発生させるテクニックとして，イ
+
+参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+
+```golang
+package main
+
+import "fmt"
+
+// 構造体がインターフェースを満たしているかを検証する．
+var _ AnimalInterface = &InsectImpl{} // もしくは (*InsectImpl)(nil)
+
+// インターフェースとそのメソッドを定義する．
+type AnimalInterface interface {
+	Name() string
+	Eat() string
+}
+
+type InsectImpl struct {
+	name string
+}
+
+// コンストラクタ
+func NewInsect(name string) (*InsectImpl, error) {
+	return &InsectImpl{
+		name: name,
+	}, nil
+}
+
+// 構造体に関数を関連付ける．インターフェースを暗黙的に実装する．
+func (i *InsectImpl) Name() string {
+	return i.name
+}
+
+func main() {
+	insect, err := NewInsect("カブトムシ")
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// メソッドを実行する．
+	fmt.Println(insect.Name())
+}
+```
 
 ```shell
 # Eatメソッドを関連付けていない場合
@@ -1465,7 +1505,7 @@ func main() {
 
 #### ・レシーバによる関連付け
 
-データ型や型リテラルなどを関数のレシーバとして渡すことによって，それに関数を関連づけられる．関連付け後，関数はメソッドと呼ばれるようになる．メソッド名とデータ名に同じ名前は使用できない．
+データ型や型リテラルなどを関数のレシーバとして渡すことによって，それに関数を関連づけられる．関連付け後，関数はメソッドと呼ばれるようになる．メソッド名とフィールド名に同じ名前は使用できない．
 
 **＊実装例＊**
 
@@ -2567,7 +2607,7 @@ func main() {
 
 #### ・```Marshal```関数
 
-構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．```Marshal```関数に渡す構造体のデータはパブリックが必須である．
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．```Marshal```関数に渡す構造体のフィールドはパブリックが必須である．
 
 参考：https://golang.org/pkg/encoding/json/#Marshal
 
@@ -2583,7 +2623,7 @@ import (
 )
 
 type Person struct {
-	// Marshalに渡す構造体のデータはパブリックが必須
+	// Marshalに渡す構造体のフィールドはパブリックが必須
 	Name string `json:"name"`
 }
 
@@ -2604,7 +2644,7 @@ func main() {
 
 #### ・```Unmarshal```関数
 
-JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```関数の第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．```Unmarshal```関数に渡す構造体のデータはパブリックが必須である．
+JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```関数の第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．```Unmarshal```関数に渡す構造体のフィールドはパブリックが必須である．
 
 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -2620,7 +2660,7 @@ import (
 )
 
 type Person struct {
-	// Unmarshalに渡す構造体のデータはパブリックが必須
+	// Unmarshalに渡す構造体のフィールドはパブリックが必須
 	Name string
 }
 

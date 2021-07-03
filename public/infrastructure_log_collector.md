@@ -1,4 +1,4 @@
-# ログ収集ツール
+# ログ収集＆ルーティング
 
 ## CloudWatchログ
 
@@ -14,7 +14,7 @@
 
 ### Fluentbitとは
 
-アプリケーションまたはインフラストラクチャから，メトリックやログなどのデータを収集し，これをフィルタリングした後，複数の宛先に転送する．
+アプリケーションまたはインフラストラクチャから，メトリックやログなどのデータを収集し，これをフィルタリングした後，複数の宛先にルーティングする．
 
 <br>
 
@@ -24,21 +24,7 @@
 
 ![fluent-bit-log-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_log-pipeline.png)
 
-#### ・転送先サービスの設定
-
-ログを何らかの外部サービスに転送する場合，プラグインをインストールする必要がある．なお，Fluentbitは標準でdatadogに転送できるため，datadogのプラグインは不要である．なお，転送先のサービスのベンダーが提供するプラグイン込みのベースイメージを使用して，Fluentbitコンテナをビルドすれば，プラグインのインストールが不要である．
-
-参考：
-
-- Datadog：https://github.com/DataDog/fluent-plugin-datadog
-- AWS：https://github.com/aws/aws-for-fluent-bit
-- NewRelic：https://github.com/newrelic/newrelic-fluent-bit-output
-
-<br>
-
-### 設定ファイル
-
-#### ・セクション一覧
+#### ・設定ファイルのセクション一覧
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
 
@@ -52,46 +38,100 @@
     Streams_File stream_processor.conf # Stream Processorを使用する場合，設定ファイルのパス
 ```
 
-#### ・INPUTセクション
+<br>
 
-インプット元として，リンク先の領域から選択できる．
+### INPUT
 
-参考：https://docs.fluentbit.io/manual/pipeline/inputs
+#### ・INPUTセクションとは
 
-#### ・STREAM_TASKセクション
+指定したリソースからデータを収集する．
 
-ログパイプラインにおいて，Filterプロセス後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，Inputプロセスを再度経て，最終的にOutputプロセスへ渡される．
+参考：
 
-参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+- https://docs.fluentbit.io/manual/pipeline/inputs
+- https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
+<br>
 
-#### ・OUTPUTセクション
+### OUTPUT
+
+#### ・OUTPUTセクションとは
 
 アウトプット先として，リンク先のサービスから選択できる．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
-| アウトプット先 | 補足                                                         |
+| 転送先サービス | オプションのリンク                                           |
 | -------------- | ------------------------------------------------------------ |
 | Datadog        | 参考：https://docs.fluentbit.io/manual/pipeline/outputs/datadog |
 | CloudWatch     | 参考：https://docs.fluentbit.io/manual/pipeline/outputs/cloudwatch |
 
+#### ・プラグイン
+
+ログを何らかの外部サービスに転送する場合，プラグインをインストールする必要がある．なお，Fluentbitは標準でdatadogに転送できるため，datadogのプラグインは不要である．なお，転送先のサービスのベンダーが提供するプラグイン込みのベースイメージを使用して，Fluentbitコンテナをビルドすれば，プラグインのインストールが不要である．
+
+| 転送先サービス | ベースイメージのリンク                                       |
+| -------------- | ------------------------------------------------------------ |
+| Datadog        | https://github.com/DataDog/fluent-plugin-datadog             |
+| AWS            | ・https://github.com/aws/aws-for-fluent-bit<br>・https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit<br>・https://github.com/aws/amazon-kinesis-streams-for-fluent-bit |
+| NewRelic       | https://github.com/newrelic/newrelic-fluent-bit-output       |
+
 <br>
 
-### FireLensコンテナにおけるFluentbit
+### STORAGE
+
+#### ・STREAM_TASKセクションとは
+
+ログパイプラインにおいて，Filterプロセス後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，Inputプロセスに再度取り込まれ，最終的にOutputプロセスまで渡される．
+
+参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
+
+<br>
+
+## FireLens
+
+### Firelensコンテナ
 
 #### ・FireLensコンテナとは
 
-ログをルーティングするサイドカーコンテナとして働く．
+メインコンテナからログを収集し，これをルーティングするコンテナとして機能する．サイドカーコンテナパターンで構築する．構築のための実装例については，以下のリンクを参考にせよ．
 
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/using_firelens.html
+参考：https://github.com/aws-samples/amazon-ecs-firelens-examples
 
-コンテナデザインパターンについては，以下のリンクを参考にせよ．
+以下の順番でログの収集＆ルーティングを実行する．
+
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+
+1. メインのコンテナは，Fluentdログドライバーを介して，ログをFirelensコンテナに送信する．Fluentdログドライバーについては，以下を参考にせよ．
+
+   参考：https://docs.docker.com/config/containers/logging/fluentd/
+
+2. Firelensコンテナは，これを受信する．
+
+3. 
+
+![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
+
+#### ・サイドカーコンテナパターン
+
+サイドカーコンテナパターンを含むコンテナデザインパターンについては，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_virtualization_container_orchestration.html
 
-![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
+#### ・ログルーティングプロセス
+
+Firelensコンテナでは，FluentbitまたはFlunetdがログルーティングプロセスとして稼働する．Firelensコンテナを使用せずに，独自のコンテナを構築して稼働させることも可能であるが，Firelensコンテナを使用すれば，主要なセットアップがされているため，より簡単な設定でFluentbitまたはFlunetdを使用できる．Fluentbitの方がより低負荷で稼働するため，Fluentbitが推奨されている．
+
+参考：
+
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/using_firelens.html
+
+<br>
+
+### Fluentbitプロセス
 
 #### ・ベースイメージ
 
@@ -105,7 +145,9 @@ FROM amazon/aws-for-fluent-bit:2.15.1
 
 #### ・```fluent-bit_custom.conf```ファイル
 
-すでにベースイメージに設定ファイルが組み込まれているため，追加設定をオーバライドすることになる．設定ファイルは，『```/fluent-bit/etc/fluent-bit_custom.conf```』に置くようにする．
+すでにベースイメージに設定ファイル（```/fluent-bit/etc/fluent-bit.conf```）が組み込まれているため，追加設定をオーバライドすることになる．設定ファイルは，『```/fluent-bit/etc/fluent-bit_custom.conf```』に置くようにする．CloudWatchログがプラグインの場合に，設定ファイルに予約された変数を使用できる．以下のリンクを参考にせよ．
+
+参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
 ```shell
 [OUTPUT]
@@ -125,8 +167,8 @@ FROM amazon/aws-for-fluent-bit:2.15.1
     Match             *
     log_key           log
     region            ap-northeast-1
-    log_group_name    <送信先のロググループ名>
-    log_stream_name   <送信先のログストリーム名> # 『$(ecs_task_id)』『$(ecs_cluster)』
+    log_group_name    <ロググループ名> # 予約変数あり．
+    log_stream_name   <ログストリーム名> # 予約変数あり．$(ecs_task_id) を使用して，タスクID別にログストリームを作成できる．
 ```
 
 ちなみに，標準で組み込まれている設定ファイルには，INPUTセクションがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTセクションを定義する必要が無い．
@@ -150,6 +192,8 @@ FROM amazon/aws-for-fluent-bit:2.15.1
 
 #### ・```stream_processor.conf```ファイル
 
+Firelensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスク ID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．
+
 ```shell
 # Laravelコンテナのログへのタグ付け
 [STREAM_TASK]
@@ -169,7 +213,7 @@ FROM amazon/aws-for-fluent-bit:2.15.1
 
 #### ・Terraformのコンテナ定義
 
-TerraformでFirelensコンテナを構築するために，コンテナ定義を実装する．メインコンテナからFirelensコンテナにログを送信できるように，ログドライバーのタイプとして『```awsfirelens```』を設定する．また，サイドカーのFirelesコンテナとして，log_routerコンテナを定義する．Firelensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する．コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する．
+TerraformでFirelensコンテナを構築するために，コンテナ定義を実装する．Firelensコンテナは『log_routeter』とし，メインコンテナからFirelensコンテナにログを送信できるように，ログドライバーのタイプとして『```awsfirelens```』を設定する．この時，『```options```』と```fluent-bit.conf```ファイルのどちらにもほとんど同じ設定が可能であるが，出来るだけ```fluent-bit.conf```ファイルに寄せるようにする．Firelensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する．コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 
@@ -209,7 +253,7 @@ TerraformでFirelensコンテナを構築するために，コンテナ定義を
       "type": "fluentbit",
       "options": {
         "config-file-type": "file",
-        "config-file-value": "<Firelensコンテナが読み込むfluent-bit.confファイルのパス>"
+        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
       }
     },
     "portMappings": [],

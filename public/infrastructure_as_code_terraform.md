@@ -27,7 +27,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ・-backend=true, -backend-config
 
-リモートにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．
+実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．
 
 ```shell
 $ terraform init \
@@ -107,7 +107,7 @@ main.tf
 
 #### ・-var-file
 
-terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルにリモートの状態を書き込む．現状，全てのリソースを一括して```import```する方法は無い．リソースIDは，リソースによって異なるため，リファレンスの「Import」または「Attributes Referenceの```id```」を確認すること（例えば，ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
+terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```import```する方法は無い．リソースIDは，リソースによって異なるため，リファレンスの「Import」または「Attributes Referenceの```id```」を確認すること（例えば，ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
 
 ```shell
 $ terraform import \
@@ -131,7 +131,7 @@ $ terraform import \
     module.ecr.aws_ecr_repository.www xxxxxxxxx
 ```
 
-そして，ローカルのstateファイルとリモートの差分が無くなるまで，```import```を繰り返す．
+そして，ローカルのstateファイルと実インフラの差分が無くなるまで，```import```を繰り返す．
 
 ````shell
 $ terraform plan -var-file=config.tfvars
@@ -352,7 +352,7 @@ $ terraform apply <実行プランファイル名>.tfplan
 
 #### ・-var-file <リソース>
 
-stateファイルにおける指定されたリソースの```tainted```フラグを立てる．例えば，```apply```したが，途中でエラーが発生してしまい，リモートに中途半端はリソースが構築されてしまうことがある．ここで，```tainted```を立てておくと，リモートのリソースを削除したと想定した```plan```を実行できる．
+stateファイルにおける指定されたリソースの```tainted```フラグを立てる．例えば，```apply```したが，途中でエラーが発生してしまい，実インフラに中途半端はリソースが構築されてしまうことがある．ここで，```tainted```を立てておくと，実インフラのリソースを削除したと想定した```plan```を実行できる．
 
 ```shell
 $ terraform taint \
@@ -636,7 +636,7 @@ terraform_project/
 
 #### ・tfstateファイルとは
 
-リモートのインフラの状態が定義されたjsonファイルのこと．初回時，```apply```コマンドを実行し，成功もしくは失敗したタイミングで生成される．
+実インフラのインフラの状態が定義されたjsonファイルのこと．初回時，```apply```コマンドを実行し，成功もしくは失敗したタイミングで生成される．
 
 <br>
 
@@ -670,7 +670,7 @@ terraform {
 
 #### ・backend
 
-stateファイルを管理する場所を設定する．S3などのリモートで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．デフォルト値は```local```である．
+stateファイルを管理する場所を設定する．S3などの実インフラで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．デフォルト値は```local```である．
 
 **＊実装例＊**
 
@@ -1753,13 +1753,8 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 # For example domain
 ###############################################
 resource "aws_acm_certificate" "example" {
-  domain_name               = var.route53_domain_example
-  subject_alternative_names = ["*.${var.route53_domain_example}"]
-  validation_method         = "DNS"
 
-  tags = {
-    Name = "${var.environment}-${var.service}-example-cert"
-  }
+  # ～ 省略 ～
 
   # 新しい証明書を構築した後に削除する．
   lifecycle {
@@ -1777,18 +1772,8 @@ resource "aws_acm_certificate" "example" {
 # RDS Cluster Parameter Group
 ###############################################
 resource "aws_rds_cluster_parameter_group" "this" {
-  name        = "${var.environment}-${var.service}-rds-cluster-param-gp"
-  description = "The cluster parameter group for ${var.environment}-${var.service}-rds"
-  family      = "aurora-mysql5.7"
 
-  dynamic "parameter" {
-    for_each = var.rds_parameter_group_values
-
-    content {
-      name  = parameter.key
-      value = parameter.value
-    }
-  }
+  # ～ 省略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1799,9 +1784,8 @@ resource "aws_rds_cluster_parameter_group" "this" {
 # RDS Subnet Group
 ###############################################
 resource "aws_db_subnet_group" "this" {
-  name        = "${var.service}-${var.environment}-rds-subnet-gp"
-  description = "The subnet group for ${var.environment}-${var.service}-rds"
-  subnet_ids  = [var.private_a_datastore_subnet_id, var.private_c_datastore_subnet_id]
+
+  # ～ 省略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1817,9 +1801,8 @@ resource "aws_db_subnet_group" "this" {
 # Redis Parameter Group
 ###############################################
 resource "aws_elasticache_parameter_group" "redis" {
-  name        = "${var.environment}-${var.service}-redis-v5-param-gp"
-  description = "The parameter group for ${var.environment}-${var.service}-redis 5.0"
-  family      = "redis5.0"
+
+  # ～ 省略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1830,9 +1813,8 @@ resource "aws_elasticache_parameter_group" "redis" {
 # Redis Subnet Group
 ###############################################
 resource "aws_elasticache_subnet_group" "redis" {
-  name        = "${var.environment}-${var.service}-redis-subnet-gp"
-  description = "The redis subnet group for ${var.environment}-${var.service}-rds"
-  subnet_ids  = [var.private_a_app_subnet_id, var.private_c_app_subnet_id]
+
+  # ～ 省略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1842,45 +1824,24 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ・ignore_changes
 
-リモートのみで起こったリソースの構築・更新・削除を無視し，```hclstate```ファイルに反映しないようにする．基本的に使用することはないが，リモート側のリソースが動的に変更される可能性があるリソースでは，設定が必要である．
+実インフラのみで起こったリソースの構築・更新・削除を無視し，```tfstate```ファイルに反映しないようにする．これにより，オプションを```ignore_changes```したタイミング以降，実インフラと```tfstate```ファイルに差分があっても，```tfstate```ファイルの値が更新されなくなる．一つのテクニックとして，機密情報を```ignore_changes```に指定し，```tfstate```ファイルへの書き込みを防ぐ方法がある．
 
 **＊実装例＊**
 
-例として，ECSを示す．ECSでは，AutoScalingによってタスク数が増減し，またアプリケーションのデプロイでリビジョン番号が増加する．そのため，これらを無視する必要がある．
+例として，ECSを示す．ECSでは，AutoScalingによってタスク数が増加する．そのため，これらを無視する必要がある．
 
 ```hcl
 ###############################################
 # ECS Service
 ###############################################
 resource "aws_ecs_service" "this" {
-  name                               = "${var.environment}-${var.service}-ecs-service"
-  cluster                            = aws_ecs_cluster.this.id
-  launch_type                        = "Fargate"
-  platform_version                   = "1.4.0"
-  task_definition                    = "${aws_ecs_task_definition.this.family}:${max(aws_ecs_task_definition.this.revision, data.aws_ecs_task_definition.this.revision)}"
-  desired_count                      = var.ecs_service_desired_count
-  deployment_maximum_percent         = 200
-  deployment_minimum_healthy_percent = 100
-  health_check_grace_period_seconds  = 300
 
-  network_configuration {
-    security_groups  = [var.aws_security_group_ecs_id]
-    subnets          = var.subnet_private_app_ids
-    assign_public_ip = false
-  }
-
-  load_balancer {
-    target_group_arn = var.aws_lb_target_group_arn
-    container_name   = "${var.environment}-${var.service}-nginx"
-    container_port   = var.ecs_container_nginx_port_http
-  }
+  # ～ 省略 ～
 
   lifecycle {
     ignore_changes = [
       # AutoScalingによるタスク数の増減を無視．
       desired_count,
-      # アプリケーションのデプロイによるリビジョン番号の増加を無視．
-      task_definition,
     ]
   }
 }
@@ -1896,21 +1857,8 @@ resource "aws_ecs_service" "this" {
 # Redis Cluster
 ###############################################
 resource "aws_elasticache_replication_group" "redis" {
-  replication_group_id          = "${var.environment}-${var.service}-redis-cluster"
-  replication_group_description = "The cluster of ${var.environment}-${var.service}-redis"
-  engine_version                = "5.0.6"
-  port                          = var.redis_port_ssm_parameter_value
-  parameter_group_name          = aws_elasticache_parameter_group.redis.name
-  node_type                     = var.redis_node_type
-  number_cache_clusters         = 2
-  availability_zones            = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
-  subnet_group_name             = aws_elasticache_subnet_group.redis.id
-  security_group_ids            = [var.redis_security_group_id]
-  automatic_failover_enabled    = true
-  maintenance_window            = "sun:17:00-sun:18:00"
-  snapshot_retention_limit      = 0
-  snapshot_window               = "19:00-20:00"
-  apply_immediately             = true
+
+  # ～ 省略 ～
 
   lifecycle {
     ignore_changes = [
@@ -1929,7 +1877,7 @@ resource "aws_elasticache_replication_group" "redis" {
 ```hcl
 resource "aws_example" "example" {
 
-  # 何らかの設定
+  # ～ 省略 ～
 
   lifecycle {
     ignore_changes = all
@@ -2688,9 +2636,9 @@ resource "aws_ecs_service" "this" {
 
 タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し，Unhealthyと誤認してしまうため，タスクの起動完了を待機する．例えば，ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は，30秒単位で待機時間を増やし，適切な待機時間を見つけるようにする．
 
-#### （２）リモートのリビジョン番号の追跡
+#### （２）実インフラのリビジョン番号の追跡
 
-アプリケーションのデプロイによって，リモートのタスク定義のリビジョン番号が増加するため，これを追跡できるようにする．
+アプリケーションのデプロイによって，実インフラのタスク定義のリビジョン番号が増加するため，これを追跡できるようにする．
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
@@ -2970,7 +2918,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 #### ・AWS管理ポリシーを持つロール
 
-事前に，tpl形式のAWS管理ポリシーを定義しておく．```aws_iam_role_policy_attachment```リソースを使用して，リモートにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする．ポリシーのARNは，AWSのコンソール画面を確認する．
+事前に，tpl形式のAWS管理ポリシーを定義しておく．```aws_iam_role_policy_attachment```リソースを使用して，実インフラにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする．ポリシーのARNは，AWSのコンソール画面を確認する．
 
 **＊実装例＊**
 

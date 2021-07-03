@@ -608,11 +608,11 @@ $exmapleName = $example->name;
 
 $collection = collect([
     [
-        "user_id" => "1",
+        "user_id" => 1,
         "name"    => "佐藤太郎",
     ],
     [
-        "user_id" => "2",
+        "user_id" => 2,
         "name"    => "山田次郎",
     ],
 ]);
@@ -715,7 +715,36 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-### CREATE
+### CRUDメソッドの返却値型と返却値
+
+#### ・Builderクラス
+
+Builderクラスが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Builderクラスのメソッドはpublic宣言されており，『```->```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
+
+参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
+
+| Builderクラス |          返却値型          |               返却値               | 返却値の説明         |
+| :-----------: | :------------------------: | :--------------------------------: | :------------------- |
+|    create     |     collection／$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
+|     find      | collection／Builder／Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
+|    update     |            bool            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
+|    delete     |           mixed            |                 *                  | 結果の真偽値         |
+
+#### ・Modelクラス
+
+Modelクラスが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Modelクラスのメソッドはstatic宣言されており，『```:```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
+
+参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
+
+| Modelクラス | 返却値型 |         返却値          | 返却値の説明 |
+| :---------: | :------: | :---------------------: | :----------- |
+|   update    |   bool   | ```true```，```false``` | 結果の真偽値 |
+|    save     |   bool   | ```true```，```false``` | 結果の真偽値 |
+|   delete    |   bool   | ```true```，```false``` | 結果の真偽値 |
+
+<br>
+
+### CREATE（Builderクラス）
 
 #### ・```create```メソッド
 
@@ -794,7 +823,7 @@ class ExampleDTO extends Model
 
 <br>
 
-### READ
+### READ（Builderクラス）
 
 #### ・```find```メソッド
 
@@ -1029,7 +1058,7 @@ select * from `employees` where `employees`.`department_id` in (1, 2, 3, ...);
 
 <br>
 
-### UPDATE
+### UPDATE（Builderクラス）
 
 #### ・```update```メソッド
 
@@ -1135,7 +1164,7 @@ class ExampleController extends Controller
 
 <br>
 
-### DELETE
+### DELETE（Builderクラス）
 
 #### ・```delete```メソッド（物理削除）
 
@@ -4075,7 +4104,7 @@ class ProductsSeeder extends Seeder
         DB::table("products")->insert([
                 "product_name" => "シャープペンシル",
                 "price"        => 300,
-                "product_type" => "1",
+                "product_type" => 1,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
                 "created_at"   => NOW(),
@@ -4085,7 +4114,7 @@ class ProductsSeeder extends Seeder
             [
                 "product_name" => "ノート",
                 "price"        => 200,
-                "product_type" => "2",
+                "product_type" => 2,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
                 "created_at"   => NOW(),
@@ -4095,7 +4124,7 @@ class ProductsSeeder extends Seeder
             [
                 "product_name" => "消しゴム",
                 "price"        => 100,
-                "product_type" => "3",
+                "product_type" => 3,
                 "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
                 "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
                 "created_at"   => NOW(),
@@ -5928,11 +5957,11 @@ use BenSampo\Enum\Enum;
 
 class RoleType extends Enum
 {
-    public const CALL_ROLE = "1";        // コールセンター職  
-    public const DEVELOPMENT_ROLE = "2"; // 開発職    
-    public const FINANCE_ROLE = "3";     // 経理職     
-    public const PLAN_ROLE = "4";        // 企画職       
-    public const SALES_ROLE = "5";       // 営業職
+    public const CALL_ROLE = 1;        // コールセンター職  
+    public const DEVELOPMENT_ROLE = 2; // 開発職    
+    public const FINANCE_ROLE = 3;     // 経理職     
+    public const PLAN_ROLE = 4;        // 企画職       
+    public const SALES_ROLE = 5;       // 営業職
     
     /**
      * コールセンター職の区分値をもつかどうかを判定します．

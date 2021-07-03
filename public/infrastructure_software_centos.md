@@ -659,36 +659,11 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 <br>
 
-### crontab
+### cron
 
-#### ・crontabとは
+#### ・cronとは
 
-cronデーモンの動作が定義されたcrontabファイルを操作するためのユーティリティ．
-
-#### ・オプション無し
-
-作成したcronファイルを登録する．cron.dファイルは操作できない．
-
-```shell
-# crontab：command run on table
-$ crontab <ファイルパス>
-```
-
-<br>
-
-### crond
-
-#### ・crondとは
-
-cronデーモンを起動するためのプログラム
-
-#### ・-n
-
-フォアグラウンドプロセスとしてcronを起動
-
-```shell
-$ crond -n
-```
+指定したスケジュールに従って，指定されたプログラムを定期実行する常駐プログラム．
 
 #### ・cronファイル
 
@@ -832,6 +807,39 @@ stderr_logfile=/var/log/command-error.log
 user=root
 # コマンドの実行ディレクトリ
 directory=/var/www/tech-notebook
+```
+
+<br>
+
+### crontab
+
+#### ・crontabとは
+
+cronデーモンの動作が定義されたcrontabファイルを操作するためのユーティリティ．
+
+#### ・オプション無し
+
+作成したcronファイルを登録する．cron.dファイルは操作できない．
+
+```shell
+# crontab：command run on table
+$ crontab <ファイルパス>
+```
+
+<br>
+
+### crond
+
+#### ・crondとは
+
+cronデーモンを起動するためのプログラム
+
+#### ・-n
+
+フォアグラウンドプロセスとしてcronを起動
+
+```shell
+$ crond -n
 ```
 
 <br>
