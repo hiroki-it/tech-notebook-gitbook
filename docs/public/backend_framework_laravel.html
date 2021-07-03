@@ -2296,11 +2296,11 @@ REDIS_PORT=<span class="token tag"><span class="token tag"><span class="token pu
 
 <span class="token variable">$collection</span> <span class="token operator">=</span> <span class="token function">collect</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">[</span>
-        <span class="token string double-quoted-string">&quot;user_id&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">,</span>
+        <span class="token string double-quoted-string">&quot;user_id&quot;</span> <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">,</span>
         <span class="token string double-quoted-string">&quot;name&quot;</span>    <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x4F50;&#x85E4;&#x592A;&#x90CE;&quot;</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">[</span>
-        <span class="token string double-quoted-string">&quot;user_id&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;2&quot;</span><span class="token punctuation">,</span>
+        <span class="token string double-quoted-string">&quot;user_id&quot;</span> <span class="token operator">=&gt;</span> <span class="token number">2</span><span class="token punctuation">,</span>
         <span class="token string double-quoted-string">&quot;name&quot;</span>    <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x5C71;&#x7530;&#x6B21;&#x90CE;&quot;</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2374,7 +2374,81 @@ REDIS_PORT=<span class="token tag"><span class="token tag"><span class="token pu
 <h3 id="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x99C6;&#x52D5;&#x8A2D;&#x8A08;&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h3>
 <p>&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30ED;&#x30B8;&#x30C3;&#x30AF;&#x7528;&#x306E;&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x3068;&#xFF0C;Eloquent&#x306E;Model&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x8A70;&#x3081;&#x66FF;&#x3048;Model&#xFF08;&#x4F8B;&#xFF1A;DTO&#x30AF;&#x30E9;&#x30B9;&#xFF09;&#x3092;&#x7528;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5C64;&#x304B;&#x3089;&#x53D7;&#x3051;&#x53D6;&#x3063;&#x305F;&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x304C;&#x4FDD;&#x6301;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;DTO&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x8A70;&#x3081;&#x66FF;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30A8;&#x30F3;&#x30C6;&#x30A3;&#x30C6;&#x30A3;&#x304C;&#x4ED6;&#x306E;&#x5C64;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h3 id="create"><a name="create" class="plugin-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a>CREATE</h3>
+<h3 id="crud&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;"><a name="crud&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;" class="plugin-anchor" href="#crud&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;"><i class="fa fa-link" aria-hidden="true"></i></a>CRUD&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;</h3>
+<h4 id="&#x30FB;builder&#x30AF;&#x30E9;&#x30B9;"><a name="&#x30FB;builder&#x30AF;&#x30E9;&#x30B9;" class="plugin-anchor" href="#&#x30FB;builder&#x30AF;&#x30E9;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Builder&#x30AF;&#x30E9;&#x30B9;</h4>
+<p>Builder&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x6301;&#x3064;crud&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3042;&#x308B;&#xFF0E;Builder&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;public&#x5BA3;&#x8A00;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x300E;<code>-&gt;</code>&#x300F;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Builder&#x30AF;&#x30E9;&#x30B9;</th>
+<th style="text-align:center">&#x8FD4;&#x5374;&#x5024;&#x578B;</th>
+<th style="text-align:center">&#x8FD4;&#x5374;&#x5024;</th>
+<th style="text-align:left">&#x8FD4;&#x5374;&#x5024;&#x306E;&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">create</td>
+<td style="text-align:center">collection&#xFF0F;$this</td>
+<td style="text-align:center"><code>{id:1, name: &#x30C6;&#x30B9;&#x30C8;}</code></td>
+<td style="text-align:left">&#x4F5C;&#x6210;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</td>
+</tr>
+<tr>
+<td style="text-align:center">find</td>
+<td style="text-align:center">collection&#xFF0F;Builder&#xFF0F;Model</td>
+<td style="text-align:center"><code>{id:1, name:&#x30C6;&#x30B9;&#x30C8;}</code></td>
+<td style="text-align:left">&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</td>
+</tr>
+<tr>
+<td style="text-align:center">update</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center"><code>0</code>&#xFF0C;<code>1</code>&#xFF0C;<code>2</code>&#xFF0C;<code>3</code></td>
+<td style="text-align:left">&#x5909;&#x66F4;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">delete</td>
+<td style="text-align:center">mixed</td>
+<td style="text-align:center">*</td>
+<td style="text-align:left">&#x7D50;&#x679C;&#x306E;&#x771F;&#x507D;&#x5024;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;model&#x30AF;&#x30E9;&#x30B9;"><a name="&#x30FB;model&#x30AF;&#x30E9;&#x30B9;" class="plugin-anchor" href="#&#x30FB;model&#x30AF;&#x30E9;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Model&#x30AF;&#x30E9;&#x30B9;</h4>
+<p>Model&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x6301;&#x3064;crud&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x8FD4;&#x5374;&#x5024;&#x578B;&#x3068;&#x8FD4;&#x5374;&#x5024;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3067;&#x3042;&#x308B;&#xFF0E;Model&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;static&#x5BA3;&#x8A00;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x300E;<code>:</code>&#x300F;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Model&#x30AF;&#x30E9;&#x30B9;</th>
+<th style="text-align:center">&#x8FD4;&#x5374;&#x5024;&#x578B;</th>
+<th style="text-align:center">&#x8FD4;&#x5374;&#x5024;</th>
+<th style="text-align:left">&#x8FD4;&#x5374;&#x5024;&#x306E;&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">update</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center"><code>true</code>&#xFF0C;<code>false</code></td>
+<td style="text-align:left">&#x7D50;&#x679C;&#x306E;&#x771F;&#x507D;&#x5024;</td>
+</tr>
+<tr>
+<td style="text-align:center">save</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center"><code>true</code>&#xFF0C;<code>false</code></td>
+<td style="text-align:left">&#x7D50;&#x679C;&#x306E;&#x771F;&#x507D;&#x5024;</td>
+</tr>
+<tr>
+<td style="text-align:center">delete</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center"><code>true</code>&#xFF0C;<code>false</code></td>
+<td style="text-align:left">&#x7D50;&#x679C;&#x306E;&#x771F;&#x507D;&#x5024;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="create&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><a name="create&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;" class="plugin-anchor" href="#create&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>CREATE&#xFF08;Builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;</h3>
 <h4 id="&#x30FB;create&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;create&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;create&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>create</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>INSERT&#x6587;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;Builder&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x6301;&#x3064;<code>create</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x633F;&#x5165;&#x5BFE;&#x8C61;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3068;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#x306F;&#xFF0C;Builder&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>fill</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x633F;&#x5165;&#x5BFE;&#x8C61;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3068;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;<code>save</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5225;&#x306B;&#xFF0C;Model&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x306F;<code>fillable</code>&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;UPDATE&#x6587;&#x306E;&#x5B9F;&#x884C;&#x6642;&#x3068;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://codelikes.com/laravel-eloquent-basic/#toc9" target="_blank">https://codelikes.com/laravel-eloquent-basic/#toc9</a></p>
@@ -2443,7 +2517,7 @@ REDIS_PORT=<span class="token tag"><span class="token tag"><span class="token pu
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h3 id="read"><a name="read" class="plugin-anchor" href="#read"><i class="fa fa-link" aria-hidden="true"></i></a>READ</h3>
+<h3 id="read&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><a name="read&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;" class="plugin-anchor" href="#read&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>READ&#xFF08;Builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;</h3>
 <h4 id="&#x30FB;find&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;find&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;find&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>find</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>SELECT&#x6587;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5F15;&#x6570;&#x3068;&#x3057;&#x3066;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x6E21;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x6301;&#x3064;Model&#x3092;Model&#x578B;&#x3068;&#x3057;&#x3066;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;<code>toArray</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x914D;&#x5217;&#x578B;&#x306B;&#x5909;&#x63DB;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find" target="_blank">https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find</a></p>
@@ -2649,7 +2723,7 @@ REDIS_PORT=<span class="token tag"><span class="token tag"><span class="token pu
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">`</span>employees<span class="token punctuation">`</span> <span class="token keyword">where</span> <span class="token punctuation">`</span>employees<span class="token punctuation">`</span><span class="token punctuation">.</span><span class="token punctuation">`</span>department_id<span class="token punctuation">`</span> <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h3 id="update"><a name="update" class="plugin-anchor" href="#update"><i class="fa fa-link" aria-hidden="true"></i></a>UPDATE</h3>
+<h3 id="update&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><a name="update&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;" class="plugin-anchor" href="#update&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>UPDATE&#xFF08;Builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;</h3>
 <h4 id="&#x30FB;update&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;update&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;update&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>update</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>UPDATE&#x6587;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;Builder&#x30AF;&#x30E9;&#x30B9;&#x304C;<code>find</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x66F4;&#x65B0;&#x5BFE;&#x8C61;&#x306E;Model&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x305F;Builder&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>fill</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#xFF0C;&#x633F;&#x5165;&#x5BFE;&#x8C61;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3068;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;<code>save</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x5225;&#x306B;&#xFF0C;Model&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x306F;<code>fillable</code>&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;UPDATE&#x6587;&#x306E;&#x5B9F;&#x884C;&#x6642;&#x3068;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#xFF0E;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://codelikes.com/laravel-eloquent-basic/#toc9" target="_blank">https://codelikes.com/laravel-eloquent-basic/#toc9</a></p>
@@ -2743,7 +2817,7 @@ REDIS_PORT=<span class="token tag"><span class="token tag"><span class="token pu
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h3 id="delete"><a name="delete" class="plugin-anchor" href="#delete"><i class="fa fa-link" aria-hidden="true"></i></a>DELETE</h3>
+<h3 id="delete&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><a name="delete&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;" class="plugin-anchor" href="#delete&#xFF08;builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>DELETE&#xFF08;Builder&#x30AF;&#x30E9;&#x30B9;&#xFF09;</h3>
 <h4 id="&#x30FB;delete&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x7269;&#x7406;&#x524A;&#x9664;&#xFF09;"><a name="&#x30FB;delete&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x7269;&#x7406;&#x524A;&#x9664;&#xFF09;" class="plugin-anchor" href="#&#x30FB;delete&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x7269;&#x7406;&#x524A;&#x9664;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>delete</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF08;&#x7269;&#x7406;&#x524A;&#x9664;&#xFF09;</h4>
 <p>DELETE&#x6587;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;Builder&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>find</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x524A;&#x9664;&#x5BFE;&#x8C61;&#x306E;Model&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x305F;Builder&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>delete</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x81EA;&#x8EAB;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -5318,7 +5392,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
         <span class="token class-name static-context">DB</span><span class="token operator">::</span><span class="token function">table</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;products&quot;</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
                 <span class="token string double-quoted-string">&quot;product_name&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x30B7;&#x30E3;&#x30FC;&#x30D7;&#x30DA;&#x30F3;&#x30B7;&#x30EB;&quot;</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;price&quot;</span>        <span class="token operator">=&gt;</span> <span class="token number">300</span><span class="token punctuation">,</span>
-                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">,</span>
+                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;created_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;updated_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>            
                 <span class="token string double-quoted-string">&quot;created_at&quot;</span>   <span class="token operator">=&gt;</span> <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -5328,7 +5402,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
             <span class="token punctuation">[</span>
                 <span class="token string double-quoted-string">&quot;product_name&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x30CE;&#x30FC;&#x30C8;&quot;</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;price&quot;</span>        <span class="token operator">=&gt;</span> <span class="token number">200</span><span class="token punctuation">,</span>
-                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;2&quot;</span><span class="token punctuation">,</span>
+                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token number">2</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;created_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;updated_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>            
                 <span class="token string double-quoted-string">&quot;created_at&quot;</span>   <span class="token operator">=&gt;</span> <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -5338,7 +5412,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
             <span class="token punctuation">[</span>
                 <span class="token string double-quoted-string">&quot;product_name&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x6D88;&#x3057;&#x30B4;&#x30E0;&quot;</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;price&quot;</span>        <span class="token operator">=&gt;</span> <span class="token number">100</span><span class="token punctuation">,</span>
-                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;3&quot;</span><span class="token punctuation">,</span>
+                <span class="token string double-quoted-string">&quot;product_type&quot;</span> <span class="token operator">=&gt;</span> <span class="token number">3</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;created_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>
                 <span class="token string double-quoted-string">&quot;updated_by&quot;</span>   <span class="token operator">=&gt;</span> <span class="token class-name static-context">ExecutorConstant</span><span class="token operator">::</span><span class="token constant">ARTISAN_COMMAND</span><span class="token punctuation">,</span>            
                 <span class="token string double-quoted-string">&quot;created_at&quot;</span>   <span class="token operator">=&gt;</span> <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -6937,11 +7011,11 @@ $ php artisan ui bootstrap --auth
 
 <span class="token keyword">class</span> <span class="token class-name-definition class-name">RoleType</span> <span class="token keyword">extends</span> <span class="token keyword">Enum</span>
 <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">CALL_ROLE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;1&quot;</span><span class="token punctuation">;</span>        <span class="token comment">// &#x30B3;&#x30FC;&#x30EB;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&#x8077;  </span>
-    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">DEVELOPMENT_ROLE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;2&quot;</span><span class="token punctuation">;</span> <span class="token comment">// &#x958B;&#x767A;&#x8077;    </span>
-    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">FINANCE_ROLE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;3&quot;</span><span class="token punctuation">;</span>     <span class="token comment">// &#x7D4C;&#x7406;&#x8077;     </span>
-    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">PLAN_ROLE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;4&quot;</span><span class="token punctuation">;</span>        <span class="token comment">// &#x4F01;&#x753B;&#x8077;       </span>
-    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">SALES_ROLE</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;5&quot;</span><span class="token punctuation">;</span>       <span class="token comment">// &#x55B6;&#x696D;&#x8077;</span>
+    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">CALL_ROLE</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// &#x30B3;&#x30FC;&#x30EB;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&#x8077;  </span>
+    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">DEVELOPMENT_ROLE</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// &#x958B;&#x767A;&#x8077;    </span>
+    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">FINANCE_ROLE</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>     <span class="token comment">// &#x7D4C;&#x7406;&#x8077;     </span>
+    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">PLAN_ROLE</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>        <span class="token comment">// &#x4F01;&#x753B;&#x8077;       </span>
+    <span class="token keyword">public</span> <span class="token keyword">const</span> <span class="token constant">SALES_ROLE</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>       <span class="token comment">// &#x55B6;&#x696D;&#x8077;</span>
 
     <span class="token comment">/**
      * &#x30B3;&#x30FC;&#x30EB;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&#x8077;&#x306E;&#x533A;&#x5206;&#x5024;&#x3092;&#x3082;&#x3064;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x5224;&#x5B9A;&#x3057;&#x307E;&#x3059;&#xFF0E;
@@ -7048,7 +7122,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed","livereload"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"livereload":{},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-06-29T15:42:53.650Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-03T06:55:35.939Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-07-03T06:48:39.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-03T07:11:42.987Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -7091,10 +7165,6 @@ $ php artisan ui bootstrap --auth
     
         
         <script src="../gitbook/gitbook-plugin-search-pro-fixed/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
