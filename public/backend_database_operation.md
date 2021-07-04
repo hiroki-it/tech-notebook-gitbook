@@ -47,40 +47,23 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 <br>
 
+## 01-04. テーブル設計
 
-## 01-03. RDBの設計
+### ER図：Entity Relation Diagram
 
-### UMLによる設計
+以下のリンクを参考にせよ．
 
-16章を参照．よくある設計図では，UMLとER図を組み合わせている．
-
-<br>
-
-### ER図による設計：Entity Relation Diagram
-
-16章を参照．よくある設計図では，UMLとER図を組み合わせている．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
 
 <br>
 
-## 01-04. テーブルの作成
+### 正規化
 
-### データを追加するあるいは削除する場合の注意点
-
-データを追加するあるいは削除する場合，カラムではなく，レコードの増減を行う．カラムの増減の処理には時間がかかる．一方で，レコードの増減の処理には時間がかからない．
-
-![カラムの増減は✖，レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖，レコードの増減は〇-1.png)
-
-**＊具体例＊**
-
-賞与を年1回から，2回・3回と変える場合，主キーを繰り返し，新しく賞与区分と金額区分を作る．
-
-![カラムの増減は✖，レコードの増減は〇-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖，レコードの増減は〇-2.png)
-
-<br>
-
-### 非正規形の正規化
+#### ・正規化とは
 
 繰り返し要素のある表を『正規形』，その逆を『非正規形』という．非正規形の表から，他と連動するカラムを独立させ，正規形の表に変更することを『正規化』という．
+
+#### ・方法
 
 **＊具体例＊**
 
@@ -135,6 +118,20 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 2. **第一正規化（繰り返し要素の排除）**
 
    ![第一正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形-2.png)
+
+<br>
+
+### データの追加／削除
+
+データを追加するあるいは削除する場合，カラムではなく，レコードの増減を行う．カラムの増減の処理には時間がかかる．一方で，レコードの増減の処理には時間がかからない．
+
+![カラムの増減は✖，レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖，レコードの増減は〇-1.png)
+
+**＊具体例＊**
+
+賞与を年1回から，2回・3回と変える場合，主キーを繰り返し，新しく賞与区分と金額区分を作る．
+
+![カラムの増減は✖，レコードの増減は〇-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖，レコードの増減は〇-2.png)
 
 <br>
 

@@ -52,7 +52,7 @@ APP_DEBUG=<デバッグモードの有効無効化>
 APP_URL=<アプリケーションのURL>
 ```
 
-#### ・アプリケーションの基本設定
+#### ・```app.php```ファイルの基本設定
 
 ```php
 <?php
@@ -194,30 +194,32 @@ $ php artisan make:model <Model名>
 
 #### ・Active Recordパターンとは
 
+テーブルとドメインモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．オブジェクト間の依存関係については，以下のリンクを参考せよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
 #### ・他の類似するデザインパターンとの比較
 
-| デザインパターン | Modelとテーブルの関連度合い                                 | 採用ライブラリ例 |
-| ---------------- | ----------------------------------------------------------- | ---------------- |
-| Active Record    | 非常に強い．基本的には，Modelとテーブルが一対一対応になる． | Eloquent         |
-| Data Mapper      |                                                             | Doctrine         |
-| Repository       | 各エンティティの粒度次第で強くも弱くもなる．                |                  |
-| なし             | 非常に弱い                                                  | DBファサード     |
+| デザインパターン | 駆動の種類       | ドメインモデルとテーブルの関連度合い                         | 採用ライブラリ例 |
+| ---------------- | ---------------- | ------------------------------------------------------------ | ---------------- |
+| Active Record    | データベース駆動 | ・非常に強い．<br>・手順としてテーブル設計が先にあり，一つのドメインモデルが一つのテーブルに対応している．<br>・テーブル間のリレーションシップによって，ドメインモデル間の依存関係が決まる． | Eloquent         |
+| Data Mapper      | データベース駆動 |                                                              | Doctrine         |
+| Repository       | ドメイン駆動     | ・弱い<br/>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                  |
+| なし             | なし             | 非常に弱い                                                   | DBファサード     |
 
 #### ・メリットとデメリット
 
 | 項目   | メリット                                                     | デメリット                                                   |      |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
-| 保守性 |                                                              |                                                              |      |
-| 可読性 | ・複雑なデータアクセスロジックを実装する必要が無い．<br>・Modelにおけるデータアクセスロジックがどのテーブルに対して行われるのか推測しやすい．<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． | データアクセスロジックが複数のテーブルを跨ぐためには，関連付くテーブルを軸としたリレーションを行う必要がある．この時，カラムの不要な取得を行ってしまうことがある． |      |
-| 拡張性 |                                                              | Modelの構成がテーブル構造に相互に依存してしまうため，Modelのドメインロジックが柔軟にスケーリングできなくなってしまう．そのため，ドメイン駆動設計との相性は悪い． |      |
+| 保守性 | テーブル間の関係性が，そのままドメインモデル間の依存関係になるため，開発が早い． | テーブルによってドメインモデル間の依存関係が決まるため，ドメインモデルのロジックを修正したい場合は，テーブル間の関係性を先に修正しなければならない． |      |
+| 可読性 | ・複雑なデータアクセスロジックを実装する必要が無い．<br>・ドメインモデルがそのまま一つのテーブルになるため，データアクセスロジックがどのテーブルに対して行われるのか推測しやすい．（Userモデル ⇄ usersテーブル）<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． | データアクセスロジックが複数のテーブルを跨ぐためには，関連付くテーブルを軸としたリレーションを行う必要がある．この時，カラムの不要な取得を行ってしまうことがある． |      |
+| 拡張性 | JOIN句を使用せずに，各テーブルから必要なデータを取得できるため，テーブルを増やしやすい． | ドメインモデルの構成がテーブル構造に相互に依存してしまうため，ドメインモデルのドメインロジックが柔軟にスケーリングできなくなってしまう．そのため，ドメイン駆動設計との相性は悪い． |      |
 
 <br>
 
-### Modelとテーブルの対応
+### テーブル設計を元にしたModelクラス
 
-#### ・Modelの継承
+#### ・Modelクラスの継承
 
 Modelクラスを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
 
@@ -237,9 +239,9 @@ class Example extends Model
 ````
 
 
-#### ・Modelとテーブルの関連付け
+#### ・テーブルの定義
 
-Eloquentは，Model自身の```table```プロパティに代入されている名前のテーブルに，Modelクラスを関連付ける．ただし，```table```プロパティにテーブル名を代入する必要はない．Eloquentがクラス名の複数形をテーブル名と見なし，これをスネークケースにした文字列を```table```プロパティに自動的に代入する．また，テーブル名を独自で命名したい場合は，代入によるOverrideを行っても良い．
+テーブルを定義するため，```table```プロパティにテーブル名を割り当てる．ただし，```table```プロパティにテーブル名を代入する必要はない．Eloquentがクラス名の複数形をテーブル名と見なし，これをスネークケースにした文字列を```table```プロパティに自動的に代入する．また，テーブル名を独自で命名したい場合は，代入によるOverrideを行っても良い．
 
 **＊実装例＊**
 
@@ -261,7 +263,89 @@ class Example extends Model
 }
 ```
 
-#### ・Modelと主キーの関連付け
+#### ・テーブル間リレーションシップの定義
+
+ER図における各テーブルのリレーションシップを元に，モデル間の関連性を定義する．```hasOne```メソッド，```hasMany```メソッド，```belongsTo```メソッドを用いて表現する．ER図については，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
+
+**＊実装例＊**
+
+Departmentモデルにおいて，```hasMany```メソッドを用いて，Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Department extends Model
+{
+    /**
+     * 主キーとするカラム
+     * 
+     * @var string 
+     */
+    protected $primaryKey = "department_id";
+
+     /**
+     * 一対多の関係を定義します．
+     * （デフォルトではemployee_idに関連付けます）
+     * 
+     * @return HasMany
+     */
+    public function hasManyEmployees() :HasMany
+    {
+        return $this->hasMany(Employee::class);
+    }
+}
+```
+
+また，Employeesモデルにおいては，```belongsTo```メソッドを用いて，Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Employee extends Model
+{
+    /**
+     * 主キーとするカラム
+     * 
+     * @var string 
+     */
+    protected $primaryKey = "employee_id";
+
+    /**
+     * 多対一の関係を定義します．
+     * （デフォルトではdepartment_idに関連付けます）
+     * 
+     * @return BelongsTo
+     */
+    public function belongsToDepartments() :BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
+}
+```
+
+```php
+<?php
+
+// Departmentオブジェクトを取得
+$department = Department::find(1);
+
+// 全てのemployeeオブジェクトをarray型で取得
+$employees = $department->employees
+```
+
+#### ・主キーカラムの定義
 
 Eloquentは，```primaryKey```プロパティの値を主キーのカラム名と見なす．```keyType```プロパティで主キーのデータ型，また```incrementing```プロパティで主キーのAutoIncrementを有効化するか否か，を設定できる．
 
@@ -301,7 +385,7 @@ class Example extends Model
 }
 ```
 
-#### ・ModelとTIMESTAMP型カラムの関連付け
+#### ・TIMESTAMP型カラムの定義
 
 Eloquentは，```timestamps```プロパティの値が```true```の時に，Modelクラスに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
 
@@ -359,9 +443,9 @@ class User extends Model
 ```
 
 
-#### ・カラムデフォルト値の設定
+#### ・カラムデフォルト値の定義
 
-特定のカラムのデフォルト値を設定したい場合，```attributes```プロパティにて，カラム名と値を設定する．
+特定のカラムのデフォルト値を設定したい場合，```attributes```プロパティにて，カラム名と値を定義する．
 
 **＊実装例＊**
 
@@ -385,89 +469,9 @@ class Example extends Model
 }
 ```
 
-#### ・テーブル間のリレーションシップの定義
+#### ・変更可能／不可能なカラムの定義
 
-Laravelでは，テーブル間の一対多（親子）のリレーションシップを，```hasOne```メソッド，```hasMany```メソッド，```belongsTo```メソッドを使用して定義する．これにより，JOIN句を使用せずに必要なデータを取得できる．
-
-**＊実装例＊**
-
-Department（親）に，departmentsテーブルとemployeesテーブルの間に，一対多の関係を定義する．
-
-```php
-<?php
-
-namespace App\Domain\DTO;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
-class Department extends Model
-{
-    /**
-     * 主キーとするカラム
-     * 
-     * @var string 
-     */
-    protected $primaryKey = "department_id";
-
-     /**
-     * 一対多の関係を定義します．
-     * （デフォルトではemployee_idに関連付けます）
-     * 
-     * @return HasMany
-     */
-    public function hasManyEmployees() :HasMany
-    {
-        return $this->hasMany(Employee::class);
-    }
-}
-```
-
-また，Employee（子）に，反対の多対一の関係を定義する．
-
-```php
-<?php
-
-namespace App\Domain\DTO;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
-class Employee extends Model
-{
-    /**
-     * 主キーとするカラム
-     * 
-     * @var string 
-     */
-    protected $primaryKey = "employee_id";
-
-    /**
-     * 多対一の関係を定義します．
-     * （デフォルトではdepartment_idに関連付けます）
-     * 
-     * @return BelongsTo
-     */
-    public function belongsToDepartments() :BelongsTo
-    {
-        return $this->belongsTo(Department::class);
-    }
-}
-```
-
-```php
-<?php
-
-// Departmentオブジェクトを取得
-$department = Department::find(1);
-
-// 全てのemployeeオブジェクトをarray型で取得
-$employees = $department->employees
-```
-
-#### ・変更可能／不可能なカラム名の設定
-
-Model経由で変更可能なカラム名は，```fillable```プロパティで定義する．カラムが増えるたびに，実装する必要がある．
+変更可能なカラム名を```fillable```プロパティを用いて定義する．カラムが増えるたびに，実装する必要がある．
 
 **＊実装例＊**
 
@@ -494,7 +498,7 @@ class Example extends Model
 }
 ```
 
-もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Modelにおいて必須である．
+もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Modelクラスにおいて必須である．
 
 ```php
 <?php
@@ -522,7 +526,7 @@ class Example extends Model
 
 #### ・セッター
 
-Laravelでは，プロパティを定義しなくても，Modelからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
+Laravelでは，プロパティを定義しなくても，Modelクラスからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
 
 **＊実装例＊**
 
@@ -929,7 +933,7 @@ class ExampleRepository extends Repository implements DomainExampleRepository
 
 #### ・```with```メソッド
 
-二つのSELECT文を実行する．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．まず，親テーブルを読み出す．さらに，親テーブルのidを使用して子テーブルを読み出す．
+二つのSELECT文を実行する．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．まず，親テーブルを読み出す．さらに，親テーブルのidを使用して子テーブルを読み出す．N+1問題を防げる．
 
 **＊実装例＊**
 
@@ -1048,13 +1052,6 @@ class DepartmentRepository extends Repository implements DomainDepartmentReposit
     }
 }
 ```
-
-Builderクラスの```with```メソッドでは，二つのSELECT文を実行している．```with```メソッドを使用すると，N+1問題の対策になる．
-
-````sql
-select * from `departments`;
-select * from `employees` where `employees`.`department_id` in (1, 2, 3, ...);
-````
 
 <br>
 
@@ -1366,141 +1363,56 @@ class ExampleRepository extends Repository implements DomainExampleRepository
 
 <br>
 
-### DBファサード
-
-#### ・DBファサードとは
-
-データベースを操作する処理を実行する．Eloquentの代わりに，DBファサードを使用しても良い．Active Recordのロジックを持たないため，Repositoryパターンのロジックとして使用できる．
-
-#### ・```transaction```メソッド
-
-一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．ちなみに，トランザクション処理は必須ではなく，使用するとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．
-
-参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
-
-class ExampleRepository extends Repository implements DomainExampleRepository
-{
-    /**
-     * @var ExampleDTO
-     */
-    private ExampleDTO $exampleDTO;
-    
-    public function __construct(ExampleDTO $exampleDTO)
-    {
-        $this->exampleDTO = $exampleDTO;
-    }   
-    
-    /**
-     * Exampleを更新します．
-     *
-     * @param Example $example
-     */
-    public function save(Example $example)
-    {   
-        // 一連のトランザクション処理を実行する．
-        DB::transaction(function () use ($exampleData, $example){
-            
-            // オブジェクトにデータを設定する．
-            $exampleData->fill([
-                "name"  => $example->name(),
-                "age"   => $example->age(),
-                "email" => $example->email()
-            ])
-            // update文を実行する．
-            ->save();
-            
-        });
-    }
-}
-```
-
-#### ・```beginTransaction```メソッド，```commit```メソッド，```rollback```メソッド，
-
-トランザクション処理の各操作を実行する．基本的には，```transaction```メソッドを使用してトランザクション処理を実行すれば良い．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
-
-class ExampleRepository extends Repository implements DomainExampleRepository
-{
-    /**
-     * @var ExampleDTO
-     */
-    private ExampleDTO $exampleDTO;
-    
-    public function __construct(ExampleDTO $exampleDTO)
-    {
-        $this->exampleDTO = $exampleDTO;
-    }   
-    
-    /**
-     * Exampleを更新します．
-     *
-     * @param Example $example
-     */
-    public function save(Example $example)
-    {
-        // トランザクション処理を開始する．
-        DB::beginTransaction();
-        
-        try {
-            $this->exampleDTO
-            // オブジェクトにデータを設定する．
-            ->fill([
-                "name"  => $example->name(),
-                "age"   => $example->age(),
-                "email" => $example->email()
-            ])
-            // update文を実行する．
-            ->save();            
-            
-            // コミットメントを実行する．
-            DB::commit();
-        } catch (\Exception $e) {
-            
-            // ロールバックを実行する．
-            DB::rollback();
-        }
-    }
-}
-```
-
-<br>
-
 ### N+1問題の解決
 
 #### ・N+1問題とは
 
-アプリケーションがデータベースにアクセスする時に，
+親テーブルを経由して子テーブルにアクセスする時に，親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと．
 
-```sql
-select * from `departments`;
-select * from `employees` where `employees`.`department_id` = 1 and `employees`.`department_id` is not null;
-select * from `employees` where `employees`.`department_id` = 2 and `employees`.`department_id` is not null;
-select * from `employees` where `employees`.`department_id` = 3 and `employees`.`department_id` is not null;
+#### ・問題が起こる実装
+
+反復処理の中で子テーブルのレコードにアクセスしてしまう場合，N+1問題が起こる．内部的には，親テーブルへのSQLと，Where句を持つSQLが親テーブルのレコード数分だけ発行される．
+
+```php
+<?php
+    
+$departments = Department::all(); // 親テーブルにSQLを発行（1回）
+
+foreach($departments as $department) {
+    $department->employees; // 親テーブルのレコード数分のWhere句SQLが発行される（N回）
+}
+```
+
+```shell
+# 1回
+select * from `departments`
+
+# N回
+select * from `employees` where `department_id` = 1
+select * from `employees` where `department_id` = 2
+select * from `employees` where `department_id` = 3
 ...
 ```
 
 #### ・解決方法
+
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのModelクラスのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+
+```php
+<?php
+
+$departments = Department::with('employees')->get(); // SQL発行（2回）
+
+foreach($departments as $department) {
+    $department->employees; // キャッシュを使うのでSQLの発行はされない（0回）
+}
+```
+
+```shell
+# 2回
+select * from `departments`
+select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
+```
 
 <br>
 
@@ -1885,7 +1797,7 @@ final class CouldNotSendMessageException extends \Exception
 
 ## 07. Facade
 
-### 静的プロキシ
+### Facade
 
 #### ・Facadeとは
 
@@ -2012,6 +1924,721 @@ $result = Example::method();
 | Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html) |                          |
 | View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html) | `view`                   |
 | View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html) |                          |
+
+<br>
+
+### Authファサード
+
+#### ・Authファサードとは
+
+認証に関する処理を提供する．Laravelからあらかじめ提供されている認証を使用しない場合，Authファサードを使用して，認証ロジックを実装できる．
+
+#### ・Digest認証
+
+パスワードを```attempt```メソッドを用いて自動的にハッシュ化し，データベースのハッシュ値と照合する．認証が終わると，認証セッションを開始する．```intended```メソッドで，ログイン後の初期ページにリダイレクトする．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    /**
+     * 認証を処理します．
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only("email", "password");
+
+        if (Auth::attempt($credentials)) {
+            // 認証に成功した
+            return redirect()->intended("dashboard");
+        }
+    }
+}
+
+```
+
+#### ・認証処理後のリダイレクト
+
+AfterMiddlewareとして，認証処理後にホームページにリダイレクトする必要がある．認証には，Guardインターフェースの実装クラスがもつ```check```メソッドを使用する．Guardインターフェースの実装クラスを取得するために，Authファサードまたは```auth```ヘルパーを使用する．
+
+````php
+<?php
+
+namespace App\Http\Middleware\Auth;
+
+use App\Providers\RouteServiceProvider;
+use Closure;
+use Illuminate\Support\Facades\Auth;
+
+class RedirectIfAuthenticated
+{
+    /**
+     * 認証後にアクセスできるページにリダイレクトします．
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $guard
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $guard = null)
+    {
+        if (Auth::guard($guard)->check()) {
+            
+            // 認証後のホームページにリダイレクトします．
+            return redirect(RouteServiceProvider::HOME);
+        }
+        
+        // 以下の実装でもよい
+        // if (auth()->guard($guard)->check()) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
+
+        return $next($request);
+    }
+}
+````
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    // 〜 省略 〜
+
+    /**
+     * 認証後のホームページURL
+     *
+     * @var string
+     */
+    public const HOME = "/dashboard";
+    
+    // 〜 省略 〜
+}
+```
+
+<br>
+
+### DBファサード
+
+#### ・DBファサードとは
+
+データベースの操作処理を提供する．Eloquentの代わりに，DBファサードを使用しても良い．Active Recordのロジックを持たないため，Repositoryパターンのロジックとして使用できる．
+
+#### ・```transaction```メソッド
+
+一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．ちなみに，トランザクション処理は必須ではなく，使用するとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．
+
+参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Entity\Example;
+use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
+use App\Infrastructure\DTO\ExampleDTO;
+
+class ExampleRepository extends Repository implements DomainExampleRepository
+{
+    /**
+     * @var ExampleDTO
+     */
+    private ExampleDTO $exampleDTO;
+    
+    public function __construct(ExampleDTO $exampleDTO)
+    {
+        $this->exampleDTO = $exampleDTO;
+    }   
+    
+    /**
+     * Exampleを更新します．
+     *
+     * @param Example $example
+     */
+    public function save(Example $example)
+    {   
+        // 一連のトランザクション処理を実行する．
+        DB::transaction(function () use ($exampleData, $example){
+            
+            // オブジェクトにデータを設定する．
+            $exampleData->fill([
+                "name"  => $example->name(),
+                "age"   => $example->age(),
+                "email" => $example->email()
+            ])
+            // update文を実行する．
+            ->save();
+            
+        });
+    }
+}
+```
+
+#### ・```beginTransaction```メソッド，```commit```メソッド，```rollback```メソッド，
+
+トランザクション処理の各操作を実行する．基本的には，```transaction```メソッドを使用してトランザクション処理を実行すれば良い．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Entity\Example;
+use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
+use App\Infrastructure\DTO\ExampleDTO;
+
+class ExampleRepository extends Repository implements DomainExampleRepository
+{
+    /**
+     * @var ExampleDTO
+     */
+    private ExampleDTO $exampleDTO;
+    
+    public function __construct(ExampleDTO $exampleDTO)
+    {
+        $this->exampleDTO = $exampleDTO;
+    }   
+    
+    /**
+     * Exampleを更新します．
+     *
+     * @param Example $example
+     */
+    public function save(Example $example)
+    {
+        // トランザクション処理を開始する．
+        DB::beginTransaction();
+        
+        try {
+            $this->exampleDTO
+            // オブジェクトにデータを設定する．
+            ->fill([
+                "name"  => $example->name(),
+                "age"   => $example->age(),
+                "email" => $example->email()
+            ])
+            // update文を実行する．
+            ->save();            
+            
+            // コミットメントを実行する．
+            DB::commit();
+        } catch (\Exception $e) {
+            
+            // ロールバックを実行する．
+            DB::rollback();
+        }
+    }
+}
+```
+
+<br>
+
+### Routeファサード
+
+#### ・Routeファサードとは
+
+ルーティング処理を提供する．
+
+#### ・```namespace```メソッド
+
+コントローラをコールする時に，グループ内で同じ名前空間を指定する．『```App\Http\Controllers```』は内部で読み込まれているので，これ以下の名前空間を指定すればよい．
+
+**＊実装例＊**
+
+```php
+<?php
+
+// 『App\Http\Controllers』は内部で読み込まれる．
+Route::namespace("Auth")->group(function () {
+    
+    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
+    Route::get("/user", "UserController@index");
+    Route::post("/user/{userId}", "UserController@createUser");
+});
+```
+
+#### ・```middleware```メソッド
+
+コントローラへのルーティング時に実行するMiddlewareクラスを設定する．引数として，```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する．
+
+**＊実装例＊**
+
+認証方法としてweb guardを使用する場合，```auth```エイリアスを設定する．
+
+```php
+<?php
+
+// authエイリアスのMiddlewareクラスが使用される．
+Route::middleware("auth")->group(function () {
+    
+    Route::get("/user", "App\Http\Controllers\Auth\UserController@index");
+    Route::post("/user/{userId}", "App\Http\Controllers\Auth\UserController@createUser");
+});
+```
+
+デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが関連付けられている．
+
+
+```php
+<?php
+
+namespace App\Http;
+
+use App\Http\Middleware\BeforeMiddleware\ArticleIdConverterMiddleware;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    
+    // ～ 省略 ～
+    
+    protected $routeMiddleware = [
+        "auth"                 => \App\Http\Middleware\Authenticate::class,
+        "auth.basic"           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        "bindings"             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        "cache.headers"        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        "can"                  => \Illuminate\Auth\Middleware\Authorize::class,
+        "guest"                => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        "password.confirm"     => \Illuminate\Auth\Middleware\RequirePassword::class,
+        "signed"               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        "throttle"             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        "verified"             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+    ];
+    
+    // ～ 省略 ～    
+    
+}
+```
+
+一方で，認証方法としてapi guardを使用する場合，```auth:api```エイリアスを設定する．
+
+```php
+<?php
+
+// authエイリアスのMiddlewareクラスが使用される．
+Route::middleware("auth:api")->group(function () {
+    // 何らのルーティング
+});
+```
+
+#### ・```group```メソッド
+
+複数のグループを組み合わせる場合，```group```メソッドを使用する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+// 複数のグループを組み合わせる．
+Route::group(["namespace" => "Auth" , "middleware" => "auth"], (function () {
+    
+    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
+    // authエイリアスのMiddlewareクラスが使用される．
+    Route::get("/user", "UserController@index");
+    Route::post("/user/{userId}", "UserController@createUser");
+});
+```
+
+#### ・```http```メソッド
+
+Routeクラスには，各HTTPメソッドをルーティングできるメソッドが用意されている．
+
+```php
+<?php
+
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+```
+
+各メソッドの第二引数として，『```{コントローラ名}@{メソッド名}```』を渡すと，コントローラに定義してあるメソッドをコールできる．
+
+**＊実装例＊**
+
+```php
+Route::get("/user", "UserController@index");
+```
+
+#### ・```where```メソッド
+
+パスパラメータの形式の制約を，正規表現で設定できる．
+
+**＊実装例＊**
+
+userIdの形式を『0〜9が一つ以上』に設定している．
+
+```php
+<?php
+
+Route::namespace("Auth")->group(function () {
+
+    Route::get("/user", "UserController@index")
+    
+    // userIdの形式を『0〜9が一つ以上』に設定
+    Route::post("/user/{userId}", "UserController@createUser")
+        ->where("user_id", "[0-9]+");
+});
+```
+
+RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * ルートモデル結合、パターンフィルタなどの定義
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Route::pattern("articleId", "[0-9]+");
+
+        parent::boot();
+    }
+}
+```
+
+#### ・ヘルスチェックへの対応
+
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
+
+**＊実装例＊**
+
+```php
+<?php
+
+# ヘルスチェックが送信されるパス
+Route::get("/healthcheck", function () {
+    return response("success", 200);
+});
+```
+
+<br>
+
+### Storageファサード
+
+#### ・Storageファサードとは
+
+ファイルの入出力処理を提供する．
+
+#### ・ローカルストレージ（非公開）の場合
+
+ファイルを```/storage/app```ディレクトリに保存する．このファイルは非公開であり，リクエストによってアクセスできない．事前に，シンボリックリンクを作成する，また，```filesystems.php```ファイルに設定が必要である．
+
+```shell
+$ php artisan storage:link
+```
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 省略 ～
+
+    "disks" => [
+
+        "local" => [
+            "driver" => "local",
+            "root"   => storage_path("app"),
+        ],
+        
+     // ～ 省略 ～
+        
+    // シンボリックリンクの関係を定義
+    "links" => [
+        
+        // 『/var/www/project/public/storage』から『/var/www/project/storage/app/public』へのリンク
+        public_path("storage") => storage_path("app/public"),
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてlocalディスクを指定する．```file.txt```ファイルを```storage/app/file.txt```として保存する．
+
+```php
+Storage::disk("local")->put("file.txt", "file.txt");
+```
+
+ただし，```filesytems.php```ファイルでデフォルトディスクは```local```になっているため，```put```メソッドを直接使用できる．
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+#### ・ローカルストレージ（公開）の場合
+
+ファイルを```storage/app/public```ディレクトリに保存する．このファイルは公開であり，リクエストによってアクセスできる．事前に，```filesystems.php```ファイルに設定が必要である．
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 省略 ～
+
+    "disks" => [
+        
+        // ～ 省略 ～
+
+        "public" => [
+            "driver"     => "local",
+            "root"       => storage_path("app/public"),
+            "url"        => env("APP_URL") . "/storage",
+            "visibility" => "public",
+        ],
+
+        // ～ 省略 ～
+        
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてpublicディスクを指定する．また，```file.txt```ファイルを```storage/app/public/file.txt```として保存する．
+
+```php
+Storage::disk("s3")->put("file.txt", "file.txt");
+```
+
+ただし，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+
+```php
+FILESYSTEM_DRIVER=s3
+```
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Storage;
+
+class FileSystemPublicController extends Controller
+{
+    /**
+     * ファイルをpublicディスクに保存する
+     */
+    public function putContentsInPublicDisk()
+    {
+        // 保存先をpublicに設定する．
+        $disk = Storage::disk("public");
+
+        // 保存対象のファイルを読み込む
+        $file_path = "/path/to/public/example.jpg"
+        $contents = file_get_contents($file_path);
+
+        // 保存先パス（ディレクトリ＋ファイル名）
+        $saved_file_path = "/images/example.jpg";
+
+        // example.jpgを『/images/example.jpg』に保存
+        // ルートディレクトリは『/storage/app/public』
+        $disk->put($saved_file_path, $contents);
+    }
+}
+```
+
+#### ・クラウドストレージの場合
+
+ファイルをS3バケット内のディレクトリに保存する．環境変数を```.env```ファイルに実装する必要がある．```filesystems.php```ファイルから，指定された設定が選択される．AWSアカウントの認証情報を環境変数として設定するか，またはS3アクセスポリシーをEC2やECSタスクに付与することにより，S3にアクセスできるようになる．事前に，```filesystems.php```ファイルに設定が必要である．
+
+```shell
+# S3アクセスポリシーをEC2やECSタスクに付与してもよい
+AWS_ACCESS_KEY_ID=<アクセスキー>
+AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
+AWS_DEFAULT_REGION=<リージョン>
+
+# 必須
+AWS_BUCKET=<バケット名>
+```
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 省略 ～
+    
+    "disks" => [
+
+        // ～ 省略 ～
+
+        "s3" => [
+            "driver"   => "s3",
+            "key"      => env("AWS_ACCESS_KEY_ID"),
+            "secret"   => env("AWS_SECRET_ACCESS_KEY"),
+            "region"   => env("AWS_DEFAULT_REGION"),
+            "bucket"   => env("AWS_BUCKET"),
+            "url"      => env("AWS_URL"),
+            "endpoint" => env("AWS_ENDPOINT"),
+        ],
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてs3ディスクを指定する．また，```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する．
+
+```php
+Storage::disk("s3")->put("file.txt", "file.txt");
+```
+
+他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+
+```shell
+FILESYSTEM_DRIVER=s3
+```
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+<br>
+
+### Validatorファサード
+
+#### ・Validatorファサードとは
+
+バリデーション処理を提供する．Requestクラスの```validated```メソッドや```validate```メソッドの代わりに，Validatorファサードを使用しても良い．
+
+#### ・Validatorクラス，```fails```メソッド
+
+Validateファサードの```make```メソッドを使用して，ルールを定義する．この時，第一引数で，バリデーションを行うリクエストデータを渡す．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．次に，```fails```メソッドを使用して，バリデーションでエラーが起こった場合の処理を定義する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class ExampleController extends Controller
+{
+    /**
+     * 新しいブログポストの保存
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // ルールの定義
+        $validator = Validator::make(
+            $request->all(), [
+            "title" => "required|unique:posts|max:255",
+            "body"  => "required",
+        ]);
+
+        // バリデーション時にエラーが起こった場合
+        if ($validator->fails()) {
+            // 指定したページにリダイレクト
+            // validatorを渡すことでエラーメッセージをViewに渡せる．
+            return redirect("error")->withErrors($validator)
+                ->withInput();
+        }
+
+        $exampleRepository = new ExampleRepository;
+        $exampleRepository->update(
+            $validator->valid()
+        );
+
+        return response()->view("example")
+            ->setStatusCode(200);
+    }
+}
+```
+
+#### ・```validate```メソッド
+
+Validatorクラスの```validate```メソッドを使用すると，Requestクラスの```validate```メソッドと同様の処理が実行される．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class ExampleController extends Controller
+{
+    /**
+     * 新しいブログポストの保存
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // 元のページにリダイレクトする場合は，validateメソッドを使用する．
+        $validator = Validator::make(
+            $request->all(),
+            [
+                "title" => "required|unique:posts|max:255",
+                "body"  => "required",
+            ])->validate();
+
+        // バリデーション時にエラーが起こった場合
+        if ($validator->fails()) {
+            // 指定したページにリダイレクト
+            // validatorを渡すことでエラーメッセージをViewに渡せる．
+            return redirect("error")->withErrors($validator)
+                ->withInput();
+        }
+
+        $exampleRepository = new ExampleRepository;
+        $exampleRepository->update(
+            $validator->valid()
+        );
+
+        return response()->view("example")
+            ->setStatusCode(200);
+    }
+}
+```
 
 <br>
 
@@ -2184,195 +2811,6 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 09. File Systems
-
-### ファイルの操作
-
-#### ・ローカルストレージ（非公開）の場合
-
-ファイルを```/storage/app```ディレクトリに保存する．このファイルは非公開であり，リクエストによってアクセスできない．事前に，シンボリックリンクを作成する必要がある．
-
-```shell
-$ php artisan storage:link
-```
-
-```php
-return [
-
-    "default" => env("FILESYSTEM_DRIVER", "local"),
-    
-     // ～ 省略 ～
-
-    "disks" => [
-
-        "local" => [
-            "driver" => "local",
-            "root"   => storage_path("app"),
-        ],
-        
-     // ～ 省略 ～
-        
-    // シンボリックリンクの関係を定義
-    "links" => [
-        
-        // 『/var/www/project/public/storage』から『/var/www/project/storage/app/public』へのリンク
-        public_path("storage") => storage_path("app/public"),
-    ],
-];
-```
-
-**＊実装例＊**
-
-Storageファサードの```disk```メソッドを用いてlocalディスクを指定する．```file.txt```ファイルを```storage/app/file.txt```として保存する．
-
-```php
-Storage::disk("local")->put("file.txt", "file.txt");
-```
-
-ただし，```filesytems.php```ファイルでデフォルトディスクは```local```になっているため，```put```メソッドを直接使用できる．
-
-```php
-Storage::put("file.txt", "file.txt");
-```
-
-#### ・ローカルストレージ（公開）の場合
-
-ファイルを```storage/app/public```ディレクトリに保存する．このファイルは公開であり，リクエストによってアクセスできる．
-
-```php
-return [
-
-    "default" => env("FILESYSTEM_DRIVER", "local"),
-    
-     // ～ 省略 ～
-
-    "disks" => [
-        
-        // ～ 省略 ～
-
-        "public" => [
-            "driver"     => "local",
-            "root"       => storage_path("app/public"),
-            "url"        => env("APP_URL") . "/storage",
-            "visibility" => "public",
-        ],
-
-        // ～ 省略 ～
-        
-    ],
-];
-```
-
-**＊実装例＊**
-
-Storageファサードの```disk```メソッドを用いてpublicディスクを指定する．また，```file.txt```ファイルを```storage/app/public/file.txt```として保存する．
-
-```php
-Storage::disk("s3")->put("file.txt", "file.txt");
-```
-
-ただし，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
-
-```php
-FILESYSTEM_DRIVER=s3
-```
-
-```php
-Storage::put("file.txt", "file.txt");
-```
-
-**＊実装例＊**
-
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Storage;
-
-class FileSystemPublicController extends Controller
-{
-    /**
-     * ファイルをpublicディスクに保存する
-     */
-    public function putContentsInPublicDisk()
-    {
-        // 保存先をpublicに設定する．
-        $disk = Storage::disk("public");
-
-        // 保存対象のファイルを読み込む
-        $file_path = "/path/to/public/example.jpg"
-        $contents = file_get_contents($file_path);
-
-        // 保存先パス（ディレクトリ＋ファイル名）
-        $saved_file_path = "/images/example.jpg";
-
-        // example.jpgを『/images/example.jpg』に保存
-        // ルートディレクトリは『/storage/app/public』
-        $disk->put($saved_file_path, $contents);
-    }
-}
-```
-
-#### ・クラウドストレージの場合
-
-ファイルをS3バケット内のディレクトリに保存する．環境変数を```.env```ファイルに実装する必要がある．```filesystems.php```ファイルから，指定された設定が選択される．AWSアカウントの認証情報を環境変数として設定するか，またはS3アクセスポリシーをEC2やECSタスクに付与することにより，S3にアクセスできるようになる．
-
-```shell
-# S3アクセスポリシーをEC2やECSタスクに付与してもよい
-AWS_ACCESS_KEY_ID=<アクセスキー>
-AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
-AWS_DEFAULT_REGION=<リージョン>
-
-# 必須
-AWS_BUCKET=<バケット名>
-```
-
-```php
-return [
-
-    "default" => env("FILESYSTEM_DRIVER", "local"),
-    
-     // ～ 省略 ～
-    
-    "disks" => [
-
-        // ～ 省略 ～
-
-        "s3" => [
-            "driver"   => "s3",
-            "key"      => env("AWS_ACCESS_KEY_ID"),
-            "secret"   => env("AWS_SECRET_ACCESS_KEY"),
-            "region"   => env("AWS_DEFAULT_REGION"),
-            "bucket"   => env("AWS_BUCKET"),
-            "url"      => env("AWS_URL"),
-            "endpoint" => env("AWS_ENDPOINT"),
-        ],
-    ],
-];
-```
-
-**＊実装例＊**
-
-Storageファサードの```disk```メソッドを用いてs3ディスクを指定する．また，```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する．
-
-```php
-Storage::disk("s3")->put("file.txt", "file.txt");
-```
-
-他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
-
-```shell
-FILESYSTEM_DRIVER=s3
-```
-
-```php
-Storage::put("file.txt", "file.txt");
-```
-
-<br>
-
 ## 10-01. HTTP｜Auth
 
 詳しくは，```auth```ヘルパーを参考にせよ．
@@ -2537,74 +2975,6 @@ class ExampleAfterMiddleware
 
 <br>
 
-### Auth
-
-#### ・認証処理後のリダイレクト
-
-AfterMiddlewareとして，認証処理後にホームページにリダイレクトする必要がある．認証には，Guardインターフェースの実装クラスがもつ```check```メソッドを使用する．Guardインターフェースの実装クラスを取得するために，Authファサードまたは```auth```ヘルパーを使用する．
-
-````php
-<?php
-
-namespace App\Http\Middleware\Auth;
-
-use App\Providers\RouteServiceProvider;
-use Closure;
-use Illuminate\Support\Facades\Auth;
-
-class RedirectIfAuthenticated
-{
-    /**
-     * 認証後にアクセスできるページにリダイレクトします．
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check()) {
-            
-            // 認証後のホームページにリダイレクトします．
-            return redirect(RouteServiceProvider::HOME);
-        }
-        
-        // 以下の実装でもよい
-        // if (auth()->guard($guard)->check()) {
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
-
-        return $next($request);
-    }
-}
-````
-
-```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-
-class RouteServiceProvider extends ServiceProvider
-{
-    // 〜 省略 〜
-
-    /**
-     * 認証後のホームページURL
-     *
-     * @var string
-     */
-    public const HOME = "/dashboard";
-    
-    // 〜 省略 〜
-}
-```
-
-<br>
-
 ## 10-04. HTTP｜Request
 
 ### artisanコマンドによる操作
@@ -2622,7 +2992,9 @@ $ php artisan make:request <Request名>
 
 #### ・```rules```メソッド
 
-FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．また，
+FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．決められた複数の値の中で検証を行う場合は，Ruleクラスの```in```メソッドを使用する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．```in```メソッドについては，以下のリンクを参考にせよ．
+
+参考：https://readouble.com/laravel/8.x/ja/validation.html#rule-in
 
 **＊実装例＊**
 
@@ -2644,9 +3016,70 @@ class ExampleRequest extends FormRequest
     {
         // ルールの定義
         return [
-            "title" => "required|unique:posts|max:255",
+            "title" => ["required", "unique:posts", "max:255"],
             "body"  => "required",
+            "type"  => ["required", Rule::in([1, 2, 3])]
+            "tel_number"  => ["required", new TelNumberRule()]
         ];
+    }
+}
+```
+
+独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義し，```message```メソッドでバリデーションメッセージを定義する．```resources/lang/ja/validation.php```ファイルの日本語メッセージを参照することもできる．独自ルールの定義方法については以下を参考のリンクを参考にせよ．
+
+参考：https://readouble.com/laravel/8.x/ja/validation.html
+
+なお，言語設定を行わない場合，標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため，```app.php```ファイルで言語を変更することと，日本語翻訳```validation.php```ファイルが必要である．
+
+```php
+<?php
+
+return [
+
+    # 〜 省略 〜
+
+    'locale' => 'ja'
+    
+    # 〜 省略 〜
+    
+];
+```
+
+日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
+
+参考：https://readouble.com/laravel/8.x/ja/validation-php.html
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class Uppercase implements Rule
+{
+    /**
+     * バリデーションの成功を判定
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return strtoupper($value) === $value;
+    }
+
+    /**
+     * バリデーションエラーメッセージの取得
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return trans('validation.uppercase');
     }
 }
 ```
@@ -2694,6 +3127,8 @@ class ExampleController extends Controller
 参考：https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
 
 **＊実装例＊**
+
+
 
 ```php
 <?php
@@ -2777,111 +3212,6 @@ https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
 <br>
 
-### Validatorファサード
-
-#### ・Validatorファサードとは
-
-ルールを定義し，バリデーションを実行する．Requestクラスの```validated```メソッドや```validate```メソッドの代わりに，Validatorファサードを使用しても良い．
-
-#### ・Validatorクラス，```fails```メソッド
-
-Validateファサードの```make```メソッドを使用して，ルールを定義する．この時，第一引数で，バリデーションを行うリクエストデータを渡す．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．次に，```fails```メソッドを使用して，バリデーションでエラーが起こった場合の処理を定義する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-
-class ExampleController extends Controller
-{
-    /**
-     * 新しいブログポストの保存
-     *
-     * @param Request $request
-     */
-    public function update(Request $request)
-    {
-        // ルールの定義
-        $validator = Validator::make(
-            $request->all(), [
-            "title" => "required|unique:posts|max:255",
-            "body"  => "required",
-        ]);
-
-        // バリデーション時にエラーが起こった場合
-        if ($validator->fails()) {
-            // 指定したページにリダイレクト
-            // validatorを渡すことでエラーメッセージをViewに渡せる．
-            return redirect("error")->withErrors($validator)
-                ->withInput();
-        }
-
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update(
-            $validator->valid()
-        );
-
-        return response()->view("example")
-            ->setStatusCode(200);
-    }
-}
-```
-
-#### ・```validate```メソッド
-
-Validatorクラスの```validate```メソッドを使用すると，Requestクラスの```validate```メソッドと同様の処理が実行される．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-
-class ExampleController extends Controller
-{
-    /**
-     * 新しいブログポストの保存
-     *
-     * @param Request $request
-     */
-    public function update(Request $request)
-    {
-        // 元のページにリダイレクトする場合は，validateメソッドを使用する．
-        $validator = Validator::make(
-            $request->all(),
-            [
-                "title" => "required|unique:posts|max:255",
-                "body"  => "required",
-            ])->validate();
-
-        // バリデーション時にエラーが起こった場合
-        if ($validator->fails()) {
-            // 指定したページにリダイレクト
-            // validatorを渡すことでエラーメッセージをViewに渡せる．
-            return redirect("error")->withErrors($validator)
-                ->withInput();
-        }
-
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update(
-            $validator->valid()
-        );
-
-        return response()->view("example")
-            ->setStatusCode(200);
-    }
-}
-```
-
-<br>
-
 ### セッション
 
 #### ・セッション変数の取得
@@ -2950,46 +3280,9 @@ public function authorize()
 }
 ```
 
-<br>
+#### ・Authファサード
 
-### Authファサードによる認証
-
-#### ・Authファサードとは
-
-Laravelからあらかじめ提供されている認証を使用しない場合，Authファサードを使用して，認証ロジックを実装できる．
-
-#### ・Digest認証
-
-パスワードを```attempt```メソッドを用いて自動的にハッシュ化し，データベースのハッシュ値と照合する．認証が終わると，認証セッションを開始する．```intended```メソッドで，ログイン後の初期ページにリダイレクトする．
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-class LoginController extends Controller
-{
-    /**
-     * 認証を処理します．
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->only("email", "password");
-
-        if (Auth::attempt($credentials)) {
-            // 認証に成功した
-            return redirect()->intended("dashboard");
-        }
-    }
-}
-
-```
+後述の説明を参考にせよ．
 
 <br>
 
@@ -3856,201 +4149,6 @@ class Kernel extends HttpKernel
 ヘルスチェックなど，API認証が不要なルーティング処理を実装する．
 
 <br>
-
-### Routeファサード
-
-#### ・Routeファサードとは
-
-コントローラへのルーティングを定義する．
-
-#### ・```namespace```メソッド
-
-コントローラをコールする時に，グループ内で同じ名前空間を指定する．『```App\Http\Controllers```』は内部で読み込まれているので，これ以下の名前空間を指定すればよい．
-
-**＊実装例＊**
-
-```php
-<?php
-
-// 『App\Http\Controllers』は内部で読み込まれる．
-Route::namespace("Auth")->group(function () {
-    
-    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
-    Route::get("/user", "UserController@index");
-    Route::post("/user/{userId}", "UserController@createUser");
-});
-```
-
-#### ・```middleware```メソッド
-
-コントローラへのルーティング時に実行するMiddlewareクラスを設定する．引数として，```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する．
-
-**＊実装例＊**
-
-認証方法としてweb guardを使用する場合，```auth```エイリアスを設定する．
-
-```php
-<?php
-
-// authエイリアスのMiddlewareクラスが使用される．
-Route::middleware("auth")->group(function () {
-    
-    Route::get("/user", "App\Http\Controllers\Auth\UserController@index");
-    Route::post("/user/{userId}", "App\Http\Controllers\Auth\UserController@createUser");
-});
-```
-
-デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが関連付けられている．
-
-
-```php
-<?php
-
-namespace App\Http;
-
-use App\Http\Middleware\BeforeMiddleware\ArticleIdConverterMiddleware;
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
-class Kernel extends HttpKernel
-{
-    
-    // ～ 省略 ～
-    
-    protected $routeMiddleware = [
-        "auth"                 => \App\Http\Middleware\Authenticate::class,
-        "auth.basic"           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        "bindings"             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        "cache.headers"        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        "can"                  => \Illuminate\Auth\Middleware\Authorize::class,
-        "guest"                => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        "password.confirm"     => \Illuminate\Auth\Middleware\RequirePassword::class,
-        "signed"               => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        "throttle"             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        "verified"             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
-    
-    // ～ 省略 ～    
-    
-}
-```
-
-一方で，認証方法としてapi guardを使用する場合，```auth:api```エイリアスを設定する．
-
-```php
-<?php
-
-// authエイリアスのMiddlewareクラスが使用される．
-Route::middleware("auth:api")->group(function () {
-    // 何らのルーティング
-});
-```
-
-#### ・```group```メソッド
-
-複数のグループを組み合わせる場合，```group```メソッドを使用する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-// 複数のグループを組み合わせる．
-Route::group(["namespace" => "Auth" , "middleware" => "auth"], (function () {
-    
-    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
-    // authエイリアスのMiddlewareクラスが使用される．
-    Route::get("/user", "UserController@index");
-    Route::post("/user/{userId}", "UserController@createUser");
-});
-```
-
-#### ・```http```メソッド
-
-Routeクラスには，各HTTPメソッドをルーティングできるメソッドが用意されている．
-
-```php
-<?php
-
-Route::get($uri, $callback);
-Route::post($uri, $callback);
-Route::put($uri, $callback);
-Route::patch($uri, $callback);
-Route::delete($uri, $callback);
-Route::options($uri, $callback);
-```
-
-各メソッドの第二引数として，『```{コントローラ名}@{メソッド名}```』を渡すと，コントローラに定義してあるメソッドをコールできる．
-
-**＊実装例＊**
-
-```php
-Route::get("/user", "UserController@index");
-```
-
-#### ・```where```メソッド
-
-パスパラメータの形式の制約を，正規表現で設定できる．
-
-**＊実装例＊**
-
-userIdの形式を『0〜9が一つ以上』に設定している．
-
-```php
-<?php
-
-Route::namespace("Auth")->group(function () {
-
-    Route::get("/user", "UserController@index")
-    
-    // userIdの形式を『0〜9が一つ以上』に設定
-    Route::post("/user/{userId}", "UserController@createUser")
-        ->where("user_id", "[0-9]+");
-});
-```
-
-RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
-
-```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-
-class RouteServiceProvider extends ServiceProvider
-{
-    /**
-     * ルートモデル結合、パターンフィルタなどの定義
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Route::pattern("articleId", "[0-9]+");
-
-        parent::boot();
-    }
-}
-```
-
-<br>
-
-### ヘルスチェック
-
-#### ・単純な```200```レスポンス
-
-ALBやGlobal Acceleratorから```/healthcheck```パスに対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを送信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
-
-**＊実装例＊**
-
-```php
-<?php
-
-Route::get("/healthcheck", function () {
-    return response("success", 200);
-});
-```
 
 <br>
 

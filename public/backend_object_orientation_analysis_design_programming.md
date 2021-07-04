@@ -175,7 +175,7 @@
 
 #### ・ER図：Entity Relation Diagramとは
 
-データベースのオブジェクト指向分析において，エンティティ間の関係を表すために用いられるダイアグラム図．『IE 記法』と『IDEF1X 記法』が一般的に用いられる．
+データベースの設計に用いられるダイアグラム図．オブジェクトが保持するデータの関係性を表す．『IE 記法』と『IDEF1X 記法』が一般的に用いられる．
 
 ![ER図（IE記法）](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ER図（IE記法）.png)
 
