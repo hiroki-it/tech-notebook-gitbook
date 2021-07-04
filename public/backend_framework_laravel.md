@@ -3018,8 +3018,8 @@ class ExampleRequest extends FormRequest
         return [
             "title" => ["required", "unique:posts", "max:255"],
             "body"  => "required",
-            "type"  => ["required", Rule::in([1, 2, 3])]
-            "tel_number"  => ["required", new TelNumberRule()]
+            "type"  => ["required", Rule::in([1, 2, 3])],
+            "author"  => ["required", "string", new UppercaseRule()]
         ];
     }
 }
@@ -3027,7 +3027,7 @@ class ExampleRequest extends FormRequest
 
 独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義し，```message```メソッドでバリデーションメッセージを定義する．```resources/lang/ja/validation.php```ファイルの日本語メッセージを参照することもできる．独自ルールの定義方法については以下を参考のリンクを参考にせよ．
 
-参考：https://readouble.com/laravel/8.x/ja/validation.html
+参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 なお，言語設定を行わない場合，標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため，```app.php```ファイルで言語を変更することと，日本語翻訳```validation.php```ファイルが必要である．
 
@@ -3058,7 +3058,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Uppercase implements Rule
+class UppercaseRule implements Rule
 {
     /**
      * バリデーションの成功を判定
