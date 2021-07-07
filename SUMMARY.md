@@ -29,8 +29,6 @@
     * [▶ ︎デバッグのコツ](public/backend_debug.md)
 * Go
   * [▶ 文法](public/backend_go.md)
-* Node.js
-  * [▶ 文法](public/backend_nodejs.md)
 * フロントエンドとバックエンド間のデータ通信
   * [▶ ︎認証と認可](public/frontend_and_backend_authentication_authorization.md)
   * [▶ ︎JSON](public/frontend_and_backend_json.md)
@@ -72,6 +70,7 @@
     * AWS
       * [▶ ︎Amazon Web Service](public/infrastructure_cloud_computing_aws.md)
       * [▶ ︎API Gatewayインポート機能](public/infrastructure_cloud_computing_aws_api_gateway_import.md)
+      * [▶ ︎Lambda関数](public/infrastructure_cloud_computing_aws_lambda_function.md)
     * GCP
       * [▶ ︎Google Cloud Platform](public/infrastructure_cloud_computing_gcp.md)
 * IaC
