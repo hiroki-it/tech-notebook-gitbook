@@ -110,7 +110,9 @@
 
 2. Firelensコンテナは，これを受信する．
 
-3. 
+3. コンテナ内で稼働するFluentbitのログパイプラインのINPUTに渡され，Fluentbitはログを処理する．
+
+4. OUTPUTプロセスに渡され，Fulentbitは指定した外部サービスにログを転送する．
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
@@ -192,7 +194,9 @@ FROM amazon/aws-for-fluent-bit:2.15.1
 
 #### ・```stream_processor.conf```ファイル
 
-Firelensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスク ID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．
+Firelensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．
+
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ```shell
 # Laravelコンテナのログへのタグ付け

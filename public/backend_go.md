@@ -137,7 +137,11 @@ Goでは文の処理はセミコロンで区切られる．ただし，セミコ
 
 #### ・ファイル名
 
-小文字一単語またはスネークケースで命名する．
+小文字一単語またはスネークケースで命名する．ファイル名とパッケージ名は合わせる必要はないが，独自ルールを設けても良い．例えばドメイン駆動設計の場合に，ルートエンティティのファイル名とパッケージ名を合わせるように工夫できる．
+
+参考：https://ja.stackoverflow.com/q/41599
+
+参考：
 
 #### ・関数，type，構造体
 
@@ -147,7 +151,10 @@ Goでは文の処理はセミコロンで区切られる．ただし，セミコ
 
 構造体名の頭一文字または頭二文字を取って命名する．アプリケーション内で構造体名の頭文字が重複すると，同じレシーバ名の構造体が乱立してしまうため，これを防ぐために二文字を取るとよい．また，修飾語と組み合わせて構成される構造体名の場合，被修飾語の頭二文字を取る．オブジェクト指向で使われる『```this```』『```self```』
 
-参考：https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
+参考：
+
+- https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
+- https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
 **＊例＊**
 
@@ -415,13 +422,12 @@ $ go test -cover ./...
 
 #### ・参照型に属するデータ型
 
-| データ型 | 表記     | 初期値                         |
-| -------- | -------- | ------------------------------ |
-| ポインタ | ```*```  | ```(nil)```                    |
-| スライス | ```[]``` | ```<nil>```（要素数，容量：0） |
-| マップ   |          |                                |
-| チャネル |          |                                |
-| 関数     |          |                                |
+| データ型 | 表記     | 初期値                       |
+| -------- | -------- | ---------------------------- |
+| ポインタ | ```*```  | ```nil```                    |
+| スライス | ```[]``` | ```nil```（要素数，容量：0） |
+| マップ   |          | ```nil```                    |
+| チャネル |          | ```nil```                    |
 
 <br>
 
@@ -1121,6 +1127,56 @@ func main() {
 
 <br>
 
+### マップ
+
+#### ・連想配列
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 『数値:文字列』のマップ
+	m := map[int]string{
+		1: "Hiroki",
+		2: "Hiroko",
+		3: "Hiroshi",
+	}
+
+	fmt.Println(m) // map[1:Hiroki 2:Hiroko 3:Hiroshi]
+
+}
+```
+
+#### ・値の取得
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	m := map[int]string{
+		1: "Hiroki",
+		2: "Hiroko",
+		3: "Hiroshi",
+	}
+
+	// 値の抽出
+	v, ok := m[1]
+
+	// エラーハンドリング
+	if ok != true {
+		fmt.Println("Value is not found.") // Value is not found.
+	}
+
+	fmt.Println(v) // Hiroki
+}
+```
+
+<br>
+
 ### インターフェース
 
 ####  ・埋め込みによる委譲
@@ -1193,7 +1249,7 @@ func main() {
 
 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
-```golang
+```go
 package main
 
 import "fmt"
@@ -3303,86 +3359,9 @@ func main() {
 
 ### aws-lambda-go
 
-#### ・aws-lambda-goとは
+以下のリンクを参考にせよ．
 
-Lambdaで稼働するGoにおいて，Lambdaの機能を使用するためのパッケージのこと．イベント駆動であり，他のAWSリソースのイベントをパラメータとして受信できる．contextパラメータについては以下を参考にせよ．
-
-参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
-
-#### ・SNSイベントの場合
-
-```go
-package main
-
-import (
-	"context"
-    
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-lambda-go/lambdacontext"
-)
-
-func main() {
-	lambda.Start(HandleRequest)
-}
-
-/**
- * Lambdaハンドラー関数
- */
-func HandleRequest(context context.Context, event events.SNSEvent) (string, error) {
-
-}
-```
-
-#### ・CloudWatchイベントの場合
-
-```go
-package main
-
-import (
-	"context"
-    
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-lambda-go/lambdacontext"
-)
-
-func main() {
-	lambda.Start(HandleRequest)
-}
-
-/**
- * Lambdaハンドラー関数
- */
-func HandleRequest(context context.Context, event events.CloudWatchEvent) (string, error) {
-
-}
-```
-
-#### ・APIGatewayイベントの場合
-
-```go
-package main
-
-import (
-	"context"
-    
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/aws/aws-lambda-go/lambdacontext"
-)
-
-func main() {
-	lambda.Start(HandleRequest)
-}
-
-/**
- * Lambdaハンドラー関数
- */
-func HandleRequest(context context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-
-}
-```
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
 
 <br>
 
@@ -3543,6 +3522,18 @@ func (suite *ExampleSuite) TestMethod() {
 <br>
 
 ## 10-03. 外部パッケージの管理
+
+### コマンド
+
+#### ・```go mod tidy```
+
+インポートされているパッケージに合わせて，```go.mod```ファイルと```go.sum```ファイルを更新する．
+
+```shell
+$ go mod tidy
+```
+
+
 
 ### go.modファイル
 
