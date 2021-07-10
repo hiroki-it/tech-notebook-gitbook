@@ -3549,24 +3549,25 @@ go 1.16
 
 #### ・インターネットからインポート
 
-ドメイン名をルートとしたURLと，バージョンタグを用いて，インターネットからパッケージをインポートする．なお，パスの最初にはドットを含ませる必要がある．
+パッケージ名とバージョンタグを用いて，インターネットからパッケージをインポートする．```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される．これは，使用しているパッケージではなく，インポートしているパッケージが依存しているパッケージである．なお，パッケージ名は，使用したいパッケージの```go.mod```ファイルを参照すること．
 
 参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
 
 ```
-module github.com/hiroki-it/example_repository
+module github.com/hiroki-it/repository
 
 go 1.16
 
 require (
-    <ドメインをルートとしたURL> <バージョンタグ>
-    github.com/hoge/fuga v1.3.0
-    github.com/internal/example_repository v1.0.0
+    <パッケージ名> <バージョンタグ>
+    github.com/foo v1.3.0
+    github.com/bar v1.0.0
+    github.com/baz // indirect
 )
 ```
 
 ```go
-import "github.com/hoge/fuga"
+import "github.com/bar"
 
 func main() {
     // 何らかの処理
@@ -3575,18 +3576,16 @@ func main() {
 
 #### ・ローカルPCからインポート
 
-アプリケーションで使用する独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を使用してインポートする必要がある．実際，```unknown revision```のエラーで，バージョンを見つけられない．
+ローカルPCでのみ使用する独自共有パッケージは，インターネット上での自身のリポジトリからインポートせずに，```replace```関数を使用してインポートする必要がある．独自共有の全パッケージでパッケージ名を置換する必要はなく，プロジェクトのルートパスについてのみ定義すればよい．パス実際，```unknown revision```のエラーで，バージョンを見つけられない．
 
 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```
-module example.com/hiroki-it/example_repository/local-pkg
+module example.com/hiroki-it/repository
 
 go 1.16
 
-replace (
-    github.com/example_repository/local-pkg/local-pkg => ./local-pkg
-)
+replace github.com/hiroki-it/example_repository => /
 ```
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．

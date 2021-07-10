@@ -12,6 +12,10 @@ Lambdaで稼働するGoにおいて，Lambdaの機能を使用するためのパ
 
 ### イベントの種類
 
+#### ・イベントの全種類
+
+参考：https://github.com/aws/aws-lambda-go/tree/master/events#overview
+
 #### ・SNSイベントの場合
 
 ```go
@@ -93,11 +97,17 @@ func HandleRequest(context context.Context, event events.APIGatewayProxyRequest)
 
 #### ・正常系
 
+正常系レスポンスの構成要素については以下のリンクを参考にせよ．
+
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
+
+文字列を返却すると，Lambdaはその文字列をそのまま返信する．また，JSONをレスポンスすることもできる．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html#golang-handler-structs
 
 #### ・異常系
 
-Lambdaのエラーレスポンスのステータスコードは以下の通りである．
+Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 

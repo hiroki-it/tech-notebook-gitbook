@@ -1538,7 +1538,7 @@ exit ${EXIT_CODE}
 
 #### ・サービスロール
 
-サービス機能がタスクを操作するために必要なロールのこと．サービスリンクロールに含まれ，ECSの構築時に自動的にアタッチされる．ECSサービスとサービスリンクロールについては，本ノート内を検索せよ．
+サービス機能がタスクを操作するために必要なロールのこと．サービスリンクロールに含まれ，ECSの構築時に自動的にアタッチされる．
 
 #### ・タスクロール
 
@@ -2529,7 +2529,7 @@ IAMポリシーのセットを持つ
 
 | IAMロールの種類                  | 説明                                                         | 補足                                                         |
 | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| サービスリンクロール             | AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている． | ・「AWSServiceRoleForXxxxxx」という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．<br>・関連するリソースを削除するまで，ロール自体できない． |
+| サービスリンクロール             | AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている． | ・「AWSServiceRoleForXxxxxx」という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．<br>・関連するリソースを削除するまで，ロール自体できない．<br>サービスリンクロールの一覧については，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
 | クロスアカウントのアクセスロール |                                                              |                                                              |
 | プロバイダのアクセスロール       |                                                              |                                                              |
 
@@ -2640,7 +2640,11 @@ Lambdaは関数を実行する．実行環境側のランタイムは，APIを�
 
 <br>
 
-### Lambdaの拡張
+### Lambda関数 on Docker
+
+#### ・ベースイメージの準備
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
 
 #### ・RIC：Runtime Interface Clients
 
@@ -2650,9 +2654,13 @@ Lambdaは関数を実行する．実行環境側のランタイムは，APIを�
 
 #### ・RIE：Runtime Interface Emulator
 
-開発環境にはLambdaが存在していないため，Lambdaの代わりにRIEを使用して関数を実行する．全ての言語で共通のRIEライブラリが用意されている．
+開発環境のコンテナで，擬似的にLambda関数を再現する．全ての言語で共通のRIEライブラリが用意されている．
 
 参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
+
+RIEであっても，稼働させるためにAWSのクレデンシャル情報（アクセスキー，シークレットアクセスキー，リージョン）が必要なため，環境変数や```credentials```ファイルを使用して，Lambdaにこれらの値を出力する．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-test.html#images-test-env
 
 **＊参考＊**
 
@@ -2704,7 +2712,7 @@ $ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" 
 
 <br>
 
-### Lambdaの関数
+### Lambda関数
 
 #### ・ハンドラ関数とは
 
@@ -4172,6 +4180,12 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
+### VPCのパケット通信の仕組み
+
+参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+
+<br>
+
 ### Internet Gateway，NAT Gateway
 
 ![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
@@ -4314,6 +4328,10 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 VPCのPrivateサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを使用しない場合，Privateサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを使用する必要がある．
 
+**＊（例）＊**
+
+ECS Fargateをプライベートサブネットに置いた場合に，ECS FargateからVPC外にあるAWSリソースに対するアウトバウンドな通信のために必要．（例：CloudWatchログ，ECR，S3，SSM）
+
 #### ・メリット
 
 インターネットゲートウェイとNAT Gatewayの代わりに，VPCエンドポイントを使用すると，料金が少しだけ安くなり，また，VPC外のリソースとの通信がより安全になる．
@@ -4324,52 +4342,6 @@ VPCのPrivateサブネット内のリソースが，VPC外のリソースに対�
 | ----------- | ------------------------------------------------------------ | -------------------------------- |
 | Interface型 | Privateリンクともいう．Private IPアドレスを持つENIとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDB以外の全てのリソース |
 | Gateway型   | ルートテーブルにおける定義に従う．VPCエンドポイントとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDBのみ                 |
-
-<br>
-
-### VPCエンドポイントサービス
-
-#### ・VPCエンドポイントサービスとは
-
-VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイントをNLBに関連付けることにより，異なるVPC間で通信できるようにする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
-
-![VPCエンドポイントサービス](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイントサービス.png)
-
-<br>
-
-### VPCピアリング接続
-
-![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続.png)
-
-#### ・VPCピアリング接続とは
-
-異なるVPCにあるAWSリソースの間で，相互にデータ通信を行うことができる．
-
-#### ・VPCピアリング接続ができない場合
-
-| アカウント   | VPCのあるリージョン | VPC内のCIDRブロック    | 接続の可否 |
-| ------------ | ------------------- | ---------------------- | ---------- |
-| 同じ／異なる | 同じ／異なる        | 全て異なる             | **〇**     |
-|              |                     | 同じものが一つでもある | ✕          |
-
-VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブロックがある場合は、VPC ピアリング接続はできない．
-
-![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
-
-たとえ，IPv6が異なっていても，同様である．
-
-![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
-
-#### ・VPCエンドポイントサービスとの比較
-
-| 機能                       | VPCピアリング                                     | VPCエンドポイントサービス           |
-| -------------------------- | ------------------------------------------------- | ----------------------------------- |
-| 接続可能なVPC数            | 一対一のみ                                        | 一対多                              |
-| 接続可能なIPアドレスの種類 | IPv4，IPv6                                        | IPv4                                |
-| 接続可能なCIDRブロック     | 両VPCのCIDRブロックが重複していると接続できない． | 重複していても接続できる．          |
-| 接続可能なリソース         | 制限なし                                          | NLBでルーティングできるリソースのみ |
-| クロスアカウント           | 可能                                              | 可能                                |
-| クロスリージョン           | 可能                                              | 不可能                              |
 
 <br>
 
@@ -4412,6 +4384,68 @@ VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブ�
 | ------------------------ | ------------------------------------------------------------ |
 | インスタンスとの関連付け | 非推奨の方法である．<br/>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 | ENIとの関連付け          | 推奨される方法である．<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+
+<br>
+
+## 28-02. VPC間，VPC-オンプレ間の通信
+
+### VPCピアリング接続
+
+![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続.png)
+
+#### ・VPCピアリング接続とは
+
+『一対一』の関係で，『異なるVPC間』の双方向通信を可能にする．
+
+#### ・VPCピアリング接続ができない場合
+
+| アカウント   | VPCのあるリージョン | VPC内のCIDRブロック    | 接続の可否 |
+| ------------ | ------------------- | ---------------------- | ---------- |
+| 同じ／異なる | 同じ／異なる        | 全て異なる             | **〇**     |
+|              |                     | 同じものが一つでもある | ✕          |
+
+VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブロックがある場合は、VPC ピアリング接続はできない．
+
+![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
+
+たとえ，IPv6が異なっていても，同様である．
+
+![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
+
+<br>
+
+### VPCエンドポイントサービス
+
+![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
+
+#### ・VPCエンドポイントサービスとは
+
+VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイント（Privateリンク）をNLBに関連付けることにより，『一対多』の関係で，『異なるVPC間』の双方向通信を可能にする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
+
+<br>
+
+### Transit Gateway
+
+![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
+
+#### ・Transit Gatewayとは
+
+『多対多』の関係で，『異なるVPC間』や『オンプレ-VPC間』の双方向通信を可能にする．
+
+<br>
+
+### 各サービスとの比較
+
+| 機能                       | VPCピアリング                                     | VPCエンドポイントサービス           | Transit gateway                                   |
+| -------------------------- | ------------------------------------------------- | ----------------------------------- | ------------------------------------------------- |
+| 接続可能なVPC数            | 一対一                                            | 一対一，一対多                      | 一対一，一対多，多対多                            |
+| 接続可能なIPアドレスの種類 | IPv4，IPv6                                        | IPv4                                | IPv4，IPv6                                        |
+| 接続可能なCIDRブロック     | 両VPCのCIDRブロックが重複していると接続できない． | 重複していても接続できる．          | 両VPCのCIDRブロックが重複していると接続できない． |
+| 接続可能なリソース         | 制限なし                                          | NLBでルーティングできるリソースのみ | 制限なし                                          |
+| クロスアカウント           | ◯                                                 | ◯                                   | ◯                                                 |
+| クロスリージョン           | ◯                                                 | ×                                   | ◯                                                 |
+| VPC間                      | ◯                                                 | ◯                                   | ◯                                                 |
+| VPC-オンプレ間             | ×                                                 | ×                                   | ◯                                                 |
 
 <br>
 
