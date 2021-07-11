@@ -67,7 +67,7 @@ OK (3 tests, 3 assertions)
 特定のテストファイルを対象として，定義されたメソッドを実行する．
 
 ```shell
-$ vendor/bin/phpunit --filter Example
+$ vendor/bin/phpunit --filter Foo
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
 
 ...                                                   1 / 1 (100%)
@@ -86,8 +86,8 @@ $ vendor/bin/phpunit --list-tests
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
  
 Available test(s):
- - Tests\Unit\ExampleTest::testExampleMethod
- - Tests\Feature\ExampleTest::testExampleMethod
+ - Tests\Unit\FooTest::testFooMethod
+ - Tests\Feature\FooTest::testFooMethod
 ```
 
 <br>
@@ -221,7 +221,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 use CouldNotSendMessageException;
     
-class ExampleNotification
+class FooNotification
 {
     private $httpClient;
         
@@ -236,17 +236,17 @@ class ExampleNotification
         $this->logger = $logger;
     }
     
-    public function sendMessage(ExampleMessage $exampleMessage)
+    public function sendMessage(FooMessage $fooMessage)
     {
         if (empty($this->token)) {
             throw new CouldNotSendMessageException("API requests is required.");
         }
         
-        if (empty($exampleMessage->channel_id)) {
+        if (empty($fooMessage->channel_id)) {
             throw new CouldNotSendMessageException("Channnel ID is required.");
         }
         
-        $json = json_encode($exampleMessage->message);
+        $json = json_encode($fooMessage->message);
         
         try {
             $this->httpClient->request(
@@ -259,7 +259,7 @@ class ExampleNotification
                         "Content-Type" => "application/json",
                     ],
                     "form_params" => [
-                        "body" =>  $exampleMessage->message
+                        "body" =>  $fooMessage->message
                     ]
                 ]
             );
@@ -294,7 +294,7 @@ class ExampleNotification
 ```php
 <?php
  
-class ExampleMessage
+class FooMessage
 {
     private $channel_id;
     
@@ -319,11 +319,11 @@ class ExampleMessage
 ```php
 <?php
 
-use ExampleMessage;
-use ExampleNotifiation;
+use FooMessage;
+use FooNotifiation;
 use PHPUnit\Framework\TestCase;
 
-class ExampleNotificationTest extends TestCase
+class FooNotificationTest extends TestCase
 {
     private $logger;
 
@@ -339,18 +339,18 @@ class ExampleNotificationTest extends TestCase
    /**
     * @test
     */
-    public function testSendMessage()
+    public function testSendMessage_FooMessage_ReturnTrue()
     {
-        $exampleNotification = new ExampleNotification(
+        $fooNotification = new FooNotification(
             $this->client,
             "xxxxxxx",
             $this->logger
         );
         
-        $exampleMessage = new ExampleMessage("test", "X-CHANNEL");
+        $fooMessage = new FooMessage("test", "X-CHANNEL");
         
         $this->assertTrue(
-            $exampleNotification->sendMessage($exampleMessage)
+            $fooNotification->sendMessage($fooMessage)
         );
     }
 }
@@ -372,11 +372,11 @@ class ExampleNotificationTest extends TestCase
 ```php
 <?php
 
-use ExampleMessage;
-use ExampleNotifiation;
+use FooMessage;
+use FooNotifiation;
 use PHPUnit\Framework\TestCase;
 
-class ExampleNotificationTest extends TestCase
+class FooNotificationTest extends TestCase
 {
     private $logger;
 
@@ -393,17 +393,17 @@ class ExampleNotificationTest extends TestCase
     * @test
     * @expectedException
     */
-    public function testCouldNotSendMessageException()
+    public function testSendMessage_EmptyMessage_ExceptionThrown()
     {
-        $exampleNotification = new ExampleNotification(
+        $fooNotification = new FooNotification(
             $this->client,
             "xxxxxxx",
             $this->logger
         );
         
-        $exampleMessage = new ExampleMessage("test", "");
+        $fooMessage = new FooMessage("test", "");
 
-        $exampleNotification->sendMessage($exampleMessage);
+        $fooNotification->sendMessage($fooMessage);
     }
 }
 ```
@@ -429,12 +429,12 @@ class ExampleNotificationTest extends TestCase
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 
-class ExampleControllerTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test
      */
-    public function testMethod()
+    public function testFoo()
     {
         // アプリケーション自身のControllerクラスにリクエストを送信する処理．
         $client = new Client();
@@ -483,12 +483,12 @@ Controllerが200ステータスのレスポンスを返信することを検証�
 use GuzzleHttp\Client;    
 use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends TestCase
+class FooControllerTest extends TestCase
 {
    /**
     * @test
     */    
-    public function testGetPage()
+    public function testGetPage_GetRequest_Return200()
     {
         // 外部サービスがクライアントの場合はモックを使用する．
         $client = new Client();
@@ -519,12 +519,12 @@ Controllerが200ステータスのレスポンスを返信すること，更新�
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test
      */
-    public function testPostMessage()
+    public function testPostMessage_GetRequest_Return200NormalMessage()
     {      
         $client = new Client();
 
@@ -575,12 +575,12 @@ Controllerが400ステータスのレスポンスを返信すること，レス�
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-class ExampleControllerTest extends TestCase
+class FooControllerTest extends TestCase
 {
     /**
      * @test
      */
-    public function testErrorPostMessage()
+    public function testPostMessage_EmptyMessage_Return400ErrorMessage()
     {     
         $client = new Client();
 
@@ -634,7 +634,7 @@ class ExampleControllerTest extends TestCase
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {
     /** 
      * findメソッドをテストします．
@@ -642,7 +642,7 @@ class ExampleTest extends TestCase
      * @test
      * @dataProvider methodDataProvider
      */
-    public function testFind($paramA, $paramB, $paramC)
+    public function testFind_Xxx_Xxx($paramA, $paramB, $paramC)
     {
         // 何らかの処理 
     }
@@ -679,7 +679,7 @@ DIコンテナを事前に生成する．
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {
     protected $container;
     
@@ -701,7 +701,7 @@ class ExampleTest extends TestCase
     
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {
     protected $hoge;
     
@@ -714,10 +714,10 @@ class ExampleTest extends TestCase
         $this->hoge = Phake::mock(Hoge::class);
     }
     
-    public function testXxx()
+    public function testFoo_Xxx_Xxx()
     {
-        // 実際の処理では，インスタンス化時に，ExampleクラスはHogeクラスに依存している．
-        $example = new Example($this->hoge)
+        // 実際の処理では，インスタンス化時に，FooクラスはHogeクラスに依存している．
+        $foo = new Foo($this->hoge)
             
         // 何らかのテストコード
     }
@@ -735,7 +735,7 @@ class ExampleTest extends TestCase
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {
     protected $container;
     
@@ -757,9 +757,9 @@ class ExampleTest extends TestCase
 
 ### 命名規則
 
-#### ・テスト関数名
+#### ・テストケース名
 
-『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する．
+Roy Osherove氏の命名規則に従って，『テスト対象のメソッド名』『入力値』『期待される返却値』の三要素でテスト関数を命名する．期待される返却値の命名で『正常系テスト』か『異常系テスト』かと識別する．例えば，正常系であれば『```testFoo_Xxx_ReturnXxx```』，また異常系であれば『```testFoo_Xxx_ExceptionThrown```』や『```testFoo_Xxx_ErrorThrown```』とする．Roy Osherove氏の命名規則については，以下のリンクを参考にせよ．
 
 参考：https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
 
@@ -809,18 +809,18 @@ PHPUnit，Phake，Mockery，JUnit
     
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {   
    /**
     * @test
     */    
-    public function testExample()
+    public function testFoo()
     {    
         // モックとして使用する擬似オブジェクトを作成する．
-        $mock = $this->createMock(Example::class);
+        $mock = $this->createMock(Foo::class);
         
         // null
-        $example = $mock->find(1)
+        $foo = $mock->find(1)
     }
 }
 ```
@@ -828,7 +828,7 @@ class ExampleTest extends TestCase
 ```php
 <?php
 
-class Example
+class Foo
 {
     /**
     * @param  int
@@ -850,15 +850,15 @@ class Example
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {   
    /**
     * @test
     */    
-    public function testExample()
+    public function testFoo_Xxx_Xxx()
     {    
         // スタブとして使用する擬似オブジェクトを作成する．
-        $stub = $this->createMock(Example::class);
+        $stub = $this->createMock(Foo::class);
         
         // スタブのメソッドに処理内容を定義する．
         $stub->method("find")
@@ -889,10 +889,10 @@ class ExampleTest extends TestCase
 <?php
 
 // モックとして使用する擬似オブジェクトを作成する．
-$mock = Phake::mock(Example::class);
+$mock = Phake::mock(Foo::class);
 
 // スタブとして使用する擬似オブジェクトを作成する．
-$stub = Phake::mock(Example::class);
+$stub = Phake::mock(Foo::class);
 ```
 
 #### ・```when```メソッド
@@ -907,7 +907,7 @@ $stub = Phake::mock(Example::class);
 <?php
     
 // スタブとして使用する擬似オブジェクトを作成する．    
-$stub = Phake::mock(Example::class);
+$stub = Phake::mock(Foo::class);
 
 // スタブのメソッドに処理内容を定義する．
 \Phake::when($stub)
@@ -926,30 +926,30 @@ $stub = Phake::mock(Example::class);
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class FooTest extends TestCase
 {   
    /**
     * @test
     */    
-    public function testExample()
+    public function testFoo_Xxx_Xxx()
     {    
         // モックとして使用する擬似オブジェクトを作成する．
-        $mockExampleRepository = Phake::mock(ExampleRepository::class);
-        $exampleId = Phake::mock(ExampleId::class);
+        $mockFooRepository = Phake::mock(FooRepository::class);
+        $fooId = Phake::mock(FooId::class);
 
         // モックのメソッドに処理内容を定義する．
-        \Phake::when($mockExampleRepository)
-            ->find($exampleId)
+        \Phake::when($mockFooRepository)
+            ->find($fooId)
             ->thenReturn(new User(1)); 
         
         // 上層クラスに対して，下層クラスのモックのインジェクションを行う
-        $example = new Example($mockExampleRepository);
+        $foo = new Foo($mockFooRepository);
         
         // 上層クラスの内部にある下層モックのfindメソッドをコールする
-        $example->getUser($exampleId)
+        $foo->getUser($fooId)
 
         // 上層のクラスが，下層モックにパラメータを渡し，メソッドを実行したことを検証する．
-        Phake::verify($mockExampleRepository, Phake::times(1))->find($exampleId);
+        Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);
     }
 }
 ```
@@ -1127,7 +1127,7 @@ parameters:
         - '#Unsafe usage of new static#'
     # 解析対象として除外するディレクトリ
     excludes_analyse:
-        - ./src/Example/*
+        - ./src/Foo/*
         
     checkMissingIterableValueType: false
     inferPrivatePropertyTypeFromConstructor: true

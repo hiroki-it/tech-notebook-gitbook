@@ -15,7 +15,7 @@
 ```php
 <?php
 
-class Example
+class Foo
 {
     // オブジェクトはデータを保持する．
     private $data;
@@ -40,7 +40,7 @@ class Example
 ```php
 <?php
 
-class Example
+class Foo
 {
     private $data;
 
@@ -70,7 +70,7 @@ class Example
 ```php
 <?php
 
-class Example
+class Foo
 {
     public $data;
 
@@ -94,12 +94,12 @@ class Example
 ```php
 <?php
 
-function example($data){
+function foo($data){
     return $data;
 }
 
 $data = "データ";
-example($data);
+foo($data);
 ```
 
 <br>
@@ -121,14 +121,14 @@ https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
 ```php
 <?php
 
-class Example extends ParentExample
+class Foo extends ParentFoo
 {
     public function __construct($data)
     {
         $this->data = $data;
     }
 
-    public function example()
+    public function foo()
     {
         // dataは親で定義されている 
         return $this->data;
@@ -144,12 +144,12 @@ class Example extends ParentExample
 ```php
 <?php
   
-function example($data){
+function foo($data){
     return $data;
 }
 
 $data = "データ";
-example($data);
+foo($data);
 ```
 
 <br>
@@ -169,7 +169,7 @@ example($data);
 ```php
 <?php
   
-class Example
+class Foo
 {
     private $data;
 
@@ -178,7 +178,7 @@ class Example
         $this->data = $data;
     }
 
-    public function example()
+    public function foo()
     {
         return $this->data.$this->Desu();
     }
@@ -199,12 +199,12 @@ class Example
 ```php
 <?php
   
-function example($data){
+function foo($data){
     return $data;
 }
 
 $data = "データ";
-example($data);
+foo($data);
 ```
 
 
@@ -227,12 +227,12 @@ example($data);
 ```php
 <?php
 
-class Example
+class Foo
 {
     // 受け取ったOrderエンティティから値を取り出すだけで，データ値は呼び出していない．
-    public static function computeExampleFee(Entity $order): Money
+    public static function computeFooFee(Entity $order): Money
     {
-        return new Money($order->exampleFee);
+        return new Money($order->fooFee);
     }
 }
 ```
@@ -392,10 +392,10 @@ Entityは，Mutableであるため，Setterと```__construct```メソッドの�
 
 ```php
 <?php
-class Example
+class Foo
 {
 
-    private $example = [];
+    private $foo = [];
 
     // 引数と返却値のデータ型を指定
     public function __get(string $name): string
@@ -406,8 +406,8 @@ class Example
 }
 
 // 存在しないデータを取得．
-$example = new Example();
-$example->hoge;
+$foo = new Foo();
+$foo->hoge;
 
 // 結果
 // hogeデータは存在しないため，値を呼び出せません．
@@ -435,10 +435,10 @@ $example->hoge;
 
 ```php
 <?php
-class Example
+class Foo
 {
 
-    private $example = [];
+    private $foo = [];
     
     // 引数と返り値のデータ型を指定
     public function __set(String $name, String $value): String
@@ -450,13 +450,13 @@ class Example
 ```
 
 ```php
-class Example {
+class Foo {
 // 中身は省略
 }
 
 // 存在しないデータに値をセット．
-$example = new Example();
-$example->hoge = "HOGE";
+$foo = new Foo();
+$foo->hoge = "HOGE";
 
 // 結果
 // hogeデータは存在しないため，HOGEを設定できません．
@@ -520,7 +520,7 @@ $test02 = new Test02("新しいデータ02の値");
 ```php
 <?php
 
-class Example
+class Foo
 {
     public function __invoke(array $array)
     {
@@ -528,8 +528,8 @@ class Example
     }
 }
 
-$example = new Example();
-$example([1, 2, 3]);
+$foo = new Foo();
+$foo([1, 2, 3]);
 
 // 結果
 // Array
@@ -703,7 +703,7 @@ $D = objB()->objC()->objC();
 ```php
 <?php
 
-class Example
+class Foo
 {
     /**
      * @param array $array
@@ -784,7 +784,7 @@ var_dump($result);
 ```php
 <?php
     
-class Example
+class Foo
 {
   
     public function returnMethod()
@@ -794,8 +794,8 @@ class Example
     }
 }
 
-$example = new Example();
-$example->returnMethod(); // returnMethod()です。
+$foo = new Foo();
+$foo->returnMethod(); // returnMethod()です。
 // 処理は続く．
 ```
 
@@ -806,7 +806,7 @@ $example->returnMethod(); // returnMethod()です。
 ```php
 <?php
     
-class Example
+class Foo
 {
   
     function exitMethod()
@@ -816,8 +816,8 @@ class Example
     }
 }
 
-$example = new Example();
-$example->exitMethod(); // exitMethod()です。
+$foo = new Foo();
+$foo->exitMethod(); // exitMethod()です。
 // ここで，システム全体の処理が終了する．
 ```
 
@@ -838,7 +838,7 @@ $example->exitMethod(); // exitMethod()です。
 ```php
 <?php
 
-class Example
+class Foo
 {
     /**
      * @return array|Generator
@@ -852,8 +852,8 @@ class Example
     }
 }
 
-$example = new Example();
-$oneToThree = $example->oneToThree();
+$foo = new Foo();
+$oneToThree = $foo->oneToThree();
 
 foreach ($oneToThree as $value) {
     echo "{$value}\n";
@@ -882,7 +882,7 @@ class Dispatcher
 
 $dispatcher = new Dispatcher;
 
-$name = "example";
+$name = "foo";
 
 // 名前に紐づける関数を定義．
 $listener = function() use ($param){
@@ -893,7 +893,7 @@ $listener = function() use ($param){
 $dispatcher->addListener($name, $listener);
 
 // 文字列からメソッドをコール．ついでに，引数を渡す．
-$dispatcher->dispatch("example", "test");
+$dispatcher->dispatch("foo", "test");
 ```
 
 #### ・イベント名と関数の紐付け
@@ -911,7 +911,7 @@ $dispatcher->dispatch("example", "test");
     
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-class ExampleEventDispatcher
+class FooEventDispatcher
 {
 
 }
@@ -1141,7 +1141,7 @@ echo $optionName;
 <?php
 
 // 第一引数のみの場合
-class Example
+class Foo
 {
     /**
      * 高階関数を定義
@@ -1165,9 +1165,9 @@ class Example
     }
 }
 
-$example = new Example();
+$foo = new Foo();
 // 高階関数の引数として，コールバック関数を渡す
-$example->test("callbackMethod");
+$foo->test("callbackMethod");
 
 // 出力結果
 // 出力に成功しました．
@@ -1177,7 +1177,7 @@ $example->test("callbackMethod");
 <?php
 
 // 第一引数と第二引数の場合
-class Example
+class Foo
 {
 
     /**
@@ -1204,10 +1204,10 @@ class Example
     }
 }
 
-$example = new Example();
+$foo = new Foo();
 
 // 高階関数の第一引数にコールバック関数の引数，第二引数にコールバック関数を渡す
-$example->higherOrder("第一引数", "callbackMethod");
+$foo->higherOrder("第一引数", "callbackMethod");
 
 // 出力結果
 // 第一引数の出力に成功しました．
@@ -1220,7 +1220,7 @@ $example->higherOrder("第一引数", "callbackMethod");
 ```php
 <?php
 
-class Example
+class Foo
 {
     /**
      * 高階関数のように，関数を引数として渡す．
@@ -1236,12 +1236,12 @@ class Example
     }
 }
 
-$example = new Example;
+$foo = new Foo;
 
 // 第二引数の無名関数．関数の中でコールされるため，「後でコールされる」という意味合いから，コールバック関数といえる．
 // コールバック関数は再利用されないため，名前をつけずに無名関数とすることが多い．
 // 親メソッドのスコープで定義されている変数を引数として渡す．（普段よくやっている値渡しと同じ）
-$example->higherOrder($parentVar, function () use ($parentVar) {
+$foo->higherOrder($parentVar, function () use ($parentVar) {
     return $parentVar . "の出力に成功しました．";
 });
 
@@ -1258,7 +1258,7 @@ $example->higherOrder($parentVar, function () use ($parentVar) {
 ```php
 <?php
 
-class Example
+class Foo
 {
 
     /**
@@ -1370,9 +1370,9 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 ```php
 <?php
 
-class ExampleA
+class Foo
 {
-    public function a()
+    public function foo()
     {
         echo __FUNCTION__;
     }
@@ -1382,13 +1382,13 @@ class ExampleA
 ```php
 <?php
 
-class ExampleA
+class Foo
 {
-    public function a(){}
+    public function foo(){}
 }
 
-$exampleA = new ExampleA;
-$exampleA->a(); // a が返却される．
+$foo = new Foo;
+$foo->foo(); // foo が返却される．
 ```
 
 #### ・```__METHOD__```
@@ -1400,9 +1400,9 @@ $exampleA->a(); // a が返却される．
 ```php
 <?php
 
-class ExampleB
+class Foo
 {
-    public function b()
+    public function foo()
     {
         echo __METHOD__;
     }
@@ -1412,8 +1412,8 @@ class ExampleB
 ```php
 <?php
     
-$exampleB = new ExmapleB;
-$exampleB->b(); // ExampleB::b が返却される．
+foo = new Foo;
+foo->foo(); // Foo::foo が返却される．
 ```
 
 <br>

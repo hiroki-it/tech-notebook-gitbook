@@ -545,17 +545,17 @@ curl_close($curl);
 
 
 
-## 04. 送受信されるデータ
+## 04. オブジェクトデータ
 
-### MIME type（Content type）
+### オブジェクトデータ
 
-#### ・MIME type（Content type）とは
+#### ・オブジェクトデータとは
 
-HTTPプロトコルにおけるファイル形式の識別子のこと．リクエスト／レスポンスヘッダーのうち，Content-Typeヘッダーに設定される．
+リクエスト（POST）／レスポンスにて，メッセージボディに割り当てて送信／返信するデータのこと．
 
-#### ・種類
+#### ・MIME type（Content type）
 
-よく使うMIME typeを以下に示す．
+HTTPプロトコルにおいてデータ形式を表現する識別子のこと．リクエストヘッダー／レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると，オブジェクトデータのデータ型を定義できる．
 
 | トップレベルタイプ | サブレベルタイプ      | 意味                                |
 | ------------------ | --------------------- | ----------------------------------- |
@@ -571,14 +571,6 @@ HTTPプロトコルにおけるファイル形式の識別子のこと．リク�
 |                    | jpeg                  |                                     |
 |                    | gif                   |                                     |
 
-<br>
-
-### オブジェクトデータ
-
-#### ・データ型
-
-XML，JSON，JSONP
-
 #### ・データ型の指定方法
 
 最も良い方法は，リクエストのContent-Typeヘッダーに，『```application/json```』を設定することである．
@@ -593,7 +585,25 @@ Content-Type: application/json
 GET http://www.example.co.jp/users/12345?format=json
 ```
 
-### オブジェクトデータ構造の作り方
+<br>
+
+### リクエスト（POST，PUT）
+
+正常系レスポンスで返信するオブジェクトデータと同じ．
+
+<br>
+
+### 正常系レスポンスの場合
+
+#### ・ステータスコードは不要
+
+正常系レスポンスの場合，オブジェクトデータへのステータスコードの割り当ては不要である．
+
+```json
+{
+  "name": "Taro Yamada"
+}
+```
 
 #### ・フラットなデータ構造にすること
 
@@ -647,18 +657,29 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 http://www.example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
-#### ・エラーメッセージを含めること
+<br>
 
-バリデーションの文言などのメッセージは，オブジェクトデータに含めること．
+### 異常系レスポンスの場合
 
 ```json
 {
+  "code": 400
   "errors": [
     "〇〇は必ず入力してください．",
     "□□は必ず入力してください．"
   ]
+  "url" : "https://xxxxxx"
 }
 ```
+
+参考：https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
+
+| 種類                 | 必要性 | データ型 | 説明                                                         |
+| -------------------- | ------ | -------- | ------------------------------------------------------------ |
+| エラーメッセージ     | 必須   | 文字列型 | 複数のエラーメッセージを返信できるように，配列として定義する． |
+| ステータスコード     | 任意   | 整数型   | エラーの種類がわかるステータスコードを割り当てる．           |
+| エラーコード         | 任意   | 文字列型 | APIドキュメントのエラーの識別子として，エラコードを割り当てる． |
+| APIドキュメントのURL | 任意   | 文字列型 | 外部に公開するAPIの場合に，エラーの解決策がわかるAPIドキュメントのURLを割り当てる． |
 
 <br>
 
@@ -668,7 +689,7 @@ http://www.example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 #### ・Cookie，Cookie情報とは
 
-クライアントからの次回のリクエスト時でも，Cookie情報（キー名／値）を用いて，同一クライアントと認識できる仕組みCookieという．HTTPはStatelessプロトコルであるが，Cookie情報を用いると，擬似的にStatefulな通信を行える．
+クライアントからの次回のリクエスト時でも，Cookie情報（キー名／値）を用いて，同一クライアントと認識できる仕組みCookieという．HTTPはStatelessプロトコルであるが，Cookie情報により擬似的にStatefulな通信を行える．
 
 #### ・Cookie情報に関わるヘッダー
 
@@ -694,7 +715,7 @@ $_COOKIE = ["Cookie名" => "値"]
 ```
 
 
-#### ・Cookie情報の送受信の仕組み
+#### ・まとめ
 
 1. 最初，ブラウザはリクエストでデータを送信する．
 2. サーバは，レスポンスヘッダーのSet-CookieヘッダーにCookie情報を埋め込んで送信する．
@@ -712,11 +733,13 @@ setcookie(Cookie名, Cookie値, 有効日時, パス, ドメイン, HTTPS接続�
 
 <br>
 
-### セッションID
+### セッション
 
 #### ・セッション，セッションIDとは
 
-クライアントからの次回のリクエスト時でも，セッションIDを用いて，同一クライアントと認識できる仕組みをセッションという．セッションIDは，Cookie情報の一つとして，CookieヘッダーとSet-Cookieヘッダーを使用して送受信される．HTTPはStatelessプロトコルであるが，セッションIDを用いると，擬似的にStatefulな通信を行える．
+![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
+
+特定のサイトを訪問してから，離脱するまでの一連のユーザ操作を『セッション』という．この時，セッションIDを用いると，セッションの各リクエストの送信元を同一クライアントとして識別できる．HTTPはStatelessプロトコルであるが，セッションIDにより擬似的にStatefulな通信を行える．例えばセッションIDにより，ログイン後にページ遷移を行っても，ログイン情報を保持でき，同一ユーザからのリクエストとして認識できる．セッションIDは，Cookie情報の一つとして，CookieヘッダーとSet-Cookieヘッダーを使用して送受信される．
 
 ```http
 # リクエストヘッダーの場合
@@ -729,9 +752,13 @@ Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 Set-Cookie: sessionId=<セッションID>
 ```
 
+セッション数はGoogleコンソールで確認できる．GoogleConsoleにおけるセッションについては，以下のリンクを参考にせよ．
+
+参考：https://support.google.com/analytics/answer/6086069?hl=ja
+
 #### ・セッションIDの発行，セッションファイルの生成
 
-セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数に値を代入することによって，セッションファイルを作成する．もしクライアントに既にセッションIDが発行されている場合，セッションファイルを参照する．
+セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションファイルを作成する．もしクライアントに既にセッションIDが発行されている場合，セッションファイルを参照するようになる．
 
 **＊実装例＊**
 
@@ -747,7 +774,7 @@ $_SESSION["セッション名"] = "値";
 
 #### ・セッションファイルの保存場所
 
-セッションファイルの保存場所は```/etc/php.ini```ファイルで定義できる．セッションファイルは，サーバの指定のディレクトリ内に，```sess_xxxxx```ファイルとして保存される．
+セッションファイルの保存場所は```/etc/php.ini```ファイルで定義できる．セッションファイルは，標準ではサーバの指定のディレクトリ内に```sess_xxxxx```ファイルとして保存される．
 
 ```ini
 # /etc/php.ini
@@ -758,18 +785,9 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-セッションファイルは，サーバ外に保存することもできる．PHP-FPMを使用している場合は，```/etc/php-fpm.d/www.conf```の変更が必要．
+セッションファイルは，サーバ外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンクを参考にせよ．
 
-```ini
-# /etc/php-fpm.d/www.conf
-
-### Redis形式
-php_value[session.save_handler] = redis
-### Amazon RedisのOrigin
-php_value[session.save_path] = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
-```
-
-PHP-FPMを使用していない場合は，```/etc/php.ini```の変更が必要．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
 ```ini
 # /etc/php.ini
@@ -780,7 +798,37 @@ session.save_handler = redis
 session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-#### ・セッションIDの送受信の仕組み
+なお，PHP-FPMを使用している場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションファイルの保存先を指定する必要がある．
+
+```ini
+# /etc/php-fpm.d/www.conf
+
+### Redis形式
+php_value[session.save_handler] = redis
+### Amazon RedisのOrigin
+php_value[session.save_path] = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
+```
+
+#### ・セッションの有効期限と初期化確率
+
+セッションの有効期限を設定できる．これにより，画面遷移時にログイン情報を保持できる秒数を定義できる．
+
+```ini
+# 24時間
+session.gc_maxlifetime = 86400
+```
+
+ただし，有効期限が切れた後にセッションファイルを初期化するかどうかは確率によって定められている．確率は， 『```gc_probability```÷```gc_divisor```』 で計算される．
+
+参考：https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
+
+```ini
+# 有効期限後に100%初期化されるようにする．
+session.gc_probability = 1
+session.gc_divisor = 1
+```
+
+#### ・まとめ
 
 1. 最初，ブラウザはリクエストでデータを送信する．セッションIDを発行し，セッションIDごとに```sess_xxxxx```ファイルを生成．
 2. サーバは，レスポンスヘッダ情報のCookieヘッダーを使用して，セッションIDを送信する．
@@ -788,10 +836,6 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダ情報のCookieヘッダーを使用して，セッションIDをサーバに送信する．サーバは，セッションIDに紐づくクライアントのデータをReadする．
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)
-
-#### ・ページ遷移とセッションID引継ぎ
-
-![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
 
 <br>
 

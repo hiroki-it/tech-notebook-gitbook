@@ -6,7 +6,7 @@
 
 #### ・並列処理が実装可能
 
-個人的にGoで最大の特長．並列処理を簡単に実装できる．並行処理しても結果に影響しなければ，処理を高速化できる．並列処理については，後述の説明を参考にせよ．
+個人的にGoで最大の特長．並列処理を簡単に実装できる．並行処理しても結果に影響しなければ，処理を高速化できる．並列処理については，本ノート内の説明を参考にせよ．
 
 #### ・ほどよくシンプル
 
@@ -26,7 +26,7 @@
 
 #### ・クラスや継承がない
 
-継承はカプセル化を壊すため，これを回避できる『委譲』の方が優れているとされている．そのため，思想としてクラスや継承を廃止している．埋め込みによって，委譲を実現する．埋め込みについては，後述の説明を参考にせよ．
+継承はカプセル化を壊すため，これを回避できる『委譲』の方が優れているとされている．そのため，思想としてクラスや継承を廃止している．埋め込みによって，委譲を実現する．埋め込みについては，本ノート内の説明を参考にせよ．
 
 <br>
 
@@ -46,8 +46,8 @@ $GOPATH # 例えば，『$HOME/go』とする．
     ├── build # Dockerfileを配置するディレクトリ
     ├── cmd # main.goファイルや，サブmainパッケージを配置するディレクトリ
     │   ├── main.go
-    │   └── example
-    │       └── example.go
+    │   └── foo
+    │       └── foo.go
     │         
     ├── configs
     │   └── envrc.template
@@ -689,7 +689,7 @@ func main() {
 
 #### ・埋め込みによる委譲
 
-Goには継承がなく，代わりに委譲がある．構造体のフィールドとして別の構造体を埋め込むことにより，埋め込まれた構造体に処理を委譲する．埋め込む側の構造体を宣言するだけでなく，フィールドとして渡す必要がある．インターフェースにおける委譲については，後述の説明を参考にせよ．
+Goには継承がなく，代わりに委譲がある．構造体のフィールドとして別の構造体を埋め込むことにより，埋め込まれた構造体に処理を委譲する．委譲する側の構造体を宣言するだけでなく，フィールドとして渡す必要がある．この時，実装者が委譲を意識しなくて良くなるように，コンストラクタの中で初期化するようにする．インターフェースの委譲とは異なり，アップキャストは行えない．つまり，委譲された構造体は委譲する構造体のデータ型にキャストでき，同一のデータ型として扱えない．
 
 **＊実装例＊**
 
@@ -699,19 +699,11 @@ package main
 import "fmt"
 
 //========================
-// 埋め込む側（委譲する）
+// 委譲する側（埋め込む構造体）
 //========================
 type Name struct {
 	FirstName string
 	LastName  string
-}
-
-func NewName(firstName string, lastName string) *Name {
-
-	return &Name{
-		FirstName: firstName,
-		LastName:  lastName,
-	}
 }
 
 func (n *Name) fullName() string {
@@ -719,15 +711,19 @@ func (n *Name) fullName() string {
 }
 
 //========================
-// 埋め込まれる側（委譲される）
+// 委譲される側（埋め込まれる構造体）
 //========================
 type MyName struct {
 	*Name
 }
 
-func NewMyName(name *Name) *MyName {
+func NewMyName(firstName string, lastName string) *MyName {
 	return &MyName{
-		Name: name,
+		// コンストラクタ内で委譲する構造体を初期化する．
+		Name: &Name{
+			FirstName: firstName,
+			LastName:  lastName,
+		},
 	}
 }
 
@@ -735,14 +731,62 @@ func NewMyName(name *Name) *MyName {
 // main
 //================
 func main() {
-	// 埋め込む側の構造体の初期化
-	name := NewName("Hiroki", "Hasegawa")
-
-	// コンストラクタインジェクションによるDI
-	myName := NewMyName(name)
+	myName := NewMyName("Hiroki", "Hasegawa")
 
 	// myName構造体は，Name構造体のメソッドをコールできる．
 	fmt.Printf("%#v\n", myName.fullName()) // "Hiroki Hasegawa"
+}
+```
+
+もし，委譲する側と委譲される側に，同じ名前のメソッド／フィールドが存在する場合は，委譲された側のものが優先してコールされる．
+
+```go
+package main
+
+import "fmt"
+
+//========================
+// 委譲する側（埋め込む構造体）
+//========================
+type Name struct {
+	FirstName string
+	LastName  string
+}
+
+func (n *Name) fullName() string {
+	return fmt.Sprintf("%s %s", n.FirstName, n.LastName)
+}
+
+//========================
+// 委譲される側（埋め込まれる構造体）
+//========================
+type MyName struct {
+	*Name
+}
+
+func NewMyName(firstName string, lastName string) *MyName {
+	return &MyName{
+		// コンストラクタ内で委譲する構造体を初期化する．
+		Name: &Name{
+			FirstName: firstName,
+			LastName:  lastName,
+		},
+	}
+}
+
+// 委譲する側と委譲される側で同じメソッド
+func (n *MyName) fullName() string {
+	return fmt.Sprintf("%s", "委譲された構造体です")
+}
+
+//================
+// main
+//================
+func main() {
+	myName := NewMyName("Hiroki", "Hasegawa")
+
+	// 同じメソッドがある場合，委譲された側が優先．
+	fmt.Printf("%#v\n", myName.fullName()) // "委譲された構造体です"
 }
 ```
 
@@ -1145,7 +1189,6 @@ func main() {
 	}
 
 	fmt.Println(m) // map[1:Hiroki 2:Hiroko 3:Hiroshi]
-
 }
 ```
 
@@ -1181,11 +1224,11 @@ func main() {
 
 ####  ・埋め込みによる委譲
 
-構造体のフィールドとして別のインターフェースを埋め込むことにより，埋め込まれた構造体に処理の全てを委譲する．ただし，構造体に明示的にインターフェースを埋め込む必要はなく，インターフェースを満たす関数を構造体に関連づけると，インターフェースを暗黙的に実装できる．構造体における委譲については，前述の説明を参考にせよ．
+構造体のフィールドとして別のインターフェースを埋め込むことにより，埋め込まれた構造体に処理の全てを委譲する．ただし，構造体に明示的にインターフェースを埋め込む必要はなく，インターフェースを満たす関数を構造体に関連づけると，インターフェースを暗黙的に実装できる．構造体の委譲とは異なり，アップキャストを行うことができる．つまり，委譲された構造体は委譲するインターフェースのデータ型にキャストでき，同一のデータ型として扱える．
 
 **＊実装例＊**
 
-InspectImpl構造体にAnimalインターフェースを埋め込み，構造体に```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の実装を強制する．
+InspectImpl構造体にAnimalインターフェースを埋め込み，構造体に```Eat```メソッド，```Sleep```メソッド，```Mating```メソッド，の処理を委譲する．
 
 ```go
 package main
@@ -1245,7 +1288,9 @@ func main() {
 }
 ```
 
-もし，構造体に実装されたメソッドに不足があると，委譲が自動的に取り消される．エラーは発生しないため，実装されたメソッドが十分であることを実装者が知らなければならない．意図的にエラーを発生させるテクニックとして，イ
+#### ・アップキャストの可否を利用した検証
+
+もし，構造体に実装されたメソッドに不足があると，委譲が自動的に取り消される．エラーは発生しないため，実装されたメソッドが十分であることを実装者が知らなければならない．アップキャストの可否を利用して，意図的にエラーを発生させるテクニックがある．
 
 参考：https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
 
@@ -1254,7 +1299,7 @@ package main
 
 import "fmt"
 
-// 構造体がインターフェースを満たしているかを検証する．
+// アップキャストの可否を利用して，構造体がインターフェースを満たしているを検証する．
 var _ AnimalInterface = &InsectImpl{} // もしくは (*InsectImpl)(nil)
 
 // インターフェースとそのメソッドを定義する．
@@ -1386,7 +1431,7 @@ Goには，標準搭載されているインターフェースがある．この
 
 **＊例＊**
 
-errorインターフェースの委譲については，後述の説明を参考にせよ．
+errorインターフェースの委譲については，本ノート内の説明を参考にせよ．
 
 ```go
 type error interface {
@@ -1497,12 +1542,12 @@ package main
 import "fmt"
 
 // 頭文字を大文字する
-func Example(x string) string {
+func Foo(x string) string {
 	fmt.Println(x)
 }
 
 func main() {
-	Example("Hello world!")
+	Foo("Hello world!")
 }
 ```
 
@@ -1986,7 +2031,7 @@ func main() {
 **＊実装例＊**
 
 ```go
-package example
+package foo
 
 // 定数を定義する．
 const (
@@ -2040,9 +2085,9 @@ func main() {
 **＊実装例＊**
 
 ```go
-package example
+package foo
 
-func Example() {
+func Foo() {
     // 何らかの処理
 }
 ```
@@ -2051,7 +2096,7 @@ func Example() {
 package main
 
 func main() {
-    Example()
+    Foo()
 }
 ```
 
@@ -2064,12 +2109,12 @@ func main() {
 ```go
 package main
 
-func example() {
+func foo() {
     // 何らかの処理
 }
 
 func main() {
-    example()
+    foo()
 }
 ```
 
@@ -2282,7 +2327,7 @@ if err != nil {
 
 #### ・標準エラー
 
-Goでは複数の値を返却できるため，多くの関数では標準で，最後にerrorインターフェースが返却されるようになっている．errorインターフェースは自動的に```Error```メソッドを実行する．
+Goでは複数の値を返却できるため，多くの関数では標準で，最後にerrorインターフェースが返却されるようになっている．errorインターフェースは暗黙的に```Error```メソッドをコールする．
 
 ```go
 type error interface {
@@ -2621,7 +2666,7 @@ import (
  */
 func TestMain(t *testing.T) {
 	// jsonファイルの読み出し
-	data, err := ioutil.ReadFile("../testdata/example.json")
+	data, err := ioutil.ReadFile("../testdata/foo.json")
 
 	// 以下にテストコードを実装していく
 
@@ -2793,6 +2838,65 @@ func HandleRequest(event events.CloudWatchEvent) (string) {
     
 	return fmt.Printf("%#v\n", event.Detail)
 }
+```
+
+#### ・```Indent```関数
+
+渡されたJSONにインデントを挿入する．タブを挿入する場合は『```\t```』，空白二つを挿入する場合は『```  ```』を設定する．標準出力に出力すると，整形されたJSONを確認できる．
+
+```go
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Objects struct {
+	Id   int
+	Name string
+}
+
+func main() {
+	objects := []Objects{
+		{1, "Hiroki"},
+		{2, "Hiroko"},
+		{3, "Hiroshi"},
+	}
+
+	byteJson, err := json.Marshal(objects)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var buf bytes.Buffer
+
+	// インデント（タブ，空白）を挿入する．
+	json.Indent(&buf, byteJson, "", "\t")
+    // json.Indent(&buf, byteJson, "", "  ")
+
+	fmt.Println(buf.String())
+}
+
+/* 結果
+[
+	{
+		"Id": 1,
+		"Name": "Hiroki"
+	},
+	{
+		"Id": 2,
+		"Name": "Hiroko"
+	},
+	{
+		"Id": 3,
+		"Name": "Hiroshi"
+	}
+]
+*/
 ```
 
 <br>
@@ -3453,6 +3557,10 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
 
+前処理と後処理については，以下のリンクを参考にせよ．
+
+参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
+
 | よく使う関数        | 実行タイミング | 説明                                                         |
 | ------------------- | -------------- | ------------------------------------------------------------ |
 | ```SetupSuite```    | 1              | テストスイート内の全てのテストの前処理として，一回だけ実行する． |
@@ -3467,7 +3575,7 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 事前にモックを生成するために，```BeforeTest```関数を使用する．
 
 ```go
-package example
+package foo
 
 import (
 	"testing"
@@ -3476,30 +3584,30 @@ import (
 /**
  * ユニットテストのテストスイートを構成する．
  */
-type ExampleSuite struct {
+type FooSuite struct {
 	suite.Suite
-	exampleMock *ExampleMock
+	fooMock *FooMock
 }
 
 /**
  * ユニットテストの直前の前処理を実行する．
  */
-func (suite *ExampleSuite) BeforeTest(suiteName string, testName string) {
+func (suite *FooSuite) BeforeTest(suiteName string, testName string) {
 
 	// モックを生成する．
-	suite.exampleMock = &ExampleMock{}
+	suite.fooMock = &FooMock{}
 }
 
 /**
  * ユニットテストのテストスイートを実行する．
  */
-func TestExampleSuite(t *testing.T) {
-	suite.Run(t, &ExampleSuite{})
+func TestFooSuite(t *testing.T) {
+	suite.Run(t, &FooSuite{})
 }
 ```
 
 ```go
-package example
+package foo
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -3508,12 +3616,12 @@ import (
 /**
  * Methodメソッドが成功することをテストする．
  */
-func (suite *ExampleSuite) TestMethod() {
+func (suite *FooSuite) TestMethod() {
 
 	suite.T().Helper()
 
 	// 前処理で生成したモックを使用する．
-	exampleMock := suite.exampleMock
+	fooMock := suite.fooMock
 
 	// 以降にテスト処理
 }
@@ -3542,7 +3650,7 @@ $ go mod tidy
 PHPにおける```composer.json```ファイルに相当する．インターネット上における自身のパッケージ名とGoバージョンを定義するために，全てのGoアプリケーションで必ず必要である．インストールしたい外部パッケージも定義できる．
 
 ```
-module github.com/hiroki-it/example_repository
+module github.com/hiroki-it/foo_repository
 
 go 1.16
 ```
@@ -3581,17 +3689,17 @@ func main() {
 参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
 
 ```
-module example.com/hiroki-it/repository
+module foo.com/hiroki-it/repository
 
 go 1.16
 
-replace github.com/hiroki-it/example_repository => /
+replace github.com/hiroki-it/foo_repository => /
 ```
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．
 
 ```shell
-example_repository
+foo_repository
 ├── cmd
 │   └── hello.go
 │ 
@@ -3603,7 +3711,7 @@ example_repository
 ```
 
 ```
-module example.com/hiroki-it/example_repository/local-pkg
+module foo.com/hiroki-it/foo_repository/local-pkg
 
 go 1.16
 ```

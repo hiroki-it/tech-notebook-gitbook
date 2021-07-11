@@ -10,6 +10,38 @@ Lambdaで稼働するGoにおいて，Lambdaの機能を使用するためのパ
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-context.html
 
+#### ・```Start```関数
+
+Lamda関数を実行するための関数．```Start```関数に渡すパラメータには，必ず一つでもerrorインターフェースの実装が含まれている必要がある．もし含まれていない場合は，Lambdaで内部エラーが起こる．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-handler.html
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/aws/aws-lambda-go/lambda"
+)
+
+type MyEvent struct {
+	Name string `json:"name"`
+}
+
+// HandleRequest リクエストをハンドリングします．
+func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
+	return fmt.Sprintf("Hello %s!", name.Name), nil
+}
+
+func main() {
+	// Lambda関数を実行します．
+	lambda.Start(HandleRequest)
+}
+```
+
+<br>
+
 ### イベントの種類
 
 #### ・イベントの全種類
@@ -23,21 +55,21 @@ package main
 
 import (
 	"context"
-    
+
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
 )
-
-func main() {
-	lambda.Start(HandleRequest)
-}
 
 /**
  * Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.SNSEvent) (string, error) {
 
+}
+
+func main() {
+	lambda.Start(HandleRequest)
 }
 ```
 
@@ -54,15 +86,15 @@ import (
 	"github.com/aws/aws-lambda-go/lambdacontext"
 )
 
-func main() {
-	lambda.Start(HandleRequest)
-}
-
 /**
  * Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.CloudWatchEvent) (string, error) {
 
+}
+
+func main() {
+	lambda.Start(HandleRequest)
 }
 ```
 
@@ -79,15 +111,15 @@ import (
 	"github.com/aws/aws-lambda-go/lambdacontext"
 )
 
-func main() {
-	lambda.Start(HandleRequest)
-}
-
 /**
  * Lambdaハンドラー関数
  */
 func HandleRequest(context context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
+}
+
+func main() {
+	lambda.Start(HandleRequest)
 }
 ```
 
@@ -120,6 +152,32 @@ Lambdaのエラーレスポンスのステータスコードについては以�
   "errorMessage": "<エラーメッセージ>",
   "errorType": "<エラータイプ>"
 }
+```
+
+errorsパッケージの```New```関数を使用すると，内部で発生したエラーメッセージをオーバーライドできる．
+
+```go
+package main
+
+import (
+	"errors"
+	"github.com/aws/aws-lambda-go/lambda"
+)
+
+func HandleRequest() (string, error) {
+	return "", errors.New("something went wrong!")
+}
+
+func main() {
+	lambda.Start(OnlyErrors)
+}
+
+/* 結果
+{
+  "errorMessage": "something went wrong!",
+  "errorType": "errorString"
+}
+*/
 ```
 
 <br>
