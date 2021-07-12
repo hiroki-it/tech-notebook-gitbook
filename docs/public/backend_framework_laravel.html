@@ -4553,63 +4553,17 @@ $ php artisan make:request <span class="token tag"><span class="token tag"><span
     <span class="token punctuation">{</span>
         <span class="token comment">// &#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span>
-            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;unique:posts&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token string double-quoted-string">&quot;type&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token class-name static-context">Rule</span><span class="token operator">::</span><span class="token function">in</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token string double-quoted-string">&quot;author&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">UppercaseRule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token string double-quoted-string">&quot;date&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;date&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>&#x72EC;&#x81EA;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;Rule&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7528;&#x610F;&#x3057;&#xFF0C;<code>rule</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x72EC;&#x81EA;Rule&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#xFF0C;<code>passes</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;<code>message</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;<code>resources/lang/ja/validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x65E5;&#x672C;&#x8A9E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x72EC;&#x81EA;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x72EC;&#x81EA;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;Rule&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7528;&#x610F;&#x3057;&#xFF0C;<code>rule</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4E2D;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x72EC;&#x81EA;Rule&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x306F;&#xFF0C;<code>passes</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x72EC;&#x81EA;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/docs/8.x/validation#custom-validation-rules" target="_blank">https://laravel.com/docs/8.x/validation#custom-validation-rules</a></p>
-<p>&#x306A;&#x304A;&#xFF0C;&#x8A00;&#x8A9E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x6A19;&#x6E96;&#x3067;&#x306F;<code>/resources/lang/en/validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3068;&#x3057;&#x3066;&#x53C2;&#x7167;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;<code>app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x8A00;&#x8A9E;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x3068;&#xFF0C;&#x65E5;&#x672C;&#x8A9E;&#x7FFB;&#x8A33;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">return</span> <span class="token punctuation">[</span>
-
-    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
-
-    <span class="token string single-quoted-string">&apos;locale&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;ja&apos;</span>
-
-    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
-
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
-</code></pre>
-<p>&#x65E5;&#x672C;&#x8A9E;&#x7FFB;&#x8A33;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/validation-php.html" target="_blank">https://readouble.com/laravel/8.x/ja/validation-php.html</a></p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Rules</span><span class="token punctuation">;</span>
-
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Contracts<span class="token punctuation">\</span>Validation<span class="token punctuation">\</span>Rule</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">UppercaseRule</span> <span class="token keyword">implements</span> <span class="token class-name">Rule</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6210;&#x529F;&#x3092;&#x5224;&#x5B9A;
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">passes</span><span class="token punctuation">(</span><span class="token variable">$attribute</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">strtoupper</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">/**
-     * &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x53D6;&#x5F97;
-     *
-     * @return string
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">trans</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;validation.uppercase&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
 <h4 id="&#x30FB;validated&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;validated&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;validated&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;Controller&#x3067;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x524D;&#x306B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x4E2D;&#x3067;&#x306F;&#xFF0C;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x7D42;&#x3048;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3044;&#x304D;&#x306A;&#x308A;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -4663,8 +4617,9 @@ $ php artisan make:request <span class="token tag"><span class="token tag"><span
         <span class="token comment">// &#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5B9F;&#x884C;</span>
         <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
         <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required|unique:posts|max:255&quot;</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required|string|max:5255&quot;</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required|string|max:255&quot;</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;date&quot;</span>  <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;required|date&quot;</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token variable">$exampleRepository</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExampleRepository</span><span class="token punctuation">;</span>
@@ -4696,8 +4651,9 @@ $ php artisan make:request <span class="token tag"><span class="token tag"><span
         <span class="token comment">// &#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5B9F;&#x884C;</span>
         <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
         <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;unique:posts&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;title&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;body&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;date&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;date&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token variable">$exampleRepository</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExampleRepository</span><span class="token punctuation">;</span>
@@ -4709,11 +4665,108 @@ $ php artisan make:request <span class="token tag"><span class="token tag"><span
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x51FA;&#x529B;"><a name="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x51FA;&#x529B;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x51FA;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x51FA;&#x529B;</h4>
-<p>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;MessageBag&#x30AF;&#x30E9;&#x30B9;&#x304C;View&#x306B;&#x6E21;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;"><a name="&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;</h4>
+<p>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;<code>message</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Rules</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Contracts<span class="token punctuation">\</span>Validation<span class="token punctuation">\</span>Rule</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">UppercaseRule</span> <span class="token keyword">implements</span> <span class="token class-name">Rule</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6210;&#x529F;&#x3092;&#x5224;&#x5B9A;
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">passes</span><span class="token punctuation">(</span><span class="token variable">$attribute</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">strtoupper</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x53D6;&#x5F97;
+     *
+     * @return string
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">message</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">trans</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;validation.uppercase&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306F;&#xFF0C;<code>message</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;<code>resources/lang/ja/validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3082;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x9078;&#x629E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#x30EB;&#x30FC;&#x30EB;&#x3068;&#x3057;&#x3066;&#x6700;&#x5927;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x9078;&#x629E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x65E5;&#x672C;&#x8A9E;&#x7FFB;&#x8A33;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/validation-php.html" target="_blank">https://readouble.com/laravel/8.x/ja/validation-php.html</a></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">[</span>    
+
+    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
+
+    <span class="token string single-quoted-string">&apos;required&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute&#x306F;&#x5FC5;&#x9808;&#x3067;&#x3059;&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;max&apos;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+        <span class="token string single-quoted-string">&apos;numeric&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute&#x306B;&#x306F;&#x3001;:max&#x4EE5;&#x4E0B;&#x306E;&#x6570;&#x5B57;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&apos;</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">&apos;file&apos;</span>    <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute&#x306B;&#x306F;&#x3001;:max kB&#x4EE5;&#x4E0B;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&apos;</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">&apos;string&apos;</span>  <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute&#x306F;&#x3001;:max&#x6587;&#x5B57;&#x4EE5;&#x4E0B;&#x3067;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&apos;</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">&apos;array&apos;</span>   <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute&#x306F;:max&#x500B;&#x4EE5;&#x4E0B;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&apos;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;date&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;:attribute &#x3092;&#x6709;&#x52B9;&#x306A;&#x65E5;&#x4ED8;&#x5F62;&#x5F0F;&#x306B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;attributes&apos;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>
+        <span class="token string single-quoted-string">&apos;title&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;&#x30BF;&#x30A4;&#x30C8;&#x30EB;&apos;</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">&apos;body&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;&#x672C;&#x6587;&apos;</span>
+        <span class="token string single-quoted-string">&apos;date&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;&#x4F5C;&#x6210;&#x65E5;&apos;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
+
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x306A;&#x304A;&#xFF0C;&#x8A00;&#x8A9E;&#x8A2D;&#x5B9A;&#x3092;&#x884C;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x6A19;&#x6E96;&#x3067;&#x306F;<code>/resources/lang/en/validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3068;&#x3057;&#x3066;&#x53C2;&#x7167;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;<code>app.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x8A00;&#x8A9E;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3053;&#x3068;&#x3068;&#xFF0C;&#x65E5;&#x672C;&#x8A9E;&#x7FFB;&#x8A33;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">[</span>
+
+    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
+
+    <span class="token string single-quoted-string">&apos;locale&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;ja&apos;</span>
+
+    <span class="token comment"># &#x301C; &#x7701;&#x7565; &#x301C;</span>
+
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x51FA;&#x529B;"><a name="&#x30FB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x51FA;&#x529B;" class="plugin-anchor" href="#&#x30FB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x51FA;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x753B;&#x9762;&#x4E0A;&#x3067;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x51FA;&#x529B;</h4>
+<p>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;MessageBag&#x30AF;&#x30E9;&#x30B9;&#x304C;View&#x306B;&#x6E21;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x9078;&#x629E;&#x3055;&#x308C;&#x305F;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x914D;&#x5217;&#x578B;&#x3067;MessageBag&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
-<p><a href="https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid" target="_blank">https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid</a></p>
-<p><a href="https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html</a></p>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid" target="_blank">https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html</a></li>
+</ul>
+<pre class="language-"><code class="lang-shell">( 
+  [title] =&gt; Array
+         (
+            [0] =&gt; &#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306E;&#x5165;&#x529B;&#x306F;&#x5FC5;&#x9808;&#x3067;&#x3059;
+            [1] =&gt; &#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306F;&#xFF0C;&#x6700;&#x5927;255&#x6587;&#x5B57;&#x4EE5;&#x4E0B;&#x3067;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;
+         )
+
+  [body] =&gt; Array
+         (
+            [0] =&gt; &#x672C;&#x6587;&#x306E;&#x5165;&#x529B;&#x306F;&#x5FC5;&#x9808;&#x3067;&#x3059;
+            [1] =&gt; &#x672C;&#x6587;&#x306F;&#xFF0C;&#x6700;&#x5927;255&#x6587;&#x5B57;&#x4EE5;&#x4E0B;&#x3067;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;
+         )
+  [data] =&gt; Array
+         (
+            [0] =&gt; &#x4F5C;&#x6210;&#x65E5;&#x306E;&#x5165;&#x529B;&#x306F;&#x5FC5;&#x9808;&#x3067;&#x3059;
+            [1] =&gt; &#x4F5C;&#x6210;&#x65E5;&#x3092;&#x6709;&#x52B9;&#x306A;&#x65E5;&#x4ED8;&#x5F62;&#x5F0F;&#x306B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;
+         )    
+)
+</code></pre>
 <p><br></p>
 <h3 id="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;</h3>
 <h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;"><a name="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;" class="plugin-anchor" href="#&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;</h4>
@@ -5186,10 +5239,10 @@ $ php artisan migrate
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown</a></p>
 <pre class="language-"><code class="lang-html">@component(&quot;mail::message&quot;)
 
-&#x8A8D;&#x8A3C;&#x30B3;&#x30FC;&#x30C9;&#x300E;{ $tfa_token }}&#x300F;&#x3092;&#x5165;&#x529B;&#x3057;&#x3066;&#x4E0B;&#x3055;&#x3044;&#x3002;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+&#x8A8D;&#x8A3C;&#x30B3;&#x30FC;&#x30C9;&#x300E;{ $tfa_token }}&#x300F;&#x3092;&#x5165;&#x529B;&#x3057;&#x3066;&#x4E0B;&#x3055;&#x3044;&#xFF0E;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
 
 +++++++++++++++++++++++++++++++++++++<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
-&#x672C;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306F;&#x9001;&#x4FE1;&#x5C02;&#x7528;&#x3067;&#x3059;&#x3002;&#x3054;&#x8FD4;&#x4FE1;&#x9802;&#x3044;&#x3066;&#x3082;&#x304A;&#x7B54;&#x3048;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x3001;&#x3054;&#x4E86;&#x627F;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
+&#x672C;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306F;&#x9001;&#x4FE1;&#x5C02;&#x7528;&#x3067;&#x3059;&#xFF0E;&#x3054;&#x8FD4;&#x4FE1;&#x9802;&#x3044;&#x3066;&#x3082;&#x304A;&#x7B54;&#x3048;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x3001;&#x3054;&#x4E86;&#x627F;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;
 
 @endcomponent
 </code></pre>
@@ -7217,7 +7270,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-07-04T11:51:44.072Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-11T17:48:43.112Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.4.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.4.4","depth":3,"path":"public/backend_testing.md","ref":"public/backend_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.4.2","depth":3,"path":"public/backend_framework_symfony.md","ref":"public/backend_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_framework_laravel.md","mtime":"2021-07-12T18:21:52.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-12T18:42:59.487Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
