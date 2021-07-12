@@ -3016,73 +3016,19 @@ class ExampleRequest extends FormRequest
     {
         // ルールの定義
         return [
-            "title" => ["required", "unique:posts", "max:255"],
-            "body"  => "required",
+            "title" => ["required", "string", "max:255"],
+            "body"  => ["required", "string", "max:255"],
             "type"  => ["required", Rule::in([1, 2, 3])],
             "author"  => ["required", "string", new UppercaseRule()]
+            "date"  => ["required", "date"],
         ];
     }
 }
 ```
 
-独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義し，```message```メソッドでバリデーションメッセージを定義する．```resources/lang/ja/validation.php```ファイルの日本語メッセージを参照することもできる．独自ルールの定義方法については以下を参考のリンクを参考にせよ．
+独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義する．独自ルールの定義方法については以下を参考のリンクを参考にせよ．
 
 参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
-
-なお，言語設定を行わない場合，標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため，```app.php```ファイルで言語を変更することと，日本語翻訳```validation.php```ファイルが必要である．
-
-```php
-<?php
-
-return [
-
-    # 〜 省略 〜
-
-    'locale' => 'ja'
-    
-    # 〜 省略 〜
-    
-];
-```
-
-日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
-
-参考：https://readouble.com/laravel/8.x/ja/validation-php.html
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Rules;
-
-use Illuminate\Contracts\Validation\Rule;
-
-class UppercaseRule implements Rule
-{
-    /**
-     * バリデーションの成功を判定
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function passes($attribute, $value)
-    {
-        return strtoupper($value) === $value;
-    }
-
-    /**
-     * バリデーションエラーメッセージの取得
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return trans('validation.uppercase');
-    }
-}
-```
 
 #### ・```validated```メソッド
 
@@ -3128,8 +3074,6 @@ class ExampleController extends Controller
 
 **＊実装例＊**
 
-
-
 ```php
 <?php
 
@@ -3149,8 +3093,9 @@ class ExampleController extends Controller
         // ルールの定義，バリデーションの実行
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validate([
-            "title" => "required|unique:posts|max:255",
-            "body"  => "required",
+            "title" => "required|string|max:5255",
+            "body"  => "required|string|max:255",
+            "date"  => "required|date",
         ]);
 
         $exampleRepository = new ExampleRepository;
@@ -3186,8 +3131,9 @@ class ExampleController extends Controller
         // ルールの定義，バリデーションの実行
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validate([
-            "title" => ["required", "unique:posts", "max:255"],
-            "body"  => ["required"],
+            "title" => ["required", "string", "max:255"],
+            "body"  => ["required", "string", "max:255"],
+            "date"  => ["required", "date"],
         ]);
 
         $exampleRepository = new ExampleRepository;
@@ -3200,15 +3146,123 @@ class ExampleController extends Controller
 }
 ```
 
-#### ・エラーメッセージの出力
+#### ・エラーメッセージ
 
-バリデーションでエラーがあった場合，Handlerクラスの```invalid```メソッドがコールされ，MessageBagクラスがViewに渡される．
+バリデーションメッセージを```message```メソッドで定義する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class UppercaseRule implements Rule
+{
+    /**
+     * バリデーションの成功を判定
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        return strtoupper($value) === $value;
+    }
+
+    /**
+     * バリデーションエラーメッセージの取得
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return trans('validation.uppercase');
+    }
+}
+```
+
+メッセージは，```message```メソッドの代わりに，```resources/lang/ja/validation.php```ファイルでも定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
+
+参考：https://readouble.com/laravel/8.x/ja/validation-php.html
+
+```php
+<?php
+    
+return [    
+    
+    # 〜 省略 〜
+    
+    'required' => ':attributeは必須です',
+    
+    'max' => [
+        'numeric' => ':attributeには、:max以下の数字を指定してください',
+        'file'    => ':attributeには、:max kB以下のファイルを指定してください',
+        'string'  => ':attributeは、:max文字以下で指定してください',
+        'array'   => ':attributeは:max個以下指定してください',
+    ],
+    
+    'date' => ':attribute を有効な日付形式にしてください',
+    
+    'attributes' => [
+        'title' => 'タイトル',
+        'body' => '本文'
+        'date' => '作成日',
+    ],
+    
+    # 〜 省略 〜
+    
+];
+```
+
+なお，言語設定を行わない場合，標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため，```app.php```ファイルで言語を変更することと，日本語翻訳```validation.php```ファイルが必要である．
+
+```php
+<?php
+
+return [
+
+    # 〜 省略 〜
+
+    'locale' => 'ja'
+    
+    # 〜 省略 〜
+    
+];
+```
+
+#### ・画面上でのエラーメッセージ出力
+
+バリデーションでエラーがあった場合，Handlerクラスの```invalid```メソッドがコールされ，MessageBagクラスがViewに渡される．選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている．
 
 参考：
 
-https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
+- https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
+- https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
-https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
+```shell
+( 
+  [title] => Array
+         (
+            [0] => タイトルの入力は必須です
+            [1] => タイトルは，最大255文字以下で指定してください
+         )
+
+  [body] => Array
+         (
+            [0] => 本文の入力は必須です
+            [1] => 本文は，最大255文字以下で指定してください
+         )
+  [data] => Array
+         (
+            [0] => 作成日の入力は必須です
+            [1] => 作成日を有効な日付形式にしてください
+         )    
+)
+```
 
 <br>
 
@@ -3818,10 +3872,10 @@ MailMessageクラスの```markdown```メソッドを使用することで，通�
 ```html
 @component("mail::message")
 
-認証コード『{ $tfa_token }}』を入力して下さい。<br/>
+認証コード『{ $tfa_token }}』を入力して下さい．<br/>
 
 +++++++++++++++++++++++++++++++++++++<br/>
-本アドレスは送信専用です。ご返信頂いてもお答えできませんので、ご了承ください。
+本アドレスは送信専用です．ご返信頂いてもお答えできませんので、ご了承ください．
 
 @endcomponent
 ```
