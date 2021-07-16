@@ -3198,6 +3198,8 @@ return [
     
     'required' => ':attributeは必須です',
     
+    'string' => ':attribute は文字列のみ有効です',
+    
     'max' => [
         'numeric' => ':attributeには、:max以下の数字を指定してください',
         'file'    => ':attributeには、:max kB以下のファイルを指定してください',

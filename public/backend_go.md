@@ -1194,7 +1194,9 @@ func main() {
 
 ### マップ
 
-#### ・連想配列
+#### ・プリミティブ型を値に持つマップ
+
+マップの定義と代入を同時に行う．
 
 ```go
 package main
@@ -1204,16 +1206,78 @@ import "fmt"
 func main() {
 	// 『数値:文字列』のマップ
 	m := map[int]string{
-		1: "Hiroki",
-		2: "Hiroko",
-		3: "Hiroshi",
+		0: "Hiroki",
+		1: "Hiroko",
+		2: "Hiroshi",
 	}
 
-	fmt.Println(m) // map[1:Hiroki 2:Hiroko 3:Hiroshi]
+	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
 }
 ```
 
-#### ・値の取得
+定義と代入を別々に行う．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 『数値:文字列』のマップ
+	m := map[int]string{}
+
+	m[0] = "Hiroki"
+	m[1] = "Hiroshi"
+	m[2] = "Hiroshi"
+
+	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
+}
+
+```
+
+または，```make```関数を使用してマップを作成することもできる．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 『数値:文字列』のマップ
+	m := make(map[int]string)
+
+	m[0] = "Hiroki"
+	m[1] = "Hiroshi"
+	m[2] = "Hiroshi"
+
+	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
+}
+```
+
+#### ・スライス型を値に持つマップ
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	// 『文字列:スライス』のマップ
+	m := map[string][]string{
+		"errors": {
+			0: "エラーメッセージ0",
+			1: "エラーメッセージ1",
+			2: "エラーメッセージ2",
+		},
+	}
+
+	fmt.Println(m) // map[errors:[エラーメッセージ0 エラーメッセージ1 エラーメッセージ2]]
+}
+```
+
+#### ・マップ値の抽出
 
 ```go
 package main
@@ -3485,6 +3549,107 @@ func main() {
 以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
+
+<br>
+
+### validator
+
+#### ・validatorとは
+
+#### ・バリデーションとエラーメッセージ
+
+```go
+package validators
+
+import (
+	"fmt"
+
+	"github.com/go-playground/validator"
+)
+
+type FoobarbazValidator struct {
+	Foo string `json:"foo" validate:"required"`
+	Bar string `json:"bar" validate:"required"`
+	Baz string `json:"baz" validate:"required"`
+}
+
+// NewValidator コンストラクタ
+func NewValidator() *Validator {
+
+	return &Validator{}
+}
+
+// Validate バリデーションを実行します．
+func (v *FoobarbazValidator) Validate() map[string]string {
+
+	err := validator.New().Struct(v)
+
+	var errorMessages = make(map[string]string)
+
+	if err != nil {
+		for _, err := range err.(validator.ValidationErrors) {
+			switch err.Field() {
+			// フィールドごとにマップ形式でバリデーションメッセージを構成します．
+			case "foo":
+				errorMessages["foo"] = v.stringValidation(err)
+				errorMessages["foo"] = v.requiredValidation(err)
+			case "bar":
+				errorMessages["bar"] = v.stringValidation(err)
+			case "baz":
+				errorMessages["baz"] = v.stringValidation(err)
+				errorMessages["baz"] = v.requiredValidation(err)
+			}
+		}
+	}
+
+	return errorMessages
+}
+
+// stringValidation 文字列型指定のメッセージを返却します．
+func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
+	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
+}
+
+// requiredValidation 必須メッセージを返却します．
+func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
+	return fmt.Sprintf("%s は必須です", err.Field())
+}
+```
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+
+	"github.com/foobarbaz_repository/validators"
+)
+
+func main() {
+	v := NewFoobarbazValidator()
+
+	// JSONを構造体にマッピングします．
+	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
+
+	if err != nil {
+		log.Println("JSONエンコードに失敗しました。")
+	}
+
+	// バリデーションを実行します．
+	errorMessages := v.Validate()
+
+	if len(errorMessages) > 0 {
+		// マップをJSONに変換します．
+		byteJson, _ := json.Marshal(errorMessages)
+		fmt.Printf("%#v\n", byteJson)
+	}
+
+	// エンコード結果を出力します．
+	fmt.Println("データに問題はありません．")
+}
+```
 
 <br>
 
