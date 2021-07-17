@@ -2555,7 +2555,7 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <p><br></p>
 <h3 id="output"><a name="output" class="plugin-anchor" href="#output"><i class="fa fa-link" aria-hidden="true"></i></a>output</h3>
 <h4 id="&#x30FB;output&#x3068;&#x306F;"><a name="&#x30FB;output&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;output&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;output&#x3068;&#x306F;</h4>
-<p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3067;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x3082;&#x3064;&#x7279;&#x5B9A;&#x306E;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3067;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x305F;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x304C;&#x3082;&#x3064;&#x7279;&#x5B9A;&#x306E;&#x5024;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x53EF;&#x8AAD;&#x6027;&#x306E;&#x89B3;&#x70B9;&#x304B;&#x3089;&#xFF0C;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x4E00;&#x62EC;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x306A;attribute&#x3092;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><a name="&#x30FB;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30FB;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;ALB&#x3092;&#x793A;&#x3059;&#xFF0E;<code>resource</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3068;<code>data</code>&#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x3067;&#x30A2;&#x30A6;&#x30C8;&#x30D7;&#x30C3;&#x30C8;&#x306E;&#x65B9;&#x6CD5;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;</p>
@@ -3185,36 +3185,8 @@ data <span class="token string">&quot;aws_ecs_task_definition&quot;</span> <span
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x65B9;&#x6CD5;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x65B9;&#x6CD5;</h4>
+<p>int&#x578B;&#x3092;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x305B;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x62E1;&#x5F35;&#x5B50;&#x3092;json&#x3067;&#x306F;&#x306A;&#x304F;tpl&#x3068;&#x3059;&#x308B;&#x306E;&#x304C;&#x826F;&#x3044;&#xFF0E;<code>image</code>&#x30AD;&#x30FC;&#x3067;&#x306F;&#xFF0C;ECR&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;URL&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x306F;&#x4EFB;&#x610F;&#x3067;&#x6307;&#x5B9A;&#x3067;&#x304D;&#xFF0C;&#x3082;&#x3057;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x300E;<code>latest</code>&#x300F;&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x30BF;&#x30B0;&#x304C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x306B;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;Terraform&#x3067;&#x306F;&#x6642;&#x7CFB;&#x5217;&#x3067;&#x6700;&#x65B0;&#x306E;&#x30BF;&#x30B0;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x304C;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#xFF0C;<code>secrets</code>&#x30AD;&#x30FC;&#x3067;&#x306F;&#xFF0C;SSM&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306E;&#x5024;&#x3092;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30ED;&#x30B0;&#x5206;&#x5272;&#x306E;&#x76EE;&#x5370;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;<code>awslogs-datetime-format</code>&#x30AD;&#x30FC;&#x3067;&#x306F;&#xFF0C;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3092;&#x8868;&#x3059;<code>\\[%Y-%m-%d %H:%M:%S\\]</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#x826F;&#x3044;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x540C;&#x3058;&#x6642;&#x9593;&#x306B;&#x767A;&#x751F;&#x3057;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x4E00;&#x3064;&#x306E;&#x30ED;&#x30B0;&#x3068;&#x3057;&#x3066;&#x307E;&#x3068;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x304C;&#x898B;&#x3084;&#x3059;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;SSM&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306E;&#x5024;&#x3092;&#x53C2;&#x7167;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;<code>secrets</code>&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;int&#x578B;&#x3092;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x6E21;&#x305B;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x62E1;&#x5F35;&#x5B50;&#x3092;json&#x3067;&#x306F;&#x306A;&#x304F;tpl&#x3068;&#x3059;&#x308B;&#x306E;&#x304C;&#x826F;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
-<span class="token comment"># ECS Task Definition</span>
-<span class="token comment">###############################################</span>
-<span class="token keyword">resource <span class="token type variable">&quot;aws_ecs_task_definition&quot;</span></span> <span class="token string">&quot;this&quot;</span> <span class="token punctuation">{</span>
-  <span class="token property">family</span>                   <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-ecs-task-definition&quot;</span>
-  <span class="token property">task_role_arn</span>            <span class="token punctuation">=</span> var.ecs_task_iam_role_arn
-  <span class="token property">network_mode</span>             <span class="token punctuation">=</span> <span class="token string">&quot;awsvpc&quot;</span>
-  <span class="token property">requires_compatibilities</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;FARGATE&quot;</span><span class="token punctuation">]</span>
-  <span class="token property">execution_role_arn</span>       <span class="token punctuation">=</span> var.ecs_task_execution_iam_role_arn
-  <span class="token property">memory</span>                   <span class="token punctuation">=</span> var.ecs_task_memory
-  <span class="token property">cpu</span>                      <span class="token punctuation">=</span> var.ecs_task_cpu
-  <span class="token property">container_definitions</span> <span class="token punctuation">=</span> templatefile(
-    <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">path</span><span class="token punctuation">.</span><span class="token type variable">module</span><span class="token punctuation">}</span></span>/container_definitions.tpl&quot;</span>,
-    <span class="token punctuation">{</span>
-      <span class="token property">environment</span>                                     <span class="token punctuation">=</span> var.environment
-      <span class="token property">region</span>                                          <span class="token punctuation">=</span> var.region
-      <span class="token property">service</span>                                         <span class="token punctuation">=</span> var.service
-      <span class="token property">ecs_container_laravel_cloudwatch_log_group_name</span> <span class="token punctuation">=</span> var.ecs_container_laravel_cloudwatch_log_group_name
-      <span class="token property">ecs_container_nginx_cloudwatch_log_group_name</span>   <span class="token punctuation">=</span> var.ecs_container_nginx_cloudwatch_log_group_name
-      <span class="token property">laravel_ecr_repository_url</span>                      <span class="token punctuation">=</span> var.laravel_ecr_repository_url
-      <span class="token property">nginx_ecr_repository_url</span>                        <span class="token punctuation">=</span> var.nginx_ecr_repository_url
-      <span class="token property">ecs_container_laravel_port_http</span>                 <span class="token punctuation">=</span> var.ecs_container_laravel_port_http
-      <span class="token property">ecs_container_nginx_port_http</span>                   <span class="token punctuation">=</span> var.ecs_container_nginx_port_http
-    <span class="token punctuation">}</span>
-  )
-<span class="token punctuation">}</span>
-</code></pre>
-<p>&#x30ED;&#x30B0;&#x5206;&#x5272;&#x306E;&#x76EE;&#x5370;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;<code>awslogs-datetime-format</code>&#x30AD;&#x30FC;&#x3067;&#x306F;&#xFF0C;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3092;&#x8868;&#x3059;<code>\\[%Y-%m-%d %H:%M:%S\\]</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#x826F;&#x3044;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x540C;&#x3058;&#x6642;&#x9593;&#x306B;&#x767A;&#x751F;&#x3057;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x4E00;&#x3064;&#x306E;&#x30ED;&#x30B0;&#x3068;&#x3057;&#x3066;&#x307E;&#x3068;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x304C;&#x898B;&#x3084;&#x3059;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-json"><span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt;&quot;</span><span class="token punctuation">,</span>
@@ -3486,60 +3458,74 @@ data &quot;aws_ami&quot; &quot;bastion&quot; {
 <h3 id="api-gateway"><a name="api-gateway" class="plugin-anchor" href="#api-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>API Gateway</h3>
 <h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code>###############################################
-# REST API
-###############################################
-resource &quot;aws_api_gateway_rest_api&quot; &quot;example&quot; {
-  name        = &quot;${var.environment}-${var.service}-api-for-example&quot;
-  description = &quot;The API that enables two-way communication with ${var.environment}-example&quot;
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># REST API</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_rest_api&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span>        <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">service</span><span class="token punctuation">}</span></span>-api-for-example&quot;</span>
+  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">&quot;The API that enables two-way communication with <span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>-example&quot;</span>
 
-  # VPC&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x306E;API&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;
-  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
-  body = templatefile(
-    &quot;${path.module}/open_api.yaml&quot;,
-    {
-      api_gateway_vpc_link_example_id = aws_api_gateway_vpc_link.example.id
-      nlb_dns_name                          = var.nlb_dns_name
-    }
+  <span class="token comment"># VPC&#x30EA;&#x30F3;&#x30AF;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x306E;API&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;</span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">body</span> <span class="token punctuation">=</span> templatefile(
+    <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">path</span><span class="token punctuation">.</span><span class="token type variable">module</span><span class="token punctuation">}</span></span>/open_api.yaml&quot;</span>,
+    <span class="token punctuation">{</span>
+      <span class="token property">api_gateway_vpc_link_example_id</span> <span class="token punctuation">=</span> aws_api_gateway_vpc_link.example.id
+      <span class="token property">nlb_dns_name</span>                          <span class="token punctuation">=</span> var.nlb_dns_name
+    <span class="token punctuation">}</span>
   )
 
-  endpoint_configuration {
-    types = [&quot;REGIONAL&quot;]
-  }
+  <span class="token keyword">endpoint_configuration</span> <span class="token punctuation">{</span>
+    <span class="token property">types</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;REGIONAL&quot;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
 
-  lifecycle {
-    ignore_changes = [
+  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
+    <span class="token property">ignore_changes</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span>
       policy
-    ]
-  }
-}
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-###############################################
-# Deployment
-###############################################
-resource &quot;aws_api_gateway_deployment&quot; &quot;example&quot; {
-  rest_api_id = aws_api_gateway_rest_api.example.id
+<span class="token comment">###############################################</span>
+<span class="token comment"># Deployment</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_deployment&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">rest_api_id</span> <span class="token punctuation">=</span> aws_api_gateway_rest_api.example.id
 
-  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
-  triggers = {
-    redeployment = sha1(aws_api_gateway_rest_api.example.body)
-  }
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">triggers</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+    <span class="token property">redeployment</span> <span class="token punctuation">=</span> sha1(aws_api_gateway_rest_api.example.body)
+  <span class="token punctuation">}</span>
 
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+  <span class="token keyword">lifecycle</span> <span class="token punctuation">{</span>
+    <span class="token property">create_before_destroy</span> <span class="token punctuation">=</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-###############################################
-# Stage
-###############################################
-resource &quot;aws_api_gateway_stage&quot; &quot;example&quot; {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = var.environment
-}
-</code></pre><h4 id="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><a name="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;</h4>
+<span class="token comment">###############################################</span>
+<span class="token comment"># Stage</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_api_gateway_stage&quot;</span></span> <span class="token string">&quot;example&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">deployment_id</span> <span class="token punctuation">=</span> aws_api_gateway_deployment.example.id
+  <span class="token property">rest_api_id</span>   <span class="token punctuation">=</span> aws_api_gateway_rest_api.example.id
+  <span class="token property">stage_name</span>    <span class="token punctuation">=</span> var.environment
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><a name="&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;openapi&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5DEE;&#x5206;&#x8A8D;&#x8B58;</h4>
 <p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x7528;&#x610F;&#x3057;&#x305F;OpenAPI&#x4ED5;&#x69D8;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;<code>body</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;API&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5909;&#x6570;&#x3092;&#x6E21;&#x3059;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;API&#x306E;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x306E;&#x30C8;&#x30EA;&#x30AC;&#x30FC;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306B;<code>body</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3092;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5143;&#x306E;YAML&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5DEE;&#x5206;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;Terraform&#x304C;<code>redeployment</code>&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x5024;&#x306E;&#x5909;&#x5316;&#x3092;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x518D;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<h4 id="&#xFF08;&#x203B;&#xFF09;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x306A;&#x3044;"><a name="&#xFF08;&#x203B;&#xFF09;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x306A;&#x3044;" class="plugin-anchor" href="#&#xFF08;&#x203B;&#xFF09;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x306A;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#x203B;&#xFF09;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306F;&#x306A;&#x3044;</h4>
+<p>API Gateway&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x540D;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;resource&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#xFF0C;data&#x3067;&#x306F;&#x3053;&#x308C;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x3082;&#x3057;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x3092;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x753B;&#x9762;&#x4E0A;&#x304B;&#x3089;&#x69CB;&#x7BC9;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x306E;ARN&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;ARN&#x3092;&#x81EA;&#x529B;&#x3067;&#x4F5C;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;API Gateway&#x306E;&#x5404;ARN&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p><a href="https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html" target="_blank">https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html</a></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>WAF&#x306B;API Gateway&#x3092;&#x95A2;&#x9023;&#x3065;&#x3051;&#x308B;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x306E;ARN&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306F;&#x81EA;&#x529B;&#x3067;&#x4F5C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-hcl"><span class="token comment">###############################################</span>
+<span class="token comment"># Web ACL Association</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">resource <span class="token type variable">&quot;aws_wafv2_web_acl_association&quot;</span></span> <span class="token string">&quot;api_gateway&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">resource_arn</span> <span class="token punctuation">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">api_gateway_rest_arn</span><span class="token punctuation">}</span></span>/stages/<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span><span class="token keyword">var</span><span class="token punctuation">.</span><span class="token type variable">environment</span><span class="token punctuation">}</span></span>&quot;</span>
+  <span class="token property">web_acl_arn</span>  <span class="token punctuation">=</span> aws_wafv2_web_acl.api_gateway.arn
+<span class="token punctuation">}</span>
+</code></pre>
 <p><br></p>
 <h3 id="cloudfront"><a name="cloudfront" class="plugin-anchor" href="#cloudfront"><i class="fa fa-link" aria-hidden="true"></i></a>CloudFront</h3>
 <h4 id="&#x30FB;&#x307E;&#x3068;&#x3081;"><a name="&#x30FB;&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x30FB;&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x307E;&#x3068;&#x3081;</h4>
@@ -5081,7 +5067,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-07-11T08:29:42.363Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-12T18:42:59.487Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Terraform","level":"1.13.2","depth":2,"next":{"title":"仮想化技術","level":"1.14","depth":1,"ref":"","articles":[{"title":"▶ ︎仮想化技術の比較","level":"1.14.1","depth":2,"path":"public/infrastructure_virtualization_comparison.md","ref":"public/infrastructure_virtualization_comparison.md","articles":[{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]}]},{"title":"サーバ","level":"1.14.1.2","depth":3,"ref":"","articles":[{"title":"▶ ︎仮想サーバ（仮想マシン）","level":"1.14.1.2.1","depth":4,"path":"public/infrastructure_virtualization_server.md","ref":"public/infrastructure_virtualization_server.md","articles":[]}]}]}]},"previous":{"title":"▶ ︎Infrastructure as Code","level":"1.13.1","depth":2,"path":"public/infrastructure_as_code.md","ref":"public/infrastructure_as_code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code_terraform.md","mtime":"2021-07-17T07:46:02.848Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-17T17:09:17.982Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
