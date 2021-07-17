@@ -251,14 +251,14 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | リソース                 | エンドポイント，HTTPメソッド，転送先，などを設定する．       | 構築したAWSリソースのパスが，API Gatewayのエンドポイントになる． |
 | ステージ                 | API Gatewayをデプロイする環境を定義する．                    |                                                              |
-| オーソライザー           |                                                              |                                                              |
+| オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して，認可プロセスを定義する． |                                                              |
 | ゲートウェイのレスポンス |                                                              |                                                              |
 | モデル                   | リクエスト／レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
-| リソースポリシー         |                                                              |                                                              |
+| リソースポリシー         | ポリシーを使用して，API Gatewayにセキュリティを定義づける．  |                                                              |
 | ドキュメント             |                                                              |                                                              |
 | ダッシュボード           |                                                              |                                                              |
-| その他の設定             |                                                              |                                                              |
-| 使用量プラン             |                                                              |                                                              |
+| APIの設定                |                                                              |                                                              |
+| 使用量プラン             | 有料サービスとしてAPIを公開し，料金体系に応じてリクエスト量を制限するために使用する．APIキーにリクエスト量のレートを設定する． | 有料サービスとして使用しないAPIの場合は，レートを設定する必要はない． |
 | APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 | クライアント証明書       | SSLサーバ証明書をAPI Gatewayに割り当てる．                   | APIが，API Gatewayから転送されたリクエストであること識別できるようになる． |
 | CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう，ロールを設定する． | 一つのAWS環境につき，一つのロールを設定すればよい．          |
@@ -280,7 +280,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 | 設定項目                  | 説明                                                         | 補足                                                         |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 認可                      |                                                              |                                                              |
+| 認可                      | 定義したLambdaまたはCognitoによるオーソライザーを有効化する． |                                                              |
 | リクエストの検証          | 後述の「URLクエリ文字列パラメータ」「HTTPリクエストヘッダー」「リクエスト本文」のバリデーションを有効化する． |                                                              |
 | APIキーの必要性           | リクエストヘッダーにおけるAPIキーのバリデーションを行う．リクエストのヘッダーに「```x-api-key```」を含み，これにAPIキーが割り当てられていることを強制する． | ヘッダー名は大文字でも小文字でも問題ないが，小文字が推奨．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
 | URLクエリ文字列パラメータ | リクエストされたURLのクエリパラメータのバリデーションを行う． |                                                              |
@@ -290,12 +290,13 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 #### ・統合リクエストの詳細
 
-| 設定項目                  | 説明                                                         |
-| ------------------------- | ------------------------------------------------------------ |
-| 統合タイプ                | リクエストの転送先を設定する．                               |
-| URLパスパラメータ         | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのパスパラメータに紐づける． |
-| URLクエリ文字列パラメータ | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのクエリパラメータに紐づける． |
-| HTTPヘッダー              | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのヘッダーに紐づける． |
+| 設定項目                  | 説明                                                         | 補足                                   |
+| ------------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| 統合タイプ                | リクエストの転送先を設定する．                               |                                        |
+| URLパスパラメータ         | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのパスパラメータに紐づける．または紐づけずに，新しいデータを転送しても良い． |                                        |
+| URLクエリ文字列パラメータ | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのクエリパラメータに紐づける．または紐づけずに，新しいデータを転送しても良い． |                                        |
+| HTTPヘッダー              | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのヘッダーに紐づける．または紐づけずに，新しいデータを転送しても良い． | 値はシングルクオートで囲う必要がある． |
+| マッピングテンプレート    | メソッドリクエストから転送されたデータを，API Gatewayから転送するリクエストのメッセージボディに紐づける．または紐づけずに，新しいデータを転送しても良い． |                                        |
 
 #### ・テスト
 
@@ -550,7 +551,7 @@ SNSを経由して，CloudWatchからの通知をチャットアプリに転送�
 
 #### ・サポート対象のイベント
 
-AWSリソースのイベントを，EventBridge（CloudWatchEvents）を用いて，Chatbotに転送できるが，全てのAWSリソースをサポートしているわけではない．サポート対象のAWSリソースは以下のリンクを参考にせよ．
+AWSリソースのイベントを，EventBridge（CloudWatchイベント）を用いて，Chatbotに転送できるが，全てのAWSリソースをサポートしているわけではない．サポート対象のAWSリソースは以下のリンクを参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/chatbot/latest/adminguide/related-services.html#cloudwatchevents
 
@@ -1708,7 +1709,39 @@ ECRのイメージの有効期間を定義できる．
 | イメージのステータス | ルールを適用するイメージの条件として，タグの有無や文字列を設定できる． |                                                              |
 | 一致条件             | イメージの有効期間として，同条件に当てはまるイメージが削除される閾値を設定できる． | 個数，プッシュされてからの期間，などを閾値として設定できる． |
 
-#### ・タグの変性／不変性
+#### ・タグ名
+
+Dockerのベストプラクティスに則り，タグ名にlatestを使用しないようにする．その代わりに，イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する．
+
+参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+
+#### ・タグの変更可能性
+
+同じタグ名でイメージがプッシュされた場合に，イメージタグを上書き可能／不可能かを設定できる．
+
+<br>
+
+### ECSのアウトバウンド通信
+
+#### ・NAT Gatewayを経由
+
+FargateからECRに対するDockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，NAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
+
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
+
+#### ・VPCエンドポイントを経由
+
+VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにするとよい．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方がよい．
+
+![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
+
+| VPCエンドポイントの接続先 | PrivateDNS名                                                 | 説明                                               |
+| ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
+| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．            |
+| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
+| SSMパラメータストア       | ```ssm.ap-northeast-1.amazonaws.com```<br>                   | SSMパラメータストアにGETリクエストを送信するため． |
+| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を使用するため．       |
 
 <br>
 
@@ -1723,25 +1756,6 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは，パブリックサブネットとPrivateサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱うことができるようになる．
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
-
-#### ・VPCの外側に対するアウトバウト通信問題
-
-タスク内のFargateは，VPCの外側にあるサービスに対して，アウトバウンド通信を送信するために，NATGatewayまたはVPCエンドポイントが必要である．料金的な観点から，VPCエンドポイントを使用した方がよい．
-
-| VPCエンドポイントの接続先 | PrivateDNS名                                                 | 説明                                               |
-| ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
-| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．            |
-| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
-| SSM                       | ```ssm.ap-northeast-1.amazonaws.com```                       | SSMパラメータストアにGETリクエストを送信するため． |
-
-例えば，FargateからECRに対するDockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，NAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
-
-![NatGatewayを介したFargateからECRECSへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateからECRECSへのアウトバウンド通信.png)
-
-そこで，ECR用のVPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにするとよい．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．
-
-![PrivateLinkを介したFargateからECRECSへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/PrivateLinkを介したFargateからECRECSへのアウトバウンド通信.png)
 
 <br>
 
@@ -1975,9 +1989,9 @@ redis xxxxx:6379> monitor
 
 <br>
 
-## 15. EventBridge（CloudWatchEvents）
+## 15. EventBridge（CloudWatchイベント）
 
-### EventBridge（CloudWatchEvents）とは
+### EventBridge（CloudWatchイベント）とは
 
 AWSリソースで起こったイベントを，他のAWSリソースに転送する．サポート対象のAWSリソースは以下のリンクを参考にせよ．
 
@@ -1985,9 +1999,74 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
 
 <br>
 
-### 設定項目
+### パターン
 
-#### ・イベントを確認
+#### ・イベントパターン
+
+指定したAWSリソースでイベントが起こると，以下のようなJSONが送信される．イベントパターンを定義し，JSON構造が一致するイベントのみをターゲットに転送する．イベントパターンに定義しないキーは任意のデータと見なされる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+
+```json
+{
+  "version": "0",
+  "id": "*****",
+  "detail-type": "<イベント名>",
+  "source": "aws.<AWSリソース名>",
+  "account": "*****",
+  "time": "2021-01-01T00:00:00Z",
+  "region": "us-west-1",
+  "resources": [
+    "<イベントを起こしたリソースのARN>"
+  ],
+  "detail": {
+    // イベントデータ
+  }
+}
+```
+
+**＊実装例＊**
+
+Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
+
+```json
+{
+  "detail": {
+    "appId": [
+      "xxxxx",
+      "yyyyy"
+    ],
+    "jobStatus": [
+      "SUCCEED",
+      "FAILED"
+    ]
+  },
+  "detail-type": [
+    "Amplify Deployment Status Change"
+  ],
+  "source": "aws.amplify"
+}
+```
+
+#### ・スケジュール
+
+cron式またはrate式を使用し，定期ジョブを定義づける．これとLambdaを組み合わせることにより，バッチ処理を構築できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/ScheduledEvents.html
+
+<br>
+
+### ターゲット
+
+#### ・ターゲットの一覧
+
+参考：https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-targets.html
+
+#### ・デバッグ
+
+EventBridgeでは，どのようなJSONのイベントをターゲットに転送したかを確認できない．そこで，デバッグ時はEventBridgeのターゲットにLambdaを設定し，イベント構造をログから確認する．
+
+**＊実装例＊**
 
 あらかじめ，イベントの内容を出力する関数をLambdaに作成しておく．
 
@@ -2031,40 +2110,17 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 }
 ```
 
-#### ・イベントパターン
+<br>
 
-指定したAWSリソースでイベントが起こった時に，それが指定したパターンに一致するイベントであった場合にのみ転送する．パターンはJSONで定義する．なお，JSONキーを指定しない部分は，全て許可するものと見なされる．
-
-**＊実装例＊**
-
-Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
-
-```json
-{
-  "detail": {
-    "appId": [
-      "xxxxx",
-      "yyyyy"
-    ],
-    "jobStatus": [
-      "SUCCEED",
-      "FAILED"
-    ]
-  },
-  "detail-type": [
-    "Amplify Deployment Status Change"
-  ],
-  "source": "aws.amplify"
-}
-```
+### 入力
 
 #### ・入力トランスフォーマー
 
-転送先に送信するJSONを定義できる．イベントのJSONの値を変数として出力できる．```event```キーをドルマークとして，ドットで繋いでアクセスする．
+入力パスで使用する値を抽出し，入力テンプレートで転送するJSONを定義できる．イベントのJSONの値を変数として出力できる．```event```キーをドルマークとして，ドットで繋いでアクセスする．
 
 **＊実装例＊**
 
-Amplifyで起こったイベントのJSONを変数として取り出す．JSONのキー名が変数名として機能する．
+入力パスにて，使用する値を抽出する．Amplifyで起こったイベントのJSONを変数として取り出す．JSONのキー名が変数名として機能する．
 
 ```json
 {
@@ -2076,7 +2132,7 @@ Amplifyで起こったイベントのJSONを変数として取り出す．JSON�
 }
 ```
 
-これをSlackに送信するJSONに出力する．出力するときは，変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンクを参考にせよ．
+入力テンプレートにて，転送するJSONを定義する．例えばここでは，Slackに送信するJSONに出力する．出力するときは，入力パスの変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンクを参考にせよ．
 
 参考：https://app.slack.com/block-kit-builder
 
@@ -4180,7 +4236,23 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 28. VPC：Virtual Private Cloud
+## 28. Step Functions
+
+### Step Functionsとは
+
+AWSサービスを組み合わせて，イベント駆動型アプリケーションを構築できる．
+
+<br>
+
+### 使用できるAWSサービス
+
+参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+
+
+
+<br>
+
+## 29. VPC：Virtual Private Cloud
 
 ### VPCとは
 
@@ -4397,7 +4469,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 <br>
 
-## 28-02. VPC間，VPC-オンプレ間の通信
+## 29-02. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
@@ -4459,7 +4531,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 <br>
 
-## 29. WAF：Web Applicarion Firewall
+## 30. WAF：Web Applicarion Firewall
 
 ### 設定項目
 
@@ -4621,7 +4693,7 @@ Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-## 30. WorkMail
+## 31. WorkMail
 
 ### WorkMailとは
 
@@ -4639,7 +4711,7 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 31. 負荷テスト
+## 32. 負荷テスト
 
 ### Distributed Load Testing（分散負荷テスト）
 
@@ -4655,7 +4727,7 @@ AWSから提供されている負荷を発生させるインフラ環境のこ�
 
 <br>
 
-## 32. コスト管理
+## 33. コスト管理
 
 ### SLA：Service Level Agreement
 

@@ -1966,40 +1966,9 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ・設定方法
 
+int型を変数として渡せるように，拡張子をjsonではなくtplとするのが良い．```image```キーでは，ECRイメージのURLを指定する．イメージタグは任意で指定でき，もし指定しない場合は，『```latest```』という名前のタグが自動的に割り当てられる．イメージタグにハッシュ値が割り当てられている場合，Terraformでは時系列で最新のタグ名を取得する方法がないため，，```secrets```キーでは，SSMのパラメータストアの値を参照できる．ログ分割の目印を設定する```awslogs-datetime-format```キーでは，タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い．これにより，同じ時間に発生したログを一つのログとしてまとめることができるため，スタックトレースが見やすくなる．
+
 **＊実装例＊**
-
-例として，SSMのパラメータストアの値を参照できるように，```secrets```を設定している．int型を変数として渡せるように，拡張子をjsonではなくtplとするのが良い．
-
-```hcl
-###############################################
-# ECS Task Definition
-###############################################
-resource "aws_ecs_task_definition" "this" {
-  family                   = "${var.environment}-${var.service}-ecs-task-definition"
-  task_role_arn            = var.ecs_task_iam_role_arn
-  network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
-  execution_role_arn       = var.ecs_task_execution_iam_role_arn
-  memory                   = var.ecs_task_memory
-  cpu                      = var.ecs_task_cpu
-  container_definitions = templatefile(
-    "${path.module}/container_definitions.tpl",
-    {
-      environment                                     = var.environment
-      region                                          = var.region
-      service                                         = var.service
-      ecs_container_laravel_cloudwatch_log_group_name = var.ecs_container_laravel_cloudwatch_log_group_name
-      ecs_container_nginx_cloudwatch_log_group_name   = var.ecs_container_nginx_cloudwatch_log_group_name
-      laravel_ecr_repository_url                      = var.laravel_ecr_repository_url
-      nginx_ecr_repository_url                        = var.nginx_ecr_repository_url
-      ecs_container_laravel_port_http                 = var.ecs_container_laravel_port_http
-      ecs_container_nginx_port_http                   = var.ecs_container_nginx_port_http
-    }
-  )
-}
-```
-
-ログ分割の目印を設定する```awslogs-datetime-format```キーでは，タイムスタンプを表す```\\[%Y-%m-%d %H:%M:%S\\]```を設定すると良い．これにより，同じ時間に発生したログを一つのログとしてまとめることができるため，スタックトレースが見やすくなる．
 
 ```json
 [
@@ -2356,7 +2325,7 @@ data "aws_ami" "bastion" {
 
 **＊実装例＊**
 
-```
+```hcl
 ###############################################
 # REST API
 ###############################################
@@ -2414,6 +2383,28 @@ resource "aws_api_gateway_stage" "example" {
 #### （１）OpenAPI仕様のインポートと差分認識
 
 あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし，これをインポートすることにより，APIを定義できる．YAMLファイルに変数を渡すこともできる．APIの再デプロイのトリガーとして，```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする．これにより，インポート元のYAMLファイルに差分があった場合に，Terraformが```redeployment```パラメータの値の変化を認識できるようになり，再デプロイを実行できる．
+
+#### （※）ステージ名を取得する方法はない
+
+API Gatewayのステージ名を参照するためには，resourceを使用する必要があり，dataではこれを取得することができない．もしステージをコンソール画面上から構築している場合，ステージのARNを参照することができないため，ARNを自力で作る必要がある．API Gatewayの各ARNについては，以下を参考にせよ．
+
+https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
+
+**＊実装例＊**
+
+WAFにAPI Gatewayを関連づけるために，ステージのARNが必要である．これは自力で作る．
+
+```hcl
+###############################################
+# Web ACL Association
+###############################################
+resource "aws_wafv2_web_acl_association" "api_gateway" {
+  resource_arn = "${var.api_gateway_rest_arn}/stages/${var.environment}"
+  web_acl_arn  = aws_wafv2_web_acl.api_gateway.arn
+}
+```
+
+
 
 <br>
 
