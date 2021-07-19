@@ -1366,8 +1366,6 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 ## 12-02. ECS on Fargate：Elastic Container Service
 
-![NatGatewayを介したFargateからECRECSへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateからECRECSへのアウトバウンド通信.png)
-
 ### ECSとEKSの違い
 
 #### ・管理環境と実行環境
