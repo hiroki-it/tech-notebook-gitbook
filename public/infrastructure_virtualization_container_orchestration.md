@@ -189,6 +189,18 @@ build:
   target: develop
 ```
 
+#### ・```command```
+
+コンテナの起動時に最初に実行するコマンドを設定する．Dockerfileを必要とせず，ベンダーが提供するイメージをそのまま使用するような場合に役立つ．
+
+**＊実装例＊**
+
+mysqlイメージを使用してコンテナを構築するときに，最初に文字コードを設定するコマンドを実行する．
+
+```yaml
+command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+```
+
 #### ・```container_name```
 
 コンテナ名を命名する．サービス名とは異なり，コンテナ名は他のプロジェクトと重複しないようにする．
@@ -214,32 +226,37 @@ depends_on:
 
 #### ・```env_file```，```environment```
 
-コンテナで展開する環境変数を定義する．Dockerfile内での環境変数とは異なり，マルチステージビルドの全ステージで使用できる．dotenv系ライブラリを使用しなくてもよくなる．mysqlイメージを使用した場合，環境変数を定義することによって，ルートユーザと一般ユーザを自動的に作成できる．ルートユーザ名は定義できず，『```root```』となる．GitHubに公開しない値は```env_file```キーで定義する．公開してもよい固定値は```environment```キーまたはDockerfile内で定義するようにする．
+コンテナで展開する環境変数を定義する．Dockerfile内での環境変数とは異なり，マルチステージビルドの全ステージで使用できる．dotenv系ライブラリを使用しなくてもよくなる．
 
 **＊実装例＊**
 
-```shell
-# .docker.envファイル
-MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
-MYSQL_DATABASE: example # データベース名
-MYSQL_USER: example_user # 一般ユーザ名
-MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
-```
+mysqlイメージを使用した場合，データベースの環境変数の設定が必要である．データベースの環境変数は，バックエンドコンテナでも必要なため，```environment```キーに直接環境変数を設定せずに，```env```ファイルに定義した環境変数を```environment```キーで参照するとよい．
 
 ```yaml
 env_file:
-  - .docker.env
-```
-
-**＊実装例＊**
-
-```yaml
+  - .env
 environment:
-  MYSQL_ROOT_PASSWORD: xxxxx # rootユーザのパス
-  MYSQL_DATABASE: example # データベース名
-  MYSQL_USER: example_user # 一般ユーザ名
-  MYSQL_PASSWORD: xxxxx # 一般ユーザのパス
+  MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # rootユーザのパス
+  MYSQL_DATABASE: ${DB_DATABASE} # データベース名
+  MYSQL_USER: ${DB_USER} # 一般ユーザ名
+  MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザのパス
 ```
+
+```shell
+# .envファイル
+MYSQL_ROOT_PASSWORD=foo # rootユーザのパス
+MYSQL_DATABASE=bar # データベース名
+MYSQL_USER=baz # 一般ユーザ名
+MYSQL_PASSWORD=qux # 一般ユーザのパス
+```
+
+mysqlイメージでは，環境変数の設定に応じて，コンテナ起動時にSQLが実行されるようになっている．データベース名の環境変数が設定されている場合は『```CREATE DATABASE```』，またユーザ名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される．
+
+参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
+
+ルートユーザ名は定義できず，『```root```』となる．
+
+参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
 
 #### ・```extra_host```
 
@@ -300,18 +317,18 @@ ff02::2 ip6-allrouters
 ```yaml
 networks:
   # 内部／外部ネットワークのエイリアス名を指定する．
-  - example-network
+  - foo-network
 ```
 
 ネットワークに接続されているコンテナはコマンドで確認できる．
 
 ```sh
 # 指定したネットワークに接続するコンテナを確認する．
-$ docker network inspect example-network
+$ docker network inspect foo-network
 
 [
     {
-        "Name": "example-network",
+        "Name": "foo-network",
         
         〜 省略 〜
         
@@ -334,7 +351,7 @@ $ docker network inspect example-network
         〜 省略 〜
         
         "Labels": {
-            "com.docker.compose.network": "example-network",
+            "com.docker.compose.network": "foo-network",
             "com.docker.compose.project": "<プロジェクト名>",
             "com.docker.compose.version": "1.29.0"
         }
@@ -478,7 +495,7 @@ build:
   # 出力元の値は，.envファイルに定義しなければならない．
   target: ${APP_ENV}
 
-image: ${APP_ENV}-example-app
+image: ${APP_ENV}-foo-app
 ```
 
 <br>
@@ -497,7 +514,7 @@ image: ${APP_ENV}-example-app
 networks:
   default:
     # ユーザ定義のネットワーク名とエイリアス名
-    name: example-network
+    name: foo-network
 ```
 
 なお，このネットワークを明示的に設定する場合は，エイリアス名（default）で指定する．
@@ -512,15 +529,15 @@ networks:
 $ docker network ls
 
 NETWORK ID       NAME                DRIVER     SCOPE
-xxxxxxxxxxxx     example-network     bridge     local
+xxxxxxxxxxxx     foo-network     bridge     local
 ```
 
 ```shell
-$ docker network inspect example-network
+$ docker network inspect foo-network
 
 [
     {
-        "Name": "example-network",
+        "Name": "foo-network",
         
         〜 省略 〜
         
@@ -543,7 +560,7 @@ $ docker network inspect example-network
         〜 省略 〜
         
         "Labels": {
-            "com.docker.compose.network": "example-network",
+            "com.docker.compose.network": "foo-network",
             "com.docker.compose.project": "<プロジェクト名>",
             "com.docker.compose.version": "1.29.0"
         }
@@ -624,8 +641,8 @@ version: "3.7"
 services:
 
   db:
-    container_name: example-mysql
-    hostname: example-mysql
+    container_name: foo-mysql
+    hostname: foo-mysql
     image: mysql:5.7
     ports:
       - "3307:3306"
@@ -634,10 +651,10 @@ services:
       # docker-entrypoint-initdb.dディレクトリにBindマウントを行う．
       - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: example
-      MYSQL_USER: example
-      MYSQL_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: foo
+      MYSQL_DATABASE: foo
+      MYSQL_USER: foo
+      MYSQL_PASSWORD: foo
       TZ: "Asia/Tokyo"
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     networks:
@@ -647,12 +664,12 @@ services:
     mysql_volume:
 ```
 
-また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．これにより，mysqlの起動時に
+また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．
 
 ```sql
 -- /infra/docker/mysql/initにSQLファイルを置く．
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
-GRANT ALL ON *.* TO 'example'@'%' ;
+GRANT ALL ON *.* TO 'foo'@'%' ;
 ```
 
 PHPUnitで接続するデータベースを指定する方法については，以下を参考にせよ．

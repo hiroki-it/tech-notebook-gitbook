@@ -182,6 +182,26 @@ func main() {
 
 <br>
 
+### ログ
+
+#### ・レポートログ
+
+| 種類            |                                      |
+| --------------- | ------------------------------------ |
+| RequestId       | リクエストID                         |
+| Duration        | イベントの処理時間                   |
+| Billed Duration | Lambdaの課金対象の時間               |
+| Memory Size     | Lambdaのメモリサイズ                 |
+| Max Memory Used | Lambdaが実際に使用するメモリの最大量 |
+
+#### ・ログの出力方法
+
+標準パッケージの```fmt```，または任意のロギングパッケージを使用し，標準出力／標準エラー出力に出力する．CloudWatchログにてこれを確認する．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/golang-logging.html
+
+<br>
+
 ## Node.js
 
 ### aws-sdk-js

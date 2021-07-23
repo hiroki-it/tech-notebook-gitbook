@@ -590,14 +590,14 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 [参考になったサイト](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
-| 設定項目                 | 説明                                                     |
-| ------------------------ | -------------------------------------------------------- |
-| General                  |                                                          |
-| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定                    |
-| Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定 |
-| ErrorPage                |                                                          |
-| Restriction              |                                                          |
-| Invalidation             | CloudFrontに保存されているCacheを削除できる．            |
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| General                  |                                                              |                                                              |
+| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する．                  |                                                              |
+| Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する． |                                                              |
+| ErrorPage                | 指定したオリジンから，指定したファイルのレスポンスを返信する． | 仕組みの詳細については，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html |
+| Restriction              |                                                              |                                                              |
+| Invalidation             | CloudFrontに保存されているCacheを削除できる．                |                                                              |
 
 #### ・Generalの詳細
 
@@ -2580,6 +2580,14 @@ $ export AWS_DEFAULT_REGION=<リージョン>
 IAMユーザをグループ化したもの．IAMグループごとにIAMロールをアタッチすれば，IAMユーザのIAMロールを管理しやすくなる．
 
 ![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループ.png)
+
+#### ・グループ一覧
+
+| 種類            | 説明                       | 補足 |
+| --------------- | -------------------------- | ---- |
+| Administrator   | 全ての操作に権限がある．   |      |
+| PowerUserAccess | IAM以外の操作権限がある．  |      |
+| ViewOnlyAccess  | 閲覧のみの操作権限がある． |      |
 
 <br>
 

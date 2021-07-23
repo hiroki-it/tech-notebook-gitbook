@@ -555,7 +555,7 @@ curl_close($curl);
 
 #### ・MIME type（Content type）
 
-HTTPプロトコルにおいてデータ形式を表現する識別子のこと．リクエストヘッダー／レスポンスヘッダーの```Content-Type```ヘッダーに割り当てると，オブジェクトデータのデータ型を定義できる．
+HTTPプロトコルにおいてデータ形式を表現する識別子のこと．リクエストヘッダー／レスポンスヘッダーのContent-Typeヘッダーに割り当てると，オブジェクトデータのデータ型を定義できる．
 
 | トップレベルタイプ | サブレベルタイプ      | 意味                                |
 | ------------------ | --------------------- | ----------------------------------- |
@@ -637,7 +637,7 @@ JSONの場合，階層構造にすると，データ容量が増えてしまう�
 }
 ```
 
-あるいは，```Content-Type```に『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用する．
+あるいは，Content-Typeヘッダーに『```application/hal+json```』『```application/vnd.api+json```』『```application/vnd.collection+json```』といったよりJSONベースの強い制約のフォーマットを利用する．
 
 #### ・日付データの形式に気をつけること
 

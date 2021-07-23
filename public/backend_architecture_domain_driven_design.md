@@ -1957,7 +1957,7 @@ class DogComboFactory
 
 各層では例外をスローするだけに留まり，スローされた例外を対処する責務は，より上層に持たせる．より上層では，その層に合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_catch_error_throw_exception_logging.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_catch_error_throw_exception_logging.html
 
 <br>
 
