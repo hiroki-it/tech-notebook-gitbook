@@ -31,8 +31,8 @@
   * パッケージ／フレームワーク
     * [▶ パッケージ](public/backend_go_package.md)
     * [▶ Gin](public/backend_go_framework_gin.md)
-  * API
-    * [▶ ︎RESTful APIの概念と実装](public/backend_api_restful.md)
+* API
+  * [▶ ︎RESTful APIの概念と実装](public/backend_api_restful.md)
 * フロントエンドとバックエンド間のデータ通信
   * [▶ ︎認証と認可](public/frontend_and_backend_authentication_authorization.md)
   * [▶ ︎JSON](public/frontend_and_backend_json.md)
