@@ -2406,7 +2406,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
     <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;</span>
     <span class="token key atrule">docker</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> circleci/ruby<span class="token punctuation">:</span>2.5.1<span class="token punctuation">-</span>node<span class="token punctuation">-</span>browsers
-    <span class="token key atrule">working_directory</span><span class="token punctuation">:</span> ~/example_project
+    <span class="token key atrule">working_directory</span><span class="token punctuation">:</span> ~/foo_project
     <span class="token key atrule">environment</span><span class="token punctuation">:</span>
       <span class="token key atrule">XX</span><span class="token punctuation">:</span> xx
       <span class="token key atrule">YY</span><span class="token punctuation">:</span> yy
@@ -2550,7 +2550,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">foo</span><span class="token punctuation">:</span>
           <span class="token key atrule">filters</span><span class="token punctuation">:</span>      
             <span class="token key atrule">branches</span><span class="token punctuation">:</span>
               <span class="token key atrule">only</span><span class="token punctuation">:</span>
@@ -2560,7 +2560,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">foo</span><span class="token punctuation">:</span>
           <span class="token key atrule">filters</span><span class="token punctuation">:</span>      
             <span class="token key atrule">branches</span><span class="token punctuation">:</span>
               <span class="token key atrule">ignore</span><span class="token punctuation">:</span>
@@ -2572,7 +2572,7 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
   <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">example</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">foo</span><span class="token punctuation">:</span>
           <span class="token key atrule">filters</span><span class="token punctuation">:</span>
             <span class="token key atrule">branches</span><span class="token punctuation">:</span>
                <span class="token key atrule">ignore</span><span class="token punctuation">:</span> /.<span class="token important">*/</span>
@@ -2719,6 +2719,11 @@ EOF</span>
 </code></pre>
 <p>&#x307E;&#x305F;&#xFF0C;<code>run</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x6642;&#x306B;&#x300E;<code>$BASH_ENV</code>&#x300F;&#x304C;<code>source</code>&#x3067;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x300E;<code>$BASH_ENV</code>&#x300F;&#x306F;&#x8907;&#x6570;&#x306E;<code>run</code>&#x9593;&#x300D;&#x3067;&#x5171;&#x6709;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;Alpine&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3067;&#x306F;&#xFF0C;&#x3053;&#x306E;&#x5171;&#x6709;&#x6A5F;&#x80FD;&#x3092;&#x4F7F;&#x3048;&#x306A;&#x3044;&#x305F;&#x3081;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/circleci/circleci-docs/issues/1650" target="_blank">https://github.com/circleci/circleci-docs/issues/1650</a></p>
+<p>Alpine&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#x8272;&#x3005;&#x3042;&#x308B;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform/blob/main/Dockerfile" target="_blank">https://github.com/hashicorp/terraform/blob/main/Dockerfile</a></li>
+</ul>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span> 
 
 <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
@@ -2835,7 +2840,7 @@ EOF</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Docker compose up
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             set -xe
-            docker network create example-network
+            docker network create foo-network
             docker-compose up --build -d</span>
       <span class="token punctuation">-</span> restore_vendor
       <span class="token comment"># Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;comspoer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x9001;&#x4FE1;</span>
@@ -2902,7 +2907,7 @@ EOF</span>
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Docker compose up
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             set -xe
-            docker network create example-network
+            docker network create foo-network
             docker-compose up --build -d</span>
 </code></pre>
 <p>docker&#x30BF;&#x30A4;&#x30D7;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;docker&#x30AD;&#x30FC;&#x306E;&#x4E0B;&#x3067;<code>docker_layer_caching</code>&#x3092;&#x4F7F;&#x3046;&#xFF0E;</p>
@@ -3126,7 +3131,7 @@ aws configure list
     <span class="token key atrule">cluster-name</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-cluster&quot;</span>
     <span class="token comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x540D;&#x3092;&#x6307;&#x5B9A;</span>
     <span class="token key atrule">service-name</span><span class="token punctuation">:</span> <span class="token string">&quot;${SERVICE}-service&quot;</span>
-    <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x6307;&#x5B9A;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
+    <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3068;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30BF;&#x30B0;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#xFF0E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;CircleCI&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3067;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x5FC5;&#x9808;&#xFF0E;</span>
     <span class="token key atrule">container-image-name-updates</span><span class="token punctuation">:</span> <span class="token string">&quot;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&quot;</span>
     <span class="token comment"># &#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x66F4;&#x65B0;&#x5F8C;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x76E3;&#x8996;</span>
     <span class="token key atrule">verify-revision-is-deployed</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -3389,7 +3394,7 @@ aws configure list
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-05-24T06:00:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-23T11:44:01.663Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CircleCI","level":"1.15.2","depth":2,"next":{"title":"▶ ︎Capistrano","level":"1.15.3","depth":2,"path":"public/infrastructure_capistrano.md","ref":"public/infrastructure_capistrano.md","articles":[]},"previous":{"title":"▶ ︎CI & CD","level":"1.15.1","depth":2,"path":"public/infrastructure_ci_cd.md","ref":"public/infrastructure_ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_circleci.md","mtime":"2021-07-28T02:38:31.594Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-29T00:14:25.673Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
