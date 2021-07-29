@@ -590,14 +590,14 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 [参考になったサイト](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
-| 設定項目                 | 説明                                                         | 補足                                                         |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| General                  |                                                              |                                                              |
-| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する．                  |                                                              |
-| Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する． |                                                              |
-| ErrorPage                | 指定したオリジンから，指定したファイルのレスポンスを返信する． | 仕組みの詳細については，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html |
-| Restriction              |                                                              |                                                              |
-| Invalidation             | CloudFrontに保存されているCacheを削除できる．                |                                                              |
+| 設定項目                 | 説明                                                         | 補足 |
+| ------------------------ | ------------------------------------------------------------ | ---- |
+| General                  |                                                              |      |
+| Origin and Origin Groups | コンテンツを提供するAWSリソースを設定する．                  |      |
+| Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する． |      |
+| ErrorPage                | 指定したオリジンから，指定したファイルのレスポンスを返信する． |      |
+| Restriction              |                                                              |      |
+| Invalidation             | CloudFrontに保存されているCacheを削除できる．                |      |
 
 #### ・Generalの詳細
 
@@ -728,6 +728,30 @@ CloudFrontには，エッジロケーションがあり，各ロケーション�
 ```shell
 $ nslookup <割り当てられた文字列>.cloudfront.net
 ```
+
+<br>
+
+### カスタムエラーページ
+
+#### ・カスタムエラーページとは
+
+オリジンに該当のファイルが存在しない場合，オリジンはCloudFrontに以下の403ステータスのレスポンスを返信する．カスタムエラーページを設定しない場合，CloudFrontはこの403ステータスをそのままレスポンスしてしまうため，オリジンに配置したカスタムエラーページを404ステータスでレスポンスするように設定する．
+
+```xml
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<Error>
+<Code>AccessDenied</Code>
+<Message>Access Denied</Message>
+<RequestId>*****</RequestId>
+<HostId>*****</HostId>
+</Error>
+```
+
+#### ・設定方法
+
+オリジンからカスタムエラーページをレスポンスするパスパターンを定義する．Lamnda@Edgeを使用したCloudFrontの場合は，Lambda@Edgeを経由して，カスタムエラーページをレスポンスする必要がある．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
 
 <br>
 
@@ -2653,7 +2677,9 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 ### Lambdaとは
 
-他のAWSリソースのイベントによって駆動する関数を管理できる．
+他のAWSリソースのイベントによって駆動する関数を管理できる．ユースケースについては，以下のリンクを参考にせよ．
+
+参考：参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/applications-usecases.html
 
 ![サーバレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバレスアーキテクチャとは.png)
 
@@ -2680,17 +2706,25 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 | プロビジョニングされた同時実行設定 |                                                              |                                                              |
 | モニタリング                       | LambdaをCloudWatchまたはX-Rayを用いて，データをメトリクス化する． | 次の方法がある<br>・CloudWatchによって，データをメトリクス化する．<br>・CloudWatchのLambda Insightsによって，パフォーマンスに関するデータをメトリクス化する．<br>・X-Rayによって，APIへのリクエスト，Lambdaコール，Lambdaの下流とのデータ通信をトレースし，これらをスタックトレース化する． |
 
+#### ・設定のベストプラクティス
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-configuration
+
 <br>
 
 ### Lambdaと関数の関係性
 
-#### ・関数の実行環境とは
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
+
+#### ・Lambdaサービス
+
+コンソール画面のLamdaに相当する．
+
+#### ・関数の実行環境
 
 Lambdaの実行環境は，API（ランタイムAPI，ログAPI，拡張API）と実行環境から構成されている．関数は実行環境に存在し，ランタイムAPIを介して，Lambdaによって実行される．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
-
-![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
 
 実行環境には，３つのフェーズがある．
 
@@ -2786,119 +2820,23 @@ $ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" 
 
 ### Lambda関数
 
-#### ・ハンドラ関数とは
+#### ・Goの使用例
 
-自身から起動することはなく，外部から要求されて実行される関数のこと．
+以下のリンクを参考にせよ．
 
-参考：https://garop.com/36/
+参考：
 
-#### ・非同期ハンドラ関数（Async handlers）
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-golang.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
 
-Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```であるが別名でもよい．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+#### ・Node.jsの使用例
 
-参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
+以下のリンクを参考にせよ．
 
-**＊実装例＊**
+参考：
 
-Node.jsの場合を示す．
-
-```javascript
-exports.handler = async (event) => {
-
-    const response = {
-        "statusCode": null,
-        "body" : null
-    };
-    
-    response.statusCode = 200;
-    response.body = "Hello World!"
-
-    // もしくはthrowを使用して，レスポンスを送信する．
-    return response;
-}
-```
-
-```javascript
-const aws = require("aws-sdk");
-const s3 = new aws.S3();
-
-exports.handler = async function(event) {
-    
-    // Promiseオブジェクトをレスポンスとして送信する．
-    return s3.listBuckets().promise();
-}
-```
-
-```javascript
-exports.handler = async (event) => {
-    
-    // Promiseオブジェクトをレスポンスとして送信する．
-    return new Promise((resolve, reject) => {
-        // 何らかの処理
-    }
-}
-```
-
-#### ・同期ハンドラ関数（Non-async handlers）
-
-Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でもよい．```callback```メソッドを使用して，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
-
-参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync（※『Non』が翻訳をおかしくしているため，英語版を推奨）
-
-**＊実装例＊**
-
-Node.jsの場合を示す．レスポンスを返信するには，```done```メソッド，```succeed```メソッド，```callback```メソッドが必要である．また，処理を終える場合は```return```で返却する必要がある．
-
-```javascript
-exports.handler = (event, context, callback) => {
-    
-    // なんらかの処理
-    
-    // context以前の処理を待機はしない
-    context.done(null, /*レスポンス*/);
-    
-    // 処理を終える場合
-    // return context.done(null, /*レスポンス*/)
-}
-```
-
-```javascript
-exports.handler = (event, context, callback) => {
-    
-    // なんらかの処理
-    
-    // context以前の処理を待機はしない
-    context.succeed( /*レスポンス*/ );
-    
-    // 処理を終える場合
-    // return context.succeed( /*レスポンス*/ )
-}
-```
-
-```javascript
-exports.handler = (event, context, callback) => {
-    
-    // なんらかの処理
-    
-    // callback以前の処理を待機する．
-    callback(null, /*レスポンス*/);
-    
-    // 処理を終える場合
-    // return callback(null, /*レスポンス*/)
-}
-```
-
-#### ・予約された引数の説明
-
-| 引数                | 説明                                                         | 補足                                                         |
-| ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている．               | Lambdaにリクエストを送信するAWSリソースごとに，オブジェクトの構造が異なる．構造は以下の通り．<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | Lambdaに関するデータ（名前，バージョンなど）を取得できるメソッドとプロパティが代入されている． | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
-| callback関数        | 代入されている関数の実体は不明である．全ての処理が終わるまで実行が待機され，Lambdaのコール元にレスポンスを送信する． | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
-
-#### ・テストとデバッグ
-
-Lambdaで関数を作成すると，CloudWatchログのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-nodejs.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
 
 <br>
 
@@ -2911,6 +2849,18 @@ Lambdaは，関数の実行中に再びリクエストが送信されると，�
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 
 ![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda_concurrency-model.png)
+
+<br>
+
+### VPC外／VPC内
+
+#### ・VPC外への配置
+
+Lambdaは標準ではVPC外に配置される．この場合，LambdaにENIがアタッチされ，ENIに割り当てられたIPアドレスがLambdaに適用される．Lambdaの実行時にENIは再作成されるため，実行ごとにIPアドレスは変化するが，一定時間内の再実行であればENIは再利用されるため，前回の実行時と同じIPアドレスになることもある．
+
+#### ・VPC内への配置
+
+LambdaをVPC内に配置するように設定する．VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため，アウトバウンドな通信を行うためには，NAT Gatewayを設置する必要がある．
 
 <br>
 
@@ -2952,22 +2902,6 @@ Lambdaを実行するためには，デプロイされた関数を使用する�
 コンテナイメージの関数でのみ有効である．ビルド後のソースコードをDockerイメージしてアップロードする．ECRからアップロードできる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
-
-<br>
-
-### 関数例
-
-#### ・Go
-
-以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
-
-#### ・Node.js
-
-以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
 <br>
 

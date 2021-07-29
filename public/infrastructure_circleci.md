@@ -795,7 +795,7 @@ executors:
     # ホストOS環境
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
-    working_directory: ~/example_project
+    working_directory: ~/foo_project
     environment:
       XX: xx
       YY: yy
@@ -952,7 +952,7 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - example:
+      - foo:
           filters:      
             branches:
               only:
@@ -964,7 +964,7 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - example:
+      - foo:
           filters:      
             branches:
               ignore:
@@ -980,7 +980,7 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - example:
+      - foo:
           filters:
             branches:
                ignore: /.*/
@@ -1131,6 +1131,12 @@ EOF
 
 参考：https://github.com/circleci/circleci-docs/issues/1650
 
+Alpineベースのイメージは色々ある
+
+参考：
+
+- https://github.com/hashicorp/terraform/blob/main/Dockerfile
+
 ```yaml
 version: 2.1 
 
@@ -1276,7 +1282,7 @@ jobs:
           name: Docker compose up
           command: |
             set -xe
-            docker network create example-network
+            docker network create foo-network
             docker-compose up --build -d
       - restore_vendor
       # Dockerコンテナに対してcomspoerコマンドを送信
@@ -1353,7 +1359,7 @@ jobs:
           name: Docker compose up
           command: |
             set -xe
-            docker network create example-network
+            docker network create foo-network
             docker-compose up --build -d
 ```
 
@@ -1608,7 +1614,7 @@ jobs:
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
-    # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    # コンテナ定義のコンテナ名とイメージタグを上書き．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # サービス更新後のタスク監視
     verify-revision-is-deployed: true

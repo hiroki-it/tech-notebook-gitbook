@@ -1,5 +1,131 @@
 # Lambda関数
 
+## ハンドラ関数
+
+### ハンドラ関数とは
+
+自身から起動することはなく，外部から要求されて実行される関数のこと．
+
+参考：https://garop.com/36/
+
+<br>
+
+### Lambdaハンドラ関数
+
+#### ・非同期ハンドラ関数（Async handlers）
+
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```であるが別名でもよい．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+
+参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
+
+**＊実装例＊**
+
+Node.jsの場合を示す．
+
+```javascript
+exports.handler = async (event) => {
+
+    const response = {
+        "statusCode": null,
+        "body" : null
+    };
+    
+    response.statusCode = 200;
+    response.body = "Hello World!"
+
+    // もしくはthrowを使用して，レスポンスを送信する．
+    return response;
+}
+```
+
+```javascript
+const aws = require("aws-sdk");
+const s3 = new aws.S3();
+
+exports.handler = async function(event) {
+    
+    // Promiseオブジェクトをレスポンスとして送信する．
+    return s3.listBuckets().promise();
+}
+```
+
+```javascript
+exports.handler = async (event) => {
+    
+    // Promiseオブジェクトをレスポンスとして送信する．
+    return new Promise((resolve, reject) => {
+        // 何らかの処理
+    }
+}
+```
+
+#### ・同期ハンドラ関数（Non-async handlers）
+
+Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でもよい．```callback```メソッドを使用して，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
+
+参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync（※『Non』が翻訳をおかしくしているため，英語版を推奨）
+
+**＊実装例＊**
+
+Node.jsの場合を示す．レスポンスを返信するには，```done```メソッド，```succeed```メソッド，```callback```メソッドが必要である．また，処理を終える場合は```return```で返却する必要がある．
+
+```javascript
+exports.handler = (event, context, callback) => {
+    
+    // なんらかの処理
+    
+    // context以前の処理を待機はしない
+    context.done(null, /*レスポンス*/);
+    
+    // 処理を終える場合
+    // return context.done(null, /*レスポンス*/)
+}
+```
+
+```javascript
+exports.handler = (event, context, callback) => {
+    
+    // なんらかの処理
+    
+    // context以前の処理を待機はしない
+    context.succeed( /*レスポンス*/ );
+    
+    // 処理を終える場合
+    // return context.succeed( /*レスポンス*/ )
+}
+```
+
+```javascript
+exports.handler = (event, context, callback) => {
+    
+    // なんらかの処理
+    
+    // callback以前の処理を待機する．
+    callback(null, /*レスポンス*/);
+    
+    // 処理を終える場合
+    // return callback(null, /*レスポンス*/)
+}
+```
+
+#### ・予約された引数の説明
+
+| 引数                | 説明                                                         | 補足                                                         |
+| ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| eventオブジェクト   | HTTPリクエストに関するデータが代入されている．               | Lambdaにリクエストを送信するAWSリソースごとに，オブジェクトの構造が異なる．構造は以下の通り．<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-services.html |
+| contextオブジェクト | Lambdaに関するデータ（名前，バージョンなど）を取得できるメソッドとプロパティが代入されている． | オブジェクトの構造は以下の通り<br>参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-context.html |
+| callback関数        | 代入されている関数の実体は不明である．全ての処理が終わるまで実行が待機され，Lambdaのコール元にレスポンスを送信する． | 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/nodejs-handler.html |
+
+#### ・テストとデバッグ
+
+Lambdaで関数を作成すると，CloudWatchログのロググループに，『```/aws/lambda/<関数名>```』というグループが自動的に作成される．Lambdaの関数内で発生したエラーや```console.log```メソッドのログはここに出力されるため，都度確認すること．
+
+#### ・ベストプラクティス
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-code
+
+<br>
+
 ## Go
 
 ### aws-lambda-go

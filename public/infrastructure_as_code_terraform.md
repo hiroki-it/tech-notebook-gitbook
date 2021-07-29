@@ -111,7 +111,7 @@ terraformによる構築ではない方法で，すでにクラウド上にリ�
 
 ```shell
 $ terraform import \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     <リソースタイプ>.<リソース名> <AWS上リソースID>
 ```
 
@@ -119,7 +119,7 @@ $ terraform import \
 
 ```shell
 $ terraform import \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     module.<モジュール名>.<リソースタイプ>.<リソース名> <AWS上リソースID>
 ```
 
@@ -127,14 +127,14 @@ $ terraform import \
 
 ```shell
 $ terraform import \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     module.ecr.aws_ecr_repository.www xxxxxxxxx
 ```
 
 そして，ローカルのstateファイルと実インフラの差分が無くなるまで，```import```を繰り返す．
 
 ````shell
-$ terraform plan -var-file=config.tfvars
+$ terraform plan -var-file=foo.tfvars
 
 No changes. Infrastructure is up-to-date.
 ````
@@ -164,7 +164,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルに反映する．
 
 ```shell
-$ terraform refresh -var-file=config.tfvars
+$ terraform refresh -var-file=foo.tfvars
 ```
 
 <br>
@@ -216,14 +216,14 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルには反映せずに，設定ファイルの記述との差分を検証する．スクリプト実行時に，変数が定義されたファイルを実行すると，```variable```で宣言した変数に，値が格納される．
 
 ```shell
-$ terraform plan -var-file=config.tfvars
+$ terraform plan -var-file=foo.tfvars
 ```
 
 ```shell
 # ディレクトリを指定することも可能
 # 第一引数で変数ファイルの相対パス，第二引数でをルートモジュールの相対パス
 $ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
 
 差分がなければ，以下の通りになる．
@@ -242,7 +242,7 @@ actions need to be performed.
 
 ```shell
 $ terraform plan \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -target=<リソースタイプ>.<リソース名>
 ```
 
@@ -250,7 +250,7 @@ $ terraform plan \
 
 ```shell
 $ terraform plan \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
@@ -260,7 +260,7 @@ $ terraform plan \
 
 ```shell
 $ terraform plan \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -refresh=true
 ```
 
@@ -272,7 +272,7 @@ https://github.com/hashicorp/terraform/issues/17311
 
 ```shell
 $ terraform plan \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -parallelism=30
 ```
 
@@ -282,7 +282,7 @@ $ terraform plan \
 
 ```shell
 $ terraform plan \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -out=<実行プランファイル名>.tfplan
 ```
 
@@ -295,13 +295,13 @@ $ terraform plan \
 AWS上にクラウドインフラストラクチャを構築する．
 
 ```shell
-$ terraform apply -var-file config.tfvars
+$ terraform apply -var-file foo.tfvars
 ```
 
 ```shell
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
-    -var-file=<ルートモジュールのディレクトリへの相対パス>/config.tfvars
+    -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
 ```
 
 成功すると，以下のメッセージが表示される．
@@ -316,7 +316,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 ```shell
 $ terraform apply \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -target=<リソースタイプ>.<リソース名>
 ```
 
@@ -324,7 +324,7 @@ $ terraform apply \
 
 ```shell
 $ terraform apply \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
@@ -334,7 +334,7 @@ $ terraform apply \
 
 ```shell
 $ terraform apply \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     -parallelism=30
 ```
 
@@ -356,14 +356,14 @@ stateファイルにおける指定されたリソースの```tainted```フラ�
 
 ```shell
 $ terraform taint \
-    -var-file=config.tfvars \
+    -var-file=foo.tfvars \
     module.<モジュール名>.<リソースタイプ>.<リソース名>
 ```
 
 この後の```plan```コマンドのログからも，```-/+```で削除が行われる想定で，差分を比較していることがわかる．
 
 ```shell
-$ terraform plan -var-file=config.tfvars
+$ terraform plan -var-file=foo.tfvars
 
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
@@ -460,7 +460,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 #### ・稼働環境別
 
-稼働環境別に，```config.tfvars```ファイルで値を定義する．
+稼働環境別に，```foo.tfvars```ファイルで値を定義する．
 
 ```shell
 terraform_project/
@@ -481,21 +481,21 @@ terraform_project/
 │       └── stg
 |
 ├── dev # 開発環境ルートモジュール
-│   ├── config.tfvars
+│   ├── dev.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
 ├── prd # 本番環境ルートモジュール
-│   ├── config.tfvars
+│   ├── prd.tfvars
 │   ├── main.tf
 │   ├── providers.tf
 │   ├── tfnotify.yml
 │   └── variables.tf
 │
 └── stg # ステージング環境ルートモジュール
-      ├── config.tfvars
+      ├── stg.tfvars
       ├── main.tf
       ├── providers.tf
       ├── tfnotify.yml
@@ -696,7 +696,7 @@ terraform {
     bucket                  = "<バケット名>"
     key                     = "<バケット内のディレクトリ>"
     region                  = "ap-northeast-1"
-    profile                 = "example"
+    profile                 = "foo"
     shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
   }
 }
@@ -812,16 +812,16 @@ module "route53" {
 ###############################################
 # Route53
 ###############################################
-resource "aws_acm_certificate" "example" {
+resource "aws_acm_certificate" "foo" {
   # CloudFrontの仕様のため，us-east-1リージョンでSSL証明書を作成します．
   provider = aws
 
-  domain_name               = var.route53_domain_example
-  subject_alternative_names = ["*.${var.route53_domain_example}"]
+  domain_name               = var.route53_domain_foo
+  subject_alternative_names = ["*.${var.route53_domain_foo}"]
   validation_method         = "DNS"
 
   tags = {
-    Name = "${var.environment}-${var.service}-example-cert"
+    Name = "${var.environment}-${var.service}-foo-cert"
   }
 
   lifecycle {
@@ -902,7 +902,7 @@ terraform {
     bucket                  = "<バケット名>"
     key                     = "<バケット内のディレクトリ>"
     region                  = "ap-northeast-1"
-    profile                 = "example"
+    profile                 = "foo"
     shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
   }
 }
@@ -910,7 +910,7 @@ terraform {
 # credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
 provider "aws" {
   region                  = "ap-northeast-1"
-  profile                 = "example"
+  profile                 = "foo"
   shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
 }
 ```
@@ -989,11 +989,40 @@ module "alb" {
 
 ## 03. 変数
 
+### 環境変数
+
+#### ・優先順位
+
+上の項目ほど優先される．
+
+参考：https://www.terraform.io/docs/language/values/variables.html#variable-definition-precedence
+
+#### ・```-var```，```-var-file```
+
+```shell
+$ terraform plan -var="foo=foo"
+$ terraform plan -var="foo=foo" -var="bar=bar"
+```
+
+```shell
+$ terraform plan -var-file=xxxxx.tfvars
+```
+
+#### ・```*.auto.tfvars```ファイル，```*.auto.tfvars.json```ファイル  
+
+#### ・```terraform.tfvars.json```ファイル  
+
+#### ・```terraform.tfvars```ファイル
+
+#### ・```TF_VAR_XXXXX```  
+
+<br>
+
 ### tfvarsファイル
 
 #### ・tfvarsファイルの用途
 
-実行ファイルに入力したい値を定義する．各サービスの間で実装方法が同じため，VPCのみ例を示す．
+実行ファイルに入力したい値を定義する．『```terraform.tfvars```』という名前にすると，terraformコマンドの実行時に自動的に読み込まれる．各サービスの間で実装方法が同じため，VPCのみ例を示す．
 
 **＊実装例＊**
 
@@ -1337,15 +1366,15 @@ resource "aws_nat_gateway" "this" {
 # S3
 ###############################################
 
-# Example bucket
-resource "aws_s3_bucket" "example" {
-  bucket = "${var.environment}-${var.service}-example-bucket"
+# foo bucket
+resource "aws_s3_bucket" "foo" {
+  bucket = "${var.environment}-${var.service}-foo-bucket"
   acl    = "private"
 }
 
 # Public access block
-resource "aws_s3_bucket_public_access_block" "example" {
-  bucket                  = aws_s3_bucket.example.id
+resource "aws_s3_bucket_public_access_block" "foo" {
+  bucket                  = aws_s3_bucket.foo.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
@@ -1353,17 +1382,17 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 # Bucket policy attachment
-resource "aws_s3_bucket_policy" "example" {
-  bucket = aws_s3_bucket.example.id
+resource "aws_s3_bucket_policy" "foo" {
+  bucket = aws_s3_bucket.foo.id
   policy = templatefile(
-    "${path.module}/policies/example_bucket_policy.tpl",
+    "${path.module}/policies/foo_bucket_policy.tpl",
     {
-      example_s3_bucket_arn                        = aws_s3_bucket.example.arn
+      foo_s3_bucket_arn                        = aws_s3_bucket.foo.arn
       s3_cloudfront_origin_access_identity_iam_arn = var.s3_cloudfront_origin_access_identity_iam_arn
     }
   )
 
-  depends_on = [aws_s3_bucket_public_access_block.example]
+  depends_on = [aws_s3_bucket_public_access_block.foo]
 }
 ```
 
@@ -1713,9 +1742,9 @@ resource "aws_rds_cluster_parameter_group" "this" {
 # Variables
 ###############################################
 waf_blocked_user_agents = [
-  "ExampleCrawler",
-  "EXampleSpider",
-  "ExampleBot",
+  "FooCrawler",
+  "BarSpider",
+  "BazBot",
 ]
 
 ###############################################
@@ -1754,9 +1783,9 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 ```hcl
 ###############################################
-# For example domain
+# For foo domain
 ###############################################
-resource "aws_acm_certificate" "example" {
+resource "aws_acm_certificate" "foo" {
 
   # ～ 省略 ～
 
@@ -1879,7 +1908,7 @@ resource "aws_elasticache_replication_group" "redis" {
 使用例はすくないが，ちなみにリソース全体を無視する場合は```all```を設定する．
 
 ```hcl
-resource "aws_example" "example" {
+resource "aws_foo" "foo" {
 
   # ～ 省略 ～
 
@@ -2182,14 +2211,14 @@ resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 ###############################################
 # EXAMPLE
 ###############################################
-resource "aws_example" "this" {
+resource "aws_foo" "this" {
   for_each = var.vpc_availability_zones # 最初にfor_each
   # スペース
   subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
   # スペース
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-%d-example",
+      "${var.environment}-${var.service}-%d-foo",
       each.value
     )
   }
@@ -2329,16 +2358,16 @@ data "aws_ami" "bastion" {
 ###############################################
 # REST API
 ###############################################
-resource "aws_api_gateway_rest_api" "example" {
-  name        = "${var.environment}-${var.service}-api-for-example"
-  description = "The API that enables two-way communication with ${var.environment}-example"
+resource "aws_api_gateway_rest_api" "foo" {
+  name        = "${var.environment}-${var.service}-api-for-foo"
+  description = "The API that enables two-way communication with ${var.environment}-foo"
   
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
   # 後述の説明を参考にせよ．（１）
   body = templatefile(
     "${path.module}/open_api.yaml",
     {
-      api_gateway_vpc_link_example_id = aws_api_gateway_vpc_link.example.id
+      api_gateway_vpc_link_foo_id = aws_api_gateway_vpc_link.foo.id
       nlb_dns_name                          = var.nlb_dns_name
     }
   )
@@ -2357,12 +2386,12 @@ resource "aws_api_gateway_rest_api" "example" {
 ###############################################
 # Deployment
 ###############################################
-resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = aws_api_gateway_rest_api.example.id
+resource "aws_api_gateway_deployment" "foo" {
+  rest_api_id = aws_api_gateway_rest_api.foo.id
 
   # 後述の説明を参考にせよ．（１）
   triggers = {
-    redeployment = sha1(aws_api_gateway_rest_api.example.body)
+    redeployment = sha1(aws_api_gateway_rest_api.foo.body)
   }
 
   lifecycle {
@@ -2373,9 +2402,9 @@ resource "aws_api_gateway_deployment" "example" {
 ###############################################
 # Stage
 ###############################################
-resource "aws_api_gateway_stage" "example" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
+resource "aws_api_gateway_stage" "foo" {
+  deployment_id = aws_api_gateway_deployment.foo.id
+  rest_api_id   = aws_api_gateway_rest_api.foo.id
   stage_name    = var.environment
 }
 ```
@@ -2419,7 +2448,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   price_class      = "PriceClass_200"
   web_acl_id       = var.cloudfront_wafv2_web_acl_arn
-  aliases          = [var.route53_domain_example]
+  aliases          = [var.route53_domain_foo]
   comment          = "${var.environment}-${var.service}-cf-distribution"
   enabled          = true
   
@@ -2427,7 +2456,7 @@ resource "aws_cloudfront_distribution" "this" {
   retain_on_delete = true
 
   viewer_certificate {
-    acm_certificate_arn      = var.example_acm_certificate_arn
+    acm_certificate_arn      = var.foo_acm_certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
@@ -2470,7 +2499,7 @@ resource "aws_cloudfront_distribution" "this" {
     origin_id   = "S3-${var.s3_bucket_id}"
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.s3_example.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.s3_foo.cloudfront_access_identity_path
     }
   }
   
@@ -3242,15 +3271,15 @@ Terraformに値をハードコーディングしたくない場合は，SSMパ�
 
 ```hcl
 ###############################################
-# For example domain
+# For foo domain
 ###############################################
-resource "aws_route53_zone" "example" {
-  name = var.route53_domain_example
+resource "aws_route53_zone" "foo" {
+  name = var.route53_domain_foo
 }
 
-resource "aws_route53_record" "example" {
-  zone_id = aws_route53_zone.example.id
-  name    = var.route53_domain_example
+resource "aws_route53_record" "foo" {
+  zone_id = aws_route53_zone.foo.id
+  name    = var.route53_domain_foo
   type    = "A"
 
   alias {
@@ -3688,7 +3717,7 @@ executors:
         enum: [ "dev", "stg", "prd" ]
     docker:
       - image: hashicorp/terraform:x.xx.x
-    working_directory: ~/example_infrastructure
+    working_directory: ~/foo_infrastructure
     environment:
       ENV: << parameters.env >>
 
@@ -3925,7 +3954,7 @@ set -xeuo pipefail
 if [ $ENV = "dev" ]; then
     # credentialsの情報を出力します．
     source ./aws_envs.sh
-    terraform -chdir=./${ENV} destroy -var-file=config.tfvars
+    terraform -chdir=./${ENV} destroy -var-file=foo.tfvars
 else
     echo "The parameter ${ENV} is invalid."
     exit 1
@@ -3975,7 +4004,7 @@ set -xeuo pipefail
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} plan \
-  -var-file=./${ENV}/config.tfvars \
+  -var-file=./${ENV}/foo.tfvars \
   -out=${ENV}.tfplan \
   -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
 ```

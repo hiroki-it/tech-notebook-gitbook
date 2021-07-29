@@ -81,19 +81,19 @@ RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使�
 
 
 ```http
-GET http://www.example.co.jp/users/{id}
+GET http://www.foo.co.jp/users/{id}
 ```
 
 ```http
-POST http://www.example.co.jp/users
+POST http://www.foo.co.jp/users
 ```
 
 ```http
-PUT http://www.example.co.jp/users/{id}
+PUT http://www.foo.co.jp/users/{id}
 ```
 
 ```http
-DELETE http://www.example.co.jp/users/{id}
+DELETE http://www.foo.co.jp/users/{id}
 ```
 
 #### ・エンドポイントの違い
@@ -115,12 +115,12 @@ DELETE http://www.example.co.jp/users/{id}
 URIの構造のうち，パスまたはクエリストリングにパラメータを割り当てて送信する．それぞれ，パスパラメータまたはクエリパラメータという．
 
 ```
-http://www.example.co.jp:80/users/777?text1=a&text2=b
+http://www.foo.co.jp:80/users/777?text1=a&text2=b
 ```
 
-| 完全修飾ドメイン名             | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
-| ------------------------------ | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
-| ```http://www.example.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
+| 完全修飾ドメイン名         | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
+| -------------------------- | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
+| ```http://www.foo.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
 
 #### ・使い分け（再掲）
 
@@ -150,7 +150,7 @@ JSON型データ内に定義し，リクエストボディにパラメータを�
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
-GET http://www.example.co.jp HTTP/2
+GET http://www.foo.co.jp HTTP/2
 # MIME type
 content-type: application/json
 # Authorizationヘッダー
@@ -179,6 +179,18 @@ x-api-key: XXXXX
 
 ### エンドポイントの作り方
 
+#### ・モデル型／アクション型
+
+モデル型（処理対象のモデル名をエンドポイントとして使う）またはアクション型（ユースケース名をエンドポイントとして使用する）のいずれかに統一する．
+
+```http
+GET http://www.foo.co.jp/users/12345
+```
+
+```http
+GET http://www.foo.co.jp/show-user-profile/12345
+```
+
 #### ・短くすること
 
 **＊悪い実装例＊**
@@ -187,14 +199,14 @@ x-api-key: XXXXX
 
 
 ```http
-GET http://www.example.co.jp/service/api/users/12345
+GET http://www.foo.co.jp/service/api/users/12345
 ```
 
 **＊良い実装例＊**
 
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 #### ・略称を使わないこと
@@ -204,7 +216,7 @@ GET http://www.example.co.jp/users/12345
 ここで，Usersを意味する『```u```』といった略称は，当時の設計者しかわからないため，不要である．
 
 ```http
-GET http://www.example.co.jp/u/12345
+GET http://www.foo.co.jp/u/12345
 ```
 
 **＊良い実装例＊**
@@ -212,7 +224,7 @@ GET http://www.example.co.jp/u/12345
 略称を使わずに，『users』とする．
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 #### ・小文字を使うこと
@@ -220,13 +232,13 @@ GET http://www.example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://www.example.co.jp/Users/12345
+GET http://www.foo.co.jp/Users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 #### ・ケバブケースを使うこと
@@ -234,7 +246,7 @@ GET http://www.example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users_id/12345
+GET http://www.foo.co.jp/users_id/12345
 ```
 
 **＊良い実装例＊**
@@ -242,13 +254,13 @@ GET http://www.example.co.jp/users_id/12345
 スネークケースやキャメケースを使わずに，ケバブケースを使用する．
 
 ```http
-GET http://www.example.co.jp/users-id/12345
+GET http://www.foo.co.jp/users-id/12345
 ```
 
 ただ，そもそもケバブ方式も利用せずに，スラッシュで区切ってしまうのも手である
 
 ```http
-GET http://www.example.co.jp/users/id/12345
+GET http://www.foo.co.jp/users/id/12345
 ```
 
 #### ・複数形を使用すること
@@ -258,13 +270,13 @@ GET http://www.example.co.jp/users/id/12345
 Usersという集合の中に，Idが存在しているため，単数形は使わない．
 
 ```http
-GET http://www.example.co.jp/user/12345
+GET http://www.foo.co.jp/user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 #### ・システムの設計方法がバレないURIにすること
@@ -274,13 +286,13 @@ GET http://www.example.co.jp/users/12345
 悪意のあるユーザに，脆弱性を狙われる可能性があるため，システムの設計方法がばれないアーキテクチャにすること．ミドルウェアにCGIプログラムが使用されていることや，phpを使用していることがばれてしまう．
 
 ```http
-GET http://www.example.co.jp/cgi-bin/get_users.php
+GET http://www.foo.co.jp/cgi-bin/get_users.php
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 #### ・HTTPメソッドの名前を使用しないこと
@@ -290,38 +302,38 @@ GET http://www.example.co.jp/users/12345
 メソッドから，処理の目的はわかるので，URIに対応する動詞名を実装する必要はない．
 
 ```http
-GET http://www.example.co.jp/users/get/12345
+GET http://www.foo.co.jp/users/get/12345
 ```
 
 ```http
-POST http://www.example.co.jp/users/create/12345
+POST http://www.foo.co.jp/users/create/12345
 ```
 
 
 ```http
-PUT http://www.example.co.jp/users/update/12345
+PUT http://www.foo.co.jp/users/update/12345
 ```
 
 ```http
-DELETE http://www.example.co.jp/users/delete/12345
+DELETE http://www.foo.co.jp/users/delete/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users/{id}
+GET http://www.foo.co.jp/users/{id}
 ```
 
 ```http
-POST http://www.example.co.jp/users
+POST http://www.foo.co.jp/users
 ```
 
 ```http
-PUT http://www.example.co.jp/users/{id}
+PUT http://www.foo.co.jp/users/{id}
 ```
 
 ```http
-DELETE http://www.example.co.jp/users/{id}
+DELETE http://www.foo.co.jp/users/{id}
 ```
 
 #### ・数字，バージョン番号を使用しないこと
@@ -331,13 +343,13 @@ DELETE http://www.example.co.jp/users/{id}
 ここで，```alpha```，```v2```，といったキーワードは，当時の設計者しかわからないため，あまり良くない．ただし，利便上，使う場合もある．
 
 ```http
-GET http://www.example.co.jp/v2/users/12345
+GET http://www.foo.co.jp/v2/users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 URLにバージョンを表記しない代わりに，リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い．
@@ -353,11 +365,11 @@ X-Api-Version: 1
 GET送信とPOST送信の間で，IDパラメータのHTTPメソッドが統一されていない．
 
 ```http
-GET http://www.example.co.jp/users/?id=12345
+GET http://www.foo.co.jp/users/?id=12345
 ```
 
 ```http
-POST http://www.example.co.jp/users/12345/messages
+POST http://www.foo.co.jp/users/12345/messages
 ```
 
 **＊良い実装例＊**
@@ -366,11 +378,11 @@ POST http://www.example.co.jp/users/12345/messages
 
 
 ```http
-GET http://www.example.co.jp/users/12345
+GET http://www.foo.co.jp/users/12345
 ```
 
 ```http
-POST http://www.example.co.jp/users/12345/messages
+POST http://www.foo.co.jp/users/12345/messages
 ```
 
 <br>
@@ -514,7 +526,7 @@ X-Powered-By: PHP/7.3.22
 ```php
 <?php
 
-define("URL", "https://example.com");
+define("URL", "https://foo.com");
 
 // curlセッションを初期化する
 $curl = curl_init();
@@ -543,7 +555,15 @@ $messageBody = (curl_exec($curl))
 curl_close($curl);
 ```
 
+<br>
 
+### リクエストコンテキスト
+
+#### ・リクエストコンテキストとは
+
+リクエストを受信した時に，これのデータ（ボディ，ヘッダー，など）や，セッションを操作できる仕組みのこと．
+
+<br>
 
 ## 04. オブジェクトデータ
 
@@ -582,7 +602,7 @@ Content-Type: application/json
 他に，URIでデータ型を記述する方法がある．
 
 ```http
-GET http://www.example.co.jp/users/12345?format=json
+GET http://www.foo.co.jp/users/12345?format=json
 ```
 
 <br>
@@ -594,6 +614,12 @@ GET http://www.example.co.jp/users/12345?format=json
 <br>
 
 ### 正常系レスポンスの場合
+
+#### ・POST／PUTでは処理後データをレスポンス
+
+POST／PUTのレスポンスでは，処理後のデータをレスポンスとして返信する．もし処理後のデータを返信しない場合，改めてGETリクエストを送信する必要があり，余分なAPIコールが必要になってしまう．
+
+参考：https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
 
 #### ・ステータスコードは不要
 
@@ -654,7 +680,7 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 **＊具体例＊**
 
 ```
-http://www.example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
+http://www.foo.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
 <br>
@@ -893,13 +919,13 @@ API名，作成者名，メールアドレス，ライセンス，などを定�
 
 ```yaml
 info:
-  title: Example API # API名
-  description: The API for Example. # APIの説明
-  termsOfService: https://www.example.com/terms/ # 利用規約
+  title: Foo API # API名
+  description: The API for Foo. # APIの説明
+  termsOfService: https://www.foo.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://www.example.com/support # 連絡先に関するURL
-    email: support@example.com # メールアドレス
+    url: https://www.foo.com/support # 連絡先に関するURL
+    email: support@foo.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
@@ -914,7 +940,7 @@ API自体のURL，などを定義する．
 
 ```yaml
 servers:
-  - url: https://{env}.example.com/api/v1
+  - url: https://{env}.foo.com/api/v1
     description: |
     variables:
       env:
@@ -955,7 +981,7 @@ paths:
           description: OK レスポンス
           content:
             application/json: # MIME type
-              example: # レスポンスボディ例
+              foo: # レスポンスボディ例
                 Users:
                   User:
                     userId: 1
@@ -966,7 +992,7 @@ paths:
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
-              example: # レスポンスボディ例
+              foo: # レスポンスボディ例
                 status: 400
                 title: Bad Request
                 errors:
@@ -993,7 +1019,7 @@ paths:
         description: ユーザID
         content:
           application/json: # MIME type
-            example: # リクエストボディ例
+            foo: # リクエストボディ例
               userId: 1
             schema: # スキーマ
               $ref: "#/components/schemas/user" # Userモデルを参照する．
@@ -1005,7 +1031,7 @@ paths:
           description: OK レスポンス
           content:
             application/json: # MIME type
-              example: # レスポンスボディ例
+              foo: # レスポンスボディ例
                 userId: 1
               schema:
                 $ref: "#/components/schemas/normal" # スキーマとして，正常系モデルを参照する．
@@ -1013,7 +1039,7 @@ paths:
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
-              example: # レスポンスボディ例
+              foo: # レスポンスボディ例
                 status: 400
                 title: Bad Request
                 errors:
@@ -1046,7 +1072,7 @@ paths:
           description: ユーザID
           schema:
             type: string
-            example: # パスパラメータ例
+            foo: # パスパラメータ例
               userId=1
       #===========================
       # レスポンス
@@ -1056,7 +1082,7 @@ paths:
           description: OK レスポンス
           content:
             application/json: # MIME type
-              example: # ボディ例
+              foo: # ボディ例
                 userId: 1
                 name: Hiroki
               schema: # スキーマ
@@ -1065,7 +1091,7 @@ paths:
           description: Bad Request レスポンス
           content:
             application/json: # MIME type
-              example: # ボディ例
+              foo: # ボディ例
                 status: 400
                 title: Bad Request
                 errors:
@@ -1080,7 +1106,7 @@ paths:
           description: Not Found レスポンス
           content:
             application/json: # MIME type
-              example: # ボディ例
+              foo: # ボディ例
                 status: 404
                 title: Not Found
                 errors:
@@ -1107,7 +1133,7 @@ paths:
           description: ユーザID
           schema:
             type: string
-            example: # パスパラメータ例
+            foo: # パスパラメータ例
               userId=1
       #===========================
       # レスポンス
@@ -1117,7 +1143,7 @@ paths:
           description: OK レスポンス
           content:
             application/json: # Content-Type
-              example: # ボディ例
+              foo: # ボディ例
                 userId: 1
                 name: Hiroki
               schema: # スキーマ
@@ -1126,7 +1152,7 @@ paths:
           description: Bad Request レスポンス
           content:
             application/json: # Content-Type
-              example: # ボディ例
+              foo: # ボディ例
                 status: 400
                 title: Bad Request
                 errors:
@@ -1141,7 +1167,7 @@ paths:
           description: Not Found レスポンス
           content:
             application/json: # Content-Type
-              example: # ボディ例
+              foo: # ボディ例
                 status: 404
                 title: Not Found
                 errors:
@@ -1174,7 +1200,7 @@ components:
       description: Unauthorized レスポンス
       content:
         application/json: # MIME type
-          example: # ボディ例
+          foo: # ボディ例
             status: 401
             title: Unauthorized
             errors:
@@ -1265,7 +1291,7 @@ APIを説明するドキュメントのリンクを定義する．
 ```yaml
 externalDocs:
   description: 補足情報はこちら
-  url: https://example.com
+  url: https://foo.com
 ```
 
 <br>

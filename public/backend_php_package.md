@@ -13,7 +13,7 @@
   "require": {
     "foo": "^1.1.1",  // >=1.1.1 and <1.2.0
     "bar": "^1.1",    // >=1.1.0 and <1.2.0
-    "hoge": "^0.0.1"  // >=0.0.1 and <0.0.2
+    "baz": "^0.0.1"  // >=0.0.1 and <0.0.2
   }
 }
 ```
@@ -24,7 +24,7 @@
   "require": {
     "foo": "~1.1.1",  // >=1.1.1 and <2.0.0
     "bar": "~1.1",    // >=1.1.0 and <2.0.0
-    "hoge": "~1"      // >=1.1.0 and <2.0.0
+    "baz": "~1"      // >=1.1.0 and <2.0.0
   }
 }
 ```
@@ -35,8 +35,8 @@
   "require": {
     "foo": "*",     // どんなバージョンでもOK
     "bar": "1.1.x", // >=1.1.0 and <1.2.0 
-    "hoge": "1.X",  // >=1.0.0 and <2.0.0
-    "huga": ""      // "*"と同じことになる = どんなバージョンでもOK
+    "baz": "1.X",  // >=1.0.0 and <2.0.0
+    "qux": ""      // "*"と同じことになる = どんなバージョンでもOK
   }
 }
 ```
@@ -413,7 +413,7 @@ class DogToyQuery
 use Doctrine\Common\Cache\FilesystemCache;
 use Doctrine\DBAL\Cache\QueryCacheProfile;
 
-class Example
+class Foo
 {
     public function find()
     {
@@ -615,7 +615,7 @@ SQLの```SELECT```や```WHERE```といった単語を用いて，```foreach```�
     
 use Pinq\Traversable;
 
-class Example
+class Foo
 {
     
     public function getData(array $entities)
@@ -761,7 +761,7 @@ htmlファイルを元にして，ローカルディレクトリにPDFファイ�
     
 $snappy = new Pdf("/usr/local/bin/wkhtmltopdf");
 
-$snappy->generateFromHtml("example.html", ".../example.pdf");
+$snappy->generateFromHtml("foo.html", ".../foo.pdf");
 ```
 
 <br>

@@ -185,7 +185,7 @@ REDIS_PORT=<Redisのポート>
 #### ・クラスの自動生成
 
 ```shell
-$ php artisan make:model <Model名>
+$ php artisan make:model <Eloquestモデル名>
 ```
 
 <br>
@@ -217,11 +217,11 @@ $ php artisan make:model <Model名>
 
 <br>
 
-### テーブル設計を元にしたModelクラス
+### テーブル設計を元にしたEloquestモデル
 
-#### ・Modelクラスの継承
+#### ・Eloquestモデルの継承
 
-Modelクラスを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
+Eloquestモデルを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
 
 **＊実装例＊**
 
@@ -232,7 +232,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     // クラスチェーンによって，データアクセスロジックをコール
 }
@@ -252,14 +252,14 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
-     * Modelと関連しているテーブル
+     * Eloquestモデルと関連しているテーブル
      *
      * @var string
      */
-    protected $table = "examples";
+    protected $table = "foos";
 }
 ```
 
@@ -358,7 +358,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     
     /**
@@ -367,7 +367,7 @@ class Example extends Model
      * 
      * @var string 
      */
-    protected $primaryKey = "example_id";
+    protected $primaryKey = "foo_id";
     
     /**
      * 主キーのデータ型
@@ -387,7 +387,7 @@ class Example extends Model
 
 #### ・TIMESTAMP型カラムの定義
 
-Eloquentは，```timestamps```プロパティの値が```true```の時に，Modelクラスに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
+Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquestモデルに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
 
 **＊実装例＊**
 
@@ -398,13 +398,13 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     const CREATED_AT = "created_date_time";
     const UPDATED_AT = "updated_data_time";
     
     /**
-     * Modelのタイムスタンプを更新するかの指示します．
+     * Eloquestモデルのタイムスタンプを更新するかの指示します．
      *
      * @var bool
      */
@@ -456,7 +456,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
      * カラム名とデフォルト値
@@ -482,7 +482,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
      * カラム名
@@ -498,7 +498,7 @@ class Example extends Model
 }
 ```
 
-もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Modelクラスにおいて必須である．
+もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquestモデルにおいて必須である．
 
 ```php
 <?php
@@ -507,7 +507,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
      * カラム名
@@ -526,7 +526,7 @@ class Example extends Model
 
 #### ・セッター
 
-Laravelでは，プロパティを定義しなくても，Modelクラスからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
+Laravelでは，プロパティを定義しなくても，Eloquestモデルからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
 
 **＊実装例＊**
 
@@ -537,21 +537,21 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
-     * @var ExampleName
+     * @var FooName
      */
-    private ExampleName $exampleName;
+    private FooName $fooName;
 
     /**
      * 名前を取得します．
      *
      * @return string
      */
-    public function __construct(ExampleName $exampleName)
+    public function __construct(FooName $fooName)
     {
-        $this->exampleName = $exampleName;
+        $this->fooName = $fooName;
     }
 }
 ```
@@ -569,12 +569,12 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Example extends Model
+class Foo extends Model
 {
     /**
-     * @var ExampleName
+     * @var FooName
      */
-    private ExampleName $exampleName;
+    private FooName $fooName;
 
     /**
      * 名前を取得します．
@@ -583,7 +583,7 @@ class Example extends Model
      */
     public function getNameAttribute()
     {
-        return $this->exampleName . "です．";
+        return $this->fooName . "です．";
     }
 }
 ```
@@ -591,10 +591,10 @@ class Example extends Model
 ```php
 <?php
 
-$example = Example::find(1);
+$foo = Foo::find(1);
 
 // nameプロパティを取得しているわけでなく，getNameAttributeメソッドを実行している．
-$exmapleName = $example->name;
+$exmapleName = $foo->name;
 ```
 
 <br>
@@ -715,7 +715,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 ### ドメイン駆動設計との組み合わせ
 
-ビジネスロジック用のエンティティと，EloquentのModelクラスを継承した詰め替えModel（例：DTOクラス）を用意する．アプリケーション層から受け取ったエンティティが保持するデータを，DTOクラスに詰め替えるようにすると，エンティティが他の層に依存しなくなる．
+ビジネスロジック用のエンティティと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．アプリケーション層から受け取ったエンティティが保持するデータを，DTOクラスに詰め替えるようにすると，エンティティが他の層に依存しなくなる．
 
 <br>
 
@@ -734,17 +734,17 @@ Builderクラスが持つcrudを実行するメソッドの返却値型と返却
 |    update     |            bool            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
 |    delete     |           mixed            |                 *                  | 結果の真偽値         |
 
-#### ・Modelクラス
+#### ・Eloquestモデル
 
-Modelクラスが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Modelクラスのメソッドはstatic宣言されており，『```:```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
+Eloquestモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Eloquestモデルのメソッドはstatic宣言されており，『```:```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
-| Modelクラス | 返却値型 |         返却値          | 返却値の説明 |
-| :---------: | :------: | :---------------------: | :----------- |
-|   update    |   bool   | ```true```，```false``` | 結果の真偽値 |
-|    save     |   bool   | ```true```，```false``` | 結果の真偽値 |
-|   delete    |   bool   | ```true```，```false``` | 結果の真偽値 |
+| Eloquestモデル | 返却値型 |         返却値          | 返却値の説明 |
+| :------------: | :------: | :---------------------: | :----------- |
+|     update     |   bool   | ```true```，```false``` | 結果の真偽値 |
+|      save      |   bool   | ```true```，```false``` | 結果の真偽値 |
+|     delete     |   bool   | ```true```，```false``` | 結果の真偽値 |
 
 <br>
 
@@ -752,7 +752,7 @@ Modelクラスが持つcrudを実行するメソッドの返却値型と返却�
 
 #### ・```create```メソッド
 
-INSERT文を実行する．Builderクラスが持つ```create```メソッドに挿入対象のカラムと値を設定する．または，Builderクラスの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Modelクラスには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．
+INSERT文を実行する．Builderクラスが持つ```create```メソッドに挿入対象のカラムと値を設定する．または，Builderクラスの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquestモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
@@ -763,44 +763,44 @@ INSERT文を実行する．Builderクラスが持つ```create```メソッドに�
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {    
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
     
     /**
-     * Exampleを構築します．
+     * Fooを構築します．
      *
-     * @param  Example $example
+     * @param  Foo $foo
      * @return Response
      */
-    public function create(Example $example)
+    public function create(Foo $foo)
     {
         // insert文を実行する．
-        $this->exampleDTO
+        $this->fooDTO
             ->create([
-                "name"  => $example->name()
-                "age"   => $example->age()
-                "email" => $example->email()
+                "name"  => $foo->name()
+                "age"   => $foo->age()
+                "email" => $foo->email()
             ]);
         
         // 以下の実装でもよい．
-        // $this->exampleDTO
+        // $this->fooDTO
         //    ->fill([
-        //        "name"  => $example->name()
-        //        "age"   => $example->age()
-        //        "email" => $example->email()
+        //        "name"  => $foo->name()
+        //        "age"   => $foo->age()
+        //        "email" => $foo->email()
         //    ])
         //    ->save();
     }
@@ -814,7 +814,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ExampleDTO extends Model
+class FooDTO extends Model
 {
     // 更新可能なカラム
     protected $fillable = [
@@ -831,7 +831,7 @@ class ExampleDTO extends Model
 
 #### ・```find```メソッド
 
-SELECT文を実行する．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つModelをModel型として返却する．```toArray```メソッドで配列型に変換できる．
+SELECT文を実行する．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquestモデルを返却する．```toArray```メソッドで配列型に変換できる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 
@@ -842,38 +842,38 @@ SELECT文を実行する．引数としてプライマリキーを渡した場�
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
   
     /**
-     * Idに関連付くExampleを読み出します．
+     * Idに関連付くFooを読み出します．
      *
-     * @param ExampleId $exampleId
-     * @return Example
+     * @param FooId $fooId
+     * @return Foo
      */
-    public function findOneById(ExampleId $exampleId): Article
+    public function findOneById(FooId $fooId): Article
     {
-        $exampleDTO = $this->exampleDTO
-            ->find($exampleId);
+        $fooDTO = $this->fooDTO
+            ->find($fooId);
 
-        return new Example(
-            $exampleDTO->id(),
-            $exampleDTO->name(),
-            $exampleDTO->age(),
-            $exampleDTO->email(),
+        return new Foo(
+            $fooDTO->id(),
+            $fooDTO->name(),
+            $fooDTO->age(),
+            $fooDTO->email(),
         );
     }
 ```
@@ -891,39 +891,39 @@ SELECT文を実行する．全てのプライマリキーのCollection型を配�
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
   
     /**
-     * 全てのExampleを読み出します．
+     * 全てのFooを読み出します．
      *
      * @return array 
      */
     public function findAll(): array
     {
-        $exampleDTOs = $this->exampleDTO
+        $fooDTOs = $this->fooDTO
             ->all();
 
         $exmaples = [];
-        foreach ($exampleDTOs as $exampleDTO)
-            $exmaples = new Example(
-                $exampleDTO->id(),
-                $exampleDTO->name(),
-                $exampleDTO->age(),
-                $exampleDTO->email(),
+        foreach ($fooDTOs as $fooDTO)
+            $exmaples = new Foo(
+                $fooDTO->id(),
+                $fooDTO->name(),
+                $fooDTO->age(),
+                $fooDTO->email(),
             );
 
         return $exmaples;
@@ -1059,7 +1059,7 @@ class DepartmentRepository extends Repository implements DomainDepartmentReposit
 
 #### ・```update```メソッド
 
-UPDATE文を実行する．Builderクラスが```find```メソッドで更新対象のModelを検索する．返却されたBuilderクラスの```fill```メソッドで，挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Modelクラスには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．．
+UPDATE文を実行する．Builderクラスが```find```メソッドで更新対象のModelを検索する．返却されたBuilderクラスの```fill```メソッドで，挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquestモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．．
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
@@ -1070,35 +1070,35 @@ UPDATE文を実行する．Builderクラスが```find```メソッドで更新対
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
     
     /**
-     * Exampleを更新します．
+     * Fooを更新します．
      *
-     * @param Example $example
+     * @param Foo $foo
      */
-    public function save(Example $example)
+    public function save(Foo $foo)
     {
         // オブジェクトにデータを設定する．
-        $exampleData
+        $fooData
             ->fill([
-                "name"  => $example->name(),
-                "age"   => $example->age(),
-                "email" => $example->email()
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
             ])
             // update文を実行する．
             ->save();
@@ -1113,7 +1113,7 @@ namespace App\Domain\DTO;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ExampleDTO extends Model
+class FooDTO extends Model
 {
     // 更新可能なカラム
     protected $fillable = [
@@ -1131,11 +1131,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
-    public function __construct(ExampleRepository $exampleRepository)
+    public function __construct(FooRepository $fooRepository)
     {
-        $this->exampleRepository = $exampleRepository;
+        $this->fooRepository = $fooRepository;
     }
     
     /**
@@ -1144,16 +1144,16 @@ class ExampleController extends Controller
      * @param ArticleId $articleId
      * @return Response
      */
-    public function delete(ExampleId $exampleId)
+    public function delete(FooId $fooId)
     {
-        $example = $this->articleRepository
-            ->findOneById($exampleId);
+        $foo = $this->articleRepository
+            ->findOneById($fooId);
         
-        $this->exampleRepository
-            ->delete($example);
+        $this->fooRepository
+            ->delete($foo);
 
         // バリデーション時にエラーが起こらなかった場合
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -1174,38 +1174,38 @@ DELETE文を実行する．Builderクラスの```find```メソッドで削除対
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
   
     /**
-     * Exampleを削除します．
+     * Fooを削除します．
      *
-     * @param Example $example
+     * @param Foo $foo
      * @return void
      */
-    public function delete(Example $example): void
+    public function delete(Foo $foo): void
     {
         $articleDTO = $this->articleDTO
             ->find($article->id());
         
         // delete文を実行し，論理削除する．
-        $this->exampleDto->delete();
+        $this->fooDto->delete();
         
         // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
-        // $this->exampleDTO->destroy($example->id());     
+        // $this->fooDTO->destroy($foo->id());     
     }
 }
 ```
@@ -1217,11 +1217,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
-    public function __construct(ExampleRepository $exampleRepository)
+    public function __construct(FooRepository $fooRepository)
     {
-        $this->exampleRepository = $exampleRepository;
+        $this->fooRepository = $fooRepository;
     }
     
     /**
@@ -1230,15 +1230,15 @@ class ExampleController extends Controller
      * @param ArticleId $articleId
      * @return Response
      */
-    public function delete(ExampleId $exampleId)
+    public function delete(FooId $fooId)
     {
-        $example = $this->exampleRepository
-            ->findOneById($exampleId);
+        $foo = $this->fooRepository
+            ->findOneById($fooId);
         
-        $this->exampleRepository
-            ->delete($example);
+        $this->fooRepository
+            ->delete($foo);
 
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -1258,7 +1258,7 @@ namespace App\Domain\DTO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ExampleDTO extends Model
+class FooDTO extends Model
 {
     /**
     * Traitの読み込み
@@ -1285,7 +1285,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExampleTable extends Migration
+class CreateFooTable extends Migration
 {
     /**
      * マイグレート
@@ -1294,7 +1294,7 @@ class CreateExampleTable extends Migration
      */
     public function up()
     {
-        Schema::create("example", function (Blueprint $table) {
+        Schema::create("foo", function (Blueprint $table) {
             
             // ～ 省略
             
@@ -1313,7 +1313,7 @@ class CreateExampleTable extends Migration
      */
     public function down()
     {
-        Schema::drop("example");
+        Schema::drop("foo");
     }
 }
 ```
@@ -1325,38 +1325,38 @@ class CreateExampleTable extends Migration
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
     
     /**
-     * Exampleを削除します．
+     * Fooを削除します．
      *
-     * @param Exmaple $example
+     * @param Exmaple $foo
      * @return void
      */
-    public function delete(Exmaple $example): void
+    public function delete(Exmaple $foo): void
     {
-        $example = $this->exampleRepository
-            ->findOneById($exampleId);
+        $foo = $this->fooRepository
+            ->findOneById($fooId);
         
-        $this->exampleRepository
-            ->delete($example);
+        $this->fooRepository
+            ->delete($foo);
         
         // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
-        // $this->exampleDTO->destroy($example->id());        
+        // $this->fooDTO->destroy($foo->id());        
     }
 }
 ```
@@ -1396,7 +1396,7 @@ select * from `employees` where `department_id` = 3
 
 #### ・解決方法
 
-反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのModelクラスのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquestモデルのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
 
 ```php
 <?php
@@ -1422,7 +1422,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 #### ・データベースアクセス系
 
-Modelクラスがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
+Eloquestモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
 
 **＊実装例＊**
 
@@ -1508,7 +1508,7 @@ trait HasEvents
 
 #### ・Traitを使用したイベントの発火
 
-Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Modelクラスでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．
+Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquestモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．
 
 **＊実装例＊**
 
@@ -1814,11 +1814,11 @@ new演算子でインスタンスを作成する．
   
 namespace App\Domain\DTO; 
     
-class Example
+class Foo
 {
     public function method()
     {
-        return "example";
+        return "foo";
     }
 }
 ```
@@ -1826,8 +1826,8 @@ class Example
 <?php
     
 // 通常
-$example = new Example();
-$example->method();
+$foo = new Foo();
+$foo->method();
 ```
 
 #### ・Facadeの静的プロキシ機能を使用する場合
@@ -1843,11 +1843,11 @@ Facadeとして使用したいクラスを定義する．
 
 namespace App\Domain\DTO;
 
-class Example
+class Foo
 {
     public function method()
     {
-        return "example";
+        return "foo";
     }
 }
 ```
@@ -1858,7 +1858,7 @@ class Example
 <?php
   
 "aliases" => [
-    "Example" => App\Domain\Entity\Example::class,
+    "Foo" => App\Domain\Entity\Foo::class,
 ]
 ```
 
@@ -1867,10 +1867,10 @@ class Example
 ```php
 <?php
 
-use Illuminate\Support\Facades\Example;
+use Illuminate\Support\Facades\Foo;
     
 // Facade利用
-$result = Example::method();
+$result = Foo::method();
 ```
 
 #### ・標準登録されたFacadeクラスの種類
@@ -2051,37 +2051,37 @@ class RouteServiceProvider extends ServiceProvider
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
     
     /**
-     * Exampleを更新します．
+     * Fooを更新します．
      *
-     * @param Example $example
+     * @param Foo $foo
      */
-    public function save(Example $example)
+    public function save(Foo $foo)
     {   
         // 一連のトランザクション処理を実行する．
-        DB::transaction(function () use ($exampleData, $example){
+        DB::transaction(function () use ($fooData, $foo){
             
             // オブジェクトにデータを設定する．
-            $exampleData->fill([
-                "name"  => $example->name(),
-                "age"   => $example->age(),
-                "email" => $example->email()
+            $fooData->fill([
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
             ])
             // update文を実行する．
             ->save();
@@ -2102,39 +2102,39 @@ class ExampleRepository extends Repository implements DomainExampleRepository
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Example;
-use App\Domain\Repositories\ExampleRepository as DomainExampleRepository;
-use App\Infrastructure\DTO\ExampleDTO;
+use App\Domain\Entity\Foo;
+use App\Domain\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\DTO\FooDTO;
 
-class ExampleRepository extends Repository implements DomainExampleRepository
+class FooRepository extends Repository implements DomainFooRepository
 {
     /**
-     * @var ExampleDTO
+     * @var FooDTO
      */
-    private ExampleDTO $exampleDTO;
+    private FooDTO $fooDTO;
     
-    public function __construct(ExampleDTO $exampleDTO)
+    public function __construct(FooDTO $fooDTO)
     {
-        $this->exampleDTO = $exampleDTO;
+        $this->fooDTO = $fooDTO;
     }   
     
     /**
-     * Exampleを更新します．
+     * Fooを更新します．
      *
-     * @param Example $example
+     * @param Foo $foo
      */
-    public function save(Example $example)
+    public function save(Foo $foo)
     {
         // トランザクション処理を開始する．
         DB::beginTransaction();
         
         try {
-            $this->exampleDTO
+            $this->fooDTO
             // オブジェクトにデータを設定する．
             ->fill([
-                "name"  => $example->name(),
-                "age"   => $example->age(),
-                "email" => $example->email()
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
             ])
             // update文を実行する．
             ->save();            
@@ -2466,13 +2466,13 @@ class FileSystemPublicController extends Controller
         $disk = Storage::disk("public");
 
         // 保存対象のファイルを読み込む
-        $file_path = "/path/to/public/example.jpg"
+        $file_path = "/path/to/public/foo.jpg"
         $contents = file_get_contents($file_path);
 
         // 保存先パス（ディレクトリ＋ファイル名）
-        $saved_file_path = "/images/example.jpg";
+        $saved_file_path = "/images/foo.jpg";
 
-        // example.jpgを『/images/example.jpg』に保存
+        // foo.jpgを『/images/foo.jpg』に保存
         // ルートディレクトリは『/storage/app/public』
         $disk->put($saved_file_path, $contents);
     }
@@ -2557,7 +2557,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいブログポストの保存
@@ -2581,12 +2581,12 @@ class ExampleController extends Controller
                 ->withInput();
         }
 
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update(
+        $fooRepository = new FooRepository;
+        $fooRepository->update(
             $validator->valid()
         );
 
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -2604,7 +2604,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいブログポストの保存
@@ -2629,12 +2629,12 @@ class ExampleController extends Controller
                 ->withInput();
         }
 
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update(
+        $fooRepository = new FooRepository;
+        $fooRepository->update(
             $validator->valid()
         );
 
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -2845,7 +2845,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいユーザーを保存します．
@@ -2873,7 +2873,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 指定したユーザーを更新します．
@@ -2925,7 +2925,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class ExampleBeforeMiddleware
+class FooBeforeMiddleware
 {
     /**
      * @param  Request  $request
@@ -2955,7 +2955,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class ExampleAfterMiddleware
+class FooAfterMiddleware
 {
     /**
      * @param  Request  $request
@@ -2992,9 +2992,7 @@ $ php artisan make:request <Request名>
 
 #### ・```rules```メソッド
 
-FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．決められた複数の値の中で検証を行う場合は，Ruleクラスの```in```メソッドを使用する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．```in```メソッドについては，以下のリンクを参考にせよ．
-
-参考：https://readouble.com/laravel/8.x/ja/validation.html#rule-in
+FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．
 
 **＊実装例＊**
 
@@ -3005,7 +3003,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ExampleRequest extends FormRequest
+class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します．
@@ -3043,7 +3041,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいブログポストの保存
@@ -3056,11 +3054,11 @@ class ExampleController extends Controller
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validated();
 
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update($validated);
+        $fooRepository = new FooRepository;
+        $fooRepository->update($validated);
 
         // バリデーション時にエラーが起こらなかった場合
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -3081,7 +3079,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいブログポストの保存
@@ -3098,11 +3096,11 @@ class ExampleController extends Controller
             "date"  => "required|date",
         ]);
 
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update($validated);
+        $fooRepository = new FooRepository;
+        $fooRepository->update($validated);
 
         // バリデーション時にエラーが起こらなかった場合
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -3119,7 +3117,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * 新しいブログポストの保存
@@ -3136,56 +3134,19 @@ class ExampleController extends Controller
             "date"  => ["required", "date"],
         ]);
 
-        $exampleRepository = new ExampleRepository;
-        $exampleRepository->update($validated);
+        $fooRepository = new FooRepository;
+        $fooRepository->update($validated);
 
         // バリデーション時にエラーが起こらなかった場合
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
 ```
 
-#### ・エラーメッセージ
+#### ・標準のバリデーションメッセージ
 
-バリデーションメッセージを```message```メソッドで定義する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Rules;
-
-use Illuminate\Contracts\Validation\Rule;
-
-class UppercaseRule implements Rule
-{
-    /**
-     * バリデーションの成功を判定
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function passes($attribute, $value)
-    {
-        return strtoupper($value) === $value;
-    }
-
-    /**
-     * バリデーションエラーメッセージの取得
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return trans('validation.uppercase');
-    }
-}
-```
-
-メッセージは，```message```メソッドの代わりに，```resources/lang/ja/validation.php```ファイルでも定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
+標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
 
 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
@@ -3268,6 +3229,162 @@ return [
 
 <br>
 
+### Rule
+
+#### ・```exists```メソッド
+
+指定されたテーブルのカラムに値が存在しているかを検証する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "prefectureId"  => ["nullable", "integer", Rule::exists("prefectures", "id")],
+            "cityId"  => ["nullable", "integer", Rule::exists("cities", "id")]
+        ];
+    }
+}
+```
+
+テーブルにカラム数が多い場合は，Where句をつけることで，特定のカラムのみ検証することもできる．
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "prefectureId"  => ["nullable", "integer", Rule::exists("prefectures", "id")]
+            "cityId"  => ["nullable", "integer", Rule::exists("cities", "id")->whereNull("deleted_at")]
+        ];
+    }
+}
+```
+
+#### ・```in```メソッド
+
+決められた複数の値に合致する値であるかどうかを検証する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "type"  => ["required", Rule::in([1, 2, 3])],
+        ];
+    }
+}
+```
+
+#### ・独自ルール／メッセージ
+
+独自のRuleクラスを定義する．```passes```メソッドでルールを定義し，```messages```メソッドでバリデーションメッセージを定義する．```validation.php```ファイルでメッセージを定義し，これを参照しても良い．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class UppercaseRule implements Rule
+{
+	/**
+     * バリデーションの成功を判定
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+	public function passes($attribute, $value)
+	{
+		return strtoupper($value) === $value;
+	}
+
+	/**
+     * バリデーションエラーメッセージの取得
+     *
+     * @return string
+     */
+	public function message()
+	{
+		return 'The :attribute must be uppercase.';
+        // return trans('validation.uppercase'); validation.phpファイルから参照する．
+	}
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "author"  => ["required", "string", new UppercaseRule()]
+        ];
+    }
+}
+```
+
+<br>
+
 ### セッション
 
 #### ・セッション変数の取得
@@ -3283,7 +3400,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * @param  Request  $request
@@ -3473,12 +3590,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Response;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     public function index()
     {
         $client = new Client();
-        $requestUrl = config("api.example1.endpoint_url");
+        $requestUrl = config("api.foo.endpoint_url");
 
         try {
 
@@ -3488,7 +3605,7 @@ class ExampleController extends Controller
                 [
                     "headers" => [
                         "Content-Type" => "application/json",
-                        "X-API-Key"    => "api.example1.api_key",
+                        "X-API-Key"    => "api.foo.api_key",
                     ]
                 ]
             );
@@ -3521,11 +3638,11 @@ class ExampleController extends Controller
 <?php
 
 return [
-    "example1" => [
+    "foo" => [
         "endpoint_url" => env("ENDPOINT_URL", ""),
         "api_key"      => env("API_KEY"),
     ],
-    "example2" => [
+    "bar" => [
         "endpoint_url" => env("ENDPOINT_URL", ""),
         "api_key"      => env("API_KEY"),
     ]
@@ -3631,7 +3748,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExampleTable extends Migration
+class CreateFooTable extends Migration
 {
     /**
      * マイグレート
@@ -3640,8 +3757,8 @@ class CreateExampleTable extends Migration
      */
     public function up()
     {
-        Schema::create("examples", function (Blueprint $table) {
-            $table->bigIncrements("example_id")
+        Schema::create("foos", function (Blueprint $table) {
+            $table->bigIncrements("foo_id")
                 ->comment("ID");
             $table->string("name")
                 ->comment("名前");
@@ -3664,7 +3781,7 @@ class CreateExampleTable extends Migration
      */
     public function down()
     {
-        Schema::drop("examples");
+        Schema::drop("foos");
     }
 }
 ```
@@ -3727,11 +3844,11 @@ AutoIncrementのINT型カラムを作成する．
 **＊実装例＊**
 
 ```php
-Schema::create("examples", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table) {
     
     // ～ 省略 ～
     
-    $table->bigIncrements("example_id");
+    $table->bigIncrements("foo_id");
     
     // ～ 省略 ～
     
@@ -3745,7 +3862,7 @@ VARCHAR型カラムを作成する．
 **＊実装例＊**
 
 ```php
-Schema::create("examples", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table) {
   
     // ～ 省略 ～    
     
@@ -3763,7 +3880,7 @@ TIMESTAMP型カラムを作成する．
 **＊実装例＊**
 
 ```php
-Schema::create("examples", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table) {
     
     // ～ 省略 ～
     
@@ -3997,7 +4114,7 @@ namespace App\Http\Controllers;
 use App\Domain\User;
 use App\Notifications\TfaTokenNotification;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * TFAトークンを通知します．
@@ -4026,15 +4143,19 @@ $ php artisan make:resource <Resource名>
 
 <br>
 
-### データ型変換
+### レスポンスデータ作成前のデータ型変換
 
-#### ・Modelの配列化
+#### ・データ型変換の必要性
 
-一つのModelを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくModel名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．
+EloquentモデルをJSONデータとしてレスポンスする時に，一旦，配列データに変換する必要がある．
+
+#### ・単一のEloquestモデルの配列化
+
+単一のEloquestモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquestモデル名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．Controllerにて，ResouceクラスにEloquestモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
 
 **＊実装例＊**
 
-Exampleクラスからデータを取り出し，配列化する．
+Fooクラスからデータを取り出し，配列化する．
 
 ```php
 <?php
@@ -4043,7 +4164,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ExampleJsonResource extends JsonResource
+class FooJsonResource extends JsonResource
 {
     /**
      * オブジェクトを配列に変換します．
@@ -4060,10 +4181,8 @@ class ExampleJsonResource extends JsonResource
             "password" => $this->password
         ];
     }
-}
+}．
 ```
-
-Controllerにて，ResouceクラスにModelを渡すようにする．Laravelはレスポンス時に，```toArray```メソッドをコールし，さらにこの返却値をJSONデータに変換する．
 
 ```php
 <?php
@@ -4072,7 +4191,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * クライアントにデータを返却します．
@@ -4082,17 +4201,17 @@ class ExampleController extends Controller
      */
     public function index(Request $request)
     {
-        // ここに，Modelをデータベースから取得する処理
+        // ここに，Eloquestモデルをデータベースから取得する処理
         
-        // Modelを渡す．
-        return new ExampleResource($example);
+        // Eloquestモデルを渡す．
+        return new FooResource($foo);
     }
 }
 ```
 
-#### ・Collection型の配列化
+#### ・複数のEloquestモデル（Collection型）の配列化
 
-ModelのCollection型を配列に変換する．
+複数のEloquestモデル（Collection型）を配列に変換する．
 
 ```php
 // ここに実装例
@@ -4474,9 +4593,9 @@ AppSeriveProviderにて，ServiceContainerにクラスをバインドするこ�
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\Entity\Example;
+use App\Domain\Entity\Foo;
 
-class ExampleServiceProvider extends ServiceProvider
+class FooServiceProvider extends ServiceProvider
 {
     /**
      * コンテナにバインド
@@ -4485,8 +4604,8 @@ class ExampleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Example::class, function ($app) {
-            return new Example1(new Example2, new Example3);
+        $this->app->bind(Foo::class, function ($app) {
+            return new Foo(new Bar, new Baz);
         });
     }
 }
@@ -4501,12 +4620,12 @@ class ExampleServiceProvider extends ServiceProvider
 
 namespace App\Providers;
 
-use App\Domain\Entity\Example1;
-use App\Domain\Entity\Example2;
-use App\Domain\Entity\Example3;
+use App\Domain\Entity\Foo;
+use App\Domain\Entity\Bar;
+use App\Domain\Entity\Baz;
 use Illuminate\Support\ServiceProvider;
 
-class ExamplesServiceProvider extends ServiceProvider
+class FoosServiceProvider extends ServiceProvider
 {
      /**
      * 各registerメソッドをコール
@@ -4515,38 +4634,38 @@ class ExamplesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerExample1();
-        $this->registerExample2();
-        $this->registerExample3();
+        $this->registerFoo();
+        $this->registerBar();
+        $this->registerBaz();
     }
     
     /**
     * 一つ目のクラスをバインド
     */
-    private function registerExample1()
+    private function registerFoo()
     {
-        $this->app->bind(Example1::class, function ($app) {
-            return new Example1();
+        $this->app->bind(Foo::class, function ($app) {
+            return new Foo();
         });
     }
     
     /**
     * 二つ目のクラスをバインド
     */    
-    private function registerExample2()
+    private function registerBar()
     {
-        $this->app->bind(Example2::class, function ($app) {
-            return new Example2();
+        $this->app->bind(Bar::class, function ($app) {
+            return new Bar();
         });
     }
     
     /**
     * 三つ目のクラスをバインド
     */
-    private function registerExample3()
+    private function registerBaz()
     {
-        $this->app->bind(Example3::class, function ($app) {
-            return new Example3();
+        $this->app->bind(Baz::class, function ($app) {
+            return new Baz();
         });
     }
 }
@@ -4564,10 +4683,10 @@ class ExamplesServiceProvider extends ServiceProvider
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\ExampleRepository as ExampleRepositoryInterface;
-use App\Infrastructure\ExampleRepository;
+use App\Domain\FooRepository as FooRepositoryInterface;
+use App\Infrastructure\FooRepository;
 
-class ExampleServiceProvider extends ServiceProvider
+class FooServiceProvider extends ServiceProvider
 {
     /**
      * コンテナにバインド
@@ -4596,21 +4715,21 @@ class ExampleServiceProvider extends ServiceProvider
 
 namespace App\Domain\DTO;
 
-class Example extends Entity
+class Foo extends Entity
 {
     /**
      * サブクラス
      */
-    protected $subExample;
+    protected $subFoo;
 
     /**
      * コンストラクタインジェクション
      *
-     * @param SubExmaple $subExample
+     * @param SubExmaple $subFoo
      */
-    public function __construct(SubExmaple $subExample)
+    public function __construct(SubExmaple $subFoo)
     {
-        $this->example = $subExample;
+        $this->foo = $subFoo;
     }
 }
 ```
@@ -4618,21 +4737,21 @@ class Example extends Entity
 ```php
 <?php
 
-class Example
+class Foo
 {
     public function method()
     {
-        return "example";
+        return "foo";
     }
 }
 
-// Exampleクラスをリゾルブし，そのままmethodをコール
-$result = app()->make(Example::class)
+// Fooクラスをリゾルブし，そのままmethodをコール
+$result = app()->make(Foo::class)
     ->method();
 
-// Exampleクラスをリゾルブ
-$example = App::make(Example::class);
-$result = $example->method();
+// Fooクラスをリゾルブ
+$foo = App::make(Foo::class);
+$result = $foo->method();
 ```
 
 #### ・```register```メソッドと```boot```メソッドの違い
@@ -4707,7 +4826,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExampleTable extends Migration
+class CreateFooTable extends Migration
 {
     /**
      * マイグレート
@@ -4716,8 +4835,8 @@ class CreateExampleTable extends Migration
      */
     public function up()
     {
-        Schema::create("examples", function (Blueprint $table) {
-            $table->bigIncrements("example_id")
+        Schema::create("foos", function (Blueprint $table) {
+            $table->bigIncrements("foo_id")
                 ->comment("ID");
             $table->string("name")
                 ->comment("名前");
@@ -4737,7 +4856,7 @@ class CreateExampleTable extends Migration
      */
     public function down()
     {
-        Schema::drop("examples");
+        Schema::drop("foos");
     }
 }
 ```
@@ -4840,7 +4959,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // Model更新イベント
+        // Eloquestモデル更新イベント
         UpdatedModelEvent::class => [
             UpdatedModelListener::class,
         ],
@@ -5017,7 +5136,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     /**
      * @param  Request  $request
@@ -5027,23 +5146,23 @@ class ExampleController extends Controller
     public function index(Request $request, $id)
     {
         // getメソッド
-        $data = $request->session()->get("example");
+        $data = $request->session()->get("foo");
         
         // allメソッド
         $data = $request->session()->all();
         
         // forgetメソッド
-        $request->session()->forget("example");
-        $request->session()->forget(["example1", "example2"]);
+        $request->session()->forget("foo");
+        $request->session()->forget(["foo", "bar"]);
         
         // flush
         $request->session()->flush();
         
         // pullメソッド
-        $data = $request->session()->pull("example");
+        $data = $request->session()->pull("foo");
         
         // hasメソッド
-        if ($request->session()->has("example")) {
+        if ($request->session()->has("foo")) {
     
         }
     }
@@ -5112,7 +5231,7 @@ Controllerクラスから返却されたデータは，```{{ 変数名 }}```で�
 MessageBagクラスの```all```メソッドで，全てのエラーメッセージを出力する．
 
 ```html
-<!-- /resources/views/example/create.blade.php -->
+<!-- /resources/views/foo/create.blade.php -->
 
 <h1>ポスト作成</h1>
 
@@ -5167,7 +5286,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 #### ・```@yield```，```@extends```，```@section```，```@endsection```
 
-子テンプレートのレンダリング時に，子テンプレートで新しく定義したHTMLの要素を，親テンプレートの指定した場所に出力する．親テンプレートにて，```@yield("example")```を定義する．
+子テンプレートのレンダリング時に，子テンプレートで新しく定義したHTMLの要素を，親テンプレートの指定した場所に出力する．親テンプレートにて，```@yield("foo")```を定義する．
 
 **＊実装例＊**
 
@@ -5187,7 +5306,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 </html>
 ```
 
-これを子テンプレートで```@extends```で継承すると，レンダリング時に，子テンプレートの```@section("example")```-```@endsection```で定義した要素が，親テンプレートの```@yieid()```部分に出力される．
+これを子テンプレートで```@extends```で継承すると，レンダリング時に，子テンプレートの```@section("foo")```-```@endsection```で定義した要素が，親テンプレートの```@yieid()```部分に出力される．
 
 **＊実装例＊**
 
@@ -5285,7 +5404,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 #### ・```@stack```，```@push```
 
-子テンプレートのレンダリング時に，CSSとJavaScriptのファイルを動的に出力する場合に使用する．親テンプレートにて，```@stack("example")```を定義する．これを継承した子テンプレートのレンダリング時に，```@push("example")```-```@endpush```で定義した要素が，```@stack()```部分に出力される．
+子テンプレートのレンダリング時に，CSSとJavaScriptのファイルを動的に出力する場合に使用する．親テンプレートにて，```@stack("foo")```を定義する．これを継承した子テンプレートのレンダリング時に，```@push("foo")```-```@endpush```で定義した要素が，```@stack()```部分に出力される．
 
 **＊実装例＊**
 
@@ -5303,7 +5422,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 <!-- 子テンプレート -->
 
 @push("scripts")
-    <script src="/example.js"></script>
+    <script src="/foo.js"></script>
 @endpush
 ```
 
@@ -5430,7 +5549,7 @@ $auth = auth();
 
 #### ・AuthManagerインスタンスの仕様
 
-AuthManagerクラスの```user```メソッドをコールする場合，AuthManagerにはこれがないため，```__call```メソッドがコールされる．ここで，```guard```メソッドが，Guardインターフェースの実装クラスを返却する．```auth.php```ファイルで選択したGuardドライバーによって，リゾルブされる実装クラスが決まり，例えば```token```ドライバーを選んだ場合は，TokenGuardクラスを返却する．```auth.php```ファイルの```providers```キーで設定されたModelを認証対象として，TokenGuardクラスの```user```メソッドは認証済みのModelを返却する．
+AuthManagerクラスの```user```メソッドをコールする場合，AuthManagerにはこれがないため，```__call```メソッドがコールされる．ここで，```guard```メソッドが，Guardインターフェースの実装クラスを返却する．```auth.php```ファイルで選択したGuardドライバーによって，リゾルブされる実装クラスが決まり，例えば```token```ドライバーを選んだ場合は，TokenGuardクラスを返却する．```auth.php```ファイルの```providers```キーで設定されたEloquestモデルを認証対象として，TokenGuardクラスの```user```メソッドは認証済みのEloquestモデルを返却する．
 
 参考：
 
@@ -5483,7 +5602,7 @@ configディレクトリに任意の名前のphp形式を作成しておく．�
 ```php
 <?php
 
-$requestUrl = config("api.example1.endpoint_url");
+$requestUrl = config("api.foo.endpoint_url");
 ```
 
 
@@ -5491,11 +5610,11 @@ $requestUrl = config("api.example1.endpoint_url");
 <?php
 
 return [
-    "example1" => [
+    "foo" => [
         "endpoint_url" => env("ENDPOINT_URL", ""),
         "api_key"      => env("API_KEY"),
     ],
-    "example2" => [
+    "bar" => [
         "endpoint_url" => env("ENDPOINT_URL", ""),
         "api_key"      => env("API_KEY"),
     ]
@@ -5546,7 +5665,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     public function index()
     {
@@ -5570,12 +5689,12 @@ class ExampleController extends Controller
 ```php
 <?php
 
-namespace App\Http\Controllers\Example;
+namespace App\Http\Controllers\Foo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     public function index()
     {
@@ -5583,7 +5702,7 @@ class ExampleController extends Controller
 
         // データ，ステータスコード，ヘッダーなどを設定する場合
         return response()->view(
-            "example",
+            "foo",
             $data,
             200
         )->header(
@@ -5602,14 +5721,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class ExampleController extends Controller
+class FooController extends Controller
 {
     public function index()
     {
         // ～ 省略 ～
 
         // ステータスコードのみ設定する場合
-        return response()->view("example")
+        return response()->view("foo")
             ->setStatusCode(200);
     }
 }
@@ -5810,7 +5929,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのModelを設定する．ここでは，Userクラスを設定する．Laravelでは，Modelに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを指定する．
+3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquestモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquestモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを指定する．
 
 ```php
 return [
@@ -5820,7 +5939,7 @@ return [
     "providers" => [
         "users" => [
             "driver" => "eloquent",
-            // EloquestのModelは自由に指定できる．
+            // Eloquestモデルは自由に指定できる．
             "model"  => App\Domain\Auth\User::class,
         ],
 
@@ -5842,7 +5961,7 @@ return [
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
-5. 認証ガードを行ったModelに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
+5. 認証ガードを行ったEloquestモデルに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
 
 **＊実装例＊**
 

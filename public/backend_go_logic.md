@@ -1194,7 +1194,7 @@ func main() {
 
 ### マップ
 
-#### ・プリミティブ型を値に持つマップ
+#### ・単一のプリミティブ型を値に持つマップ
 
 マップの定義と代入を同時に行う．
 
@@ -1275,6 +1275,27 @@ func main() {
 
 	fmt.Println(m) // map[errors:[エラーメッセージ0 エラーメッセージ1 エラーメッセージ2]]
 }
+```
+
+#### ・複数のデータ型を持つマップ
+
+マップ型データの値をインターフェース型とすることで，複数のデータ型を表現できる．
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// 『文字列:複数のプリミティブ型』のマップ
+	m := map[string]interface{}{
+		"id":   1,
+		"name": "Hiroki Hasegawa",
+	}
+
+	fmt.Println(m) // map[id:1 name:Hiroki Hasegawa]
+}
+
 ```
 
 #### ・マップ値の抽出
@@ -1508,7 +1529,7 @@ func main() {
 }
 ```
 
-#### ・標準搭載のインターフェース
+#### ・errorインターフェース
 
 Goには，標準搭載されているインターフェースがある．このインターフェースが強制するメソッドを実装した構造体を定義すると，自動的に委譲が行われる．
 
@@ -1519,6 +1540,29 @@ errorインターフェースの委譲については，本ノート内の説明
 ```go
 type error interface {
     Error() string
+}
+```
+
+#### ・stringインターフェース
+
+構造体に```String```メソッドを定義しておくと，Print系関数に構造体を渡した時に，これが実行される．
+
+**＊実装例＊**
+
+```go
+package main
+
+import "fmt"
+
+type Foo struct{}
+
+func (f *Foo) String() string {
+	return "Stringメソッドを実行しました．"
+}
+
+func main() {
+	f := &Foo{}
+	fmt.Println(f)
 }
 ```
 
@@ -2798,7 +2842,7 @@ func main() {
 
 #### ・```Marshal```関数
 
-構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．```Marshal```関数に渡す構造体のフィールドはパブリックが必須である．
+構造体をJSONに変換する．変換前に，マッピングを行うようにする．引数のデータ型は，ポインタ型または非ポインタ型のいずれでも問題ない．ただし，他の多くの関数がポインタ型を引数型としていることから，それに合わせてポインタ型で渡すことが多い．
 
 参考：https://golang.org/pkg/encoding/json/#Marshal
 
@@ -2833,9 +2877,60 @@ func main() {
 }
 ```
 
+この時，構造体のフィールドはパブリックにする必要がある．しかし，```MarshalJSON```関数を構造体に定義すると，```Marshal```関数の代わりにこれがコールされるようになる．構造体にゲッターを用意して，```MarshalJSON```関数でパブリックな構造体を作成するようにすると，プライベートな構造体に対しても```Marshal```関数を使用できるようになる．
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Person struct {
+	name string
+}
+
+func NewPerson(name string) *Person {
+	return &Person{
+		name: name,
+	}
+}
+
+func (p *Person) Name() string {
+	return p.name
+}
+
+func (p *Person) MarshalJSON() ([]byte, error) {
+
+	byteJson, err := json.Marshal(&struct {
+		// ここでjsonタグを定義する．
+		Name string `json:"name"`
+	}{
+		Name: p.Name(),
+	})
+
+	return byteJson, err
+}
+
+func main() {
+	person := NewPerson("Hiroki")
+
+	byteJson, err := json.Marshal(person)
+
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
+	// エンコード結果を出力
+	fmt.Printf("%#v\n", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+}
+```
+
 #### ・```Unmarshal```関数
 
-JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```関数の第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．```Unmarshal```関数に渡す構造体のフィールドはパブリックが必須である．
+JSONを構造体に変換する．リクエストの受信によく使われる．リクエストのメッセージボディにはバイト型データが割り当てられているため，```Unmarshal```関数の第一引数はバイト型になる．また，第二引数として，変換後の構造体のメモリアドレスを渡すことにより，第一引数がその構造体に変換される．内部的には，そのメモリアドレスに割り当てられている変数を書き換えている．```Unmarshal```関数に渡す構造体のフィールドはパブリックが必要であるが，```Marshal```関数と同様にして，```UnMarshalJSON```関数を構造体に定義すれば，代わりにこれをコールできる．
 
 参考：https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -3387,6 +3482,64 @@ func main() {
     
     fmt.Printf("%#v\n", file)
 }
+```
+
+<br>
+
+### reflect
+
+#### ・```TypeOf```メソッド，```ValueOf```メソッド
+
+構造体からフィールド情報を取得する．フィールドが複数ある場合は，要素番号の指定が必要になるため，事前に要素数を取得するようにしておく．
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type Foo struct {
+	bar string
+	baz int
+}
+
+func main() {
+	foo := &Foo{bar: "BAR", baz: 1}
+
+	fields := reflect.TypeOf(*foo)
+	fmt.Println(fields)
+
+	values := reflect.ValueOf(*foo)
+
+	// 再帰的にフィールドと値を取得する
+	for i := 0; i < fields.NumField(); i++ {
+
+		fmt.Println("===", i, "===")
+
+		// フィールドを取得
+		field := fields.Field(i)
+		fmt.Println(field.Name)
+
+		// 値を取得
+		value := values.Field(i)
+		fmt.Println(field.Type)
+
+		fmt.Println(value)
+	}
+}
+
+/*
+=== 0 ===
+bar
+string
+BAR
+=== 1 ===
+baz
+int
+1
+*/
 ```
 
 <br>
