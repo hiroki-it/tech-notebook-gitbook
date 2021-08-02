@@ -970,13 +970,17 @@ WHERE
 
 <br>
 
-### PDOにおける```FETCH```
+### PDOの場合
 
-#### ・```fetch(): array```
+#### ・```prepare```メソッド
+
+プリペアードステートメントを使用してSQLを定義する．プリアードステートメントによるSQLインジェクションの防御については，以下のリンクを参考にせよ．
+
+#### ・```fetch```メソッド
 
 読み出された全てのレコードのうち，最初のレコードの全てのカラムを取得し，一次元の連想配列で返却する．
 
-#### ・```fetchAll(): array```
+#### ・```fetchAll```メソッド
 
 読み出された全てのレコードの，全てのカラムを取得し，二次元の連想配列で返却する．
 
@@ -984,10 +988,9 @@ WHERE
 
 ```php
 <?php
-// SELECT文を定義して実行．
 $sql = "SELECT * FROM doraemon_characters";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
+$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
+$stmt->execute(); // 実行．
 
 
 // 全てのレコードを取得
@@ -1016,16 +1019,17 @@ print_r($data);
 // )
 ```
 
-#### ・```fetchColumn(): mixed```
+#### ・```fetchColumn```メソッド
 
 読み出された全てのレコードのうち，最初のレコードの一番左のカラムのみを取得し，混合型で返却する．主に，```COUNT()```の場合に用いる
 
+**＊実装例＊**
+
 ```php
 <?php
-// SELECT文を定義して実行．
 $sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
+$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
+$stmt->execute(); // 実行．
 
 // レコードを取得
 $data = $stmt->fetchColumn();
@@ -1038,6 +1042,14 @@ print_r($data);
 
 <br>
 
+### Doctrineの場合
+
+以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_package.html
+
+<br>
+
 ### Javaの場合
 
 PHPとは異なり，変数定義に『$』は用いないことに注意．
@@ -1046,7 +1058,7 @@ PHPとは異なり，変数定義に『$』は用いないことに注意．
 
 ```java
 // SELECT文を定義して実行．
-String sql = "SELECT * FROM doraemon_characters";
+String sql = "SELECT * FROM doraemon_characters"; 
 ResultSet result statement.executeQuery();
 
 
@@ -1067,9 +1079,9 @@ while(result.next()){
 
 ## 05. レコードの書き込み ：CREATE，UPDATE，DELETE
 
-### ```INSERT```
+### PDOの場合
 
-#### ・PDOの場合
+#### ・```INSERT```
 
 ```php
 <?php
@@ -1111,9 +1123,31 @@ $stmt->execute($data);
 $dbh = null;
 ```
 
-#### ・マイグレーションの場合
+#### ・```UPDATE```
 
-マイグレーションファイルと呼ばれるスクリプトファイルを作成し，テーブルの新規作成やカラムの追加はこのスクリプトファイルに記述していく．
+```sql
+
+```
+
+#### ・```DELETE```
+
+```sql
+
+```
+
+<br>
+
+## 06. その他
+
+### マイグレーション
+
+#### ・マイグレーションとは
+
+DBに保存されているデータを保持したまま，テーブルの作成やカラムの変更などを行うための機能のこと．マイグレーションファイルと呼ばれるスクリプトファイルを作成し，テーブルの新規作成やカラムの追加はこのスクリプトファイルに記述していく．
+
+<br>
+
+### 運用手順
 
 1. 誰かが以下のMigrationファイルをmaster別名にPush
 
@@ -1137,25 +1171,7 @@ class ItemQuery
 }
 ```
 
-<br>
-
-### ```UPDATE```
-
-```sql
-
-```
-
-<br>
-
-### ```DELETE```
-
-```sql
-
-```
-
-<br>
-
-## 06. その他
+<be>
 
 ### レコードの突き合わせ処理アルゴリズム
 

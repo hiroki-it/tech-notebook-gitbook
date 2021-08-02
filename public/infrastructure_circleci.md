@@ -1004,7 +1004,7 @@ workflows:
 | Project    | Environment Variables機能                   | リポジトリ内のみ参照できる．                                 |
 | Global     | Contexts機能                                | 異なるリポジトリ間で参照できる．                             |
 
-#### ・commandsにおける環境変数の出力方法
+#### ・環境変数の出力方法
 
 環境変数を```echo```の引数に指定する．あらかじめエンコードされた環境変数を管理しておき，```base64 --decode```を実行して出力すると，安全に環境変数を管理できる．ここで出力している環境変数は，以下のノートを参考にせよ
 
@@ -1049,9 +1049,9 @@ steps:
 
 <br>
 
-### 定義方法の違い
+### Bashレベル
 
-#### ・Bashレベル
+#### ・commandキーによる設定
 
 一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．```command```内で使用する環境変数を定義するためには，『```$BASH_ENV```』に```export```処理を格納する必要がある．定義したものを使用するためには，『```$BASH_ENV```』を```source```で読み込む必要があるために注意する．
 
@@ -1080,7 +1080,36 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-環境変数に値を出力する処理はファイルに切り分けておくとよい．
+CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている．そのため，『```$BASH_ENV```』は複数の```run```間」で共有できる．ただし，Alpineベースのイメージでは，この共有機能を使えないため注意する（かなりたくさんある）．
+
+参考：https://github.com/circleci/circleci-docs/issues/1650
+
+```yaml
+version: 2.1 
+
+jobs:
+  build:
+    docker:
+      - image: smaant/lein-flyway:2.7.1-4.0.3
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - run:
+          name: Update PATH and Define Environment Variable at Runtime
+          command: |
+            echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
+            echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
+      - run:
+          name: Echo # BASH_ENVが自動的に読み込まれる．
+          command: |
+            echo "$PATH"
+            echo "$VERY_IMPORTANT"     
+```
+
+#### ・シェルスクリプトによる設定
+
+環境変数に値を設定する処理をシェルスクリプトに切り分け，環境変数を使用する前にこれを読み込む．
 
 **＊実装例＊**
 
@@ -1115,7 +1144,11 @@ echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
 source $BASH_ENV
 ```
 
-ちなみに，ヒアドキュメントでシェルスクリプトを作成する場合，echoが追加される．そのため，echoの実装が不要であることに中止する．
+#### ・ヒアドキュメントで作成したシェルスクリプトによる設定
+
+ヒアドキュメントを使用して，環境変数を設定できるシェルスクリプトを作成し，これを読み込む．ヒアドキュメントでは，各行でechoが実行される．そのため，echoの実装が不要であることに注意する．
+
+**＊実装例＊**
 
 ```shell
 cat << EOF > "export_envs.sh"
@@ -1127,40 +1160,9 @@ source $BASH_ENV
 EOF
 ```
 
-また，```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるため，『```$BASH_ENV```』は複数の```run```間」で共有できる．ただし，Alpineベースのイメージでは，この共有機能を使えないため注意する．
+<br>
 
-参考：https://github.com/circleci/circleci-docs/issues/1650
-
-Alpineベースのイメージは色々ある
-
-参考：
-
-- https://github.com/hashicorp/terraform/blob/main/Dockerfile
-
-```yaml
-version: 2.1 
-
-jobs:
-  build:
-    docker:
-      - image: smaant/lein-flyway:2.7.1-4.0.3
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: Update PATH and Define Environment Variable at Runtime
-          command: |
-            echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
-            echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
-      - run:
-          name: Echo # BASH_ENVが自動的に読み込まれる．
-          command: |
-            echo "$PATH"
-            echo "$VERY_IMPORTANT"     
-```
-
-#### ・Containerレベル
+### Containerレベル
 
 Bashレベルより参照範囲が大きく，```job```内のみで参照できる．```environment```を```image```と同じ階層で定義する．
 
@@ -1176,12 +1178,15 @@ jobs:
           POSTGRES_USER: root
 ```
 
-#### ・Projectレベル
+<br>
+
+### Projectレベル
 
 Containerレベルより参照範囲が大きく，プロジェクト内，すなわちリポジトリ内のみで参照できる．Environment Variables機能を使用する．環境変数の値が４文字未満，または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合，CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため，注意が必要である．
 
+<br>
 
-#### ・Grobalレベル
+### Grobalレベル
 
 Projectレベルより参照範囲が大きく，異なるプロジェクト間，すなわちリポジトリ間で参照できる．Contexts機能を使用する．
 

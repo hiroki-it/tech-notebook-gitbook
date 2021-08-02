@@ -178,50 +178,9 @@ max_input_vars = 1000
 
 #### ・**プレースホルダーによる対策**
 
-プリペアードステートメントともいう．SQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる
+プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる．プレースホルダーについては，以下のリンクを参考にせよ．
 
-**＊実装例＊**
-
-```php
-use Doctrine\DBAL\Connection;
-
-class dogToyQuey(Value $toyType): array
-{
-  // QueryBuilderインスタンスを作成する
-  $queryBuilder = $this->createQueryBuilder();
-
-  // SELECTを設定する
-  $queryBuilder->select([
-                  'dog_toy.type AS dog_toy_type',
-                  'dog_toy.name AS dog_toy_name',
-                  'dog_toy.number AS number',
-                  'dog_toy.price AS dog_toy_price',
-                  'dog_toy.color_value AS color_value'
-                  ])
-
-                  // FROMを設定する．
-                  ->from('mst_dog_toy', 'dog_toy')
-
-                  // WHEREを設定する．この時，値はプレースホルダーとしておく．
-                  ->where('dog_toy.type = :type')
-
-                  // プレースホルダーに値を設定する．ここでは，引数で渡す『$toyType』とする．
-                  ->setParameter('type', $toyType);
-
-
-  // データベースから『$toyType』に相当するレコードを取得する．
-  return $queryBuilder->getConnection()
-
-                      // 設定したSQLとプレースホルダーを取得する．
-                      ->executeQuery($queryBuilder->getSQL(),
-                                      $queryBuilder->getParameters(),
-                      )
-    
-                      // レコードを取得する．
-                      ->fetchAll();
-
-}
-```
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_package.html
 
 <br>
 

@@ -355,9 +355,11 @@ $queryBuilder->getConnection()
 
 ### 読み出し系の操作
 
-#### ・プレースホルダー（プリペアードステートメント）
+#### ・プレースホルダー
 
-プリペアードステートメントともいう．SQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策にもなる
+プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策にもなる．SQLインジェクションについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_cyber_attacks.html
 
 **＊実装例＊**
 
@@ -374,7 +376,7 @@ class DogToyQuery
         // QueryBuilderインスタンスを作成．
         $queryBuilder = $this->createQueryBuilder();
         
-        // SQLの定義
+        // プリペアードステートメントの定義
         $queryBuilder->select([
           "dog_toy.type AS dog_toy_type",
           "dog_toy.name AS dog_toy_name",

@@ -650,7 +650,7 @@ class ExampleSpecification
 ```php
 <?php
 
-namespace App\Criteria;
+namespace App\Domain\Criteria;
 
 class XxxCriteria
 {

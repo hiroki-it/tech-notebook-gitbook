@@ -185,6 +185,10 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 #### ・PDOによるRDBの書き込み系の操作
 
+PDOでは書き込み処理に```exec```メソッド，読み出し処理に```query```メソッドを使用する．
+
+**＊実装例＊**
+
 ```php
 <?php
 try{
@@ -212,7 +216,7 @@ try{
 
 #### ・DoctrineによるRDBの書き込み系の操作
 
-詳しくは，以下のノートを参考にせよ．
+詳しくは，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_framework_symfony.html
 

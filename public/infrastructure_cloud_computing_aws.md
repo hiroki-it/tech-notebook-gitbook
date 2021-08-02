@@ -306,6 +306,12 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ヘッダー       | X-API-Token: test   | 波括弧，スペース，クオーテーションは不要．   |
 | リクエスト本文 | ```{test:"test"}``` | 改行タグやスペースが入り込まないようにする． |
 
+#### ・OpenAPI仕様のインポート
+
+以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
+
 <br>
 
 ### Private統合
@@ -431,15 +437,19 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 
 <br>
 
-### OpenAPI仕様のインポート
+### APIの設定
 
-以下のリンクを参考にせよ．
+#### ・エンドポイントタイプ
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
+
+| 種類         | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| リージョン   | API Gatewayのエンドポイントへのリクエストを，リージョン内の物理サーバで受け付ける． |
+| プライベート | API Gatewayのエンドポイントへのリクエストを，VPC内からのみ受け付ける． |
+| エッジ最適化 | API Gatewayのエンドポイントへのリクエストを，CloudFrontのエッジサーバで受け付ける． |
 
 <br>
-
-
 
 ## 04. Auto Scaling
 
@@ -708,7 +718,13 @@ CloudFront-Forwarded-Proto: https
 
 ### エッジロケーションとエッジサーバ
 
-#### ・エッジロケーションの全てのエッジサーバのIPアドレス
+#### ・Point Of Presence
+
+CloudFrontは世界中に設置される『Point Of Presence（エッジロケーション＋中間層キャッシュ）』にデプロイされる．
+
+参考：https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
+
+#### ・エッジロケーションにおける全エッジサーバのIPアドレス
 
 CloudFrontには，エッジロケーションの数だけエッジサーバがあり，各サーバにIPアドレスが割り当てられている．以下のコマンドで，全てのエッジサーバのIPアドレスを確認できる．
 
@@ -1452,6 +1468,14 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 4. タスク数が6つにスケールアウトし，CPU使用率40%に維持される．
 5. リクエスト数が減少し，CPU使用率が20%に低下する．
 6. タスク数が2つにスケールインし，CPU使用率40%に維持される．
+
+#### ・マイクロサービスアーキテクチャ風
+
+マイクロサービスアーキテクチャのアプリケーション群を稼働させる時，Kubernetesを使用し，またインフラとしてEKSを使用するのが基本である．ただし，モノリスなアプリケーションをECSサービスで分割し，Fargateで稼働させることにより，マイクロサービスアーキテクチャ風のインフラを構築できる．
+
+参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+
+![ecs-fargate_microservice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservice.png)
 
 <br>
 

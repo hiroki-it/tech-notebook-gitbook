@@ -185,7 +185,7 @@ REDIS_PORT=<Redisのポート>
 #### ・クラスの自動生成
 
 ```shell
-$ php artisan make:model <Eloquestモデル名>
+$ php artisan make:model <Eloquentモデル名>
 ```
 
 <br>
@@ -217,11 +217,11 @@ $ php artisan make:model <Eloquestモデル名>
 
 <br>
 
-### テーブル設計を元にしたEloquestモデル
+### テーブル設計を元にしたEloquentモデル
 
-#### ・Eloquestモデルの継承
+#### ・Eloquentモデルの継承
 
-Eloquestモデルを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
+Eloquentモデルを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
 
 **＊実装例＊**
 
@@ -255,7 +255,7 @@ use Illuminate\Database\Eloquent\Model;
 class Foo extends Model
 {
     /**
-     * Eloquestモデルと関連しているテーブル
+     * Eloquentモデルと関連しているテーブル
      *
      * @var string
      */
@@ -387,7 +387,7 @@ class Foo extends Model
 
 #### ・TIMESTAMP型カラムの定義
 
-Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquestモデルに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
+Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquentモデルに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
 
 **＊実装例＊**
 
@@ -404,7 +404,7 @@ class Foo extends Model
     const UPDATED_AT = "updated_data_time";
     
     /**
-     * Eloquestモデルのタイムスタンプを更新するかの指示します．
+     * Eloquentモデルのタイムスタンプを更新するかの指示します．
      *
      * @var bool
      */
@@ -498,7 +498,7 @@ class Foo extends Model
 }
 ```
 
-もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquestモデルにおいて必須である．
+もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquentモデルにおいて必須である．
 
 ```php
 <?php
@@ -526,7 +526,7 @@ class Foo extends Model
 
 #### ・セッター
 
-Laravelでは，プロパティを定義しなくても，Eloquestモデルからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
+Laravelでは，プロパティを定義しなくても，Eloquentモデルからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
 
 **＊実装例＊**
 
@@ -721,38 +721,53 @@ $filtered = $collection->first(function ($value, $key) {
 
 ### CRUDメソッドの返却値型と返却値
 
-#### ・Builderクラス
+#### ・CRUDメソッドを持つクラス
 
-Builderクラスが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Builderクラスのメソッドはpublic宣言されており，『```->```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
+Eloquentモデルを継承すると，以下のクラスからメソッドをコールできるようになる．Eloquentモデルにはより上位のメソッドが定義されていないことがあり，もし定義されていないものがコールされた場合，```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ，より上位クラスのメソッドをコールできる．どちらの方法でコールしても同じである．
+
+参考：https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
+
+| クラス | 名前空間                | ```__call```メソッドを経由してコールできるクラス |
+| :--------------- | :---------------------------- | :---------------------------------------- |
+| Queryビルダー | ```Illuminate\Database\Query\Builder``` | なし |
+| Eloquentビルダー | ```Illuminate\Database\Eloquent\Builder``` | Queryビルダー， |
+| Eloquentリレーション | ```Illuminate\Database\Eloquent\Relations\Relation``` | Queryビルダー，Eloquentビルダー， |
+| Eloquentモデル | ```Illuminate\Database\Eloquent\Model``` | Queryビルダー，Eloquentビルダー，Eloquentリレーション |
+
+#### ・Eloquentビルダー
+
+Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
-| Builderクラス |          返却値型          |               返却値               | 返却値の説明         |
-| :-----------: | :------------------------: | :--------------------------------: | :------------------- |
-|    create     |     collection／$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
-|     find      | collection／Builder／Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
-|    update     |            bool            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
-|    delete     |           mixed            |                 *                  | 結果の真偽値         |
+| CRUDメソッドの種類 |          返却値型          |               返却値               | 返却値の説明         |
+| :----------------: | :------------------------: | :--------------------------------: | :------------------- |
+|       create       |     collection／$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
+|        find        | collection／Builder／Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
+|       update       |            bool            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
+|       delete       |           mixed            |                 *                  | 結果の真偽値         |
 
-#### ・Eloquestモデル
+#### ・Eloquentモデル
 
-Eloquestモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．Eloquestモデルのメソッドはstatic宣言されており，『```:```』でコールできる．その他のメソッドについては，以下のリンクを参考にせよ．
+Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
-| Eloquestモデル | 返却値型 |         返却値          | 返却値の説明 |
-| :------------: | :------: | :---------------------: | :----------- |
-|     update     |   bool   | ```true```，```false``` | 結果の真偽値 |
-|      save      |   bool   | ```true```，```false``` | 結果の真偽値 |
-|     delete     |   bool   | ```true```，```false``` | 結果の真偽値 |
+| CRUDメソッドの種類 | 返却値型 |         返却値          | 返却値の説明 |
+| :----------------: | :------: | :---------------------: | :----------- |
+|       update       |   bool   | ```true```，```false``` | 結果の真偽値 |
+|        save        |   bool   | ```true```，```false``` | 結果の真偽値 |
+|       delete       |   bool   | ```true```，```false``` | 結果の真偽値 |
 
 <br>
 
-### CREATE（Builderクラス）
+## 04-03. Eloquentモデル／ビルダーによるCRUD
+
+### CREATE
 
 #### ・```create```メソッド
 
-INSERT文を実行する．Builderクラスが持つ```create```メソッドに挿入対象のカラムと値を設定する．または，Builderクラスの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquestモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．
+INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．この時，```create```メソッドに挿入対象のカラムと値を設定する．または，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquentモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
@@ -827,11 +842,11 @@ class FooDTO extends Model
 
 <br>
 
-### READ（Builderクラス）
+### READ
 
 #### ・```find```メソッド
 
-SELECT文を実行する．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquestモデルを返却する．```toArray```メソッドで配列型に変換できる．
+SELECT文を実行する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 
@@ -880,7 +895,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ・```all```メソッド
 
-SELECT文を実行する．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
+SELECT文を実行する．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
 
@@ -933,7 +948,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ・```with```メソッド
 
-二つのSELECT文を実行する．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．まず，親テーブルを読み出す．さらに，親テーブルのidを使用して子テーブルを読み出す．N+1問題を防げる．
+二つのSELECT文を実行する．Eloquentモデルには```with```メソッドがないため，代わりにEloquentビルダーが持つ```with```メソッドがコールされる．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．N+1問題を防げる．
 
 **＊実装例＊**
 
@@ -1055,11 +1070,11 @@ class DepartmentRepository extends Repository implements DomainDepartmentReposit
 
 <br>
 
-### UPDATE（Builderクラス）
+### UPDATE
 
-#### ・```update```メソッド
+#### ・```save```メソッド
 
-UPDATE文を実行する．Builderクラスが```find```メソッドで更新対象のModelを検索する．返却されたBuilderクラスの```fill```メソッドで，挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquestモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．．
+UPDATE文を実行する．Eloquentモデルの```save```メソッドをコールする．手順として，Eloquentビルダーの```fill```メソッドで，挿入対象のカラムと値を設定し，```save```メソッドを実行する．一方で，Eloquentモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．．
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
@@ -1124,48 +1139,13 @@ class FooDTO extends Model
 }
 ```
 
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    public function __construct(FooRepository $fooRepository)
-    {
-        $this->fooRepository = $fooRepository;
-    }
-    
-    /**
-     * 更新します．
-     *
-     * @param ArticleId $articleId
-     * @return Response
-     */
-    public function delete(FooId $fooId)
-    {
-        $foo = $this->articleRepository
-            ->findOneById($fooId);
-        
-        $this->fooRepository
-            ->delete($foo);
-
-        // バリデーション時にエラーが起こらなかった場合
-        return response()->view("foo")
-            ->setStatusCode(200);
-    }
-}
-```
-
 <br>
 
-### DELETE（Builderクラス）
+### DELETE
 
 #### ・```delete```メソッド（物理削除）
 
-DELETE文を実行する．Builderクラスの```find```メソッドで削除対象のModelを検索する．返却されたBuilderクラスの```delete```メソッドをコールし，自身を削除する．
+DELETE文を実行する．Eloquentモデルの```delete```メソッドを使用する．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```delete```メソッドをコールし，自身を削除する．
 
 **＊実装例＊**
 
@@ -1191,7 +1171,7 @@ class FooRepository extends Repository implements DomainFooRepository
     }   
   
     /**
-     * Fooを削除します．
+     * 削除します．
      *
      * @param Foo $foo
      * @return void
@@ -1225,7 +1205,7 @@ class FooController extends Controller
     }
     
     /**
-     * 更新します．
+     * 削除します．
      *
      * @param ArticleId $articleId
      * @return Response
@@ -1246,7 +1226,7 @@ class FooController extends Controller
 
 #### ・```delete```メソッドとSoftDeletesのTrait（論理削除）
 
-削除フラグを更新するUPDATE文を実行する．テーブルに対応するModelにて，SoftDeletesのTraitを読み込む．マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に，DataTimeクラスに変換できるようにしておく．
+削除フラグを更新するUPDATE文を実行する．Eloquentモデルの```delete```メソッドを使用する．手順として，テーブルに対応するModelにて，SoftDeletesのTraitを読み込む．マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に，DataTimeクラスに変換できるようにしておく．
 
 **＊実装例＊**
 
@@ -1396,7 +1376,7 @@ select * from `employees` where `department_id` = 3
 
 #### ・解決方法
 
-反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquestモデルのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
 
 ```php
 <?php
@@ -1422,7 +1402,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 #### ・データベースアクセス系
 
-Eloquestモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
+Eloquentモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
 
 **＊実装例＊**
 
@@ -1508,7 +1488,7 @@ trait HasEvents
 
 #### ・Traitを使用したイベントの発火
 
-Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquestモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．
+Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquentモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．
 
 **＊実装例＊**
 
@@ -4149,9 +4129,9 @@ $ php artisan make:resource <Resource名>
 
 EloquentモデルをJSONデータとしてレスポンスする時に，一旦，配列データに変換する必要がある．
 
-#### ・単一のEloquestモデルの配列化
+#### ・単一のEloquentモデルの配列化
 
-単一のEloquestモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquestモデル名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．Controllerにて，ResouceクラスにEloquestモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
+単一のEloquentモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquentモデル名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．Controllerにて，ResouceクラスにEloquentモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
 
 **＊実装例＊**
 
@@ -4201,17 +4181,17 @@ class FooController extends Controller
      */
     public function index(Request $request)
     {
-        // ここに，Eloquestモデルをデータベースから取得する処理
+        // ここに，Eloquentモデルをデータベースから取得する処理
         
-        // Eloquestモデルを渡す．
+        // Eloquentモデルを渡す．
         return new FooResource($foo);
     }
 }
 ```
 
-#### ・複数のEloquestモデル（Collection型）の配列化
+#### ・複数のEloquentモデル（Collection型）の配列化
 
-複数のEloquestモデル（Collection型）を配列に変換する．
+複数のEloquentモデル（Collection型）を配列に変換する．
 
 ```php
 // ここに実装例
@@ -4959,7 +4939,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // Eloquestモデル更新イベント
+        // Eloquentモデル更新イベント
         UpdatedModelEvent::class => [
             UpdatedModelListener::class,
         ],
@@ -5549,7 +5529,7 @@ $auth = auth();
 
 #### ・AuthManagerインスタンスの仕様
 
-AuthManagerクラスの```user```メソッドをコールする場合，AuthManagerにはこれがないため，```__call```メソッドがコールされる．ここで，```guard```メソッドが，Guardインターフェースの実装クラスを返却する．```auth.php```ファイルで選択したGuardドライバーによって，リゾルブされる実装クラスが決まり，例えば```token```ドライバーを選んだ場合は，TokenGuardクラスを返却する．```auth.php```ファイルの```providers```キーで設定されたEloquestモデルを認証対象として，TokenGuardクラスの```user```メソッドは認証済みのEloquestモデルを返却する．
+AuthManagerクラスの```user```メソッドをコールする場合，AuthManagerにはこれがないため，```__call```メソッドがコールされる．ここで，```guard```メソッドが，Guardインターフェースの実装クラスを返却する．```auth.php```ファイルで選択したGuardドライバーによって，リゾルブされる実装クラスが決まり，例えば```token```ドライバーを選んだ場合は，TokenGuardクラスを返却する．```auth.php```ファイルの```providers```キーで設定されたEloquentモデルを認証対象として，TokenGuardクラスの```user```メソッドは認証済みのEloquentモデルを返却する．
 
 参考：
 
@@ -5929,7 +5909,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquestモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquestモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを指定する．
+3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquentモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを指定する．
 
 ```php
 return [
@@ -5939,7 +5919,7 @@ return [
     "providers" => [
         "users" => [
             "driver" => "eloquent",
-            // Eloquestモデルは自由に指定できる．
+            // Eloquentモデルは自由に指定できる．
             "model"  => App\Domain\Auth\User::class,
         ],
 
@@ -5961,7 +5941,7 @@ return [
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
-5. 認証ガードを行ったEloquestモデルに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
+5. 認証ガードを行ったEloquentモデルに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
 
 **＊実装例＊**
 
