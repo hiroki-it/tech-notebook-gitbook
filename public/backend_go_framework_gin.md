@@ -4,6 +4,8 @@
 
 ### Bind
 
+#### ・処理
+
 リクエストメッセージからデータを取得し，構造体に関連づける．Cotent-TypeヘッダーのMIMEタイプに応じて，バインド関数をコールし分ける．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
@@ -11,6 +13,8 @@
 <br>
 
 ### BindJSON
+
+#### ・処理
 
 Content-TypeヘッダーのMIMEタイプが```application/json```であることが前提である．リクエストメッセージからJSONデータを取得し，構造体に関連づける．
 
@@ -20,13 +24,17 @@ Content-TypeヘッダーのMIMEタイプが```application/json```であること
 
 ### BindQuery
 
+#### ・処理
+
 クエリパラメータからデータを取得し，構造体に関連づける．
 
 <br>
 
 ### Get
 
-同一のリクエストにて```Set```関数でセットされたマップ型データから，値を取得する．値が存在しない場合は，第二返却値で```false```を返却する．
+#### ・処理
+
+同一のリクエストにて```Set```関数でセットされたマップ型データから，インターフェース型で値を取得する．値が存在しない場合は，第二返却値で```false```を返却する．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
@@ -34,11 +42,15 @@ Content-TypeヘッダーのMIMEタイプが```application/json```であること
 
 ### ShouldBindQuery（= ShouldBindWith）
 
+#### ・処理
+
 クエリパラメータからデータを取得し，指定したバインディングツールを使用して，構造体に関連づける．
 
 <br>
 
 ### JSON
+
+#### ・処理
 
 JSONデータとして，レスポンスを返信する．第二引数の引数型がインターフェースになっているため，様々なデータ型を渡せる．
 
@@ -67,13 +79,13 @@ c.JSON(200, &Foo{
 })
 ```
 
-
-
 <br>
 
 ### MustGet
 
-同一のリクエストにて```Set```関数でセットされたマップ型データから，値を取得する．値が存在しない場合は，ランタイムエラーとなる．
+#### ・処理
+
+同一のリクエストにて```Set```関数でセットされたマップ型データから，インターフェース型で値を取得する．値が存在しない場合は，ランタイムエラーとなる．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
 
@@ -81,15 +93,71 @@ c.JSON(200, &Foo{
 
 ### Param
 
+#### ・処理
+
 クエリパラメータからデータを取得する．この後，構造体に関連づける場合は，```BindQuery```関数を使用した方が良い．
 
 <br>
 
 ### Set
 
+#### ・処理
+
 当該のリクエストで利用できるマップ型データに，値を保存する．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
+
+#### ・注意点
+
+データ型を変換した値を```Set```関数で保存しないようにすることである．```Set```関数後に```Get```関数で取得される値は，元々のデータ型に関係なくインターフェース型に変換されてしまう．そのため，例えば，タイプID型として値を保存したとしても，```Get```関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう．
+
+**＊実装例＊**
+
+```go
+package middlewares
+
+import (
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
+
+// ConvertId パスパラメータのidのデータ型を変換します．
+func ConvertId() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		id, err := strconv.Atoi(ctx.Param("id"))
+
+		if err != nil {
+			_ = ctx.Error(err)
+			return
+		}
+
+		ctx.Set("id", id)
+
+		ctx.Next()
+	}
+}
+
+```
+
+```go
+package controller
+
+type UserController struct {
+	*interfaces.Controller
+	userInteractor *interactor.UserInteractor
+}
+
+func (uc *UserController) GetUser(ctx *gin.Context) {
+    
+    // インターフェース型になってしまう．
+	userId, ok := ctx.Get("id")
+
+	if !ok {
+		uc.SendErrorJson(ctx, 400, []string{"Parameters are not found."})
+		return
+	}
+```
 
 <br>
 

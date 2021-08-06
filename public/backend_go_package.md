@@ -8,15 +8,15 @@
 
 <br>
 
-## 02. 外部パッケージ
+## 02. aws-sdk-go-v2
 
-### aws-sdk-go-v2
-
-#### ・aws-sdk-go-v2とは
+### aws-sdk-go-v2とは
 
 参考：https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
 
-#### ・aws
+<br>
+
+### awsとは
 
 汎用的な関数が同梱されている．
 
@@ -35,7 +35,7 @@
 
 <br>
 
-### aws-lambda-go
+## 03. aws-lambda-go
 
 以下のリンクを参考にせよ．
 
@@ -43,114 +43,157 @@
 
 <br>
 
-### validator
+## 04. Gorm
 
-#### ・validatorとは
+### Gormとは
 
-#### ・バリデーションとエラーメッセージ
+Go製のORMである．
+<br>
 
-```go
-package validators
+### Create
 
-import (
-	"fmt"
+Gormモデルのフィールドに設定された値を元に，カラムを作成する．作成したカラムのプライマリキーを，構造体から取得できる．
 
-	"github.com/go-playground/validator"
-)
-
-type FoobarbazValidator struct {
-	Foo string `json:"foo" validate:"required"`
-	Bar string `json:"bar" validate:"required"`
-	Baz string `json:"baz" validate:"required"`
-}
-
-// NewValidator コンストラクタ
-func NewValidator() *Validator {
-
-	return &Validator{}
-}
-
-// Validate バリデーションを実行します．
-func (v *FoobarbazValidator) Validate() map[string]string {
-
-	err := validator.New().Struct(v)
-
-	var errorMessages = make(map[string]string)
-
-	if err != nil {
-		for _, err := range err.(validator.ValidationErrors) {
-			switch err.Field() {
-			// フィールドごとにマップ形式でバリデーションメッセージを構成します．
-			case "foo":
-				errorMessages["foo"] = v.stringValidation(err)
-				errorMessages["foo"] = v.requiredValidation(err)
-			case "bar":
-				errorMessages["bar"] = v.stringValidation(err)
-			case "baz":
-				errorMessages["baz"] = v.stringValidation(err)
-				errorMessages["baz"] = v.requiredValidation(err)
-			}
-		}
-	}
-
-	return errorMessages
-}
-
-// stringValidation 文字列型指定のメッセージを返却します．
-func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
-	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
-}
-
-// requiredValidation 必須メッセージを返却します．
-func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
-	return fmt.Sprintf("%s は必須です", err.Field())
-}
-```
+参考：https://gorm.io/docs/create.html#Create-Record
 
 ```go
-package main
+user := User{Name: "Jinzhu", Age: 18, Birthday: time.Now()}
 
-import (
-	"encoding/json"
-	"fmt"
-	"log"
+result := db.Create(&user) // pass pointer of data to Create
 
-	"github.com/foobarbaz_repository/validators"
-)
-
-func main() {
-	v := NewFoobarbazValidator()
-
-	// JSONを構造体にマッピングします．
-	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
-
-	if err != nil {
-		log.Println("JSONエンコードに失敗しました。")
-	}
-
-	// バリデーションを実行します．
-	errorMessages := v.Validate()
-
-	if len(errorMessages) > 0 {
-		// マップをJSONに変換します．
-		byteJson, _ := json.Marshal(errorMessages)
-		fmt.Printf("%#v\n", byteJson)
-	}
-
-	// エンコード結果を出力します．
-	fmt.Println("データに問題はありません．")
-}
+user.ID             // returns inserted data's primary key
+result.Error        // returns error
+result.RowsAffected // returns inserted records count
 ```
 
 <br>
 
-### testify
+### Read
 
-#### ・testifyとは
+#### ・全カラム取得
+
+参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-all-objects
+
+```go
+user := User{}
+
+// Get all records
+result := db.Find(&users)
+// SELECT * FROM users;
+
+result.RowsAffected // returns found records count, equals `len(users)`
+result.Error        // returns error
+```
+
+#### ・単一／複数カラム取得
+
+Gormモデルとプライマリキーを指定して，プライマリキーのモデルに関連づけられたカラムを取得する．
+
+参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-objects-with-primary-key
+
+```go
+user := User{}
+
+db.First(&user, 10)
+// SELECT * FROM users WHERE id = 10;
+
+db.First(&user, "10")
+// SELECT * FROM users WHERE id = 10;
+
+db.Find(&users, []int{1,2,3})
+// SELECT * FROM users WHERE id IN (1,2,3);
+```
+
+<br>
+
+### Update
+
+#### ・単一カラム更新（暗黙的）
+
+フィールドとは無関係に，渡された値を元にUPDATE分を実行する．
+
+参考：https://gorm.io/ja_JP/docs/update.html#Update-single-column
+
+```go
+// Update with conditions
+db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;
+
+// User's ID is `111`:
+db.Model(&user).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111;
+
+// Update with conditions and model value
+db.Model(&user).Where("active = ?", true).Update("name", "hello")
+// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;
+```
+
+#### ・複数カラム更新（暗黙的）
+
+Gormモデルのフィールドを暗黙的に指定して，複数のカラム値を更新する．または，フィールドとは無関係に，マップデータを元にUPDATE文を実行する．Gormモデルを使用した場合，フィールド値がゼロ値であると，これに関連づけられたカラム値の更新はスキップされてしまう．
+
+参考：https://gorm.io/ja_JP/docs/update.html#Updates-multiple-columns
+
+```go
+user := User{Id:111}
+
+// Update attributes with `struct`, will only update non-zero fields
+db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: false})
+// UPDATE users SET name='hello', age=18, updated_at = '2013-11-17 21:34:10' WHERE id = 111;
+
+// Update attributes with `map`
+db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": false})
+// UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;
+```
+
+#### ・複数カラム更新（明示的）
+
+Gormモデルのフィールドを明示的に指定して，複数のカラム値を更新する．フィールド値がゼロ値であっても，スキップされない．
+
+参考：https://gorm.io/ja_JP/docs/update.html#Update-Selected-Fields
+
+```go
+user := User{Id:111}
+
+// Select with Struct (select zero value fields)
+db.Model(&user).Select("Name", "Age").Updates(User{Name: "new_name", Age: 0})
+// UPDATE users SET name='new_name', age=0 WHERE id=111;
+
+// Select all fields (select all fields include zero value fields)
+db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
+// UPDATE users SET name='new_name', age=0 WHERE id=111;
+```
+
+#### ・全カラム更新
+
+Gormモデルのフィールドを暗黙的に全て指定して，全てのカラム値を強制的に更新する．
+
+参考：https://gorm.io/ja_JP/docs/update.html#Save-All-Fields
+
+```go
+user := User{Id:111}
+
+db.First(&user)
+
+user.Name = "jinzhu 2"
+user.Age = 100
+db.Save(&user)
+// UPDATE users SET name='jinzhu 2', age=100, birthday='2016-01-01', updated_at = '2013-11-17 21:34:10' WHERE id=111;
+```
+
+<br>
+
+## 05. testify
+
+### testifyとは
 
 モック，スタブ，アサーションメソッドを提供するライブラリ．Goではオブジェクトの概念がないため，モックオブジェクトとは言わない．モックとスタブについては，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+
+<br>
+
+### mock，assert
 
 #### ・モック化
 
@@ -304,7 +347,110 @@ func (suite *FooSuite) TestMethod() {
 
 <br>
 
-## 03. 外部パッケージの管理
+## 06. validator
+
+### validatorとは
+
+<br>
+
+### バリデーションとエラーメッセージ
+
+```go
+package validators
+
+import (
+	"fmt"
+
+	"github.com/go-playground/validator"
+)
+
+type FoobarbazValidator struct {
+	Foo string `json:"foo" validate:"required"`
+	Bar string `json:"bar" validate:"required"`
+	Baz string `json:"baz" validate:"required"`
+}
+
+// NewValidator コンストラクタ
+func NewValidator() *Validator {
+
+	return &Validator{}
+}
+
+// Validate バリデーションを実行します．
+func (v *FoobarbazValidator) Validate() map[string]string {
+
+	err := validator.New().Struct(v)
+
+	var errorMessages = make(map[string]string)
+
+	if err != nil {
+		for _, err := range err.(validator.ValidationErrors) {
+			switch err.Field() {
+			// フィールドごとにマップ形式でバリデーションメッセージを構成します．
+			case "foo":
+				errorMessages["foo"] = v.stringValidation(err)
+				errorMessages["foo"] = v.requiredValidation(err)
+			case "bar":
+				errorMessages["bar"] = v.stringValidation(err)
+			case "baz":
+				errorMessages["baz"] = v.stringValidation(err)
+				errorMessages["baz"] = v.requiredValidation(err)
+			}
+		}
+	}
+
+	return errorMessages
+}
+
+// stringValidation 文字列型指定のメッセージを返却します．
+func (v *FoobarbazValidator) stringValidation(err validator.FieldError) string {
+	return fmt.Sprintf("%s は文字列のみ有効です", err.Field())
+}
+
+// requiredValidation 必須メッセージを返却します．
+func (v *FoobarbazValidator) requiredValidation(err validator.FieldError) string {
+	return fmt.Sprintf("%s は必須です", err.Field())
+}
+```
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+
+	"github.com/foobarbaz_repository/validators"
+)
+
+func main() {
+	v := NewFoobarbazValidator()
+
+	// JSONを構造体にマッピングします．
+	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
+
+	if err != nil {
+		log.Println("JSONエンコードに失敗しました。")
+	}
+
+	// バリデーションを実行します．
+	errorMessages := v.Validate()
+
+	if len(errorMessages) > 0 {
+		// マップをJSONに変換します．
+		byteJson, _ := json.Marshal(errorMessages)
+		fmt.Printf("%#v\n", byteJson)
+	}
+
+	// エンコード結果を出力します．
+	fmt.Println("データに問題はありません．")
+}
+```
+
+<br>
+
+## 07. 外部パッケージの管理
 
 ### コマンド
 

@@ -617,9 +617,18 @@ GET http://www.foo.co.jp/users/12345?format=json
 
 #### ・POST／PUTでは処理後データをレスポンス
 
-POST／PUTのレスポンスでは，処理後のデータをレスポンスとして返信する．もし処理後のデータを返信しない場合，改めてGETリクエストを送信する必要があり，余分なAPIコールが必要になってしまう．
+POST／PUTメソッドでは，処理後のデータを200レスポンスとして返信する．もし処理後のデータを返信しない場合，改めてGETリクエストを送信する必要があり，余分なAPIコールが必要になってしまう．
 
 参考：https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
+
+#### ・DELETEではメッセージのみをレスポンス
+
+DELETEメソッドでは，メッセージのみを200レスポンスとして返信する．空ボディ204レスポンスとして返信してもよい．
+
+参考：
+
+- https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
+- https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
 
 #### ・ステータスコードは不要
 

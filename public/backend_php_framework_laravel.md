@@ -204,7 +204,7 @@ $ php artisan make:model <Eloquentモデル名>
 | ---------------- | ---------------- | ------------------------------------------------------------ | ---------------- | ------------------------------------------------------------ |
 | Active Record    | データベース駆動 | ・非常に強い．<br>・手順としてテーブル設計が先にあり，一つのドメインモデルが一つのテーブルに対応している．<br>・テーブル間のリレーションシップによって，ドメインモデル間の依存関係が決まる． | Eloquent         | DataMapperパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
 | Data Mapper      | データベース駆動 | ・弱い<br>・Entityマネージャを使用して，ドメインモデルをDBに永続化する． | Doctrine         | ActiveRecordパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
-| Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                  |                                                              |
+| Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                  | DB，RDMS，NoSQL，なんでもでもよい．                          |
 | なし             | なし             | 非常に弱い                                                   | DBファサード     |                                                              |
 
 #### ・メリットとデメリット
@@ -725,7 +725,10 @@ $filtered = $collection->first(function ($value, $key) {
 
 Eloquentモデルを継承すると，以下のクラスからメソッドをコールできるようになる．Eloquentモデルにはより上位のメソッドが定義されていないことがあり，もし定義されていないものがコールされた場合，```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ，より上位クラスのメソッドをコールできる．どちらの方法でコールしても同じである．
 
-参考：https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
+参考：
+
+- https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
+- https://qiita.com/mpyw/items/7c7e8dc665584122a275
 
 | クラス | 名前空間                | ```__call```メソッドを経由してコールできるクラス |
 | :--------------- | :---------------------------- | :---------------------------------------- |

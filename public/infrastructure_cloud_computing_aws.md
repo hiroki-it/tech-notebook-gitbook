@@ -663,9 +663,9 @@ TTL秒によるCacheの自動削除を待たずに，手動でCacheを削除で�
 CloudFrontからオリジンに送信されるリクエストメッセージの構造例を以下に示す．
 
 ```http
-GET /example/
+GET /foo/
 # リクエストされたドメイン名
-Host: example.com
+Host: foo.com
 User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
 Authorization: Bearer <Bearerトークン>
 X-Amz-Cf-Id: XXXXX
@@ -823,6 +823,16 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 
 使用しているAWSリソースの状態をメトリクス化し，内部監視できる．
 
+#### ・名前空間，メトリクス，ディメンションとは
+
+データ収集の対象とする領域のこと．
+
+![名前空間，メトリクス，ディメンション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前空間，メトリクス，ディメンション.png)
+
+CloudWatchメトリクス上では，以下のように確認できる．
+
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
+
 #### ・SLIに関連するメトリクス
 
 | 指標                           | 関連するメトリクス                                           | 補足                                                         |
@@ -876,10 +886,6 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
 ```
 
-#### ・名前空間，メトリクス，ディメンションとは
-
-![名前空間，メトリクス，ディメンション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前空間，メトリクス，ディメンション.png)
-
 <br>
 
 ### CloudWatchエージェント
@@ -911,12 +917,12 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
         "collect_list": [
           {
             "file_path": "/var/log/nginx/error.log",
-            "log_group_name": "/example-www/var/log/nginx/error_log",
+            "log_group_name": "/foo-www/var/log/nginx/error_log",
             "log_stream_name": "{instance_id}"
           },
           {
             "file_path": "/var/log/php-fpm/error.log",
-            "log_group_name": "/example-www/var/log/php-fpm/error_log",
+            "log_group_name": "/foo-www/var/log/php-fpm/error_log",
             "log_stream_name": "{instance_id}"
           }
         ]
@@ -4208,9 +4214,40 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-### 使用できるAWSサービス
+### AWSリソースのAPIコール
+
+#### ・APIコールできるリソース
 
 参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+
+### ・Lambda
+
+**＊実装例＊**
+
+```json
+{
+  "StartAt": "Call Lambda",
+  "States": {
+    "Call Lambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:xxxxx:foo-function:1"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "<リトライの対象とするエラー>"
+          ],
+          "MaxAttempts": 0
+        }
+      ],
+      "End": true,
+      "Comment": "The state that call Lambda"
+    }
+  }
+}
+```
 
 
 
@@ -4555,7 +4592,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 『全てのルール』または『個別のルール』におけるアクセス許可／拒否の履歴を確認できる．ALBやCloudFrontのアクセスログよりも解りやすく，様々なデバッグに役立つ．ただし，３時間分しか残らない．一例として，CloudFrontにアタッチしたWAFで取得できるログを以下に示す．
 
 ```http
-GET /example/
+GET /foo/
 # ホスト
 Host: example.jp
 Upgrade-Insecure-Requests: 1

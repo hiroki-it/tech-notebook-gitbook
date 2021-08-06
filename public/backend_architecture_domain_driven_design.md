@@ -149,13 +149,52 @@
 
  <br>
 
-## 03. プレゼンテーション層
+## 03. インターフェース層
 
 ### コントローラ
 
 #### ・コントローラとは
 
-ユーザインターフェース層から出力されたデータのフォーマットを検証し，ユースケース層に入力できる構造に変換する．また反対に，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．この時，ユースケース層を超えてドメイン層に依存しないようにする．他に，『書式変換』，『表示する文言の生成』，『レンダリング』，『JSON構造の定義』，『バリデーション』などのロジックもコントローラの責務である．コントローラのこれらの責務を，デザインパターンとして切り分けると，よりスッキリする．
+インプット／アウトプットの処理時で，責務を以下のように分類できる．デザインパターンとして切り分けると，よりスッキリする．
+
+| インプット時／アウトプット時 | 責務                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| インプット                   | インフラ層のルーターから渡されたリクエストのデータで，値がAPI仕様（必須，書式，など）と照らし合わせたバリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
+|                              | インフラ層のルーターからリクエストのデータを，ユースケース層のインターラクターに渡せるインプットデータに変換する． | インプットデータ生成処理で，ドメイン層への依存が必要になる．インプットデータ生成処理を切り分け，ユースケース層に置くと，コントローラがドメイン層に依存することを防げる． |
+| アウトプット                 | ユースケース層のインターラクターから渡されたプレゼンターを，クライアントに返信する． |                                                              |
+
+<br>
+
+### プレゼンター
+
+#### ・プレゼンターとは
+
+ユースケース層から出力されたアウトプットデータを，クライアントに返信するレスポンス構造に変換する．注意点として，インターフェース層に存在するが，ユースケース層のインターラクターから使用される．これにより，インターラクターの処理後のデータに対してコントローラで何か手を加えてしまうことを防げる．
+
+**＊実装例＊**
+
+インターフェース層に渡すアウトプットデータを連想配列に変換する．
+
+```php
+<?php
+    
+namespace App\Interface\Foo\Presenters;
+    
+class FooPresenter
+{
+   /**
+    * オブジェクトを連想配列に詰め替えます．
+    */
+    public function convertToArray(FooOutput $fooOutput)
+    {
+        $response = [];
+            
+        $response["id"] = $fooOutput->id;
+        $response["name"] = $fooOutput->name;
+        $response["email"] = $fooOutput->email;
+    }
+} 
+```
 
 <br>
 
@@ -163,7 +202,7 @@
 
 #### ・Validationパターンとは
 
-デザインパターンの一つ．責務として，プレゼンテーション層にて，ユーザインターフェース層から出力されたデータのフォーマットを検証する．
+デザインパターンの一つ．インターフェース層のバリデーションでは，データの必須や書式を検証する．
 
 **＊実装例＊**
 
@@ -172,6 +211,8 @@
 ```php
 <?php
 
+namespace App\Interface\Foo\Validators;
+    
 // Validationのライブラリ
 use Respect\Validation\Validator;
 
@@ -197,59 +238,35 @@ class FormatValidator
 
 <br>
 
-### Converterパターン
-
-#### ・Converterパターンとは
-
-デザインパターンの一つ．責務として，プレゼンテーション層にて，ユースケース層から出力されたデータを，ユーザインターフェース層に入力できる構造に変換する．
-
-**＊実装例＊**
-
-ユーザインターフェース層に渡すエンティティを連想配列に変換する．
-
-```php
-<?php
-    
-namespace App\Converter;
-    
-class Converter
-{
-   /**
-    * オブジェクトを連想配列に詰め替えます．
-    */
-    public function convertToArray(XxxEntity $xxxEntity)
-    {
-        $xxxArray["id"] = $xxxEntity->id;
-        $xxxArray["name"] = $xxxEntity->name;
-        $xxxArray["email"] = $xxxEntity->email;
-    }
-}  
-```
-
-<br>
-
 ## 04. ユースケース層（アプリケーション層）
 
-### ユースケース
+### インターラクター
 
-#### ・ユースケースとは
+#### ・インターラクターとは
 
-ドメイン層のロジックを組み合わせて，ユーザの要求に対するシステムの振舞（ユースケース）を具現化する．また，インフラストラクチャ層のロジックを組み合わせて，データを永続化する．ユースケースごとに異なるUseCaseクラスを定義する方法と，全てのユースケースを責務としてもつUseCaseクラスを定義する方法がある．
+インプット／アウトプットの処理時で，責務を以下のように分類できる．ユースケースごとに異なるInteractorクラスを定義する方法と，全てのユースケースを責務としてもつInteractorクラスを定義する方法がある．また，Interactorインターフェースを用意して，インターフェース層のコントローラはこれを経由して，実装Interactorクラスのメソッドをコールするようにする．
+
+| インプット時／アウトプット時 | 責務                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| インプット                   | プレゼンテーション層のコントローラから渡されたデータで，値がシステム上のルールと照らし合わせてバリデーションを実行する． | データの値がシステム上あり得ないかどうかを検証する．ビジネス上あり得ない値かどうかはドメイン層にSpecificationパターンとして実装する． |
+|                              | ドメイン層のメソッドを組み合わせて，ユーザの要求に対するシステムの振舞（ユースケース）を具現化する． |                                                              |
+|                              | プレゼンテーション層のコントローラから渡されたデータを，ドメイン層のインターフェースリポジトリに渡せるインプットデータに変換する． |                                                              |
+| アウトプット                 | ドメイン層のインターフェースリポジトリに渡されたデータを，インターフェース層のプレゼンターに渡せるアウトプットデータに変換する． |                                                              |
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\UseCase;        
+namespace App\UseCase\Foo\Interactors;
     
 /**
- * 受注作成ユースケース
+ * Fooドメインモデル作成ユースケース
  * ※ユースケースごとにクラスを定義する方法
  */
-class OrdersCreateUseCase
+class FooCreateInteractor
 {
-    public function createOrders()
+    public function createFoo()
     {
     
     }
@@ -259,30 +276,30 @@ class OrdersCreateUseCase
 ```php
 <?php
 
-namespace App\UseCase;        
+namespace App\UseCase\Foo\Interactors;
     
 /**
- * 受注ユースケース
+ * Fooドメインモデルユースケース
  * ※CURD全てのユースケースを，一つのクラスを定義する方法
  */
-class OrdersUseCase
+class FooInteractor
 {
-    public function createOrders()
+    public function createFoo()
     {
     
     }
     
-    public function readOrders()
+    public function readFoo()
     {
     
     }
     
-    public function updateOrders()
+    public function updateFoo()
     {
     
     }
     
-    public function deleteOrders()
+    public function deleteFoo()
     {
     
     }
@@ -308,7 +325,7 @@ Slackへの通知処理をアプリケーションサービスとして切り分
 ```php
 <?php
 
-namespace App\Service;
+namespace App\UseCase\Foo\Services;
 
 class SlackNotificationService
 {
@@ -331,13 +348,13 @@ class SlackNotificationService
 ```php
 <?php
 
-namespace App\UseCase;
+namespace App\UseCase\Foo\Services;
 
 use App\Service\SlackNotificationService;
 
-class ExampleUseCase
+class FooInteractor
 {
-    public function example()
+    public function foo()
     {
         $message = new Message(/* メッセージに関するデータを渡す */)
         $slackNotificationService = new SlackNotificationService($message)
@@ -388,7 +405,7 @@ Type Codeは概念的な呼び名で，実際は，標準的なライブラリ�
 ```php
 <?php
 
-namespace App\Domain\ValueObject\Type;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 色のタイプコード
@@ -450,7 +467,7 @@ class ColorType
 ```php
 <?php
 
-namespace App\Domain\ValueObject\Type;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 性別のタイプコード
@@ -507,7 +524,7 @@ class SexType
 ```php
 <?php
 
-namespace App\Domain\ValueObject\Type;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 年月日のタイプコード
@@ -612,20 +629,20 @@ class YmdType extends Type
 
 #### ・Specificationパターンとは
 
-デザインパターンの一つ．ビジネスルールの検証，検索条件オブジェクトの生成は、エンティティや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
+デザインパターンの一つ．責務として，バリデーション，検索条件インプットデータを持つ．これらをエンティティや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
 
-#### ・入力データに対するビジネスルールのValidation
+#### ・ビジネスルールのバリデーション
 
-真偽値メソッド（```isXxxx```メソッド）のように，オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のための用意ができているかを調べる処理する．
+真偽値メソッド（```isFoo```メソッド）のように，オブジェクトのデータを検証して、仕様を要求を満たしているか、何らかの目的のための用意ができているかを調べる処理する．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\Specification;
+namespace App\Domain\Foo\Specification;
 
-class ExampleSpecification
+class FooSpecification
 {
     /**
      * ビジネスルールを判定します．
@@ -641,18 +658,18 @@ class ExampleSpecification
 } 
 ```
 
-#### ・検索条件オブジェクトの生成
+#### ・検索条件インプットデータ
 
-リクエストのパスパラメータとクエリパラメータを引数として，検索条件のオブジェクトを生成する．ビジネスルールのValidationを行うSpecificationクラスと区別するために，Criteriaオブジェクトという名前としても用いられる．
+リクエストのパスパラメータとクエリパラメータを引数として，検索条件のオブジェクトを生成する．ビジネスルールのバリデーションを行うSpecificationクラスと区別するために，Criteriaオブジェクトという名前としても用いられる．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\Domain\Criteria;
+namespace App\Domain\Foo\Criterion;
 
-class XxxCriteria
+class FooCriteria
 {
     private $id;
 
@@ -718,14 +735,14 @@ class XxxCriteria
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\Entities;
 
-use App\Domain\Core\Entity;
-use App\Domain\Core\Id;
-use App\Domain\ValueObject\ToyName;
-use App\Domain\ValueObject\Number;
-use App\Domain\ValueObject\PriceVO;
-use App\Domain\ValueObject\ColorVO;
+use App\Domain\Entity;
+use App\Domain\Id;
+use App\Domain\Foo\ValueObjects\ToyName;
+use App\Domain\Foo\ValueObjects\Number;
+use App\Domain\Foo\ValueObjects\PriceVO;
+use App\Domain\Foo\ValueObjects\ColorVO;
 
 /**
  * 犬用おもちゃのエンティティ
@@ -822,7 +839,7 @@ class DogToy extends Entity
 ```php
 <?php
 
-namespace App\Domain\Core;
+namespace App\Domain;
 
 /**
  * エンティティ抽象クラス
@@ -869,7 +886,7 @@ PHPでは不要であるが，参考までに，PHPで実装した．
 ```php
 <?php
 
-namespace App\Domain\Core;
+namespace App\Domain;
 
 /**
  * ID抽象クラス
@@ -947,14 +964,14 @@ abstract class Id
 
 #### ・金額
 
-金額データの計算をUseCase内処理やエンティティ内メソッドで行うのではなく，金額計算を行う値オブジェクトのメソッドとして分割する．
+金額データの計算をInteractor内処理やエンティティ内メソッドで行うのではなく，金額計算を行う値オブジェクトのメソッドとして分割する．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 金額の値オブジェクト
@@ -1034,14 +1051,14 @@ class MoneyVO extends ValueObject
 
 #### ・所要時間
 
-所要時間データの計算をUseCaseクラス内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
+所要時間データの計算をInteractorクラス内処理やエンティティ内メソッドで行うのではなく，所要時間計算を行う値オブジェクトのメソッドとして分割する．
 
 **＊実装例＊**
 
 ```php
 <?php
     
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 所要時間の値オブジェクト
@@ -1117,7 +1134,7 @@ class RequiredTime extends ValueObject
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 住所の値オブジェクト
@@ -1203,7 +1220,7 @@ class Address extends ValueObject
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 氏名クラスの値オブジェクト
@@ -1290,12 +1307,12 @@ class Name extends ValueObject
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 値オブジェクト
  */
-class ExampleVO extends ValueObject
+class FooVO extends ValueObject
 {
     /**
      * @var 
@@ -1313,7 +1330,7 @@ class ExampleVO extends ValueObject
     private $propertyC;
 
     /**
-     * ExampleVO constructor.
+     * FooVO constructor.
      *
      * @param $propertyA
      * @param $propertyB
@@ -1387,7 +1404,7 @@ $test02 = new Test02("新しいデータ02の値");
 ```php
 <?php
 
-namespace App\Domain\ValueObject;   
+namespace App\Domain\Foo\ValueObjects;   
 
 /**
  * 連絡先メールアドレスの値オブジェクト
@@ -1434,7 +1451,7 @@ final class ContactMail extends ValueObject
 ```php
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\Domain\Foo\ValueObjects;
 
 /**
  * 支払情報の値オブジェクト
@@ -1539,12 +1556,12 @@ abstract class ValueObject
 ```php
 <?php
 
-namespace App\Domain\Entity;
+namespace App\Domain\Foo\Entities;
 
-use App\Domain\Core\Entity;
-use App\Domain\Core\Id;
-use App\Domain\Entity\DogToy;
-use App\Domain\Entity\DogFood;
+use App\Domain\Entity;
+use App\Domain\Id;
+use App\Domain\Foo\Entities\DogToy;
+use App\Domain\Foo\Entities\DogFood;
 
 /**
  * 犬用注文エンティティ
@@ -1638,13 +1655,15 @@ class DogOrder
 
 ![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Repository.png)
 
+#### ・リポジトリパターンとは
+
+参考：https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html
+
 #### ・リポジトリ（実装クラス）とは
 
 リポジトリパターンを使用する．責務として，DBに対してデータの書き込み／読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として構成する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html
-
-参考：
 
 #### ・リポジトリ（インターフェース）とは
 
@@ -1655,7 +1674,7 @@ class DogOrder
 ```php
 <?php
 
-namespace App\Domain\Repository;    
+namespace App\Domain\Foo\Repositories;    
     
 interface DogToyRepository
 {
@@ -1700,9 +1719,9 @@ CREATE処理のため，DoctrineのQueryBuilderクラスの```insert```メソッ
 ```php
 <?php
     
-namespace App\Infrastructure\Repositories;    
+namespace App\Infrastructure\Foo\Repositories;    
     
-use App\Domain\Entity\DogToy;
+use App\Domain\Foo\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
@@ -1736,9 +1755,9 @@ UPDATE処理のため，DoctrineのQueryBuilderクラスの```update```メソッ
 ```php
 <?php
 
-namespace App\Infrastructure\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Entity\DogToy;
+use App\Domain\Foo\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
@@ -1771,10 +1790,10 @@ DELETE処理（論理削除）のため，DoctrineのQueryBuilderクラスの```
 ```php
 <?php
 
-namespace App\Infrastructure\Repositories;    
+namespace App\Infrastructure\Foo\Repositories;    
 
 use App\Constants\FlagConstant;
-use App\Domain\Entity\DogToy;
+use App\Domain\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
@@ -1824,10 +1843,10 @@ READ処理のため，DoctrineのQueryBuilderクラスの```select```メソッ�
 ```php
 <?php
     
-namespace App\Infrastructure\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
 use App\Constants\FlagConstant;
-use App\Domain\Entity\DogToy;
+use App\Domain\Foo\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
@@ -1905,11 +1924,11 @@ class DogToyRepository
 ```php
 <?php
     
-namespace App\Infrastructure\Factories;
+namespace App\Infrastructure\Foo\Factories;
 
-use App\Domain\Entity\DogToy;
-use App\Domain\Entity\DogFood;
-use App\Domain\Entity\DogCombo;
+use App\Domain\Foo\Entities\DogToy;
+use App\Domain\Foo\Entities\DogFood;
+use App\Domain\Foo\Entities\DogCombo;
 
 /**
  * 犬用コンボファクトリ
@@ -1961,7 +1980,7 @@ class DogComboFactory
 
 <br>
 
-### プレゼンテーション層
+### インターフェース層
 
 #### ・例外
 
@@ -1979,7 +1998,7 @@ final class PresentationException extends Exception
 #### ・例外
 
 ```php
-final class UseCaseException extends Exception
+final class InteractorException extends Exception
 {
     
 }
@@ -2010,4 +2029,3 @@ final class InfrastructureException extends Exception
     
 }
 ```
-
