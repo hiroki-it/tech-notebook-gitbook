@@ -1691,12 +1691,36 @@ class DogOrder
 namespace App\Domain\Foo\Repositories;    
     
 interface FooRepository
-{
+{    
     /**
-     * IDを元に
+     * ドメインモデルを作成します．
      */
-    function findById(FooId $fooId): Foo;
+    function create(Foo $foo): Foo;
     
+    /**
+     * IDを元にドメインモデルを取得します．
+     */
+    function findById(FooId $fooId): Foo; // ドメインモデルを単体で返却
+    
+    /**
+     * 全てのドメインモデルを取得します．
+     */
+    function findAll(): array; // ドメインモデルを配列で返却
+
+    /**
+     * 検索条件を元に全てのドメインモデルを取得します．
+     */
+    function findAllByCriteria(FooCriteria $fooCriteria): array; // ドメインモデルを配列で返却
+  
+    /**
+     * ドメインモデルを更新します．
+     */
+    function update(Foo $foo): Foo; // 更新後のドメインモデルを返却
+    
+    /**
+     * ドメインモデルを削除します．
+     */
+    function delete(FooId $fooId): bool; // 更新後の成否を返却
 }
 ```
 
@@ -1745,9 +1769,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ルートエンティティを書き込みます．
+     * ドメインモデルを作成します．
      */
-    public function create(DogToy $dogToy)
+    public function create(DogToy $dogToy): DogToy
     {
         // クエリビルダ生成
         $query = $this->createQueryBuilder();
@@ -1781,9 +1805,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ルートエンティティを書き込みます．
+     * ドメインモデルを更新します．
      */
-    public function create(DogToy $dogToy)
+    public function update(DogToy $dogToy): DogToy
     {
         // クエリビルダ生成
         $query = $this->createQueryBuilder();
@@ -1796,6 +1820,8 @@ class DogToyRepository
             ->set("dog_toy.price", $dogToy->getPriceVO()->value())
             ->set("dog_toy.color", $dogToy->getColorVO()->value())
             ->where("dog_toy.id", $dogToy->getId()->value();
+                    
+        return $query->getResult();                    
     }
 }
 ```
@@ -1817,9 +1843,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {
     /**
-     * ルート Entityを書き込みます．
+     * ドメインモデルを削除します．
      */
-    public function create(DogToy $dogToy)
+    public function delete(ToyId $toyId): bool
     {
         // クエリビルダ生成
         $query = $this->createQueryBuilder();
@@ -1829,6 +1855,8 @@ class DogToyRepository
             // 論理削除
             ->set("dog_toy.is_deleted", FlagConstant::IS_ON)
             ->where("dog_toy.id", $dogToy->getId()->value();
+                    
+        return $query->getResult();
     }
 }
 ```
@@ -1870,23 +1898,9 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class DogToyRepository
 {   
      /**
-     * ルートエンティティのセットを生成します．
+     * ドメインモデルを全て取得します．
      */
-    public function findAllDogToys(): array
-    {
-        $dogToys = [];
-        
-        foreach($this->fetchAllDogToy() as $fetched){
-            $dogToys[] = $this->aggregateDogToy($fetched);
-        }
-        
-        return $dogToys;
-    }
-    
-    /**
-    * Entityを全て読み出します．
-    */
-    private function fetchAllDogToy(): array
+    public function findAll(): array
     {
         // クエリビルダ生成
         $query = $this->createQueryBuilder();
@@ -1905,20 +1919,28 @@ class DogToyRepository
         ->getQuery();    
         
         // SQLを実行する．
-        $query->getResult();
+        $entities = $query->getResult();        
+        
+        $dogToys = [];
+        foreach($entities as $entity){
+            // 取得したエンティティをドメインモデルに変換する．
+            $dogToys[] = $this->toDogToy($entity);
+        }
+        
+        return $dogToys;
     }
-
+    
     /**
-     * ルートエンティティを生成します．
+     * ドメインモデルに変換します．
      */
-    private function aggregateDogToy(array $fetched): DogToy
+    private function toDogToy(array $entity): DogToy
     {
         $dogToy = new DogToy(
-            $fetched["dog_toy_id"],
-            $fetched["dog_toy_name"],
-            $fetched["dog_toy_type"],
-            new PriceVO($fetched["dog_toy_price"],
-            new ColorVO($fetched["dog_toy_color"]
+            new DogId($entity["dog_toy_id"]),
+            new DogName($entity["dog_toy_name"]),
+            new DogToyType($entity["dog_toy_type"]),
+            new PriceVO($entity["dog_toy_price"],
+            new ColorVO($entity["dog_toy_color"]
         );
         
         return $dogToy;
