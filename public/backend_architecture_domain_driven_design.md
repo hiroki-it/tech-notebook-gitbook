@@ -49,9 +49,9 @@
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
 
 <br>
 
@@ -138,7 +138,7 @@
 
 クラス図よりも先に作成し，オブジェクト間のAggregation（集約）の粒度を明確にする．ユースケース図から『名詞』を抽出し，これをドメインモデルとして，クラス図と同じようにドメインモデル間の関係を表現する．ただし，クラス図とは異なり，クラスのメソッドは省略し，保持するデータのみに注目する．ドメインモデルを日本語で表現してよい．クラス図におけるクラス間の関係については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
 
 ドメインモデル図の作成手順については，以下を参考にせよ．
 
@@ -308,7 +308,7 @@ class FooInteractor
 
 #### ・ユースケース図
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_analysis_design_programming.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
 
 <br>
 
@@ -1625,13 +1625,15 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
 
 <br>
 
 ### トランザクションとの関係性
 
 インフラストラクチャ層のリポジトリでは，ルートエンティティの単位で，データの書き込み／読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
+
+参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
@@ -1641,11 +1643,14 @@ class DogOrder
 
 #### ・DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
 
 #### ・依存性を逆転させる方法
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_object_orientation_class.html
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+- https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
@@ -1658,6 +1663,15 @@ class DogOrder
 #### ・リポジトリパターンとは
 
 参考：https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html
+
+#### ・他の類似するデザインパターンとの比較
+
+| デザインパターン | 駆動の種類       | ドメインモデルとテーブルの関連度合い                         | 採用ライブラリ例                                             | 適所                                                         | 補足                                                         |
+| ---------------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Active Record    | データベース駆動 | ・非常に強い．<br>・手順としてテーブル設計が先にあり，一つのドメインモデルが一つのテーブルに対応している．<br>・テーブル間のリレーションシップによって，ドメインモデル間の依存関係が決まる． | ・Eloquent（PHP）<br>・Active Record（Ruby）<br>・Hibernate（Java） | ビジネスロジックが複雑でないアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
+| Data Mapper      | ドメイン駆動     | ・弱い<br>・Entityマネージャを使用して，ドメインモデルをDBに永続化する． | Doctrine                                                     | ビジネスロジックが複雑なアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | ActiveRecordパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
+| Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                                                              | ビジネスロジックが複雑なアプリケーション                     | DB，RDMS，NoSQL，なんでもでもよい．                          |
+| なし             | なし             | 非常に弱い                                                   | DBファサード                                                 |                                                              |                                                              |
 
 #### ・リポジトリ（実装クラス）とは
 
@@ -1676,12 +1690,13 @@ class DogOrder
 
 namespace App\Domain\Foo\Repositories;    
     
-interface DogToyRepository
+interface FooRepository
 {
     /**
-     * 具象メソッドはインフラストラクチャ層のリポジトリに実装．
+     * IDを元に
      */
-    function findAllDogToys();
+    function findById(FooId $fooId): Foo;
+    
 }
 ```
 

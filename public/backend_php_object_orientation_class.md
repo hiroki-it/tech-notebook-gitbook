@@ -636,7 +636,7 @@ class Mammal implements Animal
 <?php
   
 // 継承元クラス
-class Example
+class Foo
 {
     private $value1;
   
@@ -651,7 +651,7 @@ class Example
 <?php
   
 // 継承先クラス
-class SubExample extends Example
+class SubFoo extends Foo
 {
     public $subValue;
   
@@ -665,11 +665,11 @@ class SubExample extends Example
 ```php
 <?php
   
-$subExample = new SubExample;
+$subFoo = new SubFoo;
 
-// SubExampleクラスにはgetValue()は無い．
-// 継承元まで辿り，Exampleクラスからメソッドがコールされる（クラスチェーン）．
-echo $subExample->getValue();
+// SubFooクラスにはgetValue()は無い．
+// 継承元まで辿り，Fooクラスからメソッドがコールされる（クラスチェーン）．
+echo $subFoo->getValue();
 ```
 
 <br>
@@ -681,9 +681,9 @@ echo $subExample->getValue();
 ```php
 <?php
   
-abstract class Example 
+abstract class Foo 
 {
-    public function example()
+    public function foo()
     {
         // 処理内容;
     }
@@ -693,12 +693,12 @@ abstract class Example
 ```php
 <?php
   
-class SubExample extends Example
+class SubFoo extends Foo
 {
-    public function subExample()
+    public function subFoo()
     {
         // 継承元の静的メソッドを参照．
-        $example = parent::example();
+        $foo = parent::foo();
     } 
 }
 ```
@@ -718,9 +718,9 @@ class SubExample extends Example
 ```php
 <?php
   
-trait ExampleTrait
+trait FooTrait
 {
-    public function example()
+    public function foo()
     {
         return "Hello World";
     }
@@ -730,13 +730,13 @@ trait ExampleTrait
 ```php
 <?php
 
-class Example
+class Foo
 {
-    use ExampleTrait;
+    use FooTrait;
 }
 
-$exmaple = new Example();
-$example->example(); // Hello World
+$exmaple = new Foo();
+$foo->foo(); // Hello World
 ```
 
 #### ・マジックメソッドを禁止するTrait
@@ -814,13 +814,13 @@ trait UnsupportedMagicMethodTrait
 ```php
 <?php
   
-class Example1
+class Foo
 {
     const VALUE = "これは定数です．";
   
     public function className()
     {
-        return "example1メソッドです．";
+        return "fooメソッドです．";
     }
 }
 ```
@@ -829,13 +829,13 @@ class Example1
 <?php
 
 // 外部ファイル名を指定して，クラスを読み込む．
-require_once("Example1.php");
+require_once("Foo.php");
 
-class Example2
+class Bar
 {
     public function method()
     {
-        $e1 = new Example1:
+        $e1 = new Foo:
         $e1->className();
     }
 }
@@ -847,14 +847,14 @@ class Example2
 <?php
   
 // 外部ファイル名を指定して，クラスを読み込む．
-require_once("Example1.php");
+require_once("Foo.php");
 
-class Example2
+class Bar
 {
     public function method()
     {    
-        // Example1クラスの定数を出力．
-        return Example1::VALUE;
+        // Fooクラスの定数を出力．
+        return Foo::VALUE;
     }
 }
 ```
@@ -896,16 +896,16 @@ PHP```5.3```以降では，外部ファイルとして定義されたクラス�
 <?php
   
 // 名前空間を定義．
-namespace Domain\Examples;
+namespace Domain\Foo;
 
-class Example1
+class Foo
 {
     // 定数を定義．
     const VALUE = "これは定数です．";
   
     public function method1()
     {
-        return "example1メソッドです．";
+        return "fooメソッドです．";
     }
 }
 ```
@@ -913,16 +913,16 @@ class Example1
 ```php
 <?php
 
-namespace Domain\Examples;
+namespace Domain\Foo;
 
 // namespaceを指定して，外部ファイルのクラスを読み込む．
-use Domain\Example1;
+use Domain\Foo;
 
-class Example2
+class Bar
 {
     public function method2()
     {
-        $e1 = new Example1:
+        $e1 = new Foo:
         $e1->method1();
     }
 }
@@ -935,17 +935,17 @@ class Example2
 ```php
 <?php
 
-namespace Domain\Examples;
+namespace Domain\Foo;
 
 // namespaceを指定して，外部ファイルのクラスを読み込む．
-use Domain\Example1;
+use Domain\Foo;
 
-class Example2
+class Bar
 {
     public function method()
     {    
-        // Example1クラスの定数を出力．
-        echo Example1::VALUE;
+        // Fooクラスの定数を出力．
+        echo Foo::VALUE;
     }
 }
 ```
@@ -1362,8 +1362,8 @@ class Sample
 {
     public function __construct($container)
     {
-        $this->logger            = $container["xxx.logger"];
-        $this->notification      = $container["yyy.notification"];
+        $this->logger            = $container["foo.logger"];
+        $this->notification      = $container["bar.notification"];
     }
 }
 ```
@@ -1405,6 +1405,8 @@ $sample = new Sample($container);
 #### ・DIPを満たす実装の場合
 
 インターフェース（または抽象クラス）で抽象メソッドを記述することによって，実装クラスでの実装が強制される．つまり，実装クラスは抽象クラスに依存している．より上位レイヤーにインターフェースを配置することによって，下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作ることができる（原則２）．原則２でいう依存は，引数型／返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する．また，実装クラスをインターフェースをエイリアスとしてコールでききるようにすると，実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる．よって，全てのレイヤーがインターフェースに依存するようになる（原則１）．
+
+参考：https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
 ![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DIPに基づく設計の場合.png)
 

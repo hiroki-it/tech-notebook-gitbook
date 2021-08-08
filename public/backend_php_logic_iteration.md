@@ -95,7 +95,7 @@ https://www.php.net/manual/ja/ref.array.php
 ```php
 <?php
 
-class Example
+class Foo
 {
      /**
      * オプションを調べて，文字列を返却します．

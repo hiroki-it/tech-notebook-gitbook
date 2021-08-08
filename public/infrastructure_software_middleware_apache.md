@@ -135,12 +135,12 @@ NameVirtualHost *:80
 
 # Defaultサーバとして扱う．
 <VirtualHost *:80>
-    DocumentRoot /www/example1
+    DocumentRoot /www/foo
     ServerName www.example.com
 </VirtualHost>
 
 <VirtualHost *:80>
-    DocumentRoot /www/example2
+    DocumentRoot /www/bar
     ServerName www.example.org
 </VirtualHost>
 ```
@@ -157,13 +157,13 @@ NameVirtualHost *:80
 
 #### ・```DocumentRoot```とは
 
-ドキュメントのルートディレクトリを定義する．ドキュメントルートに「```index.html```」というファイルを置くと，ファイル名を指定しなくとも，ルートディレクトリ内の```index.html```ファイルが，エントリーポイントとして自動的に認識されて表示される．
+ドキュメントのルートディレクトリを定義する．ドキュメントルートに『```index.html```』というファイルを置くと，ファイル名を指定しなくとも，ルートディレクトリ内の```index.html```ファイルが，エントリーポイントとして自動的に認識されて表示される．
 
 **＊実装例＊**
 
 ```apacheconf
 <VirtualHost *:80>
-    DocumentRoot /www/example1
+    DocumentRoot /www/foo:
     ServerName www.example.com
 </VirtualHost>
 ```
@@ -174,7 +174,7 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 
 ```apacheconf
 <VirtualHost *:80>
-    DocumentRoot /www/example1/start-up.html
+    DocumentRoot /www/foo:/start-up.html
     ServerName www.example.com
 </VirtualHost>
 ```
@@ -190,7 +190,7 @@ index.html以外の名前をエントリーポイントにする場合，ファ�
 **＊実装例＊**
 
 ```apacheconf
-<Directory "/var/www/example">
+<Directory "/var/www/foo">
     DirectoryIndex index.php
     AllowOverride All
 </Directory>
@@ -289,14 +289,14 @@ Directoryディレクティブによってリクエストされたディレク�
 **＊実装例＊**
 
 ```apacheconf
-<Directory "/var/www/example">
+<Directory "/var/www/foo">
     DirectoryIndex index.html index.php
 </Directory>
 ```
 **＊実装例＊**
 
 ```apacheconf
-<Directory "/var/www/example">
+<Directory "/var/www/foo">
     DirectoryIndex index.html
     DirectoryIndex index.php
 </Directory>
@@ -313,7 +313,7 @@ Directoryディレクティブによってリクエストされたディレク�
 **＊実装例＊**
 
 ```apacheconf
-<Directory "/var/www/example">
+<Directory "/var/www/foo">
     DirectoryIndex index.php
     AllowOverride All
 </Directory>

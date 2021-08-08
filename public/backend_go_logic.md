@@ -3260,9 +3260,12 @@ package mainimport "fmt"func main() {    var first string = "Hiroki"        var 
 
 #### ・httpパッケージとは
 
-HTTPクライアントまたはサーバを提供する．
+HTTPクライアントまたはWebサーバを提供する．そのため，GoではNginxやApacheが不要である．ただ，GoによるWebサーバは機能が不十分である，そのため，NginxやApacheをWebサーバとして，GoをAppサーバとして使用した方が良い．
 
-参考：https://golang.org/pkg/net/http/#pkg-index
+参考：
+
+- https://golang.org/pkg/net/http/#pkg-index
+- https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
 
 #### ・```Get```メソッド
 

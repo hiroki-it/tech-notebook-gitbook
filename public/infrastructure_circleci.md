@@ -135,7 +135,7 @@ version: 2.1
 引数名を使用して，```parameters```から値を出力する．
 
 ```
-<< parameters.xxxxx >>
+<< parameters.foo >>
 ```
 
 #### ・job parameterを参照
@@ -167,7 +167,7 @@ commands:
 引数名を使用して，```parameters```から値を出力する．
 
 ```
-<< parameters.xxxxx >>
+<< parameters.foo >>
 ```
 
 #### ・デフォルト値について
@@ -306,7 +306,7 @@ workflows:
 引数名を使用して，```parameters```から値を出力する．
 
 ```
-<< parameters.xxxxx >>
+<< parameters.foo >>
 ```
 
 #### ・job parametersを参照
@@ -398,7 +398,7 @@ workflows:
 引数名を使用して，```pipeline.parameters```から値を出力する．
 
 ```
-<< pipeline.parameters.xxxxx >>
+<< pipeline.parameters.foo >>
 ```
 
 #### ・job parametersを参照
@@ -484,7 +484,7 @@ version: 2.1
 jobs:
  build:
    docker:
-     - image: circleci/xxx
+     - image: circleci/foo
    steps:
      - checkout
      # コンテナが入れ子にならないようにする．
@@ -915,19 +915,19 @@ Orbsを使う場合は，オプションに引数を渡す前に定義する．
 workflows:
   build:
     jobs:
-      - aws-xxx/build-push-yyy:
+      - aws-foo/build-push-yyy:
           # Workspace前に行う処理
           pre-steps:
             - run:
-                command: echo "XXX"
+                command: echo "FOO"
           # Workspace後に行う処理
           post-steps:
             - run:
-                command: echo "XXX"
+                command: echo "FOO"
           # Orbsのオプション
-          name: xxx
-          dockerfile: xxx
-          tag: xxx
+          name: foo
+          dockerfile: foo
+          tag: foo
 ```
 
 <br>
@@ -1042,9 +1042,9 @@ jobs:
 steps:
   - checkout
   - run:
-      name: XXXXX
+      name: FOO
       commands: |
-        echo "This is ${XXXXX}"
+        echo "This is ${FOO}"
 ```
 
 <br>
@@ -1435,10 +1435,10 @@ AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登
 version: 2.1
 
 orbs:
-  aws-xxx: circleci/aws-xxx@x.y.z
+  aws-foo: circleci/aws-foo@x.y.z
 
 jobs:
-  xxx_xxx_xxx:
+  foo_bar_baz:
     docker:
       - image: circleci/python:x.y.z
     steps:
@@ -1447,7 +1447,7 @@ jobs:
       - setup_remote_docker:
       - aws-cli/install
       - aws-cli/setup
-      - aws-xxx/xxx-xxx-xxx:
+      - aws-foo/foo-bar-baz:
           # デフォルト名であれば，記述しなくても自動的に入力してくれる．
           account-url: $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
           aws-access-key-id: $ACCESS_KEY_ID_ENV_VAR_NAME
@@ -1784,7 +1784,7 @@ jobs:
     # appspecファイルをzipフォルダで保存
     bundle-type: zip
     # zipフォルダ名
-    bundle-key: xxx-bundle
+    bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"
     # ECSにアクセスできるCodeDeployサービスロール
