@@ -64,7 +64,7 @@ function value() {
     }
     
     if (...) {
-        throw new ExampleInvalidArgumentException();
+        throw new FooInvalidArgumentException();
     }
         
     return "成功です．"
@@ -83,7 +83,7 @@ try-catch-finallyでは，特定の処理の中で起こる想定できない例
 use \Exception\ExternalApiErrorException;
 use \Exception\HttpRequestErrorException;
 
-class Example
+class Foo
 {
     public function sendMessage(Message $message)
     {
@@ -122,7 +122,7 @@ finally句は，try句やcatch句の返却処理が行われる直前に実行�
 use Exception\ExternalApiErrorException;
 use Exception\HttpRequestErrorException;
 
-class Example
+class Foo
 {
     public function sendMessage(Message $message)
     {
@@ -201,12 +201,12 @@ class Example
 
 **＊実装例＊**
 
-『Example変数が見つからない』というエラーに対応する例外クラスを定義する．
+『Foo変数が見つからない』というエラーに対応する例外クラスを定義する．
 
 ```php
 <?php
 
-class ExampleNotFoundException extends Exception
+class FooNotFoundException extends Exception
 {
     // 基本的に何も実装しない．
 }
@@ -215,15 +215,15 @@ class ExampleNotFoundException extends Exception
 ```php
 <?php
 
-use Exception\ExampleNotFound;
+use Exception\FooNotFound;
 
-function example(string $example) {
+function foo(string $foo) {
     
-    if (empty($exmaple)) {
-        throw new ExampleNotFoundException("Example is not found.");
+    if (empty($foo)) {
+        throw new FooNotFoundException("foo is not found.");
     }
     
-    return "これは ${example} です．";
+    return "これは ${foo} です．";
 }
 ```
 
@@ -336,7 +336,7 @@ class Notification
 use Exception\ExternalApiErrorException;
 use Exception\HttpRequestErrorException;
 
-class Example
+class Foo
 {
     public function sendMessage(Message $message)
     {
