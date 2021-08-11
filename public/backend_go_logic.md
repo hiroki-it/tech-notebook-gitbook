@@ -107,6 +107,10 @@ package main
 import "<パッケージ名>"
 ```
 
+互いにインポートし合うと，循環参照エラー（```mport cycle not allowed```）になる．インターフェースと構造体の両方を同じパッケージに置いていると，インターフェースが他からインポートされ，構造体が他をインポートするようになり，起こりやすい．
+
+![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/golang_import_cycle.png)
+
 #### ・func
 
 詳しくは，関数を参考にせよ．
@@ -131,7 +135,7 @@ Goでは文の処理はセミコロンで区切られる．ただし，セミコ
 
 #### ・パッケージ名
 
-小文字一単語で命名する．ディレクトリ名に小文字一単語が使用されている場合は，これと同じにするとなお良い．ただし，テストファイルに関しては，パッケージ名を『```xxxxx_test```』としてよい．
+小文字一単語で命名する．ディレクトリ名に小文字一単語が使用されている場合は，これと同じにするとなお良い．また，処理中の変数名と被るとパッケージのインポートに失敗するため，変数名と被らないように，できるだけ省略しない名前の方が良い．ただし，テストファイルに関しては，パッケージ名を『```xxxxx_test```』としてよい．
 
 参考：https://github.com/golang/go/wiki/CodeReviewComments#package-names
 

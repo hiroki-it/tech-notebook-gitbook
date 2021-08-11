@@ -3666,7 +3666,9 @@ $ php artisan migrate:status
 
 #### ・指定した履歴数だけテーブルを元に戻す
 
-指定した履歴数だけ，ロールバックを行う
+指定した履歴数だけ，ロールバックを行う．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```shell
 $ php artisan migrate:rollback --step=<ロールバック数>
@@ -3684,7 +3686,9 @@ $ php artisan migrate
 
 #### ・初期の状態までテーブルを元に戻す
 
-初期の状態まで，全てロールバックを行う．
+初期の状態まで，全てのロールバックを実行する．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
 ```shell
 $ php artisan migrate:reset
@@ -3692,7 +3696,9 @@ $ php artisan migrate:reset
 
 #### ・テーブルを元に戻してから再作成
 
-まず```migrate:reset```を行い，次いで```migrate```を実行する．
+全てのロールバック（```migrate:reset```）を実行し，次いで```migrate```を実行する．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
 ```shell
 $ php artisan migrate:refresh
@@ -3700,6 +3706,8 @@ $ php artisan migrate:refresh
 #### ・テーブルを削除してから再作成
 
 全てのテーブルを削除と```migrate```を実行する．マイグレーションファイルの構文チェックを行わずに，強制的に実行される．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
 ```shell
 $ php artisan migrate:fresh
@@ -3711,13 +3719,23 @@ $ php artisan migrate:fresh
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
+#### ・確認画面の入力をスキップ
+
+マイグレーション時，本当に実行して良いか確認画面（Yes／No）が表示される．CICDにおいて，この確認画面でYes／Noを入力することができないため，確認画面をスキップできるようにする必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+
+```shell
+$ php artisan migrate --force
+```
+
 <br>
 
 ### テーブルの作成と削除
 
 #### ・```up```メソッド，```down```メソッド
 
-コマンドによるマイグレーション時にコールされる．```up```メソッドでテーブル，カラム，インデックスのCREATEを行う．```down```メソッドでCREATEのロールバックを行う．
+コマンドによるマイグレーション時にコールされる．```up```メソッドでテーブル，カラム，インデックスのCREATEを実行する．```down```メソッドでCREATEのロールバックを実行する．
 
 **＊実装例＊**
 
@@ -4563,7 +4581,7 @@ interface Container extends ContainerInterface
 
 #### ・具象クラスをバインド
 
-AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスを生成できるようになる．Laravelでは，具象クラスはServiceContainerに自動的にバインドされており，以下の実装を行う必要はない．
+AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスを生成できるようになる．Laravelでは，具象クラスはServiceContainerに自動的にバインドされており，以下の実装を実行する必要はない．
 
 **＊実装例＊**
 
@@ -4686,7 +4704,7 @@ class FooServiceProvider extends ServiceProvider
 
 #### ・ServiceContainerからのリゾルブ
 
-コンストラクタの引数にクラスを渡しておく．Appファサードを使用してクラスを宣言することで，クラスのリゾルブを自動的に行う．
+コンストラクタの引数にクラスを渡しておく．Appファサードを使用してクラスを宣言することで，クラスのリゾルブを自動的に実行する．
 
 **＊実装例＊**
 
@@ -6171,7 +6189,7 @@ WebpackをLaravelを介して操作できるパッケージのこと．Breezeパ
 
 #### ・アセットの初期コンパイル
 
-アセットのコンパイルを行う．
+アセットのコンパイルを実行する．
 
 ```shell
 $ npm run dev
@@ -6179,7 +6197,7 @@ $ npm run dev
 
 #### ・アセットの自動再コンパイル
 
-アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを行う．
+アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
 
 ```shell
 $ npm run watch
@@ -6286,5 +6304,37 @@ $staff->roleType->isSalesRole(); // false
 
 ```
 
+```
+
+<br>
+
+### laravel-ide-helper
+
+#### ・laravel-ide-helperとは
+
+PHPStromでLaravelを開発する場合に，拡張機能を提供する．
+
+参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+
+#### ・Facade
+
+```shell
+$ php artisan ide-helper:generate
+```
+
+#### ・アノテーション生成
+
+LaravelのEloquentモデルで，アノテーションを自動生成する．
+
+```shell
+$ php artisan ide-helper:models
+```
+
+#### ・予測表示
+
+Laravelのメソッドを予測表示するため，```phpstorm.meta.php```ファイルを生成する．
+
+```shell
+$ php artisan ide-helper:meta
 ```
 

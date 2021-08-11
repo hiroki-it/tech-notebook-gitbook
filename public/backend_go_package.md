@@ -43,11 +43,114 @@
 
 <br>
 
-## 04. Gorm
+## 04. gorm
 
-### Gormとは
+### gormとは
 
 Go製のORMである．
+
+<br>
+
+### Gormモデル
+
+#### ・Gormモデル埋め込み
+
+構造体にGormモデルを埋め込むと，IDやタイムスタンプレコードがフィールドとして追加される．構造体をマッピングしたテーブルに，```id```カラム，```created_at```カラム，```updated_at```カラム，```deleted_at```カラムが追加される．
+
+参考：https://gorm.io/ja_JP/docs/models.html#embedded_struct
+
+```go
+type User struct {
+	gorm.Model
+	Name string
+}
+
+// 以下と同じ
+type User struct {
+	ID        uint `gorm:"primaryKey"`
+    Name      string
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeleteAt `gorm:"index"`
+}
+```
+
+#### ・プライマリキー
+
+『ID』という名前のフィールドを認識して，これをプライマリキーとしてデータをマッピングする．もし，他の名前のフィールドをIDとして使用したい場合は，```gorm:"primaryKey"```タグをつける．
+
+参考：https://gorm.io/ja_JP/docs/conventions.html#ID-as-Primary-Key
+
+```go
+type User struct {
+	ID   string // プライマリキーとして使用される．
+	Name string
+}
+```
+
+```go
+type User struct {
+	UserID string `gorm:"primaryKey"` // プライマリキーとして使用される．
+	Name   string
+}
+```
+
+#### ・SoftDelete
+
+構造体が，```gorm.DeleteAt```をデータ型とするフィールドを持っていると，その構造体を用いたDELETE処理では論理削除が実行される．Gormモデルを埋め込むことによりこのフィールドを持たせるか，または独自定義することにより，SoftDeleteを有効化できる．
+
+参考：https://gorm.io/ja_JP/docs/delete.html#Soft-Delete
+
+```go
+type User struct {
+	ID      int
+	Deleted gorm.DeletedAt
+	Name    string
+}
+```
+
+```go
+user := User{Id:111}
+
+// user's ID is `111`
+db.Delete(&user)
+// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE id = 111;
+
+// Batch Delete
+db.Where("age = ?", 20).Delete(&User{})
+// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE age = 20;
+
+// Soft deleted records will be ignored when querying
+db.Where("age = 20").Find(&user)
+// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;
+```
+
+<br>
+
+### マイグレーション
+
+#### ・```TableName```メソッド
+
+標準ではGormモデルの名前をスネークケースに変更し，また複数形とした名前のテーブルが生成される．```TableName```メソッドにより，独自のテーブル名をつけられる．
+
+参考：https://gorm.io/ja_JP/docs/conventions.html#TableName
+
+```go
+// テーブル名は標準では『users』になる．
+type User struct {
+	ID      int
+	Deleted gorm.DeletedAt
+	Name    string
+}
+
+// テーブル名を『foo』になる．
+func (User) TableName() string {
+	return "foo"
+}
+```
+
+
+
 <br>
 
 ### Create
@@ -118,6 +221,8 @@ db.Find(&users, []int{1,2,3})
 // Update with conditions
 db.Model(&User{}).Where("active = ?", true).Update("name", "hello")
 // UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;
+
+user := User{Id:111}
 
 // User's ID is `111`:
 db.Model(&user).Update("name", "hello")
