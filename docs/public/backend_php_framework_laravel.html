@@ -175,16 +175,48 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="backend_architecture_domain_driven_design.html">
+        <li class="chapter " data-level="1.3.1" >
             
-                <a href="backend_architecture_domain_driven_design.html">
+                <span>
             
                     
-                    ▶ ︎ドメイン駆動設計
+                    ドメイン駆動設計
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="backend_architecture_domain_driven_design_introduction.html">
+            
+                <a href="backend_architecture_domain_driven_design_introduction.html">
+            
+                    
+                    ▶ ︎ドメイン駆動設計概論
             
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                <a href="backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                    
+                    ▶ ︎クリーンアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -5110,7 +5142,8 @@ $ php artisan make:request <span class="token tag"><span class="token tag"><span
 <pre class="language-"><code class="lang-shell">$ php artisan migrate:status
 </code></pre>
 <h4 id="&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;"><a name="&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;" class="plugin-anchor" href="#&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5C65;&#x6B74;&#x6570;&#x3060;&#x3051;&#xFF0C;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations" target="_blank">https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations</a></p>
 <pre class="language-"><code class="lang-shell">$ php artisan migrate:rollback --step=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x6570;</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p>&#x5B9F;&#x969B;&#x306E;&#x4F7F;&#x7528;&#x5834;&#x9762;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5931;&#x6557;&#x3057;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x4E00;&#x3064;&#x524D;&#x306E;&#x72B6;&#x614B;&#x306B;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3057;&#x3066;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4FEE;&#x6B63;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x518D;&#x3073;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
@@ -5121,24 +5154,32 @@ $ php artisan migrate:rollback --step=1
 $ php artisan migrate
 </code></pre>
 <h4 id="&#x30FB;&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;"><a name="&#x30FB;&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;" class="plugin-anchor" href="#&#x30FB;&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3059;</h4>
-<p>&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#xFF0C;&#x5168;&#x3066;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x521D;&#x671F;&#x306E;&#x72B6;&#x614B;&#x307E;&#x3067;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations" target="_blank">https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations</a></p>
 <pre class="language-"><code class="lang-shell">$ php artisan migrate:reset
 </code></pre>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;"><a name="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;" class="plugin-anchor" href="#&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x623B;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;</h4>
-<p>&#x307E;&#x305A;<code>migrate:reset</code>&#x3092;&#x884C;&#x3044;&#xFF0C;&#x6B21;&#x3044;&#x3067;<code>migrate</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x5168;&#x3066;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#xFF08;<code>migrate:reset</code>&#xFF09;&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;&#x6B21;&#x3044;&#x3067;<code>migrate</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command" target="_blank">https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command</a></p>
 <pre class="language-"><code class="lang-shell">$ php artisan migrate:refresh
 </code></pre>
 <h4 id="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;"><a name="&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;" class="plugin-anchor" href="#&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3057;&#x3066;&#x304B;&#x3089;&#x518D;&#x4F5C;&#x6210;</h4>
 <p>&#x5168;&#x3066;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x524A;&#x9664;&#x3068;<code>migrate</code>&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x69CB;&#x6587;&#x30C1;&#x30A7;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x308F;&#x305A;&#x306B;&#xFF0C;&#x5F37;&#x5236;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate" target="_blank">https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate</a></p>
 <pre class="language-"><code class="lang-shell">$ php artisan migrate:fresh
 </code></pre>
 <p>&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6642;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;&#x3059;&#x3067;&#x306B;&#x5B58;&#x5728;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3055;&#x308C;&#x308B;&#x524D;&#x307E;&#x3067;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3057;&#xFF0C;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x518D;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x6700;&#x9069;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#x305D;&#x308C;&#x304C;&#x96E3;&#x3057;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x3053;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">SQLSTATE[42S01]: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;</span><span class="token punctuation">&gt;</span></span> table or view already exists
 </code></pre>
+<h4 id="&#x30FB;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x306E;&#x5165;&#x529B;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;"><a name="&#x30FB;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x306E;&#x5165;&#x529B;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;" class="plugin-anchor" href="#&#x30FB;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x306E;&#x5165;&#x529B;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x306E;&#x5165;&#x529B;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;</h4>
+<p>&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6642;&#xFF0C;&#x672C;&#x5F53;&#x306B;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x826F;&#x3044;&#x304B;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#xFF08;Yes&#xFF0F;No&#xFF09;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;CICD&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x3053;&#x306E;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x3067;Yes&#xFF0F;No&#x3092;&#x5165;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x78BA;&#x8A8D;&#x753B;&#x9762;&#x3092;&#x30B9;&#x30AD;&#x30C3;&#x30D7;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production" target="_blank">https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production</a></p>
+<pre class="language-"><code class="lang-shell">$ php artisan migrate --force
+</code></pre>
 <p><br></p>
 <h3 id="&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;&#x3068;&#x524A;&#x9664;"><a name="&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;&#x3068;&#x524A;&#x9664;" class="plugin-anchor" href="#&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;&#x3068;&#x524A;&#x9664;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;&#x3068;&#x524A;&#x9664;</h3>
 <h4 id="&#x30FB;up&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;down&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;up&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;down&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;up&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;down&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>up</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>down</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6642;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;<code>up</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;&#xFF0C;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x306E;CREATE&#x3092;&#x884C;&#x3046;&#xFF0E;<code>down</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;CREATE&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6642;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;<code>up</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;&#xFF0C;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x306E;CREATE&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;<code>down</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;CREATE&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5846,7 +5887,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
 <p><br></p>
 <h3 id="appserviceprovider"><a name="appserviceprovider" class="plugin-anchor" href="#appserviceprovider"><i class="fa fa-link" aria-hidden="true"></i></a>AppServiceProvider</h3>
 <h4 id="&#x30FB;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;"><a name="&#x30FB;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;</h4>
-<p>AppSeriveProvider&#x306B;&#x3066;&#xFF0C;ServiceContainer&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;ServiceContainer&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;Laravel&#x3067;&#x306F;&#xFF0C;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x306F;ServiceContainer&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
+<p>AppSeriveProvider&#x306B;&#x3066;&#xFF0C;ServiceContainer&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;ServiceContainer&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;Laravel&#x3067;&#x306F;&#xFF0C;&#x5177;&#x8C61;&#x30AF;&#x30E9;&#x30B9;&#x306F;ServiceContainer&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5955,7 +5996,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;servicecontainer&#x304B;&#x3089;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;"><a name="&#x30FB;servicecontainer&#x304B;&#x3089;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;" class="plugin-anchor" href="#&#x30FB;servicecontainer&#x304B;&#x3089;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ServiceContainer&#x304B;&#x3089;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;</h4>
-<p>&#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x306E;&#x5F15;&#x6570;&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;App&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x306E;&#x5F15;&#x6570;&#x306B;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;App&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30EA;&#x30BE;&#x30EB;&#x30D6;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -7253,11 +7294,11 @@ $ php artisan ui bootstrap --auth
 <p><br></p>
 <h3 id="webpack&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="webpack&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#webpack&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>Webpack&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x521D;&#x671F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;"><a name="&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x521D;&#x671F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x521D;&#x671F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x521D;&#x671F;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;</h4>
-<p>&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token function">npm</span> run dev
 </code></pre>
 <h4 id="&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x81EA;&#x52D5;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;"><a name="&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x81EA;&#x52D5;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x81EA;&#x52D5;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x81EA;&#x52D5;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;</h4>
-<p>&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3068;&#x691C;&#x77E5;&#x3057;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
+<p>&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x5909;&#x66F4;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#xFF0C;&#x3053;&#x308C;&#x3068;&#x691C;&#x77E5;&#x3057;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x518D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token function">npm</span> run <span class="token function">watch</span>
 </code></pre>
 <p><br></p>
@@ -7344,7 +7385,23 @@ $ php artisan ui bootstrap --auth
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304B;&#x3089;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x5143;&#x306B;Enum&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code>
 
+</code></pre><p><br></p>
+<h3 id="laravel-ide-helper"><a name="laravel-ide-helper" class="plugin-anchor" href="#laravel-ide-helper"><i class="fa fa-link" aria-hidden="true"></i></a>laravel-ide-helper</h3>
+<h4 id="&#x30FB;laravel-ide-helper&#x3068;&#x306F;"><a name="&#x30FB;laravel-ide-helper&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;laravel-ide-helper&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;laravel-ide-helper&#x3068;&#x306F;</h4>
+<p>PHPStrom&#x3067;Laravel&#x3092;&#x958B;&#x767A;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x62E1;&#x5F35;&#x6A5F;&#x80FD;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances" target="_blank">https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances</a></p>
+<h4 id="&#x30FB;facade"><a name="&#x30FB;facade" class="plugin-anchor" href="#&#x30FB;facade"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Facade</h4>
+<pre class="language-"><code class="lang-shell">$ php artisan ide-helper:generate
 </code></pre>
+<h4 id="&#x30FB;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x751F;&#x6210;"><a name="&#x30FB;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x751F;&#x6210;" class="plugin-anchor" href="#&#x30FB;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x751F;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x751F;&#x6210;</h4>
+<p>Laravel&#x306E;Eloquent&#x30E2;&#x30C7;&#x30EB;&#x3067;&#xFF0C;&#x30A2;&#x30CE;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ php artisan ide-helper:models
+</code></pre>
+<h4 id="&#x30FB;&#x4E88;&#x6E2C;&#x8868;&#x793A;"><a name="&#x30FB;&#x4E88;&#x6E2C;&#x8868;&#x793A;" class="plugin-anchor" href="#&#x30FB;&#x4E88;&#x6E2C;&#x8868;&#x793A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4E88;&#x6E2C;&#x8868;&#x793A;</h4>
+<p>Laravel&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4E88;&#x6E2C;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;<code>phpstorm.meta.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ php artisan ide-helper:meta
+</code></pre>
+
                                 
                                 </section>
                             
@@ -7387,7 +7444,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-08-08T13:22:38.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-08T14:33:17.826Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-08-09T16:59:51.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T01:01:12.063Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

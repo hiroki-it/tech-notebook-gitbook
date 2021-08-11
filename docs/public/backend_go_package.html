@@ -173,16 +173,48 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="backend_architecture_domain_driven_design.html">
+        <li class="chapter " data-level="1.3.1" >
             
-                <a href="backend_architecture_domain_driven_design.html">
+                <span>
             
                     
-                    ▶ ︎ドメイン駆動設計
+                    ドメイン駆動設計
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="backend_architecture_domain_driven_design_introduction.html">
+            
+                <a href="backend_architecture_domain_driven_design_introduction.html">
+            
+                    
+                    ▶ ︎ドメイン駆動設計概論
             
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                <a href="backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                    
+                    ▶ ︎クリーンアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1775,10 +1807,82 @@
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html</a></p>
 <p><br></p>
-<h2 id="04-gorm"><a name="04-gorm" class="plugin-anchor" href="#04-gorm"><i class="fa fa-link" aria-hidden="true"></i></a>04. Gorm</h2>
-<h3 id="gorm&#x3068;&#x306F;"><a name="gorm&#x3068;&#x306F;" class="plugin-anchor" href="#gorm&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>Gorm&#x3068;&#x306F;</h3>
-<p>Go&#x88FD;&#x306E;ORM&#x3067;&#x3042;&#x308B;&#xFF0E;
-<br></p>
+<h2 id="04-gorm"><a name="04-gorm" class="plugin-anchor" href="#04-gorm"><i class="fa fa-link" aria-hidden="true"></i></a>04. gorm</h2>
+<h3 id="gorm&#x3068;&#x306F;"><a name="gorm&#x3068;&#x306F;" class="plugin-anchor" href="#gorm&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>gorm&#x3068;&#x306F;</h3>
+<p>Go&#x88FD;&#x306E;ORM&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="gorm&#x30E2;&#x30C7;&#x30EB;"><a name="gorm&#x30E2;&#x30C7;&#x30EB;" class="plugin-anchor" href="#gorm&#x30E2;&#x30C7;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>Gorm&#x30E2;&#x30C7;&#x30EB;</h3>
+<h4 id="&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;"><a name="&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;" class="plugin-anchor" href="#&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;</h4>
+<p>&#x69CB;&#x9020;&#x4F53;&#x306B;Gorm&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x57CB;&#x3081;&#x8FBC;&#x3080;&#x3068;&#xFF0C;ID&#x3084;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x69CB;&#x9020;&#x4F53;&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#xFF0C;<code>id</code>&#x30AB;&#x30E9;&#x30E0;&#xFF0C;<code>created_at</code>&#x30AB;&#x30E9;&#x30E0;&#xFF0C;<code>updated_at</code>&#x30AB;&#x30E9;&#x30E0;&#xFF0C;<code>deleted_at</code>&#x30AB;&#x30E9;&#x30E0;&#x304C;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/ja_JP/docs/models.html#embedded_struct" target="_blank">https://gorm.io/ja_JP/docs/models.html#embedded_struct</a></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    gorm<span class="token punctuation">.</span>Model
+    Name <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x4EE5;&#x4E0B;&#x3068;&#x540C;&#x3058;</span>
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID        <span class="token builtin">uint</span> <span class="token string">`gorm:&quot;primaryKey&quot;`</span>
+    Name      <span class="token builtin">string</span>
+    CreatedAt time<span class="token punctuation">.</span>Time
+    UpdatedAt time<span class="token punctuation">.</span>Time
+    DeletedAt gorm<span class="token punctuation">.</span>DeleteAt <span class="token string">`gorm:&quot;index&quot;`</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><a name="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;</h4>
+<p>&#x300E;ID&#x300F;&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x8A8D;&#x8B58;&#x3057;&#x3066;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;&#x3082;&#x3057;&#xFF0C;&#x4ED6;&#x306E;&#x540D;&#x524D;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;ID&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;<code>gorm:&quot;primaryKey&quot;</code>&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/ja_JP/docs/conventions.html#ID-as-Primary-Key" target="_blank">https://gorm.io/ja_JP/docs/conventions.html#ID-as-Primary-Key</a></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID   <span class="token builtin">string</span> <span class="token comment">// &#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+    Name <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    UserID <span class="token builtin">string</span> <span class="token string">`gorm:&quot;primaryKey&quot;`</span> <span class="token comment">// &#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+    Name   <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;softdelete"><a name="&#x30FB;softdelete" class="plugin-anchor" href="#&#x30FB;softdelete"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;SoftDelete</h4>
+<p>&#x69CB;&#x9020;&#x4F53;&#x304C;&#xFF0C;<code>gorm.DeleteAt</code>&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3068;&#x3059;&#x308B;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x6301;&#x3063;&#x3066;&#x3044;&#x308B;&#x3068;&#xFF0C;&#x305D;&#x306E;&#x69CB;&#x9020;&#x4F53;&#x3092;&#x7528;&#x3044;&#x305F;DELETE&#x51E6;&#x7406;&#x3067;&#x306F;&#x8AD6;&#x7406;&#x524A;&#x9664;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;Gorm&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x57CB;&#x3081;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#x3053;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x304B;&#xFF0C;&#x307E;&#x305F;&#x306F;&#x72EC;&#x81EA;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;SoftDelete&#x3092;&#x6709;&#x52B9;&#x5316;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/ja_JP/docs/delete.html#Soft-Delete" target="_blank">https://gorm.io/ja_JP/docs/delete.html#Soft-Delete</a></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID      <span class="token builtin">int</span>
+    Deleted gorm<span class="token punctuation">.</span>DeletedAt
+    Name    <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-go">user <span class="token operator">:=</span> User<span class="token punctuation">{</span>Id<span class="token punctuation">:</span><span class="token number">111</span><span class="token punctuation">}</span>
+
+<span class="token comment">// user&apos;s ID is `111`</span>
+db<span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
+<span class="token comment">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE id = 111;</span>
+
+<span class="token comment">// Batch Delete</span>
+db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = ?&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE age = 20;</span>
+
+<span class="token comment">// Soft deleted records will be ignored when querying</span>
+db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = 20&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Find</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
+<span class="token comment">// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
+<h4 id="&#x30FB;tablename&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;tablename&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;tablename&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>TableName</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x6A19;&#x6E96;&#x3067;&#x306F;Gorm&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x540D;&#x524D;&#x3092;&#x30B9;&#x30CD;&#x30FC;&#x30AF;&#x30B1;&#x30FC;&#x30B9;&#x306B;&#x5909;&#x66F4;&#x3057;&#xFF0C;&#x307E;&#x305F;&#x8907;&#x6570;&#x5F62;&#x3068;&#x3057;&#x305F;&#x540D;&#x524D;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;<code>TableName</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x72EC;&#x81EA;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x3064;&#x3051;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/ja_JP/docs/conventions.html#TableName" target="_blank">https://gorm.io/ja_JP/docs/conventions.html#TableName</a></p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x306F;&#x6A19;&#x6E96;&#x3067;&#x306F;&#x300E;users&#x300F;&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+<span class="token keyword">type</span> User <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    ID      <span class="token builtin">int</span>
+    Deleted gorm<span class="token punctuation">.</span>DeletedAt
+    Name    <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x300E;foo&#x300F;&#x306B;&#x306A;&#x308B;&#xFF0E;</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>User<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;foo&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
 <h3 id="create"><a name="create" class="plugin-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a>Create</h3>
 <p>Gorm&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x5024;&#x3092;&#x5143;&#x306B;&#xFF0C;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x4F5C;&#x6210;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#xFF0C;&#x69CB;&#x9020;&#x4F53;&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/docs/create.html#Create-Record" target="_blank">https://gorm.io/docs/create.html#Create-Record</a></p>
@@ -1825,6 +1929,8 @@ db<span class="token punctuation">.</span><span class="token function">Find</spa
 <pre class="language-"><code class="lang-go"><span class="token comment">// Update with conditions</span>
 db<span class="token punctuation">.</span><span class="token function">Model</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;active = ?&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span>
 <span class="token comment">// UPDATE users SET name=&apos;hello&apos;, updated_at=&apos;2013-11-17 21:34:10&apos; WHERE active=true;</span>
+
+user <span class="token operator">:=</span> User<span class="token punctuation">{</span>Id<span class="token punctuation">:</span><span class="token number">111</span><span class="token punctuation">}</span>
 
 <span class="token comment">// User&apos;s ID is `111`:</span>
 db<span class="token punctuation">.</span><span class="token function">Model</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Update</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span>
@@ -2280,7 +2386,7 @@ go 1.16
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ パッケージ","level":"1.5.2.1","depth":3,"next":{"title":"▶ Gin","level":"1.5.2.2","depth":3,"path":"public/backend_go_framework_gin.md","ref":"public/backend_go_framework_gin.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"▶ パッケージ","level":"1.5.2.1","depth":3,"path":"public/backend_go_package.md","ref":"public/backend_go_package.md","articles":[]},{"title":"▶ Gin","level":"1.5.2.2","depth":3,"path":"public/backend_go_framework_gin.md","ref":"public/backend_go_framework_gin.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_go_package.md","mtime":"2021-08-04T00:43:22.198Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-08T14:33:17.826Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ パッケージ","level":"1.5.2.1","depth":3,"next":{"title":"▶ Gin","level":"1.5.2.2","depth":3,"path":"public/backend_go_framework_gin.md","ref":"public/backend_go_framework_gin.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"▶ パッケージ","level":"1.5.2.1","depth":3,"path":"public/backend_go_package.md","ref":"public/backend_go_package.md","articles":[]},{"title":"▶ Gin","level":"1.5.2.2","depth":3,"path":"public/backend_go_framework_gin.md","ref":"public/backend_go_framework_gin.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_go_package.md","mtime":"2021-08-10T23:58:28.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T01:01:12.063Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
