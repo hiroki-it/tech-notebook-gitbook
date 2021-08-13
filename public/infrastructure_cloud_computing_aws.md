@@ -1497,6 +1497,12 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 各タスクをどのような設定値に基づいて構築するかを設定できる．タスク定義は，バージョンを示す『リビジョンナンバー』で番号づけされる．タスク定義を削除するには，全てのリビジョン番号のタスク定義を登録解除する必要がある．
 
+#### ・タスクのライフサイクル
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
+
+![ecs-task_life-cycle](C:\Users\h.hasegawa\Documents\Drive 1st\プログラミング\tech-notebook\Drive_source\images\ecs-task_life-cycle.png)
+
 #### ・割り当てられるPrivate IPアドレス
 
 タスクごとに異なるPrivate IPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
@@ -2874,7 +2880,7 @@ $ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" 
 
 #### ・同時実行の予約
 
-Lambdaは，関数の実行中に再びリクエストが送信されると，関数のインスタンスを新しく作成する．そして，各関数インスタンスを用いて，同時並行的にリクエストに応じる．標準では，関数の種類がいくつあっても，AWSアカウント当たり，合計で```1000```個の処理しか同時実行できない．関数ごとに同時実行数の使用枠を割り当てるためには，同時実行の予約を設定する必要がある．
+Lambdaは，関数の実行中に再びリクエストが送信されると，関数のインスタンスを新しく作成する．そして，各関数インスタンスを用いて，同時並行的にリクエストに応じる．標準では，関数の種類がいくつあっても，AWSアカウント当たり，合計で```1000```個までしかスケーリングして同時実行できない．関数ごとに同時実行数の使用枠を割り当てるためには，同時実行の予約を設定する必要がある．同時実行の予約数を```0```個とした場合，Lambdがスケーリングしなくなる．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 

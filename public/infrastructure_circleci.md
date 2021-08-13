@@ -1597,9 +1597,11 @@ jobs:
 
 ### aws-ecs
 
-#### ・jobs：update-service（ローリングアップデート使用時）
+#### ・jobs：deploy-update-service（ローリングアップデート使用時）
 
-ECSタスク定義を更新する．さらに，ローリングアップデートがそのタスク定義を指定し，ECSサービスを更新する．``` verify-revision-is-deployed```オプションを使用して，ECSサービスが更新された後，実行されているタスクがタスク定義に合致しているかを監視する．例えば，タスクが「Runnning」にならずに「Stopped」になってしまう場合や，既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合，この状態はタスク定義に合致しないので，検知できる．
+ECRイメージを使用して，新しいリビジョン番号のタスク定義を作成し，またこれを使用してコンテナをデプロイする．``` verify-revision-is-deployed```オプションを使用して，ECSサービスが更新された後，実行されているタスクがタスク定義に合致しているかを監視する．例えば，タスクが「Runnning」にならずに「Stopped」になってしまう場合や，既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合，この状態はタスク定義に合致しないので，検知できる．
+
+参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
 **＊実装例＊**
 
@@ -1608,10 +1610,10 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@1.3.1
-  aws-ecs: circleci/aws-ecs@1.4.0
+  aws-ecs: circleci/aws-ecs@2.2.1
   
 jobs:
-  aws-ecs/update-service:
+  aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
     # タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
@@ -1647,7 +1649,7 @@ workflows:
           
 ```
 
-#### ・jobs：update-service（B/Gデプロイメント使用時）
+#### ・jobs：deploy-update-service（B/Gデプロイメント使用時）
 
 ECSタスク定義を更新する．さらに，Blue/Greenデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを使用できる．
 
@@ -1658,10 +1660,10 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@1.3.1
-  aws-ecs: circleci/aws-ecs@1.4.0
+  aws-ecs: circleci/aws-ecs@2.2.1
   
 jobs:
-  aws-ecs/update-service:
+  aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
     # タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
@@ -1717,7 +1719,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@1.3.1
-  aws-ecs: circleci/aws-ecs@1.4.0
+  aws-ecs: circleci/aws-ecs@2.2.1
 
 jobs:
   aws-ecs/run-task:

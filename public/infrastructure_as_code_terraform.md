@@ -1023,7 +1023,20 @@ $ terraform plan -var-file=xxxxx.tfvars
 
 #### ・```terraform.tfvars```ファイル
 
-#### ・```TF_VAR_XXXXX```  
+```shell
+#　ファイルを指定しなくとも読み込まれる
+$ terraform plan
+```
+
+#### ・```TF_VAR_XXXXX``` 
+
+環境変数としてエクスポートしておくと自動的に読み込まれる．```XXXXX```の部分が変数名としてTerraformに渡される．
+
+```shell
+$ printenv
+
+TF_VAR_ecr_image_tag=foo
+```
 
 <br>
 
@@ -1031,7 +1044,7 @@ $ terraform plan -var-file=xxxxx.tfvars
 
 #### ・tfvarsファイルの用途
 
-実行ファイルに入力したい値を定義する．『```terraform.tfvars```』という名前にすると，terraformコマンドの実行時に自動的に読み込まれる．各サービスの間で実装方法が同じため，VPCのみ例を示す．
+実行ファイルに入力したい環境変数を定義する．『```terraform.tfvars```』という名前にすると，terraformコマンドの実行時に自動的に読み込まれる．各サービスの間で実装方法が同じため，VPCのみ例を示す．
 
 **＊実装例＊**
 
@@ -1049,6 +1062,53 @@ vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
 **＊実装例＊**
+
+```hcl
+###############################################
+# RDS
+###############################################
+variable "rds_parameter_group_values" {
+  type = map(string)
+}
+
+###############################################
+# VPC
+###############################################
+variable "vpc_availability_zones" {
+  type = map(string)
+}
+
+variable "vpc_cidr" {
+  type = string
+}
+
+variable "vpc_endpoint_port_https" {
+  type = number
+}
+
+variable "vpc_subnet_private_datastore_cidrs" {
+  type = map(string)
+}
+
+variable "vpc_subnet_private_app_cidrs" {
+  type = map(string)
+}
+
+variable "vpc_subnet_public_cidrs" {
+  type = map(string)
+}
+
+###############################################
+# WAF
+###############################################
+variable "waf_allowed_global_ip_addresses" {
+  type = list(string)
+}
+
+variable "waf_blocked_user_agents" {
+  type = list(string)
+}
+```
 
 ```hcl
 ###############################################
@@ -1081,7 +1141,7 @@ vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
 ###############################################
 # WAF
 ###############################################
-waf_blocked_global_ip_addresses = [
+waf_allowed_global_ip_addresses = [
   "n.n.n.n/32",
   "n.n.n.n/32",
 ]

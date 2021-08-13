@@ -8,12 +8,6 @@
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
-#### ・処理フロー
-
-参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
-
-![clean-architecuture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture/clean-architecuture_flow.png)
-
 <br>
 
 ## 02. インターフェース層（<span style="color: lightgreen; ">黄緑</span>）
@@ -22,19 +16,27 @@
 
 #### ・コントローラとは
 
-インプット／アウトプットの処理時で，責務を以下のように分類できる．デザインパターンとして切り分けると，よりスッキリする．
+入力／出力の処理時で，責務を以下のように分類できる．デザインパターンとして切り分けると，よりスッキリする．
 
-| インプット時／アウトプット時 | 責務                                                         | 補足                                                         |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| インプット                   | インフラ層のルーターから渡されたリクエストのデータで，値がAPI仕様（必須，書式，など）と照らし合わせたバリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
-|                              | インフラ層のルーターからリクエストのデータを，ユースケース層のインターラクタに渡せるインプットデータに変換する． | インプットデータ生成処理で，ドメイン層への依存が必要になる．インプットデータ生成処理を切り分け，ユースケース層に置くと，コントローラがドメイン層に依存することを防げる． |
-| アウトプット                 | ユースケース層のインターラクタから渡されたプレゼンターを，クライアントに返信する． |                                                              |
+| 入力時／出力時 | 責務                                                         | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 入力           | インフラ層のルーターから入力されたパラメータをAPI仕様（必須，書式，など）と照らし合わせ，バリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
+|                | インフラ層のルーターから入力されたパラメータをリクエストモデルに変換し，ユースケース層のインターラクターに入力する． | リクエストモデル生成処理で，ドメイン層への依存が必要になる．リクエストモデル生成処理を切り分け，ユースケース層に置くと，コントローラがドメイン層に依存することを防げる． |
+| 出力           | ユースケース層のインターラクターから出力されたレスポンスモデルを，JSONデータとしてフロントエンドにに返信する． | バックエンドをAPIとして使用する場合，プレゼンターは不要である． |
+|                | ユースケース層のインターラクターから出力されたプレゼンターをビューモデルに変換し，バックエンドのテンプレートエンジンに出力する． | バックエンドでテンプレートエンジンを使用してHTMLを生成する場合，プレゼンターが必要である． |
 
 <br>
 
 ### プレゼンター
 
 #### ・プレゼンターとは
+
+バックエンドからフロントエンドに出力するため，．バックエンドがテンプレートエンジンを持つフレームワークの時に，バックエンドからフロントエンドのロジックを分離するために使用する．一方で，バックエンドとフロントエンドを完全に分離し，バックエンドがJSONデータを返信するAPIとして機能する場合や，フロントエンドにテンプレートエンジンを組み込む場合は，プレゼンターを使用しない．補足として，アウトプットバウンダリはプレゼンターのインターフェースのため，プレゼンターを使用しなければ，アウトプットバウンダリも使用しない．
+
+参考：
+
+- https://izumisy.work/entry/2019/12/12/000521
+- https://codezine.jp/article/detail/9749
 
 <br>
 
@@ -80,97 +82,170 @@ class FormatValidator
 
 ## 03. ユースケース層（<span style="color: LightSalmon; ">赤</span>）
 
-### インターラクタ
+### 処理フロー
 
-#### ・インターラクタとは
+インターフェース層からユースケース層までの処理の流れを示す．
 
-インプット／アウトプットの処理時で，責務を以下のように分類できる．ユースケースごとに異なるInteractorクラスを定義する方法と，全てのユースケースを責務としてもつInteractorクラスを定義する方法がある．また，Interactorインターフェースを用意して，インターフェース層のコントローラはこれを経由して，実装Interactorクラスのメソッドをコールするようにする．
+参考：http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
 
-| インプット時／アウトプット時 | 責務                                                         | 補足                                                         |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| インプット                   | プレゼンテーション層のコントローラから渡されたデータで，値がシステム上のルールと照らし合わせてバリデーションを実行する． | データの値がシステム上あり得ないかどうかを検証する．ビジネス上あり得ない値かどうかはドメイン層にSpecificationパターンとして実装する． |
-|                              | ドメイン層のメソッドを組み合わせて，ユーザの要求に対するシステムの振舞（ユースケース）を具現化する． |                                                              |
-|                              | プレゼンテーション層のコントローラから渡されたデータを，ドメイン層のインターフェースリポジトリに渡せるインプットデータに変換する． |                                                              |
-| アウトプット                 | ドメイン層のインターフェースリポジトリに渡されたデータを，インターフェース層のプレゼンターに渡せるアウトプットデータに変換する． |                                                              |
+![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master//images/clean-architecture_flow.png)
+
+<br>
+
+### インターラクター
+
+#### ・インターラクターとは
+
+入力／出力の処理時で，責務を以下のように分類できる．ユースケースごとに異なるInteractorクラスを定義する方法と，全てのユースケースを責務としてもつInteractorクラスを定義する方法がある．また，Interactorインターフェースを用意して，インターフェース層のコントローラはこれを経由して，実装Interactorクラスのメソッドをコールするようにする．
+
+| 入力時／出力時 | 責務                                                         | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 入力           | プレゼンテーション層のコントローラから入力されたリクエストパラメータを，システム上のルールと照らし合わせてバリデーションを実行する． | データの値がシステム上あり得ないかどうかを検証する．ビジネス上あり得ない値かどうかはドメイン層にSpecificationパターンとして実装する． |
+|                | ドメイン層のメソッドを組み合わせて，ユーザの要求に対するシステムの振舞（ユースケース）を具現化する． |                                                              |
+|                | プレゼンテーション層のコントローラから入力されたリクエストパラメータを，ドメイン層のインターフェースリポジトリに渡せるドメインモデルに変換する． |                                                              |
+| 出力           | ドメイン層のインターフェースリポジトリから出力されたドメインモデルをレスポンスモデルに変換し，インターフェース層のコントローラに出力する． | バックエンドをAPIとして使用する場合，プレゼンターは不要である． |
+|                | ドメイン層のインターフェースリポジトリから出力されたドメインモデルをレスポンスモデルを経てプレゼンターに変換し，インターフェース層のコントローラに出力する． | バックエンドでテンプレートエンジンを使用してHTMLを生成する場合，プレゼンターが必要である． |
+
+#### ・ユースケースとメソッド名
+
+インターラクターでは，ドメイン層を組み合わせてシステムの振舞（ユースケース）を具現化する．そのため，メソッド名はユースケースを適切に表現した自由な英単語を使用する．ユースケース図については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+
+**＊実装例＊**
+
+バックエンドをAPIとして使用する場合，プレゼンターは不要となる．この場合を示す．
+
+```php
+<?php
+
+namespace App\UseCase\Foo\Interactors;
+    
+/**
+ * Foo作成インターラクタークラス
+ * ※ユースケースごとにクラスを定義する方法
+ */
+class FooCreateInteractor
+{
+    private $fooRepository
+        
+    public function __constructor(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository
+    }
+    
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    {
+        $foo = $fooRepository->create(
+            new Bar($createFooRequest->bar),
+            new Baz($createFooRequest->baz)
+        )
+            
+        // 何らかの処理    
+    }
+}  
+```
+
+```php
+<?php
+
+namespace App\UseCase\Foo\Interactors;
+    
+/**
+ * Fooインターラクタークラス
+ * ※CURD全てのユースケースを，一つのクラスを定義する方法
+ */
+class FooInteractor
+{
+    private $fooRepository
+        
+    public function __constructor(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository
+    }
+    
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    {
+        $foo = $fooRepository->create(
+            new Bar($createFooRequest->bar),
+            new Baz($createFooRequest->baz)
+        )
+            
+        // 何らかの処理
+    }
+    
+    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
+    {
+        $foo = $fooRepository->findById(
+            new FooId($createFooRequest->id)
+        )  
+            
+        // 何らかの処理            
+    }
+    
+    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+    {
+        $foo = $fooRepository->update(
+            new FooId($createFooRequest->id),
+            new Bar($createFooRequest->bar),
+            new Baz($createFooRequest->baz)
+        )
+            
+        // 何らかの処理    
+    }
+    
+    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
+    {
+        $foo = $fooRepository->delete(
+            new FooId($createFooRequest->id)
+        )  
+            
+        // 何らかの処理      
+    }
+}  
+```
+
+<br>
+
+### インプットバウンダリ
+
+#### ・インプットバウンダリとは
+
+インターラクターのインターフェースのこと．上位レイヤーにあるコントローラは，インターラクターのインタフェースに依存する．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace App\UseCase\Foo\Interactors;
+namespace App\UseCase\Foo\InputBoundaries;
     
 /**
- * Fooドメインモデル作成ユースケース
- * ※ユースケースごとにクラスを定義する方法
+ * Fooインターラクターインターフェース
  */
-class FooCreateInteractor
+interface FooInteractorInterface
 {
-    public function createFoo()
-    {
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+
+    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
     
-    }
+    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+    
+    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
 }  
 ```
 
-```php
-<?php
+<br>
 
-namespace App\UseCase\Foo\Interactors;
-    
-/**
- * Fooドメインモデルユースケース
- * ※CURD全てのユースケースを，一つのクラスを定義する方法
- */
-class FooInteractor
-{
-    public function createFoo()
-    {
-    
-    }
-    
-    public function findFoo()
-    {
-    
-    }
-    
-    public function updateFoo()
-    {
-    
-    }
-    
-    public function deleteFoo()
-    {
-    
-    }
-}  
-```
+### アウトプットバウンダリ
 
-#### ・ユースケースとメソッド名
+#### ・アウトプットバウンダリとは
 
-インターラクタでは，ドメイン層を組み合わせてシステムの振舞（ユースケース）を具現化する．そのため，メソッド名はユースケースを適切に表現した自由な英単語を使用する．ユースケース図については，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+上位レイヤーのプレゼンターのインターフェースのこと．インターラクターは，レスポンスモデルではなく．アウトプットバウンダリをインターフェース層に出力する．ただし，アプリケーションをAPIとして使用する場合は，プレゼンターとアウトプットバウンダリが不要になり，これに伴い，インターラクターはレスポンスモデルを返却するようにする．
 
 <br>
 
-### インプットポート
-
-#### ・インプットポート
-
-インターラクタのインターフェースのこと．上位レイヤーにあるコントローラは，インターラクタのインタフェースに依存する．
-
-<br>
-
-### アウトプットポート
-
-#### ・アウトプットポート
-
-上位レイヤーのプレゼンターのインターフェースのこと．インターラクタは，レスポンスモデルではなく．アウトプットポートをユースケース層に出力する．ただし，アプリケーションをAPIとして使用する場合は，プレゼンターとアウトプットポートが不要になり，これに伴い，インターラクタはレスポンスモデルを返却するようにする．
-
-<br>
-
-### リクエストモデル
+### リクエストモデル（インプットデータ）
 
 #### ・リクエストモデルとは
 
@@ -178,7 +253,7 @@ class FooInteractor
 
 <br>
 
-### レスポンスモデル
+### レスポンスモデル（アウトプットデータ）
 
 #### ・レスポンスモデルとは
 
@@ -186,7 +261,7 @@ class FooInteractor
 
 **＊実装例＊**
 
-インターフェース層に渡すアウトプットデータを連想配列に変換する．
+インターフェース層に出力するデータを連想配列に変換する．
 
 ```php
 <?php
@@ -198,18 +273,18 @@ class FooResponse
    /**
     * オブジェクトを連想配列に詰め替えます．
     */
-    public function convertToArray(FooOutput $fooOutput)
+    public function createFooResponse(Foo $foo)
     {
         $response = [];
             
-        $response["id"] = $fooOutput->id;
-        $response["name"] = $fooOutput->name;
-        $response["email"] = $fooOutput->email;
+        $response["id"] = $foo->id->value();
+        $response["bar"] = $foo->bar->bar();
+        $response["baz"] = $foo->baz->baz();
+        
+        return $response;
     }
 } 
 ```
-
-
 
 <br>
 
@@ -530,7 +605,7 @@ class YmdType extends Type
 
 #### ・Specificationパターンとは
 
-デザインパターンの一つ．責務として，バリデーション，検索条件インプットデータを持つ．これらをエンティティや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
+デザインパターンの一つ．責務として，バリデーション，検索条件入力データを持つ．これらをエンティティや値オブジェクトのメソッド内部に持たせた場合，肥大化の原因となり，また埋もれてしまうため，可読性と保守性が悪い．そこで，こういったビジネスルールをSpecificationオブジェクトとして切り分けておく．
 
 #### ・ビジネスルールのバリデーション
 
@@ -559,7 +634,7 @@ class FooSpecification
 } 
 ```
 
-#### ・検索条件インプットデータ
+#### ・検索条件入力データ
 
 リクエストのパスパラメータとクエリパラメータを引数として，検索条件のオブジェクトを生成する．ビジネスルールのバリデーションを行うSpecificationクラスと区別するために，Criteriaオブジェクトという名前としても用いられる．
 
@@ -1589,15 +1664,15 @@ class DogOrder
 
 ### トランザクションとの関係性
 
-インフラストラクチャ層のリポジトリでは，ルートエンティティの単位で，データの書き込み／読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
+インフラ層のリポジトリでは，ルートエンティティの単位で，データの書き込み／読み出しのトランザクション処理を実行する．ルートエンティティを定義づける時の注意点として，集約の単位が大き過ぎると，一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず，ルートエンティティ全体まで対象としなければならなくなる．そのため，ビジネスロジックとしてのまとまりと，トランザクションとしてのまとまりの両方から，ルートエンティティの単位を定義づけるとよい．
 
 参考：https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
 
 <br>
 
-## 06. インフラストラクチャ層（<span style="color: SkyBlue; ">青</span>）
+## 06. インフラ層（<span style="color: SkyBlue; ">青</span>）
 
-### インフラストラクチャ層の依存性逆転
+### インフラ層の依存性逆転
 
 #### ・DIP（依存性逆転の原則）とは
 
@@ -1639,7 +1714,7 @@ class DogOrder
 
 #### ・リポジトリ（インターフェース）とは
 
-依存性逆転の原則を導入する場合に，ドメイン層にインターフェースリポジトリを配置する．インフラストラクチャ層の実装リポジトリクラスと対応関係にある．実装リポジトリについては，後述の説明を参考にせよ．
+依存性逆転の原則を導入する場合に，ドメイン層にインターフェースリポジトリを配置する．インフラ層の実装リポジトリクラスと対応関係にある．実装リポジトリについては，後述の説明を参考にせよ．
 
 **＊実装例＊**
 
@@ -1965,11 +2040,21 @@ class DogComboFactory
 
 <br>
 
+### ミドルウェア
+
+#### ・ミドルウェアとは
+
+ルーティング後にコントローラメソッドの前にコールされるBeforeMiddleと，レスポンスの実行時にコールされるAfterMiddlewareがある．最近のフレームワークでも搭載されている．
+
+![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+
+<br>
+
 ### インフラストラクチャサービス
 
 #### ・インフラストラクチャサービスとは
 
-インフラストラクチャ層の中で，汎用的なロジックが切り分けられたもの．また，ロギングやファイル出力のロジックもこの層に配置する．リポジトリと同様にして，ドメイン層にインターフェースを設け，依存性逆転の原則を満たせるようにする．
+インフラ層の中で，汎用的なロジックが切り分けられたもの．また，ロギングやファイル出力のロジックもこの層に配置する．リポジトリと同様にして，ドメイン層にインターフェースを設け，依存性逆転の原則を満たせるようにする．
 
 <br>
 
@@ -2022,7 +2107,7 @@ final class DomainException extends Exception
 
 <br>
 
-### インフラストラクチャ層
+### インフラ層
 
 #### ・例外
 

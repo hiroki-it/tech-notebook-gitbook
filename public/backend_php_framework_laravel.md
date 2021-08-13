@@ -178,7 +178,7 @@ REDIS_PORT=<Redisのポート>
 
 <br>
 
-## 04. Eloquent｜Domain
+## 04. Eloquentモデル
 
 ### artisanコマンドによる操作
 
@@ -194,7 +194,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ・Active Recordパターンとは
 
-テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．オブジェクト間の依存関係については，以下のリンクを参考せよ．
+テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
 
@@ -204,7 +204,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 | 項目             | メリット                                                     | デメリット                                                   |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 保守性           | テーブル間のリレーションが，そのままモデル間の依存関係になるため，モデル間の依存関係を考える必要がなく，開発が早い． | ・反対に，モデル間の依存関係によってテーブル間のリレーションが決まる．そのため，複雑な業務ロジックでモデル間が複雑な依存関係を持つと，テーブル間のリレーションも複雑になっていってしまう．<br>・モデルに対応するテーブルに関して，必要なカラムだけでなく，全てのカラムから取得するため，アプリケーションに余分な負荷がかかる． |
+| 保守性           | テーブル間のリレーションが，そのままモデル間の依存関係になるため，モデル間の依存関係を考える必要がなく，開発が早い．そのため，ビジネスロジックが複雑でないアプリケーションの開発に適している． | ・反対に，モデル間の依存関係によってテーブル間のリレーションが決まる．そのため，複雑な業務ロジックでモデル間が複雑な依存関係を持つと，テーブル間のリレーションも複雑になっていってしまう．<br>・モデルに対応するテーブルに関して，必要なカラムだけでなく，全てのカラムから取得するため，アプリケーションに余分な負荷がかかる． |
 | スケーラビリティ | テーブル間のリレーションがモデル間の依存関係によって定義されており，JOIN句を使用せずに，各テーブルから必要なデータを取得できる．そのため，テーブルを増やすやすい． |                                                              |
 | 可読性           | ・モデルとこれのプロパティがそのままテーブルになるため，モデルを作成するためにどのテーブルからデータを取得するのかを推測しやすい．（Userモデル ⇄ usersテーブル）<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． |                                                              |
 
@@ -587,7 +587,7 @@ class Foo extends Model
 $foo = Foo::find(1);
 
 // nameプロパティを取得しているわけでなく，getNameAttributeメソッドを実行している．
-$exmapleName = $foo->name;
+$fooName = $foo->name;
 ```
 
 <br>
@@ -706,12 +706,6 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-### ドメイン駆動設計との組み合わせ
-
-ビジネスロジック用のエンティティと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．アプリケーション層から受け取ったエンティティが保持するデータを，DTOクラスに詰め替えるようにすると，エンティティが他の層に依存しなくなる．
-
-<br>
-
 ### CRUDメソッドの返却値型と返却値
 
 #### ・CRUDメソッドを持つクラス
@@ -767,77 +761,6 @@ INSERT文を実行する．Eloquentモデルには```create```メソッドがな
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{    
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-    
-    /**
-     * Fooを構築します．
-     *
-     * @param  Foo $foo
-     * @return Response
-     */
-    public function create(Foo $foo)
-    {
-        // insert文を実行する．
-        $this->fooDTO
-            ->create([
-                "name"  => $foo->name()
-                "age"   => $foo->age()
-                "email" => $foo->email()
-            ]);
-        
-        // 以下の実装でもよい．
-        // $this->fooDTO
-        //    ->fill([
-        //        "name"  => $foo->name()
-        //        "age"   => $foo->age()
-        //        "email" => $foo->email()
-        //    ])
-        //    ->save();
-    }
-}
-```
-
-```php
-<?php
-
-namespace App\Domain\DTO;
-
-use Illuminate\Database\Eloquent\Model;
-
-class FooDTO extends Model
-{
-    // 更新可能なカラム
-    protected $fillable = [
-        "name",
-        "age",
-        "email",
-    ];
-}
-```
-
-<br>
-
 ### READ
 
 #### ・```find```メソッド
@@ -846,101 +769,11 @@ SELECT文を実行する．Eloquentモデルには```find```メソッドがな�
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-  
-    /**
-     * Idに関連付くFooを読み出します．
-     *
-     * @param FooId $fooId
-     * @return Foo
-     */
-    public function findOneById(FooId $fooId): Article
-    {
-        $fooDTO = $this->fooDTO
-            ->find($fooId);
-
-        return new Foo(
-            $fooDTO->id(),
-            $fooDTO->name(),
-            $fooDTO->age(),
-            $fooDTO->email(),
-        );
-    }
-```
-
 #### ・```all```メソッド
 
 SELECT文を実行する．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-  
-    /**
-     * 全てのFooを読み出します．
-     *
-     * @return array 
-     */
-    public function findAll(): array
-    {
-        $fooDTOs = $this->fooDTO
-            ->all();
-
-        $exmaples = [];
-        foreach ($fooDTOs as $fooDTO)
-            $exmaples = new Foo(
-                $fooDTO->id(),
-                $fooDTO->name(),
-                $fooDTO->age(),
-                $fooDTO->email(),
-            );
-
-        return $exmaples;
-    }
-}
-```
 
 #### ・```with```メソッド
 
@@ -953,7 +786,7 @@ Department（親）に，departmentsテーブルとemployeesテーブルの間�
 ```php
 <?php
 
-namespace App\Domain\DTO;
+namespace App\Models\Department;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -985,7 +818,7 @@ class Department extends Model
 ```php
 <?php
 
-namespace App\Domain\DTO;
+namespace App\Models\Department;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -1012,54 +845,41 @@ class Employee extends Model
 }
 ```
 
-Department（親）と，これに紐づくEmployee（子）を読み出す．
+コントローラにて，Department（親）と，これに紐づくEmployee（子）を読み出す．
 
 ```php
 <?php
 
-namespace App\Infrastructure\Repositories;
+namespace App\Http\Controllers;
 
-use App\Domain\Entity\Department;
-use App\Domain\Repositories\DepartmentRepository as DomainDepartmentRepository;
-use App\Infrastructure\DTO\DepartmentDTO;
-
-class DepartmentRepository extends Repository implements DomainDepartmentRepository
+class EmployeeController
 {
     /**
-     * @var DepartmentDTO
+     * @param $id
      */
-    private DepartmentDTO $departmentDTO;
-    
-    public function __construct(DepartmentDTO $departmentDTO)
+    public function getEmployeesById($id)
     {
-        $this->departmentDTO = $departmentDTO;
-    }   
-    
+        $department = new Department();
+        
+        // 指定したIdのDepartmentに属するEmployeesを全て読み出します．
+        // （departments : employees = 1 : 多）
+        $department->with("employees")->find($id);
+        
+        // 続きの処理
+    }
+
     /**
-     * 指定したIdのDepartmentに属するEmployeesを全て読み出します．
-     * （departments : employees = 1 : 多）
-     *
-     * @var    DepartmentId $id      
-     * @return Department
-     */
-    public function findOneWith(DepartmentId $id): Department
-    {
-        return $this->departmentDTO
-            ->with("employees")
-            ->find($id);
-    }  
-    
-    /**
-     * Departmentに属するEmployeesを全て読み出します．
-     * （departments : employees = 1 : 多）
      * 
-     * @return Collection
      */
-    public function findAllWith(): Collection
+    public function getEmployeesWithDepartment()
     {
+        // Departmentに属するEmployeesを全て読み出します．
+        // （departments : employees = 1 : 多）
         return $this->departmentDTO
             ->with("employees")
             ->get();
+
+        // 続きの処理
     }
 }
 ```
@@ -1074,67 +894,6 @@ UPDATE文を実行する．Eloquentモデルの```save```メソッドをコー�
 
 参考：https://codelikes.com/laravel-eloquent-basic/#toc9
 
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-    
-    /**
-     * Fooを更新します．
-     *
-     * @param Foo $foo
-     */
-    public function save(Foo $foo)
-    {
-        // オブジェクトにデータを設定する．
-        $fooData
-            ->fill([
-                "name"  => $foo->name(),
-                "age"   => $foo->age(),
-                "email" => $foo->email()
-            ])
-            // update文を実行する．
-            ->save();
-    }
-}
-```
-
-```php
-<?php
-
-namespace App\Domain\DTO;
-
-use Illuminate\Database\Eloquent\Model;
-
-class FooDTO extends Model
-{
-    // 更新可能なカラム
-    protected $fillable = [
-        "name",
-        "age",
-        "email",
-    ];
-}
-```
-
 <br>
 
 ### DELETE
@@ -1142,83 +901,6 @@ class FooDTO extends Model
 #### ・```delete```メソッド（物理削除）
 
 DELETE文を実行する．Eloquentモデルの```delete```メソッドを使用する．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```delete```メソッドをコールし，自身を削除する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-  
-    /**
-     * 削除します．
-     *
-     * @param Foo $foo
-     * @return void
-     */
-    public function delete(Foo $foo): void
-    {
-        $articleDTO = $this->articleDTO
-            ->find($article->id());
-        
-        // delete文を実行し，論理削除する．
-        $this->fooDto->delete();
-        
-        // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
-        // $this->fooDTO->destroy($foo->id());     
-    }
-}
-```
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    public function __construct(FooRepository $fooRepository)
-    {
-        $this->fooRepository = $fooRepository;
-    }
-    
-    /**
-     * 削除します．
-     *
-     * @param ArticleId $articleId
-     * @return Response
-     */
-    public function delete(FooId $fooId)
-    {
-        $foo = $this->fooRepository
-            ->findOneById($fooId);
-        
-        $this->fooRepository
-            ->delete($foo);
-
-        return response()->view("foo")
-            ->setStatusCode(200);
-    }
-}
-```
 
 #### ・```delete```メソッドとSoftDeletesのTrait（論理削除）
 
@@ -1296,47 +978,6 @@ class CreateFooTable extends Migration
 
 上記の状態で，同様に```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないデータを読み出さないため，論理削除を実現できる．
 
-```php
-<?php
-
-namespace App\Infrastructure\Repositories;
-
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
-
-class FooRepository extends Repository implements DomainFooRepository
-{
-    /**
-     * @var FooDTO
-     */
-    private FooDTO $fooDTO;
-    
-    public function __construct(FooDTO $fooDTO)
-    {
-        $this->fooDTO = $fooDTO;
-    }   
-    
-    /**
-     * Fooを削除します．
-     *
-     * @param Exmaple $foo
-     * @return void
-     */
-    public function delete(Exmaple $foo): void
-    {
-        $foo = $this->fooRepository
-            ->findOneById($fooId);
-        
-        $this->fooRepository
-            ->delete($foo);
-        
-        // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
-        // $this->fooDTO->destroy($foo->id());        
-    }
-}
-```
-
 <br>
 
 ### N+1問題の解決
@@ -1388,6 +1029,350 @@ foreach($departments as $department) {
 # 2回
 select * from `departments`
 select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
+```
+
+<br>
+
+## 04-04. Laravelへのリポジトリパターン導入
+
+### 背景
+
+LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．
+
+<br>
+
+### 導入方法
+
+#### ・DTOクラスの設置
+
+ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でデータのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
+
+<br>
+
+### CREATE
+
+#### ・```create```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * Fooを構築します．
+     *
+     * @param  Foo $foo
+     * @return Response
+     */
+    public function create(Foo $foo): Foo
+    {
+        // insert文を実行する．
+        $fooDTO = $this->fooDTO
+            ->create([
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
+            ]);
+        
+        // 以下の実装でもよい．
+        // $fooDTO = $this->fooDTO
+        //           ->fill([
+        //               "name"  => $foo->name()
+        //               "age"   => $foo->age()
+        //               "email" => $foo->email()
+        //           ])
+        //           ->save();
+        
+        // 作成したFooを返却する．
+        return new Foo($fooDTO->name, $fooDTO->age, $fooDTO->email);
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+        "email",
+    ];
+}
+```
+
+<br>
+
+### READ
+
+#### ・```find```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+    
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }   
+  
+    /**
+     * Idを元にFooを取得します．
+     *
+     * @param FooId $fooId
+     * @return Foo
+     */
+    public function findById(FooId $fooId): Foo
+    {
+        $fooDTO = $this->fooDTO
+            ->find($fooId);
+
+        return new Foo(
+            $fooDTO->id(),
+            $fooDTO->name(),
+            $fooDTO->age(),
+            $fooDTO->email(),
+        );
+    }
+```
+
+#### ・```all```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+    
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }   
+  
+    /**
+     * 全てのFooを読み出します．
+     *
+     * @return array 
+     */
+    public function findAll(): array
+    {
+        $fooDTOs = $this->fooDTO
+            ->all();
+
+        $foos = [];
+        foreach ($fooDTOs as $fooDTO)
+            $foos = new Foo(
+                $fooDTO->id(),
+                $fooDTO->name(),
+                $fooDTO->age(),
+                $fooDTO->email(),
+            );
+
+        return $foos;
+    }
+}
+```
+
+#### ・```with```メソッド
+
+<br>
+
+### UPDATE
+
+#### ・```save```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * Fooを更新します．
+     *
+     * @param Foo $foo
+     */
+    public function save(Foo $foo): FooId
+    {
+        // オブジェクトにデータを設定する．
+        $id = $this->fooDTO
+            ->fill([
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
+            ])
+            // update文を実行する．
+            ->save()
+            ->id;
+        
+        return new FooId($id);
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+        "email",
+    ];
+}
+```
+
+<br>
+
+### DELETE
+
+#### ・```delete```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+    
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }   
+  
+    /**
+     * 削除します．
+     *
+     * @param FooId $fooId
+     * @return bool
+     */
+    public function delete(FooId $fooId): bool
+    {
+        $fooDTO = $this->fooDTO
+            ->find($fooId);
+        
+        // delete文を実行し，論理削除する．
+        return $this->fooDTO->delete();
+        
+        // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
+        // return $this->fooDTO->destroy($foo->id());     
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    public function __construct(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository;
+    }
+    
+    /**
+     * 削除します．
+     *
+     * @param ArticleId $articleId
+     * @return Response
+     */
+    public function delete(FooId $fooId)
+    {
+        $this->fooRepository
+            ->delete($fooId);
+
+        return response()->view("foo")
+            ->setStatusCode(200);
+    }
+}
 ```
 
 <br>
@@ -1834,7 +1819,7 @@ class Foo
 <?php
   
 "aliases" => [
-    "Foo" => App\Domain\Entity\Foo::class,
+    "Foo" => App\Domain\Foo\Entities::class,
 ]
 ```
 
@@ -2027,9 +2012,9 @@ class RouteServiceProvider extends ServiceProvider
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
@@ -2080,9 +2065,9 @@ class FooRepository extends Repository implements DomainFooRepository
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Entity\Foo;
-use App\Domain\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\DTO\FooDTO;
+use App\Domain\Foo\Entities;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
@@ -2181,7 +2166,7 @@ Route::middleware("auth")->group(function () {
 
 namespace App\Http;
 
-use App\Http\Middleware\BeforeMiddleware\ArticleIdConverterMiddleware;
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -2300,7 +2285,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern("articleId", "[0-9]+");
+        Route::pattern("fooId", "[0-9]+");
 
         parent::boot();
     }
@@ -2558,14 +2543,8 @@ class FooController extends Controller
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
-
-        $fooRepository = new FooRepository;
-        $fooRepository->update(
-            $validator->valid()
-        );
-
-        return response()->view("foo")
-            ->setStatusCode(200);
+        
+        // 続きの処理
     }
 }
 ```
@@ -2606,14 +2585,8 @@ class FooController extends Controller
             return redirect("error")->withErrors($validator)
                 ->withInput();
         }
-
-        $fooRepository = new FooRepository;
-        $fooRepository->update(
-            $validator->valid()
-        );
-
-        return response()->view("foo")
-            ->setStatusCode(200);
+        
+        // 続きの処理
     }
 }
 ```
@@ -3031,13 +3004,8 @@ class FooController extends Controller
         // バリデーションの実行
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validated();
-
-        $fooRepository = new FooRepository;
-        $fooRepository->update($validated);
-
-        // バリデーション時にエラーが起こらなかった場合
-        return response()->view("foo")
-            ->setStatusCode(200);
+        
+        // 続きの処理
     }
 }
 ```
@@ -3074,12 +3042,7 @@ class FooController extends Controller
             "date"  => "required|date",
         ]);
 
-        $fooRepository = new FooRepository;
-        $fooRepository->update($validated);
-
-        // バリデーション時にエラーが起こらなかった場合
-        return response()->view("foo")
-            ->setStatusCode(200);
+        // 続きの処理
     }
 }
 ```
@@ -3112,12 +3075,7 @@ class FooController extends Controller
             "date"  => ["required", "date"],
         ]);
 
-        $fooRepository = new FooRepository;
-        $fooRepository->update($validated);
-
-        // バリデーション時にエラーが起こらなかった場合
-        return response()->view("foo")
-            ->setStatusCode(200);
+        // 続きの処理
     }
 }
 ```
@@ -4251,7 +4209,7 @@ APIのエンドポイントとして働くルーティング処理を実装す�
 
 namespace App\Http;
 
-use App\Http\Middleware\BeforeMiddleware\ArticleIdConverterMiddleware;
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -4286,7 +4244,7 @@ API以外のルーティング処理を実装する．実装したルーティ�
 
 namespace App\Http;
 
-use App\Http\Middleware\BeforeMiddleware\ArticleIdConverterMiddleware;
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -4591,7 +4549,7 @@ AppSeriveProviderにて，ServiceContainerにクラスをバインドするこ�
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\Entity\Foo;
+use App\Domain\Foo\Entities;
 
 class FooServiceProvider extends ServiceProvider
 {
@@ -4618,7 +4576,7 @@ class FooServiceProvider extends ServiceProvider
 
 namespace App\Providers;
 
-use App\Domain\Entity\Foo;
+use App\Domain\Foo\Entities;
 use App\Domain\Entity\Bar;
 use App\Domain\Entity\Baz;
 use Illuminate\Support\ServiceProvider;
@@ -4669,7 +4627,7 @@ class FoosServiceProvider extends ServiceProvider
 }
 ```
 
-#### ・インターフェース（または抽象クラス）をバインド
+#### ・インターフェースをバインド
 
 具象クラスは自動的にバインドされるが，インターフェース（抽象クラス）は，手動でバインドする必要がある．このバインドによって，インターフェースをコールすると実装インスタンスを生成できるようになる．
 
@@ -4695,8 +4653,8 @@ class FooServiceProvider extends ServiceProvider
     {
         // Domain層とInfrastructure層のリポジトリの結合をバインド
         $this->app->bind(
-            "App\Domain\Repositories\ArticleRepository",
-            "App\Infrastructure\Repositories\ArticleRepository"
+            "App\Domain\Foo\Repositories\FooRepository",
+            "App\Infrastructure\Repositories\FooRepository"
         );
     }
 }
@@ -4723,9 +4681,9 @@ class Foo extends Entity
     /**
      * コンストラクタインジェクション
      *
-     * @param SubExmaple $subFoo
+     * @param SubFoo $subFoo
      */
-    public function __construct(SubExmaple $subFoo)
+    public function __construct(SubFoo $subFoo)
     {
         $this->foo = $subFoo;
     }
