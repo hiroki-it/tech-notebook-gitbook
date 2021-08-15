@@ -1480,7 +1480,7 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    ▶ ︎CI & CD
+                    ▶ ︎CI/CD
             
                 </a>
             
@@ -1524,7 +1524,7 @@
                 <span>
             
                     
-                    データ収集
+                    監視
             
                 </span>
             
@@ -1533,12 +1533,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.16.1" data-path="infrastructure_log_collector.html">
+        <li class="chapter " data-level="1.16.1" data-path="infrastructure_log_collecting_and_routing.html">
             
-                <a href="infrastructure_log_collector.html">
+                <a href="infrastructure_log_collecting_and_routing.html">
             
                     
-                    ▶ ︎ログ収集ツール
+                    ▶ ︎ログ収集/ログルーティング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="infrastructure_datadog.html">
+            
+                <a href="infrastructure_datadog.html">
+            
+                    
+                    ▶ ︎Datadog
             
                 </a>
             
@@ -1782,7 +1795,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sql"><a name="sql" class="plugin-anchor" href="#sql"><i class="fa fa-link" aria-hidden="true"></i></a>SQL</h1>
+                                <h1 id="mysql"><a name="mysql" class="plugin-anchor" href="#mysql"><i class="fa fa-link" aria-hidden="true"></i></a>MySQL</h1>
 <h2 id="01-&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;"><a name="01-&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;" class="plugin-anchor" href="#01-&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;</h2>
 <h3 id="mysql&#x306E;&#x6E96;&#x5099;"><a name="mysql&#x306E;&#x6E96;&#x5099;" class="plugin-anchor" href="#mysql&#x306E;&#x6E96;&#x5099;"><i class="fa fa-link" aria-hidden="true"></i></a>MySQL&#x306E;&#x6E96;&#x5099;</h3>
 <h4 id="&#x30FB;centos&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;centos&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;centos&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CentOS&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
@@ -1848,10 +1861,32 @@ $ dnf <span class="token function">install</span> -y mysql-server
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h3 id="&#x5236;&#x7D04;"><a name="&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5236;&#x7D04;</h3>
-<h4 id="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><a name="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3068;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;</h4>
-<p>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x4E00;&#x610F;&#x306B;&#x7279;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x5024;&#x3092;&#x300E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x300F;&#x306E;&#x5024;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
+<h3 id="&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><a name="&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;" class="plugin-anchor" href="#&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x4E3B;&#x30AD;&#x30FC;.jpg" alt="&#x4E3B;&#x30AD;&#x30FC;"></p>
+<p>&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x5024;&#x3092;&#x300E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x300F;&#x306E;&#x5024;&#x3068;&#x547C;&#x3076;&#xFF0E;&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3067;&#x304D;&#x308B;&#x3082;&#x306E;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x4F55;&#x3092;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x304F;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x306B;&#x4EE5;&#x4E0B;&#x304C;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL&#x306E;Auto Increment&#x6A5F;&#x80FD;&#x306B;&#x3088;&#x3063;&#x3066;&#x5897;&#x52A0;&#x3059;&#x308B;&#x756A;&#x53F7;&#x30AB;&#x30E9;&#x30E0;</td>
+<td>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3092;&#x8AB2;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x306E;Auto Increment&#x6A5F;&#x80FD;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;CREATE&#x51E6;&#x7406;&#x3067;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x300E;<code>0</code>&#x300F;&#x307E;&#x305F;&#x306F;&#x300E;<code>null</code>&#x300F;&#x3092;&#x30E2;&#x30C7;&#x30EB;&#x306E;ID&#x5024;&#x3068;&#x3057;&#x3066;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x51E6;&#x7406;&#x306B;&#x3088;&#x3063;&#x3066;&#x65B0;&#x3057;&#x3044;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x73FE;&#x5728;&#x306E;&#x6700;&#x65B0;&#x756A;&#x53F7;&#x306B;&#xFF0B;&#xFF11;&#x3057;&#x305F;&#x756A;&#x53F7;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306F;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3092;&#x6E80;&#x305F;&#x3059;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html" target="_blank">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
+<td>&#x30FB;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EB;&#x3068;DB&#x304C;&#x3088;&#x308A;&#x5BC6;&#x7D50;&#x5408;&#x306B;&#x306A;&#x308A;&#xFF0C;Active Record&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x76F8;&#x6027;&#x304C;&#x3088;&#x3044;&#xFF0E;<br>MySQL&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;&#x300E;<code>NO_AUTO_VALUE_ON_ZERO</code>&#x300F;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x300E;<code>0</code>&#x300F;&#x306E;&#x5272;&#x308A;&#x5F53;&#x3066;&#x306B;&#x3088;&#x308B;&#x81EA;&#x52D5;&#x9023;&#x756A;&#x304C;&#x62D2;&#x5426;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>UUID&#xFF08;&#x4F8B;&#xFF1A;<code>3cc807ab-8e31-3071-aee4-f8f03781cb91</code>&#xFF09;</td>
+<td>CREATE&#x51E6;&#x7406;&#x3067;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x6642;&#x306B;&#xFF0C;&#x30A2;&#x30D7;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x751F;&#x6210;&#x3057;&#x305F;UUID&#x5024;&#x3092;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EB;&#x306E;ID&#x5024;&#x3068;&#x3057;&#x3066;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;UUID&#x5024;&#x304C;&#x91CD;&#x8907;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x57FA;&#x672C;&#x7684;&#x306B;&#x8D77;&#x3053;&#x308A;&#x5F97;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3092;&#x6E80;&#x305F;&#x3059;&#xFF0E;UUID&#x5024;&#x306E;&#x751F;&#x6210;&#x95A2;&#x6570;&#x306F;&#x8A00;&#x8A9E;&#x306E;&#x6A19;&#x6E96;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x3068;&#x3057;&#x3066;&#x7528;&#x610F;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
+<td>&#x30FB;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EB;&#x3068;DB&#x304C;&#x3088;&#x308A;&#x758E;&#x7D50;&#x5408;&#x306B;&#x3067;&#x304D;&#xFF0C;Repository&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x76F8;&#x6027;&#x304C;&#x3088;&#x3044;&#xFF0E;<br>UUID&#x5024;&#x306F;&#x6587;&#x5B57;&#x5217;&#x3068;&#x3057;&#x3066;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;DB&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x51E6;&#x7406;&#x306E;&#x8CA0;&#x8377;&#x304C;&#x9AD8;&#x307E;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;<br>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x30BD;&#x30FC;&#x30C8;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><a name="&#x30FB;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;</h4>
 <p>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x306F;&#x8907;&#x6570;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#xFF0C;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x7247;&#x65B9;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306E;&#x5024;&#x304C;&#x7570;&#x306A;&#x308C;&#x3070;&#xFF0C;&#x7570;&#x306A;&#x308B;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3057;&#x3066;&#x898B;&#x306A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30E6;&#x30FC;&#x30B6;ID&#x3068;&#x671F;&#x9593;&#x958B;&#x59CB;&#x65E5;&#x4ED8;&#x3092;&#x8907;&#x5408;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x4EBA;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x8907;&#x6570;&#x306E;&#x671F;&#x9593;&#x3092;&#x3082;&#x3064;&#x3053;&#x3068;&#x3092;&#x8868;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
@@ -1885,10 +1920,32 @@ $ dnf <span class="token function">install</span> -y mysql-server
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h4 id="&#x30FB;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;"><a name="&#x30FB;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;</h4>
+<p>&#x5404;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x7D71;&#x5408;&#x7684;&#x306B;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x5404;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x306F;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x3092;&#x5143;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x9023;&#x756A;&#x3067;&#x306F;&#x306A;&#x304F;&#x98DB;&#x3073;&#x98DB;&#x3073;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://blog.livedoor.jp/sasata299/archives/51280681.html" target="_blank">http://blog.livedoor.jp/sasata299/archives/51280681.html</a></p>
+<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x624B;&#x52D5;&#x3067;&#x633F;&#x5165;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sql"><span class="token comment"># &#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> id_sequence <span class="token punctuation">(</span>id <span class="token keyword">BIGINT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># &#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x624B;&#x52D5;&#x3067;&#x633F;&#x5165;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> id_sequence <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>CREATE&#x51E6;&#x7406;&#x6642;&#x306B;&#x306F;&#xFF0C;&#x4E8B;&#x524D;&#x306B;&#xFF0C;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x65B0;&#x3057;&#x304F;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;INSERT&#x6587;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x306B;&#x300E;<code>0</code>&#x300F;&#x3084;&#x300E;<code>null</code>&#x300F;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x63A1;&#x756A;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3057;&#x305F;ID&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-sql"><span class="token comment"># &#x65B0;&#x3057;&#x304F;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token keyword">UPDATE</span> id_sequence <span class="token keyword">SET</span> id <span class="token operator">=</span> LAST_INSERT_ID<span class="token punctuation">(</span>id <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># &#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token keyword">SELECT</span> LAST_INSERT_ID<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x5236;&#x7D04;"><a name="&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5236;&#x7D04;</h3>
+<h4 id="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><a name="&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;</h4>
+<p>&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x3068;&#x3059;&#x308B;&#x30AB;&#x30E9;&#x30E0;&#x306B;&#x306F;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x3092;&#x8AB2;&#x3059;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x5236;&#x7D04;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;Unique&#x5236;&#x7D04;&#x3068;Not Null&#x5236;&#x7D04;&#x306E;&#x4E21;&#x65B9;&#x304C;&#x8AB2;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;not-null&#x5236;&#x7D04;"><a name="&#x30FB;not-null&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x30FB;not-null&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Not Null&#x5236;&#x7D04;</h4>
 <p>&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x633F;&#x5165;&#x3055;&#x308C;&#x308B;&#x5024;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x4E0D;&#x4E00;&#x81F4;&#x3084;Null&#x306E;&#x305F;&#x3081;&#x306E;&#x4F8B;&#x5916;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x3088;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;foreign-key&#xFF08;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#xFF09;"><a name="&#x30FB;foreign-key&#xFF08;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#xFF09;" class="plugin-anchor" href="#&#x30FB;foreign-key&#xFF08;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Foreign key&#xFF08;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#xFF09;</h4>
-<p>&#x89AA;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;Foreign key&#xFF08;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#xFF09;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x89AA;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x9593;&#x306B;&#x4EE5;&#x4E0B;&#x306E;&#x6574;&#x5408;&#x6027;&#x30EB;&#x30FC;&#x30EB;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><a name="&#x30FB;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x5236;&#x7D04;" class="plugin-anchor" href="#&#x30FB;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x5236;&#x7D04;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x5236;&#x7D04;</h4>
+<p>&#x89AA;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x300E;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x89AA;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x9593;&#x306B;&#x4EE5;&#x4E0B;&#x306E;&#x6574;&#x5408;&#x6027;&#x30EB;&#x30FC;&#x30EB;&#x304C;&#x8AB2;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <ul>
 <li>&#x89AA;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x53C2;&#x7167;&#x5143;&#x30AB;&#x30E9;&#x30E0;&#x306B;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x5024;&#x306F;&#xFF0C;&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x767B;&#x9332;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</li>
 <li>&#x5B50;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x5916;&#x90E8;&#x30AD;&#x30FC;&#x304C;&#x53C2;&#x7167;&#x3059;&#x308B;&#x5024;&#x304C;&#xFF0C;&#x89AA;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x53C2;&#x7167;&#x5143;&#x30AB;&#x30E9;&#x30E0;&#x306B;&#x5B58;&#x5728;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x53C2;&#x7167;&#x5143;&#x30AB;&#x30E9;&#x30E0;&#x306F;&#x524A;&#x9664;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</li>
@@ -2132,7 +2189,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;lastinsertid"><a name="&#x30FB;lastinsertid" class="plugin-anchor" href="#&#x30FB;lastinsertid"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>LAST_INSERT_ID()</code></h4>
-<p>&#x6700;&#x5F8C;&#x306B;&#x633F;&#x5165;&#x3055;&#x308C;&#x305F;ID&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;</p>
+<p>&#x4EFB;&#x610F;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x6700;&#x5F8C;&#x306B;&#x633F;&#x5165;&#x3055;&#x308C;&#x305F;ID&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> LAST_INSERT_ID<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;md5"><a name="&#x30FB;md5" class="plugin-anchor" href="#&#x30FB;md5"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MD5()</code></h4>
@@ -2827,7 +2884,7 @@ charaset=UTF-8&quot;</span><span class="token punctuation">;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-07-30T00:19:54.489Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T00:29:49.653Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-08-14T12:59:15.120Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-15T04:56:48.686Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
