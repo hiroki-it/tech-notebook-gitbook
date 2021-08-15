@@ -484,9 +484,6 @@ class Foo extends Model
      */
     protected $fillable = [
         "name",
-        "email",
-        "password",
-        "api_token"
     ];
 }
 ```
@@ -508,7 +505,7 @@ class Foo extends Model
      * @var array
      */
     protected $guarded = [
-        "xxx",
+        "bar",
     ];
 }
 ```
@@ -696,15 +693,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-## 04-02. Eloquent｜Data Access
-
-### artisanコマンドによる操作
-
-```shell
-
-```
-
-<br>
+## 04-02. Eloquentモデル／ビルダーによるCRUD
 
 ### CRUDメソッドの返却値型と返却値
 
@@ -751,15 +740,69 @@ Eloquentモデルが持つcrudを実行するメソッドの返却値型と返�
 
 <br>
 
-## 04-03. Eloquentモデル／ビルダーによるCRUD
-
 ### CREATE
 
 #### ・```create```メソッド
 
-INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．この時，```create```メソッドに挿入対象のカラムと値を設定する．または，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．別に，Eloquentモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．
+INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入対象のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行してもよい．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリキーが取得され，EloquentモデルのID値のプロパティに保持される．
 
-参考：https://codelikes.com/laravel-eloquent-basic/#toc9
+参考：
+
+- https://codelikes.com/laravel-eloquent-basic/#toc9
+- https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function createFoo(Request $request)
+    {
+        $foo = new Foo();
+
+        // INSERT文を実行する．また同時にIDを取得する．
+        $foo->create($request->all());
+
+        // 以下の実装でもよい
+        // $foo->fill($request->all())->save();
+
+        // 処理後にはEloquentモデルにID値が保持されている．
+        $foo->id();
+
+        // 続きの処理
+    }
+}
+
+```
+
+Eloquentモデルには```fillable```プロパティを設定しておく．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
+
+<br>
 
 ### READ
 
@@ -890,21 +933,68 @@ class EmployeeController
 
 #### ・```save```メソッド
 
-UPDATE文を実行する．Eloquentモデルの```save```メソッドをコールする．手順として，Eloquentビルダーの```fill```メソッドで，挿入対象のカラムと値を設定し，```save```メソッドを実行する．一方で，Eloquentモデルには```fillable```プロパティを設定しておく．UPDATE文の実行時と使用するメソッドは同じである．．
+UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．```save```メソッドはCREATE処理も実行できるが，```fill```メソッドでID値を割り当てた場合は，UPDATE処理が実行される．
 
-参考：https://codelikes.com/laravel-eloquent-basic/#toc9
+参考：
+
+- https://codelikes.com/laravel-eloquent-basic/#toc9
+- https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function updateFoo(Request $request)
+    {
+        $foo = new Foo();
+
+        // UPDATE文を実行する．
+        $foo->fill($request->all())->save();
+
+        // 続きの処理
+    }
+}
+```
+
+Eloquentモデルには```fillable```プロパティを設定しておく．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
 
 <br>
 
 ### DELETE
 
-#### ・```delete```メソッド（物理削除）
+#### ・```destroy```／```delete```メソッド（物理削除）
 
-DELETE文を実行する．Eloquentモデルの```delete```メソッドを使用する．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```delete```メソッドをコールし，自身を削除する．
+DELETE文を実行する．Eloquentモデルの```destroy```／```delete```メソッドを使用する．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```destroy```／```delete```メソッドをコールし，自身を削除する．
 
-#### ・```delete```メソッドとSoftDeletesのTrait（論理削除）
+#### ・SoftDeletesの有効化（論理削除）
 
-削除フラグを更新するUPDATE文を実行する．Eloquentモデルの```delete```メソッドを使用する．手順として，テーブルに対応するModelにて，SoftDeletesのTraitを読み込む．マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に，DataTimeクラスに変換できるようにしておく．
+削除フラグを更新するUPDATE文を実行する．Eloquentモデルの```destroy```／```delete```メソッドを使用する．手順として，テーブルに対応するModelにて，SoftDeletesのTraitを読み込む．マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に，DataTimeクラスに変換できるようにしておく．
 
 **＊実装例＊**
 
@@ -976,7 +1066,7 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で，同様に```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないデータを読み出さないため，論理削除を実現できる．
+上記の状態で，同様に```destroy```／```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないデータを読み出さないため，論理削除を実現できる．
 
 <br>
 
@@ -1037,15 +1127,81 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．
+LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．リポジトリパターンについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design_clean_architecture.html
 
 <br>
 
-### 導入方法
+### 工夫
 
-#### ・DTOクラスの設置
+#### ・DTOクラスの導入
 
-ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でデータのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
+ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でデータのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Infrastructure\Foo\DTOs;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+final class FooDTO extends Model
+{
+    use HasFactory;
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'age',
+    ];
+    /**
+     * @var int
+     */
+    private int $id;
+
+    /**
+     * @var string
+     */
+    private string $name;
+
+    /**
+     * @var int
+     */
+    private int $age;
+
+    /**
+     * @var string
+     */
+    private string $email;
+
+    /**
+     * @return Foo
+     */
+    public function toFoo(): Foo
+    {
+        return new Foo(
+            new FooId($this->id),
+            new FooName($this->name),
+            new FooAge($this->age),
+        );
+    }
+}
+```
 
 <br>
 
@@ -1060,7 +1216,7 @@ LaravelはActive Recordパターンを採用しており，これはビジネス
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTO\FooDTO;
 
@@ -1077,32 +1233,26 @@ class FooRepository extends Repository implements DomainFooRepository
     }
 
     /**
-     * Fooを構築します．
-     *
-     * @param  Foo $foo
-     * @return Response
+     * @param Foo $foo
+     * @return void
      */
-    public function create(Foo $foo): Foo
+    public function create(Foo $foo): void
     {
-        // insert文を実行する．
-        $fooDTO = $this->fooDTO
+        $this->fooDTO
+            // INSERT文を実行する．
             ->create([
+                // ドメインモデルのデータをDTOに詰め替える．
                 "name"  => $foo->name(),
                 "age"   => $foo->age(),
-                "email" => $foo->email()
             ]);
-        
-        // 以下の実装でもよい．
-        // $fooDTO = $this->fooDTO
-        //           ->fill([
-        //               "name"  => $foo->name()
-        //               "age"   => $foo->age()
-        //               "email" => $foo->email()
-        //           ])
-        //           ->save();
-        
-        // 作成したFooを返却する．
-        return new Foo($fooDTO->name, $fooDTO->age, $fooDTO->email);
+
+//        以下の実装でもよい．
+//        $this->fooDTO
+//            ->fill([
+//                "name"  => $foo->name(),
+//                "age"   => $foo->age(),
+//            ])
+//            ->save();
     }
 }
 ```
@@ -1120,7 +1270,6 @@ class FooDTO extends Model
     protected $fillable = [
         "name",
         "age",
-        "email",
     ];
 }
 ```
@@ -1138,7 +1287,8 @@ class FooDTO extends Model
 
 namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTOs\FooDTO;
 
@@ -1148,30 +1298,30 @@ class FooRepository extends Repository implements DomainFooRepository
      * @var FooDTO
      */
     private FooDTO $fooDTO;
-    
+
     public function __construct(FooDTO $fooDTO)
     {
         $this->fooDTO = $fooDTO;
-    }   
-  
+    }
+
     /**
-     * Idを元にFooを取得します．
-     *
      * @param FooId $fooId
      * @return Foo
      */
     public function findById(FooId $fooId): Foo
     {
         $fooDTO = $this->fooDTO
-            ->find($fooId);
+            ->find($fooId->id());
 
+        // DBアクセス処理後のDTOをドメインモデルに変換する．
         return new Foo(
             $fooDTO->id(),
             $fooDTO->name(),
             $fooDTO->age(),
-            $fooDTO->email(),
+            $fooDTO->email()
         );
     }
+}
 ```
 
 #### ・```all```メソッド
@@ -1183,7 +1333,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTOs\FooDTO;
 
@@ -1200,8 +1350,6 @@ class FooRepository extends Repository implements DomainFooRepository
     }   
   
     /**
-     * 全てのFooを読み出します．
-     *
      * @return array 
      */
     public function findAll(): array
@@ -1211,6 +1359,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
         $foos = [];
         foreach ($fooDTOs as $fooDTO)
+            // DBアクセス後のDTOをドメインモデルに変換する． 
             $foos = new Foo(
                 $fooDTO->id(),
                 $fooDTO->name(),
@@ -1238,7 +1387,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTOs\FooDTO;
 
@@ -1255,24 +1404,19 @@ class FooRepository extends Repository implements DomainFooRepository
     }
 
     /**
-     * Fooを更新します．
-     *
      * @param Foo $foo
+     * @return void
      */
-    public function save(Foo $foo): FooId
+    public function save(Foo $foo): void
     {
-        // オブジェクトにデータを設定する．
-        $id = $this->fooDTO
+        $this->fooDTO
+            // ドメインモデルのデータをDTOに詰め替える．
             ->fill([
                 "name"  => $foo->name(),
                 "age"   => $foo->age(),
-                "email" => $foo->email()
             ])
-            // update文を実行する．
-            ->save()
-            ->id;
-        
-        return new FooId($id);
+            // UPDATE文を実行する．
+            ->save();
     }
 }
 ```
@@ -1290,7 +1434,6 @@ class FooDTO extends Model
     protected $fillable = [
         "name",
         "age",
-        "email",
     ];
 }
 ```
@@ -1299,7 +1442,7 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ・```delete```メソッド
+#### ・```destroy```／```delete```メソッド
 
 **＊実装例＊**
 
@@ -1308,9 +1451,10 @@ class FooDTO extends Model
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
-use App\Infrastructure\Foo\DTO\FooDTO;
+use App\Infrastructure\Foo\DTOs\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
@@ -1318,28 +1462,23 @@ class FooRepository extends Repository implements DomainFooRepository
      * @var FooDTO
      */
     private FooDTO $fooDTO;
-    
+
     public function __construct(FooDTO $fooDTO)
     {
         $this->fooDTO = $fooDTO;
-    }   
-  
+    }
+
     /**
-     * 削除します．
-     *
      * @param FooId $fooId
-     * @return bool
+     * @return void
      */
-    public function delete(FooId $fooId): bool
+    public function delete(FooId $fooId): void
     {
-        $fooDTO = $this->fooDTO
-            ->find($fooId);
+        // destroyメソッドでレコードを削除する．
+        $this->fooDTO->destroy($fooId->id());
         
-        // delete文を実行し，論理削除する．
-        return $this->fooDTO->delete();
-        
-        // destoryメソッドで削除処理を実行してもよい．ModelのIdが必要である．
-        // return $this->fooDTO->destroy($foo->id());     
+        // deleteメソッドを使用しても良い．
+        // $this->fooDTO->find($fooId->id())->delete();
     }
 }
 ```
@@ -1357,12 +1496,10 @@ class FooController extends Controller
     {
         $this->fooRepository = $fooRepository;
     }
-    
+
     /**
-     * 削除します．
-     *
-     * @param ArticleId $articleId
-     * @return Response
+     * @param FooId $fooId
+     * @return mixed
      */
     public function delete(FooId $fooId)
     {
@@ -1383,7 +1520,7 @@ class FooController extends Controller
 
 #### ・データベースアクセス系
 
-Eloquentモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
+Eloquentモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```destroy```／```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
 
 **＊実装例＊**
 
@@ -2001,7 +2138,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ・```transaction```メソッド
 
-一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま使用できる．ちなみに，トランザクション処理は必須ではなく，使用するとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．
+一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま使用できる．ちなみに，トランザクション処理は必須ではなく，使用するとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う／行わない場合を比較して，処理時間が17%弱長くなったとのこと．
 
 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -2012,9 +2149,10 @@ class RouteServiceProvider extends ServiceProvider
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTO\FooDTO;
+use Throwable;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
@@ -2022,41 +2160,44 @@ class FooRepository extends Repository implements DomainFooRepository
      * @var FooDTO
      */
     private FooDTO $fooDTO;
-    
+
     public function __construct(FooDTO $fooDTO)
     {
         $this->fooDTO = $fooDTO;
-    }   
-    
+    }
+
     /**
-     * Fooを更新します．
-     *
      * @param Foo $foo
-     * @return bool
+     * @throws Throwable
      */
-    public function save(Foo $foo)
-    {   
-        // 一連のトランザクション処理を実行する．
-        // 無名関数から返却された値を，さらに返却する．
-        return DB::transaction(function () use ($fooData, $foo){
-            
-            // オブジェクトにデータを設定する．
-            return $fooData->fill([
-                "name"  => $foo->name(),
-                "age"   => $foo->age(),
-                "email" => $foo->email()
-            ])
-            // update文を実行する．
-            ->save();
-            
-        });
+    public function save(Foo $foo): void
+    {
+        // トランザクション処理を開始する．
+        DB::beginTransaction();
+
+        try {
+
+            $this->fooDTO->fill([
+                    "name"  => $foo->name(),
+                    "age"   => $foo->age(),
+                ])
+                ->save();
+
+            // コミットメントを実行する．
+            DB::commit();
+        } catch (Exception $e) {
+
+            // ロールバックを実行する．
+            DB::rollback();
+        }
     }
 }
+
 ```
 
 #### ・```beginTransaction```メソッド，```commit```メソッド，```rollback```メソッド，
 
-トランザクション処理の各操作を実行する．基本的には，```transaction```メソッドを使用してトランザクション処理を実行すれば良い．
+トランザクション処理の各操作を分割して実行する．基本的には，```transaction```メソッドを使用してトランザクション処理を実行すれば良い．
 
 **＊実装例＊**
 
@@ -2065,7 +2206,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 namespace App\Infrastructure\Repositories;
 
-use App\Domain\Foo\Entities;
+use App\Domain\Foo\Entities\Foo;
 use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
 use App\Infrastructure\Foo\DTO\FooDTO;
 
@@ -2175,16 +2316,9 @@ class Kernel extends HttpKernel
     // ～ 省略 ～
     
     protected $routeMiddleware = [
-        "auth"                 => \App\Http\Middleware\Authenticate::class,
-        "auth.basic"           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        "bindings"             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        "cache.headers"        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        "can"                  => \Illuminate\Auth\Middleware\Authorize::class,
-        "guest"                => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        "password.confirm"     => \Illuminate\Auth\Middleware\RequirePassword::class,
-        "signed"               => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        "throttle"             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        "verified"             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        
+        "auth" => \App\Http\Middleware\Authenticate::class,
+        
     ];
     
     // ～ 省略 ～    
@@ -2247,7 +2381,7 @@ Route::get("/user", "UserController@index");
 
 #### ・```where```メソッド
 
-パスパラメータの形式の制約を，正規表現で設定できる．
+パスパラメータの形式の制約を，正規表現で設定できる．RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
 
 **＊実装例＊**
 
@@ -2260,36 +2394,10 @@ Route::namespace("Auth")->group(function () {
 
     Route::get("/user", "UserController@index")
     
-    // userIdの形式を『0〜9が一つ以上』に設定
+    // userIdのバリデーションルールとして『0〜9が一つ以上』を定義する．
     Route::post("/user/{userId}", "UserController@createUser")
         ->where("user_id", "[0-9]+");
 });
-```
-
-RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
-
-```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-
-class RouteServiceProvider extends ServiceProvider
-{
-    /**
-     * ルートモデル結合、パターンフィルタなどの定義
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Route::pattern("fooId", "[0-9]+");
-
-        parent::boot();
-    }
-}
 ```
 
 #### ・ヘルスチェックへの対応
@@ -2848,8 +2956,9 @@ class FooController extends Controller
 
 #### ・クラスの自動生成
 
+Middlewareクラスを自動生成する．
+
 ```shell
-# Middlewareを自動生成
 $ php artisan make:middleware <Middleware名>
 ```
 
@@ -2926,14 +3035,98 @@ class FooAfterMiddleware
 
 <br>
 
+### コール方法のカスタマイズ
+
+#### ・Kernel
+
+Middlewareクラスをコールする時の方法をカスタマイズできる．
+
+```php
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    /**
+     * 全てのHTTPリクエストに適用するミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $middleware = [
+        \App\Http\Middleware\Auth\TrustProxies::class,
+        \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\Auth\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+    ];
+
+    /**
+     * エイリアス名とミドルウェアグループを定義します．
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+        ],
+
+        'api' => [
+            'throttle:60,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    /**
+     * エイリアス名と個別のミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
+        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
+        'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        // Fooミドルウェアクラス
+        'foo' => \App\Http\Middleware\Before\FooMiddleware::class
+    ];
+
+    /**
+     * ミドルウェアをコールする順番を定義します．
+     *
+     * @var string[]
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Auth\Authenticate::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
+}
+```
+
+<br>
+
 ## 10-04. HTTP｜Request
 
 ### artisanコマンドによる操作
 
 #### ・クラスの自動生成
 
+Requestクラスを自動作成する．
+
 ```shell
-# フォームクラスを自動作成
 $ php artisan make:request <Request名>
 ```
 
@@ -4093,6 +4286,8 @@ class FooController extends Controller
 
 #### ・Resourceの生成
 
+Resourceクラスを自動生成する．
+
 ```shell
 $ php artisan make:resource <Resource名>
 ```
@@ -4133,8 +4328,6 @@ class FooJsonResource extends JsonResource
         return [
             "id"       => $this->id,
             "name"     => $this->name,
-            "email"    => $this->email,
-            "password" => $this->password
         ];
     }
 }．
@@ -4288,6 +4481,8 @@ class Kernel extends HttpKernel
 ### artisanコマンドによる操作
 
 #### ・Seederの生成
+
+Seederクラスを自動生成する．
 
 ```shell
 $ php artisan make:seeder <Seeder名>
@@ -4821,10 +5016,16 @@ class CreateFooTable extends Migration
 
 ### RouteServiceProvider
 
-ルーティングファイルの設定を定義する．
+#### ・全てのルーティングへの処理
+
+ルーティングの設定ファイルをコールする．また，全てのルーティングに適用する処理を定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 ```php
 <?php
+
+declare(strict_types=1);
 
 namespace App\Providers;
 
@@ -4834,60 +5035,61 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * コントローラの名前空間を定義します．
-     */
-    protected $namespace = "App\Http\Controllers";
-
-    public const HOME = "/home";
-
-    /**
-     * パターンフィルタを定義します．
+     * ルーティングの設定ファイルをコールします．
      *
      * @return void
      */
     public function boot()
     {
-        Route::pattern("user_id", "[0-9]+");
+        // ヘルスチェック
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/healthcheck.php'));
 
-        parent::boot();
-    }
-
-    public function map()
-    {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-    }
-
-    /**
-     * Webルーティングファイルのパスを定義します
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware("web")->namespace($this->namespace)
-            ->group(base_path("routes/web.php"));
-    }
-
-    /**
-     * Apiルーティングファイルのパスを定義します．
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        # API認証用のルーティングファイル．特定のクライアントのみルーティング可能．
-        Route::middleware(["api", "auth:api"])->namespace($this->namespace)
-            ->group(base_path("routes/api.php"));
-
-        # API認証不要のヘルスチェック用ルーティングファイル
-        Route::middleware("api")->namespace($this->namespace)
-            ->group(base_path("routes/guest.php"));
+        // API
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }
-
 ```
+
+#### ・全てのパス／クエリパラメータのバリデーションルール
+
+全てのパスパラメータとクエリパラメータに対して実行するバリデーションルールを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * ルーティングの設定ファイルをコールします．
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // バリデーションルールとして『0〜9が一つ以上』を定義する．
+        Route::pattern('id', '[0-9]+');
+        
+        // 〜 省略 〜
+    }
+}
+```
+
+
 
 <br>
 

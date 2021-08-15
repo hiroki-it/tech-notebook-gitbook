@@ -406,7 +406,7 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 | 設定項目                           | 説明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
 | キャッシュ設定                     | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-caching.html |
-| デフォルトのメソッドスロットリング |                                                              |
+| デフォルトのメソッドスロットリング | １秒当たりのリクエスト数制限を設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-request-throttling.html |
 | WAF                                | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html |
 | クライアント証明書                 | 関連付けるWAFを設定する．                                    |
 
@@ -4618,13 +4618,26 @@ Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-### Rulesの例
+### ルール
 
-#### ・ルールの粒度
+#### ・ルールの種類
+
+参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/classic-web-acl-rules-creating.html
+
+| 種類         | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する． |
+| レギュラー   | リクエスト数は制限しない．                                   |
+
+#### ・ルールの粒度のコツ
 
 わかりやすさの観点から，可能な限り設定するステートメントを少なくし，一つのルールに一つの意味合いだけを持たせるように命名する．
 
 #### ・Count（検知）モード
+
+<br>
+
+### ルールの具体例
 
 #### ・ユーザエージェント拒否
 

@@ -619,7 +619,10 @@ GET http://www.foo.co.jp/users/12345?format=json
 
 POST／PUTメソッドでは，処理後のデータを200レスポンスとして返信する．もし処理後のデータを返信しない場合，改めてGETリクエストを送信する必要があり，余分なAPIコールが必要になってしまう．
 
-参考：https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
+参考：
+
+- https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
+- https://qiita.com/wim/items/dbb6def4e207f6048735
 
 #### ・DELETEではメッセージのみをレスポンス
 

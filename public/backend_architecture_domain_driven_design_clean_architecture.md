@@ -1695,7 +1695,18 @@ class DogOrder
 
 #### ・リポジトリパターンとは
 
+デザインパターンの一つ．一例として，以下のメソッドを持つ．具体的な実装については，インターフェースリポジトリの実装を参考にせよ．
+
 参考：https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html
+
+| メソッド名        | 処理内容                                       | 引数型           | 返却値型                   |
+| ----------------- | ---------------------------------------------- | ---------------- | -------------------------- |
+| findById          | 単一のドメインモデルを取得する．               | Id型             | ドメインモデル型           |
+| findAll           | 全てのドメインモデルを取得する．               | なし             | ドメインモデル型を持つ配列 |
+| findAllByCriteria | 条件に合致した全てのドメインモデルを取得する． | Criteria型       | ドメインモデル型を持つ配列 |
+| create            | 単一のドメインモデルを作成する．               | ドメインモデル型 | void型                     |
+| update            | 単一のドメインモデルを更新する．               | ドメインモデル型 | void型                     |
+| delete            | 単一のドメインモデルを削除する．               | Id型             | void型                     |
 
 #### ・他の類似するデザインパターンとの比較
 
@@ -1706,13 +1717,13 @@ class DogOrder
 | Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                                                              | ビジネスロジックが複雑なアプリケーション                     | DB，RDMS，NoSQL，なんでもでもよい．                          |
 | なし             | なし             | 非常に弱い                                                   | DBファサード                                                 |                                                              |                                                              |
 
-#### ・リポジトリ（実装クラス）とは
+#### ・実装リポジトリ
 
 リポジトリパターンを使用する．責務として，DBに対してデータの書き込み／読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として構成する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html
 
-#### ・リポジトリ（インターフェース）とは
+#### ・インターフェースリポジトリ
 
 依存性逆転の原則を導入する場合に，ドメイン層にインターフェースリポジトリを配置する．インフラ層の実装リポジトリクラスと対応関係にある．実装リポジトリについては，後述の説明を参考にせよ．
 
@@ -1721,39 +1732,51 @@ class DogOrder
 ```php
 <?php
 
-namespace App\Domain\Foo\Repositories;    
-    
-interface FooRepository
-{    
+declare(strict_types=1);
+
+namespace App\Domain\Foo\Repositories;
+
+use App\Domain\Foo\Criterion\FooCriteria;
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
+use App\Domain\Repository;
+
+interface FooRepository extends Repository
+{
     /**
-     * ドメインモデルを作成します．
+     * @param FooId $fooId
+     * @return Foo
      */
-    function create(Foo $foo): Foo;
-    
-    /**
-     * IDを元にドメインモデルを取得します．
-     */
-    function findById(FooId $fooId): Foo; // ドメインモデルを単体で返却
-    
-    /**
-     * 全てのドメインモデルを取得します．
-     */
-    function findAll(): array; // ドメインモデルを配列で返却
+    public function findById(FooId $fooId): Foo;
 
     /**
-     * 検索条件を元に全てのドメインモデルを取得します．
+     * @return array
      */
-    function findAllByCriteria(FooCriteria $fooCriteria): array; // ドメインモデルを配列で返却
-  
+    public function findAll(): array;
+
     /**
-     * ドメインモデルを更新します．
+     * @param FooCriteria $criteria
+     * @return array
      */
-    function update(Foo $foo): Foo; // 更新後のドメインモデルを返却
-    
+    public function findAllByCriteria(FooCriteria $criteria): array;
+
     /**
-     * ドメインモデルを削除します．
+     * @param Foo $foo
+     * @return void
      */
-    function delete(FooId $fooId): bool; // 更新後の成否を返却
+    public function create(Foo $foo): void;
+
+    /**
+     * @param Foo $foo
+     * @return void
+     */
+    public function update(Foo $foo): void;
+
+    /**
+     * @param FooId $fooId
+     * @return void
+     */
+    public function delete(FooId $fooId): void;
 }
 ```
 

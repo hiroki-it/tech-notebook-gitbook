@@ -193,7 +193,9 @@ class Foo
 
 #### ・標準例外クラス
 
-参考：https://www.php.net/manual/ja/spl.exceptions.php
+いずれもThrowableインターフェースを実装している．以下リンクを参考にせよ．
+
+参考：https://www.php.net/manual/ja/reserved.exceptions.php
 
 #### ・独自例外クラス
 
