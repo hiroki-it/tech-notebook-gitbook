@@ -89,11 +89,12 @@
     * サーバ
       * [▶ ︎仮想サーバ（仮想マシン）](public/infrastructure_virtualization_server.md)
 * CI/CD
-  * [▶ ︎CI & CD](public/infrastructure_ci_cd.md)
+  * [▶ ︎CI/CD](public/infrastructure_ci_cd.md)
   * [▶ ︎CircleCI](public/infrastructure_circleci.md)
   * [▶ ︎Capistrano](public/infrastructure_capistrano.md)
-* データ収集
-  * [▶ ︎ログ収集ツール](public/infrastructure_log_collector.md)
+* 監視
+  * [▶ ︎ログ収集/ログルーティング](public/infrastructure_log_collecting_and_routing.md)
+  * [▶ ︎Datadog](public/infrastructure_datadog.md)
 * ハードウェア
   * [▶ ︎ハードウェア](public/hardware.md)
   * [▶ ︎組み込み機器](public/hardware_embedded_system.md)
