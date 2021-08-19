@@ -160,9 +160,11 @@ $ echo "stderr" >&2
 
 <br>
 
-## 02-02. シェルスクリプト
+## 02-02. シェルスクリプト／Makefile
 
-### シェルスクリプトとは
+### シェルスクリプト
+
+#### ・シェルスクリプトとは
 
 ユーティリティの処理を手続き的に実装したファイル．最初の「```#!```」をシェバンという．
 
@@ -171,9 +173,43 @@ $ echo "stderr" >&2
 ```shell
 #!/bin/bash
 
-echo "Hello World!"
-echo "Hello Japan!"
-echo "Hello Tokyo!"
+echo "foo"
+echo "bar"
+echo "baz"
+```
+
+<br>
+
+### Makefile
+
+#### ・Makefileとは
+
+ユーティリティの処理を手続き的に実装したファイル．ターゲットごとに処理を実装する．複数のターゲット名を割り当てられる．
+
+```makefile
+foo:
+  echo "foo"
+  
+bar:
+  echo "bar"
+  
+baz qux: # 複数のターゲット名
+  echo "baz"
+```
+
+#### ・ターゲット間依存関係
+
+特定のターゲットの実行前に，他のターゲットを実行しておきたい場合，依存関係を定義できる．これは複数定義できる．
+
+```makefile
+foo:
+  echo "foo"
+  
+bar: foo # fooを事前に実行する．
+  echo "bar"
+  
+baz: foo baz # foo，bazを事前に実行する．
+  echo "baz"
 ```
 
 <br>
@@ -208,6 +244,31 @@ $ . hello.sh
 
 ```shell
 $ ./hello.sh
+```
+
+<br>
+
+### Makefileの実行方法とオプション
+
+#### ・make
+
+Makefileが置かれた階層で，makeコマンドの引数としてターゲット名や環境変数を渡せる．Makefile内で環境変数のデフォルト値を定義できる．
+
+```shell
+$ make <ターゲット名> <環境変数名>=<値>
+```
+
+**＊実装例＊**
+
+```shell
+$ make foo FOO=foo
+```
+
+```makefile
+FOO=default
+
+foo:
+  echo ${FOO}
 ```
 
 <br>

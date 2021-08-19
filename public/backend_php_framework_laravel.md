@@ -2262,21 +2262,18 @@ class FooRepository extends Repository implements DomainFooRepository
 
 ルーティング処理を提供する．
 
-#### ・```namespace```メソッド
+#### ・ヘルスチェックへの対応
 
-コントローラをコールする時に，グループ内で同じ名前空間を指定する．『```App\Http\Controllers```』は内部で読み込まれているので，これ以下の名前空間を指定すればよい．
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
 
 **＊実装例＊**
 
 ```php
 <?php
 
-// 『App\Http\Controllers』は内部で読み込まれる．
-Route::namespace("Auth")->group(function () {
-    
-    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
-    Route::get("/user", "UserController@index");
-    Route::post("/user/{userId}", "UserController@createUser");
+# ヘルスチェックが送信されるパス
+Route::get("/healthcheck", function () {
+    return response("success", 200);
 });
 ```
 
@@ -2291,12 +2288,17 @@ Route::namespace("Auth")->group(function () {
 ```php
 <?php
 
-// authエイリアスのMiddlewareクラスが使用される．
+use App\Http\Controllers\Foo\FooController;
+
+// authエイリアスを指定する．
 Route::middleware("auth")->group(function () {
-    
-    Route::get("/user", "App\Http\Controllers\Auth\UserController@index");
-    Route::post("/user/{userId}", "App\Http\Controllers\Auth\UserController@createUser");
+    Route::get("/foos", [FooController::class, "getFoo"]);
+    Route::get("/foos/{fooId}", [FooController::class, "index"]);
+    Route::post("/foos", [FooController::class, "createFoo"]);
+    Route::put("/foos/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/foos/{fooId}", [FooController::class, "deleteFoo"]);
 });
+
 ```
 
 デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが関連付けられている．
@@ -2337,51 +2339,31 @@ Route::middleware("auth:api")->group(function () {
 });
 ```
 
-#### ・```group```メソッド
+#### ・```prefix```メソッド
 
-複数のグループを組み合わせる場合，```group```メソッドを使用する．
+エンドポイントが共通として持つ最初のパスを，プレフィクスとして定義する．
 
 **＊実装例＊**
+
+各エンドポイントの最初の『```foos```』をプレフィクスとして定義する．
 
 ```php
 <?php
 
-// 複数のグループを組み合わせる．
-Route::group(["namespace" => "Auth" , "middleware" => "auth"], (function () {
-    
-    // 『App\Http\Controllers\Auth\』 以下にあるコントローラを指定できる．
-    // authエイリアスのMiddlewareクラスが使用される．
-    Route::get("/user", "UserController@index");
-    Route::post("/user/{userId}", "UserController@createUser");
+use App\Http\Controllers\Foo\FooController;
+
+Route::prefix("foos")->group(function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"]);
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"]);
 });
 ```
 
-#### ・```http```メソッド
+#### ・```where```メソッド，```pattern```メソッド
 
-Routeクラスには，各HTTPメソッドをルーティングできるメソッドが用意されている．
-
-```php
-<?php
-
-Route::get($uri, $callback);
-Route::post($uri, $callback);
-Route::put($uri, $callback);
-Route::patch($uri, $callback);
-Route::delete($uri, $callback);
-Route::options($uri, $callback);
-```
-
-各メソッドの第二引数として，『```{コントローラ名}@{メソッド名}```』を渡すと，コントローラに定義してあるメソッドをコールできる．
-
-**＊実装例＊**
-
-```php
-Route::get("/user", "UserController@index");
-```
-
-#### ・```where```メソッド
-
-パスパラメータの形式の制約を，正規表現で設定できる．RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
+パスパラメータに対するバリデーションルールを正規表現で定義し，また実行する．RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
 
 **＊実装例＊**
 
@@ -2390,28 +2372,71 @@ userIdの形式を『0〜9が一つ以上』に設定している．
 ```php
 <?php
 
-Route::namespace("Auth")->group(function () {
+use App\Http\Controllers\Foo\FooController;
 
-    Route::get("/user", "UserController@index")
-    
-    // userIdのバリデーションルールとして『0〜9が一つ以上』を定義する．
-    Route::post("/user/{userId}", "UserController@createUser")
-        ->where("user_id", "[0-9]+");
+Route::prefix("foos")->group(function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"])
+        // バリデーションルール
+        ->where("fooId", "[0-9]+");
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"])
+        ->where("fooId", "[0-9]+");
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"])
+        ->where("fooId", "[0-9]+");
 });
 ```
 
-#### ・ヘルスチェックへの対応
+または，RouteServiceProviderクラスに```pattern```メソッドを定義すると，各エンドポイントに対する正規表現を一括で実行できる．
 
-ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
+参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
 **＊実装例＊**
 
 ```php
 <?php
 
-# ヘルスチェックが送信されるパス
-Route::get("/healthcheck", function () {
-    return response("success", 200);
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * ルーティングの設定ファイルをコールします．
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // バリデーションルールとして『0〜9が一つ以上』を定義する．
+        Route::pattern('fooId', '[0-9]+');
+        
+        // 〜 省略 〜
+    }
+}
+```
+
+#### ・```group```メソッド
+
+複数のグループを組み合わせる場合，```group```メソッドを使用する．
+
+**＊実装例＊**
+
+ エンドポイントのプレフィクスとミドルウェアの指定を定義する．
+
+```php
+<?php
+
+Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"]);
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"]);
 });
 ```
 
@@ -2889,11 +2914,13 @@ $ php artisan make:controller <Controller名>
 
 <br>
 
-### Requestクラス
+### リクエストパラメータの取得
 
-####  ・データの取得
+#### ・クエリパラメータ／メッセージボディ
 
-Requestクラスの```input```メソッドを用いて，リクエストボディに含まれるデータを取得できる．
+クエリパラメータとメッセージボディの両方を取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -2907,21 +2934,32 @@ use Illuminate\Http\Request;
 class FooController extends Controller
 {
     /**
-     * 新しいユーザーを保存します．
-     *
-     * @param  Request  $request
-     * @return Response
+     * @param Request $request
      */
     public function update(Request $request)
     {
-        $name = $request->input("name");
+        $params = $request->all(); // 全てのパラメータを連想配列で取得する．
+
+        $foo = $request->input('foo'); // 指定したパラメータの値を取得する．
+        
+        $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する．
+
+        $params = $request->only(['foo', 'bar']); // 指定したパラメータを連想配列で取得する．
+
+        $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する．
+
+        $foo = $request->foo; // 指定したパラメータの値を取得する．
+
+        $foo = request('foo'); // 指定したパラメータの値を取得する．
     }
 }
 ```
 
-#### ・パスパラメータの取得
+#### ・クエリパラメータ
 
-第二引数にパスパラメータ名を記述することで，パスパラメータの値を取得できる．
+クエリパラメータを取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
 
 **＊実装例＊**
 
@@ -2935,17 +2973,73 @@ use Illuminate\Http\Request;
 class FooController extends Controller
 {
     /**
-     * 指定したユーザーを更新します．
-     *
-     * @param  Request  $request
-     * @param  string  $id
-     * @return Response
+     * @param Request $request
      */
-    public function save(Request $request, $id)
+    public function index(Request $request)
     {
-        //
+        $params = $request->query(); // 全てのパラメータを連想配列で取得する．
+
+        $foo = $request->query('foo'); // 指定したパラメータの値を取得する．
     }
-}    
+}
+```
+
+#### ・パスパラメータ
+
+パスパラメータを取得する．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
+- https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $params = $request->route(); // 全てのパラメータを連想配列で取得する．
+
+        $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する．
+
+        $fooId = $request->route->parameter('fooId'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+コントローラの第二引数にパスパラメータ名を記述することで，パスパラメータの値を取得できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param         $fooId
+     */
+    public function update(Request $request, $fooId)
+    {
+
+    }
+}
 ```
 
 <br>
@@ -3041,6 +3135,8 @@ class FooAfterMiddleware
 
 Middlewareクラスをコールする時の方法をカスタマイズできる．
 
+**＊実装例＊**
+
 ```php
 <?php
 
@@ -3118,7 +3214,7 @@ class Kernel extends HttpKernel
 
 <br>
 
-## 10-04. HTTP｜Request
+## 10-04. HTTP｜FormRequest
 
 ### artisanコマンドによる操作
 
@@ -3132,9 +3228,9 @@ $ php artisan make:request <Request名>
 
 <br>
 
-### FormRequest
+### クエリパラメータ／メッセージボディのバリデーション
 
-#### ・```rules```メソッド
+#### ・ルール定義
 
 FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．
 
@@ -3158,21 +3254,17 @@ class FooRequest extends FormRequest
     {
         // ルールの定義
         return [
-            "title" => ["required", "string", "max:255"],
-            "body"  => ["required", "string", "max:255"],
-            "type"  => ["required", Rule::in([1, 2, 3])],
-            "author"  => ["required", "string", new UppercaseRule()]
-            "date"  => ["required", "date"],
+            "title"  => ["required", "string", "max:255"],
+            "body"   => ["required", "string", "max:255"],
+            "type"   => ["required", Rule::in([1, 2, 3])],
+            "author" => ["required", "string", new UppercaseRule()],
+            "date"   => ["required", "date"],
         ];
     }
 }
 ```
 
-独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義する．独自ルールの定義方法については以下を参考のリンクを参考にせよ．
-
-参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
-
-#### ・```validated```メソッド
+#### ・バリデーション実行
 
 Requestクラスの```validated```メソッドを使用して，バリデーションを実行する．Controllerで，Requestクラスを引数に指定すると，コントローラのメソッドをコールする前にバリデーションを自動的に実行する．そのため，コントローラの中では，```validated```メソッドでバリデーションを終えたデータをいきなり取得できる．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
 
@@ -3188,22 +3280,32 @@ use Illuminate\Http\Request;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保存
-     *
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        // クエリパラメータのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validated();
+
+        // 続きの処理
+    }
+
+    /**
      * @param Request $request
      */
     public function update(Request $request)
     {
-        // バリデーションの実行
+        // メッセージボディのバリデーションを実行する．
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validated();
-        
+
         // 続きの処理
     }
 }
 ```
 
-#### ・```validate```メソッド
+#### ・ルール定義 ＆ バリデーション実行
 
 同じくRequestクラスの```validate```メソッドを使用して，ルールを定義し，さらにバリデーションを実行する．```validated```メソッドと間違わないように注意する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
 
@@ -3221,41 +3323,21 @@ use Illuminate\Http\Request;
 class FooController extends Controller
 {
     /**
-     * 新しいブログポストの保存
-     *
      * @param Request $request
      */
-    public function update(Request $request)
+    public function index(Request $request)
     {
-        // ルールの定義，バリデーションの実行
+        // クエリパラメータのバリデーションを実行する．
         // エラーが起こった場合は元々のページにリダイレクト
         $validated = $request->validate([
-            "title" => "required|string|max:5255",
-            "body"  => "required|string|max:255",
-            "date"  => "required|date",
+            "limit" => ["required", Rule::in([25, 50, 100])],
+            "order" => ["required", Rule::in(["ascend", "descend"])],
         ]);
 
         // 続きの処理
     }
-}
-```
 
-なお，ルールは，配列で定義してよい．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
     /**
-     * 新しいブログポストの保存
-     *
      * @param Request $request
      */
     public function update(Request $request)
@@ -3273,7 +3355,50 @@ class FooController extends Controller
 }
 ```
 
-#### ・標準のバリデーションメッセージ
+なお，ルールによっては，配列を使用せずとも定義できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // ルールの定義，メッセージボディのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validate([
+            "title" => "required|string|max:5255",
+            "body"  => "required|string|max:255",
+            "date"  => "required|date",
+        ]);
+
+        // 続きの処理
+    }
+}
+```
+
+<br>
+
+### パスパラメータのバリデーション
+
+#### ・ルールの定義 ＆ バリデーション実行
+
+Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する．Routeファサードの説明を参考にせよ．
+
+<br>
+
+### エラーメッセージ
+
+#### ・標準のエラーメッセージ
 
 標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
 
@@ -3281,32 +3406,32 @@ class FooController extends Controller
 
 ```php
 <?php
-    
-return [    
-    
+
+return [
+
     # 〜 省略 〜
-    
+
     'required' => ':attributeは必須です',
-    
+
     'string' => ':attribute は文字列のみ有効です',
-    
+
     'max' => [
         'numeric' => ':attributeには、:max以下の数字を指定してください',
         'file'    => ':attributeには、:max kB以下のファイルを指定してください',
         'string'  => ':attributeは、:max文字以下で指定してください',
         'array'   => ':attributeは:max個以下指定してください',
     ],
-    
+
     'date' => ':attribute を有効な日付形式にしてください',
-    
+
     'attributes' => [
         'title' => 'タイトル',
-        'body' => '本文'
-        'date' => '作成日',
+        'body'  => '本文',
+        'date'  => '作成日',
     ],
-    
+
     # 〜 省略 〜
-    
+
 ];
 ```
 
@@ -3384,8 +3509,8 @@ class FooRequest extends FormRequest
     {
         // ルールの定義
         return [
-            "prefectureId"  => ["nullable", "integer", Rule::exists("prefectures", "id")],
-            "cityId"  => ["nullable", "integer", Rule::exists("cities", "id")]
+            "prefectureId" => ["nullable", "integer", Rule::exists("prefectures", "id")],
+            "cityId"       => ["nullable", "integer", Rule::exists("cities", "id")]
         ];
     }
 }
@@ -3411,8 +3536,8 @@ class FooRequest extends FormRequest
     {
         // ルールの定義
         return [
-            "prefectureId"  => ["nullable", "integer", Rule::exists("prefectures", "id")]
-            "cityId"  => ["nullable", "integer", Rule::exists("cities", "id")->whereNull("deleted_at")]
+            "prefectureId" => ["nullable", "integer", Rule::exists("prefectures", "id")],
+            "cityId"       => ["nullable", "integer", Rule::exists("cities", "id")->whereNull("deleted_at")],
         ];
     }
 }
@@ -3450,7 +3575,9 @@ class FooRequest extends FormRequest
 
 #### ・独自ルール／メッセージ
 
-独自のRuleクラスを定義する．```passes```メソッドでルールを定義し，```messages```メソッドでバリデーションメッセージを定義する．```validation.php```ファイルでメッセージを定義し，これを参照しても良い．
+独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義する．また，```messages```メソッドでバリデーションメッセージを定義する．```validation.php```ファイルでメッセージを定義し，これを参照しても良い．
+
+参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
 
 **＊実装例＊**
 
@@ -3584,7 +3711,7 @@ public function authorize()
 
 #### ・Authファサード
 
-後述の説明を参考にせよ．
+Authファサードの説明を参考にせよ．
 
 <br>
 
@@ -3762,7 +3889,6 @@ class FooController extends Controller
         }
     }
 }
-
 ```
 
 ```php
@@ -3882,7 +4008,7 @@ $ php artisan migrate --force
 
 <br>
 
-### テーブルの作成と削除
+### テーブルの作成／変更／削除
 
 #### ・```up```メソッド，```down```メソッド
 
@@ -3892,7 +4018,7 @@ $ php artisan migrate --force
 
 ```php
 <?php
-  
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -3900,32 +4026,24 @@ use Illuminate\Support\Facades\Schema;
 class CreateFooTable extends Migration
 {
     /**
-     * マイグレート
-     *
      * @return void
      */
     public function up()
     {
         Schema::create("foos", function (Blueprint $table) {
-            $table->bigIncrements("foo_id")
-                ->comment("ID");
-            $table->string("name")
-                ->comment("名前");
-            $table->string("email")
-                ->index()
-                ->comment("メールアドレス");
             
+            $table->bigIncrements("foo_id")->comment("ID");
+            $table->string("name")->comment("名前");
+
             // MigrationMacroServiceProviderのメソッドを使用する．
             $table->systemColumns();
-            
+
             // deleted_atカラムを追加する．
             $table->softDeletes();
         });
     }
 
     /**
-     * ロールバック
-     *
      * @return void
      */
     public function down()
@@ -3935,51 +4053,55 @@ class CreateFooTable extends Migration
 }
 ```
 
-#### ・api guard用のテーブル作成
+#### ・```change```メソッド
+
+指定したカラムのデータ型を変更する．
+
+**＊実装例＊**
+
+データ型を変更するためだけにマイグレーションファイルを作成する．
+
+```shell
+$ php artisan make:migration change_data_type --table=foos
+```
+
+テーブルのカラムを指定し，データ型を定義する．```change```メソッドをコールする．
 
 ```php
 <?php
-  
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class ChangeDataType extends Migration
 {
     /**
-     * マイグレート
-     *
      * @return void
      */
     public function up()
     {
-        Schema::create("users", function (Blueprint $table) {
-            $table->bigIncrements("user_id")
-                ->comment("ユーザID");
-            $table->string("name")
-                ->comment("ユーザ名");
-            $table->string("api_token")
-                ->unique()
-                ->comment("APIトークン");      
-            
-            // MigrationMacroServiceProviderのメソッドを使用する．
-            $table->systemColumns();
-            
-            // deleted_atカラムを追加する．
-            $table->softDeletes();
+        Schema::table('foos', function (Blueprint $table) {
+            $table->integer('bar')->change();
         });
     }
 
     /**
-     * ロールバック
-     *
      * @return void
      */
     public function down()
     {
-        Schema::drop("users");
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('bar')->change();
+        });
     }
 }
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムのデータ型が変更される．実行後は，作成したマイグレーションファイルを削除する．
+
+```shell
+$ php artisan migrate:status
 ```
 
 <br>
@@ -4445,8 +4567,6 @@ class Kernel extends HttpKernel
     // 〜 省略 〜
     
     /**
-     * The application"s route middleware groups.
-     *
      * @var array
      */
     protected $middlewareGroups = [
@@ -5022,6 +5142,8 @@ class CreateFooTable extends Migration
 
 参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
 
+**＊実装例＊**
+
 ```php
 <?php
 
@@ -5056,11 +5178,13 @@ class RouteServiceProvider extends ServiceProvider
 }
 ```
 
-#### ・全てのパス／クエリパラメータのバリデーションルール
+#### ・リクエスト数制限
 
-全てのパスパラメータとクエリパラメータに対して実行するバリデーションルールを定義する．
+一分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する．さらに，Throttleミドルウェアに制限名を渡し，指定したルートにリクエスト数制限を適用させる，もし制限を超えた場合，```configureRateLimiting```メソッドによって，```429```ステータスでレスポンスが返信される．
 
-参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -5069,22 +5193,37 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * ルーティングの設定ファイルをコールします．
-     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+
+        'web' => [
+        ],
+
+        'api' => [
+            // throttleミドルウェアを適用する．
+            'throttle:limit_per_minute',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    /**
      * @return void
      */
-    public function boot()
+    public function configureRateLimiting()
     {
-        // バリデーションルールとして『0〜9が一つ以上』を定義する．
-        Route::pattern('id', '[0-9]+');
-        
-        // 〜 省略 〜
+        RateLimiter::for('limit_per_minute', function (Request $request) {
+            // 一分間当たり1000リクエストまでを許可する．
+            return Limit::perMinute(1000);
+        });
     }
 }
 ```
@@ -6205,7 +6344,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 }
 ```
 
-3. ヘッダーにアクセストークンを含めて，認証ガードの設定されたバックエンド側のルーティングに対して，リクエストを送信する．レスポンスのリクエストボディからデータを取得する．
+3. ヘッダーにアクセストークンを含めて，認証ガードの設定されたバックエンド側のルーティングに対して，リクエストを送信する．レスポンスのメッセージボディからデータを取得する．
 
 **＊実装例＊**
 
@@ -6221,6 +6360,50 @@ $response = $client->request("GET", "/api/user", [
 
 return (string)$response->getBody();
 ```
+
+#### ・API Guard用のテーブル
+
+**＊実装例＊**
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateUsersTable extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("users", function (Blueprint $table) {
+            
+            $table->bigIncrements("user_id")->comment("ユーザID");
+            $table->string("name")->comment("ユーザ名");
+            $table->string("api_token")->unique()->comment("APIトークン");
+
+            // MigrationMacroServiceProviderのメソッドを使用する．
+            $table->systemColumns();
+
+            // deleted_atカラムを追加する．
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("users");
+    }
+}
+```
+
+#### 
 
 <br>
 

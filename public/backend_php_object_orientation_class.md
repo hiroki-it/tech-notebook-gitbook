@@ -711,7 +711,7 @@ class SubFoo extends Foo
 
 ![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Trait.png)
 
-再利用したいメソッドやデータを部品化し，利用したい時にクラスに取り込む．Traitを用いるときは，クラス内でTraitをuse宣言する．Trait自体は不完全なクラスであり，インスタンス化できない．
+再利用したいメソッドやデータを部品化し，利用したい時にクラスに取り込む．Traitを用いるときは，クラス内でTraitをuse宣言する．Trait自体は不完全なクラスであり，インスタンス化できない．また，親クラスでトレイトを読み込むと，子クラスでもトレイトの機能を使用できる．
 
 **＊実装例＊**
 
@@ -722,21 +722,22 @@ trait FooTrait
 {
     public function foo()
     {
-        return "Hello World";
+        echo "Hello World";
     }
 }
-```
-
-```php
-<?php
 
 class Foo
 {
     use FooTrait;
 }
 
-$exmaple = new Foo();
+$foo = new Foo();
 $foo->foo(); // Hello World
+
+class Bar extends Foo {}
+
+$bar = new Bar();
+$bar->foo(); // Hello World
 ```
 
 #### ・マジックメソッドを禁止するTrait
