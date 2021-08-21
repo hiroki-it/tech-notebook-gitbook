@@ -4065,7 +4065,7 @@ class CreateFooTable extends Migration
 $ php artisan make:migration change_data_type --table=foos
 ```
 
-テーブルのカラムを指定し，データ型を定義する．```change```メソッドをコールする．
+テーブルのカラムを指定し，データ型を定義する．```change```メソッドをコールする．データ型の変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
 
 ```php
 <?php
@@ -4091,6 +4091,7 @@ class ChangeDataType extends Migration
      */
     public function down()
     {
+        // データ型の変更後でも，ロールバックできるようにしておく．
         Schema::table('foos', function (Blueprint $table) {
             $table->string('bar')->change();
         });

@@ -1394,7 +1394,52 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 <br>
 
-## 12. ECS on EC2
+## 12. ECR
+
+### ECRとは
+
+AWSが提供するDockerイメージのレジストリサービス
+
+<br>
+
+### 設定項目
+
+#### ・設定項目
+
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 可視性                   | リポジトリをパブリックアクセス／プライベートアクセスにするかを設定する． | 様々なベンダーがパブリックリポジトリでECRイメージを提供している．<br>参考：https://gallery.ecr.aws/ |
+| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合に，イメージタグを上書き可能／不可能かを設定できる． |                                                              |
+| プッシュ時にスキャン     | イメージがプッシュされた時に，イメージにインストールされているライブラリの脆弱性を検証し，一覧表示する． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/image-scanning.html |
+| 暗号化設定               |                                                              |                                                              |
+
+<br>
+
+### ライフサイクル
+
+#### ・ライフサイクルポリシー
+
+ECRのイメージの有効期間を定義できる．
+
+| 設定項目             | 説明                                                         | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ルールの優先順位     | 順位の大きさで，ルールの優先度を設定できる．                 | 数字は連続している必要はなく，例えば，10，20，90，のように設定しても良い． |
+| イメージのステータス | ルールを適用するイメージの条件として，タグの有無や文字列を設定できる． |                                                              |
+| 一致条件             | イメージの有効期間として，同条件に当てはまるイメージが削除される閾値を設定できる． | 個数，プッシュされてからの期間，などを閾値として設定できる． |
+
+<br>
+
+### イメージタグ
+
+#### ・タグ名のベストプラクティス
+
+Dockerのベストプラクティスに則り，タグ名にlatestを使用しないようにする．その代わりに，イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する．
+
+参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+
+<br>
+
+## 13. ECS on EC2
 
 ### EC2起動タイプのコンテナ
 
@@ -1410,7 +1455,7 @@ $ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt 
 
 <br>
 
-## 12-02. ECS on Fargate：Elastic Container Service
+## 13-02. ECS on Fargate：Elastic Container Service
 
 ### ECSとEKSの違い
 
@@ -1597,6 +1642,49 @@ exit ${EXIT_CODE}
 
 <br>
 
+### Fargateコンテナ
+
+#### ・コンテナエージェント
+
+コンテナ内で稼働し，コンテナの操作を行うプログラムのこと．
+
+#### ・コンテナ定義の詳細
+
+タスク内のコンテナ一つに対して，環境を設定する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/task_definition_parameters.html
+
+| 設定項目                         | 対応するdockerコマンドオプション             | 説明                                                         | 補足                                                         |
+| -------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| cpu                              | ```--cpus```                                 | 仮想cpu数を設定する．                                        |                                                              |
+| dnsServers                       | ```--dns```                                  | コンテナが名前解決に使用するDNSサーバのIPアドレスを設定する． |                                                              |
+| essential                        |                                              | コンテナが必須か否かを設定する．                             | ・```true```の場合，コンテナが停止すると，タスクに含まれる全コンテナが停止する．<br>```false```の場合，コンテナが停止しても，その他のコンテナは停止しない． |
+| healthCheck<br>(command)         | ```--health-cmd```                           | ホストマシンからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
+| healthCheck<br>(interval)        | ```--health-interval```                      | ヘルスチェックの間隔を設定する．                             |                                                              |
+| healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
+| hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
+| image                            |                                              | ECRのURLを設定する．                                         |                                                              |
+| logConfiguration<br/>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば「awslogs，awsfirelens，splunk」に設定できる．EC2であれば「awslogs，json-file，syslog，journald，fluentd，gelf，logentries」を設定できる． |
+| logConfiguration<br/>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
+| portMapping                      | ```--publish```                              | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． |                                                              |
+| secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する．              |                                                              |
+| memory                           | ```--memory```<br>```--memory-reservation``` | プロセスが使用できるメモリの閾値を設定する．                 |                                                              |
+| mountPoints                      |                                              |                                                              |                                                              |
+| ulimit                           | Linuxコマンドの<br>```--ulimit```に相当      |                                                              |                                                              |
+
+#### ・awslogsドライバー
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+
+| 設定項目                | 説明                                                         | 補足                                                         |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| awslogs-group           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
+| awslogs-datetime-format | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない．例えば「```\\[%Y-%m-%d %H:%M:%S\\]```」となる． |
+| awslogs-region          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
+| awslogs-stream-prefix   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，「```<プレフィックス名>/<コンテナ名>/<タスクID>```」の形式で送信される． |
+
+<br>
+
 ### ロール
 
 #### ・サービスロール
@@ -1712,73 +1800,6 @@ CodeDeployを使用してデプロイを行う．本ノート内を検索せよ�
 
 <br>
 
-### Fargate起動タイプのコンテナ
-
-#### ・コンテナエージェント
-
-コンテナ内で稼働し，コンテナの操作を行うプログラムのこと．
-
-#### ・コンテナ定義の詳細
-
-タスク内のコンテナ一つに対して，環境を設定する．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/task_definition_parameters.html
-
-| 設定項目                         | 対応するdockerコマンドオプション             | 説明                                                         | 補足                                                         |
-| -------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| cpu                              | ```--cpus```                                 | 仮想cpu数を設定する．                                        |                                                              |
-| dnsServers                       | ```--dns```                                  | コンテナが名前解決に使用するDNSサーバのIPアドレスを設定する． |                                                              |
-| essential                        |                                              | コンテナが必須か否かを設定する．                             | ・```true```の場合，コンテナが停止すると，タスクに含まれる全コンテナが停止する．<br>```false```の場合，コンテナが停止しても，その他のコンテナは停止しない． |
-| healthCheck<br>(command)         | ```--health-cmd```                           | ホストマシンからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
-| healthCheck<br>(interval)        | ```--health-interval```                      | ヘルスチェックの間隔を設定する．                             |                                                              |
-| healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
-| hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
-| image                            |                                              | ECRのURLを設定する．                                         |                                                              |
-| logConfiguration<br/>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば「awslogs，awsfirelens，splunk」に設定できる．EC2であれば「awslogs，json-file，syslog，journald，fluentd，gelf，logentries」を設定できる． |
-| logConfiguration<br/>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
-| portMapping                      | ```--publish```                              | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． |                                                              |
-| secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する．              |                                                              |
-| memory                           | ```--memory```<br>```--memory-reservation``` | プロセスが使用できるメモリの閾値を設定する．                 |                                                              |
-| mountPoints                      |                                              |                                                              |                                                              |
-| ulimit                           | Linuxコマンドの<br>```--ulimit```に相当      |                                                              |                                                              |
-
-#### ・awslogsドライバー
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
-
-| 設定項目                | 説明                                                         | 補足                                                         |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| awslogs-group           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
-| awslogs-datetime-format | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない．例えば「```\\[%Y-%m-%d %H:%M:%S\\]```」となる． |
-| awslogs-region          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
-| awslogs-stream-prefix   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，「```<プレフィックス名>/<コンテナ名>/<タスクID>```」の形式で送信される． |
-
-<br>
-
-### ECR
-
-#### ・ライフサイクルポリシー
-
-ECRのイメージの有効期間を定義できる．
-
-| 設定項目             | 説明                                                         | 補足                                                         |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ルールの優先順位     | 順位の大きさで，ルールの優先度を設定できる．                 | 数字は連続している必要はなく，例えば，10，20，90，のように設定しても良い． |
-| イメージのステータス | ルールを適用するイメージの条件として，タグの有無や文字列を設定できる． |                                                              |
-| 一致条件             | イメージの有効期間として，同条件に当てはまるイメージが削除される閾値を設定できる． | 個数，プッシュされてからの期間，などを閾値として設定できる． |
-
-#### ・タグ名
-
-Dockerのベストプラクティスに則り，タグ名にlatestを使用しないようにする．その代わりに，イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する．
-
-参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
-
-#### ・タグの変更可能性
-
-同じタグ名でイメージがプッシュされた場合に，イメージタグを上書き可能／不可能かを設定できる．
-
-<br>
-
 ### ECSのアウトバウンド通信
 
 #### ・NAT Gatewayを経由
@@ -1803,6 +1824,16 @@ VPCエンドポイントを設け，これに対してアウトバウンド通�
 
 <br>
 
+### FireLensコンテナ
+
+#### ・FireLensコンテナ
+
+以下のノートを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
+
+<br>
+
 ### Tips
 
 #### ・割り当てられるパブリックIPアドレス，FargateのIPアドレス問題
@@ -1817,7 +1848,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 <br>
 
-## 13. EFS：Elastic File System
+## 14. EFS：Elastic File System
 
 ![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
 
@@ -1895,7 +1926,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 <br>
 
-## 14. ElastiCache
+## 15. ElastiCache
 
 ### ElasticCacheとは
 
@@ -2047,7 +2078,7 @@ redis xxxxx:6379> monitor
 
 <br>
 
-## 15. EventBridge（CloudWatchイベント）
+## 16. EventBridge（CloudWatchイベント）
 
 ### EventBridge（CloudWatchイベント）とは
 
@@ -2251,7 +2282,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 <br>
 
-## 16. Global Accelerator
+## 17. Global Accelerator
 
 ### 設定項目
 
@@ -2306,7 +2337,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 <br>
 
-## 17. IAM：Identify and Access Management
+## 18. IAM：Identify and Access Management
 
 ### IAMの種類
 
@@ -2709,7 +2740,7 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 <br>
 
-## 18. Lambda
+## 19. Lambda
 
 ### Lambdaとは
 
@@ -2941,7 +2972,7 @@ Lambdaを実行するためには，デプロイされた関数を使用する�
 
 <br>
 
-## 18-02. Lambda@Edge
+## 19-02. Lambda@Edge
 
 ### Lambda@Edgeとは
 
@@ -3154,7 +3185,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 19. RDS：Relational Database Service
+## 20. RDS：Relational Database Service
 
 ### 設定項目
 
@@ -3446,7 +3477,7 @@ Auroraの場合，フェイルオーバーによって昇格するインスタ�
 
 <br>
 
-## 20. RegionとZone
+## 21. RegionとZone
 
 ### Region
 
@@ -3462,7 +3493,7 @@ Regionとは別に，物理サーバが世界中にあり，これらの間で�
 
 <br>
 
-## 21. Route53
+## 22. Route53
 
 ### Route53とは
 
@@ -3569,7 +3600,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 <br>
 
-## 22. S3：Simple Storage Service
+## 23. S3：Simple Storage Service
 
 ### S3とは
 
@@ -3792,7 +3823,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 <br>
 
-## 23. Security Group
+## 24. Security Group
 
 ### Security Groupとは
 
@@ -3890,7 +3921,7 @@ Regionは，さらに，各データセンターは物理的に独立したAvail
 
 <br>
 
-## 24. SES：Simple Email Service
+## 25. SES：Simple Email Service
 
 ### SESとは
 
@@ -3947,7 +3978,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 25. SNS：Simple Notification Service
+## 26. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -3990,7 +4021,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 26. SQS：Simple Queue Service
+## 27. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -4054,7 +4085,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-## 27. STS：Security Token Service
+## 28. STS：Security Token Service
 
 ### STSとは
 
@@ -4212,7 +4243,7 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 28. Step Functions
+## 29. Step Functions
 
 ### Step Functionsとは
 
@@ -4259,7 +4290,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 29. VPC：Virtual Private Cloud
+## 30. VPC：Virtual Private Cloud
 
 ### VPCとは
 
@@ -4476,7 +4507,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 <br>
 
-## 29-02. VPC間，VPC-オンプレ間の通信
+## 30-02. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
@@ -4538,7 +4569,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 <br>
 
-## 30. WAF：Web Applicarion Firewall
+## 31. WAF：Web Applicarion Firewall
 
 ### 設定項目
 
@@ -4713,7 +4744,7 @@ Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-## 31. WorkMail
+## 32. WorkMail
 
 ### WorkMailとは
 
@@ -4731,7 +4762,7 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 32. 負荷テスト
+## 33. 負荷テスト
 
 ### Distributed Load Testing（分散負荷テスト）
 
@@ -4747,7 +4778,19 @@ AWSから提供されている負荷を発生させるインフラ環境のこ�
 
 <br>
 
-## 33. コスト管理
+## 34. コスト管理
+
+### コスト管理の観点
+
+#### ・スペック
+
+#### ・時間単価
+
+#### ・数量
+
+#### ・月額料金
+
+<br>
 
 ### SLA：Service Level Agreement
 
@@ -4777,17 +4820,25 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 <br>
 
-### コスト管理の観点
+### Service Quotas
 
-#### ・スペック
+#### ・Service Quotastとは
 
-#### ・時間単価
+各種AWSリソースの設定の上限値を上げられる．
 
-#### ・数量
+参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/intro.html
 
-#### ・月額料金
+#### ・各種AWSリソースの上限値
+
+参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-service-information.html
+
+#### ・方法
+
+参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/request-quota-increase.html
 
 <br>
+
+## 34-02. リソース別コスト
 
 ### EBS
 
@@ -4868,7 +4919,7 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 <br>
 
-## 33. タグ
+## 35. タグ
 
 ### タグ付け戦略
 

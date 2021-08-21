@@ -1,6 +1,49 @@
 # Datadog
 
-## 環境構築
+## Datadogとは
+
+### 概要
+
+<br>
+
+## メトリクス／ログ収集の仕組み
+
+### Datadogエージェント
+
+#### ・Datadogエージェント
+
+常駐プログラムであり，アプリケーションからメトリクスを収集し，Datadogに転送する．
+
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+
+<br>
+
+## EC2コンテナからのメトリクス／ログ収集
+
+参考：https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli
+
+<br>
+
+## Fargateコンテナからのメトリクス／ログ収集
+
+### Datadogコンテナ
+
+#### ・Datadogコンテナとは
+
+<br>
+
+### FireLensコンテナ
+
+#### ・FireLensコンテナとは
+
+DatadogコンテナはFargateコンテナからログを収集できないため，代わりにFireLensコンテナを使用する必要がある．以下のリンクを参考にせよ．
+
+参考：
+
+- https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
+
+<br>
 
 ### ベースイメージ
 
@@ -35,7 +78,7 @@ FROM data/agent:latest
 
 <br>
 
-### Datadogコンテナの構築
+### メトリクス
 
 
 

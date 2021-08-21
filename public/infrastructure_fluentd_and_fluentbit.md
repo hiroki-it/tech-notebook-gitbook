@@ -1,12 +1,29 @@
-# ログ収集／ログルーティング
+# Fluentd／Fluentbit
 
-## Fluentbit
+## Fluentd／Fluentbitとは
 
-### Fluentbitとは
+### 概要
 
-アプリケーションまたはインフラストラクチャから，メトリックやログなどのデータを収集し，これをフィルタリングした後，複数の宛先にルーティングする．
+アプリケーションまたはインフラストラクチャから，メトリックやログなどのデータを収集し，これをフィルタリングした後，複数の宛先に転送する．
+
+参考：https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
 
 <br>
+
+### FluentdとFluentbitの比較
+
+|                  | Fluentd                                      | Fluentbit                                  |
+| ---------------- | -------------------------------------------- | ------------------------------------------ |
+| スコープ         | コンテナ／サーバ                             | 組み込みLinux／コンテナ／サーバ            |
+| 言語             | C & Ruby                                     | NS                                         |
+| メモリ最大使用量 | 40MB                                         | 650KB                                      |
+| 依存関係         | 標準プラグインで一定数のRuby gemに依存する． | 標準プラグインではライブラリに依存しない． |
+| パフォーマンス   | 高                                           | 高                                         |
+| プラグイン数     | 1000個以上                                   | 70個                                       |
+
+<br>
+
+## ログの収集／転送の仕組み
 
 ### ログパイプライン
 
@@ -47,7 +64,7 @@
 
 #### ・OUTPUTセクションとは
 
-アウトプット先として，リンク先のサービスから選択できる．
+他サービスにログを転送する．転送先の種類については，以下を参考にせよ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -80,17 +97,28 @@
 
 <br>
 
-## FireLensコンテナ
+## Fargateコンテナからのログ収集
 
-### FireLensコンテナとは
+### FireLensコンテナ
 
-メインコンテナからログを収集し，これをルーティングするコンテナとして機能する．サイドカーコンテナパターンで構築する．構築のための実装例については，以下のリンクを参考にせよ．
+#### ・FireLensコンテナとは
 
-参考：https://github.com/aws-samples/amazon-ecs-firelens-examples
+AWSが提供するFluentbit／Fluentdイメージによって構築されるサイドカーコンテナであり，Fargateコンテナのログを収集し，これを他のサービスに転送する．構築のための実装例については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://github.com/aws-samples/amazon-ecs-firelens-examples
+- https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
+
+#### ・ログの転送先
+
+Fluentbit／Fluentdが対応する他のサービスにログを転送できる．
+
+参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
 <br>
 
-### サイドカーコンテナとしての配置
+### サイドカーコンテナパターン
 
 #### ・サイドカーコンテナパターンとは
 
@@ -98,9 +126,9 @@
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_virtualization_container_orchestration.html
 
-#### ・ログ収集／ログルーティングの仕組み
+#### ・ログの収集／転送の仕組み
 
-以下の順番でログ収集／ログルーティングを実行する．
+以下の順番でログの収集／転送を実行する．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
@@ -116,9 +144,9 @@
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
-#### ・ログルーティングプロセス
+#### ・ログ転送プロセス
 
-FireLensコンテナでは，FluentbitまたはFlunetdがログルーティングプロセスとして稼働する．FireLensコンテナを使用せずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを使用すれば，主要なセットアップがされているため，より簡単な設定でFluentbitまたはFlunetdを使用できる．Fluentbitの方がより低負荷で稼働するため，Fluentbitが推奨されている．
+FireLensコンテナでは，FluentbitまたはFlunetdがログ転送プロセスとして稼働する．FireLensコンテナを使用せずに，独自のコンテナを構築して稼働させることも可能であるが，FireLensコンテナを使用すれば，主要なセットアップがされているため，より簡単な設定でFluentbitまたはFlunetdを使用できる．Fluentbitの方がより低負荷で稼働するため，Fluentbitが推奨されている．
 
 参考：
 
@@ -231,7 +259,7 @@ Firelensコンテナのパイプラインでは，『<コンテナ名>-firelens-
 
 <br>
 
-### Fireコンテナの構築
+### Fire Lensコンテナの構築
 
 #### ・コンテナ定義
 
