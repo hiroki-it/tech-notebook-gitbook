@@ -93,7 +93,7 @@
   * [▶ ︎CircleCI](public/infrastructure_circleci.md)
   * [▶ ︎Capistrano](public/infrastructure_capistrano.md)
 * 監視
-  * [▶ ︎Fluentd/Fluentbit](public/infrastructure_fluentd_and_flunetbit.md)
+  * [▶ ︎Fluentd/Fluentbit](public/infrastructure_fluentd_and_fluentbit.md)
   * [▶ ︎Datadog](public/infrastructure_datadog.md)
 * ハードウェア
   * [▶ ︎ハードウェア](public/hardware.md)
