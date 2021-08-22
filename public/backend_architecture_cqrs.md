@@ -1,10 +1,10 @@
-# CQRS設計
+# Command Query Responsibility Segregation
 
-## 01. CQRS設計：Command Query Responsibility Segregation（コマンドクエリ責務分離）
+## 01. CQRS
 
-### CQRS設計とは
+### CQRSとは
 
-DBへのアクセス処理を書き込みと読み出しに分離する設計のこと．DDDに部分的に組み込むことができる．```N+１```問題にも，対処できる．
+『Command Query Responsibility Segregation（コマンドクエリ責務分離）』の略．DBへのアクセス処理を書き込みと読み出しに分離する設計のこと．DDDに部分的に組み込むことができる．```N+１```問題にも，対処できる．
 
 ![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png)
 

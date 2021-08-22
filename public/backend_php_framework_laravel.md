@@ -205,8 +205,8 @@ $ php artisan make:model <Eloquentモデル名>
 | 項目             | メリット                                                     | デメリット                                                   |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 保守性           | テーブル間のリレーションが，そのままモデル間の依存関係になるため，モデル間の依存関係を考える必要がなく，開発が早い．そのため，ビジネスロジックが複雑でないアプリケーションの開発に適している． | ・反対に，モデル間の依存関係によってテーブル間のリレーションが決まる．そのため，複雑な業務ロジックでモデル間が複雑な依存関係を持つと，テーブル間のリレーションも複雑になっていってしまう．<br>・モデルに対応するテーブルに関して，必要なカラムだけでなく，全てのカラムから取得するため，アプリケーションに余分な負荷がかかる． |
-| スケーラビリティ | テーブル間のリレーションがモデル間の依存関係によって定義されており，JOIN句を使用せずに，各テーブルから必要なデータを取得できる．そのため，テーブルを増やすやすい． |                                                              |
-| 可読性           | ・モデルとこれのプロパティがそのままテーブルになるため，モデルを作成するためにどのテーブルからデータを取得するのかを推測しやすい．（Userモデル ⇄ usersテーブル）<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． |                                                              |
+| スケーラビリティ | テーブル間のリレーションがモデル間の依存関係によって定義されており，JOIN句を使用せずに，各テーブルから必要なレコードを取得できる．そのため，テーブルを増やすやすい． |                                                              |
+| 可読性           | ・モデルとこれのプロパティがそのままテーブルになるため，モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい．（Userモデル ⇄ usersテーブル）<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． |                                                              |
 
 <br>
 
@@ -258,7 +258,15 @@ class Foo extends Model
 
 #### ・テーブル間リレーションシップの定義
 
-ER図における各テーブルのリレーションシップを元に，モデル間の関連性を定義する．```hasOne```メソッド，```hasMany```メソッド，```belongsTo```メソッドを用いて表現する．ER図については，以下を参考にせよ．
+ER図における各テーブルのリレーションシップを元に，モデル間の関連性を定義する．```hasOne```メソッド，```hasMany```メソッド，```belongsTo```メソッドを用いて表現する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
+
+ER図については，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
 
@@ -751,12 +759,14 @@ INSERT文を実行する．Eloquentモデルには```create```メソッドがな
 - https://codelikes.com/laravel-eloquent-basic/#toc9
 - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
 
+**＊実装例＊**
+
 ```php
 <?php
 
-namespace App\Infrastructure\Repositories;
+namespace App\Http\Controllers;
 
-use App\Domain\Foo\Entities;
+use App\Models\Foo;
 use Illuminate\Http\Request;
 
 class FooController extends Controller
@@ -808,21 +818,247 @@ class FooDTO extends Model
 
 #### ・```find```メソッド
 
-SELECT文を実行する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
+SELECT文を実行し，レコードを一つ取得する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
 
-参考：https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
+- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @param int $id
+     * @return Collection
+     */
+    public function findById(int $id): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->find($id);
+    }
+}
+```
 
 #### ・```all```メソッド
 
-SELECT文を実行する．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
+SELECT文を実行し，レコードを全て取得する．MySQLを含むDBエンジンでは，取得結果に標準の並び順が存在しないため，プライマリキーの昇順で取得したい場合は，```orderBy```メソッドを使用して，明示的に並び替えるようにする．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
 
-参考：https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
+参考：
+
+- https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
+
+- https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
+
+- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAll(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all();
+    }
+}
+```
+
+#### ・```sortBy```メソッド
+
+SELECT文を実行し，レコードを指定したカラムの昇順で並び替えて取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all()->sortBy('foo_id');
+    }
+}
+```
+
+#### ・```sortByDesc```メソッド
+
+SELECT文を実行し，レコードを指定したカラムの降順で並び替えて取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all()->sortByDesc('foo_id');
+    }
+}
+```
+
+#### ・```orderBy```メソッド
+
+SELECT文を実行し，レコードを指定したカラムの昇順／降順で並び替える．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
+
+参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
+
+        // 昇順
+        return $foo->orderBy('foo_id', 'asc')->get();
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
+
+        // 降順
+        return $foo->orderBy('foo_id', 'desc')->get();
+    }    
+}
+```
+
+#### ・```limit```メソッド，```offset```メソッド
+
+SELECT文を実行し，指定した開始地点から指定した件数のレコードを全て取得する．これにより，ページネーションにおいて，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すとよい．
+
+参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function findAllByPagination(Request $request): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->offset($request->offset)
+            ->limit($request->limit)
+            ->get();
+    }
+}
+```
 
 #### ・```with```メソッド
 
 二つのSELECT文を実行する．Eloquentモデルには```with```メソッドがないため，代わりにEloquentビルダーが持つ```with```メソッドがコールされる．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．N+1問題を防げる．
 
 **＊実装例＊**
+
+コントローラにて，Department（親）と，これに紐づくEmployee（子）を読み出す．これらのモデルの間では，```hasMany```メソッドと```belongsTo```メソッドを使用して，テーブルにおける一対多のリレーションを定義しておく．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Department;
+
+class EmployeeController
+{
+    /**
+     * @param $id
+     */
+    public function getEmployeesById(int $id)
+    {
+        $department = new Department();
+
+        // 指定したIdのDepartmentに属するEmployeesを全て読み出します．
+        // （departments : employees = 1 : 多）
+        return $department->with("employees")->find($id);
+    }
+
+    public function getEmployeesWithDepartment()
+    {
+        $department = new Department();
+
+        // Departmentに属するEmployeesを全て読み出します．
+        // （departments : employees = 1 : 多）
+        return $department->with("employees")->get();
+    }
+}
+```
 
 Department（親）に，departmentsテーブルとemployeesテーブルの間に，一対多の関係を定義する．
 
@@ -838,18 +1074,18 @@ class Department extends Model
 {
     /**
      * 主キーとするカラム
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected $primaryKey = "department_id";
 
-     /**
+    /**
      * 一対多の関係を定義します．
      * （デフォルトではemployee_idに関連付けます）
-     * 
+     *
      * @return HasMany
      */
-    public function hasManyEmployees() :HasMany
+    public function hasManyEmployees(): HasMany
     {
         return $this->hasMany(Employee::class);
     }
@@ -881,48 +1117,9 @@ class Employee extends Model
      * 
      * @return BelongsTo
      */
-    public function belongsToDepartments() :BelongsTo
+    public function belongsToDepartments(): BelongsTo
     {
         return $this->belongsTo(Department::class);
-    }
-}
-```
-
-コントローラにて，Department（親）と，これに紐づくEmployee（子）を読み出す．
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-class EmployeeController
-{
-    /**
-     * @param $id
-     */
-    public function getEmployeesById($id)
-    {
-        $department = new Department();
-        
-        // 指定したIdのDepartmentに属するEmployeesを全て読み出します．
-        // （departments : employees = 1 : 多）
-        $department->with("employees")->find($id);
-        
-        // 続きの処理
-    }
-
-    /**
-     * 
-     */
-    public function getEmployeesWithDepartment()
-    {
-        // Departmentに属するEmployeesを全て読み出します．
-        // （departments : employees = 1 : 多）
-        return $this->departmentDTO
-            ->with("employees")
-            ->get();
-
-        // 続きの処理
     }
 }
 ```
@@ -939,6 +1136,8 @@ UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿�
 
 - https://codelikes.com/laravel-eloquent-basic/#toc9
 - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -1066,7 +1265,7 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で，同様に```destroy```／```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないデータを読み出さないため，論理削除を実現できる．
+上記の状態で，同様に```destroy```／```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないレコードを読み出さないため，論理削除を実現できる．
 
 <br>
 
@@ -1103,7 +1302,7 @@ select * from `employees` where `department_id` = 3
 
 #### ・解決方法
 
-反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのデータを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
 
 ```php
 <?php
@@ -1137,7 +1336,7 @@ LaravelはActive Recordパターンを採用しており，これはビジネス
 
 #### ・DTOクラスの導入
 
-ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でデータのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
+ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でレコードのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
 
 ```php
 <?php
@@ -3662,7 +3861,7 @@ class FooController extends Controller
      * @param  Request  $request
      * @param  int  $id
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, int $id)
     {
         $session = $request->session()
             ->get("key");
@@ -4053,6 +4252,58 @@ class CreateFooTable extends Migration
 }
 ```
 
+#### ・```renameColumn```メソッド
+
+指定したカラムの名前を変更する．
+
+**＊実装例＊**
+
+カラム名を変更するためだけにマイグレーションファイルを作成する．
+
+```shell
+$ php artisan make:migration rename_column --table=foos
+```
+
+テーブルのカラム名を定義し，```renameColumn```メソッドをコールする．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class RenameColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->renameColumn('id', 'foo_id');
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        // データ型の変更後でも，ロールバックできるようにしておく．
+        Schema::table('foos', function (Blueprint $table) {
+            $table->renameColumn('foo_id', 'foo_id');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラム名が変更される．実行後は，作成したマイグレーションファイルを削除する．
+
+```shell
+$ php artisan migrate
+```
+
 #### ・```change```メソッド
 
 指定したカラムのデータ型を変更する．
@@ -4062,10 +4313,10 @@ class CreateFooTable extends Migration
 データ型を変更するためだけにマイグレーションファイルを作成する．
 
 ```shell
-$ php artisan make:migration change_data_type --table=foos
+$ php artisan make:migration change_column_data_type --table=foos
 ```
 
-テーブルのカラムを指定し，データ型を定義する．```change```メソッドをコールする．データ型の変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+テーブルのカラムのデータ型を定義し，```change```メソッドをコールする．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
 
 ```php
 <?php
@@ -4074,7 +4325,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeDataType extends Migration
+class ChangeColumnDataType extends Migration
 {
     /**
      * @return void
@@ -4102,7 +4353,7 @@ class ChangeDataType extends Migration
 マイグレーションを実行すると，指定したテーブルのカラムのデータ型が変更される．実行後は，作成したマイグレーションファイルを削除する．
 
 ```shell
-$ php artisan migrate:status
+$ php artisan migrate
 ```
 
 <br>

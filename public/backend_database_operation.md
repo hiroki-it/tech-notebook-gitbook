@@ -121,9 +121,9 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 <br>
 
-### データの追加／削除
+### レコードの追加／削除
 
-データを追加するあるいは削除する場合，カラムではなく，レコードの増減を行う．カラムの増減の処理には時間がかかる．一方で，レコードの増減の処理には時間がかからない．
+レコードを追加するあるいは削除する場合，カラムではなく，レコードの増減を行う．カラムの増減の処理には時間がかかる．一方で，レコードの増減の処理には時間がかからない．
 
 ![カラムの増減は✖，レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/カラムの増減は✖，レコードの増減は〇-1.png)
 
@@ -135,35 +135,56 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 <br>
 
-## 02. RDBに必要な機能
+## 02. ACID
 
-### ACID特性
+### ACIDとは
 
-トランザクションを実現するためには，以下の４つの機能が必要である．
+トランザクションを実現するため必要な機能を略して『ACID』という．
 
-#### ・Atomicity
+参考：
 
-  コミットメント制御によって実装される．
-
-#### ・Consistency
-
-  トランザクションの前後で排他制御によって実装される．
-
-#### ・Isolation
-
-  排他制御によって実装される．
-
-#### ・Durability
-
-  障害回復制御によって実装される．
+- http://tooljp.com/jyosho/docs/ACID/ACID.html
+- https://atmarkit.itmedia.co.jp/ait/articles/1801/31/news011.html
 
 <br>
 
-## 02-02. コミットメント制御と障害回復制御
+### Atomicity（不可分性）
+
+#### ・Atomicityとは
+
+トランザクションに含まれる全ての処理が成功することと，またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと．コミットメント制御によって実装される．
+
+<br>
+
+### Consistency（整合性）
+
+#### ・Consistencyとは
+
+トランザクションの実行前後であっても，データは常にDBのルールに則っている性質のこと．カラムの制約によって実装される．
+
+<br>
+
+### Isolation（独立性）
+
+#### ・Isolationとは
+
+トランザクションはお互いに独立し，影響を与え合わない性質のこと．排他制御によって実装される．
+
+<br>
+
+### Durability（永続性）
+
+#### ・Durabilityとは
+
+トランザクションの完了後は，たとえシステム障害があったとしても，データは失われない性質のこと．障害回復制御によって実装される．
+
+<br>
+
+## 02-02. コミットメント制御
 
 ### RDBの書き込み系の操作
 
-#### ・RDBに対するC／U／Dの処理の大まかな流れ
+#### ・CREATE／UPDATE/DELETE処理の流れ
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コミットメント制御.jpg)
 
@@ -222,10 +243,6 @@ try{
 
 <br>
 
-### ログファイルへの更新前ログの書き込み
-
-<br>
-
 ### コミットによるログファイルへの更新前ログへの書き込み
 
 #### ・コミット
@@ -252,6 +269,8 @@ try{
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トランザクション.jpg)
 
 <br>
+
+## 02-03. 障害回復制御
 
 ### システム障害からの回復
 
@@ -329,29 +348,56 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 <br>
 
-## 02-03. 排他制御
+## 02-04. 排他制御
 
-### なぜ排他制御が必要か
+### UPDATE処理競合問題
+
+#### ・UPDATE処理競合問題とは
+
+アプリケーションのレコードのUPDATE処理が，レコードの取得と更新からなるとする．システムのユーザAとBがおり，ユーザBがUPDATE処理時に取得しなければならないレコードの状態は，ユーザAがUPDATE処理を終えた後のものである．しかし，ユーザAがレコードを取得してから更新を終えるまでの間に，ユーザBが同じくレコードを取得してしまうことがある．結果として，ユーザBのUPDATE処理によって，ユーザAの処理が上書きされ，無かったことになってしまう．
+
+参考：https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-1.png)
 
-#### ・排他制御を行った結果
+ユーザAとユーザBのUPDATE処理が並行したとしても，ユーザAの処理が無かったことにならないよう保証する方法として，『排他制御』がある．
 
-  ![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-2.png)
+![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-2.png)
 
-  <br>
+<br>
 
-### 排他制御のためのロック操作
+### 排他制御
+
+#### ・種類
+
+参考：https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+
+| 種類                 | 説明                                       |
+| -------------------- | ------------------------------------------ |
+| 共有／占有ロック     | DBによるロック機能．                       |
+| 楽観的／悲観的ロック | アプリケーションまたはDBによるロック機能． |
+
+#### ・UPDATE処理競合問題の許容
+
+UPDATE処理競合問題を許容し，排他制御を使用しない選択肢もある．
+
+<br>
+
+### 共有／占有ロック
 
 ![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/排他制御-3.gif)
 
 #### ・共有ロック
 
-CRUDのRead以外の処理を実行不可能にする．レコードをReadする時に，他者によってUpdateされたくない場合に用いる．「共有」の名の通り，共有ロックされているレコードに対して，他の人も共有ロックを行うことができる．
+DBにおいて，CRUDのREAD処理以外の処理を実行不可能にする．レコードのREAD処理を実行する時に，他者によってUPDATE処理されたくない場合に用いる．「共有」の名の通り，共有ロックされているレコードに対して，他の人も共有ロックを行うことができる．MySQLでは，『```SELECT ... LOCK IN SHARE MODE```』を使用する．
+
+参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ・占有ロック
 
-CRUDの全ての処理を実行不可能にする．レコードをUpdateする時に，他者によってUpdateもReadもされたくない場合に用いる．
+DBにおいて，CRUDの全ての処理を実行不可能にする．レコードのUPDATE処理を実行する時に，他者によってUPDATE／READ処理の両方を実行させない場合に用いる．MySQLでは，『```SELECT ... FOR UPDATE```』を使用する．
+
+参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ・デッドロック現象
 
@@ -364,7 +410,37 @@ CRUDの全ての処理を実行不可能にする．レコードをUpdateする�
 
 ![Null](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デッドロック.gif)
 
-#### ・ロックの粒度
+<br>
+
+### 楽観的／悲観的ロック
+
+#### ・楽観的ロック
+
+DBのレコードにはバージョンに関するカラム値（最終更新日時など）が存在しているとする．UPDATE処理のためにユーザAがDBのレコードを取得した時に，バージョン値を一時的に保持しておく．続けて更新する直前に，DBからバージョンの値を改めて取得する．保持しておいたバージョン値とDBの値を比較し，DBの値の方がより新しいバージョンだった場合，UPDATE処理が失敗するようにする．競合によるエラーを表す```409```ステータスをレスポンスとして返信するとよい．
+
+参考：
+
+- https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
+- https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
+
+#### ・悲観的ロック
+
+ユーザAがDBのレコードを取得した時点でロックを起動し，ユーザBはレコードの取得すらできなくする．ユーザAが更新を終えてロックが解除され，そこで初めてユーザBはレコードを取得できるようになる．アプリケーションで悲観的ロックを実装することは難易度が高く，基本的にはDBが提供するロック機能を用いる．
+
+参考：
+
+- https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
+- https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
+
+#### ・ORMの楽観的ロックについて
+
+ORMが楽観的ロックの機能を持っている場合がある．
+
+参考：https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a#or-%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A5%BD%E8%A6%B3%E7%9A%84%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E5%AE%9F%E8%A3%85%E6%9C%89%E7%84%A1
+
+<br>
+
+### ロックの粒度
 
 ![ロックの粒度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロックの粒度-1.png)
 
