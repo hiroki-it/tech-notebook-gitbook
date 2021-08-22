@@ -200,7 +200,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.1.2" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
+        <li class="chapter " data-level="1.3.1.2" data-path="backend_architecture_cqrs.html">
+            
+                <a href="backend_architecture_cqrs.html">
+            
+                    
+                    ▶ ︎CQRS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
             
                 <a href="backend_architecture_domain_driven_design_clean_architecture.html">
             
@@ -218,20 +231,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="backend_architecture_cqrs.html">
-            
-                <a href="backend_architecture_cqrs.html">
-            
-                    
-                    ▶ ︎CQRS設計
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="frontend_architecture.html">
+        <li class="chapter " data-level="1.3.2" data-path="frontend_architecture.html">
             
                 <a href="frontend_architecture.html">
             
@@ -244,7 +244,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="frontend_and_backend_architecture_microservice.html">
+        <li class="chapter " data-level="1.3.3" data-path="frontend_and_backend_architecture_microservice.html">
             
                 <a href="frontend_and_backend_architecture_microservice.html">
             
@@ -1466,7 +1466,7 @@
                 <span>
             
                     
-                    CI/CD
+                    CI／CD
             
                 </span>
             
@@ -1480,7 +1480,7 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    ▶ ︎CI/CD
+                    ▶ ︎CI／CD
             
                 </a>
             
@@ -1538,7 +1538,7 @@
                 <a href="infrastructure_fluentd_and_fluentbit.html">
             
                     
-                    ▶ ︎Fluentd/Fluentbit
+                    ▶ ︎Fluentd／FluentBit
             
                 </a>
             
@@ -2182,36 +2182,44 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <pre class="language-"><code>FROM ---&gt; JOIN ---&gt; WHERE ---&gt; GROUP BY ---&gt; HAVING ---&gt; SELECT ---&gt; ORDER BY
 </code></pre><p><br></p>
 <h3 id="select&#x53E5;"><a name="select&#x53E5;" class="plugin-anchor" href="#select&#x53E5;"><i class="fa fa-link" aria-hidden="true"></i></a><code>SELECT</code>&#x53E5;</h3>
-<h4 id="&#x30FB;sum"><a name="&#x30FB;sum" class="plugin-anchor" href="#&#x30FB;sum"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>SUM()</code></h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5408;&#x8A08;&#x3092;&#x53D6;&#x5F97;</p>
+<h4 id="&#x30FB;&#x306A;&#x3057;"><a name="&#x30FB;&#x306A;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x306A;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x306A;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;MySQL&#x3067;&#x306F;&#xFF0C;&#x53D6;&#x5F97;&#x7D50;&#x679C;&#x306B;&#x6A19;&#x6E96;&#x306E;&#x4E26;&#x3073;&#x9806;&#x304C;&#x5B58;&#x5728;&#x3057;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x30D7;&#x30E9;&#x30A4;&#x30DE;&#x30EA;&#x30AD;&#x30FC;&#x306E;&#x6607;&#x9806;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;<code>ORDER BY</code>&#x53E5;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x660E;&#x793A;&#x7684;&#x306B;&#x4E26;&#x3073;&#x66FF;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL" target="_blank">https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL</a></p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
+    <span class="token operator">*</span>
+<span class="token keyword">FROM</span>
+    { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="&#x30FB;sum&#x95A2;&#x6570;"><a name="&#x30FB;sum&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;sum&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>SUM</code>&#x95A2;&#x6570;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5408;&#x8A08;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token function">SUM</span><span class="token punctuation">(</span>{ &#x30AB;&#x30E9;&#x30E0;&#x540D; }<span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;avg"><a name="&#x30FB;avg" class="plugin-anchor" href="#&#x30FB;avg"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>AVG()</code></h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5E73;&#x5747;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
+<h4 id="&#x30FB;avg&#x95A2;&#x6570;"><a name="&#x30FB;avg&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;avg&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>AVG</code>&#x95A2;&#x6570;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x5E73;&#x5747;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token function">AVG</span><span class="token punctuation">(</span>{ &#x30AB;&#x30E9;&#x30E0;&#x540D; }<span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;min"><a name="&#x30FB;min" class="plugin-anchor" href="#&#x30FB;min"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MIN()</code></h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
+<h4 id="&#x30FB;min&#x95A2;&#x6570;"><a name="&#x30FB;min&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;min&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MIN</code>&#x95A2;&#x6570;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5C0F;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token function">MIN</span><span class="token punctuation">(</span>{ &#x30AB;&#x30E9;&#x30E0;&#x540D; }<span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;max"><a name="&#x30FB;max" class="plugin-anchor" href="#&#x30FB;max"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MAX()</code></h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5927;&#x5024;&#x3092;&#x53D6;&#x5F97;</p>
+<h4 id="&#x30FB;max&#x95A2;&#x6570;"><a name="&#x30FB;max&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;max&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MAX</code>&#x95A2;&#x6570;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x6700;&#x5927;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token function">MAX</span><span class="token punctuation">(</span>{ &#x30AB;&#x30E9;&#x30E0;&#x540D; }<span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;count"><a name="&#x30FB;count" class="plugin-anchor" href="#&#x30FB;count"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>COUNT()</code></h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x500B;&#x6570;&#x3092;&#x53D6;&#x5F97;</p>
+<h4 id="&#x30FB;count&#x95A2;&#x6570;"><a name="&#x30FB;count&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;count&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>COUNT</code>&#x95A2;&#x6570;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x306E;&#x500B;&#x6570;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
@@ -2226,21 +2234,21 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3082;&#x542B;&#x3080;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3082;&#x542B;&#x3080;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }<span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3092;&#x9664;&#x3044;&#x305F;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x5024;&#x7121;&#x3057;&#x3092;&#x9664;&#x3044;&#x305F;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;lastinsertid"><a name="&#x30FB;lastinsertid" class="plugin-anchor" href="#&#x30FB;lastinsertid"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>LAST_INSERT_ID()</code></h4>
+<h4 id="&#x30FB;lastinsertid&#x95A2;&#x6570;"><a name="&#x30FB;lastinsertid&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;lastinsertid&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>LAST_INSERT_ID</code>&#x95A2;&#x6570;</h4>
 <p>&#x4EFB;&#x610F;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x6700;&#x5F8C;&#x306B;&#x633F;&#x5165;&#x3055;&#x308C;&#x305F;ID&#x3092;&#x8AAD;&#x307F;&#x51FA;&#x3059;&#xFF0E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> LAST_INSERT_ID<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h4 id="&#x30FB;md5"><a name="&#x30FB;md5" class="plugin-anchor" href="#&#x30FB;md5"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MD5()</code></h4>
+<h4 id="&#x30FB;md5&#x95A2;&#x6570;"><a name="&#x30FB;md5&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;md5&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>MD5</code>&#x95A2;&#x6570;</h4>
 <p>&#x6587;&#x5B57;&#x5217;&#x3092;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5316;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> MD5<span class="token punctuation">(</span><span class="token string">&quot;xxxxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -2275,9 +2283,9 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;<span class="token number">1</span> }<span class="token punctuation">,</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D;<span class="token number">2</span> }<span class="token punctuation">,</span>
-    <span class="token comment">-- &#x307E;&#x305A;&#xFF0C;1&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;2&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304C;&#x540C;&#x3058;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
+    <span class="token comment">-- &#x307E;&#x305A;&#xFF0C;1&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;2&#x3064;&#x76EE;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304C;&#x540C;&#x3058;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;&#xFF0E;</span>
 <span class="token keyword">WHERE</span>
-    <span class="token comment">-- &#x6B21;&#x306B;&#xFF0C;&#x4E0A;&#x8A18;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6B21;&#x306E;&#x6761;&#x4EF6;&#x3082;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#xFF0E;</span>
+    <span class="token comment">-- &#x6B21;&#x306B;&#xFF0C;&#x4E0A;&#x8A18;&#x3067;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6B21;&#x306E;&#x6761;&#x4EF6;&#x3082;&#x6E80;&#x305F;&#x3059;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;&#xFF0E;</span>
     { &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">1</span> } <span class="token operator">=</span> { &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">2</span> }
     <span class="token operator">AND</span> { &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">2</span> } <span class="token operator">=</span> { &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">3</span> }
 </code></pre>
@@ -2329,9 +2337,9 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <p><br></p>
 <h3 id="in&#x53E5;&#xFF0C;any&#x53E5;&#x306E;&#x9055;&#x3044;"><a name="in&#x53E5;&#xFF0C;any&#x53E5;&#x306E;&#x9055;&#x3044;" class="plugin-anchor" href="#in&#x53E5;&#xFF0C;any&#x53E5;&#x306E;&#x9055;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a><code>IN</code>&#x53E5;&#xFF0C;<code>ANY</code>&#x53E5;&#x306E;&#x9055;&#x3044;</h3>
 <h4 id="&#x30FB;in&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;"><a name="&#x30FB;in&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;" class="plugin-anchor" href="#&#x30FB;in&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>IN</code>&#x53E5;&#x306E;&#x4F7F;&#x3044;&#x65B9;</h4>
-<p>  &#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x3068;&#x540C;&#x3058;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>  &#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x3068;&#x540C;&#x3058;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token operator">*</span>
 <span class="token keyword">FROM</span>
@@ -2339,7 +2347,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">WHERE</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">in</span> <span class="token punctuation">(</span>xxx<span class="token punctuation">,</span> xxx<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token operator">*</span>
 <span class="token keyword">FROM</span>
@@ -2347,7 +2355,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">WHERE</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D; } <span class="token operator">not</span> <span class="token operator">in</span> <span class="token punctuation">(</span>{ &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">1</span> }<span class="token punctuation">,</span> { &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x540D;<span class="token number">2</span> }<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;<code>SELECT</code>&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;<code>SELECT</code>&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x305F;&#x5024;&#x4EE5;&#x5916;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token operator">*</span>
 <span class="token keyword">FROM</span>
@@ -2406,7 +2414,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <p><br></p>
 <h3 id="having&#x53E5;"><a name="having&#x53E5;" class="plugin-anchor" href="#having&#x53E5;"><i class="fa fa-link" aria-hidden="true"></i></a><code>HAVING</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><a name="&#x30FB;&#x4F7F;&#x3044;&#x65B9;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
-<p>&#x5404;&#x53E5;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;&#x304B;&#x3089;&#x8003;&#x616E;&#x3057;&#x3066;&#xFF0C;<code>GROUP BY</code>&#x3067;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x304B;&#x3089;&#xFF0C;<code>HAVING</code>&#x3067;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#xFF0E;<code>SELECT</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x304C;&#xFF0C;<code>HAVING</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x306E;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x5404;&#x53E5;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9806;&#x756A;&#x304B;&#x3089;&#x8003;&#x616E;&#x3057;&#x3066;&#xFF0C;<code>GROUP BY</code>&#x3067;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x304B;&#x3089;&#xFF0C;<code>HAVING</code>&#x3067;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;&#xFF0E;<code>SELECT</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x304C;&#xFF0C;<code>HAVING</code>&#x306B;&#x304A;&#x3051;&#x308B;&#x96C6;&#x8A08;&#x95A2;&#x6570;&#x306E;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x305B;&#x3088;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-sql"><span class="token comment">-- HAVING&#x306B;&#x3088;&#x308B;&#x96C6;&#x8A08;&#x7D50;&#x679C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x51FA;&#x529B;&#xFF0E;</span>
 <span class="token keyword">SELECT</span>
@@ -2415,7 +2423,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <span class="token keyword">FROM</span>
     { &#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x540D; }
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span>
-<span class="token comment">-- &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x3092;&#x96C6;&#x8A08;&#x3057;&#xFF0C;&#xFF12;&#x500B;&#x4EE5;&#x4E0A;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token comment">-- &#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3057;&#x305F;&#x7D50;&#x679C;&#x3092;&#x96C6;&#x8A08;&#x3057;&#xFF0C;&#xFF12;&#x500B;&#x4EE5;&#x4E0A;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
     { &#x30AB;&#x30E9;&#x30E0;&#x540D;<span class="token number">1</span> }
 <span class="token keyword">HAVING</span>
     <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>
@@ -2461,7 +2469,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <h3 id="between&#x53E5;"><a name="between&#x53E5;" class="plugin-anchor" href="#between&#x53E5;"><i class="fa fa-link" aria-hidden="true"></i></a><code>BETWEEN</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><a name="&#x30FB;&#x4F7F;&#x3044;&#x65B9;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;1&#x4EE5;&#x4E0A;10&#x4EE5;&#x4E0B;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AB;&#x30E9;&#x30E0;&#x3067;&#xFF0C;1&#x4EE5;&#x4E0A;10&#x4EE5;&#x4E0B;&#x306E;&#x300E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x300F;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span>
     <span class="token operator">*</span>
 <span class="token keyword">FROM</span>
@@ -2593,7 +2601,7 @@ $ dnf <span class="token function">install</span> -y mysql-server
 <p><br></p>
 <h3 id="explain&#x53E5;"><a name="explain&#x53E5;" class="plugin-anchor" href="#explain&#x53E5;"><i class="fa fa-link" aria-hidden="true"></i></a><code>EXPLAIN</code>&#x53E5;</h3>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><a name="&#x30FB;&#x4F7F;&#x3044;&#x65B9;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x3044;&#x65B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x3044;&#x65B9;</h4>
-<p>&#x8A2D;&#x5B9A;&#x3057;&#x305F;<code>SELECT</code>&#x53E5;&#x304C;&#x4EEE;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x3044;&#x305A;&#x308C;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x3044;&#x305A;&#x308C;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#x304B;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x60F3;&#x5B9A;&#x5B9F;&#x884C;&#x6642;&#x9593;&#x3082;&#x691C;&#x51FA;&#x3067;&#x304D;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30B9;&#x30ED;&#x30FC;&#x30AF;&#x30A8;&#x30EA;&#x306E;&#x691C;&#x51FA;&#x306B;&#x5F79;&#x7ACB;&#x3064;&#xFF0E;</p>
+<p>&#x8A2D;&#x5B9A;&#x3057;&#x305F;<code>SELECT</code>&#x53E5;&#x304C;&#x4EEE;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x3044;&#x305A;&#x308C;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x3044;&#x305A;&#x308C;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#x304B;&#xFF08;&#x5B9F;&#x884C;&#x8A08;&#x753B;&#xFF09;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x60F3;&#x5B9A;&#x5B9F;&#x884C;&#x6642;&#x9593;&#x3082;&#x691C;&#x51FA;&#x3067;&#x304D;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30B9;&#x30ED;&#x30FC;&#x30AF;&#x30A8;&#x30EA;&#x306E;&#x691C;&#x51FA;&#x306B;&#x5F79;&#x7ACB;&#x3064;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://dev.mysql.com/doc/refman/5.7/en/explain-output.html" target="_blank">https://dev.mysql.com/doc/refman/5.7/en/explain-output.html</a></p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">EXPLAIN</span>
 <span class="token keyword">SELECT</span>
@@ -2714,7 +2722,7 @@ possible_keys: index_t2_on_c3
 <h4 id="&#x30FB;fetch&#x3068;&#x306F;"><a name="&#x30FB;fetch&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;fetch&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>FETCH</code>&#x3068;&#x306F;</h4>
 <p>&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x305F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x306B;&#x4E00;&#x5EA6;&#x306B;&#x5168;&#x3066;&#x53D6;&#x5F97;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3068;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x5074;&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x3092;&#x5727;&#x8FEB;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x5C11;&#x3057;&#x305A;&#x3064;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;fetch&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;"><a name="&#x30FB;fetch&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;" class="plugin-anchor" href="#&#x30FB;fetch&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>FETCH</code>&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x540D;&#x306B;&#x95A2;&#x3059;&#x308B;&#x6CE8;&#x610F;&#x70B9;</h4>
-<p>&#x6CE8;&#x610F;&#x70B9;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>FETCH()</code>&#x7CFB;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x304C;&#x7570;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x3082;&#x540C;&#x3058;&#x5206;&#x3060;&#x3051;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
+<p>&#x6CE8;&#x610F;&#x70B9;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>FETCH</code>&#x95A2;&#x6570;&#x306F;&#xFF0C;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x3063;&#x3066;&#x540D;&#x524D;&#x304C;&#x7570;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x540C;&#x3058;&#x540D;&#x524D;&#x3067;&#x3082;&#x540C;&#x3058;&#x5206;&#x3060;&#x3051;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#xFF0E;</p>
 <p><br></p>
 <h3 id="pdo&#x306E;&#x5834;&#x5408;"><a name="pdo&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#pdo&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>PDO&#x306E;&#x5834;&#x5408;</h3>
 <h4 id="&#x30FB;prepare&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;prepare&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;prepare&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>prepare</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
@@ -2730,7 +2738,7 @@ possible_keys: index_t2_on_c3
 <span class="token variable">$stmt</span><span class="token operator">-&gt;</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5B9F;&#x884C;&#xFF0E;</span>
 
 
-<span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
 <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-&gt;</span><span class="token function">fetchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// &#x51FA;&#x529B;</span>
@@ -2756,14 +2764,14 @@ possible_keys: index_t2_on_c3
 <span class="token comment">// )</span>
 </code></pre>
 <h4 id="&#x30FB;fetchcolumn&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;fetchcolumn&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;fetchcolumn&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>fetchColumn</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x6DF7;&#x5408;&#x578B;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x4E3B;&#x306B;&#xFF0C;<code>COUNT()</code>&#x306E;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;</p>
+<p>&#x8AAD;&#x307F;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x3046;&#x3061;&#xFF0C;&#x6700;&#x521D;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x4E00;&#x756A;&#x5DE6;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x306E;&#x307F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#xFF0C;&#x6DF7;&#x5408;&#x578B;&#x3067;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x4E3B;&#x306B;&#xFF0C;<code>COUNT</code>&#x95A2;&#x6570;&#x306E;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;SELECT { &#x30AB;&#x30E9;&#x30E0;&#x540D; }OUNT(*) FROM doraemon_characters&quot;</span><span class="token punctuation">;</span>
 <span class="token variable">$stmt</span> <span class="token operator">=</span> <span class="token variable">$dbh</span><span class="token operator">-&gt;</span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x30D7;&#x30EA;&#x30DA;&#x30A2;&#x30FC;&#x30C9;&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#xFF0E;</span>
 <span class="token variable">$stmt</span><span class="token operator">-&gt;</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5B9F;&#x884C;&#xFF0E;</span>
 
-<span class="token comment">// &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token comment">// &#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
 <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token variable">$stmt</span><span class="token operator">-&gt;</span><span class="token function">fetchColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// &#x51FA;&#x529B;</span>
@@ -2784,7 +2792,7 @@ possible_keys: index_t2_on_c3
 <span class="token class-name">ResultSet</span> result statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-<span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token comment">// &#x5168;&#x3066;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2800,7 +2808,7 @@ possible_keys: index_t2_on_c3
 <h3 id="pdo&#x306E;&#x5834;&#x5408;"><a name="pdo&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#pdo&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>PDO&#x306E;&#x5834;&#x5408;</h3>
 <h4 id="&#x30FB;insert"><a name="&#x30FB;insert" class="plugin-anchor" href="#&#x30FB;insert"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>INSERT</code></h4>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token comment">// $_POST&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;post&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#xFF0C;&#x5C5E;&#x6027;&#x304B;&#x3089;&#x5404;&#x5024;&#x3092;&#x53D6;&#x5F97;</span>
+<span class="token comment">// $_POST&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;post&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308A;&#xFF0C;&#x5C5E;&#x6027;&#x304B;&#x3089;&#x5404;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</span>
 <span class="token variable">$staff_name</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;name&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token variable">$staff_pass</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;pass&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -2932,7 +2940,7 @@ charaset=UTF-8&quot;</span><span class="token punctuation">;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-08-19T14:49:30.153Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-21T04:33:32.262Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎SQL","level":"1.9.2","depth":2,"next":{"title":"ネットワーク","level":"1.10","depth":1,"ref":"","articles":[{"title":"構造","level":"1.10.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ネットワーク構造","level":"1.10.1.1","depth":3,"path":"public/infrastructure_network_internet.md","ref":"public/infrastructure_network_internet.md","articles":[]}]},{"title":"セキュリティ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"▶ ︎サイバー攻撃","level":"1.10.2.1","depth":3,"path":"public/infrastructure_network_cyber_attacks.md","ref":"public/infrastructure_network_cyber_attacks.md","articles":[]},{"title":"▶ ︎通信データの暗号化技術","level":"1.10.2.2","depth":3,"path":"public/infrastructure_network_encryption_technology.md","ref":"public/infrastructure_network_encryption_technology.md","articles":[]}]}]},"previous":{"title":"▶ ︎データベースの操作","level":"1.9.1","depth":2,"path":"public/backend_database_operation.md","ref":"public/backend_database_operation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_database_mysql.md","mtime":"2021-08-22T13:56:59.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-22T17:50:24.549Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

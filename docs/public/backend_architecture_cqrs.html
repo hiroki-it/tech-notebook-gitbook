@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>▶ ︎CQRS設計 · 僕のドキュメントサイト【GitBook版】</title>
+        <title>▶ ︎CQRS · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="frontend_architecture.html" />
+    <link rel="next" href="backend_architecture_domain_driven_design_clean_architecture.html" />
     
     
-    <link rel="prev" href="backend_architecture_domain_driven_design_clean_architecture.html" />
+    <link rel="prev" href="backend_architecture_domain_driven_design_introduction.html" />
     
 
     </head>
@@ -202,7 +202,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.1.2" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
+        <li class="chapter active" data-level="1.3.1.2" data-path="backend_architecture_cqrs.html">
+            
+                <a href="backend_architecture_cqrs.html">
+            
+                    
+                    ▶ ︎CQRS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="backend_architecture_domain_driven_design_clean_architecture.html">
             
                 <a href="backend_architecture_domain_driven_design_clean_architecture.html">
             
@@ -220,20 +233,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="backend_architecture_cqrs.html">
-            
-                <a href="backend_architecture_cqrs.html">
-            
-                    
-                    ▶ ︎CQRS設計
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="frontend_architecture.html">
+        <li class="chapter " data-level="1.3.2" data-path="frontend_architecture.html">
             
                 <a href="frontend_architecture.html">
             
@@ -246,7 +246,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="frontend_and_backend_architecture_microservice.html">
+        <li class="chapter " data-level="1.3.3" data-path="frontend_and_backend_architecture_microservice.html">
             
                 <a href="frontend_and_backend_architecture_microservice.html">
             
@@ -1468,7 +1468,7 @@
                 <span>
             
                     
-                    CI/CD
+                    CI／CD
             
                 </span>
             
@@ -1482,7 +1482,7 @@
                 <a href="infrastructure_ci_cd.html">
             
                     
-                    ▶ ︎CI/CD
+                    ▶ ︎CI／CD
             
                 </a>
             
@@ -1540,7 +1540,7 @@
                 <a href="infrastructure_fluentd_and_fluentbit.html">
             
                     
-                    ▶ ︎Fluentd/Fluentbit
+                    ▶ ︎Fluentd／FluentBit
             
                 </a>
             
@@ -1782,7 +1782,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >▶ ︎CQRS設計</a>
+        <a href=".." >▶ ︎CQRS</a>
     </h1>
 </div>
 
@@ -1797,10 +1797,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cqrs&#x8A2D;&#x8A08;"><a name="cqrs&#x8A2D;&#x8A08;" class="plugin-anchor" href="#cqrs&#x8A2D;&#x8A08;"><i class="fa fa-link" aria-hidden="true"></i></a>CQRS&#x8A2D;&#x8A08;</h1>
-<h2 id="01-cqrs&#x8A2D;&#x8A08;&#xFF1A;command-query-responsibility-segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;"><a name="01-cqrs&#x8A2D;&#x8A08;&#xFF1A;command-query-responsibility-segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;" class="plugin-anchor" href="#01-cqrs&#x8A2D;&#x8A08;&#xFF1A;command-query-responsibility-segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>01. CQRS&#x8A2D;&#x8A08;&#xFF1A;Command Query Responsibility Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;</h2>
-<h3 id="cqrs&#x8A2D;&#x8A08;&#x3068;&#x306F;"><a name="cqrs&#x8A2D;&#x8A08;&#x3068;&#x306F;" class="plugin-anchor" href="#cqrs&#x8A2D;&#x8A08;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>CQRS&#x8A2D;&#x8A08;&#x3068;&#x306F;</h3>
-<p>DB&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x51E6;&#x7406;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3068;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x306B;&#x5206;&#x96E2;&#x3059;&#x308B;&#x8A2D;&#x8A08;&#x306E;&#x3053;&#x3068;&#xFF0E;DDD&#x306B;&#x90E8;&#x5206;&#x7684;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>N+&#xFF11;</code>&#x554F;&#x984C;&#x306B;&#x3082;&#xFF0C;&#x5BFE;&#x51E6;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+                                <h1 id="command-query-responsibility-segregation"><a name="command-query-responsibility-segregation" class="plugin-anchor" href="#command-query-responsibility-segregation"><i class="fa fa-link" aria-hidden="true"></i></a>Command Query Responsibility Segregation</h1>
+<h2 id="01-cqrs"><a name="01-cqrs" class="plugin-anchor" href="#01-cqrs"><i class="fa fa-link" aria-hidden="true"></i></a>01. CQRS</h2>
+<h3 id="cqrs&#x3068;&#x306F;"><a name="cqrs&#x3068;&#x306F;" class="plugin-anchor" href="#cqrs&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>CQRS&#x3068;&#x306F;</h3>
+<p>&#x300E;Command Query Responsibility Segregation&#xFF08;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30AF;&#x30A8;&#x30EA;&#x8CAC;&#x52D9;&#x5206;&#x96E2;&#xFF09;&#x300F;&#x306E;&#x7565;&#xFF0E;DB&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x51E6;&#x7406;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3068;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x306B;&#x5206;&#x96E2;&#x3059;&#x308B;&#x8A2D;&#x8A08;&#x306E;&#x3053;&#x3068;&#xFF0E;DDD&#x306B;&#x90E8;&#x5206;&#x7684;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>N+&#xFF11;</code>&#x554F;&#x984C;&#x306B;&#x3082;&#xFF0C;&#x5BFE;&#x51E6;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png" alt="cqrs"></p>
 <p><br></p>
 <h3 id="command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;"><a name="command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;" class="plugin-anchor" href="#command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>Command&#xFF08;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#xFF09;</h3>
@@ -1847,12 +1847,12 @@
 
             
                 
-                <a href="backend_architecture_domain_driven_design_clean_architecture.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎クリーンアーキテクチャ">
+                <a href="backend_architecture_domain_driven_design_introduction.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎ドメイン駆動設計概論">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="frontend_architecture.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎フロントエンドアーキテクチャ">
+                <a href="backend_architecture_domain_driven_design_clean_architecture.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎クリーンアーキテクチャ">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1863,7 +1863,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CQRS設計","level":"1.3.2","depth":2,"next":{"title":"▶ ︎フロントエンドアーキテクチャ","level":"1.3.3","depth":2,"path":"public/frontend_architecture.md","ref":"public/frontend_architecture.md","articles":[]},"previous":{"title":"▶ ︎クリーンアーキテクチャ","level":"1.3.1.2","depth":3,"path":"public/backend_architecture_domain_driven_design_clean_architecture.md","ref":"public/backend_architecture_domain_driven_design_clean_architecture.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_cqrs.md","mtime":"2021-04-12T12:47:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-21T04:33:32.262Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CQRS","level":"1.3.1.2","depth":3,"next":{"title":"▶ ︎クリーンアーキテクチャ","level":"1.3.1.3","depth":3,"path":"public/backend_architecture_domain_driven_design_clean_architecture.md","ref":"public/backend_architecture_domain_driven_design_clean_architecture.md","articles":[]},"previous":{"title":"▶ ︎ドメイン駆動設計概論","level":"1.3.1.1","depth":3,"path":"public/backend_architecture_domain_driven_design_introduction.md","ref":"public/backend_architecture_domain_driven_design_introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_architecture_cqrs.md","mtime":"2021-08-21T04:59:12.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-22T17:50:24.549Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
