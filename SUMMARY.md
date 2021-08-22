@@ -6,8 +6,8 @@
 * アーキテクチャ
   * ドメイン駆動設計
     * [▶ ︎ドメイン駆動設計概論](public/backend_architecture_domain_driven_design_introduction.md)
+    * [▶ ︎CQRS](public/backend_architecture_cqrs.md)
     * [▶ ︎クリーンアーキテクチャ](public/backend_architecture_domain_driven_design_clean_architecture.md)
-  * [▶ ︎CQRS設計](public/backend_architecture_cqrs.md)
   * [▶ ︎フロントエンドアーキテクチャ](public/frontend_architecture.md)
   * [▶ ︎マイクロサービス](public/frontend_and_backend_architecture_microservice.md)
 * PHP
@@ -88,12 +88,12 @@
       * [▶ ︎コンテナオーケストレーション](public/infrastructure_virtualization_container_orchestration.md)
     * サーバ
       * [▶ ︎仮想サーバ（仮想マシン）](public/infrastructure_virtualization_server.md)
-* CI/CD
-  * [▶ ︎CI/CD](public/infrastructure_ci_cd.md)
+* CI／CD
+  * [▶ ︎CI／CD](public/infrastructure_ci_cd.md)
   * [▶ ︎CircleCI](public/infrastructure_circleci.md)
   * [▶ ︎Capistrano](public/infrastructure_capistrano.md)
 * 監視
-  * [▶ ︎Fluentd/Fluentbit](public/infrastructure_fluentd_and_fluentbit.md)
+  * [▶ ︎Fluentd／FluentBit](public/infrastructure_fluentd_and_fluentbit.md)
   * [▶ ︎Datadog](public/infrastructure_datadog.md)
 * ハードウェア
   * [▶ ︎ハードウェア](public/hardware.md)
