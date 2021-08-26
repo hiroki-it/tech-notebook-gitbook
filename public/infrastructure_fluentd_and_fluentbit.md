@@ -4,7 +4,7 @@
 
 ### 概要
 
-アプリケーションまたはインフラストラクチャから，メトリックやログなどのデータを収集し，これをフィルタリングした後，複数の宛先に転送する．
+アプリケーションからログを収集し，これをフィルタリングした後，複数の宛先に転送する．
 
 参考：https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
 
@@ -51,7 +51,7 @@
 
 #### ・INPUTセクションとは
 
-指定したリソースからデータを収集する．
+ログの入力方法を定義する．
 
 参考：
 
@@ -64,7 +64,7 @@
 
 #### ・OUTPUTセクションとは
 
-他サービスにログを転送する．転送先の種類については，以下を参考にせよ．
+ログの出力方法を定義する．設定可能な転送先の種類については，以下を参考にせよ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -103,7 +103,7 @@
 
 #### ・FireLensコンテナとは
 
-AWSが提供するFluentBit／Fluentdイメージによって構築されるサイドカーコンテナであり，Fargateコンテナのログを収集し，これを他のサービスに転送する．構築のための実装例については，以下のリンクを参考にせよ．
+AWSが提供するFluentBit／Fluentdイメージによって構築されるコンテナであり，Fargateコンテナのサイドカーコンテナとして配置される．Fargateコンテナからログが送信されると，コンテナ内で稼働するFluentBit／Fluentdがこれを収集し，これを他のサービスに転送する．構築のための実装例については，以下のリンクを参考にせよ．
 
 参考：
 
@@ -195,19 +195,19 @@ FROM amazon/aws-for-fluent-bit:latest
 
 ```shell
 [OUTPUT]
-    Name              datadog # データの送信先名
+    Name              datadog # 転送先名
     Match             *
-    Host              http-intake.logs.datadoghq.com
+    Host              http-intake.logs.datadoghq.com # 転送先ホスト
     TLS               on
     compress          gzip
     apikey            <DatadogのAPIキー> # コンテナの環境変数から参照し，割り当てる．
-    dd_service        <Datadogのログエクスプローラーにおけるservice名>
-    dd_source         <Datadogのログエクスプローラーにおけるsource名>
+    dd_service        <DatadogのログエクスプローラーにおけるService名>
+    dd_source         <DatadogのログエクスプローラーにおけるSource名>
     dd_message_key    log
     dd_tags           <タグ名> # （例）env:${DD_ENV}
 
 [OUTPUT]
-    Name              cloudwatch # データの送信先名
+    Name              cloudwatch # 転送先名
     Match             *
     log_key           log
     region            ap-northeast-1
@@ -236,20 +236,20 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ・```stream_processor.conf```ファイル
 
-FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．
+FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．これらのログにタグを付け，INPUTプロセスからログを処理し直す．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ```shell
-# Laravelコンテナのログへのタグ付け
+# appコンテナのログへのタグ付け
 [STREAM_TASK]
-    Name web
-    Exec CREATE STREAM web WITH (tag='laravel') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'laravel';
+    Name app
+    Exec CREATE STREAM web WITH (tag='app') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'app';
 
-# Nginxコンテナのログへのタグ付け
+# webコンテナのログへのタグ付け
 [STREAM_TASK]
     Name web
-    Exec CREATE STREAM web WITH (tag='nginx') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'nginx';
+    Exec CREATE STREAM web WITH (tag='web') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'web';
 
 # 全てのコンテナのログへのタグ付け
 [STREAM_TASK]

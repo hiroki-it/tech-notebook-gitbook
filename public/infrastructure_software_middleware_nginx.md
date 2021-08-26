@@ -483,9 +483,9 @@ server {
 
 #### ・リダイレクトとリライトの違い
 
-リダイレクトでは，リクエストされたURLをサーバ／コンテナ側で新しいURLに書き換え，リクエストを再送信する．そのため，クライアント側は新しいURLで改めてリクエストを送信することになる．一方で，リライトでは，リクエストされたURLをサーバ／コンテナ側で新しいURLに書き換え，そのURLでレンダリングを行う．そのため，クライアント側は古いURLのままリクエストを送信することになる．その他の違いについては，以下を参考にせよ．
+以下のリンクを参考にせよ．
 
-参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
 
 <br>
 

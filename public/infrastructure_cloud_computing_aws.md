@@ -115,6 +115,16 @@ Route53から転送されるパブリックIPアドレスを受信できるよ�
 
 ### 設定項目
 
+| 項目                 | 説明                             | 補足                                                         |
+| -------------------- | -------------------------------- | ------------------------------------------------------------ |
+| 本番稼働ブランチ     | 基点ブランチを設定する．         | Amplifyを本番運用しない場合は，developブランチを設定すればよい． |
+| Branch autodetection | ブランチの自動検出を有効化する． | ワイルドカードを組み込む場合，アスタリスクを二つ割り当てないと，ブランチが検知されないことがある． |
+|                      |                                  |                                                              |
+
+<br>
+
+### ビルド＆デプロイ
+
 #### ・開発環境で擬似再現
 
 サーバレスアプリケーションを開発環境で再現する．
@@ -312,6 +322,12 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
 
+#### ・CORSの有効化
+
+CORSを有効化し，異なるオリジンによって表示されたページからのリクエストを許可する．以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/how-to-cors.html
+
 <br>
 
 ### Private統合
@@ -359,7 +375,7 @@ API GatewayとLambdaの間で，リクエスト／レスポンスのJSONデー�
 
 API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由したクライアントからのリクエストは，ハンドラ関数のeventオブジェクトのJSONデータにマッピングされる．
 
-```json
+```shell
 {
   "resource": "Resource path",
   "path": "Path parameter",
@@ -381,7 +397,7 @@ API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由�
 
 API Gatewayは，Lambdaからのレスポンスを，以下のJSONデータにマッピングする．これ以外の構造のJSONデータを送信すると，API Gatewayで『```Internal Server Error```』のエラーが起こる．
 
-```json
+```shell
 {
   "isBase64Encoded": true|false,
   "statusCode": httpStatusCode,
@@ -696,6 +712,10 @@ CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 ```
 
+#### ・CloudFrontとオリジン間のHTTPS通信
+
+CloudFrontとオリジン間でHTTPS通信を行う場合，両方にドメイン証明書を割り当てる必要がある．割り当てたとしても，以下の条件を満たさないとHTTPS通信を行うことはできない．CLoudFronからオリジンにHostヘッダーを転送しない設定の場合，オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある．一方で，Hostヘッダーを転送しない場合，オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか，またはオリジンが返却する証明書に，Hostヘッダーの値と一致するドメイン名が含まれている必要がある．
+
 #### ・キャッシュの時間の決まり方
 
 キャッシュの時間は，リクエストヘッダー（```Cache-Control```，```Expires```）の値とCloudFrontの設定（最大最小デフォルトTTL）の組み合わせによって決まる．ちなみに，CloudFrontの最大最小デフォルトTTLを全て０秒にすると，キャッシュを完全に無効化できる．
@@ -906,7 +926,7 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "agent": {
     "run_as_user": "cwagent"
@@ -1208,7 +1228,7 @@ Resources:
 
 デプロイされるタスク定義を実装し，ルートディレクトリの直下に配置する．CodeDeployは，CodeBuildから渡された```imageDetail.json```ファイルを検知し，ECRからイメージを取得する．この時，```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと，ECRから取得したイメージ名を使用して，自動補完してくれる．
 
-```json
+```shell
 {
   "family": "<タスク定義名>",
   "requiresCompatibilities": [
@@ -1617,7 +1637,7 @@ exit ${EXIT_CODE}
 
 なお，実行IAMユーザを作成し，ECSタスクを起動できる最低限の権限をアタッチする．
 
-```json
+```shell
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -1699,7 +1719,7 @@ exit ${EXIT_CODE}
 
 アプリケーションからCloudWatchログにログを送信するために，ECSタスクロールにカスタマー管理ポリシーをアタッチする．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1721,7 +1741,7 @@ exit ${EXIT_CODE}
 
 SSMパラメータストアから変数を取得するために，ECSタスクロールにインラインポリシーをアタッチする．
 
-```json
+```shell
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -1740,7 +1760,7 @@ SSMパラメータストアから変数を取得するために，ECSタスク�
 
 タスク上に存在するコンテナエージェントが，他のリソースにアクセスするために必要なロールのこと．AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを，タスクにアタッチする必要がある．このポリシーには，ECRへのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1764,7 +1784,7 @@ SSMパラメータストアから変数を取得するために，ECSタスク�
 
 Datadogエージェントがクラスターやコンテナにアクセスできるように，ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする．
 
-```json
+```shell
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -2096,7 +2116,7 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
-```json
+```shell
 {
   "version": "0",
   "id": "*****",
@@ -2118,7 +2138,7 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
 
 Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
 
-```json
+```shell
 {
   "detail": {
     "appId": [
@@ -2168,7 +2188,7 @@ exports.handler = async (event) => {
 
 対象のAWSリソースで任意のイベントが起こった時に，EventBridgeからLambdaに転送するように設定する．
 
-```json
+```shell
 {
   "source": "aws.amplify"
 }
@@ -2176,7 +2196,7 @@ exports.handler = async (event) => {
 
 AWSリソースで意図的にイベントを起こし，Lambdaのロググループから内容を確認する．```detail```キーにイベントが割り当てられている．
 
-```json
+```shell
 {
     "event": {
         "version": "0",
@@ -2211,7 +2231,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 入力パスにて，使用する値を抽出する．Amplifyで起こったイベントのJSONを変数として取り出す．JSONのキー名が変数名として機能する．
 
-```json
+```shell
 {
   "appId": "$.detail.appId",
   "branchName": "$.detail.branchName",
@@ -2225,7 +2245,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 参考：https://app.slack.com/block-kit-builder
 
-```json
+```shell
 {
   "channel": "XXXXXX",
   "text": "Amplifyデプロイ完了通知",
@@ -2438,7 +2458,7 @@ AWSリソースを一意に識別する．
 
 参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2473,7 +2493,7 @@ AWSが提供しているポリシーのこと．アタッチ式のポリシー�
 
 IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，ユーザーアカウントのすべての ACM 証明書を一覧表示できるようになる．
 
-```json
+```shell
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -2490,7 +2510,7 @@ IAMロールにインラインポリシーをアタッチする．このロー�
 
 IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，全てのAWSリソースに，任意のアクションを実行できる．
 
-```json
+```shell
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -2521,7 +2541,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "rules": [
     {
@@ -2560,7 +2580,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```の```ecs-tasks```が信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2581,7 +2601,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```のIAMユーザが信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2712,7 +2732,7 @@ IAMポリシーのセットを持つ
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -2937,7 +2957,7 @@ LambdaをVPC内に配置するように設定する．VPC内に配置したLambd
 
 Lambdaを実行するためには，デプロイされた関数を使用する権限が必要である．そのため，関数を取得するためのステートメントを設定する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3009,7 +3029,7 @@ CloudFrontのビューワーリクエスト，オリジンリクエスト，オ�
 
 Lambda@Edgeを実行するためには，最低限，以下の権限が必要である．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3072,7 +3092,7 @@ exports.handler = (event, context, callback) => {
 };
 
 /**
- * デバイスタイプに基づいて、オリジンを切り替える．
+ * デバイスタイプに基づいて，オリジンを切り替える．
  *
  * @param   {Object} headers
  * @param   {string} env
@@ -3104,7 +3124,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 オリジンリクエストは，以下のeventオブジェクトのJSONデータにマッピングされている．なお，一部のキーは省略している．
 
-```json
+```shell
 {
   "Records": [
     {
@@ -3675,7 +3695,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3697,7 +3717,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "Version": "2008-10-17",
   "Id": "PolicyForCloudFrontPrivateContent",
@@ -3718,7 +3738,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 2020-10-08時点の仕様では，パブリックアクセスが無効化されたS3に対して，CloudFrontへのアクセスログを保存することはできない．よって，危険ではあるが，パブリックアクセスを有効化する必要がある．
 
-```json
+```shell
 // ポリシーは不要
 ```
 
@@ -3726,7 +3746,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 バケットポリシーは不要である．代わりに，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある．このポリシーには，S3へのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3753,7 +3773,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合，そのIPアドレスをポリシーに設定する必要がある．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Id": "S3PolicyId1",
@@ -3779,7 +3799,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 #### ・指定したドメインからのGET送信を許可
 
-```json
+```shell
 [
   {
     "AllowedHeaders": [
@@ -4070,7 +4090,7 @@ $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 ```
 
-```json
+```shell
 {
     "Messages": [
         {
@@ -4101,7 +4121,7 @@ AWSリソースに一時的にアクセスできる認証情報（アクセス�
 
 必要なポリシーが設定されたIAMロールを構築する．その時，信頼ポリシーにおいて，ユーザの```ARN```を信頼されたエンティティとして設定しておく．これにより，そのユーザに対して，ロールをアタッチできるようになる．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -4178,7 +4198,7 @@ STSへのリクエストの結果，ロールがアタッチされた新しいIA
 
 レスポンスされるデータは以下の通り．
 
-```json
+```shell
 {
   "AssumeRoleUser": {
     "AssumedRoleId": "<セッションID>:<セッション名>",
@@ -4261,7 +4281,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "StartAt": "Call Lambda",
   "States": {
@@ -4524,7 +4544,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 | 同じ／異なる | 同じ／異なる        | 全て異なる             | **〇**     |
 |              |                     | 同じものが一つでもある | ✕          |
 
-VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブロックがある場合は、VPC ピアリング接続はできない．
+VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブロックがある場合は，VPC ピアリング接続はできない．
 
 ![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
 

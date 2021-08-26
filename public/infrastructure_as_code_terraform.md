@@ -594,7 +594,7 @@ terraform_project/
 
 #### ・ファイルの切り分け
 
-ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，「カスタマー管理ポリシー」「インラインポリシー」「信頼ポリシー」も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```json```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
+ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，「カスタマー管理ポリシー」「インラインポリシー」「信頼ポリシー」も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```shell```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
 
 ``` shell
 terraform_project/
@@ -717,7 +717,7 @@ terraform {
 
 **＊実装例＊**
 
-```json
+```shell
 {
     "Version": "2008-10-17",
     "Statement": [
@@ -2021,7 +2021,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 バケットポリシーを定義するtpl形式ファイルでは，string型で出力する場合は```"${}"```で，int型で出力する場合は```${}```で出力する．ここで拡張子をjsonにしてしまうと，int型の出力をjsonの構文エラーとして扱われてしまう．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2051,7 +2051,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 **＊実装例＊**
 
-```json
+```shell
 {
   "ipcMode": null,
   "executionRoleArn": "<ecsTaskExecutionRoleのARN>",
@@ -2070,7 +2070,7 @@ int型を変数として渡せるように，拡張子をjsonではなくtplと�
 
 **＊実装例＊**
 
-```json
+```shell
 [
   {
     "name": "<コンテナ名>",
@@ -2681,7 +2681,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ECRにアタッチされる，イメージの有効期間を定義するポリシー．コンソール画面から入力できるため，基本的にポリシーの実装は不要であるが，TerraformなどのIaCツールでは必要になる．
 
-```json
+```shell
 {
   "rules": [
     {
@@ -2867,7 +2867,7 @@ global_ip_addresses = [
 
 また事前に，指定した送信元IPアドレス以外を拒否するカスタマー管理ポリシーを定義する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -2934,7 +2934,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 事前に，ECSタスクのための信頼ポリシーを定義する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2981,7 +2981,7 @@ resource "aws_iam_role" "ecs_task" {
 
 事前に，Lambda@Edgeのための信頼ポリシーを定義する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3025,7 +3025,7 @@ resource "aws_iam_role" "lambda_execute" {
 
 事前に，ECSタスクに必要最低限の権限を与えるインラインポリシーを定義する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3080,7 +3080,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 事前に，ECSタスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3402,7 +3402,7 @@ ALBのアクセスログを送信するバケット内には，自動的に『/A
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3441,7 +3441,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 
 NLBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい．
 
-```json
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3862,15 +3862,6 @@ commands:
             ls -la
             source ./ops/terraform_apply.sh
 
-  # dev環境に対して，terraform destroyを行います．
-  terraform_destroy_dev:
-    steps:
-      - run:
-          name: Terraform destroy dev
-          command: |
-            set -x
-            source ./ops/terraform_destroy_dev.sh
-
 jobs:
   plan:
     parameters:
@@ -3898,17 +3889,6 @@ jobs:
       - attach_workspace:
           at: .
       - terraform_apply
-
-  destroy_dev:
-    parameters:
-      exr:
-        type: executor
-    executor: << parameters.exr >>
-    steps:
-      - checkout
-      - aws_setup
-      - terraform_init
-      - terraform_destroy_dev
 
 workflows:
   # Dev env
@@ -3955,16 +3935,6 @@ workflows:
             env: stg
           requires:
             - hold_apply_stg
-      - hold_destroy_dev:
-          type: approval
-          requires:
-            - apply_stg
-      - destroy_dev:
-          exr:
-            name: primary_container
-            env: dev
-          requires:
-            - hold_destroy_dev
 
   # Production env
   main:
@@ -3976,13 +3946,19 @@ workflows:
             env: prd
           filters:
             branches:
-              only:
-                - main
+              ignore: /.*/
+            tags:
+              only: /release\/.*/
       - hold_apply:
           name: hold_apply_prd
           type: approval
           requires:
             - plan_prd
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /release\/.*/
       - apply:
           name: apply_prd
           exr:
@@ -3990,6 +3966,11 @@ workflows:
             env: prd
           requires:
             - hold_apply_prd
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /release\/.*/
 ```
 
 <br>
@@ -4114,6 +4095,8 @@ terraform -chdir=./${ENV} plan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml p
 
 #### ・設定ファイル
 
+あらかじめ，GitHubのアクセストークンを発行し，CIツールの環境変数に登録しておく．
+
 **＊実装例＊**
 
 例として，GitHubの特定のリポジトリのプルリクエストにPOSTで送信する．
@@ -4125,10 +4108,12 @@ ci: circleci
 
 notifier:
   github:
-    token: <環境変数に登録したGitHubToken>
+    # 環境変数に登録したパーソナルアクセストークン
+    token: $GITHUB_TOKEN
     repository:
-      owner: "<送信先のユーザ名もしくは組織名>"
-      name: "<送信先のリポジトリ名>"
+      # 送信先のユーザ名もしくは組織名
+      owner: "foo-company"
+      name: "foo-repository"
 
 terraform:
   plan:

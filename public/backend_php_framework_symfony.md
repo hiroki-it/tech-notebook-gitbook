@@ -348,6 +348,36 @@ class ExampleController extends AbstractController
 }
 ```
 
+#### ・リクエストヘッダーの取得
+
+```php
+<?php
+    
+// $_GET['hoge']
+$request->query->get('hoge');
+ 
+// $_POST['hoge']
+$request->request->get('hoge');
+ 
+// ルーティングパラメータ / ex) @Route('/{hoge}')
+$request->attributes->get('hoge');
+ 
+// $_COOKIE['hoge']
+$request->cookies->get('hoge');
+ 
+// $_FILES['hoge']
+$request->files->get('hoge');
+ 
+// $_SERVER['SCRIPT_FILENAME']
+$request->server->get('SCRIPT_FILENAME');
+ 
+// $_SERVER['HTTP_USER_AGENT']
+$request->headers->get('User-Agent');
+ 
+// query > attribute  > request の順で検索
+$request->get('hoge');
+```
+
 <br>
 
 ## 03-03. HttpKernel

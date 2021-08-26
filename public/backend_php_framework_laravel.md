@@ -4207,7 +4207,7 @@ $ php artisan migrate --force
 
 <br>
 
-### テーブルの作成／変更／削除
+### テーブルの作成／削除
 
 #### ・```up```メソッド，```down```メソッド
 
@@ -4250,6 +4250,51 @@ class CreateFooTable extends Migration
         Schema::drop("foos");
     }
 }
+```
+
+<br>
+
+### カラムの追加／変更／削除
+
+#### ・なし
+
+指定したカラムを追加する．
+
+**＊実装例＊**
+
+カラムを追加するためだけにマイグレーションファイルを作成する．
+
+```shell
+$ php artisan make:migration add_column --table=foos
+```
+
+追加したいカラムのみを定義する．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('foo_name');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
+
+```shell
+$ php artisan migrate
 ```
 
 #### ・```renameColumn```メソッド
@@ -4351,6 +4396,57 @@ class ChangeColumnDataType extends Migration
 ```
 
 マイグレーションを実行すると，指定したテーブルのカラムのデータ型が変更される．実行後は，作成したマイグレーションファイルを削除する．
+
+```shell
+$ php artisan migrate
+```
+
+#### ・```dropColumn```メソッド
+
+指定したカラムを削除する．
+
+**＊実装例＊**
+
+カラムを削除するためだけにマイグレーションファイルを作成する．
+
+```shell
+$ php artisan make:migration drop_column --table=foos
+```
+
+削除するカラムを```dropColumn```メソッドで指定する．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class DropColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->dropColumn('foo_name');
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('foo_name');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
 
 ```shell
 $ php artisan migrate
@@ -6333,23 +6429,27 @@ $path = storage_path("app/file.txt");
 
 ## 21. Passportパッケージ
 
-### Passportパッケージ
+### Passportパッケージとは
 
-#### ・Passportパッケージとは
+Ouath認証を実装できる．OAuth認証については，以下のリンクを参考にせよ．
 
-Laravelから提供されており，Ouath認証を含むいくつかのAPIの認証方法を実装できる．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html
+
+<br>
+
+### 導入方法
 
 #### ・インストール
 
 composerでインストールする必要がある．
 
+参考：https://readouble.com/laravel/8.x/ja/passport.html
+
 ```shell
-$ composer require laravel/passport:^10.0
+$ composer require laravel/passport
 ```
 
-参考：https://github.com/laravel/passport
-
-#### ・Oauth認証のトークン管理テーブルを生成
+#### ・OAuth認証のトークン管理テーブルを生成
 
 事前に，Passportの管理テーブルを生成する必要があるため，マイグレーションを実行する．
 
@@ -6410,20 +6510,26 @@ $ php artisan passport:client --personal
 $ php artisan passport:client --password
 ```
 
-#### ・実装できるOauth認証の付与タイプ
+<br>
 
-| 付与タイプ               | 説明                           |
-| ------------------------ | ------------------------------ |
-| Authorization Code Grant | 認証認可のノートを参考にせよ． |
-| Client Credentials Grant | 認証認可のノートを参考にせよ． |
-| Implicit Grant           | 認証認可のノートを参考にせよ． |
-| Password Grant           | 認証認可のノートを参考にせよ． |
+### 実装可能なOAuth認証の種類
 
-#### ・その他の認可方法
+#### ・OAuth認証
 
-| 認証方法              | 説明                           |
-| --------------------- | ------------------------------ |
-| Personal Access Token | 認証認可のノートを参考にせよ． |
+OAuth認証に関して，以下のトークン付与タイプを実装できる．
+
+| 付与タイプ               | 説明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+
+#### ・その他
+
+| 認証方法              | 説明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 
 <br>
 
@@ -6452,7 +6558,7 @@ return [
 ];
 ```
 
-2. Oauth認証（認証フェーズ＋認可フェーズ）を行うために，```auth.php```ファイルで，```driver```キーにpassportドライバを設定する．また，```provider```キーで，```users```を設定する．
+2. OAuth認証（認証フェーズ＋認可フェーズ）を行うために，```auth.php```ファイルで，```driver```キーにpassportドライバを設定する．また，```provider```キーで，```users```を設定する．
 
 **＊実装例＊**
 
@@ -6502,7 +6608,7 @@ return [
 ];
 ```
 
-4. Userへのルーティング時に，```middleware```メソッドによる認証ガードを行う．これにより，Oauth認証に成功したユーザのみがルーティングを行えるようになる．
+4. Userへのルーティング時に，```middleware```メソッドによる認証ガードを行う．これにより，OAuth認証に成功したユーザのみがルーティングを行えるようになる．
 
 **＊実装例＊**
 
@@ -6705,15 +6811,61 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 <br>
 
-## 21-02. UIパッケージ
+## 21-02. Sanctumパッケージ
 
-### UIパッケージ
+### Sanctumパッケージとは
 
-#### ・UIパッケージとは
+APIキー認証を実装できる．
+
+参考：https://readouble.com/laravel/8.x/ja/sanctum.html
+
+<br>
+
+### 導入方法
+
+#### ・インストール
+
+```shell
+$ composer require laravel/sanctum
+```
+
+<br>
+
+### APIトークン認証
+
+フロントエンド（外部のアプリケーションを含む）は任意とし，APIのみを実装する場合に，使用が適している．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
+- https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
+- https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+
+<br>
+
+### SPA認証
+
+フロントエンドにファーストパーティのSPA（自社のSPA）を使用し，バックエンドのAPIを実装する場合に，使用が適している．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
+- https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
+- https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+
+<br>
+
+## 22. UIパッケージ
+
+### UIパッケージとは
 
 Laravel7系以前で，認証処理を自動生成する．
 
 参考：https://github.com/laravel/ui
+
+<br>
+
+### 導入方法
 
 #### ・インストール
 
@@ -6740,13 +6892,15 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 21-03. Breezeパッケージ
+## 23. Breezeパッケージ
 
-### Breezeパッケージ
-
-#### ・Breezeパッケージとは
+### Breezeパッケージとは
 
 Laravel8系以降で，認証処理を自動生成する．
+
+<br>
+
+### 導入方法
 
 参考：https://github.com/laravel/breeze
 
@@ -6768,11 +6922,9 @@ $ php artisan breeze:install
 
 <br>
 
-## 21-04. Laravel Mixパッケージ
+## 24. Laravel Mixパッケージ
 
-### Laravel Mixパッケージ
-
-#### ・Laravel Mixパッケージとは
+### Laravel Mixパッケージとは
 
 WebpackをLaravelを介して操作できるパッケージのこと．Breezeパッケージにも同梱されている．
 
@@ -6800,7 +6952,7 @@ $ npm run watch
 
 <br>
 
-## 22. 非公式パッケージ
+## 25. 非公式パッケージ
 
 ### laravel-enum
 

@@ -77,11 +77,11 @@ RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使�
 
 | HTTPメソッド | エンドポイント                        | ユースケース                                                 |
 | ------------ | ------------------------------------- | ------------------------------------------------------------ |
-| GET          | ```http://www.foo.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   |
-|              | ```http://www.foo.co.jp/users/{id}``` | IDに基づくデータの取得                                       |
-| POST         | ```http://www.foo.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン |
-| PUT`         | ```http://www.foo.co.jp/users/{id}``` | データの更新（置換）                                         |
-| DELETE       | ```http://www.foo.co.jp/users/{id}``` | データの削除                                                 |
+| GET          | ```http://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   |
+|              | ```http://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       |
+| POST         | ```http://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン |
+| PUT`         | ```http://example.co.jp/users/{id}``` | データの更新（置換）                                         |
+| DELETE       | ```http://example.co.jp/users/{id}``` | データの削除                                                 |
 
 <br>
 
@@ -93,12 +93,12 @@ RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使�
 URIの構造のうち，パスまたはクエリストリングにパラメータを割り当てて送信する．それぞれ，パスパラメータまたはクエリパラメータという．
 
 ```
-http://www.foo.co.jp:80/users/777?text1=a&text2=b
+http://example.co.jp:80/users/777?text1=a&text2=b
 ```
 
 | 完全修飾ドメイン名         | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
 | -------------------------- | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
-| ```http://www.foo.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
+| ```http://example.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
 
 #### ・使い分け（再掲）
 
@@ -128,7 +128,7 @@ JSON型データ内に定義し，メッセージボディにパラメータを�
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
-GET http://www.foo.co.jp HTTP/2
+GET http://example.co.jp HTTP/2
 # MIME type
 content-type: application/json
 # Authorizationヘッダー
@@ -151,8 +151,19 @@ x-api-key: XXXXX
 |        | 送信元IPアドレスの閲覧禁止               | 誤ったリクエストである．APIに認証認可プロセスが存在せず，トークン発行と閲覧権限検証が不要だとする．送信元IPアドレスに閲覧権限がないと判定されてことを表している． |
 | 404    | ページが見つからない                     | 誤ったリクエストである．存在しないデータをリクエストしていることを表している． |
 | 409    | 競合エラー                               | 誤ったリクエストである．UPDATE処理による新しいデータと現在のDBのデータの間で競合が起こっていることを表している．楽観的ロックによる排他制御の結果として使用する．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html |
+| 412    | リソースアクセスエラー                   | 誤ったリクエストである．リソースへのアクセスに失敗したことを表している． |
 | 500    | サーバエラー                             | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                   | エラーは起こらないが，ビジネス上ありえないデータをリクエストしていることを表す． |
+
+#### ・リダイレクトとリライトの違い
+
+リダイレクトでは，リクエストされたURLをサーバ側で新しいURLに書き換えてブラウザに返信し，ブラウザがリクエストを再送信する．そのため，クライアント側は新しいURLで改めてリクエストを送信することになる．一方で，リライトでは，リクエストされたURLをサーバ側で異なるURLに書き換え，サーバがそのままリクエストを送信する．そのため，クライアント側は古いURLのままリクエストを送信することになる．その他の違いについては，以下を参考にせよ．
+
+参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+
+#### ・リライトとフォワードの違い
+
+リライトでは異なるサーバにリクエストを送信できるが，フォワードでは同一サーバ内の異なるファイルにアクセスすることしかできない．
 
 <br>
 
@@ -163,11 +174,11 @@ x-api-key: XXXXX
 モデル型（処理対象のモデル名をエンドポイントとして使う）またはアクション型（ユースケース名をエンドポイントとして使用する）のいずれかに統一する．
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 ```http
-GET http://www.foo.co.jp/show-user-profile/12345
+GET http://example.co.jp/show-user-profile/12345
 ```
 
 #### ・短くすること
@@ -178,14 +189,14 @@ GET http://www.foo.co.jp/show-user-profile/12345
 
 
 ```http
-GET http://www.foo.co.jp/service/api/users/12345
+GET http://example.co.jp/service/api/users/12345
 ```
 
 **＊良い実装例＊**
 
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 #### ・略称を使わないこと
@@ -195,7 +206,7 @@ GET http://www.foo.co.jp/users/12345
 ここで，Usersを意味する『```u```』といった略称は，当時の設計者しかわからないため，不要である．
 
 ```http
-GET http://www.foo.co.jp/u/12345
+GET http://example.co.jp/u/12345
 ```
 
 **＊良い実装例＊**
@@ -203,7 +214,7 @@ GET http://www.foo.co.jp/u/12345
 略称を使わずに，『users』とする．
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 #### ・小文字を使うこと
@@ -211,13 +222,13 @@ GET http://www.foo.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/Users/12345
+GET http://example.co.jp/Users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 #### ・ケバブケースを使うこと
@@ -225,7 +236,7 @@ GET http://www.foo.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users_id/12345
+GET http://example.co.jp/users_id/12345
 ```
 
 **＊良い実装例＊**
@@ -233,13 +244,13 @@ GET http://www.foo.co.jp/users_id/12345
 スネークケースやキャメケースを使わずに，ケバブケースを使用する．
 
 ```http
-GET http://www.foo.co.jp/users-id/12345
+GET http://example.co.jp/users-id/12345
 ```
 
 ただ，そもそもケバブ方式も利用せずに，スラッシュで区切ってしまうのも手である
 
 ```http
-GET http://www.foo.co.jp/users/id/12345
+GET http://example.co.jp/users/id/12345
 ```
 
 #### ・複数形を使用すること
@@ -249,13 +260,13 @@ GET http://www.foo.co.jp/users/id/12345
 Usersという集合の中に，Idが存在しているため，単数形は使わない．
 
 ```http
-GET http://www.foo.co.jp/user/12345
+GET http://example.co.jp/user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 #### ・システムの設計方法がバレないURIにすること
@@ -265,13 +276,13 @@ GET http://www.foo.co.jp/users/12345
 悪意のあるユーザに，脆弱性を狙われる可能性があるため，システムの設計方法がばれないアーキテクチャにすること．ミドルウェアにCGIプログラムが使用されていることや，phpを使用していることがばれてしまう．
 
 ```http
-GET http://www.foo.co.jp/cgi-bin/get_users.php
+GET http://example.co.jp/cgi-bin/get_users.php
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 #### ・HTTPメソッドの名前を使用しないこと
@@ -281,38 +292,38 @@ GET http://www.foo.co.jp/users/12345
 メソッドから，処理の目的はわかるので，URIに対応する動詞名を実装する必要はない．
 
 ```http
-GET http://www.foo.co.jp/users/get/12345
+GET http://example.co.jp/users/get/12345
 ```
 
 ```http
-POST http://www.foo.co.jp/users/create/12345
+POST http://example.co.jp/users/create/12345
 ```
 
 
 ```http
-PUT http://www.foo.co.jp/users/update/12345
+PUT http://example.co.jp/users/update/12345
 ```
 
 ```http
-DELETE http://www.foo.co.jp/users/delete/12345
+DELETE http://example.co.jp/users/delete/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users/{id}
+GET http://example.co.jp/users/{id}
 ```
 
 ```http
-POST http://www.foo.co.jp/users
+POST http://example.co.jp/users
 ```
 
 ```http
-PUT http://www.foo.co.jp/users/{id}
+PUT http://example.co.jp/users/{id}
 ```
 
 ```http
-DELETE http://www.foo.co.jp/users/{id}
+DELETE http://example.co.jp/users/{id}
 ```
 
 #### ・数字，バージョン番号を使用しないこと
@@ -322,13 +333,13 @@ DELETE http://www.foo.co.jp/users/{id}
 ここで，```alpha```，```v2```，といったキーワードは，当時の設計者しかわからないため，あまり良くない．ただし，利便上，使う場合もある．
 
 ```http
-GET http://www.foo.co.jp/v2/users/12345
+GET http://example.co.jp/v2/users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 URLにバージョンを表記しない代わりに，リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い．
@@ -344,11 +355,11 @@ X-Api-Version: 1
 GET送信とPOST送信の間で，IDパラメータのHTTPメソッドが統一されていない．
 
 ```http
-GET http://www.foo.co.jp/users/?id=12345
+GET http://example.co.jp/users/?id=12345
 ```
 
 ```http
-POST http://www.foo.co.jp/users/12345/messages
+POST http://example.co.jp/users/12345/messages
 ```
 
 **＊良い実装例＊**
@@ -357,11 +368,11 @@ POST http://www.foo.co.jp/users/12345/messages
 
 
 ```http
-GET http://www.foo.co.jp/users/12345
+GET http://example.co.jp/users/12345
 ```
 
 ```http
-POST http://www.foo.co.jp/users/12345/messages
+POST http://example.co.jp/users/12345/messages
 ```
 
 <br>
@@ -581,7 +592,7 @@ Content-Type: application/json
 他に，URIでデータ型を記述する方法がある．
 
 ```http
-GET http://www.foo.co.jp/users/12345?format=json
+GET http://example.co.jp/users/12345?format=json
 ```
 
 <br>
@@ -671,7 +682,7 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 **＊具体例＊**
 
 ```
-http://www.foo.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
+http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
 <br>
@@ -775,7 +786,7 @@ Set-Cookie: sessionId=<セッションID>
 
 #### ・セッションIDの発行，セッションファイルの生成
 
-セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションファイルを作成する．もしクライアントに既にセッションIDが発行されている場合，セッションファイルを参照するようになる．
+セッションは，```session_start```メソッドを用いることで開始される．また同時に，クライアントにセッションIDを発行する．グローバル変数にセッションIDを代入することによって，セッションIDの記載されたセッションファイルを作成する．セッションIDに紐づくその他のデータはこのセッションファイルに書き込まれていく．セッションファイルの名前は，```sess_*****```ファイルとなっており，セッションファイル名を元にしてセッションIDに紐づくデータを参照する．もしクライアントに既にセッションIDが発行されている場合，セッションファイルを参照するようになる．
 
 **＊実装例＊**
 
@@ -791,7 +802,7 @@ $_SESSION["セッション名"] = "値";
 
 #### ・セッションファイルの保存場所
 
-セッションファイルの保存場所は```/etc/php.ini```ファイルで定義できる．セッションファイルは，標準ではサーバの指定のディレクトリ内に```sess_xxxxx```ファイルとして保存される．
+セッションファイルの保存場所は```/etc/php.ini```ファイルで定義できる．
 
 ```ini
 # /etc/php.ini

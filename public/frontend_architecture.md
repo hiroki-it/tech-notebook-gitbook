@@ -442,7 +442,7 @@ const resolveFunc = new Promise((resolve, reject) => {
 resolveFunc.then((value) => {
     
     // resolveFuncがPromiseを返し、resolve!!がresolveされるため
-    // then()が実行されコンソールにresolve!!が表示される
+    // thenメソッドが実行されコンソールにresolve!!が表示される
     console.log(value); // resolve!!
 });
 ```
@@ -471,7 +471,7 @@ const rejectFunc = new Promise((resolve, reject) => {
 rejectFunc.catch((err) => {
     
     // rejectFuncがPromiseを返し、reject!!がrejectされるため
-    // catch()が実行されコンソールにreject!!が表示される
+    // catchメソッドが実行されコンソールにreject!!が表示される
     console.log(err); // reject!!
 });
 ```

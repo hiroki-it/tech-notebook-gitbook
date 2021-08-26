@@ -30,6 +30,33 @@
 
 #### ・Datadogコンテナとは
 
+Datadogが提供するdatadogイメージによって構築されるコンテナであり，Fargateコンテナのサイドカーコンテナとして配置される．コンテナ内で稼働するDatadogエージェントが，Fargateコンテナからメトリクスを収集し，Datadogにこれを転送する．
+
+#### ・IAMロール
+
+DatadogコンテナがFargateコンテナからメトリクスを収集できるように，ECSタスク実行ロールにポリシーを追加する必要がある．
+
+参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
+
+```shell
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ecs:ListClusters",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+
+
 <br>
 
 ### FireLensコンテナ

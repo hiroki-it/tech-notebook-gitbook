@@ -1269,7 +1269,11 @@ parameters:
 
 #### ・ポストモーテムとは
 
-障害報告書とは異なり，原因特定とシステム改善に重きを置いた報告書のこと．障害報告書は，責任の報告の意味合いが強くなってしまう．テンプレートは以下の通り．
+障害報告書とは異なり，原因特定とシステム改善に重きを置いた報告書のこと．障害報告書は，責任の報告の意味合いが強くなってしまう．
+
+#### ・テンプレート
+
+参考：https://ueokande.github.io/incident-response-docs-ja/after/post_mortem_template/
 
 ```markdown
 # ポストモーテム
@@ -1297,6 +1301,16 @@ parameters:
 ## 障害発生から対応までのタイムライン
 
 ```
+
+#### ・他社事例
+
+参考：https://ueokande.github.io/incident-response-docs-ja/after/post_mortem_process/#_6
+
+| サービス | リンク                                                       |
+| -------- | ------------------------------------------------------------ |
+| AWS      | https://aws.amazon.com/jp/message/5467D2/                    |
+| Heroku   | https://status.heroku.com/incidents/151                      |
+| Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
 
 <br>
 
