@@ -1799,51 +1799,51 @@
 <h2 id="01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><a name="01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>01. composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;"><a name="composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;" class="plugin-anchor" href="#composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>composer.json&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;</h3>
 <h4 id="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;</h4>
-<pre class="language-"><code class="lang-json"><span class="token comment">// &#x500B;&#x4EBA;&#x7684;&#x306B;&#x4E00;&#x756A;&#x304A;&#x3059;&#x3059;&#x3081;</span>
-<span class="token comment">// &#x30AD;&#x30E3;&#x30EC;&#x30C3;&#x30C8;&#x8868;&#x8A18;</span>
-<span class="token punctuation">{</span>
-  <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;1.2.0</span>
-    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// &gt;=1.1.0 and &lt;1.2.0</span>
-    <span class="token property">&quot;baz&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.0.1&quot;</span>  <span class="token comment">// &gt;=0.0.1 and &lt;0.0.2</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-shell"># &#x500B;&#x4EBA;&#x7684;&#x306B;&#x4E00;&#x756A;&#x304A;&#x3059;&#x3059;&#x3081;
+# &#x30AD;&#x30E3;&#x30EC;&#x30C3;&#x30C8;&#x8868;&#x8A18;
+{
+  &quot;require&quot;: {
+    &quot;foo&quot;: &quot;^1.1.1&quot;,  # &gt;=1.1.1 and &lt;1.2.0
+    &quot;bar&quot;: &quot;^1.1&quot;,    # &gt;=1.1.0 and &lt;1.2.0
+    &quot;baz&quot;: &quot;^0.0.1&quot;   # &gt;=0.0.1 and &lt;0.0.2
+  }
+}
 </code></pre>
-<pre class="language-"><code class="lang-json"><span class="token comment">// &#x30C1;&#x30EB;&#x30C0;&#x8868;&#x8A18;</span>
-<span class="token punctuation">{</span>
-  <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1.1&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.1.1 and &lt;2.0.0</span>
-    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1.1&quot;</span><span class="token punctuation">,</span>    <span class="token comment">// &gt;=1.1.0 and &lt;2.0.0</span>
-    <span class="token property">&quot;baz&quot;</span><span class="token operator">:</span> <span class="token string">&quot;~1&quot;</span>      <span class="token comment">// &gt;=1.1.0 and &lt;2.0.0</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-shell"># &#x30C1;&#x30EB;&#x30C0;&#x8868;&#x8A18;
+{
+  &quot;require&quot;: {
+    &quot;foo&quot;: &quot;~1.1.1&quot;,  # &gt;=1.1.1 and &lt;2.0.0
+    &quot;bar&quot;: &quot;~1.1&quot;,    # &gt;=1.1.0 and &lt;2.0.0
+    &quot;baz&quot;: &quot;~1&quot;       # &gt;=1.1.0 and &lt;2.0.0
+  }
+}
 </code></pre>
-<pre class="language-"><code class="lang-json"><span class="token comment">// &#x30A8;&#x30C3;&#x30AF;&#x30B9;&#xFF0C;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x8868;&#x8A18;</span>
-<span class="token punctuation">{</span>
-  <span class="token property">&quot;require&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;*&quot;</span><span class="token punctuation">,</span>     <span class="token comment">// &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK</span>
-    <span class="token property">&quot;bar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.1.x&quot;</span><span class="token punctuation">,</span> <span class="token comment">// &gt;=1.1.0 and &lt;1.2.0 </span>
-    <span class="token property">&quot;baz&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.X&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// &gt;=1.0.0 and &lt;2.0.0</span>
-    <span class="token property">&quot;qux&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>      <span class="token comment">// &quot;*&quot;&#x3068;&#x540C;&#x3058;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B; = &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-shell"># &#x30A8;&#x30C3;&#x30AF;&#x30B9;&#xFF0C;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x8868;&#x8A18;
+{
+  &quot;require&quot;: {
+    &quot;foo&quot;: &quot;*&quot;,     # &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK
+    &quot;bar&quot;: &quot;1.1.x&quot;, # &gt;=1.1.0 and &lt;1.2.0 
+    &quot;baz&quot;: &quot;1.X&quot;,   # &gt;=1.0.0 and &lt;2.0.0
+    &quot;qux&quot;: &quot;&quot;       # &quot;*&quot;&#x3068;&#x540C;&#x3058;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B; = &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK
+  }
+}
 </code></pre>
 <h4 id="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;</h4>
 <p>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
-    <span class="token property">&quot;autoload&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;psr-4&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token property">&quot;&lt;&#x540D;&#x524D;&#x7A7A;&#x9593;&gt;&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&gt;&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;App\\&quot;</span><span class="token operator">:</span> <span class="token string">&quot;app/&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;Database\\Factories\\Infrastructure\\DTO\\&quot;</span><span class="token operator">:</span> <span class="token string">&quot;database/factories/production&quot;</span><span class="token punctuation">,</span>
-            <span class="token property">&quot;Database\\Seeders\\&quot;</span><span class="token operator">:</span> <span class="token string">&quot;database/seeds/production&quot;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;classmap&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">&quot;database/seeds&quot;</span><span class="token punctuation">,</span>
-            <span class="token string">&quot;database/factories&quot;</span>
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-shell">{
+    &quot;autoload&quot;: {
+        &quot;psr-4&quot;: {
+             # &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;</span><span class="token punctuation">&gt;</span></span>&quot;: &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;</span><span class="token punctuation">&gt;</span></span>&quot;,
+            &quot;App\\&quot;: &quot;app/&quot;,
+            &quot;Database\\Factories\\Infrastructure\\DTO\\&quot;: &quot;database/factories/production&quot;,
+            &quot;Database\\Seeders\\&quot;: &quot;database/seeds/production&quot;
+        },
+        &quot;classmap&quot;: [
+            &quot;database/seeds&quot;,
+            &quot;database/factories&quot;
+        ]
+    }
+}
 </code></pre>
 <p>&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ composer dump-autoload
@@ -1901,23 +1901,22 @@
 <pre class="language-"><code class="lang-shell">$ composer <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x3092;<code>scripts</code>&#x30AD;&#x30FC;&#x4E0B;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
-    <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">&quot;&lt;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&gt;&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">&quot;@&lt;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&gt;&quot;</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;post-autoload-dump&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">&quot;Illuminate\\Foundation\\ComposerScripts::postAutoloadDump&quot;</span><span class="token punctuation">,</span>
-            <span class="token string">&quot;@php artisan package:discover --ansi&quot;</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;post-root-package-install&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">&quot;@php -r \&quot;file_exists(&quot;</span>.env<span class="token string">&quot;) || copy(&quot;</span>.env.example<span class="token string">&quot;, &quot;</span>.env<span class="token string">&quot;);\&quot;&quot;</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">&quot;post-create-project-cmd&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">&quot;@php artisan key:generate --ansi&quot;</span>
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-shell">{
+    &quot;scripts&quot;: {
+        # &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;
+        &quot;post-autoload-dump&quot;: [
+            # &#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;
+            &quot;Illuminate\\Foundation\\ComposerScripts::postAutoloadDump&quot;,
+            &quot;@php artisan package:discover --ansi&quot;
+        ],
+        &quot;post-root-package-install&quot;: [
+            &quot;@php -r \&quot;file_exists(&quot;.env&quot;) || copy(&quot;.env.example&quot;, &quot;.env&quot;);\&quot;&quot;
+        ],
+        &quot;post-create-project-cmd&quot;: [
+            &quot;@php artisan key:generate --ansi&quot;
+        ]
+    }
+}
 </code></pre>
 <p><br></p>
 <h3 id="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;"><a name="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;" class="plugin-anchor" href="#&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;</h3>
@@ -2393,7 +2392,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.3","depth":2,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"path":"public/backend_php_package.md","ref":"public/backend_php_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"path":"public/backend_php_framework_laravel.md","ref":"public/backend_php_framework_laravel.md","articles":[]},{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_package.md","mtime":"2021-07-30T00:15:08.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-22T17:50:24.549Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.3","depth":2,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"path":"public/backend_php_package.md","ref":"public/backend_php_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"path":"public/backend_php_framework_laravel.md","ref":"public/backend_php_framework_laravel.md","articles":[]},{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_package.md","mtime":"2021-08-25T23:19:06.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-26T16:10:20.812Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
