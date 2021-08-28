@@ -1,20 +1,43 @@
-/* ページサイズ */
+/************
+ ページ全体
+************/
+
 .book .book-body .page-wrapper .page-inner {
     max-width: 75%;
 }
 
-/* 左サイドバー */
+/************
+ 左サイドバー
+************/
+
+/* 幅 */
 .book-summary {
     width: 350px;
 }
 
-/* intopic-tocプラグインをオーバライド */
+/* テキスト間隔 */
+.book-summary ul.summary li a, .book-summary ul.summary li span {
+    padding: 5px 15px;
+}
+
+/************
+ 右サイドバー
+************/
 nav.intopic-toc {
     width: 24%;
 }
-nav.intopic-toc.nested .nav > li > a {
-    font-size: 13px;
+
+nav.intopic-toc .nav > li > a {
+    padding: 1px 15px;
 }
+
+nav.intopic-toc.nested .nav > li > a {
+    font-size: 0.85em;
+}
+
+/************
+ 見出し背景
+************/
 
 h1 {
 
@@ -23,8 +46,6 @@ h1 {
     border-radius: 0.45em;
 
     color: white;
-
-    font-size: 1.75em;
 
     padding: 0.6em;
 
@@ -58,7 +79,6 @@ h2 {
     border-left: 0.95em solid #2980B9;
     /* 文字：色 */
     color: #010101;
-    font-size: 1.2em;
     /* 上外部余白：大きさ */
     margin-top: 1.5em;
     /* 内部余白：文字周り */
@@ -74,7 +94,6 @@ h3 {
     border-top: dotted 0.06em gray;
     /*文字色*/
     color: black;
-    font-size: 1.1em;
     /*行高*/
     line-height: 1.4;
     /*アイコン分のスペース*/
@@ -102,7 +121,26 @@ h3:before {
     top: 0.5em;
 }
 
-/* 項 */
-h4 {
-    font-size: 1em;
+/************
+ 本文
+************/
+
+.markdown-section h1 {
+    font-size: 1.6em;
+}
+
+.markdown-section h2 {
+    font-size: 1.4em;
+}
+
+.markdown-section h3 {
+    font-size: 1.3em;
+}
+
+.markdown-section h4 {
+    font-size: 1.1em;
+}
+
+.book.font-size-2 .book-body .page-inner section {
+    font-size: 1.0em;
 }
