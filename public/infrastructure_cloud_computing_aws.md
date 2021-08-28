@@ -426,13 +426,13 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 | WAF                                | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html |
 | クライアント証明書                 | 関連付けるWAFを設定する．                                    |
 
-#### ・ログ／トレース
+#### ・ログ／分散トレース
 
 | 設定項目                   | 説明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
 | CloudWatch設定             | CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
 | カスタムアクセスのログ記録 | CloudWatchログにAPI Gatewayのアクセスログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
-| X-Rayトレース              | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-xray.html |
+| X-Ray分散トレース      | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-xray.html |
 
 #### ・ステージ変数
 
@@ -816,7 +816,15 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 
 #### ・可観測性
 
-メトリクス，ログ，トレースの３要素からなる開発運用手法のこと．NewRelicやDatadogが可観測性を実現できる．また，AWSではCloudWatch（メトリクス＋ログ）とX-Ray（トレース）を両方利用すると，これらの要素を満たせたことになり，可観測性を実現できる．
+メトリクス，ログ，分散トレースの３要素からなる開発運用手法のこと．NewRelicやDatadogが可観測性を実現できる．また，AWSではCloudWatch（メトリクス＋ログ）とX-Ray（分散トレース）を両方利用すると，これらの要素を満たせたことになり，可観測性を実現できる．
+
+| 種類             | 説明                                                         | 補足 |
+| ---------------- | ------------------------------------------------------------ | ---- |
+| メトリクス       |                                                              |      |
+| ログ             |                                                              |      |
+| 分散トレース | マイクロサービスの各コンポーネントでイベントが発生した時，一連のイベントを因果関係として繋げたデータセットのこと． |      |
+
+
 
 #### ・４大シグナル
 
@@ -1459,7 +1467,20 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
-## 13. ECS on EC2
+## 13-01. ECS
+
+### ECSとは
+
+コンテナを管理する環境．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
+
+| Control Plane（コンテナ管理環境） | Data Plane（コンテナ実行環境） |
+| --------------------------------- | ------------------------------ |
+| ECS：Elastic Container Service    | Fargate，EC2                   |
+| EKS：Elastic Kubernetes Service   | Fargate，EC2                   |
+
+<br>
+
+## 13-02. ECS on EC2
 
 ### EC2起動タイプのコンテナ
 
@@ -1475,20 +1496,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
-## 13-02. ECS on Fargate：Elastic Container Service
-
-### ECSとEKSの違い
-
-#### ・管理環境と実行環境
-
-コンテナを管理する環境．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
-
-| Control Plane（コンテナ管理環境） | Data Plane（コンテナ実行環境） |
-| --------------------------------- | ------------------------------ |
-| ECS：Elastic Container Service    | Fargate，EC2                   |
-| EKS：Elastic Kubernetes Service   | Fargate，EC2                   |
-
-<br>
+## 13-03. ECS on Fargate：Elastic Container Service
 
 ### クラスター
 
@@ -1662,7 +1670,11 @@ exit ${EXIT_CODE}
 
 <br>
 
-### Fargateコンテナ
+### Fargate
+
+#### ・Fargateとは
+
+コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．
 
 #### ・コンテナエージェント
 

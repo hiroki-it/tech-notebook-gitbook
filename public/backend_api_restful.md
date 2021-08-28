@@ -134,7 +134,7 @@ content-type: application/json
 # Authorizationヘッダー
 authorization: Bearer ${Token}
 # APIキーヘッダー
-x-api-key: XXXXX
+x-api-key: *****
 ```
 
 <br>
@@ -475,10 +475,10 @@ Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
 # リファラポリシー（nginx，apache，などで実装可能）
 Referrer-Policy: no-referrer-when-downgrade
-x-amz-rid:	xxxxx
+x-amz-rid:	*****
 # セッションIDを含むCookie情報
-Set-Cookie: session-id=<セッションID>; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
-Set-Cookie: session-id-time=xxxxx; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
+Set-Cookie: session-id=*****; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
+Set-Cookie: session-id-time=*****; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
 Set-Cookie: i18n-prefs=JPY; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
 Set-Cookie: skin=noskin; path=/; domain=.amazon.co.jp
 Accept-CH: ect,rtt,downlink
@@ -493,13 +493,13 @@ Pragma:	no-cache
 X-XSS-Protection: 1;
 X-Content-Type-Options:	nosniff
 Vary: Accept-Encoding,User-Agent,Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
-Strict-Transport-Security: max-age=xxxxx; includeSubDomains; preload
+Strict-Transport-Security: max-age=*****; includeSubDomains; preload
 X-Frame-Options: SAMEORIGIN
 # CloudFrontのキャッシュにヒットしたかどうか
 X-Cache: Miss from cloudfront
-Via: 1.1 xxxxx.cloudfront.net (CloudFront)
+Via: 1.1 *****.cloudfront.net (CloudFront)
 X-Amz-Cf-Pop: SEA19-C2
-X-Amz-Cf-Id: xxxxx==
+X-Amz-Cf-Id: *****==
 # 言語のバージョン（※ php.ini にて，expose_php = Off と設定することで非表示にできる）
 X-Powered-By: PHP/7.3.22
 
@@ -696,7 +696,7 @@ http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
     "〇〇は必ず入力してください．",
     "□□は必ず入力してください．"
   ]
-  "url" : "https://xxxxxx"
+  "url" : "https://*****x"
 }
 ```
 
@@ -823,7 +823,7 @@ session.save_path = "/tmp"
 ### Redis形式
 session.save_handler = redis
 ### Amazon RedisのOrigin
-session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
+session.save_path = "tcp://*****-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
 なお，PHP-FPMを使用している場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションファイルの保存先を指定する必要がある．
@@ -834,7 +834,7 @@ session.save_path = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6
 ### Redis形式
 php_value[session.save_handler] = redis
 ### Amazon RedisのOrigin
-php_value[session.save_path] = "tcp://xxxxx-redis.xxxxx.ng.0001.apne1.cache.amazonaws.com:6379"
+php_value[session.save_path] = "tcp://*****-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
 #### ・セッションの有効期限と初期化確率
@@ -858,7 +858,7 @@ session.gc_divisor = 1
 
 #### ・まとめ
 
-1. 最初，ブラウザはリクエストでデータを送信する．セッションIDを発行し，セッションIDごとに```sess_xxxxx```ファイルを生成．
+1. 最初，ブラウザはリクエストでデータを送信する．セッションIDを発行し，セッションIDごとに```sess_*****```ファイルを生成．
 2. サーバは，レスポンスヘッダ情報のCookieヘッダーを使用して，セッションIDを送信する．
 3. ブラウザは，そのセッションIDを保存する．
 4. 2回目以降のリクエストでは，ブラウザは，リクエストヘッダ情報のCookieヘッダーを使用して，セッションIDをサーバに送信する．サーバは，セッションIDに紐づくクライアントのデータをReadする．

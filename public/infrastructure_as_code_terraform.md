@@ -33,9 +33,12 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 $ terraform init \
     -backend=true \
     -reconfigure \
-    -backend-config="bucket=<バケット名>" \
+    # バケット名
+    -backend-config="bucket=foo-tfstate-bucket" \
+    # tfstateファイル名
     -backend-config="key=terraform.tfstate" \
-    -backend-config="profile=<プロファイル名>" \
+    # credentialsファイルのプロファイル名
+    -backend-config="profile=bar" \
     -backend-config="encrypt=true"
 ```
 
@@ -99,6 +102,18 @@ $ terraform fmt -check
 $ terraform fmt -recursive
 
 main.tf
+```
+
+<br>
+
+### graph
+
+rosource間の依存関係をグラフ化する．これにより，どのresourceが他のどのresourceを使用しているかがわかる．Graphvizのダウンロードが必要である．
+
+参考：https://graphviz.org/download/
+
+```shell
+$ terraform graph | dot -Tsvg > graph.svg
 ```
 
 <br>
@@ -265,7 +280,7 @@ $ terraform plan \
 
 #### ・-refresh
 
-このオプションをつければ，```refresh```コマンドを同時に実行してくれる．ただ，デフォルトで```true```なので，不要である．
+このオプションをつければ，```refresh```コマンドを同時に実行してくれる．ただ，標準で```true```なので，不要である．
 
 ```shell
 $ terraform plan \
@@ -277,7 +292,7 @@ https://github.com/hashicorp/terraform/issues/17311
 
 #### ・-parallelism
 
-並列処理数を設定できる．デフォルト値は```10```である．
+並列処理数を設定できる．標準値は```10```である．
 
 ```shell
 $ terraform plan \
@@ -292,7 +307,8 @@ $ terraform plan \
 ```shell
 $ terraform plan \
     -var-file=foo.tfvars \
-    -out=<実行プランファイル名>.tfplan
+    # 実行プランファイル名
+    -out=foo.tfplan
 ```
 
 <br>
@@ -339,7 +355,7 @@ $ terraform apply \
 
 #### ・-parallelism
 
-並列処理数を設定できる．デフォルト値は```10```である．
+並列処理数を設定できる．標準値は```10```である．
 
 ```shell
 $ terraform apply \
@@ -352,7 +368,7 @@ $ terraform apply \
 事前に，```plan```コマンドによって生成された実行プランファイルを元に，```apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
 
 ```shell
-$ terraform apply <実行プランファイル名>.tfplan
+$ terraform apply foo.tfplan
 ```
 
 <br>
@@ -665,7 +681,7 @@ AWSやGCPなど，使用するプロバイダを定義する．プロバイダ�
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
 
   required_providers {
@@ -683,13 +699,13 @@ terraform {
 
 #### ・backend
 
-stateファイルを管理する場所を設定する．S3などの実インフラで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．デフォルト値は```local```である．変数を使用できず，ハードコーディングする必要があるため，もし値を動的に変更したい場合は，initコマンドのオプションを使用して値を渡すようにする．
+stateファイルを管理する場所を設定する．S3などの実インフラで管理する場合，アカウント情報を設定する必要がある．代わりに，```init```コマンド実行時に指定しても良い．標準値は```local```である．変数を使用できず，ハードコーディングする必要があるため，もし値を動的に変更したい場合は，initコマンドのオプションを使用して値を渡すようにする．
 
 参考：https://www.terraform.io/docs/language/settings/backends/s3.html#credentials-and-shared-configuration
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
 
   # ローカルPCで管理するように設定
@@ -699,16 +715,20 @@ terraform {
 }
 ```
 
-```hcl
+```elixir
 terraform {
 
   # S3で管理するように設定
   backend "s3" {
-    bucket                  = "<バケット名>"
-    key                     = "<バケット内のディレクトリ>"
+    # バケット名
+    bucket                  = "foo-tfstate-bucket"
+    # stateファイル名
+    key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
-    profile                 = "foo"
-    shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
+    # credentialsファイルの場所
+    shared_credentials_file = "$HOME/.aws/credentials"
+    # credentialsファイルのプロファイル名
+    profile                 = "bar-profile"
   }
 }
 ```
@@ -725,7 +745,7 @@ terraform {
             "Effect": "Deny",
             "Principal": "*",
             "Action": "s3:DeleteObject",
-            "Resource": "arn:aws:s3:::<tfstateのバケット名>/*"
+            "Resource": "arn:aws:s3:::foo-tfstate-bucket/*"
         }
     ]
 }
@@ -741,7 +761,7 @@ Terraformがリクエストを送信するプロバイダ（AWS，GCP，Azure，
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
   required_version = "0.13.5"
 
@@ -773,7 +793,7 @@ provider "aws" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
   required_version = "0.13.5"
 
@@ -786,7 +806,7 @@ terraform {
 }
 
 provider "aws" {
-  # デフォルト値とするリージョン
+  # 標準値とするリージョン
   region = "ap-northeast-1"
 }
 
@@ -803,7 +823,7 @@ provider "aws" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 module "route53" {
   source = "../modules/route53"
 
@@ -819,20 +839,20 @@ module "route53" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # Route53
 ###############################################
-resource "aws_acm_certificate" "foo" {
+resource "aws_acm_certificate" "example" {
   # CloudFrontの仕様のため，us-east-1リージョンでSSL証明書を作成します．
   provider = aws
 
-  domain_name               = var.route53_domain_foo
-  subject_alternative_names = ["*.${var.route53_domain_foo}"]
+  domain_name               = "example.co.jp"
+  subject_alternative_names = ["*.example.co.jp"]
   validation_method         = "DNS"
 
   tags = {
-    Name = "${var.environment}-${var.service}-foo-cert"
+    Name = "prd-foo-example-cert"
   }
 
   lifecycle {
@@ -851,7 +871,7 @@ resource "aws_acm_certificate" "foo" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
   required_version = "0.13.5"
 
@@ -863,18 +883,22 @@ terraform {
   }
   
   backend "s3" {
-    bucket     = "<バケット名>"
-    key        = "<バケット内のディレクトリ>"
+    bucket     = "foo-tfstate-bucket"
+    key        = "terraform.tfstate"
     region     = "ap-northeast-1"
-    access_key = "<アクセスキー>"
-    secret_key = "<シークレットキー>"
+    # アクセスキー
+    access_key = "*****"
+    # シークレットアクセスキー
+    secret_key = "*****"
   }
 }
 
 provider "aws" {
   region     = "ap-northeast-1"
-  access_key = "<アクセスキー>"
-  secret_key = "<シークレットキー>"
+  # アクセスキー
+  access_key = "*****"
+  # シークレットアクセスキー
+  secret_key = "*****"
 }
 ```
 
@@ -883,20 +907,22 @@ provider "aws" {
 　AWSアカウント情報は，```~/.aws/credentials```ファイルに記載されている．
 
 ```
+# 標準プロファイル
 [default]
-aws_access_key_id=<アクセスキー>
-aws_secret_access_key=<シークレットキー>
+aws_access_key_id=*****
+aws_secret_access_key=*****
 
-[user1]
-aws_access_key_id=<アクセスキー>
-aws_secret_access_key=<シークレットキー>
+# 独自プロファイル
+[bar-profile]
+aws_access_key_id=*****
+aws_secret_access_key=*****
 ```
 
 credentialsファイルを読み出し，プロファイル名を設定することにより，アカウント情報を参照できる．
 
 **＊実装例＊**
 
-```hcl
+```elixir
 terraform {
   required_version = "0.13.5"
 
@@ -910,11 +936,15 @@ terraform {
   
   # credentialsファイルから，アクセスキー，シークレットアクセスキーを読み込む
   backend "s3" {
-    bucket                  = "<バケット名>"
-    key                     = "<バケット内のディレクトリ>"
+    # バケット名
+    bucket                  = "foo-tfstate-bucket"
+    # stateファイル名
+    key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
-    profile                 = "foo"
-    shared_credentials_file = "$HOME/.aws/<Credentialsファイル名>"
+    # credentialsファイルの場所
+    shared_credentials_file = "$HOME/.aws/credentials"
+    # credentialsファイルのプロファイル名
+    profile                 = "bar-profile"
   }
 }
 
@@ -935,21 +965,21 @@ Credentialsファイルではなく，```export```を使用して，必要な情
 $ export AWS_DEFAULT_REGION="ap-northeast-1"
 
 # access_keyの代わり
-$ export AWS_ACCESS_KEY_ID="<アクセスキー>"
+$ export AWS_ACCESS_KEY_ID="*****"
 
 # secret_keyの代わり
-$ export AWS_SECRET_ACCESS_KEY="<シークレットキー>"
+$ export AWS_SECRET_ACCESS_KEY="*****"
 
 # profileの代わり
-$ export AWS_PROFILE="<プロファイル名>"
+$ export AWS_PROFILE="bar-profile"
 
 #tokenの代わり（AmazonSTSを使用する場合）
-$ export AWS_SESSION_TOKEN="<トークン>"
+$ export AWS_SESSION_TOKEN="*****"
 ```
 
 環境変数を設定した上でteraformを実行すると，値が```provider```に自動的に出力される．CircleCIのような，一時的に環境変数が必要になるような状況では有効な方法である．
 
-```hcl
+```elixir
 terraform {
   required_version = "0.13.5"
 
@@ -983,7 +1013,7 @@ provider "aws" {}
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################
 # ALB
 ###############################
@@ -1050,7 +1080,7 @@ TF_VAR_ecr_image_tag=foo
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################
 # VPC
 ###############################
@@ -1065,7 +1095,7 @@ vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # RDS
 ###############################################
@@ -1112,7 +1142,7 @@ variable "waf_blocked_user_agents" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # RDS
 ###############################################
@@ -1164,7 +1194,7 @@ waf_blocked_user_agents = [
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # ECS
 ###############################################
@@ -1206,15 +1236,15 @@ AWSのAPIに対してリクエストを送信し，クラウドインフラの�
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # ALB
 ###############################################
 resource "aws_lb" "this" {
-  name               = "${var.app_name}-alb"
+  name               = "prd-foo-alb"
   load_balancer_type = "application"
-  security_groups    = [var.sg_alb_id]
-  subnets            = var.subnet_public_ids
+  security_groups    = ["*****"]
+  subnets            = ["*****","*****"]
 }
 ```
 
@@ -1232,12 +1262,12 @@ AWSのAPIに対してリクエストを送信し，クラウドインフラに�
 
 例として，タスク定義名を指定して，AWSから
 
-```hcl
+```elixir
 ###############################################
 # ECS task definition
 ###############################################
-data "aws_ecs_task_definition" this {
-  task_definition = aws_ecs_task_definition.this.family
+data "aws_ecs_task_definition" "this" {
+  task_definition = "prd-foo-ecs-task-definition"
 }
 ```
 
@@ -1245,7 +1275,7 @@ data "aws_ecs_task_definition" this {
 
 例として，AMIをフィルタリングした上で，AWSから特定のAMIの値を取得する．
 
-```hcl
+```elixir
 ###############################################
 # AMI
 ###############################################
@@ -1294,7 +1324,7 @@ data "aws_ami" "bastion" {
 
 例として，ALBを示す．```resource```ブロックと```data```ブロックでアウトプットの方法が異なる．
 
-```hcl
+```elixir
 ###############################################
 # ALB
 ###############################################
@@ -1336,15 +1366,15 @@ output "elb_service_account_arn" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # ALB target group
 ###############################################
 resource "aws_lb_target_group" "this" {
-  name                 = "${var.environment}-${var.service}-alb-tg"
-  port                 = var.ecs_nginx_port_http
+  name                 = "prd-foo-alb-tg"
+  port                 = 80
   protocol             = "HTTP"
-  vpc_id               = var.vpc_id
+  vpc_id               = "*****"
   deregistration_delay = "60"
   target_type          = "ip"
   slow_start           = "60"
@@ -1366,28 +1396,28 @@ resource "aws_lb_target_group" "this" {
 
 例として，NAT Gatewayを示す．NAT Gateway，Internet Gateway，のリソースを適切な順番で構築できないため，Internet Gatewayの構築後に，NAT Gatewayを構築するように定義する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # EC2
 ###############################################
 resource "aws_instance" "bastion" {
-  ami                         = var.bastion_ami_amazon_id
+  ami                         = "*****"
   instance_type               = "t2.micro"
-  vpc_security_group_ids      = [var.ec2_bastion_security_group_id]
-  subnet_id                   = var.public_a_subnet_id
-  key_name                    = "${var.environment}-${var.service}-bastion"
+  vpc_security_group_ids      = ["*****"]
+  subnet_id                   = "*****"
+  key_name                    = "prd-foo-bastion"
   associate_public_ip_address = true
   disable_api_termination     = true
 
   tags = {
-    Name = "${var.environment}-${var.service}-bastion"
+    Name = "prd-foo-bastion"
   }
 
   depends_on = [var.internet_gateway]
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Elastic IP
 ###############################################
@@ -1398,7 +1428,7 @@ resource "aws_eip" "nat_gateway" {
 
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-ngw-%s-eip",
+      "prd-foo-ngw-%s-eip",
       each.value
     )
   }
@@ -1407,7 +1437,7 @@ resource "aws_eip" "nat_gateway" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # NAT Gateway
 ###############################################
@@ -1419,7 +1449,7 @@ resource "aws_nat_gateway" "this" {
 
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-%s-ngw",
+      "prd-foo-%s-ngw",
       each.value
     )
   }
@@ -1432,14 +1462,14 @@ resource "aws_nat_gateway" "this" {
 
 例として，S3を示す．バケットポリシーとパブリックアクセスブロックポリシーを同時に構築できないため，構築のタイミングが重ならないようにする必要がある．
 
-```hcl
+```elixir
 ###############################################
 # S3
 ###############################################
 
 # foo bucket
 resource "aws_s3_bucket" "foo" {
-  bucket = "${var.environment}-${var.service}-foo-bucket"
+  bucket = "prd-foo-foo-bucket"
   acl    = "private"
 }
 
@@ -1477,7 +1507,7 @@ resource "aws_s3_bucket_policy" "foo" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # EC2
 ###############################################
@@ -1501,7 +1531,7 @@ resource "aws_instance" "server" {
 
 例として，VPCのサブネットを示す．ここでは，パブリックサブネット，applicationサブネット，datastoreサブネット，を```count```関数で構築したとする．
 
-```hcl
+```elixir
 ###############################################
 # Public subnet
 ###############################################
@@ -1527,7 +1557,7 @@ resource "aws_subnet" "private_datastore" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Output VPC
 ###############################################
@@ -1556,7 +1586,7 @@ output "private_datastore_subnet_ids" {
 
 例として，subnetを繰り返し構築する．
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
@@ -1567,7 +1597,7 @@ vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
 vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Public subnet
 ###############################################
@@ -1581,7 +1611,7 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-pub-%s-subnet",
+      "prd-foo-pub-%s-subnet",
       each.value
     )
   }
@@ -1596,14 +1626,14 @@ resource "aws_subnet" "public" {
 
 パブリックサブネット，プライベートサブネット，プライベートサブネットに紐づくNAT Gatewayの設定が冗長化されたAZで共通の場合，```for_each```関数で構築する．
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Internet Gateway
 ###############################################
@@ -1611,7 +1641,7 @@ resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
 
   tags = {
-    Name = "${var.environment}-${var.service}-igw"
+    Name = "prd-foo-igw"
   }
 }
 
@@ -1627,7 +1657,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "${var.environment}-${var.service}-pub-rtb"
+    Name = "prd-foo-pub-rtb"
   }
 }
 
@@ -1646,7 +1676,7 @@ resource "aws_route_table" "private_app" {
 
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-pvt-%s-app-rtb",
+      "prd-foo-pvt-%s-app-rtb",
       each.value
     )
   }
@@ -1663,7 +1693,7 @@ resource "aws_nat_gateway" "this" {
 
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-%s-ngw",
+      "prd-foo-%s-ngw",
       each.value
     )
   }
@@ -1678,14 +1708,14 @@ resource "aws_nat_gateway" "this" {
 
 リソースの構築に```for_each```関数を使用した場合，そのリソースはmap型として扱われる．そのため，キー名を指定してアウトプットできる．
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Output VPC
 ###############################################
@@ -1702,14 +1732,14 @@ output "public_c_subnet_id" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
 vpc_availability_zones = { a = "a", c = "c" }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Output VPC
 ###############################################
@@ -1735,12 +1765,12 @@ output "private_datastore_subnet_ids" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # ALB
 ###############################################
 resource "aws_lb" "this" {
-  name                       = "${var.environment}-${var.service}-alb"
+  name                       = "prd-foo-alb"
   subnets                    = values(private_app_subnet_ids)
   security_groups            = [var.alb_security_group_id]
   internal                   = false
@@ -1766,7 +1796,7 @@ resource "aws_lb" "this" {
 
 例として，RDSパラメータグループの```parameter```ブロックを，map型変数を使用して繰り返し構築する．
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
@@ -1789,8 +1819,8 @@ rds_parameter_group_values = {
 # RDS Cluster Parameter Group
 ###############################################
 resource "aws_rds_cluster_parameter_group" "this" {
-  name        = "${var.environment}-${var.service}-cluster-pg"
-  description = "The cluster parameter group for ${var.environment}-${var.service}-rds"
+  name        = "prd-foo-cluster-pg"
+  description = "The cluster parameter group for prd-foo-rds"
   family      = "aurora-mysql5.7"
 
   dynamic "parameter" {
@@ -1808,7 +1838,7 @@ resource "aws_rds_cluster_parameter_group" "this" {
 
 例として，WAFの正規表現パターンセットの```regular_expression```ブロックを，list型変数を使用して繰り返し構築する．
 
-```hcl
+```elixir
 ###############################################
 # Variables
 ###############################################
@@ -1852,7 +1882,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 例として，ACM証明書を示す．ACM証明書は，ALBやCloudFrontに関連付いており，新しい証明書に関連付け直した後に，既存のものを削除する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # For foo domain
 ###############################################
@@ -1871,7 +1901,7 @@ resource "aws_acm_certificate" "foo" {
 
 例として，RDSのクラスターパラメータグループとサブネットグループを示す．クラスターパラメータグループとサブネットグループは，RDSに関連付いており，新しいクラスターパラメータグループに関連付け直した後に，既存のものを削除する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # RDS Cluster Parameter Group
 ###############################################
@@ -1900,7 +1930,7 @@ resource "aws_db_subnet_group" "this" {
 
 例として，Redisのパラメータグループとサブネットグループを示す．ラメータグループとサブネットグループは，RDSに関連付いており，新しいパラメータグループとサブネットグループに関連付け直した後に，既存のものを削除する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # Redis Parameter Group
 ###############################################
@@ -1934,7 +1964,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 例として，ECSを示す．ECSでは，AutoScalingによってタスク数が増加する．そのため，これらを無視する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # ECS Service
 ###############################################
@@ -1956,7 +1986,7 @@ resource "aws_ecs_service" "this" {
 例として，Redisを示す．Redisでは，AutoScalingによってプライマリ数とレプリカ数が増減する．そのため，これらを無視する必要がある．
 
 
-```hcl
+```elixir
 ###############################################
 # Redis Cluster
 ###############################################
@@ -1978,7 +2008,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
 使用例はすくないが，ちなみにリソース全体を無視する場合は```all```を設定する．
 
-```hcl
+```elixir
 resource "aws_foo" "foo" {
 
   # ～ 省略 ～
@@ -2003,7 +2033,7 @@ resource "aws_foo" "foo" {
 
 例として，S3を示す．
 
-```hcl
+```elixir
 ###############################################
 # S3 bucket policy
 ###############################################
@@ -2073,8 +2103,10 @@ int型を変数として渡せるように，拡張子をjsonではなくtplと�
 ```shell
 [
   {
-    "name": "<コンテナ名>",
-    "image": "<ECRリポジトリのURL>",
+    # コンテナ名
+    "name": "laravel",
+    # ECRのURL．タグを指定しない場合はlatestが割り当てられる．
+    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-laravel-repository",
     "essential": true,
     "portMappings": [
       {
@@ -2085,45 +2117,47 @@ int型を変数として渡せるように，拡張子をjsonではなくtplと�
     ],
     "secrets": [
       {
-        "name": "<アプリケーションの環境変数名>",
-        "valueFrom": "<SSMのパラメータ名>"
-      },
-      {
+        # アプリケーションの環境変数名
         "name": "DB_HOST",
-        "valueFrom": "/ecs/DB_HOST"
+        # SSMのパラメータ名
+        "valueFrom": "/prd-foo/DB_HOST"
       },
       {
         "name": "DB_DATABASE",
-        "valueFrom": "/ecs/DB_DATABASE"
+        "valueFrom": "/prd-foo/DB_DATABASE"
       },
       {
         "name": "DB_PASSWORD",
-        "valueFrom": "/ecs/DB_PASSWORD"
+        "valueFrom": "/prd-foo/DB_PASSWORD"
       },
       {
         "name": "DB_USERNAME",
-        "valueFrom": "/ecs/DB_USERNAME"
+        "valueFrom": "/prd-foo/DB_USERNAME"
       },
       {
         "name": "REDIS_HOST",
-        "valueFrom": "/ecs/REDIS_HOST"
+        "valueFrom": "/prd-foo/REDIS_HOST"
       },
       {
         "name": "REDIS_PASSWORD",
-        "valueFrom": "/ecs/REDIS_PASSWORD"
+        "valueFrom": "/prd-foo/REDIS_PASSWORD"
       },
       {
         "name": "REDIS_PORT",
-        "valueFrom": "/ecs/REDIS_PORT"
+        "valueFrom": "/prd-foo/REDIS_PORT"
       }
     ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "<ロググループ名>",
+        # ロググループ名
+        "awslogs-group": "/prd-foo/laravel/log",
+        # スタックトレースのグループ化（同時刻ログのグループ化）
         "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
-        "awslogs-region": "<リージョン>",
-        "awslogs-stream-prefix": "<ログストリーム名のプレフィクス>"
+        # リージョン
+        "awslogs-region": "ap-northeast-1",
+        # ログストリーム名のプレフィクス
+        "awslogs-stream-prefix": "/container"
       }
     }
   }
@@ -2150,7 +2184,7 @@ AWSリソースのアルファベット順にmoduleを並べる．また，変�
 
 例として，VPCを示す．
 
-```hcl
+```elixir
 ###############################################
 # VPC variables
 ###############################################
@@ -2167,7 +2201,7 @@ vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
 
 AWSリソースのアルファベット順に環境変数を並べる，環境変数の名前は，使用するAWSリソースの名前を最初につけるようにする．list型またはmap型であれば複数形，それ以外であれば単数形とする．
 
-```hcl
+```elixir
 ###############################################
 # Route53
 ###############################################
@@ -2190,7 +2224,7 @@ waf_blocked_user_agents = [
 
 複数のAWSリソースで使用する場合は，『General』とし，グローバルな名前にする．
 
-```hcl
+```elixir
 ###############################################
 # General
 ###############################################
@@ -2212,7 +2246,7 @@ service           = "bar"
 
 例として，VPCを示す．
 
-```hcl
+```elixir
 ###############################################
 # VPC route table
 ###############################################
@@ -2227,7 +2261,7 @@ resource "aws_route_table" "private" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # VPC route table
 ###############################################
@@ -2248,7 +2282,7 @@ resource "aws_route_table" "route_table_private" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 resource "aws_internet_gateway" "this" {
 
 }
@@ -2264,10 +2298,10 @@ resource "aws_internet_gateway" "this" {
 
 例として，CloudWatchを示す．この時，他のresourceと比較して，種類はALBのHTTPCode_TARGET_4XX_Countメトリクスに関するアラームと見なせる．そのため，`alb_httpcode_4xx_count`と名付けている．
 
-```hcl
+```elixir
 resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 
-  alarm_name = "${var.environment}-${var.service}-alb-httpcode-target-4xx-count-alarm"
+  alarm_name = "prd-foo-alb-httpcode-target-4xx-count-alarm"
   
 }
 ```
@@ -2278,18 +2312,18 @@ resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # EXAMPLE
 ###############################################
-resource "aws_foo" "this" {
+resource "aws_baz" "this" {
   for_each = var.vpc_availability_zones # 最初にfor_each
   # スペース
   subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
   # スペース
   tags = {
     Name = format(
-      "${var.environment}-${var.service}-%d-foo",
+      "prd-foo-%d-baz",
       each.value
     )
   }
@@ -2314,7 +2348,7 @@ resource "aws_foo" "this" {
 
 例として，CloudWatchを示す．リソース名は`ecs_container_nginx`，リソースタイプは`aws_cloudwatch_log_group`，attributeは`name`オプションである．
 
-```hcl
+```elixir
 output "ecs_container_nginx_cloudwatch_log_group_name" {
   value = aws_cloudwatch_log_group.ecs_container_nginx.name
 }
@@ -2324,7 +2358,7 @@ output "ecs_container_nginx_cloudwatch_log_group_name" {
 
 例として，IAM Roleを示す．
 
-```hcl
+```elixir
 ###############################################
 # Output IAM Role
 ###############################################
@@ -2349,7 +2383,7 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 例として，ALBを示す．
 
-```hcl
+```elixir
 ###############################################
 # Output ALB
 ###############################################
@@ -2368,7 +2402,7 @@ output "alb_dns_name" {
 
 例として，ECRを示す．
 
-```hcl
+```elixir
 ###############################################
 # Output ECR
 ###############################################
@@ -2425,13 +2459,13 @@ data "aws_ami" "bastion" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # REST API
 ###############################################
 resource "aws_api_gateway_rest_api" "foo" {
-  name        = "${var.environment}-${var.service}-api-for-foo"
-  description = "The API that enables two-way communication with ${var.environment}-foo"
+  name        = "prd-foo-api-for-foo"
+  description = "The API that enables two-way communication with prd-foo"
   
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
   # 後述の説明を参考にせよ．（１）
@@ -2494,12 +2528,12 @@ https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-re
 
 WAFにAPI Gatewayを関連づけるために，ステージのARNが必要である．これは自力で作る．
 
-```hcl
+```elixir
 ###############################################
 # Web ACL Association
 ###############################################
 resource "aws_wafv2_web_acl_association" "api_gateway" {
-  resource_arn = "${var.api_gateway_rest_arn}/stages/${var.environment}"
+  resource_arn = "${var.api_gateway_rest_arn}/stages/prd"
   web_acl_arn  = aws_wafv2_web_acl.api_gateway.arn
 }
 ```
@@ -2520,7 +2554,7 @@ resource "aws_cloudfront_distribution" "this" {
   price_class      = "PriceClass_200"
   web_acl_id       = var.cloudfront_wafv2_web_acl_arn
   aliases          = [var.route53_domain_foo]
-  comment          = "${var.environment}-${var.service}-cf-distribution"
+  comment          = "prd-foo-cf-distribution"
   enabled          = true
   
   # 後述の説明を参考にせよ．（１）
@@ -2559,7 +2593,7 @@ Origins画面に設定するオリジンを定義する．
 
 **＊実装例＊**
 
-```hcl
+```elixir
 resource "aws_cloudfront_distribution" "this" {
 
   # ～ 省略 ～  
@@ -2579,7 +2613,7 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-```hcl
+```elixir
 resource "aws_cloudfront_distribution" "this" {
 
   # ～ 省略 ～  
@@ -2609,7 +2643,7 @@ Behavior画面に設定するオリジンにルーティングするパスを定
 
 **＊実装例＊**
 
-```hcl
+```elixir
 resource "aws_cloudfront_distribution" "this" {
 
   # ～ 省略 ～
@@ -2641,11 +2675,11 @@ resource "aws_cloudfront_distribution" "this" {
 
 #### ・default_cache_behavior
 
-Behavior画面に設定するオリジンにルーティングするデフォルトパスを定義する．
+Behavior画面に設定するオリジンにルーティングする標準パスを定義する．
 
 **＊実装例＊**
 
-```hcl
+```elixir
 resource "aws_cloudfront_distribution" "this" {
 
   default_cache_behavior {
@@ -2720,12 +2754,12 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # ECS Service
 ###############################################
 resource "aws_ecs_service" "this" {
-  name                               = "${var.environment}-${var.service}-ecs-service"
+  name                               = "prd-foo-ecs-service"
   cluster                            = aws_ecs_cluster.this.id
   launch_type                        = "FARGATE"
   platform_version                   = "1.4.0"
@@ -2748,13 +2782,13 @@ resource "aws_ecs_service" "this" {
   load_balancer {
     target_group_arn = var.alb_target_group_arn
     container_name   = "nginx"
-    container_port   = var.ecs_container_nginx_port_http
+    container_port   = 80
   }
 
   load_balancer {
     target_group_arn = var.nlb_target_group_arn
     container_name   = "nginx"
-    container_port   = var.ecs_container_nginx_port_http
+    container_port   = 80
   }
 
   depends_on = [
@@ -2808,24 +2842,24 @@ ECSサービスの削除には『ドレイニング』の時間が発生する�
 
 **＊実装例＊**
 
-```
+```elixir
 ###############################################
 # For bastion
 ###############################################
 resource "aws_instance" "bastion" {
-  ami                         = var.bastion_ami_amazon_id
+  ami                         = "*****"
   instance_type               = "t2.micro"
-  vpc_security_group_ids      = [var.ec2_bastion_security_group_id]
-  subnet_id                   = var.public_a_subnet_id
+  vpc_security_group_ids      = ["*****"]
+  subnet_id                   = "*****"
   associate_public_ip_address = true
 
   # ※後述の説明を参考にせよ（１）
-  key_name = "${var.environment}-${var.service}-bastion"
+  key_name = "prd-foo-bastion"
 
   disable_api_termination = true
 
   tags = {
-    Name = "${var.environment}-${var.service}-bastion"
+    Name = "prd-foo-bastion"
   }
 
   # ※後述の説明を参考にせよ（２）
@@ -2855,7 +2889,7 @@ resource "aws_instance" "bastion" {
 
 ローカルからAWS CLIコマンドを実行する必要がある場合に，コマンドを特定の送信元IPアドレスを特定のものに限定する．事前に，list型でIPアドレスを定義する．
 
-```hcl
+```elixir
 ###############################################
 # IP addresses
 ###############################################
@@ -2886,7 +2920,7 @@ global_ip_addresses = [
 
 コンソール画面で作成済みのIAMユーザの名前を取得する．tpl形式のポリシーにlist型の値を渡す時，```jsonencode```関数を使用する必要がある．
 
-```hcl
+```elixir
 ###############################################
 # For IAM User
 ###############################################
@@ -2895,7 +2929,7 @@ data "aws_iam_user" "aws_cli_command_executor" {
 }
 
 resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
-  name        = "${var.environment}-aws-cli-command-executor-ip-address-restriction-policy"
+  name        = "prd-aws-cli-command-executor-ip-address-restriction-policy"
   description = "Allow global IP addresses"
   policy = templatefile(
     "${path.module}/policies/customer_managed_policies/aws_cli_command_executor_ip_address_restriction_policy.tpl",
@@ -2912,7 +2946,7 @@ IAMユーザにAWS管理ポリシーをアタッチする．
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # For IAM User
 ###############################################
@@ -2951,13 +2985,13 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 ECSタスクロールとECSタスク実行ロールに信頼ポリシーアタッチする．
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For ECS Task Execution
 ###############################################
 resource "aws_iam_role" "ecs_task_execution" {
-  name        = "${var.environment}-${var.service}-ecs-task-execution-role"
-  description = "The role for ${var.environment}-${var.service}-ecs-task"
+  name        = "prd-foo-ecs-task-execution-role"
+  description = "The role for prd-foo-ecs-task"
   assume_role_policy = templatefile(
     "${path.module}/policies/trust_policies/ecs_task_policy.tpl",
     {}
@@ -2968,8 +3002,8 @@ resource "aws_iam_role" "ecs_task_execution" {
 # IAM Role For ECS Task
 ###############################################
 resource "aws_iam_role" "ecs_task" {
-  name        = "${var.environment}-${var.service}-ecs-task-role"
-  description = "The role for ${var.environment}-${var.service}-ecs-task"
+  name        = "prd-foo-ecs-task-role"
+  description = "The role for prd-foo-ecs-task"
   assume_role_policy = templatefile(
     "${path.module}/policies/trust_policies/ecs_task_policy.tpl",
     {}
@@ -3002,14 +3036,14 @@ resource "aws_iam_role" "ecs_task" {
 
 Lambda実行ロールに信頼ポリシーアタッチする．
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For Lambda@Edge
 ###############################################
 
 # ロールに信頼ポリシーをアタッチします．
 resource "aws_iam_role" "lambda_execute" {
-  name = "${var.environment}-${var.service}-lambda-execute-role"
+  name = "prd-foo-lambda-execute-role"
   assume_role_policy = templatefile(
     "${path.module}/policies/lambda_execute_role_trust_policy.tpl",
     {}
@@ -3042,12 +3076,12 @@ resource "aws_iam_role" "lambda_execute" {
 
 ECSタスクロールとECSタスク実行ロールにインラインポリシーアタッチする．
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For ECS Task
 ###############################################
 resource "aws_iam_role_policy" "ecs_task" {
-  name = "${var.environment}-${var.service}-ssm-read-only-access-policy"
+  name = "prd-foo-ssm-read-only-access-policy"
   role = aws_iam_role.ecs_task_execution.id
   policy = templatefile(
     "${path.module}/policies/inline_policies/ecs_task_policy.tpl",
@@ -3062,7 +3096,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For ECS Task Execution
 ###############################################
@@ -3100,12 +3134,12 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 ECSタスクロールにカスタマー管理ポリシーアタッチする．
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For ECS Task
 ###############################################
 resource "aws_iam_policy" "ecs_task" {
-  name        = "${var.environment}-${var.service}-cloudwatch-logs-access-policy"
+  name        = "prd-foo-cloudwatch-logs-access-policy"
   description = "Provides access to CloudWatch Logs"
   policy = templatefile(
     "${path.module}/policies/customer_managed_policies/cloudwatch_logs_access_policy.tpl",
@@ -3127,7 +3161,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 サービス名を指定して，Application Auto Scalingのサービスリンクロールを構築する．
 
-```hcl
+```elixir
 ###############################################
 # IAM Role For ECS Service
 ###############################################
@@ -3137,7 +3171,7 @@ resource "aws_iam_service_linked_role" "ecs_service_auto_scaling" {
 }
 ```
 
-```hcl
+```elixir
 ###############################################
 # Output IAM Role
 ###############################################
@@ -3148,16 +3182,16 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 
 Application Auto Scalingにサービスリンクロールをアタッチする．手動で設定することも可能であるが，Terraformの管理外で自動的にアタッチされるため，あえて妥協しても良い．
 
-```hcl
+```elixir
 #########################################
 # Application Auto Scaling For ECS
 #########################################
 resource "aws_appautoscaling_target" "ecs" {
   service_namespace  = "ecs"
-  resource_id        = "service/${var.ecs_cluster_name}/${var.ecs_service_name}"
+  resource_id        = "service/prd-foo-ecs-cluster/prd-foo-ecs-service"
   scalable_dimension = "ecs:service:DesiredCount"
-  max_capacity       = var.auto_scaling_ecs_task_max_capacity
-  min_capacity       = var.auto_scaling_ecs_task_min_capacity
+  max_capacity       = 4
+  min_capacity       = 2
   
   # この設定がなくとも，サービスリンクロールが自動的に構築され，AutoScalingにアタッチされる．
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
@@ -3172,15 +3206,15 @@ resource "aws_appautoscaling_target" "ecs" {
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # NLB target group
 ###############################################
 resource "aws_lb_target_group" "this" {
-  name                 = "${var.environment}-${var.service}-nlb-tg"
-  port                 = var.ecs_container_nginx_port_http
+  name                 = "prd-foo-nlb-tg"
+  port                 = 80
   protocol             = "TCP"
-  vpc_id               = var.vpc_id
+  vpc_id               = "*****"
   deregistration_delay = "60"
   target_type          = "ip"
 
@@ -3240,14 +3274,14 @@ Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbal
 
 **＊実装例＊**
 
-```hcl
+```elixir
 #########################################
 # RDS Cluster
 #########################################
 resource "aws_rds_cluster" "this" {
   engine                          = "aurora-mysql"
   engine_version                  = "5.7.mysql_aurora.2.08.3"
-  cluster_identifier              = "${var.environment}-${var.service}-rds-cluster"
+  cluster_identifier              = "prd-foo-rds-cluster"
   
   # 後述の説明を参考にせよ．（１）
   master_username                 = var.rds_db_master_username_ssm_parameter_value
@@ -3291,7 +3325,7 @@ resource "aws_rds_cluster_instance" "this" {
 
   engine                       = "aurora-mysql"
   engine_version               = "5.7.mysql_aurora.2.08.3"
-  identifier                   = "${var.environment}-${var.service}-rds-instance-${each.key}"
+  identifier                   = "prd-foo-rds-instance-${each.key}"
   cluster_identifier           = aws_rds_cluster.this.id
   instance_class               = var.rds_instance_class
   db_subnet_group_name         = aws_db_subnet_group.this.id
@@ -3340,7 +3374,7 @@ Terraformに値をハードコーディングしたくない場合は，SSMパ�
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # For foo domain
 ###############################################
@@ -3383,7 +3417,7 @@ ALBがバケットにログを書き込めるように，『ELBのサービス�
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # S3 bucket policy
 ###############################################
@@ -3424,7 +3458,7 @@ ALBがバケットにログを書き込めるように，『```delivery.logs.ama
 
 **＊実装例＊**
 
-```hcl
+```elixir
 ###############################################
 # S3 bucket policy
 ###############################################
@@ -3482,7 +3516,7 @@ NLBのアクセスログを送信するバケット内には，自動的に『/A
 
 API Gateway用のWAFに，特定のユーザエージェントを拒否するルールを設定する．
 
-```hcl
+```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
 
   rule {
@@ -3538,7 +3572,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 API Gateway用のWAFに，特定のグローバルIPアドレスを拒否するルールを設定する．
 
-```hcl
+```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
 
   rule {
@@ -3583,7 +3617,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 API Gateway用のWAFに，SQLインジェクションを拒否するマネージドルールを設定する．
 
-```hcl
+```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
 
   rule {
@@ -3629,7 +3663,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 ALB用のWAFに，APIキーまたはBearerトークンをOR条件ルールを設定する．あくまで例としてで，本来であれば，別々のルールとした方が良い．
 
-```hcl
+```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
 
   # x-api-keyヘッダーにAPIキーを含むリクエストを許可します．
