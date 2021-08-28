@@ -1805,15 +1805,94 @@
 <p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3067;&#x3042;&#x308A;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;Datadog&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png" alt="datadog-agent_on-server"></p>
 <p><br></p>
-<h2 id="ec2&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;"><a name="ec2&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;" class="plugin-anchor" href="#ec2&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;"><i class="fa fa-link" aria-hidden="true"></i></a>EC2&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;</h2>
+<h2 id="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-ec2"><a name="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-ec2" class="plugin-anchor" href="#&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-ec2"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6; on Ec2</h2>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli" target="_blank">https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli</a></p>
 <p><br></p>
-<h2 id="fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;"><a name="fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;" class="plugin-anchor" href="#fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;"><i class="fa fa-link" aria-hidden="true"></i></a>Fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0F;&#x30ED;&#x30B0;&#x53CE;&#x96C6;</h2>
+<h2 id="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;-on-fargate"><a name="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;-on-fargate" class="plugin-anchor" href="#&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;-on-fargate"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6; on Fargate</h2>
 <h3 id="datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;"><a name="datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;" class="plugin-anchor" href="#datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;"><i class="fa fa-link" aria-hidden="true"></i></a>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;</h3>
 <h4 id="&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><a name="&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;</h4>
-<p>Datadog&#x304C;&#x63D0;&#x4F9B;&#x3059;&#x308B;datadog&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306B;&#x3088;&#x3063;&#x3066;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x3042;&#x308A;&#xFF0C;Fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;Datadog&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x304C;&#xFF0C;Fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;Datadog&#x306B;&#x3053;&#x308C;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<p>Datadog&#x304C;&#x63D0;&#x4F9B;&#x3059;&#x308B;datadog&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306B;&#x3088;&#x3063;&#x3066;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x3042;&#x308A;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;Datadog Docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x304C;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3057;&#xFF0C;Datadog&#x306B;&#x3053;&#x308C;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E7%B5%B1%E5%90%88" target="_blank">https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E7%B5%B1%E5%90%88</a></p>
+<h4 id="&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><a name="&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;" class="plugin-anchor" href="#&#x30FB;datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;</h4>
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment"># laravel&#x30B3;&#x30F3;&#x30C6;&#x30CA;</span>
+    <span class="token punctuation">}</span>,
+    <span class="token punctuation">{</span>
+        <span class="token comment"># nginx&#x30B3;&#x30F3;&#x30C6;&#x30CA;</span>
+    <span class="token punctuation">}</span>,
+    <span class="token punctuation">{</span>
+        <span class="token comment"># datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;</span>
+        <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;datadog&quot;</span>,
+        <span class="token string">&quot;image&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;datadog/agent:latest&quot;</span>,
+        <span class="token string">&quot;essential&quot;</span><span class="token builtin class-name">:</span> false,
+        <span class="token string">&quot;portMappings&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;containerPort&quot;</span><span class="token builtin class-name">:</span> <span class="token number">8126</span>,
+                <span class="token string">&quot;hostPort&quot;</span><span class="token builtin class-name">:</span> <span class="token number">8126</span>,
+                <span class="token string">&quot;protocol&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;tcp&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">&quot;logConfiguration&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;logDriver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;awslogs&quot;</span>,
+            <span class="token string">&quot;options&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">&quot;awslogs-group&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/prd-/laravel/log&quot;</span>,
+                <span class="token string">&quot;awslogs-region&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;ap-northeast-1&quot;</span>
+                <span class="token string">&quot;awslogs-stream-prefix&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/container&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>,
+        <span class="token string">&quot;cpu&quot;</span><span class="token builtin class-name">:</span> <span class="token number">10</span>,
+        <span class="token string">&quot;memory&quot;</span><span class="token builtin class-name">:</span> <span class="token number">256</span>,
+        <span class="token string">&quot;environment&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;ECS_FARGATE&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;true&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_PROCESS_AGENT_ENABLED&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;true&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_DOGSTATSD_NON_LOCAL_TRAFFIC&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;true&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_APM_ENABLED&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;true&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_LOGS_ENABLED&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;true&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_SERVICE&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;foo&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_VERSION&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;latest&quot;</span>
+            <span class="token punctuation">}</span>,
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_HOSTNAME&quot;</span>,
+                <span class="token string">&quot;value&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;foo&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">&quot;secrets&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;DD_API_KEY&quot;</span>,
+                <span class="token string">&quot;valueFrom&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/prd-foo/DD_API_KEY&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">&quot;dockerLabels&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;com.datadoghq.tags.env&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;prd&quot;</span>,
+            <span class="token string">&quot;com.datadoghq.tags.service&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;foo&quot;</span>,
+            <span class="token string">&quot;com.datadoghq.tags.version&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;1.0.0&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
 <h4 id="&#x30FB;iam&#x30ED;&#x30FC;&#x30EB;"><a name="&#x30FB;iam&#x30ED;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;iam&#x30ED;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IAM&#x30ED;&#x30FC;&#x30EB;</h4>
-<p>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;Fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;ECS&#x30BF;&#x30B9;&#x30AF;&#x5B9F;&#x884C;&#x30ED;&#x30FC;&#x30EB;&#x306B;&#x30DD;&#x30EA;&#x30B7;&#x30FC;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3" target="_blank">https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3</a></p>
 <pre class="language-"><code class="lang-shell"><span class="token punctuation">{</span>
   <span class="token string">&quot;Version&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;2012-10-17&quot;</span>,
@@ -1831,9 +1910,80 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
+<h3 id="docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;"><a name="docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;" class="plugin-anchor" href="#docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>Docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;</h3>
+<h4 id="&#x30FB;&#x5FC5;&#x9808;"><a name="&#x30FB;&#x5FC5;&#x9808;" class="plugin-anchor" href="#&#x30FB;&#x5FC5;&#x9808;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5FC5;&#x9808;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x5909;&#x6570;&#x540D;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>Datadog&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECS_FARGATE</td>
+<td>Fargate&#x3092;&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8F%8E%E9%9B%86-agent" target="_blank">https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8F%8E%E9%9B%86-agent</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x5909;&#x6570;&#x540D;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>Datadog&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;URL</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DD_APM_ENABLED</td>
+<td>APM&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3057;&#xFF0C;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#xFF0E;APM&#x3067;&#x306F;&#xFF0C;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3092;&#x5143;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x304C;&#x30B0;&#x30E9;&#x30D5;&#x5316;&#x3055;&#x308C;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<br>&#x30FB;<a href="https://docs.datadoghq.com/ja/getting_started/tracing/" target="_blank">https://docs.datadoghq.com/ja/getting_started/tracing/</a><br>&#x30FB;<a href="https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D" target="_blank">https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D</a></td>
+<td><a href="https://app.datadoghq.com/apm/home?env=none" target="_blank">https://app.datadoghq.com/apm/home?env=none</a></td>
+<td>Fargate&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5074;&#x3067;&#x306F;&#xFF0C;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<br>&#x30FB;<a href="https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%8F%8E%E9%9B%86" target="_blank">https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%8F%8E%E9%9B%86</a><br>&#x30FB;<a href="https://docs.datadoghq.com/ja/tracing/setup/" target="_blank">https://docs.datadoghq.com/ja/tracing/setup/</a></td>
+</tr>
+<tr>
+<td>DD_LOGS_ENABLED</td>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DD_PROCESS_AGENT_ENABLED</td>
+<td>&#x30E9;&#x30A4;&#x30D6;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3057;&#xFF0C;&#x5B9F;&#x884C;&#x4E2D;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows" target="_blank">https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows</a></td>
+<td><a href="https://app.datadoghq.com/containers" target="_blank">https://app.datadoghq.com/containers</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;"><a name="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;" class="plugin-anchor" href="#&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#dogstatsd-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9" target="_blank">https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#dogstatsd-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x5909;&#x6570;&#x540D;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>Datadog&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DD_DOGSTATSD_NON_LOCAL_TRAFFIC</td>
+<td>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x53D7;&#x4FE1;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="apm&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;"><a name="apm&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;" class="plugin-anchor" href="#apm&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>APM&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x74B0;&#x5883;&#x5909;&#x6570;</h3>
+<p>Docker&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306B;&#x3066;&#xFF0C;<code>DD_APM_ENABLED</code>&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;<code>true</code>&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x3068;&#xFF0C;APM&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x304C;&#x6709;&#x52B9;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables" target="_blank">https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables</a></p>
+<p><br></p>
+<h2 id="&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-fargate"><a name="&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-fargate" class="plugin-anchor" href="#&#x30ED;&#x30B0;&#x53CE;&#x96C6;-on-fargate"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30B0;&#x53CE;&#x96C6; on Fargate</h2>
 <h3 id="firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;"><a name="firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;" class="plugin-anchor" href="#firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;"><i class="fa fa-link" aria-hidden="true"></i></a>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;</h3>
 <h4 id="&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><a name="&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;firelens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;</h4>
-<p>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306F;Fargate&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30ED;&#x30B0;&#x3092;&#x53CE;&#x96C6;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens" target="_blank">https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens</a></li>
@@ -1859,7 +2009,13 @@
 <h3 id="&#x6A19;&#x6E96;&#x8A2D;&#x5B9A;&#x306E;&#x4E0A;&#x66F8;&#x304D;"><a name="&#x6A19;&#x6E96;&#x8A2D;&#x5B9A;&#x306E;&#x4E0A;&#x66F8;&#x304D;" class="plugin-anchor" href="#&#x6A19;&#x6E96;&#x8A2D;&#x5B9A;&#x306E;&#x4E0A;&#x66F8;&#x304D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6A19;&#x6E96;&#x8A2D;&#x5B9A;&#x306E;&#x4E0A;&#x66F8;&#x304D;</h3>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml" target="_blank">https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml</a></p>
 <p><br></p>
-<h3 id="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;"><a name="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;" class="plugin-anchor" href="#&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</h3>
+<h2 id="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x30B0;&#x30E9;&#x30D5;&#x5316;"><a name="&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x30B0;&#x30E9;&#x30D5;&#x5316;" class="plugin-anchor" href="#&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x30B0;&#x30E9;&#x30D5;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x30B0;&#x30E9;&#x30D5;&#x5316;</h2>
+<h3 id="&#x56F3;&#x306E;&#x7A2E;&#x985E;"><a name="&#x56F3;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x56F3;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56F3;&#x306E;&#x7A2E;&#x985E;</h3>
+<h3 id="&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;"><a name="&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;</h3>
+<h4 id="&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><a name="&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;linear&#xFF08;&#x7DDA;&#x5F62;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><a name="&#x30FB;linear&#xFF08;&#x7DDA;&#x5F62;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;linear&#xFF08;&#x7DDA;&#x5F62;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;linear&#xFF08;&#x7DDA;&#x5F62;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;&#xFF12;&#x306E;&#x7D2F;&#x4E57;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><a name="&#x30FB;&#xFF12;&#x306E;&#x7D2F;&#x4E57;&#x30B9;&#x30B1;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#xFF12;&#x306E;&#x7D2F;&#x4E57;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#xFF12;&#x306E;&#x7D2F;&#x4E57;&#x30B9;&#x30B1;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;sqrt&#xFF08;&#x5E73;&#x65B9;&#x6839;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><a name="&#x30FB;sqrt&#xFF08;&#x5E73;&#x65B9;&#x6839;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;sqrt&#xFF08;&#x5E73;&#x65B9;&#x6839;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sqrt&#xFF08;&#x5E73;&#x65B9;&#x6839;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;</h4>
 
                                 
                                 </section>
@@ -1899,7 +2055,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"next":{"title":"ハードウェア","level":"1.17","depth":1,"ref":"","articles":[{"title":"▶ ︎ハードウェア","level":"1.17.1","depth":2,"path":"public/hardware.md","ref":"public/hardware.md","articles":[]},{"title":"▶ ︎組み込み機器","level":"1.17.2","depth":2,"path":"public/hardware_embedded_system.md","ref":"public/hardware_embedded_system.md","articles":[]}]},"previous":{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"path":"public/infrastructure_fluentd_and_fluentbit.md","ref":"public/infrastructure_fluentd_and_fluentbit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_datadog.md","mtime":"2021-08-25T09:37:51.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-26T16:10:20.812Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"next":{"title":"ハードウェア","level":"1.17","depth":1,"ref":"","articles":[{"title":"▶ ︎ハードウェア","level":"1.17.1","depth":2,"path":"public/hardware.md","ref":"public/hardware.md","articles":[]},{"title":"▶ ︎組み込み機器","level":"1.17.2","depth":2,"path":"public/hardware_embedded_system.md","ref":"public/hardware_embedded_system.md","articles":[]}]},"previous":{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"path":"public/infrastructure_fluentd_and_fluentbit.md","ref":"public/infrastructure_fluentd_and_fluentbit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_datadog.md","mtime":"2021-08-27T11:01:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-28T03:18:16.439Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
