@@ -68,20 +68,20 @@ Vueは，アプリケーションの設計にMVVMアーキテクチャを用い�
     ・dataオプションの値をpropsに渡すように設定．
     ・イベントとイベントハンドラ関数を対応づける．
     -->
-    <v-example-component-1
+    <v-foo-component-1
         :criteria="criteria"
         v-on change="changeQuery"
-    ></v-example-component-1>
+    ></v-foo-component-1>
 
     <!-- 親コンポーネントタグを記述 -->
-    <v-example-component-2
+    <v-foo-component-2
                          
-    ></v-example-component-2>
+    ></v-foo-component-2>
 
     <!-- 親コンポーネントタグを記述 -->
-    <v-example-component-3
+    <v-foo-component-3
                          
-    ></v-example-component-3>
+    ></v-foo-component-3>
   
 </div>
 
@@ -178,9 +178,9 @@ var vm = new Vue({
     component: {
 
         //『HTMLでのコンポーネントのタグ名：子コンポーネント』
-        "v-example-component-1": require(".../component/xxx-1.vue"),
-        "v-example-component-2": require(".../component/xxx-2.vue"),
-        "v-example-component-3": require(".../component/xxx-3.vue")
+        "v-foo-component-1": require(".../component/xxx-1.vue"),
+        "v-foo-component-2": require(".../component/xxx-2.vue"),
+        "v-foo-component-3": require(".../component/xxx-3.vue")
     },
 })
 
@@ -205,18 +205,18 @@ var vm = new Vue({
   ・子コンポーネントタグを記述 
   ・下方のdataオプションの値をpropsに渡すように設定．
   -->
-  <v-example-component-4
+  <v-foo-component-4
           :aaa="a"
           :bbb="b"
-  ></v-example-component-4>
+  ></v-foo-component-4>
 
   <!-- 条件付きレンダリングを行うディレクション -->
-  <template v-if="example.isOk()">
+  <template v-if="foo.isOk()">
     <!-- 孫コンポーネントタグを記述 -->
-    <v-example-component-5
+    <v-foo-component-5
             :ccc="c"
             :ddd="d"
-    ></v-example-component-5>
+    ></v-foo-component-5>
   </template>
 
 </template>
@@ -238,7 +238,7 @@ var vm = new Vue({
         required: true,
       },
 
-      "example": {
+      "foo": {
         type: Object,
         required: true,
       }
@@ -262,7 +262,7 @@ var vm = new Vue({
       updateCriteria(key, value) {
 
         /*
-        ・コンポーネント（v-example-component-1）と紐づく処理
+        ・コンポーネント（v-foo-component-1）と紐づく処理
         ・changeイベントの発火と，これのイベントハンドラ関数に引数を渡す．
         */
         this.$emit(
@@ -280,8 +280,8 @@ var vm = new Vue({
       component: {
           
         // 子コンポーネントと孫コンポーネントの対応関係
-        "v-example-component-4": require("./xxx/xxx/xxx-4"),
-        "v-example-component-5": require("./xxx/xxx/xxx-5"),
+        "v-foo-component-4": require("./xxx/xxx/xxx-4"),
+        "v-foo-component-5": require("./xxx/xxx/xxx-5"),
       },
     }
   }
@@ -299,7 +299,7 @@ Vuexについては，以降の説明を参照せよ．
 **＊実装例＊**
 
 ```javascript
-class Example {
+class Foo {
 
     /*
     ・コンポーネントからデータを受信．
@@ -349,9 +349,9 @@ View層のフォーム送信イベントが起きた時点で，ViewModel層に�
 
 ```html
 <div id="app">
-  <v-example-component
+  <v-foo-component
           v-on:search="result()"
-  ></v-example-component>
+  ></v-foo-component>
 </div>
 
 <!-- Vueインスタンスの生成は外部スクリプトで行う． -->
@@ -465,14 +465,14 @@ View層で```input```タグで，一文字でも値が入力された時点で�
 ```vue
 <input
     type="text"
-    v-model="example">
+    v-model="foo">
 </input>
 ```
 
 ```vue
 <input 
     type="text"
-    :value="example"
+    :value="foo"
     @input="eventHandler">
 </input>
 ```
@@ -496,7 +496,7 @@ View層で```input```タグで，一文字でも値が入力された時点で�
 **＊実装例＊**
 
 ```javascript
-Vue.component("v-example-component", {
+Vue.component("v-foo-component", {
     template: require("./xxx/xxx/xxx")
 });
 
@@ -511,7 +511,7 @@ var vm = new Vue({
 **＊実装例＊**
 
 ```javascript
-var vExampleComponent = {
+var vFooComponent = {
     // テンプレートと親コンポーネントの対応関係
     template: require("./xxx/xxx/xxx"),
 };
@@ -523,7 +523,7 @@ var vm = new Vue({
 
     components: {
         // 親コンポーネントにオブジェクト名をつける．
-        "v-example-component": vExampleComponent
+        "v-foo-component": vFooComponent
     }
 
 })
@@ -541,7 +541,7 @@ var vm = new Vue({
 
     components: {
         // テンプレートと親コンポーネントの対応関係
-        "v-example-component": require("./xxx/xxx/xxx"),
+        "v-foo-component": require("./xxx/xxx/xxx"),
     }
 
 })
@@ -560,8 +560,8 @@ var vm = new Vue({
 
 ルーティングライブラリの一つ．コンポーネントに対してルーティングを行い，```/{ルート}/パラメータ}```に応じて，コールするコンポーネントを動的に切り替えることができる．
 
-```
-http://www.example.co.jp:80/{ルート}/{パスパラメータ}?text1=a&text2=b
+```http
+GET http://www.example.co.jp:80/{ルート}/{パスパラメータ}?text1=a&text2=b HTTP/2
 ```
 
 **＊実装例＊**
@@ -574,7 +574,7 @@ const vueRouter = require("vue-router").default;
 const router = new VueRouter({
     routes: [
         {path: "/", component: Home},
-        {path: "/example", component: Example}
+        {path: "/foo", component: Foo}
     ]
 })
 
@@ -618,8 +618,8 @@ Webアプリケーション全体に1つ存在し，全体的なRouter機能を�
 **＊実装例＊**
 
 ```javascript
-// users/?example=xyz が履歴スタックに追加される．
-this.$router.push({ path : "/users", query: { example : "xyz" }});
+// users/?foo=xyz が履歴スタックに追加される．
+this.$router.push({ path : "/users", query: { foo : "xyz" }});
 ```
 
 #### ・```$route```（Routeオブジェクト）

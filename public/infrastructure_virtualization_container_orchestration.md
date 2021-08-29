@@ -336,13 +336,13 @@ $ docker network inspect foo-network
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""            
             }
@@ -380,13 +380,13 @@ $ docker network inspect <プロジェクト名>_default
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""            
             }
@@ -531,7 +531,7 @@ networks:
 $ docker network ls
 
 NETWORK ID       NAME                DRIVER     SCOPE
-xxxxxxxxxxxx     foo-network     bridge     local
+************     foo-network     bridge     local
 ```
 
 ```shell
@@ -547,13 +547,13 @@ $ docker network inspect foo-network
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""
             "33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8": {
                 "Name": "<コンテナ名>",
                 "EndpointID": "ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409",
-                "MacAddress": "xx:xx:xx:xx:xx:xx",
+                "MacAddress": "**:**:**:**:**:**",
                 "IPv4Address": "nnn.nn.n.n/nn",
                 "IPv6Address": ""            
             }
@@ -620,7 +620,7 @@ networks:
 $ docker network ls
 
 NETWORK ID       NAME        DRIVER     SCOPE
-xxxxxxxxxxxx     backend     bridge     local
+************     backend     bridge     local
 ```
 
 <br>

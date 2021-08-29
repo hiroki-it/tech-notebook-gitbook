@@ -120,20 +120,6 @@
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/clean-architecture.jpeg)
 
-#### ・境界づけられたコンテキストとマイクロサービスアーキテクチャ
-
-マイクロサービスアーキテクチャでは，境界づけられたコンテキストを単位として，サービスを定義づける．サービス間ではRESTfulAPIを用いた同期通信，またはメッセージキューを用いた非同期通信を行う．ちなみに，メッセージキューはPub／Subデザインパターンを使用して実現する．
-
-**＊例＊**
-
-販売コンテキストと配送コンテキストがあった時，それぞれをアーキテクチャに落とし込む．アーキテクチャ間で同期通信／非同期通信を行う．
-
-参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
-
-![bounded-context_example_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2.png)
-
-![bounded-context_example_2_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2_onion-architecture.png)
-
 #### ・ドメインモデル図
 
 クラス図よりも先に作成し，オブジェクト間のAggregation（集約）の粒度を明確にする．ユースケース図から『名詞』を抽出し，これをドメインモデルとして，クラス図と同じようにドメインモデル間の関係を表現する．ただし，クラス図とは異なり，クラスのメソッドは省略し，保持するデータのみに注目する．ドメインモデルを日本語で表現してよい．クラス図におけるクラス間の関係については，以下のリンクを参考にせよ．

@@ -56,7 +56,7 @@ const object = {
 ```
 
 ```javascript
-class Example {
+class Foo {
   constructor(fruit, account) {
     this.fruit = fruit;
     this.account = account;
@@ -138,7 +138,7 @@ json["prefecture"] = "Tokyo";
 ```php
 <?php
     
-class Example 
+class Foo 
 {
     private $fruit;
     private $account;

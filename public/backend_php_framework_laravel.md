@@ -6761,8 +6761,6 @@ class CreateUsersTable extends Migration
 }
 ```
 
-#### 
-
 <br>
 
 ### Personal Access Token
@@ -6815,9 +6813,13 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 ### Sanctumパッケージとは
 
-APIキー認証を実装できる．
+APIキー認証とForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
+
+APIキー認証とForm認証については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html
 
 <br>
 
@@ -6855,13 +6857,61 @@ $ composer require laravel/sanctum
 
 <br>
 
-## 22. UIパッケージ
+## 21-03. Fortifyパッケージ
+
+### Fortifyパッケージとは
+
+Laravelが持つ全ての認証機能のバックエンド処理を提供する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/fortify.html
+- https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+
+<br>
+
+## 21-04. Breezeパッケージ
+
+### Breezeパッケージとは
+
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
+- https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+
+<br>
+
+### 導入方法
+
+参考：https://github.com/laravel/breeze
+
+#### ・インストール
+
+パッケージをインストールする．
+
+``` sh
+$ composer require laravel/breeze:^1.0 --dev
+```
+
+#### ・認証処理ファイルの自動生成
+
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
+
+```shell
+$ php artisan breeze:install
+```
+
+<br>
+
+## 21-05. UIパッケージ（Laravel 7系以前）
 
 ### UIパッケージとは
 
-Laravel7系以前で，認証処理を自動生成する．
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
 
-参考：https://github.com/laravel/ui
+参考：https://readouble.com/laravel/6.x/ja/authentication.html
 
 <br>
 
@@ -6892,37 +6942,13 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 23. Breezeパッケージ
+## 21-06. 認証系パッケージを使わない場合
 
-### Breezeパッケージとは
-
-Laravel8系以降で，認証処理を自動生成する．
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
 <br>
 
-### 導入方法
-
-参考：https://github.com/laravel/breeze
-
-#### ・インストール
-
-パッケージをインストールする．
-
-``` sh
-$ composer require laravel/breeze:^1.0 --dev
-```
-
-#### ・認証処理ファイルの自動生成
-
-認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
-
-```shell
-$ php artisan breeze:install
-```
-
-<br>
-
-## 24. Laravel Mixパッケージ
+## 22. Laravel Mixパッケージ
 
 ### Laravel Mixパッケージとは
 
@@ -6952,7 +6978,7 @@ $ npm run watch
 
 <br>
 
-## 25. 非公式パッケージ
+## 23. 非公式パッケージ
 
 ### laravel-enum
 

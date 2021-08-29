@@ -150,15 +150,33 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 ユーザがとあるフォームからログイン後，セッションIDを保持したまま悪意のあるサイトにアクセスしたとする．悪意のあるサイトのサーバは，ユーザのセッションIDを使用して，元々ログインしていたサイトのサーバを攻撃する．サーバは，正しいフォームからのリクエストと誤認してしまい，攻撃を許容してしまう．
 
+参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
+
 ![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf.png)
 
 #### ・【対策】ワンタイムトークン
 
-セッションIDだけでなく，ワンタイムトークンも併用する．入力フォームからリクエストを送信する前に，サーバ側でセッションごとのワンタイムトークンを発行できるようにする．その後，入力フォームにてそのワンタイムトークンをhidden値に割り当てるようにする．リクエスト時には，```Set-Cookie```ヘッダーのcsrftokenパラメータにこのトークンを割り当て，サーバ側のセッションファイルに書き込まれたワンタイムトークンと比較する．
+セッションIDだけでなく，ワンタイムトークンも併用する．入力フォームからリクエストを送信する前に，サーバ側でセッションごとのワンタイムトークンを発行できるようにする．その後，入力フォームにてそのワンタイムトークンをhidden値に割り当てるようにする．リクエスト時には，```Set-Cookie```ヘッダーの```csrftoken```パラメータ（フレームワークによっては，これに相当するパラメータ）にこのトークンを割り当て，サーバ側のセッションファイルに書き込まれたワンタイムトークンと比較する．
 
-#### ・【対策】・CORS：Cross-Origin Resource Sharing
+```http
+POST http://foo.example.co.jp/bar-form.php HTTP/2
+# 送信元オリジン
+Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>
+```
 
-XSSの説明を参考にせよ．
+#### ・【対策】CORS
+
+XSSの説明を参考にせよ
+
+<br>
+
+### セッションID固定化
+
+#### ・セッションID固定化とは
+
+参考：https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
+
+![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-fixation.png)
 
 <br>
 
@@ -190,7 +208,7 @@ max_input_vars = 1000
 
 #### ・【対策】同一送信元のリクエスト制限
 
-API Gateway，WAFにて，同じ送信元からの一分間あたりのリクエスト数を制限する．
+同じ送信元からの一分間あたりのリクエスト数を制限する．例えば，WAF，API Gatewayの機能を使用する．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
@@ -204,9 +222,11 @@ API Gateway，WAFにて，同じ送信元からの一分間あたりのリクエ
 
 ![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQLインジェクション.jpg)
 
-#### ・【対策】特殊記号の無効化
+#### ・【対策】特殊な文字の無効化
 
-データベースのSQLクエリのパラメータとなる入力では，『シングルクオーテーション』や『バックスラッシュ』はSQLで特別な意味を持つ．そのため，これらのパラメータを無効化させる．
+データベースのSQLクエリのパラメータとなる入力では，『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ．そのため，これらのパラメータが割り当てられているリクエストメッセージを拒否する．例えば，WAFの機能を使用する．
+
+参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html
 
 #### ・【対策】プレースホルダー
 
@@ -289,6 +309,28 @@ Access-Control-Allow-Headers: Content-Type
 # 全てのオリジンを許可
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: *
+```
+
+#### ・【対策】```Set-Cookie```ヘッダーのDomain属性
+
+リクエストメッセージがCookieヘッダーを持つことを許可した場合に，サブドメインのオリジンにも```Cookie```ヘッダーの送信を許可するかどうかを制御できる．サブドメインレスポンスメッセージの```Set-Cookie```ヘッダーにて，Domain属性にドメインが割り当てなかった場合は，ページを表示するサーバのドメインにのみ```Cookie```ヘッダーを持つリクエストを許可でき，サブドメインへの送信を拒否できる．一方で，ドメインが割り当てた場合は，そのページからサブドメインに対しても，```Cookie```ヘッダーを持つリクエストを許可できる．
+
+参考：https://azisava.sakura.ne.jp/programming/0017.html#sec4-1
+
+**＊実装例＊**
+
+Domain属性に```example.co.jp```が割り当てられていたとする．最初にドットがついているドメイン（```.example.co.jp```）でも，同じ値として認識される．この場合，```example.co.jp```に加えて，サブドメイン（```foo.example.co.jp```）に対しても，```Cookie```ヘッダーを持つリクエストを送信できる．
+
+```http
+200 OK
+Set-Cookie: domain=example.co.jp
+```
+
+```http
+POST http://foo.example.co.jp/bar-form.php HTTP/2
+# 送信元オリジン
+Origin: http://example.co.jp
+Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>
 ```
 
 <br>

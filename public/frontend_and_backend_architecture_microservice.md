@@ -1,8 +1,8 @@
 # マイクロサービスアーキテクチャ
 
-## 01. マイクロサービスアーキテクチャとは
+## 01. 思想
 
-### メリット
+### 特徴
 
 #### ・ビジネスのスケーリングに強い
 
@@ -26,37 +26,67 @@
 
 <br>
 
-## 02. サービス内部の構成
-
 ### サービス
 
 #### ・サービスとは
 
-境界付けられたコンテキストを粒度としたロジックのまとまり．そのため，境界付けられたコンテキストをドメイン層としたドメイン駆動設計が必要になる．
+マイクロサービスアーキテクチャにおけるコンポーネントのこと．サービスのロジックの粒度は，境界付けられたコンテキストになるるようにする．特定のサービスが他のサービスに侵食され，境界付けられたコンテキストの凝集度が低くならないようにするために，受信したデータをまずはそのサービスにあった概念に変換できるACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．
 
-#### ・依存性逆転の利用
+参考：https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
 
-ドメイン層がインフラストラクチャ層に依存しないようにするため，ドメイン層の依存性を逆転させる必要がある．詳しくは，以下のノートを参考にせよ．
+![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+#### ・境界付けられたコンテキスト間の通信
+
+境界付けられたコンテキストを粒度とするサービス間では，RESTfulAPIを用いた同期通信，またはメッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンを使用して実現する．境界付けられたコンテキストは，ビジネスのドメインによってその実装内容は異なるものの，コンテキスト名は同じになることが多い．そのため，よくある境界付けられたコンテキストを知識として持っておくことで，新しいドメインで境界付けられたコンテキストを考える時の指針になる．
+
+**＊例：株式会社ハコジム＊**
+
+認証コンテキスト，予約コンテキスト，顧客管理コンテキスト，銀行支払いコンテキスト，クレジットカード支払いコンテキスト
+
+参考：https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
+
+#### ・各サービスのアーキテクチャ
+
+各サービスのアーキテクチャは自由である．この時，ドメイン駆動設計のアーキテクチャに基づいて実装することが可能である．
+
+**＊例＊**
+
+参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
+
+販売コンテキストと配送コンテキストがあるとする．
+
+![bounded-context_example_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2.png)
+
+それぞれをドメイン駆動設計のアーキテクチャに落とし込む．アーキテクチャ間で同期通信／非同期通信を行う．
+
+![bounded-context_example_2_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2_onion-architecture.png)
 
 <br>
 
-### テスト
+### リポジトリの粒度
 
-#### ・単体テスト
+#### ・モノリポジトリ
 
-クラスやメソッドをテストする．下流サービスのコールはモック化またはスタブ化する．
+全てのサービスを一つのリポジトリで管理する．Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されている．
 
-#### ・サービステスト
+参考：https://www.fourtheorem.com/blog/monorepo
 
-サービスのコントローラがコールされてから，データベースの操作が完了するまでを，テストする．下流サービスのコールはモック化またはスタブ化する．
+![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monorepo.png)
+
+#### ・ポリレポジトリ
+
+各サービスを異なるリポジトリで管理する．
+
+![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
 
 <br>
 
-## 03. サービス間の連携
+## 02. バックエンドのマイクロサービス化
 
-### アプリケーション層の連携
+### サービス間の処理連携
 
 #### ・コレオグラフィとは
 
@@ -72,7 +102,7 @@
 
 <br>
 
-### インフラストラクチャ層の連携
+### トランザクション
 
 #### ・ローカルトランザクションとは
 
@@ -87,12 +117,6 @@
 ローカルトランザクションの時に，インフラストラクチャ層を実現する設計方法．上流サービスのデータベースの操作完了をイベントとして，下流サービスのデータベースの操作処理を連続的にコールする．ロールバック時には補償トランザクションが実行され，逆順にデータベースの状態が元に戻される．
 
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
-
-<br>
-
-### テストの連携
-
-#### ・CDCテストとは：Consumer Drive Contract Test
 
 <br>
 
@@ -116,7 +140,17 @@
 
 <br>
 
-## 04. フロントエンドのマイクロサービス化
+### 横断的なテスト
+
+#### ・CDCテスト：Consumer Drive Contract
+
+サービスのコントローラがコールされてから，データベースの操作が完了するまでを，テストする．下流サービスのコールはモック化またはスタブ化する．
+
+#### 
+
+<br>
+
+## 03. フロントエンドのマイクロサービス化
 
 ### UI部品合成
 

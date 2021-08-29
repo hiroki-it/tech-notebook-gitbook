@@ -2,58 +2,50 @@
 
 ## 01. HTTP認証
 
-### HTTP認証
-
-#### ・HTTP認証とは
+### HTTP認証とは
 
 ログイン時にHTTP通信の中で認証を行うこと．リクエストヘッダーとレスポンスヘッダーにおいて，認証方法としての認証スキームを選べる．認証スキームの種類には，『Basic認証』，『Digest認証』，『Bearer認証』などがある．
+
+参考：
+
+- https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+- https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
 
 <br>
 
 ### Basic認証
 
-#### ・Basic認証とは
+#### ・Basic認証の仕組み
 
 ![Basic認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Basic認証.png)
 
 
 | 役割         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| クライアント | ユーザ側のアプリケーションのこと．                           |
-| ユーザ       | クライアントアプリケーションを使用している人のこと．         |
-| サーバ       | クライアントアプリケーションからリクエストを受信し，レスポンスを送信するアプリケーションのこと． |
+| クライアント | リクエスト送信元のアプリケーションのこと．文脈によっては，ブラウザがクライアントである場合とそうでない場合（例：OAuth認証）がある． |
+| ユーザ       | クライアントを使用している人物のこと．                       |
+| サーバ       | クライアントからリクエストを受信し，レスポンスを送信するアプリケーションのこと． |
 
 1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
-2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．
+2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
 
 ```http
-# レスポンスヘッダーについて，詳しくは，以降の説明を参照せよ．
-WWW-Authenticate: Basic realm="Server Name", charaset="UTF-8"
+401 Unauthorized
+WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-3. クライアントは，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求める．そして，これをエンコードし，リクエストを送信する．
+3. 『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
 
 ```http
-# リクエストヘッダーについて，詳しくは，以降の説明を参照せよ．
+POST http://example.co.jp/foo-form.php HTTP/2
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
 4. サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．
 
-
-#### ・照合情報の送信方法
-
-リクエスト時，クライアントはAuthorizationヘッダーでBasic認証を宣言し，Base64でエンコードされた『```<ユーザ名>:<パスワード>```』を設定する．サーバは，これを照合し，クライアントの認証を行う．Basic認証の宣言と文字列の間には，半角スペースが必要である．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
-
 ```http
-# レスポンスヘッダー
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
-```
-
-
-```http
-# リクエストヘッダー
-authorization: Basic <ユーザ名>:<パスワード>
+200 OK
+WWW-Authenticate: Basic realm=""
 ```
 
 <br>
@@ -61,17 +53,15 @@ authorization: Basic <ユーザ名>:<パスワード>
 
 ### Digest認証
 
-#### ・Digest認証とは
-
-#### ・照合情報の送信方法
+#### ・Digest認証の仕組み
 
 ```http
-# レスポンスヘッダー
+200 OK
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```http
-# リクエストヘッダー
+POST http://example.co.jp/foo-form.php HTTP/2
 authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -81,22 +71,67 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 #### ・Bearer認証とは
 
-ログイン時にBearerトークンを使用する認証スキームのこと．アクセストークンの種類については，後述の説明を参照せよ．
+ログイン時にBearerトークンを使用する認証スキームのこと．使用できるアクセストークンの種類については，別項目の説明を参照せよ．
 
-#### ・照合情報の送信方法
+#### ・アクセストークンのクライアント保持
 
-発行されたBearerトークンは，WWW-Authenticateヘッダーに割り当てられて返信される．
+最初の認証後，アクセストークンはクライアントで保持される．Chromeの場合は，LocalStorage／SessionStorageに保持される．確認方法については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://developer.chrome.com/docs/devtools/storage/localstorage/
+- https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+
+#### ・Bearer認証の仕組み
+
+1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
+2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，アクセストークンを求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
 
 ```http
-# レスポンスヘッダー
+401 Unauthorized
 WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 ```
 
-これを，Authorizationヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信する．
+発行されたトークンを```Authorization```ヘッダーに割り当てて，リクエストを送信する．
 
 ```http
-# リクエストヘッダー
+POST http://example.co.jp/foo-form.php HTTP/2
 authorization: Bearer <Bearerトークン，JWT，など>
+```
+
+4. サーバは，アクセストークンを照合し，合致していれば，認証後ページのレスポンスを送信する．
+
+```http
+200 OK
+WWW-Authenticate: Bearer realm=""
+```
+
+#### ・正常系／異常系レスポンス
+
+参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+
+成功の場合は，realm属性を空にしたレスポンスを返信する．
+
+```http
+200 OK
+WWW-Authenticate: Bearer realm=""
+```
+
+失敗の場合は，error属性にエラメッセージを割り当てたレスポンスを返信する．
+
+```http
+400 Bad Request
+WWW-Authenticate: Bearer error="invalid_request"
+```
+
+```http
+401 Unauthorized
+WWW-Authenticate: Bearer realm="token_required"
+```
+
+```http
+403 Forbidden
+WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
 <br>
@@ -105,19 +140,32 @@ authorization: Bearer <Bearerトークン，JWT，など>
 
 #### ・OAuth認証とは
 
-後述の説明を参考にせよ．
+OAuthの項目を参考にせよ．
 
 <br>
 
 ## 01-02. HTTP認証以外の認証方法
 
-### Form認証
+### Form認証（Cookieベースの認証）
 
 #### ・Form認証とは
 
-ログイン時にセッションを使用する認証方法のこと．認証スキームには属していない．認証方法以外のセッションの仕様については，以下のノートを参考にせよ．
+ログイン時にセッションIDを使用する認証方法のこと．認証スキームには属していない．```Cookie```ヘッダーを使用した認証のため，『`Cookieベースの認証』ともいう．
+
+参考：
+
+- https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html
+- https://auth0.com/docs/sessions/cookies#cookie-based-authentication
+
+認証方法以外のセッションの仕様については，以下のノートを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+
+#### ・セッションIDのクライアント保持
+
+最初の認証後，セッションIDはクライアントで保持される．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
+
+参考：https://developer.chrome.com/docs/devtools/storage/cookies/
 
 #### ・Form認証の仕組み
 
@@ -125,19 +173,21 @@ authorization: Bearer <Bearerトークン，JWT，など>
 2. サーバは，ログイン情報をデータベースに保存する．
 3. 次回のログイン時に，再びユーザがログイン情報を送信する．
 4. サーバは，データベースのログイン情報を照合し，ログインを許可する．
-5. サーバは，セッションIDを生成する．また，レスポンスのSet-Cookieヘッダーを使用して，セッションIDをクライアントに送信する．
+5. サーバは，セッションIDを生成する．また，レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
 
 ```http
+200 OK
 # レスポンスヘッダーの場合
 Set-Cookie: sessionId=<セッションID>
 ```
 
 6. サーバは，セッションIDとユーザIDを紐づけてサーバ内に保存する．
-7. さらに次回のログイン時，クライアントは，リクエストのCookieヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めてログイン情報を送信せずに，素早くログインできるようになる．
+7. さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めてログイン情報を送信せずに，素早くログインできるようになる．
 
 ```http
+POST http://example.co.jp/foo-form.php HTTP/2
 # リクエストヘッダーの場合
-cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
+cookie: PHPSESSID=<セッションID>
 ```
 
 <br>
@@ -146,30 +196,37 @@ cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 
 #### ・APIキー認証とは
 
-事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでクライアントを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下を参考にせよ．
+事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでユーザを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
 #### ・照合情報の送信方法
 
-独自ヘッダーとして，x-api-keyを定義し，これに割り当てて送信する．リクエストヘッダへのパラメータの割り当てについては，以下を参考にせよ．
+独自ヘッダーとして，```x-api-key```ヘッダーを定義する．これにAPIキーを割り当て，リクエストを送信する．リクエストヘッダへのパラメータの割り当てについては，以下を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
 
 ```http
+GET http://example.co.jp/bar.php HTTP/2
 # リクエストヘッダー
-x-api-key: XXXXX（キー）
+x-api-key: <APIキー>
 ```
 
 <br>
 
-### Personal Access Token
+### Personal Access Tokenによる認証：PAT
 
-#### ・Personal Access Tokenとは
+#### ・PATによる認証
 
-Personal Access Token（個人用アクセストークン）を使用する認証方法．OAuth認証では，認可フェーズ時にクライアントアプリがアクセストークンの付与を認可サーバにリクエストし，認証時にこれを送信してくれる．しかし，Personal Access Tokenでは，ユーザがアクセストークンの付与をリクエストし，また開示されたアクセストークンを送信する必要がある．作成時以降，アクセストークンを確認できなくなるため，ユーザがアクセストークンを管理する必要がある．
+クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし，認証フェースは行わずに認可フェーズのみでユーザを照合する方法のこと．```Authorization```ヘッダーにPATを割りあてて，リクエストを送信する．作成時以降，アクセストークンを確認できなくなるため，クライアントがアクセストークンを管理する必要がある．
 
 参考：https://www.contentful.com/help/personal-access-tokens/
+
+```http
+GET http://example.co.jp/bar.php HTTP/2
+# リクエストヘッダー
+authorization: <Personal Acccess Token>
+```
 
 | サービス例 | トークン名            | 説明                                                         |
 | ---------- | --------------------- | ------------------------------------------------------------ |
@@ -227,8 +284,8 @@ Personal Access Token（個人用アクセストークン）を使用する認�
 
 | 役割              | 説明                                                         | 具体例                                    |
 | ----------------- | ------------------------------------------------------------ | ----------------------------------------- |
-| Identity Provider | トークンを生成するサーバのこと．                             | Ouath認証の仕組みにおける認可サーバ．     |
 | APIクライアント   | APIに対して，リクエストを送信したいサーバのこと．            | Ouath認証の仕組みにおけるクライアント．   |
+| Identity Provider | トークンを生成するサーバのこと．                             | Ouath認証の仕組みにおける認可サーバ．     |
 | APIサーバ         | クライアントに対して，リソースのレスポンスを送信するサーバのこと． | Ouath認証の仕組みにおけるリソースサーバ． |
 
 #### ・ステータスコードの違い
@@ -245,26 +302,26 @@ Personal Access Token（個人用アクセストークン）を使用する認�
 
 認証認可フェーズ全体の中で，認可フェーズにOAuthプロトコルを用いたクライアントの照合方法を『OAuth認証』と呼ぶ．認証フェーズと認可フェーズでは，３つの役割が定義されていることを説明したが，OAuthプロトコル```2.0```では，より具体的に４つの役割が定義されている．
 
-| 役割                                  | 説明                                                         | 補足                                                         |
-| ------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| クライアントアプリ（APIクライアント） | リソースオーナに対するアクション機能を持つサーバのこと．     | クライアントアプリとリソース間のデータ通信は，ブラウザを介したリダイレクトによって実現することに注意する． |
-| リソースオーナー                      | クライアントを使用しているユーザのこと．                     |                                                              |
-| 認可サーバ（Identity Provider）       | リソースサーバがリソースオーナーにアクセスできるトークンを生成するサーバのこと． | 認可サーバがリダイレクト先のクライアントアプリのURLをレスポンスに割り当てられるように，クライアントアプリの開発者がURLを事前登録しておく必要がある．認可サーバを利用する開発者用に，コンソール画面が用意されていることが多い．<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844#%E9%81%B7%E7%A7%BB%E5%85%88%E3%82%92%E4%BA%8B%E5%89%8D%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F |
-| リソースサーバ（APIサーバ）           | クライアントのアカウント情報を持っているサーバのこと．       |                                                              |
+| 役割              | 名称               | 説明                                                         | 補足                                                         |
+| ----------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| APIクライアント   | クライアントアプリ | リソースオーナに対するアクション機能を持つサーバのこと．     | OAuthの文脈では，ブラウザがクライアントと呼ばれないことに注意する．また，クライアントアプリとリソース間のデータ通信は，ブラウザを介したリダイレクトによって実現することに注意する． |
+|                   | リソースオーナー   | クライアントを使用しているユーザのこと．                     |                                                              |
+| Identity Provider | 認可サーバ         | リソースサーバがリソースオーナーにアクセスできるトークンを生成するサーバのこと． | 認可サーバがリダイレクト先のクライアントアプリのURLをレスポンスに割り当てられるように，クライアントアプリの開発者がURLを事前登録しておく必要がある．認可サーバを利用する開発者用に，コンソール画面が用意されていることが多い．<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844#%E9%81%B7%E7%A7%BB%E5%85%88%E3%82%92%E4%BA%8B%E5%89%8D%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%97%E3%81%A6%E3%81%8A%E3%81%8F |
+| APIサーバ         | リソースサーバ     | クライアントのアカウント情報を持っているサーバのこと．       |                                                              |
 
 ![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
 
 1. ユーザは，Facebookアカウントを使用してInstagramにログインしようとし，ブラウザはFacebookにリクエストを送信する．FacebookはInstagramにアカウント連携の承認ボタンをレスポンスとして返信する．
 2. ユーザが表示された承認ボタンを押し，ブラウザはFacebookにリクエストを送信する．
-3. アクセストークンを発行してもらうため，ブラウザはInstagram認可サーバにリクエストを送信する．Instagramは，アクセストークンを発行する．また，Facebookにリダイレクトできるように，LocationヘッダーにURLと認可レスポンスパラメータを割り当て，ブラウザにレスポンスを返信する．ブラウザはFacebookにリクエストを再送信し，Facebookは認可レスポンスパラメータを受け取る．
+3. アクセストークンを発行してもらうため，ブラウザはInstagram認可サーバにリクエストを送信する．Instagramは，アクセストークンを発行する．また，Facebookにリダイレクトできるように，```Location```ヘッダーにURLと認可レスポンスパラメータを割り当て，ブラウザにレスポンスを返信する．ブラウザはFacebookにリクエストを再送信し，Facebookは認可レスポンスパラメータを受け取る．
 
 ```http
-HTTP/1.1 302 Found
-Location: https://example.com/foo?code=123&state=abc
+302 Found
+Location: https://example.com/foo.php?code=123&state=abc
 ```
 
 1. Facebookは，アクセストークンを割り当てたリクエストをInstagramのサーバに送信する．
-2. Instagramは，アクセストークンを認証し，データへのアクセスを許可する．また，Facebookにリダイレクトできるように，LocationヘッダーにURLを割り当て，ブラウザにレスポンスを返信する．ブラウザからFacebookにレスポンスがリダイレクトされる．ブラウザはFacebookにリクエストを再送信する．
+2. Instagramは，アクセストークンを認証し，データへのアクセスを許可する．また，Facebookにリダイレクトできるように，```Location```ヘッダーにURLを割り当て，ブラウザにレスポンスを返信する．ブラウザからFacebookにレスポンスがリダイレクトされる．ブラウザはFacebookにリクエストを再送信する．
 
 参考：
 
@@ -273,17 +330,7 @@ Location: https://example.com/foo?code=123&state=abc
 
 #### ・使用される認証スキーム
 
-OAuth認証では，認証スキーマとしてBearer認証が選ばれることが多く，認可サーバが発行するアクセストークンとしては，BearerトークンやJWTが用いられる．AWSやGitHubは，独自の認証スキームを使用している．なお，認可サーバによって発行されたBearerトークンは，Authorizationヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
-
-```http
-# レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
-```
-
-```http
-# リクエストヘッダー
-authorization: Bearer <Bearerトークン，JWT，など>
-```
+OAuth認証では，認証スキーマとしてBearer認証が選ばれることが多く，認可サーバが発行するアクセストークンとしては，BearerトークンやJWTが用いられる．AWSやGitHubは，独自の認証スキームを使用している．なお，認可サーバによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
 
 #### ・付与タイプ
 
@@ -319,28 +366,15 @@ OAuth認証のトークンの付与方法には種類がある．
 
 #### ・Bearerトークンとは
 
-単なる文字列で定義されたアクセストークン．認証フェーズと認可フェーズにおいて，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていれば，それを本人と見なす．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．
+単なる文字列で定義されたアクセストークン．認証フェーズと認可フェーズにおいて，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていれば，それを本人と見なす．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを使用するBearer認証については，別項目の説明を参考にせよ．
 
-#### ・照合情報の送信方法
-
-リクエスト時，Authorizationヘッダーで，Bearer認証を宣言し，Bearerトークンの文字列を設定する．Bearerの宣言と文字列の間には，半角スペースが必要である．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
-
-```http
-# レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
-```
-```http
-# リクエストヘッダー
-authorization: Bearer <Bearerトークンの文字列>
-```
-
-<br>
+＼<br>
 
 ### JWT：JSON Web Token
 
 #### ・JWTとは
 
-JSON型で実装されたアクセストークン．OAuth認証のアクセストークンとして使用されることもある．
+JSON型で実装されたアクセストークン．OAuth認証のアクセストークンとして使用されることもある．JWTトークンを使用するBearer認証については，別項目の説明を参考にせよ．
 
 #### ・JWTの構造
 
@@ -386,20 +420,6 @@ const signature = HMACSHA256(
     base64urlEncoding(header) + "." + base64urlEncoding(payload),
     secret
 )
-```
-
-#### ・照合情報の送信方法
-
-リクエスト時，Authorizationヘッダーで，Bearer認証を宣言し，JWTの文字列を設定する．Bearer認証の宣言と文字列の間には，半角スペースが必要である．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
-
-```http
-# リクエストヘッダー
-authorization: Bearer <JWTの文字列>
-```
-
-```http
-# レスポンスヘッダー
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 ```
 
 #### ・JWTを用いた認証フェーズと認可フェーズ

@@ -392,9 +392,9 @@ POST http://example.co.jp/users/12345/messages
 クエリパラメータに送信するデータを記述する方法．リクエストメッセージは，以下の要素に分類できる．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．
 
 ```http
-GET http://127.0.0.1/testform.php?text1=a&text2=b HTTP/2
+GET http://example.co.jp/bar-form.php?text1=a&text2=b HTTP/2
 # リクエストされたドメイン名
-Host: 127.0.0.1
+Host: example.co.jp
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
@@ -404,7 +404,7 @@ User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
 # レスポンスで送信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 # 遷移元のページ
-Referer: http://127.0.0.1/
+Referer: http://foo.co.jp/
 # レスポンスしてほしいエンコーディング形式
 Accept-Encondig: gzip, deflate, br
 # レスポンスで送信してほしい言語
@@ -420,15 +420,15 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 クエリパラメータを，URLに記述せず，メッセージボディに記述してリクエストメッセージを送る方法．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．メッセージボディに情報が記述されるため，履歴では確認できない．また，SSLによって暗号化されるため，傍受できない．リクエストメッセージは，以下の要素に分類できる．
 
 ```http
-POST http://127.0.0.1/testform.php HTTP/2
+POST http://example.co.jp/bar-form.php HTTP/2
 # リクエストされたドメイン名
-Host: 127.0.0.1
+Host: example.co.jp
 Connection: keep-alive
 Content-Length: 15
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
 Cache-Control: no-store
 # オリジン（プロトコル＋ドメイン＋ポート番号）
-Origin: http://127.0.0.1
+Origin: http://example.co.jp
 Upgrade-Insecure-Requests: 1
 # リクエストで送信するMIMEタイプ
 Content-Type: application/x-www-firm-urlencoded
@@ -437,7 +437,7 @@ User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ap
 # レスポンスで送信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 # 遷移元のページ
-Referer: http://127.0.0.1/
+Referer: http://foo.co.jp/
 Accept-Encondig: gzip, deflate, br
 # レスポンスで送信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
@@ -729,11 +729,12 @@ http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 | レスポンスメッセージ | Set-Cookie | Name     | Cookie名と値                                                 |
 |                      |            | Expires  | Cookieの有効期限（日数）                                     |
 |                      |            | Max-Age  | Cookieの有効期限（秒数）                                     |
-|                      |            | Domain   | クライアントがリクエストする時のCookie送信先ドメイン名       |
+|                      |            | Domain   | クライアントがリクエストする時のCookie送信先ドメイン名．      |
 |                      |            | Path     | クライアントがリクエストする時のCookie送信先ディレクトリ     |
 |                      |            | Secure   | クライアントからのリクエストでSSLプロトコルが使用されている時のみ，リクエストを送信できるようにする． |
 |                      |            | HttpOnly | クライアント側で，JavaScriptがCookieを使用できないようにする．XSS攻撃の対策になる． |
 | リクエストメッセージ | Cookie     |          | セッションIDなどのCookie情報                                 |
+
 クライアントから送信されてきたリクエストメッセージのCookieヘッダーの内容は，グローバル変数に格納されている．
 
 ```php
@@ -742,8 +743,7 @@ http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 $_COOKIE = ["Cookie名" => "値"]
 ```
 
-
-#### ・まとめ
+#### ・仕組み
 
 1. 最初，ブラウザはリクエストでデータを送信する．
 2. サーバは，レスポンスヘッダーのSet-CookieヘッダーにCookie情報を埋め込んで送信する．
@@ -856,7 +856,7 @@ session.gc_probability = 1
 session.gc_divisor = 1
 ```
 
-#### ・まとめ
+#### ・仕組み
 
 1. 最初，ブラウザはリクエストでデータを送信する．セッションIDを発行し，セッションIDごとに```sess_*****```ファイルを生成．
 2. サーバは，レスポンスヘッダ情報のCookieヘッダーを使用して，セッションIDを送信する．

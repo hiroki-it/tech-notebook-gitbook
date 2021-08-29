@@ -828,12 +828,12 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 
 #### ・４大シグナル
 
-| 種類             |      | 説明                                                         |
-| ---------------- | ---- | ------------------------------------------------------------ |
-| レイテンシー     |      | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
-| トラフィック     |      | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
-| エラー           |      | 以下の２種類に分類できる．<br>・明示的エラー：400/500系のレスポンス<br>・暗黙的エラー：SLOに満たない200/300系のレスポンス，API仕様に合っていないレスポンス |
-| サチュレーション |      | システムの利用率の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．<br>・CPU利用率<br>・メモリ利用率<br>・ストレージ利用率<br> |
+| 種類             | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| レイテンシー     | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
+| トラフィック     | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
+| エラー           | 以下の２種類に分類できる．<br>・明示的エラー：400/500系のレスポンス<br>・暗黙的エラー：SLOに満たない200/300系のレスポンス，API仕様に合っていないレスポンス |
+| サチュレーション | システムの利用率の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．<br>・CPU利用率<br>・メモリ利用率<br>・ストレージ利用率<br> |
 
 #### ・SLI，SLO，エラーバジェット
 

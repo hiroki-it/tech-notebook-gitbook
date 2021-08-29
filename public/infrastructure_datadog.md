@@ -59,7 +59,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "/prd-/laravel/log",
+                "awslogs-group": "/prd-foo/laravel/log",
                 "awslogs-region": "ap-northeast-1"
                 "awslogs-stream-prefix": "/container"
             }
