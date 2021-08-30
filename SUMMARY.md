@@ -9,7 +9,7 @@
     * [▶ ︎CQRS](public/backend_architecture_cqrs.md)
     * [▶ ︎クリーンアーキテクチャ](public/backend_architecture_domain_driven_design_clean_architecture.md)
   * [▶ ︎フロントエンドアーキテクチャ](public/frontend_architecture.md)
-  * [▶ ︎マイクロサービス](public/frontend_and_backend_architecture_microservice.md)
+  * [▶ ︎マイクロサービスアーキテクチャ](public/frontend_and_backend_architecture_microservice.md)
 * PHP
   * クラスベースオブジェクト指向
     * [▶ ︎オブジェクト指向分析／設計／プログラミング](public/backend_php_object_orientation_analysis_design_programming.md)
