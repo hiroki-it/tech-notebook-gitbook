@@ -2230,103 +2230,6 @@ $result = Foo::method();
 
 認証に関する処理を提供する．Laravelからあらかじめ提供されている認証を使用しない場合，Authファサードを使用して，認証ロジックを実装できる．
 
-#### ・Digest認証
-
-パスワードを```attempt```メソッドを用いて自動的にハッシュ化し，データベースのハッシュ値と照合する．認証が終わると，認証セッションを開始する．```intended```メソッドで，ログイン後の初期ページにリダイレクトする．
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
-class LoginController extends Controller
-{
-    /**
-     * 認証を処理します．
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->only("email", "password");
-
-        if (Auth::attempt($credentials)) {
-            // 認証に成功した
-            return redirect()->intended("dashboard");
-        }
-    }
-}
-
-```
-
-#### ・認証処理後のリダイレクト
-
-AfterMiddlewareとして，認証処理後にホームページにリダイレクトする必要がある．認証には，Guardインターフェースの実装クラスがもつ```check```メソッドを使用する．Guardインターフェースの実装クラスを取得するために，Authファサードまたは```auth```ヘルパーを使用する．
-
-````php
-<?php
-
-namespace App\Http\Middleware\Auth;
-
-use App\Providers\RouteServiceProvider;
-use Closure;
-use Illuminate\Support\Facades\Auth;
-
-class RedirectIfAuthenticated
-{
-    /**
-     * 認証後にアクセスできるページにリダイレクトします．
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check()) {
-            
-            // 認証後のホームページにリダイレクトします．
-            return redirect(RouteServiceProvider::HOME);
-        }
-        
-        // 以下の実装でもよい
-        // if (auth()->guard($guard)->check()) {
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
-
-        return $next($request);
-    }
-}
-````
-
-```php
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-
-class RouteServiceProvider extends ServiceProvider
-{
-    // 〜 省略 〜
-
-    /**
-     * 認証後のホームページURL
-     *
-     * @var string
-     */
-    public const HOME = "/dashboard";
-    
-    // 〜 省略 〜
-}
-```
-
 <br>
 
 ### DBファサード
@@ -2482,7 +2385,7 @@ Route::get("/healthcheck", function () {
 
 **＊実装例＊**
 
-認証方法としてweb guardを使用する場合，```auth```エイリアスを設定する．
+認証方法としてWebガードを使用する場合，```auth```エイリアスを設定する．
 
 ```php
 <?php
@@ -2527,7 +2430,7 @@ class Kernel extends HttpKernel
 }
 ```
 
-一方で，認証方法としてapi guardを使用する場合，```auth:api```エイリアスを設定する．
+一方で，認証方法としてAPIガードを使用する場合，```auth:api```エイリアスを設定する．
 
 ```php
 <?php
@@ -3094,13 +2997,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 10-01. HTTP｜Auth
-
-詳しくは，```auth```ヘルパーを参考にせよ．
-
-<br>
-
-## 10-02. HTTP｜Controller
+## 09. HTTP｜Controller
 
 ### artisanコマンドによる操作
 
@@ -3243,7 +3140,7 @@ class FooController extends Controller
 
 <br>
 
-## 10-03. HTTP｜Middleware
+## 09-02. HTTP｜Middleware
 
 ### artisanコマンドによる操作
 
@@ -3413,7 +3310,7 @@ class Kernel extends HttpKernel
 
 <br>
 
-## 10-04. HTTP｜FormRequest
+## 09-03. HTTP｜FormRequest
 
 ### artisanコマンドによる操作
 
@@ -3914,7 +3811,7 @@ Authファサードの説明を参考にせよ．
 
 <br>
 
-## 11. Logging
+## 10. Logging
 
 ### ログの出力先
 
@@ -4110,7 +4007,7 @@ return [
 <br>
 
 
-## 12. Migration
+## 11. Migration
 
 ### artisanコマンドによる操作
 
@@ -4511,7 +4408,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 <br>
 
-## 13. Notification
+## 12. Notification
 
 ### artisanコマンドによる操作
 
@@ -4750,7 +4647,7 @@ class FooController extends Controller
 
 <br>
 
-## 14. Resource
+## 13. Resource
 
 ### artisanコマンドによる操作
 
@@ -4838,7 +4735,7 @@ class FooController extends Controller
 
 <br>
 
-## 15. Routing
+## 14. Routing
 
 ### artisanコマンドによる操作
 
@@ -4944,7 +4841,7 @@ class Kernel extends HttpKernel
 
 <br>
 
-## 16. Seeder
+## 15. Seeder
 
 ### artisanコマンドによる操作
 
@@ -5114,7 +5011,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 17. ServiceProvider
+## 16. ServiceProvider
 
 ### artisanコマンドによる操作
 
@@ -5752,7 +5649,7 @@ return [
 
 <br>
 
-## 18. Session
+## 17. Session
 
 ### セッションの操作
 
@@ -5833,7 +5730,7 @@ class FooController extends Controller
 
 <br>
 
-## 19. Views
+## 18. Views
 
 ### arisanによる操作
 
@@ -6161,13 +6058,15 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 <br>
 
-## 20. よく使うグローバルヘルパー関数
+## 19. よく使うグローバルヘルパー関数
 
 ### ヘルパー関数
 
 #### ・ヘルパー関数とは
 
-グローバルにコールできるLaravel専用のメソッドのこと．基本的には，ヘルパー関数で実行される処理は，Facadeの内部で実行されるものと同じである．
+グローバルにコールできるLaravel専用のメソッドのこと．基本的には，ヘルパー関数で実行される処理は，Facadeの内部で実行されるものと同じである．どちらを使用するかは好みである．
+
+参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
 #### ・一覧
 
@@ -6190,33 +6089,6 @@ https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 // Illuminate\Auth\AuthManager
 $auth = auth();
-```
-
-#### ・AuthManagerインスタンスの仕様
-
-AuthManagerクラスの```user```メソッドをコールする場合，AuthManagerにはこれがないため，```__call```メソッドがコールされる．ここで，```guard```メソッドが，Guardインターフェースの実装クラスを返却する．```auth.php```ファイルで選択したGuardドライバーによって，リゾルブされる実装クラスが決まり，例えば```token```ドライバーを選んだ場合は，TokenGuardクラスを返却する．```auth.php```ファイルの```providers```キーで設定されたEloquentモデルを認証対象として，TokenGuardクラスの```user```メソッドは認証済みのEloquentモデルを返却する．
-
-参考：
-
-- https://teratail.com/questions/171582
-- https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
-- https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
-
-| Guardドライバー | 実装クラス         | 備考                                                         |
-| --------------- | ------------------ | ------------------------------------------------------------ |
-| ```session```   | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| ```web```       | RequestGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/RequestGuard.html |
-| ```token```     | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
-
-```php
-<?php
-    
-// Illuminate\Auth\AuthManager
-$auth = auth();
-    
-// Illuminate\Contracts\Auth\Guard
-// ドライバーによって，リゾルブされるGuard実装クラス決まる
-$user = $auth->user();
 ```
 
 <br>
@@ -6267,34 +6139,15 @@ return [
 ```
 <br>
 
+### ```redirect```ヘルパー
+
+参考：https://blog.capilano-fw.com/?p=566
+
+<br>
+
 ### ```response```ヘルパー
 
-#### ・ソースコード
-
-```php
-if (! function_exists("response")) {
-    /**
-     * Return a new response from the application.
-     *
-     * @param  \Illuminate\View\View|string|array|null  $content
-     * @param  int  $status
-     * @param  array  $headers
-     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
-     */
-    function response($content = "", $status = 200, array $headers = [])
-    {
-        $factory = app(ResponseFactory::class);
-
-        if (func_num_args() === 0) {
-            return $factory;
-        }
-
-        return $factory->make($content, $status, $headers);
-    }
-}
-```
-
-#### ・Json型データのレスポンス
+#### ・JSONデータのレスポンス
 
 返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
 
@@ -6381,6 +6234,25 @@ class FooController extends Controller
 
 <br>
 
+### ```route```ヘルパー
+
+#### ・ルートエイリアスに基づいてURL生成
+
+ルートにエイリアスがついている場合，エイリアスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+
+```php
+<?php
+    
+Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
+    
+// https://example.co.jp/foos
+$url = route('foos_index');
+```
+
+<br>
+
 ### ```path```系ヘルパー
 
 #### ・```base_path```ヘルパー
@@ -6427,7 +6299,308 @@ $path = storage_path("app/file.txt");
 
 <br>
 
-## 21. Passportパッケージ
+### ```url```ヘルパー
+
+#### ・パスに基づいてURL生成
+
+指定したパスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/5.7/ja/urls.html
+
+```php
+<?php
+
+// https://example.co.jp/foos
+$url = url('/foos');
+```
+
+<br>
+
+## 20. 認証系パッケージを使わない場合
+
+### ガード
+
+#### ・ガードとは
+
+認証方法を定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+
+| ガードの種類 | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| Webガード    | セッション，Cookie，storageを使用して，認証を行う．          |
+| APIガード    | アクセストークンを使用して認証を行う．アクセストークンは，データベースで管理する． |
+
+#### ・ドライバー
+
+
+| ドライバーの種類  | 実装クラス         | 備考                                                         |
+| ----------------- | ------------------ | ------------------------------------------------------------ |
+| sessionドライバー | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
+| webドライバー     | RequestGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/RequestGuard.html |
+| tokenドライバー   | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
+
+ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選んだ場合は，TokenGuardクラスが返却される．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+- https://teratail.com/questions/171582
+- https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
+- https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
+
+```php
+<?php
+
+return [
+
+    // ガード
+    'guards' => [
+        'web' => [
+            // セッションドライバー
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            // トークンドライー
+            'driver'   => 'token',
+            'provider' => 'users',
+            'hash'     => false,
+        ],
+    ],
+];
+```
+
+<br>
+
+### プロバイダ
+
+#### ・プロバイダとは
+
+認証データをDBから取得するオブジェクトを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+
+<br>
+
+### Form認証
+
+#### ・Form認証を使いたい場合
+
+sessionドライバーを選択する．
+
+#### ・全てのユーザが同一権限を持つ場合
+
+SessionGuardクラスの```attempt```メソッドをコールしてパスワードをハッシュ化し，DBのハッシュ値と照合する．認証が成功すると，認証セッションを開始する．```redirect```メソッドで，認証後の初期ページにリダイレクトする．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
+
+```php
+<?php
+
+namespace App\Http\Controllers\Authentication;
+
+use App\Http\Requests\Authentication\AuthenticationRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+
+final class AuthenticationController
+{
+    /**
+     * @return RedirectResponse
+     */
+    public function authenticate(AuthenticationRequest $authenticationRequest)
+    {
+        $validated = $authenticationRequest->validated();
+
+        if (Auth::attempt($validated)) {
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
+            $authenticationRequest->session()->regenerate();
+
+            // 認証後ページにリダイレクトします．
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        // 未認証ページにリダイレクトします．
+        return redirect(RouteServiceProvider::UNAUTHORIZED);
+    }
+}
+```
+
+認証後のページはRouteServiceProviderクラスで定義しておく．
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    public const HOME = "/home";
+}
+```
+
+#### ・一部のユーザが異なる権限を持つ場合
+
+ユーザごとに認証方法を区別しつつ，同一の認証後ページにリダイレクトさせることができる．
+
+参考：https://blog.capilano-fw.com/?p=8159
+
+**＊実装例＊**
+
+権限の異なるユーザに応じたガード，またガードに関連づけるEloquentモデルをプロバイダを定義しておく．
+
+```php
+<?php
+
+return [
+
+    // ガード
+    'guards' => [
+        'web' => [
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver'   => 'token',
+            'provider' => 'users',
+            'hash'     => false,
+        ],
+        // 一般ユーザ
+        'users'          => [
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+        // 管理者
+        'administrators' => [
+            'driver'   => 'session',
+            'provider' => 'administrators',
+        ],
+    ],
+
+    // プロバイダ
+    'providers' => [
+        // 一般ユーザ
+        'users'          => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\User::class,
+        ],
+        // 管理者
+        'administrators' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Administrator::class,
+        ]
+    ],
+];
+
+```
+
+Authファサードの```guard```メソッドを使用して，ガードに応じた認証を実行する．これにより，同一の認証後ページにリダイレクトした後に，ユーザのEloquentモデルに応じた処理を実行できるようになる．
+
+```php
+<?php
+
+namespace App\Http\Controllers\Authentication;
+
+use App\Http\Requests\Authentication\AuthenticationRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
+final class AuthenticationController
+{
+    /**
+     * @return RedirectResponse
+     */
+    public function authenticate(AuthenticationRequest $authenticationRequest)
+    {
+        $validated = $authenticationRequest->validated();
+
+        // guardに応じた認証を行います．
+        if (Auth::guard($authenticationRequest->guard)->attempt($validated)) {
+            
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
+            $authenticationRequest->session()->regenerate();
+
+            // ユーザ用認証後ページにリダイレクトします．
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        // 未認証ページにリダイレクトします．
+        return redirect(RouteServiceProvider::UNAUTHORIZED);
+    }
+}
+
+```
+
+<br>
+
+### 認証済みかどうかの判定
+
+#### ・```user```メソッド
+
+現在のセッションにおけるユーザが認証済みであれば，ユーザのEloquentモデルを取得する．
+
+```php
+<?php
+
+// Illuminate\Contracts\Auth\Guard
+// ドライバーに応じて，リゾルブされるGuardの実装クラス決まる
+$user = auth()->user();
+```
+
+#### ・```check```メソッド
+
+現在のセッションにおけるユーザが認証済みであれば，```true```を返却する．
+
+**＊実装例＊**
+
+認証済みのユーザがブラウザを閉じたとしても，セッションが続いている（例：ログアウトしない）限り，認証処理を改めて実行する必要はない．そのために，BeforeMiddlewareを使用して，認証済みのユーザからのリクエストを認証済みページにリダイレクトさせる．
+
+````php
+<?php
+
+namespace App\Http\Middleware\Auth;
+
+use App\Providers\RouteServiceProvider;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class RedirectIfAuthenticated
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     * @param mixed   ...$guards
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next, ...$guards)
+    {
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (auth()->guard($guard)->check()) {
+                // ユーザが認証済みの場合は，認証後のページにリダイレクトします．
+                return redirect(RouteServiceProvider::HOME);
+            }
+        }
+
+        return $next($request);
+    }
+}
+
+````
+
+<br>
+
+## 20-02. Passportパッケージ
 
 ### Passportパッケージとは
 
@@ -6536,11 +6709,6 @@ OAuth認証に関して，以下のトークン付与タイプを実装できる
 ### Password Grant
 
 #### ・バックエンド側の実装
-
-| Guardの種類 | 説明                                                         |
-| ----------- | ------------------------------------------------------------ |
-| Web Guard   | セッション，Cookie，storageを使用して，認証を行う．          |
-| API Guard   | アクセストークンを使用して，認証を行う．アクセストークンは，データベースで管理する． |
 
 1. ```guards```キーにて，認証方式を設定する．ここでは，```api```を設定する．認証方法については，認証と認可のノートを参照せよ．
 
@@ -6719,7 +6887,7 @@ $response = $client->request("GET", "/api/user", [
 return (string)$response->getBody();
 ```
 
-#### ・API Guard用のテーブル
+#### ・APIガード用のテーブル
 
 **＊実装例＊**
 
@@ -6809,7 +6977,7 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 <br>
 
-## 21-02. Sanctumパッケージ
+## 20-03. Sanctumパッケージ
 
 ### Sanctumパッケージとは
 
@@ -6857,7 +7025,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-## 21-03. Fortifyパッケージ
+## 20-04. Fortifyパッケージ
 
 ### Fortifyパッケージとは
 
@@ -6870,7 +7038,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 <br>
 
-## 21-04. Breezeパッケージ
+## 20-05. Breezeパッケージ
 
 ### Breezeパッケージとは
 
@@ -6905,7 +7073,7 @@ $ php artisan breeze:install
 
 <br>
 
-## 21-05. UIパッケージ（Laravel 7系以前）
+## 20-06. UIパッケージ（Laravel 7系以前）
 
 ### UIパッケージとは
 
@@ -6942,13 +7110,7 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 21-06. 認証系パッケージを使わない場合
-
-参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
-
-<br>
-
-## 22. Laravel Mixパッケージ
+## 21. Laravel Mixパッケージ
 
 ### Laravel Mixパッケージとは
 
@@ -6978,7 +7140,7 @@ $ npm run watch
 
 <br>
 
-## 23. 非公式パッケージ
+## 22. 非公式パッケージ
 
 ### laravel-enum
 
