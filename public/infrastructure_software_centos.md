@@ -427,6 +427,28 @@ $ echo "$<変数名>"
 
 <br>
 
+### file
+
+#### ・オプション無し
+
+ファイルの改行コードを確認する．
+
+```shell
+# LFの場合（何も表示されない）
+$ file foo.txt
+foo.txt: ASCII text
+
+# CRLFの場合
+$ file foo.txt
+foo.txt: ASCII text, with CRLF line terminators
+
+# CRの場合
+$ file foo.txt
+foo.txt: ASCII text, with CR line terminators<br>
+```
+
+<br>
+
 ### find
 
 #### ・-type
@@ -770,52 +792,6 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 @reboot make clean html # cron起動時に一度だけ
 ```
 
-**＊実装例＊**
-
-```shell
-# 毎時・1分
-1 * * * * root run-parts /etc/cron.hourly
-```
-
-```shell
-# 毎日・2時5分
-5 2 * * * root run-parts /etc/cron.daily
-```
-
-```shell
-# 毎週日曜日・2時20分
-20 2 * * 0 root run-parts /etc/cron.weekly
-```
-
-```shell
-# 毎月一日・2時40分
-40 2 1 * * root run-parts /etc/cron.monthly
-```
-
-```shell
-# cron起動時に一度だけ
-@reboot make clean html
-```
-
-3. このファイルをcrontabコマンドで登録する．cronファイルの実体はないことと，変更した場合は登録し直さなければいけないことに注意する．
-
-```shell
-$ crontab <ファイルパス>
-```
-
-4. 登録されている処理を確認する．
-
-```shell
-$ crontab -l
-```
-
-5. ログに表示されているかを確認．
-
-```shell
-$ cd /var/log
-$ tail -f cron
-```
-
 
 #### ・cron.dファイル
 
@@ -883,8 +859,88 @@ cronデーモンの動作が定義されたcrontabファイルを操作するた
 作成したcronファイルを登録する．cron.dファイルは操作できない．
 
 ```shell
-# crontab：command run on table
 $ crontab <ファイルパス>
+```
+
+#### ・登録されたcronファイルの処理を確認
+
+```shell
+$ crontab -l
+
+# crontabコマンドで登録されたcronファイルの処理
+1 * * * * rm foo
+```
+
+#### ・cronファイルの登録手順
+
+**＊実装例＊**
+
+１. 拡張子は自由で，時刻とコマンドが実装されたファイルを用意する．この時，最後に改行がないとエラー（```premature EOF```）になるため，改行を追加する．
+
+参考：
+
+```shell
+# cron-hourly.txt
+# 毎時・1分
+1 * * * * root run-parts /etc/cron.hourly
+
+```
+
+```shell
+# cron-daily.txt
+# 毎日・2時5分
+5 2 * * * root run-parts /etc/cron.daily
+
+```
+
+```shell
+# cron-monthly.txt
+# 毎週日曜日・2時20分
+20 2 * * 0 root run-parts /etc/cron.weekly
+
+```
+
+```shell
+# cron-weekly.txt
+# 毎月一日・2時40分
+40 2 1 * * root run-parts /etc/cron.monthly
+
+```
+
+```shell
+# cron起動時に一度だけ
+@reboot make clean html
+
+```
+
+２. このファイルをcrontabコマンドで登録する．cronファイルの実体はないことと，ファイルの内容を変更した場合は登録し直さなければいけないことに注意する．
+
+```shell
+$ crontab /foo/cron-hourly.txt
+```
+
+３. 登録されている処理を確認する．
+
+```shell
+$ crontab -l
+
+1 * * * * root run-parts /etc/cron.hourly
+```
+
+４. ログに表示されているかを確認．
+
+```shell
+$ cd /var/log
+
+$ tail -f cron
+```
+
+５. 改行コードを確認．改行コードが表示されない場合はLFであり，問題ない．
+
+```shell
+$ file /foo/cron-hourly.txt
+
+foo.txt: ASCII text
 ```
 
 <br>

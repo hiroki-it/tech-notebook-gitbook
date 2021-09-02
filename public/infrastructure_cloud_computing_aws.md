@@ -1413,9 +1413,9 @@ Resources:
 
 #### ・インスタンスタイプ
 
-『世代』と『大きさ』からなる名前で構成される．世代の数字が上がるにつれて，より小さな世代と同じ大きさであっても，パフォーマンスと低コストになる．コストについては，以下のリンクを参考にせよ．
+『世代』と『大きさ』からなる名前で構成される．世代の数字が上がるにつれて，より小さな世代と同じ大きさであっても，パフォーマンスと低コストになる．AMIのOSのバージョンによっては，新しく登場したインスタンスタイプを適用できないことがあるため注意する．例えば，CentOS 6系のAMIでは，```t3.small```を選択できない．
 
-参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/
+参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
 |        | 種類                                                         |
 | ------ | ------------------------------------------------------------ |
@@ -1501,12 +1501,12 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 ### ECSとは
 
-コンテナを管理する環境．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
+コンテナオーケストレーションを実行する環境を提供する．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
 
-| Control Plane（コンテナ管理環境） | Data Plane（コンテナ実行環境） |
-| --------------------------------- | ------------------------------ |
-| ECS：Elastic Container Service    | Fargate，EC2                   |
-| EKS：Elastic Kubernetes Service   | Fargate，EC2                   |
+| Control Plane（コンテナオーケストレーション環境） | Data Plane（コンテナ実行環境） |
+| ------------------------------------------------- | ------------------------------ |
+| ECS：Elastic Container Service                    | Fargate，EC2                   |
+| EKS：Elastic Kubernetes Service                   | Fargate，EC2                   |
 
 <br>
 
@@ -1604,19 +1604,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
-![ecs-task_life-cycle](C:\Users\h.hasegawa\Documents\Drive 1st\プログラミング\tech-notebook\Drive_source\images\ecs-task_life-cycle.png)
-
-#### ・割り当てられるPrivate IPアドレス
-
-タスクごとに異なるPrivate IPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
-
-#### ・ネットワークモードの詳細
-
-| 設定項目 | 相当するDockerのネットワーク機能 | 補足                                                         |
-| -------- | -------------------------------- | ------------------------------------------------------------ |
-| bridge   | bridgeネットワーク               |                                                              |
-| host     | hostネットワーク                 |                                                              |
-| awsvpc   | awsの独自ネットワーク機能．      | タスクはElastic Network Interfaceと紐づけられ，Primary Private IPアドレスを割り当てられる． |
+![ecs-task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-task_life-cycle.png)
 
 #### ・タスクサイズの詳細
 
@@ -1704,7 +1692,11 @@ exit ${EXIT_CODE}
 
 #### ・Fargateとは
 
-コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．
+コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．明言はされていないため推測ではあるが，Fargate環境ではホストが隠蔽されており，実体としてEC2インスタンスをホストとしてコンテナが稼働している．
+
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
 
 #### ・コンテナエージェント
 
@@ -1728,7 +1720,7 @@ exit ${EXIT_CODE}
 | image                            |                                              | ECRのURLを設定する．                                         |                                                              |
 | logConfiguration<br/>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば「awslogs，awsfirelens，splunk」に設定できる．EC2であれば「awslogs，json-file，syslog，journald，fluentd，gelf，logentries」を設定できる． |
 | logConfiguration<br/>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
-| portMapping                      | ```--publish```                              | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． |                                                              |
+| portMapping                      | ```--publish```<br>```--expose```            | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する．              |                                                              |
 | memory                           | ```--memory```<br>```--memory-reservation``` | プロセスが使用できるメモリの閾値を設定する．                 |                                                              |
 | mountPoints                      |                                              |                                                              |                                                              |
@@ -1744,6 +1736,10 @@ exit ${EXIT_CODE}
 | awslogs-datetime-format | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない．例えば「```\\[%Y-%m-%d %H:%M:%S\\]```」となる． |
 | awslogs-region          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
 | awslogs-stream-prefix   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，「```<プレフィックス名>/<コンテナ名>/<タスクID>```」の形式で送信される． |
+
+#### ・割り当てられるPrivate IPアドレス
+
+タスクごとに異なるPrivate IPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
 
 <br>
 
@@ -1842,6 +1838,24 @@ Datadogエージェントがクラスターやコンテナにアクセスでき�
     ]
 }
 ```
+
+<br>
+
+### ネットワークモードとコンテナ間通信
+
+#### ・bridgeモード
+
+Dockerのbridgeネットワークに相当する．
+
+#### ・hostモード
+
+Dockerのhostネットワークに相当する．
+
+#### ・awsvpcモード
+
+awsの独自ネットワークモード．タスクはElastic Network Interfaceと紐づけられ，Primary Private IPアドレスを割り当てられる．同じタスクに属するコンテナ間は，localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが，Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが関連付けられる）．これにより，コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は，転送元コンテナにて，転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
 
 <br>
 
@@ -4537,17 +4551,17 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 #### ・関連付けられるリソース
 
-| リソースの種類              | 役割                                                         | 補足                                                         |
-| --------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ALB                         | ENIに関連付けられたパブリックIPアドレスをALBに割り当てられる． |                                                              |
-| EC2                         | ENIに関連付けられたパブリックIPアドレスを，EC2に割り当てられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
-| ECSタスク定義（Active状態） |                                                              |                                                              |
-| Elastic IP                  | ENIにElastic IPアドレスを関連付けられる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，Elastic IPを関連付けられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
-| GlobalAccelerator           |                                                              |                                                              |
-| NAT Gateway                 | ENIに関連付けられたパブリックIPアドレスをNAT Gatewayに割り当てられる． |                                                              |
-| RDS                         |                                                              |                                                              |
-| Security Group              | ENIにセキュリティグループを関連付けられる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，セキュリティグループを関連付けられる． |                                                              |
-| VPCエンドポイント           | Interface型のVPCエンドポイントとして機能する．               |                                                              |
+| リソースの種類    | 役割                                                         | 補足                                                         |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ALB               | ENIに関連付けられたパブリックIPアドレスをALBに割り当てられる． |                                                              |
+| EC2               | ENIに関連付けられたパブリックIPアドレスがEC2に割り当てられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2  | 明言されていないため推測ではあるが，ENIに関連付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる． | Fargate環境のホストがEC2とは明言されていない．<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP        | ENIにElastic IPアドレスが関連付けられる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，Elastic IPを関連付けられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| GlobalAccelerator |                                                              |                                                              |
+| NAT Gateway       | ENIに関連付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる． |                                                              |
+| RDS               |                                                              |                                                              |
+| Security Group    | ENIにセキュリティグループが関連付けれる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，セキュリティグループを関連付けられる． |                                                              |
+| VPCエンドポイント | Interface型のVPCエンドポイントとして機能する．               |                                                              |
 
 <br>
 
@@ -4912,18 +4926,18 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 ### EC2
 
-#### ・料金体系
+#### ・料金体系の選択
 
-以下のリンクを参考にせよ．
+使い方に応じた料金体系を選べる．
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
 
-| 種類                     | 説明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| オンデマンドインスタンス |                                                              |
-| Savings Plans            |                                                              |
-| リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる． |
-| スポットインスタンス     |                                                              |
+| 種類                     | 説明                                                         | 補足                                                   |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
+| オンデマンドインスタンス |                                                              | 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/ |
+| Savings Plans            |                                                              |                                                        |
+| リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる． |                                                        |
+| スポットインスタンス     |                                                              |                                                        |
 
 #### ・料金発生の条件
 

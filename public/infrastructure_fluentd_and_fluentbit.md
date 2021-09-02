@@ -1,6 +1,6 @@
 # Fluentd／FluentBit
 
-## Fluentd／FluentBitとは
+## 01. Fluentd／FluentBitとは
 
 ### 概要
 
@@ -23,7 +23,7 @@
 
 <br>
 
-## ログの収集／転送の仕組み
+## 02. ログの収集／転送の仕組み
 
 ### ログパイプライン
 
@@ -97,7 +97,7 @@
 
 <br>
 
-## Fargateコンテナからのログ収集
+## 03. Fargateコンテナからのログ収集
 
 ### FireLensコンテナ
 
@@ -325,7 +325,7 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 
 <br>
 
-## CloudWatchログ
+## 04. CloudWatchログ
 
 以下のノートを参考にせよ．
 

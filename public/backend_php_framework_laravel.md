@@ -101,7 +101,66 @@ return [
 
 <br>
 
-## 03. Database
+## 03. Console
+
+### Command
+
+artisanコマンドで実行可能なコマンド処理を定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Log;
+
+class FooCommand extends Command
+{
+    /**
+     * @var string
+     */
+    protected $signature = 'do-foo {bar}'; // コマンドとパラメータ
+
+    /**
+     * @var string
+     */
+    protected $description = 'コマンドの仕様を記入します'; // コマンドの説明文
+
+    /**
+     * @return void
+     */
+    public function handle(): void
+    {
+        Log::info('START: artisan do-foo');
+        
+        // パラメータを取得します．
+        $bar = $this->argument('bar');
+
+        // 何らかのコマンド処理
+
+        Log::info('END: artisan do-foo');
+    }
+}
+```
+
+定義したCommandクラスは，以下のように実行できる．
+
+```shell
+$ php artisan command:do-foo
+```
+
+
+
+
+
+<br>
+
+## 04. Database
 
 ### データベース接続
 
@@ -178,7 +237,7 @@ REDIS_PORT=<Redisのポート>
 
 <br>
 
-## 04. Eloquentモデル
+## 05. Eloquentモデル
 
 ### artisanコマンドによる操作
 
@@ -248,11 +307,9 @@ use Illuminate\Database\Eloquent\Model;
 class Foo extends Model
 {
     /**
-     * Eloquentモデルと関連しているテーブル
-     *
      * @var string
      */
-    protected $table = "foos";
+    protected $table = "foos"; // Eloquentモデルと関連しているテーブル
 }
 ```
 
@@ -285,20 +342,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Department extends Model
 {
     /**
-     * 主キーとするカラム
-     * 
      * @var string 
      */
-    protected $primaryKey = "department_id";
+    protected $primaryKey = "department_id"; // 主キーとするカラム
 
      /**
-     * 一対多の関係を定義します．
-     * （デフォルトではemployee_idに関連付けます）
-     * 
      * @return HasMany
      */
     public function hasManyEmployees() :HasMany
     {
+        // 一対多の関係を定義します．（デフォルトではemployee_idに関連付けます）
         return $this->hasMany(Employee::class);
     }
 }
@@ -701,7 +754,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-## 04-02. Eloquentモデル／ビルダーによるCRUD
+## 05-02. Eloquentモデル／ビルダーによるCRUD
 
 ### CRUDメソッドの返却値型と返却値
 
@@ -1322,7 +1375,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 <br>
 
-## 04-04. Laravelへのリポジトリパターン導入
+## 05-03. Laravelへのリポジトリパターン導入
 
 ### 背景
 
@@ -1713,7 +1766,7 @@ class FooController extends Controller
 
 <br>
 
-## 	05. Event
+## 	06. Event／Listener
 
 ### Model Event
 
@@ -2035,7 +2088,7 @@ class ExecutorConstant
 
 <br>
 
-## 06. Exception
+## 07. Exception
 
 ### 例外クラス
 
@@ -2092,7 +2145,7 @@ final class CouldNotSendMessageException extends \Exception
 
 <br>
 
-## 07. Facade
+## 08. Facade
 
 ### Facade
 
@@ -2155,7 +2208,7 @@ class Foo
 <?php
   
 "aliases" => [
-    "Foo" => App\Domain\Foo\Entities::class,
+    "Foo" => App\Models\Foo::class,
 ]
 ```
 
@@ -2828,7 +2881,7 @@ class FooController extends Controller
 
 <br>
 
-## 08. Factory
+## 09. Factory
 
 ### artisanコマンドによる操作
 
@@ -2936,7 +2989,7 @@ class DummyUsersSeeder extends Seeder
 ```php
 <?php
 
-use App\Domain\Entity\Product;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DummyProductsSeeder extends Seeder
@@ -2997,7 +3050,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 09. HTTP｜Controller
+## 10. HTTP｜Controller
 
 ### artisanコマンドによる操作
 
@@ -3140,7 +3193,7 @@ class FooController extends Controller
 
 <br>
 
-## 09-02. HTTP｜Middleware
+## 10-02. HTTP｜Middleware
 
 ### artisanコマンドによる操作
 
@@ -3310,7 +3363,7 @@ class Kernel extends HttpKernel
 
 <br>
 
-## 09-03. HTTP｜FormRequest
+## 10-03. HTTP｜FormRequest
 
 ### artisanコマンドによる操作
 
@@ -3811,7 +3864,7 @@ Authファサードの説明を参考にせよ．
 
 <br>
 
-## 10. Logging
+## 11. Logging
 
 ### ログの出力先
 
@@ -4007,7 +4060,7 @@ return [
 <br>
 
 
-## 11. Migration
+## 12. Migration
 
 ### artisanコマンドによる操作
 
@@ -4408,7 +4461,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 <br>
 
-## 12. Notification
+## 13. Notification
 
 ### artisanコマンドによる操作
 
@@ -4422,7 +4475,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ・Notification
 
-通知内容を定義する．SNSに送信するためには，MailMessageクラスやViewクラスの```render```メソッドで文字列に変換する必要がある．
+通知内容を定義する．SNSに送信するためには，MailMessageクラスやViewクラスの```render```メソッドで文字列に変換する必要がある．```via```メソッドで受信チャンネルを定義する．この時，Laravelが標準で用意しているチャンネル（Mail，SMS，Slackチャンネル）以外に送信したい場合，Channelクラスを定義する必要がある．複数の値を設定した場合は，それぞれに通信が送信される．```toMail```メソッド，```toSms```メソッド，```toSlack```メソッドで，Laravelの標準のチャンネルに渡すデータ構造に変換できる．
 
 参考：
 
@@ -4430,12 +4483,17 @@ Schema::create("foos", function (Blueprint $table) {
 - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_render
 - https://laravel.com/api/8.x/Illuminate/View/View.html#method_render
 
+**＊実装例＊**
+
+
+
 ```php
 <?php
 
 namespace App\Notifications;
 
-use App\Domain\User;
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
 use App\Notifications\Channels\AwsSnsChannel;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -4443,40 +4501,39 @@ use Illuminate\Notifications\Notification;
 class TfaTokenNotification extends Notification
 {
     /**
-     * 使用する送信チャンネルを返却します．
-     *
-     * @param
+     * @param $notifiable
      * @return array
      */
     public function via($notifiable)
     {
-        return [AwsSnsChannel::class, "database"];
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class]: [EmailChannel::class], // 条件に応じて受信チャンネルを返却します．
+            'database'
+        ];
     }
 
     /**
-     * SMSの内容を返却します．
-     *
-     * @param
+     * @param $notifiable
      * @return string
      */
     public function toSms($notifiable)
     {
+        // SMSのメッセージ内容を返却します．
         return view("template.sms", [
             "subject"   => "コードを送信いたしました．",
             "tfa_token" => $notifiable->tfaToken()
-            ])
+        ])
             // テンプレートを文字列で返却
             ->render();
     }
 
     /**
-     * メールの内容を返却します．
-     *
-     * @param
+     * @param $notifiable
      * @return string
      */
     public function toMail($notifiable)
     {
+        // Emailのメッセージ内容を返却します．
         return (new MailMessage)->subject("コードを送信いたしました．")
             ->markdown("template.mail", [
                 "tfa_token" => $notifiable->tfaToken()
@@ -4486,15 +4543,14 @@ class TfaTokenNotification extends Notification
     }
 
     /**
-     * データベースに値を保存します．
-     *
-     * @param
+     * @param $notifiable
+     * @return array
      */
     public function toArray($notifiable)
     {
+        // notificationsテーブルのdataカラムに，JSONで保存される．
         return [
             "tfa_token" => $notifiable->tfaToken(),
-            "via"       => "aws_sns"
         ];
     }
 }
@@ -4517,15 +4573,15 @@ MailMessageクラスの```markdown```メソッドを使用することで，通�
 
 <br>
 
-### 受信チャンネル
+### 受信チャンネル（通知方法）
 
 #### ・Channel
 
-通知の受信チャンネルを定義する．
+Laravelが標準で用意しているチャンネル以外に送信したい場合に，独自の受信チャンネルを定義する．これは，Notificationクラスの```via```メソッドで使用される．
 
 **＊実装例＊**
 
-SNSを受信チャンネルとする．AWSから配布されているパッケージが必要である．
+AWS SNSを受信チャンネルとする．AWSから配布されているパッケージが必要である．
 
 ```shell
 $ composer require aws/aws-sdk-php-laravel
@@ -4542,23 +4598,24 @@ use Illuminate\Notifications\Notification;
 
 class AwsSnsChannel
 {
+    /**
+     * @param SnsClient $awsSnsClient
+     */
     public function __construct(SnsClient $awsSnsClient)
     {
         $this->awsSnsClient = $awsSnsClient;
     }
 
     /**
-     * AWS SNSにメッセージを送信します．
-     *
-     * @param 
-     * @param Notification
+     * @param              $notifiable
+     * @param Notification $notification
      */
     public function send($notifiable, Notification $notification)
     {
         try {
-
             $message = $notification->toSms($notifiable);
 
+            // AWS SNSにメッセージを送信します．
             $this->awsSnsClient->publish([
                 "Message"     => $message,
                 "PhoneNumber" => $this->toE164nizeInJapan(
@@ -4580,16 +4637,15 @@ class AwsSnsChannel
     }
 
     /**
-     * E.164形式の日本電話番号を返却します．
      * @param string
      * @return string
      */
     private function toE164nizeInJapan(string $phoneNumeber): string
     {
+        // E.164形式の日本電話番号を返却します．
         return "+81" . substr($phoneNumeber, 1);
     }
 }
-
 ```
 
 <br>
@@ -4627,7 +4683,7 @@ class User extends Authenticatable
 
 namespace App\Http\Controllers;
 
-use App\Domain\User;
+use App\Models\User;
 use App\Notifications\TfaTokenNotification;
 
 class FooController extends Controller
@@ -4647,7 +4703,7 @@ class FooController extends Controller
 
 <br>
 
-## 13. Resource
+## 14. Resource
 
 ### artisanコマンドによる操作
 
@@ -4735,7 +4791,7 @@ class FooController extends Controller
 
 <br>
 
-## 14. Routing
+## 15. Routing
 
 ### artisanコマンドによる操作
 
@@ -4841,7 +4897,7 @@ class Kernel extends HttpKernel
 
 <br>
 
-## 15. Seeder
+## 16. Seeder
 
 ### artisanコマンドによる操作
 
@@ -5011,7 +5067,7 @@ class DatabaseSeeder extends Seeder
 
 <br>
 
-## 16. ServiceProvider
+## 17. ServiceProvider
 
 ### artisanコマンドによる操作
 
@@ -5097,11 +5153,15 @@ interface Container extends ContainerInterface
 
 ### AppServiceProvider
 
-#### ・具象クラスをバインド
+#### ・単一のクラスをバインド／リゾルブ
 
-AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスを生成できるようになる．Laravelでは，具象クラスはServiceContainerに自動的にバインドされており，以下の実装を実行する必要はない．
+AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスをリゾルブできるようになる．これにより，メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．Laravelでは，クラスはServiceContainerに自動的にバインドされており，以下の実装を実行する必要はない．
+
+参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
 **＊実装例＊**
+
+バインドする．なお，Laravelでは不要である．
 
 ```php
 <?php
@@ -5109,7 +5169,9 @@ AppSeriveProviderにて，ServiceContainerにクラスをバインドするこ�
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\Foo\Entities;
+use App\Models\Bar;
+use App\Models\Baz;
+use App\Models\Foo;
 
 class FooServiceProvider extends ServiceProvider
 {
@@ -5127,7 +5189,46 @@ class FooServiceProvider extends ServiceProvider
 }
 ```
 
-#### ・複数の具象クラスをバインド
+引数の型を元に，クラスのインスタンスがリゾルブされる．
+
+```php
+<?php
+
+class Qux
+{
+    /**
+     * @param Foo $foo
+     */
+    public function method(Foo $foo) // リゾルブされる．
+    {
+        $foo->bar;
+        $foo->baz;
+    }
+}
+```
+
+引数の型を指定しない場合は，手動で渡す必要がある．
+
+```php
+class Qux
+{
+    /**
+     * @param Foo $foo
+     */
+    public function method($foo) // リゾルブされないため，手動で渡す必要がある．
+    {
+        $foo->bar;
+        $foo->baz;
+    }
+}
+
+$foo = new Foo();
+$qux = new Qux($foo); // 手動
+```
+
+#### ・複数のクラスをバインド／リゾルブ
+
+メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．
 
 **＊実装例＊**
 
@@ -5136,9 +5237,9 @@ class FooServiceProvider extends ServiceProvider
 
 namespace App\Providers;
 
-use App\Domain\Foo\Entities;
-use App\Domain\Entity\Bar;
-use App\Domain\Entity\Baz;
+use App\Models\Foo\Entities;
+use App\Models\Bar;
+use App\Models\Baz;
 use Illuminate\Support\ServiceProvider;
 
 class FoosServiceProvider extends ServiceProvider
@@ -5187,9 +5288,9 @@ class FoosServiceProvider extends ServiceProvider
 }
 ```
 
-#### ・インターフェースをバインド
+#### ・インターフェースをバインドし，実装クラスをリゾルブ
 
-具象クラスは自動的にバインドされるが，インターフェース（抽象クラス）は，手動でバインドする必要がある．このバインドによって，インターフェースをコールすると実装インスタンスを生成できるようになる．
+Laravelにおいてはクラスが自動的にバインドされ，これのインスタンスがリゾルブされる，しかし，バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は，ServiceProviderにそれを定義すれば，自動的なバインドを上書きできる．これを利用して，インターフェースをバインドし，実装クラスをリゾルブできるようにする．この方法は，上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ．
 
 **＊実装例＊**
 
@@ -5211,44 +5312,41 @@ class FooServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Domain層とInfrastructure層のリポジトリの結合をバインド
         $this->app->bind(
-            "App\Domain\Foo\Repositories\FooRepository",
-            "App\Infrastructure\Repositories\FooRepository"
+            "App\Domain\Foo\Repositories\FooRepositoryInterface", // インターフェース
+            "App\Infrastructure\Doo\Repositories\FooRepository" // 実装クラス
         );
     }
 }
 ```
 
-#### ・ServiceContainerからのリゾルブ
-
-コンストラクタの引数にクラスを渡しておく．Appファサードを使用してクラスを宣言することで，クラスのリゾルブを自動的に実行する．
-
-**＊実装例＊**
-
 ```php
 <?php
 
-namespace App\Domain\DTO;
-
-class Foo extends Entity
+class Interactor
 {
     /**
-     * サブクラス
+     * @var FooRepositoryIF 
      */
-    protected $subFoo;
-
+    private FooRepositoryIF $fooRepository;
+    
     /**
-     * コンストラクタインジェクション
-     *
-     * @param SubFoo $subFoo
+     * @param FooRepositoryIF $fooRepository
      */
-    public function __construct(SubFoo $subFoo)
+    public function __constructor(FooRepositoryIF $fooRepository) // リゾルブされる．
     {
-        $this->foo = $subFoo;
+        $this->fooRepository = $fooRepository;
     }
 }
 ```
+
+#### ・```make```メソッド
+
+引数の型でリゾルブを実行する以外に，```make```メソッドを使用することも可能である．```make```メソッドの引数にクラスの名前空間を渡すことで，インスタンスがリゾルブされる．
+
+参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -5273,6 +5371,10 @@ $result = $foo->method();
 #### ・```register```メソッドと```boot```メソッドの違い
 
 Laravelのライフサイクルにおいて，ServiceContainerへのクラスのバインドの時には，まずServiceProviderの```register```メソッドが実行され，その後に```boot```メソッドが実行される．そのため，ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき，これは```boot```メソッドに実装することが適している．
+
+#### ・使い方が固定されたLaravel固有のメソッド
+
+Laravelには，その機能を使うにあたって，使い方が固定されているものがある．使い方が固定されたメソッドには，引数の型を実装するべきものとそうでないものがある（例：Notificationクラスの```handle```メソッドや```via```メソッド）．この違いは，メソッドコール時に自動的にリゾルブを実行しているのか，あるいはLaravelの内部でメソッドに引数を渡しているのかの違いである．
 
 <br>
 
@@ -5649,7 +5751,7 @@ return [
 
 <br>
 
-## 17. Session
+## 18. Session
 
 ### セッションの操作
 
@@ -5730,7 +5832,7 @@ class FooController extends Controller
 
 <br>
 
-## 18. Views
+## 19. Views
 
 ### arisanによる操作
 
@@ -6058,7 +6160,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 <br>
 
-## 19. よく使うグローバルヘルパー関数
+## 20. よく使うグローバルヘルパー関数
 
 ### ヘルパー関数
 
@@ -6316,7 +6418,7 @@ $url = url('/foos');
 
 <br>
 
-## 20. 認証系パッケージを使わない場合
+## 21. 認証系パッケージを使わない場合
 
 ### ガード
 
@@ -6600,7 +6702,7 @@ class RedirectIfAuthenticated
 
 <br>
 
-## 20-02. Passportパッケージ
+## 21-02. Passportパッケージ
 
 ### Passportパッケージとは
 
@@ -6763,7 +6865,7 @@ return [
         "users" => [
             "driver" => "eloquent",
             // Eloquentモデルは自由に指定できる．
-            "model"  => App\Domain\Auth\User::class,
+            "model"  => App\Models\User::class,
         ],
 
         // "users" => [
@@ -6977,7 +7079,7 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 <br>
 
-## 20-03. Sanctumパッケージ
+## 21-03. Sanctumパッケージ
 
 ### Sanctumパッケージとは
 
@@ -7025,7 +7127,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-## 20-04. Fortifyパッケージ
+## 21-04. Fortifyパッケージ
 
 ### Fortifyパッケージとは
 
@@ -7038,7 +7140,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 <br>
 
-## 20-05. Breezeパッケージ
+## 21-05. Breezeパッケージ
 
 ### Breezeパッケージとは
 
@@ -7073,7 +7175,7 @@ $ php artisan breeze:install
 
 <br>
 
-## 20-06. UIパッケージ（Laravel 7系以前）
+## 21-06. UIパッケージ（Laravel 7系以前）
 
 ### UIパッケージとは
 
@@ -7110,7 +7212,7 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 21. Laravel Mixパッケージ
+## 22. Laravel Mixパッケージ
 
 ### Laravel Mixパッケージとは
 
@@ -7140,7 +7242,7 @@ $ npm run watch
 
 <br>
 
-## 22. 非公式パッケージ
+## 23. 非公式パッケージ
 
 ### laravel-enum
 

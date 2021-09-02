@@ -433,7 +433,7 @@ class FooInteractor
 
 #### ・ドメインイベントとは
 
-ドメイン層の中で，ビジネス的な『出来事』をモデリングしたもの．エンティティや値オブジェクトは『物』をモデリングするため，着眼点が異なる．エンティティデザインパターンの一つである『Pub／Subパターン』の概念を用いて，ドメインイベントと処理の紐付きを表現する．
+ドメイン層の中で，ビジネス的な『出来事』をモデリングしたもの．エンティティや値オブジェクトは『物』をモデリングするため，着眼点が異なる．エンティティデザインパターンの一つである『Pub／Subパターン』の概念を用いて，ドメインイベントとイベントリスナー（イベントハンドラー）の紐付きを表現する．
 
 <br>
 
@@ -2177,6 +2177,17 @@ class DogComboFactory
 ルーティング後にコントローラメソッドの前にコールされるBeforeMiddleと，レスポンスの実行時にコールされるAfterMiddlewareがある．最近のフレームワークでも搭載されている．
 
 ![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+
+<br>
+
+### イベントリスナー（イベントハンドラー）
+
+ドメインイベントが発生した場合に，それに紐づく処理を実行する．フレームワークの機能に依存することになるため，実装の詳細をインフラ層におく．
+
+参考：
+
+- https://softwareengineering.stackexchange.com/questions/325996/ddd-where-to-place-domain-event-handlers
+- https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
 
 <br>
 
