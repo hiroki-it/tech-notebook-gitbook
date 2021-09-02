@@ -2287,6 +2287,22 @@ $ <span class="token builtin class-name">echo</span> $<span class="token operato
 $ <span class="token builtin class-name">echo</span> <span class="token string">&quot;$&lt;&#x5909;&#x6570;&#x540D;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
+<h3 id="file"><a name="file" class="plugin-anchor" href="#file"><i class="fa fa-link" aria-hidden="true"></i></a>file</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6539;&#x884C;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># LF&#x306E;&#x5834;&#x5408;&#xFF08;&#x4F55;&#x3082;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF09;</span>
+$ <span class="token function">file</span> foo.txt
+foo.txt: ASCII text
+
+<span class="token comment"># CRLF&#x306E;&#x5834;&#x5408;</span>
+$ <span class="token function">file</span> foo.txt
+foo.txt: ASCII text, with CRLF line terminators
+
+<span class="token comment"># CR&#x306E;&#x5834;&#x5408;</span>
+$ <span class="token function">file</span> foo.txt
+foo.txt: ASCII text, with CR line terminators<span class="token operator">&lt;</span>br<span class="token operator">&gt;</span>
+</code></pre>
+<p><br></p>
 <h3 id="find"><a name="find" class="plugin-anchor" href="#find"><i class="fa fa-link" aria-hidden="true"></i></a>find</h3>
 <h4 id="&#x30FB;-type"><a name="&#x30FB;-type" class="plugin-anchor" href="#&#x30FB;-type"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-type</h4>
 <p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x3092;&#x4ED8;&#x3051;&#x306A;&#x304F;&#x3068;&#x3082;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x304C;&#x50CD;&#x304F;&#xFF0E;</p>
@@ -2540,38 +2556,6 @@ $ systemctl disable httpd.service
 <span class="token number">40</span> <span class="token number">2</span> <span class="token number">1</span> * * root run-parts /etc/cron.monthly <span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
 @reboot <span class="token function">make</span> clean html <span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
 </code></pre>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x6BCE;&#x6642;&#x30FB;1&#x5206;</span>
-<span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x6BCE;&#x65E5;&#x30FB;2&#x6642;5&#x5206;</span>
-<span class="token number">5</span> <span class="token number">2</span> * * * root run-parts /etc/cron.daily
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x6BCE;&#x9031;&#x65E5;&#x66DC;&#x65E5;&#x30FB;2&#x6642;20&#x5206;</span>
-<span class="token number">20</span> <span class="token number">2</span> * * <span class="token number">0</span> root run-parts /etc/cron.weekly
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
-<span class="token number">40</span> <span class="token number">2</span> <span class="token number">1</span> * * root run-parts /etc/cron.monthly
-</code></pre>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
-@reboot <span class="token function">make</span> clean html
-</code></pre>
-<ol>
-<li>&#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x4F53;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x3068;&#xFF0C;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#x767B;&#x9332;&#x3057;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</li>
-</ol>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
-</code></pre>
-<ol>
-<li>&#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</li>
-</ol>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> -l
-</code></pre>
-<ol>
-<li>&#x30ED;&#x30B0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;</li>
-</ol>
-<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">cd</span> /var/log
-$ <span class="token function">tail</span> -f <span class="token function">cron</span>
-</code></pre>
 <h4 id="&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <p>&#x8907;&#x6570;&#x306E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5168;&#x3066;&#x306E;&#x4E00;&#x3064;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
 <table>
@@ -2631,8 +2615,54 @@ $ /usr/local/bin/supervisord
 <p>cron&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;&#x52D5;&#x4F5C;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;crontab&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>&#x4F5C;&#x6210;&#x3057;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell"><span class="token comment"># crontab&#xFF1A;command run on table</span>
-$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;"><a name="&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;" class="plugin-anchor" href="#&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;</h4>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> -l
+
+<span class="token comment"># crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;</span>
+<span class="token number">1</span> * * * * <span class="token function">rm</span> foo
+</code></pre>
+<h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><a name="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;" class="plugin-anchor" href="#&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;</h4>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#xFF11;. &#x62E1;&#x5F35;&#x5B50;&#x306F;&#x81EA;&#x7531;&#x3067;&#xFF0C;&#x6642;&#x523B;&#x3068;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7528;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x6700;&#x5F8C;&#x306B;&#x6539;&#x884C;&#x304C;&#x306A;&#x3044;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#xFF08;<code>premature EOF</code>&#xFF09;&#x306B;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x6539;&#x884C;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cron-hourly.txt</span>
+<span class="token comment"># &#x6BCE;&#x6642;&#x30FB;1&#x5206;</span>
+<span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cron-daily.txt</span>
+<span class="token comment"># &#x6BCE;&#x65E5;&#x30FB;2&#x6642;5&#x5206;</span>
+<span class="token number">5</span> <span class="token number">2</span> * * * root run-parts /etc/cron.daily
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cron-monthly.txt</span>
+<span class="token comment"># &#x6BCE;&#x9031;&#x65E5;&#x66DC;&#x65E5;&#x30FB;2&#x6642;20&#x5206;</span>
+<span class="token number">20</span> <span class="token number">2</span> * * <span class="token number">0</span> root run-parts /etc/cron.weekly
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cron-weekly.txt</span>
+<span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
+<span class="token number">40</span> <span class="token number">2</span> <span class="token number">1</span> * * root run-parts /etc/cron.monthly
+</code></pre>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
+@reboot <span class="token function">make</span> clean html
+</code></pre>
+<p>&#xFF12;. &#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x4F53;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x3068;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#x767B;&#x9332;&#x3057;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> /foo/cron-hourly.txt
+</code></pre>
+<p>&#xFF13;. &#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">crontab</span> -l
+
+<span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
+</code></pre>
+<p>&#xFF14;. &#x30ED;&#x30B0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">cd</span> /var/log
+
+$ <span class="token function">tail</span> -f <span class="token function">cron</span>
+</code></pre>
+<p>&#xFF15;. &#x6539;&#x884C;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;&#x6539;&#x884C;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;LF&#x3067;&#x3042;&#x308A;&#xFF0C;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">file</span> /foo/cron-hourly.txt
+
+foo.txt: ASCII text
 </code></pre>
 <p><br></p>
 <h3 id="crond"><a name="crond" class="plugin-anchor" href="#crond"><i class="fa fa-link" aria-hidden="true"></i></a>crond</h3>
@@ -3380,7 +3410,7 @@ Enforcing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-08-19T13:31:09.515Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-30T10:58:30.488Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-08-31T10:54:30.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-02T00:22:03.430Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
