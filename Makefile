@@ -17,3 +17,5 @@ commit-note:
 	git add public
 	git commit -m "update ノートを更新した．"
 
+rm-static:
+	rm -Rf docs
