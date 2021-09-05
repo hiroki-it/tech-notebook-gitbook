@@ -7003,6 +7003,51 @@ DB_HOST_READ=<span class="token tag"><span class="token tag"><span class="token 
 <p><br></p>
 <h2 id="18-session"><a name="18-session" class="plugin-anchor" href="#18-session"><i class="fa fa-link" aria-hidden="true"></i></a>18. Session</h2>
 <h3 id="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;"><a name="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;</h3>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Str</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token punctuation">[</span>
+
+    <span class="token string single-quoted-string">&apos;driver&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_DRIVER&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;file&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;lifetime&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_LIFETIME&apos;</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;expire_on_close&apos;</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;encrypt&apos;</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;files&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">storage_path</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;framework/sessions&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;connection&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_CONNECTION&apos;</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;table&apos;</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;sessions&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;store&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_STORE&apos;</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;lottery&apos;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;cookie&apos;</span> <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span>
+        <span class="token string single-quoted-string">&apos;SESSION_COOKIE&apos;</span><span class="token punctuation">,</span>
+        <span class="token class-name static-context">Str</span><span class="token operator">::</span><span class="token function">slug</span><span class="token punctuation">(</span><span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;APP_NAME&apos;</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;laravel&apos;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">&apos;_&apos;</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string single-quoted-string">&apos;_session&apos;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">&apos;path&apos;</span>      <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">&apos;/&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// Set-Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;domain&#x5C5E;&#x6027;&#x306B;&#x5024;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
+    <span class="token string single-quoted-string">&apos;domain&apos;</span>    <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_DOMAIN&apos;</span><span class="token punctuation">,</span> <span class="token constant">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// Set-Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;secure&#x5C5E;&#x6027;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token string single-quoted-string">&apos;secure&apos;</span>    <span class="token operator">=&gt;</span> <span class="token function">env</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;SESSION_SECURE_COOKIE&apos;</span><span class="token punctuation">,</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// Set-Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;HttpOnly&#x5C5E;&#x6027;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#xFF0E;</span>
+    <span class="token string single-quoted-string">&apos;http_only&apos;</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">true</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// Set-Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;sameSite&#x5C5E;&#x6027;&#x306B;&#x5024;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;null&#x306E;&#x5834;&#x5408;&#xFF0C;Lax&#x3068;&#x306A;&#x308B;&#xFF0E;</span>
+    <span class="token string single-quoted-string">&apos;same_site&apos;</span> <span class="token operator">=&gt;</span> <span class="token constant">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
 <h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>session</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Store&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <table>
@@ -7529,7 +7574,7 @@ $ php artisan optimize:clear
 <h2 id="21-&#x8A8D;&#x8A3C;&#x7CFB;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;"><a name="21-&#x8A8D;&#x8A3C;&#x7CFB;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;" class="plugin-anchor" href="#21-&#x8A8D;&#x8A3C;&#x7CFB;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>21. &#x8A8D;&#x8A3C;&#x7CFB;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3044;&#x5834;&#x5408;</h2>
 <h3 id="&#x30AC;&#x30FC;&#x30C9;"><a name="&#x30AC;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30AC;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AC;&#x30FC;&#x30C9;</h3>
 <h4 id="&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x3068;&#x306F;"><a name="&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AC;&#x30FC;&#x30C9;&#x3068;&#x306F;</h4>
-<p>&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/authentication.html#introduction" target="_blank">https://readouble.com/laravel/8.x/ja/authentication.html#introduction</a></p>
 <table>
 <thead>
@@ -7541,19 +7586,27 @@ $ php artisan optimize:clear
 <tbody>
 <tr>
 <td>Web&#x30AC;&#x30FC;&#x30C9;</td>
-<td>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#xFF0C;Cookie&#xFF0C;storage&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x8A8D;&#x8A3C;&#x3092;&#x884C;&#x3046;&#xFF0E;</td>
+<td>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306E;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>API&#x30AC;&#x30FC;&#x30C9;</td>
-<td>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x8A8D;&#x8A3C;&#x3092;&#x884C;&#x3046;&#xFF0E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#xFF0E;</td>
+<td>Bearer&#x8A8D;&#x8A3C;&#xFF0C;API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#xFF0C;OAuth&#x8A8D;&#x8A3C;&#xFF0C;&#x306A;&#x3069;&#x306E;&#x305F;&#x3081;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;&#x306B;&#x9055;&#x3044;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html</a></td>
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><a name="&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h4>
+<h4 id="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30AC;&#x30FC;&#x30C9;"><a name="&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30AC;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30AC;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30AC;&#x30FC;&#x30C9;</h4>
+<p>Laravel&#x304C;&#x6A19;&#x6E96;&#x3067;&#x6301;&#x305F;&#x306A;&#x3044;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x3082;&#x3064;&#x30AC;&#x30FC;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards" target="_blank">https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards</a></p>
+<p>API&#x30AC;&#x30FC;&#x30C9;&#x306E;&#x8A8D;&#x8A3C;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;JWT&#x306B;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x304C;&#x304A;&#x3059;&#x3059;&#x3081;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/tymondesigns/jwt-auth" target="_blank">https://github.com/tymondesigns/jwt-auth</a></p>
+<p><br></p>
+<h3 id="&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><a name="&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;" class="plugin-anchor" href="#&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;</h4>
 <table>
 <thead>
 <tr>
 <th>&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x306E;&#x7A2E;&#x985E;</th>
+<th>&#x8A8D;&#x8A3C;&#x306E;&#x7A2E;&#x985E;</th>
 <th>&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;</th>
 <th>&#x5099;&#x8003;</th>
 </tr>
@@ -7561,16 +7614,13 @@ $ php artisan optimize:clear
 <tbody>
 <tr>
 <td>session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</td>
+<td>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;</td>
 <td>SessionGuard&#x30AF;&#x30E9;&#x30B9;</td>
 <td><a href="https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html</a></td>
 </tr>
 <tr>
-<td>web&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</td>
-<td>RequestGuard&#x30AF;&#x30E9;&#x30B9;</td>
-<td><a href="https://laravel.com/api/8.x/Illuminate/Auth/RequestGuard.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/RequestGuard.html</a></td>
-</tr>
-<tr>
 <td>token&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</td>
+<td>Bearer&#x8A8D;&#x8A3C;&#xFF0C;API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#xFF0C;OAuth&#x8A8D;&#x8A3C;</td>
 <td>TokenGuard&#x30AF;&#x30E9;&#x30B9;</td>
 <td><a href="https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html</a></td>
 </tr>
@@ -7579,8 +7629,8 @@ $ php artisan optimize:clear
 <p>&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5FDC;&#x3058;&#x3066;&#xFF0C;AuthManager&#x30AF;&#x30E9;&#x30B9;&#x304C;Guard&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x306E;&#x5B9F;&#x88C5;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;<code>auth.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#xFF0C;&#x4F8B;&#x3048;&#x3070;token&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3092;&#x9078;&#x3093;&#x3060;&#x5834;&#x5408;&#x306F;&#xFF0C;TokenGuard&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html</a></li>
 <li><a href="https://teratail.com/questions/171582" target="_blank">https://teratail.com/questions/171582</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html</a></li>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user" target="_blank">https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user</a></li>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user" target="_blank">https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user</a></li>
 </ul>
@@ -7611,8 +7661,8 @@ $ php artisan optimize:clear
 <p>&#x8A8D;&#x8A3C;&#x30C7;&#x30FC;&#x30BF;&#x3092;DB&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/authentication.html#introduction" target="_blank">https://readouble.com/laravel/8.x/ja/authentication.html#introduction</a></p>
 <p><br></p>
-<h3 id="form&#x8A8D;&#x8A3C;"><a name="form&#x8A8D;&#x8A3C;" class="plugin-anchor" href="#form&#x8A8D;&#x8A3C;"><i class="fa fa-link" aria-hidden="true"></i></a>Form&#x8A8D;&#x8A3C;</h3>
-<h4 id="&#x30FB;form&#x8A8D;&#x8A3C;&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x5834;&#x5408;"><a name="&#x30FB;form&#x8A8D;&#x8A3C;&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;form&#x8A8D;&#x8A3C;&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Form&#x8A8D;&#x8A3C;&#x3092;&#x4F7F;&#x3044;&#x305F;&#x3044;&#x5834;&#x5408;</h4>
+<h3 id="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;"><a name="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;" class="plugin-anchor" href="#&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;</h3>
+<h4 id="&#x30FB;session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><a name="&#x30FB;session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;" class="plugin-anchor" href="#&#x30FB;session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h4>
 <p>session&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3092;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x5168;&#x3066;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x540C;&#x4E00;&#x6A29;&#x9650;&#x3092;&#x6301;&#x3064;&#x5834;&#x5408;"><a name="&#x30FB;&#x5168;&#x3066;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x540C;&#x4E00;&#x6A29;&#x9650;&#x3092;&#x6301;&#x3064;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x5168;&#x3066;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x540C;&#x4E00;&#x6A29;&#x9650;&#x3092;&#x6301;&#x3064;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5168;&#x3066;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x540C;&#x4E00;&#x6A29;&#x9650;&#x3092;&#x6301;&#x3064;&#x5834;&#x5408;</h4>
 <p>SessionGuard&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>attempt</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x3066;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5316;&#x3057;&#xFF0C;DB&#x306E;&#x30CF;&#x30C3;&#x30B7;&#x30E5;&#x5024;&#x3068;&#x7167;&#x5408;&#x3059;&#x308B;&#xFF0E;&#x8A8D;&#x8A3C;&#x304C;&#x6210;&#x529F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x8A8D;&#x8A3C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x958B;&#x59CB;&#x3059;&#x308B;&#xFF0E;<code>redirect</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x306E;&#x521D;&#x671F;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#xFF0E;</p>
@@ -8160,9 +8210,9 @@ $ php artisan passport:client --personal
 <p><br></p>
 <h2 id="21-03-sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="21-03-sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#21-03-sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>21-03. Sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h2>
 <h3 id="sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;"><a name="sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;" class="plugin-anchor" href="#sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>Sanctum&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x306F;</h3>
-<p>API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#x3068;Form&#x8A8D;&#x8A3C;&#x6A5F;&#x80FD;&#x306E;&#x8A8D;&#x8A3C;&#x51E6;&#x7406;&#x306E;&#x307F;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3068;DB&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x51E6;&#x7406;&#x306F;&#x63D0;&#x4F9B;&#x3057;&#x306A;&#x3044;&#xFF0E;</p>
+<p>API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#x3068;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x6A5F;&#x80FD;&#x306E;&#x8A8D;&#x8A3C;&#x51E6;&#x7406;&#x306E;&#x307F;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3068;DB&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x306B;&#x95A2;&#x3059;&#x308B;&#x51E6;&#x7406;&#x306F;&#x63D0;&#x4F9B;&#x3057;&#x306A;&#x3044;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/sanctum.html" target="_blank">https://readouble.com/laravel/8.x/ja/sanctum.html</a></p>
-<p>API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#x3068;Form&#x8A8D;&#x8A3C;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;&#x3068;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html</a></p>
 <p><br></p>
 <h3 id="&#x5C0E;&#x5165;&#x65B9;&#x6CD5;"><a name="&#x5C0E;&#x5165;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x5C0E;&#x5165;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C0E;&#x5165;&#x65B9;&#x6CD5;</h3>
@@ -8396,7 +8446,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-09-05T06:47:07.728Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T07:34:31.387Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-09-05T12:22:33.856Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T12:23:40.748Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
