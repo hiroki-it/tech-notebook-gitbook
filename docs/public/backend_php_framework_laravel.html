@@ -3415,7 +3415,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 </code></pre>
 <p><br></p>
 <h2 id="06-event&#xFF0F;listener"><a name="06-event&#xFF0F;listener" class="plugin-anchor" href="#06-event&#xFF0F;listener"><i class="fa fa-link" aria-hidden="true"></i></a>06. Event&#xFF0F;Listener</h2>
-<h3 id="model-event"><a name="model-event" class="plugin-anchor" href="#model-event"><i class="fa fa-link" aria-hidden="true"></i></a>Model Event</h3>
+<h3 id="event"><a name="event" class="plugin-anchor" href="#event"><i class="fa fa-link" aria-hidden="true"></i></a>Event</h3>
 <h4 id="&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x7CFB;"><a name="&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x7CFB;" class="plugin-anchor" href="#&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x7CFB;</h4>
 <p>Eloquent&#x30E2;&#x30C7;&#x30EB;&#x304C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x524D;&#x5F8C;&#x306B;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;<code>create</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>save</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>update</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>destroy</code>&#xFF0F;<code>delete</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x306E;&#x5B9F;&#x884C;&#x5F8C;&#x306B;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;<code>created</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>saved</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>updated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>deleted</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -3423,21 +3423,15 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 <span class="token keyword">namespace</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Database<span class="token punctuation">\</span>Eloquent<span class="token punctuation">\</span>Concerns</span><span class="token punctuation">;</span>
 
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Contracts<span class="token punctuation">\</span>Events<span class="token punctuation">\</span>Dispatcher</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Events<span class="token punctuation">\</span>NullDispatcher</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Arr</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package">InvalidArgumentException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Closure</span><span class="token punctuation">;</span>
 
 <span class="token keyword">trait</span> <span class="token class-name-definition class-name">HasEvents</span>
 <span class="token punctuation">{</span>
-
-    <span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;    </span>
+    <span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 
     <span class="token comment">/**
-     * Model&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *
      * @param  string  $event
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */</span>
     <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">registerModelEvent</span><span class="token punctuation">(</span><span class="token variable">$event</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span>
@@ -3445,56 +3439,52 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token variable">$dispatcher</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">;</span>
 
+            <span class="token comment">// Model&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
             <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token variable">$dispatcher</span><span class="token operator">-&gt;</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;eloquent.<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$event</span><span class="token punctuation">}</span></span>: <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$name</span><span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">/**
-     * Model&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">saved</span><span class="token punctuation">(</span><span class="token variable">$callback</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
+        <span class="token comment">// Model&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
         <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token function">registerModelEvent</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;saved&quot;</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">/**
-     * Model&#x306E;save&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">updated</span><span class="token punctuation">(</span><span class="token variable">$callback</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
+        <span class="token comment">// Model&#x306E;save&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
         <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token function">registerModelEvent</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;updated&quot;</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">/**
-     * Model&#x306E;create&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">created</span><span class="token punctuation">(</span><span class="token variable">$callback</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
+        <span class="token comment">// Model&#x306E;create&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
         <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token function">registerModelEvent</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;created&quot;</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">/**
-     * Model&#x306E;delete&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">deleted</span><span class="token punctuation">(</span><span class="token variable">$callback</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
+        <span class="token comment">// Model&#x306E;delete&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x5B9F;&#x884C;&#x5F8C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;Dispatcher&#x306B;&#x767B;&#x9332;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
         <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token function">registerModelEvent</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;deleted&quot;</span><span class="token punctuation">,</span> <span class="token variable">$callback</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;       </span>
-
+    <span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;trait&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306E;&#x767A;&#x706B;"><a name="&#x30FB;trait&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306E;&#x767A;&#x706B;" class="plugin-anchor" href="#&#x30FB;trait&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306E;&#x767A;&#x706B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Trait&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306E;&#x767A;&#x706B;</h4>
@@ -3508,6 +3498,9 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">Model</span> <span class="token keyword">implements</span> <span class="token class-name">Arrayable</span><span class="token punctuation">,</span> ArrayAccess<span class="token punctuation">,</span> Jsonable<span class="token punctuation">,</span> JsonSerializable<span class="token punctuation">,</span> QueueableEntity<span class="token punctuation">,</span> UrlRoutable
 <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @param array $attributes
+     */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">array</span> <span class="token variable">$attributes</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// boot&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x30B3;&#x30FC;&#x30EB;</span>
@@ -3520,6 +3513,9 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
         <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token variable">$attributes</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
+    <span class="token comment">/**
+     *
+     */</span>
     <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function-definition function">bootIfNotBooted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token variable">$booted</span><span class="token punctuation">[</span><span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -3534,12 +3530,18 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
+    <span class="token comment">/**
+     *
+     */</span>
     <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token comment">// bootTraits&#x3092;&#x30B3;&#x30FC;&#x30EB;</span>
         <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token function">bootTraits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
+    <span class="token comment">/**
+     *
+     */</span>
     <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">bootTraits</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
         <span class="token variable">$class</span> <span class="token operator">=</span> <span class="token keyword static-context">static</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">;</span>
@@ -3568,10 +3570,9 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
                 <span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>    
+    <span class="token punctuation">}</span>
 
-<span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
-
+    <span class="token comment">// &#xFF5E; &#x7701;&#x7565; &#xFF5E;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;Trait&#x3067;&#x306F;&#xFF0C;<code>saved</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;Model&#x66F4;&#x65B0;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;</p>
@@ -3712,6 +3713,8 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
+<h3 id="listener"><a name="listener" class="plugin-anchor" href="#listener"><i class="fa fa-link" aria-hidden="true"></i></a>Listener</h3>
+<p><br></p>
 <h2 id="07-exception"><a name="07-exception" class="plugin-anchor" href="#07-exception"><i class="fa fa-link" aria-hidden="true"></i></a>07. Exception</h2>
 <h3 id="&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><a name="&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;" class="plugin-anchor" href="#&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</h3>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
@@ -3815,6 +3818,10 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 <span class="token comment">// Facade&#x5229;&#x7528;</span>
 <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token class-name static-context">Foo</span><span class="token operator">::</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<h4 id="&#x30FB;facade&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x5834;&#x5408;"><a name="&#x30FB;facade&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;facade&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Facade&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x5834;&#x5408;</h4>
+<p>Facade&#x304C;&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x306A;&#x308B;&#x5834;&#x5408;&#xFF0C;Facade&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x8CAC;&#x52D9;&#x304C;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30E2;&#x30C7;&#x30EB;&#x306B;&#x96C6;&#x4E2D;&#x305B;&#x305A;&#x306B;&#x3059;&#x3080;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
+<p>Notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;User&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#xFF0C;Notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x306B;&#x3088;&#x308B;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;&#xFF0C;User&#x30AF;&#x30E9;&#x30B9;&#x304C;&#x901A;&#x77E5;&#x51E6;&#x7406;&#x306E;&#x8CAC;&#x52D9;&#x3092;&#x6301;&#x305F;&#x305A;&#x306B;&#x6E08;&#x3080;&#xFF0E;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x6A19;&#x6E96;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;facade&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x7A2E;&#x985E;"><a name="&#x30FB;&#x6A19;&#x6E96;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;facade&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30FB;&#x6A19;&#x6E96;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;facade&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6A19;&#x6E96;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;Facade&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x7A2E;&#x985E;</h4>
 <p>&#x4EE5;&#x4E0B;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;&#xFF0C;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x767B;&#x9332;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;Facade&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <table>
@@ -4451,7 +4458,7 @@ AWS_BUCKET=<span class="token tag"><span class="token tag"><span class="token pu
 <p><br></p>
 <h3 id="validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;"><a name="validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;" class="plugin-anchor" href="#validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>Validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;</h3>
 <h4 id="&#x30FB;validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3068;&#x306F;"><a name="&#x30FB;validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3068;&#x306F;</h4>
-<p>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;Validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
+<p>&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;Validator&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
 <h4 id="&#x30FB;validator&#x30AF;&#x30E9;&#x30B9;&#xFF0C;fails&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;validator&#x30AF;&#x30E9;&#x30B9;&#xFF0C;fails&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;validator&#x30AF;&#x30E9;&#x30B9;&#xFF0C;fails&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Validator&#x30AF;&#x30E9;&#x30B9;&#xFF0C;<code>fails</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>Validate&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x306E;<code>make</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;&#x7B2C;&#x4E00;&#x5F15;&#x6570;&#x3067;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x884C;&#x3046;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x53CD;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x540D;&#xFF08;&#x4F8B;&#x3048;&#x3070;<code>required</code>&#xFF09;&#x306B;&#x57FA;&#x3065;&#x304D;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;&#x6B21;&#x306B;&#xFF0C;<code>fails</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -4491,7 +4498,7 @@ AWS_BUCKET=<span class="token tag"><span class="token tag"><span class="token pu
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;validate&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;validate&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;validate&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>Validator&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x540C;&#x69D8;&#x306E;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>Validator&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x540C;&#x69D8;&#x306E;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
 <span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
@@ -4586,6 +4593,8 @@ AWS_BUCKET=<span class="token tag"><span class="token tag"><span class="token pu
     <span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p><br></p>
+<h3 id="&#x521D;&#x671F;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x91CF;&#x7523;"><a name="&#x521D;&#x671F;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x91CF;&#x7523;" class="plugin-anchor" href="#&#x521D;&#x671F;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x91CF;&#x7523;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x521D;&#x671F;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x91CF;&#x7523;</h3>
 <h4 id="&#x30FB;seeder&#x306B;&#x3088;&#x308B;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x7523;"><a name="&#x30FB;seeder&#x306B;&#x3088;&#x308B;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x7523;" class="plugin-anchor" href="#&#x30FB;seeder&#x306B;&#x3088;&#x308B;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x7523;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Seeder&#x306B;&#x3088;&#x308B;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x7523;</h4>
 <p>Factory&#x306B;&#x304A;&#x3051;&#x308B;&#x5B9A;&#x7FA9;&#x3092;&#x57FA;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6570;&#x3060;&#x3051;&#x30C0;&#x30DF;&#x30FC;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x91CF;&#x7523;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -4598,8 +4607,6 @@ AWS_BUCKET=<span class="token tag"><span class="token tag"><span class="token pu
 <span class="token keyword">class</span> <span class="token class-name-definition class-name">DummyUsersSeeder</span> <span class="token keyword">extends</span> <span class="token class-name">Seeder</span>
 <span class="token punctuation">{</span>
     <span class="token comment">/**
-     * Run the database seeds.
-     *
      * @return void
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -4666,6 +4673,29 @@ AWS_BUCKET=<span class="token tag"><span class="token tag"><span class="token pu
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h4 id="&#x30FB;hasfactory&#x30C8;&#x30EC;&#x30A4;&#x30C8;"><a name="&#x30FB;hasfactory&#x30C8;&#x30EC;&#x30A4;&#x30C8;" class="plugin-anchor" href="#&#x30FB;hasfactory&#x30C8;&#x30EC;&#x30A4;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;HasFactory&#x30C8;&#x30EC;&#x30A4;&#x30C8;</h4>
+<pre class="language-"><code class="lang-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">User</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">use</span> <span class="token package">HasFactory</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Domain<span class="token punctuation">\</span>Entity<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Database<span class="token punctuation">\</span>Seeder</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">DummyUsersSeeder</span> <span class="token keyword">extends</span> <span class="token class-name">Seeder</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token class-name static-context">User</span><span class="token operator">::</span><span class="token function">factory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories" target="_blank">https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories</a></p>
 <p><br></p>
 <h2 id="10-http&#xFF5C;controller"><a name="10-http&#xFF5C;controller" class="plugin-anchor" href="#10-http&#xFF5C;controller"><i class="fa fa-link" aria-hidden="true"></i></a>10. HTTP&#xFF5C;Controller</h2>
 <h3 id="artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;"><a name="artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;</h3>
@@ -4793,7 +4823,7 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
 <p>&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5F8C;&#x306B;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x524D;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;BeforeMiddle&#x3068;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5B9F;&#x884C;&#x6642;&#x306B;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;AfterMiddleware&#x304C;&#x3042;&#x308B;</p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Laravel&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="Laravel&#x306E;&#x30DF;&#x30C8;&#x3099;&#x30EB;&#x30A6;&#x30A7;&#x30A2;"></p>
 <h4 id="&#x30FB;beforemiddleware"><a name="&#x30FB;beforemiddleware" class="plugin-anchor" href="#&#x30FB;beforemiddleware"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;BeforeMiddleware</h4>
-<p>&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x6642;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x305F;&#x5F8C;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x6B21;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x6E21;&#x3059;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>next</code>&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p>&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x6642;&#x306E;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x3048;&#x305F;&#x5F8C;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x6B21;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x6E21;&#x3059;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>next</code>&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -4811,13 +4841,13 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
     <span class="token punctuation">{</span>
         <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
 
-        <span class="token comment">// &#x6B21;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x306B;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3059;&#xFF0E;</span>
+        <span class="token comment">// &#x6B21;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x306B;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3059;&#xFF0E;</span>
         <span class="token keyword">return</span> <span class="token variable">$next</span><span class="token punctuation">(</span><span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;aftermiddleware"><a name="&#x30FB;aftermiddleware" class="plugin-anchor" href="#&#x30FB;aftermiddleware"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;AfterMiddleware</h4>
-<p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5B9F;&#x884C;&#x5F8C;&#xFF08;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x542B;&#x3080;&#xFF09;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x524D;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x53D7;&#x3051;&#x53D6;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>next</code>&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5B9F;&#x884C;&#x5F8C;&#xFF08;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x542B;&#x3080;&#xFF09;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#xFF0C;&#x524D;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#x53D7;&#x3051;&#x53D6;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306F;Closure&#xFF08;&#x7121;&#x540D;&#x95A2;&#x6570;&#xFF09;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>next</code>&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -4837,7 +4867,7 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
 
         <span class="token comment">// &#x4F55;&#x3089;&#x304B;&#x306E;&#x51E6;&#x7406;</span>
 
-        <span class="token comment">// &#x524D;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308B;&#xFF0E;</span>
+        <span class="token comment">// &#x524D;&#x306E;Middleware&#x30AF;&#x30E9;&#x30B9;&#x3084;Controller&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x53D7;&#x3051;&#x53D6;&#x308B;&#xFF0E;</span>
         <span class="token keyword">return</span> <span class="token variable">$response</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
@@ -4924,79 +4954,18 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
 <h2 id="10-03-http&#xFF5C;formrequest"><a name="10-03-http&#xFF5C;formrequest" class="plugin-anchor" href="#10-03-http&#xFF5C;formrequest"><i class="fa fa-link" aria-hidden="true"></i></a>10-03. HTTP&#xFF5C;FormRequest</h2>
 <h3 id="artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;"><a name="artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>artisan&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x64CD;&#x4F5C;</h3>
 <h4 id="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x81EA;&#x52D5;&#x751F;&#x6210;"><a name="&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x81EA;&#x52D5;&#x751F;&#x6210;" class="plugin-anchor" href="#&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x81EA;&#x52D5;&#x751F;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x81EA;&#x52D5;&#x751F;&#x6210;</h4>
-<p>Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x81EA;&#x52D5;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
+<p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x81EA;&#x52D5;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ php artisan make:request <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Request&#x540D;</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF0F;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF0F;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF0F;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#xFF0F;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
-<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;</h4>
-<p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>rules</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x53CD;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x540D;&#xFF08;&#x4F8B;&#x3048;&#x3070;<code>required</code>&#xFF09;&#x306B;&#x57FA;&#x3065;&#x304D;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Requests</span><span class="token punctuation">;</span>
-
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Foundation<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>FormRequest</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooRequest</span> <span class="token keyword">extends</span> <span class="token class-name">FormRequest</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * &#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     *
-     * @return array
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">rules</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span>
-            <span class="token string double-quoted-string">&quot;title&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;body&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;type&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token class-name static-context">Rule</span><span class="token operator">::</span><span class="token function">in</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;author&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">UppercaseRule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;date&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;date&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;</h4>
-<p>Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;Controller&#x3067;&#xFF0C;Request&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x524D;&#x306B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x4E2D;&#x3067;&#x306F;&#xFF0C;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x7D42;&#x3048;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3044;&#x304D;&#x306A;&#x308A;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
-
-<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
-
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * @param Request $request
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
-        <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// &#x7D9A;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">/**
-     * @param Request $request
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">update</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
-        <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// &#x7D9A;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9; &#xFF06; &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;</h4>
-<p>&#x540C;&#x3058;&#x304F;Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x3055;&#x3089;&#x306B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x9593;&#x9055;&#x308F;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x53CD;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x540D;&#xFF08;&#x4F8B;&#x3048;&#x3070;<code>required</code>&#xFF09;&#x306B;&#x57FA;&#x3065;&#x304D;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate" target="_blank">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate</a></p>
+<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x624B;&#x52D5;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x624B;&#x52D5;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x624B;&#x52D5;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9; &#xFF06; &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x624B;&#x52D5;&#x5B9F;&#x884C;</h4>
+<p>&#x540C;&#x3058;&#x304F;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validate</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#xFF0C;&#x3055;&#x3089;&#x306B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x9593;&#x9055;&#x308F;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x53CD;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x540D;&#xFF08;&#x4F8B;&#x3048;&#x3070;<code>required</code>&#xFF09;&#x306B;&#x57FA;&#x3065;&#x304D;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests" target="_blank">https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate" target="_blank">https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate</a></li>
+</ul>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5065,9 +5034,73 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;--&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;--&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9;--&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x5B9A;&#x7FA9; &amp; &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;</h4>
+<p>Controller&#x3067;&#xFF0C;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5F15;&#x6570;&#x306B;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x524D;&#x306B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x4E2D;&#x3067;&#x306F;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#xFF0E;&#x4EE3;&#x308F;&#x308A;&#x306B;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>rule</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>validated</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6E08;&#x307F;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#xFF0C;Handler&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>invalid</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#xFF0C;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Request</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @param Request $request
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
+        <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// &#x7D9A;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @param Request $request
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">update</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Request</span> <span class="token variable">$request</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
+        <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x5834;&#x5408;&#x306F;&#x5143;&#x3005;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
+        <span class="token variable">$validated</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token operator">-&gt;</span><span class="token function">validated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// &#x7D9A;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>rules</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x53CD;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x540D;&#xFF08;&#x4F8B;&#x3048;&#x3070;<code>required</code>&#xFF09;&#x306B;&#x57FA;&#x3065;&#x304D;&#xFF0C;<code>validation.php</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9078;&#x629E;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Requests</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Foundation<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>FormRequest</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooRequest</span> <span class="token keyword">extends</span> <span class="token class-name">FormRequest</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * &#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;
+     *
+     * @return array
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">rules</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// &#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token string double-quoted-string">&quot;title&quot;</span>  <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;body&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;max:255&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;type&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token class-name static-context">Rule</span><span class="token operator">::</span><span class="token function">in</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;author&quot;</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;string&quot;</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">UppercaseRule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string double-quoted-string">&quot;date&quot;</span>   <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">&quot;required&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;date&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p><br></p>
 <h3 id="&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
-<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9; &#xFF06; &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5B9F;&#x884C;</h4>
+<h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9;-&#xFF06;-&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30EB;&#x306E;&#x5B9A;&#x7FA9; &#xFF06; &#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x81EA;&#x52D5;&#x5B9F;&#x884C;</h4>
 <p>Route&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x306E;<code>pattern</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x307E;&#x305F;&#x306F;<code>where</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;Route&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p><br></p>
 <h3 id="&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;"><a name="&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;</h3>
@@ -5280,7 +5313,7 @@ $ php artisan make:controller <span class="token tag"><span class="token tag"><s
 <p><br></p>
 <h3 id="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;</h3>
 <h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;"><a name="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;" class="plugin-anchor" href="#&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x306E;&#x53D6;&#x5F97;</h4>
-<p>Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>session</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
+<p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>session</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x5909;&#x6570;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5778,13 +5811,7 @@ $ php artisan migrate
 <p><br></p>
 <h3 id="&#x901A;&#x77E5;&#x5185;&#x5BB9;"><a name="&#x901A;&#x77E5;&#x5185;&#x5BB9;" class="plugin-anchor" href="#&#x901A;&#x77E5;&#x5185;&#x5BB9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x901A;&#x77E5;&#x5185;&#x5BB9;</h3>
 <h4 id="&#x30FB;notification"><a name="&#x30FB;notification" class="plugin-anchor" href="#&#x30FB;notification"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Notification</h4>
-<p>&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;SNS&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;MailMessage&#x30AF;&#x30E9;&#x30B9;&#x3084;View&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>render</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x6587;&#x5B57;&#x5217;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;<code>via</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;Laravel&#x304C;&#x6A19;&#x6E96;&#x3067;&#x7528;&#x610F;&#x3057;&#x3066;&#x3044;&#x308B;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;Mail&#xFF0C;SMS&#xFF0C;Slack&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF09;&#x4EE5;&#x5916;&#x306B;&#x9001;&#x4FE1;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#xFF0C;Channel&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x8907;&#x6570;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306B;&#x901A;&#x4FE1;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;<code>toMail</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>toSms</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>toSlack</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#xFF0C;Laravel&#x306E;&#x6A19;&#x6E96;&#x306E;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x306B;&#x6E21;&#x3059;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306B;&#x5909;&#x63DB;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;</p>
-<ul>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_subject" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_subject</a></li>
-<li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_render" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_render</a></li>
-<li><a href="https://laravel.com/api/8.x/Illuminate/View/View.html#method_render" target="_blank">https://laravel.com/api/8.x/Illuminate/View/View.html#method_render</a></li>
-</ul>
+<p>&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;<code>via</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;Laravel&#x304C;&#x6A19;&#x6E96;&#x3067;&#x7528;&#x610F;&#x3057;&#x3066;&#x3044;&#x308B;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;Mail&#xFF0C;SMS&#xFF0C;Slack&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF0C;Database&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF09;&#x4EE5;&#x5916;&#x306B;&#x9001;&#x4FE1;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#xFF0C;Channel&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x8907;&#x6570;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x305D;&#x308C;&#x305E;&#x308C;&#x306B;&#x901A;&#x4FE1;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;<code>toMail</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>toSms</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>toSlack</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;<code>toArray</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;Laravel&#x306E;&#x6A19;&#x6E96;&#x306E;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x306B;&#x6E21;&#x3059;&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5804,8 +5831,112 @@ $ php artisan migrate
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">via</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
+        <span class="token comment">// &#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x3092;&#x9078;&#x629E;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return string
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toSms</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// SMS&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x5185;&#x5BB9;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return MailMessage
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toMail</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Email&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x5185;&#x5BB9;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return array
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toArray</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// DB&#x3078;&#x306E;&#x4FDD;&#x5B58;&#x65B9;&#x6CD5;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;e&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><a name="&#x30FB;e&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;e&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;E&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;</h4>
+<p>MailMessage&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;E&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;<code>markdown</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x30DE;&#x30FC;&#x30AF;&#x30C0;&#x30A6;&#x30F3;&#x5F62;&#x5F0F;&#x3067;&#x5B9A;&#x7FA9;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message" target="_blank">https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown</a></li>
+</ul>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Notifications</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Models<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>EmailChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>AwsSnsChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Messages<span class="token punctuation">\</span>MailMessage</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Notification</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">TfaTokenNotification</span> <span class="token keyword">extends</span> <span class="token class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return array
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">via</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span>
-            <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token property">prefers_sms</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token class-name static-context">AwsSnsChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name static-context">EmailChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// &#x6761;&#x4EF6;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+            <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token property">prefers_sms</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token class-name static-context">AwsSnsChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name static-context">EmailChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// SMS&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#xFF0C;E&#x30E1;&#x30FC;&#x30EB;&#x901A;&#x77E5;&#x3068;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+            <span class="token string single-quoted-string">&apos;database&apos;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return MailMessage
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toMail</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Email&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x5185;&#x5BB9;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MailMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">subject</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x9001;&#x4FE1;&#x3044;&#x305F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">markdown</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;template.mail&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+                <span class="token string double-quoted-string">&quot;tfa_token&quot;</span> <span class="token operator">=&gt;</span> <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token function">tfaToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-html">@component(&quot;mail::message&quot;)
+
+&#x8A8D;&#x8A3C;&#x30B3;&#x30FC;&#x30C9;&#x300E;{ $tfa_token }}&#x300F;&#x3092;&#x5165;&#x529B;&#x3057;&#x3066;&#x4E0B;&#x3055;&#x3044;&#xFF0E;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+
++++++++++++++++++++++++++++++++++++++<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+&#x672C;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306F;&#x9001;&#x4FE1;&#x5C02;&#x7528;&#x3067;&#x3059;&#xFF0E;&#x3054;&#x8FD4;&#x4FE1;&#x9802;&#x3044;&#x3066;&#x3082;&#x304A;&#x7B54;&#x3048;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x3001;&#x3054;&#x4E86;&#x627F;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;
+
+@endcomponent
+</code></pre>
+<h4 id="&#x30FB;sms&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><a name="&#x30FB;sms&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;sms&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;SMS&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications" target="_blank">https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications</a></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Notifications</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Models<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>EmailChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>AwsSnsChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Notification</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">TfaTokenNotification</span> <span class="token keyword">extends</span> <span class="token class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * @param $notifiable
+     * @return array
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">via</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token property">prefers_sms</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token class-name static-context">AwsSnsChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name static-context">EmailChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// SMS&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;AWS-SNS&#x3092;&#x4F7F;&#x7528;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
             <span class="token string single-quoted-string">&apos;database&apos;</span>
         <span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -5820,24 +5951,36 @@ $ php artisan migrate
         <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;template.sms&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
             <span class="token string double-quoted-string">&quot;subject&quot;</span>   <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">&quot;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x9001;&#x4FE1;&#x3044;&#x305F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span><span class="token punctuation">,</span>
             <span class="token string double-quoted-string">&quot;tfa_token&quot;</span> <span class="token operator">=&gt;</span> <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token function">tfaToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token comment">// &#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3092;&#x6587;&#x5B57;&#x5217;&#x3067;&#x8FD4;&#x5374;</span>
-            <span class="token operator">-&gt;</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;slack&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><a name="&#x30FB;slack&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;slack&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Slack&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications" target="_blank">https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications</a></p>
+<h4 id="&#x30FB;db&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><a name="&#x30FB;db&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;db&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;DB&#x901A;&#x77E5;&#x5185;&#x5BB9;&#x306E;&#x5B9A;&#x7FA9;</h4>
+<p>&#x914D;&#x5217;&#x3067;DB&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#x5185;&#x5BB9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications" target="_blank">https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications</a></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Notifications</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Models<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>EmailChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Channels<span class="token punctuation">\</span>AwsSnsChannel</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Notification</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">TfaTokenNotification</span> <span class="token keyword">extends</span> <span class="token class-name">Notification</span>
+<span class="token punctuation">{</span>
     <span class="token comment">/**
      * @param $notifiable
-     * @return string
+     * @return array
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toMail</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">via</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">// Email&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x5185;&#x5BB9;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MailMessage</span><span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">subject</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x9001;&#x4FE1;&#x3044;&#x305F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span><span class="token punctuation">)</span>
-            <span class="token operator">-&gt;</span><span class="token function">markdown</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;template.mail&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
-                <span class="token string double-quoted-string">&quot;tfa_token&quot;</span> <span class="token operator">=&gt;</span> <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token function">tfaToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token punctuation">]</span><span class="token punctuation">)</span>
-            <span class="token comment">// &#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3092;&#x6587;&#x5B57;&#x5217;&#x3067;&#x8FD4;&#x5374;</span>
-            <span class="token operator">-&gt;</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token property">prefers_sms</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token class-name static-context">AwsSnsChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name static-context">EmailChannel</span><span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">&apos;database&apos;</span> <span class="token comment">// DB&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">/**
@@ -5846,23 +5989,12 @@ $ php artisan migrate
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">toArray</span><span class="token punctuation">(</span><span class="token variable">$notifiable</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">// notifications&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;data&#x30AB;&#x30E9;&#x30E0;&#x306B;&#xFF0C;JSON&#x3067;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+        <span class="token comment">// notifications&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;data&#x30AB;&#x30E9;&#x30E0;&#x306B;&#xFF0C;JSON&#x3067;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x307E;&#x3059;&#xFF0E;</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span>
             <span class="token string double-quoted-string">&quot;tfa_token&quot;</span> <span class="token operator">=&gt;</span> <span class="token variable">$notifiable</span><span class="token operator">-&gt;</span><span class="token function">tfaToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>MailMessage&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>markdown</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x901A;&#x77E5;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x30DE;&#x30FC;&#x30AF;&#x30C0;&#x30A6;&#x30F3;&#x5F62;&#x5F0F;&#x3067;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x5F53;&#x7136;&#xFF0C;<code>markdown</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#xFF0C;blade&#x3067;&#x901A;&#x77E5;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#x304C;&#xFF0C;&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x306E;&#x306A;&#x3044;&#x901A;&#x77E5;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;&#x3088;&#x308A;&#x7C21;&#x5358;&#x306A;&#x30DE;&#x30FC;&#x30AF;&#x30C0;&#x30A6;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#x304B;&#x3082;&#x3057;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown</a></p>
-<pre class="language-"><code class="lang-html">@component(&quot;mail::message&quot;)
-
-&#x8A8D;&#x8A3C;&#x30B3;&#x30FC;&#x30C9;&#x300E;{ $tfa_token }}&#x300F;&#x3092;&#x5165;&#x529B;&#x3057;&#x3066;&#x4E0B;&#x3055;&#x3044;&#xFF0E;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
-
-+++++++++++++++++++++++++++++++++++++<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
-&#x672C;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306F;&#x9001;&#x4FE1;&#x5C02;&#x7528;&#x3067;&#x3059;&#xFF0E;&#x3054;&#x8FD4;&#x4FE1;&#x9802;&#x3044;&#x3066;&#x3082;&#x304A;&#x7B54;&#x3048;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x306E;&#x3067;&#x3001;&#x3054;&#x4E86;&#x627F;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;
-
-@endcomponent
 </code></pre>
 <p><br></p>
 <h3 id="&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;&#x901A;&#x77E5;&#x65B9;&#x6CD5;&#xFF09;"><a name="&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;&#x901A;&#x77E5;&#x65B9;&#x6CD5;&#xFF09;" class="plugin-anchor" href="#&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;&#x901A;&#x77E5;&#x65B9;&#x6CD5;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53D7;&#x4FE1;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#xFF08;&#x901A;&#x77E5;&#x65B9;&#x6CD5;&#xFF09;</h3>
@@ -5933,8 +6065,8 @@ $ php artisan migrate
 </code></pre>
 <p><br></p>
 <h3 id="&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x30E2;&#x30C7;&#x30EB;"><a name="&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x30E2;&#x30C7;&#x30EB;" class="plugin-anchor" href="#&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x30E2;&#x30C7;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x30E2;&#x30C7;&#x30EB;</h3>
-<h4 id="&#x30FB;notifiable"><a name="&#x30FB;notifiable" class="plugin-anchor" href="#&#x30FB;notifiable"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Notifiable</h4>
-<p>&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x3068;&#x306A;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#xFF0C;Notifiable Trait&#x3092;&#x7D99;&#x627F;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;<code>notify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306E;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306E;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306E;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306E;<code>notify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
+<p>&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x3068;&#x306A;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;Notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7D99;&#x627F;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;<code>notify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html</a></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -5948,29 +6080,44 @@ $ php artisan migrate
     <span class="token keyword">use</span> <span class="token package">Notifiable</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="&#x30FB;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;notify&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>notify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
 <p>&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x304B;&#x3089;<code>notify</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x4EFB;&#x610F;&#x306E;Notification&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3059;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x901A;&#x77E5;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify" target="_blank">https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify</a></p>
 <pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>Controllers</span><span class="token punctuation">;</span>
+<span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FooNotification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="&#x30FB;notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;"><a name="&#x30FB;notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30FB;notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;</h4>
+<p>&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x3068;&#x306A;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;Notifiable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x3092;&#x7D99;&#x627F;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Models<span class="token punctuation">\</span>User</span><span class="token punctuation">;</span>
-<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>TfaTokenNotification</span><span class="token punctuation">;</span>
+<span class="token keyword">namespace</span> <span class="token package">App</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Foundation<span class="token punctuation">\</span>Auth<span class="token punctuation">\</span>User</span> <span class="token keyword">as</span> Authenticatable<span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Notifications<span class="token punctuation">\</span>Notifiable</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Authenticatable</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">/**
-     * TFA&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x901A;&#x77E5;&#x3057;&#x307E;&#x3059;&#xFF0E;
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">notifyTfaToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x30E6;&#x30FC;&#x30B6;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x51E6;&#x7406;</span>
-
-        <span class="token comment">// &#x901A;&#x77E5;&#x3059;&#x308B;</span>
-        <span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TfaTokenNotification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">use</span> <span class="token package">Notifiable</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+</code></pre>
+<p>Notification&#x30D5;&#x30A1;&#x30B5;&#x30FC;&#x30C9;&#x306B;&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x306E;&#x30E2;&#x30C7;&#x30EB;&#x3068;&#x901A;&#x77E5;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x6E21;&#x3059;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token class-name static-context">Notification</span><span class="token operator">::</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token variable">$users</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">FooNotification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;"><a name="&#x30FB;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;</h4>
+<p>&#x30AA;&#x30F3;&#x30C7;&#x30DE;&#x30F3;&#x30C9;&#x901A;&#x77E5;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x901A;&#x77E5;&#x5BFE;&#x8C61;&#x3068;&#x306A;&#x308B;&#x30E2;&#x30C7;&#x30EB;&#x304C;Notificable&#x30C8;&#x30EC;&#x30A4;&#x30C8;&#x306B;&#x4F9D;&#x5B58;&#x305B;&#x305A;&#x306B;&#x901A;&#x77E5;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model" target="_blank">https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications" target="_blank">https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications</a></li>
+</ul>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token class-name static-context">Notification</span><span class="token operator">::</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;mail&apos;</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token property">email_address</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;nexmo&apos;</span><span class="token punctuation">,</span> <span class="token variable">$user</span><span class="token operator">-&gt;</span><span class="token property">phone_number</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token string single-quoted-string">&apos;slack&apos;</span><span class="token punctuation">,</span> <span class="token variable">$slackMessage</span><span class="token operator">-&gt;</span><span class="token property">usl</span><span class="token punctuation">)</span>
+            <span class="token operator">-&gt;</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FooMotification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
 <h2 id="14-resource"><a name="14-resource" class="plugin-anchor" href="#14-resource"><i class="fa fa-link" aria-hidden="true"></i></a>14. Resource</h2>
@@ -6533,7 +6680,7 @@ $ php artisan db:seed --class=<span class="token tag"><span class="token tag"><s
 <h4 id="&#x30FB;register&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;boot&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;"><a name="&#x30FB;register&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;boot&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;" class="plugin-anchor" href="#&#x30FB;register&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;boot&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>register</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>boot</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x9055;&#x3044;</h4>
 <p>Laravel&#x306E;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;ServiceContainer&#x3078;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x306E;&#x6642;&#x306B;&#x306F;&#xFF0C;&#x307E;&#x305A;ServiceProvider&#x306E;<code>register</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#xFF0C;&#x305D;&#x306E;&#x5F8C;&#x306B;<code>boot</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;ServiceProvider&#x304C;&#x4ED6;&#x306E;ServiceProvider&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x3044;&#x3068;&#x304D;&#xFF0C;&#x3053;&#x308C;&#x306F;<code>boot</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x9069;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x305F;laravel&#x56FA;&#x6709;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x305F;laravel&#x56FA;&#x6709;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x305F;laravel&#x56FA;&#x6709;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x305F;Laravel&#x56FA;&#x6709;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>Laravel&#x306B;&#x306F;&#xFF0C;&#x305D;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x4F7F;&#x3046;&#x306B;&#x3042;&#x305F;&#x3063;&#x3066;&#xFF0C;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3082;&#x306E;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x306E;&#x578B;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3079;&#x304D;&#x3082;&#x306E;&#x3068;&#x305D;&#x3046;&#x3067;&#x306A;&#x3044;&#x3082;&#x306E;&#x304C;&#x3042;&#x308B;&#xFF08;&#x4F8B;&#xFF1A;Notification&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>handle</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>via</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;&#xFF0E;&#x3053;&#x306E;&#x9055;&#x3044;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30EA;&#x30BE;&#x30EB;&#x30D6;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#xFF0C;&#x3042;&#x308B;&#x3044;&#x306F;Laravel&#x306E;&#x5185;&#x90E8;&#x3067;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x306E;&#x9055;&#x3044;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>Laravel&#x306B;&#x306F;&#xFF0C;&#x305D;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x4F7F;&#x3046;&#x306B;&#x3042;&#x305F;&#x3063;&#x3066;&#xFF0C;&#x4F7F;&#x3044;&#x65B9;&#x304C;&#x56FA;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x306F;&#xFF0C;&#x5F15;&#x6570;&#x306E;&#x578B;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3079;&#x304D;&#x3082;&#x306E;&#x3068;&#x305D;&#x3046;&#x3067;&#x306A;&#x3044;&#x3082;&#x306E;&#x304C;&#x3042;&#x308B;&#xFF08;&#x4F8B;&#xFF1A;Notification&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>handle</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3084;<code>via</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;&#xFF0E;&#x3053;&#x306E;&#x9055;&#x3044;&#x306F;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x30EA;&#x30BE;&#x30EB;&#x30D6;&#x3092;&#x5B9F;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#xFF0C;&#x3042;&#x308B;&#x3044;&#x306F;Laravel&#x306E;&#x5185;&#x90E8;&#x3067;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x306E;&#x9055;&#x3044;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
 <p><br></p>
 <h3 id="migrationmacroserviceprovider"><a name="migrationmacroserviceprovider" class="plugin-anchor" href="#migrationmacroserviceprovider"><i class="fa fa-link" aria-hidden="true"></i></a>MigrationMacroServiceProvider</h3>
 <p>&#x8907;&#x6570;&#x306E;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x5171;&#x901A;&#x306E;&#x30AB;&#x30E9;&#x30E0;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#x3092;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#xFF0E;</p>
@@ -6857,7 +7004,7 @@ DB_HOST_READ=<span class="token tag"><span class="token tag"><span class="token 
 <h2 id="18-session"><a name="18-session" class="plugin-anchor" href="#18-session"><i class="fa fa-link" aria-hidden="true"></i></a>18. Session</h2>
 <h3 id="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;"><a name="&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x64CD;&#x4F5C;</h3>
 <h4 id="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><a name="&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x3088;&#x304F;&#x4F7F;&#x3046;&#x64CD;&#x4F5C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;</h4>
-<p>Request&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>session</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Store&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>FormRequest&#x30AF;&#x30E9;&#x30B9;&#x306E;<code>session</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;Store&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
 <table>
 <thead>
 <tr>
@@ -8249,7 +8396,7 @@ $ php artisan ui bootstrap --auth
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-09-02T00:17:51.184Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-02T00:22:03.430Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"next":{"title":"▶ ︎テスト","level":"1.4.3.4","depth":3,"path":"public/backend_php_testing.md","ref":"public/backend_php_testing.md","articles":[]},"previous":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_framework_laravel.md","mtime":"2021-09-04T07:49:31.745Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T06:45:12.431Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
