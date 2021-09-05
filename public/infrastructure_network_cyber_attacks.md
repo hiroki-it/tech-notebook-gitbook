@@ -333,6 +333,31 @@ Origin: http://example.co.jp
 Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>
 ```
 
+#### ・【対策】```Set-Cookie```ヘッダーのHttpOnly属性
+
+これを有効化した場合，```Set-Cookie```ヘッダーに```HttpOnly```属性が割り当てられるようになる．JavaScriptから```Cookie```ヘッダーにアクセスできなくできる．
+
+```http
+200 OK
+Set-Cookie: HttpOnly
+```
+
+#### ・【対策】```Set-Cookie```ヘッダーのsameSite属性
+
+```http
+200 OK
+Set-Cookie: SameSite=None
+```
+
+#### ・【対策】```Set-Cookie```ヘッダーのSecure属性
+
+これを有効化した場合，```Set-Cookie```ヘッダーに```Secure```属性が割り当てられるようになる．HTTPSプロトコルを使用した場合のみ，リクエストメッセージに```Cookie```ヘッダーを割り当てられるようになる．
+
+```http
+200 OK
+Set-Cookie: Secure
+```
+
 <br>
 
 ### パスワードリスト攻撃

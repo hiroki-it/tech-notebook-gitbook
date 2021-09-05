@@ -5937,6 +5937,54 @@ return [
 
 ### セッションの操作
 
+#### ・設定ファイル
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    'driver' => env('SESSION_DRIVER', 'file'),
+
+    'lifetime' => env('SESSION_LIFETIME', 120),
+
+    'expire_on_close' => false,
+
+    'encrypt' => false,
+
+    'files' => storage_path('framework/sessions'),
+
+    'connection' => env('SESSION_CONNECTION', null),
+
+    'table' => 'sessions',
+
+    'store' => env('SESSION_STORE', null),
+
+    'lottery' => [2, 100],
+
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
+    ),
+
+    'path'      => '/',
+
+    // Set-Cookieヘッダーのdomain属性に値を割り当てる．
+    'domain'    => env('SESSION_DOMAIN', null),
+
+    // Set-Cookieヘッダーのsecure属性を有効化する．
+    'secure'    => env('SESSION_SECURE_COOKIE', false),
+
+    // Set-CookieヘッダーのHttpOnly属性を有効化する．
+    'http_only' => true,
+
+    // Set-CookieヘッダーのsameSite属性に値を割り当てる．nullの場合，Laxとなる．
+    'same_site' => null,
+];
+```
+
 #### ・よく使う操作メソッド
 
 FormRequestクラスの```session```メソッドはStoreクラスを返却する．このクラスのメソッドを使用して，セッションを操作できる．
@@ -6606,30 +6654,43 @@ $url = url('/foos');
 
 #### ・ガードとは
 
-認証方法を定義する．
+ドライバーとプロバイダーを定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| Webガード    | セッション，Cookie，storageを使用して，認証を行う．          |
-| APIガード    | アクセストークンを使用して認証を行う．アクセストークンは，データベースで管理する． |
+| Webガード    | セッションIDを用いたForm認証のために使用する．               |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
 
-#### ・ドライバー
+#### ・カスタムガード
+
+Laravelが標準で持たないドライバーとプロバイダーをもつガードを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
+
+APIガードの認証で使用するトークンをJWTに変更したい時には，以下のパッケージがおすすめ．
+
+参考：https://github.com/tymondesigns/jwt-auth
+
+<br>
+
+### ドライバー
+
+#### ・ドライバーとは
 
 
-| ドライバーの種類  | 実装クラス         | 備考                                                         |
-| ----------------- | ------------------ | ------------------------------------------------------------ |
-| sessionドライバー | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| webドライバー     | RequestGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/RequestGuard.html |
-| tokenドライバー   | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
+| ドライバーの種類  | 認証の種類                         | 実装クラス         | 備考                                                         |
+| ----------------- | ---------------------------------- | ------------------ | ------------------------------------------------------------ |
+| sessionドライバー | セッションIDを用いたForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
+| tokenドライバー   | Bearer認証，APIキー認証，OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
 
 ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選んだ場合は，TokenGuardクラスが返却される．
 
 参考：
 
-- https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 - https://teratail.com/questions/171582
+- https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
 - https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
 
@@ -6668,9 +6729,9 @@ return [
 
 <br>
 
-### Form認証
+### セッションIDを用いたForm認証
 
-#### ・Form認証を使いたい場合
+#### ・sessionドライバー
 
 sessionドライバーを選択する．
 
@@ -7265,11 +7326,11 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 ### Sanctumパッケージとは
 
-APIキー認証とForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
+APIキー認証とセッションIDを用いたForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
-APIキー認証とForm認証については，以下のリンクを参考にせよ．
+APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html
 

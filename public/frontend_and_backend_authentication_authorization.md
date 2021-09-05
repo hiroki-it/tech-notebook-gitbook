@@ -4,7 +4,7 @@
 
 ### HTTP認証とは
 
-ログイン時にHTTP通信の中で認証を行うこと．リクエストヘッダーとレスポンスヘッダーにおいて，認証方法としての認証スキームを選べる．認証スキームの種類には，『Basic認証』，『Digest認証』，『Bearer認証』などがある．
+認証時にHTTP通信の中で認証を行うこと．リクエストヘッダーとレスポンスヘッダーにおいて，方法としての認証スキームを選べる．認証スキームの種類には，『Basic認証』，『Digest認証』，『Bearer認証』などがある．
 
 参考：
 
@@ -29,24 +29,24 @@
 1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
 2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
 
-```http
-401 Unauthorized
-WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
-```
+        ```http
+        401 Unauthorized
+        WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+        ```
 
 3. 『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
 
-```http
-POST http://example.co.jp/foo-form.php HTTP/2
-authorization: Basic bG9naW46cGFzc3dvcmQ=
-```
+        ```http
+        POST http://example.co.jp/foo-form HTTP/2
+        authorization: Basic bG9naW46cGFzc3dvcmQ=
+        ```
 
 4. サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．
 
-```http
-200 OK
-WWW-Authenticate: Basic realm=""
-```
+        ```http
+        200 OK
+        WWW-Authenticate: Basic realm=""
+        ```
 
 <br>
 
@@ -61,7 +61,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```http
-POST http://example.co.jp/foo-form.php HTTP/2
+POST http://example.co.jp/foo-form HTTP/2
 authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -71,46 +71,68 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 #### ・Bearer認証とは
 
-ログイン時にBearerトークンを使用する認証スキームのこと．
+認証時にBearerトークンを使用する認証スキームのこと．
 
-#### ・使用可能なアクセストークン
+#### ・Bearerトークン（署名なしトークン）とは
 
-使用できるアクセストークンの種類については，別項目の説明を参照せよ．
+単なる文字列で定義されたアクセストークン．Bearer認証にて，トークンとして使用する．署名なしトークンとも呼ばれ，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていればそれを本人として認可する．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを使用するBearer認証については，別項目の説明を参考にせよ．
 
-#### ・アクセストークンのクライアント保持
-
-ブラウザの設定によっては，アクセストークンはクライアントで保持できる．Chromeの場合は，LocalStorage／SessionStorageに保持される．確認方法については，以下のリンクを参考にせよ．LocalStorageによる保存には，XSSの危険性がある．
-
-参考：
-
-- https://developer.chrome.com/docs/devtools/storage/localstorage/
-- https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+参考：https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
 
 #### ・Bearer認証の仕組み
 
-1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
-2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，アクセストークンを求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
+1. 指定されたエンドポイントに対して，```POST```リクエストを送信する．この時，```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする．必要なボディパラメータはAPIの提供元によって異なる．クライアントID，付与タイプ，などが必要なことが多い．
 
-```http
-401 Unauthorized
-WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
-```
+参考：
 
-3. 発行されたトークンを```Authorization```ヘッダーに割り当てて，リクエストを送信する．ここでは詳しく言及しないが，アクセストークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
+- https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+- https://ja.developer.box.com/reference/post-oauth2-token/#request
 
-参考：https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
+    ```http
+    POST http://example.co.jp/foo HTTP/2
+    
+    # ボディ
+    client_id=*****&grant_type=client_credentials&scope=messaging:push
+    ```
 
-```http
-POST http://example.co.jp/foo-form.php HTTP/2
-authorization: Bearer <Bearerトークン，JWT，など>
-```
+2. レスポンスボディにアクセストークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定可能な認証スキーマ，などが提供されることが多い．
+
+参考：
+
+- ttps://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+- https://ja.developer.box.com/reference/resources/access-token/
+
+    ```http
+    200 OK
+    X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
+    Content-Type: application/json
+    
+    {
+      "access_token":"*****",
+      "expires_in":3600,
+      "scope":"messaging:push",
+      "token_type":"Bearer"
+    }
+    ```
+
+3. 発行されたトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て，リクエストを送信する．ここでは詳しく言及しないが，アクセストークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
+
+参考：
+
+- https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
+- https://ja.developer.box.com/reference/post-oauth2-token/#response
+
+    ```http
+    POST http://example.co.jp/foo HTTP/2
+    authorization: Bearer <Bearerトークン>
+    ```
 
 4. サーバは，アクセストークンを照合し，合致していれば，認証後ページのレスポンスを送信する．
 
-```http
-200 OK
-WWW-Authenticate: Bearer realm=""
-```
+    ```http
+    200 OK
+    WWW-Authenticate: Bearer realm=""
+    ```
 
 #### ・正常系／異常系レスポンス
 
@@ -140,6 +162,15 @@ WWW-Authenticate: Bearer realm="token_required"
 WWW-Authenticate: Bearer error="insufficient_scope"
 ```
 
+#### ・```Authorization```ヘッダーのトークンのクライアント保持
+
+不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，LocalStorage／SessionStorageに保持される．．LocalStorageはJavaScriptからアクセスされてしまうため，XSSの危険性がある．これらの確認方法については，以下のリンクを参考にせよ
+
+参考：
+
+- https://developer.chrome.com/docs/devtools/storage/localstorage/
+- https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+
 <br>
 
 ### OAuth認証
@@ -156,43 +187,50 @@ OAuthの項目を参考にせよ．
 
 #### ・Form認証とは
 
-ログイン時にセッションIDを使用する認証方法のこと．認証スキームには属していない．```Cookie```ヘッダーを使用した認証のため，『`Cookieベースの認証』ともいう．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
+認証時に```Cookie```ヘッダーの値を使用する方法のこと．『`Cookieベースの認証』ともいう．認証スキームには属していない．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
 参考：
 
 - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
-認証方法以外のセッションの仕様については，以下のノートを参考にせよ．
+#### ・セッションIDを用いたForm認証の場合
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
-
-#### ・セッションIDのクライアント保持
-
-ブラウザの設定によっては，セッションIDはクライアントで保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
-
-参考：https://developer.chrome.com/docs/devtools/storage/cookies/
-
-#### ・Form認証の仕組み
+セッションIDを```Cookie```ヘッダーに割り当て，リクエストを送信する．
 
 1. 最初，ユーザ作成の段階で，クライアントがログイン情報をサーバに送信する．
 2. サーバは，ログイン情報をデータベースに保存する．
-3. 次回のログイン時に，再びユーザがログイン情報を送信する．
+3. 次回の認証時に，再びユーザがログイン情報を送信する．
 4. サーバは，データベースのログイン情報を照合し，ログインを許可する．
 5. サーバは，セッションIDを生成する．また，レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
 
-```http
-200 OK
-Set-Cookie: sessionId=<セッションID>
-```
+    ```http
+    200 OK
+    Set-Cookie: sessionId=<セッションID>
+    ```
 
 6. サーバは，セッションIDとユーザIDを紐づけてサーバ内に保存する．
 7. さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めてログイン情報を送信せずに，素早くログインできるようになる．
 
-```http
-POST http://example.co.jp/foo-form.php HTTP/2
-cookie: PHPSESSID=<セッションID>
-```
+    ```http
+    POST http://example.co.jp/foo-form HTTP/2
+    cookie: PHPSESSID=<セッションID>
+    ```
+
+#### ・トークンを用いたForm認証の場合
+
+トークンを```Cookie```ヘッダーに割り当て，リクエストを送信する．この時のトークンの選択肢として，単なるランダムな文字列やJWTがある．
+
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
+
+#### ・```Cookie```ヘッダーの値のクライアント保持
+
+再利用のため，```Cookie```ヘッダーに割り当てるための値（セッションID，トークン）は，ブラウザを通して，ローカルPCに有効期限に応じた間だけ保持できる．またはブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://developer.chrome.com/docs/devtools/storage/cookies/
+- https://qiita.com/cobachan/items/05fa537a4ffcb189d001
 
 <br>
 
@@ -242,14 +280,14 @@ authorization: <Personal Acccess Token>
 
 #### ・Two Step Verificationとは
 
-ログイン時に段階的に二つの認証方法を設定し，クライアントを照合する方法のこと．
+認証時に段階的に二つの方法を設定し，クライアントを照合する方法のこと．
 
 | 一段階目の認証例 | 二段階目の認証例 | 説明                                                         | 備考                                         |
 | ---------------- | ---------------- | ------------------------------------------------------------ | -------------------------------------------- |
-| IDとパスワード   | IDとパスワード   | IDとパスワードによる認証方法の後，別のIDとパスワードによる認証方法を設定する． |                                              |
-|                  | 秘密の質問       | IDとパスワードによる認証方法の後，質問に対してあらかじめ設定した回答による認証方法を設定する． |                                              |
-|                  | SMS              | IDとパスワードによる認証方法の後，SMS宛に送信した認証コードによる認証方法を設定する． | 異なる要素のため，これは二要素認証でもある． |
-|                  | 指紋             | IDとパスワードによる認証方法の後，指紋の解析結果による認証方法を設定する． | 異なる要素のため，これは二要素認証でもある． |
+| IDとパスワード   | IDとパスワード   | IDとパスワードによる方法の後，別のIDとパスワードによる方法を設定する． |                                              |
+|                  | 秘密の質問       | IDとパスワードによる方法の後，質問に対してあらかじめ設定した回答による方法を設定する． |                                              |
+|                  | SMS              | IDとパスワードによる方法の後，SMS宛に送信した認証コードによる方法を設定する． | 異なる要素のため，これは二要素認証でもある． |
+|                  | 指紋             | IDとパスワードによる方法の後，指紋の解析結果による方法を設定する． | 異なる要素のため，これは二要素認証でもある． |
 
 <br>
 
@@ -257,7 +295,7 @@ authorization: <Personal Acccess Token>
 
 #### ・Two Factor Authorizationとは
 
-二段階認証のうちで特に，ログイン時に異なる要素の認証方法を使用して，段階的にクライアントを照合すること方法のこと．後述するOAuth認証を組み込んでも良い．
+二段階認証のうちで特に，認証時に異なる要素の方法を使用して，段階的にクライアントを照合すること方法のこと．後述するOAuth認証を組み込んでも良い．
 
 | 一要素目の認証例       | 二要素目の認証例                                             |
 | ---------------------- | ------------------------------------------------------------ |
@@ -332,7 +370,7 @@ Location: https://example.com/foo.php?code=123&state=abc
 
 #### ・使用される認証スキーム
 
-OAuth認証では，認証スキーマとしてBearer認証が選ばれることが多く，認可サーバが発行するアクセストークンとしては，BearerトークンやJWTが用いられる．AWSやGitHubは，独自の認証スキームを使用している．なお，認可サーバによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
+OAuth認証では，認証スキーマとしてBearer認証が選ばれることが多く，AWSやGitHubは，独自の認証スキームを使用している．なお，認可サーバによって発行されたBearerトークンは，```Authorization```ヘッダー，リクエストボディ，クエリパラメータのいずれかに割り当てて送信できる．
 
 #### ・付与タイプ
 
@@ -362,44 +400,46 @@ OAuth認証のトークンの付与方法には種類がある．
 
 <br>
 
-## 02-02. アクセストークンの種類
+## 03. JWT：JSON Web Token
 
-### Bearerトークン
+### JWTとは
 
-#### ・Bearerトークンとは
-
-単なる文字列で定義されたアクセストークン．認証フェーズと認可フェーズにおいて，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていれば，それを本人と見なす．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを使用するBearer認証については，別項目の説明を参考にせよ．
-
-<br>
-
-### JWT：JSON Web Token
-
-#### ・JWTとは
-
-JSON型で実装されたアクセストークン．OAuth認証のアクセストークンとして使用されることもある．JWTトークンを使用するBearer認証については，別項目の説明を参考にせよ．
+『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして使用できる．ランダムな文字列をこれら認証のトークンとするより，JWTを用いた方がより安全である．
 
 ```http
 GET http://example.co.jp/bar.php HTTP/2
-authorization: Bearer <JWT>
+authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
-#### ・JWTを用いた認証フェーズと認可フェーズ
+JWTをBearerトークンとして使用するBearer認証については，別項目の説明を参考にせよ．
 
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
+参考：
 
-#### ・JWTの構造
+- https://meetup-jp.toast.com/3511
+- https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
 
-**＊実装例＊**
+<br>
 
-JWTは，エンコードされたヘッダー，ペイロード，署名，から構成される．
+### JWTの生成
+
+#### ・JWT生成の全体像
+
+JWTは以下のサイトから取得できる．
+
+参考：https://jwt.io/
+
+JWTの生成時に，例えばJavaScriptであれば，以下のような処理が実行されている．
 
 ```javascript
+// <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
 const token = base64urlEncoding(header) + "." +
       base64urlEncoding(payload) + "." +
       base64urlEncoding(signature)
 ```
 
-ここで，ヘッダーは以下の構造からなる．署名のための暗号化アルゴリズムは，『```HS256```』『```RS256```』『```ES256```』『```none```』から選択できる．
+#### ・ヘッダーのJSONデータの生成
+
+ヘッダーは以下のJSONデータで定義される．署名のための暗号化アルゴリズムは，『```HS256```』『```RS256```』『```ES256```』『```none```』から選択できる．
 
 ```javascript
 const header = {
@@ -408,7 +448,9 @@ const header = {
 }
 ```
 
-ここで，ペイロードは以下の構造からなる．ペイロードには，実際に送信したいJSONを設定するようにする．必ず設定しなければならない『予約済みクレーム』と，ユーザ側が自由に定義できる『プライベートクレーム』がある．
+#### ・ペイロードのJSONデータの生成
+
+ペイロードは以下のJSONデータで定義される．ペイロードには，実際に送信したいJSONを設定するようにする．必ず設定しなければならない『予約済みクレーム』と，ユーザ側が自由に定義できる『プライベートクレーム』がある．
 
 | 予約済みクレーム名         | 役割                      | 例       |
 | -------------------------- | ------------------------- | -------- |
@@ -420,11 +462,17 @@ const header = {
 
 ```javascript
 const payload = {
-    "sub" : "123456789",
+    "sub": "foo",
+    "aud": "foo",
+    "iss": "https://example.com",
+    "exp": 1452565628,
+    "iat": 1452565568
 }
 ```
 
-ここで，署名は以下の構造からなる．
+#### ・署名のJSONデータの生成
+
+例えばJavaScriptであれば，以下のような処理が実行されている．
 
 ```javascript
 const signature = HMACSHA256(
@@ -433,7 +481,11 @@ const signature = HMACSHA256(
 )
 ```
 
-#### ・ JWTのクライアント保持方法と安全度の比較
+<br>
+
+### JWTのクライアント保持
+
+#### ・ 保持方法と安全度の比較
 
 参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 
