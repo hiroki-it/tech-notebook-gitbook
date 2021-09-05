@@ -50,7 +50,7 @@
 
 | 変数名                   | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| DD_APM_ENABLED           | APMエージェントを有効化し，分散トレースを収集する．APMでは，分散トレースを元にして，サービス間の関係がグラフ化される．<br>参考：<br>・https://docs.datadoghq.com/ja/getting_started/tracing/<br>・https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D | Fargateを使用している場合，アプリケーション側では，分散トレースを送信できるように，ライブラリのインストールが必要である．<br>参考：<br>・https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%8F%8E%E9%9B%86<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
+| DD_APM_ENABLED           | APMエージェントを有効化し，分散トレースを収集する．APMでは，分散トレースを元にして，サービス間の関係がグラフ化される．<br>参考：<br>・https://docs.datadoghq.com/ja/getting_started/tracing/<br>・https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D | Fargateを使用している場合，アプリケーション側では，分散トレースを送信できるように，ライブラリのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
 | DD_LOGS_ENABLED          | -                                                            |                                                              |                                      |
 | DD_PROCESS_AGENT_ENABLED | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
@@ -72,12 +72,6 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux
 
-#### ・トレーシングライブラリ
-
-トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，アプリケーションコンテナでトレーシングライブラリをインストールする必要がある．
-
-参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
-
 #### ・環境変数
 
 一部の環境変数は，Dockerエージェントの環境変数と重なる．
@@ -87,6 +81,60 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 | 変数名       | 説明                                |      |
 | ------------ | ----------------------------------- | ---- |
 | DD_LOG_LEVEL | APMに送信するログレベルを設定する． |      |
+
+<br>
+
+### トレーシングライブラリ
+
+#### ・トレーシングライブラリとは
+
+トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，アプリケーションコンテナでトレーシングライブラリをインストールする必要がある．
+
+参考：
+
+- https://docs.datadoghq.com/ja/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+- https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+
+#### ・PHPの場合
+
+**＊実装例＊**
+
+Dockerfileにて，パッケージをインストールする．
+
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+
+```dockerfile
+ENV DD_TRACE_VERSION=0.63.0
+
+# GitHubからパッケージをダウンロード
+RUN curl -Lo datadog-php-tracer.tar.gz https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer-${DD_TRACE_VERSION}.x86_64.tar.gz \
+  # 解凍
+  && tar -zxvf datadog-php-tracer.tar.gz \
+  # 残骸ファイルを削除
+  && rm datadog-php-tracer.tar.gz
+```
+
+また，環境変数を使用できる．APMのサービスのタグ名に反映される．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+#### ・Node.jsの場合
+
+**＊実装例（TypeScriptやモジュールバンドルを使っている場合）＊**
+
+エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースライブラリを読み込み，初期化する．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+
+```typescript
+import 'dd-trace/init'
+
+// フレームワークを含むパッケージのインポートが続く
+```
+
+また，初期化時に設定した環境変数を使用できる．APMのサービスのタグ名に反映される．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 

@@ -1804,7 +1804,11 @@ class DogOrder
 
 デザインパターンの一つ．一例として，以下のメソッドを持つ．具体的な実装については，インターフェースリポジトリの実装を参考にせよ．
 
-参考：https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html
+参考：
+
+- https://codewithshadman.com/repository-pattern-csharp/
+- https://sf9v.github.io/posts/generating-the-repository-pattern-in-go/#introduction
+- https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
 
 | メソッド名        | 処理内容                                       | 引数型           | 返却値型                   |
 | ----------------- | ---------------------------------------------- | ---------------- | -------------------------- |
@@ -2182,12 +2186,20 @@ class DogComboFactory
 
 ### イベントリスナー（イベントハンドラー）
 
+#### ・イベントリスナーとは
+
 ドメインイベントが発生した場合に，それに紐づく処理を実行する．フレームワークの機能に依存することになるため，実装の詳細をインフラ層におく．
 
 参考：
 
-- https://softwareengineering.stackexchange.com/questions/325996/ddd-where-to-place-domain-event-handlers
+- https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
+
+#### ・命名規則
+
+イベントでリスナーを使い回さずに，各イベントごとにリスナーを作成する．そのため，名前は『イベント名』＋Listener（Handler）となる．
+
+参考：https://docs.microsoft.com/ja-jp/dynamicsax-2012/developer/naming-conventions-delegates-and-event-handlers#event-handler-naming-conventions
 
 <br>
 

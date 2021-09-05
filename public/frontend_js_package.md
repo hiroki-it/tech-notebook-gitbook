@@ -6,8 +6,27 @@
 
 #### ・バージョンを定義
 
-```json
-
+```shell
+{
+  # npmパッケージ名．全てのnpmパッケージの中で，一意の名前でなければならない．
+  "name": "foo-package",
+  "description": "foo package ever",
+  "license": "MIT",
+  "version": "1.0.0",
+  "bin": "./cli.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  # 本番環境と開発環境で依存するパッケージ
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  # 開発環境のみ依存するパッケージ
+  "devDependencies": {
+    "eslint": "^5.14.1"
+  }
+}
 ```
 
 <br>
@@ -28,6 +47,14 @@ $ npm install
 
 ```shell
 $ npm install --force
+```
+
+#### ・package.jsonの```dependencies```キーに書き込む
+
+デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
+
+```shell
+$ npm install --save
 ```
 
 <br>
@@ -78,4 +105,54 @@ $ npm run <エイリアス名>
 ```shell
 $ export NODE_OPTIONS="--max-old-space-size=2048"
 ```
+
+<br>
+
+## 02. モジュールバンドル
+
+### モジュールバンドルとは
+
+<br>
+
+### 機能
+
+#### ・読み込むパッケージをまとめる
+
+参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
+
+**＊例＊**
+
+以下のようなHTMLファイルがあるとする．
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webpack tutorial</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
+```
+
+モジュールバンドルは，scriptタグでのパッケージの読み込みをまとめる．これがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，ページの読み込みが早くなる．
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>webpack tutorial</title>
+</head>
+<body>
+<!-- jQueryもバンドルされたファイル -->
+<script src="js/bundle.js"></script>
+</body>
+</html>
+```
+
+
 

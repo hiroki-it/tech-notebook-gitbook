@@ -30,9 +30,13 @@
 
 #### ・サービスとは
 
-マイクロサービスアーキテクチャにおけるコンポーネントのこと．サービスのロジックの粒度は，境界付けられたコンテキストになるようにする．特定のサービスが他のサービスに侵食され，境界付けられたコンテキストの凝集度が低くならないようにするために，受信したデータをまずはそのサービスにあった概念に変換できるACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．
+マイクロサービスアーキテクチャにおけるコンポーネントのこと．サービスのロジックの粒度は，境界付けられたコンテキストになるようにする．特定のサービスが他のサービスに侵食され，コンテキストの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
 
-参考：https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
+参考：
+
+- https://github.com/czeslavo/process-manager
+- https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
+- https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
 
 ![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
 
@@ -137,6 +141,12 @@
 サービス間で分散してしまう各ログを，一意なIDで紐づける方法．
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
+
+#### ・モニタリングサービス
+
+Datadogによる分散トレースの監視については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html
 
 <br>
 

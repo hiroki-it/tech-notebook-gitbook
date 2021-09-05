@@ -71,11 +71,15 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 #### ・Bearer認証とは
 
-ログイン時にBearerトークンを使用する認証スキームのこと．使用できるアクセストークンの種類については，別項目の説明を参照せよ．
+ログイン時にBearerトークンを使用する認証スキームのこと．
+
+#### ・使用可能なアクセストークン
+
+使用できるアクセストークンの種類については，別項目の説明を参照せよ．
 
 #### ・アクセストークンのクライアント保持
 
-最初の認証後，アクセストークンはクライアントで保持される．Chromeの場合は，LocalStorage／SessionStorageに保持される．確認方法については，以下のリンクを参考にせよ．
+ブラウザの設定によっては，アクセストークンはクライアントで保持できる．Chromeの場合は，LocalStorage／SessionStorageに保持される．確認方法については，以下のリンクを参考にせよ．LocalStorageによる保存には，XSSの危険性がある．
 
 参考：
 
@@ -92,7 +96,9 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 WWW-Authenticate: Bearer realm="<認証領域>", charaset="UTF-8"
 ```
 
-3. 発行されたトークンを```Authorization```ヘッダーに割り当てて，リクエストを送信する．
+3. 発行されたトークンを```Authorization```ヘッダーに割り当てて，リクエストを送信する．ここでは詳しく言及しないが，アクセストークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
+
+参考：https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 
 ```http
 POST http://example.co.jp/foo-form.php HTTP/2
@@ -150,7 +156,7 @@ OAuthの項目を参考にせよ．
 
 #### ・Form認証とは
 
-ログイン時にセッションIDを使用する認証方法のこと．認証スキームには属していない．```Cookie```ヘッダーを使用した認証のため，『`Cookieベースの認証』ともいう．
+ログイン時にセッションIDを使用する認証方法のこと．認証スキームには属していない．```Cookie```ヘッダーを使用した認証のため，『`Cookieベースの認証』ともいう．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
 参考：
 
@@ -163,7 +169,7 @@ OAuthの項目を参考にせよ．
 
 #### ・セッションIDのクライアント保持
 
-最初の認証後，セッションIDはクライアントで保持される．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
+ブラウザの設定によっては，セッションIDはクライアントで保持できる．Chromeの場合は，Cookieストレージに保持される．確認方法については，以下のリンクを参考にせよ．
 
 参考：https://developer.chrome.com/docs/devtools/storage/cookies/
 
@@ -177,7 +183,6 @@ OAuthの項目を参考にせよ．
 
 ```http
 200 OK
-# レスポンスヘッダーの場合
 Set-Cookie: sessionId=<セッションID>
 ```
 
@@ -186,7 +191,6 @@ Set-Cookie: sessionId=<セッションID>
 
 ```http
 POST http://example.co.jp/foo-form.php HTTP/2
-# リクエストヘッダーの場合
 cookie: PHPSESSID=<セッションID>
 ```
 
@@ -208,7 +212,6 @@ cookie: PHPSESSID=<セッションID>
 
 ```http
 GET http://example.co.jp/bar.php HTTP/2
-# リクエストヘッダー
 x-api-key: <APIキー>
 ```
 
@@ -224,7 +227,6 @@ x-api-key: <APIキー>
 
 ```http
 GET http://example.co.jp/bar.php HTTP/2
-# リクエストヘッダー
 authorization: <Personal Acccess Token>
 ```
 
@@ -368,13 +370,22 @@ OAuth認証のトークンの付与方法には種類がある．
 
 単なる文字列で定義されたアクセストークン．認証フェーズと認可フェーズにおいて，実際に認証された本人かどうかを判定する機能は無く，トークンを持っていれば，それを本人と見なす．そのため，トークンの文字列が流出してしまわないよう，厳重に管理する必要がある．Bearerトークンを使用するBearer認証については，別項目の説明を参考にせよ．
 
-＼<br>
+<br>
 
 ### JWT：JSON Web Token
 
 #### ・JWTとは
 
 JSON型で実装されたアクセストークン．OAuth認証のアクセストークンとして使用されることもある．JWTトークンを使用するBearer認証については，別項目の説明を参考にせよ．
+
+```http
+GET http://example.co.jp/bar.php HTTP/2
+authorization: Bearer <JWT>
+```
+
+#### ・JWTを用いた認証フェーズと認可フェーズ
+
+![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
 #### ・JWTの構造
 
@@ -422,6 +433,15 @@ const signature = HMACSHA256(
 )
 ```
 
-#### ・JWTを用いた認証フェーズと認可フェーズ
+#### ・ JWTのクライアント保持方法と安全度の比較
 
-![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
+参考：https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
+
+| クライアント保持方法 | 組み合わせ             | おすすめ度 | コメント                                                     |
+| :------------------- | ---------------------- | :--------- | :----------------------------------------------------------- |
+| localStorage         |                        | △〜×       | XSSでJWTが盗まれる可能性がある．                             |
+| ```Cookie```ヘッダー | プリフライトリクエスト | △          | Access-Control-Max-Ageの期間内だとCSRFでJWTが盗まれる可能性がある． |
+| ```Cookie```ヘッダー | CSRFトークン           | ◯          |                                                              |
+| SameSiteCookie       |                        | ◯          | SPAとAPIが同一オリジンの必要がある．                         |
+
+<br>

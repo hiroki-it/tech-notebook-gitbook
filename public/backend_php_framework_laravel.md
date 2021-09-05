@@ -1768,7 +1768,7 @@ class FooController extends Controller
 
 ## 	06. Event／Listener
 
-### Model Event
+### Event
 
 #### ・データベースアクセス系
 
@@ -1781,21 +1781,15 @@ Eloquentモデルがデータベースに対して処理を行う前後にイベ
 
 namespace Illuminate\Database\Eloquent\Concerns;
 
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Events\NullDispatcher;
-use Illuminate\Support\Arr;
-use InvalidArgumentException;
+use Closure;
 
 trait HasEvents
 {
- 
-    // ～ 省略 ～    
-    
+    // ～ 省略 ～
+
     /**
-     * ModelのイベントをDispatcherに登録します．
-     *
      * @param  string  $event
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */
     protected static function registerModelEvent($event, $callback)
@@ -1803,56 +1797,52 @@ trait HasEvents
         if (isset(static::$dispatcher)) {
             $name = static::class;
 
+            // ModelのイベントをDispatcherに登録します．
             static::$dispatcher->listen("eloquent.{$event}: {$name}", $callback);
         }
     }
-    
+
     /**
-     * ModelのイベントをDispatcherに登録します．
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */
     public static function saved($callback)
     {
+        // ModelのイベントをDispatcherに登録します．
         static::registerModelEvent("saved", $callback);
     }
 
     /**
-     * Modelのsaveメソッド実行後イベントをDispatcherに登録します．
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */
     public static function updated($callback)
     {
+        // Modelのsaveメソッド実行後イベントをDispatcherに登録します．
         static::registerModelEvent("updated", $callback);
     }
 
     /**
-     * Modelのcreateメソッド実行後イベントをDispatcherに登録します．
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */
     public static function created($callback)
     {
+        // Modelのcreateメソッド実行後イベントをDispatcherに登録します．
         static::registerModelEvent("created", $callback);
     }
 
     /**
-     * Modelのdeleteメソッド実行後イベントをDispatcherに登録します．
-     *    
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @return void
      */
     public static function deleted($callback)
     {
+        // Modelのdeleteメソッド実行後イベントをDispatcherに登録します．
         static::registerModelEvent("deleted", $callback);
     }
-    
-    // ～ 省略 ～       
-    
+
+    // ～ 省略 ～
 }
 ```
 
@@ -1871,6 +1861,9 @@ namespace Illuminate\Database\Eloquent;
 
 abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
 {
+    /**
+     * @param array $attributes
+     */
     public function __construct(array $attributes = [])
     {
         // bootメソッドが実行されていなければコール
@@ -1883,6 +1876,9 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         $this->fill($attributes);
     }
 
+    /**
+     *
+     */
     protected function bootIfNotBooted()
     {
         if (! isset(static::$booted[static::class])) {
@@ -1897,12 +1893,18 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         }
     }
 
+    /**
+     *
+     */
     protected static function boot()
     {
         // bootTraitsをコール
         static::bootTraits();
     }
-    
+
+    /**
+     *
+     */
     protected static function bootTraits()
     {
         $class = static::class;
@@ -1912,11 +1914,11 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         static::$traitInitializers[$class] = [];
 
         foreach (class_uses_recursive($class) as $trait) {
-            
+
             // useされたTraitにboot+<クラス名>のメソッドが存在するかを判定．
             $method = "boot".class_basename($trait);
             if (method_exists($class, $method) && ! in_array($method, $booted)) {
-                
+
                 // 指定した静的メソッドをコール．
                 forward_static_call([$class, $method]);
 
@@ -1931,10 +1933,9 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
                 );
             }
         }
-    }    
-    
-// ～ 省略 ～
+    }
 
+    // ～ 省略 ～
 }
 ```
 
@@ -2088,6 +2089,10 @@ class ExecutorConstant
 
 <br>
 
+### Listener
+
+<br>
+
 ## 07. Exception
 
 ### 例外クラス
@@ -2222,6 +2227,14 @@ use Illuminate\Support\Facades\Foo;
 // Facade利用
 $result = Foo::method();
 ```
+
+#### ・Facadeを使用した方が良い場合
+
+Facadeがトレイトの代わりになる場合，Facadeを使用することにより，責務がドメインモデルに集中せずにすむ．
+
+**＊例＊**
+
+NotifiableトレイトをUserクラスで使用せずに，Notificationファサードによるオンデマンド通知を使用することにより，Userクラスが通知処理の責務を持たずに済む．詳しくは，オンデマンド通知の説明を参考にせよ．
 
 #### ・標準登録されたFacadeクラスの種類
 
@@ -2792,7 +2805,7 @@ Storage::put("file.txt", "file.txt");
 
 #### ・Validatorファサードとは
 
-バリデーション処理を提供する．Requestクラスの```validated```メソッドや```validate```メソッドの代わりに，Validatorファサードを使用しても良い．
+バリデーション処理を提供する．FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりに，Validatorファサードを使用しても良い．
 
 #### ・Validatorクラス，```fails```メソッド
 
@@ -2839,7 +2852,7 @@ class FooController extends Controller
 
 #### ・```validate```メソッド
 
-Validatorクラスの```validate```メソッドを使用すると，Requestクラスの```validate```メソッドと同様の処理が実行される．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+Validatorクラスの```validate```メソッドを使用すると，FormRequestクラスの```validate```メソッドと同様の処理が実行される．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
 
 ```php
 <?php
@@ -2956,6 +2969,10 @@ $factory->define(User::class, function (Faker $faker) {
 });
 ```
 
+<br>
+
+### 初期ダミーデータの量産
+
 #### ・Seederによるダミーデータ量産
 
 Factoryにおける定義を基にして，指定した数だけダミーデータを量産する．
@@ -2973,8 +2990,6 @@ use Illuminate\Database\Seeder;
 class DummyUsersSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
      * @return void
      */
     public function run()
@@ -3047,6 +3062,37 @@ class DatabaseSeeder extends Seeder
     }
 }
 ```
+
+#### ・HasFactoryトレイト
+
+```php
+class User
+{
+    use HasFactory;
+}
+```
+
+
+
+```php
+<?php
+
+use App\Domain\Entity\User;
+use Illuminate\Database\Seeder;
+
+class DummyUsersSeeder extends Seeder
+{
+    /**
+     * @return void
+     */
+    public function run()
+    {
+        $user = User::factory()->make();
+    }
+}
+```
+
+参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 <br>
 
@@ -3217,7 +3263,7 @@ $ php artisan make:middleware <Middleware名>
 
 #### ・BeforeMiddleware
 
-ルーティング時のコントローラメソッドのコール前に実行する処理を設定できる．一連の処理を終えた後，Requestクラスを，次のMiddlewareクラスやControllerクラスに渡す必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+ルーティング時のコントローラメソッドのコール前に実行する処理を設定できる．一連の処理を終えた後，FormRequestクラスを，次のMiddlewareクラスやControllerクラスに渡す必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
 
 **＊実装例＊**
 
@@ -3238,7 +3284,7 @@ class FooBeforeMiddleware
     {
         // 何らかの処理
 
-        // 次のMiddlewareクラスやControllerクラスに，Requestクラスを渡す．
+        // 次のMiddlewareクラスやControllerクラスに，FormRequestクラスを渡す．
         return $next($request);
     }
 }
@@ -3246,7 +3292,7 @@ class FooBeforeMiddleware
 
 #### ・AfterMiddleware
 
-コントローラメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる．あらかじめ，Requestクラスを，前のMiddlewareクラスやControllerクラスから受け取る必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+コントローラメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる．あらかじめ，FormRequestクラスを，前のMiddlewareクラスやControllerクラスから受け取る必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
 
 **＊実装例＊**
 
@@ -3270,7 +3316,7 @@ class FooAfterMiddleware
 
         // 何らかの処理
 
-        // 前のMiddlewareクラスやControllerクラスから，Requestクラスを受け取る．
+        // 前のMiddlewareクラスやControllerクラスから，FormRequestクラスを受け取る．
         return $response;
     }
 }
@@ -3369,7 +3415,7 @@ class Kernel extends HttpKernel
 
 #### ・クラスの自動生成
 
-Requestクラスを自動作成する．
+FormRequestクラスを自動作成する．
 
 ```shell
 $ php artisan make:request <Request名>
@@ -3379,86 +3425,14 @@ $ php artisan make:request <Request名>
 
 ### クエリパラメータ／メッセージボディのバリデーション
 
-#### ・ルール定義
+#### ・ルール定義 ＆ バリデーション手動実行
 
-FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．
+同じくFormRequestクラスの```validate```メソッドを使用して，ルールを定義し，さらにバリデーションを実行する．```validated```メソッドと間違わないように注意する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
 
-**＊実装例＊**
+参考：
 
-```php
-<?php
-
-namespace App\Http\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
-
-class FooRequest extends FormRequest
-{
-    /**
-     * ルールを返却します．
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        // ルールの定義
-        return [
-            "title"  => ["required", "string", "max:255"],
-            "body"   => ["required", "string", "max:255"],
-            "type"   => ["required", Rule::in([1, 2, 3])],
-            "author" => ["required", "string", new UppercaseRule()],
-            "date"   => ["required", "date"],
-        ];
-    }
-}
-```
-
-#### ・バリデーション実行
-
-Requestクラスの```validated```メソッドを使用して，バリデーションを実行する．Controllerで，Requestクラスを引数に指定すると，コントローラのメソッドをコールする前にバリデーションを自動的に実行する．そのため，コントローラの中では，```validated```メソッドでバリデーションを終えたデータをいきなり取得できる．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     */
-    public function index(Request $request)
-    {
-        // クエリパラメータのバリデーションを実行する．
-        // エラーが起こった場合は元々のページにリダイレクト
-        $validated = $request->validated();
-
-        // 続きの処理
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
-    {
-        // メッセージボディのバリデーションを実行する．
-        // エラーが起こった場合は元々のページにリダイレクト
-        $validated = $request->validated();
-
-        // 続きの処理
-    }
-}
-```
-
-#### ・ルール定義 ＆ バリデーション実行
-
-同じくRequestクラスの```validate```メソッドを使用して，ルールを定義し，さらにバリデーションを実行する．```validated```メソッドと間違わないように注意する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
-
-参考：https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
+- https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
+- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
 
 **＊実装例＊**
 
@@ -3535,11 +3509,84 @@ class FooController extends Controller
 }
 ```
 
+#### ・ルール定義 & バリデーション自動実行
+
+Controllerで，FormRequestクラスを引数に指定すると，コントローラのメソッドをコールする前にバリデーションを自動的に実行する．そのため，コントローラの中ではバリデーションを実行する必要はない．代わりに，ルールをFormRequestクラスの```rule```メソッドに定義する必要がある．FormRequestクラスの```validated```メソッドを使用して，バリデーション済みのデータを取得できる．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        // クエリパラメータのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validated();
+
+        // 続きの処理
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // メッセージボディのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validated();
+
+        // 続きの処理
+    }
+}
+```
+
+FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "title"  => ["required", "string", "max:255"],
+            "body"   => ["required", "string", "max:255"],
+            "type"   => ["required", Rule::in([1, 2, 3])],
+            "author" => ["required", "string", new UppercaseRule()],
+            "date"   => ["required", "date"],
+        ];
+    }
+}
+```
+
 <br>
 
 ### パスパラメータのバリデーション
 
-#### ・ルールの定義 ＆ バリデーション実行
+#### ・ルールの定義 ＆ バリデーション自動実行
 
 Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する．Routeファサードの説明を参考にせよ．
 
@@ -3794,7 +3841,7 @@ class FooRequest extends FormRequest
 
 #### ・セッション変数の取得
 
-Requestクラスの```session```メソッドを使用して，セッション変数を取得する．
+FormRequestクラスの```session```メソッドを使用して，セッション変数を取得する．
 
 **＊実装例＊**
 
@@ -4475,17 +4522,69 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ・Notification
 
-通知内容を定義する．SNSに送信するためには，MailMessageクラスやViewクラスの```render```メソッドで文字列に変換する必要がある．```via```メソッドで受信チャンネルを定義する．この時，Laravelが標準で用意しているチャンネル（Mail，SMS，Slackチャンネル）以外に送信したい場合，Channelクラスを定義する必要がある．複数の値を設定した場合は，それぞれに通信が送信される．```toMail```メソッド，```toSms```メソッド，```toSlack```メソッドで，Laravelの標準のチャンネルに渡すデータ構造に変換できる．
-
-参考：
-
-- https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_subject
-- https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_render
-- https://laravel.com/api/8.x/Illuminate/View/View.html#method_render
+通知内容を定義する．```via```メソッドで受信チャンネルを定義する．この時，Laravelが標準で用意しているチャンネル（Mail，SMS，Slackチャンネル，Databaseチャンネル）以外に送信したい場合，Channelクラスを定義する必要がある．複数の値を設定した場合は，それぞれに通信が送信される．```toMail```メソッド，```toSms```メソッド，```toSlack```メソッド，```toArray```メソッド，を使用して，Laravelの標準のチャンネルに渡す通知内容を定義できる．
 
 **＊実装例＊**
 
+```php
+<?php
 
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        // 受信チャンネルを選択します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return string
+     */
+    public function toSms($notifiable)
+    {
+        // SMSのメッセージ内容を返却します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        // Emailのメッセージ内容を返却します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        // DBへの保存方法を返却します．
+    }
+}
+```
+
+#### ・Eメール通知内容の定義
+
+MailMessageクラスのメソッドを使用して，Eメール通知の内容を生成する．```markdown```メソッドを使用することで，マークダウン形式で定義できる．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
+- https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
 
 ```php
 <?php
@@ -4507,7 +4606,61 @@ class TfaTokenNotification extends Notification
     public function via($notifiable)
     {
         return [
-            $notifiable->prefers_sms ? [AwsSnsChannel::class]: [EmailChannel::class], // 条件に応じて受信チャンネルを返却します．
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSでない場合は，Eメール通知とします．
+            'database'
+        ];
+    }
+
+    /**
+     * @param $notifiable
+     * @return MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        // Emailのメッセージ内容を返却します．
+        return (new MailMessage())->subject("コードを送信いたしました．")
+            ->markdown("template.mail", [
+                "tfa_token" => $notifiable->tfaToken()
+            ]);
+    }
+}
+```
+
+```html
+@component("mail::message")
+
+認証コード『{ $tfa_token }}』を入力して下さい．<br/>
+
++++++++++++++++++++++++++++++++++++++<br/>
+本アドレスは送信専用です．ご返信頂いてもお答えできませんので、ご了承ください．
+
+@endcomponent
+```
+
+#### ・SMS通知内容の定義
+
+参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSの場合は，AWS-SNSを使用します．
             'database'
         ];
     }
@@ -4522,53 +4675,57 @@ class TfaTokenNotification extends Notification
         return view("template.sms", [
             "subject"   => "コードを送信いたしました．",
             "tfa_token" => $notifiable->tfaToken()
-        ])
-            // テンプレートを文字列で返却
-            ->render();
-    }
+        ]);
+    }  
+}
+```
 
+#### ・Slack通知内容の定義
+
+参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
+
+#### ・DB通知内容の定義
+
+配列でDBに保存する内容を定義する．
+
+参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
     /**
      * @param $notifiable
-     * @return string
+     * @return array
      */
-    public function toMail($notifiable)
+    public function via($notifiable)
     {
-        // Emailのメッセージ内容を返却します．
-        return (new MailMessage)->subject("コードを送信いたしました．")
-            ->markdown("template.mail", [
-                "tfa_token" => $notifiable->tfaToken()
-            ])
-            // テンプレートを文字列で返却
-            ->render();
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class],
+            'database' // DB受信チャンネル
+        ];
     }
-
+    
     /**
      * @param $notifiable
      * @return array
      */
     public function toArray($notifiable)
     {
-        // notificationsテーブルのdataカラムに，JSONで保存される．
+        // notificationsテーブルのdataカラムに，JSONで保存されます．
         return [
             "tfa_token" => $notifiable->tfaToken(),
         ];
     }
 }
-```
-
-MailMessageクラスの```markdown```メソッドを使用することで，通知メッセージをマークダウン形式で実装できるようになる．当然，```markdown```メソッドを使用せずに，bladeで通知メッセージを実装してもよいが，デザインのない通知メッセージであれば，より簡単なマークダウンを使用してもよいかもしれない．
-
-参考：https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
-
-```html
-@component("mail::message")
-
-認証コード『{ $tfa_token }}』を入力して下さい．<br/>
-
-+++++++++++++++++++++++++++++++++++++<br/>
-本アドレスは送信専用です．ご返信頂いてもお答えできませんので、ご了承ください．
-
-@endcomponent
 ```
 
 <br>
@@ -4652,9 +4809,9 @@ class AwsSnsChannel
 
 ### 通知対象モデル
 
-#### ・Notifiable
+#### ・Notifiableトレイトの```notify```メソッド
 
-通知対象となるモデルを定義する．通知対象のクラスで，Notifiable Traitを継承する必要がある．これにより，```notify```メソッドを使用できるようになる．
+通知対象となるモデルを定義する．Notifiableトレイトを継承する．これにより，```notify```メソッドを使用できるようになる．
 
 参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
 
@@ -4672,8 +4829,6 @@ class User extends Authenticatable
 }
 ```
 
-#### ・```notify```メソッド
-
 通知対象のクラスから```notify```メソッドをコールし，任意のNotificationクラスを渡す．これにより，通知処理が実行される．
 
 参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
@@ -4681,24 +4836,51 @@ class User extends Authenticatable
 ```php
 <?php
 
-namespace App\Http\Controllers;
+$user->notify(new FooNotification());
+```
 
-use App\Models\User;
-use App\Notifications\TfaTokenNotification;
+#### ・Notificationファサード
 
-class FooController extends Controller
+通知対象となるモデルを定義する．Notifiableトレイトを継承する．
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
 {
-    /**
-     * TFAトークンを通知します．
-     */
-    public function notifyTfaToken()
-    {
-        // ユーザを取得する処理
-
-        // 通知する
-        $user->notify(new TfaTokenNotification());
-    }
+    use Notifiable;
 }
+```
+
+Notificationファサードに通知対象のモデルと通知クラスを渡す．
+
+```php
+<?php
+
+Notification::send($users, new FooNotification());
+```
+
+#### ・オンデマンド通知
+
+オンデマンド通知を使用すると，通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる．
+
+参考：
+
+- https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
+- https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
+
+```php
+<?php
+
+Notification::route('mail', $user->email_address)
+            ->route('nexmo', $user->phone_number)
+            ->route('slack', $slackMessage->usl)
+            ->notify(new FooMotification());
 ```
 
 <br>
@@ -5374,7 +5556,7 @@ Laravelのライフサイクルにおいて，ServiceContainerへのクラスの
 
 #### ・使い方が固定されたLaravel固有のメソッド
 
-Laravelには，その機能を使うにあたって，使い方が固定されているものがある．使い方が固定されたメソッドには，引数の型を実装するべきものとそうでないものがある（例：Notificationクラスの```handle```メソッドや```via```メソッド）．この違いは，メソッドコール時に自動的にリゾルブを実行しているのか，あるいはLaravelの内部でメソッドに引数を渡しているのかの違いである．
+Laravelには，その機能を使うにあたって，使い方が固定されているメソッドがある．これらメソッドには，引数の型を実装するべきものとそうでないものがある（例：Notificationクラスの```handle```メソッドや```via```メソッド）．この違いは，メソッドコール時に自動的にリゾルブを実行しているのか，あるいはLaravelの内部でメソッドに引数を渡しているのかの違いである．
 
 <br>
 
@@ -5757,7 +5939,7 @@ return [
 
 #### ・よく使う操作メソッド
 
-Requestクラスの```session```メソッドはStoreクラスを返却する．このクラスのメソッドを使用して，セッションを操作できる．
+FormRequestクラスの```session```メソッドはStoreクラスを返却する．このクラスのメソッドを使用して，セッションを操作できる．
 
 | メソッド名   | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |

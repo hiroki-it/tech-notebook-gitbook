@@ -775,8 +775,7 @@ CloudFrontは世界中に設置される『Point Of Presence（エッジロケ�
 CloudFrontには，エッジロケーションの数だけエッジサーバがあり，各サーバにIPアドレスが割り当てられている．以下のコマンドで，全てのエッジサーバのIPアドレスを確認できる．
 
 ```shell
-$ curl https://ip-ranges.amazonaws.com/ip-ranges.json |
-jq  ".prefixes[] | select(.service=="CLOUDFRONT") | .ip_prefix"
+$ curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq  ".prefixes[] | select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
 もしくは，以下のリンクを直接参考し，『```"service": "CLOUDFRONT"```』となっている部分を探す．
@@ -1005,10 +1004,16 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 ```shell
 # EC2内にある設定ファイルを，CloudWatchエージェントに読み込ませる（再起動を含む）
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config \
+  -m ec2 \
+  -s \
+  -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
 
 # プロセスのステータスを確認
-$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -m ec2 \
+  -a status
 ```
 
 ```shell
@@ -1125,15 +1130,18 @@ $ service awslogs start
 
 **＊コマンド例＊**
 
-一日当たりのメトリクス収集量を```start-time```から```end-time```の間で取得する．
+全てのロググループに対して，一日当たりのメトリクス収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行することもできる．（ただ，やってみたけどうまくいかず）
+
+参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
  ```shell
  $ aws cloudwatch get-metric-statistics \
    --namespace AWS/Logs \
    --metric-name IncomingBytes \
    --start-time 2021-08-01T00:00:00 \
-   --end-time 2021-08-31T00:00:00 \
-   --period 86400 --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
+   --end-time 2021-08-31T23:59:59 \
+   --period 86400 
+   --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
  ```
 
 #### ・CloudWatchアラームの状態変更
@@ -1144,9 +1152,9 @@ CloudWatchアラームの状態を変更する．
 
 ```shell
 $ aws cloudwatch set-alarm-state \
-  --alarm-name "Alarm名" \
+  --alarm-name "prd-foo-alarm" \
   --state-value ALARM \
-  --state-reason "アラーム文言"
+  --state-reason "アラーム!!"
 ```
 
 <br>
@@ -1441,7 +1449,12 @@ EBSの説明を参考にせよ．
 ローカルに置かれている秘密鍵が，該当するEC2に置かれている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
 
 ```shell
-$ openssl pkcs8 -in <秘密鍵名>.pem -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c
+$ openssl pkcs8 \
+  -in <秘密鍵名>.pem \
+  -inform PEM \
+  -outform DER \
+  -topk8 \
+  -nocrypt | openssl sha1 -c
 ```
 
 #### ・EC2へのSSH接続
@@ -2925,7 +2938,9 @@ $ docker run --rm \
 
 ```shell
 # ハンドラー関数の引数に合ったJSONデータを送信する．
-$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+$ curl \
+  -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
 ```
 
 **＊参考＊**
@@ -2956,7 +2971,9 @@ $ docker-compose up lambda
 ```
 
 ```shell
-$ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+$ curl \
+  -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
 ```
 
 <br>
@@ -4050,7 +4067,9 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 #### ・AWSにおけるSMTP-AUTHの仕組み
 
-一般的なSMTP-AUTHでは，クライアントユーザの認証が必要である．同様にして，AWSにおいてもこれが必要であり，IAMユーザを用いてこれを実現する．送信元となるアプリケーションにIAMユーザを紐付け，アプリケーションがSESを介してメールを送信する時，IAMユーザがもつユーザ名とパスワードを認証に用いる．ユーザ名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，別ノートを参考にせよ．
+一般的なSMTP-AUTHでは，クライアントユーザの認証が必要である．同様にして，AWSにおいてもこれが必要であり，IAMユーザを用いてこれを実現する．送信元となるアプリケーションにIAMユーザを紐付け，このIAMユーザにはユーザ名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザ名とパスワードを用いた認証を実行する．ユーザ名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html?h=smtp
 
 <br>
 
@@ -4741,6 +4760,8 @@ Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 わかりやすさの観点から，可能な限り設定するステートメントを少なくし，一つのルールに一つの意味合いだけを持たせるように命名する．
 
 #### ・Count（検知）モード
+
+対象となったリクエスト数をしばらく計測し，該当したリクエストは拒否しない．計測結果に応じて，拒否するのか否かを手動で洗濯する．
 
 <br>
 
