@@ -1,3 +1,6 @@
+install:
+	gitbook install
+
 build:
 	gitbook build . docs
 	sed -i '' 's/検索すると入力/検索/g' docs/*.html docs/**/*.html
