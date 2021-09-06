@@ -1832,25 +1832,23 @@
 </table>
 <ol>
 <li>&#x6700;&#x521D;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
-<li><p>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x62D2;&#x5426;&#x3057;&#xFF0C;<code>401</code>&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3067;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x306E;&#x5024;&#x3092;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x793A;&#x3057;&#x3066;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x306E;&#x5165;&#x529B;&#x3092;&#x6C42;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x306B;&#x306F;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x5024;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#xFF0C;&#x30B5;&#x30A4;&#x30C8;&#x540D;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code> ```http
- 401 Unauthorized
- WWW-Authenticate: Basic realm=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x8A8D;&#x8A3C;&#x9818;&#x57DF;</span><span class="token punctuation">&gt;</span></span>&quot;, charaset=&quot;UTF-8&quot;
- ```
-</code></pre></li>
-<li><p>&#x300E;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30E6;&#x30FC;&#x30B6;&#x540D;</span><span class="token punctuation">&gt;</span></span>:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;</span><span class="token punctuation">&gt;</span></span></code>&#x300F;&#x3092;Base64&#x3067;&#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x3057;&#x305F;&#x5024;&#x3092;<code>authorization</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code> ```http
- POST http://example.co.jp/foo-form HTTP/2
- authorization: Basic bG9naW46cGFzc3dvcmQ=
- ```
-</code></pre></li>
-<li><p>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x7167;&#x5408;&#x3057;&#xFF0C;&#x5408;&#x81F4;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code> ```http
- 200 OK
- WWW-Authenticate: Basic realm=&quot;&quot;
- ```
-</code></pre></li>
+<li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x62D2;&#x5426;&#x3057;&#xFF0C;<code>401</code>&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3067;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x306E;&#x5024;&#x3092;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x793A;&#x3057;&#x3066;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x306E;&#x5165;&#x529B;&#x3092;&#x6C42;&#x3081;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&#x306B;&#x306F;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x5024;&#x3092;&#x6301;&#x305F;&#x305B;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#xFF0C;&#x30B5;&#x30A4;&#x30C8;&#x540D;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</li>
 </ol>
+<pre class="language-"><code class="lang-http">401 Unauthorized
+<span class="token header-name keyword">WWW-Authenticate:</span> Basic realm=&quot;&lt;&#x8A8D;&#x8A3C;&#x9818;&#x57DF;&gt;&quot;, charaset=&quot;UTF-8&quot;
+</code></pre>
+<ol>
+<li>&#x300E;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30E6;&#x30FC;&#x30B6;&#x540D;</span><span class="token punctuation">&gt;</span></span>:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;</span><span class="token punctuation">&gt;</span></span></code>&#x300F;&#x3092;Base64&#x3067;&#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x3057;&#x305F;&#x5024;&#x3092;<code>authorization</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<pre class="language-"><code class="lang-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">http://example.co.jp/foo-form</span> <span class="token http-version property">HTTP/2</span></span>
+<span class="token header-name keyword">authorization:</span> Basic bG9naW46cGFzc3dvcmQ=
+</code></pre>
+<ol>
+<li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3068;&#x30D1;&#x30B9;&#x30EF;&#x30FC;&#x30C9;&#x3092;&#x7167;&#x5408;&#x3057;&#xFF0C;&#x5408;&#x81F4;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<pre class="language-"><code class="lang-http">200 OK
+<span class="token header-name keyword">WWW-Authenticate:</span> Basic realm=&quot;&quot;
+</code></pre>
 <p><br></p>
 <h3 id="digest&#x8A8D;&#x8A3C;"><a name="digest&#x8A8D;&#x8A3C;" class="plugin-anchor" href="#digest&#x8A8D;&#x8A3C;"><i class="fa fa-link" aria-hidden="true"></i></a>Digest&#x8A8D;&#x8A3C;</h3>
 <h4 id="&#x30FB;digest&#x8A8D;&#x8A3C;&#x306E;&#x4ED5;&#x7D44;&#x307F;"><a name="&#x30FB;digest&#x8A8D;&#x8A3C;&#x306E;&#x4ED5;&#x7D44;&#x307F;" class="plugin-anchor" href="#&#x30FB;digest&#x8A8D;&#x8A3C;&#x306E;&#x4ED5;&#x7D44;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Digest&#x8A8D;&#x8A3C;&#x306E;&#x4ED5;&#x7D44;&#x307F;</h4>
@@ -1874,49 +1872,49 @@
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format" target="_blank">https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format</a></li>
-<li><p><a href="https://ja.developer.box.com/reference/post-oauth2-token/#request" target="_blank">https://ja.developer.box.com/reference/post-oauth2-token/#request</a></p>
-<pre class="language-"><code class="lang-http">  POST http://example.co.jp/foo HTTP/2
-
-  # &#x30DC;&#x30C7;&#x30A3;
-  client_id=*****&amp;grant_type=client_credentials&amp;scope=messaging:push
-</code></pre>
-</li>
-<li><p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x542B;&#x3080;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x8FD4;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x4ED6;&#x306B;&#xFF0C;&#x6709;&#x52B9;&#x671F;&#x9650;&#xFF0C;&#x6A29;&#x9650;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#xFF0C;&#x6307;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x8A8D;&#x8A3C;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#xFF0C;&#x306A;&#x3069;&#x304C;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</p>
-</li>
+<li><a href="https://ja.developer.box.com/reference/post-oauth2-token/#request" target="_blank">https://ja.developer.box.com/reference/post-oauth2-token/#request</a></li>
 </ul>
+<pre class="language-"><code class="lang-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">http://example.co.jp/foo</span> <span class="token http-version property">HTTP/2</span></span>
+
+# &#x30DC;&#x30C7;&#x30A3;
+client_id=*****&amp;grant_type=client_credentials&amp;scope=messaging:push
+</code></pre>
+<ol>
+<li>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x542B;&#x3080;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304C;&#x8FD4;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x4ED6;&#x306B;&#xFF0C;&#x6709;&#x52B9;&#x671F;&#x9650;&#xFF0C;&#x6A29;&#x9650;&#x306E;&#x30B9;&#x30B3;&#x30FC;&#x30D7;&#xFF0C;&#x6307;&#x5B9A;&#x53EF;&#x80FD;&#x306A;&#x8A8D;&#x8A3C;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#xFF0C;&#x306A;&#x3069;&#x304C;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;</li>
+</ol>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li>ttps://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format</li>
-<li><p><a href="https://ja.developer.box.com/reference/resources/access-token/" target="_blank">https://ja.developer.box.com/reference/resources/access-token/</a></p>
-<pre class="language-"><code class="lang-http">  200 OK
-  X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
-  Content-Type: application/json<span class="token application-json">
-
-  <span class="token punctuation">{</span>
-    <span class="token property">&quot;access_token&quot;</span><span class="token operator">:</span><span class="token string">&quot;*****&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;expires_in&quot;</span><span class="token operator">:</span><span class="token number">3600</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;scope&quot;</span><span class="token operator">:</span><span class="token string">&quot;messaging:push&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;token_type&quot;</span><span class="token operator">:</span><span class="token string">&quot;Bearer&quot;</span>
-  <span class="token punctuation">}</span>
-</span></code></pre>
-</li>
-<li><p>&#x767A;&#x884C;&#x3055;&#x308C;&#x305F;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x8A8D;&#x8A3C;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3067;<code>Authorization</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#x8A73;&#x3057;&#x304F;&#x8A00;&#x53CA;&#x3057;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;Form&#x8A8D;&#x8A3C;&#x306E;&#x3088;&#x3046;&#x306B;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x3053;&#x3068;&#x3082;&#x3042;&#x308B;&#xFF0E;</p>
-</li>
+<li><a href="https://ja.developer.box.com/reference/resources/access-token/" target="_blank">https://ja.developer.box.com/reference/resources/access-token/</a></li>
 </ul>
+<pre class="language-"><code class="lang-http">200 OK
+<span class="token header-name keyword">X-Amzn-RequestId:</span> d917ceac-2245-11e2-a270-0bc161cb589d
+<span class="token header-name keyword">Content-Type:</span> application/json<span class="token application-json">
+
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;access_token&quot;</span><span class="token operator">:</span><span class="token string">&quot;*****&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;expires_in&quot;</span><span class="token operator">:</span><span class="token number">3600</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;scope&quot;</span><span class="token operator">:</span><span class="token string">&quot;messaging:push&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;token_type&quot;</span><span class="token operator">:</span><span class="token string">&quot;Bearer&quot;</span>
+<span class="token punctuation">}</span>
+</span></code></pre>
+<ol>
+<li>&#x767A;&#x884C;&#x3055;&#x308C;&#x305F;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x8A8D;&#x8A3C;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3067;<code>Authorization</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#x8A73;&#x3057;&#x304F;&#x8A00;&#x53CA;&#x3057;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;Form&#x8A8D;&#x8A3C;&#x306E;&#x3088;&#x3046;&#x306B;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x3053;&#x3068;&#x3082;&#x3042;&#x308B;&#xFF0E;</li>
+</ol>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie" target="_blank">https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie</a></li>
-<li><p><a href="https://ja.developer.box.com/reference/post-oauth2-token/#response" target="_blank">https://ja.developer.box.com/reference/post-oauth2-token/#response</a></p>
-<pre class="language-"><code class="lang-http">  POST http://example.co.jp/foo HTTP/2
-  authorization: Bearer &lt;Bearer&#x30C8;&#x30FC;&#x30AF;&#x30F3;&gt;
-</code></pre>
-</li>
-<li><p>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7167;&#x5408;&#x3057;&#xFF0C;&#x5408;&#x81F4;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-http"> 200 OK
- WWW-Authenticate: Bearer realm=&quot;&quot;
-</code></pre>
-</li>
+<li><a href="https://ja.developer.box.com/reference/post-oauth2-token/#response" target="_blank">https://ja.developer.box.com/reference/post-oauth2-token/#response</a></li>
 </ul>
+<pre class="language-"><code class="lang-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">http://example.co.jp/foo</span> <span class="token http-version property">HTTP/2</span></span>
+<span class="token header-name keyword">authorization:</span> Bearer &lt;Bearer&#x30C8;&#x30FC;&#x30AF;&#x30F3;&gt;
+</code></pre>
+<ol>
+<li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7167;&#x5408;&#x3057;&#xFF0C;&#x5408;&#x81F4;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#xFF0C;&#x8A8D;&#x8A3C;&#x5F8C;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
+</ol>
+<pre class="language-"><code class="lang-http">200 OK
+<span class="token header-name keyword">WWW-Authenticate:</span> Bearer realm=&quot;&quot;
+</code></pre>
 <h4 id="&#x30FB;&#x6B63;&#x5E38;&#x7CFB;&#xFF0F;&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;"><a name="&#x30FB;&#x6B63;&#x5E38;&#x7CFB;&#xFF0F;&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;" class="plugin-anchor" href="#&#x30FB;&#x6B63;&#x5E38;&#x7CFB;&#xFF0F;&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6B63;&#x5E38;&#x7CFB;&#xFF0F;&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</h4>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1" target="_blank">https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1</a></p>
 <p>&#x6210;&#x529F;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;realm&#x5C5E;&#x6027;&#x3092;&#x7A7A;&#x306B;&#x3057;&#x305F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
@@ -1948,34 +1946,34 @@
 <h2 id="01-02-http&#x8A8D;&#x8A3C;&#x4EE5;&#x5916;&#x306E;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;"><a name="01-02-http&#x8A8D;&#x8A3C;&#x4EE5;&#x5916;&#x306E;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#01-02-http&#x8A8D;&#x8A3C;&#x4EE5;&#x5916;&#x306E;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>01-02. HTTP&#x8A8D;&#x8A3C;&#x4EE5;&#x5916;&#x306E;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;</h2>
 <h3 id="form&#x8A8D;&#x8A3C;&#xFF08;cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#xFF09;"><a name="form&#x8A8D;&#x8A3C;&#xFF08;cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#xFF09;" class="plugin-anchor" href="#form&#x8A8D;&#x8A3C;&#xFF08;cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>Form&#x8A8D;&#x8A3C;&#xFF08;Cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#xFF09;</h3>
 <h4 id="&#x30FB;form&#x8A8D;&#x8A3C;&#x3068;&#x306F;"><a name="&#x30FB;form&#x8A8D;&#x8A3C;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;form&#x8A8D;&#x8A3C;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Form&#x8A8D;&#x8A3C;&#x3068;&#x306F;</h4>
-<p>&#x8A8D;&#x8A3C;&#x6642;&#x306B;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x300E;`Cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#x300F;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;&#x8A8D;&#x8A3C;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x306B;&#x306F;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF0E;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x308B;&#x9001;&#x53D7;&#x4FE1;&#x3067;&#x306F;&#xFF0C;CSRF&#x306E;&#x5371;&#x967A;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x8A8D;&#x8A3C;&#x6642;&#x306B;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x300E;`Cookie&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x8A8D;&#x8A3C;&#x300F;&#x3068;&#x3082;&#x3044;&#x3046;&#xFF0E;Stateful&#x5316;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#xFF0C;HTTP&#x8A8D;&#x8A3C;&#x306B;&#x306F;&#x5C5E;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF0E;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x3088;&#x308B;&#x9001;&#x53D7;&#x4FE1;&#x3067;&#x306F;&#xFF0C;CSRF&#x306E;&#x5371;&#x967A;&#x6027;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html" target="_blank">https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html</a></li>
 <li><a href="https://auth0.com/docs/sessions/cookies#cookie-based-authentication" target="_blank">https://auth0.com/docs/sessions/cookies#cookie-based-authentication</a></li>
 </ul>
-<h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;</h4>
+<h4 id="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;"><a name="&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;" class="plugin-anchor" href="#&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;id&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;</h4>
 <p>&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
 <ol>
 <li>&#x6700;&#x521D;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x4F5C;&#x6210;&#x306E;&#x6BB5;&#x968E;&#x3067;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x6B21;&#x56DE;&#x306E;&#x8A8D;&#x8A3C;&#x6642;&#x306B;&#xFF0C;&#x518D;&#x3073;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
 <li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306E;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x7167;&#x5408;&#x3057;&#xFF0C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#xFF0E;</li>
-<li><p>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;<code>Set-Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-http"> 200 OK
- Set-Cookie: sessionId=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;
-</code></pre>
-</li>
-<li><p>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3068;&#x30E6;&#x30FC;&#x30B6;ID&#x3092;&#x7D10;&#x3065;&#x3051;&#x3066;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;</p>
-</li>
-<li><p>&#x3055;&#x3089;&#x306B;&#x6B21;&#x56DE;&#x306E;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x6642;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x305F;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30E6;&#x30FC;&#x30B6;ID&#x304B;&#x3089;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x7279;&#x5B9A;&#x3057;&#xFF0C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x6539;&#x3081;&#x3066;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x9001;&#x4FE1;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x7D20;&#x65E9;&#x304F;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-http"> POST http://example.co.jp/foo-form HTTP/2
- cookie: PHPSESSID=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;
-</code></pre>
-</li>
+<li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;<code>Set-Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
-<h4 id="&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;</h4>
+<pre class="language-"><code class="lang-http">200 OK
+<span class="token header-name keyword">Set-Cookie:</span> sessionId=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;
+</code></pre>
+<ol>
+<li>&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3068;&#x30E6;&#x30FC;&#x30B6;ID&#x3092;&#x7D10;&#x3065;&#x3051;&#x3066;&#x30B5;&#x30FC;&#x30D0;&#x5185;&#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;&#xFF0E;</li>
+<li>&#x3055;&#x3089;&#x306B;&#x6B21;&#x56DE;&#x306E;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x6642;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x305F;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30E6;&#x30FC;&#x30B6;ID&#x304B;&#x3089;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x7279;&#x5B9A;&#x3057;&#xFF0C;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x6539;&#x3081;&#x3066;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x60C5;&#x5831;&#x3092;&#x9001;&#x4FE1;&#x305B;&#x305A;&#x306B;&#xFF0C;&#x7D20;&#x65E9;&#x304F;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#xFF0E;</li>
+</ol>
+<pre class="language-"><code class="lang-http"><span class="token request-line"><span class="token method property">POST</span> <span class="token request-target url">http://example.co.jp/foo-form</span> <span class="token http-version property">HTTP/2</span></span>
+<span class="token header-name keyword">cookie:</span> PHPSESSID=&lt;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&gt;
+</code></pre>
+<h4 id="&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;"><a name="&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;" class="plugin-anchor" href="#&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x7528;&#x3044;&#x305F;Form&#x8A8D;&#x8A3C;&#x306E;&#x5834;&#x5408;&#xFF08;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x30D9;&#x30FC;&#x30B9;&#xFF09;</h4>
 <p>&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#x306E;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x9078;&#x629E;&#x80A2;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x5358;&#x306A;&#x308B;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&#x3084;JWT&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82" target="_blank">https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82</a></p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png" alt="JWT"></p>
 <h4 id="&#x30FB;cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4FDD;&#x6301;"><a name="&#x30FB;cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4FDD;&#x6301;" class="plugin-anchor" href="#&#x30FB;cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4FDD;&#x6301;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x306E;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x4FDD;&#x6301;</h4>
 <p>&#x518D;&#x5229;&#x7528;&#x306E;&#x305F;&#x3081;&#xFF0C;<code>Cookie</code>&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#x305F;&#x3081;&#x306E;&#x5024;&#xFF08;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#xFF09;&#x306F;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3092;&#x901A;&#x3057;&#x3066;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;PC&#x306B;&#x6709;&#x52B9;&#x671F;&#x9650;&#x306B;&#x5FDC;&#x3058;&#x305F;&#x9593;&#x3060;&#x3051;&#x4FDD;&#x6301;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x307E;&#x305F;&#x306F;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;&#x8A2D;&#x5B9A;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;Web&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x3067;&#x3082;&#x4FDD;&#x6301;&#x3067;&#x304D;&#x308B;&#xFF0E;Chrome&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;Cookie&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306B;&#x4FDD;&#x6301;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x78BA;&#x8A8D;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
@@ -2401,7 +2399,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"next":{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},"previous":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.7","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},{"title":"▶ ︎ブラウザレンダリングの仕組み","level":"1.7.3","depth":2,"path":"public/frontend_and_backend_browser_rendering.md","ref":"public/frontend_and_backend_browser_rendering.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_and_backend_authentication_authorization.md","mtime":"2021-09-05T11:38:31.776Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-05T12:23:40.748Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"next":{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},"previous":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.7","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},{"title":"▶ ︎ブラウザレンダリングの仕組み","level":"1.7.3","depth":2,"path":"public/frontend_and_backend_browser_rendering.md","ref":"public/frontend_and_backend_browser_rendering.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_and_backend_authentication_authorization.md","mtime":"2021-09-05T13:15:02.308Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-06T13:19:15.599Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
