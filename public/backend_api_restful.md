@@ -169,16 +169,37 @@ x-api-key: *****
 
 ### エンドポイントの作り方
 
-#### ・モデル型／アクション型
+#### ・動詞を使用しないこと
 
-モデル型（処理対象のモデル名をエンドポイントとして使う）またはアクション型（ユースケース名をエンドポイントとして使用する）のいずれかに統一する．
+すでにHTTPメソッド自体に動詞の意味合いが含まれるため，エンドポイントに動詞を含めないようにする．この時，アクセスするリソース名がわかりやすいような名詞を使用する．
+
+参考：
+
+- https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
+- https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
+
+リソースへのアクセスではない，認証でもエンドポイントは名詞になるようにする．
+
+参考：https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
+
+**＊悪い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET http://example.co.jp/login
 ```
 
 ```http
-GET http://example.co.jp/show-user-profile/12345
+GET http://example.co.jp/show-user/12345
+```
+
+**＊良い実装例＊**
+
+```http
+GET http://example.co.jp/profile
+```
+
+```http
+GET http://example.co.jp/users/12345
 ```
 
 #### ・短くすること

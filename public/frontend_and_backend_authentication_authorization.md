@@ -29,24 +29,24 @@
 1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
 2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
 
-        ```http
-        401 Unauthorized
-        WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
-        ```
+```http
+401 Unauthorized
+WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
+```
 
 3. 『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
 
-        ```http
-        POST http://example.co.jp/foo-form HTTP/2
-        authorization: Basic bG9naW46cGFzc3dvcmQ=
-        ```
+```http
+POST http://example.co.jp/foo-form HTTP/2
+authorization: Basic bG9naW46cGFzc3dvcmQ=
+```
 
 4. サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．
 
-        ```http
-        200 OK
-        WWW-Authenticate: Basic realm=""
-        ```
+```http
+200 OK
+WWW-Authenticate: Basic realm=""
+```
 
 <br>
 
@@ -88,12 +88,12 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
-    ```http
-    POST http://example.co.jp/foo HTTP/2
+```http
+POST http://example.co.jp/foo HTTP/2
     
-    # ボディ
-    client_id=*****&grant_type=client_credentials&scope=messaging:push
-    ```
+# ボディ
+client_id=*****&grant_type=client_credentials&scope=messaging:push
+```
 
 2. レスポンスボディにアクセストークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定可能な認証スキーマ，などが提供されることが多い．
 
@@ -102,18 +102,18 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 - ttps://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/resources/access-token/
 
-    ```http
-    200 OK
-    X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
-    Content-Type: application/json
-    
-    {
-      "access_token":"*****",
-      "expires_in":3600,
-      "scope":"messaging:push",
-      "token_type":"Bearer"
-    }
-    ```
+```http
+200 OK
+X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
+Content-Type: application/json
+
+{
+  "access_token":"*****",
+  "expires_in":3600,
+  "scope":"messaging:push",
+  "token_type":"Bearer"
+}
+```
 
 3. 発行されたトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て，リクエストを送信する．ここでは詳しく言及しないが，アクセストークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
 
@@ -122,17 +122,17 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
-    ```http
-    POST http://example.co.jp/foo HTTP/2
-    authorization: Bearer <Bearerトークン>
-    ```
+```http
+POST http://example.co.jp/foo HTTP/2
+authorization: Bearer <Bearerトークン>
+```
 
 4. サーバは，アクセストークンを照合し，合致していれば，認証後ページのレスポンスを送信する．
 
-    ```http
-    200 OK
-    WWW-Authenticate: Bearer realm=""
-    ```
+```http
+200 OK
+WWW-Authenticate: Bearer realm=""
+```
 
 #### ・正常系／異常系レスポンス
 
@@ -187,14 +187,14 @@ OAuthの項目を参考にせよ．
 
 #### ・Form認証とは
 
-認証時に```Cookie```ヘッダーの値を使用する方法のこと．『`Cookieベースの認証』ともいう．認証スキームには属していない．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
+認証時に```Cookie```ヘッダーの値を使用する方法のこと．『`Cookieベースの認証』ともいう．Stateful化を行うため，HTTP認証には属していない．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
 参考：
 
 - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/certification.html
 - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
 
-#### ・セッションIDを用いたForm認証の場合
+#### ・セッションIDを用いたForm認証の場合（セッションベース）
 
 セッションIDを```Cookie```ヘッダーに割り当て，リクエストを送信する．
 
@@ -204,22 +204,24 @@ OAuthの項目を参考にせよ．
 4. サーバは，データベースのログイン情報を照合し，ログインを許可する．
 5. サーバは，セッションIDを生成する．また，レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
 
-    ```http
-    200 OK
-    Set-Cookie: sessionId=<セッションID>
-    ```
+```http
+200 OK
+Set-Cookie: sessionId=<セッションID>
+```
 
 6. サーバは，セッションIDとユーザIDを紐づけてサーバ内に保存する．
 7. さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めてログイン情報を送信せずに，素早くログインできるようになる．
 
-    ```http
-    POST http://example.co.jp/foo-form HTTP/2
-    cookie: PHPSESSID=<セッションID>
-    ```
+```http
+POST http://example.co.jp/foo-form HTTP/2
+cookie: PHPSESSID=<セッションID>
+```
 
-#### ・トークンを用いたForm認証の場合
+#### ・トークンを用いたForm認証の場合（トークンベース）
 
 トークンを```Cookie```ヘッダーに割り当て，リクエストを送信する．この時のトークンの選択肢として，単なるランダムな文字列やJWTがある．
+
+参考：https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/JWT.png)
 
