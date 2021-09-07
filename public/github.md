@@ -1,5 +1,13 @@
 # GitHub
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## Issue
 
 ### 作り方

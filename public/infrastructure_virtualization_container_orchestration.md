@@ -1,14 +1,23 @@
 # コンテナオーケストレーション
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. コンテナオーケストレーションの種類
 
 ### 単一ホストOS上のコンテナオーケストレーション
 
 単一ホストOS上のコンテナが対象である．異なるDockerfileに基づいて，Dockerイメージのビルド，コンテナレイヤーの生成，コンテナの構築，コンテナの起動，を実行できる．
 
-| ツール名       | ベンダー |
-| -------------- | -------- |
-| Docker Compose | Docker   |
+| ツール名                  | ベンダー |
+| ------------------------- | -------- |
+| Docker Compose            | Docker   |
+| Elastic Container Service | Amazon   |
 
 <br>
 
@@ -16,11 +25,13 @@
 
 複数ホストOS上のコンテナが対象である．どのホストOSのDockerデーモンに対して，どのコンテナに関する操作を行うのかを選択的に命令できる．
 
-| ツール名                      | ベンダー |
-| ----------------------------- | -------- |
-| Docker Swarm                  | Docker   |
-| Google Kubernetes             | Google   |
-| AWS Elastic Container Service | Amazon   |
+参考：https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+
+| ツール名                   | ベンダー |
+| -------------------------- | -------- |
+| Docker Swarm               | Docker   |
+| Google Kubernetes          | Google   |
+| Elastic Kubernetes Service | Amazon   |
 
 <br>
 

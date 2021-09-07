@@ -1,5 +1,13 @@
 # PHPパッケージ
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. composerによるパッケージの管理
 
 ### composer.jsonファイルの実装

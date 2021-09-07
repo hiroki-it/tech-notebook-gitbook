@@ -1,5 +1,13 @@
 # クリーンアーキテクチャ
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. アーキテクチャ図
 
 #### ・全体
@@ -108,7 +116,11 @@ class FormatValidator
 
 #### ・ユースケースとメソッド名
 
-インターラクターでは，ドメイン層を組み合わせてシステムの振舞（ユースケース）を具現化する．そのため，メソッド名はユースケースを適切に表現した自由な英単語を使用する．ユースケース図については，以下のリンクを参考にせよ．
+インターラクターでは，ドメイン層を組み合わせてシステムの振舞（ユースケース）を具現化する．そのため，メソッド名はユースケースを適切に表現した自由な英単語を使用する．Laravelの基本的なメソッド名（index，store，create，show，update，）が参考になる．
+
+
+
+参考：ユースケース図については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
 

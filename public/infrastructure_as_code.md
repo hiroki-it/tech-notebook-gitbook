@@ -1,5 +1,13 @@
 # Infrastructure as Code
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. 仮想サーバ(仮想マシン)のコード化
 
 ### 仮想サーバの構成管理

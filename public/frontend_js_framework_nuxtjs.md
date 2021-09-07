@@ -1,24 +1,96 @@
 # Nuxt.js
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## コマンド
 
-### build
+#### serverモード
 
-Targetオプションに```server```を割り当て，アプリケーションをWebpackでビルドする．Webpackにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．テストフレームワークはNode.jsを使用して動かす必要があるため，SSGアプリケーションでもテスト時には```build```コマンドが必要になる．
+#### ・serverモードとは
+
+アプリケーションをSSRとして稼働させる．
+
+参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
+
+#### ・dev
+
+ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+
+```shell
+$ nuxt dev
+```
+
+#### ・build
+
+本番環境として使用するため，Nodeサーバの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．画像名はハッシュ化される．
 
 ```shell
 $ nuxt build
 ```
 
+#### ・start
+
+本番環境として使用するため，ビルド完了後にNodeサーバを起動する．SSRモードのために使用する．
+
+```shell
+$ nuxt start
+```
+
 <br>
 
-### generate
+### staticモード
 
-Targetオプションに```static```を割り当て，静的ファイルをビルドする．データベースに格納したデータ（例：画像ファイルパス）を元にビルドすることも可能である．
+#### ・staticモードとは
+
+アプリケーションをSSGとして稼働させる．
+
+参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
+
+#### ・dev
+
+ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
+
+```shell
+$ nuxt dev
+```
+
+#### ・build
+
+Node.jsを使用してテストフレームワークを動かすために使用する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，動作はそのままで圧縮される．画像名はハッシュ化される．
+
+```shell
+$ nuxt build
+```
+
+#### ・generate
+
+JavaScriptから静的ファイルを生成する．静的ファイルをビデータベースに格納したデータ（例：画像ファイルパス）を元にビルドすることも可能である．SSGモードのために使用する．
 
 ```shell
 $ nuxt generate
 ```
+
+#### ・```start```
+
+静的ホスティングサイトを起動する．
+
+```shell
+$ nuxt start
+```
+
+<br>
+
+### ビルド時のWebpackオプション
+
+serverモードとstaticモードにおいて，```build```コマンド時に使用されるWebpackの最適化方法を指定できる．`
+
+https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
 <br>
 

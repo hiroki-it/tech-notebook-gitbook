@@ -1,5 +1,13 @@
 # CentOSの構成
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. 基本ソフトウェア（広義のOS）
 
 ### 基本ソフトウェアの構成

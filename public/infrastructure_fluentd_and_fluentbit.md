@@ -1,5 +1,13 @@
 # Fluentd／FluentBit
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. Fluentd／FluentBitとは
 
 ### 概要
@@ -263,11 +271,7 @@ FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-
 
 #### ・コンテナ定義
 
-FireLensコンテナをサイドカーとして構築するために，コンテナ定義を実装する．FireLensコンテナは『log_routeter』とし，メインコンテナからFireLensコンテナにログを送信できるように，ログドライバーのタイプとして『```awsfirelens```』を設定する．この時，『```options```』と```fluent-bit.conf```ファイルのどちらにもほとんど同じ設定が可能であるが，出来るだけ```fluent-bit.conf```ファイルに寄せるようにする．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する．コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
-
-```json
+```shell
 [
   {
     "name": "<メインコンテナ名>",
@@ -288,22 +292,28 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
     }
   },
   {
-    "name": "log_router（FireLensコンテナ名がlog_routerとなることは固定）",
+    # FireLensコンテナ名がlog_routerとなることは固定
+    "name": "log_router",
     "image": "<ECRリポジトリのURL>",
     "essential": false,
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "<ロググループ名（FireLensコンテナ自体がCloudWatchログにログ出力）>",
+        # FireLensコンテナ自体がCloudWatchログにログ出力
+        "awslogs-group": "<ロググループ名>",
         "awslogs-region": "<リージョン>",
         "awslogs-stream-prefix": "<プレフィクス>"
       }
     },
     "firelensConfiguration": {
-      "type": "fluentbit（FireLensコンテナでFluentBitを稼働させる）",
+      # FireLensコンテナでFluentBitを稼働させる
+      "type": "fluentbit",
       "options": {
         "config-file-type": "file",
-        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf（設定上書きのため読み込み）"
+        # 設定上書きのため読み込み
+        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf"
+        # ECSの情報をFireLensに送信するかどうか
+        "enable-ecs-log-metadata": "true"
       }
     },
     "portMappings": [],
@@ -322,6 +332,22 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 ]
 
 ```
+
+#### ・name
+
+FireLensコンテナをサイドカーとして構築するために，コンテナ定義を実装する．FireLensコンテナは『log_routeter』とする．
+
+#### ・logConfiguration
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
+
+| 項目                                          | 説明                                                         |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| ```type```                                    | メインコンテナからFireLensコンテナにログを送信できるように，ログドライバーのタイプとして『```fluentbit```』を設定する． |
+| ```config-file-type```                        | FluentBitの設定ファイルを読み込むために，```file```とする．  |
+| ```config-file-value```                       | ```options```キーにて，ログ転送時の設定が可能であるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する． |
+| ```enable-ecs-log-metadata```（標準で有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
+| ```environment```，```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する． |
 
 <br>
 

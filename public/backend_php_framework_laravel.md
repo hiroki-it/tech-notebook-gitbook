@@ -1,5 +1,13 @@
 # Laravel
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. Laravelの全体像
 
 ### ライフサイクル

@@ -1,5 +1,13 @@
 #  フロントエンドアーキテクチャ
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. フロントエンドアーキテクチャの種類
 
 ### SPA：Single Page Application
@@ -55,7 +63,10 @@ MPAと比較して，データを非同期的に通信できるため，1つのW
 
 1つのWebページの中で，サーバとデータを非同期通信し，サーバ側で静的ファイルを生成する方法のこと．
 
-参考：https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
+参考：
+
+- https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
+- https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
 
 | ブラウザレンダリングのステップ | 実行者   |
 | ------------------------------ | -------- |

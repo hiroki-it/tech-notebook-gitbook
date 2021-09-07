@@ -1,5 +1,13 @@
 # RESTful APIの概念と実装
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. RESTとRESTfulとは
 
 ### REST
@@ -73,15 +81,17 @@ POST送信とPUT送信の重要な違いについてまとめる．データを�
 
 #### ・HTTPメソッド，エンドポイント，ユースケースの対応関係
 
-RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使用して，データ処理の方法をリクエストする．それぞれが，APIのユースケースに対応する．
+RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使用して，データ処理の方法をリクエストする．それぞれが，APIのユースケースに対応する．ユースケースごとのメソッド名については，Laravelを参考にする．
 
-| HTTPメソッド | エンドポイント                        | ユースケース                                                 |
-| ------------ | ------------------------------------- | ------------------------------------------------------------ |
-| GET          | ```http://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   |
-|              | ```http://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       |
-| POST         | ```http://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン |
-| PUT`         | ```http://example.co.jp/users/{id}``` | データの更新（置換）                                         |
-| DELETE       | ```http://example.co.jp/users/{id}``` | データの削除                                                 |
+参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
+
+| HTTPメソッド | エンドポイント                        | ユースケース                                                 | メソッド名の例  |
+| ------------ | ------------------------------------- | ------------------------------------------------------------ | --------------- |
+| GET          | ```http://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   | index           |
+|              | ```http://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       | show            |
+| POST         | ```http://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン | create，store   |
+| PUT`         | ```http://example.co.jp/users/{id}``` | データの更新（置換）                                         | update          |
+| DELETE       | ```http://example.co.jp/users/{id}``` | データの削除                                                 | delete，destroy |
 
 <br>
 
@@ -92,8 +102,8 @@ RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使�
 
 URIの構造のうち，パスまたはクエリストリングにパラメータを割り当てて送信する．それぞれ，パスパラメータまたはクエリパラメータという．
 
-```
-http://example.co.jp:80/users/777?text1=a&text2=b
+```http
+GET http://example.co.jp:80/users/777?text1=a&text2=b
 ```
 
 | 完全修飾ドメイン名         | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
@@ -113,7 +123,7 @@ http://example.co.jp:80/users/777?text1=a&text2=b
 
 JSON型データ内に定義し，メッセージボディにパラメータを割り当てて送信する．
 
-```json
+```shell
 {
   "id":1,
   "text1":"a",
@@ -167,7 +177,7 @@ x-api-key: *****
 
 <br>
 
-### エンドポイントの作り方
+### リソースアクセスのエンドポイントの作り方
 
 #### ・動詞を使用しないこと
 
@@ -178,15 +188,14 @@ x-api-key: *****
 - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
-リソースへのアクセスではない，認証でもエンドポイントは名詞になるようにする．
+ただし認証に関しては，慣例として，エンドポイントが動詞になることが許容されている．
 
-参考：https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
+参考：
+
+- https://stackoverflow.com/questions/7140074/restfully-design-login-or-register-resources
+- https://www.developer.com/web-services/best-practices-restful-api
 
 **＊悪い実装例＊**
-
-```http
-GET http://example.co.jp/login
-```
 
 ```http
 GET http://example.co.jp/show-user/12345
@@ -195,11 +204,23 @@ GET http://example.co.jp/show-user/12345
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/profile
+GET http://example.co.jp/users/12345
 ```
 
 ```http
-GET http://example.co.jp/users/12345
+GET http://example.co.jp/users/hiroki_hasegawa
+```
+
+**＊認証の場合＊**
+
+動詞を許容するのであれば```login```や```logout```とし，名詞を採用するのであれば```session```とする．
+
+```http
+GET http://example.co.jp/login
+```
+
+```http
+GET http://example.co.jp/session
 ```
 
 #### ・短くすること
@@ -347,7 +368,7 @@ PUT http://example.co.jp/users/{id}
 DELETE http://example.co.jp/users/{id}
 ```
 
-#### ・数字，バージョン番号を使用しないこと
+#### ・数字，バージョン番号を可能な限り使用しないこと
 
 **＊悪い実装例＊**
 
@@ -648,7 +669,7 @@ DELETEメソッドでは，メッセージのみを200レスポンスとして�
 
 正常系レスポンスの場合，オブジェクトデータへのステータスコードの割り当ては不要である．
 
-```json
+```shell
 {
   "name": "Taro Yamada"
 }
@@ -660,7 +681,7 @@ JSONの場合，階層構造にすると，データ容量が増えてしまう�
 
 **＊具体例＊**
 
-```json
+```shell
 {
   "name": "Taro Yamada",
   "age": 10,
@@ -677,7 +698,7 @@ JSONの場合，階層構造にすると，データ容量が増えてしまう�
 
 **＊具体例＊**
 
-```json
+```shell
 {
   "name": "Taro Yamada",
   "age": 10,
@@ -710,7 +731,7 @@ http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 ### 異常系レスポンスの場合
 
-```json
+```shell
 {
   "code": 400
   "errors": [
@@ -1335,7 +1356,7 @@ APIに対して送信されるリクエストメッセージのデータ，ま�
 
 例えば，APIがレスポンス時に以下のようなJSON型データを返信するとする．
 
-```json
+```shell
 {
   "id": 1,
   "name": "Taro Yamada",
@@ -1347,7 +1368,7 @@ APIに対して送信されるリクエストメッセージのデータ，ま�
 
 ここで，スキーマを以下のように定義しておき，APIからデータをレスポンスする時のバリデーションを行う．
 
-```json
+```shell
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",

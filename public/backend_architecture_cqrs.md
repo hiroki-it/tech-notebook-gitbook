@@ -1,10 +1,20 @@
 # Command Query Responsibility Segregation
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. CQRS
 
 ### CQRSとは
 
 『Command Query Responsibility Segregation（コマンドクエリ責務分離）』の略．DBへのアクセス処理を書き込みと読み出しに分離する設計のこと．DDDに部分的に組み込むことができる．```N+１```問題にも，対処できる．
+
+参考：https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
 
 ![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cqrs.png)
 

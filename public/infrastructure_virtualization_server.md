@@ -1,5 +1,13 @@
 # 仮想サーバ（仮想マシン）
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. Providerによる仮想サーバ（仮想マシン）の構築
 
 ![Vagrantの仕組み_オリジナル](https://user-images.githubusercontent.com/42175286/60393574-b18de200-9b52-11e9-803d-ef44d6e50b08.png)
