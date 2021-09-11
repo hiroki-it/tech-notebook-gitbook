@@ -49,11 +49,27 @@ HTTPプロトコルを使用したリクエストを，『リソースに対す�
 
 <br>
 
+## 02. Addressability
 
-## 02. Uniform Interface
+### エンドポイント
 
-### HTTPメソッドの比較
+#### ・エンドポイントとは
 
+特定のリソースを操作するための固有のURIのこと．エンドポイント は，リソース1つごと，あるいはまとまりごとに割り振られる．
+
+#### ・HTTPメソッド，エンドポイント，ユースケースの対応関係
+
+RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使用して，データ処理の方法をリクエストする．それぞれが，APIのユースケースに対応する．ユースケースごとのメソッド名については，Laravelを参考にする．
+
+参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
+
+| HTTPメソッド | エンドポイント                         | ユースケース                                                 | メソッド名の例  |
+| ------------ | -------------------------------------- | ------------------------------------------------------------ | --------------- |
+| GET          | ```https://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   | index           |
+|              | ```https://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       | show            |
+| POST         | ```https://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン／ログアウト | create，store   |
+| PUT`         | ```https://example.co.jp/users/{id}``` | データの更新（置換）                                         | update          |
+| DELETE       | ```https://example.co.jp/users/{id}``` | データの削除                                                 | delete，destroy |
 
 #### ・POST送信 vs PUT送信
 
@@ -71,30 +87,6 @@ POST送信とPUT送信の重要な違いについてまとめる．データを�
 
 <br>
 
-## 02-02. Addressability
-
-### エンドポイント
-
-#### ・エンドポイントとは
-
-特定のリソースを操作するための固有のURIのこと．エンドポイント は，リソース1つごと，あるいはまとまりごとに割り振られる．
-
-#### ・HTTPメソッド，エンドポイント，ユースケースの対応関係
-
-RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使用して，データ処理の方法をリクエストする．それぞれが，APIのユースケースに対応する．ユースケースごとのメソッド名については，Laravelを参考にする．
-
-参考：https://noumenon-th.net/programming/2020/01/30/laravel-crud/
-
-| HTTPメソッド | エンドポイント                        | ユースケース                                                 | メソッド名の例  |
-| ------------ | ------------------------------------- | ------------------------------------------------------------ | --------------- |
-| GET          | ```http://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   | index           |
-|              | ```http://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       | show            |
-| POST         | ```http://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン | create，store   |
-| PUT`         | ```http://example.co.jp/users/{id}``` | データの更新（置換）                                         | update          |
-| DELETE       | ```http://example.co.jp/users/{id}``` | データの削除                                                 | delete，destroy |
-
-<br>
-
 
 ### パラメータの割り当て方法
 
@@ -103,12 +95,12 @@ RESTfulAPIでは，全てのHTTPメソッドの内，主に以下の4つを使�
 URIの構造のうち，パスまたはクエリストリングにパラメータを割り当てて送信する．それぞれ，パスパラメータまたはクエリパラメータという．
 
 ```http
-GET http://example.co.jp:80/users/777?text1=a&text2=b
+GET https://example.co.jp:80/users/777?text1=a&text2=b
 ```
 
-| 完全修飾ドメイン名         | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
-| -------------------------- | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
-| ```http://example.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
+| 完全修飾ドメイン名          | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
+| --------------------------- | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
+| ```https://example.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
 
 #### ・使い分け（再掲）
 
@@ -138,7 +130,7 @@ JSON型データ内に定義し，メッセージボディにパラメータを�
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
-GET http://example.co.jp HTTP/2
+GET https://example.co.jp HTTP/2
 # MIME type
 content-type: application/json
 # Authorizationヘッダー
@@ -198,17 +190,17 @@ x-api-key: *****
 **＊悪い実装例＊**
 
 ```http
-GET http://example.co.jp/show-user/12345
+GET https://example.co.jp/show-user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 ```http
-GET http://example.co.jp/users/hiroki_hasegawa
+GET https://example.co.jp/users/hiroki_hasegawa
 ```
 
 **＊認証の場合＊**
@@ -216,11 +208,11 @@ GET http://example.co.jp/users/hiroki_hasegawa
 動詞を許容するのであれば```login```や```logout```とし，名詞を採用するのであれば```session```とする．
 
 ```http
-GET http://example.co.jp/login
+GET https://example.co.jp/login
 ```
 
 ```http
-GET http://example.co.jp/session
+GET https://example.co.jp/session
 ```
 
 #### ・短くすること
@@ -231,14 +223,14 @@ GET http://example.co.jp/session
 
 
 ```http
-GET http://example.co.jp/service/api/users/12345
+GET https://example.co.jp/service/api/users/12345
 ```
 
 **＊良い実装例＊**
 
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 #### ・略称を使わないこと
@@ -248,7 +240,7 @@ GET http://example.co.jp/users/12345
 ここで，Usersを意味する『```u```』といった略称は，当時の設計者しかわからないため，不要である．
 
 ```http
-GET http://example.co.jp/u/12345
+GET https://example.co.jp/u/12345
 ```
 
 **＊良い実装例＊**
@@ -256,7 +248,7 @@ GET http://example.co.jp/u/12345
 略称を使わずに，『users』とする．
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 #### ・小文字を使うこと
@@ -264,13 +256,13 @@ GET http://example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://example.co.jp/Users/12345
+GET https://example.co.jp/Users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 #### ・ケバブケースを使うこと
@@ -278,7 +270,7 @@ GET http://example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET http://example.co.jp/users_id/12345
+GET https://example.co.jp/users_id/12345
 ```
 
 **＊良い実装例＊**
@@ -286,13 +278,13 @@ GET http://example.co.jp/users_id/12345
 スネークケースやキャメケースを使わずに，ケバブケースを使用する．
 
 ```http
-GET http://example.co.jp/users-id/12345
+GET https://example.co.jp/users-id/12345
 ```
 
 ただ，そもそもケバブ方式も利用せずに，スラッシュで区切ってしまうのも手である
 
 ```http
-GET http://example.co.jp/users/id/12345
+GET https://example.co.jp/users/id/12345
 ```
 
 #### ・複数形を使用すること
@@ -302,13 +294,13 @@ GET http://example.co.jp/users/id/12345
 Usersという集合の中に，Idが存在しているため，単数形は使わない．
 
 ```http
-GET http://example.co.jp/user/12345
+GET https://example.co.jp/user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 #### ・システムの設計方法がバレないURIにすること
@@ -318,13 +310,13 @@ GET http://example.co.jp/users/12345
 悪意のあるユーザに，脆弱性を狙われる可能性があるため，システムの設計方法がばれないアーキテクチャにすること．ミドルウェアにCGIプログラムが使用されていることや，phpを使用していることがばれてしまう．
 
 ```http
-GET http://example.co.jp/cgi-bin/get_users.php
+GET https://example.co.jp/cgi-bin/get_users.php
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 #### ・HTTPメソッドの名前を使用しないこと
@@ -334,38 +326,38 @@ GET http://example.co.jp/users/12345
 メソッドから，処理の目的はわかるので，URIに対応する動詞名を実装する必要はない．
 
 ```http
-GET http://example.co.jp/users/get/12345
+GET https://example.co.jp/users/get/12345
 ```
 
 ```http
-POST http://example.co.jp/users/create/12345
+POST https://example.co.jp/users/create/12345
 ```
 
 
 ```http
-PUT http://example.co.jp/users/update/12345
+PUT https://example.co.jp/users/update/12345
 ```
 
 ```http
-DELETE http://example.co.jp/users/delete/12345
+DELETE https://example.co.jp/users/delete/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/{id}
+GET https://example.co.jp/users/{id}
 ```
 
 ```http
-POST http://example.co.jp/users
+POST https://example.co.jp/users
 ```
 
 ```http
-PUT http://example.co.jp/users/{id}
+PUT https://example.co.jp/users/{id}
 ```
 
 ```http
-DELETE http://example.co.jp/users/{id}
+DELETE https://example.co.jp/users/{id}
 ```
 
 #### ・数字，バージョン番号を可能な限り使用しないこと
@@ -375,13 +367,13 @@ DELETE http://example.co.jp/users/{id}
 ここで，```alpha```，```v2```，といったキーワードは，当時の設計者しかわからないため，あまり良くない．ただし，利便上，使う場合もある．
 
 ```http
-GET http://example.co.jp/v2/users/12345
+GET https://example.co.jp/v2/users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 URLにバージョンを表記しない代わりに，リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い．
@@ -397,11 +389,11 @@ X-Api-Version: 1
 GET送信とPOST送信の間で，IDパラメータのHTTPメソッドが統一されていない．
 
 ```http
-GET http://example.co.jp/users/?id=12345
+GET https://example.co.jp/users/?id=12345
 ```
 
 ```http
-POST http://example.co.jp/users/12345/messages
+POST https://example.co.jp/users/12345/messages
 ```
 
 **＊良い実装例＊**
@@ -410,11 +402,11 @@ POST http://example.co.jp/users/12345/messages
 
 
 ```http
-GET http://example.co.jp/users/12345
+GET https://example.co.jp/users/12345
 ```
 
 ```http
-POST http://example.co.jp/users/12345/messages
+POST https://example.co.jp/users/12345/messages
 ```
 
 <br>
@@ -434,7 +426,7 @@ POST http://example.co.jp/users/12345/messages
 クエリパラメータに送信するデータを記述する方法．リクエストメッセージは，以下の要素に分類できる．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．
 
 ```http
-GET http://example.co.jp/bar-form.php?text1=a&text2=b HTTP/2
+GET https://example.co.jp/bar-form.php?text1=a&text2=b HTTP/2
 # リクエストされたドメイン名
 Host: example.co.jp
 Connection: keep-alive
@@ -446,7 +438,7 @@ User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
 # レスポンスで送信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 # 遷移元のページ
-Referer: http://foo.co.jp/
+Referer: https://foo.co.jp/
 # レスポンスしてほしいエンコーディング形式
 Accept-Encondig: gzip, deflate, br
 # レスポンスで送信してほしい言語
@@ -462,7 +454,7 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 クエリパラメータを，URLに記述せず，メッセージボディに記述してリクエストメッセージを送る方法．以下では，Web APIのうち，特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する．メッセージボディに情報が記述されるため，履歴では確認できない．また，SSLによって暗号化されるため，傍受できない．リクエストメッセージは，以下の要素に分類できる．
 
 ```http
-POST http://example.co.jp/bar-form.php HTTP/2
+POST https://example.co.jp/bar-form.php HTTP/2
 # リクエストされたドメイン名
 Host: example.co.jp
 Connection: keep-alive
@@ -470,7 +462,7 @@ Content-Length: 15
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
 Cache-Control: no-store
 # オリジン（プロトコル＋ドメイン＋ポート番号）
-Origin: http://example.co.jp
+Origin: https://example.co.jp
 Upgrade-Insecure-Requests: 1
 # リクエストで送信するMIMEタイプ
 Content-Type: application/x-www-firm-urlencoded
@@ -479,7 +471,7 @@ User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ap
 # レスポンスで送信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 # 遷移元のページ
-Referer: http://foo.co.jp/
+Referer: https://foo.co.jp/
 Accept-Encondig: gzip, deflate, br
 # レスポンスで送信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
@@ -634,7 +626,7 @@ Content-Type: application/json
 他に，URIでデータ型を記述する方法がある．
 
 ```http
-GET http://example.co.jp/users/12345?format=json
+GET https://example.co.jp/users/12345?format=json
 ```
 
 <br>
@@ -724,7 +716,7 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 **＊具体例＊**
 
 ```
-http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
+https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
 <br>
@@ -759,7 +751,7 @@ http://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 #### ・Cookie，Cookie情報とは
 
-クライアントからの次回のリクエスト時でも，Cookie情報（キー名／値）を用いて，同一クライアントと認識できる仕組みCookieという．HTTPはStatelessプロトコルであるが，Cookie情報により擬似的にStatefulな通信を行える．
+クライアントからの次回のリクエスト時でも，Cookie情報（キー名／値のセット）を用いて，同一クライアントと認識できる仕組みをCookieという．HTTPはStatelessプロトコルであるが，Cookie情報により擬似的にStatefulな通信を行える．
 
 #### ・Cookie情報に関わるヘッダー
 
@@ -1370,7 +1362,7 @@ APIに対して送信されるリクエストメッセージのデータ，ま�
 
 ```shell
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "id": {

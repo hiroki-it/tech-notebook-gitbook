@@ -131,7 +131,7 @@ Route53から転送されるパブリックIPアドレスを受信できるよ�
 
 <br>
 
-### ビルド＆デプロイ
+### 手動ビルド＆デプロイ
 
 #### ・開発環境で擬似再現
 
@@ -153,11 +153,29 @@ $ amplify add hosting
 $ amplify publish
 ```
 
-#### ・GitHub経由でのビルド&デプロイ
+<br>
 
-GitHubを経由してビルドとデプロイを設定するために，リポジトリのルートに```amplify.yml```ファイルを配置する．．ルートディレクトリの直下に配置しておく．
+### 自動ビルド&デプロイ
 
-参考：https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/build-settings.html
+#### ・連携可能なバージョン管理システム
+
+参考：https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+
+#### ・対応するリポジトリ構造
+
+| 種類             | ビルド開始ディレクトリ                         |
+| ---------------- | ---------------------------------------------- |
+| 非モノリポジトリ | リポジトリ名からなるディレクトリ               |
+| モノリポジトリ   | モノリポジトリの各アプリケーションディレクトリ |
+
+#### ・amplify.ymlファイル
+
+リポジトリのルートに```amplify.yml```ファイルを配置する．Next.jsではSSG／SSRの両モードでビルド＆デプロイが可能である．```package.json```ファイルで使用される```next```コマンドに応じて，SSGまたはSSRのいずれかのインフラが構築され，デプロイされる．SSGの場合，裏側ではS3，CloudFront，Route53などが構築され，静的ホスティングが実行される．SSRの場合，フロントエンドだけでなくバックエンドの稼働環境が必要になるため，LambdaやCogniteが構築される．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/build-settings.html
+- https://docs.aws.amazon.com/ja_jp/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
 
 ```yaml
 version: 1
@@ -167,7 +185,7 @@ version: 1
 #===================== 
 env:
   variables:
-    key: value
+    key: # 環境変数のハードコーディング
       
 #=====================      
 # バックエンドのCI/CD
@@ -176,13 +194,13 @@ backend:
   phases:
     preBuild:
       commands:
-        - *enter command*
+         - # コマンド
     build:
       commands:
-        - *enter command*
+        - # コマンド
     postBuild:
       commands:
-        - *enter command*
+        - # コマンド
         
 #=====================         
 # フロントエンドのCI/CD
@@ -191,13 +209,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install 
-        - echo "API_BASE_URL=$API_BASE_URL"                  > .env
-        - echo "API_BROWSER_BASE_URL=$API_BROWSER_BASE_URL" >> .env
-        - echo "CLIENT_SECRET=$CLIENT_SECRET"               >> .env
-        - echo "GOOGLE_MAPS_API_KEY=$GOOGLE_MAPS_API_KEY"   >> .env
-        - echo "GOOGLE_ANALYTICS_ID=$GOOGLE_ANALYTICS_ID"   >> .env
-        - echo "HTTPS_PORTAL_DOMAIN=$HTTPS_PORTAL_DOMAIN"   >> .env
+        - npm install
+        # 環境変数として登録したエンコード値をデコード
+        - echo $ENV | base64 -di > .env
         - cat .env
     build:
       commands:
@@ -223,13 +237,13 @@ test:
   phases:
     preTest:
       commands:
-        - *enter command*
+        - # コマンド
     test:
       commands:
-        - *enter command*
+        - # コマンド
     postTest:
       commands:
-        - *enter command* 
+        - # コマンド
   artifacts:
     # デプロイ対象のディレクトリ
     files:
@@ -239,13 +253,6 @@ test:
     # ビルドのアーティファクトのディレクトリ      
     baseDirectory: *location*
 ```
-
-#### ・対応するリポジトリ構造
-
-| 種類             | ビルド開始ディレクトリ                         |
-| ---------------- | ---------------------------------------------- |
-| 非モノリポジトリ | リポジトリ名からなるディレクトリ               |
-| モノリポジトリ   | モノリポジトリの各アプリケーションディレクトリ |
 
 <br>
 
@@ -956,7 +963,17 @@ CloudWatchメトリクス上では，以下のように確認できる．
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
 ```
 
-#### ・文字コード
+#### ・Logインサイト
+
+汎用的なクエリを示す．
+
+```shell
+# 小文字と大文字を区別せずに，ExceptionまたはErrorを含むログを検索する．
+fields @timestamp, @message, @logStream
+| filter @message like /(?i)(Exception|Error)/
+| sort @timestamp desc
+| limit 100
+```
 
 
 
@@ -1577,11 +1594,11 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 | 起動タイプ                   | タスク内のコンテナの起動タイプを設定する．                   |                                                              |
 | プラットフォームのバージョン | タスクの実行環境のバージョンを設定する．                     | バージョンによって，連携できるAWSリソースが異なる．          |
 | サービスタイプ               |                                                              |                                                              |
-| 最小ヘルス率                 |                                                              |                                                              |
-| 最大率                       |                                                              |                                                              |
-| ヘルスチェックの猶予期間     | ALB／NLBのヘルスチェックの状態を確認するまでの待機時間を設定する．猶予期間を過ぎても，ALB／NLBのヘルスチェックが失敗していれば，サービスはタスクを停止し，新しいタスクを再起動する． | ALB／NLBではターゲットを登録し，ヘルスチェックを実行するプロセスがある．特にNLBでは，これに時間がかかる．またアプリケーションによっては，コンテナの構築に時間がかかる．そのため，NLBのヘルスチェックが完了する前に，ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある．例えば，NLBとLaravelを使用する場合は，ターゲット登録とLaravelコンテナの築の時間を加味して，```330```秒以上を目安とする．例えば，ALBとNuxtjs（SSRモード）を使用する場合は，```600```秒以上を目安とする．なお，アプリケーションのコンテナ構築にかかる時間は，ローカル環境での所要時間を参考にする． |
+| タスクの必要数               | 非スケーリング時またはデプロイ時のタスク数を設定する．       | 最小ヘルス率と最大率の設定値に影響する．                     |
+| 最小ヘルス率                 | タスクの必要数の設定を100%とし，新しいタスクのデプロイ時に，稼働中タスクの最低合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスクヘルス最小率を50%とすれば，稼働中タスクの最低合計数は２個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中の既存タスク／新タスクの数が最低合計数未満にならないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| 最大率                       | タスクの必要数の設定を100%とし，新しいタスクのデプロイ時に，稼働中／停止中タスクの最高合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスク最大率を200%とすれば，稼働中／停止中タスクの最高合計数は８個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中／停止中の既存タスク／新タスクの数が最高合計数を超過しないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| ヘルスチェックの猶予期間     | デプロイ時のALB／NLBのヘルスチェックの状態を確認するまでの待機時間を設定する．猶予期間を過ぎても，ALB／NLBのヘルスチェックが失敗していれば，サービスはタスクを停止し，新しいタスクを再起動する． | ALB／NLBではターゲットを登録し，ヘルスチェックを実行するプロセスがある．特にNLBでは，これに時間がかかる．またアプリケーションによっては，コンテナの構築に時間がかかる．そのため，NLBのヘルスチェックが完了する前に，ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある．例えば，NLBとLaravelを使用する場合は，ターゲット登録とLaravelコンテナの築の時間を加味して，```330```秒以上を目安とする．例えば，ALBとNuxtjs（SSRモード）を使用する場合は，```600```秒以上を目安とする．なお，アプリケーションのコンテナ構築にかかる時間は，ローカル環境での所要時間を参考にする． |
 | タスクの最小数               | スケーリング時のタスク数の最小数を設定する．                 |                                                              |
-| タスクの必要数               | 平常時のタスク数を設定する．                                 |                                                              |
 | タスクの最大数               | スケーリング時のタスク数の最大数を設定する．                 |                                                              |
 | ロードバランシング           | ALBでルーティングするコンテナを設定する．                    |                                                              |
 | タスクの数                   | タスクの構築数をいくつに維持するかを設定する．               | タスクが何らかの原因で停止した場合，空いているAWSサービスを使用して，タスクが自動的に補填される． |
@@ -1762,7 +1779,7 @@ exit ${EXIT_CODE}
 | 設定項目                      | 説明                                                         | 補足                                                         |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
-| ```awslogs-datetime-format``` | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる． |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる．<br>参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
 | ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
 | ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，『<プレフィックス名>/<コンテナ名>/<タスクID>』の形式で送信される． |
 
@@ -1888,15 +1905,20 @@ awsの独自ネットワークモード．タスクはElastic Network Interface�
 
 <br>
 
-### 新しいタスクのデプロイ
+### タスクのデプロイ方法の種類
 
 #### ・ローリングアップデート
 
 ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rolling-update.png)
 
-参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments
+参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
 
-1. ````minimumHealthyPercent````の値に基づいて，新しいリビジョン番号のタスクを上限値いっぱいまで構築する．
+1. 最小ヘルス率の設定値に基づいて，ローリングアップデート時の稼働中タスクの最低合計数が決定される．
+2. 最大率の設定値に基づいて，ローリングアップデート時の稼働中／停止中タスクの最高合計数が決まる
+3. ECSは，既存タスクを稼働中のまま，新タスクを最高合計数いっぱいまで構築する．
+4. ECSは，猶予期間後にALB／NLBによる新タスクに対するヘルスチェックの結果を確認する．ヘルスチェックが成功していれば，既存タスクを停止する．ただし，最小ヘルス率によるタスクの最低合計数が保たれる．
+5. 『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され，徐々に既存タスクが新タスクに置き換わる．
+6. 全ての既存タスクが新タスクに置き換わる．
 
 #### ・Blue/Greenデプロイメント
 
@@ -2136,7 +2158,10 @@ SELECT * FROM users;
 
 ```shell
 # Redis接続コマンド
-$ /usr/local/sbin/redis-stable/src/redis-cli -c -h <Redisのホスト名> -p 6379
+$ /usr/local/sbin/redis-stable/src/redis-cli \
+  -c
+  -h <Redisのホスト名>
+  -p 6379
 ```
 
 ```shell
@@ -2213,7 +2238,7 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
     "<イベントを起こしたリソースのARN>"
   ],
   "detail": {
-    // イベントデータ
+    // その時々のイベントごとに異なるデータ
   }
 }
 ```
@@ -2226,8 +2251,8 @@ Amplifyの指定したIDのアプリケーションが，```Amplify Deployment S
 {
   "detail": {
     "appId": [
-      "xxxxx",
-      "yyyyy"
+      "foo",
+      "bar"
     ],
     "jobStatus": [
       "SUCCEED",
@@ -4776,7 +4801,9 @@ Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ・Count（検知）モード
 
-対象となったリクエスト数をしばらく計測し，該当したリクエストは拒否しない．計測結果に応じて，拒否するのか否かを手動で洗濯する．
+ルールに該当するリクエスト数を数え，許可／拒否せずに次のルールを検証する．計測結果に応じて，カウントモードを無効化し，拒否できるようにする．
+
+参考：https://oji-cloud.net/2020/09/18/post-5501/
 
 <br>
 

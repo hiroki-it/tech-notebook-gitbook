@@ -3332,6 +3332,32 @@ class FooAfterMiddleware
 
 <br>
 
+### 標準のMiddleware
+
+#### ・EncryptCookies
+
+レスポンス時に，```Cookie```ヘッダーの全ての値を暗号化する．暗号化したくない場合は，```Cookie```ヘッダーのキー名を```except```プロパティに設定する．
+
+参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+
+#### ・StartSession
+
+セッションの開始の起点になる．
+
+参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
+
+また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_cyber_attacks.html
+
+#### ・VerifyCsrfToken
+
+セッションファイルに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションファイルは```storage/framework/sessions```ディレクトリに配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを使用する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+
+<br>
+
 ### コール方法のカスタマイズ
 
 #### ・Kernel
@@ -5814,9 +5840,9 @@ class EventServiceProvider extends ServiceProvider
 
 #### ・CSRF対策
 
-Laravelでは，CSRF対策のため，POST，PUT，DELETEメソッドを使用するルーティングでCSRFトークンによる照合を行う必要がある．そのために，View側でCSRFトークンフィールドを実装する．この実装により，セッションごとに，登録ユーザにCSRFトークンを付与できる．
+セッション開始時にCSRFトークンが生成される．Bladeを使用してサーバ側のCSRFトークンを取り出し，inputタグのhidden属性にCSRFトークンを割り当て送信する．
 
-**＊実装例＊**
+参考：https://readouble.com/laravel/6.x/ja/csrf.html
 
 ```html
 <form method="POST" action="/profile">
@@ -5824,6 +5850,14 @@ Laravelでは，CSRF対策のため，POST，PUT，DELETEメソッドを使用�
     ...
 </form>
 ```
+
+Bladeを使用しない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．
+
+参考：
+
+- https://readouble.com/laravel/6.x/ja/csrf.html#csrf-x-csrf-token
+- https://readouble.com/laravel/6.x/ja/csrf.html#csrf-x-xsrf-token
+- https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
 
 #### ・XSS対策
 
@@ -6053,7 +6087,7 @@ class FooController extends Controller
 
 #### ・セッションファイルがStoreクラスに至るまで
 
-全てを追うことは難しいので，StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする．ここで，```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される．これにより，Storeクラスの```start```メソッド，```loadSession```メソッド，```readFromHandler```メソッドが実行され，```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される．```read```メソッドは，セッションファイルに書き込まれているセッションを読み出し，```attribute```プロパティに格納する．Sessionクラスのメソッドは，```attribute```プロパティを使用して，セッションを操作する．最終的に,```handleStatefulRequest```では，```saveSession```メソッドの中の```save```メソッドが実行され，セッションファイルに新しい値が書き込まれる．
+全てを追うことは難しいので，StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする．ここで，```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される．これにより，Storeクラスの```start```メソッド，```loadSession```メソッド，```readFromHandler```メソッドが実行され，```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される．```read```メソッドは，```storage/framework/sessions```にあるセッションファイルに書き込まれたセッションを読み出し，```attribute```プロパティに格納する．Sessionクラスのメソッドは，```attribute```プロパティを使用して，セッションを操作する．最終的に,```handleStatefulRequest```では，```saveSession```メソッドの中の```save```メソッドが実行され，セッションファイルに新しい値が書き込まれる．
 
 参考：
 
@@ -6877,7 +6911,7 @@ final class AuthenticationController
     /**
      * @return RedirectResponse
      */
-    public function authenticate(AuthenticationRequest $authenticationRequest)
+    public function login(AuthenticationRequest $authenticationRequest)
     {
         $validated = $authenticationRequest->validated();
 

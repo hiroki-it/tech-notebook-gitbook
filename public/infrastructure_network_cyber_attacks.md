@@ -164,13 +164,49 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 
 #### ・【対策】ワンタイムトークン
 
-セッションIDだけでなく，ワンタイムトークンも併用する．入力フォームからリクエストを送信する前に，サーバ側でセッションごとのワンタイムトークンを発行できるようにする．その後，入力フォームにてそのワンタイムトークンをhidden値に割り当てるようにする．リクエスト時には，```Set-Cookie```ヘッダーの```csrftoken```パラメータ（フレームワークによっては，これに相当するパラメータ）にこのトークンを割り当て，サーバ側のセッションファイルに書き込まれたワンタイムトークンと比較する．
+![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/csrf-token.png)
+
+認証時に，セッションIDだけでなく，ワンタイムトークンも併用する．認証フォームがリクエストされた時，サーバ側では，ワンタイムトークンを発行し，これを```Set-Cookie```ヘッダーの```csrftoken```パラメータ（フレームワークによっては，これに相当するパラメータ）や独自ヘッダーに割り当てて，レスポンスを返信する．
 
 ```http
-POST http://foo.example.co.jp/bar-form.php HTTP/2
-# 送信元オリジン
-Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>
+200 OK
+Set-Cookie: csrftoken=<トークン>
+X-CSRF-TOKEN（独自ヘッダー）: <トークン>
 ```
+
+ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し，認証フォームのinputタグのhidden属性に割り当てる．加えて，metaタグにトークンを割り当てることもある．
+
+```html
+<form method="POST" action="http://foo.com/bar-form.php">
+    <input type="hidden" name="csrftoken" value="<csrfトークン>">
+    <input type="text" name="email">
+    <input type="text" name="password">
+    <input type="submit value="ログイン">
+</form>
+```
+
+```html
+<meta name="csrf_token" content="<ヘッダーから取り出したトークン>">
+```
+
+認証のためのPOSTリクエスト時に，リクエストボディや独自ヘッダーにトークンを割り当て，リクエストを送信する．どちらを使用するかは，バックエンド側の仕様によって異なる．
+
+```http
+POST https://example.co.jp/bar-form.php HTTP/2
+x-csrf-token（独自ヘッダー）: <トークン>
+
+{
+  _token=<トークン>
+}
+```
+
+サーバ側では，POSTリクエストによって送信されたトークンとワンタイムトークンを比較し，認証を実行する．認証完了後のセッションでは，新たなPOSTリクエスト時にそのワンタイムトークンが使い回し，GETリクエスト時には使用しない．
+
+参考：
+
+- https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
+- https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
+- https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95
 
 #### ・【対策】CORS
 
