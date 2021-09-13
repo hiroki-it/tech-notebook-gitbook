@@ -162,10 +162,6 @@ class FooCommand extends Command
 $ php artisan command:do-foo
 ```
 
-
-
-
-
 <br>
 
 ## 04. Database
@@ -827,6 +823,7 @@ INSERT文を実行する．Eloquentモデルには```create```メソッドがな
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Http\Request;
 
@@ -893,6 +890,7 @@ SELECT文を実行し，レコードを一つ取得する．Eloquentモデルに
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -930,6 +928,7 @@ SELECT文を実行し，レコードを全て取得する．MySQLを含むDBエ�
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -960,6 +959,7 @@ SELECT文を実行し，レコードを指定したカラムの昇順で並び�
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -988,6 +988,7 @@ SELECT文を実行し，レコードを指定したカラムの降順で並び�
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -1018,6 +1019,7 @@ SELECT文を実行し，レコードを指定したカラムの昇順／降順�
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -1060,6 +1062,7 @@ SELECT文を実行し，指定した開始地点から指定した件数のレ�
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -1205,6 +1208,7 @@ UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿�
 
 namespace App\Infrastructure\Repositories;
 
+use App\Http\Controllers;
 use App\Domain\Foo\Entities;
 use Illuminate\Http\Request;
 
@@ -2902,6 +2906,267 @@ class FooController extends Controller
 
 <br>
 
+## 08-02. よく使うグローバルヘルパー関数
+
+### ヘルパー関数
+
+#### ・ヘルパー関数とは
+
+グローバルにコールできるLaravel専用のメソッドのこと．基本的には，ヘルパー関数で実行される処理は，Facadeの内部で実行されるものと同じである．どちらを使用するかは好みである．
+
+参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
+
+#### ・一覧
+
+以下リンクを参照せよ．
+
+https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+
+<br>
+
+### ```auth```ヘルパー
+
+#### ・AuthManagerインスタンスの返却
+
+認証処理をもつAuthManagerクラスのインスタンスを返却する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+
+```php
+<?php
+
+// Illuminate\Auth\AuthManager
+$auth = auth();
+```
+
+<br>
+
+### ```config```ヘルパー
+
+#### ・環境変数ファイルの読み込み
+
+環境変数ファイル名とキー名をドットで指定し，事前に設定された値を出力する．
+
+**＊実装例＊**
+
+標準で搭載されている```app.php```ファイルの```timezone```キーの値を出力する．
+
+```php
+<?php
+
+$value = config("app.timezone");
+```
+
+#### ・独自環境変数ファイルの作成と読み込み
+
+configディレクトリに任意の名前のphp形式を作成しておく．これは，configヘルパーで読み込むことができる．
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+$requestUrl = config("api.foo.endpoint_url");
+```
+
+
+```php
+<?php
+
+return [
+    "foo" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ],
+    "bar" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ]
+];
+```
+
+<br>
+
+### ```redirect```ヘルパー
+
+参考：https://blog.capilano-fw.com/?p=566
+
+<br>
+
+### ```response```ヘルパー
+
+#### ・JSONデータのレスポンス
+
+返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
+
+参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+
+        // ～ 省略 ～
+
+        return response()->json([
+            "name"  => "Abigail",
+            "state" => "CA"
+        ], 200);
+    }
+}
+```
+
+#### ・Viewテンプレートのレスポンス
+
+返却されるResponseFactoryクラスの```view```メソッドに，レンダリングしたいデータ（テンプレート，array型データ，ステータスコードなど）を設定する．また，Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers\Foo;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+        // ～ 省略 ～
+
+        // データ，ステータスコード，ヘッダーなどを設定する場合
+        return response()->view(
+            "foo",
+            $data,
+            200
+        )->header(
+            "Content-Type",
+            $type
+        );
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+        // ～ 省略 ～
+
+        // ステータスコードのみ設定する場合
+        return response()->view("foo")
+            ->setStatusCode(200);
+    }
+}
+```
+
+<br>
+
+### ```route```ヘルパー
+
+#### ・ルートエイリアスに基づいてURL生成
+
+ルートにエイリアスがついている場合，エイリアスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+
+```php
+<?php
+    
+Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
+    
+// https://example.co.jp/foos
+$url = route('foos_index');
+```
+
+<br>
+
+### ```path```系ヘルパー
+
+#### ・```base_path```ヘルパー
+
+引数を設定しない場合，projectルートディレクトリの絶対パスを生成する．また，projectルートディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project
+$path = base_path();
+
+// /var/www/project/vendor/bin
+$path = base_path("vendor/bin");
+```
+
+#### ・```public_path```ヘルパー
+
+引数を設定しない場合，publicディレクトリの絶対パスを生成する．また，publicディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project/public
+$path = public_path();
+
+// /var/www/project/public/css/app.css
+$path = public_path("css/app.css");
+```
+
+#### ・```storage_path```ヘルパー
+
+引数を設定しない場合，storageディレクトリの絶対パスを生成する．まあ，storageディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project/storage
+$path = storage_path();
+
+// /var/www/project/storage/app/file.txt
+$path = storage_path("app/file.txt");
+```
+
+<br>
+
+### ```url```ヘルパー
+
+#### ・パスに基づいてURL生成
+
+指定したパスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/5.7/ja/urls.html
+
+```php
+<?php
+
+// https://example.co.jp/foos
+$url = url('/foos');
+```
+
+<br>
+
+
+
 ## 09. Factory
 
 ### artisanコマンドによる操作
@@ -2914,67 +3179,60 @@ $ php artisan make:factory <Factory名> --model=<対象とするModel名>
 
 <br>
 
-### 初期ダミーデータの定義
+### 初期値レコードの定義
 
-#### ・Fakerパッケージのformatters
+#### ・Fakerによるランダム値生成
 
-Fakerはダミーデータを作成するためのパッケージである．Farkerクラスは，プロパティにランダムなデータを保持している．このプロパティを特に，Formattersという．
+Fakerはレコードの値をランダムに生成するためのパッケージである．Farkerクラスは，プロパティにランダムなデータを保持している．このプロパティを特に，Formattersという．
 
-参考：https://github.com/fzaninotto/Faker
+参考：https://fwhy.github.io/faker-docs/
 
-#### ・Fakerによるダミーデータ定義
+#### ・Factoryによるレコード定義
 
 **＊実装例＊**
 
-ユーザのダミーデータを定義する．
-
 ```php
 <?php
 
-use App\Domain\Auth\User;
-use App\Domain\ValueObject\Type\UserType;
-use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
+declare(strict_types=1);
 
-/**
- * @var Factory $factory
- */
-$factory->define(User::class, function (Faker $faker) {
-    
-    return [
-        "user_name"             => $faker->name,
-        "tel_number"            => $faker->phoneNumber,
-        "email"                 => $faker->unique()->safeEmail,
-        "password"              => "test",
-        "user_type"             => UserType::getRandomValue(),
-        "remember_token"        => Str::random(10),
-        "email_verified_at"     => NOW(),
-        "last_authenticated_at" => NOW(),
-    ];
-});
+namespace Database\Factories;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class FooFactory extends Factory
+{
+    /**
+     * @var string
+     */
+    protected $model = Foo::class;
+
+    /**
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name'          => $this->faker->name,
+            'email_address' => $this->faker->unique()->safeEmail,
+            'password'      => 'password',
+        ];
+    }
+}
 ```
 
-他に，商品の初期ダミーデータを定義する．
+#### ・HasFactoryトレイト
+
+Factoryに対応するEloquentモデルで使用する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 ```php
-<?php
-
-use App\Domain\Entity\Product;
-use App\Domain\ValueObject\Type\ProductType
-use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
-
-/**
- * @var Factory $factory
- */
-$factory->define(User::class, function (Faker $faker) {
-
-    return [
-        "product_name" => $faker->word,
-        "price"        => $faker->randomNumber(4),
-        "product_type" => ProductType::getRandomValue(),
-    ];
-});
+class Foo
+{
+    use HasFactory;
+}
 ```
 
 <br>
@@ -2987,44 +3245,46 @@ Factoryにおける定義を基にして，指定した数だけダミーデー�
 
 **＊実装例＊**
 
-DummyUsersSeederを定義し，50個のダミーユーザデータを量産する．
+FooSeederを定義し，50個のダミーユーザデータを量産する．
 
 ```php
 <?php
 
-use App\Domain\Entity\User;
+use App\Models\Foo;
 use Illuminate\Database\Seeder;
 
-class DummyUsersSeeder extends Seeder
+class FooSeeder extends Seeder
 {
+    private const NUM_TEST_DATA = 3;
+    
     /**
      * @return void
      */
     public function run()
     {
-        factory(User::class, 50)->create();
+        factory()->count(self::NUM_TEST_DATA)->create();
     }
 }
 ```
 
-また，DummyProductsSeederを定義し，50個のダミーユーザデータを量産する．
+また，BarSeederを定義し，50個のダミーユーザデータを量産する．
 
 ```php
 <?php
 
-use App\Models\Product;
+use App\Models\Bar;
 use Illuminate\Database\Seeder;
 
-class DummyProductsSeeder extends Seeder
+class BarSeeder extends Seeder
 {
+    private const NUM_TEST_DATA = 3;
+    
     /**
-     * Seederを実行します．
-     *
      * @return void
      */
     public function run()
     {
-        factory(Product::class, 50)->create();
+        factory()->count(self::NUM_TEST_DATA)->create();
     }
 }
 ```
@@ -3039,30 +3299,28 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seederを実行します．
-     *
      * @return void
      */
     public function run()
     {
         // 開発環境用の初期データ
-        if (App::environment("local")) {
+        if (app()->environment("dev")) {
             $this->call([
                 // ダミーデータ
-                DummyUsersSeeder::class,
-                DummyProductsSeeder::class
+                FooSeeder::class,
+                BarSeeder::class
             ]);
         }
         
         // ステージング環境用の初期データ
-        if (App::environment("staging")) {
+        if (app()->environment("stg")) {
             $this->call([
                 // リアルデータ
             ]);
         }
         
         // 本番環境用の初期データ
-        if (App::environment("production")) {
+        if (app()->environment("prd")) {
             $this->call([
                 // リアルデータ
             ]);
@@ -3070,37 +3328,6 @@ class DatabaseSeeder extends Seeder
     }
 }
 ```
-
-#### ・HasFactoryトレイト
-
-```php
-class User
-{
-    use HasFactory;
-}
-```
-
-
-
-```php
-<?php
-
-use App\Domain\Entity\User;
-use Illuminate\Database\Seeder;
-
-class DummyUsersSeeder extends Seeder
-{
-    /**
-     * @return void
-     */
-    public function run()
-    {
-        $user = User::factory()->make();
-    }
-}
-```
-
-参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
 <br>
 
@@ -5030,9 +5257,9 @@ $ php artisan optimize:clear
 
 <br>
 
-### ルーティングファイルの種類
+### ```api.php```ファイル
 
-#### ・```api.php```ファイル
+#### ・Middlewareの適用
 
 APIのエンドポイントとして働くルーティング処理を実装する．実装したルーティング処理時には，Kernelクラスの```middlewareGroups```プロパティの```api```キーで設定したミドルウェアが実行される．APIのエンドポイントは外部公開する必要があるため，```web```キーと比較して，セキュリティのためのミドルウェアが設定されていない．
 
@@ -5067,7 +5294,11 @@ class Kernel extends HttpKernel
 }
 ```
 
-#### ・```web.php```ファイル
+<br>
+
+### ```web.php```ファイル
+
+#### ・Middlewareの適用
 
 API以外のルーティング処理を実装する．実装したルーティング処理時には，Kernelクラスの```middlewareGroups```プロパティの```web```キーで設定したミドルウェアが実行される．API以外のルーティングは外部公開する必要がないため，```api```キーと比較して，セキュリティのためのミドルウェアが多く設定されている．例えば，CSRF対策のためのVerifyCsrfTokenクラスがある．
 
@@ -5105,7 +5336,9 @@ class Kernel extends HttpKernel
 }
 ```
 
-#### ・```guest.php```ファイル
+<br>
+
+### ```guest.php```ファイル
 
 ヘルスチェックなど，API認証が不要なルーティング処理を実装する．
 
@@ -5371,7 +5604,7 @@ interface Container extends ContainerInterface
 
 #### ・単一のクラスをバインド／リゾルブ
 
-AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスをリゾルブできるようになる．これにより，メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．Laravelでは，クラスはServiceContainerに自動的にバインドされており，以下の実装を実行する必要はない．
+AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスをリゾルブできるようになる．これにより，メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．Laravelでは，クラスはServiceContainerに自動的にバインドされており，引数でクラスを指定するだけでインスタンスが生成されるため，以下の実装を実行する必要はない．ただし，混合型の場合は引数の型を指定できないため，リゾルブは実行できない．
 
 参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
 
@@ -5426,12 +5659,16 @@ class Qux
 引数の型を指定しない場合は，手動で渡す必要がある．
 
 ```php
+<?php
+
+use App\Models\Foo;
+
 class Qux
 {
     /**
      * @param Foo $foo
      */
-    public function method($foo) // リゾルブされないため，手動で渡す必要がある．
+    public function __construct($foo) // 引数の型を指定しない場合，リゾルブされない．．
     {
         $foo->bar;
         $foo->baz;
@@ -5439,7 +5676,35 @@ class Qux
 }
 
 $foo = new Foo();
-$qux = new Qux($foo); // 手動
+$qux = new Qux($foo); // 手動で渡す
+```
+
+混合型の場合は，引数の型を指定できないため，リゾルブを実行できない．
+
+```php
+<?php
+
+use App\Models\Foo1;
+use App\Models\Foo2;
+use App\Models\Foo3;
+
+class Qux
+{
+    /**
+     * @param Foo1|Foo2|Foo3 $mixed
+     */
+    public function __construct($mixed) // 混合型では引数の型を指定できない
+    {
+        $mixed->bar;
+        $mixed->baz;
+    }
+}
+
+$foo1 = new Foo1();
+$foo2 = new Foo2();
+$foo3 = new Foo3();
+
+$qux = new Qux($foo1);
 ```
 
 #### ・複数のクラスをバインド／リゾルブ
@@ -5587,10 +5852,6 @@ $result = $foo->method();
 #### ・```register```メソッドと```boot```メソッドの違い
 
 Laravelのライフサイクルにおいて，ServiceContainerへのクラスのバインドの時には，まずServiceProviderの```register```メソッドが実行され，その後に```boot```メソッドが実行される．そのため，ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき，これは```boot```メソッドに実装することが適している．
-
-#### ・使い方が固定されたLaravel固有のメソッド
-
-Laravelには，その機能を使うにあたって，使い方が固定されているメソッドがある．これらメソッドには，引数の型を実装するべきものとそうでないものがある（例：Notificationクラスの```handle```メソッドや```via```メソッド）．この違いは，メソッドコール時に自動的にリゾルブを実行しているのか，あるいはLaravelの内部でメソッドに引数を渡しているのかの違いである．
 
 <br>
 
@@ -6432,265 +6693,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 <br>
 
-## 20. よく使うグローバルヘルパー関数
-
-### ヘルパー関数
-
-#### ・ヘルパー関数とは
-
-グローバルにコールできるLaravel専用のメソッドのこと．基本的には，ヘルパー関数で実行される処理は，Facadeの内部で実行されるものと同じである．どちらを使用するかは好みである．
-
-参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
-
-#### ・一覧
-
-以下リンクを参照せよ．
-
-https://readouble.com/laravel/8.x/ja/helpers.html#method-view
-
-<br>
-
-### ```auth```ヘルパー
-
-#### ・AuthManagerインスタンスの返却
-
-認証処理をもつAuthManagerクラスのインスタンスを返却する．
-
-参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
-
-```php
-<?php
-
-// Illuminate\Auth\AuthManager
-$auth = auth();
-```
-
-<br>
-
-### ```config```ヘルパー
-
-#### ・環境変数ファイルの読み込み
-
-環境変数ファイル名とキー名をドットで指定し，事前に設定された値を出力する．
-
-**＊実装例＊**
-
-標準で搭載されている```app.php```ファイルの```timezone```キーの値を出力する．
-
-```php
-<?php
-
-$value = config("app.timezone");
-```
-
-#### ・独自環境変数ファイルの作成と読み込み
-
-configディレクトリに任意の名前のphp形式を作成しておく．これは，configヘルパーで読み込むことができる．
-
-**＊実装例＊**
-
-
-```php
-<?php
-
-$requestUrl = config("api.foo.endpoint_url");
-```
-
-
-```php
-<?php
-
-return [
-    "foo" => [
-        "endpoint_url" => env("ENDPOINT_URL", ""),
-        "api_key"      => env("API_KEY"),
-    ],
-    "bar" => [
-        "endpoint_url" => env("ENDPOINT_URL", ""),
-        "api_key"      => env("API_KEY"),
-    ]
-];
-```
-<br>
-
-### ```redirect```ヘルパー
-
-参考：https://blog.capilano-fw.com/?p=566
-
-<br>
-
-### ```response```ヘルパー
-
-#### ・JSONデータのレスポンス
-
-返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
-
-参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
-
-class FooController extends Controller
-{
-    public function index()
-    {
-
-        // ～ 省略 ～
-
-        return response()->json([
-            "name"  => "Abigail",
-            "state" => "CA"
-        ], 200);
-    }
-}
-```
-
-#### ・Viewテンプレートのレスポンス
-
-返却されるResponseFactoryクラスの```view```メソッドに，レンダリングしたいデータ（テンプレート，array型データ，ステータスコードなど）を設定する．また，Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers\Foo;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
-
-class FooController extends Controller
-{
-    public function index()
-    {
-        // ～ 省略 ～
-
-        // データ，ステータスコード，ヘッダーなどを設定する場合
-        return response()->view(
-            "foo",
-            $data,
-            200
-        )->header(
-            "Content-Type",
-            $type
-        );
-    }
-}
-```
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
-
-class FooController extends Controller
-{
-    public function index()
-    {
-        // ～ 省略 ～
-
-        // ステータスコードのみ設定する場合
-        return response()->view("foo")
-            ->setStatusCode(200);
-    }
-}
-```
-
-<br>
-
-### ```route```ヘルパー
-
-#### ・ルートエイリアスに基づいてURL生成
-
-ルートにエイリアスがついている場合，エイリアスに応じてURLを生成する．ドメインは自動で補完される．
-
-参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
-
-```php
-<?php
-    
-Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
-    
-// https://example.co.jp/foos
-$url = route('foos_index');
-```
-
-<br>
-
-### ```path```系ヘルパー
-
-#### ・```base_path```ヘルパー
-
-引数を設定しない場合，projectルートディレクトリの絶対パスを生成する．また，projectルートディレクトリからの相対パスを引数として，絶対パスを生成する．
-
-```php
-<?php
-
-// /var/www/project
-$path = base_path();
-
-// /var/www/project/vendor/bin
-$path = base_path("vendor/bin");
-```
-
-#### ・```public_path```ヘルパー
-
-引数を設定しない場合，publicディレクトリの絶対パスを生成する．また，publicディレクトリからの相対パスを引数として，絶対パスを生成する．
-
-```php
-<?php
-
-// /var/www/project/public
-$path = public_path();
-
-// /var/www/project/public/css/app.css
-$path = public_path("css/app.css");
-```
-
-#### ・```storage_path```ヘルパー
-
-引数を設定しない場合，storageディレクトリの絶対パスを生成する．まあ，storageディレクトリからの相対パスを引数として，絶対パスを生成する．
-
-```php
-<?php
-
-// /var/www/project/storage
-$path = storage_path();
-
-// /var/www/project/storage/app/file.txt
-$path = storage_path("app/file.txt");
-```
-
-<br>
-
-### ```url```ヘルパー
-
-#### ・パスに基づいてURL生成
-
-指定したパスに応じてURLを生成する．ドメインは自動で補完される．
-
-参考：https://readouble.com/laravel/5.7/ja/urls.html
-
-```php
-<?php
-
-// https://example.co.jp/foos
-$url = url('/foos');
-```
-
-<br>
-
-## 21. 認証系パッケージを使わない場合
+## 20. 認証
 
 ### ガード
 
@@ -6993,7 +6996,136 @@ class RedirectIfAuthenticated
 
 <br>
 
-## 21-02. Passportパッケージ
+## 20-02. 認可
+
+### ゲート
+
+#### ・ゲートとは
+
+<br>
+
+### ポリシー
+
+#### ・ポリシーとは
+
+認可スコープ（アクセス可能なDBレコードと，これに対して実行可能なCRUD処理）を定義する．
+
+#### ・Middlewareによる認可
+
+ルーティング時にBeforeMiddlewareとしてコールできる．リクエストパラメータを渡せる．
+
+参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-middleware
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Http\Controllers\Foo\FooController;
+
+Route::group(['middleware' => ['auth:web']], function () {
+
+    Route::group(['prefix' => 'foos'], function () {
+        Route::get('/{id}', [FooController::class, 'showFoo'])->middleware('can:show, id');
+        Route::get('/', [FooController::class, 'indexFoo'])->middleware('can:index');
+        Route::post('/', [FooController::class, 'createFoo']);
+        Route::put('/{id}', [FooController::class, 'updateFoo'])->middleware('can:update, id');
+        Route::delete('/{id}', [FooController::class, 'deleteFoo'])->middleware('can:update, id');
+    });
+});
+```
+
+#### ・```authorization```メソッドによる認可
+
+基底コントローラを継承したコントローラでは```authorization```メソッドをコールできる．現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．認可に失敗した場合，AuthorizationExceptionを投げる．
+
+参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-controller-helpers
+
+**＊実装例＊**
+
+ユーザが該当IDのFooモデルを更新する権限があるかどうかを検証する．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers;
+use App\Models\Foo;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Throwable;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function updateFoo(Request $request, int $id): JsonResponse
+    {
+        try {
+            // 認可が失敗した場合，AuthorizationExceptionを投げる．
+            $this->authorize('update', $id);
+
+            $foo = new Foo();
+
+            $foo->fill($request->all())->save();
+        } catch (Throwable $e) {
+            // 403ステータスでレスポンスを返信する．
+            return response()->json(['error' => $e->getMessage()], 403);
+        }
+
+        // 続きの処理
+    }
+}
+```
+
+#### ・```can```メソッドによる認可
+
+現在認証されているユーザのインスタンスから```can```メソッドをコールできる．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合，```false```を返却する．
+
+参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-the-user-model
+
+**＊実装例＊**
+
+ユーザがFooモデルを作成する権限があるかどうかを検証する．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers;
+use App\Models\Foo;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function updateFoo(Request $request, int $id): JsonResponse
+    {
+        // 認可が失敗した場合，falseが返却される．
+        if (auth()->user()->can('update', $id)) {
+            $foo = new Foo();
+            $foo->create($request->all());
+        }
+
+        // 続きの処理
+    }
+}
+
+```
+
+<br>
+
+## 20-03. Passportパッケージ
 
 ### Passportパッケージとは
 
@@ -7370,7 +7502,7 @@ $token = $user->createToken("My Token", ["place-orders"])->accessToken;
 
 <br>
 
-## 21-03. Sanctumパッケージ
+## 20-04. Sanctumパッケージ
 
 ### Sanctumパッケージとは
 
@@ -7418,7 +7550,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-## 21-04. Fortifyパッケージ
+## 20-05. Fortifyパッケージ
 
 ### Fortifyパッケージとは
 
@@ -7431,7 +7563,7 @@ Laravelが持つ全ての認証機能のバックエンド処理を提供する�
 
 <br>
 
-## 21-05. Breezeパッケージ
+## 20-06. Breezeパッケージ
 
 ### Breezeパッケージとは
 
@@ -7466,7 +7598,7 @@ $ php artisan breeze:install
 
 <br>
 
-## 21-06. UIパッケージ（Laravel 7系以前）
+## 20-07. UIパッケージ（Laravel 7系以前）
 
 ### UIパッケージとは
 
@@ -7503,7 +7635,7 @@ $ php artisan ui bootstrap --auth
 
 <br>
 
-## 22. Laravel Mixパッケージ
+## 21. Laravel Mixパッケージ
 
 ### Laravel Mixパッケージとは
 
@@ -7533,7 +7665,7 @@ $ npm run watch
 
 <br>
 
-## 23. 非公式パッケージ
+## 22. 非公式パッケージ
 
 ### laravel-enum
 

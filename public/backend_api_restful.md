@@ -476,7 +476,7 @@ Accept-Encondig: gzip, deflate, br
 # レスポンスで送信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 各Cookieの値（二回目のリクエスト時に設定される）
-Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>; _gat=1
+Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 # 送信元IPアドレス
 # ※プロキシサーバ（ALBやCloudFrontなども含む）を経由している場合に，それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
@@ -805,7 +805,7 @@ setcookie(Cookie名, Cookie値, 有効日時, パス, ドメイン, HTTPS接続�
 
 ```http
 # リクエストヘッダーの場合
-Cookie: PHPSESSID=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
+Cookie: sessionid=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 ```
 
 

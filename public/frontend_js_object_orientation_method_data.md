@@ -96,8 +96,8 @@ const asyncFunc => (param, callback) {
   setTimeout(() => {
     
     // getDataメソッドは，数値を渡すとdataを取得してくれると仮定します．
-    var data = getData(param);
-    var err = data.getError();
+    const  data = getData(param);
+    const  err = data.getError();
       
     // 第二引数のコールバック関数は，getDataメソッドとgetErrorメソッドの後に実行される．
     callback(err, data);
@@ -189,13 +189,13 @@ console.log(x); // 『undefined』が出力されます。
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  const x = "hoge";
+  const x = "foo";
     
   // 再宣言不可
-  const x = "fuga"; // ERROR
+  const x = "bar"; // ERROR
   
   // 再代入不可
-  x = "fuga"; // ERROR
+  x = "baz"; // ERROR
 }
 
 // ブロック内のconstにアクセス不可
@@ -210,13 +210,13 @@ console.log(x); // ERROR
 ```javascript
 if (true) {
   // ブロック外からアクセス不可
-  let x = "hoge";
+  let x = "foo";
     
   // 再宣言不可
-  let x = "fuga"; // ERROR
+  let x = "bar"; // ERROR
   
   // 再代入可能
-  x = "fuga";
+  x = "baz";
 }
 
 // ブロック内のletにアクセス不可
@@ -301,5 +301,67 @@ var x = "hoge"; // 宣言と代入により，実際は宣言処理を実装し�
 console.log(x); // x is not defined
 
 let x = "hoge";
+```
+
+<br>
+
+## 04. 反復
+
+### ```for ... of```
+
+#### ・```for ... of```とは
+
+配列を順序を保ったまま走査し，配列の値を取得する．
+
+```javascript
+const  array = ["foo", "bar", "baz"];
+
+for (const value of array) {
+  console.log(value);
+}
+
+// foo
+// bar
+// baz
+```
+
+<br>
+
+### ```for ... in```
+
+#### ・```for ... in```とは
+
+オブジェクト（連想配列）／配列を順序を保たずに走査し，オブジェクト／配列のキー名を取得する．
+
+#### ・オブジェクト（連想配列）の場合
+
+```javascript
+const object = {
+  "x": "foo",
+  "y": "bar",
+  "z": "baz"
+};
+
+for (const key in object) {
+  console.log(object[key]);
+}
+
+// foo
+// bar
+// baz
+```
+
+#### ・配列の場合
+
+```javascript
+const  array = ["foo", "bar", "baz"];
+
+for (const key in array) {
+  console.log(value);
+}
+
+// 0
+// 1
+// 2
 ```
 

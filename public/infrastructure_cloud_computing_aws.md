@@ -728,7 +728,7 @@ Authorization: Bearer <Bearerトークン>
 X-Amz-Cf-Id: XXXXX
 Via: 2.0 77c20654dd474081d033f27ad1b56e1e.cloudfront.net (CloudFront)
 # 各Cookieの値（二回目のリクエスト時に設定される）
-Cookie: PHPSESSID=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
+Cookie: sessionid=<セッションID>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>; _gid=<GoogleAnalytics値>
 # 送信元IPアドレス
 # ※プロキシサーバ（ALBやCloudFrontなども含む）を経由している場合，それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
@@ -2468,11 +2468,19 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 ## 18. IAM：Identify and Access Management
 
-### IAMの種類
+### IAM
+
+#### ・IAMとは
+
+AWSリソースへのアクセスに関する認証と認可を制御する．認証はアクセスキーとシークレットアクセスキーによって，また認可はIAMロール／IAMポリシー／IAMステートメントによって制御される．
+
+#### ・IAMロールとは
+
+IAMポリシーのセットを定義する．
 
 #### ・IAMポリシーとは
 
-実行権限のあるアクションが定義されたIAMステートメントのセットを持つ，JSONデータのこと．
+IAMステートメントのセットを定義する．
 
 | IAMポリシーの種類                  | 説明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
@@ -2484,7 +2492,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 以下に，EC2の読み出しのみ権限（```AmazonEC2ReadOnlyAccess```）をアタッチできるポリシーを示す．このIAMポリシーには，他のAWSリソースに対する権限も含まれている．
 
-```yaml
+```shell
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2518,7 +2526,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 ####  ・IAMステートメントとは
 
-実行権限のあるアクションを定義した，JSONデータのこと．各アクションについては以下のリンクを参考にせよ．
+AWSリソースに関する認可のスコープを定義する．各アクションについては以下のリンクを参考にせよ．
 
 | AWSリソースの種類 | リンク                                                       |
 | ----------------- | ------------------------------------------------------------ |
@@ -2563,7 +2571,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 #### ・ARNとは：Amazon Resource Namespace
 
-AWSリソースを一意に識別する．
+AWSリソースの識別子のこと．
 
 参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
 
@@ -2577,6 +2585,20 @@ AWSリソースを一意に識別する．
   ]
 }
 ```
+
+<br>
+
+### IAMロール
+
+#### ・サービスリンクロール
+
+AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている．『```AWSServiceRoleFor*****```』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．関連するリソースを削除するまで，ロール自体できない．サービスリンクロールの一覧については，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+
+#### ・クロスアカウントのアクセスロール  
+
+#### ・プロバイダのアクセスロール  
 
 <br>
 
@@ -2801,6 +2823,12 @@ IAMユーザをグループ化したもの．IAMグループごとにIAMロー�
 
 ![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループ.png)
 
+#### ・IAMグループへのIAMロールの紐付け
+
+IAMグループに対して，IAMロールを紐づける．そのIAMグループに対して，IAMロールをアタッチしたいIAMユーザを追加していく．
+
+![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループに所属するユーザにロールを付与.png)
+
 #### ・グループ一覧
 
 | 種類            | 説明                       | 補足 |
@@ -2808,28 +2836,6 @@ IAMユーザをグループ化したもの．IAMグループごとにIAMロー�
 | Administrator   | 全ての操作に権限がある．   |      |
 | PowerUserAccess | IAM以外の操作権限がある．  |      |
 | ViewOnlyAccess  | 閲覧のみの操作権限がある． |      |
-
-<br>
-
-### IAMロール
-
-#### ・IAMロールとは
-
-IAMポリシーのセットを持つ
-
-#### ・IAMロールの種類
-
-| IAMロールの種類                  | 説明                                                         | 補足                                                         |
-| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| サービスリンクロール             | AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている． | ・『AWSServiceRoleForXxxxxx』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．<br>・関連するリソースを削除するまで，ロール自体できない．<br>サービスリンクロールの一覧については，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
-| クロスアカウントのアクセスロール |                                                              |                                                              |
-| プロバイダのアクセスロール       |                                                              |                                                              |
-
-#### ・IAMロールをアタッチする方法
-
-まず，IAMグループに対して，IAMロールを紐づける．そのIAMグループに対して，IAMロールをアタッチしたいIAMユーザを追加していく．
-
-![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループに所属するユーザにロールを付与.png)
 
 <br>
 
@@ -4779,7 +4785,7 @@ Sec-Fetch-Site: same-origin
 Accept-Encoding: gzip, deflate, br
 Accept-Language: ja,en;q=0.9
 # Cookieヘッダー
-Cookie: PHPSESSID=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>
+Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>
 ```
 
 <br>

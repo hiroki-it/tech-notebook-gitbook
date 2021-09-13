@@ -171,7 +171,8 @@ Google play で，過去にアプリとして忍び込んでいたトロイの�
 ```http
 200 OK
 Set-Cookie: csrftoken=<トークン>
-X-CSRF-TOKEN（独自ヘッダー）: <トークン>
+# 独自ヘッダー
+X-CSRF-TOKEN: <トークン>
 ```
 
 ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し，認証フォームのinputタグのhidden属性に割り当てる．加えて，metaタグにトークンを割り当てることもある．
@@ -193,7 +194,8 @@ X-CSRF-TOKEN（独自ヘッダー）: <トークン>
 
 ```http
 POST https://example.co.jp/bar-form.php HTTP/2
-x-csrf-token（独自ヘッダー）: <トークン>
+# 独自ヘッダー
+x-csrf-token: <トークン>
 
 {
   _token=<トークン>
@@ -377,7 +379,7 @@ Set-Cookie: domain=example.co.jp
 POST http://foo.example.co.jp/bar-form.php HTTP/2
 # 送信元オリジン
 Origin: http://example.co.jp
-Cookie: PHPSESSID=<セッションID>; csrftoken=<トークン>
+Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 ```
 
 #### ・【対策】```Set-Cookie```ヘッダーのHttpOnly属性

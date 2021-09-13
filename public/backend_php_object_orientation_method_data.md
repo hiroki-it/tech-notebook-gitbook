@@ -1348,6 +1348,20 @@ final class FlagConstant
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
 
+#### ・URL
+
+URLを文字列を定数として扱う．
+
+<br>
+
+### 場面に応じた命名
+
+| 意味づけ       | 名前                                     | 型     |
+| -------------- | ---------------------------------------- | ------ |
+| 個数，回数     | ```NUM_***```                            | int    |
+| 最大数，最小数 | ```MAX_NUM_*****```，```MIN_NUM_*****``` | int    |
+| URL            | ```URL_*****```                          | string |
+
 <br>
 
 ### マジカル定数

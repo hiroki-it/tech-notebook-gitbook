@@ -12,11 +12,12 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### HTTP認証とは
 
-認証時にHTTP通信の中で認証を行うこと．リクエストヘッダーとレスポンスヘッダーにおいて，方法としての認証スキームを選べる．認証スキームの種類には，『Basic認証』，『Digest認証』，『Bearer認証』などがある．
+認証時にHTTP通信の中で認証を行うこと．リクエストの```authorization```ヘッダーとレスポンスの```WWW-Authenticate```ヘッダーで認証スキームを指定する．認証スキームの種類には，『Basic認証』，『Digest認証』，『Bearer認証』などがある．認証情報の一時的な保存は，ブラウザのWebStoregeで行うため，認証解除（ログアウト）をサーバ側で完全に制御できない．
 
 参考：
 
 - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+- https://architecting.hateblo.jp/entry/2020/03/27/130535
 - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
 
 <br>
@@ -34,26 +35,47 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | ユーザ       | クライアントを使用している人物のこと．                       |
 | サーバ       | クライアントからリクエストを受信し，レスポンスを送信するアプリケーションのこと． |
 
-1. 最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
-2. サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
+最初，クライアントは，認証後にアクセスできるページのリクエストをサーバに送信する．
+
+```http
+GET https://example.co.jp/foo-form HTTP/2
+```
+
+サーバは，これ拒否し，```401```ステータスで認証領域を設定し，レスポンスを送信する．これにより，認証領域の値をユーザに示して，ユーザ名とパスワードの入力を求めることができる．ユーザに表示するための認証領域には，任意の値を持たせることができ，サイト名が設定されることが多い．
 
 ```http
 401 Unauthorized
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-3. 『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
+『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て，リクエストを送信する．
 
 ```http
-POST http://example.co.jp/foo-form HTTP/2
+POST https://example.co.jp/foo-form HTTP/2
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-4. サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．
+サーバは，ユーザ名とパスワードを照合し，合致していれば，認証後ページのレスポンスを送信する．また，認証情報をブラウザのWebストレージに保存する．
 
 ```http
 200 OK
 WWW-Authenticate: Basic realm=""
+```
+
+認証の解除時は，誤った認証情報をブラウザに意図的に送信させて認証を失敗させるようにする．
+
+参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
+
+```http
+POST https://example.co.jp/foo-form/logout HTTP/2
+authorization: Basic <誤った認証情報>
+```
+
+サーバは，```401```ステータスでレスポンスを返信し，認証が解除される．
+
+```http
+401 Unauthorized
+WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 <br>
@@ -69,7 +91,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```http
-POST http://example.co.jp/foo-form HTTP/2
+POST https://example.co.jp/foo-form HTTP/2
 authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -89,7 +111,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 #### ・Bearer認証の仕組み
 
-1. 指定されたエンドポイントに対して，```POST```リクエストを送信する．この時，```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする．必要なボディパラメータはAPIの提供元によって異なる．クライアントID，付与タイプ，などが必要なことが多い．
+指定されたエンドポイントに対して，```POST```リクエストを送信する．この時，```Content-Type```ヘッダーを```application/x-www-form-urlencoded```とする．必要なボディパラメータはAPIの提供元によって異なる．クライアントID，付与タイプ，などが必要なことが多い．
 
 参考：
 
@@ -97,13 +119,13 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
 ```http
-POST http://example.co.jp/foo HTTP/2
+POST https://example.co.jp/foo HTTP/2
     
 # ボディ
 client_id=*****&grant_type=client_credentials&scope=messaging:push
 ```
 
-2. レスポンスボディにアクセストークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定可能な認証スキーマ，などが提供されることが多い．
+レスポンスボディにBearerトークンを含むレスポンスが返信される．他に，有効期限，権限のスコープ，指定可能な認証スキーマ，などが提供されることが多い．
 
 参考：
 
@@ -123,7 +145,7 @@ Content-Type: application/json
 }
 ```
 
-3. 発行されたトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て，リクエストを送信する．ここでは詳しく言及しないが，アクセストークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
+発行されたBearerトークンを指定された認証スキーマで```Authorization```ヘッダーに割り当て，リクエストを送信する．ここでは詳しく言及しないが，BearerトークンをForm認証のように```Cookie```ヘッダーに割り当てることもある．
 
 参考：
 
@@ -131,15 +153,27 @@ Content-Type: application/json
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
 ```http
-POST http://example.co.jp/foo HTTP/2
+POST https://example.co.jp/foo HTTP/2
 authorization: Bearer <Bearerトークン>
 ```
 
-4. サーバは，アクセストークンを照合し，合致していれば，認証後ページのレスポンスを送信する．
+サーバは，Bearerトークンを照合し，合致していれば，認証後ページのレスポンスを送信する．無効なBearerトークンをブラックリストとしてRedis／DBで管理しておく．DBでブラックリストを管理すると，リクエストの度にDBアクセス処理が実行されることなってしまうため，Redisでこれを管理した方が良い．
 
 ```http
 200 OK
 WWW-Authenticate: Bearer realm=""
+```
+
+認証の解除時は，Redis／DBでBearerトークンの状態を無効化する．またサーバは，```401```ステータスでレスポンスを返信し，認証が解除される．
+
+参考：
+
+- https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
+- https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6
+
+```http
+401 Unauthorized
+WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 #### ・正常系／異常系レスポンス
@@ -172,12 +206,13 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ・```Authorization```ヘッダーのトークンのクライアント保持
 
-不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebストレージでも保持できる．Chromeの場合は，LocalStorage／SessionStorageに保持される．．LocalStorageはJavaScriptからアクセスされてしまうため，XSSの危険性がある．これらの確認方法については，以下のリンクを参考にせよ
+不便ではあるが，```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり，ローカルPCに保存できない．その代わり，ブラウザの設定によって，ブラウザのWebStorageでも保持できる．Chromeでは，LocalStorage／SessionStorageに保持される．LocalStorageはSessionStorageと比べて保存期間が長いため，XSSの危険性がより高い．これらの確認方法については，以下のリンクを参考にせよ
 
 参考：
 
 - https://developer.chrome.com/docs/devtools/storage/localstorage/
 - https://developer.chrome.com/docs/devtools/storage/sessionstorage/
+- https://stackoverflow.com/questions/5523140/html5-local-storage-vs-session-storage
 
 <br>
 
@@ -195,7 +230,7 @@ OAuthの項目を参考にせよ．
 
 #### ・Form認証とは
 
-認証時に```Cookie```ヘッダーの値を使用する方法のこと．『`Cookieベースの認証』ともいう．Stateful化を行うため，HTTP認証には属していない．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
+認証時に```Cookie```ヘッダーの値を使用する方法のこと．『`Cookieベースの認証』ともいう．Stateful化を行うため，HTTP認証には属していない．認証情報の一時的な保存は，サーバのセッションファイルで行うため，認証解除（ログアウト）をサーバ側で制御できる．```Cookie```ヘッダーによる送受信では，CSRFの危険性がある．
 
 参考：
 
@@ -206,24 +241,52 @@ OAuthの項目を参考にせよ．
 
 セッションIDを```Cookie```ヘッダーに割り当て，リクエストを送信する．
 
-1. 最初，ユーザ作成の段階で，クライアントがログイン情報をサーバに送信する．
-2. サーバは，ログイン情報をデータベースに保存する．
-3. 次回の認証時に，再びユーザがログイン情報を送信する．
-4. サーバは，データベースのログイン情報を照合し，ログインを許可する．
-5. サーバは，セッションIDを生成する．また，レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
+最初，ユーザ作成の段階で，クライアントが認証情報をサーバに送信する．サーバは，認証情報をデータベースに保存する．
+
+```http
+POST https://example.co.jp/users HTTP/2
+
+{
+    "email_address": "foo@gmail.com",
+    "password": "foo"
+}
+```
+
+次回の認証時に，再びユーザが認証情報を送信する．
+
+```http
+POST https://example.co.jp/foo-form HTTP/2
+
+{
+    "email_address": "foo@gmail.com",
+    "password": "foo"
+}
+```
+
+サーバは，データベースの認証情報を照合し，ログインを許可する．サーバは，セッションIDを生成し，セッションファイルに書き込む．
+
+```shell
+# セッションファイル
+{ sessionid: ***** }
+```
+
+レスポンスの```Set-Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．
 
 ```http
 200 OK
-Set-Cookie: sessionId=<セッションID>
+Set-Cookie: sessionid=<セッションID>
 ```
 
-6. サーバは，セッションIDとユーザIDを紐づけてサーバ内に保存する．
-7. さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めてログイン情報を送信せずに，素早くログインできるようになる．
+サーバは，セッションIDとユーザIDを紐づけてサーバ内に保存する．さらに次回のログイン時，クライアントは，リクエストの```Cookie```ヘッダーを使用して，セッションIDをクライアントに送信する．サーバは，保存されたセッションIDに紐づくユーザIDから，ユーザを特定し，ログインを許可する．これにより，改めて認証情報を送信せずに，素早くログインできるようになる．
 
 ```http
-POST http://example.co.jp/foo-form HTTP/2
-cookie: PHPSESSID=<セッションID>
+POST https://example.co.jp/foo-form HTTP/2
+cookie: sessionid=<セッションID>
 ```
+
+認証解除時，サーバでセッションファイルを削除する．
+
+参考：https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html
 
 #### ・トークンを用いたForm認証の場合（トークンベース）
 
@@ -259,7 +322,7 @@ cookie: PHPSESSID=<セッションID>
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
 
 ```http
-GET http://example.co.jp/bar.php HTTP/2
+GET https://example.co.jp/bar.php HTTP/2
 x-api-key: <APIキー>
 ```
 
@@ -274,7 +337,7 @@ x-api-key: <APIキー>
 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```http
-GET http://example.co.jp/bar.php HTTP/2
+GET https://example.co.jp/bar.php HTTP/2
 authorization: <Personal Acccess Token>
 ```
 
@@ -417,7 +480,7 @@ OAuth認証のトークンの付与方法には種類がある．
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし，ドットでつないだトークン．Bear認証やOauth認証のトークンとして使用できる．ランダムな文字列をこれら認証のトークンとするより，JWTを用いた方がより安全である．
 
 ```http
-GET http://example.co.jp/bar.php HTTP/2
+GET https://example.co.jp/bar.php HTTP/2
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 

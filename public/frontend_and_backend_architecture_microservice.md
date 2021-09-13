@@ -76,6 +76,12 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ![bounded-context_example_2_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2_onion-architecture.png)
 
+#### ・サービス例
+
+| アプリケーション | サービスの種類                                               | GitHub                                                    |
+| ---------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
+| Eコマース        | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
+
 <br>
 
 ### リポジトリの粒度

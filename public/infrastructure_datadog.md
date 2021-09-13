@@ -96,7 +96,7 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・トレーシングライブラリとは
 
-トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，アプリケーションコンテナでトレーシングライブラリをインストールする必要がある．
+トレースエージェントが稼働するDatadogコンテナにメトリクスの分散トレースを送信できるよう，アプリケーションコンテナでトレーシングライブラリをインストールする必要がある．
 
 参考：
 
@@ -308,7 +308,45 @@ FROM data/agent:latest
 
 <br>
 
-## 04. メトリクスのグラフ化
+### ログと分散トレースの接続
+
+https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
+
+<br>
+
+## 04. メトリクス
+
+### APMのメトリクス
+
+#### ・用語集
+
+参考：https://docs.datadoghq.com/ja/tracing/visualization/
+
+#### ・APMメトリクスの識別子
+
+APMのメトリクスは，『```trace.<スパン名>.<メトリクスサフィックス>```』で識別できる．
+
+https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
+
+#### ・スパン名
+
+```span.name```から構成される．```span```には，サービス名を割り当てる．
+
+**＊例＊**
+
+```redis```，```laravel.request```，```rails```，```pdo```
+
+#### ・メトリクスサフィックス
+
+メトリクス名を割り当てる．
+
+**＊例＊**
+
+```duration```，```hits```，```span_count```
+
+<br>
+
+## 05. メトリクスのグラフ化
 
 ### 図の種類
 

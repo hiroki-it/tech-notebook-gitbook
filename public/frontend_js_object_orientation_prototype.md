@@ -25,7 +25,7 @@ JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト�
 
 ```javascript
 // new演算子を使ってインスタンスを生成
-var obj = new Object();
+const  obj = new Object();
 ```
 
 <br>
@@ -49,19 +49,19 @@ var obj = new Object();
 **＊実装例＊**
 
 ```javascript
-var array = ["a", "b", "c"];
+const array = ["foo", "bar", "baz"];
 
 // key，valueを取得できる．
-var iterator = array.entries();
+const iterator = array.entries();
 
 // for-ofで展開
 for (const value of iterator) {
-  console.log(e);
+  console.log(value);
 }
 
-// [0, "a"]
-// [1, "b"]
-// [2, "c"]
+// [ 0, 'foo' ]
+// [ 1, 'bar' ]
+// [ 2, 'baz' ]
 ```
 
 #### ・```Array.prototype.map()```
@@ -88,10 +88,10 @@ for (const value of iterator) {
 **＊実装例＊**
 
 ```javascript
-const clothing = ["shoes", "shirts", "socks", "sweaters"];
+const param = ["foo", "bar", "baz", "qux"];
 
 console.log(
-    clothing.length
+    param.length
 );
 
 // 4
