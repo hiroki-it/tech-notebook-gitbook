@@ -58,7 +58,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 | 変数名                   | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| DD_APM_ENABLED           | APMエージェントを有効化し，分散トレースを収集する．APMでは，分散トレースを元にして，サービス間の関係がグラフ化される．<br>参考：<br>・https://docs.datadoghq.com/ja/getting_started/tracing/<br>・https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D | Fargateを使用している場合，アプリケーション側では，分散トレースを送信できるように，ライブラリのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
+| DD_APM_ENABLED           | APMエージェントを有効化し，サービスのメトリクスの分散トレースを収集する．APMでは，分散トレースを元にして，サービス間の関係がグラフ化される．<br>参考：<br>・https://docs.datadoghq.com/ja/getting_started/tracing/<br>・https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D | Fargateを使用している場合，サービス側では，分散トレースを送信できるように，ライブラリのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
 | DD_LOGS_ENABLED          | -                                                            |                                                              |                                      |
 | DD_PROCESS_AGENT_ENABLED | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
@@ -96,7 +96,7 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・トレーシングライブラリとは
 
-トレースエージェントが稼働するDatadogコンテナにメトリクスの分散トレースを送信できるよう，アプリケーションコンテナでトレーシングライブラリをインストールする必要がある．
+トレースエージェントが稼働するDatadogコンテナにメトリクスの分散トレースを送信できるよう，サービスのコンテナでトレーシングライブラリをインストールする必要がある．
 
 参考：
 
@@ -310,6 +310,8 @@ FROM data/agent:latest
 
 ### ログと分散トレースの接続
 
+ログとトレーシングライブラリによるタグに同じタグ名を付与すると，ログと分散トレースを紐づけることができる．
+
 https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 <br>
@@ -321,6 +323,12 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 #### ・用語集
 
 参考：https://docs.datadoghq.com/ja/tracing/visualization/
+
+#### ・分散トレース
+
+サービスの分散トレースを収集できる．
+
+参考：https://docs.datadoghq.com/ja/tracing/visualization/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9
 
 #### ・APMメトリクスの識別子
 
