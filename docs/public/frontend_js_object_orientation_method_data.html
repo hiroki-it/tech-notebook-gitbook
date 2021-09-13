@@ -1857,8 +1857,8 @@ $<span class="token punctuation">.</span><span class="token function">get</span>
   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// getData&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;&#x6570;&#x5024;&#x3092;&#x6E21;&#x3059;&#x3068;data&#x3092;&#x53D6;&#x5F97;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#x3068;&#x4EEE;&#x5B9A;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
-    <span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token function">getData</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> err <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">getError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span>  data <span class="token operator">=</span> <span class="token function">getData</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span>  err <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">getError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment">// &#x7B2C;&#x4E8C;&#x5F15;&#x6570;&#x306E;&#x30B3;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x95A2;&#x6570;&#x306F;&#xFF0C;getData&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;getError&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
     <span class="token function">callback</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1951,13 +1951,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x5BA3;&#x8A00;&#x306B;<code>const</code>&#x3092;&#x7528;&#x3044;&#x308B;</p>
 <pre class="language-"><code class="lang-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// &#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5916;&#x304B;&#x3089;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x4E0D;&#x53EF;</span>
-  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token string">&quot;hoge&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
 
   <span class="token comment">// &#x518D;&#x5BA3;&#x8A00;&#x4E0D;&#x53EF;</span>
-  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token string">&quot;fuga&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
+  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token string">&quot;bar&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
 
   <span class="token comment">// &#x518D;&#x4EE3;&#x5165;&#x4E0D;&#x53EF;</span>
-  x <span class="token operator">=</span> <span class="token string">&quot;fuga&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
+  x <span class="token operator">=</span> <span class="token string">&quot;baz&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5185;&#x306E;const&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x4E0D;&#x53EF;</span>
@@ -1967,13 +1967,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>&#x7E70;&#x308A;&#x8FD4;&#x3057;&#x51E6;&#x7406;&#x306B;&#x304A;&#x3044;&#x3066;&#x518D;&#x4EE3;&#x5165;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308C;&#x3070;&#xFF0C;<code>const</code>&#x3067;&#x306F;&#x306A;&#x304F;<code>let</code>&#x3092;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// &#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5916;&#x304B;&#x3089;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x4E0D;&#x53EF;</span>
-  <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&quot;hoge&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">;</span>
 
   <span class="token comment">// &#x518D;&#x5BA3;&#x8A00;&#x4E0D;&#x53EF;</span>
-  <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&quot;fuga&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
+  <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&quot;bar&quot;</span><span class="token punctuation">;</span> <span class="token comment">// ERROR</span>
 
   <span class="token comment">// &#x518D;&#x4EE3;&#x5165;&#x53EF;&#x80FD;</span>
-  x <span class="token operator">=</span> <span class="token string">&quot;fuga&quot;</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> <span class="token string">&quot;baz&quot;</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// &#x30D6;&#x30ED;&#x30C3;&#x30AF;&#x5185;&#x306E;let&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x4E0D;&#x53EF;</span>
@@ -2037,6 +2037,51 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">&quot;hoge&quot;</span><span class="token punctuation">;</span>
 </code></pre>
+<p><br></p>
+<h2 id="04-&#x53CD;&#x5FA9;"><a name="04-&#x53CD;&#x5FA9;" class="plugin-anchor" href="#04-&#x53CD;&#x5FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x53CD;&#x5FA9;</h2>
+<h3 id="for--of"><a name="for--of" class="plugin-anchor" href="#for--of"><i class="fa fa-link" aria-hidden="true"></i></a><code>for ... of</code></h3>
+<h4 id="&#x30FB;for--of&#x3068;&#x306F;"><a name="&#x30FB;for--of&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;for--of&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>for ... of</code>&#x3068;&#x306F;</h4>
+<p>&#x914D;&#x5217;&#x3092;&#x9806;&#x5E8F;&#x3092;&#x4FDD;&#x3063;&#x305F;&#x307E;&#x307E;&#x8D70;&#x67FB;&#x3057;&#xFF0C;&#x914D;&#x5217;&#x306E;&#x5024;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span>  array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;foo&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bar&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;baz&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> value <span class="token keyword">of</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// foo</span>
+<span class="token comment">// bar</span>
+<span class="token comment">// baz</span>
+</code></pre>
+<p><br></p>
+<h3 id="for--in"><a name="for--in" class="plugin-anchor" href="#for--in"><i class="fa fa-link" aria-hidden="true"></i></a><code>for ... in</code></h3>
+<h4 id="&#x30FB;for--in&#x3068;&#x306F;"><a name="&#x30FB;for--in&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;for--in&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>for ... in</code>&#x3068;&#x306F;</h4>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF08;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF09;&#xFF0F;&#x914D;&#x5217;&#x3092;&#x9806;&#x5E8F;&#x3092;&#x4FDD;&#x305F;&#x305A;&#x306B;&#x8D70;&#x67FB;&#x3057;&#xFF0C;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF0F;&#x914D;&#x5217;&#x306E;&#x30AD;&#x30FC;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF08;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF09;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF08;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF09;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF08;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF09;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#xFF08;&#x9023;&#x60F3;&#x914D;&#x5217;&#xFF09;&#x306E;&#x5834;&#x5408;</h4>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span> object <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">&quot;x&quot;</span><span class="token operator">:</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;y&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bar&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;z&quot;</span><span class="token operator">:</span> <span class="token string">&quot;baz&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> object<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// foo</span>
+<span class="token comment">// bar</span>
+<span class="token comment">// baz</span>
+</code></pre>
+<h4 id="&#x30FB;&#x914D;&#x5217;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x914D;&#x5217;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x914D;&#x5217;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x914D;&#x5217;&#x306E;&#x5834;&#x5408;</h4>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">const</span>  array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;foo&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;bar&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;baz&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 0</span>
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+</code></pre>
 
                                 
                                 </section>
@@ -2076,7 +2121,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎プロトタイプベース（2）","level":"1.8.1.2","depth":3,"next":{"title":"ロジック","level":"1.8.2","depth":2,"ref":"","articles":[{"title":"▶ ︎フロントエンド側の検証ロジック","level":"1.8.2.1","depth":3,"path":"public/frontend_js_logic_validation.md","ref":"public/frontend_js_logic_validation.md","articles":[]}]},"previous":{"title":"▶ ︎プロトタイプベース（1）","level":"1.8.1.1","depth":3,"path":"public/frontend_js_object_orientation_prototype.md","ref":"public/frontend_js_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_js_object_orientation_method_data.md","mtime":"2021-09-07T14:23:51.058Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-11T07:59:10.412Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎プロトタイプベース（2）","level":"1.8.1.2","depth":3,"next":{"title":"ロジック","level":"1.8.2","depth":2,"ref":"","articles":[{"title":"▶ ︎フロントエンド側の検証ロジック","level":"1.8.2.1","depth":3,"path":"public/frontend_js_logic_validation.md","ref":"public/frontend_js_logic_validation.md","articles":[]}]},"previous":{"title":"▶ ︎プロトタイプベース（1）","level":"1.8.1.1","depth":3,"path":"public/frontend_js_object_orientation_prototype.md","ref":"public/frontend_js_object_orientation_prototype.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_js_object_orientation_method_data.md","mtime":"2021-09-13T06:42:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-13T11:24:53.382Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
