@@ -4,9 +4,7 @@
 
 GitBookを使用して作成したサイトです．
 
-[tech-notebook](https://github.com/hiroki-it/tech-notebook) の代替として使用しております．
-
-静的ファイルの生成元になっているマークダウンは，[publicディレクトリ](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) で管理しております．
+静的ファイルの生成元になっているマークダウンは，[hiroki-it/tech-notebook-gitbook](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) リポジトリにて管理しております．
 
 ## 使い方
 
