@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>▶ ︎データ構造 · 僕のドキュメントサイト【GitBook版】</title>
+        <title>▶ ︎Kubernetes · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,8 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="infrastructure_virtualization_container_orchestration_docker_swarm.html" />
     
-    <link rel="prev" href="backend_php_object_orientation_method_data.html" />
+    
+    <link rel="prev" href="infrastructure_virtualization_container_orchestration_docker_compose.html" />
     
 
     </head>
@@ -329,7 +331,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.1.4" data-path="backend_php_object_orientation_data_structure.html">
+        <li class="chapter " data-level="1.4.1.4" data-path="backend_php_object_orientation_data_structure.html">
             
                 <a href="backend_php_object_orientation_data_structure.html">
             
@@ -1485,7 +1487,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.1.1.4" data-path="infrastructure_virtualization_container_orchestration_kubernetes.html">
+        <li class="chapter active" data-level="1.14.1.1.4" data-path="infrastructure_virtualization_container_orchestration_kubernetes.html">
             
                 <a href="infrastructure_virtualization_container_orchestration_kubernetes.html">
             
@@ -1877,7 +1879,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >▶ ︎データ構造</a>
+        <a href=".." >▶ ︎Kubernetes</a>
     </h1>
 </div>
 
@@ -1892,361 +1894,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;"><a name="&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;" class="plugin-anchor" href="#&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;</h1>
+                                <h1 id="kubernetes"><a name="kubernetes" class="plugin-anchor" href="#kubernetes"><i class="fa fa-link" aria-hidden="true"></i></a>Kubernetes</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><a name="01-&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#01-&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
-<p>&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x304C;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3046;&#x6642;&#x306B;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x5408;&#x3092;&#x52B9;&#x7387;&#x7684;&#x306B;&#x6271;&#x3046;&#x305F;&#x3081;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x3092;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x3068;&#x3044;&#x3046;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;PHP&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
-<h3 id="&#x914D;&#x5217;&#x578B;"><a name="&#x914D;&#x5217;&#x578B;" class="plugin-anchor" href="#&#x914D;&#x5217;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x914D;&#x5217;&#x578B;</h3>
-<p>&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;</h4>
-<p>&#x756A;&#x53F7;&#x30AD;&#x30FC;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">Array
-(
-  [0] =&gt; A
-  [1] =&gt; B
-  [2] =&gt; C
-)
-</code></pre>
-<h4 id="&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;"><a name="&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;" class="plugin-anchor" href="#&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x591A;&#x6B21;&#x5143;&#x914D;&#x5217;</h4>
-<p>&#x914D;&#x5217;&#x306E;&#x4E2D;&#x306B;&#x914D;&#x5217;&#x3092;&#x3082;&#x3064;&#x914D;&#x5217;&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x5165;&#x308C;&#x5B50;&#x69CB;&#x9020;&#x304C;&#xFF12;&#x6BB5;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x300E;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x300F;&#x3068;&#x547C;&#x3076;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">( 
-  [0] =&gt; Array
-         (
-            [0] =&gt; &#x30EA;&#x30F3;&#x30B4;
-            [1] =&gt; &#x30A4;&#x30C1;&#x30B4;
-            [2] =&gt; &#x30C8;&#x30DE;&#x30C8;
-         )
-
-  [1] =&gt; Array
-         (
-            [0] =&gt; &#x30E1;&#x30ED;&#x30F3;
-            [1] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
-            [2] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
-         )
-)
-</code></pre>
-<h4 id="&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;"><a name="&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;" class="plugin-anchor" href="#&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x9023;&#x60F3;&#x914D;&#x5217;</h4>
-<p>&#x30AD;&#x30FC;&#x540D;&#xFF08;&#x8D64;&#xFF0C;&#x7DD1;&#xFF0C;&#x9EC4;&#xFF0C;&#x679C;&#x7269;&#xFF0C;&#x91CE;&#x83DC;&#xFF09;&#x3054;&#x3068;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x914D;&#x5217;&#x578B;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4E0B;&#x306E;&#x4F8B;&#x306F;&#xFF0C;&#x4E8C;&#x6B21;&#x5143;&#x914D;&#x5217;&#x304B;&#x3064;&#x9023;&#x60F3;&#x914D;&#x5217;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">Array
-(
-    [&#x8D64;] =&gt; Array
-        (
-            [&#x679C;&#x7269;] =&gt; &#x30EA;&#x30F3;&#x30B4;
-            [&#x679C;&#x7269;] =&gt; &#x30A4;&#x30C1;&#x30B4;
-            [&#x91CE;&#x83DC;] =&gt; &#x30C8;&#x30DE;&#x30C8;
-        )
-
-    [&#x7DD1;] =&gt; Array
-        (
-            [&#x679C;&#x7269;] =&gt; &#x30E1;&#x30ED;&#x30F3;
-            [&#x91CE;&#x83DC;] =&gt; &#x30AD;&#x30E5;&#x30A6;&#x30EA;
-            [&#x91CE;&#x83DC;] =&gt; &#x30D4;&#x30FC;&#x30DE;&#x30F3;
-        )
-)
+<h2 id="01-&#x6982;&#x5FF5;"><a name="01-&#x6982;&#x5FF5;" class="plugin-anchor" href="#01-&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x6982;&#x5FF5;</h2>
+<h3 id="node"><a name="node" class="plugin-anchor" href="#node"><i class="fa fa-link" aria-hidden="true"></i></a>Node</h3>
+<h4 id="&#x30FB;master-node"><a name="&#x30FB;master-node" class="plugin-anchor" href="#&#x30FB;master-node"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Master Node</h4>
+<p>Kubernetes&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x30DB;&#x30B9;&#x30C8;&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x3092;&#x6307;&#x3059;&#xFF0E;</p>
+<h4 id="&#x30FB;worker-node"><a name="&#x30FB;worker-node" class="plugin-anchor" href="#&#x30FB;worker-node"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Worker Node</h4>
+<p>Docker&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x30DB;&#x30B9;&#x30C8;&#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;&#x3092;&#x6307;&#x3059;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Kubernetes&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="Kubernetes&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
+<p><br></p>
+<h3 id="service"><a name="service" class="plugin-anchor" href="#service"><i class="fa fa-link" aria-hidden="true"></i></a>Service</h3>
+<h4 id="&#x30FB;service&#x3068;&#x306F;"><a name="&#x30FB;service&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;service&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Service&#x3068;&#x306F;</h4>
+<p>Pod&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#x30FC;&#x3068;&#x3057;&#x3066;&#x6A5F;&#x80FD;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/services-networking/service/" target="_blank">https://kubernetes.io/ja/docs/concepts/services-networking/service/</a></p>
+<h4 id="&#x30FB;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B9A;&#x7FA9;</h4>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>service <span class="token comment"># Service&#x540D;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> MyApp <span class="token comment"># Pod&#x540D;</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment"># &#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">9376</span> <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x30DD;&#x30FC;&#x30C8;</span>
 </code></pre>
 <p><br></p>
-<h3 id="linkedlist&#x578B;"><a name="linkedlist&#x578B;" class="plugin-anchor" href="#linkedlist&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>LinkedList&#x578B;</h3>
-<p>PHP&#x3067;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x306F;&#x3042;&#x307E;&#x308A;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x69D8;&#x5F0F;&#xFF0E;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;Java&#x306B;&#x304A;&#x3051;&#x308B;LinkedList&#x578B;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
-<h4 id="&#x30FB;php&#x306E;list&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;"><a name="&#x30FB;php&#x306E;list&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;" class="plugin-anchor" href="#&#x30FB;php&#x306E;list&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x306F;&#x4F55;&#x306A;&#x306E;&#x304B;</h4>
-<p>PHP&#x306E;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306F;&#xFF0C;List&#x578B;&#x3068;&#x306F;&#x610F;&#x5473;&#x5408;&#x3044;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;&#x914D;&#x5217;&#x306E;&#x8981;&#x7D20;&#x4E00;&#x3064;&#x4E00;&#x3064;&#x3092;&#x5909;&#x6570;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#xFF0C;List&#x578B;&#x3092;&#x4F7F;&#x308F;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x5197;&#x9577;&#x3067;&#x306F;&#x3042;&#x308B;&#x304C;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token variable">$i</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token variable">$u</span> <span class="token operator">=</span> <span class="token variable">$array</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$i</span><span class="token operator">.</span><span class="token variable">$u</span><span class="token punctuation">;</span> <span class="token comment">// &#x3042;&#x3044;&#x3046;</span>
-</code></pre>
-<p>&#x3057;&#x304B;&#x3057;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;<code>list</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x4E00;&#x884C;&#x3067;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">list</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$i</span><span class="token punctuation">,</span> <span class="token variable">$u</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;&#x3042;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3044;&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;&#x3046;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token operator">.</span><span class="token variable">$i</span><span class="token operator">.</span><span class="token variable">$u</span><span class="token punctuation">;</span> <span class="token comment">// &#x3042;&#x3044;&#x3046;</span>
-</code></pre>
-<p><br></p>
-<h3 id="queue&#x578B;"><a name="queue&#x578B;" class="plugin-anchor" href="#queue&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Queue&#x578B;</h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue1.gif" alt="Queue1"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue2.gif" alt="Queue2"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Queue3.gif" alt="Queue3"></p>
-<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_shift</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;Blue&quot;</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;Green&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// &#x5F15;&#x6570;&#x3092;&#xFF0C;&#x914D;&#x5217;&#x306E;&#x6700;&#x5F8C;&#x306B;&#xFF0C;&#x8981;&#x7D20;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#xFF0E;</span>
-<span class="token function">array_push</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">&quot;Red&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
-
-<span class="token comment">//    Array</span>
-<span class="token comment">//    (</span>
-<span class="token comment">//        [0] =&gt; Blue</span>
-<span class="token comment">//        [1] =&gt; Green</span>
-<span class="token comment">//        [2] =&gt; Red</span>
-<span class="token comment">//    )</span>
-
-<span class="token comment">// &#x914D;&#x5217;&#x306E;&#x6700;&#x521D;&#x306E;&#x8981;&#x7D20;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#xFF0E;</span>
-<span class="token variable">$theFirst</span><span class="token operator">=</span> <span class="token function">array_shift</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// &#x51FA;&#x529B;&#x7D50;&#x679C;</span>
-
-<span class="token comment">//    Array</span>
-<span class="token comment">//    (</span>
-<span class="token comment">//    [0] =&gt; Green</span>
-<span class="token comment">//    [1] =&gt; Red</span>
-<span class="token comment">//    )</span>
-
-<span class="token comment">// &#x53D6;&#x308A;&#x51FA;&#x3055;&#x308C;&#x305F;&#x5024;&#x306E;&#x78BA;&#x8A8D;</span>
-<span class="token keyword">echo</span> <span class="token variable">$theFirst</span><span class="token punctuation">;</span> <span class="token comment">// Blue</span>
-</code></pre>
-<h4 id="&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;queue"><a name="&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;queue" class="plugin-anchor" href="#&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;queue"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue</h4>
-<p>&#x9001;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#xFF09;&#x3092;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;Queue&#x306B;&#x8FFD;&#x52A0;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x53D7;&#x4FE1;&#x5074;&#x306E;&#x597D;&#x304D;&#x306A;&#x30BF;&#x30A4;&#x30DF;&#x30F3;&#x30B0;&#x3067;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x53D6;&#x308A;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;.jpg" alt="&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B7;&#x3099;&#x30AD;&#x30E5;&#x30FC;"></p>
-<p><br></p>
-<h3 id="stack&#x578B;"><a name="stack&#x578B;" class="plugin-anchor" href="#stack&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Stack&#x578B;</h3>
-<p>PHP&#x3067;&#x306F;&#xFF0C;<code>array_push</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;<code>array_pop</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3067;&#x5B9F;&#x88C5;&#x53EF;&#x80FD;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack1.gif" alt="Stack1"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack2.gif" alt="Stack2"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Stack3.gif" alt="Stack3"></p>
-<p><br></p>
-<h3 id="tree&#x578B;"><a name="tree&#x578B;" class="plugin-anchor" href="#tree&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Tree&#x578B;</h3>
-<h4 id="&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;"><a name="&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;" class="plugin-anchor" href="#&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;</h4>
-<p>  &#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;1.gif" alt="&#x4E8C;&#x5206;&#x63A2;&#x7D22;&#x6728;"></p>
-<h4 id="&#x30FB;&#x30D2;&#x30FC;&#x30D7;"><a name="&#x30FB;&#x30D2;&#x30FC;&#x30D7;" class="plugin-anchor" href="#&#x30FB;&#x30D2;&#x30FC;&#x30D7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D2;&#x30FC;&#x30D7;</h4>
-<p>  Priority Queue&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x3068;&#x304D;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#xFF0E;&#x5404;&#x30CE;&#x30FC;&#x30C9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;1.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;2.gif" alt="&#x30D2;&#x30FC;&#x30D7;1"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;3.gif" alt="&#x30D2;&#x30FC;&#x30D7;2"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x77E2;&#x5370;_80x82.jpg" alt="&#x77E2;&#x5370;_80x82"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D2;&#x30FC;&#x30D7;4.gif" alt=". "></p>
-<p><br></p>
-<h2 id="01-02-java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><a name="01-02-java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#01-02-java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>01-02. Java&#x306B;&#x304A;&#x3051;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</h2>
-<p>&#x30C7;&#x30FC;&#x30BF;&#x69CB;&#x9020;&#x306E;Java&#x306B;&#x3088;&#x308B;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#xFF0E;</p>
-<h3 id="&#x914D;&#x5217;&#x578B;"><a name="&#x914D;&#x5217;&#x578B;" class="plugin-anchor" href="#&#x914D;&#x5217;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x914D;&#x5217;&#x578B;</h3>
-<h4 id="&#x30FB;arraylist"><a name="&#x30FB;arraylist" class="plugin-anchor" href="#&#x30FB;arraylist"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ArrayList</h4>
-<p>ArrayList&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#x914D;&#x5217;&#x578B;&#xFF0E;PHP&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;hashmap"><a name="&#x30FB;hashmap" class="plugin-anchor" href="#&#x30FB;hashmap"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;HashMap</h4>
-<p>HashMap&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x308B;&#x914D;&#x5217;&#x578B;&#xFF0E;PHP&#x306E;&#x9023;&#x60F3;&#x914D;&#x5217;&#x306B;&#x76F8;&#x5F53;&#x3059;&#x308B;&#xFF0E;</p>
-<p><br></p>
-<h3 id="linkedlist&#x578B;"><a name="linkedlist&#x578B;" class="plugin-anchor" href="#linkedlist&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>LinkedList&#x578B;</h3>
-<p>&#x5024;&#x3092;&#x30DD;&#x30A4;&#x30F3;&#x30BF;&#x306B;&#x3088;&#x3063;&#x3066;&#x9806;&#x5E8F;&#x901A;&#x308A;&#x4E26;&#x3079;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x5F62;&#x5F0F;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x5358;&#x65B9;&#x5411;list"><a name="&#x30FB;&#x5358;&#x65B9;&#x5411;list" class="plugin-anchor" href="#&#x30FB;&#x5358;&#x65B9;&#x5411;list"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5358;&#x65B9;&#x5411;List</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-1.gif" alt="p555-1"></p>
-<h4 id="&#x30FB;&#x53CC;&#x65B9;&#x5411;list"><a name="&#x30FB;&#x53CC;&#x65B9;&#x5411;list" class="plugin-anchor" href="#&#x30FB;&#x53CC;&#x65B9;&#x5411;list"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x53CC;&#x65B9;&#x5411;List</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-2.gif" alt="p555-2"></p>
-<h4 id="&#x30FB;&#x5FAA;&#x74B0;list"><a name="&#x30FB;&#x5FAA;&#x74B0;list" class="plugin-anchor" href="#&#x30FB;&#x5FAA;&#x74B0;list"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5FAA;&#x74B0;List</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p555-3.gif" alt="p555-3"></p>
-<p><br></p>
-<h3 id="queue&#x578B;"><a name="queue&#x578B;" class="plugin-anchor" href="#queue&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Queue&#x578B;</h3>
-<p><br></p>
-<h3 id="stack&#x578B;"><a name="stack&#x578B;" class="plugin-anchor" href="#stack&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Stack&#x578B;</h3>
-<p><br></p>
-<h3 id="tree&#x578B;"><a name="tree&#x578B;" class="plugin-anchor" href="#tree&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>Tree&#x578B;</h3>
-<p><br></p>
-<h2 id="02-&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x578B;"><a name="02-&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x578B;" class="plugin-anchor" href="#02-&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x578B;</h2>
-<h3 id="&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;"><a name="&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;" class="plugin-anchor" href="#&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;</h3>
-<h4 id="&#x30FB;&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x3068;&#x306F;"><a name="&#x30FB;&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30EA;&#x30DF;&#x30C6;&#x30A3;&#x30D6;&#x578B;&#x3068;&#x306F;</h4>
-<p>&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;&#xFF0C;&#x8907;&#x5408;&#x578B;&#xFF0C;&#x305D;&#x306E;&#x4ED6;&#xFF0C;&#x306B;&#x5206;&#x985E;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.php.net/manual/ja/language.types.intro.php" target="_blank">https://www.php.net/manual/ja/language.types.intro.php</a></p>
-<p><br></p>
-<h3 id="&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;"><a name="&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;" class="plugin-anchor" href="#&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;</h3>
-<h4 id="&#x30FB;bool"><a name="&#x30FB;bool" class="plugin-anchor" href="#&#x30FB;bool"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;bool</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">T&#xFF0F;F</th>
-<th>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x7A2E;&#x985E;</th>
-<th>&#x8AAC;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>FALSE</code></td>
-<td><code>$var =</code></td>
-<td>&#x4F55;&#x3082;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5909;&#x6570;</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td><code>False</code></td>
-<td>&#x6587;&#x5B57;&#x3068;&#x3057;&#x3066;&#x306E;False</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td><code>0</code></td>
-<td>&#x6570;&#x5B57;&#x3001;&#x6587;&#x5B57;&#x5217;</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td><code>&quot;&quot;</code></td>
-<td>&#x7A7A;&#x6587;&#x5B57;</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td>array()</td>
-<td>&#x8981;&#x7D20;&#x6570;&#x304C;0&#x500B;&#x306E;&#x914D;&#x5217;</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td>NULL</td>
-<td>NULL&#x5024;</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>TRUE</code></td>
-<td>&#x4E0A;&#x8A18;&#x4EE5;&#x5916;&#x306E;&#x5024;</td>
-</tr>
-</tbody>
-</table>
-<h4 id="&#x30FB;float"><a name="&#x30FB;float" class="plugin-anchor" href="#&#x30FB;float"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;float</h4>
-<h4 id="&#x30FB;int"><a name="&#x30FB;int" class="plugin-anchor" href="#&#x30FB;int"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;int</h4>
-<h4 id="&#x30FB;string"><a name="&#x30FB;string" class="plugin-anchor" href="#&#x30FB;string"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;string</h4>
-<p><br></p>
-<h3 id="&#x8907;&#x5408;&#x578B;"><a name="&#x8907;&#x5408;&#x578B;" class="plugin-anchor" href="#&#x8907;&#x5408;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8907;&#x5408;&#x578B;</h3>
-<h4 id="&#x30FB;array"><a name="&#x30FB;array" class="plugin-anchor" href="#&#x30FB;array"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;array</h4>
-<h4 id="&#x30FB;callable"><a name="&#x30FB;callable" class="plugin-anchor" href="#&#x30FB;callable"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;callable</h4>
-<h4 id="&#x30FB;iterable"><a name="&#x30FB;iterable" class="plugin-anchor" href="#&#x30FB;iterable"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;iterable</h4>
-<h4 id="&#x30FB;object"><a name="&#x30FB;object" class="plugin-anchor" href="#&#x30FB;object"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;object</h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">A</span> 
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;Hiroki&quot;</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">HelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">sprintf</span><span class="token punctuation">(</span>
-            <span class="token string double-quoted-string">&quot;%s, %s&quot;</span><span class="token punctuation">,</span>
-            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">name</span><span class="token punctuation">,</span>
-            <span class="token string double-quoted-string">&quot;Hello World!&quot;</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">;</span>
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// object(A)#1 (1) {</span>
-<span class="token comment">//  [&quot;name&quot;:&quot;A&quot;:private]=&gt;</span>
-<span class="token comment">//  string(6) &quot;Hiroki&quot;</span>
-<span class="token comment">//}</span>
-
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// A Object</span>
-<span class="token comment">// (</span>
-<span class="token comment">//     [name:A:private] =&gt; Hiroki</span>
-<span class="token comment">// )</span>
+<h3 id="pod"><a name="pod" class="plugin-anchor" href="#pod"><i class="fa fa-link" aria-hidden="true"></i></a>Pod</h3>
+<h4 id="&#x30FB;pod&#x3068;&#x306F;"><a name="&#x30FB;pod&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;pod&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Pod&#x3068;&#x306F;</h4>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x4EEE;&#x60F3;&#x30B5;&#x30FC;&#x30D0;&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x6700;&#x5C0F;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5358;&#x4F4D;&#x306E;&#x3053;&#x3068;&#xFF0E;Pod&#x3092;&#x5358;&#x4F4D;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8D77;&#x52D5;&#xFF0F;&#x505C;&#x6B62;&#x3084;&#x6C34;&#x5E73;&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x30A4;&#x30F3;&#xFF0F;&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x30A2;&#x30A6;&#x30C8;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/workloads/pods/" target="_blank">https://kubernetes.io/ja/docs/concepts/workloads/pods/</a></p>
+<p>AWS ECS&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x304A;&#x3051;&#x308B;&#x985E;&#x4F3C;&#x3059;&#x308B;essential&#x6A5F;&#x80FD;&#x3084;&#x30AA;&#x30FC;&#x30C8;&#x30B9;&#x30B1;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html</a></p>
+<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
+<p>PHP-FPM&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;Nginx&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x540C;&#x3058;Pod&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_php-fpm_nginx.png" alt="kubernetes_php-fpm_nginx"></p>
+<h4 id="&#x30FB;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B9A;&#x7FA9;</h4>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> batch/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Job
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> hello
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token comment"># &#x3053;&#x308C;&#x304C;Pod&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3067;&#x3059;</span>
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> hello
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;sh&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;-c&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;echo &quot;Hello, Kubernetes!&quot; &amp;&amp; sleep 3600&apos;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">restartPolicy</span><span class="token punctuation">:</span> OnFailure
+    <span class="token comment"># Pod&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306F;&#x3053;&#x3053;&#x307E;&#x3067;&#x3067;&#x3059;</span>
 </code></pre>
 <p><br></p>
-<h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;"><a name="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;" class="plugin-anchor" href="#&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x578B;</h3>
-<h4 id="&#x30FB;date"><a name="&#x30FB;date" class="plugin-anchor" href="#&#x30FB;date"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;date</h4>
-<p>&#x53B3;&#x5BC6;&#x306B;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3067;&#x306F;&#x306A;&#x3044;&#x304C;&#xFF0C;&#x4FBF;&#x5B9C;&#x4E0A;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x3068;&#x306F;&#xFF0C;&#x5354;&#x5B9A;&#x4E16;&#x754C;&#x6642;(UTC)&#x3092;&#x57FA;&#x6E96;&#x306B;&#x3057;&#x305F;1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;&#x3092;&#x8868;&#x3057;&#x305F;&#x3082;&#x306E;&#xFF0E;</p>
-<table>
-<thead>
-<tr>
-<th>&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;</th>
-<th>&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;</th>
-<th>&#x5099;&#x8003;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&#x65E5;&#x4ED8;</td>
-<td>2019-07-07</td>
-<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x30C9;&#x30C3;&#x30C8;&#x3001;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x306A;&#x3069;&#x3082;&#x53EF;&#x80FD;</td>
-</tr>
-<tr>
-<td>&#x6642;&#x9593;</td>
-<td>19:07:07</td>
-<td>&#x533A;&#x5207;&#x308A;&#x8A18;&#x53F7;&#x306A;&#x3057;&#x3001;&#x3082;&#x53EF;&#x80FD;</td>
-</tr>
-<tr>
-<td>&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x9593;</td>
-<td>2019-07-07 19:07:07</td>
-<td>&#x540C;&#x4E0A;</td>
-</tr>
-<tr>
-<td>&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#xFF08;&#x79D2;&#xFF09;</td>
-<td>1562494027</td>
-<td>1970&#x5E74;1&#x6708;1&#x65E5;&#x306E;0&#x6642;0&#x5206;0&#x79D2;&#x304B;&#x3089;2019-07-07 19:07:07 &#x307E;&#x3067;&#x306E;&#x7D4C;&#x904E;&#x79D2;&#x6570;</td>
-</tr>
-</tbody>
-</table>
-<h4 id="&#x30FB;null"><a name="&#x30FB;null" class="plugin-anchor" href="#&#x30FB;null"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;null</h4>
-<h4 id="&#x30FB;resource"><a name="&#x30FB;resource" class="plugin-anchor" href="#&#x30FB;resource"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;resource</h4>
+<h3 id="secret"><a name="secret" class="plugin-anchor" href="#secret"><i class="fa fa-link" aria-hidden="true"></i></a>Secret</h3>
+<h4 id="&#x30FB;secret&#x3068;&#x306F;"><a name="&#x30FB;secret&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;secret&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Secret&#x3068;&#x306F;</h4>
+<p>&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7BA1;&#x7406;&#x3057;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x9078;&#x629E;&#x7684;&#x306B;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x3082;&#x306E;&#xFF0E;</p>
 <p><br></p>
-<h3 id="02-02-&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x5224;&#x5B9A;&#xFF0F;&#x5909;&#x63DB;"><a name="02-02-&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x5224;&#x5B9A;&#xFF0F;&#x5909;&#x63DB;" class="plugin-anchor" href="#02-02-&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x5224;&#x5B9A;&#xFF0F;&#x5909;&#x63DB;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x30C7;&#x30FC;&#x30BF;&#x578B;&#x306E;&#x5224;&#x5B9A;&#xFF0F;&#x5909;&#x63DB;</h3>
-<h3 id="&#x5224;&#x5B9A;&#x95A2;&#x6570;"><a name="&#x5224;&#x5B9A;&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x5224;&#x5B9A;&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5224;&#x5B9A;&#x95A2;&#x6570;</h3>
-<h4 id="&#x30FB;isscalar"><a name="&#x30FB;isscalar" class="plugin-anchor" href="#&#x30FB;isscalar"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>is_scalar</code></h4>
-<p>&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x578B;&#xFF08;bool&#xFF0C;float&#xFF0C;int&#xFF0C;string&#xFF09;&#x3092;&#x5224;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
+<h3 id="replica-set"><a name="replica-set" class="plugin-anchor" href="#replica-set"><i class="fa fa-link" aria-hidden="true"></i></a>Replica Set</h3>
+<h4 id="&#x30FB;replica-set&#xFF08;replication-controller&#xFF09;&#x3068;&#x306F;"><a name="&#x30FB;replica-set&#xFF08;replication-controller&#xFF09;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;replica-set&#xFF08;replication-controller&#xFF09;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Replica Set&#xFF08;Replication Controller&#xFF09;&#x3068;&#x306F;</h4>
 <p><br></p>
-<h3 id="&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;"><a name="&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;" class="plugin-anchor" href="#&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;</h3>
-<h4 id="&#x30FB;string"><a name="&#x30FB;string" class="plugin-anchor" href="#&#x30FB;string"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(string)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// $var&#x306F;&#x6574;&#x6570;&#x578B;&#xFF0E;</span>
-
-<span class="token comment">// &#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;&#x3067;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3092;&#x5909;&#x63DB;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span> <span class="token comment">// $var&#x306F;&#x6587;&#x5B57;&#x5217;&#x578B;</span>
-</code></pre>
-<h4 id="&#x30FB;int"><a name="&#x30FB;int" class="plugin-anchor" href="#&#x30FB;int"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(int)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-<span class="token comment">// int&#x578B;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 1</span>
-</code></pre>
-<h4 id="&#x30FB;bool"><a name="&#x30FB;bool" class="plugin-anchor" href="#&#x30FB;bool"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(bool)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-<span class="token comment">// &#x771F;&#x507D;&#x578B;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">bool</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
-
-<span class="token comment">// true</span>
-</code></pre>
-<h4 id="&#x30FB;float"><a name="&#x30FB;float" class="plugin-anchor" href="#&#x30FB;float"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(float)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token string double-quoted-string">&quot;1.0&quot;</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Float&#x578B;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">float</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 1.0</span>
-</code></pre>
-<h4 id="&#x30FB;array"><a name="&#x30FB;array" class="plugin-anchor" href="#&#x30FB;array"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(array)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token comment">// &#x914D;&#x5217;&#x578B;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">array</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
-</code></pre>
-<h4 id="&#x30FB;object"><a name="&#x30FB;object" class="plugin-anchor" href="#&#x30FB;object"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>(object)</code></h4>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-
-<span class="token comment">// Object&#x578B;</span>
-<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword type-casting">object</span><span class="token punctuation">)</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
-</code></pre>
+<h3 id="kubectl"><a name="kubectl" class="plugin-anchor" href="#kubectl"><i class="fa fa-link" aria-hidden="true"></i></a>Kubectl</h3>
+<h4 id="&#x30FB;kubectl&#x3068;&#x306F;"><a name="&#x30FB;kubectl&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;kubectl&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Kubectl&#x3068;&#x306F;</h4>
+<p><br></p>
+<h3 id="istio"><a name="istio" class="plugin-anchor" href="#istio"><i class="fa fa-link" aria-hidden="true"></i></a>Istio</h3>
+<h4 id="&#x30FB;istio&#x3068;&#x306F;"><a name="&#x30FB;istio&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;istio&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Istio&#x3068;&#x306F;</h4>
+<p>&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x5404;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x6A5F;&#x80FD;&#x300E;A ---&gt; B ---&gt; C ---&gt; D&#x300F;&#x3092;&#x6301;&#x3064;&#x30E2;&#x30CE;&#x30EA;&#x30B7;&#x30C3;&#x30AF;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3042;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x5316;&#x3057;&#x3066;&#xFF0C;ABCD&#x3092;&#x5225;&#x3005;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;Pod&#x4E0A;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x3057;&#x304B;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3060;&#x3051;&#x3067;&#x306F;ABCD&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x304A;&#x3089;&#x305A;&#xFF0C;&#x5404;&#x6A5F;&#x80FD;&#x306F;&#x4E00;&#x3064;&#x524D;&#x306E;&#x6A5F;&#x80FD;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x89E3;&#x6C7A;&#x3059;&#x308B;&#x306E;&#x304C;Istio&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;istiod"><a name="&#x30FB;istiod" class="plugin-anchor" href="#&#x30FB;istiod"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Istiod</h4>
+<p>Envoy&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x306E;&#x3053;&#x3068;&#xFF0E;Envoy&#x306F;&#xFF0C;&#x5404;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x901A;&#x4FE1;&#x3092;&#x59D4;&#x8B72;&#x3055;&#x308C;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x9593;&#x306E;&#x901A;&#x4FE1;&#x3092;&#x4EE3;&#x7406;&#x3067;&#x884C;&#x3046;&#xFF0E;</p>
 
                                 
                                 </section>
@@ -2274,10 +1993,14 @@
 
             
                 
-                <a href="backend_php_object_orientation_method_data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ▶ ︎クラスベース（2）">
+                <a href="infrastructure_virtualization_container_orchestration_docker_compose.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎Docker Compose">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="infrastructure_virtualization_container_orchestration_docker_swarm.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎Docker Swarm">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2286,7 +2009,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎データ構造","level":"1.4.1.4","depth":3,"next":{"title":"ロジック","level":"1.4.2","depth":2,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.4.2.1","depth":3,"path":"public/backend_php_logic_validation.md","ref":"public/backend_php_logic_validation.md","articles":[]},{"title":"▶ ︎エラーキャッチ，例外スロー，ロギング","level":"1.4.2.2","depth":3,"path":"public/backend_php_logic_catch_error_throw_exception_logging.md","ref":"public/backend_php_logic_catch_error_throw_exception_logging.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.4.2.3","depth":3,"path":"public/backend_php_logic_iteration.md","ref":"public/backend_php_logic_iteration.md","articles":[]}]},"previous":{"title":"▶ ︎クラスベース（2）","level":"1.4.1.3","depth":3,"path":"public/backend_php_object_orientation_method_data.md","ref":"public/backend_php_object_orientation_method_data.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_object_orientation_data_structure.md","mtime":"2021-09-07T14:15:55.608Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-14T14:35:15.156Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Kubernetes","level":"1.14.1.1.4","depth":4,"next":{"title":"▶ ︎Docker Swarm","level":"1.14.1.1.5","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","articles":[]},"previous":{"title":"▶ ︎Docker Compose","level":"1.14.1.1.3","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container_orchestration_kubernetes.md","mtime":"2021-09-14T13:54:02.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-14T14:35:15.156Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
