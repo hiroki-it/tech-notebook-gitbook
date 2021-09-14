@@ -8,9 +8,34 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## Issue
+## テンプレート
 
-### 作り方
+### テンプレートの配置
+
+リポジトリの直下に```.github```ディレクトリを配置し，```ISSUE_TEMPLATE.md```や```PULL_REQUEST_TEMPLATE.md```の名前でファイルを置く．Issueのテンプレートに関して，代わりに```ISSUE_TEMPLATE```ディレクトリを置き，任意の名前のmdファイルを置くと，複数のテンプレートを作成できる．
+
+参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+
+```shell
+project/
+└── .github
+    ├── ISSUE_TEMPLATE.md
+    └── PULL_REQUEST_TEMPLATE.md
+```
+
+```shell
+project/
+└── .github
+    ├── ISSUE_TEMPLATE
+    |   ├── FIX.md
+    |   └── UPDATE.md
+    |
+    └── PULL_REQUEST_TEMPLATE.md
+```
+
+<br>
+
+### Issue
 
 #### ・Issueの分割
 
@@ -28,19 +53,18 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ```md
 # 背景
+<!-- Issue作成の理由になった要望やバグを記載する -->
+<!-- 関連するIssueやPullReqがあればリンクを共有する -->
 
-〇〇する
 
 # 対応方針
-
-〇〇の問題に対処するため．
+<!-- どのような方法で対応する予定なのかを箇条書きで記載する -->
+<!-- 方法に関するドキュメントや技術記事があればリンクを共有する -->
 ```
 
 <br>
 
-## PullReq
-
-### 作り方
+### PullReq
 
 #### ・タイトル
 
@@ -57,17 +81,17 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 **＊具体例＊**
 
 ```md
+# リリース予定日
+<!-- リリース予定日を記載する -->
+
+
 # 対応内容
+<!-- どのように対応したのか箇条書きで記載する -->
+<!-- 関連するIssueやPullReqがあればリンクを共有する -->
 
-〇〇するように，以下を実装いたしました．
-
-- あ
-- い
-- う
 
 # レビューしていただきたいところ
-
-〇〇すると，△△となること．
+<!-- 対応内容の中で適切かどうかが不安なものを記載する -->
 ```
 
 <br>

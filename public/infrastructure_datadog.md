@@ -49,7 +49,6 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | DD_API_KEY  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
 | DD_ENV      | APMを使用する場合に，サービスやトレース画面にて，```env```タグに文字列を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
 | DD_HOSTNAME | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
-| DD_SERVICE  | インフラストラクチャ画面にて，```service```タグに文字列を設定する． |                                                              | https://app.datadoghq.com/containers         |
 | ECS_FARGATE | Fargateを使用する場合に，これを宣言する．                    |                                                              |                                              |
 
 任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す．一部のメトリクスは，標準では収集しないようになっており，収集するためにエージェントを有効化する必要がある．
@@ -58,7 +57,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 | 変数名                   | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| DD_APM_ENABLED           | APMエージェントを有効化し，サービスのメトリクスの分散トレースを収集する．APMでは，分散トレースを元にして，サービス間の関係がグラフ化される．<br>参考：<br>・https://docs.datadoghq.com/ja/getting_started/tracing/<br>・https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D | Fargateを使用している場合，サービス側では，分散トレースを送信できるように，ライブラリのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
+| DD_APM_ENABLED           | APMエージェントを有効化する．                                | Fargateを使用している場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，サービスにライブラリのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
 | DD_LOGS_ENABLED          | -                                                            |                                                              |                                      |
 | DD_PROCESS_AGENT_ENABLED | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
@@ -76,9 +75,12 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・トレースエージェントとは
 
-Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true```を割り当てると，トレースエージェントが有効になる．
+Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true```を割り当てると，トレースエージェントが有効になる．APMエージェントを有効化し，分散トレースを収集できる．APMでは，分散トレースを元にして，サービス間の依存関係をサービスマップとして確認できる．
 
-参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux
+参考：
+
+- https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux
+- https://docs.datadoghq.com/ja/tracing/#datadog-apm-%E3%81%AE%E7%A2%BA%E8%AA%8D
 
 #### ・環境変数
 
@@ -86,63 +88,9 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0
 
-| 変数名       | 説明                                |      |
+| 変数名       | 説明                                | 補足 |
 | ------------ | ----------------------------------- | ---- |
 | DD_LOG_LEVEL | APMに送信するログレベルを設定する． |      |
-
-<br>
-
-### トレーシングライブラリ
-
-#### ・トレーシングライブラリとは
-
-トレースエージェントが稼働するDatadogコンテナにメトリクスの分散トレースを送信できるよう，サービスのコンテナでトレーシングライブラリをインストールする必要がある．
-
-参考：
-
-- https://docs.datadoghq.com/ja/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
-- https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
-
-#### ・PHPの場合
-
-**＊実装例＊**
-
-Dockerfileにて，パッケージをインストールする．
-
-参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
-
-```dockerfile
-ENV DD_TRACE_VERSION=0.63.0
-
-# GitHubからパッケージをダウンロード
-RUN curl -Lo datadog-php-tracer.tar.gz https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer-${DD_TRACE_VERSION}.x86_64.tar.gz \
-  # 解凍
-  && tar -zxvf datadog-php-tracer.tar.gz \
-  # 残骸ファイルを削除
-  && rm datadog-php-tracer.tar.gz
-```
-
-また，環境変数を使用できる．APMのサービスのタグ名に反映される．
-
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-
-#### ・Node.jsの場合
-
-**＊実装例（TypeScriptやモジュールバンドルを使っている場合）＊**
-
-エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースライブラリを読み込み，初期化する．
-
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
-
-```typescript
-import 'dd-trace/init'
-
-// フレームワークを含むパッケージのインポートが続く
-```
-
-また，初期化時に設定した環境変数を使用できる．APMのサービスのタグ名に反映される．
-
-参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
@@ -260,7 +208,112 @@ Datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 <br>
 
-## 03-02. ログ収集 on Fargate
+## 03-02. トレーシングライブラリ
+
+### トレーシングライブラリとは
+
+APM機能を使用する時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーシングライブラリをインストールする必要がある．
+
+参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+
+<br>
+
+### ライブラリ一覧
+
+参考：https://docs.datadoghq.com/ja/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+
+<br>
+
+### PHPトレーシング
+
+#### ・インストール
+
+各サービスのDockerfileにて，パッケージをインストールする．
+
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+
+```dockerfile
+ENV DD_TRACE_VERSION=0.63.0
+
+# GitHubからパッケージをダウンロード
+RUN curl -Lo datadog-php-tracer.tar.gz https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer-${DD_TRACE_VERSION}.x86_64.tar.gz \
+  # 解凍
+  && tar -zxvf datadog-php-tracer.tar.gz \
+  # 残骸ファイルを削除
+  && rm datadog-php-tracer.tar.gz
+```
+
+#### ・環境変数
+
+環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+| 変数名             | 説明                                                         | 画面                                   |
+| ------------------ | ------------------------------------------------------------ | -------------------------------------- |
+| DD_SERVICE         |                                                              |                                        |
+| DD_SERVICE_MAPPING | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:stg-foo-laravel,pdo:stg-foo-pdo``` | https://app.datadoghq.com/apm/services |
+
+<br>
+
+### Node.jsトレーシング
+
+#### ・TypeScriptやモジュールバンドルを使っている場合
+
+エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースライブラリを読み込み，初期化する．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+
+```typescript
+import 'dd-trace/init'
+
+// フレームワークを含むパッケージのインポートが続く
+```
+
+また，初期化時に設定した環境変数を使用できる．APMのサービスのタグ名に反映される．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+<br>
+
+### サービスの識別
+
+#### ・サービスタイプ
+
+トレーシングライブラリによって，サービスは『Web』『DB』『Cache』『Cache』の４つに分類される．各サービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる．タイプ名の種類については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
+- https://docs.datadoghq.com/ja/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
+
+#### ・タグ
+
+トレーシングライブラリによって，サービスにタグを追加できる．
+
+参考：https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+
+<br>
+
+### メトリクスの識別
+
+#### ・メトリクスの識別子
+
+分散トレースの各メトリクスは，『```trace.<スパン名>.<メトリクスサフィックス>```』で識別できる．
+
+参考：https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
+
+#### ・スパン名
+
+識別子のスパン名は，```span.name```属性から構成される．```span```には，サービス名を割り当てる．トレーシングライブラリによって，```redis```，```laravel.request```，```rails```，```pdo```などが自動で割り当てられる．
+
+#### ・メトリクスサフィックス
+
+メトリクス名を割り当てる．トレーシングライブラリによって，```duration```，```hits```，```span_count```などが自動で割り当てられる．
+
+<br>
+
+## 04. ログ収集 on Fargate
 
 ### FireLensコンテナ
 
@@ -313,44 +366,6 @@ FROM data/agent:latest
 ログとトレーシングライブラリによるタグに同じタグ名を付与すると，ログと分散トレースを紐づけることができる．
 
 https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
-
-<br>
-
-## 04. メトリクス
-
-### APMのメトリクス
-
-#### ・用語集
-
-参考：https://docs.datadoghq.com/ja/tracing/visualization/
-
-#### ・分散トレース
-
-サービスの分散トレースを収集できる．
-
-参考：https://docs.datadoghq.com/ja/tracing/visualization/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9
-
-#### ・APMメトリクスの識別子
-
-APMのメトリクスは，『```trace.<スパン名>.<メトリクスサフィックス>```』で識別できる．
-
-https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
-
-#### ・スパン名
-
-```span.name```から構成される．```span```には，サービス名を割り当てる．
-
-**＊例＊**
-
-```redis```，```laravel.request```，```rails```，```pdo```
-
-#### ・メトリクスサフィックス
-
-メトリクス名を割り当てる．
-
-**＊例＊**
-
-```duration```，```hits```，```span_count```
 
 <br>
 

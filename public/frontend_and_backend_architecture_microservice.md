@@ -78,9 +78,10 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・サービス例
 
-| アプリケーション | サービスの種類                                               | GitHub                                                    |
+| アプリケーション | サービスの種類                                               | リンク                                                    |
 | ---------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
 | Eコマース        | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
+| Eコマース        | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
 
 <br>
 
