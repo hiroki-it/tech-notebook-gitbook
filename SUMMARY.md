@@ -18,13 +18,16 @@
     * [▶ ︎データ構造](public/backend_php_object_orientation_data_structure.md)
   * ロジック
     * [▶ ︎バックエンド側の検証ロジック](public/backend_php_logic_validation.md)
-      [▶ ︎エラーキャッチ，例外スロー，ロギング](public/backend_php_logic_catch_error_throw_exception_logging.md)
+    * [▶ ︎エラーキャッチ，例外スロー，ロギング](public/backend_php_logic_catch_error_throw_exception_logging.md)
     * [▶ ︎反復ロジック](public/backend_php_logic_iteration.md)
   * パッケージ／フレームワーク
     * [▶ ︎パッケージ](public/backend_php_package.md)
     * [▶ ︎Symfony](public/backend_php_framework_symfony.md)
     * [▶ ︎Laravel](public/backend_php_framework_laravel.md)
+  * テスト
     * [▶ ︎テスト](public/backend_php_testing.md)
+    * [▶ ︎コードベースのテスト](public/backend_php_testing_based_on_code.md)
+    * [▶ ︎テスト仕様書ベースのテスト](public/backend_php_testing_based_on_test_specification.md)
   * デバッグ
     * [▶ ︎デバッグのコツ](public/backend_php_debug.md)
 * Go
@@ -86,6 +89,9 @@
     * コンテナ
       * [▶ ︎コンテナ](public/infrastructure_virtualization_container.md)
       * [▶ ︎コンテナオーケストレーション](public/infrastructure_virtualization_container_orchestration.md)
+      * [▶ ︎Docker Compose](public/infrastructure_virtualization_container_orchestration_docker_compose.md)
+      * [▶ ︎Kubernetes](public/infrastructure_virtualization_container_orchestration_kubernetes.md)
+      * [▶ ︎Docker Swarm](public/infrastructure_virtualization_container_orchestration_docker_swarm.md)
     * サーバ
       * [▶ ︎仮想サーバ（仮想マシン）](public/infrastructure_virtualization_server.md)
 * CI／CD
@@ -104,6 +110,6 @@
   * [▶ ︎Git](public/git.md)
   * [▶ ︎GitHub](public/github.md)
 * アルゴリズム
-  * [▶ ︎アルゴリズムのロジック](public/backend_logic_algorithm.md)
+  * [▶ ︎アルゴリズムのロジック](public/backend_php_logic_algorithm.md)
 * R言語
   * [▶ ︎統計解析](public/statistic_analysis.md)
