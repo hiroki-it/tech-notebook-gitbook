@@ -49,10 +49,10 @@ WEB_HOST=
 #=======================================
 # データベースサーバ情報
 #=======================================
-DB_HOST=
-DB_NAME=example
-DB_USER=hiroki
-DB_PASSWORD=12345
+DB_HOST=foo-db
+DB_NAME=foo
+DB_USER=foo
+DB_PASSWORD=*****
 ```
 
 #### ・主な```vagrant```コマンド
@@ -66,4 +66,4 @@ DB_PASSWORD=12345
 
 <br>
 
-## 02. Symfonyによるビルトインサーバの構築
+## 02. フレームワークのビルトインサーバの構築

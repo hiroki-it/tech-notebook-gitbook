@@ -8,7 +8,21 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 01. 概念
+## 01. コマンド
+
+### Kubectl
+
+#### ・Kubectlとは
+
+<br>
+
+## 02. <任意の名前>.yml
+
+### spec／statu
+
+参考：https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/kubernetes-objects/
+
+<br>
 
 ### Node
 
@@ -41,11 +55,11 @@ metadata:
   name: my-service # Service名
 spec:
   selector:
-    app: MyApp # Pod名
+    app: MyApp
   ports:
   - protocol: TCP
-    port: 80 # 受信ポート
-    targetPort: 9376 # 転送先ポート
+    port: 80 # Service受信ポート
+    targetPort: 9376 # 転送先のPod受信ポート
 ```
 
 <br>
@@ -76,15 +90,13 @@ kind: Job
 metadata:
   name: hello
 spec:
-  template:
-    # これがPodテンプレートです
+  template: # Pod
     spec:
       containers:
-      - name: hello
-        image: busybox
-        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+      - name: hello # Pod内コンテナ名
+        image: busybox # イメージ
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600'] # コンテナ起動時コマンド
       restartPolicy: OnFailure
-    # Podテンプレートはここまでです
 ```
 
 <br>
@@ -103,18 +115,27 @@ spec:
 
 <br>
 
-### Kubectl
+## 02. Istio
 
-#### ・Kubectlとは
+### Istioとは
+
+ただし，Istioを必ずしも使用する必要はなく，Kubernetesの標準の機能でこれを実現してもよい．
+
+参考：https://qiita.com/Ladicle/items/4ba57078128d6affadd5
+
+- システムのコンポーネント間通信を制御しきれない．
+- 障害時に何が起こるか分からない．
+- 鍵と証明書を管理しきれない．
+- システムの全体像が把握できない
+
+#### ・依存関係の解決
+
+マイクロサービスアーキテクチャの各アプリケーションを管理するソフトウェアのこと．機能『```A ---> B ---> C ---> D```』を持つモノリシックアプリケーションがあるとする．これをマイクロサービス化して，ABCDを別々のアプリケーションに分割する．それぞれのアプリケーションがPod上で稼働することになる．しかし，これだけではABCDが独立しておらず，各機能は一つ前の機能に依存している．この依存関係を解決する．
 
 <br>
 
-### Istio
+### Istiod
 
-#### ・Istioとは
-
-マイクロサービスの各アプリケーションを管理するソフトウェアのこと．機能『A ---> B ---> C ---> D』を持つモノリシックアプリケーションがあるとする．これをマイクロサービス化して，ABCDを別々のアプリケーションに分割する．それぞれのアプリケーションがPod上で稼働することになる．しかし，これだけではABCDが独立しておらず，各機能は一つ前の機能に依存している．この依存関係を解決するのがIstioである．
-
-#### ・Istiod
+#### ・Istiodとは
 
 Envoyを管理する機能のこと．Envoyは，各アプリケーションから通信を委譲され，アプリケーション間の通信を代理で行う．

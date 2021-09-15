@@ -272,6 +272,35 @@ $ git checkout -b feature/3 d7e49b04
 
 <br>
 
+### cherry-pick
+
+#### ・```cherry-pick -m 1 <コミットID>```
+
+現在のブランチに対して，指定したコミットそれ単体をマージする．
+
+```bash
+$ git cherry-pick 1d0ddeb9e52
+```
+
+プルリクのマージによるマージコミットを指定すると，そのプルリクで変更されたファイルのみがコミットの内容として取得できる．これにより，developブランチ上の必要な変更のみをリリースすることも可能である．ただし，マージコミットを指定する時はmオプションを有効化しないとエラーになることに注意する．
+
+```bash
+# mオプションがないとエラー
+$ git cherry-pick d7e49b04
+error: commit d7e49b04 is a merge but no -m option was given.
+fatal: cherry-pick failed
+
+# mオプションを有効化する
+$ git cherry-pick -m 1 d7e49b04
+
+[master a9ebcb4] Merge pull request #276 from feature/123
+ Author: Hiroki Hasegawa <*****@users.noreply.github.com>
+ Date: Wed Sep 15 00:00:00 2021 +0900
+ 1 file changed, 7 insertions(+)
+```
+
+<br>
+
 ### stash：
 
 #### ・```stash```とは

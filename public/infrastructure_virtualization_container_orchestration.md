@@ -45,7 +45,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・ロギングコンテナの配置
 
-Fluentbitコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナから送信されたログを他にルーティングする．
+FluentBitコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナから送信されたログを他にルーティングする．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
 

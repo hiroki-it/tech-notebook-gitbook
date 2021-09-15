@@ -156,16 +156,19 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
                 "value": "true"
             },
             {
+                # アプリケーションに対するenvタグ
+                "name": "DD_ENV",
+                "value": "foo"
+            },            
+            {
+                # アプリケーションに対するserviceタグ
                 "name": "DD_SERVICE",
                 "value": "foo"
             },
             {
+                # アプリケーションに対するversionタグ            
                 "name": "DD_VERSION",
                 "value": "latest"
-            },
-            {
-                "name": "DD_HOSTNAME",
-                "value": "foo"
             }
         ],
         "secrets": [
@@ -175,8 +178,11 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
             }
         ],
         "dockerLabels": {
+            # ECSコンテナに対するenvタグ
             "com.datadoghq.tags.env": "prd",
+            # ECSコンテナに対するserviceタグ            
             "com.datadoghq.tags.service": "foo",
+            # ECSコンテナに対するversionタグ            
             "com.datadoghq.tags.version": "1.0.0"
         }
     }
@@ -251,7 +257,7 @@ RUN curl -Lo datadog-php-tracer.tar.gz https://github.com/DataDog/dd-trace-php/r
 
 | 変数名             | 説明                                                         | 画面                                   |
 | ------------------ | ------------------------------------------------------------ | -------------------------------------- |
-| DD_SERVICE         |                                                              |                                        |
+| DD_SERVICE         | アプリケーション                                             |                                        |
 | DD_SERVICE_MAPPING | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:stg-foo-laravel,pdo:stg-foo-pdo``` | https://app.datadoghq.com/apm/services |
 
 <br>
