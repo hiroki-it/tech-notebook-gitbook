@@ -34,68 +34,56 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ## 02. ドメイン駆動設計の手順
 
-### ドメイン駆動設計の要素
+### 戦略的設計にまつわる用語
 
-#### ・戦略的設計の手順
+#### ・コアドメイン，サブドメイン，境界付けられたコンテキストとは
 
-戦略的設計では，ドメイン全体から境界付けられたコンテキストを明確にする．
-
-1. ドメインエキスパートと話し合い，ドメイン全体の中の境界線を見つけ，それぞれを境界づけられたコンテキストとする．
-2. コンテキストマップを作成し，境界付けられたコンテキスト間の関係を明らかにする．
-
-#### ・戦術的設計の手順
-
-戦術的設計では，境界付けられたコンテキストをアーキテクチャやデザインパターンに落とし込む．
-
-1. ドメインエキスパートと話し合い，境界付けられたコンテキストに含まれる要件をヒアリングを行う．この時，ビジネスのルール／制約を十分にヒアリングする．
-2. 要件からユースケース図を作成する．この時，『システムが，〇〇を△△する．』と考えるとよい．
-3. 通常のオブジェクト指向分析／設計では，ユースケース図の後にクラス図を作成する．しかしドメイン駆動設計では，クラス図作成よりも先に集約の粒度を明確化するために，ユースケース図から『名詞』を抽出し，これを一つのドメインモデルとしたドメインモデル図を作成する．ドメインモデル図では，ビジネスのルール／制約を吹き出しに書き込む．各モデルのルール／制約に依存関係があり，データをセットで扱う必要があるような場合，これらを一つの集約として定義づけるとよい．
-4. 必要であればドメインエキスパートに再ヒアリングを行い，ドメインモデル図を改善する．
-5. ドメインモデル図を元に，クラス図を作成する．この時，モデルをエンティティや値オブジェクトを切り分けるようにする．
-6. アーキテクチャ（レイヤード型，ヘキサゴナル型，オニオン型，クリーンアーキテクチャ）を決め，クラス図を元にドメイン層を実装する．
-7. 運用後に問題が起こった場合，モデリングを修正する．場合によっては，デザインパターンに切り分ける．
-
-なお，オブジェクト指向分析／設計／プログラミングについては，以下のリンクを参考にせよ．
+ビジネスのドメインは，コアドメインとサブドメインに分類できる．最初ドメインを定義し，ここから中心的なビジネスであるコアドメインと，補助的なビジネスであるサブドメインを切り分ける必要がある．また，異なるユビキタス言語から境界づけられたコンテキストを定義づける．
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
-
-<br>
-
-### 戦略的設計にまつわる用語
-
-#### ・ドメインエキスパート，ユビキタス言語とは
-
-ドメインエキスパート（現実世界のビジネスルールに詳しく，また実際にシステムを使う人）と，エンジニアが話し合いながら，ビジネスルールに対して，オブジェクト指向分析と設計を行っていく．この時，ドメインエキスパートとエンジニアの話し合いに齟齬が生まれぬように，ユビキタス言語（業務内容について共通の用語）を設定しておく．
-
-![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
-
-#### ・境界づけられたコンテキストとは
-
-コアドメインやサブドメインの内部を詳細にグループ化する時，ビジネスの関心事の視点で分割されたまとまりのこと．コンテキストの中は，さらに詳細なコンテキストにグループ化できる．両方のコンテキストで関心事が異なっていても，対象は同じドメインであることもある．
-
-参考：https://little-hands.hatenablog.com/entry/2017/11/28/bouded-context-concept
+- https://little-hands.hatenablog.com/entry/2017/11/28/bouded-context-concept
+- https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
 
-**＊具体例＊**
+#### ・ドメインエキスパート，ユビキタス言語とは
 
-仕事仲介サイトでは，仕事の発注者のドメインに注目した時，発注時の視点で分割された仕事募集コンテキストと，同じく契約後の視点で分割された契約コンテキストにまとめることができる．モデリングされた『仕事』は，コンテキスト間で視点が異なるため，意味合いが異なる．
+ドメインエキスパート（現実世界のビジネスルールに詳しく，また実際にシステムを使う人）と，エンジニアが話し合いながら，ビジネスルールに対して，ドメインからコアドメインとサブドメインを切り分けていく．この時，ドメインエキスパート間で，特定の『単語』や『動詞』の意味合い／定義づけが異なる場合，これを別々の名前からなるユビキタス言語として定義づける．ユビキタス言語の違いは，異なる境界づけられたコンテキストとして定義づけられ，ユビキタス言語は他の境界づけられたコンテキストでは通じないものでなければならない．
 
-![bounded-context_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example.png)
+参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
+
+![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
+
+#### ・境界付けられたコンテキストにおけるユビキタス言語に基づくモデリング
+
+ドメインエキスパートの部署や業務フローの立ち位置が異なれば，同じ『単語』や『動詞』であっても，異なる定義づけや言い合いのユビキタス言語が使用される．異なるユビキタス言語を元にして，境界付けられたコンテキストを定義する．この時，ユビキタス言語は他の境界づけられたコンテキストでは通じないものでなければならない．境界づけられたコンテキストそれぞれのユビキタス言語に合わせて，異なる名前でモデリングしていく．境界づけられたコンテキストを定義しない場合，異なるユビキタス言語をコアドメインやサブドメイン間で共有することとなり，それぞれの関心に無関係なデータを保持することになってしまう．
+
+参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+
+![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
+
+**＊例＊**
+
+バイヤー（仕入れ）部，マーケティング部，在庫管理部のドメインエキスパートは，『本（商品）』という単語に対する意味合い／定義づけが異なる．そのため，それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき，モデル名／データ名はそれぞれのユビキタス言語に合わせた名前になる．例えば，マーケの境界づけられたコンテキストでは，モデル名はCouponとなり，割引期間データを保持する必要があるが，仕入部や在庫部ではこのデータは不要である．一方，ISBNは全ての境界づけられたコンテキストのモデルに必要なデータである．境界づけられたコンテキストを定義しない場合，一つの商品モデルが全てのデータを保持することとなり，それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう．
+
+参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
+
+![ddd_strategic_design_flow_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ddd_strategic_design_flow_detail.png)
 
 #### ・コンテキストマップとは
 
-広義のドメイン全体の俯瞰する図のこと．コアドメイン，サブドメイン，境界づけられたコンテキストを定義した後，これらの関係性を視覚化する．
+広義のドメイン全体の俯瞰する図のこと．コアドメイン，サブドメイン，境界づけられたコンテキストを定義した後，これらの関係性を視覚化する．異なるサブドメインの間でユビキタス言語の意味合い／定義づけが異なる場合，境界づけられたコンテキストはサブドメインをまたがない．一方で，ユビキタス言語の意味合い／定義づけが同じ場合，境界づけられたコンテキストは複数のサブドメインにまたがる（これ重要）．
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
 <br>
 
 ### 戦術的設計にまつわる用語
+
+#### ・DDDデザインパターン集
+
+参考：https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 
 #### ・レイヤードアーキテクチャ
 
@@ -142,3 +130,43 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 - https://www.eureka-moments-blog.com/entry/2018/12/29/145802
 - https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf
+
+<br>
+
+## 03. ドメイン駆動設計の手順まとめ
+
+### 戦略的設計の手順
+
+![ddd_strategic_design_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ddd_strategic_design_flow.png)
+
+戦略的設計では，ドメイン全体から境界付けられたコンテキストを明確にする．
+
+参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+
+1. ドメインエキスパートと話し合い，ドメイン全体の中からコアドメインとサブドメインを切り分ける．
+2. ドメインエキスパートの部署や業務フローの立ち位置によっては，同じ『単語』や『動詞』であっても，意味合い／定義づけが異なる場合がある．この時，それぞれを別々の名前からなるユビキタス言語として定義づける．
+3. ユビキタス言語を元に，境界づけられたコンテキストを定義づける．
+4. コンテキストマップを作成し，境界付けられたコンテキスト間の関係を明らかにする．
+
+<br>
+
+### 戦術的設計の手順
+
+戦術的設計では，境界付けられたコンテキストをアーキテクチャやデザインパターンに落とし込む．
+
+1. ドメインエキスパートと話し合い，境界付けられたコンテキストに含まれる要件をヒアリングを行う．この時，ビジネスのルール／制約を十分にヒアリングする．
+2. 要件からユースケース図を作成する．この時，『システムが，〇〇を△△する．』と考えるとよい．
+3. 通常のオブジェクト指向分析／設計では，ユースケース図の後にクラス図を作成する．しかしドメイン駆動設計では，クラス図作成よりも先に集約の粒度を明確化するために，ユースケース図から『名詞』を抽出し，これを一つのドメインモデルとしたドメインモデル図を作成する．ドメインモデル図では，ビジネスのルール／制約を吹き出しに書き込む．各モデルのルール／制約に依存関係があり，データをセットで扱う必要があるような場合，これらを一つの集約として定義づけるとよい．
+4. 必要であればドメインエキスパートに再ヒアリングを行い，ドメインモデル図を改善する．
+5. ドメインモデル図を元に，クラス図を作成する．この時，モデルをエンティティや値オブジェクトを切り分けるようにする．
+6. アーキテクチャ（レイヤード型，ヘキサゴナル型，オニオン型，クリーンアーキテクチャ）を決め，クラス図を元にドメイン層を実装する．
+7. 運用後に問題が起こった場合，モデリングを修正する．場合によっては，デザインパターンに切り分ける．
+
+なお，オブジェクト指向分析／設計／プログラミングについては，以下のリンクを参考にせよ．
+
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
+

@@ -130,7 +130,7 @@ xdebug.remote_handler=dbgp
 # エディタサーバのプライベートIPアドレス．
 xdebug.remote_host=10.0.2.2
 
-# エディタサーバの解放ポート．
+# エディタサーバの開放ポート．
 xdebug.remote_port=9001
 
 # 常にデバッグセッションを実行．

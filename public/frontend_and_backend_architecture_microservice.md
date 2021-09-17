@@ -34,69 +34,6 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-### サービス
-
-#### ・サービスとは
-
-マイクロサービスアーキテクチャにおけるコンポーネントのこと．特定のサービスが他のサービスに侵食され，サービスの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
-
-参考：
-
-- https://github.com/czeslavo/process-manager
-- https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
-- https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
-
-![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
-
-#### ・サービスのロジックの粒度
-
-境界づけられたコンテキストの他に，サブドメイン，業務機能，ユースケース，リソース，などの単位で分割することがあり，いずれかの方法で分割されたサービスが混在することになる．
-
-参考：
-
-- https://microservices.io/patterns/microservices.html
-- https://www.slideshare.net/masuda220/ss-146325870
-- https://scrapbox.io/kawasima/Microservices%E5%88%86%E5%89%B2%E5%A4%A7%E5%85%A8
-
-![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
-
-#### ・サービス間の通信
-
-サービス間では，RESTfulAPIを用いた同期通信，またはメッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンを使用して実現する．境界付けられたコンテキストは，ビジネスのドメインによってその実装内容は異なるものの，コンテキスト名は同じになることが多い．そのため，よくある境界付けられたコンテキストを知識として持っておくことで，新しいドメインで境界付けられたコンテキストを考える時の指針になる．
-
-**＊例：株式会社ハコジム＊**
-
-認証コンテキスト，予約コンテキスト，顧客管理コンテキスト，銀行支払いコンテキスト，クレジットカード支払いコンテキスト
-
-参考：https://zenn.dev/hsshss/articles/e11efefc7011ab
-
-![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
-
-#### ・各サービスのアーキテクチャ
-
-各サービスのアーキテクチャは自由である．この時，ドメイン駆動設計のアーキテクチャに基づいて実装することが可能である．
-
-**＊例＊**
-
-参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
-
-販売コンテキストと配送コンテキストがあるとする．
-
-![bounded-context_example_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2.png)
-
-それぞれをドメイン駆動設計のアーキテクチャに落とし込む．アーキテクチャ間で同期通信／非同期通信を行う．
-
-![bounded-context_example_2_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bounded-context_example_2_onion-architecture.png)
-
-#### ・サービス例
-
-| アプリケーション | サービスの種類                                               | リンク                                                    |
-| ---------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
-| Eコマース        | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
-| Eコマース        | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
-
-<br>
-
 ### リポジトリの粒度
 
 #### ・モノリポジトリ
@@ -115,25 +52,118 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 02. バックエンドのマイクロサービス化
+## 02. 分散システムの粒度
 
-### サービス間の処理連携
+### サービス
+
+#### ・サービスとは
+
+マイクロサービスアーキテクチャにおけるバックエンドのコンポーネントのこと．特定のサービスが他のサービスに侵食され，サービスの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
+
+参考：
+
+- https://github.com/czeslavo/process-manager
+- https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
+- https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
+
+![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
+
+#### ・各サービスのアーキテクチャ
+
+各サービスのアーキテクチャは自由である．この時，ドメイン駆動設計のアーキテクチャに基づいて実装することが可能である．
+
+**＊例＊**
+
+参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
+
+販売コンテキストと配送コンテキストがあるとする．それぞれをドメイン駆動設計のアーキテクチャに落とし込む．アーキテクチャ間で同期通信／非同期通信を行う．
+
+![microservice-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
+
+<br>
+
+### サービスの分割手法
+
+#### ・サービスの分割例
+
+| アプリケーション | サービスの種類                                               | リンク                                                    |
+| ---------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
+| Eコマース        | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
+| Eコマース        | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
+
+<br>
+
+#### ・サブドメイン，境界づけられたコンテキスト
+
+サブドメインをサービスの粒度とする．ここでは，解決領域となる境界付けられたコンテキストがサブドメインの中に一つしか含まれていない場合を指しており，境界づけられたコンテキストをサービスを粒度して考えても良い．サブドメインを粒度とすることを第一段階として，さらに小さな粒度に分割するために，次の段階としてルートエンティティを粒度とするとよい．
+
+参考：
+
+- https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
+- https://www.amazon.co.jp/dp/4873119316/ref=cm_sw_em_r_mt_dp_PVDKB4F74K7S07E4CTFF
+
+![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+
+**＊例：株式会社ハコジム＊**
+
+認証コンテキスト，予約コンテキスト，顧客管理コンテキスト，銀行支払いコンテキスト，クレジットカード支払いコンテキスト
+
+参考：https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
+
+#### ・ルートエンティティ
+
+イベント駆動方式でアプリケーションを連携した場合に，これのルートエンティティをサービスの単位とする．従来のリクエスト方式でアプリケーションを連携する場合のルートエンティティを使用することはアンチパターンである．
+
+参考：
+
+- https://scrapbox.io/kawasima/Microservices%E5%88%86%E5%89%B2%E5%A4%A7%E5%85%A8
+- https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/
+
+<br>
+
+### サービスオーケストレーション方式
 
 #### ・コレオグラフィとは
 
-分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．サービス間のインターフェースとして，キューを設置する．このノートでは，コレオグラフィを用いたアプリケーション層の連携を説明する．
+分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法．個々のサービス間の連携では，イベント駆動方式を採用する．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．サービス間のインターフェースとして，キューを設置する．このノートでは，コレオグラフィを用いたアプリケーション層の連携を説明する．
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
 #### ・オーケストレーションとは
 
-中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．
+中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．個々のサービス間の連携では，リクエストリプライ方式を採用する．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
 
 <br>
 
-### トランザクション
+### サービス間連携方式
+
+#### ・イベント駆動方式
+
+サービス間では，RESTfulAPIを用いた同期通信を実行する．
+
+![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
+
+#### ・リクエストリプライ方式
+
+サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
+
+![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
+
+<br>
+
+### サービス間の通信
+
+<br>
+
+<br>
+
+## 02-02. 分散トランザクション
+
+### 分散トランザクションの種類
 
 #### ・ローカルトランザクションとは
 
@@ -143,6 +173,10 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 分散トランザクションとも言う．一つのトランザクション処理が各サービスに分散しており，一つのトランザクション処理によて，各サービスのデータベースを連続的に操作する設計方法．非推奨である．
 
+<br>
+
+### ローカルトランザクション
+
 #### ・Sagaパターンとは
 
 ローカルトランザクションの時に，インフラストラクチャ層を実現する設計方法．上流サービスのデータベースの操作完了をイベントとして，下流サービスのデータベースの操作処理を連続的にコールする．ロールバック時には補償トランザクションが実行され，逆順にデータベースの状態が元に戻される．
@@ -150,6 +184,18 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
 
 <br>
+
+## 02-03. 分散システムにおけるテスト
+
+### CDCテスト：Consumer Drive Contract
+
+#### ・CDCテストとは
+
+サービスのコントローラがコールされてから，データベースの操作が完了するまでを，テストする．下流サービスのコールはモック化またはスタブ化する．
+
+<br>
+
+## 02-04. 分散システムの運用
 
 ### 障害対策
 
@@ -174,14 +220,6 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 Datadogによる分散トレースの監視については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html
-
-<br>
-
-### 横断的なテスト
-
-#### ・CDCテスト：Consumer Drive Contract
-
-サービスのコントローラがコールされてから，データベースの操作が完了するまでを，テストする．下流サービスのコールはモック化またはスタブ化する．
 
 <br>
 
