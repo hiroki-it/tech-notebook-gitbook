@@ -19,3 +19,8 @@ commit-static: build
 
 rm-static:
 	rm -Rf docs
+
+commit-push-all: commit-note commit-static
+	git checkout develop && git push
+	git checkout main && git merge develop && git push
+	git checkout develop
