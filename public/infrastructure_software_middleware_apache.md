@@ -101,7 +101,7 @@ $ sudo apachectl graceful
 
 ### Webサーバのミドルウェアとして
 
-![Webサーバ，APサーバ，DBサーバ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Webサーバ，APサーバ，DBサーバ.png)
+![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 
 <br>
 

@@ -90,13 +90,13 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ### その他の留意事項
 
-#### ・割り当てられるPrivate IPアドレス範囲
+#### ・割り当てられるプライベートIPアドレス範囲
 
 ALBに割り当てられるIPアドレス範囲には，VPCのものが適用される．そのため，EC2のSecurity Groupでは，VPCのIPアドレス範囲を許可するように設定する必要がある．
 
 #### ・ALBのセキュリティグループ
 
-Route53から転送されるパブリックIPアドレスを受信できるようにしておく必要がある．パブリックネットワークに公開するWebサイトであれば，IPアドレスは全ての範囲（```0.0.0.0/0```と``` ::/0```）にする．社内向けのWebサイトであれば，社内のPrivate IPアドレスのみ（```n.n.n.n/32```）を許可するようにする．
+Route53から転送されるパブリックIPアドレスを受信できるようにしておく必要がある．パブリックネットワークに公開するWebサイトであれば，IPアドレスは全ての範囲（```0.0.0.0/0```と``` ::/0```）にする．社内向けのWebサイトであれば，社内のプライベートIPアドレスのみ（```n.n.n.n/32```）を許可するようにする．
 
 <br>
 
@@ -345,9 +345,9 @@ CORSを有効化し，異なるオリジンによって表示されたページ�
 
 <br>
 
-### Private統合
+### プライベート統合
 
-#### ・Private統合とは
+#### ・プライベート統合とは
 
 API GatewayとVPCリンクの間で，リクエスト／レスポンスのJSONデータを自動的にマッピングする機能のこと．
 
@@ -706,7 +706,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Whitelist Header                                             | Cache Based on Selected Request Headers を参考にせよ．       | ・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定．<br/>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている． |
 | Object Caching                                               | CloudFrontにコンテンツのCacheを保存しておく秒数を設定する．  | ・Origin Cache ヘッダーを選択した場合，アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される．<br>・カスタマイズを選択した場合，ブラウザのTTLとは別に設定できる． |
 | TTL                                                          | CloudFrontにCacheを保存しておく秒数を詳細に設定する．        | ・Min，Max，Default，の全てを0秒とすると，Cacheを無効化できる．<br>・『Cache Based on Selected Request Headers = All』としている場合，Cacheが実質無効となるため，最小TTLはゼロでなければならない． |
-| ★Farward Cookies<br/>（★については表上部参考）               | Cookie情報のキー名のうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・Cookie情報キー名転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのCookieの転送を拒否し，Cacheの対象としない．Cookieはユーザごとに一意になることが多く，動的であるが，それ以外のヘッダーやクエリ文字でCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br/>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると，CloudFrontに保存されたCacheがHITしない．CloudFrontはキー名／値を保持するため，変化しやすいキー名／値は，オリジンに転送しないように設定する．例えば，GoogleAnalyticsのキー名（```_ga```）の値は，ブラウザによって異なるため，１ユーザがブラウザを変えるたびに，異なるCacheが生成されることになる．そのため，ユーザを一意に判定することが難しくなってしまう．<br>・セッションIDはCookieヘッダーに設定されているため，フォーム送信に関わるパスパターンでは，セッションIDのキー名を許可する必要がある． |
+| ★Farward Cookies<br/>（★については表上部参考）               | Cookie情報のキー名のうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・Cookie情報キー名転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのCookieの転送を拒否し，Cacheの対象としない．Cookieはユーザごとに一意になることが多く，動的であるが，それ以外のヘッダーやクエリ文字でCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br/>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると，CloudFrontに保存されたCacheがHITしない．CloudFrontはキー名／値を保持するため，変化しやすいキー名／値は，オリジンに転送しないように設定する．例えば，GoogleAnalyticsのキー名（```_ga```）の値は，ブラウザによって異なるため，１ユーザがブラウザを変えるたびに，異なるCacheが生成されることになる．そのため，ユーザを一意に判定することが難しくなってしまう．GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので，オリジンにとっても基本的に不要である．<br>・セッションIDはCookieヘッダーに設定されているため，フォーム送信に関わるパスパターンでは，セッションIDのキー名を許可する必要がある． |
 | ★Query String Forwarding and Caching<br/>（★については表上部参考） | クエリストリングのうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・クエリストリング転送とCacheの，全拒否，一部許可，全許可を選択できる．全拒否にすると，Webサイトにクエリストリングをリクエストできなくなるので注意．<br>・異なるクエリパラメータを，別々のCacheとして保存するかどうかを設定できる． |
 | Restrict Viewer Access                                       | リクエストの送信元を制限するかどうかを設定できる．           | セキュリティグループで制御できるため，ここでは設定しなくてよい． |
 | Compress Objects Automatically                               | レスポンス時にgzipを圧縮するかどうかを設定                   | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合，レスポンス時に，gzip形式で圧縮して送信するかどうかを設定する．設定しない場合，圧縮せずにレスポンスを送信する．<br>・クライアント側のダウンロード速度向上のため，基本的には有効化する． |
@@ -1674,11 +1674,17 @@ LaravelのSeederコマンドやロールバックコマンドを，ローカルP
 set -x
 
 echo "Set Variables"
-SERVICE_NAME="stg-ecs-service"
-CLUSTER_NAME="stg-ecs-cluster"
-TASK_NAME="stg-ecs-task-definition"
-SUBNETS_CONFIG=$(aws ecs describe-services --cluster ${CLUSTER_NAME} --services ${SERVICE_NAME} --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]")
-SGS_CONFIG=$(aws ecs describe-services --cluster ${CLUSTER_NAME} --services ${SERVICE_NAME} --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]")
+SERVICE_NAME="stg-foo-ecs-service"
+CLUSTER_NAME="stg-foo-ecs-cluster"
+TASK_NAME="stg-foo-ecs-task-definition"
+SUBNETS_CONFIG=$(aws ecs describe-services \
+  --cluster ${CLUSTER_NAME} \
+  --services ${SERVICE_NAME} \
+  --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]")
+SGS_CONFIG=$(aws ecs describe-services \
+  --cluster ${CLUSTER_NAME} \
+  --services ${SERVICE_NAME} \
+  --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]")
 
 # 実行したいコマンドをoverridesに設定する．
 echo "Run Task"
@@ -1738,7 +1744,7 @@ exit ${EXIT_CODE}
 
 #### ・Fargateとは
 
-コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．明言はされていないため推測ではあるが，Fargate環境ではホストが隠蔽されており，実体としてEC2インスタンスをホストとしてコンテナが稼働している．
+コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．Fargate環境ではホストが隠蔽されており，実体としてEC2インスタンスをホストとしてコンテナが稼働している（ドキュメントに記載がないが，AWSサポートに確認済み）．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
 
@@ -1783,9 +1789,9 @@ exit ${EXIT_CODE}
 | ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
 | ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，『<プレフィックス名>/<コンテナ名>/<タスクID>』の形式で送信される． |
 
-#### ・割り当てられるPrivate IPアドレス
+#### ・割り当てられるプライベートIPアドレス
 
-タスクごとに異なるPrivate IPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
+タスクごとに異なるプライベートIPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
 
 <br>
 
@@ -1889,19 +1895,29 @@ Datadogエージェントがクラスターやコンテナにアクセスでき�
 
 ### ネットワークモードとコンテナ間通信
 
-#### ・bridgeモード
+#### ・noneモード
 
-Dockerのbridgeネットワークに相当する．
+外部ネットワークが無く，タスクと外と通信できない．
 
 #### ・hostモード
 
 Dockerのhostネットワークに相当する．
 
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ・bridgeモード
+
+Dockerのbridgeネットワークに相当する．
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
 #### ・awsvpcモード
 
-awsの独自ネットワークモード．タスクはElastic Network Interfaceと紐づけられ，Primary Private IPアドレスを割り当てられる．同じタスクに属するコンテナ間は，localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが，Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが関連付けられる）．これにより，コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は，転送元コンテナにて，転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い．
+awsの独自ネットワークモード．タスクはElastic Networkインターフェースと紐づけられ，Primary プライベートIPアドレスを割り当てられる．同じタスクに属するコンテナ間は，localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが，Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが関連付けられる）．これにより，コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は，転送元コンテナにて，転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い．また，awsvpcモードの独自の仕組みとして，同じタスク内であれば，互いにコンテナポートを開放せずとも，プロセスのリッスンするポートを指定するだけでコンテナ間通信が可能である．例えば，NginxコンテナからPHP-FPMコンテナにリクエストを転送するためには，PHP-FPMプロセスが```9000```番ポートをリッスンし，さらにコンテナが```9000```番ポートを開放する必要がある．しかし，awsvpcモードではコンテナポートを開放する必要はない．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
+
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
 
 <br>
 
@@ -1944,7 +1960,7 @@ VPCエンドポイントを設け，これに対してアウトバウンド通�
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | PrivateDNS名                                                 | 説明                                               |
+| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                               |
 | ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
 | CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
 | ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．            |
@@ -1972,7 +1988,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 ![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
 
-そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは，パブリックサブネットとPrivateサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱うことができるようになる．
+そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱うことができるようになる．
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -2456,7 +2472,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 ![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
 
-最初，クライアントPCからのリクエストはエッジロケーションで受信される．Privateネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを使用しないため，小さなレイテシーでトラフィックをルーティングできる．
+最初，クライアントPCからのリクエストはエッジロケーションで受信される．プライベートネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを使用しないため，小さなレイテシーでトラフィックをルーティングできる．
 
 ![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
 
@@ -3610,13 +3626,13 @@ Auroraの場合，フェイルオーバーによって昇格するインスタ�
 
 #### ・配置されるサブネット
 
-データベースが配置されるサブネットはPrivateサブネットにする，これには，data storeサブネットと名付ける．アプリケーション以外は，踏み台サーバ経由でしかデータベースにアクセスできないようにする．
+データベースが配置されるサブネットはプライベートサブネットにする，これには，data storeサブネットと名付ける．アプリケーション以外は，踏み台サーバ経由でしかデータベースにアクセスできないようにする．
 
 ![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
 
 #### ・セキュリティグループ
 
-コンピューティングからのインバウンド通信のみを許可するように，これらのPrivate IPアドレス（```n.n.n.n/32```）を設定する．
+コンピューティングからのインバウンド通信のみを許可するように，これらのプライベートIPアドレス（```n.n.n.n/32```）を設定する．
 
 <br>
 
@@ -3970,7 +3986,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 ### Security Groupとは
 
-アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く．インバウンド通信（Privateネットワーク向き通信）では，プロトコルや受信元IPアドレスを設定でき，アウトバウンド通信（グローバルネットワーク向き通信）では，プロトコルや送信先プロトコルを設定できる．
+アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く．インバウンド通信（プライベートネットワーク向き通信）では，プロトコルや受信元IPアドレスを設定でき，アウトバウンド通信（グローバルネットワーク向き通信）では，プロトコルや送信先プロトコルを設定できる．
 
 <br>
 
@@ -3986,7 +4002,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 #### ・パケットフィルタリング型ファイアウォール
 
-パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバの間には，NATルータやNAPTルータが設置されている．これらによる送信元Private IPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ．
+パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバの間には，NATルータやNAPTルータが設置されている．これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ．
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
 
@@ -4439,7 +4455,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 ### VPCとは
 
-クラウドPrivateネットワークとして働く．Private IPアドレスが割り当てられた，VPCと呼ばれるPrivateネットワークを仮想的に構築できる．異なるAvailability Zoneに渡ってEC2を立ち上げることによって，クラウドサーバをデュアル化することできる．
+クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるAvailability Zoneに渡ってEC2を立ち上げることによって，クラウドサーバをデュアル化することできる．
 
 ![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
 
@@ -4457,13 +4473,13 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 #### ・Internet Gatewayとは
 
-VPCの出入り口に設置され，グローバルネットワークとPrivateネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のPrivate IPを紐づけられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
+VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のプライベートIPを紐づけられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
 
 #### ・NAT Gatewayとは
 
-NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のPrivate IPを紐づけられる．パブリックサブネットに置き，PrivateサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
+NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のプライベートIPを紐づけられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
 
@@ -4472,7 +4488,7 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 |              | Internet Gateway                                             | NAT Gateway            |
 | :----------- | :----------------------------------------------------------- | :--------------------- |
-| **機能**     | グローバルネットワークとPrivateネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
+| **機能**     | グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
 | **設置場所** | VPC上                                                        | パブリックサブネット内 |
 
 <br>
@@ -4485,9 +4501,9 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 クラウドルータのマッピングテーブルとして働く．ルータについては，別ノートのNATとNAPTを参考にせよ．
 
-| Destination（Private IPの範囲） |                Target                 |
-| :-----------------------------: | :-----------------------------------: |
-|        ```xx.x.x.x/xx```        | Destinationの範囲内だった場合の送信先 |
+| Destination（プライベートIPの範囲） |                Target                 |
+| :---------------------------------: | :-----------------------------------: |
+|          ```xx.x.x.x/xx```          | Destinationの範囲内だった場合の送信先 |
 
 #### ・ルートテーブルの種類
 
@@ -4498,21 +4514,21 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 #### ・具体例1
 
-上の図中で，サブネット2にはルートテーブル1が関連づけられている．サブネット2内のEC2の送信先のPrivate IPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，範囲外にあれば通信を破棄する．
+上の図中で，サブネット2にはルートテーブル1が関連づけられている．サブネット2内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，範囲外にあれば通信を破棄する．
 
-| Destination（Private IPアドレス範囲） |  Target  |
-| :-----------------------------------: | :------: |
-|           ```10.0.0.0/16```           |  local   |
-|          指定範囲以外の場合           | 通信破棄 |
+| Destination（プライベートIPアドレス範囲） |  Target  |
+| :---------------------------------------: | :------: |
+|             ```10.0.0.0/16```             |  local   |
+|            指定範囲以外の場合             | 通信破棄 |
 
 #### ・具体例2
 
-上の図中で，サブネット3にはルートテーブル2が関連づけられている．サブネット3内のEC2の送信先のPrivate IPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば，アウトバウンド通信と見なし，インターネットゲートウェイを送信先に選ぶ．
+上の図中で，サブネット3にはルートテーブル2が関連づけられている．サブネット3内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば，アウトバウンド通信と見なし，インターネットゲートウェイを送信先に選ぶ．
 
-| Destination（Private IPアドレス範囲） |      Target      |
-| :-----------------------------------: | :--------------: |
-|           ```10.0.0.0/16```           |      local       |
-|            ```0.0.0.0/0```            | Internet Gateway |
+| Destination（プライベートIPアドレス範囲） |      Target      |
+| :---------------------------------------: | :--------------: |
+|             ```10.0.0.0/16```             |      local       |
+|              ```0.0.0.0/0```              | Internet Gateway |
 
 <br>
 
@@ -4537,13 +4553,13 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 ### VPCサブネット
 
-クラウドPrivateネットワークにおけるセグメントとして働く．
+クラウドプライベートネットワークにおけるセグメントとして働く．
 
 #### ・パブリックサブネットとは
 
 非武装地帯に相当する．攻撃の影響が内部ネットワークに広がる可能性を防ぐために，外部から直接リクエストを受ける，
 
-#### ・Privateサブネットとは
+#### ・プライベートサブネットとは
 
 内部ネットワークに相当する．外部から直接リクエストを受けずにレスポンスを返せるように，内のNATを経由させる必要がある．
 
@@ -4591,7 +4607,7 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 #### ・設定項目
 
-VPCのPrivateサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを使用しない場合，Privateサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを使用する必要がある．
+VPCのプライベートサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを使用しない場合，プライベートサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを使用する必要がある．
 
 **＊（例）＊**
 
@@ -4605,7 +4621,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 | タイプ      | 説明                                                         | リソース例                       |
 | ----------- | ------------------------------------------------------------ | -------------------------------- |
-| Interface型 | Privateリンクともいう．Private IPアドレスを持つENIとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDB以外の全てのリソース |
+| Interface型 | プライベートリンクともいう．プライベートIPアドレスを持つENIとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDB以外の全てのリソース |
 | Gateway型   | ルートテーブルにおける定義に従う．VPCエンドポイントとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDBのみ                 |
 
 <br>
@@ -4685,7 +4701,7 @@ VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブ�
 
 #### ・VPCエンドポイントサービスとは
 
-VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイント（Privateリンク）をNLBに関連付けることにより，『一対多』の関係で，『異なるVPC間』の双方向通信を可能にする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
+VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイント（プライベートリンク）をNLBに関連付けることにより，『一対多』の関係で，『異なるVPC間』の双方向通信を可能にする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
 
 <br>
 
@@ -4737,7 +4753,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 | サイバー攻撃の種類 | 対抗するAWSリソースの種類                                    |
 | ------------------ | ------------------------------------------------------------ |
 | マルウェア         | なし                                                         |
-| 傍受，盗聴         | VPC内の特にPrivateサブネット間のピアリング接続．VPC外を介さずにデータを送受信できる． |
+| 傍受，盗聴         | VPC内の特にプライベートサブネット間のピアリング接続．VPC外を介さずにデータを送受信できる． |
 | ポートスキャン     | セキュリティグループ                                         |
 | DDoS               | Shield                                                       |
 | ゼロディ           | WAF                                                          |

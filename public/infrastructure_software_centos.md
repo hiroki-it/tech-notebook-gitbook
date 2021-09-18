@@ -35,6 +35,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | chown              | -              | -              | -              | -           | -              |
 | ln                 | -              | -              | -              | -           | -              |
 | od                 | -              | -              | -              | -           | -              |
+| tar                |                |                |                |             |                |
 
 #### ・Windowsの場合
 
@@ -91,7 +92,8 @@ $ which python3
 検索されたファイル内で，さらに文字列を検索する．
 
 ```shell
-$ find /* -type f | xargs grep "<検索文字>"
+$ find /* \
+  -type f | xargs grep "<検索文字>"
 ```
 
 #### ・killとの組み合わせ
@@ -103,7 +105,8 @@ $ find /* -type f | xargs grep "<検索文字>"
 フィルタリングされたプロセスを削除する．
 
 ```shell
-$ sudo pgrep -f <コマンド名> | sudo xargs kill -9
+$ sudo pgrep \
+  -f <コマンド名> | sudo xargs kill -9
 ```
 
 #### ・awkとの組み合わせ
@@ -472,9 +475,21 @@ $ find /* -type f | xargs grep "<検索文字>"
 $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 ```
 
-#### ・-name，-type
+#### ・-name
 
-ルートディレクトリ以下で， example という文字をもち，ファイル名が .conf で終わるファイルを全て検索する．
+名前が .conf で終わるファイルを全て検索する．
+
+```shell
+$ find /* -name "*.conf" -type f
+```
+
+名前が dir で終わるディレクトリを全て検索する．
+
+```shell
+$ find /* -name "*dir" -type d
+```
+
+ルートディレクトリ以下で， <検索文字> という文字をもち，ファイル名が .conf で終わるファイルを全て検索する．
 
 ```shell
 $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
@@ -602,6 +617,50 @@ $ set -u
 
 ```shell
 $ set -o pipefail
+```
+
+<br>
+
+### tar
+
+#### ・-x
+
+圧縮ファイルを解凍する．
+
+```bash
+$ tar -xf foo.tar.gz
+```
+
+#### ・-f
+
+圧縮ファイル名を指定する．これを付けない場合，テープドライブが指定される．
+
+```bash
+$ tar -xf foo.tar.gz
+```
+
+#### ・-v
+
+解凍中のディレクトリ／ファイルの生成ログを表示する．
+
+```bash
+$ tar -xvf foo.tar.gz
+
+./
+./opt/
+./opt/foo/
+./opt/foo/bar/
+./opt/foo/bar/install.sh
+./opt/foo/bar/baz/
+./opt/foo/bar/baz/init.sh
+```
+
+#### ・-g
+
+gzip拡張子の圧縮ファイルを解凍する．ただし，標準で有効になっているため，オプションは付けないくても問題ない．
+
+```bash
+$ tar -zxf foo.tar.gz
 ```
 
 <br>
@@ -1528,7 +1587,7 @@ $ pyenv which python
 
 後述の説明を参考にせよ．
 
-#### <br>
+<br>
 
 ### 言語の種類
 

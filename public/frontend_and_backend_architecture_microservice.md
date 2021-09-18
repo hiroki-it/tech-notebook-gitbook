@@ -52,13 +52,13 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 02. 分散システムの粒度
+## 02. 分散システム間の連携
 
 ### サービス
 
 #### ・サービスとは
 
-マイクロサービスアーキテクチャにおけるバックエンドのコンポーネントのこと．特定のサービスが他のサービスに侵食され，サービスの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
+マイクロサービスアーキテクチャにおけるバックエンドの分散システムのコンポーネントのこと．特定のサービスが他のサービスに侵食され，サービスの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
 
 参考：
 
@@ -76,7 +76,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
 
-販売コンテキストと配送コンテキストがあるとする．それぞれをドメイン駆動設計のアーキテクチャに落とし込む．アーキテクチャ間で同期通信／非同期通信を行う．
+販売コンテキストまたは配送コンテキストからなるアプリケーションがあるとする．それぞれをオニオンアーキテクチャで実装し，アプリケーション間で同期通信／非同期通信を行う．
 
 ![microservice-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
 
@@ -86,16 +86,16 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・サービスの分割例
 
-| アプリケーション | サービスの種類                                               | リンク                                                    |
-| ---------------- | ------------------------------------------------------------ | --------------------------------------------------------- |
-| Eコマース        | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
-| Eコマース        | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
+| アプリケーション | 分割方法           | サービスの種類                                               | リンク                                                    |
+| ---------------- | ------------------ | ------------------------------------------------------------ | --------------------------------------------------------- |
+| Eコマース        | ルートエンティティ | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
+| Eコマース        | ルートエンティティ | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
 
 <br>
 
-#### ・サブドメイン，境界づけられたコンテキスト
+#### ・サブドメイン，境界付けられたコンテキスト
 
-サブドメインをサービスの粒度とする．ここでは，解決領域となる境界付けられたコンテキストがサブドメインの中に一つしか含まれていない場合を指しており，境界づけられたコンテキストをサービスを粒度して考えても良い．サブドメインを粒度とすることを第一段階として，さらに小さな粒度に分割するために，次の段階としてルートエンティティを粒度とするとよい．
+サブドメインをサービスの粒度とする．ここでは，解決領域となる境界付けられたコンテキストがサブドメインの中に一つしか含まれていない場合を指しており，境界付けられたコンテキストをサービスを粒度して考えても良い．サブドメインを粒度とすることを第一段階として，さらに小さな粒度に分割するために，次の段階としてルートエンティティを粒度とするとよい．
 
 参考：
 
@@ -114,12 +114,21 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・ルートエンティティ
 
-イベント駆動方式でアプリケーションを連携した場合に，これのルートエンティティをサービスの単位とする．従来のリクエスト方式でアプリケーションを連携する場合のルートエンティティを使用することはアンチパターンである．
+イベント駆動方式でアプリケーションを連携した場合に，これのルートエンティティをサービスの単位とする．従来のリクエスト方式でアプリケーションを連携する場合のルートエンティティを使用することはアンチパターンである．最良な解決策として，サービスのオブジェクトの状態管理方式として，従来のデータに着目したステートソーシングではなく，振る舞いに着目したイベントソーシングを使用する必要がある．また，各サービスを名詞ではなく動詞で命名するとよい．その他，各サービスでDBを完全に独立させることや，SAGAパターンを使用すること，がある．
 
 参考：
 
-- https://scrapbox.io/kawasima/Microservices%E5%88%86%E5%89%B2%E5%A4%A7%E5%85%A8
-- https://www.michaelnygard.com/blog/2017/12/the-entity-service-antipattern/
+- https://www.koslib.com/posts/entity-services-anti-pattern/
+- https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
+- https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
+
+<br>
+
+### サービスのオブジェクトの状態管理奉方式
+
+#### ・イベントソーシング
+
+#### ・ステートソーシング
 
 <br>
 
@@ -143,13 +152,13 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・イベント駆動方式
 
-サービス間では，RESTfulAPIを用いた同期通信を実行する．
+サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
 
 ![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
 
 #### ・リクエストリプライ方式
 
-サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
+サービス間では，RESTfulAPIを用いた同期通信を実行する．
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
 
