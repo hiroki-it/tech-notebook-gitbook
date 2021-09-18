@@ -93,7 +93,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-#### ・サブドメイン，境界付けられたコンテキスト
+#### ・サブドメイン，境界付けられたコンテキストによる分割
 
 サブドメインをサービスの粒度とする．ここでは，解決領域となる境界付けられたコンテキストがサブドメインの中に一つしか含まれていない場合を指しており，境界付けられたコンテキストをサービスを粒度して考えても良い．サブドメインを粒度とすることを第一段階として，さらに小さな粒度に分割するために，次の段階としてルートエンティティを粒度とするとよい．
 
@@ -112,7 +112,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
 
-#### ・ルートエンティティ
+#### ・ルートエンティティによる分割
 
 イベント駆動方式でアプリケーションを連携した場合に，これのルートエンティティをサービスの単位とする．従来のリクエスト方式でアプリケーションを連携する場合のルートエンティティを使用することはアンチパターンである．最良な解決策として，サービスのオブジェクトの状態管理方式として，従来のデータに着目したステートソーシングではなく，振る舞いに着目したイベントソーシングを使用する必要がある．また，各サービスを名詞ではなく動詞で命名するとよい．その他，各サービスでDBを完全に独立させることや，SAGAパターンを使用すること，がある．
 
@@ -124,7 +124,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-### サービスのオブジェクトの状態管理奉方式
+### サービスのオブジェクトの状態管理方式
 
 #### ・イベントソーシング
 
@@ -161,12 +161,6 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 サービス間では，RESTfulAPIを用いた同期通信を実行する．
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
-
-<br>
-
-### サービス間の通信
-
-<br>
 
 <br>
 
