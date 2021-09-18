@@ -59,7 +59,8 @@
   * [▶ ︎SQL](public/backend_database_mysql.md)
 * ネットワーク
   * 構造
-    * [▶ ︎ネットワーク構造](public/infrastructure_network_internet.md)
+    * [▶ ︎ネットワーク構造](public/infrastructure_network_structure.md)
+    * [▶ ︎OSI参照モデル／TCP階層モデル](public/infrastructure_network_osi_tcp.md)
   * セキュリティ
     * [▶ ︎サイバー攻撃](public/infrastructure_network_cyber_attacks.md)
     * [▶ ︎通信データの暗号化技術](public/infrastructure_network_encryption_technology.md)
