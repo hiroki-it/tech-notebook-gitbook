@@ -1003,12 +1003,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1.1" data-path="infrastructure_network_internet.html">
+        <li class="chapter " data-level="1.10.1.1" data-path="infrastructure_network_structure.html">
             
-                <a href="infrastructure_network_internet.html">
+                <a href="infrastructure_network_structure.html">
             
                     
                     ▶ ︎ネットワーク構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="infrastructure_network_osi_tcp.html">
+            
+                <a href="infrastructure_network_osi_tcp.html">
+            
+                    
+                    ▶ ︎OSI参照モデル／TCP階層モデル
             
                 </a>
             
@@ -2053,7 +2066,7 @@ COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
 # nginx&#x3092;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x8D77;&#x52D5;
 CMD [&quot;/usr/sbin/nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot;]
 
-# &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x89E3;&#x653E;&#x3059;&#x308B;&#xFF0E;&#x4ED6;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x8EE2;&#x9001;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;
+# &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x958B;&#x653E;&#x3092;&#x660E;&#x793A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306F;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x306E;&#x6A5F;&#x80FD;&#x3057;&#x304B;&#x306A;&#x3044;&#xFF0E;
 EXPOSE 80
 </code></pre>
 <table>
@@ -2086,7 +2099,7 @@ EXPOSE 80
 </tr>
 <tr>
 <td><strong><code>EXPOSE</code></strong></td>
-<td>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x89E3;&#x653E;&#x3059;&#x308B;&#xFF0E;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3067;&#x306F;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4ED6;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x8EE2;&#x9001;&#x306E;&#x307F;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</td>
+<td>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x958B;&#x653E;&#x3092;&#x660E;&#x793A;&#x3059;&#x308B;&#xFF0E;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x958B;&#x653E;&#x305B;&#x305A;&#xFF0C;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x5229;&#x7528;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;&#x306E;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3057;&#x3066;&#x306E;&#x5F79;&#x5272;&#x3057;&#x304B;&#x306A;&#x3044;&#xFF0E;&#x5B9F;&#x969B;&#x306B;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x958B;&#x653E;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;docker&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/engine/reference/builder/#expose" target="_blank">https://docs.docker.com/engine/reference/builder/#expose</a><br>&#x307E;&#x305F;&#x52A0;&#x3048;&#x3066;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x81EA;&#x4F53;&#x304C;&#x547D;&#x4EE4;&#x3092;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x591A;&#x304F;&#x306E;&#x5834;&#x5408;&#x6A19;&#x6E96;&#x3067;&#x3053;&#x308C;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#xFF08;&#x4F8B;&#xFF1A;PHP-FPM&#x3067;&#x306F;&#xFF0C;<code>/usr/local/etc/www.conf.default</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;<code>/usr/local/etc/php-fpm.d/www.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#xFF0C;<code>listen = 127.0.0.1:9000</code>&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x3042;&#x308B;&#xFF09;</td>
 </tr>
 <tr>
 <td><strong><code>ENTRYPOINT</code></strong></td>
@@ -2595,6 +2608,16 @@ VOLUME /myvol
 <h3 id="&#x4E00;&#x6642;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><a name="&#x4E00;&#x6642;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x4E00;&#x6642;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x6642;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</h3>
 <p><br></p>
 <h2 id="04-&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;"><a name="04-&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;" class="plugin-anchor" href="#04-&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;</h2>
+<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<h4 id="&#x30FB;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><a name="&#x30FB;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30FB;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</h4>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3092;<code>publish</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ docker run -d -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> --publish<span class="token operator">=</span><span class="token number">8080</span>:80 <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;<span class="token operator">&gt;</span> /bin/bash
+</code></pre>
+<h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;&#x516C;&#x958B;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;&#x516C;&#x958B;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;&#x516C;&#x958B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;&#x516C;&#x958B;</h4>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;&#x516C;&#x958B;&#x3092;<code>expose</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x306A;&#x304A;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x5408;&#x308F;&#x305B;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ docker run -d -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> --expose<span class="token operator">=</span><span class="token number">80</span> <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;<span class="token operator">&gt;</span> /bin/bash
+</code></pre>
+<p><br></p>
 <h3 id="bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><a name="bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;" class="plugin-anchor" href="#bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</h3>
 <h4 id="&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><a name="&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;</h4>
 <p>&#x8907;&#x6570;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x63A5;&#x7D9A;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3092;&#x7269;&#x7406;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x9593;&#x3092;&#xFF0C;&#x4EEE;&#x60F3;&#x30D6;&#x30EA;&#x30C3;&#x30B8;&#x3092;&#x7528;&#x3044;&#x3066;bridge&#x63A5;&#x7D9A;&#x3059;&#x308B;&#xFF0E;&#x307B;&#x3068;&#x3093;&#x3069;&#x306E;&#x5834;&#x5408;&#xFF0C;&#x3053;&#x306E;&#x65B9;&#x6CD5;&#x3092;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
@@ -2604,7 +2627,7 @@ VOLUME /myvol
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x9806;&#x756A;</th>
+<th style="text-align:left">&#x51E6;&#x7406;&#x5834;&#x6240;</th>
 <th style="text-align:left">&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x6D41;&#x308C;</th>
 <th style="text-align:left">&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x4F8B;</th>
 <th>&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#x4F8B;</th>
@@ -2612,45 +2635,57 @@ VOLUME /myvol
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><strong>4</strong></td>
-<td style="text-align:left">WWW&#x30B3;&#x30F3;&#x30C6;&#x30CA;</td>
-<td style="text-align:left">&#x30FB;<code>127.0.0.1</code>&#xFF08;localhost&#xFF09;<br>&#x30FB;hostname&#x306E;&#x8A2D;&#x5B9A;&#x5024;</td>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x30D7;&#x30ED;&#x30BB;&#x30B9;</td>
+<td style="text-align:left">&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;</td>
+<td style="text-align:left"></td>
 <td><code>:80</code></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:left"></td>
 <td style="text-align:left">&#x2191;</td>
 <td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>3</strong></td>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;</td>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;</td>
+<td style="text-align:left">&#x30FB;<code>http://127.0.0.1</code><br>&#x30FB;<code>http://<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>docker&#x306E;hostname&#x306E;&#x8A2D;&#x5B9A;&#x5024;</span><span class="token punctuation">&gt;</span></span></code></td>
+<td><code>:80</code></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x2191;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;OS</td>
 <td style="text-align:left">&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</td>
-<td style="text-align:left"><code>172.XX.XX.XX</code></td>
+<td style="text-align:left"><code>http://172.XX.XX.XX</code></td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:left"></td>
 <td style="text-align:left">&#x2191;</td>
 <td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>2</strong></td>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;OS</td>
 <td style="text-align:left">&#x4EEE;&#x60F3;&#x30D6;&#x30EA;&#x30C3;&#x30B8;</td>
 <td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:left"></td>
 <td style="text-align:left">&#x2191;</td>
 <td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>1</strong></td>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;</td>
 <td style="text-align:left">&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x306E;NIC&#xFF08; Ethernet&#x30AB;&#x30FC;&#x30C9;&#xFF09;</td>
-<td style="text-align:left"><code>127.0.0.1</code>&#xFF08;localhost&#xFF09;</td>
+<td style="text-align:left"><code>http://127.0.0.1</code></td>
 <td><code>:8080</code></td>
 </tr>
 </tbody>
@@ -2664,9 +2699,9 @@ ae25b9b7740b        bridge                  bridge              <span class="tok
 aeef782b227d        tech-notebook_default   bridge              <span class="token builtin class-name">local</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3078;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x5272;&#x308A;&#x5F53;&#x3066;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3078;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x5272;&#x308A;&#x5F53;&#x3066;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3078;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x5272;&#x308A;&#x5F53;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3078;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x5272;&#x308A;&#x5F53;&#x3066;</h4>
-<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>etc/hosts</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>--hostname</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x547D;&#x540D;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#x305D;&#x306E;&#x540D;&#x524D;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>etc/hosts</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#xFF0E;<code>hostname</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x547D;&#x540D;&#x3057;&#x3066;&#x3044;&#x308C;&#x3070;&#x305D;&#x306E;&#x540D;&#x524D;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x306A;&#x6587;&#x5B57;&#x5217;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-shell">$ docker run -d -it --hostname <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;<span class="token operator">&gt;</span> /bin/bash
+<pre class="language-"><code class="lang-shell">$ docker run -d -it --hostname <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> --publish<span class="token operator">=</span><span class="token number">8080</span>:80 <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;<span class="token operator">&gt;</span> /bin/bash
 $ docker <span class="token builtin class-name">exec</span> -it <span class="token operator">&lt;</span>&#x8D77;&#x52D5;&#x4E2D;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> /bin/bash
 
 <span class="token punctuation">[</span>root@<span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span>:/<span class="token punctuation">]</span> <span class="token function">cat</span> /etc/hosts
@@ -2843,7 +2878,7 @@ $ docker logs --follow<span class="token operator">=</span>true --tail<span clas
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"next":{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎Docker Compose","level":"1.14.1.1.3","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","articles":[]},{"title":"▶ ︎Kubernetes","level":"1.14.1.1.4","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_kubernetes.md","ref":"public/infrastructure_virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"▶ ︎Docker Swarm","level":"1.14.1.1.5","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2021-09-07T14:13:58.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-17T01:00:31.208Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"next":{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},"previous":{"title":"コンテナ","level":"1.14.1.1","depth":3,"ref":"","articles":[{"title":"▶ ︎コンテナ","level":"1.14.1.1.1","depth":4,"path":"public/infrastructure_virtualization_container.md","ref":"public/infrastructure_virtualization_container.md","articles":[]},{"title":"▶ ︎コンテナオーケストレーション","level":"1.14.1.1.2","depth":4,"path":"public/infrastructure_virtualization_container_orchestration.md","ref":"public/infrastructure_virtualization_container_orchestration.md","articles":[]},{"title":"▶ ︎Docker Compose","level":"1.14.1.1.3","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_compose.md","articles":[]},{"title":"▶ ︎Kubernetes","level":"1.14.1.1.4","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_kubernetes.md","ref":"public/infrastructure_virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"▶ ︎Docker Swarm","level":"1.14.1.1.5","depth":4,"path":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","ref":"public/infrastructure_virtualization_container_orchestration_docker_swarm.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_virtualization_container.md","mtime":"2021-09-18T05:22:48.856Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-18T10:10:40.268Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

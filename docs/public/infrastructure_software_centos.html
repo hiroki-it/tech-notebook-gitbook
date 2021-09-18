@@ -1001,12 +1001,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1.1" data-path="infrastructure_network_internet.html">
+        <li class="chapter " data-level="1.10.1.1" data-path="infrastructure_network_structure.html">
             
-                <a href="infrastructure_network_internet.html">
+                <a href="infrastructure_network_structure.html">
             
                     
                     ▶ ︎ネットワーク構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="infrastructure_network_osi_tcp.html">
+            
+                <a href="infrastructure_network_osi_tcp.html">
+            
+                    
+                    ▶ ︎OSI参照モデル／TCP階層モデル
             
                 </a>
             
@@ -1987,6 +2000,13 @@
 <td style="text-align:left">-</td>
 <td>-</td>
 </tr>
+<tr>
+<td>tar</td>
+<td></td>
+<td></td>
+<td></td>
+<td style="text-align:left"></td>
+</tr>
 </tbody>
 </table>
 <h4 id="&#x30FB;windows&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;windows&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;windows&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Windows&#x306E;&#x5834;&#x5408;</h4>
@@ -2081,13 +2101,15 @@ $ <span class="token function">which</span> python3
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x3092;<code>grep</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x6E21;&#x3057;&#xFF0C;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x691C;&#x7D22;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5185;&#x3067;&#xFF0C;&#x3055;&#x3089;&#x306B;&#x6587;&#x5B57;&#x5217;&#x3092;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">find</span> /* <span class="token punctuation">\</span>
+  -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;kill&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>kill</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ <span class="token function">sudo</span> pgrep -f <span class="token operator">&lt;</span>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
+<pre class="language-"><code class="lang-shell">$ <span class="token function">sudo</span> pgrep <span class="token punctuation">\</span>
+  -f <span class="token operator">&lt;</span>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
 </code></pre>
 <h4 id="&#x30FB;awk&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="&#x30FB;awk&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#&#x30FB;awk&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;awk&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51FA;&#x529B;&#x7D50;&#x679C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;<code>awk</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
@@ -2412,8 +2434,14 @@ foo.txt: ASCII text, with CR line terminators<span class="token operator">&lt;</
 <pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30D1;&#x30FC;&#x30DF;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x30A8;&#x30E9;&#x30FC;&#x306A;&#x3069;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x7834;&#x68C4;&#x3057;&#x3066;&#x691C;&#x7D22;&#xFF0E;</span>
 $ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span> <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /dev/null
 </code></pre>
-<h4 id="&#x30FB;-name&#xFF0C;-type"><a name="&#x30FB;-name&#xFF0C;-type" class="plugin-anchor" href="#&#x30FB;-name&#xFF0C;-type"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-name&#xFF0C;-type</h4>
-<p>&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x3067;&#xFF0C; example &#x3068;&#x3044;&#x3046;&#x6587;&#x5B57;&#x3092;&#x3082;&#x3061;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;-name"><a name="&#x30FB;-name" class="plugin-anchor" href="#&#x30FB;-name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-name</h4>
+<p>&#x540D;&#x524D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f
+</code></pre>
+<p>&#x540D;&#x524D;&#x304C; dir &#x3067;&#x7D42;&#x308F;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*dir&quot;</span> -type d
+</code></pre>
+<p>&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x3067;&#xFF0C; &lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt; &#x3068;&#x3044;&#x3046;&#x6587;&#x5B57;&#x3092;&#x3082;&#x3061;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
@@ -2477,6 +2505,32 @@ $ <span class="token function">find</span> /* -type f <span class="token operato
 <h4 id="&#x30FB;-o-pipefail"><a name="&#x30FB;-o-pipefail" class="plugin-anchor" href="#&#x30FB;-o-pipefail"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-o pipefail</h4>
 <p>&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#xFF08;<code>|</code>&#xFF09;&#x5185;&#x306E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9014;&#x4E2D;&#x3067;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x5834;&#x5408;&#xFF0C;&#x305D;&#x306E;&#x7D42;&#x4E86;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x51FA;&#x529B;&#x3057;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x51E6;&#x7406;&#x3092;&#x7D42;&#x4E86;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell">$ <span class="token builtin class-name">set</span> -o pipefail
+</code></pre>
+<p><br></p>
+<h3 id="tar"><a name="tar" class="plugin-anchor" href="#tar"><i class="fa fa-link" aria-hidden="true"></i></a>tar</h3>
+<h4 id="&#x30FB;-x"><a name="&#x30FB;-x" class="plugin-anchor" href="#&#x30FB;-x"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-x</h4>
+<p>&#x5727;&#x7E2E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x89E3;&#x51CD;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">tar</span> -xf foo.tar.gz
+</code></pre>
+<h4 id="&#x30FB;-f"><a name="&#x30FB;-f" class="plugin-anchor" href="#&#x30FB;-f"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-f</h4>
+<p>&#x5727;&#x7E2E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x4ED8;&#x3051;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30C6;&#x30FC;&#x30D7;&#x30C9;&#x30E9;&#x30A4;&#x30D6;&#x304C;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">tar</span> -xf foo.tar.gz
+</code></pre>
+<h4 id="&#x30FB;-v"><a name="&#x30FB;-v" class="plugin-anchor" href="#&#x30FB;-v"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-v</h4>
+<p>&#x89E3;&#x51CD;&#x4E2D;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#xFF0F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x751F;&#x6210;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">tar</span> -xvf foo.tar.gz
+
+./
+./opt/
+./opt/foo/
+./opt/foo/bar/
+./opt/foo/bar/install.sh
+./opt/foo/bar/baz/
+./opt/foo/bar/baz/init.sh
+</code></pre>
+<h4 id="&#x30FB;-g"><a name="&#x30FB;-g" class="plugin-anchor" href="#&#x30FB;-g"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-g</h4>
+<p>gzip&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x5727;&#x7E2E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x89E3;&#x51CD;&#x3059;&#x308B;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x6A19;&#x6E96;&#x3067;&#x6709;&#x52B9;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x4ED8;&#x3051;&#x306A;&#x3044;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">tar</span> -zxf foo.tar.gz
 </code></pre>
 <p><br></p>
 <h3 id="unlink"><a name="unlink" class="plugin-anchor" href="#unlink"><i class="fa fa-link" aria-hidden="true"></i></a>unlink</h3>
@@ -3205,7 +3259,7 @@ $ pyenv <span class="token function">which</span> python
 <p>&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30BF;&#x30D7;&#x30EA;&#x30BF;</h4>
 <p>&#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<h4 id=""><a name="" class="plugin-anchor" href="#"><i class="fa fa-link" aria-hidden="true"></i></a><br></h4>
+<p><br></p>
 <h3 id="&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;"><a name="&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8A00;&#x8A9E;&#x306E;&#x7A2E;&#x985E;</h3>
 <p>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x8A00;&#x8A9E;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#xFF0C;&#x8A00;&#x8A9E;&#x30D7;&#x30ED;&#x30BB;&#x30C3;&#x30B5;&#x306B;&#x3088;&#x3063;&#x3066;&#x6A5F;&#x68B0;&#x8A9E;&#x306B;&#x5909;&#x63DB;&#x3055;&#x308C;&#x305F;&#x5F8C;&#xFF0C;CPU&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x3057;&#x3066;&#xFF0C;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x66F8;&#x304B;&#x308C;&#x305F;&#x69D8;&#x3005;&#x306A;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x578B;&#x8A00;&#x8A9E;</h4>
@@ -3523,7 +3577,7 @@ Enforcing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-09-07T14:14:26.359Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-17T01:00:31.208Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"next":{"title":"ハードウェアとのコミュニケーション","level":"1.11.4","depth":2,"ref":"","articles":[{"title":"▶ ︎機械語と進数","level":"1.11.4.1","depth":3,"path":"public/infrastructure_software_machine_language_and_radix.md","ref":"public/infrastructure_software_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"CentOS","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.11.3.1","depth":3,"path":"public/infrastructure_software_centos.md","ref":"public/infrastructure_software_centos.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_software_centos.md","mtime":"2021-09-16T08:27:35.736Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-18T10:10:40.268Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
