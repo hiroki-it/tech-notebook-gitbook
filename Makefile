@@ -1,5 +1,5 @@
 install:
-	gitbook install
+	npm install
 
 build:
 	gitbook build . docs
