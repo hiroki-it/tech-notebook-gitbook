@@ -213,6 +213,17 @@ Host <接続名２>
     IdentityFile <秘密へのパス>
 ```
 
+リポジトリに対して```push```を実行してエラーが出た場合，異なる接続名が選ばれている場合は，URLの『接続名』の部分が正しく設定されているかを確認する．
+
+```bash
+$ git push                                                                   
+ERROR: Permission to hiroki-it/*****.git denied to Foo.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
 <br>
 
 ## 03. Gitのコマンドメモ

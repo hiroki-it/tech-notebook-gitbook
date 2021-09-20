@@ -10,30 +10,61 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ## 01. npmによるパッケージの管理
 
-### ```package.json```ファイルの実装
+### init
 
-#### ・バージョンを定義
+#### ・```package.json```ファイルの作成
+
+プロジェクトの```package.json```ファイルを作成する．
+
+```bash
+$ npm init
+```
+
+<br>
+
+#### ・```package.json```ファイルの構造
 
 ```shell
 {
   # npmパッケージ名．全てのnpmパッケージの中で，一意の名前でなければならない．
-  "name": "foo-package",
-  "description": "foo package ever",
-  "license": "MIT",
+  "name": "tech-notebook-gitbook",
   "version": "1.0.0",
-  "bin": "./cli.js",
+  "description": "tech-notebook-gitbook",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  # 本番環境と開発環境で依存するパッケージ
+  "directories": {},
+  # 本番環境と開発環境で依存するパッケージ名．パッケージ名は一意に識別できる．
   "dependencies": {
-    "axios": "^0.18.0"
+    "gitbook-plugin-advanced-emoji": "^0.2.2",
+    "gitbook-plugin-back-to-top-button": "^0.1.4",
+    "gitbook-plugin-anchors": "^0.7.1",
+    "gitbook-plugin-ga": "^1.0.1",
+    "gitbook-plugin-intopic-toc": "^1.1.1",
+    "gitbook-plugin-prism": "^2.4.0",
+    "gitbook-plugin-copy-code-button": "^0.0.2",
+    "gitbook-plugin-sunlight-highlighter": "^0.4.3",
+    "gitbook-plugin-toolbar": "^0.6.0",
+    "gitbook-plugin-search-pro-fixed": "^1.0.1",
+    "gitbook-plugin-github-buttons": "^3.0.0",
+    "gitbook-plugin-hide-published-with": "^1.0.3"
   },
-  # 開発環境のみ依存するパッケージ
-  "devDependencies": {
-    "eslint": "^5.14.1"
-  }
+  # 開発環境のみ依存するパッケージ名．
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroki-it/tech-notebook-gitbook.git"
+  },
+  # 著者名
+  "author": {
+    "name": "Hiroki Hasegawa",
+    "email": "hasegawafeedshop@gmail.com",
+    "url": "https://github.com/hiroki-it"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiroki-it/tech-notebook-gitbook/issues"
+  },
+  "homepage": "https://github.com/hiroki-it/tech-notebook-gitbook"
 }
 ```
 
@@ -41,7 +72,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### install
 
-#### ・インストール
+#### ・オプションなし
 
 インストールされていないパッケージをインストールする．
 
@@ -49,7 +80,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 $ npm install
 ```
 
-#### ・インストール時の実行権限を無視する
+#### ・--force
 
 パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
 
@@ -57,7 +88,7 @@ $ npm install
 $ npm install --force
 ```
 
-#### ・package.jsonの```dependencies```キーに書き込む
+#### ・--save
 
 デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
 
@@ -69,7 +100,7 @@ $ npm install --save
 
 ### update
 
-#### ・インストール，アップデート
+#### ・オプションなし
 
 インストールされていないパッケージをインストールする．また，バージョン定義をもとに更新可能なパッケージを更新する．
 
@@ -80,6 +111,8 @@ $ npm update
 <br>
 
 ### run
+
+#### ・オプションなし
 
 ユーザが定義したエイリアス名のコマンドを実行する．
 
@@ -108,7 +141,7 @@ $ npm run <エイリアス名>
 
 ### NODE_OPTIONS
 
-#### ・メモリ上限をなくす
+メモリ上限を設定する．
 
 ```shell
 $ export NODE_OPTIONS="--max-old-space-size=2048"

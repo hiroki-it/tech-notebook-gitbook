@@ -80,7 +80,7 @@ $ composer dump-autoload
 
 ### require
 
-#### ・```composer.json```ファイルにパッケージを追加
+#### ・オプションなし
 
 パッケージ名を```composer.json```ファイルを書き込む．インストールは行わない．コマンドを使用せずに自分で実装しても良い．
 
@@ -92,7 +92,7 @@ $ composer require <パッケージ名>:^x.x
 
 ### install
 
-#### ・インストール
+#### ・オプションなし
 
 初めてパッケージをインストールする時，```composer.lock```ファイルにあるパッケージを全てインストールする．```composer.lock```ファイルのおかげで，リポジトリの利用者が，```composer install```の実行時に，共通のバージョンのパッケージをインストールできる．
 
@@ -100,7 +100,7 @@ $ composer require <パッケージ名>:^x.x
 $ composer install 
 ```
 
-####  ・処理ログを表示する
+####  ・-vvv
 
 コマンド処理中のログを表示する
 
@@ -108,7 +108,7 @@ $ composer install
 $ composer install -vvv
 ```
 
-####  ・--no-devを除いてインストール
+####  ・--no-dev
 
 require-devタグ内のパッケージは除いてインストール
 
@@ -116,7 +116,7 @@ require-devタグ内のパッケージは除いてインストール
 $ composer install --no-dev
 ```
 
-#### ・高速インストール
+#### ・--prefer-dist
 
 Composerの配布サイトからインストールする．```prefer-source```オプションを使用するよりも高速でインストールできる．デフォルトでdistを使用するため，実際は宣言しなくても問題ない．
 
@@ -124,7 +124,7 @@ Composerの配布サイトからインストールする．```prefer-source```�
 $ composer install --prefer-dist
 ```
 
-#### ・開発者用インストール
+#### ・--prefer-source
 
 GitHubのComposerリポジトリからインストールする．Composerの開発者用である．
 
@@ -136,7 +136,7 @@ $ composer install --prefer-source
 
 ### update
 
-#### ・追加インストールと更新
+#### ・オプションなし
 
 パッケージ名を```composer.json```ファイルを元にして，インストールされていないパッケージをインストールし，さらにバージョン定義をもとに更新可能なパッケージを更新する．また，```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．
 
@@ -144,7 +144,7 @@ $ composer install --prefer-source
 $ composer update
 ```
 
-####  ・処理ログを表示する
+####  ・-vvv
 
 コマンド処理中のログを表示する
 
@@ -152,7 +152,7 @@ $ composer update
 $ composer install -vvv
 ```
 
-####  ・メモリ上限をなくしてインストール
+####  ・COMPOSER_MEMORY_LIMIT=-1
 
 phpのメモリ上限を無しにして，任意のcomposerコマンドを実行する．phpバイナリファイルを使用する．Dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．．
 
@@ -164,7 +164,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 ### その他のコマンド
 
-#### ・キャッシュを削除
+#### ・clear-cache
 
 インストール時に生成されたキャッシュを削除する．
 
@@ -172,7 +172,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 $ composer clear-cache
 ```
 
-#### ・ユーザ定義のコマンド
+#### ・エイリアス名
 
 ユーザが定義したエイリアス名のコマンドを実行する．
 

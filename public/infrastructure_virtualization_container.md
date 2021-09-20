@@ -195,7 +195,7 @@ FROM centos:8
 # ubuntu上に，nginxをインストール
 RUN yum update -y \
    && yum install -y \
-　　    nginx
+     nginx
 
 # ホストOSの設定ファイルを，コンテナ側の指定ディレクトリにコピー
 COPY infra/docker/web/nginx.conf /etc/nginx/nginx.conf
