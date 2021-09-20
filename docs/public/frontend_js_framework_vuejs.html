@@ -2074,98 +2074,98 @@
 <p>&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306F;&#xFF0C;View&#x5C64;&#x3068;&#x3057;&#x3066;&#x306E;<code>template</code>&#x30BF;&#x30B0;&#xFF0C;ViewModel&#x5C64;&#x3068;&#x3057;&#x3066;&#x306E;<code>script</code>&#x30BF;&#x30B0;&#x3068;<code>style</code>&#x30BF;&#x30B0;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;&#x5358;&#x4E00;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x30BF;&#x30B0;&#x3067;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x706B;&#x3057;&#x305F;&#x6642;&#xFF0C;&#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x304B;&#x3089;&#xFF0C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306B;&#x7D10;&#x3065;&#x3044;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token comment">&lt;!----------------------------------------
-  // View&#x5C64;
-  // &#x30FB;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;
-  // &#x30FB;&#x3053;&#x3053;&#x306B;&#xFF0C;&#x51FA;&#x529B;&#x3057;&#x305F;&#x3044;HTML&#x3084;TWIG&#x3092;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E; 
-  ------------------------------------------&gt;</span>
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+  <span class="token comment">// View&#x5C64;</span>
+  <span class="token comment">// &#x30FB;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</span>
+  <span class="token comment">// &#x30FB;&#x3053;&#x3053;&#x306B;&#xFF0C;&#x51FA;&#x529B;&#x3057;&#x305F;&#x3044;HTML&#x3084;TWIG&#x3092;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E; </span>
+  <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">&gt;</span>
 
-  <span class="token comment">&lt;!-- 
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 
   &#x30FB;&#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x30BF;&#x30B0;&#x3092;&#x8A18;&#x8FF0; 
   &#x30FB;&#x4E0B;&#x65B9;&#x306E;data&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5024;&#x3092;props&#x306B;&#x6E21;&#x3059;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#xFF0E;
-  --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>v-foo-component-4</span>
-          <span class="token attr-name">:aaa</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>a<span class="token punctuation">&quot;</span></span>
-          <span class="token attr-name">:bbb</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>b<span class="token punctuation">&quot;</span></span>
-  <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-foo-component-4</span><span class="token punctuation">&gt;</span></span>
+  <span class="token operator">--</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>v<span class="token operator">-</span>foo<span class="token operator">-</span>component<span class="token operator">-</span><span class="token number">4</span>
+          <span class="token operator">:</span>aaa<span class="token operator">=</span><span class="token string">&quot;a&quot;</span>
+          <span class="token operator">:</span>bbb<span class="token operator">=</span><span class="token string">&quot;b&quot;</span>
+  <span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>v<span class="token operator">-</span>foo<span class="token operator">-</span>component<span class="token operator">-</span><span class="token number">4</span><span class="token operator">&gt;</span>
 
-  <span class="token comment">&lt;!-- &#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3; --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo.isOk()<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token comment">&lt;!-- &#x5B6B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x30BF;&#x30B0;&#x3092;&#x8A18;&#x8FF0; --&gt;</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>v-foo-component-5</span>
-            <span class="token attr-name">:ccc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>c<span class="token punctuation">&quot;</span></span>
-            <span class="token attr-name">:ddd</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>d<span class="token punctuation">&quot;</span></span>
-    <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-foo-component-5</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> &#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3; <span class="token operator">--</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>template v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;foo.isOk()&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> &#x5B6B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x30BF;&#x30B0;&#x3092;&#x8A18;&#x8FF0; <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>v<span class="token operator">-</span>foo<span class="token operator">-</span>component<span class="token operator">-</span><span class="token number">5</span>
+            <span class="token operator">:</span>ccc<span class="token operator">=</span><span class="token string">&quot;c&quot;</span>
+            <span class="token operator">:</span>ddd<span class="token operator">=</span><span class="token string">&quot;d&quot;</span>
+    <span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>v<span class="token operator">-</span>foo<span class="token operator">-</span>component<span class="token operator">-</span><span class="token number">5</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-  //=============
-  // ViewModel&#x5C64;
-  //=============
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token comment">//=============</span>
+  <span class="token comment">// ViewModel&#x5C64;</span>
+  <span class="token comment">//=============</span>
 
-  // &#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x4EE5;&#x964D;&#x3067;&#x306F;&#xFF0C;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;
-  module.exports = {
+  <span class="token comment">// &#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x4EE5;&#x964D;&#x3067;&#x306F;&#xFF0C;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x751F;&#x6210;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</span>
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
 
-    /* props&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;
+    <span class="token comment">/* props&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;
     &#x30FB;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x307E;&#x305F;&#x306F;ajax&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304B;&#x3089;props&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x306B;&#x5024;&#x304C;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x308B;&#xFF0E;
-    */
-    props: {
-      &quot;criteria&quot;: {
-        type: Object,
-        required: true,
-      },
+    */</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;criteria&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+        required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      &quot;foo&quot;: {
-        type: Object,
-        required: true,
-      }
-    },
+      <span class="token string">&quot;foo&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+        required<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    /* data&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;
+    <span class="token comment">/* data&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;
     &#x30FB;&#x7570;&#x306A;&#x308B;&#x5834;&#x6240;&#x306B;&#x3042;&#x308B;&#x540C;&#x3058;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306F;&#x7570;&#x306A;&#x308B;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304B;&#x3089;&#x306A;&#x308B;&#xFF0E;
     &#x30FB;&#x7570;&#x306A;&#x308B;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306F;&#x7570;&#x306A;&#x308B;&#x5024;&#x3092;&#x3082;&#x3064;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3057;&#x3066;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;
-    */
-    data: function () {
-      return {
-        a: &quot;a&quot;,
-        b: &quot;b&quot;,
-        c: &quot;c&quot;,
-        d: &quot;d&quot;,
-      };
-    },
+    */</span>
+    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        a<span class="token operator">:</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">,</span>
+        b<span class="token operator">:</span> <span class="token string">&quot;b&quot;</span><span class="token punctuation">,</span>
+        c<span class="token operator">:</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">,</span>
+        d<span class="token operator">:</span> <span class="token string">&quot;d&quot;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    // &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;data&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30BB;&#x30C3;&#x30BF;&#x30FC;
-    method: {
-      updateCriteria(key, value) {
+    <span class="token comment">// &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;data&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30BB;&#x30C3;&#x30BF;&#x30FC;</span>
+    method<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">updateCriteria</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        /*
+        <span class="token comment">/*
         &#x30FB;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#xFF08;v-foo-component-1&#xFF09;&#x3068;&#x7D10;&#x3065;&#x304F;&#x51E6;&#x7406;
         &#x30FB;change&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306E;&#x767A;&#x706B;&#x3068;&#xFF0C;&#x3053;&#x308C;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x306B;&#x5F15;&#x6570;&#x3092;&#x6E21;&#x3059;&#xFF0E;
-        */
-        this.$emit(
-                &quot;change&quot;,
-                {&quot;criteria&quot;: localCriteria}
-        );
-      },
+        */</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span>
+                <span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span><span class="token string">&quot;criteria&quot;</span><span class="token operator">:</span> localCriteria<span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      // ajax&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;props&#x3092;&#x66F4;&#x65B0; 
-      updateProps(key, value) {
+      <span class="token comment">// ajax&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7528;&#x3044;&#x3066;&#xFF0C;props&#x3092;&#x66F4;&#x65B0; </span>
+      <span class="token function">updateProps</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-      },
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      // &#x300E;HTML&#x3067;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x30BF;&#x30B0;&#x540D;&#xFF1A;&#x3000;JS&#x3067;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x540D;&#x300F;
-      component: {
+      <span class="token comment">// &#x300E;HTML&#x3067;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x30BF;&#x30B0;&#x540D;&#xFF1A;&#x3000;JS&#x3067;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x540D;&#x300F;</span>
+      component<span class="token operator">:</span> <span class="token punctuation">{</span>
 
-        // &#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3068;&#x5B6B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;
-        &quot;v-foo-component-4&quot;: require(&quot;./xxx/xxx/xxx-4&quot;),
-        &quot;v-foo-component-5&quot;: require(&quot;./xxx/xxx/xxx-5&quot;),
-      },
-    }
-  }
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">// &#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3068;&#x5B6B;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;</span>
+        <span class="token string">&quot;v-foo-component-4&quot;</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;./xxx/xxx/xxx-4&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;v-foo-component-5&quot;</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;./xxx/xxx/xxx-5&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="3-&#x3010;model&#x5C64;&#x3011;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x306E;vuex&#xFF08;storejs&#xFF09;"><a name="3-&#x3010;model&#x5C64;&#x3011;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x306E;vuex&#xFF08;storejs&#xFF09;" class="plugin-anchor" href="#3-&#x3010;model&#x5C64;&#x3011;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x306E;vuex&#xFF08;storejs&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>(3) &#x3010;Model&#x5C64;&#x3011;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x3057;&#x3066;&#x306E;Vuex&#xFF08;<code>store.js</code>&#xFF09;</h4>
 <p>Vuex&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x964D;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x7167;&#x305B;&#x3088;&#xFF0E;</p>
@@ -2195,10 +2195,10 @@
 <h4 id="&#x30FB;v-on&#x3068;&#x306F;"><a name="&#x30FB;v-on&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;v-on&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-on:</code>&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vue&#x306B;&#x304A;&#x3051;&#x308B;emit&#x3068;v-on&#x306E;&#x9023;&#x643A;.png" alt="Vue&#x306B;&#x304A;&#x3051;&#x308B;emit&#x3068;v-on&#x306E;&#x9023;&#x643A;"></p>
 <p>View&#x5C64;&#xFF08;<code>template</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF09;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#xFF0C;ViewModel&#x5C64;&#xFF08;<code>script</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF09;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;<code>methods:</code>&#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;&#x3084;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;JS&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#xFF0C;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x706B;&#x3057;&#x305F;&#x6642;&#x70B9;&#x3067;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;<code>script</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF08;ViewModel&#x5C64;&#xFF09;&#x306E;&#x89AA;&#x5B50;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x6E21;&#x3057;&#x3067;&#x3042;&#x308B;&#x300C;Props Down, Events Up&#x300D;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x6982;&#x5FF5;&#x306A;&#x306E;&#x3067;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue">v-on:{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;}=&quot;{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;methods: &#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;}&quot;
+<pre class="language-"><code class="lang-vue">v<span class="token operator">-</span>on<span class="token operator">:</span><span class="token punctuation">{</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;<span class="token punctuation">}</span><span class="token operator">=</span><span class="token string">&quot;{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;methods: &#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;}&quot;</span>
 </code></pre>
 <p>&#x307E;&#x305F;&#x306F;&#xFF0C;&#x7701;&#x7565;&#x3057;&#x3066;&#xFF0C;</p>
-<pre class="language-"><code class="lang-vue">@:{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;}=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;
+<pre class="language-"><code class="lang-vue">@<span class="token operator">:</span><span class="token punctuation">{</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;<span class="token punctuation">}</span><span class="token operator">=</span><span class="token string">&quot;&lt;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&gt;&quot;</span>
 </code></pre>
 <p>&#x3067;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#xFF0E;</p>
 <h4 id="&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;button&#x30BF;&#x30B0;"><a name="&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;button&#x30BF;&#x30B0;" class="plugin-anchor" href="#&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;button&#x30BF;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-on:submit=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;</code>&#xFF0C;<code>button</code>&#x30BF;&#x30B0;</h4>
@@ -2236,27 +2236,27 @@
 <li>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x5185;&#x306E;<code>emit()</code>&#x304C;&#xFF0C;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;<code>search</code>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767A;&#x706B;&#x3055;&#x305B;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x7D10;&#x3065;&#x304F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;<code>result()</code>&#xFF09; &#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
 </ol>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token comment">&lt;!-- submit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x706B;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x7D10;&#x3065;&#x304F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B; --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name"><span class="token namespace">v-on:</span>submit.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>search()<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token comment">&lt;!-- submit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767A;&#x706B;&#x3055;&#x305B;&#x308B;button&#x30BF;&#x30B0;&#xFF0E;submit&#x306E;&#x5834;&#x5408;&#x306F;&#x7701;&#x7565;&#x53EF;&#x80FD; --&gt;</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>submit<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x691C;&#x7D22;&#x3059;&#x308B;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> submit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x706B;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x7D10;&#x3065;&#x304F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B; <span class="token operator">--</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>form v<span class="token operator">-</span>on<span class="token operator">:</span>submit<span class="token punctuation">.</span>prevent<span class="token operator">=</span><span class="token string">&quot;search()&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> submit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767A;&#x706B;&#x3055;&#x305B;&#x308B;button&#x30BF;&#x30B0;&#xFF0E;submit&#x306E;&#x5834;&#x5408;&#x306F;&#x7701;&#x7565;&#x53EF;&#x80FD; <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button type<span class="token operator">=</span><span class="token string">&quot;submit&quot;</span><span class="token operator">&gt;</span>&#x691C;&#x7D22;&#x3059;&#x308B;<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-  // &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-  var vm = new Vue({
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+  <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-    // &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;
-    methods: {
-      search() {
-        // &#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;search&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767A;&#x706B;&#x3055;&#x305B;&#x308B;&#xFF0E;
-        this.$emit(&quot;search&quot;)
-      },
-    }
-  })
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">// &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">search</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;search&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x767A;&#x706B;&#x3055;&#x305B;&#x308B;&#xFF0E;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;search&quot;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;v-onclick&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;"><a name="&#x30FB;v-onclick&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;v-onclick&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-on:click=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;</code></h4>
 <p>View&#x5C64;&#x3067;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x8D77;&#x304D;&#x305F;&#x6642;&#x70B9;&#x3067;&#x767A;&#x706B;&#x3057;&#xFF0C;ViewModel&#x5C64;&#x3067;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;</p>
@@ -2300,16 +2300,16 @@
 <h3 id="&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;"><a name="&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;</h3>
 <h4 id="&#x30FB;v-model&#x3068;&#x306F;"><a name="&#x30FB;v-model&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;v-model&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-model</code>&#x3068;&#x306F;</h4>
 <p>&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306F;&#xFF0C;<code>v-on:input=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;</code>&#x3068;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x4E8C;&#x3064;&#x306F;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
-    <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>input</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>input
+    type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+    v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">&quot;foo&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>input<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> 
-    <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
-    <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span>
-    <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>eventHandler<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>input</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>input 
+    type<span class="token operator">=</span><span class="token string">&quot;text&quot;</span>
+    <span class="token operator">:</span>value<span class="token operator">=</span><span class="token string">&quot;foo&quot;</span>
+    @input<span class="token operator">=</span><span class="token string">&quot;eventHandler&quot;</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>input<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
@@ -2559,50 +2559,50 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <h4 id="&#x30FB;mapactions&#x30D8;&#x30EB;&#x30D1;&#x30FC;"><a name="&#x30FB;mapactions&#x30D8;&#x30EB;&#x30D1;&#x30FC;" class="plugin-anchor" href="#&#x30FB;mapactions&#x30D8;&#x30EB;&#x30D1;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>mapActions</code>&#x30D8;&#x30EB;&#x30D1;&#x30FC;</h4>
 <p>&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;<code>methods: {}</code>&#x306B;&#xFF0C;<code>Vuex.Store()</code>&#x306E;<code>actions:{}</code>&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-vue"><span class="token comment">&lt;!-- &#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8; --&gt;</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  ...
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> &#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8; <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">...</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
 
-  // Vuex.Store()&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-  const store = require(&quot;./_store&quot;)
+  <span class="token comment">// Vuex.Store()&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;./_store&quot;</span><span class="token punctuation">)</span>
 
-  // Vuex.Store()&#x306E;getters&#xFF0C;mutations&#xFF0C;actions&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;
-  const mapGetters = require(&quot;vuex&quot;).mapGetters;
-  const mapActions = require(&quot;vuex&quot;).mapActions;
-  const mapMutaions = require(&quot;vuex&quot;).mapMutaions;
+  <span class="token comment">// Vuex.Store()&#x306E;getters&#xFF0C;mutations&#xFF0C;actions&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#xFF0E;</span>
+  <span class="token keyword">const</span> mapGetters <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;vuex&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mapGetters<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> mapActions <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;vuex&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mapActions<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> mapMutaions <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;vuex&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mapMutaions<span class="token punctuation">;</span>
 
 
-  module.exports = {
+  module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
 
-    // &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF08;&#x203B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x72B6;&#x614B;&#x306E;&#x5909;&#x66F4;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x305F;&#x304F;&#x306A;&#x3044;&#x3082;&#x306E;&#xFF09;
-    computed: {
+    <span class="token comment">// &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF08;&#x203B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x72B6;&#x614B;&#x306E;&#x5909;&#x66F4;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x305F;&#x304F;&#x306A;&#x3044;&#x3082;&#x306E;&#xFF09;</span>
+    computed<span class="token operator">:</span> <span class="token punctuation">{</span>
 
-      /* mapGetters&#x30D8;&#x30EB;&#x30D1;&#x30FC;&#xFF0E;
+      <span class="token comment">/* mapGetters&#x30D8;&#x30EB;&#x30D1;&#x30FC;&#xFF0E;
       Store&#x306E;Getter&#x3092;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x306E;computed:{}&#x306B;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#xFF0C;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0E;
-      */
-      ...mapGetters([
-        &quot;x-Function&quot;
-      ])
+      */</span>
+      <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token string">&quot;x-Function&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    },
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    // &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF08;&#x203B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x72B6;&#x614B;&#x306E;&#x5909;&#x66F4;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x305F;&#x3044;&#x3082;&#x306E;&#xFF09;
-    methods: {
+    <span class="token comment">// &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#xFF08;&#x203B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x72B6;&#x614B;&#x306E;&#x5909;&#x66F4;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x305F;&#x3044;&#x3082;&#x306E;&#xFF09;</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
 
-      // mapMutations&#x30D8;&#x30EB;&#x30D1;&#x30FC;
-      ...mapMutations([
-        &quot;y-Function&quot;
-      ]),
+      <span class="token comment">// mapMutations&#x30D8;&#x30EB;&#x30D1;&#x30FC;</span>
+      <span class="token operator">...</span><span class="token function">mapMutations</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token string">&quot;y-Function&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-      // mapActions&#x30D8;&#x30EB;&#x30D1;&#x30FC;
-      ...mapActions([
-        &quot;z-Function&quot;
-      ]),
-    }
-  }
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+      <span class="token comment">// mapActions&#x30D8;&#x30EB;&#x30D1;&#x30FC;</span>
+      <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token string">&quot;z-Function&quot;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h2 id="04-&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;"><a name="04-&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;" class="plugin-anchor" href="#04-&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;</h2>
@@ -2668,23 +2668,23 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x751F;&#x6210;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x691C;&#x8A3C;&#x4F8B;&#xFF0A;</strong></p>
 <p>beforeCreate&#x30D5;&#x30C3;&#x30AF;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;<code>data</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#xFF0C;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x751F;&#x6210;&#x5F8C;&#x306B;&#x6709;&#x52B9;&#x306B;&#x306A;&#x308B;&#x305F;&#x3081;&#xFF0C;beforeCreate&#x30D5;&#x30C3;&#x30AF;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x305A;&#xFF0C;<code>undefined</code>&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data(){
-    return{
-      hoge:&quot;Hiroki&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      hoge<span class="token operator">:</span><span class="token string">&quot;Hiroki&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  beforeCreate () {
-    console.log(this.name)
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">beforeCreate</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 undefined
@@ -2695,24 +2695,24 @@ undefined
 <p>&#x975E;&#x540C;&#x671F;&#x901A;&#x4FE1;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D6;&#x5F97;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x6642;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6E96;&#x5099;&#xFF0C;&#x306A;&#x3069;</p>
 <p><strong>&#xFF0A;&#x691C;&#x8A3C;&#x4F8B;&#xFF0A;</strong></p>
 <p>created&#x30D5;&#x30C3;&#x30AF;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;<code>data</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#xFF0C;Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x751F;&#x6210;&#x5F8C;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;created&#x30D5;&#x30C3;&#x30AF;&#x3067;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#xFF0C;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name:&quot;Hiroki&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span><span class="token string">&quot;Hiroki&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  created() {
-    console.log(this.name)
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 <span class="token string">&quot;Hiroki&quot;</span>
@@ -2721,24 +2721,24 @@ var vm = new Vue({
 <p>Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x304C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x308B;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x691C;&#x8A3C;&#x4F8B;&#xFF0A;</strong></p>
 <p>beforeMount&#x30D5;&#x30C3;&#x30AF;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;<code>data</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;<code>name</code>&#x5909;&#x6570;&#x3078;&#x306E;&#x5C55;&#x958B;&#x306F;&#xFF0C;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;beforeMount&#x30D5;&#x30C3;&#x30AF;&#x306E;&#x6BB5;&#x968E;&#x3067;&#x306F;&#x8981;&#x7D20;&#x81EA;&#x4F53;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x3066;&#x304A;&#x3089;&#x305A;&#xFF0C;&#x4F55;&#x3082;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name: &quot;&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  beforeMount() {
-    this.name = &quot;Hiroki&quot;
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">beforeMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 &#x8981;&#x7D20;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x305F;&#x3081;&#xFF0C;&#x4F55;&#x3082;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;
@@ -2749,109 +2749,109 @@ var vm = new Vue({
 <p>Vue.js&#x4EE5;&#x5916;&#x306E;&#x5916;&#x90E8;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#xFF0C;&#x691C;&#x7D22;&#x5B9F;&#x884C;&#x6642;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;&#x30DA;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x5B9F;&#x884C;&#x6642;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF0C;&#x306A;&#x3069;</p>
 <p><strong>&#xFF0A;&#x691C;&#x8A3C;&#x4F8B;&#xFF0A;</strong></p>
 <p>beforeMount&#x30D5;&#x30C3;&#x30AF;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#xFF0E;<code>data</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;<code>name</code>&#x5909;&#x6570;&#x3078;&#x306E;&#x5C55;&#x958B;&#x306F;&#xFF0C;element&#x3078;&#x306E;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x4E2D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;<code>mounted</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#xFF0C;&#x7A7A;&#x6587;&#x5B57;&#x304C;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name: &quot;&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  mounted() {
-    this.name = &quot;Hiroki&quot;
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 <span class="token string">&quot;Hiroki&quot;</span>
 </code></pre>
 <p>&#x305F;&#x3060;&#x3057;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3067;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x304C;&#x5B8C;&#x4E86;&#x3057;&#x305F;&#x3053;&#x3068;&#x3092;&#x5F85;&#x3064;&#x305F;&#x3081;&#x306B;&#xFF0C;<code>nextTick</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name: &quot;&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  mounted() {
-      this.$nextTick(function () {
-          this.name = &quot;Hiroki&quot;
-      })
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;beforeupdate"><a name="&#x30FB;beforeupdate" class="plugin-anchor" href="#&#x30FB;beforeupdate"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;beforeUpdate</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x308B;&#x6642;&#x306E;&#x518D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x518D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x524D;&#x306B;&#x8981;&#x7D20;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>Window&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3084;Document&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x8981;&#x7D20;&#x306E;&#x53D6;&#x5F97;&#xFF0C;&#x306A;&#x3069;</p>
 <p><strong>&#xFF0A;&#x691C;&#x8A3C;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name: &quot;&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  mounted() {
-      this.$nextTick(function () {
-          this.name = &quot;Hiroki&quot;
-      })
-  },
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  beforeUpdate(){
-      console.log(this.name)
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 <span class="token string">&quot;Hiroki&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;updated"><a name="&#x30FB;updated" class="plugin-anchor" href="#&#x30FB;updated"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;updated</h4>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x308B;&#x6642;&#x306E;&#x518D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x5F8C;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x518D;&#x30EC;&#x30F3;&#x30C0;&#x30EA;&#x30F3;&#x30B0;&#x5F8C;&#x306B;&#x8981;&#x7D20;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-vue"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ name }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span>
-// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;
-var vm = new Vue({
+<pre class="language-"><code class="lang-vue"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// &#x5909;&#x6570;&#x3078;&#x306E;&#x683C;&#x7D0D;&#x3092;&#x7701;&#x7565;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;</span>
+<span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-  data() {
-    return{
-      name: &quot;&quot;
-    }
-  },
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  mounted() {
-      this.$nextTick(function () {
-          this.name = &quot;Hiroki&quot;
-      })
-  },
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  beforeUpdate(){
-      console.log(this.name)
-  }
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+  <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-sh"><span class="token comment"># &#x7D50;&#x679C;</span>
 <span class="token string">&quot;Hiroki&quot;</span>
@@ -2903,7 +2903,7 @@ var vm = new Vue({
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Vue.js","level":"1.8.3.2","depth":3,"next":{"title":"▶ ︎Nuxt.js","level":"1.8.3.3","depth":3,"path":"public/frontend_js_framework_nuxtjs.md","ref":"public/frontend_js_framework_nuxtjs.md","articles":[]},"previous":{"title":"▶ ︎パッケージ","level":"1.8.3.1","depth":3,"path":"public/frontend_js_package.md","ref":"public/frontend_js_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_js_framework_vuejs.md","mtime":"2021-09-07T14:23:44.311Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T05:33:30.225Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Vue.js","level":"1.8.3.2","depth":3,"next":{"title":"▶ ︎Nuxt.js","level":"1.8.3.3","depth":3,"path":"public/frontend_js_framework_nuxtjs.md","ref":"public/frontend_js_framework_nuxtjs.md","articles":[]},"previous":{"title":"▶ ︎パッケージ","level":"1.8.3.1","depth":3,"path":"public/frontend_js_package.md","ref":"public/frontend_js_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/frontend_js_framework_vuejs.md","mtime":"2021-09-07T14:23:44.311Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T09:09:14.152Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

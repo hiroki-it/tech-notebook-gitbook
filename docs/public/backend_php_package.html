@@ -1913,124 +1913,124 @@
 <h2 id="01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><a name="01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#01-composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>01. composer&#x306B;&#x3088;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7BA1;&#x7406;</h2>
 <h3 id="composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;"><a name="composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;" class="plugin-anchor" href="#composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>composer.json&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x88C5;</h3>
 <h4 id="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;</h4>
-<pre class="language-"><code class="lang-shell"># &#x500B;&#x4EBA;&#x7684;&#x306B;&#x4E00;&#x756A;&#x304A;&#x3059;&#x3059;&#x3081;
-# &#x30AD;&#x30E3;&#x30EC;&#x30C3;&#x30C8;&#x8868;&#x8A18;
-{
-  &quot;require&quot;: {
-    &quot;foo&quot;: &quot;^1.1.1&quot;,  # &gt;=1.1.1 and &lt;1.2.0
-    &quot;bar&quot;: &quot;^1.1&quot;,    # &gt;=1.1.0 and &lt;1.2.0
-    &quot;baz&quot;: &quot;^0.0.1&quot;   # &gt;=0.0.1 and &lt;0.0.2
-  }
-}
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x500B;&#x4EBA;&#x7684;&#x306B;&#x4E00;&#x756A;&#x304A;&#x3059;&#x3059;&#x3081;</span>
+<span class="token comment"># &#x30AD;&#x30E3;&#x30EC;&#x30C3;&#x30C8;&#x8868;&#x8A18;</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;require&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;foo&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;^1.1.1&quot;</span>,  <span class="token comment"># &gt;=1.1.1 and &lt;1.2.0</span>
+    <span class="token string">&quot;bar&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;^1.1&quot;</span>,    <span class="token comment"># &gt;=1.1.0 and &lt;1.2.0</span>
+    <span class="token string">&quot;baz&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;^0.0.1&quot;</span>   <span class="token comment"># &gt;=0.0.1 and &lt;0.0.2</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-"><code class="lang-shell"># &#x30C1;&#x30EB;&#x30C0;&#x8868;&#x8A18;
-{
-  &quot;require&quot;: {
-    &quot;foo&quot;: &quot;~1.1.1&quot;,  # &gt;=1.1.1 and &lt;2.0.0
-    &quot;bar&quot;: &quot;~1.1&quot;,    # &gt;=1.1.0 and &lt;2.0.0
-    &quot;baz&quot;: &quot;~1&quot;       # &gt;=1.1.0 and &lt;2.0.0
-  }
-}
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30C1;&#x30EB;&#x30C0;&#x8868;&#x8A18;</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;require&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;foo&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;~1.1.1&quot;</span>,  <span class="token comment"># &gt;=1.1.1 and &lt;2.0.0</span>
+    <span class="token string">&quot;bar&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;~1.1&quot;</span>,    <span class="token comment"># &gt;=1.1.0 and &lt;2.0.0</span>
+    <span class="token string">&quot;baz&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;~1&quot;</span>       <span class="token comment"># &gt;=1.1.0 and &lt;2.0.0</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-"><code class="lang-shell"># &#x30A8;&#x30C3;&#x30AF;&#x30B9;&#xFF0C;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x8868;&#x8A18;
-{
-  &quot;require&quot;: {
-    &quot;foo&quot;: &quot;*&quot;,     # &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK
-    &quot;bar&quot;: &quot;1.1.x&quot;, # &gt;=1.1.0 and &lt;1.2.0 
-    &quot;baz&quot;: &quot;1.X&quot;,   # &gt;=1.0.0 and &lt;2.0.0
-    &quot;qux&quot;: &quot;&quot;       # &quot;*&quot;&#x3068;&#x540C;&#x3058;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B; = &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK
-  }
-}
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30A8;&#x30C3;&#x30AF;&#x30B9;&#xFF0C;&#x30A2;&#x30B9;&#x30BF;&#x30EA;&#x30B9;&#x30AF;&#x8868;&#x8A18;</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;require&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;foo&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;*&quot;</span>,     <span class="token comment"># &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK</span>
+    <span class="token string">&quot;bar&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;1.1.x&quot;</span>, <span class="token comment"># &gt;=1.1.0 and &lt;1.2.0 </span>
+    <span class="token string">&quot;baz&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;1.X&quot;</span>,   <span class="token comment"># &gt;=1.0.0 and &lt;2.0.0</span>
+    <span class="token string">&quot;qux&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;&quot;</span>       <span class="token comment"># &quot;*&quot;&#x3068;&#x540C;&#x3058;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B; = &#x3069;&#x3093;&#x306A;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3082;OK</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;</h4>
 <p>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x306E;&#x5BFE;&#x5FDC;&#x95A2;&#x4FC2;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">{
-    &quot;autoload&quot;: {
-        &quot;psr-4&quot;: {
-             # &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;</span><span class="token punctuation">&gt;</span></span>&quot;: &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;</span><span class="token punctuation">&gt;</span></span>&quot;,
-            &quot;App\\&quot;: &quot;app/&quot;,
-            &quot;Database\\Factories\\Infrastructure\\DTO\\&quot;: &quot;database/factories/production&quot;,
-            &quot;Database\\Seeders\\&quot;: &quot;database/seeds/production&quot;
-        },
-        &quot;classmap&quot;: [
-            &quot;database/seeds&quot;,
-            &quot;database/factories&quot;
-        ]
-    }
-}
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">{</span>
+    <span class="token string">&quot;autoload&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;psr-4&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+             <span class="token comment"># &quot;&lt;&#x540D;&#x524D;&#x7A7A;&#x9593;&gt;&quot;: &quot;&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&gt;&quot;,</span>
+            <span class="token string">&quot;App<span class="token entity" title="\\">\\</span>&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;app/&quot;</span>,
+            <span class="token string">&quot;Database<span class="token entity" title="\\">\\</span>Factories<span class="token entity" title="\\">\\</span>Infrastructure<span class="token entity" title="\\">\\</span>DTO<span class="token entity" title="\\">\\</span>&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;database/factories/production&quot;</span>,
+            <span class="token string">&quot;Database<span class="token entity" title="\\">\\</span>Seeders<span class="token entity" title="\\">\\</span>&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;database/seeds/production&quot;</span>
+        <span class="token punctuation">}</span>,
+        <span class="token string">&quot;classmap&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;database/seeds&quot;</span>,
+            <span class="token string">&quot;database/factories&quot;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>&#x305D;&#x306E;&#x5F8C;&#xFF0C;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer dump-autoload
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> dump-autoload
 </code></pre>
 <p><br></p>
 <h3 id="require"><a name="require" class="plugin-anchor" href="#require"><i class="fa fa-link" aria-hidden="true"></i></a>require</h3>
-<h4 id="&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;"><a name="&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;" class="plugin-anchor" href="#&#x30FB;composerjson&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8FFD;&#x52A0;</h4>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#xFF0E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306F;&#x884C;&#x308F;&#x306A;&#x3044;&#xFF0E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x305B;&#x305A;&#x306B;&#x81EA;&#x5206;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer require <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;</span><span class="token punctuation">&gt;</span></span>:^x.x
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> require <span class="token operator">&lt;</span>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:^x.x
 </code></pre>
 <p><br></p>
 <h3 id="install"><a name="install" class="plugin-anchor" href="#install"><i class="fa fa-link" aria-hidden="true"></i></a>install</h3>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;</h4>
 <p>&#x521D;&#x3081;&#x3066;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x6642;&#xFF0C;<code>composer.lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x5168;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>composer.lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x304A;&#x304B;&#x3052;&#x3067;&#xFF0C;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x5229;&#x7528;&#x8005;&#x304C;&#xFF0C;<code>composer install</code>&#x306E;&#x5B9F;&#x884C;&#x6642;&#x306B;&#xFF0C;&#x5171;&#x901A;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer install
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span>
 </code></pre>
-<h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;"><a name="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;" class="plugin-anchor" href="#&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
+<h4 id="&#x30FB;-vvv"><a name="&#x30FB;-vvv" class="plugin-anchor" href="#&#x30FB;-vvv"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-vvv</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
-<pre class="language-"><code class="lang-shell">$ composer install -vvv
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
 </code></pre>
-<h4 id="&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--no-dev&#x3092;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;--no-dev"><a name="&#x30FB;--no-dev" class="plugin-anchor" href="#&#x30FB;--no-dev"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--no-dev</h4>
 <p>require-dev&#x30BF;&#x30B0;&#x5185;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306F;&#x9664;&#x3044;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</p>
-<pre class="language-"><code class="lang-shell">$ composer install --no-dev
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span> --no-dev
 </code></pre>
-<h4 id="&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x9AD8;&#x901F;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;--prefer-dist"><a name="&#x30FB;--prefer-dist" class="plugin-anchor" href="#&#x30FB;--prefer-dist"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--prefer-dist</h4>
 <p>Composer&#x306E;&#x914D;&#x5E03;&#x30B5;&#x30A4;&#x30C8;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;<code>prefer-source</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3088;&#x308A;&#x3082;&#x9AD8;&#x901F;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;dist&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x5B9F;&#x969B;&#x306F;&#x5BA3;&#x8A00;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer install --prefer-dist
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-dist
 </code></pre>
-<h4 id="&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x958B;&#x767A;&#x8005;&#x7528;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;--prefer-source"><a name="&#x30FB;--prefer-source" class="plugin-anchor" href="#&#x30FB;--prefer-source"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--prefer-source</h4>
 <p>GitHub&#x306E;Composer&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x304B;&#x3089;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#xFF0E;Composer&#x306E;&#x958B;&#x767A;&#x8005;&#x7528;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer install --prefer-source
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span> --prefer-source
 </code></pre>
 <p><br></p>
 <h3 id="update"><a name="update" class="plugin-anchor" href="#update"><i class="fa fa-link" aria-hidden="true"></i></a>update</h3>
-<h4 id="&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;"><a name="&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;" class="plugin-anchor" href="#&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8FFD;&#x52A0;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3068;&#x66F4;&#x65B0;</h4>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306A;&#x3057;</h4>
 <p>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x540D;&#x3092;<code>composer.json</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5143;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3057;&#xFF0C;&#x3055;&#x3089;&#x306B;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x5B9A;&#x7FA9;&#x3092;&#x3082;&#x3068;&#x306B;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x306A;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;<code>composer.lock</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x60C5;&#x5831;&#x3092;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#x305F;&#x3081;&#xFF0C;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x5229;&#x7528;&#x8005;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306B;&#x3082;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer update
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> update
 </code></pre>
-<h4 id="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;"><a name="&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;" class="plugin-anchor" href="#&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x51E6;&#x7406;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</h4>
+<h4 id="&#x30FB;-vvv"><a name="&#x30FB;-vvv" class="plugin-anchor" href="#&#x30FB;-vvv"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-vvv</h4>
 <p>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x51E6;&#x7406;&#x4E2D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;</p>
-<pre class="language-"><code class="lang-shell">$ composer install -vvv
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token function">install</span> -vvv
 </code></pre>
-<h4 id="&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x306A;&#x304F;&#x3057;&#x3066;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h4>
+<h4 id="&#x30FB;composermemorylimit-1"><a name="&#x30FB;composermemorylimit-1" class="plugin-anchor" href="#&#x30FB;composermemorylimit-1"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;COMPOSER_MEMORY_LIMIT=-1</h4>
 <p>php&#x306E;&#x30E1;&#x30E2;&#x30EA;&#x4E0A;&#x9650;&#x3092;&#x7121;&#x3057;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x4EFB;&#x610F;&#x306E;composer&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;php&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#xFF0E;Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x8A2D;&#x5B9A;&#x753B;&#x9762;&#x304B;&#x3089;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;CPU&#x3084;&#x30E1;&#x30E2;&#x30EA;&#x3092;&#x5897;&#x8A2D;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
+<pre class="language-"><code class="lang-shell">$ <span class="token assign-left variable">COMPOSER_MEMORY_LIMIT</span><span class="token operator">=</span>-1 <span class="token function">composer</span> update -vvv
 </code></pre>
 <p><br></p>
 <h3 id="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x305D;&#x306E;&#x4ED6;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
-<h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;"><a name="&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;" class="plugin-anchor" href="#&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;</h4>
+<h4 id="&#x30FB;clear-cache"><a name="&#x30FB;clear-cache" class="plugin-anchor" href="#&#x30FB;clear-cache"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;clear-cache</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x6642;&#x306B;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer clear-cache
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> clear-cache
 </code></pre>
-<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h4>
+<h4 id="&#x30FB;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;"><a name="&#x30FB;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;" class="plugin-anchor" href="#&#x30FB;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</h4>
 <p>&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">$ composer <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-"><code class="lang-shell">$ <span class="token function">composer</span> <span class="token operator">&lt;</span>&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;&#x3092;<code>scripts</code>&#x30AD;&#x30FC;&#x4E0B;&#x306B;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-shell">{
-    &quot;scripts&quot;: {
-        # &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;
-        &quot;post-autoload-dump&quot;: [
-            # &#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;
-            &quot;Illuminate\\Foundation\\ComposerScripts::postAutoloadDump&quot;,
-            &quot;@php artisan package:discover --ansi&quot;
-        ],
-        &quot;post-root-package-install&quot;: [
-            &quot;@php -r \&quot;file_exists(&quot;.env&quot;) || copy(&quot;.env.example&quot;, &quot;.env&quot;);\&quot;&quot;
-        ],
-        &quot;post-create-project-cmd&quot;: [
-            &quot;@php artisan key:generate --ansi&quot;
-        ]
-    }
-}
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">{</span>
+    <span class="token string">&quot;scripts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        <span class="token comment"># &#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x540D;</span>
+        <span class="token string">&quot;post-autoload-dump&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token comment"># &#x5B9F;&#x884C;&#x3059;&#x308B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+            <span class="token string">&quot;Illuminate<span class="token entity" title="\\">\\</span>Foundation<span class="token entity" title="\\">\\</span>ComposerScripts::postAutoloadDump&quot;</span>,
+            <span class="token string">&quot;@php artisan package:discover --ansi&quot;</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">&quot;post-root-package-install&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;@php -r <span class="token entity" title="\&quot;">\&quot;</span>file_exists(&quot;</span>.env<span class="token string">&quot;) || copy(&quot;</span>.env.example<span class="token string">&quot;, &quot;</span>.env<span class="token string">&quot;);<span class="token entity" title="\&quot;">\&quot;</span>&quot;</span>
+        <span class="token punctuation">]</span>,
+        <span class="token string">&quot;post-create-project-cmd&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;@php artisan key:generate --ansi&quot;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;"><a name="&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;" class="plugin-anchor" href="#&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x624B;&#x9806;</h3>
@@ -2506,7 +2506,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.3","depth":2,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"path":"public/backend_php_package.md","ref":"public/backend_php_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"path":"public/backend_php_framework_laravel.md","ref":"public/backend_php_framework_laravel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_package.md","mtime":"2021-09-07T14:16:03.291Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T05:33:30.225Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"next":{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.3","depth":2,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.4.3.1","depth":3,"path":"public/backend_php_package.md","ref":"public/backend_php_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.4.3.2","depth":3,"path":"public/backend_php_framework_symfony.md","ref":"public/backend_php_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.4.3.3","depth":3,"path":"public/backend_php_framework_laravel.md","ref":"public/backend_php_framework_laravel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_php_package.md","mtime":"2021-09-20T05:59:16.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T09:09:14.152Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
