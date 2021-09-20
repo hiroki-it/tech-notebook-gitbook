@@ -823,7 +823,7 @@ INSERT文を実行する．Eloquentモデルには```create```メソッドがな
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Http\Request;
 
@@ -890,7 +890,7 @@ SELECT文を実行し，レコードを一つ取得する．Eloquentモデルに
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -928,7 +928,7 @@ SELECT文を実行し，レコードを全て取得する．MySQLを含むDBエ�
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -959,7 +959,7 @@ SELECT文を実行し，レコードを指定したカラムの昇順で並び�
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -988,7 +988,7 @@ SELECT文を実行し，レコードを指定したカラムの降順で並び�
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -1019,7 +1019,7 @@ SELECT文を実行し，レコードを指定したカラムの昇順／降順�
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -1062,7 +1062,7 @@ SELECT文を実行し，指定した開始地点から指定した件数のレ�
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -1208,7 +1208,7 @@ UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿�
 
 namespace App\Infrastructure\Repositories;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Domain\Foo\Entities;
 use Illuminate\Http\Request;
 
@@ -2984,6 +2984,18 @@ return [
         "api_key"      => env("API_KEY"),
     ]
 ];
+```
+
+<br>
+
+### ```bcrypt```ヘルパー
+
+参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
+
+```php
+<?php
+
+$hash = bcrypt('foo'); // 『foo』をハッシュ化して，『$2y$10$ZkYG.whhdcogCCzbG.VlQ』としてDBで管理する．
 ```
 
 <br>
@@ -5344,6 +5356,46 @@ class Kernel extends HttpKernel
 
 <br>
 
+### 暗黙のモデル結合
+
+#### ・コントローラ使用時
+
+ルーティング時に使用するパラメータ名とコントローラのメソッドの引数型と変数名が同じであり，かつパラメータに数値が割り当てられた場合に，その数値をIDとするEloquentモデルが自動的にインジェクションされる．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
+
+**＊実装例＊**
+
+ルーティング時に，パスパラメータ名を```user```としておく．
+
+```php
+<?php
+    
+Route::get('/users/{user}', 'UserController@index');
+```
+
+かつ，コントローラのメソッドの引数型／変数名を```User```／```$user```とする．または．この時，『```/users/1```』に対してリクエストが送信されると，ユーザIDが```1```のユーザがDBから読み出され，コントローラにインジェクションされる．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    /**
+     * @param User $user
+     */
+    public function index(User $user)
+    {
+        $id = $user->id; // パスパラメータのidに紐づくユーザが自動的に渡されている．
+    }
+}
+```
+
 <br>
 
 ## 16. Seeder
@@ -6103,7 +6155,7 @@ class EventServiceProvider extends ServiceProvider
 
 セッション開始時にCSRFトークンが生成される．Bladeを使用してサーバ側のCSRFトークンを取り出し，inputタグのhidden属性にCSRFトークンを割り当て送信する．
 
-参考：https://readouble.com/laravel/6.x/ja/csrf.html
+参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
 ```html
 <form method="POST" action="/profile">
@@ -6116,9 +6168,37 @@ Bladeを使用しない場合，セッション開始時のレスポンスの```
 
 参考：
 
-- https://readouble.com/laravel/6.x/ja/csrf.html#csrf-x-csrf-token
-- https://readouble.com/laravel/6.x/ja/csrf.html#csrf-x-xsrf-token
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
 - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
+
+ちなみに，PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は，ツールに事前スクリプトを設定しておくと良い．
+
+```javascript
+const INIT_CSRF_URL = 'http://127.0.0.1:8000';
+
+pm.sendRequest(INIT_CSRF_URL, (error, response, {cookies}) => {
+    
+    if (error) {
+        console.error(error);
+        return false;
+    }
+
+    const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
+
+    if (!xsrfTokenHeader) {
+        console.log("トークンがありません");
+        return false;
+    }
+
+    // laravelによってエンコードされたトークンをデコードする．
+    const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
+    // 環境変数を挿入するために，該当する環境名を本Collectionに設定しておく必要がある．
+    pm.environment.set('XSRF_TOKEN', xsrfToken);
+    console.log(xsrfToken);
+    return true;
+});
+```
 
 #### ・XSS対策
 
@@ -6175,7 +6255,7 @@ return [
 
 RDSクラスターに接続する場合，書き込み処理をプライマリインスタンスに向け，また読み出し処理をリードレプリカインスタンスに向けることにより，負荷を分散できる．この場合，環境変数に二つのインスタンスのホストを実装する必要がある．
 
-参考：https://readouble.com/laravel/6.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
 
 ```
 DB_HOST_PRIMARY=<プライマリインスタンスのホスト>
@@ -7002,44 +7082,140 @@ class RedirectIfAuthenticated
 
 #### ・ゲートとは
 
+Eloquentモデルレベルの認可スコープを定義する．指定したEloquentモデルに紐づく全てのDBレコードにアクセスできなくなる．
+
 <br>
 
 ### ポリシー
 
 #### ・ポリシーとは
 
-認可スコープ（アクセス可能なDBレコードと，これに対して実行可能なCRUD処理）を定義する．
+DBレコードレベルの認可スコープを定義する．Eloquentモデルに紐づく特定のレコードにアクセスできなくなる．Policyクラスのメソッドによって，リクエスト中の認証済みユーザが自動的にインジェクションされる．EloquentモデルとPolicyクラスの関連づけはAuthServiceProviderクラスで定義する
 
-#### ・Middlewareによる認可
+参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
-ルーティング時にBeforeMiddlewareとしてコールできる．リクエストパラメータを渡せる．
+```php
+<?php
 
-参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-middleware
+namespace App\Policies;
+
+use App\Models\Foo;
+use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+final class FooPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function create(User $user): bool
+    {
+        $id = $user->id; // 認証中のユーザ
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function show(User $user, Foo $foo, int $barId): bool
+    {
+        $id = $foo->id; // ルーターまたはコントローラから渡されたインスタンス
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function update(User $user, Foo $foo, int $barId): bool
+    {
+        //
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function delete(User $user, Foo $foo, int $barId): bool
+    {
+        //
+    }
+}
+```
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Foo\FooController;
+namespace App\Providers;
+
+use App\Models\Foo;
+use App\Policies\FooPolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * @var array
+     */
+    protected $policies = [
+        Foo::class => FooPolicy::class,
+    ];
+
+    /**
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+    }
+}
+```
+
+#### ・AuthorizeMiddlewareによる認可
+
+ルーティング時にDBレコードレベルの認可スコープを定義する．AuthorizeMiddlewareのエイリアス名は標準で```can```であり，Kernelクラスに定義されている．第一引数にPolicyクラスのメソッド名，第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す．名前空間を渡す場合は，これをハードコーディングせず，関数で名前空間を取得して文字列と結合するようにする．インスタンスを渡す場合は，暗黙のモデル結合を使用する必要がある．認可に失敗した場合，```403```ステータスのレスポンスを返信する．
+
+参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Http\Controllers\FooController;
 
 Route::group(['middleware' => ['auth:web']], function () {
 
     Route::group(['prefix' => 'foos'], function () {
-        Route::get('/{id}', [FooController::class, 'showFoo'])->middleware('can:show, id');
-        Route::get('/', [FooController::class, 'indexFoo'])->middleware('can:index');
+        Route::get('/{id}', [FooController::class, 'showFoo'])->middleware('can:show,'. Foo::class);
+        Route::get('/', [FooController::class, 'indexFoo']);
         Route::post('/', [FooController::class, 'createFoo']);
-        Route::put('/{id}', [FooController::class, 'updateFoo'])->middleware('can:update, id');
-        Route::delete('/{id}', [FooController::class, 'deleteFoo'])->middleware('can:update, id');
+        Route::put('/{id}', [FooController::class, 'updateFoo'])->middleware('can:update,'. Foo::class);
+        Route::delete('/{id}', [FooController::class, 'deleteFoo'])->middleware('can:delete,'. Foo::class);
     });
 });
 ```
 
 #### ・```authorization```メソッドによる認可
 
-基底コントローラを継承したコントローラでは```authorization```メソッドをコールできる．現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．認可に失敗した場合，AuthorizationExceptionを投げる．
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．基底コントローラを継承したコントローラでは```authorization```メソッドをコールでき，現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．第二引数に，ポリシーに紐づくクラス名前空間あるいはそのインスタンスを渡す．認可に失敗した場合にAuthorizationExceptionを投げるため，その後は自前で```403```ステータスのレスポンスするようにする．
 
-参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-controller-helpers
+参考：
+
+- https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
+- https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
 **＊実装例＊**
 
@@ -7050,7 +7226,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -7066,27 +7242,34 @@ class FooController extends Controller
     public function updateFoo(Request $request, int $id): JsonResponse
     {
         try {
-            // 認可が失敗した場合，AuthorizationExceptionを投げる．
-            $this->authorize('update', $id);
-
             $foo = new Foo();
+
+            // 認可が失敗した場合，AuthorizationExceptionを投げる．
+            $this->authorize('update', [$foo->find($id), $request->barId]);
+
+            // Eloquentモデルが不要な検証であれば名前空間
+            // $this->authorize('create', Foo::class);
 
             $foo->fill($request->all())->save();
         } catch (Throwable $e) {
-            // 403ステータスでレスポンスを返信する．
+            // 自前で403ステータスのレスポンスを返信する．
             return response()->json(['error' => $e->getMessage()], 403);
         }
 
         // 続きの処理
     }
 }
+
 ```
 
 #### ・```can```メソッドによる認可
 
-現在認証されているユーザのインスタンスから```can```メソッドをコールできる．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合，```false```を返却する．
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．現在認証されているユーザのインスタンスから```can```メソッドをコールできる．第二引数として，ポリシーに紐づくクラス名前空間またはそのクラスのインスタンスを渡す．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合に```false```を返却するため，その後は自前で```403```ステータスのレスポンスするようにする．
 
-参考：https://readouble.com/laravel/6.x/ja/authorization.html#via-the-user-model
+参考：
+
+- https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
+- https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
 **＊実装例＊**
 
@@ -7097,7 +7280,7 @@ class FooController extends Controller
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -7111,16 +7294,20 @@ class FooController extends Controller
      */
     public function updateFoo(Request $request, int $id): JsonResponse
     {
+        $foo = new Foo();
+
         // 認可が失敗した場合，falseが返却される．
-        if (auth()->user()->can('update', $id)) {
-            $foo = new Foo();
-            $foo->create($request->all());
+        if (!auth()->user()->can('update', [$foo->find($id), $request->barId])) {
+            // 自前で403ステータスのレスポンスを返信する．
+            return response()->json(['error' => '認可エラー'], 403);
         }
 
-        // 続きの処理
+        // Eloquentモデルが不要な検証であれば名前空間
+        // if (!auth()->user()->can('update', Foo::class) {}
+
+        $foo->fill($request->all())->save();
     }
 }
-
 ```
 
 <br>
@@ -7604,7 +7791,7 @@ $ php artisan breeze:install
 
 Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
 
-参考：https://readouble.com/laravel/6.x/ja/authentication.html
+参考：https://readouble.com/laravel/7.x/ja/authentication.html
 
 <br>
 
