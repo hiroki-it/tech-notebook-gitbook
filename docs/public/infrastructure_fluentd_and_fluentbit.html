@@ -1964,12 +1964,22 @@
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_log-pipeline.png" alt="fluent-bit-log-pipeline"></p>
 <h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x4E00;&#x89A7;</h4>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file" target="_blank">https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file</a></p>
-<h4 id="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;SERVICE&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h4>
+<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://cloud.calyptia.com/visualizer" target="_blank">https://cloud.calyptia.com/visualizer</a></p>
+<p><br></p>
+<h3 id="service"><a name="service" class="plugin-anchor" href="#service"><i class="fa fa-link" aria-hidden="true"></i></a>SERVICE</h3>
+<h4 id="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;service&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;SERVICE&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
+<p>&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x5168;&#x4F53;&#x306E;&#x8A2D;&#x5B9A;&#x3084;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x5404;&#x8A2D;&#x5B9A;&#x306E;&#x982D;&#x6587;&#x5B57;&#x306F;&#x5927;&#x6587;&#x5B57;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>SERVICE<span class="token punctuation">]</span>
     Flush <span class="token number">1</span>
+    <span class="token comment"># &#x7336;&#x4E88;&#x6642;&#x9593;</span>
     Grace <span class="token number">30</span>
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5BFE;&#x8C61;&#x306E;&#x6700;&#x4F4E;&#x30ED;&#x30B0;&#x30EC;&#x30D9;&#x30EB;</span>
     Log_Level info
-    Streams_File stream_processor.conf <span class="token comment"># Stream Processor&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;</span>
+    <span class="token comment"># &#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;Parsers Multiline&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x540D;&#x524D;</span>
+    Parsers_File parsers_multiline.conf
+    <span class="token comment"># &#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;Stream Processor&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x540D;&#x524D;</span>
+    Streams_File stream_processor.conf
 </code></pre>
 <p><br></p>
 <h3 id="input"><a name="input" class="plugin-anchor" href="#input"><i class="fa fa-link" aria-hidden="true"></i></a>INPUT</h3>
@@ -1980,6 +1990,28 @@
 <li><a href="https://docs.fluentbit.io/manual/pipeline/inputs" target="_blank">https://docs.fluentbit.io/manual/pipeline/inputs</a></li>
 <li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/input" target="_blank">https://docs.fluentbit.io/manual/concepts/data-pipeline/input</a></li>
 </ul>
+<p><br></p>
+<h3 id="parse"><a name="parse" class="plugin-anchor" href="#parse"><i class="fa fa-link" aria-hidden="true"></i></a>PARSE</h3>
+<h4 id="&#x30FB;parse&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;parse&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;parse&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;PARSE&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;multilineparser&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;multilineparser&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;multilineparser&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;MULTILINE_PARSER&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing" target="_blank">https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing</a></p>
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>MULTILINE_PARSER<span class="token punctuation">]</span>
+    name          laravel
+    <span class="token comment"># &#x89E3;&#x6790;&#x30BF;&#x30A4;&#x30D7;</span>
+    <span class="token builtin class-name">type</span>          regex
+    flush_timeout <span class="token number">1000</span>
+    <span class="token comment"># &#x89E3;&#x6790;&#x30EB;&#x30FC;&#x30EB;&#xFF0E;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x306E;&#x6587;&#x982D;&#x3092;start_state&#xFF0C;&#x307E;&#x305F;&#x4EE5;&#x964D;&#x306B;&#x7D50;&#x5408;&#x3059;&#x308B;&#x6587;&#x5B57;&#x5217;&#x3092;cont&#x3067;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
+    rule          <span class="token string">&quot;start_state&quot;</span> <span class="token string">&quot;\[%Y-%m-%d %H:%M:%S\]&quot;</span> <span class="token string">&quot;cont&quot;</span>
+    rule          <span class="token string">&quot;cont&quot;</span>        <span class="token string">&quot;#*&quot;</span>                    <span class="token string">&quot;cont&quot;</span>
+</code></pre>
+<p><br></p>
+<h3 id="filter"><a name="filter" class="plugin-anchor" href="#filter"><i class="fa fa-link" aria-hidden="true"></i></a>FILTER</h3>
+<h4 id="&#x30FB;filter&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;filter&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;filter&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;FILTER&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
+<p>&#x7279;&#x5B9A;&#x306E;&#x6587;&#x5B57;&#x5217;&#x3092;&#x6301;&#x3064;&#x30ED;&#x30B0;&#x306E;&#x307F;&#x3092;BUFFER&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>FILTER<span class="token punctuation">]</span>
+    Name  stdout
+    Match *
+</code></pre>
 <p><br></p>
 <h3 id="output"><a name="output" class="plugin-anchor" href="#output"><i class="fa fa-link" aria-hidden="true"></i></a>OUTPUT</h3>
 <h4 id="&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;output&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;OUTPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
@@ -2030,7 +2062,7 @@
 <p><br></p>
 <h3 id="storage"><a name="storage" class="plugin-anchor" href="#storage"><i class="fa fa-link" aria-hidden="true"></i></a>STORAGE</h3>
 <h4 id="&#x30FB;streamtask&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;streamtask&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;streamtask&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;STREAM_TASK&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
-<p>&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;Filter&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x5F8C;&#x306B;&#x30ED;&#x30B0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30AF;&#x30A8;&#x30EA;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30ED;&#x30B0;&#x306B;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3092;&#x884C;&#x3046;&#xFF0E;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x306F;&#xFF0C;Input&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x518D;&#x5EA6;&#x53D6;&#x308A;&#x8FBC;&#x307E;&#x308C;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306B;Output&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x307E;&#x3067;&#x6E21;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;FILTER&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x5F8C;&#x306B;&#x30ED;&#x30B0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30AF;&#x30A8;&#x30EA;&#x51E6;&#x7406;&#x3092;&#x884C;&#x3044;&#xFF0C;&#x30ED;&#x30B0;&#x306B;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3092;&#x884C;&#x3046;&#xFF0E;&#x30BF;&#x30B0;&#x4ED8;&#x3051;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x306F;&#xFF0C;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x518D;&#x5EA6;&#x53D6;&#x308A;&#x8FBC;&#x307E;&#x308C;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306B;OUTPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x307E;&#x3067;&#x6E21;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor" target="_blank">https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor</a></p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png" alt="fluent-bit_stream-task"></p>
 <p><br></p>
@@ -2062,7 +2094,7 @@
 </li>
 <li><p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;FluentBit&#x306E;&#x30ED;&#x30B0;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x306E;INPUT&#x306B;&#x6E21;&#x3055;&#x308C;&#xFF0C;FluentBit&#x306F;&#x30ED;&#x30B0;&#x3092;&#x51E6;&#x7406;&#x3059;&#x308B;&#xFF0E;</p>
 </li>
-<li><p>OUTPUT&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x6E21;&#x3055;&#x308C;&#xFF0C;FluentBit&#x306F;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5916;&#x90E8;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<li><p>OUTPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x6E21;&#x3055;&#x308C;&#xFF0C;FluentBit&#x306F;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5916;&#x90E8;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
 </li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png" alt="fluent-bit_aws-firelens"></p>
@@ -2096,31 +2128,58 @@
 <h4 id="&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>fluent-bit_custom.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <p>&#x3059;&#x3067;&#x306B;&#x30D9;&#x30FC;&#x30B9;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>/fluent-bit/etc/fluent-bit.conf</code>&#xFF09;&#x304C;&#x7D44;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x8FFD;&#x52A0;&#x8A2D;&#x5B9A;&#x3092;&#x30AA;&#x30FC;&#x30D0;&#x30E9;&#x30A4;&#x30C9;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#xFF0C;&#x300E;<code>/fluent-bit/etc/fluent-bit_custom.conf</code>&#x300F;&#x306B;&#x7F6E;&#x304F;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;CloudWatch&#x30ED;&#x30B0;&#x304C;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x306E;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4E88;&#x7D04;&#x3055;&#x308C;&#x305F;&#x5909;&#x6570;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names" target="_blank">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names</a></p>
-<pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
-    Name              datadog <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x540D;</span>
-    Match             *
-    Host              http-intake.logs.datadoghq.com <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x30DB;&#x30B9;&#x30C8;</span>
+<pre class="language-"><code class="lang-shell"><span class="token comment">#########################</span>
+<span class="token comment"># Datadog&#x3078;&#x306E;&#x8EE2;&#x9001;</span>
+<span class="token comment">#########################</span>
+<span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x540D;</span>
+    Name              datadog
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5BFE;&#x8C61;&#x3068;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x30BF;&#x30B0;</span>
+    Match             laravel
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x30DB;&#x30B9;&#x30C8;</span>
+    Host              http-intake.logs.datadoghq.com
     TLS               on
     compress          <span class="token function">gzip</span>
-    apikey            <span class="token operator">&lt;</span>Datadog&#x306E;API&#x30AD;&#x30FC;<span class="token operator">&gt;</span> <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x304B;&#x3089;&#x53C2;&#x7167;&#x3057;&#xFF0C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
+    <span class="token comment"># Datadog&#x306E;API&#x30AD;&#x30FC;&#xFF0E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x304B;&#x3089;&#x53C2;&#x7167;&#x3057;&#xFF0C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
+    apikey            <span class="token operator">&lt;</span>Datadog&#x306E;API&#x30AD;&#x30FC;<span class="token operator">&gt;</span>
+    <span class="token comment"># service&#x30BF;&#x30B0;</span>
     dd_service        <span class="token operator">&lt;</span>Datadog&#x306E;&#x30ED;&#x30B0;&#x30A8;&#x30AF;&#x30B9;&#x30D7;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306B;&#x304A;&#x3051;&#x308B;Service&#x540D;<span class="token operator">&gt;</span>
+    <span class="token comment"># source&#x30BF;&#x30B0;</span>
     dd_source         <span class="token operator">&lt;</span>Datadog&#x306E;&#x30ED;&#x30B0;&#x30A8;&#x30AF;&#x30B9;&#x30D7;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306B;&#x304A;&#x3051;&#x308B;Source&#x540D;<span class="token operator">&gt;</span>
     dd_message_key    log
-    dd_tags           <span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span> <span class="token comment"># &#xFF08;&#x4F8B;&#xFF09;env:${DD_ENV}</span>
+    <span class="token comment"># &#x8FFD;&#x52A0;&#x30BF;&#x30B0;&#xFF08;&#x4F8B;&#xFF09;env:${DD_ENV}</span>
+    dd_tags           <span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span>
 
+<span class="token comment">#########################</span>
+<span class="token comment"># CloudWatch&#x30ED;&#x30B0;&#x3078;&#x306E;&#x8EE2;&#x9001;</span>
+<span class="token comment">#########################</span>
 <span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
-    Name              cloudwatch <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x540D;</span>
-    Match             *
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x540D;</span>
+    Name              cloudwatch
+    <span class="token comment"># &#x8EE2;&#x9001;&#x5BFE;&#x8C61;&#x3068;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x30BF;&#x30B0;</span>
+    Match             laravel
     log_key           log
     region            ap-northeast-1
-    log_group_name    <span class="token operator">&lt;</span>&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;<span class="token operator">&gt;</span> <span class="token comment"># &#x4E88;&#x7D04;&#x5909;&#x6570;&#x3042;&#x308A;&#xFF0E;</span>
-    log_stream_name   <span class="token operator">&lt;</span>&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x540D;<span class="token operator">&gt;</span> <span class="token comment"># &#x4E88;&#x7D04;&#x5909;&#x6570;&#x3042;&#x308A;&#xFF0E;$(ecs_task_id) &#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;ID&#x5225;&#x306B;&#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+    <span class="token comment"># &#x4E88;&#x7D04;&#x5909;&#x6570;&#x3042;&#x308A;&#xFF0E;</span>
+    log_group_name    <span class="token operator">&lt;</span>&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;<span class="token operator">&gt;</span>
+    <span class="token comment"># &#x30ED;&#x30B0;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x540D;&#xFF0E;&#x4E88;&#x7D04;&#x5909;&#x6570;&#x3042;&#x308A;&#xFF0E;&#x30BF;&#x30B9;&#x30AF;ID&#x306A;&#x3069;&#x51FA;&#x529B;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+    log_stream_name   container/laravel/<span class="token variable"><span class="token variable">$(</span>ecs_task_id<span class="token variable">)</span></span>
+
+<span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
+    Name              cloudwatch
+    Match             nginx
+    log_key           log
+    region            ap-northeast-1
+    log_group_name    <span class="token operator">&lt;</span>&#x30ED;&#x30B0;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x540D;<span class="token operator">&gt;</span>
+    log_stream_name   container/nginx/<span class="token variable"><span class="token variable">$(</span>ecs_task_id<span class="token variable">)</span></span>
 </code></pre>
 <p>&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;&#x6A19;&#x6E96;&#x3067;&#x7D44;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#xFF0C;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3059;&#x3067;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;<code>fluent-bit_custom.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x7121;&#x3044;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf" target="_blank">https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf</a></p>
 <pre class="language-"><code class="lang-shell"><span class="token punctuation">[</span>INPUT<span class="token punctuation">]</span>
-    Name        forward <span class="token comment"># Forward&#x30BF;&#x30A4;&#x30D7;</span>
+    <span class="token comment"># Input&#x30BF;&#x30A4;&#x30D7;</span>
+    Name        forward
     Listen      <span class="token number">0.0</span>.0.0
+    <span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</span>
     Port        <span class="token number">24224</span>
 
 <span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
@@ -2132,17 +2191,17 @@
     auto_create_group <span class="token boolean">true</span>
 </code></pre>
 <h4 id="&#x30FB;streamprocessorconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;streamprocessorconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;streamprocessorconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>stream_processor.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
-<p>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x306F;&#xFF0C;&#x300E;&lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt;-firelens-&lt;&#x30BF;&#x30B9;&#x30AF;ID&gt;&#x300F;&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x3067;&#x30ED;&#x30B0;&#x304C;&#x51E6;&#x7406;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;Stream Processor&#x3067;&#x30ED;&#x30B0;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30AF;&#x30A8;&#x30EA;&#x3067;&#x300E;<code>FROM TAG:&apos;*-firelens-*&apos;</code>&#x300F;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30ED;&#x30B0;&#x306B;&#x30BF;&#x30B0;&#x3092;&#x4ED8;&#x3051;&#xFF0C;INPUT&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x304B;&#x3089;&#x30ED;&#x30B0;&#x3092;&#x51E6;&#x7406;&#x3057;&#x76F4;&#x3059;&#xFF0E;</p>
+<p>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x306F;&#xFF0C;&#x300E;&lt;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&gt;-firelens-&lt;&#x30BF;&#x30B9;&#x30AF;ID&gt;&#x300F;&#x3068;&#x3044;&#x3046;&#x540D;&#x524D;&#x3067;&#x30ED;&#x30B0;&#x304C;&#x51E6;&#x7406;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;Stream Processor&#x3067;&#x30ED;&#x30B0;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#xFF0C;&#x30AF;&#x30A8;&#x30EA;&#x3067;&#x300E;<code>FROM TAG:&apos;*-firelens-*&apos;</code>&#x300F;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306E;&#x30ED;&#x30B0;&#x306B;&#x30BF;&#x30B0;&#x3092;&#x4ED8;&#x3051;&#xFF0C;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x30ED;&#x30B0;&#x3092;&#x51E6;&#x7406;&#x3057;&#x76F4;&#x3059;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/" target="_blank">https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/</a></p>
 <pre class="language-"><code class="lang-shell"><span class="token comment"># app&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x30BF;&#x30B0;&#x4ED8;&#x3051;</span>
 <span class="token punctuation">[</span>STREAM_TASK<span class="token punctuation">]</span>
-    Name app
-    Exec CREATE STREAM web WITH <span class="token punctuation">(</span>tag<span class="token operator">=</span><span class="token string">&apos;app&apos;</span><span class="token punctuation">)</span> AS SELECT log FROM TAG:<span class="token string">&apos;*-firelens-*&apos;</span> WHERE container_name <span class="token operator">=</span> <span class="token string">&apos;app&apos;</span><span class="token punctuation">;</span>
+    Name laravel
+    Exec CREATE STREAM web WITH <span class="token punctuation">(</span>tag<span class="token operator">=</span><span class="token string">&apos;laravel&apos;</span><span class="token punctuation">)</span> AS SELECT log FROM TAG:<span class="token string">&apos;*-firelens-*&apos;</span> WHERE container_name <span class="token operator">=</span> <span class="token string">&apos;laravel&apos;</span><span class="token punctuation">;</span>
 
 <span class="token comment"># web&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x30BF;&#x30B0;&#x4ED8;&#x3051;</span>
 <span class="token punctuation">[</span>STREAM_TASK<span class="token punctuation">]</span>
-    Name web
-    Exec CREATE STREAM web WITH <span class="token punctuation">(</span>tag<span class="token operator">=</span><span class="token string">&apos;web&apos;</span><span class="token punctuation">)</span> AS SELECT log FROM TAG:<span class="token string">&apos;*-firelens-*&apos;</span> WHERE container_name <span class="token operator">=</span> <span class="token string">&apos;web&apos;</span><span class="token punctuation">;</span>
+    Name nginx
+    Exec CREATE STREAM web WITH <span class="token punctuation">(</span>tag<span class="token operator">=</span><span class="token string">&apos;nginx&apos;</span><span class="token punctuation">)</span> AS SELECT log FROM TAG:<span class="token string">&apos;*-firelens-*&apos;</span> WHERE container_name <span class="token operator">=</span> <span class="token string">&apos;nginx&apos;</span><span class="token punctuation">;</span>
 
 <span class="token comment"># &#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3078;&#x306E;&#x30BF;&#x30B0;&#x4ED8;&#x3051;</span>
 <span class="token punctuation">[</span>STREAM_TASK<span class="token punctuation">]</span>
@@ -2288,7 +2347,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"next":{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"path":"public/infrastructure_datadog.md","ref":"public/infrastructure_datadog.md","articles":[]},"previous":{"title":"監視","level":"1.16","depth":1,"ref":"","articles":[{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"path":"public/infrastructure_fluentd_and_fluentbit.md","ref":"public/infrastructure_fluentd_and_fluentbit.md","articles":[]},{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"path":"public/infrastructure_datadog.md","ref":"public/infrastructure_datadog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_fluentd_and_fluentbit.md","mtime":"2021-09-07T14:14:47.542Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-21T12:34:02.245Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"next":{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"path":"public/infrastructure_datadog.md","ref":"public/infrastructure_datadog.md","articles":[]},"previous":{"title":"監視","level":"1.16","depth":1,"ref":"","articles":[{"title":"▶ ︎Fluentd／FluentBit","level":"1.16.1","depth":2,"path":"public/infrastructure_fluentd_and_fluentbit.md","ref":"public/infrastructure_fluentd_and_fluentbit.md","articles":[]},{"title":"▶ ︎Datadog","level":"1.16.2","depth":2,"path":"public/infrastructure_datadog.md","ref":"public/infrastructure_datadog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_fluentd_and_fluentbit.md","mtime":"2021-09-21T12:46:46.060Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-21T13:24:55.117Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
