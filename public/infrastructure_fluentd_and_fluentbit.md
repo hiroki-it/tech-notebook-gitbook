@@ -43,14 +43,29 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
 
-#### ・SERVICEセクション
+#### ・設定ファイルのバリデーション
+
+参考：https://cloud.calyptia.com/visualizer
+
+<br>
+
+### SERVICE
+
+#### ・SERVICEセクションとは
+
+パイプライン全体の設定やファイルの読み込みを定義する．各設定の頭文字は大文字とする．
 
 ```shell
 [SERVICE]
     Flush 1
+    # 猶予時間
     Grace 30
+    # 転送対象の最低ログレベル
     Log_Level info
-    Streams_File stream_processor.conf # Stream Processorを使用する場合，設定ファイルのパス
+    # 読み込まれるParsers Multilineファイルの名前
+    Parsers_File parsers_multiline.conf
+    # 読み込まれるStream Processorファイルの名前
+    Streams_File stream_processor.conf
 ```
 
 <br>
@@ -65,6 +80,43 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 - https://docs.fluentbit.io/manual/pipeline/inputs
 - https://docs.fluentbit.io/manual/concepts/data-pipeline/input
+
+<br>
+
+### PARSE
+
+#### ・PARSEセクションとは
+
+
+
+#### ・MULTILINE_PARSERセクション
+
+参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
+
+```shell
+[MULTILINE_PARSER]
+    name          laravel
+    # 解析タイプ
+    type          regex
+    flush_timeout 1000
+    # 解析ルール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
+    rule          "start_state" "\[%Y-%m-%d %H:%M:%S\]" "cont"
+    rule          "cont"        "#*"                    "cont"
+```
+
+<br>
+
+### FILTER
+
+#### ・FILTERセクションとは
+
+特定の文字列を持つログのみをBUFFERセクションに転送する．
+
+```shell
+[FILTER]
+    Name  stdout
+    Match *
+```
 
 <br>
 
@@ -97,7 +149,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・STREAM_TASKセクションとは
 
-ログパイプラインにおいて，Filterプロセス後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，Inputプロセスに再度取り込まれ，最終的にOutputプロセスまで渡される．
+ログパイプラインにおいて，FILTERセクション後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，INPUTセクションに再度取り込まれ，最終的にOUTPUTセクションまで渡される．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
@@ -148,7 +200,7 @@ FluentBit／Fluentdが対応する他のサービスにログを転送できる�
 
 3. コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され，FluentBitはログを処理する．
 
-4. OUTPUTプロセスに渡され，FluentBitは指定した外部サービスにログを転送する．
+4. OUTPUTセクションに渡され，FluentBitは指定した外部サービスにログを転送する．
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
@@ -202,25 +254,50 @@ FROM amazon/aws-for-fluent-bit:latest
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
 
 ```shell
+#########################
+# Datadogへの転送
+#########################
 [OUTPUT]
-    Name              datadog # 転送先名
-    Match             *
-    Host              http-intake.logs.datadoghq.com # 転送先ホスト
+    # 転送先名
+    Name              datadog
+    # 転送対象とするログのタグ
+    Match             laravel
+    # 転送先ホスト
+    Host              http-intake.logs.datadoghq.com
     TLS               on
     compress          gzip
-    apikey            <DatadogのAPIキー> # コンテナの環境変数から参照し，割り当てる．
+    # DatadogのAPIキー．コンテナの環境変数から参照し，割り当てる．
+    apikey            <DatadogのAPIキー>
+    # serviceタグ
     dd_service        <DatadogのログエクスプローラーにおけるService名>
+    # sourceタグ
     dd_source         <DatadogのログエクスプローラーにおけるSource名>
     dd_message_key    log
-    dd_tags           <タグ名> # （例）env:${DD_ENV}
-
+    # 追加タグ（例）env:${DD_ENV}
+    dd_tags           <タグ名>
+    
+#########################
+# CloudWatchログへの転送
+#########################
 [OUTPUT]
-    Name              cloudwatch # 転送先名
-    Match             *
+    # 転送先名
+    Name              cloudwatch
+    # 転送対象とするログのタグ
+    Match             laravel
     log_key           log
     region            ap-northeast-1
-    log_group_name    <ロググループ名> # 予約変数あり．
-    log_stream_name   <ログストリーム名> # 予約変数あり．$(ecs_task_id) を使用して，タスクID別にログストリームを作成できる．
+    # 予約変数あり．
+    log_group_name    <ロググループ名>
+    # ログストリーム名．予約変数あり．タスクIDなど出力できる．
+    log_stream_name   container/laravel/$(ecs_task_id)
+    
+[OUTPUT]
+    Name              cloudwatch
+    Match             nginx
+    log_key           log
+    region            ap-northeast-1
+    log_group_name    <ロググループ名>
+    log_stream_name   container/nginx/$(ecs_task_id)
 ```
 
 ちなみに，標準で組み込まれている設定ファイルには，INPUTセクションがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTセクションを定義する必要が無い．
@@ -229,8 +306,10 @@ FROM amazon/aws-for-fluent-bit:latest
 
 ```shell
 [INPUT]
-    Name        forward # Forwardタイプ
+    # Inputタイプ
+    Name        forward
     Listen      0.0.0.0
+    # プロセスのリッスンポート
     Port        24224
 
 [OUTPUT]
@@ -244,20 +323,20 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ・```stream_processor.conf```ファイル
 
-FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．これらのログにタグを付け，INPUTプロセスからログを処理し直す．
+FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．これらのログにタグを付け，INPUTセクションからログを処理し直す．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
 ```shell
 # appコンテナのログへのタグ付け
 [STREAM_TASK]
-    Name app
-    Exec CREATE STREAM web WITH (tag='app') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'app';
+    Name laravel
+    Exec CREATE STREAM web WITH (tag='laravel') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'laravel';
 
 # webコンテナのログへのタグ付け
 [STREAM_TASK]
-    Name web
-    Exec CREATE STREAM web WITH (tag='web') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'web';
+    Name nginx
+    Exec CREATE STREAM web WITH (tag='nginx') AS SELECT log FROM TAG:'*-firelens-*' WHERE container_name = 'nginx';
 
 # 全てのコンテナのログへのタグ付け
 [STREAM_TASK]

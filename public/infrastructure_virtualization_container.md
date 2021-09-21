@@ -214,7 +214,7 @@ EXPOSE 80
 | **```COPY```**       | ・ホストOSのファイルをイメージレイヤー化し，コンテナの指定ディレクトリにコピー.<br>・イメージのビルド時にコピーされるだけで，ビルド後のコードの変更は反映されない．<br>・nginx.confファイル，php.iniファイル，などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う． |
 | **```CMD```**        | イメージのプロセスの起動コマンドを実行．```run```コマンドの引数として，上書きできる． |
 | **```VOLUME```**     | Volumeマウントを行う．```COPY```とは異なり，ビルド後のコードの変更が反映される．Docker Composeで記述した方が良い． |
-| **```EXPOSE```**     | コンテナのポートを開放する．また，イメージの利用者にとってのドキュメンテーション機能もあり，ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある．<br>参考：https://docs.docker.com/engine/reference/builder/#expose<br>また加えて，プロセス自体が命令をリッスンできるようにポートを設定する必要がある．ただし，多くの場合標準でこれが設定されている．（例：PHP-FPMでは，```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには，```listen = 127.0.0.1:9000```の設定がある） |
+| **```EXPOSE```**     | コンテナのポートを開放する．また，イメージの利用者にとってのドキュメンテーション機能もあり，ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある．<br>参考：<br>・https://docs.docker.com/engine/reference/builder/#expose<br>・https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/<br><br>また加えて，プロセス自体が命令をリッスンできるようにポートを設定する必要がある．ただし，多くの場合標準でこれが設定されている．（例：PHP-FPMでは，```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには，```listen = 127.0.0.1:9000```の設定がある） |
 | **```ENTRYPOINT```** | イメージのプロセスの起動コマンドを実行．```CMD```とは異なり，後から上書き実行できない．使用者に，コンテナの起動方法を強制させたい場合に適する． |
 | **```ENV```**        | OS上のコマンド処理で扱える変数を定義する．Dockerfileの命令では扱えない．```ARG```との違いの具体例については下記． |
 | **```ARG```**        | Dockerfikeの命令で扱える変数を定義する．OS上のコマンド処理では扱えない．```ENV```との違いの具体例については下記． |
@@ -594,7 +594,7 @@ $ docker container prune
 $ docker rm --force $(docker ps --all --quiet)
 ```
 
-#### ・commit
+#### ・停止中のコンテナからイメージ作成
 
 停止中のコンテナからイメージを作成する．
 
@@ -606,9 +606,9 @@ $ docker commit <コンテナ名> <コンテナID>
 $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
 ```
 
-#### ・--publish
+#### ・ポートマッピング
 
-ホストとコンテナのポートマッピングを```publish```オプションで設定できる．
+指定したホストポートとコンテナポートのマッピングを実行する．```--publish-all```オプションではホストポートをランダムに選んでポートマッピングを実行する．
 
 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
@@ -616,7 +616,7 @@ $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<�
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
 ```
 
-#### ・--expose
+#### ・コンテナポート開放
 
 コンテナポート公開を```expose```オプションで設定できる．これはDockerfileでEXPOSE命令として設定してもよい．なお，プロセスのリッスンするポートと合わせる必要がある．
 
