@@ -2,7 +2,6 @@ install:
 	npm install
 
 build:
-	git checkout develop
 	gitbook build . docs
 	sed -i '' 's/検索すると入力/検索/g' docs/*.html docs/**/*.html
 
@@ -16,6 +15,7 @@ commit-note:
 	git commit -m "update ノートを更新した．"
 
 commit-static: build
+	git checkout develop
 	git add docs
 	git commit -m "update 静的ファイルを更新した．"
 
