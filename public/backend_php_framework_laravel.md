@@ -353,7 +353,7 @@ class Department extends Model
      /**
      * @return HasMany
      */
-    public function hasManyEmployees() :HasMany
+    public function employees(): HasMany
     {
         // 一対多の関係を定義します．（デフォルトではemployee_idに関連付けます）
         return $this->hasMany(Employee::class);
@@ -374,24 +374,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Employee extends Model
 {
     /**
-     * 主キーとするカラム
-     * 
      * @var string 
      */
-    protected $primaryKey = "employee_id";
+    protected $primaryKey = "employee_id"; // 主キーとするカラム
 
     /**
-     * 多対一の関係を定義します．
-     * （デフォルトではdepartment_idに関連付けます）
-     * 
      * @return BelongsTo
      */
-    public function belongsToDepartments() :BelongsTo
+    public function department(): BelongsTo
     {
+        // 多対一の関係を定義します．（デフォルトではdepartment_idに関連付けます）
         return $this->belongsTo(Department::class);
     }
 }
 ```
+
+リレーションに基づいてJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐づくEmployeesモデル（子）を配列で参照できる．
 
 ```php
 <?php
@@ -399,8 +397,8 @@ class Employee extends Model
 // Departmentオブジェクトを取得
 $department = Department::find(1);
 
-// 全てのemployeeオブジェクトをarray型で取得
-$employees = $department->employees
+// 部署ID=1に紐づく全てのemployeeオブジェクトをarray型で取得
+$employees = $department->employees()
 ```
 
 #### ・主キーカラムの定義
@@ -418,28 +416,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    
     /**
-     * 主キーとするカラム
-     * （デフォルトではidが主キーです）
-     * 
      * @var string 
      */
-    protected $primaryKey = "foo_id";
+    protected $primaryKey = "foo_id"; // 主キーとするカラム（デフォルトではidが主キー）
     
     /**
-     * 主キーのデータ型
-     * 
      * @var string 
      */
-    protected $keyType = "int";
+    protected $keyType = "int"; // 主キーのデータ型
     
     /**
-     * 主キーのAutoIncrementの有効化します．
-     * 
      * @var bool 
      */
-    public $incrementing = true;
+    public $incrementing = true; // 主キーのAutoIncrementの有効化します．
 }
 ```
 
@@ -462,11 +452,9 @@ class Foo extends Model
     const UPDATED_AT = "updated_data_time";
     
     /**
-     * Eloquentモデルのタイムスタンプを更新するかの指示します．
-     *
      * @var bool
      */
-    protected $timestamps = true;
+    protected $timestamps = true; // Eloquentモデルのタイムスタンプを更新するかの指示します．
 }
 ```
 
@@ -1086,7 +1074,13 @@ class FooController extends Controller
 
 #### ・```with```メソッド
 
-二つのSELECT文を実行する．Eloquentモデルには```with```メソッドがないため，代わりにEloquentビルダーが持つ```with```メソッドがコールされる．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．N+1問題を防げる．
+親テーブルにアクセスして全てのデータを取得し，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する．この仕組みをEagerロードという．Eloquentモデルには```with```メソッドがないため，代わりにEloquentビルダーが持つ```with```メソッドがコールされる．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．N+1問題を防げる．
+
+参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
+
+ただし，```with```メソッドに他のメソッドをチェーンしてしまうと，Eagerロードの後にSQLを発行されてしまうため，Eagerロードの恩恵を得られなくなることに注意する．
+
+参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
 
 **＊実装例＊**
 
@@ -1101,25 +1095,21 @@ use App\Models\Department;
 
 class EmployeeController
 {
-    /**
-     * @param $id
-     */
-    public function getEmployeesById(int $id)
-    {
-        $department = new Department();
-
-        // 指定したIdのDepartmentに属するEmployeesを全て読み出します．
-        // （departments : employees = 1 : 多）
-        return $department->with("employees")->find($id);
-    }
-
-    public function getEmployeesWithDepartment()
+    public function getEmployeesByDepartment()
     {
         $department = new Department();
 
         // Departmentに属するEmployeesを全て読み出します．
         // （departments : employees = 1 : 多）
-        return $department->with("employees")->get();
+        $employees = $department->with("employees")->get();
+
+        foreach ($employees as $employee) {
+            // ここではDBアクセスはせずに，プロパティに保持された値を取得するだけ．
+            $name = $employee->name;
+            
+        }
+
+        // 続きの処理
     }
 }
 ```
@@ -1149,7 +1139,7 @@ class Department extends Model
      *
      * @return HasMany
      */
-    public function hasManyEmployees(): HasMany
+    public function employees(): HasMany
     {
         return $this->hasMany(Employee::class);
     }
@@ -1181,7 +1171,7 @@ class Employee extends Model
      * 
      * @return BelongsTo
      */
-    public function belongsToDepartments(): BelongsTo
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
     }
@@ -6164,7 +6154,7 @@ class EventServiceProvider extends ServiceProvider
 </form>
 ```
 
-Bladeを使用しない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．
+Bladeを使用しない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．リクエストのたびに異なるCSRFトークンがレスポンスされ，これを次のリクエストで使用する必要がある．
 
 参考：
 
@@ -6172,12 +6162,14 @@ Bladeを使用しない場合，セッション開始時のレスポンスの```
 - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
 - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
 
-ちなみに，PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は，ツールに事前スクリプトを設定しておくと良い．
+ちなみに，PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は，レスポンスで返信されるCSRFトークを扱えない，そこで，各リクエストで事前にルートパスのエンドポイントをコールし，CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い．
 
 ```javascript
-const INIT_CSRF_URL = 'http://127.0.0.1:8000';
+if (pm.request.method == 'GET') {
+    return true;
+}
 
-pm.sendRequest(INIT_CSRF_URL, (error, response, {cookies}) => {
+return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
     
     if (error) {
         console.error(error);
@@ -6193,7 +6185,7 @@ pm.sendRequest(INIT_CSRF_URL, (error, response, {cookies}) => {
 
     // laravelによってエンコードされたトークンをデコードする．
     const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
-    // 環境変数を挿入するために，該当する環境名を本Collectionに設定しておく必要がある．
+    // 環境変数を挿入するために，該当する環境名をCollection全体に適用しておく必要がある．
     pm.environment.set('XSRF_TOKEN', xsrfToken);
     console.log(xsrfToken);
     return true;

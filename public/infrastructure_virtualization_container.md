@@ -580,9 +580,9 @@ $ docker start -i <停止中コンテナ名>
 
 #### ・停止中のコンテナを削除
 
-**＊コマンド例＊**
-
 停止中のコンテナのみを全て削除する．
+
+**＊コマンド例＊**
 
 ```shell
 $ docker container prune
@@ -594,16 +594,36 @@ $ docker container prune
 $ docker rm --force $(docker ps --all --quiet)
 ```
 
-#### ・停止中のコンテナからイメージを作成
+#### ・commit
+
+停止中のコンテナからイメージを作成する．
 
 **＊コマンド例＊**
-
-コンテナからイメージを作成する．
 
 ```shell
 $ docker commit <コンテナ名> <コンテナID>
 
 $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
+```
+
+#### ・--publish
+
+ホストとコンテナのポートマッピングを```publish```オプションで設定できる．
+
+参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+
+```bash
+$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
+```
+
+#### ・--expose
+
+コンテナポート公開を```expose```オプションで設定できる．これはDockerfileでEXPOSE命令として設定してもよい．なお，プロセスのリッスンするポートと合わせる必要がある．
+
+参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+
+```bash
+$ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメージ名>:<タグ> /bin/bash
 ```
 
 <br>
@@ -917,26 +937,6 @@ Volumeを使用する場合のコンテナ配置手法の一つ．Dockerエリ�
 <br>
 
 ## 04. ホストとコンテナの間のネットワーク接続
-
-### コマンド
-
-#### ・ポートマッピング
-
-ホストとコンテナのポートマッピングを```publish```オプションで設定できる．
-
-```bash
-$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
-```
-
-#### ・コンテナポート公開
-
-コンテナポート公開を```expose```オプションで設定できる．なお，プロセスのリッスンするポートと合わせる必要がある．
-
-```bash
-$ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメージ名>:<タグ> /bin/bash
-```
-
-<br>
 
 ### bridgeネットワーク
 

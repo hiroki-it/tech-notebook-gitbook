@@ -436,14 +436,14 @@ Upgrade-Insecure-Requests: 1
 Cache-Control: max-age=31536000
 # ブラウザのバージョン情報等
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
-# レスポンスで送信してほしいMIMEタイプ
+# レスポンス返信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
+# レスポンスで返信してほしいエンコーディング形式
+Accept-Encondig: gzip, deflate, br
+# レスポンスで返信してほしい言語
+Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 遷移元のページ
 Referer: https://foo.co.jp/
-# レスポンスしてほしいエンコーディング形式
-Accept-Encondig: gzip, deflate, br
-# レスポンスで送信してほしい言語
-Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 送信元IPアドレス
 # ※プロキシサーバ（ALBやCloudFrontなども含む）を経由している場合に，それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
@@ -469,13 +469,14 @@ Upgrade-Insecure-Requests: 1
 Content-Type: application/x-www-firm-urlencoded
 # ブラウザのバージョン情報等
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ap
-# レスポンスで送信してほしいMIMEタイプ
+# レスポンス返信してほしいMIMEタイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
+# レスポンスで返信してほしいエンコーディング形式
+Accept-Encondig: gzip, deflate, br
+# レスポンスで返信してほしい言語
+Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 遷移元のページ
 Referer: https://foo.co.jp/
-Accept-Encondig: gzip, deflate, br
-# レスポンスで送信してほしい言語
-Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 各Cookieの値（二回目のリクエスト時に設定される）
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 # 送信元IPアドレス

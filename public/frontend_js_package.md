@@ -24,7 +24,7 @@ $ npm init
 
 #### ・```package.json```ファイルの構造
 
-```shell
+```bash
 {
   # npmパッケージ名．全てのnpmパッケージの中で，一意の名前でなければならない．
   "name": "tech-notebook-gitbook",
@@ -35,24 +35,25 @@ $ npm init
   # 本番環境と開発環境で依存するパッケージ名．パッケージ名は一意に識別できる．
   "dependencies": {
     "gitbook-plugin-advanced-emoji": "^0.2.2",
-    "gitbook-plugin-back-to-top-button": "^0.1.4",
     "gitbook-plugin-anchors": "^0.7.1",
-    "gitbook-plugin-ga": "^1.0.1",
-    "gitbook-plugin-intopic-toc": "^1.1.1",
-    "gitbook-plugin-prism": "^2.4.0",
+    "gitbook-plugin-back-to-top-button": "^0.1.4",
     "gitbook-plugin-copy-code-button": "^0.0.2",
-    "gitbook-plugin-sunlight-highlighter": "^0.4.3",
-    "gitbook-plugin-toolbar": "^0.6.0",
-    "gitbook-plugin-search-pro-fixed": "^1.0.1",
+    "gitbook-plugin-ga": "^1.0.1",
     "gitbook-plugin-github-buttons": "^3.0.0",
-    "gitbook-plugin-hide-published-with": "^1.0.3"
+    "gitbook-plugin-hide-published-with": "^1.0.3",
+    "gitbook-plugin-intopic-toc": "^1.1.1",
+    # パッケージとして登録されていないもの『リポジトリURLから直接参照する．『git+』を忘れないこと．
+    "gitbook-plugin-prism": "git+https://github.com/hiroki-it/gitbook-plugin-prism.git",
+    "gitbook-plugin-search-pro-fixed": "^1.0.1",
+    "gitbook-plugin-sunlight-highlighter": "^0.4.3",
+    "gitbook-plugin-toolbar": "^0.6.0"
   },
   # 開発環境のみ依存するパッケージ名．
   "devDependencies": {},
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hiroki-it/tech-notebook-gitbook.git"
+    "url": "https://github.com/hiroki-it/tech-notebook-gitbook.git"
   },
   # 著者名
   "author": {
@@ -76,7 +77,7 @@ $ npm init
 
 インストールされていないパッケージをインストールする．
 
-```shell
+```bash
 $ npm install
 ```
 
@@ -84,7 +85,7 @@ $ npm install
 
 パッケージのインストール時に，ディレクトリの実行権限不足でインストールが停止することがある．これを無視してインストールを行う．
 
-```shell
+```bash
 $ npm install --force
 ```
 
@@ -92,7 +93,7 @@ $ npm install --force
 
 デフォルトで有効化されている．パッケージのインストール時に，依存するパッケージとして，```dependencies```キーにパッケージ名とバージョンを書き込む．
 
-```shell
+```bash
 $ npm install --save
 ```
 
@@ -104,7 +105,7 @@ $ npm install --save
 
 インストールされていないパッケージをインストールする．また，バージョン定義をもとに更新可能なパッケージを更新する．
 
-```shell
+```bash
 $ npm update
 ```
 
@@ -116,16 +117,16 @@ $ npm update
 
 ユーザが定義したエイリアス名のコマンドを実行する．
 
-```shell
+```bash
 $ npm run <エイリアス名>
 ```
 
 あらかじめ，任意のエイリアス名を```scripts```キー下に定義する．エイリアスの中で，実行するコマンドのセットを定義する．ちなみに，実行するコマンドの中で，再度```run```コマンドを定義することも可能である．
 
-```json
+```shell
 {
     "scripts": {
-        "<エイリアス名>": "<実行するコマンド>",
+         # "<エイリアス名>": "<実行するコマンド>",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -143,7 +144,7 @@ $ npm run <エイリアス名>
 
 メモリ上限を設定する．
 
-```shell
+```bash
 $ export NODE_OPTIONS="--max-old-space-size=2048"
 ```
 
