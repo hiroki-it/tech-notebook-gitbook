@@ -311,12 +311,48 @@ let x = "hoge";
 
 #### ・```for ... of```とは
 
-配列を順序を保ったまま走査し，配列の値を取得する．
+配列を順序を保ったまま走査し，配列の値を取得する．オブジェクトに対して```entires```メソッドを使用し，一度配列に変換すれば，オブジェクトでも```for ... of```を使用できる．```for ... in```を使用するより，こちらを使用した方が良い．
+
+#### ・配列の場合
 
 ```javascript
 const  array = ["foo", "bar", "baz"];
 
 for (const value of array) {
+  console.log(value);
+}
+
+// foo
+// bar
+// baz
+```
+
+インデックス番号を取得することもできる．
+
+```javascript
+const  array = ["foo", "bar", "baz"];
+
+for (const value of array) {
+  console.log(value);
+}
+
+// foo
+// bar
+// baz
+```
+
+#### ・オブジェクト（連想配列）の場合
+
+オブジェクトに対して```entires```メソッドを実行し，一度配列に変換すれば，オブジェクトでも```for ... of```を使用できる．
+
+```javascript
+const object = {
+  "x": "foo",
+  "y": "bar",
+  "z": "baz"
+};
+
+for (const [key, value] of Object.entries(object)) {
   console.log(value);
 }
 
@@ -331,25 +367,7 @@ for (const value of array) {
 
 #### ・```for ... in```とは
 
-オブジェクト（連想配列）／配列を順序を保たずに走査し，オブジェクト／配列のキー名を取得する．
-
-#### ・オブジェクト（連想配列）の場合
-
-```javascript
-const object = {
-  "x": "foo",
-  "y": "bar",
-  "z": "baz"
-};
-
-for (const key in object) {
-  console.log(object[key]);
-}
-
-// foo
-// bar
-// baz
-```
+配列／オブジェクト（連想配列）を順序を保たずに走査し，オブジェクト／配列のキー名を取得する．
 
 #### ・配列の場合
 
@@ -365,3 +383,24 @@ for (const key in array) {
 // 2
 ```
 
+#### ・オブジェクト（連想配列）の場合
+
+```javascript
+const object = {
+  "x": "foo",
+  "y": "bar",
+  "z": "baz"
+};
+
+for (const key in object) {
+  console.log(key);
+  console.log(object[key]);
+}
+
+// x
+// y
+// z
+// foo
+// bar
+// baz
+```
