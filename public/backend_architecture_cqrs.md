@@ -22,12 +22,16 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### Command（書き込み）
 
-具体的には，DBのレコードをCREATE，UPDATE，DELETE処理を指す．今回，クリーンアーキテクチャを前提としてCQRSを説明する．概念や実装方法は以下のリンクを参考にせよ．
+#### ・Commandとは
+
+CREATE，UPDATE，DELETE処理を実行するオブジェクトのこと．今回，クリーンアーキテクチャを前提としてCQRSを説明する．概念や実装方法は以下のリンクを参考にせよ．
 
 参考：
 
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design_clean_architecture.html
 - https://github.com/hiroki-it/ddd-api-with-laravel#ddd-api-with-laravel
+
+#### ・処理順序
 
 1. インターフェース層のコントローラにて，リクエストモデルを作成する．
 2. ユースケース層のインターラクターにて，リクエストモデルからデータを取り出し，ドメインモデルを作成する．これをインフラ層のリポジトリに渡す．
@@ -39,12 +43,16 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### Query（読み出し）
 
-具体的には，DBのレコードをREADする処理を指す．今回，クリーンアーキテクチャを前提としてCQRSを説明する．概念や実装方法は以下のリンクを参考にせよ．
+#### ・Queryとは
+
+READ処理を実行するオブジェクトのこと．今回，クリーンアーキテクチャを前提としてCQRSを説明する．概念や実装方法は以下のリンクを参考にせよ．
 
 参考：
 
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design_clean_architecture.html
 - https://github.com/hiroki-it/ddd-api-with-laravel#ddd-api-with-laravel
+
+#### ・処理順序
 
 1. インターフェース層のコントローラにて，リクエストモデルを作成する．
 2. ユースケース層のインターラクターにて，リクエストモデルからデータを取り出し，IDモデルやCriteriaモデルを作成する．これをインフラ層のリポジトリに渡す．

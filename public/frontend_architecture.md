@@ -502,16 +502,15 @@ rejectFunc.catch((err) => {
 以下の全ては，同じ処理を定義している．
 
 ```javascript
-// 単にreturnとしてもPromiseオブジェクトが返却される．
 const asyncFunc = async () => {
     
     return "SUCCESS"
 }
 
+// 単にreturnとしてもPromiseオブジェクトが返却される．
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 ```javascript
-// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 const asyncFunc = async () => {
     
     return new Promise((resolve, reject) => {
@@ -519,15 +518,16 @@ const asyncFunc = async () => {
     })
 }
 
+// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 ```javascript
-// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 const asyncFunc = async () => {
     
     return Promise.resolve("SUCCESS") // Promise { "SUCCESS" }
 }
 
+// Promiseオブジェクトを返却するようにしても，入れ子にはならない．
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 また，axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを使用してもよい．
