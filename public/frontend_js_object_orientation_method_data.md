@@ -327,23 +327,23 @@ for (const value of array) {
 // baz
 ```
 
-インデックス番号を取得することもできる．
+配列の```entires```メソッドを使用すれば，インデックス番号を取得することもできる．
 
 ```javascript
 const  array = ["foo", "bar", "baz"];
 
-for (const value of array) {
-  console.log(value);
+for (const [key, value] of array.entries()) {
+  console.log(key);
 }
 
-// foo
-// bar
-// baz
+// 0
+// 1
+// 2
 ```
 
-#### ・オブジェクト（連想配列）の場合
+#### ・オブジェクトの場合
 
-オブジェクトに対して```entires```メソッドを実行し，一度配列に変換すれば，オブジェクトでも```for ... of```を使用できる．
+オブジェクトに対して```entires```メソッドを実行し，一度連想配列に変換すれば，オブジェクトでも```for ... of```を使用できる．
 
 ```javascript
 const object = {
@@ -372,10 +372,10 @@ for (const [key, value] of Object.entries(object)) {
 #### ・配列の場合
 
 ```javascript
-const  array = ["foo", "bar", "baz"];
+const array = ["foo", "bar", "baz"];
 
 for (const key in array) {
-  console.log(value);
+  console.log(key);
 }
 
 // 0
@@ -383,7 +383,7 @@ for (const key in array) {
 // 2
 ```
 
-#### ・オブジェクト（連想配列）の場合
+#### ・オブジェクトの場合
 
 ```javascript
 const object = {
@@ -404,3 +404,62 @@ for (const key in object) {
 // bar
 // baz
 ```
+
+<br>
+
+### continue
+
+#### ・continueとは
+
+反復処理の現在のループをスキップし，次のループを開始する．
+
+```php
+const array = ["foo", "bar", "baz"];
+
+for (const [key, value] of array.entries()) {
+
+    // キーが偶数の組をスキップする．
+    if(!(key % 2 == 0)){
+        continue;
+    }
+
+    console.log(value);
+}
+
+// foo
+// baz
+```
+
+#### ・forEachを使用した代替法
+
+反復処理のループを```continue```でスキップと同じ動作を，配列を扱う関数のコールバック関数で早期リターンで実現できる．```continue```を使用するより，こちらの方が良い．
+
+参考：https://www.deep-rain.com/programming/javascript/778#continue
+
+```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```，```fliter```，```map```，```reduce```，```some```）があり，用途に合わせて使い分ける．
+
+参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
+
+ちなみにPHPにも，```forEach```関数と同じような使い方をする```array_walk```関数がある．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_iteration.html
+
+```javascript
+const array = ["foo", "bar", "baz"];
+
+array.forEach(function (value, key) {
+    
+    // キーが偶数の組をスキップする．
+    if(!(key % 2 == 0)){
+        return;
+    }
+    
+    console.log(value);
+})
+
+// foo
+// baz
+```
+
+
+

@@ -120,6 +120,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 
 ```http
 POST https://example.co.jp/foo HTTP/2
+Content-Type: application/x-www-form-urlencoded
     
 # ボディ
 client_id=*****&grant_type=client_credentials&scope=messaging:push
@@ -129,7 +130,7 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
 参考：
 
-- ttps://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+- https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
 - https://ja.developer.box.com/reference/resources/access-token/
 
 ```http

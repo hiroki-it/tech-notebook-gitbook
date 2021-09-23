@@ -55,21 +55,28 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
 
-#### ・境界付けられたコンテキストにおけるユビキタス言語に基づくモデリング
+#### ・ユビキタス言語による境界付けられたコンテキストの区別化
 
 ドメインエキスパートの部署や業務フローの立ち位置が異なれば，同じ『単語』や『動詞』であっても，異なる意味合い／定義づけのユビキタス言語が使用される．異なるユビキタス言語を元にして，境界付けられたコンテキストを定義する．この時，ユビキタス言語は，他の境界付けられたコンテキストでは通じないものであればあるほどよい．境界付けられたコンテキストそれぞれのユビキタス言語に合わせて，異なる名前でモデリングしていく．境界付けられたコンテキストを定義しない場合，異なるユビキタス言語をコアドメインやサブドメイン間で共有することとなり，それぞれの関心に無関係なデータを保持することになってしまう．
 
-参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
-
-![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
-
 **＊例＊**
 
-バイヤー（仕入れ）部，マーケティング部，在庫管理部のドメインエキスパートは，『本（商品）』という単語に対する意味合い／定義づけが異なる．そのため，それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき，モデル名／データ名はそれぞれのユビキタス言語に合わせた名前になる．例えば，マーケの境界付けられたコンテキストでは，モデル名はCouponとなり，割引期間データを保持する必要があるが，仕入部や在庫部ではこのデータは不要である．一方，ISBNは全ての境界付けられたコンテキストのモデルに必要なデータである．境界付けられたコンテキストを定義しない場合，一つの商品モデルが全てのデータを保持することとなり，それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう．
+本を販売するECサイトのビジネスモデルに基づいたユビキタス言語と境界付けられたコンテキスト．バイヤー（仕入れ）部，マーケティング部，在庫管理部のドメインエキスパートは，『本（商品）』という単語に対する意味合い／定義づけが異なる．そのため，それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき，モデル名／データ名はそれぞれのユビキタス言語に合わせた名前になる．例えば，マーケの境界付けられたコンテキストでは，モデル名はCouponとなり，割引期間データを保持する必要があるが，仕入部や在庫部ではこのデータは不要である．一方，ISBNは全ての境界付けられたコンテキストのモデルに必要なデータである．境界付けられたコンテキストを定義しない場合，一つの商品モデルが全てのデータを保持することとなり，それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう．
 
 参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
 ![ddd_strategic_design_flow_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ddd_strategic_design_flow_detail.png)
+
+**＊例＊**
+
+契約請求管理アプリを提供するアルプのビジネスモデルに基づいたユビキタス言語と境界付けられたコンテキスト．契約管理コンテキスト，商品管理コンテキスト，請求管理コンテキスト，がある．取り組みとして，週次でユビキタス言語の更新を行っている．
+
+参考：
+
+- https://note.com/alpinc/n/nab47ab9273c6
+- https://thealp.co.jp/
+
+![ubiquitous_language_list](C:\Users\h.hasegawa\Downloads\ubiquitous_language_list.png)
 
 #### ・コンテキストマップとは
 
@@ -78,6 +85,14 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+
+#### ・ドメインモデルの抽出
+
+ユビキタス言語からドメインモデルを設計する．
+
+参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+
+![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
 <br>
 

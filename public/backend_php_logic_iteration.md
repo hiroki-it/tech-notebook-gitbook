@@ -361,6 +361,10 @@ for ($i = 0; $i < 2; $i++) {
         $sum += $x;
     }
 }
+
+echo $sum;
+
+// 1
 ```
 
 <br>
@@ -369,47 +373,76 @@ for ($i = 0; $i < 2; $i++) {
 
 ### continue
 
-#### ・スキップ
+#### ・continueとは
 
-反復回をスキップし，以降を再び続行する．
+反復処理の現在のループをスキップし，次のループを開始する．
 
 ```php
 <?php
 
+$array = [1, 2, 3, 4, 5];
+
 foreach ($array as $key => $value) {
-    
+
     // キーが偶数の組をスキップする．
     if (!($key % 2 == 0)) {
         continue;
     }
-    
-    echo $value . 'は奇数です';
+
+    echo $value . 'は奇数です' . "\n";
 }
+
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
+```
+
+#### ・array_walkを使用した代替法
+
+反復処理のループを```continue```でスキップと同じ動作を，配列を扱う関数のコールバック関数で早期リターンで実現できる．```continue```を使用するより，こちらの方が良い．
+
+```php
+<?php
+
+$array = [1, 2, 3, 4, 5];
+
+array_walk($array, function ($value, $key) {
+
+    // キーが偶数の組をスキップする．
+    if (!($key % 2 == 0)) {
+        return; // continueと同じ動作を早期リターンで実現する．
+    }
+
+    echo $value . 'は奇数です' . "\n";
+});
+
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
 ```
 
 <br>
 
 ### break
 
-#### ・途中停止
+#### ・breakとは
 
-反復を停止する．
+反復処理の現在のループを停止し，以降のループも実行しない．
 
 ```php
 <?php
 
-$array = ['one', 'two', 'three', 'four', '', 'five'];
+$array = [1, 2, 3, 4, '', 5];
 
 foreach ($array as $value) {
-    
+
     // 空の値で繰り返しを停止する．
     if (empty($value)) {
         break;
     }
-    
+
     echo $value;
 }
-
 ```
 
 
