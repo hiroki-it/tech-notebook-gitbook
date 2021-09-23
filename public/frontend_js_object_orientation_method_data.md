@@ -430,13 +430,13 @@ for (const [key, value] of array.entries()) {
 // baz
 ```
 
-#### ・forEachを使用した代替法
+#### ・```forEach```関数を使用した代替法
 
 反復処理のループを```continue```でスキップと同じ動作を，配列を扱う関数のコールバック関数で早期リターンで実現できる．```continue```を使用するより，こちらの方が良い．
 
 参考：https://www.deep-rain.com/programming/javascript/778#continue
 
-```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```，```fliter```，```map```，```reduce```，```some```）があり，用途に合わせて使い分ける．
+PHPにも，```forEach```関数と同じように配列に対してコールバック関数を適用する関数（```find```，```fliter```，```map```，```reduce```，```some```）があり，用途に合わせて使い分ける．
 
 参考：https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
