@@ -36,47 +36,94 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### 戦略的設計にまつわる用語
 
-#### ・コアドメイン，サブドメイン，境界付けられたコンテキストとは
+#### ・ドメイン
 
-ビジネスのドメインは，コアドメインとサブドメインに分類できる．最初ドメインを定義し，ここから中心的なビジネスであるコアドメインと，補助的なビジネスであるサブドメインを切り分ける必要がある．また，異なるユビキタス言語から境界付けられたコンテキストを定義づける．
+ビジネスモデル全体で見た時に，システム化の対象となる部分領域のこと．ビジネスモデル全体をいくつかのドメインを分割する方法として，一連の業務フローの中で，業務の担当者の属性が変化するタイミングに着目すると良い．
+
+**＊例＊**
+
+インターネット広告代理店の例．ビジネスモデルに基づく複数のドメインを示す．業務フローの担当者の変化として，まず問い合わせで注文を受けて広告アカウントを作成する『営業担当者』，制作した広告をアカウントに入稿する『制作担当者』，入稿された広告を運用して広告効果を高める『マーケティング担当者』，最後に広告の依頼者に料金を請求する『経理担当者』が挙げられる．これにより，インターネット広告代理店のビジネスモデルは，各担当者に対応するドメインに分割できる．
+
+参考：https://labs.septeni.co.jp/entry/2021/04/15/130000
+
+![internet_advertising_agency_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internet_advertising_agency_domain.png)
+
+**＊例＊**
+
+![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_business_model.png)
+
+完全個室ジムを運営するハコジムの例．ビジネスモデルに基づく複数のドメインを示す．業務フローの担当者の変化として，まず個室ジムに適する物件を探す『物件担当者』，ジムのトレーナーを採用して会員に紹介する『採用担当者』，個室ジムの利用会員を獲得する『営業担当者』が挙げられる．これにより，ハコジムのビジネスモデルは，各担当者に対応するドメインに分割できる．
 
 参考：
 
-- https://little-hands.hatenablog.com/entry/2017/11/28/bouded-context-concept
+- https://hacogym.jp/
+- https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_domain.png)
+
+#### ・コアドメイン，サブドメイン，ドメインエキスパートとは
+
+各ドメインのドメインエキスパート（ビジネスルールに詳しい人）と，エンジニアが話し合いながら，ドメイン内の主要業務をコアドメイン，補助的な業務をサブドメインに分類する．
+
+参考：
+
 - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+- https://labs.septeni.co.jp/entry/2021/04/15/130000
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context.png)
 
-#### ・ドメインエキスパート，ユビキタス言語とは
+**＊例＊**
 
-ドメインエキスパート（現実世界のビジネスルールに詳しく，また実際にシステムを使う人）と，エンジニアが話し合いながら，ビジネスルールに対して，ドメインからコアドメインとサブドメインを切り分けていく．この時，ドメインエキスパート間で，特定の『単語』や『動詞』の意味合い／定義づけが異なる場合，これを別々の名前からなるユビキタス言語として定義づける．ユビキタス言語の違いは，異なる境界付けられたコンテキストとして定義づけられ，ユビキタス言語は他の境界付けられたコンテキストでは通じないものでなければならない．
+完全個室ジムを運営するハコジムの例．ドメインのうちで，個室ジムドメインに基づくコアドメインとサブドメインを示す．コアドメインは予約ドメイン，それ以外はサブドメインとしている．
+
+参考：
+
+- https://hacogym.jp/
+- https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_subdomain.png)
+
+#### ・ユビキタス言語とは
+
+ドメインエキスパート間で，特定の『単語』や『動詞』の意味合い／定義づけが異なる場合，これを別々の名前からなるユビキタス言語として定義づける．
 
 参考：https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
 
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/domain-model.png)
 
-#### ・ユビキタス言語による境界付けられたコンテキストの区別化
+#### ・境界付けられたコンテキストとは
 
-ドメインエキスパートの部署や業務フローの立ち位置が異なれば，同じ『単語』や『動詞』であっても，異なる意味合い／定義づけのユビキタス言語が使用される．異なるユビキタス言語を元にして，境界付けられたコンテキストを定義する．この時，ユビキタス言語は，他の境界付けられたコンテキストでは通じないものであればあるほどよい．境界付けられたコンテキストそれぞれのユビキタス言語に合わせて，異なる名前でモデリングしていく．境界付けられたコンテキストを定義しない場合，異なるユビキタス言語をコアドメインやサブドメイン間で共有することとなり，それぞれの関心に無関係なデータを保持することになってしまう．
+ドメインエキスパートの業務フローの立ち位置が異なれば，同じ『単語』や『動詞』であっても，異なる意味合い／定義づけのユビキタス言語が使用される．異なるユビキタス言語を元にして，境界付けられたコンテキストを定義する．この時，ユビキタス言語は，他の境界付けられたコンテキストでは通じないものであればあるほどよい．境界付けられたコンテキストそれぞれのユビキタス言語に合わせて，異なる名前でモデリングしていく．境界付けられたコンテキストを定義しない場合，異なるユビキタス言語をコアドメインやサブドメイン間で共有することとなり，それぞれの関心に無関係なデータを保持することになってしまう．
 
 **＊例＊**
 
-本を販売するECサイトのビジネスモデルに基づいたユビキタス言語と境界付けられたコンテキスト．バイヤー（仕入れ）部，マーケティング部，在庫管理部のドメインエキスパートは，『本（商品）』という単語に対する意味合い／定義づけが異なる．そのため，それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき，モデル名／データ名はそれぞれのユビキタス言語に合わせた名前になる．例えば，マーケの境界付けられたコンテキストでは，モデル名はCouponとなり，割引期間データを保持する必要があるが，仕入部や在庫部ではこのデータは不要である．一方，ISBNは全ての境界付けられたコンテキストのモデルに必要なデータである．境界付けられたコンテキストを定義しない場合，一つの商品モデルが全てのデータを保持することとなり，それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう．
+本を販売するECサイトの例．コアドメインとサブドメインに基づいたユビキタス言語と境界付けられたコンテキストを示す．バイヤー（仕入れ）部，マーケティング部，在庫管理部のドメインエキスパートは，『本（商品）』という単語に対する意味合い／定義づけが異なる．そのため，それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義でき，モデル名／データ名はそれぞれのユビキタス言語に合わせた名前になる．例えば，マーケの境界付けられたコンテキストでは，モデル名はCouponとなり，割引期間データを保持する必要があるが，仕入部や在庫部ではこのデータは不要である．一方，ISBNは全ての境界付けられたコンテキストのモデルに必要なデータである．境界付けられたコンテキストを定義しない場合，一つの商品モデルが全てのデータを保持することとなり，それぞれのドメインエキスパートが関心を持たないデータも保持することになってしまう．
 
 参考：https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
-![ddd_strategic_design_flow_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ddd_strategic_design_flow_detail.png)
+![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/book_ec_ubiquitous_language.png)
 
 **＊例＊**
 
-契約請求管理アプリを提供するアルプのビジネスモデルに基づいたユビキタス言語と境界付けられたコンテキスト．契約管理コンテキスト，商品管理コンテキスト，請求管理コンテキスト，がある．取り組みとして，週次でユビキタス言語の更新を行っている．
+完全個室ジムを運営するハコジムの例．個室ジムドメインのコアドメインとサブドメインに基づく境界付けられたコンテキスト．認証コンテキスト，予約コンテキスト，顧客管理コンテキスト，銀行支払いコンテキスト，クレジットカード支払いコンテキストがある．
+
+参考：
+
+- https://hacogym.jp/
+- https://zenn.dev/hsshss/articles/e11efefc7011ab
+
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_bounded-context.png)
+
+**＊例＊**
+
+契約請求管理アプリを提供するアルプの例．コアドメインとサブドメインに基づいたユビキタス言語と境界付けられたコンテキストを示す．契約管理コンテキスト，商品管理コンテキスト，請求管理コンテキスト，がある．取り組みとして，週次でユビキタス言語の更新を行っている．
 
 参考：
 
 - https://note.com/alpinc/n/nab47ab9273c6
 - https://thealp.co.jp/
 
-![ubiquitous_language_list](C:\Users\h.hasegawa\Downloads\ubiquitous_language_list.png)
+![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/contract_billing_management_ubiquitous_language.png)
 
 #### ・コンテキストマップとは
 
@@ -86,13 +133,19 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
 
-#### ・ドメインモデルの抽出
+#### ・コアドメインとサブドメインのモデル化
 
-ユビキタス言語からドメインモデルを設計する．
+コアドメインとサブドメインを対象として，境界付けられたコンテキスト内のユビキタス言語に基づいてドメインモデルを設計する．コアドメインのシステムは内製である必要があるが，サブドメインのシステムは外製／内製のいずれでも問題ない．
 
 参考：https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
 
 ![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/core-domain_sub-domain_bounded-context_modeling.png)
+
+**＊例＊**
+
+完全個室ジムを運営するハコジムの例．個室ジムドメインのそれぞれの境界付けられたコンテキストに基づくモデリング．コアドメインの予約コンテキストとスマートロックコンテキストは，一つのマイクロサービスとして内製化している．一方で，それ以外の境界付けられたコンテキストは外製化している．
+
+![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_subdomain_modeling.png)
 
 <br>
 
