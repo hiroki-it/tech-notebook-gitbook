@@ -28,7 +28,8 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 | 入力時／出力時 | 責務                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 入力           | インフラ層のルーターから入力されるパラメータをAPI仕様（必須，書式，など）と照らし合わせ，バリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
+| 入力           | インフラ層のルータから入力される認証情報を照合し，認証を実行する． | 認証はインターフェース層あるいはユースケース層に実装する．ちなみに，認可はドメイン層に実装する．<br>参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173<br>・https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html |
+|                | インフラ層のルーターから入力されるパラメータをAPI仕様（必須，書式，など）と照らし合わせ，バリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
 |                | インフラ層のルーターから入力されるパラメータをリクエストモデルに変換し，ユースケース層のインターラクターに入力する． | リクエストモデル生成処理で，ドメイン層への依存が必要になる．リクエストモデル生成処理を切り分け，ユースケース層に置くと，コントローラがドメイン層に依存することを防げる． |
 | 出力           | ユースケース層のインターラクターから出力されるレスポンスモデルを，JSONデータとしてフロントエンドにに返信する． | バックエンドをAPIとして使用する場合，プレゼンターは不要である． |
 |                | ユースケース層のインターラクターから出力されるプレゼンターをビューモデルに変換し，バックエンドのテンプレートエンジンに出力する． | バックエンドでテンプレートエンジンを使用してHTMLを生成する場合，プレゼンターが必要である． |
@@ -132,89 +133,121 @@ class FormatValidator
 <?php
 
 namespace App\UseCase\Foo\Interactors;
-    
+
 /**
  * Foo作成インターラクタークラス
  * ※ユースケースごとにクラスを定義する方法
  */
 class FooCreateInteractor
 {
-    private $fooRepository
-        
+    /**
+     * @var FooRepository 
+     */
+    private FooRepository $fooRepository;
+
+    /**
+     * @param FooRepository $fooRepository
+     */
     public function __constructor(FooRepository $fooRepository)
     {
-        $this->fooRepository = $fooRepository
+        $this->fooRepository = $fooRepository;
     }
-    
+
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
     public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
     {
-        $foo = $fooRepository->create(
+        $foo = $this->fooRepository->create(
             new Bar($createFooRequest->bar),
             new Baz($createFooRequest->baz)
-        )
+        );
             
         // 何らかの処理    
     }
-}  
+}
 ```
 
 ```php
 <?php
 
 namespace App\UseCase\Foo\Interactors;
-    
+
 /**
  * Fooインターラクタークラス
  * ※CURD全てのユースケースを，一つのクラスを定義する方法
  */
 class FooInteractor
 {
-    private $fooRepository
-        
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepository;
+
+    /**
+     * @param FooRepository $fooRepository
+     */
     public function __constructor(FooRepository $fooRepository)
     {
-        $this->fooRepository = $fooRepository
+        $this->fooRepository = $fooRepository;
     }
-    
+
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
     public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
     {
-        $foo = $fooRepository->create(
+        $foo = $this->fooRepository->create(
             new Bar($createFooRequest->bar),
             new Baz($createFooRequest->baz)
-        )
-            
+        );
+
         // 何らかの処理
     }
-    
+
+    /**
+     * @param GetFooRequest $getFooRequest
+     * @return GetFooResponse
+     */
     public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
     {
-        $foo = $fooRepository->findById(
-            new FooId($createFooRequest->id)
-        )  
-            
-        // 何らかの処理            
+        $foo = $this->fooRepository->findById(
+            new FooId($getFooRequest->id)
+        );
+
+        // 何らかの処理
     }
-    
+
+    /**
+     * @param UpdateFooRequest $updateFooRequest
+     * @return UpdateFooResponse
+     */
     public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
     {
-        $foo = $fooRepository->update(
-            new FooId($createFooRequest->id),
-            new Bar($createFooRequest->bar),
-            new Baz($createFooRequest->baz)
-        )
-            
-        // 何らかの処理    
+        $foo = $this->fooRepository->update(
+            new FooId($updateFooRequest->id),
+            new Bar($updateFooRequest->bar),
+            new Baz($updateFooRequest->baz)
+        );
+
+        // 何らかの処理
     }
-    
+
+    /**
+     * @param DeleteFooRequest $deleteFooRequest
+     * @return DeleteFooResponse
+     */
     public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
     {
-        $foo = $fooRepository->delete(
-            new FooId($createFooRequest->id)
-        )  
-            
-        // 何らかの処理      
+        $foo = $this->fooRepository->delete(
+            new FooId($deleteFooRequest->id)
+        );
+
+        // 何らかの処理
     }
-}  
+}
 ```
 
 <br>
@@ -231,20 +264,83 @@ class FooInteractor
 <?php
 
 namespace App\UseCase\Foo\InputBoundaries;
-    
+
 /**
  * Fooインターラクターインターフェース
  */
 interface FooInteractorInterface
 {
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
     public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
 
+    /**
+     * @param GetFooRequest $getFooRequest
+     * @return GetFooResponse
+     */
     public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
     
+    /**
+     * @param UpdateFooRequest $updateFooRequest
+     * @return UpdateFooResponse
+     */
     public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
     
+    /**
+     * @param DeleteFooRequest $deleteFooRequest
+     * @return DeleteFooResponse
+     */
     public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
 }  
+```
+
+#### ・認可
+
+ドメイン層のリポジトリを使用して，該当のIDのエンティティに対してアクセス可能かを検証する．インターネットで調査したところ，オニオンアーキテクチャにて，ドメイン層でドメインサービスとして定義し，これをアプリケーション層でコールする方が多かった．これをクリーンアーキテクチャに当てはまると，ユースケース層で定義し，インターフェース層でコールすればよいと判断した．これについては追って調査が必要．
+
+参考：
+
+- https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
+- https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
+- https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
+- https://github.com/little-hands/ddd-q-and-a/issues/121
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Usecase\Foo\Authorizer;
+
+class FooAuthorizer
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepositoy;
+
+    /**
+     * @param FooRepository $fooRepositoy
+     */
+    public function __construct(FooRepository $fooRepositoy)
+    {
+        $this->fooRepositoy = $fooRepositoy;
+    }
+
+    /**
+     * 更新処理を実行可能かを検証します．
+     *
+     * @param FooId  $fooId
+     * @param UserId $userId
+     * @return bool
+     */
+    public function canUpdateById(FooId $fooId, UserId $userId): bool
+    {
+        return $this->fooRepository->findById($fooId)->userId->equals($userId);
+    }
+}
 ```
 
 <br>
@@ -280,6 +376,10 @@ class FooCreateRequest
      */
     private string $fooName;
 
+    /**
+     * @param int    $fooId
+     * @param string $fooName
+     */
     public function __construct(int $fooId, string $fooName)
     {
         $this->fooId = $fooId;
@@ -312,6 +412,9 @@ class FooIndexResponse
      */
     private array $foos;
 
+    /**
+     * @param array $foos
+     */
     public function __construct(array $foos)
     {
         $this->foos = $foos;
@@ -348,6 +451,10 @@ class FooCreateResponse
      */
     private string $fooName;
 
+    /**
+     * @param int    $fooId
+     * @param string $fooName
+     */
     public function __construct(int $fooId, string $fooName)
     {
         $this->fooId = $fooId;
@@ -375,6 +482,8 @@ class FooCreateResponse
 
 ユースケース層の中で，ドメイン層のオブジェクトを使用する汎用的なロジックが切り分けられたもの．ドメイン層のドメインサービスとは異なり，あくまでユースケース層のロジックが切り分けられたものである．
 
+#### ・通知処理
+
 **＊実装例＊**
 
 Slackへの通知処理をアプリケーションサービスとして切り分ける．
@@ -386,8 +495,14 @@ namespace App\UseCase\Foo\Services;
 
 class SlackNotificationService
 {
+    /**
+     * @var Message 
+     */
     private $message;
 
+    /**
+     * @param Message $message
+     */
     public function __construct(Message $message)
     {
         $this->message = $message;
@@ -682,6 +797,10 @@ class YmdType extends Type
 
 #### ・重複確認
 
+ドメイン層のリポジトリを使用して，該当の名前のエンティティがDBに存在するかどうかを検証する．
+
+**＊実装例＊**
+
 ```php
 <?php
 
@@ -689,10 +808,24 @@ namespace App\Domain\Foo\Services;
 
 class FooService
 {
+    /**
+     * @var FooRepository
+     */
     private FooRepository $fooRepositoy;
-
+    
+    /**
+     * @param FooRepository $fooRepositoy
+     */
+    public function __construct(FooRepository $fooRepositoy)
+    {
+        $this->fooRepositoy = $fooRepositoy;
+    }
+    
     /**
      * エンティティがすでに存在しているかどうかを判定します．
+     *
+     * @param Foo $foo
+     * @return bool
      */
     public function exists(Foo $foo): bool
     {
@@ -706,6 +839,8 @@ class FooService
 #### ・ドメイン例外
 
 ドメイン層の例外処理をまとめた例外クラス．
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -741,6 +876,8 @@ class FooSpecification
 {
     /**
      * ビジネスルールを判定します．
+     * @param Entity $entity
+     * @return bool
      */
     public function isSatisfiedBy(Entity $entity): bool
     {
@@ -766,14 +903,26 @@ namespace App\Domain\Foo\Criterion;
 
 class FooCriteria
 {
-    private $id;
+    /**
+     * @var int 
+     */
+    private int $id;
 
-    private $name;
+    /**
+     * @var string 
+     */
+    private string $name;
 
-    private $email;
+    /**
+     * @var string 
+     */
+    private string $email;
 
     /**
      * 検索条件のオブジェクトを生成します．
+     * 
+     * @param array $array
+     * @return $this
      */
     public function build(array $array)
     {
@@ -821,9 +970,9 @@ class FooCriteria
 
 <br>
 
-### 識別子あり
+### 識別可能
 
-#### ・識別子ありとは
+#### ・識別可能とは
 
 オブジェクトが識別子（例：IDなど）を持ち，他のオブジェクトと同じ属性をもっていても，区別される．この識別子は，データベースのプライマリキーに対応している．
 
@@ -887,7 +1036,6 @@ class DogToy extends Entity
     private $colorVO;
 
     /**
-     *
      * @param ToyType $type
      * @param ToyName $name
      * @param Number  $number
@@ -1051,9 +1199,9 @@ abstract class Id
 
 <br>
 
-### 識別子なし
+### 識別不可能
 
-#### ・識別子なしとは
+#### ・識別不可能とは
 
 一意に識別できるデータをもたず，対象のユビキタス言語に関するデータをメソッドを持つ
 
