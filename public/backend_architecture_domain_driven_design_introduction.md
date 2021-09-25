@@ -83,6 +83,12 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/hacogym_subdomain.png)
 
+**＊例＊**
+
+ECサイトを運営するアスクルの例．ドメインのうちで，個人向け販売ドメイン（サイト名はLOHACO）に基づくサブドメインを示す．配送／注文／商品／ユーザ管理／在庫／受注をそれぞれサブドメインとしている（コアドメインは明言されていない）．
+
+参考：https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
+
 #### ・ユビキタス言語とは
 
 ドメインエキスパート間で，特定の『単語』や『動詞』の意味合い／定義づけが異なる場合，これを別々の名前からなるユビキタス言語として定義づける．

@@ -76,7 +76,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
 
-販売コンテキストまたは配送コンテキストからなるアプリケーションがあるとする．それぞれをオニオンアーキテクチャで実装し，アプリケーション間で同期通信／非同期通信を行う．
+ECサイトがあり，これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする．この時，それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをサービスの粒度となり，オニオンアーキテクチャのアプリケーション間で同期通信／非同期通信を行う．
 
 ![microservice-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
 
@@ -86,10 +86,10 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・サービスの分割例
 
-| アプリケーション | 分割方法           | サービスの種類                                               | リンク                                                    |
-| ---------------- | ------------------ | ------------------------------------------------------------ | --------------------------------------------------------- |
-| Eコマース        | ルートエンティティ | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 | https://github.com/GoogleCloudPlatform/microservices-demo |
-| Eコマース        | ルートエンティティ | 広告，割引，                                                 | https://github.com/DataDog/ecommerce-workshop             |
+| アプリケーション | リンク                                                    | 分割方法           | サービスの種類                                               |
+| ---------------- | --------------------------------------------------------- | ------------------ | ------------------------------------------------------------ |
+| Eコマース        | https://github.com/GoogleCloudPlatform/microservices-demo | ルートエンティティ | カート，商品検索とインデックス，通貨の変換，クレジットカード，送料と発送，注文確認メール，注文フロー，レコメンド，広告，合成監視 |
+| Eコマース        | https://github.com/DataDog/ecommerce-workshop             | ルートエンティティ | 広告，割引                                                   |
 
 <br>
 
