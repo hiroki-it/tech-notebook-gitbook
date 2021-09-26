@@ -18,7 +18,7 @@
     * [▶ ︎データ構造](public/backend_php_object_orientation_data_structure.md)
   * ロジック
     * [▶ ︎バックエンド側の検証ロジック](public/backend_php_logic_validation.md)
-    * [▶ ︎エラーキャッチ，例外スロー，ロギング](public/backend_php_logic_catch_error_throw_exception_logging.md)
+    * [▶ ︎エラーとエラーハンドリング](public/backend_php_logic_error_and_error_handling.md)
     * [▶ ︎反復ロジック](public/backend_php_logic_iteration.md)
   * パッケージ／フレームワーク
     * [▶ ︎パッケージ](public/backend_php_package.md)
