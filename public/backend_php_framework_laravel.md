@@ -2097,7 +2097,21 @@ class ExecutorConstant
 
 ## 07. Exception
 
-### 例外クラス
+### Laravelにおけるエラーハンドリング
+
+エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出と例外スローについては言及しないこととする．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_error_and_error_handling.html
+
+<br>
+
+### 例外キャッチ
+
+#### ・```report```メソッド
+
+Laravel内部でキャッチされた例外に基づいて，ロギングを実行する．
+
+参考：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
@@ -2113,40 +2127,42 @@ class Handler extends ExceptionHandler
         //
     ];
 
-    protected $dontFlash = [
-        'password',
-        'password_confirmation',
-    ];
-
     public function report(Throwable $exception)
     {
         parent::report($exception);
     }
+    
+    // 省略
 
-    public function render($request, Throwable $exception)
-    {
-        return parent::render($request, $exception);
-    }
 }
 ```
 
 <br>
 
-###　独自例外クラス
+### 異常系レスポンスの返信
 
-Laravelに標準搭載されているExceptionクラスを継承することにより，独自の例外クラスを定義できる．
+#### ・```render```メソッド
+
+Laravel内部でキャッチされた例外に基づいて，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理をこれに追加することも可能であるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラに```try-catch```と異常系レスポンスの返信処理を実装するようにする．
+
+参考：https://cpoint-lab.co.jp/article/201905/9841/
 
 ```php
 <?php
 
 namespace App\Exceptions;
 
-/**
- * 送信例外クラス
- */
-final class CouldNotSendMessageException extends \Exception
-{
+use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+class Handler extends ExceptionHandler
+{
+    public function render($request, Throwable $exception)
+    {
+        return parent::render($request, $exception);
+    }
+    
+    // 省略
 }
 ```
 
