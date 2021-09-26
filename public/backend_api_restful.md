@@ -181,7 +181,7 @@ x-api-key: *****
 - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
 - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
 
-ただし認証に関しては，慣例として，エンドポイントが動詞になることが許容されている．
+ただし慣例として，認証のエンドポイントが動詞（```login```，```logout```，```register```）になることは許容されている．
 
 参考：
 

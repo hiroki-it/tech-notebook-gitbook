@@ -28,7 +28,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 | 入力時／出力時 | 責務                                                         | 補足                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 入力           | インフラ層のルータから入力される認証情報を照合し，認証を実行する． | 認証はインターフェース層あるいはユースケース層に実装する．ちなみに，認可はドメイン層に実装する．<br>参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173<br>・https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html |
+| 入力           | インフラ層のルータから入力される認証情報を照合し，認証を実行する． | 認証はインターフェース層あるいはユースケース層に実装する．<br>参考：<br>・https://github.com/little-hands/ddd-q-and-a/issues/173 |
 |                | インフラ層のルーターから入力されるパラメータをAPI仕様（必須，書式，など）と照らし合わせ，バリデーションを実行する． | データの値がAPI仕様と比較して正しいかどうかを検証することに止まり，データの値が正しいかどうかの検証は，ユースケース層やドメイン層に実装する． |
 |                | インフラ層のルーターから入力されるパラメータをリクエストモデルに変換し，ユースケース層のインターラクターに入力する． | リクエストモデル生成処理で，ドメイン層への依存が必要になる．リクエストモデル生成処理を切り分け，ユースケース層に置くと，コントローラがドメイン層に依存することを防げる． |
 | 出力           | ユースケース層のインターラクターから出力されるレスポンスモデルを，JSONデータとしてフロントエンドにに返信する． | バックエンドをAPIとして使用する場合，プレゼンターは不要である． |
@@ -49,9 +49,9 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-### Validationパターン
+### バリデーションパターン
 
-#### ・Validationパターンとは
+#### ・バリデーションパターンとは
 
 デザインパターンの一つ．インターフェース層のバリデーションでは，データの必須や書式を検証する．
 
@@ -296,53 +296,6 @@ interface FooInteractorInterface
 }  
 ```
 
-#### ・認可
-
-ドメイン層のリポジトリを使用して，該当のIDのエンティティに対してアクセス可能かを検証する．インターネットで調査したところ，オニオンアーキテクチャにて，ドメイン層でドメインサービスとして定義し，これをアプリケーション層でコールする方が多かった．これをクリーンアーキテクチャに当てはまると，ユースケース層で定義し，インターフェース層でコールすればよいと判断した．これについては追って調査が必要．
-
-参考：
-
-- https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
-- https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
-- https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
-- https://github.com/little-hands/ddd-q-and-a/issues/121
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Usecase\Foo\Authorizer;
-
-class FooAuthorizer
-{
-    /**
-     * @var FooRepository
-     */
-    private FooRepository $fooRepositoy;
-
-    /**
-     * @param FooRepository $fooRepositoy
-     */
-    public function __construct(FooRepository $fooRepositoy)
-    {
-        $this->fooRepositoy = $fooRepositoy;
-    }
-
-    /**
-     * 更新処理を実行可能かを検証します．
-     *
-     * @param FooId  $fooId
-     * @param UserId $userId
-     * @return bool
-     */
-    public function canUpdateById(FooId $fooId, UserId $userId): bool
-    {
-        return $this->fooRepository->findById($fooId)->userId->equals($userId);
-    }
-}
-```
-
 <br>
 
 ### アウトプットバウンダリ
@@ -491,9 +444,9 @@ Slackへの通知処理をアプリケーションサービスとして切り分
 ```php
 <?php
 
-namespace App\UseCase\Foo\Services;
+namespace App\UseCase\Foo\Services\Notification;
 
-class SlackNotificationService
+class SlackNotification
 {
     /**
      * @var Message 
@@ -522,17 +475,64 @@ class SlackNotificationService
 
 namespace App\UseCase\Foo\Services;
 
-use App\Service\SlackNotificationService;
+use App\Service\SlackNotification;
 
 class FooInteractor
 {
     public function foo()
     {
         $message = new Message(/* メッセージに関するデータを渡す */)
-        $slackNotificationService = new SlackNotificationService($message)
-        $slackNotificationService->notify();
+        $slackNotification = new SlackNotification($message)
+        $slackNotification->notify();
     }
 }  
+```
+
+#### ・認可
+
+ドメイン層のリポジトリを使用して，該当のIDのエンティティに対してアクセス可能かを検証する．インターネットで調査したところ，オニオンアーキテクチャにて，ドメイン層でドメインサービスとして定義し，これをアプリケーション層でコールする方が多かった．これをクリーンアーキテクチャに当てはまると，ユースケース層で定義し，インターフェース層でコールすればよいと判断した．これについては追って調査が必要．
+
+参考：
+
+- https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
+- https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
+- https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
+- https://github.com/little-hands/ddd-q-and-a/issues/121
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Usecase\Foo\Services\Authorizer;
+
+class FooAuthorizer
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepositoy;
+
+    /**
+     * @param FooRepository $fooRepositoy
+     */
+    public function __construct(FooRepository $fooRepositoy)
+    {
+        $this->fooRepositoy = $fooRepositoy;
+    }
+
+    /**
+     * 更新処理を実行可能かを検証します．
+     *
+     * @param FooId  $fooId
+     * @param UserId $userId
+     * @return bool
+     */
+    public function canUpdateById(FooId $fooId, UserId $userId): bool
+    {
+        return $this->fooRepository->findById($fooId)->userId->equals($userId);
+    }
+}
 ```
 
 <br>
@@ -2367,7 +2367,17 @@ class DogComboFactory
 
 #### ・インフラストラクチャサービスとは
 
-インフラ層の中で，汎用的なロジックが切り分けられたもの．また，ロギングやファイル出力のロジックもこの層に配置する．リポジトリと同様にして，ドメイン層にインターフェースを設け，依存性逆転の原則を満たせるようにする．
+インフラ層の中で，汎用的なロジックが切り分けられたもの．実装リポジトリと同様にして，ドメイン層にストラクチャサービスのインターフェースを設け，依存性逆転の原則を満たせるようにする．
+
+#### ・ロギング
+
+#### ・ファイル出力
+
+#### ・ハッシュ化
+
+パスワードのハッシュ化．
+
+参考：https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
 
 <br>
 

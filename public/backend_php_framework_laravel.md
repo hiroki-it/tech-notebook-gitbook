@@ -2099,13 +2099,71 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出と例外スローについては言及しないこととする．
+エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出については言及しないこととする．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_error_and_error_handling.html
 
 <br>
 
-### 例外キャッチ
+### 例外スロー
+
+#### ・例外
+
+ドキュメントとしてまとめられていないが，標準で様々な例外が備わっている．
+
+参考：https://laravel.com/api/8.x/search.html?search=exception
+
+#### ・スタックトレース
+
+標準でスローされる例外のメッセージはスタックトレースで生成する．これには機密性の高い情報が含まれるため，クライアントへの異常系レスポンスのエラーメッセージには割り当てずに，ロギングだけしておく．エラーが複数行にまたがるため，CloudWatchやFluentBitなどのログ収集ツールでは，各行を繋げて扱えるように設定が必要である．ちなみに，ログの詳細度は```APP_DEBUG```環境変数で制御できる．
+
+参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
+
+```shell
+[2021-09-00 00:00:00] local.ERROR: *****
+[stacktrace]
+#0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(486): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(438): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+
+...
+
+#60 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#61 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#62 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#63 {main}
+
+[previous exception] [object] (Doctrine\\DBAL\\Driver\\PDO\\Exception(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test222@gmail.com' for key 'users_email_address_unique' at /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18)
+[stacktrace]
+#0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+
+...
+
+#63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 {main}
+
+[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test222@gmail.com' for key 'users_email_address_unique' at /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:112)
+[stacktrace]
+#0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+
+...
+
+#63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 {main}
+"} 
+```
+
+<br>
+
+### ロギング
 
 #### ・```report```メソッド
 
