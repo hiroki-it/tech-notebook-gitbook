@@ -372,12 +372,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2.2" data-path="backend_php_logic_catch_error_throw_exception_logging.html">
+        <li class="chapter " data-level="1.4.2.2" data-path="backend_php_logic_error_and_error_handling.html">
             
-                <a href="backend_php_logic_catch_error_throw_exception_logging.html">
+                <a href="backend_php_logic_error_and_error_handling.html">
             
                     
-                    ▶ ︎エラーキャッチ，例外スロー，ロギング
+                    ▶ ︎エラーとエラーハンドリング
             
                 </a>
             
@@ -2580,8 +2580,9 @@ text=a&amp;text2=b
 <pre class="language-"><code>2020-07-07T12:00:00+09:00
 </code></pre><p>&#x305F;&#x3060;&#x3057;&#xFF0C;&#x65E5;&#x4ED8;&#x3092;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3067;&#x9001;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;RFC3339&#xFF08;W3C-DTF&#xFF09;&#x5F62;&#x5F0F;&#x3092;&#x6B63;&#x898F;&#x8868;&#x73FE;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#x6CE8;&#x610F;&#xFF0E;</p>
 <p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code>https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
-</code></pre><p><br></p>
+<pre class="language-"><code class="lang-http">GET https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
+</code></pre>
+<p><br></p>
 <h3 id="&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;"><a name="&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x5834;&#x5408;</h3>
 <pre class="language-"><code class="lang-shell"><span class="token punctuation">{</span>
   <span class="token string">&quot;code&quot;</span><span class="token builtin class-name">:</span> <span class="token number">400</span>
@@ -2589,7 +2590,7 @@ text=a&amp;text2=b
     <span class="token string">&quot;&#x3007;&#x3007;&#x306F;&#x5FC5;&#x305A;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&quot;</span>,
     <span class="token string">&quot;&#x25A1;&#x25A1;&#x306F;&#x5FC5;&#x305A;&#x5165;&#x529B;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&quot;</span>
   <span class="token punctuation">]</span>
-  <span class="token string">&quot;url&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;https://*****x&quot;</span>
+  <span class="token string">&quot;url&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;https://*****&quot;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8" target="_blank">https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8</a></p>
@@ -2616,10 +2617,10 @@ text=a&amp;text2=b
 <td>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x7A2E;&#x985E;&#x304C;&#x308F;&#x304B;&#x308B;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
-<td>&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;</td>
+<td>&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#xFF08;&#x4F8B;&#x5916;&#x30B3;&#x30FC;&#x30C9;&#xFF09;</td>
 <td>&#x4EFB;&#x610F;</td>
 <td>&#x6587;&#x5B57;&#x5217;&#x578B;</td>
-<td>API&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x8B58;&#x5225;&#x5B50;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</td>
+<td>API&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x8B58;&#x5225;&#x5B50;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30B3;&#x30FC;&#x30C9;&#xFF08;&#x4F8B;&#x5916;&#x30B3;&#x30FC;&#x30C9;&#xFF09;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td>API&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;URL</td>
@@ -3249,7 +3250,7 @@ text=a&amp;text2=b
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎RESTful APIの概念と実装","level":"1.6.1","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.7","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},{"title":"▶ ︎ブラウザレンダリングの仕組み","level":"1.7.3","depth":2,"path":"public/frontend_and_backend_browser_rendering.md","ref":"public/frontend_and_backend_browser_rendering.md","articles":[]}]},"previous":{"title":"API","level":"1.6","depth":1,"ref":"","articles":[{"title":"▶ ︎RESTful APIの概念と実装","level":"1.6.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2021-09-20T13:18:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-25T16:33:33.512Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎RESTful APIの概念と実装","level":"1.6.1","depth":2,"next":{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.7","depth":1,"ref":"","articles":[{"title":"▶ ︎認証と認可","level":"1.7.1","depth":2,"path":"public/frontend_and_backend_authentication_authorization.md","ref":"public/frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.7.2","depth":2,"path":"public/frontend_and_backend_json.md","ref":"public/frontend_and_backend_json.md","articles":[]},{"title":"▶ ︎ブラウザレンダリングの仕組み","level":"1.7.3","depth":2,"path":"public/frontend_and_backend_browser_rendering.md","ref":"public/frontend_and_backend_browser_rendering.md","articles":[]}]},"previous":{"title":"API","level":"1.6","depth":1,"ref":"","articles":[{"title":"▶ ︎RESTful APIの概念と実装","level":"1.6.1","depth":2,"path":"public/backend_api_restful.md","ref":"public/backend_api_restful.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/backend_api_restful.md","mtime":"2021-09-26T08:20:09.566Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-26T12:14:44.324Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
