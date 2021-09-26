@@ -2120,7 +2120,7 @@ class ExecutorConstant
 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
 ```shell
-[2021-09-00 00:00:00] local.ERROR: *****
+[2021-09-00 00:00:00] local.ERROR: *****（エラーメッセージ）
 [stacktrace]
 #0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(486): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
@@ -2133,7 +2133,7 @@ class ExecutorConstant
 #62 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #63 {main}
 
-[previous exception] [object] (Doctrine\\DBAL\\Driver\\PDO\\Exception(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test222@gmail.com' for key 'users_email_address_unique' at /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18)
+[previous exception] [object] *****（エラーメッセージ）
 [stacktrace]
 #0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
@@ -2146,7 +2146,7 @@ class ExecutorConstant
 #65 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
 
-[previous exception] [object] (PDOException(code: 23000): SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'test222@gmail.com' for key 'users_email_address_unique' at /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:112)
+[previous exception] [object] *****（エラーメッセージ）
 [stacktrace]
 #0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
