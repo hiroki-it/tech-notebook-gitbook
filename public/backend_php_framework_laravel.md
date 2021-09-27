@@ -2115,7 +2115,7 @@ class ExecutorConstant
 
 #### ・スタックトレース
 
-標準でスローされる例外のメッセージはスタックトレースで生成する．これには機密性の高い情報が含まれるため，クライアントへの異常系レスポンスのエラーメッセージには割り当てずに，ロギングだけしておく．エラーが複数行にまたがるため，CloudWatchやFluentBitなどのログ収集ツールでは，各行を繋げて扱えるように設定が必要である．ちなみに，ログの詳細度は```APP_DEBUG```環境変数で制御できる．
+Laravelはスローされる例外のメッセージをスタックトレースで生成する．また，Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため，```[previous exception]```によって例外が結合される．スタックトレースには機密性の高い情報が含まれるため，クライアントへの異常系レスポンスのエラーメッセージには割り当てずに，ロギングだけしておく．エラーが複数行にまたがるため，CloudWatchやFluentBitなどのログ収集ツールでは，各行を繋げて扱えるように設定が必要である．ちなみに，ログの詳細度は```APP_DEBUG```環境変数で制御できる．
 
 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
@@ -2130,12 +2130,12 @@ class ExecutorConstant
 
 #60 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
 #61 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
-#62 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#62 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #63 {main}
 
 [previous exception] [object] *****（エラーメッセージ）
 [stacktrace]
-#0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
+#0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
 #2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
 
@@ -2143,12 +2143,12 @@ class ExecutorConstant
 
 #63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
 #64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
-#65 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
 
 [previous exception] [object] *****（エラーメッセージ）
 [stacktrace]
-#0 /var/www/ddd-api-with-laravel/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
+#0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
 #1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
 #2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
 
@@ -2156,7 +2156,7 @@ class ExecutorConstant
 
 #63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
 #64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
-#65 /var/www/ddd-api-with-laravel/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #66 {main}
 "} 
 ```

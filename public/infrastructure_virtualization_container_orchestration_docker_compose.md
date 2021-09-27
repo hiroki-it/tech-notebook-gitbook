@@ -18,7 +18,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・オプションなし
 
-```shell
+```bash
 $ docker-compose config
 ```
 
@@ -50,7 +50,7 @@ $ docker-compose build --no-cache
 
 指定したサービスのイメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動を行う．アタッチモードでコンテナを起動する．
 
-```shell
+```bash
 # アタッチモード
 $ docker-compose up <サービス名>
 ```
@@ -59,9 +59,17 @@ $ docker-compose up <サービス名>
 
 指定したサービスのイメージのビルド，コンテナレイヤー生成，コンテナ構築，コンテナ起動を行う．デタッチドモードでコンテナを起動する．
 
-```shell
+```bash
 # デタッチモード
 $ docker-compose up -d <サービス名>
+```
+
+#### ・--build
+
+イメージをビルドし，コンテナを構築する．
+
+```bash
+$ docker-compose up --build <サービス名>
 ```
 
 <br>
@@ -70,13 +78,13 @@ $ docker-compose up -d <サービス名>
 
 #### ・runとは
 
-すでに停止中または起動中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```shell```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```shell```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．```service-ports```オプションを使用しないと，ホストOSとコンテナ間のポートフォワーディングを有効化できないため注意する．
+すでに停止中または起動中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```bash```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```bash```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．```service-ports```オプションを使用しないと，ホストOSとコンテナ間のポートフォワーディングを有効化できないため注意する．
 
 #### ・--service-ports
 
 既存コンテナを残して，指定したサービスの新しいコンテナをアタッチモードで起動する．また，ホストOSとコンテナ間のポートフォワーディングを有効化する．
 
-```shell
+```bash
 # アタッチモード
 $ docker-compose run --rm --service-ports <サービス名>
 ```
@@ -85,7 +93,7 @@ $ docker-compose run --rm --service-ports <サービス名>
 
 既存コンテナを残して，指定したサービスの新しいコンテナをデタッチドモードで起動する．また，ホストOSとコンテナ間のポートフォワーディングを有効化する．
 
-```shell
+```bash
 # デタッチモード
 $ docker-compose run --rm -d --service-ports <サービス名>
 ```
@@ -100,7 +108,7 @@ $ docker-compose run --rm -d --service-ports <サービス名>
 
 #### ・オプションなし
 
-```shell
+```bash
 $ docker-compose stop <サービス名>
 ```
 
@@ -116,7 +124,7 @@ $ docker-compose stop <サービス名>
 
 全てのリソース（イメージ，コンテナ，ボリューム，ネットワーク）を削除する．
 
-```shell
+```bash
 $ docker-compose down --rmi all --volumes --remove-orphans
 ```
 
@@ -132,7 +140,7 @@ $ docker-compose down --rmi all --volumes --remove-orphans
 
 バックグラウンドでログを表示する．
 
-```shell
+```bash
 $ docker-compose logs <サービス名>
 ```
 
@@ -140,7 +148,7 @@ $ docker-compose logs <サービス名>
 
 フォアグラウンドでログを表示する．
 
-```shell
+```bash
 $ docker-compose logs -f <サービス名>
 ```
 
@@ -266,7 +274,7 @@ environment:
   MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザのパス
 ```
 
-```shell
+```bash
 # .envファイル
 MYSQL_ROOT_PASSWORD=foo # rootユーザのパス
 MYSQL_DATABASE=bar # データベース名
@@ -291,7 +299,7 @@ extra_hosts:
  - www:162.242.195.82
 ```
 
-```shell
+```bash
 $ cat /etc/hosts
 
 127.0.0.1       localhost
@@ -317,7 +325,7 @@ ff02::2 ip6-allrouters
 hostname: www
 ```
 
-```shell
+```bash
 $ cat /etc/hosts
 
 127.0.0.1       localhost
@@ -391,7 +399,7 @@ networks:
   - default
 ```
 
-```shell
+```bash
 $ docker network inspect <プロジェクト名>_default
 
 [
@@ -551,14 +559,14 @@ networks:
   - default
 ```
 
-```shell
+```bash
 $ docker network ls
 
 NETWORK ID       NAME                DRIVER     SCOPE
 ************     foo-network     bridge     local
 ```
 
-```shell
+```bash
 $ docker network inspect foo-network
 
 [
@@ -640,7 +648,7 @@ networks:
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker network ls
 
 NETWORK ID       NAME        DRIVER     SCOPE
@@ -655,7 +663,7 @@ NETWORK ID       NAME        DRIVER     SCOPE
 
 #### ・ビルド時にSQL実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置された```sql```ファイルや```shell```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある．このディレクトリに配置された```sql```ファイルや```bash```プロセスは，mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される．そのため，Bindマウントを用いてこのディレクトリにファイルを置くことで，初期データの投入や複数データベースの作成を実現できる．具体的な実行タイミングについては，以下を参考にせよ．
 
 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 

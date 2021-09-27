@@ -137,7 +137,7 @@ Route53から転送されるパブリックIPアドレスを受信できるよ�
 
 サーバレスアプリケーションを開発環境で再現する．
 
-```shell
+```bash
 $ amplify mock api
 ```
 
@@ -145,7 +145,7 @@ $ amplify mock api
 
 開発／ステージング／本番環境に切り替える必要がある．
 
-```shell
+```bash
 # アプリケーションの設定
 $ amplify add hosting
 
@@ -390,7 +390,7 @@ API GatewayとLambdaの間で，リクエスト／レスポンスのJSONデー�
 
 API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由したクライアントからのリクエストは，ハンドラ関数のeventオブジェクトのJSONデータにマッピングされる．
 
-```shell
+```bash
 {
   "resource": "Resource path",
   "path": "Path parameter",
@@ -412,7 +412,7 @@ API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由�
 
 API Gatewayは，Lambdaからのレスポンスを，以下のJSONデータにマッピングする．これ以外の構造のJSONデータを送信すると，API Gatewayで『```Internal Server Error```』のエラーが起こる．
 
-```shell
+```bash
 {
   "isBase64Encoded": true|false,
   "statusCode": httpStatusCode,
@@ -789,7 +789,7 @@ CloudFrontは世界中に設置される『Point Of Presence（エッジロケ�
 
 CloudFrontには，エッジロケーションの数だけエッジサーバがあり，各サーバにIPアドレスが割り当てられている．以下のコマンドで，全てのエッジサーバのIPアドレスを確認できる．
 
-```shell
+```bash
 $ curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq  ".prefixes[] | select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
@@ -801,7 +801,7 @@ $ curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq  ".prefixes[] | selec
 
 CloudFrontには，エッジロケーションがあり，各ロケーションにサーバがある．以下のコマンドで，エッジロケーションにある使用中サーバのIPアドレスを確認できる．
 
-```shell
+```bash
 $ nslookup <割り当てられた文字列>.cloudfront.net
 ```
 
@@ -953,12 +953,12 @@ CloudWatchメトリクス上では，以下のように確認できる．
 
 #### ・フィルターパターンのテンプレート
 
-```shell
+```bash
 # OR条件で大文字小文字を考慮し，『XXXXX:』を検出
 ?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
 ```
 
-```shell
+```bash
 # OR条件で大文字小文字を考慮し，『XXXXX message』を検出
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
 ```
@@ -967,7 +967,7 @@ CloudWatchメトリクス上では，以下のように確認できる．
 
 汎用的なクエリを示す．
 
-```shell
+```bash
 # 小文字と大文字を区別せずに，ExceptionまたはErrorを含むログを検索する．
 fields @timestamp, @message, @logStream
 | filter @message like /(?i)(Exception|Error)/
@@ -997,7 +997,7 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "agent": {
     "run_as_user": "cwagent"
@@ -1031,7 +1031,7 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # EC2内にある設定ファイルを，CloudWatchエージェントに読み込ませる（再起動を含む）
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
   -a fetch-config \
@@ -1045,7 +1045,7 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
   -a status
 ```
 
-```shell
+```bash
 # 設定ファイルが読み込まれたかを確認
 
 ### CloudWatchエージェントのプロセスのログファイル
@@ -1074,7 +1074,7 @@ confファイルを，インスタンス内の```etc```ディレクトリ下に�
 
 **＊実装例＊**
 
-```shell
+```bash
 #############################
 # /var/awslogs/awslogs.conf
 #############################
@@ -1127,7 +1127,7 @@ initial_position = start_of_file
 log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 ```
 
-```shell
+```bash
 #############################
 # /var/awslogs/awscli.conf
 #############################
@@ -1144,7 +1144,7 @@ region = ap-northeast-1
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # CloudWatchエージェントの再起動
 # 注意: restartだとCloudWatchに反映されない時がある．
 $ service awslogs restart
@@ -1168,7 +1168,7 @@ $ service awslogs start
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
- ```shell
+ ```bash
  $ aws cloudwatch get-metric-statistics \
    --namespace AWS/Logs \
    --metric-name IncomingBytes \
@@ -1184,7 +1184,7 @@ $ service awslogs start
 
 CloudWatchアラームの状態を変更する．
 
-```shell
+```bash
 $ aws cloudwatch set-alarm-state \
   --alarm-name "prd-foo-alarm" \
   --state-value ALARM \
@@ -1308,7 +1308,7 @@ Resources:
 
 デプロイされるタスク定義を実装し，ルートディレクトリの直下に配置する．CodeDeployは，CodeBuildから渡された```imageDetail.json```ファイルを検知し，ECRからイメージを取得する．この時，```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと，ECRから取得したイメージ名を使用して，自動補完してくれる．
 
-```shell
+```bash
 {
   "family": "<タスク定義名>",
   "requiresCompatibilities": [
@@ -1479,7 +1479,7 @@ EBSの説明を参考にせよ．
 
 ローカルに置かれている秘密鍵が，該当するEC2に置かれている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
 
-```shell
+```bash
 $ openssl pkcs8 \
   -in <秘密鍵名>.pem \
   -inform PEM \
@@ -1668,7 +1668,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 LaravelのSeederコマンドやロールバックコマンドを，ローカルPCから実行する．
 
-```shell
+```bash
 #!/bin/bash
 
 set -x
@@ -1715,7 +1715,7 @@ exit ${EXIT_CODE}
 
 なお，実行IAMユーザを作成し，ECSタスクを起動できる最低限の権限をアタッチする．
 
-```shell
+```bash
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -1809,7 +1809,7 @@ exit ${EXIT_CODE}
 
 アプリケーションからCloudWatchログにログを送信するために，ECSタスクロールにカスタマー管理ポリシーをアタッチする．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1831,7 +1831,7 @@ exit ${EXIT_CODE}
 
 SSMパラメータストアから変数を取得するために，ECSタスクロールにインラインポリシーをアタッチする．
 
-```shell
+```bash
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -1850,7 +1850,7 @@ SSMパラメータストアから変数を取得するために，ECSタスク�
 
 タスク上に存在するコンテナエージェントが，他のリソースにアクセスするために必要なロールのこと．AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを，タスクにアタッチする必要がある．このポリシーには，ECRへのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -1874,7 +1874,7 @@ SSMパラメータストアから変数を取得するために，ECSタスク�
 
 Datadogエージェントがクラスターやコンテナにアクセスできるように，ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする．
 
-```shell
+```bash
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -2053,11 +2053,11 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 DNS経由で，EFSマウントヘルパーを使用した場合を示す．
 
-```shell
+```bash
 $ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムID>:/ <マウントポイント>
 ```
 
-```shell
+```bash
 # EFSで，マウントポイントを登録
 $ mount -t efs -o tls fs-xxxxx:/ /var/www/app
 
@@ -2132,7 +2132,7 @@ SELECT * FROM users;
 4. データが読み出される．
 5. アプリケーションはRedisにデータを登録する．
 
-```shell
+```bash
 # ElastiCacheには，SQLの実行結果がまだ保存されていない
 
 *** no cache ***
@@ -2158,7 +2158,7 @@ SELECT * FROM users;
 
 7. Redisは，SQLをキーにしてデータを特定し，アプリケーションに返却する．
 
-```shell
+```bash
 # ElastiCacheには，SQLの実行結果が既に保存されている
 
 *** cache hit ***
@@ -2176,7 +2176,7 @@ SELECT * FROM users;
 
 #### ・クエリCacheの操作
 
-```shell
+```bash
 # Redis接続コマンド
 $ /usr/local/sbin/redis-stable/src/redis-cli \
   -c
@@ -2184,19 +2184,19 @@ $ /usr/local/sbin/redis-stable/src/redis-cli \
   -p 6379
 ```
 
-```shell
+```bash
 # Redis接続中の状態
 # 全てのキーを表示
 redis xxxxx:6379> keys *
 ```
 
-```shell
+```bash
 # Redis接続中の状態
 # キーを指定して，対応する値を表示
 redis xxxxx:6379> type <キー名>
 ```
 
-```shell
+```bash
 # Redis接続中の状態
 # Redisが受け取ったコマンドをフォアグラウンドで表示
 redis xxxxx:6379> monitor
@@ -2245,7 +2245,7 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
-```shell
+```bash
 {
   "version": "0",
   "id": "*****",
@@ -2267,7 +2267,7 @@ AWSリソースで起こったイベントを，他のAWSリソースに転送�
 
 Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
 
-```shell
+```bash
 {
   "detail": {
     "appId": [
@@ -2317,7 +2317,7 @@ exports.handler = async (event) => {
 
 対象のAWSリソースで任意のイベントが起こった時に，EventBridgeからLambdaに転送するように設定する．
 
-```shell
+```bash
 {
   "source": "aws.amplify"
 }
@@ -2325,7 +2325,7 @@ exports.handler = async (event) => {
 
 AWSリソースで意図的にイベントを起こし，Lambdaのロググループから内容を確認する．```detail```キーにイベントが割り当てられている．
 
-```shell
+```bash
 {
     "event": {
         "version": "0",
@@ -2360,7 +2360,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 入力パスにて，使用する値を抽出する．Amplifyで起こったイベントのJSONを変数として取り出す．JSONのキー名が変数名として機能する．
 
-```shell
+```bash
 {
   "appId": "$.detail.appId",
   "branchName": "$.detail.branchName",
@@ -2374,7 +2374,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 参考：https://app.slack.com/block-kit-builder
 
-```shell
+```bash
 {
   "channel": "XXXXXX",
   "text": "Amplifyデプロイ完了通知",
@@ -2512,7 +2512,7 @@ IAMステートメントのセットを定義する．
 
 以下に，EC2の読み出しのみ権限（```AmazonEC2ReadOnlyAccess```）をアタッチできるポリシーを示す．このIAMポリシーには，他のAWSリソースに対する権限も含まれている．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2595,7 +2595,7 @@ AWSリソースの識別子のこと．
 
 参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2644,7 +2644,7 @@ AWSが提供しているポリシーのこと．アタッチ式のポリシー�
 
 IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，ユーザーアカウントのすべての ACM 証明書を一覧表示できるようになる．
 
-```shell
+```bash
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -2661,7 +2661,7 @@ IAMロールにインラインポリシーをアタッチする．このロー�
 
 IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，全てのAWSリソースに，任意のアクションを実行できる．
 
-```shell
+```bash
 {
   "Version":"2012-10-17",
   "Statement":[
@@ -2692,7 +2692,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "rules": [
     {
@@ -2731,7 +2731,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```の```ecs-tasks```が信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2752,7 +2752,7 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```のIAMユーザが信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2804,13 +2804,13 @@ ECRにアタッチされる，イメージの有効期間を定義するポリ�
 
 AWS CLIでクラウドインフラを操作するためには，```credentials```ファイルに定義されたクレデンシャル情報が必要である．『```aws_region```』ではなく『```aws_default_region```』であることに注意する．
 
-```shell
+```bash
 $ aws configure set aws_access_key_id "<アクセスキー>"
 $ aws configure set aws_secret_access_key "<シークレットキー>"
 $ aws configure set aws_default_region "リージョン>"
 ```
 
-```shell
+```bash
 # Linux，Unixの場合：$HOME/.aws/<credentialsファイル名>
 # Windowsの場合：%USERPROFILE%\.aws\<credentialsファイル名>
 
@@ -2827,7 +2827,7 @@ aws_secret_access_key=<シークレットキー>
 
 AWS CLIでクラウドインフラを操作するためには，環境変数で定義されたクレデンシャル情報が必要である．『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する．
 
-```shell
+```bash
 $ export AWS_ACCESS_KEY_ID=<アクセスキー>
 $ export AWS_SECRET_ACCESS_KEY=<シークレットキー>
 $ export AWS_DEFAULT_REGION=<リージョン>
@@ -2867,7 +2867,7 @@ IAMグループに対して，IAMロールを紐づける．そのIAMグルー�
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -2889,7 +2889,7 @@ IAMグループに対して，IAMロールを紐づける．そのIAMグルー�
 
 ユーザ名は，コンソール画面から変更できず，コマンドで変更する必要がある．
 
-```shell
+```bash
 $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新しいユーザ名>
 ```
 
@@ -2992,7 +2992,7 @@ RIEであっても，稼働させるためにAWSのクレデンシャル情報�
 
 **＊参考＊**
 
-```shell
+```bash
 $ docker run --rm \
     # エミュレーターをエントリポイントをバインドする．
     -v ~/.aws-lambda-rie:/aws-lambda \
@@ -3002,7 +3002,7 @@ $ docker run --rm \
     <イメージ名>:<タグ名> /go/bin/cmd
 ```
 
-```shell
+```bash
 # ハンドラー関数の引数に合ったJSONデータを送信する．
 $ curl \
   -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
@@ -3032,11 +3032,11 @@ services:
       - ~/.aws-lambda-rie:/aws-lambda
 ```
 
-```shell
+```bash
 $ docker-compose up lambda
 ```
 
-```shell
+```bash
 $ curl \
   -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
   -d '{}'
@@ -3096,7 +3096,7 @@ LambdaをVPC内に配置するように設定する．VPC内に配置したLambd
 
 Lambdaを実行するためには，デプロイされた関数を使用する権限が必要である．そのため，関数を取得するためのステートメントを設定する．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3168,7 +3168,7 @@ CloudFrontのビューワーリクエスト，オリジンリクエスト，オ�
 
 Lambda@Edgeを実行するためには，最低限，以下の権限が必要である．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3263,7 +3263,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 オリジンリクエストは，以下のeventオブジェクトのJSONデータにマッピングされている．なお，一部のキーは省略している．
 
-```shell
+```bash
 {
   "Records": [
     {
@@ -3440,7 +3440,7 @@ RDSでは，DBMS，RDBを選べる．
 
 踏み台サーバを経由してRDSに接続し，現在時刻を取得するSQLを送信する．平常アクセス時の再現テストも同時に実行することで，より正確なダウンタイムを取得するようにする．また，ヘルスチェックの時刻を正しくロギングできるように，ローカルPCから時刻を取得する．
 
-```shell
+```bash
 #!/bin/bash
 
 set -x
@@ -3465,7 +3465,7 @@ done
 
 上記のシェルスクリプトにより，例えば次のようなログを取得できる．このログからは，```15:23:09 ~ 15:23:14```の間で，接続に失敗していることを確認できる．
 
-```shell
+```bash
 ---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
 mysql: [Warning] Using a password on the command line interface can be insecure.
 NOW()
@@ -3834,7 +3834,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3856,7 +3856,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "Version": "2008-10-17",
   "Id": "PolicyForCloudFrontPrivateContent",
@@ -3877,7 +3877,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 2020-10-08時点の仕様では，パブリックアクセスが無効化されたS3に対して，CloudFrontへのアクセスログを保存することはできない．よって，危険ではあるが，パブリックアクセスを有効化する必要がある．
 
-```shell
+```bash
 // ポリシーは不要
 ```
 
@@ -3885,7 +3885,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 バケットポリシーは不要である．代わりに，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある．このポリシーには，S3へのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -3912,7 +3912,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合，そのIPアドレスをポリシーに設定する必要がある．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Id": "S3PolicyId1",
@@ -3938,7 +3938,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 #### ・指定したドメインからのGET送信を許可
 
-```shell
+```bash
 [
   {
     "AllowedHeaders": [
@@ -3966,7 +3966,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 指定したバケット内のファイル名を表示する．
 
-```shell
+```bash
 $ aws s3 ls s3://<バケット名>
 ```
 
@@ -3976,7 +3976,7 @@ $ aws s3 ls s3://<バケット名>
 
 指定したバケット内のファイル容量を合計する．
 
-```shell
+```bash
 $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 ```
 
@@ -4209,7 +4209,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 キューのURLを取得する．
 
-```shell
+```bash
 $ aws sqs get-queue-url --queue-name <キュー名>
 ```
 
@@ -4217,7 +4217,7 @@ $ aws sqs get-queue-url --queue-name <キュー名>
 
 キューに受信リクエストを送信し，メッセージを受信する．
 
-```shell
+```bash
 $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 
 $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL}
@@ -4225,13 +4225,13 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL}
 
 キューに受信リクエストを送信し，メッセージを受信する．また，メッセージの内容をファイルに書き出す．
 
-```shell
+```bash
 $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 
 $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 ```
 
-```shell
+```bash
 {
     "Messages": [
         {
@@ -4262,7 +4262,7 @@ AWSリソースに一時的にアクセスできる認証情報（アクセス�
 
 必要なポリシーが設定されたIAMロールを構築する．その時，信頼ポリシーにおいて，ユーザの```ARN```を信頼されたエンティティとして設定しておく．これにより，そのユーザに対して，ロールをアタッチできるようになる．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -4286,7 +4286,7 @@ AWSリソースに一時的にアクセスできる認証情報（アクセス�
 
 信頼されたエンティティ（ユーザ）から，STS（```https://sts.amazonaws.com```）に対して，ロールのアタッチをリクエストする．
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -4339,7 +4339,7 @@ STSへのリクエストの結果，ロールがアタッチされた新しいIA
 
 レスポンスされるデータは以下の通り．
 
-```shell
+```bash
 {
   "AssumeRoleUser": {
     "AssumedRoleId": "<セッションID>:<セッション名>",
@@ -4361,7 +4361,7 @@ jqを使用して，レスポンスされたJSONデータからアカウント�
 参考：https://stedolan.github.io/jq/
 
 
-```shell
+```bash
 #!/bin/bash
 
 cat << EOF > assumed_user.sh
@@ -4377,7 +4377,7 @@ EOF
 
 jqを使用して，レスポンスされたJSONデータからアカウント情報を抽出する．ロールを引き受けた新しいアカウントの情報を，```credentials```ファイルに書き込む．
 
-```shell
+```bash
 #!/bin/bash
 
 aws configure --profile ${ENV}-repository << EOF
@@ -4394,7 +4394,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して，AWSリソースに接続できるかを確認する．アカウント情報の取得方法として```credentials```ファイルの作成を選んだ場合，```profile```オプションが必要である．
 
-```shell
+```bash
 #!/bin/bash
 
 # 3-2を選んだ場合，credentialsファイルを参照するオプションが必要がある．
@@ -4422,7 +4422,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "StartAt": "Call Lambda",
   "States": {

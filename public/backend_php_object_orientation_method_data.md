@@ -1644,11 +1644,15 @@ file_put_contents(
 
 数値，記号，文字列などの種類を簡単に表現する文字列のこと．
 
+<br>
+
+### ```preg_match```関数
+
 #### ・数字
 
 **＊実装例＊**
 
-『0から9のいずれか』の数字を意味する．
+『```0```から```9```のいずれか』の数字を意味する．
 
 ```php
 <?php
@@ -1665,7 +1669,7 @@ var_dump($result); // true
 
 **＊実装例＊**
 
-『aからzのいずれか』または『AからZのいずれか』のアルファベットを意味する．
+『```a```から```z```のいずれか』または『AからZのいずれか』のアルファベットを意味する．
 
 ```php
 <?php
@@ -1682,24 +1686,37 @@ var_dump($result); // true
 
 エスケープのために，必ずバックスラッシュを付ける必要がある．
 
+参考：https://www-creators.com/archives/3102
+
 **＊実装例＊**
 
-『?』『.』『*』『$』のいずれかのメタ文字を意味する．
+『```?```』『```.```』『```*```』『```$```』のいずれかのメタ文字を意味する．
 
 ```php
 <?php
 
 $var = "?";
 
-// OR条件のみ
 $result = preg_match("/[\?.*$]/", $var)
     
-var_dump($result); // true
+var_dump($result); // 1
 ```
 
-<br>
+#### ・ワイルドカード
 
-### パターン演算子
+ワイルドカードは『```.*```』で表現する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+$var = "FooBarBaz";
+
+$result = preg_match("/Foo.*/", $var);
+    
+var_dump($result); // 1
+```
 
 #### ・オプションとしてのパターン演算子
 
@@ -1708,13 +1725,22 @@ var_dump($result); // true
 ```php
 <?php
     
-// 何らかの文字列
-$x = "";
+$var = "jpeg";
 
 // jpegの大文字小文字
-preg_match(
-    "/jpeg$/i",
-    $x
-);
+$result = preg_match("/jpeg$/i", $var);
+
+var_dump($result); // 1
+```
+
+```php
+<?php
+
+$var = "JPEG";
+
+// jpegの大文字小文字
+$result = preg_match("/jpeg$/i", $var);
+
+var_dump($result); // 1
 ```
 

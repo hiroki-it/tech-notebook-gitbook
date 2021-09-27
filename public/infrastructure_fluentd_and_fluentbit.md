@@ -55,7 +55,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 パイプライン全体の設定やファイルの読み込みを定義する．各設定の頭文字は大文字とする．
 
-```shell
+```bash
 [SERVICE]
     Flush 1
     # 猶予時間
@@ -74,12 +74,44 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・INPUTセクションとは
 
-ログの入力方法を定義する．
+ログのパイプラインへの入力方法を定義する．
 
-参考：
+参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-- https://docs.fluentbit.io/manual/pipeline/inputs
-- https://docs.fluentbit.io/manual/concepts/data-pipeline/input
+プラグインを用いて，ログの入力方法を指定する．
+
+参考：https://docs.fluentbit.io/manual/pipeline/inputs
+
+#### ・forwardプラグイン
+
+転送されたログを指定されたポートでリッスンし，パイプラインに入力する．
+
+参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
+
+```bash
+[INPUT]
+    # プラグイン名
+    Name        forward
+    Listen      0.0.0.0
+    # プロセスのリッスンポート
+    Port        24224
+```
+
+#### ・tailプラグイン
+
+複数行のログを結合し，パイプラインに入力する．```v1.8```を境にオプションが変わっていることに注意する．
+
+参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
+
+```bash
+[INPUT]
+    # プラグイン名
+    Name              tail
+    # ログの場所．ワイルドカードを使用できる．
+    Path              /var/log/*.log
+    # 使用するパーサー名
+    multiline.parser  laravel
+```
 
 <br>
 
@@ -87,19 +119,18 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・PARSEセクションとは
 
-
-
 #### ・MULTILINE_PARSERセクション
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
 
-```shell
+```bash
 [MULTILINE_PARSER]
+    # パーサー名
     name          laravel
-    # 解析タイプ
+    # パーサータイプ
     type          regex
     flush_timeout 1000
-    # 解析ルール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
+    # パーサールール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
     rule          "start_state" "\[%Y-%m-%d %H:%M:%S\]" "cont"
     rule          "cont"        "#*"                    "cont"
 ```
@@ -112,8 +143,27 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 特定の文字列を持つログのみをBUFFERセクションに転送する．
 
+#### ・multilineプラグイン
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
+
 ```shell
 [FILTER]
+    # プラグイン名
+    name                  multiline
+    match                 *
+    multiline.key_content log
+    # 使用するパーサー名
+    multiline.parser      laravel
+```
+
+#### ・stdoutプラグイン
+
+参考：https://docs.fluentbit.io/manual/pipeline/filters/standard-output
+
+```bash
+[FILTER]
+    # プラグイン名
     Name  stdout
     Match *
 ```
@@ -135,25 +185,150 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・プラグイン
 
-ログを何らかの外部サービスに転送する場合，プラグインをインストールする必要がある．なお，FluentBitは標準でdatadogに転送できるため，datadogのプラグインは不要である．なお，転送先のサービスのベンダーが提供するプラグイン込みのベースイメージを使用して，FluentBitコンテナをビルドすれば，プラグインのインストールが不要である．
+| 転送先サービス | ベースイメージのリンク                                       | 補足                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| NewRelic       | https://github.com/newrelic/newrelic-fluent-bit-output       | NewRelicプラグインがインストールされている．                 |
+| AWS            | https://github.com/aws/aws-for-fluent-bit                    | AWSから提供される他の全てのFluentBitイメージを束ねたものであり，AWSの各種リソースに転送するためのプラグインがインストールされている． |
+|                | https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit | CloudWatchLogsプラグインがインストールされている．           |
+|                | https://github.com/aws/amazon-kinesis-streams-for-fluent-bit | Kinesis Streamsプラグインがインストールされている．          |
+|                | https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit | Kinesis Firehoseプラグインがインストールされている．         |
 
-| 転送先サービス | ベースイメージのリンク                                       |
-| -------------- | ------------------------------------------------------------ |
-| Datadog        | https://github.com/DataDog/fluent-plugin-datadog             |
-| AWS            | ・https://github.com/aws/aws-for-fluent-bit<br>・https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit<br>・https://github.com/aws/amazon-kinesis-streams-for-fluent-bit |
-| NewRelic       | https://github.com/newrelic/newrelic-fluent-bit-output       |
+ログを何らかの外部サービスに転送する場合，プラグインをインストールする必要がある．なお，FluentBitは標準でdatadogプラグインがインストールされているため，datadogプラグインのインストールは不要である．Datadogプラグインについては以下のリンクを参考にせよ．
+
+参考：https://github.com/DataDog/fluent-plugin-datadog
+
+#### ・datadogプラグイン
+
+```bash
+#########################
+# Datadogへの転送
+#########################
+[OUTPUT]
+    # プラグイン名
+    Name              datadog
+    # 転送対象とするログのタグ
+    Match             laravel
+    # 転送先ホスト
+    Host              http-intake.logs.datadoghq.com
+    TLS               on
+    compress          gzip
+    # DatadogのAPIキー．
+    apikey            *****
+    # DatadogログエクスプローラーにおけるService名
+    dd_service        prd-foo
+    # DatadogログエクスプローラーにおけるSource名
+    dd_source         prd-foo
+    dd_message_key    log
+    # 追加タグ
+    dd_tags           env:prd-foo
+    
+[OUTPUT]
+    Name              datadog
+    Match             nginx
+    Host              http-intake.logs.datadoghq.com
+    TLS               on
+    compress          gzip
+    apikey            *****
+    dd_service        prd-foo
+    dd_source         prd-foo
+    dd_message_key    log
+    dd_tags           env:prd-foo
+```
+
+代わりに，同じ設定をFireLensの```logConfiguration```キーとしても適用することもできる．
+
+参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/datadog/README.md
+
+```bash
+"logConfiguration": {
+	"logDriver":"awsfirelens",
+	"options": {
+	   "Name": "datadog",
+	   "Host": "http-intake.logs.datadoghq.com",
+	   "TLS": "on",
+	   "apikey": "<DATADOG_API_KEY>",
+	   "dd_service": "prd-foo",
+	   "dd_source": "prd-foo",
+	   "dd_tags": "env:prd-foo",
+	   "provider": "ecs"
+   }
+},
+```
+
+#### ・cloudwatch_logsプラグイン
+
+設定ファイルに予約されたAWS変数を使用できる．以下のリンクを参考にせよ．
+
+参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
+
+```bash
+#########################
+# CloudWatchログへの転送
+#########################
+[OUTPUT]
+    # プラグイン名
+    Name              cloudwatch_logs
+    # 転送対象とするログのタグ
+    Match             laravel
+    # アウトプットJSONのうち，宛先に転送するキー名
+    log_key           log
+    region            ap-northeast-1
+    # 予約変数あり．
+    log_group_name    /prd-foo-ecs-container/laravel/log
+    # ログストリーム名．予約変数あり．タスクIDなど出力できる．
+    log_stream_name   container/laravel/$(ecs_task_id)
+    
+[OUTPUT]
+    Name              cloudwatch_logs
+    Match             nginx
+    log_key           log
+    region            ap-northeast-1
+    log_group_name    /prd-foo-ecs-container/nginx/log
+    log_stream_name   container/nginx/$(ecs_task_id)
+```
+
+CloudWatchログに送信されるデータはJSONになっている．```log```キーに全てのログのテキストが割り当てられている．特定のキーの値のみをCloudWatchログに送信する場合，log_keyオプションでキー名を指定する．例えば，```log```キーのみを送信する場合，『```log```』と指定する．
+
+参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
+
+```bash
+{
+    "container_id": "*****",
+    "container_name": "prd-foo-ecs-container",
+    "ecs_cluster": "prd-foo-ecs-cluster",
+    "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:****:task/cluster-name/*****",
+    "ecs_task_definition": "prd-foo-ecs-task-definition:1",
+    "log": "<ログのテキスト>",
+    "source": "stdout",
+    "ver": "1.5"
+}
+```
 
 <br>
 
-### STORAGE
+### BUFFERセクションとは
+
+#### ・BUFFERセクションとは
+
+参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage
 
 #### ・STREAM_TASKセクションとは
+
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
 
 ログパイプラインにおいて，FILTERセクション後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，INPUTセクションに再度取り込まれ，最終的にOUTPUTセクションまで渡される．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
+STREAM_TASKセッションは，ログSQLで定義される．
+
+参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql
+
+```bash
+[STREAM_TASK]
+    Name foo
+    Exec CREATE STREAM foo AS SELECT * FROM TAG:'foo';
+```
 
 <br>
 
@@ -219,9 +394,18 @@ FireLensコンテナでは，FluentBitまたはFlunetdがログ転送プロセ�
 
 #### ・FluentBitイメージ
 
-FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている．これには，AWSリソースにログを転送するためのプラグインがすでに含まれている．パブリックECRリポジトリからプルしたイメージをそのまま使用する場合と，プライベートECRリポジトリで再管理してから使用する場合がある．
+FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている．AWSリソースにログを転送するためのプラグインがすでに含まれている．なお，DatadogプラグインはFluentBit自体にインストール済みである．パブリックECRリポジトリからプルしたイメージをそのまま使用する場合と，プライベートECRリポジトリで再管理してから使用する場合がある．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
+
+```bash
+[/fluent-bit]$ ls -la
+
+-rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧CloudWatchLogsプラグイン
+-rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.sきゅう # Kinesis Firehoseプラグイン 
+-rw-r--r-- 1 root root 30016544 Sep  1 18:03 kinesis.so # Kinesis Streamsプラグイン 
+...
+```
 
 #### ・パブリックECRリポジトリを使用する場合
 
@@ -247,69 +431,102 @@ FROM amazon/aws-for-fluent-bit:latest
 
 ### 標準設定の上書き
 
-#### ・```fluent-bit_custom.conf```ファイル
+#### ・標準設定ファイルの種類
 
-すでにベースイメージに設定ファイル（```/fluent-bit/etc/fluent-bit.conf```）が組み込まれているため，追加設定をオーバライドすることになる．設定ファイルは，『```/fluent-bit/etc/fluent-bit_custom.conf```』に置くようにする．CloudWatchログがプラグインの場合に，設定ファイルに予約された変数を使用できる．以下のリンクを参考にせよ．
+aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには標準で設定ファイルが用意されている．追加設定を実行するファイルはここに配置する．
 
-参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
+```bash
+[/fluent-bit/etc]$ ls -la
 
-```shell
-#########################
-# Datadogへの転送
-#########################
-[OUTPUT]
-    # 転送先名
-    Name              datadog
-    # 転送対象とするログのタグ
-    Match             laravel
-    # 転送先ホスト
-    Host              http-intake.logs.datadoghq.com
-    TLS               on
-    compress          gzip
-    # DatadogのAPIキー．コンテナの環境変数から参照し，割り当てる．
-    apikey            <DatadogのAPIキー>
-    # serviceタグ
-    dd_service        <DatadogのログエクスプローラーにおけるService名>
-    # sourceタグ
-    dd_source         <DatadogのログエクスプローラーにおけるSource名>
-    dd_message_key    log
-    # 追加タグ（例）env:${DD_ENV}
-    dd_tags           <タグ名>
-    
-#########################
-# CloudWatchログへの転送
-#########################
-[OUTPUT]
-    # 転送先名
-    Name              cloudwatch
-    # 転送対象とするログのタグ
-    Match             laravel
-    log_key           log
-    region            ap-northeast-1
-    # 予約変数あり．
-    log_group_name    <ロググループ名>
-    # ログストリーム名．予約変数あり．タスクIDなど出力できる．
-    log_stream_name   container/laravel/$(ecs_task_id)
-    
-[OUTPUT]
-    Name              cloudwatch
-    Match             nginx
-    log_key           log
-    region            ap-northeast-1
-    log_group_name    <ロググループ名>
-    log_stream_name   container/nginx/$(ecs_task_id)
+-rw-r--r-- 1 root root  251 Sep  1 17:57 fluent-bit.conf
+-rw-r--r-- 1 root root 1564 Sep 27 02:15 fluent-bit_custom.conf # 追加設定用
+-rw-r--r-- 1 root root 4664 Sep  1 18:07 parsers.conf
+-rw-r--r-- 1 root root  584 Sep  1 18:07 parsers_ambassador.conf
+-rw-r--r-- 1 root root  226 Sep  1 18:07 parsers_cinder.conf
+-rw-r--r-- 1 root root 2798 Sep  1 18:07 parsers_extra.conf
+-rw-r--r-- 1 root root  240 Sep  1 18:07 parsers_java.conf
+-rw-r--r-- 1 root root  845 Sep  1 18:07 parsers_mult.conf
+-rw-r--r-- 1 root root  291 Sep 27 02:15 parsers_multiline.conf
+-rw-r--r-- 1 root root 2954 Sep  1 18:07 parsers_openstack.conf
+-rw-r--r-- 1 root root  579 Sep 27 02:15 stream_processor.conf # 追加設定用
 ```
 
-ちなみに，標準で組み込まれている設定ファイルには，INPUTセクションがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTセクションを定義する必要が無い．
+FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以下の通りとなり，ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
+
+参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+
+```bash
+[INPUT]
+    Name tcp
+    Listen 127.0.0.1
+    Port 8877
+    Tag firelens-healthcheck
+
+[INPUT]
+    Name forward
+    unix_path /var/run/fluent.sock
+
+[INPUT]
+    Name forward
+    Listen 127.0.0.1
+    Port 24224
+
+[FILTER]
+    Name record_modifier
+    Match *
+    Record ecs_cluster sample-test-cluster
+    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:123456789012:task/sample-test-cluster/d4efc1a0fdf7441e821a3683836ad69a
+    Record ecs_task_definition sample-test-webapp-taskdefinition:15
+
+[OUTPUT]
+    Name null
+    Match firelens-healthcheck
+```
+
+#### ・```fluent-bit_custom.conf```ファイル
+
+FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，コンテナ定義の```config-file-value```キーで指定し，追加設定を実行する．これにより，FireLensコンテナにINCLUDE文が挿入される．
+
+参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+
+```bash
+[INPUT]
+    Name tcp
+    Listen 127.0.0.1
+    Port 8877
+    Tag firelens-healthcheck
+    
+[INPUT]
+    Name forward
+    unix_path /var/run/fluent.sock
+    
+[INPUT]
+    Name forward
+    Listen 127.0.0.1
+    Port 24224
+    
+[FILTER]
+    Name record_modifier
+    Match *
+    Record ecs_cluster sample-test-cluster
+    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:123456789012:task/sample-test-cluster/13c0122f7f384cb7a67088d183dd46d9
+    Record ecs_task_definition sample-test-webapp-taskdefinition:9
+    
+@INCLUDE /fluent-bit/etc/fluent-bit_custom.conf # INCLUDE文が挿入される．
+
+[OUTPUT]
+    Name null
+    Match firelens-healthcheck
+```
+
+ちなみに，標準の設定ファイルには，INPUTセクションがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTセクションを定義しなくても問題ない．
 
 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
-```shell
+```bash
 [INPUT]
-    # Inputタイプ
     Name        forward
     Listen      0.0.0.0
-    # プロセスのリッスンポート
     Port        24224
 
 [OUTPUT]
@@ -323,11 +540,11 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ・```stream_processor.conf```ファイル
 
-FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．これらのログにタグを付け，INPUTセクションからログを処理し直す．
+STREAM_TASKセクションにて，ログのタグ付けを定義する．FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-<タスクID>』という名前でログが処理されている．そのため，Stream Processorでログを抽出するためには，クエリで『```FROM TAG:'*-firelens-*'```』を指定する必要がある．ちなみに，STREAM_TASKセクションでタグ付けされたログは，INPUTセクションから再び処理し直される．
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
-```shell
+```bash
 # appコンテナのログへのタグ付け
 [STREAM_TASK]
     Name laravel
@@ -344,13 +561,52 @@ FireLensコンテナのパイプラインでは，『<コンテナ名>-firelens-
     Exec CREATE STREAM container WITH (tag='containers') AS SELECT * FROM TAG:'*-firelens-*';
 ```
 
+```bash
+[SERVICE]
+    Flush 1
+    Grace 30
+    Log_Level info
+    # ファイルを読み込む
+    Parsers_File parsers_multiline.conf
+    Streams_File stream_processor.conf
+```
+
+#### ・```parsers_multiline.conf```ファイル
+
+MULTILINE_PARSERセクションにて，スタックトレースログの各行の結合を定義する．
+
+参考：https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
+
+```bash
+[MULTILINE_PARSER]
+    name          laravel
+    type          regex
+    flush_timeout 1000
+    rule          "start_state"   "/(Dec \d+ \d+\:\d+\:\d+)(.*)/"  "cont"
+    rule          "cont"          "/^\s+at.*/"                     "cont"
+```
+
+```bash
+[SERVICE]
+    flush                 1
+    log_level             info
+    parsers_file          /parsers_multiline.conf
+    
+[FILTER]
+    name                  multiline
+    match                 *
+    multiline.key_content log
+    # ファイルを読み込む．組み込みパーサ（goなど）を使用することも可能．
+    multiline.parser      go, laravel
+```
+
 <br>
 
-### FireLensコンテナの構築
+### FireLensコンテナのコンテナ定義
 
-#### ・コンテナ定義
+#### ・全体
 
-```shell
+```bash
 [
   {
     "name": "<メインコンテナ名>",
@@ -427,6 +683,8 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 | ```config-file-value```                       | ```options```キーにて，ログ転送時の設定が可能であるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する． |
 | ```enable-ecs-log-metadata```（標準で有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```，```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する． |
+
+
 
 <br>
 
