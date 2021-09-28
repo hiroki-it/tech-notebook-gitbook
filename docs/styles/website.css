@@ -169,19 +169,19 @@ code[class*="language-"], pre[class*="language-"] {
 }
 
 /***************
- URL
-***************/
-.markdown-section a {
-    font-size: 0.9em
-}
-
-/***************
  インラインコード
 ***************/
 .token.tag {
     color: black;
 }
-
-.token.punctuation {
+/* token-tag内のtoken-punctuationに限定して色指定し，コードブロック内の記号の色は変わらないようにする． */
+.token.tag .token.punctuation {
     color: black;
+}
+
+/***************
+ URL
+***************/
+.markdown-section a {
+    font-size: 0.95em
 }
