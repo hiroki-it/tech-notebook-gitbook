@@ -47,9 +47,9 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | 変数名      | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | DD_API_KEY  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| DD_ENV      | APMを使用する場合に，サービスやトレース画面にて，```env```タグに文字列を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
+| DD_ENV      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに文字列を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
 | DD_HOSTNAME | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
-| ECS_FARGATE | Fargateを使用する場合に，これを宣言する．                    |                                                              |                                              |
+| ECS_FARGATE | Fargateを用いる場合に，これを宣言する．                      |                                                              |                                              |
 
 任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す．一部のメトリクスは，標準では収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
@@ -218,7 +218,7 @@ Datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 ### トレーシングパッケージとは
 
-APM機能を使用する時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーシングパッケージをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
+APM機能を用いる時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーシングパッケージをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
 
 参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 
@@ -402,12 +402,18 @@ import 'dd-trace/init'
 
 #### ・FireLensコンテナとは
 
-Datadogコンテナはコンテナからログを収集できないため，代わりにFireLensコンテナを使用する必要がある．以下のリンクを参考にせよ．
+Datadogコンテナはコンテナからログを収集できないため，代わりにFireLensコンテナを用いる必要がある．以下のリンクを参考にせよ．
 
 参考：
 
 - https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
 - https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
+
+#### ・ログエクスプローラ
+
+FireLensコンテナからDatadogに転送されたログは，ログエクスプローラで確認できる．
+
+参考：https://app.datadoghq.com/logs
 
 <br>
 
@@ -415,18 +421,18 @@ Datadogコンテナはコンテナからログを収集できないため，代�
 
 #### ・Datadogイメージ
 
-DatadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．パブリックECRリポジトリからプルしたイメージをそのまま使用する場合と，プライベートECRリポジトリで再管理してから使用する場合がある．
+DatadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている．パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と，プライベートECRリポジトリで再管理してから用いる場合がある．
 
-#### ・パブリックECRリポジトリを使用する場合
+#### ・パブリックECRリポジトリを用いる場合
 
-ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指定し，ECRイメージのプルを実行する．標準で内蔵されているyamlファイルの設定をそのまま使用する場合は，こちらを採用する．
+ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指定し，ECRイメージのプルを実行する．標準で内蔵されているyamlファイルの設定をそのまま用いる場合は，こちらを採用する．
 
 参考：
 
 - https://gallery.ecr.aws/datadog/agent
 - https://github.com/DataDog/datadog-agent
 
-#### ・プライベートECRリポジトリを使用する場合
+#### ・プライベートECRリポジトリを用いる場合
 
 あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．標準で内蔵されているyamlファイルの設定を上書きしたい場合は，こちらを採用する．
 
@@ -452,7 +458,87 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 <br>
 
-## 05. メトリクスのグラフ化
+## 05. ログエクスプローラ
+
+### attribute（属性）
+
+#### ・予約済み属性
+
+参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/
+
+| 属性名         | 説明                                       | 補足                                                         |
+| -------------- | ------------------------------------------ | ------------------------------------------------------------ |
+| ```host```     | 送信元ホストを識別する．                   | Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いてホストタグを設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
+| ```source```   | ログの生成元を識別する．                   | ベンダー名を使用するとわかりやすい．<br>（例）```laravel```，```nginx```，```redis``` |
+| ```status```   | ログのレベルを識別する．                   |                                                              |
+| ```service```  | ログの生成元のアプリケーションを識別する． | ログとAPM分散トレースを紐づけるため，両方に同じ名前を割り当てる必要がある．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
+| ```trace_id``` | 分散トレースとログを紐づけるIDを識別する． |                                                              |
+| ```message```  | ログメッセージを識別する．                 |                                                              |
+
+#### ・標準属性
+
+標準で用意された属性．
+
+参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
+
+#### ・スタックトレース属性
+
+ステックトレースログを構成する要素に付与される属性のこと．
+
+参考：https://docs.datadoghq.com/ja/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
+
+<br>
+
+### ログパーサー
+
+#### ・Grokパーサー
+
+パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，ログメッセージから特定の文字に属性を付与する．
+
+参考：
+
+- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
+- https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#grok-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+
+**＊例＊**
+
+アプリケーションによって，以下のようなログが生成されるとする．
+
+```
+[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
+```
+
+以下のような文字列ルールを定義できる．ここでは，```date```マッチャーと```word```マッチャーを用いている．また，```word```マッチャーで検出された文字列に```log_status```というカスタム属性を付与している．
+
+```
+FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+production.%{word:log_status}\:.+
+```
+
+<br>
+
+### パースルールの構成
+
+#### ・マッチャー
+
+参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
+
+#### ・フィルター
+
+参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=filter#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
+
+<br>
+
+### リマッパー
+
+#### ・ログステータスリマッパー
+
+属性が付与された特定の文字列を，ルールに基づいて，特定のログレベルにマッピングする．判定ルールについては，以下のリンクを参考にせよ．
+
+参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#%E3%83%AD%E3%82%B0%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%83%AA%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC
+
+<br>
+
+## 06. APM
 
 ### 図の種類
 
@@ -465,6 +551,10 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 #### ・２の累乗スケール
 
 #### ・sqrt（平方根）スケール
+
+
+
+
 
 
 

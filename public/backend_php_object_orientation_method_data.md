@@ -1706,6 +1706,8 @@ var_dump($result); // 1
 
 ワイルドカードは『```.*```』で表現する．
 
+参考：https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
+
 **＊実装例＊**
 
 ```php
