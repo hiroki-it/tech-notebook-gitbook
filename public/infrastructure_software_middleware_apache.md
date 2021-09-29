@@ -28,13 +28,13 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 特定のディレクティブを実装するべき設定ファイルを一覧で表示する．
 
-```shell
+```bash
 $ sudo httpd -L
 ```
 
 #### ・設定ファイルのバリデーション
 
-```shell
+```bash
 # systemctlコマンドでは実行不可能
 
 $ sudo service httpd configtest
@@ -48,7 +48,7 @@ $ sudo apachectl -t
 
 コンパイル済みのモジュールを一覧で表示する．表示されているからといって，読み込まれているとは限らない．
 
-```shell
+```bash
 $ sudo httpd -l
 ```
 
@@ -56,7 +56,7 @@ $ sudo httpd -l
 
 コンパイル済みのモジュールのうちで，実際に読み込まれているモジュールを表示する．
 
-```shell
+```bash
 $ sudo httpd -M
 ```
 
@@ -64,19 +64,19 @@ $ sudo httpd -M
 
 読み込まれた```conf```ファイルを一覧で表示する．この結果から，使われていない```conf```ファイルもを検出できる．
 
-```shell
+```bash
 $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 ```
 
 #### ・読み込まれるVirtualHost設定の一覧
 
-```shell
+```bash
 $ sudo httpd -S
 ```
 
 #### ・強制的な起動／停止／再起動
 
-```shell
+```bash
 # 起動
 $ sudo systemctl start httpd
 
@@ -91,7 +91,7 @@ $ sudo systemctl restart httpd
 
 Apacheを段階的に再起動する．安全に再起動できる．
 
-```shell
+```bash
 $ sudo apachectl graceful
 ```
 
@@ -452,10 +452,11 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 以下のようなログになる．
 
-```
+```log
 # common形式
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] "GET /home/name/category/web HTTP/1.1" 200 11815
-
+```
+```log
 # combine形式
 118.86.194.71 - - [17/Aug/2011:23:04:03 +0900] "GET /home/name/category/web HTTP/1.1" 200 11815 "http://naoberry.com/home/name/" "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1"
 ```

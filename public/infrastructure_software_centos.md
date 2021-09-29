@@ -701,8 +701,6 @@ $ curl -o <ファイル名> http://example.com/foo
 $ curl -L http://example.com/foo
 ```
 
-
-
 <br>
 
 ### ssh：secure shell

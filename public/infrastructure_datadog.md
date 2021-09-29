@@ -104,7 +104,7 @@ Datadogが提供するdatadogイメージによって構築されるコンテナ
 
 #### ・Datadogコンテナの配置
 
-```shell
+```bash
 [
     {
         # laravelコンテナ
@@ -195,7 +195,7 @@ Datadogコンテナがコンテナからメトリクスを収集できるよう�
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#iam-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8%E4%BF%AE%E6%AD%A3
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -282,11 +282,11 @@ Extension 'ddtrace' not present.
 | 変数名             | 説明                                                         | 画面                                   |
 | ------------------ | ------------------------------------------------------------ | -------------------------------------- |
 | DD_SERVICE         | アプリケーション                                             |                                        |
-| DD_SERVICE_MAPPING | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:stg-foo-laravel,pdo:stg-foo-pdo``` | https://app.datadoghq.com/apm/services |
+| DD_SERVICE_MAPPING | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
 
 トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
 
-```shell
+```bash
 root@*****:/ php --ri=ddtrace
 
 Datadog tracing support => enabled
@@ -481,9 +481,23 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
 
+```shell
+{
+  "container_id": "*****",
+  "container_name": "/prd-foo-ecs-container",
+  "date": 1632949140000,
+  "log_status": "NOTICE",
+  "service": "foo",
+  "source": "laravel",
+  "timestamp": 1632916740240
+}
+```
+
+
+
 #### ・スタックトレース属性
 
-ステックトレースログを構成する要素に付与される属性のこと．
+スタックトレースログを構成する要素に付与される属性のこと．
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
 
@@ -491,9 +505,13 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 ### ログパーサー
 
+#### ・パーサーとは
+
+ログに対して，何かしらの加工を実行する．
+
 #### ・Grokパーサー
 
-パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，ログメッセージから特定の文字に属性を付与する．
+パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，ログの値を属性に割り当てる．
 
 参考：
 
@@ -504,15 +522,36 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 アプリケーションによって，以下のようなログが生成されるとする．
 
+```log
+[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
 ```
+
+```log
 [2021-01-01 00:00:00] production.ERROR: ログのメッセージ
 ```
 
-以下のような文字列ルールを定義できる．ここでは，```date```マッチャーと```word```マッチャーを用いている．また，```word```マッチャーで検出された文字列に```log_status```というカスタム属性を付与している．
+以下のようなルールを定義する．ここでは，```date```マッチャーと```word```マッチャーを用いている．また，```log_status```というカスタム属性に対して，```word```マッチャーによって検出された文字列を付与している．
 
 ```
-FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+production.%{word:log_status}\:.+
+FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
 ```
+
+これにより，ログの値が属性に割り当てられる．
+
+```bash
+{
+  "date": 1630454400000,
+  "log_status": "INFO"
+}
+```
+
+#### ・Categoryパーサー
+
+検索条件に一致する属性を持つログに対して，属性を新しく付与する．
+
+**＊例＊**
+
+ログに対してGrokパーサを実行し，属性にログの値を割り当てる．```status_code```属性を持つログに対して，```status_category```属性を付与する．この時，```status_code```属性の数値に応じて，```status_category```属性にステータスを表す文字列を割り当てる．その後，```status_category```属性に対してステータスリマッパーを実行する．これにより，```status_category```属性に割り当てられた文字列に応じて，ログレベルがマッピングされる．
 
 <br>
 
@@ -530,11 +569,27 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+production.%{word:log_status}\
 
 ### リマッパー
 
+#### ・リマッパーとは
+
+指定した属性に割り当てられた値を，Datadogにおけるログ指標に対応付ける．
+
 #### ・ログステータスリマッパー
 
-属性が付与された特定の文字列を，ルールに基づいて，特定のログレベルにマッピングする．判定ルールについては，以下のリンクを参考にせよ．
+属性に割り当てられた文字列を，ルールに基づいて，特定のログレベル（```INFO```，```WARNING```，```ERROR```，など）にマッピングする．判定ルールについては，以下のリンクを参考にせよ．
 
 参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#%E3%83%AD%E3%82%B0%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%83%AA%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC
+
+<br>
+
+### インデックス
+
+#### ・インデックスとは
+
+転送されたログをグループ化し，グループ別に異なる処理を実行する．
+
+参考：https://docs.datadoghq.com/ja/logs/indexes/
+
+
 
 <br>
 
@@ -551,6 +606,16 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+production.%{word:log_status}\
 #### ・２の累乗スケール
 
 #### ・sqrt（平方根）スケール
+
+<br>
+
+### 07. その他
+
+### 各識別子の有効期間
+
+変更前の識別子は，時間経過とともにDatadogから削除される．
+
+参考：https://docs.datadoghq.com/ja/dashboards/faq/historical-data/
 
 
 

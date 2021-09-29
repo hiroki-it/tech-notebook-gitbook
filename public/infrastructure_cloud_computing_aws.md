@@ -1738,6 +1738,67 @@ exit ${EXIT_CODE}
 }
 ```
 
+####  ・ECS Exec
+
+ECSタスクのコンテナに対して，シェルログインを実行する．ECSサービスにおけるECS-Execオプションの有効化，ssmmessagesエンドポイントの作成，System ManagerにアクセスするためのIAMポリシーの作成，ECSタスク実行ロールへのIAMポリシーの付与，が必要になる．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html
+- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        # ssmmesages APIへのアクセス権限
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+なお，事前の設定がなされているかどうかをecs-exec-checkerスクリプトを実行して確認できる．
+
+参考：https://github.com/aws-containers/amazon-ecs-exec-checker
+
+```bash
+#!/bin/bash
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+
+bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+```
+
+bazコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される）ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
+
+```bash
+#!/bin/bash
+
+set -xe
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+ECS_CONTAINER_NAME=baz
+
+aws ecs execute-command \
+    --cluster $ECS_CLUSTER_NAME \
+    --task $ECS_TASK_ID \
+    --container $ECS_CONTAINER_NAME \
+    --interactive \
+    --debug \
+    --command "bash"
+```
+
 <br>
 
 ### Fargate

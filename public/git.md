@@ -21,7 +21,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 1. ```git status```を行い，特定のファイルでのコンフリクトが表示される．
 
-```shell
+```bash
 Unmerged paths:
   (use "git restore --staged <file>..." to unstage)
   (use "git add <file>..." to mark resolution)
@@ -37,13 +37,13 @@ Unmerged paths:
 
 3. 一度```add```を行い，コンフリクトの修正をGitに認識させる．
 
-```shell
+```bash
 $ git add XXX/YYY.twig
 ```
 
 4. ```git status```を行い，以下が表示される．コンフリクトが解決されたが，マージされていないと出力される．差分のファイルがたくさん表示される場合があるが，問題ない．
 
-```shell
+```bash
 All conflicts fixed but you are still merging.
 
 Changes to be committed:
@@ -53,7 +53,7 @@ Changes to be committed:
 
 5. ```git commit```（```-m```はつけてはいけない）を行い，vimエディタが表示される．
 
-```shell
+```bash
  Merge branch "ブランチ名" into ブランチ名
 ```
 
@@ -61,7 +61,7 @@ Changes to be committed:
 
 8. ```git status```を行う．場合によっては，差分のコミット数が表示されるが問題ない．
 
-```shell
+```bash
 Your branch is ahead of "origin/feature/XXXX" by 10 commits.
 
 ```
@@ -98,7 +98,7 @@ Your branch is ahead of "origin/feature/XXXX" by 10 commits.
 
 一番，クローンの速度が速く，コマンドの引数も簡単．
 
-```shell
+```bash
 $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 ```
 
@@ -106,7 +106,7 @@ $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 
 サーバ接続名は，，SSH接続の設定ファイル（```~/.ssh/config```）に記載されている．デフォルトでは，Githubの接続名は，「```github.com```」になっている．
 
-```shell
+```bash
 $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<リポジトリ名>.git
 ```
 
@@ -126,7 +126,7 @@ $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<�
 
 指定した影響範囲で適用されている設定値を表示する．```--local```で設定されていない項目は，```--global```の設定値が適用される．
 
-```shell
+```bash
 $ git config --local --list
 ```
 
@@ -138,7 +138,7 @@ Macでは，一つのPCで二つのGutHubアカウントを使用する場合に
 
 AuthorとCommitterの名前を設定する．```local```が一番最後に上書きされ，適用される．
 
-```shell
+```bash
 $ git config --local user.name "hiroki-it"
 ```
 
@@ -147,13 +147,13 @@ $ git config --local user.name "hiroki-it"
 
 AuthorとCommitterのメールアドレスを設定する．```local```が一番最後に上書きされ，適用される．
 
-```shell
+```bash
 $ git config --local user.email "hasegawafeedshop@gmail.com"
 ```
 
 Authorの情報は，コミット時に反映される．（Committerは表示されない）
 
-```shell
+```bash
 $ git log
 
 commit ee299250a4741555eb5027ad3e56ce782fe90ccb
@@ -167,7 +167,7 @@ Date:   Sat Sep 12 00:00:00 2020 +0900
 
 改行コードを，特定のタイミングで自動変換するように設定する．```input```としておくのが良い．
 
-```shell
+```bash
 $ git config --global core.autocrlf <値>
 ```
 
@@ -181,7 +181,7 @@ $ git config --global core.autocrlf <値>
 
 gitのデフォルトエディタを設定する．ここでは，Vimをデフォルトとする．
 
-```shell
+```bash
 $ git config --global core.editor "vim -c "set fenc=utf-8""
 ```
 
@@ -193,7 +193,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 プライベートリポジトリに接続する．```config```ファイルに記述されたユーザ名と接続名を設定する．一つのPCで複数のGitHubアカウントを使用している場合，設定が必須である．
 
-```shell
+```bash
 $ git remote set-url origin <ユーザ名>@<接続名>:<組織名>/<リポジトリ名>.git
 ```
 
@@ -251,7 +251,7 @@ and the repository exists.
 リモート追跡ブランチを削除．
 （１）まず，```branch --all```で作業中のローカルブランチとリモート追跡ブランチを表示．
 
-```shell
+```bash
 $ git branch --all
 * master
   remotes/origin/2019/Symfony_Nyumon/master
@@ -260,14 +260,14 @@ $ git branch --all
 
 （２）```remotes/origin/2019/Symfony_Nyumon/master```を削除．
 
-```shell
+```bash
 $ git branch -d -r origin/2019/Symfony_Nyumon/master
 Deleted remote-tracking branch origin/2019/Symfony_Nyumon/master (was 18a31b5).
 ```
 
 （３）再び，```branch --all```で削除されたことを確認．
 
-```shell
+```bash
 $ git branch --all
 * master
   remotes/origin/master
@@ -275,7 +275,7 @@ $ git branch --all
 
 #### ・```branch checkout -b <新しいローカルブランチ名> <コミット番号>```
 
-```shell
+```bash
 $ git checkout -b feature/3 d7e49b04
 ```
 
@@ -318,7 +318,7 @@ $ git cherry-pick -m 1 d7e49b04
 
 ファイルが，『インデックス』（=```add```）あるいは『HEAD』（=```commit```）に存在している状態で，異なるローカルブランチを```checkout```しようとすると，以下のエラーが出る．
 
-```shell
+```bash
 $ git checkout 2019/Symfony2_Ny
 umon/master
 error: Your local changes to the following files would be overwritten by checkout:
@@ -334,7 +334,7 @@ Aborting
 トラッキングされていないファイルも含めて，全てのファイルを退避．
 ```git status```をしたところ，修正ファイルが３つ，トラックされていないファイルが１つある．
 
-```shell
+```bash
 $ git status
 On branch 2019/Symfony2_Nyumon/feature/6
 Your branch is up to date with "origin/2019/Symfony2_Nyumon/feature/6".
@@ -357,7 +357,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 これを，```stash -u```する
 
-```shell
+```bash
 $ git stash -u
 Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 xxx
 ```
@@ -368,14 +368,14 @@ Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 6
 
 特定のディレクトリやファイルのみ```stash```することができる．
 
-```shell
+```bash
 git stash -- src/...
 ```
 
 #### ・```stash list```
 退避している『ファイル番号：ブランチ：親コミットとコミットメッセージ』を一覧で表示．
 
-```shell
+```bash
 $ git stash list
 stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 xxx
 ```
@@ -383,7 +383,7 @@ stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 xxx
 #### ・```stash pop stash@{<番号>}```
 退避している指定のファイルを復元．
 
-```shell
+```bash
 $ git stash pop stash@{0}
 On branch 2019/Symfony2_Nyumon/feature/8
 Changes not staged for commit:
@@ -405,7 +405,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 #### ・```stash drop stash@{<番号>}```
 退避している指定のファイルを復元せずに削除．
 
-```shell
+```bash
 $ git stash drop stash@{0}
 Dropped refs/stash@{0} (1d0ddeb9e52a737dcdbff7296272080e9ff71815)
 ```
@@ -413,7 +413,7 @@ Dropped refs/stash@{0} (1d0ddeb9e52a737dcdbff7296272080e9ff71815)
 #### ・```stash clear```
 退避している全てのファイルを復元せずに削除．
 
-```shell
+```bash
 $ git stash clear
 ```
 
@@ -431,7 +431,7 @@ $ git stash clear
 
 指定したコミットのみを打ち消す新しいコミットを作成する．コミットメッセージは，打ち消すコミットと同じものになる．リリース後に元に戻したい時に役立つ．
 
-```shell
+```bash
 $ git revert <コミットID> --no-edit
 ```
 
@@ -439,7 +439,7 @@ $ git revert <コミットID> --no-edit
 
 指定したコミットのみを打ち消す新しいコミットを作成する．vimが起動するので，コミットメッセージを新しいものに変更する．
 
-```shell
+```bash
 $ git revert <コミットID> --edit
 ```
 
@@ -447,7 +447,7 @@ $ git revert <コミットID> --edit
 
 指定したマージコミットのみを打ち消す新しいコミットを作成する．コミットメッセージは，打ち消すコミットと同じものになる．マージナンバーを事前に確認しておく必要がある．
 
-```shell
+```bash
 $ git show
 commit xyz
 Merge: 1a1a1a 2b2b2b    #ここに注目
@@ -472,21 +472,21 @@ $ git revert -m 1 xyz
 #### ・```reset HEAD <ファイル名／ファイルパス>```
 インデックスから，指定したファイルを削除．
 
-```shell
+```bash
 $ git reset HEAD <ファイル名／ファイルパス>
 ```
 
 #### ・```reset --soft <コミットID>```
 作業中のローカルブランチにおいて，最新のHEAD（=```commit```後）を指定の履歴まで戻し，それ以降を削除する．```commit```のみを取り消したい場合はこれ．
 
-```shell
+```bash
 $ git reset --soft <コミットID>
 ```
 
 #### ・```reset --mixed <コミットID>```
 作業中のローカルブランチにおいて，インデックス（=```add```後），HEAD（=```commit```後）を指定の履歴まで戻し，それ以降を削除．```add```と```commit```を取り消したい場合はこれ．
 
-```shell
+```bash
 $ git reset --mixed <コミットID>
 ```
 
@@ -494,7 +494,7 @@ $ git reset --mixed <コミットID>
 作業中のローカルブランチにおいて，最新のワークツリー（=フォルダ），インデックス（=```add```後），HEAD（=```commit```後）を指定の履歴まで戻し，それ以降を削除．
 <font color="red">**ワークツリー（=フォルダ）内のファイルの状態も戻ってしまうので，取り扱い注意！！**</font>
 
-```shell
+```bash
 $ git reset --hard <コミットID>
 ```
 
@@ -502,7 +502,7 @@ $ git reset --hard <コミットID>
 
 1. まず，```log ```コマンドで，作業中のローカルブランチにおけるコミットIDを確認．
 
-```shell
+```bash
 $ git log
 commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/Symfony2_Nyumon/master)
 Merge: 41cc21b f81c813
@@ -526,13 +526,13 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 
 2. 指定のコミットまで履歴を戻す．
 
-```shell
+```bash
 $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 ```
 
 3. ```log ```コマンドで，正しく変更されているか確認．
 
-```shell
+```bash
 $ git log
 commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> master)
 Author: Hiroki Hasegawa <xxx@gmail.com>
@@ -544,7 +544,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 4. ```push --force```でローカルリポジトリの変更をリモートリポジトリに強制的に反映．
    <font color="red">**『強制的にpushした』というログも，リモート側には残らない．**</font>
 
-```shell
+```bash
 $ git push --force
 Total 0 (delta 0), reused 0 (delta 0)
 To github.com:hiroki-it/Symfony2_Nyumon.git
@@ -565,7 +565,7 @@ To github.com:hiroki-it/Symfony2_Nyumon.git
 
 1. まず，```log ```コマンドで，作業中のローカルブランチにおけるコミットIDを確認．
 
-```shell
+```bash
 $ git log
 commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> master, 2019/Symfony2_Nyumon/master)
 Merge: 41cc21b f81c813
@@ -589,24 +589,24 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 
 2. 指定した履歴の削除
 
-```shell
+```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 ```
 とすると，タブが表示され，指定のコミットIDの履歴が表示される
 
-```shell
+```bash
 pick b1b5c0f add #0 xxxxxxxxxx
 ```
 
 『挿入モード』に変更し，この一行の```pick```を```edit```に変更．その後，
 
-```shell
+```bash
 :w
 ```
 
 として保存．その後，エディタ上で『Ctrl+C』を押し，
 
-```shell
+```bash
 :qa!
 ```
 
@@ -614,20 +614,20 @@ pick b1b5c0f add #0 xxxxxxxxxx
 
 3. ```commit --amend```に```m```オプションを付けて，メッセージを変更．
 
-```shell
+```bash
 $ git commit --amend -m="<変更後のメッセージ>"
 ```
 
 4. ```rebase --continue```を実行し，変更を反映させる．
 
-```shell
+```bash
 $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
 5. ```push```しようとすると，```![rejected] develop -> develop (non-fast-forward)```とエラーが出るので，
 
-```shell
+```bash
 $ git merge <ブランチ名> --allow-unrelated-histories
 ```
 で解決し，```push```する．
@@ -636,26 +636,26 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 
 1. ハッシュ値を指定して，```rebase```コマンドを実行する．
 
-```shell
+```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 ```
 
 2. ```commit --amend```に```reset-author```オプションを付けて，configで設定した名前をAuthor名とComitter名に適用する．
 
-```shell
+```bash
 $ git commit --amend --reset-author
 ```
 
 3. ```rebase --continue```を実行し，変更を反映させる．
 
-```shell
+```bash
 $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
 過去の全てのコミットに対して，Author名とCommitter名を適用するコマンドもある．しかし，危険な方法であるため，個人利用のリポジトリのみで使用するようにするべきである．
 
-```shell
+```bash
 #!/bin/bash
 
 git filter-branch -f --env-filter "
@@ -672,7 +672,7 @@ fi"
 
 作業中のローカルブランチの派生元を変更．
 
-```shell
+```bash
 $ git rebase --onto <派生元にしたいローカルブランチ名> <誤って派生元にしたローカルブランチ名> <派生元を変更したいローカルブランチ名>
 ```
 
@@ -681,24 +681,24 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 
 （１）変更タブの表示
 
-```shell
+```bash
 $ git rebase --interactive --root
 ```
 とすると，最初の履歴が記述されたタブが表示される
 
-```shell
+```bash
 pick b1b5c0f add #0 xxxxxxxxxx
 ```
 
 （２）```pick b1b5c0f add #0 xxxxxxxxxx```の行を削除して保存し，タブを閉じ，エディタ上で『Ctrl+C』を押す．
 
-```shell
+```bash
 :qa!
 ```
 
 ここで未知のエラー
 
-```shell
+```bash
 CONFLICT (modify/delete): README.md deleted in HEAD and modified in 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載
 した. Version 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した of README.md left in tree.
 error: could not apply 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した
@@ -716,7 +716,7 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 やりかけの```rebase```を取り消し．
 作業中のローカルブランチにおける```(master|REBASE-i)```が，``` (master)```に変更されていることからも確認可能．
 
-```shell
+```bash
 hasegawahiroki@Hiroki-Fujitsu MINGW64 /c/Projects/Symfony2_Nyumon
 $ git rebase --interactive
 
@@ -735,7 +735,7 @@ $
 
 全てのリモートブランチをpullする．
 
-```shell
+```bash
 $ git branch -r | grep -v "\->" | grep -v main | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 $ git fetch --all
 $ git pull --all
@@ -757,13 +757,13 @@ $ git pull --all
 
 リモートブランチのタグを削除する．
 
-```shell
+```bash
 $ git push --delete origin v1.0.0
 ```
 
 なお，ローカルのタグは別に削除する必要がある．
 
-```shell
+```bash
 $ git tag -d v1.0.0
 ```
 
@@ -777,7 +777,7 @@ $ git tag -d v1.0.0
 
 作業ブランチの派生元になっているブランチを確認．
 
-```shell
+```bash
 $ git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F"[]~^[]" "{print $2}"
 ```
 
@@ -789,7 +789,7 @@ $ git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | he
 
 全てのコミットの名前とメールアドレスを上書きする．
 
-```shell
+```bash
 $ git filter-branch -f --env-filter \
     "GIT_AUTHOR_NAME="hiroki-it"; \
      GIT_AUTHOR_EMAIL="hasegawafeedshop@gmail.com"; \
@@ -806,7 +806,7 @@ $ git filter-branch -f --env-filter \
 
 全てのコミットに対して，特定のファイルを削除する処理を実行する．加えて，ローカルリポジトリに対してガーベジコレクションを実行すると，ローカルリポジトリから完全に削除できる．
 
-```shell
+```bash
 $ git filter-branch -f --tree-filter \
     'rm -f <ファイルパス>' HEAD
 

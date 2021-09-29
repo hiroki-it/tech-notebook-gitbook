@@ -8,9 +8,15 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 01. アーキテクチャ図
+## 01. アーキテクチャ概要
 
-#### ・全体
+#### ・思想
+
+DDDが適する機能要件の多いアプリケーションだけでなく，あらゆる種類のシステムに適用できる．クリーンアーキテクチャ原著の序文にて，著者は『私は，今まで色々な種類のシステムを作ってきたが，どのシステムもアーキテクチャもルールは同じだった．異なるシステムでも同じルールを共有する必要がある』というようなことを述べている．
+
+参考：https://www.amazon.co.jp/dp/B07FSBHS2V
+
+#### ・構成
 
 参考：https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
@@ -760,7 +766,7 @@ class YmdType extends Type
 参考：
 
 - https://github.com/little-hands/ddd-q-and-a/issues/159
-- www.amazon.co.jp/dp/B082WXZVPC
+- https://www.amazon.co.jp/dp/B082WXZVPC
 
 #### ・認可
 
@@ -816,7 +822,7 @@ class FooAuthorizer
 参考：
 
 - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
-- www.amazon.co.jp/dp/B082WXZVPC
+- https://www.amazon.co.jp/dp/B082WXZVPC
 - https://github.com/little-hands/ddd-q-and-a/issues/573
 
 **＊実装例＊**
