@@ -47,7 +47,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | 変数名      | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
 | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | DD_API_KEY  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| DD_ENV      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに文字列を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
+| DD_ENV      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに値を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
 | DD_HOSTNAME | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
 | ECS_FARGATE | Fargateを用いる場合に，これを宣言する．                      |                                                              |                                              |
 
@@ -279,10 +279,11 @@ Extension 'ddtrace' not present.
 
 参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
-| 変数名             | 説明                                                         | 画面                                   |
-| ------------------ | ------------------------------------------------------------ | -------------------------------------- |
-| DD_SERVICE         | アプリケーション                                             |                                        |
-| DD_SERVICE_MAPPING | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| 変数名                                        | 説明                                                         | 画面                                   |
+| --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| DD_SERVICE_MAPPING                            | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| DD_SERVICE_NAME                               | アプリケーション名を設定する．                               |                                        |
+| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．標準で全てのインテグレーションが有効化されているため，設定は不要である． |                                        |
 
 トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
 
@@ -466,14 +467,14 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/
 
-| 属性名         | 説明                                       | 補足                                                         |
-| -------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| ```host```     | 送信元ホストを識別する．                   | Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いてホストタグを設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
-| ```source```   | ログの生成元を識別する．                   | ベンダー名を使用するとわかりやすい．<br>（例）```laravel```，```nginx```，```redis``` |
-| ```status```   | ログのレベルを識別する．                   |                                                              |
-| ```service```  | ログの生成元のアプリケーションを識別する． | ログとAPM分散トレースを紐づけるため，両方に同じ名前を割り当てる必要がある．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
-| ```trace_id``` | 分散トレースとログを紐づけるIDを識別する． |                                                              |
-| ```message```  | ログメッセージを識別する．                 |                                                              |
+| 属性名         | 説明                                   | 補足                                                         |
+| -------------- | -------------------------------------- | ------------------------------------------------------------ |
+| ```host```     | 送信元ホストを示す．                   | Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いてホストタグを設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
+| ```source```   | ログの生成元を示す．                   | ベンダー名を使用するとわかりやすい．<br>（例）```laravel```，```nginx```，```redis``` |
+| ```status```   | ログのレベルを示す．                   |                                                              |
+| ```service```  | ログの生成元のアプリケーションを示す． | ログとAPM分散トレースを紐づけるため，両方に同じ名前を割り当てる必要がある．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
+| ```trace_id``` | 分散トレースとログを紐づけるIDを示す． |                                                              |
+| ```message```  | ログメッセージを示す．                 |                                                              |
 
 #### ・標準属性
 
@@ -481,19 +482,75 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
 
+**＊例＊**
+
+Laravelの場合
+
 ```shell
 {
   "container_id": "*****",
   "container_name": "/prd-foo-ecs-container",
-  "date": 1632949140000,
+  "date": 12345,
   "log_status": "NOTICE",
   "service": "foo",
   "source": "laravel",
-  "timestamp": 1632916740240
+  "timestamp": 12345
 }
 ```
 
+**＊例＊**
 
+Nginxの場合
+
+```bash
+{
+  "id": "*****",
+  "content": {
+    "timestamp": "2021-09-01T00:00:00.000Z",
+    "tags": [
+      "source:nginx",
+      "env:prd"
+    ],
+    "service": "foo",
+    "message": "nn.nnn.nn.nnn - - [01/Sep/2021:00:00:00 +0000] \"GET /healthcheck HTTP/1.1\" 200 17 \"-\" \"ELB-HealthChecker/2.0\"",
+    "attributes": {
+      "http": {
+        "url_details": {
+          "path": "/healthcheck"
+        },
+        "referer": "-",
+        "method": "GET",
+        "useragent_details": {
+          "device": {
+            "family": "Other",
+            "category": "Other"
+          },
+          "os": {
+            "family": "Other"
+          },
+          "browser": {
+            "family": "Other"
+          }
+        },
+        "status_category": "info",
+        "url": "/healthcheck",
+        "status_code": 200,
+        "version": "1.1",
+        "useragent": "ELB-HealthChecker/2.0"
+      },
+      "network": {
+        "client": {
+          "ip": "nn.nnn.nn.nnn"
+        },
+        "bytes_written": 17
+      },
+      "date_access": 12345,
+      "timestamp": 12345,
+      "service": "foo"
+    }
+  }
+}
+```
 
 #### ・スタックトレース属性
 
@@ -501,69 +558,13 @@ https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
 
-<br>
-
-### ログパーサー
-
-#### ・パーサーとは
-
-ログに対して，何かしらの加工を実行する．
-
-#### ・Grokパーサー
-
-パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，ログの値を属性に割り当てる．
-
-参考：
-
-- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
-- https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#grok-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
-
-**＊例＊**
-
-アプリケーションによって，以下のようなログが生成されるとする．
-
-```log
-[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
-```
-
-```log
-[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
-```
-
-以下のようなルールを定義する．ここでは，```date```マッチャーと```word```マッチャーを用いている．また，```log_status```というカスタム属性に対して，```word```マッチャーによって検出された文字列を付与している．
-
-```
-FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
-```
-
-これにより，ログの値が属性に割り当てられる．
-
-```bash
-{
-  "date": 1630454400000,
-  "log_status": "INFO"
-}
-```
-
-#### ・Categoryパーサー
-
-検索条件に一致する属性を持つログに対して，属性を新しく付与する．
-
-**＊例＊**
-
-ログに対してGrokパーサを実行し，属性にログの値を割り当てる．```status_code```属性を持つログに対して，```status_category```属性を付与する．この時，```status_code```属性の数値に応じて，```status_category```属性にステータスを表す文字列を割り当てる．その後，```status_category```属性に対してステータスリマッパーを実行する．これにより，```status_category```属性に割り当てられた文字列に応じて，ログレベルがマッピングされる．
-
-<br>
-
-### パースルールの構成
-
-#### ・マッチャー
-
-参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
-
-#### ・フィルター
-
-参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=filter#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
+| 属性名                   | 説明                                             |
+| ------------------------ | ------------------------------------------------ |
+| ```logger.name```        | ログライブラリの名前を示す．                     |
+| ```logger.thread_name``` | スレッド名を示す．                               |
+| ```error.stack```        | スタックトレースログ全体を示す．                 |
+| ```error.message```      | スタックトレースログのメッセージ部分を示す．     |
+| ```error.kind```         | エラーの種類（Exception，OSError，など）を示す． |
 
 <br>
 
@@ -575,7 +576,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 #### ・ログステータスリマッパー
 
-属性に割り当てられた文字列を，ルールに基づいて，特定のログレベル（```INFO```，```WARNING```，```ERROR```，など）にマッピングする．判定ルールについては，以下のリンクを参考にせよ．
+属性に割り当てられた値を，ルールに基づいて，ステータスファセットの各ステータス（```INFO```，```WARNING```，```ERROR```，など）にマッピングする．ステータスファセットは，ログコンソール画面の各ログのラベルとして表示される．判定ルールについては，以下のリンクを参考にせよ．
 
 参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#%E3%83%AD%E3%82%B0%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%83%AA%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC
 
@@ -589,7 +590,177 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 参考：https://docs.datadoghq.com/ja/logs/indexes/
 
+<br>
 
+### ログパーサー
+
+#### ・パーサーとは
+
+ログに対して，何かしらの加工を実行する．
+
+#### ・Grokパーサー
+
+パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて，属性にログ値を割り当てる．
+
+参考：
+
+- https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
+- https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#grok-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+
+**＊例＊**
+
+Laraveによって，以下のようなログが生成されるとする．
+
+```log
+[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
+```
+
+```log
+[2021-01-01 00:00:00] production.ERROR: ログのメッセージ
+```
+
+以下のようなGrokパーサールールを定義する．```date```マッチャーを用いて，```date```属性にタイムスタンプ値を割り当てる．また，```word```マッチャーを用いて，```log_status```カスタム属性にステータス値を割り当てる．
+
+```
+FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
+```
+
+これにより，以下のような属性セットを得られる．
+
+```bash
+{
+  "date": 1630454400000,
+  "log_status": "INFO"
+}
+```
+
+#### ・カテゴリパーサー
+
+検索条件に一致する属性を持つログ値に対して，属性を新しく付与する．
+
+**＊例＊**
+
+Nginxによって，以下のようなログが生成されるとする．
+
+```log
+nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+```
+
+以下のようなGrokパーサールールを定義する．```status_code```属性にステータスコード値を割り当てる．
+
+```
+access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
+access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
+```
+
+これにより，以下のような属性セットを得られる．
+
+```bash
+{
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {
+    "bytes_written": 17,
+    "client": {
+      "ip": "nn.nnn.nnn.nn"
+    }
+  },
+  "date_access": 12345
+}
+```
+
+以下のようなカテゴリパーサーを定義する．```status_code```属性の値に応じて，異なるステータスコード値（```info```，```notice```，```warning```，```error```）の```http.status_category```属性を付与する．
+
+```
+info    @http.status_code:[200 TO 299]
+notice  @http.status_code:[300 TO 399]
+warning @http.status_code:[400 TO 499]
+error   @http.status_code:[500 TO 599]
+```
+
+ステータスリマッパーを定義する．```http.status_category```属性のステータスコード値に応じて，ステータスファセットの各ステータス（```INFO```，```WARNING```，```ERROR```，など）にマッピングする．
+
+#### ・ユーザエージェントパーサー
+
+**＊例＊**
+
+Nginxによって，以下のようなログが生成されるとする．
+
+```log
+nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+```
+
+以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
+
+```
+access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
+access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
+```
+
+これにより，以下のような属性セットを得られる．
+
+```bash
+{
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {
+    "bytes_written": 17,
+    "client": {
+      "ip": "nn.nnn.nnn.nn"
+    }
+  },
+  "date_access": 12345
+}
+```
+
+ユーザエージェントパーサーを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分ける．これにより，以下のような属性セットを得られる．
+
+```bash
+{
+  # ～ 中略 ～
+
+  "useragent_details": {
+    "device": {
+      "family": "Other",
+      "category": "Other"
+    },
+    "os": {
+      "family": "Linux"
+    },
+    "browser": {
+      "family": "Chrome"
+    }
+  },
+  
+  # ～ 中略 ～
+}
+```
+
+<br>
+
+### パースルールの構成
+
+#### ・マッチャー
+
+参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
+
+#### ・フィルター
+
+参考：https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=filter#%E3%83%9E%E3%83%83%E3%83%81%E3%83%A3%E3%83%BC%E3%81%A8%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC
 
 <br>
 
@@ -609,7 +780,37 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 <br>
 
-### 07. その他
+## 07. その他
+
+### インテグレーション
+
+#### ・インテグレーションとは
+
+言語／フレームワーク／ツール，などに関して，専用のメトリクスを収集できるようになる．アプリケーションとして使用される言語／フレームワークの場合，Datadogエージェントがインテグレーション処理を持つため，サーバ／コンテナへのインストールは不要である．Datedogエージェントがコンテナ／サーバで稼働する言語／フレームワーク／ツールを自動で認識してくれる．
+
+#### ・PHP-FPMインテグレーション
+
+PHP-FPMインテグレーションを有効化した場合，以下の専用メトリクスを収集できるようになる．
+
+参考：https://docs.datadoghq.com/ja/integrations/php_fpm/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
+
+#### ・Nginxインテグレーション
+
+Nginxインテグレーションを有効化した場合，以下の専用メトリクスを収集できるようになる．
+
+参考：https://docs.datadoghq.com/ja/integrations/nginx/?tab=host#%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
+
+<br>
+
+### APMインテグレーション
+
+#### ・APMインテグレーションとは
+
+言語／フレームワーク／ツール，などに関して，専用のメトリクスを収集できるようになる．アプリケーションとして使用される言語／フレームワークの場合，トレースエージェントがインテグレーション処理を持つため，サーバ／コンテナへのインストールは不要である．APMのインテグレーション処理については，以下のリンクを参考にせよ．
+
+参考：https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
+
+<br>
 
 ### 各識別子の有効期間
 

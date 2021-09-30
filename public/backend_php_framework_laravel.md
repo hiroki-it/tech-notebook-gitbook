@@ -1303,7 +1303,7 @@ class CreateFooTable extends Migration
             // deleted_atカラムを追加する．
             $table->softDeletes();
             
-            // ～ 省略
+            // ～ 中略
             
         });
     }
@@ -1787,7 +1787,7 @@ use Closure;
 
 trait HasEvents
 {
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     /**
      * @param  string  $event
@@ -1844,7 +1844,7 @@ trait HasEvents
         static::registerModelEvent("deleted", $callback);
     }
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 }
 ```
 
@@ -1859,7 +1859,7 @@ Laravelの多くのコンポーネントに，```boot```メソッドが定義さ
 
 namespace Illuminate\Database\Eloquent;
 
-// ～ 省略 ～
+// ～ 中略 ～
 
 abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
 {
@@ -1937,7 +1937,7 @@ abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializab
         }
     }
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 }
 ```
 
@@ -2190,7 +2190,7 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
     
-    // 省略
+    // ～ 中略 ～
 
 }
 ```
@@ -2220,7 +2220,7 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
     
-    // 省略
+    // ～ 中略 ～
 }
 ```
 
@@ -2559,7 +2559,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
     protected $routeMiddleware = [
         
@@ -2567,7 +2567,7 @@ class Kernel extends HttpKernel
         
     ];
     
-    // ～ 省略 ～    
+    // ～ 中略 ～    
     
 }
 ```
@@ -2659,7 +2659,7 @@ class RouteServiceProvider extends ServiceProvider
         // バリデーションルールとして『0〜9が一つ以上』を定義する．
         Route::pattern('fooId', '[0-9]+');
         
-        // 〜 省略 〜
+        // 〜 中略 〜
     }
 }
 ```
@@ -2670,7 +2670,7 @@ class RouteServiceProvider extends ServiceProvider
 
 **＊実装例＊**
 
- エンドポイントのプレフィクスとミドルウェアの指定を定義する．
+エンドポイントのプレフィクスとミドルウェアの指定を定義する．
 
 ```php
 <?php
@@ -2705,7 +2705,7 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 省略 ～
+     // ～ 中略 ～
 
     "disks" => [
 
@@ -2714,7 +2714,7 @@ return [
             "root"   => storage_path("app"),
         ],
         
-     // ～ 省略 ～
+     // ～ 中略 ～
         
     // シンボリックリンクの関係を定義
     "links" => [
@@ -2748,11 +2748,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 省略 ～
+     // ～ 中略 ～
 
     "disks" => [
         
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         "public" => [
             "driver"     => "local",
@@ -2761,7 +2761,7 @@ return [
             "visibility" => "public",
         ],
 
-        // ～ 省略 ～
+        // ～ 中略 ～
         
     ],
 ];
@@ -2838,11 +2838,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
     
-     // ～ 省略 ～
+     // ～ 中略 ～
     
     "disks" => [
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         "s3" => [
             "driver"   => "s3",
@@ -3093,7 +3093,7 @@ class FooController extends Controller
     public function index()
     {
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         return response()->json([
             "name"  => "Abigail",
@@ -3121,7 +3121,7 @@ class FooController extends Controller
 {
     public function index()
     {
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         // データ，ステータスコード，ヘッダーなどを設定する場合
         return response()->view(
@@ -3148,7 +3148,7 @@ class FooController extends Controller
 {
     public function index()
     {
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         // ステータスコードのみ設定する場合
         return response()->view("foo")
@@ -3942,7 +3942,7 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 return [
 
-    # 〜 省略 〜
+    # 〜 中略 〜
 
     'required' => ':attributeは必須です',
 
@@ -3963,7 +3963,7 @@ return [
         'date'  => '作成日',
     ],
 
-    # 〜 省略 〜
+    # 〜 中略 〜
 
 ];
 ```
@@ -3975,11 +3975,11 @@ return [
 
 return [
 
-    # 〜 省略 〜
+    # 〜 中略 〜
 
     'locale' => 'ja'
     
-    # 〜 省略 〜
+    # 〜 中略 〜
     
 ];
 ```
@@ -4267,7 +4267,7 @@ LOG_CHANNEL=<オプション名>
 ```php
 return [
 
-    // ～ 省略 ～    
+    // ～ 中略 ～    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -4277,7 +4277,7 @@ return [
             "ignore_exceptions" => false,
         ],
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
     ]
 ];
@@ -4290,7 +4290,7 @@ return [
 ```php
 return [
 
-    // ～ 省略 ～    
+    // ～ 中略 ～    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -4301,7 +4301,7 @@ return [
             "days"   => 14,
         ],
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
     ]
 ];
@@ -4314,7 +4314,7 @@ return [
 ```php
 return [
 
-    // ～ 省略 ～    
+    // ～ 中略 ～    
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -4327,7 +4327,7 @@ return [
             ],
         ],
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
     ]
 ];
@@ -4340,7 +4340,7 @@ return [
 ```php
 return [
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -4353,7 +4353,7 @@ return [
             ],
         ],
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
     ]
 ];
@@ -4799,11 +4799,11 @@ AutoIncrementのINT型カラムを作成する．
 ```php
 Schema::create("foos", function (Blueprint $table) {
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
     $table->bigIncrements("foo_id");
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
 });
 ```
@@ -4817,11 +4817,11 @@ VARCHAR型カラムを作成する．
 ```php
 Schema::create("foos", function (Blueprint $table) {
   
-    // ～ 省略 ～    
+    // ～ 中略 ～    
     
     $table->string("name");
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
 });
 ```
@@ -4835,11 +4835,11 @@ TIMESTAMP型カラムを作成する．
 ```php
 Schema::create("foos", function (Blueprint $table) {
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
     $table->timestamp("created_at");
     
-    // ～ 省略 ～
+    // ～ 中略 ～
 });
 ```
 
@@ -5349,7 +5349,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    // 〜 省略 〜
+    // 〜 中略 〜
     
     /**
      * The application"s route middleware groups.
@@ -5358,7 +5358,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
 
-        // 〜 省略 〜
+        // 〜 中略 〜
 
         "api" => [
             "throttle:60,1",
@@ -5366,7 +5366,7 @@ class Kernel extends HttpKernel
         ],
     ];
     
-    // 〜 省略 〜
+    // 〜 中略 〜
 }
 ```
 
@@ -5388,7 +5388,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    // 〜 省略 〜
+    // 〜 中略 〜
     
     /**
      * @var array
@@ -5404,11 +5404,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         
-        // 〜 省略 〜
+        // 〜 中略 〜
         
     ];
     
-    // 〜 省略 〜
+    // 〜 中略 〜
 }
 ```
 
@@ -5542,7 +5542,7 @@ class ProductsSeeder extends Seeder
                 "deleted_at"   => NULL                
             ],
             
-            // ～ 省略 ～
+            // ～ 中略 ～
             
         ]);
     }
@@ -6283,13 +6283,13 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 return [
 
-    // ～ 省略 ～    
+    // ～ 中略 ～    
 
     "default" => env("DB_CONNECTION", "mysql"),
 
     "connections" => [
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         "mysql" => [
             "driver"         => "mysql",
@@ -6312,7 +6312,7 @@ return [
         ],
     ],
 
-    // ～ 省略 ～        
+    // ～ 中略 ～        
 
 ];
 ```
@@ -6335,13 +6335,13 @@ DB_HOST_READ=<リードレプリカインスタンスのホスト>
     
 return [
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     "default" => env("DB_CONNECTION", "mysql"),
 
     "connections" => [
 
-        // ～ 省略 ～
+        // ～ 中略 ～
 
         "mysql" => [
             "driver"         => "mysql",
@@ -6375,7 +6375,7 @@ return [
         ],
     ],
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 
 ];
 ```
@@ -7493,14 +7493,14 @@ OAuth認証に関して，以下のトークン付与タイプを実装できる
 ```php
 return [
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     "defaults" => [
         "guard" => "api",
         "passwords" => "users",
     ],
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 ];
 ```
 
@@ -7511,7 +7511,7 @@ return [
 ```php
 return [
     
-    // ～ 省略 ～
+    // ～ 中略 ～
     
     "guards" => [
         "web" => [
@@ -7526,7 +7526,7 @@ return [
         ],
     ],
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 ];
 ```
 
@@ -7535,7 +7535,7 @@ return [
 ```php
 return [
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     "providers" => [
         "users" => [
@@ -7550,7 +7550,7 @@ return [
         // ],
     ],
 
-    // ～ 省略 ～
+    // ～ 中略 ～
 ];
 ```
 
@@ -7579,7 +7579,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
     
-    // ～ 省略 ～
+    // ～ 中略 ～
 }
 ```
 
@@ -7594,7 +7594,7 @@ use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    // ～ 省略 ～
+    // ～ 中略 ～
 
     public function boot()
     {
