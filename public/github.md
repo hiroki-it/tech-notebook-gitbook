@@ -16,14 +16,14 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
 
-```shell
+```
 project/
 └── .github
     ├── ISSUE_TEMPLATE.md
     └── PULL_REQUEST_TEMPLATE.md
 ```
 
-```shell
+```
 project/
 └── .github
     ├── ISSUE_TEMPLATE
@@ -51,7 +51,7 @@ project/
 
 **＊具体例＊**
 
-```md
+```markdown
 # 背景
 <!-- Issue作成の理由になった要望やバグを記載する -->
 <!-- 関連するIssueやPullReqがあればリンクを共有する -->
@@ -80,7 +80,7 @@ project/
 
 **＊具体例＊**
 
-```md
+```markdown
 # リリース予定日
 <!-- リリース予定日を記載する -->
 

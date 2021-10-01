@@ -79,7 +79,7 @@ Dockerは全てのPCで稼働できるわけではなく，イメージごとに
 
 レジストリ側に保管されているイメージを検索する．
 
-```shell
+```bash
 $ docker search <イメージ名>
 ```
 
@@ -87,7 +87,7 @@ $ docker search <イメージ名>
 
 レジストリ側のイメージをクライアント側にインストールする．
 
-```shell
+```bash
 $ docker pull <イメージ名>:<バージョン>
 ```
 
@@ -95,7 +95,7 @@ $ docker pull <イメージ名>:<バージョン>
 
 ホストOSにインストールされたイメージを確認する．
 
-```shell
+```bash
 $ docker images
 ```
 
@@ -105,7 +105,7 @@ $ docker images
 
 コンテナに使用されていないイメージを一括で削除
 
-```shell
+```bash
 $ docker image prune
 ```
 
@@ -113,7 +113,7 @@ $ docker image prune
 
 タグ名のないイメージのみを全て削除する．
 
-```shell
+```bash
 $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet)
 ```
 
@@ -129,7 +129,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 キャッシュ無しで，指定のDockerfileを基に，イメージをビルドする．失敗した時は削除するように，```--force-rm```オプションを有効化する．
 
-```shell
+```bash
 $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --force-rm=true --no-cache .
 ```
 
@@ -139,7 +139,7 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 ホストOSで作成したイメージを，指定したDockerHubのユーザにアップロードする．
 
-```shell
+```bash
 $ docker push <Docker Hubユーザ名>/<イメージ名>:<バージョン>
 ```
 
@@ -149,8 +149,7 @@ $ docker push <Docker Hubユーザ名>/<イメージ名>:<バージョン>
 
 ホストOSで作成したイメージを，指定したECRにアップロードする．事前にタグを付け替える必要がある．
 
-```shell
-# タグを
+```bash
 $ docker tag <ローカル上でのイメージ名>:<ローカル上でのバージョン> <リポジトリURL>/<ECR上でのイメージ名>:<ECR上でのバージョン>
 
 $ docker push <リポジトリURL>/<ECR上でのイメージ名>:<ECR上でのバージョン>
@@ -162,7 +161,7 @@ $ docker push <リポジトリURL>/<ECR上でのイメージ名>:<ECR上での�
 
 ビルドに失敗したイメージからコンテナを構築し，接続する．```rm```オプションを設定し，接続の切断後にコンテナを削除する．Dockerfileにおいて，イメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は，後から上書きできなくなるため，```run```コマンドの引数として新しいコマンドを渡せずに，デバッグができないことがある．
 
-```shell
+```bash
 $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 # コンテナの中
@@ -225,14 +224,14 @@ EXPOSE 80
 
 Dockerfileで```CMD```を指定しない場合，イメージのデフォルトのバイナリファイルが割り当てられる．一旦，デフォルトのバイナリファイルを確認した後に，これをDockerfileに明示的に実装するようにする．
 
-```shell
+```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
 2b2d3dfafee8   xxxxx   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   xxxxx
 ```
 
 静的型付け言語ではプロセスの起動時に，代わりにアーティファクトのバイナリファイルを実行しても良い．その場合，```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる．しかし，```bin```ディレクトリへのアクセス権限がないことがあるため，その場合は，一つ下にディレクトリを作成し，そこにバイナリファイルを置くようにする．
 
-```shell
+```bash
 # /go/bin にアクセスできない時は，/go/bin/cmdにアーティファクトを置く．
 ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
 
@@ -242,7 +241,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 イメージのプロセスの起動コマンドを後から上書きできなくなるため，```run```コマンドの引数として新しいコマンドを渡せずに，デバッグができないことがある．
 
-```shell
+```bash
 # 上書きできず，失敗してしまう．
 $ docker run --rm -it <イメージ名> /bin/bash
 ```
@@ -562,7 +561,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 コンテナレイヤーを生成し，コンテナを構築．起動はしない．
 
-```shell
+```bash
 $ docker create <コンテナ名> <使用イメージ名>:<タグ>
 ```
 
@@ -574,7 +573,7 @@ $ docker create <コンテナ名> <使用イメージ名>:<タグ>
 
 停止中コンテナをアタッチモードによって起動する．
 
-```shell
+```bash
 $ docker start -i <停止中コンテナ名>
 ```
 
@@ -584,13 +583,13 @@ $ docker start -i <停止中コンテナ名>
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker container prune
 ```
 
 起動中／停止中の全てコンテナを削除する．
 
-```shell
+```bash
 $ docker rm --force $(docker ps --all --quiet)
 ```
 
@@ -600,7 +599,7 @@ $ docker rm --force $(docker ps --all --quiet)
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker commit <コンテナ名> <コンテナID>
 
 $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
@@ -638,7 +637,7 @@ $ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメー�
 
 コンテナの起動と停止にかかわらず，IDなどを一覧で表示．
 
-```shell
+```bash
 $ docker ps -a
 ```
 
@@ -646,7 +645,7 @@ $ docker ps -a
 
 起動中コンテナの全ての設定内容を表示する．```grep```とも組み合わせられる．
 
-```shell
+```bash
 $ docker inspect <コンテナID>
 $ docker inspect <コンテナID> | grep IPAddress
 ```
@@ -657,7 +656,7 @@ $ docker inspect <コンテナID> | grep IPAddress
 
 起動中コンテナを停止する．
 
-```shell
+```bash
 $ docker stop <起動中コンテナ名>
 ```
 
@@ -665,7 +664,7 @@ $ docker stop <起動中コンテナ名>
 
 全てのコンテナを停止する．
 
-```shell
+```bash
 $ docker stop $(docker ps --all --quiet)
 ```
 
@@ -675,7 +674,7 @@ $ docker stop $(docker ps --all --quiet)
 
 デタッチドモードによって，起動中のコンテナに接続する．
 
-```shell
+```bash
 $ docker attach <起動中コンテナ名>
 ```
 
@@ -683,9 +682,9 @@ $ docker attach <起動中コンテナ名>
 
 **＊コマンド例＊**
 
-デタッチドモードによって，起動中のコンテナ内でコマンドを実行する．実行するコマンドが```shell```や```bash```の場合，コンテナに接続できる．
+デタッチドモードによって，起動中のコンテナ内でコマンドを実行する．実行するコマンドが```bash```や```bash```の場合，コンテナに接続できる．
 
-```shell
+```bash
 # i：interactive，t：tty（対話モード）
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
@@ -699,7 +698,7 @@ Dockerfileの```COPY```コマンドを使用してコンテナ内に配置して
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # ホストのファイルをコンテナにコピー
 $ docker cp ./docker/www/nginx.conf <コンテナID>:/etc/nginx/nginx.conf
 
@@ -722,7 +721,7 @@ $ docker logs <コンテナ名>
 
 起動中のコンテナに接続する．```exit```コマンドを使用して，コンテナとの接続を切断した後，コンテナが停止してしまう．
 
-```shell
+```bash
 # デタッチドモードによる起動
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
@@ -746,9 +745,9 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedにな�
 
 **＊コマンド例＊**
 
-起動中のコンテナでコマンドを実行する．実行するコマンドが```shell```や```bash```の場合，コンテナに接続できる．```exit```コマンドを使用して，コンテナとの接続を切断した後でも，コンテナが起動し続ける．
+起動中のコンテナでコマンドを実行する．実行するコマンドが```bash```や```bash```の場合，コンテナに接続できる．```exit```コマンドを使用して，コンテナとの接続を切断した後でも，コンテナが起動し続ける．
 
-```shell
+```bash
 # デタッチドモードによる起動
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
@@ -777,11 +776,11 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになって
 
 #### ・コンテナを新しく構築し，コンテナ内でコマンドを実行
 
-すでに停止中または起動中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```shell```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```shell```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．
+すでに停止中または起動中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```bash```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```bash```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # アタッチモードによる起動．フォアグラウンドで起動する．
 $ docker run -a -it --rm --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
@@ -789,9 +788,9 @@ $ docker run -a -it --rm --name <コンテナ名> <使用イメージ名>:<タ�
 $ docker run -d -it --rm --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
 
-コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```shell```プロセスを実行するようにする．
+コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```bash```プロセスを実行するようにする．
 
-```shell
+```bash
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
 ```
 
@@ -805,7 +804,7 @@ docker: Error response from daemon: OCI runtime create failed: container_linux.g
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # -a：atattch mode
 $ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
@@ -817,7 +816,7 @@ $ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 **＊コマンド例＊**
 
 
-```shell
+```bash
 # -d；detached mode
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 ```
@@ -836,7 +835,7 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # ホストOSをコンテナ側にbindマウント
 $ docker run -d -it --name <コンテナ名> /bin/bash \
 --mount type=bind, src=home/projects/<ホストOS側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
@@ -866,19 +865,19 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 Docker Composeで行うことが推奨されている．
 
-```shell
+```bash
 # ホストOSのDockerエリアにVolumeを作成
 $ docker volume create <Volume名>
 ```
-```shell
+```bash
 # DockerエリアのVolumeの一覧を表示
 $ docker volume ls
 ```
-```shell
+```bash
 # DockerエリアのVolumeを削除
 $ docker volume rm <Volume名>
 ```
-```shell
+```bash
 # DockerエリアのVolumeの詳細を表示
 $ docker volume inspect <Volume名>
 
@@ -898,7 +897,7 @@ $ docker volume inspect <Volume名>
     }
 ]
 ```
-```shell
+```bash
 # DockerエリアをVolumeマウントして起動
 # マウントポイントのVolume名を使用
 $ docker run -d -it --name <コンテナ名> /bin/bash \
@@ -966,7 +965,7 @@ Volumeを使用する場合のコンテナ配置手法の一つ．Dockerエリ�
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker network ls
 
 NETWORK ID          NAME                    DRIVER              SCOPE
@@ -980,7 +979,7 @@ aeef782b227d        tech-notebook_default   bridge              local
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
@@ -1005,7 +1004,7 @@ $ docker network prune
 
 複数のコンテナが起動している時に，コンテナがいずれのネットワークを使用しているかを確認する．
 
-```shell
+```bash
 $ docker network inspect <ネットワーク名>
 ```
 
@@ -1020,7 +1019,7 @@ $ docker network inspect <ネットワーク名>
 **＊コマンド例＊**
 
 
-```shell
+```bash
 $ docker network list
 
 NETWORK ID          NAME                    DRIVER              SCOPE
@@ -1038,7 +1037,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ docker network list
 
 NETWORK ID          NAME                    DRIVER              SCOPE
@@ -1057,7 +1056,7 @@ ac017dda93d6        host                    host                local
 
 『ホストOS』から『ホストOS』に対してアウトバウンドなリクエストを送信し，ホストOSとappコンテナの間の成否を確認する．
 
-```shell
+```bash
 # ホストOSで実行
 $ curl --fail http://localhost:8080/
 ```
@@ -1072,7 +1071,7 @@ $ curl --fail http://localhost:8080/
 
 『appコンテナ』から『nginxコンテナ』に対して，アウトバウンドなリクエストを送信し，appコンテナとnginxコンテナの間の成否を確認する．
 
-```shell
+```bash
 # コンテナ内で実行
 $ curl --fail http://<nginxコンテナに割り当てたホスト名>:80/
 ```
@@ -1081,7 +1080,7 @@ $ curl --fail http://<nginxコンテナに割り当てたホスト名>:80/
 
 『コンテナ』から『ホストOS』に対して，アウトバウンドなリクエストを送信する．ここでのホストOSのホスト名は，『```host.docker.internal```』になる．リクエストは，ホストOSを経由して，ポートフォワーディングされたコンテナに転送される．ホストOSとコンテナの間のネットワーク接続の成否を確認できる．
 
-```shell
+```bash
 # コンテナ内で実行
 $ curl --fail http://host.docker.internal:8080/
 ```
@@ -1135,7 +1134,7 @@ volumes:
 
 **＊コマンド例＊**
 
-```shell
+```bash
 # 指定した行数だけ，ログを表示する．
 $ docker logs --follow=true --tail=500 <コンテナ名>
 ```
