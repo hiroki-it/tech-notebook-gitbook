@@ -62,7 +62,7 @@ function methodA(){
 
 ```javascript
 // コール
-function methodA();
+methodA();
 ```
 
 #### ・名前がドルマークのもの
@@ -84,15 +84,13 @@ jQueryでは，ライブラリの読み込み宣言時に，「Jquery」とい�
 
 ```javascript
 // jQuery.get() と同じ
-$.get() {
-    return "A";
-}
+$.get()
 ```
 
 #### ・コールバック関数
 
 ```javascript
-const asyncFunc => (param, callback) {
+const asyncFunc = (param, callback) => {
   setTimeout(() => {
     
     // getDataメソッドは，数値を渡すとdataを取得してくれると仮定します．
