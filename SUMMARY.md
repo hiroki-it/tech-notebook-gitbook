@@ -86,7 +86,7 @@
 * クラウドインフラストラクチャ
   * [📖 ︎クラウドコンピューティング](public/cloud_computing.md)
   * AWS
-    * [📖 ︎Amazon Web Service](public/cloud_computing_aws.md)
+    * [📖 ︎AWS](public/cloud_computing_aws.md)
     * [📖 ︎API Gatewayインポート機能](public/cloud_computing_aws_api_gateway_import.md)
     * [📖 ︎Lambda関数](public/cloud_computing_aws_lambda_function.md)
   * GCP
@@ -113,9 +113,10 @@
   * [📖 ︎CircleCI](public/ci_cd_circleci.md)
   * [📖 ︎Capistrano](public/ci_cd_capistrano.md)
 
-* 監視
-  * [📖 ︎Fluentd／FluentBit](public/monitering_fluentd_and_fluentbit.md)
-  * [📖 ︎Datadog](public/monitering_datadog.md)
+* 可観測性
+  * [📖 ︎可観測性](public/observability.md)
+  * [📖 ︎Fluentd／FluentBit](public/observability_fluentd_and_fluentbit.md)
+  * [📖 ︎Datadog](public/observability_datadog.md)
 
 * システム開発手法論
   * [📖 ︎システム開発手法論](public/system_development_methodology.md)
