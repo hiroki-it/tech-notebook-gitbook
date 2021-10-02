@@ -73,12 +73,12 @@
   * [📚 ︎組み込み機器](public/hardware_embedded_system.md)
 
 * ネットワーク
-  * 構造
-    * [📚 ︎ネットワーク構造](public/network_structure.md)
-    * [📚 ︎OSI参照モデル／TCP階層モデル](public/network_osi_tcp.md)
-  * セキュリティ
-    * [📚 ︎サイバー攻撃](public/network_cyber_attacks.md)
-    * [📚 ︎通信データの暗号化技術](public/network_encryption_technology.md)
+    * [📚 ︎ネットワーク](public/network.md)
+    * データ通信の仕組み
+      * [📚 ︎OSI参照モデル／TCP階層モデル](public/network_osi_tcp.md)
+    * セキュリティ
+      * [📚 ︎サイバー攻撃](public/network_cyber_attacks.md)
+      * [📚 ︎通信データの暗号化技術](public/network_encryption_technology.md)
 
 * クラウドインフラストラクチャ
   * [📚 ︎クラウドコンピューティング](public/cloud_computing.md)
