@@ -104,11 +104,11 @@
 * 監視
   * [📚 ︎Fluentd／FluentBit](public/monitering_fluentd_and_fluentbit.md)
   * [📚 ︎Datadog](public/monitering_datadog.md)
-* システム開発手法
+* システム開発手法論
   * [📚 ︎システム開発手法論](public/system_development_methodology.md)
-   * 開発ツール
-     * Git
-        * [📚 ︎GitHub](public/system_development_methodology_github.md)
-        * [📚 ︎Gitコマンド](public/system_development_methodology_git_command.md)
+  * [📚 ︎プロジェクト管理](public/system_development_methodology_project_management.md)
+  * Git
+    * [📚 ︎GitHub](public/system_development_methodology_github.md)
+    * [📚 ︎Gitコマンド](public/system_development_methodology_git_command.md)
 * 統計解析
   * [📚 ︎R言語](public/statistic_analysis_r.md)
