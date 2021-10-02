@@ -696,8 +696,8 @@ services:
     networks:
       - default
       
-  volumes:
-    mysql_volume:
+volumes:
+  mysql_volume:
 ```
 
 また，```docker-entrypoint-initdb.d```ディレクトリに配置するファイルとして，以下の```sql```ファイルを作成する．このファイルでは，```test```というデータベースを作成するためのSQLを実装する．
