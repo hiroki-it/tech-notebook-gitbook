@@ -90,7 +90,7 @@
     * [📖 ︎API Gatewayインポート機能](public/cloud_computing_aws_api_gateway_import.md)
     * [📖 ︎Lambda関数](public/cloud_computing_aws_lambda_function.md)
   * GCP
-    * [📖 ︎Google Cloud Platform](public/cloud_computing_gcp.md)
+    * [📖 ︎GCP](public/cloud_computing_gcp.md)
 
 * Infrastructure as Code
   * [📖 ︎Infrastructure as Code](public/infrastructure_as_code.md)
