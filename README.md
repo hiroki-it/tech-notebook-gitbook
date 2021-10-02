@@ -1,10 +1,10 @@
-# Tech-Notebook-GitBook
+# このサイトについて
 
-## このサイトについて
+## サイトの作成方法
 
-GitBookを使用して作成したサイトです．
+GitBookを使用して，マークダウンファイルからHTMLを生成しております．
 
-静的ファイルの生成元になっているマークダウンは，[hiroki-it/tech-notebook-gitbook](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) リポジトリにて管理しております．
+生成元のマークダウンは，[hiroki-it/tech-notebook-gitbook](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) リポジトリにて管理しております．
 
 <br>
 
