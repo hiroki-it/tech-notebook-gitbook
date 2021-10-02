@@ -4,12 +4,12 @@
 * 自己紹介
   * [▶ ︎長谷川広樹と申します](public/self_introduction.md)
 * ソフトウェア
-  * 種類
+  * ソフトウェア
     * [▶ ︎ソフトウェアの種類](public/software.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
       * ドメイン駆動設計
-        * [▶ ︎ドメイン駆動設計概論](public/software_application_backend_architecture_domain_driven_design.md)
+        * [▶ ︎ドメイン駆動設計](public/software_application_backend_architecture_domain_driven_design.md)
         * [▶ ︎CQRS](public/software_application_backend_architecture_cqrs.md)
         * [▶ ︎クリーンアーキテクチャ](public/software_application_backend_architecture_domain_driven_design_clean_architecture.md)
       * [▶ ︎フロントエンドアーキテクチャ](public/software_application_frontend_architecture.md)
