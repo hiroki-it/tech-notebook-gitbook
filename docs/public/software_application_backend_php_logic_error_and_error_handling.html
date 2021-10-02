@@ -1,0 +1,2373 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>▶ ︎エラーとエラーハンドリング · 僕のドキュメントサイト【GitBook版】</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro-fixed/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="software_application_backend_php_logic_iteration.html" />
+    
+    
+    <link rel="prev" href="software_application_backend_php_logic_validation.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    はじめに
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    ▶ ︎このサイトについて
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    自己紹介
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="self_introduction.html">
+            
+                <a href="self_introduction.html">
+            
+                    
+                    ▶ ︎長谷川広樹と申します
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    ソフトウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    種類
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="software.html">
+            
+                <a href="software.html">
+            
+                    
+                    ▶ ︎ソフトウェアの種類
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" >
+            
+                <span>
+            
+                    
+                    アプリケーションソフトウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" >
+            
+                <span>
+            
+                    
+                    アーキテクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1.1" >
+            
+                <span>
+            
+                    
+                    ドメイン駆動設計
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1.1.1" data-path="software_application_backend_architecture_domain_driven_design.html">
+            
+                <a href="software_application_backend_architecture_domain_driven_design.html">
+            
+                    
+                    ▶ ︎ドメイン駆動設計概論
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.1.2" data-path="software_application_backend_architecture_cqrs.html">
+            
+                <a href="software_application_backend_architecture_cqrs.html">
+            
+                    
+                    ▶ ︎CQRS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.1.3" data-path="software_application_backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                <a href="software_application_backend_architecture_domain_driven_design_clean_architecture.html">
+            
+                    
+                    ▶ ︎クリーンアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.2" data-path="software_application_frontend_architecture.html">
+            
+                <a href="software_application_frontend_architecture.html">
+            
+                    
+                    ▶ ︎フロントエンドアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.1.3" data-path="software_application_frontend_and_backend_architecture_microservice.html">
+            
+                <a href="software_application_frontend_and_backend_architecture_microservice.html">
+            
+                    
+                    ▶ ︎マイクロサービスアーキテクチャ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" >
+            
+                <span>
+            
+                    
+                    PHP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.1" >
+            
+                <span>
+            
+                    
+                    クラスベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.1.1" data-path="software_application_backend_php_object_orientation_analysis_design_programming.html">
+            
+                <a href="software_application_backend_php_object_orientation_analysis_design_programming.html">
+            
+                    
+                    ▶ ︎オブジェクト指向分析／設計／プログラミング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.1.2" data-path="software_application_backend_php_object_orientation_class.html">
+            
+                <a href="software_application_backend_php_object_orientation_class.html">
+            
+                    
+                    ▶ ︎クラスベース（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.1.3" data-path="software_application_backend_php_object_orientation_method_data.html">
+            
+                <a href="software_application_backend_php_object_orientation_method_data.html">
+            
+                    
+                    ▶ ︎クラスベース（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.1.4" data-path="software_application_backend_php_object_orientation_data_structure.html">
+            
+                <a href="software_application_backend_php_object_orientation_data_structure.html">
+            
+                    
+                    ▶ ︎データ構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.2" >
+            
+                <span>
+            
+                    
+                    ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.2.1" data-path="software_application_backend_php_logic_validation.html">
+            
+                <a href="software_application_backend_php_logic_validation.html">
+            
+                    
+                    ▶ ︎バックエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2.2.2.2" data-path="software_application_backend_php_logic_error_and_error_handling.html">
+            
+                <a href="software_application_backend_php_logic_error_and_error_handling.html">
+            
+                    
+                    ▶ ︎エラーとエラーハンドリング
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.2.3" data-path="software_application_backend_php_logic_iteration.html">
+            
+                <a href="software_application_backend_php_logic_iteration.html">
+            
+                    
+                    ▶ ︎反復ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.2.4" data-path="software_application_backend_php_logic_algorithm.html">
+            
+                <a href="software_application_backend_php_logic_algorithm.html">
+            
+                    
+                    ▶ ︎アルゴリズム
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.3" >
+            
+                <span>
+            
+                    
+                    パッケージ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.3.1" data-path="software_application_backend_php_package.html">
+            
+                <a href="software_application_backend_php_package.html">
+            
+                    
+                    ▶ ︎パッケージ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.3.2" data-path="software_application_backend_php_framework_symfony.html">
+            
+                <a href="software_application_backend_php_framework_symfony.html">
+            
+                    
+                    ▶ ︎Symfony
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.3.3" data-path="software_application_backend_php_framework_laravel.html">
+            
+                <a href="software_application_backend_php_framework_laravel.html">
+            
+                    
+                    ▶ ︎Laravel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.4" >
+            
+                <span>
+            
+                    
+                    テスト
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.4.1" data-path="software_application_backend_php_testing.html">
+            
+                <a href="software_application_backend_php_testing.html">
+            
+                    
+                    ▶ ︎テスト
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.4.2" data-path="software_application_backend_php_testing_based_on_code.html">
+            
+                <a href="software_application_backend_php_testing_based_on_code.html">
+            
+                    
+                    ▶ ︎コードベースのテスト
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.4.3" data-path="software_application_backend_php_testing_based_on_test_specification.html">
+            
+                <a href="software_application_backend_php_testing_based_on_test_specification.html">
+            
+                    
+                    ▶ ︎テスト仕様書ベースのテスト
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2.5" >
+            
+                <span>
+            
+                    
+                    デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.2.5.1" data-path="software_application_backend_php_debug.html">
+            
+                <a href="software_application_backend_php_debug.html">
+            
+                    
+                    ▶ ︎デバッグのコツ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" >
+            
+                <span>
+            
+                    
+                    Go
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.3.1" >
+            
+                <span>
+            
+                    
+                    ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.3.1.1" data-path="software_application_backend_go_logic.html">
+            
+                <a href="software_application_backend_go_logic.html">
+            
+                    
+                    ▶ 文法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.2" >
+            
+                <span>
+            
+                    
+                    パッケージ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.3.2.1" data-path="software_application_backend_go_package.html">
+            
+                <a href="software_application_backend_go_package.html">
+            
+                    
+                    ▶ パッケージ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3.2.2" data-path="software_application_backend_go_framework_gin.html">
+            
+                <a href="software_application_backend_go_framework_gin.html">
+            
+                    
+                    ▶ Gin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" >
+            
+                <span>
+            
+                    
+                    フロントエンドとバックエンド間のデータ通信
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.4.1" data-path="software_application_backend_api_restful.html">
+            
+                <a href="software_application_backend_api_restful.html">
+            
+                    
+                    ▶ ︎RESTful APIの概念と実装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4.2" data-path="software_application_frontend_and_backend_authentication_authorization.html">
+            
+                <a href="software_application_frontend_and_backend_authentication_authorization.html">
+            
+                    
+                    ▶ ︎認証と認可
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4.3" data-path="software_application_frontend_and_backend_json.html">
+            
+                <a href="software_application_frontend_and_backend_json.html">
+            
+                    
+                    ▶ ︎JSON
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4.4" data-path="software_application_frontend_and_backend_browser_rendering.html">
+            
+                <a href="software_application_frontend_and_backend_browser_rendering.html">
+            
+                    
+                    ▶ ︎ブラウザレンダリングの仕組み
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" >
+            
+                <span>
+            
+                    
+                    JavaScript
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.5.1" >
+            
+                <span>
+            
+                    
+                    プロトタイプベースオブジェクト指向
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.5.1.1" data-path="software_application_frontend_js_object_orientation_prototype.html">
+            
+                <a href="software_application_frontend_js_object_orientation_prototype.html">
+            
+                    
+                    ▶ ︎プロトタイプベース（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.1.2" data-path="software_application_frontend_js_object_orientation_method_data.html">
+            
+                <a href="software_application_frontend_js_object_orientation_method_data.html">
+            
+                    
+                    ▶ ︎プロトタイプベース（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.2" >
+            
+                <span>
+            
+                    
+                    ロジック
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.5.2.1" data-path="software_application_frontend_js_logic_validation.html">
+            
+                <a href="software_application_frontend_js_logic_validation.html">
+            
+                    
+                    ▶ ︎フロントエンド側の検証ロジック
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.3" >
+            
+                <span>
+            
+                    
+                    パッケージ／フレームワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.5.3.1" data-path="software_application_frontend_js_package.html">
+            
+                <a href="software_application_frontend_js_package.html">
+            
+                    
+                    ▶ ︎パッケージ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.3.2" data-path="software_application_frontend_js_framework_vuejs.html">
+            
+                <a href="software_application_frontend_js_framework_vuejs.html">
+            
+                    
+                    ▶ ︎Vue.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.3.3" data-path="software_application_frontend_js_framework_nuxtjs.html">
+            
+                <a href="software_application_frontend_js_framework_nuxtjs.html">
+            
+                    
+                    ▶ ︎Nuxt.js
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5.4" >
+            
+                <span>
+            
+                    
+                    デバッグ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.5.4.1" data-path="software_application_frontend_js_debug.html">
+            
+                <a href="software_application_frontend_js_debug.html">
+            
+                    
+                    ▶ ︎デバッグのコツ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" >
+            
+                <span>
+            
+                    
+                    ミドルウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" >
+            
+                <span>
+            
+                    
+                    Web関連
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1.1" data-path="software_middleware_nginx.html">
+            
+                <a href="software_middleware_nginx.html">
+            
+                    
+                    ▶ ︎Nginx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.1.2" data-path="software_middleware_apache.html">
+            
+                <a href="software_middleware_apache.html">
+            
+                    
+                    ▶ ︎Apache
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" >
+            
+                <span>
+            
+                    
+                    データベース関連
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.2.1" data-path="software_middleware_database.html">
+            
+                <a href="software_middleware_database.html">
+            
+                    
+                    ▶ ︎データベース
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2.2" data-path="software_middleware_database_mysql.html">
+            
+                <a href="software_middleware_database_mysql.html">
+            
+                    
+                    ▶ My︎SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" >
+            
+                <span>
+            
+                    
+                    基本ソフトウェア（OS）
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="software_basic_centos.html">
+            
+                <a href="software_basic_centos.html">
+            
+                    
+                    ▶ ︎CentOSの構成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="software_basic_machine_language_and_radix.html">
+            
+                <a href="software_basic_machine_language_and_radix.html">
+            
+                    
+                    ▶ ︎機械語と進数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    ハードウェア
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="hardware.html">
+            
+                <a href="hardware.html">
+            
+                    
+                    ▶ ︎ハードウェア
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="hardware_embedded_system.html">
+            
+                <a href="hardware_embedded_system.html">
+            
+                    
+                    ▶ ︎組み込み機器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    ネットワーク
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    構造
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="network_structure.html">
+            
+                <a href="network_structure.html">
+            
+                    
+                    ▶ ︎ネットワーク構造
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="network_osi_tcp.html">
+            
+                <a href="network_osi_tcp.html">
+            
+                    
+                    ▶ ︎OSI参照モデル／TCP階層モデル
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    セキュリティ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="network_cyber_attacks.html">
+            
+                <a href="network_cyber_attacks.html">
+            
+                    
+                    ▶ ︎サイバー攻撃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="network_encryption_technology.html">
+            
+                <a href="network_encryption_technology.html">
+            
+                    
+                    ▶ ︎通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    クラウドインフラストラクチャ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="cloud_computing.html">
+            
+                <a href="cloud_computing.html">
+            
+                    
+                    ▶ ︎クラウドコンピューティング
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" >
+            
+                <span>
+            
+                    
+                    AWS
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1.1" data-path="cloud_computing_aws.html">
+            
+                <a href="cloud_computing_aws.html">
+            
+                    
+                    ▶ ︎Amazon Web Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.1.2" data-path="cloud_computing_aws_api_gateway_import.html">
+            
+                <a href="cloud_computing_aws_api_gateway_import.html">
+            
+                    
+                    ▶ ︎API Gatewayインポート機能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.1.3" data-path="cloud_computing_aws_lambda_function.html">
+            
+                <a href="cloud_computing_aws_lambda_function.html">
+            
+                    
+                    ▶ ︎Lambda関数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" >
+            
+                <span>
+            
+                    
+                    GCP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.2.1" data-path="cloud_computing_gcp.html">
+            
+                <a href="cloud_computing_gcp.html">
+            
+                    
+                    ▶ ︎Google Cloud Platform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    Infrastructure as Code
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="infrastructure_as_code.html">
+            
+                <a href="infrastructure_as_code.html">
+            
+                    
+                    ▶ ︎Infrastructure as Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="infrastructure_as_code_terraform.html">
+            
+                <a href="infrastructure_as_code_terraform.html">
+            
+                    
+                    ▶ ︎Terraform
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    仮想化技術
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="virtualization.html">
+            
+                <a href="virtualization.html">
+            
+                    
+                    ▶ ︎仮想化技術
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" >
+            
+                <span>
+            
+                    
+                    コンテナ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1.1" data-path="virtualization_container.html">
+            
+                <a href="virtualization_container.html">
+            
+                    
+                    ▶ ︎コンテナ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.1.2" data-path="virtualization_container_orchestration.html">
+            
+                <a href="virtualization_container_orchestration.html">
+            
+                    
+                    ▶ ︎コンテナオーケストレーション
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.1.3" data-path="virtualization_container_orchestration_docker_compose.html">
+            
+                <a href="virtualization_container_orchestration_docker_compose.html">
+            
+                    
+                    ▶ ︎Docker Compose
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.1.4" data-path="virtualization_container_orchestration_kubernetes.html">
+            
+                <a href="virtualization_container_orchestration_kubernetes.html">
+            
+                    
+                    ▶ ︎Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.1.5" data-path="virtualization_container_orchestration_docker_swarm.html">
+            
+                <a href="virtualization_container_orchestration_docker_swarm.html">
+            
+                    
+                    ▶ ︎Docker Swarm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" >
+            
+                <span>
+            
+                    
+                    サーバ
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.2.1" data-path="virtualization_server.html">
+            
+                <a href="virtualization_server.html">
+            
+                    
+                    ▶ ︎仮想サーバ（仮想マシン）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    CI／CD
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="ci_cd.html">
+            
+                <a href="ci_cd.html">
+            
+                    
+                    ▶ ︎CI／CD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="ci_cd_circleci.html">
+            
+                <a href="ci_cd_circleci.html">
+            
+                    
+                    ▶ ︎CircleCI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="ci_cd_capistrano.html">
+            
+                <a href="ci_cd_capistrano.html">
+            
+                    
+                    ▶ ︎Capistrano
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    監視
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="monitering_fluentd_and_fluentbit.html">
+            
+                <a href="monitering_fluentd_and_fluentbit.html">
+            
+                    
+                    ▶ ︎Fluentd／FluentBit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="monitering_datadog.html">
+            
+                <a href="monitering_datadog.html">
+            
+                    
+                    ▶ ︎Datadog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" >
+            
+                <span>
+            
+                    
+                    システム開発手法
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="system_development_methodology.html">
+            
+                <a href="system_development_methodology.html">
+            
+                    
+                    ▶ ︎システム開発手法論
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1" >
+            
+                <span>
+            
+                    
+                    開発ツール
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1.1" >
+            
+                <span>
+            
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1.1.1.1" data-path="system_development_methodology_github.html">
+            
+                <a href="system_development_methodology_github.html">
+            
+                    
+                    ▶ ︎GitHub
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.1.1.1.2" data-path="system_development_methodology_git_command.html">
+            
+                <a href="system_development_methodology_git_command.html">
+            
+                    
+                    ▶ ︎Gitコマンド
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" >
+            
+                <span>
+            
+                    
+                    統計解析
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="statistic_analysis_r.html">
+            
+                <a href="statistic_analysis_r.html">
+            
+                    
+                    ▶ ︎R言語
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            GitBookで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >▶ ︎エラーとエラーハンドリング</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;"><a name="&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;</h1>
+<h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
+<p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
+<p><a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
+<p><br></p>
+<h2 id="01-&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;"><a name="01-&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;" class="plugin-anchor" href="#01-&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30A8;&#x30E9;&#x30FC;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;</h2>
+<h3 id="&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;"><a name="&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;</h3>
+<p>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x5B9F;&#x884C;&#x304C;&#x5F37;&#x5236;&#x505C;&#x6B62;&#x3055;&#x308C;&#x308B;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#xFF0C;&#x505C;&#x6B62;&#x305B;&#x305A;&#x306B;&#x7D9A;&#x884C;&#x3055;&#x308C;&#x308B;&#x975E;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#xFF0C;&#x306B;&#x5206;&#x985E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3068;&#x306F;"><a name="&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3068;&#x306F;</h3>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#xFF14;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x304B;&#x3089;&#x306A;&#x308B;&#xFF0E;</p>
+<ol>
+<li>&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;</li>
+<li>&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</li>
+<li>&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;</li>
+<li>&#x30ED;&#x30AE;&#x30F3;&#x30B0;</li>
+</ol>
+<p><br></p>
+<h2 id="01-02-&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x610F;&#x7FA9;"><a name="01-02-&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x610F;&#x7FA9;" class="plugin-anchor" href="#01-02-&#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x610F;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>01-02. &#x30A8;&#x30E9;&#x30FC;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x306E;&#x610F;&#x7FA9;</h2>
+<h3 id="&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x3068;&#x3063;&#x3066;"><a name="&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x3068;&#x3063;&#x3066;" class="plugin-anchor" href="#&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x3068;&#x3063;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x3068;&#x3063;&#x3066;</h3>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x66F4;&#x65B0;&#x7CFB;&#x306E;&#x51E6;&#x7406;&#x306E;&#x9014;&#x4E2D;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x304C;&#x4E2D;&#x9014;&#x534A;&#x7AEF;&#x306A;&#x66F4;&#x65B0;&#x72B6;&#x614B;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x691C;&#x51FA;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x304D;&#x3063;&#x304B;&#x3051;&#x306B;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x306A;&#x304A;&#xFF0C;&#x4E0B;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x5185;&#x5BB9;&#x81EA;&#x4F53;&#x306F;&#x63E1;&#x308A;&#x3064;&#x3076;&#x3055;&#x305A;&#x306B;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3068;&#x3057;&#x3066;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;"><a name="&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;" class="plugin-anchor" href="#&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;</h3>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x753B;&#x9762;&#x4E0A;&#x306B;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x3053;&#x308C;&#x306F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;&#x308F;&#x304B;&#x308A;&#x306B;&#x304F;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x691C;&#x51FA;&#x3057;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x308F;&#x304B;&#x308B;&#x8A00;&#x8449;&#x306B;&#x5909;&#x63DB;&#x3057;&#x305F;&#x4F8B;&#x5916;&#x3068;&#x3057;&#x3066;&#x30B9;&#x30ED;&#x30FC;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x306A;&#x304A;&#xFF0C;&#x4E0B;&#x5C64;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x81EA;&#x4F53;&#x306F;&#x63E1;&#x308A;&#x3064;&#x3076;&#x3055;&#x305A;&#x306B;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3068;&#x3057;&#x3066;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;"><a name="&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;" class="plugin-anchor" href="#&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;</h3>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x753B;&#x9762;&#x4E0A;&#x306B;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;&#x306F;&#x4F55;&#x304C;&#x8D77;&#x304D;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x308F;&#x304B;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x691C;&#x51FA;&#x3057;&#xFF0C;&#x4F8B;&#x5916;&#x3068;&#x3057;&#x3066;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#xFF0C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;&#x8005;&#x306B;&#x3068;&#x3063;&#x3066;&#x306F;&#x7406;&#x89E3;&#x3067;&#x304D;&#x308B;&#x304C;&#xFF0C;&#x30E6;&#x30FC;&#x30B6;&#x306B;&#x3068;&#x3063;&#x3066;&#x306F;&#x7406;&#x89E3;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x5225;&#x306E;&#x8B58;&#x5225;&#x5B50;&#xFF08;&#x4F8B;&#x3048;&#x3070;&#x771F;&#x507D;&#x5024;&#xFF09;&#x306B;&#x5909;&#x3048;&#x3066;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x6301;&#x3061;&#x4E0A;&#x3052;&#xFF0C;&#x6700;&#x7D42;&#x7684;&#x306B;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x30DD;&#x30C3;&#x30D7;&#x30A2;&#x30C3;&#x30D7;&#x306A;&#x3069;&#x3067;&#x308F;&#x304B;&#x308A;&#x3084;&#x3059;&#x304F;&#x901A;&#x77E5;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x3089;&#x306F;&#xFF0C;&#x30B5;&#x30FC;&#x30D0;&#x30B5;&#x30A4;&#x30C9;&#x306E;try-catch-finally&#x6587;&#x3084;&#xFF0C;&#x30D5;&#x30ED;&#x30F3;&#x30C8;&#x30A8;&#x30F3;&#x30C9;&#x306E;&#x30DD;&#x30C3;&#x30D7;&#x30A2;&#x30C3;&#x30D7;&#x51E6;&#x7406;&#x3067;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#xFF0E;&#x306A;&#x304A;&#xFF0C;&#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x81EA;&#x4F53;&#x306F;&#x63E1;&#x308A;&#x3064;&#x3076;&#x3055;&#x305A;&#x306B;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3068;&#x3057;&#x3066;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x30B3;&#x30FC;&#x30EB;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<p><br></p>
+<h2 id="02-&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><a name="02-&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;" class="plugin-anchor" href="#02-&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h2>
+<h3 id="&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x7A2E;&#x985E;"><a name="&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x306E;&#x7A2E;&#x985E;</h3>
+<h4 id="&#x30FB;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x6A19;&#x6E96;&#x6A5F;&#x80FD;"><a name="&#x30FB;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x6A19;&#x6E96;&#x6A5F;&#x80FD;" class="plugin-anchor" href="#&#x30FB;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x6A19;&#x6E96;&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x6A19;&#x6E96;&#x6A5F;&#x80FD;</h4>
+<p>&#x591A;&#x304F;&#x306E;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x306F;&#xFF0C;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3084;&#x975E;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x767A;&#x751F;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x305D;&#x308C;&#x3092;&#x691C;&#x77E5;&#x3057;&#x3066;&#xFF0C;&#x4F8B;&#x5916;&#x3092;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x3066;&#x304F;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x72EC;&#x81EA;&#x5B9A;&#x7FA9;"><a name="&#x30FB;&#x72EC;&#x81EA;&#x5B9A;&#x7FA9;" class="plugin-anchor" href="#&#x30FB;&#x72EC;&#x81EA;&#x5B9A;&#x7FA9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x72EC;&#x81EA;&#x5B9A;&#x7FA9;</h4>
+<p>if-throw&#x6587;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x691C;&#x51FA;&#x3068;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x306F;&#x691C;&#x51FA;&#x3067;&#x304D;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x306B;&#xFF0C;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x4F8B;&#x5916;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x305D;&#x308C;&#x3092;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3068;&#x3057;&#x3066;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x3053;&#x3067;&#x306F;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x89AA;&#x30AF;&#x30E9;&#x30B9;&#x3067;&#x3042;&#x308B;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x6295;&#x3052;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">value</span><span class="token punctuation">(</span><span class="token keyword type-hint">int</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x8FD4;&#x5374;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;Value is empty&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F; ${value} &#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x305F;&#x3060;&#x3057;&#xFF0C;if-throw&#x3067;&#x306F;&#xFF0C;&#x90FD;&#x5EA6;&#x4F8B;&#x5916;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x304C;&#x3042;&#x308A;&#xFF0C;&#x69D8;&#x3005;&#x306A;&#x53EF;&#x80FD;&#x6027;&#x3092;&#x8003;&#x616E;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ExternalApiException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FooInvalidArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x6210;&#x529F;&#x3067;&#x3059;&#xFF0E;&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;"><a name="&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;</h3>
+<h4 id="&#x30FB;&#x6A19;&#x6E96;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><a name="&#x30FB;&#x6A19;&#x6E96;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;" class="plugin-anchor" href="#&#x30FB;&#x6A19;&#x6E96;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6A19;&#x6E96;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</h4>
+<p>&#x3044;&#x305A;&#x308C;&#x3082;Throwable&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x4EE5;&#x4E0B;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.php.net/manual/ja/reserved.exceptions.php" target="_blank">https://www.php.net/manual/ja/reserved.exceptions.php</a></p>
+<h4 id="&#x30FB;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><a name="&#x30FB;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;" class="plugin-anchor" href="#&#x30FB;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;</h4>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;<code>Exception</code>&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x7D99;&#x627F;&#x3057;&#x305F;&#x72EC;&#x81EA;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x308B;&#x3068;&#x3088;&#x3044;&#xFF0E;<code>__construct</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3084;&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#xFF08;&#x4F8B;&#x5916;&#x30B3;&#x30FC;&#x30C9;&#xFF09;&#x306A;&#x3069;&#x3092;&#x6E21;&#x305B;&#x308B;&#xFF0E;&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x6A19;&#x6E96;&#x5024;&#x306F;&#x30BC;&#x30ED;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.php.net/manual/ja/exception.construct.php" target="_blank">https://www.php.net/manual/ja/exception.construct.php</a></p>
+<p>&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x7570;&#x306A;&#x308A;&#xFF0C;&#x4F8B;&#x5916;&#x3092;&#x8B58;&#x5225;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x3082;&#x306E;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x7570;&#x5E38;&#x7CFB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x6DF7;&#x4E71;&#x3092;&#x907F;&#x3051;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x5024;&#x306B;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306B;&#x304A;&#x3051;&#x308B;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x51E6;&#x7406;&#x3067;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html</a></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x300E;Foo&#x5909;&#x6570;&#x304C;&#x898B;&#x3064;&#x304B;&#x3089;&#x306A;&#x3044;&#x300F;&#x3068;&#x3044;&#x3046;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x4F8B;&#x5916;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">FooNotFoundException</span> <span class="token keyword">extends</span> <span class="token class-name">Exception</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// &#x57FA;&#x672C;&#x7684;&#x306B;&#x4F55;&#x3082;&#x5B9F;&#x88C5;&#x3057;&#x306A;&#x3044;&#xFF0E;</span>
+
+    <span class="token comment">// &#x30A8;&#x30E9;&#x30FC;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306F;&#x7570;&#x306A;&#x308B;&#x3082;&#x306E;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x306A;&#x3044;&#x3053;&#x3068;&#xFF0E;</span>
+    <span class="token comment">// protected $code = 400</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>FooNotFound</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">foo</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$foo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">empty</span><span class="token punctuation">(</span><span class="token variable">$foo</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FooNotFoundException</span><span class="token punctuation">(</span><span class="token string double-quoted-string">&quot;foo is not found.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;&#x3053;&#x308C;&#x306F; ${foo} &#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x306B;&#x304A;&#x3051;&#x308B;&#x5C64;&#x5225;&#x306E;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><a name="&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x306B;&#x304A;&#x3051;&#x308B;&#x5C64;&#x5225;&#x306E;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;" class="plugin-anchor" href="#&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x306B;&#x304A;&#x3051;&#x308B;&#x5C64;&#x5225;&#x306E;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x306B;&#x304A;&#x3051;&#x308B;&#x5C64;&#x5225;&#x306E;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;</h3>
+<p>&#x5C64;&#x5225;&#x306E;&#x4F8B;&#x5916;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html</a></p>
+<p><br></p>
+<h2 id="03-&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;"><a name="03-&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;" class="plugin-anchor" href="#03-&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;</h2>
+<h3 id="&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x65B9;&#x6CD5;"><a name="&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x65B9;&#x6CD5;</h3>
+<h4 id="&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;"><a name="&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;try-catch-finally&#x6587;&#x3068;&#x306F;</h4>
+<p>try-catch-finally&#x6587;&#x3067;&#x306F;&#xFF0C;&#x7279;&#x5B9A;&#x306E;&#x51E6;&#x7406;&#x306E;&#x4E2D;&#x3067;&#x8D77;&#x3053;&#x308B;&#x60F3;&#x5B9A;&#x3067;&#x304D;&#x306A;&#x3044;&#x4F8B;&#x5916;&#x3092;&#x6349;&#x3048;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30E9;&#x30FC;&#x6587;&#x306F;&#xFF0C;&#x30C7;&#x30D0;&#x30C3;&#x30AF;&#x753B;&#x9762;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package"><span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// ExternalApiErrorException&#xFF0C;HttpRequestErrorException&#xFF0C;Exception&#x304C;&#x8D77;&#x3053;&#x308B;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// ExternalApiErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// HttpRequestErrorException&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306E;Exception&#x304C;&#x8D77;&#x3053;&#x3063;&#x3068;&#x304D;&#x306E;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4F8B;&#x5916;&#x3092;&#x88DC;&#x8DB3;&#x3057;&#x305F;&#x304B;&#x3069;&#x3046;&#x304B;&#x306B;&#x304B;&#x304B;&#x308F;&#x3089;&#x305A;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</span>
+            <span class="token comment">// try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x3084;&#x7D42;&#x4E86;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>finally&#x53E5;&#x306F;&#xFF0C;try&#x53E5;&#x3084;catch&#x53E5;&#x306E;&#x8FD4;&#x5374;&#x51E6;&#x7406;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x76F4;&#x524D;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;finally&#x53E5;&#x3067;&#x306F;&#xFF0C;<code>return</code>&#x3084;<code>continue</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#xFF08;&#xFF11;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;A&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#xFF08;&#xFF12;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;B&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#xFF08;&#xFF13;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;C&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#xFF08;&#xFF14;&#xFF09;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&quot;</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">&quot;D&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// return&#x3084;continue&#x3092;&#x4F7F;&#x7528;&#x3057;&#x306A;&#x3044;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">&quot;E&#x3067;&#x3059;&#xFF0E;&quot;</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#xFF08;&#xFF11;&#xFF09;&#xFF5E;&#xFF08;&#xFF14;&#xFF09;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x3067;&#x8FD4;&#x5374;&#x3055;&#x308C;&#x308B;&#x6642;&#xFF0C;&#x8FD4;&#x5374;&#x306E;&#x76F4;&#x524D;&#x306B;finally&#x53E5;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-php"><span class="token comment">// &#xFF08;&#xFF11;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// A&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// A&#x3067;&#x3059;&#xFF0E;</span>
+
+<span class="token comment">// &#xFF08;&#xFF12;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// B&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// B&#x3067;&#x3059;&#xFF0E;</span>
+
+<span class="token comment">// &#xFF08;&#xFF13;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// C&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// C&#x3067;&#x3059;&#xFF0E;</span>
+
+<span class="token comment">// &#xFF08;&#xFF14;&#xFF09;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment">// D&#x306E;&#x76F4;&#x524D;&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// E&#x3067;&#x3059;&#xFF0E;</span>
+<span class="token comment">// D&#x3067;&#x3059;&#xFF0E;</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x65B0;&#x305F;&#x306A;&#x4F8B;&#x5916;&#x306E;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x76F4;&#x3057;"><a name="&#x65B0;&#x305F;&#x306A;&#x4F8B;&#x5916;&#x306E;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x76F4;&#x3057;" class="plugin-anchor" href="#&#x65B0;&#x305F;&#x306A;&#x4F8B;&#x5916;&#x306E;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x76F4;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65B0;&#x305F;&#x306A;&#x4F8B;&#x5916;&#x306E;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x76F4;&#x3057;</h3>
+<p>&#x4F8B;&#x5916;&#x3092;try-catch&#x6587;&#x3067;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3057;&#x305F;&#x5F8C;&#xFF0C;&#x5225;&#x306E;&#x65B0;&#x3057;&#x3044;&#x4F8B;&#x5916;&#x3092;&#x30B9;&#x30ED;&#x30FC;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x4F8B;&#x5916;&#x306E;&#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;&#x306E;&#x7B2C;&#x4E09;&#x5F15;&#x6570;&#xFF08;<code>previous</code>&#xFF09;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x5143;&#x3005;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x3066;&#x3044;&#x305F;&#x4F8B;&#x5916;&#x3082;&#x691C;&#x77E5;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x4F8B;&#x5916;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x30ED;&#x30B0;&#x3068;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="http://blog.tojiru.net/article/455279557.html" target="_blank">http://blog.tojiru.net/article/455279557.html</a></li>
+<li><a href="https://www.php.net/manual/ja/exception.construct.php" target="_blank">https://www.php.net/manual/ja/exception.construct.php</a></li>
+</ul>
+<p><br></p>
+<h3 id="&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;"><a name="&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;" class="plugin-anchor" href="#&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F8B;&#x5916;&#x30AD;&#x30E3;&#x30C3;&#x30C1;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x6D3E;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x6D3E;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x6D3E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#xFF0F;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x6D3E;</h4>
+<p>&#x60F3;&#x5B9A;&#x5916;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x3082;&#x542B;&#x3081;&#x3066;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x691C;&#x51FA;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x307E;&#x305F;&#x306F;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x306B;try-catch&#x6587;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/" target="_blank">https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/</a></li>
+<li><a href="https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository" target="_blank">https://softwareengineering.stackexchange.com/questions/393307/where-would-you-handle-exceptions-controller-service-repository</a></li>
+</ul>
+<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x6D3E;"><a name="&#x30FB;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x6D3E;" class="plugin-anchor" href="#&#x30FB;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x6D3E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x6D3E;</h4>
+<p>&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x306E;&#x5B9F;&#x88C5;&#x3092;&#x3088;&#x308A;&#x5358;&#x7D14;&#x306B;&#x3059;&#x308B;&#x3079;&#x304F;&#xFF0C;&#x3088;&#x308A;&#x4E0B;&#x4F4D;&#x306E;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x306B;try-catch&#x6587;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/" target="_blank">https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/</a></p>
+<p><br></p>
+<h2 id="04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
+<h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x95A2;&#x6570;"><a name="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x95A2;&#x6570;</h3>
+<h4 id="&#x30FB;errorlog&#x95A2;&#x6570;"><a name="&#x30FB;errorlog&#x95A2;&#x6570;" class="plugin-anchor" href="#&#x30FB;errorlog&#x95A2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>error_log</code>&#x95A2;&#x6570;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.php.net/manual/ja/function.error-log.php" target="_blank">https://www.php.net/manual/ja/function.error-log.php</a></p>
+<pre class="language-"><code class="lang-php"><span class="token function">error_log</span><span class="token punctuation">(</span>
+    <span class="token string double-quoted-string">&quot;&lt;&#x30A8;&#x30E9;&#x30FC;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&gt;&quot;</span><span class="token punctuation">,</span>
+    <span class="token string double-quoted-string">&quot;&lt;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x51FA;&#x529B;&#x5148;&#xFF08;3&#x306E;&#x5834;&#x5408;&#x306B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x51FA;&#x529B;&#xFF09;&gt;&quot;</span><span class="token punctuation">,</span>
+    <span class="token string double-quoted-string">&quot;&lt;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&gt;&quot;</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x308B;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x542B;&#x3080;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token function">error_log</span><span class="token punctuation">(</span>
+                <span class="token function">sprintf</span><span class="token punctuation">(</span>
+                    <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">3</span><span class="token punctuation">,</span>
+                <span class="token constant">__DIR__</span> <span class="token operator">.</span> <span class="token string double-quoted-string">&quot;/error.log&quot;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4ED6;&#x306B;&#xFF0C;Logger&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x591A;&#x3044;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/php-fig/log" target="_blank">https://github.com/php-fig/log</a></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Psr<span class="token punctuation">\</span>Log<span class="token punctuation">\</span>LoggerInterface</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Notification</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token variable">$logger</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token class-name type-declaration">LoggerInterface</span> <span class="token variable">$logger</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span> <span class="token operator">=</span> <span class="token variable">$logger</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x308B;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x542B;&#x3080;&#x51E6;&#x7406;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;"><a name="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;" class="plugin-anchor" href="#&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;</h3>
+<p>try-catch&#x6587;&#x306B;&#x4F34;&#x3046;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x306E;&#x5834;&#x5408;&#xFF0C;catch&#x53E5;&#x306E;&#x4E2D;&#x3067;&#x3053;&#x308C;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x306E;&#x305F;&#x3081;&#xFF0C;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306F;tray-catch&#x6587;&#x306E;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x3068;&#x540C;&#x3058;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<p><br></p>
+<h3 id="&#x7A2E;&#x985E;&#x5225;&#x306E;&#x632F;&#x308A;&#x5206;&#x3051;"><a name="&#x7A2E;&#x985E;&#x5225;&#x306E;&#x632F;&#x308A;&#x5206;&#x3051;" class="plugin-anchor" href="#&#x7A2E;&#x985E;&#x5225;&#x306E;&#x632F;&#x308A;&#x5206;&#x3051;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7A2E;&#x985E;&#x5225;&#x306E;&#x632F;&#x308A;&#x5206;&#x3051;</h3>
+<h4 id="&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F8B;&#x5916;&#x3054;&#x3068;&#x306E;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</h4>
+<p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30A2;&#x30D7;&#x30EA;&#x306E;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x751F;&#x6210;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x4F8B;&#x5916;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5408;&#x308F;&#x305B;&#x3066;&#xFF0C;&#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3068;&#xFF0C;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#x305D;&#x306E;&#x4ED6;&#x539F;&#x56E0;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x30ED;&#x30B0;&#x3092;&#x751F;&#x6210;&#x3092;&#x884C;&#x3046;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>ExternalApiErrorException</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Exception<span class="token punctuation">\</span>HttpRequestErrorException</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Foo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name type-declaration">Message</span> <span class="token variable">$message</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C;&#x5B58;&#x5728;&#x3059;&#x308B;&#x304B;&#x3092;&#x691C;&#x8A3C;&#xFF0E;</span>
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;&#x305F;&#x3081;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x3092;&#x751F;&#x6210;&#xFF0E;</span>
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;URL&#xFF0C;&#x9001;&#x4FE1;&#x65B9;&#x6CD5;&#xFF0C;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306A;&#x3069;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x8A2D;&#x5B9A;&#xFF0E;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>HttpRequestErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x308B;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x542B;&#x3080;&#x51E6;&#x7406;</span>
+
+            <span class="token comment">// &#x5916;&#x90E8;API&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x5931;&#x6557;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>ExternalApiErrorException</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x308B;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x542B;&#x3080;&#x51E6;&#x7406;</span>
+
+            <span class="token comment">// &#x5916;&#x90E8;API&#x306E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>Exception</span> <span class="token variable">$exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// &#x4E0B;&#x6D41;&#x30AF;&#x30E9;&#x30B9;&#x306B;&#x3088;&#x308B;&#x4F8B;&#x5916;&#x30B9;&#x30ED;&#x30FC;&#x3092;&#x542B;&#x3080;&#x51E6;&#x7406;</span>
+
+            <span class="token comment">// &#x305D;&#x306E;&#x4ED6;&#xFF08;&#x81EA;&#x793E;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x3069;&#xFF09;&#x306B;&#x3088;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x30ED;&#x30AE;&#x30F3;&#x30B0;</span>
+            <span class="token variable">$this</span><span class="token operator">-&gt;</span><span class="token property">logger</span><span class="token operator">-&gt;</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token function">sprintf</span><span class="token punctuation">(</span>
+                <span class="token string double-quoted-string">&quot;ERROR: %s at %s line %s&quot;</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token variable">$exception</span><span class="token operator">-&gt;</span><span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// &#x554F;&#x984C;&#x306A;&#x3051;&#x308C;&#x3070;TRUE&#x3092;&#x8FD4;&#x5374;&#xFF0E;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="software_application_backend_php_logic_validation.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎バックエンド側の検証ロジック">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="software_application_backend_php_logic_iteration.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎反復ロジック">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎エラーとエラーハンドリング","level":"1.3.2.2.2.2","depth":5,"next":{"title":"▶ ︎反復ロジック","level":"1.3.2.2.2.3","depth":5,"path":"public/software_application_backend_php_logic_iteration.md","ref":"public/software_application_backend_php_logic_iteration.md","articles":[]},"previous":{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.3.2.2.2.1","depth":5,"path":"public/software_application_backend_php_logic_validation.md","ref":"public/software_application_backend_php_logic_validation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software_application_backend_php_logic_error_and_error_handling.md","mtime":"2021-09-27T07:14:11.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-02T05:01:13.721Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro-fixed/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro-fixed/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>▶ ︎長谷川広樹と申します · 僕のドキュメントサイト【GitBook版】</title>
+        <title>▶ ︎コンテナオーケストレーション · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,6 +65,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="virtualization_container_orchestration_docker_compose.html" />
+    
+    
+    <link rel="prev" href="virtualization_container.html" />
     
 
     </head>
@@ -139,7 +143,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="self_introduction.html">
+        <li class="chapter " data-level="1.2.1" data-path="self_introduction.html">
             
                 <a href="self_introduction.html">
             
@@ -1528,7 +1532,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.1.1.2" data-path="virtualization_container_orchestration.html">
+        <li class="chapter active" data-level="1.8.1.1.2" data-path="virtualization_container_orchestration.html">
             
                 <a href="virtualization_container_orchestration.html">
             
@@ -1894,7 +1898,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >▶ ︎長谷川広樹と申します</a>
+        <a href=".." >▶ ︎コンテナオーケストレーション</a>
     </h1>
 </div>
 
@@ -1909,22 +1913,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x81EA;&#x5DF1;&#x7D39;&#x4ECB;"><a name="&#x81EA;&#x5DF1;&#x7D39;&#x4ECB;" class="plugin-anchor" href="#&#x81EA;&#x5DF1;&#x7D39;&#x4ECB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x81EA;&#x5DF1;&#x7D39;&#x4ECB;</h1>
-<h2 id="&#x306F;&#x3058;&#x3081;&#x307E;&#x3057;&#x3066;"><a name="&#x306F;&#x3058;&#x3081;&#x307E;&#x3057;&#x3066;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x307E;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x307E;&#x3057;&#x3066;</h2>
-<p>&#x9577;&#x8C37;&#x5DDD;&#x5E83;&#x6A39;&#x3068;&#x7533;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
-<p>2019&#x5E74;&#x306B;&#x7406;&#x5B66;&#x4FEE;&#x58EB;&#x3092;&#x7FD2;&#x5F97;&#x3057;&#xFF0C;&#x5927;&#x5B66;&#x9662;&#x3092;&#x5352;&#x696D;&#x3044;&#x305F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</p>
-<p>&#x305D;&#x306E;&#x5F8C;&#xFF0C;<strong>&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;</strong> &#x3068;&#x3057;&#x3066;&#x30AD;&#x30E3;&#x30EA;&#x30A2;&#x3092;&#x30B9;&#x30BF;&#x30FC;&#x30C8;&#x3044;&#x305F;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</p>
-<p>&#x73FE;&#x5728;&#x306F;&#xFF0C;<strong>SRE</strong> &#x3068;&#x3057;&#x3066;&#x50CD;&#x304B;&#x3055;&#x305B;&#x3066;&#x3044;&#x305F;&#x3060;&#x3044;&#x3066;&#x304A;&#x308A;&#x307E;&#x3059;&#xFF0E;</p>
+                                <h1 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h1>
+<h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
+<p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
+<p><a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="&#x95A2;&#x5FC3;&#x306E;&#x3042;&#x308B;&#x6280;&#x8853;&#x9818;&#x57DF;"><a name="&#x95A2;&#x5FC3;&#x306E;&#x3042;&#x308B;&#x6280;&#x8853;&#x9818;&#x57DF;" class="plugin-anchor" href="#&#x95A2;&#x5FC3;&#x306E;&#x3042;&#x308B;&#x6280;&#x8853;&#x9818;&#x57DF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x95A2;&#x5FC3;&#x306E;&#x3042;&#x308B;&#x6280;&#x8853;&#x9818;&#x57DF;</h2>
-<p>&#x30B9;&#x30B1;&#x30FC;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#xFF0C;&#x4FDD;&#x5B88;&#x6027;&#xFF0C;&#x53EF;&#x8AAD;&#x6027;&#x3092;&#x9AD8;&#x3081;&#x308B;&#x6280;&#x8853;&#x306B;&#x95A2;&#x5FC3;&#x304C;&#x3054;&#x3056;&#x3044;&#x307E;&#x3059;&#xFF0E;</p>
-<p>DDD&#xFF0C;&#x51DD;&#x96C6;&#x5EA6;&#x3068;&#x7D50;&#x5408;&#x5EA6;&#xFF0C;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#xFF0C;IaC&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#xFF0C;CI/CD&#xFF0C;Go&#xFF0C;etc...</p>
+<h2 id="01-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;"><a name="01-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#01-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x7A2E;&#x985E;</h2>
+<h3 id="&#x5358;&#x4E00;&#x30DB;&#x30B9;&#x30C8;os&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x5358;&#x4E00;&#x30DB;&#x30B9;&#x30C8;os&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x5358;&#x4E00;&#x30DB;&#x30B9;&#x30C8;os&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5358;&#x4E00;&#x30DB;&#x30B9;&#x30C8;OS&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
+<p>&#x5358;&#x4E00;&#x30DB;&#x30B9;&#x30C8;OS&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x5BFE;&#x8C61;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x7570;&#x306A;&#x308B;Dockerfile&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#xFF0C;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30EC;&#x30A4;&#x30E4;&#x30FC;&#x306E;&#x751F;&#x6210;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8D77;&#x52D5;&#xFF0C;&#x3092;&#x5B9F;&#x884C;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x30C4;&#x30FC;&#x30EB;&#x540D;</th>
+<th>&#x30D9;&#x30F3;&#x30C0;&#x30FC;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker Compose</td>
+<td>Docker</td>
+</tr>
+<tr>
+<td>ECS&#xFF1A;Elastic Container Service</td>
+<td>Amazon</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<h2 id="&#x7D4C;&#x6B74;&#xFF0C;&#x8077;&#x6B74;"><a name="&#x7D4C;&#x6B74;&#xFF0C;&#x8077;&#x6B74;" class="plugin-anchor" href="#&#x7D4C;&#x6B74;&#xFF0C;&#x8077;&#x6B74;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D4C;&#x6B74;&#xFF0C;&#x8077;&#x6B74;</h2>
-<p>&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x307E;&#x3067;&#x3054;&#x8A2A;&#x554F;&#x3044;&#x305F;&#x3060;&#x3051;&#x308B;&#x3068;&#x5E78;&#x3044;&#x3067;&#x3059;&#xFF0E;</p>
-<p>&#x25B6; <strong>GitHub</strong>&#xFF1A;<a href="https://github.com/hiroki-it" target="_blank">https://github.com/hiroki-it</a></p>
-<p>&#x25B6; <strong>Wantedly</strong>&#xFF1A;<a href="https://www.wantedly.com/id/h_hasegawa" target="_blank">https://www.wantedly.com/id/h_hasegawa</a></p>
-<p>&#x25B6; <strong>Speaker Deck</strong>&#xFF1A;<a href="https://speakerdeck.com/hiroki_hasegawa" target="_blank">https://speakerdeck.com/hiroki_hasegawa</a></p>
+<h3 id="&#x8907;&#x6570;&#x30DB;&#x30B9;&#x30C8;os&#x306B;&#x6E21;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x8907;&#x6570;&#x30DB;&#x30B9;&#x30C8;os&#x306B;&#x6E21;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x8907;&#x6570;&#x30DB;&#x30B9;&#x30C8;os&#x306B;&#x6E21;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8907;&#x6570;&#x30DB;&#x30B9;&#x30C8;OS&#x306B;&#x6E21;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30AA;&#x30FC;&#x30B1;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
+<p>&#x8907;&#x6570;&#x30DB;&#x30B9;&#x30C8;OS&#x4E0A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x5BFE;&#x8C61;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x3069;&#x306E;&#x30DB;&#x30B9;&#x30C8;OS&#x306E;Docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x3069;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3059;&#x308B;&#x64CD;&#x4F5C;&#x3092;&#x884C;&#x3046;&#x306E;&#x304B;&#x3092;&#x9078;&#x629E;&#x7684;&#x306B;&#x547D;&#x4EE4;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/" target="_blank">https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x30C4;&#x30FC;&#x30EB;&#x540D;</th>
+<th>&#x30D9;&#x30F3;&#x30C0;&#x30FC;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker Swarm</td>
+<td>Docker</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>Google</td>
+</tr>
+<tr>
+<td>EKS&#xFF1A;Elastic Kubernetes Service</td>
+<td>Amazon</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="02-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><a name="02-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;" class="plugin-anchor" href="#02-&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30C7;&#x30B6;&#x30A4;&#x30F3;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h2>
+<h3 id="&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><a name="&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;" class="plugin-anchor" href="#&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
+<h4 id="&#x30FB;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;&#x3068;&#x306F;</h4>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x88DC;&#x52A9;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x540C;&#x3058;ECS&#x30BF;&#x30B9;&#x30AF;&#x3084;Pod&#x5185;&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><a name="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;</h4>
+<p>FluentBit&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x4ED6;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html</a></p>
+<h4 id="&#x30FB;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><a name="&#x30FB;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;" class="plugin-anchor" href="#&#x30FB;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x53CE;&#x96C6;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x914D;&#x7F6E;</h4>
+<p>Datadog&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x3092;&#x53CE;&#x96C6;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html</a></p>
+<p><br></p>
+<h3 id="&#x30A2;&#x30F3;&#x30D0;&#x30B5;&#x30C0;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><a name="&#x30A2;&#x30F3;&#x30D0;&#x30B5;&#x30C0;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;" class="plugin-anchor" href="#&#x30A2;&#x30F3;&#x30D0;&#x30B5;&#x30C0;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A2;&#x30F3;&#x30D0;&#x30B5;&#x30C0;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
+<p><br></p>
+<h3 id="&#x30A2;&#x30C0;&#x30D7;&#x30BF;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><a name="&#x30A2;&#x30C0;&#x30D7;&#x30BF;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;" class="plugin-anchor" href="#&#x30A2;&#x30C0;&#x30D7;&#x30BF;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A2;&#x30C0;&#x30D7;&#x30BF;&#x30FC;&#x30FB;&#x30D1;&#x30BF;&#x30FC;&#x30F3;</h3>
 
                                 
                                 </section>
@@ -1952,6 +2007,14 @@
 
             
                 
+                <a href="virtualization_container.html" class="navigation navigation-prev " aria-label="Previous page: ▶ ︎コンテナ">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="virtualization_container_orchestration_docker_compose.html" class="navigation navigation-next " aria-label="Next page: ▶ ︎Docker Compose">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1960,7 +2023,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"▶ ︎長谷川広樹と申します","level":"1.2.1","depth":2,"next":{"title":"ソフトウェア","level":"1.3","depth":1,"ref":"","articles":[{"title":"種類","level":"1.3.1","depth":2,"ref":"","articles":[{"title":"▶ ︎ソフトウェアの種類","level":"1.3.1.1","depth":3,"path":"public/software.md","ref":"public/software.md","articles":[]}]},{"title":"アプリケーションソフトウェア","level":"1.3.2","depth":2,"ref":"","articles":[{"title":"アーキテクチャ","level":"1.3.2.1","depth":3,"ref":"","articles":[{"title":"ドメイン駆動設計","level":"1.3.2.1.1","depth":4,"ref":"","articles":[{"title":"▶ ︎ドメイン駆動設計概論","level":"1.3.2.1.1.1","depth":5,"path":"public/software_application_backend_architecture_domain_driven_design.md","ref":"public/software_application_backend_architecture_domain_driven_design.md","articles":[]},{"title":"▶ ︎CQRS","level":"1.3.2.1.1.2","depth":5,"path":"public/software_application_backend_architecture_cqrs.md","ref":"public/software_application_backend_architecture_cqrs.md","articles":[]},{"title":"▶ ︎クリーンアーキテクチャ","level":"1.3.2.1.1.3","depth":5,"path":"public/software_application_backend_architecture_domain_driven_design_clean_architecture.md","ref":"public/software_application_backend_architecture_domain_driven_design_clean_architecture.md","articles":[]}]},{"title":"▶ ︎フロントエンドアーキテクチャ","level":"1.3.2.1.2","depth":4,"path":"public/software_application_frontend_architecture.md","ref":"public/software_application_frontend_architecture.md","articles":[]},{"title":"▶ ︎マイクロサービスアーキテクチャ","level":"1.3.2.1.3","depth":4,"path":"public/software_application_frontend_and_backend_architecture_microservice.md","ref":"public/software_application_frontend_and_backend_architecture_microservice.md","articles":[]}]},{"title":"PHP","level":"1.3.2.2","depth":3,"ref":"","articles":[{"title":"クラスベースオブジェクト指向","level":"1.3.2.2.1","depth":4,"ref":"","articles":[{"title":"▶ ︎オブジェクト指向分析／設計／プログラミング","level":"1.3.2.2.1.1","depth":5,"path":"public/software_application_backend_php_object_orientation_analysis_design_programming.md","ref":"public/software_application_backend_php_object_orientation_analysis_design_programming.md","articles":[]},{"title":"▶ ︎クラスベース（1）","level":"1.3.2.2.1.2","depth":5,"path":"public/software_application_backend_php_object_orientation_class.md","ref":"public/software_application_backend_php_object_orientation_class.md","articles":[]},{"title":"▶ ︎クラスベース（2）","level":"1.3.2.2.1.3","depth":5,"path":"public/software_application_backend_php_object_orientation_method_data.md","ref":"public/software_application_backend_php_object_orientation_method_data.md","articles":[]},{"title":"▶ ︎データ構造","level":"1.3.2.2.1.4","depth":5,"path":"public/software_application_backend_php_object_orientation_data_structure.md","ref":"public/software_application_backend_php_object_orientation_data_structure.md","articles":[]}]},{"title":"ロジック","level":"1.3.2.2.2","depth":4,"ref":"","articles":[{"title":"▶ ︎バックエンド側の検証ロジック","level":"1.3.2.2.2.1","depth":5,"path":"public/software_application_backend_php_logic_validation.md","ref":"public/software_application_backend_php_logic_validation.md","articles":[]},{"title":"▶ ︎エラーとエラーハンドリング","level":"1.3.2.2.2.2","depth":5,"path":"public/software_application_backend_php_logic_error_and_error_handling.md","ref":"public/software_application_backend_php_logic_error_and_error_handling.md","articles":[]},{"title":"▶ ︎反復ロジック","level":"1.3.2.2.2.3","depth":5,"path":"public/software_application_backend_php_logic_iteration.md","ref":"public/software_application_backend_php_logic_iteration.md","articles":[]},{"title":"▶ ︎アルゴリズム","level":"1.3.2.2.2.4","depth":5,"path":"public/software_application_backend_php_logic_algorithm.md","ref":"public/software_application_backend_php_logic_algorithm.md","articles":[]}]},{"title":"パッケージ／フレームワーク","level":"1.3.2.2.3","depth":4,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.3.2.2.3.1","depth":5,"path":"public/software_application_backend_php_package.md","ref":"public/software_application_backend_php_package.md","articles":[]},{"title":"▶ ︎Symfony","level":"1.3.2.2.3.2","depth":5,"path":"public/software_application_backend_php_framework_symfony.md","ref":"public/software_application_backend_php_framework_symfony.md","articles":[]},{"title":"▶ ︎Laravel","level":"1.3.2.2.3.3","depth":5,"path":"public/software_application_backend_php_framework_laravel.md","ref":"public/software_application_backend_php_framework_laravel.md","articles":[]}]},{"title":"テスト","level":"1.3.2.2.4","depth":4,"ref":"","articles":[{"title":"▶ ︎テスト","level":"1.3.2.2.4.1","depth":5,"path":"public/software_application_backend_php_testing.md","ref":"public/software_application_backend_php_testing.md","articles":[]},{"title":"▶ ︎コードベースのテスト","level":"1.3.2.2.4.2","depth":5,"path":"public/software_application_backend_php_testing_based_on_code.md","ref":"public/software_application_backend_php_testing_based_on_code.md","articles":[]},{"title":"▶ ︎テスト仕様書ベースのテスト","level":"1.3.2.2.4.3","depth":5,"path":"public/software_application_backend_php_testing_based_on_test_specification.md","ref":"public/software_application_backend_php_testing_based_on_test_specification.md","articles":[]}]},{"title":"デバッグ","level":"1.3.2.2.5","depth":4,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.3.2.2.5.1","depth":5,"path":"public/software_application_backend_php_debug.md","ref":"public/software_application_backend_php_debug.md","articles":[]}]}]},{"title":"Go","level":"1.3.2.3","depth":3,"ref":"","articles":[{"title":"ロジック","level":"1.3.2.3.1","depth":4,"ref":"","articles":[{"title":"▶ 文法","level":"1.3.2.3.1.1","depth":5,"path":"public/software_application_backend_go_logic.md","ref":"public/software_application_backend_go_logic.md","articles":[]}]},{"title":"パッケージ／フレームワーク","level":"1.3.2.3.2","depth":4,"ref":"","articles":[{"title":"▶ パッケージ","level":"1.3.2.3.2.1","depth":5,"path":"public/software_application_backend_go_package.md","ref":"public/software_application_backend_go_package.md","articles":[]},{"title":"▶ Gin","level":"1.3.2.3.2.2","depth":5,"path":"public/software_application_backend_go_framework_gin.md","ref":"public/software_application_backend_go_framework_gin.md","articles":[]}]}]},{"title":"フロントエンドとバックエンド間のデータ通信","level":"1.3.2.4","depth":3,"ref":"","articles":[{"title":"▶ ︎RESTful APIの概念と実装","level":"1.3.2.4.1","depth":4,"path":"public/software_application_backend_api_restful.md","ref":"public/software_application_backend_api_restful.md","articles":[]},{"title":"▶ ︎認証と認可","level":"1.3.2.4.2","depth":4,"path":"public/software_application_frontend_and_backend_authentication_authorization.md","ref":"public/software_application_frontend_and_backend_authentication_authorization.md","articles":[]},{"title":"▶ ︎JSON","level":"1.3.2.4.3","depth":4,"path":"public/software_application_frontend_and_backend_json.md","ref":"public/software_application_frontend_and_backend_json.md","articles":[]},{"title":"▶ ︎ブラウザレンダリングの仕組み","level":"1.3.2.4.4","depth":4,"path":"public/software_application_frontend_and_backend_browser_rendering.md","ref":"public/software_application_frontend_and_backend_browser_rendering.md","articles":[]}]},{"title":"JavaScript","level":"1.3.2.5","depth":3,"ref":"","articles":[{"title":"プロトタイプベースオブジェクト指向","level":"1.3.2.5.1","depth":4,"ref":"","articles":[{"title":"▶ ︎プロトタイプベース（1）","level":"1.3.2.5.1.1","depth":5,"path":"public/software_application_frontend_js_object_orientation_prototype.md","ref":"public/software_application_frontend_js_object_orientation_prototype.md","articles":[]},{"title":"▶ ︎プロトタイプベース（2）","level":"1.3.2.5.1.2","depth":5,"path":"public/software_application_frontend_js_object_orientation_method_data.md","ref":"public/software_application_frontend_js_object_orientation_method_data.md","articles":[]}]},{"title":"ロジック","level":"1.3.2.5.2","depth":4,"ref":"","articles":[{"title":"▶ ︎フロントエンド側の検証ロジック","level":"1.3.2.5.2.1","depth":5,"path":"public/software_application_frontend_js_logic_validation.md","ref":"public/software_application_frontend_js_logic_validation.md","articles":[]}]},{"title":"パッケージ／フレームワーク","level":"1.3.2.5.3","depth":4,"ref":"","articles":[{"title":"▶ ︎パッケージ","level":"1.3.2.5.3.1","depth":5,"path":"public/software_application_frontend_js_package.md","ref":"public/software_application_frontend_js_package.md","articles":[]},{"title":"▶ ︎Vue.js","level":"1.3.2.5.3.2","depth":5,"path":"public/software_application_frontend_js_framework_vuejs.md","ref":"public/software_application_frontend_js_framework_vuejs.md","articles":[]},{"title":"▶ ︎Nuxt.js","level":"1.3.2.5.3.3","depth":5,"path":"public/software_application_frontend_js_framework_nuxtjs.md","ref":"public/software_application_frontend_js_framework_nuxtjs.md","articles":[]}]},{"title":"デバッグ","level":"1.3.2.5.4","depth":4,"ref":"","articles":[{"title":"▶ ︎デバッグのコツ","level":"1.3.2.5.4.1","depth":5,"path":"public/software_application_frontend_js_debug.md","ref":"public/software_application_frontend_js_debug.md","articles":[]}]}]}]},{"title":"ミドルウェア","level":"1.3.3","depth":2,"ref":"","articles":[{"title":"Web関連","level":"1.3.3.1","depth":3,"ref":"","articles":[{"title":"▶ ︎Nginx","level":"1.3.3.1.1","depth":4,"path":"public/software_middleware_nginx.md","ref":"public/software_middleware_nginx.md","articles":[]},{"title":"▶ ︎Apache","level":"1.3.3.1.2","depth":4,"path":"public/software_middleware_apache.md","ref":"public/software_middleware_apache.md","articles":[]}]},{"title":"データベース関連","level":"1.3.3.2","depth":3,"ref":"","articles":[{"title":"▶ ︎データベース","level":"1.3.3.2.1","depth":4,"path":"public/software_middleware_database.md","ref":"public/software_middleware_database.md","articles":[]},{"title":"▶ My︎SQL","level":"1.3.3.2.2","depth":4,"path":"public/software_middleware_database_mysql.md","ref":"public/software_middleware_database_mysql.md","articles":[]}]}]},{"title":"基本ソフトウェア（OS）","level":"1.3.4","depth":2,"ref":"","articles":[{"title":"▶ ︎CentOSの構成","level":"1.3.4.1","depth":3,"path":"public/software_basic_centos.md","ref":"public/software_basic_centos.md","articles":[]},{"title":"▶ ︎機械語と進数","level":"1.3.4.2","depth":3,"path":"public/software_basic_machine_language_and_radix.md","ref":"public/software_basic_machine_language_and_radix.md","articles":[]}]}]},"previous":{"title":"自己紹介","level":"1.2","depth":1,"ref":"","articles":[{"title":"▶ ︎長谷川広樹と申します","level":"1.2.1","depth":2,"path":"public/self_introduction.md","ref":"public/self_introduction.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/self_introduction.md","mtime":"2021-09-13T11:37:20.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-02T05:01:13.721Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"▶ ︎コンテナオーケストレーション","level":"1.8.1.1.2","depth":4,"next":{"title":"▶ ︎Docker Compose","level":"1.8.1.1.3","depth":4,"path":"public/virtualization_container_orchestration_docker_compose.md","ref":"public/virtualization_container_orchestration_docker_compose.md","articles":[]},"previous":{"title":"▶ ︎コンテナ","level":"1.8.1.1.1","depth":4,"path":"public/virtualization_container.md","ref":"public/virtualization_container.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization_container_orchestration.md","mtime":"2021-10-02T03:49:59.440Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-02T05:01:13.721Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
