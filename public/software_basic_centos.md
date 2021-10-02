@@ -1,4 +1,4 @@
-# CentOSの構成
+# CentOS
 
 ## はじめに
 
