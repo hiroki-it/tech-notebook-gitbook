@@ -14,8 +14,8 @@
     * PHP
       * クラスベースオブジェクト指向
         * [📚 ︎オブジェクト指向分析／設計／プログラミング](public/software_application_backend_php_object_orientation_analysis_design_programming.md)
-        * [📚 ︎クラスベース（1）](public/software_application_backend_php_object_orientation_class.md)
-        * [📚 ︎クラスベース（2）](public/software_application_backend_php_object_orientation_method_data.md)
+        * [📚 ︎クラス](public/software_application_backend_php_object_orientation_class.md)
+        * [📚 ︎メソッド／データ](public/software_application_backend_php_object_orientation_method_data.md)
         * [📚 ︎データ構造](public/software_application_backend_php_object_orientation_data_structure.md)
       * ロジック
         * [📚 ︎バックエンド側の検証ロジック](public/software_application_backend_php_logic_validation.md)
@@ -39,14 +39,14 @@
         * [📚 パッケージ](public/software_application_backend_go_package.md)
         * [📚 Gin](public/software_application_backend_go_framework_gin.md)
     * フロント-バック連携
-      * [📚 ︎RESTful APIの概念と実装](public/software_application_backend_api_restful.md)
-      * [📚 ︎認証と認可](public/software_application_frontend_and_backend_authentication_authorization.md)
+      * [📚 ︎RESTful-API](public/software_application_frontend_and_backend_api_restful.md)
+      * [📚 ︎認証／認可](public/software_application_frontend_and_backend_authentication_authorization.md)
       * [📚 ︎JSON](public/software_application_frontend_and_backend_json.md)
       * [📚 ︎ブラウザレンダリングの仕組み](public/software_application_frontend_and_backend_browser_rendering.md)
     * JavaScript
       * プロトタイプベースオブジェクト指向
-        * [📚 ︎プロトタイプベース（1）](public/software_application_frontend_js_object_orientation_prototype.md)
-        * [📚 ︎プロトタイプベース（2）](public/software_application_frontend_js_object_orientation_method_data.md)
+        * [📚 ︎プロトタイプ](public/software_application_frontend_js_object_orientation_prototype.md)
+        * [📚 ︎メソッド／データ](public/software_application_frontend_js_object_orientation_method_data.md)
       * ロジック
         * [📚 ︎フロントエンド側の検証ロジック](public/software_application_frontend_js_logic_validation.md)
       * パッケージ／フレームワーク
@@ -86,8 +86,8 @@
 * Infrastructure as Code
   * [📚 ︎Infrastructure as Code](public/infrastructure_as_code.md)
   * [📚 ︎Terraform](public/infrastructure_as_code_terraform.md)
-* 仮想化技術
-  * [📚 ︎仮想化技術](public/virtualization.md)
+* 仮想化
+  * [📚 ︎仮想化](public/virtualization.md)
   * コンテナ
     * [📚 ︎コンテナ](public/virtualization_container.md)
     * コンテナオーケストレーション
