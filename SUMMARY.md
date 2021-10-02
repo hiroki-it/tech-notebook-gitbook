@@ -7,53 +7,55 @@
   * [📚 ︎ソフトウェア](public/software.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
-      * ドメイン駆動設計
-        * [📚 ︎ドメイン駆動設計](public/software_application_backend_architecture_domain_driven_design.md)
-        * [📚 ︎クリーンアーキテクチャ](public/software_application_backend_architecture_domain_driven_design_clean_architecture.md)
-        * [📚 ︎CQRS](public/software_application_backend_architecture_cqrs.md)
-      * [📚 ︎フロントエンドアーキテクチャ](public/software_application_frontend_architecture.md)
-      * [📚 ︎マイクロサービスアーキテクチャ](public/software_application_frontend_and_backend_architecture_microservice.md)
-    * PHP
-      * クラスベースオブジェクト指向
-        * [📚 ︎オブジェクト指向分析／設計／プログラミング](public/software_application_backend_php_object_orientation_analysis_design_programming.md)
-        * [📚 ︎クラス](public/software_application_backend_php_object_orientation_class.md)
-        * [📚 ︎メソッド／データ](public/software_application_backend_php_object_orientation_method_data.md)
-        * [📚 ︎データ構造](public/software_application_backend_php_object_orientation_data_structure.md)
-      * ロジック
-        * [📚 ︎バックエンド側の検証ロジック](public/software_application_backend_php_logic_validation.md)
-        * [📚 ︎エラーとエラーハンドリング](public/software_application_backend_php_logic_error_and_error_handling.md)
-        * [📚 ︎反復ロジック](public/software_application_backend_php_logic_iteration.md)
-        * [📚 ︎アルゴリズム](public/software_application_backend_php_logic_algorithm.md)
-      * パッケージ／フレームワーク
-        * [📚 ︎パッケージ](public/software_application_backend_php_package.md)
-        * [📚 ︎Symfony](public/software_application_backend_php_framework_symfony.md)
-        * [📚 ︎Laravel](public/software_application_backend_php_framework_laravel.md)
-      * テスト
-        * [📚 ︎テスト](public/software_application_backend_php_testing.md)
-        * [📚 ︎コードベースのテスト](public/software_application_backend_php_testing_based_on_code.md)
-        * [📚 ︎テスト仕様書ベースのテスト](public/software_application_backend_php_testing_based_on_test_specification.md)
-      * デバッグ
+        * バックエンドアーキテクチャ
+          * [📚 ︎ドメイン駆動設計](public/software_application_backend_architecture_domain_driven_design.md)
+          * [📚 ︎クリーンアーキテクチャ](public/software_application_backend_architecture_domain_driven_design_clean_architecture.md)
+          * [📚 ︎CQRS](public/software_application_backend_architecture_cqrs.md)
+        * [📚 ︎フロントエンドアーキテクチャ](public/software_application_frontend_architecture.md)
+        * [📚 ︎マイクロサービスアーキテクチャ](public/software_application_frontend_and_backend_architecture_microservice.md)
+    * バックエンド 
+      * PHP
+        * クラスベースオブジェクト指向
+          * [📚 ︎オブジェクト指向分析／設計／プログラミング](public/software_application_backend_php_object_orientation_analysis_design_programming.md)
+          * [📚 ︎クラス](public/software_application_backend_php_object_orientation_class.md)
+          * [📚 ︎メソッド／データ](public/software_application_backend_php_object_orientation_method_data.md)
+          * [📚 ︎データ構造](public/software_application_backend_php_object_orientation_data_structure.md)
+        * ロジック
+          * [📚 ︎バックエンド側の検証ロジック](public/software_application_backend_php_logic_validation.md)
+          * [📚 ︎エラーとエラーハンドリング](public/software_application_backend_php_logic_error_and_error_handling.md)
+          * [📚 ︎反復ロジック](public/software_application_backend_php_logic_iteration.md)
+          * [📚 ︎アルゴリズム](public/software_application_backend_php_logic_algorithm.md)
+        * パッケージ／フレームワーク
+          * [📚 ︎パッケージ](public/software_application_backend_php_package.md)
+          * [📚 ︎Symfony](public/software_application_backend_php_framework_symfony.md)
+          * [📚 ︎Laravel](public/software_application_backend_php_framework_laravel.md)
+        * テスト
+          * [📚 ︎テスト](public/software_application_backend_php_testing.md)
+          * [📚 ︎コードベースのテスト](public/software_application_backend_php_testing_based_on_code.md)
+          * [📚 ︎テスト仕様書ベースのテスト](public/software_application_backend_php_testing_based_on_test_specification.md)
+        * デバッグ
         * [📚 ︎デバッグのコツ](public/software_application_backend_php_debug.md)
-    * Go
-      * [📚 Goとは](public/software_application_backend_go.md)
-      * ロジック
-        * [📚 文法](public/software_application_backend_go_logic.md)
-      * パッケージ／フレームワーク
-        * [📚 パッケージ](public/software_application_backend_go_package.md)
-        * [📚 Gin](public/software_application_backend_go_framework_gin.md)
-    * JavaScript
-      * プロトタイプベースオブジェクト指向
-        * [📚 ︎プロトタイプ](public/software_application_frontend_js_object_orientation_prototype.md)
-        * [📚 ︎メソッド／データ](public/software_application_frontend_js_object_orientation_method_data.md)
-      * ロジック
-        * [📚 ︎フロントエンド側の検証ロジック](public/software_application_frontend_js_logic_validation.md)
-      * パッケージ／フレームワーク
-        * [📚 ︎パッケージ](public/software_application_frontend_js_package.md)
-        * [📚 ︎Vue.js](public/software_application_frontend_js_framework_vuejs.md)
-        * [📚 ︎Nuxt.js](public/software_application_frontend_js_framework_nuxtjs.md)
-      * デバッグ
-        * [📚 ︎デバッグのコツ](public/software_application_frontend_js_debug.md)
-    * フロントバック間の連携
+      * Go
+        * [📚 Goとは](public/software_application_backend_go.md)
+        * ロジック
+          * [📚 文法](public/software_application_backend_go_logic.md)
+        * パッケージ／フレームワーク
+          * [📚 パッケージ](public/software_application_backend_go_package.md)
+          * [📚 Gin](public/software_application_backend_go_framework_gin.md)
+    * フロントエンド 
+      * JavaScript
+        * プロトタイプベースオブジェクト指向
+          * [📚 ︎プロトタイプ](public/software_application_frontend_js_object_orientation_prototype.md)
+          * [📚 ︎メソッド／データ](public/software_application_frontend_js_object_orientation_method_data.md)
+        * ロジック
+          * [📚 ︎フロントエンド側の検証ロジック](public/software_application_frontend_js_logic_validation.md)
+        * パッケージ／フレームワーク
+          * [📚 ︎パッケージ](public/software_application_frontend_js_package.md)
+          * [📚 ︎Vue.js](public/software_application_frontend_js_framework_vuejs.md)
+          * [📚 ︎Nuxt.js](public/software_application_frontend_js_framework_nuxtjs.md)
+        * デバッグ
+          * [📚 ︎デバッグのコツ](public/software_application_frontend_js_debug.md)
+    * フロントとバック間の連携
       * [📚 ︎RESTful-API](public/software_application_frontend_and_backend_api_restful.md)
       * [📚 ︎認証／認可](public/software_application_frontend_and_backend_authentication_authorization.md)
       * [📚 ︎JSON](public/software_application_frontend_and_backend_json.md)
