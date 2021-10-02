@@ -77,26 +77,26 @@
     * [📚 ︎通信データの暗号化技術](public/network_encryption_technology.md)
 * クラウドインフラストラクチャ
   * [📚 ︎クラウドコンピューティング](public/cloud_computing.md)
-    * AWS
-      * [📚 ︎Amazon Web Service](public/cloud_computing_aws.md)
-      * [📚 ︎API Gatewayインポート機能](public/cloud_computing_aws_api_gateway_import.md)
-      * [📚 ︎Lambda関数](public/cloud_computing_aws_lambda_function.md)
-    * GCP
-      * [📚 ︎Google Cloud Platform](public/cloud_computing_gcp.md)
+  * AWS
+    * [📚 ︎Amazon Web Service](public/cloud_computing_aws.md)
+    * [📚 ︎API Gatewayインポート機能](public/cloud_computing_aws_api_gateway_import.md)
+    * [📚 ︎Lambda関数](public/cloud_computing_aws_lambda_function.md)
+  * GCP
+    * [📚 ︎Google Cloud Platform](public/cloud_computing_gcp.md)
 * Infrastructure as Code
   * [📚 ︎Infrastructure as Code](public/infrastructure_as_code.md)
   * [📚 ︎Terraform](public/infrastructure_as_code_terraform.md)
 * 仮想化技術
   * [📚 ︎仮想化技術](public/virtualization.md)
-    * コンテナ
-      * [📚 ︎コンテナ](public/virtualization_container.md)
-      * コンテナオーケストレーション
-        * [📚 ︎コンテナオーケストレーション](public/virtualization_container_orchestration.md)
-        * [📚 ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
-        * [📚 ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
-        * [📚 ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
-    * サーバ
-      * [📚 ︎仮想サーバ（仮想マシン）](public/virtualization_server.md)
+  * コンテナ
+    * [📚 ︎コンテナ](public/virtualization_container.md)
+    * コンテナオーケストレーション
+      * [📚 ︎コンテナオーケストレーション](public/virtualization_container_orchestration.md)
+      * [📚 ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
+      * [📚 ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
+      * [📚 ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
+  * サーバ
+    * [📚 ︎仮想サーバ（仮想マシン）](public/virtualization_server.md)
 * CI／CD
   * [📚 ︎CI／CD](public/ci_cd.md)
   * [📚 ︎CircleCI](public/ci_cd_circleci.md)
