@@ -57,8 +57,8 @@
         * [📚 ︎デバッグのコツ](public/software_application_frontend_js_debug.md)
   * ミドルウェア
     * Web関連
-      * [📚 ︎Nginx](public/software_middleware_nginx.md)
-      * [📚 ︎Apache](public/software_middleware_apache.md)
+      * [📚 ︎Nginx](public/software_middleware_web_nginx.md)
+      * [📚 ︎Apache](public/software_middleware_web_apache.md)
     * データベース関連
       * [📚 ︎データベース](public/software_middleware_database.md)
       * [📚 My︎SQL](public/software_middleware_database_mysql.md)
