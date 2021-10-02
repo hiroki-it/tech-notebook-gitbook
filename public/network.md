@@ -1,10 +1,10 @@
-# ネットワークの構造
+# ネットワーク
 
 ## はじめに
 
 本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
-https://hiroki-it.github.io/tech-notebook-gitbook/
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
