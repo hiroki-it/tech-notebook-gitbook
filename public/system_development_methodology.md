@@ -8,7 +8,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 01. システムの開発手法の種類
+## 01. システム開発手法の種類
 
 ### システム開発の要素
 
