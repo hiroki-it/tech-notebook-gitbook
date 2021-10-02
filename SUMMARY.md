@@ -93,10 +93,11 @@
   * [▶ ︎仮想化技術](public/virtualization.md)
     * コンテナ
       * [▶ ︎コンテナ](public/virtualization_container.md)
-      * [▶ ︎コンテナオーケストレーション](public/virtualization_container_orchestration.md)
-      * [▶ ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
-      * [▶ ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
-      * [▶ ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
+      * コンテナオーケストレーション
+        * [▶ ︎コンテナオーケストレーション](public/virtualization_container_orchestration.md)
+        * [▶ ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
+        * [▶ ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
+        * [▶ ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
     * サーバ
       * [▶ ︎仮想サーバ（仮想マシン）](public/virtualization_server.md)
 * CI／CD
