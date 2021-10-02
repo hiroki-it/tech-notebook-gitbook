@@ -105,7 +105,7 @@
       * [📖 ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
       * [📖 ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
       * [📖 ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
-  * ︎仮想サーバ仮想マシン）
+  * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization_server.md)
 
 * CI／CD
