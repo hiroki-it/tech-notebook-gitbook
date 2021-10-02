@@ -1,4 +1,4 @@
-# Authenticate（認証）とAuthorization（認可）
+# Authenticate（認証）／Authorization（認可）
 
 ## はじめに
 

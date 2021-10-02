@@ -94,11 +94,11 @@ Google Drive，Dropbox
 
 #### ・Apache
 
-Apacheのノートを参照．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_apache.html
 
 #### ・Nginx
 
-Nginxのノートを参照．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_nginx.html
 
 <br>
 
@@ -106,7 +106,7 @@ Nginxのノートを参照．
 
 #### ・Apacheの拡張モジュール
 
-mod_phpという拡張モジュールを読み込むことによって，Apacheを，WebサーバだけでなくAppサーバのミドルウェアとしても機能させることができる．
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_apache.html
 
 #### ・PHP-FPM：PHP FastCGI Process Manager
 
@@ -180,7 +180,7 @@ MS-DOSを源流として派生したOS．今では，全ての派生がWindows 1
 
 OSとバージョンが```/etc/issue```ファイルに記載されている．
 
-```sh
+```bash
 $ cat /etc/issue
 Debian GNU/Linux 10 \n \l
 ```
@@ -209,7 +209,7 @@ Slackware
 
 環境変数を確認する．全ての項目は，実際に実行して確認すること．
 
-```shell
+```bash
 $ export -p
 
 export EDITOR=vim
@@ -279,48 +279,8 @@ Windows 8以降で採用されている新しいFirmware
 
     
 
-### OSSの種類
+### 種類
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)
 
 引用：https://openstandia.jp/oss_info/
-
-#### ・OS
-
-  CentOS，Linux，Unix，Ubuntu
-
-#### ・データベース
-
-  MySQL，MariaDB
-
-#### ・プログラミング言語
-
-  言うまでもない．
-
-#### ・フレームワーク
-
-  言うまでもない．
-
-#### ・OR Mapper
-
-  言うまでもない．
-
-#### ・バージョン管理
-
-  Git，Subversion
-
-#### ・Webサーバ
-
-  Apache
-
-#### ・業務システム
-
-  Redmine
-
-#### ・インフラ構築
-
-  Chef，Puppet
-
-#### ・クラウド構築
-
-  Docker

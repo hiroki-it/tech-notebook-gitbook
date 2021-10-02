@@ -22,7 +22,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-### よく使うコマンド
+### コマンド
 
 #### ・ディレクティブの実装場所の一覧
 
@@ -102,6 +102,12 @@ $ sudo apachectl graceful
 ### Webサーバのミドルウェアとして
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
+
+<br>
+
+### Appサーバのミドルウェアとして
+
+mod_phpモジュールを読み込むことによって，Appサーバのミドルウェアとしても機能させることができる．
 
 <br>
 
