@@ -83,7 +83,7 @@
       * [📖 ︎サイバー攻撃](public/network_cyber_attacks.md)
       * [📖 ︎通信データの暗号化技術](public/network_encryption_technology.md)
 
-* クラウドインフラストラクチャ
+* ︎クラウドコンピューティング
   * [📖 ︎クラウドコンピューティング](public/cloud_computing.md)
   * AWS
     * [📖 ︎AWS](public/cloud_computing_aws.md)
@@ -105,7 +105,7 @@
       * [📖 ︎Docker Compose](public/virtualization_container_orchestration_docker_compose.md)
       * [📖 ︎Kubernetes](public/virtualization_container_orchestration_kubernetes.md)
       * [📖 ︎Docker Swarm](public/virtualization_container_orchestration_docker_swarm.md)
-  * サーバ
+  * ︎仮想サーバ仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization_server.md)
 
 * CI／CD
