@@ -35,6 +35,7 @@
       * デバッグ
         * [📚 ︎デバッグのコツ](public/software_application_backend_php_debug.md)
     * Go
+      * [📚 Goとは](public/software_application_backend_go.md)
       * ロジック
         * [📚 文法](public/software_application_backend_go_logic.md)
       * パッケージ／フレームワーク
