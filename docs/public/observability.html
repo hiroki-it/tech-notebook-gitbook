@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎GitHub · 僕のドキュメントサイト【GitBook版】</title>
+        <title>📖 ︎可観測性 · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="system_development_methodology_git_command.html" />
+    <link rel="next" href="observability_fluentd_and_fluentbit.html" />
     
     
 
@@ -1700,7 +1700,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="observability.html">
+        <li class="chapter active" data-level="1.10.1" data-path="observability.html">
             
                 <a href="observability.html">
             
@@ -1798,7 +1798,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.11.3.1" data-path="system_development_methodology_github.html">
+        <li class="chapter " data-level="1.11.3.1" data-path="system_development_methodology_github.html">
             
                 <a href="system_development_methodology_github.html">
             
@@ -1896,7 +1896,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >📖 ︎GitHub</a>
+        <a href=".." >📖 ︎可観測性</a>
     </h1>
 </div>
 
@@ -1911,90 +1911,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="github"><a name="github" class="plugin-anchor" href="#github"><i class="fa fa-link" aria-hidden="true"></i></a>GitHub</h1>
-<h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
-<p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
+                                <h1 id="&#x53EF;&#x89B3;&#x6E2C;&#x6027;"><a name="&#x53EF;&#x89B3;&#x6E2C;&#x6027;" class="plugin-anchor" href="#&#x53EF;&#x89B3;&#x6E2C;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53EF;&#x89B3;&#x6E2C;&#x6027;</h1>
+<h2 id="01-&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3068;&#x306F;"><a name="01-&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3068;&#x306F;" class="plugin-anchor" href="#01-&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3068;&#x306F;</h2>
 <p><br></p>
-<h2 id="&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;"><a name="&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;" class="plugin-anchor" href="#&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;</h2>
-<h3 id="&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x914D;&#x7F6E;"><a name="&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x914D;&#x7F6E;" class="plugin-anchor" href="#&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x914D;&#x7F6E;</h3>
-<p>&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x76F4;&#x4E0B;&#x306B;<code>.github</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x914D;&#x7F6E;&#x3057;&#xFF0C;<code>ISSUE_TEMPLATE.md</code>&#x3084;<code>PULL_REQUEST_TEMPLATE.md</code>&#x306E;&#x540D;&#x524D;&#x3067;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#xFF0E;Issue&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306B;&#x95A2;&#x3057;&#x3066;&#xFF0C;&#x4EE3;&#x308F;&#x308A;&#x306B;<code>ISSUE_TEMPLATE</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x7F6E;&#x304D;&#xFF0C;&#x4EFB;&#x610F;&#x306E;&#x540D;&#x524D;&#x306E;md&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x3068;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://qiita.com/nyamogera/items/3fe6985b45fbd5377184" target="_blank">https://qiita.com/nyamogera/items/3fe6985b45fbd5377184</a></p>
-<pre class="language-"><code>project/
-&#x2514;&#x2500;&#x2500; .github
-    &#x251C;&#x2500;&#x2500; ISSUE_TEMPLATE.md
-    &#x2514;&#x2500;&#x2500; PULL_REQUEST_TEMPLATE.md
-</code></pre><pre class="language-"><code>project/
-&#x2514;&#x2500;&#x2500; .github
-    &#x251C;&#x2500;&#x2500; ISSUE_TEMPLATE
-    |   &#x251C;&#x2500;&#x2500; FIX.md
-    |   &#x2514;&#x2500;&#x2500; UPDATE.md
-    |
-    &#x2514;&#x2500;&#x2500; PULL_REQUEST_TEMPLATE.md
-</code></pre><p><br></p>
-<h3 id="issue"><a name="issue" class="plugin-anchor" href="#issue"><i class="fa fa-link" aria-hidden="true"></i></a>Issue</h3>
-<h4 id="&#x30FB;issue&#x306E;&#x5206;&#x5272;"><a name="&#x30FB;issue&#x306E;&#x5206;&#x5272;" class="plugin-anchor" href="#&#x30FB;issue&#x306E;&#x5206;&#x5272;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Issue&#x306E;&#x5206;&#x5272;</h4>
-<p>&#x4E00;&#x3064;&#x306E;Issue&#x3068;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306B;&#x305F;&#x304F;&#x3055;&#x3093;&#x306E;&#x5B9F;&#x88C5;&#x3092;Commit&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x671B;&#x307E;&#x3057;&#x304F;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x5927;&#x304D;&#x306A;&#x5BFE;&#x5FDC;&#x3092;&#x500B;&#x3005;&#x306E;&#x5BFE;&#x5FDC;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#xFF0E;&#x305D;&#x3057;&#x3066;&#xFF0C;&#x5927;&#x304D;&#x306A;&#x5BFE;&#x5FDC;&#x306B;&#x95A2;&#x3059;&#x308B;&#x57FA;&#x70B9;Issue&#x3068;&#x57FA;&#x70B9;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x500B;&#x3005;&#x306E;&#x5BFE;&#x5FDC;&#x306B;&#x95A2;&#x9023;&#x3059;&#x308B;&#x5B50;Issue&#x3068;&#x5B50;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;&#x500B;&#x5225;&#x306E;&#x5BFE;&#x5FDC;&#x304C;&#x7D42;&#x308F;&#x3063;&#x305F;&#x3089;&#xFF0C;&#x89AA;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3078;&#x30DE;&#x30FC;&#x30B8;&#x3057;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;"><a name="&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;</h4>
-<p>&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306F;&#x300E;&#x3007;&#x3007;&#x3059;&#x308B;&#xFF0E;&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x53E5;&#x8AAD;&#x70B9;&#x306E;&#x6709;&#x7121;&#x306F;&#x597D;&#x307F;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x5185;&#x5BB9;"><a name="&#x30FB;&#x5185;&#x5BB9;" class="plugin-anchor" href="#&#x30FB;&#x5185;&#x5BB9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5185;&#x5BB9;</h4>
-<p>&#x5185;&#x5BB9;&#x306F;&#x300E;&#x80CC;&#x666F;&#x300F;&#x3068;&#x300E;&#x5BFE;&#x5FDC;&#x65B9;&#x91DD;&#x300F;&#x3055;&#x3048;&#x4F1D;&#x308F;&#x308C;&#x3070;&#xFF0C;&#x6587;&#x8A00;&#x81EA;&#x4F53;&#x306F;&#x305D;&#x306E;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-markdown"><span class="token title important"><span class="token punctuation">#</span> &#x80CC;&#x666F;</span>
-<span class="token comment">&lt;!-- Issue&#x4F5C;&#x6210;&#x306E;&#x7406;&#x7531;&#x306B;&#x306A;&#x3063;&#x305F;&#x8981;&#x671B;&#x3084;&#x30D0;&#x30B0;&#x3092;&#x8A18;&#x8F09;&#x3059;&#x308B; --&gt;</span>
-<span class="token comment">&lt;!-- &#x95A2;&#x9023;&#x3059;&#x308B;Issue&#x3084;PullReq&#x304C;&#x3042;&#x308C;&#x3070;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x5171;&#x6709;&#x3059;&#x308B; --&gt;</span>
-
-
-<span class="token title important"><span class="token punctuation">#</span> &#x5BFE;&#x5FDC;&#x65B9;&#x91DD;</span>
-<span class="token comment">&lt;!-- &#x3069;&#x306E;&#x3088;&#x3046;&#x306A;&#x65B9;&#x6CD5;&#x3067;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x4E88;&#x5B9A;&#x306A;&#x306E;&#x304B;&#x3092;&#x7B87;&#x6761;&#x66F8;&#x304D;&#x3067;&#x8A18;&#x8F09;&#x3059;&#x308B; --&gt;</span>
-<span class="token comment">&lt;!-- &#x65B9;&#x6CD5;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x3084;&#x6280;&#x8853;&#x8A18;&#x4E8B;&#x304C;&#x3042;&#x308C;&#x3070;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x5171;&#x6709;&#x3059;&#x308B; --&gt;</span>
-</code></pre>
+<h3 id="&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;"><a name="&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;" class="plugin-anchor" href="#&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;&#x3068;&#x306F;</h4>
+<p>&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x30C4;&#x30FC;&#x30EB;&#x306B;&#x6C42;&#x3081;&#x3089;&#x308C;&#x308B;&#x76E3;&#x8996;&#x5BFE;&#x8C61;&#x306E;&#x8981;&#x7D20;&#xFF08;&#x300E;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x300F;&#x300E;&#x30ED;&#x30B0;&#x300F;&#x300E;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x300F;&#xFF09;&#x306E;&#x3053;&#x3068;&#xFF0E;NewRelic&#x3084;Datadog&#x306F;&#x3053;&#x308C;&#x3089;&#x306E;&#x8981;&#x7D20;&#x3092;&#x6301;&#x3064;&#xFF0E;&#x307E;&#x305F;&#xFF0C;AWS&#x3067;&#x306F;CloudWatch&#xFF08;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#xFF0B;&#x30ED;&#x30B0;&#xFF09;&#x3068;X-Ray&#xFF08;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#xFF09;&#x3092;&#x4E21;&#x65B9;&#x5229;&#x7528;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x8981;&#x7D20;&#x3092;&#x6E80;&#x305F;&#x305B;&#x305F;&#x3053;&#x3068;&#x306B;&#x306A;&#x308A;&#xFF0C;&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3092;&#x5B9F;&#x73FE;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/" target="_blank">https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/26395/" target="_blank">https://knowledge.sakura.ad.jp/26395/</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x30C6;&#x30EC;&#x30E1;&#x30C8;&#x30EA;&#x30FC;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x88DC;&#x8DB3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x30ED;&#x30B0;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;</td>
+<td>&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x5404;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3067;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x751F;&#x3057;&#x305F;&#x6642;&#xFF0C;&#x4E00;&#x9023;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x56E0;&#x679C;&#x95A2;&#x4FC2;&#x3068;&#x3057;&#x3066;&#x7E4B;&#x3052;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<h3 id="pullreq"><a name="pullreq" class="plugin-anchor" href="#pullreq"><i class="fa fa-link" aria-hidden="true"></i></a>PullReq</h3>
-<h4 id="&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;"><a name="&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30BF;&#x30A4;&#x30C8;&#x30EB;</h4>
-<p>&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306F;&#x300E;&#x3007;&#x3007;&#x3057;&#x305F;&#xFF0E;&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x53E5;&#x8AAD;&#x70B9;&#x306E;&#x6709;&#x7121;&#x306F;&#x597D;&#x307F;&#xFF0E;</p>
-<h4 id="&#x30FB;wip"><a name="&#x30FB;wip" class="plugin-anchor" href="#&#x30FB;wip"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;WIP</h4>
-<p>&#x5B9F;&#x88C5;&#x9014;&#x4E2D;&#x306E;PullReq&#x3067;&#x3042;&#x308A;&#xFF0C;&#x5B9F;&#x88C5;&#x65B9;&#x6CD5;&#x306A;&#x3069;&#x3092;&#x8CEA;&#x554F;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#x306B;&#x300E;WIP&#x300F;&#x3068;&#x3064;&#x3051;&#x3066;&#x304A;&#x304F;&#xFF0E;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x3057;&#x3066;&#x3082;&#x3089;&#x3044;&#x305F;&#x304F;&#x306A;&#x3063;&#x305F;&#x3089;&#xFF0C;&#x3053;&#x308C;&#x3092;&#x306F;&#x305A;&#x3059;&#xFF0E;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x4FEE;&#x6B63;&#x6642;&#x306B;&#xFF0C;&#x5B9F;&#x88C5;&#x306B;&#x6642;&#x9593;&#x304C;&#x304B;&#x304B;&#x308A;&#x305D;&#x3046;&#x3067;&#x3042;&#x3063;&#x305F;&#x3089;&#xFF0C;&#x518D;&#x3073;&#x4ED8;&#x3051;&#x3066;&#x3082;&#x826F;&#x3044;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x5185;&#x5BB9;"><a name="&#x30FB;&#x5185;&#x5BB9;" class="plugin-anchor" href="#&#x30FB;&#x5185;&#x5BB9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5185;&#x5BB9;</h4>
-<p>&#x5185;&#x5BB9;&#x306F;&#x300E;&#x5BFE;&#x5FDC;&#x5185;&#x5BB9;&#x300F;&#x3068;&#x300E;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x3057;&#x3066;&#x307B;&#x3057;&#x3044;&#x3068;&#x3053;&#x308D;&#x300F;&#x3055;&#x3048;&#x4F1D;&#x308F;&#x308C;&#x3070;&#xFF0C;&#x6587;&#x8A00;&#x81EA;&#x4F53;&#x306F;&#x305D;&#x306E;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x30EB;&#x30FC;&#x30EB;&#x306B;&#x5408;&#x308F;&#x305B;&#x308B;&#xFF0E;&#x3082;&#x3057;&#xFF0C;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x671F;&#x9650;&#x3084;&#x52D5;&#x4F5C;&#x78BA;&#x8A8D;&#x624B;&#x9806;&#x3092;&#x77E5;&#x3089;&#x305B;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308C;&#x3070;&#x300E;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x671F;&#x9650;&#x300F;&#x300E;&#x78BA;&#x8A8D;&#x624B;&#x9806;&#x300F;&#x306E;&#x9805;&#x76EE;&#x3092;&#x8A2D;&#x3051;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-markdown"><span class="token title important"><span class="token punctuation">#</span> &#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x4E88;&#x5B9A;&#x65E5;</span>
-<span class="token comment">&lt;!-- &#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x4E88;&#x5B9A;&#x65E5;&#x3092;&#x8A18;&#x8F09;&#x3059;&#x308B; --&gt;</span>
-
-
-<span class="token title important"><span class="token punctuation">#</span> &#x5BFE;&#x5FDC;&#x5185;&#x5BB9;</span>
-<span class="token comment">&lt;!-- &#x3069;&#x306E;&#x3088;&#x3046;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x305F;&#x306E;&#x304B;&#x7B87;&#x6761;&#x66F8;&#x304D;&#x3067;&#x8A18;&#x8F09;&#x3059;&#x308B; --&gt;</span>
-<span class="token comment">&lt;!-- &#x95A2;&#x9023;&#x3059;&#x308B;Issue&#x3084;PullReq&#x304C;&#x3042;&#x308C;&#x3070;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x5171;&#x6709;&#x3059;&#x308B; --&gt;</span>
-
-
-<span class="token title important"><span class="token punctuation">#</span> &#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x3057;&#x3066;&#x3044;&#x305F;&#x3060;&#x304D;&#x305F;&#x3044;&#x3068;&#x3053;&#x308D;</span>
-<span class="token comment">&lt;!-- &#x5BFE;&#x5FDC;&#x5185;&#x5BB9;&#x306E;&#x4E2D;&#x3067;&#x9069;&#x5207;&#x304B;&#x3069;&#x3046;&#x304B;&#x304C;&#x4E0D;&#x5B89;&#x306A;&#x3082;&#x306E;&#x3092;&#x8A18;&#x8F09;&#x3059;&#x308B; --&gt;</span>
-</code></pre>
+<h3 id="&#x76E3;&#x8996;"><a name="&#x76E3;&#x8996;" class="plugin-anchor" href="#&#x76E3;&#x8996;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x76E3;&#x8996;</h3>
+<h4 id="&#x30FB;&#x76E3;&#x8996;&#x3068;&#x306F;"><a name="&#x30FB;&#x76E3;&#x8996;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x76E3;&#x8996;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x76E3;&#x8996;&#x3068;&#x306F;</h4>
+<p>&#x53EF;&#x89B3;&#x6E2C;&#x6027;&#x3092;&#x5B9F;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x624B;&#x6BB5;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
+<h4 id="&#x30FB;&#x76E3;&#x8996;&#x306E;&#x7A2E;&#x985E;"><a name="&#x30FB;&#x76E3;&#x8996;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30FB;&#x76E3;&#x8996;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x76E3;&#x8996;&#x306E;&#x7A2E;&#x985E;</h4>
+<p>&#x76E3;&#x8996;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x7A2E;&#x985E;&#x306B;&#x5927;&#x5225;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5916;&#x90E8;&#x76E3;&#x8996;</td>
+<td>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5916;&#x90E8;&#x304B;&#x3089;&#x306E;&#x6B7B;&#x6D3B;&#x76E3;&#x8996;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#xFF0C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306B;&#x95A2;&#x3057;&#x3066;&#xFF0C;&#x3042;&#x3089;&#x3086;&#x308B;&#x60C5;&#x5831;&#x3092;&#x76E3;&#x8996;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x5185;&#x90E8;&#x76E3;&#x8996;</td>
+<td>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x90E8;&#x304B;&#x3089;&#x306E;&#x6B7B;&#x6D3B;&#x76E3;&#x8996;&#xFF0E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x304B;&#x3089;&#x306F;&#x308F;&#x304B;&#x3089;&#x306A;&#x3044;&#x3042;&#x3089;&#x3086;&#x308B;&#x60C5;&#x5831;&#x3092;&#x76E3;&#x8996;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x5408;&#x6210;&#x76E3;&#x8996;</td>
+<td>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x5B9F;&#x969B;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x6A21;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x9001;&#x4FE1;&#x3057;&#xFF0C;&#x5916;&#x90E8;&#x76E3;&#x8996;&#x3068;&#x5185;&#x90E8;&#x76E3;&#x8996;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x6A21;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x3068;&#x3044;&#x3046;&#x610F;&#x5473;&#x5408;&#x3044;&#x3067;&#xFF0C;&#x300E;&#x5408;&#x6210;&#x300F;&#x3068;&#x3044;&#x3046;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#xFF14;&#x5927;&#x30B7;&#x30B0;&#x30CA;&#x30EB;"><a name="&#x30FB;&#xFF14;&#x5927;&#x30B7;&#x30B0;&#x30CA;&#x30EB;" class="plugin-anchor" href="#&#x30FB;&#xFF14;&#x5927;&#x30B7;&#x30B0;&#x30CA;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#xFF14;&#x5927;&#x30B7;&#x30B0;&#x30CA;&#x30EB;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x7A2E;&#x985E;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;</td>
+<td>&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html</a></td>
+</tr>
+<tr>
+<td>&#x30C8;&#x30E9;&#x30D5;&#x30A3;&#x30C3;&#x30AF;</td>
+<td>&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;<br>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html</a></td>
+</tr>
+<tr>
+<td>&#x30A8;&#x30E9;&#x30FC;</td>
+<td>&#x4EE5;&#x4E0B;&#x306E;&#xFF12;&#x7A2E;&#x985E;&#x306B;&#x5206;&#x985E;&#x3067;&#x304D;&#x308B;&#xFF0E;<br>&#x30FB;&#x660E;&#x793A;&#x7684;&#x30A8;&#x30E9;&#x30FC;&#xFF1A;400/500&#x7CFB;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;<br>&#x30FB;&#x6697;&#x9ED9;&#x7684;&#x30A8;&#x30E9;&#x30FC;&#xFF1A;SLO&#x306B;&#x6E80;&#x305F;&#x306A;&#x3044;200/300&#x7CFB;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#xFF0C;API&#x4ED5;&#x69D8;&#x306B;&#x5408;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</td>
+</tr>
+<tr>
+<td>&#x30B5;&#x30C1;&#x30E5;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</td>
+<td>&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5229;&#x7528;&#x7387;&#x306E;&#x98FD;&#x548C;&#x5EA6;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x98FD;&#x548C;&#x5EA6;&#x304C;&#x3042;&#x308B;&#xFF0E;60&#xFF5E;70%&#x3067;&#xFF0C;&#x8B66;&#x544A;&#x30E9;&#x30A4;&#x30F3;&#x3092;&#x8A2D;&#x3051;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;<br>&#x30FB;CPU&#x5229;&#x7528;&#x7387;<br>&#x30FB;&#x30E1;&#x30E2;&#x30EA;&#x5229;&#x7528;&#x7387;<br>&#x30FB;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x5229;&#x7528;&#x7387;<br></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<h2 id="&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x306E;&#x65B9;&#x6CD5;"><a name="&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x306E;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x306E;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x306E;&#x65B9;&#x6CD5;</h2>
-<h3 id="&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x89B3;&#x70B9;"><a name="&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x89B3;&#x70B9;" class="plugin-anchor" href="#&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x89B3;&#x70B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x89B3;&#x70B9;</h3>
-<h4 id="&#x30FB;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3084;&#x4ED5;&#x69D8;&#x901A;&#x308A;&#x304B;"><a name="&#x30FB;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3084;&#x4ED5;&#x69D8;&#x901A;&#x308A;&#x304B;" class="plugin-anchor" href="#&#x30FB;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3084;&#x4ED5;&#x69D8;&#x901A;&#x308A;&#x304B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3084;&#x4ED5;&#x69D8;&#x901A;&#x308A;&#x304B;</h4>
-<p>&#x5B9F;&#x88C5;&#x306E;&#x6761;&#x4EF6;&#x6587;&#x3084;&#xFF0C;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x304B;&#x3089;&#xFF0C;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x3084;&#x4ED5;&#x69D8;&#x3092;&#x7406;&#x89E3;&#x3059;&#x308B;&#xFF0E;</p>
-<ol>
-<li>&#x6761;&#x4EF6;&#x6587;&#x3067;<code>var_dump()</code> &#x3092;&#x884C;&#x3046;&#xFF0E;</li>
-<li>&#x3069;&#x3046;&#x3044;&#x3063;&#x305F;&#x5165;&#x529B;&#x304C;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;<code>true</code> &#x3068;&#x3057;&#x3066;&#x5224;&#x65AD;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#xFF0E;&#x4F8B;&#x3048;&#x3070;&#xFF0C;&#x53D7;&#x6CE8;&#x6E08;&#x533A;&#x5206;&#x5024;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x306B;&#xFF0C;&#x305D;&#x308C;&#x304C;&#x5931;&#x6CE8;&#x533A;&#x5206;&#x5024;&#x306B;&#x5909;&#x308F;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#xFF0C;&#x5024;&#x3092;&#x8FD4;&#x5374;&#x3057;&#x3066;&#x3044;&#x308B;&#x306A;&#x3089;&#x3070;&#xFF0C;&#x305D;&#x3053;&#x304B;&#x3089;&#xFF0C;&#x300E;&#x5931;&#x6CE8;&#x300F;&#x306E;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30EB;&#x30FC;&#x30EB;&#x304C;&#x57A3;&#x9593;&#x898B;&#x3048;&#x308B;&#xFF0E;</li>
-<li>&#x5B9A;&#x6570;&#x306B;&#x6DFB;&#x3048;&#x3089;&#x308C;&#x305F;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x304B;&#x3089;&#xFF0C;&#x4ED5;&#x69D8;&#x3092;&#x7406;&#x89E3;&#xFF0E;</li>
-</ol>
-<h4 id="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x9069;&#x5207;&#x304B;"><a name="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x9069;&#x5207;&#x304B;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x9069;&#x5207;&#x304B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x9069;&#x5207;&#x304B;</h4>
-<p><code>empty()</code> &#xFF0C;<code>isset()</code> &#x306A;&#x3069;&#x3092;&#x6B63;&#x3057;&#x304F;&#x533A;&#x5225;&#x3057;&#x3066;&#x4F7F;&#x3048;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;</p>
-<h4 id="&#x30FB;&#x5197;&#x9577;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x304B;"><a name="&#x30FB;&#x5197;&#x9577;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x304B;" class="plugin-anchor" href="#&#x30FB;&#x5197;&#x9577;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x304B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5197;&#x9577;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x304B;</h4>
-<p>&#x91CD;&#x8907;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;<code>foreach()</code>&#x306B;&#x307E;&#x3068;&#x3081;&#x3089;&#x308C;&#x306A;&#x3044;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;&#x5909;&#x6570;&#x306E;&#x683C;&#x7D0D;&#x304C;&#x91CD;&#x8907;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#xFF0E;</p>
+<h2 id="02-&#x610F;&#x601D;&#x6C7A;&#x5B9A;&#x306E;&#x57FA;&#x6E96;&#x3068;&#x306A;&#x308B;&#x6307;&#x6A19;"><a name="02-&#x610F;&#x601D;&#x6C7A;&#x5B9A;&#x306E;&#x57FA;&#x6E96;&#x3068;&#x306A;&#x308B;&#x6307;&#x6A19;" class="plugin-anchor" href="#02-&#x610F;&#x601D;&#x6C7A;&#x5B9A;&#x306E;&#x57FA;&#x6E96;&#x3068;&#x306A;&#x308B;&#x6307;&#x6A19;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x610F;&#x601D;&#x6C7A;&#x5B9A;&#x306E;&#x57FA;&#x6E96;&#x3068;&#x306A;&#x308B;&#x6307;&#x6A19;</h2>
+<h3 id="sli&#xFF0C;slo&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30D0;&#x30B8;&#x30A7;&#x30C3;&#x30C8;"><a name="sli&#xFF0C;slo&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30D0;&#x30B8;&#x30A7;&#x30C3;&#x30C8;" class="plugin-anchor" href="#sli&#xFF0C;slo&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30D0;&#x30B8;&#x30A7;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>SLI&#xFF0C;SLO&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x30D0;&#x30B8;&#x30A7;&#x30C3;&#x30C8;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x9805;&#x76EE;</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLI&#xFF1A;<br>Service Level Indicator&#xFF08;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x6307;&#x6A19;&#xFF09;</td>
+<td>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x306E;&#x6307;&#x6A19;&#x3068;&#x3059;&#x308B;&#x30E1;&#x30C8;&#x30EA;&#x30AF;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;<br>&#x30FB;&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;<br>&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7A3C;&#x50CD;&#x7387;<br>&#x30FB;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;<br>&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30BF;&#x30A4;&#x30E0;<br>&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x7387;<br>&#x30FB;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;<br>&#x306A;&#x3069;&#x304C;&#x63A1;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>SLO&#xFF1A;<br>Service Level Objective&#xFF08;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30EC;&#x30D9;&#x30EB;&#x76EE;&#x6A19;&#xFF09;</td>
+<td>SLI&#x3068;&#x3057;&#x3066;&#x63A1;&#x7528;&#x3057;&#x305F;&#x6307;&#x6A19;&#x306E;&#x76EE;&#x6A19;&#x5024;&#x306E;&#x3053;&#x3068;&#xFF0E;99.9%&#x306E;&#x6210;&#x529F;&#x7387;&#x3092;&#x76EE;&#x6A19;&#x3068;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#xFF0E;<br>&#x30FB;&#x30B5;&#x30FC;&#x30D0;&#x7A3C;&#x50CD;&#x7387;&#xFF08;&#x65E5;&#x5F53;&#x305F;&#x308A;0.1%&#x306E;&#x30C0;&#x30A6;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#xFF09;<br>&#x30FB;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x7A3C;&#x50CD;&#x7387;&#xFF08;&#x65E5;&#x5F53;&#x305F;&#x308A;0.1%&#x306E;&#x30C0;&#x30A6;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#xFF09;<br>&#x30FB;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;&#xFF08;&#x65E5;&#x5F53;&#x305F;&#x308A;0.1%&#x307E;&#x3067;&#x306E;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x30FC;&#xFF09;<br>&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x7387;&#xFF08;&#x65E5;&#x5F53;&#x305F;&#x308A;99.9%&#x306E;200&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;<br>&#x30FB;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#xFF08;&#x65E5;&#x5F53;&#x305F;&#x308A;0.1%&#x306E;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#x4F4E;&#x4E0B;&#xFF09;<br></td>
+</tr>
+<tr>
+<td>&#x30A8;&#x30E9;&#x30FC;&#x30D0;&#x30B8;&#x30A7;&#x30C3;&#x30C8;</td>
+<td>SLO&#x304C;&#x672A;&#x9054;&#x306E;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x65B0;&#x898F;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3088;&#x308A;&#x3082;SLO&#x306E;&#x9054;&#x6210;&#x3092;&#x512A;&#x5148;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<h2 id="&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><a name="&#x30EA;&#x30EA;&#x30FC;&#x30B9;" class="plugin-anchor" href="#&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30EA;&#x30FC;&#x30B9;</h2>
-<h3 id="hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><a name="hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;" class="plugin-anchor" href="#hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;</h3>
-<ol>
-<li>Issue&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</li>
-<li>main&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;&#xFF0C;&#x300E;<code>hotfix/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>issue&#x756A;&#x53F7;</span><span class="token punctuation">&gt;</span></span></code>&#x300F;&#x306E;&#x540D;&#x524D;&#x3067;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;</li>
-<li>&#x30D7;&#x30EB;&#x30EA;&#x30AF;&#x3092;&#x4F5C;&#x6210;&#x3057;&#xFF0C;&#x30DE;&#x30FC;&#x30B8;&#x306E;&#x5411;&#x304D;&#x5148;&#x3092;<code>main</code>&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3068;&#x3059;&#x308B;&#xFF0E;</li>
-<li>&#x901F;&#x653B;&#x3067;approve&#x3092;&#x3082;&#x3089;&#x3044;&#xFF0C;main&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306B;&#x30DE;&#x30FC;&#x30B8;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x306E;&#x6642;&#xFF0C;hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306F;&#x5F8C;&#x3067;develop&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306B;&#x30DE;&#x30FC;&#x30B8;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#xFF0E;</li>
-<li>&#x30D1;&#x30C3;&#x30C1;&#x756A;&#x53F7;&#x3092;&#x4E00;&#x3064;&#x5897;&#x3084;&#x3057;&#x305F;&#x30BF;&#x30B0;&#x3092;&#x4ED8;&#x4E0E;&#x3057;&#xFF0C;&#x518D;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3059;&#x308B;&#xFF0E;</li>
-<li>&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x5F8C;&#xFF0C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x89E3;&#x6D88;&#x3055;&#x308C;&#x305F;&#x3089;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;PC&#x3067;hotfix&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x3092;develop&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x306B;&#x30DE;&#x30FC;&#x30B8;&#x3059;&#x308B;&#xFF0E;</li>
-</ol>
 
                                 
                                 </section>
@@ -2023,7 +2056,7 @@
             
                 
                 
-                <a href="system_development_methodology_git_command.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎Gitコマンド">
+                <a href="observability_fluentd_and_fluentbit.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎Fluentd／FluentBit">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2034,7 +2067,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎GitHub","level":"1.11.3.1","depth":3,"next":{"title":"📖 ︎Gitコマンド","level":"1.11.3.2","depth":3,"path":"public/system_development_methodology_git_command.md","ref":"public/system_development_methodology_git_command.md","articles":[]},"previous":{"title":"Git","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"📖 ︎GitHub","level":"1.11.3.1","depth":3,"path":"public/system_development_methodology_github.md","ref":"public/system_development_methodology_github.md","articles":[]},{"title":"📖 ︎Gitコマンド","level":"1.11.3.2","depth":3,"path":"public/system_development_methodology_git_command.md","ref":"public/system_development_methodology_git_command.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/system_development_methodology_github.md","mtime":"2021-10-02T10:33:28.449Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-02T12:29:43.157Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎可観測性","level":"1.10.1","depth":2,"next":{"title":"📖 ︎Fluentd／FluentBit","level":"1.10.2","depth":2,"path":"public/observability_fluentd_and_fluentbit.md","ref":"public/observability_fluentd_and_fluentbit.md","articles":[]},"previous":{"title":"可観測性","level":"1.10","depth":1,"ref":"","articles":[{"title":"📖 ︎可観測性","level":"1.10.1","depth":2,"path":"public/observability.md","ref":"public/observability.md","articles":[]},{"title":"📖 ︎Fluentd／FluentBit","level":"1.10.2","depth":2,"path":"public/observability_fluentd_and_fluentbit.md","ref":"public/observability_fluentd_and_fluentbit.md","articles":[]},{"title":"📖 ︎Datadog","level":"1.10.3","depth":2,"path":"public/observability_datadog.md","ref":"public/observability_datadog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability.md","mtime":"2021-10-02T12:23:06.072Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-02T12:29:43.157Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
