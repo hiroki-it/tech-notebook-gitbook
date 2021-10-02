@@ -1,8 +1,6 @@
 # Summary
-* はじめに
-  * [📖 ︎このサイトについて](README.md)
-* 自己紹介
-  * [📖 ︎長谷川広樹と申します](public/self_introduction.md)
+* [📖 ︎このサイトについて](README.md)
+* [📖 ︎サイト管理者](public/self_introduction.md)
 * ソフトウェア
   * [📖 ︎ソフトウェア](public/software.md)
   * アプリケーションソフトウェア
