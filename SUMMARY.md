@@ -4,8 +4,7 @@
 * 自己紹介
   * [▶ ︎長谷川広樹と申します](public/self_introduction.md)
 * ソフトウェア
-  * ソフトウェア
-    * [▶ ︎ソフトウェアの種類](public/software.md)
+  * [▶ ︎ソフトウェア](public/software.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
       * ドメイン駆動設計
