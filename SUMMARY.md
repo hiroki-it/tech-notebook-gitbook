@@ -75,7 +75,7 @@
 * ネットワーク
     * [📚 ︎ネットワーク](public/network.md)
     * データ通信の仕組み
-      * [📚 ︎OSI参照モデル／TCP階層モデル](public/network_osi_tcp.md)
+      * [📚 ︎OSI参照モデル／TCP階層モデル](public/network_osi_tcp_model.md)
     * セキュリティ
       * [📚 ︎サイバー攻撃](public/network_cyber_attacks.md)
       * [📚 ︎通信データの暗号化技術](public/network_encryption_technology.md)
