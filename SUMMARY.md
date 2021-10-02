@@ -66,7 +66,7 @@
       * [▶ ︎データベース](public/software_middleware_database.md)
       * [▶ My︎SQL](public/software_middleware_database_mysql.md)
   * 基本ソフトウェア（OS）
-    * [▶ ︎CentOSの構成](public/software_basic_centos.md)
+    * [▶ ︎CentOS](public/software_basic_centos.md)
     * [▶ ︎機械語と進数](public/software_basic_machine_language_and_radix.md)
 * ハードウェア
   * [▶ ︎ハードウェア](public/hardware.md)
