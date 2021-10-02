@@ -9,8 +9,8 @@
     * アーキテクチャ
       * ドメイン駆動設計
         * [📚 ︎ドメイン駆動設計](public/software_application_backend_architecture_domain_driven_design.md)
-        * [📚 ︎CQRS](public/software_application_backend_architecture_cqrs.md)
         * [📚 ︎クリーンアーキテクチャ](public/software_application_backend_architecture_domain_driven_design_clean_architecture.md)
+        * [📚 ︎CQRS](public/software_application_backend_architecture_cqrs.md)
       * [📚 ︎フロントエンドアーキテクチャ](public/software_application_frontend_architecture.md)
       * [📚 ︎マイクロサービスアーキテクチャ](public/software_application_frontend_and_backend_architecture_microservice.md)
     * PHP
