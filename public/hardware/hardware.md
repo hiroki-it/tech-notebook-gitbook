@@ -365,13 +365,25 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 <br>
 
-## 05-04. メモリ，プロセス，スレッドの関係性
+## 05-04. プロセス，スレッドの違い
 
 ### プロセス
 
 #### ・プロセスとは
 
+実行中のプログラムは，メモリ上の特定のアドレス範囲に割り当てられており，その範囲のみを使用できる．この実行中プログラム自体を『プロセス』という．プロセスの代わりに『タスク』ということもある．
+
 参考：https://jpazamu.com/thread_process/#index_id5
+
+![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/process.png)
+
+#### ・シングルプロセス
+
+単一のメモリ上において，単一のプロセスがアドレスに割り当てられている状態のこと．
+
+#### ・マルチプロセス
+
+単一のメモリ上において，複数のプロセスがアドレスに割り当てられている状態のこと．
 
 <br>
 
@@ -379,13 +391,21 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 #### ・スレッドとは
 
-#### ・マルチスレッド環境下での並列処理
+メモリ上の特定のプロセスは，OSから命令された処理を実行する．この処理の単位を『スレッド』という．
 
-| 言語       | 方法                                                         |
-| ---------- | ------------------------------------------------------------ |
-| PHP        | parallelライブラリを使用する．<br>参考：https://github.com/krakjoe/parallel |
-| Go         | Goroutinesを使用する．<br>参考：https://golang.org/doc/effective_go#concurrency |
-| Javascript | WebWorkerを使用する．<br>参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers<br>マルチスレッド環境下の並行処理と似て非なるものとして，シングルスレッド環境下での非同期処理がある．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_architecture.html |
+参考：https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
+
+![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/thread.png)
+
+#### ・シングルスレッド
+
+メモリ上の特定のプロセスにおいて，単一のスレッドを実行している状態のこと．
+
+#### ・マルチスレッド
+
+メモリ上の特定のプロセスにおいて，複数のスレッドを実行している状態のこと．各スレッドがプロセスに割り当てられているアドレスを共有して使う．
+
+![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multi-thread.png)
 
 <br>
 
