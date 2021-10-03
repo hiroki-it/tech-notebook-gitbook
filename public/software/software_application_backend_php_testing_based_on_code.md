@@ -41,7 +41,7 @@ OK (3 tests, 3 assertions)
 
 特定のテストファイルを対象として，定義されたメソッドを実行する．
 
-```shell
+```bash
 $ vendor/bin/phpunit --filter Foo
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
 
@@ -56,7 +56,7 @@ OK (1 tests, 1 assertions)
 
 実行の対象となるテストファイルを一覧で表示する．
 
-```shell
+```bash
 $ vendor/bin/phpunit --list-tests
 PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
  
@@ -331,7 +331,7 @@ class FooNotificationTest extends TestCase
 }
 ```
 
-```shell
+```bash
 # Time: x seconds
 # OK
 ```
@@ -383,7 +383,7 @@ class FooNotificationTest extends TestCase
 }
 ```
 
-```shell
+```bash
 # Time: x seconds
 # OK
 ```
@@ -1064,7 +1064,7 @@ AとBは，『1』または『0』になり得るとする．
 
 全てのファイルを対象として，静的解析を行う．
 
-```shell
+```bash
 $ vendor/bin/phpstan analyse
 ```
 

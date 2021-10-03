@@ -91,7 +91,7 @@ $ which python3
 
 検索されたファイル内で，さらに文字列を検索する．
 
-```shell
+```bash
 $ find /* \
   -type f | xargs grep "<検索文字>"
 ```
@@ -104,7 +104,7 @@ $ find /* \
 
 フィルタリングされたプロセスを削除する．
 
-```shell
+```bash
 $ sudo pgrep \
   -f <コマンド名> | sudo xargs kill -9
 ```
@@ -117,7 +117,7 @@ $ sudo pgrep \
 
 検索されたファイルの容量を合計する．
 
-```shell
+```bash
 $ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
 $ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
 $ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
@@ -131,7 +131,7 @@ $ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { prin
 
 表示された環境変数をAZ昇順に並び替える．
 
-```shell
+```bash
 $ printenv | sort -f
 ```
 
@@ -155,7 +155,7 @@ $ printenv | sort -f
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ echo "stdout" >&1
 ```
 
@@ -165,7 +165,7 @@ $ echo "stdout" >&1
 
 **＊コマンド例＊**
 
-```shell
+```bash
 $ echo "stderr" >&2
 ```
 
@@ -181,7 +181,7 @@ $ echo "stderr" >&2
 
 **＊実装例＊**
 
-```shell
+```bash
 #!/bin/bash
 
 echo "foo"
@@ -231,7 +231,7 @@ baz: foo baz # foo，bazを事前に実行する．
 
 現在開かれているインタラクティブで処理を実行する．そのため，シェルスクリプト内で定義した変数は，シェルスクリプトの実行後も維持される．
 
-```shell
+```bash
 $ source hello.sh
 ```
 
@@ -239,13 +239,13 @@ $ source hello.sh
 
 新しくインタラクティブを開き，処理を実行する．そのため，シェルスクリプト内で定義した変数は，シェルスクリプトの実行後に破棄される．
 
-```shell
+```bash
 $ bash hello.sh
 ```
 
 #### ・ドット
 
-```shell
+```bash
 $ . hello.sh
 ```
 
@@ -253,7 +253,7 @@ $ . hello.sh
 
 相対パスもしくは絶対パスでシェルスクリプトを指定する．実行するファイルをカレントディレクトリに置くことはできない．
 
-```shell
+```bash
 $ ./hello.sh
 ```
 
@@ -265,13 +265,13 @@ $ ./hello.sh
 
 Makefileが置かれた階層で，makeコマンドの引数としてターゲット名や環境変数を渡せる．Makefile内で環境変数のデフォルト値を定義できる．
 
-```shell
+```bash
 $ make <ターゲット名> <環境変数名>=<値>
 ```
 
 **＊実装例＊**
 
-```shell
+```bash
 $ make foo FOO=foo
 ```
 
@@ -290,7 +290,7 @@ foo:
 
 ヒアドキュメントで作成したシェルスクリプトには，各行にechoが追加される．
 
-```shell
+```bash
 #!/bin/bash
 
 cat << EOF > "echo.sh"
@@ -300,7 +300,7 @@ fuga
 EOF
 ```
 
-```shell
+```bash
 #!/bin/bash
 echo hoge
 echo fuga
@@ -310,7 +310,7 @@ echo fuga
 
 **＊実装例＊**
 
-```shell
+```bash
 #!/bin/bash
  
 for i in 1 2 3 4 5
@@ -325,7 +325,7 @@ done
 
 **＊実装例＊**
 
-```shell
+```bash
 #!/bin/bash
 
 case "$ENV" in
@@ -355,7 +355,7 @@ esac
 
 ファイルの権限を変更する．よく使用されるパーミッションのパターンは次の通り．
 
-```shell
+```bash
 $ chmod 600 <ファイル名>
 ```
 
@@ -363,7 +363,7 @@ $ chmod 600 <ファイル名>
 
 ディレクトリ内のファイルに対して，再帰的に権限を付与する．
 
-```shell
+```bash
 $ chmod -R 600 <ディレクトリ名>
 ```
 
@@ -402,11 +402,11 @@ $ chmod -R 600 <ディレクトリ名>
 
 ディレクトリの属性情報も含めて，ディレクトリ構造とファイルを再帰的にコピー．
 
-```shell
+```bash
 $ cp -Rp /<ディレクトリ名1>/<ディレクトリ名2> /<ディレクトリ名1>/<ディレクトリ名2>
 ```
 
-```shell
+```bash
 # 隠しファイルも含めて，ディレクトリの中身を他のディレクトリ内にコピー
 # 「アスタリスク」でなく「ドット」にする
 $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名> 
@@ -416,7 +416,7 @@ $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名>
 
 『ファイル名.YYYYmmdd』の形式でバックアップファイルを作成
 
-```shell
+```bash
 $ cp -p <ファイル名> <ファイル名>.`date +"%Y%m%d"`
 ```
 
@@ -428,7 +428,7 @@ $ cp -p <ファイル名> <ファイル名>.`date +"%Y%m%d"`
 
 定義されたシェル変数を出力する．変数名には```$```マークを付ける．ダブルクオートはあってもなくてもよい．
 
-```shell
+```bash
 $ <変数名>=<値>
 
 $ echo $<変数名>
@@ -444,7 +444,7 @@ $ echo "$<変数名>"
 
 ファイルの改行コードを確認する．
 
-```shell
+```bash
 # LFの場合（何も表示されない）
 $ file foo.txt
 foo.txt: ASCII text
@@ -466,11 +466,11 @@ foo.txt: ASCII text, with CR line terminators<br>
 
 ファイルを検索するためのユーティリティ．アスタリスクを付けなくとも，自動的にワイルドカードが働く．
 
-```shell
+```bash
 $ find /* -type f | xargs grep "<検索文字>"
 ```
 
-```shell
+```bash
 # パーミッションエラーなどのログを破棄して検索．
 $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 ```
@@ -479,19 +479,19 @@ $ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
 
 名前が .conf で終わるファイルを全て検索する．
 
-```shell
+```bash
 $ find /* -name "*.conf" -type f
 ```
 
 名前が dir で終わるディレクトリを全て検索する．
 
-```shell
+```bash
 $ find /* -name "*dir" -type d
 ```
 
 ルートディレクトリ以下で， <検索文字> という文字をもち，ファイル名が .conf で終わるファイルを全て検索する．
 
-```shell
+```bash
 $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
 ```
 
@@ -507,7 +507,7 @@ $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
 
 カレントディレクトリに，シンボリックリンクを作成する．リンクの元になるディレクトリやファイルのパスを指定する．
 
-```shell
+```bash
 $ ln -s <リンク元までのパス> <シンボリックリンク名> 
 ```
 
@@ -519,7 +519,7 @@ $ ln -s <リンク元までのパス> <シンボリックリンク名>
 
 隠しファイルや隠しディレクトリも含めて，全ての詳細を表示する．
 
-```shell
+```bash
 $ ls -l -a
 ```
 
@@ -531,7 +531,7 @@ $ ls -l -a
 
 複数階層のディレクトリを作成する．
 
-```shell
+```bash
 $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 ```
 
@@ -543,7 +543,7 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 
 ディレクトリ自体と中のファイルを再帰的に削除する．
 
-```shell
+```bash
 $ rm -R <ディレクトリ名> 
 ```
 
@@ -555,7 +555,7 @@ $ rm -R <ディレクトリ名>
 
 ファイルを8進数の機械語で出力する．
 
-```shell
+```bash
 $ od <ファイル名>
 ```
 
@@ -563,7 +563,7 @@ $ od <ファイル名>
 
 ファイルを16進数の機械語で出力する．
 
-```shell
+```bash
 $ od -Ad -tx <ファイル名>
 ```
 
@@ -575,7 +575,7 @@ $ od -Ad -tx <ファイル名>
 
 現在設定されているシェル変数を一覧で表示する．
 
-```shell
+```bash
 $ set
 ```
 
@@ -583,7 +583,7 @@ $ set
 
 シェルスクリプトの構文解析を行う．
 
-```shell
+```bash
 $ set -n
 ```
 
@@ -591,7 +591,7 @@ $ set -n
 
 一連の処理の途中で```0```以外の終了ステータスが出力された場合，全ての処理を終了する．
 
-```shell
+```bash
 $ set -e
 ```
 
@@ -599,7 +599,7 @@ $ set -e
 
 一連の処理をデバッグ情報として出力する．
 
-```shell
+```bash
 $ set -x
 ```
 
@@ -607,7 +607,7 @@ $ set -x
 
 一連の処理の中で，未定義の変数が存在した場合，全ての処理を終了する．
 
-```shell
+```bash
 $ set -u
 ```
 
@@ -615,7 +615,7 @@ $ set -u
 
 パイプライン（```|```）内の一連の処理の途中で，エラーが発生した場合，その終了ステータスを出力し，全ての処理を終了する．
 
-```shell
+```bash
 $ set -o pipefail
 ```
 
@@ -671,7 +671,7 @@ $ tar -zxf foo.tar.gz
 
 カレントディレクトリのシンボリックリンクを削除する．
 
-```shell
+```bash
 $ unlink <シンボリックリンク名>
 ```
 
@@ -685,7 +685,7 @@ $ unlink <シンボリックリンク名>
 
 インストール後のファイル名を定義する．これを指定しない場合，```-O```オプションを有効化する必要がある．
 
-```shell
+```bash
 $ curl -o <ファイル名> http://example.com/foo  
 ```
 
@@ -697,7 +697,7 @@ $ curl -o <ファイル名> http://example.com/foo
 
 指定したURLでリダイレクトが行われても，リダイレクト後のURLからファイルをインストールする．
 
-```shell
+```bash
 $ curl -L http://example.com/foo
 ```
 
@@ -709,13 +709,13 @@ $ curl -L http://example.com/foo
 
 事前に，秘密鍵の権限は「600」にしておく．tty（擬似ターミナル）を使用する場合は，```-T```オプションをつける．
 
-```shell
+```bash
 $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T
 ```
 
 #### ・-l，-p，<ポート>，-i，-T，-vvv
 
-```shell
+```bash
 # -vvv：ログを出力する
 $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
 ```
@@ -724,7 +724,7 @@ $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密�
 
 設定が面倒な```ssh```コマンドのオプションの引数を，```~/.ssh/config```ファイルに記述しておく．
 
-```
+```bash
 # サーバ１
 Host <接続名1>
     User <サーバ１のユーザ名>
@@ -742,7 +742,7 @@ Host <接続名２>
 
 これにより，コマンド実行時の値渡しを省略できる．tty（擬似ターミナル）を使用する場合は，-Tオプションをつける．
 
-```shell
+```bash
 # 秘密鍵の権限は，事前に「600」にしておく
 $ ssh <接続名> -T
 ```
@@ -757,7 +757,7 @@ $ ssh <接続名> -T
 
 稼働しているプロセスの詳細情報を表示するためのユーティリティ．
 
-```shell
+```bash
 # 稼働しているプロセスのうち，詳細情報に「xxx」を含むものを表示する．
 $ ps aux | grep "<検索文字>"
 ```
@@ -774,7 +774,7 @@ $ ps aux | grep "<検索文字>"
 
 デーモンのUnitを一覧で確認する．
 
-```shell
+```bash
 $ systemctl list-unit-files --type=service
 
 crond.service           enabled  # enable：自動起動する
@@ -786,7 +786,7 @@ systemd-reboot.service  static   # enable：他サービス依存
 
 マシン起動時にデーモンが自動起動するように設定する．
 
-```shell
+```bash
 $ systemctl enable <プロセス名>
 
 # 例：Cron，Apache
@@ -797,7 +797,7 @@ $ systemctl enable httpd.service
 
 マシン起動時にデーモンが自動起動しないように設定する．
 
-```shell
+```bash
 $ systemctl disable <プロセス名>
 
 # 例：Cron，Apache
@@ -821,13 +821,13 @@ $ systemctl disable httpd.service
 
 指定したPIDのプロセスを削除する．
 
-```shell
+```bash
 $ kill -9 <プロセスID（PID）>
 ```
 
 指定したコマンドによるプロセスを全て削除する．
 
-```shell
+```bash
 $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 ```
 
@@ -855,7 +855,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 1. あらかじめ，各ディレクトリにcronファイルを配置しておく．
 2. cronとして登録するファイルを作成する．```run-parts```コマンドで，指定した時間に，各cronディレクトリ内のcronファイルを一括で実行するように記述しておく．
 
-```shell
+```bash
 # 設定
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
@@ -896,12 +896,12 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 
 ユーザーが，OS上のプロセスを制御できるようにするためのプログラム．
 
-```shell
+```bash
 # インストール
 $ pip3 install supervisor
 ```
 
-```shell
+```bash
 # /etc/supervisor/supervisord.conf に設定ファイルを置いて起動．
 $ /usr/local/bin/supervisord
 ```
@@ -910,7 +910,7 @@ $ /usr/local/bin/supervisord
 
 **＊実装例＊**
 
-```shell
+```bash
 [supervisord]
 # 実行ユーザ
 user=root
@@ -949,13 +949,13 @@ cronデーモンの動作が定義されたcrontabファイルを操作するた
 
 作成したcronファイルを登録する．cron.dファイルは操作できない．
 
-```shell
+```bash
 $ crontab <ファイルパス>
 ```
 
 #### ・登録されたcronファイルの処理を確認
 
-```shell
+```bash
 $ crontab -l
 
 # crontabコマンドで登録されたcronファイルの処理
@@ -970,35 +970,35 @@ $ crontab -l
 
 参考：
 
-```shell
+```bash
 # cron-hourly.txt
 # 毎時・1分
 1 * * * * root run-parts /etc/cron.hourly
 
 ```
 
-```shell
+```bash
 # cron-daily.txt
 # 毎日・2時5分
 5 2 * * * root run-parts /etc/cron.daily
 
 ```
 
-```shell
+```bash
 # cron-monthly.txt
 # 毎週日曜日・2時20分
 20 2 * * 0 root run-parts /etc/cron.weekly
 
 ```
 
-```shell
+```bash
 # cron-weekly.txt
 # 毎月一日・2時40分
 40 2 1 * * root run-parts /etc/cron.monthly
 
 ```
 
-```shell
+```bash
 # cron起動時に一度だけ
 @reboot make clean html
 
@@ -1006,13 +1006,13 @@ $ crontab -l
 
 ２. このファイルをcrontabコマンドで登録する．cronファイルの実体はないことと，ファイルの内容を変更した場合は登録し直さなければいけないことに注意する．
 
-```shell
+```bash
 $ crontab /foo/cron-hourly.txt
 ```
 
 ３. 登録されている処理を確認する．
 
-```shell
+```bash
 $ crontab -l
 
 1 * * * * root run-parts /etc/cron.hourly
@@ -1020,7 +1020,7 @@ $ crontab -l
 
 ４. ログに表示されているかを確認．
 
-```shell
+```bash
 $ cd /var/log
 
 $ tail -f cron
@@ -1028,7 +1028,7 @@ $ tail -f cron
 
 ５. 改行コードを確認．改行コードが表示されない場合はLFであり，問題ない．
 
-```shell
+```bash
 $ file /foo/cron-hourly.txt
 
 foo.txt: ASCII text
@@ -1046,7 +1046,7 @@ cronデーモンを起動するためのプログラム
 
 フォアグラウンドプロセスとしてcronを起動
 
-```shell
+```bash
 $ crond -n
 ```
 
@@ -1060,7 +1060,7 @@ $ crond -n
 
 vim上でファイルを開く．
 
-```shell
+```bash
 $ vim <ファイル名>
 ```
 
@@ -1072,7 +1072,7 @@ $ vim <ファイル名>
 
 履歴1000件の中からコマンドを検索する．
 
-```shell
+```bash
 $ history | grep <過去のコマンド>
 ```
 
@@ -1080,7 +1080,7 @@ $ history | grep <過去のコマンド>
 
 ### tr
 
-```shell
+```bash
 #!/bin/bash
 
 cat ./src.txt | tr "\n" "," > ./dst.txt
@@ -1097,7 +1097,7 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 基本的な手順としては，シェル変数を設定し，これを環境変数に追加する．
 
-```shell
+```bash
 # シェル変数を設定
 $ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
 # 環境変数に追加
@@ -1106,13 +1106,13 @@ $ export PATH
 
 シェル変数の設定と，環境変数への追加は，以下の通り同時に記述できる．
 
-```shell
+```bash
 # 環状変数として，指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを追加．
 # バイナリファイルを入力すると，絶対パス
 $ export PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
 ```
 
-```shell
+```bash
 # 不要なパスを削除したい場合はこちら
 # 環状変数として，指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを上書き
 $ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
@@ -1123,7 +1123,7 @@ $ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 exportの結果は，OSの再起動で初期化されてしまう．そのため，再起動時に自動的に実行されるよう，```/home/centos/.bashrc```に追記しておく．
 
-```shell
+```bash
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -1151,13 +1151,13 @@ export PATH
 
 全ての環境変数を表示する．
 
-```shell
+```bash
 $ printenv
 ```
 
 また，特定の環境変数を表示する．
 
-```shell
+```bash
 $ printenv VAR
 ```
 
@@ -1167,7 +1167,7 @@ $ printenv VAR
 
 #### ・set-timezone
 
-```shell
+```bash
 # タイムゾーンを日本時間に変更
 $ timedatectl set-timezone Asia/Tokyo
 
@@ -1186,7 +1186,7 @@ $ date
 
 各プロセスの稼働情報（ユーザ名，CPU，メモリ）を確認する． CPU使用率昇順に並べる
 
-```shell
+```bash
 $ top
 ```
 
@@ -1194,7 +1194,7 @@ $ top
 
 メモリ使用率昇順に並べる．
 
-```shell
+```bash
 $ top -a
 ```
 
@@ -1206,7 +1206,7 @@ $ top -a
 
 物理メモリ，スワップ領域，の使用状況をメガバイトで確認する．
 
-```shell
+```bash
 # m：Mega Bytes
 # t: -total
 $ free -m -total
@@ -1220,7 +1220,7 @@ $ free -m -total
 
 ストレージの使用状況をメガバイトで確認する．
 
-```shell
+```bash
 # h：--human-readable
 # t: -total
 $ df -h -m -t
@@ -1238,20 +1238,20 @@ $ df -h -m -t
 
 #### ・スワップ領域の作成方法
 
-```shell
+```bash
 # 指定したディレクトリをスワップ領域として使用
 $ mkswap /swap_volume
 ```
-```shell
+```bash
 # スワップ領域を有効化
 # 優先度のプログラムが，メモリからディレクトリに，一時的に退避されるようになる
 $ swapon /swap_volume
 ```
-```shell
+```bash
 # スワップ領域の使用状況を確認
 $ swapon -s
 ```
-```shell
+```bash
 # スワップ領域を無効化
 $ swapoff /swap_volume
 ```
@@ -1305,11 +1305,11 @@ $ swapoff /swap_volume
 
 指定したライブラリをインストールする．
 
-```shell
+```bash
 # /usr/local 以下にインストール
 $ pip install --user <ライブラリ名>
 ```
-```shell
+```bash
 # requirements.txt を元にライブラリをインストール
 $ pip install -r requirements.txt
 
@@ -1321,7 +1321,7 @@ pip install -r requirements.txt　--prefix=/usr/local
 
 pipでインストールされたパッケージを元に，要件ファイルを作成する．
 
-```shell
+```bash
 $ pip freeze > requirements.txt
 ```
 
@@ -1329,7 +1329,7 @@ $ pip freeze > requirements.txt
 
 pipでインストールしたパッケージ情報を表示する．
 
-```shell
+```bash
 $ pip show sphinx
 
 Name: Sphinx
@@ -1353,7 +1353,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 #### ・入手方法
 
-```shell
+```bash
 # リポジトリの作成
 $ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
 
@@ -1365,7 +1365,7 @@ $ yum install nodejs
 
 package.jsonを生成する．
 
-```shell
+```bash
 $ npm init
 ```
 
@@ -1373,12 +1373,12 @@ $ npm init
 
 ディレクトリにパッケージをインストール
 
-```shell
+```bash
 # ローカルディレクトリにパッケージをインストール
 $ npm install <パッケージ名>
 ```
 
-```shell
+```bash
 # グローバルディレクトリにインストール（あまり使わない）
 $ npm install -g <パッケージ名>
 ```
@@ -1393,13 +1393,13 @@ $ npm install -g <パッケージ名>
 
 パッケージをインストールまたは更新する．一度に複数のオプションを組み合わせて記述する．インストール時にパッケージ間の依存関係を解決できないので注意．
 
-```shell
+```bash
 # パッケージをインストール
 # -ivh：--install -v --hash 
 $ rpm -ivh <パッケージ名>
 ```
 
-```shell
+```bash
 # パッケージを更新
 # -Uvh：--upgrade -v --hash 
 $ rpm -Uvh <パッケージ名>
@@ -1409,7 +1409,7 @@ $ rpm -Uvh <パッケージ名>
 
 インストールされた全てのパッケージの中で，指定した文字を名前に含むものを表示する．
 
-```shell
+```bash
 # -qa：
 $ rpm -qa | grep <検索文字>
 ```
@@ -1418,7 +1418,7 @@ $ rpm -qa | grep <検索文字>
 
 指定したパッケージ名で，関連する全てのファイルの場所を表示する．
 
-```shell
+```bash
 # -ql：
 $ rpm -ql <パッケージ名>
 ```
@@ -1427,7 +1427,7 @@ $ rpm -ql <パッケージ名>
 
 指定したパッケージ名で，インストール日などの情報を表示する．
 
-```shell
+```bash
 # -qi：
 $ rpm -qi <パッケージ名>
 ```
@@ -1440,7 +1440,7 @@ $ rpm -qi <パッケージ名>
 
 rpmと同様の使い方ができる．また，インストール時にパッケージ間の依存関係を解決できる．
 
-```shell
+```bash
 # パッケージをインストール
 $ yum install -y <パッケージ名>
 
@@ -1452,7 +1452,7 @@ $ yum reinstall -y <パッケージ名>
 
 インストールされた全てのパッケージを表示する．
 
-```shell
+```bash
 # 指定した文字を名前に含むものを表示．
 $ yum list | grep <検索文字>
 ```
@@ -1463,7 +1463,7 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 
 1. CentOSのEPELリポジトリをインストール．インストール時の設定ファイルは，/etc/yu.repos.d/* に配置される．
 
-```shell
+```bash
 # CentOS7系の場合
 $ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
@@ -1475,7 +1475,7 @@ $ yum install -y epel-release でもよい
 ```
 2. CentOSのRemiリポジトリをインストール．RemiバージョンはCentOSバージョンを要確認．インストール時の設定ファイルは，```/etc/yu.repos.d/*```に配置される．
 
-```shell
+```bash
 # CentOS7系の場合
 $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
@@ -1485,7 +1485,7 @@ $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 4. 設定ファイルへは，インストール先のリンクなどが自動的に書き込まれる．
 
-```shell
+```bash
 [epel]
 name=Extra Packages for Enterprise Linux 6 - $basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch
@@ -1516,7 +1516,7 @@ gpgcheck=1
 
 5. Remiリポジトリの有効化オプションを永続的に使用できるようにする．
 
-```shell
+```bash
 # CentOS7の場合
 $ yum install -y yum-utils
 # 永続的に有効化
@@ -1529,7 +1529,7 @@ $ dnf module enable php:remi-7.4
 
 6. remiリポジトリを指定して，php，php-mbstring，php-mcryptをインストールする．Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される．
 
-```shell
+```bash
 # CentOS7の場合
 # 一時的に有効化できるオプションを利用して，明示的にremiを指定
 $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
@@ -1542,7 +1542,7 @@ $ dnf install -y php php-mbstring php-mcrypt
 
 7. 再インストールする時は，reinstallとすること．
 
-```shell
+```bash
 # CentOS7の場合
 # 一時的に有効化できるオプションを利用して，明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
@@ -1561,451 +1561,8 @@ $ dnf reinstall -y php php-mbstring php-mcrypt
 
 #### ・which
 
-```shell
+```bash
 # pythonのインストールディレクトリを確認
 $ pyenv which python
 /.pyenv/versions/3.8.0/bin/python
 ```
-
-<br>
-
-## 04.  言語プロセッサ
-
-### 言語プロセッサの例
-
-#### ・アセンブラ
-
-後述の説明を参考にせよ．
-
-#### ・コンパイラ
-
-後述の説明を参考にせよ．
-
-#### ・インタプリタ
-
-後述の説明を参考にせよ．
-
-<br>
-
-### 言語の種類
-
-プログラム言語のソースコードは，言語プロセッサによって機械語に変換された後，CPUによって読み込まれる．そして，ソースコードに書かれた様々な処理が実行される．
-
-#### ・コンパイラ型言語
-
-C#など．コンパイラという言語プロセッサによって，コンパイラ方式で翻訳される言語．
-
-#### ・インタプリタ型言語
-
-PHP，Ruby，JavaScript，Python，など．インタプリタという言語プロセッサによって，インタプリタ方式で翻訳される言語をインタプリタ型言語という．
-
-#### ・Java仮想マシン型言語
-
-Scala，Groovy，Kotlin，など．Java仮想マシンによって，中間言語方式で翻訳される．
-
-![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
-
-<br>
-
-### 実行のエントリポイント
-
-#### ・動的型付け型言語の場合
-
-動的型付け言語では，エントリポイントが指定プログラムの先頭行と決まっており，そこから枝分かれ状に処理が実行されていく．PHPでは，```index.php```ファイルがエントリポイントと決められている．その他のファイルにはエントリポイントは存在しない．
-
-```PHP
-<?php
-
-use App\Kernel;
-use Symfony\Component\ErrorHandler\Debug;
-use Symfony\Component\HttpFoundation\Request;
-
-// まず最初に，bootstrap.phpを読み込む．
-require dirname(__DIR__) . "/config/bootstrap.php";
-
-if ($_SERVER["APP_DEBUG"]) {
-    umask(0000);
-    
-    Debug::enable();
-}
-
-if ($trustedProxies = $_SERVER["TRUSTED_PROXIES"]?? $_ENV["TRUSTED_PROXIES"] ?? false) {
-    Request::setTrustedProxies(explode(",", $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
-}
-
-if ($trustedHosts = $_SERVER["TRUSTED_HOSTS"] ?? $_ENV["TRUSTED_HOSTS"] ?? false) {
-    Request::setTrustedHosts([$trustedHosts]);
-}
-
-$kernel = new Kernel($_SERVER["APP_ENV"], (bool)$_SERVER["APP_DEBUG"]);
-$request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
-$kernel->terminate($request, $response);
-```
-
-#### ・静的型付け型言語の場合
-
-静的型付け言語では，エントリポイントが決まっておらず，自身で定義する必要がある．Javaでは，「```public static void main(String[] args)```メソッドを定義した場所がエントリポイントになる．
-
-```java
-import java.util.*;
-
-public class Age
-{
-    // エントリポイントとなるメソッド
-    public static void main(String[] args)
-    {
-        // 定数を定義．
-        final int age = 20;
-        System.out.println("私の年齢は" + age);
-
-        // 定数は再定義できないので，エラーになる．
-        age = 31;
-        System.out.println("…いや，本当の年齢は" + age);
-    }
-}
-```
-
-<br>
-
-## 04-02. コンパイラ型言語の機械語翻訳
-
-### コンパイラ方式
-
-#### ・機械語翻訳と実行のタイミング
-
-コードを，バイナリ形式のオブジェクトコードとして，まとめて機械語に翻訳した後，CPUに対して命令が実行される．
-
-![コンパイラ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイラ言語.png)
-
-#### ・ビルド（コンパイル＋リンク）
-
-コンパイルによって，ソースコードは機械語からなるオブジェクトコードに変換される．その後，各オブジェクトコードはリンクされ．exeファイルとなる．この一連のプロセスを『ビルド』という．また，ビルドによって生成されたファイルを『アーティファクト（成果物）』という．
-
-![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ビルドとコンパイル.jpg)
-
-#### ・仕組み（じ，こ，い，さい，せい，リンク，実行）
-
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
-
-1. **Lexical analysis（字句解析）**
-
-   ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
-
-   ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
-
-2. **Syntax analysis（構文解析）**
-
-   トークンの列をツリー構造に変換．
-
-3. **Semantics analysis（意味解析）**
-
-   ツリー構造を基に，ソースコードに論理的な誤りがないか解析．
-
-4. **Code optimization（コード最適化）**
-
-   ソースコードの冗長な部分を削除または編集．機械語をより短くするこができる．
-
-5. **Code generation（コード生成）**
-
-   最適化されたコードをバイナリ形式のオブジェクトコードに変換．
-
-6. **リンク**
-
-   オブジェクトコードをリンクする．
-
-7. **命令の実行**
-
-   リンクされたオブジェクトコードを基に，命令が実行される．
-
-<br>
-
-### makeによるビルド
-
-#### 1. パッケージをインストール
-
-```shell
-# パッケージを公式からインストールと解答
-$ wget <パッケージのリンク>
-$ tar <パッケージのフォルダ名>
-
-# ビルド用ディレクトリの作成．
-$ mkdir build
-$ cd build
-```
-
-#### 2. ビルドのルールを定義
-
-configureファイルを元に，ルールが定義されたMakefileを作成する．
-
-```shell
-# configureへのパスに注意．
-$ ../configure --prefix="<ソースコードのインストール先のパス>"
-```
-
-#### 3. ビルド （コンパイル＋リンク）
-
-パッケージのソースコードからexeファイルをビルドする．
-
-```shell
-# -j で使用するコア数を宣言し，処理の速度を上げられる．
-$ make -j4
-```
-
-任意で，exeファイルのテストを行える．
-
-```shell
-$ make check
-```
-
-#### 4. exeファイルの実行
-
-生成されたソースコードのファイルを，指定したディレクトリにコピー．
-
-```shell
-# installと命令するが，実際はコピー．sudoを付ける．
-$ sudo make install
-```
-
-元となったソースコードやオブジェクトコードを削除．
-
-```shell
-$ make clean
-```
-
-<br>
-
-## 04-03. インタプリタ型言語の機械語翻訳
-
-### インタプリタ方式
-
-#### ・機械語翻訳と実行のタイミング
-
-コードを，一行ずつ機械語に変換し，その都度，CPUに対して命令が実行される．
-
-![インタプリタ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インタプリタ言語.png)
-
-コマンドラインでそのまま入力し，機械語翻訳と実行を行うことができる．
-
-```shell
-#===========
-# PHPの場合
-#===========
-
-# PHPなので，処理終わりにセミコロンが必要
-$ php -r "<何らかの処理>"
-
-# Hello Worldを出力
-$ php -r "echo "Hello World";"
-
-# phpinfoを出力
-$ php -r "phpinfo();"
-
-# （おまけ）phpinfoの出力をテキストファイルに保存
-$ php -r "phpinfo();" > phpinfo.txt
-```
-
-```shell
-# php.iniの読み込み状況を出力
-$ php --ini
-```
-
-#### ・仕組み（じ，こ，い，実行）
-
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
-
-1. **Lexical analysis（字句解析）**
-
-   ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
-
-   ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
-
-2. **Syntax analysis（構文解析）**
-
-   トークンの列をツリー構造に変換．ソースコードから構造体を構築することを構文解析といい，htmlを構文解析してDOMツリーを構築する処理とは別物なので注意．
-
-3. **Semantics analysis（意味解析）**
-
-   ツリー構造を基に，ソースコードに論理的な誤りがないか解析．
-
-4. **命令の実行**
-
-   意味解析の結果を基に，命令が実行される．
-
-5. **１から４をコード行ごとに繰り返す**
-
-#### ・補足：JSの機械語翻訳について
-
-Webサーバを仮想的に構築する時，PHPの言語プロセッサが同時に組み込まれるため，PHPのソースコードの変更はブラウザに反映される．しかし，JavaScriptの言語プロセッサは組み込まれない．そのため，JavaScriptのインタプリタは別に手動で起動する必要がある．
-
-<br>
-
-## 04-04. Java仮想マシン型言語の機械語翻訳
-
-### 中間言語方式
-
-#### ・中間言語方式の機械語翻訳の流れ
-
-1. JavaまたはJVM型言語のソースコードを，Javaバイトコードを含むクラスファイルに変換する．
-2. JVM：Java Virtual Machine内で，インタプリタによって，クラスデータを機械語に翻訳する．
-3. 結果的に，OS（制御プログラム？）に依存せずに，命令を実行できる．（C言語）
-
-![Javaによる言語処理_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_1.png)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
-
-![Javaによる言語処理_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_2.png)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/矢印_80x82.jpg)
-
-![Javaによる言語処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Javaによる言語処理_3.png)
-
-#### ・C言語とJavaのOSへの依存度比較
-
-![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CとJavaのOSへの依存度比較.png)
-
-- JVM言語
-
-ソースコード
-
-<br>
-
-## 05. 制御プログラム（カーネル）
-
-### 制御プログラム（カーネル）の例
-
-  カーネル，マイクロカーネル，モノリシックカーネル
-
-<br>
-
-### 通信管理
-
-#### ・SELinux：Security Enhanced Linux
-
-Linuxに標準で導入されているミドルウェア．ただし，アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため，基本的には無効にしておく．
-
-1. SELinuxの状態を確認
-
-```shell
-$ getenforce
-
-# 有効の場合
-Enforcing
-```
-
-2. ```/etc/sellnux/config```を修正する．
-
-```shell
-# This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-
-SELINUX=disabled # <---- disabledに変更
-
-# SELINUXTYPE= can take one of these three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected. 
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted
-```
-
-3. OSを再起動
-
-OSを再起動しないと設定が反映されない．
-
-<br>
-
-### ジョブ管理
-
-クライアントは，マスタスケジュールに対して，ジョブを実行するための命令を与える．
-
-![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
-
-<br>
-
-### マスタスケジュラ，ジョブスケジュラ
-
-ジョブとは，プロセスのセットのこと．マスタスケジュラは，ジョブスケジュラにジョブの実行を命令する．データをコンピュータに入力し，複数の処理が実行され，結果が出力されるまでの一連の処理のこと．『Task』と『Job』の定義は曖昧なので，『process』と『set of processes』を使うべきとのこと．
-
-引用：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
-
-複数のジョブ（プログラムやバッチ）の起動と終了を制御したり，ジョブの実行と終了を監視報告するソフトウェア．ややこしいことに，タスクスケジューラとも呼ぶ．
-
-#### ・Reader
-
-ジョブ待ち行列に登録
-
-#### ・Initiator
-
-ジョブステップに分解
-
-#### ・Terminator
-
-出力待ち行列に登録
-
-#### ・Writer
-
-優先度順に出力の処理フローを実行
-
-<br>
-
-### Initiatorによるジョブのジョブステップへの分解
-
-Initiatorによって，ジョブはジョブステップに分解される．
-
-![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブからジョブステップへの分解.png)
-
-<br>
-
-### タスク管理
-
-![ジョブステップからタスクの生成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブステップからタスクの生成.png)
-
-タスクとは，スレッドに似たような，単一のプロセスのこと．Initiatorによるジョブステップから，タスク管理によって，タスクが生成される．タスクが生成されると実行可能状態になる．ディスパッチャによって実行可能状態から実行状態になる．
-
-#### ・優先順方式
-
-各タスクに優先度を設定し，優先度の高いタスクから順に，ディスパッチしていく方式．
-
-#### ・到着順方式
-
-待ち行列に登録されたタスクから順に，ディスパッチしていく方式．
-
-![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
-
-**＊具体例＊**
-
-以下の様に，タスクがCPUに割り当てられていく．
-
-![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_2.png)
-
-#### ・Round robin 方式
-
-Round robinは，『総当たり』の意味．一定時間（タイムクウォンタム）ごとに，実行状態にあるタスクが強制的に待ち行列に登録される．交代するように，他のタスクがディスパッチされる．
-
-![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
-
-**＊具体例＊**
-
-生成されたタスクの到着時刻と処理時間は以下のとおりである．強制的なディスパッチは，『20秒』ごとに起こるとする．
-
-![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_1.png)
-
-1. タスクAが0秒に待ち行列へ登録される．
-2. 20秒間，タスクAは実行状態へ割り当てられる．
-3. 20秒時点で，タスクAは実行状態から待ち行列に追加される．同時に，待ち行列の先頭にいるタスクBは，実行可能状態から実行状態にディスパッチされる．
-4. 40秒時点で，タスクCは実行状態から待ち行列に追加される．同時に，待ち行列の先頭にいるタスクAは，実行可能状態から実行状態にディスパッチされる．
-
-![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/優先順方式_2.png)
-
-<br>
-
-### 入出力管理
-
-アプリケーションから低速な周辺機器へデータを出力する時，まず，CPUはスプーラにデータを出力する．Spoolerは，全てのデータをまとめて出力するのではなく，一時的に補助記憶装置（Spool）にためておきながら，少しずつ出力する（Spooling）．
-
-![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スプーリング.jpg)
-

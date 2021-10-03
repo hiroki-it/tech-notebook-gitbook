@@ -4,24 +4,37 @@
 
 ### 可観測性とは
 
+『収集されたデータから，システムのリアルタイムな状態を，どれだけ正確に推測できるか』を表す程度のこと．リアルタイムと結び付けて，『プロアクティブ』と表現される．
+
+![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
+
+参考：
+
+- https://ish-ar.io/observability/
+- https://laredoute.io/blog/observability-at-la-redoute/
+
 <br>
 
 ### テレメトリー
 
 #### ・テレメトリーとは
 
-可観測性を実現するツールに求められる監視対象の要素（『メトリクス』『ログ』『分散トレース』）のこと．NewRelicやDatadogはこれらの要素を持つ．また，AWSではCloudWatch（メトリクス＋ログ）とX-Ray（分散トレース）を両方利用すると，これらの要素を満たせたことになり，可観測性を実現できる．
+可観測性を実現するために収集する必要のある３つのデータ要素（『メトリクス』『ログ』『分散トレース』）のこと．
 
 参考：
 
 - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 - https://knowledge.sakura.ad.jp/26395/
 
-| テレメトリーコンポーネント | 説明                                                         | 補足 |
-| -------------------------- | ------------------------------------------------------------ | ---- |
-| メトリクス                 |                                                              |      |
-| ログ                       |                                                              |      |
-| 分散トレース               | マイクロサービスの各コンポーネントでイベントが発生した時，一連のイベントを因果関係として繋げたデータセットのこと． |      |
+| 種類         | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| メトリクス   | 一定期間に収集されたデータポイントの集計数値のこと．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric |
+| ログ         | 特定の時間に発生したイベントの記録のこと．                   |
+| 分散トレース | マイクロサービスアーキテクチャにおいて，分散システムに渡った一連の処理を，イベントの因果関係の繋がりと見ることができる．この一連の処理で発生する連続的なデータのこと． |
+
+#### ・テレメトリー搭載ツール
+
+NewRelicやDatadogはテレメトリーの要素を全て持つ．また，AWSではCloudWatch（メトリクス＋ログ）とX-Ray（分散トレース）を両方利用すると，これらの要素を満たせたことになり，可観測性を実現できる．
 
 <br>
 
@@ -29,7 +42,9 @@
 
 ### 監視とは
 
-可観測性を実現するための手段のこと．
+システムが正常に稼働することを継続的に見守り，障害の発生を未然に防ぐこと．未然と結び付けて『プロアクティブ』と表現される．
+
+参考：https://en.wikipedia.org/wiki/Website_monitoring
 
 <br>
 

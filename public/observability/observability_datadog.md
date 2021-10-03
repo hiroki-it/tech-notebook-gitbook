@@ -383,7 +383,7 @@ import 'dd-trace/init'
 
 #### ・メトリクスの識別子
 
-分散トレースの各メトリクスは，『```trace.<スパン名>.<メトリクスサフィックス>```』で識別できる．
+分散トレースの各メトリクスは，『```trace.[スパン名].[メトリクスサフィックス]```』で識別できる．
 
 参考：https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
 

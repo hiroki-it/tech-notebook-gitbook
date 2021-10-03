@@ -94,11 +94,11 @@ Google Drive，Dropbox
 
 #### ・Apache
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_apache.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html
 
 #### ・Nginx
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_nginx.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html
 
 <br>
 
@@ -106,21 +106,15 @@ Google Drive，Dropbox
 
 #### ・Apacheの拡張モジュール
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software_middleware_web_apache.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html
 
 #### ・PHP-FPM：PHP FastCGI Process Manager
 
-PHPのためのCGIプログラム．
-
-![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_application_php_fpm.html
 
 #### ・NGINX Unit
 
 WebサーバのNginxと組み合わせて使用できるミドルウェア．
-
-#### ・CGIプログラム：Common Gateway Interface
-
-![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
 
 <br>
 
