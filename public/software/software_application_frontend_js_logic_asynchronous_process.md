@@ -2,7 +2,7 @@
 
 ## 01. 非同期処理とは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_centos_language_processor.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html
 
 <br>
 

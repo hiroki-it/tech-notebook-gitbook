@@ -6,12 +6,12 @@
 
 『収集されたデータから，システムのリアルタイムな状態を，どれだけ正確に推測できるか』を表す程度のこと．リアルタイムと結び付けて，『プロアクティブ』と表現される．
 
-![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
-
 参考：
 
 - https://ish-ar.io/observability/
 - https://laredoute.io/blog/observability-at-la-redoute/
+
+![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
 
 <br>
 

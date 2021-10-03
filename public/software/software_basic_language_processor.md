@@ -38,40 +38,63 @@ Scala，Groovy，Kotlin，など．Java仮想マシンによって，中間言�
 
 ## 02-02. 処理方式の種類
 
-### 並行処理（Concurrent Processing）
+### 並行処理（Concurrent processing）
 
 #### ・並行処理とは
 
-複数のプロセスシングルスレッド環境下で実現できる．
+プロセスでシングルスレッドが実行されている場合に，複数の処理を『独立的』に実行すること．
 
 参考：
 
-- https://qiita.com/kyabetsuda/items/384a57ff6b7250de40ad
+- https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 - https://moz.hatenablog.jp/entry/2018/04/10/175643
-- https://medium.com/plain-and-simple/synchronous-vs-asynchronous-vs-concurrent-vs-parallel-4342bfb8b9f2
+- https://zenn.dev/hsaki/books/golang-concurrency/viewer/term
 
 #### ・言語別の実現方法
 
-| 言語       | 方法                                                         |
-| ---------- | ------------------------------------------------------------ |
-| JavaScript | Promiseオブジェクトを使用する．                              |
-| Go         | Goroutinesを使用する．<br/>参考：https://golang.org/doc/effective_go#concurrency |
+| 言語 | 方法                                                         |
+| ---- | ------------------------------------------------------------ |
+| Go   | Goroutinesを使用する．<br/>参考：<br>・https://golang.org/doc/effective_go#concurrency<br>・https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e |
 
 <br>
 
-### 並列処理（Parallel Processing）
+### 並列処理（Parallel processing）
 
 #### ・並列処理とは
 
-複数の処理を同時に開始し，実行する．マルチスレッド環境下で実現できる．
+プロセスでマルチスレッドが実行されている場合に，各スレッド上で複数の処理を『同時発生的』に実行すること．開始は同時であるが，終了はバラバラになる．
+
+参考：
+
+- https://techdifferences.com/difference-between-concurrency-and-parallelism.html
+- https://moz.hatenablog.jp/entry/2018/04/10/175643
 
 #### ・言語別の実現方法
 
 | 言語       | 方法                                                         |
 | ---------- | ------------------------------------------------------------ |
-| JavaScript | WebWorkerを使用する．<br>参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers<br>マルチスレッド環境下の並行処理と似て非なるものとして，シングルスレッド環境下での非同期処理がある．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_architecture.html |
-| PHP        | parallelライブラリを使用する．<br>参考：https://github.com/krakjoe/parallel |
+| JavaScript | WebWorkerを使用する．<br>参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers |
+| PHP        | parallelライブラリを使用する．<br>参考：<br>・https://github.com/krakjoe/parallel<br>・https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405 |
 | Go         | 要調査                                                       |
+
+<br>
+
+### 同期処理（Synchronous 9rocessing）
+
+#### ・同期処理とは
+
+<br>
+
+### 非同期処理（Asynchronous 9rocessing）
+
+#### ・非同期処理とは
+
+一連の処理を順不同で実行する．並行処理とは異なることに気を付ける．
+
+参考：
+
+- https://qiita.com/kiyodori/items/da434d169755cbb20447
+- https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
 
 <br>
 

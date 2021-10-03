@@ -1,10 +1,10 @@
-# Amazon Web Service
+# AWS：Amazon Web Service
 
 ## はじめに
 
 本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
@@ -842,49 +842,6 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 <br>
 
 ## 08. CloudWatch
-
-### 監視と可観測性
-
-#### ・監視の種類
-
-監視は以下の種類に大別される．
-
-| 種類     | 説明                                                         |
-| -------- | ------------------------------------------------------------ |
-| 外部監視 | アプリケーション外部からの死活監視．アプリケーションにリクエストを送信し，レスポンスに関して，あらゆる情報を監視する． |
-| 内部監視 | アプリケーション内部からの死活監視．アプリケーションのレスポンスからはわからないあらゆる情報を監視する． |
-| 合成監視 | プログラムを使用して，実際のユーザを模したリクエストをアプリケーションに送信し，外部監視と内部監視を実行する． |
-
-#### ・可観測性
-
-メトリクス，ログ，分散トレースの３要素からなる開発運用手法のこと．NewRelicやDatadogが可観測性を実現できる．また，AWSではCloudWatch（メトリクス＋ログ）とX-Ray（分散トレース）を両方利用すると，これらの要素を満たせたことになり，可観測性を実現できる．
-
-| 種類             | 説明                                                         | 補足 |
-| ---------------- | ------------------------------------------------------------ | ---- |
-| メトリクス       |                                                              |      |
-| ログ             |                                                              |      |
-| 分散トレース | マイクロサービスの各コンポーネントでイベントが発生した時，一連のイベントを因果関係として繋げたデータセットのこと． |      |
-
-
-
-#### ・４大シグナル
-
-| 種類             | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| レイテンシー     | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
-| トラフィック     | 以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html |
-| エラー           | 以下の２種類に分類できる．<br>・明示的エラー：400/500系のレスポンス<br>・暗黙的エラー：SLOに満たない200/300系のレスポンス，API仕様に合っていないレスポンス |
-| サチュレーション | システムの利用率の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．<br>・CPU利用率<br>・メモリ利用率<br>・ストレージ利用率<br> |
-
-#### ・SLI，SLO，エラーバジェット
-
-| 項目                                                   | 説明                                                         |
-| ------------------------------------------------------ | ------------------------------------------------------------ |
-| SLI：<br>Service Level Indicator（サービスレベル指標） | サービスレベルの指標とするメトリクスのこと．<br>・サーバ稼働率<br>・データベース稼働率<br>・レイテンシー<br>・レスポンスタイム<br>・レスポンスのステータスコード率<br>・スループット<br>などが採用される． |
-| SLO：<br>Service Level Objective（サービスレベル目標） | SLIとして採用した指標の目標値のこと．99.9%の成功率を目標とすることが多い．<br/>・サーバ稼働率（日当たり0.1%のダウンタイム）<br/>・データベース稼働率（日当たり0.1%のダウンタイム）<br/>・レイテンシー（日当たり0.1%までのレイテンシー）<br>・レスポンスのステータスコード率（日当たり99.9%の200ステータスコード<br>・スループット（日当たり0.1%のスループット低下）<br> |
-| エラーバジェット                                       | SLOが未達の場合は，新規リリースよりもSLOの達成を優先する．   |
-
-<br>
 
 ### CloudWatchメトリクス
 
@@ -1779,7 +1736,7 @@ ECS_TASK_ID=bar
 bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
 ```
 
-bazコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される）ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
+laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
 
 ```bash
 #!/bin/bash
@@ -1788,7 +1745,7 @@ set -xe
 
 ECS_CLUSTER_NAME=prd-foo-ecs-cluster
 ECS_TASK_ID=bar
-ECS_CONTAINER_NAME=baz
+ECS_CONTAINER_NAME=laravel
 
 aws ecs execute-command \
     --cluster $ECS_CLUSTER_NAME \
@@ -2956,7 +2913,17 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 <br>
 
-## 19. Lambda
+## 19. Kinesis
+
+### Kinesisとは
+
+ストリーミングデータ（動画データ，音声データ，など）を受信し，リアルタイムで継続的に収集／加工／解析を実行する．ちなみに，
+
+参考：https://docs.aws.amazon.com/ja_jp/kinesis/index.html
+
+<br>
+
+## 20. Lambda
 
 ### Lambdaとは
 
@@ -3192,7 +3159,7 @@ Lambdaを実行するためには，デプロイされた関数を使用する�
 
 <br>
 
-## 19-02. Lambda@Edge
+## 20-02. Lambda@Edge
 
 ### Lambda@Edgeとは
 
@@ -3405,7 +3372,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 20. RDS：Relational Database Service
+## 21. RDS：Relational Database Service
 
 ### 設定項目
 
@@ -3697,7 +3664,7 @@ Auroraの場合，フェイルオーバーによって昇格するインスタ�
 
 <br>
 
-## 21. RegionとZone
+## 22. RegionとZone
 
 ### Region
 
@@ -3713,7 +3680,7 @@ Regionとは別に，物理サーバが世界中にあり，これらの間で�
 
 <br>
 
-## 22. Route53
+## 23. Route53
 
 ### Route53とは
 
@@ -3820,7 +3787,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 <br>
 
-## 23. S3：Simple Storage Service
+## 24. S3：Simple Storage Service
 
 ### S3とは
 
@@ -4043,7 +4010,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 <br>
 
-## 24. Security Group
+## 25. Security Group
 
 ### Security Groupとは
 
@@ -4141,7 +4108,7 @@ Regionは，さらに，各データセンターは物理的に独立したAvail
 
 <br>
 
-## 25. SES：Simple Email Service
+## 26. SES：Simple Email Service
 
 ### SESとは
 
@@ -4200,7 +4167,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 26. SNS：Simple Notification Service
+## 27. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -4243,7 +4210,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 27. SQS：Simple Queue Service
+## 28. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -4307,7 +4274,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-## 28. STS：Security Token Service
+## 29. STS：Security Token Service
 
 ### STSとは
 
@@ -4465,7 +4432,7 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 29. Step Functions
+## 30. Step Functions
 
 ### Step Functionsとは
 
@@ -4512,7 +4479,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 30. VPC：Virtual Private Cloud
+## 31. VPC：Virtual Private Cloud
 
 ### VPCとは
 
@@ -4729,7 +4696,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 <br>
 
-## 30-02. VPC間，VPC-オンプレ間の通信
+## 31-02. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
@@ -4791,7 +4758,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 <br>
 
-## 31. WAF：Web Applicarion Firewall
+## 32. WAF：Web Applicarion Firewall
 
 ### 設定項目
 
@@ -4983,7 +4950,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-## 32. WorkMail
+## 33. WorkMail
 
 ### WorkMailとは
 
@@ -5001,7 +4968,7 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 33. 負荷テスト
+## 34. 負荷テスト
 
 ### Distributed Load Testing（分散負荷テスト）
 
@@ -5017,7 +4984,7 @@ AWSから提供されている負荷を発生させるインフラ環境のこ�
 
 <br>
 
-## 34. コスト管理
+## 35. コスト管理
 
 ### コスト管理の観点
 
@@ -5077,7 +5044,7 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 <br>
 
-## 34-02. リソース別コスト
+## 35-02. リソース別コスト
 
 ### CloudFront
 
@@ -5170,11 +5137,9 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 ##### ・レスポンス
 
-
-
 <br>
 
-## 35. タグ
+## 36. タグ
 
 ### タグ付け戦略
 
