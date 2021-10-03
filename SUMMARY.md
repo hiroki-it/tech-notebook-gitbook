@@ -21,7 +21,7 @@
           * [📖 ︎メソッド／データ](public/software/software_application_backend_php_object_orientation_method_data.md)
           * [📖 ︎データ構造](public/software/software_application_backend_php_object_orientation_data_structure.md)
         * ロジック
-          * [📖 ︎バックエンド側の検証ロジック](public/software/software_application_backend_php_logic_validation.md)
+          * [📖 ︎検証ロジック](public/software/software_application_backend_php_logic_validation.md)
           * [📖 ︎エラーとエラーハンドリング](public/software/software_application_backend_php_logic_error_and_error_handling.md)
           * [📖 ︎反復ロジック](public/software/software_application_backend_php_logic_iteration.md)
           * [📖 ︎アルゴリズム](public/software/software_application_backend_php_logic_algorithm.md)
@@ -48,18 +48,20 @@
           * [📖 ︎プロトタイプ](public/software/software_application_frontend_js_object_orientation_prototype.md)
           * [📖 ︎メソッド／データ](public/software/software_application_frontend_js_object_orientation_method_data.md)
         * ロジック
-          * [📖 ︎フロントエンド側の検証ロジック](public/software/software_application_frontend_js_logic_validation.md)
+          * [📖 ︎検証ロジック](public/software/software_application_frontend_js_logic_validation.md)
+          * [📖 ︎非同期処理ロジック](public/software/software_application_frontend_js_logic_asynchronous_process.md)
         * パッケージ／フレームワーク
           * [📖 ︎パッケージ](public/software/software_application_frontend_js_package.md)
           * [📖 ︎Vue.js](public/software/software_application_frontend_js_framework_vuejs.md)
           * [📖 ︎Nuxt.js](public/software/software_application_frontend_js_framework_nuxtjs.md)
         * デバッグ
           * [📖 ︎デバッグのコツ](public/software/software_application_frontend_js_debug.md)
-    * フロントとバック間の連携
-      * [📖 ︎RESTful-API](public/software/software_application_frontend_and_backend_api_restful.md)
-      * [📖 ︎認証／認可](public/software/software_application_frontend_and_backend_authentication_authorization.md)
-      * [📖 ︎JSON](public/software/software_application_frontend_and_backend_json.md)
-      * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_and_backend_browser_rendering.md)
+        * ブラウザ
+          * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_js_browser_rendering.md)
+    * アプリケーション間連携
+      * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
+      * [📖 ︎JSON](public/software/software_application_collaboration_communication.md)
+      * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
   * ミドルウェア
     * Web関連
       * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
@@ -70,11 +72,10 @@
       * [📖 ︎データベース](public/software/software_middleware_database.md)
       * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * 基本ソフトウェア（OS）
-    * CentOS
-      * [📖 ︎ユーティリティ](public/software/software_basic_centos_utility.md)
-      * [📖 ︎言語プロセッサー](public/software/software_basic_centos_language_processor.md)
-      * [📖 ︎カーネル](public/software/software_basic_centos_kernel.md)
+    * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
+    * [📖 ︎言語プロセッサー](public/software/software_basic_language_processor.md)
     * [📖 ︎機械語と進数](public/software/software_basic_machine_language_and_radix.md)
+    * [📖 ︎カーネル](public/software/software_basic_kernel.md)
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
