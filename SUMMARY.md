@@ -73,7 +73,7 @@
       * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * 基本ソフトウェア（OS）
     * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
-    * [📖 ︎言語プロセッサー](public/software/software_basic_language_processor.md)
+    * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
     * [📖 ︎機械語と進数](public/software/software_basic_machine_language_and_radix.md)
     * [📖 ︎カーネル](public/software/software_basic_kernel.md)
 
