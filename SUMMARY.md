@@ -60,7 +60,8 @@
           * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_js_browser_rendering.md)
     * アプリケーション間連携
       * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
-      * [📖 ︎JSON](public/software/software_application_collaboration_communication.md)
+      * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
+      * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
       * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
   * ミドルウェア
     * Web関連
