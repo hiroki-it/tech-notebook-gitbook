@@ -7,12 +7,12 @@
   * [📖 ︎ソフトウェア](public/software/software.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
-        * バックエンドアーキテクチャ
-          * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
-          * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
-          * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
-        * [📖 ︎フロントエンドアーキテクチャ](public/software/software_application_architecture_frontend.md)
-        * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_microservice.md)
+      * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_microservice.md)
+      * [📖 ︎フロントエンドアーキテクチャ](public/software/software_application_architecture_frontend.md)
+      * バックエンドアーキテクチャ
+        * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
+        * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
+        * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
     * バックエンド 
       * PHP
         * クラスベースオブジェクト指向
