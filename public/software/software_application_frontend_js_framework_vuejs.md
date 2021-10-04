@@ -12,11 +12,9 @@
 
 ### MVVMアーキテクチャ，双方向データバインディング
 
-#### ・一般的なMVVMアーキテクチャとは
+### ・MVVMアーキテクチャとは
 
-View層とModel層の間にViewModel層を置き，View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって，View層とModel層の間を疎結合にするための設計手法の一つ．
-
-![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_frontend.html
 
 #### ・ MVVMアーキテクチャにおける各層の責務
 

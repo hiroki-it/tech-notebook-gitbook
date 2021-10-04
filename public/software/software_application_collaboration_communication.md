@@ -14,7 +14,7 @@
 
 #### ・Ajaxとは
 
-JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML，XHTML，CSS，DOM，XML，XSLT，を組み合わせて，
+JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML，XHTML，CSS，DOM，XML，XSLT，を組み合わせる．
 
 #### ・Ajaxの仕組み
 

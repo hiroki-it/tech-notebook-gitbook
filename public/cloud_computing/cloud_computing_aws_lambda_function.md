@@ -8,7 +8,7 @@
 
 <br>
 
-## ハンドラ関数
+## 01. ハンドラ関数
 
 ### ハンドラ関数とは
 
@@ -134,7 +134,7 @@ Lambdaで関数を作成すると，CloudWatchログのロググループに，�
 
 <br>
 
-## Go
+## 02. Go
 
 ### aws-lambda-go
 
@@ -336,7 +336,7 @@ func main() {
 
 <br>
 
-## Node.js
+## 03. Node.js
 
 ### aws-sdk-js
 

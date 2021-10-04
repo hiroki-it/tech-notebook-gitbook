@@ -1697,7 +1697,7 @@ exit ${EXIT_CODE}
 
 ####  ・ECS Exec
 
-ECSタスクのコンテナに対して，シェルログインを実行する．ECSサービスにおけるECS-Execオプションの有効化，ssmmessagesエンドポイントの作成，System ManagerにアクセスするためのIAMポリシーの作成，ECSタスク実行ロールへのIAMポリシーの付与，が必要になる．
+ECSタスクのコンテナに対して，シェルログインを実行する．ECSサービスにおけるECS-Execオプションの有効化，ssmmessagesエンドポイントの作成，System ManagerにアクセスするためのIAMポリシーの作成，ECSタスク実行ロールへのIAMポリシーの付与，IAMユーザへのポリシーの付与，が必要になる．
 
 参考：
 
@@ -1734,6 +1734,26 @@ ECS_CLUSTER_NAME=prd-foo-ecs-cluster
 ECS_TASK_ID=bar
 
 bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+```
+
+ECS Execを実行するユーザに，実行権限のポリシーを付与する必要がある．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ExecuteCommand",
+            ],
+            "Resource": [
+                "arn:aws:ecs:*:<アカウントID>:cluster/*",
+                "arn:aws:ecs:*:<アカウントID>:task/*",
+            ]
+        }
+    ]
+}
 ```
 
 laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
@@ -3493,7 +3513,7 @@ done
 
 上記のシェルスクリプトにより，例えば次のようなログを取得できる．このログからは，```15:23:09 ~ 15:23:14```の間で，接続に失敗していることを確認できる．
 
-```bash
+```log
 ---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
 mysql: [Warning] Using a password on the command line interface can be insecure.
 NOW()
@@ -3549,7 +3569,7 @@ NOW()
 インスタンスに応じたエンドポイントが用意されている．アプリケーションからのCRUDの種類に応じて，アクセス先を振り分けることにより，負荷を分散させられる．読み出しオンリーエンドポイントに対して，READ以外の処理を行うと，以下の通り，エラーとなる．
 
 
-```sql
+```log
 /* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */
 ```
 
@@ -4474,8 +4494,6 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
   }
 }
 ```
-
-
 
 <br>
 

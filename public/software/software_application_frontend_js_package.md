@@ -154,11 +154,9 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 ### モジュールバンドルとは
 
-<br>
-
-### 機能
-
 #### ・読み込むパッケージをまとめる
+
+JavaScriptファイルを読み込むscriptタグを一つにまとめる．HTMLがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，ページの読み込みが早くなる．
 
 参考：https://qiita.com/soarflat/items/28bf799f7e0335b68186
 
@@ -180,7 +178,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 </html>
 ```
 
-モジュールバンドルは，scriptタグでのパッケージの読み込みをまとめる．これがブラウザにレンダリングされると，JavaScriptのファイルへのリクエスト数が減るため，ページの読み込みが早くなる．
+モジュールバンドルは，scriptタグでのパッケージの読み込みをまとめる．
 
 ```html
 <!DOCTYPE html>

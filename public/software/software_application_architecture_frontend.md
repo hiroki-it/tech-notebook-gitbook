@@ -8,11 +8,9 @@
 
 <br>
 
-## 01. フロントエンドアーキテクチャの種類
+## 01. SPA：Single Page Application
 
-### SPA：Single Page Application
-
-#### ・SPAとは
+### SPAとは
 
 | ブラウザレンダリングのステップ | 実行者   |
 | ------------------------------ | -------- |
@@ -27,11 +25,23 @@
 
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
-#### ・MVVMアーキテクチャとは
+<br>
 
-Vue.jsでは，意識せずにMVVMアーキテクチャで実装できるようになっている．詳しくは，Vue.jsのノートを参考にせよ．
+### SPAの実装方法
 
-#### ・MPAとSPAの処理速度の違い
+#### ・MVVMアーキテクチャ
+
+View層とModel層の間にViewModel層を置き，View層とViewModel層の間で双方向にデータをやり取り（双方向データバインディング）することによって，View層とModel層の間を疎結合にするための設計手法の一つ．Vue.jsでは，意識せずにMVVMアーキテクチャで実装できるようになっている．詳しくは，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_framework_vuejs.html
+
+![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/一般的なMVVMアーキテクチャ.png)
+
+<br>
+
+### SPAと従来MPAの比較
+
+#### ・処理速度
 
 MPAと比較して，データを非同期的に通信できるため，1つのWebページの中で必要なデータだけを通信すればよく，レンダリングが速い．
 
@@ -39,16 +49,16 @@ MPAと比較して，データを非同期的に通信できるため，1つのW
 
 <br>
 
-### SSR：Server Side Rendering
+## 02. SSR：Server Side Rendering
 
-#### ・狭義のSSRとは
+### 広義のSSRとは
 
-1つのWebページの中で，サーバとデータを非同期通信し，サーバ側で静的ファイルを生成する方法のこと．
+ブラウザ側ではなくサーバ側でJavaScriptを実行し，静的ファイルを生成する方法のこと．フレームワークのテンプレートエンジンやCGIを用いて，サーバ側で静的ファイルを生成すること，も含まれる．
 
 参考：
 
-- https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
+- https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
 | ブラウザレンダリングのステップ | 実行者   |
 | ------------------------------ | -------- |
@@ -57,23 +67,30 @@ MPAと比較して，データを非同期的に通信できるため，1つのW
 | Rendering                      | サーバ   |
 | Paiting                        | ブラウザ |
 
-#### ・広義のSSR
+<br>
 
-フレームワークには，バックエンド側のテンプレートエンジンによって静的ファイルを生成する機能を持つものがある．広義のSSRにはこれも含まれる．
+### 狭義のSSRとは
+
+広義のSSRにSPAを取り入れた方法のこと．ブラウザ側ではなくサーバ側でJavaScriptを実行し，静的ファイルを生成する．ブラウザ側にレンダリングされた後，アイソモーフィックJavaScriptという仕組みでSPAとして動作する．
+
+参考：
+
+- https://qiita.com/rita0222/items/66fec6e7be5987bace3c
+- https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
 
 <br>
 
-### SSG：Static Site Generation
+## 03. SSG：Static Site Generation
 
-#### ・SSGとは
+### SSGとは
 
 事前にビルドを行って静的ファイルを生成しておく．そして，これをレンダリングし，静的サイトとして稼働させる．動的な要素（例：ランダム表示）を含む静的ファイルについては，該当の部分でAjaxを使用できるようにしておく．
 
 <br>
 
-### ISR：Incremental Static Regeneration
+## 04. ISR：Incremental Static Regeneration
 
-#### ・ISRとは
+### ISRとは
 
 SSGの発展型．SSGとは異なり，事前にビルドせず，静的ファイルを生成しない．その代わり，クライアントからリクエストがあって初めて，そのページのみビルドが実行され，レンダリングされる．クライアントから一回でもリクエストがあったページでは，初回時にビルドされた静的ファイルがその都度レンダリングされる．
 
