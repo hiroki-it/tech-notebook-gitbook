@@ -2202,7 +2202,7 @@
 <tr>
 <td></td>
 <td><a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit" target="_blank">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit</a></td>
-<td>CloudWatchLogs&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
+<td>CloudWatch&#x30ED;&#x30B0;&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x304C;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</td>
 </tr>
 <tr>
 <td></td>
@@ -2370,9 +2370,9 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html" target="_blank">https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html</a></p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>/fluent-bit<span class="token punctuation">]</span>$ <span class="token function">ls</span> -la
 
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">26624256</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:04 cloudwatch.so <span class="token comment"># &#x65E7;CloudWatchLogs&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;</span>
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">26032656</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:04 firehose.s&#x304D;&#x3085;&#x3046; <span class="token comment"># Kinesis Firehose&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3; </span>
--rw-r--r-- <span class="token number">1</span> root root <span class="token number">30016544</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:03 kinesis.so <span class="token comment"># Kinesis Streams&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3; </span>
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">26624256</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:04 cloudwatch.so <span class="token comment"># &#x65E7;cloudwatch_logs&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;</span>
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">26032656</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:04 firehose.so   <span class="token comment"># kinesis_firehose&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3; </span>
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">30016544</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:03 kinesis.so    <span class="token comment"># kinesis_streams&#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3; </span>
 <span class="token punctuation">..</span>.
 </code></pre>
 <h4 id="&#x30FB;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;ecr&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;"><a name="&#x30FB;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;ecr&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;ecr&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;ECR&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;</h4>
@@ -2455,15 +2455,19 @@
 <span class="token punctuation">[</span>FILTER<span class="token punctuation">]</span>
     Name record_modifier
     Match *
-    Record ecs_cluster sample-test-cluster
-    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:123456789012:task/sample-test-cluster/13c0122f7f384cb7a67088d183dd46d9
-    Record ecs_task_definition sample-test-webapp-taskdefinition:9
+    Record ecs_cluster prd-foo-ecs-cluster
+    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<span class="token operator">&lt;</span>&#x30A2;&#x30AB;&#x30A6;&#x30F3;&#x30C8;ID<span class="token operator">&gt;</span>:task/prd-foo-ecs-cluster/*****
+    Record ecs_task_definition prd-foo-ecs-task-definition:1
 
 @INCLUDE /fluent-bit/etc/fluent-bit_custom.conf <span class="token comment"># INCLUDE&#x6587;&#x304C;&#x633F;&#x5165;&#x3055;&#x308C;&#x308B;&#xFF0E;</span>
 
 <span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
-    Name null
-    Match firelens-healthcheck
+    Name laravel
+    Match laravel-firelens*
+
+<span class="token punctuation">[</span>OUTPUT<span class="token punctuation">]</span>
+    Name nginx
+    Match nginx-firelens*
 </code></pre>
 <p>&#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;&#x6A19;&#x6E96;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306F;&#xFF0C;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3059;&#x3067;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;<code>fluent-bit_custom.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306F;INPUT&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x554F;&#x984C;&#x306A;&#x3044;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf" target="_blank">https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf</a></p>
@@ -2671,7 +2675,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Fluentd／FluentBit","level":"1.10.2","depth":2,"next":{"title":"📖 ︎Datadog","level":"1.10.3","depth":2,"path":"public/observability/observability_datadog.md","ref":"public/observability/observability_datadog.md","articles":[]},"previous":{"title":"📖 ︎可観測性","level":"1.10.1","depth":2,"path":"public/observability/observability.md","ref":"public/observability/observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_fluentd_and_fluentbit.md","mtime":"2021-10-02T12:25:43.374Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-04T10:07:04.486Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Fluentd／FluentBit","level":"1.10.2","depth":2,"next":{"title":"📖 ︎Datadog","level":"1.10.3","depth":2,"path":"public/observability/observability_datadog.md","ref":"public/observability/observability_datadog.md","articles":[]},"previous":{"title":"📖 ︎可観測性","level":"1.10.1","depth":2,"path":"public/observability/observability.md","ref":"public/observability/observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_fluentd_and_fluentbit.md","mtime":"2021-10-05T00:46:05.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-05T00:46:12.321Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
