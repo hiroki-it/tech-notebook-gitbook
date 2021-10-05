@@ -189,7 +189,7 @@
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | NewRelic       | https://github.com/newrelic/newrelic-fluent-bit-output       | NewRelicプラグインがインストールされている．                 |
 | AWS            | https://github.com/aws/aws-for-fluent-bit                    | AWSから提供される他の全てのFluentBitイメージを束ねたものであり，AWSの各種リソースに転送するためのプラグインがインストールされている． |
-|                | https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit | CloudWatchLogsプラグインがインストールされている．           |
+|                | https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit | CloudWatchログプラグインがインストールされている．           |
 |                | https://github.com/aws/amazon-kinesis-streams-for-fluent-bit | Kinesis Streamsプラグインがインストールされている．          |
 |                | https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit | Kinesis Firehoseプラグインがインストールされている．         |
 
@@ -401,9 +401,9 @@ FireLensコンテナのベースイメージとなるFluentBitイメージがAWS
 ```bash
 [/fluent-bit]$ ls -la
 
--rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧CloudWatchLogsプラグイン
--rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.sきゅう # Kinesis Firehoseプラグイン 
--rw-r--r-- 1 root root 30016544 Sep  1 18:03 kinesis.so # Kinesis Streamsプラグイン 
+-rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧cloudwatch_logsプラグイン
+-rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.so   # kinesis_firehoseプラグイン 
+-rw-r--r-- 1 root root 30016544 Sep  1 18:03 kinesis.so    # kinesis_streamsプラグイン 
 ...
 ```
 
@@ -508,15 +508,19 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
 [FILTER]
     Name record_modifier
     Match *
-    Record ecs_cluster sample-test-cluster
-    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:123456789012:task/sample-test-cluster/13c0122f7f384cb7a67088d183dd46d9
-    Record ecs_task_definition sample-test-webapp-taskdefinition:9
+    Record ecs_cluster prd-foo-ecs-cluster
+    Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<アカウントID>:task/prd-foo-ecs-cluster/*****
+    Record ecs_task_definition prd-foo-ecs-task-definition:1
     
 @INCLUDE /fluent-bit/etc/fluent-bit_custom.conf # INCLUDE文が挿入される．
 
 [OUTPUT]
-    Name null
-    Match firelens-healthcheck
+    Name laravel
+    Match laravel-firelens*
+    
+[OUTPUT]
+    Name nginx
+    Match nginx-firelens*    
 ```
 
 ちなみに，標準の設定ファイルには，INPUTセクションがすでに定義されているため，```fluent-bit_custom.conf```ファイルではINPUTセクションを定義しなくても問題ない．
@@ -665,7 +669,6 @@ MULTILINE_PARSERセクションにて，スタックトレースログの各行�
     ]
   }
 ]
-
 ```
 
 #### ・name

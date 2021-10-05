@@ -1,8 +1,26 @@
 # 非同期処理ロジック
 
-## 01. 非同期処理とは
+## 01. 非同期処理
+
+### 非同期処理とは
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html
+
+<br>
+
+### Promiseオブジェクト
+
+#### ・Promiseオブジェクトとは
+
+JavaScriptにおいて，非同期処理を提供するオブジェクトのこと．Promiseオブジェクトのコンストラクタに渡した関数は非同期処理となる．Promiseオブジェクトの実装の仕様は取り決められており，以下のリンクを参考にせよ．
+
+参考：https://promisesaplus.com/
+
+#### ・Promiseオブジェクトの種類
+
+ネイティブなJavaScriptのPromiseオブジェクト，JQueryのPromiseオブジェクト，がある．ネイティブの方が，Promiseオブジェクトの仕様により則った機能を持つ．
+
+参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
 <br>
 
@@ -10,19 +28,15 @@
 
 ### Promiseオブジェクト
 
-#### ・Promiseオブジェクトとは
-
-非同期処理を監視し，処理の結果と，その結果のステータスを返却する．
-
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 <br>
 
-### async/await宣言を使用しない場合
+### ```resolve```メソッド，```reject```メソッド
 
-#### ・```resolve```メソッド，```reject```メソッド
+#### ・コンストラクタを使用する場合
 
-Promiseオブジェクト内では暗黙的に```try-catch```が実行されており，結果のステータスが成功であれば```resolve```メソッドの結果を返却し，反対に失敗であれば```reject```メソッドを返却する．両方を実装すると良しなに実行してくれる．```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと，後続の処理も実行される．一つ目の書き方として，Promiseインスタンスのコールバック関数に渡す方法がある．
+Promiseオブジェクトのコンストラクタ内では，暗黙的に```try-catch```が実行されている．そのため，結果のステータスが成功であれば```resolve```メソッドの結果を返却し，反対に失敗であれば```reject```メソッドを返却する．両方を実装すると良しなに実行してくれる．```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと，後続の処理も実行される．一つ目の書き方として，Promiseインスタンスのコールバック関数に渡す方法がある．
 
 ```javascript
 const asyncFunc = () => {
@@ -64,6 +78,8 @@ console.log(asyncFunc());
 // 後続の処理も実行されない．
 // Promise { 'SUCCESS' }
 ```
+
+#### ・コンストラクタを使用しない場合
 
 別の書き方として，Promiseオブジェクトから直接```resolve```メソッドや```reject```メソッドをコールしてもよい．この場合，必ず```return```で返却する必要がある．```return```を使用しないと，何も返却されない．
 
@@ -114,7 +130,7 @@ const asyncFunc = () => {
 console.log(asyncFunc()); // エラーになる
 ```
 
-```shell
+```log
 UnhandledPromiseRejectionWarning: FAILED
 (Use `node --trace-warnings ...` to show where the warning was created)
 UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
@@ -125,7 +141,11 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 参考：https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
 
-#### ・```then```メソッド，```catch```メソッド，```finally```メソッド
+<br>
+
+### ```then```メソッド，```catch```メソッド，```finally```メソッド
+
+#### ・コンストラクタを使用する場合
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -176,11 +196,13 @@ rejectFunc.catch((err) => {
 
 <br>
 
-### async/await宣言を使用する場合
+## 02-02. async/await宣言
 
-#### ・async宣言
+### async宣言
 
-任意の関数を非同期関数化する．Promiseオブジェクトを返却するように定義しなくとも，Promiseオブジェクト返却してくれるため，可読性が高まる．ただし，Promiseオブジェクトを返すようにしても，入れ子にならないように処理してくれる．
+#### ・async宣言とは
+
+関数内で定義された処理を暗黙的にPromiseオブジェクトのコンストラクタに渡してくれる．Promiseオブジェクトを明示的にコールする必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
@@ -236,6 +258,10 @@ const asyncFunc = async () => {
 }
 ```
 
+<br>
+
+### await宣言とは
+
 #### ・await宣言
 
 以降の全処理を```then```メソッドに渡す．Promiseオブジェクトの```then```メソッドに相当するが，```then```メソッドのようにメソッドチェーンする必要はなくなるため，可読性が高い．時間のかかる非同期処理でこれを宣言すると，予期せず処理が流れてしまうことを防げる．
@@ -289,9 +315,13 @@ const asyncFunc = async () => {
 }
 ```
 
-#### ・エラーハンドリング
+<br>
 
-Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，```try-catch```構文とawait宣言を組み合わせて，より可読性高く実装できる．
+### エラーハンドリング
+
+#### ・try-catch
+
+Promiseオブジェクトの```then```メソッド，```catch```メソッド，```finally```メソッドを使用してエラーハンドリングを実装できるが，try-catch文とawait宣言を組み合わせて，より可読性高く実装できる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -331,7 +361,11 @@ const asyncFunc = async () => {
 }
 ```
 
-#### ・スリープ
+<br>
+
+### スリープ
+
+#### ・setTimeout
 
 指定した秒数だけ処理を待機する．
 
@@ -344,9 +378,9 @@ await new Promise((resolve) => {
 
 <br>
 
-## 03. JavaScriptライブラリ
+## 03. JQuery
 
-### JQuery
+### Promiseオブジェクト
 
 #### ・```done```メソッド，```fail```メソッド，```always```メソッド
 
