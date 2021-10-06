@@ -80,6 +80,7 @@
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
+  * [📖 ︎メモリ](public/hardware/hardware_memory.md)
   * [📖 ︎組み込み機器](public/hardware/hardware_embedded_system.md)
 
 * ネットワーク
