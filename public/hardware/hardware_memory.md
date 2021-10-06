@@ -1,5 +1,13 @@
 # メモリ
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. 物理メモリ（RAM + ROM）
 
 ### 物理メモリの種類
@@ -331,11 +339,15 @@ MMUによって，仮想メモリのアドレスは，物理メモリのアド�
 
 CPUのコアが単一のスレッドが紐づくようなマルチスレッドのこと．
 
+参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/multithreading.png)
 
 #### ・同時マルチスレッド
 
 CPUのコアが複数のスレッドが紐づくようなマルチスレッドのこと．
+
+参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
 

@@ -14,7 +14,7 @@
 
 #### ・バージョンを定義
 
-```shell
+```bash
 # 個人的に一番おすすめ
 # キャレット表記
 {
@@ -26,7 +26,7 @@
 }
 ```
 
-```shell
+```bash
 # チルダ表記
 {
   "require": {
@@ -37,7 +37,7 @@
 }
 ```
 
-```shell
+```bash
 # エックス，アスタリスク表記
 {
   "require": {
@@ -53,7 +53,7 @@
 
 名前空間とファイルパスの対応関係を設定する．
 
-```shell
+```bash
 {
     "autoload": {
         "psr-4": {
@@ -72,7 +72,7 @@
 
 その後，名前空間の読み込みを登録する．
 
-```shell
+```bash
 $ composer dump-autoload
 ```
 
@@ -84,7 +84,7 @@ $ composer dump-autoload
 
 パッケージ名を```composer.json```ファイルを書き込む．インストールは行わない．コマンドを使用せずに自分で実装しても良い．
 
-```shell
+```bash
 $ composer require <パッケージ名>:^x.x
 ```
 
@@ -96,7 +96,7 @@ $ composer require <パッケージ名>:^x.x
 
 初めてパッケージをインストールする時，```composer.lock```ファイルにあるパッケージを全てインストールする．```composer.lock```ファイルのおかげで，リポジトリの利用者が，```composer install```の実行時に，共通のバージョンのパッケージをインストールできる．
 
-```shell
+```bash
 $ composer install 
 ```
 
@@ -104,7 +104,7 @@ $ composer install
 
 コマンド処理中のログを表示する
 
-```shell
+```bash
 $ composer install -vvv
 ```
 
@@ -112,7 +112,7 @@ $ composer install -vvv
 
 require-devタグ内のパッケージは除いてインストール
 
-```shell
+```bash
 $ composer install --no-dev
 ```
 
@@ -120,7 +120,7 @@ $ composer install --no-dev
 
 Composerの配布サイトからインストールする．```prefer-source```オプションを使用するよりも高速でインストールできる．デフォルトでdistを使用するため，実際は宣言しなくても問題ない．
 
-```shell
+```bash
 $ composer install --prefer-dist
 ```
 
@@ -128,7 +128,7 @@ $ composer install --prefer-dist
 
 GitHubのComposerリポジトリからインストールする．Composerの開発者用である．
 
-```shell
+```bash
 $ composer install --prefer-source
 ```
 
@@ -140,7 +140,7 @@ $ composer install --prefer-source
 
 パッケージ名を```composer.json```ファイルを元にして，インストールされていないパッケージをインストールし，さらにバージョン定義をもとに更新可能なパッケージを更新する．また，```composer.lock```ファイルに全てのパッケージ情報を書き込むため，リポジトリの利用者がインストールするパッケージにも影響を与える．
 
-```shell
+```bash
 $ composer update
 ```
 
@@ -148,7 +148,7 @@ $ composer update
 
 コマンド処理中のログを表示する
 
-```shell
+```bash
 $ composer install -vvv
 ```
 
@@ -156,7 +156,7 @@ $ composer install -vvv
 
 phpのメモリ上限を無しにして，任意のcomposerコマンドを実行する．phpバイナリファイルを使用する．Dockerコンテナ内で実行する場合，設定画面からコンテナのCPUやメモリを増設することもできる．．
 
-```shell
+```bash
 $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 ```
 
@@ -168,7 +168,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 インストール時に生成されたキャッシュを削除する．
 
-```shell
+```bash
 $ composer clear-cache
 ```
 
@@ -176,13 +176,13 @@ $ composer clear-cache
 
 ユーザが定義したエイリアス名のコマンドを実行する．
 
-```shell
+```bash
 $ composer <エイリアス名>
 ```
 
 あらかじめ，任意のエイリアス名を```scripts```キー下に定義する．エイリアスの中で，実行するコマンドのセットを定義する．
 
-```shell
+```bash
 {
     "scripts": {
         # エイリアス名

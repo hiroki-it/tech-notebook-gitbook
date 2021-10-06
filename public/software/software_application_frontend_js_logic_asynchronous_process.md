@@ -4,7 +4,7 @@
 
 ### 非同期処理とは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html
 
 <br>
 
@@ -12,7 +12,7 @@
 
 #### ・Promiseオブジェクトとは
 
-JavaScriptにおいて，非同期処理を提供するオブジェクトのこと．Promiseオブジェクトのコンストラクタに渡した関数は非同期処理となる．Promiseオブジェクトの実装の仕様は取り決められており，以下のリンクを参考にせよ．
+JavaScriptにおいて，非同期処理の後続の処理を定義できるオブジェクトのこと．Promiseオブジェクトのコンストラクタに渡した関数は，非同期処理の後に実行される．Promiseオブジェクトの実装の仕様は取り決められており，以下のリンクを参考にせよ．
 
 参考：https://promisesaplus.com/
 
@@ -21,8 +21,6 @@ JavaScriptにおいて，非同期処理を提供するオブジェクトのこ�
 ネイティブなJavaScriptのPromiseオブジェクト，JQueryのPromiseオブジェクト，がある．ネイティブの方が，Promiseオブジェクトの仕様により則った機能を持つ．
 
 参考：https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
-
-#### 
 
 | リリース日 | 提供                                 | 種類                | 説明                                                         | 補足                                                         |
 | ---------- | ------------------------------------ | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |

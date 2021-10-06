@@ -6,6 +6,12 @@
 
 ## 02. 非同期通信
 
+### 非同期通信とは
+
+非同期処理の一種である．そのため，非同期通信の完了を待たずに後続の処理が始まる．後続の全処理が非同期通信と無関係であれば，そのままで問題は起こらない．しかし，後続の処理に非同期通信の結果を使用するものが含まれている場合，この処理だけは非同期通信の後に実行されるように定義する必要がある．特定の処理が非同期通信の後に実行されるように定義する方法については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_logic_asynchronous_process.html
+
 <br>
 
 ## 03. JavaScriptにおける非同期通信
@@ -40,7 +46,7 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 | ------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | xhrオブジェクト     | ビルトインオブジェクト | 今では使うことは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
 | ```fetch```メソッド | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
-| JQueryオブジェクト  | JQueryパッケージ       | ```get```メソッド，```post```メソッド，```ajax```メソッドを使用する． | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
+| JQueryオブジェクト  | JQueryパッケージ       |                                                              | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
 | axiosオブジェクト   | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |
 
 <br>
@@ -53,6 +59,8 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 
 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
+**＊実装例＊**
+
 ```javascript
 // URL
 const url = 'https://example.co.jp/';
@@ -63,7 +71,7 @@ const xhr = new XMLHttpRequest();
 xhr.open('GET', url);
 
 // レスポンス受信後の処理
-xhr.onload = function() {
+xhr.onload = () => {
     if(xhr.status === 200) {
         const data = JSON.parse(xhr.responseText);
         console.log(data);
@@ -78,12 +86,14 @@ xhr.send();
 
 参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
+**＊実装例＊**
+
 ```javascript
 // URL
 const url = 'https://example.co.jp/';
 
 // メッセージボディ
-const params = {
+const body = {
     name: 'Hiroki',
     email: 'example@gmail.com',
     password: 'password'
@@ -91,7 +101,7 @@ const params = {
 
 const queries = [];
 
-for(const key in params) {
+for(const key in body) {
     const query = key +'='+ encodeURIComponent(params[key]);
     queries.push(query);
 }
@@ -107,7 +117,7 @@ xhr.open('POST', url);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
 // レスポンス受信後の処理
-xhr.onload = function() {
+xhr.onload = () => {
     if(xhr.status === 200) {
         const data = JSON.parse(xhr.responseText);
         console.log(data);
@@ -124,6 +134,8 @@ xhr.send(queryString);
 
 #### ・GET送信
 
+**＊実装例＊**
+
 ```javascript
 const url = 'https://example.co.jp/';
 
@@ -132,10 +144,12 @@ $.get(url);
 
 #### ・POST送信
 
+**＊実装例＊**
+
 ```javascript
 const url = 'https://example.co.jp/';
 
-const params = {
+const body = {
     name: 'Hiroki',
     email: 'example@gmail.com',
     password: 'password'
@@ -190,10 +204,30 @@ $.ajax({
 
 ### Axiosオブジェクトの場合
 
-#### ・axiosオブジェクトとは
+#### ・GET送信
 
-Ajaxを実現する．HTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
+**＊実装例＊**
 
-参考：https://github.com/axios/axios#axios
+```javascript
+const url = 'https://example.co.jp/';
+
+axios.get(url);
+```
+
+#### ・POST送信
+
+**＊実装例＊**
+
+```javascript
+const url = 'https://example.co.jp/';
+
+const body = {
+    name: 'Hiroki',
+    email: 'example@gmail.com',
+    password: 'password'
+};
+
+axios.post(url, params);
+```
 
 <br>

@@ -14,171 +14,53 @@
 
 プログラム言語のソースコードは，言語プロセッサによって機械語に変換された後，CPUによって読み込まれる．そして，ソースコードに書かれた様々な処理が実行される．
 
+![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
+
 <br>
 
 ### コンパイラ型言語
 
-C#など．コンパイラという言語プロセッサによって，コンパイラ方式で翻訳される言語．
+#### ・コンパイラ型言語とは
+
+コンパイラという言語プロセッサによって，コンパイラ方式で翻訳される言語．
+
+#### ・例
+
+Go，C，C#，など．
 
 <br>
 
 ### インタプリタ型言語
 
-PHP，Ruby，JavaScript，Python，など．インタプリタという言語プロセッサによって，インタプリタ方式で翻訳される言語をインタプリタ型言語という．
+#### ・インタプリタ型言語とは
+
+インタプリタという言語プロセッサによって，インタプリタ方式で翻訳される言語をインタプリタ型言語という．
+
+#### ・例
+
+PHP，Ruby，JavaScript，Python，など．
 
 <br>
 
-### Java仮想マシン型言語
+### 中間型言語
 
-Scala，Groovy，Kotlin，など．Java仮想マシンによって，中間言語方式で翻訳される．
+#### ・中間型言語とは
 
-![コンパイル型とインタプリタ型言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイル型とインタプリタ型言語.jpg)
+Java仮想マシンによって，中間言語方式で翻訳される．
 
-<br>
+参考：https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
 
-## 02. 処理方式の種類
+#### ・例
 
-### 並行処理（Concurrent processing）
-
-#### ・並行処理とは
-
-プロセスでシングルスレッドが実行されている場合に，複数の処理を『独立的』に実行すること．
-
-参考：
-
-- https://techdifferences.com/difference-between-concurrency-and-parallelism.html
-- https://moz.hatenablog.jp/entry/2018/04/10/175643
-- https://zenn.dev/hsaki/books/golang-concurrency/viewer/term
-
-#### ・言語別の実現方法
-
-| 言語 | 方法                                                         |
-| ---- | ------------------------------------------------------------ |
-| Go   | Goroutinesを使用する．<br/>参考：<br>・https://golang.org/doc/effective_go#concurrency<br>・https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e |
+Java，Scala，Groovy，Kotlin，など．
 
 <br>
 
-### 並列処理（Parallel processing）
-
-#### ・並列処理とは
-
-プロセスでマルチスレッドが実行されている場合に，各スレッド上で複数の処理を『同時発生的』に実行すること．開始は同時であるが，終了はバラバラになる．
-
-参考：
-
-- https://techdifferences.com/difference-between-concurrency-and-parallelism.html
-- https://moz.hatenablog.jp/entry/2018/04/10/175643
-
-#### ・言語別の実現方法
-
-| 言語       | 方法                                                         |
-| ---------- | ------------------------------------------------------------ |
-| JavaScript | WebWorkerを使用する．<br>参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers |
-| PHP        | parallelライブラリを使用する．<br>参考：<br>・https://github.com/krakjoe/parallel<br>・https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405 |
-| Go         | 要調査                                                       |
-
-<br>
-
-### 同期処理（Synchronous 9rocessing）
-
-#### ・同期処理とは
-
-プログラムの一連の処理を上から順番に実行する．
-
-<br>
-
-### 非同期処理（Asynchronous 9rocessing）
-
-#### ・非同期処理とは
-
-プログラムの一連の処理を順不同で実行する．並行処理とは異なることに気を付ける．
-
-参考：
-
-- https://qiita.com/kiyodori/items/da434d169755cbb20447
-- https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
-
-<br>
-
-## 03. 実行のエントリポイント
-
-### 動的型付け型言語の場合
-
-#### ・エントリポイント
-
-動的型付け言語では，エントリポイントが指定プログラムの先頭行と決まっており，そこから枝分かれ状に処理が実行されていく．
-
-#### ・PHPの場合
-
-PHPでは，```index.php```ファイルがエントリポイントと決められている．その他のファイルにはエントリポイントは存在しない．
-
-```php
-<?php
-
-use App\Kernel;
-use Symfony\Component\ErrorHandler\Debug;
-use Symfony\Component\HttpFoundation\Request;
-
-// まず最初に，bootstrap.phpを読み込む．
-require dirname(__DIR__) . "/config/bootstrap.php";
-
-if ($_SERVER["APP_DEBUG"]) {
-    umask(0000);
-    
-    Debug::enable();
-}
-
-if ($trustedProxies = $_SERVER["TRUSTED_PROXIES"]?? $_ENV["TRUSTED_PROXIES"] ?? false) {
-    Request::setTrustedProxies(explode(",", $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
-}
-
-if ($trustedHosts = $_SERVER["TRUSTED_HOSTS"] ?? $_ENV["TRUSTED_HOSTS"] ?? false) {
-    Request::setTrustedHosts([$trustedHosts]);
-}
-
-$kernel = new Kernel($_SERVER["APP_ENV"], (bool)$_SERVER["APP_DEBUG"]);
-$request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
-$kernel->terminate($request, $response);
-```
-
-<br>
-
-### 静的型付け型言語の場合
-
-#### ・エントリポイント
-
-静的型付け言語では，エントリポイントが決まっておらず，自身で定義する必要がある．
-
-#### ・Java
-
-Javaでは，「```public static void main(String[] args)```メソッドを定義した場所がエントリポイントになる．
-
-```java
-import java.util.*;
-
-public class Age
-{
-    // エントリポイントとなるメソッド
-    public static void main(String[] args)
-    {
-        // 定数を定義．
-        final int age = 20;
-        System.out.println("私の年齢は" + age);
-
-        // 定数は再定義できないので，エラーになる．
-        age = 31;
-        System.out.println("…いや，本当の年齢は" + age);
-    }
-}
-```
-
-<br>
-
-## 04. 言語プロセッサによる翻訳方式
+## 02. 言語プロセッサによる翻訳方式
 
 ### アセンブラ方式
+
+#### ・アセンブラ方式とは
 
 アセンブリ型言語を機械語に翻訳する方法のこと．
 
@@ -186,21 +68,25 @@ public class Age
 
 ### コンパイラ方式
 
+#### ・コンパイラ方式とは
+
 コンパイラ型言語を機械語に翻訳する方法のこと．
 
 <br>
 
 ### インタプリタ方式
 
+#### ・インタプリタ方式とは
+
 インタプリタ型言語を機械語に翻訳する方法のこと．
 
 <br>
 
-## 04-02. アセンブリ型言語の機械語翻訳
+## 02-02. アセンブリ型言語の機械語翻訳
 
 <br>
 
-## 04-03. コンパイラ型言語の機械語翻訳
+## 02-03. コンパイラ型言語の機械語翻訳
 
 ### コンパイラ方式
 
@@ -312,7 +198,7 @@ $ make clean
 
 <br>
 
-## 04-04. インタプリタ型言語の機械語翻訳
+## 02-04. インタプリタ型言語の機械語翻訳
 
 ### インタプリタ方式
 
@@ -382,7 +268,7 @@ Webサーバを仮想的に構築する時，PHPの言語プロセッサが同�
 
 <br>
 
-## 04-05. 中間型言語の機械語翻訳
+## 02-05. 中間型言語の機械語翻訳
 
 ### 中間言語方式
 
