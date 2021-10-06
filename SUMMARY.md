@@ -5,6 +5,22 @@
 
 * ソフトウェア
   * [📖 ︎ソフトウェア](public/software/software.md)
+  * 基本ソフトウェア（OS）
+    * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
+    * [📖 ︎カーネル](public/software/software_basic_kernel.md)
+    * 言語プロセッサ
+      * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
+      * [📖 ︎言語別の処理方式](public/software/software_basic_language_processor_process_mode.md)
+      * [📖 ︎機械語と進数](public/software/software_basic_language_processor_machine_language_and_radix.md)
+  * ミドルウェア
+    * Web関連
+      * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
+      * [📖 ︎Apache](public/software/software_middleware_web_apache.md)
+    * アプリケーション関連
+      * [📖 ︎PHP-FPM](public/software/software_middleware_application_php_fpm.md)
+    * データベース関連
+      * [📖 ︎データベース](public/software/software_middleware_database.md)
+      * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
       * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_microservice.md)
@@ -63,20 +79,6 @@
       * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
       * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
       * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
-  * ミドルウェア
-    * Web関連
-      * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
-      * [📖 ︎Apache](public/software/software_middleware_web_apache.md)
-    * アプリケーション関連
-      * [📖 ︎PHP-FPM](public/software/software_middleware_application_php_fpm.md)
-    * データベース関連
-      * [📖 ︎データベース](public/software/software_middleware_database.md)
-      * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
-  * 基本ソフトウェア（OS）
-    * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
-    * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
-    * [📖 ︎機械語と進数](public/software/software_basic_machine_language_and_radix.md)
-    * [📖 ︎カーネル](public/software/software_basic_kernel.md)
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
