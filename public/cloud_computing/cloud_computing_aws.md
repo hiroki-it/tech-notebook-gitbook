@@ -394,7 +394,7 @@ API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由�
 {
   "resource": "Resource path",
   "path": "Path parameter",
-  "httpMethod": "Incoming request"s method name",
+  "httpMethod": "Incoming request's method name",
   "headers": {String containing incoming request headers},
   "multiValueHeaders": {List of strings containing incoming request headers},
   "queryStringParameters": {query string parameters },
