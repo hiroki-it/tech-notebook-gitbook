@@ -83,13 +83,15 @@ Scala，Groovy，Kotlin，など．Java仮想マシンによって，中間言�
 
 #### ・同期処理とは
 
+プログラムの一連の処理を上から順番に実行する．
+
 <br>
 
 ### 非同期処理（Asynchronous 9rocessing）
 
 #### ・非同期処理とは
 
-一連の処理を順不同で実行する．並行処理とは異なることに気を付ける．
+プログラムの一連の処理を順不同で実行する．並行処理とは異なることに気を付ける．
 
 参考：
 
@@ -194,15 +196,24 @@ public class Age
 
 <br>
 
-## 04-02. コンパイラ型言語の機械語翻訳
+## 04-02. アセンブリ型言語の機械語翻訳
+
+<br>
+
+## 04-03. コンパイラ型言語の機械語翻訳
 
 ### コンパイラ方式
 
 #### ・機械語翻訳と実行のタイミング
 
-コードを，バイナリ形式のオブジェクトコードとして，まとめて機械語に翻訳した後，CPUに対して命令が実行される．
+コードを，バイナリ形式のオブジェクトコードとして，まとめて機械語に翻訳した後，CPU上で命令が実行される．命令の結果はメモリに保管される．
 
-![コンパイラ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/コンパイラ言語.png)
+参考：
+
+- http://samuiui.com/2019/02/24/google-colaboratory%E3%81%A7python%E5%85%A5%E9%96%80/
+- https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+
+![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/compiler_language.png)
 
 #### ・ビルド（コンパイル＋リンク）
 
@@ -301,15 +312,20 @@ $ make clean
 
 <br>
 
-## 04-03. インタプリタ型言語の機械語翻訳
+## 04-04. インタプリタ型言語の機械語翻訳
 
 ### インタプリタ方式
 
 #### ・機械語翻訳と実行のタイミング
 
-コードを，一行ずつ機械語に変換し，その都度，CPUに対して命令が実行される．
+コードを，一行ずつ機械語に変換し，その都度，CPU上で命令が実行される．命令の結果はメモリに保管される．
 
-![インタプリタ言語](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/インタプリタ言語.png)
+参考：
+
+- http://samuiui.com/2019/02/24/google-colaboratory%E3%81%A7python%E5%85%A5%E9%96%80/
+- https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+
+![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 
 コマンドラインでそのまま入力し，機械語翻訳と実行を行うことができる．
 
@@ -366,7 +382,7 @@ Webサーバを仮想的に構築する時，PHPの言語プロセッサが同�
 
 <br>
 
-## 04-04. Java仮想マシン型言語の機械語翻訳
+## 04-05. 中間型言語の機械語翻訳
 
 ### 中間言語方式
 

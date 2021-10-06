@@ -851,7 +851,7 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 # 設定
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO="hasegawafeedshop@gmail.com"
+MAILTO="example@gmail.com"
 LANG=ja_JP.UTF-8
 LC_ALL=ja_JP.UTF-8
 CONTENT_TYPE=text/plain; charset=UTF-8

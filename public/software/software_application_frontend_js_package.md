@@ -58,7 +58,7 @@ $ npm init
   # 著者名
   "author": {
     "name": "Hiroki Hasegawa",
-    "email": "hasegawafeedshop@gmail.com",
+    "email": "example@gmail.com",
     "url": "https://github.com/hiroki-it"
   },
   "license": "ISC",

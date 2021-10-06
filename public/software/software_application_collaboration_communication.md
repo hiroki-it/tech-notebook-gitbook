@@ -32,58 +32,121 @@ JavaScriptで非同期通信を実現する手法のこと．JavaScript，HTML�
 10. オブジェクトがマークアップ言語に出力される．
 11. DOMを用いて，Webページを再び構成する．
 
-<br>
-
-### Ajaxの実装方法
-
-#### ・実装方法の種類
+####  ・実装方法の種類
 
 歴史的に，Ajaxを実装するための方法がいくつかある．
 
-| 種類                 | 提供                   | 説明                                                         | 補足                                                         |
-| -------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| XMLHttpRequestクラス | ビルトインオブジェクト | 今では使うことは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
-| ```fetch```メソッド  | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
-| JQueryオブジェクト   | JQueryパッケージ       | ```get```メソッド，```post```メソッド，```ajax```メソッドを使用する． | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
-| axiosオブジェクト    | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |
-
-#### ・追加オプション
-
-コールバック関数地獄など，非同期処理の実装時に起こる問題点を解決するための方法がある．
-
-| 種類                 | 提供                   | 説明                                                         | 補足                                                         |
-| -------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promiseオブジェクト  | ビルトインオブジェクト | JQueryのPromiseオブジェクトを参考にして，ES2015から新しく使用できるようになった． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise |
-| async/awaitを宣言    | ビルトインオブジェクト | ES2017から新しく使用できるようになった．ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの． | 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
-| Deferredオブジェクト | JQueryパッケージ       |                                                              | 参考：https://api.jquery.com/category/deferred-object/       |
+| 種類                | 提供                   | 説明                                                         | 補足                                                         |
+| ------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| xhrオブジェクト     | ビルトインオブジェクト | 今では使うことは少ないが，Ajaxが登場した初期の頃によく使われた． | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
+| ```fetch```メソッド | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |
+| JQueryオブジェクト  | JQueryパッケージ       | ```get```メソッド，```post```メソッド，```ajax```メソッドを使用する． | 参考：<br/>・https://api.jquery.com/category/ajax/shorthand-methods/<br/>・https://api.jquery.com/jquery.ajax |
+| axiosオブジェクト   | Axiosパッケージ        |                                                              | 参考：https://github.com/axios/axios#request-method-aliases  |
 
 <br>
 
 ## 03-02. 実装
 
-### JQueryオブジェクトの場合
+### xhrオブジェクトの場合
 
-#### ・```get```メソッド，```post```メソッド
+#### ・GET送信
+
+参考：https://blog.capilano-fw.com/?p=6920#Ajax
 
 ```javascript
-const url = "https://www.google.co.jp/";
+// URL
+const url = 'https://example.co.jp/';
+
+const xhr = new XMLHttpRequest();
+
+// HTTPメソッドを指定
+xhr.open('GET', url);
+
+// レスポンス受信後の処理
+xhr.onload = function() {
+    if(xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        console.log(data);
+    }
+};
+
+// 最後に送信を実行
+xhr.send();
+```
+
+#### ・POST送信
+
+参考：https://blog.capilano-fw.com/?p=6920#Ajax
+
+```javascript
+// URL
+const url = 'https://example.co.jp/';
+
+// メッセージボディ
+const params = {
+    name: 'Hiroki',
+    email: 'example@gmail.com',
+    password: 'password'
+};
+
+const queries = [];
+
+for(const key in params) {
+    const query = key +'='+ encodeURIComponent(params[key]);
+    queries.push(query);
+}
+
+const queryString = queries.join('&');
+
+const xhr = new XMLHttpRequest();
+
+// HTTPメソッドを指定
+xhr.open('POST', url);
+
+// 送信するデータ型
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+// レスポンス受信後の処理
+xhr.onload = function() {
+    if(xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        console.log(data);
+    }
+};
+
+// 最後に送信を実行
+xhr.send(queryString);
+```
+
+<br>
+
+### JQueryオブジェクトの場合
+
+#### ・GET送信
+
+```javascript
+const url = 'https://example.co.jp/';
 
 $.get(url);
 ```
 
+#### ・POST送信
+
 ```javascript
-const url = "https://www.google.co.jp/";
+const url = 'https://example.co.jp/';
 
 const params = {
-    name: "Hiroki",
+    name: 'Hiroki',
+    email: 'example@gmail.com',
+    password: 'password'
 };
 
 $.post(url, params);
 ```
 
-#### ・```ajax```メソッド
+#### ・任意のHTTPメソッド
 
-Ajaxを実現する．HTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
+任意のHTTPメソッド，URL，ヘッダー，メッセージボディなどを設定し，非同期的にデータを送受信する．Promiseオブジェクトを返却する．
 
 参考：https://api.jquery.com/jquery.ajax
 
@@ -98,27 +161,28 @@ $.ajax({
     //  リクエストメッセージ
     // ###################
 
-    // HTTPメソッドを指定
-    type: "POST",
+    // HTTPメソッド
+    type: 'POST',
 
-    // ルートとパスパラメータを指定
-    url: "/xxx/xxx/" + id + "/",
+    // URL
+    url: '/xxx/xxx/' + id + '/',
 
-    // 送信するデータの形式を指定
-    contentType: "application/json",
+    // 送信するデータ型
+    contentType: 'application/json',
 
     // メッセージボディ
     data: {
-        param1: "AAA",
-        param2: "BBB"
+        name: 'Hiroki',
+        email: 'example@gmail.com',
+        password: 'password'
     },
 
     // ###################
     //  レスポンスメッセージ
     // ###################
 
-    // 受信するメッセージボディのデータ型を指定
-    dataType: "json",
+    // 受信するデータ型
+    dataType: 'json',
 })
 ```
 

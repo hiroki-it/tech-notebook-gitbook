@@ -829,7 +829,7 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 
 #### ・Bindマウントとは
 
-ホストOSの```/Users```ディレクトリをコンテナ側にマウントする方法．コンテナで作成されたデータをホストOSに永続化する方法として，非推奨である．また，Dockerfileまたはdocker-composeファイルに記述する方法があるが，後者が推奨である．
+ホストOSの```/Users```ディレクトリをコンテナ側にマウントする方法．ホストOSで作成されるデータが継続的に変化する場合に適しており，例えばアプリケーションをホストコンテナ間と共有する方法として推奨である．しかし，ホストOSのデータを永続化する方法としては不適である．また，Dockerfileまたはdocker-composeファイルに記述する方法があるが，後者が推奨である．
 
 ![bindマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bindマウント.png)
 
@@ -857,7 +857,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ・Volumeマウントとは
 
-ホストOSにあるDockerエリアのマウントポイントをコンテナ側にマウントする方法．コンテナで作成されたデータをホストOSに永続化する方法として推奨である．
+ホストOSにあるDockerエリアのマウントポイントをコンテナ側にマウントする方法．ホストOSで作成されるデータがめったに変化しない場合に適しており，例えばDBのデータをホストコンテナ間と共有する方法として推奨である．
 
 ![volumeマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/volumeマウント.png)
 

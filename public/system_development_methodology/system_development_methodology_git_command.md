@@ -148,7 +148,7 @@ $ git config --local user.name "hiroki-it"
 AuthorとCommitterのメールアドレスを設定する．```local```が一番最後に上書きされ，適用される．
 
 ```bash
-$ git config --local user.email "hasegawafeedshop@gmail.com"
+$ git config --local user.email "example@gmail.com"
 ```
 
 Authorの情報は，コミット時に反映される．（Committerは表示されない）
@@ -662,9 +662,9 @@ git filter-branch -f --env-filter "
     # Author名かCommitter名のいずれかが誤っていれば適用します．
     if [ ${GIT_AUTHOR_NAME}="Hiroki-Hasegawa" -o ${GIT_COMMITTER_NAME}="Hiroki-Hasegawa" ] ; then
     export GIT_AUTHOR_NAME="hiroki-it"
-    export GIT_AUTHOR_EMAIL="hasegawafeedshop@gmail.com"
+    export GIT_AUTHOR_EMAIL="example@gmail.com"
     export GIT_COMMITTER_NAME="hiroki-it"
-    export GIT_COMMITTER_EMAIL="hasegawafeedshop@gmail.com"
+    export GIT_COMMITTER_EMAIL="example@gmail.com"
 fi"
 ```
 
@@ -792,9 +792,9 @@ $ git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | he
 ```bash
 $ git filter-branch -f --env-filter \
     "GIT_AUTHOR_NAME="hiroki-it"; \
-     GIT_AUTHOR_EMAIL="hasegawafeedshop@gmail.com"; \
+     GIT_AUTHOR_EMAIL="example@gmail.com"; \
      GIT_COMMITTER_NAME="hiroki-it"; \
-     GIT_COMMITTER_EMAIL="hasegawafeedshop@gmail.com";" \
+     GIT_COMMITTER_EMAIL="example@gmail.com";" \
     HEAD
 ```
 
