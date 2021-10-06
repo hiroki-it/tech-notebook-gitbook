@@ -81,7 +81,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="検索すると入力" />
+    <input type="text" placeholder="検索" />
 </div>
 
             
@@ -1270,7 +1270,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../hardware/hardware_embedded_system.html">
+        <li class="chapter " data-level="1.4.2" data-path="../hardware/hardware_memory.html">
+            
+                <a href="../hardware/hardware_memory.html">
+            
+                    
+                    📖 ︎メモリ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../hardware/hardware_embedded_system.html">
             
                 <a href="../hardware/hardware_embedded_system.html">
             
@@ -2141,7 +2154,7 @@ Changes to be committed:
 </code></pre>
 <h4 id="&#x30FB;config---&#x5F71;&#x97FF;&#x7BC4;&#x56F2;-useremail"><a name="&#x30FB;config---&#x5F71;&#x97FF;&#x7BC4;&#x56F2;-useremail" class="plugin-anchor" href="#&#x30FB;config---&#x5F71;&#x97FF;&#x7BC4;&#x56F2;-useremail"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>config --[&#x5F71;&#x97FF;&#x7BC4;&#x56F2;] user.email</code></h4>
 <p>Author&#x3068;Committer&#x306E;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<code>local</code>&#x304C;&#x4E00;&#x756A;&#x6700;&#x5F8C;&#x306B;&#x4E0A;&#x66F8;&#x304D;&#x3055;&#x308C;&#xFF0C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">git</span> config --local user.email <span class="token string">&quot;hasegawafeedshop@gmail.com&quot;</span>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">git</span> config --local user.email <span class="token string">&quot;example@gmail.com&quot;</span>
 </code></pre>
 <p>Author&#x306E;&#x60C5;&#x5831;&#x306F;&#xFF0C;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x6642;&#x306B;&#x53CD;&#x6620;&#x3055;&#x308C;&#x308B;&#xFF0E;&#xFF08;Committer&#x306F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF09;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">git</span> log
@@ -2526,9 +2539,9 @@ Successfully rebased and updated refs/heads/develop.
     # Author&#x540D;&#x304B;Committer&#x540D;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x304C;&#x8AA4;&#x3063;&#x3066;&#x3044;&#x308C;&#x3070;&#x9069;&#x7528;&#x3057;&#x307E;&#x3059;&#xFF0E;
     if [ <span class="token variable">${GIT_AUTHOR_NAME}</span>=&quot;</span>Hiroki-Hasegawa<span class="token string">&quot; -o <span class="token variable">${GIT_COMMITTER_NAME}</span>=&quot;</span>Hiroki-Hasegawa<span class="token string">&quot; ] ; then
     export GIT_AUTHOR_NAME=&quot;</span>hiroki-it<span class="token string">&quot;
-    export GIT_AUTHOR_EMAIL=&quot;</span>hasegawafeedshop@gmail.com<span class="token string">&quot;
+    export GIT_AUTHOR_EMAIL=&quot;</span>example@gmail.com<span class="token string">&quot;
     export GIT_COMMITTER_NAME=&quot;</span>hiroki-it<span class="token string">&quot;
-    export GIT_COMMITTER_EMAIL=&quot;</span>hasegawafeedshop@gmail.com<span class="token string">&quot;
+    export GIT_COMMITTER_EMAIL=&quot;</span>example@gmail.com<span class="token string">&quot;
 fi&quot;</span>
 </code></pre>
 <h4 id="&#x30FB;rebase---onto-&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x8AA4;&#x3063;&#x3066;&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x6D3E;&#x751F;&#x5143;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;"><a name="&#x30FB;rebase---onto-&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x8AA4;&#x3063;&#x3066;&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x6D3E;&#x751F;&#x5143;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;" class="plugin-anchor" href="#&#x30FB;rebase---onto-&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x8AA4;&#x3063;&#x3066;&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;-&#x6D3E;&#x751F;&#x5143;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>rebase --onto [&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&gt; [&#x8AA4;&#x3063;&#x3066;&#x6D3E;&#x751F;&#x5143;&#x306B;&#x3057;&#x305F;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&gt; [&#x6D3E;&#x751F;&#x5143;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x3044;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x540D;&gt;</code></h4>
@@ -2604,9 +2617,9 @@ $ <span class="token function">git</span> pull --all
 <p>&#x5168;&#x3066;&#x306E;&#x30B3;&#x30DF;&#x30C3;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3068;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3059;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">git</span> filter-branch -f --env-filter <span class="token punctuation">\</span>
     <span class="token string">&quot;GIT_AUTHOR_NAME=&quot;</span>hiroki-it<span class="token string">&quot;; \
-     GIT_AUTHOR_EMAIL=&quot;</span>hasegawafeedshop@gmail.com<span class="token string">&quot;; \
+     GIT_AUTHOR_EMAIL=&quot;</span>example@gmail.com<span class="token string">&quot;; \
      GIT_COMMITTER_NAME=&quot;</span>hiroki-it<span class="token string">&quot;; \
-     GIT_COMMITTER_EMAIL=&quot;</span>hasegawafeedshop@gmail.com<span class="token string">&quot;;&quot;</span> <span class="token punctuation">\</span>
+     GIT_COMMITTER_EMAIL=&quot;</span>example@gmail.com<span class="token string">&quot;;&quot;</span> <span class="token punctuation">\</span>
     HEAD
 </code></pre>
 <h4 id="&#x30FB;filter-branch--f---tree-filter"><a name="&#x30FB;filter-branch--f---tree-filter" class="plugin-anchor" href="#&#x30FB;filter-branch--f---tree-filter"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>filter-branch -f --tree-filter</code></h4>
@@ -2658,7 +2671,7 @@ $ <span class="token function">git</span> gc --aggressive --prune<span class="to
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Gitコマンド","level":"1.11.3.2","depth":3,"next":{"title":"統計解析","level":"1.12","depth":1,"ref":"","articles":[{"title":"📖 ︎R言語","level":"1.12.1","depth":2,"path":"public/statistic_analysis/statistic_analysis_r.md","ref":"public/statistic_analysis/statistic_analysis_r.md","articles":[]}]},"previous":{"title":"📖 ︎GitHub","level":"1.11.3.1","depth":3,"path":"public/system_development_methodology/system_development_methodology_github.md","ref":"public/system_development_methodology/system_development_methodology_github.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/system_development_methodology/system_development_methodology_git_command.md","mtime":"2021-10-02T16:53:18.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-05T00:46:12.321Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Gitコマンド","level":"1.11.3.2","depth":3,"next":{"title":"統計解析","level":"1.12","depth":1,"ref":"","articles":[{"title":"📖 ︎R言語","level":"1.12.1","depth":2,"path":"public/statistic_analysis/statistic_analysis_r.md","ref":"public/statistic_analysis/statistic_analysis_r.md","articles":[]}]},"previous":{"title":"📖 ︎GitHub","level":"1.11.3.1","depth":3,"path":"public/system_development_methodology/system_development_methodology_github.md","ref":"public/system_development_methodology/system_development_methodology_github.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/system_development_methodology/system_development_methodology_git_command.md","mtime":"2021-10-06T01:28:04.237Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-06T01:56:18.832Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
