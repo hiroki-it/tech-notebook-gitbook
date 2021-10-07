@@ -227,7 +227,7 @@ function methodA(){
 ### JS形式におけるイベントハンドラ関数のコール
 
 
-#### ・```document.getElementById()```
+#### ・```document.getElementById```関数
 
 指定したIDに対して，一つのイベントと一つのイベントハンドラ関数を紐づける．
 
@@ -239,7 +239,7 @@ document.getElementById("btn").onclick = function(){
 ```
 
 
-#### ・```document.addEventListener()```
+#### ・```document.addEventListener```関数
 
 一つのイベントに対して，一つ以上のイベントハンドラ関数を紐づける．```false```を設定することで，イベントバブリングを行わせない．
 

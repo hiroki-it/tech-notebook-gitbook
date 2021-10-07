@@ -24,7 +24,7 @@
 
 動的型付け言語では，エントリポイントの定義方法が強制されず，指定したファイルの先頭行がエントリポイントになる．ただし慣例として，『```index```』という名前のファイルをエントリポイントとする言語が多い．
 
-#### ・PHP
+#### ・PHPの場合
 
 慣例として```index.php```ファイルをエントリポイントとすることになっている．
 
@@ -36,7 +36,7 @@
 
 静的型付け言語では，エントリポイントの定義方法が強制される．『```main```』という名前の関数でエントリポイントを定義させる言語が多い．
 
-#### ・Java
+#### ・Javaの場合
 
 修飾子が『```public static```』，返却値型が『```void```』，引数名が『```args```』，引数型が『```String[]```』である```main```関数が，自動的にエントリポイントになる．
 
@@ -53,7 +53,7 @@ public class Age
 }
 ```
 
-#### ・Go
+#### ・Goの場合
 
 パッケージ名が『```main```』である````main```が，自動的にエントリポイントとなる．
 
@@ -84,15 +84,6 @@ func main() {
 
 ### 言語別の並行処理
 
-#### ・Go
-
-Goroutinesを使用する．
-
-参考：
-
-- https://golang.org/doc/effective_go#concurrency
-- https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e
-
 <br>
 
 ## 03. 並列処理（Parallel processing）
@@ -110,7 +101,7 @@ Goroutinesを使用する．
 
 ### 言語別の並列処理
 
-#### ・PHP
+#### ・PHPの場合
 
 parallelライブラリを使用する．
 
@@ -119,27 +110,37 @@ parallelライブラリを使用する．
 - https://github.com/krakjoe/parallel
 - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
 
-#### ・JavaScript
+#### ・JavaScriptの場合
 
   WebWorkerを使用する．
 
 参考：https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
+#### ・Goの場合
+
+Goroutinesを使用する．ただし，実行環境によっては並列処理にならずに，並行処理になってしまうことがある．それが理由かどうかはわからないが，Goのドキュメントでは，Goroutinesは```concurrency```の項目に記載されている．
+
+参考：
+
+- https://medium.com/sprocket-inc/goroutine-concurrent-and-parallel-programming-669eaae55e73
+- https://golang.org/doc/effective_go#concurrency
+- https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e
+
 <br>
 
-## 04. 同期処理（Synchronous 9rocessing）
+## 04. 同期処理（Synchronous processing）
 
 ### 同期処理とは
 
-プログラムの一連の処理を上から順番に実行する．
+完了を待ってから後続の処理が始まるような処理のこと．
 
 <br>
 
-## 05. 非同期処理（Asynchronous 9rocessing）
+## 05. 非同期処理（Asynchronous processing）
 
 ### 非同期処理とは
 
-一連の処理の中に非同期処理が含まれる場合，非同期処理の完了を待たずに後続の処理が始まる．
+完了を待たずに後続の処理が始まり，後続の処理と同時に実行されるような処理のこと．
 
 参考：
 
@@ -154,7 +155,6 @@ parallelライブラリを使用する．
 
 後続の全処理が非同期処理と無関係であれば，そのままで問題は起こらない．しかし，後続の処理に非同期処理の結果を使用するものが含まれている場合，この処理だけは非同期処理の後に実行されるように定義する必要がある．言語別にこれを定義できる機能が提供されている．
 
-#### ・JavaScript
+#### ・JavaScriptの場合
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_logic_asynchronous_process.html?h=%E5%9C%B0%E7%8D%84
-
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_logic_asynchronous_process.html
