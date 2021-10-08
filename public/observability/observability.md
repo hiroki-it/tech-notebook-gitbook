@@ -4,12 +4,12 @@
 
 ### 可観測性とは
 
-『収集されたデータから，システムの予測できない問題をどれだけ正確に推測できるか』を表す程度のこと．システムの予測可能な不具合は『監視』や『テスト』によって検知できるが，予測不可能なものを検知する必要がある．システムをより詳細に可視化し，予測できるものだけでなく，予測できない不具合を浮かび上がらせる必要性がある．
+『収集されたデータから，システムにおける予測不可能な不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの予測可能な不具合は『監視』や『テスト』によって検知できるが，予測不可能なものを検知する必要がある．システムをより詳細に可視化し，予測できるものだけでなく，予測できない不具合を浮かび上がらせる必要性がある．
 
 参考：
 
 - https://blog.thundra.io/observability-driven-development-for-serverless
-- https://laredoute.io/blog/observability-at-la-redoute/
+- https://sookocheff.com/post/architecture/testing-in-production/
 - https://www.sentinelone.com/blog/observability-production-systems-why-how/
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
@@ -27,11 +27,11 @@
 - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 - https://knowledge.sakura.ad.jp/26395/
 
-| 種類         | 説明                                                         |
-| ------------ | ------------------------------------------------------------ |
-| メトリクス   | 一定期間に収集されたデータポイントの集計数値のこと．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric |
-| ログ         | 特定の時間に発生したイベントの記録のこと．                   |
-| 分散トレース | マイクロサービスアーキテクチャにて，個々のリクエストの追跡記録のこと．分散システムに渡った一連の処理を，イベントの因果関係の繋がりと見ることができる．この一連の処理で発生する連続的なデータを追跡記録として収集する．リクエストにIDを割り当て，これを追跡する． |
+| 種類         | 説明                                                         | 補足                                                         |
+| ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| メトリクス   | 一定期間に収集されたデータポイントの集計数値のこと．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric |                                                              |
+| ログ         | 特定の時間に発生したイベントの記録のこと．                   |                                                              |
+| 分散トレース | マイクロサービスアーキテクチャにて，個々のリクエストによって起こるイベントを追跡した記録のこと．分散システムに渡った一連の処理を，イベントの因果関係の繋がりと見ることができる．この一連の処理で発生する連続的なデータを追跡記録として収集する．リクエストヘッダーやボディにIDを割り当て，これを追跡する． | AWSを使用している場合，例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため，アプリケーションでリクエストIDを実装せずに分散トレースを実現できる．<br>参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html |
 
 #### ・テレメトリー搭載ツール
 
@@ -39,26 +39,28 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ．また，AWS�
 
 <br>
 
-### メトリクスの４大シグナル
-
-#### ・レイテンシー
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+### 特に重要なメトリクス
 
 #### ・トラフィック
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+サーバ監視対象のメトリクスに属する．
+
+#### ・レイテンシー
+
+サーバ監視対象のメトリクスに属する．
 
 #### ・エラー
 
+サーバ監視対象のメトリクスに属する．
+
 | 種類         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| 明示的エラー | 400/500系のレスポンス<                                       |
+| 明示的エラー | 400/500系のレスポンス                                        |
 | 暗黙的エラー | SLOに満たない200/300系のレスポンス，API仕様に合っていないレスポンス |
 
 #### ・サチュレーション
 
-システム利用率（CPU利用率，メモリ理容室，ストレージ利用率，など）の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．
+システム利用率（CPU利用率，メモリ理容室，ストレージ利用率，など）の飽和度のこと．例えば，以下の飽和度がある．60～70%で，警告ラインを設けておく必要がある．サーバ監視対象のメトリクスに属する．
 
 <br>
 
@@ -66,7 +68,7 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ．また，AWS�
 
 ### 監視とは
 
-システムが正常に稼働することを継続的に見守り，予測できる問題の発生を未然に防ぐこと．
+既知の情報に基づいて，システムにおける予測可能な不具合の発生を未然に防ぐこと．
 
 参考：
 
@@ -102,9 +104,15 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ．また，AWS�
 
 #### ・アプリケーション監視とは
 
-『APM（アプリケーションパフォーマンス監視）』ともいう．アプリケーション内に常駐させた監視ツールエージェントは，稼働中のアプリケーションに関する様々なメトリクスを収集する．アプリケーション監視では，このメトリクスを監視する．Datadogにおけるアプリケーション監視については，以下のリンクを参考にせよ．
+『APM（アプリケーションパフォーマンス監視）』ともいう．アプリケーション内に常駐させた監視ツールエージェントは，サーバ内で稼働中のアプリケーションに関するメトリクスを収集する．また，ログ保管ツールを用いてアプリケーションログを収集する．アプリケーション監視では，これらのメトリクスとアプリケーションログを監視する．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog.html
+#### ・監視対象のメトリクス例
+
+- リクエストの受信数
+- SQLにかかる時間
+- 外部APIコールにかかる時間
+- ログイン数
+- CICDのパフォーマンス
 
 <br>
 
@@ -136,6 +144,28 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ．また，AWS�
 - レスポンスタイム
 - レスポンスのステータスコード率
 - スループット
+
+<br>
+
+### AWSで役立つメトリクス
+
+#### ・SLIに関連するメトリクス
+
+| 指標                           | AWSリリース | 関連するメトリクス                                           | 補足                                                         |
+| ------------------------------ | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| サーバ稼働率                   | ECS         | ・```RunningTaskCount```                                     | ターゲット追跡スケーリングポリシーのECSサービスメトリクスも参考にせよ． |
+| データベース稼働率             | RDS         | ・```CPUUtilization```<br>・```FreeableMemory```             |                                                              |
+| レイテンシー                   | API Gateway | ・```Latency```<br>・```IntegrationLatency```                |                                                              |
+| レスポンスのステータスコード率 | API Gateway | ・```4XXError```<br/>・```5XXError```                        |                                                              |
+|                                | ALB         | ・```HTTPCode_ELB_4XX_Count```<br>・```HTTPCode_ELB_5XX_Count```<br>・```HTTPCode_TARGET_4XX_Count```<br>・```HTTPCode_TARGET_5XX_Count```<br>・```RejectedConnectionCount```<br>・```HealthyHostCount```<br>・```TargetConnectionErrorCount```<br>・```TargetTLSNegotiationErrorCount``` | 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html |
+
+#### ・パフォーマンスに関するメトリクス
+
+| 名前                     | AWSリリース | 補足                                                         |
+| ------------------------ | ----------- | ------------------------------------------------------------ |
+| パフォーマンスインサイト | RDS         | RDSのパフォーマンスに関するメトリクスを収集し，SQLレベルで監視できるようになる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm |
+| Container インサイト     | ECS／EKS    | ECS／EKSのパフォーマンスに関するメトリクスを収集し，ECS／EKSのクラスター，サービス，タスク，インスタンス，単位で監視できるようになる．また，コンテナ間の繋がりをコンテナマップで視覚化できるようになる．ECS／EKSのアカウント設定でContainerインサイトを有効化する必要がある． |
+| Lambdaインサイト         | Lambda      | Lambdaのパフォーマンスに関するメトリクスを収集できるようになる． |
 
 <br>
 

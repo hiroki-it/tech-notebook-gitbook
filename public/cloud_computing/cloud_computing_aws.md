@@ -853,28 +853,13 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 
 データ収集の対象とする領域のこと．
 
-![名前空間，メトリクス，ディメンション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/名前空間，メトリクス，ディメンション.png)
+参考：https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
+
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 
 CloudWatchメトリクス上では，以下のように確認できる．
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
-
-#### ・SLIに関連するメトリクス
-
-| 指標                           | 関連するメトリクス                                           | 補足                                                         |
-| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| サーバ稼働率                   | ECS<br>・```RunningTaskCount```                              | ターゲット追跡スケーリングポリシーのECSサービスメトリクスも参考にせよ． |
-| データベース稼働率             | RDS：<br>・```CPUUtilization```<br>・```FreeableMemory```    |                                                              |
-| レイテンシー                   | API Gateway：<br>・```Latency```<br>・```IntegrationLatency``` |                                                              |
-| レスポンスのステータスコード率 | ALB：<br>・```HTTPCode_ELB_4XX_Count```<br>・```HTTPCode_ELB_5XX_Count```<br>・```HTTPCode_TARGET_4XX_Count```<br>・```HTTPCode_TARGET_5XX_Count```<br>・```RejectedConnectionCount```<br>・```HealthyHostCount```<br>・```TargetConnectionErrorCount```<br>・```TargetTLSNegotiationErrorCount```<br><br>API Gateway：<br>・```4XXError```<br>・```5XXError``` |                                                              |
-
-#### ・パフォーマンスに関するメトリクス
-
-| 種類     | 名前                     | 補足                                                         |
-| -------- | ------------------------ | ------------------------------------------------------------ |
-| RDS      | パフォーマンスインサイト | RDSのパフォーマンスに関するメトリクスを収集し，SQLレベルで監視できるようになる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm |
-| ECS／EKS | Container インサイト     | ECS／EKSのパフォーマンスに関するメトリクスを収集し，ECS／EKSのクラスター，サービス，タスク，インスタンス，単位で監視できるようになる．また，コンテナ間の繋がりをコンテナマップで視覚化できるようになる．ECS／EKSのアカウント設定でContainerインサイトを有効化する必要がある． |
-| Lambda   | Lambdaインサイト         | Lambdaのパフォーマンスに関するメトリクスを収集できるようになる． |
 
 <br>
 

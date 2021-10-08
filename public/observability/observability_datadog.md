@@ -8,9 +8,21 @@
 
 <br>
 
-## 01. Datadogとは
+## 01. Datadog
 
-### 概要
+### メトリクス収集
+
+#### ・設定方法
+
+いくつかの方法でメトリクスを収集できる．
+
+参考：https://docs.datadoghq.com/ja/metrics/#datadog-%E3%81%B8%E3%81%AE%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E9%80%81%E4%BF%A1
+
+#### ・インテグレーションのセットアップ
+
+Datadogでインテグレーションを有効化すると同時に，アプリケーションにエージェントをインストールする．
+
+
 
 <br>
 
@@ -44,30 +56,30 @@
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3
 
-| 変数名      | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
-| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
-| DD_API_KEY  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
-| DD_ENV      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに値を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
-| DD_HOSTNAME | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
-| ECS_FARGATE | Fargateを用いる場合に，これを宣言する．                      |                                                              |                                              |
+| 変数名            | 説明                                                         | 補足                                                         | DatadogコンソールURL                         |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
+| ```DD_API_KEY```  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
+| ```DD_ENV```      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに値を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
+| ```DD_HOSTNAME``` | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
+| ```ECS_FARGATE``` | Fargateを用いる場合に，これを宣言する．                      |                                                              |                                              |
 
 任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す．一部のメトリクスは，標準では収集しないようになっており，収集するためにエージェントを有効化する必要がある．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%8F%8E%E9%9B%86-agent
 
-| 変数名                   | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
-| DD_APM_ENABLED           | APMエージェントを有効化する．                                | Fargateを使用している場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，サービスにパッケージのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
-| DD_LOGS_ENABLED          | -                                                            |                                                              |                                      |
-| DD_PROCESS_AGENT_ENABLED | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
+| 変数名                         | 説明                                                         | 補足                                                         | DatadogコンソールURL                 |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------ |
+| ```DD_APM_ENABLED```           | APMエージェントを有効化する．                                | Fargateを使用している場合，APMエージェントを有効化するだけでなく，分散トレースを送信できるように，サービスにパッケージのインストールが必要である．<br>参考：<br>・https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php<br>・https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1 | https://app.datadoghq.com/apm/home   |
+| ```DD_LOGS_ENABLED```          | -                                                            |                                                              |                                      |
+| ```DD_PROCESS_AGENT_ENABLED``` | ライブプロセスを有効化し，実行中のプロセスを収集する．<br>参考：https://docs.datadoghq.com/ja/infrastructure/process/?tab=linuxwindows |                                                              | https://app.datadoghq.com/containers |
 
 カスタムメトリクスの収集として役立つ環境変数を以下に示す．
 
 参考：https://docs.datadoghq.com/ja/agent/docker/?tab=%E6%A8%99%E6%BA%96#dogstatsd-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9
 
-| 変数名                         | 説明                                                    | DatadogコンソールURL |
-| ------------------------------ | ------------------------------------------------------- | -------------------- |
-| DD_DOGSTATSD_NON_LOCAL_TRAFFIC | Datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
+| 変数名                               | 説明                                                    | DatadogコンソールURL |
+| ------------------------------------ | ------------------------------------------------------- | -------------------- |
+| ```DD_DOGSTATSD_NON_LOCAL_TRAFFIC``` | Datadogコンテナのカスタムメトリクスの受信を有効化する． |                      |
 
 <br>
 
@@ -88,9 +100,9 @@ Dockerエージェントにて，```DD_APM_ENABLED```の環境変数に```true``
 
 参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0
 
-| 変数名       | 説明                                | 補足 |
-| ------------ | ----------------------------------- | ---- |
-| DD_LOG_LEVEL | APMに送信するログレベルを設定する． |      |
+| 変数名             | 説明                                | 補足 |
+| ------------------ | ----------------------------------- | ---- |
+| ```DD_LOG_LEVEL``` | APMに送信するログレベルを設定する． |      |
 
 <br>
 
@@ -281,9 +293,10 @@ Extension 'ddtrace' not present.
 
 | 変数名                                        | 説明                                                         | 画面                                   |
 | --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
-| DD_SERVICE_MAPPING                            | APMにて，標準で設定されるサービス名を上書きする．<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
-| DD_SERVICE_NAME                               | アプリケーション名を設定する．                               |                                        |
-| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．標準で全てのインテグレーションが有効化されているため，設定は不要である． |                                        |
+| ```DD_SERVICE_MAPPING```                      | 分散トレースにサービス名を設定する．サービス名は標準のでインテグレーション名になるが，これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| ```DD_SERVICE_NAME```                         | 分散トレースにサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにサービス名になる（仕組みがよくわからん）． |                                        |
+| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．標準で全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
+| ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
 
 トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
 
@@ -451,14 +464,6 @@ FROM data/agent:latest
 
 <br>
 
-### ログと分散トレースの接続
-
-ログとトレーシングパッケージによるタグに同じタグ名を付与すると，ログと分散トレースを紐づけることができる．
-
-https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
-
-<br>
-
 ## 05. メトリクス／ログの識別子
 
 ### attribute（属性）
@@ -577,6 +582,14 @@ Nginxの場合
 変更前の識別子は，時間経過とともにDatadogから削除される．
 
 参考：https://docs.datadoghq.com/ja/dashboards/faq/historical-data/
+
+<br>
+
+### テレメトリー間のタグの紐づけ
+
+ログの統合タグ（```service```，```env```，```version```）と分散トレースの環境変数の値（サービス名，環境名，バージョン名）を全て同じ名前にすると，テレメトリー（ログ，メトリクス，分散トレース）間を紐づけることができる．ログと分散が有効になっているかどうかは，APMのサービスサブの『```Service Config```』から確認できる．
+
+参考：https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
 
 <br>
 
