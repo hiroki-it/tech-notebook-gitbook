@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎組み込み機器 · 僕のドキュメントサイト【GitBook版】</title>
+        <title>📖 ︎TerraformのCICDフロー · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -70,7 +70,7 @@
 
     
     
-    <link rel="prev" href="hardware_memory.html" />
+    <link rel="prev" href="infrastructure_as_code_terraform_aws_tips.html" />
     
 
     </head>
@@ -1289,9 +1289,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="hardware.html">
+        <li class="chapter " data-level="1.4.1" data-path="../hardware/hardware.html">
             
-                <a href="hardware.html">
+                <a href="../hardware/hardware.html">
             
                     
                     📖 ︎ハードウェア
@@ -1302,9 +1302,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="hardware_memory.html">
+        <li class="chapter " data-level="1.4.2" data-path="../hardware/hardware_memory.html">
             
-                <a href="hardware_memory.html">
+                <a href="../hardware/hardware_memory.html">
             
                     
                     📖 ︎メモリ
@@ -1315,9 +1315,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3" data-path="hardware_embedded_system.html">
+        <li class="chapter " data-level="1.4.3" data-path="../hardware/hardware_embedded_system.html">
             
-                <a href="hardware_embedded_system.html">
+                <a href="../hardware/hardware_embedded_system.html">
             
                     
                     📖 ︎組み込み機器
@@ -1578,9 +1578,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../infrastructure_as_code/infrastructure_as_code.html">
+        <li class="chapter " data-level="1.7.1" data-path="infrastructure_as_code.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code.html">
+                <a href="infrastructure_as_code.html">
             
                     
                     📖 ︎Infrastructure as Code
@@ -1605,9 +1605,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.2.1" data-path="../infrastructure_as_code/infrastructure_as_code_terraform.html">
+        <li class="chapter " data-level="1.7.2.1" data-path="infrastructure_as_code_terraform.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code_terraform.html">
+                <a href="infrastructure_as_code_terraform.html">
             
                     
                     📖 ︎Terraform
@@ -1618,9 +1618,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2.2" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.html">
+        <li class="chapter " data-level="1.7.2.2" data-path="infrastructure_as_code_terraform_aws_tips.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.html">
+                <a href="infrastructure_as_code_terraform_aws_tips.html">
             
                     
                     📖 ︎Terraformを用いたAWS構築Tips
@@ -1631,9 +1631,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2.3" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
+        <li class="chapter active" data-level="1.7.2.3" data-path="infrastructure_as_code_terraform_ci_cd.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
+                <a href="infrastructure_as_code_terraform_ci_cd.html">
             
                     
                     📖 ︎TerraformのCICDフロー
@@ -2089,7 +2089,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎組み込み機器</a>
+        <a href="../.." >📖 ︎TerraformのCICDフロー</a>
     </h1>
 </div>
 
@@ -2104,124 +2104,402 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;"><a name="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;" class="plugin-anchor" href="#&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;</h1>
+                                <h1 id="terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;"><a name="terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;" class="plugin-anchor" href="#terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>Terraform&#x306E;CICD&#x30D5;&#x30ED;&#x30FC;</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;"><a name="01-&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;" class="plugin-anchor" href="#01-&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;</h2>
-<h3 id="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3068;&#x306F;"><a name="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3068;&#x306F;</h3>
-<p>&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x6A5F;&#x5668;&#xFF08;&#x9650;&#x5B9A;&#x7684;&#x306A;&#x7528;&#x9014;&#x5411;&#x3051;&#x306B;&#x7279;&#x5B9A;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x679C;&#x305F;&#x3059;&#x4E8B;&#x3092;&#x76EE;&#x7684;&#x3068;&#x3057;&#x305F;&#x6A5F;&#x5668;&#xFF09;&#x3092;&#x5236;&#x5FA1;&#x3059;&#x308B;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<p>&#x203B;&#x30D1;&#x30BD;&#x30B3;&#x30F3;&#x306F;&#x3001;&#x6C4E;&#x7528;&#x6A5F;&#x5668;&#xFF08;&#x6C4E;&#x7528;&#x7684;&#x306A;&#x7528;&#x9014;&#x5411;&#x3051;&#x306B;&#x591A;&#x69D8;&#x306A;&#x6A5F;&#x80FD;&#x3092;&#x679C;&#x305F;&#x3059;&#x4E8B;&#x3092;&#x76EE;&#x7684;&#x3068;&#x3057;&#x305F;&#x6A5F;&#x5668;&#xFF09;&#x306B;&#x5206;&#x985E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;.png" alt="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;"></p>
+<h2 id="01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><a name="01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;" class="plugin-anchor" href="#01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h2>
+<h3 id="assumerolesh"><a name="assumerolesh" class="plugin-anchor" href="#assumerolesh"><i class="fa fa-link" aria-hidden="true"></i></a>assume_role.sh</h3>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
 <p><br></p>
-<h3 id="&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x3068;&#x306F;"><a name="&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x3068;&#x306F;</h3>
-<p>CPU&#x3068;&#x3057;&#x3066;&#x3001;&#x300E;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30D7;&#x30ED;&#x30BB;&#x30C3;&#x30B5;&#x300F;&#x3092;&#x7528;&#x3044;&#x305F;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30DE;&#x30A4;&#x30B3;&#x30F3;.png" alt="&#x30DE;&#x30A4;&#x30B3;&#x30F3;"></p>
+<h3 id="terraformapplysh"><a name="terraformapplysh" class="plugin-anchor" href="#terraformapplysh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_apply.sh</h3>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> apply <span class="token punctuation">\</span>
+  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token punctuation">\</span>
+  <span class="token variable">${ENV}</span>.tfplan <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml apply
+</code></pre>
 <p><br></p>
-<h3 id="&#x30BB;&#x30F3;&#x30B5;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x306E;&#x5165;&#x529B;"><a name="&#x30BB;&#x30F3;&#x30B5;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x306E;&#x5165;&#x529B;" class="plugin-anchor" href="#&#x30BB;&#x30F3;&#x30B5;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x306E;&#x5165;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BB;&#x30F3;&#x30B5;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x306E;&#x5165;&#x529B;</h3>
-<p>&#x5916;&#x90E8;&#x306E;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x3092;&#x8A08;&#x6E2C;&#x3057;&#x3001;&#x30DE;&#x30A4;&#x30B3;&#x30F3;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;&#xFF1A;&#x6E29;&#x5EA6;&#x30BB;&#x30F3;&#x30B5;&#x3001;&#x52A0;&#x901F;&#x5EA6;&#x30BB;&#x30F3;&#x30B5;&#x3001;&#x7167;&#x5EA6;&#x30BB;&#x30F3;&#x30B5;&#x3001;&#x2026;</strong></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-2.png" alt="p119-2"></p>
+<h3 id="terraformfmtsh"><a name="terraformfmtsh" class="plugin-anchor" href="#terraformfmtsh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_fmt.sh</h3>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+terraform <span class="token function">fmt</span> <span class="token punctuation">\</span>
+  -recursive <span class="token punctuation">\</span>
+  -check
+</code></pre>
 <p><br></p>
-<h3 id="ad&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;"><a name="ad&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;" class="plugin-anchor" href="#ad&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;"><i class="fa fa-link" aria-hidden="true"></i></a>A/D&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;</h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AD&#x5909;&#x63DB;.png" alt="AD&#x5909;&#x63DB;"></p>
+<h3 id="terraforminitsh"><a name="terraforminitsh" class="plugin-anchor" href="#terraforminitsh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_init.sh</h3>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> init <span class="token punctuation">\</span>
+  -upgrade <span class="token punctuation">\</span>
+  -reconfigure <span class="token punctuation">\</span>
+  -backend<span class="token operator">=</span>true <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=<span class="token variable">${ENV}</span>-tfstate-bucket&quot;</span> <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;key=terraform.tfstate&quot;</span> <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;encrypt=true&quot;</span>
+</code></pre>
 <p><br></p>
-<h3 id="da&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;"><a name="da&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;" class="plugin-anchor" href="#da&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;"><i class="fa fa-link" aria-hidden="true"></i></a>D/A&#x5909;&#x63DB;&#x5668;&#x306B;&#x3088;&#x308B;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x60C5;&#x5831;&#x304B;&#x3089;&#x30A2;&#x30CA;&#x30ED;&#x30B0;&#x60C5;&#x5831;&#x3078;&#x306E;&#x5909;&#x63DB;</h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DA&#x5909;&#x63DB;.png" alt="DA&#x5909;&#x63DB;"></p>
+<h3 id="terraformplansh"><a name="terraformplansh" class="plugin-anchor" href="#terraformplansh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_plan.sh</h3>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> plan <span class="token punctuation">\</span>
+  -var-file<span class="token operator">=</span>./<span class="token variable">${ENV}</span>/foo.tfvars <span class="token punctuation">\</span>
+  -out<span class="token operator">=</span><span class="token variable">${ENV}</span>.tfplan <span class="token punctuation">\</span>
+  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml plan
+</code></pre>
 <p><br></p>
-<h3 id="actuater"><a name="actuater" class="plugin-anchor" href="#actuater"><i class="fa fa-link" aria-hidden="true"></i></a>Actuater</h3>
-<p>&#x5165;&#x529B;&#x3055;&#x308C;&#x305F;&#x30A8;&#x30CD;&#x30EB;&#x30AE;&#x30FC;&#x3082;&#x3057;&#x304F;&#x306F;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x304C;&#x51FA;&#x529B;&#x3057;&#x305F;&#x96FB;&#x6C17;&#x4FE1;&#x53F7;&#x3092;&#x7269;&#x7406;&#x7684;&#x904B;&#x52D5;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x88C5;&#x7F6E;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p119-3.png" alt="p119-3"></p>
+<h3 id="terraformvalidatesh"><a name="terraformvalidatesh" class="plugin-anchor" href="#terraformvalidatesh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_validate.sh</h3>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> validate
+</code></pre>
 <p><br></p>
-<h3 id="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#x306E;&#x7A2E;&#x985E;"><a name="&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D44;&#x307F;&#x8FBC;&#x307F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#x306E;&#x7A2E;&#x985E;</h3>
-<h4 id="&#x30FB;&#x30B7;&#x30FC;&#x30B1;&#x30F3;&#x30B9;&#x5236;&#x5FA1;"><a name="&#x30FB;&#x30B7;&#x30FC;&#x30B1;&#x30F3;&#x30B9;&#x5236;&#x5FA1;" class="plugin-anchor" href="#&#x30FB;&#x30B7;&#x30FC;&#x30B1;&#x30F3;&#x30B9;&#x5236;&#x5FA1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B7;&#x30FC;&#x30B1;&#x30F3;&#x30B9;&#x5236;&#x5FA1;</h4>
-<p>  &#x6C7A;&#x3081;&#x3089;&#x308C;&#x305F;&#x9806;&#x5E8F;&#x3084;&#x6761;&#x4EF6;&#x306B;&#x5F93;&#x3063;&#x3066;&#x3001;&#x5236;&#x5FA1;&#x306E;&#x5404;&#x6BB5;&#x968E;&#x3092;&#x9032;&#x3081;&#x3066;&#x3044;&#x304F;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#xFF0E;</p>
-<p>  <strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<p>  &#x6D17;&#x6FEF;&#x6A5F;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-1.png" alt="p120-1"></p>
-<h4 id="&#x30FB;&#x30D5;&#x30A3;&#x30FC;&#x30C9;&#x30D0;&#x30C3;&#x30AF;&#x5236;&#x5FA1;"><a name="&#x30FB;&#x30D5;&#x30A3;&#x30FC;&#x30C9;&#x30D0;&#x30C3;&#x30AF;&#x5236;&#x5FA1;" class="plugin-anchor" href="#&#x30FB;&#x30D5;&#x30A3;&#x30FC;&#x30C9;&#x30D0;&#x30C3;&#x30AF;&#x5236;&#x5FA1;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D5;&#x30A3;&#x30FC;&#x30C9;&#x30D0;&#x30C3;&#x30AF;&#x5236;&#x5FA1;</h4>
-<p>  &#x305D;&#x306E;&#x6642;&#x306E;&#x72B6;&#x6CC1;&#x3092;&#x5B9A;&#x671F;&#x7684;&#x306B;&#x8A08;&#x6E2C;&#x3057;&#x3001;&#x76EE;&#x6A19;&#x5024;&#x3068;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x57FA;&#x306B;&#x3001;&#x51FA;&#x529B;&#x3092;&#x8ABF;&#x7BC0;&#x3059;&#x308B;&#x5236;&#x5FA1;&#x65B9;&#x5F0F;&#xFF0E;</p>
-<p>  <strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<p>  &#x30A8;&#x30A2;&#x30B3;&#x30F3;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p120-2.png" alt="p120-2"></p>
+<h2 id="02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd"><a name="02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd" class="plugin-anchor" href="#02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd"><i class="fa fa-link" aria-hidden="true"></i></a>02. CircleCI&#x3092;&#x7528;&#x3044;&#x305F;CICD</h2>
+<h3 id="&#x8981;&#x7D20;"><a name="&#x8981;&#x7D20;" class="plugin-anchor" href="#&#x8981;&#x7D20;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8981;&#x7D20;</h3>
+<h4 id="&#x30FB;&#x74B0;&#x5883;"><a name="&#x30FB;&#x74B0;&#x5883;" class="plugin-anchor" href="#&#x30FB;&#x74B0;&#x5883;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x74B0;&#x5883;</h4>
+<table>
+<thead>
+<tr>
+<th>env</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dev</td>
+<td>&#x30D7;&#x30EB;&#x30EA;&#x30AF;&#x306E;&#x30EC;&#x30D3;&#x30E5;&#x30FC;&#x6642;&#x306B;&#xFF0C;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5909;&#x66F4;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x74B0;&#x5883;</td>
+</tr>
+<tr>
+<td>stg</td>
+<td>&#x30B9;&#x30C6;&#x30FC;&#x30B8;&#x30F3;&#x30B0;&#x74B0;&#x5883;</td>
+</tr>
+<tr>
+<td>prd</td>
+<td>&#x672C;&#x756A;&#x74B0;&#x5883;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x30B8;&#x30E7;&#x30D6;"><a name="&#x30FB;&#x30B8;&#x30E7;&#x30D6;" class="plugin-anchor" href="#&#x30FB;&#x30B8;&#x30E7;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B8;&#x30E7;&#x30D6;</h4>
+<table>
+<thead>
+<tr>
+<th>jobs</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plan</td>
+<td>aws-cli&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x304B;&#x3089;<code>terraform plan -out</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x307E;&#x3067;&#x306E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>&#x627F;&#x8A8D;&#x30B8;&#x30E7;&#x30D6;</td>
+<td></td>
+</tr>
+<tr>
+<td>apply</td>
+<td>stg&#x74B0;&#x5883;&#x307E;&#x305F;&#x306F;prd&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x30FB;&#x30EF;&#x30FC;&#x30AF;&#x30D5;&#x30ED;&#x30FC;"><a name="&#x30FB;&#x30EF;&#x30FC;&#x30AF;&#x30D5;&#x30ED;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x30EF;&#x30FC;&#x30AF;&#x30D5;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EF;&#x30FC;&#x30AF;&#x30D5;&#x30ED;&#x30FC;</h4>
+<table>
+<thead>
+<tr>
+<th>workflows</th>
+<th>&#x8AAC;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>feature</td>
+<td>feature&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;dev&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>develop&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;stg&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+<tr>
+<td>main</td>
+<td>main&#x30D6;&#x30E9;&#x30F3;&#x30C1;&#x304B;&#x3089;prd&#x74B0;&#x5883;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
-<h2 id="02-&#x5165;&#x51FA;&#x529B;&#x6A5F;&#x5668;"><a name="02-&#x5165;&#x51FA;&#x529B;&#x6A5F;&#x5668;" class="plugin-anchor" href="#02-&#x5165;&#x51FA;&#x529B;&#x6A5F;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x5165;&#x51FA;&#x529B;&#x6A5F;&#x5668;</h2>
-<h3 id="&#x30AD;&#x30FC;&#x30DC;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30DD;&#x30A4;&#x30F3;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30C7;&#x30D0;&#x30A4;&#x30B9;"><a name="&#x30AD;&#x30FC;&#x30DC;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30DD;&#x30A4;&#x30F3;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30C7;&#x30D0;&#x30A4;&#x30B9;" class="plugin-anchor" href="#&#x30AD;&#x30FC;&#x30DC;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30DD;&#x30A4;&#x30F3;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30C7;&#x30D0;&#x30A4;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30AD;&#x30FC;&#x30DC;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30DD;&#x30A4;&#x30F3;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30C7;&#x30D0;&#x30A4;&#x30B9;</h3>
-<h4 id="&#x30FB;&#x30B8;&#x30E7;&#x30A4;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;"><a name="&#x30FB;&#x30B8;&#x30E7;&#x30A4;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30FB;&#x30B8;&#x30E7;&#x30A4;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B8;&#x30E7;&#x30A4;&#x30B9;&#x30C6;&#x30A3;&#x30C3;&#x30AF;</h4>
-<p>  <br></p>
-<h3 id="&#x8AAD;&#x307F;&#x53D6;&#x308A;&#x6A5F;&#x5668;"><a name="&#x8AAD;&#x307F;&#x53D6;&#x308A;&#x6A5F;&#x5668;" class="plugin-anchor" href="#&#x8AAD;&#x307F;&#x53D6;&#x308A;&#x6A5F;&#x5668;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8AAD;&#x307F;&#x53D6;&#x308A;&#x6A5F;&#x5668;</h3>
-<h4 id="&#x30FB;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30B9;&#x30AD;&#x30E3;&#x30CA;"><a name="&#x30FB;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30B9;&#x30AD;&#x30E3;&#x30CA;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30B9;&#x30AD;&#x30E3;&#x30CA;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30B9;&#x30AD;&#x30E3;&#x30CA;</h4>
-<h4 id="&#x30FB;optical-character-reader"><a name="&#x30FB;optical-character-reader" class="plugin-anchor" href="#&#x30FB;optical-character-reader"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Optical Character Reader</h4>
-<p>  &#x7D19;&#x4E0A;&#x306E;&#x6587;&#x5B57;&#x3092;&#x6587;&#x5B57;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;&#x8AAD;&#x307F;&#x53D6;&#x308B;&#x6A5F;&#x5668;&#xFF0E;</p>
-<h4 id="&#x30FB;optical-mark-reader"><a name="&#x30FB;optical-mark-reader" class="plugin-anchor" href="#&#x30FB;optical-mark-reader"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Optical Mark Reader</h4>
-<p>  &#x30DE;&#x30FC;&#x30AF;&#x30B7;&#x30FC;&#x30C8;&#x306E;&#x5857;&#x308A;&#x6F70;&#x3057;&#x4F4D;&#x7F6E;&#x3092;&#x8AAD;&#x307F;&#x53D6;&#x308B;&#x6A5F;&#x5668;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ORM.png" alt="ORM"></p>
-<h4 id="&#x30FB;&#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30AB;&#x30FC;&#x30C9;"><a name="&#x30FB;&#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30AB;&#x30FC;&#x30C9;" class="plugin-anchor" href="#&#x30FB;&#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30AB;&#x30FC;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30AB;&#x30FC;&#x30C9;</h4>
-<h4 id="&#x30FB;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x30AB;&#x30E1;&#x30E9;"><a name="&#x30FB;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x30AB;&#x30E1;&#x30E9;" class="plugin-anchor" href="#&#x30FB;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x30AB;&#x30E1;&#x30E9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x30AB;&#x30E1;&#x30E9;</h4>
+<h3 id="configyml&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="configyml&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#configyml&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a><code>config.yml</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
+
+<span class="token key atrule">executors</span><span class="token punctuation">:</span>
+  <span class="token key atrule">primary_container</span><span class="token punctuation">:</span>
+    <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> enum
+        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">&quot;dev&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;stg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;prd&quot;</span> <span class="token punctuation">]</span>
+    <span class="token key atrule">docker</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> hashicorp/terraform<span class="token punctuation">:</span>x.xx.x
+    <span class="token key atrule">working_directory</span><span class="token punctuation">:</span> ~/foo_infrastructure
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ENV</span><span class="token punctuation">:</span> &lt;&lt; parameters.env <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
+
+<span class="token key atrule">commands</span><span class="token punctuation">:</span>
+  <span class="token comment"># AWS&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x74B0;&#x5883;&#x3092;&#x69CB;&#x7BC9;&#x3057;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">aws_setup</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Install jq
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            apk add curl
+            curl -o /usr/bin/jq -L https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+            chmod +x /usr/bin/jq</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Install aws<span class="token punctuation">-</span>cli
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            apk add python3
+            apk add py-pip
+            pip3 install awscli
+            aws --version</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Assume role
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            source ./ops/assume.sh</span>
+
+  <span class="token comment"># terraform init&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">terraform_init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform init
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            source ./ops/terraform_init.sh</span>
+
+  <span class="token comment"># terraform fmt&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">terraform_fmt</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform fmt
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            source ./ops/terraform_fmt.sh</span>
+
+  <span class="token comment"># terraform validate&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">terraform_validate</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform validate
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            source ./ops/terraform_validate.sh</span>
+
+  <span class="token comment"># terraform plan&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">terraform_plan</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform plan
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            source ./ops/terraform_plan.sh
+            ls -la</span>
+
+  <span class="token comment"># terraform apply&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#xFF0E;</span>
+  <span class="token key atrule">terraform_apply</span><span class="token punctuation">:</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform apply
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+            set -x
+            ls -la
+            source ./ops/terraform_apply.sh</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">plan</span><span class="token punctuation">:</span>
+    <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> executor
+    <span class="token key atrule">executor</span><span class="token punctuation">:</span> &lt;&lt; parameters.exr <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> checkout
+      <span class="token punctuation">-</span> aws_setup
+      <span class="token punctuation">-</span> terraform_init
+      <span class="token punctuation">-</span> terraform_fmt
+      <span class="token punctuation">-</span> terraform_validate
+      <span class="token punctuation">-</span> terraform_plan
+      <span class="token punctuation">-</span> <span class="token key atrule">persist_to_workspace</span><span class="token punctuation">:</span>
+          <span class="token key atrule">root</span><span class="token punctuation">:</span> .
+          <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> .
+
+  <span class="token key atrule">apply</span><span class="token punctuation">:</span>
+    <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+        <span class="token key atrule">type</span><span class="token punctuation">:</span> executor
+    <span class="token key atrule">executor</span><span class="token punctuation">:</span> &lt;&lt; parameters.exr <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">attach_workspace</span><span class="token punctuation">:</span>
+          <span class="token key atrule">at</span><span class="token punctuation">:</span> .
+      <span class="token punctuation">-</span> terraform_apply
+
+<span class="token key atrule">workflows</span><span class="token punctuation">:</span>
+  <span class="token comment"># Dev env</span>
+  <span class="token key atrule">feature</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">plan</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> plan_dev
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> dev
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> /feature.<span class="token important">*/</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">apply</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> apply_dev
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> dev
+          <span class="token key atrule">requires</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> plan_dev
+
+  <span class="token comment"># Staging env</span>
+  <span class="token key atrule">develop</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">plan</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> plan_stg
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> stg
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span>
+                <span class="token punctuation">-</span> develop
+      <span class="token punctuation">-</span> <span class="token key atrule">hold_apply</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> hold_apply_stg
+          <span class="token key atrule">type</span><span class="token punctuation">:</span> approval
+          <span class="token key atrule">requires</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> plan_stg
+      <span class="token punctuation">-</span> <span class="token key atrule">apply</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> apply_stg
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> stg
+          <span class="token key atrule">requires</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> hold_apply_stg
+
+  <span class="token comment"># Production env</span>
+  <span class="token key atrule">main</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">plan</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> plan_prd
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> prd
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">ignore</span><span class="token punctuation">:</span> /.<span class="token important">*/</span>
+            <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span> /release\/.<span class="token important">*/</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">hold_apply</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> hold_apply_prd
+          <span class="token key atrule">type</span><span class="token punctuation">:</span> approval
+          <span class="token key atrule">requires</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> plan_prd
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">ignore</span><span class="token punctuation">:</span> /.<span class="token important">*/</span>
+            <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span> /release\/.<span class="token important">*/</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">apply</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> apply_prd
+          <span class="token key atrule">exr</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> primary_container
+            <span class="token key atrule">env</span><span class="token punctuation">:</span> prd
+          <span class="token key atrule">requires</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> hold_apply_prd
+          <span class="token key atrule">filters</span><span class="token punctuation">:</span>
+            <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+              <span class="token key atrule">ignore</span><span class="token punctuation">:</span> /.<span class="token important">*/</span>
+            <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+              <span class="token key atrule">only</span><span class="token punctuation">:</span> /release\/.<span class="token important">*/</span>
+</code></pre>
 <p><br></p>
-<h3 id="&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h3>
-<h4 id="&#x30FB;crt&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30FB;crt&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30FB;crt&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;CRT&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h4>
-<h4 id="&#x30FB;&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30FB;&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30FB;&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h4>
-<p>  &#x96FB;&#x5727;&#x306E;&#x6709;&#x7121;&#x306B;&#x3088;&#x3063;&#x3066;&#x6DB2;&#x6676;&#x5206;&#x5B50;&#x3092;&#x5236;&#x5FA1;&#xFF0E;&#x5916;&#x90E8;&#x304B;&#x3089;&#x306E;&#x5149;&#x306B;&#x3088;&#x3063;&#x3066;&#x753B;&#x9762;&#x3092;&#x8868;&#x793A;&#x3055;&#x305B;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6DB2;&#x6676;&#x5206;&#x5B50;.png" alt="&#x6DB2;&#x6676;&#x5206;&#x5B50;"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;.jpg" alt="&#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"></p>
-<h4 id="&#x30FB;&#x6709;&#x6A5F;el&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30FB;&#x6709;&#x6A5F;el&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30FB;&#x6709;&#x6A5F;el&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x6709;&#x6A5F;EL&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h4>
-<p>  &#x6709;&#x6A5F;&#x5316;&#x5408;&#x7269;&#x306B;&#x96FB;&#x5727;&#x3092;&#x52A0;&#x3048;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#x767A;&#x5149;&#x3055;&#x305B;&#x3001;&#x753B;&#x9762;&#x3092;&#x8868;&#x793A;&#x3055;&#x305B;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x6709;&#x6A5F;EL&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;.jpg" alt="&#x6709;&#x6A5F;EL&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"></p>
-<h4 id="&#x30FB;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30FB;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;.gif" alt="&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"></p>
-<p>  2&#x679A;&#x306E;&#x30AC;&#x30E9;&#x30B9;&#x306E;&#x9593;&#x306B;&#x3001;&#x5C01;&#x5165;&#x3055;&#x308C;&#x305F;&#x5E0C;&#x30AC;&#x30B9;&#x306B;&#x96FB;&#x5727;&#x3092;&#x304B;&#x3051;&#x308B;&#x3068;&#x653E;&#x96FB;&#x3057;&#x3001;&#x7D2B;&#x5916;&#x7DDA;&#x304C;&#x51FA;&#x308B;&#xFF0E;&#x305D;&#x3057;&#x3066;&#x3001;&#x3053;&#x306E;&#x7D2B;&#x5916;&#x7DDA;&#x304C;&#x86CD;&#x5149;&#x4F53;&#x3092;&#x767A;&#x5149;&#x3055;&#x305B;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#x753B;&#x9762;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;  &#x6DB2;&#x6676;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;&#x3068;&#x306E;&#x30B7;&#x30A7;&#x30A2;&#x5DEE;&#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308A;&#x3001;2014&#x5E74;&#x306B;&#x4E16;&#x754C;&#x7684;&#x306B;&#x751F;&#x7523;&#x304C;&#x7D42;&#x4E86;&#x3055;&#x308C;&#x305F;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D1;&#x30CA;&#x30BD;&#x30CB;&#x30C3;&#x30AF;&#x88FD;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;.jpg" alt="&#x30D1;&#x30CA;&#x30BD;&#x30CB;&#x30C3;&#x30AF;&#x88FD;&#x30D7;&#x30E9;&#x30BA;&#x30DE;&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"></p>
-<h4 id="&#x30FB;led&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><a name="&#x30FB;led&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;" class="plugin-anchor" href="#&#x30FB;led&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;LED&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LED&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;.jpg" alt="LED&#x30C7;&#x30A3;&#x30B9;&#x30D7;&#x30EC;&#x30A4;"></p>
-<p>2018&#x5E74;1&#x6708;&#x306B;&#x958B;&#x50AC;&#x3055;&#x308C;&#x305F;&#x300C;CES 2018&#x300D;&#x3067;&#x30B5;&#x30E0;&#x30B9;&#x30F3;&#x304C;&#x767A;&#x8868;&#x3057;&#x305F;&#x201C;&#x30DE;&#x30A4;&#x30AF;&#x30ED;LED&#x30C6;&#x30EC;&#x30D3;&#x201D;&#x300C;The Wall&#x300D;&#x306F;&#x3001;&#x5F93;&#x6765;&#x306E;&#x300C;&#x6DB2;&#x6676;&#x300D;&#x3084;&#x300C;&#x6709;&#x6A5F;EL&#x300D;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x65B0;&#x305F;&#x306A;&#x8868;&#x793A;&#x65B9;&#x5F0F;&#x3092;&#x63A1;&#x7528;&#x3057;&#x305F;&#x30C6;&#x30EC;&#x30D3;&#x3068;&#x3057;&#x3066;&#x3001;&#x5927;&#x304D;&#x306A;&#x8A71;&#x984C;&#x3068;&#x306A;&#x3063;&#x305F;&#xFF0E;</p>
+<h2 id="03-tfnotify"><a name="03-tfnotify" class="plugin-anchor" href="#03-tfnotify"><i class="fa fa-link" aria-hidden="true"></i></a>03. tfnotify</h2>
+<h3 id="tfnotify&#x3068;&#x306F;"><a name="tfnotify&#x3068;&#x306F;" class="plugin-anchor" href="#tfnotify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>tfnotify&#x3068;&#x306F;</h3>
+<p>terraform&#x306E;<code>plan</code>&#x307E;&#x305F;&#x306F;<code>apply</code>&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#xFF0C;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#xFF0E;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
-<h3 id="&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><a name="&#x30D7;&#x30EA;&#x30F3;&#x30BF;" class="plugin-anchor" href="#&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D7;&#x30EA;&#x30F3;&#x30BF;</h3>
-<h4 id="&#x30FB;&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><a name="&#x30FB;&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;" class="plugin-anchor" href="#&#x30FB;&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;.jpg" alt="&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;.jpg" alt="&#x30C9;&#x30C3;&#x30C8;&#x30A4;&#x30F3;&#x30D1;&#x30AF;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
-<h4 id="&#x30FB;&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><a name="&#x30FB;&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;" class="plugin-anchor" href="#&#x30FB;&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;.jpg" alt="&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;.jpg" alt="&#x30A4;&#x30F3;&#x30AF;&#x30B8;&#x30A7;&#x30C3;&#x30C8;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
-<h4 id="&#x30FB;&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><a name="&#x30FB;&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;" class="plugin-anchor" href="#&#x30FB;&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;.jpg" alt="&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;.jpg" alt="&#x30EC;&#x30FC;&#x30B6;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
-<h4 id="&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x89E3;&#x50CF;&#x5EA6;"><a name="&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x89E3;&#x50CF;&#x5EA6;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x89E3;&#x50CF;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x89E3;&#x50CF;&#x5EA6;</h4>
-<p>  &#xFF11;&#x30A4;&#x30F3;&#x30C1;&#x5F53;&#x305F;&#x308A;&#x306E;&#x30C9;&#x30C3;&#x30C8;&#x6570;&#xFF08;dpi&#xFF09;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;&#x89E3;&#x50CF;&#x5EA6;&#x304C;&#x7570;&#x306A;&#x308B;&#xFF0E;&#x5FA9;&#x7FD2;&#x3067;&#x306F;&#x3042;&#x308B;&#x304C;&#x3001;PC&#x4E0A;&#x3067;&#x306F;&#x3001;&#x30C9;&#x30C3;&#x30C8;&#x6570;&#x304C;&#x3069;&#x306E;&#x304F;&#x3089;&#x3044;&#x306E;&#x30D3;&#x30C3;&#x30C8;&#x6570;&#x3092;&#x6301;&#x3064;&#x304B;&#x3067;&#x3001;&#x89E3;&#x50CF;&#x5EA6;&#x304C;&#x5909;&#x308F;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPI.jpg" alt="DPI"></p>
-<p>dpi&#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#x306B;&#x3064;&#x308C;&#x3066;&#x3001;&#x89E3;&#x50CF;&#x5EA6;&#x306F;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DPI&#x306E;&#x6BD4;&#x8F03;.jpg" alt="DPI&#x306E;&#x6BD4;&#x8F03;"></p>
-<h4 id="&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x5370;&#x5B57;&#x901F;&#x5EA6;"><a name="&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x5370;&#x5B57;&#x901F;&#x5EA6;" class="plugin-anchor" href="#&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x5370;&#x5B57;&#x901F;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D7;&#x30EA;&#x30F3;&#x30BF;&#x306E;&#x5370;&#x5B57;&#x901F;&#x5EA6;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CPS &#x3068; PPM.jpg" alt="CPS &#x3068; PPM"></p>
+<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
+<p>CircleCI&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;command&#x306E;&#x4E2D;&#x3067;&#xFF0C;&#x4EE5;&#x4E0B;&#x304B;&#x3089;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x305F;tfnotify&#x306E;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#xFF0E;</p>
+<p><a href="https://github.com/mercari/tfnotify/releases/tag/v0.7.0" target="_blank">https://github.com/mercari/tfnotify/releases/tag/v0.7.0</a></p>
+<pre class="language-"><code class="lang-shell"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> plan <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml plan
+</code></pre>
 <p><br></p>
-<h2 id="02-02-&#x5165;&#x51FA;&#x529B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;"><a name="02-02-&#x5165;&#x51FA;&#x529B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;" class="plugin-anchor" href="#02-02-&#x5165;&#x51FA;&#x529B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x5165;&#x51FA;&#x529B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;</h2>
-<h3 id="serial-interface-vs-parallel-interface"><a name="serial-interface-vs-parallel-interface" class="plugin-anchor" href="#serial-interface-vs-parallel-interface"><i class="fa fa-link" aria-hidden="true"></i></a>Serial interface vs. Parallel interface</h3>
-<p>&#x30B7;&#x30EA;&#x30A2;&#x30EB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x306F;&#x3001;&#x60C5;&#x5831;&#x3092;1bit&#x305A;&#x3064;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x65B9;&#x5F0F;&#xFF0E;&#x30D1;&#x30E9;&#x30EC;&#x30EB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x306F;&#x3001;&#x8907;&#x6570;&#x306E;bit&#x306E;&#x60C5;&#x5831;&#x3092;&#x540C;&#x6642;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x65B9;&#x5F0F;&#xFF0E;&#x30D1;&#x30E9;&#x30EC;&#x30EB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x306F;&#x3001;&#x540C;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x3001;&#x540C;&#x6642;&#x306B;&#x53D7;&#x4FE1;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x3089;&#x306A;&#x3044;&#xFF0E;&#x914D;&#x7DDA;&#x306E;&#x5F62;&#x72B6;&#x3084;&#x9577;&#x3055;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;&#x4FE1;&#x53F7;&#x306E;&#x8EE2;&#x9001;&#x6642;&#x9593;&#x306F;&#x7570;&#x306A;&#x308B;&#xFF0E;&#x52D5;&#x4F5C;&#x30AF;&#x30ED;&#x30C3;&#x30AF;&#x304C;&#x901F;&#x3051;&#x308C;&#x3070;&#x901F;&#x3044;&#x307B;&#x3069;&#x3001;&#x914D;&#x7DDA;&#x9593;&#x306E;&#x540C;&#x6642;&#x8EE2;&#x9001;&#x306B;&#x8AA4;&#x5DEE;&#x304C;&#x751F;&#x3058;&#x3066;&#x3057;&#x307E;&#x3046;&#x305F;&#x3081;&#x3001;&#x73FE;&#x4EE3;&#x306E;&#x9AD8;&#x30B9;&#x30DA;&#x30C3;&#x30AF;&#x30D1;&#x30BD;&#x30B3;&#x30F3;&#x306B;&#x306F;&#x5411;&#x3044;&#x3066;&#x3044;&#x306A;&#x3044;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30D1;&#x30E9;&#x30EC;&#x30EB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x306F;&#x914D;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x95A2;&#x4FC2;&#x3057;&#x3066;&#x304F;&#x308B;.png" alt="&#x30D1;&#x30E9;&#x30EC;&#x30EB;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#x306F;&#x914D;&#x7DDA;&#x306E;&#x9577;&#x3055;&#x304C;&#x95A2;&#x4FC2;&#x3057;&#x3066;&#x304F;&#x308B;"></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B7;&#x30EA;&#x30A2;&#x30EB;vs &#x30D1;&#x30E9;&#x30EC;&#x30EB; &#x306E;&#x9055;&#x3044;.jpeg" alt="&#x30B7;&#x30EA;&#x30A2;&#x30EB;vs &#x30D1;&#x30E9;&#x30EC;&#x30EB; &#x306E;&#x9055;&#x3044;"></p>
-<p><br></p>
-<h3 id="serial-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;"><a name="serial-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;" class="plugin-anchor" href="#serial-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>Serial interface &#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;</h3>
-<h4 id="&#x30FB;usb&#xFF08;universal-serial-bus&#xFF09;"><a name="&#x30FB;usb&#xFF08;universal-serial-bus&#xFF09;" class="plugin-anchor" href="#&#x30FB;usb&#xFF08;universal-serial-bus&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;USB&#xFF08;Universal Serial Bus&#xFF09;</h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usb&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;.png" alt="usb&#x30B1;&#x30FC;&#x30D6;&#x30EB;"></p>
-<h4 id="&#x30FB;ieee1394"><a name="&#x30FB;ieee1394" class="plugin-anchor" href="#&#x30FB;ieee1394"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IEEE1394</h4>
-<p>&#x30D3;&#x30C7;&#x30AA;&#x30AB;&#x30E1;&#x30E9;&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ieee&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;.jpg" alt="ieee&#x30B1;&#x30FC;&#x30D6;&#x30EB;"></p>
-<p><br></p>
-<h3 id="parallel-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;"><a name="parallel-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;" class="plugin-anchor" href="#parallel-interface-&#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>Parallel interface &#x304C;&#x7528;&#x3044;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x4F8B;</h3>
-<h4 id="&#x30FB;ide&#xFF08;integrated-drive-electronics&#xFF09;"><a name="&#x30FB;ide&#xFF08;integrated-drive-electronics&#xFF09;" class="plugin-anchor" href="#&#x30FB;ide&#xFF08;integrated-drive-electronics&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IDE&#xFF08;Integrated Drive Electronics&#xFF09;</h4>
-<p>&#x30CF;&#x30FC;&#x30C9;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x306B;&#x7528;&#x3044;&#x3089;&#x308C;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ide&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;.jpg" alt="ide&#x30B1;&#x30FC;&#x30D6;&#x30EB;"></p>
-<h4 id="&#x30FB;scsi&#xFF08;small-computer-system-interface&#xFF09;"><a name="&#x30FB;scsi&#xFF08;small-computer-system-interface&#xFF09;" class="plugin-anchor" href="#&#x30FB;scsi&#xFF08;small-computer-system-interface&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;SCSI&#xFF08;Small Computer System Interface&#xFF09;</h4>
-<p>&#x30CF;&#x30FC;&#x30C9;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x3001;CD-ROM&#x3001;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x30B9;&#x30AD;&#x30E3;&#x30CA;&#x306A;&#x3069;&#x3001;&#x69D8;&#x3005;&#x306A;&#x5468;&#x8FBA;&#x6A5F;&#x5668;&#x3092;&#x30C7;&#x30A4;&#x30B8;&#x30FC;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/scsi&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;.jpg" alt="scsi&#x30B1;&#x30FC;&#x30D6;&#x30EB;"></p>
-<p><br></p>
-<h3 id="&#x7121;&#x7DDA;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;"><a name="&#x7121;&#x7DDA;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;" class="plugin-anchor" href="#&#x7121;&#x7DDA;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7121;&#x7DDA;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;</h3>
-<h4 id="&#x30FB;irda&#xFF08;infrared-data-assoiciation&#xFF09;"><a name="&#x30FB;irda&#xFF08;infrared-data-assoiciation&#xFF09;" class="plugin-anchor" href="#&#x30FB;irda&#xFF08;infrared-data-assoiciation&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IrDA&#xFF08;infrared Data Assoiciation&#xFF09;</h4>
-<p>  &#x8D64;&#x5916;&#x7DDA;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3001;&#x7121;&#x7DDA;&#x901A;&#x4FE1;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/irDA&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;.jpg" alt="irDA&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;"></p>
-<h4 id="&#x30FB;bluetooth"><a name="&#x30FB;bluetooth" class="plugin-anchor" href="#&#x30FB;bluetooth"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Bluetooth</h4>
-<p>  2.4GHz&#x306E;&#x96FB;&#x6CE2;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x7121;&#x7DDA;&#x901A;&#x4FE1;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306E;&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30D5;&#x30A7;&#x30A4;&#x30B9;&#xFF0E;</p>
+<h3 id="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
+<p>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;GitHub&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x767A;&#x884C;&#x3057;&#xFF0C;CI&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x767B;&#x9332;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x4F8B;&#x3068;&#x3057;&#x3066;&#xFF0C;GitHub&#x306E;&#x7279;&#x5B9A;&#x306E;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306E;&#x30D7;&#x30EB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306B;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token comment"># https://github.com/mercari/tfnotify</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">ci</span><span class="token punctuation">:</span> circleci
+
+<span class="token key atrule">notifier</span><span class="token punctuation">:</span>
+  <span class="token key atrule">github</span><span class="token punctuation">:</span>
+    <span class="token comment"># &#x74B0;&#x5883;&#x5909;&#x6570;&#x306B;&#x767B;&#x9332;&#x3057;&#x305F;&#x30D1;&#x30FC;&#x30BD;&#x30CA;&#x30EB;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;</span>
+    <span class="token key atrule">token</span><span class="token punctuation">:</span> $GITHUB_TOKEN
+    <span class="token key atrule">repository</span><span class="token punctuation">:</span>
+      <span class="token comment"># &#x9001;&#x4FE1;&#x5148;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;&#x3082;&#x3057;&#x304F;&#x306F;&#x7D44;&#x7E54;&#x540D;</span>
+      <span class="token key atrule">owner</span><span class="token punctuation">:</span> <span class="token string">&quot;foo-company&quot;</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;foo-repository&quot;</span>
+
+<span class="token key atrule">terraform</span><span class="token punctuation">:</span>
+  <span class="token key atrule">plan</span><span class="token punctuation">:</span>
+    <span class="token key atrule">template</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      {{ .Title }} for staging &lt;sup&gt;[CI link]( {{ .Link }} )&lt;/sup&gt;
+      {{ .Message }}
+      {{if .Result}}
+      &lt;pre&gt;&lt;code&gt; {{ .Result }}
+      &lt;/pre&gt;&lt;/code&gt;
+      {{end}}
+      &lt;details&gt;&lt;summary&gt;Details (Click me)&lt;/summary&gt;</span>
+
+      &lt;pre<span class="token punctuation">&gt;</span>&lt;code<span class="token punctuation">&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> .Body <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      &lt;/pre<span class="token punctuation">&gt;</span>&lt;/code<span class="token punctuation">&gt;</span>&lt;/details<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">apply</span><span class="token punctuation">:</span>
+    <span class="token key atrule">template</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      {{ .Title }}
+      {{ .Message }}
+      {{if .Result}}
+      &lt;pre&gt;&lt;code&gt;{{ .Result }}
+      &lt;/pre&gt;&lt;/code&gt;
+      {{end}}
+      &lt;details&gt;&lt;summary&gt;Details (Click me)&lt;/summary&gt;</span>
+
+      &lt;pre<span class="token punctuation">&gt;</span>&lt;code<span class="token punctuation">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> .Body <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      &lt;/pre<span class="token punctuation">&gt;</span>&lt;/code<span class="token punctuation">&gt;</span>&lt;/details<span class="token punctuation">&gt;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -2249,7 +2527,7 @@
 
             
                 
-                <a href="hardware_memory.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎メモリ">
+                <a href="infrastructure_as_code_terraform_aws_tips.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎Terraformを用いたAWS構築Tips">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2261,7 +2539,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎組み込み機器","level":"1.4.3","depth":2,"next":{"title":"ネットワーク","level":"1.5","depth":1,"ref":"","articles":[{"title":"📖 ︎ネットワーク","level":"1.5.1","depth":2,"path":"public/network/network.md","ref":"public/network/network.md","articles":[]},{"title":"データ通信の仕組み","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"📖 ︎OSI参照モデル／TCP階層モデル","level":"1.5.2.1","depth":3,"path":"public/network/network_osi_tcp_model.md","ref":"public/network/network_osi_tcp_model.md","articles":[]}]},{"title":"セキュリティ","level":"1.5.3","depth":2,"ref":"","articles":[{"title":"📖 ︎サイバー攻撃","level":"1.5.3.1","depth":3,"path":"public/network/network_security_cyber_attacks.md","ref":"public/network/network_security_cyber_attacks.md","articles":[]},{"title":"📖 ︎通信データの暗号化技術","level":"1.5.3.2","depth":3,"path":"public/network/network_security_encryption_technology.md","ref":"public/network/network_security_encryption_technology.md","articles":[]}]}]},"previous":{"title":"📖 ︎メモリ","level":"1.4.2","depth":2,"path":"public/hardware/hardware_memory.md","ref":"public/hardware/hardware_memory.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/hardware/hardware_embedded_system.md","mtime":"2021-10-02T10:29:39.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-08T00:02:32.587Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎TerraformのCICDフロー","level":"1.7.2.3","depth":3,"next":{"title":"仮想化","level":"1.8","depth":1,"ref":"","articles":[{"title":"📖 ︎仮想化","level":"1.8.1","depth":2,"path":"public/virtualization/virtualization.md","ref":"public/virtualization/virtualization.md","articles":[]},{"title":"コンテナ","level":"1.8.2","depth":2,"ref":"","articles":[{"title":"📖 ︎コンテナ","level":"1.8.2.1","depth":3,"path":"public/virtualization/virtualization_container.md","ref":"public/virtualization/virtualization_container.md","articles":[]},{"title":"コンテナオーケストレーション","level":"1.8.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎コンテナオーケストレーション","level":"1.8.2.2.1","depth":4,"path":"public/virtualization/virtualization_container_orchestration.md","ref":"public/virtualization/virtualization_container_orchestration.md","articles":[]},{"title":"📖 ︎Docker Compose","level":"1.8.2.2.2","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_compose.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose.md","articles":[]},{"title":"📖 ︎Kubernetes","level":"1.8.2.2.3","depth":4,"path":"public/virtualization/virtualization_container_orchestration_kubernetes.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"📖 ︎Docker Swarm","level":"1.8.2.2.4","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","ref":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","articles":[]}]}]},{"title":"︎仮想サーバ（仮想マシン）","level":"1.8.3","depth":2,"ref":"","articles":[{"title":"📖 ︎仮想サーバ（仮想マシン）","level":"1.8.3.1","depth":3,"path":"public/virtualization/virtualization_server.md","ref":"public/virtualization/virtualization_server.md","articles":[]}]}]},"previous":{"title":"📖 ︎Terraformを用いたAWS構築Tips","level":"1.7.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","mtime":"2021-10-07T03:14:12.770Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-08T00:02:32.587Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
