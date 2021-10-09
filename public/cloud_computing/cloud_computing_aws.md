@@ -392,18 +392,56 @@ API Gateway側でプロキシ統合を有効化すると，API Gatewayを経由�
 
 ```bash
 {
-  "resource": "Resource path",
-  "path": "Path parameter",
-  "httpMethod": "Incoming request's method name",
-  "headers": {String containing incoming request headers},
-  "multiValueHeaders": {List of strings containing incoming request headers},
-  "queryStringParameters": {query string parameters },
-  "multiValueQueryStringParameters": {List of query string parameters},
-  "pathParameters":  {path parameters},
-  "stageVariables": {Applicable stage variables},
-  "requestContext": {Request context, including authorizer-returned key-value pairs},
-  "body": "A JSON string of the request payload.",
-  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
+    "resource": "Resource path",
+    "path": "Path parameter",
+    "httpMethod": "Incoming request's method name",
+    "headers": {
+        String
+        containing
+        incoming
+        request
+        headers
+    },
+    "multiValueHeaders": {
+        List
+        of
+        strings
+        containing
+        incoming
+        request
+        headers
+    },
+    "queryStringParameters": {
+        query
+        string
+        parameters
+    },
+    "multiValueQueryStringParameters": {
+        List
+        of
+        query
+        string
+        parameters
+    },
+    "pathParameters": {
+        path
+        parameters
+    },
+    "stageVariables": {
+        Applicable
+        stage
+        variables
+    },
+    "requestContext": {
+        Request
+        context,
+        including
+        authorizer-returned
+        key-value
+        pairs
+    },
+    "body": "A JSON string of the request payload.",
+    "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encoded"
 }
 
 ```
@@ -414,11 +452,23 @@ API Gatewayは，Lambdaからのレスポンスを，以下のJSONデータに�
 
 ```bash
 {
-  "isBase64Encoded": true|false,
-  "statusCode": httpStatusCode,
-  "headers": { "headerName": "headerValue", ... },
-  "multiValueHeaders": { "headerName": ["headerValue", "headerValue2", ...], ... },
-  "body": "Hello Lambda"
+    "isBase64Encoded": true
+    |
+    false,
+    "statusCode": httpStatusCode,
+    "headers": {
+        "headerName": "headerValue",
+        ...
+    },
+    "multiValueHeaders": {
+        "headerName": [
+            "headerValue",
+            "headerValue2",
+            ...
+        ],
+        ...
+    },
+    "body": "Hello Lambda"
 }
 ```
 

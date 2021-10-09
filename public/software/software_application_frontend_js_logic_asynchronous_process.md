@@ -16,7 +16,7 @@
 
 **＊実装例＊**
 
-```setTimeout```関数を使用して，
+非同期化する処理を```setTimeout```関数に渡し，処理を遅らせる．
 
 ```javascript
 function asyncMethod() {

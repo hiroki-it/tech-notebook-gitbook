@@ -386,9 +386,12 @@ import 'dd-trace/init'
 
 #### ・タグ
 
-トレーシングパッケージによって，サービスにタグを追加できる．
+トレーシングパッケージによって，サービスにタグを追加できる．PHPトレーサの各インテグレーションのソースコードについては以下のリンクを参考にせよ．ソースコードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
 
-参考：https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+参考：
+
+- https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
+- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
 
 <br>
 
@@ -597,7 +600,7 @@ Nginxの場合
 
 ### ログパイプラインとは
 
-Datadogに流入するログのメッセージを値に分解し，属性にこの値を割り当てる．パイプラインのルールに当てはまらなかったされなかったログは，そのまま流入する．属性ごとにファセットに対応しており，各ファセットの値判定ルールに基づいて，ログコンソール画面に表示される．
+Datadogに流入するログのメッセージから値を抽出し，構造化ログの各属性に割り当てる．パイプラインのルールに当てはまらなかったされなかったログは，そのまま流入する．属性ごとにファセットに対応しており，各ファセットの値判定ルールに基づいて，ログコンソール画面に表示される．
 
 <br>
 
@@ -648,7 +651,7 @@ Laravelによって，以下のようなログが生成されるとする．
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
 ```
 
-これにより，以下のような属性セットを得られる．
+これにより，構造化ログの各属性に値が割り当てられる．
 
 ```bash
 {
@@ -677,7 +680,7 @@ access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_ref
 error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
 ```
 
-これにより，以下のような属性セットを得られる．
+これにより，構造化ログの各属性に値が割り当てられる．
 
 ```bash
 {
@@ -728,7 +731,7 @@ access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_ref
 error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
 ```
 
-これにより，以下のような属性セットを得られる．
+これにより，構造化ログの各属性に値が割り当てられる．
 
 ```bash
 {
@@ -750,7 +753,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-ユーザエージェントパーサーを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分ける．これにより，以下のような属性セットを得られる．
+ユーザエージェントパーサーを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分ける．これにより，構造化ログの各属性に値が割り当てられる．
 
 ```bash
 {
