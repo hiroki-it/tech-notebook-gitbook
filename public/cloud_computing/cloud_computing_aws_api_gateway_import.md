@@ -1,4 +1,4 @@
-# API Gatewayインポート機能
+# API Gatewayへのymlインポート
 
 ## はじめに
 

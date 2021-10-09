@@ -102,6 +102,7 @@
     * [📖 ︎AWS](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html)
     * [📖 ︎API Gatewayインポート機能](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     * [📖 ︎Lambda関数](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html)
+    * [📖 ︎コスト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_cost_management.html)
 * GCP
     * [📖 ︎GCP](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_gcp.html)
 

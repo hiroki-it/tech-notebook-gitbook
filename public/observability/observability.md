@@ -122,13 +122,13 @@ FluentBitが生成した構造化ログを示す．
 
 #### ・Distributed logging（分散ロギング）
 
-マイクロサービスアーキテクチャにて，各サービスから収集されたログを，バラバラに分析／管理する方法のこと．
+マイクロサービスアーキテクチャにおいて，各サービスから収集されたログを，バラバラに分析／管理する方法のこと．
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
 
 #### ・Centralized logging（集中ロギング）
 
-マイクロサービスアーキテクチャにて，各サービスから収集されたログを，一元的に分析／管理する方法のこと．
+マイクロサービスアーキテクチャにおいて，各サービスから収集されたログを，一元的に分析／管理する方法のこと．
 
 参考：https://www.splunk.com/ja_jp/data-insider/what-is-distributed-tracing.html#centralized-logging
 
@@ -138,9 +138,14 @@ FluentBitが生成した構造化ログを示す．
 
 ### 分散トレースとは
 
-マイクロサービスアーキテクチャの各サービスから得られたスパンデータの集計値のこと．分散システムに渡った一連の処理を，イベントの因果関係の繋がりと見ることができる．この一連の処理で発生する連続的なデータを追跡記録として収集する．リクエストヘッダーやボディにIDを割り当て，これを追跡する．AWSを使用している場合，例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため，アプリケーションでリクエストIDを実装せずに分散トレースを実現できる．
+マイクロサービスアーキテクチャにおいて，各サービスから得られたスパンの因果関係データのこと．スパンを収集することによって，異なるサービスに分割されてしまった処理を紐づけ，ひと繋ぎの処理として認識できるようになる．
 
-参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+参考：
+
+- https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
+- https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
+
+![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
 
 <br>
 
@@ -148,9 +153,15 @@ FluentBitが生成した構造化ログを示す．
 
 #### ・スパンとは
 
-個々のリクエストマイクロサービスアーキテクチャの各サービスから得られる
+マイクロサービスアーキテクチャにおいて，特定のサービスで発生したデータポイントのセットのこと．特定のサービスの操作名，処理開始／終了のタイムスタンプ，などをデータポイントとして持つ．
 
-参考：https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
+参考：https://opentracing.io/docs/overview/spans/
+
+#### ・スパン間の紐づけ
+
+リクエストヘッダーやボディにIDを割り当て，異なるサービスのスパン間を紐づける．AWSを使用している場合，例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため，アプリケーションでリクエストIDを実装せずに分散トレースを実現できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 <br>
 
