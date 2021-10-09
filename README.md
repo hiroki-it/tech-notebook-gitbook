@@ -20,7 +20,7 @@ GitBookを使用して，mdファイルからHTMLを生成しております．
 ### 目次から
 
 1. スマホではくPCでの使用を推奨します．
-2. 目次ページを確認します．
+2. [目次ページ](https://hiroki-it.github.io/tech-notebook-gitbook/public/summary.html) を確認します．
 3. ノートをクリックします．
 
 <br>
