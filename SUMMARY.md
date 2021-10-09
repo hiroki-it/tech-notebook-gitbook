@@ -101,6 +101,7 @@
     * [📖 ︎AWS](public/cloud_computing/cloud_computing_aws.md)
     * [📖 ︎API Gatewayインポート機能](public/cloud_computing/cloud_computing_aws_api_gateway_import.md)
     * [📖 ︎Lambda関数](public/cloud_computing/cloud_computing_aws_lambda_function.md)
+    * [📖 ︎コスト管理](public/cloud_computing/cloud_computing_aws_cost_management.md)
   * GCP
     * [📖 ︎GCP](public/cloud_computing/cloud_computing_gcp.md)
 
