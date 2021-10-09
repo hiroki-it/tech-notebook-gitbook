@@ -3,7 +3,7 @@
 
 * [📖 ︎サイト管理者](public/self_introduction.md)
 
-* [📖 ︎目次](public/index.md)
+* [📖 ︎目次](public/summary.md)
 
 * ソフトウェア
   * [📖 ︎ソフトウェア](public/software/software.md)
