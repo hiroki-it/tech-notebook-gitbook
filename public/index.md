@@ -1,7 +1,6 @@
 # 目次
 
 ## ソフトウェア
-
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
 * 基本ソフトウェア（OS）
     * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
