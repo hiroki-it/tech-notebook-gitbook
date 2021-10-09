@@ -2744,28 +2744,78 @@ $ amplify publish
 <h4 id="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><a name="&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</h4>
 <p>API Gateway&#x5074;&#x3067;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x7D71;&#x5408;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x3068;&#xFF0C;API Gateway&#x3092;&#x7D4C;&#x7531;&#x3057;&#x305F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#xFF0C;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x306E;event&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;JSON&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
-  <span class="token string">&quot;resource&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Resource path&quot;</span>,
-  <span class="token string">&quot;path&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Path parameter&quot;</span>,
-  <span class="token string">&quot;httpMethod&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Incoming request&apos;s method name&quot;</span>,
-  <span class="token string">&quot;headers&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>String containing incoming request headers<span class="token punctuation">}</span>,
-  <span class="token string">&quot;multiValueHeaders&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>List of strings containing incoming request headers<span class="token punctuation">}</span>,
-  <span class="token string">&quot;queryStringParameters&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>query string parameters <span class="token punctuation">}</span>,
-  <span class="token string">&quot;multiValueQueryStringParameters&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>List of query string parameters<span class="token punctuation">}</span>,
-  <span class="token string">&quot;pathParameters&quot;</span><span class="token builtin class-name">:</span>  <span class="token punctuation">{</span>path parameters<span class="token punctuation">}</span>,
-  <span class="token string">&quot;stageVariables&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>Applicable stage variables<span class="token punctuation">}</span>,
-  <span class="token string">&quot;requestContext&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>Request context, including authorizer-returned key-value pairs<span class="token punctuation">}</span>,
-  <span class="token string">&quot;body&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;A JSON string of the request payload.&quot;</span>,
-  <span class="token string">&quot;isBase64Encoded&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;A boolean flag to indicate if the applicable request payload is Base64-encoded&quot;</span>
+    <span class="token string">&quot;resource&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Resource path&quot;</span>,
+    <span class="token string">&quot;path&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Path parameter&quot;</span>,
+    <span class="token string">&quot;httpMethod&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Incoming request&apos;s method name&quot;</span>,
+    <span class="token string">&quot;headers&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        String
+        containing
+        incoming
+        request
+        headers
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;multiValueHeaders&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        List
+        of
+        strings
+        containing
+        incoming
+        request
+        headers
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;queryStringParameters&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        query
+        string
+        parameters
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;multiValueQueryStringParameters&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        List
+        of
+        query
+        string
+        parameters
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;pathParameters&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        path
+        parameters
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;stageVariables&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        Applicable
+        stage
+        variables
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;requestContext&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        Request
+        context,
+        including
+        authorizer-returned
+        key-value
+        pairs
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;body&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;A JSON string of the request payload.&quot;</span>,
+    <span class="token string">&quot;isBase64Encoded&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;A boolean flag to indicate if the applicable request payload is Base64-encoded&quot;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><a name="&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;" class="plugin-anchor" href="#&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;</h4>
 <p>API Gateway&#x306F;&#xFF0C;Lambda&#x304B;&#x3089;&#x306E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;JSON&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x4EE5;&#x5916;&#x306E;&#x69CB;&#x9020;&#x306E;JSON&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3068;&#xFF0C;API Gateway&#x3067;&#x300E;<code>Internal Server Error</code>&#x300F;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x308B;&#xFF0E;</p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
-  <span class="token string">&quot;isBase64Encoded&quot;</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span><span class="token operator">|</span>false,
-  <span class="token string">&quot;statusCode&quot;</span><span class="token builtin class-name">:</span> httpStatusCode,
-  <span class="token string">&quot;headers&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;headerName&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;headerValue&quot;</span>, <span class="token punctuation">..</span>. <span class="token punctuation">}</span>,
-  <span class="token string">&quot;multiValueHeaders&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;headerName&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;headerValue&quot;</span>, <span class="token string">&quot;headerValue2&quot;</span>, <span class="token punctuation">..</span>.<span class="token punctuation">]</span>, <span class="token punctuation">..</span>. <span class="token punctuation">}</span>,
-  <span class="token string">&quot;body&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Hello Lambda&quot;</span>
+    <span class="token string">&quot;isBase64Encoded&quot;</span><span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+    <span class="token operator">|</span>
+    false,
+    <span class="token string">&quot;statusCode&quot;</span><span class="token builtin class-name">:</span> httpStatusCode,
+    <span class="token string">&quot;headers&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;headerName&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;headerValue&quot;</span>,
+        <span class="token punctuation">..</span>.
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;multiValueHeaders&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;headerName&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;headerValue&quot;</span>,
+            <span class="token string">&quot;headerValue2&quot;</span>,
+            <span class="token punctuation">..</span>.
+        <span class="token punctuation">]</span>,
+        <span class="token punctuation">..</span>.
+    <span class="token punctuation">}</span>,
+    <span class="token string">&quot;body&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Hello Lambda&quot;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>API Gateway&#x306F;&#x4E0A;&#x8A18;&#x306E;JSON&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x5F8C;&#xFF0C;<code>body</code>&#x306E;&#x307F;&#x5024;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x6301;&#x305F;&#x305B;&#xFF0C;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;</p>
@@ -8878,7 +8928,7 @@ aws s3 <span class="token function">ls</span> --profile <span class="token opera
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎AWS","level":"1.6.2.1","depth":3,"next":{"title":"📖 ︎API Gatewayインポート機能","level":"1.6.2.2","depth":3,"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","ref":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","articles":[]},"previous":{"title":"AWS","level":"1.6.2","depth":2,"ref":"","articles":[{"title":"📖 ︎AWS","level":"1.6.2.1","depth":3,"path":"public/cloud_computing/cloud_computing_aws.md","ref":"public/cloud_computing/cloud_computing_aws.md","articles":[]},{"title":"📖 ︎API Gatewayインポート機能","level":"1.6.2.2","depth":3,"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","ref":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","articles":[]},{"title":"📖 ︎Lambda関数","level":"1.6.2.3","depth":3,"path":"public/cloud_computing/cloud_computing_aws_lambda_function.md","ref":"public/cloud_computing/cloud_computing_aws_lambda_function.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/cloud_computing/cloud_computing_aws.md","mtime":"2021-10-07T07:08:46.975Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-08T00:02:32.587Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎AWS","level":"1.6.2.1","depth":3,"next":{"title":"📖 ︎API Gatewayインポート機能","level":"1.6.2.2","depth":3,"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","ref":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","articles":[]},"previous":{"title":"AWS","level":"1.6.2","depth":2,"ref":"","articles":[{"title":"📖 ︎AWS","level":"1.6.2.1","depth":3,"path":"public/cloud_computing/cloud_computing_aws.md","ref":"public/cloud_computing/cloud_computing_aws.md","articles":[]},{"title":"📖 ︎API Gatewayインポート機能","level":"1.6.2.2","depth":3,"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","ref":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","articles":[]},{"title":"📖 ︎Lambda関数","level":"1.6.2.3","depth":3,"path":"public/cloud_computing/cloud_computing_aws_lambda_function.md","ref":"public/cloud_computing/cloud_computing_aws_lambda_function.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/cloud_computing/cloud_computing_aws.md","mtime":"2021-10-08T08:44:13.734Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-09T03:11:26.358Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2114,26 +2114,27 @@
 <h2 id="ami"><a name="ami" class="plugin-anchor" href="#ami"><i class="fa fa-link" aria-hidden="true"></i></a>AMI</h2>
 <h3 id="&#x307E;&#x3068;&#x3081;"><a name="&#x307E;&#x3068;&#x3081;" class="plugin-anchor" href="#&#x307E;&#x3068;&#x3081;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x307E;&#x3068;&#x3081;</h3>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code>###############################################
-# For bastion
-###############################################
-data &quot;aws_ami&quot; &quot;bastion&quot; {
-  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
-  most_recent = false
+<pre class="language-"><code class="lang-elixir"><span class="token comment">###############################################</span>
+<span class="token comment"># For bastion</span>
+<span class="token comment">###############################################</span>
+<span class="token keyword">data <span class="token type variable">&quot;aws_ami&quot;</span></span> <span class="token string">&quot;bastion&quot;</span> <span class="token punctuation">{</span>
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">most_recent</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
 
-  # &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;
-  owners      = [&quot;amazon&quot;]
-  filter {
-    name   = &quot;name&quot;
-    values = [&quot;amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2&quot;]
-  }
+  <span class="token comment"># &#x5F8C;&#x8FF0;&#x306E;&#x8AAC;&#x660E;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;&#xFF08;&#xFF11;&#xFF09;</span>
+  <span class="token property">owners</span>      <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;amazon&quot;</span><span class="token punctuation">]</span>
+  <span class="token keyword">filter</span> <span class="token punctuation">{</span>
+    <span class="token property">name</span>   <span class="token punctuation">=</span> <span class="token string">&quot;name&quot;</span>
+    <span class="token property">values</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2&quot;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
 
-  filter {
-    name   = &quot;image-id&quot;
-    values = [&quot;ami-040c9333a9c90b2b6&quot;]
-  }
-}
-</code></pre><p><br></p>
+  <span class="token keyword">filter</span> <span class="token punctuation">{</span>
+    <span class="token property">name</span>   <span class="token punctuation">=</span> <span class="token string">&quot;image-id&quot;</span>
+    <span class="token property">values</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;ami-040c9333a9c90b2b6&quot;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
 <h3 id="&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><a name="&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;" class="plugin-anchor" href="#&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;ami&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#xFF08;&#xFF11;&#xFF09;&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x56FA;&#x5B9A;</h3>
 <p>&#x53D6;&#x5F97;&#x3059;&#x308B;AMI&#x304C;&#x5E38;&#x306B;&#x6700;&#x65B0;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3068;&#xFF0C;EC2&#x304C;&#x518D;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x306A;&#x306D;&#x306A;&#x3044;&#xFF0E;&#x305D;&#x3053;&#x3067;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AMI&#x3092;&#x53D6;&#x5F97;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;<code>most_recent</code>&#x306F;&#x7121;&#x52B9;&#x5316;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;&#x7279;&#x5B9A;&#x306E;AM&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3059;&#x308B;&#xFF0E;</p>
 <p><br></p>
@@ -3374,7 +3375,7 @@ data &quot;aws_ami&quot; &quot;bastion&quot; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Terraformを用いたAWS構築Tips","level":"1.7.2.2","depth":3,"next":{"title":"📖 ︎TerraformのCICDフロー","level":"1.7.2.3","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","articles":[]},"previous":{"title":"📖 ︎Terraform","level":"1.7.2.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.md","mtime":"2021-10-07T03:15:17.955Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-08T00:02:32.587Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Terraformを用いたAWS構築Tips","level":"1.7.2.2","depth":3,"next":{"title":"📖 ︎TerraformのCICDフロー","level":"1.7.2.3","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","articles":[]},"previous":{"title":"📖 ︎Terraform","level":"1.7.2.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"目次","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.md","mtime":"2021-10-08T00:10:08.658Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-09T03:11:26.358Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
