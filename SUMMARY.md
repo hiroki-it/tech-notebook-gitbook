@@ -31,6 +31,11 @@
         * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
         * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
         * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
+    * アプリケーション間連携
+      * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
+      * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
+      * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
+      * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
     * バックエンド 
       * PHP
         * クラスベースオブジェクト指向
@@ -76,11 +81,6 @@
           * [📖 ︎デバッグのコツ](public/software/software_application_frontend_js_debug.md)
         * ブラウザ
           * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_js_browser_rendering.md)
-    * アプリケーション間連携
-      * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
-      * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
-      * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
-      * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
