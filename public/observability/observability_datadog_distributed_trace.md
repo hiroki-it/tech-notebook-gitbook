@@ -1,0 +1,224 @@
+# 分散トレース収集
+
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
+## 01. トレーシングパッケージ
+
+### トレーシングパッケージとは
+
+APM機能を用いる時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーシングパッケージをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
+
+参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
+
+![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-tracer.png)
+
+<br>
+
+### パッケージ一覧
+
+参考：https://docs.datadoghq.com/ja/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+
+<br>
+
+### PHPトレーシングパッケージ
+
+#### ・インストール
+
+各サービスのDockerfileにて，パッケージをインストールする．
+
+参考：https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers
+
+```dockerfile
+ENV DD_TRACE_VERSION=0.63.0
+
+# GitHubからパッケージをダウンロード
+RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRACE_VERSION}/datadog-php-tracer_${DD_TRACE_VERSION}_amd64.deb \
+  # 解凍
+  && dpkg -i datadog-php-tracer.deb \
+  # 残骸ファイルを削除
+  && rm datadog-php-tracer.deb
+```
+
+アプリケーションがパッケージを読み込んだか否かをコマンドで確認できる．
+
+```bash
+# 成功の場合
+root@*****:/ php --ri=ddtrace
+
+ddtrace
+
+
+Datadog PHP tracer extension
+For help, check out the documentation at https://docs.datadoghq.com/tracing/languages/php/
+(c) Datadog 2020
+
+... まだまだ続く
+```
+
+```bash
+# 失敗の場合
+root@*****:/ php --ri=ddtrace
+Extension 'ddtrace' not present.
+```
+
+#### ・環境変数
+
+環境変数を使用できる．分散トレースのタグ名に反映される．環境変数については，以下のリンクを参考にせよ．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/php/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+| 変数名                                        | 説明                                                         | 画面                                   |
+| --------------------------------------------- | ------------------------------------------------------------ | -------------------------------------- |
+| ```DD_SERVICE_MAPPING```                      | 分散トレースにサービス名を設定する．サービス名は標準のでインテグレーション名になるが，これを上書きできる<br>（例）```laravel:foo-laravel,pdo:foo-pdo``` | https://app.datadoghq.com/apm/services |
+| ```DD_SERVICE_NAME```                         | 分散トレースにサービス名を設定する．```DD_SERVICE_MAPPING```がnullの場合，この環境変数の値が代わりにサービス名になる（仕組みがよくわからん）． |                                        |
+| ```DD_TRACE_<インテグレーション名>_ENABLED``` | 有効化するインテグレーション名を設定する．標準で全てのインテグレーションが有効化されているため，設定は不要である．Datadogのインテグレーションを無効化する場合は |                                        |
+| ```DD_<インテグレーション名>_DISABLED```      | 無効化するインテグレーション名を設定する．                   |                                        |
+
+トレーサーの設定の状態は，```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる．
+
+```bash
+root@*****:/ php --ri=ddtrace
+
+Datadog tracing support => enabled
+Version => 0.57.0
+DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得られる
+
+# 得られたJSONを整形
+{
+    "date": "2021-00-00T09:00:00Z",
+    "os_name": "Linux ***** 5.10.25-linuxkit #1 SMP Tue Mar 23 09:27:39 UTC 2021 x86_64",
+    "os_version": "5.10.25-linuxkit",
+    "version": "0.64.1",
+    "lang": "php",
+    "lang_version": "8.0.8",
+    "env": null,
+    "enabled": true,
+    "service": null,
+    "enabled_cli": false,
+    "agent_url": "http://localhost:8126", # datadogコンテナのアドレスポート
+    "debug": false,
+    "analytics_enabled": false,
+    "sample_rate": 1.000000,
+    "sampling_rules": null,
+    "tags": {},
+    "service_mapping": {},
+    "distributed_tracing_enabled": true,
+    "priority_sampling_enabled": true,
+    "dd_version": null,
+    "architecture": "x86_64",
+    "sapi": "cli",
+    "datadog.trace.request_init_hook": "/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php",
+    "open_basedir_configured": false,
+    "uri_fragment_regex": null,
+    "uri_mapping_incoming": null,
+    "uri_mapping_outgoing": null,
+    "auto_flush_enabled": false,
+    "generate_root_span": true,
+    "http_client_split_by_domain": false,
+    "measure_compile_time": true,
+    "report_hostname_on_root_span": false,
+    "traced_internal_functions": null,
+    "auto_prepend_file_configured": false,
+    "integrations_disabled": "default",
+    "enabled_from_env": true,
+    "opcache.file_cache": null,
+    "agent_error": "Failed to connect to localhost port 8126: Connection refused", # エラーメッセージ
+    "DDTRACE_REQUEST_INIT_HOOK": "'DDTRACE_REQUEST_INIT_HOOK=/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php' is deprecated, use DD_TRACE_REQUEST_INIT_HOOK instead."
+}
+```
+
+<br>
+
+### Node.jsトレーシングパッケージ
+
+#### ・TypeScriptやモジュールバンドルを使っている場合
+
+エントリポイントとなる```nuxt.config.js```ファイルにて，一番最初にDatadogのトレースパッケージを読み込み，初期化する．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
+
+```typescript
+import 'dd-trace/init'
+
+// フレームワークを含むパッケージのインポートが続く
+```
+
+また，初期化時に設定した環境変数を使用できる．APMのサービスのタグ名に反映される．
+
+参考：https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
+<br>
+
+## 02. スパンの収集
+
+### スパン名
+
+識別子のスパン名は，```span.name```属性から構成される．```span```には，サービス名を割り当てる．トレーシングパッケージによって，```redis```，```laravel.request```，```rails```，```pdo```などが自動で割り当てられる．
+
+<br>
+
+### スパンの構成要素
+
+| 要素   | 例                                | 補足                                                         |
+| ------ | --------------------------------- | ------------------------------------------------------------ |
+| 操作名 | ```web.request```，```db.query``` | 参考：https://docs.datadoghq.com/ja/tracing/guide/configuring-primary-operation/ |
+|        |                                   |                                                              |
+
+<br>
+
+### スパンのメトリクス
+
+#### ・メトリクス名
+
+スパンをデータポイントとしてメトリクスを収集できる．『```trace.<スパン名>.<メトリクスサフィックス>```』で識別できる．
+
+参考：https://docs.datadoghq.com/ja/tracing/guide/metrics_namespace/
+
+| 要素名                   | 説明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| スパン名                 | データポイントとなったスパン名を割り当てる．                 |
+| メトリクスサフィックス名 | メトリクス名を割り当てる．トレーシングパッケージによって，```duration```，```hits```，```span_count```などが自動で割り当てられる． |
+
+<br>
+
+## 03. サービスの識別
+
+### サービスタイプ
+
+#### ・サービスタイプとは
+
+トレーシングパッケージによって，サービスは『Web』『DB』『Cache』『Cache』の４つに分類される．各サービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる．タイプ名の種類については，以下のリンクを参考にせよ．
+
+参考：
+
+- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
+- https://docs.datadoghq.com/ja/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
+
+<br>
+
+### サービスのタグ
+
+#### ・サービスのタグとは
+
+トレーシングパッケージによって，サービスにタグを追加できる．PHPトレーサの各インテグレーションのソースコードについては以下のリンクを参考にせよ．ソースコードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
+
+参考：
+
+- https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
+- https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+
+<br>
+
+## 04. 分散トレースと他テレメトリーの紐づけ
+
+### 分散トレースとログの紐づけ
+
+ログの統合タグ（```service```，```env```，```version```）と分散トレースの環境変数の値（サービス名，環境名，バージョン名）を全て同じ名前にすると，テレメトリー（ログ，メトリクス，分散トレース）間を紐づけることができる．ログと分散が有効になっているかどうかは，APMのサービスサブの『```Service Config```』から確認できる．
+
+参考：https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/

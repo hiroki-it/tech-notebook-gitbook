@@ -100,8 +100,8 @@
 * [📖 ︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing.html)
 * AWS
     * [📖 ︎AWS](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html)
-    * [📖 ︎API Gatewayインポート機能](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html)
-    * [📖 ︎Lambda関数](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html)
+    * [📖 ︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html)
+    * [📖 ︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html)
     * [📖 ︎コスト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_cost_management.html)
 * GCP
     * [📖 ︎GCP](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_gcp.html)
@@ -141,7 +141,11 @@
 ## 可観測性
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html)
 * [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html)
-* [📖 ︎Datadog](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog.html)
+* Datadog
+     * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_metrics.html)
+     * [📖 ︎ログ収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_log.html)
+     * [📖 ︎分散トレース収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_distributed_trace.html)
+     * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_monitering.html)
 
 <br>
 

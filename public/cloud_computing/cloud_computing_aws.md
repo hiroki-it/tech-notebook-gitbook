@@ -20,7 +20,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### 設定項目
 
-#### ・概要
+#### ・主要項目
 
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -30,7 +30,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | ターゲットグループ   | ルーティング時に使用するプロトコルと，ルーティング先のアプリケーションに割り当てられたポート番号を指定する． | ターゲットグループ内のターゲットのうち，トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる． |
 | ヘルスチェック       | ターゲットグループに属するプロトコルとアプリケーションのポート番号を指定して，定期的にリクエストを送信する． |                                                              |
 
-#### ・ターゲットグループ
+#### ・ターゲットグループの詳細
 
 | ターゲットの指定方法 | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ |
@@ -268,7 +268,7 @@ test:
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 API Gatewayは，メソッドリクエスト，統合リクエスト，統合レスポンス，メソッドレスポンス，から構成される．
 
@@ -292,7 +292,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 ### リソース
 
-#### ・リソース
+#### ・リソースの詳細
 
 | 順番 | 処理               | 説明                                                         | 補足                                                         |
 | ---- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -301,7 +301,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | 3    | 統合レスポンス     |                                                              | 統合リクエストでプロキシ統合を使用する場合，統合レスポンスを使用できなくなる． |
 | 4    | メソッドレスポンス | レスポンスが成功した場合，クライアントに送信するステータスコードを設定する． |                                                              |
 
-#### ・メソッドリクエスト
+#### ・メソッドリクエストの詳細
 
 | 設定項目                  | 説明                                                         | 補足                                                         |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -313,7 +313,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | リクエスト本文            | リクエストボディのバリデーションを行う．                     |                                                              |
 | SDK設定                   |                                                              |                                                              |
 
-#### ・統合リクエスト
+#### ・統合リクエストの詳細
 
 | 設定項目                  | 説明                                                         | 補足                                   |
 | ------------------------- | ------------------------------------------------------------ | -------------------------------------- |
@@ -682,7 +682,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 <br>
 
-## 07. CloudFront
+## 08. CloudFront
 
 ### CloudFrontとは
 
@@ -692,7 +692,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 | 設定項目            | 説明 |
 | ------------------- | ---- |
@@ -703,7 +703,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 
 ### Distributions
 
-#### ・Distributions
+#### ・Distributionsの詳細
 
 [参考になったサイト](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
@@ -716,7 +716,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Restriction              |                                                              |      |
 | Invalidation             | CloudFrontに保存されているCacheを削除できる．                |      |
 
-#### ・General
+#### ・Generalの詳細
 
 | 設定項目            | 説明                                                         | 補足                                                         |
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -728,7 +728,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Default Root Object | オリジンのドキュメントルートを設定する．                     | ・何も設定しない場合，ドキュメントルートは指定されず，Behaviorで明示的にルーティングする必要がある．<br>・index.htmlを設定すると，『```/```』でリクエストした時に，オリジンのルートディレクトリにある```index,html```ファイルがドキュメントルートになる． |
 | Standard Logging    | CloudFrontのアクセスログをS3に生成するかどうかを設定する．   |                                                              |
 
-#### ・Origin and Origin Groups
+#### ・Origin and Origin Groupsの詳細
 
 | 設定項目               | 説明                                                         | 補足                                                         |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -739,7 +739,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | HTTPポート             | 転送時に指定するオリジンのHTTPのポート番号                   |                                                              |
 | HTTPSポート            | 転送時に指定するオリジンのHTTPSのポート番号                  |                                                              |
 
-#### ・Behavior
+#### ・Behaviorの詳細
 
 何に基づいたCacheを行うかについては，★マークの項目で制御できる．★マークで，各項目の全て値が，過去のリクエストに合致した時のみ，そのリクエストと過去のものが同一であると見なす仕組みになっている．キャッシュ判定時のパターンを減らし，HIT率を改善するために，★マークで可能な限り『None』を選択した方が良い．最終的に，対象のファイルがCloudFrontのCacheの対象となっているかは，レスポンスのヘッダーに含まれる『```X-Cache:```』が『```Hit from cloudfront```』，『```Miss from cloudfront```』のどちらで，Cacheの使用の有無を判断できる．その他の改善方法は，以下リンクを参考にせよ．
 
@@ -881,7 +881,7 @@ This XML file does not appear to have any style information associated with it. 
 
 <br>
 
-## 08. CloudTrail
+## 07. CloudTrail
 
 ### CloudTrailとは
 
@@ -891,7 +891,85 @@ IAMユーザによる操作や，ロールのアタッチの履歴を記録し�
 
 <br>
 
-## 09. CloudWatch
+## 08. CloudWatch
+
+### CloudWatchメトリクス
+
+#### ・CloudWatchメトリクスとは
+
+AWSリソースのメトリクスを収集する．
+
+#### ・名前空間，メトリクス，ディメンションとは
+
+データ収集の対象とする領域のこと．
+
+参考：https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
+
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+
+CloudWatchメトリクス上では，以下のように確認できる．
+
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
+
+<br>
+
+### CloudWatch Synthetics
+
+#### ・CloudWatch Syntheticsとは
+
+合成監視を行えるようになる．
+
+<br>
+
+### CloudWatchログ
+
+####  ・設定項目
+
+クラウドログサーバとして働く．様々なAWSリソースで生成されたログファイルを収集できる．
+
+| 設定項目                     | 説明                                                       | 補足                                                         |
+| ---------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する． | 基本的に，ログファイルはグループ化せずに，一つのロググループには一つのログストリームしか含まれないようにする． |
+| メトリクスフィルター         | 紐づくロググループで，出現を監視する文字列を設定する．     |                                                              |
+| サブスクリプションフィルター |                                                            |                                                              |
+| Logsインサイト               | クエリを使用してログを抽出する．                           |                                                              |
+
+#### ・メトリクスフィルターの詳細
+
+| 設定項目           | 説明                                                         | 補足                                                       |
+| ------------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| フィルターパターン | 紐づくロググループで，メトリクス値増加のトリガーとする文字列を設定する． | 大文字と小文字を区別するため，網羅的に設定する必要がある． |
+| 名前空間           | 紐づくロググループが属する名前空間を設定する．CloudWatchログが，設定した名前空間に対して，値を発行する． |                                                            |
+| メトリクス         | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatchログが，設定したメトリクスに対して，値を発行する． |                                                            |
+| メトリクス値       | フィルターパターンで文字列が検出された時に，メトリクスに対して発行する値のこと． | 例えば『検出数』を発行する場合は，『１』を設定する．       |
+
+#### ・フィルターパターンのテンプレート
+
+```bash
+# OR条件で大文字小文字を考慮し，『XXXXX:』を検出
+?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
+```
+
+```bash
+# OR条件で大文字小文字を考慮し，『XXXXX message』を検出
+?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
+```
+
+#### ・Logインサイト
+
+汎用的なクエリを示す．
+
+```bash
+# 小文字と大文字を区別せずに，ExceptionまたはErrorを含むログを検索する．
+fields @timestamp, @message, @logStream
+| filter @message like /(?i)(Exception|Error)/
+| sort @timestamp desc
+| limit 100
+```
+
+
+
+<br>
 
 ### CloudWatchエージェント
 
@@ -974,93 +1052,15 @@ $ systemctl list-unit-files --type=service
 
 <br>
 
-## 09-02. CloudWatchメトリクス
+### CloudWatchログエージェント
 
-### CloudWatchメトリクスとは
-
-AWSリソースで発生したデータポイントのメトリクスを収集する．メトリクスについては，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
-
-<br>
-
-### 収集単位
-
-#### ・ディメンション，名前空間，メトリクス名
-
-メトリクスの収集単位の名前のこと．ディメンションはインスタンスを単位とし，名前空間はAWSリソースを単位都市，メトリクス名はAWSリソースに渡った同じ種類のデータポイントを単位とする．
-
-参考：https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
-
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
-
-CloudWatchメトリクス上では，以下のように確認できる．
-
-![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
-
-<br>
-
-### CloudWatch Synthetics
-
-#### ・CloudWatch Syntheticsとは
-
-合成監視を行えるようになる．
-
-<br>
-
-## 09-03. CloudWatchログ
-
-### CloudWatchログ
-
-クラウドログサーバとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
-
-<br>
-
-### 設定項目
-
-#### ・概要
-
-| 設定項目                     | 説明                                                         | 補足                                                         |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する．   | 基本的に，ログファイルはグループ化せずに，一つのロググループには一つのログストリームしか含まれないようにする． |
-| メトリクスフィルター         | フィルターパターンに合致した文字列を持つログをトリガーとして，データポイントを発生させる．これを収集するメトリクスを設定する． |                                                              |
-| サブスクリプションフィルター |                                                              |                                                              |
-
-#### ・フィルターパターン
-
-ログ内で検知する文字列を設定する．大文字と小文字を区別するため，網羅的に設定する必要がある．
-
-参考：https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
-
-**＊例＊**
-
-OR条件で大文字小文字を考慮し，『XXXXX:』を検出
-
-```bash
-?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
-```
-
-**＊例＊**
-
-OR条件で大文字小文字を考慮し，『XXXXX message』を検出
-
-```bash
-?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
-```
-
-<br>
-
-### CloudWatchログエージェント（非推奨）
-
-#### ・CloudWatchログエージェントとは
+#### ・CloudWatchログエージェントとは（非推奨）
 
 インスタンス内で稼働する常駐システムのこと．インスタンス内のデータを収集し，CloudWatchログに対して送信する．2020/10/05現在は非推奨で，CloudWatchエージェントへの設定の移行が推奨されている．
 
-#### ・```awslogs.conf```ファイル
+#### ・CloudWatchログエージェントの設定
 
-インスタンス内の```etc```ディレクトリ下に```awslogs.conf```ファイルを，設置する．OS，ミドルウェア，アプリケーション，の各層でログを収集するのがよい．
+confファイルを，インスタンス内の```etc```ディレクトリ下に設置する．OS，ミドルウェア，アプリケーション，の各層でログを収集するのがよい．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
 
@@ -1130,7 +1130,7 @@ cwlogs = cwlogs
 region = ap-northeast-1
 ```
 
-#### ・コマンド
+#### ・操作コマンド
 
 設定後，```awslogs```コマンドでプロセスを起動する．
 
@@ -1150,38 +1150,13 @@ $ service awslogs start
 
 <br>
 
-### Logインサイト
-
-#### ・Logインサイトとは
-
-クエリを使用してログを抽出する．
-
-#### ・クエリ例
-
-汎用的なクエリを示す．
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
-
-**＊例＊**
-
-小文字と大文字を区別せずに，ExceptionまたはErrorを含むログを検索する．
-
-```bash
-fields @timestamp, @message, @logStream
-| filter @message like /(?i)(Exception|Error)/
-| sort @timestamp desc
-| limit 100
-```
-
-<br>
-
 ### CLI
 
-#### ・ログ収集量を確認
+#### ・メトリクス収集量を確認
 
 **＊コマンド例＊**
 
-全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行することもできる．（ただ，やってみたけどうまくいかず）
+全てのロググループに対して，一日当たりのメトリクス収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行することもできる．（ただ，やってみたけどうまくいかず）
 
 参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
 
@@ -1194,24 +1169,6 @@ fields @timestamp, @message, @logStream
    --period 86400 
    --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
  ```
-
-<br>
-
-## 09-04. CloudWatchアラーム
-
-### 設定項目
-
-#### ・ログが対象の場合
-
-| 設定項目     | 説明                                                         | 補足                                                 |
-| ------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
-| 名前空間     | 紐づくロググループが属する名前空間を設定する．CloudWatchログが，設定した名前空間に対して，値を発行する． |                                                      |
-| メトリクス   | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatchログが，設定したメトリクスに対して，値を発行する． |                                                      |
-| メトリクス値 | フィルターパターンでログが検知された時に，データポイントとして発生させる値のこと． | 例えば『検出数』を発行する場合は，『１』を設定する． |
-
-<br>
-
-### CLI
 
 #### ・CloudWatchアラームの状態変更
 
@@ -1228,7 +1185,7 @@ $ aws cloudwatch set-alarm-state \
 
 <br>
 
-## 10. Code系サービス
+## 09. Code系サービス
 
 ### CodePipeline
 
@@ -1417,7 +1374,7 @@ Resources:
 
 <br>
 
-## 11. EBS：Elastic Block Storage
+## 10. EBS：Elastic Block Storage
 
 ### EBSとは
 
@@ -1447,7 +1404,7 @@ Resources:
 
 <br>
 
-## 12. EC2：Elastic Computer Cloud
+## 11. EC2：Elastic Computer Cloud
 
 ### EC2とは
 
@@ -1459,7 +1416,7 @@ Resources:
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 | 設定項目                  | 説明                                              | 補足                                                         |
 | ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -1531,7 +1488,7 @@ $ openssl pkcs8 \
 
 <br>
 
-## 13. ECR
+## 12. ECR
 
 ### ECRとは
 
@@ -1541,7 +1498,7 @@ AWSが提供するDockerイメージのレジストリサービス
 
 ### 設定項目
 
-#### ・概要
+#### ・設定項目
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -1576,7 +1533,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
-## 14-01. ECS
+## 13-01. ECS
 
 ### ECSとは
 
@@ -1589,7 +1546,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
-## 14-02. ECS on EC2
+## 13-02. ECS on EC2
 
 ### EC2起動タイプのコンテナ
 
@@ -1605,7 +1562,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 <br>
 
-## 14-03. ECS on Fargate：Elastic Container Service
+## 13-03. ECS on Fargate：Elastic Container Service
 
 ### クラスター
 
@@ -1687,7 +1644,7 @@ Dockerのベストプラクティスに則り，タグ名にlatestを使用し�
 
 ![ecs-task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-task_life-cycle.png)
 
-#### ・タスクサイズ
+#### ・タスクサイズの詳細
 
 
 | 設定項目     | 説明                                     |
@@ -1870,7 +1827,7 @@ aws ecs execute-command \
 
 コンテナ内で稼働し，コンテナの操作を行うプログラムのこと．
 
-#### ・コンテナ定義
+#### ・コンテナ定義の詳細
 
 タスク内のコンテナ一つに対して，環境を設定する．
 
@@ -2110,7 +2067,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 <br>
 
-## 15. EFS：Elastic File System
+## 14. EFS：Elastic File System
 
 ![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
 
@@ -2122,7 +2079,7 @@ FargateにパブリックIPアドレスを持たせたい場合，Elastic IPア�
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2188,7 +2145,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 <br>
 
-## 16. ElastiCache
+## 15. ElastiCache
 
 ### ElasticCacheとは
 
@@ -2343,7 +2300,7 @@ redis xxxxx:6379> monitor
 
 <br>
 
-## 17. EventBridge（CloudWatchイベント）
+## 16. EventBridge（CloudWatchイベント）
 
 ### EventBridge（CloudWatchイベント）とは
 
@@ -2547,18 +2504,18 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 
 <br>
 
-## 18. Global Accelerator
+## 17. Global Accelerator
 
 ### 設定項目
 
-#### ・基本的設定
+#### ・基本的設定の詳細
 
 | 設定項目           | 説明                                                         | 補足                                                         |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Accelerator タイプ | エンドポイントグループへのルーティング時のアルゴリズムを設定する． | Standard：ユーザに最も近いリージョンにあるエンドポイントグループに，リクエストがルーティングされる． |
 | IPアドレスプール   | Global Acceleratorに割り当てる静的IPアドレスを設定する．     |                                                              |
 
-#### ・リスナー
+#### ・リスナーの詳細
 
 | 設定項目        | 説明                                               | 補足                                                         |
 | --------------- | -------------------------------------------------- | ------------------------------------------------------------ |
@@ -2566,7 +2523,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 | プロトコル      | ルーティング先のプロトコルを設定する．             |                                                              |
 | Client affinity | ユーザごとにルーティング先を固定するかを設定する． | ・None：複数のルーティング先があった場合，各ユーザの毎リクエスト時のルーティング先は固定されなくなる．<br>・Source IP：複数のルーティング先があったとしても，各ユーザの毎リクエスト時のルーティング先を固定できるようになる． |
 
-#### ・エンドポイントグループ
+#### ・エンドポイントグループの詳細
 
 | 設定項目               | 説明                                                         | 補足                                                         |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2574,7 +2531,7 @@ AWSリソースで意図的にイベントを起こし，Lambdaのロググル�
 | トラフィックダイヤル   | 複数のエンドポイントグループがある場合，それぞれの重み（%）を設定する． | ・例えば，カナリアリリースのために，新アプリと旧アプリへのルーティングに重みを付ける場合に役立つ． |
 | ヘルスチェック         | ルーティング先に対するヘルスチェックを設定する．             |                                                              |
 
-#### ・エンドポイント
+#### ・エンドポイントの詳細
 
 | 設定項目                     | 説明                                                         | 補足                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -2602,7 +2559,7 @@ Global Acceleratorを使用しない場合，クライアントPCのリージョ
 
 <br>
 
-## 19. IAM：Identify and Access Management
+## 18. IAM：Identify and Access Management
 
 ### IAM
 
@@ -3011,7 +2968,7 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 <br>
 
-## 20. Kinesis
+## 19. Kinesis
 
 ### Kinesisとは
 
@@ -3021,7 +2978,7 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 <br>
 
-## 21. Lambda
+## 20. Lambda
 
 ### Lambdaとは
 
@@ -3035,7 +2992,7 @@ $ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新�
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 | 設定項目                           | 説明                                                         | 補足                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -3257,7 +3214,7 @@ Lambdaを実行するためには，デプロイされた関数を使用する�
 
 <br>
 
-## 21-02. Lambda@Edge
+## 20-02. Lambda@Edge
 
 ### Lambda@Edgeとは
 
@@ -3470,7 +3427,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 22. RDS：Relational Database Service
+## 21. RDS：Relational Database Service
 
 ### 設定項目
 
@@ -3762,7 +3719,7 @@ Auroraの場合，フェイルオーバーによって昇格するインスタ�
 
 <br>
 
-## 23. RegionとZone
+## 22. RegionとZone
 
 ### Region
 
@@ -3778,7 +3735,7 @@ Regionとは別に，物理サーバが世界中にあり，これらの間で�
 
 <br>
 
-## 24. Route53
+## 23. Route53
 
 ### Route53とは
 
@@ -3788,7 +3745,7 @@ Regionとは別に，物理サーバが世界中にあり，これらの間で�
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 | 設定項目       | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
@@ -3885,7 +3842,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 <br>
 
-## 25. S3：Simple Storage Service
+## 24. S3：Simple Storage Service
 
 ### S3とは
 
@@ -3895,7 +3852,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 
 ### 設定項目
 
-#### ・概要
+#### ・主要項目
 
 | 設定項目             | 説明                       |
 | -------------------- | -------------------------- |
@@ -3903,7 +3860,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 | バッチオペレーション |                            |
 | アクセスアナライザー |                            |
 
-#### ・プロパティ
+#### ・プロパティの詳細
 
 | 設定項目                     | 説明 | 補足 |
 | ---------------------------- | ---- | ---- |
@@ -3917,7 +3874,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 | イベント                     |      |      |
 | リクエスタ支払い             |      |      |
 
-#### ・外部／内部ネットワークからのアクセス制限
+#### ・外部／内部ネットワークからのアクセス制限の詳細
 
 | 設定項目                   | 説明                                                         | 補足                                                         |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -4108,7 +4065,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 <br>
 
-## 26. Security Group
+## 25. Security Group
 
 ### Security Groupとは
 
@@ -4118,7 +4075,7 @@ $ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
 
 ### 設定項目
 
-#### ・概要
+#### ・一覧
 
 インバウンドルールとアウトバウンドルールを設定できる．
 
@@ -4206,7 +4163,7 @@ Regionは，さらに，各データセンターは物理的に独立したAvail
 
 <br>
 
-## 27. SES：Simple Email Service
+## 26. SES：Simple Email Service
 
 ### SESとは
 
@@ -4218,7 +4175,7 @@ Regionは，さらに，各データセンターは物理的に独立したAvail
 
 ![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SESとは.png)
 
-#### ・概要
+#### ・主要項目
 
 | 設定項目           | 説明                                                         | 補足                                                         |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -4229,7 +4186,7 @@ Regionは，さらに，各データセンターは物理的に独立したAvail
 | Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる． |                                                              |
 | IP Address Filters |                                                              |                                                              |
 
-#### ・Rule Sets
+#### ・Rule Setsの詳細
 
 | 設定項目 | 説明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -4265,7 +4222,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 28. SNS：Simple Notification Service
+## 27. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -4277,14 +4234,14 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 ### 設定項目
 
-#### ・概要
+#### ・主要項目
 
 | 設定項目           | 説明                                                 |
 | ------------------ | ---------------------------------------------------- |
 | トピック           | 複数のサブスクリプションをグループ化したもの．       |
 | サブスクリプション | エンドポイントで受信するメッセージの種類を設定する． |
 
-#### ・トピック
+#### ・トピックの詳細
 
 | 設定項目                 | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
@@ -4294,7 +4251,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 | 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchLogsに転送するように設定する． |
 | 暗号化                   |                                                              |
 
-#### ・サブスクリプション
+#### ・サブスクリプションの詳細
 
 | メッセージの種類      | 転送先                | 補足                                                         |
 | --------------------- | --------------------- | ------------------------------------------------------------ |
@@ -4308,7 +4265,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 <br>
 
-## 29. SQS：Simple Queue Service
+## 28. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -4372,7 +4329,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-## 30. STS：Security Token Service
+## 29. STS：Security Token Service
 
 ### STSとは
 
@@ -4530,7 +4487,7 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 31. Step Functions
+## 30. Step Functions
 
 ### Step Functionsとは
 
@@ -4575,7 +4532,7 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 <br>
 
-## 32. VPC：Virtual Private Cloud
+## 31. VPC：Virtual Private Cloud
 
 ### VPCとは
 
@@ -4729,7 +4686,7 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 
 ![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
 
-#### ・概要
+#### ・設定項目
 
 VPCのプライベートサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを使用しない場合，プライベートサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを使用する必要がある．
 
@@ -4792,7 +4749,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 <br>
 
-## 32-02. VPC間，VPC-オンプレ間の通信
+## 31-02. VPC間，VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
@@ -4854,7 +4811,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 <br>
 
-## 33. WAF：Web Applicarion Firewall
+## 32. WAF：Web Applicarion Firewall
 
 ### 設定項目
 
@@ -4890,7 +4847,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 
 ### 設定項目
 
-#### ・概要
+#### ・主要項目
 
 | 設定項目           | 説明                                              | 補足                                                         |
 | ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
@@ -4900,7 +4857,7 @@ VPCエンドポイントとは異なる機能なので注意．Interface型のVP
 | Regex pattern sets | 正規表現パターンの共通部品を管理する．            |                                                              |
 | Rule groups        | ルールの共通部品を管理する．                      | 各WAFに同じルールを設定する場合，ルールグループを使用するべきである．ただ，ルールグループを使用すると，これらのルールを共通のメトリクスで監視しなければならなくなる．そのため，もしメトリクスを分けるのであれば，ルールグループを使用しないようにする． |
 
-#### ・Web ACLs
+#### ・Web ACLsの詳細
 
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -5046,7 +5003,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-## 34. WorkMail
+## 33. WorkMail
 
 ### WorkMailとは
 
@@ -5064,7 +5021,7 @@ Gmail，サンダーバード，Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 35. 負荷テスト
+## 34. 負荷テスト
 
 ### Distributed Load Testing（分散負荷テスト）
 
@@ -5077,6 +5034,161 @@ AWSから提供されている負荷を発生させるインフラ環境のこ�
 #### ・インフラ構成
 
 ![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed_load_testing.png)
+
+<br>
+
+## 35. コスト管理
+
+### コスト管理の観点
+
+#### ・スペック
+
+#### ・時間単価
+
+#### ・数量
+
+#### ・月額料金
+
+<br>
+
+### SLA：Service Level Agreement
+
+#### ・SLAとは
+
+サービスレベル合意と訳せる．インターネットサービスに最低限のサービスのレベルを保証し，これを下回った場合には返金できるように合意するもの．SLAとして，例えば以下がある．
+
+| 項目             | 説明                                 | レベル例    | 返金率 |
+| ---------------- | ------------------------------------ | ----------- | ------ |
+| サーバ稼働率     | サーバの時間当たりの稼働率           | 99.9%以上   | 10%    |
+| 障害回復時間     | 障害が起こってから回復するまでの時間 | 2時間以内   | 10%    |
+| 障害お問い合わせ | 障害発生時のお問い合わせ可能時間帯   | 24時間365日 | 10%    |
+
+#### ・AWSのSLA
+
+AWSではサービスレベルの項目として，サーバ稼働率を採用している．これに対して，ほとんどのAWSリソースで，以下のSLAが設定されている．
+
+| 毎月の稼働率         | サービスクレジットの割合 |
+| -------------------- | ------------------------ |
+| 99.0％以上SLA未満    | 10%                      |
+| 95.0％以上99.0％未満 | 25%                      |
+| 95.0%未満            | 100%                     |
+
+各リソースにSLAが定義されている．例として，EC2やECSのSLAを参考にせよ．
+
+参考：https://d1.awsstatic.com/legal/AmazonComputeServiceLevelAgreement/Amazon%20Compute%20Service%20Level%20Agreement_Japanese_2020-07-22_Updated.pdf
+
+<br>
+
+### Service Quotas
+
+#### ・Service Quotastとは
+
+各種AWSリソースの設定の上限値を上げられる．
+
+参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/intro.html
+
+#### ・各種AWSリソースの上限値
+
+参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-service-information.html
+
+#### ・方法
+
+参考：https://docs.aws.amazon.com/ja_jp/servicequotas/latest/userguide/request-quota-increase.html
+
+<br>
+
+## 35-02. リソース別コスト
+
+### CloudFront
+
+#### ・転送
+
+オリジンに転送する前にキャッシュを用いてレスポンスを返信できるため，オリジンでかかる料金を抑えられる．
+
+<br>
+
+### EBS
+
+#### ・ボリュームサイズ
+
+ボリュームの使用率にかかわらず，構築されたボリュームの合計サイズに基づいて，料金が発生する．そのため，安易に500GiBを選んではいけない．
+
+<br>
+
+### EC2
+
+#### ・料金体系の選択
+
+使い方に応じた料金体系を選べる．レスポンスの返信時に料金が発生する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
+
+| 種類                     | 説明                                                         | 補足                                                   |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
+| オンデマンドインスタンス |                                                              | 参考：https://aws.amazon.com/jp/ec2/pricing/on-demand/ |
+| Savings Plans            |                                                              |                                                        |
+| リザーブドインスタンス   | EC2インスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる． |                                                        |
+| スポットインスタンス     |                                                              |                                                        |
+
+#### ・料金発生の条件
+
+インスタンスのライフサイクルの状態に応じて，料金が発生する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+
+| インスタンスの状態 | 料金発生の有無 | 補足                                                       |
+| ------------------ | -------------- | ---------------------------------------------------------- |
+| pending            | なし           |                                                            |
+| running            | あり           |                                                            |
+| stopping           | 条件付きでなし | 停止準備中の間は料金が発生し，休止準備中の間は発生しない． |
+| stopped            | なし           |                                                            |
+| shutting-down      | なし           |                                                            |
+| terminated         | なし           |                                                            |
+
+<br>
+
+### ECS
+
+#### ・ECRの容量
+
+500MBを超えると，請求が発生するため，古いイメージを定期的に削除する必要がある．
+
+<br>
+
+### Lambda
+
+#### ・実行時間の従量課金制
+
+関数を実行している時間分だけ料金がかかる．関数を使用せずに設置しているだけであれば，料金はかからない．
+
+<br>
+
+### RDS
+
+#### ・料金体系
+
+以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+
+| 種類                     | 説明                                                         |
+| :----------------------- | ------------------------------------------------------------ |
+| オンデマンドインスタンス | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html |
+| リザーブドインスタンス   | RDSインスタンスの一定期間分の使用料金を前払いし，その代わりに安く利用できるようになる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
+
+<br>
+
+### SES
+
+#### ・送受信数
+
+受信は```1000件/月```まで，送信は```62000/月```まで無料である．
+
+<br>
+
+### VPC
+
+##### ・レスポンス
 
 <br>
 
