@@ -99,8 +99,8 @@
   * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
   * AWS
     * [📖 ︎AWS](public/cloud_computing/cloud_computing_aws.md)
-    * [📖 ︎API Gatewayインポート機能](public/cloud_computing/cloud_computing_aws_api_gateway_import.md)
-    * [📖 ︎Lambda関数](public/cloud_computing/cloud_computing_aws_lambda_function.md)
+    * [📖 ︎API Gatewayへのymlインポート](public/cloud_computing/cloud_computing_aws_api_gateway_import.md)
+    * [📖 ︎Lambda関数の実装](public/cloud_computing/cloud_computing_aws_lambda_function.md)
     * [📖 ︎コスト管理](public/cloud_computing/cloud_computing_aws_cost_management.md)
   * GCP
     * [📖 ︎GCP](public/cloud_computing/cloud_computing_gcp.md)
@@ -132,7 +132,11 @@
 * 可観測性
   * [📖 ︎可観測性](public/observability/observability.md)
   * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
-  * [📖 ︎Datadog](public/observability/observability_datadog.md)
+  * Datadog
+     * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
+     * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
+     * [📖 ︎分散トレース収集](public/observability/observability_datadog_distributed_trace.md)
+     * [📖 ︎監視](public/observability/observability_datadog_monitering.md)
 
 * システム開発手法論
   * [📖 ︎システム開発手法論](public/system_development_methodology/system_development_methodology.md)
