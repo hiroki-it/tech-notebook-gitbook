@@ -131,8 +131,10 @@
     type          regex
     flush_timeout 1000
     # パーサールール．スタックトレースの文頭をstart_state，また以降に結合する文字列をcontで指定する．
-    rule          "start_state" "\[%Y-%m-%d %H:%M:%S\]" "cont"
-    rule          "cont"        "#*"                    "cont"
+    # [%Y-%m-%d %H:%M:%S] をスタックトレースの開始地点とする．
+    rule          "start_state" "/\[[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\s+([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\].*/" "cont"
+    # [stacktrace]，[previous exception]，#，行間，"} ，で始まる文字の場合に結合する．
+    rule          "cont" "/(\[(stacktrace|previous exception)\]|#|\n\n|"\}).*/" "cont"
 ```
 
 <br>

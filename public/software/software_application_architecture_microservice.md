@@ -120,7 +120,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### サービスオーケストレーション方式
 
-#### ・オーケストレーションとは
+#### ・Orchestration（オーケストレーション）とは
 
 中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．個々のサービス間の連携方式では，リクエストリプライ方式を採用する．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも使用される．
 
@@ -128,14 +128,18 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 - https://news.mynavi.jp/itsearch/article/devsoft/1598
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
 
-#### ・コレオグラフィとは
+#### ・Choreography（コレオグラフィ）とは
 
 分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法である．個々のサービス間の連携方式では，イベント駆動方式を採用する．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．サービス間のインターフェースとして，キューを設置する．マイクロサービスアーキテクチャでは，コレオグラフィによる連携が推奨されている．
 
-参考：https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+参考：
+
+- https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+- https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
@@ -143,17 +147,17 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ### サービス間連携方式
 
-#### ・イベント駆動方式
-
-サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
-
-![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
-
 #### ・リクエストリプライ方式
 
 サービス間では，RESTfulAPIを用いた同期通信を実行する．
 
 ![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
+
+#### ・イベント駆動方式
+
+サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
+
+![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
 
 <br>
 

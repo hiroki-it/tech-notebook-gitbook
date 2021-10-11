@@ -37,14 +37,6 @@
 6. アーキテクチャ（レイヤード型，ヘキサゴナル型，オニオン型，クリーンアーキテクチャ）を決め，クラス図を元にドメイン層を実装する．
 7. 運用後に問題が起こった場合，モデリングを修正する．場合によっては，デザインパターンに切り分ける．
 
-なお，オブジェクト指向分析／設計／プログラミングについては，以下のリンクを参考にせよ．
-
-参考：
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
-
 <br>
 
 ## 02. 戦略的設計
