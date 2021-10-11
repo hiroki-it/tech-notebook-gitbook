@@ -4264,6 +4264,8 @@ LOG_CHANNEL=<オプション名>
 
 #### ・```stack```キー
 
+他の単一／複数のチャンネルを利用するチャンネル．
+
 ```php
 return [
 
@@ -4273,6 +4275,7 @@ return [
     "channels" => [
         "stack" => [
             "driver"            => "stack",
+            // 複数チャンネルを設定可能．（例）["single", "stack"]
             "channels"          => ["single"],
             "ignore_exceptions" => false,
         ],
