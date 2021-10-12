@@ -48,10 +48,13 @@
           * [📖 ︎エラーとエラーハンドリング](public/software/software_application_backend_php_logic_error_and_error_handling.md)
           * [📖 ︎反復ロジック](public/software/software_application_backend_php_logic_iteration.md)
           * [📖 ︎アルゴリズム](public/software/software_application_backend_php_logic_algorithm.md)
-        * パッケージ／フレームワーク
-          * [📖 ︎パッケージ](public/software/software_application_backend_php_package.md)
-          * [📖 ︎Symfony](public/software/software_application_backend_php_framework_symfony.md)
-          * [📖 ︎Laravel](public/software/software_application_backend_php_framework_laravel.md)
+        * フレームワーク
+          * [📖 ︎Symfony](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_framework_symfony.md)
+          * [📖 ︎Laravel](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_framework_laravel.md)
+        * パッケージ
+          * [📖 ︎パッケージ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_package_management.md)
+          * [📖 ︎MySQLパッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_package_mysql.md)
+          * [📖 ︎その他パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_package_others.md)
         * テスト
           * [📖 ︎テスト](public/software/software_application_backend_php_testing.md)
           * [📖 ︎コードベースのテスト](public/software/software_application_backend_php_testing_based_on_code.md)
