@@ -22,7 +22,7 @@
 
 #### ・非同期ハンドラ関数（Async handlers）
 
-Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```であるが別名でもよい．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
+Lambdaはハンドラ関数を非同期関数としてコールし，引数のオブジェクト（event）に値をわたす．ハンドラ関数の初期名は```handler```メソッドであるが別名でもよい．```return```または```throw```を使用して，Lambdaのコール元にレスポンスを送信する．レスポンスとして，Promiseオブジェクトを送信することもできる．
 
 参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
 
@@ -71,7 +71,9 @@ exports.handler = async (event) => {
 
 Lambdaはハンドラ関数を同期関数としてコールし，引数（eventオブジェクト，contextオブジェクト，callback関数）に値をわたす．このオブジェクトにはメソッドとプロパティを持つ．ハンドラ関数の初期名は```handler```であるが別名でもよい．```callback```メソッドを使用して，Lambdaのコール元にPromiseオブジェクトのレスポンスを送信する．
 
-参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync（※『Non』が翻訳をおかしくしているため，英語版を推奨）
+参考：https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
+
+（※『Non』が翻訳をおかしくしているため，英語版を推奨）
 
 **＊実装例＊**
 
@@ -413,7 +415,12 @@ exports.handler = (event, context, callback) => {
 
 **＊実装例＊**
 
-AmplifyのイベントをEventBridgeでキャッチし，これをLambdaに転送する．Lambdaでは，メッセージを構成し，SlackAPIに送信する．
+AmplifyのイベントをEventBridgeでキャッチし，これをLambdaに転送する．Lambdaでは，メッセージを構成し，Slack-APIに送信する．
+
+参考：
+
+- https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
+- https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
 
 ```javascript
 "use strict";
@@ -448,19 +455,19 @@ exports.handler = async (event) => {
 
         console.log(JSON.stringify({app}, null, 2));
 
-        const message = await buildMessage(event, app);
+        const message = buildMessage(event, app);
 
         console.log(message);
 
         result = await postMessageToSlack(message);
-
-        console.log(JSON.stringify({result}, null, 2));
 
     } catch (error) {
 
         console.error(error);
 
     }
+
+    console.log(JSON.stringify({result}, null, 2));
 
     return result;
 };
@@ -515,7 +522,7 @@ const buildMessage = (event, app) => {
                     elements: [{
                         type: "mrkdwn",
                         text: format(
-                            "*プルリクURL*: https://github.com/xxx-repository/compare/%s",
+                            "*プルリクURL*: https://github.com/foo-repository/compare/%s",
                             event.detail.branchName
                         )
                     }]
@@ -561,6 +568,7 @@ const buildMessage = (event, app) => {
  */
 const postMessageToSlack = (message) => {
 
+    // 非同期処理を持つ関数をコンストラクタに渡し，非同期処理を管理します．
     return new Promise((resolve, reject) => {
 
         const options = {
@@ -574,6 +582,7 @@ const postMessageToSlack = (message) => {
             }
         };
 
+        // 非同期処理
         const request = https.request(options, (response) => {
 
             console.info({response}, null, 2);
@@ -593,17 +602,15 @@ const postMessageToSlack = (message) => {
             //  data，error，end，の間でawaitの効力は横断できない．
             // そのため，できるだけendで事後処理を実装し，awaitを使用するようにする．
             response.on("end", async () => {
-                tmp = await toStringWithPromise(tmp);
-                const body = await jsonParseWithPromise(tmp);
+                tmp = param.toString(tmp);
+                const body = JSON.parse(tmp);
                 const result = {
                     statusCode: response.statusCode,
                     body: body
                 };
                 if (!response.statusCode === 200 || !body.ok) {
-                    console.error("Failed");
                     return reject(result);
                 }
-                console.info("Succeeded");
                 return resolve(result);
             });
         });
@@ -611,6 +618,7 @@ const postMessageToSlack = (message) => {
         request.on("error", (error) => {
             console.error(JSON.stringify({error}, null, 2));
         });
+
 
         // メッセージボディを設定して，リクエストを送信します．
         request.write(message);
@@ -620,26 +628,6 @@ const postMessageToSlack = (message) => {
         console.log(JSON.stringify({request}, null, 2));
     });
 };
-
-/**
- * toStringメソッドの結果をPromiseオブジェクトで返却します．
- *
- * @param param
- * @returns Promise<string>
- */
-const toStringWithPromise = async (param) => {
-    return param.toString()
-}
-
-/**
- * parseメソッドの結果をPromiseオブジェクトで返却します．
- *
- * @param param
- * @returns Promise<json>
- */
-const jsonParseWithPromise = async (param) => {
-    return JSON.parse(param)
-}
 
 ```
 

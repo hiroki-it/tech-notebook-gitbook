@@ -20,6 +20,14 @@
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
+#### ・ログ収集の有効化
+
+ログの収集は標準で無効化されている．```/etc/datadog-agent/datadog.yaml```ファイルにて，これを有効化する．
+
+```yaml
+logs_enabled: true
+```
+
 <br>
 
 ## 02. Fargateにおけるログ収集
@@ -181,9 +189,36 @@ Nginxの場合
 
 ## 03. 収集されたログの送信
 
+### EC2におけるログの送信
+
+#### ・PHP Monologの場合
+
+LogライブラリにMonologを使用している場合，```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する．ここに，Datadogにログを送信するための設定を行う．
+
+参考：https://docs.datadoghq.com/ja/logs/log_collection/php/?tab=phpmonolog#agent-%E3%81%AE%E6%A7%8B%E6%88%90
+
+**＊実装例＊**
+
+```yaml
+init_config:
+
+instances:
+
+## Log section
+logs:
+
+  - type: file
+    path: "/path/to/laravel.log"
+    service: php
+    source: php
+    sourcecategory: sourcecode
+```
+
+<br>
+
 ### Fargateにおけるログの送信
 
-FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．
+FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンクを参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html
 

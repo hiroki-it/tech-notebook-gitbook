@@ -8,11 +8,11 @@
 
 <br>
 
-## 01. トレーシングパッケージ
+## 01. トレーサー
 
-### トレーシングパッケージとは
+### トレーサーとは
 
-APM機能を用いる時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーシングパッケージをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
+APM機能を用いる時に，トレースエージェントが稼働するDatadogコンテナに分散トレースを送信できるよう，サービスのコンテナでトレーサーをインストールする必要がある．パッケージはアプリケーションによって読み込まれた後，『```http://localhost:8126```』を指定して，分散トレースを送信するようになる．
 
 参考：https://docs.datadoghq.com/ja/tracing/#datadog-%E3%81%B8%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E9%80%81%E4%BF%A1
 
@@ -26,7 +26,7 @@ APM機能を用いる時に，トレースエージェントが稼働するDatad
 
 <br>
 
-### PHPトレーシングパッケージ
+### PHPトレーサー
 
 #### ・インストール
 
@@ -135,7 +135,7 @@ DATADOG TRACER CONFIGURATION => { ..... } # <--- ここに設定のJSONが得ら
 
 <br>
 
-### Node.jsトレーシングパッケージ
+### Node.jsトレーサー
 
 #### ・TypeScriptやモジュールバンドルを使っている場合
 
@@ -155,7 +155,39 @@ import 'dd-trace/init'
 
 <br>
 
-## 02. スパンの収集
+## 02. 分散トレースの生成
+
+### 分散トレース
+
+#### ・分散トレースとは
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+
+#### ・構造
+
+Datadogにおいて，分散トレースはスパンをもつ配列データとして定義される．
+
+参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+
+```bash
+t[
+    span1,
+    span2,
+    span3
+]
+```
+
+また，複数の分散トレースを配列データとして定義できる．
+
+```bash
+[
+    trace1,
+    trace2,
+    trace3
+]
+```
+
+<br>
 
 ### スパン
 
@@ -163,11 +195,74 @@ import 'dd-trace/init'
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
 
-#### ・スパンの持つデータ
+#### ・構造
 
-各サービスから得られるスパンは，スパン名（操作名），処理開始時間，処理所要時間，タグ，から構成される．
+Datadogにおいて，スパンはJSON型データとして定義される．アプリケーション内のトレーサーにおいて，指定されたJSON型のスパンが作成され，スパンはDatadog-APIに送信される．
 
-参考：https://docs.datadoghq.com/ja/tracing/visualization/#%E3%82%B9%E3%83%91%E3%83%B3
+参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
+
+**＊実装例＊**
+
+```bash
+[
+    [
+        {
+            "duration": 123,           # 処理の所要時間
+            "error": 0,                # エラーの有無
+            "meta": {       
+                "env": "prd"           # タグ
+            },
+            "metrics": {               
+                "baz-sum": 123         # サービスのメトリクス
+            },
+            "name": "laravel.request", # スパン名
+            "parent_id": 123,          # 親スパンID
+            "resource": "/foos",       # アクセスされたリソース
+            "service": "laravel",      # サービス名
+            "span_id": 123456789,      # スパンID
+            "start": 0,                # 処理開始
+            "trace_id": 123456789,     # トレースID
+            "type": "web"              # サービスタイプ
+        }
+    ]
+]
+
+```
+
+#### ・タグの付与
+
+スパンの```meta```キーにタグのセットを割り当てることで，スパンにタグを付与できる．
+
+**＊実装例＊**
+
+PHPトレーサーでlaravel内からタグを収集した例
+
+```bash
+{
+    "env": "prd",
+    "http": {
+        "host": "example.co.jp",
+        "method": "GET",
+        "path_group": "/foos",
+        "status_code": 200,
+        "url": "https://example.co.jp/foos/1"
+    },
+    "laravel": {
+        "route": {
+            "action": "App\Http\Controllers\Foo\FooController@get",
+            "name": "foos.get"
+        }
+    },
+    "php" : {
+        "compilation": {
+            "total_time_ms": 123.45
+        }
+    },
+    "process_id": 100
+}
+```
+
+
 
 <br>
 
@@ -216,7 +311,7 @@ import 'dd-trace/init'
 
 #### ・サービスタイプとは
 
-トレーシングパッケージによって，サービスは『Web』『DB』『Cache』『Cache』の４つに分類される．各サービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる．タイプ名の種類については，以下のリンクを参考にせよ．
+トレーサによって，サービスは『Web』『DB』『Cache』『Cache』の４つに分類される．各サービスの```span.type```属性に割り当てられるタイプ名から自動的に割り振られる．タイプ名の種類については，以下のリンクを参考にせよ．
 
 参考：
 
@@ -229,7 +324,7 @@ import 'dd-trace/init'
 
 #### ・サービスのタグとは
 
-トレーシングパッケージによって，サービスにタグを追加できる．PHPトレーサの各インテグレーションのソースコードについては以下のリンクを参考にせよ．ソースコードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
+トレーサによって，サービスにタグを追加できる．PHPトレーサの各インテグレーションのソースコードについては以下のリンクを参考にせよ．ソースコードから，PHPトレーサーがアプリケーションからどのように情報を抜き出し，分散トレースのタグの値を決定しているかがわかる．
 
 参考：
 

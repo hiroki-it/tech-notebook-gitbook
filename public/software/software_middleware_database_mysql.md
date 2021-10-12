@@ -8,7 +8,52 @@
 
 <br>
 
-## 01. データベース
+## 01. 設定ファイル
+
+元々の値をコメントアウトで示す
+
+```bash
+[mysqld]
+skip-host-cache # 記述なし
+skip-name-resolve # 記述なし
+datadir = /var/lib/mysql
+socket = /var/lib/mysql/mysql.sock
+secure-file-priv = /var/lib/mysql-files
+user = mysql
+
+pid-file = /var/run/mysqld/mysqld.pid
+
+# character set / collation
+character_set_server = utf8mb4 # latin1
+collation_server = utf8mb4_general_ci # latin1
+
+# timezone
+default-time-zone = SYSTEM
+log_timestamps = SYSTEM # UTC
+
+# Error Log
+log-error = mysql-error.log # /var/log/mysqld.log
+
+# Slow Query Log
+slow_query_log = 1 # off
+slow_query_log_file = mysql-slow.log # host_name-slow.log
+long_query_time = 3 # 10
+log_queries_not_using_indexes = 0 # off
+
+# General Log
+general_log = 1 # off
+general_log_file = mysql-general.log # host_name.log
+
+[mysql]
+default-character-set = utf8mb4 # utf8
+
+[client]
+default-character-set = utf8mb4 # utf8
+```
+
+<br>
+
+## 02. データベース
 
 ### MySQLの準備
 
@@ -64,7 +109,7 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-## 02. テーブル
+## 03. テーブル
 
 ### ```CREATE TABLE```句
 
@@ -297,7 +342,7 @@ DBにテーブルをインポートする．forceオプションで，エラー�
 
 <br>
 
-## 03. ユーザの管理
+## 04. ユーザの管理
 
 ### CREATE
 
@@ -418,7 +463,7 @@ RENAME USER "{ 古いユーザ名 }" TO "{ 新しいユーザ名 }";
 
 <br>
 
-## 04. レコードの読み出し：READ
+## 05. レコードの読み出し：READ
 
 
 ### はじめに
@@ -1056,223 +1101,6 @@ WHERE
 #### ・最適なインデックスの検出
 
 <br>
-
-## 04-02. 読み出されたレコードの取得
-
-###  ```FETCH```
-
-#### ・```FETCH```とは
-
-読み出したレコードをに一度に全て取得してしまうと，サーバ側のメモリを圧迫してしまう．そこで，少しずつ取得する．
-
-#### ・```FETCH```のメソッド名に関する注意点
-
-注意点として，```FETCH```関数は，ベンダーによって名前が異なっていることがある．そのため，同じ名前でも同じ分だけレコードを取得するとは限らない．
-
-<br>
-
-### PDOの場合
-
-#### ・```prepare```メソッド
-
-プリペアードステートメントを使用してSQLを定義する．プリアードステートメントによるSQLインジェクションの防御については，以下のリンクを参考にせよ．
-
-#### ・```fetch```メソッド
-
-読み出された全てのレコードのうち，最初のレコードの全てのカラムを取得し，一次元の連想配列で返却する．
-
-#### ・```fetchAll```メソッド
-
-読み出された全てのレコードの，全てのカラムを取得し，二次元の連想配列で返却する．
-
-**＊実装例＊**
-
-```php
-<?php
-$sql = "SELECT * FROM doraemon_characters";
-$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
-$stmt->execute(); // 実行．
-
-
-// 全てのレコードを取得する．
-$data = $stmt->fetchAll();
-
-// 出力
-print_r($data);
-
-// カラム名と値の連想配列として取得できる．
-// Array
-// (
-//     [0] => Array
-//     (
-//         [id] => 1
-//         [name] => のび太
-//         [gender] => man
-//         [type] => human
-//     )
-//     [1] => Array
-//     (
-//         [id] => 2
-//         [name] => ドラえもん
-//         [gender] => man
-//         [type] => robot
-//     )
-// )
-```
-
-#### ・```fetchColumn```メソッド
-
-読み出された全てのレコードのうち，最初のレコードの一番左のカラムのみを取得し，混合型で返却する．主に，```COUNT```関数の場合に用いる
-
-**＊実装例＊**
-
-```php
-<?php
-$sql = "SELECT { カラム名 }OUNT(*) FROM doraemon_characters";
-$stmt = $dbh->prepare($sql); // プリペアードステートメントを定義．
-$stmt->execute(); // 実行．
-
-// レコードを取得する．
-$data = $stmt->fetchColumn();
-
-// 出力
-print_r($data); 
-
-// 10 (件)
-```
-
-<br>
-
-### Doctrineの場合
-
-以下のリンクを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_package.html
-
-<br>
-
-### Javaの場合
-
-PHPとは異なり，変数定義に『$』は用いないことに注意．
-
-**＊実装例＊**
-
-```java
-// SELECT文を定義して実行．
-String sql = "SELECT * FROM doraemon_characters"; 
-ResultSet result statement.executeQuery();
-
-
-// 全てのレコードを取得する．
-while(result.next()){
-    System.out.println(result.getInt("id"));
-    System.out.println(result.getString("name"));
-    System.out.println(result.getString("gender"));
-    System.out.println(result.getString("typeL"));
-}
-
-// カラム名と値の連想配列として取得できる．
-// ここに出力結果コードを書く．
-
-```
-
-<br>
-
-## 05. レコードの書き込み ：CREATE，UPDATE，DELETE
-
-### PDOの場合
-
-#### ・```INSERT```
-
-```php
-<?php
-// $_POSTを用いて，送信されたpostメソッドのリクエストを受け取り，属性から各値を取得する．
-$staff_name = $_POST["name"];
-$staff_pass = $_POST["pass"];
-
-
-// HTMLとして変数の内容を出力する際，「<」「>」などの特殊文字をエスケープ（無害化）
-$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
-$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
-
-
-// データベースと接続（イコールの間にスペースを入れるとエラーになる）
-$dsn = "mysql:dbname=kizukeba_pronami_php;
-host=kizukebapronamiphp
-charaset=UTF-8";
-$user = "root";
-$password = "";
-$dbh = new PDO($dsn, $user, $password);
-$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-
-// 列名と値を指定してINSERT
-$sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
-$stmt = $dbh->prepare($sql);
-
-
-// 配列に値を格納（格納する値の順番と，SQLでの引数の順番は，合わせる必要がある）
-$data[] = $staff_name;
-$data[] = $staff_pass;
-
-
-// SQLを実行
-$stmt->execute($data);
-
-
-// データベースとの接続を切断
-$dbh = null;
-```
-
-#### ・```UPDATE```
-
-```sql
-
-```
-
-#### ・```DELETE```
-
-```sql
-
-```
-
-<br>
-
-## 06. その他
-
-### マイグレーション
-
-#### ・マイグレーションとは
-
-DBに保存されているデータを保持したまま，テーブルの作成やカラムの変更などを行うための機能のこと．マイグレーションファイルと呼ばれるスクリプトファイルを作成し，テーブルの新規作成やカラムの追加はこのスクリプトファイルに記述していく．
-
-<br>
-
-### 運用手順
-
-1. 誰かが以下のMigrationファイルをmaster別名にPush
-
-2. Migrationファイルをローカル環境にPull
-
-3. データベース更新バッチを実行し，ローカル環境のデータベーススキーマとレコードを更新
-
-**＊実装例＊**
-
-```php
-<?php
-namespace Migration;
-
-class ItemQuery
-{
-    // 列名と値を指定してINSERT
-    public static function insert()
-    {
-        return "INSERT INTO item_table VALUES(1, "商品A", 1000, "2019-07-24 07:07:07");";
-    }
-}
-```
-
-<be>
 
 ### レコードの突き合わせ処理アルゴリズム
 

@@ -42,7 +42,7 @@ asyncMethod();
 
 #### ・Promiseオブジェクトとは
 
-JavaScriptにおいて，非同期処理の成否を管理し，後続する処理を定義できるオブジェクトのこと．Promiseオブジェクトのコンストラクタに渡した関数は，非同期処理の後に実行される．Promiseオブジェクトの実装の仕様は取り決められており，以下のリンクを参考にせよ．
+JavaScriptにおいて，非同期処理の成否を管理し，後続する処理を定義できるオブジェクトのこと．Promiseオブジェクトの実装の仕様は取り決められており，以下のリンクを参考にせよ．
 
 参考：https://promisesaplus.com/
 
@@ -64,7 +64,20 @@ JavaScriptにおいて，非同期処理の成否を管理し，後続する処�
 
 ### Promiseオブジェクト
 
+Promiseオブジェクトのコンストラクタに，非同期処理を持つ関数を渡すことにより，Promiseオブジェクトはこの関数内の非同期処理の成否を管理する．
+
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+```javascript
+const asyncFunc = () => {
+
+    return new Promise(
+        // 非同期処理を持つ関数を渡す
+        (resolve, reject) => {
+            // 関数内の非同期処理の成否が管理される
+    })
+}
+```
 
 <br>
 
@@ -238,7 +251,7 @@ rejectFunc.catch((err) => {
 
 #### ・async宣言とは
 
-関数内で定義された処理を暗黙的にPromiseオブジェクトのコンストラクタに渡してくれる．Promiseオブジェクトを明示的にコールする必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
+Promiseオブジェクトを明示的に使用する場合，コンストラクタに非同期処理を持つ関数を渡す必要がある．一方で，async宣言された関数内の非同期処理は，Promiseオブジェクトに渡すための関数内に暗黙的に定義される．Promiseや，これのコントラクタに渡す関数を実装する必要が無いため，可読性が高まる．また，仮にPromiseオブジェクトをコールし，PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても，結果的に入れ子にならないようによしなに処理してくれる．
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
@@ -248,7 +261,7 @@ rejectFunc.catch((err) => {
 
 ```javascript
 const asyncFunc = async () => {
-    
+    // Promiseオブジェクトに渡すための関数内に暗黙的に定義される．
     return "SUCCESS"
 }
 

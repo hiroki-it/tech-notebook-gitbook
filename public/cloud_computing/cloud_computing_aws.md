@@ -840,7 +840,8 @@ CloudFrontは世界中に設置される『Point Of Presence（エッジロケ�
 CloudFrontには，エッジロケーションの数だけエッジサーバがあり，各サーバにIPアドレスが割り当てられている．以下のコマンドで，全てのエッジサーバのIPアドレスを確認できる．
 
 ```bash
-$ curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq  ".prefixes[] | select(.service=="CLOUDFRONT") | .ip_prefix"
+$ curl https://ip-ranges.amazonaws.com/ip-ranges.json \
+  | jq  ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
 ```
 
 もしくは，以下のリンクを直接参考し，『```"service": "CLOUDFRONT"```』となっている部分を探す．
@@ -1177,11 +1178,11 @@ $ service awslogs start
 
 **＊例＊**
 
-小文字と大文字を区別せずに，ExceptionまたはErrorを含むログを検索する．
+小文字と大文字を区別せずに，WarningまたはErrorを含むログを検索する．
 
 ```bash
 fields @timestamp, @message, @logStream
-| filter @message like /(?i)(Exception|Error)/
+| filter @message like /(?i)(Warning|Error)/
 | sort @timestamp desc
 | limit 100
 ```
@@ -1221,6 +1222,18 @@ fields @timestamp, @message, @logStream
 | 名前空間     | 紐づくロググループが属する名前空間を設定する．CloudWatchログが，設定した名前空間に対して，値を発行する． |                                                      |
 | メトリクス   | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatchログが，設定したメトリクスに対して，値を発行する． |                                                      |
 | メトリクス値 | フィルターパターンでログが検知された時に，データポイントとして発生させる値のこと． | 例えば『検出数』を発行する場合は，『１』を設定する． |
+
+#### ・メトリクスが対象の場合
+
+
+
+#### ・条件
+
+| 設定項目                         | 説明                                                       | 補足                                                         |
+| -------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| 閾値の種類                       |                                                            |                                                              |
+| アラームを実行するデータポイント | アラートを発生させるデータポイント数を設定する．           |                                                              |
+| 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する． | データポイントが発生しないことを正常と見なす場合は『```notBreaching```』とし，発生しないことを異常とする場合は，『```breaching```』とする．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
 
 <br>
 
