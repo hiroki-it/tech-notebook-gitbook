@@ -42,7 +42,7 @@
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | ```DD_API_KEY```  | DatadogコンテナがあらゆるデータをDatadogに送信するために必要である． |                                                              |                                              |
 | ```DD_ENV```      | APMを用いる場合に，サービスやトレース画面にて，```env```タグに値を設定する． | サービス単位で絞り込めるように，```prd-foo```や```stg-foo```とした方が良い． | https://app.datadoghq.com/apm/services       |
-| ```DD_HOSTNAME``` | ホストマップ                                                 |                                                              | https://app.datadoghq.com/infrastructure/map |
+| ```DD_HOSTNAME``` | コンテナのホスト名を設定する．                               | Fargateを使用する場合は，これを使用しないようにする．<br>参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0 | https://app.datadoghq.com/infrastructure/map |
 | ```ECS_FARGATE``` | Fargateを用いる場合に，これを宣言する．                      |                                                              |                                              |
 
 任意で選択できるメトリクスの収集として役立つ環境変数を以下に示す．一部のメトリクスは，標準では収集しないようになっており，収集するためにエージェントを有効化する必要がある．
