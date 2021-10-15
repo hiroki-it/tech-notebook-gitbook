@@ -69,7 +69,7 @@ $ docker-compose up -d <サービス名>
 イメージをビルドし，コンテナを構築する．
 
 ```bash
-$ docker-compose up --build <サービス名>
+$ docker-compose up --build -d <サービス名>
 ```
 
 <br>

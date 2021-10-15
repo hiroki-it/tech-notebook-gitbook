@@ -8,23 +8,7 @@
 
 <br>
 
-## 01. Dockerによるコンテナの構築
-
-### Dockerの操作
-
-#### ・Dockerクライアント
-
-Dockerクライアントは，接続によって，Dockerデーモンを操作できる．
-
-#### ・Dockerデーモン
-
-ホストOS上で稼働し，Dockerの操作を担う．Dockerクライアントは，Dockerデーモンを通して，Docker全体を操作できる．
-
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
-
-<br>
-
-## 02. コンテナに接続するまでの手順
+## 01. コンテナに接続するまでの手順
 
 ### 手順の流れ
 
@@ -38,13 +22,17 @@ Dockerクライアントは，接続によって，Dockerデーモンを操作�
 
 <br>
 
-## 02-02. イメージのインストール
+## 02. ベースイメージ
 
-### ベースとなるイメージ（ベースイメージ）のインストール
+### イメージリポジトリ
 
-#### ・Docker Hubとは
+#### ・イメージリポジトリとは
 
-イメージは，実行OSによらずに一貫してビルドできるため，配布できる．Docker Hubには，カスタマイズする上でのベースとなるイメージが提供されている．
+イメージは，実行OSによらずに一貫してビルドできるため，配布できる．各イメージリポジトリ（DockerHub，ECR，など）には，カスタマイズする上でのベースとなるイメージが提供されている．
+
+<br>
+
+### ベースイメージ
 
 #### ・ベースイメージの種類
 
@@ -73,102 +61,9 @@ Dockerは全てのPCで稼働できるわけではなく，イメージごとに
 | ```2```            | 「```2.X```」と「```2.0.X```」のマイナーアップデートのみを追跡する． |
 | ```latest```       | メジャーアップデートとマイナーアップデートを追跡する．       |
 
-#### ・ベースイメージをインストール
-
-**＊コマンド例＊**
-
-レジストリ側に保管されているイメージを検索する．
-
-```bash
-$ docker search <イメージ名>
-```
-
-**＊コマンド例＊**
-
-レジストリ側のイメージをクライアント側にインストールする．
-
-```bash
-$ docker pull <イメージ名>:<バージョン>
-```
-
-**＊コマンド例＊**
-
-ホストOSにインストールされたイメージを確認する．
-
-```bash
-$ docker images
-```
-
-#### ・イメージを削除
-
-**＊コマンド例＊**
-
-コンテナに使用されていないイメージを一括で削除
-
-```bash
-$ docker image prune
-```
-
-**＊コマンド例＊**
-
-タグ名のないイメージのみを全て削除する．
-
-```bash
-$ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet)
-```
-
 <br>
 
-## 02-03. イメージのビルド
-
-### コマンド
-
-#### ・イメージのビルド
-
-**＊コマンド例＊**
-
-キャッシュ無しで，指定のDockerfileを基に，イメージをビルドする．失敗した時は削除するように，```--force-rm```オプションを有効化する．
-
-```bash
-$ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --force-rm=true --no-cache .
-```
-
-#### ・Docker Hubに登録
-
-**＊コマンド例＊**
-
-ホストOSで作成したイメージを，指定したDockerHubのユーザにアップロードする．
-
-```bash
-$ docker push <Docker Hubユーザ名>/<イメージ名>:<バージョン>
-```
-
-#### ・ECRに登録
-
-**＊コマンド例＊**
-
-ホストOSで作成したイメージを，指定したECRにアップロードする．事前にタグを付け替える必要がある．
-
-```bash
-$ docker tag <ローカル上でのイメージ名>:<ローカル上でのバージョン> <リポジトリURL>/<ECR上でのイメージ名>:<ECR上でのバージョン>
-
-$ docker push <リポジトリURL>/<ECR上でのイメージ名>:<ECR上でのバージョン>
-```
-
-#### ・イメージのデバッグ
-
-**＊コマンド例＊**
-
-ビルドに失敗したイメージからコンテナを構築し，接続する．```rm```オプションを設定し，接続の切断後にコンテナを削除する．Dockerfileにおいて，イメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は，後から上書きできなくなるため，```run```コマンドの引数として新しいコマンドを渡せずに，デバッグができないことがある．
-
-```bash
-$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
-
-# コンテナの中
-root@xxxxxxxxxx: 
-```
-
-<br>
+## 03. Dockerfile
 
 ### イメージレイヤーの積み重ね
 
@@ -306,7 +201,34 @@ Dockerfileを用いない場合，各イメージレイヤーのインストー�
 
 ![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)
 
-## 02-04 イメージの軽量化
+<br>
+
+### イメージのデバッグ
+
+**＊コマンド例＊**
+
+ビルドに失敗したイメージからコンテナを構築し，接続する．```rm```オプションを設定し，接続の切断後にコンテナを削除する．Dockerfileにおいて，イメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は，後から上書きできなくなるため，```run```コマンドの引数として新しいコマンドを渡せずに，デバッグができないことがある．
+
+```bash
+$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+
+# コンテナの中
+root@xxxxxxxxxx: 
+```
+
+<br>
+
+### コンテナレイヤー
+
+#### ・コンテナレイヤーとは
+
+イメージレイヤーの上に積み重ねられる
+
+![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
+
+<br>
+
+## 03-02 イメージの軽量化
 
 ### プロセス単位によるDockerfileの分割
 
@@ -541,289 +463,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 <br>
 
-## 02-05. イメージ上でのコンテナレイヤーの生成，コンテナの構築
-
-### コンテナレイヤーの生成
-
-#### ・コンテナレイヤーとは
-
-イメージレイヤーの上に積み重ねられる
-
-![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
-
-<br>
-
-### コマンド
-
-#### ・コンテナレイヤー生成，コンテナ構築
-
-**＊コマンド例＊**
-
-コンテナレイヤーを生成し，コンテナを構築．起動はしない．
-
-```bash
-$ docker create <コンテナ名> <使用イメージ名>:<タグ>
-```
-
-#### ・停止中のコンテナを起動
-
-コンテナを起動する．```start```コマンドでは，アタッチモードによる起動しかできない．
-
-**＊コマンド例＊**
-
-停止中コンテナをアタッチモードによって起動する．
-
-```bash
-$ docker start -i <停止中コンテナ名>
-```
-
-#### ・停止中のコンテナを削除
-
-停止中のコンテナのみを全て削除する．
-
-**＊コマンド例＊**
-
-```bash
-$ docker container prune
-```
-
-起動中／停止中の全てコンテナを削除する．
-
-```bash
-$ docker rm --force $(docker ps --all --quiet)
-```
-
-#### ・停止中のコンテナからイメージ作成
-
-停止中のコンテナからイメージを作成する．
-
-**＊コマンド例＊**
-
-```bash
-$ docker commit <コンテナ名> <コンテナID>
-
-$ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
-```
-
-#### ・ポートマッピング
-
-指定したホストポートとコンテナポートのマッピングを実行する．```--publish-all```オプションではホストポートをランダムに選んでポートマッピングを実行する．
-
-参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
-
-```bash
-$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
-```
-
-#### ・コンテナポート開放
-
-コンテナポート公開を```expose```オプションで設定できる．これはDockerfileでEXPOSE命令として設定してもよい．なお，プロセスのリッスンするポートと合わせる必要がある．
-
-参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
-
-```bash
-$ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメージ名>:<タグ> /bin/bash
-```
-
-<br>
-
-## 02-06. 起動中のコンテナの操作
-
-### コマンド
-
-#### ・起動中のコンテナ情報を表示
-
-**＊コマンド例＊**
-
-コンテナの起動と停止にかかわらず，IDなどを一覧で表示．
-
-```bash
-$ docker ps -a
-```
-
-**＊コマンド例＊**
-
-起動中コンテナの全ての設定内容を表示する．```grep```とも組み合わせられる．
-
-```bash
-$ docker inspect <コンテナID>
-$ docker inspect <コンテナID> | grep IPAddress
-```
-
-#### ・起動中のコンテナを停止
-
-**＊コマンド例＊**
-
-起動中コンテナを停止する．
-
-```bash
-$ docker stop <起動中コンテナ名>
-```
-
-**＊コマンド例＊**
-
-全てのコンテナを停止する．
-
-```bash
-$ docker stop $(docker ps --all --quiet)
-```
-
-#### ・起動中のコンテナに接続
-
-**＊コマンド例＊**
-
-デタッチドモードによって，起動中のコンテナに接続する．
-
-```bash
-$ docker attach <起動中コンテナ名>
-```
-
-#### ・起動中のコンテナ内でコマンドを実行
-
-**＊コマンド例＊**
-
-デタッチドモードによって，起動中のコンテナ内でコマンドを実行する．実行するコマンドが```bash```や```bash```の場合，コンテナに接続できる．
-
-```bash
-# i：interactive，t：tty（対話モード）
-$ docker exec -it <起動中コンテナ名> /bin/bash
-
-# イメージ内に/bin/bash がない場合
-$ docker exec -it <起動中コンテナ名> /bin/sh
-```
-
-#### ・起動中のコンテナにホストOSのファイルをコピー
-
-Dockerfileの```COPY```コマンドを使用してコンテナ内に配置しているファイルに関して，変更のたびにイメージをビルドを行うことは面倒のため，ホストOSからコンテナにコピーし，再読み込みを行う．ただし，コンテナを再構築すると元に戻ってしまうことに注意．
-
-**＊コマンド例＊**
-
-```bash
-# ホストのファイルをコンテナにコピー
-$ docker cp ./docker/www/nginx.conf <コンテナID>:/etc/nginx/nginx.conf
-
-# コンテナに接続後に，nginxの設定ファイルを再読み込み．
-$ docker exec -it <コンテナ名> bin/bash # もしくはbin/sh
-[root@<ホスト名>:~] $ nginx -s reload
-[root@<ホスト名>:~] $ exit
-
-# アクセスログを確認
-$ docker logs <コンテナ名>
-```
-
-<br>
-
-### 接続コマンドの違い
-
-#### ・attach
-
-**＊コマンド例＊**
-
-起動中のコンテナに接続する．```exit```コマンドを使用して，コンテナとの接続を切断した後，コンテナが停止してしまう．
-
-```bash
-# デタッチドモードによる起動
-$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-
-# デタッチドモードによって起動中のコンテナに接続
-$ docker attach <起動中コンテナ名>
-
-# PID=1で，1つの/bin/bashプロセスが稼働していることが確認できる
-[root@<ホスト名>:~] ps aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
-root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
-
-# コンテナとの接続を切断
-[root@<ホスト名>:~] exit
-
-# コンテナの状態を確認
-$ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedになっている
-```
-
-#### ・exe
-
-**＊コマンド例＊**
-
-起動中のコンテナでコマンドを実行する．実行するコマンドが```bash```や```bash```の場合，コンテナに接続できる．```exit```コマンドを使用して，コンテナとの接続を切断した後でも，コンテナが起動し続ける．
-
-```bash
-# デタッチドモードによる起動
-$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-
-# 対話モードを使用して，デタッチドモードによって起動中のコンテナに接続
-$ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
-
-# PID=1,17で，2つの/bin/bashプロセスが稼働していることが確認できる
-[root@<ホスト名>:~] ps aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
-root        17  0.0  0.1  16152  4032 pts/1    Ss   18:21   0:00 /bin/bash
-root        34  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
-
-# コンテナとの接続を切断
-[root@<ホスト名>:~] exit
-
-# コンテナの状態を確認
-$ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになっている
-```
-
-<br>
-
-## 02-07. コンテナ構築とコンテナ操作
-
-### コマンド
-
-#### ・コンテナを新しく構築し，コンテナ内でコマンドを実行
-
-すでに停止中または起動中のコンテナが存在していても，これとは別にコンテナを新しく構築し，起動する．さらにそのコンテナ内でコマンドを実行する．起動時に```bash```プロセスや```bash```プロセスを実行すると，コンテナに接続できる．何も渡さない場合は，デフォルトのプロセスとして```bash```プロセスが実行される．```run```コマンドでは，アタッチモードとデタッチモードを選ぶことができる．新しく起動したコンテナを停止後に自動削除する場合は，```rm```オプションを付けるようにする．
-
-**＊コマンド例＊**
-
-```bash
-# アタッチモードによる起動．フォアグラウンドで起動する．
-$ docker run -a -it --rm --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-
-# デタッチドモードによる起動．バックグラウンドで起動する．
-$ docker run -d -it --rm --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-```
-
-コンテナを起動する時に，```bash```プロセスを実行すると以下のようなエラーが出ることがある．その場合は，```bash```プロセスを実行するようにする．
-
-```bash
-docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
-```
-
-<br>
-
-### 起動モードの違い
-
-#### ・アタッチモード起動
-
-アタッチモードは，フォアグラウンド起動である．ターミナルにプロセスのログが表示されないため，同一ターミナルで他のコマンドを入力できる．
-
-**＊コマンド例＊**
-
-```bash
-# -a：atattch mode
-$ docker run -a -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-```
-
-#### ・デタッチドモード起動
-
-デタッチドモードは，バックグラウンド起動である．ターミナルにプロセスのログが表示され続けるため，同一ターミナルで他のコマンドを入力できない．プロセスのログを監視できるが，他のプロセスを入力するためには，そのターミナル上でコンテナを停止させる必要がある．
-
-**＊コマンド例＊**
-
-
-```bash
-# -d；detached mode
-$ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
-```
-
-<br>
-
-## 03. コンテナ側に対するマウント方法
+## 04. ホストとコンテナ間のマウント
 
 ### Bindマウント
 
@@ -861,81 +501,15 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ![volumeマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/volumeマウント.png)
 
-**＊コマンド例＊**
-
-Docker Composeで行うことが推奨されている．
-
-```bash
-# ホストOSのDockerエリアにVolumeを作成
-$ docker volume create <Volume名>
-```
-```bash
-# DockerエリアのVolumeの一覧を表示
-$ docker volume ls
-```
-```bash
-# DockerエリアのVolumeを削除
-$ docker volume rm <Volume名>
-```
-```bash
-# DockerエリアのVolumeの詳細を表示
-$ docker volume inspect <Volume名>
-
-[
-    {
-        "CreatedAt": "2020-09-06T15:04:02Z",
-        "Driver": "local",
-        "Labels": {
-            "com.docker.compose.project": "<プロジェクト名>",
-            "com.docker.compose.version": "1.26.2",
-            "com.docker.compose.volume": "xxx"
-        },
-        "Mountpoint": "/var/lib/docker/volumes/<プロジェクト名>_xxx/_data",
-        "Name": "<プロジェクト名>_xxx",
-        "Options": null,
-        "Scope": "local"
-    }
-]
-```
-```bash
-# DockerエリアをVolumeマウントして起動
-# マウントポイントのVolume名を使用
-$ docker run -d -it --name <コンテナ名> /bin/bash \
---mount type=volume, src=<ホストOS側Volume名> volume-driver=local, dst=<コンテナ側ディレクトリ>
-```
-
-**＊実装例＊**
-
-DockerfileでVolumeマウントを行う場合，マウント先のコンテナ側ディレクトリ名を指定する．Dockerエリアのマウントポイントは，自動的に作成される．Docker Composeで行うことが推奨されている．
-
-```dockerfile
-FROM ubuntu
-RUN mkdir /myvol
-RUN echo "hello world" > /myvol/greeting
-
-# マウント先のコンテナ側ディレクトリ名
-VOLUME /myvol
-```
-
 #### ・Data Volumeコンテナによる永続化データの提供
 
 Volumeを使用する場合のコンテナ配置手法の一つ．DockerエリアのVolumeをData Volumeをコンテナ （Data Volumeコンテナ）のディレクトリにマウントしておく．Volumeを使用する時は，Dockerエリアを参照するのではなく，Data Volumeコンテナを参照するようにする．
 
 ![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
 
-**＊実装例＊**
-
-```yaml
-# ここに実装例
-```
-
 <br>
 
-### 一時ファイルシステムマウント
-
-<br>
-
-## 04. ホストとコンテナの間のネットワーク接続
+## 05. ホストとコンテナ間のネットワーク接続
 
 ### bridgeネットワーク
 
@@ -961,53 +535,6 @@ Volumeを使用する場合のコンテナ配置手法の一つ．Dockerエリ�
 |                    | ↑                                  |                                                              |              |
 | ホストハードウェア | 物理サーバのNIC（ Ethernetカード） | ```http://127.0.0.1```                                       | ```:8080```  |
 
-#### ・ネットワークの接続方法確認
-
-**＊コマンド例＊**
-
-```bash
-$ docker network ls
-
-NETWORK ID          NAME                    DRIVER              SCOPE
-ae25b9b7740b        bridge                  bridge              local
-aeef782b227d        tech-notebook_default   bridge              local
-```
-
-#### ・コンテナへのホスト名割り当て
-
-コンテナ内の```etc/hosts```ファイルで，コンテナのプライベートIPアドレスを確認できる．```hostname```オプションで命名していればその名前，指定していなければランダムな文字列が割り当てられる．
-
-**＊コマンド例＊**
-
-```bash
-$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
-$ docker exec -it <起動中コンテナ名> /bin/bash
-
-[root@<ホスト名>:/] cat /etc/hosts
-
-127.0.0.1	localhost
-::1	localhost ip6-localhost ip6-loopback
-fe00::0	ip6-localnet
-ff00::0	ip6-mcastprefix
-ff02::1	ip6-allnodes
-ff02::2	ip6-allrouters
-172.18.0.2	<ホスト名>
-```
-
-#### ・未使用のネットワークを削除
-
-```sh
-$ docker network prune
-```
-
-#### ・ネットワークに接続するコンテナを確認
-
-複数のコンテナが起動している時に，コンテナがいずれのネットワークを使用しているかを確認する．
-
-```bash
-$ docker network inspect <ネットワーク名>
-```
-
 <br>
 
 ### noneネットワーク
@@ -1015,8 +542,6 @@ $ docker network inspect <ネットワーク名>
 #### ・noneネットワークとは
 
 特定のコンテナを，ホストOSや他のコンテナとは，ネットワーク接続させない．
-
-**＊コマンド例＊**
 
 
 ```bash
@@ -1034,8 +559,6 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 #### ・hostネットワークとは
 
 特定のコンテナに対して，ホストOSと同じネットワーク情報をもたせる．
-
-**＊コマンド例＊**
 
 ```bash
 $ docker network list
@@ -1087,7 +610,7 @@ $ curl --fail http://host.docker.internal:8080/
 
 <br>
 
-## 05. プラグイン
+## 06. プラグイン
 
 ### Volumeプラグイン
 
@@ -1122,22 +645,11 @@ volumes:
 
 <br>
 
-## 06. ロギング
+## 07. ロギング
 
-### コマンド
-
-#### ・docker logsの参照先ディレクトリ
+### docker logsの参照先ディレクトリ
 
 コンテナ内の```/dev/stdout```（標準出力）と```/dev/stderr```（標準エラー出力）に出力されたログをまとめて表示する．ログファイルに出力しない理由として，出力先がログファイルであると，開発環境のコンテナ内のアプリケーションサイズが肥大化してしまう．これを防ぐために，ログファイルにエラーを出力しないようにしている．
-
-#### ・指定したコンテナのログを確認
-
-**＊コマンド例＊**
-
-```bash
-# 指定した行数だけ，ログを表示する．
-$ docker logs --follow=true --tail=500 <コンテナ名>
-```
 
 <br>
 
