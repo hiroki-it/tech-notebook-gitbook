@@ -124,8 +124,8 @@
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
 * コンテナ
     * Docker
-        * [📖 ︎コマンド](public/virtualization/virtualization_container_docker_command.html)
-        * [📖 ︎Dockerfile](public/virtualization/virtualization_container_docker_dockerfile.html)
+        * [📖 ︎コマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
+        * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_dockerfile.html)
     * コンテナオーケストレーション
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html)
         * [📖 ︎Docker Compose](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose.html)
