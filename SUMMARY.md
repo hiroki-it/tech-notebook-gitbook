@@ -119,7 +119,7 @@
   * [📖 ︎仮想化](public/virtualization/virtualization.md)
   * コンテナ
     * Docker
-      * [📖 ︎コマンド](public/virtualization/virtualization_container_docker_command.md)
+      * [📖 ︎Dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
       * [📖 ︎Dockerfile](public/virtualization/virtualization_container_docker_dockerfile.md)
     * コンテナオーケストレーション
       * [📖 ︎コンテナオーケストレーション](public/virtualization/virtualization_container_orchestration.md)
