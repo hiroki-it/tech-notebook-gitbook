@@ -88,6 +88,8 @@
 
 #### ・サービスとは
 
+![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
+
 マイクロサービスアーキテクチャにおけるバックエンドの分散システムのコンポーネントのこと．特定のサービスが他のサービスに侵食され，サービスの凝集度が低くならないようにするために，ACL：Anti Corruption Layer（腐食防止レイヤー）を設ける必要がある．腐食防止レイヤーは，異なるコンテキストから受信したデータを，そのサービスのコンテキストにあったデータ形式に変換する責務を持つ．CQRSでは，これはプロセスマネージャパターンとして知られている．一方でSagaパターンとも呼ばれるが，分散トランザクションでも同一の用語があるため，混乱を避けるためにプロセスマネージャパターンとする．
 
 参考：
@@ -95,8 +97,6 @@
 - https://github.com/czeslavo/process-manager
 - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
 - https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
-
-![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/anti-corruption-layer.png)
 
 #### ・各サービスのアーキテクチャ
 
@@ -125,6 +125,8 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・サブドメイン，境界付けられたコンテキストを単位とした分割
 
+![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+
 サブドメインをサービスの粒度とする．ここでは，解決領域となる境界付けられたコンテキストがサブドメインの中に一つしか含まれていない場合を指しており，代わりに，境界付けられたコンテキストをサービスの粒度して考えても良い．サブドメインを粒度とすることを第一段階として，さらに小さな粒度に分割するために，次の段階としてルートエンティティを粒度とするとよい．
 
 参考：
@@ -132,9 +134,11 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
 - https://www.amazon.co.jp/dp/4873119316/ref=cm_sw_em_r_mt_dp_PVDKB4F74K7S07E4CTFF
 
-![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/context-map.png)
+
 
 #### ・ルートエンティティを単位とした分割
+
+![service_route-entity](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_route-entity.png)
 
 ルートエンティティをサービスの単位とする．ただし，イベント駆動方式でアプリケーションを連携した場合に限り，従来のリクエスト方式でアプリケーションを連携する場合のルートエンティティを使用することはアンチパターンである．最良な解決策として，サービスのオブジェクトの状態管理方式として，従来のデータに着目したステートソーシングではなく，振る舞いに着目したイベントソーシングを使用する必要がある．また，各サービスを名詞ではなく動詞で命名するとよい．その他，各サービスでDBを完全に独立させることや，SAGAパターンを使用すること，がある．
 
@@ -152,6 +156,8 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・Orchestration（オーケストレーション）とは
 
+![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
+
 中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．個々のサービス間の連携方式では，リクエストリプライ方式を採用する．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも使用される．
 
 参考：
@@ -160,9 +166,9 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
-![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
-
 #### ・Choreography（コレオグラフィ）とは
+
+![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
 分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法である．個々のサービス間の連携方式では，イベント駆動方式を採用する．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．サービス間のインターフェースとして，キューを設置する．マイクロサービスアーキテクチャでは，コレオグラフィによる連携が推奨されている．
 
@@ -170,8 +176,6 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
-
-![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
 <br>
 

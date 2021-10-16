@@ -1969,16 +1969,11 @@ class DogOrder
 
 #### ・DIP（依存性逆転の原則）とは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/?q=%E4%BE%9D%E5%AD%98%E6%80%A7%E9%80%86%E8%BB%A2
 
-#### ・依存性を逆転させる方法
+#### ・発表スライド
 
-参考：
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
-
-![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/509d25f8592f4177a4486c1be893f70c" title="ドメイン駆動設計と依存性逆転の原則" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
 
 <br>
 

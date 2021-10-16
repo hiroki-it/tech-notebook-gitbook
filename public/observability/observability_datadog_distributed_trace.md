@@ -210,7 +210,7 @@ Datadogにおいて，スパンはJSON型データとして定義される．ア
             "duration": 123,           # 処理の所要時間
             "error": 0,                # エラーの有無
             "meta": {       
-                "env": "prd"           # タグ
+                "env": "prd"           # タグのり
             },
             "metrics": {               
                 "baz-sum": 123         # サービスのメトリクス
@@ -220,9 +220,9 @@ Datadogにおいて，スパンはJSON型データとして定義される．ア
             "resource": "/foos",       # アクセスされたリソース
             "service": "laravel",      # サービス名
             "span_id": 123456789,      # スパンID
-            "start": 0,                # 処理開始
+            "start": 0,                # 処理開始時間
             "trace_id": 123456789,     # トレースID
-            "type": "web"              # サービスタイプ
+            "type": "web"              # サービスのタイプ
         }
     ]
 ]
@@ -345,7 +345,9 @@ PHPトレーサーでlaravel内からタグを収集した例
 
 #### ・スパンと構造化ログの紐づけ
 
-スパンと構造化ログに，同じトレースIDとスパンIDを割り当てると，スパンと構造化ログ間を紐づけることができる．これにより，その構造化ログが，いずれのサービスで，またいつ発生したものかを確認できる．
+![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
+
+スパンと構造化ログに，同じトレースIDとスパンIDを割り当てると，スパンと構造化ログ間を紐づけることができる．これにより，その構造化ログが，いずれのサービスで，またどのタイミングで発生したものかを確認できる．
 
 参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
 

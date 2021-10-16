@@ -1,10 +1,18 @@
 # 可観測性
 
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ## 01. 可観測性
 
 ### 可観測性とは
 
-『収集されたデータから，システムにおける予測不可能な不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの予測可能な不具合は『監視』や『テスト』によって検知できるが，予測不可能なものを検知する必要がある．システムをより詳細に可視化し，予測できるものだけでなく，予測できない不具合を浮かび上がらせる必要性がある．
+『収集されたデータから，システムにおける想定外の不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの想定内の不具合は『監視』や『テスト』によって検知できるが，想定外のものを検知できない．しかし，可観測性を高めることにより，想定外の不具合を表面化できる．
 
 参考：
 
@@ -13,6 +21,12 @@
 - https://www.sentinelone.com/blog/observability-production-systems-why-how/
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
+
+<br>
+
+### 可観測性を高める方法
+
+テレメトリーを十分に収集し，これらを関連付けて可視化する必要がある．
 
 <br>
 
@@ -36,6 +50,8 @@
 とある分析にて，一定期間に発生した複数のデータポイントの集計値のこと．『平均』『合計』『最小／最大』『平方根』などを用いて，データポイントを集計する．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
+
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
 
 <br>
 
@@ -149,16 +165,29 @@
 
 <br>
 
+### 分散トレースの読み方
+
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
+
+上から下に読むと，上流サービス（上位スパン）が下流サービス（下位スパン）を処理をコールしていることを確認できる．下から上に読むと，下流サービス（下位スパン）から上流サービス（上位スパン）に結果を返却していることを確認できる．
+
+参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+
 ### スパン
 
 #### ・スパンとは
 
-マイクロサービスアーキテクチャにおいて，特定のサービスで発生したデータのセットのこと．JSON型で定義されることが多い．特定のサービスのスパン名（操作名），処理開始／終了のタイムスタンプ，エラーメッセージ，などをがある．
+マイクロサービスアーキテクチャにおいて，特定のサービスで発生したデータのセットのこと．JSON型で定義されることが多い．SaaSツールによってJSON型の構造が異なる．
 
 参考：
 
 - https://opentracing.io/docs/overview/spans/
-- https://github.com/DataDog/dd-trace-go/blob/v1/ddtrace/ddtrace.go#L37-L60
+
+- https://docs.datadoghq.com/ja/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
+
+- https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
+
+  
 
 #### ・スパン間の紐づけ
 
@@ -267,9 +296,15 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 ## 04. 監視
 
+### 発表スライド
+
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/9ef17a127836454eba769084baddf60f" title="SREに入門しよう" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
+
+<bt>
+
 ### 監視とは
 
-既知のメトリクスとログに基づいて，システムにおける予測可能な不具合の発生を未然に防ぐこと．
+既知のメトリクスとログに基づいて，システムにおける想定内の不具合の発生を未然に防ぐこと．
 
 参考：
 
@@ -347,3 +382,4 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 <br>
 
 ### セキュリティ監視
+

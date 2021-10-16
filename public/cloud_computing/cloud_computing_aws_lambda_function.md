@@ -138,6 +138,12 @@ Lambdaで関数を作成すると，CloudWatchログのロググループに，�
 
 ## 02. Go
 
+### 発表スライド
+
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/0bcf8311d88445a5b44eac258de60727" title="Lambda関数をGoで実装してみた話" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
+
+<br>
+
 ### aws-lambda-go
 
 #### ・aws-lambda-goとは
