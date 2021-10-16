@@ -1785,7 +1785,7 @@
                 <a href="virtualization_container_docker_command.html">
             
                     
-                    📖 ︎コマンド
+                    📖 ︎Dockerコマンド
             
                 </a>
             
@@ -2859,49 +2859,85 @@ $ <span class="token function">curl</span> --fail http://host.docker.internal:80
 </code></pre>
 <p><br></p>
 <h2 id="07-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="07-&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#07-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>07. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
-<h3 id="docker-logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;"><a name="docker-logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;" class="plugin-anchor" href="#docker-logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;"><i class="fa fa-link" aria-hidden="true"></i></a>docker logs&#x306E;&#x53C2;&#x7167;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</h3>
-<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>/dev/stdout</code>&#xFF08;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF09;&#x3068;<code>/dev/stderr</code>&#xFF08;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#xFF09;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x307E;&#x3068;&#x3081;&#x3066;&#x8868;&#x793A;&#x3059;&#x308B;&#xFF0E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x7406;&#x7531;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x51FA;&#x529B;&#x5148;&#x304C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308B;&#x3068;&#xFF0C;&#x958B;&#x767A;&#x74B0;&#x5883;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B5;&#x30A4;&#x30BA;&#x304C;&#x80A5;&#x5927;&#x5316;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#xFF0E;&#x3053;&#x308C;&#x3092;&#x9632;&#x3050;&#x305F;&#x3081;&#x306B;&#xFF0C;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<h3 id="docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;"><a name="docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;" class="plugin-anchor" href="#docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;</h3>
+<p>Linux&#x3067;&#x306F;&#xFF0C;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306F;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/1</code>&#x300F;&#xFF0C;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306F;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/2</code>&#x300F;&#x3067;&#x3042;&#x308B;&#xFF0E;Docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x306F;&#xFF0C;&#x300E;<code>/dev/stdout</code>&#x300F;&#x304C;&#x300E;<code>/proc/self/fd/1</code>&#x300F;&#x306E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#xFF0C;&#x307E;&#x305F;&#x300E;<code>/dev/stderr</code>&#x300F;&#x304C;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/2</code>&#x300F;&#x306E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>root@*****:/dev<span class="token punctuation">]</span> <span class="token function">ls</span> -la
+total <span class="token number">4</span>
+drwxr-xr-x <span class="token number">5</span> root root  <span class="token number">340</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">1</span> root root <span class="token number">4096</span> Oct <span class="token number">14</span> <span class="token number">11</span>:28 <span class="token punctuation">..</span>
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">11</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 core -<span class="token operator">&gt;</span> /proc/kcore
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">13</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 fd -<span class="token operator">&gt;</span> /proc/self/fd
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">7</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 full
+drwxrwxrwt <span class="token number">2</span> root root   <span class="token number">40</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 mqueue
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">3</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 null
+lrwxrwxrwx <span class="token number">1</span> root root    <span class="token number">8</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 ptmx -<span class="token operator">&gt;</span> pts/ptmx
+drwxr-xr-x <span class="token number">2</span> root root    <span class="token number">0</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 pts
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">8</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 random
+drwxrwxrwt <span class="token number">2</span> root root   <span class="token number">40</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 shm
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stderr -<span class="token operator">&gt;</span> /proc/self/fd/2 <span class="token comment"># &#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;</span>
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stdin -<span class="token operator">&gt;</span> /proc/self/fd/0
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stdout -<span class="token operator">&gt;</span> /proc/self/fd/1 <span class="token comment"># &#x6A19;&#x6E96;&#x51FA;&#x529B;</span>
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">5</span>, <span class="token number">0</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 <span class="token function">tty</span>
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">9</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 urandom
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">5</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 zero
+</code></pre>
 <p><br></p>
 <h3 id="&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;"><a name="&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;" class="plugin-anchor" href="#&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;</h3>
 <h4 id="&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><a name="&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
-<p>&#x516C;&#x5F0F;&#x306E;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/access.log</code>&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;<code>/dev/stderr</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/error.log</code>&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x516C;&#x5F0F;&#x306E;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/access.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x307E;&#x305F;&#xFF0C;<code>/dev/stderr</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#xFF0C;<code>/var/log/nginx/error.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x306F;&#xFF0C;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/" target="_blank">https://docs.docker.com/config/containers/logging/</a></p>
 <h4 id="&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><a name="&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
 <p>&#x8981;&#x52C9;&#x5F37;&#xFF0E;</p>
 <p><br></p>
 <h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><a name="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;" class="plugin-anchor" href="#&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h3>
 <h4 id="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;</h4>
-<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
-<table>
-<thead>
-<tr>
-<th>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x540D;</th>
-<th>&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;</th>
-<th>&#x5099;&#x8003;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>json-file</td>
-<td><code>/var/lib/docker/containers/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;-json.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</td>
-<td>&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#xFF0E;</td>
-</tr>
-<tr>
-<td>none</td>
-<td>&#x30ED;&#x30B0;&#x3092;&#x8A18;&#x9332;&#x3057;&#x306A;&#x3044;&#xFF0E;</td>
-<td></td>
-</tr>
-<tr>
-<td>awslogs</td>
-<td>CloudWatch Logs&#x306E;API</td>
-<td><code>docker logs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
-</tr>
-<tr>
-<td>gcplogs</td>
-<td>Google Cloud Logging&#x306E;API</td>
-<td><code>docker logs</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x306A;&#x3044;&#xFF0E;</td>
-</tr>
-</tbody>
-</table>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF08;<code>/dev/stdout</code>&#xFF09;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#xFF08;<code>/dev/stderr</code>&#xFF09;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;json-file"><a name="&#x30FB;json-file" class="plugin-anchor" href="#&#x30FB;json-file"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;json-file</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;<code>/var/lib/docker/containers/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;-json.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;&#x6A19;&#x6E96;&#x306E;&#x8A2D;&#x5B9A;&#x5024;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;json-file&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;max-size&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;10m&quot;</span>,
+    <span class="token string">&quot;max-file&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;3&quot;</span> 
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;fluentd"><a name="&#x30FB;fluentd" class="plugin-anchor" href="#&#x30FB;fluentd"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;fluentd</h4>
+<p>&#x69CB;&#x9020;&#x5316;&#x30ED;&#x30B0;&#x306B;&#x5909;&#x63DB;&#x3057;&#xFF0C;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3059;&#x308B;Fluentd&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;ECS&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;awsfirelens&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x306F;&#xFF0C;fluentd&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3092;&#x30E9;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x3082;&#x306E;&#x3067;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.docker.com/config/containers/logging/fluentd/" target="_blank">https://docs.docker.com/config/containers/logging/fluentd/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/" target="_blank">https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/</a></li>
+</ul>
+<pre class="language-"><code class="lang-bash"> <span class="token punctuation">{</span>
+   <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;fluentd&quot;</span>,
+   <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+     <span class="token string">&quot;fluentd-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;&lt;Fluentd&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&gt;:24224&quot;</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;none"><a name="&#x30FB;none" class="plugin-anchor" href="#&#x30FB;none"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;none</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x8EE2;&#x9001;&#x3057;&#x306A;&#x3044;&#xFF0E; &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#xFF0C;&#x958B;&#x767A;&#x74B0;&#x5883;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x80A5;&#x5927;&#x5316;&#x3092;&#x9632;&#x3050;&#xFF0E;</p>
+<h4 id="&#x30FB;awslogs"><a name="&#x30FB;awslogs" class="plugin-anchor" href="#&#x30FB;awslogs"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;awslogs</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;CloudWatch&#x30ED;&#x30B0;&#x306E;API&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/awslogs/" target="_blank">https://docs.docker.com/config/containers/logging/awslogs/</a></p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;awslogs&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;awslogs-region&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;us-east-1&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;gcplogs"><a name="&#x30FB;gcplogs" class="plugin-anchor" href="#&#x30FB;gcplogs"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;gcplogs</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#xFF0C;Google Cloud Logging&#x306E;API&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/gcplogs/" target="_blank">https://docs.docker.com/config/containers/logging/gcplogs/</a></p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;gcplogs&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;gcp-meta-name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;example-instance-12345&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                                 
                                 </section>
@@ -2929,7 +2965,7 @@ $ <span class="token function">curl</span> --fail http://host.docker.internal:80
 
             
                 
-                <a href="virtualization_container_docker_command.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎コマンド">
+                <a href="virtualization_container_docker_command.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎Dockerコマンド">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2941,7 +2977,7 @@ $ <span class="token function">curl</span> --fail http://host.docker.internal:80
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Dockerfile","level":"1.9.2.1.2","depth":4,"next":{"title":"コンテナオーケストレーション","level":"1.9.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎コンテナオーケストレーション","level":"1.9.2.2.1","depth":4,"path":"public/virtualization/virtualization_container_orchestration.md","ref":"public/virtualization/virtualization_container_orchestration.md","articles":[]},{"title":"📖 ︎Docker Compose","level":"1.9.2.2.2","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_compose.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose.md","articles":[]},{"title":"📖 ︎Kubernetes","level":"1.9.2.2.3","depth":4,"path":"public/virtualization/virtualization_container_orchestration_kubernetes.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"📖 ︎Docker Swarm","level":"1.9.2.2.4","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","ref":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","articles":[]}]},"previous":{"title":"📖 ︎コマンド","level":"1.9.2.1.1","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_docker_dockerfile.md","mtime":"2021-10-15T00:59:25.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-15T01:01:03.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Dockerfile","level":"1.9.2.1.2","depth":4,"next":{"title":"コンテナオーケストレーション","level":"1.9.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎コンテナオーケストレーション","level":"1.9.2.2.1","depth":4,"path":"public/virtualization/virtualization_container_orchestration.md","ref":"public/virtualization/virtualization_container_orchestration.md","articles":[]},{"title":"📖 ︎Docker Compose","level":"1.9.2.2.2","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_compose.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose.md","articles":[]},{"title":"📖 ︎Kubernetes","level":"1.9.2.2.3","depth":4,"path":"public/virtualization/virtualization_container_orchestration_kubernetes.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"📖 ︎Docker Swarm","level":"1.9.2.2.4","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","ref":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","articles":[]}]},"previous":{"title":"📖 ︎Dockerコマンド","level":"1.9.2.1.1","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_docker_dockerfile.md","mtime":"2021-10-15T15:00:46.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-16T04:22:09.594Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
