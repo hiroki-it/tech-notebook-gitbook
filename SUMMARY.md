@@ -66,7 +66,7 @@
         * [📖 Goとは](public/software/software_application_backend_go.md)
         * [📖 Goコマンドと設定](public/software/software_application_backend_go_command_and_configuration.md)
         * ロジック
-          * [📖 文法](public/software/software_application_backend_go_logic.md)
+          * [📖 メソッド，データ](public/software/software_application_backend_go_logic.md)
         * パッケージ／フレームワーク
           * [📖 パッケージ](public/software/software_application_backend_go_package.md)
           * [📖 Gin](public/software/software_application_backend_go_framework_gin.md)
