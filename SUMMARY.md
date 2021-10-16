@@ -38,6 +38,7 @@
       * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
     * バックエンド 
       * PHP
+        * [📖 PHPコマンドと設定](public/software/software_application_backend_php_command_and_configuration.md)
         * クラスベースオブジェクト指向
           * [📖 ︎オブジェクト指向分析／設計／プログラミング](public/software/software_application_backend_php_object_orientation_analysis_design_programming.md)
           * [📖 ︎クラス](public/software/software_application_backend_php_object_orientation_class.md)
@@ -60,9 +61,10 @@
           * [📖 ︎コードベースのテスト](public/software/software_application_backend_php_testing_based_on_code.md)
           * [📖 ︎テスト仕様書ベースのテスト](public/software/software_application_backend_php_testing_based_on_test_specification.md)
         * デバッグ
-        * [📖 ︎デバッグのコツ](public/software/software_application_backend_php_debug.md)
+        * [📖 ︎デバッグ](public/software/software_application_backend_php_debug.md)
       * Go
         * [📖 Goとは](public/software/software_application_backend_go.md)
+        * [📖 Goコマンドと設定](public/software/software_application_backend_go_command_and_configuration.md)
         * ロジック
           * [📖 文法](public/software/software_application_backend_go_logic.md)
         * パッケージ／フレームワーク
@@ -81,7 +83,7 @@
           * [📖 ︎Vue.js](public/software/software_application_frontend_js_framework_vuejs.md)
           * [📖 ︎Nuxt.js](public/software/software_application_frontend_js_framework_nuxtjs.md)
         * デバッグ
-          * [📖 ︎デバッグのコツ](public/software/software_application_frontend_js_debug.md)
+          * [📖 ︎デバッグ](public/software/software_application_frontend_js_debug.md)
         * ブラウザ
           * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_js_browser_rendering.md)
 
