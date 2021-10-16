@@ -99,7 +99,7 @@
 
 #### ・tailプラグイン
 
-受信したログとこれに後続するログを結合し，パイプラインに入力する．```v1.8```を境にオプションが変わっていることに注意する．
+指定したパスに継続的に出力されるログを順次結合し，パイプラインに入力する．FluentBitがサイドカーコンテナーで稼働している場合，アプリケーションコンテナのログのパスを指定する．```v1.8```を境にオプションが変わっていることに注意する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
 
@@ -369,7 +369,7 @@ FluentBit／Fluentdが対応する他のサービスにログを転送できる�
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
-1. メインのコンテナは，Fluentdログドライバーを介して，ログをFireLensコンテナに送信する．Fluentdログドライバーについては，以下を参考にせよ．
+1. awsfirelensドライバーはFluentdログドライバーをラッピングしたものであり，ログをFireLensコンテナに送信する．Fluentdログドライバーについては，以下を参考にせよ．
 
    参考：https://docs.docker.com/config/containers/logging/fluentd/
 

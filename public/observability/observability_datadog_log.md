@@ -41,7 +41,7 @@ Datadogコンテナはコンテナからログを収集できないため，代�
 参考：
 
 - https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/summary.html?q=firelens
 
 <br>
 

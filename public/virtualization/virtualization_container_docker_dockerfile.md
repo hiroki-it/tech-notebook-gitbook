@@ -647,9 +647,31 @@ volumes:
 
 ## 07. ロギング
 
-### docker logsの参照先ディレクトリ
+### Dockerコンテナの標準出力と標準エラー出力
 
-コンテナ内の```/dev/stdout```（標準出力）と```/dev/stderr```（標準エラー出力）に出力されたログをまとめて表示する．ログファイルに出力しない理由として，出力先がログファイルであると，開発環境のコンテナ内のアプリケーションサイズが肥大化してしまう．これを防ぐために，ログファイルにエラーを出力しないようにしている．
+Linuxでは，標準出力は『```/proc/<プロセスID>/fd/1```』，標準エラー出力は『```/proc/<プロセスID>/fd/2```』である．Dockerコンテナでは，『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク，また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている．
+
+```bash
+[root@*****:/dev] ls -la
+total 4
+drwxr-xr-x 5 root root  340 Oct 14 11:36 .
+drwxr-xr-x 1 root root 4096 Oct 14 11:28 ..
+lrwxrwxrwx 1 root root   11 Oct 14 11:36 core -> /proc/kcore
+lrwxrwxrwx 1 root root   13 Oct 14 11:36 fd -> /proc/self/fd
+crw-rw-rw- 1 root root 1, 7 Oct 14 11:36 full
+drwxrwxrwt 2 root root   40 Oct 14 11:36 mqueue
+crw-rw-rw- 1 root root 1, 3 Oct 14 11:36 null
+lrwxrwxrwx 1 root root    8 Oct 14 11:36 ptmx -> pts/ptmx
+drwxr-xr-x 2 root root    0 Oct 14 11:36 pts
+crw-rw-rw- 1 root root 1, 8 Oct 14 11:36 random
+drwxrwxrwt 2 root root   40 Oct 14 11:36 shm
+lrwxrwxrwx 1 root root   15 Oct 14 11:36 stderr -> /proc/self/fd/2 # 標準エラー出力
+lrwxrwxrwx 1 root root   15 Oct 14 11:36 stdin -> /proc/self/fd/0
+lrwxrwxrwx 1 root root   15 Oct 14 11:36 stdout -> /proc/self/fd/1 # 標準出力
+crw-rw-rw- 1 root root 5, 0 Oct 14 11:36 tty
+crw-rw-rw- 1 root root 1, 9 Oct 14 11:36 urandom
+crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
+```
 
 <br>
 
@@ -657,7 +679,9 @@ volumes:
 
 #### ・nginxイメージ
 
-公式のnginxイメージは，```/dev/stdout```というシンボリックリンクを，```/var/log/nginx/access.log```に作成している．また，```/dev/stderr```というシンボリックリンクを，```/var/log/nginx/error.log```に作成している．これにより，これらのファイルに対するログの出力は，```/dev/stdout```と```/dev/stderr```に転送される．
+公式のnginxイメージは，```/dev/stdout```というシンボリックリンクを，```/var/log/nginx/access.log```ファイルに作成している．また，```/dev/stderr```というシンボリックリンクを，```/var/log/nginx/error.log```ファイルに作成している．これにより，これらのファイルに対するログの出力は，```/dev/stdout```と```/dev/stderr```に転送される．
+
+参考：https://docs.docker.com/config/containers/logging/
 
 #### ・php-fpmイメージ
 
@@ -669,12 +693,73 @@ volumes:
 
 #### ・ロギングドライバーとは
 
-コンテナ内の```/dev/stdout```と```/dev/stderr```に出力されたログを，ファイルやAPIに対して出力する．
+コンテナ内の標準出力（```/dev/stdout```）と標準エラー出力（```/dev/stderr```）に出力されたログを，ファイルやAPIに対して転送する．
 
-| ロギングドライバー名 | ログの出力先                                                 | 備考                                      |
-| -------------------- | ------------------------------------------------------------ | ----------------------------------------- |
-| json-file            | ```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイル | デフォルトの設定．                        |
-| none                 | ログを記録しない．                                           |                                           |
-| awslogs              | CloudWatch LogsのAPI                                         | ```docker logs```コマンドで確認できない． |
-| gcplogs              | Google Cloud LoggingのAPI                                    | ```docker logs```コマンドで確認できない． |
+#### ・json-file
+
+標準出力と標準エラー出力に出力されたログを，```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する．標準の設定値である．
+
+```bash
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3" 
+  }
+}
+```
+
+#### ・fluentd
+
+構造化ログに変換し，サイドカーとして稼働するFluentdコンテナに送信する．ECSコンテナのawsfirelensドライバーは，fluentdドライバーをラッピングしたものである．
+
+参考：
+
+- https://docs.docker.com/config/containers/logging/fluentd/
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+
+```bash
+ {
+   "log-driver": "fluentd",
+   "log-opts": {
+     "fluentd-address": "<Fluentdコンテナのホスト名>:24224"
+   }
+ }
+```
+
+#### ・none
+
+標準出力と標準エラー出力に出力されたログを，ファイルやAPIに転送しない． ファイルに出力しないことで，開発環境のアプリケーションサイズの肥大化を防ぐ．
+
+#### ・awslogs
+
+標準出力と標準エラー出力に出力されたログを，CloudWatchログのAPIに転送する．
+
+参考：https://docs.docker.com/config/containers/logging/awslogs/
+
+```bash
+{
+  "log-driver": "awslogs",
+  "log-opts": {
+    "awslogs-region": "us-east-1"
+  }
+}
+```
+
+#### ・gcplogs
+
+標準出力と標準エラー出力に出力されたログを，Google Cloud LoggingのAPIに転送する．
+
+参考：https://docs.docker.com/config/containers/logging/gcplogs/
+
+```bash
+{
+  "log-driver": "gcplogs",
+  "log-opts": {
+    "gcp-meta-name": "example-instance-12345"
+  }
+}
+```
+
+
 

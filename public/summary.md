@@ -55,7 +55,7 @@
                 * [📖 ︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_testing_based_on_code.html)
                 * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_testing_based_on_test_specification.html)
             * デバッグ
-            * [📖 ︎デバッグのコツ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_debug.html)
+               * [📖 ︎デバッグのコツ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_debug.html)
         * Go
             * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go.html)
             * ロジック
@@ -124,7 +124,7 @@
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
 * コンテナ
     * Docker
-        * [📖 ︎コマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
+        * [📖 ︎Dockerコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
         * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_dockerfile.html)
     * コンテナオーケストレーション
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html)

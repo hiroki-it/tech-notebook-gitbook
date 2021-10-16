@@ -10,15 +10,21 @@
 
 ## 01. Dockerコマンドの仕組み
 
-### Dockerの操作
+### Dockerクライアント
 
-#### ・Dockerクライアント
+#### ・Dockerクライアントとは
 
 Dockerクライアントは，接続によって，Dockerデーモンを操作できる．
 
-#### ・Dockerデーモン
+<br>
+
+### Dockerデーモン
+
+#### ・Dockerデーモンとは
 
 ホストOS上で稼働し，Dockerの操作を担う．Dockerクライアントは，Dockerデーモンを通して，Docker全体を操作できる．
+
+参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
 
@@ -245,9 +251,21 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 起動中コンテナの全ての設定内容を表示する．```grep```とも組み合わせられる．
 
 ```bash
-$ docker inspect <コンテナID>
-$ docker inspect <コンテナID> | grep IPAddress
+$ docker inspect <コンテナ名>
+$ docker inspect <コンテナ名> | grep IPAddress
 ```
+
+**＊コマンド例＊**
+
+json-fileロギングドライバーを使用している時に，ログファイルの出力先を確認する．
+
+```bash
+ $ docker inspect <コンテナ名> | grep 'LogPath'
+ 
+ "LogPath": "/var/lib/docker/containers/*****-json.log",
+```
+
+
 
 <br>
 
@@ -359,8 +377,6 @@ $ docker rm --force $(docker ps --all --quiet)
 
 <br>
 
-
-
 ### run
 
 #### ・--hostname
@@ -458,8 +474,6 @@ $ docker start -i <停止中コンテナ名>
 ```
 
 <br>
-
-
 
 ### stop
 

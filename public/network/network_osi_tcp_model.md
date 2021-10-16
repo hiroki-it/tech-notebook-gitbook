@@ -214,9 +214,7 @@ IANA：Internet Assigned Numbers Authority（インターネット割当番号�
 
 #### ・ポートフォワーディング（ポート転送）
 
-サーバ内の特定のポート番号のアプリケーションに対して，パケットが送信されてきた時，これを異なるポート番号のアプリケーションに転送すること．SSHプロトコルと組み合わせたSSHポートフォワーディングについては，以下を参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_encryption_technology.html
+サーバ内の特定のポート番号のアプリケーションに対して，パケットが送信されてきた時，これを異なるポート番号のアプリケーションに転送すること．SSHプロトコルと組み合わせると，SSHポートフォワーディングを実現できる．
 
 <br>
 
