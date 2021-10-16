@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎カーネル · 僕のドキュメントサイト【GitBook版】</title>
+        <title>📖 Goコマンドと設定 · 僕のドキュメントサイト【GitBook版】</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -70,7 +70,7 @@
 
     
     
-    <link rel="prev" href="software_basic_utility.html" />
+    <link rel="prev" href="software_application_backend_go.html" />
     
 
     </head>
@@ -192,7 +192,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2.2" data-path="software_basic_kernel.html">
+        <li class="chapter " data-level="1.4.2.2" data-path="software_basic_kernel.html">
             
                 <a href="software_basic_kernel.html">
             
@@ -999,7 +999,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.3.2.2" data-path="software_application_backend_go_command_and_configuration.html">
+        <li class="chapter active" data-level="1.4.4.3.2.2" data-path="software_application_backend_go_command_and_configuration.html">
             
                 <a href="software_application_backend_go_command_and_configuration.html">
             
@@ -2276,7 +2276,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎カーネル</a>
+        <a href="../.." >📖 Goコマンドと設定</a>
     </h1>
 </div>
 
@@ -2291,102 +2291,120 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;"><a name="&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;" class="plugin-anchor" href="#&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;</h1>
+                                <h1 id="go&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3068;&#x8A2D;&#x5B9A;"><a name="go&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3068;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#go&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3068;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>Go&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3068;&#x8A2D;&#x5B9A;</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
+<p><a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;"><a name="01-&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;" class="plugin-anchor" href="#01-&#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x5236;&#x5FA1;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#xFF08;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF09;</h2>
-<p>  &#xFF08;&#x4F8B;&#xFF09;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF0C;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30AB;&#x30FC;&#x30CD;&#x30EB;&#xFF0C;&#x30E2;&#x30CE;&#x30EA;&#x30B7;&#x30C3;&#x30AF;&#x30AB;&#x30FC;&#x30CD;&#x30EB;</p>
-<p><br></p>
-<h2 id="02-&#x901A;&#x4FE1;&#x7BA1;&#x7406;"><a name="02-&#x901A;&#x4FE1;&#x7BA1;&#x7406;" class="plugin-anchor" href="#02-&#x901A;&#x4FE1;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x901A;&#x4FE1;&#x7BA1;&#x7406;</h2>
-<h3 id="selinux&#xFF1A;security-enhanced-linux"><a name="selinux&#xFF1A;security-enhanced-linux" class="plugin-anchor" href="#selinux&#xFF1A;security-enhanced-linux"><i class="fa fa-link" aria-hidden="true"></i></a>SELinux&#xFF1A;Security Enhanced Linux</h3>
-<p>Linux&#x306B;&#x6A19;&#x6E96;&#x3067;&#x5C0E;&#x5165;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#xFF0E;&#x305F;&#x3060;&#x3057;&#xFF0C;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x4ED6;&#x306E;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x901A;&#x4FE1;&#x3092;&#x906E;&#x65AD;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x306B;&#x306F;&#x7121;&#x52B9;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#xFF0E;</p>
-<ol>
-<li>SELinux&#x306E;&#x72B6;&#x614B;&#x3092;&#x78BA;&#x8A8D;</li>
-</ol>
-<pre class="language-"><code class="lang-bash">$ getenforce
-
-<span class="token comment"># &#x6709;&#x52B9;&#x306E;&#x5834;&#x5408;</span>
-Enforcing
+<h2 id="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B3;&#x30DE;&#x30F3;&#x30C9;</h2>
+<h3 id="install"><a name="install" class="plugin-anchor" href="#install"><i class="fa fa-link" aria-hidden="true"></i></a>install</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x5916;&#x90E8;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306B;&#x5BFE;&#x3057;&#x3066;<code>build</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3057;&#xFF0C;<code>$GOPATH</code>&#x4EE5;&#x4E0B;&#x306E;<code>bin</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x307E;&#x305F;&#x306F;<code>pkg</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#xFF08;&#x914D;&#x7F6E;&#xFF09;&#x3059;&#x308B;&#xFF0E;&#x5185;&#x90E8;&#x307E;&#x305F;&#x306F;&#x5916;&#x90E8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30D3;&#x30EB;&#x30C9;&#x3055;&#x308C;&#x305F;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#xFF08;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF09;&#x3067;&#x3042;&#x308C;&#x3070;<code>bin</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x914D;&#x7F6E;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#xFF08;&#x4F8B;&#xFF1A;<code>.a</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF09;&#x3067;&#x3042;&#x308C;&#x3070;<code>pkg</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token function">install</span>
 </code></pre>
-<ol>
-<li><code>/etc/sellnux/config</code>&#x3092;&#x4FEE;&#x6B63;&#x3059;&#x308B;&#xFF0E;</li>
-</ol>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># This file controls the state of SELinux on the system.</span>
-<span class="token comment"># SELINUX= can take one of these three values:</span>
-<span class="token comment">#     enforcing - SELinux security policy is enforced.</span>
-<span class="token comment">#     permissive - SELinux prints warnings instead of enforcing.</span>
-<span class="token comment">#     disabled - No SELinux policy is loaded.</span>
-
-<span class="token assign-left variable">SELINUX</span><span class="token operator">=</span>disabled <span class="token comment"># &lt;---- disabled&#x306B;&#x5909;&#x66F4;</span>
-
-<span class="token comment"># SELINUXTYPE= can take one of these three values:</span>
-<span class="token comment">#     targeted - Targeted processes are protected,</span>
-<span class="token comment">#     minimum - Modification of targeted policy. Only selected processes are protected. </span>
-<span class="token comment">#     mls - Multi Level Security protection.</span>
-<span class="token assign-left variable">SELINUXTYPE</span><span class="token operator">=</span>targeted
+<p><br></p>
+<h3 id="get"><a name="get" class="plugin-anchor" href="#get"><i class="fa fa-link" aria-hidden="true"></i></a>get</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x304B;&#x3089;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#xFF0C;&#x3053;&#x308C;&#x306B;&#x5BFE;&#x3057;&#x3066;<code>install</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x5185;&#x90E8;&#x307E;&#x305F;&#x306F;&#x5916;&#x90E8;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x30D3;&#x30EB;&#x30C9;&#x3055;&#x308C;&#x305F;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#xFF08;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF09;&#x3067;&#x3042;&#x308C;&#x3070;<code>bin</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x914D;&#x7F6E;&#x3057;&#xFF0C;&#x305D;&#x308C;&#x4EE5;&#x5916;&#xFF08;&#x4F8B;&#xFF1A;<code>.a</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF09;&#x3067;&#x3042;&#x308C;&#x3070;<code>pkg</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x914D;&#x7F6E;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go get <span class="token operator">&lt;</span>&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x3092;&#x30EB;&#x30FC;&#x30C8;&#x3068;&#x3057;&#x305F;URL<span class="token operator">&gt;</span>
 </code></pre>
-<ol>
-<li>OS&#x3092;&#x518D;&#x8D77;&#x52D5;</li>
-</ol>
-<p>OS&#x3092;&#x518D;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;&#x3068;&#x8A2D;&#x5B9A;&#x304C;&#x53CD;&#x6620;&#x3055;&#x308C;&#x306A;&#x3044;&#xFF0E;</p>
 <p><br></p>
-<h2 id="03-&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;"><a name="03-&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;" class="plugin-anchor" href="#03-&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>03 &#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;</h2>
-<h3 id="&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x306F;"><a name="&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x306F;</h3>
-<p>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;&#xFF0C;&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x547D;&#x4EE4;&#x3092;&#x4E0E;&#x3048;&#x308B;&#xFF0E;</p>
+<h3 id="build"><a name="build" class="plugin-anchor" href="#build"><i class="fa fa-link" aria-hidden="true"></i></a>build</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x30D3;&#x30EB;&#x30C9;&#x304B;&#x3089;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x9664;&#x5916;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cmd&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build ./cmd
+</code></pre>
+<h4 id="&#x30FB;-o"><a name="&#x30FB;-o" class="plugin-anchor" href="#&#x30FB;-o"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>-o</code></h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306B;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#xFF0C;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;go&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x5BFE;&#x8C61;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;go&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;</span>
+<span class="token comment"># $HOME/go/bin&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build -o <span class="token environment constant">$HOME</span>/go/bin
+</code></pre>
+<p>&#x307E;&#x305F;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x5185;&#x306E;go&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306B;&#x30D3;&#x30EB;&#x30C9;&#x306E;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># cmd&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;go&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x3068;&#x3057;&#x3066;</span>
+<span class="token comment"># $HOME/go/bin&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cmd&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#xFF0E;</span>
+$ go build -o <span class="token environment constant">$HOME</span>/go/bin ./cmd
+</code></pre>
+<p> &#x3061;&#x306A;&#x307F;&#x306B;&#xFF0C;&#x4E8B;&#x524D;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306B;&#x5931;&#x6557;&#x306B;&#xFF0C;&#x30D3;&#x30EB;&#x30C9;&#x5BFE;&#x8C61;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x30A8;&#x30E9;&#x30FC;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">package xxxxx is not <span class="token keyword">in</span> GOROOT <span class="token punctuation">(</span>/usr/local/go/src/xxxxx<span class="token punctuation">)</span>
+</code></pre>
 <p><br></p>
-<h3 id="&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;"><a name="&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;" class="plugin-anchor" href="#&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;</h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x306E;&#x6982;&#x8981;.jpg" alt="&#x30B8;&#x30E7;&#x30D6;&#x7BA1;&#x7406;&#x3068;&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x306E;&#x6982;&#x8981;"></p>
-<p>&#x30B8;&#x30E7;&#x30D6;&#x3068;&#x306F;&#xFF0C;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30BB;&#x30C3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x30DE;&#x30B9;&#x30BF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#x306F;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30E9;&#x306B;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x5B9F;&#x884C;&#x3092;&#x547D;&#x4EE4;&#x3059;&#x308B;&#xFF0E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30B3;&#x30F3;&#x30D4;&#x30E5;&#x30FC;&#x30BF;&#x306B;&#x5165;&#x529B;&#x3057;&#xFF0C;&#x8907;&#x6570;&#x306E;&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#xFF0C;&#x7D50;&#x679C;&#x304C;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x307E;&#x3067;&#x306E;&#x4E00;&#x9023;&#x306E;&#x51E6;&#x7406;&#x306E;&#x3053;&#x3068;&#xFF0E;&#x300E;Task&#x300F;&#x3068;&#x300E;Job&#x300F;&#x306E;&#x5B9A;&#x7FA9;&#x306F;&#x66D6;&#x6627;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x300E;process&#x300F;&#x3068;&#x300E;set of processes&#x300F;&#x3092;&#x4F7F;&#x3046;&#x3079;&#x304D;&#x3068;&#x306E;&#x3053;&#x3068;&#xFF0E;</p>
-<p>&#x5F15;&#x7528;&#xFF1A;<a href="https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568" target="_blank">https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568</a></p>
-<p>&#x8907;&#x6570;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#xFF08;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3084;&#x30D0;&#x30C3;&#x30C1;&#xFF09;&#x306E;&#x8D77;&#x52D5;&#x3068;&#x7D42;&#x4E86;&#x3092;&#x5236;&#x5FA1;&#x3057;&#x305F;&#x308A;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x5B9F;&#x884C;&#x3068;&#x7D42;&#x4E86;&#x3092;&#x76E3;&#x8996;&#x5831;&#x544A;&#x3059;&#x308B;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#xFF0E;&#x3084;&#x3084;&#x3053;&#x3057;&#x3044;&#x3053;&#x3068;&#x306B;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30FC;&#x30E9;&#x3068;&#x3082;&#x547C;&#x3076;&#xFF0E;</p>
-<h4 id="&#x30FB;reader"><a name="&#x30FB;reader" class="plugin-anchor" href="#&#x30FB;reader"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Reader</h4>
-<p>&#x30B8;&#x30E7;&#x30D6;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x767B;&#x9332;</p>
-<h4 id="&#x30FB;initiator"><a name="&#x30FB;initiator" class="plugin-anchor" href="#&#x30FB;initiator"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Initiator</h4>
-<p>&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x306B;&#x5206;&#x89E3;</p>
-<h4 id="&#x30FB;terminator"><a name="&#x30FB;terminator" class="plugin-anchor" href="#&#x30FB;terminator"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Terminator</h4>
-<p>&#x51FA;&#x529B;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x767B;&#x9332;</p>
-<h4 id="&#x30FB;writer"><a name="&#x30FB;writer" class="plugin-anchor" href="#&#x30FB;writer"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Writer</h4>
-<p>&#x512A;&#x5148;&#x5EA6;&#x9806;&#x306B;&#x51FA;&#x529B;&#x306E;&#x51E6;&#x7406;&#x30D5;&#x30ED;&#x30FC;&#x3092;&#x5B9F;&#x884C;</p>
+<h3 id="env"><a name="env" class="plugin-anchor" href="#env"><i class="fa fa-link" aria-hidden="true"></i></a>env</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>Go&#x306B;&#x95A2;&#x3059;&#x308B;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token function">env</span>
+
+<span class="token comment"># go.mod&#x306E;&#x6709;&#x52B9;&#x5316;</span>
+<span class="token assign-left variable">GO111MODULE</span><span class="token operator">=</span><span class="token string">&quot;on&quot;</span>
+<span class="token comment"># &#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;CPU&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;</span>
+<span class="token assign-left variable">GOARCH</span><span class="token operator">=</span><span class="token string">&quot;amd64&quot;</span>
+<span class="token comment"># install&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x3088;&#x308B;&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#xFF08;&#x6307;&#x5B9A;&#x7121;&#x3057;&#x306E;&#x5834;&#x5408;&#xFF0C;$GOPATH/bin&#xFF09;</span>
+<span class="token assign-left variable">GOBIN</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOCACHE</span><span class="token operator">=</span><span class="token string">&quot;/root/.cache/go-build&quot;</span>
+<span class="token assign-left variable">GOENV</span><span class="token operator">=</span><span class="token string">&quot;/root/.config/go/env&quot;</span>
+<span class="token assign-left variable">GOEXE</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOFLAGS</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOHOSTARCH</span><span class="token operator">=</span><span class="token string">&quot;amd64&quot;</span>
+<span class="token comment"># &#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;OS</span>
+<span class="token assign-left variable">GOHOSTOS</span><span class="token operator">=</span><span class="token string">&quot;linux&quot;</span>
+<span class="token assign-left variable">GOINSECURE</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOMODCACHE</span><span class="token operator">=</span><span class="token string">&quot;/go/pkg/mod&quot;</span>
+<span class="token assign-left variable">GONOPROXY</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GONOSUMDB</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOOS</span><span class="token operator">=</span><span class="token string">&quot;linux&quot;</span>
+<span class="token comment"># &#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x914D;&#x7F6E;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+<span class="token assign-left variable">GOPATH</span><span class="token operator">=</span><span class="token string">&quot;/go&quot;</span>
+<span class="token assign-left variable">GOPRIVATE</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOPROXY</span><span class="token operator">=</span><span class="token string">&quot;https://proxy.golang.org,direct&quot;</span>
+<span class="token comment"># Go&#x672C;&#x4F53;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
+<span class="token assign-left variable">GOROOT</span><span class="token operator">=</span><span class="token string">&quot;/usr/local/go&quot;</span>
+<span class="token assign-left variable">GOSUMDB</span><span class="token operator">=</span><span class="token string">&quot;sum.golang.org&quot;</span>
+<span class="token assign-left variable">GOTMPDIR</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">GOTOOLDIR</span><span class="token operator">=</span><span class="token string">&quot;/usr/local/go/pkg/tool/linux_amd64&quot;</span>
+<span class="token assign-left variable">GCCGO</span><span class="token operator">=</span><span class="token string">&quot;gccgo&quot;</span>
+<span class="token assign-left variable">AR</span><span class="token operator">=</span><span class="token string">&quot;ar&quot;</span>
+<span class="token assign-left variable">CC</span><span class="token operator">=</span><span class="token string">&quot;gcc&quot;</span>
+<span class="token assign-left variable">CXX</span><span class="token operator">=</span><span class="token string">&quot;g++&quot;</span>
+<span class="token comment"># c&#x8A00;&#x8A9E;&#x88FD;&#x306E;&#x30E9;&#x30A4;&#x30D6;&#x30E9;&#x30EA;&#x306E;&#x6709;&#x52B9;&#x5316;&#xFF0E;&#x7121;&#x52B9;&#x5316;&#x3057;&#x306A;&#x3044;&#x3068;&#xFF0C;vet&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5931;&#x6557;&#x3059;&#x308B;&#xFF0E;</span>
+<span class="token assign-left variable">CGO_ENABLED</span><span class="token operator">=</span><span class="token string">&quot;0&quot;</span>
+<span class="token assign-left variable">GOMOD</span><span class="token operator">=</span><span class="token string">&quot;/go/src/go.mod&quot;</span>
+<span class="token assign-left variable">CGO_CFLAGS</span><span class="token operator">=</span><span class="token string">&quot;-g -O2&quot;</span>
+<span class="token assign-left variable">CGO_CPPFLAGS</span><span class="token operator">=</span><span class="token string">&quot;&quot;</span>
+<span class="token assign-left variable">CGO_CXXFLAGS</span><span class="token operator">=</span><span class="token string">&quot;-g -O2&quot;</span>
+<span class="token assign-left variable">CGO_FFLAGS</span><span class="token operator">=</span><span class="token string">&quot;-g -O2&quot;</span>
+<span class="token assign-left variable">CGO_LDFLAGS</span><span class="token operator">=</span><span class="token string">&quot;-g -O2&quot;</span>
+<span class="token assign-left variable">PKG_CONFIG</span><span class="token operator">=</span><span class="token string">&quot;pkg-config&quot;</span>
+<span class="token assign-left variable">GOGCCFLAGS</span><span class="token operator">=</span><span class="token string">&quot;-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches&quot;</span>
+</code></pre>
 <p><br></p>
-<h3 id="initiator&#x306B;&#x3088;&#x308B;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;"><a name="initiator&#x306B;&#x3088;&#x308B;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;" class="plugin-anchor" href="#initiator&#x306B;&#x3088;&#x308B;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;"><i class="fa fa-link" aria-hidden="true"></i></a>Initiator&#x306B;&#x3088;&#x308B;&#x30B8;&#x30E7;&#x30D6;&#x306E;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;</h3>
-<p>Initiator&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30B8;&#x30E7;&#x30D6;&#x306F;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x306B;&#x5206;&#x89E3;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B8;&#x30E7;&#x30D6;&#x304B;&#x3089;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;.png" alt="&#x30B8;&#x30E7;&#x30D6;&#x304B;&#x3089;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x3078;&#x306E;&#x5206;&#x89E3;"></p>
+<h3 id="fmt"><a name="fmt" class="plugin-anchor" href="#fmt"><i class="fa fa-link" aria-hidden="true"></i></a>fmt</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30F3;&#x30C8;&#x3092;&#x6574;&#x5F62;&#x3059;&#x308B;&#xFF0E;&#x30D1;&#x30B9;&#x3068;&#x3057;&#x3066;&#x300E;<code>./...</code>&#x300F;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x518D;&#x5E30;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x306E;&#x304C;&#x304A;&#x3059;&#x3059;&#x3081;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token function">fmt</span> ./<span class="token punctuation">..</span>.
+</code></pre>
 <p><br></p>
-<h2 id="04-&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;"><a name="04-&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;" class="plugin-anchor" href="#04-&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;</h2>
-<h3 id="&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x3068;&#x306F;"><a name="&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x3068;&#x306F;</h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x304B;&#x3089;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x751F;&#x6210;.png" alt="&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x304B;&#x3089;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x751F;&#x6210;"></p>
-<p>&#x30BF;&#x30B9;&#x30AF;&#x3068;&#x306F;&#xFF0C;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x306B;&#x4F3C;&#x305F;&#x3088;&#x3046;&#x306A;&#xFF0C;&#x5358;&#x4E00;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x3053;&#x3068;&#xFF0E;Initiator&#x306B;&#x3088;&#x308B;&#x30B8;&#x30E7;&#x30D6;&#x30B9;&#x30C6;&#x30C3;&#x30D7;&#x304B;&#x3089;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x7BA1;&#x7406;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#x3068;&#x5B9F;&#x884C;&#x53EF;&#x80FD;&#x72B6;&#x614B;&#x306B;&#x306A;&#x308B;&#xFF0E;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x30E3;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9F;&#x884C;&#x53EF;&#x80FD;&#x72B6;&#x614B;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x306B;&#x306A;&#x308B;&#xFF0E;</p>
+<h3 id="vet"><a name="vet" class="plugin-anchor" href="#vet"><i class="fa fa-link" aria-hidden="true"></i></a>vet</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x9759;&#x7684;&#x89E3;&#x6790;&#x3092;&#x884C;&#x3046;&#xFF0E;&#x30D1;&#x30B9;&#x3068;&#x3057;&#x3066;&#x300E;<code>./...</code>&#x300F;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#xFF0C;&#x518D;&#x5E30;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x306E;&#x304C;&#x304A;&#x3059;&#x3059;&#x3081;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go vet ./<span class="token punctuation">..</span>.
+</code></pre>
 <p><br></p>
-<h3 id="&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;"><a name="&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;" class="plugin-anchor" href="#&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;</h3>
-<p>&#x5404;&#x30BF;&#x30B9;&#x30AF;&#x306B;&#x512A;&#x5148;&#x5EA6;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#xFF0C;&#x512A;&#x5148;&#x5EA6;&#x306E;&#x9AD8;&#x3044;&#x30BF;&#x30B9;&#x30AF;&#x304B;&#x3089;&#x9806;&#x306B;&#xFF0C;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x3057;&#x3066;&#x3044;&#x304F;&#x65B9;&#x5F0F;&#xFF0E;</p>
-<p><br></p>
-<h3 id="&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;"><a name="&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;" class="plugin-anchor" href="#&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;</h3>
-<p>&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;&#x30BF;&#x30B9;&#x30AF;&#x304B;&#x3089;&#x9806;&#x306B;&#xFF0C;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x3057;&#x3066;&#x3044;&#x304F;&#x65B9;&#x5F0F;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;_1.png" alt="&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;_1"></p>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4EE5;&#x4E0B;&#x306E;&#x69D8;&#x306B;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;&#x304C;CPU&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x3066;&#x3044;&#x304F;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;_2.png" alt="&#x5230;&#x7740;&#x9806;&#x65B9;&#x5F0F;_2"></p>
-<p><br></p>
-<h3 id="round-robin-&#x65B9;&#x5F0F;"><a name="round-robin-&#x65B9;&#x5F0F;" class="plugin-anchor" href="#round-robin-&#x65B9;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>Round robin &#x65B9;&#x5F0F;</h3>
-<p>Round robin&#x306F;&#xFF0C;&#x300E;&#x7DCF;&#x5F53;&#x305F;&#x308A;&#x300F;&#x306E;&#x610F;&#x5473;&#xFF0E;&#x4E00;&#x5B9A;&#x6642;&#x9593;&#xFF08;&#x30BF;&#x30A4;&#x30E0;&#x30AF;&#x30A6;&#x30A9;&#x30F3;&#x30BF;&#x30E0;&#xFF09;&#x3054;&#x3068;&#x306B;&#xFF0C;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x306B;&#x3042;&#x308B;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x5F37;&#x5236;&#x7684;&#x306B;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x767B;&#x9332;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x4EA4;&#x4EE3;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#xFF0C;&#x4ED6;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x304C;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x30ED;&#x30D3;&#x30F3;&#x65B9;&#x5F0F;.png" alt="&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x30ED;&#x30D3;&#x30F3;&#x65B9;&#x5F0F;"></p>
-<p><strong>&#xFF0A;&#x5177;&#x4F53;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x5230;&#x7740;&#x6642;&#x523B;&#x3068;&#x51E6;&#x7406;&#x6642;&#x9593;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x3068;&#x304A;&#x308A;&#x3067;&#x3042;&#x308B;&#xFF0E;&#x5F37;&#x5236;&#x7684;&#x306A;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x306F;&#xFF0C;&#x300E;20&#x79D2;&#x300F;&#x3054;&#x3068;&#x306B;&#x8D77;&#x3053;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;_1.png" alt="&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;_1"></p>
-<ol>
-<li>&#x30BF;&#x30B9;&#x30AF;A&#x304C;0&#x79D2;&#x306B;&#x5F85;&#x3061;&#x884C;&#x5217;&#x3078;&#x767B;&#x9332;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
-<li>20&#x79D2;&#x9593;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;A&#x306F;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x3078;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</li>
-<li>20&#x79D2;&#x6642;&#x70B9;&#x3067;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;A&#x306F;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x304B;&#x3089;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x540C;&#x6642;&#x306B;&#xFF0C;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306E;&#x5148;&#x982D;&#x306B;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;B&#x306F;&#xFF0C;&#x5B9F;&#x884C;&#x53EF;&#x80FD;&#x72B6;&#x614B;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x306B;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
-<li>40&#x79D2;&#x6642;&#x70B9;&#x3067;&#xFF0C;&#x30BF;&#x30B9;&#x30AF;C&#x306F;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x304B;&#x3089;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306B;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x540C;&#x6642;&#x306B;&#xFF0C;&#x5F85;&#x3061;&#x884C;&#x5217;&#x306E;&#x5148;&#x982D;&#x306B;&#x3044;&#x308B;&#x30BF;&#x30B9;&#x30AF;A&#x306F;&#xFF0C;&#x5B9F;&#x884C;&#x53EF;&#x80FD;&#x72B6;&#x614B;&#x304B;&#x3089;&#x5B9F;&#x884C;&#x72B6;&#x614B;&#x306B;&#x30C7;&#x30A3;&#x30B9;&#x30D1;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x308B;&#xFF0E;</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;_2.png" alt="&#x512A;&#x5148;&#x9806;&#x65B9;&#x5F0F;_2"></p>
-<p><br></p>
-<h2 id="05-&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;"><a name="05-&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;" class="plugin-anchor" href="#05-&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>05. &#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;</h2>
-<h3 id="&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;&#x3068;&#x306F;"><a name="&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5165;&#x51FA;&#x529B;&#x7BA1;&#x7406;&#x3068;&#x306F;</h3>
-<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304B;&#x3089;&#x4F4E;&#x901F;&#x306A;&#x5468;&#x8FBA;&#x6A5F;&#x5668;&#x3078;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x6642;&#xFF0C;&#x307E;&#x305A;&#xFF0C;CPU&#x306F;&#x30B9;&#x30D7;&#x30FC;&#x30E9;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;Spooler&#x306F;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x307E;&#x3068;&#x3081;&#x3066;&#x51FA;&#x529B;&#x3059;&#x308B;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#xFF0C;&#x4E00;&#x6642;&#x7684;&#x306B;&#x88DC;&#x52A9;&#x8A18;&#x61B6;&#x88C5;&#x7F6E;&#xFF08;Spool&#xFF09;&#x306B;&#x305F;&#x3081;&#x3066;&#x304A;&#x304D;&#x306A;&#x304C;&#x3089;&#xFF0C;&#x5C11;&#x3057;&#x305A;&#x3064;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF08;Spooling&#xFF09;&#xFF0E;</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30B9;&#x30D7;&#x30FC;&#x30EA;&#x30F3;&#x30B0;.jpg" alt="&#x30B9;&#x30D7;&#x30FC;&#x30EA;&#x30F3;&#x30B0;"></p>
+<h3 id="test"><a name="test" class="plugin-anchor" href="#test"><i class="fa fa-link" aria-hidden="true"></i></a>test</h3>
+<h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306E;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x300E;<code>Test</code>&#x300F;&#x304B;&#x3089;&#x59CB;&#x307E;&#x308B;&#x30C6;&#x30B9;&#x30C8;&#x95A2;&#x6570;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;test&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x306E;&#x304C;&#x304A;&#x3059;&#x3059;&#x3081;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token builtin class-name">test</span> ./<span class="token punctuation">..</span>.
+</code></pre>
+<h4 id="&#x30FB;-v"><a name="&#x30FB;-v" class="plugin-anchor" href="#&#x30FB;-v"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-v</h4>
+<p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#x30C6;&#x30B9;&#x30C8;&#x306E;&#x5B9F;&#x884C;&#x6642;&#x9593;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#xFF0E;</p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token builtin class-name">test</span> -v ./<span class="token punctuation">..</span>.
+</code></pre>
+<h4 id="&#x30FB;-cover"><a name="&#x30FB;-cover" class="plugin-anchor" href="#&#x30FB;-cover"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-cover</h4>
+<p>&#x30C6;&#x30B9;&#x30C8;&#x6642;&#x306B;&#xFF0C;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x3042;&#x308B;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x5185;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x547D;&#x4EE4;&#x7DB2;&#x7F85;&#x306E;&#x7DB2;&#x7F85;&#x7387;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#xFF0E;&#x53CD;&#x5BFE;&#x306B;&#xFF0C;<code>xxxxx_test.go</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#xFF0C;&#x305D;&#x306E;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x7DB2;&#x7F85;&#x7387;&#x306F;&#x89E3;&#x6790;&#x3057;&#x306A;&#x3044;&#xFF0E;&#x7DB2;&#x7F85;&#x6761;&#x4EF6;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html</a></p>
+<pre class="language-"><code class="lang-shell">$ go <span class="token builtin class-name">test</span> -cover ./<span class="token punctuation">..</span>.
+</code></pre>
 
                                 
                                 </section>
@@ -2414,7 +2432,7 @@ Enforcing
 
             
                 
-                <a href="software_basic_utility.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎ユーティリティ">
+                <a href="software_application_backend_go.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 Goとは">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2426,7 +2444,7 @@ Enforcing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎カーネル","level":"1.4.2.2","depth":3,"next":{"title":"言語プロセッサ","level":"1.4.2.3","depth":3,"ref":"","articles":[{"title":"📖 ︎言語プロセッサ","level":"1.4.2.3.1","depth":4,"path":"public/software/software_basic_language_processor.md","ref":"public/software/software_basic_language_processor.md","articles":[]},{"title":"📖 ︎言語別の処理方式","level":"1.4.2.3.2","depth":4,"path":"public/software/software_basic_language_processor_process_mode.md","ref":"public/software/software_basic_language_processor_process_mode.md","articles":[]},{"title":"📖 ︎機械語と進数","level":"1.4.2.3.3","depth":4,"path":"public/software/software_basic_language_processor_machine_language_and_radix.md","ref":"public/software/software_basic_language_processor_machine_language_and_radix.md","articles":[]}]},"previous":{"title":"📖 ︎ユーティリティ","level":"1.4.2.1","depth":3,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_kernel.md","mtime":"2021-10-03T07:55:15.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-16T08:23:28.650Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 Goコマンドと設定","level":"1.4.4.3.2.2","depth":5,"next":{"title":"ロジック","level":"1.4.4.3.2.3","depth":5,"ref":"","articles":[{"title":"📖 文法","level":"1.4.4.3.2.3.1","depth":6,"path":"public/software/software_application_backend_go_logic.md","ref":"public/software/software_application_backend_go_logic.md","articles":[]}]},"previous":{"title":"📖 Goとは","level":"1.4.4.3.2.1","depth":5,"path":"public/software/software_application_backend_go.md","ref":"public/software/software_application_backend_go.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"僕のドキュメントサイト【GitBook版】","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_backend_go_command_and_configuration.md","mtime":"2021-10-16T05:52:17.909Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-16T08:23:28.650Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
