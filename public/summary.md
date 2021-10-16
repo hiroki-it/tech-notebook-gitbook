@@ -61,7 +61,7 @@
             * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go.html)
             * [📖 Goコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_command_and_configuration.html)
             * ロジック
-                * [📖 メソッド，データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_logic.html)
+                * [📖 メソッド，データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_logic_method_data.html)
             * パッケージ／フレームワーク
                 * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_package.html)
                 * [📖 Gin](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_framework_gin.html)

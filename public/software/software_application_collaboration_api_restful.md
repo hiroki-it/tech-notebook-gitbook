@@ -736,7 +736,7 @@ GET https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
     "〇〇は必ず入力してください．",
     "□□は必ず入力してください．"
   ]
-  "url" : "https://*****"
+  "url" : "https://example-api-doc.co.jp"
 }
 ```
 
@@ -857,24 +857,24 @@ session.save_path = "/tmp"
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
-```ini
+```bash
 # /etc/php.ini
 
-### Redis形式
+## Redis形式
 session.save_handler = redis
-### Amazon RedisのOrigin
-session.save_path = "tcp://*****-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
+## Amazon RedisのOrigin
+session.save_path = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
 なお，PHP-FPMを使用している場合は，```/etc/php-fpm.d/www.conf```ファイルにて，セッションファイルの保存先を指定する必要がある．
 
-```ini
+```bash
 # /etc/php-fpm.d/www.conf
 
-### Redis形式
+## Redis形式
 php_value[session.save_handler] = redis
-### Amazon RedisのOrigin
-php_value[session.save_path] = "tcp://*****-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
+## Amazon RedisのOrigin
+php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
 #### ・セッションの有効期限と初期化確率

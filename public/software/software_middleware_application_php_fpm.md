@@ -89,8 +89,10 @@ pm.max_spare_servers = 35
 
 # システムログファイルの場所
 slowlog = /var/log/php-fpm/www-slow.log
+
 # エラーログファイルの場所
-php_admin_value[error_log] = /var/log/php-fpm/www-error.log
+# 開発環境では，エラーログファイル（/var/log/php-fpm/www-error.log）に出力
+php_admin_value[error_log] = /dev/stderr
 
 php_admin_flag[log_errors] = on
 
@@ -98,9 +100,9 @@ php_admin_flag[log_errors] = on
 php_value[session.save_handler] = redis
 
 # セッションの保存場所（デフォルト値は，/var/lib/php/session）
-php_value[session.save_path]    = "tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.amazonaws.com:6379"
+php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 
-php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
+php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 ```
 
 #### ・Dockerで使用する場合
