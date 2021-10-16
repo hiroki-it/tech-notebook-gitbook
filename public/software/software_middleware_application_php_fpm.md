@@ -44,23 +44,29 @@ PHPのために実装されたFastCGIのこと．WebサーバとPHPファイル�
 
 ### ```/etc/php-fpm.d/www.conf```ファイル
 
-PHP-FPMの設定を定義する．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．
+#### ・```/etc/php-fpm.d/www.conf```ファイルとは
+
+PHP-FPMの設定を定義する．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからリクエストを受信する場合，```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザ名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザ名の標準値である．
+
+参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
 **＊実装例＊**
 
-```ini
+```bash
 [www]
 
 # プロセスのユーザ名，グループ名
-user = nginx
-group = nginx
+user = www-data
+group = www-data
 
-# Unixソケットのパス
-listen = /run/php-fpm/www.sock
+# UNIXドメインソケットを使用するために，sockファイルを指定
+listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
 
-# PHP-FPMと組み合わせるミドルウェアを指定（apacheと組み合わせることも可能）
-listen.owner = nginx
-listen.group = nginx
+# UNIXドメインソケットを使用するために，プロセスのユーザ名を変更
+listen.owner = www-data
+listen.group = www-data
+
+listen.mode = 0660
 
 # コメントアウト推奨 
 ;listen.acl_users = apache,nginx
@@ -68,40 +74,43 @@ listen.group = nginx
 # TCPソケットのIPアドレス
 listen.allowed_clients = 127.0.0.1
 
+# アクセスログを標準出力に出力する．
+access.log = /dev/stdout
+
 pm = dynamic
+
 pm.max_children = 50
+
 pm.start_servers = 5
+
 pm.min_spare_servers = 5
+
 pm.max_spare_servers = 35
 
-# ログファイルの場所
+# システムログファイルの場所
 slowlog = /var/log/php-fpm/www-slow.log
+# エラーログファイルの場所
 php_admin_value[error_log] = /var/log/php-fpm/www-error.log
+
 php_admin_flag[log_errors] = on
 
 # セッションの保存方法．ここではredisのキーとして保存（デフォルト値はfiles）
 php_value[session.save_handler] = redis
+
 # セッションの保存場所（デフォルト値は，/var/lib/php/session）
 php_value[session.save_path]    = "tcp://xxxxx.r9ecnn.ng.0001.apne1.cache.amazonaws.com:6379"
 
-# 
 php_value[soap.wsdl_cache_dir]  = /var/lib/php/wsdlcache
 ```
 
-<br>
+#### ・Dockerで使用する場合
 
-### ```/etc/php-fpm.d/zzz-www.conf```ファイル
+PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホスト側では```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
 
-参考：https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
+参考：https://kengotakimoto.com/docker-laravel/#toc8
 
-```bash
-# 元々の値をコメントアウトで示す
-listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
-listen.owner = foo # www
-listen.group = foo # www
-listen.mode = 0666
-
-access.log = /dev/stdout
+```dockerfile
+COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
 <br>

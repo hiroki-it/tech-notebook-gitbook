@@ -12,7 +12,7 @@
 
 ### -ini
 
-PHPの主要な設定が定義される```php.ini```ファイルのあるディレクトリを表示する．
+Configuration Fileの項目で，```php.ini```ファイルのあるディレクトリを表示する．
 
 **＊コマンド例＊**
 
@@ -77,32 +77,55 @@ zend.exception_ignore_args => Off => Off
 
 ### ```php.ini```ファイル
 
-#### ・開発環境用
+#### ・```php.ini```ファイルとは
+
+PHPの設定を行う．
+
+参考：https://www.php.net/manual/ja/configuration.file.php
+
+#### ・開発環境用```php.ini```ファイル
 
 あらかじめ用意されている```php.ini-development```ファイルを参考に設定する．元々の値をコメントアウトで示す．
 
 参考：https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
 
 ```bash
-zend.exception_ignore_args = off # on # 開発環境では，スタックトレースを表示
+# 開発環境では，スタックトレースを表示
+zend.exception_ignore_args = off # on
+
 expose_php = on
+
 max_execution_time = 30
+
 max_input_vars = 1000
+
 upload_max_filesize = 64M # 2M
+
 post_max_size = 128M # 8M
+
 memory_limit = 256M # 128M
-error_reporting = E_ALL # NULL # 開発環境では，全てのログレベルを出力
+
+# 開発環境では，全てのログレベルを出力
+error_reporting = E_ALL # NULL
+
 display_errors = on
+
 display_startup_errors = on
-log_errors = on # 0(off) # 開発環境では，ログをerror_log値の場所に出力
-error_log = /var/log/php/php-error.log # NULL # 開発環境では，エラーログをファイルに出力
+
+# 開発環境では，ログをerror_log値の場所に出力
+log_errors = on # 0(off)
+
+# 開発環境では，エラーログをファイルに出力
+error_log = /var/log/php/php-error.log # NULL
+
 default_charset = UTF-8
 
 [Date]
 date.timezone = Asia/Tokyo # GMT
 
 [mysqlnd]
-mysqlnd.collect_memory_statistics = on # off # 開発環境では，メモリのメトリクスを収集
+# 開発環境では，メモリのメトリクスを収集
+mysqlnd.collect_memory_statistics = on # off
 
 [Assertion]
 zend.assertions = 1
@@ -111,7 +134,7 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
-#### ・本番環境用
+#### ・本番環境用```php.ini```ファイル
 
 あらかじめ用意されている```php.ini-production```ファイルを参考に設定する．元々の値をコメントアウトで示す．
 
@@ -119,17 +142,34 @@ mbstring.language = Japanese
 
 ```bash
 zend.exception_ignore_args = on
-expose_php = off # on # 本番環境では，X-Powered-ByヘッダーのPHPバージョンを非表示
+
+# 本番環境では，X-Powered-ByヘッダーのPHPバージョンを非表示
+expose_php = off # on
+
 max_execution_time = 30
+
 max_input_vars = 1000
+
 upload_max_filesize = 64M
+
 post_max_size = 128M
+
 memory_limit = 256M
-error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT # NULL # 本番環境では，特定のログレベルを出力
-display_errors = off # on # 本番環境では，エラーを画面に非表示
+
+# 本番環境では，特定のログレベルを出力
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT # NULL
+
+# 本番環境では，エラーを画面に非表示
+display_errors = off # on
+
 display_startup_errors = off
-log_errors = on # 0(off) # 本番環境では，ログをerror_log値の場所に出力
-error_log = /dev/stderr # NULL # 本番環境では，ログを標準エラー出力に出力
+
+# 本番環境では，エラーログをerror_log値の場所に出力
+log_errors = on # 0(off)
+
+ # 本番環境では，エラーログを標準エラー出力に出力
+error_log = /dev/stderr # NULL
+
 default_charset = UTF-8
 
 [Date]
@@ -144,7 +184,8 @@ zend.assertions = -1
 [mbstring]
 mbstring.language = Japanese
 
-[opcache] # 本番環境では，Opcache機能を有効化
+# 本番環境では，Opcache機能を有効化
+[opcache]
 opcache.enable = 1
 opcache.memory_consumption = 128
 opcache.interned_strings_buffer = 8
