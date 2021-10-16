@@ -1922,7 +1922,7 @@ aws ecs execute-command \
 
 #### ・awslogsドライバー
 
-標準出力／標準エラー出力に出力された文字をCloudWatch-APIに送信する．
+標準出力／標準エラー出力に出力されたログをCloudWatch-APIに送信する．
 
 参考：
 

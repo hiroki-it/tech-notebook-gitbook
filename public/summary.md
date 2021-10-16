@@ -33,6 +33,7 @@
         * [📖 ︎認証／認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html)
     * バックエンド
         * PHP
+            * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_command_and_configuration.html)
             * クラスベースオブジェクト指向
                 * [📖 ︎オブジェクト指向分析／設計／プログラミング](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_analysis_design_programming.html)
                 * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html)
@@ -55,11 +56,12 @@
                 * [📖 ︎コードベースのテスト](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_testing_based_on_code.html)
                 * [📖 ︎テスト仕様書ベースのテスト](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_testing_based_on_test_specification.html)
             * デバッグ
-               * [📖 ︎デバッグのコツ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_debug.html)
+               * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_debug.html)
         * Go
             * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go.html)
+            * [📖 Goコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_command_and_configuration.html)
             * ロジック
-                * [📖 文法](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_logic.html)
+                * [📖 メソッド，データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_logic.html)
             * パッケージ／フレームワーク
                 * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_package.html)
                 * [📖 Gin](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_framework_gin.html)
@@ -76,7 +78,7 @@
                 * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_framework_vuejs.html)
                 * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_framework_nuxtjs.html)
             * デバッグ
-                * [📖 ︎デバッグのコツ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_debug.html)
+                * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_debug.html)
             * ブラウザ
                 * [📖 ︎ブラウザレンダリング](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_browser_rendering.html)
 

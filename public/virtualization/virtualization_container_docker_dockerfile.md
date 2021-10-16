@@ -64,7 +64,7 @@ EXPOSE 80
 | -------------------- | ------------------------------------------------------------ |
 | **```FROM```**       | ベースのイメージを，コンテナにインストール.            |
 | **```RUN```**        | ベースイメージ上に，ソフトウェアをインストール.              |
-| **```COPY```**       | ・ホストOSのファイルをイメージレイヤー化し，コンテナの指定ディレクトリにコピー.<br>・イメージのビルド時にコピーされるだけで，ビルド後のコードの変更は反映されない．<br>・nginx.confファイル，php.iniファイル，などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う． |
+| **```COPY```**       | ・ホストOSのファイルをイメージレイヤー化し，コンテナの指定ディレクトリにコピー.<br>・イメージのビルド時にコピーされるだけで，ビルド後のコードの変更は反映されない．<br>・```nginx.conf```ファイル，```php.ini```ファイル，などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う． |
 | **```CMD```**        | イメージのプロセスの起動コマンドを実行．```run```コマンドの引数として，上書きできる． |
 | **```VOLUME```**     | Volumeマウントを行う．```COPY```とは異なり，ビルド後のコードの変更が反映される．Docker Composeで記述した方が良い． |
 | **```EXPOSE```**     | コンテナのポートを開放する．また，イメージの利用者にとってのドキュメンテーション機能もあり，ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある．<br>参考：<br>・https://docs.docker.com/engine/reference/builder/#expose<br>・https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/<br><br>また加えて，プロセス自体が命令をリッスンできるようにポートを設定する必要がある．ただし，多くの場合標準でこれが設定されている．（例：PHP-FPMでは，```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには，```listen = 127.0.0.1:9000```の設定がある） |
@@ -647,7 +647,7 @@ volumes:
 
 ## 07. ロギング
 
-### Dockerコンテナの標準出力と標準エラー出力
+### Dockerコンテナの標準出力／標準エラー出力
 
 Linuxでは，標準出力は『```/proc/<プロセスID>/fd/1```』，標準エラー出力は『```/proc/<プロセスID>/fd/2```』である．Dockerコンテナでは，『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク，また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている．
 
@@ -697,7 +697,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ・json-file
 
-標準出力と標準エラー出力に出力されたログを，```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する．標準の設定値である．
+標準出力／標準エラー出力に出力されたログを，```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する．標準の設定値である．
 
 ```bash
 {
@@ -729,11 +729,11 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ・none
 
-標準出力と標準エラー出力に出力されたログを，ファイルやAPIに転送しない． ファイルに出力しないことで，開発環境のアプリケーションサイズの肥大化を防ぐ．
+標準出力／標準エラー出力に出力されたログを，ファイルやAPIに転送しない． ファイルに出力しないことで，開発環境のアプリケーションサイズの肥大化を防ぐ．
 
 #### ・awslogs
 
-標準出力と標準エラー出力に出力されたログを，CloudWatchログのAPIに転送する．
+標準出力／標準エラー出力に出力されたログをCloudWatch-APIに送信する．
 
 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
@@ -748,7 +748,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ・gcplogs
 
-標準出力と標準エラー出力に出力されたログを，Google Cloud LoggingのAPIに転送する．
+標準出力／標準エラー出力に出力されたログを，Google Cloud LoggingのAPIに転送する．
 
 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
