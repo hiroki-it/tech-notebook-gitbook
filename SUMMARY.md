@@ -61,7 +61,7 @@
           * [📖 ︎コードベースのテスト](public/software/software_application_backend_php_testing_based_on_code.md)
           * [📖 ︎テスト仕様書ベースのテスト](public/software/software_application_backend_php_testing_based_on_test_specification.md)
         * デバッグ
-        * [📖 ︎デバッグ](public/software/software_application_backend_php_debug.md)
+          * [📖 ︎デバッグ](public/software/software_application_backend_php_debug.md)
       * Go
         * [📖 Goとは](public/software/software_application_backend_go.md)
         * [📖 Goコマンドと設定](public/software/software_application_backend_go_command_and_configuration.md)
