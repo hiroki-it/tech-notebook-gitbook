@@ -167,11 +167,13 @@
 
 ### 分散トレースの読み方
 
-![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
-
 上から下に読むと，上流サービス（上位スパン）が下流サービス（下位スパン）を処理をコールしていることを確認できる．下から上に読むと，下流サービス（下位スパン）から上流サービス（上位スパン）に結果を返却していることを確認できる．
 
 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
+
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
+
+<br>
 
 ### スパン
 

@@ -117,7 +117,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 API Gatewayのステージ名を参照するためには，resourceを使用する必要があり，dataではこれを取得することができない．もしステージをコンソール画面上から構築している場合，ステージのARNを参照することができないため，ARNを自力で作る必要がある．API Gatewayの各ARNについては，以下を参考にせよ．
 
-https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
