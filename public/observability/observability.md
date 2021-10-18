@@ -298,12 +298,6 @@ AWSではサービスレベルの項目として，サーバ稼働率を採用�
 
 ## 04. 監視
 
-### 発表スライド
-
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/9ef17a127836454eba769084baddf60f" title="SREに入門しよう" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;"></iframe>
-
-<bt>
-
 ### 監視とは
 
 既知のメトリクスとログに基づいて，システムにおける想定内の不具合の発生を未然に防ぐこと．
@@ -384,4 +378,3 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 <br>
 
 ### セキュリティ監視
-

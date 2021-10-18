@@ -1050,7 +1050,7 @@ CloudWatchメトリクス上では，以下のように確認できる．
 
 **＊例＊**
 
-OR条件で大文字小文字を考慮し，『XXXXX:』を検出
+OR条件で大文字小文字を考慮し，『```<ログレベル>:```』が含まれるログを検出する．ここでコロンを含まているのは，ログに含まれるファイル名やメソッド名が誤って検知されないようするためである．
 
 ```bash
 ?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
@@ -1058,11 +1058,23 @@ OR条件で大文字小文字を考慮し，『XXXXX:』を検出
 
 **＊例＊**
 
-OR条件で大文字小文字を考慮し，『XXXXX message』を検出
+OR条件で大文字小文字を考慮し，『```<ログレベル> message```』が含まれるログを検出する．
 
 ```bash
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
 ```
+
+**＊例＊**
+
+『```error:```』が含まれ，かつ『```Foo```』が含まれないログを検知する．OR条件と除外条件を組み合わせようとすると，OR条件が認識されずに除外条件だけが適用されてしまう．そのため，ここではOR条件を使用していない．
+
+参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
+
+```
+"error:" -Foo
+```
+
+
 
 <br>
 
@@ -3035,12 +3047,23 @@ IAMグループに対して，IAMロールを紐づける．そのIAMグルー�
 }
 ```
 
+ポリシーのDenyステートメントによってアクセスが拒否された場合，エラーメッセージの最後に『```with an explicit deny```』という文言がつく．
+
+**＊例＊**
+
+```
+Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザ名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
+
+```
+
 #### ・ユーザ名を変更
 
 ユーザ名は，コンソール画面から変更できず，コマンドで変更する必要がある．
 
 ```bash
-$ aws iam update-user --user-name <現行のユーザ名> --new-user-name <新しいユーザ名>
+$ aws iam update-user \
+  --user-name <現行のユーザ名> \
+  --new-user-name <新しいユーザ名>
 ```
 
 <br>
