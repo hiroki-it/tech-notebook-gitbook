@@ -55,6 +55,8 @@
 
 パイプライン全体の設定やファイルの読み込みを定義する．各設定の頭文字は大文字とする．
 
+**＊実装例＊**
+
 ```bash
 [SERVICE]
     Flush 1
@@ -82,11 +84,39 @@
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
+#### ・dummyプラグイン
+
+ダミーの構造化ログをパイプラインに入力する．
+
+参考：https://docs.fluentbit.io/manual/pipeline/inputs/dummy
+
+```json
+{
+    "message": "dummy"
+}
+```
+
+**＊実装例＊**
+
+```bash
+[INPUT]
+    Name   dummy
+    Tag    dummy.log
+```
+
+**＊コマンド例＊**
+
+```bash
+fluent-bit/bin/fluent-bit -i dummy -o stdout
+```
+
 #### ・forwardプラグイン
 
 受信したログを指定されたポートでリッスンし，パイプラインに入力する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/forward
+
+**＊実装例＊**
 
 ```bash
 [INPUT]
@@ -97,20 +127,76 @@
     Port        24224
 ```
 
+```bash
+fluentd       | Fluent Bit v1.8.6
+fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
+fluentd       | * Copyright (C) 2015-2018 Treasure Data
+fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+fluentd       | * https://fluentbit.io
+fluentd       | 
+fluentd       | [2021/01/01 12:00:00] [ info] [engine] started (pid=1)
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] in-memory
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+fluentd       | [2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
+fluentd       | [2021/01/01 12:00:00] [ info] [input:forward:forward.0] listening on 0.0.0.0:24224
+
+...
+```
+
+**＊コマンド例＊**
+
+```bash
+$ fluent-bit/bin/fluent-bit -i forward -o stdout
+```
+
 #### ・tailプラグイン
 
-指定したパスに継続的に出力されるログを順次結合し，パイプラインに入力する．FluentBitがサイドカーコンテナーで稼働している場合，アプリケーションコンテナのログのパスを指定する．```v1.8```を境にオプションが変わっていることに注意する．
+指定したパスに継続的に出力されるログファイルを順次結合し，パイプラインに入力する．あらかじめ，FluentBitコンテナ内にログファイルを配置する必要があり，```Path```でこれを指定する．```v1.8```を境にオプションが変わっていることに注意する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail
+
+**＊実装例＊**
+
+```yaml
+log_router:
+  container_name: fluentbit
+  build:
+    dockerfile: ./docker/fluentbit/Dockerfile
+    context: .
+    volumes:
+      - ./storage/logs:/var/www/foo/storage/logs # アプリケーションのログファイルのVolumeマウント
+```
 
 ```bash
 [INPUT]
     # プラグイン名
     Name              tail
-    # ログの場所．ワイルドカードを使用できる．
-    Path              /var/log/*.log
+    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
+    Path              /var/www/foo/storage/logs/*.log
     # 使用するパーサー名
     multiline.parser  laravel
+```
+
+```bash
+fluentd       | Fluent Bit v1.8.6
+fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
+fluentd       | * Copyright (C) 2015-2018 Treasure Data
+fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+fluentd       | * https://fluentbit.io
+fluentd       | 
+fluentd       | [2021/01/01 12:00:00] [ info] [engine] started (pid=1)
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] in-memory
+fluentd       | [2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+fluentd       | [2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
+fluentd       | [2021/01/01 12:00:00] [ info] [sp] stream processor started
+fluentd       | [2021/01/01 12:00:00] [ info] [input:tail:tail.0] inotify_fs_add(): inode=31621169 watch_fd=1 name=/var/www/foo/storage/logs/laravel.log
+fluentd       | [0] tail.0: [1634640932.010306200, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+fluentd       | [1] tail.0: [1634640932.013139300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+fluentd       | [2] tail.0: [1634640932.013147300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+
+...
 ```
 
 <br>
@@ -122,6 +208,10 @@
 #### ・MULTILINE_PARSERセクション
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing
+
+**＊実装例＊**
+
+Laravelのスタックトレースを結合する．
 
 ```bash
 [MULTILINE_PARSER]
@@ -453,6 +543,8 @@ aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには�
 -rw-r--r-- 1 root root  579 Sep 27 02:15 stream_processor.conf # 追加設定用
 ```
 
+#### ・ユーザ定義の設定ファイルなし
+
 FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以下の通りとなり，ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
@@ -485,9 +577,9 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以�
     Match firelens-healthcheck
 ```
 
-#### ・```fluent-bit_custom.conf```ファイル
+#### ・ユーザ定義の設定ファイあり
 
-FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，コンテナ定義の```config-file-value```キーで指定し，追加設定を実行する．これにより，FireLensコンテナにINCLUDE文が挿入される．
+ユーザ定義の設定ファイル（例：```/fluent-bit/etc/fluent-bit.conf```ファイル）をコンテナ定義の```config-file-value```キーで指定すると，FireLensコンテナのFireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルにINCLUDE文が挿入される．
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
@@ -514,7 +606,8 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，�
     Record ecs_task_arn arn:aws:ecs:ap-northeast-1:<アカウントID>:task/prd-foo-ecs-cluster/*****
     Record ecs_task_definition prd-foo-ecs-task-definition:1
     
-@INCLUDE /fluent-bit/etc/fluent-bit_custom.conf # INCLUDE文が挿入される．
+# INCLUDE文が挿入される．ユーザ定義の設定ファイルが読み込まれる．
+@INCLUDE /fluent-bit/etc/fluent-bit_custom.conf
 
 [OUTPUT]
     Name laravel
