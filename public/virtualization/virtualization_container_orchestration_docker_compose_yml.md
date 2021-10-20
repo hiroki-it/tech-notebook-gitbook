@@ -607,7 +607,40 @@ NETWORK ID       NAME        DRIVER     SCOPE
 
 <br>
 
-## 03. イメージ別Tips
+## 04. プラグイン
+
+### Volumeプラグイン
+
+#### ・NFSストレージ
+
+NFSプラグインを使用することで，永続化データを```/var/lib/docker/volumes```ではなく，NFSストレージに保存する．
+
+**＊実装例＊**
+
+以下にdocker-composeを使用した場合を示す．
+
+```yaml
+version: "3.7"
+
+services:
+  app:
+    build: # 省略
+    ports: # 省略
+    depends_on: # 省略
+    volumes:
+      - example:/data # 下方のオプションが適用される．
+      
+volumes:
+  example:
+    driver_opts: # NFSプラグインを使用し，NFSストレージに保存．
+      type: "nfs"
+      o: "addr=10.40.0.199,nolock,soft,rw"
+      device: ":/nfs/example"
+```
+
+<br>
+
+## 05. イメージ別Tips
 
 ### mysqlイメージ
 

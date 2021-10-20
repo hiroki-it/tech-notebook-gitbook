@@ -71,13 +71,58 @@ Available Options
     Flush 1
     # 猶予時間
     Grace 30
-    # 転送対象の最低ログレベル
+    # FluentBit自体のログレベル
     Log_Level info
     # 読み込まれるParsers Multilineファイルの名前
     Parsers_File parsers_multiline.conf
     # 読み込まれるStream Processorファイルの名前
     Streams_File stream_processor.conf
 ```
+
+#### ・FluentBitのログの確認
+
+Log_Level値でFluentBitのログレベルを制御できる．```debug```を割り当てると，FluentBitのログがより詳細になり，各セクションの設定値を確認できるようになる．
+
+**＊FluentBitのログ例＊**
+
+```bash
+Fluent Bit v1.8.6
+* Copyright (C) 2019-2021 The Fluent Bit Authors
+* Copyright (C) 2015-2018 Treasure Data
+* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+* https://fluentbit.io
+
+[2021/01/01 12:00:00] [ info] Configuration:
+[2021/01/01 12:00:00] [ info]  flush time     | 1.000000 seconds
+[2021/01/01 12:00:00] [ info]  grace          | 30 seconds
+[2021/01/01 12:00:00] [ info]  daemon         | 0
+[2021/01/01 12:00:00] [ info] ___________
+[2021/01/01 12:00:00] [ info]  inputs:
+[2021/01/01 12:00:00] [ info]      forward
+[2021/01/01 12:00:00] [ info] ___________
+[2021/01/01 12:00:00] [ info]  filters:
+[2021/01/01 12:00:00] [ info]      stdout.0
+[2021/01/01 12:00:00] [ info] ___________
+[2021/01/01 12:00:00] [ info]  outputs:
+[2021/01/01 12:00:00] [ info]      null.0
+[2021/01/01 12:00:00] [ info] ___________
+[2021/01/01 12:00:00] [ info]  collectors:
+[2021/01/01 12:00:00] [ info] [engine] started (pid=1)
+[2021/01/01 12:00:00] [debug] [engine] coroutine stack size: 24576 bytes (24.0K)
+[2021/01/01 12:00:00] [debug] [storage] [cio stream] new stream registered: forward.0
+[2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
+[2021/01/01 12:00:00] [ info] [storage] in-memory
+[2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+[2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
+[2021/01/01 12:00:00] [debug] [in_fw] Listen='0.0.0.0' TCP_Port=24224
+[2021/01/01 12:00:00] [ info] [input:forward:forward.0] listening on 0.0.0.0:24224
+[2021/01/01 12:00:00] [debug] [null:null.0] created event channels: read=21 write=22
+[2021/01/01 12:00:00] [debug] [router] match rule forward.0:null.0
+[2021/01/01 12:00:00] [ info] [sp] stream processor started
+
+```
+
+
 
 <br>
 
@@ -165,26 +210,25 @@ fluent-bit/bin/fluent-bit -i dummy -o stdout
     # プラグイン名
     Name        forward
     Listen      0.0.0.0
-    # プロセスのリッスンポート
-    Port        24224
+    # プロセスのリッスンポートs
 ```
 
-**＊標準出力例＊**
+**＊FluentBitのログ例＊**
 
 ```bash
-fluentd       | Fluent Bit v1.8.6
-fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
-fluentd       | * Copyright (C) 2015-2018 Treasure Data
-fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
-fluentd       | * https://fluentbit.io
-fluentd       | 
-fluentd       | [2021/01/01 12:00:00] [ info] [engine] started (pid=1)
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] in-memory
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
-fluentd       | [2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
-fluentd       | [2021/01/01 12:00:00] [ info] [input:forward:forward.0] listening on 0.0.0.0:24224
-fluentd       | [2021/01/01 12:00:00] [ info] [sp] stream processor started
+Fluent Bit v1.8.6
+* Copyright (C) 2019-2021 The Fluent Bit Authors
+* Copyright (C) 2015-2018 Treasure Data
+* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+* https://fluentbit.io
+
+[2021/01/01 12:00:00] [ info] [engine] started (pid=1)
+[2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
+[2021/01/01 12:00:00] [ info] [storage] in-memory
+[2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+[2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
+[2021/01/01 12:00:00] [ info] [input:forward:forward.0] listening on 0.0.0.0:24224
+[2021/01/01 12:00:00] [ info] [sp] stream processor started
 ```
 
 **＊コマンド例＊**
@@ -220,27 +264,28 @@ log_router:
     dockerfile: ./docker/fluentbit/Dockerfile
     context: .
   volumes:
-    - ./storage/logs:/var/www/foo/storage/logs # アプリケーションのログファイルのVolumeマウント
+    # アプリケーションのログファイルのVolumeマウント
+    - ./storage/logs:/var/www/foo/storage/logs
 ```
 
-**＊標準出力例＊**
+**＊FluentBitのログ例＊**
 
 ```bash
-fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
-fluentd       | * Copyright (C) 2015-2018 Treasure Data
-fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
-fluentd       | * https://fluentbit.io
-fluentd       | 
-fluentd       | [2021/01/01 12:00:00] [ info] [engine] started (pid=1)
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] in-memory
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
-fluentd       | [2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
-fluentd       | [2021/01/01 12:00:00] [ info] [sp] stream processor started
-fluentd       | [2021/01/01 12:00:00] [ info] [input:tail:tail.0] inotify_fs_add(): inode=31621169 watch_fd=1 name=/var/www/foo/storage/logs/laravel.log
-fluentd       | [0] tail.0: [1634640932.010306200, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
-fluentd       | [1] tail.0: [1634640932.013139300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
-fluentd       | [2] tail.0: [1634640932.013147300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+* Copyright (C) 2019-2021 The Fluent Bit Authors
+* Copyright (C) 2015-2018 Treasure Data
+* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
+* https://fluentbit.io
+
+[2021/01/01 12:00:00] [ info] [engine] started (pid=1)
+[2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
+[2021/01/01 12:00:00] [ info] [storage] in-memory
+[2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+[2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
+[2021/01/01 12:00:00] [ info] [sp] stream processor started
+[2021/01/01 12:00:00] [ info] [input:tail:tail.0] inotify_fs_add(): inode=31621169 watch_fd=1 name=/var/www/foo/storage/logs/laravel.log
+[0] tail.0: [1634640932.010306200, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+[1] tail.0: [1634640932.013139300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
+[2] tail.0: [1634640932.013147300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
 ```
 
 <br>
@@ -336,7 +381,7 @@ $ fluent-bit/bin/fluent-bit \
   -o null
 ```
 
-**＊標準出力例＊**
+**＊FluentBitのログ例＊**
 
 ```bash
 Fluent Bit v1.8.6
@@ -345,12 +390,12 @@ Fluent Bit v1.8.6
 * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
 * https://fluentbit.io
 
-[2021/10/20 06:18:52] [ info] [engine] started (pid=40)
-[2021/10/20 06:18:52] [ info] [storage] version=1.1.1, initializing...
-[2021/10/20 06:18:52] [ info] [storage] in-memory
-[2021/10/20 06:18:52] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
-[2021/10/20 06:18:52] [ info] [cmetrics] version=0.2.1
-[2021/10/20 06:18:52] [ info] [sp] stream processor started
+[2021/01/01 06:18:52] [ info] [engine] started (pid=40)
+[2021/01/01 06:18:52] [ info] [storage] version=1.1.1, initializing...
+[2021/01/01 06:18:52] [ info] [storage] in-memory
+[2021/01/01 06:18:52] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
+[2021/01/01 06:18:52] [ info] [cmetrics] version=0.2.1
+[2021/01/01 06:18:52] [ info] [sp] stream processor started
 [0] cpu.0: [1634710733.114477665, {"cpu_p"=>0.166667, "user_p"=>0.000000, "system_p"=>0.166667, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>1.000000, "cpu1.p_user"=>0.000000, "cpu1.p_system"=>1.000000, "cpu2.p_cpu"=>0.000000, "cpu2.p_user"=>0.000000, "cpu2.p_system"=>0.000000, "cpu3.p_cpu"=>0.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>0.000000, "cpu4.p_cpu"=>0.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>0.000000, "cpu5.p_cpu"=>0.000000, "cpu5.p_user"=>0.000000, "cpu5.p_system"=>0.000000}]
 [0] cpu.0: [1634710734.115201385, {"cpu_p"=>0.333333, "user_p"=>0.166667, "system_p"=>0.166667, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>0.000000, "cpu1.p_user"=>0.000000, "cpu1.p_system"=>0.000000, "cpu2.p_cpu"=>0.000000, "cpu2.p_user"=>0.000000, "cpu2.p_system"=>0.000000, "cpu3.p_cpu"=>0.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>0.000000, "cpu4.p_cpu"=>0.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>0.000000, "cpu5.p_cpu"=>0.000000, "cpu5.p_user"=>0.000000, "cpu5.p_system"=>0.000000}]
 [0] cpu.0: [1634710735.114646610, {"cpu_p"=>1.500000, "user_p"=>0.666667, "system_p"=>0.833333, "cpu0.p_cpu"=>0.000000, "cpu0.p_user"=>0.000000, "cpu0.p_system"=>0.000000, "cpu1.p_cpu"=>3.000000, "cpu1.p_user"=>2.000000, "cpu1.p_system"=>1.000000, "cpu2.p_cpu"=>2.000000, "cpu2.p_user"=>1.000000, "cpu2.p_system"=>1.000000, "cpu3.p_cpu"=>1.000000, "cpu3.p_user"=>0.000000, "cpu3.p_system"=>1.000000, "cpu4.p_cpu"=>1.000000, "cpu4.p_user"=>0.000000, "cpu4.p_system"=>1.000000, "cpu5.p_cpu"=>2.000000, "cpu5.p_user"=>1.000000, "cpu5.p_system"=>1.000000}]
