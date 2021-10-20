@@ -127,7 +127,7 @@
       * [📖 ︎コンテナオーケストレーション](public/virtualization/virtualization_container_orchestration.md)
       * Docker Compose
         * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
-        * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
+        * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
       * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
       * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
   * ︎仮想サーバ（仮想マシン）
