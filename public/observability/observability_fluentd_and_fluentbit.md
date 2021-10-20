@@ -127,23 +127,6 @@ fluent-bit/bin/fluent-bit -i dummy -o stdout
     Port        24224
 ```
 
-```bash
-fluentd       | Fluent Bit v1.8.6
-fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
-fluentd       | * Copyright (C) 2015-2018 Treasure Data
-fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
-fluentd       | * https://fluentbit.io
-fluentd       | 
-fluentd       | [2021/01/01 12:00:00] [ info] [engine] started (pid=1)
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] version=1.1.1, initializing...
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] in-memory
-fluentd       | [2021/01/01 12:00:00] [ info] [storage] normal synchronization mode, checksum disabled, max_chunks_up=128
-fluentd       | [2021/01/01 12:00:00] [ info] [cmetrics] version=0.2.1
-fluentd       | [2021/01/01 12:00:00] [ info] [input:forward:forward.0] listening on 0.0.0.0:24224
-
-...
-```
-
 **＊コマンド例＊**
 
 ```bash
@@ -158,6 +141,16 @@ $ fluent-bit/bin/fluent-bit -i forward -o stdout
 
 **＊実装例＊**
 
+```bash
+[INPUT]
+    # プラグイン名
+    Name              tail
+    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
+    Path              /var/www/foo/storage/logs/*.log
+    # 使用するパーサー名
+    multiline.parser  laravel-multiline-parser
+```
+
 ```yaml
 log_router:
   container_name: fluentbit
@@ -169,17 +162,6 @@ log_router:
 ```
 
 ```bash
-[INPUT]
-    # プラグイン名
-    Name              tail
-    # FluentBitコンテナ内のログファイルの場所．ワイルドカードを使用できる．
-    Path              /var/www/foo/storage/logs/*.log
-    # 使用するパーサー名
-    multiline.parser  laravel
-```
-
-```bash
-fluentd       | Fluent Bit v1.8.6
 fluentd       | * Copyright (C) 2019-2021 The Fluent Bit Authors
 fluentd       | * Copyright (C) 2015-2018 Treasure Data
 fluentd       | * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
@@ -195,8 +177,6 @@ fluentd       | [2021/01/01 12:00:00] [ info] [input:tail:tail.0] inotify_fs_add
 fluentd       | [0] tail.0: [1634640932.010306200, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
 fluentd       | [1] tail.0: [1634640932.013139300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
 fluentd       | [2] tail.0: [1634640932.013147300, {"log"=>"[2021-01-01 12:00:00] local.INFO: メッセージ"}]
-
-...
 ```
 
 <br>
@@ -543,8 +523,6 @@ aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには�
 -rw-r--r-- 1 root root  579 Sep 27 02:15 stream_processor.conf # 追加設定用
 ```
 
-#### ・ユーザ定義の設定ファイルなし
-
 FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以下の通りとなり，ローカルPCでFluentBitコンテナを起動した場合と異なる構成になっていることに注意する．
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
@@ -577,9 +555,9 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルは以�
     Match firelens-healthcheck
 ```
 
-#### ・ユーザ定義の設定ファイあり
+#### ・```fluent-bit_custom.conf```ファイル
 
-ユーザ定義の設定ファイル（例：```/fluent-bit/etc/fluent-bit.conf```ファイル）をコンテナ定義の```config-file-value```キーで指定すると，FireLensコンテナのFireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルにINCLUDE文が挿入される．
+FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを，コンテナ定義の```config-file-value```キーで指定し，追加設定を実行する．これにより，FireLensコンテナにINCLUDE文が挿入される．
 
 参考：https://dev.classmethod.jp/articles/check-fluent-bit-conf/
 
@@ -781,14 +759,4 @@ FireLensコンテナをサイドカーとして構築するために，コンテ
 | ```config-file-value```                       | ```options```キーにて，ログ転送時の設定が可能であるが，それらは```fluent-bit.conf```ファイルにも設定可能であるため，転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する．FireLensコンテナ自体のログは，CloudWatchログに送信するように設定し，メインコンテナから受信したログは監視ツール（Datadogなど）に転送する． |
 | ```enable-ecs-log-metadata```（標準で有効化） | 有効にした場合，Datadogのログコンソールで，例えば以下のようなタグが付けられる．<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合，以下のようなタグが付けられる．<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```，```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように，コンテナの環境変数に値を定義する． |
-
-
-
-<br>
-
-## 04. CloudWatchログ
-
-以下のノートを参考にせよ．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
 
