@@ -132,7 +132,7 @@
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html)
         * Docker Compose
           - [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
-          - [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
+          - [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
         * [📖 ︎Kubernetes](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * ︎仮想サーバ（仮想マシン）

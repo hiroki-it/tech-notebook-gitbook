@@ -731,10 +731,18 @@ $ unlink <シンボリックリンク名>
 
 #### ・オプション無し
 
-リクエストを送信する．```jq```コマンドを使用すると，レスポンスを整形できる．
+GETリクエストを送信する．```jq```コマンドを使用すると，レスポンスを整形できる．
 
 ```bash
-$ curl http://example.com/foo | jq . 
+$ curl http://example.co.jp/foos/1 | jq . 
+```
+
+#### ・-X，-T，-d
+
+Content-Typeを指定して，POSTリクエストを送信する．
+
+```bash
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.co.jp/foos
 ```
 
 #### ・-o（小文字）
@@ -742,7 +750,7 @@ $ curl http://example.com/foo | jq .
 インストール後のファイル名を定義する．これを指定しない場合，```-O```オプションを有効化する必要がある．
 
 ```bash
-$ curl -o <ファイル名> http://example.com/foo  
+$ curl -o <ファイル名> https://example.co.jp
 ```
 
 #### ・-O（大文字）
@@ -754,7 +762,7 @@ $ curl -o <ファイル名> http://example.com/foo
 指定したURLでリダイレクトが行われても，リダイレクト後のURLからファイルをインストールする．
 
 ```bash
-$ curl -L http://example.com/foo
+$ curl -L https://example.co.jp/foos
 ```
 
 <br>

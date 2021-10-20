@@ -101,13 +101,13 @@ CPUから命令が起こるとき，CPU，DRAM，ストレージ間には，読�
 
 ### キャッシュメモリへの書き込み方式の種類
 
-#### ・Write-throught 方式
+#### ・Write-throught方式
 
   CPUは，命令をメインメモリとキャッシュメモリの両方に書き込む．常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが，メモリへの書き込みが頻繁に行われるので遅い．
 
 ![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-through方式.jpg)
 
-#### ・Write-back 方式
+#### ・Write-back方式
 
   CPUは，キャッシュメモリのみに書き込む．次に，キャッシュメモリがメインメモリに書き込む．メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが，メインメモリへの書き込み回数が少ないため速い
 

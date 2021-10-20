@@ -119,7 +119,6 @@ Fluent Bit v1.8.6
 [2021/01/01 12:00:00] [debug] [null:null.0] created event channels: read=21 write=22
 [2021/01/01 12:00:00] [debug] [router] match rule forward.0:null.0
 [2021/01/01 12:00:00] [ info] [sp] stream processor started
-
 ```
 
 
@@ -404,11 +403,94 @@ Fluent Bit v1.8.6
 
 <br>
 
+### BUFFERセクションとは
+
+#### ・BUFFERセクションとは
+
+![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
+
+ログはチャンク化され，メモリ／ファイルにあるバッファー内のキューに蓄えられる．チャンクはキューから取り出され，セクションに渡される．Fluentdから概念図を拝借した．
+
+参考：
+
+- https://docs.fluentbit.io/manual/administration/buffering-and-storage
+- https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
+
+#### ・メモリ上でバッファリング
+
+参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+
+**＊実装例＊**
+
+```bash
+[SERVICE]
+    flush                     1
+    log_Level                 info
+
+[INPUT]
+    name          cpu
+    # メモリ上でバッファリングが実行される（標準値）．
+    storage.type  memory
+```
+
+#### ・ファイル上でバッファリング
+
+参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
+
+**＊実装例＊**
+
+```bash
+[SERVICE]
+    flush                     1
+    log_Level                 info
+    # ファイルの場所
+    storage.path              /var/log/fluentbit/
+
+[INPUT]
+    name          cpu
+    # ファイル上でバッファリングが実行される．
+    storage.type  filesystem
+```
+
+指定した場所に```cpu.0```ディレクトリが生成され，そこにあるflbファイル上でバッファリングが実行される．
+
+```bash
+$ ls -ls /var/log/fluentbit/cpu.0
+
+-rw------- 1 root root 4096 Oct 20 15:51 1-1634745095.575805200.flb
+```
+
+
+
+<br>
+
+### STREAM_TASKセクション
+
+#### ・STREAM_TASKセクションとは
+
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
+
+チャンク化されたログにタグ付けを行う．タグ付けされたログは，INPUTセクションに再度取り込まれ，最終的にOUTPUTセクションまで渡される．
+
+参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+
+STREAM_TASKセッションは，ログSQLで定義される．
+
+参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql
+
+```bash
+[STREAM_TASK]
+    Name foo
+    Exec CREATE STREAM foo AS SELECT * FROM TAG:'foo';
+```
+
+<br>
+
 ### OUTPUT
 
 #### ・OUTPUTセクションとは
 
-ログの出力方法を定義する．設定可能な転送先の種類については，以下を参考にせよ．
+チャンクとして蓄えられたログの出力先を定義する．設定可能な出力先の種類については，以下を参考にせよ．
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -614,32 +696,6 @@ $ fluent-bit/bin/fluent-bit \
   -F stdout \
   -m '*' \
   -o null
-```
-
-<br>
-
-### BUFFERセクションとは
-
-#### ・BUFFERセクションとは
-
-参考：https://docs.fluentbit.io/manual/administration/buffering-and-storage
-
-#### ・STREAM_TASKセクションとは
-
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
-
-ログパイプラインにおいて，FILTERセクション後にログに対してクエリ処理を行い，ログにタグ付けを行う．タグ付けされたログは，INPUTセクションに再度取り込まれ，最終的にOUTPUTセクションまで渡される．
-
-参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
-
-STREAM_TASKセッションは，ログSQLで定義される．
-
-参考：https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql
-
-```bash
-[STREAM_TASK]
-    Name foo
-    Exec CREATE STREAM foo AS SELECT * FROM TAG:'foo';
 ```
 
 <br>
