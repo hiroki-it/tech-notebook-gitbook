@@ -121,11 +121,13 @@
   * [📖 ︎仮想化](public/virtualization/virtualization.md)
   * コンテナ
     * Docker
-      * [📖 ︎Dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
+      * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
       * [📖 ︎Dockerfile](public/virtualization/virtualization_container_docker_dockerfile.md)
     * コンテナオーケストレーション
       * [📖 ︎コンテナオーケストレーション](public/virtualization/virtualization_container_orchestration.md)
-      * [📖 ︎Docker Compose](public/virtualization/virtualization_container_orchestration_docker_compose.md)
+      * Docker Compose
+        * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
+        * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
       * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
       * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
   * ︎仮想サーバ（仮想マシン）
