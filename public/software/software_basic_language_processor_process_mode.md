@@ -43,7 +43,7 @@
 ```java
 import java.util.*;
 
-public class Age
+public class Main
 {
     // エントリポイントとなる関数
     public static void main(String[] args)

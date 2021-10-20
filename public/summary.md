@@ -132,7 +132,7 @@
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html)
         * Docker Compose
           - [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
-          - [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
+          - [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
         * [📖 ︎Kubernetes](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * ︎仮想サーバ（仮想マシン）
@@ -149,12 +149,14 @@
 
 ## 可観測性
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html)
-* [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html)
+* Fluentd／FluentBit
+    * [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html)
+    * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentbit.html)
 * Datadog
-     * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_metrics.html)
-     * [📖 ︎ログ収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_log.html)
-     * [📖 ︎分散トレース収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_distributed_trace.html)
-     * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_monitering.html)
+    * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_metrics.html)
+    * [📖 ︎ログ収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_log.html)
+    * [📖 ︎分散トレース収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_distributed_trace.html)
+    * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_monitering.html)
 
 <br>
 
