@@ -1817,7 +1817,7 @@
                 <a href="../virtualization/virtualization_container_docker_command.html">
             
                     
-                    📖 ︎Dockerコマンド
+                    📖 ︎dockerコマンド
             
                 </a>
             
@@ -1870,16 +1870,48 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2.2" data-path="../virtualization/virtualization_container_orchestration_docker_compose.html">
+        <li class="chapter " data-level="1.9.2.2.2" >
             
-                <a href="../virtualization/virtualization_container_orchestration_docker_compose.html">
+                <span>
             
                     
-                    📖 ︎Docker Compose
+                    Docker Compose
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.2.2.1" data-path="../virtualization/virtualization_container_orchestration_docker_compose_command.html">
+            
+                <a href="../virtualization/virtualization_container_orchestration_docker_compose_command.html">
+            
+                    
+                    📖 ︎docker-composeコマンド
             
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2.2.2" data-path="../virtualization/virtualization_container_orchestration_docker_compose_command.html">
+            
+                <a href="../virtualization/virtualization_container_orchestration_docker_compose_command.html">
+            
+                    
+                    📖 ︎docker-compose.yml
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -2407,21 +2439,6 @@
     <span class="token comment"># &#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</span>
     Port        <span class="token number">24224</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash">fluentd       <span class="token operator">|</span> Fluent Bit v1.8.6
-fluentd       <span class="token operator">|</span> * Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span>-2021 The Fluent Bit Authors
-fluentd       <span class="token operator">|</span> * Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2015</span>-2018 Treasure Data
-fluentd       <span class="token operator">|</span> * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
-fluentd       <span class="token operator">|</span> * https://fluentbit.io
-fluentd       <span class="token operator">|</span> 
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>engine<span class="token punctuation">]</span> started <span class="token punctuation">(</span>pid<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>storage<span class="token punctuation">]</span> <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token number">1.1</span>.1, initializing<span class="token punctuation">..</span>.
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>storage<span class="token punctuation">]</span> in-memory
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>storage<span class="token punctuation">]</span> normal synchronization mode, checksum disabled, <span class="token assign-left variable">max_chunks_up</span><span class="token operator">=</span><span class="token number">128</span>
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>cmetrics<span class="token punctuation">]</span> <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token number">0.2</span>.1
-fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2021</span>/01/01 <span class="token number">12</span>:00:00<span class="token punctuation">]</span> <span class="token punctuation">[</span> info<span class="token punctuation">]</span> <span class="token punctuation">[</span>input:forward:forward.0<span class="token punctuation">]</span> listening on <span class="token number">0.0</span>.0.0:24224
-
-<span class="token punctuation">..</span>.
-</code></pre>
 <p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ fluent-bit/bin/fluent-bit -i forward -o stdout
 </code></pre>
@@ -2429,6 +2446,14 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x306B;&#x7D99;&#x7D9A;&#x7684;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x9806;&#x6B21;&#x7D50;&#x5408;&#x3057;&#xFF0C;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x5165;&#x529B;&#x3059;&#x308B;&#xFF0E;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#xFF0C;FluentBit&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#xFF0C;<code>Path</code>&#x3067;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;<code>v1.8</code>&#x3092;&#x5883;&#x306B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5909;&#x308F;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.fluentbit.io/manual/pipeline/inputs/tail" target="_blank">https://docs.fluentbit.io/manual/pipeline/inputs/tail</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>INPUT<span class="token punctuation">]</span>
+    <span class="token comment"># &#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x540D;</span>
+    Name              <span class="token function">tail</span>
+    <span class="token comment"># FluentBit&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&#xFF0E;&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
+    Path              /var/www/foo/storage/logs/*.log
+    <span class="token comment"># &#x4F7F;&#x7528;&#x3059;&#x308B;&#x30D1;&#x30FC;&#x30B5;&#x30FC;&#x540D;</span>
+    multiline.parser  laravel-multiline-parser
+</code></pre>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">log_router</span><span class="token punctuation">:</span>
   <span class="token key atrule">container_name</span><span class="token punctuation">:</span> fluentbit
   <span class="token key atrule">build</span><span class="token punctuation">:</span>
@@ -2437,16 +2462,7 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
     <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> ./storage/logs<span class="token punctuation">:</span>/var/www/foo/storage/logs <span class="token comment"># &#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;Volume&#x30DE;&#x30A6;&#x30F3;&#x30C8;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>INPUT<span class="token punctuation">]</span>
-    <span class="token comment"># &#x30D7;&#x30E9;&#x30B0;&#x30A4;&#x30F3;&#x540D;</span>
-    Name              <span class="token function">tail</span>
-    <span class="token comment"># FluentBit&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&#xFF0E;&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</span>
-    Path              /var/www/foo/storage/logs/*.log
-    <span class="token comment"># &#x4F7F;&#x7528;&#x3059;&#x308B;&#x30D1;&#x30FC;&#x30B5;&#x30FC;&#x540D;</span>
-    multiline.parser  laravel
-</code></pre>
-<pre class="language-"><code class="lang-bash">fluentd       <span class="token operator">|</span> Fluent Bit v1.8.6
-fluentd       <span class="token operator">|</span> * Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span>-2021 The Fluent Bit Authors
+<pre class="language-"><code class="lang-bash">fluentd       <span class="token operator">|</span> * Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span>-2021 The Fluent Bit Authors
 fluentd       <span class="token operator">|</span> * Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2015</span>-2018 Treasure Data
 fluentd       <span class="token operator">|</span> * Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
 fluentd       <span class="token operator">|</span> * https://fluentbit.io
@@ -2461,8 +2477,6 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
 fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> tail.0: <span class="token punctuation">[</span><span class="token number">1634640932.010306200</span>, <span class="token punctuation">{</span><span class="token string">&quot;log&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;[2021-01-01 12:00:00] local.INFO: &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> tail.0: <span class="token punctuation">[</span><span class="token number">1634640932.013139300</span>, <span class="token punctuation">{</span><span class="token string">&quot;log&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;[2021-01-01 12:00:00] local.INFO: &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 fluentd       <span class="token operator">|</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> tail.0: <span class="token punctuation">[</span><span class="token number">1634640932.013147300</span>, <span class="token punctuation">{</span><span class="token string">&quot;log&quot;</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token string">&quot;[2021-01-01 12:00:00] local.INFO: &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-
-<span class="token punctuation">..</span>.
 </code></pre>
 <p><br></p>
 <h3 id="parse"><a name="parse" class="plugin-anchor" href="#parse"><i class="fa fa-link" aria-hidden="true"></i></a>PARSE</h3>
@@ -2754,7 +2768,6 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
 -rw-r--r-- <span class="token number">1</span> root root <span class="token number">2954</span> Sep  <span class="token number">1</span> <span class="token number">18</span>:07 parsers_openstack.conf
 -rw-r--r-- <span class="token number">1</span> root root  <span class="token number">579</span> Sep <span class="token number">27</span> 02:15 stream_processor.conf <span class="token comment"># &#x8FFD;&#x52A0;&#x8A2D;&#x5B9A;&#x7528;</span>
 </code></pre>
-<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3057;"><a name="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3057;</h4>
 <p>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;<code>/fluent-bit/etc/fluent-bit.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3068;&#x306A;&#x308A;&#xFF0C;&#x30ED;&#x30FC;&#x30AB;&#x30EB;PC&#x3067;FluentBit&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x8D77;&#x52D5;&#x3057;&#x305F;&#x5834;&#x5408;&#x3068;&#x7570;&#x306A;&#x308B;&#x69CB;&#x6210;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://dev.classmethod.jp/articles/check-fluent-bit-conf/" target="_blank">https://dev.classmethod.jp/articles/check-fluent-bit-conf/</a></p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>INPUT<span class="token punctuation">]</span>
@@ -2783,8 +2796,8 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
     Name null
     Match firelens-healthcheck
 </code></pre>
-<h4 id="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x3042;&#x308A;"><a name="&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x3042;&#x308A;" class="plugin-anchor" href="#&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x3042;&#x308A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x3042;&#x308A;</h4>
-<p>&#x30E6;&#x30FC;&#x30B6;&#x5B9A;&#x7FA9;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x4F8B;&#xFF1A;<code>/fluent-bit/etc/fluent-bit.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF09;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;&#x306E;<code>config-file-value</code>&#x30AD;&#x30FC;&#x3067;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3068;&#xFF0C;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;<code>/fluent-bit/etc/fluent-bit.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;INCLUDE&#x6587;&#x304C;&#x633F;&#x5165;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
+<h4 id="&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;fluent-bitcustomconf&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>fluent-bit_custom.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<p>FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;<code>/fluent-bit/etc/fluent-bit.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#xFF0C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5B9A;&#x7FA9;&#x306E;<code>config-file-value</code>&#x30AD;&#x30FC;&#x3067;&#x6307;&#x5B9A;&#x3057;&#xFF0C;&#x8FFD;&#x52A0;&#x8A2D;&#x5B9A;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#xFF0C;FireLens&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;INCLUDE&#x6587;&#x304C;&#x633F;&#x5165;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://dev.classmethod.jp/articles/check-fluent-bit-conf/" target="_blank">https://dev.classmethod.jp/articles/check-fluent-bit-conf/</a></p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>INPUT<span class="token punctuation">]</span>
     Name tcp
@@ -2978,10 +2991,6 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h2 id="04-cloudwatch&#x30ED;&#x30B0;"><a name="04-cloudwatch&#x30ED;&#x30B0;" class="plugin-anchor" href="#04-cloudwatch&#x30ED;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>04. CloudWatch&#x30ED;&#x30B0;</h2>
-<p>&#x4EE5;&#x4E0B;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html</a></p>
 
                                 
                                 </section>
@@ -3021,7 +3030,7 @@ fluentd       <span class="token operator">|</span> <span class="token punctuati
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Fluentd／FluentBit","level":"1.11.2","depth":2,"next":{"title":"Datadog","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"📖 ︎メトリクス収集","level":"1.11.3.1","depth":3,"path":"public/observability/observability_datadog_metrics.md","ref":"public/observability/observability_datadog_metrics.md","articles":[]},{"title":"📖 ︎ログ収集","level":"1.11.3.2","depth":3,"path":"public/observability/observability_datadog_log.md","ref":"public/observability/observability_datadog_log.md","articles":[]},{"title":"📖 ︎分散トレース収集","level":"1.11.3.3","depth":3,"path":"public/observability/observability_datadog_distributed_trace.md","ref":"public/observability/observability_datadog_distributed_trace.md","articles":[]},{"title":"📖 ︎監視","level":"1.11.3.4","depth":3,"path":"public/observability/observability_datadog_monitering.md","ref":"public/observability/observability_datadog_monitering.md","articles":[]}]},"previous":{"title":"📖 ︎可観測性","level":"1.11.1","depth":2,"path":"public/observability/observability.md","ref":"public/observability/observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_fluentd_and_fluentbit.md","mtime":"2021-10-19T11:57:40.436Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-19T11:57:47.233Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Fluentd／FluentBit","level":"1.11.2","depth":2,"next":{"title":"Datadog","level":"1.11.3","depth":2,"ref":"","articles":[{"title":"📖 ︎メトリクス収集","level":"1.11.3.1","depth":3,"path":"public/observability/observability_datadog_metrics.md","ref":"public/observability/observability_datadog_metrics.md","articles":[]},{"title":"📖 ︎ログ収集","level":"1.11.3.2","depth":3,"path":"public/observability/observability_datadog_log.md","ref":"public/observability/observability_datadog_log.md","articles":[]},{"title":"📖 ︎分散トレース収集","level":"1.11.3.3","depth":3,"path":"public/observability/observability_datadog_distributed_trace.md","ref":"public/observability/observability_datadog_distributed_trace.md","articles":[]},{"title":"📖 ︎監視","level":"1.11.3.4","depth":3,"path":"public/observability/observability_datadog_monitering.md","ref":"public/observability/observability_datadog_monitering.md","articles":[]}]},"previous":{"title":"📖 ︎可観測性","level":"1.11.1","depth":2,"path":"public/observability/observability.md","ref":"public/observability/observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_fluentd_and_fluentbit.md","mtime":"2021-10-20T03:13:52.495Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-20T06:03:41.374Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
