@@ -142,8 +142,7 @@
   * [📖 ︎可観測性](public/observability/observability.md)
   * Fluentd／FluentBit
     * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
-    * [📖 ︎FluentBitコマンド](public/observability/observability_fluentbit_command.md)
-    * [📖 ︎confファイル](public/observability/observability_fluentbit_conf.md)
+    * [📖 ︎FluentBit](public/observability/observability_fluentbit.md)
   * Datadog
     * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
     * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
