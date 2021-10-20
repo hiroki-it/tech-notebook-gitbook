@@ -140,12 +140,15 @@
 
 * 可観測性
   * [📖 ︎可観測性](public/observability/observability.md)
-  * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
+  * Fluentd／FluentBit
+    * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
+    * [📖 ︎FluentBitコマンド](public/observability/observability_fluentbit_command.md)
+    * [📖 ︎confファイル](public/observability/observability_fluentbit_conf.md)
   * Datadog
-     * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
-     * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
-     * [📖 ︎分散トレース収集](public/observability/observability_datadog_distributed_trace.md)
-     * [📖 ︎監視](public/observability/observability_datadog_monitering.md)
+    * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
+    * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
+    * [📖 ︎分散トレース収集](public/observability/observability_datadog_distributed_trace.md)
+    * [📖 ︎監視](public/observability/observability_datadog_monitering.md)
 
 * システム開発手法論
   * [📖 ︎システム開発手法論](public/system_development_methodology/system_development_methodology.md)
