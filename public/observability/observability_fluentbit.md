@@ -79,11 +79,11 @@ Available Options
     Streams_File stream_processor.conf
 ```
 
-#### ・FluentBitのログの確認
+#### ・実行ログの確認
 
 Log_Level値でFluentBitのログレベルを制御できる．```debug```を割り当てると，FluentBitのログがより詳細になり，各セクションの設定値を確認できるようになる．
 
-**＊FluentBitのログ例＊**
+**＊実行ログ例＊**
 
 ```bash
 Fluent Bit v1.8.6
@@ -172,9 +172,12 @@ Inputs
 
 #### ・dummyプラグイン
 
-ダミーの構造化ログをパイプラインに入力する．
+ダミーの構造化ログをパイプラインに入力する．非構造化ログは入力データとして使用できない．ローカル環境でパイプラインの動作を確認するために役立つ．
 
-参考：https://docs.fluentbit.io/manual/pipeline/inputs/dummy
+参考：
+
+- https://docs.fluentbit.io/manual/pipeline/inputs/dummy
+- https://docs.fluentbit.io/manual/local-testing/logging-pipeline
 
 ```json
 {
@@ -187,7 +190,8 @@ Inputs
 ```bash
 [INPUT]
     Name   dummy
-    Tag    dummy.log
+    # ダミーJSONデータ
+    Dummy  {"message":"dummy"}
 ```
 
 **＊コマンド例＊**
@@ -209,10 +213,10 @@ fluent-bit/bin/fluent-bit -i dummy -o stdout
     # プラグイン名
     Name        forward
     Listen      0.0.0.0
-    # プロセスのリッスンポートs
+    # プロセスのリッスンポート
 ```
 
-**＊FluentBitのログ例＊**
+**＊実行ログ例＊**
 
 ```bash
 Fluent Bit v1.8.6
@@ -267,7 +271,15 @@ log_router:
     - ./storage/logs:/var/www/foo/storage/logs
 ```
 
-**＊FluentBitのログ例＊**
+**＊コマンド例＊**
+
+参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
+
+```bash
+$ fluent-bit -i tail -p path=/var/www/foo/storage/logs/*.log -o stdout
+```
+
+**＊実行ログ例＊**
 
 ```bash
 * Copyright (C) 2019-2021 The Fluent Bit Authors
@@ -380,7 +392,7 @@ $ fluent-bit/bin/fluent-bit \
   -o null
 ```
 
-**＊FluentBitのログ例＊**
+**＊実行ログ例＊**
 
 ```bash
 Fluent Bit v1.8.6
@@ -403,13 +415,13 @@ Fluent Bit v1.8.6
 
 <br>
 
-### BUFFERセクションとは
+### BUFFERセクション
 
 #### ・BUFFERセクションとは
 
 ![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
 
-ログはチャンク化され，メモリ／ファイルにあるバッファー内のキューに蓄えられる．チャンクはキューから取り出され，セクションに渡される．Fluentdから概念図を拝借した．
+ログはチャンク化され，メモリ／ファイルにあるバッファー内のキューに蓄えられる．チャンクはキューから取り出され，ターゲットに転送される．Fluentdから概念図を拝借した．
 
 参考：
 
@@ -424,8 +436,8 @@ Fluent Bit v1.8.6
 
 ```bash
 [SERVICE]
-    flush                     1
-    log_Level                 info
+    flush         1
+    log_Level     info
 
 [INPUT]
     name          cpu
@@ -441,10 +453,10 @@ Fluent Bit v1.8.6
 
 ```bash
 [SERVICE]
-    flush                     1
-    log_Level                 info
+    flush         1
+    log_Level     info
     # ファイルの場所
-    storage.path              /var/log/fluentbit/
+    storage.path  /var/log/fluentbit/
 
 [INPUT]
     name          cpu
@@ -460,8 +472,6 @@ $ ls -ls /var/log/fluentbit/cpu.0
 -rw------- 1 root root 4096 Oct 20 15:51 1-1634745095.575805200.flb
 ```
 
-
-
 <br>
 
 ### STREAM_TASKセクション
@@ -470,7 +480,7 @@ $ ls -ls /var/log/fluentbit/cpu.0
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_stream-task.png)
 
-チャンク化されたログにタグ付けを行う．タグ付けされたログは，INPUTセクションに再度取り込まれ，最終的にOUTPUTセクションまで渡される．
+チャンク化されたログにタグ付けを行う．タグ付けされたログは，パイプラインのINPUTセクションに再度取り込まれ，処理し直される．
 
 参考：https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
 
@@ -577,7 +587,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     log_stream_name   container/nginx/$(ecs_task_id)
 ```
 
-CloudWatchログに送信されるデータはJSONになっている．```log```キーに全てのログのテキストが割り当てられている．特定のキーの値のみをCloudWatchログに送信する場合，log_keyオプションでキー名を指定する．例えば，```log```キーのみを送信する場合，『```log```』と指定する．
+CloudWatchログに送信されるデータはJSON型である．```log```キーにログが割り当てられている．特定のキーの値のみをCloudWatchログに送信する場合，log_keyオプションでキー名を指定する．例えば，```log```キーのみを送信する場合，『```log```』と指定する．
 
 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
 
@@ -588,7 +598,7 @@ CloudWatchログに送信されるデータはJSONになっている．```log```
     "ecs_cluster": "prd-foo-ecs-cluster",
     "ecs_task_arn": "arn:aws:ecs:ap-northeast-1:****:task/cluster-name/*****",
     "ecs_task_definition": "prd-foo-ecs-task-definition:1",
-    "log": "<ログのテキスト>",
+    "log": "<ログ>",
     "source": "stdout",
     "ver": "1.5"
 }
@@ -673,6 +683,16 @@ kinesis_streamsプラグインがあらかじめインストールされてい�
 newRelicプラグインがあらかじめインストールされているベースイメージを使用する．
 
 参考：https://github.com/newrelic/newrelic-fluent-bit-output
+
+#### ・標準出力への出力
+
+標準出力に出力する，FluentBitの実行ログでこれを確認できる．
+
+```bash
+ [OUTPUT]
+    Name   stdout
+    match  *
+```
 
 #### ・破棄
 

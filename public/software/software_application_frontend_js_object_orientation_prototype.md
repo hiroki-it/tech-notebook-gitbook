@@ -203,7 +203,7 @@ btn.addEventListener("click", function() {
 
 ```javascript
 // リテラル表記
-const example = {
+const foo = {
   
   // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
@@ -228,7 +228,7 @@ const example = {
 
 ```javascript
 // リテラル表記
-const example = {
+const foo = {
   
  // ~~ 省略 ~~
   
@@ -251,7 +251,7 @@ const example = {
 **＊実装例＊**
 
 ```javascript
-const example = new Object({
+const foo = new Object({
 
   // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
@@ -271,7 +271,7 @@ const example = new Object({
 **＊実装例＊**
 
 ```javascript
-const Example = new Function();
+const Foo = new Function();
 ```
 
 ただし，公式からこのような記法は，非推奨とされている．以下の関数宣言，関数式，アロー関数による関数式省略，の記法が推奨される．特にアロー関数では，```this```が宣言されたオブジェクト自身を指すため，保守性が高くおすすめである．
@@ -280,7 +280,7 @@ const Example = new Function();
 
 ```javascript
 // 関数宣言
-function Example() {
+function Foo() {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
@@ -296,12 +296,12 @@ function Example() {
 }
 
 // コール
-const Example = new Example();
+const Foo = new Foo();
 ```
 
 ```javascript
 // 関数式
-const Example = function(value) {
+const Foo = function(value) {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
@@ -316,7 +316,7 @@ const Example = function(value) {
 }
 
 // アロー関数による関数式の省略記法
-const Example = (value) => {
+const Foo = (value) => {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
@@ -367,7 +367,7 @@ ES6から，糖衣構文の```class```によって，オブジェクトを宣言
 
 ```javascript
 // named exportによる出力
-export class Example {
+export class Foo {
     
     // classでしか使えない．
     // Setterの代わりにコンストラクタでImmutableを実現．
@@ -384,20 +384,20 @@ export class Example {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from "./example.js";
+import {Foo} from "./foo.js";
 
 // 生成，初期化
-const example = new Example(1);
+const foo = new Foo(1);
 
 // メソッドのコール
-example.getValue();
+foo.getValue();
 ```
 
 #### ・クラス式記法
 
 ```javascript
 // named exportによる出力
-export const Example = class {
+export const Foo = class {
     
     // classでしか使えない．
     // Setterの代わりにコンストラクタでImmutableを実現．
@@ -414,13 +414,13 @@ export const Example = class {
 
 ```javascript
 // ファイルの読み込み
-import {Example} from "./example.js";
+import { Foo } from "./foo.js";
 
 // 生成，初期化
-const example = new Example(1);
+const foo = new Foo(1);
 
 // メソッドのコール
-example.getValue();
+foo.getValue();
 ```
 
 <br>
@@ -440,7 +440,7 @@ example.getValue();
 ```javascript
 // 大元となるオブジェクトは個別ファイルで管理しておくのがベター．
 // コンストラクタ関数の関数式による宣言．
-const Example = function(value) {
+const Foo = function(value) {
   
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
@@ -462,7 +462,7 @@ const Example = function(value) {
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに．
 // prototypeプロパティの継承先のオブジェクトを宣言．
-const SubExample = function(subValue) {
+const SubFoo = function(subValue) {
     
     // 慣習的にアンダーバーでprivateを表す．
     this.subProperty = subValue;
@@ -476,12 +476,12 @@ const SubExample = function(subValue) {
     };
 }
 
-// new Example()を用いた継承．
-SubExample.prototype = new Example();
+// new Foo()を用いた継承．
+SubFoo.prototype = new Foo();
 
-// SubExampleクラスにはgetValue()は無い．
+// SubFooクラスにはgetValue()は無い．
 // 継承元まで辿り，Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）．
-const result = SubExample.getValue()
+const result = SubFoo.getValue()
 console.log(result);
 ```
 
@@ -492,7 +492,7 @@ console.log(result);
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに．
 // prototypeプロパティの継承先のオブジェクトを宣言．
-const SubExample = function() {
+const SubFoo = function() {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
@@ -507,11 +507,11 @@ const SubExample = function() {
 };
 
 // Object.create()を用いた継承．
-SubExample.prototype = Object.create(Example.prototype);
+SubFoo.prototype = Object.create(Foo.prototype);
 
-// SubExampleクラスにはgetValue()は無い．
+// SubFooクラスにはgetValue()は無い．
 // 継承元まで辿り，Examlpeクラスからメソッドがコールされる（プロトタイプチェーン）．
-const result = SubExample.getValue();
+const result = SubFoo.getValue();
 console.log(result);
 ```
 
@@ -521,7 +521,7 @@ console.log(result);
 
 ```javascript
 // Object.create()による継承．
-SubExample.prototype = Object.create(Example.prototype, {
+SubFoo.prototype = Object.create(Foo.prototype, {
 
     // データを定義
     subProperty: "テスト"
@@ -533,8 +533,8 @@ SubExample.prototype = Object.create(Example.prototype, {
   
 });
 
-// SubExampleクラスにはprintSubValue()が追加された．
-const result = SubExample.printSubValue();
+// SubFooクラスにはprintSubValue()が追加された．
+const result = SubFoo.printSubValue();
 console.log(result);
 ```
 
@@ -544,12 +544,12 @@ console.log(result);
 
 ### メソッドとしてコールする場合
 
-メソッド内の```this```は，exampleオブジェクトを指す．
+メソッド内の```this```は，fooオブジェクトを指す．
 
 **＊実装例＊**
 
 ```javascript
-const example = {
+const foo = {
 
   // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
@@ -565,9 +565,9 @@ const example = {
 ```
 
 ```javascript
-// メソッド内のthisは，exampleオブジェクトを指す．
-example.setValue(1);
-example.getValue(); // 1
+// メソッド内のthisは，fooオブジェクトを指す．
+foo.setValue(1);
+foo.getValue(); // 1
 ```
 
 <br>

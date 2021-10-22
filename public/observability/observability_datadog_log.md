@@ -250,7 +250,9 @@ Datadogに送信されたログのメッセージから値を抽出し，構造�
 
 #### ・パーサーとは
 
-ログに対して，何かしらの加工を実行する．
+非構造化ログを構造化する．
+
+参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#%E6%A6%82%E8%A6%81
 
 #### ・Grokパーサー
 
@@ -273,9 +275,9 @@ Laravelによって，以下のようなログが生成されるとする．
 [2021-01-01 00:00:00] production.ERROR: ログのメッセージ
 ```
 
-以下のようなGrokパーサールールを定義する．```date```マッチャーを用いて，```date```属性にタイムスタンプ値を割り当てる．また，```word```マッチャーを用いて，```log_status```カスタム属性にステータス値を割り当てる．
+以下のようなGrokパーサールールを定義する．```date```マッチャーを用いて，```date```属性にタイムスタンプ値を割り当てる．また，```word```マッチャーを用いて，```log_status```カスタム属性にステータス値を割り当てる．任意のルール名を設定できる．
 
-```
+```bash
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
 ```
 
@@ -285,6 +287,38 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 {
   "date": 1630454400000,
   "log_status": "INFO"
+}
+```
+
+**＊例＊**
+
+とあるソフトウェアによって，以下のようなログが生成されるとする．
+
+```log
+192.168.0.1 [2021-01-01 12:00:00] GET /users 200 
+```
+
+以下のようなGrokパーサルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
+
+```bash
+FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.path}\s+%{integer:http.status_code}
+```
+
+これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  },
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "path": "/users",
+    "status_code": 200
+  }
 }
 ```
 

@@ -8,7 +8,7 @@
 
 <br>
 
-## コマンド
+## 01. コマンド
 
 #### serverモード
 
@@ -18,27 +18,27 @@
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
-#### ・dev
+#### ・```dev```
 
 ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
-```shell
+```bash
 $ nuxt dev
 ```
 
-#### ・build
+#### ・```build```
 
 本番環境として使用するため，Nodeサーバの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
-```shell
+```bash
 $ nuxt build
 ```
 
-#### ・start
+#### ・```start```
 
 本番環境として使用するため，ビルド完了後にNodeサーバを起動する．SSRモードのために使用する．
 
-```shell
+```bash
 $ nuxt start
 ```
 
@@ -52,27 +52,27 @@ $ nuxt start
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
-#### ・dev
+#### ・```dev```
 
 ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
-```shell
+```bash
 $ nuxt dev
 ```
 
-#### ・build
+#### ・```build```
 
 Node.jsを使用してテストフレームワークを動かすために使用する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
-```shell
+```bash
 $ nuxt build
 ```
 
-#### ・generate
+#### ・```generate```
 
 JavaScriptから静的ファイルを生成する．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために使用する．
 
-```shell
+```bash
 $ nuxt generate
 ```
 
@@ -80,7 +80,7 @@ $ nuxt generate
 
 静的ホスティングサイトを起動する．
 
-```shell
+```bash
 $ nuxt start
 ```
 
@@ -94,16 +94,40 @@ https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E
 
 <br>
 
-## 設定ファイル
+## 02. プロパティ
 
-### ```env```ファイル
+### ```nuxt.config.js```ファイル
+
+#### ・```nuxt.config.js```ファイルとは
+
+Nuxtが標準で用意している設定をプロパティの設定値で上書きできる．各プロパティは以下のリンクを参考にせよ．
+
+参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const nuxtConfig: Configuration = {
+  // プロパティ
+}
+```
+
+#### ・```.env```ファイルの読み込み
+
+あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入するとよい．
+
+参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
+
+```bash
+$ npm install @ nuxtjs/dotenv
+```
 
 ```sh
-# API側のURL（フロントエンドからのリクエスト向け）
-API_URL=http://web:80/
-# API側のURL（外部サーバからのリクエスト向け）
-API_URL_BROWSER=http://localhost:8500/
-# API側のOauth認証の情報
+# APIのURL．サーバ上のJavaScriptからAPIへのリクエストで使用する．
+API_URL=https://example.co.jp/api
+# APIのURL．ブラウザ上のJavaScriptからAPIへのリクエストで使用する．
+API_URL_BROWSER=https://example.co.jp/api
+# APIのOauth認証の情報
 OAUTH_CLIENT_ID=
 OAUTH_CLIENT_SECRET=
 # GoogleMapのURL
@@ -112,25 +136,27 @@ GOOGLE_MAP_QUERY_URL=https://www.google.com/maps/search/?api=1&query=
 HOME_PATH=/
 ```
 
-<br>
-
-### ```nuxt.config.js```ファイル
-
-#### ・概要
-
-Nuxtが標準で用意している設定を上書きできる．
-
-参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
-
 ```javascript
 import { Configuration } from '@nuxt/types'
 
-const nuxtConfig: Configuration = {
+const {
+    API_URL,
+    API_URL_BROWSER,
+    OAUTH_CLIENT_ID,
+    OAUTH_CLIENT_SECRET,
+    HOME_PATH
+} = process.env
 
+const nuxtConfig: Configuration = {
+  // プロパティ
 }
 ```
 
-#### ・hardSource
+<br>
+
+### プロパティ一覧
+
+#### ・```hardSource```
 
 ビルド時のキャッシュを有効化する．ビルドの完了が早くなる．
 
@@ -147,7 +173,59 @@ const nuxtConfig: Configuration = {
 }
 ```
 
-#### ・quiet
+####  ・```privateRuntimeConfig```
+
+SSRモードでのみ使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする
+
+参考：https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const {
+    API_KEY,
+} = process.env
+
+const nuxtConfig: Configuration = {
+    
+  privateRuntimeConfig: {
+    apiKey: API_KEY,
+  },
+}
+```
+
+```bash
+# .envファイル
+API_KEY=*****
+```
+
+#### ・```publicRuntimeConfig```
+
+SPAモードまたはSSRモードで使用できる．
+
+参考：https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const {
+  API_URL,
+} = process.env
+
+const nuxtConfig: Configuration = {
+
+  publicRuntimeConfig: {
+    apiUrl: API_URL
+  },
+}
+```
+
+```bash
+# .envファイル
+API_URL=https://example.co.jp/api
+```
+
+#### ・```quiet```
 
 ビルド時にログを最小限にする．CICDツールでログが確認できなくなるため，無効化しておいた方が良い．
 
@@ -159,8 +237,49 @@ import { Configuration } from '@nuxt/types'
 const nuxtConfig: Configuration = {
     
   build: {
-    quiet: false,
+      quiet: false,
   },
 }
 ```
+
+#### ・```serverMiddleware```
+
+リクエストを受信できるエンドポイントと，紐づけるハンドラー関数を定義する．
+
+参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+
+```javascript
+import { Configuration } from '@nuxt/types'
+
+const nuxtConfig: Configuration = {
+
+  serverMiddleware: [
+    {
+      path: '/foos',
+      handler: '~/foos/index.js'
+    },
+  ]
+}
+```
+
+<br>
+
+## 03. ディレクトリ
+
+### モジュール
+
+参考：https://nuxtjs.org/docs/directory-structure/modules
+
+<br>
+
+### プラグイン
+
+参考：
+
+- https://nuxtjs.org/docs/directory-structure/plugins/
+- https://github.com/nuxt/nuxt.js/issues/2820
+
+
+
+<br>
 

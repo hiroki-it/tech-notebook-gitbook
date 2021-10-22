@@ -410,7 +410,7 @@ x-api-key: *****
 
 <br>
 
-## 03. リクエスト／レスポンスメッセージ
+## 03. メッセージ
 
 ### メッセージとは
 
@@ -418,7 +418,35 @@ x-api-key: *****
 
 <br>
 
-### リクエストメッセージの構造
+### HTTPコンテキスト
+
+#### ・HTTPコンテキスト
+
+特定のリクエストメッセージ／レスポンスメッセージに関するあらゆる情報（リクエストパラメータ，セッション，その他フレームワーク固有の情報など）を扱うための仕組みのこと．特にフレームワークにおいてよく使われる用語である．
+
+#### ・.NET Frameworkの場合
+
+.NETのフレームワーク．コンテキストクラスが用意されている．
+
+参考：https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
+
+#### ・Ginの場合
+
+Goのフレームワーク．コンテキスト構造体が用意されている．
+
+参考：https://pkg.go.dev/github.com/gin-gonic/gin#Context
+
+#### ・Nuxt.jsの場合
+
+JavaScriptのフレームワーク．コンテキストオブジェクトが用意されている．
+
+参考：https://nuxtjs.org/ja/docs/internals-glossary/context/
+
+<br>
+
+## 03-02. リクエストメッセージ
+
+### 構造
 
 #### ・GET送信の場合
 
@@ -494,7 +522,47 @@ https://github.com/postmanlabs/postman-app-support/issues/131
 
 <br>
 
-### レスポンスメッセージの構造
+### 送信例
+
+#### ・PHPの場合
+
+```php
+<?php
+
+define("URL", "https://foo.com");
+
+// curlセッションを初期化する
+$curl = curl_init();
+
+// オプションの設定
+curl_setopt_array(
+    $curl,
+    [
+        // URL
+        CURLOPT_URL            => URL,
+        // HTTPメソッド
+        CURLOPT_CUSTOMREQUEST  => "GET",
+        // SSL証明書の検証
+        CURLOPT_SSL_VERIFYPEER => false,
+        // 文字列型で受信
+        CURLOPT_RETURNTRANSFER => true
+    ]
+);
+
+// リクエストの実行
+$messageBody = (curl_exec($curl))
+    ? curl_exec($curl)
+    : [];
+
+// curlセッションを閉じる
+curl_close($curl);
+```
+
+<br>
+
+## 03-03. レスポンスメッセージ
+
+### 構造
 
 **＊具体例＊**
 
@@ -540,52 +608,6 @@ X-Powered-By: PHP/7.3.22
 # ボディ
 ここにサイトのHTMLのコード
 ```
-
-<br>
-
-### リクエストメッセージの送信方法
-
-#### ・PHP
-
-```php
-<?php
-
-define("URL", "https://foo.com");
-
-// curlセッションを初期化する
-$curl = curl_init();
-
-// オプションの設定
-curl_setopt_array(
-    $curl,
-    [
-        // URL
-        CURLOPT_URL            => URL,
-        // HTTPメソッド
-        CURLOPT_CUSTOMREQUEST  => "GET",
-        // SSL証明書の検証
-        CURLOPT_SSL_VERIFYPEER => false,
-        // 文字列型で受信
-        CURLOPT_RETURNTRANSFER => true
-    ]
-);
-
-// リクエストの実行
-$messageBody = (curl_exec($curl))
-    ? curl_exec($curl)
-    : [];
-
-// curlセッションを閉じる
-curl_close($curl);
-```
-
-<br>
-
-### リクエストコンテキスト
-
-#### ・リクエストコンテキストとは
-
-リクエストを受信した時に，これのデータ（ボディ，ヘッダー，など）や，セッションを操作できる仕組みのこと．
 
 <br>
 
