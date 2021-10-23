@@ -119,7 +119,7 @@ const nuxtConfig: Configuration = {
 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
 ```bash
-$ npm install @ nuxtjs/dotenv
+$ npm install @nuxtjs/dotenv
 ```
 
 ```sh

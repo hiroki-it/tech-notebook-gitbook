@@ -21,8 +21,8 @@
 | 年代    | アーキテクチャ                 | 説明                                                         |
 | ------- | ------------------------------ | ------------------------------------------------------------ |
 | 1999 ～ | モノリシックアーキテクチャ     | 1999年台，バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた．しかし，モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文（『大きな泥泥だんご』）で指摘された．<br>参考：https://ja.wikipedia.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A5%E3%81%A0%E3%82%93%E3%81%94 |
-| 2014    | マイクロサービスアーキテクチャ | 2014年にThoughtWorks社は，アプリケーションを独立したサービスの集まりに分割するアーキテクチャを考案した．<br>参考：https://martinfowler.com/articles/microservices.html |
-| 2017    | ミニサービスアーキテクチャ     | マイクロサービスアーキテクチャのサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニサービスアーキテクチャを考案した．ミニサービスアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のサービスに分割する．<br>参考：https://blog.cloud-elements.com/pragmatic-microservices-architecture |
+| 2014    | マイクロサービスアーキテクチャ | 2014年にThoughtWorks社は，サービス指向アーキテクチャとドメイン駆動設計を統合し，アプリケーションを独立したサービスの集まりに分割するアーキテクチャを考案した．<br>参考：<br>・https://martinfowler.com/articles/microservices.html<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
+| 2017    | ミニサービスアーキテクチャ     | マイクロサービスアーキテクチャのサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニサービスアーキテクチャを考案した．このアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のサービスに分割する．この粒度を，マイクロサービスに対抗して『ミニサービス』または『MASA』とよぶ．<br>参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2018    | モジュラーモノリス             | ミニサービスアーキテクチャではサービスの粒度が大きくなったものの，複数のサービスが必要になることは変わらず，その分だけ開発チームが必要になる問題は解消されなかった．そこで，Root Insurance社はモジュラモノリスを考案した．モジュラモノリスでは，サービスの概念を取り入れずに，アプリケーションを細かいモジュールに分割する．<br>参考：https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4 |
 
 #### ・モジュール／サービスの粒度の比較
@@ -152,13 +152,13 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 ## 03. 分散システム間の連携
 
-### サービスオーケストレーション方式
+### Orchestration（オーケストレーション）
 
-#### ・Orchestration（オーケストレーション）とは
+#### ・オーケストレーションとは
 
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/orchestration.png)
 
-中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．個々のサービス間の連携方式では，リクエストリプライ方式を採用する．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも使用される．
+中央集権型システムとも言う．全てのサービスを制御する責務を持ったオーケストレーションプログラムを設置する設計方法．一つのリクエストが送信された時に，オーケストレーションプログラムは各サービスをコールしながら処理の結果を繋いでいく．マイクロサービスアーキテクチャだけでなく，サービス指向アーキテクチャでも使用される．
 
 参考：
 
@@ -166,32 +166,40 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
-#### ・Choreography（コレオグラフィ）とは
+#### ・リクエストリプライ方式
+
+オーケストレーションでは，個々のサービス間の連携方式にリクエストリプライ方式を採用する．この方式では，サービス間でRESTfulAPIを用いた同期通信を実行する．
+
+![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
+
+<br>
+
+### Choreography（コレオグラフィ）
+
+#### ・コレオグラフィとは
 
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography.png)
 
-分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法である．個々のサービス間の連携方式では，イベント駆動方式を採用する．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．サービス間のインターフェースとして，キューを設置する．マイクロサービスアーキテクチャでは，コレオグラフィによる連携が推奨されている．
+分散型システムとも言う．オーケストレーションとしてのプログラムは存在せず，各サービスで下流サービスに連携する責務を持たせる設計方法である．個々のサービス間の連携方式では，イベント駆動方式を採用する．一つのリクエストが送信された時に，サービスからサービスに処理が繋がっていく．マイクロサービスアーキテクチャでは，コレオグラフィによる連携が推奨されている．
 
 参考：
 
 - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
 - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
 
-<br>
-
-### サービス間連携方式
-
-#### ・リクエストリプライ方式
-
-サービス間では，RESTfulAPIを用いた同期通信を実行する．
-
-![service_request_reply](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_request_reply.png)
-
 #### ・イベント駆動方式
 
-サービス間では，メッセージキューを用いた非同期通信を行う．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
+コレオグラフィでは，上流／下流のサービス間の連携方式にイベントドリブン方式を採用する．この方式では，サービス間でメッセージキューを用いた非同期通信を行う．メッセージキューでは受信したメッセージを一方向にしか配信できないため，もしサービス間双方向に送信したい場合は，上流サービスからメッセージを受信するメッセージキューと．下流サービスから受信するメッセージキューを別々に設置する．メッセージキューはPub／Subデザインパターンで実装するか，またはAWS-SQSなどのツールを使用する．
 
 ![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service_event_driven.png)
+
+#### ・実装例
+
+以下のリポジトリを参考にせよ．
+
+参考：https://github.com/fedeoliv/microservices-transactions
+
+![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/choreography_example.png)
 
 <br>
 

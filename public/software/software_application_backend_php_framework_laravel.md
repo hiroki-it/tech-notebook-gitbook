@@ -1772,176 +1772,206 @@ class FooController extends Controller
 
 ### Event
 
-#### ・データベースアクセス系
+#### ・Eventとは
 
-Eloquentモデルがデータベースに対して処理を行う前後にイベントを定義できる．例えば，```create```メソッド，```save```メソッド，```update```メソッド，```destroy```／```delete```メソッド，の実行後にイベントを定義するためには，```created```メソッド，```saved```メソッド，```updated```メソッド，```deleted```メソッド，を使用する．
+ビジネスの出来事がモデリングされたイベントオブジェクトとして機能する．
 
-**＊実装例＊**
+#### ・構成
 
-```php
-<?php
+イベントに関するデータを保持するだけで，ビジネスロジックを持たない構成となる．
 
-namespace Illuminate\Database\Eloquent\Concerns;
-
-use Closure;
-
-trait HasEvents
-{
-    // ～ 中略 ～
-
-    /**
-     * @param  string  $event
-     * @param  Closure|string  $callback
-     * @return void
-     */
-    protected static function registerModelEvent($event, $callback)
-    {
-        if (isset(static::$dispatcher)) {
-            $name = static::class;
-
-            // ModelのイベントをDispatcherに登録します．
-            static::$dispatcher->listen("eloquent.{$event}: {$name}", $callback);
-        }
-    }
-
-    /**
-     * @param  Closure|string  $callback
-     * @return void
-     */
-    public static function saved($callback)
-    {
-        // ModelのイベントをDispatcherに登録します．
-        static::registerModelEvent("saved", $callback);
-    }
-
-    /**
-     * @param  Closure|string  $callback
-     * @return void
-     */
-    public static function updated($callback)
-    {
-        // Modelのsaveメソッド実行後イベントをDispatcherに登録します．
-        static::registerModelEvent("updated", $callback);
-    }
-
-    /**
-     * @param  Closure|string  $callback
-     * @return void
-     */
-    public static function created($callback)
-    {
-        // Modelのcreateメソッド実行後イベントをDispatcherに登録します．
-        static::registerModelEvent("created", $callback);
-    }
-
-    /**
-     * @param  Closure|string  $callback
-     * @return void
-     */
-    public static function deleted($callback)
-    {
-        // Modelのdeleteメソッド実行後イベントをDispatcherに登録します．
-        static::registerModelEvent("deleted", $callback);
-    }
-
-    // ～ 中略 ～
-}
-```
-
-#### ・Traitを使用したイベントの発火
-
-Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquentモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．
+参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
 **＊実装例＊**
 
 ```php
 <?php
 
-namespace Illuminate\Database\Eloquent;
+namespace App\Events;
 
-// ～ 中略 ～
+use App\Models\User;
 
-abstract class Model implements Arrayable, ArrayAccess, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
+final class UserCreatedEvent
 {
     /**
-     * @param array $attributes
+     * @var User
      */
-    public function __construct(array $attributes = [])
-    {
-        // bootメソッドが実行されていなければコール
-        $this->bootIfNotBooted();
-
-        $this->initializeTraits();
-
-        $this->syncOriginal();
-
-        $this->fill($attributes);
-    }
+    protected User $user;
 
     /**
-     *
+     * @return void
      */
-    protected function bootIfNotBooted()
+    public function __construct(User $user)
     {
-        if (! isset(static::$booted[static::class])) {
-            static::$booted[static::class] = true;
-
-            $this->fireModelEvent("booting", false);
-
-            // bootメソッドをコール
-            static::boot();
-
-            $this->fireModelEvent("booted", false);
-        }
+        $this->user = $user;
     }
-
-    /**
-     *
-     */
-    protected static function boot()
-    {
-        // bootTraitsをコール
-        static::bootTraits();
-    }
-
-    /**
-     *
-     */
-    protected static function bootTraits()
-    {
-        $class = static::class;
-
-        $booted = [];
-
-        static::$traitInitializers[$class] = [];
-
-        foreach (class_uses_recursive($class) as $trait) {
-
-            // useされたTraitにboot+<クラス名>のメソッドが存在するかを判定．
-            $method = "boot".class_basename($trait);
-            if (method_exists($class, $method) && ! in_array($method, $booted)) {
-
-                // 指定した静的メソッドをコール．
-                forward_static_call([$class, $method]);
-
-                $booted[] = $method;
-            }
-
-            if (method_exists($class, $method = "initialize".class_basename($trait))) {
-                static::$traitInitializers[$class][] = $method;
-
-                static::$traitInitializers[$class] = array_unique(
-                    static::$traitInitializers[$class]
-                );
-            }
-        }
-    }
-
-    // ～ 中略 ～
 }
 ```
 
-コールされるTraitでは，```saved```メソッドにModel更新イベントを登録する．
+任意の場所でイベントを発行できる．
+
+```php
+<?php
+    
+event(new UserCreatedEvent($user));
+```
+
+#### ・EloquentモデルのCRUDイベント
+
+Eloquentモデルでは，DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐づけられる．紐づけるために，プロパティで定義するか，あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
+
+**＊実装例＊**
+
+プロパティにて，CREATE処理とDELETE処理に独自イベントクラスに紐づける．
+
+```php
+<?php
+
+namespace App\Models;
+
+use App\Events\UserDeleted;
+use App\Events\UserSaved;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        // 処理タイミングを独自イベントに紐づける
+        'saved' => UserSaved::class,
+        'deleted' => UserDeleted::class,
+    ];
+}
+```
+
+**＊実装例＊**
+
+クロージャーにて，CREATE処理に独自イベントクラスに紐づける．
+
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            event(new UserCreated($user));
+        });
+    }
+}
+```
+
+<br>
+
+### Listener
+
+#### ・Listenerとは
+
+イベントが発生した時に，これに紐づいてコールされるオブジェクトのこと．
+
+#### ・構成
+
+Listenerクラスがコールされた時に実行する処理を```handle```関数に定義する．
+
+**＊実装例＊**
+
+ユーザが作成された時に，メールアドレスにメッセージを送信する．
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserCreatedEvent;
+use Illuminate\Support\Facades\Notification;
+
+final class UserCreatedEventListener
+{
+    /**
+     * @param UserCreatedEvent $userEvent
+     * @return void
+     */
+    public function handle(UserCreatedEvent $userEvent)
+    {
+        // UserクラスがNotifiableトレイトに依存せずに通知を実行できるように，オンデマンド通知機能を使用します．
+        Notification::route('mail', $userEvent->user->userEmailAddress->emailAddress)
+            ->notify(new UserCreatedEventNotification($userEvent->user));
+    }
+}
+```
+
+任意の場所でイベントを発行すると，リスナーが自動でコールされる．
+
+```php
+<?php
+    
+event(new UserCreatedEvent($user));
+```
+
+#### ・イベントとリスナーの紐づけ
+
+EventServiceProviderクラスにて，Eventクラスに紐づける一つ以上のListenerクラスを設定する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use App\Events\UserCreatedEvent;
+use App\Listeners\UserCreatedEventListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * @var array
+     */
+    protected $listen = [
+        UserCreatedEvent::class => [
+            UserCreatedEventListener::class,
+        ],
+    ];
+
+    /**
+     * @return void
+     */
+    public function boot()
+    {
+        parent::boot();
+
+        //
+    }
+}
+```
+
+#### ・任意のEloquentモデルCRUDイベントの検知
+
+Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquentモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより，全てのEloquentモデルのイベントを一括で発火させられる．
+
+参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+
+**＊実装例＊**
+
+あらかじめTraitを定義する．```saved```メソッドにEloquentモデルの更新イベントを登録できるようにする．
 
 ```php
 <?php
@@ -1954,17 +1984,19 @@ use App\Events\UpdatedModelEvent;
 trait UpdatedModelTrait
 {
     /**
-     * イベントを発火させます．
-     *
      * @return void
      */
     protected static function bootUpdatedModelTrait(): void
     {
+        // 任意のEloquentモデルのsaveメソッド実行時
         static::saved(function (Model $updatedModel) {
+            // イベントを発生させる．
             event(new UpdatedModelEvent($updatedModel));
         });
 
+        // 任意のEloquentモデルのdeleteメソッド実行時
         static::deleted(function (Model $updatedModel) {
+            // イベントを発生させる．
             event(new UpdatedModelEvent($updatedModel));
         });
     }
@@ -1985,6 +2017,8 @@ trait UpdatedModelTrait
     }    
 }
 ```
+
+イベントを定義する．
 
 ```php
 <?php
@@ -2008,7 +2042,7 @@ class UpdatedModelEvent
 }
 ```
 
-Model更新イベントが発火してコールされるリスナーでは，```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする．なお，イベントとリスナーの対応関係は，EventServiceProviderで登録する．
+Model更新イベントが発火してコールされるリスナーを定義する．```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする．なお，イベントとリスナーの対応関係は，EventServiceProviderで登録する．
 
 ```php
 <?php
@@ -2088,10 +2122,6 @@ class ExecutorConstant
     public const GUEST = "Guest";    
 }
 ```
-
-<br>
-
-### Listener
 
 <br>
 
