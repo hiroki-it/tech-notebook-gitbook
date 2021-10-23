@@ -144,6 +144,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 参考：
 
+- https://github.com/GoogleCloudPlatform/microservices-demo
 - https://www.koslib.com/posts/entity-services-anti-pattern/
 - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
 - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
