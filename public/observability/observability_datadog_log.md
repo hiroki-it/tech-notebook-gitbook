@@ -290,18 +290,24 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 }
 ```
 
+#### ・Urlパーサー
+
+構造化ログのURL値からパスパラメータやクエリパラメータを検出し，詳細な属性として新しく付与する．
+
+参考：https://docs.datadoghq.com/ja/logs/processing/processors/?tab=ui#url-%E3%83%91%E3%83%BC%E3%82%B5%E3%83%BC
+
 **＊例＊**
 
 とあるソフトウェアによって，以下のようなログが生成されるとする．
 
 ```log
-192.168.0.1 [2021-01-01 12:00:00] GET /users 200 
+192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
 ```
 
-以下のようなGrokパーサルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
+以下のようなGrokパーサのルールを定義する．各マッチャーでカスタム属性に値を割り当てる．
 
 ```bash
-FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.path}\s+%{integer:http.status_code}
+FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{word:http.method}\s+%{notSpace:http.url}\s+%{integer:http.status_code}
 ```
 
 これにより，構造化ログの各属性に値が割り当てられる．
@@ -316,15 +322,40 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
   "date": 1609502400000,
   "http": {
     "method": "GET",
-    "path": "/users",
+    "url": "/users?paginate=10&fooId=1",
     "status_code": 200
+  }
+}
+```
+
+これに対して，Urlパーサのルールを定義する．```http.url```属性からパスパラメータやクエリパラメータを検出し，```url_details```属性として新しく付与する．
+
+```bash
+{
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  },
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "url": "/users?paginate=10&fooId=1",
+    "status_code": 200,
+    "url_details": {
+      "path": "/users",
+      "queryString": {
+        "paginate": 10,
+        "fooId": 1
+      }
+    }
   }
 }
 ```
 
 #### ・カテゴリパーサー
 
-検索条件に一致する属性を持つログ値に対して，属性を新しく付与する．
+検索条件に一致する属性を持つ構造化ログに対して，属性を新しく付与する．
 
 **＊例＊**
 
@@ -336,7 +367,7 @@ nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17
 
 以下のようなGrokパーサールールを定義する．```status_code```属性にステータスコード値を割り当てる．
 
-```
+```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
 error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
@@ -364,9 +395,9 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-以下のようなカテゴリパーサーを定義する．```status_code```属性の値に応じて，異なるステータスコード値（```info```，```notice```，```warning```，```error```）の```http.status_category```属性を付与する．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```status_code```属性の値に応じて，異なるステータスコード値（```info```，```notice```，```warning```，```error```）の```http.status_category```属性を付与する．
 
-```
+```bash
 info    @http.status_code:[200 TO 299]
 notice  @http.status_code:[300 TO 399]
 warning @http.status_code:[400 TO 499]
@@ -385,9 +416,9 @@ Nginxによって，以下のようなログが生成されるとする．
 nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
 ```
 
-以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
+これに対して，以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
 
-```
+```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
 error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
@@ -415,7 +446,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-ユーザエージェントパーサーを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分ける．これにより，構造化ログの各属性に値が割り当てられる．
+これに対して，ユーザエージェントパーサーのルールを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分ける．これにより，構造化ログの各属性に値が割り当てられる．
 
 ```bash
 {
@@ -501,3 +532,22 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 参考：https://docs.datadoghq.com/ja/logs/explorer/live_tail/
 
+<br>
+
+### ログクエリ
+
+#### ・ログクエリ
+
+構造化ログの属性名と値に基づいて，ログを絞り込める．
+
+参考：https://docs.datadoghq.com/ja/logs/explorer/search_syntax/
+
+#### ・オートコンプリート
+
+入力欄右のアイコンで切り替える．検索条件として属性名と値を補完入力できる．オートコンプリートをの使用時は，小文字で入力した属性名の頭文字が画面上で大文字に変換される．
+
+![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_auto-complete.png)
+
+入力欄右のアイコンで切り替える．検索条件として属性名と値をそのまま入力する．
+
+![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_non-auto-complete.png)

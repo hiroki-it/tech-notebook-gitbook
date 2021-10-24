@@ -12,6 +12,8 @@
 
 ### 可観測性とは
 
+![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
+
 『収集されたデータから，システムにおける想定外の不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの想定内の不具合は『監視』や『テスト』によって検知できるが，想定外のものを検知できない．しかし，可観測性を高めることにより，想定外の不具合を表面化できる．
 
 参考：
@@ -19,8 +21,6 @@
 - https://blog.thundra.io/observability-driven-development-for-serverless
 - https://sookocheff.com/post/architecture/testing-in-production/
 - https://www.sentinelone.com/blog/observability-production-systems-why-how/
-
-![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
 
 <br>
 
@@ -159,6 +159,8 @@
 
 ### 分散トレースとは
 
+![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
+
 マイクロサービスアーキテクチャにおいて，複数のサービスから収集されたスパンのセットのこと．スパンを紐づけることによって，異なるサービスを横断する処理を，一繋ぎなものとして認識できるようになる．
 
 参考：
@@ -167,17 +169,15 @@
 - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
 - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
 
-![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace.png)
-
 <br>
 
 ### 分散トレースの読み方
 
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
+
 上から下に読むと，上流サービス（上位スパン）が下流サービス（下位スパン）を処理をコールしていることを確認できる．下から上に読むと，下流サービス（下位スパン）から上流サービス（上位スパン）に結果を返却していることを確認できる．
 
 参考：https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
-
-![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-trace_reading.png)
 
 <br>
 
@@ -190,12 +190,9 @@
 参考：
 
 - https://opentracing.io/docs/overview/spans/
-
 - https://docs.datadoghq.com/ja/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
-
 - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
 
-  
 
 #### ・スパン間の紐づけ
 
