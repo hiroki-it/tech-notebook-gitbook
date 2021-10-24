@@ -32,10 +32,12 @@
         * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
         * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
     * アプリケーション間連携
-      * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
       * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
       * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
       * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
+      * RESTful-API
+        * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
+        * [📖 ︎API仕様書](public/software/software_application_collaboration_api_restful_api_specification.md)
     * バックエンド 
       * PHP
         * [📖 PHPコマンドと設定](public/software/software_application_backend_php_command_and_configuration.md)
