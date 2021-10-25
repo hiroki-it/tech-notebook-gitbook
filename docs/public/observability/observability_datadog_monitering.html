@@ -2454,31 +2454,78 @@
 <h2 id="02-&#x30EA;&#x30A2;&#x30EB;&#x30E6;&#x30FC;&#x30B6;&#x76E3;&#x8996;&#xFF08;rum&#xFF09;"><a name="02-&#x30EA;&#x30A2;&#x30EB;&#x30E6;&#x30FC;&#x30B6;&#x76E3;&#x8996;&#xFF08;rum&#xFF09;" class="plugin-anchor" href="#02-&#x30EA;&#x30A2;&#x30EB;&#x30E6;&#x30FC;&#x30B6;&#x76E3;&#x8996;&#xFF08;rum&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30EA;&#x30A2;&#x30EB;&#x30E6;&#x30FC;&#x30B6;&#x76E3;&#x8996;&#xFF08;RUM&#xFF09;</h2>
 <h3 id="&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;"><a name="&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;" class="plugin-anchor" href="#&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;</h3>
 <h4 id="&#x30FB;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30A8;&#x30E9;&#x30FC;&#x3068;&#x306F;</h4>
-<p>&#x4EE5;&#x4E0B;&#x3067;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x3053;&#x3068;</p>
+<p>Datadog&#x306B;&#x304A;&#x3044;&#x3066;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306E;&#x30A8;&#x30E9;&#x30FC;&#x306F;&#x4EE5;&#x4E0B;&#x306B;&#x5206;&#x985E;&#x3055;&#x308C;&#x308B;&#xFF0E;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm" target="_blank">https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm</a></p>
 <table>
 <thead>
 <tr>
-<th>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x5834;&#x6240;</th>
+<th>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x30BD;&#x30FC;&#x30B9;</th>
 <th>&#x30A8;&#x30E9;&#x30FC;&#x306E;&#x4F8B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x4E0A;</td>
-<td>&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x30A8;&#x30E9;&#x30FC;</td>
+<td>&#x30FB;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305A;&#x306B;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x4E0A;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x305F;&#x4F8B;&#x5916;<br>&#x30FB;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305A;&#x306B;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x4E0A;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x305F;Promise&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;<code>reject</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306E;&#x7D50;&#x679C;</td>
 </tr>
 <tr>
 <td>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;</td>
-<td></td>
+<td><code>console.error</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x30B3;&#x30F3;&#x30BD;&#x30FC;&#x30EB;&#x4E0A;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30C6;&#x30AD;&#x30B9;&#x30C8;</td>
 </tr>
 <tr>
 <td>&#x30AB;&#x30B9;&#x30BF;&#x30E0;</td>
+<td><code>@datadog/browser-rum</code>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;<code>addError</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;Datadog-API&#x306B;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x305F;&#x30C6;&#x30AD;&#x30B9;&#x30C8;</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h2 id="03-&#x30B0;&#x30E9;&#x30D5;"><a name="03-&#x30B0;&#x30E9;&#x30D5;" class="plugin-anchor" href="#03-&#x30B0;&#x30E9;&#x30D5;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x30B0;&#x30E9;&#x30D5;</h2>
+<h2 id="03-&#x5408;&#x6210;&#x76E3;&#x8996;"><a name="03-&#x5408;&#x6210;&#x76E3;&#x8996;" class="plugin-anchor" href="#03-&#x5408;&#x6210;&#x76E3;&#x8996;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x5408;&#x6210;&#x76E3;&#x8996;</h2>
+<h3 id="&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x69CB;&#x6210;"><a name="&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x69CB;&#x6210;" class="plugin-anchor" href="#&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x69CB;&#x6210;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x69CB;&#x6210;</h3>
+<h4 id="&#x30FB;&#x9001;&#x4FE1;&#x5143;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;"><a name="&#x30FB;&#x9001;&#x4FE1;&#x5143;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;" class="plugin-anchor" href="#&#x30FB;&#x9001;&#x4FE1;&#x5143;ip&#x30A2;&#x30C9;&#x30EC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x9001;&#x4FE1;&#x5143;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;</h4>
+<p>Datadog&#x793E;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x304B;&#x3089;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#xFF0E;&#x30B5;&#x30FC;&#x30D0;&#x81EA;&#x4F53;&#x306F;AWS&#x3084;Azure&#x306B;&#x3088;&#x3063;&#x3066;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x3066;&#x304A;&#x308A;&#xFF0C;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x9078;&#x629E;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x30EA;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3054;&#x3068;&#x306B;&#x6570;&#x500B;&#x305A;&#x3064;&#x30B5;&#x30FC;&#x30D0;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x305F;&#x3081;&#xFF0C;&#x3082;&#x3057;&#x5408;&#x6210;&#x76E3;&#x8996;&#x5BFE;&#x8C61;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;IP&#x5236;&#x9650;&#x304C;&#x884C;&#x308F;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#xFF0C;&#x3053;&#x308C;&#x3089;&#x306E;&#x30B5;&#x30FC;&#x30D0;&#x306E;IP&#x304B;&#x3089;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8A31;&#x53EF;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#xFF0E;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests" target="_blank">https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests</a></p>
+<h4 id="&#x30FB;&#x30D8;&#x30C3;&#x30C0;&#x30FC;"><a name="&#x30FB;&#x30D8;&#x30C3;&#x30C0;&#x30FC;" class="plugin-anchor" href="#&#x30FB;&#x30D8;&#x30C3;&#x30C0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D8;&#x30C3;&#x30C0;&#x30FC;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers" target="_blank">https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers</a></li>
+<li><a href="https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests" target="_blank">https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x30D8;&#x30C3;&#x30C0;&#x30FC;</th>
+<th>&#x5024;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user-agent</td>
+<td>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30C6;&#x30B9;&#x30C8;&#x3067;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>sec-datadog</td>
+<td>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30C6;&#x30B9;&#x30C8;&#x306E;ID&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>x-datadog-trace-id</td>
+<td>&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x30C6;&#x30B9;&#x30C8;&#x3068;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;ID&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>x-datadog-parent-id</td>
+<td>&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30B9;&#x30D1;&#x30F3;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>0</code>&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>x-datadog-origin</td>
+<td>&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x304C;APM&#x30AF;&#x30AA;&#x30FC;&#x30BF;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#xFF0C;<code>synthetics-browser</code>&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3089;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+<tr>
+<td>x-datadog-sampling-priority</td>
+<td>&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x304C;&#x53CE;&#x96C6;&#x3055;&#x308C;&#x308B;&#x512A;&#x5148;&#x5EA6;&#x3068;&#x3057;&#x3066;&#xFF0C;<code>1</code>&#x304C;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308C;&#x308B;&#xFF0E;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="04-&#x30B0;&#x30E9;&#x30D5;"><a name="04-&#x30B0;&#x30E9;&#x30D5;" class="plugin-anchor" href="#04-&#x30B0;&#x30E9;&#x30D5;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30B0;&#x30E9;&#x30D5;</h2>
 <h3 id="&#x56F3;&#x306E;&#x7A2E;&#x985E;"><a name="&#x56F3;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x56F3;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56F3;&#x306E;&#x7A2E;&#x985E;</h3>
 <h3 id="&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;"><a name="&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x306E;&#x7A2E;&#x985E;</h3>
 <h4 id="&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><a name="&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;log&#xFF08;&#x5BFE;&#x6570;&#xFF09;&#x30B9;&#x30B1;&#x30FC;&#x30EB;</h4>
@@ -2525,7 +2572,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎監視","level":"1.11.3.4","depth":3,"next":{"title":"システム開発手法論","level":"1.12","depth":1,"ref":"","articles":[{"title":"📖 ︎システム開発手法論","level":"1.12.1","depth":2,"path":"public/system_development_methodology/system_development_methodology.md","ref":"public/system_development_methodology/system_development_methodology.md","articles":[]},{"title":"📖 ︎プロジェクト管理","level":"1.12.2","depth":2,"path":"public/system_development_methodology/system_development_methodology_project_management.md","ref":"public/system_development_methodology/system_development_methodology_project_management.md","articles":[]},{"title":"Git","level":"1.12.3","depth":2,"ref":"","articles":[{"title":"📖 ︎GitHub","level":"1.12.3.1","depth":3,"path":"public/system_development_methodology/system_development_methodology_github.md","ref":"public/system_development_methodology/system_development_methodology_github.md","articles":[]},{"title":"📖 ︎Gitコマンド","level":"1.12.3.2","depth":3,"path":"public/system_development_methodology/system_development_methodology_git_command.md","ref":"public/system_development_methodology/system_development_methodology_git_command.md","articles":[]}]}]},"previous":{"title":"📖 ︎分散トレース収集","level":"1.11.3.3","depth":3,"path":"public/observability/observability_datadog_distributed_trace.md","ref":"public/observability/observability_datadog_distributed_trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_datadog_monitering.md","mtime":"2021-10-24T08:20:59.861Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-25T11:46:35.843Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎監視","level":"1.11.3.4","depth":3,"next":{"title":"システム開発手法論","level":"1.12","depth":1,"ref":"","articles":[{"title":"📖 ︎システム開発手法論","level":"1.12.1","depth":2,"path":"public/system_development_methodology/system_development_methodology.md","ref":"public/system_development_methodology/system_development_methodology.md","articles":[]},{"title":"📖 ︎プロジェクト管理","level":"1.12.2","depth":2,"path":"public/system_development_methodology/system_development_methodology_project_management.md","ref":"public/system_development_methodology/system_development_methodology_project_management.md","articles":[]},{"title":"Git","level":"1.12.3","depth":2,"ref":"","articles":[{"title":"📖 ︎GitHub","level":"1.12.3.1","depth":3,"path":"public/system_development_methodology/system_development_methodology_github.md","ref":"public/system_development_methodology/system_development_methodology_github.md","articles":[]},{"title":"📖 ︎Gitコマンド","level":"1.12.3.2","depth":3,"path":"public/system_development_methodology/system_development_methodology_git_command.md","ref":"public/system_development_methodology/system_development_methodology_git_command.md","articles":[]}]}]},"previous":{"title":"📖 ︎分散トレース収集","level":"1.11.3.3","depth":3,"path":"public/observability/observability_datadog_distributed_trace.md","ref":"public/observability/observability_datadog_distributed_trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability/observability_datadog_monitering.md","mtime":"2021-10-25T23:32:03.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-25T23:50:08.290Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
