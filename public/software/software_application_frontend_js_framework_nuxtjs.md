@@ -175,7 +175,7 @@ const nuxtConfig: Configuration = {
 
 ####  ・```privateRuntimeConfig```
 
-SSRモードでのみ使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする
+SSRモードでのみ使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -202,9 +202,19 @@ const nuxtConfig: Configuration = {
 API_KEY=*****
 ```
 
+```javascript
+export function foo() {
+  // contextオブジェクトの$configプロパティを分割代入
+  const { $config } = useContext()
+  
+  $config.apiKey
+}
+
+```
+
 #### ・```publicRuntimeConfig```
 
-SPAモードまたはSSRモードで使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．
+SPAモードまたはSSRモードで使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -229,6 +239,16 @@ const nuxtConfig: Configuration = {
 ```bash
 # .envファイル
 API_URL=https://example.co.jp/api
+```
+
+```javascript
+export function foo() {
+  // contextオブジェクトの$configプロパティを分割代入
+  const { $config } = useContext()
+  
+  $config.apiUrl
+}
+
 ```
 
 #### ・```quiet```

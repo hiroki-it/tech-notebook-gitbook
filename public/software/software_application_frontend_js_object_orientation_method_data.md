@@ -14,7 +14,7 @@
 
 #### ・関数オブジェクトとは
 
-オブジェクトでもある関数である．
+オブジェクトでもあり，関数である．
 
 #### ・リテラル表記による関数オブジェクト
 
@@ -55,8 +55,8 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 
 ```javascript
 // 定義（コールする場所が前後しても無関係）
-function methodA(){
-    return "A";
+function foo(){
+    return "foo";
 }
 ```
 
@@ -74,7 +74,7 @@ JavaScriptでよく見かけるドルマーク．これは，関数の名前と�
 ```javascript
 // 定義
 function $(){
-    return "A";
+    return "foo";
 }
 ```
 
@@ -113,6 +113,32 @@ asyncFunc(test, (err, data) => {
     console.log(data);
 });
 ```
+
+#### ・ファイル外で読み込む
+
+関数の前で```export```を宣言する．
+
+**＊実装例＊**
+
+関数の定義と```export```宣言を同時に行う．
+
+```javascript
+export function foo(){
+    return "foo";
+}
+```
+
+あるいは，別々に行う．
+
+```javascript
+const foo = () => {
+    return "foo";
+}
+
+export default foo
+```
+
+
 
 <br>
 
@@ -303,6 +329,47 @@ let x = "hoge";
 
 <br>
 
+### 分割代入
+
+#### ・配列
+
+配列の値を，任意の名前の変数に代入する．
+
+**＊実装例＊**
+
+```javascript
+const array = [1, 2, 3];
+
+// fooに1，barに2，bazに3，を代入
+const [foo, bar, baz] = array;
+
+console.log(foo); // 1
+console.log(bar); // 2
+console.log(baz); // 3
+```
+
+#### ・オブジェクト
+
+オブジェクトの値を，プロパティ名と同じ名前の変数に代入する．
+
+**＊実装例＊**
+
+```javascript
+const obj = {
+    foo: 1,
+    bar: 2,
+    baz: 3
+};
+
+// プロパティ名と同じ名前の変数に代入
+const {foo, baz} = obj;
+
+console.log(foo); // 1
+console.log(bar); // 3
+```
+
+<br>
+
 ## 04. 反復
 
 ### ```for ... of```
@@ -350,7 +417,7 @@ const object = {
   "z": "baz"
 };
 
-for (const [key, value] of Object.entries(object)) {
+for (const [property, value] of Object.entries(object)) {
   console.log(value);
 }
 
@@ -365,7 +432,7 @@ for (const [key, value] of Object.entries(object)) {
 
 #### ・```for ... in```とは
 
-配列／オブジェクト（連想配列）を順序を保たずに走査し，オブジェクト／配列のキー名を取得する．
+配列／オブジェクト（連想配列）を順序を保たずに走査し，オブジェクトのプロパティ名や配列のキー名を取得する．
 
 #### ・配列の場合
 
@@ -390,9 +457,9 @@ const object = {
   "z": "baz"
 };
 
-for (const key in object) {
-  console.log(key);
-  console.log(object[key]);
+for (const property in object) {
+  console.log(property);
+  console.log(object[property]);
 }
 
 // x
@@ -416,7 +483,7 @@ const array = ["foo", "bar", "baz"];
 
 for (const [key, value] of array.entries()) {
 
-    // キーが偶数の組をスキップする．
+    // キー名が偶数の組をスキップする．
     if(!(key % 2 == 0)){
         continue;
     }
@@ -445,7 +512,7 @@ PHPにも，```forEach```関数と同じように配列に対してコールバ�
 ```javascript
 const array = ["foo", "bar", "baz"];
 
-array.forEach(function (value, key) {
+array.forEach((value, key) => {
     
     // キーが偶数の組をスキップする．
     if(!(key % 2 == 0)){

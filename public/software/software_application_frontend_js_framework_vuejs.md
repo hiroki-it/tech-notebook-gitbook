@@ -564,10 +564,10 @@ var vm = new Vue({
 
 ![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vue-router.png)
 
-ルーティングライブラリの一つ．コンポーネントに対してルーティングを行い，```/{ルート}/パラメータ}```に応じて，コールするコンポーネントを動的に切り替えることができる．
+ルーティングライブラリの一つ．コンポーネントに対してルーティングを行い，```/<ルート>/<パラメータ>```に応じて，コールするコンポーネントを動的に切り替えることができる．
 
 ```http
-GET http://www.example.co.jp:80/{ルート}/{パスパラメータ}?text1=a&text2=b HTTP/2
+GET http://www.example.co.jp:80/<ルート>/<パスパラメータ>?text1=a&text2=b HTTP/2
 ```
 
 **＊実装例＊**
@@ -588,7 +588,7 @@ const router = new VueRouter({
 module.exports = router;
 ```
 
-そして，Vue-Routerの機能を利用するために，```router```オプションをルートコンポーネントに注入する必要がある．
+また，Vue-Routerの機能を利用するために，```router```オプションをルートコンポーネントに注入する必要がある．
 
 ```javascript
 import router from "./router"

@@ -293,13 +293,13 @@ const object1 = {};
 const object2 = new Object({});
 
 // ユーザ宣言Functionコンストラクタ関数による生成
-const Object3 = () =>{};
+const Object3 = () => {};
 
 // 出力結果
 console.log(
     object1.prototype, // undefined
     object2.prototype,  // undefined
-    Object3.prototype // Object3 {}
+    object3.prototype // Object3 {}
 );
 ```
 

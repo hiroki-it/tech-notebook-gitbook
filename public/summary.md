@@ -31,8 +31,8 @@
         * [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_communication.html)
         * [📖 ︎認証／認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html)
         * RESTful-API
-            * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.md)
-            * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful_api_specification.md)
+            * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html)
+            * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful_api_specification.html)
     * バックエンド
         * PHP
             * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_command_and_configuration.html)
