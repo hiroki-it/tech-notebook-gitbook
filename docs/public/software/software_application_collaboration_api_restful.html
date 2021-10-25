@@ -73,7 +73,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="software_application_collaboration_json.html" />
+    <link rel="next" href="software_application_collaboration_api_restful_api_specification.html" />
     
     
 
@@ -544,20 +544,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.4.2.1" data-path="software_application_collaboration_api_restful.html">
-            
-                <a href="software_application_collaboration_api_restful.html">
-            
-                    
-                    📖 ︎RESTful-API
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4.2.2" data-path="software_application_collaboration_json.html">
+        <li class="chapter " data-level="1.4.4.2.1" data-path="software_application_collaboration_json.html">
             
                 <a href="software_application_collaboration_json.html">
             
@@ -570,7 +557,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.3" data-path="software_application_collaboration_communication.html">
+        <li class="chapter " data-level="1.4.4.2.2" data-path="software_application_collaboration_communication.html">
             
                 <a href="software_application_collaboration_communication.html">
             
@@ -583,7 +570,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.4" data-path="software_application_collaboration_authentication_authorization.html">
+        <li class="chapter " data-level="1.4.4.2.3" data-path="software_application_collaboration_authentication_authorization.html">
             
                 <a href="software_application_collaboration_authentication_authorization.html">
             
@@ -593,6 +580,51 @@
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2.4" >
+            
+                <span>
+            
+                    
+                    RESTful-API
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.4.2.4.1" data-path="software_application_collaboration_api_restful.html">
+            
+                <a href="software_application_collaboration_api_restful.html">
+            
+                    
+                    📖 ︎RESTful-API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2.4.2" data-path="software_application_collaboration_api_restful_api_specification.html">
+            
+                <a href="software_application_collaboration_api_restful_api_specification.html">
+            
+                    
+                    📖 ︎API仕様書
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -3259,436 +3291,6 @@ php_value<span class="token punctuation">[</span>session.save_path<span class="t
 <li>2&#x56DE;&#x76EE;&#x4EE5;&#x964D;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x306F;&#xFF0C;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306F;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30D8;&#x30C3;&#x30C0;&#x60C5;&#x5831;&#x306E;Cookie&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x3092;&#x30B5;&#x30FC;&#x30D0;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#xFF0E;&#x30B5;&#x30FC;&#x30D0;&#x306F;&#xFF0C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;ID&#x306B;&#x7D10;&#x3065;&#x304F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;Read&#x3059;&#x308B;&#xFF0E;</li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png" alt="session-id"></p>
-<p><br></p>
-<h2 id="06-api&#x4ED5;&#x69D8;&#x66F8;"><a name="06-api&#x4ED5;&#x69D8;&#x66F8;" class="plugin-anchor" href="#06-api&#x4ED5;&#x69D8;&#x66F8;"><i class="fa fa-link" aria-hidden="true"></i></a>06. API&#x4ED5;&#x69D8;&#x66F8;</h2>
-<h3 id="openapi&#x4ED5;&#x69D8;"><a name="openapi&#x4ED5;&#x69D8;" class="plugin-anchor" href="#openapi&#x4ED5;&#x69D8;"><i class="fa fa-link" aria-hidden="true"></i></a>OpenAPI&#x4ED5;&#x69D8;</h3>
-<h4 id="&#x30FB;openapi&#x4ED5;&#x69D8;&#x3068;&#x306F;"><a name="&#x30FB;openapi&#x4ED5;&#x69D8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;openapi&#x4ED5;&#x69D8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;OpenAPI&#x4ED5;&#x69D8;&#x3068;&#x306F;</h4>
-<p>RESTful API&#x306E;&#x4ED5;&#x69D8;&#x3092;&#x5B9F;&#x88C5;&#x306B;&#x3088;&#x308A;&#x8AAC;&#x660E;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x306E;&#x3053;&#x3068;&#xFF0E;JSON&#x578B;&#x307E;&#x305F;&#x306F;YAML&#x578B;&#x3067;&#x5B9F;&#x88C5;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304B;&#x3089;&#x69CB;&#x6210;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://spec.openapis.org/oas/v3.1.0#fixed-fields" target="_blank">https://spec.openapis.org/oas/v3.1.0#fixed-fields</a></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">openapi</span><span class="token punctuation">:</span> <span class="token comment"># openapi&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">info</span><span class="token punctuation">:</span> <span class="token comment"># info&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">servers</span><span class="token punctuation">:</span> <span class="token comment"># servers&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token comment"># paths&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">webhooks</span><span class="token punctuation">:</span> <span class="token comment"># webhooks&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">components</span><span class="token punctuation">:</span> <span class="token comment"># components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">security</span><span class="token punctuation">:</span> <span class="token comment"># security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">tags</span><span class="token punctuation">:</span> <span class="token comment"># tags&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-
-<span class="token key atrule">externalDocs</span><span class="token punctuation">:</span> <span class="token comment"># externalDocs&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</span>
-</code></pre>
-<h4 id="&#x30FB;api-gateway&#x306B;&#x3088;&#x308B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;"><a name="&#x30FB;api-gateway&#x306B;&#x3088;&#x308B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;" class="plugin-anchor" href="#&#x30FB;api-gateway&#x306B;&#x3088;&#x308B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;API Gateway&#x306B;&#x3088;&#x308B;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</h4>
-<p>API Gateway&#x306B;&#x3088;&#x308B;OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html</a></p>
-<h4 id="&#x30FB;openapi&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><a name="&#x30FB;openapi&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;" class="plugin-anchor" href="#&#x30FB;openapi&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;openapi&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;</h4>
-<p>OpenAPI&#x4ED5;&#x69D8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">openapi</span><span class="token punctuation">:</span> 3.0.0
-</code></pre>
-<h4 id="&#x30FB;info&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><a name="&#x30FB;info&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;" class="plugin-anchor" href="#&#x30FB;info&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;info&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;</h4>
-<p>API&#x540D;&#xFF0C;&#x4F5C;&#x6210;&#x8005;&#x540D;&#xFF0C;&#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#xFF0C;&#x30E9;&#x30A4;&#x30BB;&#x30F3;&#x30B9;&#xFF0C;&#x306A;&#x3069;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">info</span><span class="token punctuation">:</span>
-  <span class="token key atrule">title</span><span class="token punctuation">:</span> Foo API <span class="token comment"># API&#x540D;</span>
-  <span class="token key atrule">description</span><span class="token punctuation">:</span> The API for Foo. <span class="token comment"># API&#x306E;&#x8AAC;&#x660E;</span>
-  <span class="token key atrule">termsOfService</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.foo.com/terms/ <span class="token comment"># &#x5229;&#x7528;&#x898F;&#x7D04;</span>
-  <span class="token key atrule">contact</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> API support <span class="token comment"># &#x9023;&#x7D61;&#x5148;&#x540D;</span>
-    <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.foo.com/support <span class="token comment"># &#x9023;&#x7D61;&#x5148;&#x306B;&#x95A2;&#x3059;&#x308B;URL</span>
-    <span class="token key atrule">email</span><span class="token punctuation">:</span> support@foo.com <span class="token comment"># &#x30E1;&#x30FC;&#x30EB;&#x30A2;&#x30C9;&#x30EC;&#x30B9;</span>
-  <span class="token key atrule">license</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> Apache 2.0 <span class="token comment"># &#x30E9;&#x30A4;&#x30BB;&#x30F3;&#x30B9;</span>
-    <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.apache.org/licenses/LICENSE<span class="token punctuation">-</span>2.0.html <span class="token comment"># URL</span>
-  <span class="token key atrule">version</span><span class="token punctuation">:</span> 1.0.0 <span class="token comment"># API&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;</span>
-</code></pre>
-<h4 id="&#x30FB;servers&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><a name="&#x30FB;servers&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;" class="plugin-anchor" href="#&#x30FB;servers&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;servers&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</h4>
-<p>API&#x81EA;&#x4F53;&#x306E;URL&#xFF0C;&#x306A;&#x3069;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">servers</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//<span class="token punctuation">{</span>env<span class="token punctuation">}</span>.foo.com/api/v1
-    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-    variables:
-      env:
-        default: stg
-        description: API environment
-        enum:
-          - stg
-          - www</span>
-</code></pre>
-<h4 id="&#x30FB;paths&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><a name="&#x30FB;paths&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;" class="plugin-anchor" href="#&#x30FB;paths&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;paths&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;</h4>
-<p>API&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF0C;HTTP&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF0C;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#xFF0C;&#x306A;&#x3069;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">paths</span><span class="token punctuation">:</span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># paths&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">/users</span><span class="token punctuation">:</span>
-    <span class="token comment">#===========================</span>
-    <span class="token comment"># path item&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-    <span class="token comment">#===========================</span>
-    <span class="token key atrule">get</span><span class="token punctuation">:</span> <span class="token comment"># GET&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
-      <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x53D6;&#x5F97;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
-      <span class="token key atrule">summary</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x53D6;&#x5F97;
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x5168;&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">parameters</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">responses</span><span class="token punctuation">:</span>
-        <span class="token key atrule">&apos;200&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> OK &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">Users</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">User</span><span class="token punctuation">:</span>
-                    <span class="token key atrule">userId</span><span class="token punctuation">:</span> <span class="token number">1</span>
-                    <span class="token key atrule">name</span><span class="token punctuation">:</span> Hiroki
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/user&quot;</span> <span class="token comment"># User&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;400&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Bad Request &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">400</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Bad Request
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                    <span class="token string">&quot;&#x4E0D;&#x6B63;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3067;&#x3059;&#xFF0E;&quot;</span>
-                <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;401&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/responses/unauthorized&quot;</span> <span class="token comment"># &#x8A8D;&#x8A3C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;              </span>
-    <span class="token comment">#===========================</span>
-    <span class="token comment"># path item&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-    <span class="token comment">#===========================</span>
-    <span class="token key atrule">post</span><span class="token punctuation">:</span> <span class="token comment"># POST&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#xFF0E;</span>
-      <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x4F5C;&#x6210;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
-      <span class="token key atrule">summary</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x4F5C;&#x6210;
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#xFF0E;
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">parameters</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-      <span class="token key atrule">requestBody</span><span class="token punctuation">:</span> <span class="token comment"># &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;ID
-        <span class="token key atrule">content</span><span class="token punctuation">:</span>
-          <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-            <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-              <span class="token key atrule">userId</span><span class="token punctuation">:</span> <span class="token number">1</span>
-            <span class="token key atrule">schema</span><span class="token punctuation">:</span> <span class="token comment"># &#x30B9;&#x30AD;&#x30FC;&#x30DE;</span>
-              <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/user&quot;</span> <span class="token comment"># User&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">responses</span><span class="token punctuation">:</span>
-        <span class="token key atrule">&apos;200&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> OK &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">userId</span><span class="token punctuation">:</span> <span class="token number">1</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/normal&quot;</span> <span class="token comment"># &#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x6B63;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;400&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Bad Request &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">400</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Bad Request
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                      <span class="token string">&quot;&#x30E6;&#x30FC;&#x30B6;ID&#x306F;&#x5FC5;&#x305A;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&quot;</span>
-                  <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;401&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/responses/unauthorized&quot;</span> <span class="token comment"># &#x8A8D;&#x8A3C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;              </span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># paths&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-  <span class="token comment">#===========================</span>
-  /users/<span class="token punctuation">{</span>userId<span class="token punctuation">}</span><span class="token punctuation">:</span>
-    <span class="token comment">#===========================</span>
-    <span class="token comment"># path item&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-    <span class="token comment">#===========================</span>
-    <span class="token key atrule">get</span><span class="token punctuation">:</span>
-      <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x53D6;&#x5F97;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
-      <span class="token key atrule">summary</span><span class="token punctuation">:</span> &#x6307;&#x5B9A;&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x53D6;&#x5F97;
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#xFF0E;
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">in</span><span class="token punctuation">:</span> path <span class="token comment"># &#x30D1;&#x30B9;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
-          <span class="token key atrule">name</span><span class="token punctuation">:</span> userId
-          <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;ID
-          <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-            <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-            <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x4F8B;</span>
-              userId=1
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">responses</span><span class="token punctuation">:</span>
-        <span class="token key atrule">&apos;200&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> OK &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">userId</span><span class="token punctuation">:</span> <span class="token number">1</span>
-                <span class="token key atrule">name</span><span class="token punctuation">:</span> Hiroki
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span> <span class="token comment"># &#x30B9;&#x30AD;&#x30FC;&#x30DE;</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/user&quot;</span> <span class="token comment"># User&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;400&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Bad Request &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">400</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Bad Request
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                      <span class="token string">&quot;&#x30E6;&#x30FC;&#x30B6;ID&#x306F;&#x5FC5;&#x305A;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&quot;</span>
-                  <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;401&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/responses/unauthorized&quot;</span> <span class="token comment"># &#x8A8D;&#x8A3C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;404&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Not Found &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">404</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Not Found
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                      <span class="token string">&quot;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x898B;&#x3064;&#x304B;&#x308A;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#xFF0E;&quot;</span>
-                  <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-    <span class="token comment">#===========================</span>
-    <span class="token comment"># path item&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</span>
-    <span class="token comment">#===========================                </span>
-    <span class="token key atrule">put</span><span class="token punctuation">:</span>
-      <span class="token key atrule">tags</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x66F4;&#x65B0;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
-      <span class="token key atrule">summary</span><span class="token punctuation">:</span> &#x6307;&#x5B9A;&#x30E6;&#x30FC;&#x30B6;&#x66F4;&#x65B0;
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x6307;&#x5B9A;&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#xFF0E;
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">parameters</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">in</span><span class="token punctuation">:</span> path <span class="token comment"># &#x30D1;&#x30B9;&#x306B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x308B;&#xFF0E;</span>
-          <span class="token key atrule">name</span><span class="token punctuation">:</span> userId
-          <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;ID
-          <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-            <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-            <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x4F8B;</span>
-              userId=1
-      <span class="token comment">#===========================</span>
-      <span class="token comment"># &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-      <span class="token comment">#===========================</span>
-      <span class="token key atrule">responses</span><span class="token punctuation">:</span>
-        <span class="token key atrule">&apos;200&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> OK &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># Content-Type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">userId</span><span class="token punctuation">:</span> <span class="token number">1</span>
-                <span class="token key atrule">name</span><span class="token punctuation">:</span> Hiroki
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span> <span class="token comment"># &#x30B9;&#x30AD;&#x30FC;&#x30DE;</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/user&quot;</span> <span class="token comment"># User&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;400&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Bad Request &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># Content-Type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">400</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Bad Request
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                      <span class="token string">&quot;&#x30E6;&#x30FC;&#x30B6;ID&#x306F;&#x5FC5;&#x305A;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&quot;</span>
-                  <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;401&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/responses/unauthorized&quot;</span> <span class="token comment"># &#x8A8D;&#x8A3C;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-        <span class="token key atrule">&apos;404&apos;</span><span class="token punctuation">:</span>
-          <span class="token key atrule">description</span><span class="token punctuation">:</span> Not Found &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-          <span class="token key atrule">content</span><span class="token punctuation">:</span>
-            <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># Content-Type</span>
-              <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-                <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">404</span>
-                <span class="token key atrule">title</span><span class="token punctuation">:</span> Not Found
-                <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-                  <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                      <span class="token string">&quot;&#x5BFE;&#x8C61;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x304C;&#x898B;&#x3064;&#x304B;&#x308A;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#xFF0E;&quot;</span>
-                  <span class="token punctuation">]</span>
-              <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-                <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;</span>
-</code></pre>
-<h4 id="&#x30FB;components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><a name="&#x30FB;components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;" class="plugin-anchor" href="#&#x30FB;components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#xFF08;&#x5FC5;&#x9808;&#xFF09;</h4>
-<p>&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306A;&#x3069;&#xFF0C;&#x4ED6;&#x306E;&#x9805;&#x76EE;&#x3067;&#x5171;&#x901A;&#x3057;&#x3066;&#x5229;&#x7528;&#x3059;&#x308B;&#x3082;&#x306E;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">components</span><span class="token punctuation">:</span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># callback&#x30AD;&#x30FC;&#x306E;&#x5171;&#x901A;&#x5316;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">callbacks</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># link&#x30AD;&#x30FC;&#x306E;&#x5171;&#x901A;&#x5316;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">links</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># response&#x30AD;&#x30FC;&#x306E;&#x5171;&#x901A;&#x5316;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">responses</span><span class="token punctuation">:</span>
-    <span class="token key atrule">unauthorized</span><span class="token punctuation">:</span>
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> Unauthorized &#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;
-      <span class="token key atrule">content</span><span class="token punctuation">:</span>
-        <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token comment"># MIME type</span>
-          <span class="token key atrule">foo</span><span class="token punctuation">:</span> <span class="token comment"># &#x30DC;&#x30C7;&#x30A3;&#x4F8B;</span>
-            <span class="token key atrule">status</span><span class="token punctuation">:</span> <span class="token number">401</span>
-            <span class="token key atrule">title</span><span class="token punctuation">:</span> Unauthorized
-            <span class="token key atrule">errors</span><span class="token punctuation">:</span>
-              <span class="token key atrule">messages</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                  <span class="token string">&quot;API&#x30AD;&#x30FC;&#x306E;&#x8A8D;&#x53EF;&#x306B;&#x5931;&#x6557;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;&quot;</span>
-              <span class="token punctuation">]</span>
-          <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-            <span class="token key atrule">$ref</span><span class="token punctuation">:</span> <span class="token string">&quot;#/components/schemas/error&quot;</span> <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#xFF0E;              </span>
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># schema&#x30AD;&#x30FC;&#x306E;&#x5171;&#x901A;&#x5316;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">schemas</span><span class="token punctuation">:</span>
-    <span class="token comment"># &#x30E6;&#x30FC;&#x30B6;</span>
-    <span class="token key atrule">user</span><span class="token punctuation">:</span>
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> object
-      <span class="token key atrule">properties</span><span class="token punctuation">:</span>
-        <span class="token key atrule">userId</span><span class="token punctuation">:</span>
-          <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-        <span class="token key atrule">name</span><span class="token punctuation">:</span>
-          <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-    <span class="token comment"># &#x6B63;&#x5E38;&#x7CFB;</span>
-    <span class="token key atrule">normal</span><span class="token punctuation">:</span>
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> object
-      <span class="token key atrule">properties</span><span class="token punctuation">:</span>
-        <span class="token key atrule">userId</span><span class="token punctuation">:</span>
-          <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-    <span class="token comment"># &#x7570;&#x5E38;&#x7CFB;      </span>
-    <span class="token key atrule">error</span><span class="token punctuation">:</span>
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> object
-      <span class="token key atrule">properties</span><span class="token punctuation">:</span>
-        <span class="token key atrule">messages</span><span class="token punctuation">:</span>
-          <span class="token key atrule">type</span><span class="token punctuation">:</span> array
-          <span class="token key atrule">items</span><span class="token punctuation">:</span>
-            <span class="token key atrule">type</span><span class="token punctuation">:</span> string
-  <span class="token comment">#===========================</span>
-  <span class="token comment"># security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306E;&#x5171;&#x901A;&#x5316;</span>
-  <span class="token comment">#===========================</span>
-  <span class="token key atrule">securitySchemes</span><span class="token punctuation">:</span>
-    <span class="token comment"># Basic&#x8A8D;&#x8A3C;</span>
-    <span class="token key atrule">basicAuth</span><span class="token punctuation">:</span>
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> Basic&#x8A8D;&#x8A3C;
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> http
-      <span class="token key atrule">scheme</span><span class="token punctuation">:</span> basic
-    <span class="token comment"># Bearer&#x8A8D;&#x8A3C;</span>
-    <span class="token key atrule">bearerAuth</span><span class="token punctuation">:</span>
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> Bearer&#x8A8D;&#x8A3C;
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> http
-      <span class="token key atrule">scheme</span><span class="token punctuation">:</span> bearer
-    <span class="token comment"># API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;</span>
-    <span class="token key atrule">apiKeyAuth</span><span class="token punctuation">:</span>
-      <span class="token key atrule">description</span><span class="token punctuation">:</span> API&#x30AD;&#x30FC;&#x8A8D;&#x8A3C;
-      <span class="token key atrule">type</span><span class="token punctuation">:</span> apiKey
-      <span class="token key atrule">name</span><span class="token punctuation">:</span> x<span class="token punctuation">-</span>api<span class="token punctuation">-</span>key <span class="token comment"># &#x30D8;&#x30C3;&#x30C0;&#x540D;&#x306F;&#x300E;x-api-key&#x300F;&#x3068;&#x3059;&#x308B;&#xFF0E;&#x5C0F;&#x6587;&#x5B57;&#x304C;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#xFF0E;</span>
-      <span class="token key atrule">in</span><span class="token punctuation">:</span> header
-</code></pre>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<h4 id="&#x30FB;security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><a name="&#x30FB;security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;" class="plugin-anchor" href="#&#x30FB;security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;security&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</h4>
-<p>components&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x305F;&#x8A8D;&#x8A3C;&#x65B9;&#x6CD5;&#x3092;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#xFF0E;&#x30EB;&#x30FC;&#x30C8;&#x3067;&#x5BA3;&#x8A00;&#x3059;&#x308B;&#x3068;&#xFF0C;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30B9;&#x306B;&#x9069;&#x7528;&#x3067;&#x304D;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">security</span><span class="token punctuation">:</span> 
-  <span class="token punctuation">-</span> <span class="token key atrule">apiKeyAuth</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-</code></pre>
-<h4 id="&#x30FB;tags&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><a name="&#x30FB;tags&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;" class="plugin-anchor" href="#&#x30FB;tags&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;tags&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</h4>
-<p>&#x5404;&#x9805;&#x76EE;&#x306B;&#x4ED8;&#x3051;&#x308B;&#x30BF;&#x30B0;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;&#x540C;&#x540D;&#x306E;&#x30BF;&#x30B0;&#x3092;&#x3064;&#x3051;&#x308B;&#x3068;&#xFF0C;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x307E;&#x3068;&#x3081;&#x3089;&#x308C;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">tags</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &#x30E6;&#x30FC;&#x30B6;&#x60C5;&#x5831;&#x53D6;&#x5F97;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;
-    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token punctuation">|</span>
-</code></pre>
-<h4 id="&#x30FB;externaldocs&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><a name="&#x30FB;externaldocs&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;" class="plugin-anchor" href="#&#x30FB;externaldocs&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;externalDocs&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;</h4>
-<p>API&#x3092;&#x8AAC;&#x660E;&#x3059;&#x308B;&#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#xFF0E;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">externalDocs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">description</span><span class="token punctuation">:</span> &#x88DC;&#x8DB3;&#x60C5;&#x5831;&#x306F;&#x3053;&#x3061;&#x3089;
-  <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//foo.com
-</code></pre>
-<p><br></p>
-<h3 id="&#x30B9;&#x30AD;&#x30FC;&#x30DE;"><a name="&#x30B9;&#x30AD;&#x30FC;&#x30DE;" class="plugin-anchor" href="#&#x30B9;&#x30AD;&#x30FC;&#x30DE;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B9;&#x30AD;&#x30FC;&#x30DE;</h3>
-<h4 id="&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x306F;"><a name="&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3068;&#x306F;</h4>
-<p>API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#xFF0C;&#x307E;&#x305F;&#x306F;API&#x304B;&#x3089;&#x8FD4;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x3064;&#x3044;&#x3066;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3084;&#x5FC5;&#x9808;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#xFF0C;JSON&#x578B;&#x307E;&#x305F;&#x306F;YAML&#x578B;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x3066;&#x304A;&#x3044;&#x305F;&#x3082;&#x306E;&#xFF0E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x7528;&#x3044;&#x308B;&#xFF0E;</p>
-<h4 id="&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306B;&#x3088;&#x308B;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<p>&#x30C7;&#x30FC;&#x30BF;&#x578B;&#x3084;&#x5FC5;&#x9808;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x3088;&#x308A;&#xFF0C;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#xFF0F;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://spec.openapis.org/oas/v3.1.0#data-types" target="_blank">https://spec.openapis.org/oas/v3.1.0#data-types</a></p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x4F8B;&#x3048;&#x3070;&#xFF0C;API&#x304C;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x6642;&#x306B;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;JSON&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3059;&#x308B;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
-  <span class="token string">&quot;id&quot;</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
-  <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;Taro Yamada&quot;</span>,
-  <span class="token string">&quot;age&quot;</span><span class="token builtin class-name">:</span> <span class="token number">10</span>,
-  <span class="token string">&quot;sports&quot;</span>:<span class="token punctuation">[</span><span class="token string">&quot;soccer&quot;</span>, <span class="token string">&quot;baseball&quot;</span><span class="token punctuation">]</span>,
-  <span class="token string">&quot;subjects&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;math&quot;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>&#x3053;&#x3053;&#x3067;&#xFF0C;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3092;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304D;&#xFF0C;API&#x304B;&#x3089;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#x6642;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x884C;&#x3046;&#xFF0E;</p>
-<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
-  <span class="token string">&quot;<span class="token variable">$schema</span>&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;https://json-schema.org/draft-04/schema#&quot;</span>,
-  <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;object&quot;</span>,
-  <span class="token string">&quot;properties&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-    <span class="token string">&quot;id&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-      <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;integer&quot;</span>,
-      <span class="token string">&quot;minimum&quot;</span><span class="token builtin class-name">:</span> <span class="token number">1</span>
-    <span class="token punctuation">}</span>,
-    <span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-      <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;string&quot;</span>
-    <span class="token punctuation">}</span>,
-    <span class="token string">&quot;age&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-      <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;integer&quot;</span>,
-      <span class="token string">&quot;minimum&quot;</span><span class="token builtin class-name">:</span> <span class="token number">0</span>
-    <span class="token punctuation">}</span>,
-    <span class="token string">&quot;sports&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-      <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;array&quot;</span>,
-      <span class="token string">&quot;items&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-        <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;string&quot;</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>,
-    <span class="token string">&quot;subjects&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
-      <span class="token string">&quot;type&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;string&quot;</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>,
-  <span class="token string">&quot;required&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="&#x30FB;api-gateway&#x306B;&#x304A;&#x3051;&#x308B;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x8A2D;&#x5B9A;"><a name="&#x30FB;api-gateway&#x306B;&#x304A;&#x3051;&#x308B;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x8A2D;&#x5B9A;" class="plugin-anchor" href="#&#x30FB;api-gateway&#x306B;&#x304A;&#x3051;&#x308B;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x8A2D;&#x5B9A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;API Gateway&#x306B;&#x304A;&#x3051;&#x308B;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x8A2D;&#x5B9A;</h4>
-<p>API Gateway&#x306B;&#x3066;&#xFF0C;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x305F;&#x3081;&#x306B;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#xFF0E;&#x8A73;&#x3057;&#x304F;&#x306F;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x30CE;&#x30FC;&#x30C8;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#xFF0E;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html</a></p>
 
                                 
                                 </section>
@@ -3717,7 +3319,7 @@ php_value<span class="token punctuation">[</span>session.save_path<span class="t
             
                 
                 
-                <a href="software_application_collaboration_json.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎JSON">
+                <a href="software_application_collaboration_api_restful_api_specification.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎API仕様書">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3728,7 +3330,7 @@ php_value<span class="token punctuation">[</span>session.save_path<span class="t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎RESTful-API","level":"1.4.4.2.1","depth":4,"next":{"title":"📖 ︎JSON","level":"1.4.4.2.2","depth":4,"path":"public/software/software_application_collaboration_json.md","ref":"public/software/software_application_collaboration_json.md","articles":[]},"previous":{"title":"アプリケーション間連携","level":"1.4.4.2","depth":3,"ref":"","articles":[{"title":"📖 ︎RESTful-API","level":"1.4.4.2.1","depth":4,"path":"public/software/software_application_collaboration_api_restful.md","ref":"public/software/software_application_collaboration_api_restful.md","articles":[]},{"title":"📖 ︎JSON","level":"1.4.4.2.2","depth":4,"path":"public/software/software_application_collaboration_json.md","ref":"public/software/software_application_collaboration_json.md","articles":[]},{"title":"📖 ︎アプリケーション間通信","level":"1.4.4.2.3","depth":4,"path":"public/software/software_application_collaboration_communication.md","ref":"public/software/software_application_collaboration_communication.md","articles":[]},{"title":"📖 ︎認証／認可","level":"1.4.4.2.4","depth":4,"path":"public/software/software_application_collaboration_authentication_authorization.md","ref":"public/software/software_application_collaboration_authentication_authorization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_collaboration_api_restful.md","mtime":"2021-10-23T07:51:14.764Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-24T06:19:47.003Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎RESTful-API","level":"1.4.4.2.4.1","depth":5,"next":{"title":"📖 ︎API仕様書","level":"1.4.4.2.4.2","depth":5,"path":"public/software/software_application_collaboration_api_restful_api_specification.md","ref":"public/software/software_application_collaboration_api_restful_api_specification.md","articles":[]},"previous":{"title":"RESTful-API","level":"1.4.4.2.4","depth":4,"ref":"","articles":[{"title":"📖 ︎RESTful-API","level":"1.4.4.2.4.1","depth":5,"path":"public/software/software_application_collaboration_api_restful.md","ref":"public/software/software_application_collaboration_api_restful.md","articles":[]},{"title":"📖 ︎API仕様書","level":"1.4.4.2.4.2","depth":5,"path":"public/software/software_application_collaboration_api_restful_api_specification.md","ref":"public/software/software_application_collaboration_api_restful_api_specification.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_collaboration_api_restful.md","mtime":"2021-10-24T06:50:56.917Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-25T01:34:18.247Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
