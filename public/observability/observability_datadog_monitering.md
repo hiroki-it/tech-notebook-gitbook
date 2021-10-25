@@ -102,19 +102,47 @@
 
 #### ・ブラウザエラーとは
 
-以下で表示されるエラーのこと
+Datadogにおいて，ブラウザのエラーは以下に分類される．
 
 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
-| エラーの場所         | エラーの例                     |
-| -------------------- | ------------------------------ |
-| ソースコード上       | ハンドリングされていないエラー |
-| ブラウザコンソール上 |                                |
-| カスタム             |                                |
+| エラーのソース       | エラーの例                                                   |
+| -------------------- | ------------------------------------------------------------ |
+| ソースコード上       | ・ハンドリングされずにソースコード上に表示された例外<br>・ハンドリングされずにソースコード上に表示されたPromiseオブジェクトの```reject```メソッドの結果 |
+| ブラウザコンソール上 | ```console.error```メソッドによって，コンソール上に出力されたテキスト |
+| カスタム             | ```@datadog/browser-rum```パッケージの```addError```メソッドによって，Datadog-APIに送信されたテキスト |
 
 <br>
 
-## 03. グラフ
+## 03. 合成監視
+
+### リクエストメッセージの構成
+
+#### ・送信元IPアドレス
+
+Datadog社のサーバからリクエストが送信される．サーバ自体はAWSやAzureによって管理されており，使用するサーバのリージョンを選択できる．リージョンごとに数個ずつサーバが存在しているため，もし合成監視対象のアプリケーションでIP制限が行われている場合は，これらのサーバのIPからのリクエストを許可する必要がある．
+
+参考：https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests
+
+#### ・ヘッダー
+
+参考：
+
+- https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
+- https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests
+
+| ヘッダー                    | 値                                                           |
+| --------------------------- | ------------------------------------------------------------ |
+| user-agent                  | ブラウザテストで設定したブラウザが割り当てられる．           |
+| sec-datadog                 | ブラウザテストのIDが割り当てられる．                         |
+| x-datadog-trace-id          | ブラウザテストと分散トレースを紐づけるIDが割り当てられる．   |
+| x-datadog-parent-id         | 分散トレースのルートスパンとして，```0```が割り当てられる．  |
+| x-datadog-origin            | 分散トレースがAPMクオータに影響しないように，```synthetics-browser```が割り当てられる． |
+| x-datadog-sampling-priority | 分散トレースが収集される優先度として，```1```が割り当てれる． |
+
+<br>
+
+## 04. グラフ
 
 ### 図の種類
 

@@ -929,4 +929,4236 @@ CloudWatchエージェントは，```/opt/aws/amazon-cloudwatch-agent/bin/config
           {
             "file_path": "/var/log/php-fpm/error.log",
             "log_group_name": "/foo-www/var/log/php-fpm/error_log",
-            "log_stream_name": 
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+#### ・ログ送信権限
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
+
+#### ・操作コマンド
+
+**＊コマンド例＊**
+
+```bash
+# EC2内にある設定ファイルを，CloudWatchエージェントに読み込ませる（再起動を含む）
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config \
+  -m ec2 \
+  -s \
+  -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+# プロセスのステータスを確認
+$ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -m ec2 \
+  -a status
+```
+
+```bash
+# 設定ファイルが読み込まれたかを確認
+
+### CloudWatchエージェントのプロセスのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+### 設定ファイルの構文チェックのログファイル
+$ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+
+### OS起動時にデーモンが稼働するように設定されているかを確認
+$ systemctl list-unit-files --type=service
+```
+
+<br>
+
+## 09-02. CloudWatchメトリクス
+
+### CloudWatchメトリクスとは
+
+AWSリソースで発生したデータポイントのメトリクスを収集する．
+
+<br>
+
+### データポイント，メトリクス
+
+以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+
+<br>
+
+### メトリクスの分類名
+
+#### ・ディメンション，名前空間，メトリクス名
+
+| 分類群         | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| ディメンション | インスタンスを単位とした分類名．インスタンスIDで命名される． |
+| 名前空間       | AWSリソースを単位とした分類名．AWSリソース名で表現される．   |
+| メトリクス名   | 集計対象のデータポイントの発生領域を単位とした分類名．データポイントの発生領域名で表現される． |
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
+- https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch
+
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/metrics_namespace_dimension.png)
+
+CloudWatchメトリクス上では，以下のように確認できる．
+
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cloudwatch_namespace_metric_dimension.png)
+
+<br>
+
+### CloudWatch Synthetics
+
+#### ・CloudWatch Syntheticsとは
+
+合成監視を行えるようになる．
+
+<br>
+
+## 09-03. CloudWatchログ
+
+### CloudWatchログ
+
+クラウドログサーバとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する．   | 基本的に，ログファイルはグループ化せずに，一つのロググループには一つのログストリームしか含まれないようにする． |
+| メトリクスフィルター         | フィルターパターンに合致した文字列を持つログをトリガーとして，データポイントを発生させる．これを収集するメトリクスを設定する． |                                                              |
+| サブスクリプションフィルター |                                                              |                                                              |
+
+#### ・フィルターパターン
+
+ログ内で検知する文字列を設定する．大文字と小文字を区別するため，網羅的に設定する必要がある．
+
+参考：https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
+
+**＊例＊**
+
+OR条件で大文字小文字を考慮し，『```<ログレベル>:```』が含まれるログを検出する．ここでコロンを含まているのは，ログに含まれるファイル名やメソッド名が誤って検知されないようするためである．
+
+```bash
+?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
+```
+
+**＊例＊**
+
+OR条件で大文字小文字を考慮し，『```<ログレベル> message```』が含まれるログを検出する．
+
+```bash
+?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
+```
+
+**＊例＊**
+
+『```error:```』が含まれ，かつ『```Foo```』が含まれないログを検知する．OR条件と除外条件を組み合わせようとすると，OR条件が認識されずに除外条件だけが適用されてしまう．そのため，ここではOR条件を使用していない．
+
+参考：https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
+
+```
+"error:" -Foo
+```
+
+<br>
+
+### CloudWatchログエージェント（非推奨）
+
+#### ・CloudWatchログエージェントとは
+
+インスタンス内で稼働する常駐システムのこと．インスタンス内のデータを収集し，CloudWatchログに対して送信する．2020/10/05現在は非推奨で，CloudWatchエージェントへの設定の移行が推奨されている．
+
+#### ・```awslogs.conf```ファイル
+
+インスタンス内の```etc```ディレクトリ下に```awslogs.conf```ファイルを，設置する．OS，ミドルウェア，アプリケーション，の各層でログを収集するのがよい．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
+
+**＊実装例＊**
+
+```bash
+#############################
+# /var/awslogs/awslogs.conf
+#############################
+
+# ------------------------------------------
+# CentOS CloudWatch Logs
+# ------------------------------------------
+[/var/log/messages]
+
+# タイムスタンプ
+#（例）Jan 1 00:00:00
+datetime_format = %b %d %H:%M:%S
+#（例）2020-01-01 00:00:00
+# datetime_format = %Y-%m-%d %H:%M:%S
+
+# 収集したいログファイル．ここでは，CentOSのログを指定する．
+file = /var/log/messages
+
+# 文字コードutf_8として送信する．文字コードが合わないと，CloudWatchログの画面上で文字化けする．
+encoding = utf_8
+
+# 要勉強
+buffer_duration = 5000
+initial_position = start_of_file
+
+# インスタンスID
+log_stream_name = {instance_id}
+
+# AWS上で管理するロググループ名
+log_group_name = /var/log/messages
+
+# ------------------------------------------
+# Nginx CloudWatch Logs
+# ------------------------------------------
+[/var/log/nginx/error.log]
+file             = /var/log/nginx/error.log
+buffer_duration  = 5000
+log_stream_name  = {instance_id}
+initial_position = start_of_file
+log_group_name   = /var/log/nginx/error_log.production
+
+# ------------------------------------------
+# Application CloudWatch Logs
+# ------------------------------------------
+[/var/www/project/app/storage/logs/laravel.log]
+file             = /var/www/project/app/storage/logs/laravel.log
+buffer_duration  = 5000
+log_stream_name  = {instance_id}
+initial_position = start_of_file
+log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
+```
+
+```bash
+#############################
+# /var/awslogs/awscli.conf
+#############################
+
+[plugins]
+cwlogs = cwlogs
+[default]
+region = ap-northeast-1
+```
+
+#### ・コマンド
+
+設定後，```awslogs```コマンドでプロセスを起動する．
+
+**＊コマンド例＊**
+
+```bash
+# CloudWatchエージェントの再起動
+# 注意: restartだとCloudWatchに反映されない時がある．
+$ service awslogs restart
+
+# もしくは
+$ service awslogs stop
+$ service awslogs start
+
+# ログが新しく生成されないと変更が適用されないことがあるため，ログファイルに適当な文字列行を増やしてみる．
+```
+
+<br>
+
+### Logインサイト
+
+#### ・Logインサイトとは
+
+クエリを使用してログを抽出する．
+
+#### ・クエリ例
+
+汎用的なクエリを示す．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
+
+**＊例＊**
+
+小文字と大文字を区別せずに，WarningまたはErrorを含むログを検索する．
+
+```bash
+fields @timestamp, @message, @logStream
+| filter @message like /(?i)(Warning|Error)/
+| sort @timestamp desc
+| limit 100
+```
+
+<br>
+
+### CLI
+
+#### ・ログ収集量を確認
+
+**＊コマンド例＊**
+
+全てのロググループに対して，一日当たりの収集量を```start-time```から```end-time```の間で取得する．```--dimensions ```オプションを使用して，特定のディメンション（ロググループ）に対して集計を実行することもできる．（ただ，やってみたけどうまくいかず）
+
+参考：https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html
+
+ ```bash
+ $ aws cloudwatch get-metric-statistics \
+   --namespace AWS/Logs \
+   --metric-name IncomingBytes \
+   --start-time "2021-08-01T00:00:00" \
+   --end-time "2021-08-31T23:59:59" \
+   --period 86400 
+   --statistics Sum | jq -r ".Datapoints[] | [.Timestamp, .Sum] | @csv" | sort
+ ```
+
+<br>
+
+## 09-04. CloudWatchアラーム
+
+### 設定項目
+
+#### ・ログが対象の場合
+
+| 設定項目     | 説明                                                         | 補足                                                 |
+| ------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
+| 名前空間     | 紐づくロググループが属する名前空間を設定する．CloudWatchログが，設定した名前空間に対して，値を発行する． |                                                      |
+| メトリクス   | 紐づくロググループが属する名前空間内のメトリクスを設定する．CloudWatchログが，設定したメトリクスに対して，値を発行する． |                                                      |
+| メトリクス値 | フィルターパターンでログが検知された時に，データポイントとして発生させる値のこと． | 例えば『検出数』を発行する場合は，『１』を設定する． |
+
+#### ・メトリクスが対象の場合
+
+
+
+#### ・条件
+
+| 設定項目                         | 説明                                                       | 補足                                                         |
+| -------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------ |
+| 閾値の種類                       |                                                            |                                                              |
+| アラームを実行するデータポイント | アラートを発生させるデータポイント数を設定する．           |                                                              |
+| 欠落データの処理                 | データポイントが発生しないことをどう判定するかを設定する． | データポイントが発生しないことを正常と見なす場合は『```notBreaching```』とし，発生しないことを異常とする場合は，『```breaching```』とする．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data |
+
+<br>
+
+### CLI
+
+#### ・CloudWatchアラームの状態変更
+
+**＊コマンド例＊**
+
+CloudWatchアラームの状態を変更する．
+
+```bash
+$ aws cloudwatch set-alarm-state \
+  --alarm-name "prd-foo-alarm" \
+  --state-value ALARM \
+  --state-reason "アラーム!!"
+```
+
+<br>
+
+## 10. Code系サービス
+
+### CodePipeline
+
+#### ・CodePipelineとは
+
+CodeCommit，CodeBuild，CodeDeployを連携させて，AWSに対するCI/CD環境を構築する．CodeCommitは，他のソースコード管理サービスで代用できる．
+
+![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/code-pipeline.png)
+
+#### ・CodeCommitとは
+
+ソースコードをバージョン管理する．
+
+#### ・CodeBuildとは
+
+ビルドフェーズとテストフェーズを実行する．
+
+#### ・CodeDeployとは
+
+デプロイフェーズを実行する．
+
+<br>
+
+### CodeBuild
+
+#### ・```buildspec.yml```ファイル
+
+CodeBuildの設定を行う．ルートディレクトリの直下に配置しておく．
+
+参考：https://docs.aws.amazon.com/ja_jp/codebuild/latest/userguide/build-spec-ref.html
+
+```yaml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  preBuild:
+    commands:
+      # ECRにログイン
+      - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
+      # イメージタグはGitHubコミットのハッシュ値を使用
+      - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
+      # ECRのURLをCodeBuildの環境変数から作成
+      - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
+  build:
+    commands:
+      # タグ付けしてイメージをビルド
+      - docker build -t REPOSITORY_URI:$IMAGE_TAG -f Dockerfile .
+  postBuild:
+    commands:
+      # ECRにイメージをプッシュ
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # ECRにあるデプロイ対象のイメージの情報（imageDetail.json）
+      - printf "{"Version":"1.0","ImageURI":"%s"}" $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+    
+# デプロイ対象とするビルドのアーティファクト    
+artifacts:
+  files: imageDetail.json
+```
+
+#### ・ビルド時に作成すべきデプロイ設定ファイル
+
+デプロイ対象となるイメージを定義するために，標準デプロイアクションの場合には```imagedefinitions.json```ファイル，またはBlue/Greenデプロイメントの場合には```imageDetail.json```ファイルを用意する必要がある．これはリポジトリに事前に配置するのではなく，ビルド時に自動的に作成するようにした方がよい．
+
+参考：https://docs.aws.amazon.com/ja_jp/codepipeline/latest/userguide/file-reference.html
+
+<br>
+
+### CodeDeployによるBlue/Greenデプロイメント
+
+#### ・Blue/Greenデプロイメントとは
+
+![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/blue-green-deployment.jpeg)
+
+以下の手順でデプロイを行う．
+
+1. ECRのイメージを更新
+2. タスク定義の新しいリビジョンを構築．
+3. サービスを更新．
+4. CodeDeployによって，タスク定義を基に，現行の本番環境（Prodブルー）のタスクとは別に，テスト環境（Testグリーン）が構築される．ロードバランサーの接続先を，本番環境（Prodブルー）のターゲットグループ（Primaryターゲットグループ）に加えて，テスト環境（Testグリーン）にも向ける．
+5. 社内からテスト環境（Testグリーン）のALBに，特定のポート番号でアクセスし，動作を確認する．
+6. 動作確認で問題なければ，Console画面からの入力で，ロードバランサーの接続先をテスト環境（Testグリーン）のみに設定する．
+7. テスト環境（Testグリーン）が新しい本番環境としてユーザに公開される．
+8. 元々の本番環境（Prodブルー）は削除される．
+
+#### ・```appspec.yml```ファイル
+
+CodeDeployの設定を行う．ルートディレクトリの直下に配置しておく．仕様として，複数のコンテナをデプロイできない．タスク定義名を```<TASK_DEFINITION>```とすると，自動補完してくれる．
+
+参考：https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+
+```yaml
+version: 0.0
+
+Resources:
+  - TargetService:
+      # 使用するAWSリソース
+      Type: AWS::ECS::Service
+      Properties:
+        # 使用するタスク定義
+        TaskDefinition: "<TASK_DEFINITION>"
+        # 使用するロードバランサー
+        LoadBalancerInfo:
+          ContainerName: "<コンテナ名>"
+          ContainerPort: "80"
+        PlatformVersion: "1.4.0"
+```
+
+#### ・```taskdef.json```ファイル
+
+デプロイされるタスク定義を実装し，ルートディレクトリの直下に配置する．CodeDeployは，CodeBuildから渡された```imageDetail.json```ファイルを検知し，ECRからイメージを取得する．この時，```taskdef.json```ファイルのイメージ名を```<IMAGE1_NAME>```としておくと，ECRから取得したイメージ名を使用して，自動補完してくれる．
+
+```bash
+{
+  "family": "<タスク定義名>",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "taskRoleArn": "<タスクロールのARN>",
+  "executionRoleArn": "<タスク実行ロールのARN>",
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "<コンテナ名>",
+      "image": "<IMAGE1_NAME>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "DB_HOST",
+          "valueFrom": "/ecs/DB_HOST"
+        },
+        {
+          "name": "DB_DATABASE",
+          "valueFrom": "/ecs/DB_DATABASE"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "/ecs/DB_PASSWORD"
+        },
+        {
+          "name": "DB_USERNAME",
+          "valueFrom": "/ecs/DB_USERNAME"
+        },
+        {
+          "name": "REDIS_HOST",
+          "valueFrom": "/ecs/REDIS_HOST"
+        },
+        {
+          "name": "REDIS_PASSWORD",
+          "valueFrom": "/ecs/REDIS_PASSWORD"
+        },
+        {
+          "name": "REDIS_PORT",
+          "valueFrom": "/ecs/REDIS_PORT"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "<ロググループ名>",
+          # スタックトレースのログを紐付けられるように，日付で区切るようにする．
+          "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
+          "awslogs-region": "<リージョン>",
+          "awslogs-stream-prefix": "<ログストリーム名のプレフィクス>"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
+### CodeDeployによるインプレースデプロイメント
+
+<br>
+
+## 11. EBS：Elastic Block Storage
+
+### EBSとは
+
+クラウド内蔵ストレージとして働く．
+
+<br>
+
+### 設定項目
+
+#### ・ストレージの種類とボリュームタイプ
+
+| ストレージの種類 | ボリューム名            |
+| ---------------- | ----------------------- |
+| SSD              | 汎用SSD                 |
+| SSD              | プロビジョンド IOPS SSD |
+| HDD              | スループット最適化 HDD  |
+| HDD              | Cold HDD                |
+
+#### ・最小ボリューム
+
+踏み台サーバを構築する時，できるだけ最小限のボリュームを選択し，ストレージ合計を抑える必要がある．
+
+| OS           | 仮想メモリ | ボリュームサイズ |
+| ------------ | ---------- | ---------------- |
+| Amazon Linux | t2.micro   | 8                |
+| CentOS       | t2.micro   | 10               |
+
+<br>
+
+## 12. EC2：Elastic Computer Cloud
+
+### EC2とは
+
+クラウドサーバとして働く．注意点があるものだけまとめる．ベストプラクティスについては，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-best-practices.html
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目                  | 説明                                              | 補足                                                         |
+| ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| AMI：Amazonマシンイメージ | OSを選択する．                                    | ベンダー公式のものを選択すること．（例：CentOSのAMI一覧 https://wiki.centos.org/Cloud/AWS） |
+| インスタンスの詳細設定    | EC2インスタンスの設定する．                       | ・インスタンス自動割り当てパブリックにて，EC2に動的パブリックIPを割り当てる．EC2インスタンス構築後に有効にできない．<br/>・終了保護は必ず有効にすること． |
+| ストレージの追加          | EBSボリュームを設定する．                         | 一般的なアプリケーションであれば，20～30GiBでよい．踏み台サーバの場合，最低限で良いため，OSの下限までサイズを下げる．（例：AmazonLinuxの下限は8GiB，CentOSは10GiB） |
+| キーペア                  | EC2の秘密鍵に対応した公開鍵をインストールできる． | キーペアに割り当てられるフィンガープリント値を調べることで，公開鍵と秘密鍵の対応関係を調べることができる． |
+
+<br>
+
+### インスタンスのダウンタイム
+
+#### ・ダウンタイムの発生条件
+
+以下の条件の時にEC2にダウンタイムが発生する．EC2を冗長化している場合は，ユーザに影響を与えずに対処できる．ダウンタイムが発生する方のインスタンスを事前にALBのターゲットグループから解除しておき，停止したインスタンスが起動した後に，ターゲットグループに再登録する．
+
+| 変更する項目                     | ダウンタイムの有無 | 補足                                                         |
+| -------------------------------- | ------------------ | ------------------------------------------------------------ |
+| インスタンスタイプ               | あり               | インスタンスタイプを変更するためにはEC2を停止する必要がある．そのため，ダウンタイムが発生する． |
+| ホスト物理サーバのリタイアメント | あり               | AWSから定期的にリタイアメントに関する警告メールが届く．ルートデバイスタイプが『EBS』の場合，ホスト物理サーバの引っ越しを行うためにEC2の停止と起動が必要である．そのため，ダウンタイムが発生する．なお，再起動では引っ越しできない． |
+
+<br>
+
+### スペック
+
+#### ・インスタンスタイプ
+
+『世代』と『大きさ』からなる名前で構成される．世代の数字が上がるにつれて，より小さな世代と同じ大きさであっても，パフォーマンスと低コストになる．AMIのOSのバージョンによっては，新しく登場したインスタンスタイプを適用できないことがあるため注意する．例えば，CentOS 6系のAMIでは，```t3.small```を選択できない．
+
+参考：https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
+
+|        | 種類                                                         |
+| ------ | ------------------------------------------------------------ |
+| 世代   | ```t2```，```t3```，```t3a```，```t4g```，```a1```           |
+| 大きさ | ```nano```，```small```，```medium```，```large```，```xlarge```，```2xlarge``` |
+
+#### ・ストレージ
+
+EBSの説明を参考にせよ．
+
+#### ・CPUバーストモード
+
+バーストモードのインスタンスタイプの場合，一定水準のベースラインCPU使用率を提供しつつ，これを超過できる．CPU使用率がベースラインを超えたとき，超過した分だけEC2はCPUクレジットを消費する．CPUクレジットは一定の割合で回復する．蓄積できる最大CPUクレジット，クレジットの回復率，ベースラインCPU使用率は，インスタンスタイプによって異なる．詳しくは以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+
+<br>
+
+### キーペア
+
+#### ・キーペアのフィンガープリント値
+
+ローカルに置かれている秘密鍵が，該当するEC2に置かれている公開鍵とペアなのかどうか，フィンガープリント値を照合して確認する方法
+
+```bash
+$ openssl pkcs8 \
+  -in <秘密鍵名>.pem \
+  -inform PEM \
+  -outform DER \
+  -topk8 \
+  -nocrypt | openssl sha1 -c
+```
+
+#### ・EC2へのSSH接続
+
+クライアントのSSHプロトコルもつパケットは，まずインターネットを経由して，インターネットゲートウェイを通過する．その後，Route53，ALBを経由せず，そのままEC2へ向かう．
+
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+
+<br>
+
+## 13. ECR
+
+### ECRとは
+
+AWSが提供するDockerイメージのレジストリサービス
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 可視性                   | リポジトリをパブリックアクセス／プライベートアクセスにするかを設定する． | 様々なベンダーがパブリックリポジトリでECRイメージを提供している．<br>参考：https://gallery.ecr.aws/ |
+| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合に，イメージタグを上書き可能／不可能かを設定できる． |                                                              |
+| プッシュ時にスキャン     | イメージがプッシュされた時に，イメージにインストールされているライブラリの脆弱性を検証し，一覧表示する． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/image-scanning.html |
+| 暗号化設定               |                                                              |                                                              |
+
+<br>
+
+### ライフサイクル
+
+#### ・ライフサイクルポリシー
+
+ECRのイメージの有効期間を定義できる．
+
+| 設定項目             | 説明                                                         | 補足                                                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ルールの優先順位     | 順位の大きさで，ルールの優先度を設定できる．                 | 数字は連続している必要はなく，例えば，10，20，90，のように設定しても良い． |
+| イメージのステータス | ルールを適用するイメージの条件として，タグの有無や文字列を設定できる． |                                                              |
+| 一致条件             | イメージの有効期間として，同条件に当てはまるイメージが削除される閾値を設定できる． | 個数，プッシュされてからの期間，などを閾値として設定できる． |
+
+<br>
+
+### イメージタグ
+
+#### ・タグ名のベストプラクティス
+
+Dockerのベストプラクティスに則り，タグ名にlatestを使用しないようにする．その代わりに，イメージのバージョンごとに異なるタグ名になるようハッシュ値（例：GitHubのコミットID）を使用する．
+
+参考：https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+
+<br>
+
+## 14-01. ECS
+
+### ECSとは
+
+コンテナオーケストレーションを実行する環境を提供する．VPCの外に存在している．ECS，EKS，Fargate，EC2の対応関係は以下の通り．
+
+| Control Plane（コンテナオーケストレーション環境） | Data Plane（コンテナ実行環境） | 説明                                                         |
+| ------------------------------------------------- | ------------------------------ | ------------------------------------------------------------ |
+| ECS：Elastic Container Service                    | Fargate，EC2                   | 単一のOS上でコンテナオーケストレーションを実行する．         |
+| EKS：Elastic Kubernetes Service                   | EC2                            | 複数のOS上それぞれでコンテナオーケストレーションを実行する． |
+
+<br>
+
+## 14-02. ECS on EC2
+
+### EC2起動タイプのコンテナ
+
+#### ・タスク配置戦略
+
+タスクをインスタンスに配置する時のアルゴリズムを選択できる．
+
+| 戦略    | 説明                                         |
+| ------- | -------------------------------------------- |
+| Spread  | タスクを各場所にバランスよく配置する         |
+| Binpack | タスクを一つの場所にできるだけ多く配置する． |
+| Random  | タスクをランダムに配置する．                 |
+
+<br>
+
+## 14-03. ECS on Fargate：Elastic Container Service
+
+### クラスター
+
+#### ・クラスターとは
+
+![ECSクラスター](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ECSクラスター.png)
+
+<br>
+
+### サービス
+
+#### ・サービスとは
+
+タスク数の維持管理や，タスクへのロードバランシング，リリースの成否の管理を行う機能のこと．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/service_definition_parameters.html
+
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| タスク定義                   | サービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する． |                                                              |
+| 起動タイプ                   | タスク内のコンテナの起動タイプを設定する．                   |                                                              |
+| プラットフォームのバージョン | タスクの実行環境のバージョンを設定する．                     | バージョンによって，連携できるAWSリソースが異なる．          |
+| サービスタイプ               |                                                              |                                                              |
+| タスクの必要数               | 非スケーリング時またはデプロイ時のタスク数を設定する．       | 最小ヘルス率と最大率の設定値に影響する．                     |
+| 最小ヘルス率                 | タスクの必要数の設定を100%とし，新しいタスクのデプロイ時に，稼働中タスクの最低合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスクヘルス最小率を50%とすれば，稼働中タスクの最低合計数は２個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中の既存タスク／新タスクの数が最低合計数未満にならないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| 最大率                       | タスクの必要数の設定を100%とし，新しいタスクのデプロイ時に，稼働中／停止中タスクの最高合計数を割合で設定する． | 例として，タスク必要数が４個だと仮定する．タスク最大率を200%とすれば，稼働中／停止中タスクの最高合計数は８個となる．デプロイ時の既存タスク停止と新タスク起動では，稼働中／停止中の既存タスク／新タスクの数が最高合計数を超過しないように制御される．<br>参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments |
+| ヘルスチェックの猶予期間     | デプロイ時のALB／NLBのヘルスチェックの状態を確認するまでの待機時間を設定する．猶予期間を過ぎても，ALB／NLBのヘルスチェックが失敗していれば，サービスはタスクを停止し，新しいタスクを再起動する． | ALB／NLBではターゲットを登録し，ヘルスチェックを実行するプロセスがある．特にNLBでは，これに時間がかかる．またアプリケーションによっては，コンテナの構築に時間がかかる．そのため，NLBのヘルスチェックが完了する前に，ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある．例えば，NLBとLaravelを使用する場合は，ターゲット登録とLaravelコンテナの築の時間を加味して，```330```秒以上を目安とする．例えば，ALBとNuxtjs（SSRモード）を使用する場合は，```600```秒以上を目安とする．なお，アプリケーションのコンテナ構築にかかる時間は，ローカル環境での所要時間を参考にする． |
+| タスクの最小数               | スケーリング時のタスク数の最小数を設定する．                 |                                                              |
+| タスクの最大数               | スケーリング時のタスク数の最大数を設定する．                 |                                                              |
+| ロードバランシング           | ALBでルーティングするコンテナを設定する．                    |                                                              |
+| タスクの数                   | タスクの構築数をいくつに維持するかを設定する．               | タスクが何らかの原因で停止した場合，空いているAWSサービスを使用して，タスクが自動的に補填される． |
+| デプロイメント               | ローリングアップデート，Blue/Greenデプロイがある．           |                                                              |
+
+#### ・ターゲット追跡スケーリングポリシー
+
+| 設定項目                           | 説明                                                         | 補足                                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ターゲット追跡スケーリングポリシー | 監視対象のメトリクスがターゲット値を超過しているか否かに基づいて，タスク数のスケーリングが実行される． |                                                              |
+| ECSサービスメトリクス              | 監視対象のメトリクスを設定する．                             | 『平均CPU』，『平均メモリ』，『タスク当たりのALBからのリクエスト数』を監視できる．SLIに対応するCloudWatchメトリクスも参考にせよ． |
+| ターゲット値                       | タスク数のスケーリングが実行される収束値を設定する．         | ターゲット値を超過している場合，タスク数がスケールアウトされる．反対に，ターゲット値未満（正確にはターゲット値の９割未満）の場合，タスク数がスケールインされる． |
+| スケールアウトクールダウン期間     | スケールアウトを発動してから，次回のスケールアウトを発動できるまでの時間を設定する． | ・期間を短くし過ぎると，ターゲット値を超過する状態が断続的に続いた場合に，余分なスケールアウトが連続して実行されてしまうため注意する．<br>・期間を長く過ぎると，スケールアウトが不十分になり，ECSの負荷が緩和されないため注意する． |
+| スケールインクールダウン期間       | スケールインを発動してから，次回のスケールインを発動できるまでの時間を設定する． |                                                              |
+| スケールインの無効化               |                                                              |                                                              |
+
+ターゲット値の設定に応じて，自動的にスケールアウトやスケールインが起こるシナリオ例を示す．
+
+1. 最小タスク数を2，必要タスク数を4，最大数を6，CPU平均使用率を40%に設定するとする．
+2. 平常時，CPU使用率40%に維持される．
+3. リクエストが増加し，CPU使用率55%に上昇する．
+4. タスク数が6つにスケールアウトし，CPU使用率40%に維持される．
+5. リクエスト数が減少し，CPU使用率が20%に低下する．
+6. タスク数が2つにスケールインし，CPU使用率40%に維持される．
+
+#### ・マイクロサービスアーキテクチャ風
+
+マイクロサービスアーキテクチャのアプリケーション群を稼働させる時，Kubernetesを使用し，またインフラとしてEKSを使用するのが基本である．ただし，モノリスなアプリケーションをECSサービスで分割し，Fargateで稼働させることにより，マイクロサービスアーキテクチャ風のインフラを構築できる．
+
+参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+
+![ecs-fargate_microservice](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservice.png)
+
+<br>
+
+### タスク
+
+![タスクとタスク定義](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/タスクとタスク定義.png)
+
+#### ・タスク
+
+グルーピングされたコンテナ群のこと
+
+#### ・タスク定義とは
+
+各タスクをどのような設定値に基づいて構築するかを設定できる．タスク定義は，バージョンを示す『リビジョンナンバー』で番号づけされる．タスク定義を削除するには，全てのリビジョン番号のタスク定義を登録解除する必要がある．
+
+#### ・タスクのライフサイクル
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
+
+![ecs-task_life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-task_life-cycle.png)
+
+#### ・タスクサイズ
+
+
+| 設定項目     | 説明                                     |
+| ------------ | ---------------------------------------- |
+| タスクメモリ | タスク当たりのコンテナの合計メモリ使用量 |
+| タスクCPU    | タスク当たりのコンテナの合計CPU使用量    |
+
+#### ・新しいタスクを一時的に実行
+
+現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．CI/CDツールで実行する以外に，ローカルから手動で実行する場合もある．起動時に，```overrides```オプションを使用して，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
+
+**＊実装例＊**
+
+LaravelのSeederコマンドやロールバックコマンドを，ローカルPCから実行する．
+
+```bash
+#!/bin/bash
+
+set -x
+
+echo "Set Variables"
+SERVICE_NAME="stg-foo-ecs-service"
+CLUSTER_NAME="stg-foo-ecs-cluster"
+TASK_NAME="stg-foo-ecs-task-definition"
+SUBNETS_CONFIG=$(aws ecs describe-services \
+  --cluster ${CLUSTER_NAME} \
+  --services ${SERVICE_NAME} \
+  --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]")
+SGS_CONFIG=$(aws ecs describe-services \
+  --cluster ${CLUSTER_NAME} \
+  --services ${SERVICE_NAME} \
+  --query "services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]")
+
+# 実行したいコマンドをoverridesに設定する．
+echo "Run Task"
+TASK_ARN=$(aws ecs run-task \
+  --launch-type FARGATE \
+  --cluster ${CLUSTER_NAME} \
+  --platform-version "1.4.0" \
+  --network-configuration "awsvpcConfiguration={subnets=${SUBNETS_CONFIG},securityGroups=${SGS_CONFIG}}" \
+  --task-definition ${TASK_NAME} \
+  --overrides '{\"containerOverrides\": [{\"name\": \"laravel-container\",\"command\": [\"php\", \"artisan\", \"db:seed\", \"--class=DummySeeder\", \"--force\"]}]}' \
+  --query "tasks[0].taskArn" | tr -d """)
+
+echo "Wait until task stopped"
+aws ecs wait tasks-stopped \
+  --cluster ${CLUSTER_NAME} \
+  --tasks ${TASK_ARN}
+
+echo "Get task result"
+RESULT=$(aws ecs describe-tasks \
+  --cluster ${CLUSTER_NAME} \
+  --tasks ${TASK_ARN})
+echo ${RESULT}
+
+EXIT_CODE=$(echo ${RESULT} | jq .tasks[0].containers[0].exitCode)
+echo exitCode ${EXIT_CODE}
+exit ${EXIT_CODE}
+```
+
+なお，実行IAMユーザを作成し，ECSタスクを起動できる最低限の権限をアタッチする．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "ecs:RunTask",
+                "ecs:DescribeServices",
+                "ecs:DescribeTasks"
+            ],
+            "Resource": [
+                "arn:aws:ecs:*:<アカウントID>:service/*",
+                "arn:aws:ecs:*:<アカウントID>:task/*",
+                "arn:aws:ecs:*:<アカウントID>:task-definition/*",
+                "arn:aws:iam::<アカウントID>:role/*"
+            ]
+        }
+    ]
+}
+```
+
+####  ・ECS Exec
+
+ECSタスクのコンテナに対して，シェルログインを実行する．ECSサービスにおけるECS-Execオプションの有効化，ssmmessagesエンドポイントの作成，System ManagerにアクセスするためのIAMポリシーの作成，ECSタスク実行ロールへのIAMポリシーの付与，IAMユーザへのポリシーの付与，が必要になる．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html
+- https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        # ssmmesages APIへのアクセス権限
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+なお，事前の設定がなされているかどうかをecs-exec-checkerスクリプトを実行して確認できる．
+
+参考：https://github.com/aws-containers/amazon-ecs-exec-checker
+
+```bash
+#!/bin/bash
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+
+bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+```
+
+ECS Execを実行するユーザに，実行権限のポリシーを付与する必要がある．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ExecuteCommand",
+            ],
+            "Resource": [
+                "arn:aws:ecs:*:<アカウントID>:cluster/*",
+                "arn:aws:ecs:*:<アカウントID>:task/*",
+            ]
+        }
+    ]
+}
+```
+
+laravelコンテナに対して，シェルログインを実行する．bashを実行する時に，『```/bin/bash```』や『```/bin/sh```』で指定すると，binより上のパスもECSに送信されてしまう．例えば，Windowsなら『```C:/Program Files/Git/usr/bin/bash```』が送信される．これはCloudTrailでExecuteCommandイベントとして確認できる．ECSコンテナ内ではbashへのパスが異なるため，接続に失敗する．そのため，bashを直接指定するようにする．
+
+```bash
+#!/bin/bash
+
+set -xe
+
+ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+ECS_TASK_ID=bar
+ECS_CONTAINER_NAME=laravel
+
+aws ecs execute-command \
+    --cluster $ECS_CLUSTER_NAME \
+    --task $ECS_TASK_ID \
+    --container $ECS_CONTAINER_NAME \
+    --interactive \
+    --debug \
+    --command "bash"
+```
+
+<br>
+
+### Fargate
+
+#### ・Fargateとは
+
+コンテナの実行環境のこと．『ECS on Fargate』という呼び方は，Fargateが環境の意味合いを持つからである．Fargate環境ではホストが隠蔽されており，実体としてEC2インスタンスをホストとしてコンテナが稼働している（ドキュメントに記載がないが，AWSサポートに確認済み）．
+
+参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fargate_data-plane.png)
+
+#### ・コンテナエージェント
+
+コンテナ内で稼働し，コンテナの操作を行うプログラムのこと．
+
+#### ・コンテナ定義
+
+タスク内のコンテナ一つに対して，環境を設定する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/task_definition_parameters.html
+
+| 設定項目                         | 対応するdockerコマンドオプション             | 説明                                                         | 補足                                                         |
+| -------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| cpu                              | ```--cpus```                                 | タスク全体に割り当てられたCPUのうち，該当のコンテナに割り当てるCPU分を設定する． |                                                              |
+| dnsServers                       | ```--dns```                                  | コンテナが名前解決に使用するDNSサーバのIPアドレスを設定する． |                                                              |
+| essential                        |                                              | コンテナが必須か否かを設定する．                             | ・```true```の場合，コンテナが停止すると，タスクに含まれる全コンテナが停止する．<br>```false```の場合，コンテナが停止しても，その他のコンテナは停止しない． |
+| healthCheck<br>(command)         | ```--health-cmd```                           | ホストマシンからFargateに対して，```curl```コマンドによるリクエストを送信し，レスポンス内容を確認． |                                                              |
+| healthCheck<br>(interval)        | ```--health-interval```                      | ヘルスチェックの間隔を設定する．                             |                                                              |
+| healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
+| hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
+| image                            |                                              | ECRのURLを設定する．                                         |                                                              |
+| logConfiguration<br/>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば『awslogs，awsfirelens，splunk』に設定できる．EC2であれば『awslogs，json-file，syslog，journald，fluentd，gelf，logentries』を設定できる． |
+| logConfiguration<br/>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
+| portMapping                      | ```--publish```<br>```--expose```            | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
+| secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する．              |                                                              |
+| memory                           | ```--memory```<br>```--memory-reservation``` | タスク全体に割り当てられたメモリのうち，該当のコンテナに割り当てるメモリ分を設定する． |                                                              |
+| mountPoints                      |                                              |                                                              |                                                              |
+| ulimit                           | Linuxコマンドの<br>```--ulimit```に相当      |                                                              |                                                              |
+
+#### ・awslogsドライバー
+
+標準出力／標準エラー出力に出力されたログをCloudWatch-APIに送信する．
+
+参考：
+
+- https://docs.docker.com/config/containers/logging/awslogs/
+- https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+
+| 設定項目                      | 説明                                                         | 補足                                                         |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```awslogs-group```           | ログ送信先のCloudWatchログのロググループを設定する．         |                                                              |
+| ```awslogs-datetime-format``` | 日時フォーマットを定義し，またこれをログの区切り単位としてログストリームに出力する． | 正規表現で設定する必要があり，さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない．例えば『```\\[%Y-%m-%d %H:%M:%S\\]```』となる．<br>参考：https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
+| ```awslogs-region```          | ログ送信先のCloudWatchログのリージョンを設定する．           |                                                              |
+| ```awslogs-stream-prefix```   | ログ送信先のCloudWatchログのログストリームのプレフィックス名を設定する． | ログストリームには，『<プレフィックス名>/<コンテナ名>/<タスクID>』の形式で送信される． |
+
+#### ・割り当てられるプライベートIPアドレス
+
+タスクごとに異なるプライベートIPが割り当てられる．このIPアドレスに対して，ALBはルーティングを行う．
+
+<br>
+
+### ロール
+
+#### ・サービスロール
+
+サービス機能がタスクを操作するために必要なロールのこと．サービスリンクロールに含まれ，ECSの構築時に自動的にアタッチされる．
+
+#### ・タスクロール
+
+タスク内のコンテナのアプリケーションが，他のリソースにアクセスするために必要なロールのこと．アプリケーションにS3やSSMへのアクセス権限を与えたい場合は，タスク実行ロールではなくタスクロールに権限をアタッチする．
+
+**＊実装例＊**
+
+アプリケーションからCloudWatchログにログを送信するために，ECSタスクロールにカスタマー管理ポリシーをアタッチする．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:*:*:*"
+      ]
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+SSMパラメータストアから変数を取得するために，ECSタスクロールにインラインポリシーをアタッチする．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetParameters"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+#### ・タスク実行ロール
+
+タスク上に存在するコンテナエージェントが，他のリソースにアクセスするために必要なロールのこと．AWS管理ポリシーである『```AmazonECSTaskExecutionRolePolicy```』がアタッチされたロールを，タスクにアタッチする必要がある．このポリシーには，ECRへのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．タスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+Datadogエージェントがクラスターやコンテナにアクセスできるように，ECSタスク実行ロールにカスタマー管理ポリシーをアタッチする．
+
+```bash
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ecs:ListClusters",
+                "ecs:ListContainerInstances",
+                "ecs:DescribeContainerInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+<br>
+
+### ネットワークモードとコンテナ間通信
+
+#### ・noneモード
+
+外部ネットワークが無く，タスクと外と通信できない．
+
+#### ・hostモード
+
+Dockerのhostネットワークに相当する．
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ・bridgeモード
+
+Dockerのbridgeネットワークに相当する．
+
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_host-mode.png)
+
+#### ・awsvpcモード
+
+awsの独自ネットワークモード．タスクはElastic Networkインターフェースと紐づけられ，Primary プライベートIPアドレスを割り当てられる．同じタスクに属するコンテナ間は，localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが，Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが関連付けられる）．これにより，コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は，転送元コンテナにて，転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い．また，awsvpcモードの独自の仕組みとして，同じタスク内であれば，互いにコンテナポートを開放せずとも，プロセスのリッスンするポートを指定するだけでコンテナ間通信が可能である．例えば，NginxコンテナからPHP-FPMコンテナにリクエストを転送するためには，PHP-FPMプロセスが```9000```番ポートをリッスンし，さらにコンテナが```9000```番ポートを開放する必要がある．しかし，awsvpcモードではコンテナポートを開放する必要はない．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
+
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-mode_awsvpc.png)
+
+<br>
+
+### タスクのデプロイ方法の種類
+
+#### ・ローリングアップデート
+
+![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rolling-update.png)
+
+参考：https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
+
+1. 最小ヘルス率の設定値に基づいて，ローリングアップデート時の稼働中タスクの最低合計数が決定される．
+2. 最大率の設定値に基づいて，ローリングアップデート時の稼働中／停止中タスクの最高合計数が決まる
+3. ECSは，既存タスクを稼働中のまま，新タスクを最高合計数いっぱいまで構築する．
+4. ECSは，猶予期間後にALB／NLBによる新タスクに対するヘルスチェックの結果を確認する．ヘルスチェックが成功していれば，既存タスクを停止する．ただし，最小ヘルス率によるタスクの最低合計数が保たれる．
+5. 『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され，徐々に既存タスクが新タスクに置き換わる．
+6. 全ての既存タスクが新タスクに置き換わる．
+
+#### ・Blue/Greenデプロイメント
+
+CodeDeployを使用してデプロイを行う．本ノート内を検索せよ．
+
+<br>
+
+### プライベートなECSタスクのアウトバウンド通信
+
+#### ・プライベートサブネットからの通信
+
+プライベートサブネットにECSタスクを配置した場合，アウトバウンドな通信を実行するためには，NAT GatewayまたはVPCエンドポイントを配置する必要がある．パブリックサブネットに配置すればこれらは不要となるが，パブリックサブネットよりもプライベートサブネットにECSタスクを配置する方が望ましい．
+
+#### ・NAT Gatewayを経由
+
+FargateからECRに対するDockerイメージのプルは，VPCの外側に対するアウトバウンド通信（グローバルネットワーク向き通信）である．以下の通り，NAT Gatewayを設置したとする．この場合，ECSやECRとのアウトバウンド通信がNAT Gatewayを通過するため，高額料金を請求されてしまう．
+
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_nat-gateway.png)
+
+#### ・VPCエンドポイントを経由
+
+VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにするとよい．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方がよい．
+
+![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
+
+| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                               |
+| ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため．  |
+| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため．            |
+| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
+| SSMパラメータストア       | ```ssm.ap-northeast-1.amazonaws.com```<br>                   | SSMパラメータストアにGETリクエストを送信するため． |
+| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を使用するため．       |
+
+<br>
+
+### FireLensコンテナ
+
+#### ・FireLensコンテナとは
+
+以下のノートを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/summary.html?q=firelens
+
+<br>
+
+### Tips
+
+#### ・割り当てられるパブリックIPアドレス，FargateのIPアドレス問題
+
+FargateにパブリックIPアドレスを持たせたい場合，Elastic IPアドレスの設定項目がなく，動的パブリックIPアドレスしか設定できない（Fargateの再構築後に変化する）．アウトバウンド通信の先にある外部サービスが，セキュリティ上で静的なIPアドレスを要求する場合，アウトバウンド通信（グローバルネットワーク向き通信）時に送信元パケットに付加されるIPアドレスが動的になり，リクエストができなくなってしまう．
+
+![NatGatewayを介したFargateから外部サービスへのアウトバウンド通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png)
+
+そこで，Fargateのアウトバウンド通信が，Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは，パブリックサブネットとプライベートサブネットのどちらに置いても良い）．これによって，Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため，Fargateの送信元IPアドレスを見かけ上静的に扱うことができるようになる．
+
+参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
+
+<br>
+
+## 15. EFS：Elastic File System
+
+![EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/EFSのファイル共有機能.png)
+
+### EFSとは
+
+マウントターゲットと接続された片方のEC2インスタンスから，ファイルを読み込み，これをもう一方に出力する．ファイルの実体はいずれかのEC2に存在しているため，接続を切断している間，片方のEC2インスタンス内のファイルは無くなる．再接続すると，切断直前のファイルが再び表示されようになる．
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| パフォーマンスモード     |                                                              |                                                              |
+| スループットモード       | EFSのスループット性能を設定する．                            |                                                              |
+| ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス（IA：Infrequent Access）ストレージクラスに移動保存するまでの期限を設定する． | ・ライフサイクルポリシーを有効にしない場合，スタンダードストレージクラスのみが使用される．<br>・画面から両ストレージの使用量を確認できる．<br>参考：https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6 |
+| ファイルシステムポリシー | 他のAWSリソースがEFSを利用する時のポリシーを設定する．       |                                                              |
+| 自動バックアップ         | AWS Backupに定期的に保存するかどうかを設定する．             |                                                              |
+| ネットワーク             | マウントターゲットを設置するサブネット，セキュリティグループを設定する． | ・サブネットは，ファイル供給の速度の観点から，マウントターゲットにアクセスするAWSリソースと同じにする．<br>・セキュリティグループは，EC2からのNFSプロトコルアクセスを許可したものを設定する．EC2のセキュリティグループを通過したアクセスだけを許可するために，IPアドレスでは，EC2のセキュリティグループを設定する． |
+
+<br>
+
+### スペック
+
+#### ・バーストモードの仕組み
+
+スループット性能の自動スケーリングに残高があり，ベースラインを超過した分だけ自動スケーリング残高が減っていく．また，ベースライン未満の分は残高として蓄積されていく．
+
+![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-algorithm.png)
+
+元々の残高は，ファイルシステムのスタンダードストレージクラスの容量に応じて大きくなる．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#efs-burst-credits
+
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/burst-mode_credit-balance-size.png)
+
+残高は，```BurstCreditBalance```メトリクスから確認できる．このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#using-throughputmode
+
+#### ・プロビジョニングモードの仕組み
+
+スループット性能の自動スケーリング機能は無いが，一定の性能は保証されている．
+
+参考：https://docs.aws.amazon.com/ja_jp/efs/latest/ug/performance.html#provisioned-throughput
+
+![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/provisioning-mode_credit-balance-size.png)
+
+<br>
+
+### コマンド
+
+#### ・マウント
+
+DNS経由で，EFSマウントヘルパーを使用した場合を示す．
+
+```bash
+$ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムID>:/ <マウントポイント>
+```
+
+```bash
+# EFSで，マウントポイントを登録
+$ mount -t efs -o tls fs-xxxxx:/ /var/www/app
+
+# マウントポイントを解除
+$ umount /var/www/app
+
+# dfコマンドでマウントしているディレクトリを確認できる
+$ df
+Filesystem                                1K-blocks Used Available Use% Mounted on
+fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
+```
+
+<br>
+
+## 16. ElastiCache
+
+### ElasticCacheとは
+
+アプリケーションの代わりに，セッション，クエリCache，を管理する．RedisとMemcachedがある．
+
+<br>
+
+### Redisの設定項目
+
+![Redis](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Redis.png)
+
+| 設定項目                         | 説明                                                         | 補足                                                         |
+| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| クラスターエンジン               | キャッシュエンジンを設定する．Redis通常モード，Redisクラスターモードから選択する． | Redisクラスターモードと同様に，Redis通常モードもクラスター構成になる．ただ，クラスターモードとはクラスターの構成方法が異なる． |
+| ロケーション                     |                                                              |                                                              |
+| エンジンバージョンの互換性       | 選んだキャッシュエンジンのバージョンを設定する．             | マイナーバージョンが自動的に更新されないように，例えば『6.x』は設定しない方がよい． |
+| パラメータグループ               | グローバルパラメータを設定する．                             | デフォルトを使用せずに独自定義する場合，事前に構築しておく必要がある． |
+| ノードのタイプ                   |                                                              |                                                              |
+| レプリケーション数               | プライマリノードとは別に，リードレプリカノードをいくつ構築するかを設定する． | マルチAZにプライマリノードとリードレプリカノードを一つずつ配置させる場合，ここでは『１個』を設定する． |
+| マルチAZ                         | プライマリノードとリードレプリカを異なるAZに配置するかどうかを設定する．合わせて，自動フェールオーバーを実行できるようになる． |                                                              |
+| サブネットグループ               | Redisにアクセスできるサブネットを設定する．                  |                                                              |
+| セキュリティ                     | セキュリティグループを設定する．                             |                                                              |
+| クラスターへのデータのインポート | あらかじめ作成しておいたバックアップをインポートし，これを元にRedisを構築する． | キャッシュデータを引き継ぐことができる．そのため，新しいRedisへのセッションファイルの移行に役立つ．新しいRedisを構築する例としては，Redisのアップグレード時に，セッションIDを引き継いだアップグレード後のRedisを別途構築し，アプリケーションの向き先を古いRedisから新しいRedisに変える，といった状況がある． |
+| バックアップ                     | バックアップの有効化，保持期間，時間を設定する．             | バックアップを取るほどでもないため，無効化しておいて問題ない． |
+| メンテナンス                     | メンテナンスの時間を設定する．                               |                                                              |
+
+<br>
+
+### セッション管理機能
+
+#### ・仕組み
+
+サーバ内のセッションファイルの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．セッションIDについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+
+![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
+
+<br>
+
+### クエリCache管理機能
+
+#### ・仕組み
+
+RDSに対するSQLと読み出されたデータを，キャッシュとして管理する．
+
+![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_1.png)
+
+（１）アプリケーションは，RDSの前に，Redisに対してSQLを実行する．
+
+```sql
+SELECT * FROM users;
+```
+
+（２）始めて実行されたSQLの場合，RedisはSQLをキーとして保存し，Cacheが無いことがアプリケーションに返却する．
+
+（３）アプリケーションはRDSに対してSQLを実行する．
+
+（４）データが読み出される．
+
+（５）アプリケーションはRedisにデータを登録する．
+
+```bash
+# ElastiCacheには，SQLの実行結果がまだ保存されていない
+
+*** no cache ***
+{"id"=>"1", "name"=>"alice"}
+{"id"=>"2", "name"=>"bob"}
+{"id"=>"3", "name"=>"charles"}
+{"id"=>"4", "name"=>"donny"}
+{"id"=>"5", "name"=>"elie"}
+{"id"=>"6", "name"=>"fabian"}
+{"id"=>"7", "name"=>"gabriel"}
+{"id"=>"8", "name"=>"harold"}
+{"id"=>"9", "name"=>"Ignatius"}
+{"id"=>"10", "name"=>"jonny"}
+```
+
+![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/クエリCache管理機能_2.png)
+
+（６）次回，アプリケーションは，RDSの前に，Redisに対してSQLを実行する．
+
+```sql
+SELECT * FROM users;
+```
+
+（７）Redisは，SQLをキーにしてデータを特定し，アプリケーションに返却する．
+
+```bash
+# ElastiCacheには，SQLの実行結果が既に保存されている
+
+*** cache hit ***
+{"id"=>"1", "name"=>"alice"}
+{"id"=>"2", "name"=>"bob"}
+{"id"=>"3", "name"=>"charles"}
+{"id"=>"4", "name"=>"donny"}
+{"id"=>"5", "name"=>"elie"}
+{"id"=>"6", "name"=>"fabian"}
+{"id"=>"7", "name"=>"gabriel"}
+{"id"=>"8", "name"=>"harold"}
+{"id"=>"9", "name"=>"Ignatius"}
+{"id"=>"10", "name"=>"jonny"}
+```
+
+#### ・クエリCacheの操作
+
+```bash
+# Redis接続コマンド
+$ /usr/local/sbin/redis-stable/src/redis-cli \
+  -c
+  -h <Redisのホスト名>
+  -p 6379
+```
+
+```bash
+# Redis接続中の状態
+# 全てのキーを表示
+redis xxxxx:6379> keys *
+```
+
+```bash
+# Redis接続中の状態
+# キーを指定して，対応する値を表示
+redis xxxxx:6379> type <キー名>
+```
+
+```bash
+# Redis接続中の状態
+# Redisが受け取ったコマンドをフォアグラウンドで表示
+redis xxxxx:6379> monitor
+```
+
+<br>
+
+### Redisの障害対策
+
+#### ・フェイルオーバー
+
+ノードの障害を検知し，障害が発生したノードを新しいものに置き換えることができる．
+
+| 障害の発生したノード | 挙動                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| プライマリノード     | リードレプリカの一つがプライマリノードに昇格し，障害が起きたプライマリノードと置き換えられる． |
+| リードレプリカノード | 障害が起きたリードレプリカノードが，別の新しいものに置き換えられる． |
+
+<br>
+
+### ノードのダウンタイム
+
+バックアップとインポート機能を使用して，セッションIDを引き継いだアップグレード後のRedisを別途構築する．その後，アプリケーションの向き先を古いRedisから新しいRedisに変えるようにすると，ダウンタイムを最小限にしてアップグレードできる．
+
+| 状況                     | ダウンタイム                          |
+| ------------------------ | ------------------------------------- |
+| サービスのアップグレード | 1分30秒ほどのダウンタイムが発生する． |
+
+<br>
+
+## 17. EventBridge（CloudWatchイベント）
+
+### EventBridge（CloudWatchイベント）とは
+
+AWSリソースで起こったイベントを，他のAWSリソースに転送する．サポート対象のAWSリソースは以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html
+
+<br>
+
+### パターン
+
+#### ・イベントパターン
+
+指定したAWSリソースでイベントが起こると，以下のようなJSONが送信される．イベントパターンを定義し，JSON構造が一致するイベントのみをターゲットに転送する．イベントパターンに定義しないキーは任意のデータと見なされる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
+
+```bash
+{
+  "version": "0",
+  "id": "*****",
+  "detail-type": "<イベント名>",
+  "source": "aws.<AWSリソース名>",
+  "account": "*****",
+  "time": "2021-01-01T00:00:00Z",
+  "region": "us-west-1",
+  "resources": [
+    "<イベントを起こしたリソースのARN>"
+  ],
+  "detail": {
+    // その時々のイベントごとに異なるデータ
+  }
+}
+```
+
+**＊実装例＊**
+
+Amplifyの指定したIDのアプリケーションが，```Amplify Deployment Status Change```のイベントを送信し，これの```jobStatus```が```SUCCEED```／```FAILED```だった場合に，これを転送する．
+
+```bash
+{
+  "detail": {
+    "appId": [
+      "foo",
+      "bar"
+    ],
+    "jobStatus": [
+      "SUCCEED",
+      "FAILED"
+    ]
+  },
+  "detail-type": [
+    "Amplify Deployment Status Change"
+  ],
+  "source": "aws.amplify"
+}
+```
+
+#### ・スケジュール
+
+cron式またはrate式を使用し，定期ジョブを定義づける．これとLambdaを組み合わせることにより，バッチ処理を構築できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/events/ScheduledEvents.html
+
+<br>
+
+### ターゲット
+
+#### ・ターゲットの一覧
+
+参考：https://docs.aws.amazon.com/ja_jp/eventbridge/latest/userguide/eb-targets.html
+
+#### ・デバッグ
+
+EventBridgeでは，どのようなJSONのイベントをターゲットに転送したかを確認できない．そこで，デバッグ時はEventBridgeのターゲットにLambdaを設定し，イベント構造をログから確認する．
+
+**＊実装例＊**
+
+あらかじめ，イベントの内容を出力する関数をLambdaに作成しておく．
+
+```javascript
+// Lambdaにデバッグ用の関数を用意する
+exports.handler = async (event) => {
+    console.log(JSON.stringify({event}, null, 2));
+};
+```
+
+対象のAWSリソースで任意のイベントが起こった時に，EventBridgeからLambdaに転送するように設定する．
+
+```bash
+{
+  "source": "aws.amplify"
+}
+```
+
+AWSリソースで意図的にイベントを起こし，Lambdaのロググループから内容を確認する．```detail```キーにイベントが割り当てられている．
+
+```bash
+{
+    "event": {
+        "version": "0",
+        "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
+        "detail-type": "Amplify Deployment Status Change",
+        "source": "aws.amplify",
+        "account": "<AWSアカウントID>",
+        "time": "<イベントの発生時間>",
+        "region": "<リージョン>",
+        "resources": [
+            "<AmplifyのアプリケーションのARN>"
+        ],
+        "detail": {
+            "appId": "<アプリケーションID>",
+            "branchName": "<ブランチ名>",
+            "jobId": "<ジョブID>",
+            "jobStatus": "<CI/CDのステータス>"
+        }
+    }
+}
+```
+
+<br>
+
+### 入力
+
+#### ・入力トランスフォーマー
+
+入力パスで使用する値を抽出し，入力テンプレートで転送するJSONを定義できる．イベントのJSONの値を変数として出力できる．```event```キーをドルマークとして，ドットで繋いでアクセスする．
+
+**＊実装例＊**
+
+入力パスにて，使用する値を抽出する．Amplifyで起こったイベントのJSONを変数として取り出す．JSONのキー名が変数名として機能する．
+
+```bash
+{
+  "appId": "$.detail.appId",
+  "branchName": "$.detail.branchName",
+  "jobId": "$.detail.jobId",
+  "jobStatus": "$.detail.jobStatus",
+  "region": "$.region"
+}
+```
+
+入力テンプレートにて，転送するJSONを定義する．例えばここでは，Slackに送信するJSONに出力する．出力するときは，入力パスの変数名を『```<>```』で囲う．Slackに送信するメッセージの作成ツールは，以下のリンクを参考にせよ．
+
+参考：https://app.slack.com/block-kit-builder
+
+```bash
+{
+  "channel": "XXXXXX",
+  "text": "Amplifyデプロイ完了通知",
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": ":github: プルリク検証用環境"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "*結果*: <jobStatus>"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "*ブランチ名*: <branchName>"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "*検証URL*: https://<branchName>.<appId>.amplifyapp.com"
+        }
+      ]
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": ":amplify: <https://<region>.console.aws.amazon.com/amplify/home?region=<region>#/<appId>/<branchName>/<jobId>|*Amplifyコンソール画面はこちら*>"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    }
+  ]
+}
+```
+
+<br>
+
+## 18. Global Accelerator
+
+### 設定項目
+
+#### ・基本的設定
+
+| 設定項目           | 説明                                                         | 補足                                                         |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Accelerator タイプ | エンドポイントグループへのルーティング時のアルゴリズムを設定する． | Standard：ユーザに最も近いリージョンにあるエンドポイントグループに，リクエストがルーティングされる． |
+| IPアドレスプール   | Global Acceleratorに割り当てる静的IPアドレスを設定する．     |                                                              |
+
+#### ・リスナー
+
+| 設定項目        | 説明                                               | 補足                                                         |
+| --------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| ポート          | ルーティング先のポート番号を設定する．             |                                                              |
+| プロトコル      | ルーティング先のプロトコルを設定する．             |                                                              |
+| Client affinity | ユーザごとにルーティング先を固定するかを設定する． | ・None：複数のルーティング先があった場合，各ユーザの毎リクエスト時のルーティング先は固定されなくなる．<br>・Source IP：複数のルーティング先があったとしても，各ユーザの毎リクエスト時のルーティング先を固定できるようになる． |
+
+#### ・エンドポイントグループ
+
+| 設定項目               | 説明                                                         | 補足                                                         |
+| ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| エンドポイントグループ | 特定のリージョンに関連付くエンドポイントのグループを設定する． | トラフィックダイヤルにて，各エンドポイントグループの重みを設定できる． |
+| トラフィックダイヤル   | 複数のエンドポイントグループがある場合，それぞれの重み（%）を設定する． | ・例えば，カナリアリリースのために，新アプリと旧アプリへのルーティングに重みを付ける場合に役立つ． |
+| ヘルスチェック         | ルーティング先に対するヘルスチェックを設定する．             |                                                              |
+
+#### ・エンドポイント
+
+| 設定項目                     | 説明                                                         | 補足                                                         |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| エンドポイントタイプ         | ルーティング先のAWSリソースを設定する．                      | ALB，NLB，EC2，Elastic IPを選択できる．                      |
+| 重み                         | 複数のエンドポイントがある場合，それぞれの重みを設定する．   | 各エンドポイントの重みの合計値を256とし，1～255で相対値を設定する． |
+| クライアントIPアドレスの保持 | ```X-Forwarded-For```ヘッダーにクライアントIPアドレスを含めて転送するかどうかを設定する． |                                                              |
+
+<br>
+
+### 素早いレスポンスの理由
+
+![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator.png)
+
+最初，クライアントPCからのリクエストはエッジロケーションで受信される．プライベートネットワーク内のエッジロケーションを経由して，ルーティング先のリージョンまで届く．パブリックネットワークを使用しないため，小さなレイテシーでトラフィックをルーティングできる．
+
+![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入後.png)
+
+Global Acceleratorを使用しない場合，クライアントPCのリージョンから指定したリージョンに至るまで，いくつもパブリックネットワークを経由する必要があり，時間がかかってしまう．
+
+![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/GlobalAccelerator導入前.png)
+
+以下のサイトで，Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる．
+
+参考：https://speedtest.globalaccelerator.aws/#/
+
+<br>
+
+## 19. IAM：Identify and Access Management
+
+### IAM
+
+#### ・IAMとは
+
+AWSリソースへのアクセスに関する認証と認可を制御する．認証はアクセスキーとシークレットアクセスキーによって，また認可はIAMロール／IAMポリシー／IAMステートメントによって制御される．
+
+#### ・IAMロールとは
+
+IAMポリシーのセットを定義する．
+
+#### ・IAMポリシーとは
+
+IAMステートメントのセットを定義する．
+
+| IAMポリシーの種類                  | 説明                                                         |
+| ---------------------------------- | ------------------------------------------------------------ |
+| アイデンティティベースのポリシー   | IAMユーザ，IAMグループ，IAMロール，にアタッチするためのポリシーのこと． |
+| リソースベースのインラインポリシー | 単一のAWSリソースにインポリシーのこと．                      |
+| アクセスコントロールポリシー       | json形式で定義する必要が無いポリシーのこと．                 |
+
+**＊具体例＊**
+
+以下に，EC2の読み出しのみ権限（```AmazonEC2ReadOnlyAccess```）をアタッチできるポリシーを示す．このIAMポリシーには，他のAWSリソースに対する権限も含まれている．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "elasticloadbalancing:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:ListMetrics",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:Describe*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "autoscaling:Describe*",
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+####  ・IAMステートメントとは
+
+AWSリソースに関する認可のスコープを定義する．各アクションについては以下のリンクを参考にせよ．
+
+| AWSリソースの種類 | リンク                                                       |
+| ----------------- | ------------------------------------------------------------ |
+| CloudWatchログ    | https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/logs/permissions-reference-cwl.html |
+
+**＊具体例＊**
+
+以下のインラインポリシーがアタッチされたロールを持つAWSリソースは，任意のSSMパラメータを取得できるようになる．
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+| Statementの項目 | 説明                                             |
+| --------------- | ------------------------------------------------ |
+| Sid             | 任意の一意な文字列を設定する．空文字でもよい．   |
+| Effect          | 許可／拒否を設定する．                           |
+| Action          | リソースに対して実行できるアクションを設定する． |
+| Resource        | アクションの実行対象に選べるリソースを設定する． |
+
+
+以下に主要なアクションを示す．
+
+| アクション名 | 説明                   |
+| ------------ | ---------------------- |
+| Create       | リソースを構築する．   |
+| Describe     | リソースを表示する．   |
+| Delete       | リソースを削除する．   |
+| Get          | リソースを取得する．   |
+| Put          | リソースを上書きする． |
+
+#### ・ARNとは：Amazon Resource Namespace
+
+AWSリソースの識別子のこと．
+
+参考：https://docs.aws.amazon.com/ja_jp/general/latest/gr/aws-arns-and-namespaces.html
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Resource": "arn:<パーティション>:<AWSリソース>:<リージョン>:<アカウントID>:<AWSリソースID>"
+    }
+  ]
+}
+```
+
+<br>
+
+### IAMロール
+
+#### ・サービスリンクロール
+
+AWSリソースを構築した時に自動的に作成されるロール．他にはアタッチできない専用のポリシーがアタッチされている．『```AWSServiceRoleFor*****```』という名前で自動的に構築される．特に設定せずとも，自動的にリソースにアタッチされる．関連するリソースを削除するまで，ロール自体できない．サービスリンクロールの一覧については，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+
+#### ・クロスアカウントのアクセスロール  
+
+#### ・プロバイダのアクセスロール  
+
+<br>
+
+### アイデンティティベースのポリシー
+
+#### ・アイデンティティベースのポリシーとは
+
+IAMユーザ，IAMグループ，IAMロール，にアタッチするためのポリシーのこと．
+
+#### ・AWS管理ポリシー
+
+AWSが提供しているポリシーのこと．アタッチ式のポリシーのため，すでにアタッチされていても，他のものにもアタッチできる．
+
+#### ・カスタマー管理ポリシー
+
+ユーザが独自に構築したポリシーのこと．すでにアタッチされていても，他のものにもアタッチできる．
+
+#### ・インラインポリシー
+
+単一のアイデンティティにアタッチするためのポリシーのこと．組み込み式のポリシーのため，アイデンティティ間で共有してアタッチすることはできない．
+
+**＊実装例＊**
+
+IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，ユーザーアカウントのすべての ACM 証明書を一覧表示できるようになる．
+
+```bash
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":"acm:ListCertificates",
+      "Resource":"*"
+    }
+  ]
+}
+```
+
+**＊実装例＊**
+
+IAMロールにインラインポリシーをアタッチする．このロールを持つユーザは，全てのAWSリソースに，任意のアクションを実行できる．
+
+```bash
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":"*",
+      "Resource":"*"
+    }
+  ]
+}
+```
+
+<br>
+
+### リソースベースのインラインポリシー
+
+#### ・リソースベースのインラインポリシーとは
+
+単一のAWSリソースにインポリシーのこと．すでにアタッチされていると，他のものにはアタッチできない．
+
+#### ・バケットポリシー
+
+S3にアタッチされる，自身へのアクセスを制御するためのインラインポリシーのこと．
+
+#### ・ライフサイクルポリシー
+
+ECRにアタッチされる，イメージの有効期間を定義するポリシー．コンソール画面から入力できるため，基本的にポリシーの実装は不要であるが，TerraformなどのIaCツールでは必要になる．
+
+**＊実装例＊**
+
+```bash
+{
+  "rules": [
+    {
+      "rulePriority": 1,
+      "description": "Keep last 10 images untagged",
+      "selection": {
+        "tagStatus": "untagged",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
+      },
+      "action": {
+        "type": "expire"
+      }
+    },
+    {
+      "rulePriority": 2,
+      "description": "Keep last 10 images any",
+      "selection": {
+        "tagStatus": "any",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
+      },
+      "action": {
+        "type": "expire"
+      }
+    }
+  ]
+}
+```
+
+#### ・信頼ポリシー
+
+ロールにアタッチされる，Assume Roleを行うためのインラインポリシーのこと．
+
+**＊実装例＊**
+
+例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```の```ecs-tasks```が信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+信頼ポリシーでは，IAMユーザを信頼されたエンティティとして設定することもできる．
+
+**＊実装例＊**
+
+例えば，以下の信頼ポリシーを任意のロールにアタッチしたとする．その場合，```Principal```のIAMユーザが信頼されたエンティティと見なされ，ロールをアタッチできるようになる．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザ名>"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<適当な文字列>"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
+### IAMポリシーをアタッチできる対象
+
+#### ・IAMユーザに対するアタッチ
+
+![IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMユーザにポリシーを付与.jpeg)
+
+#### ・IAMグループに対するアタッチ
+
+![IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMグループにポリシーを付与.jpeg)
+
+#### ・IAMロールに対するアタッチ
+
+![IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IAMロールにポリシーを付与.jpeg)
+
+<br>
+
+### ルートユーザ，IAMユーザ
+
+#### ・ルートユーザとは
+
+全ての権限をもったアカウントのこと．
+
+#### ・IAMユーザとは
+
+特定の権限をもったアカウントのこと．
+
+#### ・```credentials```ファイルを使用したCLI
+
+AWS CLIでクラウドインフラを操作するためには，```credentials```ファイルに定義されたクレデンシャル情報が必要である．『```aws_region```』ではなく『```aws_default_region```』であることに注意する．
+
+```bash
+$ aws configure set aws_access_key_id "<アクセスキー>"
+$ aws configure set aws_secret_access_key "<シークレットキー>"
+$ aws configure set aws_default_region "リージョン>"
+```
+
+```bash
+# Linux，Unixの場合：$HOME/.aws/<credentialsファイル名>
+# Windowsの場合：%USERPROFILE%\.aws\<credentialsファイル名>
+
+[default]
+aws_access_key_id=<アクセスキー>
+aws_secret_access_key=<シークレットキー>
+
+[user1]
+aws_access_key_id=<アクセスキー>
+aws_secret_access_key=<シークレットキー>
+```
+
+#### ・環境変数を使用したCLI
+
+AWS CLIでクラウドインフラを操作するためには，環境変数で定義されたクレデンシャル情報が必要である．『```AWS_REGION```』ではなく『```AWS_DEFAULT_REGION```』であることに注意する．
+
+```bash
+$ export AWS_ACCESS_KEY_ID=<アクセスキー>
+$ export AWS_SECRET_ACCESS_KEY=<シークレットキー>
+$ export AWS_DEFAULT_REGION=<リージョン>
+```
+
+<br>
+
+### IAMグループ
+
+#### ・IAMグループとは
+
+IAMユーザをグループ化したもの．IAMグループごとにIAMロールをアタッチすれば，IAMユーザのIAMロールを管理しやすくなる．
+
+![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループ.png)
+
+#### ・IAMグループへのIAMロールの紐付け
+
+IAMグループに対して，IAMロールを紐づける．そのIAMグループに対して，IAMロールをアタッチしたいIAMユーザを追加していく．
+
+![グループに所属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループに所属するユーザにロールを付与.png)
+
+#### ・グループ一覧
+
+| 種類            | 説明                       | 補足 |
+| --------------- | -------------------------- | ---- |
+| Administrator   | 全ての操作に権限がある．   |      |
+| PowerUserAccess | IAM以外の操作権限がある．  |      |
+| ViewOnlyAccess  | 閲覧のみの操作権限がある． |      |
+
+<br>
+
+### CLI
+
+#### ・CLIの社内アクセス制限
+
+特定の送信元IPアドレスを制限するポリシーをIAMユーザにアタッチすることで，そのIAMユーザがAWS CLIの実行する時に，社外から実行できないように制限をかけられる．
+
+**＊実装例＊**
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Deny",
+    "Action": "*",
+    "Resource": "*",
+    "Condition": {
+      "NotIpAddress": {
+        "aws:SourceIp": [
+          "nn.nnn.nnn.nnn/32"
+        ]
+      }
+    }
+  }
+}
+```
+
+ポリシーのDenyステートメントによってアクセスが拒否された場合，エラーメッセージの最後に『```with an explicit deny```』という文言がつく．
+
+**＊例＊**
+
+```
+Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <IAMユーザ名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny
+
+```
+
+#### ・ユーザ名を変更
+
+ユーザ名は，コンソール画面から変更できず，コマンドで変更する必要がある．
+
+```bash
+$ aws iam update-user \
+  --user-name <現行のユーザ名> \
+  --new-user-name <新しいユーザ名>
+```
+
+<br>
+
+## 20. Kinesis
+
+### Kinesisとは
+
+ストリーミングデータ（動画データ，音声データ，など）を受信し，リアルタイムで継続的に収集／加工／解析を実行する．ちなみに，
+
+参考：https://docs.aws.amazon.com/ja_jp/kinesis/index.html
+
+<br>
+
+## 21. Lambda
+
+### Lambdaとは
+
+他のAWSリソースのイベントによって駆動する関数を管理できる．ユースケースについては，以下のリンクを参考にせよ．
+
+参考：参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/applications-usecases.html
+
+![サーバレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サーバレスアーキテクチャとは.png)
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目                           | 説明                                                         | 補足                                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ランタイム                         | 関数の実装に使用する言語を設定する．                         | コンテナイメージの関数では使用できない．                     |
+| ハンドラ                           | 関数の実行時にコールしたい具体的メソッド名を設定する．       | ・コンテナイメージの関数では使用できない．<br>・Node.js：```index.js``` というファイル名で ```exports.handler``` メソッドを呼び出したい場合，ハンドラ名を```index.handler```とする |
+| レイヤー                           | 異なる関数の間で，特定の処理を共通化できる．                 | コンテナイメージの関数では使用できない．                     |
+| メモリ                             | Lambdaに割り当てるメモリ量を設定する．                       | 最大10240MBまで増設でき，増設するほどパフォーマンスが上がる．<br>参考：https://www.business-on-it.com/2003-aws-lambda-performance-check/ |
+| タイムアウト                       |                                                              |                                                              |
+| 実行ロール                         | Lambda内のメソッドが実行される時に必要なポリシーをもつロールを設定する． |                                                              |
+| 既存ロール                         | Lambdaにロールを設定する．                                   |                                                              |
+| トリガー                           | LambdaにアクセスできるようにするAWSリソースを設定する．      | 設定されたAWSリソースに応じて，Lambdaのポリシーが自動的に修正される． |
+| アクセス権限                       | Lambdaのポリシーを設定する．                                 | トリガーの設定に応じて，Lambdaのポリシーが自動的に修正される． |
+| 送信先                             | LambdaからアクセスできるようにするAWSリソースを設定する．    | 送信先のAWSリソースのポリシーは自動的に修正されないため，別途，手動で修正する必要がある． |
+| 環境変数                           | Lambdaの関数内に出力する環境変数を設定する．                 | 標準では，環境変数はAWSマネージド型KMSキーによって暗号化される． |
+| 同時実行数                         | 同時実行の予約を設定する．                                   |                                                              |
+| プロビジョニングされた同時実行設定 |                                                              |                                                              |
+| モニタリング                       | LambdaをCloudWatchまたはX-Rayを用いて，メトリクスを収集する． | 次の方法がある<br>・CloudWatchによって，メトリクスを収集する．<br>・CloudWatchのLambda Insightsによって，パフォーマンスに関するメトリクスを収集する．<br>・X-Rayによって，APIへのリクエスト，Lambdaコール，Lambdaの下流とのデータ通信をトレースし，これらをスタックトレース化する． |
+
+#### ・設定のベストプラクティス
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/best-practices.html#function-configuration
+
+<br>
+
+### Lambdaと関数の関係性
+
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-api-flow.png)
+
+#### ・Lambdaサービス
+
+コンソール画面のLamdaに相当する．
+
+#### ・関数の実行環境
+
+Lambdaの実行環境は，API（ランタイムAPI，ログAPI，拡張API）と実行環境から構成されている．関数は実行環境に存在し，ランタイムAPIを介して，Lambdaによって実行される．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
+
+実行環境には，３つのフェーズがある．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
+
+![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda-execution-environment-lifecycle.png)
+
+#### ・Initフェーズ
+
+Lambdaが発火する．実行環境が構築され，関数を実行するための準備が行われる．
+
+#### ・Invokeフェーズ
+
+Lambdaは関数を実行する．実行環境側のランタイムは，APIを介してLambdaから関数に引数を渡す．また関数の実行後に，APIを介して返却値をLambdaに渡す．
+
+#### ・Shutdownフェーズ
+
+一定期間，Invokeフェーズにおける関数実行が行われなかった場合，Lambdaはランタイムを終了し，実行環境を削除する．
+
+<br>
+
+### Lambda関数 on Docker
+
+#### ・ベースイメージの準備
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-images.html#runtimes-images-lp
+
+#### ・RIC：Runtime Interface Clients
+
+通常のランタイムはコンテナ内関数と通信できないため，ランタイムの代わりにRICを使用してコンテナ内関数と通信を行う．言語別にRICパッケージが用意されている．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-images.html#runtimes-api-client
+
+#### ・RIE：Runtime Interface Emulator
+
+開発環境のコンテナで，擬似的にLambda関数を再現する．全ての言語で共通のRIEライブラリが用意されている．
+
+参考：https://github.com/aws/aws-lambda-runtime-interface-emulator
+
+RIEであっても，稼働させるためにAWSのクレデンシャル情報（アクセスキー，シークレットアクセスキー，リージョン）が必要なため，環境変数や```credentials```ファイルを使用して，Lambdaにこれらの値を出力する．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-test.html#images-test-env
+
+**＊参考＊**
+
+```bash
+$ docker run --rm \
+    # エミュレーターをエントリポイントをバインドする．
+    -v ~/.aws-lambda-rie:/aws-lambda \
+    -p 9000:8080 \
+    # エミュレーターをエントリポイントとして指定する．
+    --entrypoint /aws-lambda/aws-lambda-rie \
+    <イメージ名>:<タグ名> /go/bin/cmd
+```
+
+```bash
+# ハンドラー関数の引数に合ったJSONデータを送信する．
+$ curl \
+  -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
+```
+
+**＊参考＊**
+
+```yaml
+version: "3.7"
+
+services:
+  lambda:
+    build:
+      context: .
+      dockerfile: ./build/Dockerfile
+    container_name: lambda
+    # エミュレーターをエントリポイントとして指定する．
+    entrypoint: /aws-lambda/aws-lambda-rie
+    env_file:
+      - .docker.env
+    image: <イメージ名>:<タグ名>
+    ports:
+      - 9000:8080
+    # エミュレーターをエントリポイントをバインドする．
+    volumes:
+      - ~/.aws-lambda-rie:/aws-lambda
+```
+
+```bash
+$ docker-compose up lambda
+```
+
+```bash
+$ curl \
+  -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+  -d '{}'
+```
+
+<br>
+
+### Lambda関数
+
+#### ・Goの使用例
+
+以下のリンクを参考にせよ．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-golang.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
+
+#### ・Node.jsの使用例
+
+以下のリンクを参考にせよ．
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-nodejs.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
+
+<br>
+
+### 同時実行
+
+#### ・同時実行の予約
+
+Lambdaは，関数の実行中に再びリクエストが送信されると，関数のインスタンスを新しく作成する．そして，各関数インスタンスを用いて，同時並行的にリクエストに応じる．標準では，関数の種類がいくつあっても，AWSアカウント当たり，合計で```1000```個までしかスケーリングして同時実行できない．関数ごとに同時実行数の使用枠を割り当てるためには，同時実行の予約を設定する必要がある．同時実行の予約数を```0```個とした場合，Lambdがスケーリングしなくなる．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
+
+![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lambda_concurrency-model.png)
+
+<br>
+
+### VPC外／VPC内
+
+#### ・VPC外への配置
+
+Lambdaは標準ではVPC外に配置される．この場合，LambdaにENIがアタッチされ，ENIに割り当てられたIPアドレスがLambdaに適用される．Lambdaの実行時にENIは再作成されるため，実行ごとにIPアドレスは変化するが，一定時間内の再実行であればENIは再利用されるため，前回の実行時と同じIPアドレスになることもある．
+
+#### ・VPC内への配置
+
+LambdaをVPC内に配置するように設定する．VPC内に配置したLambdaにはパブリックIPアドレスが割り当てられないため，アウトバウンドな通信を行うためには，NAT Gatewayを設置する必要がある．
+
+<br>
+
+### ポリシー
+
+#### ・実行のための最低限のポリシー
+
+Lambdaを実行するためには，デプロイされた関数を使用する権限が必要である．そのため，関数を取得するためのステートメントを設定する．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:<リージョン>:<アカウントID>:function:<関数名>*"
+    }
+  ]
+}
+```
+
+<br>
+
+### デプロイ
+
+#### ・直接修正
+
+デプロイを行わずに，関数のソースコードを直接修正し，『Deploy』ボタンでデプロイする．
+
+#### ・S3におけるzipファイル
+
+ビルド後のソースコードをzipファイルにしてアップロードする．ローカルPCまたはS3からアップロードできる．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip
+
+#### ・ECRにおけるイメージ
+
+コンテナイメージの関数でのみ有効である．ビルド後のソースコードをDockerイメージしてアップロードする．ECRからアップロードできる．
+
+参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images
+
+<br>
+
+## 21-02. Lambda@Edge
+
+### Lambda@Edgeとは
+
+CloudFrontに統合されたLambdaを，特別にLambda@Edgeという．
+
+<br>
+
+### 設定項目
+
+#### ・トリガーの種類
+
+![Lambda@Edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Lambda@Edge.png)
+
+CloudFrontのビューワーリクエスト，オリジンリクエスト，オリジンレスポンス，ビューワーレスポンス，をトリガーとする．エッジロケーションのCloudFrontに，Lambdaのレプリカが構築される．
+
+| トリガーの種類       | 発火のタイミング                                             |
+| -------------------- | ------------------------------------------------------------ |
+| ビューワーリクエスト | CloudFrontが，ビューワーからリクエストを受信した後（キャッシュを確認する前）． |
+| オリジンリクエスト   | CloudFrontが，リクエストをオリジンサーバーに転送する前（キャッシュを確認した後）． |
+| オリジンレスポンス   | CloudFrontが，オリジンからレスポンスを受信した後（キャッシュを確認する前）． |
+| ビューワーレスポンス | CloudFrontが，ビューワーにレスポンスを転送する前（キャッシュを確認した後）． |
+
+#### ・各トリガーのeventオブジェクトへのマッピング
+
+各トリガーのeventオブジェクトへのマッピングは，リンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+
+<br>
+
+### ポリシー
+
+#### ・実行のための最低限のポリシー
+
+Lambda@Edgeを実行するためには，最低限，以下の権限が必要である．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:GetFunction",
+        "lambda:EnableReplication*"
+      ],
+      "Resource": "arn:aws:lambda:<リージョン名>:<アカウントID>:function:<関数名>:<バージョン>"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:UpdateDistribution"
+      ],
+      "Resource": "arn:aws:cloudfront::<アカウントID>:distribution/<DistributionID>"
+    }
+  ]
+}
+```
+
+<br>
+
+### Node.jsを用いた関数例
+
+#### ・オリジンの動的な切り替え
+
+![Lambda@Edge_動的オリジン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Lambda@Edge_動的オリジン.png)
+
+**＊実装例＊**
+
+eventオブジェクトの```domainName```と```host.value```に代入されたバケットのドメイン名によって，ルーティング先のバケットが決まる．そのため，この値を切り替えれば，動的オリジンを実現できる．なお，各バケットには同じOAIを設定する必要がある．
+
+```javascript
+"use strict";
+
+exports.handler = (event, context, callback) => {
+
+    const request = event.Records[0].cf.request;
+    // ログストリームに変数を出力する．
+    console.log(JSON.stringify({request}, null, 2));
+
+    const headers = request.headers;
+    const s3Backet = getBacketBasedOnDeviceType(headers);
+
+    request.origin.s3.domainName = s3Backet
+    request.headers.host[0].value = s3Backet
+    // ログストリームに変数を出力する．
+    console.log(JSON.stringify({request}, null, 2));
+
+    return callback(null, request);
+};
+
+/**
+ * デバイスタイプに基づいて，オリジンを切り替える．
+ *
+ * @param   {Object} headers
+ * @param   {string} env
+ * @returns {string} pcBucket|spBucket
+ */
+const getBacketBasedOnDeviceType = (headers) => {
+
+    const pcBucket = env + "-bucket.s3.amazonaws.com";
+    const spBucket = env + "-bucket.s3.amazonaws.com";
+
+    if (headers["cloudfront-is-desktop-viewer"]
+        && headers["cloudfront-is-desktop-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-tablet-viewer"]
+        && headers["cloudfront-is-tablet-viewer"][0].value === "true") {
+        return pcBucket;
+    }
+
+    if (headers["cloudfront-is-mobile-viewer"]
+        && headers["cloudfront-is-mobile-viewer"][0].value === "true") {
+        return spBucket;
+    }
+
+    return spBucket;
+};
+```
+
+オリジンリクエストは，以下のeventオブジェクトのJSONデータにマッピングされている．なお，一部のキーは省略している．
+
+```bash
+{
+  "Records": [
+    {
+      "cf": {
+        "request": {
+          "body": {
+            "action": "read-only",
+            "data": "",
+            "encoding": "base64",
+            "inputTruncated": false
+          },
+          "clientIp": "nnn.n.nnn.nnn",
+          "headers": {
+            "host": [
+              {
+                "key": "Host",
+                "value": "prd-sp-bucket.s3.ap-northeast-1.amazonaws.com"
+              }
+            ],
+            "cloudfront-is-mobile-viewer": [
+              {
+                "key": "CloudFront-Is-Mobile-Viewer",
+                "value": true
+              }
+            ],
+            "cloudfront-is-tablet-viewer": [
+              {
+                "key": "loudFront-Is-Tablet-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-smarttv-viewer": [
+              {
+                "key": "CloudFront-Is-SmartTV-Viewer",
+                "value": false
+              }
+            ],
+            "cloudfront-is-desktop-viewer": [
+              {
+                "key": "CloudFront-Is-Desktop-Viewer",
+                "value": false
+              }
+            ],
+            "user-agent": [
+              {
+                "key": "User-Agent",
+                "value": "Amazon CloudFront"
+              }
+            ]
+          },
+          "method": "GET",
+          "origin": {
+            "s3": {
+              "authMethod": "origin-access-identity",                
+              "customHeaders": {
+                  "env": [
+                      {
+                          "key": "env",
+                          "value": "prd"
+                      }
+                  ]
+              },
+              "domainName": "prd-sp-bucket.s3.amazonaws.com",
+              "path": "",
+              "port": 443,
+              "protocol": "https",
+              "region": "ap-northeast-1"
+            }
+          },
+          "querystring": "",
+          "uri": "/images/12345"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
+## 22. RDS：Relational Database Service
+
+### 設定項目
+
+| 設定項目                               | 説明                                                         | 補足                                                         |
+| -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| エンジンのオプション                   | データベースエンジンの種類を設定                             |                                                              |
+| エディション                           | Amazon Auroraを選んだ場合の互換性を設定する．                |                                                              |
+| キャパシティタイプ                     |                                                              |                                                              |
+| エンジンバージョン                     | データベースエンジンのバージョンを指定する．                 | ・```SELECT AURORA_VERSION()```を使用して，エンジンバージョンを確認できる． |
+| レプリケーション機能                   |                                                              |                                                              |
+| DBクラスター識別子                     | クラスター名を設定する．                                     | インスタンス名は，最初に設定できず，RDSの構築後に設定できる． |
+| マスタユーザ名                         | データベースのrootユーザを設定                               |                                                              |
+| マスターパスワード                     | データベースのrootユーザのパスワードを設定                   |                                                              |
+| DBインスタンスサイズ                   | データベースのインスタンスのスペックを設定する．             | バースト可能クラスを選ぶこと．ちなみに，Amazon Auroraのデータベース容量は自動でスケーリングするため，設定する必要がない． |
+| マルチAZ配置                           | プライマリインスタンスとは別に，リーダーレプリカをマルチAZ配置で追加するかどうかを設定する． |                                                              |
+| 最初のデータベース名                   | データベースに自動的に構築されるデータベース名を設定         |                                                              |
+| サブネットグループ                     | データベースにアクセスできるサブネットを設定する．           |                                                              |
+| パラメータグループ                     | グローバルパラメータを設定する．                             | デフォルトを使用せずに独自定義する場合，事前に構築しておく必要がある．クラスターパラメータグループとインスタンスパラメータグループがあるが，クラスターパラメータを設定すればよい．各パラメータに適用タイプ（dynamic/static）があり，dynamicタイプは設定の適用に再起動が必要である．新しく作成したクラスタパラメータグループにて以下の値を設定するとよい．<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br/>・```character_set_connection=utf8mb4```<br/>・```character_set_database=utf8mb4```<br/>・```character_set_results=utf8mb4```<br/>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br/>・```server_audit_logs_upload=1```<br/>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br/>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br/>・```long_query_time=3```（スロークエリと見なす最短秒数） |
+| ログのエクスポート                     |                                                              | 必ず，全てのログを選択すること．                             |
+| バックアップ保持期間                   | RDSがバックアップを保持する期間を設定する．                  | ```7```日間にしておく．                                      |
+| マイナーバージョンの自動アップグレード | データベースエンジンのバージョンを自動的に更新するかを設定する． | 開発環境では有効化，本番環境とステージング環境では無効化しておく．開発環境で新しいバージョンに問題がなければ，ステージング環境と本番環境にも適用する． |
+
+<br>
+
+### データベースインスタンス
+
+#### ・データベースエンジン，RDB，DBMSの対応関係
+
+RDSでは，DBMS，RDBを選べる．
+
+| DBMSの種類        | RDBの種類              |
+| ----------------- | ---------------------- |
+| MySQL／PostgreSQL | Amazon Aurora          |
+| MariaDB           | MariaDBデータベース    |
+| MySQL             | MySQLデータベース      |
+| PostgreSQL        | PostgreSQLデータベース |
+
+#### ・データベースインスタンスの種類
+
+|                | 読み出し／書き込みインスタンス                               | 読み出しオンリーインスタンス                                 |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 別名           | プライマリインスタンス                                       | リードレプリカインスタンス                                   |
+| CRUD制限       | 制限なし．ユーザ権限に依存する．                             | ユーザ権限の権限に関係なく，READしか実行できない．           |
+| エンドポイント | 各インスタンスに，リージョンのイニシャルに合わせたエンヂポイントが割り振られる． | 各インスタンスに，リージョンのイニシャルに合わせたエンヂポイントが割り振られる． |
+| データ同期     | RDSクラスターに対するデータ変更を受けつける．                | 読み出し／書き込みインスタンスのデータの変更が同期される．   |
+
+<br>
+
+### インスタンスのダウンタイム
+
+#### ・ダウンタイムの発生条件
+
+その他の全ての項目は，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+
+| 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
+| ------------------------------------ | ------------------ | ------------------------------------------------------------ |
+| インスタンスクラス                   | あり               |                                                              |
+| サブネットグループ                   | あり               |                                                              |
+| エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html |
+| メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で，メンテナンス時間を現在が含まれるように変更すると，保留中の操作がすぐに適用される．そのため，ダウンタイムが発生する． |
+| バックアップウインドウ               | 条件付きでなし     | ```0```から```0```以外の値，```0```以外の値から```0```に変更した場合，ダウンタイムが発生する． |
+| パラメータグループ                   | なし               | パラメータグループの変更ではダウンタイムは発生しない．ただし，パラメータグループの変更をインスタンスに反映させる上で再起動が必要なため，ここでダウンタイムが発生する． |
+| セキュリティグループ                 | なし               |                                                              |
+| マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが，自動アップグレードの設定にはダウンタイムが発生しない． |
+| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない．ただし，有効化のためにパラメータグループの```performance_schema```を有効化する必要がある．パラメータグループの変更をインスタンスに反映させる上で再起動が必要なため，ここでダウンタイムが発生する． |
+
+#### ・再起動ダウンタイムの短縮
+
+非マルチAZ構成の場合，アプリケーションの向き先をプライマリーインスタンスにしたまま，変更対象のデータベースからリードレプリカを新しく作成し，これを更新した後に，リードレプリカを手動フェイルオーバーさせる．フェイルオーバー時に約```1```～```2```分のダウンタイムが発生するが，インスタンスの再起動よりも時間が短いため，相対的にダウンタイムを短縮できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
+
+マルチAZ構成の場合，アプリケーションの向き先をプライマリーインスタンスにしたまま，既存のリードレプリカを更新し，リードレプリカを自動フェイルオーバーさせる．フェイルオーバー時に約```1```～```2```分のダウンタイムが発生するが，インスタンスの再起動よりも時間が短いため，相対的にダウンタイムを短縮できる．
+
+#### ・メンテナンスウインドウ
+
+メンテナスウインドウには，以下の状態がある．
+
+| 状態           | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| 利用可能       | アクションは実行可能である．また，以降のメンテナンスウィンドウの間に自動的に実行することはない． |
+| 次のウィンドウ | アクションは実行可能である．また，次回のメンテナンスウィンドウの間に，アクションを自動的に実行する．後でアップグレードを選択することで，『利用可能』の状態に戻すことも可能． |
+| 必須           | アクションは実行可能である．また，指定されたメンテナンスウィンドウの間に必ず実行され，これは延期できない． |
+| 進行中         | 現在時刻がメンテナンスウィンドウに含まれており，アクションを実行中である． |
+
+#### ・ダウンタイムの計測
+
+アプリケーションの目視ではなく，RDSに直接クエリを送信し，レスポンスとRDSイベントログから，ダウンタイムを計測する．
+
+**＊実装例＊**
+
+踏み台サーバを経由してRDSに接続し，現在時刻を取得するSQLを送信する．平常アクセス時の再現テストも同時に実行することで，より正確なダウンタイムを取得するようにする．また，ヘルスチェックの時刻を正しくロギングできるように，ローカルPCから時刻を取得する．
+
+```bash
+#!/bin/bash
+
+set -x
+
+BASTION_HOST=""
+BASTION_USER=""
+DB_HOST=""
+DB_PASSWORD=""
+DB_USER=""
+SECRET_KEY="~/.ssh/xxx.pem"
+SQL="SELECT NOW();"
+
+ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
+
+for i in {1..900};
+do
+  LOCAL_DATETIME=$(date +"%Y-%m-%d %H:%M:%S")
+  echo "---------- No. ${i} Local PC: ${LOCAL_DATETIME} ------------" >> health_check.txt
+  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1 & sleep 1
+done
+```
+
+上記のシェルスクリプトにより，例えば次のようなログを取得できる．このログからは，```15:23:09 ~ 15:23:14```の間で，接続に失敗していることを確認できる．
+
+```log
+---------- No. 242 Local PC: 2021-04-21 15:23:06 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:06
+---------- No. 243 Local PC: 2021-04-21 15:23:07 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:08
+---------- No. 244 Local PC: 2021-04-21 15:23:08 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2026 (HY000): SSL connection error: error:00000000:lib(0):func(0):reason(0)
+---------- No. 245 Local PC: 2021-04-21 15:23:09 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 246 Local PC: 2021-04-21 15:23:10 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 247 Local PC: 2021-04-21 15:23:11 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 248 Local PC: 2021-04-21 15:23:13 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 249 Local PC: 2021-04-21 15:23:14 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
+---------- No. 250 Local PC: 2021-04-21 15:23:15 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:16
+---------- No. 251 Local PC: 2021-04-21 15:23:16 ------------
+mysql: [Warning] Using a password on the command line interface can be insecure.
+NOW()
+2021-04-21 06:23:17
+```
+
+アップグレード時のプライマリインスタンスのRDSイベントログは以下の通りで，ログによるダウンタイムは，再起動からシャットダウンまでの期間と一致することを確認する．
+
+![rds-event-log](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_primary-instance.png)
+
+ちなみに，リードレプリカは再起動のみを実行していることがわかる．
+
+![rds-event-log](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds-event-log_read-replica-instance.png)
+
+<br>
+
+### 負荷対策
+
+#### ・エンドポイントの使い分け
+
+![RDSエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RDSエンドポイント.png)
+
+インスタンスに応じたエンドポイントが用意されている．アプリケーションからのCRUDの種類に応じて，アクセス先を振り分けることにより，負荷を分散させられる．読み出しオンリーエンドポイントに対して，READ以外の処理を行うと，以下の通り，エラーとなる．
+
+
+```log
+/* SQL Error (1290): The MySQL server is running with the --read-only option so it cannot execute this statement */
+```
+
+| 種類                       | エンドポイント                                               | クエリの種類       | 説明                                                         |
+| -------------------------- | ------------------------------------------------------------ | ------------------ | ------------------------------------------------------------ |
+| クラスターエンドポイント   | ```<クラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com``` | 書き込み／読み出し | プライマリインスタンスに接続できる．                         |
+| 読み出しエンドポイント     | ```<クラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com``` | 読み出し           | リードレプリカインスタンスに接続できる．インスタンスが複数ある場合，クエリが自動的に割り振られる． |
+| インスタンスエンドポイント | ```<インスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com``` |                    | 選択したインスタンスに接続できる．フェイルオーバーによって読み書きインスタンスと読み出しインスタンスが入れ替わってしまうため，インスタンスエンドポイントを指定しない方が良い．これは，Redisも同じである． |
+
+#### ・クエリキャッシュの利用
+
+MySQLやRedisのクエリキャッシュ機能を利用する．ただし，MySQLのクエリキャッシュ機能は，バージョン```8```で廃止されることになっている．
+
+#### ・ユニークキーまたはインデックスの利用
+
+スロークエリを検出し，そのSQLで対象としているカラムにユニークキーやインデックスを設定する．スロークエリを検出する方法として，RDSの```long_query_time```パラメータに基づいた検出や，```EXPLAIN```句による予想実行時間の比較などがある．ユニークキー，インデックス，```EXPLAIN```句，については以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_mysql.html
+
+#### ・テーブルを正規化し過ぎない
+
+テーブルを正規化すると保守性が高まるが，アプリケーションのSQLで```JOIN```句が必要になる．しかし，```JOIN```句を含むSQLは，含まないSQLと比較して，実行速度が遅くなる．そこで，戦略的に正規化し過ぎないようにする．
+
+#### ・インスタンスタイプのスケールアップ
+
+インスタンスタイプをスケールアップさせることで，接続過多のエラー（```ERROR 1040 (HY000): Too many connections```）に対処する．ちなみに現在の最大接続数はパラメータグループの値から確認できる．コンソール画面からはおおよその値しかわからないため，SQLで確認した方が良い．
+
+```sql
+MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
+
++-----------------+-------+
+| Variable_name  | Value |
++-----------------+-------+
+| max_connections | 640  |
++-----------------+-------+
+1 row in set (0.00 sec)
+```
+
+<br>
+
+### 障害対策
+
+#### ・フェイルオーバー
+
+RDSのフェイルオーバーには，データベースの種類に応じて，以下の種類のものがある．フェイルオーバー時に約```1```～```2```分のダウンタイムが発生する．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
+
+| データベース | フェイルオーバーの仕組み                               | 補足                                                         |
+| ------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
+| Aurora       | リードレプリカがプライマリインスタンスに昇格する．     | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html |
+| Aurora以外   | スタンバイレプリカがプライマリインスタンスに昇格する． | 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html |
+
+Auroraの場合，フェイルオーバーによって昇格するインスタンスは次の順番で決定される．基本的には，優先度の数値の小さいインスタンスが昇格対象になる．優先度が同じだと，インスタンスクラスが大きいインスタンスが昇格対象になる．インスタンスクラスが同じだと，同じサブネットにあるインスタンスが昇格対象になる．
+
+1. 優先度の順番
+2. インスタンスクラスの大きさ
+3. 同じサブネット
+
+#### ・エンジンバージョンアップグレード時の事前調査
+
+エンジンバージョンのアップグレード時，ダウンタイムが発生する．そのため，以下のような報告書のもと，調査と対応を行う．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
+
+またマージされる内容の調査のため，リリースノートの確認が必要になる．
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
+
+```markdown
+# 調査
+
+## バージョンの違い
+
+『SELECT AURORA_VERSION()』を使用して，正確なバージョンを取得する．
+
+## マージされる内容
+
+ベンダーのリリースノートを確認し，どのような『機能追加』『バグ修正』『機能廃止』『非推奨機能』がマージされるかを調査する．
+機能廃止や非推奨機能がある場合，アプリケーション内のSQL文に影響が出る可能性がある．
+
+## 想定されるダウンタイム
+
+テスト環境でダウンタイムを計測し，ダウンタイムを想定する．
+```
+
+```markdown
+# 本番環境対応
+
+## 日時と周知
+
+対応日時と周知内容を決定する．
+
+## 想定外の結果
+
+本番環境での対応で起こった想定外の結果を記載する．
+```
+
+<br>
+
+### セキュリティ
+
+#### ・配置されるサブネット
+
+データベースが配置されるサブネットはプライベートサブネットにする，これには，data storeサブネットと名付ける．アプリケーション以外は，踏み台サーバ経由でしかデータベースにアクセスできないようにする．
+
+![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
+
+#### ・セキュリティグループ
+
+コンピューティングからのインバウンド通信のみを許可するように，これらのプライベートIPアドレス（```n.n.n.n/32```）を設定する．
+
+<br>
+
+## 23. RegionとZone
+
+### Region
+
+#### ・Regionとは
+
+物理サーバのあるデータセンターの地域名のこと．
+
+#### ・Globalとエッジロケーションとは
+
+Regionとは別に，物理サーバが世界中にあり，これらの間ではグローバルネットワークが構築されている．そのため，Globalなサービスは，特定のRegionに依存せずに，全てのRegionと連携できる．
+
+![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/edge-location.png)
+
+<br>
+
+## 24. Route53
+
+### Route53とは
+
+クラウドDNSサーバーとして働く．リクエストされた完全修飾ドメイン名とEC2のグローバルIPアドレスをマッピングしている．
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目       | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| ホストゾーン   | ドメイン名を設定する．                                       |
+| レコードセット | 名前解決時のルーティング方法を設定する．サブドメイン名を扱うことも可能． |
+
+<br>
+
+### ホストゾーン
+
+#### ・レコードタイプの設定値の違い
+
+| レコードタイプ |                                                              | 補足                                |
+| -------------- | ------------------------------------------------------------ | ----------------------------------- |
+| NS             | IPアドレスの問い合わせに応えられる権威DNSサーバの名前が定義されている． |                                     |
+| A              | リクエストを転送したいAWSリソースの，IPv4アドレスまたはDNS名を設定する． |                                     |
+| AAAA           | リクエストを転送したいAWSリソースの，IPv6アドレスまたはDNS名を設定する． |                                     |
+| CNAME          | リクエストを転送したい任意のサーバのドメイン名を設定する．   | 転送先はAWSリソースでなくともよい． |
+| MX             | リクエストを転送したいメールサーバのドメイン名を設定する．   |                                     |
+| TXT            | リクエストを転送したいサーバのドメイン名に関連付けられた文字列を設定する． |                                     |
+
+#### ・リソースのDNS名，ドメイン名，エンドポイント名
+
+リソースのDNS名は，以下の様に決定される．
+
+| 種別             | リソース   | 例                                                           |
+| ---------------- | ---------- | ------------------------------------------------------------ |
+| DNS名            | ALB        | ```<ALB名>-<ランダムな文字列>.<リージョン>.elb.amazonaws.com``` |
+|                  | EC2        | ```ec2-<パブリックIPをハイフン区切りにしたもの>.<リージョン>.compute.amazonaws.com``` |
+| ドメイン名       | CloudFront | ```<ランダムな文字列>.cloudfront.net```                      |
+| エンドポイント名 | S3         | ```<バケット名>.<リージョン>.amazonaws.com```                |
+
+#### ・レコードタイプの名前解決方法の違い
+
+![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
+
+| レコードタイプ | 名前解決方法（1）  |      |      （2）       |      |     （3）      |
+| -------------- | :----------------: | :--: | :--------------: | :--: | :------------: |
+| A              | 完全修飾ドメイン名 |  →   |  パブリックIPv4  |  →   |       -        |
+| AAAA           | 完全修飾ドメイン名 |  →   |  パブリックIPv6  |  →   |       -        |
+| CNAME          | 完全修飾ドメイン名 |  →   | （リダイレクト） |  →   | パブリックIPv4 |
+
+#### ・CloudFrontへのルーティング
+
+CloudFrontにルーティングする場合，CloudFrontのCNAMEをレコード名とすると，CloudFrontのデフォルトドメイン名（```xxxxx.cloudfront.net.```）が，入力フォームに表示されるようになる．
+
+#### ・Route53を含む多数のDNSサーバによって名前解決される仕組み
+
+![Route53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Route53を含む名前解決の仕組み.png)
+
+=== （1）完全修飾ドメイン名に対応するIPアドレスのレスポンス ===
+
+1. クライアントPCは，自身に保存される```www.example.jp```（完全修飾ドメイン名）のキャッシュを検索する．
+2. キャッシュが無ければ，クライアントPCは```www.example.jp```を，フォワードプロキシサーバ（キャッシュDNSサーバ）にリクエスト．
+3. フォワードプロキシサーバは，DNSキャッシュを検索する．
+4. フォワードプロキシサーバは，ルートDNSサーバに```www.example.jp```のIPアドレスを問い合わせる．
+5. ルートDNSサーバは，NSレコードとして定義された権威DNSサーバ名をレスポンス．
+6. フォワードプロキシサーバは，```www.example.jp```を，リバースプロキシサーバに代理リクエスト．次いで，リバースプロキシサーバは，DNSサーバ（ネームサーバ）に```www.example.jp```のIPアドレスを問い合わせる．
+7. DNSサーバは，NSレコードとして定義された権威DNSサーバ名をレスポンス．
+8. フォワードプロキシサーバは，```www.example.jp```を，リバースプロキシサーバに代理リクエスト．次いで，リバースプロキシサーバは，グローバルリージョンRoute53に```www.example.jp```のIPアドレスを問い合わせる．
+9. グローバルリージョンRoute53はDNSサーバとして機能し，リバースプロキシサーバに東京リージョンALBのIPアドレスをレスポンス．次いで，リバースプロキシサーバは，東京リージョンALBのIPアドレスを，フォワードプロキシサーバに代理レスポンス．（※ NATによるIPアドレスのネットワーク間変換が起こる）
+
+
+|      完全修飾ドメイン名      | Route53 |     IPv4アドレス      |
+| :--------------------------: | :-----: | :-------------------: |
+| ```http://www.example.com``` |    ⇄    | ```203.142.205.139``` |
+
+10. フォワードプロキシサーバは，東京リージョンALBのIPアドレスを，クライアントPCに代理レスポンス．
+11. クライアントPCは東京リージョンALBのIPアドレスにリクエストを送信する．
+
+=== （2）東京リージョンALBのIPアドレスに対応するWebページのレスポンス ===
+
+1. クライアントPCは，レスポンスされた東京リージョンALBのIPアドレスを基に，Webページを，リバースプロキシサーバにリクエスト．
+2. リバースプロキシサーバは，Webページを，東京リージョンALBに代理リクエスト．
+3. 東京リージョンALBは，EC2やFargateにリクエストを転送する．
+4. EC2やFargateは，Webページをリバースプロキシサーバにレスポンス．
+5. リバースプロキシサーバは，WebページをクライアントPCに代理レスポンス．
+
+#### ・AWS以外でドメインを購入した場合
+
+DNSサーバによる名前解決は，ドメインを購入したドメインレジストラで行われる．そのため，AWS以外でドメインを購入した場合，Route53のNSレコード値を，ドメインレジストラに登録する必要がある．これにより，ドメインレジストラに対してIPアドレスの問い合わせがあった場合は，Route53のNSレコード値がレスポンスされるようになる．NSレコード値を元に，クライアントはRoute53にアクセスする．
+
+#### ・Route53におけるDNSキャッシュ
+
+ルートサーバは世界に13機しか存在しておらず，世界中の名前解決のリクエストを全て処理することは現実的に不可能である．そこで，IPアドレスとドメイン名の関係をキャッシュするプロキシサーバ（キャッシュDNSサーバ）が使用されている．基本的には，プロキシサーバとDNSサーバは区別されるが，Route53はプロキシサーバとDNSサーバの機能を両立している．
+
+<br>
+
+### リゾルバー
+
+#### ・リゾルバーとは
+
+要勉強．
+
+<br>
+
+## 25. S3：Simple Storage Service
+
+### S3とは
+
+クラウド外付けストレージとして働く．S3に保存するCSSファイルや画像ファイルを管理できる．
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目             | 説明                       |
+| -------------------- | -------------------------- |
+| バケット             | バケットに関して設定する． |
+| バッチオペレーション |                            |
+| アクセスアナライザー |                            |
+
+#### ・プロパティ
+
+| 設定項目                     | 説明 | 補足 |
+| ---------------------------- | ---- | ---- |
+| バージョニング               |      |      |
+| サーバアクセスのログ記録     |      |      |
+| 静的サイトホスティング       |      |      |
+| オブジェクトレベルのログ記録 |      |      |
+| デフォルト暗号化             |      |      |
+| オブジェクトのロック         |      |      |
+| Transfer acceleration        |      |      |
+| イベント                     |      |      |
+| リクエスタ支払い             |      |      |
+
+#### ・外部／内部ネットワークからのアクセス制限
+
+| 設定項目                   | 説明                                                         | 補足                                                         |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ブロックパブリックアクセス | パブリックネットワークがS3にアクセスする時の許否を設定する． | ・パブリックアクセスを有効にすると，パブリックネットワークから『```https://<バケット名>.s3.amazonaws.com```』というようにURLを指定して，S3にアクセスできるようになる．ただし非推奨．<br>・パブリックアクセスを全て無効にすると，パブリックネットワークからの全アクセスを遮断できる．<br>・特定のオブジェクトで，アクセスコントロールリストを制限した場合，そのオブジェクトだけはパブリックアクセスにならない． |
+| バケットポリシー           | IAMユーザ（クロスアカウントも可）またはAWSリソースがS3へにアクセスするためのポリシーで管理する． | ・IAMユーザ（クロスアカウントも可）やAWSリソースがS3にアクセスするために必要である．ただし代わりに，IAMポリシーをAWSリソースにアタッチすることでも，アクセスを許可できる．<br>・ポリシーをアタッチできないCloudFrontやALBなどでは，自身へのアクセスログを生成するために必須である． |
+| アクセスコントロールリスト | IAMユーザ（クロスアカウントも可）がS3にアクセスする時の許否を設定する． | ・バケットポリシーと機能が重複する．<br/>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても，特定のオブジェクトでアクセスコントロールリストを制限した場合，そのオブジェクトだけはパブリックアクセスにならない． |
+| CORSの設定                 |                                                              |                                                              |
+
+<br>
+
+### レスポンスヘッダー
+
+#### ・レスポンスヘッダーの設定
+
+レスポンスヘッダーに埋め込むHTTPヘッダーを，メタデータとして設定する．
+
+| 設定可能なヘッダー              | 説明                                                         | 補足                                           |
+| ------------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| ETag                            | コンテンツの一意な識別子．ブラウザキャッシュの検証に使用される． | 全てのコンテンツにデフォルトで設定されている． |
+| Cache-Control                   | Expiresと同様に，ブラウザにおけるキャッシュの有効期限を設定する． | 全てのコンテンツにデフォルトで設定されている． |
+| Content-Type                    | コンテンツのMIMEタイプを設定する．                           | 全てのコンテンツにデフォルトで設定されている． |
+| Expires                         | Cache-Controlと同様に，ブラウザにおけるキャッシュの有効期限を設定する．ただし，Cache-Controlの方が優先度が高い． |                                                |
+| Content-Disposition             |                                                              |                                                |
+| Content-Encoding                |                                                              |                                                |
+| x-amz-website-redirect-location | コンテンツのリダイレクト先を設定する．                       |                                                |
+
+<br>
+
+### バケットポリシーの例
+
+#### ・S3のARNについて
+
+ポリシーにおいて，S3のARでは，『```arn:aws:s3:::<バケット名>/*```』のように，最後にバックスラッシュアスタリスクが必要．
+
+#### ・ALBのアクセスログの保存を許可
+
+パブリックアクセスが無効化されたS3に対して，ALBへのアクセスログを保存したい場合，バケットポリシーを設定する必要がある．バケットポリシーには，ALBからS3へのログ書き込み権限を実装する．『```"AWS": "arn:aws:iam::582318560864:root"```』において，```582318560864```は，ALBアカウントIDと呼ばれ，リージョンごとに値が決まっている．これは，東京リージョンのアカウントIDである．その他のリージョンのアカウントIDについては，以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+
+**＊実装例＊**
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::582318560864:root"
+      },
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*"
+    }
+  ]
+}
+```
+
+#### ・CloudFrontのファイル読み出しを許可
+
+パブリックアクセスが無効化されたS3に対して，CloudFrontからのルーティングで静的ファイルを読み出したい場合，バケットポリシーを設定する必要がある．
+
+**＊実装例＊**
+
+```bash
+{
+  "Version": "2008-10-17",
+  "Id": "PolicyForCloudFrontPrivateContent",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <OAIのID番号>"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*"
+    }
+  ]
+}
+```
+
+#### ・CloudFrontのアクセスログの保存を許可
+
+2020-10-08時点の仕様では，パブリックアクセスが無効化されたS3に対して，CloudFrontへのアクセスログを保存することはできない．よって，危険ではあるが，パブリックアクセスを有効化する必要がある．
+
+```bash
+// ポリシーは不要
+```
+
+#### ・Lambdaからのアクセスを許可
+
+バケットポリシーは不要である．代わりに，AWS管理ポリシーの『```AWSLambdaExecute```』がアタッチされたロールをLambdaにアタッチする必要がある．このポリシーには，S3へのアクセス権限の他，CloudWatchログにログを生成するための権限が設定されている．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:*"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
+}
+```
+
+#### ・特定のIPアドレスからのアクセスを許可
+
+パブリックネットワーク上の特定のIPアドレスからのアクセスを許可したい場合，そのIPアドレスをポリシーに設定する必要がある．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Id": "S3PolicyId1",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "<IPアドレス>/32"
+        }
+      }
+    }
+  ]
+}
+```
+
+<br>
+
+### CORS設定
+
+#### ・指定したドメインからのGET送信を許可
+
+```bash
+[
+  {
+    "AllowedHeaders": [
+      "Content-*"
+    ],
+    "AllowedMethods": [
+      "GET"
+    ],
+    "AllowedOrigins": [
+      "https://example.jp"
+    ],
+    "ExposeHeaders": [],
+    "MaxAgeSeconds": 3600
+  }
+]
+```
+
+<br>
+
+### CLI
+
+#### ・バケット内ファイルを表示
+
+**＊コマンド例＊**
+
+指定したバケット内のファイル名を表示する．
+
+```bash
+$ aws s3 ls s3://<バケット名>
+```
+
+#### ・バケット内容量を合計
+
+**＊コマンド例＊**
+
+指定したバケット内のファイル容量を合計する．
+
+```bash
+$ aws s3 ls s3://<バケット名> --summarize --recursive --human-readable
+```
+
+<br>
+
+## 26. Security Group
+
+### Security Groupとは
+
+アプリケーションのクラウドパケットフィルタリング型ファイアウォールとして働く．インバウンド通信（プライベートネットワーク向き通信）では，プロトコルや受信元IPアドレスを設定でき，アウトバウンド通信（グローバルネットワーク向き通信）では，プロトコルや送信先プロトコルを設定できる．
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+インバウンドルールとアウトバウンドルールを設定できる．
+
+<br>
+
+### インバウンドルール
+
+#### ・パケットフィルタリング型ファイアウォール
+
+パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバの間には，NATルータやNAPTルータが設置されている．これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ．
+
+![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
+
+#### ・セキュリティグループIDの紐づけ
+
+ソースに対して，セキュリティグループIDを設定した場合，そのセキュリティグループがアタッチされているENIと，このENIに関連付けられたリソースからのトラフィックを許可できる．リソースのIPアドレスが動的に変化する場合，有効な方法である．
+
+参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup
+
+#### ・アプリケーションEC2の例
+
+ALBに割り振られる可能性のあるIPアドレスを許可するために，ALBのSecurity GroupのID，またはサブネットのIPアドレス範囲を設定する．
+
+| タイプ | プロトコル | ポート    | ソース                       | 説明                        |
+| ------ | ---------- | --------- | ---------------------------- | --------------------------- |
+| HTTP   | TCP        | ```80```  | ALBのSecurity Group ID       | HTTP access from ALB        |
+| HTTPS  | TCP        | ```443``` | 踏み台EC2のSecurity Group ID | SSH access from bastion EC2 |
+
+#### ・踏み台EC2の例
+
+| タイプ | プロトコル | ポート   | ソース                     | 説明                             |
+| ------ | ---------- | -------- | -------------------------- | -------------------------------- |
+| SSH    | TCP        | ```22``` | 社内のグローバルIPアドレス | SSH access from global ip addess |
+
+#### ・EFSの例
+
+EC2に割り振られる可能性のあるIPアドレスを許可するために，EC2のSecurity GroupのID，またはサブネットのIPアドレス範囲を設定する．
+
+| タイプ | プロトコル | ポート     | ソース                                 | 説明                    |
+| ------ | ---------- | ---------- | -------------------------------------- | ----------------------- |
+| NFS    | TCP        | ```2049``` | アプリケーションEC2のSecurity Group ID | NFS access from app EC2 |
+
+#### ・RDSの例
+
+EC2に割り振られる可能性のあるIPアドレスを許可するために，EC2のSecurity GroupのID，またはサブネットのIPアドレス範囲を設定する．
+
+| タイプ       | プロトコル | ポート     | ソース                                 | 説明                      |
+| ------------ | ---------- | ---------- | -------------------------------------- | ------------------------- |
+| MYSQL/Aurora | TCP        | ```3306``` | アプリケーションEC2のSecurity Group ID | MYSQL access from app EC2 |
+
+#### ・Redisの例
+
+EC2に割り振られる可能性のあるIPアドレスを許可するために，EC2のSecurity GroupのID，またはサブネットのIPアドレス範囲を設定する．
+
+| タイプ      | プロトコル | ポート     | ソース                                 | 説明                    |
+| ----------- | ---------- | ---------- | -------------------------------------- | ----------------------- |
+| カスタムTCP | TCP        | ```6379``` | アプリケーションEC2のSecurity Group ID | TCP access from app EC2 |
+
+#### ・ALBの例
+
+CloudFrontと連携する場合，CloudFrontに割り振られる可能性のあるIPアドレスを許可するために，全てのIPアドレスを許可する．その代わりに，CloudFrontにWAFを紐づけ，ALBの前でIPアドレスを制限するようにする．CloudFrontとは連携しない場合，ALBのSecurity GroupでIPアドレスを制限するようにする．
+
+| タイプ | プロトコル | ポート    | ソース          | 説明                         |      |
+| ------ | ---------- | --------- | --------------- | ---------------------------- | ---- |
+| HTTP   | TCP        | ```80```  | ```0.0.0.0/0``` | HTTP access from CloudFront  |      |
+| HTTPS  | TCP        | ```443``` | ```0.0.0.0/0``` | HTTPS access from CloudFront |      |
+
+<br>
+
+### アウトバウンドルール
+
+#### ・任意AWSリソースの例
+
+| タイプ               | プロトコル | ポート | 送信先          | 説明        |
+| -------------------- | ---------- | ------ | --------------- | ----------- |
+| すべてのトラフィック | すべて     | すべて | ```0.0.0.0/0``` | Full access |
+
+<br>
+
+### Zone
+
+#### ・Availability Zoneとは
+
+Regionは，さらに，各データセンターは物理的に独立したAvailability Zoneというロケーションから構成されている．例えば，東京Regionには，3つのAvailability Zoneがある．AZの中に，VPCサブネットを作ることができ，そこにEC2を構築できる．
+
+<br>
+
+## 27. SES：Simple Email Service
+
+### SESとは
+
+クラウドメールサーバとして働く．メール受信をトリガーとして，アクションを実行する．
+
+<br>
+
+### 設定項目
+
+![SESとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SESとは.png)
+
+#### ・概要
+
+| 設定項目           | 説明                                                         | 補足                                                         |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Domain             | SESのドメイン名を設定する．                                  | 設定したドメイン名には，『```10 inbound-smtp.us-east-1.amazonaws.com```』というMXレコードタイプの値が紐づく． |
+| Email Addresses    | 送信先として認証するメールアドレスを設定する．設定するとAWSからメールが届くので，指定されたリンクをクリックする． | Sandboxモードの時だけ機能する．                              |
+| Sending Statistics | SESで収集されたデータをメトリクスで確認できる．              | ```Request Increased Sending Limits```のリンクにて，Sandboxモードの解除を申請できる． |
+| SMTP Settings      | SMTP-AUTHの接続情報を確認できる．                            | アプリケーションの25番ポートは送信制限があるため，465番を使用する．これに合わせて，SESも受信で465番ポートを使用するようにする． |
+| Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる． |                                                              |
+| IP Address Filters |                                                              |                                                              |
+
+#### ・Rule Sets
+
+| 設定項目 | 説明                                                         |
+| -------- | ------------------------------------------------------------ |
+| Recipiet | 受信したメールアドレスで，何の宛先の時にこれを許可するかを設定する． |
+| Actions  | 受信を許可した後に，これをトリガーとして実行するアクションを設定する． |
+
+<br>
+
+### 仕様上の制約
+
+#### ・構築リージョンの制約
+
+SESは連携するAWSリソースと同じリージョンに構築しなければならない．
+
+#### ・Sandboxモードの解除
+
+SESはデフォルトではSandboxモードになっている．Sandboxモードでは以下の制限がかかっており．サポートセンターに解除申請が必要である．
+
+| 制限     | 説明                                          |
+| -------- | --------------------------------------------- |
+| 送信制限 | SESで認証したメールアドレスのみに送信できる． |
+| 受信制限 | 1日に200メールのみ受信できる．                |
+
+<br>
+
+### SMTP-AUTH
+
+#### ・AWSにおけるSMTP-AUTHの仕組み
+
+一般的なSMTP-AUTHでは，クライアントユーザの認証が必要である．同様にして，AWSにおいてもこれが必要であり，IAMユーザを用いてこれを実現する．送信元となるアプリケーションにIAMユーザを紐付け，このIAMユーザにはユーザ名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザ名とパスワードを用いた認証を実行する．ユーザ名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html?h=smtp
+
+<br>
+
+## 28. SNS：Simple Notification Service
+
+### SNSとは
+
+パブリッシャーから発信されたメッセージをエンドポイントで受信し，サブスクライバーに転送するAWSリソース．
+
+![SNSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SNSとは.png)
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目           | 説明                                                 |
+| ------------------ | ---------------------------------------------------- |
+| トピック           | 複数のサブスクリプションをグループ化したもの．       |
+| サブスクリプション | エンドポイントで受信するメッセージの種類を設定する． |
+
+#### ・トピック
+
+| 設定項目                 | 説明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| サブスクリプション       | サブスクリプションを登録する．                               |
+| アクセスポリシー         | トピックへのアクセス権限を設定する．                         |
+| 配信再試行ポリシー       | サブスクリプションのHTTP/Sエンドポイントが失敗した時のリトライ方法を設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/sns/latest/dg/sns-message-delivery-retries.html |
+| 配信ステータスのログ記録 | サブスクリプションへの発信のログをCloudWatchLogsに転送するように設定する． |
+| 暗号化                   |                                                              |
+
+#### ・サブスクリプション
+
+| メッセージの種類      | 転送先                | 補足                                                         |
+| --------------------- | --------------------- | ------------------------------------------------------------ |
+| Kinesis Data Firehose | Kinesis Data Firehose |                                                              |
+| SQS                   | SQS                   |                                                              |
+| Lambda                | Lambda                |                                                              |
+| Eメール               | 任意のメールアドレス  |                                                              |
+| HTTP/S                | 任意のドメイン名      | Chatbotのドメイン名は『```https://global.sns-api.chatbot.amazonaws.com```』 |
+| JSON形式のメール      | 任意のメールアドレス  |                                                              |
+| SMS                   | SMS                   | 受信者の電話番号を設定する．                                 |
+
+<br>
+
+## 29. SQS：Simple Queue Service
+
+### SQSとは
+
+![AmazonSQSとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SQS.jpeg)
+
+クラウドメッセージキューとして働く．パブリッシャーが送信したメッセージは，一旦SQSに追加される．その後，サブスクライバーは，SQSに対してリクエストを送信し，メッセージを取り出す．異なるVPC間でも，メッセージキューを同期できる．
+
+<br>
+
+### 設定項目
+
+#### ・SQSの種類
+
+| 設定項目         | 説明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| スタンダード方式 | サブスクライバーの取得レスポンスを待たずに，次のキューを非同期的に転送する． |
+| FIFO方式         | サブスクライバーの取得レスポンスを待ち，キューを同期的に転送する． |
+
+<br>
+
+### CLI
+
+#### ・キューURLを取得
+
+キューのURLを取得する．
+
+```bash
+$ aws sqs get-queue-url --queue-name <キュー名>
+```
+
+#### ・キューに受信リクエストを送信
+
+キューに受信リクエストを送信し，メッセージを受信する．
+
+```bash
+$ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
+
+$ aws sqs receive-message --queue-url ${SQS_QUEUE_URL}
+```
+
+キューに受信リクエストを送信し，メッセージを受信する．また，メッセージの内容をファイルに書き出す．
+
+```bash
+$ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
+
+$ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
+```
+
+```bash
+{
+    "Messages": [
+        {
+            "Body": "<メッセージの内容>", 
+            "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=", 
+            "MD5OfBody": "6699d5711c044a109a6aff9fc193aada", 
+            "MessageId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        }
+    ]
+ }
+```
+
+<br>
+
+## 30. STS：Security Token Service
+
+### STSとは
+
+AWSリソースに一時的にアクセスできる認証情報（アクセスキー，シークレットアクセスキー，セッショントークン）を発行する．この認証情報は，一時的なアカウント情報として使用できる．
+
+![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/STS.jpg)
+
+<br>
+
+### STSの設定手順
+
+#### 1. IAMロールに信頼ポリシーをアタッチ
+
+必要なポリシーが設定されたIAMロールを構築する．その時，信頼ポリシーにおいて，ユーザの```ARN```を信頼されたエンティティとして設定しておく．これにより，そのユーザに対して，ロールをアタッチできるようになる．
+
+```bash
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<アカウントID>:user/<ユーザ名>"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "<適当な文字列>"
+        }
+      }
+    }
+  ]
+}
+```
+
+#### 2. ロールを引き受けたアカウント情報をリクエスト
+
+信頼されたエンティティ（ユーザ）から，STS（```https://sts.amazonaws.com```）に対して，ロールのアタッチをリクエストする．
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+set -u
+
+# 事前に環境変数にインフラ環境名を代入する．
+case $ENV in
+    "test")
+        aws_account_id="<作業環境アカウントID>"
+        aws_access_key_id="<作業環境アクセスキーID>"
+        aws_secret_access_key="<作業環境シークレットアクセスキー>"
+        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
+    ;;
+    "stg")
+        aws_account_id="<ステージング環境アカウントID>"
+        aws_access_key_id="<ステージング環境アクセスキーID>"
+        aws_secret_access_key="<ステージング環境シークレットアクセスキー>"
+        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
+    ;;
+    "prd")
+        aws_account_id="<本番環境アカウントID>"
+        aws_access_key_id="<本番環境アクセスキーID>"
+        aws_secret_access_key="<本番環境シークレットアクセスキー>"
+        aws_iam_role_external_id="<信頼ポリシーに設定した外部ID>"
+    ;;
+    *)
+        echo "The parameter ${ENV} is invalid."
+        exit 1
+    ;;
+esac
+
+# 信頼されたエンティティのアカウント情報を設定する．
+aws configure set aws_access_key_id "$aws_account_id"
+aws configure set aws_secret_access_key "$aws_secret_access_key"
+aws configure set aws_default_region "ap-northeast-1"
+
+# https://sts.amazonaws.com に，ロールのアタッチをリクエストする．
+aws_sts_credentials="$(aws sts assume-role \
+  --role-arn "arn:aws:iam::${aws_access_key_id}:role/${ENV}-<アタッチしたいIAMロール名>" \
+  --role-session-name "<任意のセッション名>" \
+  --external-id "$aws_iam_role_external_id" \
+  --duration-seconds "<セッションの有効秒数>" \
+  --query "Credentials" \
+  --output "json")"
+```
+
+STSへのリクエストの結果，ロールがアタッチされた新しいIAMユーザ情報を取得できる．この情報には有効秒数が存在し，期限が過ぎると新しいIAMユーザになる．秒数の最大値は，該当するIAMロールの概要の最大セッション時間から変更できる．
+
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/AssumeRole.png)
+
+レスポンスされるデータは以下の通り．
+
+```bash
+{
+  "AssumeRoleUser": {
+    "AssumedRoleId": "<セッションID>:<セッション名>",
+    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>/<セッション名>"
+  },
+  "Credentials": {
+    "SecretAccessKey": "<シークレットアクセスキー>",
+    "SessionToken": "<セッショントークン文字列>",
+    "Expiration": "<セッションの期限>",
+    "AccessKeyId": "<アクセスキーID>"
+  }
+}
+```
+
+#### 3-1. アカウント情報を取得（１）
+
+jqを使用して，レスポンスされたJSONデータからアカウント情報を抽出する．環境変数として出力し，使用できるようにする．あるいは，AWSの```credentials```ファイルを作成してもよい．
+
+参考：https://stedolan.github.io/jq/
+
+
+```bash
+#!/bin/bash
+
+cat << EOF > assumed_user.sh
+export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")"
+export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")"
+export AWS_SESSION_TOKEN="$(echo "$aws_sts_credentials" | jq -r ".SessionToken")"
+export AWS_ACCOUNT_ID="$aws_account_id"
+export AWS_DEFAULT_REGION="ap-northeast-1"
+EOF
+```
+
+#### 3-2. アカウント情報を取得（２）
+
+jqを使用して，レスポンスされたJSONデータからアカウント情報を抽出する．ロールを引き受けた新しいアカウントの情報を，```credentials```ファイルに書き込む．
+
+```bash
+#!/bin/bash
+
+aws configure --profile ${ENV}-repository << EOF
+$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")
+$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")
+ap-northeast-1
+json
+EOF
+
+echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") >> ~/.aws/credentials
+```
+
+#### 4. 接続確認
+
+ロールを引き受けた新しいアカウントを使用して，AWSリソースに接続できるかを確認する．アカウント情報の取得方法として```credentials```ファイルの作成を選んだ場合，```profile```オプションが必要である．
+
+```bash
+#!/bin/bash
+
+# 3-2を選んだ場合，credentialsファイルを参照するオプションが必要がある．
+aws s3 ls --profile <プロファイル名>
+2020-xx-xx xx:xx:xx <tfstateファイルが管理されるバケット名>
+```
+
+<br>
+
+## 31. Step Functions
+
+### Step Functionsとは
+
+AWSサービスを組み合わせて，イベント駆動型アプリケーションを構築できる．
+
+<br>
+
+### AWSリソースのAPIコール
+
+#### ・APIコールできるリソース
+
+参考：https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
+
+### ・Lambda
+
+**＊実装例＊**
+
+```bash
+{
+  "StartAt": "Call Lambda",
+  "States": {
+    "Call Lambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:xxxxx:foo-function:1"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "<リトライの対象とするエラー>"
+          ],
+          "MaxAttempts": 0
+        }
+      ],
+      "End": true,
+      "Comment": "The state that call Lambda"
+    }
+  }
+}
+```
+
+<br>
+
+## 32. VPC：Virtual Private Cloud
+
+### VPCとは
+
+クラウドプライベートネットワークとして働く．プライベートIPアドレスが割り当てられた，VPCと呼ばれるプライベートネットワークを仮想的に構築できる．異なるAvailability Zoneに渡ってEC2を立ち上げることによって，クラウドサーバをデュアル化することできる．VPCのパケット通信の仕組みについては，以下のリンクを参考にせよ．
+
+参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
+
+![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCが提供できるネットワークの範囲.png)
+
+<br>
+
+### Internet Gateway，NAT Gateway
+
+![InternetGatewayとNATGateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/InternetGatewayとNATGateway.png)
+
+#### ・Internet Gatewayとは
+
+VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のプライベートIPを紐づけられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+
+#### ・NAT Gatewayとは
+
+NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のプライベートIPを紐づけられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+
+#### ・比較表
+
+
+|              | Internet Gateway                                             | NAT Gateway            |
+| :----------- | :----------------------------------------------------------- | :--------------------- |
+| **機能**     | グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT） | NAPT（動的NAT）        |
+| **設置場所** | VPC上                                                        | パブリックサブネット内 |
+
+<br>
+
+### Route Table（= マッピングテーブル）
+
+![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/route-table.png)
+
+#### ・ルートテーブルとは
+
+クラウドルータのマッピングテーブルとして働く．ルータについては，別ノートのNATとNAPTを参考にせよ．
+
+| Destination（プライベートIPの範囲） |                Target                 |
+| :---------------------------------: | :-----------------------------------: |
+|          ```xx.x.x.x/xx```          | Destinationの範囲内だった場合の送信先 |
+
+#### ・ルートテーブルの種類
+
+| 種類                   | 説明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| メインルートテーブル   | VPCの構築時に自動で構築される．どのルートテーブルにも関連付けられていないサブネットのルーティングを設定する． |
+| カスタムルートテーブル | 特定のサブネットのルーティングを設定する．                   |
+
+#### ・具体例1
+
+上の図中で，サブネット2にはルートテーブル1が関連づけられている．サブネット2内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，範囲外にあれば通信を破棄する．
+
+| Destination（プライベートIPアドレス範囲） |  Target  |
+| :---------------------------------------: | :------: |
+|             ```10.0.0.0/16```             |  local   |
+|            指定範囲以外の場合             | 通信破棄 |
+
+#### ・具体例2
+
+上の図中で，サブネット3にはルートテーブル2が関連づけられている．サブネット3内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば，アウトバウンド通信と見なし，インターネットゲートウェイを送信先に選ぶ．
+
+| Destination（プライベートIPアドレス範囲） |      Target      |
+| :---------------------------------------: | :--------------: |
+|             ```10.0.0.0/16```             |      local       |
+|              ```0.0.0.0/0```              | Internet Gateway |
+
+<br>
+
+### Network ACL：Network Access  Control List
+
+![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/network-acl.png)
+
+#### ・Network ACLとは
+
+サブネットのクラウドパケットフィルタリング型ファイアウォールとして働く．ルートテーブルとサブネットの間に設置され，双方向のインバウンドルールとアウトバウンドルールを決定する．
+
+#### ・ACLルール
+
+ルールは上から順に適用される．例えば，インバウンドルールが以下だった場合，ルール100が最初に適用され，サブネットに対する，全IPアドレス（```0.0.0.0/0```）からのインバウンド通信を許可していることになる．
+
+| ルール # | タイプ                | プロトコル | ポート範囲 / ICMP タイプ | ソース    | 許可 / 拒否 |
+| -------- | --------------------- | ---------- | ------------------------ | --------- | ----------- |
+| 100      | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | ALLOW       |
+| *        | すべての トラフィック | すべて     | すべて                   | 0.0.0.0/0 | DENY        |
+
+<br>
+
+### VPCサブネット
+
+クラウドプライベートネットワークにおけるセグメントとして働く．
+
+#### ・パブリックサブネットとは
+
+非武装地帯に相当する．攻撃の影響が内部ネットワークに広がる可能性を防ぐために，外部から直接リクエストを受ける，
+
+#### ・プライベートサブネットとは
+
+内部ネットワークに相当する．外部から直接リクエストを受けずにレスポンスを返せるように，内のNATを経由させる必要がある．
+
+![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/public-subnet_private-subnet.png)
+
+#### ・サブネットの種類
+
+サブネットには，役割ごとにいくつか種類がある．
+
+| 名前                            | 役割                                    |
+| ------------------------------- | --------------------------------------- |
+| Public subnet (Frontend Subnet) | NATGatewayを配置する．                  |
+| Private app subnet              | アプリケーション，Nginxなどを配置する． |
+| Private datastore subnet        | RDS，Redisなどを配置する                |
+
+![subnet-types](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/subnet-types.png)
+
+<br>
+
+### VPCエンドポイント
+
+![VPCエンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCエンドポイント.png)
+
+#### ・概要
+
+VPCのプライベートサブネット内のリソースが，VPC外のリソースに対して，アウトバウンド通信を実行できるようにする．Gateway型とInterface型がある．VPCエンドポイントを使用しない場合，プライベートサブネット内からのアウトバウンド通信には，インターネットゲートウェイとNAT Gatewayを使用する必要がある．
+
+**＊（例）＊**
+
+ECS Fargateをプライベートサブネットに置いた場合に，ECS FargateからVPC外にあるAWSリソースに対するアウトバウンドな通信のために必要．（例：CloudWatchログ，ECR，S3，SSM）
+
+#### ・メリット
+
+インターネットゲートウェイとNAT Gatewayの代わりに，VPCエンドポイントを使用すると，料金が少しだけ安くなり，また，VPC外のリソースとの通信がより安全になる．
+
+#### ・タイプ
+
+| タイプ      | 説明                                                         | リソース例                       |
+| ----------- | ------------------------------------------------------------ | -------------------------------- |
+| Interface型 | プライベートリンクともいう．プライベートIPアドレスを持つENIとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDB以外の全てのリソース |
+| Gateway型   | ルートテーブルにおける定義に従う．VPCエンドポイントとして機能し，AWSリソースからアウトバウンドな通信を受信する． | S3，DynamoDBのみ                 |
+
+<br>
+
+### ENI：Elastic Network Interface
+
+#### ・ENIとは
+
+クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+
+#### ・関連付けられるリソース
+
+| リソースの種類    | 役割                                                         | 補足                                                         |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ALB               | ENIに関連付けられたパブリックIPアドレスをALBに割り当てられる． |                                                              |
+| EC2               | ENIに関連付けられたパブリックIPアドレスがEC2に割り当てられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics |
+| Fargate環境のEC2  | 明言されていないため推測ではあるが，ENIに関連付けられたlocalインターフェースがFargate環境でコンテナのホストとなるEC2インスタンスに割り当てられる． | Fargate環境のホストがEC2とは明言されていない．<br>参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/ |
+| Elastic IP        | ENIにElastic IPアドレスが関連付けられる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，Elastic IPを関連付けられる． | 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses |
+| GlobalAccelerator |                                                              |                                                              |
+| NAT Gateway       | ENIに関連付けられたパブリックIPアドレスがNAT Gatewayに割り当てられる． |                                                              |
+| RDS               |                                                              |                                                              |
+| Security Group    | ENIにセキュリティグループが関連付けれる．このENIを他のAWSリソースに関連付けることにより，ENIを介して，セキュリティグループを関連付けられる． |                                                              |
+| VPCエンドポイント | Interface型のVPCエンドポイントとして機能する．               |                                                              |
+
+<br>
+
+### IPアドレス
+
+#### ・種類
+
+| IPアドレスの種類                                   | 説明                                          |
+| -------------------------------------------------- | --------------------------------------------- |
+| 自動割り当てパブリックIPアドレス（動的IPアドレス） | 動的なIPアドレスで，EC2の再構築後に変化する． |
+| Elastic IP（静的IPアドレス）                       | 静的なIPアドレスで，再構築後も保持される．    |
+
+#### ・関連付け
+
+| 種類                     | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| インスタンスとの関連付け | 非推奨の方法である．<br/>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| ENIとの関連付け          | 推奨される方法である．<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+
+<br>
+
+### VPCのCIDR設計の手順
+
+一つのVPC内には複数のサブネットが入る．そのため，サブネットのIPアドレス範囲は，サブネットの個数だけ含めなければならない．また，VPCがもつIPアドレス範囲から，VPC内の各AWSリソースにIPアドレスを割り当てていかなければならない．VPC内でIPアドレスが枯渇しないように，以下の手順で，割り当てを考える．
+
+参考：https://note.com/takashi_sakurada/n/n502fb0299938
+
+（１）RFC1918の推奨する```10.0.0.0/8```，```172.16.0.0/12```，```192.168.0.0/16```を使用する．VPCのCIDR設計では，これらの範囲に含まれるIPアドレスを使用するようにする．
+
+| RFC1918推奨のIPアドレス範囲 | IPアドレス                                | 個数     |
+| --------------------------- | ----------------------------------------- | -------- |
+| ```10.0.0.0/8```            | ```10.0.0.0```  ~ ```10.255.255.255```    | 16777216 |
+| ```172.16.0.0/12```         | ```172.16.0.0``` ~ ```172.31.255.255```   | 1048576  |
+| ```192.168.0.0/16```        | ```192.168.0.0``` ~ ```192.168.255.255``` | 65536    |
+
+（２）あらかじめ，会社内の全てのアプリケーションのCIDRをスプレッドシートなどで一括で管理しておく．
+
+（３）各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は．スケーラビリティを考慮して，アプリケーション間のCIDRは重ならないようにしておく必要がある．例えば，以前に開発したアプリケーションが```10.200.47.0```までを使用していた場合，```10.200.48.0```から使用を始める．また，VPCで許可されるIPアドレスの個数は最多65536個（```/16```）で最少16個（```/28```）であり，実際は512個（```/23```）ほどあれば問題ないため，```10.200.48.0/23```を設定する．
+
+参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
+
+（４）VPCのIPアドレスをパブリックサブネットとプライベートサブネットを割り当てる．パブリックサブネットとプライベートサブネットを冗長化する場合は，VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し，CIDRブロックを設定する．例えば，VPCのサブネットマスクを```/16``` としている場合は，各サブネットのサブネットマスクは```/24```とする．一方で，VPCを```/23```としている場合は，各サブネットは```/27```とする．また，各サブネットのCIDRブロックを同じにする必要はなく，アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし，その分DBの稼働するサブネットのIPアドレスを少なくするような設計でもよい．
+
+参考：https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
+
+（５）VPC内の各AWSリソースの特徴に合わせて，IPアドレス範囲を割り当てる．
+
+参考：https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
+
+| AWSサービスの種類  | 最低限のIPアドレス数                    |
+| ------------------ | --------------------------------------- |
+| ALB                | ALB1つ当たり，8個                       |
+| オートスケーリング | 水平スケーリング時のEC2最大数と同じ個数 |
+| VPCエンドポイント  | VPCエンドポイント1つ当たり，1個         |
+| ECS，EKS           | Elastic Network Interface 数と同じ個数  |
+| Lambda             | Elastic Network Interface 数と同じ個数  |
+
+<br>
+
+## 32-02. VPC間，VPC-オンプレ間の通信
+
+### VPCピアリング接続
+
+![VPCピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続.png)
+
+#### ・VPCピアリング接続とは
+
+『一対一』の関係で，『異なるVPC間』の双方向通信を可能にする．
+
+#### ・VPCピアリング接続の可否
+
+| アカウント   | VPCのあるリージョン | VPC内のCIDRブロック    | 接続の可否 |
+| ------------ | ------------------- | ---------------------- | ---------- |
+| 同じ／異なる | 同じ／異なる        | 全て異なる             | **〇**     |
+|              |                     | 同じものが一つでもある | ✕          |
+
+VPC に複数の IPv4 CIDR ブロックがあり，一つでも 同じCIDR ブロックがある場合は，VPC ピアリング接続はできない．
+
+![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
+
+たとえ，IPv6が異なっていても，同様である．
+
+![VPCピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-2.png)
+
+<br>
+
+### VPCエンドポイントサービス
+
+![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vpc-endpoint-service.png)
+
+#### ・VPCエンドポイントサービスとは
+
+VPCエンドポイントとは異なる機能なので注意．Interface型のVPCエンドポイント（プライベートリンク）をNLBに関連付けることにより，『一対多』の関係で，『異なるVPC間』の双方向通信を可能にする．エンドポイントのサービス名は，『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる．API GatewayのVPCリンクは，VPCエンドポイントサービスに相当する．
+
+<br>
+
+### Transit Gateway
+
+![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/transit-gateway.png)
+
+#### ・Transit Gatewayとは
+
+『多対多』の関係で，『異なるVPC間』や『オンプレ-VPC間』の双方向通信を可能にする．クラウドルーターとして働く．
+
+<br>
+
+### 各サービスとの比較
+
+| 機能                                          | VPCピアリング接続 | VPCエンドポイントサービス           | Transit gateway        |
+| --------------------------------------------- | ----------------- | ----------------------------------- | ---------------------- |
+| 通信可能なVPC数                               | 一対一            | 一対一，一対多                      | 一対一，一対多，多対多 |
+| 通信可能なIPアドレスの種類                    | IPv4，IPv6        | IPv4                                | IPv4，IPv6             |
+| 接続可能なリソース                            | 制限なし          | NLBでルーティングできるリソースのみ | 制限なし               |
+| CIDRブロックがVPC間で被ることによる通信の可否 | ×                 | ◯                                   | ×                      |
+| クロスアカウント                              | ◯                 | ◯                                   | ◯                      |
+| クロスリージョン                              | ◯                 | ×                                   | ◯                      |
+| VPC間                                         | ◯                 | ◯                                   | ◯                      |
+| VPC-オンプレ間                                | ×                 | ×                                   | ◯                      |
+
+<br>
+
+## 33. WAF：Web Applicarion Firewall
+
+### 設定項目
+
+定義できるルール数や文字数に制限がある．以下のリンクを参考にせよ．
+
+参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/limits.html
+
+| 設定項目                          | 説明                                                         | 補足                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Web ACLs：Web Access Control List | 各トリガーと許可／拒否アクションの関連付けを『ルール』とし，これをセットで設定する． | アタッチするAWSリソースに合わせて，リージョンが異なる．      |
+| IP sets                           | アクション実行のトリガーとなるIPアドレス                     | ・許可するIPアドレスは，意味合いに沿って異なるセットとして構築するべき．例えば，社内IPアドレスセット，協力会社IPアドレスセット，など<br>・拒否するIPアドレスはひとまとめにしてもよい． |
+| Regex pattern sets                | アクション実行のトリガーとなるURLパスの文字列                | ・許可／拒否する文字列は，意味合いに沿って異なる文字列セットとして構築するべき．例えば，ユーザエージェントセット，リクエストパスセット，など |
+| Rule groups                       |                                                              |                                                              |
+| AWS Markets                       |                                                              |                                                              |
+
+<br>
+
+### AWSリソース vs. サイバー攻撃
+
+| サイバー攻撃の種類 | 対抗するAWSリソースの種類                                    |
+| ------------------ | ------------------------------------------------------------ |
+| マルウェア         | なし                                                         |
+| 傍受，盗聴         | VPC内の特にプライベートサブネット間のピアリング接続．VPC外を介さずにデータを送受信できる． |
+| ポートスキャン     | セキュリティグループ                                         |
+| DDoS               | Shield                                                       |
+| ゼロディ           | WAF                                                          |
+| インジェクション   | WAF                                                          |
+| XSS                | WAF                                                          |
+| データ漏洩         | KMS，CloudHSM                                                |
+| 組織内部での裏切り | IAM                                                          |
+
+<br>
+
+### 設定項目
+
+#### ・概要
+
+| 設定項目           | 説明                                              | 補足                                                         |
+| ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
+| Web ACLs           | アクセス許可と拒否のルールを定義する．            |                                                              |
+| Bot Control        | Botに関するアクセス許可と拒否のルールを定義する． |                                                              |
+| IP Sets            | IPアドレスの共通部品を管理する．                  |                                                              |
+| Regex pattern sets | 正規表現パターンの共通部品を管理する．            |                                                              |
+| Rule groups        | ルールの共通部品を管理する．                      | 各WAFに同じルールを設定する場合，ルールグループを使用するべきである．ただ，ルールグループを使用すると，これらのルールを共通のメトリクスで監視しなければならなくなる．そのため，もしメトリクスを分けるのであれば，ルールグループを使用しないようにする． |
+
+#### ・Web ACLs
+
+| 設定項目                 | 説明                                                         | 補足                                                         |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Overview                 | WAFによって許可／拒否されたリクエストのアクセスログを確認できる． |                                                              |
+| Rules                    | 順番にルールを判定し，一致するルールがあればアクションを実行する．この時，一致するルールの後にあるルールは．判定されない． | AWSマネージドルールについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/aws-managed-rule-groups-list.html |
+| Associated AWS resources | WAFをアタッチするAWSリソースを設定する．                     | CloudFront，ALBなどにアタッチできる．                        |
+| Logging and metrics      | アクセスログをKinesis Data Firehoseに出力するように設定する． |                                                              |
+
+#### ・OverviewにおけるSampled requestsの見方
+
+『全てのルール』または『個別のルール』におけるアクセス許可／拒否の履歴を確認できる．ALBやCloudFrontのアクセスログよりも解りやすく，様々なデバッグに役立つ．ただし，３時間分しか残らない．一例として，CloudFrontにアタッチしたWAFで取得できるログを以下に示す．
+
+```http
+GET /foo/
+# ホスト
+Host: example.jp
+Upgrade-Insecure-Requests: 1
+# ユーザエージェント
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+# CORSであるか否か
+Sec-Fetch-Site: same-origin
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ja,en;q=0.9
+# Cookieヘッダー
+Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<GoogleAnalytics値>; _ga=<GoogleAnalytics値>
+```
+
+<br>
+
+### ルール
+
+#### ・ルールの種類
+
+参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/classic-web-acl-rules-creating.html
+
+| 種類         | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| レートベース | 同じ送信元IPアドレスからの５分間当たりのリクエスト数制限をルールに付与する． |
+| レギュラー   | リクエスト数は制限しない．                                   |
+
+#### ・ルールの粒度のコツ
+
+わかりやすさの観点から，可能な限り設定するステートメントを少なくし，一つのルールに一つの意味合いだけを持たせるように命名する．
+
+#### ・Count（検知）モード
+
+ルールに該当するリクエスト数を数え，許可／拒否せずに次のルールを検証する．計測結果に応じて，Countモードを無効化し，拒否できるようにする．
+
+参考：https://oji-cloud.net/2020/09/18/post-5501/
+
+#### ・Countアクションの上書き
+
+ルールのCountモードが有効になっている場合に，Countアクションに続けて，そのルールの元々のアクションを実行する．そのため，Countアクションしつつ，Blockアクションを実行できる（仕様がややこしすぎるので，なんとかしてほしい）．
+
+参考：https://docs.aws.amazon.com/ja_jp/waf/latest/developerguide/web-acl-rule-group-override-options.html
+
+| 元々のアクション | Countモード | オーバライド | 結果                                                         |
+| ---------------- | ----------- | ------------ | ------------------------------------------------------------ |
+| Block            | ON          | チェックあり | Countし，その後Blockを実行する．そのため，その後のルールは検証せずに終了する． |
+| Block            | ON          | チェックなし | Countのみを実行する．そのため，その後のルールも検証する．    |
+| Block            | OFF         | チェックあり | Countモードが無効なため，設定に意味がない．                  |
+| Block            | OFF         | チェックなし | Countモードが無効なため，設定に意味がない．                  |
+
+<br>
+
+### ルールの具体例
+
+#### ・ユーザエージェント拒否
+
+**＊具体例＊**
+
+悪意のあるユーザエージェントを拒否する．
+
+ルール：block-user-agents
+
+| Statementの順番 | If a request | Inspect  | Match type                             | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------ | -------- | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| 0               | matches      | URI path | Matches pattern from regex pattern set | 文字列セット      | Block | 指定した文字列を含むユーザエージェントの場合，アクセスすることを拒否する． |
+
+| Default Action | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Allow          | 指定したユーザエージェントでない場合，全てのファイルパスにアクセスすることを許可する． |
+
+#### ・CI/CDツールのアクセスを許可
+
+**＊具体例＊**
+
+社内の送信元IPアドレスのみ許可した状態で，CircleCIなどのサービスが社内サービスにアクセスできるようにする．
+
+ルール：allow-request-including-access-token
+
+| Statementの順番 | If a request | Inspect | Header field name | Match type              | String to match                                     | Then  | 挙動                                                         |
+| --------------- | ------------ | ------- | ----------------- | ----------------------- | --------------------------------------------------- | ----- | ------------------------------------------------------------ |
+| 0               | matches      | Header  | authorization     | Exactly matched  string | 『```Bearer <トークン文字列>```』で文字列を設定する | Allow | authorizationヘッダーに指定した文字列を含むリクエストの場合，アクセスすることを拒否する． |
+
+| Default Action | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Block          | 正しいトークンを持たないアクセスの場合，全てのファイルパスにアクセスすることを拒否する． |
+
+#### ・特定のパスを社内アクセスに限定
+
+**＊具体例＊**
+
+アプリケーションにおいて，特定のURLパスにアクセスできる送信元IPアドレスを，社内だけに制限する．二つのルールを構築する必要がある．
+
+ルール：allow-access--to-url-path
+
+| Statementの順番 | If a request  | Inspect                          | IP set       | Match type                             | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------- | -------------------------------- | ------------ | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| 0               | matches (AND) | Originates from an IP address in | 社内IPセット | -                                      | -                 | -     | 社内の送信元IPアドレスの場合，指定したファイルパスにアクセスすることを許可する． |
+| 1               | matches       | URI path                         | -            | Matches pattern from regex pattern set | 文字列セット      | Allow | 0番目かつ，指定した文字列を含むURLパスアクセスの場合，アクセスすることを許可する． |
+
+ルール：block-access-to-url-path
+
+| Statementの順番 | If a request | Inspect  | Match type                             | Regex pattern set | Then  | 挙動                                                         |
+| --------------- | ------------ | -------- | -------------------------------------- | ----------------- | ----- | ------------------------------------------------------------ |
+| 0               | matches      | URI path | Matches pattern from regex pattern set | 文字列セット      | Block | 指定した文字列を含むURLパスアクセスの場合，アクセスすることを拒否する． |
+
+| Default Action | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Allow          | 指定したURLパス以外のアクセスの場合，そのパスにアクセスすることを許可する． |
+
+#### ・社内アクセスに限定
+
+**＊具体例＊**
+
+アプリケーション全体にアクセスできる送信元IPアドレスを，特定のIPアドレスだけに制限する．
+
+ルール：allow-global-ip-addresses
+
+| Statementの順番 | If a request  | Inspect                          | IP set           | Originating address | Then  | 挙動                                                         |
+| --------------- | ------------- | -------------------------------- | ---------------- | ------------------- | ----- | ------------------------------------------------------------ |
+| 0               | matches  (OR) | Originates from an IP address in | 社内IPセット     | Source IP address   | -     | 社内の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
+| 1               | matches       | Originates from an IP address in | 協力会社IPセット | Source IP address   | Allow | 0番目あるいは，協力会社の送信元IPアドレスの場合，全てのファイルパスにアクセスすることを許可する． |
+
+| Default Action | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Block          | 指定した送信元IPアドレス以外の場合，全てのファイルパスにアクセスすることを拒否する． |
+
+<br>
+
+## 34. WorkMail
+
+### WorkMailとは
+
+Gmail，サンダーバード，Yahooメールなどと同類のメール管理アプリケーション．
+
+<br>
+
+### 設定項目
+
+| 設定項目              | 説明                                                     | 補足                                                         |
+| --------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| Users                 | WorkMailで管理するユーザを設定する．                     |                                                              |
+| Domains               | ユーザに割り当てるメールアドレスのドメイン名を設定する． | ```@{組織名}.awsapps.com```をドメイン名としてもらえる．ドメイン名の検証が完了した独自ドメイン名を設定することもできる． |
+| Access Controle rules | 受信するメール，受信を遮断するメール，の条件を設定する． |                                                              |
+
+<br>
+
+## 35. 負荷テスト
+
+### Distributed Load Testing（分散負荷テスト）
+
+#### ・分散負荷テストとは
+
+AWSから提供されている負荷を発生させるインフラ環境のこと．CloudFormationで構築でき，Fargateを使用して，ユーザからのリクエストを擬似的に再現できる．
+
+参考：https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
+
+#### ・インフラ構成
+
+![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed_load_testing.png)
+
+<br>
+
+## 36. タグ
+
+### タグ付け戦略
+
+#### ・よくあるタグ
+
+| タグ名      | 用途                                                         |
+| ----------- | ------------------------------------------------------------ |
+| Name        | リソース自体に名前を付けられない場合，代わりにタグで名付けるため． |
+| Environment | 同一のAWS環境内に異なる実行環境が存在している場合，それらを区別するため． |
+| User        | 同一のAWS環境内にリソース別に所有者が存在している場合，それらを区別するため． |
+
+#### ・タグ付けによるフィルタリング
+
+AWSの各リソースには，タグをつけることができる．例えば，AWSコストエクスプローラーにて，このタグでフィルタリングすることにより，任意のタグが付いたリソースの請求合計額を確認できる．
