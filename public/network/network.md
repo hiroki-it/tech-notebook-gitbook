@@ -321,9 +321,13 @@ Webサーバとしてではなく，リバースプロキシサーバとして�
 
 とあるネットワーク地点でのスループットのこと．
 
+参考：https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
+
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィック.png)
 
 総務省のデータで，日本のブロードバンド大手5社の総トラフィックを年次でグラフ化したものがある．
+
+参考：https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/トラフィックのグラフ.png)
 

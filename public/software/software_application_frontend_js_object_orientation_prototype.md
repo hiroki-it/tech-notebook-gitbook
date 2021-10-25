@@ -25,7 +25,7 @@ JavaScriptの実行環境にあらかじめ組み込まれたオブジェクト�
 
 ```javascript
 // new演算子を使ってインスタンスを生成
-const  obj = new Object();
+const obj = new Object();
 ```
 
 <br>
@@ -141,56 +141,6 @@ console.log(
 
 <br>
 
-## 01-02. DOMオブジェクト
-
-### Document
-
-#### ・```getElementbyId```メソッド
-
-指定した```id```のhtml要素を取得する．
-
-**＊実装例＊**
-
-```html
-<html>
- <body>
-  <p id="myid">Hello world!</p>
-  <script>
-   console.log(document.getElementById("myid"));
-  </script>
- </body>
-</html>
-```
-
-```javascript
-// <p id="myid">Hello world!</p>
-```
-
-<br>
-
-### EventTarget
-
-#### ・```addEventListene```メソッド
-
-第一引数で，```click```などのイベントを設定し，第二引数でメソッド（無名関数でも可）を渡す．
-
-**＊実装例＊**
-
-```html
-<button id="btn">表示</button>
-
-<script>
-const btn = document.getElementById("btn");
-btn.addEventListener("click", function() {
-    console.log("クリックされました！");
-    },
-    false
-    );
-</script>
-```
-
-<br>
-
 ## 02. オブジェクトの生成，初期化
 
 ### リテラル表記の使用
@@ -208,7 +158,7 @@ const foo = {
   // 慣習的にアンダーバーでprivateを表す．
   _property: 0,
   
-  alertValue: function(value) {
+  alertValue: (value) => {
       alert(value);
   }, 
   
@@ -286,11 +236,11 @@ function Foo() {
     _property = 0;
 
     // プロパティ値として宣言した関数を，メソッドという．
-    this.setValue = function(value) {
+    this.setValue = (value)  => {
         this._property = value;
     };   
   
-    this.getValue = function(){
+    this.getValue = () =>{
         return this._property;
     };
 }
@@ -301,16 +251,16 @@ const Foo = new Foo();
 
 ```javascript
 // 関数式
-const Foo = function(value) {
+const Foo = (value)  => {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
-    this.setValue = function(value) {
+    this.setValue = (value)  => {
         this._property = value;
   };
   
-    this.getValue = function() {
+    this.getValue = () => {
         return this._property;
     };
 }
@@ -321,11 +271,11 @@ const Foo = (value) => {
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
-    this.setValue = function(value) {
+    this.setValue = (value)  => {
         this._property = value;
   };
   
-    this.getValue = function() {
+    this.getValue = () => {
         return this._property;
     };
 }
@@ -343,7 +293,7 @@ const object1 = {};
 const object2 = new Object({});
 
 // ユーザ宣言Functionコンストラクタ関数による生成
-const Object3 = function(){};
+const Object3 = () =>{};
 
 // 出力結果
 console.log(
@@ -440,16 +390,16 @@ foo.getValue();
 ```javascript
 // 大元となるオブジェクトは個別ファイルで管理しておくのがベター．
 // コンストラクタ関数の関数式による宣言．
-const Foo = function(value) {
+const Foo = (value)  => {
   
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
-    this.setValue = function(value) {
+    this.setValue = (value)  => {
         this._property = value;
   }  
   
-    this.getValue = function() {
+    this.getValue = () => {
         return this._property;
     };
 }
@@ -462,16 +412,16 @@ const Foo = function(value) {
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに．
 // prototypeプロパティの継承先のオブジェクトを宣言．
-const SubFoo = function(subValue) {
+const SubFoo = (subValue) => {
     
     // 慣習的にアンダーバーでprivateを表す．
     this.subProperty = subValue;
   
-    this.setSubValue = function(subValue) {
+    this.setSubValue = (subValue) => {
         this.subProperty = subValue;
   }  
   
-    this.getSubValue = function() {
+    this.getSubValue = () => {
         return this.subProperty;
     };
 }
@@ -492,16 +442,16 @@ console.log(result);
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに．
 // prototypeプロパティの継承先のオブジェクトを宣言．
-const SubFoo = function() {
+const SubFoo = () => {
     
     // 慣習的にアンダーバーでprivateを表す．
     _property = 0;
   
-    this.setSubValue = function(subValue) {
+    this.setSubValue = (subValue) => {
         this.subProperty = subValue;
     };
   
-    this.getSubValue = function() {
+    this.getSubValue = () => {
         return this.subProperty;
     };
 };
@@ -527,7 +477,7 @@ SubFoo.prototype = Object.create(Foo.prototype, {
     subProperty: "テスト"
     
     // メソッドを定義
-    printSubValue: function() {
+    printSubValue: () => {
         return "これは" + this.subProperty + "です．";
     }
   

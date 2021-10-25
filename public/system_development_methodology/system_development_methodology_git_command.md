@@ -8,96 +8,9 @@
 
 <br>
 
-## 01. トラブルシューティング
+## 01. セットアップ系コマンド
 
-### 基点ブランチから二回派生するブランチマージする時の注意点
-
-1. 基点ブランチから，一つ目のブランチにマージし，これをpushする．ここでpushしないと，2番目のブランチが一つ目のブランチとの差分を検出してしまい，大量の差分コミットがgithubに表示されてしまう．
-2. 一つ目のブランチから二つ目のブランチにマージし．これをpushする．
-
-<br>
-
-### Conflictの解決方法とマージコミットの作成
-
-1. ```git status```を行い，特定のファイルでのコンフリクトが表示される．
-
-```bash
-Unmerged paths:
-  (use "git restore --staged <file>..." to unstage)
-  (use "git add <file>..." to mark resolution)
-        both modified:   XXX/YYY.twig
-```
-
-2. コンフリクトしていたコード行を取捨選択する．
-
-```php
-<?php
-/// Phpstromにて，コンフリクトしていたコード行を取捨選択する．
-```
-
-3. 一度```add```を行い，コンフリクトの修正をGitに認識させる．
-
-```bash
-$ git add XXX/YYY.twig
-```
-
-4. ```git status```を行い，以下が表示される．コンフリクトが解決されたが，マージされていないと出力される．差分のファイルがたくさん表示される場合があるが，問題ない．
-
-```bash
-All conflicts fixed but you are still merging.
-
-Changes to be committed:
-        modified:   XXX
-        modified:   XXX
-```
-
-5. ```git commit```（```-m```はつけてはいけない）を行い，vimエディタが表示される．
-
-```bash
- Merge branch "ブランチ名" into ブランチ名
-```
-
-7. ```:wq```でエディタを終了すれば，コンフリクトを解消したマージコミットが作成される．
-
-8. ```git status```を行う．場合によっては，差分のコミット数が表示されるが問題ない．
-
-```bash
-Your branch is ahead of "origin/feature/XXXX" by 10 commits.
-
-```
-
-9. pushする．この時，マージコミットを作成する時，基点ブランチ以外からマージしていると，差分のコミットが一つにまとまらず，
-
-参考：http://www-creators.com/archives/1938
-
-<br>
-
-### Commitの粒度
-
-データベースからフロント出力までに至る実装をCommitする場合，以下の3つを意識する．
-
-1. データベースからCommit
-2. 関連性のある実装をまとめてCommit
-3. 一回のCommitがもつコード量が少なくなるようにCommit
-
-<br>
-
-### hotfixブランチの作成
-
-リリース後に修正点が見つかった場合に，修正用ブランチを作成し，これを速やかにリリースする必要がある．
-
-1. Issueを作成する．
-2. mainブランチから，『```hotfix/<issue番号>```』の名前でブランチを作成する．
-3. プルリクを作成し，マージの向き先を```main```ブランチとする．
-4. 速攻でapproveをもらい，mainブランチにマージする．この時，hotfixブランチは後でdevelopブランチにマージするため，削除しないようにする．
-5. パッチ番号を一つ増やしたタグを付与し，再リリースする．
-6. リリース後，エラーが解消されたら，ローカルPCでhotfixブランチをdevelopブランチにマージする．
-
-<br>
-
-## 02. Gitの準備
-
-### clone：
+### clone
 
 #### ・```clone <HTTPS接続>```
 
@@ -117,7 +30,7 @@ $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<�
 
 <br>
 
-### config：
+### config
 
 #### ・ 設定の影響範囲の種類
 
@@ -125,7 +38,7 @@ $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<�
 | :------- | :----------------------------- | -------- | :------------------------------- |
 | system   | 全PCユーザの全リポジトリ       | 1        | ```/etc/gitconfig```             |
 | global   | 現在のPCユーザーの全リポジトリ | 2        | ```~/.gitconfig```               |
-| local    | 現在のリポジトリ               | 3        | ```{リポジトリ名}/.git/config``` |
+| local    | 現在のリポジトリ               | 3        | ```<リポジトリ名>/.git/config``` |
 
 #### ・```config --<影響範囲> --list```
 
@@ -137,7 +50,7 @@ $ git config --local --list
 
 Macでは，一つのPCで二つのGutHubアカウントを使用する場合に，キーチェーンという機能で設定が必要になる．
 
-リンク：https://sy-base.com/myrobotics/others/git-push_403error/
+参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
 #### ・```config --<影響範囲> user.name```
 
@@ -192,7 +105,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 <br>
 
-### remote：
+### remote
 
 #### ・```remote set-url origin <SSH URL>```
 
@@ -231,9 +144,9 @@ and the repository exists.
 
 <br>
 
-## 03. コマンド
+## 02. 開発系コマンド
 
-### add：
+### add
 
 #### ・```add --all```
 
@@ -241,7 +154,7 @@ and the repository exists.
 
 <br>
 
-### branch：
+### branch
 
 #### ・```branch --all```
 作業中のローカルブランチとリモート追跡ブランチを表示．
@@ -317,7 +230,7 @@ $ git cherry-pick -m 1 d7e49b04
 
 <br>
 
-### stash：
+### stash
 
 #### ・```stash```とは
 
@@ -378,7 +291,7 @@ git stash -- src/...
 ```
 
 #### ・```stash list```
-退避している『ファイル番号：ブランチ：親コミットとコミットメッセージ』を一覧で表示．
+退避している『ファイル番号ブランチ親コミットとコミットメッセージ』を一覧で表示．
 
 ```bash
 $ git stash list
@@ -424,7 +337,7 @@ $ git stash clear
 
 <br>
 
-### revert：
+### revert
 
 #### ・```revert```とは
 
@@ -466,7 +379,7 @@ $ git revert -m 1 xyz
 
 <br>
 
-### reset：
+### reset
 
 #### ・```reset```とは
 
@@ -556,7 +469,7 @@ To github.com:hiroki-it/Symfony2_Nyumon.git
  + f0d8b1a...f81c813 master -> master (forced update)
 ```
 
-### rebase：
+### rebase
 
 #### ・```rebase```とは（注意点あり）
 
@@ -734,7 +647,7 @@ $
 
 <br>
 
-### pull：
+### pull
 
 #### ・コマンド組み合わせ
 
@@ -751,7 +664,7 @@ $ git pull --all
 
 <br>
 
-### push ：
+### push 
 
 #### ・```push -u origin <作成したブランチ名>```
 
@@ -781,7 +694,7 @@ $ git tag -d v1.0.0
 
 <br>
 
-### show-branch：
+### show-branch
 
 作業ブランチの派生元になっているブランチを確認．
 
@@ -795,7 +708,7 @@ $ git show-branch \
 
 <br>
 
-### filter-branch：
+### filter-branch
 
 #### ・```filter-branch -f --env-filter```
 

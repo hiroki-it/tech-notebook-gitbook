@@ -146,3 +146,96 @@ project/
 
 <br>
 
+## 04. Tips
+
+### 基点ブランチから二回派生するブランチマージする時の注意点
+
+（１）基点ブランチから，一つ目のブランチにマージし，これをpushする．ここでpushしないと，2番目のブランチが一つ目のブランチとの差分を検出してしまい，大量の差分コミットがgithubに表示されてしまう．
+
+（２）一つ目のブランチから二つ目のブランチにマージし．これをpushする．
+
+<br>
+
+### Conflictの解決方法とマージコミットの作成
+
+（１）```git status```を行い，特定のファイルでのコンフリクトが表示される．
+
+```bash
+Unmerged paths:
+  (use "git restore --staged <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+        both modified:   XXX/YYY.twig
+```
+
+（２）コンフリクトしていたコード行を取捨選択する．
+
+```php
+<?php
+/// Phpstromにて，コンフリクトしていたコード行を取捨選択する．
+```
+
+（３）一度```add```を行い，コンフリクトの修正をGitに認識させる．
+
+```bash
+$ git add XXX/YYY.twig
+```
+
+（４）```git status```を行い，以下が表示される．コンフリクトが解決されたが，マージされていないと出力される．差分のファイルがたくさん表示される場合があるが，問題ない．
+
+```bash
+All conflicts fixed but you are still merging.
+
+Changes to be committed:
+        modified:   XXX
+        modified:   XXX
+```
+
+（５）```git commit```（```-m```はつけてはいけない）を行い，vimエディタが表示される．
+
+```bash
+ Merge branch "ブランチ名" into ブランチ名
+```
+
+（６）```:wq```でエディタを終了すれば，コンフリクトを解消したマージコミットが作成される．
+
+（７）```git status```を行う．場合によっては，差分のコミット数が表示されるが問題ない．
+
+```bash
+Your branch is ahead of "origin/feature/XXXX" by 10 commits.
+
+```
+
+（８）pushする．この時，マージコミットを作成する時，基点ブランチ以外からマージしていると，差分のコミットが一つにまとまらず，
+
+参考：http://www-creators.com/archives/1938
+
+<br>
+
+### Commitの粒度
+
+データベースからフロント出力までに至る実装をCommitする場合，以下の3つを意識する．
+
+（１）データベースからCommit
+
+（２）関連性のある実装をまとめてCommit
+
+（３）一回のCommitがもつコード量が少なくなるようにCommit
+
+<br>
+
+### hotfixブランチの作成
+
+リリース後に修正点が見つかった場合に，修正用ブランチを作成し，これを速やかにリリースする必要がある．
+
+（１）Issueを作成する．
+
+（２）mainブランチから，『```hotfix/<issue番号>```』の名前でブランチを作成する．
+
+（３）プルリクを作成し，マージの向き先を```main```ブランチとする．
+
+（４）速攻でapproveをもらい，mainブランチにマージする．この時，hotfixブランチは後でdevelopブランチにマージするため，削除しないようにする．
+
+（５）パッチ番号を一つ増やしたタグを付与し，再リリースする．
+
+（６）リリース後，エラーが解消されたら，ローカルPCでhotfixブランチをdevelopブランチにマージする．
+

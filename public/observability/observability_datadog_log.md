@@ -8,13 +8,41 @@
 
 <br>
 
-## 01. Ec2におけるログ収集
+## 01. ログ収集の仕組み
+
+### バックエンド
+
+![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-collection.png)
+
+（１）サーバの場合，稼働するDatadogエージェントが，Datadog-APIにアプリケーションログを送信する．コンテナの場合，FluentBitが代わりにアプリケーションログを送信する．
+
+（２）Datadogにて，ログはパイプラインで処理され，構造化ログになる．
+
+（３）ユーザは，ログの属性値に基づいて，ログを検索できるようになる．
+
+参考：https://developers.cyberagent.co.jp/blog/archives/12565/
+
+<br>
+
+### フロントエンド
+
+（１）ブラウザのコンソールに出力されるログを収集する．
+
+（２）Datadogにて，ログはパイプラインで処理され，構造化ログになる．
+
+（３）ユーザは，ログの属性値に基づいて，ログを検索できるようになる．
+
+参考：https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
+
+<br>
+
+## 02. Ec2におけるログ収集
 
 ### Datadogエージェント on EC2とは
 
 #### ・Datadogエージェント on EC2とは
 
-常駐プログラムであり，アプリケーションをログを収集し，Datadogに転送する．
+常駐プログラムであり，アプリケーションログを収集し，Datadogに転送する．
 
 参考：https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli
 
@@ -30,7 +58,7 @@ logs_enabled: true
 
 <br>
 
-## 02. Fargateにおけるログ収集
+## 03. Fargateにおけるログ収集
 
 ### FireLensコンテナ
 
@@ -64,11 +92,11 @@ ECSのコンテナ定義にて，パブリックECRリポジトリのURLを指�
 
 あらかじめ，DockerHubからdatadogイメージをプルするためのDockerfileを作成し，プライベートECRリポジトリにイメージをプッシュしておく．ECSのコンテナ定義にて，プライベートECRリポジトリのURLを指定し，ECRイメージのプルを実行する．標準で内蔵されているyamlファイルの設定を上書きしたい場合は，こちらを採用する．
 
+参考：https://hub.docker.com/r/datadog/agent
+
 ```dockerfile
 FROM data/agent:latest
 ```
-
-参考：https://hub.docker.com/r/datadog/agent
 
 <br>
 
@@ -78,7 +106,7 @@ FROM data/agent:latest
 
 <br>
 
-## 03. ログの識別子
+## 05. ログの識別子
 
 ### attribute（属性）
 
@@ -187,7 +215,7 @@ Nginxの場合
 
 <br>
 
-## 03. 収集されたログの送信
+## 06. 収集されたログの送信
 
 ### EC2におけるログの送信
 
@@ -224,7 +252,7 @@ FireLensコンテナで稼働するFluentBitが，Datadogにログを送信す�
 
 <br>
 
-## 04. ログパイプライン
+## 07. ログパイプライン
 
 ### ログパイプラインとは
 
@@ -483,13 +511,13 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 <br>
 
-## 04-02. ログパイプラインの後処理
+## 07-02. ログパイプラインの後処理
 
 ### 標準属性の付与
 
 <br>
 
-## 04-03. オプション処理
+## 07-03. オプション処理
 
 ### ログのメトリクス
 
@@ -522,7 +550,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 <br>
 
-## 05. ログエクスプローラ
+## 07. ログエクスプローラ
 
 ### Live Tail
 

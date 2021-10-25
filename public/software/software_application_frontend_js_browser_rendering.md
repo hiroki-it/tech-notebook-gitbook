@@ -188,83 +188,7 @@ var hoge = true;
 
 <br>
 
-## 01-04. イベント駆動
-
-### イベント駆動
-
-#### ・イベント駆動とは
-
-JavaScriptでは，画面上で何らかのイベントが発火し，これに紐づくイベントハンドラ関数がコールされることで，他の関数に処理が広がっていく．これをイベント駆動という．
-
-#### ・イベント発火，イベントハンドラ関数とは
-
-画面上で何かの処理が起こると，Scriptingプロセスによって，特定の関数がコールされる．
-
-
-
-### HTML形式におけるイベントハンドラ関数のコール
-
-#### ・```onload```
-
-『画面のローディング』というイベントが発火すると，イベントハンドラ関数をコールする．
-
-#### ・```onclick```
-
-『要素のクリック』というイベントが発火すると，イベントハンドラ関数をコールする．
-
-```html
-<input type="button" value="ボタン1" onclick="methodA()">
-
-<script>
-function methodA(){
-	console.log("イベントが発火しました");
-}
-</script>
-```
-
-<br>
-
-### JS形式におけるイベントハンドラ関数のコール
-
-
-#### ・```document.getElementById```関数
-
-指定したIDに対して，一つのイベントと一つのイベントハンドラ関数を紐づける．
-
-```javascript
-// 指定したIDで，クリックイベントが発火した時に，処理を行う．
-document.getElementById("btn").onclick = function(){
-	console.log("イベントが発火しました");
-}
-```
-
-
-#### ・```document.addEventListener```関数
-
-一つのイベントに対して，一つ以上のイベントハンドラ関数を紐づける．```false```を設定することで，イベントバブリングを行わせない．
-
-```javascript
-// DOMContentLoadedイベントが発火した時に，処理を行う．
-document.addEventListener("DOMContentLoaded", function(){
-	console.log("イベントが発火しました");
-});
-```
-
-```javascript
-// 一つ目
-document.getElementById("btn").addEventListener("click", function(){
-	console.log("イベントが発火しました（１）");
-}, false);
-
-// 二つ目
-document.getElementById("btn").addEventListener("click", function(){
-	console.log("イベントが発火しました（２）");
-}, false);
-```
-
-<br>
-
-## 01-05. ブラウザのバージョン
+## 01-04. ブラウザのバージョン
 
 ### Polyfill
 
@@ -384,11 +308,9 @@ img { float: right }
 
 ![DOMツリーが生成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが生成されるまで.png)
 
-HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．
+HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．DOMのインターフェースについては，以下のリンクを参考にせよ．
 
-DOMのインターフェースについては，こちら．
-
-https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
 ![DOMツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリー.png)
 
@@ -436,6 +358,99 @@ JavaScriptエンジンは，ソースコードを，字句解析，構造解析�
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_software_centos.html
 
 ![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
+
+## 03-02. イベント
+
+### イベント
+
+#### ・イベントとは
+
+ブラウザの各操作はイベントとしてJavaScriptまたはHTMLに紐づけられている．
+
+参考：https://developer.mozilla.org/ja/docs/Web/Events
+
+#### ・イベントハンドラ関数とは
+
+イベントの発火に伴ってコールされる関数のこと．イベントハンドラ関数が実行されるたびにScripting処理が繰り返される．
+
+<br>
+
+### HTML形式におけるイベントハンドラ関数のコール
+
+#### ・```onload```
+
+『画面のローディング』というイベントが発火すると，イベントハンドラ関数をコールする．
+
+#### ・```onclick```
+
+『要素のクリック』というイベントが発火すると，イベントハンドラ関数をコールする．
+
+```html
+<input type="button" value="ボタン1" onclick="methodA()">
+
+<script>
+function methodA(){
+	console.log("イベントが発火しました");
+}
+</script>
+```
+
+<br>
+
+### JS形式におけるイベントハンドラ関数のコール
+
+
+#### ・```document.getElementById.onclick```関数
+
+指定したIDに対して，一つのイベントと一つのイベントハンドラ関数を紐づける．
+
+**＊実装例＊**
+
+```javascript
+// 指定したIDで，クリックイベントが発火した時に，処理を行う．
+document.getElementById("btn").onclick = () => {
+	console.log("イベントが発火しました");
+}
+```
+
+
+#### ・```document.addEventListener```関数
+
+一つのイベントに対して，一つ以上のイベントハンドラ関数を紐づける．第一引数で，```click```などのイベントを設定し，第二引数でメソッド（無名関数でも可）を渡す．```false```を設定することで，イベントバブリングを行わせない．
+
+**＊実装例＊**
+
+```html
+<button id="btn">表示</button>
+
+<script>
+const btn = document.getElementById("btn");
+btn.addEventListener("click", () => {
+    console.log("クリックされました！");
+},false);
+</script>
+```
+
+```javascript
+// DOMContentLoadedイベントが発火した時に，処理を行う．
+document.addEventListener("DOMContentLoaded", () => {
+	console.log("イベントが発火しました");
+});
+```
+
+```javascript
+// 一つ目
+document.getElementById("btn").addEventListener("click", () => {
+	console.log("イベントが発火しました（１）");
+}, false);
+
+// 二つ目
+document.getElementById("btn").addEventListener("click", () => {
+	console.log("イベントが発火しました（２）");
+}, false);
+```
+
+
 
 <br>
 

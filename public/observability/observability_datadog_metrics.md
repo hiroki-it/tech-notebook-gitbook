@@ -261,3 +261,9 @@ Datadogでインテグレーションを有効化すると同時に，アプリ�
 Datadogに送信されなくなったメトリクスは，時間経過とともにDatadogから削除される．
 
 参考：https://docs.datadoghq.com/ja/dashboards/faq/historical-data/
+
+<br>
+
+## 05. 他テレメトリーとの相関付け
+
+参考：https://docs.datadoghq.com/ja/logs/guide/correlate-logs-with-metrics/

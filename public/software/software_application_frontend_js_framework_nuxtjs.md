@@ -175,9 +175,12 @@ const nuxtConfig: Configuration = {
 
 ####  ・```privateRuntimeConfig```
 
-SSRモードでのみ使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする
+SSRモードでのみ使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする
 
-参考：https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
+参考：
+
+- https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
+- https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -201,9 +204,12 @@ API_KEY=*****
 
 #### ・```publicRuntimeConfig```
 
-SPAモードまたはSSRモードで使用できる．
+SPAモードまたはSSRモードで使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．
 
-参考：https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
+参考：
+
+- https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
+- https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -266,13 +272,21 @@ const nuxtConfig: Configuration = {
 
 ## 03. ディレクトリ
 
-### モジュール
+### ```dist：distribution```
+
+staticモードの```generate```コマンドの実行時に，アーティファクトが配置される．
+
+参考：https://nuxtjs.org/ja/docs/directory-structure/dist
+
+<br>
+
+### ```module```
 
 参考：https://nuxtjs.org/docs/directory-structure/modules
 
 <br>
 
-### プラグイン
+### ```plugin```
 
 参考：
 
