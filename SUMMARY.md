@@ -25,12 +25,13 @@
       * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
-      * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_microservice.md)
-      * [📖 ︎フロントエンドアーキテクチャ](public/software/software_application_architecture_frontend.md)
       * バックエンドアーキテクチャ
+        * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_backend_microservice.md)
         * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
         * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
         * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
+      * フロントエンドアーキテクチャ
+        * [📖 ︎フロントエンドアーキテクチャ](public/software/software_application_architecture_frontend.md)
     * アプリケーション間連携
       * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
       * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
