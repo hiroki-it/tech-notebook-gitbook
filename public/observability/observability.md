@@ -181,6 +181,32 @@
 
 <br>
 
+### モノリスにおける分散トレース
+
+モノリスなアプリケーションでは，システムが分散していないため，単なるトレースとなる．
+
+参考：https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+
+**＊例＊**
+
+（１）a1：クライアントがリクエストを送信する．
+
+（２）a1：リクエストがロードバランサ－に到達する．
+
+（３）a1～a2：ロードバランサ－で処理が実行される．
+
+（４）a2：ロードバランサ－がリクエストをアプリケーションに転送する．
+
+（５）a2：リクエストがアプリケーションに到達する．
+
+（６）a2～a3：アプリケーションで処理が実行される．
+
+（７）a3：アプリケーションがレスポンスをクライアントに返信する．
+
+![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/monolith-trace.png)
+
+<br>
+
 ### スパン
 
 #### ・スパンとは

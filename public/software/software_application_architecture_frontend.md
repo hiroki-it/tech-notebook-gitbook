@@ -95,3 +95,25 @@ MPAと比較して，データを非同期的に通信できるため，1つのW
 SSGの発展型．SSGとは異なり，事前にビルドせず，静的ファイルを生成しない．その代わり，クライアントからリクエストがあって初めて，そのページのみビルドが実行され，レンダリングされる．クライアントから一回でもリクエストがあったページでは，初回時にビルドされた静的ファイルがその都度レンダリングされる．
 
 参考：https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
+
+<br>
+
+## 05. マイクロサービスアーキテクチャにおけるフロントエンド
+
+### UI部品合成
+
+#### ・UI部品合成とは
+
+フロントエンドのコンポーネントを，各サービスに対応するように分割する設計方法．
+
+![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
+
+<br>
+
+### BFFパターン：Backends  For Frontends
+
+#### ・BFFパターンとは
+
+クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各サービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
+
+![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)

@@ -20,12 +20,13 @@
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
 * アプリケーションソフトウェア
     * アーキテクチャ
-        * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_microservice.html)
-        * [📖 ︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_frontend.html)
         * バックエンドアーキテクチャ
+            * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_microservice.html)
             * [📖 ︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html)
             * [📖 ︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
             * [📖 ︎CQRS](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_cqrs.html)
+        * フロントエンドアーキテクチャ
+            * [📖 ︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_frontend.html)
     * アプリケーション間連携
         * [📖 ︎JSON](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_json.html)
         * [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_communication.html)

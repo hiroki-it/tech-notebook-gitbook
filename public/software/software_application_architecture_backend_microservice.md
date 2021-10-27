@@ -20,7 +20,7 @@
 
 | 年代    | アーキテクチャ                 | 説明                                                         |
 | ------- | ------------------------------ | ------------------------------------------------------------ |
-| 1999 ～ | モノリシックアーキテクチャ     | 1999年台，バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた．しかし，モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文（『大きな泥泥だんご』）で指摘された．<br>参考：https://ja.wikipedia.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A5%E3%81%A0%E3%82%93%E3%81%94 |
+| 1999 ～ | モノリシックアーキテクチャ     | 1999年台，バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた．しかし，モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文（『大きな泥だんご』）で指摘された．<br>参考：https://ja.wikipedia.org/wiki/%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A5%E3%81%A0%E3%82%93%E3%81%94 |
 | 2014    | マイクロサービスアーキテクチャ | 2014年にThoughtWorks社は，サービス指向アーキテクチャとドメイン駆動設計を統合し，アプリケーションを独立したサービスの集まりに分割するアーキテクチャを考案した．<br>参考：<br>・https://martinfowler.com/articles/microservices.html<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2017    | ミニサービスアーキテクチャ     | マイクロサービスアーキテクチャのサービス自体を独立したモノリスなアプリケーションと捉えると，その分だけ開発チーム（マネージャーとエンジニア）が必要になってしまう．2017年にCloud Elements社は，これに対処するためにミニサービスアーキテクチャを考案した．このアーキテクチャでは，マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で，アプリケーションを複数のサービスに分割する．この粒度を，マイクロサービスに対抗して『ミニサービス』または『MASA』とよぶ．<br>参考：<br>・https://blog.cloud-elements.com/pragmatic-microservices-architecture<br>・https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html |
 | 2018    | モジュラーモノリス             | ミニサービスアーキテクチャではサービスの粒度が大きくなったものの，複数のサービスが必要になることは変わらず，その分だけ開発チームが必要になる問題は解消されなかった．そこで，Root Insurance社はモジュラモノリスを考案した．モジュラモノリスでは，サービスの概念を取り入れずに，アプリケーションを細かいモジュールに分割する．<br>参考：https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4 |
@@ -79,6 +79,17 @@
 各サービスを異なるリポジトリで管理する．
 
 ![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/polyrepo.png)
+
+<br>
+
+### マイクロサービスアーキテクチャのフレームワーク
+
+#### ・dapr
+
+参考：
+
+- https://www.publickey1.jp/blog/19/dapr.html
+- https://github.com/dapr/dapr
 
 <br>
 
@@ -291,22 +302,5 @@ Datadogによる分散トレースの監視については，以下のリンク�
 
 <br>
 
-## 08. フロントエンドのマイクロサービス化
 
-### UI部品合成
 
-#### ・UI部品合成とは
-
-フロントエンドのコンポーネントを，各サービスに対応するように分割する設計方法．
-
-![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/composite-ui.png)
-
-<br>
-
-### BFFパターン：Backends  For Frontends
-
-#### ・BFFパターンとは
-
-クライアントの種類（モバイル，Web，デスクトップ）に応じたAPIを構築し，このAPIから各サービスにルーティングする設計方法．BFFパターンを実装は可能であるが，AWSでいうAPI Gatewayで代用するとより簡単に実現できる．
-
-![bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bff-pattern.png)
