@@ -40,19 +40,25 @@
 
 <br>
 
+### マルチアラート変数
+
+#### ・マルチアラート変数とは
+
+クエリの```group by```句に割り当てたタグやファセットを変数として出力する．マルチアラートモニターを使用する場合のみ，使用できる．
+
+<br>
+
 ### タグ変数
 
 #### ・タグ変数とは
 
-クエリの```group by```句に割り当てたタグやファセットを変数として出力できる．マルチアラートモニターを使用する場合のみ，使用できる．
+構造化ログの属性値またはタグ値を変数として出力する．```{{log.attributes.<キー名>}}``` または```{{log.tags.<キー名>}}```として実装する．
 
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#tag-variables
+参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
-#### ・ログファセット変数
+<br>
 
-クエリの```group by```句でファセットを割り当てた場合に使用できる．
-
-参考：https://docs.datadoghq.com/ja/monitors/notify/variables/?tab=is_alert#log-facet-variables
+### コンポジットモニター変数
 
 #### ・コンポジットモニター変数とは
 
@@ -73,8 +79,8 @@
 通知先にタイトルとして表示するテキストを定義する．タイトルに変数を出力できる．
 
 ```markdown
-<!-- group by句に割り当てたタグを変数として出力する -->
-【{{service.name}}】エラーを検知しました
+<!-- タグ変数を出力する -->
+【{{log.attributes.service}}】ｈ環境でエラーを検知しました
 ```
 
 #### ・本文
@@ -83,13 +89,14 @@
 
 ```markdown
 <!-- Datadogに設定した通知先 -->
-<!-- 復旧通知を転送しない場合，is_alert構文の外で定義する必要がある -->
-@<通知先>
 
 <!-- アラート状態の時に表示するテキスト -->
 {{#is_alert}}
 
-エラーメッセージです
+<!-- 復旧通知を転送しない場合，is_alert構文の中で定義する必要がある -->
+@<本番環境のアラートチャンネル>
+
+アプリケーション名：{{log.attributes.service}}
 
 {{/is_alert}}
 ```
