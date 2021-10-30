@@ -571,7 +571,7 @@ func main() {
 
 インポートされているパッケージに合わせて，```go.mod```ファイルと```go.sum```ファイルを更新する．
 
-```shell
+```bash
 $ go mod tidy
 ```
 
@@ -632,7 +632,7 @@ replace github.com/hiroki-it/foo_repository => /
 
 また，ルートディレクトリだけでなく，各パッケージにも```go.mod```ファイルを配置する必要がある．
 
-```shell
+```bash
 foo_repository
 ├── cmd
 │   └── hello.go

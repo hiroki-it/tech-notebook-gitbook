@@ -885,7 +885,7 @@ new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 undefined
 ```
@@ -923,7 +923,7 @@ var vm = new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 "Hiroki"
 ```
@@ -957,7 +957,7 @@ var vm = new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 要素が生成されていないため，何も表示されない．
 ```
@@ -995,7 +995,7 @@ var vm = new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 "Hiroki"
 ```
@@ -1062,7 +1062,7 @@ var vm = new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 "Hiroki"
 ```
@@ -1098,7 +1098,7 @@ var vm = new Vue({
 </script>
 ```
 
-```sh
+```bash
 # 結果
 "Hiroki"
 ```

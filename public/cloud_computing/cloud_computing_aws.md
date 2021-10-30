@@ -491,14 +491,6 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 | WAF                                | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html |
 | クライアント証明書                 | 関連付けるWAFを設定する．                                    |
 
-#### ・ログ／分散トレース
-
-| 設定項目                   | 説明                                                         |
-| -------------------------- | ------------------------------------------------------------ |
-| CloudWatch設定             | CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
-| カスタムアクセスのログ記録 | CloudWatchログにAPI Gatewayのアクセスログを送信するかどうかを設定する．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html |
-| X-Ray分散トレース      | 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-xray.html |
-
 #### ・ステージ変数
 
 デプロイされるステージ固有の環境変数を設定できる．Lambda関数名，エンドポイントURL，パラメータマッピング，マッピングテンプレートで値を出力できる．以下のリンクを参考にせよ．
@@ -515,6 +507,30 @@ API Gatewayは上記のJSONデータを受信した後，```body```のみ値を�
 | Canaryのデプロイ                           |      |
 | Canaryステージ変数                         |      |
 | キャッシュ                                 |      |
+
+<br>
+
+### ログの種類
+
+#### ・実行ログ
+
+CloudWatchログにAPI Gatewayの実行ログを送信するかどうかを設定できる．リクエスト／レスポンスの構造もログに出力するようにした方が良い．　
+
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html
+
+#### ・カスタムアクセスログ
+
+CloudWatchログにAPI Gatewayのアクセスログを送信するかどうかを設定できる．アクセスログを構造化ログとして出力できる．
+
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/set-up-logging.html
+
+<br>
+
+### 分散トレースの収集
+
+X-Rayを用いて，API Gatewayを起点とした分散トレースを収集する．まず，API GatewayでトレースIDが生成される．その後，各AWSリソースでスパンを取得し，スパンを紐づけることより，分散トレースを表現できる．なおX-Rayでは，親スパンをセグメント，子スパンをサブセグメントと呼ぶ．
+
+参考：https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
 
 <br>
 

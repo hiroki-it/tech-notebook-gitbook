@@ -180,13 +180,13 @@ const foo = {
 // リテラル表記
 const foo = {
   
- // ~~ 省略 ~~
+ // ～ 中略 ～
   
   alertValue(value) {
       alert(value);
   }, 
   
-  // ~~ 省略 ~~
+  // ～ 中略 ～
 }
 ```
 

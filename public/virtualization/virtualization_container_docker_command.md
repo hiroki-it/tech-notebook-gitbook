@@ -283,7 +283,7 @@ aeef782b227d        tech-notebook_default   bridge              local
 
 #### ・prune
 
-```sh
+```bash
 $ docker network prune
 ```
 

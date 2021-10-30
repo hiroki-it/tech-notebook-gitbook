@@ -16,54 +16,54 @@
 
 ## 01-02. Symfonyのディレクトリ構成
 
-```shell
+```bash
 Symfony
-├── config　#設定ファイル（カーネルのためのルート定義ファイル等）
+├── config　# 設定ファイル（カーネルのためのルート定義ファイル等）
 │
-├── bin　#コマンドラインツール
+├── bin　# コマンドラインツール
 │   ├── console #bin/consoleコマンドの実行ファイル
 │   └── symfony_requirements
 │
 ├── public    
-|   ├── index.php #本番環境で、カーネルとして動く
-|   └── index_dev.php #開発環境で、カーネルとして動く
+|   ├── index.php # 本番環境で、カーネルとして動く
+|   └── index_dev.php # 開発環境で、カーネルとして動く
 │
-├── src　#主要なPHPファイル
-│   ├── AppBundle #アプリケーションのソースコード
-│   │  ├── Controller　#UserCase層
-│   │  ├── Entity #エンティティ　⇒　Domain層
-│   │  ├── Repository #リポジトリ ⇒ Infrastructure層
-│   │  ├── Form #フォーム
+├── src　# 主要なPHPファイル
+│   ├── AppBundle # アプリケーションのソースコード
+│   │  ├── Controller　# UserCase層
+│   │  ├── Entity # エンティティ　⇒　Domain層
+│   │  ├── Repository # リポジトリ ⇒ Infrastructure層
+│   │  ├── Form # フォーム
 │   │  └── Resources
-│   │       └── views #画面テンプレート（※本書では扱わない） 
+│   │       └── views # 画面テンプレート（※本書では扱わない） 
 │   │           
-│   └── その他のBundle #汎用的なライブラリのソースコード（※本書では扱わない）
+│   └── その他のBundle # 汎用的なライブラリのソースコード（※本書では扱わない）
 |
-├── templates　#UserInterface層
+├── templates　# UserInterface層
 │   
-├── test #自動テスト（Unit tests等）
+├── test # 自動テスト（Unit tests等）
 │  
-├── var #自動生成されるファイル
-│   ├── cache #キャッシュファイル
-│   ├── logs #ログファイル
+├── var # 自動生成されるファイル
+│   ├── cache # キャッシュファイル
+│   ├── logs # ログファイル
 │   └── sessions
 │
-├── vendor #外部ライブラリ
-│   ├── doctrine #ライブラリ
-│   ├── league #ライブラリ
+├── vendor # 外部ライブラリ
+│   ├── doctrine # ライブラリ
+│   ├── league # ライブラリ
 │   ├── sensio
-│   ├── swiftmailer #ライブラリ
-│   ├── symfonyコンポーネント #コンポーネント 
-│   └── twig #ライブラリ
+│   ├── swiftmailer # ライブラリ
+│   ├── symfonyコンポーネント # コンポーネント 
+│   └── twig # ライブラリ
 │
 └── asset #ブラウザコンソールに公開されるファイル（css, javascript, image等）
     ├── admin
     ├── bootstrap
     ├── css
     ├── fontawesome
-    ├── img #画像ファイル
-    ├── jquery #jquery（javascriptフレームワーク）
-    └── js #javascriptファイル
+    ├── img # 画像ファイル
+    ├── jquery # jquery（javascriptフレームワーク）
+    └── js # javascriptファイル
 ```
 
 <br>
@@ -218,7 +218,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
 #### ・```for```
 
-```shell
+```bash
 # txtファイルを変数fに繰り返し格納し，処理を行う．
 for f in *txt do echo $f; done;
 ```
@@ -229,12 +229,12 @@ for f in *txt do echo $f; done;
 
 10秒ごとに，コマンドを自動実行する．
 
-```shell
+```bash
 # 10秒ごとに，コマンド処理を実行．
 for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 ```
 
-```shell
+```bash
 # 15時ごとに，コマンド処理を実行．
 0 15 * * * * create:example;
 ```

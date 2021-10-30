@@ -587,9 +587,9 @@ DOMツリーの各ノードを，ブラウザ上に描画する．
 
 ```http
 HTTP/1.1 200
-# ～ 省略 ～
+# ～ 中略 ～
 Cache-Control: no-store
-# ～ 省略 ～
+# ～ 中略 ～
 
 # ボディ
 ここにサイトのHTMLのコード
@@ -601,9 +601,9 @@ Cache-Control: no-store
 
 ```http
 HTTP/1.1 200
-# ～ 省略 ～
+# ～ 中略 ～
 Cache-Control: max-age=31536000
-# ～ 省略 ～
+# ～ 中略 ～
 
 # ボディ
 ここにサイトのHTMLのコード
@@ -615,10 +615,10 @@ Cache-Control: max-age=31536000
 
 ```http
 HTTP/1.1 200
-# ～ 省略 ～
+# ～ 中略 ～
 Cache-Control: max-age=0
 Expires: Sat, 01 Jan 2000 00:00:00 GMT
-# ～ 省略 ～
+# ～ 中略 ～
 
 # ボディ
 ここにサイトのHTMLのコード

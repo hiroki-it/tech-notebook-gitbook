@@ -122,7 +122,7 @@ const nuxtConfig: Configuration = {
 $ npm install @nuxtjs/dotenv
 ```
 
-```sh
+```bash
 # APIのURL．サーバ上のJavaScriptからAPIへのリクエストで使用する．
 API_URL=https://example.co.jp/api
 # APIのURL．ブラウザ上のJavaScriptからAPIへのリクエストで使用する．

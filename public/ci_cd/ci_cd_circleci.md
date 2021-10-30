@@ -44,7 +44,7 @@ workflows:
 
 ホストOS側で，以下のコマンドを実行する．
 
-```shell
+```bash
 $ circleci config validate
 
 # 以下の文章が表示されれば問題ない．
@@ -55,7 +55,7 @@ $ circleci config validate
 
 設定ファイルを実行した時の処理を展開し，ファイルに出力できる
 
-```shell
+```bash
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 ```
 
@@ -63,7 +63,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 コマンドにより，テストに必要なDockerイメージをpullし，コンテナを構築する．続いて，コンテナ内でCircleCIを実行する．バージョン2.1以降では，事前に，設定ファイルの処理を展開しておく必要がある．
 
-```shell
+```bash
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
@@ -75,7 +75,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 CircleCIコンテナにssh接続し，コンテナ内で生成されたファイルを確認することができる．
 
-```shell
+```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵名>
 ```
 
@@ -1140,7 +1140,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -1158,7 +1158,7 @@ source $BASH_ENV
 
 **＊実装例＊**
 
-```shell
+```bash
 cat << EOF > "export_envs.sh"
 #!/bin/bash
 set -xeuo pipefail
@@ -1531,7 +1531,7 @@ workflows:
 
 ただし，```credentials```ファイルの作成では，orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない．
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -1847,7 +1847,7 @@ commands:
 jobs:
   deploy:
     steps:
-    # ～ 省略 ～
+    # ～ 中略 ～
 
 workflows:
   # ステージング環境にデプロイ

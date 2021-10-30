@@ -339,7 +339,7 @@ Laravelのスタックトレースを結合する．
 
 参考：https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace
 
-```shell
+```bash
 [FILTER]
     # プラグイン名
     name                  multiline

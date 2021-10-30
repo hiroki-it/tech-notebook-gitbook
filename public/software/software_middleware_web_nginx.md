@@ -22,14 +22,14 @@
 
 #### ・起動／停止
 
-```shell
+```bash
 $ sudo systemctl start nginx
 $ sudo systemctl stop nginx
 ```
 
 #### ・設定ファイルのバリデーション
 
-```shell
+```bash
 $ sudo service nginx configtest
 
 # もしくはこちら
@@ -38,7 +38,7 @@ $ sudo nginx -t
 
 #### ・設定ファイルの反映と安全な再起動
 
-```shell
+```bash
 $ sudo systemctl reload nginx
 ```
 
@@ -46,7 +46,7 @@ $ sudo systemctl reload nginx
 
 読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容を展開して表示する．
 
-```shell
+```bash
 $ sudo nginx -T
 ```
 
@@ -62,7 +62,7 @@ $ sudo nginx -T
 
 静的ファイルのリクエストが送信されてきた場合，Nginxはそのままレスポンスを返信する．動的ファイルのリクエストが送信されてきた場合，Nginxは，FastCGIプロトコルを介して，PHP-FPMにリクエストをリダイレクトする．
 
- ```shell
+ ```bash
 # 設定ファイルのバリデーション
 $ php-fpm -t
  ```
@@ -362,7 +362,7 @@ http {
     include            /etc/nginx/conf.d/*.conf;
         
     server {
-        # ～ 省略 ～
+        # ～ 中略 ～
     }
 }
 ```

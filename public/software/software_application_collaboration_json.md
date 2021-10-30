@@ -18,20 +18,21 @@
 
 ```json
 {
-  "fruit": ["banana", "apple"],
-  "account": 200
+  "account": 200,
+  "fruit": [
+    "banana",
+    "apple"
+  ]
 }
 ```
 
 #### ・YAML：YAML Ain"t a Markup Language
 
 ```yaml
-{
-  fruit:
-    - "banana"
-    - "apple"
-  account: 200
-}  
+account: 200  
+fruit:
+  - "banana"
+  - "apple"
 ```
 
 #### ・マークアップ言語
@@ -58,8 +59,11 @@
 
 ```javascript
 const object = {
-  fruit: ["banana", "apple"],
-  account: 200
+  "account": 200,
+  "fruit": [
+    "banana",
+    "apple"
+  ]
 };
 ```
 
@@ -84,8 +88,11 @@ class Foo {
 
 ```javascript
 const json = {
-  "fruit": ["banana", "apple"],
-  "account": 200
+  "account": 200,
+  "fruit": [
+    "banana",
+    "apple"
+  ]
 };
 ```
 
@@ -96,13 +103,13 @@ const json = {
 ```javascript
 // どんなデータを含むJSONなのかわかりやすい方法
 const json = {
-  "name": null,
   "age": null,
+  "name": null,
   "tel": null
 }
 
-json.name = "taro";
 json.age = 30;
+json.name = "taro";
 json.tel = "090-0123-4567";
 ```
 
@@ -125,8 +132,8 @@ json["prefecture"] = "Tokyo";
 
 ```javascript
 const json = {
-  "name": "taro",
   "age": 30,
+  "name": "taro",
   "tel": "090-0123-4567"
 }
 
@@ -136,6 +143,14 @@ json.prefecture = "Tokyo";
 // もしくは，
 json["prefecture"] = "Tokyo";
 ```
+
+#### ・キーの並び順
+
+キーはアルファベット順に並べると良い．以下のサイトで並び替えられる．
+
+参考：https://r37r0m0d3l.github.io/json_sort/
+
+<br>
 
 ### PHP型オブジェクト
 

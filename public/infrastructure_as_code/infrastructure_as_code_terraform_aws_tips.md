@@ -173,7 +173,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   
-  # ～ 省略 ～
+  # ～ 中略 ～
   
 }
 ```
@@ -195,7 +195,7 @@ Origins画面に設定するオリジンを定義する．
 ```elixir
 resource "aws_cloudfront_distribution" "this" {
 
-  # ～ 省略 ～  
+  # ～ 中略 ～  
 
   # オリジン（ここではS3としている）
   origin {
@@ -207,7 +207,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   
-  # ～ 省略 ～  
+  # ～ 中略 ～  
   
 }
 ```
@@ -215,7 +215,7 @@ resource "aws_cloudfront_distribution" "this" {
 ```elixir
 resource "aws_cloudfront_distribution" "this" {
 
-  # ～ 省略 ～  
+  # ～ 中略 ～  
 
   # オリジン（ここではALBとしている）
   origin {
@@ -232,7 +232,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   
-  # ～ 省略 ～
+  # ～ 中略 ～
 }
 ```
 
@@ -247,7 +247,7 @@ Behavior画面に設定するオリジンにルーティングするパスを定
 ```elixir
 resource "aws_cloudfront_distribution" "this" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   ordered_cache_behavior {
     path_pattern           = "/images/*"
@@ -269,7 +269,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  # ～ 省略 ～
+  # ～ 中略 ～
   
 }
 ```
@@ -305,7 +305,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
   
-  # ～ 省略 ～
+  # ～ 中略 ～
   
 }
 ```
@@ -1221,7 +1221,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     sampled_requests_enabled   = true
   }  
   
-  # ～ 省略 ～  
+  # ～ 中略 ～  
   
 }  
 ```
@@ -1267,7 +1267,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     sampled_requests_enabled   = true
   }  
   
-  # ～ 省略 ～
+  # ～ 中略 ～
   
 }  
 ```
@@ -1313,7 +1313,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     sampled_requests_enabled   = true
   }  
   
-  # ～ 省略 ～
+  # ～ 中略 ～
   
 }
 ```
@@ -1389,7 +1389,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     }
   }
   
-  # ～ 省略 ～  
+  # ～ 中略 ～  
   
 }  
 ```

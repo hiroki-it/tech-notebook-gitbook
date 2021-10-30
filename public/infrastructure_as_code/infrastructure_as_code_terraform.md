@@ -24,11 +24,11 @@
 
 参考：https://www.terraform.io/docs/language/settings/backends/index.html
 
-```shell
+```bash
 $ terraform init -backend=false
 ```
 
-```shell
+```bash
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> init -backend=false
 ```
@@ -37,7 +37,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 実インフラにstateファイルを作成する．代わりに，```terraform settings```ブロック内の```backend```で指定しても良い．ただし，```terraform setting```ブロック内では変数を使用できないため，こちらのオプションが推奨である．
 
-```shell
+```bash
 $ terraform init \
     -backend=true \
     -reconfigure \
@@ -56,7 +56,7 @@ Terraformを初期化する．
 
 参考：https://www.terraform.io/docs/cli/commands/init.html#backend-initialization
 
-```shell
+```bash
 $ terraform init -reconfigure
 ```
 
@@ -66,7 +66,7 @@ $ terraform init -reconfigure
 
 参考：https://www.terraform.io/docs/cli/commands/init.html#upgrade
 
-```shell
+```bash
 $ terraform init -upgrade
 ```
 
@@ -78,13 +78,13 @@ $ terraform init -upgrade
 
 設定ファイルの検証を行う．
 
-```shell
+```bash
 $ terraform validate
 
 Success! The configuration is valid.
 ```
 
-```shell
+```bash
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> validate
 ```
@@ -97,7 +97,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 インデントを揃えるべき箇所が存在するかどうかを判定する．もし存在する場合「```1```」，存在しない場合は「```0```」を返却する．
 
-```shell
+```bash
 $ terraform fmt -check
 ```
 
@@ -105,7 +105,7 @@ $ terraform fmt -check
 
 設定ファイルのインデントを揃える．処理を行ったファイルが表示される．
 
-```shell
+```bash
 # -recursive: サブディレクトリを含む全ファイルをフォーマット
 $ terraform fmt -recursive
 
@@ -120,7 +120,7 @@ rosource間の依存関係をグラフ化する．これにより，どのresour
 
 参考：https://graphviz.org/download/
 
-```shell
+```bash
 $ terraform graph | dot -Tsvg > graph.svg
 ```
 
@@ -132,7 +132,7 @@ $ terraform graph | dot -Tsvg > graph.svg
 
 terraformによる構築ではない方法で，すでにクラウド上にリソースが構築されている場合，これをterraformの管理下におく必要がある．リソースタイプとリソース名を指定し，stateファイルに実インフラの状態を書き込む．現状，全てのリソースを一括して```import```する方法は無い．リソースIDは，リソースによって異なるため，リファレンスの「Import」または「Attributes Referenceの```id```」を確認すること（例えば，ACMにとってのIDはARNだが，S3バケットにとってのIDはバケット名である）．
 
-```shell
+```bash
 $ terraform import \
     -var-file=foo.tfvars \
     <リソースタイプ>.<リソース名> <AWS上リソースID>
@@ -140,7 +140,7 @@ $ terraform import \
 
 モジュールを使用している場合，指定の方法が異なる．
 
-```shell
+```bash
 $ terraform import \
     -var-file=foo.tfvars \
     module.<モジュール名>.<リソースタイプ>.<リソース名> <AWS上リソースID>
@@ -148,7 +148,7 @@ $ terraform import \
 
 例えば，AWS上にすでにECRが存在しているとして，これをterraformの管理下におく．
 
-```shell
+```bash
 $ terraform import \
     -var-file=foo.tfvars \
     module.ecr.aws_ecr_repository.www xxxxxxxxx
@@ -156,7 +156,7 @@ $ terraform import \
 
 そして，ローカルのstateファイルと実インフラの差分が無くなるまで，```import```を繰り返す．
 
-````shell
+````bash
 $ terraform plan -var-file=foo.tfvars
 
 No changes. Infrastructure is up-to-date.
@@ -168,13 +168,13 @@ No changes. Infrastructure is up-to-date.
 
 （エラー例1）
 
-```shell
+```bash
 Error: InvalidParameterException: Creation of service was not idempotent.
 ```
 
 （エラー例2）
 
-```shell
+```bash
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'tech-notebook_www' already exists in the registry with id 'XXXXXXXXXXXX'
 ```
 
@@ -186,7 +186,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルに反映する．
 
-```shell
+```bash
 $ terraform refresh -var-file=foo.tfvars
 ```
 
@@ -209,7 +209,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 前半部分と後半部分に区別されている．前半部分は，Terraform管理外の方法（画面上，他ツール）による実インフラの変更について，その変更前後を検出する．ただの検出のため，applyによって変更される実インフラを表しているわけではない．そして後半部分は，Terraformのソースコードの変更によって，実インフラがどのように変更されるか，を表している．結果の最後に表示される対象リソースの数を確認しても，前半部分のリソースは含まれていないことがわかる．
 
-```shell
+```bash
 Note: Objects have changed outside of Terraform
 
 Terraform detected the following changes made outside of Terraform since the
@@ -247,11 +247,11 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 クラウドに対してリクエストを行い，現在のリソースの状態をtfstateファイルには反映せずに，設定ファイルの記述との差分を検証する．スクリプト実行時に，変数が定義されたファイルを実行すると，```variable```で宣言した変数に，値が格納される．
 
-```shell
+```bash
 $ terraform plan -var-file=foo.tfvars
 ```
 
-```shell
+```bash
 # ディレクトリを指定することも可能
 # 第一引数で変数ファイルの相対パス，第二引数でをルートモジュールの相対パス
 $ terraform plan -chdir=<ルートモジュールのディレクトリへの相対パス> \
@@ -260,7 +260,7 @@ $ terraform plan -chdir=<ルートモジュールのディレクトリへの相�
 
 差分がなければ，以下の通りになる．
 
-```shell
+```bash
 No changes. Infrastructure is up-to-date.
 
 This means that Terraform did not detect any differences between your
@@ -272,7 +272,7 @@ actions need to be performed.
 
 特定のリソースに対して，```plan```コマンドを実行する．
 
-```shell
+```bash
 $ terraform plan \
     -var-file=foo.tfvars \
     -target=<リソースタイプ>.<リソース名>
@@ -280,7 +280,7 @@ $ terraform plan \
 
 モジュールを使用している場合，指定の方法が異なる．
 
-```shell
+```bash
 $ terraform plan \
     -var-file=foo.tfvars \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
@@ -290,7 +290,7 @@ $ terraform plan \
 
 このオプションをつければ，```refresh```コマンドを同時に実行してくれる．ただ，標準で```true```なので，不要である．
 
-```shell
+```bash
 $ terraform plan \
     -var-file=foo.tfvars \
     -refresh=true
@@ -302,7 +302,7 @@ https://github.com/hashicorp/terraform/issues/17311
 
 並列処理数を設定できる．標準値は```10```である．
 
-```shell
+```bash
 $ terraform plan \
     -var-file=foo.tfvars \
     -parallelism=30
@@ -312,7 +312,7 @@ $ terraform plan \
 
 実行プランファイルを生成する．```apply```コマンドのために使用できる．
 
-```shell
+```bash
 $ terraform plan \
     -var-file=foo.tfvars \
     # 実行プランファイル名
@@ -327,11 +327,11 @@ $ terraform plan \
 
 AWS上にクラウドインフラストラクチャを構築する．
 
-```shell
+```bash
 $ terraform apply -var-file foo.tfvars
 ```
 
-```shell
+```bash
 # ディレクトリを指定することも可能
 $ terraform -chdir=<ルートモジュールのディレクトリへの相対パス> apply \
     -var-file=<ルートモジュールのディレクトリへの相対パス>/foo.tfvars
@@ -339,7 +339,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 成功すると，以下のメッセージが表示される．
 
-```shell
+```bash
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
@@ -347,7 +347,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 特定のリソースに対して，```apply```コマンドを実行する．
 
-```shell
+```bash
 $ terraform apply \
     -var-file=foo.tfvars \
     -target=<リソースタイプ>.<リソース名>
@@ -355,7 +355,7 @@ $ terraform apply \
 
 モジュールを使用している場合，指定の方法が異なる．
 
-```shell
+```bash
 $ terraform apply \
     -var-file=foo.tfvars \
     -target=module.<モジュール名>.<リソースタイプ>.<リソース名>
@@ -365,7 +365,7 @@ $ terraform apply \
 
 並列処理数を設定できる．標準値は```10```である．
 
-```shell
+```bash
 $ terraform apply \
     -var-file=foo.tfvars \
     -parallelism=30
@@ -375,7 +375,7 @@ $ terraform apply \
 
 事前に，```plan```コマンドによって生成された実行プランファイルを元に，```apply```コマンドを実行する．実行プランを渡す場合は，変数をオプションに設定する必要はない．
 
-```shell
+```bash
 $ terraform apply foo.tfplan
 ```
 
@@ -387,7 +387,7 @@ $ terraform apply foo.tfplan
 
 stateファイルにおける指定されたリソースの```tainted```フラグを立てる．例えば，```apply```したが，途中でエラーが発生してしまい，実インフラに中途半端はリソースが構築されてしまうことがある．ここで，```tainted```を立てておくと，実インフラのリソースを削除したと想定した```plan```を実行できる．
 
-```shell
+```bash
 $ terraform taint \
     -var-file=foo.tfvars \
     module.<モジュール名>.<リソースタイプ>.<リソース名>
@@ -395,7 +395,7 @@ $ terraform taint \
 
 この後の```plan```コマンドのログからも，```-/+```で削除が行われる想定で，差分を比較していることがわかる．
 
-```shell
+```bash
 $ terraform plan -var-file=foo.tfvars
 
 An execution plan has been generated and is shown below.
@@ -419,13 +419,13 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 ファイル内で定義しているリソースの一覧を表示する．
 
-```shell
+```bash
 $ terraform state list
 ```
 
 以下の通り，モジュールも含めて，リソースが表示される．
 
-```shell
+```bash
 aws_instance.www-1a
 aws_instance.www-1c
 aws_key_pair.key_pair
@@ -455,7 +455,7 @@ module.vpc_module.aws_vpc.vpc
 
 現在使用中のプロバイダーのバージョンが定義される．これにより，他の人がリポジトリを使用する時に，異なるバージョンのプロバイダーを宣言できないようにする．もし，異なるバージョンを使用したい場合は，以下のコマンドを実行する．これにより，```lock```ファイルのアップグレード／ダウングレードが実行される．
 
-```shell
+```bash
 $ terraform init -upgrade
 ```
 
@@ -495,7 +495,7 @@ Terraformとプロバイダーのバージョンは独立して管理されて�
 
 稼働環境別に，```foo.tfvars```ファイルで値を定義する．
 
-```shell
+```bash
 terraform_project/
 ├── modules
 │   ├── route53 # Route53
@@ -543,7 +543,7 @@ terraform_project/
 
 一つのリソースの設定が対象のリソースごとに異なる場合，冗長性よりも保守性を重視して，リソースに応じたディレクトリに分割する．
 
-```shell
+```bash
 terraform_project/
 └── modules
     ├── cloudwatch # CloudWatch
@@ -563,7 +563,7 @@ terraform_project/
 
 一つのリソースの設定が稼働環境ごとに異なる場合，冗長性よりも保守性を重視して，稼働環境に応じたディレクトリに分割する．
 
-```shell
+```bash
 terraform_project/
 └── modules
     ├── route53 # Route53
@@ -587,7 +587,7 @@ terraform_project/
 
 一つのリソースの設定がリージョンごとに異なる場合，冗長性よりも保守性を重視して，リージョンに応じたディレクトリに分割する．
 
-```shell
+```bash
 terraform_project/
 └── modules
     └── acm # ACM
@@ -599,7 +599,7 @@ terraform_project/
 
 WAFで使用するIPパターンセットと正規表現パターンセットには，CloudFrontタイプとRegionalタイプがある．Regionalタイプは，同じリージョンの異なるAWSリソース間で共通して使用できるため，共通セットとしてディレクトリ分割を行う．
 
-```shell
+```bash
 terraform_project/
 └── modules
     └── waf # WAF
@@ -618,7 +618,7 @@ terraform_project/
 
 #### ・ファイルの切り分け
 
-ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，「カスタマー管理ポリシー」「インラインポリシー」「信頼ポリシー」も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```shell```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
+ポリシーのためにJSONを定義する場合，Terraformのソースコードにハードコーディングせずに，切り分けるようにする．また，「カスタマー管理ポリシー」「インラインポリシー」「信頼ポリシー」も区別し，ディレクトリを分割している．なお，```templatefile```メソッドでこれを読みこむ時，```bash```ファイルではなく，tplファイルとして定義しておく必要あるため，注意する．
 
 ``` shell
 terraform_project/
@@ -659,7 +659,7 @@ terraform_project/
 
 TerraformのCI/CDで必要なシェルスクリプトは，```ops```ディレクトリで管理する．
 
-```shell
+```bash
 terraform_project/
 ├── .circleci # CI/CDツールの設定ファイル
 └── ops # TerraformのCI/CDの自動化シェルスクリプト
@@ -745,7 +745,7 @@ terraform {
 
 **＊実装例＊**
 
-```shell
+```bash
 {
     "Version": "2008-10-17",
     "Statement": [
@@ -968,7 +968,7 @@ provider "aws" {
 
 Credentialsファイルではなく，```export```を使用して，必要な情報を設定しておくことも可能である．参照できる環境変数名は決まっている．
 
-```shell
+```bash
 # regionの代わり
 $ export AWS_DEFAULT_REGION="ap-northeast-1"
 
@@ -1048,12 +1048,12 @@ module "alb" {
 
 #### ・```-var```，```-var-file```
 
-```shell
+```bash
 $ terraform plan -var="foo=foo"
 $ terraform plan -var="foo=foo" -var="bar=bar"
 ```
 
-```shell
+```bash
 $ terraform plan -var-file=xxxxx.tfvars
 ```
 
@@ -1063,7 +1063,7 @@ $ terraform plan -var-file=xxxxx.tfvars
 
 #### ・```terraform.tfvars```ファイル
 
-```shell
+```bash
 #　ファイルを指定しなくとも読み込まれる
 $ terraform plan
 ```
@@ -1072,7 +1072,7 @@ $ terraform plan
 
 環境変数としてエクスポートしておくと自動的に読み込まれる．```XXXXX```の部分が変数名としてTerraformに渡される．
 
-```shell
+```bash
 $ printenv
 
 TF_VAR_ecr_image_tag=foo
@@ -1546,7 +1546,7 @@ resource "aws_instance" "server" {
 resource "aws_subnet" "public" {
   count = 2
   
-  # ～ 省略 ～
+  # ～ 中略 ～
 }
 
 ###############################################
@@ -1555,13 +1555,13 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private_app" {
   count = 2
   
-  # ～ 省略 ～
+  # ～ 中略 ～
 }
 
 resource "aws_subnet" "private_datastore" {
   count = 2
   
-  # ～ 省略 ～
+  # ～ 中略 ～
 }
 ```
 
@@ -1896,7 +1896,7 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 ###############################################
 resource "aws_acm_certificate" "foo" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   # 新しい証明書を構築した後に削除する．
   lifecycle {
@@ -1915,7 +1915,7 @@ resource "aws_acm_certificate" "foo" {
 ###############################################
 resource "aws_rds_cluster_parameter_group" "this" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1927,7 +1927,7 @@ resource "aws_rds_cluster_parameter_group" "this" {
 ###############################################
 resource "aws_db_subnet_group" "this" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1944,7 +1944,7 @@ resource "aws_db_subnet_group" "this" {
 ###############################################
 resource "aws_elasticache_parameter_group" "redis" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1956,7 +1956,7 @@ resource "aws_elasticache_parameter_group" "redis" {
 ###############################################
 resource "aws_elasticache_subnet_group" "redis" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     create_before_destroy = true
@@ -1978,7 +1978,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 ###############################################
 resource "aws_ecs_service" "this" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     ignore_changes = [
@@ -2000,7 +2000,7 @@ resource "aws_ecs_service" "this" {
 ###############################################
 resource "aws_elasticache_replication_group" "redis" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     ignore_changes = [
@@ -2019,7 +2019,7 @@ resource "aws_elasticache_replication_group" "redis" {
 ```elixir
 resource "aws_foo" "foo" {
 
-  # ～ 省略 ～
+  # ～ 中略 ～
 
   lifecycle {
     ignore_changes = all
@@ -2059,7 +2059,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 バケットポリシーを定義するtpl形式ファイルでは，string型で出力する場合は```"${}"```で，int型で出力する場合は```${}```で出力する．ここで拡張子をjsonにしてしまうと，int型の出力をjsonの構文エラーとして扱われてしまう．
 
-```shell
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -2089,7 +2089,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 **＊実装例＊**
 
-```shell
+```bash
 {
   "ipcMode": null,
   "executionRoleArn": "<ecsTaskExecutionRoleのARN>",
@@ -2108,7 +2108,7 @@ int型を変数として渡せるように，拡張子をjsonではなくtplと�
 
 **＊実装例＊**
 
-```shell
+```bash
 [
   {
     # コンテナ名
@@ -2214,13 +2214,13 @@ AWSリソースのアルファベット順に環境変数を並べる，環境�
 # Route53
 ###############################################
 
-# ～ 省略 ～
+# ～ 中略 ～
 
 ###############################################
 # VPC
 ###############################################
 
-# ～ 省略 ～
+# ～ 中略 ～
 
 ###############################################
 # WAF

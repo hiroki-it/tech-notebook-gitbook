@@ -18,7 +18,7 @@
 
 ### terraform_apply.sh
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -35,7 +35,7 @@ terraform -chdir=./${ENV} apply \
 
 ### terraform_fmt.sh
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -49,7 +49,7 @@ terraform fmt \
 
 ### terraform_init.sh
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -70,7 +70,7 @@ terraform -chdir=./${ENV} init \
 
 ### terraform_plan.sh
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -88,7 +88,7 @@ terraform -chdir=./${ENV} plan \
 
 ### terraform_validate.sh
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail
@@ -342,7 +342,7 @@ CircleCIで利用する場合は，commandの中で，以下からダウンロ�
 
 https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
-```shell
+```bash
 #!/bin/bash
 
 set -xeuo pipefail

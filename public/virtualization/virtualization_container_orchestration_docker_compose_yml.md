@@ -281,7 +281,7 @@ networks:
 
 ネットワークに接続されているコンテナはコマンドで確認できる．
 
-```sh
+```bash
 # 指定したネットワークに接続するコンテナを確認する．
 $ docker network inspect foo-network
 
@@ -289,7 +289,7 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -307,7 +307,7 @@ $ docker network inspect foo-network
             }
         },
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -335,7 +335,7 @@ $ docker network inspect <プロジェクト名>_default
     {
         "Name": "<プロジェクト名>_default",
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -353,7 +353,7 @@ $ docker network inspect <プロジェクト名>_default
             }
         },
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Labels": {
             "com.docker.compose.network": "default",
@@ -521,7 +521,7 @@ $ docker network inspect foo-network
     {
         "Name": "foo-network",
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Containers": {
             "e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44": {
@@ -539,7 +539,7 @@ $ docker network inspect foo-network
             }
         },
         
-        〜 省略 〜
+        # ～ 中略 ～
         
         "Labels": {
             "com.docker.compose.network": "foo-network",
@@ -566,7 +566,7 @@ services:
   app:
     container_name: backend-container
     
-# --- 省略 --- #
+# ～ 中略 ～
     
 networks:
   # 作成したい外部ネットワーク名とエイリアス名
@@ -585,7 +585,7 @@ services:
     networks:
       - backend
 
-# --- 省略 --- #
+# ～ 中略 ～
 
 networks:
   default:
@@ -624,9 +624,9 @@ version: "3.7"
 
 services:
   app:
-    build: # 省略
-    ports: # 省略
-    depends_on: # 省略
+    build: # ～ 中略 ～
+    ports: # ～ 中略 ～
+    depends_on: # ～ 中略 ～
     volumes:
       - example:/data # 下方のオプションが適用される．
       

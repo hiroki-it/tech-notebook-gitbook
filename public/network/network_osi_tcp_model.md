@@ -88,7 +88,7 @@ NIC：Network Interface Card（例：LANアダプタ，LANボード，LANカー�
 
 ちなみに，指定したポート番号でリッスンしているプロセスを特定できる．
 
-```shell
+```bash
 $ sudo lsof -i:<番号>
 ```
 

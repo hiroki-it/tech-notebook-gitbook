@@ -61,13 +61,13 @@ default-character-set = utf8mb4 # utf8
 
 mysqlコマンドのみをインストールしたい場合
 
-```shell
+```bash
 $ dnf install -y mysql
 ```
 
 mysqlコマンド，データベースサーバ機能，をインストールしたい場合はこちら
 
-```shell
+```bash
 $ dnf install -y mysql-server
 ```
 
@@ -75,7 +75,7 @@ $ dnf install -y mysql-server
 
 DBに接続する．pオプションの値にはスペースが不要であることに注意する．
 
-```shell
+```bash
 $ mysql -u <ユーザ名> -p<パスワード> -h <DBホスト名> <DB名>
 ```
 
@@ -283,7 +283,7 @@ EXEC SelectContact
 
 DBからテーブルをエクスポートする．エクスポートしたいテーブルの数だけ，テーブル名を連ねる
 
-```shell
+```bash
 $ mysqldump --force -u "{ アカウント }" -p -h "{ DBのホスト }" "{ DB名 }" "{ テーブル名1 }" "{ テーブル名2 }" > table.sql
 ```
 
@@ -291,7 +291,7 @@ $ mysqldump --force -u "{ アカウント }" -p -h "{ DBのホスト }" "{ DB名
 
 DBにテーブルをインポートする．forceオプションで，エラーが出ても強制的にインポート．
 
-```shell
+```bash
  $ mysql --force -u "{ アカウント }" -p -h "{ DBのホスト }" "{ DB名 }" < table.sql
 ```
 
@@ -1017,7 +1017,7 @@ WHERE
     AND t1.c2 = t2.c3 
 ```
 
-```shell
+```bash
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE

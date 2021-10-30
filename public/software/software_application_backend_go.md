@@ -62,7 +62,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://github.com/golang-standards/project-layout
 
-```shell
+```bash
 $GOPATH # 例えば，『$HOME/go』とする．
 ├── bin
 ├── pkg

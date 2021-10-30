@@ -52,7 +52,7 @@ Laravelの各コンポーネントには，似たような名前のメソッド�
 
 #### ・設定方法
 
-```shell
+```bash
 APP_NAME=<サービス名>
 APP_ENV=<環境名>
 APP_KEY=<セッションの作成やパスワードの暗号化に使う認証キー>
@@ -158,7 +158,7 @@ class FooCommand extends Command
 
 定義したCommandクラスは，以下のように実行できる．
 
-```shell
+```bash
 $ php artisan command:do-foo
 ```
 
@@ -172,7 +172,7 @@ $ php artisan command:do-foo
 
 環境変数を```.env```ファイルに実装する．```database.php```ファイルから，指定された設定が選択される．
 
-```shell
+```bash
 DB_CONNECTION=<RDB名>
 DB_HOST=<ホスト名>
 DB_PORT=<ポート番号>
@@ -232,7 +232,7 @@ return [
 
 環境変数を```.env```ファイルに実装する必要がある．
 
-```shell
+```bash
 CACHE_DRIVER=redis
 REDIS_HOST=<Redisのホスト>
 REDIS_PASSWORD=<Redisのパスワード>
@@ -247,7 +247,7 @@ REDIS_PORT=<Redisのポート>
 
 #### ・クラスの自動生成
 
-```shell
+```bash
 $ php artisan make:model <Eloquentモデル名>
 ```
 
@@ -1298,12 +1298,12 @@ class CreateFooTable extends Migration
     {
         Schema::create("foo", function (Blueprint $table) {
             
-            // ～ 省略
+            // ～ 中略 ～
             
             // deleted_atカラムを追加する．
             $table->softDeletes();
             
-            // ～ 中略
+            // ～ 中略 ～
             
         });
     }
@@ -1344,7 +1344,7 @@ foreach($departments as $department) {
 }
 ```
 
-```shell
+```bash
 # 1回
 select * from `departments`
 
@@ -1369,7 +1369,7 @@ foreach($departments as $department) {
 }
 ```
 
-```shell
+```bash
 # 2回
 select * from `departments`
 select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
@@ -2149,7 +2149,7 @@ Laravelはスローされる例外のメッセージをスタックトレース�
 
 参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
 
-```shell
+```bash
 [2021-09-00 00:00:00] local.ERROR: *****（エラーメッセージ）
 [stacktrace]
 #0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
@@ -2726,7 +2726,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 ファイルを```/storage/app```ディレクトリに保存する．このファイルは非公開であり，リクエストによってアクセスできない．事前に，シンボリックリンクを作成する，また，```filesystems.php```ファイルに設定が必要である．
 
-```shell
+```bash
 $ php artisan storage:link
 ```
 
@@ -2853,7 +2853,7 @@ class FileSystemPublicController extends Controller
 
 ファイルをS3バケット内のディレクトリに保存する．環境変数を```.env```ファイルに実装する必要がある．```filesystems.php```ファイルから，指定された設定が選択される．AWSアカウントの認証情報を環境変数として設定するか，またはS3アクセスポリシーをEC2やECSタスクに付与することにより，S3にアクセスできるようになる．事前に，```filesystems.php```ファイルに設定が必要である．
 
-```shell
+```bash
 # S3アクセスポリシーをEC2やECSタスクに付与してもよい
 AWS_ACCESS_KEY_ID=<アクセスキー>
 AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
@@ -2897,7 +2897,7 @@ Storage::disk("s3")->put("file.txt", "file.txt");
 
 他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
 
-```shell
+```bash
 FILESYSTEM_DRIVER=s3
 ```
 
@@ -3279,7 +3279,7 @@ $url = url('/foos');
 
 #### ・Factoryの生成
 
-```shell
+```bash
 $ php artisan make:factory <Factory名> --model=<対象とするModel名>
 ```
 
@@ -3443,7 +3443,7 @@ class DatabaseSeeder extends Seeder
 
 #### ・クラスの自動生成
 
-```shell
+```bash
 # コントローラクラスを自動作成
 $ php artisan make:controller <Controller名>
 ```
@@ -3588,7 +3588,7 @@ class FooController extends Controller
 
 Middlewareクラスを自動生成する．
 
-```shell
+```bash
 $ php artisan make:middleware <Middleware名>
 ```
 
@@ -3784,7 +3784,7 @@ class Kernel extends HttpKernel
 
 FormRequestクラスを自動作成する．
 
-```shell
+```bash
 $ php artisan make:request <Request名>
 ```
 
@@ -4023,7 +4023,7 @@ return [
 - https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
 - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
 
-```shell
+```bash
 ( 
   [title] => Array
          (
@@ -4483,7 +4483,7 @@ return [
 
 #### ・マイグレーションファイルを作成
 
-```shell
+```bash
 $ php artisan make:migrate create_<テーブル名>_table
 ```
 
@@ -4491,19 +4491,19 @@ $ php artisan make:migrate create_<テーブル名>_table
 
 マイグレーションファイルを元にテーブルを作成する．
 
-```shell
+```bash
 $ php artisan migrate
 ```
 
 コマンド実行時，以下のエラーが出ることがある．マイグレーションファイル名のスネークケースで，これがクラス名のキャメルケースと対応づけられており，ファイル名とクラス名の関係が正しくないために起こるエラーである．
 
-```shell
+```bash
 Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateXxxxxTable" not found
 ```
 
 #### ・マイグレーションの結果を確認
 
-```shell
+```bash
 $ php artisan migrate:status
 ```
 
@@ -4513,13 +4513,13 @@ $ php artisan migrate:status
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
-```shell
+```bash
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
 実際の使用場面として，マイグレーションに失敗した場合に，一つ前の状態にロールバックしてマイグレーションファイルを修正した後，再びマイグレーションを行う．
 
-```shell
+```bash
 # マイグレーションに失敗したので，一つ前の状態にロールバック．
 $ php artisan migrate:rollback --step=1
 
@@ -4533,7 +4533,7 @@ $ php artisan migrate
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
 
-```shell
+```bash
 $ php artisan migrate:reset
 ```
 
@@ -4543,7 +4543,7 @@ $ php artisan migrate:reset
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
 
-```shell
+```bash
 $ php artisan migrate:refresh
 ```
 #### ・テーブルを削除してから再作成
@@ -4552,13 +4552,13 @@ $ php artisan migrate:refresh
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
 
-```shell
+```bash
 $ php artisan migrate:fresh
 ```
 
 マイグレーション時，テーブルがすでに存在するエラーが起こることがある．この場合，テーブルがマイグレーションされる前までロールバックし，マイグレーションを再実行することが最適である．しかしそれが難しければ，このコマンドを実行する必要がある．
 
-```shell
+```bash
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
@@ -4568,7 +4568,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
-```shell
+```bash
 $ php artisan migrate --force
 ```
 
@@ -4631,7 +4631,7 @@ class CreateFooTable extends Migration
 
 カラムを追加するためだけにマイグレーションファイルを作成する．
 
-```shell
+```bash
 $ php artisan make:migration add_column --table=foos
 ```
 
@@ -4660,7 +4660,7 @@ class AddColumn extends Migration
 
 マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
 
-```shell
+```bash
 $ php artisan migrate
 ```
 
@@ -4672,7 +4672,7 @@ $ php artisan migrate
 
 カラム名を変更するためだけにマイグレーションファイルを作成する．
 
-```shell
+```bash
 $ php artisan make:migration rename_column --table=foos
 ```
 
@@ -4712,7 +4712,7 @@ class RenameColumn extends Migration
 
 マイグレーションを実行すると，指定したテーブルのカラム名が変更される．実行後は，作成したマイグレーションファイルを削除する．
 
-```shell
+```bash
 $ php artisan migrate
 ```
 
@@ -4724,7 +4724,7 @@ $ php artisan migrate
 
 データ型を変更するためだけにマイグレーションファイルを作成する．
 
-```shell
+```bash
 $ php artisan make:migration change_column_data_type --table=foos
 ```
 
@@ -4764,7 +4764,7 @@ class ChangeColumnDataType extends Migration
 
 マイグレーションを実行すると，指定したテーブルのカラムのデータ型が変更される．実行後は，作成したマイグレーションファイルを削除する．
 
-```shell
+```bash
 $ php artisan migrate
 ```
 
@@ -4776,7 +4776,7 @@ $ php artisan migrate
 
 カラムを削除するためだけにマイグレーションファイルを作成する．
 
-```shell
+```bash
 $ php artisan make:migration drop_column --table=foos
 ```
 
@@ -4815,7 +4815,7 @@ class DropColumn extends Migration
 
 マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
 
-```shell
+```bash
 $ php artisan migrate
 ```
 
@@ -4882,7 +4882,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 ### artisanコマンドによる操作
 
-```shell
+```bash
 
 ```
 
@@ -5110,7 +5110,7 @@ Laravelが標準で用意しているチャンネル以外に送信したい場�
 
 AWS SNSを受信チャンネルとする．AWSから配布されているパッケージが必要である．
 
-```shell
+```bash
 $ composer require aws/aws-sdk-php-laravel
 ```
 
@@ -5263,7 +5263,7 @@ Notification::route('mail', $user->email_address)
 
 Resourceクラスを自動生成する．
 
-```shell
+```bash
 $ php artisan make:resource <Resource名>
 ```
 
@@ -5349,14 +5349,14 @@ class FooController extends Controller
 
 #### ・ルーティング一覧
 
-```shell
+```bash
 # ルーティングを一覧で表示
 $ php artisan route:list
 ```
 
 #### ・Cache削除
 
-```shell
+```bash
 # ルーティングのCacheを削除
 $ php artisan route:clear
 
@@ -5503,7 +5503,7 @@ class UserController extends Controller
 
 Seederクラスを自動生成する．
 
-```shell
+```bash
 $ php artisan make:seeder <Seeder名>
 ```
 
@@ -5511,11 +5511,11 @@ $ php artisan make:seeder <Seeder名>
 
 Seederを新しく作成した時やSeeder名を変更した時，Composerの```dump-autoload```を実行する必要がある．
 
-```shell
+```bash
 $ composer dump-autoload
 ```
 
-```shell
+```bash
 # 特定のSeederを実行
 $ php artisan db:seed --class=<Seeder名>
 
@@ -5671,7 +5671,7 @@ class DatabaseSeeder extends Seeder
 
 #### ・クラスの自動生成
 
-```shell
+```bash
 $ php artisan make:provider <クラス名>
 ```
 
@@ -6550,7 +6550,7 @@ class FooController extends Controller
 
 #### ・Cacheの削除
 
-```shell
+```bash
 # ビューのCacheを削除
 $ php artisan view:clear
 
@@ -7429,7 +7429,7 @@ composerでインストールする必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/passport.html
 
-```shell
+```bash
 $ composer require laravel/passport
 ```
 
@@ -7437,7 +7437,7 @@ $ composer require laravel/passport
 
 事前に，Passportの管理テーブルを生成する必要があるため，マイグレーションを実行する．
 
-```shell
+```bash
 $ php artisan migrate
 
 Migrating: 2014_10_12_000000_create_users_table
@@ -7470,7 +7470,7 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 
 コマンド実行により，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを生成する．
 
-```shell
+```bash
 $ php artisan passport:install
 
 Personal access client created successfully.
@@ -7483,7 +7483,7 @@ Client secret: xxxxxxxxxxxx
 
 ただし，生成コマンドを個別に実行してもよい．
 
-```shell
+```bash
 # 暗号キーを生成
 $ php artisan passport:keys
 
@@ -7640,7 +7640,7 @@ class AuthServiceProvider extends ServiceProvider
 
 7. 暗号キーとユーザを作成する．
 
-```shell
+```bash
 $ php artisan passport:keys
 
 $ php artisan passport:client --password
@@ -7748,7 +7748,7 @@ class CreateUsersTable extends Migration
 
 1. 暗号キーとユーザを作成する．
 
-```shell
+```bash
 $ php artisan passport:keys
 
 $ php artisan passport:client --personal
@@ -7806,7 +7806,7 @@ APIキー認証とセッションIDを用いたForm認証については，以�
 
 #### ・インストール
 
-```shell
+```bash
 $ composer require laravel/sanctum
 ```
 
@@ -7878,7 +7878,7 @@ $ composer require laravel/breeze:^1.0 --dev
 
 認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
 
-```shell
+```bash
 $ php artisan breeze:install
 ```
 
@@ -7900,7 +7900,7 @@ Laravelが持つ全ての認証機能のバックエンド（認証＋ルーテ�
 
 パッケージをインストールする．
 
-```shell
+```bash
 $ composer require laravel/ui:^1.0 --dev
 ```
 
@@ -7908,7 +7908,7 @@ $ composer require laravel/ui:^1.0 --dev
 
 認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
 
-```shell
+```bash
 # Vuejsを使用する場合．
 $ php artisan ui vue --auth
 
@@ -7937,7 +7937,7 @@ WebpackをLaravelを介して操作できるパッケージのこと．Breezeパ
 
 アセットのコンパイルを実行する．
 
-```shell
+```bash
 $ npm run dev
 ```
 
@@ -7945,7 +7945,7 @@ $ npm run dev
 
 アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
 
-```shell
+```bash
 $ npm run watch
 ```
 
@@ -8064,7 +8064,7 @@ PHPStromでLaravelを開発する場合に，拡張機能を提供する．
 
 #### ・Facade
 
-```shell
+```bash
 $ php artisan ide-helper:generate
 ```
 
@@ -8072,7 +8072,7 @@ $ php artisan ide-helper:generate
 
 LaravelのEloquentモデルで，アノテーションを自動生成する．
 
-```shell
+```bash
 $ php artisan ide-helper:models
 ```
 
@@ -8080,7 +8080,7 @@ $ php artisan ide-helper:models
 
 Laravelのメソッドを予測表示するため，```phpstorm.meta.php```ファイルを生成する．
 
-```shell
+```bash
 $ php artisan ide-helper:meta
 ```
 

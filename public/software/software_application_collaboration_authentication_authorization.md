@@ -266,7 +266,7 @@ POST https://example.co.jp/foo-form HTTP/2
 
 サーバは，データベースの認証情報を照合し，ログインを許可する．サーバは，セッションIDを生成し，セッションファイルに書き込む．
 
-```shell
+```bash
 # セッションファイル
 { sessionid: ***** }
 ```

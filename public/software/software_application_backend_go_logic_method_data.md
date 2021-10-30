@@ -1053,7 +1053,7 @@ func main() {
 }
 ```
 
-```shell
+```bash
 # Eatメソッドを関連付けていない場合
 cannot use insect (type Insect) as type Animal in assignment:
 Insect does not implement Animal (missing Eat method)
@@ -1249,13 +1249,13 @@ func main() {
 
 当然，```main```パッケージや```main```関数が無いと，goのプログラムの起動時にエラーが発生する．
 
-```shell
+```bash
 $ go run server.go
 
 go run: cannot run non-main package
 ```
 
-```shell
+```bash
 $ go run server.go
 
 # command-line-arguments
@@ -2601,7 +2601,7 @@ import (
 type CloudWatchEvent struct {
 	Version    string          `json:"version"`
 
-    // ～ 省略 ～
+    // ～ 中略 ～
     
 	Resources  []string        `json:"resources"`
     
