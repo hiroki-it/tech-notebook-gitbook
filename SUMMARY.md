@@ -142,17 +142,17 @@
   * [📖 ︎Capistrano](public/ci_cd/ci_cd_capistrano.md)
 
 * 可観測性／監視
-  * [📖 ︎可観測性](public/observability/observability.md)
-  * [📖 ︎監視](public/observability/monitering.md)
+  * [📖 ︎可観測性](public/observability_monitering/observability.md)
+  * [📖 ︎監視](public/observability_monitering/monitering.md)
   * Fluentd／FluentBit
-    * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
-    * [📖 ︎FluentBit](public/observability/observability_fluentbit.md)
+    * [📖 ︎Fluentd／FluentBit](public/observability_monitering/observability_fluentd_and_fluentbit.md)
+    * [📖 ︎FluentBit](public/observability_monitering/observability_fluentbit.md)
   * Datadog
-    * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
-    * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
-    * [📖 ︎分散トレース収集](public/observability/observability_datadog_distributed_trace.md)
-    * [📖 ︎テレメトリー間の紐づけ](public/observability/observability_datadog_telemetry_association.md)
-    * [📖 ︎監視](public/observability/observability_datadog_monitering.md)
+    * [📖 ︎メトリクス収集](public/observability_monitering/observability_datadog_metrics.md)
+    * [📖 ︎ログ収集](public/observability_monitering/observability_datadog_log.md)
+    * [📖 ︎分散トレース収集](public/observability_monitering/observability_datadog_distributed_trace.md)
+    * [📖 ︎テレメトリー間の紐づけ](public/observability_monitering/observability_datadog_telemetry_association.md)
+    * [📖 ︎監視](public/observability_monitering/observability_datadog_monitering.md)
 
 * システム開発手法論
   * [📖 ︎システム開発手法論](public/system_development_methodology/system_development_methodology.md)
