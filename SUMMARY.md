@@ -136,13 +136,14 @@
   * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
 
-* CI／CD
-  * [📖 ︎CI／CD](public/ci_cd/ci_cd.md)
+* CICD
+  * [📖 ︎CICD](public/ci_cd/ci_cd.md)
   * [📖 ︎CircleCI](public/ci_cd/ci_cd_circleci.md)
   * [📖 ︎Capistrano](public/ci_cd/ci_cd_capistrano.md)
 
-* 可観測性
+* 可観測性／監視
   * [📖 ︎可観測性](public/observability/observability.md)
+  * [📖 ︎監視](public/observability/monitering.md)
   * Fluentd／FluentBit
     * [📖 ︎Fluentd／FluentBit](public/observability/observability_fluentd_and_fluentbit.md)
     * [📖 ︎FluentBit](public/observability/observability_fluentbit.md)
