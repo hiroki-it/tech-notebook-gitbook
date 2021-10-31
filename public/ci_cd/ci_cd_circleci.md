@@ -73,7 +73,7 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ・CircleCIコンテナにssh接続
 
-CircleCIコンテナにssh接続し，コンテナ内で生成されたファイルを確認することができる．
+CircleCIコンテナにssh接続し，コンテナ内で生成されたファイルを確認できる．
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵名>
@@ -981,7 +981,7 @@ workflows:
 
 #### ・tags
 
-タグをつけたコミットに対して発火する．```ignore```キーで全てのブランチを指定することにより，マージによる発火を防ぐことができる．
+タグをつけたコミットに対して発火する．```ignore```キーで全てのブランチを指定することにより，マージによる発火を防げる．
 
 ```yaml
 workflows:

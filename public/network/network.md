@@ -66,7 +66,7 @@ URLとメールアドレスは完全修飾ドメイン名を持つ．
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/URLと電子メールの構造.png)
 
-また，完全修飾ドメイン名は，ドメイン名の子関係にあるサブドメイン名を持つことができる．ホスト名（以下では省略されている）と，ドメイン名の間につける．
+また，完全修飾ドメイン名は，ドメイン名の子関係にあるサブドメイン名を持てる．ホスト名（以下では省略されている）と，ドメイン名の間につける．
 
 ![サブドメイン](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/サブドメイン.png)
 
@@ -137,7 +137,7 @@ Webサーバから動的コンテンツのリクエストがあった場合に�
 
 <br>
 
-### DB管理システムをもつDBサーバ
+### DB管理システムを持つDBサーバ
 
 #### ・DBサーバの役割
 

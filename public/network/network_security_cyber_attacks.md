@@ -350,7 +350,7 @@ Access-Control-Allow-Methods: GET,POST,HEAD,OPTIONS
 Access-Control-Allow-Headers: Content-Type
 ```
 
-ちなみに，```Cookie```ヘッダーを持つリクエストメッセージを許可しない場合に限り，全てのオリジンやヘッダーを許可することができる．
+ちなみに，```Cookie```ヘッダーを持つリクエストメッセージを許可しない場合に限り，全てのオリジンやヘッダーを許可できる．
 
 ```http
 200 OK

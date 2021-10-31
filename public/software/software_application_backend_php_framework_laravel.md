@@ -3022,7 +3022,7 @@ https://readouble.com/laravel/8.x/ja/helpers.html#method-view
 
 #### ・AuthManagerインスタンスの返却
 
-認証処理をもつAuthManagerクラスのインスタンスを返却する．
+認証処理を持つAuthManagerクラスのインスタンスを返却する．
 
 参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
@@ -5817,7 +5817,7 @@ class Qux
     /**
      * @param Foo $foo
      */
-    public function __construct($foo) // 引数の型を指定しない場合，リゾルブされない．．
+    public function __construct($foo) // 引数の型を指定しない場合，リゾルブされない．
     {
         $foo->bar;
         $foo->baz;
@@ -6889,7 +6889,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 
 #### ・カスタムガード
 
-Laravelが標準で持たないドライバーとプロバイダーをもつガードを定義する．
+Laravelが標準で持たないドライバーとプロバイダーを持つガードを定義する．
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
@@ -7981,7 +7981,7 @@ class RoleType extends Enum
     public const SALES_ROLE = 5;       // 営業職
     
     /**
-     * コールセンター職の区分値をもつかどうかを判定します．
+     * コールセンター職の区分値を持つかどうかを判定します．
      */    
     public function isCallRole()
     {
@@ -7989,7 +7989,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 開発職の区分値をもつかを判定します．
+     * 開発職の区分値を持つかを判定します．
      */       
     public function isDevelopmentRole()
     {
@@ -7997,7 +7997,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 経理職の区分値をもつかどうかを判定します．
+     * 経理職の区分値を持つかどうかを判定します．
      */       
     public function isFinanceRole()
     {
@@ -8005,7 +8005,7 @@ class RoleType extends Enum
     }
     
     /**
-     * 企画職の区分値をもつかどうかを判定します．
+     * 企画職の区分値を持つかどうかを判定します．
      */       
     public function isPlanRole()
     {
@@ -8013,7 +8013,7 @@ class RoleType extends Enum
     }  
     
     /**
-     * 営業職の区分値をもつかどうかを判定します．
+     * 営業職の区分値を持つかどうかを判定します．
      */       
     public function isSalesRole()
     {
@@ -8039,7 +8039,7 @@ $staff->roleType = new RoleType($fetched["role_type"]);
 // 以下の方法でもよい．
 // $staff->roleType = RoleType::fromValue($fetched["role_type"]);
 
-// StaffがいずれのRoleTypeをもつか
+// StaffがいずれのRoleTypeを持つか
 $staff->roleType->isDevelopmentRole(); // true
 $staff->roleType->isSalesRole(); // false
 ```

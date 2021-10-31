@@ -284,7 +284,7 @@ Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 6
 
 #### ・```stash -- <パス> ```
 
-特定のディレクトリやファイルのみ```stash```することができる．
+特定のディレクトリやファイルのみ```stash```できる．
 
 ```bash
 git stash -- src/...

@@ -156,7 +156,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 #### ・Dockerfileを使用するメリット
 
-Dockerfileを用いない場合，各イメージレイヤーのインストールを手動で行わなければならない．しかし，Dockerfileを用いることで，これを自動化することができる．
+Dockerfileを用いない場合，各イメージレイヤーのインストールを手動で行わなければならない．しかし，Dockerfileを用いることで，これを自動化できる．
 
 ![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)
 
@@ -272,7 +272,7 @@ RUN yum -y install php-mbstring
 RUN yum -y install php-pear
 ```
 
-これは，以下のように一行でまとめられる．イメージレイヤーが少なくなり，イメージを軽量化することができる．
+これは，以下のように一行でまとめられる．イメージレイヤーが少なくなり，イメージを軽量化できる．
 
 ```dockerfile
 # ベースイメージ上に，複数のソフトウェアをインストール

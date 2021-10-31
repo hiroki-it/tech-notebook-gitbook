@@ -239,7 +239,7 @@ fancyRpartPlot(tree)
 
 ## 04. 階層クラスタ分析
 
-データを，似ている順に階層的にグループ化（クラスタリング）していく分析手法．データ間の同一性を明らかにすることができる．
+データを，似ている順に階層的にグループ化（クラスタリング）していく分析手法．データ間の同一性を明らかにできる．
 
 ![階層クラスタ解析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/階層クラスタ解析.png)
 

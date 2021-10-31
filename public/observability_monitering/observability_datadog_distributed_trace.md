@@ -165,7 +165,7 @@ import 'dd-trace/init'
 
 #### ・構造
 
-Datadogにおいて，分散トレースはスパンをもつ配列データとして定義される．
+Datadogにおいて，分散トレースはスパンを持つ配列データとして定義される．
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 

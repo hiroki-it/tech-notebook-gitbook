@@ -768,7 +768,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Origin or Origin Group                                       | Behaviorを行うオリジンを設定する．                           |                                                              |
 | Viewer Protocol Policy                                       | HTTP／HTTPSのどちらを受信するか，またどのように変換して転送するかを設定 | ・```HTTP and HTTPS```：両方受信し，そのまま転送<br>・```Redirect HTTP to HTTPS```：両方受信し，HTTPSで転送<br>・```HTTPS Only```：HTTPSのみ受信し，HTTPSで転送 |
 | Allowed HTTP Methods                                         | リクエストのHTTPメソッドのうち，オリジンへの転送を許可するものを設定 | ・パスパターンが静的ファイルへのリクエストの場合，GETのみ許可．<br>・パスパターンが動的ファイルへのリクエストの場合，全てのメソッドを許可． |
-| ★Cache Based on Selected Request Headers<br>（★については表上部参考） | リクエストヘッダーのうち，オリジンへの転送を許可し，またCacheの対象とするものを設定する． | ・各ヘッダー転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのヘッダーの転送を拒否し，Cacheの対象としない．動的になりやすい値をもつヘッダー（Accept-Datetimeなど）を一切使用せずに，それ以外のクエリ文字やCookieでCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br>・一部転送：指定したヘッダーのみ転送を許可し，Cacheの対象とする．<br>・全許可：全てのヘッダーがCacheの対象となる．しかし，日付に関するヘッダーなどの動的な値をCacheの対象としてしまうと．同一と見なすリクエストがほとんどなくなり，HITしなくなる．そのため，この設定でCacheは実質無効となり，『対象としない』に等しい． |
+| ★Cache Based on Selected Request Headers<br>（★については表上部参考） | リクエストヘッダーのうち，オリジンへの転送を許可し，またCacheの対象とするものを設定する． | ・各ヘッダー転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのヘッダーの転送を拒否し，Cacheの対象としない．動的になりやすい値を持つヘッダー（Accept-Datetimeなど）を一切使用せずに，それ以外のクエリ文字やCookieでCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br>・一部転送：指定したヘッダーのみ転送を許可し，Cacheの対象とする．<br>・全許可：全てのヘッダーがCacheの対象となる．しかし，日付に関するヘッダーなどの動的な値をCacheの対象としてしまうと．同一と見なすリクエストがほとんどなくなり，HITしなくなる．そのため，この設定でCacheは実質無効となり，『対象としない』に等しい． |
 | Whitelist Header                                             | Cache Based on Selected Request Headers を参考にせよ．       | ・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定．<br>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている． |
 | Object Caching                                               | CloudFrontにコンテンツのCacheを保存しておく秒数を設定する．  | ・Origin Cache ヘッダーを選択した場合，アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される．<br>・カスタマイズを選択した場合，ブラウザのTTLとは別に設定できる． |
 | TTL                                                          | CloudFrontにCacheを保存しておく秒数を詳細に設定する．        | ・Min，Max，Default，の全てを0秒とすると，Cacheを無効化できる．<br>・『Cache Based on Selected Request Headers = All』としている場合，Cacheが実質無効となるため，最小TTLはゼロでなければならない． |
@@ -1577,7 +1577,7 @@ $ openssl pkcs8 \
 
 #### ・EC2へのSSH接続
 
-クライアントのSSHプロトコルもつパケットは，まずインターネットを経由して，インターネットゲートウェイを通過する．その後，Route53，ALBを経由せず，そのままEC2へ向かう．
+クライアントのSSHプロトコルのパケットは，まずインターネットを経由して，インターネットゲートウェイを通過する．その後，Route53，ALBを経由せず，そのままEC2へ向かう．
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
 
@@ -3148,7 +3148,7 @@ $ aws iam update-user \
 | レイヤー                           | 異なる関数の間で，特定の処理を共通化できる．                 | コンテナイメージの関数では使用できない．                     |
 | メモリ                             | Lambdaに割り当てるメモリ量を設定する．                       | 最大10240MBまで増設でき，増設するほどパフォーマンスが上がる．<br>参考：https://www.business-on-it.com/2003-aws-lambda-performance-check/ |
 | タイムアウト                       |                                                              |                                                              |
-| 実行ロール                         | Lambda内のメソッドが実行される時に必要なポリシーをもつロールを設定する． |                                                              |
+| 実行ロール                         | Lambda内のメソッドが実行される時に必要なポリシーを持つロールを設定する． |                                                              |
 | 既存ロール                         | Lambdaにロールを設定する．                                   |                                                              |
 | トリガー                           | LambdaにアクセスできるようにするAWSリソースを設定する．      | 設定されたAWSリソースに応じて，Lambdaのポリシーが自動的に修正される． |
 | アクセス権限                       | Lambdaのポリシーを設定する．                                 | トリガーの設定に応じて，Lambdaのポリシーが自動的に修正される． |
