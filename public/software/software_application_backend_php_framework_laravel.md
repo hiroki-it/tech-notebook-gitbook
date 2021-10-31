@@ -355,7 +355,7 @@ class Department extends Model
      */
     public function employees(): HasMany
     {
-        // 一対多の関係を定義します．（デフォルトではemployee_idに関連付けます）
+        // 一対多の関係を定義します．（デフォルトではemployee_idに紐付けます）
         return $this->hasMany(Employee::class);
     }
 }
@@ -383,13 +383,13 @@ class Employee extends Model
      */
     public function department(): BelongsTo
     {
-        // 多対一の関係を定義します．（デフォルトではdepartment_idに関連付けます）
+        // 多対一の関係を定義します．（デフォルトではdepartment_idに紐付けます）
         return $this->belongsTo(Department::class);
     }
 }
 ```
 
-リレーションに基づいてJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐づくEmployeesモデル（子）を配列で参照できる．
+リレーションに基づいてJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる．
 
 ```php
 <?php
@@ -397,7 +397,7 @@ class Employee extends Model
 // Departmentオブジェクトを取得
 $department = Department::find(1);
 
-// 部署ID=1に紐づく全てのemployeeオブジェクトをarray型で取得
+// 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得
 $employees = $department->employees()
 ```
 
@@ -435,7 +435,7 @@ class Foo extends Model
 
 #### ・TIMESTAMP型カラムの定義
 
-Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquentモデルに関連付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
+Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquentモデルに紐付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
 
 **＊実装例＊**
 
@@ -1084,7 +1084,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-コントローラにて，Department（親）と，これに紐づくEmployee（子）を読み出す．これらのモデルの間では，```hasMany```メソッドと```belongsTo```メソッドを使用して，テーブルにおける一対多のリレーションを定義しておく．
+コントローラにて，Department（親）と，これに紐付くEmployee（子）を読み出す．これらのモデルの間では，```hasMany```メソッドと```belongsTo```メソッドを使用して，テーブルにおける一対多のリレーションを定義しておく．
 
 ```php
 <?php
@@ -1135,7 +1135,7 @@ class Department extends Model
 
     /**
      * 一対多の関係を定義します．
-     * （デフォルトではemployee_idに関連付けます）
+     * （デフォルトではemployee_idに紐付けます）
      *
      * @return HasMany
      */
@@ -1167,7 +1167,7 @@ class Employee extends Model
 
     /**
      * 多対一の関係を定義します．
-     * （デフォルトではdepartment_idに関連付けます）
+     * （デフォルトではdepartment_idに紐付けます）
      * 
      * @return BelongsTo
      */
@@ -1818,13 +1818,13 @@ event(new UserCreatedEvent($user));
 
 #### ・EloquentモデルのCRUDイベント
 
-Eloquentモデルでは，DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐づけられる．紐づけるために，プロパティで定義するか，あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある．
+Eloquentモデルでは，DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる．紐付けるために，プロパティで定義するか，あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある．
 
 参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
 
 **＊実装例＊**
 
-プロパティにて，CREATE処理とDELETE処理に独自イベントクラスに紐づける．
+プロパティにて，CREATE処理とDELETE処理に独自イベントクラスに紐付ける．
 
 ```php
 <?php
@@ -1843,7 +1843,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $dispatchesEvents = [
-        // 処理タイミングを独自イベントに紐づける
+        // 処理タイミングを独自イベントに紐付ける
         'saved' => UserSaved::class,
         'deleted' => UserDeleted::class,
     ];
@@ -1852,7 +1852,7 @@ class User extends Authenticatable
 
 **＊実装例＊**
 
-クロージャーにて，CREATE処理に独自イベントクラスに紐づける．
+クロージャーにて，CREATE処理に独自イベントクラスに紐付ける．
 
 
 ```php
@@ -1882,7 +1882,7 @@ class User extends Model
 
 #### ・Listenerとは
 
-イベントが発生した時に，これに紐づいてコールされるオブジェクトのこと．
+イベントが発生した時に，これに紐付いてコールされるオブジェクトのこと．
 
 #### ・構成
 
@@ -1923,9 +1923,9 @@ final class UserCreatedEventListener
 event(new UserCreatedEvent($user));
 ```
 
-#### ・イベントとリスナーの紐づけ
+#### ・イベントとリスナーの紐付け
 
-EventServiceProviderクラスにて，Eventクラスに紐づける一つ以上のListenerクラスを設定する．
+EventServiceProviderクラスにて，Eventクラスに紐付ける一つ以上のListenerクラスを設定する．
 
 **＊実装例＊**
 
@@ -2575,7 +2575,7 @@ Route::middleware("auth")->group(function () {
 
 ```
 
-デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが関連付けられている．
+デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが紐付けられている．
 
 
 ```php
@@ -5488,7 +5488,7 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $id = $user->id; // パスパラメータのidに紐づくユーザが自動的に渡されている．
+        $id = $user->id; // パスパラメータのidに紐付くユーザが自動的に渡されている．
     }
 }
 ```
@@ -7028,7 +7028,7 @@ class RouteServiceProvider extends ServiceProvider
 
 **＊実装例＊**
 
-権限の異なるユーザに応じたガード，またガードに関連づけるEloquentモデルをプロバイダを定義しておく．
+権限の異なるユーザに応じたガード，またガードに紐付けるEloquentモデルをプロバイダを定義しておく．
 
 ```php
 <?php
@@ -7181,7 +7181,7 @@ class RedirectIfAuthenticated
 
 #### ・ゲートとは
 
-Eloquentモデルレベルの認可スコープを定義する．指定したEloquentモデルに紐づく全てのDBレコードにアクセスできなくなる．
+Eloquentモデルレベルの認可スコープを定義する．指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる．
 
 <br>
 
@@ -7189,7 +7189,7 @@ Eloquentモデルレベルの認可スコープを定義する．指定したElo
 
 #### ・ポリシーとは
 
-DBレコードレベルの認可スコープを定義する．Eloquentモデルに紐づく特定のレコードにアクセスできなくなる．Policyクラスのメソッドによって，リクエスト中の認証済みユーザが自動的にインジェクションされる．EloquentモデルとPolicyクラスの関連づけはAuthServiceProviderクラスで定義する
+DBレコードレベルの認可スコープを定義する．Eloquentモデルに紐付く特定のレコードにアクセスできなくなる．Policyクラスのメソッドによって，リクエスト中の認証済みユーザが自動的にインジェクションされる．EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
 
 参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
@@ -7309,7 +7309,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 #### ・```authorization```メソッドによる認可
 
-コントローラ実行時にDBレコードレベルの認可スコープを定義する．基底コントローラを継承したコントローラでは```authorization```メソッドをコールでき，現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．第二引数に，ポリシーに紐づくクラス名前空間あるいはそのインスタンスを渡す．認可に失敗した場合にAuthorizationExceptionを投げるため，その後は自前で```403```ステータスのレスポンスするようにする．
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．基底コントローラを継承したコントローラでは```authorization```メソッドをコールでき，現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．第二引数に，ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す．認可に失敗した場合にAuthorizationExceptionを投げるため，その後は自前で```403```ステータスのレスポンスするようにする．
 
 参考：
 
@@ -7363,7 +7363,7 @@ class FooController extends Controller
 
 #### ・```can```メソッドによる認可
 
-コントローラ実行時にDBレコードレベルの認可スコープを定義する．現在認証されているユーザのインスタンスから```can```メソッドをコールできる．第二引数として，ポリシーに紐づくクラス名前空間またはそのクラスのインスタンスを渡す．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合に```false```を返却するため，その後は自前で```403```ステータスのレスポンスするようにする．
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．現在認証されているユーザのインスタンスから```can```メソッドをコールできる．第二引数として，ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合に```false```を返却するため，その後は自前で```403```ステータスのレスポンスするようにする．
 
 参考：
 

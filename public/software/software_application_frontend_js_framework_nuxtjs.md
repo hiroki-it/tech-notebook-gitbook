@@ -270,7 +270,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```serverMiddleware```
 
-リクエストを受信できるエンドポイントと，紐づけるハンドラー関数を定義する．
+リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を定義する．
 
 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 

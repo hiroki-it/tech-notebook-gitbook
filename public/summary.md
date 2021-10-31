@@ -143,22 +143,24 @@
 
 <br>
 
-## CI／CD
-* [📖 ︎CI／CD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
+## CICD
+* [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
 * [📖 ︎CircleCI](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_circleci.html)
 * [📖 ︎Capistrano](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_capistrano.html)
 
 <br>
 
-## 可観測性
+## 可観測性／監視
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html)
+* [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/monitering.html)
 * Fluentd／FluentBit
     * [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentbit.html)
 * Datadog
     * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_metrics.html)
     * [📖 ︎ログ収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_log.html)
-    * [📖 ︎分散トレース収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_distributed_trace.html)
+    * [📖 分散トレース収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_distributed_trace.html)
+    * [📖 テレメトリー間の紐付け](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_telemetry_association.html)
     * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_datadog_monitering.html)
 
 <br>

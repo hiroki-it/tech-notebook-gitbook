@@ -14,7 +14,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・処理
 
-リクエストメッセージからデータを取得し，構造体に関連づける．Cotent-TypeヘッダーのMIMEタイプに応じて，バインド関数をコールし分ける．
+リクエストメッセージからデータを取得し，構造体に紐付ける．Cotent-TypeヘッダーのMIMEタイプに応じて，バインド関数をコールし分ける．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
 
@@ -24,7 +24,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・処理
 
-Content-TypeヘッダーのMIMEタイプが```application/json```であることが前提である．リクエストメッセージからJSONデータを取得し，構造体に関連づける．
+Content-TypeヘッダーのMIMEタイプが```application/json```であることが前提である．リクエストメッセージからJSONデータを取得し，構造体に紐付ける．
 
 参考：https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
 
@@ -34,7 +34,7 @@ Content-TypeヘッダーのMIMEタイプが```application/json```であること
 
 #### ・処理
 
-クエリパラメータからデータを取得し，構造体に関連づける．
+クエリパラメータからデータを取得し，構造体に紐付ける．
 
 <br>
 
@@ -52,7 +52,7 @@ Content-TypeヘッダーのMIMEタイプが```application/json```であること
 
 #### ・処理
 
-クエリパラメータからデータを取得し，指定したバインディングツールを使用して，構造体に関連づける．
+クエリパラメータからデータを取得し，指定したバインディングツールを使用して，構造体に紐付ける．
 
 <br>
 
@@ -103,7 +103,7 @@ c.JSON(200, &Foo{
 
 #### ・処理
 
-クエリパラメータからデータを取得する．この後，構造体に関連づける場合は，```BindQuery```関数を使用した方が良い．
+クエリパラメータからデータを取得する．この後，構造体に紐付ける場合は，```BindQuery```関数を使用した方が良い．
 
 <br>
 

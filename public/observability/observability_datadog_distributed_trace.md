@@ -340,35 +340,3 @@ PHPトレーサーでlaravel内からタグを収集した例
 言語／フレームワーク／ツール，などに関して，専用の分散トレースを収集できるようになる．アプリケーションとして使用される言語／フレームワークの場合，トレースエージェントがインテグレーション処理を持つため，サーバ／コンテナへのインストールは不要である．については，以下のリンクを参考にせよ．
 
 参考：https://github.com/DataDog/dd-trace-php/tree/master/src/DDTrace/Integrations
-
-<br>
-
-## 05. 他テレメトリーとの紐づけ
-
-### 分散トレースと構造化ログの紐づけ
-
-#### ・分散トレース全体と構造化ログ間の紐づけ
-
-スパンと構造化ログの統合タグ（```service```，```env```，```version```）に同じ値を割り当てると，分散トレース全体と構造化ログ間を紐づけることができる．
-
-参考：https://docs.datadoghq.com/ja/tracing/connect_logs_and_traces/
-
-#### ・スパンと構造化ログの紐づけ
-
-![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_trace-viewer.png)
-
-スパンと構造化ログに，同じトレースIDとスパンIDを割り当てると，スパンと構造化ログ間を紐づけることができる．これにより，その構造化ログが，いずれのサービスで，またどのタイミングで発生したものかを確認できる．
-
-参考：https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
-
-<br>
-
-### 分散トレースとメトリクス間の紐づけ
-
-#### ・分散トレースとサーバ／コンテナのOSに関するメトリクス間の紐づけ
-
-スパンとコンテナのDockerLabelの統合タグ（```service```，```env```，```version```）に，同じ値を割り当てると，分散トレースとサーバ／コンテナのOSに関するメトリクスを紐づけることができる．
-
-
-
-<br>

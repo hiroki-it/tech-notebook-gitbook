@@ -138,55 +138,6 @@
 
 <br>
 
-###  ポストモーテム
-
-#### ・ポストモーテムとは
-
-障害報告書とは異なり，原因特定とシステム改善に重きを置いた報告書のこと．障害報告書は，責任の報告の意味合いが強くなってしまう．
-
-#### ・テンプレート
-
-参考：https://ueokande.github.io/incident-response-docs-ja/after/post_mortem_template/
-
-```markdown
-# ポストモーテム
-
-## タイトル
-
-## 日付
-
-## 担当者
-
-**※担当者を絶対に責めず，障害は誰のせいでもないという意識を強く持つ．**
-
-## 原因と対応
-
-**※原因特定とシステム改善に重きを置くこと．**
-
-## システム的/収益的な影響範囲
-
-## 幸運だったこと
-
-## 仕組みの改善策
-
-**※「以後は注意する」ではなく，再発しない仕組み作りになるようにする．**
-
-## 障害発生から対応までのタイムライン
-
-```
-
-#### ・他社事例
-
-参考：https://ueokande.github.io/incident-response-docs-ja/after/post_mortem_process/#_6
-
-| サービス | リンク                                                       |
-| -------- | ------------------------------------------------------------ |
-| AWS      | https://aws.amazon.com/jp/message/5467D2/                    |
-| Heroku   | https://status.heroku.com/incidents/151                      |
-| Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
-
-<br>
-
 ## 03. その他のテスト
 
 ### Regressionテスト（回帰テスト）

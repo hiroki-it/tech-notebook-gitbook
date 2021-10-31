@@ -290,7 +290,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・分散トレーシングとは
 
-サービス間で分散してしまう各ログを，一意なIDで紐づける方法．
+サービス間で分散してしまう各ログを，一意なIDで紐付ける方法．
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/distributed-tracing.png)
 

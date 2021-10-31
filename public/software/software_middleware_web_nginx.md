@@ -501,7 +501,7 @@ sendfile on;
 
 #### ・```server_name```
 
-パブリックIPアドレスに紐づくドメイン名を設定する．
+パブリックIPアドレスに紐付くドメイン名を設定する．
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 

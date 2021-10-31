@@ -119,7 +119,7 @@ Initiatorによって，ジョブはジョブステップに分解される．
 
 ![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/到着順方式_1.png)
 
-**＊具体例＊**
+**＊例＊**
 
 以下の様に，タスクがCPUに割り当てられていく．
 
@@ -133,7 +133,7 @@ Round robinは，『総当たり』の意味．一定時間（タイムクウォ
 
 ![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ラウンドロビン方式.png)
 
-**＊具体例＊**
+**＊例＊**
 
 生成されたタスクの到着時刻と処理時間は以下のとおりである．強制的なディスパッチは，『20秒』ごとに起こるとする．
 

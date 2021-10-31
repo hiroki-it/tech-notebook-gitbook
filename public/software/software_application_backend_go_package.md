@@ -198,7 +198,7 @@ result.Error        // returns error
 
 #### ・単一／複数カラム取得
 
-Gormモデルとプライマリキーを指定して，プライマリキーのモデルに関連づけられたカラムを取得する．
+Gormモデルとプライマリキーを指定して，プライマリキーのモデルに紐付けられたカラムを取得する．
 
 参考：https://gorm.io/ja_JP/docs/query.html#Retrieving-objects-with-primary-key
 
@@ -243,7 +243,7 @@ db.Model(&user).Where("active = ?", true).Update("name", "hello")
 
 #### ・複数カラム更新（暗黙的）
 
-Gormモデルのフィールドを暗黙的に指定して，複数のカラム値を更新する．または，フィールドとは無関係に，マップデータを元にUPDATE文を実行する．Gormモデルを使用した場合，フィールド値がゼロ値であると，これに関連づけられたカラム値の更新はスキップされてしまう．
+Gormモデルのフィールドを暗黙的に指定して，複数のカラム値を更新する．または，フィールドとは無関係に，マップデータを元にUPDATE文を実行する．Gormモデルを使用した場合，フィールド値がゼロ値であると，これに紐付けられたカラム値の更新はスキップされてしまう．
 
 参考：https://gorm.io/ja_JP/docs/update.html#Updates-multiple-columns
 
@@ -345,7 +345,7 @@ type MockedAwsClient struct {
 
 **＊実装例＊**
 
-関数の一部の処理をスタブ化し，これをAWSクライアントのモックに関連付ける．
+関数の一部の処理をスタブ化し，これをAWSクライアントのモックに紐付ける．
 
 ```go
 package amplify

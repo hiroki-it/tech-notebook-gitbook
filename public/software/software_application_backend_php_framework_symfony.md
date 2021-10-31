@@ -225,7 +225,7 @@ for f in *txt do echo $f; done;
 
 #### ・Cronによるコマンドの自動実行
 
-**＊具体例＊**
+**＊例＊**
 
 10秒ごとに，コマンドを自動実行する．
 
@@ -445,18 +445,18 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 $cache = new FilesystemAdapter("", 0, "example/cache/");
 
-// キャッシュIDに紐づくキャッシュアイテムオブジェクトを取得
+// キャッシュIDに紐付くキャッシュアイテムオブジェクトを取得
 $cacheItemObj = $cache->getItem("stats.products_count");
 
-// キャッシュIDに紐づくキャッシュアイテムオブジェクトに，データが設定されていない場合
+// キャッシュIDに紐付くキャッシュアイテムオブジェクトに，データが設定されていない場合
 if (!$cacheItemObj->isHit()) {
   // キャッシュアイテムオブジェクトに，データを設定
   $cacheItemObj->set(777);
-  // キャッシュアイテムオブジェクトを紐づける．
+  // キャッシュアイテムオブジェクトを紐付ける．
   $cache->save($cacheItemObj);
 }
 
-// キャッシュIDに紐づくデータがあった場合，キャッシュアイテムオブジェクトを取得．
+// キャッシュIDに紐付くデータがあった場合，キャッシュアイテムオブジェクトを取得．
 $cacheItemObj = $cache->get();
 
 ```
