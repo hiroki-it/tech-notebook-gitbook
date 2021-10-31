@@ -18,7 +18,7 @@
 
 <br>
 
-### WAN，LANの具体例
+### WAN，LANの例
 
 例えば，LANとしてEthernet，WANとしてデジタル専用線を用いる．
 

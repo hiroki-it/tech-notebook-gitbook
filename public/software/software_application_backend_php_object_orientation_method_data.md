@@ -437,7 +437,7 @@ $foo->hoge;
 
 定義されていないデータや，アクセス権のないデータに値を設定しようとした時に，代わりにコールされる．オブジェクトの不変性を実現するために使用される．オブジェクトの不変性は，以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html
 
 **＊実装例＊**
 
@@ -1340,13 +1340,13 @@ final class FlagConstant
 
 区分値を整数型の定数として扱う．区分値をデータとして持つオブジェクトについては，ドメイン駆動設計の値オブジェクトを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ・数値計算，数値比較
 
 計算処理や数値比較処理では，可読性の観点から，できるだけ数値を直書きしない．数値に意味合いを持たせ，定数として扱うと可読性が高くなる．ドメイン駆動設計の値オブジェクトを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html
 
 #### ・URL
 

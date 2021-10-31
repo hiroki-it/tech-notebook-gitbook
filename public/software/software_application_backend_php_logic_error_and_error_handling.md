@@ -112,7 +112,7 @@ function value() {
 
 エラーコードはステータスコードと異なり，例外を識別するためのものである．異常系レスポンスのエラーコードデータとして使用される．混乱を避けるため，例外クラスのエラーコード値にステータスコードを割り当てないようにする．ステータスコードはコントローラにおけるレスポンス処理で割り当てる．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 **＊実装例＊**
 
@@ -151,7 +151,7 @@ function foo(string $foo) {
 
 層別の例外については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html
 
 <br>
 

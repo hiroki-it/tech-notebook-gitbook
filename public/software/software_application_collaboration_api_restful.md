@@ -395,7 +395,7 @@ x-api-key: *****
 | 409    | 競合エラー                                     | 誤ったリクエストである．UPDATE処理による新しいデータと現在のDBのデータの間で競合が起こっていることを表している．楽観的ロックによる排他制御の結果として使用する．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである．リソースへのアクセスに失敗したことを表している． |
 | 422    | バリデーションエラー                           | 誤ったリクエストである．送信されたパラメータが誤っていることを示している． |
-| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                         | エラーは起こらないが，ビジネス上ありえないデータをリクエストしていることを表す． |
 
 #### ・リダイレクトとリライトの違い
@@ -879,7 +879,7 @@ session.save_path = "/tmp"
 
 セッションファイルは，サーバ外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
 ```bash
 # /etc/php.ini

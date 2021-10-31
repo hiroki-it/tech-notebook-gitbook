@@ -407,7 +407,7 @@ location / {
 
 ルートの一致条件は，以下の通りである．
 
-| 優先順位 | prefix | ルートの一致条件                         | ルートの具体例                                               |
+| 優先順位 | prefix | ルートの一致条件                         | ルート例                                               |
 | :------: | :----: | ---------------------------------------- | ------------------------------------------------------------ |
 |    1     |   =    | 指定したルートに一致する場合．           | ```http://example.com/```                                    |
 |    2     |   ^~   | 指定したルートで始まる場合．             | ```http://example.com/images/foo.gif```                      |
@@ -419,7 +419,7 @@ location / {
 
 個別のWebサーバ／コンテナの処理を設定する．
 
-参考https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
 **＊実装例＊**
 
@@ -448,7 +448,7 @@ server {
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 <br>
 

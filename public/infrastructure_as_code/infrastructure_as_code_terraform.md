@@ -1099,7 +1099,7 @@ vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
 
 単一値，list型，map型で定義できる．AZ，サブネットのCIDR，RDSのパラメータグループ値，などはmap型として保持しておくとよい．また，IPアドレスのセット，ユーザエージェント，などはlist型として保持しておくとよい．なお，RDSのパラメータグループの適正値については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
 **＊実装例＊**
 

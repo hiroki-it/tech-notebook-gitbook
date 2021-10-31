@@ -114,14 +114,14 @@ FROM data/agent:latest
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/
 
-| 属性名         | 説明                                           | 補足                                                         |
-| -------------- | ---------------------------------------------- | ------------------------------------------------------------ |
-| ```host```     | ログの送信元を示す．                           | Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いて```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される．<br>（例）```foo```，```foo-backend```，```foo-frontend```，```foo-log-group```，```foo-bucket``` |
-| ```source```   | ログの生成元を示す．                           | ベンダー名を使用するとわかりやすい．<br>（例）```laravel```，```nginx```，```redis``` |
-| ```status```   | ログのレベルを示す．                           |                                                              |
-| ```service```  | ログの生成元のアプリケーションを示す．         | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある．<br>（例）```foo```，```bar-backend```，```baz-frontend``` |
-| ```trace_id``` | ログを分散トレースやスパンと紐付けるIDを示す． |                                                              |
-| ```message```  | ログメッセージを示す．                         |                                                              |
+| 属性名         | 説明                                           | 補足                                                         | 例                                                           |
+| -------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```host```     | ログの生成元のホスト名を示す．                 | Datadogコンテナの環境変数にて，```DD_HOSTNAME```を用いて```host```属性を設定する．これにより，ホストマップでホストを俯瞰できるようになるだけでなく，ログエクスプローラでホストタグが属性として付与される．他にAWSインテグレーションでは，送信元のロググループ名やバケット名が付与される． | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```source```   | ログの生成元の名前を示す．                     | ベンダー名を使用するとわかりやすい．                         | ・```laravel```<br>・```nginx```<br>・```redis```            |
+| ```status```   | ログのレベルを示す．                           |                                                              |                                                              |
+| ```service```  | ログの生成元のアプリケーション名を示す．       | ログとAPM分散トレースを紐付けるため，両方に同じ名前を割り当てる必要がある． | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
+| ```trace_id``` | ログを分散トレースやスパンと紐付けるIDを示す． |                                                              |                                                              |
+| ```message```  | ログメッセージを示す．                         |                                                              |                                                              |
 
 #### ・標準属性
 
@@ -252,7 +252,7 @@ logs:
 
 FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability_fluentd_and_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentd_and_fluentbit.html
 
 <br>
 

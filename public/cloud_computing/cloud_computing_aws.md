@@ -25,7 +25,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 | 設定項目             | 説明                                                         | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | リスナー             | ALBに割り振るポート番号お，受信するプロトコルを設定する．リバースプロキシかつロードバランサ－として，これらの通信をターゲットグループにルーティングする． |                                                              |
-| セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて，ALBが受信できるこれらのバージョンを設定する． | ・リクエストの送信者には，ブラウザ，APIにリクエストを送信する外部サービス，転送元のAWSリソース（CloudFrontなど），などを含む．<br/>・参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
+| セキュリティポリシー | リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて，ALBが受信できるこれらのバージョンを設定する． | ・リクエストの送信者には，ブラウザ，APIにリクエストを送信する外部サービス，転送元のAWSリソース（CloudFrontなど），などを含む．<br>・参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies |
 | ルール               | リクエストのルーティングのロジックを設定する．               |                                                              |
 | ターゲットグループ   | ルーティング時に使用するプロトコルと，ルーティング先のアプリケーションに割り当てられたポート番号を指定する． | ターゲットグループ内のターゲットのうち，トラフィックはヘルスチェックがOKになっているターゲットにルーティングされる． |
 | ヘルスチェック       | ターゲットグループに属するプロトコルとアプリケーションのポート番号を指定して，定期的にリクエストを送信する． |                                                              |
@@ -278,13 +278,13 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ステージ                 | API Gatewayをデプロイする環境を定義する．                    |                                                              |
 | オーソライザー           | LambdaまたはCognitoによるオーソライザーを使用して，認可プロセスを定義する． |                                                              |
 | ゲートウェイのレスポンス |                                                              |                                                              |
-| モデル                   | リクエスト／レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
+| モデル                   | リクエスト／レスポンスのスキーマを設定する．これらのバリデーションのために使用できる． | OpenAPI仕様におけるスキーマについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html |
 | リソースポリシー         | ポリシーを使用して，API Gatewayにセキュリティを定義づける．  |                                                              |
 | ドキュメント             |                                                              |                                                              |
 | ダッシュボード           |                                                              |                                                              |
 | APIの設定                |                                                              |                                                              |
 | 使用量プラン             | 有料サービスとしてAPIを公開し，料金体系に応じてリクエスト量を制限するために使用する．APIキーにリクエスト量のレートを設定する． | 有料サービスとして使用しないAPIの場合は，レートを設定する必要はない． |
-| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| APIキー                  | APIキー認証を設定する．                                      | ・その他のアクセス制御の方法として，以下がある．<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 | クライアント証明書       | SSLサーバ証明書をAPI Gatewayに割り当てる．                   | APIが，API Gatewayから転送されたリクエストであること識別できるようになる． |
 | CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう，ロールを設定する． | 一つのAWS環境につき，一つのロールを設定すればよい．          |
 
@@ -307,7 +307,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 認可                      | 定義したLambdaまたはCognitoによるオーソライザーを有効化する． |                                                              |
 | リクエストの検証          | 『URLクエリ文字列パラメータ』『HTTPリクエストヘッダー』『リクエスト本文』のバリデーションを有効化する． |                                                              |
-| APIキーの必要性           | リクエストヘッダーにおけるAPIキーのバリデーションを行う．リクエストのヘッダーに『```x-api-key```』を含み，これにAPIキーが割り当てられていることを強制する． | ヘッダー名は大文字でも小文字でも問題ないが，小文字が推奨．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html |
+| APIキーの必要性           | リクエストヘッダーにおけるAPIキーのバリデーションを行う．リクエストのヘッダーに『```x-api-key```』を含み，これにAPIキーが割り当てられていることを強制する． | ヘッダー名は大文字でも小文字でも問題ないが，小文字が推奨．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html |
 | URLクエリ文字列パラメータ | リクエストされたURLのクエリパラメータのバリデーションを行う． |                                                              |
 | HTTPリクエストヘッダー    | リクエストヘッダーのバリデーションを行う．                   |                                                              |
 | リクエスト本文            | リクエストボディのバリデーションを行う．                     |                                                              |
@@ -751,7 +751,7 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Origin Domain Name     | CloudFrontをリバースプロキシとして，AWSリソースのエンドポイントやDNSにルーティングする． | ・例えば，S3のエンドポイント，ALBのDNS名を設定する．<br>・別アカウントのAWSリソースのDNS名であってもよい． |
 | Origin Path            | オリジンのルートディレクトリを設定する．                     | ・何も設定しないと，デフォルトは『```/```』のなる．Behaviorでは，『```/```』の後にパスが追加される．<br>・『```/var/www/app```』を設定すると，Behaviorで設定したパスが『```/var/www/app/xxxxx```』のように追加される． |
 | Origin Access Identity | リクエストの転送先となるAWSリソースでアクセス権限のアタッチが必要な場合に設定する．転送先のAWSリソースでは，アクセスポリシーをアタッチする． | CloudFrontがS3に対して読み出しを行うために必要．             |
-| Origin Protocol Policy | リクエストの転送先となるAWSリソースに対して，HTTPとHTTPSのいずれのプロトコルで転送するかを設定する． | ・ALBで必要．ALBのリスナーのプロトコルに合わせて設定する．<br>・```HTTP Only```：HTTPで転送<br/>・```HTTPS Only```：HTTPSで転送<br/>・```Match Viewer```：両方で転送 |
+| Origin Protocol Policy | リクエストの転送先となるAWSリソースに対して，HTTPとHTTPSのいずれのプロトコルで転送するかを設定する． | ・ALBで必要．ALBのリスナーのプロトコルに合わせて設定する．<br>・```HTTP Only```：HTTPで転送<br>・```HTTPS Only```：HTTPSで転送<br>・```Match Viewer```：両方で転送 |
 | HTTPポート             | 転送時に指定するオリジンのHTTPのポート番号                   |                                                              |
 | HTTPSポート            | 転送時に指定するオリジンのHTTPSのポート番号                  |                                                              |
 
@@ -766,14 +766,14 @@ AWSリソースのイベントを，EventBridge（CloudWatchイベント）を�
 | Precedence                                                   | 処理の優先順位．                                             | 最初に構築したBehaviorが『```Default (*)```』となり，これは後から変更できないため，主要なBehaviorをまず最初に設定する． |
 | Path Pattern                                                 | Behaviorを行うファイルパスを設定する．                       |                                                              |
 | Origin or Origin Group                                       | Behaviorを行うオリジンを設定する．                           |                                                              |
-| Viewer Protocol Policy                                       | HTTP／HTTPSのどちらを受信するか，またどのように変換して転送するかを設定 | ・```HTTP and HTTPS```：両方受信し，そのまま転送<br/>・```Redirect HTTP to HTTPS```：両方受信し，HTTPSで転送<br/>・```HTTPS Only```：HTTPSのみ受信し，HTTPSで転送 |
+| Viewer Protocol Policy                                       | HTTP／HTTPSのどちらを受信するか，またどのように変換して転送するかを設定 | ・```HTTP and HTTPS```：両方受信し，そのまま転送<br>・```Redirect HTTP to HTTPS```：両方受信し，HTTPSで転送<br>・```HTTPS Only```：HTTPSのみ受信し，HTTPSで転送 |
 | Allowed HTTP Methods                                         | リクエストのHTTPメソッドのうち，オリジンへの転送を許可するものを設定 | ・パスパターンが静的ファイルへのリクエストの場合，GETのみ許可．<br>・パスパターンが動的ファイルへのリクエストの場合，全てのメソッドを許可． |
 | ★Cache Based on Selected Request Headers<br>（★については表上部参考） | リクエストヘッダーのうち，オリジンへの転送を許可し，またCacheの対象とするものを設定する． | ・各ヘッダー転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのヘッダーの転送を拒否し，Cacheの対象としない．動的になりやすい値をもつヘッダー（Accept-Datetimeなど）を一切使用せずに，それ以外のクエリ文字やCookieでCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br>・一部転送：指定したヘッダーのみ転送を許可し，Cacheの対象とする．<br>・全許可：全てのヘッダーがCacheの対象となる．しかし，日付に関するヘッダーなどの動的な値をCacheの対象としてしまうと．同一と見なすリクエストがほとんどなくなり，HITしなくなる．そのため，この設定でCacheは実質無効となり，『対象としない』に等しい． |
-| Whitelist Header                                             | Cache Based on Selected Request Headers を参考にせよ．       | ・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定．<br/>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている． |
+| Whitelist Header                                             | Cache Based on Selected Request Headers を参考にせよ．       | ・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定．<br>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている． |
 | Object Caching                                               | CloudFrontにコンテンツのCacheを保存しておく秒数を設定する．  | ・Origin Cache ヘッダーを選択した場合，アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される．<br>・カスタマイズを選択した場合，ブラウザのTTLとは別に設定できる． |
 | TTL                                                          | CloudFrontにCacheを保存しておく秒数を詳細に設定する．        | ・Min，Max，Default，の全てを0秒とすると，Cacheを無効化できる．<br>・『Cache Based on Selected Request Headers = All』としている場合，Cacheが実質無効となるため，最小TTLはゼロでなければならない． |
-| ★Farward Cookies<br/>（★については表上部参考）               | Cookie情報のキー名のうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・Cookie情報キー名転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのCookieの転送を拒否し，Cacheの対象としない．Cookieはユーザごとに一意になることが多く，動的であるが，それ以外のヘッダーやクエリ文字でCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br/>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると，CloudFrontに保存されたCacheがHITしない．CloudFrontはキー名／値を保持するため，変化しやすいキー名／値は，オリジンに転送しないように設定する．例えば，GoogleAnalyticsのキー名（```_ga```）の値は，ブラウザによって異なるため，１ユーザがブラウザを変えるたびに，異なるCacheが生成されることになる．そのため，ユーザを一意に判定することが難しくなってしまう．GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので，オリジンにとっても基本的に不要である．<br>・セッションIDはCookieヘッダーに設定されているため，フォーム送信に関わるパスパターンでは，セッションIDのキー名を許可する必要がある． |
-| ★Query String Forwarding and Caching<br/>（★については表上部参考） | クエリストリングのうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・クエリストリング転送とCacheの，全拒否，一部許可，全許可を選択できる．全拒否にすると，Webサイトにクエリストリングをリクエストできなくなるので注意．<br>・異なるクエリパラメータを，別々のCacheとして保存するかどうかを設定できる． |
+| ★Farward Cookies<br>（★については表上部参考）               | Cookie情報のキー名のうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・Cookie情報キー名転送の全拒否，一部許可，全許可を設定できる．<br>・全拒否：全てのCookieの転送を拒否し，Cacheの対象としない．Cookieはユーザごとに一意になることが多く，動的であるが，それ以外のヘッダーやクエリ文字でCacheを判定するようになるため，同一と見なすリクエストが増え，HIT率改善につながる．<br>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると，CloudFrontに保存されたCacheがHITしない．CloudFrontはキー名／値を保持するため，変化しやすいキー名／値は，オリジンに転送しないように設定する．例えば，GoogleAnalyticsのキー名（```_ga```）の値は，ブラウザによって異なるため，１ユーザがブラウザを変えるたびに，異なるCacheが生成されることになる．そのため，ユーザを一意に判定することが難しくなってしまう．GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので，オリジンにとっても基本的に不要である．<br>・セッションIDはCookieヘッダーに設定されているため，フォーム送信に関わるパスパターンでは，セッションIDのキー名を許可する必要がある． |
+| ★Query String Forwarding and Caching<br>（★については表上部参考） | クエリストリングのうち，オリジンへの転送を許可し，Cacheの対象とするものを設定する． | ・クエリストリング転送とCacheの，全拒否，一部許可，全許可を選択できる．全拒否にすると，Webサイトにクエリストリングをリクエストできなくなるので注意．<br>・異なるクエリパラメータを，別々のCacheとして保存するかどうかを設定できる． |
 | Restrict Viewer Access                                       | リクエストの送信元を制限するかどうかを設定できる．           | セキュリティグループで制御できるため，ここでは設定しなくてよい． |
 | Compress Objects Automatically                               | レスポンス時にgzipを圧縮するかどうかを設定                   | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合，レスポンス時に，gzip形式で圧縮して送信するかどうかを設定する．設定しない場合，圧縮せずにレスポンスを送信する．<br>・クライアント側のダウンロード速度向上のため，基本的には有効化する． |
 
@@ -1003,7 +1003,7 @@ AWSリソースで発生したデータポイントのメトリクスを収集�
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html
 
 <br>
 
@@ -1044,7 +1044,7 @@ CloudWatchメトリクス上では，以下のように確認できる．
 
 クラウドログサーバとして働く．AWSリソースで生成されたログを収集できる．ログについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html
 
 <br>
 
@@ -1516,7 +1516,7 @@ Resources:
 | 設定項目                  | 説明                                              | 補足                                                         |
 | ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
 | AMI：Amazonマシンイメージ | OSを選択する．                                    | ベンダー公式のものを選択すること．（例：CentOSのAMI一覧 https://wiki.centos.org/Cloud/AWS） |
-| インスタンスの詳細設定    | EC2インスタンスの設定する．                       | ・インスタンス自動割り当てパブリックにて，EC2に動的パブリックIPを割り当てる．EC2インスタンス構築後に有効にできない．<br/>・終了保護は必ず有効にすること． |
+| インスタンスの詳細設定    | EC2インスタンスの設定する．                       | ・インスタンス自動割り当てパブリックにて，EC2に動的パブリックIPを割り当てる．EC2インスタンス構築後に有効にできない．<br>・終了保護は必ず有効にすること． |
 | ストレージの追加          | EBSボリュームを設定する．                         | 一般的なアプリケーションであれば，20～30GiBでよい．踏み台サーバの場合，最低限で良いため，OSの下限までサイズを下げる．（例：AmazonLinuxの下限は8GiB，CentOSは10GiB） |
 | キーペア                  | EC2の秘密鍵に対応した公開鍵をインストールできる． | キーペアに割り当てられるフィンガープリント値を調べることで，公開鍵と秘密鍵の対応関係を調べることができる． |
 
@@ -1938,8 +1938,8 @@ aws ecs execute-command \
 | healthCheck<br>(retries)         | ```--health-retries```                       | ヘルスチェックを成功と見なす回数を設定する．                 |                                                              |
 | hostName                         | ```--hostname```                             | コンテナにホスト名を設定する．                               |                                                              |
 | image                            |                                              | ECRのURLを設定する．                                         |                                                              |
-| logConfiguration<br/>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば『awslogs，awsfirelens，splunk』に設定できる．EC2であれば『awslogs，json-file，syslog，journald，fluentd，gelf，logentries』を設定できる． |
-| logConfiguration<br/>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
+| logConfiguration<br>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより，ログの出力先を設定する． | Dockerのログドライバーにおおよそ対応しており，Fargateであれば『awslogs，awsfirelens，splunk』に設定できる．EC2であれば『awslogs，json-file，syslog，journald，fluentd，gelf，logentries』を設定できる． |
+| logConfiguration<br>(options)   | ```--log-opt```                              | ログドライバーに応じて，詳細な設定を行う．                   |                                                              |
 | portMapping                      | ```--publish```<br>```--expose```            | ホストマシンとFargateのアプリケーションのポート番号をマッピングし，ポートフォワーディングを行う． | ```containerPort```のみを設定し，```hostPort```は設定しなければ，EXPOSEとして定義できる．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
 | secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する．              |                                                              |
 | memory                           | ```--memory```<br>```--memory-reservation``` | タスク全体に割り当てられたメモリのうち，該当のコンテナに割り当てるメモリ分を設定する． |                                                              |
@@ -2280,7 +2280,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 サーバ内のセッションファイルの代わりにセッションIDを管理し，冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする．セッションIDについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 ![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ElastiCacheのセッション管理機能.png)
 
@@ -3592,7 +3592,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 | マルチAZ配置                           | プライマリインスタンスとは別に，リーダーレプリカをマルチAZ配置で追加するかどうかを設定する． |                                                              |
 | 最初のデータベース名                   | データベースに自動的に構築されるデータベース名を設定         |                                                              |
 | サブネットグループ                     | データベースにアクセスできるサブネットを設定する．           |                                                              |
-| パラメータグループ                     | グローバルパラメータを設定する．                             | デフォルトを使用せずに独自定義する場合，事前に構築しておく必要がある．クラスターパラメータグループとインスタンスパラメータグループがあるが，クラスターパラメータを設定すればよい．各パラメータに適用タイプ（dynamic/static）があり，dynamicタイプは設定の適用に再起動が必要である．新しく作成したクラスタパラメータグループにて以下の値を設定するとよい．<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br/>・```character_set_connection=utf8mb4```<br/>・```character_set_database=utf8mb4```<br/>・```character_set_results=utf8mb4```<br/>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br/>・```server_audit_logs_upload=1```<br/>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br/>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br/>・```long_query_time=3```（スロークエリと見なす最短秒数） |
+| パラメータグループ                     | グローバルパラメータを設定する．                             | デフォルトを使用せずに独自定義する場合，事前に構築しておく必要がある．クラスターパラメータグループとインスタンスパラメータグループがあるが，クラスターパラメータを設定すればよい．各パラメータに適用タイプ（dynamic/static）があり，dynamicタイプは設定の適用に再起動が必要である．新しく作成したクラスタパラメータグループにて以下の値を設定するとよい．<br>・```time_zone=Asia/Tokyo```<br>・```character_set_client=utf8mb4```<br>・```character_set_connection=utf8mb4```<br>・```character_set_database=utf8mb4```<br>・```character_set_results=utf8mb4```<br>・```character_set_server=utf8mb4```<br>・```server_audit_logging=1```（監査ログをCloudWatchに送信するかどうか）<br>・```server_audit_logs_upload=1```<br>・```general_log=1```（通常クエリログをCloudWatchに送信するかどうか）<br>・```slow_query_log=1```（スロークエリログをCloudWatchに送信するかどうか）<br>・```long_query_time=3```（スロークエリと見なす最短秒数） |
 | ログのエクスポート                     |                                                              | 必ず，全てのログを選択すること．                             |
 | バックアップ保持期間                   | RDSがバックアップを保持する期間を設定する．                  | ```7```日間にしておく．                                      |
 | マイナーバージョンの自動アップグレード | データベースエンジンのバージョンを自動的に更新するかを設定する． | 開発環境では有効化，本番環境とステージング環境では無効化しておく．開発環境で新しいバージョンに問題がなければ，ステージング環境と本番環境にも適用する． |
@@ -4027,7 +4027,7 @@ DNSサーバによる名前解決は，ドメインを購入したドメイン�
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ブロックパブリックアクセス | パブリックネットワークがS3にアクセスする時の許否を設定する． | ・パブリックアクセスを有効にすると，パブリックネットワークから『```https://<バケット名>.s3.amazonaws.com```』というようにURLを指定して，S3にアクセスできるようになる．ただし非推奨．<br>・パブリックアクセスを全て無効にすると，パブリックネットワークからの全アクセスを遮断できる．<br>・特定のオブジェクトで，アクセスコントロールリストを制限した場合，そのオブジェクトだけはパブリックアクセスにならない． |
 | バケットポリシー           | IAMユーザ（クロスアカウントも可）またはAWSリソースがS3へにアクセスするためのポリシーで管理する． | ・IAMユーザ（クロスアカウントも可）やAWSリソースがS3にアクセスするために必要である．ただし代わりに，IAMポリシーをAWSリソースにアタッチすることでも，アクセスを許可できる．<br>・ポリシーをアタッチできないCloudFrontやALBなどでは，自身へのアクセスログを生成するために必須である． |
-| アクセスコントロールリスト | IAMユーザ（クロスアカウントも可）がS3にアクセスする時の許否を設定する． | ・バケットポリシーと機能が重複する．<br/>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても，特定のオブジェクトでアクセスコントロールリストを制限した場合，そのオブジェクトだけはパブリックアクセスにならない． |
+| アクセスコントロールリスト | IAMユーザ（クロスアカウントも可）がS3にアクセスする時の許否を設定する． | ・バケットポリシーと機能が重複する．<br>・仮にバケット自体のブロックパブリックアクセスを無効化したとしても，特定のオブジェクトでアクセスコントロールリストを制限した場合，そのオブジェクトだけはパブリックアクセスにならない． |
 | CORSの設定                 |                                                              |                                                              |
 
 <br>
@@ -4365,7 +4365,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 一般的なSMTP-AUTHでは，クライアントユーザの認証が必要である．同様にして，AWSにおいてもこれが必要であり，IAMユーザを用いてこれを実現する．送信元となるアプリケーションにIAMユーザを紐付け，このIAMユーザにはユーザ名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザ名とパスワードを用いた認証を実行する．ユーザ名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html?h=smtp
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html?h=smtp
 
 <br>
 
@@ -4699,13 +4699,13 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
 
 #### ・NAT Gatewayとは
 
 NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
 
 #### ・比較表
 
@@ -4736,7 +4736,7 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 | メインルートテーブル   | VPCの構築時に自動で構築される．どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する． |
 | カスタムルートテーブル | 特定のサブネットのルーティングを設定する．                   |
 
-#### ・具体例1
+#### ・例1
 
 上の図中で，サブネット2にはルートテーブル1が紐付けられている．サブネット2内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，範囲外にあれば通信を破棄する．
 
@@ -4745,7 +4745,7 @@ NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して�
 |             ```10.0.0.0/16```             |  local   |
 |            指定範囲以外の場合             | 通信破棄 |
 
-#### ・具体例2
+#### ・例2
 
 上の図中で，サブネット3にはルートテーブル2が紐付けられている．サブネット3内のEC2の送信先のプライベートIPアドレスが，```10.0.0.0/16```の範囲内にあれば，インバウンド通信と見なし，local（VPC内の他サブネット）を送信先に選び，```0.0.0.0/0```（local以外の全IPアドレス）の範囲内にあれば，アウトバウンド通信と見なし，インターネットゲートウェイを送信先に選ぶ．
 
@@ -4834,7 +4834,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_internet.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
 
 #### ・紐付けられるリソース
 
@@ -4865,7 +4865,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 | 種類                     | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| インスタンスとの紐付け | 非推奨の方法である．<br/>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| インスタンスとの紐付け | 非推奨の方法である．<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 | ENIとの紐付け          | 推奨される方法である．<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>
@@ -5107,7 +5107,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-### ルールの具体例
+### ルールの例
 
 #### ・ユーザエージェント拒否
 

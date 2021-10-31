@@ -298,7 +298,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 Datadogによる分散トレースの監視については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html
 
 <br>
 

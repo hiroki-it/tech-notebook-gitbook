@@ -53,7 +53,7 @@ FluentBitコンテナをサイドカーコンテナとして稼働させ，ア�
 
 Datadogコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナからメトリクスを収集する．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_datadog.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html
 
 <br>
 

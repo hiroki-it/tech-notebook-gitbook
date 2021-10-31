@@ -1951,7 +1951,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
 
 <br>
 
@@ -2007,7 +2007,7 @@ class DogOrder
 | ---------------- | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Active Record    | データベース駆動 | ・非常に強い．<br>・手順としてテーブル設計が先にあり，一つのドメインモデルが一つのテーブルに対応している．<br>・テーブル間のリレーションシップによって，ドメインモデル間の依存関係が決まる． | ・Eloquent（PHP）<br>・Active Record（Ruby）<br>・Hibernate（Java） | ビジネスロジックが複雑でないアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | DataMapperパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
 | Data Mapper      | ドメイン駆動     | ・弱い<br>・Entityマネージャを用いて，ドメインモデルをDBに永続化する． | Doctrine                                                     | ビジネスロジックが複雑なアプリケーション<br>参考：https://www.informit.com/articles/article.aspx?p=1398618&seqNum=3 | ActiveRecordパターンと同じく，ORMの実装方法の一つである．<br>参考：https://culttt.com/2014/06/18/whats-difference-active-record-data-mapper/ |
-| Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br/> |                                                              | ビジネスロジックが複雑なアプリケーション                     | DB，RDMS，NoSQL，なんでもでもよい．                          |
+| Repository       | ドメイン駆動     | ・弱い<br>・手順としてドメインモデルの依存関係の設計が先にあり，テーブル間の関係性は自由である．一つのドメインモデルが複数のテーブルを参照してもよい．<br> |                                                              | ビジネスロジックが複雑なアプリケーション                     | DB，RDMS，NoSQL，なんでもでもよい．                          |
 | なし             | なし             | 非常に弱い                                                   | DBファサード                                                 |                                                              |                                                              |
 
 #### ・実装リポジトリ

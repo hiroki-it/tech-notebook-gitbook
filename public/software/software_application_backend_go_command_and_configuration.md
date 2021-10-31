@@ -173,7 +173,7 @@ $ go test -v ./...
 
 テスト時に，```xxxxx_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する．反対に，```xxxxx_test.go```ファイルがなければ，そのパッケージの網羅率は解析しない．網羅条件については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_testing.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_testing_based_on_code.html
 
 ```bash
 $ go test -cover ./...

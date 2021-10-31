@@ -196,7 +196,7 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 | サーバ稼働率                   | ECS         | ・```RunningTaskCount```                                     | ターゲット追跡スケーリングポリシーのECSサービスメトリクスも参考にせよ． |
 | データベース稼働率             | RDS         | ・```CPUUtilization```<br>・```FreeableMemory```             |                                                              |
 | レイテンシー                   | API Gateway | ・```Latency```<br>・```IntegrationLatency```                |                                                              |
-| レスポンスのステータスコード率 | API Gateway | ・```4XXError```<br/>・```5XXError```                        |                                                              |
+| レスポンスのステータスコード率 | API Gateway | ・```4XXError```<br>・```5XXError```                        |                                                              |
 |                                | ALB         | ・```HTTPCode_ELB_4XX_Count```<br>・```HTTPCode_ELB_5XX_Count```<br>・```HTTPCode_TARGET_4XX_Count```<br>・```HTTPCode_TARGET_5XX_Count```<br>・```RejectedConnectionCount```<br>・```HealthyHostCount```<br>・```TargetConnectionErrorCount```<br>・```TargetTLSNegotiationErrorCount``` | 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html |
 
 #### ・パフォーマンスに関するメトリクス

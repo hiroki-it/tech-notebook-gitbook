@@ -1016,7 +1016,7 @@ workflows:
 
 環境変数を```echo```の引数に指定する．あらかじめエンコードされた環境変数を管理しておき，```base64 --decode```を実行して出力すると，安全に環境変数を管理できる．ここで出力している環境変数は，以下のノートを参考にせよ
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_framework_vuejs.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_frontend_js_framework_nuxtjs.html
 
 ```yaml
 jobs:

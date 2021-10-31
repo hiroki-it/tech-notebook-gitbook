@@ -258,7 +258,7 @@ max_input_vars = 1000
 
 同じ送信元からの一分間あたりのリクエスト数を制限する．例えば，WAF，API Gatewayの機能を使用する．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
 <br>
 
@@ -280,7 +280,7 @@ max_input_vars = 1000
 
 プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる．プレースホルダーについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_package.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_package_mysql.html
 
 <br>
 

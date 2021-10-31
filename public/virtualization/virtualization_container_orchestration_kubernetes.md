@@ -74,7 +74,7 @@ spec:
 
 AWS ECSタスクにおける類似するessential機能やオートスケーリングについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
 **＊例＊**
 

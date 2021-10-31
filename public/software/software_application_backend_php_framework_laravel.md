@@ -259,7 +259,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
@@ -1383,7 +1383,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．リポジトリパターンについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_architecture_domain_driven_design_clean_architecture.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
 <br>
 
@@ -4999,9 +4999,9 @@ class TfaTokenNotification extends Notification
 ```html
 @component("mail::message")
 
-認証コード『{ $tfa_token }}』を入力して下さい．<br/>
+認証コード『{ $tfa_token }}』を入力して下さい．<br>
 
-+++++++++++++++++++++++++++++++++++++<br/>
++++++++++++++++++++++++++++++++++++++<br>
 本アドレスは送信専用です．ご返信頂いてもお答えできませんので、ご了承ください．
 
 @endcomponent
@@ -5713,7 +5713,7 @@ $ php artisan make:provider <クラス名>
 
 ServiceContainer，バインド，リゾルブについては，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
 
 ```php
 <?php
@@ -6885,7 +6885,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを用いたForm認証のために使用する．               |
-| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 
 #### ・カスタムガード
 
@@ -7417,7 +7417,7 @@ class FooController extends Controller
 
 Ouath認証を実装できる．OAuth認証については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
 
 <br>
 
@@ -7504,16 +7504,16 @@ OAuth認証に関して，以下のトークン付与タイプを実装できる
 
 | 付与タイプ               | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
-| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
-| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
-| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 
 #### ・その他
 
 | 認証方法              | 説明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html |
+| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 
 <br>
 
@@ -7798,7 +7798,7 @@ APIキー認証とセッションIDを用いたForm認証機能の認証処理�
 
 APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_and_backend_authentication_authorization.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
 
 <br>
 

@@ -314,13 +314,13 @@ cookie: sessionid=<セッションID>
 
 事前にAPIキーとなる文字列を配布し，認証フェースは行わずに認可フェーズのみでユーザを照合する方法のこと．API GatewayにおけるAPIキー認証については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
 #### ・照合情報の送信方法
 
 独自ヘッダーとして，```x-api-key```ヘッダーを定義する．これにAPIキーを割り当て，リクエストを送信する．リクエストヘッダへのパラメータの割り当てについては，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 ```http
 GET https://example.co.jp/bar.php HTTP/2
@@ -396,7 +396,7 @@ authorization: <Personal Acccess Token>
 3. クライアントが，HTTPリクエストのヘッダーにアクセストークンを設定してリクエスト．
 4. アクセストークンが『認可』されれば，API側がデータをレスポンスする．
 
-| 役割              | 説明                                                         | 具体例                                    |
+| 役割              | 説明                                                         | 例                                    |
 | ----------------- | ------------------------------------------------------------ | ----------------------------------------- |
 | APIクライアント   | APIに対して，リクエストを送信したいサーバのこと．            | Ouath認証の仕組みにおけるクライアント．   |
 | Identity Provider | トークンを生成するサーバのこと．                             | Ouath認証の仕組みにおける認可サーバ．     |
@@ -406,7 +406,7 @@ authorization: <Personal Acccess Token>
 
 認証フェーズにて，誤ったトークンが発行されたことを表現したい場合，401ステータスを使用する．認可フェーズにて，正しいトークンが発行されたが，トークンの所有者に閲覧権限がないことを表現したい場合，403ステータスを使用する．ステータスコードについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_api_restful.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 <br>
 
@@ -455,9 +455,9 @@ OAuth認証のトークンの付与方法には種類がある．
 | 付与タイプ名             | 説明                                                         | 使用例                          |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------- |
 | Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に使用する．推奨されている．<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携 |
-| Client Credentials Grant | 推奨されている．<br/>参考：https://oauth.net/2/grant-types/client-credentials/ |                                 |
-| Device Code              | 推奨されている．<br/>参考：https://oauth.net/2/grant-types/device-code/ |                                 |
-| Implicit Grant           | 非推奨されている．<br/>参考：https://oauth.net/2/grant-types/implicit/ |                                 |
+| Client Credentials Grant | 推奨されている．<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                 |
+| Device Code              | 推奨されている．<br>参考：https://oauth.net/2/grant-types/device-code/ |                                 |
+| Implicit Grant           | 非推奨されている．<br>参考：https://oauth.net/2/grant-types/implicit/ |                                 |
 | Password Grant           | ユーザ名とパスワードを元に，トークンを付与する．非推奨されている．<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant |                                 |
 
 <br>

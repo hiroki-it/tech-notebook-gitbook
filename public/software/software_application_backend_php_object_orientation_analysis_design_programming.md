@@ -67,8 +67,8 @@
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
 
 #### ・構造の視点による分析／設計とは
 
@@ -76,8 +76,8 @@
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
 
 <br>
 
@@ -146,7 +146,7 @@
 
 アクターからアクターへの振舞の流れを，時間軸に沿って表記する方法．シーケンス図とは異なる．シーケンス図については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
 
 <br>
 
@@ -217,8 +217,8 @@
 
 以下のリンクを参考にせよ．
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_phpobject_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
 
 <br>
 
@@ -226,6 +226,6 @@
 
 以下のリンクを参考にせよ．
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
 

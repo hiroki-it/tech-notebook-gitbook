@@ -161,7 +161,7 @@ import 'dd-trace/init'
 
 #### ・分散トレースとは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html
 
 #### ・構造
 
@@ -193,7 +193,7 @@ Datadogにおいて，分散トレースはスパンをもつ配列データと�
 
 #### ・スパンとは
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability/observability.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html
 
 #### ・構造
 

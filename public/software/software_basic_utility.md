@@ -1347,7 +1347,7 @@ $ swapoff /swap_volume
 | ユーティリティ名                                        | 対象OS       | 依存関係のインストール可否 |
 | ------------------------------------------------------- | ------------ | -------------------------- |
 | Rpm：Red Hat Package Manager                            | RedHat系     | ✕                          |
-| Yum：Yellow dog Updater Modified<br/>DNF：Dandified Yum | RedHat系     | 〇                         |
+| Yum：Yellow dog Updater Modified<br>DNF：Dandified Yum | RedHat系     | 〇                         |
 | Apt：Advanced Packaging Tool                            | Debian系     | 〇                         |
 | Apk：Alpine Linux package management                    | Alpine Linux | 〇                         |
 
