@@ -103,7 +103,7 @@
       * [📖 ︎サイバー攻撃](public/network/network_security_cyber_attacks.md)
       * [📖 ︎通信データの暗号化技術](public/network/network_security_encryption_technology.md)
 
-* ︎クラウドコンピューティング
+* クラウドコンピューティング
   * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
   * AWS
     * [📖 ︎AWS](public/cloud_computing/cloud_computing_aws.md)
@@ -151,6 +151,7 @@
     * [📖 ︎メトリクス収集](public/observability/observability_datadog_metrics.md)
     * [📖 ︎ログ収集](public/observability/observability_datadog_log.md)
     * [📖 ︎分散トレース収集](public/observability/observability_datadog_distributed_trace.md)
+    * [📖 ︎テレメトリー間の紐づけ](public/observability/observability_datadog_distributed_trace.html)
     * [📖 ︎監視](public/observability/observability_datadog_monitering.md)
 
 * システム開発手法論
