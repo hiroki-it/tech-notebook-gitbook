@@ -4,7 +4,10 @@
 
 ### タグの種類
 
-参考：https://docs.datadoghq.com/ja/getting_started/tagging/
+参考：
+
+- https://docs.datadoghq.com/ja/getting_started/tagging/
+- https://www.datadoghq.com/ja/blog/tagging-best-practices/
 
 | タグ名        | 説明                                                         |
 | ------------- | ------------------------------------------------------------ |
@@ -27,7 +30,7 @@
 
 ### 各コンソール画面での使い方
 
-参考：https://docs.datadoghq.com/ja/getting_started/tagging/using_tags/?tab=containers
+参考：https://docs.datadoghq.com/ja/getting_started/tagging/using_tags/
 
 <br>
 
@@ -56,8 +59,4 @@
 ### サーバ／コンテナのメトリクスとの紐付け
 
 スパンとコンテナのDockerLabelの統合タグ（```service```，```env```，```version```）に，同じ値を割り当てると，分散トレースとサーバ／コンテナのOSに関するメトリクスを紐付けられる．
-
-
-
-<br>
 

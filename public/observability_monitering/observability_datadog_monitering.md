@@ -87,6 +87,8 @@
 
 通知先とテキストを定義する．マークダウン記法を使用できる．
 
+参考：https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
+
 ```markdown
 <!-- Datadogに設定した通知先 -->
 
@@ -96,7 +98,10 @@
 <!-- 復旧通知を転送しない場合，is_alert構文の中で定義する必要がある -->
 @<本番環境のアラートチャンネル>
 
+環境名：{{log.attributes.env}}
 アプリケーション名：{{log.attributes.service}}
+ソース名：{{log.tags.source}}
+リージョン名：{{log.attributes.region}}
 
 {{/is_alert}}
 ```

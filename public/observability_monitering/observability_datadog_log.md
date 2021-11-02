@@ -536,12 +536,12 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 }
 ```
 
-これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.awslogs.owner```属性のアカウントIDに応じて，```service```属性にサービス値（```foo```，```bar```，```baz```）を付与するようにする．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
+これに対して，以下のようなカテゴリパーサーのルールを定義する．```aws.invoked_function_arn```属性のLambdaのARN応じて，```service```属性にサービス値（```foo-apigateway```，```bar-apigateway```，```baz-apigateway```）を付与するようにする．この属性を使用する理由は，様々なAWSリソースの構造化ログが持っているためである（```owner```属性でもよい．ただし，おそらくS3からログを収集する場合はこれがない？）．元の構造化ログにすでに```service```属性があるため，この値が上書きされる．
 
 ```bash
-foo @aws.awslogs.owner:123456789
-bar @aws.awslogs.owner:987654321
-baz @aws.awslogs.owner:192837465
+foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
+bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:987654321:function:datadog-ForwarderStack-*****-Forwarder-*****"
+baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:192837465:function:datadog-ForwarderStack-*****-Forwarder-*****"
 ```
 
 これにより，構造化ログの```service```属性にサービス値が割り当てられる．なお，```service```属性以外は元の構造化ログと同じため，省略している．
@@ -552,7 +552,7 @@ baz @aws.awslogs.owner:192837465
   
     # ～ 中略 ～
     
-    "service": "foo",
+    "service": "foo-apigateway",
     
     # ～ 中略 ～
     
