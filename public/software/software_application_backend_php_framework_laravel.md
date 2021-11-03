@@ -329,7 +329,7 @@ ER図における各テーブルのリレーションシップを元に，モデ
 
 ER図については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_analysis_design_programming.html
 
 **＊実装例＊**
 
@@ -862,44 +862,9 @@ class FooDTO extends Model
 
 ### READ
 
-#### ・```find```メソッド
-
-SELECT文を実行し，レコードを一つ取得する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
-
-参考：
-
-- https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
-- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
-use App\Models\Foo;
-use Illuminate\Database\Eloquent\Collection;
-
-class FooController extends Controller
-{
-    /**
-     * @param int $id
-     * @return Collection
-     */
-    public function findById(int $id): Collection
-    {
-        $foo = new Foo();
-
-        return $foo->find($id);
-    }
-}
-```
-
 #### ・```all```メソッド
 
-SELECT文を実行し，レコードを全て取得する．MySQLを含むDBエンジンでは，取得結果に標準の並び順が存在しないため，プライマリキーの昇順で取得したい場合は，```orderBy```メソッドを使用して，明示的に並び替えるようにする．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
+レコードを全て取得するSELECT句を発行する．MySQLを含むDBエンジンでは，取得結果に標準の並び順が存在しないため，プライマリキーの昇順で取得したい場合は，```orderBy```メソッドを使用して，明示的に並び替えるようにする．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
 
 参考：
 
@@ -934,11 +899,9 @@ class FooController extends Controller
 }
 ```
 
-#### ・```sortBy```メソッド
+#### ・```first```メソッド
 
-SELECT文を実行し，レコードを指定したカラムの昇順で並び替えて取得する．
-
-参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+取得されたコレクション型データの一つ目の要素の値を取得する．ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合，コレクションとして取得されるが，コレクションが持つEloquentモデルは一つである．foreachを用いてコレクションからEloquentモデルを取り出してもよいが，無駄が多い．そこで，```first```メソッドを使用して，Eloquentモデルを直接取得する．
 
 **＊実装例＊**
 
@@ -954,22 +917,29 @@ use Illuminate\Database\Eloquent\Collection;
 class FooController extends Controller
 {
     /**
-     * @return Collection
+     * @param string $emailAddress
+     * @return Foo
      */
-    public function findAllByAsc(): Collection
+    public function findByEmail(string $emailAddress): Foo
     {
         $foo = new Foo();
 
-        return $foo->all()->sortBy('foo_id');
+        return $foo->where('foo_email', $emailAddress)->first();
     }
 }
+
 ```
 
-#### ・```sortByDesc```メソッド
+#### ・```find```メソッド
 
-SELECT文を実行し，レコードを指定したカラムの降順で並び替えて取得する．
+レコードを一つ取得するSELECT句を発行する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
 
-参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
+- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
+
+**＊実装例＊**
 
 ```php
 <?php
@@ -983,20 +953,56 @@ use Illuminate\Database\Eloquent\Collection;
 class FooController extends Controller
 {
     /**
+     * @param int $id
      * @return Collection
      */
-    public function findAllByDesc(): Collection
+    public function findById(int $id): Collection
     {
         $foo = new Foo();
 
-        return $foo->all()->sortByDesc('foo_id');
+        return $foo->find($id);
+    }
+}
+```
+
+#### ・```limit```メソッド，```offset```メソッド
+
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションにおいて，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すとよい．
+
+参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function findAllByPagination(Request $request): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->offset($request->offset)
+            ->limit($request->limit)
+            ->get();
     }
 }
 ```
 
 #### ・```orderBy```メソッド
 
-SELECT文を実行し，レコードを指定したカラムの昇順／降順で並び替える．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
+指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する．．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -1037,11 +1043,11 @@ class FooController extends Controller
 }
 ```
 
-#### ・```limit```メソッド，```offset```メソッド
+#### ・```sortBy```メソッド
 
-SELECT文を実行し，指定した開始地点から指定した件数のレコードを全て取得する．これにより，ページネーションにおいて，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すとよい．
+指定したカラムの昇順でレコードを並び替えるSELECT句を発行する．
 
-参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
 **＊実装例＊**
 
@@ -1053,21 +1059,46 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Foo;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
     /**
-     * @param Request $request
      * @return Collection
      */
-    public function findAllByPagination(Request $request): Collection
+    public function findAllByAsc(): Collection
     {
         $foo = new Foo();
 
-        return $foo->offset($request->offset)
-            ->limit($request->limit)
-            ->get();
+        return $foo->all()->sortBy('foo_id');
+    }
+}
+```
+
+#### ・```sortByDesc```メソッド
+
+指定したカラムの降順でレコードを並び替えるSELECT句を発行する．
+
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all()->sortByDesc('foo_id');
     }
 }
 ```
@@ -2131,7 +2162,7 @@ class ExecutorConstant
 
 エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出については言及しないこととする．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_error_and_error_handling.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_logic_error_and_error_handling.html
 
 <br>
 

@@ -47,6 +47,69 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
+### 01-03. 例外の定義
+
+### 標準例外クラス
+
+いずれもThrowableインターフェースを実装している．以下リンクを参考にせよ．
+
+参考：https://www.php.net/manual/ja/reserved.exceptions.php
+
+<br>
+
+### 独自例外クラス
+
+#### ・定義
+
+エラーの種類に合わせて，```Exception```クラスを継承した独自例外クラスを実装し，使い分けるとよい．```__construct```メソッドに，メッセージやエラーコード（例外コード）などを渡せる．エラーコードの標準値はゼロである．
+
+参考：https://www.php.net/manual/ja/exception.construct.php
+
+エラーコードはステータスコードと異なり，例外を識別するためのものである．異常系レスポンスのエラーコードデータとして使用される．混乱を避けるため，例外クラスのエラーコード値にステータスコードを割り当てないようにする．ステータスコードはコントローラにおけるレスポンス処理で割り当てる．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
+
+**＊実装例＊**
+
+『Foo変数が見つからない』というエラーに対応する例外クラスを定義する．
+
+```php
+<?php
+
+class FooNotFoundException extends Exception
+{
+    // 基本的に何も実装しない．
+    
+    // エラーコードとステータスコードは異なるもののため，以下のようにしないこと．
+    // protected $code = 400
+}
+```
+
+```php
+<?php
+
+use Exception\FooNotFound;
+
+function foo(string $foo) {
+    
+    if (empty($foo)) {
+        throw new FooNotFoundException("foo is not found.");
+    }
+    
+    return "これは ${foo} です．";
+}
+```
+
+#### ・命名規則
+
+何のエラーが発生したかを判断できるように，名前は『```<エラー名>Exception ```』とする．また，開発者にとって詳しく理解できるように，コンストラクタの引数にメッセージを渡す．
+
+（例）InvalidArgumentException，
+
+参考：https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a
+
+<br>
+
 ## 02. エラー検出と例外スロー
 
 ### エラー検出と例外スローの種類
@@ -91,57 +154,6 @@ function value() {
     }
         
     return "成功です．"
-}
-```
-
-<br>
-
-### 例外の種類
-
-#### ・標準例外クラス
-
-いずれもThrowableインターフェースを実装している．以下リンクを参考にせよ．
-
-参考：https://www.php.net/manual/ja/reserved.exceptions.php
-
-#### ・独自例外クラス
-
-エラーの種類に合わせて，```Exception```クラスを継承した独自例外クラスを実装し，使い分けるとよい．```__construct```メソッドに，メッセージやエラーコード（例外コード）などを渡せる．エラーコードの標準値はゼロである．
-
-参考：https://www.php.net/manual/ja/exception.construct.php
-
-エラーコードはステータスコードと異なり，例外を識別するためのものである．異常系レスポンスのエラーコードデータとして使用される．混乱を避けるため，例外クラスのエラーコード値にステータスコードを割り当てないようにする．ステータスコードはコントローラにおけるレスポンス処理で割り当てる．
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
-
-**＊実装例＊**
-
-『Foo変数が見つからない』というエラーに対応する例外クラスを定義する．
-
-```php
-<?php
-
-class FooNotFoundException extends Exception
-{
-    // 基本的に何も実装しない．
-    
-    // エラーコードとステータスコードは異なるもののため，以下のようにしないこと．
-    // protected $code = 400
-}
-```
-
-```php
-<?php
-
-use Exception\FooNotFound;
-
-function foo(string $foo) {
-    
-    if (empty($foo)) {
-        throw new FooNotFoundException("foo is not found.");
-    }
-    
-    return "これは ${foo} です．";
 }
 ```
 

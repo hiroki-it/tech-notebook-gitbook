@@ -138,7 +138,7 @@ class FormatValidator
 
 ユースケース図については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_object_orientation_analysis_design_programming.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_analysis_design_programming.html
 
 **＊実装例＊**
 
@@ -454,14 +454,14 @@ class FooCreateResponse
 
 **＊実装例＊**
 
-Slackへの通知処理をアプリケーションサービスとして切り分ける．
+エンティティへの通知処理をアプリケーションサービスとして切り分ける．
 
 ```php
 <?php
 
-namespace App\UseCase\Foo\Services\Notification;
+namespace App\UseCase\Foo\Services\Notify;
 
-class SlackNotification
+class NotifyFooService
 {
     /**
      * @var Message 
@@ -497,8 +497,8 @@ class FooInteractor
     public function foo()
     {
         $message = new Message(/* メッセージに関するデータを渡す */)
-        $slackNotification = new SlackNotification($message)
-        $slackNotification->notify();
+        $notifyFooService = new NotifyFooService($message)
+        $notifyFooService->notify();
     }
 }  
 ```
@@ -761,16 +761,65 @@ class YmdType extends Type
 
 #### ・ドメインサービスとは
 
-ドメイン層のエンティティに持たせるとやや不自然な汎用的なロジック（例：リポジトリを用いて，他のドメインモデルに対するアクセス処理など）を，ユースケース層にメソッドを提供する．この時，エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する．ちなみに，ドメイン層でリポジトリを用いることを嫌って，ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない．
+ドメイン層のエンティティに持たせるとやや不自然で，単体／複数のエンティティを対象として何かを実行するようなメソッドをドメインサービスとして切り分ける．全てのメソッドを一つのドメインサービスにまとめて管理するよりも，動作の種類ごとに分けて管理した方が良い．この時，エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する．ちなみに，ドメイン層でリポジトリを用いることを嫌って，ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない．
 
 参考：
 
 - https://github.com/little-hands/ddd-q-and-a/issues/159
 - https://www.amazon.co.jp/dp/B082WXZVPC
+- https://codezine.jp/article/detail/10318
+
+#### ・重複確認
+
+ドメイン層のリポジトリを用いて，該当の名前のエンティティがDBに存在するかどうかを検証する．ドメインサービスではなく，アプリケーションサービスとして定義しても良い．
+
+参考：
+
+- https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
+- https://www.amazon.co.jp/dp/B082WXZVPC
+- https://github.com/little-hands/ddd-q-and-a/issues/573
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\Foo\Services;
+
+class CheckDuplicateFooService
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepositoy;
+    
+    /**
+     * @param FooRepository $fooRepositoy
+     */
+    public function __construct(FooRepository $fooRepositoy)
+    {
+        $this->fooRepositoy = $fooRepositoy;
+    }
+    
+    /**
+     * エンティティがすでに存在しているかどうかを判定します．
+     *
+     * @param Foo $foo
+     * @return bool
+     */
+    public function exists(Foo $foo): bool
+    {
+        $foo = $this->fooRepository
+            ->findByName($foo->name());
+
+        return $foo !== null;
+    }
+}
+```
 
 #### ・認可
 
-ドメイン層のリポジトリを用いて，該当のIDのエンティティに対してアクセス可能かを検証する．
+ドメイン層のリポジトリを用いて，該当のIDのエンティティに対してアクセス可能かを検証する．ドメインサービスではなく，アプリケーションサービスとして定義しても良い．
 
 参考：
 
@@ -784,9 +833,9 @@ class YmdType extends Type
 ```php
 <?php
 
-namespace App\Usecase\Foo\Services\Authorizer;
+namespace App\Domain\Foo\Services;
 
-class FooAuthorizer
+class AuthorizeFooService
 {
     /**
      * @var FooRepository
@@ -810,54 +859,10 @@ class FooAuthorizer
      */
     public function canUpdateById(FooId $fooId, UserId $userId): bool
     {
-        return $this->fooRepository->findById($fooId)->userId->equals($userId);
-    }
-}
-```
-
-#### ・重複確認
-
-ドメイン層のリポジトリを用いて，該当の名前のエンティティがDBに存在するかどうかを検証する．
-
-参考：
-
-- https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
-- https://www.amazon.co.jp/dp/B082WXZVPC
-- https://github.com/little-hands/ddd-q-and-a/issues/573
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Domain\Foo\Services;
-
-class FooService
-{
-    /**
-     * @var FooRepository
-     */
-    private FooRepository $fooRepositoy;
-    
-    /**
-     * @param FooRepository $fooRepositoy
-     */
-    public function __construct(FooRepository $fooRepositoy)
-    {
-        $this->fooRepositoy = $fooRepositoy;
-    }
-    
-    /**
-     * エンティティがすでに存在しているかどうかを判定します．
-     *
-     * @param Foo $foo
-     * @return bool
-     */
-    public function exists(Foo $foo): bool
-    {
-        $foo = $this->fooRepository->findByName($foo->name());
-
-        return $foo !== null;
+        return $this->fooRepository
+            ->findById($fooId)
+            ->userId
+            ->equals($userId);
     }
 }
 ```
@@ -974,15 +979,82 @@ class FooCriteria
 
 <br>
 
+## 04-02. ドメイン層のロジックの流出 
+
 ### ドメイン貧血症
 
 #### ・ドメイン貧血症とは
 
-ドメイン層に配置されながらも，ビジネスロジックをほとんど持たないオブジェクトのこと．
+ドメイン層のドメインオブジェクトがビジネスロジックをほとんど持たない状態になっていること．
 
-#### ・ドメインサービスにおける注意点
+**＊実装例＊**
 
-ドメイン層のロジックをドメインサービスに切り分けすぎると，ドメイン層のオブジェクトがゲッターとセッターしか持たないオブジェクトになってしまう．これは，ドメイン貧血症の状態である．そのため，ドメインサービス層の構築は控えめにし，可能な限りエンティティ／値オブジェクトとして実装する．
+ドメインオブジェクトであるエンティティがゲッターとセッターしか持っていない．これは，ドメイン貧血症である．
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Domain\User\Entities;
+
+use App\Domain\User\Ids\UserId;
+use App\Domain\User\ValueObjects\UserName;
+
+final class User
+{
+    /**
+     * @var UserId
+     */
+    private UserId $userId;
+
+    /**
+     * @var UserName
+     */
+    private UserName $userName;
+
+    /**
+     * @param UserId           $userId
+     * @param UserName         $userName
+     */
+    public function __construct(UserId $userId, UserName $userName)
+    {
+        $this->userId = $userId;
+        $this->userName = $userName;
+    }
+
+    /**
+     * @return UserId
+     */
+    public function id()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @return UserName
+     */
+    public function userName()
+    {
+        return $this->userName;
+    }
+}
+
+```
+
+<br>
+
+### ドメイン層のドメインサービスへの流出
+
+ドメイン層のロジックをドメインサービスに切り分けすぎると，同じくドメイン層のエンティティや値オブジェクトに実装するドメインロジックがなくなってしまい，ドメイン貧血症になる．そのため，ドメインサービス層の構築は控えめにする．
+
+<br>
+
+### ユースケース層のアプリケーションサービスへの流出
+
+ドメイン層のロジックをユースケース層のユースケース層に実装してしまうと，ドメイン層のエンティティや値オブジェクトに実装するドメインロジックがなくなってしまい，ドメイン貧血症になる．ドメイン層とユースケース層のアプリケーションサービスのいずれに実装するべきかは，モデリングの対象がビジネスルールに基づくものなのか，システム利用者のユースケースに基づくものなのかである．
+
+参考：https://www.amazon.co.jp/dp/B082WXZVPC
 
 <br>
 
@@ -2401,7 +2473,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり，スローされた例外を対処する責務は，より上位レイヤーに持たせる．より上位レイヤーでは，そのレイヤーに合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_logic_catch_error_throw_exception_logging.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_logic_error_and_error_handling.html
 
 <br>
 

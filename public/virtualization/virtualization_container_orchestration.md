@@ -47,7 +47,7 @@
 
 FluentBitコンテナをサイドカーコンテナとして稼働させ，アプリケーションコンテナから送信されたログを他にルーティングする．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_fluentd_and_fluentbit.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentbit.html
 
 #### ・メトリクス収集コンテナの配置
 

@@ -565,7 +565,74 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:19283746
 
 これに対して，サービスリマッパーのルールを定義する．```service```属性のサービス値が，サービスファセットとして登録されるようにする．
 
-#### ・カテゴリパーサー
+#### ・ユーザエージェントパーサー
+
+**＊例＊**
+
+Nginxから，以下のような非構造化ログを受信するとする．
+
+```log
+nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
+```
+
+これに対して，以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
+
+```bash
+access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
+access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
+```
+
+これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  "date_access": 12345,
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {
+    "bytes_written": 17,
+    "client": {
+      "ip": "nn.nnn.nnn.nn"
+    }
+  }
+}
+```
+
+これに対して，ユーザエージェントパーサーのルールを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分けるようにする．これにより，構造化ログの各属性に値が割り当てられる．
+
+```bash
+{
+  # ～ 中略 ～
+
+  "useragent_details": {
+    "browser": {
+      "family": "Chrome"
+    },
+    "device": {
+      "category": "Other",
+      "family": "Other"
+    },
+    "os": {
+      "family": "Linux"
+    }
+  }
+  
+  # ～ 中略 ～
+}
+```
+
+<br>
+
+### プロセッサー系
+
+#### ・カテゴリプロセッサー
 
 検索条件に一致する属性を持つ構造化ログに対して，属性を新しく付与する．
 
@@ -635,69 +702,6 @@ error   @http.status_code:[500 TO 599]
 ```
 
 これに対して，ステータスリマッパーのルールを定義する．```http.status_category```属性のステータスレベル値が，ステータスファセット（```INFO```，```WARNING```，```ERROR```，など）として登録されるようにする．
-
-#### ・ユーザエージェントパーサー
-
-**＊例＊**
-
-Nginxから，以下のような非構造化ログを受信するとする．
-
-```log
-nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
-```
-
-これに対して，以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
-
-```bash
-access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
-access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
-```
-
-これにより，構造化ログの各属性に値が割り当てられる．
-
-```bash
-{
-  "date_access": 12345,
-  "http": {
-    "method": "GET",
-    "referer": "-",
-    "status_code": 200,
-    "url": "/healthcheck",
-    "useragent": "ELB-HealthChecker/2.0",
-    "version": "1.1"
-  },
-  "network": {
-    "bytes_written": 17,
-    "client": {
-      "ip": "nn.nnn.nnn.nn"
-    }
-  }
-}
-```
-
-これに対して，ユーザエージェントパーサーのルールを定義する．```http.useragent```属性の値を分解し，```useragent_details```属性に振り分けるようにする．これにより，構造化ログの各属性に値が割り当てられる．
-
-```bash
-{
-  # ～ 中略 ～
-
-  "useragent_details": {
-    "browser": {
-      "family": "Chrome"
-    },
-    "device": {
-      "category": "Other",
-      "family": "Other"
-    },
-    "os": {
-      "family": "Linux"
-    }
-  }
-  
-  # ～ 中略 ～
-}
-```
 
 <br>
 
