@@ -53,8 +53,8 @@
           * [📖 ︎反復ロジック](public/software/software_application_backend_php_logic_iteration.md)
           * [📖 ︎アルゴリズム](public/software/software_application_backend_php_logic_algorithm.md)
         * フレームワーク
-          * [📖 ︎Symfony](public/software/software_application_backend_php_framework_symfony.md)
           * [📖 ︎Laravel](public/software/software_application_backend_php_framework_laravel.md)
+          * [📖 ︎Symfony](public/software/software_application_backend_php_framework_symfony.md)
         * パッケージ
           * [📖 ︎パッケージ管理](public/software/software_application_backend_php_package_management.md)
           * [📖 ︎MySQLパッケージ](public/software/software_application_backend_php_package_mysql.md)
