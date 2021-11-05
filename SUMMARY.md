@@ -45,9 +45,9 @@
         * PHP
           * [📖 PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
           * クラスベース
-            * [📖 ︎クラス](public/software/software_application_object_oriented_language_php_object_orientation_class.md)
-            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_php_object_orientation_method_data.md)
-            * [📖 ︎データ構造](public/software/software_application_object_oriented_language_php_object_orientation_data_structure.md)
+            * [📖 ︎クラス](public/software/software_application_object_oriented_language_php_class_based.md)
+            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_php_class_based_method_data.md)
+            * [📖 ︎データ構造](public/software/software_application_object_oriented_language_php_class_based_data_structure.md)
           * ロジック
             * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_php_logic_validation.md)
             * [📖 ︎エラーとエラーハンドリング](public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.md)
@@ -68,8 +68,8 @@
             * [📖 ︎デバッグ](public/software/software_application_object_oriented_language_php_debug.md)
         * JavaScript
           * プロトタイプベース
-            * [📖 ︎プロトタイプ](public/software/software_application_object_oriented_language_js_object_orientation_prototype.md)
-            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_js_object_orientation_method_data.md)
+            * [📖 ︎プロトタイプ](public/software/software_application_object_oriented_language_js_prototype_based.md)
+            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_js_prototype_based_method_data.md)
           * ロジック
             * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_js_logic_validation.md)
             * [📖 ︎非同期処理ロジック](public/software/software_application_object_oriented_language_js_logic_asynchronous_process.md)
