@@ -1,4 +1,5 @@
 # Summary
+
 * [📖 ︎このサイトについて](README.md)
 
 * [📖 ︎サイト管理者](public/self_introduction.md)
@@ -25,12 +26,12 @@
       * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
-      * バックエンドアーキテクチャ
+      * バックエンド
         * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_backend_microservice.md)
         * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
         * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
         * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
-      * フロントエンドアーキテクチャ
+      * フロントエンド
         * [📖 ︎フロントエンドアーキテクチャ](public/software/software_application_architecture_frontend.md)
     * アプリケーション間連携
       * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
@@ -39,56 +40,56 @@
       * RESTful-API
         * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
         * [📖 ︎API仕様書](public/software/software_application_collaboration_api_restful_api_specification.md)
-    * バックエンド 
-      * PHP
-        * [📖 PHPコマンドと設定](public/software/software_application_backend_php_command_and_configuration.md)
-        * クラスベースオブジェクト指向
-          * [📖 ︎オブジェクト指向分析／設計／プログラミング](public/software/software_application_backend_php_object_orientation_analysis_design_programming.md)
-          * [📖 ︎クラス](public/software/software_application_backend_php_object_orientation_class.md)
-          * [📖 ︎メソッド／データ](public/software/software_application_backend_php_object_orientation_method_data.md)
-          * [📖 ︎データ構造](public/software/software_application_backend_php_object_orientation_data_structure.md)
-        * ロジック
-          * [📖 ︎検証ロジック](public/software/software_application_backend_php_logic_validation.md)
-          * [📖 ︎エラーとエラーハンドリング](public/software/software_application_backend_php_logic_error_and_error_handling.md)
-          * [📖 ︎反復ロジック](public/software/software_application_backend_php_logic_iteration.md)
-          * [📖 ︎アルゴリズム](public/software/software_application_backend_php_logic_algorithm.md)
-        * フレームワーク
-          * [📖 ︎Laravel](public/software/software_application_backend_php_framework_laravel.md)
-          * [📖 ︎Symfony](public/software/software_application_backend_php_framework_symfony.md)
-        * パッケージ
-          * [📖 ︎パッケージ管理](public/software/software_application_backend_php_package_management.md)
-          * [📖 ︎MySQLパッケージ](public/software/software_application_backend_php_package_mysql.md)
-          * [📖 ︎その他パッケージ](public/software/software_application_backend_php_package_others.md)
-        * テスト
-          * [📖 ︎テスト](public/software/software_application_backend_php_testing.md)
-          * [📖 ︎コードベースのテスト](public/software/software_application_backend_php_testing_based_on_code.md)
-          * [📖 ︎テスト仕様書ベースのテスト](public/software/software_application_backend_php_testing_based_on_test_specification.md)
-        * デバッグ
-          * [📖 ︎デバッグ](public/software/software_application_backend_php_debug.md)
-      * Go
-        * [📖 Goとは](public/software/software_application_backend_go.md)
-        * [📖 Goコマンドと設定](public/software/software_application_backend_go_command_and_configuration.md)
-        * ロジック
-          * [📖 メソッド，データ](public/software/software_application_backend_go_logic_method_data.md)
-        * パッケージ／フレームワーク
-          * [📖 パッケージ](public/software/software_application_backend_go_package.md)
-          * [📖 Gin](public/software/software_application_backend_go_framework_gin.md)
-    * フロントエンド 
-      * JavaScript
-        * プロトタイプベースオブジェクト指向
-          * [📖 ︎プロトタイプ](public/software/software_application_frontend_js_object_orientation_prototype.md)
-          * [📖 ︎メソッド／データ](public/software/software_application_frontend_js_object_orientation_method_data.md)
-        * ロジック
-          * [📖 ︎検証ロジック](public/software/software_application_frontend_js_logic_validation.md)
-          * [📖 ︎非同期処理ロジック](public/software/software_application_frontend_js_logic_asynchronous_process.md)
-        * パッケージ／フレームワーク
-          * [📖 ︎パッケージ](public/software/software_application_frontend_js_package.md)
-          * [📖 ︎Vue.js](public/software/software_application_frontend_js_framework_vuejs.md)
-          * [📖 ︎Nuxt.js](public/software/software_application_frontend_js_framework_nuxtjs.md)
-        * デバッグ
-          * [📖 ︎デバッグ](public/software/software_application_frontend_js_debug.md)
-        * ブラウザ
-          * [📖 ︎ブラウザレンダリング](public/software/software_application_frontend_js_browser_rendering.md)
+    * 言語
+      * [📖 ︎オブジェクト指向型言語](public/software/software_application_object_oriented_language.md)
+        * PHP
+          * [📖 PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
+          * クラスベース
+            * [📖 ︎クラス](public/software/software_application_object_oriented_language_php_object_orientation_class.md)
+            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_php_object_orientation_method_data.md)
+            * [📖 ︎データ構造](public/software/software_application_object_oriented_language_php_object_orientation_data_structure.md)
+          * ロジック
+            * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_php_logic_validation.md)
+            * [📖 ︎エラーとエラーハンドリング](public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.md)
+            * [📖 ︎反復ロジック](public/software/software_application_object_oriented_language_php_logic_iteration.md)
+            * [📖 ︎アルゴリズム](public/software/software_application_object_oriented_language_php_logic_algorithm.md)
+          * フレームワーク
+            * [📖 ︎Laravel](public/software/software_application_object_oriented_language_php_framework_laravel.md)
+            * [📖 ︎Symfony](public/software/software_application_object_oriented_language_php_framework_symfony.md)
+          * パッケージ
+            * [📖 ︎パッケージ管理](public/software/software_application_object_oriented_language_php_package_management.md)
+            * [📖 ︎MySQLパッケージ](public/software/software_application_object_oriented_language_php_package_mysql.md)
+            * [📖 ︎その他パッケージ](public/software/software_application_object_oriented_language_php_package_others.md)
+          * テスト
+            * [📖 ︎テスト](public/software/software_application_object_oriented_language_php_testing.md)
+            * [📖 ︎コードベースのテスト](public/software/software_application_object_oriented_language_php_testing_based_on_code.md)
+            * [📖 ︎テスト仕様書ベースのテスト](public/software/software_application_object_oriented_language_php_testing_based_on_test_specification.md)
+          * デバッグ
+            * [📖 ︎デバッグ](public/software/software_application_object_oriented_language_php_debug.md)
+        * JavaScript
+          * プロトタイプベース
+            * [📖 ︎プロトタイプ](public/software/software_application_object_oriented_language_js_object_orientation_prototype.md)
+            * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_js_object_orientation_method_data.md)
+          * ロジック
+            * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_js_logic_validation.md)
+            * [📖 ︎非同期処理ロジック](public/software/software_application_object_oriented_language_js_logic_asynchronous_process.md)
+          * パッケージ／フレームワーク
+            * [📖 ︎パッケージ](public/software/software_application_object_oriented_language_js_package.md)
+            * [📖 ︎Vue.js](public/software/software_application_object_oriented_language_js_framework_vuejs.md)
+            * [📖 ︎Nuxt.js](public/software/software_application_object_oriented_language_js_framework_nuxtjs.md)
+          * デバッグ
+            * [📖 ︎デバッグ](public/software/software_application_object_oriented_language_js_debug.md)
+          * ブラウザ
+            * [📖 ︎ブラウザレンダリング](public/software/software_application_object_oriented_language_js_browser_rendering.md)
+      * 手続き型言語
+        * Go
+          * [📖 Goとは](public/software/software_application_procedural_language_go.md)
+          * [📖 Goコマンドと設定](public/software/software_application_procedural_language_go_command_and_configuration.md)
+          * ロジック
+            * [📖 メソッド，データ](public/software/software_application_procedural_language_go_logic_method_data.md)
+          * パッケージ／フレームワーク
+            * [📖 パッケージ](public/software/software_application_procedural_language_go_package.md)
+            * [📖 Gin](public/software/software_application_procedural_language_go_framework_gin.md)
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
@@ -96,12 +97,12 @@
   * [📖 ︎組み込み機器](public/hardware/hardware_embedded_system.md)
 
 * ネットワーク
-    * [📖 ︎ネットワーク](public/network/network.md)
-    * データ通信の仕組み
-      * [📖 ︎OSI参照モデル／TCP階層モデル](public/network/network_osi_tcp_model.md)
-    * セキュリティ
-      * [📖 ︎サイバー攻撃](public/network/network_security_cyber_attacks.md)
-      * [📖 ︎通信データの暗号化技術](public/network/network_security_encryption_technology.md)
+  * [📖 ︎ネットワーク](public/network/network.md)
+  * [📖 ︎OSI参照モデル／TCP階層モデル](public/network/network_osi_tcp_model.md)
+
+* セキュリティ
+  * [📖 ︎サイバー攻撃](public/security/security_cyber_attacks.md)
+  * [📖 ︎通信データの暗号化技術](public/security/security_encryption_technology.md)
 
 * クラウドコンピューティング
   * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
@@ -163,3 +164,4 @@
 
 * 統計解析
   * [📖 ︎R言語](public/statistic_analysis/statistic_analysis_r.md)
+
