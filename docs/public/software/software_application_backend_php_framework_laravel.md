@@ -1,0 +1,8117 @@
+# Laravel
+
+## はじめに
+
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
+## 01. Laravelの全体像
+
+### ライフサイクル
+
+![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/laravel-lifecycle.png)
+
+大まかな処理フローは以下の通りである．
+
+参考：https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
+
+|      | 用語                                                    | 説明                                                         |
+| ---- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| 1    | リクエストを受信する．                                  |                                                              |
+| 2    | ```index.php```ファイル                                 | エントリポイントから処理が始まる．                           |
+| 3    | Autoload                                                | ```autoload.php```ファイルにて，ライブラリを自動でロードする． |
+| 4    | Load App                                                | ```bootstrap/app.php```ファイルにて，ServiceContainer（```Illuminate\Foundation\Application.php```）を実行する． |
+| 5    | Http Kernel                                             | Kernelを実行する．                                           |
+| 6    | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの```register```メソッドや```boot```メソッドを実行する．これにより，ServiceContainerにクラスがバインドされる． |
+| 7    | Middleware                                              | BeforeMiddlewareを実行する．                                 |
+| 8    | ・Dispatch by Router<br>・Routes Match                  | ```web.php```ファイル，```app.php```ファイルなどのルーティング定義を元に，Routerが実行する． |
+| 9    | FormRequest                                             | バリデーションを実行する．                                   |
+| 10   | Controller                                              | Controllerを基点として，データベースにまで処理が走る．       |
+| 11   | Resource                                                | データベースから取得したコレクション型データを配列型データに変換する． |
+| 12   | Response                                                | Responseを実行する．配列型データをJSONデータに変換する．     |
+| 13   | Terminate Middleware                                    | AfterMiddlewareが実行される．                                |
+| 14   | View                                                    | bladeファイルに基づいて静的ファイルが構築される．            |
+| 15   | レスポンスを返信する．                                  |                                                              |
+
+<br>
+
+### コンポーネントのソースコード
+
+Laravelの各コンポーネントには，似たような名前のメソッドが多く内蔵されている．そのため，同様の機能を実現するために，各々が異なるメソッドを使用しがちになる．その時，各メソッドがブラックボックスにならないように，処理の違いをソースコードから確認する必要がある．
+
+参考：https://laravel.com/api/8.x/Illuminate.html
+
+<br>
+
+## 02. Application
+
+### App
+
+#### ・設定方法
+
+```bash
+APP_NAME=<サービス名>
+APP_ENV=<環境名>
+APP_KEY=<セッションの作成やパスワードの暗号化に使う認証キー>
+APP_DEBUG=<デバッグモードの有効無効化>
+APP_URL=<アプリケーションのURL>
+```
+
+#### ・```app.php```ファイルの基本設定
+
+```php
+<?php
+
+return [
+    // アプリケーション名
+    "name"            => env("APP_NAME", "Laravel"),
+
+    // 実行環境名
+    "env"             => env("APP_ENV", "production"),
+
+    // エラー時のデバッグ画面の有効化
+    "debug"           => (bool)env("APP_DEBUG", false),
+
+    // アプリケーションのURL
+    "url"             => env("APP_URL", "http://localhost"),
+
+    // assetヘルパーで付与するURL
+    "asset_url"       => env("ASSET_URL", null),
+
+    // タイムゾーン
+    "timezone"        => "UTC",
+
+    // 言語設定
+    "locale"          => "ja",
+    "fallback_locale" => "en",
+    "faker_locale"    => "ja_JP",
+
+    // セッションの作成やパスワードの暗号化に使う認証キー
+    "key"             => env("APP_KEY"),
+
+    // 暗号化アルゴリズム
+    "cipher"          => "AES-256-CBC",
+
+    // サービスプロバイダー
+    "providers"       => [
+
+    ],
+
+    // クラス名のエイリアス
+    "aliases"         => [
+
+    ],
+];
+```
+
+<br>
+
+## 03. Console
+
+### Command
+
+artisanコマンドで実行可能なコマンド処理を定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Log;
+
+class FooCommand extends Command
+{
+    /**
+     * @var string
+     */
+    protected $signature = 'do-foo {bar}'; // コマンドとパラメータ
+
+    /**
+     * @var string
+     */
+    protected $description = 'コマンドの仕様を記入します'; // コマンドの説明文
+
+    /**
+     * @return void
+     */
+    public function handle(): void
+    {
+        Log::info('START: artisan do-foo');
+        
+        // パラメータを取得します．
+        $bar = $this->argument('bar');
+
+        // 何らかのコマンド処理
+
+        Log::info('END: artisan do-foo');
+    }
+}
+```
+
+定義したCommandクラスは，以下のように実行できる．
+
+```bash
+$ php artisan command:do-foo
+```
+
+<br>
+
+## 04. Database
+
+### データベース接続
+
+#### ・設定方法
+
+環境変数を```.env```ファイルに実装する．```database.php```ファイルから，指定された設定が選択される．
+
+```bash
+DB_CONNECTION=<RDB名>
+DB_HOST=<ホスト名>
+DB_PORT=<ポート番号>
+DB_DATABASE=<データベース名>
+DB_USERNAME=<アプリケーションユーザ名>
+DB_PASSWORD=<アプリケーションユーザのパスワード>
+```
+
+#### ・RDBとRedisの選択
+
+```php
+<?php
+
+return [
+
+    // 使用するDBMSを設定
+    "default"     => env("DB_CONNECTION", "mysql"),
+
+    "connections" => [
+
+        // データベース接続情報（SQLite）
+        "sqlite" => [
+
+        ],
+
+        // データベース接続情報（MySQL）
+        "mysql"  => [
+
+        ],
+
+        // データベース接続情報（pgSQL）
+        "pgsql"  => [
+
+        ],
+
+        // データベース接続情報（SQLSRV）
+        "sqlsrv" => [
+
+        ],
+    ],
+
+    // マイグレーションファイルのあるディレクトリ
+    "migrations"  => "migrations",
+
+    // Redis接続情報
+    "redis"       => [
+
+    ],
+];
+```
+
+<br>
+
+### Redis
+
+#### ・クエリCache管理
+
+環境変数を```.env```ファイルに実装する必要がある．
+
+```bash
+CACHE_DRIVER=redis
+REDIS_HOST=<Redisのホスト>
+REDIS_PASSWORD=<Redisのパスワード>
+REDIS_PORT=<Redisのポート>
+```
+
+<br>
+
+## 05. Eloquentモデル
+
+### artisanコマンドによる操作
+
+#### ・クラスの自動生成
+
+```bash
+$ php artisan make:model <Eloquentモデル名>
+```
+
+<br>
+
+### Active Recordパターン
+
+#### ・Active Recordパターンとは
+
+テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
+
+![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
+
+#### ・メリット／デメリット
+
+| 項目             | メリット                                                     | デメリット                                                   |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 保守性           | テーブル間のリレーションが，そのままモデル間の依存関係になるため，モデル間の依存関係を考える必要がなく，開発が早い．そのため，ビジネスロジックが複雑でないアプリケーションの開発に適している． | ・反対に，モデル間の依存関係によってテーブル間のリレーションが決まる．そのため，複雑な業務ロジックでモデル間が複雑な依存関係を持つと，テーブル間のリレーションも複雑になっていってしまう．<br>・モデルに対応するテーブルに関して，必要なカラムだけでなく，全てのカラムから取得するため，アプリケーションに余分な負荷がかかる． |
+| 拡張性           | テーブル間のリレーションがモデル間の依存関係によって定義されており，JOIN句を使用せずに，各テーブルから必要なレコードを取得できる．そのため，テーブルを増やすやすい． |                                                              |
+| 可読性           | ・モデルとこれのプロパティがそのままテーブルになるため，モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい．（Userモデル ⇄ usersテーブル）<br>・リレーションを理解する必要があまりなく，複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい． |                                                              |
+
+<br>
+
+### テーブル設計を元にしたEloquentモデル
+
+#### ・Eloquentモデルの継承
+
+Eloquentモデルを継承したクラスは，```INSERT```文や```UPDATE```文などのデータアクセスロジックを使用できるようになる．
+
+**＊実装例＊**
+
+````php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    // クラスチェーンによって，データアクセスロジックをコール
+}
+````
+
+
+#### ・テーブルの定義
+
+テーブルを定義するため，```table```プロパティにテーブル名を割り当てる．ただし，```table```プロパティにテーブル名を代入する必要はない．Eloquentがクラス名の複数形をテーブル名と見なし，これをスネークケースにした文字列を```table```プロパティに自動的に代入する．また，テーブル名を独自で命名したい場合は，代入によるOverrideを行っても良い．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * @var string
+     */
+    protected $table = "foos"; // Eloquentモデルと関連しているテーブル
+}
+```
+
+#### ・テーブル間リレーションシップの定義
+
+ER図における各テーブルのリレーションシップを元に，モデル間の関連性を定義する．```hasOne```メソッド，```hasMany```メソッド，```belongsTo```メソッドを用いて表現する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
+- https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
+
+ER図については，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_analysis_design_programming.html
+
+**＊実装例＊**
+
+Departmentモデルにおいて，```hasMany```メソッドを用いて，Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Department extends Model
+{
+    /**
+     * @var string 
+     */
+    protected $primaryKey = "department_id"; // 主キーとするカラム
+
+     /**
+     * @return HasMany
+     */
+    public function employees(): HasMany
+    {
+        // 一対多の関係を定義します．（デフォルトではemployee_idに紐付けます）
+        return $this->hasMany(Employee::class);
+    }
+}
+```
+
+また，Employeesモデルにおいては，```belongsTo```メソッドを用いて，Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Employee extends Model
+{
+    /**
+     * @var string 
+     */
+    protected $primaryKey = "employee_id"; // 主キーとするカラム
+
+    /**
+     * @return BelongsTo
+     */
+    public function department(): BelongsTo
+    {
+        // 多対一の関係を定義します．（デフォルトではdepartment_idに紐付けます）
+        return $this->belongsTo(Department::class);
+    }
+}
+```
+
+リレーションに基づいてJOIN句のSQLを発行するために，Departmentモデル（親）の```hasMany```メソッドを実行する．これにより，DepartmentモデルのIDに紐付くEmployeesモデル（子）を配列で参照できる．
+
+```php
+<?php
+
+// Departmentオブジェクトを取得
+$department = Department::find(1);
+
+// 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得
+$employees = $department->employees()
+```
+
+#### ・主キーカラムの定義
+
+Eloquentは，```primaryKey```プロパティの値を主キーのカラム名と見なす．```keyType```プロパティで主キーのデータ型，また```incrementing```プロパティで主キーのAutoIncrementを有効化するか否か，を設定できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * @var string 
+     */
+    protected $primaryKey = "foo_id"; // 主キーとするカラム（デフォルトではidが主キー）
+    
+    /**
+     * @var string 
+     */
+    protected $keyType = "int"; // 主キーのデータ型
+    
+    /**
+     * @var bool 
+     */
+    public $incrementing = true; // 主キーのAutoIncrementの有効化します．
+}
+```
+
+#### ・TIMESTAMP型カラムの定義
+
+Eloquentは，```timestamps```プロパティの値が```true```の時に，Eloquentモデルに紐付くテーブルの```created_at```カラムと```updated_at```カラムを自動的に更新する．また，TIMESTAMP型カラム名を独自で命名したい場合は，代入によるOverideを行っても良い．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    const CREATED_AT = "created_date_time";
+    const UPDATED_AT = "updated_data_time";
+    
+    /**
+     * @var bool
+     */
+    protected $timestamps = true; // Eloquentモデルのタイムスタンプを更新するかの指示します．
+}
+```
+
+
+#### ・TIMESTAMP型カラム読み出し時のデータ型変換
+
+データベースからタイムスタンプ型カラムを読み出すと同時に，CarbonのDateTimeクラスに変換したい場合，```data```プロパティにて，カラム名を設定する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * CarbonのDateTimeクラスに自動変換したいカラム名
+     *
+     * @var array
+     */
+    protected $dates = [
+        "created_at",
+        "updated_at",
+        "deleted_at"
+    ];
+}
+
+```
+
+
+#### ・カラムデフォルト値の定義
+
+特定のカラムのデフォルト値を設定したい場合，```attributes```プロパティにて，カラム名と値を定義する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * カラム名とデフォルト値
+     *
+     * @var array
+     */
+    protected $attributes = [
+        "is_deleted" => false,
+    ];
+}
+```
+
+#### ・変更可能／不可能なカラムの定義
+
+変更可能なカラム名を```fillable```プロパティを用いて定義する．カラムが増えるたびに，実装する必要がある．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * カラム名
+     *
+     * @var array
+     */
+    protected $fillable = [
+        "name",
+    ];
+}
+```
+
+もしくは，変更不可能なカラム名を```guarded```プロパティで定義する．これらのいずれかの設定は，Eloquentモデルにおいて必須である．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * カラム名
+     *
+     * @var array
+     */
+    protected $guarded = [
+        "bar",
+    ];
+}
+```
+
+<br>
+
+### 使用に注意する機能
+
+#### ・セッター
+
+Laravelでは，プロパティを定義しなくても，Eloquentモデルからプロパティをコールすれば，処理の度に動的にプロパティを定義できる．しかし，この機能はプロパティがpublicアクセスである必要があるため，オブジェクト機能のメリットを享受できない．そのため，この機能を使用せずに，```constructor```メソッドを使用したコンストラクタインジェクション，またはセッターインジェクションを使用するようにする．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * @var FooName
+     */
+    private FooName $fooName;
+
+    /**
+     * 名前を取得します．
+     *
+     * @return string
+     */
+    public function __construct(FooName $fooName)
+    {
+        $this->fooName = $fooName;
+    }
+}
+```
+
+#### ・ゲッター
+
+Laravelでは，```getXxxxYyyyAttribute```という名前のメソッドを，```xxx_yyy```という名前でコールできる．一見，プロパティをコールしているように見えるため，注意が必要である．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Foo extends Model
+{
+    /**
+     * @var FooName
+     */
+    private FooName $fooName;
+
+    /**
+     * 名前を取得します．
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->fooName . "です．";
+    }
+}
+```
+
+```php
+<?php
+
+$foo = Foo::find(1);
+
+// nameプロパティを取得しているわけでなく，getNameAttributeメソッドを実行している．
+$fooName = $foo->name;
+```
+
+<br>
+
+### データ型変換
+
+#### ・シリアライズ
+
+フロントエンドとバックエンド間，またバックエンドとデータベース間のデータ送信のために，配列型オブジェクトをJSONに変換する処理はシリアライズである．
+
+**＊実装例＊**
+
+```php
+<?php
+
+$collection = collect([
+    [
+        "user_id" => 1,
+        "name"    => "佐藤太郎",
+    ],
+    [
+        "user_id" => 2,
+        "name"    => "山田次郎",
+    ],
+]);
+
+// Array型に変換する
+$collection->toArray();
+```
+
+```php
+<?php
+
+$users = App\User::all();
+
+// Array型に変換する
+return $users->toArray();
+```
+
+#### ・デシリアライズ
+
+フロントエンドとバックエンド間，またバックエンドとデータベース間のデータ送信のために，JSONを配列型オブジェクトに変換する処理はデシリアライズである．
+
+<br>
+
+### フィルタリング
+
+#### ・```filter```メソッド
+
+コールバック関数の返却値が```true```であった要素を全て抽出する．
+
+**＊実装例＊**
+
+```php
+$collection = collect([1, 2, 3, 4]);
+
+// trueを返却した要素を全て抽出する
+$filtered = $collection->filter(function ($value, $key) {
+    return $value > 2;
+});
+
+$filtered->all();
+
+// [3, 4]
+```
+
+ちなみに，複数の条件を設定したいときは，早期リターンを使用する必要がある．
+
+**＊実装例＊**
+
+```php
+$collection = collect([1, 2, 3, 4, "yes"]);
+
+// 複数の条件で抽出する．
+$filtered = $collection->filter(function ($value, $key) {
+    
+    // まずはyesを検証する．
+    if($value == "yes") {
+        return true;
+    }
+    
+    return $value > 2;
+});
+
+$filtered->all();
+
+// [3, 4, "yes"]
+```
+
+#### ・```first```メソッド
+
+コールバック関数の返却値が```true```であった最初の要素のみを抽出する．
+
+**＊実装例＊**
+
+```php
+$collection = collect([1, 2, 3, 4]);
+
+// trueを返却した要素のみ抽出する
+$filtered = $collection->first(function ($value, $key) {
+    return $value > 2;
+});
+
+// 3
+```
+
+<br>
+
+## 05-02. Eloquentモデル／ビルダーによるCRUD
+
+### CRUDメソッドの返却値型と返却値
+
+#### ・CRUDメソッドを持つクラス
+
+Eloquentモデルを継承すると，以下のクラスからメソッドをコールできるようになる．Eloquentモデルにはより上位のメソッドが定義されていないことがあり，もし定義されていないものがコールされた場合，```__callStatic```メソッド（静的コールによる）や```__call```メソッド（非静的コールによる）が代わりにコールされ，より上位クラスのメソッドをコールできる．どちらの方法でコールしても同じである．
+
+参考：
+
+- https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
+- https://qiita.com/mpyw/items/7c7e8dc665584122a275
+
+| クラス | 名前空間                | ```__call```メソッドを経由してコールできるクラス |
+| :--------------- | :---------------------------- | :---------------------------------------- |
+| Queryビルダー | ```Illuminate\Database\Query\Builder``` | なし |
+| Eloquentビルダー | ```Illuminate\Database\Eloquent\Builder``` | Queryビルダー， |
+| Eloquentリレーション | ```Illuminate\Database\Eloquent\Relations\Relation``` | Queryビルダー，Eloquentビルダー， |
+| Eloquentモデル | ```Illuminate\Database\Eloquent\Model``` | Queryビルダー，Eloquentビルダー，Eloquentリレーション |
+
+#### ・Eloquentビルダー
+
+Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
+
+参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
+
+| CRUDメソッドの種類 |          返却値型          |               返却値               | 返却値の説明         |
+| :----------------: | :------------------------: | :--------------------------------: | :------------------- |
+|       create       |     collection／$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
+|        find        | collection／Builder／Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
+|       update       |           mixed            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
+|       delete       |           mixed            | ```0```，```1```，```2```，```3``` | 変更したレコード数   |
+
+#### ・Eloquentモデル
+
+Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
+
+参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
+
+| CRUDメソッドの種類 | 返却値型 |         返却値          | 返却値の説明 |
+| :----------------: | :------: | :---------------------: | :----------- |
+|       update       |   bool   | ```true```，```false``` | 結果の真偽値 |
+|        save        |   bool   | ```true```，```false``` | 結果の真偽値 |
+|       delete       |   bool   | ```true```，```false``` | 結果の真偽値 |
+
+<br>
+
+### CREATE
+
+#### ・```create```メソッド
+
+INSERT文を実行する．Eloquentモデルには```create```メソッドがないため，代わりにEloquentビルダーが持つ```create```メソッドがコールされる．```create```メソッドに挿入対象のカラムと値を渡し，これを実行する．別の方法として，Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行してもよい．```save```メソッドはUPDATE処理も実行できるが，```fill```メソッドでID値を割り当てない場合は，CREATE処理が実行される．```create```メソッドまたは```save```メソッドによるCREATE処理では，レコードの挿入後に，```lastInsertId```メソッドに相当する処理が実行される．これにより，挿入されたレコードのプライマリキーが取得され，EloquentモデルのID値のプロパティに保持される．
+
+参考：
+
+- https://codelikes.com/laravel-eloquent-basic/#toc9
+- https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function createFoo(Request $request)
+    {
+        $foo = new Foo();
+
+        // INSERT文を実行する．また同時にIDを取得する．
+        $foo->create($request->all());
+
+        // 以下の実装でもよい
+        // $foo->fill($request->all())->save();
+
+        // 処理後にはEloquentモデルにID値が保持されている．
+        $foo->id();
+
+        // 続きの処理
+    }
+}
+
+```
+
+Eloquentモデルには```fillable```プロパティを設定しておく．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
+
+<br>
+
+### READ
+
+#### ・```all```メソッド
+
+レコードを全て取得するSELECT句を発行する．MySQLを含むDBエンジンでは，取得結果に標準の並び順が存在しないため，プライマリキーの昇順で取得したい場合は，```orderBy```メソッドを使用して，明示的に並び替えるようにする．Eloquentモデルには```all```メソッドがないため，代わりにEloquentビルダーが持つ```all```メソッドがコールされる．全てのプライマリキーのCollection型を配列型として返却する．```toArray```メソッドで配列型に再帰的に変換できる．
+
+参考：
+
+- https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
+
+- https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
+
+- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAll(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all();
+    }
+}
+```
+
+#### ・```find```メソッド
+
+レコードを一つ取得するSELECT句を発行する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
+- https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @param int $id
+     * @return Collection
+     */
+    public function findById(int $id): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->find($id);
+    }
+}
+```
+
+#### ・```first```メソッド
+
+取得されたコレクション型データの一つ目の要素の値を取得する．ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合，コレクションとして取得されるが，コレクションが持つEloquentモデルは一つである．foreachを用いてコレクションからEloquentモデルを取り出してもよいが，無駄が多い．そこで，```first```メソッドを使用して，Eloquentモデルを直接取得する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @param string $emailAddress
+     * @return Foo
+     */
+    public function findByEmail(string $emailAddress): Foo
+    {
+        $foo = new Foo();
+
+        return $foo->where('foo_email', $emailAddress)->first();
+    }
+}
+
+```
+
+#### ・```limit```メソッド，```offset```メソッド
+
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する．これにより，ページネーションにおいて，１ページ当たりのレコード数（```limit```）と，次のページの開始レコード（```offset```）を定義できる．これらのパラメータはクエリパラメータとして渡すとよい．
+
+参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function findAllByPagination(Request $request): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->offset($request->offset)
+            ->limit($request->limit)
+            ->get();
+    }
+}
+```
+
+#### ・```orderBy```メソッド
+
+指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
+
+参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
+
+        // 昇順
+        return $foo->orderBy('foo_id', 'asc')->get();
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
+
+        // 降順
+        return $foo->orderBy('foo_id', 'desc')->get();
+    }    
+}
+```
+
+#### ・```sortBy```メソッド
+
+指定したカラムの昇順でレコードを並び替えるSELECT句を発行する．
+
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all()->sortBy('foo_id');
+    }
+}
+```
+
+#### ・```sortByDesc```メソッド
+
+指定したカラムの降順でレコードを並び替えるSELECT句を発行する．
+
+参考：https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
+
+        return $foo->all()->sortByDesc('foo_id');
+    }
+}
+```
+
+#### ・```with```メソッド
+
+親テーブルにアクセスして全てのデータを取得し，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する．この仕組みをEagerロードという．Eloquentモデルには```with```メソッドがないため，代わりにEloquentビルダーが持つ```with```メソッドがコールされる．テーブル間に一対多（親子）のリレーションシップがある場合に使用する．N+1問題を防げる．
+
+参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
+
+ただし，```with```メソッドに他のメソッドをチェーンしてしまうと，Eagerロードの後にSQLを発行されてしまうため，Eagerロードの恩恵を得られなくなることに注意する．
+
+参考：https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
+
+**＊実装例＊**
+
+コントローラにて，Department（親）と，これに紐付くEmployee（子）を読み出す．これらのモデルの間では，```hasMany```メソッドと```belongsTo```メソッドを使用して，テーブルにおける一対多のリレーションを定義しておく．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Department;
+
+class EmployeeController
+{
+    public function getEmployeesByDepartment()
+    {
+        $department = new Department();
+
+        // Departmentに属するEmployeesを全て読み出します．
+        // （departments : employees = 1 : 多）
+        $employees = $department->with("employees")->get();
+
+        foreach ($employees as $employee) {
+            // ここではDBアクセスはせずに，プロパティに保持された値を取得するだけ．
+            $name = $employee->name;
+            
+        }
+
+        // 続きの処理
+    }
+}
+```
+
+Department（親）に，departmentsテーブルとemployeesテーブルの間に，一対多の関係を定義する．
+
+```php
+<?php
+
+namespace App\Models\Department;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Department extends Model
+{
+    /**
+     * 主キーとするカラム
+     *
+     * @var string
+     */
+    protected $primaryKey = "department_id";
+
+    /**
+     * 一対多の関係を定義します．
+     * （デフォルトではemployee_idに紐付けます）
+     *
+     * @return HasMany
+     */
+    public function employees(): HasMany
+    {
+        return $this->hasMany(Employee::class);
+    }
+}
+```
+
+また，Employee（子）に，反対の多対一の関係を定義する．
+
+```php
+<?php
+
+namespace App\Models\Department;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Employee extends Model
+{
+    /**
+     * 主キーとするカラム
+     * 
+     * @var string 
+     */
+    protected $primaryKey = "employee_id";
+
+    /**
+     * 多対一の関係を定義します．
+     * （デフォルトではdepartment_idに紐付けます）
+     * 
+     * @return BelongsTo
+     */
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
+}
+```
+
+<br>
+
+### UPDATE
+
+#### ・```save```メソッド
+
+UPDATE文を実行する．Eloquentビルダーの```fill```メソッドで挿入対象のカラムと値を設定し，```save```メソッドを実行する．```save```メソッドはCREATE処理も実行できるが，```fill```メソッドでID値を割り当てた場合は，UPDATE処理が実行される．
+
+参考：
+
+- https://codelikes.com/laravel-eloquent-basic/#toc9
+- https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Http\Controllers\Controller;
+use App\Domain\Foo\Entities;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function updateFoo(Request $request)
+    {
+        $foo = new Foo();
+
+        // UPDATE文を実行する．
+        $foo->fill($request->all())->save();
+
+        // 続きの処理
+    }
+}
+```
+
+Eloquentモデルには```fillable```プロパティを設定しておく．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
+
+<br>
+
+### DELETE
+
+#### ・```destroy```／```delete```メソッド（物理削除）
+
+DELETE文を実行する．Eloquentモデルの```destroy```／```delete```メソッドを使用する．手順として，Eloquentビルダーの```find```メソッドで削除対象のModelを検索する．返却されたEloquentビルダーの```destroy```／```delete```メソッドをコールし，自身を削除する．
+
+#### ・SoftDeletesの有効化（論理削除）
+
+削除フラグを更新するUPDATE文を実行する．Eloquentモデルの```destroy```／```delete```メソッドを使用する．手順として，テーブルに対応するModelにて，SoftDeletesのTraitを読み込む．マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に，DataTimeクラスに変換できるようにしておく．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class FooDTO extends Model
+{
+    /**
+    * Traitの読み込み
+    */
+    use SoftDeletes;
+
+    /**
+     * 読み出し時にCarbonのDateTimeクラスへ自動変換するカラム
+     *
+     * @var array
+     */
+    protected $dates = [
+        "deleted_at"
+    ];
+}
+```
+
+マイグレーションファイルにて```softDeletes```メソッドを使用すると，削除フラグとして```deleted_at```カラムが追加されるようになる．```deleted_at```カラムのデフォルト値は```NULL```である．
+
+```php
+<?php
+  
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFooTable extends Migration
+{
+    /**
+     * マイグレート
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("foo", function (Blueprint $table) {
+            
+            // ～ 中略 ～
+            
+            // deleted_atカラムを追加する．
+            $table->softDeletes();
+            
+            // ～ 中略 ～
+            
+        });
+    }
+
+    /**
+     * ロールバック
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("foo");
+    }
+}
+```
+
+上記の状態で，同様に```destroy```／```delete```メソッドを使用して，自身を削除する．物理削除ではなく，```deleled_at```カラムが更新されるようになる．```find```メソッドは，```deleled_at```カラムが```NULL```でないレコードを読み出さないため，論理削除を実現できる．
+
+<br>
+
+### N+1問題の解決
+
+#### ・N+1問題とは
+
+親テーブルを経由して子テーブルにアクセスする時に，親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと．
+
+#### ・問題が起こる実装
+
+反復処理の中で子テーブルのレコードにアクセスしてしまう場合，N+1問題が起こる．内部的には，親テーブルへのSQLと，Where句を持つSQLが親テーブルのレコード数分だけ発行される．
+
+```php
+<?php
+    
+$departments = Department::all(); // 親テーブルにSQLを発行（1回）
+
+foreach($departments as $department) {
+    $department->employees; // 親テーブルのレコード数分のWhere句SQLが発行される（N回）
+}
+```
+
+```bash
+# 1回
+select * from `departments`
+
+# N回
+select * from `employees` where `department_id` = 1
+select * from `employees` where `department_id` = 2
+select * from `employees` where `department_id` = 3
+...
+```
+
+#### ・解決方法
+
+反復処理の前に小テーブルにアクセスしておく．データアクセス時に```with```メソッドを使うと，親テーブルへのアクセスに加えて，親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する．そのため，反復処理ではプロパティからデータを取り出すだけになる．内部的には，親テーブルへのSQLと，In句を用いたSQLが発行される．
+
+```php
+<?php
+
+$departments = Department::with('employees')->get(); // SQL発行（2回）
+
+foreach($departments as $department) {
+    $department->employees; // キャッシュを使うのでSQLの発行はされない（0回）
+}
+```
+
+```bash
+# 2回
+select * from `departments`
+select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
+```
+
+<br>
+
+## 05-03. Laravelへのリポジトリパターン導入
+
+### 背景
+
+LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．リポジトリパターンについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+
+<br>
+
+### 工夫
+
+#### ・DTOクラスの導入
+
+ビジネスロジック用ドメインモデルと，Eloquentモデルを継承した詰め替えモデル（例：DTOクラス）を用意する．詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である．ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると，DTOクラスがドメインモデルとデータベースの間でレコードのやり取りを仲介し，これらを疎結合にしてくれる．そのため，Repositoryパターンを実現できる．
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Infrastructure\Foo\DTOs;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+final class FooDTO extends Model
+{
+    use HasFactory;
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'age',
+    ];
+    /**
+     * @var int
+     */
+    private int $id;
+
+    /**
+     * @var string
+     */
+    private string $name;
+
+    /**
+     * @var int
+     */
+    private int $age;
+
+    /**
+     * @var string
+     */
+    private string $email;
+
+    /**
+     * @return Foo
+     */
+    public function toFoo(): Foo
+    {
+        return new Foo(
+            new FooId($this->id),
+            new FooName($this->name),
+            new FooAge($this->age),
+        );
+    }
+}
+```
+
+<br>
+
+### CREATE
+
+#### ・```create```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * @param Foo $foo
+     * @return void
+     */
+    public function create(Foo $foo): void
+    {
+        $this->fooDTO
+            // INSERT文を実行する．
+            ->create([
+                // ドメインモデルのデータをDTOに詰め替える．
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+            ]);
+
+//        以下の実装でもよい．
+//        $this->fooDTO
+//            ->fill([
+//                "name"  => $foo->name(),
+//                "age"   => $foo->age(),
+//            ])
+//            ->save();
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
+
+<br>
+
+### READ
+
+#### ・```find```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * @param FooId $fooId
+     * @return Foo
+     */
+    public function findById(FooId $fooId): Foo
+    {
+        $fooDTO = $this->fooDTO
+            ->find($fooId->id());
+
+        // DBアクセス処理後のDTOをドメインモデルに変換する．
+        return new Foo(
+            $fooDTO->id(),
+            $fooDTO->name(),
+            $fooDTO->age(),
+            $fooDTO->email()
+        );
+    }
+}
+```
+
+#### ・```all```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+    
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }   
+  
+    /**
+     * @return array 
+     */
+    public function findAll(): array
+    {
+        $fooDTOs = $this->fooDTO
+            ->all();
+
+        $foos = [];
+        foreach ($fooDTOs as $fooDTO)
+            // DBアクセス後のDTOをドメインモデルに変換する． 
+            $foos = new Foo(
+                $fooDTO->id(),
+                $fooDTO->name(),
+                $fooDTO->age(),
+                $fooDTO->email(),
+            );
+
+        return $foos;
+    }
+}
+```
+
+#### ・```with```メソッド
+
+<br>
+
+### UPDATE
+
+#### ・```save```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * @param Foo $foo
+     * @return void
+     */
+    public function save(Foo $foo): void
+    {
+        $this->fooDTO
+            // ドメインモデルのデータをDTOに詰め替える．
+            ->fill([
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+            ])
+            // UPDATE文を実行する．
+            ->save();
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+use Illuminate\Database\Eloquent\Model;
+
+class FooDTO extends Model
+{
+    // 更新可能なカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
+```
+
+<br>
+
+### DELETE
+
+#### ・```destroy```／```delete```メソッド
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * @param FooId $fooId
+     * @return void
+     */
+    public function delete(FooId $fooId): void
+    {
+        // destroyメソッドでレコードを削除する．
+        $this->fooDTO->destroy($fooId->id());
+        
+        // deleteメソッドを使用しても良い．
+        // $this->fooDTO->find($fooId->id())->delete();
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    public function __construct(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository;
+    }
+
+    /**
+     * @param FooId $fooId
+     * @return mixed
+     */
+    public function delete(FooId $fooId)
+    {
+        $this->fooRepository
+            ->delete($fooId);
+
+        return response()->view("foo")
+            ->setStatusCode(200);
+    }
+}
+```
+
+<br>
+
+## 	06. Event／Listener
+
+### Event
+
+#### ・Eventとは
+
+ビジネスの出来事がモデリングされたイベントオブジェクトとして機能する．
+
+#### ・構成
+
+イベントに関するデータを保持するだけで，ビジネスロジックを持たない構成となる．
+
+参考：https://readouble.com/laravel/8.x/ja/events.html#defining-events
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Events;
+
+use App\Models\User;
+
+final class UserCreatedEvent
+{
+    /**
+     * @var User
+     */
+    protected User $user;
+
+    /**
+     * @return void
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+}
+```
+
+任意の場所でイベントを発行できる．
+
+```php
+<?php
+    
+event(new UserCreatedEvent($user));
+```
+
+#### ・EloquentモデルのCRUDイベント
+
+Eloquentモデルでは，DBアクセスに関するメソッドの実行開始や終了の処理タイミングをイベントクラスに紐付けられる．紐付けるために，プロパティで定義するか，あるいは各タイミングで実行されるクロージャーでイベントを発生させる必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/eloquent.html#events
+
+**＊実装例＊**
+
+プロパティにて，CREATE処理とDELETE処理に独自イベントクラスに紐付ける．
+
+```php
+<?php
+
+namespace App\Models;
+
+use App\Events\UserDeleted;
+use App\Events\UserSaved;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        // 処理タイミングを独自イベントに紐付ける
+        'saved' => UserSaved::class,
+        'deleted' => UserDeleted::class,
+    ];
+}
+```
+
+**＊実装例＊**
+
+クロージャーにて，CREATE処理に独自イベントクラスに紐付ける．
+
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            event(new UserCreated($user));
+        });
+    }
+}
+```
+
+<br>
+
+### Listener
+
+#### ・Listenerとは
+
+イベントが発生した時に，これに紐付いてコールされるオブジェクトのこと．
+
+#### ・構成
+
+Listenerクラスがコールされた時に実行する処理を```handle```関数に定義する．
+
+**＊実装例＊**
+
+ユーザが作成された時に，メールアドレスにメッセージを送信する．
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UserCreatedEvent;
+use Illuminate\Support\Facades\Notification;
+
+final class UserCreatedEventListener
+{
+    /**
+     * @param UserCreatedEvent $userEvent
+     * @return void
+     */
+    public function handle(UserCreatedEvent $userEvent)
+    {
+        // UserクラスがNotifiableトレイトに依存せずに通知を実行できるように，オンデマンド通知機能を使用します．
+        Notification::route('mail', $userEvent->user->userEmailAddress->emailAddress)
+            ->notify(new UserCreatedEventNotification($userEvent->user));
+    }
+}
+```
+
+任意の場所でイベントを発行すると，リスナーが自動でコールされる．
+
+```php
+<?php
+    
+event(new UserCreatedEvent($user));
+```
+
+#### ・イベントとリスナーの紐付け
+
+EventServiceProviderクラスにて，Eventクラスに紐付ける一つ以上のListenerクラスを設定する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use App\Events\UserCreatedEvent;
+use App\Listeners\UserCreatedEventListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * @var array
+     */
+    protected $listen = [
+        UserCreatedEvent::class => [
+            UserCreatedEventListener::class,
+        ],
+    ];
+
+    /**
+     * @return void
+     */
+    public function boot()
+    {
+        parent::boot();
+
+        //
+    }
+}
+```
+
+#### ・任意のEloquentモデルCRUDイベントの検知
+
+Laravelの多くのコンポーネントに，```boot```メソッドが定義されている．Eloquentモデルでは，インスタンス生成時に```boot```メソッドがコールされ，これによりに```bootTraits```メソッドが実行される．Traitに```boot+<クラス名>```という名前の静的メソッドが定義されていると，```bootTraits```メソッドはこれをコールする．```bootTraits```メソッドの中でEloquentモデルのイベントを発生させることにより，全てのEloquentモデルのイベントを一括で発火させられる．
+
+参考：https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+
+**＊実装例＊**
+
+あらかじめTraitを定義する．```saved```メソッドにEloquentモデルの更新イベントを登録できるようにする．
+
+```php
+<?php
+
+namespace App\Models\Traits;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Events\UpdatedModelEvent;
+
+trait UpdatedModelTrait
+{
+    /**
+     * @return void
+     */
+    protected static function bootUpdatedModelTrait(): void
+    {
+        // 任意のEloquentモデルのsaveメソッド実行時
+        static::saved(function (Model $updatedModel) {
+            // イベントを発生させる．
+            event(new UpdatedModelEvent($updatedModel));
+        });
+
+        // 任意のEloquentモデルのdeleteメソッド実行時
+        static::deleted(function (Model $updatedModel) {
+            // イベントを発生させる．
+            event(new UpdatedModelEvent($updatedModel));
+        });
+    }
+    
+    /**
+     * イベントを発火させずにModelを保存します．
+     *
+     * @return void
+     */
+    protected static function saveWithoutEvents(): void
+    {
+        // 無限ループを防ぐために，save実行時にイベントが発火しないようにする．
+        return static::withoutEvents(function () use ($options) {
+            
+            // プロパティの変更を保存．
+            return $this->save($options);
+        });
+    }    
+}
+```
+
+イベントを定義する．
+
+```php
+<?php
+
+namespace App\Events;
+
+class UpdatedModelEvent
+{
+    /**
+     * @var Model
+     */
+    public $updatedModel;
+
+    /**
+     * @param Model
+     */
+    public function __construct(Model $updatedModel)
+    {
+        $this->$updatedModel = $updatedModel;
+    }
+}
+```
+
+Model更新イベントが発火してコールされるリスナーを定義する．```create_by```カラムまたは```updated_by```カラムを指定した更新者名に更新できるようにする．なお，イベントとリスナーの対応関係は，EventServiceProviderで登録する．
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use App\Events\UpdatedModelEvent;
+use App\Constants\ExecutorConstant;
+
+class UpdatedModelListener
+{
+    /**
+     * @param UpdatedModelEvent
+     * @return void
+     */
+    public function handle(UpdatedModelEvent $updatedModelEvent): void
+    {
+        $by = $this->getModelUpdater();
+
+        // create_byプロパティに値が設定されているかを判定．
+        if (is_null($updatedModelEvent->updatedModel->created_by)) {     
+            $updatedModelEvent->updatedModel->created_by = $by;
+        }
+
+        $updatedModelEvent->updatedModel->updated_by = $by;
+        
+        $updatedModelEvent->updatedModel->saveWithoutEvents();
+    }
+    
+    /**
+     * 更新処理の実行者を取得します．
+     *
+     * @return string
+     */
+    private function getModelUpdater(): string
+    {
+        // コンソール経由で実行されたかを判定．
+        if (app()->runningInConsole()) {
+            return ExecutorConstant::ARTISAN_COMMAND;
+        }
+
+        // API認証に成功したかを判定．
+        if (auth()->check()) {
+            return ExecutorConstant::STAFF . ":" . auth()->id();
+        }
+        
+        return ExecutorConstant::GUEST;
+    }    
+}
+```
+
+実行者名は，定数として管理しておくとよい．
+
+```php
+<?php
+
+namespace App\Constants;
+
+/**
+ * 実行者定数クラス
+ */
+class ExecutorConstant
+{
+    /**
+     * Artisanコマンド
+     */
+    public const ARTISAN_COMMAND = "Artisan Command";
+
+    /**
+     * スタッフ
+     */
+    public const STAFF = "Staff";
+    
+    /**
+     * ゲスト
+     */
+    public const GUEST = "Guest";    
+}
+```
+
+<br>
+
+## 07. Exception
+
+### Laravelにおけるエラーハンドリング
+
+エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出については言及しないこととする．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
+
+<br>
+
+### 例外スロー
+
+#### ・例外
+
+ドキュメントとしてまとめられていないが，標準で様々な例外が備わっている．
+
+参考：https://laravel.com/api/8.x/search.html?search=exception
+
+#### ・スタックトレース
+
+Laravelはスローされる例外のメッセージをスタックトレースで生成する．また，Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため，```[previous exception]```によって例外が結合される．スタックトレースには機密性の高い情報が含まれるため，クライアントへの異常系レスポンスのエラーメッセージには割り当てずに，ロギングだけしておく．エラーが複数行にまたがるため，CloudWatchやFluentBitなどのログ収集ツールでは，各行を繋げて扱えるように設定が必要である．ちなみに，ログの詳細度は```APP_DEBUG```環境変数で制御できる．
+
+参考：https://readouble.com/laravel/8.x/ja/errors.html#configuration
+
+```bash
+[2021-09-00 00:00:00] local.ERROR: *****（エラーメッセージ）
+[stacktrace]
+#0 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(652): Illuminate\\Database\\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(486): Illuminate\\Database\\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(438): Illuminate\\Database\\Connection->statement('insert into `us...', Array)
+
+...
+
+#60 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#61 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#62 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#63 {main}
+
+[previous exception] [object] *****（エラーメッセージ）
+[stacktrace]
+#0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(114): Doctrine\\DBAL\\Driver\\PDO\\Exception::new(Object(PDOException))
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+
+...
+
+#63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 {main}
+
+[previous exception] [object] *****（エラーメッセージ）
+[stacktrace]
+#0 /var/www/foo-app/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php(112): PDOStatement->execute(NULL)
+#1 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(485): Doctrine\\DBAL\\Driver\\PDOStatement->execute()
+#2 /var/www/foo-app/framework/src/Illuminate/Database/Connection.php(685): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('insert into `us...', Array)
+
+...
+
+#63 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(141): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#64 /var/www/foo-app/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#65 /var/www/foo-app/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#66 {main}
+"} 
+```
+
+<br>
+
+### ロギング
+
+#### ・```report```メソッド
+
+Laravel内部でキャッチされた例外に基づいて，ロギングを実行する．
+
+参考：https://cpoint-lab.co.jp/article/201905/9841/
+
+```php
+<?php
+
+namespace App\Exceptions;
+
+use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+class Handler extends ExceptionHandler
+{
+    protected $dontReport = [
+        //
+    ];
+
+    public function report(Throwable $exception)
+    {
+        parent::report($exception);
+    }
+    
+    // ～ 中略 ～
+
+}
+```
+
+<br>
+
+### 異常系レスポンスの返信
+
+#### ・```render```メソッド
+
+Laravel内部でキャッチされた例外に基づいて，異常系レスポンスを自動で返信する．異常系レスポンスの返信処理をこれに追加することも可能であるが，異常系レスポンス間が密結合になるため，できるだけいじらない．その代わりに，各コントローラに```try-catch```と異常系レスポンスの返信処理を実装するようにする．
+
+参考：https://cpoint-lab.co.jp/article/201905/9841/
+
+```php
+<?php
+
+namespace App\Exceptions;
+
+use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+class Handler extends ExceptionHandler
+{
+    public function render($request, Throwable $exception)
+    {
+        return parent::render($request, $exception);
+    }
+    
+    // ～ 中略 ～
+}
+```
+
+<br>
+
+## 08. Facade
+
+### Facade
+
+#### ・Facadeとは
+
+Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く．メソッドをコールできるようになる．
+
+#### ・Facadeを使用しない場合
+
+new演算子でインスタンスを作成する．
+
+**＊実装例＊**
+
+```php
+<?php
+  
+namespace App\Domain\DTO; 
+    
+class Foo
+{
+    public function method()
+    {
+        return "foo";
+    }
+}
+```
+```php
+<?php
+    
+// 通常
+$foo = new Foo();
+$foo->method();
+```
+
+#### ・Facadeの静的プロキシ機能を使用する場合
+
+静的メソッドの記法でコールできる．ただし，自作クラスをFacadeの機能を使用してインスタンス化すると，スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう．例えば，Facadeの中でも，```Route```のような，代替するよりもFacadeを使ったほうが断然便利である部分以外は，使用しないほうがよい．
+
+**＊実装例＊**
+
+Facadeとして使用したいクラスを定義する．
+
+```php
+<?php
+
+namespace App\Domain\DTO;
+
+class Foo
+{
+    public function method()
+    {
+        return "foo";
+    }
+}
+```
+
+エイリアス名とクラスの名前空間を```config/app.php```ファイルを```aliases```キーに登録すると，そのエイリアス名でインスタンス化とメソッドコールを行えるようになる．
+
+```php
+<?php
+  
+"aliases" => [
+    "Foo" => App\Models\Foo::class,
+]
+```
+
+インスタンス化とメソッドコールを行う．
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Foo;
+    
+// Facade利用
+$result = Foo::method();
+```
+
+#### ・Facadeを使用した方が良い場合
+
+Facadeがトレイトの代わりになる場合，Facadeを使用することにより，責務がドメインモデルに集中せずにすむ．
+
+**＊例＊**
+
+NotifiableトレイトをUserクラスで使用せずに，Notificationファサードによるオンデマンド通知を使用することにより，Userクラスが通知処理の責務を持たずに済む．詳しくは，オンデマンド通知の説明を参考にせよ．
+
+#### ・標準登録されたFacadeクラスの種類
+
+以下のクラスは，デフォルトで登録されているFacadeである．
+
+| エイリアス名         | クラス名                                                     | サービスコンテナ結合キー |
+| :------------------- | :----------------------------------------------------------- | :----------------------- |
+| App                  | [Illuminate\Foundation\Application](https://laravel.com/api/8.x/Illuminate/Foundation/Application.html) | `app`                    |
+| Artisan              | [Illuminate\Contracts\Console\Kernel](https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html) | `artisan`                |
+| Auth                 | [Illuminate\Auth\AuthManager](https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html) | `auth`                   |
+| Auth (Instance)      | [Illuminate\Contracts\Auth\Guard](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html) | `auth.driver`            |
+| Blade                | [Illuminate\View\Compilers\BladeCompiler](https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html) | `blade.compiler`         |
+| Broadcast            | [Illuminate\Contracts\Broadcasting\Factory](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html) |                          |
+| Broadcast (Instance) | [Illuminate\Contracts\Broadcasting\Broadcaster](https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html) |                          |
+| Bus                  | [Illuminate\Contracts\Bus\Dispatcher](https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html) |                          |
+| Cache                | [Illuminate\Cache\CacheManager](https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html) | `cache`                  |
+| Cache (Instance)     | [Illuminate\Cache\Repository](https://laravel.com/api/8.x/Illuminate/Cache/Repository.html) | `cache.store`            |
+| Config               | [Illuminate\Config\Repository](https://laravel.com/api/8.x/Illuminate/Config/Repository.html) | `config`                 |
+| Cookie               | [Illuminate\Cookie\CookieJar](https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html) | `cookie`                 |
+| Crypt                | [Illuminate\Encryption\Encrypter](https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html) | `encrypter`              |
+| DB                   | [Illuminate\Database\DatabaseManager](https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html) | `db`                     |
+| DB (Instance)        | [Illuminate\Database\Connection](https://laravel.com/api/8.x/Illuminate/Database/Connection.html) | `db.connection`          |
+| Event                | [Illuminate\Events\Dispatcher](https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html) | `events`                 |
+| File                 | [Illuminate\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html) | `files`                  |
+| Gate                 | [Illuminate\Contracts\Auth\Access\Gate](https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html) |                          |
+| Hash                 | [Illuminate\Contracts\Hashing\Hasher](https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html) | `hash`                   |
+| Lang                 | [Illuminate\Translation\Translator](https://laravel.com/api/8.x/Illuminate/Translation/Translator.html) | `translator`             |
+| Log                  | [Illuminate\Log\LogManager](https://laravel.com/api/8.x/Illuminate/Log/LogManager.html) | `log`                    |
+| Mail                 | [Illuminate\Mail\Mailer](https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html) | `mailer`                 |
+| Notification         | [Illuminate\Notifications\ChannelManager](https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html) |                          |
+| Password             | [Illuminate\Auth\Passwords\PasswordBrokerManager](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html) | `auth.password`          |
+| Password (Instance)  | [Illuminate\Auth\Passwords\PasswordBroker](https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html) | `auth.password.broker`   |
+| Queue                | [Illuminate\Queue\QueueManager](https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html) | `queue`                  |
+| Queue (Instance)     | [Illuminate\Contracts\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html) | `queue.connection`       |
+| Queue (Base Class)   | [Illuminate\Queue\Queue](https://laravel.com/api/8.x/Illuminate/Queue/Queue.html) |                          |
+| Redirect             | [Illuminate\Routing\Redirector](https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html) | `redirect`               |
+| Redis                | [Illuminate\Redis\RedisManager](https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html) | `redis`                  |
+| Redis (Instance)     | [Illuminate\Redis\Connections\Connection](https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html) | `redis.connection`       |
+| Request              | [Illuminate\Http\Request](https://laravel.com/api/8.x/Illuminate/Http/Request.html) | `request`                |
+| Response             | [Illuminate\Contracts\Routing\ResponseFactory](https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html) |                          |
+| Response (Instance)  | [Illuminate\Http\Response](https://laravel.com/api/8.x/Illuminate/Http/Response.html) |                          |
+| Route                | [Illuminate\Routing\Router](https://laravel.com/api/8.x/Illuminate/Routing/Router.html) | `router`                 |
+| Schema               | [Illuminate\Database\Schema\Builder](https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html) |                          |
+| Session              | [Illuminate\Session\SessionManager](https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html) | `session`                |
+| Session (Instance)   | [Illuminate\Session\Store](https://laravel.com/api/8.x/Illuminate/Session/Store.html) | `session.store`          |
+| Storage              | [Illuminate\Filesystem\FilesystemManager](https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html) | `filesystem`             |
+| Storage (Instance)   | [Illuminate\Contracts\Filesystem\Filesystem](https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html) | `filesystem.disk`        |
+| URL                  | [Illuminate\Routing\UrlGenerator](https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html) | `url`                    |
+| Validator            | [Illuminate\Validation\Factory](https://laravel.com/api/8.x/Illuminate/Validation/Factory.html) | `validator`              |
+| Validator (Instance) | [Illuminate\Validation\Validator](https://laravel.com/api/8.x/Illuminate/Validation/Validator.html) |                          |
+| View                 | [Illuminate\View\Factory](https://laravel.com/api/8.x/Illuminate/View/Factory.html) | `view`                   |
+| View (Instance)      | [Illuminate\View\View](https://laravel.com/api/8.x/Illuminate/View/View.html) |                          |
+
+<br>
+
+### Authファサード
+
+#### ・Authファサードとは
+
+認証に関する処理を提供する．Laravelからあらかじめ提供されている認証を使用しない場合，Authファサードを使用して，認証ロジックを実装できる．
+
+<br>
+
+### DBファサード
+
+#### ・DBファサードとは
+
+データベースの操作処理を提供する．Eloquentの代わりに，DBファサードを使用しても良い．Active Recordのロジックを持たないため，Repositoryパターンのロジックとして使用できる．
+
+#### ・```transaction```メソッド
+
+一連のトランザクション処理を実行する．引数として渡した無名関数が例外を返却した場合，ロールバックを自動的に実行する．例外が発生しなかった場合，無名関数の返却値が，そのまま```transaction```メソッドの返却値になる．さらに```transaction```メソッドの返却値を返却するようにすれば，無名関数の返却値をそのまま使用できる．ちなみに，トランザクション処理は必須ではなく，使用するとアプリケーションがデータベースを操作するために要する時間が増えるため，使用しなくても良い．参考リンクによると，MongoDBに対してトランザクション処理を行う／行わない場合を比較して，処理時間が17%弱長くなったとのこと．
+
+参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
+use Throwable;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }
+
+    /**
+     * @param Foo $foo
+     * @throws Throwable
+     */
+    public function save(Foo $foo): void
+    {
+        // トランザクション処理を開始する．
+        DB::beginTransaction();
+
+        try {
+
+            $this->fooDTO->fill([
+                    "name"  => $foo->name(),
+                    "age"   => $foo->age(),
+                ])
+                ->save();
+
+            // コミットメントを実行する．
+            DB::commit();
+        } catch (Exception $e) {
+
+            // ロールバックを実行する．
+            DB::rollback();
+        }
+    }
+}
+
+```
+
+#### ・```beginTransaction```メソッド，```commit```メソッド，```rollback```メソッド，
+
+トランザクション処理の各操作を分割して実行する．基本的には，```transaction```メソッドを使用してトランザクション処理を実行すれば良い．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Infrastructure\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
+
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
+    
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this->fooDTO = $fooDTO;
+    }   
+    
+    /**
+     * Fooを更新します．
+     *
+     * @param Foo $foo
+     */
+    public function save(Foo $foo)
+    {
+        // トランザクション処理を開始する．
+        DB::beginTransaction();
+        
+        try {
+            $this->fooDTO
+            // オブジェクトにデータを設定する．
+            ->fill([
+                "name"  => $foo->name(),
+                "age"   => $foo->age(),
+                "email" => $foo->email()
+            ])
+            // update文を実行する．
+            ->save();            
+            
+            // コミットメントを実行する．
+            DB::commit();
+        } catch (\Exception $e) {
+            
+            // ロールバックを実行する．
+            DB::rollback();
+        }
+    }
+}
+```
+
+<br>
+
+### Routeファサード
+
+#### ・Routeファサードとは
+
+ルーティング処理を提供する．
+
+#### ・ヘルスチェックへの対応
+
+ALBやGlobal Acceleratorから『```/healthcheck```』に対してヘルスチェックを設定した上で，```200```ステータスのレスポンスを返信するようにする．Nginxでヘルスチェックを実装することもできるが，アプリケーションの死活管理としては，Laravelに実装する方が適切である．RouteServiceProviderも参照せよ．
+
+**＊実装例＊**
+
+```php
+<?php
+
+# ヘルスチェックが送信されるパス
+Route::get("/healthcheck", function () {
+    return response("success", 200);
+});
+```
+
+#### ・```middleware```メソッド
+
+コントローラへのルーティング時に実行するMiddlewareクラスを設定する．引数として，```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する．
+
+**＊実装例＊**
+
+認証方法としてWebガードを使用する場合，```auth```エイリアスを設定する．
+
+```php
+<?php
+
+use App\Http\Controllers\Foo\FooController;
+
+// authエイリアスを指定する．
+Route::middleware("auth")->group(function () {
+    Route::get("/foos", [FooController::class, "getFoo"]);
+    Route::get("/foos/{fooId}", [FooController::class, "index"]);
+    Route::post("/foos", [FooController::class, "createFoo"]);
+    Route::put("/foos/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/foos/{fooId}", [FooController::class, "deleteFoo"]);
+});
+
+```
+
+デフォルトでは，```App\Http\Kernel.php```ファイルにて，```auth```エイリアスに```\App\Http\Middleware\Authenticate```クラスが紐付けられている．
+
+
+```php
+<?php
+
+namespace App\Http;
+
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    
+    // ～ 中略 ～
+    
+    protected $routeMiddleware = [
+        
+        "auth" => \App\Http\Middleware\Authenticate::class,
+        
+    ];
+    
+    // ～ 中略 ～    
+    
+}
+```
+
+一方で，認証方法としてAPIガードを使用する場合，```auth:api```エイリアスを設定する．
+
+```php
+<?php
+
+// authエイリアスのMiddlewareクラスが使用される．
+Route::middleware("auth:api")->group(function () {
+    // 何らのルーティング
+});
+```
+
+#### ・```prefix```メソッド
+
+エンドポイントが共通として持つ最初のパスを，プレフィクスとして定義する．
+
+**＊実装例＊**
+
+各エンドポイントの最初の『```foos```』をプレフィクスとして定義する．
+
+```php
+<?php
+
+use App\Http\Controllers\Foo\FooController;
+
+Route::prefix("foos")->group(function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"]);
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"]);
+});
+```
+
+#### ・```where```メソッド，```pattern```メソッド
+
+パスパラメータに対するバリデーションルールを正規表現で定義し，また実行する．RouteServiceProviderの```boot```メソッドにて，```pattern```メソッドで制約を設定することによって，ルーティング時にwhereを使用する必要がなくなる．
+
+**＊実装例＊**
+
+userIdの形式を『0〜9が一つ以上』に設定している．
+
+```php
+<?php
+
+use App\Http\Controllers\Foo\FooController;
+
+Route::prefix("foos")->group(function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"])
+        // バリデーションルール
+        ->where("fooId", "[0-9]+");
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"])
+        ->where("fooId", "[0-9]+");
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"])
+        ->where("fooId", "[0-9]+");
+});
+```
+
+または，RouteServiceProviderクラスに```pattern```メソッドを定義すると，各エンドポイントに対する正規表現を一括で実行できる．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * ルーティングの設定ファイルをコールします．
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // バリデーションルールとして『0〜9が一つ以上』を定義する．
+        Route::pattern('fooId', '[0-9]+');
+        
+        // 〜 中略 〜
+    }
+}
+```
+
+#### ・```group```メソッド
+
+複数のグループを組み合わせる場合，```group```メソッドを使用する．
+
+**＊実装例＊**
+
+エンドポイントのプレフィクスとミドルウェアの指定を定義する．
+
+```php
+<?php
+
+Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
+    Route::get("/", [FooController::class, "getFoo"]);
+    Route::get("/{fooId}", [FooController::class, "index"]);
+    Route::post("/", [FooController::class, "createFoo"]);
+    Route::put("/{fooId}", [FooController::class, "updateFoo"]);
+    Route::delete("/{fooId}", [FooController::class, "deleteFoo"]);
+});
+```
+
+<br>
+
+### Storageファサード
+
+#### ・Storageファサードとは
+
+ファイルの入出力処理を提供する．
+
+#### ・ローカルストレージ（非公開）の場合
+
+ファイルを```/storage/app```ディレクトリに保存する．このファイルは非公開であり，リクエストによってアクセスできない．事前に，シンボリックリンクを作成する，また，```filesystems.php```ファイルに設定が必要である．
+
+```bash
+$ php artisan storage:link
+```
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 中略 ～
+
+    "disks" => [
+
+        "local" => [
+            "driver" => "local",
+            "root"   => storage_path("app"),
+        ],
+        
+     // ～ 中略 ～
+        
+    // シンボリックリンクの関係を定義
+    "links" => [
+        
+        // 『/var/www/project/public/storage』から『/var/www/project/storage/app/public』へのリンク
+        public_path("storage") => storage_path("app/public"),
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてlocalディスクを指定する．```file.txt```ファイルを```storage/app/file.txt```として保存する．
+
+```php
+Storage::disk("local")->put("file.txt", "file.txt");
+```
+
+ただし，```filesytems.php```ファイルでデフォルトディスクは```local```になっているため，```put```メソッドを直接使用できる．
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+#### ・ローカルストレージ（公開）の場合
+
+ファイルを```storage/app/public```ディレクトリに保存する．このファイルは公開であり，リクエストによってアクセスできる．事前に，```filesystems.php```ファイルに設定が必要である．
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 中略 ～
+
+    "disks" => [
+        
+        // ～ 中略 ～
+
+        "public" => [
+            "driver"     => "local",
+            "root"       => storage_path("app/public"),
+            "url"        => env("APP_URL") . "/storage",
+            "visibility" => "public",
+        ],
+
+        // ～ 中略 ～
+        
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてpublicディスクを指定する．また，```file.txt```ファイルを```storage/app/public/file.txt```として保存する．
+
+```php
+Storage::disk("s3")->put("file.txt", "file.txt");
+```
+
+ただし，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+
+```php
+FILESYSTEM_DRIVER=s3
+```
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Storage;
+
+class FileSystemPublicController extends Controller
+{
+    /**
+     * ファイルをpublicディスクに保存する
+     */
+    public function putContentsInPublicDisk()
+    {
+        // 保存先をpublicに設定する．
+        $disk = Storage::disk("public");
+
+        // 保存対象のファイルを読み込む
+        $file_path = "/path/to/public/foo.jpg"
+        $contents = file_get_contents($file_path);
+
+        // 保存先パス（ディレクトリ＋ファイル名）
+        $saved_file_path = "/images/foo.jpg";
+
+        // foo.jpgを『/images/foo.jpg』に保存
+        // ルートディレクトリは『/storage/app/public』
+        $disk->put($saved_file_path, $contents);
+    }
+}
+```
+
+#### ・クラウドストレージの場合
+
+ファイルをS3バケット内のディレクトリに保存する．環境変数を```.env```ファイルに実装する必要がある．```filesystems.php```ファイルから，指定された設定が選択される．AWSアカウントの認証情報を環境変数として設定するか，またはS3アクセスポリシーをEC2やECSタスクに付与することにより，S3にアクセスできるようになる．事前に，```filesystems.php```ファイルに設定が必要である．
+
+```bash
+# S3アクセスポリシーをEC2やECSタスクに付与してもよい
+AWS_ACCESS_KEY_ID=<アクセスキー>
+AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
+AWS_DEFAULT_REGION=<リージョン>
+
+# 必須
+AWS_BUCKET=<バケット名>
+```
+
+```php
+return [
+
+    "default" => env("FILESYSTEM_DRIVER", "local"),
+    
+     // ～ 中略 ～
+    
+    "disks" => [
+
+        // ～ 中略 ～
+
+        "s3" => [
+            "driver"   => "s3",
+            "key"      => env("AWS_ACCESS_KEY_ID"),
+            "secret"   => env("AWS_SECRET_ACCESS_KEY"),
+            "region"   => env("AWS_DEFAULT_REGION"),
+            "bucket"   => env("AWS_BUCKET"),
+            "url"      => env("AWS_URL"),
+            "endpoint" => env("AWS_ENDPOINT"),
+        ],
+    ],
+];
+```
+
+**＊実装例＊**
+
+Storageファサードの```disk```メソッドを用いてs3ディスクを指定する．また，```file.txt```ファイルをS3バケットのルートに```file.txt```として保存する．
+
+```php
+Storage::disk("s3")->put("file.txt", "file.txt");
+```
+
+他の実装方法として，環境変数を使用して，```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると，```put```メソッドを直接使用できる．
+
+```bash
+FILESYSTEM_DRIVER=s3
+```
+
+```php
+Storage::put("file.txt", "file.txt");
+```
+
+<br>
+
+### Validatorファサード
+
+#### ・Validatorファサードとは
+
+バリデーション処理を提供する．FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりに，Validatorファサードを使用しても良い．
+
+#### ・Validatorクラス，```fails```メソッド
+
+Validateファサードの```make```メソッドを使用して，ルールを定義する．この時，第一引数で，バリデーションを行うリクエストデータを渡す．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．次に，```fails```メソッドを使用して，バリデーションでエラーが起こった場合の処理を定義する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class FooController extends Controller
+{
+    /**
+     * 新しいブログポストの保存
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // ルールの定義
+        $validator = Validator::make(
+            $request->all(), [
+            "title" => "required|unique:posts|max:255",
+            "body"  => "required",
+        ]);
+
+        // バリデーション時にエラーが起こった場合
+        if ($validator->fails()) {
+            // 指定したページにリダイレクト
+            // validatorを渡すことでエラーメッセージをViewに渡せる．
+            return redirect("error")->withErrors($validator)
+                ->withInput();
+        }
+        
+        // 続きの処理
+    }
+}
+```
+
+#### ・```validate```メソッド
+
+Validatorクラスの```validate```メソッドを使用すると，FormRequestクラスの```validate```メソッドと同様の処理が実行される．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class FooController extends Controller
+{
+    /**
+     * 新しいブログポストの保存
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // 元のページにリダイレクトする場合は，validateメソッドを使用する．
+        $validator = Validator::make(
+            $request->all(),
+            [
+                "title" => "required|unique:posts|max:255",
+                "body"  => "required",
+            ])->validate();
+
+        // バリデーション時にエラーが起こった場合
+        if ($validator->fails()) {
+            // 指定したページにリダイレクト
+            // validatorを渡すことでエラーメッセージをViewに渡せる．
+            return redirect("error")->withErrors($validator)
+                ->withInput();
+        }
+        
+        // 続きの処理
+    }
+}
+```
+
+<br>
+
+## 08-02. よく使うグローバルヘルパー関数
+
+### ヘルパー関数
+
+#### ・ヘルパー関数とは
+
+グローバルにコールできるLaravel専用のメソッドのこと．基本的には，ヘルパー関数で実行される処理は，Facadeの内部で実行されるものと同じである．どちらを使用するかは好みである．
+
+参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
+
+#### ・一覧
+
+以下リンクを参照せよ．
+
+https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+
+<br>
+
+### ```auth```ヘルパー
+
+#### ・AuthManagerインスタンスの返却
+
+認証処理を持つAuthManagerクラスのインスタンスを返却する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+
+```php
+<?php
+
+// Illuminate\Auth\AuthManager
+$auth = auth();
+```
+
+<br>
+
+### ```config```ヘルパー
+
+#### ・環境変数ファイルの読み込み
+
+環境変数ファイル名とキー名をドットで指定し，事前に設定された値を出力する．
+
+**＊実装例＊**
+
+標準で搭載されている```app.php```ファイルの```timezone```キーの値を出力する．
+
+```php
+<?php
+
+$value = config("app.timezone");
+```
+
+#### ・独自環境変数ファイルの作成と読み込み
+
+configディレクトリに任意の名前のphp形式を作成しておく．これは，configヘルパーで読み込むことができる．
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+$requestUrl = config("api.foo.endpoint_url");
+```
+
+
+```php
+<?php
+
+return [
+    "foo" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ],
+    "bar" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ]
+];
+```
+
+<br>
+
+### ```bcrypt```ヘルパー
+
+参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
+
+```php
+<?php
+
+$hash = bcrypt('foo'); // 『foo』をハッシュ化して，『$2y$10$ZkYG.whhdcogCCzbG.VlQ』としてDBで管理する．
+```
+
+<br>
+
+### ```redirect```ヘルパー
+
+参考：https://blog.capilano-fw.com/?p=566
+
+<br>
+
+### ```response```ヘルパー
+
+#### ・JSONデータのレスポンス
+
+返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
+
+参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+
+        // ～ 中略 ～
+
+        return response()->json([
+            "name"  => "Abigail",
+            "state" => "CA"
+        ], 200);
+    }
+}
+```
+
+#### ・Viewテンプレートのレスポンス
+
+返却されるResponseFactoryクラスの```view```メソッドに，レンダリングしたいデータ（テンプレート，array型データ，ステータスコードなど）を設定する．また，Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する．```response```ヘルパーは初期値として```200```ステータスが設定されているが，```view```メソッドや```setStatusCode```メソッドを使用して，明示的に設定してもよい．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers\Foo;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+        // ～ 中略 ～
+
+        // データ，ステータスコード，ヘッダーなどを設定する場合
+        return response()->view(
+            "foo",
+            $data,
+            200
+        )->header(
+            "Content-Type",
+            $type
+        );
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+        // ～ 中略 ～
+
+        // ステータスコードのみ設定する場合
+        return response()->view("foo")
+            ->setStatusCode(200);
+    }
+}
+```
+
+<br>
+
+### ```route```ヘルパー
+
+#### ・ルートエイリアスに基づいてURL生成
+
+ルートにエイリアスがついている場合，エイリアスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+
+```php
+<?php
+    
+Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
+    
+// https://example.co.jp/foos
+$url = route('foos_index');
+```
+
+<br>
+
+### ```path```系ヘルパー
+
+#### ・```base_path```ヘルパー
+
+引数を設定しない場合，projectルートディレクトリの絶対パスを生成する．また，projectルートディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project
+$path = base_path();
+
+// /var/www/project/vendor/bin
+$path = base_path("vendor/bin");
+```
+
+#### ・```public_path```ヘルパー
+
+引数を設定しない場合，publicディレクトリの絶対パスを生成する．また，publicディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project/public
+$path = public_path();
+
+// /var/www/project/public/css/app.css
+$path = public_path("css/app.css");
+```
+
+#### ・```storage_path```ヘルパー
+
+引数を設定しない場合，storageディレクトリの絶対パスを生成する．まあ，storageディレクトリからの相対パスを引数として，絶対パスを生成する．
+
+```php
+<?php
+
+// /var/www/project/storage
+$path = storage_path();
+
+// /var/www/project/storage/app/file.txt
+$path = storage_path("app/file.txt");
+```
+
+<br>
+
+### ```url```ヘルパー
+
+#### ・パスに基づいてURL生成
+
+指定したパスに応じてURLを生成する．ドメインは自動で補完される．
+
+参考：https://readouble.com/laravel/5.7/ja/urls.html
+
+```php
+<?php
+
+// https://example.co.jp/foos
+$url = url('/foos');
+```
+
+<br>
+
+
+
+## 09. Factory
+
+### artisanコマンドによる操作
+
+#### ・Factoryの生成
+
+```bash
+$ php artisan make:factory <Factory名> --model=<対象とするModel名>
+```
+
+<br>
+
+### 初期値レコードの定義
+
+#### ・Fakerによるランダム値生成
+
+Fakerはレコードの値をランダムに生成するためのパッケージである．Farkerクラスは，プロパティにランダムなデータを保持している．このプロパティを特に，Formattersという．
+
+参考：https://fwhy.github.io/faker-docs/
+
+#### ・Factoryによるレコード定義
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Factories;
+
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class FooFactory extends Factory
+{
+    /**
+     * @var string
+     */
+    protected $model = Foo::class;
+
+    /**
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name'          => $this->faker->name,
+            'email_address' => $this->faker->unique()->safeEmail,
+            'password'      => 'password',
+        ];
+    }
+}
+```
+
+#### ・HasFactoryトレイト
+
+Factoryに対応するEloquentモデルで使用する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
+
+```php
+class Foo
+{
+    use HasFactory;
+}
+```
+
+<br>
+
+### 初期ダミーデータの量産
+
+#### ・Seederによるダミーデータ量産
+
+Factoryにおける定義を基にして，指定した数だけダミーデータを量産する．
+
+**＊実装例＊**
+
+FooSeederを定義し，50個のダミーユーザデータを量産する．
+
+```php
+<?php
+
+use App\Models\Foo;
+use Illuminate\Database\Seeder;
+
+class FooSeeder extends Seeder
+{
+    private const NUM_TEST_DATA = 3;
+    
+    /**
+     * @return void
+     */
+    public function run()
+    {
+        factory()->count(self::NUM_TEST_DATA)->create();
+    }
+}
+```
+
+また，BarSeederを定義し，50個のダミーユーザデータを量産する．
+
+```php
+<?php
+
+use App\Models\Bar;
+use Illuminate\Database\Seeder;
+
+class BarSeeder extends Seeder
+{
+    private const NUM_TEST_DATA = 3;
+    
+    /**
+     * @return void
+     */
+    public function run()
+    {
+        factory()->count(self::NUM_TEST_DATA)->create();
+    }
+}
+```
+
+DatabaseSeederにて，全てのSeederをまとめて実行する．
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * @return void
+     */
+    public function run()
+    {
+        // 開発環境用の初期データ
+        if (app()->environment("dev")) {
+            $this->call([
+                // ダミーデータ
+                FooSeeder::class,
+                BarSeeder::class
+            ]);
+        }
+        
+        // ステージング環境用の初期データ
+        if (app()->environment("stg")) {
+            $this->call([
+                // リアルデータ
+            ]);
+        }
+        
+        // 本番環境用の初期データ
+        if (app()->environment("prd")) {
+            $this->call([
+                // リアルデータ
+            ]);
+        }
+    }
+}
+```
+
+<br>
+
+## 10. HTTP｜Controller
+
+### artisanコマンドによる操作
+
+#### ・クラスの自動生成
+
+```bash
+# コントローラクラスを自動作成
+$ php artisan make:controller <Controller名>
+```
+
+<br>
+
+### リクエストパラメータの取得
+
+#### ・クエリパラメータ／メッセージボディ
+
+クエリパラメータとメッセージボディの両方を取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $params = $request->all(); // 全てのパラメータを連想配列で取得する．
+
+        $foo = $request->input('foo'); // 指定したパラメータの値を取得する．
+        
+        $qux = $request->input('foo.qux'); // ネストされたパラメータの値を取得する．
+
+        $params = $request->only(['foo', 'bar']); // 指定したパラメータを連想配列で取得する．
+
+        $params = $request->except(['baz']); // 指定したパラメータ以外を連想配列で取得する．
+
+        $foo = $request->foo; // 指定したパラメータの値を取得する．
+
+        $foo = request('foo'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+#### ・クエリパラメータ
+
+クエリパラメータを取得する．
+
+参考：https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        $params = $request->query(); // 全てのパラメータを連想配列で取得する．
+
+        $foo = $request->query('foo'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+#### ・パスパラメータ
+
+パスパラメータを取得する．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
+- https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $params = $request->route(); // 全てのパラメータを連想配列で取得する．
+
+        $fooId = $request->route('fooId'); // 指定したパラメータの値を取得する．
+
+        $fooId = $request->route->parameter('fooId'); // 指定したパラメータの値を取得する．
+    }
+}
+```
+
+コントローラの第二引数にパスパラメータ名を記述することで，パスパラメータの値を取得できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param         $fooId
+     */
+    public function update(Request $request, $fooId)
+    {
+
+    }
+}
+```
+
+<br>
+
+## 10-02. HTTP｜Middleware
+
+### artisanコマンドによる操作
+
+#### ・クラスの自動生成
+
+Middlewareクラスを自動生成する．
+
+```bash
+$ php artisan make:middleware <Middleware名>
+```
+
+<br>
+
+### Middlewareの仕組み
+
+#### ・Middlewareの種類
+
+ルーティング後にコントローラメソッドの前にコールされるBeforeMiddleと，レスポンスの実行時にコールされるAfterMiddlewareがある
+
+![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
+
+#### ・BeforeMiddleware
+
+ルーティング時のコントローラメソッドのコール前に実行する処理を設定できる．一連の処理を終えた後，FormRequestクラスを，次のMiddlewareクラスやControllerクラスに渡す必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class FooBeforeMiddleware
+{
+    /**
+     * @param  Request  $request
+     * @param  \Closure  $next
+     */
+    public function handle($request, Closure $next)
+    {
+        // 何らかの処理
+
+        // 次のMiddlewareクラスやControllerクラスに，FormRequestクラスを渡す．
+        return $next($request);
+    }
+}
+```
+
+#### ・AfterMiddleware
+
+コントローラメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる．あらかじめ，FormRequestクラスを，前のMiddlewareクラスやControllerクラスから受け取る必要がある．これらのクラスはClosure（無名関数）として，```next```変数に格納されている．
+
+**＊実装例＊**
+
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class FooAfterMiddleware
+{
+    /**
+     * @param  Request  $request
+     * @param  \Closure  $next
+     */    
+    public function handle($request, Closure $next)
+    {
+        $response = $next($request);
+
+        // 何らかの処理
+
+        // 前のMiddlewareクラスやControllerクラスから，FormRequestクラスを受け取る．
+        return $response;
+    }
+}
+```
+
+<br>
+
+### 標準のMiddleware
+
+#### ・EncryptCookies
+
+レスポンス時に，```Cookie```ヘッダーの全ての値を暗号化する．暗号化したくない場合は，```Cookie```ヘッダーのキー名を```except```プロパティに設定する．
+
+参考：https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+
+#### ・StartSession
+
+セッションの開始の起点になる．
+
+参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
+
+また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html
+
+#### ・VerifyCsrfToken
+
+セッションファイルに書かれたCSRFトークンと，リクエストボディに割り当てられたトークンを比較する．セッションファイルは```storage/framework/sessions```ディレクトリに配置されている．一般的に，CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが，Laravelではリクエストボディを使用する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+
+<br>
+
+### コール方法のカスタマイズ
+
+#### ・Kernel
+
+Middlewareクラスをコールする時の方法をカスタマイズできる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    /**
+     * 全てのHTTPリクエストに適用するミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $middleware = [
+        \App\Http\Middleware\Auth\TrustProxies::class,
+        \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\Auth\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+    ];
+
+    /**
+     * エイリアス名とミドルウェアグループを定義します．
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+        ],
+
+        'api' => [
+            'throttle:60,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    /**
+     * エイリアス名と個別のミドルウェアを定義します．
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
+        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
+        'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        // Fooミドルウェアクラス
+        'foo' => \App\Http\Middleware\Before\FooMiddleware::class
+    ];
+
+    /**
+     * ミドルウェアをコールする順番を定義します．
+     *
+     * @var string[]
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Auth\Authenticate::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
+}
+```
+
+<br>
+
+## 10-03. HTTP｜FormRequest
+
+### artisanコマンドによる操作
+
+#### ・クラスの自動生成
+
+FormRequestクラスを自動作成する．
+
+```bash
+$ php artisan make:request <Request名>
+```
+
+<br>
+
+### クエリパラメータ／メッセージボディのバリデーション
+
+#### ・ルール定義 ＆ バリデーション手動実行
+
+同じくFormRequestクラスの```validate```メソッドを使用して，ルールを定義し，さらにバリデーションを実行する．```validated```メソッドと間違わないように注意する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+
+参考：
+
+- https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
+- https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        // クエリパラメータのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validate([
+            "limit" => ["required", Rule::in([25, 50, 100])],
+            "order" => ["required", Rule::in(["ascend", "descend"])],
+        ]);
+
+        // 続きの処理
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // ルールの定義，バリデーションの実行
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validate([
+            "title" => ["required", "string", "max:255"],
+            "body"  => ["required", "string", "max:255"],
+            "date"  => ["required", "date"],
+        ]);
+
+        // 続きの処理
+    }
+}
+```
+
+なお，ルールによっては，配列を使用せずとも定義できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // ルールの定義，メッセージボディのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validate([
+            "title" => "required|string|max:5255",
+            "body"  => "required|string|max:255",
+            "date"  => "required|date",
+        ]);
+
+        // 続きの処理
+    }
+}
+```
+
+#### ・ルール定義 & バリデーション自動実行
+
+Controllerで，FormRequestクラスを引数に指定すると，コントローラのメソッドをコールする前にバリデーションを自動的に実行する．そのため，コントローラの中ではバリデーションを実行する必要はない．代わりに，ルールをFormRequestクラスの```rule```メソッドに定義する必要がある．FormRequestクラスの```validated```メソッドを使用して，バリデーション済みのデータを取得できる．バリデーションでエラーが起こった場合，Handlerクラスの```invalid```メソッドがコールされ，元々のページにリダイレクトされる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function index(Request $request)
+    {
+        // クエリパラメータのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validated();
+
+        // 続きの処理
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        // メッセージボディのバリデーションを実行する．
+        // エラーが起こった場合は元々のページにリダイレクト
+        $validated = $request->validated();
+
+        // 続きの処理
+    }
+}
+```
+
+FormRequestクラスの```rules```メソッドを使用して，ルールを定義する．ルールに反すると，一つ目のルール名（例えば```required```）に基づき，```validation.php```ファイルから対応するエラーメッセージを自動的に選択する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "title"  => ["required", "string", "max:255"],
+            "body"   => ["required", "string", "max:255"],
+            "type"   => ["required", Rule::in([1, 2, 3])],
+            "author" => ["required", "string", new UppercaseRule()],
+            "date"   => ["required", "date"],
+        ];
+    }
+}
+```
+
+<br>
+
+### パスパラメータのバリデーション
+
+#### ・ルールの定義 ＆ バリデーション自動実行
+
+Routeファサードの```pattern```メソッドまたは```where```メソッドで定義する．Routeファサードの説明を参考にせよ．
+
+<br>
+
+### エラーメッセージ
+
+#### ・標準のエラーメッセージ
+
+標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
+
+参考：https://readouble.com/laravel/8.x/ja/validation-php.html
+
+```php
+<?php
+
+return [
+
+    # 〜 中略 〜
+
+    'required' => ':attributeは必須です',
+
+    'string' => ':attribute は文字列のみ有効です',
+
+    'max' => [
+        'numeric' => ':attributeには、:max以下の数字を指定してください',
+        'file'    => ':attributeには、:max kB以下のファイルを指定してください',
+        'string'  => ':attributeは、:max文字以下で指定してください',
+        'array'   => ':attributeは:max個以下指定してください',
+    ],
+
+    'date' => ':attribute を有効な日付形式にしてください',
+
+    'attributes' => [
+        'title' => 'タイトル',
+        'body'  => '本文',
+        'date'  => '作成日',
+    ],
+
+    # 〜 中略 〜
+
+];
+```
+
+なお，言語設定を行わない場合，標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため，```app.php```ファイルで言語を変更することと，日本語翻訳```validation.php```ファイルが必要である．
+
+```php
+<?php
+
+return [
+
+    # 〜 中略 〜
+
+    'locale' => 'ja'
+    
+    # 〜 中略 〜
+    
+];
+```
+
+#### ・画面上でのエラーメッセージ出力
+
+バリデーションでエラーがあった場合，Handlerクラスの```invalid```メソッドがコールされ，MessageBagクラスがViewに渡される．選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Foundation/Exceptions/Handler.html#method_invalid
+- https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
+
+```bash
+( 
+  [title] => Array
+         (
+            [0] => タイトルの入力は必須です
+            [1] => タイトルは，最大255文字以下で指定してください
+         )
+
+  [body] => Array
+         (
+            [0] => 本文の入力は必須です
+            [1] => 本文は，最大255文字以下で指定してください
+         )
+  [data] => Array
+         (
+            [0] => 作成日の入力は必須です
+            [1] => 作成日を有効な日付形式にしてください
+         )    
+)
+```
+
+<br>
+
+### Rule
+
+#### ・```exists```メソッド
+
+指定されたテーブルのカラムに値が存在しているかを検証する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "prefectureId" => ["nullable", "integer", Rule::exists("prefectures", "id")],
+            "cityId"       => ["nullable", "integer", Rule::exists("cities", "id")]
+        ];
+    }
+}
+```
+
+テーブルにカラム数が多い場合は，Where句をつけることで，特定のカラムのみ検証することもできる．
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "prefectureId" => ["nullable", "integer", Rule::exists("prefectures", "id")],
+            "cityId"       => ["nullable", "integer", Rule::exists("cities", "id")->whereNull("deleted_at")],
+        ];
+    }
+}
+```
+
+#### ・```in```メソッド
+
+決められた複数の値に合致する値であるかどうかを検証する．
+
+参考：https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_in
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "type"  => ["required", Rule::in([1, 2, 3])],
+        ];
+    }
+}
+```
+
+#### ・独自ルール／メッセージ
+
+独自ルールを定義する場合は，Ruleクラスを継承したクラスを用意し，```rule```メソッドの中でインスタンスを作成する．独自Ruleクラスでは，```passes```メソッドでルールを定義する．また，```messages```メソッドでバリデーションメッセージを定義する．```validation.php```ファイルでメッセージを定義し，これを参照しても良い．
+
+参考：https://laravel.com/docs/8.x/validation#custom-validation-rules
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class UppercaseRule implements Rule
+{
+	/**
+     * バリデーションの成功を判定
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+	public function passes($attribute, $value)
+	{
+		return strtoupper($value) === $value;
+	}
+
+	/**
+     * バリデーションエラーメッセージの取得
+     *
+     * @return string
+     */
+	public function message()
+	{
+		return 'The :attribute must be uppercase.';
+        // return trans('validation.uppercase'); validation.phpファイルから参照する．
+	}
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class FooRequest extends FormRequest
+{
+    /**
+     * ルールを返却します．
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        // ルールの定義
+        return [
+            "author"  => ["required", "string", new UppercaseRule()]
+        ];
+    }
+}
+```
+
+<br>
+
+### セッション
+
+#### ・セッション変数の取得
+
+FormRequestクラスの```session```メソッドを使用して，セッション変数を取得する．
+
+**＊実装例＊**
+
+```php
+<?php
+  
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param  Request  $request
+     * @param  int  $id
+     */
+    public function show(Request $request, int $id)
+    {
+        $session = $request->session()
+            ->get("key");
+    }
+}
+```
+
+全てのセッション変数を取得することもできる．
+
+```php
+$session = $request->session()->all();
+```
+
+#### ・フラッシュデータの設定
+
+現在のセッションにおいて，今回と次回のリクエストだけで有効な一時データを設定できる．
+
+```php
+$request->session()
+    ->flash("status", "Task was successful!");
+```
+
+<br>
+
+### Requestの認証
+
+#### ・```authorize```メソッド
+
+ユーザがリソースに対してCRUD操作を行う権限を持っているかを，コントローラのメソッドを実行する前に，判定する．
+
+**＊実装例＊**
+
+```php
+/**
+ * ユーザーがこのリクエストの権限を持っているかを判断する
+ *
+ * @return bool
+ */
+public function authorize()
+{
+    $comment = Comment::find($this->route("comment"));
+
+    return $comment&& $this->user()->can("update", $comment);
+}
+```
+
+#### ・Authファサード
+
+Authファサードの説明を参考にせよ．
+
+<br>
+
+## 11. Logging
+
+### ログの出力先
+
+#### ・設定方法
+
+環境変数を```.env```ファイルに実装する．```logging.php```ファイルから，指定された設定が選択される．
+
+参考：https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
+
+```
+LOG_CHANNEL=<オプション名>
+```
+
+#### ・```stack```キー
+
+他の単一／複数のチャンネルを利用するチャンネル．
+
+```php
+return [
+
+    // ～ 中略 ～    
+
+    "default"  => env("LOG_CHANNEL", "stack"),
+    "channels" => [
+        "stack" => [
+            "driver"            => "stack",
+            // 複数チャンネルを設定可能．（例）["single", "stack"]
+            "channels"          => ["single"],
+            "ignore_exceptions" => false,
+        ],
+
+        // ～ 中略 ～
+
+    ]
+];
+```
+
+#### ・```single```キー
+
+全てのログを```/storage/logs/laravel.log```ファイルに対して出力する．
+
+```php
+return [
+
+    // ～ 中略 ～    
+
+    "default"  => env("LOG_CHANNEL", "stack"),
+    "channels" => [
+        "daily" => [
+            "driver" => "daily",
+            "path"   => storage_path("logs/laravel.log"),
+            "level"  => env("LOG_LEVEL", "debug"),
+            "days"   => 14,
+        ],
+
+        // ～ 中略 ～
+
+    ]
+];
+```
+
+#### ・```daily```キー
+
+全てのログを```/storage/logs/laravel-<日付>.log```ファイルに対して出力する．
+
+```php
+return [
+
+    // ～ 中略 ～    
+
+    "default"  => env("LOG_CHANNEL", "stack"),
+    "channels" => [
+        "stderr" => [
+            "driver"    => "monolog",
+            "handler"   => StreamHandler::class,
+            "formatter" => env("LOG_STDERR_FORMATTER"),
+            "with"      => [
+                "stream" => "php://stderr",
+            ],
+        ],
+
+        // ～ 中略 ～
+
+    ]
+];
+```
+
+#### ・```stderr```キー
+
+全てのログを標準エラー出力に対して出力する．Docker上でLaravelを稼働させる場合は，生成されるログファイルでコンテナの容量が肥大化することを防ぐために，これを選択する．なお，独自カスタマイズとして，```stream```キーをstdout変更すれば，標準出力にログを出力することもできる．
+
+```php
+return [
+
+    // ～ 中略 ～
+
+    "default"  => env("LOG_CHANNEL", "stack"),
+    "channels" => [
+        "stderr" => [
+            "driver"    => "monolog",
+            "handler"   => StreamHandler::class,
+            "formatter" => env("LOG_STDERR_FORMATTER"),
+            "with"      => [
+                "stream" => "php://stderr",
+            ],
+        ],
+
+        // ～ 中略 ～
+
+    ]
+];
+```
+
+<br>
+
+### ログの出力
+
+#### ・```error```メソッド
+
+エラーメッセージを定義する時，```sprintf```メソッドを使用すると便利である．
+
+**＊実装例＊**
+
+外部のAPIに対してリクエストを送信し，データを取得する．取得したJSONデータを，クライアントにレスポンスする．この時，リクエスト処理のために，Guzzleパッケージを使用している．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\Response;
+
+class FooController extends Controller
+{
+    public function index()
+    {
+        $client = new Client();
+        $requestUrl = config("api.foo.endpoint_url");
+
+        try {
+
+            $response = $client->request(
+                "GET",
+                $requestUrl,
+                [
+                    "headers" => [
+                        "Content-Type" => "application/json",
+                        "X-API-Key"    => "api.foo.api_key",
+                    ]
+                ]
+            );
+
+            // JSONをクライアントにレスポンス
+            return $response->getBody()
+                ->getContents();
+
+        } catch (GuzzleException $e) {
+
+            Log::error(sprintf(
+                    "%s : %s at %s line %s",
+                    get_class($e),
+                    $e->getMessage(),
+                    $e->getFile(),
+                    $e->getLine())
+            );
+
+            return response()->json(
+                [],
+                $e->getCode()
+            );
+        }
+    }
+}
+```
+
+```php
+<?php
+
+return [
+    "foo" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ],
+    "bar" => [
+        "endpoint_url" => env("ENDPOINT_URL", ""),
+        "api_key"      => env("API_KEY"),
+    ]
+];
+```
+
+#### ・```info```メソッド
+
+<br>
+
+
+## 12. Migration
+
+### artisanコマンドによる操作
+
+#### ・マイグレーションファイルを作成
+
+```bash
+$ php artisan make:migrate create_<テーブル名>_table
+```
+
+#### ・テーブル作成
+
+マイグレーションファイルを元にテーブルを作成する．
+
+```bash
+$ php artisan migrate
+```
+
+コマンド実行時，以下のエラーが出ることがある．マイグレーションファイル名のスネークケースで，これがクラス名のキャメルケースと対応づけられており，ファイル名とクラス名の関係が正しくないために起こるエラーである．
+
+```bash
+Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateXxxxxTable" not found
+```
+
+#### ・マイグレーションの結果を確認
+
+```bash
+$ php artisan migrate:status
+```
+
+#### ・指定した履歴数だけテーブルを元に戻す
+
+指定した履歴数だけ，ロールバックを行う．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+
+```bash
+$ php artisan migrate:rollback --step=<ロールバック数>
+```
+
+実際の使用場面として，マイグレーションに失敗した場合に，一つ前の状態にロールバックしてマイグレーションファイルを修正した後，再びマイグレーションを行う．
+
+```bash
+# マイグレーションに失敗したので，一つ前の状態にロールバック．
+$ php artisan migrate:rollback --step=1
+
+# ファイル修正後にマイグレーションを実行
+$ php artisan migrate
+```
+
+#### ・初期の状態までテーブルを元に戻す
+
+初期の状態まで，全てのロールバックを実行する．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+
+```bash
+$ php artisan migrate:reset
+```
+
+#### ・テーブルを元に戻してから再作成
+
+全てのロールバック（```migrate:reset```）を実行し，次いで```migrate```を実行する．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+
+```bash
+$ php artisan migrate:refresh
+```
+#### ・テーブルを削除してから再作成
+
+全てのテーブルを削除と```migrate```を実行する．マイグレーションファイルの構文チェックを行わずに，強制的に実行される．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+
+```bash
+$ php artisan migrate:fresh
+```
+
+マイグレーション時，テーブルがすでに存在するエラーが起こることがある．この場合，テーブルがマイグレーションされる前までロールバックし，マイグレーションを再実行することが最適である．しかしそれが難しければ，このコマンドを実行する必要がある．
+
+```bash
+SQLSTATE[42S01]: <テーブル名> table or view already exists
+```
+
+#### ・確認画面の入力をスキップ
+
+マイグレーション時，本当に実行して良いか確認画面（Yes／No）が表示される．CICDにおいて，この確認画面でYes／Noを入力することができないため，確認画面をスキップできるようにする必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+
+```bash
+$ php artisan migrate --force
+```
+
+<br>
+
+### テーブルの作成／削除
+
+#### ・```up```メソッド，```down```メソッド
+
+コマンドによるマイグレーション時にコールされる．```up```メソッドでテーブル，カラム，インデックスのCREATEを実行する．```down```メソッドでCREATEのロールバックを実行する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFooTable extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("foos", function (Blueprint $table) {
+            
+            $table->bigIncrements("foo_id")->comment("ID");
+            $table->string("name")->comment("名前");
+
+            // MigrationMacroServiceProviderのメソッドを使用する．
+            $table->systemColumns();
+
+            // deleted_atカラムを追加する．
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("foos");
+    }
+}
+```
+
+<br>
+
+### カラムの追加／変更／削除
+
+#### ・なし
+
+指定したカラムを追加する．
+
+**＊実装例＊**
+
+カラムを追加するためだけにマイグレーションファイルを作成する．
+
+```bash
+$ php artisan make:migration add_column --table=foos
+```
+
+追加したいカラムのみを定義する．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('foo_name');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
+
+```bash
+$ php artisan migrate
+```
+
+#### ・```renameColumn```メソッド
+
+指定したカラムの名前を変更する．
+
+**＊実装例＊**
+
+カラム名を変更するためだけにマイグレーションファイルを作成する．
+
+```bash
+$ php artisan make:migration rename_column --table=foos
+```
+
+テーブルのカラム名を定義し，```renameColumn```メソッドをコールする．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class RenameColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->renameColumn('id', 'foo_id');
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        // データ型の変更後でも，ロールバックできるようにしておく．
+        Schema::table('foos', function (Blueprint $table) {
+            $table->renameColumn('foo_id', 'foo_id');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラム名が変更される．実行後は，作成したマイグレーションファイルを削除する．
+
+```bash
+$ php artisan migrate
+```
+
+#### ・```change```メソッド
+
+指定したカラムのデータ型を変更する．
+
+**＊実装例＊**
+
+データ型を変更するためだけにマイグレーションファイルを作成する．
+
+```bash
+$ php artisan make:migration change_column_data_type --table=foos
+```
+
+テーブルのカラムのデータ型を定義し，```change```メソッドをコールする．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class ChangeColumnDataType extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->integer('bar')->change();
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        // データ型の変更後でも，ロールバックできるようにしておく．
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('bar')->change();
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムのデータ型が変更される．実行後は，作成したマイグレーションファイルを削除する．
+
+```bash
+$ php artisan migrate
+```
+
+#### ・```dropColumn```メソッド
+
+指定したカラムを削除する．
+
+**＊実装例＊**
+
+カラムを削除するためだけにマイグレーションファイルを作成する．
+
+```bash
+$ php artisan make:migration drop_column --table=foos
+```
+
+削除するカラムを```dropColumn```メソッドで指定する．変更後でも，ロールバックできるように，```down```メソッドも定義しておく．
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class DropColumn extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->dropColumn('foo_name');
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('foos', function (Blueprint $table) {
+            $table->string('foo_name');
+        });
+    }
+}
+```
+
+マイグレーションを実行すると，指定したテーブルのカラムが追加される．実行後は，作成したマイグレーションファイルを削除する．
+
+```bash
+$ php artisan migrate
+```
+
+<br>
+
+### よく使うカラムタイプ
+
+#### ・```bigIncrements```メソッド
+
+AutoIncrementのINT型カラムを作成する．
+
+**＊実装例＊**
+
+```php
+Schema::create("foos", function (Blueprint $table) {
+    
+    // ～ 中略 ～
+    
+    $table->bigIncrements("foo_id");
+    
+    // ～ 中略 ～
+    
+});
+```
+
+#### ・```string```メソッド
+
+VARCHAR型カラムを作成する．
+
+**＊実装例＊**
+
+```php
+Schema::create("foos", function (Blueprint $table) {
+  
+    // ～ 中略 ～    
+    
+    $table->string("name");
+    
+    // ～ 中略 ～
+    
+});
+```
+
+#### ・```timestamp```メソッド
+
+TIMESTAMP型カラムを作成する．
+
+**＊実装例＊**
+
+```php
+Schema::create("foos", function (Blueprint $table) {
+    
+    // ～ 中略 ～
+    
+    $table->timestamp("created_at");
+    
+    // ～ 中略 ～
+});
+```
+
+<br>
+
+## 13. Notification
+
+### artisanコマンドによる操作
+
+```bash
+
+```
+
+<br>
+
+### 通知内容
+
+#### ・Notification
+
+通知内容を定義する．```via```メソッドで受信チャンネルを定義する．この時，Laravelが標準で用意しているチャンネル（Mail，SMS，Slackチャンネル，Databaseチャンネル）以外に送信したい場合，Channelクラスを定義する必要がある．複数の値を設定した場合は，それぞれに通信が送信される．```toMail```メソッド，```toSms```メソッド，```toSlack```メソッド，```toArray```メソッド，を使用して，Laravelの標準のチャンネルに渡す通知内容を定義できる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        // 受信チャンネルを選択します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return string
+     */
+    public function toSms($notifiable)
+    {
+        // SMSのメッセージ内容を返却します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        // Emailのメッセージ内容を返却します．
+    }
+
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        // DBへの保存方法を返却します．
+    }
+}
+```
+
+#### ・Eメール通知内容の定義
+
+MailMessageクラスのメソッドを使用して，Eメール通知の内容を生成する．```markdown```メソッドを使用することで，マークダウン形式で定義できる．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
+- https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSでない場合は，Eメール通知とします．
+            'database'
+        ];
+    }
+
+    /**
+     * @param $notifiable
+     * @return MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        // Emailのメッセージ内容を返却します．
+        return (new MailMessage())->subject("コードを送信いたしました．")
+            ->markdown("template.mail", [
+                "tfa_token" => $notifiable->tfaToken()
+            ]);
+    }
+}
+```
+
+```html
+@component("mail::message")
+
+認証コード『{ $tfa_token }}』を入力して下さい．<br>
+
++++++++++++++++++++++++++++++++++++++<br>
+本アドレスは送信専用です．ご返信頂いてもお答えできませんので、ご了承ください．
+
+@endcomponent
+```
+
+#### ・SMS通知内容の定義
+
+参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSの場合は，AWS-SNSを使用します．
+            'database'
+        ];
+    }
+
+    /**
+     * @param $notifiable
+     * @return string
+     */
+    public function toSms($notifiable)
+    {
+        // SMSのメッセージ内容を返却します．
+        return view("template.sms", [
+            "subject"   => "コードを送信いたしました．",
+            "tfa_token" => $notifiable->tfaToken()
+        ]);
+    }  
+}
+```
+
+#### ・Slack通知内容の定義
+
+参考：https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
+
+#### ・DB通知内容の定義
+
+配列でDBに保存する内容を定義する．
+
+参考：https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use App\Models\User;
+use App\Notifications\Channels\EmailChannel;
+use App\Notifications\Channels\AwsSnsChannel;
+use Illuminate\Notifications\Notification;
+
+class TfaTokenNotification extends Notification
+{
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [
+            $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class],
+            'database' // DB受信チャンネル
+        ];
+    }
+    
+    /**
+     * @param $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        // notificationsテーブルのdataカラムに，JSONで保存されます．
+        return [
+            "tfa_token" => $notifiable->tfaToken(),
+        ];
+    }
+}
+```
+
+<br>
+
+### 受信チャンネル（通知方法）
+
+#### ・Channel
+
+Laravelが標準で用意しているチャンネル以外に送信したい場合に，独自の受信チャンネルを定義する．これは，Notificationクラスの```via```メソッドで使用される．
+
+**＊実装例＊**
+
+AWS SNSを受信チャンネルとする．AWSから配布されているパッケージが必要である．
+
+```bash
+$ composer require aws/aws-sdk-php-laravel
+```
+
+```php
+<?php
+
+namespace App\Notifications\Channels;
+
+use Aws\Sns\SnsClient;
+use Aws\Exception\AwsException;
+use Illuminate\Notifications\Notification;
+
+class AwsSnsChannel
+{
+    /**
+     * @param SnsClient $awsSnsClient
+     */
+    public function __construct(SnsClient $awsSnsClient)
+    {
+        $this->awsSnsClient = $awsSnsClient;
+    }
+
+    /**
+     * @param              $notifiable
+     * @param Notification $notification
+     */
+    public function send($notifiable, Notification $notification)
+    {
+        try {
+            $message = $notification->toSms($notifiable);
+
+            // AWS SNSにメッセージを送信します．
+            $this->awsSnsClient->publish([
+                "Message"     => $message,
+                "PhoneNumber" => $this->toE164nizeInJapan(
+                    $notifiable->phoneNumber()
+                ),
+            ]);
+        } catch (AwsException $e) {
+
+            Log::error(sprintf(
+                    "%s : %s at %s line %s",
+                    get_class($e),
+                    $e->getMessage(),
+                    $e->getFile(),
+                    $e->getLine())
+            );
+
+            throw new AwsException($e->getMessage());
+        }
+    }
+
+    /**
+     * @param string
+     * @return string
+     */
+    private function toE164nizeInJapan(string $phoneNumeber): string
+    {
+        // E.164形式の日本電話番号を返却します．
+        return "+81" . substr($phoneNumeber, 1);
+    }
+}
+```
+
+<br>
+
+### 通知対象モデル
+
+#### ・Notifiableトレイトの```notify```メソッド
+
+通知対象となるモデルを定義する．Notifiableトレイトを継承する．これにより，```notify```メソッドを使用できるようになる．
+
+参考：https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+}
+```
+
+通知対象のクラスから```notify```メソッドをコールし，任意のNotificationクラスを渡す．これにより，通知処理が実行される．
+
+参考：https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
+
+```php
+<?php
+
+$user->notify(new FooNotification());
+```
+
+#### ・Notificationファサード
+
+通知対象となるモデルを定義する．Notifiableトレイトを継承する．
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+}
+```
+
+Notificationファサードに通知対象のモデルと通知クラスを渡す．
+
+```php
+<?php
+
+Notification::send($users, new FooNotification());
+```
+
+#### ・オンデマンド通知
+
+オンデマンド通知を使用すると，通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる．
+
+参考：
+
+- https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
+- https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
+
+```php
+<?php
+
+Notification::route('mail', $user->email_address)
+            ->route('nexmo', $user->phone_number)
+            ->route('slack', $slackMessage->usl)
+            ->notify(new FooMotification());
+```
+
+<br>
+
+## 14. Resource
+
+### artisanコマンドによる操作
+
+#### ・Resourceの生成
+
+Resourceクラスを自動生成する．
+
+```bash
+$ php artisan make:resource <Resource名>
+```
+
+<br>
+
+### レスポンスデータ作成前のデータ型変換
+
+#### ・データ型変換の必要性
+
+EloquentモデルをJSONデータとしてレスポンスする時に，一旦，配列データに変換する必要がある．
+
+#### ・単一のEloquentモデルの配列化
+
+単一のEloquentモデルを配列に変換する．Resourceクラスの```toArray```メソッドにて，```this```変数は自身ではなく，Resourceクラス名につくEloquentモデル名になる．また，```this```変数からゲッターを経由せずに直接プロパティにアクセスできる．Controllerにて，ResouceクラスにEloquentモデルを渡すようにする．LaravelはレスポンスのJSONデータを作成するために，まず```toArray```メソッドにより配列化し，さらにこれをJSONデータに変換する．
+
+**＊実装例＊**
+
+Fooクラスからデータを取り出し，配列化する．
+
+```php
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class FooJsonResource extends JsonResource
+{
+    /**
+     * オブジェクトを配列に変換します．
+     *
+     * @param  Request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return [
+            "id"       => $this->id,
+            "name"     => $this->name,
+        ];
+    }
+}．
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * クライアントにデータを返却します．
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        // ここに，Eloquentモデルをデータベースから取得する処理
+        
+        // Eloquentモデルを渡す．
+        return new FooResource($foo);
+    }
+}
+```
+
+#### ・複数のEloquentモデル（Collection型）の配列化
+
+複数のEloquentモデル（Collection型）を配列に変換する．
+
+```php
+// ここに実装例
+```
+
+<br>
+
+## 15. Routing
+
+### artisanコマンドによる操作
+
+#### ・ルーティング一覧
+
+```bash
+# ルーティングを一覧で表示
+$ php artisan route:list
+```
+
+#### ・Cache削除
+
+```bash
+# ルーティングのCacheを削除
+$ php artisan route:clear
+
+# 全てのCacheを削除
+$ php artisan optimize:clear
+```
+
+<br>
+
+### ```api.php```ファイル
+
+#### ・Middlewareの適用
+
+APIのエンドポイントとして働くルーティング処理を実装する．実装したルーティング処理時には，Kernelクラスの```middlewareGroups```プロパティの```api```キーで設定したミドルウェアが実行される．APIのエンドポイントは外部公開する必要があるため，```web```キーと比較して，セキュリティのためのミドルウェアが設定されていない．
+
+```php
+<?php
+
+namespace App\Http;
+
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    // 〜 中略 〜
+    
+    /**
+     * The application"s route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+
+        // 〜 中略 〜
+
+        "api" => [
+            "throttle:60,1",
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+    
+    // 〜 中略 〜
+}
+```
+
+<br>
+
+### ```web.php```ファイル
+
+#### ・Middlewareの適用
+
+API以外のルーティング処理を実装する．実装したルーティング処理時には，Kernelクラスの```middlewareGroups```プロパティの```web```キーで設定したミドルウェアが実行される．API以外のルーティングは外部公開する必要がないため，```api```キーと比較して，セキュリティのためのミドルウェアが多く設定されている．例えば，CSRF対策のためのVerifyCsrfTokenクラスがある．
+
+```php
+<?php
+
+namespace App\Http;
+
+use App\Http\Middleware\BeforeMiddleware\FooIdConverterMiddleware;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
+class Kernel extends HttpKernel
+{
+    // 〜 中略 〜
+    
+    /**
+     * @var array
+     */
+    protected $middlewareGroups = [
+        "web" => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        
+        // 〜 中略 〜
+        
+    ];
+    
+    // 〜 中略 〜
+}
+```
+
+<br>
+
+### ```guest.php```ファイル
+
+ヘルスチェックなど，API認証が不要なルーティング処理を実装する．
+
+<br>
+
+### 暗黙のモデル結合
+
+#### ・コントローラ使用時
+
+ルーティング時に使用するパラメータ名とコントローラのメソッドの引数型と変数名が同じであり，かつパラメータに数値が割り当てられた場合に，その数値をIDとするEloquentモデルが自動的にインジェクションされる．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
+
+**＊実装例＊**
+
+ルーティング時に，パスパラメータ名を```user```としておく．
+
+```php
+<?php
+    
+Route::get('/users/{user}', 'UserController@index');
+```
+
+かつ，コントローラのメソッドの引数型／変数名を```User```／```$user```とする．または．この時，『```/users/1```』に対してリクエストが送信されると，ユーザIDが```1```のユーザがDBから読み出され，コントローラにインジェクションされる．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    /**
+     * @param User $user
+     */
+    public function index(User $user)
+    {
+        $id = $user->id; // パスパラメータのidに紐付くユーザが自動的に渡されている．
+    }
+}
+```
+
+<br>
+
+## 16. Seeder
+
+### artisanコマンドによる操作
+
+#### ・Seederの生成
+
+Seederクラスを自動生成する．
+
+```bash
+$ php artisan make:seeder <Seeder名>
+```
+
+#### ・Seederの実行
+
+Seederを新しく作成した時やSeeder名を変更した時，Composerの```dump-autoload```を実行する必要がある．
+
+```bash
+$ composer dump-autoload
+```
+
+```bash
+# 特定のSeederを実行
+$ php artisan db:seed --class=<Seeder名>
+
+# DatabaseSeederを指定して，全てのSeederを実行
+$ php artisan db:seed --class=<Seeder名>
+```
+
+<br>
+
+### 初期リアルデータの定義
+
+#### ・DBファサードによる定義
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Constants\ExecutorConstant;
+
+class ProductsSeeder extends Seeder
+{
+    /**
+     * Seederを実行します．
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table("products")->insert([
+                "product_name" => "シャープペンシル",
+                "price"        => 300,
+                "product_type" => 1,
+                "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "created_at"   => NOW(),
+                "updated_at"   => NOW(),
+                "deleted_at"   => NULL
+            ],
+            [
+                "product_name" => "ノート",
+                "price"        => 200,
+                "product_type" => 2,
+                "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "created_at"   => NOW(),
+                "updated_at"   => NOW(),
+                "deleted_at"   => NULL                
+            ],            
+            [
+                "product_name" => "消しゴム",
+                "price"        => 100,
+                "product_type" => 3,
+                "created_by"   => ExecutorConstant::ARTISAN_COMMAND,
+                "updated_by"   => ExecutorConstant::ARTISAN_COMMAND,            
+                "created_at"   => NOW(),
+                "updated_at"   => NOW(),
+                "deleted_at"   => NULL                
+            ],
+            
+            // ～ 中略 ～
+            
+        ]);
+    }
+}
+```
+
+実行者名は，定数として管理しておくとよい．
+
+```php
+<?php
+
+namespace App\Constants;
+
+/**
+ * 実行者定数クラス
+ */
+class ExecutorConstant
+{
+    /**
+     * Artisanコマンド
+     */
+    public const ARTISAN_COMMAND = "Artisan Command";
+
+    /**
+     * スタッフ
+     */
+    public const STAFF = "Staff";
+    
+    /**
+     * ゲスト
+     */
+    public const GUEST = "Guest";    
+}
+```
+
+#### ・CSVファイルによる定義
+
+```php
+// ここに実装例
+```
+
+<br>
+
+### Seederの実行
+
+DatabaseSeederにて，全てのSeederをまとめて実行する．
+
+```php
+<?php
+
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seederを実行します．
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // 開発環境用の初期データ
+        if (App::environment("local")) {
+            $this->call([
+                // ダミーデータ
+            ]);
+        }
+        
+        // ステージング環境用の初期データ
+        if (App::environment("staging")) {
+            $this->call([
+                // リアルデータ
+                ProductsSeeder::class
+            ]);
+        }
+        
+        // 本番環境用の初期データ
+        if (App::environment("production")) {
+            $this->call([
+                // リアルデータ
+                ProductsSeeder::class
+            ]);
+        }
+    }
+}
+```
+
+<br>
+
+## 17. ServiceProvider
+
+### artisanコマンドによる操作
+
+#### ・クラスの自動生成
+
+```bash
+$ php artisan make:provider <クラス名>
+```
+
+<br>
+
+### ServiceProvider
+
+#### ・ServiceProviderの用途
+
+| 用途の種類                                                   | 説明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| AppServiceProvider                                           | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（生成） |
+| MacroServiceProvider                                         | ServiceContainerへのメソッドのバインド（登録）               |
+| RouteServiceProvider<br>（```app.php```，```web.php```も使用） | ルーティングとコントローラの対応関係の定義                   |
+| EventServiceProvider                                         | EventListenerとEventhandler関数の対応関係の定義              |
+
+#### ・ServiceProviderのコール
+
+クラスの名前空間を，```config/app.php```ファイルの```providers```配列に登録すると，アプリケーションの起動時にServiceProviderをコールできるため，ServiceContainerへのクラスのバインドが自動的に完了する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+"providers" => [
+    
+    // 複数のServiceProviderが実装されている
+
+    App\Providers\ComposerServiceProvider::class,
+],
+```
+
+<br>
+
+### ServiceContainer
+
+#### ・ServiceContainer，バインド，リゾルブとは
+
+ServiceContainer，バインド，リゾルブについては，以下を参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
+
+```php
+<?php
+
+namespace Illuminate\Contracts\Container;
+
+use Closure;
+use Psr\Container\ContainerInterface;
+
+interface Container extends ContainerInterface
+{
+    /**
+     * 通常のバインディングとして，自身にバインドする．
+     * 第二引数は，クロージャー，もしくはクラス名前空間
+     *
+     * @param  string  $abstract
+     * @param  \Closure|string|null  $concrete
+     * @param  bool  $shared
+     * @return void
+     */
+    public function bind($abstract, $concrete = null, $shared = false);
+    
+    /**
+     * singletonとして，自身にバインドする．
+     *
+     * @param  string  $abstract
+     * @param  \Closure|string|null  $concrete
+     * @return void
+     */
+    public function singleton($abstract, $concrete = null);
+}
+```
+
+<br>
+
+### AppServiceProvider
+
+#### ・単一のクラスをバインド／リゾルブ
+
+AppSeriveProviderにて，ServiceContainerにクラスをバインドすることによって，ServiceContainerがインスタンスをリゾルブできるようになる．これにより，メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．Laravelでは，クラスはServiceContainerに自動的にバインドされており，引数でクラスを指定するだけでインスタンスが生成されるため，以下の実装を実行する必要はない．ただし，混合型の場合は引数の型を指定できないため，リゾルブは実行できない．
+
+参考：https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
+
+**＊実装例＊**
+
+バインドする．なお，Laravelでは不要である．
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use App\Models\Bar;
+use App\Models\Baz;
+use App\Models\Foo;
+
+class FooServiceProvider extends ServiceProvider
+{
+    /**
+     * コンテナにバインド
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind(Foo::class, function ($app) {
+            return new Foo(new Bar, new Baz);
+        });
+    }
+}
+```
+
+引数の型を元に，クラスのインスタンスがリゾルブされる．
+
+```php
+<?php
+
+class Qux
+{
+    /**
+     * @param Foo $foo
+     */
+    public function method(Foo $foo) // リゾルブされる．
+    {
+        $foo->bar;
+        $foo->baz;
+    }
+}
+```
+
+引数の型を指定しない場合は，手動で渡す必要がある．
+
+```php
+<?php
+
+use App\Models\Foo;
+
+class Qux
+{
+    /**
+     * @param Foo $foo
+     */
+    public function __construct($foo) // 引数の型を指定しない場合，リゾルブされない．
+    {
+        $foo->bar;
+        $foo->baz;
+    }
+}
+
+$foo = new Foo();
+$qux = new Qux($foo); // 手動で渡す
+```
+
+混合型の場合は，引数の型を指定できないため，リゾルブを実行できない．
+
+```php
+<?php
+
+use App\Models\Foo1;
+use App\Models\Foo2;
+use App\Models\Foo3;
+
+class Qux
+{
+    /**
+     * @param Foo1|Foo2|Foo3 $mixed
+     */
+    public function __construct($mixed) // 混合型では引数の型を指定できない
+    {
+        $mixed->bar;
+        $mixed->baz;
+    }
+}
+
+$foo1 = new Foo1();
+$foo2 = new Foo2();
+$foo3 = new Foo3();
+
+$qux = new Qux($foo1);
+```
+
+#### ・複数のクラスをバインド／リゾルブ
+
+メソッドの引数でクラスを指定しさえすれば，そのクラスのインスタンスが渡されるため，自動的に依存オブジェクト注入が実行されたことになる．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Providers;
+
+use App\Models\Foo\Entities;
+use App\Models\Bar;
+use App\Models\Baz;
+use Illuminate\Support\ServiceProvider;
+
+class FoosServiceProvider extends ServiceProvider
+{
+     /**
+     * 各registerメソッドをコール
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerFoo();
+        $this->registerBar();
+        $this->registerBaz();
+    }
+    
+    /**
+    * 一つ目のクラスをバインド
+    */
+    private function registerFoo()
+    {
+        $this->app->bind(Foo::class, function ($app) {
+            return new Foo();
+        });
+    }
+    
+    /**
+    * 二つ目のクラスをバインド
+    */    
+    private function registerBar()
+    {
+        $this->app->bind(Bar::class, function ($app) {
+            return new Bar();
+        });
+    }
+    
+    /**
+    * 三つ目のクラスをバインド
+    */
+    private function registerBaz()
+    {
+        $this->app->bind(Baz::class, function ($app) {
+            return new Baz();
+        });
+    }
+}
+```
+
+#### ・インターフェースをバインドし，実装クラスをリゾルブ
+
+Laravelにおいてはクラスが自動的にバインドされ，これのインスタンスがリゾルブされる，しかし，バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は，ServiceProviderにそれを定義すれば，自動的なバインドを上書きできる．これを利用して，インターフェースをバインドし，実装クラスをリゾルブできるようにする．この方法は，上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use App\Domain\FooRepository as FooRepositoryInterface;
+use App\Infrastructure\FooRepository;
+
+class FooServiceProvider extends ServiceProvider
+{
+    /**
+     * コンテナにバインド
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind(
+            "App\Domain\Foo\Repositories\FooRepositoryInterface", // インターフェース
+            "App\Infrastructure\Doo\Repositories\FooRepository" // 実装クラス
+        );
+    }
+}
+```
+
+```php
+<?php
+
+class Interactor
+{
+    /**
+     * @var FooRepositoryIF 
+     */
+    private FooRepositoryIF $fooRepository;
+    
+    /**
+     * @param FooRepositoryIF $fooRepository
+     */
+    public function __constructor(FooRepositoryIF $fooRepository) // リゾルブされる．
+    {
+        $this->fooRepository = $fooRepository;
+    }
+}
+```
+
+#### ・```make```メソッド
+
+引数の型でリゾルブを実行する以外に，```make```メソッドを使用することも可能である．```make```メソッドの引数にクラスの名前空間を渡すことで，インスタンスがリゾルブされる．
+
+参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
+
+**＊実装例＊**
+
+```php
+<?php
+
+class Foo
+{
+    public function method()
+    {
+        return "foo";
+    }
+}
+
+// Fooクラスをリゾルブし，そのままmethodをコール
+$result = app()->make(Foo::class)
+    ->method();
+
+// Fooクラスをリゾルブ
+$foo = App::make(Foo::class);
+$result = $foo->method();
+```
+
+#### ・```register```メソッドと```boot```メソッドの違い
+
+Laravelのライフサイクルにおいて，ServiceContainerへのクラスのバインドの時には，まずServiceProviderの```register```メソッドが実行され，その後に```boot```メソッドが実行される．そのため，ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき，これは```boot```メソッドに実装することが適している．
+
+<br>
+
+### MigrationMacroServiceProvider
+
+複数のテーブルに共通のカラムを構築するマイグレーション処理を提供する．
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\ServiceProvider;
+
+/**
+ * マイグレーションマクロサービスプロバイダクラス
+ */
+class MigrationMacroServiceProvider extends ServiceProvider
+{
+    /**
+     * サービスコンテナにマイグレーションメソッドをバインドします．
+     *
+     * @return void
+     */
+    public function register()
+    {
+        Blueprint::macro("systemColumns", function () {
+            $this->string("created_by")
+                ->comment("レコードの作成者")
+                ->nullable();
+            $this->string("updated_by")
+                ->comment("レコードの最終更新者")
+                ->nullable();
+            $this->timestamp("created_at")
+                ->comment("レコードの作成日")
+                ->nullable();
+            $this->timestamp("updated_at")
+                ->comment("レコードの最終更新日")
+                ->nullable();
+            $this->timestamp("deleted_at")
+                ->comment("レコードの削除日")
+                ->nullable();
+        });
+        
+        Blueprint::macro("dropSystemColumns", function () {
+            $this->dropColumn(
+                "created_by",
+                "updated_by",                
+                "created_at",
+                "updated_at",
+                "deleted_at"
+            );
+        });        
+    }
+}
+```
+
+マイグレーションファイルにて，定義した```systemColumn```メソッドをコールする．
+
+```php
+<?php
+  
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFooTable extends Migration
+{
+    /**
+     * マイグレート
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("foos", function (Blueprint $table) {
+            $table->bigIncrements("foo_id")
+                ->comment("ID");
+            $table->string("name")
+                ->comment("名前");
+            
+            // MigrationMacroServiceProviderのメソッドを使用する．
+            $table->systemColumns();
+            
+            // deleted_atカラムを追加する．
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * ロールバック
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("foos");
+    }
+}
+```
+
+<br>
+
+### RouteServiceProvider
+
+#### ・全てのルーティングへの処理
+
+ルーティングの設定ファイルをコールする．また，全てのルーティングに適用する処理を定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * ルーティングの設定ファイルをコールします．
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // ヘルスチェック
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/healthcheck.php'));
+
+        // API
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+}
+```
+
+#### ・リクエスト数制限
+
+一分間当たりに許容するリクエスト数とその制限名を```configureRateLimiting```メソッドで定義する．さらに，Throttleミドルウェアに制限名を渡し，指定したルートにリクエスト数制限を適用させる，もし制限を超えた場合，```configureRateLimiting```メソッドによって，```429```ステータスでレスポンスが返信される．
+
+参考：https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * @var array
+     */
+    protected $middlewareGroups = [
+
+        'web' => [
+        ],
+
+        'api' => [
+            // throttleミドルウェアを適用する．
+            'throttle:limit_per_minute',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ];
+
+    /**
+     * @return void
+     */
+    public function configureRateLimiting()
+    {
+        RateLimiter::for('limit_per_minute', function (Request $request) {
+            // 一分間当たり1000リクエストまでを許可する．
+            return Limit::perMinute(1000);
+        });
+    }
+}
+```
+
+
+
+<br>
+
+### EventServiceProvider
+
+#### ・EventとListenerの登録
+
+EventとListenerの対応関係を定義する．なお，Eventを発火させてListenerを実行する方法は，Eventコンポーネントを参照せよ．
+
+```php
+<?php
+
+namespace App\Providers;
+
+use App\Events\UpdatedModelEvent;
+use App\Listeners\UpdatedModelListener;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * イベントとリスナーの対応関係を配列で定義します．
+     * [イベント => リスナー]
+     *
+     * @var array
+     */
+    protected $listen = [
+        // Eloquentモデル更新イベント
+        UpdatedModelEvent::class => [
+            UpdatedModelListener::class,
+        ],
+    ];
+
+    /**
+     * @return void
+     */
+    public function boot()
+    {
+    }
+}
+```
+
+<br>
+
+### セキュリティ
+
+#### ・CSRF対策
+
+セッション開始時にCSRFトークンが生成される．Bladeを使用してサーバ側のCSRFトークンを取り出し，inputタグのhidden属性にCSRFトークンを割り当て送信する．
+
+参考：https://readouble.com/laravel/8.x/ja/csrf.html
+
+```html
+<form method="POST" action="/profile">
+    @csrf
+    ...
+</form>
+```
+
+Bladeを使用しない場合，セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため，これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする．リクエストのたびに異なるCSRFトークンがレスポンスされ，これを次のリクエストで使用する必要がある．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
+- https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
+- https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
+
+ちなみに，PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は，レスポンスで返信されるCSRFトークを扱えない，そこで，各リクエストで事前にルートパスのエンドポイントをコールし，CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い．
+
+```javascript
+if (pm.request.method == 'GET') {
+    return true;
+}
+
+return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
+    
+    if (error) {
+        console.error(error);
+        return false;
+    }
+
+    const xsrfTokenHeader = cookies.one("XSRF-TOKEN");
+
+    if (!xsrfTokenHeader) {
+        console.log("トークンがありません");
+        return false;
+    }
+
+    // laravelによってエンコードされたトークンをデコードする．
+    const xsrfToken = decodeURIComponent(xsrfTokenHeader['value']);
+    // 環境変数を挿入するために，該当する環境名をCollection全体に適用しておく必要がある．
+    pm.environment.set('XSRF_TOKEN', xsrfToken);
+    console.log(xsrfToken);
+    return true;
+});
+```
+
+#### ・XSS対策
+
+#### ・常時HTTPS化
+
+<br>
+
+### MySQL
+
+#### ・単一のデータベースの場合
+
+単一のデータベースに接続する場合，```DB_HOST```を一つだけ設定する．
+
+```php
+<?php
+
+return [
+
+    // ～ 中略 ～    
+
+    "default" => env("DB_CONNECTION", "mysql"),
+
+    "connections" => [
+
+        // ～ 中略 ～
+
+        "mysql" => [
+            "driver"         => "mysql",
+            "url"            => env("DATABASE_URL"),
+            "host"           => env("DB_HOST", "127.0.0.1"),
+            "port"           => env("DB_PORT", 3306),
+            "database"       => env("DB_DATABASE", "forge"),
+            "username"       => env("DB_USERNAME", "forge"),
+            "password"       => env("DB_PASSWORD", ""),
+            "unix_socket"    => env("DB_SOCKET", ""),
+            "charset"        => "utf8mb4",
+            "collation"      => "utf8mb4_unicode_ci",
+            "prefix"         => "",
+            "prefix_indexes" => true,
+            "strict"         => true,
+            "engine"         => null,
+            "options"        => extension_loaded("pdo_mysql") ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env("MYSQL_ATTR_SSL_CA"),
+            ]) : [],
+        ],
+    ],
+
+    // ～ 中略 ～        
+
+];
+```
+
+#### ・RDSクラスターの場合
+
+RDSクラスターに接続する場合，書き込み処理をプライマリインスタンスに向け，また読み出し処理をリードレプリカインスタンスに向けることにより，負荷を分散できる．この場合，環境変数に二つのインスタンスのホストを実装する必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+
+```
+DB_HOST_PRIMARY=<プライマリインスタンスのホスト>
+DB_HOST_READ=<リードレプリカインスタンスのホスト>
+```
+
+なお，```sticky```キーを有効化しておくとよい．プライマリインスタンスにおけるデータ更新がリードレプリカインスタンスに同期される前に，リードレプリカインスタンスに対して読み出し処理が起こるような場合，これを防げる．
+
+```php
+<?php
+    
+return [
+
+    // ～ 中略 ～
+
+    "default" => env("DB_CONNECTION", "mysql"),
+
+    "connections" => [
+
+        // ～ 中略 ～
+
+        "mysql" => [
+            "driver"         => "mysql",
+            "url"            => env("DATABASE_URL"),
+            "read"           => [
+                "host" => [
+                    env("DB_HOST_PRIMARY", "127.0.0.1"),
+                ],
+            ],
+            "write"          => [
+                "host" => [
+                    env("DB_HOST_READ", "127.0.0.1"),
+                ],
+            ],
+            # stickyキーは有効化しておいたほうがよい．
+            "sticky"         => true,
+            "port"           => env("DB_PORT", 3306),
+            "database"       => env("DB_DATABASE", "forge"),
+            "username"       => env("DB_USERNAME", "forge"),
+            "password"       => env("DB_PASSWORD", ""),
+            "unix_socket"    => env("DB_SOCKET", ""),
+            "charset"        => "utf8mb4",
+            "collation"      => "utf8mb4_unicode_ci",
+            "prefix"         => "",
+            "prefix_indexes" => true,
+            "strict"         => true,
+            "engine"         => null,
+            "options"        => extension_loaded("pdo_mysql") ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env("MYSQL_ATTR_SSL_CA"),
+            ]) : [],
+        ],
+    ],
+
+    // ～ 中略 ～
+
+];
+```
+
+<br>
+
+## 18. Session
+
+### セッションの操作
+
+#### ・設定ファイル
+
+```php
+<?php
+
+use Illuminate\Support\Str;
+
+return [
+
+    'driver' => env('SESSION_DRIVER', 'file'),
+
+    'lifetime' => env('SESSION_LIFETIME', 120),
+
+    'expire_on_close' => false,
+
+    'encrypt' => false,
+
+    'files' => storage_path('framework/sessions'),
+
+    'connection' => env('SESSION_CONNECTION', null),
+
+    'table' => 'sessions',
+
+    'store' => env('SESSION_STORE', null),
+
+    'lottery' => [2, 100],
+
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
+    ),
+
+    'path'      => '/',
+
+    // Set-Cookieヘッダーのdomain属性に値を割り当てる．
+    'domain'    => env('SESSION_DOMAIN', null),
+
+    // Set-Cookieヘッダーのsecure属性を有効化する．
+    'secure'    => env('SESSION_SECURE_COOKIE', false),
+
+    // Set-CookieヘッダーのHttpOnly属性を有効化する．
+    'http_only' => true,
+
+    // Set-CookieヘッダーのsameSite属性に値を割り当てる．nullの場合，Laxとなる．
+    'same_site' => null,
+];
+```
+
+#### ・よく使う操作メソッド
+
+FormRequestクラスの```session```メソッドはStoreクラスを返却する．このクラスのメソッドを使用して，セッションを操作できる．
+
+| メソッド名   | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| ```get```    | セッションのキー名を指定して，一つの値を取得する．           |
+| ```all```    | セッションの全ての値を取得する．                             |
+| ```forget``` | セッションのキー名を指定して，値を取得する．キー名を配列で渡して，複数個を削除することも可能． |
+| ```flush```  | セッションの全ての値を取得する．                             |
+| ```pull```   | セッションのキー名を指定して，一つの値を取得し，取得後に削除する． |
+| ```has```    | セッションのキー名を指定して，値が存在しているかを検証する．```null```は```false```として判定する． |
+
+参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param  Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function index(Request $request, $id)
+    {
+        // getメソッド
+        $data = $request->session()->get("foo");
+        
+        // allメソッド
+        $data = $request->session()->all();
+        
+        // forgetメソッド
+        $request->session()->forget("foo");
+        $request->session()->forget(["foo", "bar"]);
+        
+        // flush
+        $request->session()->flush();
+        
+        // pullメソッド
+        $data = $request->session()->pull("foo");
+        
+        // hasメソッド
+        if ($request->session()->has("foo")) {
+    
+        }
+    }
+}
+```
+
+#### ・セッションファイルがStoreクラスに至るまで
+
+全てを追うことは難しいので，StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする．ここで，```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される．これにより，Storeクラスの```start```メソッド，```loadSession```メソッド，```readFromHandler```メソッドが実行され，```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される．```read```メソッドは，```storage/framework/sessions```にあるセッションファイルに書き込まれたセッションを読み出し，```attribute```プロパティに格納する．Sessionクラスのメソッドは，```attribute```プロパティを使用して，セッションを操作する．最終的に,```handleStatefulRequest```では，```saveSession```メソッドの中の```save```メソッドが実行され，セッションファイルに新しい値が書き込まれる．
+
+参考：
+
+- https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle
+- https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handleStatefulRequest
+- https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_startSession
+- https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_start
+- https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_loadSession
+- https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_readFromHandler
+- https://www.php.net/manual/ja/sessionhandlerinterface.read.php
+- https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_saveSession
+- https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_save
+- https://www.php.net/manual/ja/sessionhandlerinterface.write.php
+
+<br>
+
+## 19. Views
+
+### arisanによる操作
+
+#### ・Cacheの削除
+
+```bash
+# ビューのCacheを削除
+$ php artisan view:clear
+
+# 全てのCacheを削除
+$ php artisan optimize:clear
+```
+
+<br>
+
+### データの出力
+
+#### ・データの出力
+
+Controllerクラスから返却されたデータは，```{{ 変数名 }}```で取得できる．`
+
+**＊実装例＊**
+
+```html
+<html>
+    <body>
+        <h1>Hello!! {{ $data }}</h1>
+    </body>
+</html>
+```
+
+#### ・バリデーションメッセージの出力
+
+バリデーションでエラーが起こった場合，バリデーションでエラーがあった場合，Handlerクラスの```invalid```メソッドがコールされ，MessageBagクラスがViewに渡される．MessageBagクラスは，Blade上で```errors```変数に格納されており，各メソッドをコールしてエラーメッセージを出力できる．
+
+参考：https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
+
+**＊実装例＊**
+
+MessageBagクラスの```all```メソッドで，全てのエラーメッセージを出力する．
+
+```html
+<!-- /resources/views/foo/create.blade.php -->
+
+<h1>ポスト作成</h1>
+
+@if ($errors->any())
+    <div>
+        @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">{{ $error }}</p>
+        @endforeach        
+    </div>
+@endif
+
+@isset ($status)
+    <div class="complete">
+        <p>登録が完了しました．</p>
+    </div>
+@endisset
+
+<!-- ポスト作成フォーム -->
+```
+
+```css
+.errors {
+    /* 何らかのデザイン */
+}
+
+.complete {
+    /* 何らかのデザイン */
+}
+```
+
+<br>
+
+### 要素の共通化
+
+#### ・```@include```（サブビュー）
+
+読み込んだファイル全体を出力する．読み込むファイルに対して，変数を渡すこともできる．```@extentds```との使い分けとして，親子関係のないテンプレートの間で使用するのがよい．両者は，PHPでいう```extends```（クラスチェーン）と```require```（単なる読み込み）の関係に近い．
+
+**＊実装例＊**
+
+```html
+<div>
+    @include("shared.errors")
+    <form><!-- フォームの内容 -->
+    </form>
+</div>
+```
+
+<br>
+
+### 要素の継承
+
+#### ・```@yield```，```@extends```，```@section```，```@endsection```
+
+子テンプレートのレンダリング時に，子テンプレートで新しく定義したHTMLの要素を，親テンプレートの指定した場所に出力する．親テンプレートにて，```@yield("foo")```を定義する．
+
+**＊実装例＊**
+
+```html
+<!-- 親テンプレート -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>アプリケーション</title>
+    </head>
+    <body>
+        <h2>タイトル</h2>        
+        @yield("content")
+    </body>
+</html>
+```
+
+これを子テンプレートで```@extends```で継承すると，レンダリング時に，子テンプレートの```@section("foo")```-```@endsection```で定義した要素が，親テンプレートの```@yieid()```部分に出力される．
+
+**＊実装例＊**
+
+```html
+<!-- 子テンプレート -->
+
+@extends("layouts.parent")
+
+@section("content")
+    <p>子テンプレートのレンダリング時に，yieldに出力される要素</p>
+@endsection
+```
+
+ちなみに，子テンプレートは，レンダリング時に以下のように出力される．
+
+**＊実装例＊**
+
+```html
+<!-- 子テンプレート -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>アプリケーション</title>
+    </head>
+    <body>
+        <h2>タイトル</h2>
+        <p>子テンプレートのレンダリング時に，yieldに出力される要素</p>
+    </body>
+</html>
+```
+
+#### ・```@section```，```@show```，```@extends```，```@parent```
+
+子テンプレートのレンダリング時に，親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を，親テンプレートの指定した場所に出力する．親テンプレートにて，```@section```-```@show```で要素を定義する．
+
+**＊実装例＊**
+
+```html
+<!-- 親テンプレート -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>アプリケーション</title>
+    </head>
+    <body>
+        <h2>タイトル</h2>
+        @section("sidebar")
+        <p>親テンプレートのサイドバーとなる要素</p>
+        @show
+    </body>
+</html>
+```
+
+子テンプレートの```@section```にて，```@parent```を使用する．親テンプレートと子テンプレートそれぞれの要素が出力される．
+
+**＊実装例＊**
+
+```html
+<!-- 子テンプレート -->
+
+@extends("layouts.app")
+
+@section("sidebar")
+    @parent
+    <p>子テンレプートのサイドバーに追加される要素</p>
+@endsection
+```
+
+ちなみに，子テンプレートは，レンダリング時に以下のように出力される．
+
+**＊実装例＊**
+
+```html
+<!-- 子テンプレート -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>アプリケーション</title>
+    </head>
+    <body>
+        <h2>タイトル</h2>
+        <p>親テンプレートのサイドバーとなる要素</p>
+        <p>子テンレプートのサイドバーに追加される要素</p>
+    </body>
+</html>
+```
+
+<br>
+
+#### ・```@stack```，```@push```
+
+子テンプレートのレンダリング時に，CSSとJavaScriptのファイルを動的に出力する場合に使用する．親テンプレートにて，```@stack("foo")```を定義する．これを継承した子テンプレートのレンダリング時に，```@push("foo")```-```@endpush```で定義した要素が，```@stack()```部分に出力される．
+
+**＊実装例＊**
+
+```html
+<!-- 親テンプレート -->
+
+<head>
+    <!-- Headの内容 -->
+
+    @stack("scripts")
+</head>
+```
+
+```html
+<!-- 子テンプレート -->
+
+@push("scripts")
+    <script src="/foo.js"></script>
+@endpush
+```
+
+<br>
+
+### Twigとの互換
+
+#### ・Bladeで実装した場合
+
+**＊実装例＊**
+
+```html
+<!-- 親テンプレート -->
+
+<html>
+    <head>
+        <title>@yield("title")</title>
+    </head>
+    <body>
+
+        @section("sidebar")
+            親テンプレートのサイドバーとなる要素
+        @show
+
+        <div class="container">
+            @yield("content")
+        </div>
+    </body>
+</html>
+```
+
+```html
+<!-- 子テンプレート -->
+
+@extends("layouts.master")
+
+@section("title", "子テンプレートのタイトルになる要素")
+
+@section("sidebar")
+    @parent
+    <p>子テンレプートのサイドバーに追加される要素</p>
+@endsection
+
+@section("content")
+    <p>子テンプレートのコンテンツになる要素</p>
+@endsection
+```
+
+#### ・Twigで実装した場合
+
+**＊実装例＊**
+
+```html
+<!-- 親テンプレート -->
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+
+        {% block sidebar %} <!-- @section("sidebar") に相当 -->
+            親テンプレートのサイドバーとなる要素
+        {% endblock %}
+
+        <div class="container">
+            {% block content %}<!-- @yield("content") に相当 -->
+            {% endblock %}
+        </div>
+    </body>
+</html>
+```
+```html
+<!-- 子テンプレート -->
+
+{% extends "layouts.master" %} <!-- @extends("layouts.master") に相当 -->
+
+{% block title %} <!-- @section("title", "Page Title") に相当 -->
+    子テンプレートのタイトルになる要素
+{% endblock %}
+
+{% block sidebar %} <!-- @section("sidebar") に相当 -->
+    {{ parent() }} <!-- @parent に相当 -->
+    <p>子テンレプートのサイドバーに追加される要素</p>
+{% endblock %}
+
+{% block content %} <!-- @section("content") に相当 -->
+    <p>子テンプレートのコンテンツになる要素</p>
+{% endblock %}
+```
+
+<br>
+
+## 20. 認証
+
+### ガード
+
+#### ・ガードとは
+
+ドライバーとプロバイダーを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+
+| ガードの種類 | 説明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| Webガード    | セッションIDを用いたForm認証のために使用する．               |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+
+#### ・カスタムガード
+
+Laravelが標準で持たないドライバーとプロバイダーを持つガードを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
+
+APIガードの認証で使用するトークンをJWTに変更したい時には，以下のパッケージがおすすめ．
+
+参考：https://github.com/tymondesigns/jwt-auth
+
+<br>
+
+### ドライバー
+
+#### ・ドライバーとは
+
+
+| ドライバーの種類  | 認証の種類                         | 実装クラス         | 備考                                                         |
+| ----------------- | ---------------------------------- | ------------------ | ------------------------------------------------------------ |
+| sessionドライバー | セッションIDを用いたForm認証       | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
+| tokenドライバー   | Bearer認証，APIキー認証，OAuth認証 | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html  |
+
+ドライバーの種類に応じて，AuthManagerクラスがGuardインターフェースの実装クラスを返却する．```auth.php```ファイルにて，例えばtokenドライバーを選んだ場合は，TokenGuardクラスが返却される．
+
+参考：
+
+- https://teratail.com/questions/171582
+- https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
+- https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
+- https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
+
+```php
+<?php
+
+return [
+
+    // ガード
+    'guards' => [
+        'web' => [
+            // セッションドライバー
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            // トークンドライー
+            'driver'   => 'token',
+            'provider' => 'users',
+            'hash'     => false,
+        ],
+    ],
+];
+```
+
+#### ・ルーティングの保護
+
+BeforeMiddlwareで認証済みのユーザかどうかを検証し，もし未認証の場合は，ログインページにリダイレクトさせる．これにより，未認証のユーザがコントローラを実行することを防ぐ．
+
+参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
+
+<br>
+
+### プロバイダ
+
+#### ・プロバイダとは
+
+認証データをDBから取得するオブジェクトを定義する．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+
+<br>
+
+### セッションIDを用いたForm認証
+
+#### ・sessionドライバー
+
+sessionドライバーを選択する．
+
+#### ・全てのユーザが同一権限を持つ場合
+
+SessionGuardクラスの```attempt```メソッドをコールしてパスワードをハッシュ化し，DBのハッシュ値と照合する．認証が成功すると，認証セッションを開始する．```redirect```メソッドで，認証後の初期ページにリダイレクトする．
+
+参考：https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
+
+```php
+<?php
+
+namespace App\Http\Controllers\Authentication;
+
+use App\Http\Requests\Authentication\AuthenticationRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+
+final class AuthenticationController
+{
+    /**
+     * @return RedirectResponse
+     */
+    public function authenticate(AuthenticationRequest $authenticationRequest)
+    {
+        $validated = $authenticationRequest->validated();
+
+        if (Auth::attempt($validated)) {
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
+            $authenticationRequest->session()->regenerate();
+
+            // 認証後ページにリダイレクトします．
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        // 未認証ページにリダイレクトします．
+        return redirect(RouteServiceProvider::UNAUTHORIZED);
+    }
+}
+```
+
+認証後のページはRouteServiceProviderクラスで定義しておく．
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    public const HOME = "/home";
+}
+```
+
+#### ・一部のユーザが異なる権限を持つ場合
+
+ユーザごとに認証方法を区別しつつ，同一の認証後ページにリダイレクトさせることができる．
+
+参考：https://blog.capilano-fw.com/?p=8159
+
+**＊実装例＊**
+
+権限の異なるユーザに応じたガード，またガードに紐付けるEloquentモデルをプロバイダを定義しておく．
+
+```php
+<?php
+
+return [
+
+    // ガード
+    'guards' => [
+        'web' => [
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+
+        'api' => [
+            'driver'   => 'token',
+            'provider' => 'users',
+            'hash'     => false,
+        ],
+        // 一般ユーザ
+        'users'          => [
+            'driver'   => 'session',
+            'provider' => 'users',
+        ],
+        // 管理者
+        'administrators' => [
+            'driver'   => 'session',
+            'provider' => 'administrators',
+        ],
+    ],
+
+    // プロバイダ
+    'providers' => [
+        // 一般ユーザ
+        'users'          => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\User::class,
+        ],
+        // 管理者
+        'administrators' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Administrator::class,
+        ]
+    ],
+];
+
+```
+
+Authファサードの```guard```メソッドを使用して，ガードに応じた認証を実行する．これにより，同一の認証後ページにリダイレクトした後に，ユーザのEloquentモデルに応じた処理を実行できるようになる．
+
+```php
+<?php
+
+namespace App\Http\Controllers\Authentication;
+
+use App\Http\Requests\Authentication\AuthenticationRequest;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
+final class AuthenticationController
+{
+    /**
+     * @return RedirectResponse
+     */
+    public function login(AuthenticationRequest $authenticationRequest)
+    {
+        $validated = $authenticationRequest->validated();
+
+        // guardに応じた認証を行います．
+        if (Auth::guard($authenticationRequest->guard)->attempt($validated)) {
+            
+            // セッションID固定化を防ぐために，認証後にセッションを再作成します．
+            $authenticationRequest->session()->regenerate();
+
+            // ユーザ用認証後ページにリダイレクトします．
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        // 未認証ページにリダイレクトします．
+        return redirect(RouteServiceProvider::UNAUTHORIZED);
+    }
+}
+
+```
+
+<br>
+
+### 認証済みかどうかの判定
+
+#### ・```user```メソッド
+
+現在のセッションにおけるユーザが認証済みであれば，ユーザのEloquentモデルを取得する．
+
+```php
+<?php
+
+// Illuminate\Contracts\Auth\Guard
+// ドライバーに応じて，リゾルブされるGuardの実装クラス決まる
+$user = auth()->user();
+```
+
+#### ・```check```メソッド
+
+現在のセッションにおけるユーザが認証済みであれば，```true```を返却する．
+
+**＊実装例＊**
+
+認証済みのユーザがブラウザを閉じたとしても，セッションが続いている（例：ログアウトしない）限り，認証処理を改めて実行する必要はない．そのために，BeforeMiddlewareを使用して，認証済みのユーザからのリクエストを認証済みページにリダイレクトさせる．
+
+````php
+<?php
+
+namespace App\Http\Middleware\Auth;
+
+use App\Providers\RouteServiceProvider;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class RedirectIfAuthenticated
+{
+    /**
+     * @param Request $request
+     * @param Closure $next
+     * @param mixed   ...$guards
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next, ...$guards)
+    {
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (auth()->guard($guard)->check()) {
+                // ユーザが認証済みの場合は，認証後のページにリダイレクトします．
+                return redirect(RouteServiceProvider::HOME);
+            }
+        }
+
+        return $next($request);
+    }
+}
+
+````
+
+<br>
+
+## 20-02. 認可
+
+### ゲート
+
+#### ・ゲートとは
+
+Eloquentモデルレベルの認可スコープを定義する．指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる．
+
+<br>
+
+### ポリシー
+
+#### ・ポリシーとは
+
+DBレコードレベルの認可スコープを定義する．Eloquentモデルに紐付く特定のレコードにアクセスできなくなる．Policyクラスのメソッドによって，リクエスト中の認証済みユーザが自動的にインジェクションされる．EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
+
+参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
+
+```php
+<?php
+
+namespace App\Policies;
+
+use App\Models\Foo;
+use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+final class FooPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function create(User $user): bool
+    {
+        $id = $user->id; // 認証中のユーザ
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function show(User $user, Foo $foo, int $barId): bool
+    {
+        $id = $foo->id; // ルーターまたはコントローラから渡されたインスタンス
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function update(User $user, Foo $foo, int $barId): bool
+    {
+        //
+    }
+
+    /**
+     * @param User $user
+     * @param Foo  $foo
+     * @param int  $barId
+     * @return bool
+     */
+    public function delete(User $user, Foo $foo, int $barId): bool
+    {
+        //
+    }
+}
+```
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Providers;
+
+use App\Models\Foo;
+use App\Policies\FooPolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * @var array
+     */
+    protected $policies = [
+        Foo::class => FooPolicy::class,
+    ];
+
+    /**
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+    }
+}
+```
+
+#### ・AuthorizeMiddlewareによる認可
+
+ルーティング時にDBレコードレベルの認可スコープを定義する．AuthorizeMiddlewareのエイリアス名は標準で```can```であり，Kernelクラスに定義されている．第一引数にPolicyクラスのメソッド名，第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す．名前空間を渡す場合は，これをハードコーディングせず，関数で名前空間を取得して文字列と結合するようにする．インスタンスを渡す場合は，暗黙のモデル結合を使用する必要がある．認可に失敗した場合，```403```ステータスのレスポンスを返信する．
+
+参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+
+**＊実装例＊**
+
+```php
+<?php
+
+declare(strict_types=1);
+
+use App\Http\Controllers\FooController;
+
+Route::group(['middleware' => ['auth:web']], function () {
+
+    Route::group(['prefix' => 'foos'], function () {
+        Route::get('/{id}', [FooController::class, 'showFoo'])->middleware('can:show,'. Foo::class);
+        Route::get('/', [FooController::class, 'indexFoo']);
+        Route::post('/', [FooController::class, 'createFoo']);
+        Route::put('/{id}', [FooController::class, 'updateFoo'])->middleware('can:update,'. Foo::class);
+        Route::delete('/{id}', [FooController::class, 'deleteFoo'])->middleware('can:delete,'. Foo::class);
+    });
+});
+```
+
+#### ・```authorization```メソッドによる認可
+
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．基底コントローラを継承したコントローラでは```authorization```メソッドをコールでき，現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する．第二引数に，ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す．認可に失敗した場合にAuthorizationExceptionを投げるため，その後は自前で```403```ステータスのレスポンスするようにする．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
+- https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+
+**＊実装例＊**
+
+ユーザが該当IDのFooモデルを更新する権限があるかどうかを検証する．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Throwable;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function updateFoo(Request $request, int $id): JsonResponse
+    {
+        try {
+            $foo = new Foo();
+
+            // 認可が失敗した場合，AuthorizationExceptionを投げる．
+            $this->authorize('update', [$foo->find($id), $request->barId]);
+
+            // Eloquentモデルが不要な検証であれば名前空間
+            // $this->authorize('create', Foo::class);
+
+            $foo->fill($request->all())->save();
+        } catch (Throwable $e) {
+            // 自前で403ステータスのレスポンスを返信する．
+            return response()->json(['error' => $e->getMessage()], 403);
+        }
+
+        // 続きの処理
+    }
+}
+
+```
+
+#### ・```can```メソッドによる認可
+
+コントローラ実行時にDBレコードレベルの認可スコープを定義する．現在認証されているユーザのインスタンスから```can```メソッドをコールできる．第二引数として，ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す．DBアクセスが，そのユーザの認可スコープの範囲内かどうかを検証する．認可に失敗した場合に```false```を返却するため，その後は自前で```403```ステータスのレスポンスするようにする．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
+- https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+
+**＊実装例＊**
+
+ユーザがFooモデルを作成する権限があるかどうかを検証する．
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function updateFoo(Request $request, int $id): JsonResponse
+    {
+        $foo = new Foo();
+
+        // 認可が失敗した場合，falseが返却される．
+        if (!auth()->user()->can('update', [$foo->find($id), $request->barId])) {
+            // 自前で403ステータスのレスポンスを返信する．
+            return response()->json(['error' => '認可エラー'], 403);
+        }
+
+        // Eloquentモデルが不要な検証であれば名前空間
+        // if (!auth()->user()->can('update', Foo::class) {}
+
+        $foo->fill($request->all())->save();
+    }
+}
+```
+
+<br>
+
+## 20-03. Passportパッケージ
+
+### Passportパッケージとは
+
+Ouath認証を実装できる．OAuth認証については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
+
+<br>
+
+### 導入方法
+
+#### ・インストール
+
+composerでインストールする必要がある．
+
+参考：https://readouble.com/laravel/8.x/ja/passport.html
+
+```bash
+$ composer require laravel/passport
+```
+
+#### ・OAuth認証のトークン管理テーブルを生成
+
+事前に，Passportの管理テーブルを生成する必要があるため，マイグレーションを実行する．
+
+```bash
+$ php artisan migrate
+
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.02 seconds)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (0 seconds)
+Migrating: 2016_06_01_000001_create_oauth_auth_codes_table
+Migrated:  2016_06_01_000001_create_oauth_auth_codes_table (0 seconds)
+Migrating: 2016_06_01_000002_create_oauth_access_tokens_table
+Migrated:  2016_06_01_000002_create_oauth_access_tokens_table (0 seconds)
+Migrating: 2016_06_01_000003_create_oauth_refresh_tokens_table
+Migrated:  2016_06_01_000003_create_oauth_refresh_tokens_table (0 seconds)
+Migrating: 2016_06_01_000004_create_oauth_clients_table
+Migrated:  2016_06_01_000004_create_oauth_clients_table (0 seconds)
+Migrating: 2016_06_01_000005_create_oauth_personal_access_clients_table
+Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table 
+```
+
+マイグレーション後，以下のテーブルが作成される．
+
+| テーブル名                    | 説明                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| oauth_access_tokens           | 全てのアクセストークンを管理する．                           |
+| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する．             |
+| oauth_clients                 | Passportで使用している付与タイプを管理する．                 |
+| oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する．                |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する．アクセストークンの有効期限が切れた時に，再生成をリクエストするために使用する．<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+
+#### ・トークンを生成
+
+コマンド実行により，```/storage/oauth```キー，Personal Access Client，Password Grant Clientを生成する．
+
+```bash
+$ php artisan passport:install
+
+Personal access client created successfully.
+Client ID: 3
+Client secret: xxxxxxxxxxxx
+Password grant client created successfully.
+Client ID: 4
+Client secret: xxxxxxxxxxxx
+```
+
+ただし，生成コマンドを個別に実行してもよい．
+
+```bash
+# 暗号キーを生成
+$ php artisan passport:keys
+
+# クライアントを生成
+## Persinal Access Tokenの場合
+$ php artisan passport:client --personal
+## Password Grant Tokenの場合
+$ php artisan passport:client --password
+```
+
+<br>
+
+### 実装可能なOAuth認証の種類
+
+#### ・OAuth認証
+
+OAuth認証に関して，以下のトークン付与タイプを実装できる．
+
+| 付与タイプ               | 説明                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+
+#### ・その他
+
+| 認証方法              | 説明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+
+<br>
+
+### Password Grant
+
+#### ・バックエンド側の実装
+
+1. ```guards```キーにて，認証方式を設定する．ここでは，```api```を設定する．
+
+```php
+return [
+
+    // ～ 中略 ～
+
+    "defaults" => [
+        "guard" => "api",
+        "passwords" => "users",
+    ],
+
+    // ～ 中略 ～
+];
+```
+
+2. OAuth認証（認証フェーズ＋認可フェーズ）を行うために，```auth.php```ファイルで，```driver```キーにpassportドライバを設定する．また，```provider```キーで，```users```を設定する．
+
+**＊実装例＊**
+
+```php
+return [
+    
+    // ～ 中略 ～
+    
+    "guards" => [
+        "web" => [
+            "driver"   => "session",
+            "provider" => "users",
+        ],
+
+        "api" => [
+            "driver"   => "passport",
+            "provider" => "users",
+            "hash"     => false,
+        ],
+    ],
+
+    // ～ 中略 ～
+];
+```
+
+3. ```auth.php```ファイルにて，```driver```キーにeloquentドライバを設定する．また，```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する．ここでは，Userクラスを設定する．Laravelでは，Eloquentモデルに対応するテーブル名はクラス名の複数形になるため，usersテーブルに認証情報が格納されることになる．もしDBファサードのクエリビルダを使用したい場合は，```database```ドライバを指定する．
+
+```php
+return [
+
+    // ～ 中略 ～
+
+    "providers" => [
+        "users" => [
+            "driver" => "eloquent",
+            // Eloquentモデルは自由に指定できる．
+            "model"  => App\Models\User::class,
+        ],
+
+        // "users" => [
+        //     "driver" => "database",
+        //     "table" => "users",
+        // ],
+    ],
+
+    // ～ 中略 ～
+];
+```
+
+4. Userへのルーティング時に，```middleware```メソッドによる認証ガードを行う．これにより，OAuth認証に成功したユーザのみがルーティングを行えるようになる．
+
+**＊実装例＊**
+
+```php
+Route::get("user", "UserController@index")->middleware("auth:api");
+```
+
+5. 認証ガードを行ったEloquentモデルに対して，HasAPIToken，NotifiableのTraitをコールするようにする．
+
+**＊実装例＊**
+
+```php
+<?php
+  
+namespace App\Domain\DTO;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+    
+    // ～ 中略 ～
+}
+```
+
+6. Passportの```routes```メソッドをコールするようにする．これにより，Passportの認証フェーズに関わる全てのルーティング（``````/oauth/xxx``````）が有効になる．また，アクセストークンを発行できるよになる．
+
+**＊実装例＊**
+
+```php
+<?php
+  
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    // ～ 中略 ～
+
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        Passport::routes();
+    }
+}
+```
+
+7. 暗号キーとユーザを作成する．
+
+```bash
+$ php artisan passport:keys
+
+$ php artisan passport:client --password
+```
+
+#### ・クライアントアプリ側の実装
+
+1. 『認証』のために，アクセストークンのリクエストを送信する．ユーザ側のアプリケーションは，```/oauth/authorize```へリクエストを送信する必要がある．ここでは，リクエストGuzzleパッケージを使用して，リクエストを送信するものとする．
+
+**＊実装例＊**
+
+```php
+<?php
+
+$http = new GuzzleHttp\Client;
+
+$response = $http->post("http://your-app.com/oauth/token", [
+    "form_params" => [
+        "grant_type"    => "password",
+        "client_id"     => "client-id",
+        "client_secret" => "client-secret",
+        "username"      => "taylor@laravel.com",
+        "password"      => "my-password",
+        "scope"         => "",
+    ],
+]);
+```
+
+2. アクセストークンを含むJSON型データを受信する．
+
+**＊実装例＊**
+
+```json
+{
+  "token_type":"Bearer",
+  "expires_in":31536000,
+  "access_token":"xxxxx"
+}
+```
+
+3. ヘッダーにアクセストークンを含めて，認証ガードの設定されたバックエンド側のルーティングに対して，リクエストを送信する．レスポンスのメッセージボディからデータを取得する．
+
+**＊実装例＊**
+
+```php
+<?php
+  
+$response = $client->request("GET", "/api/user", [
+    "headers" => [
+        "Accept"        => "application/json",
+        "Authorization" => "Bearer xxxxx",
+    ]
+]);
+
+return (string)$response->getBody();
+```
+
+#### ・APIガード用のテーブル
+
+**＊実装例＊**
+
+```php
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateUsersTable extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("users", function (Blueprint $table) {
+            
+            $table->bigIncrements("user_id")->comment("ユーザID");
+            $table->string("name")->comment("ユーザ名");
+            $table->string("api_token")->unique()->comment("APIトークン");
+
+            // MigrationMacroServiceProviderのメソッドを使用する．
+            $table->systemColumns();
+
+            // deleted_atカラムを追加する．
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("users");
+    }
+}
+```
+
+<br>
+
+### Personal Access Token
+
+#### ・バックエンド側の実装
+
+1. 暗号キーとユーザを作成する．
+
+```bash
+$ php artisan passport:keys
+
+$ php artisan passport:client --personal
+```
+
+2. 作成したユーザに，クライアントIDを付与する．
+
+```php
+/**
+ * 全認証／認可の登録
+ *
+ * @return void
+ */
+public function boot()
+{
+    $this->registerPolicies();
+
+    Passport::routes();
+
+    Passport::personalAccessClientId("client-id");
+}
+```
+
+3. ユーザからのリクエスト時，クライアントIDを元に『認証』を行い，アクセストークンをレスポンスする．
+
+```php
+<?php
+
+$user = User::find(1);
+
+// スコープ無しのトークンを作成する
+$token = $user->createToken("Token Name")->accessToken;
+
+// スコープ付きのトークンを作成する
+$token = $user->createToken("My Token", ["place-orders"])->accessToken;
+```
+
+<br>
+
+## 20-04. Sanctumパッケージ
+
+### Sanctumパッケージとは
+
+APIキー認証とセッションIDを用いたForm認証機能の認証処理のみを提供する．ルーティングとDBアクセスに関する処理は提供しない．
+
+参考：https://readouble.com/laravel/8.x/ja/sanctum.html
+
+APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
+
+<br>
+
+### 導入方法
+
+#### ・インストール
+
+```bash
+$ composer require laravel/sanctum
+```
+
+<br>
+
+### APIトークン認証
+
+フロントエンド（外部のアプリケーションを含む）は任意とし，APIのみを実装する場合に，使用が適している．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
+- https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
+- https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+
+<br>
+
+### SPA認証
+
+フロントエンドにファーストパーティのSPA（自社のSPA）を使用し，バックエンドのAPIを実装する場合に，使用が適している．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
+- https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
+- https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+
+<br>
+
+## 20-05. Fortifyパッケージ
+
+### Fortifyパッケージとは
+
+Laravelが持つ全ての認証機能のバックエンド処理を提供する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/fortify.html
+- https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+
+<br>
+
+## 20-06. Breezeパッケージ
+
+### Breezeパッケージとは
+
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
+
+参考：
+
+- https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
+- https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+
+<br>
+
+### 導入方法
+
+参考：https://github.com/laravel/breeze
+
+#### ・インストール
+
+パッケージをインストールする．
+
+``` sh
+$ composer require laravel/breeze:^1.0 --dev
+```
+
+#### ・認証処理ファイルの自動生成
+
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
+
+```bash
+$ php artisan breeze:install
+```
+
+<br>
+
+## 20-07. UIパッケージ（Laravel 7系以前）
+
+### UIパッケージとは
+
+Laravelが持つ全ての認証機能のバックエンド（認証＋ルーティング＋DBアクセス）処理と，これに対応するフロントエンド処理を提供する．
+
+参考：https://readouble.com/laravel/7.x/ja/authentication.html
+
+<br>
+
+### 導入方法
+
+#### ・インストール
+
+パッケージをインストールする．
+
+```bash
+$ composer require laravel/ui:^1.0 --dev
+```
+
+#### ・認証処理ファイルの自動生成
+
+認証処理に関連するクラスを自動生成できる．Bladeに組み合わせるJavaScriptを選べる．
+
+```bash
+# Vuejsを使用する場合．
+$ php artisan ui vue --auth
+
+# Reactを使用する場合
+$ php artisan ui react --auth
+
+# Bootstrapを使用する場合．
+$ php artisan ui bootstrap --auth 
+```
+
+<br>
+
+## 21. Laravel Mixパッケージ
+
+### Laravel Mixパッケージとは
+
+WebpackをLaravelを介して操作できるパッケージのこと．Breezeパッケージにも同梱されている．
+
+参考：https://readouble.com/laravel/8.x/ja/mix.html
+
+<br>
+
+### Webpackを操作するコマンド
+
+#### ・アセットの初期コンパイル
+
+アセットのコンパイルを実行する．
+
+```bash
+$ npm run dev
+```
+
+#### ・アセットの自動再コンパイル
+
+アセットのソースコードが変更された時に，これと検知し，自動的に再コンパイルを実行する．
+
+```bash
+$ npm run watch
+```
+
+<br>
+
+## 22. 非公式パッケージ
+
+### laravel-enum
+
+#### ・ソースコード
+
+参考：https://github.com/BenSampo/laravel-enum
+
+#### ・Enumクラスの定義
+
+BenSampoのEnumクラスを継承し，区分値と判定メソッドを実装する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Domain\ValueObject\Type;
+
+use BenSampo\Enum\Enum;
+
+class RoleType extends Enum
+{
+    public const CALL_ROLE = 1;        // コールセンター職  
+    public const DEVELOPMENT_ROLE = 2; // 開発職    
+    public const FINANCE_ROLE = 3;     // 経理職     
+    public const PLAN_ROLE = 4;        // 企画職       
+    public const SALES_ROLE = 5;       // 営業職
+    
+    /**
+     * コールセンター職の区分値を持つかどうかを判定します．
+     */    
+    public function isCallRole()
+    {
+        return $this->is(self::CALL_ROLE);
+    }
+    
+    /**
+     * 開発職の区分値を持つかを判定します．
+     */       
+    public function isDevelopmentRole()
+    {
+        return $this->is(self::DEVELOPMENT_ROLE);
+    }
+    
+    /**
+     * 経理職の区分値を持つかどうかを判定します．
+     */       
+    public function isFinanceRole()
+    {
+        return $this->is(self::FINANCE_ROLE);
+    }
+    
+    /**
+     * 企画職の区分値を持つかどうかを判定します．
+     */       
+    public function isPlanRole()
+    {
+        return $this->is(self::PLAN_ROLE);
+    }  
+    
+    /**
+     * 営業職の区分値を持つかどうかを判定します．
+     */       
+    public function isSalesRole()
+    {
+        return $this->is(self::SALES_ROLE);
+    }        
+}
+```
+
+#### ・Enumクラスの使い方
+
+**＊実装例＊**
+
+データベースから区分値をSELECTした後，これを元にEnumクラスを作成する．
+
+```php
+<?php
+
+// Staff
+$staff = new Staff();
+ 
+// データベースから取得した区分値（開発職：2）からEnumクラスを作成
+$staff->roleType = new RoleType($fetched["role_type"]);
+// 以下の方法でもよい．
+// $staff->roleType = RoleType::fromValue($fetched["role_type"]);
+
+// StaffがいずれのRoleTypeを持つか
+$staff->roleType->isDevelopmentRole(); // true
+$staff->roleType->isSalesRole(); // false
+```
+
+**＊実装例＊**
+
+リクエストメッセージからデータを取り出した後，これを元にEnumクラスを作成する．
+
+```
+
+```
+
+<br>
+
+### laravel-ide-helper
+
+#### ・laravel-ide-helperとは
+
+PHPStromでLaravelを開発する場合に，拡張機能を提供する．
+
+参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+
+#### ・Facade
+
+```bash
+$ php artisan ide-helper:generate
+```
+
+#### ・アノテーション生成
+
+LaravelのEloquentモデルで，アノテーションを自動生成する．
+
+```bash
+$ php artisan ide-helper:models
+```
+
+#### ・予測表示
+
+Laravelのメソッドを予測表示するため，```phpstorm.meta.php```ファイルを生成する．
+
+```bash
+$ php artisan ide-helper:meta
+```
+
