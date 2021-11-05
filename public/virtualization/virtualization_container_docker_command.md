@@ -531,10 +531,10 @@ $ docker volume inspect <Volume名>
         "Labels": {
             "com.docker.compose.project": "<プロジェクト名>",
             "com.docker.compose.version": "1.26.2",
-            "com.docker.compose.volume": "xxx"
+            "com.docker.compose.volume": "foo"
         },
-        "Mountpoint": "/var/lib/docker/volumes/<プロジェクト名>_xxx/_data",
-        "Name": "<プロジェクト名>_xxx",
+        "Mountpoint": "/var/lib/docker/volumes/<プロジェクト名>_foo/_data",
+        "Name": "<プロジェクト名>_foo",
         "Options": null,
         "Scope": "local"
     }

@@ -1002,7 +1002,7 @@ class FooController extends Controller
 
 #### ・```orderBy```メソッド
 
-指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する．．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
+指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する．並び替えた結果を取得するためには，```get```メソッドを使用する．プライマリキーの昇順で取得する場合，```all```メソッドではなく，```orderBy```メソッドを使用して，プライマリキーの昇順を明示的に指定する．
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
