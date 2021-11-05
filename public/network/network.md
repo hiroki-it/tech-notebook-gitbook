@@ -100,7 +100,7 @@ URLとメールアドレスは完全修飾ドメイン名を持つ．
 
 ### Webシステムとは
 
-Webサーバ，Appサーバ，DBサーバによるネットワークの仕組みをWebシステムという．ソフトウェアとハードウェアのノートも参照せよ．
+Webサーバ，Appサーバ，DBサーバによるネットワークの仕組みをWebシステムという．ソフトウェアとハードウェアのノートも参考にせよ．
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 

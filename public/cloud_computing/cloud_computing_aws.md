@@ -335,7 +335,7 @@ API Gatewayは，メソッドリクエスト，統合リクエスト，統合レ
 
 以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
 #### ・CORSの有効化
 
@@ -3283,7 +3283,7 @@ $ curl \
 参考：
 
 - https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-golang.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html
 
 #### ・Node.jsの使用例
 
@@ -3292,7 +3292,7 @@ $ curl \
 参考：
 
 - https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/lambda-nodejs.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_lambda_function.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html
 
 <br>
 
@@ -4365,7 +4365,7 @@ SESはデフォルトではSandboxモードになっている．Sandboxモード
 
 一般的なSMTP-AUTHでは，クライアントユーザの認証が必要である．同様にして，AWSにおいてもこれが必要であり，IAMユーザを用いてこれを実現する．送信元となるアプリケーションにIAMユーザを紐付け，このIAMユーザにはユーザ名とパスワードを設定する．アプリケーションがSESを介してメールを送信する時，アプリケーションに対して，SESがユーザ名とパスワードを用いた認証を実行する．ユーザ名とパスワードは後から確認できないため，メモしておくこと．SMTP-AUTHの仕組みについては，以下のリンクを参考にせよ．
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html?h=smtp
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html?h=smtp
 
 <br>
 
@@ -4699,13 +4699,13 @@ AWSサービスを組み合わせて，イベント駆動型アプリケーシ�
 
 VPCの出入り口に設置され，グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ．一つのパブリックIPに対して，一つのEC2のプライベートIPを紐付けられる．NAT（静的NAT）については，以下のリンクを参考にせよ．
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・NAT Gatewayとは
 
 NAPT（動的NAT）の機能を持つ．一つのパブリックIPに対して，複数のEC2のプライベートIPを紐付けられる．パブリックサブネットに置き，プライベートサブネットのEC2からのレスポンスを受け付ける．NAPT（動的NAT）については，以下のリンクを参考にせよ．
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・比較表
 
@@ -4834,7 +4834,7 @@ ECS Fargateをプライベートサブネットに置いた場合に，ECS Farga
 
 クラウドネットワークインターフェースとして働く．物理ネットワークにおけるNICについては以下を参考にせよ．
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html.html
+参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・紐付けられるリソース
 

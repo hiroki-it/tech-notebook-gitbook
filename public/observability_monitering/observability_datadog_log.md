@@ -106,7 +106,7 @@ FROM data/agent:latest
 
 <br>
 
-## 05. ログの識別子
+## 04. ログの識別子
 
 ### attribute（属性）
 
@@ -217,9 +217,15 @@ Nginxの場合
 
 ### タグ
 
+| 属性名    |      |
+| --------- | ---- |
+| ```env``` |      |
+|           |      |
+|           |      |
+
 <br>
 
-## 06. 収集されたログの送信
+## 05. 収集されたログの送信
 
 ### EC2におけるログの送信
 
@@ -256,7 +262,7 @@ FireLensコンテナで稼働するFluentBitが，Datadogにログを送信す�
 
 <br>
 
-## 07. ログパイプライン
+## 06. ログパイプライン
 
 ### ログパイプラインとは
 
@@ -717,15 +723,24 @@ error   @http.status_code:[500 TO 599]
 
 <br>
 
-## 07-02. ログインテグレーション
+## 06-02. ログインテグレーション
 
 ### ログインテグレーションとは
 
-アプリケーション，ミドルウェア，クラウドインフラ，などのログを集約的に収集しやすくなる機能を提供する．
+アプリケーション，ミドルウェア，クラウドインフラ，などのログを集約的に収集しやすくなるインテグレーションパイプラインライブラリを提供する．
 
 <br>
 
-### 種類
+### インテグレーションパイプラインライブラリ
+
+#### ・インテグレーションパイプラインライブラリとは
+
+ログの生成元に合わせて，プロセッサーのセットが組み込まれたパイプラインを提供してくれる．
+
+参考：
+
+- https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#integration-pipelines
+- https://docs.datadoghq.com/integrations/#cat-log-collection
 
 #### ・AWSの場合
 
@@ -747,13 +762,13 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 <br>
 
-## 07-03. ログパイプラインの後処理
+## 06-03. ログパイプラインの後処理
 
 ### 標準属性の付与
 
 <br>
 
-## 07-04. オプション処理
+## 06-04. オプション処理
 
 ### ログのメトリクス
 
@@ -810,8 +825,40 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 入力欄右のアイコンで切り替える．検索条件として属性名と値を補完入力できる．オートコンプリートをの使用時は，小文字で入力した属性名の頭文字が画面上で大文字に変換される．
 
+**＊例＊**
+
+『```service:foo```』をオートコンプリートで入力する．
+
 ![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_auto-complete.png)
+
+#### ・非オートコンプリート
 
 入力欄右のアイコンで切り替える．検索条件として属性名と値をそのまま入力する．
 
+**＊例＊**
+
+『```service:foo```』を非オートコンプリートで入力する．
+
 ![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_non-auto-complete.png)
+
+<br>
+
+### ファセット
+
+#### ・ファセットとは
+
+属性／タグの値に基づいて，ログをグルーピングしたもの．
+
+参考：https://docs.datadoghq.com/ja/logs/explorer/facets/#%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%89%E3%83%91%E3%83%8D%E3%83%AB
+
+#### ・属性のファセット化
+
+Pathの値に属性までのアクセスを『```@```』から入力すると，ログの属性がファセットの値に登録される．
+
+![datadog_facet_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_facet_attribute.png)
+
+#### ・タグのファセット化
+
+Pathの値にタグ名をそのまま入力すると，タグがファセットの値に登録される．
+
+![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_facet_tag.png)

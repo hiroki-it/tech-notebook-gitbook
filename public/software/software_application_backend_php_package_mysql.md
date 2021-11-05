@@ -165,7 +165,7 @@ $dbh = null;
 
 RDBの読み込み系／書き込み系の操作を行うパッケージ．他の同様パッケージとして，PDOがある．PDOについては，以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html
 
 <br>
 
@@ -276,7 +276,7 @@ $queryBuilder->getConnection()
 
 プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策にもなる．SQLインジェクションについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_cyber_attacks.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html
 
 **＊実装例＊**
 

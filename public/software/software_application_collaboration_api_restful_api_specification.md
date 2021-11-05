@@ -34,7 +34,7 @@ externalDocs: # externalDocsフィールド
 
 API GatewayによるOpenAPI仕様のインポートについては，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_cloud_computing_aws_apigateway_import.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html
 
 <br>
 

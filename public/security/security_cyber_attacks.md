@@ -28,7 +28,7 @@ Proxyサーバ上で，SSLサーバ証明書の認証，セキュリティ系の
 
 #### ・パケットフィルタリング型ファイアウォール
 
-  パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバの間には，NATルータやNAPTルータが設置されている．これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参照せよ．
+  パケットのヘッダ情報に記載された送信元IPアドレスやポート番号などによって，パケットを許可するべきかどうかを決定する．速度を重視する場合はこちら．ファイアウォールとWebサーバの間には，NATルータやNAPTルータが設置されている．これらによる送信元プライベートIPアドレスから送信元グローバルIPアドレスへの変換についても参考にせよ．
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/パケットフィルタリング.gif)
 
@@ -280,7 +280,7 @@ max_input_vars = 1000
 
 プリペアードステートメントのSQL中にパラメータを設定し，値をパラメータに渡した上で，SQLとして発行する方法．処理速度が速い．また，パラメータに誤ってSQLが渡されても，これを実行できなくなるため，SQLインジェクションの対策になる．プレースホルダーについては，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_package_mysql.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_package_mysql.html
 
 <br>
 

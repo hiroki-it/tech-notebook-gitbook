@@ -195,7 +195,7 @@ CPUから命令が起こるとき，CPU，DRAM，ストレージ間には，読�
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
 
-物理メモリの領域を，優先度の高いプログラムに割り当て，反対に優先度が低いプログラムはストレージに退避させる方式．スワップ領域の作成方法については，CentOSのノートを参照．
+物理メモリの領域を，優先度の高いプログラムに割り当て，反対に優先度が低いプログラムはストレージに退避させる方式．
 
 <br>
 
@@ -215,7 +215,7 @@ CPUから命令が起こるとき，CPU，DRAM，ストレージ間には，読�
 
 ガベージコレクションには様々なアルゴリズムがあり，採用されているアルゴリズムは言語ごとに異なる．Goのガベージコレクションについては，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_go_logic.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic.html
 
 <br>
 

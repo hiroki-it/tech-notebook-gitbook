@@ -1,4 +1,4 @@
-# オブジェクト指向分析／設計／プログラミング
+# オブジェクト指向分析／設計
 
 ## はじめに
 
@@ -57,27 +57,19 @@
 
 オブジェクト指向分析においては，ダイアグラム図を用いて，オブジェクトを表現することが必要になる．
 
+参考：https://www.amazon.co.jp/dp/4296000187
+
 #### ・機能の視点による分析／設計とは
 
-システムの機能と処理の流れに注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．
+システムの機能と処理の流れに注目し，分析／設計する方法．
 
 #### ・振舞の視点による分析／設計とは
 
-システムを実行する順番やタイミングに注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．シーケンス図は設計の段階で使用する．
-
-参考：
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
+システムを実行する順番やタイミングに注目し，分析／設計する方法．なお，シーケンス図は設計の段階で使用する．
 
 #### ・構造の視点による分析／設計とは
 
-システムの構成要素とそれぞれの関係に注目し，分析／設計する方法．詳しくは，以降の説明を参照せよ．クラス図は設計の段階で使用する．オブジェクト指向設計については，以下のリンクを参考にせよ．
-
-参考：
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
+システムの構成要素とそれぞれの関係に注目し，分析／設計する方法．なお，クラス図は設計の段階で使用する．
 
 <br>
 
@@ -146,7 +138,7 @@
 
 アクターからアクターへの振舞の流れを，時間軸に沿って表記する方法．シーケンス図とは異なる．シーケンス図については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
 
 <br>
 
@@ -210,22 +202,3 @@
 #### ・1：1 以上
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/1対1以上.png)
-
-<br>
-
-## 03. オブジェクト指向設計
-
-以下のリンクを参考にせよ．
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
-
-<br>
-
-## 04. オブジェクト指向プログラミング
-
-以下のリンクを参考にせよ．
-
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_method_data.html
-

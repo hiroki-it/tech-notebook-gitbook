@@ -353,9 +353,9 @@ JavaScriptのインタプリタのこと．JavaScriptエンジンは，レンダ
 
 #### ・機械語翻訳
 
-JavaScriptエンジンは，ソースコードを，字句解析，構造解析，意味解釈，命令の実行，をコード一行ずつに対し，繰り返し行う．詳しくは，以下のノートを参考にせよ．
+JavaScriptエンジンは，ソースコードを，字句解析，構造解析，意味解釈，命令の実行，をコード一行ずつに対し，繰り返し行う．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_software_centos.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html
 
 ![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
 

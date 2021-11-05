@@ -14,7 +14,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・RESTとは
 
-分散型アプリケーションを構築する時に，それぞれアプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという．また，アーキテクチャスタイルについては，オブジェクト指向に関するノートを参照せよ．RESTは，以下の特徴を持つ．
+分散型アプリケーションを構築する時に，それぞれアプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという．RESTは，以下の特徴を持つ．
 
 ![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/REST.jpg)
 
@@ -394,7 +394,7 @@ x-api-key: *****
 | 403    | 認可エラーによるトークン所有者の認可スコープ外 | 誤ったリクエストである．APIに認証プロセスが存在し，トークンの発行が必要だとする．認証プロセスにて正しいトークンが発行されたが，認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表している． |
 |        | 送信元IPアドレスの閲覧禁止                     | 誤ったリクエストである．APIに認証認可プロセスが存在せず，トークン発行と閲覧権限検証が不要だとする．送信元IPアドレスに閲覧権限がないと判定されてことを表している． |
 | 404    | ページが見つからない                           | 誤ったリクエストである．存在しないデータをリクエストしていることを表している． |
-| 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表している．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に使用する．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html |
+| 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表している．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に使用する．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである．リソースへのアクセスに失敗したことを表している． |
 | 422    | バリデーションエラー                           | 誤ったリクエストである．送信されたパラメータが誤っていることを示している． |
 | 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |

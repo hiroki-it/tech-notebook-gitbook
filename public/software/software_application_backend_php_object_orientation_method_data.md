@@ -912,7 +912,7 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの```EventDispatcher```クラスが簡単である．以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_php_framework_symfony.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_framework_symfony.html
 
 ```php
 <?php

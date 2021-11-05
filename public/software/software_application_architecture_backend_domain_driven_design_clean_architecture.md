@@ -138,7 +138,7 @@ class FormatValidator
 
 ユースケース図については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_analysis_design_programming.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_analysis_design_programming.html
 
 **＊実装例＊**
 
@@ -448,7 +448,7 @@ class FooCreateResponse
 
 #### ・アプリケーションサービスとは
 
-ユースケース層の中で，ドメイン層のオブジェクトを用いる汎用的なロジックが切り分けられたもの．ドメイン層のドメインサービスとは異なり，あくまでユースケース層のロジックが切り分けられたものである．
+ユースケース層において，他のオブジェクトを対象とした汎用的な振る舞いロジックを切り分けたもの．アプリケーションサービスは，他のオブジェクトにロジックをメソッドとして提供するだけで，自身の状態を変化させるメソッドは持たせないようにする．ちなみに，『サービス』の概念は全てのレイヤーに存在する．特定の機能を提供するアプリケーションをサービスとみなして連携すれば，マイクロサービスアーキテクチャにもなる．
 
 #### ・通知処理
 
@@ -761,7 +761,7 @@ class YmdType extends Type
 
 #### ・ドメインサービスとは
 
-ドメイン層のエンティティに持たせるとやや不自然で，単体／複数のエンティティを対象として何かを実行するようなメソッドをドメインサービスとして切り分ける．全てのメソッドを一つのドメインサービスにまとめて管理するよりも，動作の種類ごとに分けて管理した方が良い．この時，エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する．ちなみに，ドメイン層でリポジトリを用いることを嫌って，ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない．
+ドメイン層のエンティティに持たせるとやや不自然で，他のドメインオブジェクトを対象とした振る舞いロジックを切り分けたもの．ドメインサービスは，他のドメインオブジェクトにロジックをメソッドとして提供するだけで，自身の状態を変化させるメソッドは持たせないようにする．全てのメソッドを一つのドメインサービスにまとめて管理するよりも，動作の種類ごとに分けて管理した方が良い．この時，エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する．ちなみに，ドメイン層でリポジトリを用いることを嫌って，ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない．
 
 参考：
 
@@ -2023,7 +2023,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと．依存関係の観点からみた集約については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
 
 <br>
 
@@ -2086,7 +2086,7 @@ class DogOrder
 
 リポジトリパターンを用いる．責務として，DBに対してデータの書き込み／読み出しのトランザクション処理を実行する．トランザクションはルートエンティティを単位として定義する必要があるため，リポジトリも同じくルートエンティティを単位として定義づけることになる．そのため，引数の型はルートエンティティのドメインモデル型になる．リポジトリではルートエンティティを意識して実装する必要がある一方で，DBのどのテーブルにデータが存在しているかを問わない．これにより，ルートエンティティとDBテーブルを別々に設計できる．ルートエンティティとトランザクションの関係性については，前述の説明を参考にせよ．DBテーブル設計については以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_database_operation.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html
 
 #### ・インターフェースリポジトリ
 
@@ -2473,7 +2473,7 @@ class DogComboFactory
 
 各レイヤーでは例外をスローするだけに留まり，スローされた例外を対処する責務は，より上位レイヤーに持たせる．より上位レイヤーでは，そのレイヤーに合った例外に詰め替えて，これをスローする．最終的には，ユーザーインターフェース層まで持ち上げ，画面上のポップアップで警告文としてこれを表示する．例外スローの意義については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_logic_error_and_error_handling.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
 
 <br>
 

@@ -1296,7 +1296,7 @@ $ df -h -m -t
 
 #### ・スワッピング方式
 
-物理メモリのアドレス空間管理の方法の一つ．ハードウェアのノートを参照．
+物理メモリのアドレス空間管理の方法の一つ．
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スワッピング方式.png)
 

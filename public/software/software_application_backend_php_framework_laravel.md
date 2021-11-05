@@ -259,7 +259,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
@@ -329,7 +329,7 @@ ER図における各テーブルのリレーションシップを元に，モデ
 
 ER図については，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_analysis_design_programming.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_analysis_design_programming.html
 
 **＊実装例＊**
 
@@ -899,37 +899,6 @@ class FooController extends Controller
 }
 ```
 
-#### ・```first```メソッド
-
-取得されたコレクション型データの一つ目の要素の値を取得する．ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合，コレクションとして取得されるが，コレクションが持つEloquentモデルは一つである．foreachを用いてコレクションからEloquentモデルを取り出してもよいが，無駄が多い．そこで，```first```メソッドを使用して，Eloquentモデルを直接取得する．
-
-**＊実装例＊**
-
-```php
-<?php
-
-namespace App\Http\Controllers;
-
-use App\Http\Controllers\Controller;
-use App\Models\Foo;
-use Illuminate\Database\Eloquent\Collection;
-
-class FooController extends Controller
-{
-    /**
-     * @param string $emailAddress
-     * @return Foo
-     */
-    public function findByEmail(string $emailAddress): Foo
-    {
-        $foo = new Foo();
-
-        return $foo->where('foo_email', $emailAddress)->first();
-    }
-}
-
-```
-
 #### ・```find```メソッド
 
 レコードを一つ取得するSELECT句を発行する．Eloquentモデルには```find```メソッドがないため，代わりにEloquentビルダーが持つ```find```メソッドがコールされる．引数としてプライマリキーを渡した場合，指定したプライマリキーを持つEloquentモデルを返却する．```toArray```メソッドで配列型に変換できる．
@@ -963,6 +932,37 @@ class FooController extends Controller
         return $foo->find($id);
     }
 }
+```
+
+#### ・```first```メソッド
+
+取得されたコレクション型データの一つ目の要素の値を取得する．ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合，コレクションとして取得されるが，コレクションが持つEloquentモデルは一つである．foreachを用いてコレクションからEloquentモデルを取り出してもよいが，無駄が多い．そこで，```first```メソッドを使用して，Eloquentモデルを直接取得する．
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+
+class FooController extends Controller
+{
+    /**
+     * @param string $emailAddress
+     * @return Foo
+     */
+    public function findByEmail(string $emailAddress): Foo
+    {
+        $foo = new Foo();
+
+        return $foo->where('foo_email', $emailAddress)->first();
+    }
+}
+
 ```
 
 #### ・```limit```メソッド，```offset```メソッド
@@ -2162,7 +2162,7 @@ class ExecutorConstant
 
 エラーハンドリングは４つのステップからなる．Laravelでは標準でHandlerクラスが全てのステップをカバーしている．また加えて，異常系レスポンスを自動で返信してくれる．エラーハンドリングのステップのうち，エラー検出については言及しないこととする．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_logic_error_and_error_handling.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
 
 <br>
 
@@ -3712,7 +3712,7 @@ class FooAfterMiddleware
 
 また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_network_cyber_attacks.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html
 
 #### ・VerifyCsrfToken
 
@@ -5744,7 +5744,7 @@ $ php artisan make:provider <クラス名>
 
 ServiceContainer，バインド，リゾルブについては，以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_backend_php_object_orientation_class.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html
 
 ```php
 <?php
@@ -6092,7 +6092,7 @@ class MigrationMacroServiceProvider extends ServiceProvider
 }
 ```
 
-マイグレーションファイルにて，定義した```systemColumn```メソッドをコールする．```softDeletes```メソッドについては，以降の説明を参照せよ．
+マイグレーションファイルにて，定義した```systemColumn```メソッドをコールする．
 
 ```php
 <?php
@@ -7552,7 +7552,7 @@ OAuth認証に関して，以下のトークン付与タイプを実装できる
 
 #### ・バックエンド側の実装
 
-1. ```guards```キーにて，認証方式を設定する．ここでは，```api```を設定する．認証方法については，認証と認可のノートを参照せよ．
+1. ```guards```キーにて，認証方式を設定する．ここでは，```api```を設定する．
 
 ```php
 return [

@@ -30,7 +30,7 @@
 
 フロントエンドの検証については以下を参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_logic_validation.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_logic_validation.html
 
 | 検証パターン           | ```isset($var)```，```!is_null($var)``` |           ```if($var)```，```!empty($var)```            |
 | :--------------------- | :-------------------------------------: | :-----------------------------------------------------: |

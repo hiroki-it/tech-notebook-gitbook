@@ -977,7 +977,7 @@ AとBは，『1』または『0』になり得るとする．
 | ------------ | --------------------------------- |
 | A = 1，B = 1 | ```return X``` が実行されること． |
 
-#### ・C１：Decision Coverage（判定条件網羅）
+#### ・C１：Decision Coverage（判定条件網羅／分岐網羅）
 
 ![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p494-2.png)
 
@@ -1037,13 +1037,17 @@ AとBは，『1』または『0』になり得るとする．
 
 #### ・網羅率
 
-採用した網羅で考えられる全ての条件のうち，テストで検証できている割合のこと． 網羅率はテストスイートやパッケージを単位として解析され，これは言語別に異なる．PHPUnitで網羅率を解析する方法については，以下のリンクを参考にせよ．
+採用した網羅で考えられる全ての条件のうち，テストで検証できている割合のこと． 網羅率はテストスイートやパッケージを単位として解析され，これは言語別に異なる．Goで命令網羅の網羅率を検出するユニットテストについては，以下のリンクを参考にせよ．
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_command_and_configuration.html
+
+PHPUnitで網羅率を解析する方法については，以下のリンクを参考にせよ．
 
 参考：https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html
 
 #### ・循環的複雑度
 
-テスト対象がどれだけ複雑な実装方法になっているかの程度のこと．おおそよ，分岐網羅の経路数の程度である．
+テスト対象がどれだけ複雑な実装方法になっているかの程度のこと．おおそよ，判定条件網羅の経路数の程度である．
 
 参考：https://jp.mathworks.com/discovery/cyclomatic-complexity.html
 
