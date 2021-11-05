@@ -40,9 +40,9 @@
             * PHP
                 * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_command_and_configuration.html)
                 * クラスベース
-                    * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_class.html)
-                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_method_data.html)
-                    * [📖 ︎データ構造](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_object_orientation_data_structure.html)
+                    * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html)
+                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based_method_data.html)
+                    * [📖 ︎データ構造](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based_data_structure.html)
                 * ロジック
                     * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_validation.html)
                     * [📖 ︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html)
@@ -63,8 +63,8 @@
                     * [📖 ︎デバッグ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_debug.html)
             * JavaScript
                 * プロトタイプベース
-                    * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_object_orientation_prototype.html)
-                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_object_orientation_method_data.html)
+                    * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based.html)
+                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based_method_data.html)
                 * ロジック
                     * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_logic_validation.html)
                     * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_logic_asynchronous_process.html)
