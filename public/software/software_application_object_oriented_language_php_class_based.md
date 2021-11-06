@@ -8,149 +8,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 01. オブジェクト指向設計
-
-### オブジェクト指向設計に用いられるUMLダイアグラム
-
-![UML-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/UML-1.png)
-
-<br>
-
-### オブジェクト指向設計での作業例
-
-#### 1. クラス図による設計
-
-オブジェクトの『構造』を設計するために，オブジェクト指向分析によるユースケース図をもとにクラス図を作る．ただし，クラス図ではオブジェクトの『振舞』を設計できないため，シーケンス図にこれを託す．
-
-#### 2. シーケンス図による設計
-
-オブジェクトの『振舞』を設計するために，シーケンス図を作成する．システムシーケンス図とシーケンス図の違いについて，以下を参考にせよ．
-
-参考：
-
-- https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd
-- https://en.wikipedia.org/wiki/Sequence_diagram
-
-#### 3. 設計のレビュー
-
-構造を設計するクラス図と，振舞を設計するシーケンス図の間の整合性から，設計を妥当性をレビューする．
-
-参考：https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
-
-#### 4. デザインパターンの導入
-
-クラス図に，デザインパターンを基にしたクラスを導入する．
-
-#### 5. フレームワークのコンポーネントの導入
-
-クラス図に，フレームワークのコンポーネントを導入する．
-
-<br>
-
-## 02. クラス図による設計
-
-### クラス図
-
-#### ・データとして保持する関係性
-
-Association（関連），Aggregation（集約），Composition（合成）が用いられる．詳しくは，後述の説明を参照せよ．
-
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
-
-#### ・親子の関係性
-
-Generalization（汎化），Realization（実現）が用いられる．詳しくは，後述の説明を参照せよ．
-
-![親子の関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子の関係性.png)
-
-#### ・引数型／返却値型と使用する関係性
-
-Dependency（依存）が用いられる．詳しくは，後述の説明を参照せよ．
-
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
-
-<br>
-
-### クラスの多重度
-
-#### ・多重度とは
-
-クラス間が，何個と何個で関係しているかを表記する方法．
-
-**＊例＊**
-
-社員は１つの会社にしか所属できない場合
-
-『会社クラス』から見て，対する『社員クラス』の数は1つである．逆に，『社員クラス』から見て，対する『会社クラス』の数は0以上であるという表記．
-
-![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/多重度.png)
-
-| 表記  |    対するクラスがいくつあるか    |
-| :---: | :------------------------------: |
-|   1   |              必ず1               |
-| 0.. 1 |  0以上1以下（つまり、0または1）  |
-| 0.. n |            0以上n以下            |
-| m.. n |            m以上n以下            |
-|   *   | 0以上無限大以下（つまり、0以上） |
-| 0.. * | 0以上無限大以下（つまり、0以上） |
-
-**＊例＊**
-
-【 営業部エンティティ 】
-
-```
-
-<-【 1課エンティティ 】
-
-<-【 2課エンティティ 】
-
-<-【 3課エンティティ 】
-
-```
-
-親エンティティなし
-```
-<-【 経営企画課エンティティ 】
-```
-
-
-というクラスの継承関係があった時，これを抽象的にまとめると，
-
-
-
-【 部エンティティ(0.. *) 】
-```
-<-【 (0.. 1)課エンティティ 】
-```
-
-
-部エンティティから見て，対する課エンティティは0個以上である．
-
-課エンティティから見て，対する部エンティティは0または1個である．
-
-<br>
-
-## 02-02. シーケンス図による設計
-
-### シーケンス図
-
-#### ・設計例1
-
-1. 5つのライフライン（店員オブジェクト，管理画面オブジェクト，検索画面オブジェクト，商品DBオブジェクト，商品詳細画面オブジェクト）を設定する．
-2. 各ライフラインで実行される実行仕様間の命令内容を，メッセージや複合フラグメントで示す．
-
-![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図.png)
-
-#### ・設計例2
-
-1. 3つのライフラインを設定する．
-2. 各ライフラインで実行される実行仕様間の命令内容を，メッセージや複合フラグメントで示す．
-
-![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/シーケンス図_2.png)
-
-<br>
-
-## 03. データとして保持する関係性
+## 01. データとして保持する関係性
 
 『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．
 
@@ -364,7 +222,7 @@ $car = new Car();
 
 <br>
 
-## 04. 親子の関係性
+## 02. 親子の関係性
 
 ![親子の関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子の関係性.png)
 
@@ -625,7 +483,7 @@ class Mammal implements Animal
 <br>
 
 
-## 04-02. 継承
+## 02-02. 継承
 
 ### 継承によるクラスチェーン
 
@@ -635,8 +493,8 @@ class Mammal implements Animal
 
 参考：
 
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_object_orientation_prototype.html
-- https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_object_orientation_method_data.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based_method_data.html
 
 **＊実装例＊**
 
@@ -795,7 +653,7 @@ trait UnsupportedMagicMethodTrait
 
 <br>
 
-## 04-03. 委譲
+## 02-03. 委譲
 
 ### 委譲によるメソッドコール
 
@@ -809,7 +667,7 @@ trait UnsupportedMagicMethodTrait
 
 <br>
 
-## 04-04. 外部ファイルの読み込み
+## 02-04. 外部ファイルの読み込み
 
 ### ```require_once```メソッドによる，クラス，非クラスのメソッドの読み込み
 
@@ -961,7 +819,7 @@ class Bar
 
 <br>
 
-## 05. 引数型／返却値型として使用する関係性
+## 03. 引数型／返却値型として使用する関係性
 
 ### 発表スライド
 
@@ -1143,9 +1001,18 @@ class ModuleB
 
 凝集度は，『モジュール内の責務の統一度合い』について用いられる用語であるが，より理解しやすくするために，特にクラスを用いて説明する．
 
-#### ・機能的強度とは
+#### ・機能的強度
 
 最も理想的な凝集．クラスの責務が機能単位になるように，ロジックを振り分ける．
+
+#### ・LCOM：Lack Of Conhension of Methods
+
+凝集度の程度を表す指標のこと．LCOMの計測方法にはいくつか種類がある．LCOM4は，クラスの各メソッド内で，保持する全てのデータにアクセスしているほど，凝集度が高いと見なす方法である．
+
+参考：
+
+- https://www.amazon.co.jp/dp/B082WXZVPC
+- https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
 
 <br>
 
@@ -1391,7 +1258,7 @@ $sample = new Sample($container);
 
 <br>
 
-## 05-02. Dependency Inversion Principle（依存性逆転の原則）
+## 03-02. Dependency Inversion Principle（依存性逆転の原則）
 
 ### DIP
 

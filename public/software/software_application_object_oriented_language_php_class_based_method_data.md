@@ -699,7 +699,7 @@ $D = objB()->objC()->objC();
 
 以下のノートも参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/backend_logic_algorithm.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_algorithm.html
 
 1. 適当な値を基準値（Pivot）とする （※できれば中央値が望ましい）
 2. Pivotより小さい数を前方，大きい数を後方に分割する．

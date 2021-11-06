@@ -21,6 +21,7 @@
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
 * アプリケーションソフトウェア
     * アーキテクチャ
+        * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html)
         * バックエンド
             * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_microservice.html)
             * [📖 ︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html)
@@ -36,7 +37,7 @@
             * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html)
             * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful_api_specification.html)
     * 言語
-        * [📖 ︎オブジェクト指向型言語](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language.html)
+        * オブジェクト指向型言語
             * PHP
                 * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_command_and_configuration.html)
                 * クラスベース

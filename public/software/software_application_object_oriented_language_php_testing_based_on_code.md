@@ -1047,9 +1047,12 @@ PHPUnitで網羅率を解析する方法については，以下のリンクを�
 
 #### ・循環的複雑度
 
-テスト対象がどれだけ複雑な実装方法になっているかの程度のこと．おおそよ，判定条件網羅の経路数の程度である．
+ソースコードの複雑さの程度のこと．おおよそ判定条件網羅の経路数の程度である．
 
-参考：https://jp.mathworks.com/discovery/cyclomatic-complexity.html
+参考：
+
+- https://jp.mathworks.com/discovery/cyclomatic-complexity.html
+- https://szk-takanori.hatenablog.com/entry/20111219/p1
 
 | 循環的複雑度 | 複雑さの状態                 | バグ混入率 |
 | ------------ | ---------------------------- | ---------- |

@@ -39,7 +39,7 @@ fruit:
 
 詳しくは以下のノートを参考にせよ．
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/frontend_browser_rendering.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_browser_rendering.html
 
 #### ・CSV：Comma Separated Vector
 
