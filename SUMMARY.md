@@ -26,6 +26,7 @@
       * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
   * アプリケーションソフトウェア
     * アーキテクチャ
+      * [📖 ︎オブジェクト指向分析設計](public/software/software_application_architecture_object_oriented_analysis_and_design.md)
       * バックエンド
         * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_backend_microservice.md)
         * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
@@ -41,7 +42,7 @@
         * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
         * [📖 ︎API仕様書](public/software/software_application_collaboration_api_restful_api_specification.md)
     * 言語
-      * [📖 ︎オブジェクト指向型言語](public/software/software_application_object_oriented_language.md)
+      * オブジェクト指向型言語
         * PHP
           * [📖 PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
           * クラスベース
