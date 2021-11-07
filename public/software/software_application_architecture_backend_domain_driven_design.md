@@ -308,7 +308,7 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 | 映画の形式を選ぶ | 映画形式オブジェクト，上映形態オブジェクト                   |
 | 上映回を選ぶ     | 上映回オブジェクト，上映日オブジェクト，上映開始時刻オブジェクト |
 
-![ticket-modeling_tooppoo_domain-model-diagram_example](ttps://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
+![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
 **＊例＊**
 
@@ -318,7 +318,7 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 
 （２）ドメインエキスパートへの要件定義が終えた想定で，ユースケース図を作成する．オブジェクト図は省略する．
 
-![ticket-modeling_little-hands_usecase-diagram_example](ttps://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
+![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
 （３）暫定的なドメインモデル図を作成する．ユースケースから以下のオブジェクトを抽出する．この時，データの整合性の観点から，上映オブジェクトと上映時間帯は上映集約，また映画オブジェクトは映画集約と見なす方が良さそうと考える．
 
@@ -326,7 +326,7 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 | ------------------------------ | ---------------------------------------------------------- |
 | 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-1](ttps://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
 
 （３）ドメインモデル図を更新する．
 
@@ -336,6 +336,6 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 | 割引を選択する                 | 料金区分オブジェクト   |
 | 支払い金額を確認する           | 支払金額オブジェクト   |
 
-![ticket-modeling_little-hands_domain-model-diagram_example-4](ttps://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
 （４）続きを記入する...
