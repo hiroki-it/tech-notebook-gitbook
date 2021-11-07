@@ -64,7 +64,7 @@ logs_enabled: true
 
 #### ・FireLensコンテナとは
 
-Datadogコンテナはコンテナからログを収集できないため，代わりにFireLensコンテナを用いる必要がある．以下のリンクを参考にせよ．
+Datadogコンテナはコンテナからログを収集できないため，代わりにFireLensコンテナを用いる必要がある．以下のリンク先を参考にせよ．
 
 参考：
 
@@ -256,7 +256,7 @@ logs:
 
 ### Fargateにおけるログの送信
 
-FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンクを参考にせよ．
+FireLensコンテナで稼働するFluentBitが，Datadogにログを送信する．以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentd_and_fluentbit.html
 
@@ -380,7 +380,7 @@ CloudWatchログから，以下のようなAPI Gatewayアクセスログの構�
 
 #### ・ログステータスリマッパー
 
-指定した属性／タグに割り当てられた値を，ルールに基づいて，ステータスファセットの各ステータス（```INFO```，```WARNING```，```ERROR```，など）として登録する．ログコンソール画面にて，ステータスファセットとして表示される．判定ルールについては，以下のリンクを参考にせよ．
+指定した属性／タグに割り当てられた値を，ルールに基づいて，ステータスファセットの各ステータス（```INFO```，```WARNING```，```ERROR```，など）として登録する．ログコンソール画面にて，ステータスファセットとして表示される．判定ルールについては，以下のリンク先を参考にせよ．
 
 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 

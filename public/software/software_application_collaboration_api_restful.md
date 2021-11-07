@@ -397,7 +397,7 @@ x-api-key: *****
 | 409    | 競合エラー                                     | 誤ったリクエストである．CREATE処理やUPDATE処理によって，新しいデータと現在のDBのデータの間で競合が起こっていることを表している．一意な識別子として用いているデータの重複や，楽観的ロックによる排他制御が起こる場合に使用する．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである．リソースへのアクセスに失敗したことを表している． |
 | 422    | バリデーションエラー                           | 誤ったリクエストである．送信されたパラメータが誤っていることを示している． |
-| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっている．エラーの種類については，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                         | エラーは起こらないが，ビジネス上ありえないデータをリクエストしていることを表す． |
 
 #### ・リダイレクトとリライトの違い
@@ -846,7 +846,7 @@ Cookie: sessionid=<セッションID>; csrftoken=u32t4o3tb3gg43; _gat=1
 Set-Cookie: sessionId=<セッションID>
 ```
 
-セッション数はGoogleコンソールで確認できる．GoogleConsoleにおけるセッションについては，以下のリンクを参考にせよ．
+セッション数はGoogleコンソールで確認できる．GoogleConsoleにおけるセッションについては，以下のリンク先を参考にせよ．
 
 参考：https://support.google.com/analytics/answer/6086069?hl=ja
 
@@ -879,7 +879,7 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-セッションファイルは，サーバ外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンクを参考にせよ．
+セッションファイルは，サーバ外（PHP Redis，ElastiCache Redisなど）に保存することもできる．```/etc/php-fpm.d/www.conf```ファイルではなく，```/etc/php.ini```ファイルにて保存先の指定が必要である．ElastiCache Redisについては，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 

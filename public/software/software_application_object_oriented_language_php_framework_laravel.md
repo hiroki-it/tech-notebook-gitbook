@@ -257,7 +257,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ・Active Recordパターンとは
 
-テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンクを参考せよ．
+テーブルとモデルが一対一の関係になるデザインパターンのこと．さらに，テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される．ビジネスロジックが複雑でないアプリケーションの開発に適している．オブジェクト間の依存関係については，以下のリンク先を参考せよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 
@@ -768,7 +768,7 @@ Eloquentモデルを継承すると，以下のクラスからメソッドをコ
 
 #### ・Eloquentビルダー
 
-Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
+Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンク先を参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
@@ -781,7 +781,7 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 #### ・Eloquentモデル
 
-Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンクを参考にせよ．
+Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである．その他のメソッドについては，以下のリンク先を参考にせよ．
 
 参考：https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 
@@ -1412,7 +1412,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．リポジトリパターンについては，以下のリンクを参考にせよ．
+LaravelはActive Recordパターンを採用しており，これはビジネスロジックが複雑でないアプリケーションに適している．ただ，ビジネスロジックが複雑なアプリケーションに対しても，Laravelを使用したい場面がある．その場合，Laravelにリポジトリパターンを導入することが選択肢の一つになる．リポジトリパターンについては，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
@@ -3710,7 +3710,7 @@ class FooAfterMiddleware
 
 参考：https://qiita.com/wim/items/b1db5202cce6b38bc47b
 
-また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンクを参考にせよ．
+また，同一セッションで一意なCSRFトークンを生成する．CSRFトークンによるCSRFの防御については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html
 
@@ -3994,7 +3994,7 @@ Routeファサードの```pattern```メソッドまたは```where```メソッド
 
 #### ・標準のエラーメッセージ
 
-標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンクを参考にせよ．
+標準のバリデーションメッセージは，```resources/lang/ja/validation.php```ファイルで定義できる．バリデーションルールの組み合わせによって，```validation.php```ファイルから自動的にメッセージが選択される．例えばルールとして最大値を設定した場合は，データ型に合わせてメッセージが選択される．日本語翻訳```validation.php```ファイルについては，以下のリンク先を参考にせよ．
 
 参考：https://readouble.com/laravel/8.x/ja/validation-php.html
 
@@ -6916,7 +6916,7 @@ MessageBagクラスの```all```メソッドで，全てのエラーメッセー�
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを用いたForm認証のために使用する．               |
-| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンクを参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| APIガード    | Bearer認証，APIキー認証，OAuth認証，などのために使用する．それぞれの認証方法に違いについては，以下のリンク先を参考にせよ．<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 
 #### ・カスタムガード
 
@@ -7446,7 +7446,7 @@ class FooController extends Controller
 
 ### Passportパッケージとは
 
-Ouath認証を実装できる．OAuth認証については，以下のリンクを参考にせよ．
+Ouath認証を実装できる．OAuth認証については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
 
@@ -7827,7 +7827,7 @@ APIキー認証とセッションIDを用いたForm認証機能の認証処理�
 
 参考：https://readouble.com/laravel/8.x/ja/sanctum.html
 
-APIキー認証とセッションIDを用いたForm認証については，以下のリンクを参考にせよ．
+APIキー認証とセッションIDを用いたForm認証については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
 

@@ -59,7 +59,7 @@ NoSQLは，データ同士が関係を持たないデータ格納形式である
 
 ### ER図：Entity Relation Diagram
 
-以下のリンクを参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html
 
@@ -265,7 +265,7 @@ try{
 
 #### ・DoctrineによるRDBの書き込み系の操作
 
-詳しくは，以下のリンクを参考にせよ．
+詳しくは，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_framework_symfony.html
 
@@ -462,7 +462,7 @@ DBのレコードにはバージョンに関するカラム値（最終更新日
 
 #### ・ORMの楽観的ロックについて
 
-ORMが楽観的ロックの機能を持っている場合がある．PHPのORMであるDoctrineのロック機能については，以下のリンクを参考にせよ．
+ORMが楽観的ロックの機能を持っている場合がある．PHPのORMであるDoctrineのロック機能については，以下のリンク先を参考にせよ．
 
 参考：
 

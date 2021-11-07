@@ -51,7 +51,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 ### 標準例外クラス
 
-いずれもThrowableインターフェースを実装している．以下リンクを参考にせよ．
+いずれもThrowableインターフェースを実装している．以下リンク先を参考にせよ．
 
 参考：https://www.php.net/manual/ja/reserved.exceptions.php
 

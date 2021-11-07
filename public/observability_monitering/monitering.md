@@ -203,7 +203,7 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 
 | 名前                     | AWSリリース | 補足                                                         |
 | ------------------------ | ----------- | ------------------------------------------------------------ |
-| パフォーマンスインサイト | RDS         | RDSのパフォーマンスに関するメトリクスを収集し，SQLレベルで監視できるようになる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンクを参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm |
+| パフォーマンスインサイト | RDS         | RDSのパフォーマンスに関するメトリクスを収集し，SQLレベルで監視できるようになる．パラメータグループの```performance_schema```を有効化する必要がある．対応するエンジンバージョンとインスタンスタイプについては，以下のリンク先を参考にせよ．<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.htm |
 | Container インサイト     | ECS／EKS    | ECS／EKSのパフォーマンスに関するメトリクスを収集し，ECS／EKSのクラスター，サービス，タスク，インスタンス，単位で監視できるようになる．また，コンテナ間の繋がりをコンテナマップで視覚化できるようになる．ECS／EKSのアカウント設定でContainerインサイトを有効化する必要がある． |
 | Lambdaインサイト         | Lambda      | Lambdaのパフォーマンスに関するメトリクスを収集できるようになる． |
 

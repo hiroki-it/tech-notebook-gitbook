@@ -275,7 +275,7 @@ func main() {
 
 #### ・正常系
 
-正常系レスポンスの構成要素については以下のリンクを参考にせよ．
+正常系レスポンスの構成要素については以下のリンク先を参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements
 
@@ -285,7 +285,7 @@ func main() {
 
 #### ・異常系
 
-Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ．
+Lambdaのエラーレスポンスのステータスコードについては以下のリンク先を参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors
 

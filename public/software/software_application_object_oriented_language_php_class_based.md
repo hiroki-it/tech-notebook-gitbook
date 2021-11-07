@@ -8,9 +8,11 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 <br>
 
-## 01. データとして保持する関係性
+## 01. has-one，has-many（データとして保持する関係性）
 
-『Association ＞ Aggregation ＞ Composition』の順で，依存性が低くなる．
+###  has-one，has-manyな関係性とは
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/データとして保持する関係性.png)
 
@@ -222,9 +224,13 @@ $car = new Car();
 
 <br>
 
-## 02. 親子の関係性
+## 02. is-a-kind-of（グループとメンバーの関係性）
 
-![親子の関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子の関係性.png)
+### is-a-kind-ofな関係性とは
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html
+
+![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/グループとメンバーの関係性.png)
 
 ### Generalization（汎化）
 
@@ -819,7 +825,13 @@ class Bar
 
 <br>
 
-## 03. 引数型／返却値型として使用する関係性
+## 03. use（引数型／返却値型として使用する関係性）
+
+### useな関係とは
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html
+
+<br>
 
 ### 発表スライド
 

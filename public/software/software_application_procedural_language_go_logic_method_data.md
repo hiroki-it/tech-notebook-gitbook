@@ -242,7 +242,7 @@ func main() {
 
 #### ・DI（依存性注入）
 
-構造体のフィールドとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンクを参考にせよ．
+構造体のフィールドとして構造体を保持することにより，依存関係を構成する．依存される側をサプライヤー，また依存する側をクライアントという．構造体間に依存関係を構成するには，クライアントにサプライヤーを注入する．注入方法には，『Constructor Injection』『Setter Injection』『Setter Injection』がある．詳しくは，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 
@@ -2342,7 +2342,7 @@ if err != nil {
 
 #### ・構成
 
-ブラックボックステストとホワイトボックステストから構成される．以下のリンクを参考にせよ．
+ブラックボックステストとホワイトボックステストから構成される．以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_testing_based_on_code.html
 
@@ -2364,7 +2364,7 @@ if err != nil {
 
 #### ・網羅率
 
-網羅率はパッケージを単位として解析される．網羅については，以下のリンクを参考にせよ．
+網羅率はパッケージを単位として解析される．網羅については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_testing_based_on_code.html
 

@@ -98,7 +98,7 @@
 
 #### ・料金体系
 
-以下のリンクを参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
 

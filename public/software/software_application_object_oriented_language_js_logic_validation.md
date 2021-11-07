@@ -28,7 +28,7 @@
 
 ✕：```FALSE```
 
-バックエンドの検証については以下を参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_validation.html
 

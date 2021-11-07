@@ -10,7 +10,7 @@
 
 ## 01. ビルトインパッケージ
 
-以下のリンクを参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html
 
@@ -45,7 +45,7 @@
 
 ## 03. aws-lambda-go
 
-以下のリンクを参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html
 
@@ -384,11 +384,11 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 
 #### ・前処理と後処理
 
-テスト関数を実行する直前に，前処理を実行する．モックの生成のために使用するとよい．PHPUnitにおける前処理と後処理については，以下のリンクを参考にせよ．
+テスト関数を実行する直前に，前処理を実行する．モックの生成のために使用するとよい．PHPUnitにおける前処理と後処理については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_testing_based_on_code.html
 
-前処理と後処理については，以下のリンクを参考にせよ．
+前処理と後処理については，以下のリンク先を参考にせよ．
 
 参考：https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
 

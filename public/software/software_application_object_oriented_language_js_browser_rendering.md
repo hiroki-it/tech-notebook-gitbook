@@ -308,7 +308,7 @@ img { float: right }
 
 ![DOMツリーが生成されるまで](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DOMツリーが生成されるまで.png)
 
-HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．DOMのインターフェースについては，以下のリンクを参考にせよ．
+HTMLパーサーは，オブジェクトをノードとして，DOMツリーを生成する．DOMツリーを生成する途中でscriptタグに到達すると，一旦，JSファイルを読み込んでScripting処理を終えてから，DOMツリーの生成を再開する．DOMのインターフェースについては，以下のリンク先を参考にせよ．
 
 参考：https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
 
@@ -515,7 +515,7 @@ DOMツリーの各ノードを，ブラウザ上に描画する．
 
 #### ・ブラウザにおけるキャッシュ
 
-クライアントのブラウザにおいて，レスポンスされた静的コンテンツがキャッシュとして保存される．Chromeの場合は，CacheStorageに保持される．確認方法については，以下のリンクを参考にせよ．
+クライアントのブラウザにおいて，レスポンスされた静的コンテンツがキャッシュとして保存される．Chromeの場合は，CacheStorageに保持される．確認方法については，以下のリンク先を参考にせよ．
 
 参考：https://developer.chrome.com/docs/devtools/storage/cache/
 
@@ -527,7 +527,7 @@ DOMツリーの各ノードを，ブラウザ上に描画する．
 
 #### ・アプリケーションにおけるキャッシュ
 
-オブジェクトのプロパティにおいて，メソッド処理結果がキャッシュとして保存される．必要な場合に，これを取り出して再利用する．Laravelのキャッシュ機能については，以下のリンクを参考にせよ．
+オブジェクトのプロパティにおいて，メソッド処理結果がキャッシュとして保存される．必要な場合に，これを取り出して再利用する．Laravelのキャッシュ機能については，以下のリンク先を参考にせよ．
 
 参考：https://readouble.com/laravel/8.x/ja/cache.html
 

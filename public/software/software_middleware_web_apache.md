@@ -391,7 +391,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 #### ・リダイレクトとリライトの違い
 
-以下のリンクを参考にせよ．
+以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 

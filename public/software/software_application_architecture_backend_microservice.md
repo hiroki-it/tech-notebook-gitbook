@@ -296,7 +296,7 @@ ECサイトがあり，これの商品販売ドメインを販売サブドメイ
 
 #### ・モニタリングサービス
 
-Datadogによる分散トレースの監視については，以下のリンクを参考にせよ．
+Datadogによる分散トレースの監視については，以下のリンク先を参考にせよ．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html
 
