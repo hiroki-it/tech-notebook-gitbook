@@ -282,37 +282,13 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 
 **＊例＊**
 
-とある映画チケット料金を題材に，ハッシュタグチケット料金モデリングとして，色々な方がドメインモデル図を作成されている．いずれの方も非常に参考になる
+とある映画チケット料金を題材に，ハッシュタグチケット料金モデリングとして，色々な方がユースケース図とドメインモデル図を作成されている．いずれの方も非常に参考になる
 
 参考：
 
 - https://cinemacity.co.jp/ticket/
 - https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden
-
-**＊例＊**
-
-参考：https://github.com/tooppoo/ticket-modeling
-
-（１）映画チケット購入者の受注管理システムを開発するとする．
-
-（２）ドメインエキスパートへの要件定義が終えた想定で，ユースケース図を作成する．オブジェクト図は省略する．
-
-![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
-
-（３）ドメインモデル図を作成する．ユースケースから以下のオブジェクトを抽出する．この時，データの整合性の観点から，映画オブジェクトは映画集約，また上映回オブジェクトは上映回集約と見なす方が良さそうと考える．
-
-| ユースケース     | 抽出されたオブジェクト                                       |
-| ---------------- | ------------------------------------------------------------ |
-| 映画を選ぶ       | 映画オブジェクト                                             |
-| タイトルを選ぶ   | タイトルオブジェクト                                         |
-| 映画の形式を選ぶ | 映画形式オブジェクト，上映形態オブジェクト                   |
-| 上映回を選ぶ     | 上映回オブジェクト，上映日オブジェクト，上映開始時刻オブジェクト |
-
-![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
-
-**＊例＊**
-
-参考：https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
+- https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
 
 （１）映画チケット購入者の受注管理システムを開発するとする．
 

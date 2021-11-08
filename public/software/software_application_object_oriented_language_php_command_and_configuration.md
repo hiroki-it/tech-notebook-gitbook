@@ -10,7 +10,32 @@
 
 ## 01. コマンド
 
-### -ini
+### -i
+
+PHPの設定を表示する．
+
+**＊コマンド例＊**
+
+```bash
+$ php -i
+phpinfo()
+PHP Version => 7.4
+
+...
+
+```
+
+出力量が多いため，```grep```を使用して，特定の項目のみを表示するようにすると良い．
+
+```bash
+# PHPのプロセスが使用可能なめもりの
+$ php -i | grep memory_limit
+memory_limit => 2048M => 2048M
+```
+
+<br>
+
+### --ini
 
 Configuration Fileの項目で，```php.ini```ファイルのあるディレクトリを表示する．
 
