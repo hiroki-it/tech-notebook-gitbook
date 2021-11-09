@@ -57,7 +57,7 @@
 
 #### ・ドメインとは
 
-ビジネスモデル全体で見た時に，システム化の対象となる部分領域のこと．ビジネスモデル全体をいくつかのドメインを分割する方法として，一連の業務フローの中で，業務の担当者の属性が変化するタイミングに着目すると良い．
+ビジネスモデル全体で見た時に，システム化の対象となる業務領域のこと．業務領域の境目を見分ける方法として，一連の業務フローの中で，業務の担当者の属性が変化するタイミングに着目すると良い．担当者が変われば，経理業務，会計業務，コールセンター業務，などが抽出できるはずである．
 
 **＊例＊**
 
@@ -282,13 +282,13 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 
 **＊例＊**
 
-とある映画チケット料金を題材に，ハッシュタグチケット料金モデリングとして，色々な方がユースケース図とドメインモデル図を作成されている．いずれの方も非常に参考になる
+とある映画チケット料金を題材に，ハッシュタグチケット料金モデリングとして，色々な方がユースケース図とドメインモデル図を作成されている．いずれの方も非常に参考になる（が，難しい...）
 
 参考：
 
 - https://cinemacity.co.jp/ticket/
-- https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden
 - https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
+- https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden
 
 （１）映画チケット購入者の受注管理システムを開発するとする．
 
@@ -296,22 +296,55 @@ ECサイトを運営するアスクルの例．ドメインのうちで，個人
 
 ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
-（３）暫定的なドメインモデル図を作成する．ユースケースから以下のオブジェクトを抽出する．この時，データの整合性の観点から，上映オブジェクトと上映時間帯は上映集約，また映画オブジェクトは映画集約と見なす方が良さそうと考える．
+（３）暫定的なドメインモデル図を作成する．ユースケースから以下のオブジェクトを抽出する．この時，実装パターンをおおまかに予想しておく．また，データの整合性の観点から，集約の境界を定義する．
 
-| ユースケース                   | 抽出されたオブジェクト                                     |
-| ------------------------------ | ---------------------------------------------------------- |
-| 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト |
+| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
+| ------------------------------ | :--------------------------------------------------------- | ---------------------------- | ------------------ |
+| 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト | エンティティ，値オブジェクト | 上映集約，映画集約 |
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
 
 （３）ドメインモデル図を更新する．
 
-| ユースケース                   | 抽出されたオブジェクト |
-| ------------------------------ | ---------------------- |
-| 映画，上映日時，枚数を選択する | 予約オブジェクト       |
-| 割引を選択する                 | 料金区分オブジェクト   |
-| 支払い金額を確認する           | 支払金額オブジェクト   |
+| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
+| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
+| 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト | エンティティ，値オブジェクト | 上映集約，映画集約 |
+| 〃                             | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
+| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
+| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
+
+![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
+
+（４）ドメインモデル図を更新する．
+
+| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
+| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
+| 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト | エンティティ，値オブジェクト | 上映集約，映画集約 |
+| 〃                             | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
+| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
+| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
+| 〃                             | 料金区分オブジェクト                                       | タイプコード（Enum）         | 料金設定集約       |
+
+![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
+
+実装フェーズに入ってからの話になるが，料金区分オブジェクトはEnumとして実装することになり，以下のようになる．
+
+![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_enum_example.jpg)
+
+（５）ドメインモデル図を更新する．
+
+| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
+| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
+| 映画，上映日時，枚数を選択する | 上映時間帯オブジェクト，上映オブジェクト，映画オブジェクト | エンティティ，値オブジェクト | 上映集約，映画集約 |
+| 〃                             | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
+| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
+| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
+| 〃                             | 料金区分オブジェクト                                       | タイプコード（Enum）         | 料金設定集約       |
+| 〃                             | 料金区分計算オブジェクト                                   | 値オブジェクト               | 料金区分計算集約   |
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
-（４）続きを記入する...
+（６）集約間の関係性のみに着目する，オブジェクト間の関係性は複雑であるが，集約間は単純であることが分かる．
+
+![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
+
