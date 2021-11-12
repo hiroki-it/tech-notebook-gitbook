@@ -156,12 +156,12 @@
     * [📖 ︎テレメトリー間の紐づけ](public/observability_monitering/observability_datadog_telemetry_association.md)
     * [📖 ︎監視](public/observability_monitering/observability_datadog_monitering.md)
 
-* システム開発手法論
-  * [📖 ︎システム開発手法論](public/system_development_methodology/system_development_methodology.md)
-  * [📖 ︎プロジェクト管理](public/system_development_methodology/system_development_methodology_project_management.md)
+* ソフトウェア開発手法論
+  * [📖 ︎ソフトウェア開発手法論](public/software_development_methodology/software_development_methodology.md)
+  * [📖 ︎プロジェクト管理](public/software_development_methodology/software_development_methodology_project_management.md)
   * Git
-    * [📖 ︎GitHub](public/system_development_methodology/system_development_methodology_github.md)
-    * [📖 ︎Gitコマンド](public/system_development_methodology/system_development_methodology_git_command.md)
+    * [📖 ︎GitHub](public/software_development_methodology/software_development_methodology_github.md)
+    * [📖 ︎Gitコマンド](public/software_development_methodology/software_development_methodology_git_command.md)
 
 * 統計解析
   * [📖 ︎R言語](public/statistic_analysis/statistic_analysis_r.md)
