@@ -8,6 +8,49 @@
 
 <br>
 
+## 01. ACM
+
+**＊実装例＊**
+
+```elixir
+###############################################
+# For www domain
+###############################################
+resource "aws_acm_certificate" "www" {
+  domain_name               = var.route53_domain_www
+  subject_alternative_names = ["*.${var.route53_domain_www}"]
+  # 後述の説明を参考にせよ．（１）
+  validation_method         = "EMAIL"
+
+  tags = {
+    Name = "${var.environment}-${var.service}-www-cert"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_acm_certificate_validation" "www" {
+  certificate_arn = aws_acm_certificate.www.arn
+}
+```
+
+<br>
+
+### （１）Eメール検証の場合はメール再送が必要
+
+TerraformでEメール検証の証明書リクエストを作成すると，メールが送信されないことがある．送信されなかった場合は，メールの再送を実行する．
+
+```bash
+$ aws acm resend-validation-email \
+  --certificate-arn arn:aws:acm:ap-northeast-1:123456789:certificate/***** \
+  --domain example.jp \
+  --validation-domain *.example.jp
+```
+
+<br>
+
 ## 01. AMI
 
 ### まとめ

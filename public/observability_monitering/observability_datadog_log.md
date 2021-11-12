@@ -573,6 +573,8 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:19283746
 
 #### ・ユーザエージェントパーサー
 
+ユーザエージェントの文字列を解析し，詳細な項目ごとに分解した構造化ログとして出力する．
+
 **＊例＊**
 
 Nginxから，以下のような非構造化ログを受信するとする．
@@ -581,7 +583,7 @@ Nginxから，以下のような非構造化ログを受信するとする．
 nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
 ```
 
-これに対して，以下のようなGrokパーサールールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
+これに対して，以下のようなGrokパーサーのルールを定義する．```http.useragent```属性にユーザエージェント値を割り当てる．
 
 ```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
@@ -631,6 +633,65 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
   }
   
   # ～ 中略 ～
+}
+```
+
+#### ・ストリングビルダープロセッサー
+
+構造化ログの属性にアクセスし，ルールに基づいて属性値を出力し，新しい文字列を生成する．配列値のキー名にアクセスするようにルールを定義した場合，そのキーの全ての値をカンマ区切りで出力できる．また，配列状のオブジェクトのキー名にアクセスするようにルールを定義した場合，各オブジェクトの同キーの値をカンマ区切りで出力できる．
+
+参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#string-builder-processor
+
+**＊例＊**
+
+ログパイプラインを経て，以下のような構造化ログが生成されているとする．
+
+```bash
+{
+  "date": 1609502400000,
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1",
+    "url_details": {
+      "path": "/users",
+      "queryString": {
+        "fooId": 1,
+        "paginate": 10
+      }
+    }
+  },
+  "network": {
+    "client": {
+      "ip": "192.168.0.1"
+    }
+  }
+}
+```
+
+これに対して，ストリングビルダープロセッサーのルールを定義する．構造化ログの```http.url```の値を出力して完全なURLを生成し，これを```http.url_full```属性として新しく付与する．
+
+```
+https://exmaple.jp%{http.url}
+```
+
+これにより，以下の構造化ログが得られる．
+
+```bash
+{
+  "date": 1609502400000,
+  
+  # ～ 中略 ～
+  
+  "http": {
+  
+    # ～ 中略 ～
+    
+    "url_full": "https://exmaple.jp/users?paginate=10&fooId=1"
+    
+  },
+  
+    # ～ 中略 ～
 }
 ```
 
@@ -698,9 +759,9 @@ error   @http.status_code:[500 TO 599]
 
   "http": {
   
-      # ～ 中略 ～
+    # ～ 中略 ～
       
-      status_category: "info"
+    status_category: "info"
   },
   
     # ～ 中略 ～

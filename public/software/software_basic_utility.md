@@ -970,7 +970,7 @@ $ pip3 install supervisor
 $ /usr/local/bin/supervisord
 ```
 
-以下に設定ファイルの例を示す．
+以下に設定ファイルの例を以下に示す．
 
 **＊実装例＊**
 

@@ -115,7 +115,7 @@ Java，Scala，Groovy，Kotlin，など．
 
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
+ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を以下に示す．
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
@@ -248,7 +248,7 @@ $ php --ini
 
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を示す．
+ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を以下に示す．
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 

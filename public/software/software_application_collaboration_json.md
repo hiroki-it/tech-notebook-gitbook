@@ -235,7 +235,7 @@ console.log(object);
 
 **＊実装例＊**
 
-以下でシリアライズとデシリアライズを行うクラスを示す．
+シリアライズとデシリアライズを行うクラスを以下に示す．
 
 ```javascript
 class StaffParser {

@@ -2129,7 +2129,7 @@ FargateからECRに対するDockerイメージのプルは，VPCの外側に対�
 
 #### ・VPCエンドポイントを経由
 
-VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにするとよい．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方がよい．
+VPCエンドポイントを設け，これに対してアウトバウンド通信を行うようにするとよい．なお，NAT GatewayとVPCエンドポイントの両方を構築している場合，ルートテーブルでは，VPCエンドポイントへのアウトバウンド通信の方が優先される．そのため，NATGatewayがある状態でVPCエンドポイントを構築すると，向き先が自動的に変わってしまうことに注意する．料金的な観点から，NAT GatewayよりもVPCエンドポイントを経由した方がよい．
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
@@ -3106,8 +3106,11 @@ $ aws iam update-user \
 
 | 項目             | 説明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| レコードの変換   |                                                              |
+| レコードの変換   | バッファーに蓄えられたログテキストを，指定された形式で転送する前に，テキストの内容を変換する．Lambdaを使用する．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/data-transformation.html |
 | 転送先           | 転送先とするS3バケットを設定する．                           |
+| ディレクトリ名   | S3への転送時に，S3に作成するディレクトリの名前を設定できる．標準で```YYYY/MM/dd/HH```形式でディレクトリが作成され，2021/11/09現在はUTCのみ設定できる．もしJSTにしたい場合はLambdaに変換処理を実装し，Kinesis Data Firehoseと連携する必要がある．<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
+| バッファー       | Kinesis Data Firehoseでは，受信したログテキストを一旦バッファーに蓄え，一定期間あるいは一定容量が蓄えられた時点で，ログファイルとして転送する．この時，バッファーに蓄える期間や上限量を設定できる．<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |
+| ファイル形式     | 転送時のファイル形式を設定できる．ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが，S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い． |
 | バックアップ     | 収集したデータを加工する場合に，加工前データを保管しておく． |
 | 暗号化           |                                                              |
 | エラーログの収集 | データの転送時にエラーが発生した場合，エラーログをCloudWatchログに送信する． |
@@ -3973,7 +3976,7 @@ CloudFrontにルーティングする場合，CloudFrontのCNAMEをレコード�
 
 #### ・AWS以外でドメインを購入した場合
 
-DNSサーバによる名前解決は，ドメインを購入したドメインレジストラで行われる．そのため，AWS以外でドメインを購入した場合，Route53のNSレコード値を，ドメインレジストラに登録する必要がある．これにより，ドメインレジストラに対してIPアドレスの問い合わせがあった場合は，Route53のNSレコード値がレスポンスされるようになる．NSレコード値を元に，クライアントはRoute53にアクセスする．
+DNSサーバによる名前解決は，ドメインを購入したドメインレジストラで行われる．そのため，AWS以外（例：お名前ドットコム）でドメインを購入した場合，Route53のNSレコード値を，ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある．これにより，ドメインレジストラに対してIPアドレスの問い合わせがあった場合は，Route53のNSレコード値がレスポンスされるようになる．NSレコード値を元に，クライアントはRoute53にアクセスする．
 
 #### ・Route53におけるDNSキャッシュ
 
@@ -5180,6 +5183,58 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Default Action | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | Block          | 指定した送信元IPアドレス以外の場合，全てのファイルパスにアクセスすることを拒否する． |
+
+<br>
+
+### ログ
+
+#### ・マネージドルールのログ
+
+WAFマネージドルールを使用している場合，マネージドルールが```ruleGroupList```キーに配列として格納されている．もし，Countアクションが実行されていれば，```excludedRules```キーにその旨とルールIDが格納される．
+
+```bash
+{
+
+  # ～ 中略 ～
+
+  "ruleGroupList": [
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": [
+        {
+          "exclusionType": "EXCLUDED_AS_COUNT",
+          "ruleId": "NoUserAgent_HEADER"
+        }
+      ]
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    }
+  ],
+
+  # ～ 中略 ～
+
+}
+```
+
+
 
 <br>
 

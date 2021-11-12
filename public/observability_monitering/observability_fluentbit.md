@@ -421,12 +421,13 @@ Fluent Bit v1.8.6
 
 ![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
 
-ログはチャンク化され，メモリ／ファイルにあるバッファー内のキューに蓄えられる．チャンクはキューから取り出され，ターゲットに転送される．Fluentdから概念図を拝借した．
+バッファーとして機能するメモリ／ファイルにて，チャンク化されたログテキストは一旦ステージに蓄えられる．ステージに一定量のチャンクが蓄えられると，チャンクはキューに格納される．キューは，ログテキストを指定された形式でターゲットに順番に転送する．Fluentdから概念図を拝借した．ちなみに，AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている．
 
 参考：
 
 - https://docs.fluentbit.io/manual/administration/buffering-and-storage
 - https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
+- https://www.alpha.co.jp/blog/202103_01
 
 #### ・メモリ上でバッファリング
 
