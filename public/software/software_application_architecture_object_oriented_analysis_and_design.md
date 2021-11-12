@@ -30,11 +30,11 @@
 
 #### 1. ユースケース図の作成
 
-要件定義に基づいて，ユースケース図を作成する．
+要件定義に基づいて，ユースケース図を作成する．これにより，ソフトウェアの具体的な機能を明確化させる．
 
 #### 2. オブジェクト図の作成
 
-要件定義とユースケース図に基づいて，オブジェクト図を作成する．ユースケース図に含まれる名詞に着目し，オブジェクトを抽出する．
+要件定義とユースケース図に基づいて，オブジェクト図を作成する．ユースケース図に含まれる名詞に着目し，オブジェクトを抽出する．これにより，ソフトウェアの具体的な静的構造を明確化させる．
 
 参考：https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90
 
@@ -44,7 +44,7 @@
 
 #### 1. クラス図の作成，多重度の付記
 
-オブジェクト図のインスタンス間の関係性を参考にして，クラス図を作成する．また，クラス間がデータとして保持する関係性にある時に，インスタンス間のリンク記号数を参考にして，多重度を付記する．クラス図ではソフトウェアの『振舞』を設計できないため，これはシーケンス図に託す．
+オブジェクト図のインスタンス間の関係性を参考にして，クラス図を作成する．また，クラス間がデータとして保持する関係性にある時に，インスタンス間のリンク記号数を参考にして，多重度を付記する．これにより，ソフトウェアの抽象的な静的構造を明確化させる．クラス図ではソフトウェアの『振舞』を設計できないため，これはシーケンス図に託す．
 
 #### 2. シーケンス図の作成
 
@@ -57,7 +57,7 @@
 
 #### 3. 設計のレビュー
 
-ソフトウェアの静的な構造を設計するクラス図と，動的な振舞を設計するシーケンス図の間の整合性から，設計を妥当性をレビューする．
+ソフトウェアの静的構造を設計するクラス図と，動的な振舞を設計するシーケンス図の間の整合性から，設計を妥当性をレビューする．
 
 参考：https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf
 
@@ -96,7 +96,7 @@ UML，概念データモデリング，構造化分析，リアルタイム分�
 
 #### ・振舞の視点
 
-ソフトウェアの時系列的な振る舞いに注目するダイアグラムが属する．シーケンス図には，分析に使用するシステムシーケンス図と，設計に使用するシーケンス図があることに注意する．
+ソフトウェアの時系列的な振舞に注目するダイアグラムが属する．シーケンス図には，分析に使用するシステムシーケンス図と，設計に使用するシーケンス図があることに注意する．
 
 #### ・構造の視点
 
@@ -130,7 +130,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### ユースケース図とは
 
-アクターとユースケースと関係性に基づいて，アクターの要求に対するソフトウェアの機能を表現する．ユースケース図はソフトウェアの構造を表現できないため，設計の前段階としてはあまり役立たない．そのため，ユースケース図は，オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる．オブジェクト図の方が，設計の前段階の参考資料として適している．ユースケース名は，『ユーザがソフトウェアを操作して，〇〇を△△する．』と考え，〇〇（名詞）をオブジェクト図に反映させる．
+アクターとユースケースと関係性に基づいて，アクターの要求に対するソフトウェアの具体的な『機能』を表現する．ユースケース図はソフトウェアの構造を表現できないため，設計の前段階としてはあまり役立たない．そのため，ユースケース図は，オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる．オブジェクト図の方が，設計の前段階の参考資料として適している．ユースケース名は，『ユーザがソフトウェアを操作して，〇〇を△△する．』と考え，〇〇（名詞）をオブジェクト図に反映させる．
 
 <br>
 
@@ -145,13 +145,13 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 | 記号名                                                       | 説明                                                         | 補足                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------- |
-| アクター<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザや，連携する他のソフトウェアを表す． |                                  |
-| ユースケース<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な使用例を表す．                         |                                  |
-| サブジェクト<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | ソフトウェアの境界線を表す．                                 |                                  |
-| 関連<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターにユースケースが関連していることを表す．             |                                  |
-| 汎化<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に，is-a-kind-ofな関係（グループとメンバーの関係性）があることを表す． |                                  |
-| 包含<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | ユースケースAの実行中に、ユースケースBが実行されることを表す． | ```<< invoke >>```も同じである． |
-| 先行<br>```<< precedes >>```                                 | ユースケースAが先に実行完了してから、ユースケースBが実行されることを表す． |                                  |
+| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザや，連携する他のソフトウェアを表す． |                                  |
+| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な使用例を表す．                         |                                  |
+| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | ユースケース名の機能を持つソフトウェアの境界線を表す．       |                                  |
+| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターにユースケースが関連していることを表す．             |                                  |
+| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に，is-a-kind-ofな関係（グループとメンバーの関係性）があることを表す． |                                  |
+| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | ユースケースAの実行を細分化すると，ユースケースBの実行も含まれることを表す． | ```<< invoke >>```も同じである． |
+| 先行：<br>```<< precedes >>```                               | ユースケースAが先に実行完了してから、ユースケースBが実行されることを表す． |                                  |
 
 **＊例＊**
 
@@ -194,7 +194,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/system-sequence-diagram.png)
 
-アクターとソフトウェアの出入力に基づいて，ユーザの要求に対するソフトウェアの動的な振舞を表現する．オブジェクト間の関係性に基づくシーケンス図とは異なり，図式化の目的としてはユースケース図と似ている．
+アクターとソフトウェアの出入力に基づいて，ユーザの要求に対するソフトウェアの『動的な振舞』を表現する．オブジェクト間の関係性に基づくシーケンス図とは異なり，図式化の目的としてはユースケース図と似ている．
 
 参考：
 
@@ -208,7 +208,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### 状態遷移図とは
 
-状態（丸）と⁠遷移（矢印）の関係性に基づいて，ソフトウェアの動的な振舞を表現する．矢印の横の説明は，遷移のきっかけとなる『イベント（入力）⁠／アクション（出力）⁠』を表す．
+状態（丸）と⁠遷移（矢印）の関係性に基づいて，ソフトウェアの『動的な振舞』を表現する．矢印の横の説明は，遷移のきっかけとなる『イベント（入力）⁠／アクション（出力）⁠』を表す．
 
 ![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ストップウォッチ状態遷移図.jpg)
 
@@ -237,7 +237,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### オブジェクト図とは
 
-『インスタンス図』ともいう．特定のデータを保持する具体的なオブジェクト間の関係性に基づいて，ソフトウェアの静的な構造を表現する．
+『インスタンス図』ともいう．特定のデータを保持する具体的なオブジェクト間の関係性に基づいて，ソフトウェアの『静的構造』を表現する．
 
 <br>
 
@@ -281,7 +281,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### クラス図とは
 
-クラス間の関係性に基づいて，ソフトウェアの静的な構造を表現する．オブジェクト図のインスタンス間の関係性を参考にして，クラス間の関係性の種類を判断する．
+クラス間の関係性に基づいて，ソフトウェアの『静的構造』を表現する．オブジェクト図のインスタンス間の関係性を参考にして，クラス間の関係性の種類を判断する．
 
 <br>
 
@@ -382,7 +382,7 @@ DBテーブルのカラム間の関係性に基づいて，DBの構造を表現�
 
 ### シーケンス図とは
 
-オブジェクト間の時系列的な関係性に基づいて，ソフトウェアの動的な振舞を表現するダイアグラムのこと．
+オブジェクト間の時系列的な関係性に基づいて，ソフトウェアの『動的な振舞』を表現するダイアグラムのこと．
 
 **＊例＊**
 

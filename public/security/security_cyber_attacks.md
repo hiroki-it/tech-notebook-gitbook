@@ -64,7 +64,7 @@ Win10における設定画面
 
 #### ・WAFとは
 
-Webアプリケーション自体を保護するシステム．
+システムを保護する機能を持ったシステムのこと．
 
 ![WAF](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WAF.png)
 

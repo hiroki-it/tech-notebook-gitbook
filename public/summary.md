@@ -177,13 +177,13 @@
 
 <br>
 
-## システム開発手法論
+## ソフトウェア開発手法論
 
-* [📖 ︎システム開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/system_development_methodology/system_development_methodology.html)
-* [📖 ︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/system_development_methodology/system_development_methodology_project_management.html)
+* [📖 ︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology.html)
+* [📖 ︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_project_management.html)
 * Git
-    * [📖 ︎GitHub](https://hiroki-it.github.io/tech-notebook-gitbook/public/system_development_methodology/system_development_methodology_github.html)
-    * [📖 ︎Gitコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/system_development_methodology/system_development_methodology_git_command.html)
+    * [📖 ︎GitHub](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_github.html)
+    * [📖 ︎Gitコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_git_command.html)
 
 <br>
 
