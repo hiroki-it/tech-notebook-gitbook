@@ -22,7 +22,7 @@
 
 例えば，LANとしてEthernet，WANとしてデジタル専用線を用いる．
 
-![WAN，LANの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/WAN，LANの具体例.png)
+![WAN，wan_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/wan_lan.png)
 
 <br>
 

@@ -106,7 +106,7 @@ $ sudo lsof -i:<番号>
 
 参考：https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
-![SMTP，POP3，IMAP4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/SMTP，POP3，IMAP4.png)
+![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/smtp_pop3_imap4.png)
 
 #### ・送信側のメールサーバのモック
 

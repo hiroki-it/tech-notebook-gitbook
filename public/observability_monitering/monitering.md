@@ -1,3 +1,5 @@
+
+
 # 監視
 
 ## はじめに
@@ -142,14 +144,28 @@ CloudWatchではStatsDからのメトリクスの送信がサポートされて�
 
 #### ・MTTxメトリクスとは
 
-![MTTx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/MTTx-metrics.png)
+![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics.png)
 
-インシデント管理にかかった時間を計測したメトリクスのこと．実際に時間と目標時間を比較し，今回のインシデント管理の良し悪しを判断できる．
+| 区分           | 説明                                                         |      |
+| -------------- | ------------------------------------------------------------ | ---- |
+| 検出時間       | インシデントが起こってから，これがオンコール担当にアラートされるまで． |      |
+| エンゲージ時間 | インシデントがオンコール担当にアラートされ，オンコール担当本人／アサインされたエンジニアがタスクとして着手するまで． |      |
+| 修正時間       | オンコール担当がタスクに着手してから，これを完了するまで．   |      |
+
+インシデント管理に要した時間を計測したメトリクスのこと．
 
 参考：
 
 - https://www.amazon.co.jp/dp/4873119618
 - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
+
+#### ・ダッシュボード
+
+MTTxメトリクスをダッシュボード化する．実際に時間と目標時間を比較すれば，今回のインシデント管理の良し悪しを判断できるため，インシデント管理自体をソフトウェア開発と同様に反復的に改善しやすくになる．DRI Hops（インシデントの直接責任者）の値を用いて人的コストを可視化することにより，エンジニアリングマネージャがインシデント管理を扱いやすくなる．
+
+参考：https://www.amazon.co.jp/dp/4873119618
+
+![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/mttx-metrics_dash-board.png)
 
 <br>
 

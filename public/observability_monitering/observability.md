@@ -14,7 +14,7 @@
 
 ![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/observality_and_monitoring.png)
 
-『収集されたデータから，システムにおける想定外の不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの想定内の不具合は『監視』や『テスト』によって検知できるが，想定外のものを検知できない．しかし，可観測性を高めることにより，想定外の不具合を表面化できる．
+『収集されたデータから，システムにおける想定外の不具合をどれだけ正確に推測できるか』を表す程度のこと．システムの想定内の不具合は『監視』や『テスト』によって検知できるが，想定外のものを検知できない．しかし，可観測性を高めることにより，想定外の不具合を表面化できる．想定外の不具合はインシデントの原因になるため，想定外の不具合の表面化はインシデントの予防につながる．
 
 参考：
 
@@ -156,8 +156,6 @@
   参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
 #### ・```HTTPCode_ELB_4XX_Count```
-
-ろ
 
 #### ・```HTTPCode_ELB_5XX_Count```
 

@@ -130,7 +130,7 @@ DFD，ユースケース図，アクティビティ図，などがある．
 
 ### ユースケース図とは
 
-アクターとユースケースと関係性に基づいて，アクターの要求に対するソフトウェアの具体的な『機能』を表現する．ユースケース図はソフトウェアの構造を表現できないため，設計の前段階としてはあまり役立たない．そのため，ユースケース図は，オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる．オブジェクト図の方が，設計の前段階の参考資料として適している．ユースケース名は，『ユーザがソフトウェアを操作して，〇〇を△△する．』と考え，〇〇（名詞）をオブジェクト図に反映させる．
+アクターとユースケースと関係性に基づいて，アクターの要求に対するソフトウェアの具体的な『機能』を表現する．ユースケース図はソフトウェアの構造を表現できないため，設計の前段階としてはあまり役立たない．そのため，ユースケース図は，オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる．オブジェクト図の方が，設計の前段階の参考資料として適している．ユースケース名は，『ソフトウェアは，ユーザが〇〇を△△する機能を提供する．』と考え，〇〇（名詞）をオブジェクト図に反映させる．
 
 <br>
 
@@ -146,12 +146,14 @@ DFD，ユースケース図，アクティビティ図，などがある．
 | 記号名                                                       | 説明                                                         | 補足                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------- |
 | アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザや，連携する他のソフトウェアを表す． |                                  |
-| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な使用例を表す．                         |                                  |
-| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | ユースケース名の機能を持つソフトウェアの境界線を表す．       |                                  |
-| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターにユースケースが関連していることを表す．             |                                  |
+| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す．                           |                                  |
+| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | ユースケース機能を持つソフトウェアの境界線を表す．           |                                  |
+| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターにユースケース機能が関連していることを表す．         |                                  |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に，is-a-kind-ofな関係（グループとメンバーの関係性）があることを表す． |                                  |
-| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | ユースケースAの実行を細分化すると，ユースケースBの実行も含まれることを表す． | ```<< invoke >>```も同じである． |
-| 先行：<br>```<< precedes >>```                               | ユースケースAが先に実行完了してから、ユースケースBが実行されることを表す． |                                  |
+| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | 矢印元のユースケース機能を細分化すると，矢印先のユースケース機能も含まれることを表す． | ```<< invoke >>```も同じである． |
+| 先行：<br>```<< precedes >>```                               | 矢印元のユースケース機能が必ず先に使用されてから，矢印先のユースケース機能が使用されることを表す． |                                  |
+| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png) | 矢印元のユースケース機能は矢印先のユースケース機能の追加機能であり，場合によってはこれが使用されることを表す． |                                  |
+| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_note.png) | ユースケース機能の前提事項や考慮事項を記載する．認証認可は全てのユースケースに関係するため，ノートに記載する．<br>参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                                  |
 
 **＊例＊**
 

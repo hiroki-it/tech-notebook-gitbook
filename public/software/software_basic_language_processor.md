@@ -111,29 +111,29 @@ Java，Scala，Groovy，Kotlin，など．
 
 ### 仕組み
 
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
+![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
 
 #### （１）Lexical analysis（字句解析）
 
-ソースコードの文字列を言語の最小単位（トークン）の列に分解． 以下に，トークンの分類方法の例を以下に示す．
+ソースコードの文字列を言語の最小単位（トークン）の列に分解する． 以下に，トークンの分類方法の例を以下に示す．
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/構文規則と説明.png)
 
 #### （２）Syntax analysis（構文解析）
 
-トークンの列をツリー構造に変換．
+トークンの列をツリー構造に変換する．
 
 #### （３）Semantics analysis（意味解析）
 
-ツリー構造を基に，ソースコードに論理的な誤りがないか解析．
+ツリー構造を基に，ソースコードに論理的な誤りがないかを解析する．
 
 #### （４）Code optimization（コード最適化）
 
-ソースコードの冗長な部分を削除または編集．機械語をより短くするこができる．
+ソースコードの冗長な部分を削除または編集する．機械語をより短くするこができる．
 
 #### （５）Code generation（コード生成）
 
-最適化されたコードをバイナリ形式のコードに変換．
+最適化されたコードをバイナリ形式のコードに変換する．
 
 #### （６）リンク
 
@@ -244,7 +244,7 @@ $ php --ini
 
 ### 仕組み
 
-![字句解析，構文解析，意味解析，最適化](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/字句解析，構文解析，意味解析，最適化.png)
+![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/lexical_syntax_semantics.png)
 
 #### （１）Lexical analysis（字句解析）
 

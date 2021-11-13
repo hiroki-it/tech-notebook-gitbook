@@ -77,7 +77,7 @@ $ which python3
 | stdout（標準出力）       | コマンドからターミナルに対して，エラー以外のデータを出力するためのインターフェースのこと．プロセスごとに存在する． |
 | stderr（標準エラー出力） | コマンドからターミナルに対して，エラーデータを出力するためのインターフェースのこと．プロセスごとに存在する． |
 
-![標準入力，標準出力，標準出力エラー](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/標準入力，標準出力，標準出力エラー.jpg)
+![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.jpg)
 
 #### ・標準出力に出力
 
