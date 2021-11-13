@@ -1,4 +1,7 @@
-build:
+replace-md:
+	find ./* -name "*.md" -type f | xargs sed -i '' -e 's/，/、/g' -e 's/．/。/g'
+
+build: replace-md
 	gitbook build . docs
 
 serve:
