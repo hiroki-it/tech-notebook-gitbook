@@ -3,11 +3,10 @@ replace-md:
 
 build: replace-md
 	gitbook build . docs
+	find ./* -name "*.html" -type f | xargs sed -i '' 's/検索すると入力/検索/g'
 
-serve:
+serve: replace-md
 	gitbook serve . docs
-
-replace:
 	find ./* -name "*.html" -type f | xargs sed -i '' 's/検索すると入力/検索/g'
 
 commit-note:
@@ -15,7 +14,7 @@ commit-note:
 	git add public
 	git commit -m "update ノートを更新した．"
 
-commit-static: build replace
+commit-static: build
 	git checkout develop
 	git add docs
 	git commit -m "update 静的ファイルを更新した．"
