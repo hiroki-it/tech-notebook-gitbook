@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -19,7 +19,7 @@
 resource "aws_acm_certificate" "www" {
   domain_name               = var.route53_domain_www
   subject_alternative_names = ["*.${var.route53_domain_www}"]
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   validation_method         = "EMAIL"
 
   tags = {
@@ -40,7 +40,7 @@ resource "aws_acm_certificate_validation" "www" {
 
 ### （１）Eメール検証の場合はメール再送が必要
 
-TerraformでEメール検証の証明書リクエストを作成すると，メールが送信されないことがある．送信されなかった場合は，メールの再送を実行する．
+TerraformでEメール検証の証明書リクエストを作成すると、メールが送信されないことがある。送信されなかった場合は、メールの再送を実行する。
 
 ```bash
 $ aws acm resend-validation-email \
@@ -62,10 +62,10 @@ $ aws acm resend-validation-email \
 # For bastion
 ###############################################
 data "aws_ami" "bastion" {
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   most_recent = false
   
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   owners      = ["amazon"]
   filter {
     name   = "name"
@@ -83,7 +83,7 @@ data "aws_ami" "bastion" {
 
 ### （１）取得するAMIのバージョンを固定
 
-取得するAMIが常に最新になっていると，EC2が再構築されなねない．そこで，特定のAMIを取得できるようにしておく．```most_recent```は無効化しておき，特定のAMをフィルタリングする．
+取得するAMIが常に最新になっていると、EC2が再構築されなねない。そこで、特定のAMIを取得できるようにしておく。```most_recent```は無効化しておき、特定のAMをフィルタリングする。
 
 <br>
 
@@ -102,7 +102,7 @@ resource "aws_api_gateway_rest_api" "foo" {
   description = "The API that enables two-way communication with prd-foo"
   
   # VPCリンクのプロキシ統合のAPIを定義したOpenAPI仕様
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   body = templatefile(
     "${path.module}/open_api.yaml",
     {
@@ -128,7 +128,7 @@ resource "aws_api_gateway_rest_api" "foo" {
 resource "aws_api_gateway_deployment" "foo" {
   rest_api_id = aws_api_gateway_rest_api.foo.id
 
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   triggers = {
     redeployment = sha1(aws_api_gateway_rest_api.foo.body)
   }
@@ -152,19 +152,19 @@ resource "aws_api_gateway_stage" "foo" {
 
 ### （１）OpenAPI仕様のインポートと差分認識
 
-あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし，これをインポートすることにより，APIを定義できる．YAMLファイルに変数を渡すこともできる．APIの再デプロイのトリガーとして，```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする．これにより，インポート元のYAMLファイルに差分があった場合に，Terraformが```redeployment```パラメータの値の変化を認識できるようになり，再デプロイを実行できる．
+あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし、これをインポートすることにより、APIを定義できる。YAMLファイルに変数を渡すこともできる。APIの再デプロイのトリガーとして、```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする。これにより、インポート元のYAMLファイルに差分があった場合に、Terraformが```redeployment```パラメータの値の変化を認識できるようになり、再デプロイを実行できる。
 
 <br>
 
 ### （※）ステージ名を取得する方法はない
 
-API Gatewayのステージ名を参照するためには，resourceを使用する必要があり，dataではこれを取得することができない．もしステージをコンソール画面上から構築している場合，ステージのARNを参照することができないため，ARNを自力で作る必要がある．API Gatewayの各ARNについては，以下を参考にせよ．
+API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得することができない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照することができないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
 
 **＊実装例＊**
 
-WAFにAPI Gatewayを紐付けるために，ステージのARNが必要である．これは自力で作る．
+WAFにAPI Gatewayを紐付けるために、ステージのARNが必要である。これは自力で作る。
 
 ```elixir
 ###############################################
@@ -195,7 +195,7 @@ resource "aws_cloudfront_distribution" "this" {
   comment          = "prd-foo-cf-distribution"
   enabled          = true
   
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   retain_on_delete = true
 
   viewer_certificate {
@@ -225,13 +225,13 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### （１）削除保持機能
 
-Terraformでは，```retain_on_delete```で設定できる．固有の設定で，AWSに対応するものは無い．
+Terraformでは、```retain_on_delete```で設定できる。固有の設定で、AWSに対応するものは無い。
 
 <br>
 
 ### originブロック
 
-Origins画面に設定するオリジンを定義する．
+Origins画面に設定するオリジンを定義する。
 
 **＊実装例＊**
 
@@ -283,7 +283,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### ordered_cache_behaviorブロック
 
-Behavior画面に設定するオリジンにルーティングするパスを定義する．
+Behavior画面に設定するオリジンにルーティングするパスを定義する。
 
 **＊実装例＊**
 
@@ -321,7 +321,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### default_cache_behavior
 
-Behavior画面に設定するオリジンにルーティングする標準パスを定義する．
+Behavior画面に設定するオリジンにルーティングする標準パスを定義する。
 
 **＊実装例＊**
 
@@ -359,7 +359,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 ### ライフサイクルポリシー
 
-ECRにアタッチされる，イメージの有効期間を定義するポリシー．コンソール画面から入力できるため，基本的にポリシーの実装は不要であるが，TerraformなどのIaCツールでは必要になる．
+ECRにアタッチされる、イメージの有効期間を定義するポリシー。コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、TerraformなどのIaCツールでは必要になる。
 
 ```bash
 {
@@ -413,10 +413,10 @@ resource "aws_ecs_service" "this" {
   deployment_maximum_percent         = 200
   deployment_minimum_healthy_percent = 100
 
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   health_check_grace_period_seconds = 330
 
-  # 後述の説明を参考にせよ．（２）
+  # 後述の説明を参考にせよ。（２）
   task_definition = "${aws_ecs_task_definition.this.family}:${max(aws_ecs_task_definition.this.revision, data.aws_ecs_task_definition.this.revision)}"
 
   network_configuration {
@@ -438,7 +438,7 @@ resource "aws_ecs_service" "this" {
   }
 
   depends_on = [
-    # 後述の説明を参考にせよ．（３）
+    # 後述の説明を参考にせよ。（３）
     var.alb_listener_https,
     var.nlb_listener
   ]
@@ -456,13 +456,13 @@ resource "aws_ecs_service" "this" {
 
 ### （１）ヘルスチェック猶予期間
 
-タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し，Unhealthyと誤認してしまうため，タスクの起動完了を待機する．例えば，ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は，30秒単位で待機時間を増やし，適切な待機時間を見つけるようにする．
+タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、タスクの起動完了を待機する。例えば、ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は、30秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。
 
 <br>
 
 ### （２）実インフラのリビジョン番号の追跡
 
-アプリケーションのデプロイによって，実インフラのタスク定義のリビジョン番号が増加するため，これを追跡できるようにする．
+アプリケーションのデプロイによって、実インフラのタスク定義のリビジョン番号が増加するため、これを追跡できるようにする。
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
@@ -470,7 +470,7 @@ resource "aws_ecs_service" "this" {
 
 ### （３）ALB/NLBリスナーの構築を待機
 
-Teraformは，特に依存関係を実装しない場合に，『ターゲットグループ → ALB/NLB → リスナー』の順でリソースを構築する．問題として，ALB/NLBやリスナーの構築が終わる前に，ECSサービスの構築が始まってしまう．ALB/NLBの構築（※リスナーも含む可能性）が完全に完了しない状態では，ターゲットグループはECSサービスに紐付けらず，これが完了する前にECSサービスがターゲットグループを参照しようとするため，エラーになる．リスナーの後にECSサービスを構築するようにし，『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順でリソースを構築できるようにする．
+Teraformは、特に依存関係を実装しない場合に、『ターゲットグループ → ALB/NLB → リスナー』の順でリソースを構築する。問題として、ALB/NLBやリスナーの構築が終わる前に、ECSサービスの構築が始まってしまう。ALB/NLBの構築（※リスナーも含む可能性）が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。リスナーの後にECSサービスを構築するようにし、『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順でリソースを構築できるようにする。
 
 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
@@ -478,25 +478,25 @@ Teraformは，特に依存関係を実装しない場合に，『ターゲット
 
 ### （４）AutoScalingによるタスク数の増減を無視
 
-AutoScalingによって，タスク数が増減するため，これを無視する．
+AutoScalingによって、タスク数が増減するため、これを無視する。
 
 <br>
 
 ### （※）タスク定義の更新
 
-Terraformでタスク定義を更新すると，現在動いているECSで稼働しているタスクはそのままに，新しいリビジョン番号のタスク定義が作成される．コンソール画面の「新しいリビジョンの作成」と同じ挙動である．実際にタスクが増えていることは，サービスに紐付くタスク定義一覧から確認できる．次のデプロイ時に，このタスクが用いられる．
+Terraformでタスク定義を更新すると、現在動いているECSで稼働しているタスクはそのままに、新しいリビジョン番号のタスク定義が作成される。コンソール画面の「新しいリビジョンの作成」と同じ挙動である。実際にタスクが増えていることは、サービスに紐付くタスク定義一覧から確認できる。次のデプロイ時に、このタスクが用いられる。
 
 <br>
 
 ### （※）サービスのデプロイの削除時間
 
-ECSサービスの削除には『ドレイニング』の時間が発生する．約2分30秒かかるため，気長に待つこと．
+ECSサービスの削除には『ドレイニング』の時間が発生する。約2分30秒かかるため、気長に待つこと。
 
 <br>
 
 ### （※）ローリングアップデート
 
-applyで，新しいリビジョン番号のタスク定義を作成すると，これを用いてローリングアップデートが自動で実行されることに注意する．ただ，ローリングアップデートの仕組み上，新しいタスクのヘルスチェックが失敗すれば，既存のタスクは停止せずにそのまま稼働するため，安心ではあるが．
+applyで、新しいリビジョン番号のタスク定義を作成すると、これを用いてローリングアップデートが自動で実行されることに注意する。ただ、ローリングアップデートの仕組み上、新しいタスクのヘルスチェックが失敗すれば、既存のタスクは停止せずにそのまま稼働するため、安心ではあるが。
 
 <br>
 
@@ -535,13 +535,13 @@ resource "aws_instance" "bastion" {
 
 ### （１）キーペアはコンソール上で設定
 
-誤って削除しないように，またソースコードに機密情報をハードコーディングしないように，キーペアはコンソール画面で作成した後，```key_name```でキー名を指定するようにする．
+誤って削除しないように、またソースコードに機密情報をハードコーディングしないように、キーペアはコンソール画面で作成した後、```key_name```でキー名を指定するようにする。
 
 <br>
 
 ### （２）インターネットゲートウェイの後に構築
 
-インターネットゲートウェイの後にEC2を構築できるようにする．
+インターネットゲートウェイの後にEC2を構築できるようにする。
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
@@ -551,11 +551,11 @@ resource "aws_instance" "bastion" {
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に，tpl形式のカスタマー管理ポリシーを定義しておく．構築済みのIAMロールに，```aws_iam_policy```リソースを使用して，AWS管理ポリシーをIAMユーザにアタッチする．
+事前に、tpl形式のカスタマー管理ポリシーを定義しておく。構築済みのIAMロールに、```aws_iam_policy```リソースを使用して、AWS管理ポリシーをIAMユーザにアタッチする。
 
 **＊実装例＊**
 
-ローカルからAWS CLIコマンドを実行する必要がある場合に，コマンドを特定の送信元IPアドレスを特定のものに限定する．事前に，list型でIPアドレスを定義する．
+ローカルからAWS CLIコマンドを実行する必要がある場合に、コマンドを特定の送信元IPアドレスを特定のものに限定する。事前に、list型でIPアドレスを定義する。
 
 ```elixir
 ###############################################
@@ -567,7 +567,7 @@ global_ip_addresses = [
 ]
 ```
 
-また事前に，指定した送信元IPアドレス以外を拒否するカスタマー管理ポリシーを定義する．
+また事前に、指定した送信元IPアドレス以外を拒否するカスタマー管理ポリシーを定義する。
 
 ```bash
 {
@@ -586,7 +586,7 @@ global_ip_addresses = [
 ```
 
 
-コンソール画面で作成済みのIAMユーザの名前を取得する．tpl形式のポリシーにlist型の値を渡す時，```jsonencode```関数を使用する必要がある．
+コンソール画面で作成済みのIAMユーザの名前を取得する。tpl形式のポリシーにlist型の値を渡す時、```jsonencode```関数を使用する必要がある。
 
 ```elixir
 ###############################################
@@ -612,7 +612,7 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
 
 ### AWS管理ポリシー
 
-IAMユーザにAWS管理ポリシーをアタッチする．
+IAMユーザにAWS管理ポリシーをアタッチする。
 
 **＊実装例＊**
 
@@ -632,11 +632,11 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 ### 信頼ポリシーを持つロール
 
-コンソール画面でロールを作成する場合は意識することはないが，特定のリソースにロールをアタッチするためには，ロールに信頼ポリシーを組み込む必要がある．事前に，tpl形式の信頼ポリシーを定義しておく．```aws_iam_role```リソースを使用して，IAMロールを構築すると同時に，これに信頼ポリシーをアタッチする．
+コンソール画面でロールを作成する場合は意識することはないが、特定のリソースにロールをアタッチするためには、ロールに信頼ポリシーを組み込む必要がある。事前に、tpl形式の信頼ポリシーを定義しておく。```aws_iam_role```リソースを使用して、IAMロールを構築すると同時に、これに信頼ポリシーをアタッチする。
 
 **＊実装例＊**
 
-事前に，ECSタスクのための信頼ポリシーを定義する．
+事前に、ECSタスクのための信頼ポリシーを定義する。
 
 ```bash
 {
@@ -653,7 +653,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 }
 ```
 
-ECSタスクロールとECSタスク実行ロールに信頼ポリシーアタッチする．
+ECSタスクロールとECSタスク実行ロールに信頼ポリシーアタッチする。
 
 ```elixir
 ###############################################
@@ -683,7 +683,7 @@ resource "aws_iam_role" "ecs_task" {
 
 **＊実装例＊**
 
-事前に，Lambda@Edgeのための信頼ポリシーを定義する．
+事前に、Lambda@Edgeのための信頼ポリシーを定義する。
 
 ```bash
 {
@@ -704,14 +704,14 @@ resource "aws_iam_role" "ecs_task" {
 }
 ```
 
-Lambda実行ロールに信頼ポリシーアタッチする．
+Lambda実行ロールに信頼ポリシーアタッチする。
 
 ```elixir
 ###############################################
 # IAM Role For Lambda@Edge
 ###############################################
 
-# ロールに信頼ポリシーをアタッチします．
+# ロールに信頼ポリシーをアタッチします。
 resource "aws_iam_role" "lambda_execute" {
   name = "prd-foo-lambda-execute-role"
   assume_role_policy = templatefile(
@@ -725,11 +725,11 @@ resource "aws_iam_role" "lambda_execute" {
 
 ### インラインポリシーを持つロール
 
-事前に，tpl形式のインラインポリシーを定義しておく．```aws_iam_role_policy```リソースを使用して，インラインポリシーを構築すると同時に，これにインラインポリシーをアタッチする．
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、インラインポリシーを構築すると同時に、これにインラインポリシーをアタッチする。
 
 **＊実装例＊**
 
-事前に，ECSタスクに必要最低限の権限を与えるインラインポリシーを定義する．
+事前に、ECSタスクに必要最低限の権限を与えるインラインポリシーを定義する。
 
 ```bash
 {
@@ -746,7 +746,7 @@ resource "aws_iam_role" "lambda_execute" {
 }
 ```
 
-ECSタスクロールとECSタスク実行ロールにインラインポリシーアタッチする．
+ECSタスクロールとECSタスク実行ロールにインラインポリシーアタッチする。
 
 ```elixir
 ###############################################
@@ -766,7 +766,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 ### AWS管理ポリシーを持つロール
 
-事前に，tpl形式のAWS管理ポリシーを定義しておく．```aws_iam_role_policy_attachment```リソースを使用して，実インフラにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする．ポリシーのARNは，AWSのコンソール画面を確認する．
+事前に、tpl形式のAWS管理ポリシーを定義しておく。```aws_iam_role_policy_attachment```リソースを使用して、実インフラにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする。ポリシーのARNは、AWSのコンソール画面を確認する。
 
 **＊実装例＊**
 
@@ -784,11 +784,11 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に，tpl形式のインラインポリシーを定義しておく．```aws_iam_role_policy```リソースを使用して，カスタマー管理ポリシーを構築する．```aws_iam_role_policy_attachment```リソースを使用して，カスタマー管理ポリシーを構築済みのIAMロールにアタッチする．
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、カスタマー管理ポリシーを構築する。```aws_iam_role_policy_attachment```リソースを使用して、カスタマー管理ポリシーを構築済みのIAMロールにアタッチする。
 
 **＊実装例＊**
 
-事前に，ECSタスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する．
+事前に、ECSタスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。
 
 ```bash
 {
@@ -808,7 +808,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 }
 ```
 
-ECSタスクロールにカスタマー管理ポリシーアタッチする．
+ECSタスクロールにカスタマー管理ポリシーアタッチする。
 
 ```elixir
 ###############################################
@@ -833,11 +833,11 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 ### サービスリンクロール
 
-サービスリンクロールは，AWSリソースの構築時に自動的に作成され，アタッチされる．そのため，Terraformの管理外である．```aws_iam_service_linked_role```リソースを使用して，手動で構築することが可能であるが，数が多く実装の負担にもなるため，あえて管理外としても問題ない．
+サービスリンクロールは、AWSリソースの構築時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で構築することが可能であるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
 
 **＊実装例＊**
 
-サービス名を指定して，Application Auto Scalingのサービスリンクロールを構築する．
+サービス名を指定して、Application Auto Scalingのサービスリンクロールを構築する。
 
 ```elixir
 ###############################################
@@ -858,7 +858,7 @@ output "ecs_service_auto_scaling_iam_service_linked_role_arn" {
 }
 ```
 
-Application Auto Scalingにサービスリンクロールをアタッチする．手動で設定することも可能であるが，Terraformの管理外で自動的にアタッチされるため，あえて妥協しても良い．
+Application Auto Scalingにサービスリンクロールをアタッチする。手動で設定することも可能であるが、Terraformの管理外で自動的にアタッチされるため、あえて妥協しても良い。
 
 ```elixir
 #########################################
@@ -871,7 +871,7 @@ resource "aws_appautoscaling_target" "ecs" {
   max_capacity       = 4
   min_capacity       = 2
   
-  # この設定がなくとも，サービスリンクロールが自動的に構築され，AutoScalingにアタッチされる．
+  # この設定がなくとも、サービスリンクロールが自動的に構築され、AutoScalingにアタッチされる。
   role_arn           = var.ecs_service_auto_scaling_iam_service_linked_role_arn
 }
 ```
@@ -919,13 +919,13 @@ resource "aws_lb_target_group" "this" {
 
 ### （１）NLBはスロースタートに非対応
 
-NLBに紐付くターゲットグループはスロースタートに非対応のため，これを明示的に無効化する必要がある．
+NLBに紐付くターゲットグループはスロースタートに非対応のため、これを明示的に無効化する必要がある。
 
 <br>
 
 ### （２）NLBヘルスチェックには設定可能な項目が少ない
 
-ターゲットグループの転送プロトコルがTCPの場合は，設定できないヘルスチェックオプションがいくつかある．ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ，パスを設定できる．
+ターゲットグループの転送プロトコルがTCPの場合は、設定できないヘルスチェックオプションがいくつかある。ヘルスチェックプロトコルがHTTPまたはHTTPSの時のみ、パスを設定できる。
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
@@ -933,22 +933,22 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 ### （３）NLBスティッキーネスは明示的に無効化
 
-スティッキネス機能を無効化する場合，AWSプロバイダーのアップグレード時に問題が起こらないように，このブロックを実装しないようにする．リンク先のNOTE文を参考にせよ．
+スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。リンク先のNOTE文を参考にせよ。
 
 参考：https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
 
 <br>
 
-### （※）ターゲットグループの削除時にリスナーを先に削除できない．
+### （※）ターゲットグループの削除時にリスナーを先に削除できない。
 
-LBリスナーがターゲットグループに依存しているが，Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため，以下のようなエラーが発生する．
+LBリスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため、以下のようなエラーが発生する。
 
 ```bash
 Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbalancing:ap-northeast-1:123456789:targetgroup/xxxxx-tg/xxxxx' is currently in use by a listener or a rule
 	status code: 400, request id: xxxxx
 ```
 
-このエラーが発生した場合，コンソール画面上でLBリスナーを削除したうえで，もう一度applyする．
+このエラーが発生した場合、コンソール画面上でLBリスナーを削除したうえで、もう一度applyする。
 
 参考：https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
 
@@ -969,7 +969,7 @@ resource "aws_rds_cluster" "this" {
   engine_version                  = "5.7.mysql_aurora.2.08.3"
   cluster_identifier              = "prd-foo-rds-cluster"
   
-  # 後述の説明を参考にせよ．（１）
+  # 後述の説明を参考にせよ。（１）
   master_username                 = var.rds_db_master_username_ssm_parameter_value
   master_password                 = var.rds_db_master_password_ssm_parameter_value
   port                            = var.rds_db_port_ssm_parameter_value
@@ -987,17 +987,17 @@ resource "aws_rds_cluster" "this" {
   enabled_cloudwatch_logs_exports = ["audit", "error", "general", "slowquery"]
   preferred_maintenance_window    = "sun:01:00-sun:01:30"
   
-  # 後述の説明を参考にせよ．（２）
+  # 後述の説明を参考にせよ。（２）
   apply_immediately = true
 
-  # 後述の説明を参考にせよ．（３）
+  # 後述の説明を参考にせよ。（３）
   availability_zones = ["${var.region}${var.vpc_availability_zones.a}", "${var.region}${var.vpc_availability_zones.c}"]
 
   deletion_protection = true
 
   lifecycle {
     ignore_changes = [
-      # 後述の説明を参考にせよ．（４）
+      # 後述の説明を参考にせよ。（４）
       availability_zones
     ]
   }
@@ -1022,7 +1022,7 @@ resource "aws_rds_cluster_instance" "this" {
   preferred_maintenance_window = "sun:01:00-sun:01:30"
   apply_immediately            = true
 
-  # 後述の説明を参考にせよ．（５）
+  # 後述の説明を参考にせよ。（５）
   # preferred_backup_window
 }
 ```
@@ -1031,19 +1031,19 @@ resource "aws_rds_cluster_instance" "this" {
 
 ### （１）SSMパラメータストア
 
-Terraformに値をハードコーディングしたくない場合は，SSMパラメータストアで値を管理し，これをデータリソースで取得するようにする．
+Terraformに値をハードコーディングしたくない場合は、SSMパラメータストアで値を管理し、これをデータリソースで取得するようにする。
 
 <br>
 
 ### （２）メンテナンスウインドウ時に変更適用
 
-メンテナンスウインドウ時の変更適用をTerraformで行う場合，一段階目に```apply_immediately```オプションを```false```に変更してapplyし，二段階目に修正をapplyする．
+メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に```apply_immediately```オプションを```false```に変更してapplyし、二段階目に修正をapplyする。
 
 <br>
 
 ### （３）クラスターにはAZが３つ必要
 
-クラスターでは，レプリケーションのために，３つのAZが必要である．そのため，指定したAZが２つであっても，コンソール画面上で３つのAZが自動的に設定される．Terraformがこれを認識しないように，```ignore_changes```でAZを指定しておく必要がある．
+クラスターでは、レプリケーションのために、３つのAZが必要である。そのため、指定したAZが２つであっても、コンソール画面上で３つのAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```でAZを指定しておく必要がある。
 
 参考：
 
@@ -1054,13 +1054,13 @@ Terraformに値をハードコーディングしたくない場合は，SSMパ�
 
 ### （４）インスタンスを配置するAZは選べない
 
-事前にインスタンスにAZを表す識別子を入れたとしても，Terraformはインスタンスを配置するAZを選べない．そのため，AZと識別子の関係が逆になってしまうことがある．多くの場合， Cゾーンのインスタンスが最初に構築されるため，インスタンスのゾーン名と配置されるA/Cゾーンが逆になる．その場合は，デプロイ後に手動で名前を変更すればよい．この変更は，Terraformが差分として認識しないので問題ない．
+事前にインスタンスにAZを表す識別子を入れたとしても、Terraformはインスタンスを配置するAZを選べない。そのため、AZと識別子の関係が逆になってしまうことがある。多くの場合、 Cゾーンのインスタンスが最初に構築されるため、インスタンスのゾーン名と配置されるA/Cゾーンが逆になる。その場合は、デプロイ後に手動で名前を変更すればよい。この変更は、Terraformが差分として認識しないので問題ない。
 
 <br>
 
 ### （５）インスタンスにバックアップウインドウは設定しない
 
-クラスターとインスタンスの両方に，```preferred_backup_window```を設定できるが，RDSインスタンスに設定してはいけない．
+クラスターとインスタンスの両方に、```preferred_backup_window```を設定できるが、RDSインスタンスに設定してはいけない。
 
 <br>
 
@@ -1097,7 +1097,7 @@ resource "aws_route53_record" "foo" {
 
 ### メインルートテーブルは自動構築
 
-Terraformを用いてVPCを構築した時，メインルートテーブルが自動的に構築される．そのため，これはTerraformの管理外である．
+Terraformを用いてVPCを構築した時、メインルートテーブルが自動的に構築される。そのため、これはTerraformの管理外である。
 
 <br>
 
@@ -1105,13 +1105,13 @@ Terraformを用いてVPCを構築した時，メインルートテーブルが�
 
 ### バケットポリシー
 
-S3アタッチされる，自身へのアクセスを制御するためにインラインポリシーのこと．定義したバケットポリシーは，```aws_s3_bucket_policy```でロールにアタッチできる．
+S3アタッチされる、自身へのアクセスを制御するためにインラインポリシーのこと。定義したバケットポリシーは、```aws_s3_bucket_policy```でロールにアタッチできる。
 
 <br>
 
 ### ALBアクセスログ
 
-ALBがバケットにログを書き込めるように，『ELBのサービスアカウントID』を許可する必要がある．
+ALBがバケットにログを書き込めるように、『ELBのサービスアカウントID』を許可する必要がある。
 
 **＊実装例＊**
 
@@ -1120,7 +1120,7 @@ ALBがバケットにログを書き込めるように，『ELBのサービス�
 # S3 bucket policy
 ###############################################
 
-# S3にバケットポリシーをアタッチします．
+# S3にバケットポリシーをアタッチします。
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id
   policy = templatefile(
@@ -1130,7 +1130,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-ALBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい．東京リージョンのELBサービスアカウントIDは，『582318560864』である．
+ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい。東京リージョンのELBサービスアカウントIDは、『582318560864』である。
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
 
@@ -1154,7 +1154,7 @@ ALBのアクセスログを送信するバケット内には，自動的に『/A
 
 ### NLBアクセスログ
 
-ALBがバケットにログを書き込めるように，『```delivery.logs.amazonaws.com```』からのアクセスを許可する必要がある．
+ALBがバケットにログを書き込めるように、『```delivery.logs.amazonaws.com```』からのアクセスを許可する必要がある。
 
 **＊実装例＊**
 
@@ -1163,7 +1163,7 @@ ALBがバケットにログを書き込めるように，『```delivery.logs.ama
 # S3 bucket policy
 ###############################################
 
-# S3にバケットポリシーをアタッチします．
+# S3にバケットポリシーをアタッチします。
 resource "aws_s3_bucket_policy" "nlb" {
   bucket = aws_s3_bucket.nlb_logs.id
   policy = templatefile(
@@ -1173,7 +1173,7 @@ resource "aws_s3_bucket_policy" "nlb" {
 }
 ```
 
-NLBのアクセスログを送信するバケット内には，自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される．そのため，『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として，『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい．
+NLBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<アカウントID>』の名前でディレクトリが生成される。そのため、『```arn:aws:s3:::<バケット名>/*```』の部分を最小権限として、『```arn:aws:s3:::<バケット名>/AWSLogs/<アカウントID>/;*```』にしてもよい。
 
 ```bash
 {
@@ -1214,7 +1214,7 @@ NLBのアクセスログを送信するバケット内には，自動的に『/A
 
 **＊実装例＊**
 
-API Gateway用のWAFに，特定のユーザエージェントを拒否するルールを設定する．
+API Gateway用のWAFに、特定のユーザエージェントを拒否するルールを設定する。
 
 ```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
@@ -1226,11 +1226,11 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     statement {
 
       regex_pattern_set_reference_statement {
-        # 別ディレクトリのmain.tfファイルに分割した正規表現パターンセットを参照する．      
+        # 別ディレクトリのmain.tfファイルに分割した正規表現パターンセットを参照する。      
         arn = var.wafv2_regex_pattern_set_regional_block_user_agents_arn
 
         field_to_match {
-          # ヘッダーを検証する．
+          # ヘッダーを検証する。
           single_header {
             name = "user-agent"
           }
@@ -1271,7 +1271,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 **＊実装例＊**
 
-API Gateway用のWAFに，特定のグローバルIPアドレスを拒否するルールを設定する．
+API Gateway用のWAFに、特定のグローバルIPアドレスを拒否するルールを設定する。
 
 ```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
@@ -1283,7 +1283,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
     statement {
 
       ip_set_reference_statement {
-        # 別ディレクトリのmain.tfファイルに分割したIPアドレスセットを参照する．
+        # 別ディレクトリのmain.tfファイルに分割したIPアドレスセットを参照する。
         arn = var.waf_blocked_global_ip_addresses
       }
     }
@@ -1317,7 +1317,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 **＊実装例＊**
 
-API Gateway用のWAFに，SQLインジェクションを拒否するマネージドルールを設定する．
+API Gateway用のWAFに、SQLインジェクションを拒否するマネージドルールを設定する。
 
 ```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
@@ -1328,7 +1328,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
     statement {
 
-      # マネージドルールを使用する．
+      # マネージドルールを使用する。
       managed_rule_group_statement {
         vendor_name = "AWS"
         name        = "AWSManagedRulesSQLiRuleSet"
@@ -1363,12 +1363,12 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 **＊実装例＊**
 
-ALB用のWAFに，APIキーまたはBearerトークンをOR条件ルールを設定する．あくまで例としてで，本来であれば，別々のルールとした方が良い．
+ALB用のWAFに、APIキーまたはBearerトークンをOR条件ルールを設定する。あくまで例としてで、本来であれば、別々のルールとした方が良い。
 
 ```elixir
 resource "aws_wafv2_web_acl" "api_gateway" {
 
-  # x-api-keyヘッダーにAPIキーを含むリクエストを許可します．
+  # x-api-keyヘッダーにAPIキーを含むリクエストを許可します。
   rule {
     name     = "allow-request-including-api-key"
     priority = 3
@@ -1377,7 +1377,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
       or_statement {
 
-        # APIキーを持つのリクエストを許可します．
+        # APIキーを持つのリクエストを許可します。
         statement {
 
           byte_match_statement {
@@ -1398,7 +1398,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
           }
         }
 
-        # Bearerトークンを持つリクエストを許可します．        
+        # Bearerトークンを持つリクエストを許可します。        
         statement {
 
           byte_match_statement {
@@ -1441,12 +1441,12 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 ### IPセットの依存関係
 
-WAFのIPセットと他設定の依存関係に癖がある．新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする．もし同時に行った場合，Terraformは古いIPセットの削除処理を先に実行するが，これはWAFに紐付いているため，ここでエラーが起こってしまう．そのため，IPセットを新しく設定し直す場合は，以下の通り二つの段階に分けてデプロイするようにする．ちなみに，IPセットの名前を変更する場合は，更新処理ではなく削除を伴う再構築処理が実行されるため注意する．
+WAFのIPセットと他設定の依存関係に癖がある。新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする。もし同時に行った場合、Terraformは古いIPセットの削除処理を先に実行するが、これはWAFに紐付いているため、ここでエラーが起こってしまう。そのため、IPセットを新しく設定し直す場合は、以下の通り二つの段階に分けてデプロイするようにする。ちなみに、IPセットの名前を変更する場合は、更新処理ではなく削除を伴う再構築処理が実行されるため注意する。
 
-1. 新しいIPセットのresourceを実装し，ACLに紐付け，デプロイする．
-2. 古いIPセットのresourceを削除し，デプロイする．
+1. 新しいIPセットのresourceを実装し、ACLに紐付け、デプロイする。
+2. 古いIPセットのresourceを削除し、デプロイする。
 
-もし，これを忘れてしまった場合は，画面上で適当なIPセットに付け換えて，削除処理を実行できるようにする．
+もし、これを忘れてしまった場合は、画面上で適当なIPセットに付け換えて、削除処理を実行できるようにする。
 
 <br>
 
@@ -1454,33 +1454,33 @@ WAFのIPセットと他設定の依存関係に癖がある．新しいIPセッ�
 
 ### Terraform管理外のAWSリソース
 
-以下のAWSリソースはTerraformで管理しない方が便利である．また，AWSの仕様上の理由で，管理外になってしまうものもある．Terraformの管理外のリソースには，コンソール画面上から，「```Not managed by = Terraform```」というタグをつけた方が良い．
+以下のAWSリソースはTerraformで管理しない方が便利である。また、AWSの仕様上の理由で、管理外になってしまうものもある。Terraformの管理外のリソースには、コンソール画面上から、「```Not managed by = Terraform```」というタグをつけた方が良い。
 
 | AWSリソース                  | 管理外の部分                                     | 管理外の理由                                                 |
 | ---------------------------- | ------------------------------------------------ | ------------------------------------------------------------ |
-| API Gateway，紐付くVPCリンク | 全て                                             | バックエンドチームがスムーズにAPIを構築できるようにするため． |
-| Chatbot                      | 全て                                             | AWSがAPIを公開していないため，Terraformで構築できない．      |
-| EC2                          | 秘密鍵                                           | Terraformで構築する時にGitHubで秘密鍵を管理する必要があるため，セキュリティ上の理由で却下する． |
-| Global Accelerator           | セキュリティグループ                             | リソースを構築するとセキュリティグループが自動生成されるため，セキュリティグループのみTerraformで管理できない． |
+| API Gateway、紐付くVPCリンク | 全て                                             | バックエンドチームがスムーズにAPIを構築できるようにするため。 |
+| Chatbot                      | 全て                                             | AWSがAPIを公開していないため、Terraformで構築できない。      |
+| EC2                          | 秘密鍵                                           | Terraformで構築する時にGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。 |
+| Global Accelerator           | セキュリティグループ                             | リソースを構築するとセキュリティグループが自動生成されるため、セキュリティグループのみTerraformで管理できない。 |
 | IAMユーザ                    | 全て                                             |                                                              |
 | IAMユーザグループ            | 全て                                             |                                                              |
-| IAMロール                    | ・ユーザに紐付くロール<br>・サービスリンクロール | サービスリンクロールは，AWSリソースの構築に伴って，自動的に作られるため，Terraformで管理できない．ただし，数が多いためあえて行わないが，Terraformで構築してAWSリソースに紐付けることもことも可能である． |
-| Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って，自動的に構築されるため，Terraformで管理できない． |
-| RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために，mysql providerという機能を使用する必要がある．しかし，使用する上でディレクトリ構成戦略と相性が悪い． |
-| Route53                      | ネームサーバーレコード                           | ホストゾーンを作成すると，レコードとして，ネームサーバレコードの情報が自動的に設定される．これは，Terraformの管理外である． |
-| S3                           | tfstateの管理バケット                            | tfstateファイルを格納するため，Terraformのデプロイより先に存在している必要がある． |
-| SSMパラメータストア          | 全て                                             | ECSに機密な環境変数を出力するため．                          |
+| IAMロール                    | ・ユーザに紐付くロール<br>・サービスリンクロール | サービスリンクロールは、AWSリソースの構築に伴って、自動的に作られるため、Terraformで管理できない。ただし、数が多いためあえて行わないが、Terraformで構築してAWSリソースに紐付けることもことも可能である。 |
+| Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って、自動的に構築されるため、Terraformで管理できない。 |
+| RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために、mysql providerという機能を使用する必要がある。しかし、使用する上でディレクトリ構成戦略と相性が悪い。 |
+| Route53                      | ネームサーバーレコード                           | ホストゾーンを作成すると、レコードとして、ネームサーバレコードの情報が自動的に設定される。これは、Terraformの管理外である。 |
+| S3                           | tfstateの管理バケット                            | tfstateファイルを格納するため、Terraformのデプロイより先に存在している必要がある。 |
+| SSMパラメータストア          | 全て                                             | ECSに機密な環境変数を出力するため。                          |
 
 <br>
 
 ### 削除保護機能のあるAWSリソース
 
-削除保護設定のあるAWSリソースに癖がある．削除保護の無効化とリソースを削除を同時にデプロイしないようにする．もし同時に行った場合，削除処理を先に実行するが，削除は保護されたままなので，エラーになる．エラーになる．そのため，このAWSリソースを削除する時は，以下の通り二つの段階に分けてデプロイするようにする．
+削除保護設定のあるAWSリソースに癖がある。削除保護の無効化とリソースを削除を同時にデプロイしないようにする。もし同時に行った場合、削除処理を先に実行するが、削除は保護されたままなので、エラーになる。エラーになる。そのため、このAWSリソースを削除する時は、以下の通り二つの段階に分けてデプロイするようにする。
 
-1. 削除保護を無効化（`false`）に変更し，デプロイする．
-2. ソースコードを削除し，デプロイする．
+1. 削除保護を無効化（`false`）に変更し、デプロイする。
+2. ソースコードを削除し、デプロイする。
 
-もし，これを忘れてしまった場合は，画面上で削除処理を無効化し，削除処理を実行できるようにする．
+もし、これを忘れてしまった場合は、画面上で削除処理を無効化し、削除処理を実行できるようにする。
 
 | AWSリソース名 | Terraform上での設定名            |
 | ------------- | -------------------------------- |

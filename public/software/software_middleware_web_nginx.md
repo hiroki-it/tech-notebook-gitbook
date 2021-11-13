@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -44,7 +44,7 @@ $ sudo systemctl reload nginx
 
 #### ・読み込まれた設定ファイルと設定値の一覧
 
-読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容を展開して表示する．
+読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容を展開して表示する。
 
 ```bash
 $ sudo nginx -T
@@ -60,7 +60,7 @@ $ sudo nginx -T
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
-静的ファイルのリクエストが送信されてきた場合，Nginxはそのままレスポンスを返信する．動的ファイルのリクエストが送信されてきた場合，Nginxは，FastCGIプロトコルを介して，PHP-FPMにリクエストをリダイレクトする．
+静的ファイルのリクエストが送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのリクエストが送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにリクエストをリダイレクトする。
 
  ```bash
 # 設定ファイルのバリデーション
@@ -87,13 +87,13 @@ server {
     }
     
     #--------------------------------------------------
-    # FastCGIを用いたAppサーバ／コンテナへの転送，受信
-    # OSによって，fastcgi_paramsファイルの必要な設定が異なる
+    # FastCGIを用いたAppサーバ／コンテナへの転送、受信
+    # OSによって、fastcgi_paramsファイルの必要な設定が異なる
     #--------------------------------------------------
     location ~ \.php$ {
         # リダイレクト先のTCPソケット
         fastcgi_pass   127.0.0.1:9000;
-        # もしくは，Unixソケット
+        # もしくは、Unixソケット
         # fastcgi_pass unix:/run/php-fpm/www.sock;
         
         # リダイレクト先のURL（rootディレクティブ値+パスパラメータ）
@@ -107,7 +107,7 @@ server {
 
 #### ・```/etc/nginx/fastcgi_params```ファイル
 
-アプリケーションで使用できる変数を定義する．```nginx.conf```ファイルによって読み込まれる．OSやそのバージョンによっては，変数のデフォルト値が書き換えられていることがある．実際にサーバ／コンテナ内に接続し，上書き設定が必要なものと不要なものを判断する必要がある．以下は，Debian 10のデフォルト値である．
+アプリケーションで使用できる変数を定義する。```nginx.conf```ファイルによって読み込まれる。OSやそのバージョンによっては、変数のデフォルト値が書き換えられていることがある。実際にサーバ／コンテナ内に接続し、上書き設定が必要なものと不要なものを判断する必要がある。以下は、Debian 10のデフォルト値である。
 
 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
@@ -115,7 +115,7 @@ server {
 
 ```nginx
 #-------------------------------------------------------
-# OSによって，fastcgi_paramsファイルの必要な設定が異なる
+# OSによって、fastcgi_paramsファイルの必要な設定が異なる
 #-------------------------------------------------------
 fastcgi_param  QUERY_STRING       $query_string;
 fastcgi_param  REQUEST_METHOD     $request_method;
@@ -147,7 +147,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 ### ロードバランサ－のミドルウェアとして
 
-HTTPプロトコルで受信したリクエストを，HTTPSプロトコルに変換して転送する．
+HTTPプロトコルで受信したリクエストを、HTTPSプロトコルに変換して転送する。
 
 **＊実装例＊**
 
@@ -191,7 +191,7 @@ server {
 
 ### リバースProxyのミドルウェアとして
 
-前提として，ロードバランサ－から転送されたHTTPリクエストを受信するとする．静的コンテンツのリクエストは，リバースProxy（Nginx）でレスポンスを返信する．Webサーバは，必ずリバースProxyを経由して，動的リクエストを受信する．
+前提として、ロードバランサ－から転送されたHTTPリクエストを受信するとする。静的コンテンツのリクエストは、リバースProxy（Nginx）でレスポンスを返信する。Webサーバは、必ずリバースProxyを経由して、動的リクエストを受信する。
 
 **＊実装例＊**
 
@@ -245,7 +245,7 @@ events {
 
 #### ・```user```
 
-本設定ファイルの実行ユーザとグループを設定する．グループ名を入力しなかった場合，ユーザ名と同じものが自動的に設定される．
+本設定ファイルの実行ユーザとグループを設定する。グループ名を入力しなかった場合、ユーザ名と同じものが自動的に設定される。
 
 ```nginx
 user  www www;
@@ -259,7 +259,7 @@ error_log  logs/error.log;
 
 #### ・```include```
 
-共通化された設定ファイルを読み込む．アスタリスクによるワイルドカードに対応している．
+共通化された設定ファイルを読み込む。アスタリスクによるワイルドカードに対応している。
 
 ```nginx
 include /etc/nginx/conf.d/*.conf;
@@ -273,7 +273,7 @@ pid  logs/nginx.pid;
 
 #### ・```worker_connections```
 
-workerプロセスが同時に処理可能なコネクションの最大数を設定する．
+workerプロセスが同時に処理可能なコネクションの最大数を設定する。
 
 参考：https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
@@ -299,7 +299,7 @@ worker_rlimit_nofile  8192;
 
 #### ・```/etc/nginx/conf.d/*.conf```ファイル
 
-デフォルトの設定が定義されているいくつかのファイル．基本的には読み込むようにする．ただし，nginx.confファイルの設定が上書きされてしまわないかを注意する．
+デフォルトの設定が定義されているいくつかのファイル。基本的には読み込むようにする。ただし、nginx.confファイルの設定が上書きされてしまわないかを注意する。
 
 ```nginx
 include /etc/nginx/conf.d/*.conf;
@@ -307,7 +307,7 @@ include /etc/nginx/conf.d/*.conf;
 
 #### ・```/etc/nginx/mime.types```ファイル
 
-リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル．
+リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
 
 ```nginx
 include /etc/nginx/mime.types;
@@ -315,13 +315,13 @@ include /etc/nginx/mime.types;
 
 #### ・```/usr/share/nginx/modules/*.conf```ファイル
 
-モジュールの読み込み処理が定義されているファイル．
+モジュールの読み込み処理が定義されているファイル。
 
 ```nginx
 include  /usr/share/nginx/modules/*.conf;
 ```
 
-例えば，```mod-http-image-filter.conf```ファイルの内容は以下の通り．
+例えば、```mod-http-image-filter.conf```ファイルの内容は以下の通り。
 
 ```nginx
 load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
@@ -335,7 +335,7 @@ load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
 
 #### ・```http```
 
-全てのWebサーバに共通する処理を設定する．
+全てのWebサーバに共通する処理を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
@@ -369,13 +369,13 @@ http {
 
 #### ・```location```
 
-個別のWebサーバ／コンテナにおける特定のURLの処理を設定する．
+個別のWebサーバ／コンテナにおける特定のURLの処理を設定する。
 
 https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
 **＊実装例＊**
 
-各設定の優先順位に沿った以下の順番で実装した方が良い．
+各設定の優先順位に沿った以下の順番で実装した方が良い。
 
 ```nginx
 # 1. ドキュメントルートを指定したリクエストの場合
@@ -388,8 +388,8 @@ location ^~ /images/ {
 
 }
 
-# 3と4. 末尾が、『gif，jpg，jpegの形式』 のリクエストの場合
-# バックスラッシュでドットをエスケープし，任意の文字ではなく『ドット文字』として認識できるようにする．
+# 3と4. 末尾が、『gif、jpg、jpegの形式』 のリクエストの場合
+# バックスラッシュでドットをエスケープし、任意の文字ではなく『ドット文字』として認識できるようにする。
 location ~* \.(gif|jpg|jpeg)$ {
 
 }
@@ -405,19 +405,19 @@ location / {
 }
 ```
 
-ルートの一致条件は，以下の通りである．
+ルートの一致条件は、以下の通りである。
 
 | 優先順位 | prefix | ルートの一致条件                         | ルート例                                               |
 | :------: | :----: | ---------------------------------------- | ------------------------------------------------------------ |
-|    1     |   =    | 指定したルートに一致する場合．           | ```http://example.com/```                                    |
-|    2     |   ^~   | 指定したルートで始まる場合．             | ```http://example.com/images/foo.gif```                      |
-|    3     |   ~    | 正規表現（大文字・小文字を区別する）．   | ```http://example.com/images/FOO.jpg```                      |
-|    4     |   ~*   | 正規表現（大文字・小文字を区別しない）． | ```http://example.com/images/foo.jpg```                      |
-|    5     |  なし  | 指定したルートで始まる場合．             | ・```http://example.com/foo.html```<br>・```http://example.com/docs/foo.html``` |
+|    1     |   =    | 指定したルートに一致する場合。           | ```http://example.com/```                                    |
+|    2     |   ^~   | 指定したルートで始まる場合。             | ```http://example.com/images/foo.gif```                      |
+|    3     |   ~    | 正規表現（大文字・小文字を区別する）。   | ```http://example.com/images/FOO.jpg```                      |
+|    4     |   ~*   | 正規表現（大文字・小文字を区別しない）。 | ```http://example.com/images/foo.jpg```                      |
+|    5     |  なし  | 指定したルートで始まる場合。             | ・```http://example.com/foo.html```<br>・```http://example.com/docs/foo.html``` |
 
 #### ・```server```
 
-個別のWebサーバ／コンテナの処理を設定する．
+個別のWebサーバ／コンテナの処理を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
@@ -446,7 +446,7 @@ server {
 
 #### ・リダイレクトとリライトの違い
 
-以下のリンク先を参考にせよ．
+以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
@@ -456,7 +456,7 @@ server {
 
 #### ・```default_type```
 
-Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであった場合に適用するMIME typeを設定する．
+Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
 
@@ -469,7 +469,7 @@ default_type application/octet-stream
 
 #### ・```listen```
 
-HTTPリクエストを80番ポートでリクエストを受信する．
+HTTPリクエストを80番ポートでリクエストを受信する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
@@ -479,7 +479,7 @@ HTTPリクエストを80番ポートでリクエストを受信する．
 listen 80;
 ```
 
-HTTPSリクエストを443番ポートでリクエストを受信する．
+HTTPSリクエストを443番ポートでリクエストを受信する。
 
 **＊実装例＊**
 
@@ -489,7 +489,7 @@ listen 443 ssl;
 
 #### ・```sendfile```
 
-クライアントへのレスポンス時に，ファイル送信のためにLinuxのsendfileシステムコールを使用するかどうかを設定する．ファイル返信処理をOS内で行うため，処理が速くなる．使用しない場合，Nginxがレスポンス時に自身でファイル返信処理を行う．
+クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
@@ -501,7 +501,7 @@ sendfile on;
 
 #### ・```server_name```
 
-パブリックIPアドレスに紐付くドメイン名を設定する．
+パブリックIPアドレスに紐付くドメイン名を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
@@ -509,7 +509,7 @@ sendfile on;
 server_name example.com;
 ```
 
-パブリックIPアドレスを直接記述してもよい．
+パブリックIPアドレスを直接記述してもよい。
 
 ```nginx
 server_name 192.168.0.0;
@@ -517,7 +517,7 @@ server_name 192.168.0.0;
 
 #### ・```ssl```
 
-NginxでHTTPSプロトコルを受信する場合，sslプロトコルを有効にする必要がある．
+NginxでHTTPSプロトコルを受信する場合、sslプロトコルを有効にする必要がある。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
@@ -529,7 +529,7 @@ ssl on;
 
 #### ・```ssl_certificate```
 
-PEM証明書のパスを設定する．
+PEM証明書のパスを設定する。
 
 **＊実装例＊**
 
@@ -539,7 +539,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ・```ssl_certificate_key```
 
-PEM秘密鍵のパスを設定する．
+PEM秘密鍵のパスを設定する。
 
 **＊実装例＊**
 
@@ -549,7 +549,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 
 #### ・```tcp_nopush```
 
-上述のLinuxの```sendfile```システムコールを使用する場合に，適用できる．クライアントへのレスポンス時，ヘッダーとファイルを，一つのパケットにまとめて返信するかどうかを設定する．
+上述のLinuxの```sendfile```システムコールを使用する場合に、適用できる。クライアントへのレスポンス時、ヘッダーとファイルを、一つのパケットにまとめて返信するかどうかを設定する。
 
 **＊実装例＊**
 
@@ -559,7 +559,7 @@ tcp_nopush on;
 
 #### ・```try_files```
 
-指定されたパスのファイルを順に探してアクセスする．また，最後のパラメータで内部リダイレクトする．最後のパラメータでは，異なるパスまたはステータスコードを指定できる．もし，nginxとアプリケーションを別々のサーバ／コンテナで稼働させている場合，```try_files```ディレクティブがファイル探索の対象とする場所は，あくまでnginxの稼働するサーバ／コンテナ内になることに注意する．内部リダイレクトによって，nginx内でリクエストが再処理される．異なるパスに内部リダイレクトしていた場合は，パスに合ったlocationブロックで改めて処理される．内部リダイレクトは，URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する．
+指定されたパスのファイルを順に探してアクセスする。また、最後のパラメータで内部リダイレクトする。最後のパラメータでは、異なるパスまたはステータスコードを指定できる。もし、nginxとアプリケーションを別々のサーバ／コンテナで稼働させている場合、```try_files```ディレクティブがファイル探索の対象とする場所は、あくまでnginxの稼働するサーバ／コンテナ内になることに注意する。内部リダイレクトによって、nginx内でリクエストが再処理される。異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックで改めて処理される。内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
 
@@ -585,9 +585,9 @@ location / {
     try_files $uri $uri/ /index.php?query_string;
 }
 
-# 内部リダイレクト後は，『/index.php?foo=bar』のため，以下で処理される．
+# 内部リダイレクト後は、『/index.php?foo=bar』のため、以下で処理される。
 location ~ \.php$ {
-    # php-fpmに転送される．
+    # php-fpmに転送される。
     fastcgi_pass  127.0.0.1:9000;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include       fastcgi_params;
@@ -600,7 +600,7 @@ location ~ \.php$ {
 
 #### ・nginxによるレスポンス
 
-Webサーバ／コンテナのみヘルスチェックを受信する．ヘルスチェック用の```server```ブロックで，```gif```ファイルのレスポンスを返信するように```location```ブロックを定義する．Nginxでアクセスログを出力する必要はないため，```location```ブロックでは```access_log```を無効化する．
+Webサーバ／コンテナのみヘルスチェックを受信する。ヘルスチェック用の```server```ブロックで、```gif```ファイルのレスポンスを返信するように```location```ブロックを定義する。Nginxでアクセスログを出力する必要はないため、```location```ブロックでは```access_log```を無効化する。
 
 **＊実装例＊**
 
@@ -621,7 +621,7 @@ server {
 
 #### ・アプリケーションによるレスポンス
 
-Webサーバ／コンテナとアプリケーションの両方でヘルスチェックを受信する．アプリケーション側に```200```ステータスのレスポンスを返信するエンドポイントを実装したうえで，ヘルスチェック用の```server```ブロックで，アプリケーションにルーティングするように```location```ブロックを定義する．Nginxでアクセスログを出力する必要はないため，```location```ブロックでは```access_log```を無効化する．
+Webサーバ／コンテナとアプリケーションの両方でヘルスチェックを受信する。アプリケーション側に```200```ステータスのレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の```server```ブロックで、アプリケーションにルーティングするように```location```ブロックを定義する。Nginxでアクセスログを出力する必要はないため、```location```ブロックでは```access_log```を無効化する。
 
 **＊実装例＊**
 
@@ -647,7 +647,7 @@ server {
 
 #### ・```index```
 
-リクエストのURLがトレイリングスラッシュで終わる全ての場合に，指定されたファイルをURLの末尾に追加する．
+リクエストのURLがトレイリングスラッシュで終わる全ての場合に、指定されたファイルをURLの末尾に追加する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
 
@@ -665,7 +665,7 @@ index index.php;
 
 #### ・```add_header```
 
-レスポンスヘッダーを設定する．
+レスポンスヘッダーを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 
@@ -705,7 +705,7 @@ upstream big_server_com {
 
 #### ・```fastcgi_params```
 
-FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に，転送先で使用する変数とその値を設定する．
+FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先で使用する変数とその値を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
@@ -717,7 +717,7 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
 #### ・```fastcgi_pass```
 
-FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に，転送先のアドレスとポートを設定する．
+FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
@@ -735,7 +735,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 #### ・```proxy_pass```
 
-HTTPプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に，転送先のアドレスとポートを設定する．
+HTTPプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
