@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -14,13 +14,13 @@
 
 #### ・serverモードとは
 
-アプリケーションをSSRとして稼働させる。
+アプリケーションをSSRとして稼働させる．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ・```dev```
 
-ローカル環境として使用するため、アプリケーションをビルドし、Nodeサーバを起動する。Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
 ```bash
 $ nuxt dev
@@ -28,7 +28,7 @@ $ nuxt dev
 
 #### ・```build```
 
-本番環境として使用するため、Nodeサーバの起動前にアプリケーションのビルドを実行する。```dev```コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。これにより、JavaScriptとCSSはminifyされる。minifyにより、不要な改行やインデントが削除され、パッケージの読み込みURLはまとめられ、圧縮される。画像名はハッシュ化される。
+本番環境として使用するため，Nodeサーバの起動前にアプリケーションのビルドを実行する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
 ```bash
 $ nuxt build
@@ -36,7 +36,7 @@ $ nuxt build
 
 #### ・```start```
 
-本番環境として使用するため、ビルド完了後にNodeサーバを起動する。SSRモードのために使用する。
+本番環境として使用するため，ビルド完了後にNodeサーバを起動する．SSRモードのために使用する．
 
 ```bash
 $ nuxt start
@@ -48,13 +48,13 @@ $ nuxt start
 
 #### ・staticモードとは
 
-アプリケーションをSSGとして稼働させる。
+アプリケーションをSSGとして稼働させる．
 
 参考：https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
 #### ・```dev```
 
-ローカル環境として使用するため、アプリケーションをビルドし、Nodeサーバを起動する。Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+ローカル環境として使用するため，アプリケーションをビルドし，Nodeサーバを起動する．Webpackは使用されないため，静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない．
 
 ```bash
 $ nuxt dev
@@ -62,7 +62,7 @@ $ nuxt dev
 
 #### ・```build```
 
-Node.jsを使用してテストフレームワークを動かすために使用する。```dev```コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。これにより、JavaScriptとCSSはminifyされる。minifyにより、不要な改行やインデントが削除され、パッケージの読み込みURLはまとめられ、圧縮される。画像名はハッシュ化される。
+Node.jsを使用してテストフレームワークを動かすために使用する．```dev```コマンドとは異なり，ビルド時にWebpackによる最適化が実行される．これにより，JavaScriptとCSSはminifyされる．minifyにより，不要な改行やインデントが削除され，パッケージの読み込みURLはまとめられ，圧縮される．画像名はハッシュ化される．
 
 ```bash
 $ nuxt build
@@ -70,7 +70,7 @@ $ nuxt build
 
 #### ・```generate```
 
-JavaScriptから静的ファイルを生成する。ビルド時にバックエンドに接続し、データベースに格納したデータ（例：画像ファイルパス）を元に、静的ファイルをビルドすることも可能である。SSGモードのために使用する。
+JavaScriptから静的ファイルを生成する．ビルド時にバックエンドに接続し，データベースに格納したデータ（例：画像ファイルパス）を元に，静的ファイルをビルドすることも可能である．SSGモードのために使用する．
 
 ```bash
 $ nuxt generate
@@ -78,7 +78,7 @@ $ nuxt generate
 
 #### ・```start```
 
-静的ホスティングサイトを起動する。
+静的ホスティングサイトを起動する．
 
 ```bash
 $ nuxt start
@@ -88,7 +88,7 @@ $ nuxt start
 
 ### ビルド時のWebpackオプション
 
-serverモードとstaticモードにおいて、```build```コマンド時に使用されるWebpackの最適化方法を指定できる。`
+serverモードとstaticモードにおいて，```build```コマンド時に使用されるWebpackの最適化方法を指定できる．`
 
 https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
@@ -100,7 +100,7 @@ https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E
 
 #### ・```nuxt.config.js```ファイルとは
 
-Nuxtが標準で用意している設定をプロパティの設定値で上書きできる。各プロパティは以下のリンク先を参考にせよ。
+Nuxtが標準で用意している設定をプロパティの設定値で上書きできる．各プロパティは以下のリンク先を参考にせよ．
 
 参考：https://ja.nuxtjs.org/docs/2.x/directory-structure/nuxt-config#nuxtconfigjs
 
@@ -114,7 +114,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```.env```ファイルの読み込み
 
-あらかじめ、dotenvモジュールをインストールする。```process.env```から```.env```ファイルの変数を参照する。定数に代入する場合は、まとめて代入するとよい。
+あらかじめ，dotenvモジュールをインストールする．```process.env```から```.env```ファイルの変数を参照する．定数に代入する場合は，まとめて代入するとよい．
 
 参考：https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
 
@@ -123,9 +123,9 @@ $ npm install @nuxtjs/dotenv
 ```
 
 ```bash
-# APIのURL。サーバ上のJavaScriptからAPIへのリクエストで使用する。
+# APIのURL．サーバ上のJavaScriptからAPIへのリクエストで使用する．
 API_URL=https://example.co.jp/api
-# APIのURL。ブラウザ上のJavaScriptからAPIへのリクエストで使用する。
+# APIのURL．ブラウザ上のJavaScriptからAPIへのリクエストで使用する．
 API_URL_BROWSER=https://example.co.jp/api
 # APIのOauth認証の情報
 OAUTH_CLIENT_ID=
@@ -158,7 +158,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```hardSource```
 
-ビルド時のキャッシュを有効化する。ビルドの完了が早くなる。
+ビルド時のキャッシュを有効化する．ビルドの完了が早くなる．
 
 参考：https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#hardsource
 
@@ -175,7 +175,7 @@ const nuxtConfig: Configuration = {
 
 ####  ・```privateRuntimeConfig```
 
-SSRモードでのみ使用できる環境変数を定義する。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。ブラウザのJavaScriptソースタブで公開されてしまうため、機密な値は設定しないようにする。もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+SSRモードでのみ使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．ブラウザのJavaScriptソースタブで公開されてしまうため，機密な値は設定しないようにする．もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は，この値を上書きする．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -214,7 +214,7 @@ export function foo() {
 
 #### ・```publicRuntimeConfig```
 
-SPAモードまたはSSRモードで使用できる環境変数を定義する。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+SPAモードまたはSSRモードで使用できる環境変数を定義する．環境変数は，```pages```，```store```，```components```，```plugin```ディレクトリで使用できる．環境変数は，```context```オブジェクトの```config```変数から取得できる．
 
 参考：
 
@@ -253,7 +253,7 @@ export function foo() {
 
 #### ・```quiet```
 
-ビルド時にログを最小限にする。CICDツールでログが確認できなくなるため、無効化しておいた方が良い。
+ビルド時にログを最小限にする．CICDツールでログが確認できなくなるため，無効化しておいた方が良い．
 
 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 
@@ -270,7 +270,7 @@ const nuxtConfig: Configuration = {
 
 #### ・```serverMiddleware```
 
-リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を定義する。
+リクエストを受信できるエンドポイントと，紐付けるハンドラー関数を定義する．
 
 参考：https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
 
@@ -294,7 +294,7 @@ const nuxtConfig: Configuration = {
 
 ### ```dist：distribution```
 
-staticモードの```generate```コマンドの実行時に、アーティファクトが配置される。
+staticモードの```generate```コマンドの実行時に，アーティファクトが配置される．
 
 参考：https://nuxtjs.org/ja/docs/directory-structure/dist
 
