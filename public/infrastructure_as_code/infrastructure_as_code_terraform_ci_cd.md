@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -23,7 +23,7 @@
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} apply \
@@ -54,7 +54,7 @@ terraform fmt \
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} init \
@@ -75,7 +75,7 @@ terraform -chdir=./${ENV} init \
 
 set -xeuo pipefail
 
-# credentialsの情報を出力します．
+# credentialsの情報を出力します。
 source ./aws_envs.sh
 
 terraform -chdir=./${ENV} plan \
@@ -106,7 +106,7 @@ terraform -chdir=./${ENV} validate
 
 | env  | 説明                                                         |
 | ---- | ------------------------------------------------------------ |
-| dev  | プルリクのレビュー時に，コードの変更を検証するためのインフラ環境 |
+| dev  | プルリクのレビュー時に、コードの変更を検証するためのインフラ環境 |
 | stg  | ステージング環境                                             |
 | prd  | 本番環境                                                     |
 
@@ -114,7 +114,7 @@ terraform -chdir=./${ENV} validate
 
 | jobs       | 説明                                                         |
 | ---------- | ------------------------------------------------------------ |
-| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する． |
+| plan       | aws-cliのインストールから```terraform plan -out```コマンドまでの一連の処理を実行する。 |
 | 承認ジョブ |                                                              |
 | apply      | stg環境またはprd環境にデプロイ                               |
 
@@ -146,7 +146,7 @@ executors:
       ENV: << parameters.env >>
 
 commands:
-  # AWSにデプロイするための環境を構築します．
+  # AWSにデプロイするための環境を構築します。
   aws_setup:
     steps:
       - run:
@@ -168,7 +168,7 @@ commands:
             set -x
             source ./ops/assume.sh
 
-  # terraform initを行います．
+  # terraform initを行います。
   terraform_init:
     steps:
       - run:
@@ -177,7 +177,7 @@ commands:
             set -x
             source ./ops/terraform_init.sh
 
-  # terraform fmtを行います．
+  # terraform fmtを行います。
   terraform_fmt:
     steps:
       - run:
@@ -186,7 +186,7 @@ commands:
             set -x
             source ./ops/terraform_fmt.sh
             
-  # terraform validateを行います．
+  # terraform validateを行います。
   terraform_validate:
     steps:
       - run:
@@ -195,7 +195,7 @@ commands:
             set -x
             source ./ops/terraform_validate.sh
 
-  # terraform planを行います．
+  # terraform planを行います。
   terraform_plan:
     steps:
       - run:
@@ -205,7 +205,7 @@ commands:
             source ./ops/terraform_plan.sh
             ls -la
 
-  # terraform applyを行います．
+  # terraform applyを行います。
   terraform_apply:
     steps:
       - run:
@@ -332,13 +332,13 @@ workflows:
 
 ### tfnotifyとは
 
-terraformの```plan```または```apply```の処理結果を，POSTで送信するバイナリファイルのこと．URLや送信内容を設定ファイルで定義する．
+terraformの```plan```または```apply```の処理結果を、POSTで送信するバイナリファイルのこと。URLや送信内容を設定ファイルで定義する。
 
 <br>
 
 ### コマンド
 
-CircleCIで利用する場合は，commandの中で，以下からダウンロードしたtfnotifyのバイナリファイルを実行する．環境別にtfnotifyを配置しておくとよい．
+CircleCIで利用する場合は、commandの中で、以下からダウンロードしたtfnotifyのバイナリファイルを実行する。環境別にtfnotifyを配置しておくとよい。
 
 https://github.com/mercari/tfnotify/releases/tag/v0.7.0
 
@@ -354,11 +354,11 @@ terraform -chdir=./${ENV} plan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml p
 
 ### 設定ファイル
 
-あらかじめ，GitHubのアクセストークンを発行し，CIツールの環境変数に登録しておく．
+あらかじめ、GitHubのアクセストークンを発行し、CIツールの環境変数に登録しておく。
 
 **＊実装例＊**
 
-例として，GitHubの特定のリポジトリのプルリクエストにPOSTで送信する．
+例として、GitHubの特定のリポジトリのプルリクエストにPOSTで送信する。
 
 ```yaml
 # https://github.com/mercari/tfnotify

@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -20,7 +20,7 @@
 
 #### ・FastCGIとは
 
-CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと．
+CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと。
 
 <br>
 
@@ -28,7 +28,7 @@ CGIプロトコルのパフォーマンスを向上させたプロトコル仕�
 
 #### ・PHP-FPMとは
 
-PHPのために実装されたFastCGIのこと．WebサーバとPHPファイルの間でデータ通信を行う．
+PHPのために実装されたFastCGIのこと。WebサーバとPHPファイルの間でデータ通信を行う。
 
 参考：https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
 
@@ -42,7 +42,7 @@ PHPのために実装されたFastCGIのこと．WebサーバとPHPファイル�
 
 #### ・```/etc/php-fpm.d/www.conf```ファイルとは
 
-PHP-FPMの設定を定義する．```php.ini```ファイルによって読み込まれる．```php.ini```ファイルよりも優先されるので，設定項目が重複している場合は，こちらを変更する．Nginxからリクエストを受信する場合，```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で，プロセスのユーザ名を『```www-data```』とする必要がある．『```www-data```』はApacheプロセスのユーザ名の標準値である．
+PHP-FPMの設定を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名の標準値である。
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
@@ -51,14 +51,14 @@ PHP-FPMの設定を定義する．```php.ini```ファイルによって読み込
 ```bash
 [www]
 
-# プロセスのユーザ名，グループ名
+# プロセスのユーザ名、グループ名
 user = www-data
 group = www-data
 
-# UNIXドメインソケットを使用するために，sockファイルを指定
+# UNIXドメインソケットを使用するために、sockファイルを指定
 listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
 
-# UNIXドメインソケットを使用するために，プロセスのユーザ名を変更
+# UNIXドメインソケットを使用するために、プロセスのユーザ名を変更
 listen.owner = www-data
 listen.group = www-data
 
@@ -70,7 +70,7 @@ listen.mode = 0660
 # TCPソケットのIPアドレス
 listen.allowed_clients = 127.0.0.1
 
-# アクセスログを標準出力に出力する．
+# アクセスログを標準出力に出力する。
 access.log = /dev/stdout
 
 pm = dynamic
@@ -87,15 +87,15 @@ pm.max_spare_servers = 35
 slowlog = /var/log/php-fpm/www-slow.log
 
 # エラーログファイルの場所
-# 開発環境では，エラーログファイル（/var/log/php-fpm/www-error.log）に出力
+# 開発環境では、エラーログファイル（/var/log/php-fpm/www-error.log）に出力
 php_admin_value[error_log] = /dev/stderr
 
 php_admin_flag[log_errors] = on
 
-# セッションの保存方法．ここではredisのキーとして保存（デフォルト値はfiles）
+# セッションの保存方法。ここではredisのキーとして保存（デフォルト値はfiles）
 php_value[session.save_handler] = redis
 
-# セッションの保存場所（デフォルト値は，/var/lib/php/session）
+# セッションの保存場所（デフォルト値は、/var/lib/php/session）
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 
 php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
@@ -103,7 +103,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 #### ・Dockerで使用する場合
 
-PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており，このファイルにはPHP-FPMの一部の設定が実装されている．これに後勝ちするために，ホスト側では```www.conf```ファイルとして定義しておき，コンテナ側にコピーする時は```zzz-www.conf```ファイルとする．
+PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホスト側では```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
 

@@ -2,7 +2,7 @@
 
 ## はじめに
 
-本サイトにつきまして，以下をご認識のほど宜しくお願いいたします．
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/
 
@@ -20,11 +20,11 @@ https://circleci.com/docs/reference-2-1/#circleci-2-1-reference
 
 #### ・デバッグの事前準備
 
-デバッグでは行数がわからない仕様になっている．そこで，Workflowのjobのどこで失敗しているのかを特定するために，検証しないjobをコメントアウトしておく．
+デバッグでは行数がわからない仕様になっている。そこで、Workflowのjobのどこで失敗しているのかを特定するために、検証しないjobをコメントアウトしておく。
 
 ```yaml
 workflows:
-  # build以外を実行しないようにすることで，buildのみを検証できる．
+  # build以外を実行しないようにすることで、buildのみを検証できる。
   build-test-and-deploy:
     jobs:
       - build
@@ -42,18 +42,18 @@ workflows:
 
 #### ・バリデーション
 
-ホストOS側で，以下のコマンドを実行する．
+ホストOS側で、以下のコマンドを実行する。
 
 ```bash
 $ circleci config validate
 
-# 以下の文章が表示されれば問題ない．
+# 以下の文章が表示されれば問題ない。
 # Config file at .circleci/config.yml is valid.
 ```
 
 #### ・処理の展開
 
-設定ファイルを実行した時の処理を展開し，ファイルに出力できる
+設定ファイルを実行した時の処理を展開し、ファイルに出力できる
 
 ```bash
 $ circleci config process .circleci/config.yml > .circleci/process.yml
@@ -61,19 +61,19 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 #### ・ローカルテスト
 
-コマンドにより，テストに必要なDockerイメージをpullし，コンテナを構築する．続いて，コンテナ内でCircleCIを実行する．バージョン2.1以降では，事前に，設定ファイルの処理を展開しておく必要がある．
+コマンドにより、テストに必要なDockerイメージをpullし、コンテナを構築する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
 ```bash
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のDockerコンテナを構築し，展開ファイルを元にテストを実行
+# 専用のDockerコンテナを構築し、展開ファイルを元にテストを実行
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
 #### ・CircleCIコンテナにssh接続
 
-CircleCIコンテナにssh接続し，コンテナ内で生成されたファイルを確認できる．
+CircleCIコンテナにssh接続し、コンテナ内で生成されたファイルを確認できる。
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵名>
@@ -81,7 +81,7 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/<秘密鍵�
 
 #### ・Test Insights
 
-各テストのパフォーマンスや成功失敗率を確認できる．
+各テストのパフォーマンスや成功失敗率を確認できる。
 
 https://circleci.com/docs/2.0/insights-tests/
 
@@ -91,13 +91,13 @@ https://circleci.com/docs/2.0/insights-tests/
 
 #### ・仕組み
 
-1. テストクラスを実装したうえで，新機能を設計実装する．
+1. テストクラスを実装したうえで、新機能を設計実装する。
 
-2. リポジトリへPushすると，CIツールがGituHubからブランチの状態を取得する．
+2. リポジトリへPushすると、CIツールがGituHubからブランチの状態を取得する。
 
-3. CIツールによって，DockerHubから取得したDockerfileのビルド，PHPUnitなどが自動実行される．
+3. CIツールによって、DockerHubから取得したDockerfileのビルド、PHPUnitなどが自動実行される。
 
-4. 結果を通知することも可能．
+4. 結果を通知することも可能。
 
 ![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/継続的インテグレーション.png)
 
@@ -111,7 +111,7 @@ https://circleci.com/docs/2.0/insights-tests/
 
 ### versionとは
 
-CircleCIのバージョンを宣言．
+CircleCIのバージョンを宣言。
 
 **＊実装例＊**
 
@@ -129,10 +129,10 @@ version: 2.1
 
 | 種類                | 参照範囲                                                     | 値を設定する場所 |
 | ------------------- | ------------------------------------------------------------ | ---------------- |
-| command parameters  | ```command```内で定義する．定義された```command```内のみで定義できる． | ```workflows```  |
-| job parameters      | ```job```内で定義する．定義された```job```内のみで参照できる． | ```workflows```  |
-| executors parameter | ```executors```内で定義する．定義された```executos```内のみで参照できる． | ```job```        |
-| pipeline parameters | トップレベルで定義する．リポジトリ内でのみ参照できる．       | ```workflows```  |
+| command parameters  | ```command```内で定義する。定義された```command```内のみで定義できる。 | ```workflows```  |
+| job parameters      | ```job```内で定義する。定義された```job```内のみで参照できる。 | ```workflows```  |
+| executors parameter | ```executors```内で定義する。定義された```executos```内のみで参照できる。 | ```job```        |
+| pipeline parameters | トップレベルで定義する。リポジトリ内でのみ参照できる。       | ```workflows```  |
 
 <br>
 
@@ -140,7 +140,7 @@ version: 2.1
 
 #### ・値の出力方法
 
-引数名を使用して，```parameters```から値を出力する．
+引数名を使用して、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -148,7 +148,7 @@ version: 2.1
 
 #### ・job parameterを参照
 
-定義できるデータ型は，job parameterと同じ．定義された```command```内のみで定義できる．
+定義できるデータ型は、job parameterと同じ。定義された```command```内のみで定義できる。
 
 ```yaml
 version: 2.1
@@ -172,7 +172,7 @@ commands:
 
 #### ・値の出力方法
 
-引数名を使用して，```parameters```から値を出力する．
+引数名を使用して、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -180,7 +180,7 @@ commands:
 
 #### ・デフォルト値について
 
-引数が与えられなかった場合に適用される```default```を設定できる．```default```を設定しない場合，引数が必須と見なされる．
+引数が与えられなかった場合に適用される```default```を設定できる。```default```を設定しない場合、引数が必須と見なされる。
 
 ```yaml
 version: 2.1
@@ -198,7 +198,7 @@ commands:
 
 #### ・string型
 
-引数として，任意の文字列を渡したいときに使用する．```workflows```にて，値を設定する．
+引数として、任意の文字列を渡したいときに使用する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -236,7 +236,7 @@ workflows:
 
 #### ・boolean型
 
-多くの場合，引数がTrueの場合のみ，特定の```step```を実行したい時に用いる．```job```で定義した後，```workflows```にて値を設定する．```workflows```にて，値を設定する．
+多くの場合、引数がTrueの場合のみ、特定の```step```を実行したい時に用いる。```job```で定義した後、```workflows```にて値を設定する。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -274,7 +274,7 @@ workflows:
 
 #### ・enum型
 
-引数として，特定の文字列や整数のみを渡したいときに用いる．```workflows```にて，値を設定する．
+引数として、特定の文字列や整数のみを渡したいときに用いる。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -311,7 +311,7 @@ workflows:
 
 #### ・値の出力方法
 
-引数名を使用して，```parameters```から値を出力する．
+引数名を使用して、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -319,7 +319,7 @@ workflows:
 
 #### ・job parametersを参照
 
-引数として，任意の文字列を```executors```に渡したいときに使用する．他のparametersとは異なり，```job```にて，値を設定する．
+引数として、任意の文字列を```executors```に渡したいときに使用する。他のparametersとは異なり、```job```にて、値を設定する。
 
 ```yaml 
 version: 2.1
@@ -350,7 +350,7 @@ jobs:
 
 #### ・workflowで値を設定する
 
-公式リファレンスには載っていないため，方法としては非推奨．```parameter```を渡したい```executor```を使いまわしたい時に使用する．
+公式リファレンスには載っていないため、方法としては非推奨。```parameter```を渡したい```executor```を使いまわしたい時に使用する。
 
 ```yaml
 version: 2.1
@@ -383,7 +383,7 @@ workflows:
    build-push:
      jobs:
        - build:
-           # jobにてexecutor名を設定し，さらにexecutorに値を渡す
+           # jobにてexecutor名を設定し、さらにexecutorに値を渡す
            executor_param:
              name: python
              # バージョン3.5を設定
@@ -403,7 +403,7 @@ workflows:
 
 #### ・値の出力方法
 
-引数名を使用して，```pipeline.parameters```から値を出力する．
+引数名を使用して、```pipeline.parameters```から値を出力する。
 
 ```
 << pipeline.parameters.foo >>
@@ -411,7 +411,7 @@ workflows:
 
 #### ・job parametersを参照
 
-定義できるデータ型は，job parameterと同じ．リポジトリ内でのみ参照できる．
+定義できるデータ型は、job parameterと同じ。リポジトリ内でのみ参照できる。
 
 ```yaml
 version: 2.1
@@ -455,7 +455,7 @@ workflows:
 
 #### ・jobsとは
 
-複数の```job```を定義する．Workflowsを使わない場合は，少なくとも一つの```job```には```build```という名前を使用しなければならない．
+複数の```job```を定義する。Workflowsを使わない場合は、少なくとも一つの```job```には```build```という名前を使用しなければならない。
 
 #### ・jobの粒度
 
@@ -463,21 +463,21 @@ workflows:
 
 | 粒度   | 説明                                                         | 備考                                                       |
 | ------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
-| build  | プログラムの実行環境を構築する．                             | buildとtestを分割しにくい場合は，同じjobで定義してもよい． |
-| test   | 種々のテスト（Unitテスト，Functionalテスト，など）を実行する． |                                                            |
-| deploy | ステージング環境または本番環境へのデプロイを実行する．       |                                                            |
+| build  | プログラムの実行環境を構築する。                             | buildとtestを分割しにくい場合は、同じjobで定義してもよい。 |
+| test   | 種々のテスト（Unitテスト、Functionalテスト、など）を実行する。 |                                                            |
+| deploy | ステージング環境または本番環境へのデプロイを実行する。       |                                                            |
 
 <br>
 
-### docker，machine
+### docker、machine
 
 #### ・仮想環境の選択
 
-jobを実行する仮想環境を選択できる．
+jobを実行する仮想環境を選択できる。
 
 #### ・dockerタイプとは
 
-Dockerコンテナを実行環境として設定する．これを選択したうえで，Dockerイメージのビルド（Docker composeを含む）を実行する場合，実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる．これは非推奨のため，```setup_remote_docker```を使用して，実行環境Dockerコンテナとは別の環境で```job```を行う必要がある．また，dockerコマンドがインストールされていないイメージで合った場合に，```setup_remote_docker```を有効化すると，これを使用できるようになる．```machine```タイプを選んだ場合，```setup_remote_docker```は不要である．ただし，ボリュームマウントを使用できなくなるので注意する．また，DockerfileのCOPYコマンドが機能しなくなる．
+Dockerコンテナを実行環境として設定する。これを選択したうえで、Dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境Dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合に、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選んだ場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -495,7 +495,7 @@ jobs:
      - image: circleci/foo
    steps:
      - checkout
-     # コンテナが入れ子にならないようにする．
+     # コンテナが入れ子にならないようにする。
      - setup_remote_docker
      - run: | # DockerHubへのログイン
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
@@ -510,7 +510,7 @@ jobs:
 
 #### ・machineタイプとは
 
-Linuxサーバを実行環境として設定する．
+Linuxサーバを実行環境として設定する。
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/machine_executor.png)
 
@@ -541,11 +541,11 @@ jobs:
 
 #### ・stepsとは
 
-処理をMap型で定義する．
+処理をMap型で定義する。
 
-#### ・when，unless
+#### ・when、unless
 
-if文を定義する．```when```では条件がtrueの場合，また```unless```ではfalseの場合に実行する```step```を定義する．
+if文を定義する。```when```では条件がtrueの場合、また```unless```ではfalseの場合に実行する```step```を定義する。
 
 **＊実装例＊**
 
@@ -582,17 +582,17 @@ workflows:
 ```
 
 
-#### ・restore_cache，save_cache
+#### ・restore_cache、save_cache
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトをキャッシュとして保存する．この機能を使用しない場合，例えば，CircleCIコンテナで```composer install```を実行すると，毎回のWorkflowで同じライブラリがインストールされる．しかし，Workflowのたびに，ライブラリをインストールするのは非効率である．そこで，```composer.json```ファイルの実装が変更されない限り，前回のWorkflowのビルド時に，vendorディレクトリに配置されたアーティファクトを再利用するようにする．この機能は，複数のWorkflowの間だけでなく，一つのWorkflowの中でも利用できる．
+ビルドのアーティファクトをキャッシュとして保存する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、一つのWorkflowの中でも利用できる。
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
-composerを使用してライブラリをインストールする時に，前回の結果を再利用する．
+composerを使用してライブラリをインストールする時に、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -600,12 +600,12 @@ version: 2.1
 jobs:
   build:
     steps:
-      # composer.jsonが変更されている場合は処理をスキップ．
+      # composer.jsonが変更されている場合は処理をスキップ。
       - restore_cache:
           key:
             - v1-dependecies-{{ checksum "composer.json" }}
             - v1-dependencies-
-      # 取得したcomposer.jsonを元に，差分のvendorをインストール
+      # 取得したcomposer.jsonを元に、差分のvendorをインストール
       - run: 
           name: Run composer install
           commands: |
@@ -619,7 +619,7 @@ jobs:
 
 **＊実装例＊**
 
-yarnを使用してライブラリをインストールする時に，前回の結果を再利用する．
+yarnを使用してライブラリをインストールする時に、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -652,7 +652,7 @@ jobs:
             yarn test
 ```
 
-ただ，この機能はcommandsで共通化した方が可読性が良い．
+ただ、この機能はcommandsで共通化した方が可読性が良い。
 
 **＊実装例＊**
 
@@ -662,7 +662,7 @@ version: 2.1
 commands:
   restore_vendor:
     steps:
-      # composer.jsonの実装が変更されていない場合は処理をスキップ．
+      # composer.jsonの実装が変更されていない場合は処理をスキップ。
       - restore_cache:
           key:
             - v1-dependencies-{{ checksum "composer.json" }}
@@ -670,7 +670,7 @@ commands:
        
   save_vendor:
     steps:
-      # 最新のvendorを保存．
+      # 最新のvendorを保存。
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
@@ -680,7 +680,7 @@ jobs:
   build:
     steps:
       - restore_vendor
-      # 取得したcomposer.jsonを元に，差分のvendorをインストール
+      # 取得したcomposer.jsonを元に、差分のvendorをインストール
       - run: 
           name: Run composer install
           commands: |
@@ -688,11 +688,11 @@ jobs:
       - save_vendor
 ```
 
-#### ・persist_to_workspace，attach_workspace
+#### ・persist_to_workspace、attach_workspace
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
-CircleCIでは，jobごとに異なる仮想環境が構築されるため，他の```job```で使用された一時ファイルを再利用したい場合に，これを使う．
+CircleCIでは、jobごとに異なる仮想環境が構築されるため、他の```job```で使用された一時ファイルを再利用したい場合に、これを使う。
 
 **＊実装例＊**
 
@@ -704,9 +704,9 @@ jobs:
     steps:
     # Workspaceにファイルをアップロード
       - persist_to_workspace:
-          # jobAにて，Workspaceとするディレクトリのroot
+          # jobAにて、Workspaceとするディレクトリのroot
           root: /tmp/workspace
-          # Rootディレクトリを基準とした相対パス（"./"以外の場合は，ディレクトリの作成が必要）
+          # Rootディレクトリを基準とした相対パス（"./"以外の場合は、ディレクトリの作成が必要）
           # パラメータは環境変数として出力できないので注意
           paths:
             - target/application.jar
@@ -715,11 +715,11 @@ jobs:
     steps:
       # persist_to_workspaceで作成されたWorkspaceからファイルをダウンロード
       - attach_workspace:
-        # jobAとは異なるディレクトリに，ファイルをダウンロードしてもよい
+        # jobAとは異なるディレクトリに、ファイルをダウンロードしてもよい
         at: /tmp/workspace
 ```
 
-全てのディレクトリを保持するような場合がほとんどと思われるため，カレントディレクトリ以下（```.```）を指定するのがよい．
+全てのディレクトリを保持するような場合がほとんどと思われるため、カレントディレクトリ以下（```.```）を指定するのがよい。
 
 **＊実装例＊**
 
@@ -745,7 +745,7 @@ jobs:
 
 ### commandsとは
 
-設定を部品化し，異なる```job```で```step```として繰り返し利用できる．
+設定を部品化し、異なる```job```で```step```として繰り返し利用できる。
 
 <br>
 
@@ -786,7 +786,7 @@ jobs:
 
 #### ・executorsとは
 
-実行環境に関する設定を部品化し，異なる```job```で繰り返し利用できる．
+実行環境に関する設定を部品化し、異なる```job```で繰り返し利用できる。
 
 <br>
 
@@ -882,9 +882,9 @@ workflows:
 
 ### 特殊なsteps
 
-#### ・pre-steps，post-steps
+#### ・pre-steps、post-steps
 
-事前に```job```に定義する必要はない．```workspace```で，コールされる```job```の引数として設定することで，その```job```内の最初と最後に，```steps```を追加できる．
+事前に```job```に定義する必要はない。```workspace```で、コールされる```job```の引数として設定することで、その```job```内の最初と最後に、```steps```を追加できる。
 
 **＊実装例＊**
 
@@ -915,7 +915,7 @@ workflows:
                 command: echo "upload artifact to s3"
 ```
 
-Orbsを使う場合は，オプションに引数を渡す前に定義する．
+Orbsを使う場合は、オプションに引数を渡す前に定義する。
 
 **＊実装例＊**
 
@@ -944,9 +944,9 @@ workflows:
 
 #### ・filtersとは
 
-コミットされた時に```job```が発火するブランチ名，あるいは発火しないブランチ名，を設定する．正規表現で実装する必要がある．
+コミットされた時に```job```が発火するブランチ名、あるいは発火しないブランチ名、を設定する。正規表現で実装する必要がある。
 
-#### ・```only```，```ignore```
+#### ・```only```、```ignore```
 
 | よくあるパターン    | 説明                                     |
 | ------------------- | ---------------------------------------- |
@@ -981,7 +981,7 @@ workflows:
 
 #### ・tags
 
-タグをつけたコミットに対して発火する．```ignore```キーで全てのブランチを指定することにより，マージによる発火を防げる．
+タグをつけたコミットに対して発火する。```ignore```キーで全てのブランチを指定することにより、マージによる発火を防げる。
 
 ```yaml
 workflows:
@@ -1006,15 +1006,15 @@ workflows:
 
 | 参照レベル | 方法                                        | 説明                                                         |
 | ---------- | ------------------------------------------- | ------------------------------------------------------------ |
-| Bash       | ```export```，```source```，```$BASH_ENV``` | ```run```における```command```内のみで参照できる．ただし，```$BASH_ENV```を使用すれば，異なる```commands```間で値を共有可能． |
-| Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる．                |
-| Job        | ```environment```                           | ```job```内のみで参照できる．                                |
-| Project    | Environment Variables機能                   | リポジトリ内のみ参照できる．                                 |
-| Global     | Contexts機能                                | 異なるリポジトリ間で参照できる．                             |
+| Bash       | ```export```、```source```、```$BASH_ENV``` | ```run```における```command```内のみで参照できる。ただし、```$BASH_ENV```を使用すれば、異なる```commands```間で値を共有可能。 |
+| Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる。                |
+| Job        | ```environment```                           | ```job```内のみで参照できる。                                |
+| Project    | Environment Variables機能                   | リポジトリ内のみ参照できる。                                 |
+| Global     | Contexts機能                                | 異なるリポジトリ間で参照できる。                             |
 
 #### ・環境変数の出力方法
 
-環境変数を```echo```の引数に指定する．あらかじめエンコードされた環境変数を管理しておき，```base64 --decode```を実行して出力すると，安全に環境変数を管理できる．ここで出力している環境変数は，以下のノートを参考にせよ
+環境変数を```echo```の引数に指定する。あらかじめエンコードされた環境変数を管理しておき、```base64 --decode```を実行して出力すると、安全に環境変数を管理できる。ここで出力している環境変数は、以下のノートを参考にせよ
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_framework_nuxtjs.html
 
@@ -1043,7 +1043,7 @@ jobs:
              yarn nuxt-ts generate
 ```
 
-なお，文字列の中に値を出力する変数展開の場合，```${}```を使用する．
+なお、文字列の中に値を出力する変数展開の場合、```${}```を使用する。
 
 ```yaml
 # 変数展開の場合
@@ -1061,7 +1061,7 @@ steps:
 
 #### ・commandキーによる設定
 
-一番参照範囲が小さく，```run```における同じ```command```内のみで参照できる．```command```内で使用する環境変数を定義するためには，『```$BASH_ENV```』に```export```処理を格納する必要がある．定義したものを使用するためには，『```$BASH_ENV```』を```source```で読み込む必要があるために注意する．
+一番参照範囲が小さく、```run```における同じ```command```内のみで参照できる。```command```内で使用する環境変数を定義するためには、『```$BASH_ENV```』に```export```処理を格納する必要がある。定義したものを使用するためには、『```$BASH_ENV```』を```source```で読み込む必要があるために注意する。
 
 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
@@ -1088,7 +1088,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている．そのため，『```$BASH_ENV```』は複数の```run```間」で共有できる．ただし，Alpineベースのイメージでは，この共有機能を使えないため注意する（かなりたくさんある）．
+CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```間」で共有できる。ただし、Alpineベースのイメージでは、この共有機能を使えないため注意する（かなりたくさんある）。
 
 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -1109,7 +1109,7 @@ jobs:
             echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
             echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
       - run:
-          name: Echo # BASH_ENVが自動的に読み込まれる．
+          name: Echo # BASH_ENVが自動的に読み込まれる。
           command: |
             echo "$PATH"
             echo "$VERY_IMPORTANT"     
@@ -1117,7 +1117,7 @@ jobs:
 
 #### ・シェルスクリプトによる設定
 
-環境変数に値を設定する処理をシェルスクリプトに切り分け，環境変数を使用する前にこれを読み込む．
+環境変数に値を設定する処理をシェルスクリプトに切り分け、環境変数を使用する前にこれを読み込む。
 
 **＊実装例＊**
 
@@ -1148,13 +1148,13 @@ set -xeuo pipefail
 echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
 echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
 
-# 環境変数を出力します．
+# 環境変数を出力します。
 source $BASH_ENV
 ```
 
 #### ・ヒアドキュメントで作成したシェルスクリプトによる設定
 
-ヒアドキュメントを使用して，環境変数を設定できるシェルスクリプトを作成し，これを読み込む．ヒアドキュメントでは，各行でechoが実行される．そのため，echoの実装が不要であることに注意する．
+ヒアドキュメントを使用して、環境変数を設定できるシェルスクリプトを作成し、これを読み込む。ヒアドキュメントでは、各行でechoが実行される。そのため、echoの実装が不要であることに注意する。
 
 **＊実装例＊**
 
@@ -1172,7 +1172,7 @@ EOF
 
 ### Containerレベル
 
-Bashレベルより参照範囲が大きく，```job```内のみで参照できる．```environment```を```image```と同じ階層で定義する．
+Bashレベルより参照範囲が大きく、```job```内のみで参照できる。```environment```を```image```と同じ階層で定義する。
 
 ```yaml
 version: 2.1
@@ -1190,13 +1190,13 @@ jobs:
 
 ### Projectレベル
 
-Containerレベルより参照範囲が大きく，プロジェクト内，すなわちリポジトリ内のみで参照できる．Environment Variables機能を使用する．環境変数の値が４文字未満，または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合，CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため，注意が必要である．
+Containerレベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。Environment Variables機能を使用する。環境変数の値が４文字未満、または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合、CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため、注意が必要である。
 
 <br>
 
 ### Grobalレベル
 
-Projectレベルより参照範囲が大きく，異なるプロジェクト間，すなわちリポジトリ間で参照できる．Contexts機能を使用する．
+Projectレベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。Contexts機能を使用する。
 
 <br>
 
@@ -1206,7 +1206,7 @@ Projectレベルより参照範囲が大きく，異なるプロジェクト間�
 
 #### ・dockerタイプの場合
 
-自分でdocker-composeをインストールする必要がある．実行環境としてのDockerコンテナと，ビルドしたDockerコンテナが入れ子にならないように，```setup_remote_docker```を実行する必要がある．ただし，ボリュームマウントを使用できなくなるので注意する．
+自分でdocker-composeをインストールする必要がある。実行環境としてのDockerコンテナと、ビルドしたDockerコンテナが入れ子にならないように、```setup_remote_docker```を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
 
 ```yaml
 version: 2.1
@@ -1233,7 +1233,7 @@ jobs:
 
 #### ・machineタイプの場合（推奨）
 
-実行環境にmachineタイプを選択した場合，すでにdocker-composeがインストールされている．
+実行環境にmachineタイプを選択した場合、すでにdocker-composeがインストールされている。
 
 参考：https://circleci.com/docs/ja/2.0/configuration-reference/#%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA-machine-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
 
@@ -1243,13 +1243,13 @@ jobs:
 
 #### ・docker/install-dockerize
 
-CircleCIでDocker Composeを使用する場合に必要である．Docker Composeは，コンテナの構築の順番を制御できるものの，コンテナ内のプロセスの状態を気にしない．そのため，コンテナの構築後に，プロセスが完全に起動していないのにもかかわらず，次のコンテナの構築を開始してしまう．これにより，プロセスが完全に起動していないコンテナに対して，次に構築されたコンテナが接続処理を行ってしまうことがある．これを防ぐために，プロセスの起動を待機してから，接続処理を行うようにする．dockerizeの代わりの方法として，sleepコマンドを使用してもよい．
+CircleCIでDocker Composeを使用する場合に必要である。Docker Composeは、コンテナの構築の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの構築後に、プロセスが完全に起動していないのにもかかわらず、次のコンテナの構築を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に構築されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを使用してもよい。
 
 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
 **＊実装例＊**
 
-LaravelコンテナとMySQLコンテナの場合を示す．コンテナ内に対してコマンドを実行する時のディレクトリは，Dockerfileの```WORKDIR```によって決まるので注意する．
+LaravelコンテナとMySQLコンテナの場合を示す。コンテナ内に対してコマンドを実行する時のディレクトリは、Dockerfileの```WORKDIR```によって決まるので注意する。
 
 ```yaml
 version: 2.1
@@ -1310,7 +1310,7 @@ jobs:
       - run:
           name: Wait for MySQL to be ready
           command: |
-            # 代わりにsleepコマンドでもよい．
+            # 代わりにsleepコマンドでもよい。
             dockerize -wait tcp://localhost:3306 -timeout 1m
       # Dockerコンテナに対してマイグレーションコマンドを送信
       - run:
@@ -1335,13 +1335,13 @@ jobs:
 
 #### ・DLCとは
 
-CircleCIでDockerイメージをビルドした後，各イメージレイヤーをDLCボリュームにキャッシュする．そして，次回以降のビルド時に，差分がないイメージレイヤーをDLCボリュームからプルして再利用する．これにより，Dockerイメージのビルド時間を短縮できる．
+CircleCIでDockerイメージをビルドした後、各イメージレイヤーをDLCボリュームにキャッシュする。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、Dockerイメージのビルド時間を短縮できる。
 
 ![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 
 #### ・使用例
 
-machineタイプで使用する場合，machineキーの下で```docker_layer_caching```を使う．
+machineタイプで使用する場合、machineキーの下で```docker_layer_caching```を使う。
 
 **＊実装例＊**
 
@@ -1376,7 +1376,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-dockerタイプで使用する場合，dockerキーの下で```docker_layer_caching```を使う．
+dockerタイプで使用する場合、dockerキーの下で```docker_layer_caching```を使う。
 
 **＊実装例＊**
 
@@ -1407,7 +1407,7 @@ jobs:
 
 #### ・orbsとは
 
-CircleCIから提供される汎用的なパッケージの使用を読み込む．
+CircleCIから提供される汎用的なパッケージの使用を読み込む。
 
 **＊実装例＊**
 
@@ -1423,17 +1423,17 @@ workflows:
           - hello/hello-build
 ```
 
-#### ・jobs，commands，executors
+#### ・jobs、commands、executors
 
 | 構造      | 説明                                                         |
 | --------- | ------------------------------------------------------------ |
-| jobs      | workflowsにて，Orbsから```job```として使用できる．           |
-| commands  | ```job```にて，```step```として使用できる．                  |
-| executors | ```exexutor```にて，事前定義されたexecutorsとして使用できる． |
+| jobs      | workflowsにて、Orbsから```job```として使用できる。           |
+| commands  | ```job```にて、```step```として使用できる。                  |
+| executors | ```exexutor```にて、事前定義されたexecutorsとして使用できる。 |
 
 #### ・オプションへの引数の渡し方と注意点
 
-AWS認証情報は，CircleCIのデフォルト名と同じ環境変数名で登録しておけば，オプションで渡さなくとも，自動で入力してくれる．オプションが```env_var_name```型は，基本的に全てのスコープレベルの環境変数を受け付ける．ただしAlpineベースのイメージでは，『```$BASH_ENV```』を用いて，複数の```run```間で環境変数を共有できず，orbsのステップに環境変数を渡せないため注意する．
+AWS認証情報は、CircleCIのデフォルト名と同じ環境変数名で登録しておけば、オプションで渡さなくとも、自動で入力してくれる。オプションが```env_var_name```型は、基本的に全てのスコープレベルの環境変数を受け付ける。ただしAlpineベースのイメージでは、『```$BASH_ENV```』を用いて、複数の```run```間で環境変数を共有できず、orbsのステップに環境変数を渡せないため注意する。
 
 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -1456,7 +1456,7 @@ jobs:
       - aws-cli/install
       - aws-cli/setup
       - aws-foo/foo-bar-baz:
-          # デフォルト名であれば，記述しなくても自動的に入力してくれる．
+          # デフォルト名であれば、記述しなくても自動的に入力してくれる。
           account-url: $AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
           aws-access-key-id: $ACCESS_KEY_ID_ENV_VAR_NAME
           aws-secret-access-key: $SECRET_ACCESS_KEY_ENV_VAR_NAME
@@ -1469,15 +1469,15 @@ jobs:
 
 #### ・commands: install
 
-aws-cliコマンドのインストールを行う．
+aws-cliコマンドのインストールを行う。
 
 #### ・commands: setup
 
-aws-cliコマンドのインストールと，Credentials情報の設定を行う．AWSリソースを操作するために使用する．
+aws-cliコマンドのインストールと、Credentials情報の設定を行う。AWSリソースを操作するために使用する。
 
 **＊実装例＊**
 
-CloudFrontに保存されているCacheを削除する．フロントエンドをデプロイしたとしても，CloudFrontに保存されているCacheを削除しない限り，CacheがHitしたユーザには過去のファイルがレスポンスされてしまう．そのため，S3へのデプロイ後に，Cacheを削除する必要がある．
+CloudFrontに保存されているCacheを削除する。フロントエンドをデプロイしたとしても、CloudFrontに保存されているCacheを削除しない限り、CacheがHitしたユーザには過去のファイルがレスポンスされてしまう。そのため、S3へのデプロイ後に、Cacheを削除する必要がある。
 
 ```yaml
 version: 2.1
@@ -1529,7 +1529,7 @@ workflows:
                 - main   
 ```
 
-ただし，```credentials```ファイルの作成では，orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない．
+ただし、```credentials```ファイルの作成では、orbsを使用しない方がより簡潔に条件分岐を実装できるかもしれない。
 
 ```bash
 #!/bin/bash
@@ -1551,7 +1551,7 @@ case "$APP_ENV" in
     ;;
 esac
 
-# defaultプロファイルにクレデンシャル情報を設定する．
+# defaultプロファイルにクレデンシャル情報を設定する。
 aws configure << EOF
 $(echo $AWS_ACCESS_KEY_ID)
 $(echo $AWS_SECRET_ACCESS_KEY)
@@ -1559,7 +1559,7 @@ $(echo $AWS_DEFAULT_REGION)
 json
 EOF
 
-# 正しく設定されたかを確認する．
+# 正しく設定されたかを確認する。
 aws configure list
 ```
 
@@ -1569,7 +1569,7 @@ aws configure list
 
 #### ・jobs：build-and-push-image
 
-CircleCIコンテナでDockerイメージをビルドし，ECRにデプロイする．```remote-docker-layer-caching```を使用して，Docker Layer Cacheを有効化できる．
+CircleCIコンテナでDockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
@@ -1585,7 +1585,7 @@ jobs:
     name: ecr_build_and_push_image
     # Docker Layer Cacheを使用するかどうか（有料）
     remote-docker-layer-caching: true
-    # リポジトリがない時に作成するかどうか．
+    # リポジトリがない時に作成するかどうか。
     create-repo: true
     no-output-timeout: 20m
     # projectを作業ディレクトリとした時の相対パス
@@ -1595,7 +1595,7 @@ jobs:
     repo: "{$SERVICE}-repository"
     # CircleCIのハッシュ値によるバージョニング
     tag: $CIRCLE_SHA1
-    # job内にて，attach_workspaceステップを実行．
+    # job内にて、attach_workspaceステップを実行。
     attach-workspace: true
     # attach_workspaceステップ実行時のrootディレクトリ
     workspace-root: <ディレクトリ名>
@@ -1607,7 +1607,7 @@ jobs:
 
 #### ・jobs：deploy-update-service（ローリングアップデート使用時）
 
-ECRイメージを使用して，新しいリビジョン番号のタスク定義を作成し，またこれを使用してコンテナをデプロイする．``` verify-revision-is-deployed```オプションを使用して，ECSサービスが更新された後，実行されているタスクがタスク定義に合致しているかを監視する．例えば，タスクが「Runnning」にならずに「Stopped」になってしまう場合や，既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合，この状態はタスク定義に合致しないので，検知できる．
+ECRイメージを使用して、新しいリビジョン番号のタスク定義を作成し、またこれを使用してコンテナをデプロイする。``` verify-revision-is-deployed```オプションを使用して、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが「Runnning」にならずに「Stopped」になってしまう場合や、既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
 
 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -1629,7 +1629,7 @@ jobs:
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
-    # コンテナ定義のコンテナ名とイメージタグを上書き．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    # コンテナ定義のコンテナ名とイメージタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # サービス更新後のタスク監視
     verify-revision-is-deployed: true
@@ -1659,7 +1659,7 @@ workflows:
 
 #### ・jobs：deploy-update-service（B/Gデプロイメント使用時）
 
-ECSタスク定義を更新する．さらに，Blue/Greenデプロイメントがそのタスク定義を指定し，ECSサービスを更新する．ローリングアップデートと同様にして，``` verify-revision-is-deployed```オプションを使用できる．
+ECSタスク定義を更新する。さらに、Blue/Greenデプロイメントがそのタスク定義を指定し、ECSサービスを更新する。ローリングアップデートと同様にして、``` verify-revision-is-deployed```オプションを使用できる。
 
 **＊実装例＊**
 
@@ -1685,7 +1685,7 @@ jobs:
     codedeploy-deployment-group-name: "${SERVICE}-deployment-group"
     codedeploy-load-balanced-container-name: www-container
     codedeploy-load-balanced-container-port: 80
-    # コンテナ名とイメージタグを指定．イメージはCircleCIのハッシュ値でタグ付けしているので必須．
+    # コンテナ名とイメージタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
     # サービス更新後のタスク監視
     verify-revision-is-deployed: true
@@ -1714,13 +1714,13 @@ workflows:
 
 #### ・jobs：run-task
 
-現在起動中のECSタスクとは別に，新しいタスクを一時的に起動する．起動時に，```overrides```オプションを使用して，指定したタスク定義のコンテナ設定を上書きできる．正規表現で設定する必要があり，さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない．コマンドが実行された後に，タスクは自動的にStopped状態になる．
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
 **＊実装例＊**
 
-例えば，データベースに対してマイグレーションを実行するためのECSタスクを起動する．```overrides```オプションでコンテナ定義のコマンドを上書きする．
+例えば、データベースに対してマイグレーションを実行するためのECSタスクを起動する。```overrides```オプションでコンテナ定義のコマンドを上書きする。
 
 ```yaml
 version: 2.1
@@ -1733,15 +1733,15 @@ jobs:
   aws-ecs/run-task:
     name: ecs_run_task_for_migration
     cluster: "${SERVICE}-ecs-cluster"
-    # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう．
+    # LATESTとするとその時点の最新バージョンを自動で割り振られてしまう。
     platform-version: 1.4.0
     awsvpc: true
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
-    # タスク定義名．最新リビジョン番号が自動補完される．
+    # タスク定義名。最新リビジョン番号が自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
-    # タスク起動時にマイグレーションコマンドを実行するように，Laravelコンテナの　commandキーを上書き
+    # タスク起動時にマイグレーションコマンドを実行するように、Laravelコンテナの　commandキーを上書き
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"php\\\", \\\"artisan\\\", \\\"migrate\\\", \\\"--force\\\"]}]}"
           
 workflows:
@@ -1773,7 +1773,7 @@ workflows:
 
 #### ・jobs：deploy
 
-S3にソースコードとappspecファイルをデプロイできる．また，CodeDeployを用いて，これをEC2にデプロイできる．
+S3にソースコードとappspecファイルをデプロイできる。また、CodeDeployを用いて、これをEC2にデプロイできる。
 
 **＊実装例＊**
 
@@ -1828,7 +1828,7 @@ workflows:
 
 #### ・commands：notify
 
-ジョブの終了時に，成功または失敗に基づいて，ステータスを通知する．ジョブの最後のステップとして設定しなければならない．
+ジョブの終了時に、成功または失敗に基づいて、ステータスを通知する。ジョブの最後のステップとして設定しなければならない。
 
 ```yaml
 version: 2.1
