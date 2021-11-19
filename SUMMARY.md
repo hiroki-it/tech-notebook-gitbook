@@ -119,7 +119,7 @@
   * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
   * Terraform
     * [📖 ︎Terraform](public/infrastructure_as_code/infrastructure_as_code_terraform.md)
-    * [📖 ︎Terraformを用いたAWS構築Tips](public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.md)
+    * [📖 ︎AWSプロバイダー](public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md)
     * [📖 ︎TerraformのCICDフロー](public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md)
 
 * 仮想化
