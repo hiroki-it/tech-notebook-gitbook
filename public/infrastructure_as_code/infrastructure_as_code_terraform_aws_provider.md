@@ -1,4 +1,4 @@
-# Terraformを用いたAWS構築Tips
+# AWSプロバイダー
 
 ## はじめに
 
@@ -40,18 +40,19 @@ resource "aws_acm_certificate_validation" "www" {
 
 ### （１）Eメール検証の場合はメール再送が必要
 
-TerraformでEメール検証の証明書リクエストを作成すると、メールが送信されないことがある。送信されなかった場合は、メールの再送を実行する。
-
-```bash
-$ aws acm resend-validation-email \
-  --certificate-arn arn:aws:acm:ap-northeast-1:123456789:certificate/***** \
-  --domain example.jp \
-  --validation-domain *.example.jp
-```
+TerraformでEメール検証の証明書リクエストを作成すると、メールが送信されないことがある。送信されなかった場合は、メールの再送を実行する。なお、DNS検証の場合は、ドメインを購入したサービスが管理するドメインレジストラにRoute53のNSレコード値を登録する必要がある。
 
 <br>
 
-## 01. AMI
+### ※ 証明書の検証方法を変更する
+
+もしコンソール画面から証明書の検証方法を変更する場合、検証方法の異なる証明書を構築してこれに切り替えたうえで、古い証明書を削除する必要がある。これに合わせて、Terraformでもリリースを二回に分ける。
+
+参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/
+
+<br>
+
+## 02. AMI
 
 ### まとめ
 
@@ -87,7 +88,7 @@ data "aws_ami" "bastion" {
 
 <br>
 
-## 02. API Gateway
+## 03. API Gateway
 
 ### まとめ
 
@@ -158,7 +159,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 ### （※）ステージ名を取得する方法はない
 
-API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得することができない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照することができないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
+API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
 
@@ -180,7 +181,7 @@ resource "aws_wafv2_web_acl_association" "api_gateway" {
 
 <br>
 
-## 03. CloudFront
+## 04. CloudFront
 
 ### まとめ
 
@@ -355,7 +356,7 @@ resource "aws_cloudfront_distribution" "this" {
 
 <br>
 
-## 04. ECR
+## 05. ECR
 
 ### ライフサイクルポリシー
 
@@ -394,7 +395,7 @@ ECRにアタッチされる、イメージの有効期間を定義するポリ�
 
 <br>
 
-## 05. ECS
+## 06. ECS
 
 ### まとめ
 
@@ -500,7 +501,7 @@ applyで、新しいリビジョン番号のタスク定義を作成すると、
 
 <br>
 
-## 06. EC2
+## 07. EC2
 
 ### まとめ
 
@@ -547,7 +548,7 @@ resource "aws_instance" "bastion" {
 
 <br>
 
-## 07. IAMユーザ
+## 08. IAMユーザ
 
 ### カスタマー管理ポリシーを持つロール
 
@@ -628,7 +629,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 <br>
 
-## 08. IAMロール
+## 09. IAMロール
 
 ### 信頼ポリシーを持つロール
 
@@ -833,7 +834,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 ### サービスリンクロール
 
-サービスリンクロールは、AWSリソースの構築時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で構築することが可能であるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
+サービスリンクロールは、AWSリソースの構築時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で構築できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
 
 **＊実装例＊**
 

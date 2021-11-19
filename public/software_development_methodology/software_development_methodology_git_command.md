@@ -22,7 +22,7 @@ $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 
 #### ・```clone <SSH接続>```
 
-サーバ接続名は、、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、Githubの接続名は、「```github.com```」になっている。
+サーバ接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、Githubの接続名は、「```github.com```」になっている。
 
 ```bash
 $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<リポジトリ名>.git

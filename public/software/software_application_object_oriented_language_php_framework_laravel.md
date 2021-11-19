@@ -4595,7 +4595,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ・確認画面の入力をスキップ
 
-マイグレーション時、本当に実行して良いか確認画面（Yes／No）が表示される。CICDにおいて、この確認画面でYes／Noを入力することができないため、確認画面をスキップできるようにする必要がある。
+マイグレーション時、本当に実行して良いか確認画面（Yes／No）が表示される。CICDにおいて、この確認画面でYes／Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
@@ -7053,7 +7053,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ・一部のユーザが異なる権限を持つ場合
 
-ユーザごとに認証方法を区別しつつ、同一の認証後ページにリダイレクトさせることができる。
+ユーザごとに認証方法を区別しつつ、同一の認証後ページにリダイレクトさせられる。
 
 参考：https://blog.capilano-fw.com/?p=8159
 

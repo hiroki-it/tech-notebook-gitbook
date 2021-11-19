@@ -129,7 +129,7 @@
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
 * Terraform
     * [📖 ︎Terraform](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html)
-    * [📖 ︎Terraformを用いたAWS構築Tips](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_tips.html)
+    * [📖 ︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html)
     * [📖 ︎TerraformのCICDフロー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
 
 <br>
