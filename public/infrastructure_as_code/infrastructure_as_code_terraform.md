@@ -175,7 +175,7 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 （エラー例2）
 
 ```bash
-Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'tech-notebook_www' already exists in the registry with id 'XXXXXXXXXXXX'
+Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id 'XXXXXXXXXXXX'
 ```
 
 <br>
@@ -481,9 +481,13 @@ Terraformでは、メジャーバージョン単位でアップグレードを�
 
 アップグレードに伴って、非推奨／廃止の機能がリリースされ、警告／エラーが出力される場合がある。警告／エラーを解消できるように、記法やオプション値を修正する。場合によってはtfstateファイルの差分として表示されているだけで、実インフラとの差分ではない場合もあるため、planで差分があったとしても、実インフラに影響がなければ問題ない。
 
-#### 5. Terraformの後にプロバイダーをアップグレード
+#### 5. プロバイダーをアップグレードしたい場合はTerraformもアップグレード
 
-Terraformとプロバイダーのバージョンは独立して管理されている。プロバイダーはTerraformが土台になって稼働するため、一旦、Terraformのアップグレードを済ませてから、プロバイダーをアップグレードする。
+Terraformとプロバイダーのバージョンは独立して管理されている。プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。
+
+#### 6. Terraformとプロバイダーのアップグレードは別々にリリース
+
+プロバイダーをアップグレードしたい場合はTerraformもアップグレードすることになる。この場合、可能であればリリースは分けた方が良い。Terraformまたはプロバイダーのアップグレードを別々にリリースするようにすれば、リリース時にインシデントが起こった時に、どちらが原因なのかを明確化できる。反対に、一緒にリリースしてしまうとどちらが原因なのかわかりにくくなってしまう。
 
 <br>
 
@@ -1907,7 +1911,7 @@ resource "aws_acm_certificate" "foo" {
 
 **＊実装例＊**
 
-例として、RDSのクラスターパラメータグループとサブネットグループを示す。クラスターパラメータグループとサブネットグループは、RDSに紐付いており、新しいクラスターパラメータグループに紐付け直した後に、既存のものを削除する必要がある。
+例として、RDSのクラスターパラメータグループとサブネットグループを示す。クラスターパラメータグループとサブネットグループは、DBクラスターに紐付いており、新しいクラスターパラメータグループに紐付け直した後に、既存のものを削除する必要がある。
 
 ```elixir
 ###############################################

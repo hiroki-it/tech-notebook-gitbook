@@ -767,6 +767,33 @@ $ curl -L https://example.co.jp/foos
 
 <br>
 
+### nslookup
+
+#### ・-type
+
+指定したレコードタイプの値をドメインレジストラに問い合わせる。実際のドメインの名前解決の仕組みでは、DNSサーバは問い合わせでレスポンスされたNSレコード値を持つネームサーバ（例：Route53）に再び問い合わせ、リクエスト先のサーバのIPアドレスをレスポンスしてもらう。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
+
+**＊例＊**
+
+NSレコードの値をドメインレジストラに問い合わせる。
+
+```bash
+$ nslookup -type=NS example.co.jp
+
+# ～ 中略 ～
+
+example.co.jp        nameserver = ns-***.awsdns-***.net
+example.co.jp        nameserver = ns-***.awsdns-***.co.uk
+example.co.jp        nameserver = ns-***.awsdns-***.org
+example.co.jp        nameserver = ns-***.awsdns-***.com
+
+# ～ 中略 ～
+```
+
+<br>
+
 ### ssh：secure shell
 
 #### ・-l、-p、<ポート>、-i、-T

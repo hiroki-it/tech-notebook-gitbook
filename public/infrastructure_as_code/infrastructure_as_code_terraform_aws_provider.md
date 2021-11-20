@@ -955,7 +955,7 @@ Error deleting Target Group: ResourceInUse: Target group 'arn:aws:elasticloadbal
 
 <br>
 
-## 11. RDS
+## 11. RDS（Aurora MySQLの場合）
 
 ### まとめ
 
@@ -1014,7 +1014,6 @@ resource "aws_rds_cluster_instance" "this" {
   engine_version               = "5.7.mysql_aurora.2.08.3"
   identifier                   = "prd-foo-rds-instance-${each.key}"
   cluster_identifier           = aws_rds_cluster.this.id
-  instance_class               = var.rds_instance_class
   db_subnet_group_name         = aws_db_subnet_group.this.id
   db_parameter_group_name      = aws_db_parameter_group.this.id
   monitoring_interval          = 60
@@ -1022,8 +1021,11 @@ resource "aws_rds_cluster_instance" "this" {
   auto_minor_version_upgrade   = var.rds_auto_minor_version_upgrade
   preferred_maintenance_window = "sun:01:00-sun:01:30"
   apply_immediately            = true
-
+  
   # 後述の説明を参考にせよ。（５）
+  instance_class = var.rds_instance_class[each.key]
+
+  # 後述の説明を参考にせよ。（６）
   # preferred_backup_window
 }
 ```
@@ -1042,9 +1044,9 @@ Terraformに値をハードコーディングしたくない場合は、SSMパ�
 
 <br>
 
-### （３）クラスターにはAZが３つ必要
+### （３）DBクラスターにはAZが３つ必要
 
-クラスターでは、レプリケーションのために、３つのAZが必要である。そのため、指定したAZが２つであっても、コンソール画面上で３つのAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```でAZを指定しておく必要がある。
+DBクラスターでは、レプリケーションのために、３つのAZが必要である。そのため、指定したAZが２つであっても、コンソール画面上で３つのAZが自動的に設定される。Terraformがこれを認識しないように、```ignore_changes```でAZを指定しておく必要がある。
 
 参考：
 
@@ -1059,9 +1061,15 @@ Terraformに値をハードコーディングしたくない場合は、SSMパ�
 
 <br>
 
-### （５）インスタンスにバックアップウインドウは設定しない
+### （５）インスタンスタイプは別々に設定する
 
-クラスターとインスタンスの両方に、```preferred_backup_window```を設定できるが、RDSインスタンスに設定してはいけない。
+インスタンスタイプに```each```で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。この場合、インスタンスのフェイルオーバーを利用できず、ダウンタイムを最小化できない。そのため、```each```を用いて、DBインスタンスごとにインスタンスタイプを設定するようにする。インスタンスごとに異なるインスタンスタイプを設定する場合は、```each```で割り当てる値の順番を考慮する必要があるため、配置されているAZを事前に確認する必要がある。
+
+<br>
+
+### （６）インスタンスにバックアップウインドウは設定しない
+
+DBクラスターとDBインスタンスの両方に、```preferred_backup_window```を設定できるが、RDSインスタンスに設定してはいけない。
 
 <br>
 

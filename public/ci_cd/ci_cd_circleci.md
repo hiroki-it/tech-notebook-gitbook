@@ -1625,7 +1625,7 @@ jobs:
     name: ecs_update_service_by_rolling_update
     # タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # クラスター名を指定
+    # ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
@@ -1675,7 +1675,7 @@ jobs:
     name: ecs_update_service_by_code_deploy
     # タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # クラスター名を指定
+    # ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
