@@ -162,7 +162,7 @@ $this->assertTrue($response->isOk());
 
 #### ・assertEquals
 
-「```==```」を使用して、期待値と実際値の整合性を検証する。データ型を検証できないため、```assertSame```メソッドを使用する方が良い。
+『```==```』を使用して、期待値と実際値の整合性を検証する。データ型を検証できないため、```assertSame```メソッドを使用する方が良い。
 
 ```php
 $this->assertSame(200, $response->getStatusCode());
@@ -170,7 +170,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 #### ・assertSame
 
-「```===```」を使用して、期待値と実際値の整合性を検証する。値だけでなく、データ型も検証できる。
+『```===```』を使用して、期待値と実際値の整合性を検証する。値だけでなく、データ型も検証できる。
 
 
 ```php

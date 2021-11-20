@@ -1073,7 +1073,7 @@ FireLensコンテナをサイドカーとして構築するために、コンテ
 | --------------------------------------------- | ------------------------------------------------------------ |
 | ```type```                                    | メインコンテナからFireLensコンテナにログを送信できるように、ログドライバーのタイプとして『```fluentbit```』を設定する。 |
 | ```config-file-type```                        | FluentBitの設定ファイルを読み込むために、```file```とする。  |
-| ```config-file-value```                       | ```options```キーにて、ログ転送時の設定が可能であるが、それらは```fluent-bit.conf```ファイルにも設定可能であるため、転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）に転送する。 |
+| ```config-file-value```                       | ```options```キーにて、ログ転送を設定できるが、それらは```fluent-bit.conf```ファイルにも設定可能であるため、転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）に転送する。 |
 | ```enable-ecs-log-metadata```（標準で有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```、```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように、コンテナの環境変数に値を定義する。 |
 

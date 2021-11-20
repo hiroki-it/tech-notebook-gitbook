@@ -586,7 +586,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトをキャッシュとして保存する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、一つのWorkflowの中でも利用できる。
+ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、一つのWorkflowの中でも利用できる。
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
@@ -610,7 +610,7 @@ jobs:
           name: Run composer install
           commands: |
             composer install -n --prefer-dist
-      # 最新のvendorディレクトリをキャッシュとして保存
+      # 最新のvendorディレクトリのキャッシュを作成
       - save_cache:
           key: v1-dependecies-{{ checksum "composer.json" }}
           paths:
@@ -951,7 +951,7 @@ workflows:
 | よくあるパターン    | 説明                                     |
 | ------------------- | ---------------------------------------- |
 | ```/.*/```          | 全てのブランチを明示的に指定             |
-| ```/feature\/.*/``` | 「feature/」と名前のついたブランチを指定 |
+| ```/feature\/.*/``` | 『feature/』と名前のついたブランチを指定 |
 
 **＊実装例＊**
 
@@ -1088,7 +1088,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```間」で共有できる。ただし、Alpineベースのイメージでは、この共有機能を使えないため注意する（かなりたくさんある）。
+CircleCIでは```run```を実行する時に『```$BASH_ENV```』が```source```で自動的に読み込まれるようになっている。そのため、『```$BASH_ENV```』は複数の```run```間』で共有できる。ただし、Alpineベースのイメージでは、この共有機能を使えないため注意する（かなりたくさんある）。
 
 参考：https://github.com/circleci/circleci-docs/issues/1650
 
@@ -1335,7 +1335,7 @@ jobs:
 
 #### ・DLCとは
 
-CircleCIでDockerイメージをビルドした後、各イメージレイヤーをDLCボリュームにキャッシュする。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、Dockerイメージのビルド時間を短縮できる。
+CircleCIでDockerイメージをビルドした後、各イメージレイヤーのキャッシュをDLCボリュームに作成する。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、Dockerイメージのビルド時間を短縮できる。
 
 ![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 
@@ -1477,7 +1477,7 @@ aws-cliコマンドのインストールと、Credentials情報の設定を行�
 
 **＊実装例＊**
 
-CloudFrontに保存されているCacheを削除する。フロントエンドをデプロイしたとしても、CloudFrontに保存されているCacheを削除しない限り、CacheがHitしたユーザには過去のファイルがレスポンスされてしまう。そのため、S3へのデプロイ後に、Cacheを削除する必要がある。
+CloudFrontに保存されているキャッシュを削除する。フロントエンドをデプロイしたとしても、CloudFrontに保存されているキャッシュを削除しない限り、キャッシュがHitしたユーザには過去のファイルがレスポンスされてしまう。そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
 
 ```yaml
 version: 2.1
@@ -1607,7 +1607,7 @@ jobs:
 
 #### ・jobs：deploy-update-service（ローリングアップデート使用時）
 
-ECRイメージを使用して、新しいリビジョン番号のタスク定義を作成し、またこれを使用してコンテナをデプロイする。``` verify-revision-is-deployed```オプションを使用して、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが「Runnning」にならずに「Stopped」になってしまう場合や、既存のタスクが「Stopped」にならずに「Running」のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
+ECRイメージを使用して、新しいリビジョン番号のタスク定義を作成し、またこれを使用してコンテナをデプロイする。``` verify-revision-is-deployed```オプションを使用して、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
 
 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -1714,7 +1714,7 @@ workflows:
 
 #### ・jobs：run-task
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは「```\```」を「```\\```」にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 
@@ -1773,7 +1773,7 @@ workflows:
 
 #### ・jobs：deploy
 
-S3にソースコードとappspecファイルをデプロイできる。また、CodeDeployを用いて、これをEC2にデプロイできる。
+S3にソースコードとappspecファイルをデプロイできる。また、CodeDeployを用いて、これをEC2インスタンスにデプロイできる。
 
 **＊実装例＊**
 

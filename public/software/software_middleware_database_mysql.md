@@ -373,7 +373,7 @@ FROM
 -- ユーザ別のホスト名の確認
 SELECT * FROM mysql.user;
 
--- ホストが「%」だった場合
+-- ホストが『%』だった場合
 DROP USER { ユーザ名 }@`%`;
 ```
 
@@ -419,7 +419,7 @@ GRANT SELECT ON {DB名}.* TO "{ ユーザ名 }";
 SHOW GRANTS FOR "{ ユーザ名 }";
 ```
 
-作成しただけで権限を何も付与してないユーザの場合、「データベースサーバ内の全データベースに関して、全権限なし」を表す```USAGE```として表示される。
+作成しただけで権限を何も付与してないユーザの場合、『データベースサーバ内の全データベースに関して、全権限なし』を表す```USAGE```として表示される。
 
 ```sql
 GRANT USAGE ON *.* TO "{ ユーザー名 }";
@@ -460,7 +460,7 @@ RENAME USER "{ 古いユーザ名 }" TO "{ 新しいユーザ名 }";
 
 CREATEで以下の４種類を作成する。パスワードは、例えば`8`文字のパスワードを割り当てる。
 
-```mysql
+```sql
 CREATE USER "{ ユーザ名 }" IDENTIFIED BY "{ パスワード }";
 ```
 
@@ -483,7 +483,7 @@ CREATE USER "{ ユーザ名 }" IDENTIFIED BY "{ パスワード }";
 
 使用するDBに対する全権限を付与する。
 
-```mysql
+```sql
 -- DB名をクオーテーーションで囲う必要はない
 GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 ```
@@ -493,7 +493,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 使用するDBに対する全権限を付与する。
 
 
-```mysql
+```sql
 -- DB名をクオーテーションで囲う必要はない
 GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 ```
@@ -503,7 +503,7 @@ GRANT ALL PRIVILEGES ON {DB名}.* TO '{ ユーザー名 }'
 使用するDBに対するSELECT権限を付与する。
 
 
-```mysql
+```sql
 -- DB名をクオーテーションで囲う必要はない
 GRANT SELECT ON {DB名}.* TO '{ ユーザ名 }';
 ```
@@ -1014,7 +1014,7 @@ WHERE
 
 プライマリキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたインデックスのこと。
 
-```mysql
+```sql
 CREATE INDEX foo_index
     ON foo_table (id)
 ```
@@ -1023,7 +1023,7 @@ CREATE INDEX foo_index
 
 プライマリキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたインデックスのこと。
 
-```mysql
+```sql
 CREATE INDEX foo_index
     ON foo_table (foo_column)
 ```
@@ -1034,7 +1034,7 @@ CREATE INDEX foo_index
 
 参考：https://qiita.com/towtow/items/4089dad004b7c25985e3
 
-```mysql
+```sql
 CREATE INDEX foo_index
     ON foo_table (foo_column, bar_column, ...)
 ```
@@ -1043,7 +1043,7 @@ CREATE INDEX foo_index
 
 以下のような```foo```テーブルがあり、```name```カラムと```address```カラムを基準に並び替えた```foo_index```という複合インデックス名を作成する。
 
-```mysql
+```sql
 CREATE INDEX foo_index
     ON foo_table (name, address)
 ```

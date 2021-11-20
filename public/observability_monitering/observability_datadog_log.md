@@ -133,7 +133,7 @@ FROM data/agent:latest
 
 Laravelの場合
 
-```shell
+```bash
 {
   "container_id": "*****",
   "container_name": "/prd-foo-ecs-container",

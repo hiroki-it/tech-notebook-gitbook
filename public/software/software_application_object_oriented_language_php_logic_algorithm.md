@@ -10,7 +10,7 @@
 
 ## 01. 並び替えのアルゴリズム
 
-例えば、次のような表では、どのような仕組みで「昇順」「降順」への並び替えが行われるのだろうか。
+例えば、次のような表では、どのような仕組みで『昇順』『降順』への並び替えが行われるのだろうか。
 
 ![ソートの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソートの仕組み.gif)
 
@@ -269,7 +269,7 @@ var_dump($result);
 
 ### 線形探索法
 
-  今回は、配列内で「６」を探す。
+  今回は、配列内で『６』を探す。
 
 ![線形探索法1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/線形探索法1.gif)
 
@@ -283,7 +283,7 @@ var_dump($result);
 
 ### 二分探索法
 
-  前提として、ソートによって、すでにデータが整列させられているとする。今回は、配列内で「６」を探す。
+  前提として、ソートによって、すでにデータが整列させられているとする。今回は、配列内で『６』を探す。
 
 ![二分探索法1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/二分探索法1.gif)
 

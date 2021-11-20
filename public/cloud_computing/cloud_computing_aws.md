@@ -34,7 +34,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 | ターゲットの指定方法 | 補足                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| インスタンス         | ターゲットが、EC2でなければならない。                        |
+| インスタンス         | ターゲットが、EC2インスタンスでなければならない。                        |
 | IPアドレス           | ターゲットのパブリックIPアドレスが、静的でなければならない。 |
 | Lambda               | ターゲットが、Lambdaでなければならない。                     |
 
@@ -55,7 +55,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・問題
 
-ALBからEC2へのルーティングをHTTPプロトコルとした場合、アプリケーション側で、HTTPSプロトコルを用いた処理ができなくなる。そこで、クライアントからALBに対するリクエストのプロトコルがHTTPSだった場合、Webサーバまたはアプリケーションにおいて、ルーティングのプロトコルをHTTPSと見なすように対処する。
+ALBからEC2インスタンスへのルーティングをHTTPプロトコルとした場合、アプリケーション側で、HTTPSプロトコルを用いた処理ができなくなる。そこで、クライアントからALBに対するリクエストのプロトコルがHTTPSだった場合、Webサーバまたはアプリケーションにおいて、ルーティングのプロトコルをHTTPSと見なすように対処する。
 
 ![ALBからEC2へのリクエストのプロトコルをHTTPSと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ALBからEC2へのリクエストのプロトコルをHTTPSと見なす.png)
 
@@ -92,7 +92,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 #### ・割り当てられるプライベートIPアドレス範囲
 
-ALBに割り当てられるIPアドレス範囲には、VPCのものが適用される。そのため、EC2のSecurity Groupでは、VPCのIPアドレス範囲を許可するように設定する必要がある。
+ALBに割り当てられるIPアドレス範囲には、VPCのものが適用される。そのため、EC2インスタンスのSecurity Groupでは、VPCのIPアドレス範囲を許可するように設定する必要がある。
 
 #### ・ALBのセキュリティグループ
 
@@ -170,7 +170,7 @@ $ amplify publish
 
 #### ・amplify.ymlファイル
 
-リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG／SSRの両モードでビルド＆デプロイが可能である。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが構築され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが構築され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの稼働環境が必要になるため、LambdaやCogniteが構築される。
+リポジトリのルートに```amplify.yml```ファイルを配置する。Next.jsではSSG／SSRの両モードでビルド＆デプロイできる。```package.json```ファイルで使用される```next```コマンドに応じて、SSGまたはSSRのいずれかのインフラが構築され、デプロイされる。SSGの場合、裏側ではS3、CloudFront、Route53などが構築され、静的ホスティングが実行される。SSRの場合、フロントエンドだけでなくバックエンドの稼働環境が必要になるため、LambdaやCogniteが構築される。
 
 参考：
 
@@ -225,7 +225,7 @@ frontend:
     discard-paths: yes
     # ビルドのアーティファクトを配置するディレクトリ 
     baseDirectory: dist
-  # キャッシュとして保存するディレクトリ
+  # 指定したディレクトリのキャッシュを作成
   cache:
     paths:
       - node_modules/**/*
@@ -434,7 +434,7 @@ API Gateway側でプロキシ統合を有効化すると、API Gatewayを経由�
     },
     "requestContext": {
         Request
-        context,
+        context
         including
         authorizer-returned
         key-value
@@ -728,7 +728,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 ### CloudFrontとは
 
-クラウドリバースプロキシサーバとして働く。VPCの外側（パブリックネットワーク）に設置されている。オリジンサーバ（コンテンツ提供元）をS3とした場合、動的コンテンツへのリクエストをEC2に振り分ける。また、静的コンテンツへのリクエストをCacheし、その上でS3へ振り分ける。次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。
+クラウドリバースプロキシサーバとして働く。VPCの外側（パブリックネットワーク）に設置されている。オリジンサーバ（コンテンツ提供元）をS3とした場合、動的コンテンツへのリクエストをEC2に振り分ける。また、静的コンテンツへのリクエストをキャッシュし、その上でS3へ振り分ける。次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。
 
 ![AWSのクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CloudFrontによるリクエストの振り分け.png)
 
@@ -756,7 +756,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | Behavior                 | オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。 |      |
 | ErrorPage                | 指定したオリジンから、指定したファイルのレスポンスを返信する。 |      |
 | Restriction              |                                                              |      |
-| Invalidation             | CloudFrontに保存されているCacheを削除できる。                |      |
+| Invalidation             | CloudFrontに保存されているキャッシュを削除できる。                |      |
 
 #### ・General
 
@@ -783,7 +783,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 
 #### ・Behavior
 
-何に基づいたCacheを行うかについては、★マークの項目で制御できる。★マークで、各項目の全て値が、過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。キャッシュ判定時のパターンを減らし、HIT率を改善するために、★マークで可能な限り『None』を選択した方が良い。最終的に、対象のファイルがCloudFrontのCacheの対象となっているかは、レスポンスのヘッダーに含まれる『```X-Cache:```』が『```Hit from cloudfront```』、『```Miss from cloudfront```』のどちらで、Cacheの使用の有無を判断できる。その他の改善方法は、以下リンク先を参考にせよ。
+キャッシュを作成するか否かのルールについては、★マークの項目で制御できる。★マークで、各項目の全て値が、過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。キャッシュ判定時のパターンを減らし、HIT率を改善するために、★マークで可能な限り『None』を選択した方が良い。最終的に、対象のファイルがCloudFrontのキャッシュの対象となっているかは、レスポンスのヘッダーに含まれる『```X-Cache:```』が『```Hit from cloudfront```』、『```Miss from cloudfront```』のどちらで、キャッシュの使用の有無を判断できる。その他の改善方法は、以下リンク先を参考にせよ。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters
 
@@ -794,18 +794,14 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | Origin or Origin Group                                       | Behaviorを行うオリジンを設定する。                           |                                                              |
 | Viewer Protocol Policy                                       | HTTP／HTTPSのどちらを受信するか、またどのように変換して転送するかを設定 | ・```HTTP and HTTPS```：両方受信し、そのまま転送<br>・```Redirect HTTP to HTTPS```：両方受信し、HTTPSで転送<br>・```HTTPS Only```：HTTPSのみ受信し、HTTPSで転送 |
 | Allowed HTTP Methods                                         | リクエストのHTTPメソッドのうち、オリジンへの転送を許可するものを設定 | ・パスパターンが静的ファイルへのリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルへのリクエストの場合、全てのメソッドを許可。 |
-| ★Cache Based on Selected Request Headers<br>（★については表上部参考） | リクエストヘッダーのうち、オリジンへの転送を許可し、またCacheの対象とするものを設定する。 | ・各ヘッダー転送の全拒否、一部許可、全許可を設定できる。<br>・全拒否：全てのヘッダーの転送を拒否し、Cacheの対象としない。動的になりやすい値を持つヘッダー（Accept-Datetimeなど）を一切使用せずに、それ以外のクエリ文字やCookieでCacheを判定するようになるため、同一と見なすリクエストが増え、HIT率改善につながる。<br>・一部転送：指定したヘッダーのみ転送を許可し、Cacheの対象とする。<br>・全許可：全てのヘッダーがCacheの対象となる。しかし、日付に関するヘッダーなどの動的な値をCacheの対象としてしまうと。同一と見なすリクエストがほとんどなくなり、HITしなくなる。そのため、この設定でCacheは実質無効となり、『対象としない』に等しい。 |
+| ★Cache Based on Selected Request Headers<br>（★については表上部参考） | リクエストヘッダーのうち、オリジンへの転送を許可し、またキャッシュの対象とするものを設定する。 | ・各ヘッダー転送の全拒否、一部許可、全許可を設定できる。<br>・全拒否：全てのヘッダーの転送を拒否し、キャッシュの対象としない。動的になりやすい値を持つヘッダー（Accept-Datetimeなど）を一切使用せずに、それ以外のクエリ文字やCookieでキャッシュを判定するようになるため、同一と見なすリクエストが増え、HIT率改善につながる。<br>・一部転送：指定したヘッダーのみ転送を許可し、キャッシュの対象とする。<br>・全許可：全てのヘッダーがキャッシュの対象となる。しかし、日付に関するヘッダーなどの動的な値をキャッシュの対象としてしまうと。同一と見なすリクエストがほとんどなくなり、HITしなくなる。そのため、この設定でキャッシュは実質無効となり、『対象としない』に等しい。 |
 | Whitelist Header                                             | Cache Based on Selected Request Headers を参考にせよ。       | ・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている。 |
-| Object Caching                                               | CloudFrontにコンテンツのCacheを保存しておく秒数を設定する。  | ・Origin Cache ヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。 |
-| TTL                                                          | CloudFrontにCacheを保存しておく秒数を詳細に設定する。        | ・Min、Max、Default、の全てを0秒とすると、Cacheを無効化できる。<br>・『Cache Based on Selected Request Headers = All』としている場合、Cacheが実質無効となるため、最小TTLはゼロでなければならない。 |
-| ★Farward Cookies<br>（★については表上部参考）               | Cookie情報のキー名のうち、オリジンへの転送を許可し、Cacheの対象とするものを設定する。 | ・Cookie情報キー名転送の全拒否、一部許可、全許可を設定できる。<br>・全拒否：全てのCookieの転送を拒否し、Cacheの対象としない。Cookieはユーザごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でCacheを判定するようになるため、同一と見なすリクエストが増え、HIT率改善につながる。<br>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると、CloudFrontに保存されたCacheがHITしない。CloudFrontはキー名／値を保持するため、変化しやすいキー名／値は、オリジンに転送しないように設定する。例えば、GoogleAnalyticsのキー名（```_ga```）の値は、ブラウザによって異なるため、１ユーザがブラウザを変えるたびに、異なるCacheが生成されることになる。そのため、ユーザを一意に判定することが難しくなってしまう。GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので、オリジンにとっても基本的に不要である。<br>・セッションIDはCookieヘッダーに設定されているため、フォーム送信に関わるパスパターンでは、セッションIDのキー名を許可する必要がある。 |
-| ★Query String Forwarding and Caching<br>（★については表上部参考） | クエリストリングのうち、オリジンへの転送を許可し、Cacheの対象とするものを設定する。 | ・クエリストリング転送とCacheの、全拒否、一部許可、全許可を選択できる。全拒否にすると、Webサイトにクエリストリングをリクエストできなくなるので注意。<br>・異なるクエリパラメータを、別々のCacheとして保存するかどうかを設定できる。 |
+| Object Caching                                               | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。  | ・Origin Cache ヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。 |
+| TTL                                                          | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。        | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Cache Based on Selected Request Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。 |
+| ★Farward Cookies<br>（★については表上部参考）               | Cookie情報のキー名のうち、オリジンへの転送を許可し、キャッシュの対象とするものを設定する。 | ・Cookie情報キー名転送の全拒否、一部許可、全許可を設定できる。<br>・全拒否：全てのCookieの転送を拒否し、キャッシュの対象としない。Cookieはユーザごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、HIT率改善につながる。<br>・リクエストのヘッダーに含まれるCookie情報（キー名／値）が変動していると、CloudFrontに保存されたキャッシュがHITしない。CloudFrontはキー名／値を保持するため、変化しやすいキー名／値は、オリジンに転送しないように設定する。例えば、GoogleAnalyticsのキー名（```_ga```）の値は、ブラウザによって異なるため、１ユーザがブラウザを変えるたびに、異なるキャッシュが生成されることになる。そのため、ユーザを一意に判定することが難しくなってしまう。GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので、オリジンにとっても基本的に不要である。<br>・セッションIDはCookieヘッダーに設定されているため、フォーム送信に関わるパスパターンでは、セッションIDのキー名を許可する必要がある。 |
+| ★Query String Forwarding and Caching<br>（★については表上部参考） | クエリストリングのうち、オリジンへの転送を許可し、キャッシュの対象とするものを設定する。 | ・クエリストリング転送とキャッシュの、全拒否、一部許可、全許可を選択できる。全拒否にすると、Webサイトにクエリストリングをリクエストできなくなるので注意。<br>・異なるクエリパラメータのキャッシュを別々に作成するかどうかを設定できる。 |
 | Restrict Viewer Access                                       | リクエストの送信元を制限するかどうかを設定できる。           | セキュリティグループで制御できるため、ここでは設定しなくてよい。 |
 | Compress Objects Automatically                               | レスポンス時にgzipを圧縮するかどうかを設定                   | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するかどうかを設定する。設定しない場合、圧縮せずにレスポンスを送信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。 |
-
-#### ・Invalidation
-
-TTL秒によるCacheの自動削除を待たずに、手動でCacheを削除できる。全てのファイルのCacheを削除したい場合は『```/*```』、特定のファイルのCacheを削除したい場合は『```/<ファイルへのパス>```』、を指定する。CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもCacheが残っていると、エラーページが表示されてしまうため、作業後には必ずCacheを削除する。
 
 #### ・オリジンに対するリクエストメッセージの構造
 
@@ -849,11 +845,53 @@ CloudFront-Forwarded-Proto: https
 
 CloudFrontとオリジン間でHTTPS通信を行う場合、両方にドメイン証明書を割り当てる必要がある。割り当てたとしても、以下の条件を満たさないとHTTPS通信を行うことはできない。CLoudFronからオリジンにHostヘッダーを転送しない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。一方で、Hostヘッダーを転送しない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、Hostヘッダーの値と一致するドメイン名が含まれている必要がある。
 
-#### ・キャッシュの時間の決まり方
+#### ・キャッシュの有効期間
 
-キャッシュの時間は、リクエストヘッダー（```Cache-Control```、```Expires```）の値とCloudFrontの設定（最大最小デフォルトTTL）の組み合わせによって決まる。ちなみに、CloudFrontの最大最小デフォルトTTLを全て０秒にすると、キャッシュを完全に無効化できる。
+キャッシュの有効期間は、リクエストヘッダー（```Cache-Control```、```Expires```）の値とCloudFrontの設定（最大最小デフォルトTTL）の組み合わせによって決まる。ちなみに、CloudFrontの最大最小デフォルトTTLを全て０秒にすると、キャッシュを完全に無効化できる。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist
+
+#### ・Invalidation（キャッシュの削除）
+
+TTL秒によるキャッシュの自動削除を待たずに、手動でキャッシュを削除できる。全てのファイルのキャッシュを削除したい場合は『```/*```』、特定のファイルのキャッシュを削除したい場合は『```/<ファイルへのパス>```』、を指定する。CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまうため、作業後には必ずキャッシュを削除する。
+
+<br>
+
+### クエリストリングキャッシュのヒット率の向上
+
+#### ・クエリストリングキャッシュ
+
+CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合に、キャッシュをレスポンスとして返信する。キャッシュ作成のルールを理解すれば、キャッシュのヒット率を高められる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching
+
+#### ・クエリストリングの順番を固定する
+
+リクエスト時のクエリストリングの順番が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。そのため、クエリストリングの順番を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
+
+```http
+GET https://example.co.jp?fooId=1&barId=2
+```
+
+```http
+GET https://example.co.jp?barId=2&fooId=1
+```
+
+#### ・クエリストリングの大文字小文字表記を固定する
+
+リクエスト時のクエリストリングの大文字小文字表記が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。そのため、クエリストリングの大文字小文字表記を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
+
+```http
+GET https://example.co.jp?fooId=1&barId=2
+```
+
+```http
+GET https://example.co.jp?FooId=1&BarId=2
+```
+
+#### ・署名付きURLと同じクエリストリングを使用しない
+
+S3には、署名付きURLを発行する機能がある。CloudFrontの仕様では、署名付きURLに含まれる```Expires```、```Key-Pair-Id```、```Policy```、```Signature```といったクエリストリングを削除したうえで、オリジンにリクエストを転送する。これらのパラメータは、キャッシュヒットの判定要素として使えない。そのため、URLの設計時にこれらを使用しないようにする。
 
 <br>
 
@@ -1517,37 +1555,7 @@ Resources:
 
 <br>
 
-## 11. EBS：Elastic Block Storage
-
-### EBSとは
-
-クラウド内蔵ストレージとして働く。
-
-<br>
-
-### 設定項目
-
-#### ・ストレージの種類とボリュームタイプ
-
-| ストレージの種類 | ボリューム名            |
-| ---------------- | ----------------------- |
-| SSD              | 汎用SSD                 |
-| SSD              | プロビジョンド IOPS SSD |
-| HDD              | スループット最適化 HDD  |
-| HDD              | Cold HDD                |
-
-#### ・最小ボリューム
-
-踏み台サーバを構築する時、できるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。
-
-| OS           | 仮想メモリ | ボリュームサイズ |
-| ------------ | ---------- | ---------------- |
-| Amazon Linux | t2.micro   | 8                |
-| CentOS       | t2.micro   | 10               |
-
-<br>
-
-## 12. EC2：Elastic Computer Cloud
+## 11. EC2：Elastic Computer Cloud
 
 ### EC2とは
 
@@ -1563,9 +1571,22 @@ Resources:
 
 | 設定項目                  | 説明                                              | 補足                                                         |
 | ------------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| AMI：Amazonマシンイメージ | OSを選択する。                                    | ベンダー公式のものを選択すること。（例：CentOSのAMI一覧 https://wiki.centos.org/Cloud/AWS） |
-| インスタンスの詳細設定    | EC2インスタンスの設定する。                       | ・インスタンス自動割り当てパブリックにて、EC2に動的パブリックIPを割り当てる。EC2インスタンス構築後に有効にできない。<br>・終了保護は必ず有効にすること。 |
-| ストレージの追加          | EBSボリュームを設定する。                         | 一般的なアプリケーションであれば、20～30GiBでよい。踏み台サーバの場合、最低限で良いため、OSの下限までサイズを下げる。（例：AmazonLinuxの下限は8GiB、CentOSは10GiB） |
+| AMI：Amazonマシンイメージ | AMIを選択する。                                   |                                                              |
+| インスタンスタイプ        |                                                   |                                                              |
+| インスタンス数            |                                                   |                                                              |
+| ネットワーク              |                                                   |                                                              |
+| サブネット                |                                                   |                                                              |
+| 自動割り当てIPアドレス    |                                                   | EC2インスタンス構築後に有効にできない。                      |
+| キャパシティの予約        |                                                   |                                                              |
+| ドメイン結合ディレクトリ  |                                                   |                                                              |
+| IAMロール                 | EC2に付与するIAMロールを設定する。                |                                                              |
+| シャットダウン動作        |                                                   |                                                              |
+| 終了保護                  | EC2インスタンスの削除を防ぐ。                     | 必ず有効にすること。                                         |
+| モニタリング              |                                                   |                                                              |
+| テナンシー                |                                                   |                                                              |
+| Elastic Inference         |                                                   |                                                              |
+| クレジット仕様            |                                                   |                                                              |
+| ストレージ                | EC2インスタンスのストレージを設定する。           |                                                              |
 | キーペア                  | EC2の秘密鍵に対応した公開鍵をインストールできる。 | キーペアに割り当てられるフィンガープリント値を調べることで、公開鍵と秘密鍵の対応関係を調べられる。 |
 
 <br>
@@ -1583,9 +1604,9 @@ Resources:
 
 <br>
 
-### スペック
+### インスタンスタイプ
 
-#### ・インスタンスタイプ
+#### ・世代と大きさ
 
 『世代』と『大きさ』からなる名前で構成される。世代の数字が上がるにつれて、より小さな世代と同じ大きさであっても、パフォーマンスと低コストになる。AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。例えば、CentOS 6系のAMIでは、```t3.small```を選択できない。
 
@@ -1596,15 +1617,42 @@ Resources:
 | 世代   | ```t2```、```t3```、```t3a```、```t4g```、```a1```           |
 | 大きさ | ```nano```、```small```、```medium```、```large```、```xlarge```、```2xlarge``` |
 
-#### ・ストレージ
-
-EBSの説明を参考にせよ。
-
 #### ・CPUバーストモード
 
 バーストモードのインスタンスタイプの場合、一定水準のベースラインCPU使用率を提供しつつ、これを超過できる。CPU使用率がベースラインを超えたとき、超過した分だけEC2はCPUクレジットを消費する。CPUクレジットは一定の割合で回復する。蓄積できる最大CPUクレジット、クレジットの回復率、ベースラインCPU使用率は、インスタンスタイプによって異なる。詳しくは以下のリンク先を参考にせよ。
 
 参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+
+<br>
+
+### ルートデバイスボリューム
+
+#### ・ルートデバイスボリュームとは
+
+EC2インスタンスは、ルートデバイスボリュームからデータを読み込んで起動する。ルートデバイスボリュームには次の種類がある。
+
+#### ・EBSボリューム
+
+![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_ebs-backed-instance.png)
+
+EBSで管理されているルートデバイスボリュームで、推奨の方法である。インスタンスストアボリュームとは異なり、コンピューティングとして機能するEC2インスタンスと、ストレージとして機能するEBSが分離されている。そのため、EBSボリュームの永続化を設定した場合に。EC2インスタンスが誤って削除されてしまったとしても、データを守ることができる。また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。ただし、
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+
+#### ・インスタンスストアボリューム
+
+![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ec2_instance-store-backed-instance.png)
+
+インスタンスストアで管理されているルートデバイスボリュームで、非推奨の方法である。インスタンスストアボリュームは、EC2インスタンスが終了すると一緒に削除されてしまう。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
 
 <br>
 
@@ -1628,6 +1676,121 @@ $ openssl pkcs8 \
 クライアントのSSHプロトコルのパケットは、まずインターネットを経由して、インターネットゲートウェイを通過する。その後、Route53、ALBを経由せず、そのままEC2へ向かう。
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
+
+<br>
+
+## 11-02. EC2 based on AMI：Amazon Machine Image
+
+### AMIとは
+
+EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）が内蔵されたテンプレートのこと。
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+
+<br>
+
+### AMIタイプ
+
+#### ・EBS-backed AMI
+
+EBSボリュームを持つEC2インスタンスを構築するAMIのこと。
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+#### ・instance store-backed AMI
+
+インスタンスストアボリュームを持つEC2インスタンスを構築するAMIのこと。
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+
+<br>
+
+### AMI OS
+
+#### ・Amazon Linux
+
+#### ・CentOS
+
+ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。
+
+参考： https://wiki.centos.org/Cloud/AWS
+
+<br>
+
+## 11-03. EC2 with EBS：Elastic Block Storage
+
+### EBSとは
+
+EC2のクラウド内蔵ストレージとして働く。
+
+<br>
+
+### 設定項目
+
+#### ・EBSボリュームタイプとストレージの関係
+
+| EBSボリュームタイプ     | ストレージの種類 |
+| ----------------------- | ---------------- |
+| 汎用SSD                 | SSD              |
+| プロビジョンド IOPS SSD | SSD              |
+| スループット最適化 HDD  | HDD              |
+| Cold HDD                | HDD              |
+
+<br>
+
+### EBSボリュームの選び方
+
+#### ・下限EBSボリュームサイズ
+
+一般的なアプリケーションであれば、最低限20～30GiBのEBSボリュームサイズがあるとよい。しかし、踏み台サーバの場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなボリュームを組み込む必要がない。そこでできるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。OSによって下限ボリュームサイズが異なることに注意する。
+
+| OS           | 仮想メモリ | 下限EBSボリュームサイズ |
+| ------------ | ---------- | ----------------------- |
+| Amazon Linux | t2.micro   | 8                       |
+| CentOS       | t2.micro   | 10                      |
+
+<br>
+
+### EBSボリュームの永続化
+
+#### ・EBSボリュームの永続化とは
+
+EC2の初期構築時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+
+#### ・EC2インスタンスの構築後に永続化する
+
+EC2インスタンスの構築後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。
+
+```bash
+aws ec2 modify-instance-attribute \
+  --instance-id <インスタンスID> 
+  --block-device-mappings \
+  file://example.json
+```
+
+```bash
+# example.jsonファイル
+[
+  {
+    "DeviceName": "/dev/sda1",
+    "Ebs": {
+      "DeleteOnTermination": false
+    }
+  }
+]
+```
+
+#### ・注意点
+
+EC2インスタンスにオートスケーリングを適用している場合は、EBSボリュームを永続化しない方が良いかもしれない。オートスケーリングのスケールイン時に、削除されたEC2インスタンスのEBSボリュームが削除されないため、未使用のEBSボリュームがどんどん溜まっていく問題が起こる。
+
+参考：https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
+
+<br>
+
+### ボリュームの拡張
 
 <br>
 
@@ -2134,7 +2297,7 @@ Dockerのbridgeネットワークに相当する。
 
 #### ・awsvpcモード
 
-awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、Primary プライベートIPアドレスを割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は、転送元コンテナにて、転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、プロセスのリッスンするポートを指定するだけでコンテナ間通信が可能である。例えば、NginxコンテナからPHP-FPMコンテナにリクエストを転送するためには、PHP-FPMプロセスが```9000```番ポートをリッスンし、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
+awsの独自ネットワークモード。タスクはElastic Networkインターフェースと紐付けられ、Primary プライベートIPアドレスを割り当てられる。同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる（推測ではあるが、Fargate環境でコンテナのホストとなるEC2インスタンスにlocalhostインターフェースが紐付けられる）。これにより、コンテナからコンテナにリクエストを転送するとき（例：NginxコンテナからPHP-FPMコンテナへの転送）は、転送元コンテナにて、転送先のアドレスを『localhost（```127.0.0.1```）』で指定すれば良い。また、awsvpcモードの独自の仕組みとして、同じタスク内であれば、互いにコンテナポートを開放せずとも、プロセスのリッスンするポートを指定するだけで、コンテナ間で通信ができる。例えば、NginxコンテナからPHP-FPMコンテナにリクエストを転送するためには、PHP-FPMプロセスが```9000```番ポートをリッスンし、さらにコンテナが```9000```番ポートを開放する必要がある。しかし、awsvpcモードではコンテナポートを開放する必要はない。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/fargate-task-networking.html
 
@@ -2297,7 +2460,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 ### ElasticCacheとは
 
-アプリケーションの代わりに、セッション、クエリCache、を管理する。RedisとMemcachedがある。
+アプリケーションの代わりに、セッション、クエリキャッシュ、を管理する。RedisとMemcachedがある。
 
 <br>
 
@@ -2334,7 +2497,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 <br>
 
-### クエリCache管理機能
+### クエリキャッシュ管理機能
 
 #### ・仕組み
 
@@ -2348,7 +2511,7 @@ RDSに対するSQLと読み出されたデータを、キャッシュとして�
 SELECT * FROM users;
 ```
 
-（２）始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、Cacheが無いことがアプリケーションに返却する。
+（２）始めて実行されたSQLの場合、RedisはSQLをキーとして保存し、キャッシュが無いことがアプリケーションに返却する。
 
 （３）アプリケーションはRDSに対してSQLを実行する。
 
@@ -2398,7 +2561,7 @@ SELECT * FROM users;
 {"id"=>"10", "name"=>"jonny"}
 ```
 
-#### ・クエリCacheの操作
+#### ・クエリキャッシュの操作
 
 ```bash
 # Redis接続コマンド
@@ -3633,7 +3796,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 | 設定項目                | 説明                                                         | 補足                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| エンジンのオプション    | DBエンジンの種類を設定する。                                 | ・Aurora<br>・RDS MySQL<br>・PostgreSQL<br>・Oracle          |
+| エンジンタイプ          | DBエンジンの種類を設定する。                                 | ・Aurora<br>・RDS MySQL<br>・PostgreSQL<br>・Oracle          |
 | エディション            | エンジンバージョンでAuroraを選んだ場合の互換性を設定する。   | ・Aurora MySQL<br>・Aurora PostgreSQL<br>                    |
 | エンジンバージョン      | DBエンジンのバージョンを指定する。DBクラスター内の全てのDBインスタンスに適用される。 | ・```SELECT AURORA_VERSION()```を使用して、エンジンバージョンを確認できる。 |
 | DBクラスター識別子      | DBクラスター名を設定する。                                   | インスタンス名は、最初に設定できず、RDSの構築後に設定できる。 |
@@ -3664,15 +3827,15 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 #### ・Aurora DBクラスターとは
 
-DBエンジンにAuroraを選んだ場合にのみ使用できる。DBインスタンスとクラスターボリュームから構成されている。コンピューティングを提供するインスタンスとストレージを提供するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守ることができる。
+DBエンジンにAuroraを選んだ場合にのみ使用できる。DBインスタンスとクラスターボリュームから構成されている。コンピューティングとして機能するDBインスタンスと、ストレージとして機能するクラスターボリュームが分離されているため、DBインスタンスが誤って全て削除されてしまったとしても、データを守ることができる。また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
 
 ![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/aurora-db-cluster.png)
 
-#### ・空のDBクラスター
+#### ・空のAurora DBクラスター
 
-コンソール画面にて、DBクラスター内の全てのDBインスタンスを削除すると、DBクラスターも自動で削除される。一方で、AWS-APIをコールして全てのDBインスタンスを削除する場合、DBクラスターは自動で削除されずに、空の状態になる。Terraformを用いてDBクラスターを構築する時に、これに失敗するとDBクラスターが空になるのは、このためである。
+コンソール画面にて、Aurora DBクラスター内の全てのDBインスタンスを削除すると、Aurora DBクラスターも自動で削除される。一方で、AWS-APIをコールして全てのDBインスタンスを削除する場合、Aurora DBクラスターは自動で削除されずに、空の状態になる。例えば、Terraformを用いてAurora DBクラスターを構築する時に、インスタンスの構築に失敗するとAurora DBクラスターが空になる、これは、TerraformがAWS-APIをコールした構築を行っているためである。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
 
@@ -3757,7 +3920,7 @@ DBインスタンスのフェイルオーバーを利用してダウンタイム
 
 エンジンバージョンのアップグレードは両方のDBインスタンスで同時に実行する必要があるため、フェイルオーバーを利用できず、ダウンタイムを最小化できない。
 
-#### ・ダウンタイムの調査書と計測例
+#### ・ダウンタイムの調査書
 
 以下のような報告書のもと、調査と対応を行う。
 
@@ -3796,11 +3959,13 @@ DBインスタンスのフェイルオーバーを利用してダウンタイム
 本番環境での対応で起こった想定外の結果を記載する。
 ```
 
-アプリケーションの目視ではなく、RDSに直接クエリを送信し、レスポンスとRDSイベントログから、ダウンタイムを計測する。
+#### ・計測例
+
+アプリケーションにリクエストを送信する方法と、RDSに直接クエリを送信する方法がある。レスポンスとRDSイベントログから、ダウンタイムを計測する。
 
 **＊実装例＊**
 
-踏み台サーバを経由してRDSに接続し、現在時刻を取得するSQLを送信する。平常アクセス時の再現テストも同時に実行することで、より正確なダウンタイムを取得するようにする。また、ヘルスチェックの時刻を正しくロギングできるように、ローカルPCから時刻を取得する。
+踏み台サーバを経由してRDSに接続し、現在時刻を取得するSQLを送信する。この時、```for```文や```watch```コマンドを使用する。ただ、```watch```コマンドは標準でインストールされていない可能性がある。平常アクセス時の再現テストも同時に実行することで、より正確なダウンタイムを取得するようにする。また、ヘルスチェックの時刻を正しくロギングできるように、ローカルPCから時刻を取得する。
 
 ```bash
 #!/bin/bash
@@ -3817,12 +3982,34 @@ SQL="SELECT NOW();"
 
 ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
 
+# 約15分間コマンドを繰り返す。
 for i in {1..900};
 do
-  LOCAL_DATETIME=$(date +"%Y-%m-%d %H:%M:%S")
-  echo "---------- No. ${i} Local PC: ${LOCAL_DATETIME} ------------" >> health_check.txt
-  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1 & sleep 1
+  echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ------------" >> health_check.txt
+  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1
+  # 1秒待機する。
+  sleep 1
 done
+```
+
+```bash
+#!/bin/bash
+
+set -x
+
+BASTION_HOST=""
+BASTION_USER=""
+DB_HOST=""
+DB_PASSWORD=""
+DB_USER=""
+SECRET_KEY="~/.ssh/xxx.pem"
+SQL="SELECT NOW();"
+
+ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
+
+# 1秒ごとにコマンドを繰り返す。
+watch -n 1 'echo "---------- No. ${i} Local PC: $(date +"%Y-%m-%d %H:%M:%S") ------------" >> health_check.txt && \
+  echo ${SQL} | mysql -u ${DB_USER} -P 3306 -p${DB_PASSWORD} >> health_check.txt 2>&1'
 ```
 
 上記のシェルスクリプトにより、例えば次のようなログを取得できる。このログからは、```15:23:09 ~ 15:23:14```の間で、接続に失敗していることを確認できる。
@@ -4280,6 +4467,16 @@ DNSサーバによる名前解決は、ドメインを購入したドメイン�
   }
 ]
 ```
+
+<br>
+
+### 署名付きURL
+
+#### ・署名付きURLとは
+
+認証認可情報をパラメータに持つURLのこと。S3では、署名付きURLを発行し、S3へのアクセス権限を外部のユーザに一時的に付与する。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
 
 <br>
 
@@ -4960,7 +5157,7 @@ ECS Fargateをプライベートサブネットに置いた場合に、ECS Farga
 
 | 種類                     | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| EC2インスタンスとの紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
+| EC2との紐付け | 非推奨の方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 | ENIとの紐付け          | 推奨される方法である。<br>参考：https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 
 <br>

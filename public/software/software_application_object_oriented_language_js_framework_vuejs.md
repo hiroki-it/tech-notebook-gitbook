@@ -333,7 +333,7 @@ class Foo {
 
 ![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vueにおけるemitとv-onの連携.png)
 
-View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである「Props Down, Events Up」とは異なる概念なので注意する。
+View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
 ```vue
 v-on:{イベント名}="{イベントハンドラ関数（methods: 内にあるメソッド）}"

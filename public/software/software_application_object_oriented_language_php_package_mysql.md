@@ -112,7 +112,7 @@ $staff_name = $_POST["name"];
 $staff_pass = $_POST["pass"];
 
 
-// HTMLとして変数の内容を出力する際、「<」「>」などの特殊文字をエスケープ（無害化）
+// HTMLとして変数の内容を出力する際、『<』『>』などの特殊文字をエスケープ（無害化）
 $staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
 $staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 

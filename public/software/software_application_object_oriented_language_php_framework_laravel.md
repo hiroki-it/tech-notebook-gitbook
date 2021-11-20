@@ -228,7 +228,7 @@ return [
 
 ### Redis
 
-#### ・クエリCache管理
+#### ・クエリキャッシュ管理
 
 環境変数を```.env```ファイルに実装する必要がある。
 
@@ -5385,13 +5385,13 @@ class FooController extends Controller
 $ php artisan route:list
 ```
 
-#### ・Cache削除
+#### ・キャッシュ削除
 
 ```bash
-# ルーティングのCacheを削除
+# ルーティングのキャッシュを削除
 $ php artisan route:clear
 
-# 全てのCacheを削除
+# 全てのキャッシュを削除
 $ php artisan optimize:clear
 ```
 
@@ -6579,13 +6579,13 @@ class FooController extends Controller
 
 ### arisanによる操作
 
-#### ・Cacheの削除
+#### ・キャッシュの削除
 
 ```bash
-# ビューのCacheを削除
+# ビューのキャッシュを削除
 $ php artisan view:clear
 
-# 全てのCacheを削除
+# 全てのキャッシュを削除
 $ php artisan optimize:clear
 ```
 

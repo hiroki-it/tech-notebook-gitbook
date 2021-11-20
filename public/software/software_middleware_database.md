@@ -417,7 +417,7 @@ UPDATE処理競合問題を許容し、排他制御を使用しない選択肢�
 
 #### ・共有ロック
 
-DBにおいて、CRUDのREAD処理以外の処理を実行不可能にする。レコードのREAD処理を実行する時に、他者によってUPDATE処理されたくない場合に用いる。「共有」の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行うことができる。MySQLでは、『```SELECT ... LOCK IN SHARE MODE```』を使用する。
+DBにおいて、CRUDのREAD処理以外の処理を実行不可能にする。レコードのREAD処理を実行する時に、他者によってUPDATE処理されたくない場合に用いる。『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行うことができる。MySQLでは、『```SELECT ... LOCK IN SHARE MODE```』を使用する。
 
 参考：https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
