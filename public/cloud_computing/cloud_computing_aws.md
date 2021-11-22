@@ -1764,7 +1764,7 @@ EC2の初期構築時に、ストレージの追加の項目で『終了時に�
 EC2インスタンスの構築後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。
 
 ```bash
-aws ec2 modify-instance-attribute \
+$ aws ec2 modify-instance-attribute \
   --instance-id <インスタンスID> 
   --block-device-mappings \
   file://example.json
