@@ -435,7 +435,7 @@ $foo->hoge;
 
 #### ・```__set```メソッド
 
-定義されていないデータや、アクセス権のないデータに値を設定しようとした時に、代わりにコールされる。オブジェクトの不変性を実現するために使用される。オブジェクトの不変性は、以下のノートを参考にせよ。
+定義されていないデータや、アクセス権のないデータに値を設定しようとした時に、代わりにコールされる。オブジェクトの不変性を実現するために用いられる。オブジェクトの不変性は、以下のノートを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html
 

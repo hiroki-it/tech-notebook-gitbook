@@ -65,7 +65,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://www.php.net/manual/ja/exception.construct.php
 
-エラーコードはステータスコードと異なり、例外を識別するためのものである。異常系レスポンスのエラーコードデータとして使用される。混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。ステータスコードはコントローラにおけるレスポンス処理で割り当てる。
+エラーコードはステータスコードと異なり、例外を識別するためのものである。異常系レスポンスのエラーコードデータとして用いられる。混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。ステータスコードはコントローラにおけるレスポンス処理で割り当てる。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 

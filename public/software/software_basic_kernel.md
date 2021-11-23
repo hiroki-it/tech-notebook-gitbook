@@ -156,3 +156,62 @@ Round robinは、『総当たり』の意味。一定時間（タイムクウォ
 
 ![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/スプーリング.jpg)
 
+<br>
+
+### デバイスファイル
+
+#### ・デバイスファイルとは
+
+カーネルが実際の入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。```/dev```ディレクトリ以下に配置されており、各ファイルには具体的な入出力装置を示す番号（メジャー番号、マイナー番号）が割り当てられている。デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
+
+参考：
+
+- https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
+- https://qiita.com/angel_p_57/items/1faafa275525469788b4
+
+**＊例＊**
+
+```bash
+$ ls -la /dev
+total 10
+dr-xr-xr-x   3 root        wheel              4616 Oct 19 09:34 .
+drwxr-xr-x  20 root        wheel               640 Jan  1  2020 ..
+
+# ～ 中略 ～
+
+dr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 fd
+
+# ～ 中略 ～
+
+crw-rw-rw-   1 root        wheel            3,   2 Nov 23 17:35 null
+
+# ～ 中略 ～
+
+lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stderr -> fd/2
+lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stdin -> fd/0
+lr-xr-xr-x   1 root        wheel                 0 Oct 19 09:34 stdout -> fd/1
+
+# ～ 中略 ～
+
+crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
+
+# ～ 中略 ～
+```
+
+#### ・ブロックデバイス（ブロックスペシャルファイル）
+
+ある程度のまとまりでデータを扱う入出力装置にデータを転送するデバイスファイル。HHD（```/dev/hd```）、メモリ、などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+
+#### ・キャラクタデバイス（キャラクタスペシャルファイル）
+
+一文字単位でデータを扱う入出力装置にデータを転送するデバイスファイル。プリンター（```/dev/lp```）、モデム、ターミナル、などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+
+#### ・擬似デバイス
+
+デバイスファイルの中で、実際の装置に対応していないデバイスファイル。標準入出力（```/dev/stdin```、```/dev/stdout```）や破棄（```/dev/null```）などがある。
+
+参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB

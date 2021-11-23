@@ -152,8 +152,8 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターと機能を結ぶことで、機能がアクターに提供されることを表現する。 |                                  |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に、is-a-kind-ofな関係（グループとメンバーの関係性）があることを表現する。 |                                  |
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表現する。 | ```<< invoke >>```も同じである。 |
-| 先行：<br>```<< precedes >>```                               | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表現する。 |                                  |
-| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png) | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表現する。 |                                  |
+| 先行：<br>```<< precedes >>```                               | 矢印元の機能が必ず先に使用されてから、矢印先の機能が用いられることを表現する。 |                                  |
+| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_extend.png) | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが用いられることを表現する。 |                                  |
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_note.png) | 機能の前提事項や考慮事項を記載する。認証認可は全てのユースケースに関係するため、ノートに記載する。<br>参考：https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent |                                  |
 
 **＊例＊**

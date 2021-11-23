@@ -1,4 +1,4 @@
-# メモリ
+# メモリのアドレス空間管理
 
 ## はじめに
 
@@ -8,120 +8,7 @@
 
 <br>
 
-## 01. 物理メモリ（RAM + ROM）
-
-### 物理メモリの種類
-
-『物理メモリ』は、RAMとROMに大きく分けられる。
-
-![p162](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p162.png)
-
-<br>
-
-### RAM：Read Access Memory
-
-RAMは、メインメモリとして使われる『Dynamic RAM』と、キャッシュメモリとして使われる『Static RAM』に分類される。
-
-#### ・Dynamic RAM
-
-  メインメモリとして用いられる。よく見るやつ。
-
-![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dynamic RAM.jpg)
-
-#### ・Static RAM
-
-  キャッシュメモリとして用いられる。
-
-
-![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Static RAM.jpg)
-
-<br>
-
-
-### ROM：Read Only Memory
-
-#### ・Mask ROM
-
-![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-1.png)
-
-#### ・Programmable ROM
-
-![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p164-2.png)
-
-<br>
-
-### Garbage collection
-
-プログラムが確保したメモリ領域のうち、不要になった領域を自動的に解放する機能。
-
-#### ・JavaにおけるGarbage collection
-
-Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ領域をオブジェクトに自動的に割り当て、また一方で、不要になったメモリ領域の解放を行う。一方で自動的に行う。
-
-<br>
-
-## 02. SRAM
-
-CPUから命令が起こるとき、CPU、DRAM、ストレージ間には、読み込みと書き出しの処理速度に差がある。
-
-![p169](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p169.png)
-
-<br>
-
-### キャッシュメモリとは
-
-#### ・一次キャッシュメモリと二次キャッシュメモリ**
-
-  CPUとメインメモリの間に、キャッシュメモリを何段階か設置し、CPUとメインメモリの間の読み込みと書き出しの処理速度の差を緩和させる。
-
-![メモリキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリキャッシュ.gif)
-
-<br>
-
-### キャッシュメモリの読み込み方法
-
-#### ・ユーザー ➔ メインメモリ ➔ 二次キャッシュメモリ ➔ 一次キャッシュメモリ
-
-1. ユーザーが、パソコンに対して命令を与える。
-2. CPUは、命令をメインメモリに書き込む。
-3. CPUは、メインメモリから命令を読み出す。
-4. CPUは、二次キャッシュメモリに書き込む。
-5. CPUは、一次キャッシュメモリに書き込む。
-6. CPUは、命令を実行する。
-
-![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/メモリとキャッシュメモリ_1.jpg)
-
-#### ・実例
-
-  タスクマネージャのパフォーマンスタブで、n次キャッシュメモリがどのくらい使われているのかを確認できる。
-
-![キャッシュメモリの実例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/キャッシュメモリの実例.png)
-
-
-
-### キャッシュメモリへの書き込み方式の種類
-
-#### ・Write-throught方式
-
-  CPUは、命令をメインメモリとキャッシュメモリの両方に書き込む。常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。
-
-![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-through方式.jpg)
-
-#### ・Write-back方式
-
-  CPUは、キャッシュメモリのみに書き込む。次に、キャッシュメモリがメインメモリに書き込む。メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが、メインメモリへの書き込み回数が少ないため速い
-
-![Write-back方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Write-back方式.jpg)
-
-<br>
-
-### 実効アクセス時間
-
-![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p171-1.png)
-
-  <br>
-
-## 03. アドレス空間管理の種類
+## 01. アドレス空間管理の種類
 
 ### 前置き
 
@@ -161,7 +48,7 @@ CPUから命令が起こるとき、CPU、DRAM、ストレージ間には、読�
 
 <br>
 
-## 03-02. 物理メモリのアドレス空間管理
+## 01-02. 物理メモリのアドレス空間管理
 
 ### 固定区画方式（同じ大きさの区画に分割する方式）
 
@@ -219,7 +106,7 @@ CPUから命令が起こるとき、CPU、DRAM、ストレージ間には、読�
 
 <br>
 
-## 03-03. 仮想メモリのアドレス空間管理
+## 01-03. 仮想メモリのアドレス空間管理
 
 ### ページング方式
 
@@ -280,7 +167,61 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 <br>
 
-## 03-04. プロセス
+## 02. アドレス空間のページフォールト
+
+### ページフォールトとは
+
+ストレージから物理メモリのアドレス空間への割り込み処理のこと。CPUによって稼働したプログラムが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合に、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
+
+![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページフォールト.png)
+
+<br>
+
+### Page Replacementアルゴリズム
+
+ページアウトのアルゴリズムのこと。方式ごとに、物理メモリのページフレームからストレージにページアウトするページが異なる。
+
+#### ・『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
+
+![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-2.png)
+
+![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-3.png)
+
+#### ・『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
+
+![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-1.png)
+
+![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-4.png)
+
+<br>
+
+## 03. アドレス空間管理におけるプログラムの種類
+
+### Reusable（再使用可能プログラム）
+
+一度実行すれば、再度、ストレージから物理メモリにページインを行わずに、実行を繰り返せるプログラムのこと。
+
+![再使用可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再使用可能.gif)
+
+<br>
+
+### Reentrant（再入可能プログラム）
+
+再使用可能の性質をもち、また複数のプログラムから呼び出されても、互いの呼び出しが干渉せず、同時に実行できるプログラムのこと。
+
+![再入可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再入可能.gif)
+
+<br>
+
+### Relocatable（再配置可能プログラム）
+
+ストレージから物理メモリにページインを行う時に、アドレス空間上のどこに配置されても実行できるプログラムのこと。
+
+![再配置可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再配置可能.gif)
+
+<br>
+
+## 04. プロセス
 
 ### プロセスとは
 
@@ -309,7 +250,7 @@ MMUによって、仮想メモリのアドレスは、物理メモリのアド�
 
 <br>
 
-## 03-05. スレッド
+## 04-02. スレッド
 
 ### スレッドとは
 
@@ -352,59 +293,5 @@ CPUのコアが複数のスレッドが紐付くようなマルチスレッド�
 参考：https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/simultaneous-multithreading.png)
-
-<br>
-
-## 03-05. Page fault発生時の処理
-
-### Page faultとは
-
-ストレージから物理メモリのアドレス空間への割り込み処理のこと。CPUによって稼働したプログラムが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合に、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
-
-![ページフォールト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ページフォールト.png)
-
-<br>
-
-### Page Replacementアルゴリズム
-
-ページアウトのアルゴリズムのこと。方式ごとに、物理メモリのページフレームからストレージにページアウトするページが異なる。
-
-#### ・『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
-
-![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-2.png)
-
-![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-3.png)
-
-#### ・『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
-
-![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-1.png)
-
-![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p261-4.png)
-
-<br>
-
-## 03-06. アドレス空間管理におけるプログラムの種類
-
-### Reusable（再使用可能プログラム）
-
-一度実行すれば、再度、ストレージから物理メモリにページインを行わずに、実行を繰り返せるプログラムのこと。
-
-![再使用可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再使用可能.gif)
-
-<br>
-
-### Reentrant（再入可能プログラム）
-
-再使用可能の性質をもち、また複数のプログラムから呼び出されても、互いの呼び出しが干渉せず、同時に実行できるプログラムのこと。
-
-![再入可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再入可能.gif)
-
-<br>
-
-### Relocatable（再配置可能プログラム）
-
-ストレージから物理メモリにページインを行う時に、アドレス空間上のどこに配置されても実行できるプログラムのこと。
-
-![再配置可能](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/再配置可能.gif)
 
 <br>

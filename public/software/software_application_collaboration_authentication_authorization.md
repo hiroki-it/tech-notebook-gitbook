@@ -442,7 +442,7 @@ Location: https://example.com/foo.php?code=123&state=abc
 - https://boxil.jp/mag/a3207/
 - https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844
 
-#### ・使用される認証スキーム
+#### ・用いられる認証スキーム
 
 OAuth認証では、認証スキーマとしてBearer認証が選ばれることが多く、AWSやGitHubは、独自の認証スキームを使用している。なお、認可サーバによって発行されたBearerトークンは、```Authorization```ヘッダー、リクエストボディ、クエリパラメータのいずれかに割り当てて送信できる。
 
@@ -468,7 +468,7 @@ OAuth認証のトークンの付与方法には種類がある。
 
 要勉強。
 
-#### ・使用される認証スキーム
+#### ・用いられる認証スキーム
 
 要勉強
 

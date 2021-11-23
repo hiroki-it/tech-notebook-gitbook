@@ -92,7 +92,7 @@
 ## ハードウェア
 
 * [📖 ︎ハードウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware.html)
-* [📖 ︎メモリ](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory.html)
+* [📖 ︎メモリ](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
 * [📖 ︎組み込み機器](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_embedded_system.html)
 
 <br>

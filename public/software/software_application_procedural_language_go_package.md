@@ -91,14 +91,14 @@ type User struct {
 
 ```go
 type User struct {
-	ID   string // プライマリキーとして使用される。
+	ID   string // プライマリキーとして用いられる。
 	Name string
 }
 ```
 
 ```go
 type User struct {
-	UserID string `gorm:"primaryKey"` // プライマリキーとして使用される。
+	UserID string `gorm:"primaryKey"` // プライマリキーとして用いられる。
 	Name   string
 }
 ```

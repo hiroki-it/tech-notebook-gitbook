@@ -2638,7 +2638,7 @@ class Kernel extends HttpKernel
 ```php
 <?php
 
-// authエイリアスのMiddlewareクラスが使用される。
+// authエイリアスのMiddlewareクラスが用いられる。
 Route::middleware("auth:api")->group(function () {
     // 何らのルーティング
 });
@@ -5135,7 +5135,7 @@ class TfaTokenNotification extends Notification
 
 #### ・Channel
 
-Laravelが標準で用意しているチャンネル以外に送信したい場合に、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで使用される。
+Laravelが標準で用意しているチャンネル以外に送信したい場合に、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで用いられる。
 
 **＊実装例＊**
 
