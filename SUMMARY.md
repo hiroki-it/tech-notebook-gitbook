@@ -87,7 +87,7 @@
           * [📖 Goとは](public/software/software_application_procedural_language_go.md)
           * [📖 Goコマンドと設定](public/software/software_application_procedural_language_go_command_and_configuration.md)
           * ロジック
-            * [📖 メソッド、データ](public/software/software_application_procedural_language_go_logic_method_data.md)
+            * [📖 メソッド／データ](public/software/software_application_procedural_language_go_logic_method_data.md)
           * パッケージ／フレームワーク
             * [📖 パッケージ](public/software/software_application_procedural_language_go_package.md)
             * [📖 Gin](public/software/software_application_procedural_language_go_framework_gin.md)
