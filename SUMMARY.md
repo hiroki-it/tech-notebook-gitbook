@@ -94,7 +94,7 @@
 
 * ハードウェア
   * [📖 ︎ハードウェア](public/hardware/hardware.md)
-  * [📖 ︎メモリ](public/hardware/hardware_memory.md)
+  * [📖 ︎メモリのアドレス空間管理](public/hardware/hardware_memory_address_space_management.md)
   * [📖 ︎組み込み機器](public/hardware/hardware_embedded_system.md)
 
 * ネットワーク
