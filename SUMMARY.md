@@ -28,7 +28,7 @@
     * アーキテクチャ
       * [📖 ︎オブジェクト指向分析設計](public/software/software_application_architecture_object_oriented_analysis_and_design.md)
       * バックエンド
-        * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_backend_microservice.md)
+        * [📖 ︎マイクロサービスアーキテクチャ](public/software/software_application_architecture_backend_microservices.md)
         * [📖 ︎ドメイン駆動設計](public/software/software_application_architecture_backend_domain_driven_design.md)
         * [📖 ︎クリーンアーキテクチャ](public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.md)
         * [📖 ︎CQRS](public/software/software_application_architecture_backend_cqrs.md)
