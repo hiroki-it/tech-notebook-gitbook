@@ -10,92 +10,6 @@
 
 ## 01. シェルスクリプト
 
-### assume_role.sh
-
-参考：
-
-<br>
-
-### terraform_apply.sh
-
-```bash
-#!/bin/bash
-
-set -xeuo pipefail
-
-# credentialsの情報を出力します。
-source ./aws_envs.sh
-
-terraform -chdir=./${ENV} apply \
-  -parallelism=30 \
-  ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
-```
-
-<br>
-
-### terraform_fmt.sh
-
-```bash
-#!/bin/bash
-
-set -xeuo pipefail
-
-terraform fmt \
-  -recursive \
-  -check
-```
-
-<br>
-
-### terraform_init.sh
-
-```bash
-#!/bin/bash
-
-set -xeuo pipefail
-
-# credentialsの情報を出力します。
-source ./aws_envs.sh
-
-terraform -chdir=./${ENV} init \
-  -upgrade \
-  -reconfigure \
-  -backend=true \
-  -backend-config="bucket=${ENV}-tfstate-bucket" \
-  -backend-config="key=terraform.tfstate" \
-  -backend-config="encrypt=true"
-```
-
-<br>
-
-### terraform_plan.sh
-
-```bash
-#!/bin/bash
-
-set -xeuo pipefail
-
-# credentialsの情報を出力します。
-source ./aws_envs.sh
-
-terraform -chdir=./${ENV} plan \
-  -var-file=./${ENV}/foo.tfvars \
-  -out=${ENV}.tfplan \
-  -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
-```
-
-<br>
-
-### terraform_validate.sh
-
-```bash
-#!/bin/bash
-
-set -xeuo pipefail
-
-terraform -chdir=./${ENV} validate
-```
-
 <br>
 
 ## 02. CircleCIを用いたCICD
@@ -193,6 +107,7 @@ commands:
           name: Terraform validate
           command: |
             set -x
+            source ./export_aws_envs.sh
             source ./ops/terraform_validate.sh
 
   # terraform planを行います。
@@ -202,6 +117,7 @@ commands:
           name: Terraform plan
           command: |
             set -x
+            source ./export_aws_envs.sh
             source ./ops/terraform_plan.sh
             ls -la
 
@@ -213,6 +129,7 @@ commands:
           command: |
             set -x
             ls -la
+            source ./export_aws_envs.sh
             source ./ops/terraform_apply.sh
 
 jobs:
@@ -244,7 +161,7 @@ jobs:
       - terraform_apply
 
 workflows:
-  # Dev env
+  # Development env
   feature:
     jobs:
       - plan:
@@ -328,6 +245,96 @@ workflows:
 
 <br>
 
+### シェルスクリプト
+
+#### ・```assume_role.sh```ファイル
+
+参考：
+
+<br>
+
+#### ・```terraform_apply.sh```ファイル
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+
+# credentialsの情報を出力します。
+source ./aws_envs.sh
+
+terraform -chdir=./${ENV} apply \
+  -parallelism=30 \
+  ${ENV}.tfplan | ./ops/tfnotify --config ./${ENV}/tfnotify.yml apply
+```
+
+<br>
+
+#### ・```terraform_fmt.sh```ファイル
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+
+terraform fmt \
+  -recursive \
+  -check
+```
+
+<br>
+
+#### ・```terraform_init.sh```ファイル
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+
+# credentialsの情報を出力します。
+source ./aws_envs.sh
+
+terraform -chdir=./${ENV} init \
+  -upgrade \
+  -reconfigure \
+  -backend=true \
+  -backend-config="bucket=${ENV}-tfstate-bucket" \
+  -backend-config="key=terraform.tfstate" \
+  -backend-config="encrypt=true"
+```
+
+<br>
+
+#### ・```terraform_plan.sh```ファイル
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+
+# credentialsの情報を出力します。
+source ./aws_envs.sh
+
+terraform -chdir=./${ENV} plan \
+  -var-file=./${ENV}/foo.tfvars \
+  -out=${ENV}.tfplan \
+  -parallelism=30 | ./ops/tfnotify --config ./${ENV}/tfnotify.yml plan
+```
+
+<br>
+
+#### ・```terraform_validate.sh```ファイル
+
+```bash
+#!/bin/bash
+
+set -xeuo pipefail
+
+terraform -chdir=./${ENV} validate
+```
+
+<br>
+
 ## 03. tfnotify
 
 ### tfnotifyとは
@@ -400,4 +407,26 @@ terraform:
       <pre><code>{{ .Body }}
       </pre></code></details>
 ```
+
+<br>
+
+## 04. リリース
+
+### リリースの粒度
+
+#### ・既存のリソースに対して、新しいリソースを紐づける場合
+
+既存のリソースに対して、新しいリソースを紐づける場合、新しいリソースの構築と紐づけを別々にリリースする。経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、インフラのロールバックで問題が起こりにくい。また、Terraformで問題が起こったとしても、変更点が紐づけだけなので、原因を追究しやすい。
+
+#### ・Terraformとプロバイダーの両方をアップグレードする場合
+
+Terraformとプロバイダーの両方をアップグレードする場合、Teraformとプロバイダーを別々にリリースする。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html
+
+<br>
+
+### リリース後のロールバック
+
+Terraformには、インフラのバージョンのロールバック機能がない。そこで、一つ前のリリースタグをRerunすることで、バージョンのロールバックを実行する。今回のリリースのcreate処理が少ないほどRerunでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。経験則でupdate処理よりもcreate処理やdestroy処理ではエラーが起こりやすいため、これらが多いとRerun時に手間取ってしまう可能性がある。そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、一つ前のリリースタグをRerunするか否かを判断する。
 

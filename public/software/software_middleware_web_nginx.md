@@ -191,7 +191,7 @@ server {
 
 ### リバースProxyのミドルウェアとして
 
-前提として、ロードバランサ－から転送されたHTTPリクエストを受信するとする。静的コンテンツのリクエストは、リバースProxy（Nginx）でレスポンスを返信する。Webサーバは、必ずリバースProxyを経由して、動的リクエストを受信する。
+前提として、ロードバランサ－から転送されたHTTPリクエストを受信する例を考える。静的コンテンツのリクエストは、リバースProxy（Nginx）でレスポンスを返信する。Webサーバは、必ずリバースProxyを経由して、動的リクエストを受信する。
 
 **＊実装例＊**
 
@@ -351,7 +351,7 @@ http {
                              "$status $body_bytes_sent "$http_referer" "
                              ""$http_user_agent" "$http_x_forwarded_for"";
     access_log         /var/log/nginx/access.log  main;
-    # sendfileシステムコールを使用するかどうか
+    # sendfileシステムコールを用いるかどうか
     sendfile           on;
     # ヘッダーとファイルをまとめてレスポンスするかどうか
     tcp_nopush         on;
@@ -489,7 +489,7 @@ listen 443 ssl;
 
 #### ・```sendfile```
 
-クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
+クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを用いるかどうかを設定する。ファイル返信処理をOS内で行うため、処理が速くなる。使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
 
@@ -549,7 +549,7 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 
 #### ・```tcp_nopush```
 
-上述のLinuxの```sendfile```システムコールを使用する場合に、適用できる。クライアントへのレスポンス時、ヘッダーとファイルを、一つのパケットにまとめて返信するかどうかを設定する。
+上述のLinuxの```sendfile```システムコールを用いる場合、適用できる。クライアントへのレスポンス時、ヘッダーとファイルを、一つのパケットにまとめて返信するかどうかを設定する。
 
 **＊実装例＊**
 
@@ -647,7 +647,7 @@ server {
 
 #### ・```index```
 
-リクエストのURLがトレイリングスラッシュで終わる全ての場合に、指定されたファイルをURLの末尾に追加する。
+リクエストのURLがトレイリングスラッシュで終わる全ての場合、指定されたファイルをURLの末尾に追加する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_index_module.html
 
@@ -705,7 +705,7 @@ upstream big_server_com {
 
 #### ・```fastcgi_params```
 
-FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先で使用する変数とその値を設定する。
+FastCGIプロトコルを用いてAppサーバ／コンテナにリクエストを転送する場合、転送先で用いる変数とその値を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
@@ -717,7 +717,7 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
 #### ・```fastcgi_pass```
 
-FastCGIプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先のアドレスとポートを設定する。
+FastCGIプロトコルを用いてAppサーバ／コンテナにリクエストを転送する場合、転送先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
@@ -735,7 +735,7 @@ fastcgi_pass 127.0.0.1:9000;
 
 #### ・```proxy_pass```
 
-HTTPプロトコルを使用してAppサーバ／コンテナにリクエストを転送する場合に、転送先のアドレスとポートを設定する。
+HTTPプロトコルを用いてAppサーバ／コンテナにリクエストを転送する場合、転送先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 

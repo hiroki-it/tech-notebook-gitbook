@@ -48,7 +48,7 @@ $ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<�
 $ git config --local --list
 ```
 
-Macでは、一つのPCで二つのGutHubアカウントを使用する場合に、キーチェーンという機能で設定が必要になる。
+Macでは、一つのPCで二つのGutHubアカウントを用いる場合、キーチェーンという機能で設定が必要になる。
 
 参考：https://sy-base.com/myrobotics/others/git-push_403error/
 
@@ -109,7 +109,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 #### ・```remote set-url origin <SSH URL>```
 
-プライベートリポジトリに接続する。```config```ファイルに記述されたユーザ名と接続名を設定する。一つのPCで複数のGitHubアカウントを使用している場合、設定が必須である。
+プライベートリポジトリに接続する。```config```ファイルに記述されたユーザ名と接続名を設定する。一つのPCで複数のGitHubアカウントを用いている場合、設定が必須である。
 
 ```bash
 $ git remote set-url origin <ユーザ名>@<接続名>:<組織名>/<リポジトリ名>.git
@@ -571,7 +571,7 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/develop.
 ```
 
-過去の全てのコミットに対して、Author名とCommitter名を適用するコマンドもある。しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにするべきである。
+過去の全てのコミットに対して、Author名とCommitter名を適用するコマンドもある。しかし、危険な方法であるため、個人利用のリポジトリのみで用いるようにするべきである。
 
 ```bash
 #!/bin/bash

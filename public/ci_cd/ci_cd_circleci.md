@@ -140,7 +140,7 @@ version: 2.1
 
 #### ・値の出力方法
 
-引数名を使用して、```parameters```から値を出力する。
+引数名を用いて、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -172,7 +172,7 @@ commands:
 
 #### ・値の出力方法
 
-引数名を使用して、```parameters```から値を出力する。
+引数名を用いて、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -198,7 +198,7 @@ commands:
 
 #### ・string型
 
-引数として、任意の文字列を渡したいときに使用する。```workflows```にて、値を設定する。
+引数として、任意の文字列を渡したいときに用いる。```workflows```にて、値を設定する。
 
 **＊実装例＊**
 
@@ -311,7 +311,7 @@ workflows:
 
 #### ・値の出力方法
 
-引数名を使用して、```parameters```から値を出力する。
+引数名を用いて、```parameters```から値を出力する。
 
 ```
 << parameters.foo >>
@@ -319,7 +319,7 @@ workflows:
 
 #### ・job parametersを参照
 
-引数として、任意の文字列を```executors```に渡したいときに使用する。他のparametersとは異なり、```job```にて、値を設定する。
+引数として、任意の文字列を```executors```に渡したいときに用いる。他のparametersとは異なり、```job```にて、値を設定する。
 
 ```yaml 
 version: 2.1
@@ -350,7 +350,7 @@ jobs:
 
 #### ・workflowで値を設定する
 
-公式リファレンスには載っていないため、方法としては非推奨。```parameter```を渡したい```executor```を使いまわしたい時に使用する。
+公式リファレンスには載っていないため、方法としては非推奨。```parameter```を渡したい```executor```を使いまわしたい時に用いる。
 
 ```yaml
 version: 2.1
@@ -403,7 +403,7 @@ workflows:
 
 #### ・値の出力方法
 
-引数名を使用して、```pipeline.parameters```から値を出力する。
+引数名を用いて、```pipeline.parameters```から値を出力する。
 
 ```
 << pipeline.parameters.foo >>
@@ -477,7 +477,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ・dockerタイプとは
 
-Dockerコンテナを実行環境として設定する。これを選択したうえで、Dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を使用して、実行環境Dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合に、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選んだ場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+Dockerコンテナを実行環境として設定する。これを選択したうえで、Dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を用いて、実行環境Dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選んだ場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -592,7 +592,7 @@ workflows:
 
 **＊実装例＊**
 
-composerを使用してライブラリをインストールする時に、前回の結果を再利用する。
+composerを用いてライブラリをインストールする時に、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -619,7 +619,7 @@ jobs:
 
 **＊実装例＊**
 
-yarnを使用してライブラリをインストールする時に、前回の結果を再利用する。
+yarnを用いてライブラリをインストールする時に、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -692,7 +692,7 @@ jobs:
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/workflow_workspace_cache.png)
 
-CircleCIでは、jobごとに異なる仮想環境が構築されるため、他の```job```で使用された一時ファイルを再利用したい場合に、これを使う。
+CircleCIでは、jobごとに異なる仮想環境が構築されるため、他の```job```で使用された一時ファイルを再利用したい場合、これを使う。
 
 **＊実装例＊**
 
@@ -1006,7 +1006,7 @@ workflows:
 
 | 参照レベル | 方法                                        | 説明                                                         |
 | ---------- | ------------------------------------------- | ------------------------------------------------------------ |
-| Bash       | ```export```、```source```、```$BASH_ENV``` | ```run```における```command```内のみで参照できる。ただし、```$BASH_ENV```を使用すれば、異なる```commands```間で値を共有可能。 |
+| Bash       | ```export```、```source```、```$BASH_ENV``` | ```run```における```command```内のみで参照できる。ただし、```$BASH_ENV```を用いれば、異なる```commands```間で値を共有可能。 |
 | Container  | ```environment```                           | ```job```内の特定のコンテナのみで参照できる。                |
 | Job        | ```environment```                           | ```job```内のみで参照できる。                                |
 | Project    | Environment Variables機能                   | リポジトリ内のみ参照できる。                                 |
@@ -1043,7 +1043,7 @@ jobs:
              yarn nuxt-ts generate
 ```
 
-なお、文字列の中に値を出力する変数展開の場合、```${}```を使用する。
+なお、文字列の中に値を出力する変数展開の場合、```${}```を用いる。
 
 ```yaml
 # 変数展開の場合
@@ -1061,7 +1061,7 @@ steps:
 
 #### ・commandキーによる設定
 
-一番参照範囲が小さく、```run```における同じ```command```内のみで参照できる。```command```内で使用する環境変数を定義するためには、『```$BASH_ENV```』に```export```処理を格納する必要がある。定義したものを使用するためには、『```$BASH_ENV```』を```source```で読み込む必要があるために注意する。
+一番参照範囲が小さく、```run```における同じ```command```内のみで参照できる。```command```内で用いる環境変数を定義するためには、『```$BASH_ENV```』に```export```処理を格納する必要がある。定義したものを用いるためには、『```$BASH_ENV```』を```source```で読み込む必要があるために注意する。
 
 参考：https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
@@ -1117,7 +1117,7 @@ jobs:
 
 #### ・シェルスクリプトによる設定
 
-環境変数に値を設定する処理をシェルスクリプトに切り分け、環境変数を使用する前にこれを読み込む。
+環境変数に値を設定する処理をシェルスクリプトに切り分け、環境変数を用いる前にこれを読み込む。
 
 **＊実装例＊**
 
@@ -1154,7 +1154,7 @@ source $BASH_ENV
 
 #### ・ヒアドキュメントで作成したシェルスクリプトによる設定
 
-ヒアドキュメントを使用して、環境変数を設定できるシェルスクリプトを作成し、これを読み込む。ヒアドキュメントでは、各行でechoが実行される。そのため、echoの実装が不要であることに注意する。
+ヒアドキュメントを用いて、環境変数を設定できるシェルスクリプトを作成し、これを読み込む。ヒアドキュメントでは、各行でechoが実行される。そのため、echoの実装が不要であることに注意する。
 
 **＊実装例＊**
 
@@ -1190,13 +1190,13 @@ jobs:
 
 ### Projectレベル
 
-Containerレベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。Environment Variables機能を使用する。環境変数の値が４文字未満、または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合、CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため、注意が必要である。
+Containerレベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。Environment Variables機能を用いる。環境変数の値が４文字未満、または環境変数の値が `true`、`True`、`false`、`False` のいずれかの場合、CircleCIの処理で出力されるプロジェクトの環境変数はマスキングされないため、注意が必要である。
 
 <br>
 
 ### Grobalレベル
 
-Projectレベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。Contexts機能を使用する。
+Projectレベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。Contexts機能を用いる。
 
 <br>
 
@@ -1243,7 +1243,7 @@ jobs:
 
 #### ・docker/install-dockerize
 
-CircleCIでDocker Composeを使用する場合に必要である。Docker Composeは、コンテナの構築の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの構築後に、プロセスが完全に起動していないのにもかかわらず、次のコンテナの構築を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に構築されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを使用してもよい。
+CircleCIでDocker Composeを用いる場合に必要である。Docker Composeは、コンテナの構築の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。そのため、コンテナの構築後に、プロセスが完全に起動していないのにもかかわらず、次のコンテナの構築を開始してしまう。これにより、プロセスが完全に起動していないコンテナに対して、次に構築されたコンテナが接続処理を行ってしまうことがある。これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。dockerizeの代わりの方法として、sleepコマンドを用いてもよい。
 
 参考：https://github.com/docker/compose/issues/374#issuecomment-126312313
 
@@ -1274,7 +1274,7 @@ commands:
             
 jobs:
   build_and_test:
-    # Docker Composeの時はmachineタイプを使用する
+    # Docker Composeの時はmachineタイプを用いる
     machine:
       image: ubuntu-1604:201903-01
     steps:
@@ -1341,7 +1341,7 @@ CircleCIでDockerイメージをビルドした後、各イメージレイヤー
 
 #### ・使用例
 
-machineタイプで使用する場合、machineキーの下で```docker_layer_caching```を使う。
+machineタイプで用いる場合、machineキーの下で```docker_layer_caching```を使う。
 
 **＊実装例＊**
 
@@ -1353,7 +1353,7 @@ orbs:
             
 jobs:
   build_and_test:
-    # Docker Composeの時はmachineタイプを使用する
+    # Docker Composeの時はmachineタイプを用いる
     machine:
       image: ubuntu-1604:201903-01
       # DLCを有効化
@@ -1376,7 +1376,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-dockerタイプで使用する場合、dockerキーの下で```docker_layer_caching```を使う。
+dockerタイプで用いる場合、dockerキーの下で```docker_layer_caching```を使う。
 
 **＊実装例＊**
 
@@ -1473,7 +1473,7 @@ aws-cliコマンドのインストールを行う。
 
 #### ・commands: setup
 
-aws-cliコマンドのインストールと、Credentials情報の設定を行う。AWSリソースを操作するために使用する。
+aws-cliコマンドのインストールと、Credentials情報の設定を行う。AWSリソースを操作するために用いる。
 
 **＊実装例＊**
 
@@ -1569,7 +1569,7 @@ aws configure list
 
 #### ・jobs：build-and-push-image
 
-CircleCIコンテナでDockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を使用して、Docker Layer Cacheを有効化できる。
+CircleCIコンテナでDockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を用いて、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
@@ -1583,7 +1583,7 @@ orbs:
 jobs:
   aws-ecr/build-and-push-image:
     name: ecr_build_and_push_image
-    # Docker Layer Cacheを使用するかどうか（有料）
+    # Docker Layer Cacheを用いるかどうか（有料）
     remote-docker-layer-caching: true
     # リポジトリがない時に作成するかどうか。
     create-repo: true
@@ -1607,7 +1607,7 @@ jobs:
 
 #### ・jobs：deploy-update-service（ローリングアップデート使用時）
 
-ECRイメージを使用して、新しいリビジョン番号のタスク定義を作成し、またこれを使用してコンテナをデプロイする。``` verify-revision-is-deployed```オプションを使用して、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
+ECRイメージを用いて、新しいリビジョン番号のタスク定義を作成し、またこれを用いてコンテナをデプロイする。``` verify-revision-is-deployed```オプションを用いて、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
 
 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -1714,7 +1714,7 @@ workflows:
 
 #### ・jobs：run-task
 
-現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを使用して、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
+現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを用いて、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
 上書きできるキーの参照リンク：https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
 

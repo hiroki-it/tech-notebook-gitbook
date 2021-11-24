@@ -31,7 +31,7 @@
 
 ### Windowsの場合
 
-Windowsは、GUIでユーティリティを使用する。よく使うものを記載する。
+Windowsは、GUIでユーティリティを用いる。よく使うものを記載する。
 
 | システム系         | ストレージデバイス管理系 | ファイル管理系         | その他             |
 | ------------------ | ------------------------ | ---------------------- | ------------------ |
@@ -161,7 +161,7 @@ $ echo "text" | tee stdout.log
 
 #### ・pipelineとは
 
-『```|```』の縦棒記号のこと。複数のプログラムの入出力を繋ぐことができる。
+『```|```』の縦棒記号のこと。複数のプログラムの入出力を繋げる。
 
 ![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
 
@@ -490,7 +490,7 @@ $ echo "$<変数名>"
 
 #### ・オプション無し
 
-ファイルの改行コードを確認する。
+ファイルの改行コードを表示する。
 
 ```bash
 # LFの場合（何も表示されない）
@@ -731,7 +731,7 @@ $ unlink <シンボリックリンク名>
 
 #### ・オプション無し
 
-GETリクエストを送信する。```jq```コマンドを使用すると、レスポンスを整形できる。
+GETリクエストを送信する。```jq```コマンドを用いると、レスポンスを整形できる。
 
 ```bash
 $ curl http://example.co.jp/foos/1 | jq . 
@@ -798,7 +798,7 @@ example.co.jp        nameserver = ns-***.awsdns-***.com
 
 #### ・-l、-p、<ポート>、-i、-T
 
-事前に、秘密鍵の権限は『600』にしておく。tty（擬似ターミナル）を使用する場合は、```-T```オプションをつける。
+事前に、秘密鍵の権限は『600』にしておく。tty（擬似ターミナル）を用いる場合は、```-T```オプションをつける。
 
 ```bash
 $ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T
@@ -831,7 +831,7 @@ Host <接続名２>
     IdentityFile <秘密へのパス>
 ```
 
-これにより、コマンド実行時の値渡しを省略できる。tty（擬似ターミナル）を使用する場合は、-Tオプションをつける。
+これにより、コマンド実行時の値渡しを省略できる。tty（擬似ターミナル）を用いる場合は、-Tオプションをつける。
 
 ```bash
 # 秘密鍵の権限は、事前に『600』にしておく
@@ -863,7 +863,7 @@ $ ps -aux | grep "<検索文字>"
 
 #### ・list-unit-files
 
-デーモンのUnitを一覧で確認する。
+デーモンのUnitを一覧で表示する。
 
 ```bash
 $ systemctl list-unit-files --type=service
@@ -1101,7 +1101,7 @@ $ crontab -l
 $ crontab /foo/cron-hourly.txt
 ```
 
-３. 登録されている処理を確認する。
+３. 登録されている処理を表示する。
 
 ```bash
 $ crontab -l
@@ -1275,7 +1275,7 @@ $ date
 
 #### ・オプション無し
 
-各プロセスの稼働情報（ユーザ名、CPU、メモリ）を確認する。 CPU使用率昇順に並べる
+各プロセスの稼働情報（ユーザ名、CPU、メモリ）を表示する。 CPU使用率昇順に並べる
 
 ```bash
 $ top
@@ -1283,7 +1283,7 @@ $ top
 
 #### ・-a
 
-メモリ使用率昇順に並べる。
+メモリ使用率昇順に表示する。
 
 ```bash
 $ top -a
@@ -1295,7 +1295,7 @@ $ top -a
 
 #### ・-m、-total
 
-物理メモリ、スワップ領域、の使用状況をメガバイトで確認する。
+物理メモリ、スワップ領域、の使用状況をメガバイトで表示する。
 
 ```bash
 # m：Mega Bytes
@@ -1307,9 +1307,32 @@ $ free -m -total
 
 ### df
 
+#### ・オプション無し
+
+使用中のデバイスファイルを表示する。デバイスファイルについては、以下のリンクを参考にせよ。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html
+
+```bash
+$ df
+
+Filesystem      512-blocks      Used Available Capacity iused      ifree %iused  Mounted on
+/dev/disk1s1s1   976490576  44424136 671194960     7%  559993 4881892887    0%   /
+devfs                  393       393         0   100%     681          0  100%   /dev
+/dev/disk1s5     976490576  10485816 671194960     2%       5 4882452875    0%   /System/Volumes/VM
+/dev/disk1s3     976490576    774096 671194960     1%    1648 4882451232    0%   /System/Volumes/Preboot
+/dev/disk1s6     976490576    224048 671194960     1%     450 4882452430    0%   /System/Volumes/Update
+/dev/disk1s2     976490576 247856952 671194960    27% 1367035 4881085845    0%   /System/Volumes/Data
+map auto_home            0         0         0   100%       0          0  100%   /System/Volumes/Data/home
+/dev/disk1s1     976490576  44424136 671194960     7%  553759 4881899121    0%   /System/Volumes/Update/mnt1
+/dev/disk2s1        610224    421128    189096    70%     360 4294966919    0%   /Volumes/Kindle
+/dev/disk3s1        188336    149544     38792    80%     735 4294966544    0%   /Volumes/Amazon Chime
+
+```
+
 #### ・-h、-m、-t
 
-ストレージの使用状況をメガバイトで確認する。
+ストレージの使用状況をメガバイトで表示する。
 
 ```bash
 # h：--human-readable
@@ -1550,7 +1573,7 @@ $ yum list | grep <検索文字>
 
 #### ・EPELリポジトリ、Remiリポジトリ
 
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
+CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを用いると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
 1. CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、/etc/yu.repos.d/* に配置される。
 
@@ -1622,12 +1645,12 @@ $ dnf module enable php:remi-7.4
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを利用して、明示的にremiを指定
+# 一時的に有効化できるオプションを用いて、明示的にremiを指定
 $ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 
 # CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプションなし
+# リポジトリの認識に失敗することがあるのでオプション無し
 $ dnf install -y php php-mbstring php-mcrypt
 ```
 
@@ -1635,12 +1658,12 @@ $ dnf install -y php php-mbstring php-mcrypt
 
 ```bash
 # CentOS7の場合
-# 一時的に有効化できるオプションを利用して、明示的にremiを指定
+# 一時的に有効化できるオプションを用いて、明示的にremiを指定
 $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 
 # CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプションなし
+# リポジトリの認識に失敗することがあるのでオプション無し
 $ dnf reinstall -y php php-mbstring php-mcrypt
 ```
 

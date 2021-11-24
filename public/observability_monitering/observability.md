@@ -292,7 +292,7 @@
 
 #### ・スパン間の紐付け
 
-リクエストヘッダーやボディにIDを割り当て、異なるサービスのスパン間を紐付ける。AWSを使用している場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
+リクエストヘッダーやボディにIDを割り当て、異なるサービスのスパン間を紐付ける。AWSを用いている場合、例えばALBが```X-Amzn-Trace-Id```ヘッダーにリクエストIDを付与してくれるため、アプリケーションでリクエストIDを実装せずに分散トレースを実現できる。
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 

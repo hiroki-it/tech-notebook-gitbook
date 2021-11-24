@@ -96,11 +96,11 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 #### ・振舞の視点
 
-ソフトウェアの時系列的な振舞に注目するダイアグラムが属する。シーケンス図には、分析に使用するシステムシーケンス図と、設計に使用するシーケンス図があることに注意する。
+ソフトウェアの時系列的な振舞に注目するダイアグラムが属する。シーケンス図には、分析に用いるシステムシーケンス図と、設計に用いるシーケンス図があることに注意する。
 
 #### ・構造の視点
 
-ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する。クラス図は設計のために使用することに注意する。
+ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが属する。クラス図は設計のために用いることに注意する。
 
 <br>
 
@@ -148,7 +148,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 | アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザや、連携する他のソフトウェアを表現する。 |                                  |
 | ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表現する。                       |                                  |
 | サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | アクターとソフトウェアの境界線を表現する。                   |                                  |
-| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_package.png) | アクターによって提供する機能に違いがある場合に、これの境界線を表現する。 |                                  |
+| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_package.png) | アクターによって提供する機能に違いがある場合、これの境界線を表現する。 |                                  |
 | 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_association.png) | アクターと機能を結ぶことで、機能がアクターに提供されることを表現する。 |                                  |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_genelization.png) | アクター間またはユースケース間に、is-a-kind-ofな関係（グループとメンバーの関係性）があることを表現する。 |                                  |
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_include.png) | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表現する。 | ```<< invoke >>```も同じである。 |
@@ -162,7 +162,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 参考：https://github.com/tooppoo/ticket-modeling
 
-（１）映画チケット購入者の受注管理ソフトウェアを開発するとする。
+（１）映画チケット購入者の受注管理ソフトウェアを開発する例を考える。
 
 （２）要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
@@ -309,11 +309,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 
-#### ・use（引数型／返却値型として使用する関係性）
+#### ・use（引数型／返却値型として用いる関係性）
 
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として使用する関係性.png)
+![引数型または返却値型として用いる関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として用いる関係性.png)
 
-『use』な関係と表現され、より具体的に説明すると、と引数型／返却値型として使用する関係性である。Dependency（依存）が用いられる。実装例は以下のリンク先を参考にせよ。
+『use』な関係と表現され、より具体的に説明すると、と引数型／返却値型として用いる関係性である。Dependency（依存）が用いられる。実装例は以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 

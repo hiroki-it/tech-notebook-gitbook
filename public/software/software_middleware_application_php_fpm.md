@@ -55,10 +55,10 @@ PHP-FPMの設定を定義する。```php.ini```ファイルによって読み込
 user = www-data
 group = www-data
 
-# UNIXドメインソケットを使用するために、sockファイルを指定
+# UNIXドメインソケットを用いるために、sockファイルを指定
 listen = /var/run/php-fpm/php-fpm.sock # 127.0.0.1:9000
 
-# UNIXドメインソケットを使用するために、プロセスのユーザ名を変更
+# UNIXドメインソケットを用いるために、プロセスのユーザ名を変更
 listen.owner = www-data
 listen.group = www-data
 
@@ -101,7 +101,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 ```
 
-#### ・Dockerで使用する場合
+#### ・Dockerで用いる場合
 
 PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホスト側では```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 

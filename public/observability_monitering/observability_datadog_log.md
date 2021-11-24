@@ -117,7 +117,7 @@ FROM data/agent:latest
 | 属性名         | 説明                                           | 補足                                                         | 例                                                           |
 | -------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ```host```     | ログの生成元のホスト名を示す。                 | ログが生成元とは別の場所から送信されている場合に役立つ。Datadogコンテナの環境変数にて、```DD_HOSTNAME```を用いて```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
-| ```source```   | ログの生成元の名前を示す。                     | ベンダー名を使用するとわかりやすい。                         | ・```laravel```<br>・```nginx```<br>・```redis```            |
+| ```source```   | ログの生成元の名前を示す。                     | ベンダー名を用いるとわかりやすい。                         | ・```laravel```<br>・```nginx```<br>・```redis```            |
 | ```status```   | ログのレベルを示す。                           |                                                              |                                                              |
 | ```service```  | ログの生成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。 | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
 | ```trace_id``` | ログを分散トレースやスパンと紐付けるIDを示す。 |                                                              |                                                              |
@@ -231,7 +231,7 @@ Nginxの場合
 
 #### ・PHP Monologの場合
 
-LogライブラリにMonologを使用している場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
+LogライブラリにMonologを用いている場合、```/etc/datadog-agent/conf.d/php.d```ディレクトリ下に```conf.yaml```ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/php/?tab=phpmonolog#agent-%E3%81%AE%E6%A7%8B%E6%88%90
 
@@ -278,7 +278,7 @@ Datadogに送信されたログのメッセージから値を抽出し、構造�
 
 **＊例＊**
 
-CloudWatchログから、以下のようなAPI Gatewayアクセスログの構造化ログを受信するとする。
+CloudWatchログから、以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える。
 
 ```bash
 {
@@ -407,7 +407,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 - https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
 - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
 
-Laravelから、以下のような非構造化ログを受信するとする。
+Laravelから、以下のような非構造化ログを受信する例を考える。
 
 ```log
 [2021-01-01 00:00:00] staging.ERROR: ログのメッセージ
@@ -440,7 +440,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 **＊例＊**
 
-とあるアプリケーションから、以下のような非構造化ログを受信するとする。
+とあるアプリケーションから、以下のような非構造化ログを受信する例を考える。
 
 ```log
 192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
@@ -497,7 +497,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 **＊例＊**
 
-CloudWatchログから、以下のようなAPI Gatewayアクセスログの構造化ログを受信するとする。
+CloudWatchログから、以下のようなAPI Gatewayアクセスログの構造化ログを受信する例を考える。
 
 ```bash
 {
@@ -542,7 +542,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 }
 ```
 
-これに対して、以下のようなカテゴリパーサーのルールを定義する。```aws.invoked_function_arn```属性のLambdaのARN応じて、```service```属性にサービス値（```foo-apigateway```、```bar-apigateway```、```baz-apigateway```）を付与するようにする。この属性を使用する理由は、様々なAWSリソースの構造化ログが持っているためである（```owner```属性でもよい。ただし、おそらくS3からログを収集する場合はこれがない？）。元の構造化ログにすでに```service```属性があるため、この値が上書きされる。
+これに対して、以下のようなカテゴリパーサーのルールを定義する。```aws.invoked_function_arn```属性のLambdaのARN応じて、```service```属性にサービス値（```foo-apigateway```、```bar-apigateway```、```baz-apigateway```）を付与するようにする。この属性を用いる理由は、様々なAWSリソースの構造化ログが持っているためである（```owner```属性でもよい。ただし、おそらくS3からログを収集する場合はこれがない？）。元の構造化ログにすでに```service```属性があるため、この値が上書きされる。
 
 ```bash
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:123456789:function:datadog-ForwarderStack-*****-Forwarder-*****"
@@ -577,7 +577,7 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:19283746
 
 **＊例＊**
 
-Nginxから、以下のような非構造化ログを受信するとする。
+Nginxから、以下のような非構造化ログを受信する例を考える。
 
 ```log
 nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
@@ -705,7 +705,7 @@ https://exmaple.jp%{http.url}
 
 **＊例＊**
 
-Nginxから、以下のような非構造化ログを受信するとする。
+Nginxから、以下のような非構造化ログを受信する例を考える。
 
 ```log
 nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
@@ -845,7 +845,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 #### ・インデックスとは
 
-パイプラインで処理を終えたログをグループ化し、ログの破棄ルールや保管期間をグループごとに定義できる。インデックスを使用すれば、Datadogのログ保管のネックになる保管料金を抑えられる。
+パイプラインで処理を終えたログをグループ化し、ログの破棄ルールや保管期間をグループごとに定義できる。インデックスを用いれば、Datadogのログ保管のネックになる保管料金を抑えられる。
 
 参考：
 

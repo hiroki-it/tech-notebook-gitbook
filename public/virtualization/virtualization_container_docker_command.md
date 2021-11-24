@@ -34,7 +34,7 @@ Dockerクライアントは、接続によって、Dockerデーモンを操作�
 
 ### attach
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -62,7 +62,7 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 ### commit
 
-#### ・オプションなし
+#### ・オプション無し
 
 停止中のコンテナからイメージを作成する。
 
@@ -92,9 +92,9 @@ $ docker container prune
 
 ### cp
 
-#### ・オプションなし
+#### ・オプション無し
 
-Dockerfileの```COPY```コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにイメージをビルドを行うことは面倒のため、ホストOSからコンテナにコピーし、再読み込みを行う。ただし、コンテナを再構築すると元に戻ってしまうことに注意。
+Dockerfileの```COPY```コマンドを用いてコンテナ内に配置しているファイルに関して、変更のたびにイメージをビルドを行うことは面倒のため、ホストOSからコンテナにコピーし、再読み込みを行う。ただし、コンテナを再構築すると元に戻ってしまうことに注意。
 
 **＊コマンド例＊**
 
@@ -115,7 +115,7 @@ $ docker logs <コンテナ名>
 
 ### create
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -145,7 +145,7 @@ $ docker exec -it <起動中コンテナ名> /bin/sh
 
 #### ・attach、execの違い
 
-まず```attach```コマンドでは、起動中のコンテナに接続する。```exit```コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。
+まず```attach```コマンドでは、起動中のコンテナに接続する。```exit```コマンドを用いて、コンテナとの接続を切断した後、コンテナが停止してしまう。
 
 ```bash
 # デタッチドモードによる起動
@@ -154,7 +154,7 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 # デタッチドモードによって起動中のコンテナに接続
 $ docker attach <起動中コンテナ名>
 
-# PID=1で、1つの/bin/bashプロセスが稼働していることが確認できる
+# PID=1で、1つの/bin/bashプロセスが稼働していることを確認できる
 [root@<ホスト名>:~] ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
@@ -167,16 +167,16 @@ root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedになっている
 ```
 
-一方で```exec```コマンドでは、起動中のコンテナでコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。```exit```コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
+一方で```exec```コマンドでは、起動中のコンテナでコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。```exit```コマンドを用いて、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
 
 ```bash
 # デタッチドモードによる起動
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
-# 対話モードを使用して、デタッチドモードによって起動中のコンテナに接続
+# 対話モードを用いて、デタッチドモードによって起動中のコンテナに接続
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
 
-# PID=1,17で、2つの/bin/bashプロセスが稼働していることが確認できる
+# PID=1,17で、2つの/bin/bashプロセスが稼働していることを確認できる
 [root@<ホスト名>:~] ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
@@ -196,7 +196,7 @@ $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになって
 
 ### search
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -210,7 +210,7 @@ $ docker search <イメージ名>
 
 ### images
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -244,7 +244,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 ### inspect
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -257,7 +257,7 @@ $ docker inspect <コンテナ名> | grep IPAddress
 
 **＊コマンド例＊**
 
-json-fileドライバーを使用している時に、ログファイルの出力先を確認する。
+json-fileドライバーを用いている時に、ログファイルの出力先を確認する。
 
 ```bash
  $ docker inspect <コンテナ名> | grep 'LogPath'
@@ -289,7 +289,7 @@ $ docker network prune
 
 #### ・inspect
 
-複数のコンテナが起動している時に、コンテナがいずれのネットワークを使用しているかを確認する。
+複数のコンテナが起動している時に、コンテナがいずれのネットワークを用いているかを確認する。
 
 ```bash
 $ docker network inspect <ネットワーク名>
@@ -325,7 +325,7 @@ $ docker pull <イメージ名>:<バージョン>
 
 ### push
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 
@@ -370,7 +370,7 @@ $ docker rm --force $(docker ps --all --quiet)
 **＊コマンド例＊**
 
 ```bash
-$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
+$ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <用いるイメージ名>:<タグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
 [root@<ホスト名>:/] cat /etc/hosts
@@ -391,7 +391,7 @@ ff02::2	ip6-allrouters
 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイメージ名>:<タグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --publish=8080:80 <用いるイメージ名>:<タグ> /bin/bash
 ```
 
 #### ・--expose
@@ -401,7 +401,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <使用するイ�
 参考：https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
 
 ```bash
-$ docker run -d -it --name <コンテナ名> --expose=80 <使用するイメージ名>:<タグ> /bin/bash
+$ docker run -d -it --name <コンテナ名> --expose=80 <用いるイメージ名>:<タグ> /bin/bash
 ```
 
 #### ・-a、-d
@@ -461,7 +461,7 @@ $ docker start -i <停止中コンテナ名>
 
 ### stop
 
-#### ・オプションなし
+#### ・オプション無し
 
 **＊コマンド例＊**
 

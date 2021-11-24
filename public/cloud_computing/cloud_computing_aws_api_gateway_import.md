@@ -123,7 +123,7 @@ paths:
 
 #### ・```x-amazon-apigateway-request-validators```キーとは
 
-メソッドリクエストで各種パラメータのバリデーションを定義するために、```x-amazon-apigateway-request-validators```キーが必要である。実際に定義したものを使用する時は、後述の```x-amazon-apigateway-request-validator```キーが必要である。
+メソッドリクエストで各種パラメータのバリデーションを定義するために、```x-amazon-apigateway-request-validators```キーが必要である。実際に定義したものを用いる時は、後述の```x-amazon-apigateway-request-validator```キーが必要である。
 
 #### ・設定項目
 
@@ -157,7 +157,7 @@ x-amazon-apigateway-request-validators:
 
 #### ・設定項目
 
-事前に定義した```x-amazon-apigateway-request-validators```キーの中から、使用するバリデーションのエイリアス名を宣言する。
+事前に定義した```x-amazon-apigateway-request-validators```キーの中から、用いるバリデーションのエイリアス名を宣言する。
 
 ```yaml
 paths:

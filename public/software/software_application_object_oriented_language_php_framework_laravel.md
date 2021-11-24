@@ -188,7 +188,7 @@ DB_PASSWORD=<アプリケーションユーザのパスワード>
 
 return [
 
-    // 使用するDBMSを設定
+    // 用いるDBMSを設定
     "default"     => env("DB_CONNECTION", "mysql"),
 
     "connections" => [
@@ -569,7 +569,7 @@ class Foo extends Model
 
 #### ・セッター
 
-Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。そのため、この機能を使用せずに、```constructor```メソッドを使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
+Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。そのため、この機能を使用せずに、```constructor```メソッドを用いたコンストラクタインジェクション、またはセッターインジェクションを用いるようにする。
 
 **＊実装例＊**
 
@@ -704,7 +704,7 @@ $filtered->all();
 // [3, 4]
 ```
 
-ちなみに、複数の条件を設定したいときは、早期リターンを使用する必要がある。
+ちなみに、複数の条件を設定したいときは、早期リターンを用いる必要がある。
 
 **＊実装例＊**
 
@@ -864,7 +864,7 @@ class FooDTO extends Model
 
 #### ・```all```メソッド
 
-レコードを全て取得するSELECT句を発行する。MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリキーの昇順で取得したい場合は、```orderBy```メソッドを使用して、明示的に並び替えるようにする。Eloquentモデルには```all```メソッドがないため、代わりにEloquentビルダーが持つ```all```メソッドがコールされる。全てのプライマリキーのCollection型を配列型として返却する。```toArray```メソッドで配列型に再帰的に変換できる。
+レコードを全て取得するSELECT句を発行する。MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリキーの昇順で取得したい場合は、```orderBy```メソッドを用いて、明示的に並び替えるようにする。Eloquentモデルには```all```メソッドがないため、代わりにEloquentビルダーが持つ```all```メソッドがコールされる。全てのプライマリキーのCollection型を配列型として返却する。```toArray```メソッドで配列型に再帰的に変換できる。
 
 参考：
 
@@ -936,7 +936,7 @@ class FooController extends Controller
 
 #### ・```first```メソッド
 
-取得されたコレクション型データの一つ目の要素の値を取得する。ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは一つである。foreachを用いてコレクションからEloquentモデルを取り出してもよいが、無駄が多い。そこで、```first```メソッドを使用して、Eloquentモデルを直接取得する。
+取得されたコレクション型データの一つ目の要素の値を取得する。ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは一つである。foreachを用いてコレクションからEloquentモデルを取り出してもよいが、無駄が多い。そこで、```first```メソッドを用いて、Eloquentモデルを直接取得する。
 
 **＊実装例＊**
 
@@ -1002,7 +1002,7 @@ class FooController extends Controller
 
 #### ・```orderBy```メソッド
 
-指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを使用する。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを使用して、プライマリキーの昇順を明示的に指定する。
+指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを用いる。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを用いて、プライマリキーの昇順を明示的に指定する。
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -1105,7 +1105,7 @@ class FooController extends Controller
 
 #### ・```with```メソッド
 
-親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。この仕組みをEagerロードという。Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。テーブル間に一対多（親子）のリレーションシップがある場合に使用する。N+1問題を防げる。
+親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。この仕組みをEagerロードという。Eloquentモデルには```with```メソッドがないため、代わりにEloquentビルダーが持つ```with```メソッドがコールされる。テーブル間に一対多（親子）のリレーションシップがある場合に用いる。N+1問題を防げる。
 
 参考：https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
@@ -1115,7 +1115,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-コントローラにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。
+コントローラにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを用いて、テーブルにおける一対多のリレーションを定義しておく。
 
 ```php
 <?php
@@ -1275,11 +1275,11 @@ class FooDTO extends Model
 
 #### ・```destroy```／```delete```メソッド（物理削除）
 
-DELETE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを使用する。手順として、Eloquentビルダーの```find```メソッドで削除対象のModelを検索する。返却されたEloquentビルダーの```destroy```／```delete```メソッドをコールし、自身を削除する。
+DELETE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを用いる。手順として、Eloquentビルダーの```find```メソッドで削除対象のModelを検索する。返却されたEloquentビルダーの```destroy```／```delete```メソッドをコールし、自身を削除する。
 
 #### ・SoftDeletesの有効化（論理削除）
 
-削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを使用する。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを用いる。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
 
 **＊実装例＊**
 
@@ -1309,7 +1309,7 @@ class FooDTO extends Model
 }
 ```
 
-マイグレーションファイルにて```softDeletes```メソッドを使用すると、削除フラグとして```deleted_at```カラムが追加されるようになる。```deleted_at```カラムのデフォルト値は```NULL```である。
+マイグレーションファイルにて```softDeletes```メソッドを用いると、削除フラグとして```deleted_at```カラムが追加されるようになる。```deleted_at```カラムのデフォルト値は```NULL```である。
 
 ```php
 <?php
@@ -1351,7 +1351,7 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で、同様に```destroy```／```delete```メソッドを使用して、自身を削除する。物理削除ではなく、```deleled_at```カラムが更新されるようになる。```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
+上記の状態で、同様に```destroy```／```delete```メソッドを用いて、自身を削除する。物理削除ではなく、```deleled_at```カラムが更新されるようになる。```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
 
 <br>
 
@@ -1412,7 +1412,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただ、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の一つになる。リポジトリパターンについては、以下のリンク先を参考にせよ。
+LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただ、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを用いたい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の一つになる。リポジトリパターンについては、以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
@@ -1762,7 +1762,7 @@ class FooRepository extends Repository implements DomainFooRepository
         // destroyメソッドでレコードを削除する。
         $this->fooDTO->destroy($fooId->id());
         
-        // deleteメソッドを使用しても良い。
+        // deleteメソッドを用いても良い。
         // $this->fooDTO->find($fooId->id())->delete();
     }
 }
@@ -2322,13 +2322,13 @@ $foo = new Foo();
 $foo->method();
 ```
 
-#### ・Facadeの静的プロキシ機能を使用する場合
+#### ・Facadeの静的プロキシ機能を用いる場合
 
-静的メソッドの記法でコールできる。ただし、自作クラスをFacadeの機能を使用してインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使ったほうが断然便利である部分以外は、使用しないほうがよい。
+静的メソッドの記法でコールできる。ただし、自作クラスをFacadeの機能を用いてインスタンス化すると、スパゲッティな『Composition（合成）』の依存関係を生じさせてしまう。例えば、Facadeの中でも、```Route```のような、代替するよりもFacadeを使ったほうが断然便利である部分以外は、使用しないほうがよい。
 
 **＊実装例＊**
 
-Facadeとして使用したいクラスを定義する。
+Facadeとして用いたいクラスを定義する。
 
 ```php
 <?php
@@ -2365,13 +2365,13 @@ use Illuminate\Support\Facades\Foo;
 $result = Foo::method();
 ```
 
-#### ・Facadeを使用した方が良い場合
+#### ・Facadeを用いた方が良い場合
 
-Facadeがトレイトの代わりになる場合、Facadeを使用することにより、責務がドメインモデルに集中せずにすむ。
+Facadeがトレイトの代わりになる場合、Facadeを用いることにより、責務がドメインモデルに集中せずにすむ。
 
 **＊例＊**
 
-NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。詳しくは、オンデマンド通知の説明を参考にせよ。
+NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を用いることにより、Userクラスが通知処理の責務を持たずに済む。詳しくは、オンデマンド通知の説明を参考にせよ。
 
 #### ・標準登録されたFacadeクラスの種類
 
@@ -2431,7 +2431,7 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ・Authファサードとは
 
-認証に関する処理を提供する。Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを使用して、認証ロジックを実装できる。
+認証に関する処理を提供する。Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを用いて、認証ロジックを実装できる。
 
 <br>
 
@@ -2439,11 +2439,11 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ・DBファサードとは
 
-データベースの操作処理を提供する。Eloquentの代わりに、DBファサードを使用しても良い。Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。
+データベースの操作処理を提供する。Eloquentの代わりに、DBファサードを用いても良い。Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。
 
 #### ・```transaction```メソッド
 
-一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。さらに```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、使用するとアプリケーションがデータベースを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う／行わない場合を比較して、処理時間が17%弱長くなったとのこと。
+一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。さらに```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、用いるとアプリケーションがデータベースを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う／行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -2502,7 +2502,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 #### ・```beginTransaction```メソッド、```commit```メソッド、```rollback```メソッド、
 
-トランザクション処理の各操作を分割して実行する。基本的には、```transaction```メソッドを使用してトランザクション処理を実行すれば良い。
+トランザクション処理の各操作を分割して実行する。基本的には、```transaction```メソッドを用いてトランザクション処理を実行すれば良い。
 
 **＊実装例＊**
 
@@ -2588,7 +2588,7 @@ Route::get("/healthcheck", function () {
 
 **＊実装例＊**
 
-認証方法としてWebガードを使用する場合、```auth```エイリアスを設定する。
+認証方法としてWebガードを用いる場合、```auth```エイリアスを設定する。
 
 ```php
 <?php
@@ -2633,7 +2633,7 @@ class Kernel extends HttpKernel
 }
 ```
 
-一方で、認証方法としてAPIガードを使用する場合、```auth:api```エイリアスを設定する。
+一方で、認証方法としてAPIガードを用いる場合、```auth:api```エイリアスを設定する。
 
 ```php
 <?php
@@ -2668,7 +2668,7 @@ Route::prefix("foos")->group(function () {
 
 #### ・```where```メソッド、```pattern```メソッド
 
-パスパラメータに対するバリデーションルールを正規表現で定義し、また実行する。RouteServiceProviderの```boot```メソッドにて、```pattern```メソッドで制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。
+パスパラメータに対するバリデーションルールを正規表現で定義し、また実行する。RouteServiceProviderの```boot```メソッドにて、```pattern```メソッドで制約を設定することによって、ルーティング時にwhereを用いる必要がなくなる。
 
 **＊実装例＊**
 
@@ -2727,7 +2727,7 @@ class RouteServiceProvider extends ServiceProvider
 
 #### ・```group```メソッド
 
-複数のグループを組み合わせる場合、```group```メソッドを使用する。
+複数のグループを組み合わせる場合、```group```メソッドを用いる。
 
 **＊実装例＊**
 
@@ -2836,7 +2836,7 @@ Storageファサードの```disk```メソッドを用いてpublicディスクを
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-ただし、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接使用できる。
+ただし、環境変数を用いて、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接使用できる。
 
 ```php
 FILESYSTEM_DRIVER=s3
@@ -2926,7 +2926,7 @@ Storageファサードの```disk```メソッドを用いてs3ディスクを指�
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
-他の実装方法として、環境変数を使用して、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接使用できる。
+他の実装方法として、環境変数を用いて、```filesytems.php```ファイルでデフォルトディスクを```s3```に変更すると、```put```メソッドを直接使用できる。
 
 ```bash
 FILESYSTEM_DRIVER=s3
@@ -2942,11 +2942,11 @@ Storage::put("file.txt", "file.txt");
 
 #### ・Validatorファサードとは
 
-バリデーション処理を提供する。FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりに、Validatorファサードを使用しても良い。
+バリデーション処理を提供する。FormRequestクラスの```validated```メソッドや```validate```メソッドの代わりに、Validatorファサードを用いても良い。
 
 #### ・Validatorクラス、```fails```メソッド
 
-Validateファサードの```make```メソッドを使用して、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを使用して、バリデーションでエラーが起こった場合の処理を定義する。
+Validateファサードの```make```メソッドを用いて、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを用いて、バリデーションでエラーが起こった場合の処理を定義する。
 
 **＊実装例＊**
 
@@ -2989,7 +2989,7 @@ class FooController extends Controller
 
 #### ・```validate```メソッド
 
-Validatorクラスの```validate```メソッドを使用すると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+Validatorクラスの```validate```メソッドを用いると、FormRequestクラスの```validate```メソッドと同様の処理が実行される。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
 
 ```php
 <?php
@@ -3008,7 +3008,7 @@ class FooController extends Controller
      */
     public function update(Request $request)
     {
-        // 元のページにリダイレクトする場合は、validateメソッドを使用する。
+        // 元のページにリダイレクトする場合は、validateメソッドを用いる。
         $validator = Validator::make(
             $request->all(),
             [
@@ -3037,7 +3037,7 @@ class FooController extends Controller
 
 #### ・ヘルパー関数とは
 
-グローバルにコールできるLaravel専用のメソッドのこと。基本的には、ヘルパー関数で実行される処理は、Facadeの内部で実行されるものと同じである。どちらを使用するかは好みである。
+グローバルにコールできるLaravel専用のメソッドのこと。基本的には、ヘルパー関数で実行される処理は、Facadeの内部で実行されるものと同じである。どちらを用いるかは好みである。
 
 参考：https://stackoverflow.com/questions/31324226/laravel-performance-of-facades-vs-helper-methods
 
@@ -3084,7 +3084,7 @@ $value = config("app.timezone");
 
 #### ・独自環境変数ファイルの作成と読み込み
 
-configディレクトリに任意の名前のphp形式を作成しておく。これは、configヘルパーで読み込むことができる。
+configディレクトリに任意の名前のphp形式を作成しておく。これは、configヘルパーで読み込める。
 
 **＊実装例＊**
 
@@ -3135,7 +3135,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 #### ・JSONデータのレスポンス
 
-返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定してもよい。
+返却されるResponseFactoryクラスの```json```メソッドにレンダリングしたいJSONデータを設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを用いて、明示的に設定してもよい。
 
 参考：https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
@@ -3166,7 +3166,7 @@ class FooController extends Controller
 
 #### ・Viewテンプレートのレスポンス
 
-返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを使用して、明示的に設定してもよい。
+返却されるResponseFactoryクラスの```view```メソッドに、レンダリングしたいデータ（テンプレート、array型データ、ステータスコードなど）を設定する。また、Viewクラスの```header```メソッドにHTTPヘッダーの値を設定する。```response```ヘルパーは初期値として```200```ステータスが設定されているが、```view```メソッドや```setStatusCode```メソッドを用いて、明示的に設定してもよい。
 
 **＊実装例＊**
 
@@ -3361,7 +3361,7 @@ class FooFactory extends Factory
 
 #### ・HasFactoryトレイト
 
-Factoryに対応するEloquentモデルで使用する必要がある。
+Factoryに対応するEloquentモデルで用いる必要がある。
 
 参考：https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
 
@@ -3716,7 +3716,7 @@ class FooAfterMiddleware
 
 #### ・VerifyCsrfToken
 
-セッションファイルに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。セッションファイルは```storage/framework/sessions```ディレクトリに配置されている。一般的に、CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。
+セッションファイルに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。セッションファイルは```storage/framework/sessions```ディレクトリに配置されている。一般的に、CSRFトークンは```Cookie```ヘッダーに割り当てることもできるが、Laravelではリクエストボディを用いる必要がある。
 
 参考：https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
 
@@ -3825,7 +3825,7 @@ $ php artisan make:request <Request名>
 
 #### ・ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを使用して、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを用いて、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
 
 参考：
 
@@ -3909,7 +3909,7 @@ class FooController extends Controller
 
 #### ・ルール定義 & バリデーション自動実行
 
-Controllerで、FormRequestクラスを引数に指定すると、コントローラのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを使用して、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+Controllerで、FormRequestクラスを引数に指定すると、コントローラのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを用いて、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
 
 **＊実装例＊**
 
@@ -3948,7 +3948,7 @@ class FooController extends Controller
 }
 ```
 
-FormRequestクラスの```rules```メソッドを使用して、ルールを定義する。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+FormRequestクラスの```rules```メソッドを用いて、ルールを定義する。ルールに反すると、一つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
 
 **＊実装例＊**
 
@@ -4239,7 +4239,7 @@ class FooRequest extends FormRequest
 
 #### ・セッション変数の取得
 
-FormRequestクラスの```session```メソッドを使用して、セッション変数を取得する。
+FormRequestクラスの```session```メソッドを用いて、セッション変数を取得する。
 
 **＊実装例＊**
 
@@ -4429,11 +4429,11 @@ return [
 
 #### ・```error```メソッド
 
-エラーメッセージを定義する時、```sprintf```メソッドを使用すると便利である。
+エラーメッセージを定義する時、```sprintf```メソッドを用いると便利である。
 
 **＊実装例＊**
 
-外部のAPIに対してリクエストを送信し、データを取得する。取得したJSONデータを、クライアントにレスポンスする。この時、リクエスト処理のために、Guzzleパッケージを使用している。
+外部のAPIに対してリクエストを送信し、データを取得する。取得したJSONデータを、クライアントにレスポンスする。この時、リクエスト処理のために、Guzzleパッケージを用いている。
 
 ```php
 <?php
@@ -4548,7 +4548,7 @@ $ php artisan migrate:status
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
-実際の使用場面として、マイグレーションに失敗した場合に、一つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
+実際の使用場面として、マイグレーションに失敗した場合、一つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
 
 ```bash
 # マイグレーションに失敗したので、一つ前の状態にロールバック。
@@ -4632,7 +4632,7 @@ class CreateFooTable extends Migration
             $table->bigIncrements("foo_id")->comment("ID");
             $table->string("name")->comment("名前");
 
-            // MigrationMacroServiceProviderのメソッドを使用する。
+            // MigrationMacroServiceProviderのメソッドを用いる。
             $table->systemColumns();
 
             // deleted_atカラムを追加する。
@@ -4923,7 +4923,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ・Notification
 
-通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelが標準で用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelが標準で用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を用いて、Laravelの標準のチャンネルに渡す通知内容を定義できる。
 
 **＊実装例＊**
 
@@ -4980,7 +4980,7 @@ class TfaTokenNotification extends Notification
 
 #### ・Eメール通知内容の定義
 
-MailMessageクラスのメソッドを使用して、Eメール通知の内容を生成する。```markdown```メソッドを使用することで、マークダウン形式で定義できる。
+MailMessageクラスのメソッドを用いて、Eメール通知の内容を生成する。```markdown```メソッドを用いることで、マークダウン形式で定義できる。
 
 参考：
 
@@ -5135,7 +5135,7 @@ class TfaTokenNotification extends Notification
 
 #### ・Channel
 
-Laravelが標準で用意しているチャンネル以外に送信したい場合に、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで用いられる。
+Laravelが標準で用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで用いられる。
 
 **＊実装例＊**
 
@@ -5268,7 +5268,7 @@ Notification::send($users, new FooNotification());
 
 #### ・オンデマンド通知
 
-オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
+オンデマンド通知を用いると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
 
 参考：
 
@@ -5488,7 +5488,7 @@ class Kernel extends HttpKernel
 
 #### ・コントローラ使用時
 
-ルーティング時に使用するパラメータ名とコントローラのメソッドの引数型と変数名が同じであり、かつパラメータに数値が割り当てられた場合に、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
+ルーティング時に用いるパラメータ名とコントローラのメソッドの引数型と変数名が同じであり、かつパラメータに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
 
 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
@@ -5951,7 +5951,7 @@ class FoosServiceProvider extends ServiceProvider
 
 #### ・インターフェースをバインドし、実装クラスをリゾルブ
 
-Laravelにおいてはクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。これを利用して、インターフェースをバインドし、実装クラスをリゾルブできるようにする。この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
+Laravelにおいてはクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。これを用いて、インターフェースをバインドし、実装クラスをリゾルブできるようにする。この方法は、上位レイヤーが抽象に依存することが必要な場面（例：依存性逆転の原則）で役立つ。
 
 **＊実装例＊**
 
@@ -6003,7 +6003,7 @@ class Interactor
 
 #### ・```make```メソッド
 
-引数の型でリゾルブを実行する以外に、```make```メソッドを使用することも可能である。```make```メソッドの引数にクラスの名前空間を渡すことで、インスタンスがリゾルブされる。
+引数の型でリゾルブを実行する以外に、```make```メソッドを用いることも可能である。```make```メソッドの引数にクラスの名前空間を渡すことで、インスタンスがリゾルブされる。
 
 参考：https://readouble.com/laravel/8.x/ja/container.html#the-make-method
 
@@ -6116,7 +6116,7 @@ class CreateFooTable extends Migration
             $table->string("name")
                 ->comment("名前");
             
-            // MigrationMacroServiceProviderのメソッドを使用する。
+            // MigrationMacroServiceProviderのメソッドを用いる。
             $table->systemColumns();
             
             // deleted_atカラムを追加する。
@@ -6281,7 +6281,7 @@ class EventServiceProvider extends ServiceProvider
 
 #### ・CSRF対策
 
-セッション開始時にCSRFトークンが生成される。Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
+セッション開始時にCSRFトークンが生成される。Bladeを用いてサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。
 
 参考：https://readouble.com/laravel/8.x/ja/csrf.html
 
@@ -6292,7 +6292,7 @@ class EventServiceProvider extends ServiceProvider
 </form>
 ```
 
-Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
+Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで用いる必要がある。
 
 参考：
 
@@ -6300,7 +6300,7 @@ Bladeを使用しない場合、セッション開始時のレスポンスの```
 - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
 - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
 
-ちなみに、PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
+ちなみに、PostmanなどのHTTPクライアントツールをフロントエンドの代わりに用いる場合は、レスポンスで返信されるCSRFトークを扱えない、そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保存するようなスクリプトを設定しておくと良い。
 
 ```javascript
 if (pm.request.method == 'GET') {
@@ -6500,7 +6500,7 @@ return [
 
 #### ・よく使う操作メソッド
 
-FormRequestクラスの```session```メソッドはStoreクラスを返却する。このクラスのメソッドを使用して、セッションを操作できる。
+FormRequestクラスの```session```メソッドはStoreクラスを返却する。このクラスのメソッドを用いて、セッションを操作できる。
 
 | メソッド名   | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -6558,7 +6558,7 @@ class FooController extends Controller
 
 #### ・セッションファイルがStoreクラスに至るまで
 
-全てを追うことは難しいので、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。```read```メソッドは、```storage/framework/sessions```にあるセッションファイルに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。Sessionクラスのメソッドは、```attribute```プロパティを使用して、セッションを操作する。最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションファイルに新しい値が書き込まれる。
+全てを追うことは難しいので、StartSessionクラスの```handle```メソッドが実行されるところから始めるものとする。ここで、```handleStatefulRequest```メソッドの中の```startSession```メソッドが実行される。これにより、Storeクラスの```start```メソッド、```loadSession```メソッド、```readFromHandler```メソッドが実行され、```SessionHandlerInterface```の実装クラスの```read```メソッドが実行される。```read```メソッドは、```storage/framework/sessions```にあるセッションファイルに書き込まれたセッションを読み出し、```attribute```プロパティに格納する。Sessionクラスのメソッドは、```attribute```プロパティを用いて、セッションを操作する。最終的に,```handleStatefulRequest```では、```saveSession```メソッドの中の```save```メソッドが実行され、セッションファイルに新しい値が書き込まれる。
 
 参考：
 
@@ -6655,7 +6655,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ・```@include```（サブビュー）
 
-読み込んだファイル全体を出力する。読み込むファイルに対して、変数を渡すこともできる。```@extentds```との使い分けとして、親子関係のないテンプレートの間で使用するのがよい。両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み込み）の関係に近い。
+読み込んだファイル全体を出力する。読み込むファイルに対して、変数を渡すこともできる。```@extentds```との使い分けとして、親子関係のないテンプレートの間で用いるのがよい。両者は、PHPでいう```extends```（クラスチェーン）と```require```（単なる読み込み）の関係に近い。
 
 **＊実装例＊**
 
@@ -6751,7 +6751,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 </html>
 ```
 
-子テンプレートの```@section```にて、```@parent```を使用する。親テンプレートと子テンプレートそれぞれの要素が出力される。
+子テンプレートの```@section```にて、```@parent```を用いる。親テンプレートと子テンプレートそれぞれの要素が出力される。
 
 **＊実装例＊**
 
@@ -6791,7 +6791,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ・```@stack```、```@push```
 
-子テンプレートのレンダリング時に、CSSとJavaScriptのファイルを動的に出力する場合に使用する。親テンプレートにて、```@stack("foo")```を定義する。これを継承した子テンプレートのレンダリング時に、```@push("foo")```-```@endpush```で定義した要素が、```@stack()```部分に出力される。
+子テンプレートのレンダリング時に、CSSとJavaScriptのファイルを動的に出力する場合に用いる。親テンプレートにて、```@stack("foo")```を定義する。これを継承した子テンプレートのレンダリング時に、```@push("foo")```-```@endpush```で定義した要素が、```@stack()```部分に出力される。
 
 **＊実装例＊**
 
@@ -6915,8 +6915,8 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| Webガード    | セッションIDを用いたForm認証のために使用する。               |
-| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために使用する。それぞれの認証方法に違いについては、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Webガード    | セッションIDを用いたForm認証のために用いる。               |
+| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために用いる。それぞれの認証方法に違いについては、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 
 #### ・カスタムガード
 
@@ -6924,7 +6924,7 @@ Laravelが標準で持たないドライバーとプロバイダーを持つガ�
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
-APIガードの認証で使用するトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
+APIガードの認証で用いるトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
 
 参考：https://github.com/tymondesigns/jwt-auth
 
@@ -7107,7 +7107,7 @@ return [
 
 ```
 
-Authファサードの```guard```メソッドを使用して、ガードに応じた認証を実行する。これにより、同一の認証後ページにリダイレクトした後に、ユーザのEloquentモデルに応じた処理を実行できるようになる。
+Authファサードの```guard```メソッドを用いて、ガードに応じた認証を実行する。これにより、同一の認証後ページにリダイレクトした後に、ユーザのEloquentモデルに応じた処理を実行できるようになる。
 
 ```php
 <?php
@@ -7167,7 +7167,7 @@ $user = auth()->user();
 
 **＊実装例＊**
 
-認証済みのユーザがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを使用して、認証済みのユーザからのリクエストを認証済みページにリダイレクトさせる。
+認証済みのユーザがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを用いて、認証済みのユーザからのリクエストを認証済みページにリダイレクトさせる。
 
 ````php
 <?php
@@ -7313,7 +7313,7 @@ class AuthServiceProvider extends ServiceProvider
 
 #### ・AuthorizeMiddlewareによる認可
 
-ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名は標準で```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合するようにする。インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
+ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名は標準で```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合するようにする。インスタンスを渡す場合は、暗黙のモデル結合を用いる必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
 
 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
@@ -7493,9 +7493,9 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 | ----------------------------- | ------------------------------------------------------------ |
 | oauth_access_tokens           | 全てのアクセストークンを管理する。                           |
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。             |
-| oauth_clients                 | Passportで使用している付与タイプを管理する。                 |
+| oauth_clients                 | Passportで用いている付与タイプを管理する。                 |
 | oauth_personal_access_clients | Personal Access Tokenタイプの情報を管理する。                |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再生成をリクエストするために使用する。<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再生成をリクエストするために用いる。<br>参考：https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ・トークンを生成
 
@@ -7594,7 +7594,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを使用したい場合は、```database```ドライバを指定する。
+3. ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを用いたい場合は、```database```ドライバを指定する。
 
 ```php
 return [
@@ -7679,7 +7679,7 @@ $ php artisan passport:client --password
 
 #### ・クライアントアプリ側の実装
 
-1. 『認証』のために、アクセストークンのリクエストを送信する。ユーザ側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
+1. 『認証』のために、アクセストークンのリクエストを送信する。ユーザ側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを用いて、リクエストを送信するものとする。
 
 **＊実装例＊**
 
@@ -7753,7 +7753,7 @@ class CreateUsersTable extends Migration
             $table->string("name")->comment("ユーザ名");
             $table->string("api_token")->unique()->comment("APIトークン");
 
-            // MigrationMacroServiceProviderのメソッドを使用する。
+            // MigrationMacroServiceProviderのメソッドを用いる。
             $table->systemColumns();
 
             // deleted_atカラムを追加する。
@@ -7845,7 +7845,7 @@ $ composer require laravel/sanctum
 
 ### APIトークン認証
 
-フロントエンド（外部のアプリケーションを含む）は任意とし、APIのみを実装する場合に、使用が適している。
+フロントエンド（外部のアプリケーションを含む）は任意とし、APIのみを実装する場合、使用が適している。
 
 参考：
 
@@ -7857,7 +7857,7 @@ $ composer require laravel/sanctum
 
 ### SPA認証
 
-フロントエンドにファーストパーティのSPA（自社のSPA）を使用し、バックエンドのAPIを実装する場合に、使用が適している。
+フロントエンドにファーストパーティのSPA（自社のSPA）を使用し、バックエンドのAPIを実装する場合、使用が適している。
 
 参考：
 
@@ -7940,13 +7940,13 @@ $ composer require laravel/ui:^1.0 --dev
 認証処理に関連するクラスを自動生成できる。Bladeに組み合わせるJavaScriptを選べる。
 
 ```bash
-# Vuejsを使用する場合。
+# Vuejsを用いる場合。
 $ php artisan ui vue --auth
 
-# Reactを使用する場合
+# Reactを用いる場合
 $ php artisan ui react --auth
 
-# Bootstrapを使用する場合。
+# Bootstrapを用いる場合。
 $ php artisan ui bootstrap --auth 
 ```
 
@@ -8089,7 +8089,7 @@ $staff->roleType->isSalesRole(); // false
 
 #### ・laravel-ide-helperとは
 
-PHPStromでLaravelを開発する場合に、拡張機能を提供する。
+PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
 参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

@@ -82,7 +82,7 @@
                 * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go.html)
                 * [📖 Goコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_command_and_configuration.html)
                 * ロジック
-                    * [📖 メソッド、データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html)
+                    * [📖 メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html)
                 * パッケージ／フレームワーク
                     * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_package.html)
                     * [📖 Gin](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_framework_gin.html)
@@ -92,7 +92,7 @@
 ## ハードウェア
 
 * [📖 ︎ハードウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware.html)
-* [📖 ︎メモリ](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
+* [📖メモリのアドレス空間管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
 * [📖 ︎組み込み機器](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_embedded_system.html)
 
 <br>

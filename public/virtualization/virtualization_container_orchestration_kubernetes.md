@@ -119,7 +119,7 @@ spec:
 
 ### Istioとは
 
-ただし、Istioを必ずしも使用する必要はなく、Kubernetesの標準の機能でこれを実現してもよい。
+ただし、Istioを必ずしも用いる必要はなく、Kubernetesの標準の機能でこれを実現してもよい。
 
 参考：https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 

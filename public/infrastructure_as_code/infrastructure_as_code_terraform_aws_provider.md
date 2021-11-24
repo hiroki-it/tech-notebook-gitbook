@@ -10,41 +10,99 @@
 
 ## 01. ACM
 
+### 証明書のリクエスト
+
 **＊実装例＊**
+
+Eメール検証の場合を示す。
 
 ```elixir
 ###############################################
 # For www domain
 ###############################################
-resource "aws_acm_certificate" "www" {
+resource "aws_acm_certificate" "www_an1" {
   domain_name               = var.route53_domain_www
   subject_alternative_names = ["*.${var.route53_domain_www}"]
-  # 後述の説明を参考にせよ。（１）
   validation_method         = "EMAIL"
 
   tags = {
-    Name = "${var.environment}-${var.service}-www-cert"
+    Name = "${var.environment}-${var.service}-www-an1-cert"
   }
 
   lifecycle {
     create_before_destroy = true
   }
 }
+```
 
-resource "aws_acm_certificate_validation" "www" {
-  certificate_arn = aws_acm_certificate.www.arn
+<br>
+
+**＊実装例＊**
+
+DNS検証の場合を示す。
+
+
+```elixir
+###############################################
+# For www domain
+###############################################
+resource "aws_acm_certificate" "www_an1" {
+  domain_name               = var.route53_domain_www
+  subject_alternative_names = ["*.${var.route53_domain_www}"]
+  validation_method         = "DNS"
+
+  tags = {
+    Name = "${var.environment}-${var.service}-www-an1-cert"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 
 <br>
 
-### （１）Eメール検証の場合はメール再送が必要
+### 検証の実行
 
-TerraformでEメール検証の証明書リクエストを作成すると、メールが送信されないことがある。送信されなかった場合は、メールの再送を実行する。なお、DNS検証の場合は、ドメインを購入したサービスが管理するドメインレジストラにRoute53のNSレコード値を登録する必要がある。
+**＊実装例＊**
 
-<br>
+Eメール検証の場合を示す。
 
-### ※ 証明書の検証方法を変更する
+```elixir
+###############################################
+# For www domain
+###############################################
+# 後述の説明を参考にせよ。（１）
+resource "aws_acm_certificate_validation" "www_an1" {
+  certificate_arn = aws_acm_certificate.www_an1.arn
+}
+```
+
+**＊実装例＊**
+
+DNS検証の場合を示す。
+
+```elixir
+###############################################
+# For www domain
+###############################################
+# 後述の説明を参考にせよ。（２）
+resource "aws_acm_certificate_validation" "www_an1" {
+  certificate_arn         = aws_acm_certificate.www_an1.arn
+  validation_record_fqdns = [for record in var.www_an1_route53_record : record.fqdn]
+}
+```
+
+#### （１）AWS以外でドメインを購入した場合は注意
+
+AWS以外でドメインを購入した場合はAWS以外で作業になる。証明書のDNS検証時に、ドメインを購入したサービスが管理するドメインレジストラに、Route53のNSレコード値を登録する。
+
+#### （２）検証のためにメール再送が必要
+
+証明書のEメール検証時に、ドメインの所有者にメールが送信されないことがある。送信されなかった場合は、メールの再送を実行する。
+
+#### ※ 証明書の検証方法を変更する
 
 もしコンソール画面から証明書の検証方法を変更する場合、検証方法の異なる証明書を構築してこれに切り替えたうえで、古い証明書を削除する必要がある。これに合わせて、Terraformでもリリースを二回に分ける。
 
@@ -153,13 +211,13 @@ resource "aws_api_gateway_stage" "foo" {
 
 ### （１）OpenAPI仕様のインポートと差分認識
 
-あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし、これをインポートすることにより、APIを定義できる。YAMLファイルに変数を渡すこともできる。APIの再デプロイのトリガーとして、```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする。これにより、インポート元のYAMLファイルに差分があった場合に、Terraformが```redeployment```パラメータの値の変化を認識できるようになり、再デプロイを実行できる。
+あらかじめ用意したOpenAPI仕様のYAMLファイルを```body```オプションのパラメータとし、これをインポートすることにより、APIを定義できる。YAMLファイルに変数を渡すこともできる。APIの再デプロイのトリガーとして、```redeployment```パラメータに```body```パラメータのハッシュ値を渡すようにする。これにより、インポート元のYAMLファイルに差分があった場合、Terraformが```redeployment```パラメータの値の変化を認識できるようになり、再デプロイを実行できる。
 
 <br>
 
 ### （※）ステージ名を取得する方法はない
 
-API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
+API Gatewayのステージ名を参照するためには、resourceを用いる必要があり、dataではこれを取得できない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
 
 参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/arn-format-reference.html
 
@@ -471,7 +529,7 @@ resource "aws_ecs_service" "this" {
 
 ### （３）ALB/NLBリスナーの構築を待機
 
-Teraformは、特に依存関係を実装しない場合に、『ターゲットグループ → ALB/NLB → リスナー』の順でリソースを構築する。問題として、ALB/NLBやリスナーの構築が終わる前に、ECSサービスの構築が始まってしまう。ALB/NLBの構築（※リスナーも含む可能性）が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。リスナーの後にECSサービスを構築するようにし、『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順でリソースを構築できるようにする。
+Teraformは、特に依存関係を実装しない場合、『ターゲットグループ → ALB/NLB → リスナー』の順でリソースを構築する。問題として、ALB/NLBやリスナーの構築が終わる前に、ECSサービスの構築が始まってしまう。ALB/NLBの構築（※リスナーも含む可能性）が完全に完了しない状態では、ターゲットグループはECSサービスに紐付けらず、これが完了する前にECSサービスがターゲットグループを参照しようとするため、エラーになる。リスナーの後にECSサービスを構築するようにし、『ターゲットグループ → ALB/NLB → リスナー → ECSサービス』の順でリソースを構築できるようにする。
 
 参考：https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
@@ -552,11 +610,11 @@ resource "aws_instance" "bastion" {
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に、tpl形式のカスタマー管理ポリシーを定義しておく。構築済みのIAMロールに、```aws_iam_policy```リソースを使用して、AWS管理ポリシーをIAMユーザにアタッチする。
+事前に、tpl形式のカスタマー管理ポリシーを定義しておく。構築済みのIAMロールに、```aws_iam_policy```リソースを用いて、AWS管理ポリシーをIAMユーザにアタッチする。
 
 **＊実装例＊**
 
-ローカルからAWS CLIコマンドを実行する必要がある場合に、コマンドを特定の送信元IPアドレスを特定のものに限定する。事前に、list型でIPアドレスを定義する。
+ローカルからAWS CLIコマンドを実行する必要がある場合、コマンドを特定の送信元IPアドレスを特定のものに限定する。事前に、list型でIPアドレスを定義する。
 
 ```elixir
 ###############################################
@@ -587,7 +645,7 @@ global_ip_addresses = [
 ```
 
 
-コンソール画面で作成済みのIAMユーザの名前を取得する。tpl形式のポリシーにlist型の値を渡す時、```jsonencode```関数を使用する必要がある。
+コンソール画面で作成済みのIAMユーザの名前を取得する。tpl形式のポリシーにlist型の値を渡す時、```jsonencode```関数を用いる必要がある。
 
 ```elixir
 ###############################################
@@ -633,7 +691,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 ### 信頼ポリシーを持つロール
 
-コンソール画面でロールを作成する場合は意識することはないが、特定のリソースにロールをアタッチするためには、ロールに信頼ポリシーを組み込む必要がある。事前に、tpl形式の信頼ポリシーを定義しておく。```aws_iam_role```リソースを使用して、IAMロールを構築すると同時に、これに信頼ポリシーをアタッチする。
+コンソール画面でロールを作成する場合は意識することはないが、特定のリソースにロールをアタッチするためには、ロールに信頼ポリシーを組み込む必要がある。事前に、tpl形式の信頼ポリシーを定義しておく。```aws_iam_role```リソースを用いて、IAMロールを構築すると同時に、これに信頼ポリシーをアタッチする。
 
 **＊実装例＊**
 
@@ -726,7 +784,7 @@ resource "aws_iam_role" "lambda_execute" {
 
 ### インラインポリシーを持つロール
 
-事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、インラインポリシーを構築すると同時に、これにインラインポリシーをアタッチする。
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを用いて、インラインポリシーを構築すると同時に、これにインラインポリシーをアタッチする。
 
 **＊実装例＊**
 
@@ -767,7 +825,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 ### AWS管理ポリシーを持つロール
 
-事前に、tpl形式のAWS管理ポリシーを定義しておく。```aws_iam_role_policy_attachment```リソースを使用して、実インフラにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする。ポリシーのARNは、AWSのコンソール画面を確認する。
+事前に、tpl形式のAWS管理ポリシーを定義しておく。```aws_iam_role_policy_attachment```リソースを用いて、実インフラにあるAWS管理ポリシーを構築済みのIAMロールにアタッチする。ポリシーのARNは、AWSのコンソール画面を確認する。
 
 **＊実装例＊**
 
@@ -785,7 +843,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 ### カスタマー管理ポリシーを持つロール
 
-事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを使用して、カスタマー管理ポリシーを構築する。```aws_iam_role_policy_attachment```リソースを使用して、カスタマー管理ポリシーを構築済みのIAMロールにアタッチする。
+事前に、tpl形式のインラインポリシーを定義しておく。```aws_iam_role_policy```リソースを用いて、カスタマー管理ポリシーを構築する。```aws_iam_role_policy_attachment```リソースを用いて、カスタマー管理ポリシーを構築済みのIAMロールにアタッチする。
 
 **＊実装例＊**
 
@@ -834,7 +892,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 
 ### サービスリンクロール
 
-サービスリンクロールは、AWSリソースの構築時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを使用して、手動で構築できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
+サービスリンクロールは、AWSリソースの構築時に自動的に作成され、アタッチされる。そのため、Terraformの管理外である。```aws_iam_service_linked_role```リソースを用いて、手動で構築できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
 
 **＊実装例＊**
 
@@ -1063,7 +1121,7 @@ DBクラスターでは、レプリケーションのために、３つのAZが�
 
 ### （５）インスタンスタイプは別々に設定する
 
-インスタンスタイプに```each```で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。この場合、インスタンスのフェイルオーバーを利用できず、ダウンタイムを最小化できない。そのため、```each```を用いて、DBインスタンスごとにインスタンスタイプを設定するようにする。インスタンスごとに異なるインスタンスタイプを設定する場合は、```each```で割り当てる値の順番を考慮する必要があるため、配置されているAZを事前に確認する必要がある。
+インスタンスタイプに```each```で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。この場合、インスタンスのフェイルオーバーを使用できず、ダウンタイムを最小化できない。そのため、```each```を用いて、DBインスタンスごとにインスタンスタイプを設定するようにする。インスタンスごとに異なるインスタンスタイプを設定する場合は、```each```で割り当てる値の順番を考慮する必要があるため、配置されているAZを事前に確認する必要がある。
 
 <br>
 
@@ -1337,7 +1395,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
     statement {
 
-      # マネージドルールを使用する。
+      # マネージドルールを用いる。
       managed_rule_group_statement {
         vendor_name = "AWS"
         name        = "AWSManagedRulesSQLiRuleSet"
@@ -1475,7 +1533,7 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 | IAMユーザグループ            | 全て                                             |                                                              |
 | IAMロール                    | ・ユーザに紐付くロール<br>・サービスリンクロール | サービスリンクロールは、AWSリソースの構築に伴って、自動的に作られるため、Terraformで管理できない。ただし、数が多いためあえて行わないが、Terraformで構築してAWSリソースに紐付けることもことも可能である。 |
 | Network Interface            | 全て                                             | 他のAWSリソースの構築に伴って、自動的に構築されるため、Terraformで管理できない。 |
-| RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために、mysql providerという機能を使用する必要がある。しかし、使用する上でディレクトリ構成戦略と相性が悪い。 |
+| RDS                          | admin以外のユーザ                                | 個別のユーザ作成のために、mysql providerという機能を用いる必要がある。しかし、用いる上でディレクトリ構成戦略と相性が悪い。 |
 | Route53                      | ネームサーバーレコード                           | ホストゾーンを作成すると、レコードとして、ネームサーバレコードの情報が自動的に設定される。これは、Terraformの管理外である。 |
 | S3                           | tfstateの管理バケット                            | tfstateファイルを格納するため、Terraformのデプロイより先に存在している必要がある。 |
 | SSMパラメータストア          | 全て                                             | ECSに機密な環境変数を出力するため。                          |

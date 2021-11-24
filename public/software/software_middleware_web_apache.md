@@ -422,7 +422,7 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 条件分岐と環境変数の設定を定義する。
 
 ```apacheconf
-# クエリパラメータが以下の拡張子の場合に、
+# クエリパラメータが以下の拡張子の場合
 SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 ```
 

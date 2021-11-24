@@ -154,7 +154,7 @@ RUN pyenv install ${PYTHON_VERSION}
 | Circle CI             | GitHubが、Circle CIに対して、送信WebHookを行う。  |
 | Docker Hub Auto Build | GitHubが、Docker Hubに対して、送信WebHookを行う。 |
 
-#### ・Dockerfileを使用するメリット
+#### ・Dockerfileを用いるメリット
 
 Dockerfileを用いない場合、各イメージレイヤーのインストールを手動で行わなければならない。しかし、Dockerfileを用いることで、これを自動化できる。
 
@@ -374,7 +374,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 #### ・OSイメージをベースとした場合（悪い例）
 
-OSベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。原則として、一つのコンテナで一つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。
+OSベンダーが提供するベースイメージを用いると、不要なバイナリファイルが含まれてしまう。原則として、一つのコンテナで一つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。
 
 **＊実装例＊**
 
@@ -430,7 +430,7 @@ EXPOSE 80
 
 #### ・ミドルウェアイメージをベースとした場合（良い例）
 
-代わりに、ミドルウェアベンダーが提供するベースイメージを使用するようにする。
+代わりに、ミドルウェアベンダーが提供するベースイメージを用いるようにする。
 
 **＊実装例＊**
 
@@ -449,7 +449,7 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 #### ・言語イメージをベースとした場合
 
-代わりに、言語ベンダーが提供するベースイメージを使用するようにする。
+代わりに、言語ベンダーが提供するベースイメージを用いるようにする。
 
 ```dockerfile
 # ここに実装例
@@ -503,7 +503,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ・Data Volumeコンテナによる永続化データの提供
 
-Volumeを使用する場合のコンテナ配置手法の一つ。DockerエリアのVolumeをData Volumeをコンテナ （Data Volumeコンテナ）のディレクトリにマウントしておく。Volumeを使用する時は、Dockerエリアを参照するのではなく、Data Volumeコンテナを参照するようにする。
+Volumeを用いる場合のコンテナ配置手法の一つ。DockerエリアのVolumeをData Volumeをコンテナ （Data Volumeコンテナ）のディレクトリにマウントしておく。Volumeを用いる時は、Dockerエリアを参照するのではなく、Data Volumeコンテナを参照するようにする。
 
 ![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volumeコンテナ.png)
 

@@ -173,7 +173,7 @@ $ ../configure --prefix="<ソースコードのインストール先のパス>"
 パッケージのソースコードからexeファイルをビルドする。
 
 ```bash
-# -j で使用するコア数を宣言し、処理の速度を上げられる。
+# -j で用いるコア数を宣言し、処理の速度を上げられる。
 $ make -j4
 ```
 
@@ -215,7 +215,7 @@ $ make clean
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/interpreted_language.png)
 
-コマンドラインでそのまま入力し、機械語翻訳と実行を行うことができる。
+コマンドラインでそのまま入力し、機械語翻訳と実行を行える。
 
 ```bash
 #===========

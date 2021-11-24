@@ -256,7 +256,7 @@ $ fluent-bit/bin/fluent-bit \
     Name              tail
     # FluentBitコンテナ内のログファイルの場所。ワイルドカードを使用できる。
     Path              /var/www/foo/storage/logs/*.log
-    # 使用するパーサー名
+    # 用いるパーサー名
     multiline.parser  laravel-multiline-parser
 ```
 
@@ -345,7 +345,7 @@ Laravelのスタックトレースを結合する。
     name                  multiline
     match                 *
     multiline.key_content log
-    # 使用するパーサー名
+    # 用いるパーサー名
     multiline.parser      laravel
 ```
 
@@ -548,13 +548,13 @@ Outputs
 
 #### ・AWSの任意のリソースに出力
 
-AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する。
+AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを用いる。
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
 #### ・Cloudwatchログへの出力
 
-cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを使用する。
+cloudwatch_logsプラグインがあらかじめインストールされているベースイメージを用いる。
 
 参考：https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
 
@@ -669,19 +669,19 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ・Kinesis Firehoseへの出力
 
-kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを使用する。
+kinesis_firehoseプラグインがあらかじめインストールされているベースイメージを用いる。
 
 参考：https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 
 #### ・Kinesis Streamsへの出力
 
-kinesis_streamsプラグインがあらかじめインストールされているベースイメージを使用する。
+kinesis_streamsプラグインがあらかじめインストールされているベースイメージを用いる。
 
 参考：https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
 
 #### ・NewRelicへの出力
 
-newRelicプラグインがあらかじめインストールされているベースイメージを使用する。
+newRelicプラグインがあらかじめインストールされているベースイメージを用いる。
 
 参考：https://github.com/newrelic/newrelic-fluent-bit-output
 
@@ -770,7 +770,7 @@ FluentBit／Fluentdが対応する他のサービスにログを転送できる�
 
 #### ・ログ転送プロセス
 
-FireLensコンテナでは、FluentBitまたはFlunetdがログ転送プロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働させることも可能であるが、FireLensコンテナを使用すれば、主要なセットアップがされているため、より簡単な設定でFluentBitまたはFlunetdを使用できる。FluentBitの方がより低負荷で稼働するため、FluentBitが推奨されている。
+FireLensコンテナでは、FluentBitまたはFlunetdがログ転送プロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働させることも可能であるが、FireLensコンテナを用いれば、主要なセットアップがされているため、より簡単な設定でFluentBitまたはFlunetdを使用できる。FluentBitの方がより低負荷で稼働するため、FluentBitが推奨されている。
 
 参考：
 
@@ -783,7 +783,7 @@ FireLensコンテナでは、FluentBitまたはFlunetdがログ転送プロセ�
 
 #### ・FluentBitイメージ
 
-FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている。AWSリソースにログを転送するためのプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。パブリックECRリポジトリからプルしたイメージをそのまま使用する場合と、プライベートECRリポジトリで再管理してから使用する場合がある。
+FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている。AWSリソースにログを転送するためのプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と、プライベートECRリポジトリで再管理してから用いる場合がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
@@ -796,13 +796,13 @@ FireLensコンテナのベースイメージとなるFluentBitイメージがAWS
 ...
 ```
 
-#### ・パブリックECRリポジトリを使用する場合
+#### ・パブリックECRリポジトリを用いる場合
 
-ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているconfファイルの設定をそのまま使用する場合は、こちらを採用する。
+ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているconfファイルの設定をそのまま用いる場合は、こちらを採用する。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
-#### ・プライベートECRリポジトリを使用する場合
+#### ・プライベートECRリポジトリを用いる場合
 
 あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
 
@@ -990,7 +990,7 @@ MULTILINE_PARSERセクションにて、スタックトレースログの各行�
     name                  multiline
     match                 *
     multiline.key_content log
-    # ファイルを読み込む。組み込みパーサ（goなど）を使用することも可能。
+    # ファイルを読み込む。組み込みパーサ（goなど）を用いることも可能。
     multiline.parser      go, laravel
 ```
 

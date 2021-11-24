@@ -160,7 +160,7 @@ summary(Reg)
 
 ### ロジスティック回帰分析
 
-説明変数が質的変数の場合に、最も当てはまりの良い非線形モデル（ロジスティック分布）を推定する。
+説明変数が質的変数の場合、最も当てはまりの良い非線形モデル（ロジスティック分布）を推定する。
 
 <img src = "https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ロジスティック回帰分析.png" width = 70%>
 

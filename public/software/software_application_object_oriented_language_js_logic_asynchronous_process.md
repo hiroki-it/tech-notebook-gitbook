@@ -83,7 +83,7 @@ const asyncFunc = () => {
 
 ### ```resolve```メソッド、```reject```メソッド
 
-#### ・コンストラクタを使用する場合
+#### ・コンストラクタを用いる場合
 
 Promiseオブジェクトのコンストラクタ内では、暗黙的に```try-catch```が実行されている。そのため、結果のステータスが成功であれば```resolve```メソッドの結果を返却し、反対に失敗であれば```reject```メソッドを返却する。両方を実装すると良しなに実行してくれる。```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用しないと、後続する処理も実行される。一つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。
 
@@ -108,7 +108,7 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-一方で、```resolve```メソッドと```resolve```メソッドのコール時に```return```を使用すると、後続する処理は実行されない。
+一方で、```resolve```メソッドと```resolve```メソッドのコール時に```return```を用いると、後続する処理は実行されない。
 
 ```javascript
 const asyncFunc = () => {
@@ -194,7 +194,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 ### ```then```メソッド、```catch```メソッド、```finally```メソッド
 
-#### ・コンストラクタを使用する場合
+#### ・コンストラクタを用いる場合
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -251,7 +251,7 @@ rejectFunc.catch((err) => {
 
 #### ・async宣言とは
 
-Promiseオブジェクトを明示的に使用する場合、コンストラクタに非同期処理を持つ関数を渡す必要がある。一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。
+Promiseオブジェクトを明示的に用いる場合、コンストラクタに非同期処理を持つ関数を渡す必要がある。一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
 
@@ -291,7 +291,7 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-また、axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを使用してもよい。
+また、axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを用いてもよい。
 
 **＊実装例＊**
 
@@ -318,7 +318,7 @@ const asyncFunc = async () => {
 **＊実装例＊**
 
 ```javascript
-// Promiseオブジェクトのthenメソッドを使用した場合
+// Promiseオブジェクトのthenメソッドを用いた場合
 const asyncFunc = async () => {
 
     axios.get("/some/path").then((res) => {
@@ -326,7 +326,7 @@ const asyncFunc = async () => {
     });
 }
 
-// awaitを使用した場合
+// awaitを用いた場合
 const asyncFunc = async () => {
 
     // 以降の全処理がthenメソッドに渡される。
@@ -340,7 +340,7 @@ const asyncFunc = async () => {
 await宣言により、コールバック地獄のソースコードが分かりやすくなる。
 
 ```js
-// Promiseオブジェクトのthenメソッドを使用した場合
+// Promiseオブジェクトのthenメソッドを用いた場合
 const asyncFunc = async () => {
 
     // コールバック関数地獄になっている。
@@ -353,7 +353,7 @@ const asyncFunc = async () => {
     })
 }
 
-// awaitを使用した場合
+// awaitを用いた場合
 const asyncFunc = async () => {
 
     const res1 = await axios.get("/some/path1");
@@ -370,7 +370,7 @@ const asyncFunc = async () => {
 
 #### ・try-catch
 
-Promiseオブジェクトの```then```メソッド、```catch```メソッド、```finally```メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
+Promiseオブジェクトの```then```メソッド、```catch```メソッド、```finally```メソッドを用いてエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。
 
 参考：https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
 
@@ -437,7 +437,7 @@ Promiseオブジェクトがもつメソッド。```ajax```メソッドによっ
 
 **＊実装例＊**
 
-JQueryパッケージの```get```メソッドや```post```メソッドを使用した場合。
+JQueryパッケージの```get```メソッドや```post```メソッドを用いた場合。
 
 ```javascript
 const url = "https://www.google.co.jp/";
@@ -467,7 +467,7 @@ $.post(url, params)
     });
 ```
 
-JQueryパッケージの```ajax```メソッドを使用した場合。
+JQueryパッケージの```ajax```メソッドを用いた場合。
 
 ```javascript
 const id = 1;
@@ -504,7 +504,7 @@ Promiseオブジェクトがもつメソッド。```ajax```メソッドによっ
 
 **＊実装例＊**
 
-JQueryパッケージの```ajax```メソッドを使用した場合。
+JQueryパッケージの```ajax```メソッドを用いた場合。
 
 ```javascript
 const id = 1;
