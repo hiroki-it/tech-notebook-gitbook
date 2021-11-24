@@ -1356,7 +1356,7 @@
                 <a href="../software/software_application_procedural_language_go_logic_method_data.html">
             
                     
-                    📖 メソッド、データ
+                    📖 メソッド／データ
             
                 </a>
             
@@ -2448,70 +2448,6 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
 <h2 id="01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><a name="01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;" class="plugin-anchor" href="#01-&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h2>
-<h3 id="assumerolesh"><a name="assumerolesh" class="plugin-anchor" href="#assumerolesh"><i class="fa fa-link" aria-hidden="true"></i></a>assume_role.sh</h3>
-<p>&#x53C2;&#x8003;&#xFF1A;</p>
-<p><br></p>
-<h3 id="terraformapplysh"><a name="terraformapplysh" class="plugin-anchor" href="#terraformapplysh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_apply.sh</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">set</span> -xeuo pipefail
-
-<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
-<span class="token builtin class-name">source</span> ./aws_envs.sh
-
-terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> apply <span class="token punctuation">\</span>
-  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token punctuation">\</span>
-  <span class="token variable">${ENV}</span>.tfplan <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml apply
-</code></pre>
-<p><br></p>
-<h3 id="terraformfmtsh"><a name="terraformfmtsh" class="plugin-anchor" href="#terraformfmtsh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_fmt.sh</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">set</span> -xeuo pipefail
-
-terraform <span class="token function">fmt</span> <span class="token punctuation">\</span>
-  -recursive <span class="token punctuation">\</span>
-  -check
-</code></pre>
-<p><br></p>
-<h3 id="terraforminitsh"><a name="terraforminitsh" class="plugin-anchor" href="#terraforminitsh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_init.sh</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">set</span> -xeuo pipefail
-
-<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
-<span class="token builtin class-name">source</span> ./aws_envs.sh
-
-terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> init <span class="token punctuation">\</span>
-  -upgrade <span class="token punctuation">\</span>
-  -reconfigure <span class="token punctuation">\</span>
-  -backend<span class="token operator">=</span>true <span class="token punctuation">\</span>
-  -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=<span class="token variable">${ENV}</span>-tfstate-bucket&quot;</span> <span class="token punctuation">\</span>
-  -backend-config<span class="token operator">=</span><span class="token string">&quot;key=terraform.tfstate&quot;</span> <span class="token punctuation">\</span>
-  -backend-config<span class="token operator">=</span><span class="token string">&quot;encrypt=true&quot;</span>
-</code></pre>
-<p><br></p>
-<h3 id="terraformplansh"><a name="terraformplansh" class="plugin-anchor" href="#terraformplansh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_plan.sh</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">set</span> -xeuo pipefail
-
-<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
-<span class="token builtin class-name">source</span> ./aws_envs.sh
-
-terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> plan <span class="token punctuation">\</span>
-  -var-file<span class="token operator">=</span>./<span class="token variable">${ENV}</span>/foo.tfvars <span class="token punctuation">\</span>
-  -out<span class="token operator">=</span><span class="token variable">${ENV}</span>.tfplan <span class="token punctuation">\</span>
-  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml plan
-</code></pre>
-<p><br></p>
-<h3 id="terraformvalidatesh"><a name="terraformvalidatesh" class="plugin-anchor" href="#terraformvalidatesh"><i class="fa fa-link" aria-hidden="true"></i></a>terraform_validate.sh</h3>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-
-<span class="token builtin class-name">set</span> -xeuo pipefail
-
-terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> validate
-</code></pre>
 <p><br></p>
 <h2 id="02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd"><a name="02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd" class="plugin-anchor" href="#02-circleci&#x3092;&#x7528;&#x3044;&#x305F;cicd"><i class="fa fa-link" aria-hidden="true"></i></a>02. CircleCI&#x3092;&#x7528;&#x3044;&#x305F;CICD</h2>
 <h3 id="&#x8981;&#x7D20;"><a name="&#x8981;&#x7D20;" class="plugin-anchor" href="#&#x8981;&#x7D20;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8981;&#x7D20;</h3>
@@ -2648,6 +2584,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform validate
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             set -x
+            source ./export_aws_envs.sh
             source ./ops/terraform_validate.sh</span>
 
   <span class="token comment"># terraform plan&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#x3002;</span>
@@ -2657,6 +2594,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
           <span class="token key atrule">name</span><span class="token punctuation">:</span> Terraform plan
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             set -x
+            source ./export_aws_envs.sh
             source ./ops/terraform_plan.sh
             ls -la</span>
 
@@ -2668,6 +2606,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
           <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
             set -x
             ls -la
+            source ./export_aws_envs.sh
             source ./ops/terraform_apply.sh</span>
 
 <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
@@ -2699,7 +2638,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
       <span class="token punctuation">-</span> terraform_apply
 
 <span class="token key atrule">workflows</span><span class="token punctuation">:</span>
-  <span class="token comment"># Dev env</span>
+  <span class="token comment"># Development env</span>
   <span class="token key atrule">feature</span><span class="token punctuation">:</span>
     <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">plan</span><span class="token punctuation">:</span>
@@ -2781,6 +2720,72 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
               <span class="token key atrule">only</span><span class="token punctuation">:</span> /release\/.<span class="token important">*/</span>
 </code></pre>
 <p><br></p>
+<h3 id="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><a name="&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;" class="plugin-anchor" href="#&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30A7;&#x30EB;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;</h3>
+<h4 id="&#x30FB;assumerolesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;assumerolesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;assumerolesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>assume_role.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<p><br></p>
+<h4 id="&#x30FB;terraformapplysh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;terraformapplysh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;terraformapplysh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>terraform_apply.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> apply <span class="token punctuation">\</span>
+  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token punctuation">\</span>
+  <span class="token variable">${ENV}</span>.tfplan <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml apply
+</code></pre>
+<p><br></p>
+<h4 id="&#x30FB;terraformfmtsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;terraformfmtsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;terraformfmtsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>terraform_fmt.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+terraform <span class="token function">fmt</span> <span class="token punctuation">\</span>
+  -recursive <span class="token punctuation">\</span>
+  -check
+</code></pre>
+<p><br></p>
+<h4 id="&#x30FB;terraforminitsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;terraforminitsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;terraforminitsh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>terraform_init.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> init <span class="token punctuation">\</span>
+  -upgrade <span class="token punctuation">\</span>
+  -reconfigure <span class="token punctuation">\</span>
+  -backend<span class="token operator">=</span>true <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=<span class="token variable">${ENV}</span>-tfstate-bucket&quot;</span> <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;key=terraform.tfstate&quot;</span> <span class="token punctuation">\</span>
+  -backend-config<span class="token operator">=</span><span class="token string">&quot;encrypt=true&quot;</span>
+</code></pre>
+<p><br></p>
+<h4 id="&#x30FB;terraformplansh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;terraformplansh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;terraformplansh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>terraform_plan.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+<span class="token comment"># credentials&#x306E;&#x60C5;&#x5831;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+<span class="token builtin class-name">source</span> ./aws_envs.sh
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> plan <span class="token punctuation">\</span>
+  -var-file<span class="token operator">=</span>./<span class="token variable">${ENV}</span>/foo.tfvars <span class="token punctuation">\</span>
+  -out<span class="token operator">=</span><span class="token variable">${ENV}</span>.tfplan <span class="token punctuation">\</span>
+  -parallelism<span class="token operator">=</span><span class="token number">30</span> <span class="token operator">|</span> ./ops/tfnotify --config ./<span class="token variable">${ENV}</span>/tfnotify.yml plan
+</code></pre>
+<p><br></p>
+<h4 id="&#x30FB;terraformvalidatesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;terraformvalidatesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;terraformvalidatesh&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>terraform_validate.sh</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token builtin class-name">set</span> -xeuo pipefail
+
+terraform -chdir<span class="token operator">=</span>./<span class="token variable">${ENV}</span> validate
+</code></pre>
+<p><br></p>
 <h2 id="03-tfnotify"><a name="03-tfnotify" class="plugin-anchor" href="#03-tfnotify"><i class="fa fa-link" aria-hidden="true"></i></a>03. tfnotify</h2>
 <h3 id="tfnotify&#x3068;&#x306F;"><a name="tfnotify&#x3068;&#x306F;" class="plugin-anchor" href="#tfnotify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>tfnotify&#x3068;&#x306F;</h3>
 <p>terraform&#x306E;<code>plan</code>&#x307E;&#x305F;&#x306F;<code>apply</code>&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#x3001;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#x3002;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -2838,6 +2843,17 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
       &lt;pre<span class="token punctuation">&gt;</span>&lt;code<span class="token punctuation">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> .Body <span class="token punctuation">}</span><span class="token punctuation">}</span>
       &lt;/pre<span class="token punctuation">&gt;</span>&lt;/code<span class="token punctuation">&gt;</span>&lt;/details<span class="token punctuation">&gt;</span>
 </code></pre>
+<p><br></p>
+<h2 id="04-&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><a name="04-&#x30EA;&#x30EA;&#x30FC;&#x30B9;" class="plugin-anchor" href="#04-&#x30EA;&#x30EA;&#x30FC;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30EA;&#x30EA;&#x30FC;&#x30B9;</h2>
+<h3 id="&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x7C92;&#x5EA6;"><a name="&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x7C92;&#x5EA6;" class="plugin-anchor" href="#&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x7C92;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;&#x7C92;&#x5EA6;</h3>
+<h4 id="&#x30FB;&#x65E2;&#x5B58;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#x5834;&#x5408;"><a name="&#x30FB;&#x65E2;&#x5B58;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x65E2;&#x5B58;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x65E2;&#x5B58;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#x5834;&#x5408;</h4>
+<p>&#x65E2;&#x5B58;&#x306E;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3092;&#x7D10;&#x3065;&#x3051;&#x308B;&#x5834;&#x5408;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x69CB;&#x7BC9;&#x3068;&#x7D10;&#x3065;&#x3051;&#x3092;&#x5225;&#x3005;&#x306B;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3059;&#x308B;&#x3002;&#x7D4C;&#x9A13;&#x5247;&#x3067;create&#x51E6;&#x7406;&#x3084;destroy&#x51E6;&#x7406;&#x3088;&#x308A;&#x3082;update&#x51E6;&#x7406;&#x306E;&#x65B9;&#x304C;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x5C11;&#x306A;&#x3044;&#x305F;&#x3081;&#x3001;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3067;&#x554F;&#x984C;&#x304C;&#x8D77;&#x3053;&#x308A;&#x306B;&#x304F;&#x3044;&#x3002;&#x307E;&#x305F;&#x3001;Terraform&#x3067;&#x554F;&#x984C;&#x304C;&#x8D77;&#x3053;&#x3063;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#x3001;&#x5909;&#x66F4;&#x70B9;&#x304C;&#x7D10;&#x3065;&#x3051;&#x3060;&#x3051;&#x306A;&#x306E;&#x3067;&#x3001;&#x539F;&#x56E0;&#x3092;&#x8FFD;&#x7A76;&#x3057;&#x3084;&#x3059;&#x3044;&#x3002;</p>
+<h4 id="&#x30FB;terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x5834;&#x5408;"><a name="&#x30FB;terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x5834;&#x5408;</h4>
+<p>Terraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x3092;&#x30A2;&#x30C3;&#x30D7;&#x30B0;&#x30EC;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;Teraform&#x3068;&#x30D7;&#x30ED;&#x30D0;&#x30A4;&#x30C0;&#x30FC;&#x3092;&#x5225;&#x3005;&#x306B;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html</a></p>
+<p><br></p>
+<h3 id="&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x5F8C;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;"><a name="&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x5F8C;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x5F8C;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x5F8C;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;</h3>
+<p>Terraform&#x306B;&#x306F;&#x3001;&#x30A4;&#x30F3;&#x30D5;&#x30E9;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x6A5F;&#x80FD;&#x304C;&#x306A;&#x3044;&#x3002;&#x305D;&#x3053;&#x3067;&#x3001;&#x4E00;&#x3064;&#x524D;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x30BF;&#x30B0;&#x3092;Rerun&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306E;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;&#x4ECA;&#x56DE;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306E;create&#x51E6;&#x7406;&#x304C;&#x5C11;&#x306A;&#x3044;&#x307B;&#x3069;Rerun&#x3067;destroy&#x51E6;&#x7406;&#x304C;&#x5C11;&#x306A;&#x304F;&#x3001;&#x53CD;&#x5BFE;&#x306B;destroy&#x51E6;&#x7406;&#x304C;&#x5C11;&#x306A;&#x3044;&#x307B;&#x3069;create&#x51E6;&#x7406;&#x304C;&#x5C11;&#x306A;&#x304F;&#x306A;&#x308B;&#x3002;&#x7D4C;&#x9A13;&#x5247;&#x3067;update&#x51E6;&#x7406;&#x3088;&#x308A;&#x3082;create&#x51E6;&#x7406;&#x3084;destroy&#x51E6;&#x7406;&#x3067;&#x306F;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x8D77;&#x3053;&#x308A;&#x3084;&#x3059;&#x3044;&#x305F;&#x3081;&#x3001;&#x3053;&#x308C;&#x3089;&#x304C;&#x591A;&#x3044;&#x3068;Rerun&#x6642;&#x306B;&#x624B;&#x9593;&#x53D6;&#x3063;&#x3066;&#x3057;&#x307E;&#x3046;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308B;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;Rerun&#x6642;&#x306B;&#x3069;&#x306E;&#x304F;&#x3089;&#x3044;&#x306E;create&#x51E6;&#x7406;&#x3084;destroy&#x51E6;&#x7406;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x304B;&#x3068;&#x8003;&#x616E;&#x3057;&#x3001;&#x4E00;&#x3064;&#x524D;&#x306E;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x30BF;&#x30B0;&#x3092;Rerun&#x3059;&#x308B;&#x304B;&#x5426;&#x304B;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x3002;</p>
 
                                 
                                 </section>
@@ -2877,7 +2893,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎TerraformのCICDフロー","level":"1.9.2.3","depth":3,"next":{"title":"仮想化","level":"1.10","depth":1,"ref":"","articles":[{"title":"📖 ︎仮想化","level":"1.10.1","depth":2,"path":"public/virtualization/virtualization.md","ref":"public/virtualization/virtualization.md","articles":[]},{"title":"コンテナ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"Docker","level":"1.10.2.1","depth":3,"ref":"","articles":[{"title":"📖 ︎dockerコマンド","level":"1.10.2.1.1","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},{"title":"📖 ︎Dockerfile","level":"1.10.2.1.2","depth":4,"path":"public/virtualization/virtualization_container_docker_dockerfile.md","ref":"public/virtualization/virtualization_container_docker_dockerfile.md","articles":[]}]},{"title":"コンテナオーケストレーション","level":"1.10.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎コンテナオーケストレーション","level":"1.10.2.2.1","depth":4,"path":"public/virtualization/virtualization_container_orchestration.md","ref":"public/virtualization/virtualization_container_orchestration.md","articles":[]},{"title":"Docker Compose","level":"1.10.2.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎docker-composeコマンド","level":"1.10.2.2.2.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_docker_compose_command.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose_command.md","articles":[]},{"title":"📖 ︎docker-compose.yml","level":"1.10.2.2.2.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_docker_compose_yml.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose_yml.md","articles":[]}]},{"title":"📖 ︎Kubernetes","level":"1.10.2.2.3","depth":4,"path":"public/virtualization/virtualization_container_orchestration_kubernetes.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"📖 ︎Docker Swarm","level":"1.10.2.2.4","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","ref":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","articles":[]}]}]},{"title":"︎仮想サーバ（仮想マシン）","level":"1.10.3","depth":2,"ref":"","articles":[{"title":"📖 ︎仮想サーバ（仮想マシン）","level":"1.10.3.1","depth":3,"path":"public/virtualization/virtualization_server.md","ref":"public/virtualization/virtualization_server.md","articles":[]}]}]},"previous":{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","mtime":"2021-11-23T09:34:48.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-23T09:34:50.163Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎TerraformのCICDフロー","level":"1.9.2.3","depth":3,"next":{"title":"仮想化","level":"1.10","depth":1,"ref":"","articles":[{"title":"📖 ︎仮想化","level":"1.10.1","depth":2,"path":"public/virtualization/virtualization.md","ref":"public/virtualization/virtualization.md","articles":[]},{"title":"コンテナ","level":"1.10.2","depth":2,"ref":"","articles":[{"title":"Docker","level":"1.10.2.1","depth":3,"ref":"","articles":[{"title":"📖 ︎dockerコマンド","level":"1.10.2.1.1","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},{"title":"📖 ︎Dockerfile","level":"1.10.2.1.2","depth":4,"path":"public/virtualization/virtualization_container_docker_dockerfile.md","ref":"public/virtualization/virtualization_container_docker_dockerfile.md","articles":[]}]},{"title":"コンテナオーケストレーション","level":"1.10.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎コンテナオーケストレーション","level":"1.10.2.2.1","depth":4,"path":"public/virtualization/virtualization_container_orchestration.md","ref":"public/virtualization/virtualization_container_orchestration.md","articles":[]},{"title":"Docker Compose","level":"1.10.2.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎docker-composeコマンド","level":"1.10.2.2.2.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_docker_compose_command.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose_command.md","articles":[]},{"title":"📖 ︎docker-compose.yml","level":"1.10.2.2.2.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_docker_compose_yml.md","ref":"public/virtualization/virtualization_container_orchestration_docker_compose_yml.md","articles":[]}]},{"title":"📖 ︎Kubernetes","level":"1.10.2.2.3","depth":4,"path":"public/virtualization/virtualization_container_orchestration_kubernetes.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes.md","articles":[]},{"title":"📖 ︎Docker Swarm","level":"1.10.2.2.4","depth":4,"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","ref":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","articles":[]}]}]},{"title":"︎仮想サーバ（仮想マシン）","level":"1.10.3","depth":2,"ref":"","articles":[{"title":"📖 ︎仮想サーバ（仮想マシン）","level":"1.10.3.1","depth":3,"path":"public/virtualization/virtualization_server.md","ref":"public/virtualization/virtualization_server.md","articles":[]}]}]},"previous":{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","mtime":"2021-11-24T11:39:45.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-24T11:39:50.506Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
