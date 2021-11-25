@@ -118,9 +118,13 @@
 * Infrastructure as Code
   * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
   * Terraform
-    * [📖 ︎Terraform](public/infrastructure_as_code/infrastructure_as_code_terraform.md)
+    * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_terraform_command.md)
+    * [📖 ︎Terraformの実装](public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md)
     * [📖 ︎AWSプロバイダー](public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md)
     * [📖 ︎TerraformのCICDフロー](public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md)
+  * Serverless Framework
+    * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md)
+    * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md)
 
 * 仮想化
   * [📖 ︎仮想化](public/virtualization/virtualization.md)
@@ -133,7 +137,10 @@
       * Docker Compose
         * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
         * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
-      * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
+      * ︎Kubernetes
+        * [📖 ︎kubernetesコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
+        * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
+        * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
       * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
   * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
