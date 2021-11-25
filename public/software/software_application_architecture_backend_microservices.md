@@ -119,7 +119,7 @@
 
 ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信／非同期通信を行う。
 
-![microservice-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
+![microservices-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
 
 <br>
 

@@ -23,7 +23,7 @@
     * アーキテクチャ
         * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html)
         * バックエンド
-            * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_microservice.html)
+            * [📖 ︎マイクロサービスアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_microservices.html)
             * [📖 ︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design.html)
             * [📖 ︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
             * [📖 ︎CQRS](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_cqrs.html)
@@ -128,26 +128,41 @@
 
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
 * Terraform
-    * [📖 ︎Terraform](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html)
+    * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
+    * [📖 ︎Terraformの実装](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.html)
     * [📖 ︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html)
     * [📖 ︎TerraformのCICDフロー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
+* Serverless Framework
+    * [📖 ︎serverlessコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
+    * [📖 ︎serverless.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)
 
 <br>
 
 ## 仮想化
 
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
+
 * コンテナ
     * Docker
         * [📖 ︎dockerコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
         * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_dockerfile.html)
+        
     * コンテナオーケストレーション
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html)
+        
         * Docker Compose
             * [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
-            * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
-        * [📖 ︎Kubernetes](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes.html)
-        * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
+          * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
+          
+      *  Kubernetes
+        * [📖 ︎kubernetesコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_command.html)
+        
+        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
+        
+        * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
+        
+      * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
+    
 * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)
 

@@ -102,14 +102,14 @@ services:
 
 ### ```container_name```
 
-コンテナ名を命名する。サービス名とは異なり、コンテナ名は他のプロジェクトと重複しないようにする。
+コンテナ名を命名する。サービス名とは異なり、コンテナ名は他のプロジェクトと重複しないようにする必要があるため、プレフィクスにプロジェクト名をつけるとよい。
 
 **＊実装例＊**
 
 ```yaml
 services:
   web:
-    container_name: nginx
+    container_name: foo-nginx
 ```
 
 <br>
@@ -654,7 +654,7 @@ mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがあ�
 
 mysqlコンテナに、PHPUnitの実行時のみ用いるデータベースを追加する。以下のような、```docker-compose.yml```ファイルを作成する。
 
-```yml
+```yaml
 version: "3.7"
 
 services:

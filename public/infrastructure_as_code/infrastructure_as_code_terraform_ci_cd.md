@@ -8,11 +8,7 @@
 
 <br>
 
-## 01. シェルスクリプト
-
-<br>
-
-## 02. CircleCIを用いたCICD
+## 01. CircleCIを用いたCICD
 
 ### 要素
 
@@ -335,7 +331,7 @@ terraform -chdir=./${ENV} validate
 
 <br>
 
-## 03. tfnotify
+## 02. tfnotify
 
 ### tfnotifyとは
 
@@ -410,7 +406,7 @@ terraform:
 
 <br>
 
-## 04. リリース
+## 03. リリース
 
 ### リリースの粒度
 
