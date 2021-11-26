@@ -4013,7 +4013,7 @@ RDSでは、DBMS、RDBを選べる。
 
 #### ・ZDP（ゼロダウンタイムパッチ適用）
 
-![zero-downtime-patching](C:\Users\h.hasegawa\Downloads\zero-downtime-patching.png)
+![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/zero-downtime-patching.png)
 
 Auroraをエンジンバージョンに選んだ場合に使用できる。特定の条件下においてのみ、アプリケーションとプライマリーインスタンスの接続を維持したまま、プライマリーインスタンスのパッチバージョンをアップグレードできる。ゼロダウンタイムパッチ適用が発動した場合、RDSのイベントが記録される。ただし、この機能に頼り切らない方が良い。ゼロダウンタイムパッチ適用の発動はAWSから事前にお知らせされるわけでもなく、ユーザが条件を見て発動の有無を判断しなければならない。また、実際に発動していても、ダウンタイムが発生した事例が報告されている。ゼロダウンタイムパッチ適用時、以下の手順でエンジンバージョンがアップグレードされる。
 

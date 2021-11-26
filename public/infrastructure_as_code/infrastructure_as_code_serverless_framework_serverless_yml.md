@@ -1,4 +1,4 @@
-# serverless.yml
+# serverless.yml（awsの場合）
 
 ## はじめに
 
@@ -16,6 +16,8 @@
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
 
+**＊実装例＊**
+
 ```yaml
 configValidationMode: warn
 ```
@@ -26,7 +28,11 @@ configValidationMode: warn
 
 ### customとは
 
+スコープが```serverless.yml```ファイル内のみの変数を設定する。
+
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/variables
+
+**＊実装例＊**
 
 ```yaml
 custom:
@@ -39,7 +45,11 @@ custom:
 
 ### frameworkVersionとは
 
+Serverless Frameworkのバージョンを設定する。
+
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+
+**＊実装例＊**
 
 ```yaml
 frameworkVersion: '2'
@@ -57,6 +67,10 @@ frameworkVersion: '2'
 
 ### description
 
+Lambda関数の説明文を設定する。
+
+**＊実装例＊**
+
 ```yaml
 functions:
   main:
@@ -66,6 +80,10 @@ functions:
 <br>
 
 ### environment
+
+Lambda関数の環境変数を設定する。
+
+**＊実装例＊**
 
 ```yaml
 functions:
@@ -84,6 +102,8 @@ functions:
 
 #### ・eventBridge
 
+**＊実装例＊**
+
 ```yaml
 functions:
   main:
@@ -98,7 +118,9 @@ functions:
 
 #### ・name
 
-使用するイメージのエイリアスを指定する。
+Lambda関数で使用するイメージのエイリアスを指定する。
+
+**＊実装例＊**
 
 ```yaml
 functions:
@@ -111,6 +133,10 @@ functions:
 
 ### maximumRetryAttempts
 
+Lambda関数の再試行回数を設定する。
+
+**＊実装例＊**
+
 ```yaml
 functions:
   main:
@@ -120,6 +146,10 @@ functions:
 <br>
 
 ### memorySize
+
+Lambda関数のメモリサイズを設定する。
+
+**＊実装例＊**
 
 ```yaml
 functions:
@@ -131,6 +161,10 @@ functions:
 
 ### name
 
+Lambda関数の名前を設定する。
+
+**＊実装例＊**
+
 ```yaml
 functions:
   main:
@@ -141,6 +175,10 @@ functions:
 
 ### role
 
+Lambda関数に紐づけるIAMロールを設定する。
+
+**＊実装例＊**
+
 ```yaml
 functions:
   main:
@@ -150,6 +188,10 @@ functions:
 <br>
 
 ### runtime
+
+Lambda関数で使用する言語とバージョンを設定する。
+
+**＊実装例＊**
 
 ```yaml
 functions:
@@ -163,11 +205,15 @@ functions:
 
 ### packageとは
 
+生成されるアーティファクトのパスを設定する。
+
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 
 <br>
 
 ### patterns
+
+**＊実装例＊**
 
 ```yaml
 package:
@@ -181,9 +227,15 @@ package:
 
 ### providerとは
 
+Serverless Frameworkで操作するクラウドインフラベンダーを設定する。ベンダーでのアカウント認証のため、クレデンシャル情報を渡す必要がある。
+
+<br>
+
 ### ecr
 
 #### ・scanOnPush
+
+**＊実装例＊**
 
 ```yaml
 provider:
@@ -193,7 +245,9 @@ provider:
 
 #### ・images
 
-使用するベースイメージを指定し、エイリアスの名前を設定する。名前は全て小文字である必要がある。
+Lambda関数のベースイメージを指定し、エイリアス名を付ける。名前は全て小文字である必要がある。
+
+**＊実装例＊**
 
 ```yaml
 provider:
@@ -209,6 +263,8 @@ provider:
 
 #### ・useCloudFormation
 
+EventBridgeをCloudFormationで構築するか否かを設定する。
+
 ```yaml
 provider:
   eventBridge:
@@ -217,7 +273,11 @@ provider:
 
 <br>
 
-### lambdaHashingVersion
+### lambdaHashingVersio
+
+Lambda関数のハッシュバージョンを設定する。
+
+**＊実装例＊**
 
 ```yaml
 provider:
@@ -228,6 +288,10 @@ provider:
 
 ### name
 
+クラウドインフラベンダー名を設定する。
+
+**＊実装例＊**
+
 ```yaml
 provider:
   name: aws
@@ -236,6 +300,8 @@ provider:
 <br>
 
 ### region
+
+クラウドインフラを構築するリージョンを設定する。
 
 ```yaml
 provider:
@@ -246,6 +312,10 @@ provider:
 
 ### stackName
 
+CloudFormationのスタック名を設定する。
+
+**＊実装例＊**
+
 ```yaml
 provider:
   stackName: <CloudFormationスタック名>
@@ -254,6 +324,10 @@ provider:
 <br>
 
 ### stage
+
+ステージ名を設定する。クラウドインフラの実行環境名と考えてよい。
+
+**＊実装例＊**
 
 ```yaml
 provider:
@@ -264,7 +338,11 @@ provider:
 
 ## 07. resources
 
+### resourcesとは（awsプロバイダーの場合）
+
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
+
+**＊実装例＊**
 
 ```yaml
 resources:
@@ -274,9 +352,11 @@ resources:
 
 ## 08. service
 
-### serviceとは
+### serviceとは（awsプロバイダーの場合）
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/services
+
+**＊実装例＊**
 
 ```yaml
 service: foo-service
@@ -288,6 +368,8 @@ service: foo-service
 
 ### useDotenvとは
 
+**＊実装例＊**
+
 ```yaml
 useDotenv: true
 ```
@@ -297,6 +379,8 @@ useDotenv: true
 ## 10. variablesResolutionMode
 
 ### variablesResolutionModeとは
+
+**＊実装例＊**
 
 ```yaml
 variablesResolutionMode: null
