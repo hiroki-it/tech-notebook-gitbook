@@ -1,6 +1,6 @@
 # Summary
 
-* [📖 ︎このサイトについて](README.md)
+* [📖 ︎俺のドキュメントサイトについて](README.md)
 
 * [📖 ︎サイト管理者](public/self_introduction.md)
 
