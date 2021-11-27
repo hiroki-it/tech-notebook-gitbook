@@ -18,6 +18,8 @@
 
 ### apiVersion
 
+マニフェストファイルの実装バージョンを設定する。
+
 ```yaml
 apiVersion: v1
 ```
@@ -25,6 +27,8 @@ apiVersion: v1
 <br>
 
 ### kind
+
+リソースの種類を設定する。
 
 ```yaml
 kind: Service
@@ -35,6 +39,8 @@ kind: Service
 ### metadata
 
 #### ・name
+
+リソース名を設定する。
 
 ```yaml
 metadata:
