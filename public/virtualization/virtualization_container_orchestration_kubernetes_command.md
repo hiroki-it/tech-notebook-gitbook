@@ -8,37 +8,72 @@
 
 <br>
 
-## 01. kubernetesオブジェクトの種類
+## 01. Kubernetesの構成要素
 
-### ノード
+### 全体像
 
-#### ・マスターノード
+参考：
 
-Kubernetesが実行されるホスト物理サーバを指す。
+- https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
+- https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
-#### ・ワーカーノード
+![kubernetes_overview](/Users/h.hasegawa/Downloads/kubernetes_overview.png)<br>
 
-Dockerが実行されるホスト仮想サーバを指す。
+### Kubernetesクライアント
 
-![Kubernetesの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Kubernetesの仕組み.png)
+#### ・Kubernetesクライアントとは
 
-<br>
-
-### サービス
-
-#### ・サービスとは
-
-ポッドにリクエストを転送するロードバランサーとして機能する。マイクロさービスアーキテクチャのコンポーネントである『サービス』とは区別する。
-
-参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
+Kubernetesクライアントは、kubectlコマンドを使用して、KubernetesマスターAPIをコールできる。
 
 <br>
 
-### ポッド
+### Kubernetesマスター（マスターノード）
+
+#### ・Kubernetesマスターとは
+
+ワーカーノードの操作を担う。『マスターノード』ともいう。クライアントがkubectlコマンドの実行すると、apiserverがコールされ、コマンドに沿ってワーカーノードが操作される。
+
+参考：https://kubernetes.io/ja/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
+
+#### ・apiserver
+
+KubernetesクライアントにコマンドのAPIを提供する。
+
+#### ・controller-manager
+
+#### ・scheduler
+
+<br>
+
+### クラスター
+
+#### ・クラスターとは
+
+ワーカーノードの管理単位のこと。
+
+<br>
+
+### ワーカーノード
+
+#### ・ワーカーノードとは
+
+ポッドが稼働するサーバ単位こと。
+
+参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
+
+#### ・Kubelet
+
+#### ・コンテナエンジン
+
+コンテナ起動停止、イメージのプル、などを行う。
+
+#### ・プロキシ
+
+受信したリクエストをポッドに振り分ける。
 
 #### ・ポッドとは
 
-ホスト仮想サーバ上のコンテナを最小グループ単位のこと。Podを単位として、コンテナ起動／停止や水平スケールイン／スケールアウトを実行する。
+コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動／停止や水平スケールイン／スケールアウトを実行する。
 
 参考：https://kubernetes.io/ja/docs/concepts/workloads/pods/
 
@@ -50,21 +85,31 @@ AWS ECSタスクにおける類似するessential機能やオートスケーリ�
 
 PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPodに配置する。
 
-![kubernetes_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_php-fpm_nginx.png)
+![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
 <br>
 
-### Secret
+### サービス
 
-#### ・Secretとは
+#### ・サービスとは
 
-セキュリティに関するデータを管理し、コンテナに選択的に提供するもの。
+ポッドにリクエストを転送するロードバランサーのこと。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
 
 <br>
 
-### Replica Set
+### シークレット
 
-#### ・Replica Set（Replication Controller）とは
+#### ・シークレットとは
+
+セキュリティに関するデータを管理し、コンテナに選択的に提供する。
+
+<br>
+
+### レプリカセット（レプリカコントローラ）
+
+#### ・レプリカセットとは
 
 <br>
 
@@ -74,11 +119,13 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・applyとは
 
-同じ識別子（オブジェクト名）のオブジェクトが存在しない場合はオブジェクトを構築し、存在する場合はマニフェストファイルの差分を更新する。全ての項目を更新できるわけでない。
+同じ識別子（オブジェクト名）のオブジェクトが存在しない場合はオブジェクトを作成し、存在する場合はマニフェストファイルの差分を更新する。全ての項目を更新できるわけでない。
 
 #### ・-f
 
 マニフェストファイルを指定し、```apply```コマンドを実行する。
+
+**＊実行例＊**
 
 ```bash
 $ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
@@ -105,8 +152,11 @@ Kubernetes自体の設定を操作する。
 
 Kubernetes自体の設定が実装された```~/.kude/config```ファイルを表示する。
 
+**＊実行例＊**
+
 ```bash
-$ kubectl config view                                                                       
+$ kubectl config view
+
 apiVersion: v1
 clusters:
 - cluster:
@@ -134,11 +184,13 @@ users:
 
 #### ・createとは
 
-オブジェクトを構築する。同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる。
+オブジェクトを作成する。同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる。
 
 #### ・-f
 
 マニフェストファイルを指定し、```create```コマンドを実行する。
+
+**＊実行例＊**
 
 ```bash
 $ kubectl create -f ./kubernetes-manifests/foo-pod.yml
@@ -154,6 +206,26 @@ service/foo-service created
 
 <br>
 
+### deploment
+
+#### ・deploymentとは
+
+ポッドを管理するレプリカセットを作成する。
+
+#### ・-f
+
+マニフェストファイルを指定し、```deployment```コマンドを実行する。
+
+**＊実行例＊**
+
+```bash
+$ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
+```
+
+
+
+<br>
+
 ### get
 
 #### ・getとは
@@ -164,8 +236,10 @@ service/foo-service created
 
 構築済みのノードを表示する。
 
+**＊実行例＊**
+
 ```bash
-$  kubectl get nodes 
+$ kubectl get nodes 
 
 NAME             STATUS   ROLES                  AGE   VERSION
 docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノード
@@ -174,6 +248,8 @@ docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノ
 #### ・pod
 
 構築済みのポッドを表示する。
+
+**＊実行例＊**
 
 ```bash
 $ kubectl get pods
@@ -186,6 +262,8 @@ foo-pod    0/2     ImagePullBackOff   0          7m52s
 
 構築済みのサービスを表示する。
 
+**＊実行例＊**
+
 ```bash
 $ kubectl get services
 
@@ -194,3 +272,145 @@ foo-service    ClusterIP   nn.nnn.nnn.n   <none>        80/TCP    10s
 kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 ```
 
+<br>
+
+### logs
+
+#### ・logsとは
+
+オブジェクトのログを表示する。
+
+#### ・オプション無し
+
+**＊実行例＊**
+
+コンテナのログを表示する。
+
+```bash
+$ kubectl logs <ポッド名> <コンテナ名>
+
+2021/11/27 08:34:01 [emerg] *****
+```
+
+<br>
+
+### proxy
+
+#### ・proxyとは
+
+リクエストを他のオブジェクトに転送する。様々な用途がある。
+
+参考：https://kubernetes.io/ja/docs/concepts/cluster-administration/proxies/
+
+#### ・--address、--accept-hosts
+
+```bash
+$  kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
+
+Starting to serve on [::]:8001
+```
+
+
+
+<br>
+
+## 03. minikubeコマンド
+
+### minikubeコマンドとは
+
+仮想環境を構築し、また仮想環境下で単一のノードを持つクラスターを作成するコマンド。
+
+参考：https://minikube.sigs.k8s.io/docs/commands/
+
+<br>
+
+### dashboard
+
+Kubernetesのダッシュボードを開発環境に構築する。
+
+**＊実行例＊**
+
+```bash
+$ minikube dashboard
+
+🤔  Verifying dashboard health ...
+🚀  Launching proxy ...
+🤔  Verifying proxy health ...
+🎉  Opening http://127.0.0.1:55712/*****/ in your default browser...
+```
+
+<br>
+
+### docker-env
+
+#### ・オプション無し
+
+ホストPCでdockerコマンドを実行した時に、ホストPCのdockerデーモンでなく、minikubeの仮想環境のdockerデーモンをコールできるように、環境変数を設定する。イメージタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
+
+参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
+
+**＊実行例＊**
+
+```bash
+$ minikube docker-env
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://127.0.0.1:52838"
+export DOCKER_CERT_PATH="/Users/***/.minikube/certs"
+export MINIKUBE_ACTIVE_DOCKERD="minikube"
+
+# To point your shell to minikube's docker-daemon, run:
+# eval $(minikube -p minikube docker-env)
+```
+
+<br>
+
+### start
+
+#### ・オプション無し
+
+仮想環境をVMで構築し、VM内で単一のノードを作成する。
+
+**＊実行例＊**
+
+```bash
+$ minikube start
+
+😄  minikube v1.24.0 on Darwin 11.3.1
+✨  Automatically selected the docker driver. Other choices: virtualbox, ssh
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+💾  Downloading Kubernetes v1.22.3 preload ...
+    > preloaded-images-k8s-v13-v1...: 501.73 MiB / 501.73 MiB  100.00% 2.93 MiB
+    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 1.71 MiB p/
+🔥  Creating docker container (CPUs=2, Memory=7911MB) ...
+🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+```
+
+ノードが構築されていることを確認できる。
+
+```bash
+$ kubectl get nodes
+
+NAME       STATUS   ROLES                  AGE   VERSION
+minikube   Ready    control-plane,master   14m   v1.22.3
+```
+
+#### ・--driver
+
+仮想環境の構築方法を指定し、```start```コマンドを実行する。
+
+**＊実行例＊**
+
+```bash
+$ minikube start --driver docker
+```
+
+<br>

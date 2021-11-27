@@ -8,13 +8,21 @@
 
 <br>
 
-## 01. Dockerコマンドの仕組み
+## 01. Dockerの構成要素
+
+### 全体像
+
+参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
+
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
+
+<br>
 
 ### Dockerクライアント
 
 #### ・Dockerクライアントとは
 
-Dockerクライアントは、接続によって、Dockerデーモンを操作できる。
+Dockerクライアントは、dockerコマンドを使用してDockerデーモンAPIをコールできる。
 
 <br>
 
@@ -22,11 +30,7 @@ Dockerクライアントは、接続によって、Dockerデーモンを操作�
 
 #### ・Dockerデーモンとは
 
-ホストOS上で稼働し、Dockerの操作を担う。Dockerクライアントは、Dockerデーモンを通して、Docker全体を操作できる。
-
-参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
-
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png)
+ホストOS上で稼働し、コンテナの操作を担う常駐プログラム。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 <br>
 
