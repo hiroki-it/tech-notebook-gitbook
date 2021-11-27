@@ -17,7 +17,7 @@
 - https://medium.com/easyread/step-by-step-introduction-to-basic-concept-of-kubernetes-e20383bdd118
 - https://qiita.com/baby-degu/items/ce26507bd954621d6dc5
 
-![kubernetes_overview](/Users/h.hasegawa/Downloads/kubernetes_overview.png)<br>
+![kubernetes_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_overview.png)<br>
 
 ### Kubernetesクライアント
 
