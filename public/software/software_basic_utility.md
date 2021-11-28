@@ -557,7 +557,7 @@ $ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
 
 #### ・-s
 
-カレントディレクトリに、シンボリックリンクを作成する。リンクの元になるディレクトリやファイルのパスを指定する。
+カレントディレクトリに、シンボリックリンクを作成する。リンクの元になるディレクトリやファイルパスを指定する。
 
 ```bash
 $ ln -s <リンク元までのパス> <シンボリックリンク名> 
@@ -1227,7 +1227,7 @@ fi
 # User specific environment
 PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-# xxxバイナリファイルのパスを追加 を追加 <--- ここに追加
+# xxxバイナリファイルのファイルパスを追加 を追加 <--- ここに追加
 PATH=$PATH:/usr/local/sbin/xxxx
 
 export PATH

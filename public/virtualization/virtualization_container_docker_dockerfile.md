@@ -39,6 +39,43 @@
 
 **＊実装例＊**
 
+```dockerfile
+FROM php:7.4.9-fpm as base
+
+RUN apt-get update -y \
+  && apt-get install -y \
+      git \
+      vim \
+      unzip \
+      zip \
+  && docker-php-ext-install \
+      bcmath \
+      pdo_mysql \
+  && apt-get clean
+
+COPY --from=composer:1.10.23 /usr/bin/composer /usr/bin/composer
+
+#===================
+# Development Stage
+#===================
+FROM base as development
+LABEL mantainer=${LABEL}
+
+#===================
+# Production Stage
+#===================
+FROM base as production
+LABEL mantainer=${LABEL}
+
+# 本番環境ではアプリケーションをイメージ内にコピー。
+# ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『/』で終える必要がある。
+COPY ./ /var/www/foo/
+```
+
+
+
+**＊実装例＊**
+
 NginxのイメージをビルドするためのDockerfileを示す。命令のパラメータの記述形式には、文字列形式、JSON形式がある。ここでは、JSON形式で記述する。
 
 ```dockerfile
@@ -64,9 +101,9 @@ EXPOSE 80
 | -------------------- | ------------------------------------------------------------ |
 | **```FROM```**       | ベースのイメージを、コンテナにインストール.            |
 | **```RUN```**        | ベースイメージ上に、ソフトウェアをインストール.              |
-| **```COPY```**       | ・ホストOSのファイルをイメージレイヤー化し、コンテナの指定ディレクトリにコピー.<br>・イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。<br>・```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う。 |
+| **```COPY```**       | ・ホストOS側のファイルをコンテナ側のファイルとしてコピー.<br>・ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『/』で終える必要がある。<br>・イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。<br>・```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う。 |
 | **```CMD```**        | イメージのプロセスの起動コマンドを実行。```run```コマンドの引数として、上書きできる。 |
-| **```VOLUME```**     | Volumeマウントを行う。```COPY```とは異なり、ビルド後のコードの変更が反映される。Docker Composeで記述した方が良い。 |
+| **```VOLUME```**     | ・Volumeマウントを行う。<br>参考：https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d |
 | **```EXPOSE```**     | コンテナのポートを開放する。また、イメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある。<br>参考：<br>・https://docs.docker.com/engine/reference/builder/#expose<br>・https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/<br><br>また加えて、プロセス自体が命令をリッスンできるようにポートを設定する必要がある。ただし、多くの場合標準でこれが設定されている。（例：PHP-FPMでは、```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには、```listen = 127.0.0.1:9000```の設定がある） |
 | **```ENTRYPOINT```** | イメージのプロセスの起動コマンドを実行。```CMD```とは異なり、後から上書き実行できない。使用者に、コンテナの起動方法を強制させたい場合に適する。 |
 | **```ENV```**        | OS上のコマンド処理で扱える変数を定義する。Dockerfileの命令では扱えない。```ARG```との違いの例については下記。 |
@@ -486,6 +523,17 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 以下の通り、ホストOSのマウント元のディレクトリにはいくつか選択肢がある。
 
 ![マウントされるホスト側のディレクトリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マウントされるホスト側のディレクトリ.png)
+
+#### ・本番環境ではBindマウントでアプリケーションを稼働させるな
+
+インタプリタ言語のアプリケーションのDockerコンテナを稼働させる場合、開発環境であればBindマウントでホスト側のアプリケーションをコンテナに共有すれば、コンテナ内でアプリケーションは稼働できる。しかし、本番環境では、Bindマウントが機能しないため、使用するイメージにアプリケーションを組み込んでおく。方法として、プライベートリポジトリにデプロイするイメージのビルド時に、ホストのアプリケーションをイメージ側に```COPY```しておく。これにより、本番環境ではこのイメージをプルしさえすれば、アプリケーションを使用できるようになる。
+
+参考：
+
+- https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
+- https://www.reddit.com/r/docker/comments/m4dk8g/in_production_wouldnt_bind_mount_be_better/
+- https://www.nyamucoro.com/entry/2018/03/15/200412
+- https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
 
 <br>
 

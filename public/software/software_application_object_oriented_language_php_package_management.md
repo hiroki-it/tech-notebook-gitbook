@@ -1,4 +1,4 @@
-# パッケージ管理
+# Composer
 
 ## はじめに
 
@@ -8,11 +8,41 @@
 
 <br>
 
-## 01. composerによるパッケージの管理
+## 01. プロパティ
 
-### composer.jsonファイルの実装
+### autoload
 
-#### ・バージョンを定義
+名前空間とファイルパスの対応関係を設定する。```require```関数を使用せずに、クラスの名前空間を```use```で指定するだけでファイルを読み込めるようになる。
+
+参考：
+
+- https://getcomposer.org/doc/04-schema.md#autoload
+- https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+
+```bash
+{
+    "autoload": {
+        "psr-4": {
+             # "<名前空間>": "<ファイルパス>",
+            "App\\": "app/",
+            "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
+            "Database\\Seeders\\": "database/seeds/production"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    }
+}
+```
+
+<br>
+
+### require
+
+インストールされるパッケージとバージョンを設定する。
+
+参考：https://getcomposer.org/doc/04-schema.md#package-links
 
 ```bash
 # 個人的に一番おすすめ
@@ -49,43 +79,85 @@
 }
 ```
 
-####  ・名前空間のユーザ定義
+<br>
 
-名前空間とファイルパスの対応関係を設定する。
+### scripts
+
+コマンドのエイリアスを設定する。
+
+参考：https://getcomposer.org/doc/04-schema.md#scripts
 
 ```bash
 {
-    "autoload": {
-        "psr-4": {
-             # "<名前空間>": "<ファイルパス>",
-            "App\\": "app/",
-            "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
-            "Database\\Seeders\\": "database/seeds/production"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
+    "scripts": {
+        # エイリアス名
+        "post-autoload-dump": [
+            # 実行するコマンド
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists(".env") || copy(".env.example", ".env");\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
         ]
     }
 }
 ```
 
-その後、名前空間の読み込みを登録する。
+<br>
+
+### version
+
+composerのバージョンを設定する。インストールされているcomposerと齟齬がないようにする。
+
+参考：https://getcomposer.org/doc/04-schema.md#version
 
 ```bash
-$ composer dump-autoload
+{
+  "version": "1.10.23"
+}
 ```
 
 <br>
 
-### require
+## 02. コマンド
 
-#### ・オプション無し
+### clear-cache
 
-パッケージ名を```composer.json```ファイルを書き込む。インストールは行わない。コマンドを使用せずに自分で実装しても良い。
+インストール時に生成されたキャッシュを削除する。
 
 ```bash
-$ composer require <パッケージ名>:^x.x
+$ composer clear-cache
+```
+
+<br>
+
+### diagnose
+
+composerを使用するための準備が揃っているかを検証する。
+
+```bash
+$ composer diagnose
+
+You are running Composer with SSL/TLS protection disabled.
+Checking composer.json: OK
+Checking platform settings: OK
+Checking git settings: OK
+Checking http connectivity to packagist: OK
+Checking https connectivity to packagist: OK
+...
+```
+
+<br>
+
+### dump-autoload
+
+事前に設定された```autoload```プロパティに基づいて、クラスの名前空間とファイルパスの対応関係を登録する。
+
+```bash
+$ composer dump-autoload
 ```
 
 <br>
@@ -134,6 +206,28 @@ $ composer install --prefer-source
 
 <br>
 
+### require
+
+#### ・オプション無し
+
+パッケージ名を```composer.json```ファイルを書き込む。インストールは行わない。コマンドを使用せずに自分で実装しても良い。
+
+```bash
+$ composer require <パッケージ名>:^x.x
+```
+
+<br>
+
+### scripts
+
+事前に設定された```scripts```プロパティに設定されたスクリプトを実行する。
+
+```bash
+$ composer <スクリプト名>
+```
+
+<br>
+
 ### update
 
 #### ・オプション無し
@@ -162,92 +256,9 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 <br>
 
-### その他のコマンド
+## 03. パッケージの読み込み
 
-#### ・clear-cache
-
-インストール時に生成されたキャッシュを削除する。
-
-```bash
-$ composer clear-cache
-```
-
-#### ・エイリアス名
-
-ユーザが定義したエイリアス名のコマンドを実行する。
-
-```bash
-$ composer <エイリアス名>
-```
-
-あらかじめ、任意のエイリアス名を```scripts```キー下に定義する。エイリアスの中で、実行するコマンドのセットを定義する。
-
-```bash
-{
-    "scripts": {
-        # エイリアス名
-        "post-autoload-dump": [
-            # 実行するコマンド
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists(".env") || copy(".env.example", ".env");\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
-    }
-}
-```
-
-<br>
-
-### バージョンアップの手順
-
-#### ・事前確認の重要性
-
-バージョン更新により、アプリケーションやこれに関係する他のアプリケーションに影響が起こる可能性がある。そのため、予想外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異を全て確認しておく必要がある。
-
-#### 1. バージョン間の互換性を確認
-
-破壊的変更のためにバージョン間で互換性が全くなく、古いバージョンと新しいバージョンで使用方法やオプションが異なる可能性がある。一方で、互換性があるものの、大きな変更がなされている可能性がある。
-
-#### 2. 追加、廃止、非推奨を確認
-
-バージョンアップにより、新しい機能が追加されている可能性がある。一方で、今までの方法が廃止または非推奨に移行している可能性がある。
-
-#### 3. 予約語や関数を確認
-
-バージョンアップにより、予約語や関数が変更されている可能性がある。予約語を自身が用いているとバッティングしてエラーになってしまう。
-
-#### 4. アプリケーションの修正作業の考慮
-
-バージョンアップに伴ってソースコードの修正が必要なことがわかった場合、バージョンアップの手順自体に修正作業を組み込む必要がある。
-
-#### 5. メンテナンスページの表示
-
-バージョンアップによりダウンタイムが発生する場合、その間はメンテナンスページを表示する必要がある、例えば、ALBにはメンテナンスページを表示するための機能がある。
-
-#### 6. 更新作業をリハーサル
-
-テスト環境で更新作業をリハーサルし、問題なく完了することを確認する。
-
-#### 7. アプリケーションのテスト
-
-テスト環境のバージョンアップ後に、アプリケーションをテストする必要がある。
-
-#### 8. リードレプリカを最初にアップデート
-
-#### 9. 切り戻し作業の考慮
-
-本番環境のバージョンアップ後に想定外の問題が起こることも考慮して、バージョンアップの手順自体に切り戻し作業を組み込む必要がある。
-
-<br>
-
-## 02. アプリケーションによるパッケージの読み込み
-
-### エントリポイントにおける```autoload.php```ファイルの読み込み
+### ```autoload.php```ファイルの読み込み
 
 パッケージが、```vendor```ディレクトリ下に保存されていると仮定する。パッケージを用いるたびに、各クラスでディレクトリを読み込むことは手間なので、エントリーポイント（```index.php```）あるいは```bootstrap.php```で、最初に読み込んでおき、クラスでは読み込まなくて良いようにする。
 
@@ -258,3 +269,63 @@ $ composer <エイリアス名>
     
 require_once realpath(__DIR__ . "/vendor/autoload.php");
 ```
+
+<br>
+
+## 04. バージョンアップの手順
+
+### 事前確認の重要性
+
+バージョン更新により、アプリケーションやこれに関係する他のアプリケーションに影響が起こる可能性がある。そのため、予想外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異を全て確認しておく必要がある。
+
+<br>
+
+### バージョン間の互換性を確認
+
+破壊的変更のためにバージョン間で互換性が全くなく、古いバージョンと新しいバージョンで使用方法やオプションが異なる可能性がある。一方で、互換性があるものの、大きな変更がなされている可能性がある。
+
+<br>
+
+### 追加、廃止、非推奨を確認
+
+バージョンアップにより、新しい機能が追加されている可能性がある。一方で、今までの方法が廃止または非推奨に移行している可能性がある。
+
+<br>
+
+### 予約語や関数を確認
+
+バージョンアップにより、予約語や関数が変更されている可能性がある。予約語を自身が用いているとバッティングしてエラーになってしまう。
+
+<br>
+
+### アプリケーションの修正作業の考慮
+
+バージョンアップに伴ってソースコードの修正が必要なことがわかった場合、バージョンアップの手順自体に修正作業を組み込む必要がある。
+
+<br>
+
+### メンテナンスページの表示
+
+バージョンアップによりダウンタイムが発生する場合、その間はメンテナンスページを表示する必要がある、例えば、ALBにはメンテナンスページを表示するための機能がある。
+
+<br>
+
+### 更新作業をリハーサル
+
+テスト環境で更新作業をリハーサルし、問題なく完了することを確認する。
+
+<br>
+
+### アプリケーションのテスト
+
+テスト環境のバージョンアップ後に、アプリケーションをテストする必要がある。
+
+<br>
+
+### リードレプリカを最初にアップデート
+
+<br>
+
+### 切り戻し作業の考慮
+
+本番環境のバージョンアップ後に想定外の問題が起こることも考慮して、バージョンアップの手順自体に切り戻し作業を組み込む必要がある。

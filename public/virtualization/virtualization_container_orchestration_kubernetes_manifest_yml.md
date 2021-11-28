@@ -8,17 +8,9 @@
 
 <br>
 
-## 01. spec
+## 01. apiVersion
 
-### specとは
-
-参考：https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/kubernetes-objects/
-
-<br>
-
-### apiVersion
-
-オブジェクトのスキーマのバージョンを設定する。
+Kubernetes-APIのバージョンを設定する。
 
 ```yaml
 apiVersion: v1
@@ -26,9 +18,9 @@ apiVersion: v1
 
 <br>
 
-### kind
+## 02. kind
 
-リソースの種類を設定する。
+オブジェクトの種類を設定する。
 
 ```yaml
 kind: Service
@@ -36,11 +28,11 @@ kind: Service
 
 <br>
 
-### metadata
+## 03. metadata
 
-#### ・name
+### name
 
-リソース名を設定する。
+オブジェクトを一意に識別するための名前を設定する。
 
 ```yaml
 metadata:
@@ -49,23 +41,261 @@ metadata:
 
 <br>
 
-### selector
+## 05. spec（Deploymentの場合）
 
-#### ・app
+### template
+
+スケーリング時に複製の鋳型とするポッドを設定する。
 
 ```yaml
 spec:
-  selector:
-    app: MyApp
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      containers:
+        - name: foo-lumen
+          image: foo-lumen:dev
+          ports:
+            - containerPort: 9000
+        - name: foo-nginx
+          image: foo-nginx:dev
+          ports:
+            - containerPort: 8000
 ```
 
 <br>
 
+## 05-02. spec（PersistentVolumeの場合）
+
+### accessModes
+
+
+#### ・ReadWriteMany
+
+複数ノードから読み出し／書き込みできる。ノード間でDBを共有したい場合に使用する。
+
+```yaml
+spec:
+  accessModes:
+    - ReadWriteMany
+```
+
+#### ・ReadOnlyMany
+
+複数ノードから読み出しでき、また単一ノードのみから書き込みできる。ノード間で読み出し処理のみDBを共有したい場合に使用する。
+
+```yaml
+spec:
+  accessModes:
+    - ReadOnlyMany
+```
+
+#### ・ReadWriteOnce
+
+
+単一ノードからのみ読み出し／書き込みできる。ノードごとにDBを分割したい場合に使用する。
+
+```yaml
+spec:
+  accessModes:
+    - ReadWriteOnce
+```
+
+
+
+<br>
+
+### capacity
+
+```yaml
+spec:
+  capacity:
+    storage: 10G
+```
+
+<br>
+
+### mountOptions
+
+```yaml
+spec:
+  mountOptions:
+    - hard
+```
+
+<br>
+
+### nfs
+
+```yaml
+spec:
+  nfs:
+    server: nnn.nnn.nnn.nnn
+    path: /nfs/foo
+```
+
+<br>
+
+### persistentVolumeReclaimPolicy
+
+```yaml
+spec:
+  persistentVolumeReclaimPolicy: Retain
+```
+
+<br>
+
+### storageClassName
+
+```yaml
+spec:
+  storageClassName: slow
+```
+
+<br>
+
+## 05-03. spec（PersistentVolumeClaimの場合）
+
+### accessModes
+
+```yaml
+spec:
+  accessModes:
+    - ReadWriteMany
+```
+
+<br>
+
+### resources
+
+```yaml
+spec:
+  resources:
+    - ReadWriteMany
+```
+
+<br>
+
+## 05-04. spec（Podの場合）
+
+### containers
+
+#### ・name、image、port
+
+ポッドを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
+
+```yaml
+spec:
+  containers:
+    - name: foo-lumen
+      image: foo-lumen:dev
+      ports:
+        - containerPort: 9000
+    - name: foo-nginx
+      image: foo-nginx:dev
+      ports:
+        - containerPort: 8000
+```
+
+#### ・volumeMount
+
+```
+spec:
+  containers:
+    - name: foo-lumen
+      image: foo-lumen:dev
+      ports:
+        - containerPort: 9000
+      volumeMounts:
+         - name: hswp-nginx
+           mountPath: /var/www/hswp
+    - name: foo-lumen
+      image: foo-lumen:dev
+      ports:
+        - containerPort: 9000
+      volumeMounts:
+         - name: hswp-nginx
+           mountPath: /var/www/hswp           
+```
+
+
+
+<br>
+
+### hostname
+
+ポッドのホスト名を設定する。また、```spec.hostname```が設定されていない時は、```metadata.name```がホスト名として使用される。
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
+
+```yaml
+spec:
+  hostname: foo-pod
+```
+
+<br>
+
+### volume
+
+#### ・name
+
+ボリューム名を設定する。
+
+#### ・persistentVolumeClaim.claimName
+
+使用するPersistentVolumeClaimオブジェクトの名前を設定する。ポッドが削除されても、このボリュームは削除されない。
+
+参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
+
+```yaml
+spec:
+  volumes
+    - name: foo-db
+      persistentVolumeClaim:
+        claimName: foo-persistent-volume
+```
+
+#### ・emptyDir
+
+EmptyDirボリュームを作成する。ポッドが削除されると、このボリュームも同時に削除される。
+
+参考：https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+
+```yaml
+spec:
+  volumes
+    - name: foo-lumen
+      emptyDir: {}
+    - name: foo-nginx
+      emptyDir: {}
+```
+
+#### ・HostDir
+
+HostDirボリュームを作成する。
+
+```yaml
+spec:
+  volumes
+    - name: foo-lumen
+      emptyDir: {}
+    - name: foo-nginx
+      emptyDir: {}
+```
+
+
+
+<br>
+
+## 05-05. spec（Serviceの場合）
+
 ### ports
 
-リクエストの受信プロトコルを設定する。
-
 #### ・protocol
+
+サービスでリクエストを受信するために、受信プロトコルを設定する。
 
 ```yaml
 spec:
@@ -75,7 +305,7 @@ spec:
 
 #### ・port
 
-リクエストの受信ポートを設定する。
+サービスでリクエストを受信するために、受信ポートを設定する。
 
 ```yaml
 spec:
@@ -85,7 +315,7 @@ spec:
 
 ####  ・targetPort
 
-リクエストの転送先ポートを設定する。
+ポッドに対してリクエストを転送するために、転送先ポートを設定する。
 
 ```yaml
 spec:
@@ -95,16 +325,30 @@ spec:
 
 <br>
 
-### template
+### selector
+
+リクエストの転送先とするポッドのラベルのキー名と値を設定する。
+
+参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
 ```yaml
 spec:
-  template: # Pod
-    spec:
-      containers:
-      - name: hello # Pod内コンテナ名
-        image: busybox # イメージ
-        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600'] # コンテナ起動時コマンド
-      restartPolicy: OnFailure
+  selector:
+    app: foo
 ```
 
+<br>
+
+### type
+
+ポッドの公開方法の種類を設定する。
+
+参考：https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
+
+https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
+
+| 値           | ポッドへのリクエスト転送方法                                 | IPアドレスの公開範囲   |
+| ------------ | ------------------------------------------------------------ | ---------------------- |
+| ClusterIP    | クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。 | クラスター内部からのみ |
+| NodePort     | ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。ノードのIPアドレスは別に確認する必要がある。 | クラスター外部／内部   |
+| LoadBalancer | ロードバランサーからアクセスできるIPアドレスを割り当て、これに対するリクエストをポッドに転送する。 | クラスター外部／内部   |

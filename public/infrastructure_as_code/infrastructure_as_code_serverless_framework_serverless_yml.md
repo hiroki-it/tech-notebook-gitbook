@@ -118,7 +118,7 @@ functions:
 
 #### ・name
 
-Lambda関数で使用するイメージのエイリアスを指定する。
+Lambda関数で使用するイメージのエイリアスを設定する。
 
 **＊実装例＊**
 
@@ -205,7 +205,7 @@ functions:
 
 ### packageとは
 
-生成されるアーティファクトのパスを設定する。
+生成されるアーティファクトのファイルパスを設定する。
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/packaging
 

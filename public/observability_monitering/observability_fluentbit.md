@@ -133,7 +133,7 @@ Fluent Bit v1.8.6
 
 参考：https://docs.fluentbit.io/manual/concepts/data-pipeline/input
 
-プラグインを用いて、ログの入力方法を指定する。
+プラグインを用いて、ログの入力方法を設定する。
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs
 
@@ -588,7 +588,7 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
     log_stream_name   container/nginx/$(ecs_task_id)
 ```
 
-CloudWatchログに送信されるデータはJSON型である。```log```キーにログが割り当てられている。特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を指定する。例えば、```log```キーのみを送信する場合、『```log```』と指定する。
+CloudWatchログに送信されるデータはJSON型である。```log```キーにログが割り当てられている。特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。例えば、```log```キーのみを送信する場合、『```log```』と設定する。
 
 参考：https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
 

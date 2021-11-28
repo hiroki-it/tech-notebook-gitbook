@@ -1002,7 +1002,7 @@ class FooController extends Controller
 
 #### ・```orderBy```メソッド
 
-指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを用いる。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを用いて、プライマリキーの昇順を明示的に指定する。
+指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを用いる。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを用いて、プライマリキーの昇順を明示的に設定する。
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -2595,7 +2595,7 @@ Route::get("/healthcheck", function () {
 
 use App\Http\Controllers\Foo\FooController;
 
-// authエイリアスを指定する。
+// authエイリアスを設定する。
 Route::middleware("auth")->group(function () {
     Route::get("/foos", [FooController::class, "getFoo"]);
     Route::get("/foos/{fooId}", [FooController::class, "index"]);
@@ -2646,7 +2646,7 @@ Route::middleware("auth:api")->group(function () {
 
 #### ・```prefix```メソッド
 
-エンドポイントが共通として持つ最初のパスを、プレフィクスとして定義する。
+エンドポイントが共通として持つ最初のファイルパスを、プレフィクスとして定義する。
 
 **＊実装例＊**
 
@@ -7594,7 +7594,7 @@ return [
 ];
 ```
 
-3. ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを用いたい場合は、```database```ドライバを指定する。
+3. ```auth.php```ファイルにて、```driver```キーにeloquentドライバを設定する。また、```model```キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。もしDBファサードのクエリビルダを用いたい場合は、```database```ドライバを設定する。
 
 ```php
 return [

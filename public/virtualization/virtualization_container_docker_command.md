@@ -554,7 +554,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 **＊実装例＊**
 
-DockerfileでVolumeマウントを行う場合、マウント先のコンテナ側ディレクトリ名を指定する。Dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
+DockerfileでVolumeマウントを行う場合、マウント先のコンテナ側ディレクトリ名を設定する。Dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
 
 ```dockerfile
 FROM ubuntu

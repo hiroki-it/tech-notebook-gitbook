@@ -529,7 +529,7 @@ ssl on;
 
 #### ・```ssl_certificate```
 
-PEM証明書のパスを設定する。
+PEM証明書のファイルパスを設定する。
 
 **＊実装例＊**
 
@@ -539,7 +539,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ・```ssl_certificate_key```
 
-PEM秘密鍵のパスを設定する。
+PEM秘密鍵のファイルパスを設定する。
 
 **＊実装例＊**
 

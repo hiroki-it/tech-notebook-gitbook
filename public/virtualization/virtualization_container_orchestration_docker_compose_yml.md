@@ -41,7 +41,7 @@ ENV PARAM=${PARAM}
 
 #### ・```dockerfile```
 
-Dockerfileの名前。パスごと指定する。
+Dockerfileまでのファイルパスを設定する。
 
 **＊実装例＊**
 
@@ -56,7 +56,7 @@ services:
 
 #### ・```context```
 
-指定したDockerfileのあるディレクトリをカレントディレクトリとして、Dockerデーモン（Dockerエンジン）に送信するディレクトリを指定する。 
+指定したDockerfileのあるディレクトリをカレントディレクトリとして、Dockerデーモン（Dockerエンジン）に送信するディレクトリを設定する。 
 
 **＊実装例＊**
 
@@ -275,7 +275,7 @@ services:
 
 ```yaml
 networks:
-  # 内部／外部ネットワークのエイリアス名を指定する。
+  # 内部／外部ネットワークのエイリアス名を設定する。
   - foo-network
 ```
 
@@ -497,7 +497,7 @@ networks:
     name: foo-network
 ```
 
-なお、このネットワークを明示的に設定する場合は、エイリアス名（default）で指定する。
+なお、このネットワークを明示的に設定する場合は、エイリアス名（default）で設定する。
 
 ```yaml
 services:
@@ -581,7 +581,7 @@ networks:
 services:
   app:
     container_name: frontend-container
-    # 内部／外部ネットワークのいずれかのエイリアス名を指定する。
+    # 内部／外部ネットワークのいずれかのエイリアス名を設定する。
     networks:
       - backend
 

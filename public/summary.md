@@ -3,7 +3,6 @@
 ## ソフトウェア
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
-
 * 基本ソフトウェア（OS）
     * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
     * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
@@ -11,7 +10,6 @@
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
         * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_machine_language_and_radix.html)
-
 * ミドルウェア
     * Web関連
         * [📖 ︎Nginx](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html)
@@ -21,7 +19,6 @@
     * データベース関連
         * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html)
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
-
 * アプリケーションソフトウェア
     * アーキテクチャ
         * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html)
@@ -95,9 +92,7 @@
 ## ハードウェア
 
 * [📖 ︎ハードウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware.html)
-
 * [📖メモリのアドレス空間管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
-
 * [📖 ︎組み込み機器](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_embedded_system.html)
 
 <br>
@@ -105,7 +100,6 @@
 ## ネットワーク
 
 * [📖 ︎ネットワーク](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network.html)
-
 * [📖 ︎OSI参照モデル／TCP階層モデル](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html)
 
 <br>
@@ -113,7 +107,6 @@
 ## セキュリティ
 
 * [📖 ︎サイバー攻撃](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html)
-
 * [📖 ︎通信データの暗号化技術](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_encryption_technology.html)
 
 <br>
@@ -121,13 +114,11 @@
 ## クラウドコンピューティング
 
 * [📖 ︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing.html)
-
 * AWS
     * [📖 ︎AWS](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html)
     * [📖 ︎API Gatewayへのymlインポート](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_api_gateway_import.html)
     * [📖 ︎Lambda関数の実装](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_lambda_function.html)
     * [📖 ︎コスト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws_cost_management.html)
-
 * GCP
     * [📖 ︎GCP](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_gcp.html)
 
@@ -136,13 +127,11 @@
 ## Infrastructure as Code
 
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
-
 * Terraform
     * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
     * [📖 ︎Terraformの実装](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.html)
     * [📖 ︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html)
     * [📖 ︎TerraformのCICDフロー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
-
 * Serverless Framework
     * [📖 ︎serverlessコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
     * [📖 ︎serverless.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)
@@ -152,7 +141,6 @@
 ## 仮想化
 
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
-
 * コンテナ
     * Docker
         * [📖 ︎dockerコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
@@ -167,7 +155,6 @@
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
             * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
-
 * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)
 
@@ -176,9 +163,7 @@
 ## CICD
 
 * [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
-
 * [📖 ︎CircleCI](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_circleci.html)
-
 * [📖 ︎Capistrano](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_capistrano.html)
 
 <br>
@@ -186,9 +171,7 @@
 ## 可観測性／監視
 
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html)
-
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/monitering.html)
-
 * Fluentd／FluentBit
     * [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentd_and_fluentbit.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentbit.html)
@@ -205,9 +188,7 @@
 ## ソフトウェア開発手法論
 
 * [📖 ︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology.html)
-
 * [📖 ︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_project_management.html)
-
 * Git
     * [📖 ︎GitHub](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_github.html)
     * [📖 ︎Gitコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_git_command.html)
