@@ -2552,64 +2552,237 @@
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-spec"><a name="01-spec" class="plugin-anchor" href="#01-spec"><i class="fa fa-link" aria-hidden="true"></i></a>01. spec</h2>
-<h3 id="spec&#x3068;&#x306F;"><a name="spec&#x3068;&#x306F;" class="plugin-anchor" href="#spec&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>spec&#x3068;&#x306F;</h3>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/kubernetes-objects/" target="_blank">https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/kubernetes-objects/</a></p>
-<p><br></p>
-<h3 id="apiversion"><a name="apiversion" class="plugin-anchor" href="#apiversion"><i class="fa fa-link" aria-hidden="true"></i></a>apiVersion</h3>
-<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<h2 id="01-apiversion"><a name="01-apiversion" class="plugin-anchor" href="#01-apiversion"><i class="fa fa-link" aria-hidden="true"></i></a>01. apiVersion</h2>
+<p>Kubernetes-API&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 </code></pre>
 <p><br></p>
-<h3 id="kind"><a name="kind" class="plugin-anchor" href="#kind"><i class="fa fa-link" aria-hidden="true"></i></a>kind</h3>
-<p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<h2 id="02-kind"><a name="02-kind" class="plugin-anchor" href="#02-kind"><i class="fa fa-link" aria-hidden="true"></i></a>02. kind</h2>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
 </code></pre>
 <p><br></p>
-<h3 id="metadata"><a name="metadata" class="plugin-anchor" href="#metadata"><i class="fa fa-link" aria-hidden="true"></i></a>metadata</h3>
-<h4 id="&#x30FB;name"><a name="&#x30FB;name" class="plugin-anchor" href="#&#x30FB;name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;name</h4>
-<p>&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<h2 id="03-metadata"><a name="03-metadata" class="plugin-anchor" href="#03-metadata"><i class="fa fa-link" aria-hidden="true"></i></a>03. metadata</h2>
+<h3 id="name"><a name="name" class="plugin-anchor" href="#name"><i class="fa fa-link" aria-hidden="true"></i></a>name</h3>
+<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>service
 </code></pre>
 <p><br></p>
-<h3 id="selector"><a name="selector" class="plugin-anchor" href="#selector"><i class="fa fa-link" aria-hidden="true"></i></a>selector</h3>
-<h4 id="&#x30FB;app"><a name="&#x30FB;app" class="plugin-anchor" href="#&#x30FB;app"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;app</h4>
+<h2 id="05-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;Deployment&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="template"><a name="template" class="plugin-anchor" href="#template"><i class="fa fa-link" aria-hidden="true"></i></a>template</h3>
+<p>&#x30B9;&#x30B1;&#x30FC;&#x30EA;&#x30F3;&#x30B0;&#x6642;&#x306B;&#x8907;&#x88FD;&#x306E;&#x92F3;&#x578B;&#x3068;&#x3059;&#x308B;&#x30DD;&#x30C3;&#x30C9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">app</span><span class="token punctuation">:</span> MyApp
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> foo
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen<span class="token punctuation">:</span>dev
+          <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">9000</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx<span class="token punctuation">:</span>dev
+          <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8000</span>
 </code></pre>
 <p><br></p>
+<h2 id="05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-02. spec&#xFF08;PersistentVolume&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="accessmodes"><a name="accessmodes" class="plugin-anchor" href="#accessmodes"><i class="fa fa-link" aria-hidden="true"></i></a>accessModes</h3>
+<h4 id="&#x30FB;readwritemany"><a name="&#x30FB;readwritemany" class="plugin-anchor" href="#&#x30FB;readwritemany"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadWriteMany</h4>
+<p>&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteMany
+</code></pre>
+<h4 id="&#x30FB;readonlymany"><a name="&#x30FB;readonlymany" class="plugin-anchor" href="#&#x30FB;readonlymany"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadOnlyMany</h4>
+<p>&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x3067;&#x304D;&#x3001;&#x307E;&#x305F;&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x304B;&#x3089;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x51E6;&#x7406;&#x306E;&#x307F;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadOnlyMany
+</code></pre>
+<h4 id="&#x30FB;readwriteonce"><a name="&#x30FB;readwriteonce" class="plugin-anchor" href="#&#x30FB;readwriteonce"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadWriteOnce</h4>
+<p>&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x306E;&#x307F;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x3054;&#x3068;&#x306B;DB&#x3092;&#x5206;&#x5272;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+</code></pre>
+<p><br></p>
+<h3 id="capacity"><a name="capacity" class="plugin-anchor" href="#capacity"><i class="fa fa-link" aria-hidden="true"></i></a>capacity</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">capacity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10G
+</code></pre>
+<p><br></p>
+<h3 id="mountoptions"><a name="mountoptions" class="plugin-anchor" href="#mountoptions"><i class="fa fa-link" aria-hidden="true"></i></a>mountOptions</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mountOptions</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> hard
+</code></pre>
+<p><br></p>
+<h3 id="nfs"><a name="nfs" class="plugin-anchor" href="#nfs"><i class="fa fa-link" aria-hidden="true"></i></a>nfs</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">nfs</span><span class="token punctuation">:</span>
+    <span class="token key atrule">server</span><span class="token punctuation">:</span> nnn.nnn.nnn.nnn
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /nfs/foo
+</code></pre>
+<p><br></p>
+<h3 id="persistentvolumereclaimpolicy"><a name="persistentvolumereclaimpolicy" class="plugin-anchor" href="#persistentvolumereclaimpolicy"><i class="fa fa-link" aria-hidden="true"></i></a>persistentVolumeReclaimPolicy</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Retain
+</code></pre>
+<p><br></p>
+<h3 id="storageclassname"><a name="storageclassname" class="plugin-anchor" href="#storageclassname"><i class="fa fa-link" aria-hidden="true"></i></a>storageClassName</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
+</code></pre>
+<p><br></p>
+<h2 id="05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-03. spec&#xFF08;PersistentVolumeClaim&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="accessmodes"><a name="accessmodes" class="plugin-anchor" href="#accessmodes"><i class="fa fa-link" aria-hidden="true"></i></a>accessModes</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteMany
+</code></pre>
+<p><br></p>
+<h3 id="resources"><a name="resources" class="plugin-anchor" href="#resources"><i class="fa fa-link" aria-hidden="true"></i></a>resources</h3>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteMany
+</code></pre>
+<p><br></p>
+<h2 id="05-04-spec&#xFF08;pod&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-04-spec&#xFF08;pod&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-04-spec&#xFF08;pod&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-04. spec&#xFF08;Pod&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="containers"><a name="containers" class="plugin-anchor" href="#containers"><i class="fa fa-link" aria-hidden="true"></i></a>containers</h3>
+<h4 id="&#x30FB;name&#x3001;image&#x3001;port"><a name="&#x30FB;name&#x3001;image&#x3001;port" class="plugin-anchor" href="#&#x30FB;name&#x3001;image&#x3001;port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;name&#x3001;image&#x3001;port</h4>
+<p>&#x30DD;&#x30C3;&#x30C9;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x540D;&#x524D;&#x3001;&#x30D9;&#x30FC;&#x30B9;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3001;&#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen<span class="token punctuation">:</span>dev
+      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">9000</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx<span class="token punctuation">:</span>dev
+      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8000</span>
+</code></pre>
+<h4 id="&#x30FB;volumemount"><a name="&#x30FB;volumemount" class="plugin-anchor" href="#&#x30FB;volumemount"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;volumeMount</h4>
+<pre class="language-"><code>spec:
+  containers:
+    - name: foo-lumen
+      image: foo-lumen:dev
+      ports:
+        - containerPort: 9000
+      volumeMounts:
+         - name: hswp-nginx
+           mountPath: /var/www/hswp
+    - name: foo-lumen
+      image: foo-lumen:dev
+      ports:
+        - containerPort: 9000
+      volumeMounts:
+         - name: hswp-nginx
+           mountPath: /var/www/hswp
+</code></pre><p><br></p>
+<h3 id="hostname"><a name="hostname" class="plugin-anchor" href="#hostname"><i class="fa fa-link" aria-hidden="true"></i></a>hostname</h3>
+<p>&#x30DD;&#x30C3;&#x30C9;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x307E;&#x305F;&#x3001;<code>spec.hostname</code>&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x6642;&#x306F;&#x3001;<code>metadata.name</code>&#x304C;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89" target="_blank">https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hostname</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>pod
+</code></pre>
+<p><br></p>
+<h3 id="volume"><a name="volume" class="plugin-anchor" href="#volume"><i class="fa fa-link" aria-hidden="true"></i></a>volume</h3>
+<h4 id="&#x30FB;name"><a name="&#x30FB;name" class="plugin-anchor" href="#&#x30FB;name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;name</h4>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;persistentvolumeclaimclaimname"><a name="&#x30FB;persistentvolumeclaimclaimname" class="plugin-anchor" href="#&#x30FB;persistentvolumeclaimclaimname"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;persistentVolumeClaim.claimName</h4>
+<p>&#x4F7F;&#x7528;&#x3059;&#x308B;PersistentVolumeClaim&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30DD;&#x30C3;&#x30C9;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x3066;&#x3082;&#x3001;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306F;&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/" target="_blank">https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  volumes
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>db
+      <span class="token key atrule">persistentVolumeClaim</span><span class="token punctuation">:</span>
+        <span class="token key atrule">claimName</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>persistent<span class="token punctuation">-</span>volume
+</code></pre>
+<h4 id="&#x30FB;emptydir"><a name="&#x30FB;emptydir" class="plugin-anchor" href="#&#x30FB;emptydir"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;emptyDir</h4>
+<p>EmptyDir&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x30DD;&#x30C3;&#x30C9;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir" target="_blank">https://kubernetes.io/docs/concepts/storage/volumes/#emptydir</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  volumes
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen
+      <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx
+      <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;hostdir"><a name="&#x30FB;hostdir" class="plugin-anchor" href="#&#x30FB;hostdir"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;HostDir</h4>
+<p>HostDir&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  volumes
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>lumen
+      <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>nginx
+      <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h2 id="05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-05. spec&#xFF08;Service&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="ports"><a name="ports" class="plugin-anchor" href="#ports"><i class="fa fa-link" aria-hidden="true"></i></a>ports</h3>
-<p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x53D7;&#x4FE1;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <h4 id="&#x30FB;protocol"><a name="&#x30FB;protocol" class="plugin-anchor" href="#&#x30FB;protocol"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;protocol</h4>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x53D7;&#x4FE1;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">ports</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
 </code></pre>
 <h4 id="&#x30FB;port"><a name="&#x30FB;port" class="plugin-anchor" href="#&#x30FB;port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;port</h4>
-<p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">ports</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
 </code></pre>
 <h4 id="&#x30FB;targetport"><a name="&#x30FB;targetport" class="plugin-anchor" href="#&#x30FB;targetport"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;targetPort</h4>
-<p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x8EE2;&#x9001;&#x5148;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30DD;&#x30C3;&#x30C9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x8EE2;&#x9001;&#x5148;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">ports</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">9376</span>
 </code></pre>
 <p><br></p>
-<h3 id="template"><a name="template" class="plugin-anchor" href="#template"><i class="fa fa-link" aria-hidden="true"></i></a>template</h3>
+<h3 id="selector"><a name="selector" class="plugin-anchor" href="#selector"><i class="fa fa-link" aria-hidden="true"></i></a>selector</h3>
+<p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x8EE2;&#x9001;&#x5148;&#x3068;&#x3059;&#x308B;&#x30DD;&#x30C3;&#x30C9;&#x306E;&#x30E9;&#x30D9;&#x30EB;&#x306E;&#x30AD;&#x30FC;&#x540D;&#x3068;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/" target="_blank">https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">template</span><span class="token punctuation">:</span> <span class="token comment"># Pod</span>
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> hello <span class="token comment"># Pod&#x5185;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;</span>
-        <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox <span class="token comment"># &#x30A4;&#x30E1;&#x30FC;&#x30B8;</span>
-        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;sh&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;-c&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;echo &quot;Hello, Kubernetes!&quot; &amp;&amp; sleep 3600&apos;</span><span class="token punctuation">]</span> <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8D77;&#x52D5;&#x6642;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
-      <span class="token key atrule">restartPolicy</span><span class="token punctuation">:</span> OnFailure
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> foo
 </code></pre>
+<p><br></p>
+<h3 id="type"><a name="type" class="plugin-anchor" href="#type"><i class="fa fa-link" aria-hidden="true"></i></a>type</h3>
+<p>&#x30DD;&#x30C3;&#x30C9;&#x306E;&#x516C;&#x958B;&#x65B9;&#x6CD5;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a" target="_blank">https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a</a></p>
+<p><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/" target="_blank">https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/</a></p>
+<table>
+<thead>
+<tr>
+<th>&#x5024;</th>
+<th>&#x30DD;&#x30C3;&#x30C9;&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x8EE2;&#x9001;&#x65B9;&#x6CD5;</th>
+<th>IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x516C;&#x958B;&#x7BC4;&#x56F2;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClusterIP</td>
+<td>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x306B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3001;&#x3053;&#x308C;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30DD;&#x30C3;&#x30C9;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;</td>
+<td>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5185;&#x90E8;&#x304B;&#x3089;&#x306E;&#x307F;</td>
+</tr>
+<tr>
+<td>NodePort</td>
+<td>&#x30CE;&#x30FC;&#x30C9;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x304A;&#x3051;&#x308B;&#x7279;&#x5B9A;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30DD;&#x30C3;&#x30C9;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x306E;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306F;&#x5225;&#x306B;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</td>
+<td>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#xFF0F;&#x5185;&#x90E8;</td>
+</tr>
+<tr>
+<td>LoadBalancer</td>
+<td>&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#x30FC;&#x304B;&#x3089;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x5272;&#x308A;&#x5F53;&#x3066;&#x3001;&#x3053;&#x308C;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30DD;&#x30C3;&#x30C9;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;</td>
+<td>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#xFF0F;&#x5185;&#x90E8;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -2653,7 +2826,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.2","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-11-27T11:33:53.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-27T11:33:55.353Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.2","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-11-28T15:40:52.792Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-28T15:40:59.171Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
