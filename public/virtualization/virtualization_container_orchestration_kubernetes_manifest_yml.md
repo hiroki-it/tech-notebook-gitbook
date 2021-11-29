@@ -201,7 +201,9 @@ spec:
 
 #### ・volumeMount
 
-```
+volumeマウントを実行する。```spec.volume```で設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+
+```yaml
 spec:
   containers:
     - name: foo-lumen
@@ -209,15 +211,15 @@ spec:
       ports:
         - containerPort: 9000
       volumeMounts:
-         - name: hswp-nginx
-           mountPath: /var/www/hswp
+         - name: foo-nginx
+           mountPath: /var/www/foo
     - name: foo-lumen
       image: foo-lumen:dev
       ports:
         - containerPort: 9000
       volumeMounts:
-         - name: hswp-nginx
-           mountPath: /var/www/hswp           
+         - name: foo-nginx
+           mountPath: /var/www/foo           
 ```
 
 

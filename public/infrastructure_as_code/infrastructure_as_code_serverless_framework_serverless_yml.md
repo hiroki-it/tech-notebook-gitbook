@@ -83,6 +83,8 @@ functions:
 
 Lambda関数の環境変数を設定する。
 
+参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
+
 **＊実装例＊**
 
 ```yaml
@@ -98,11 +100,15 @@ functions:
 
 ### events
 
-参考：https://www.serverless.com/framework/docs/providers/aws/guide/events
-
 #### ・eventBridge
 
+Lambda関数に紐づけて構築するEventBridgeを設定する。
+
+参考：https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
+
 **＊実装例＊**
+
+イベントパターンとして、JSONファイルを読み込む
 
 ```yaml
 functions:
@@ -111,6 +117,23 @@ functions:
       - eventBridge:
           pattern: ${file(./event_bridge/patterns/pattern.json)}  
 ```
+
+#### ・sqs
+
+Lambda関数に紐づけるSQSを設定する。新しくSQSを構築できず、既存のSQSと紐づける機能しかないことに注意する。
+
+参考：https://www.serverless.com/framework/docs/providers/aws/events/sqs
+
+**＊実装例＊**
+
+```yaml
+functions:
+  main:
+    events:
+      - sqs:arn:aws:sqs:region:****:prd-foo-queue
+```
+
+
 
 <br>
 
@@ -134,6 +157,8 @@ functions:
 ### maximumRetryAttempts
 
 Lambda関数の再試行回数を設定する。
+
+参考：https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
 **＊実装例＊**
 
@@ -178,6 +203,8 @@ functions:
 Lambda関数に紐づけるIAMロールを設定する。
 
 **＊実装例＊**
+
+別に```resources.Resources```を用いて構築したIAMロールを設定する。
 
 ```yaml
 functions:
@@ -342,10 +369,32 @@ provider:
 
 参考：https://www.serverless.com/framework/docs/providers/aws/guide/resources
 
+<br>
+
+### IAMロール
+
+IAMロールを構築する。
+
 **＊実装例＊**
+
+IAMロールに紐づけるIAMポリシーは、JSONファイルで切り分けておいた方が良い。
 
 ```yaml
 resources:
+  Resources:
+    LambdaRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: prd-foo-lambda-role
+        Description: The role for prd-foo-lambda
+        AssumeRolePolicyDocument: ${file(./iam_role/policies/trust_policies/lambda_policy.json)}
+        # インラインポリシー
+        Policies:
+          - PolicyName: prd-foo-lambda-execution-policy
+            PolicyDocument: ${file(./iam_role/policies/custom_managed_policies/lambda_execution_policy.json)}
+        # 管理ポリシー
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AWSLambdaExecute
 ```
 
 <br>

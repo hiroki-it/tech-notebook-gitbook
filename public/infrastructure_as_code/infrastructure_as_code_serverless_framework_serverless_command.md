@@ -30,17 +30,23 @@ $ serverless print --FOO foo
 
 #### ・オプション無し
 
+クラウドインフラを構築する。
+
 ```bash
 $ serverless deploy
 ```
 
-#### ・パラメータ有
+#### ・パラメータ
+
+パラメータを```serverless.yml```ファイルに渡し、```deploy```コマンドを実行する。
 
 ```bash
 $ serverless deploy --FOO foo
 ```
 
 #### ・-v
+
+実行ログを表示しつつ、```deploy```コマンドを実行する。
 
 ```bash
 $ serverless deploy -v
