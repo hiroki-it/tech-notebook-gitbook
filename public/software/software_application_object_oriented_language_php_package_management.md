@@ -134,6 +134,18 @@ $ composer clear-cache
 
 <br>
 
+### create-project
+
+パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```し、この中で```composer install```を実行することと同じである。
+
+参考：https://getcomposer.org/doc/03-cli.md#create-project
+
+```bash
+$ composer create-project --prefer-dist laravel/lumen .
+```
+
+<br>
+
 ### diagnose
 
 composerを使用するための準備が揃っているかを検証する。
@@ -156,8 +168,22 @@ Checking https connectivity to packagist: OK
 
 事前に設定された```autoload```プロパティに基づいて、クラスの名前空間とファイルパスの対応関係を登録する。
 
+参考：https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+
 ```bash
 $ composer dump-autoload
+```
+
+<br>
+
+### init
+
+対話形式で```composer.json```ファイルを作成する。
+
+参考：https://getcomposer.org/doc/03-cli.md#init
+
+```bash
+$ composer init
 ```
 
 <br>

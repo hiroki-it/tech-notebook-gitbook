@@ -117,15 +117,21 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・PersistentVolume
 
-ノードのストレージを使用したボリュームのこと。ポッドがPersistentVolumeを使用するためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+ノードのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを使用するためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
 
 参考：https://thinkit.co.jp/article/14195
 
 #### ・EmptyDir
 
-ポッドのストレージを使用したボリュームのこと。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
+ポッドのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できない。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
+
+#### ・HostPath
+
+ノードのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できる。非推奨である。
+
+参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6
 
 #### ・外部ボリューム
 
@@ -260,6 +266,40 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 <br>
 
+### exec
+
+#### ・execとは
+
+指定したポッド内のコンテナでコマンドを実行する。
+
+#### ・-c
+
+コンテナを指定して、 ```exec```コマンドを実行する。コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。
+
+＊実行例＊
+
+```bash
+$ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+```
+
+```bash
+$ kubectl exec -it <ポッド名> -- bash
+
+Defaulted container "foo-container" out of: foo-container, bar-container
+```
+
+
+
+#### ・-it
+
+デタッチモードを用いて、起動中コンテナ内でコマンドを実行する。
+
+```bash
+$ kubectl exec -it <ポッド名> -- bash
+```
+
+<br>
+
 ### get
 
 #### ・getとは
@@ -339,7 +379,7 @@ Kubeプロキシを作成する。
 #### ・--address、--accept-hosts
 
 ```bash
-$  kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
+$ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
 
 Starting to serve on [::]:8001
 ```

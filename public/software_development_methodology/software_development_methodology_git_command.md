@@ -214,6 +214,9 @@ $ git cherry-pick 1d0ddeb9e52
 プルリクのマージによるマージコミットを指定すると、そのプルリクで変更されたファイルのみがコミットの内容として取得できる。これにより、developブランチ上の必要な変更のみをリリースすることも可能である。ただし、マージコミットを指定する時はmオプションを有効化しないとエラーになることに注意する。
 
 ```bash
+# cherrypickブランチにチェックアウト
+$ git checkout cherrypick
+
 # mオプションがないとエラー
 $ git cherry-pick d7e49b04
 error: commit d7e49b04 is a merge but no -m option was given.

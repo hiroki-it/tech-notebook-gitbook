@@ -42,7 +42,7 @@ Dockerクライアントは、dockerコマンドを使用してDockerデーモ�
 
 **＊コマンド例＊**
 
-デタッチドモードによって、起動中のコンテナに接続する。
+デタッチドモードを用いて、起動中コンテナに接続する。
 
 ```bash
 $ docker attach <起動中コンテナ名>
@@ -68,14 +68,14 @@ $ docker build --file Dockerfile --tag <イメージ名>:<バージョン> --for
 
 #### ・オプション無し
 
-停止中のコンテナからイメージを作成する。
+停止中コンテナからイメージを作成する。
 
 **＊コマンド例＊**
 
 ```bash
-$ docker commit <コンテナ名> <コンテナID>
+$ docker commit <停止中コンテナ名> <コンテナID>
 
-$ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
+$ docker commit <停止中コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<バージョン>
 ```
 
 <br>
@@ -84,7 +84,7 @@ $ docker commit <コンテナ名> <Docker Hubユーザ名>/<イメージ名>:<�
 
 #### ・prune
 
-停止中のコンテナのみを全て削除する。
+停止中コンテナのみを全て削除する。
 
 **＊コマンド例＊**
 
@@ -137,7 +137,7 @@ $ docker create <コンテナ名> <使用イメージ名>:<タグ>
 
 **＊コマンド例＊**
 
-デタッチドモードによって、起動中のコンテナ内でコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。
+デタッチドモードを用いて、起動中コンテナ内でコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。
 
 ```bash
 # i：interactive、t：tty（対話モード）
@@ -149,13 +149,13 @@ $ docker exec -it <起動中コンテナ名> /bin/sh
 
 #### ・attach、execの違い
 
-まず```attach```コマンドでは、起動中のコンテナに接続する。```exit```コマンドを用いて、コンテナとの接続を切断した後、コンテナが停止してしまう。
+まず```attach```コマンドでは、起動中コンテナに接続する。```exit```コマンドを用いて、コンテナとの接続を切断した後、コンテナが停止してしまう。
 
 ```bash
 # デタッチドモードによる起動
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
-# デタッチドモードによって起動中のコンテナに接続
+# デタッチドモードによって起動中コンテナに接続
 $ docker attach <起動中コンテナ名>
 
 # PID=1で、1つの/bin/bashプロセスが稼働していることを確認できる
@@ -171,13 +171,13 @@ root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedになっている
 ```
 
-一方で```exec```コマンドでは、起動中のコンテナでコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。```exit```コマンドを用いて、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
+一方で```exec```コマンドでは、起動中コンテナでコマンドを実行する。実行するコマンドが```bash```や```bash```の場合、コンテナに接続できる。```exit```コマンドを用いて、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
 
 ```bash
 # デタッチドモードによる起動
 $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /bin/bash
 
-# 対話モードを用いて、デタッチドモードによって起動中のコンテナに接続
+# 対話モードを用いて、デタッチドモードによって起動中コンテナに接続
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
 
 # PID=1,17で、2つの/bin/bashプロセスが稼働していることを確認できる
@@ -255,8 +255,9 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 起動中コンテナの全ての設定内容を表示する。```grep```とも組み合わせられる。
 
 ```bash
-$ docker inspect <コンテナ名>
-$ docker inspect <コンテナ名> | grep IPAddress
+$ docker inspect <起動中コンテナ名>
+
+$ docker inspect <起動中コンテナ名> | grep IPAddress
 ```
 
 **＊コマンド例＊**
@@ -264,7 +265,7 @@ $ docker inspect <コンテナ名> | grep IPAddress
 json-fileドライバーを用いている時に、ログファイルの出力先を確認する。
 
 ```bash
- $ docker inspect <コンテナ名> | grep 'LogPath'
+ $ docker inspect <起動中コンテナ名> | grep 'LogPath'
  
  "LogPath": "/var/lib/docker/containers/*****-json.log",
 ```
@@ -410,7 +411,7 @@ $ docker run -d -it --name <コンテナ名> --expose=80 <用いるイメージ�
 
 #### ・-a、-d
 
-すでに停止中または起動中のコンテナが存在していても、これとは別にコンテナを新しく構築し、起動する。さらにそのコンテナ内でコマンドを実行する。起動時に```bash```プロセスや```bash```プロセスを実行すると、コンテナに接続できる。何も渡さない場合は、デフォルトのプロセスとして```bash```プロセスが実行される。```run```コマンドでは、アタッチモードとデタッチモードを選ぶことができる。新しく起動したコンテナを停止後に自動削除する場合は、```rm```オプションを付けるようにする。
+すでに停止中または起動中コンテナが存在していても、これとは別にコンテナを新しく構築し、起動する。さらにそのコンテナ内でコマンドを実行する。起動時に```bash```プロセスや```bash```プロセスを実行すると、コンテナに接続できる。何も渡さない場合は、デフォルトのプロセスとして```bash```プロセスが実行される。```run```コマンドでは、アタッチモードとデタッチモードを選ぶことができる。新しく起動したコンテナを停止後に自動削除する場合は、```rm```オプションを付けるようにする。
 
 **＊コマンド例＊**
 
@@ -496,7 +497,7 @@ Volumeマウントを作成する。dockerコマンドではなく、docker-comp
 ホストOSのDockerエリアにVolumeを作成
 
 ```bash
-$ docker volume create <Volume名>
+$ docker volume create <ボリューム名>
 ```
 
 #### ・ls
@@ -516,7 +517,7 @@ $ docker volume ls
 DockerエリアのVolumeを削除
 
 ```bash
-$ docker volume rm <Volume名>
+$ docker volume rm <ボリューム名>
 ```
 
 #### ・inspect
@@ -526,7 +527,7 @@ $ docker volume rm <Volume名>
 DockerエリアのVolumeの詳細を表示
 
 ```bash
-$ docker volume inspect <Volume名>
+$ docker volume inspect <ボリューム名>
 
 [
     {
@@ -547,9 +548,9 @@ $ docker volume inspect <Volume名>
 
 ```bash
 # DockerエリアをVolumeマウントして起動
-# マウントポイントのVolume名を使用
+# マウントポイントのボリューム名を使用
 $ docker run -d -it --name <コンテナ名> /bin/bash \
-  --mount type=volume, src=<ホストOS側Volume名> volume-driver=local, dst=<コンテナ側ディレクトリ>
+  --mount type=volume, src=<ホストOS側ボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
 ```
 
 **＊実装例＊**

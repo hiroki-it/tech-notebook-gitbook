@@ -425,7 +425,7 @@ services:
 
 ### ```volumes```（Bindマウント）
 
-最上層と```service```内で、異なるVolume名を記述した場合、Bindマウントを定義する。ホストOSにある```/Users```ディレクトリをコンテナ側にマウントする。
+最上層と```service```内で、異なるボリューム名を記述した場合、Bindマウントを定義する。ホストOSにある```/Users```ディレクトリをコンテナ側にマウントする。
 
 **＊実装例＊**
 
@@ -441,7 +441,7 @@ services:
 
 ### ```volumes```（Volumeマウント）
 
-最上層と```service```内の両方に、同じVolume名を記述した場合、Volumeマウントを定義する。DockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでVolumeマウントを行う。
+最上層と```service```内の両方に、同じボリューム名を記述した場合、Volumeマウントを定義する。DockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでVolumeマウントを行う。
 
 **＊実装例＊**
 
@@ -453,7 +453,7 @@ service:
       - mysql_volume:/var/www/lib/mysql
       
 volumes:
-  # volume名
+  # ボリューム名
   mysql_volume:
     # localで、ホストOSのDockerエリアを指定
     driver: local   

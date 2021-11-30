@@ -15,8 +15,8 @@
 1. Docker Hubから、ベースとなるイメージをインストールする。
 2. Dockerfileがイメージレイヤーからなるイメージをビルド。
 3. コマンドによって、イメージ上にコンテナレイヤーを生成し、コンテナを構築。
-4. コマンドによって、停止中のコンテナを起動。
-5. コマンドによって、起動中のコンテナに接続。
+4. コマンドによって、停止中コンテナを起動。
+5. コマンドによって、起動中コンテナに接続。
 
 ![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
 
@@ -541,7 +541,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ・Volume（Data Volume）、Dockerエリアとは
 
-ホストOSのDockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データのこと。Data Volumeともいう。Volumeへのパス（```/var/lib/docker/volumes/<Volume名>/_data```）は、マウントポイントという。
+ホストOSのDockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データのこと。Data Volumeともいう。Volumeへのパス（```/var/lib/docker/volumes/<ボリューム名>/_data```）は、マウントポイントという。
 
 #### ・Volumeマウントとは
 

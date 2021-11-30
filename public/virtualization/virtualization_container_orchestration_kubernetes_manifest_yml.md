@@ -282,12 +282,24 @@ HostDirボリュームを作成する。
 spec:
   volumes
     - name: foo-lumen
-      emptyDir: {}
+      hostDir: {}
     - name: foo-nginx
-      emptyDir: {}
+      hostDir: {}
 ```
 
+#### ・HostPath
 
+HostPathボリュームを作成する。
+
+参考：https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+
+```yaml
+  volumes:
+  - name: foo-lumen
+    hostPath:
+      path: /Users/***/projects/foo
+      type: Directory
+```
 
 <br>
 
