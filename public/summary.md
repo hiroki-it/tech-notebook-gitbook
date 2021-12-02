@@ -154,6 +154,7 @@
             * [📖 ︎kubernetesコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_command.html)
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
             * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
+            * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_minikube_command.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * ︎仮想サーバ（仮想マシン）
     * [📖 ︎仮想サーバ（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)

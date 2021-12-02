@@ -267,7 +267,7 @@ log_router:
     dockerfile: ./docker/fluentbit/Dockerfile
     context: .
   volumes:
-    # アプリケーションのログファイルのVolumeマウント
+    # アプリケーションのログファイルのボリュームマウント
     - ./storage/logs:/var/www/foo/storage/logs
 ```
 

@@ -103,7 +103,7 @@ EXPOSE 80
 | **```RUN```**        | ベースイメージ上に、ソフトウェアをインストール.              |
 | **```COPY```**       | ・ホストOS側のファイルをコンテナ側のファイルとしてコピー.<br>・ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『/』で終える必要がある。<br>・イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。<br>・```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストOSからコンテナにコピーしたい時によく使う。 |
 | **```CMD```**        | イメージのプロセスの起動コマンドを実行。```run```コマンドの引数として、上書きできる。 |
-| **```VOLUME```**     | ・Volumeマウントを行う。<br>参考：https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d |
+| **```VOLUME```**     | ・ボリュームマウントを行う。<br>参考：https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d |
 | **```EXPOSE```**     | コンテナのポートを開放する。また、イメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある。<br>参考：<br>・https://docs.docker.com/engine/reference/builder/#expose<br>・https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/<br><br>また加えて、プロセス自体が命令をリッスンできるようにポートを設定する必要がある。ただし、多くの場合標準でこれが設定されている。（例：PHP-FPMでは、```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには、```listen = 127.0.0.1:9000```の設定がある） |
 | **```ENTRYPOINT```** | イメージのプロセスの起動コマンドを実行。```CMD```とは異なり、後から上書き実行できない。使用者に、コンテナの起動方法を強制させたい場合に適する。 |
 | **```ENV```**        | OS上のコマンド処理で扱える変数を定義する。Dockerfileの命令では扱えない。```ARG```との違いの例については下記。 |
@@ -502,18 +502,18 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 
 ## 04. ホストとコンテナ間のマウント
 
-### Bindマウント
+### バインドマウント
 
-#### ・Bindマウントとは
+#### ・バインドマウントとは
 
 ホストOSの```/Users```ディレクトリをコンテナ側にマウントする方法。ホストOSで作成されるデータが継続的に変化する場合に適しており、例えばアプリケーションのソースコードをホストコンテナ間と共有する方法として推奨である。しかし、ホストOSのデータを永続化する方法としては不適である。また、Dockerfileまたはdocker-composeファイルに記述する方法があるが、後者が推奨である。
 
-![bindマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/bindマウント.png)
+![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png)
 
 **＊コマンド例＊**
 
 ```bash
-# ホストOSをコンテナ側にbindマウント
+# ホストOSをコンテナ側にバインドマウント
 $ docker run -d -it --name <コンテナ名> /bin/bash \
   --mount type=bind, src=home/projects/<ホストOS側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
 ```
@@ -524,9 +524,9 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ![マウントされるホスト側のディレクトリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/マウントされるホスト側のディレクトリ.png)
 
-#### ・本番環境ではBindマウントでアプリケーションを稼働させるな
+#### ・本番環境ではバインドマウントでアプリケーションを稼働させるな
 
-インタプリタ言語のアプリケーションのDockerコンテナを稼働させる場合、開発環境であればBindマウントでホスト側のアプリケーションをコンテナに共有すれば、コンテナ内でアプリケーションは稼働できる。しかし、本番環境では、Bindマウントが機能しないため、使用するイメージにアプリケーションを組み込んでおく。方法として、プライベートリポジトリにデプロイするイメージのビルド時に、ホストのアプリケーションをイメージ側に```COPY```しておく。これにより、本番環境ではこのイメージをプルしさえすれば、アプリケーションを使用できるようになる。
+インタプリタ言語のアプリケーションのDockerコンテナを稼働させる場合、開発環境であればバインドマウントでホスト側のアプリケーションをコンテナに共有すれば、コンテナ内でアプリケーションは稼働できる。しかし、本番環境では、バインドマウントが機能しないため、使用するイメージにアプリケーションを組み込んでおく。方法として、プライベートリポジトリにデプロイするイメージのビルド時に、ホストのアプリケーションをイメージ側に```COPY```しておく。これにより、本番環境ではこのイメージをプルしさえすれば、アプリケーションを使用できるようになる。
 
 参考：
 
@@ -537,17 +537,17 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 <br>
 
-### Volumeマウント
+### ボリュームマウント
 
 #### ・Volume（Data Volume）、Dockerエリアとは
 
 ホストOSのDockerエリア（```/var/lib/docker/volumes```ディレクトリ）に保存される永続データのこと。Data Volumeともいう。Volumeへのパス（```/var/lib/docker/volumes/<ボリューム名>/_data```）は、マウントポイントという。
 
-#### ・Volumeマウントとは
+#### ・ボリュームマウントとは
 
 ホストOSにあるDockerエリアのマウントポイントをコンテナ側にマウントする方法。ホストOSで作成されるデータがめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。しかし、例えばアプリケーションのソースコードやパッケージといったような変更されやすいデータを共有する方法としては不適である。
 
-![volumeマウント](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/volumeマウント.png)
+![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png)
 
 #### ・Data Volumeコンテナによる永続化データの提供
 

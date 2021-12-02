@@ -115,21 +115,42 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ### ボリューム
 
+#### ・確認方法
+
+```bash
+# ポッドに接続する
+kubectl exec -it foo-pod-***** -c foo-container -- bash
+
+# ストレージを表示する
+[root@*****:/var/www/html] df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          59G   36G   20G  65% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/vda1        59G   36G   20G  65% /etc/hosts
+shm              64M     0   64M   0% /dev/shm
+overlay          59G   36G   20G  65% /var/www/foo # 作成したボリューム
+tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs           3.9G     0  3.9G   0% /proc/acpi
+tmpfs           3.9G     0  3.9G   0% /sys/firmware
+```
+
 #### ・PersistentVolume
 
-ノードのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを使用するためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを使用するためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
 
 参考：https://thinkit.co.jp/article/14195
 
 #### ・EmptyDir
 
-ポッドのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できない。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
+ポッドのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できない。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
 #### ・HostPath
 
-ノードのストレージを使用したボリュームのこと。ノード上のポッド間でボリュームを共有できる。非推奨である。
+ノードのストレージを使用したボリュームのこと。ホストOSとポッド内コンテナ間のボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。非推奨であり、ホストOSとノード間でボリュームマウントを実行する```mount```コマンドが推奨である。
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6
 
@@ -274,7 +295,7 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 #### ・-c
 
-コンテナを指定して、 ```exec```コマンドを実行する。コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。
+コンテナを指定して、 ```exec```コマンドを実行する。コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。ポッドのラベル名ではなく、ポッド名であることに注意する。
 
 ＊実行例＊
 
@@ -287,8 +308,6 @@ $ kubectl exec -it <ポッド名> -- bash
 
 Defaulted container "foo-container" out of: foo-container, bar-container
 ```
-
-
 
 #### ・-it
 
@@ -384,125 +403,3 @@ $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
 Starting to serve on [::]:8001
 ```
 
-<br>
-
-## 03. minikubeコマンド
-
-### minikubeコマンドとは
-
-仮想環境を構築し、また仮想環境下で単一のノードを持つクラスターを作成するコマンド。
-
-参考：https://minikube.sigs.k8s.io/docs/commands/
-
-<br>
-
-### dashboard
-
-#### ・dashboardとは
-
-Kubernetesのダッシュボードを開発環境に構築する。
-
-**＊実行例＊**
-
-```bash
-$ minikube dashboard
-
-🤔  Verifying dashboard health ...
-🚀  Launching proxy ...
-🤔  Verifying proxy health ...
-🎉  Opening http://127.0.0.1:55712/*****/ in your default browser...
-```
-
-<br>
-
-### docker-env
-
-#### ・docker-envとは
-
-ホストPCでdockerコマンドを実行した時に、ホストPCのdockerデーモンでなく、minikubeの仮想環境のdockerデーモンをコールできるように、環境変数を設定する。イメージタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
-
-参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
-
-**＊実行例＊**
-
-```bash
-$ minikube docker-env
-
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://127.0.0.1:52838"
-export DOCKER_CERT_PATH="/Users/***/.minikube/certs"
-export MINIKUBE_ACTIVE_DOCKERD="minikube"
-
-# To point your shell to minikube's docker-daemon, run:
-# eval $(minikube -p minikube docker-env)
-```
-
-<br>
-
-### ip
-
-#### ・ipとは
-
-minikubeの稼働するノードのIPアドレスを表示する。
-
-#### ・オプションなし
-
-```bash
-$ minikube ip
-
-192.168.49.2
-```
-
-
-
-<br>
-
-### start
-
-#### ・startとは
-
-仮想環境をVMで構築し、VM内で単一のノードを作成する。
-
-#### ・オプションなし
-
-**＊実行例＊**
-
-```bash
-$ minikube start
-
-😄  minikube v1.24.0 on Darwin 11.3.1
-✨  Automatically selected the docker driver. Other choices: virtualbox, ssh
-👍  Starting control plane node minikube in cluster minikube
-🚜  Pulling base image ...
-💾  Downloading Kubernetes v1.22.3 preload ...
-    > preloaded-images-k8s-v13-v1...: 501.73 MiB / 501.73 MiB  100.00% 2.93 MiB
-    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 1.71 MiB p/
-🔥  Creating docker container (CPUs=2, Memory=7911MB) ...
-🐳  Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
-    ▪ Generating certificates and keys ...
-    ▪ Booting up control plane ...
-    ▪ Configuring RBAC rules ...
-🔎  Verifying Kubernetes components...
-    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
-🌟  Enabled addons: storage-provisioner, default-storageclass
-🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
-```
-
-ノードが構築されていることを確認できる。
-
-```bash
-$ kubectl get nodes
-
-NAME       STATUS   ROLES                  AGE   VERSION
-minikube   Ready    control-plane,master   14m   v1.22.3
-```
-
-#### ・--driver
-
-仮想環境の構築方法を指定し、```start```コマンドを実行する。
-
-**＊実行例＊**
-
-```bash
-$ minikube start --driver docker
-```

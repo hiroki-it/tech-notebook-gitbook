@@ -490,7 +490,7 @@ $ docker stop $(docker ps --all --quiet)
 
 #### ・create
 
-Volumeマウントを作成する。dockerコマンドではなく、docker-composeコマンドで作成することが推奨されている。
+ボリュームマウントを作成する。dockerコマンドではなく、docker-composeコマンドで作成することが推奨されている。
 
 **＊コマンド例＊**
 
@@ -547,7 +547,7 @@ $ docker volume inspect <ボリューム名>
 ```
 
 ```bash
-# DockerエリアをVolumeマウントして起動
+# Dockerエリアをボリュームマウントして起動
 # マウントポイントのボリューム名を使用
 $ docker run -d -it --name <コンテナ名> /bin/bash \
   --mount type=volume, src=<ホストOS側ボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
@@ -555,7 +555,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 **＊実装例＊**
 
-DockerfileでVolumeマウントを行う場合、マウント先のコンテナ側ディレクトリ名を設定する。Dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
+Dockerfileでボリュームマウントを行う場合、マウント先のコンテナ側ディレクトリ名を設定する。Dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
 
 ```dockerfile
 FROM ubuntu

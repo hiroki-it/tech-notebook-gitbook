@@ -423,9 +423,9 @@ services:
 
 <br>
 
-### ```volumes```（Bindマウント）
+### ```volumes```（バインドマウント）
 
-最上層と```service```内で、異なるボリューム名を記述した場合、Bindマウントを定義する。ホストOSにある```/Users```ディレクトリをコンテナ側にマウントする。
+最上層と```service```内で、異なるボリューム名を記述した場合、バインドマウントを定義する。ホストOSにある```/Users```ディレクトリをコンテナ側にマウントする。
 
 **＊実装例＊**
 
@@ -439,9 +439,9 @@ services:
 
 <br>
 
-### ```volumes```（Volumeマウント）
+### ```volumes```（ボリュームマウント）
 
-最上層と```service```内の両方に、同じボリューム名を記述した場合、Volumeマウントを定義する。DockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでVolumeマウントを行う。
+最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。DockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
 
 **＊実装例＊**
 
@@ -449,7 +449,7 @@ services:
 service:
   db:
     volumes:
-      # volumeマウント
+      # ボリュームマウント
       - mysql_volume:/var/www/lib/mysql
       
 volumes:
@@ -646,7 +646,7 @@ volumes:
 
 #### ・ビルド時にSQL実行
 
-mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある。このディレクトリに配置された```sql```ファイルや```bash```プロセスは、mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される。そのため、Bindマウントを用いてこのディレクトリにファイルを置くことで、初期データの投入や複数データベースの作成を実現できる。具体的な実行タイミングについては、以下を参考にせよ。
+mysqlコンテナには```docker-entrypoint-initdb.d```ディレクトリがある。このディレクトリに配置された```sql```ファイルや```bash```プロセスは、mysqlコンテナのビルド時に```docker-entrypoint.sh```ファイルによって実行される。そのため、バインドマウントを用いてこのディレクトリにファイルを置くことで、初期データの投入や複数データベースの作成を実現できる。具体的な実行タイミングについては、以下を参考にせよ。
 
 参考：https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
@@ -666,7 +666,7 @@ services:
       - "3307:3306"
     volumes:
       - mysql_volume:/var/www/lib/mysql
-      # docker-entrypoint-initdb.dディレクトリにBindマウントを行う。
+      # docker-entrypoint-initdb.dディレクトリにバインドマウントを行う。
       - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: foo

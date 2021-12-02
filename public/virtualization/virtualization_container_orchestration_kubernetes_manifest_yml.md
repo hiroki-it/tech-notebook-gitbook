@@ -201,7 +201,7 @@ spec:
 
 #### ・volumeMount
 
-volumeマウントを実行する。```spec.volume```で設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+ボリュームマウントを実行する。```spec.volume```で設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
 
 ```yaml
 spec:
@@ -298,7 +298,7 @@ HostPathボリュームを作成する。
   - name: foo-lumen
     hostPath:
       path: /Users/***/projects/foo
-      type: Directory
+      type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 
 <br>
