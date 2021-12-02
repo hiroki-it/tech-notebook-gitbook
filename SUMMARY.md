@@ -141,6 +141,7 @@
                 * [📖 ︎kubernetesコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
                 * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
+                * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_minikube_command.md)
             * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
     * ︎仮想サーバ（仮想マシン）
         * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
