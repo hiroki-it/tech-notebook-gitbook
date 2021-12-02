@@ -107,7 +107,7 @@ https://circleci.com/docs/2.0/insights-tests/
 
 <br>
 
-## 02-02. version
+## 02. version
 
 ### versionとは
 
@@ -121,7 +121,7 @@ version: 2.1
 
 <br>
 
-## 02-03. parameters
+## 03. parameters
 
 ### parameters
 
@@ -449,7 +449,7 @@ workflows:
           workdir: "/tmp"
 ```
 
-## 02-04. jobs
+## 04. jobs
 
 ### jobs
 
@@ -741,7 +741,7 @@ jobs:
 
 <br>
 
-## 02-04. commands
+## 05. commands
 
 ### commandsとは
 
@@ -780,7 +780,7 @@ jobs:
 
 <br>
 
-## 02-05. executors
+## 06. executors
 
 ### executors
 
@@ -817,7 +817,7 @@ jobs:
 
 <br>
 
-## 02-06. Workflow
+## 07. Workflow
 
 ### Workflowの粒度
 
@@ -998,7 +998,7 @@ workflows:
 
 <br>
 
-## 02-07. 環境変数
+## 08. 環境変数
 
 ### CircleCIにおける環境変数とは
 
@@ -1401,7 +1401,7 @@ jobs:
 <br>
 
 
-## 02-09. CircleCIライブラリ
+## 09. CircleCIライブラリ
 
 ### orbs
 
@@ -1430,6 +1430,10 @@ workflows:
 | jobs      | workflowsにて、Orbsから```job```として使用できる。           |
 | commands  | ```job```にて、```step```として使用できる。                  |
 | executors | ```exexutor```にて、事前定義されたexecutorsとして使用できる。 |
+
+#### ・Orbsのデメリット
+
+Orbsのパッケージの処理の最小単位は```step```である。そのため、```step```よりも小さい```run```はOrbsに組み込むことができず、```run```固有のオプションや```run```に設定できるlinuxコマンドをOrbsでは使用できないことになる。
 
 #### ・オプションへの引数の渡し方と注意点
 
@@ -1465,13 +1469,15 @@ jobs:
 
 <br>
 
-### aws-cli
+## 09-02. aws-cli
 
-#### ・commands: install
+### commands
+
+#### ・install
 
 aws-cliコマンドのインストールを行う。
 
-#### ・commands: setup
+#### ・setup
 
 aws-cliコマンドのインストールと、Credentials情報の設定を行う。AWSリソースを操作するために用いる。
 
@@ -1565,9 +1571,11 @@ aws configure list
 
 <br>
 
-### aws-ecr
+## 09-03. aws-ecr
 
-#### ・jobs：build-and-push-image
+### jobs
+
+#### ・build-and-push-image
 
 CircleCIコンテナでDockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を用いて、Docker Layer Cacheを有効化できる。
 
@@ -1603,11 +1611,22 @@ jobs:
 
 <br>
 
-### aws-ecs
+## 09-04. aws-ecs
 
-#### ・jobs：deploy-update-service（ローリングアップデート使用時）
+### jobs
 
-ECRイメージを用いて、新しいリビジョン番号のタスク定義を作成し、またこれを用いてコンテナをデプロイする。``` verify-revision-is-deployed```オプションを用いて、ECSサービスが更新された後、実行されているタスクがタスク定義に合致しているかを監視する。例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスク定義に合致しないので、検知できる。
+#### ・deploy-update-service（ローリングアップデート使用時）
+
+ECRイメージを用いて、新しいリビジョン番号のタスク定義を作成し、またこれを用いてコンテナをデプロイする。
+
+| 設定値                             | 説明                                                         |                                                              |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```container-image-name-updates``` | コンテナ定義のコンテナ名とイメージタグを上書きする。         | イメージはCircleCIのハッシュ値でタグ付けしているので必須。   |
+| ``` verify-revision-is-deployed``` | ローリングアップデートのタスクがタスク定義のタスク必要数に合致したかを継続的に監視する。 | 例えば、タスクが『Runnning』にならずに『Stopped』になってしまう場合や、既存のタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はタスクの必要数に合致しないので、検知できる。 |
+| ```max-poll-attempts```            | ポーリングの最大試行回数を設定する。```poll-interval```と掛け合わせて、そう実行時間を定義できる。 | 総実行時間を延長する時、間隔秒数はできるだけ短い方が無駄な実行時間が発生しないため、最大回数を増やす。 |
+| ```poll-interval```                | 試行の間隔秒数を設定する。```max-poll-attempts```と掛け合わせて、そう実行時間を定義できる。 |                                                              |
+
+オプションを用いて、```max-poll-attempts```（ポーリングの最大試行回数）と```poll-interval```（試行の間隔秒数）で、ポーリングの総実行時間を定義できる。
 
 参考：https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
@@ -1631,8 +1650,12 @@ jobs:
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とイメージタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # サービス更新後のタスク監視
+    # タスク定義に基づくタスク数の監視
     verify-revision-is-deployed: true
+    # 監視の試行回数
+    max-poll-attempts: 30
+    # 試行の間隔
+    poll-interval: 20
           
 workflows:
   # ステージング環境にデプロイ
@@ -1657,7 +1680,7 @@ workflows:
           
 ```
 
-#### ・jobs：deploy-update-service（B/Gデプロイメント使用時）
+#### ・deploy-update-service（B/Gデプロイメント使用時）
 
 ECSタスク定義を更新する。さらに、Blue/Greenデプロイメントがそのタスク定義を指定し、ECSサービスを更新する。ローリングアップデートと同様にして、``` verify-revision-is-deployed```オプションを使用できる。
 
@@ -1712,7 +1735,7 @@ workflows:
                 - main       
 ```
 
-#### ・jobs：run-task
+#### ・run-task
 
 現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。起動時に、```overrides```オプションを用いて、指定したタスク定義のコンテナ設定を上書きできる。正規表現で設定する必要があり、さらにJSONでは『```\```』を『```\\```』にエスケープしなければならない。コマンドが実行された後に、タスクは自動的にStopped状態になる。
 
@@ -1768,10 +1791,11 @@ workflows:
 
 <br>
 
+## 09-05. aws-code-deploy
 
-### aws-code-deploy
+### jobs
 
-#### ・jobs：deploy
+#### ・deploy
 
 S3にソースコードとappspecファイルをデプロイできる。また、CodeDeployを用いて、これをEC2インスタンスにデプロイできる。
 
@@ -1824,9 +1848,11 @@ workflows:
 
 <br>
 
-### slack
+## 09-06. slack
 
-#### ・commands：notify
+### commands
+
+#### ・notify
 
 ジョブの終了時に、成功または失敗に基づいて、ステータスを通知する。ジョブの最後のステップとして設定しなければならない。
 

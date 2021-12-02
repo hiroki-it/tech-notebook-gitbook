@@ -109,25 +109,29 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 #### ・```remote set-url origin <SSH URL>```
 
-プライベートリポジトリに接続する。```config```ファイルに記述されたユーザ名と接続名を設定する。一つのPCで複数のGitHubアカウントを用いている場合、設定が必須である。
+プライベートリポジトリに接続する。```config```ファイルに記述されたユーザ名と接続名を設定する。一つのPCで複数のGitHubアカウントを用いている場合、設定が必須である。プロジェクトをクローンした時、SSH URLは標準で『```git@github.com:<組織名またはgitユーザ名>/<プロジェクト名>.git```』となっている。使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『```github.com```』としておく。一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で設定し直す。
 
 ```bash
-$ git remote set-url origin <ユーザ名>@<接続名>:<組織名>/<リポジトリ名>.git
+# 使用頻度の高いアカウントで所有するリポジトリ
+$ git remote set-url origin git@github.com:<組織名またはgitユーザ名>/<リポジトリ名>.git
+
+# 使用頻度の低いアカウントで所有するリポジトリ
+$ git remote set-url origin git@<任意の接続名>:<組織名またはgitユーザ名>/<リポジトリ名>.git
 ```
 
-```
-# リポジトリ１
-Host <接続名1>
-    User <リポジトリ１のユーザ名>
+```bash
+# 使用頻度の高いアカウント
+Host github.com
+    User git
     Port 22
-    HostName <リポジトリ１のホスト名>
+    HostName github.com
     IdentityFile <秘密鍵へのパス>
 
-# リポジトリ２
-Host <接続名２>
-    User <リポジトリ２のユーザ名>
+# 使用頻度の高いアカウント
+Host <任意の接続名>
+    User git
     Port 22
-    HostName <リポジトリ２のホスト名>
+    HostName github.com
     IdentityFile <秘密へのパス>
 ```
 
@@ -140,6 +144,42 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
+```
+
+<br>
+
+### GitHubへの公開鍵の登録方法
+
+GitHubとSSH接続するために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
+
+参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
+
+（１）```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する
+
+```bash
+# 鍵を保管するディレクトリに移動
+$ cd ~/.ssh/github
+
+# 秘密鍵と公開鍵の名前はGitHubのユーザ名にしておくとわかりやすい
+$ ssh-keygen -t rsa
+```
+
+（２）このうち、公開鍵をクリップボードにコピーする。
+
+```bash
+# Mac
+$ pbcopy < ~/.ssh/github/<鍵名>.pub
+
+# Windows
+$ clip < ~/.ssh/github/<鍵名>.pub
+```
+
+（３）コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目（https://github.com/settings/ssh）にペーストする。```ssh```コマンドで接続を確認する。
+
+```bash
+$ ssh -T <接続名>
+
+Hi hiroki-it! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 <br>

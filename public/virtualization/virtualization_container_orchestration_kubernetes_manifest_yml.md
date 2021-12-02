@@ -357,9 +357,10 @@ spec:
 
 ポッドの公開方法の種類を設定する。
 
-参考：https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
+参考：
 
-https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
+- https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
+- https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
 | 値           | ポッドへのリクエスト転送方法                                 | IPアドレスの公開範囲   |
 | ------------ | ------------------------------------------------------------ | ---------------------- |
