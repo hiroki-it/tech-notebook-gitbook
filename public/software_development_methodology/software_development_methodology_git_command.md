@@ -150,11 +150,11 @@ and the repository exists.
 
 ### GitHubへの公開鍵の登録方法
 
-GitHubとSSH接続するために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
+GitHubとSSH接続を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。
 
 参考：https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0
 
-（１）```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する
+（１）```ssh-keygen```コマンドで、秘密鍵と効果鍵のセットを作成する。
 
 ```bash
 # 鍵を保管するディレクトリに移動
@@ -174,7 +174,7 @@ $ pbcopy < ~/.ssh/github/<鍵名>.pub
 $ clip < ~/.ssh/github/<鍵名>.pub
 ```
 
-（３）コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目（https://github.com/settings/ssh）にペーストする。```ssh```コマンドで接続を確認する。
+（３）コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目（ https://github.com/settings/ssh ）にペーストする。```ssh```コマンドで接続を確認する。
 
 ```bash
 $ ssh -T <接続名>

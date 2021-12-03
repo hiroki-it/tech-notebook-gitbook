@@ -146,13 +146,13 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 ポッドのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できない。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
 
-参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
+参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ・HostPath
 
 ノードのストレージを使用したボリュームのこと。ホストOSとポッド内コンテナ間のボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。非推奨であり、ホストOSとノード間でボリュームマウントを実行する```mount```コマンドが推奨である。
 
-参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6
+参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ・外部ボリューム
 

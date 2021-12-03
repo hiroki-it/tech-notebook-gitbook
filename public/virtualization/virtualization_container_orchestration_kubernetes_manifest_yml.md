@@ -261,9 +261,12 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する。ポッドが削除されると、このボリュームも同時に削除される。
+EmptyDirボリュームを作成する。ポッド内のストレージをボリュームとして使用しているため、ポッドが削除されると、このボリュームも同時に削除される。
 
-参考：https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 ```yaml
 spec:
@@ -274,24 +277,14 @@ spec:
       emptyDir: {}
 ```
 
-#### ・HostDir
+#### ・hostPath
 
-HostDirボリュームを作成する。
+HostPathボリュームを作成する。ノード内のストレージをボリュームとして使用しているため、ノードが削除されると、このボリュームも同時に削除される。
 
-```yaml
-spec:
-  volumes
-    - name: foo-lumen
-      hostDir: {}
-    - name: foo-nginx
-      hostDir: {}
-```
+参考：
 
-#### ・HostPath
-
-HostPathボリュームを作成する。
-
-参考：https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+- https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
+- https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 ```yaml
   volumes:

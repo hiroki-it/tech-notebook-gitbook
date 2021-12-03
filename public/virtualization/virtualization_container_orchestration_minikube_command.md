@@ -41,7 +41,7 @@ $ minikube dashboard
 
 #### ・docker-envとは
 
-ホストPCでdockerコマンドを実行した時に、ホストPCのdockerデーモンでなく、ゲスト仮想環境のdockerデーモンをコールできるように、環境変数を設定する。イメージタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
+ホストOSでdockerコマンドを実行した時に、ホストOSのdockerデーモンでなく、ゲスト仮想環境内のノードのdockerデーモンをコールできるように環境変数を設定する。イメージタグが```latest```であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 参考：https://minikube.sigs.k8s.io/docs/commands/docker-env/
 
@@ -67,7 +67,7 @@ $ eval $(minikube -p minikube docker-env)
 
 #### ・ipとは
 
-minikubeの稼働するノードのIPアドレスを表示する。
+ゲスト仮想環境内のノードのIPアドレスを表示する。
 
 #### ・オプションなし
 
@@ -83,7 +83,7 @@ $ minikube ip
 
 #### ・mountとは
 
-ホストOSのファイルまたはディレクトリを、ゲスト仮想環境内にマウントする。
+ホストOSのファイルまたはディレクトリを、ゲスト仮想環境内のノードにマウントする。
 
 #### ・オプション無し
 
@@ -111,9 +111,12 @@ $ minikube ip
 
 #### ・sshとは
 
-ゲスト仮想環境にSSH接続でアクセスする。
+ゲスト仮想環境内のノードにSSH接続を行う。
 
-参考：https://minikube.sigs.k8s.io/docs/commands/ssh/
+参考：
+
+- https://minikube.sigs.k8s.io/docs/commands/ssh/
+- https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
 #### ・オプション無し
 
@@ -131,7 +134,7 @@ docker@minikube:~$
 
 #### ・startとは
 
-ゲスト仮想環境を構築し、仮想環境内で単一のノードを作成する。
+ゲスト仮想環境を構築し、仮想環境内にノードを作成する。
 
 #### ・オプションなし
 
@@ -169,7 +172,7 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 
 #### ・--driver
 
-ゲスト仮想環境の構築方法を指定し、```start```コマンドを実行する。
+ゲスト仮想環境のドライバーを指定し、```start```コマンドを実行する。
 
 **＊実行例＊**
 
@@ -179,21 +182,13 @@ $ minikube start --driver docker
 
 <br>
 
-## 02. ホストとゲスト仮想環境間のマウント
+## 02. マウント
 
-### マウントドライバー
+### ノード-コンテナ間マウント
 
-#### ・マウントドライバーとは
+#### ・標準のノード-コンテナ間マウント
 
-ゲスト仮想環境の仮想化方法のこと。
-
-<br>
-
-### ホストゲスト間ボリュームマウント
-
-#### ・自動ボリュームマウント
-
-ゲスト仮想環境の以下のディレクトリに保存されたファイルは、ホストOS側にボリュームマウントされる。そのため仮想環境が破壊されても、データは削除されない。
+ゲスト仮想環境内のノードにて、以下のディレクトリに保存されたファイルは、ポッド内のコンテナにボリュームマウントされ、HostDirボリュームが作成される。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -206,26 +201,26 @@ $ minikube start --driver docker
 - ```/tmp/hostpath_pv```
 - ```/tmp/hostpath-provisioner```
 
-<br>
+#### ・ドライバー別のノード-コンテナ間マウント
 
-### ゲスト-コンテナ間バインドマウント
-
-#### ・マウントドライバー別の自動バインドマウント
-
-ゲスト仮想環境の以下のディレクトリに保存されたファイルは、仮想環境上の単一ノード内のコンテナにバインドマウントされる。
+ゲスト仮想環境内のノードにて、以下のディレクトリに保存されたファイルは、ポッド内のコンテナにバインドマウントされ、HostDirボリュームが作成される。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
-| マウントドライバー名 | OS      | ホストOSのディレクトリ       | ゲスト仮想環境内のディレクトリ |
-| -------------------- | ------- | ---------------------------- | ------------------------------ |
-| VirtualBox           | Linux   | ```/home```                  | ```/hosthome```                |
-| VirtualBox           | macOS   | ```/Users```                 | ```/Users```                   |
-| VirtualBox           | Windows | ```C://Users```              | ```/c/Users```                 |
-| VMware Fusion        | macOS   | ```/Users```                 | ```/mnt/hgfs/Users```          |
-| KVM                  | Linux   | Unsupported                  |                                |
-| HyperKit             | Linux   | Unsupported (see NFS mounts) |                                |
+| ドライバー名  | OS      | ホストOSのディレクトリ    | ゲスト仮想環境内のディレクトリ |
+| ------------- | ------- | ------------------------- | ------------------------------ |
+| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                |
+| VirtualBox    | macOS   | ```/Users```              | ```/Users```                   |
+| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                 |
+| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```          |
+| KVM           | Linux   | なし                      |                                |
+| HyperKit      | Linux   | なし（NFSマウントを参照） |                                |
 
-#### ・全てのマウントドライバーに共通のマウント
+
+
+<br>
+
+### ホスト-ゲスト間マウント
 
 ホストOSの```$MINIKUBE_HOME/files```ディレクトリに保存されたファイルは、ゲスト仮想環境のルート直下に配置される。
 
@@ -239,6 +234,8 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 #  /etc/foo.conf に配置される
 $ minikube start
 ```
+
+
 
 
 
