@@ -126,8 +126,6 @@ $ minikube ip
 docker@minikube:~$
 ```
 
-
-
 <br>
 
 ### start
@@ -201,9 +199,28 @@ $ minikube start --driver docker
 - ```/tmp/hostpath_pv```
 - ```/tmp/hostpath-provisioner```
 
+<br>
+
+### ホスト-ゲスト間マウント
+
+・標準のホスト-ゲスト間マウント
+
+ホストOSの```$MINIKUBE_HOME/files```ディレクトリに保存されたファイルは、ゲスト仮想環境のルート直下にマウントされる。
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+
+```bash
+$ mkdir -p ~/.minikube/files/etc
+
+$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
+
+#  /etc/foo.conf に配置される
+$ minikube start
+```
+
 #### ・ドライバー別のノード-コンテナ間マウント
 
-ゲスト仮想環境内のノードにて、以下のディレクトリに保存されたファイルは、ポッド内のコンテナにバインドマウントされ、HostDirボリュームが作成される。
+ホストOS以下のディレクトリに保存されたファイルは、ゲスト仮想環境の決められたディレクトリにマウントされる。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
@@ -215,25 +232,6 @@ $ minikube start --driver docker
 | VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```          |
 | KVM           | Linux   | なし                      |                                |
 | HyperKit      | Linux   | なし（NFSマウントを参照） |                                |
-
-
-
-<br>
-
-### ホスト-ゲスト間マウント
-
-ホストOSの```$MINIKUBE_HOME/files```ディレクトリに保存されたファイルは、ゲスト仮想環境のルート直下に配置される。
-
-https://minikube.sigs.k8s.io/docs/handbook/filesync/
-
-```bash
-$ mkdir -p ~/.minikube/files/etc
-
-$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
-
-#  /etc/foo.conf に配置される
-$ minikube start
-```
 
 
 
