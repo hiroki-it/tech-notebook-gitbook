@@ -71,7 +71,7 @@ Available test(s):
 
 #### ・```phpunit.xml```ファイルとは
 
-PHPUnitの設定を行う。標準の設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。また、```Test```で終わるphpファイルを作成しておく必要がある。
+PHPUnitの設定を行う。デフォルトの設定では、あらかじめルートディレクトリに```tests```ディレクトリを配置し、これを```Units```ディレクトリまたは```Feature```ディレクトリに分割しておく。また、```Test```で終わるphpファイルを作成しておく必要がある。
 
 参考：http://phpunit.readthedocs.io/ja/latest/configuration.html
 

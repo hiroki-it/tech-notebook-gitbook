@@ -152,7 +152,7 @@
             * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
         * Kubernetes
             * [📖 ︎kubernetesコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_command.html)
-            * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_minikube_command.html)
+            * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html)
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
             * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
@@ -188,7 +188,7 @@
 ## ソフトウェア開発手法論／SRE
 
 * [📖 ︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology.html)
-* [📖 ︎Site Reliability Engineering](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
+* [📖 ︎SRE：Site Reliability Engineering](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
 * [📖 ︎プロジェクト管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_project_management.html)
 * Git
     * [📖 ︎GitHub](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_git_github.html)

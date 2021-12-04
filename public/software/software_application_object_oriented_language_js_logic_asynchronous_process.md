@@ -291,7 +291,7 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-また、axiosオブジェクトのようにPromiseオブジェクトを標準で返却するメソッドを用いてもよい。
+また、axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを用いてもよい。
 
 **＊実装例＊**
 

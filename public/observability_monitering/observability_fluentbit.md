@@ -442,7 +442,7 @@ Fluent Bit v1.8.6
 
 [INPUT]
     name          cpu
-    # メモリ上でバッファリングが実行される（標準値）。
+    # メモリ上でバッファリングが実行される（デフォルト値）。
     storage.type  memory
 ```
 
@@ -607,7 +607,7 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 #### ・Datadogへの出力
 
-全てのベースイメージに標準でdatadogプラグインがインストールされているため、datadogプラグインのインストールは不要である。
+全てのベースイメージにデフォルトでdatadogプラグインがインストールされているため、datadogプラグインのインストールは不要である。
 
 参考：https://github.com/DataDog/fluent-plugin-datadog
 
@@ -798,13 +798,13 @@ FireLensコンテナのベースイメージとなるFluentBitイメージがAWS
 
 #### ・パブリックECRリポジトリを用いる場合
 
-ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているconfファイルの設定をそのまま用いる場合は、こちらを採用する。
+ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているconfファイルの設定をそのまま用いる場合は、こちらを採用する。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
 
 #### ・プライベートECRリポジトリを用いる場合
 
-あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからFluentBitイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているconfファイルの設定を上書きしたい場合は、こちらを採用する。
 
 ```dockerfile
 FROM amazon/aws-for-fluent-bit:latest
@@ -822,7 +822,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 #### ・標準設定ファイルの種類
 
-aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリには標準で設定ファイルが用意されている。追加設定を実行するファイルはここに配置する。
+aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリにはデフォルトで設定ファイルが用意されている。追加設定を実行するファイルはここに配置する。
 
 ```bash
 [/fluent-bit/etc]$ ls -la
@@ -913,7 +913,7 @@ FireLensコンテナの```/fluent-bit/etc/fluent-bit.conf```ファイルを、�
     Match nginx-firelens*    
 ```
 
-ちなみに、標準の設定ファイルには、INPUTセクションがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTセクションを定義しなくても問題ない。
+ちなみに、デフォルトの設定ファイルには、INPUTセクションがすでに定義されているため、```fluent-bit_custom.conf```ファイルではINPUTセクションを定義しなくても問題ない。
 
 参考：https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
 
@@ -1074,6 +1074,6 @@ FireLensコンテナをサイドカーとして構築するために、コンテ
 | ```type```                                    | メインコンテナからFireLensコンテナにログを送信できるように、ログドライバーのタイプとして『```fluentbit```』を設定する。 |
 | ```config-file-type```                        | FluentBitの設定ファイルを読み込むために、```file```とする。  |
 | ```config-file-value```                       | ```options```キーにて、ログ転送を設定できるが、それらは```fluent-bit.conf```ファイルにも設定可能であるため、転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）に転送する。 |
-| ```enable-ecs-log-metadata```（標準で有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
+| ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```、```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように、コンテナの環境変数に値を定義する。 |
 

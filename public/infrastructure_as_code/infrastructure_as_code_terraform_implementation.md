@@ -272,7 +272,7 @@ terraform {
 
 #### ・backend
 
-stateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```init```コマンド実行時に指定しても良い。標準値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、initコマンドのオプションを用いて値を渡すようにする。
+stateファイルを管理する場所を設定する。S3などの実インフラで管理する場合、アカウント情報を設定する必要がある。代わりに、```init```コマンド実行時に指定しても良い。デフォルト値は```local```である。変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、initコマンドのオプションを用いて値を渡すようにする。
 
 参考：https://www.terraform.io/docs/language/settings/backends/s3.html#credentials-and-shared-configuration
 
@@ -379,7 +379,7 @@ terraform {
 }
 
 provider "aws" {
-  # 標準値とするリージョン
+  # デフォルト値とするリージョン
   region = "ap-northeast-1"
 }
 
@@ -633,9 +633,9 @@ $ terraform plan -var-file=xxxxx.tfvars
 $ terraform plan
 ```
 
-#### ・```TF_VAR_XXXXX``` 
+#### ・```TF_VAR_*****``` 
 
-環境変数としてエクスポートしておくと自動的に読み込まれる。```XXXXX```の部分が変数名としてTerraformに渡される。
+環境変数としてエクスポートしておくと自動的に読み込まれる。```*****```の部分が変数名としてTerraformに渡される。
 
 ```bash
 $ printenv

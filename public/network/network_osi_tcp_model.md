@@ -200,7 +200,7 @@ GET http://localhost:8080/
 
 #### ・Well known ポート番号（0 ～ 1023）
 
-IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。Webサーバがリクエストを受信する時、またレスポンスを送信する時に用いられる。ホストOSとゲスト（仮想サーバ）との通信では、80番（HTTP）の受信に関する様々な設定が必要になる。
+IANA：Internet Assigned Numbers Authority（インターネット割当番号公社）によって管理されているポート番号。Webサーバがリクエストを受信する時、またレスポンスを送信する時に用いられる。ホストとゲスト（仮想サーバ）との通信では、80番（HTTP）の受信に関する様々な設定が必要になる。
 
 ![ポート番号とプロトコルの対応関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ポート番号とプロトコルの対応関係.png)
 

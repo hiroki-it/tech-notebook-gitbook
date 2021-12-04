@@ -42,7 +42,7 @@ workflows:
 
 #### ・バリデーション
 
-ホストOS側で、以下のコマンドを実行する。
+ホストで、以下のコマンドを実行する。
 
 ```bash
 $ circleci config validate
@@ -278,7 +278,7 @@ workflows:
 
 **＊実装例＊**
 
-``` yaml
+```yaml
 version: 2.1
 
 jobs:
@@ -287,9 +287,9 @@ jobs:
       # 引数を定義
       environment:
         # デフォルト値
-        default: "test"
+        default: "dev"
         type: enum
-        enum: ["test", "stg", "prd"]
+        enum: ["dev", "stg", "prd"]
     steps:
       - run:
         # デフォルト値testを与えるときは何も設定しない
@@ -798,9 +798,9 @@ jobs:
 version: 2.1
 
 executors:
-  # ホストOS環境名
+  # ホスト環境名
   my-executor:
-    # ホストOS環境
+    # ホスト環境
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
     working_directory: ~/foo_project
@@ -955,7 +955,7 @@ workflows:
 
 **＊実装例＊**
 
-``` yaml
+```yaml
 workflows:
   version: 2.1
   build:

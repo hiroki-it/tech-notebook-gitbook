@@ -183,12 +183,12 @@ undefinedを返却する場合、```return```のみを記述する。
 
 ```javascript
 function hoge(){
-    return; // 空の『return文』です。空なので『undefined』を返します。
+    return; // 空の『return文』。空なので『undefined』を返す。
 }
 
-const x = hoge(); // 変数『x』には関数『hoge』から返ってきた『undefined』が代入されます。
+const x = hoge(); // 変数『x』には関数『hoge』から返ってきた『undefined』が代入される。
  
-console.log(x); // 『undefined』が出力されます。
+console.log(x); // 『undefined』が出力される。
 ```
 
 <br>

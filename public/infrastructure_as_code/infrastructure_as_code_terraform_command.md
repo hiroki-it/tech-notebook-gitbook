@@ -288,7 +288,7 @@ $ terraform plan \
 
 #### ・-refresh
 
-このオプションをつければ、```refresh```コマンドを同時に実行してくれる。ただ、標準で```true```なので、不要である。
+このオプションをつければ、```refresh```コマンドを同時に実行してくれる。ただ、デフォルトで```true```なので、不要である。
 
 ```bash
 $ terraform plan \
@@ -300,7 +300,7 @@ https://github.com/hashicorp/terraform/issues/17311
 
 #### ・-parallelism
 
-並列処理数を設定できる。標準値は```10```である。
+並列処理数を設定できる。デフォルト値は```10```である。
 
 ```bash
 $ terraform plan \
@@ -363,7 +363,7 @@ $ terraform apply \
 
 #### ・-parallelism
 
-並列処理数を設定できる。標準値は```10```である。
+並列処理数を設定できる。デフォルト値は```10```である。
 
 ```bash
 $ terraform apply \

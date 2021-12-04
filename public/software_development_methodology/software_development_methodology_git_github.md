@@ -164,7 +164,7 @@ project/
 Unmerged paths:
   (use "git restore --staged <file>..." to unstage)
   (use "git add <file>..." to mark resolution)
-        both modified:   XXX/YYY.twig
+        both modified:   foo/bar.twig
 ```
 
 （２）コンフリクトしていたコード行を取捨選択する。
@@ -177,7 +177,7 @@ Unmerged paths:
 （３）一度```add```を行い、コンフリクトの修正をGitに認識させる。
 
 ```bash
-$ git add XXX/YYY.twig
+$ git add foo/bar.twig
 ```
 
 （４）```git status```を行い、以下が表示される。コンフリクトが解決されたが、マージされていないと出力される。差分のファイルがたくさん表示される場合があるが、問題ない。
@@ -186,8 +186,8 @@ $ git add XXX/YYY.twig
 All conflicts fixed but you are still merging.
 
 Changes to be committed:
-        modified:   XXX
-        modified:   XXX
+        modified:   foo.twig
+        modified:   foo.php
 ```
 
 （５）```git commit```（```-m```はつけてはいけない）を行い、vimエディタが表示される。
@@ -201,7 +201,7 @@ Changes to be committed:
 （７）```git status```を行う。場合によっては、差分のコミット数が表示されるが問題ない。
 
 ```bash
-Your branch is ahead of "origin/feature/XXXX" by 10 commits.
+Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 ```
 

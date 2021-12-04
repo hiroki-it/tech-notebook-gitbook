@@ -20,7 +20,7 @@
 
 #### ・ホスト型仮想化とは
 
-ホストOS上で、各サーバを仮想的に構築する。
+ホスト上で、各サーバを仮想的に構築する。
 
 #### ・Provider例
 
@@ -34,7 +34,7 @@ VMware Workstation、Oracle VM VirtualBox、など
 
 #### ・ハイパーバイザー型仮想化とは
 
-BIOSから起動したハイパーバイザー上で、各サーバを仮想的に構築する（※ホストOSは用いない）。
+BIOSから起動したハイパーバイザー上で、各サーバを仮想的に構築する（※ホストは用いない）。
 
 #### ・Provider例
 
@@ -48,7 +48,7 @@ VMware vSphere Hypervisor、Xen、KVM、など
 
 #### ・コンテナ型仮想化とは
 
-ホストOS上で、サーバではなく、サーバとしての機能を持つコンテナを仮想的に構築する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを用いて、単一のOS上に独立したコンテナを構築する。
+ホスト上で、サーバではなく、サーバとしての機能を持つコンテナを仮想的に構築する。カーネルのリソースを分割できるNamespace（PID namespace、Network namespace、UID namespace）とControl Groupsを用いて、単一のOS上に独立したコンテナを構築する。
 
 → DockerToolboxがちょい違う
 
@@ -74,7 +74,7 @@ Docker、LXC、OpenVZ、など
 
 #### ・Overheadの小ささ
 
-ゲストOS上のアプリを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。この分だけ、時間（Overhead）を要する。一方で、コンテナ型では、各コンテナがホストOSとカーネルを共有するため、Overheadが小さい。
+ゲストOS上のアプリを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。この分だけ、時間（Overhead）を要する。一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、Overheadが小さい。
 
 ![仮想化](https://user-images.githubusercontent.com/42175286/60386143-57e2d480-9acc-11e9-88b7-99a566346aba.png)
 

@@ -50,7 +50,7 @@
 
 #### ・ログ収集の有効化
 
-ログの収集は標準で無効化されている。```/etc/datadog-agent/datadog.yaml```ファイルにて、これを有効化する。
+ログの収集はデフォルトで無効化されている。```/etc/datadog-agent/datadog.yaml```ファイルにて、これを有効化する。
 
 ```yaml
 logs_enabled: true
@@ -81,7 +81,7 @@ DatadogコンテナのベースイメージとなるDatadogイメージがDatado
 
 #### ・パブリックECRリポジトリを用いる場合
 
-ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているyamlファイルの設定をそのまま用いる場合は、こちらを採用する。
+ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているyamlファイルの設定をそのまま用いる場合は、こちらを採用する。
 
 参考：
 
@@ -90,7 +90,7 @@ ECSのコンテナ定義にて、パブリックECRリポジトリのURLを指�
 
 #### ・プライベートECRリポジトリを用いる場合
 
-あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。標準で内蔵されているyamlファイルの設定を上書きしたい場合は、こちらを採用する。
+あらかじめ、DockerHubからdatadogイメージをプルするためのDockerfileを作成し、プライベートECRリポジトリにイメージをプッシュしておく。ECSのコンテナ定義にて、プライベートECRリポジトリのURLを指定し、ECRイメージのプルを実行する。デフォルトで内蔵されているyamlファイルの設定を上書きしたい場合は、こちらを採用する。
 
 参考：https://hub.docker.com/r/datadog/agent
 
@@ -125,7 +125,7 @@ FROM data/agent:latest
 
 #### ・標準属性
 
-標準で用意された属性。
+デフォルトで用意された属性。
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
 
@@ -819,7 +819,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 参考：https://docs.datadoghq.com/logs/guide/send-aws-services-logs-with-the-datadog-lambda-function/?tab=awsconsole#automatically-set-up-triggers
 
-（４）送信元のAWSリソースの命名によって、ログの```service```属性の値が変わる。例えば、CloudWatchログのロググループ名が『```api-gateway-***```』から始まる場合、属性値は```apigateway```になる。
+（４）送信元のAWSリソースの命名によって、ログの```service```属性の値が変わる。例えば、CloudWatchログのロググループ名が『```api-gateway-*****```』から始まる場合、属性値は```apigateway```になる。
 
 <br>
 

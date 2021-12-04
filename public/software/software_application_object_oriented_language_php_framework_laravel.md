@@ -2160,7 +2160,7 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは４つのステップからなる。Laravelでは標準でHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+エラーハンドリングは４つのステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
 
@@ -2170,7 +2170,7 @@ class ExecutorConstant
 
 #### ・例外
 
-ドキュメントとしてまとめられていないが、標準で様々な例外が備わっている。
+ドキュメントとしてまとめられていないが、デフォルトで様々な例外が備わっている。
 
 参考：https://laravel.com/api/8.x/search.html?search=exception
 
@@ -3074,7 +3074,7 @@ $auth = auth();
 
 **＊実装例＊**
 
-標準で搭載されている```app.php```ファイルの```timezone```キーの値を出力する。
+デフォルトで搭載されている```app.php```ファイルの```timezone```キーの値を出力する。
 
 ```php
 <?php
@@ -4029,7 +4029,7 @@ return [
 ];
 ```
 
-なお、言語設定を行わない場合、標準では```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため、```app.php```ファイルで言語を変更することと、日本語翻訳```validation.php```ファイルが必要である。
+なお、言語設定を行わない場合、デフォルトでは```/resources/lang/en/validation.php```ファイルをバリデーションメッセージとして参照するため、```app.php```ファイルで言語を変更することと、日本語翻訳```validation.php```ファイルが必要である。
 
 ```php
 <?php
@@ -4923,7 +4923,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 #### ・Notification
 
-通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelが標準で用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を用いて、Laravelの標準のチャンネルに渡す通知内容を定義できる。
+通知内容を定義する。```via```メソッドで受信チャンネルを定義する。この時、Laravelがデフォルトで用意しているチャンネル（Mail、SMS、Slackチャンネル、Databaseチャンネル）以外に送信したい場合、Channelクラスを定義する必要がある。複数の値を設定した場合は、それぞれに通信が送信される。```toMail```メソッド、```toSms```メソッド、```toSlack```メソッド、```toArray```メソッド、を用いて、Laravelの標準のチャンネルに渡す通知内容を定義できる。
 
 **＊実装例＊**
 
@@ -5135,7 +5135,7 @@ class TfaTokenNotification extends Notification
 
 #### ・Channel
 
-Laravelが標準で用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで用いられる。
+Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、独自の受信チャンネルを定義する。これは、Notificationクラスの```via```メソッドで用いられる。
 
 **＊実装例＊**
 
@@ -6920,7 +6920,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 
 #### ・カスタムガード
 
-Laravelが標準で持たないドライバーとプロバイダーを持つガードを定義する。
+Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。
 
 参考：https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
@@ -7313,7 +7313,7 @@ class AuthServiceProvider extends ServiceProvider
 
 #### ・AuthorizeMiddlewareによる認可
 
-ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名は標準で```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合するようにする。インスタンスを渡す場合は、暗黙のモデル結合を用いる必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
+ルーティング時にDBレコードレベルの認可スコープを定義する。AuthorizeMiddlewareのエイリアス名はデフォルトで```can```であり、Kernelクラスに定義されている。第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合するようにする。インスタンスを渡す場合は、暗黙のモデル結合を用いる必要がある。認可に失敗した場合、```403```ステータスのレスポンスを返信する。
 
 参考：https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 

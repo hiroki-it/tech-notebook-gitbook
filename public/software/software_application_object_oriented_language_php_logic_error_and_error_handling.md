@@ -61,7 +61,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・定義
 
-エラーの種類に合わせて、```Exception```クラスを継承した独自例外クラスを実装し、使い分けるとよい。```__construct```メソッドに、メッセージやエラーコード（例外コード）などを渡せる。エラーコードの標準値はゼロである。
+エラーの種類に合わせて、```Exception```クラスを継承した独自例外クラスを実装し、使い分けるとよい。```__construct```メソッドに、メッセージやエラーコード（例外コード）などを渡せる。エラーコードのデフォルト値はゼロである。
 
 参考：https://www.php.net/manual/ja/exception.construct.php
 

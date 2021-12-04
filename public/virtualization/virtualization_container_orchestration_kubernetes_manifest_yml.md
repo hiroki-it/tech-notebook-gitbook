@@ -247,7 +247,7 @@ spec:
 
 #### ・persistentVolumeClaim.claimName
 
-使用するPersistentVolumeClaimオブジェクトの名前を設定する。ノード内のストレージをボリュームとして使用しているため、『ノード』が削除されると、このボリュームも同時に削除される。
+使用するPersistentVolumeClaimオブジェクトの名前を設定する。ノードのボリュームを使用するため、『ノード』が削除されると、このボリュームも同時に削除される。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -261,7 +261,7 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する。ポッド内のストレージをボリュームとして使用しているため、『ポッド』が削除されると、このボリュームも同時に削除される。
+EmptyDirボリュームを作成する。ポッドのボリュームを使用するため、『ポッド』が削除されると、このボリュームも同時に削除される。
 
 参考：
 
@@ -279,7 +279,7 @@ spec:
 
 #### ・hostPath
 
-HostPathボリュームを作成する。ノード内のストレージをボリュームとして使用しているため、『ノード』が削除されると、このボリュームも同時に削除される。
+HostPathボリュームを作成する。ノードのボリュームを使用するため、『ノード』が削除されると、このボリュームも同時に削除される。
 
 参考：
 
@@ -290,7 +290,7 @@ HostPathボリュームを作成する。ノード内のストレージをボリ
   volumes:
   - name: foo-lumen
     hostPath:
-      path: /Users/***/projects/foo
+      path: /data
       type: DirectoryOrCreate # コンテナ内にディレクトリがなければ作成する
 ```
 

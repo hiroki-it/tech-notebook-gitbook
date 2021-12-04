@@ -50,7 +50,7 @@ paths:
         httpMethod: "GET" # 転送するHTTPメソッド
         uri: "http://<NLBのDNS名>/api/v1/users/" # 転送先のバックエンドURL
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'" # 転送するカスタムヘッダーとAPIキー
+          integration.request.header.X-API-Key: "'*****'" # 転送するカスタムヘッダーとAPIキー
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメータ
           # パスパラメータ間のマッピングであれば、integration.request.path.userId: method.request.path.userId
           # 他パラメータからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId
@@ -75,7 +75,7 @@ paths:
         httpMethod: POST
         uri: "http://<NLBのDNS名>/api/v1/users/"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
         requestTemplates:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates # 統合リクエストのマッピングテンプレートのパススルー条件を選択
@@ -311,7 +311,7 @@ paths:
         httpMethod: GET
         uri: "http://<NLBのDNS名>/api/v1/users/"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメータ
         connectionType: VPC_LINK
         connectionId: <VPCリンクID>
@@ -377,7 +377,7 @@ paths:
         httpMethod: POST
         uri: "http://<NLBのDNS名>/api/v1/users/"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
         connectionType: VPC_LINK
         connectionId: <VPCリンクID>
         type: http_proxy
@@ -460,7 +460,7 @@ paths:
         httpMethod: GET
         uri: "http://<NLBのDNS名>/api/v1/users/{userId}"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
         connectionId: <VPCリンクID>
@@ -540,7 +540,7 @@ paths:
         httpMethod: PUT
         uri: "http://<NLBのDNS名>/api/v1/users/{userId}"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
         connectionId: <VPCリンクID>
@@ -721,7 +721,7 @@ paths:
         httpMethod: GET
         uri: "http://<NLBのDNS名>/api/v1/users/"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメータ
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
@@ -793,7 +793,7 @@ paths:
         httpMethod: POST
         uri: "http://<NLBのDNS名>/api/v1/users/"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
         requestTemplates:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates
@@ -885,7 +885,7 @@ paths:
         httpMethod: GET
         uri: "http://<NLBのDNS名>/api/v1/users/{userId}"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
@@ -973,7 +973,7 @@ paths:
         httpMethod: PUT
         uri: "http://<NLBのDNS名>/api/v1/users/{userId}"
         requestParameters:
-          integration.request.header.X-API-Key: "'XXXXX'"
+          integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
@@ -1070,9 +1070,9 @@ components:
 API Gatewayのエンドポイントに対して、以下のパラメータでリクエストを送信すると、レスポンスを確認できる。
 
 ```http
-GET https://xxxxx.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
+GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
 
-X-API-Key：XXXXX
+X-API-Key：*****
 ```
 
 **実装例**

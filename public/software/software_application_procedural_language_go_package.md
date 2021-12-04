@@ -139,12 +139,12 @@ db.Where("age = 20").Find(&user)
 
 #### ・```TableName```メソッド
 
-標準ではGormモデルの名前をスネークケースに変更し、また複数形とした名前のテーブルが生成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
+デフォルトではGormモデルの名前をスネークケースに変更し、また複数形とした名前のテーブルが生成される。```TableName```メソッドにより、独自のテーブル名をつけられる。
 
 参考：https://gorm.io/ja_JP/docs/conventions.html#TableName
 
 ```go
-// テーブル名は標準では『users』になる。
+// テーブル名はデフォルトでは『users』になる。
 type User struct {
 	ID      int
 	Deleted gorm.DeletedAt

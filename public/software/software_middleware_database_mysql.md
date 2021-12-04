@@ -527,7 +527,7 @@ FROM ---> JOIN ---> WHERE ---> GROUP BY ---> HAVING ---> SELECT ---> ORDER BY
 
 #### ・なし
 
-指定したカラムを取得する。MySQLでは、取得結果に標準の並び順が存在しないため、プライマリキーの昇順で取得したい場合は、```ORDER BY```句を用いて、明示的に並び替えるようにする。
+指定したカラムを取得する。MySQLでは、取得結果の並び順が毎回異なるため、プライマリキーの昇順で取得したい場合は、```ORDER BY```句を用いて、明示的に並び替えるようにする。
 
 参考：https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL
 

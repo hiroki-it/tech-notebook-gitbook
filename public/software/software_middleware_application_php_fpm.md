@@ -42,7 +42,7 @@ PHPのために実装されたFastCGIのこと。WebサーバとPHPファイル�
 
 #### ・```/etc/php-fpm.d/www.conf```ファイルとは
 
-PHP-FPMの設定を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名の標準値である。
+PHP-FPMの設定を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
@@ -103,7 +103,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 #### ・Dockerで用いる場合
 
-PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホスト側では```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
+PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
 

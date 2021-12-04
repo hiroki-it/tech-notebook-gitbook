@@ -381,14 +381,14 @@ done
 #!/bin/bash
 
 case "$ENV" in
-    "test")
-        VAR="XXXXX"
+    "dev")
+        VAR="foo"
     ;;
     "stg")
-        VAR="YYYYY"
+        VAR="bar"
     ;;
     "prd")
-        VAR="ZZZZZ"
+        VAR="baz"
     ;;
     *)
         echo "The parameter ${ENV} is invalid."
@@ -709,7 +709,7 @@ $ tar -xvf foo.tar.gz
 
 #### ・-g
 
-gzip拡張子の圧縮ファイルを解凍する。ただし、標準で有効になっているため、オプションは付けないくても問題ない。
+gzip拡張子の圧縮ファイルを解凍する。ただし、デフォルトで有効になっているため、オプションは付けないくても問題ない。
 
 ```bash
 $ tar -zxf foo.tar.gz
@@ -788,10 +788,10 @@ $ nslookup -type=NS example.co.jp
 
 # ～ 中略 ～
 
-example.co.jp        nameserver = ns-***.awsdns-***.net
-example.co.jp        nameserver = ns-***.awsdns-***.co.uk
-example.co.jp        nameserver = ns-***.awsdns-***.org
-example.co.jp        nameserver = ns-***.awsdns-***.com
+example.co.jp        nameserver = ns-*****.awsdns-*****.net
+example.co.jp        nameserver = ns-*****.awsdns-*****.co.uk
+example.co.jp        nameserver = ns-*****.awsdns-*****.org
+example.co.jp        nameserver = ns-*****.awsdns-*****.com
 
 # ～ 中略 ～
 ```
