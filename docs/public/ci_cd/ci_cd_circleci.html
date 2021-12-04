@@ -2083,9 +2083,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.2.3.4" data-path="../virtualization/virtualization_container_orchestration_minikube_command.html">
+        <li class="chapter " data-level="1.10.2.2.3.4" data-path="../virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html">
             
-                <a href="../virtualization/virtualization_container_orchestration_minikube_command.html">
+                <a href="../virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html">
             
                     
                     📖 ︎minikubeコマンド
@@ -2398,7 +2398,7 @@
                 <span>
             
                     
-                    ソフトウェア開発手法論
+                    ソフトウェア開発手法論／SRE
             
                 </span>
             
@@ -2425,7 +2425,7 @@
                 <a href="../software_development_methodology/software_development_methodology_site_reliability_engineering.html">
             
                     
-                    📖 ︎Site Reliability Engineering
+                    📖 ︎SRE：Site Reliability Engineering
             
                 </a>
             
@@ -2601,7 +2601,7 @@
 <span class="token comment">#            - test2</span>
 </code></pre>
 <h4 id="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<p>&#x30DB;&#x30B9;&#x30C8;OS&#x5074;&#x3067;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x3067;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ circleci config validate
 
 <span class="token comment"># &#x4EE5;&#x4E0B;&#x306E;&#x6587;&#x7AE0;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x308C;&#x3070;&#x554F;&#x984C;&#x306A;&#x3044;&#x3002;</span>
@@ -2801,9 +2801,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
       <span class="token comment"># &#x5F15;&#x6570;&#x3092;&#x5B9A;&#x7FA9;</span>
       <span class="token key atrule">environment</span><span class="token punctuation">:</span>
         <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;</span>
-        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;test&quot;</span>
+        <span class="token key atrule">default</span><span class="token punctuation">:</span> <span class="token string">&quot;dev&quot;</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> enum
-        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;stg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;prd&quot;</span><span class="token punctuation">]</span>
+        <span class="token key atrule">enum</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;dev&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;stg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;prd&quot;</span><span class="token punctuation">]</span>
     <span class="token key atrule">steps</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span>
         <span class="token comment"># &#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;test&#x3092;&#x4E0E;&#x3048;&#x308B;&#x3068;&#x304D;&#x306F;&#x4F55;&#x3082;&#x8A2D;&#x5B9A;&#x3057;&#x306A;&#x3044;</span>
@@ -3226,9 +3226,9 @@ $ circleci <span class="token builtin class-name">local</span> execute -c .circl
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
 
 <span class="token key atrule">executors</span><span class="token punctuation">:</span>
-  <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;&#x540D;</span>
+  <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x74B0;&#x5883;&#x540D;</span>
   <span class="token key atrule">my-executor</span><span class="token punctuation">:</span>
-    <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;OS&#x74B0;&#x5883;</span>
+    <span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x74B0;&#x5883;</span>
     <span class="token key atrule">docker</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> circleci/ruby<span class="token punctuation">:</span>2.5.1<span class="token punctuation">-</span>node<span class="token punctuation">-</span>browsers
     <span class="token key atrule">working_directory</span><span class="token punctuation">:</span> ~/foo_project
@@ -4263,7 +4263,7 @@ aws configure list
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎CircleCI","level":"1.11.2","depth":2,"next":{"title":"📖 ︎Capistrano","level":"1.11.3","depth":2,"path":"public/ci_cd/ci_cd_capistrano.md","ref":"public/ci_cd/ci_cd_capistrano.md","articles":[]},"previous":{"title":"📖 ︎CICD","level":"1.11.1","depth":2,"path":"public/ci_cd/ci_cd.md","ref":"public/ci_cd/ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/ci_cd/ci_cd_circleci.md","mtime":"2021-12-04T02:55:40.935Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-04T02:55:44.547Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎CircleCI","level":"1.11.2","depth":2,"next":{"title":"📖 ︎Capistrano","level":"1.11.3","depth":2,"path":"public/ci_cd/ci_cd_capistrano.md","ref":"public/ci_cd/ci_cd_capistrano.md","articles":[]},"previous":{"title":"📖 ︎CICD","level":"1.11.1","depth":2,"path":"public/ci_cd/ci_cd.md","ref":"public/ci_cd/ci_cd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/ci_cd/ci_cd_circleci.md","mtime":"2021-12-04T15:18:31.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-04T15:18:33.212Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

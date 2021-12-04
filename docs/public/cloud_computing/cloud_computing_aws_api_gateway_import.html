@@ -2083,9 +2083,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.2.3.4" data-path="../virtualization/virtualization_container_orchestration_minikube_command.html">
+        <li class="chapter " data-level="1.10.2.2.3.4" data-path="../virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html">
             
-                <a href="../virtualization/virtualization_container_orchestration_minikube_command.html">
+                <a href="../virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html">
             
                     
                     📖 ︎minikubeコマンド
@@ -2398,7 +2398,7 @@
                 <span>
             
                     
-                    ソフトウェア開発手法論
+                    ソフトウェア開発手法論／SRE
             
                 </span>
             
@@ -2425,7 +2425,7 @@
                 <a href="../software_development_methodology/software_development_methodology_site_reliability_engineering.html">
             
                     
-                    📖 ︎Site Reliability Engineering
+                    📖 ︎SRE：Site Reliability Engineering
             
                 </a>
             
@@ -2605,7 +2605,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> <span class="token string">&quot;GET&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x3059;&#x308B;HTTP&#x30E1;&#x30BD;&#x30C3;&#x30C9;</span>
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x5148;&#x306E;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;URL</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x3059;&#x308B;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;API&#x30AD;&#x30FC;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span> <span class="token comment"># &#x8EE2;&#x9001;&#x3059;&#x308B;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3068;API&#x30AD;&#x30FC;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
           <span class="token comment"># &#x30D1;&#x30B9;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x9593;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3067;&#x3042;&#x308C;&#x3070;&#x3001;integration.request.path.userId: method.request.path.userId</span>
           <span class="token comment"># &#x4ED6;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304B;&#x3089;&#x30DC;&#x30C7;&#x30A3;&#x3078;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3067;&#x3042;&#x308C;&#x3070;&#x3001;integration.request.header.userId: method.request.body.userId</span>
@@ -2626,7 +2626,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
         <span class="token key atrule">requestTemplates</span><span class="token punctuation">:</span>
           <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token string">&apos;{&quot;body&quot; : $input.json(&quot;$&quot;)}&apos;</span>
         <span class="token key atrule">passthroughBehavior</span><span class="token punctuation">:</span> when_no_templates <span class="token comment"># &#x7D71;&#x5408;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x306E;&#x30D1;&#x30B9;&#x30B9;&#x30EB;&#x30FC;&#x6761;&#x4EF6;&#x3092;&#x9078;&#x629E;</span>
@@ -2831,7 +2831,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
         <span class="token key atrule">connectionId</span><span class="token punctuation">:</span> &lt;VPC&#x30EA;&#x30F3;&#x30AF;ID<span class="token punctuation">&gt;</span>
@@ -2897,7 +2897,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
         <span class="token key atrule">connectionId</span><span class="token punctuation">:</span> &lt;VPC&#x30EA;&#x30F3;&#x30AF;ID<span class="token punctuation">&gt;</span>
         <span class="token key atrule">type</span><span class="token punctuation">:</span> http_proxy
@@ -2980,7 +2980,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
         <span class="token key atrule">connectionId</span><span class="token punctuation">:</span> &lt;VPC&#x30EA;&#x30F3;&#x30AF;ID<span class="token punctuation">&gt;</span>
@@ -3060,7 +3060,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> PUT
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
         <span class="token key atrule">connectionId</span><span class="token punctuation">:</span> &lt;VPC&#x30EA;&#x30F3;&#x30AF;ID<span class="token punctuation">&gt;</span>
@@ -3237,7 +3237,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.querystring.userId</span><span class="token punctuation">:</span> method.request.querystring.userId <span class="token comment"># &#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x30AF;&#x30A8;&#x30EA;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;</span>
         <span class="token key atrule">passthroughBehavior</span><span class="token punctuation">:</span> when_no_templates
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
@@ -3309,7 +3309,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> POST
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
         <span class="token key atrule">requestTemplates</span><span class="token punctuation">:</span>
           <span class="token key atrule">application/json</span><span class="token punctuation">:</span> <span class="token string">&apos;{&quot;body&quot; : $input.json(&quot;$&quot;)}&apos;</span>
         <span class="token key atrule">passthroughBehavior</span><span class="token punctuation">:</span> when_no_templates
@@ -3401,7 +3401,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> GET
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
         <span class="token key atrule">passthroughBehavior</span><span class="token punctuation">:</span> when_no_templates
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
@@ -3489,7 +3489,7 @@
         <span class="token key atrule">httpMethod</span><span class="token punctuation">:</span> PUT
         <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;http://&lt;NLB&#x306E;DNS&#x540D;&gt;/api/v1/users/{userId}&quot;</span>
         <span class="token key atrule">requestParameters</span><span class="token punctuation">:</span>
-          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;XXXXX&apos;&quot;</span>
+          <span class="token key atrule">integration.request.header.X-API-Key</span><span class="token punctuation">:</span> <span class="token string">&quot;&apos;*****&apos;&quot;</span>
           <span class="token key atrule">integration.request.path.userId</span><span class="token punctuation">:</span> method.request.path.userId
         <span class="token key atrule">passthroughBehavior</span><span class="token punctuation">:</span> when_no_templates
         <span class="token key atrule">connectionType</span><span class="token punctuation">:</span> VPC_LINK
@@ -3581,9 +3581,9 @@
 <p><br></p>
 <h3 id="&#x30E2;&#x30C3;&#x30AF;&#x7D71;&#x5408;"><a name="&#x30E2;&#x30C3;&#x30AF;&#x7D71;&#x5408;" class="plugin-anchor" href="#&#x30E2;&#x30C3;&#x30AF;&#x7D71;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30E2;&#x30C3;&#x30AF;&#x7D71;&#x5408;</h3>
 <p>API Gateway&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3001;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-http">GET https://xxxxx.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
+<pre class="language-"><code class="lang-http">GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1
 
-X-API-Key&#xFF1A;XXXXX
+X-API-Key&#xFF1A;*****
 </code></pre>
 <p><strong>&#x5B9F;&#x88C5;&#x4F8B;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">openapi</span><span class="token punctuation">:</span> 3.0.0
@@ -4040,7 +4040,7 @@ X-API-Key&#xFF1A;XXXXX
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎API Gatewayへのymlインポート","level":"1.8.2.2","depth":3,"next":{"title":"📖 ︎Lambda関数の実装","level":"1.8.2.3","depth":3,"path":"public/cloud_computing/cloud_computing_aws_lambda_function.md","ref":"public/cloud_computing/cloud_computing_aws_lambda_function.md","articles":[]},"previous":{"title":"📖 ︎AWS","level":"1.8.2.1","depth":3,"path":"public/cloud_computing/cloud_computing_aws.md","ref":"public/cloud_computing/cloud_computing_aws.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","mtime":"2021-12-04T02:55:41.132Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-04T02:55:44.547Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎API Gatewayへのymlインポート","level":"1.8.2.2","depth":3,"next":{"title":"📖 ︎Lambda関数の実装","level":"1.8.2.3","depth":3,"path":"public/cloud_computing/cloud_computing_aws_lambda_function.md","ref":"public/cloud_computing/cloud_computing_aws_lambda_function.md","articles":[]},"previous":{"title":"📖 ︎AWS","level":"1.8.2.1","depth":3,"path":"public/cloud_computing/cloud_computing_aws.md","ref":"public/cloud_computing/cloud_computing_aws.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/cloud_computing/cloud_computing_aws_api_gateway_import.md","mtime":"2021-12-04T15:18:31.847Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-04T15:18:33.212Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
