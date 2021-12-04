@@ -83,7 +83,9 @@ $ minikube ip
 
 #### ・mountとは
 
-ホストOSのファイルまたはディレクトリを、ゲスト仮想環境内のノードにマウントする。
+ホストOSのファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/mount/
 
 #### ・オプション無し
 
@@ -111,7 +113,7 @@ $ minikube ip
 
 #### ・sshとは
 
-ゲスト仮想環境内のノードにSSH接続を行う。
+仮想環境内のノードにSSH接続を行う。標準では、マスターノードに接続する。
 
 参考：
 
@@ -178,9 +180,59 @@ minikube   Ready    control-plane,master   14m   v1.22.3
 $ minikube start --driver docker
 ```
 
+#### ・--nodes
+
+作成するノード数を指定し、```start```コマンドを実行する。
+
+**＊実行例＊**
+
+```bash
+$ minikube start --nodes 3
+
+$ kubectl get nodes
+NAME           STATUS   ROLES                  AGE   VERSION
+minikube       Ready    control-plane,master   76s   v1.20.2
+minikube-m02   Ready    <none>                 42s   v1.20.2
+minikube-m03   Ready    <none>                 19s   v1.20.2
+```
+
 <br>
 
 ## 02. マウント
+
+### ホスト-ノード間マウント
+
+#### ・標準のホスト-ノード間マウント
+
+ホストOSの```$MINIKUBE_HOME/files```ディレクトリに保存されたファイルは、ゲスト仮想環境内のノードのルート直下にマウントされる。
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
+
+```bash
+$ mkdir -p ~/.minikube/files/etc
+
+$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
+
+#  /etc/foo.conf に配置される
+$ minikube start
+```
+
+#### ・ドライバー別のホスト-ノード間マウント
+
+ホストOS以下のディレクトリに保存されたファイルは、ゲスト仮想環境内のノードの決められたディレクトリにマウントされる。
+
+参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+
+| ドライバー名  | OS      | ホストOSのディレクトリ    | ゲスト仮想環境内のノードのディレクトリ |
+| ------------- | ------- | ------------------------- | -------------------------------------- |
+| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                        |
+| VirtualBox    | macOS   | ```/Users```              | ```/Users```                           |
+| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                         |
+| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```                  |
+| KVM           | Linux   | なし                      |                                        |
+| HyperKit      | Linux   | なし（NFSマウントを参照） |                                        |
+
+<br>
 
 ### ノード-コンテナ間マウント
 
@@ -201,39 +253,11 @@ $ minikube start --driver docker
 
 <br>
 
-### ホスト-ゲスト間マウント
+### ホスト-ノード-コンテナ間
 
-・標準のホスト-ゲスト間マウント
+minikubeでは、ホストOSの```$MINIKUBE_HOME/files```ディレクトリまたはドライバー別ディレクトリが、ゲスト環境内のノードのディレクトリにマウントされるようになっている。また、HostDirボリュームを作成すれば、ノードのディレクトリをポッド内のコンテナにマウントできる。これらを組み合わせることで、ホストOS上のディレクトリをポッド内のコンテナに間接的にマウントできる。
 
-ホストOSの```$MINIKUBE_HOME/files```ディレクトリに保存されたファイルは、ゲスト仮想環境のルート直下にマウントされる。
-
-参考：https://minikube.sigs.k8s.io/docs/handbook/filesync/
-
-```bash
-$ mkdir -p ~/.minikube/files/etc
-
-$ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
-
-#  /etc/foo.conf に配置される
-$ minikube start
-```
-
-#### ・ドライバー別のノード-コンテナ間マウント
-
-ホストOS以下のディレクトリに保存されたファイルは、ゲスト仮想環境の決められたディレクトリにマウントされる。
-
-参考：https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
-
-| ドライバー名  | OS      | ホストOSのディレクトリ    | ゲスト仮想環境内のディレクトリ |
-| ------------- | ------- | ------------------------- | ------------------------------ |
-| VirtualBox    | Linux   | ```/home```               | ```/hosthome```                |
-| VirtualBox    | macOS   | ```/Users```              | ```/Users```                   |
-| VirtualBox    | Windows | ```C://Users```           | ```/c/Users```                 |
-| VMware Fusion | macOS   | ```/Users```              | ```/mnt/hgfs/Users```          |
-| KVM           | Linux   | なし                      |                                |
-| HyperKit      | Linux   | なし（NFSマウントを参照） |                                |
-
-
+参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
 
 
