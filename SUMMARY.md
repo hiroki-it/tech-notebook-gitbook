@@ -166,6 +166,7 @@
 
 * ソフトウェア開発手法論
     * [📖 ︎ソフトウェア開発手法論](public/software_development_methodology/software_development_methodology.md)
+    * [📖 ︎Site Reliability Engineering](public/software_development_methodology/software_development_methodology_site_reliability_engineering.md)
     * [📖 ︎プロジェクト管理](public/software_development_methodology/software_development_methodology_project_management.md)
     * Git
         * [📖 ︎GitHub](public/software_development_methodology/software_development_methodology_github.md)
