@@ -243,4 +243,3 @@ GPUとVRAMの容量によって、扱うことのできる解像度と色数が�
 色数によって、１ドット当たり何ビットを要するが異なる。
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/p204.jpg)
-
