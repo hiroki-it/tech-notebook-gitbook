@@ -1,25 +1,43 @@
-# サイト管理者
+# 自己紹介
 
-## 経歴
+## 👋🏻 はじめまして
 
 長谷川広樹と申します。
 
-2019年に理学修士を習得し、大学院を卒業後、**バックエンドエンジニア** としてキャリアをスタートいたしました。
+2019年に理学修士を習得し、大学院を卒業いたしました。
+
+その後、**バックエンドエンジニア** としてキャリアをスタートいたしました。
 
 現在は、**SRE** として働かさせていただいております。
 
-詳しくは、以下のリンクまでご訪問いただけると幸いです。
+<br>
 
-▶ **GitHub**：[https://github.com/hiroki-it](https://github.com/hiroki-it)
+## 🎯 関心のある技術領域
 
-▶ **Wantedly**：[https://www.wantedly.com/id/h_hasegawa](https://www.wantedly.com/id/h_hasegawa)
+拡張性、保守性、可読性を高める技術に関心があります。
 
-▶ **Speaker Deck**：[https://speakerdeck.com/hiroki_hasegawa](https://speakerdeck.com/hiroki_hasegawa)
+ドメイン駆動設計、アーキテクチャ、クラウドインフラ、IaC、コンテナ、CI/CD、Go、etc...
 
 <br>
 
-## 関心のある技術領域
+## 📚 学習記録
 
-拡張性、保守性、可読性を高める技術に関心がございます。
+以下にて、技術的な知識を整理するようにしております。
 
-ドメイン駆動設計、アーキテクチャ、クラウドインフラ、IaC、コンテナ、CI/CD、Go、etc...
+▶ **技術ノート**：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
+## 💼 経歴、職歴
+
+詳しくは、以下のリンクまでご訪問いただけると幸いです。
+
+▶ **Wantedly**：[https://www.wantedly.com/id/h_hasegawa](https://www.wantedly.com/id/h_hasegawa)
+
+<br>
+
+## 📢 社内発信スライド
+
+詳しくは、以下のリンクまでご訪問いただけると幸いです。
+
+▶ **Speaker Deck**：[https://speakerdeck.com/hiroki_hasegawa](https://speakerdeck.com/hiroki_hasegawa)

@@ -148,9 +148,46 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
+以下の通り、HostPathではバインドマウントが使用されていることを確認できる。
+
+```bash
+# ノード内でdockerコマンドを実行
+$ docker inspect c38b90c9c9e9
+
+        # 〜 中略 〜
+
+        "HostConfig": {
+            "Binds": [
+                "/data:/var/www/foo",
+                "/var/lib/kubelet/pods/*****/volumes/kubernetes.io~projected/kube-api-access-*****:/var/run/secrets/kubernetes.io/serviceaccount:ro",
+                "/var/lib/kubelet/pods/*****/etc-hosts:/etc/hosts",
+                "/var/lib/kubelet/pods/*****/containers/foo/*****:/dev/termination-log"
+            ],
+            
+            # 〜 中略 〜
+        },
+        
+        # 〜 中略 〜
+        
+        "Mounts": [
+        
+            # 〜 中略 〜
+            
+            {
+                "Type": "bind", # バインドマウントが使用されている。
+                "Source": "/data",
+                "Destination": "/var/www/foo",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+
+            # 〜 中略 〜
+```
+
 #### ・EmptyDir
 
-ポッドのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できない。ポッドのストレージをボリュームとして使用するため、ポッドが削除されると、このボリュームも同時に削除される。
+ポッドのストレージを使用したボリュームのこと。そのため、ポッドが削除されると、このボリュームも同時に削除される。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できない。
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -233,7 +270,7 @@ users:
 
 ホストPCのファイルまたはディレクトリを指定したポッド内のコンテナにコピーする。
 
-``` bash
+```bash
 $kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コンテナのファイルパス>
 ```
 

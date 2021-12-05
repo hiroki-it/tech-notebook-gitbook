@@ -1,6 +1,6 @@
 # 目次
 
-## ソフトウェア
+## 🧬 ソフトウェア
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
 * 基本ソフトウェア（OS）
@@ -89,7 +89,7 @@
 
 <br>
 
-## ハードウェア
+## 💻 ハードウェア
 
 * [📖 ︎ハードウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware.html)
 * [📖メモリのアドレス空間管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
@@ -97,21 +97,21 @@
 
 <br>
 
-## ネットワーク
+## 🌏 ネットワーク
 
 * [📖 ︎ネットワーク](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network.html)
 * [📖 ︎OSI参照モデル／TCP階層モデル](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html)
 
 <br>
 
-## セキュリティ
+## 🔐 セキュリティ
 
 * [📖 ︎サイバー攻撃](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html)
 * [📖 ︎通信データの暗号化技術](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_encryption_technology.html)
 
 <br>
 
-## クラウドコンピューティング
+## ☁️ クラウドコンピューティング
 
 * [📖 ︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing.html)
 * AWS
@@ -124,7 +124,7 @@
 
 <br>
 
-## Infrastructure as Code
+## ⚙️ Infrastructure as Code
 
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
 * Terraform
@@ -138,7 +138,7 @@
 
 <br>
 
-## 仮想化
+## 📦 仮想化
 
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
 * コンテナ
@@ -161,7 +161,7 @@
 
 <br>
 
-## CICD
+## ♾️ CICD
 
 * [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
 * [📖 ︎CircleCI](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_circleci.html)
@@ -169,7 +169,7 @@
 
 <br>
 
-## 可観測性／監視
+## 🔎 可観測性／監視
 
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html)
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/monitering.html)
@@ -185,7 +185,7 @@
 
 <br>
 
-## ソフトウェア開発手法論／SRE
+## 👥 ソフトウェア開発手法論／SRE
 
 * [📖 ︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology.html)
 * [📖 ︎SRE：Site Reliability Engineering](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_site_reliability_engineering.html)
@@ -196,6 +196,6 @@
 
 <br>
 
-## 統計解析
+## 📊 統計解析
 
 * [📖 ︎R言語](https://hiroki-it.github.io/tech-notebook-gitbook/public/statistic_analysis/statistic_analysis_r.html)

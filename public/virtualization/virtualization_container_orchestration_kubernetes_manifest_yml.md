@@ -140,6 +140,28 @@ spec:
 
 ### persistentVolumeReclaimPolicy
 
+#### ・Delete
+
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolumeも自動的に削除する。
+
+```yaml
+spec:
+  persistentVolumeReclaimPolicy: Delete
+```
+
+#### ・Recycle
+
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。
+
+```yaml
+spec:
+  persistentVolumeReclaimPolicy: Recycle
+```
+
+#### ・Retain
+
+PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除されたとしても、PersistentVolumeは削除しない。
+
 ```yaml
 spec:
   persistentVolumeReclaimPolicy: Retain
@@ -148,6 +170,23 @@ spec:
 <br>
 
 ### storageClassName
+
+#### ・fast
+
+SSDをPersistentVolumeとして使用する。
+
+参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
+
+```yaml
+spec:
+  storageClassName: fast
+```
+
+#### ・slow
+
+HDをPersistentVolumeとして使用する。
+
+参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
 ```yaml
 spec:
@@ -222,8 +261,6 @@ spec:
            mountPath: /var/www/foo           
 ```
 
-
-
 <br>
 
 ### hostname
@@ -247,7 +284,7 @@ spec:
 
 #### ・persistentVolumeClaim.claimName
 
-使用するPersistentVolumeClaimオブジェクトの名前を設定する。ノードのボリュームを使用するため、『ノード』が削除されると、このボリュームも同時に削除される。
+使用するPersistentVolumeClaimオブジェクトの名前を設定する。persistentVolumeは別途作成しておく必要がある。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
@@ -261,7 +298,7 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する。ポッドのボリュームを使用するため、『ポッド』が削除されると、このボリュームも同時に削除される。
+EmptyDirボリュームを作成する。そのため、『ポッド』が削除されるとこのボリュームも同時に削除される。
 
 参考：
 
@@ -279,7 +316,7 @@ spec:
 
 #### ・hostPath
 
-HostPathボリュームを作成する。ノードのボリュームを使用するため、『ノード』が削除されると、このボリュームも同時に削除される。
+HostPathボリュームを作成する。そのため、『ノード』が削除されるとこのボリュームも同時に削除される。
 
 参考：
 
@@ -360,3 +397,5 @@ spec:
 | ClusterIP    | クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。 | クラスター内部からのみ |
 | NodePort     | ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。ノードのIPアドレスは別に確認する必要がある。 | クラスター外部／内部   |
 | LoadBalancer | ロードバランサーからアクセスできるIPアドレスを割り当て、これに対するリクエストをポッドに転送する。 | クラスター外部／内部   |
+
+<br>

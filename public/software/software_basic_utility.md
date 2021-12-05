@@ -53,7 +53,7 @@ Windowsは、GUIでユーティリティを用いる。よく使うものを記�
 | ```/usr/sbin```                | 管理ユーティリティによってインストールされたバイナリファイルのうち、```sudo```権限が必要なもの。 |
 | ```/usr/local/sbin```          | Unix外のソフトウェアによってインストールされたバイナリファイルのうち、```sudo```権限が必要なもの。最初は空になっている。 |
 
-``` bash
+```bash
 # バイナリファイルが全ての場所で見つからないエラー
 $ which python3
 which: no python3 in (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin)
