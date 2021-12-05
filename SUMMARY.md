@@ -139,7 +139,9 @@
                 * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
             * ︎Kubernetes
                 * [📖 ︎kubernetesコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
+                * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
                 * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
+                * [📖 ︎skaffold.yml](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_yml.md)
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
                 * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
             * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
