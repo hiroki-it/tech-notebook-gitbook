@@ -6,7 +6,7 @@
 
 * [📖 ︎目次](public/summary.md)
 
-* ソフトウェア
+* 🧬 ソフトウェア
     * [📖 ︎ソフトウェア](public/software/software.md)
     * 基本ソフトウェア（OS）
         * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
@@ -92,20 +92,20 @@
                         * [📖 パッケージ](public/software/software_application_procedural_language_go_package.md)
                         * [📖 Gin](public/software/software_application_procedural_language_go_framework_gin.md)
 
-* ハードウェア
+* 💻 ハードウェア
     * [📖 ︎ハードウェア](public/hardware/hardware.md)
     * [📖 ︎メモリのアドレス空間管理](public/hardware/hardware_memory_address_space_management.md)
     * [📖 ︎組み込み機器](public/hardware/hardware_embedded_system.md)
 
-* ネットワーク
+* 🌏 ネットワーク
     * [📖 ︎ネットワーク](public/network/network.md)
     * [📖 ︎OSI参照モデル／TCP階層モデル](public/network/network_osi_tcp_model.md)
 
-* セキュリティ
+* 🔐 セキュリティ
     * [📖 ︎サイバー攻撃](public/security/security_cyber_attacks.md)
     * [📖 ︎通信データの暗号化技術](public/security/security_encryption_technology.md)
 
-* クラウドコンピューティング
+* ☁️️ クラウドコンピューティング
     * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
     * AWS
         * [📖 ︎AWS](public/cloud_computing/cloud_computing_aws.md)
@@ -115,7 +115,7 @@
     * GCP
         * [📖 ︎GCP](public/cloud_computing/cloud_computing_gcp.md)
 
-* Infrastructure as Code
+* ⚙️ Infrastructure as Code
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
     * Terraform
         * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_terraform_command.md)
@@ -126,7 +126,7 @@
         * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md)
         * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md)
 
-* 仮想化
+* 📦 仮想化
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
     * コンテナ
         * Docker
@@ -146,12 +146,12 @@
     * ︎仮想サーバ（仮想マシン）
         * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
 
-* CICD
+* ♾️ CICD
     * [📖 ︎CICD](public/ci_cd/ci_cd.md)
     * [📖 ︎CircleCI](public/ci_cd/ci_cd_circleci.md)
     * [📖 ︎Capistrano](public/ci_cd/ci_cd_capistrano.md)
 
-* 可観測性／監視
+* 🔎 可観測性／監視
     * [📖 ︎可観測性](public/observability_monitering/observability.md)
     * [📖 ︎監視](public/observability_monitering/monitering.md)
     * Fluentd／FluentBit
@@ -164,7 +164,7 @@
         * [📖 ︎テレメトリー間の紐づけ](public/observability_monitering/observability_datadog_telemetry_association.md)
         * [📖 ︎監視](public/observability_monitering/observability_datadog_monitering.md)
 
-* ソフトウェア開発手法論／SRE
+* 👥 ソフトウェア開発手法論／SRE
     * [📖 ︎ソフトウェア開発手法論](public/software_development_methodology/software_development_methodology.md)
     * [📖 ︎SRE：Site Reliability Engineering](public/software_development_methodology/software_development_methodology_site_reliability_engineering.md)
     * [📖 ︎プロジェクト管理](public/software_development_methodology/software_development_methodology_project_management.md)
@@ -172,6 +172,6 @@
         * [📖 ︎GitHub](public/software_development_methodology/software_development_methodology_git_github.md)
         * [📖 ︎Gitコマンド](public/software_development_methodology/software_development_methodology_git_command.md)
 
-* 統計解析
+* 📊 統計解析
     * [📖 ︎R言語](public/statistic_analysis/statistic_analysis_r.md)
 
