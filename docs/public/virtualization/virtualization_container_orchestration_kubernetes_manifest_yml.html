@@ -2656,11 +2656,32 @@
 </code></pre>
 <p><br></p>
 <h3 id="persistentvolumereclaimpolicy"><a name="persistentvolumereclaimpolicy" class="plugin-anchor" href="#persistentvolumereclaimpolicy"><i class="fa fa-link" aria-hidden="true"></i></a>persistentVolumeReclaimPolicy</h3>
+<h4 id="&#x30FB;delete"><a name="&#x30FB;delete" class="plugin-anchor" href="#&#x30FB;delete"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Delete</h4>
+<p>PersistentVolume&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;<code>spec.persistentVolumeClaim</code>&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x3001;PersistentVolume&#x3082;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x524A;&#x9664;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Delete
+</code></pre>
+<h4 id="&#x30FB;recycle"><a name="&#x30FB;recycle" class="plugin-anchor" href="#&#x30FB;recycle"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Recycle</h4>
+<p>PersistentVolume&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;<code>spec.persistentVolumeClaim</code>&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x3001;PersistentVolume&#x5185;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x307F;&#x3092;&#x524A;&#x9664;&#x3057;&#x3001;PersistentVolume&#x81EA;&#x4F53;&#x306F;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Recycle
+</code></pre>
+<h4 id="&#x30FB;retain"><a name="&#x30FB;retain" class="plugin-anchor" href="#&#x30FB;retain"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Retain</h4>
+<p>PersistentVolume&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;<code>spec.persistentVolumeClaim</code>&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x305F;&#x3068;&#x3057;&#x3066;&#x3082;&#x3001;PersistentVolume&#x306F;&#x524A;&#x9664;&#x3057;&#x306A;&#x3044;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Retain
 </code></pre>
 <p><br></p>
 <h3 id="storageclassname"><a name="storageclassname" class="plugin-anchor" href="#storageclassname"><i class="fa fa-link" aria-hidden="true"></i></a>storageClassName</h3>
+<h4 id="&#x30FB;fast"><a name="&#x30FB;fast" class="plugin-anchor" href="#&#x30FB;fast"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;fast</h4>
+<p>SSD&#x3092;PersistentVolume&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" target="_blank">https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> fast
+</code></pre>
+<h4 id="&#x30FB;slow"><a name="&#x30FB;slow" class="plugin-anchor" href="#&#x30FB;slow"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;slow</h4>
+<p>HD&#x3092;PersistentVolume&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B" target="_blank">https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
 </code></pre>
@@ -2724,7 +2745,7 @@
 <h4 id="&#x30FB;name"><a name="&#x30FB;name" class="plugin-anchor" href="#&#x30FB;name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;name</h4>
 <p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <h4 id="&#x30FB;persistentvolumeclaimclaimname"><a name="&#x30FB;persistentvolumeclaimclaimname" class="plugin-anchor" href="#&#x30FB;persistentvolumeclaimclaimname"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;persistentVolumeClaim.claimName</h4>
-<p>&#x4F7F;&#x7528;&#x3059;&#x308B;PersistentVolumeClaim&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x300E;&#x30CE;&#x30FC;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x3059;&#x308B;PersistentVolumeClaim&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;persistentVolume&#x306F;&#x5225;&#x9014;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/" target="_blank">https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   volumes
@@ -2733,7 +2754,7 @@
         <span class="token key atrule">claimName</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>persistent<span class="token punctuation">-</span>volume
 </code></pre>
 <h4 id="&#x30FB;emptydir"><a name="&#x30FB;emptydir" class="plugin-anchor" href="#&#x30FB;emptydir"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;emptyDir</h4>
-<p>EmptyDir&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x30DD;&#x30C3;&#x30C9;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x300E;&#x30DD;&#x30C3;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>EmptyDir&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x300E;&#x30DD;&#x30C3;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir" target="_blank">https://kubernetes.io/docs/concepts/storage/volumes/#emptydir</a></li>
@@ -2747,7 +2768,7 @@
       <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;hostpath"><a name="&#x30FB;hostpath" class="plugin-anchor" href="#&#x30FB;hostpath"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;hostPath</h4>
-<p>HostPath&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x300E;&#x30CE;&#x30FC;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>HostPath&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x300E;&#x30CE;&#x30FC;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath" target="_blank">https://kubernetes.io/docs/concepts/storage/volumes/#hostpath</a></li>
@@ -2822,6 +2843,7 @@
 </tr>
 </tbody>
 </table>
+<p><br></p>
 
                                 
                                 </section>
@@ -2865,7 +2887,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.2","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-12-04T15:18:31.742Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-04T15:18:33.212Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.2","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-12-05T09:57:54.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-05T09:57:58.007Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
