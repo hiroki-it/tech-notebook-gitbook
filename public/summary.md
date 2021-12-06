@@ -9,7 +9,7 @@
     * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
     * カーネル
         * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
-        * [📖メモリ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/software_basic_kernel_memory_management.html)
+        * [📖メモリ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel_memory_management.html)
     * 言語プロセッサ
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
