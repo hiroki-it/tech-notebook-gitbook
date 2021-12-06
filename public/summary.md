@@ -3,14 +3,20 @@
 ## 🧬 ソフトウェア
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
+
 * 基本ソフトウェア（OS）
+
     * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
-    * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
+    * カーネル
+        * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
+        * [📖メモリ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/software_basic_kernel_memory_management.html)
     * 言語プロセッサ
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
         * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_machine_language_and_radix.html)
+
 * ミドルウェア
+    * [📖 ︎OS標準搭載のミドルウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_os.html)
     * Web関連
         * [📖 ︎Nginx](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html)
         * [📖 ︎Apache](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html)
@@ -19,6 +25,7 @@
     * データベース関連
         * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html)
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
+
 * アプリケーションソフトウェア
     * アーキテクチャ
         * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html)
@@ -92,7 +99,6 @@
 ## 💻 ハードウェア
 
 * [📖 ︎ハードウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware.html)
-* [📖メモリのアドレス空間管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_memory_address_space_management.html)
 * [📖 ︎組み込み機器](https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/hardware_embedded_system.html)
 
 <br>
@@ -154,6 +160,7 @@
             * [📖 ︎kubernetesコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_command.html)
             * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html)
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
+            * [📖 ︎skaffold.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_yml.html)
             * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_istio.html)
         * [📖 ︎Docker Swarm](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_swarm.html)
 * ︎仮想サーバ（仮想マシン）

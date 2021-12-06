@@ -1,4 +1,4 @@
-# 制御プログラム（カーネル）
+# カーネル（制御プログラム）
 
 ## はじめに
 
@@ -8,64 +8,27 @@
 
 <br>
 
-## 01. 制御プログラム（カーネル）
+## 01. カーネルとは
 
-  （例）カーネル、マイクロカーネル、モノリシックカーネル
-
-<br>
-
-## 02. 通信管理
-
-### SELinux：Security Enhanced Linux
-
-Linuxにデフォルトで導入されているミドルウェア。ただし、アプリケーションと他のソフトウェアの通信を遮断してしまうことがあるため、基本的には無効にしておく。
-
-1. SELinuxの状態を確認
-
-```bash
-$ getenforce
-
-# 有効の場合
-Enforcing
-```
-
-2. ```/etc/sellnux/config```を修正する。
-
-```bash
-# This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-
-SELINUX=disabled # <---- disabledに変更
-
-# SELINUXTYPE= can take one of these three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected. 
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted
-```
-
-3. OSを再起動
-
-OSを再起動しないと設定が反映されない。
+狭義のOSである。広義のOSは、ユーティリティや言語プロセッサも含む基本ソフトウェア全体である。
 
 <br>
 
-## 03 ジョブ管理
+## 02 ジョブ管理
 
 ### ジョブ管理とは
 
-クライアントは、マスタスケジュールに対して、ジョブを実行するための命令を与える。
+カーネルはジョブ（プロセスのセット）を管理する。クライアントは、マスタスケジュールに対して、ジョブを実行するための命令を与える。
 
 <br>
 
 ### マスタスケジュラ、ジョブスケジュラ
 
+#### ・マスタスケジュラ、ジョブスケジュラとは
+
 ![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ジョブ管理とタスク管理の概要.jpg)
 
-ジョブとは、プロセスのセットのこと。マスタスケジュラは、ジョブスケジュラにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使うべきとのこと。
+マスタスケジュラは、ジョブスケジュラにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使うべきとのこと。
 
 引用：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
@@ -97,7 +60,7 @@ Initiatorによって、ジョブはジョブステップに分解される。
 
 <br>
 
-## 04. タスク管理
+## 03. タスク管理
 
 ### タスク管理とは
 
@@ -148,7 +111,7 @@ Round robinは、『総当たり』の意味。一定時間（タイムクウォ
 
 <br>
 
-## 05. 入出力管理
+## 04. 入出力管理
 
 ### 入出力管理とは
 
@@ -217,3 +180,75 @@ crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
 デバイスファイルの中で、実際の装置に対応していないデバイスファイル。標準入出力（```/dev/stdin```、```/dev/stdout```）や破棄（```/dev/null```）などがある。
 
 参考：https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+
+<br>
+
+### パーティション
+
+#### ・パーティションとは
+
+物理ストレージの仮想的な仕切りのこと。一つのストレージを複数に見せかけることができる。Windowsでは、CドライブとDドライブがパーティションに相当する。
+
+参考：http://www.miloweb.net/partition.html
+
+**＊例＊**
+
+MacOSでは、```diskutil```コマンドを実行するとパーティションを確認できる。デバイスファイルに紐づく２つのストレージがあり、```disk0``` は２つ、```disk1```は６つのパーティションで区切られていることがわかる。
+
+```bash
+$ diskutil list
+/dev/disk0 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *500.3 GB   disk0
+   1:                        EFI ⁨EFI⁩                     314.6 MB   disk0s1
+   2:                 Apple_APFS ⁨Container disk1⁩         500.0 GB   disk0s2
+
+/dev/disk1 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +500.0 GB   disk1
+                                 Physical Store disk0s2
+   1:                APFS Volume ⁨Macintosh HD⁩            22.7 GB    disk1s1
+   2:              APFS Snapshot ⁨com.apple.os.update-...⁩ 22.7 GB    disk1s1s1
+   3:                APFS Volume ⁨Macintosh HD - Data⁩     147.0 GB   disk1s2
+   4:                APFS Volume ⁨Preboot⁩                 396.3 MB   disk1s3
+   5:                APFS Volume ⁨Recovery⁩                622.1 MB   disk1s4
+   6:                APFS Volume ⁨VM⁩                      3.2 GB     disk1s5
+```
+
+<br>
+
+## 05. メモリ管理（記憶管理）
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/hardware/software_basic_kernel_memory_management.html
+
+<br>
+
+## 06. その他の管理
+
+### 通信管理
+
+#### ・通信管理とは
+
+デバイスドライバーとミドルウェア間で実行されるデータ通信処理を管理する。
+
+参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+
+<br>
+
+### 運用管理
+
+#### ・運用管理とは
+
+ミドルウェアやアプリケーションの運用処理（メトリクス収集、障害対応、記憶情報の保護）を管理する。
+
+参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
+
+<br>
+
+### 障害管理
+
+#### ・障害管理とは
+
+ソフトウェアに障害が起こった時の障害修復を管理する。
+
+参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm

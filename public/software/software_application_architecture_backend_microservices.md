@@ -119,7 +119,7 @@
 
 ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信／非同期通信を行う。
 
-![microservices-architecuture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservice-architecuture_onion-architecture.png)
+![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/microservices-architecture_onion-architecture.png)
 
 <br>
 
@@ -322,7 +322,7 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 Datadogによる分散トレースの監視については、以下のリンク先を参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_distributed_trace.html
 
 <br>
 

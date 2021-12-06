@@ -1747,9 +1747,12 @@ $ openssl pkcs8 \
 
 ### AMIとは
 
-EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）が内蔵されたテンプレートのこと。
+EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア（OS、ミドルウェア）とEBSボリュームのコピーが内蔵されたテンプレートのこと。
 
-参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
+- https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 <br>
 
@@ -1862,7 +1865,9 @@ EBSボリュームを変更するためには、実際のEBSボリューム、�
 
 **＊例＊**
 
-（１）EC2インスタンスのEBSボリュームを```8```GBから```16```GBに変更する例を考える。```lsblk```コマンドで現在のブロックデバイスのサイズを確認すると、EBSボリュームとパーティションがともに```8```GBである。また、```df```コマンドで現在のファイルシステムのサイズを確認すると、同じく```8```GBである。
+（１）バックアップのため、変更対象のEC2インスタンスのAMIを作成しておく。
+
+（２）EC2インスタンスのEBSボリュームを```8```GBから```16```GBに変更する例を考える。```lsblk```コマンドで現在のブロックデバイスのサイズを確認すると、EBSボリュームとパーティションがともに```8```GBである。また、```df```コマンドで現在のファイルシステムのサイズを確認すると、同じく```8```GBである。
 
 ```bash
 $ lsblk
@@ -1883,7 +1888,7 @@ Filesystem  Type  Size  Used  Avail  Use%  Mounted on
 # ～ 中略 ～
 ```
 
-（２）コンソール画面から、EBSボリュームを```16```GBに変更する。ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが変更されたことを確認できる。
+（３）コンソール画面から、EBSボリュームを```16```GBに変更する。ダウンタイムは発生しない。改めて```lsblk```コマンドを実行すると、該当のEBSボリュームが変更されたことを確認できる。
 
 ```bash
 $ lsblk
@@ -1895,7 +1900,7 @@ xvda    202:0    0  16G  0 disk            # EBSボリューム
 # ～ 中略 ～
 ```
 
-（３）```growpart```コマンドを実行し、パーティションを拡張する。改めて```lsblk```コマンドを実行すると、該当のパーティションが変更されたことを確認できる。
+（４）```growpart```コマンドを実行し、パーティションを拡張する。改めて```lsblk```コマンドを実行すると、該当のパーティションが変更されたことを確認できる。
 
 ```bash
 $ sudo growpart /dev/xvda 1
@@ -1911,7 +1916,7 @@ xvda    202:0    0  16G  0 disk            # EBSボリューム
 # ～ 中略 ～
 ```
 
-（４）ファイルシステムのうち、```/dev/xvda1```ファイルがEBSボリュームに紐づいている。```resize2fs ```コマンドを実行し、これのサイズを変更する。改めて```df```コマンドを実行すると、該当のファイルシステムが変更されたことを確認できる。
+（５）ファイルシステムのうち、```/dev/xvda1```ファイルがEBSボリュームに紐づいている。```resize2fs ```コマンドを実行し、これのサイズを変更する。改めて```df```コマンドを実行すると、該当のファイルシステムが変更されたことを確認できる。
 
 ```bash
 $ sudo resize2fs /dev/xvda1
@@ -1925,6 +1930,16 @@ Filesystem  Type  Size  Used  Avail  Use%  Mounted on
 
 # ～ 中略 ～
 ```
+
+<br>
+
+### スナップショット
+
+#### ・スナップショットとは
+
+EBSボリュームのコピーのこと。ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。
+
+参考：https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 <br>
 
@@ -4255,6 +4270,40 @@ DBクラスター／DBインスタンスの設定の変更をスケジューリ�
 | 次のウィンドウ | アクションは実行可能である。また、次回のメンテナンスウィンドウの間に、アクションを自動的に実行する。後でアップグレードを選択することで、『利用可能』の状態に戻すことも可能。 |
 | 必須           | アクションは実行可能である。また、指定されたメンテナンスウィンドウの間に必ず実行され、これは延期できない。 |
 | 進行中         | 現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。 |
+
+#### ・次のウィンドウで実行
+
+AWSではOSのアップグレードを定期的に強制実行する。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。この時、『次のメンテナンスウィンドウで適用』を選ぶ必要があり、一度選んでしまうとこれは画面上から元に戻せない。しかし、CLIを用いると取り消せる。
+
+参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+
+```bash
+$ aws rds describe-pending-maintenance-actions
+{
+    "PendingMaintenanceActions": [
+        {
+            "ResourceIdentifier": "arn:aws:rds:ap-northeast-1:*****:db:foo-rds-cluster",
+            "PendingMaintenanceActionDetails": [
+                {
+                    "Action": "system-update", # 予定されたアクション名
+                    "AutoAppliedAfterDate": "2022-01-31T00:00:00+00:00",
+                    "ForcedApplyDate": "2022-03-30T00:00:00+00:00",
+                    "CurrentApplyDate": "2022-01-31T00:00:00+00:00",
+                    "Description": "New Operating System update is available"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+```bash
+$ aws rds apply-pending-maintenance-action \
+  --resource-identifier arn:aws:rds:ap-northeast-1:*****:db:foo-rds-cluster \
+  --opt-in-type undo-opt-in \
+  --apply-action <取り消したいアクション名>
+```
 
 <br>
 

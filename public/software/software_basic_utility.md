@@ -1,4 +1,4 @@
-# ユーティリティ
+# ユーティリティ（サービスプログラム）
 
 ## はじめに
 
@@ -1147,6 +1147,19 @@ $ crond -n
 
 <br>
 
+### logrotate
+
+#### ・logrotate
+
+ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
+
+参考：
+
+- http://proger.blog10.fc2.com/blog-entry-66.html
+- https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
+
+<br>
+
 ## 04-04. テキスト処理系
 
 ### vim：Vi Imitaion、Vi Improved  
@@ -1313,7 +1326,7 @@ $ free -m -total
 
 #### ・オプション無し
 
-使用中のデバイスファイルを表示する。デバイスファイルについては、以下のリンクを参考にせよ。
+パーティションで区切られたストレージのうち、マウントされているもののみを表示する。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html
 
@@ -1343,6 +1356,51 @@ map auto_home            0         0         0   100%       0          0  100%  
 # t: -total
 $ df -h -m -t
 ```
+
+#### ・fdiskとの違い
+
+dfコマンドでは、パーティションで区切られたストレージのうちでマウントされたもののみを表示する。一方でfdiskコマンドでは、マウントされているか否かに関わらず、パーティションで区切られた全てのストレージを表示する。
+
+参考：https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command
+
+<br>
+
+### du
+
+#### ・-s
+
+全てのディレクトリの合計容量を表示する。
+
+```bash
+$ du -s ./
+12345678 ./
+```
+
+#### ・-x
+
+ディレクトリごとに合計容量を表示する。
+
+```bash
+# 表示結果を容量の降順に並び替える。
+$ du -x ./ | sort -n
+
+# 〜 中略 〜
+
+21816   ./vendor/foo/bar/baz/qux
+27004   ./vendor/foo/bar/baz
+27036   ./vendor/foo/bar
+27604   ./vendor/foo
+115104  ./vendor
+123016  ./
+```
+
+<br>
+
+### fdisk
+
+#### ・-l
+
+パーティションで区切られた全てのストレージを表示する。
 
 <br>
 

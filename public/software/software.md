@@ -148,15 +148,9 @@ MS-DOSを源流として派生したOS。今では、全ての派生がWindows 1
 
 ### 基本ソフトウェア
 
-#### ・基本ソフトウェアの構成
+参考：http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
 ![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/基本ソフトウェアの構成.png)
-
-#### ・ユーティリティ
-
-#### ・言語プロセッサ
-
-#### ・制御プログラム（カーネル）
 
 <br>
 

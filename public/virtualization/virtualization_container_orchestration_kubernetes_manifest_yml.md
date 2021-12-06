@@ -20,7 +20,9 @@ apiVersion: v1
 
 ## 02. kind
 
-オブジェクトの種類を設定する。
+オブジェクトの種類を設定する。ポッドをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
+
+参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
 ```yaml
 kind: Service
