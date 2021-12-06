@@ -10,7 +10,9 @@
     * [📖 ︎ソフトウェア](public/software/software.md)
     * 基本ソフトウェア（OS）
         * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
-        * [📖 ︎カーネル](public/software/software_basic_kernel.md)
+        * カーネル
+            * [📖 ︎カーネル](public/software/software_basic_kernel.md)
+            * [📖メモリ管理](public/hardware/software_basic_kernel_memory_management.md)
         * 言語プロセッサ
             * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
             * [📖 ︎言語別の処理方式](public/software/software_basic_language_processor_process_mode.md)
@@ -94,7 +96,6 @@
 
 * 💻 ハードウェア
     * [📖 ︎ハードウェア](public/hardware/hardware.md)
-    * [📖 ︎メモリのアドレス空間管理](public/hardware/hardware_memory_address_space_management.md)
     * [📖 ︎組み込み機器](public/hardware/hardware_embedded_system.md)
 
 * 🌏 ネットワーク
