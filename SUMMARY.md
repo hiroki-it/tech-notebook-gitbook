@@ -18,6 +18,7 @@
             * [📖 ︎言語別の処理方式](public/software/software_basic_language_processor_process_mode.md)
             * [📖 ︎機械語と進数](public/software/software_basic_language_processor_machine_language_and_radix.md)
     * ミドルウェア
+        * [📖 ︎OS標準搭載のミドルウェア](public/software/software_middleware_os.md) 
         * Web関連
             * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
             * [📖 ︎Apache](public/software/software_middleware_web_apache.md)
