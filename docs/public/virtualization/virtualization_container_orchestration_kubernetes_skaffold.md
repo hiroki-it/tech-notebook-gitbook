@@ -8,6 +8,8 @@
 
 イメージをビルドする。
 
+参考：https://skaffold.dev/docs/references/cli/#skaffold-build
+
 #### ・--cache-artifacts
 
 キャッシュを無効化し、```build```コマンドを実行する。
@@ -112,10 +114,28 @@ build:
 
 ### tagPolicy
 
+#### ・gitCommit
+
+コミットIDをイメージタグとして設定する。
+
+参考：https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+
 ```yaml
 build:
   tagPolicy:
     gitCommit: {}
+```
+
+#### ・sha256
+
+sha256ハッシュ値と```latest```タグをイメージタグとして設定する。
+
+参考：https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
+
+```yaml
+build:
+  tagPolicy:
+    sha256: {}
 ```
 
 <br>
