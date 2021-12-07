@@ -12,7 +12,7 @@
         * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
         * カーネル
             * [📖 ︎カーネル](public/software/software_basic_kernel.md)
-            * [📖メモリ管理](public/software/software_basic_kernel_memory_management.md)
+            * [📖 ︎メモリ管理](public/software/software_basic_kernel_memory_management.md)
         * 言語プロセッサ
             * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
             * [📖 ︎言語別の処理方式](public/software/software_basic_language_processor_process_mode.md)
@@ -47,7 +47,7 @@
         * 言語
             * オブジェクト指向型言語
                 * PHP
-                    * [📖 PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
+                    * [📖 ︎PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
                     * クラスベース
                         * [📖 ︎クラス](public/software/software_application_object_oriented_language_php_class_based.md)
                         * [📖 ︎メソッド／データ](public/software/software_application_object_oriented_language_php_class_based_method_data.md)
@@ -107,7 +107,7 @@
     * [📖 ︎サイバー攻撃](public/security/security_cyber_attacks.md)
     * [📖 ︎通信データの暗号化技術](public/security/security_encryption_technology.md)
 
-* ☁️️ クラウドコンピューティング
+* ⛅️ クラウドコンピューティング
     * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
     * AWS
         * [📖 ︎AWS](public/cloud_computing/cloud_computing_aws.md)
@@ -146,7 +146,7 @@
                 * [📖 ︎skaffold](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md)
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
             * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
-    * ︎仮想サーバ（仮想マシン）
+    * 仮想サーバ（仮想マシン）
         * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
 
 * ♾️ CICD
