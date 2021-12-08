@@ -230,7 +230,7 @@
                 <a href="../software/software_basic_kernel_memory_management.html">
             
                     
-                    📖メモリ管理
+                    📖 ︎メモリ管理
             
                 </a>
             
@@ -759,7 +759,7 @@
                 <a href="../software/software_application_object_oriented_language_php_command_and_configuration.html">
             
                     
-                    📖 PHPコマンドと設定
+                    📖 ︎PHPコマンドと設定
             
                 </a>
             
@@ -1626,7 +1626,7 @@
                 <span>
             
                     
-                    ☁️️ クラウドコンピューティング
+                    ⛅️ クラウドコンピューティング
             
                 </span>
             
@@ -2174,7 +2174,7 @@
                 <span>
             
                     
-                    ︎仮想サーバ（仮想マシン）
+                    仮想サーバ（仮想マシン）
             
                 </span>
             
@@ -2622,11 +2622,30 @@
 <h2 id="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B3;&#x30DE;&#x30F3;&#x30C9;</h2>
 <h3 id="build"><a name="build" class="plugin-anchor" href="#build"><i class="fa fa-link" aria-hidden="true"></i></a>build</h3>
 <h4 id="&#x30FB;build&#x3068;&#x306F;"><a name="&#x30FB;build&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;build&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;build&#x3068;&#x306F;</h4>
-<p>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D3;&#x30EB;&#x30C9;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://skaffold.dev/docs/references/cli/#skaffold-build" target="_blank">https://skaffold.dev/docs/references/cli/#skaffold-build</a></p>
 <h4 id="&#x30FB;--cache-artifacts"><a name="&#x30FB;--cache-artifacts" class="plugin-anchor" href="#&#x30FB;--cache-artifacts"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--cache-artifacts</h4>
 <p>&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3057;&#x3001;<code>build</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ skaffold build --cache-artifacts<span class="token operator">=</span>false
+</code></pre>
+<p><br></p>
+<h3 id="dev"><a name="dev" class="plugin-anchor" href="#dev"><i class="fa fa-link" aria-hidden="true"></i></a>dev</h3>
+<h4 id="&#x30FB;dev"><a name="&#x30FB;dev" class="plugin-anchor" href="#&#x30FB;dev"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;dev</h4>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x76E3;&#x8996;&#x3057;&#x3001;&#x5909;&#x66F4;&#x304C;&#x691C;&#x51FA;&#x3055;&#x308C;&#x305F;&#x6642;&#x306B;&#x3001;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x518D;&#x30D3;&#x30EB;&#x30C9;&#xFF0F;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#xFF0F;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;--trigger"><a name="&#x30FB;--trigger" class="plugin-anchor" href="#&#x30FB;--trigger"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--trigger</h4>
+<p>&#x4E00;&#x5B9A;&#x9593;&#x9694;&#x3067;&#x30BD;&#x30FC;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5909;&#x66F4;&#x3092;&#x76E3;&#x8996;&#x3057;&#x3064;&#x3064;&#x3001;<code>dev</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ skaffold dev --trigger<span class="token operator">=</span>polling
+</code></pre>
+<h4 id="&#x30FB;--no-prune&#x3001;--cache-artifacts"><a name="&#x30FB;--no-prune&#x3001;--cache-artifacts" class="plugin-anchor" href="#&#x30FB;--no-prune&#x3001;--cache-artifacts"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--no-prune&#x3001;--cache-artifacts</h4>
+<p>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30AD;&#x30E3;&#x30C3;&#x30B7;&#x30E5;&#x305B;&#x305A;&#x3001;&#x307E;&#x305F;&#x5F8C;&#x51E6;&#x7406;&#x3067;&#x5168;&#x3066;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x524A;&#x9664;&#x3057;&#x3064;&#x3064;&#x3001;<code>dev</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ skaffold dev --no-prune<span class="token operator">=</span>false --cache-artifacts<span class="token operator">=</span>false
+</code></pre>
+<p><br></p>
+<h4 id="&#x30FB;run"><a name="&#x30FB;run" class="plugin-anchor" href="#&#x30FB;run"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;run</h4>
+<p>&#x30D0;&#x30C3;&#x30AF;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x3001;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;&#xFF0F;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;--tail"><a name="&#x30FB;--tail" class="plugin-anchor" href="#&#x30FB;--tail"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--tail</h4>
+<p>&#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;<code>run</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ skaffold run --tail
 </code></pre>
 <p><br></p>
 <h2 id="02-apiversion"><a name="02-apiversion" class="plugin-anchor" href="#02-apiversion"><i class="fa fa-link" aria-hidden="true"></i></a>02. apiVersion</h2>
@@ -2782,7 +2801,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎skaffold","level":"1.10.2.2.3.4","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.5","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","mtime":"2021-12-06T10:43:25.427Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-06T10:43:27.181Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎skaffold","level":"1.10.2.2.3.4","depth":5,"next":{"title":"📖 ︎Istio","level":"1.10.2.2.3.5","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"previous":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","mtime":"2021-12-08T00:39:51.837Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-08T00:39:59.211Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
