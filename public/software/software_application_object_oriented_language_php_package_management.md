@@ -136,11 +136,12 @@ $ composer clear-cache
 
 ### create-project
 
-パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```し、この中で```composer install```を実行することと同じである。
+パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```し、この中で```composer install```を実行することと同じである。新しいディレクトリを作成しつつ、プロジェクトのファイルを展開することもできるが、カレントディレクトリにそのまま展開した方が便利である。なお、ファイルが一つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
 参考：https://getcomposer.org/doc/03-cli.md#create-project
 
 ```bash
+# カレントディレクトリにプロジェクトを作成する。
 $ composer create-project --prefer-dist laravel/lumen .
 ```
 

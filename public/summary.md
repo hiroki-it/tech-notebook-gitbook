@@ -3,9 +3,7 @@
 ## 🧬 ソフトウェア
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
-
 * 基本ソフトウェア（OS）
-
     * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
     * カーネル
         * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
@@ -14,7 +12,6 @@
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
         * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_machine_language_and_radix.html)
-
 * ミドルウェア
     * [📖 ︎OS標準搭載のミドルウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_os.html)
     * Web関連
@@ -25,7 +22,6 @@
     * データベース関連
         * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html)
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
-
 * アプリケーションソフトウェア
     * アーキテクチャ
         * [📖 ︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_object_oriented_analysis_and_design.html)
@@ -117,7 +113,7 @@
 
 <br>
 
-## ☁️ クラウドコンピューティング
+## ⛅ クラウドコンピューティング
 
 * [📖 ︎クラウドコンピューティング](https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing.html)
 * AWS

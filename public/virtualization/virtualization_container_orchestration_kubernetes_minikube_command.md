@@ -138,6 +138,18 @@ $ minikube ip
 - https://minikube.sigs.k8s.io/docs/commands/ssh/
 - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
+ノードの中では```docker```コマンドを実行でき、イメージのデバッグも可能である。
+
+```bash
+$ minikube ssh  
+
+# ノードの中
+$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+
+# コンテナの中
+root@xxxxxxxxxx: 
+```
+
 #### ・オプション無し
 
 ```bash
@@ -175,8 +187,6 @@ $ minikube ssh
 $ pwd
 /home/docker
 ```
-
-
 
 <br>
 

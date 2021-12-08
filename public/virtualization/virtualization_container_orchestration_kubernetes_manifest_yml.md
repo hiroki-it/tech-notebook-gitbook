@@ -20,13 +20,21 @@ apiVersion: v1
 
 ## 02. kind
 
-オブジェクトの種類を設定する。ポッドをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。
-
-参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
+オブジェクトの種類を設定する。
 
 ```yaml
 kind: Service
 ```
+
+| 種類                  | 補足                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| Deployment            |                                                              |
+| Service               |                                                              |
+| PersistentVolume      |                                                              |
+| PersistentVolumeClaim |                                                              |
+| Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
+| ReplicaController     | 旧Deployment。非推奨である。<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
+| ReplicaSet            |                                                              |
 
 <br>
 

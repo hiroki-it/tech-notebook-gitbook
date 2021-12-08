@@ -805,6 +805,12 @@ variable "rds_parameter_group_values" {
 
 AWSのAPIに対してリクエストを送信し、クラウドインフラの構築を行う。
 
+#### ・リソースタイプ
+
+操作されるAWSリソースの種類のこと。AWSリソースタイプとTerraformのリソースタイプはおおよそ一致している。
+
+参考：https://docs.aws.amazon.com/ja_jp/config/latest/developerguide/resource-config-reference.html
+
 #### ・実装方法
 
 **＊実装例＊**

@@ -16,7 +16,121 @@
 
 <br>
 
-## 02. aws-sdk-go-v2
+## 02. 外部パッケージの管理
+
+### コマンド
+
+#### ・```go mod tidy```
+
+インポートされているパッケージに合わせて、```go.mod```ファイルと```go.sum```ファイルを更新する。
+
+```bash
+$ go mod tidy
+```
+
+もし```go.sum```ファイルがあるのにもかかわらず、以下のようなエラーが出る時は、```go mod tidy```コマンドを実行して```go.sum```ファイルを更新する必要がある。
+
+```bash
+cmd/main.go:4:5: missing go.sum entry for module providing package github.com/foo/foo-package (imported by github.com/hiroki-it/bar/cmd); to add:
+        go get github.com/hiroki-it/bar/cmd
+```
+
+<br>
+
+### go.modファイル
+
+#### ・```go.mod```ファイルとは
+
+PHPにおける```composer.json```ファイルに相当する。インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。インストールしたい外部パッケージも定義できる。
+
+```
+module github.com/hiroki-it/foo_repository
+
+go 1.16
+```
+
+#### ・インターネットからインポート
+
+パッケージ名とバージョンタグを用いて、インターネットからパッケージをインポートする。```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。これは、用いているパッケージではなく、インポートしているパッケージが依存しているパッケージである。なお、パッケージ名は、用いたいパッケージの```go.mod```ファイルを参照すること。
+
+参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+
+```
+module github.com/hiroki-it/repository
+
+go 1.16
+
+require (
+    <パッケージ名> <バージョンタグ>
+    github.com/foo v1.3.0
+    github.com/bar v1.0.0
+    github.com/baz // indirect
+)
+```
+
+```go
+import "github.com/bar"
+
+func main() {
+    // 何らかの処理
+}
+```
+
+#### ・ローカルPCからインポート
+
+ローカルPCでのみ用いる独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を用いてインポートする必要がある。独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すればよい。パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
+
+参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
+
+```
+module foo.com/hiroki-it/repository
+
+go 1.16
+
+replace github.com/hiroki-it/foo_repository => /
+```
+
+また、ルートディレクトリだけでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
+
+```bash
+foo_repository
+├── cmd
+│   └── hello.go
+│ 
+├── go.mod
+├── go.sum
+└── local-pkg
+    ├── go.mod # 各パッケージにgo.modを配置する。
+    └── module.go
+```
+
+```
+module foo.com/hiroki-it/foo_repository/local-pkg
+
+go 1.16
+```
+
+これらにより、ローカルのパッケージをインポートできるようになる。
+
+```go
+import "local.packages/local-pkg"
+
+func main() {
+    // 何らかの処理
+}
+```
+
+<br>
+
+### go.sumファイル
+
+#### ・```go.sum```ファイルとは
+
+PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、ライブラリに変更があるかどうかを検知できる。
+
+<br>
+
+## 03. aws-sdk-go-v2
 
 ### aws-sdk-go-v2とは
 
@@ -43,7 +157,7 @@
 
 <br>
 
-## 03. aws-lambda-go
+## 04. aws-lambda-go
 
 以下のリンク先を参考にせよ。
 
@@ -51,7 +165,7 @@
 
 <br>
 
-## 04. gorm
+## 05. gorm
 
 ### gormとは
 
@@ -296,7 +410,7 @@ db.Save(&user)
 
 <br>
 
-## 05. testify
+## 06. testify
 
 ### testifyとは
 
@@ -460,7 +574,7 @@ func (suite *FooSuite) TestMethod() {
 
 <br>
 
-## 06. validator
+## 07. validator
 
 ### validatorとは
 
@@ -563,107 +677,3 @@ func main() {
 
 <br>
 
-## 07. 外部パッケージの管理
-
-### コマンド
-
-#### ・```go mod tidy```
-
-インポートされているパッケージに合わせて、```go.mod```ファイルと```go.sum```ファイルを更新する。
-
-```bash
-$ go mod tidy
-```
-
-<br>
-
-### go.modファイル
-
-#### ・```go.mod```ファイルとは
-
-PHPにおける```composer.json```ファイルに相当する。インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。インストールしたい外部パッケージも定義できる。
-
-```
-module github.com/hiroki-it/foo_repository
-
-go 1.16
-```
-
-#### ・インターネットからインポート
-
-パッケージ名とバージョンタグを用いて、インターネットからパッケージをインポートする。```go mod tidy```コマンドによって```indirect```コメントのついたパッケージが実装される。これは、用いているパッケージではなく、インポートしているパッケージが依存しているパッケージである。なお、パッケージ名は、用いたいパッケージの```go.mod```ファイルを参照すること。
-
-参考：https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
-
-```
-module github.com/hiroki-it/repository
-
-go 1.16
-
-require (
-    <パッケージ名> <バージョンタグ>
-    github.com/foo v1.3.0
-    github.com/bar v1.0.0
-    github.com/baz // indirect
-)
-```
-
-```go
-import "github.com/bar"
-
-func main() {
-    // 何らかの処理
-}
-```
-
-#### ・ローカルPCからインポート
-
-ローカルPCでのみ用いる独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、```replace```関数を用いてインポートする必要がある。独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すればよい。パス実際、```unknown revision```のエラーで、バージョンを見つけられない。
-
-参考：https://qiita.com/hnishi/items/a9217249d7832ed2c035
-
-```
-module foo.com/hiroki-it/repository
-
-go 1.16
-
-replace github.com/hiroki-it/foo_repository => /
-```
-
-また、ルートディレクトリだけでなく、各パッケージにも```go.mod```ファイルを配置する必要がある。
-
-```bash
-foo_repository
-├── cmd
-│   └── hello.go
-│ 
-├── go.mod
-├── go.sum
-└── local-pkg
-    ├── go.mod # 各パッケージにgo.modを配置する。
-    └── module.go
-```
-
-```
-module foo.com/hiroki-it/foo_repository/local-pkg
-
-go 1.16
-```
-
-これらにより、ローカルのパッケージをインポートできるようになる。
-
-```go
-import "local.packages/local-pkg"
-
-func main() {
-    // 何らかの処理
-}
-```
-
-<br>
-
-### go.sumファイル
-
-#### ・```go.sum```ファイルとは
-
-PHPにおける```composer.lock```ファイルに相当する。```go.mod```ファイルによって実際にインストールされたパッケージが自動的に実装される。パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、ライブラリに変更があるかどうかを検知できる。
