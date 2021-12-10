@@ -4022,21 +4022,42 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 22. RDS：Relational Database Service
 
-### DBエンジン
+### 設定項目
+
+#### ・DBエンジン
 
 | 設定項目           | 説明                                                         | 補足                                                         |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| エンジンタイプ     | DBエンジンの種類を設定する。                                 | Auroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただ、その分費用が高いことに注意する。<br>参考：https://www.ragate.co.jp/blog/articles/10234 |
+| エンジンタイプ     | ミドルウェアのDBMSの種類を設定する。                         |                                                              |
 | エディション       | エンジンバージョンでAuroraを選んだ場合の互換性を設定する。   |                                                              |
 | エンジンバージョン | DBエンジンのバージョンを設定する。DBクラスター内の全てのDBインスタンスに適用される。 | ・Auroraであれば、```SELECT AURORA_VERSION()```を用いて、エンジンバージョンを確認できる。 |
 
+#### ・Auroraと非Aurora
+
+RDBがAuroraか非Auroraかで機能に差があり、Auroraの方が耐障害性や可用性が高い。ただ、その分費用が高いことに注意する。
+
+参考：https://www.ragate.co.jp/blog/articles/10234
+
+| DBMSの種類        | RDBの種類                          |
+| ----------------- | ---------------------------------- |
+| MySQL／PostgreSQL | Amazon Aurora                      |
+| MariaDB           | MariaDBデータベース（非Aurora）    |
+| MySQL             | MySQLデータベース（非Aurora）      |
+| PostgreSQL        | PostgreSQLデータベース（非Aurora） |
+
 <br>
 
-### OSとミドルウェア
+### OSの隠蔽
+
+#### ・OSの隠蔽とは
+
+RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。そのためDBサーバのようには操作できず、OSのバージョン確認やssh接続を行えない。
+
+参考：https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
 
 #### ・確認方法
 
-RDSのOSとミドルウェアをSQLで確認できる。
+Linux x86_64が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。
 
 ```sql
 # Auroraの場合
@@ -4075,18 +4096,123 @@ SHOW variables LIKE '%version%';
 +-------------------------+------------------------------+
 ```
 
-#### ・ミドルウェア
-
-RDSにはDBMSが搭載されている。
-
-| DBMSの種類        | RDBの種類              |
-| ----------------- | ---------------------- |
-| MySQL／PostgreSQL | Amazon Aurora          |
-| MariaDB           | MariaDBデータベース    |
-| MySQL             | MySQLデータベース      |
-| PostgreSQL        | PostgreSQLデータベース |
-
 <br>
+
+### メンテナンスウインドウ
+
+#### ・メンテナンスウインドウ
+
+DBクラスター／DBインスタンスの設定の変更をスケジューリングする。
+
+参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+
+#### ・保留中のメンテナンスとは
+
+![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
+
+ユーザが予定した設定変更に加えて、定期的に行われるハードウェア／OS／DBエンジンのバージョンを強制的にアップグレードが表示される。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
+
+ちなみに保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
+
+参考：https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
+
+![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance_action.png)
+
+#### ・保留中のメンテナンスの状態
+
+| 状態           | 説明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| 必須           | アクションは実行可能かつ必須である。実行タイミングは未定であるが、適用期限日には必ず実行され、これは延期できない。 |
+| 利用可能       | アクションは実行可能であるが、推奨である。実行タイミングは未定である。 |
+| 次のウィンドウ | アクションの実行タイミングは、次回のメンテナンスウィンドウである。後でアップグレードを選択することで、『利用可能』の状態に戻すことも可能。 |
+| 進行中         | 現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。 |
+
+#### ・『次のウィンドウ』状態の取り消し
+
+設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。しかし、CLIを用いると戻せる。
+
+参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+
+```bash
+$ aws rds describe-pending-maintenance-actions --output=table
+
+-----------------------------------------------------------------------------------
+|                        DescribePendingMaintenanceActions                        |
++---------------------------------------------------------------------------------+
+||                           PendingMaintenanceActions                           ||
+|+---------------------+---------------------------------------------------------+|
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:*****:db:prd-foo-instance   ||
+|+---------------------+---------------------------------------------------------+|
+|||                       PendingMaintenanceActionDetails                       |||
+||+--------------------------+--------------------------------------------------+||
+|||  Action                  |  system-update # 予定されたアクション                |||
+|||  AutoAppliedAfterDate    |  2022-01-31T00:00:00+00:00                       |||
+|||  CurrentApplyDate        |  2022-01-31T00:00:00+00:00                       |||
+|||  Description             |  New Operating System update is available        |||
+|||  ForcedApplyDate         |  2022-03-30T00:00:00+00:00                       |||
+||+--------------------------+--------------------------------------------------+||
+||                           PendingMaintenanceActions                           ||
+|+---------------------+---------------------------------------------------------+|
+||  ResourceIdentifier |  arn:aws:rds:ap-northeast-1:*****:db:prd-bar-instance   ||
+|+---------------------+---------------------------------------------------------+|
+|||                       PendingMaintenanceActionDetails                       |||
+||+--------------------------+--------------------------------------------------+||
+|||  Action                  |  system-update                                   |||
+|||  AutoAppliedAfterDate    |  2022-01-31T00:00:00+00:00                       |||
+|||  CurrentApplyDate        |  2022-01-31T00:00:00+00:00                       |||
+|||  Description             |  New Operating System update is available        |||
+|||  ForcedApplyDate         |  2022-03-30T00:00:00+00:00                       |||
+||+--------------------------+--------------------------------------------------+||
+```
+
+
+```bash
+$ aws rds apply-pending-maintenance-action \
+  --resource-identifier arn:aws:rds:ap-northeast-1:*****:db:prd-foo-instance \
+  --opt-in-type undo-opt-in \
+  --apply-action <取り消したいアクション名>
+```
+
+#### ・ミドルウェアのアップグレードの調査書
+
+以下のような報告書のもと、調査と対応を行う。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
+
+またマージされる内容の調査のため、リリースノートの確認が必要になる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
+
+```markdown
+# 調査
+
+## バージョンの違い
+
+『SELECT AURORA_VERSION()』を用いて、正確なバージョンを取得する。
+
+## マージされる内容
+
+ベンダーのリリースノートを確認し、どのような『機能追加』『バグ修正』『機能廃止』『非推奨機能』がマージされるかを調査する。
+機能廃止や非推奨機能がある場合、アプリケーション内のSQL文に影響が出る可能性がある。
+
+## 想定されるダウンタイム
+
+テスト環境でダウンタイムを計測し、ダウンタイムを想定する。
+```
+
+```markdown
+# 本番環境対応
+
+## 日時と周知
+
+対応日時と周知内容を決定する。
+
+## 想定外の結果
+
+本番環境での対応で起こった想定外の結果を記載する。
+```
 
 <br>
 
@@ -4186,18 +4312,6 @@ Auroraでは、OS、エンジンバージョン、MySQLなどのアップグレ�
 非Auroraに記載された情報のため、厳密にはAuroraのダウンタイムではない。ただ、経験上同じ項目でダウンタイムが発生しているため、参考にする。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
-
-| 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
-| ------------------------------------ | ------------------ | ------------------------------------------------------------ |
-| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム（約6～8分）が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br/>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
-| サブネットグループ                   | あり               |                                                              |
-| エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータの量、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU |
-| メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。 |
-| バックアップウインドウ               | 条件付きでなし     | ```0```から```0```以外の値、```0```以外の値から```0```に変更した場合、ダウンタイムが発生する。 |
-| パラメータグループ                   | なし               | パラメータグループの変更ではダウンタイムは発生しない。ただし、パラメータグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。 |
-| セキュリティグループ                 | なし               |                                                              |
-| マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。 |
-| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメータグループの```performance_schema```を有効化する必要がある。パラメータグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。 |
 
 #### ・エンジンタイプによるダウンタイムの最小化
 
@@ -4307,61 +4421,6 @@ NOW()
 
 <b>
 
-### メンテナンスウインドウ
-
-#### ・メンテナンスウインドウ
-
-DBクラスター／DBインスタンスの設定の変更をスケジューリングする。
-
-#### ・メンテナンスウインドウの状態
-
-メンテナスウインドウには、以下の状態がある。
-
-| 状態           | 説明                                                         |
-| -------------- | ------------------------------------------------------------ |
-| 利用可能       | アクションは実行可能である。また、以降のメンテナンスウィンドウの間に自動的に実行することはない。 |
-| 次のウィンドウ | アクションは実行可能である。また、次回のメンテナンスウィンドウの間に、アクションを自動的に実行する。後でアップグレードを選択することで、『利用可能』の状態に戻すことも可能。 |
-| 必須           | アクションは実行可能である。また、指定されたメンテナンスウィンドウの間に必ず実行され、これは延期できない。 |
-| 進行中         | 現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。 |
-
-#### ・次のウィンドウで実行
-
-![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
-
-AWSではOSのアップグレードを定期的に強制実行する。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。この時、『次のメンテナンスウィンドウで適用』を選ぶ必要があり、一度選んでしまうとこれは画面上から元に戻せない。しかし、CLIを用いると取り消せる。
-
-参考：https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
-
-```bash
-$ aws rds describe-pending-maintenance-actions
-{
-    "PendingMaintenanceActions": [
-        {
-            "ResourceIdentifier": "arn:aws:rds:ap-northeast-1:*****:db:foo-rds-cluster",
-            "PendingMaintenanceActionDetails": [
-                {
-                    "Action": "system-update", # 予定されたアクション名
-                    "AutoAppliedAfterDate": "2022-01-31T00:00:00+00:00",
-                    "ForcedApplyDate": "2022-03-30T00:00:00+00:00",
-                    "CurrentApplyDate": "2022-01-31T00:00:00+00:00",
-                    "Description": "New Operating System update is available"
-                }
-            ]
-        }
-    ]
-}
-```
-
-
-```bash
-$ aws rds apply-pending-maintenance-action \
-  --resource-identifier arn:aws:rds:ap-northeast-1:*****:db:foo-rds-cluster \
-  --opt-in-type undo-opt-in \
-  --apply-action <取り消したいアクション名>
-```
-
-<br>
-
 ### フェイルオーバー
 
 #### ・Auroraのフェイルオーバーとは
@@ -4448,49 +4507,6 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-### ミドルウェアのアップグレード
-
-#### ・調査書
-
-以下のような報告書のもと、調査と対応を行う。
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html
-
-またマージされる内容の調査のため、リリースノートの確認が必要になる。
-
-参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.11Updates.html
-
-```markdown
-# 調査
-
-## バージョンの違い
-
-『SELECT AURORA_VERSION()』を用いて、正確なバージョンを取得する。
-
-## マージされる内容
-
-ベンダーのリリースノートを確認し、どのような『機能追加』『バグ修正』『機能廃止』『非推奨機能』がマージされるかを調査する。
-機能廃止や非推奨機能がある場合、アプリケーション内のSQL文に影響が出る可能性がある。
-
-## 想定されるダウンタイム
-
-テスト環境でダウンタイムを計測し、ダウンタイムを想定する。
-```
-
-```markdown
-# 本番環境対応
-
-## 日時と周知
-
-対応日時と周知内容を決定する。
-
-## 想定外の結果
-
-本番環境での対応で起こった想定外の結果を記載する。
-```
-
-<br>
-
 ### イベント
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探した方が良い。
@@ -4506,6 +4522,18 @@ MySQL > SHOW GLOBAL VARIABLES LIKE 'max_connections';
 #### ・ダウンタイムの発生条件
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+
+| 変更する項目                         | ダウンタイムの有無 | 補足                                                         |
+| ------------------------------------ | ------------------ | ------------------------------------------------------------ |
+| インスタンスクラス                   | あり               | ・二つのインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかる通り、長いダウンタイム（約6～8分）が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>参考https://dev.classmethod.jp/articles/rds-scaleup-instancetype/<br>・プライマリインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br/>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_change-instance-class_read-replica.png) |
+| サブネットグループ                   | あり               |                                                              |
+| エンジンバージョン                   | あり               | ```20```～```30```秒のダウンタイムが発生する。この時間は、ワークロード、クラスターサイズ、バイナリログデータの量、ゼロダウンタイムパッチ適用の発動可否、によって変動する。<br>参考：<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html<br>・https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU<br>また、メジャーバージョンのアップグレードには```10```分のダウンタイムが発生する。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
+| メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。 |
+| バックアップウインドウ               | 条件付きでなし     | ```0```から```0```以外の値、```0```以外の値から```0```に変更した場合、ダウンタイムが発生する。 |
+| パラメータグループ                   | なし               | パラメータグループの変更ではダウンタイムは発生しない。ただし、パラメータグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。 |
+| セキュリティグループ                 | なし               |                                                              |
+| マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。 |
+| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメータグループの```performance_schema```を有効化する必要がある。パラメータグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。 |
 
 <br>
 

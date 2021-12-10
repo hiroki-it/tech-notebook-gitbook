@@ -1014,13 +1014,35 @@ workflows:
 
 #### ・環境変数の出力方法
 
-環境変数を```echo```の引数に設定する。あらかじめエンコードされた環境変数を管理しておき、```base64 --decode```を実行して出力すると、安全に環境変数を管理できる。ここで出力している環境変数は、以下のノートを参考にせよ
+Linuxにおける環境変数の出力方法と同様である。また、文字列の中に値を出力する変数展開の場合、```${}```を用いる。
+
+```yaml
+# 変数展開の場合
+steps:
+  - checkout
+  - run:
+     name: echo FOO
+     command: |
+       echo $FOO
+       echo "This is ${FOO}"
+```
+
+#### ・```.env```ファイルの安全な複製方法
+
+アプリケーションの```.env```ファイルをCirlcCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。ここで出力している環境変数は、以下のノートを参考にせよ
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_framework_nuxtjs.html
 
+```bash
+$ cat .env | base64
+
+******************* # 表示されるエンコード値をProject変数として管理
+*******************
+```
+
 ```yaml
 jobs:
-  build_and_
+  build
     docker:
       - image: circleci/python:3.8-node
     steps:
@@ -1028,11 +1050,8 @@ jobs:
       - run:
           name: Make env file
           command: |
-            echo $API_URL_BROWSER | base64 --decode > .env
-            echo $API_URL | base64 --decode >> .env
-            echo $OAUTH_CLIENT_ID | base64 --decode >> .env
-            echo $OAUTH_CLIENT_SECRET | base64 --decode >> .env
-            echo $GOOGLE_MAP_QUERY_URL | base64 --decode >> .env
+            # エンコード値をデコードし、envファイルを複製
+            echo $ENV_FILE | base64 -di > .env
        - run:
            name: Install node module
            commands: |
@@ -1041,18 +1060,6 @@ jobs:
            name: Generate nuxt-ts
            commands: |
              yarn nuxt-ts generate
-```
-
-なお、文字列の中に値を出力する変数展開の場合、```${}```を用いる。
-
-```yaml
-# 変数展開の場合
-steps:
-  - checkout
-  - run:
-      name: FOO
-      commands: |
-        echo "This is ${FOO}"
 ```
 
 <br>

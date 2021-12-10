@@ -10,7 +10,7 @@
 
 ## 01. コマンド
 
-#### serverモード
+### serverモード（SSRモード）
 
 #### ・serverモードとは
 
@@ -44,7 +44,7 @@ $ nuxt start
 
 <br>
 
-### staticモード
+### staticモード（SSGモード）
 
 #### ・staticモードとは
 
@@ -54,7 +54,7 @@ $ nuxt start
 
 #### ・```dev```
 
-ローカル環境として用いるため、アプリケーションをビルドし、Nodeサーバを起動する。Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+ローカル環境でSSGを稼働させるために使用する。Nodeサーバを起動し、サーバ内でJavaScriptから静的ファイルを生成する。そのため、SSGは完全な静的ファイルでない。また、```build```コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
 ```bash
 $ nuxt dev
@@ -70,7 +70,7 @@ $ nuxt build
 
 #### ・```generate```
 
-JavaScriptから静的ファイルを生成する。ビルド時にバックエンドに接続し、データベースに格納したデータ（例：画像ファイルパス）を元に、静的ファイルをビルドすることも可能である。SSGモードのために用いる。
+本番環境でSSGを稼働させるために使用する。```dev```コマンドとは異なり、Nodeサーバは起動せず、そのままJavaScriptから静的ファイルを生成する。そのため、SSGは完全な静的ファイルからなる。ビルド時にバックエンドに接続し、データベースに格納したデータ（例：画像ファイルパス）を元に、静的ファイルをビルドすることも可能である。SSGモードのために用いる。
 
 ```bash
 $ nuxt generate
@@ -88,7 +88,7 @@ $ nuxt start
 
 ### ビルド時のWebpackオプション
 
-serverモードとstaticモードにおいて、```build```コマンド時に用いられるWebpackの最適化方法を指定できる。`
+SSRモードとSSGモードにおいて、```build```コマンド時に用いられるWebpackの最適化方法を指定できる。`
 
 https://ja.nuxtjs.org/docs/2.x/get-started/commands#webpack-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E6%A4%9C%E6%9F%BB
 
@@ -175,7 +175,7 @@ const nuxtConfig: Configuration = {
 
 ####  ・```privateRuntimeConfig```
 
-SSRモードでのみ使用できる環境変数を定義する。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。ブラウザのJavaScriptソースタブで公開されてしまうため、機密な値は設定しないようにする。もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+クライアントサイドのみで参照できる環境変数を定義する。すなわち、SSRモードのクライアント側のみが対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。ブラウザのJavaScriptソースタブで公開されてしまうため、機密な値は設定しないようにする。もし```publicRuntimeConfig```で同じ名前の変数が設定されていた場合は、この値を上書きする。環境変数は、```context```オブジェクトの```config```変数から取得できる。
 
 参考：
 
@@ -214,7 +214,7 @@ export function foo() {
 
 #### ・```publicRuntimeConfig```
 
-SPAモードまたはSSRモードで使用できる環境変数を定義する。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+サーバーサイドとクライアントサイドの両方で参照できる環境変数を定義する。すなわち、全モード（SSG／SPA／SSRモード）が対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
 
 参考：
 
@@ -294,7 +294,7 @@ const nuxtConfig: Configuration = {
 
 ### ```dist：distribution```
 
-staticモードの```generate```コマンドの実行時に、アーティファクトが配置される。
+SSGモードの```generate```コマンドの実行時に、アーティファクトが配置される。
 
 参考：https://nuxtjs.org/ja/docs/directory-structure/dist
 

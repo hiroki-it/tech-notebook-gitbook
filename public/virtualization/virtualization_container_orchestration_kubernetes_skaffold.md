@@ -142,6 +142,12 @@ build:
 
 ### local
 
+#### ・useBuildkit
+
+BuildKit機能の有効化を設定する。BuildKitではイメージレイヤーが並列的に構築されるため、ビルド時間を従来よりも短縮できる。
+
+参考：https://genzouw.com/entry/2021/07/17/100615/2724/
+
 ```yaml
 build:
   local:

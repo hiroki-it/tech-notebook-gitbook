@@ -93,9 +93,36 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・サービスとは
 
-ポッドにリクエストを転送するロードバランサーのこと。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
+ポッドにリクエストを転送する。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
+
+#### ・ClusterIPサービス
+
+参考：https://thinkit.co.jp/article/18263
+
+#### ・NodePortサービス
+
+参考：https://thinkit.co.jp/article/18263
+
+#### ・LoadBalancerサービス
+
+参考：https://thinkit.co.jp/article/18263
+
+<br>
+
+### イングレス
+
+#### ・イングレスとは
+
+![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
+
+クラスター外部からのリクエストを受信し、サービスに転送する。NodePortサービスやLoadBalancerサービスと同様に、外部からのリクエストを受信する方法の一つである。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
+- https://thinkit.co.jp/article/18263
 
 <br>
 
@@ -423,6 +450,23 @@ $ kubectl logs <ポッド名> <コンテナ名>
 ```
 
 <br>
+
+### port-forward
+
+#### ・port-forwardとは
+
+ホストのポートから、指定したオブジェクトのポートに対して、ポートフォワーディングを実行する。SQLクライアントを用いて、ポッド内のDBコンテナに接続したい時に使用する。
+
+参考：
+
+- https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
+- https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
+
+```bash
+$ kubectl port-forward foo-pod-mysql-1234567  33061:3306
+```
+
+
 
 ### proxy
 
