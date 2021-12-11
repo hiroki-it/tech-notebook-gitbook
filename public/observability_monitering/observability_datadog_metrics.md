@@ -69,7 +69,7 @@
 
 #### ・トレースエージェントとは
 
-Dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true```を割り当てると、トレースエージェントが有効になる。APMエージェントを有効化し、分散トレースを収集できる。APMでは、分散トレースを元にして、サービス間の依存関係をサービスマップとして確認できる。
+dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true```を割り当てると、トレースエージェントが有効になる。APMエージェントを有効化し、分散トレースを収集できる。APMでは、分散トレースを元にして、サービス間の依存関係をサービスマップとして確認できる。
 
 参考：
 
@@ -78,7 +78,7 @@ Dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・環境変数
 
-一部の環境変数は、Dockerエージェントの環境変数と重なる。
+一部の環境変数は、dockerエージェントの環境変数と重なる。
 
 参考：https://docs.datadoghq.com/ja/agent/docker/apm/?tab=linux#docker-apm-agent-%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0
 
@@ -92,7 +92,7 @@ Dockerエージェントにて、```DD_APM_ENABLED```の環境変数に```true``
 
 #### ・Datadogコンテナとは
 
-Datadogが提供するdatadogイメージによって構築されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog Dockerエージェントが、コンテナからメトリクスを収集し、Datadogにこれを転送する。
+Datadogが提供するdatadogイメージによって構築されるコンテナであり、コンテナのサイドカーコンテナとして配置される。コンテナ内で稼働するDatadog dockerエージェントが、コンテナからメトリクスを収集し、Datadogにこれを転送する。
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E6%A6%82%E8%A6%81
 

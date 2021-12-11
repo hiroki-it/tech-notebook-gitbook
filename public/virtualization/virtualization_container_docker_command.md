@@ -18,19 +18,19 @@
 
 <br>
 
-### Dockerクライアント
+### dockerクライアント
+    
+#### ・dockerクライアントとは
 
-#### ・Dockerクライアントとは
-
-Dockerクライアントは、dockerコマンドを使用してDockerデーモンAPIをコールできる。
+dockerクライアントは、dockerコマンドを使用してdockerデーモンAPIをコールできる。
 
 <br>
 
-### Dockerデーモン
+### dockerデーモン
 
-#### ・Dockerデーモンとは
+#### ・dockerデーモンとは
 
-ホスト側で稼働し、コンテナの操作を担う常駐プログラム。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+ホスト側で稼働し、コンテナの操作を担う常駐プログラム。dockerクライアントにdockerデーモンAPIを公開する。クライアントがdockerコマンドを実行すると、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 <br>
 
@@ -158,7 +158,7 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 # デタッチドモードによって起動中コンテナに接続
 $ docker attach <起動中コンテナ名>
 
-# PID=1で、1つの/bin/bashプロセスが稼働していることを確認できる
+# PID=1で、１つの/bin/bashプロセスが稼働していることを確認できる
 [root@<ホスト名>:~] ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
@@ -494,7 +494,7 @@ $ docker stop $(docker ps --all --quiet)
 
 **＊コマンド例＊**
 
-ホスト側のDockerエリアにVolumeを作成
+ホスト側のdockerエリアにボリュームを作成
 
 ```bash
 $ docker volume create <ボリューム名>
@@ -504,7 +504,7 @@ $ docker volume create <ボリューム名>
 
 **＊コマンド例＊**
 
-DockerエリアのVolumeの一覧を表示
+dockerエリアのVolumeの一覧を表示
 
 ```bash
 $ docker volume ls
@@ -514,7 +514,7 @@ $ docker volume ls
 
 **＊コマンド例＊**
 
-DockerエリアのVolumeを削除
+dockerエリアのボリュームを削除
 
 ```bash
 $ docker volume rm <ボリューム名>
@@ -524,7 +524,7 @@ $ docker volume rm <ボリューム名>
 
 **＊コマンド例＊**
 
-DockerエリアのVolumeの詳細を表示
+dockerエリアのVolumeの詳細を表示
 
 ```bash
 $ docker volume inspect <ボリューム名>
@@ -547,7 +547,7 @@ $ docker volume inspect <ボリューム名>
 ```
 
 ```bash
-# Dockerエリアをボリュームマウントして起動
+# dockerエリアをボリュームマウントして起動
 # マウントポイントのボリューム名を使用
 $ docker run -d -it --name <コンテナ名> /bin/bash \
   --mount type=volume, src=<ホストボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
@@ -555,7 +555,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 **＊実装例＊**
 
-Dockerfileでボリュームマウントを行う場合、マウント先のコンテナ側ディレクトリ名を設定する。Dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
+Dockerfileでボリュームマウントを行う場合、マウント先のコンテナ側ディレクトリ名を設定する。dockerエリアのマウントポイントは、自動的に作成される。Docker Composeで行うことが推奨されている。
 
 ```dockerfile
 FROM ubuntu
@@ -672,9 +672,9 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 ### 各ベンダーのイメージのログ出力先
 
-#### ・Dockerコンテナの標準出力／標準エラー出力
+#### ・dockerコンテナの標準出力／標準エラー出力
 
-Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。Dockerコンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
+Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。dockerコンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
 
 ```bash
 [root@*****:/dev] ls -la

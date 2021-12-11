@@ -199,6 +199,6 @@
 
 <br>
 
-## 📊 統計解析
+## 📊 統計分析
 
 * [📖 ︎R言語](https://hiroki-it.github.io/tech-notebook-gitbook/public/statistic_analysis/statistic_analysis_r.html)

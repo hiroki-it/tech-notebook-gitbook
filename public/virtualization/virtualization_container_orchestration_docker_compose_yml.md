@@ -4,7 +4,7 @@
 
 ### ```services```とは
 
-コンテナオーケストレーションにおける一つのコンテナを定義する。コンテナ名と異なり、サービス名は他のプロジェクトと重複してもよい。```docker-compose```コマンドの引数として指定するため、できるだけ簡潔にする。オプション一覧は以下を参考にせよ。
+コンテナオーケストレーションにおける１つのコンテナを定義する。コンテナ名と異なり、サービス名は他のプロジェクトと重複してもよい。```docker-compose```コマンドの引数として指定するため、できるだけ簡潔にする。オプション一覧は以下を参考にせよ。
 
 参考：https://docs.docker.jp/compose/compose-file.html
 
@@ -56,7 +56,7 @@ services:
 
 #### ・```context```
 
-指定したDockerfileのあるディレクトリをカレントディレクトリとして、Dockerデーモン（Dockerエンジン）に送信するディレクトリを設定する。 
+指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。 
 
 **＊実装例＊**
 
@@ -267,7 +267,7 @@ services:
 
 ### ```networks```
 
-![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dockerエンジン内の仮想ネットワーク.jpg)
 
 コンテナを接続する内部／外部ネットワークのエイリアス名を設定する。ネットワーク名ではなく、エイリアス名を指定することに注意する。
 
@@ -441,7 +441,7 @@ services:
 
 ### ```volumes```（ボリュームマウント）
 
-最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。DockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
+最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。dockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
 
 **＊実装例＊**
 
@@ -455,7 +455,7 @@ service:
 volumes:
   # ボリューム名
   mysql_volume:
-    # localで、ホスト側のDockerエリアを指定
+    # localで、ホスト側のdockerエリアを指定
     driver: local   
 ```
 

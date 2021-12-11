@@ -19,29 +19,57 @@
 
 ![kubernetes_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_overview.png)<br>
 
-### Kubernetesクライアント
+### kubernetesクライアント
 
-#### ・Kubernetesクライアントとは
+#### ・kubernetesクライアントとは
 
-Kubernetesクライアントは、kubectlコマンドを使用して、KubernetesマスターAPIをコールできる。
+kubernetesクライアントは、kubectlコマンドを使用して、kubernetesマスターAPIをコールできる。
 
 <br>
 
-### Kubernetesマスター（マスターノード）
+### kubernetesマスター（マスターノード）
 
-#### ・Kubernetesマスターとは
+#### ・kubernetesマスターとは
 
-ワーカーノードの操作を担う。『マスターノード』ともいう。クライアントがkubectlコマンドの実行すると、apiserverがコールされ、コマンドに沿ってワーカーノードが操作される。
+ワーカーノードの操作を担う。『マスターノード』ともいう。クライアントがkubectlコマンドの実行すると、kube-apiserverがコールされ、コマンドに沿ってワーカーノードが操作される。
 
 参考：https://kubernetes.io/ja/docs/concepts/#kubernetes%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC
 
-#### ・apiserver
+#### ・cloud-controller-manager
 
-KubernetesクライアントにコマンドのAPIを提供する。
+kub-apiserverとクラウドインフラを仲介し、Kubernetesがクラウドインフラを操作できるようにする。
 
-#### ・controller-manager
+![kubernetes_cloud-controller-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_cloud-controller-manager.png)
 
-#### ・scheduler
+#### ・etcd
+
+クラスターの様々な設定値を保持し、冗長化されたオブジェクト間にこれを共有する。
+
+参考：https://thinkit.co.jp/article/17453
+
+![kubernetes_etcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_etcd.png)
+
+#### ・kube-apiserver
+
+kubernetesクライアントにkueneretes-APIを公開する。クライアントがkubernetesコマンドを実行すると、kubernetes-APIがコールされ、コマンドに沿ってオブジェクトが操作される。
+
+参考：https://thinkit.co.jp/article/17453
+
+![kubernetes_kube-apiserver](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-apiserver.png)
+
+#### ・kube-controller-manager
+
+様々なコントローラを統括的に実行する。
+
+参考：https://thinkit.co.jp/article/17453
+
+#### ・kuebe-scheduler
+
+ワーカーノードとポッドのスペックに基づいて、ワーカーノードに配置される適切なポッド数を決定する。
+
+参考：https://thinkit.co.jp/article/17453
+
+![kubernetes_kube-scheduler](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-scheduler.png)
 
 <br>
 
@@ -61,15 +89,31 @@ KubernetesクライアントにコマンドのAPIを提供する。
 
 参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
 
-#### ・Kubelet
+#### ・コンテナランタイム（コンテナエンジン）
 
-#### ・コンテナエンジン
+イメージのプル、コンテナ構築削除、コンテナ起動停止、などを行う。
 
-コンテナ起動停止、イメージのプル、などを行う。
+参考：https://thinkit.co.jp/article/17453
+
+#### ・kubelet
+
+kube-apiserverからコールされる。ワーカーノードのコンテナランタイムを操作し、ポッドを作成する。
+
+参考：https://thinkit.co.jp/article/17453
+
+![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
 #### ・Kubeプロキシ
 
-受信したリクエストをポッドに振り分ける。
+ワーカーノード外からのリクエストをポッドに転送する。モードごとに、ポッドの名前解決の方法が異なる。
+
+参考：https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613
+
+| モード    | 説明                                                         | 補足                                                         |
+| --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| iptables  | ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_iptables.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-iptables |
+| userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-userspace |
+| ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-ipvs |
 
 #### ・ポッドとは
 
@@ -93,21 +137,33 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・サービスとは
 
-ポッドにリクエストを転送する。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
+サービスタイプごとに、特定のネットワーク範囲にポッドを公開する。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
 
 #### ・ClusterIPサービス
 
-参考：https://thinkit.co.jp/article/18263
-
-#### ・NodePortサービス
+クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター内部からのみアクセスできる。AWSのAurora RDSのクラスターエンドポイントには、ClusterIPの概念が取り入れられている。
 
 参考：https://thinkit.co.jp/article/18263
 
 #### ・LoadBalancerサービス
 
-参考：https://thinkit.co.jp/article/18263
+ロードバランサーからアクセスできるIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからリクエストを受信する場合に使用する。ロードバランサーから各サービスにリクエストを転送することになるため、通信数が増え、金銭的負担が大きい。
+
+参考：
+
+- https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+- https://thinkit.co.jp/article/18263
+
+#### ・NodePortサービス
+
+ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。１つのポートから１つのサービスにしか転送できない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。<br>
+
+参考：
+
+- https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+- https://thinkit.co.jp/article/18263
 
 <br>
 
@@ -117,7 +173,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-クラスター外部からのリクエストを受信し、サービスに転送する。NodePortサービスやLoadBalancerサービスと同様に、外部からのリクエストを受信する方法の一つである。
+クラスター外部からのリクエストを受信し、サービスに転送する。NodePortサービスやLoadBalancerサービスと同様に、外部からのリクエストを受信する方法の１つである。
 
 参考：
 
@@ -234,11 +290,11 @@ Kubernetes外のストレージを使用したボリュームのこと。クラ�
 
 同じ識別子（オブジェクト名）のオブジェクトが存在しない場合はオブジェクトを作成し、存在する場合はマニフェストファイルの差分を更新する。全ての項目を更新できるわけでない。
 
-#### ・-f
-
-マニフェストファイルを指定し、```apply```コマンドを実行する。
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 **＊実行例＊**
+
+マニフェストファイルを指定し、```apply```コマンドを実行する。
 
 ```bash
 $ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
@@ -260,6 +316,8 @@ pod/foo-pod configured
 #### ・configとは
 
 kubernetesコマンドに関するパラメータを操作する。
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 #### ・view
 
@@ -295,7 +353,13 @@ users:
 
 ### cp
 
+#### ・cpとは
+
 ホストPCのファイルまたはディレクトリを指定したポッド内のコンテナにコピーする。
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
+
+#### ・オプション無し
 
 ```bash
 $kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コンテナのファイルパス>
@@ -313,11 +377,11 @@ $kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コ
 
 オブジェクトを作成する。同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる。
 
-#### ・-f
-
-マニフェストファイルを指定し、```create```コマンドを実行する。
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
 **＊実行例＊**
+
+マニフェストファイルを指定し、```create```コマンドを実行する。
 
 ```bash
 $ kubectl create -f ./kubernetes-manifests/foo-pod.yml
@@ -331,17 +395,9 @@ $ kubectl create -f ./kubernetes-manifests/foo-service.yml
 service/foo-service created
 ```
 
-<br>
-
-### deploment
-
-#### ・deploymentとは
+#### ・deployment
 
 ポッドを管理するレプリカセットを作成する。
-
-#### ・-f
-
-マニフェストファイルを指定し、```deployment```コマンドを実行する。
 
 **＊実行例＊**
 
@@ -351,17 +407,19 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 <br>
 
+
+
 ### exec
 
 #### ・execとは
 
 指定したポッド内のコンテナでコマンドを実行する。
 
-#### ・-c
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+
+**＊実行例＊**
 
 コンテナを指定して、 ```exec```コマンドを実行する。コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。ポッドのラベル名ではなく、ポッド名であることに注意する。
-
-＊実行例＊
 
 ```bash
 $ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
@@ -372,8 +430,6 @@ $ kubectl exec -it <ポッド名> -- bash
 
 Defaulted container "foo-container" out of: foo-container, bar-container
 ```
-
-#### ・-it
 
 デタッチモードを用いて、起動中コンテナ内でコマンドを実行する。
 
@@ -388,6 +444,8 @@ $ kubectl exec -it <ポッド名> -- bash
 #### ・getとは
 
 オブジェクトを参照する。
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 #### ・node
 
@@ -437,16 +495,39 @@ kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 
 指定したオブジェクトのログを表示する。
 
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+
 #### ・オプション無し
 
 **＊実行例＊**
 
-コンテナのログを表示する。
+ポッド名とコンテナ名を指定し、コンテナのログを表示する。
 
 ```bash
 $ kubectl logs <ポッド名> <コンテナ名>
 
 2021/11/27 08:34:01 [emerg] *****
+```
+
+名前空間、ポッド名、コンテナ名を指定し、Kubeプロキシのログを確認する。
+
+```bash
+kubectl logs -n kube-system <ポッド名> -c kube-proxy
+
+I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: nnn.nnn.nn.n
+I1211 05:34:22.263084       1 server_others.go:140] Detected node IP nnn.nnn.nn.n
+W1211 05:34:22.263104       1 server_others.go:565] Unknown proxy mode "", assuming iptables proxy
+I1211 05:34:22.285367       1 server_others.go:206] kube-proxy running in dual-stack mode, IPv4-primary
+I1211 05:34:22.285462       1 server_others.go:212] Using iptables Proxier.
+I1211 05:34:22.285484       1 server_others.go:219] creating dualStackProxier for iptables.
+W1211 05:34:22.285508       1 server_others.go:495] detect-local-mode set to ClusterCIDR, but no IPv6 cluster CIDR defined, , defaulting to no-op detect-local for IPv6
+I1211 05:34:22.286807       1 server.go:649] Version: v1.22.3
+I1211 05:34:22.289459       1 config.go:315] Starting service config controller
+I1211 05:34:22.289479       1 shared_informer.go:240] Waiting for caches to sync for service config
+I1211 05:34:22.289506       1 config.go:224] Starting endpoint slice config controller
+I1211 05:34:22.289525       1 shared_informer.go:240] Waiting for caches to sync for endpoint slice config
+I1211 05:34:22.389800       1 shared_informer.go:247] Caches are synced for endpoint slice config 
+I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for service config 
 ```
 
 <br>
@@ -466,17 +547,17 @@ $ kubectl logs <ポッド名> <コンテナ名>
 $ kubectl port-forward foo-pod-mysql-1234567  33061:3306
 ```
 
-
+<br>
 
 ### proxy
 
 #### ・proxyとは
 
-Kubeプロキシを作成する。
+ローカルホストとkube-apiserverの間にプロキシとして機能するオブジェクトを作成する。Kubeプロキシとは異なるオブジェクトであることに注意する。
 
-参考：https://kubernetes.io/ja/docs/concepts/cluster-administration/proxies/
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
-#### ・--address、--accept-hosts
+**＊実行例＊**
 
 ```bash
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  

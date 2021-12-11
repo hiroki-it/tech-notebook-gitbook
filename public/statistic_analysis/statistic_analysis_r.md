@@ -1,4 +1,4 @@
-# 統計解析
+# 統計分析
 
 ## はじめに
 
@@ -8,7 +8,7 @@
 
 <br>
 
-## データ解析で気をつけること
+## データ分析で気をつけること
 
 1. データ分析によって、何を明らかにしたいのか。
 2. 明らかにすることのために、どのデータ分析が必要なのか。
@@ -57,7 +57,7 @@ cor(ts, method = "pearson")
 
 ### 単回帰分析
 
-原因と結果が一つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
+原因と結果が１つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
 
 <img src = "https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png" width = 60%>
 
@@ -96,7 +96,7 @@ summary(Reg)
 
 ### 重回帰分析
 
-原因が二つ以上で結果が一つと仮定した時に、最も当てはまりの良い線形モデルを推定できる。ただし、グラフでは、モデルは平面で表される。
+原因が二つ以上で結果が１つと仮定した時に、最も当てはまりの良い線形モデルを推定できる。ただし、グラフでは、モデルは平面で表される。
 
 ![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰分析.png)
 
@@ -237,11 +237,11 @@ fancyRpartPlot(tree)
 <br>
 
 
-## 04. 階層クラスタ分析
+## 04. 階層クラスター分析
 
 データを、似ている順に階層的にグループ化（クラスタリング）していく分析手法。データ間の同一性を明らかにできる。
 
-![階層クラスタ解析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/階層クラスタ解析.png)
+![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/階層クラスター分析.png)
 
 **＊実装例＊**
 
@@ -267,7 +267,7 @@ scale.dummy <- scale(sample1.dummy[, 2:9])
 d1 <- dist(scale.dummy)
 
 
-# ウォード法による階層クラスター解析を行い、グラフ化。
+# ウォード法による階層クラスター分析を行い、グラフ化。
 cluster1 <- hclust(d1, method = "ward.D2")
 plot(cluster1)
 ```

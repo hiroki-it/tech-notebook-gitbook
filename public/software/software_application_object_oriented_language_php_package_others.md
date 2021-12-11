@@ -156,7 +156,7 @@ class Foo
         
         return [
           "data" => Traversable::from($entities)
-            // 一つずつ要素を取り出し、関数に渡す。
+            // １つずつ要素を取り出し、関数に渡す。
             ->select(
               function ($entity) {
                   return $this->convertToArray($entity);

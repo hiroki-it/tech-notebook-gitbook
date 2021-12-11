@@ -61,13 +61,13 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 
 #### ・ローカルテスト
 
-コマンドにより、テストに必要なDockerイメージをpullし、コンテナを構築する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
+コマンドにより、テストに必要なdockerイメージをpullし、コンテナを構築する。続いて、コンテナ内でCircleCIを実行する。バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。
 
 ```bash
 # バージョン2.1の設定ファイルの処理を展開
 $ circleci config process .circleci/config.yml > .circleci/process.yml
 
-# 専用のDockerコンテナを構築し、展開ファイルを元にテストを実行
+# 専用のdockerコンテナを構築し、展開ファイルを元にテストを実行
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
@@ -455,7 +455,7 @@ workflows:
 
 #### ・jobsとは
 
-複数の```job```を定義する。Workflowsを使わない場合は、少なくとも一つの```job```には```build```という名前を使用しなければならない。
+複数の```job```を定義する。Workflowsを使わない場合は、少なくとも１つの```job```には```build```という名前を使用しなければならない。
 
 #### ・jobの粒度
 
@@ -477,7 +477,7 @@ jobを実行する仮想環境を選択できる。
 
 #### ・dockerタイプとは
 
-Dockerコンテナを実行環境として設定する。これを選択したうえで、Dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境Dockerコンテナの中でDockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を用いて、実行環境Dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選んだ場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
+dockerコンテナを実行環境として設定する。これを選択したうえで、dockerイメージのビルド（Docker composeを含む）を実行する場合、実行環境dockerコンテナの中でdockerコンテナを構築するという入れ子構造になる。これは非推奨のため、```setup_remote_docker```を用いて、実行環境dockerコンテナとは別の環境で```job```を行う必要がある。また、dockerコマンドがインストールされていないイメージで合った場合、```setup_remote_docker```を有効化すると、これを使用できるようになる。```machine```タイプを選んだ場合、```setup_remote_docker```は不要である。ただし、ボリュームマウントを使用できなくなるので注意する。また、DockerfileのCOPYコマンドが機能しなくなる。
 
 参考：https://circleci.com/docs/ja/2.0/building-docker-images/
 
@@ -501,10 +501,10 @@ jobs:
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
-     # Dockerイメージのビルド
+     # dockerイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # DockerイメージのDockerHubへのデプロイ
+     # dockerイメージのDockerHubへのデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -528,10 +528,10 @@ jobs:
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
          docker run -d --name db company/proprietary-db:1.2.3
 
-     # Dockerイメージのビルド
+     # dockerイメージのビルド
      - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-     # DockerイメージのDockerHubへのデプロイ
+     # dockerイメージのDockerHubへのデプロイ
      - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -586,7 +586,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、一つのWorkflowの中でも利用できる。
+ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、１つのWorkflowの中でも利用できる。
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
@@ -1213,7 +1213,7 @@ Projectレベルより参照範囲が大きく、異なるプロジェクト間�
 
 #### ・dockerタイプの場合
 
-自分でdocker-composeをインストールする必要がある。実行環境としてのDockerコンテナと、ビルドしたDockerコンテナが入れ子にならないように、```setup_remote_docker```を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
+自分でdocker-composeをインストールする必要がある。実行環境としてのdockerコンテナと、ビルドしたdockerコンテナが入れ子にならないように、```setup_remote_docker```を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
 
 ```yaml
 version: 2.1
@@ -1305,7 +1305,7 @@ jobs:
             docker network create foo-network
             docker-compose up --build -d
       - restore_vendor
-      # Dockerコンテナに対してcomspoerコマンドを送信
+      # dockerコンテナに対してcomspoerコマンドを送信
       - run:
           name: Composer install
           command: |
@@ -1319,17 +1319,17 @@ jobs:
           command: |
             # 代わりにsleepコマンドでもよい。
             dockerize -wait tcp://localhost:3306 -timeout 1m
-      # Dockerコンテナに対してマイグレーションコマンドを送信
+      # dockerコンテナに対してマイグレーションコマンドを送信
       - run:
           name: Run artisan migration
           command: |
             docker-compose exec laravel-container php artisan migrate --force
-      # Dockerコンテナに対してPHP-Unitコマンドを送信
+      # dockerコンテナに対してPHP-Unitコマンドを送信
       - run:
           name: Run unit test
           command: |
             dockercompose exec laravel-container ./vendor/bin/phpunit
-      # Dockerコンテナに対してPHP-Stanコマンドを送信  
+      # dockerコンテナに対してPHP-Stanコマンドを送信  
       - run:
           name: Run static test
           command: |
@@ -1342,7 +1342,7 @@ jobs:
 
 #### ・DLCとは
 
-CircleCIでDockerイメージをビルドした後、各イメージレイヤーのキャッシュをDLCボリュームに作成する。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、Dockerイメージのビルド時間を短縮できる。
+CircleCIでdockerイメージをビルドした後、各イメージレイヤーのキャッシュをDLCボリュームに作成する。そして、次回以降のビルド時に、差分がないイメージレイヤーをDLCボリュームからプルして再利用する。これにより、dockerイメージのビルド時間を短縮できる。
 
 ![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerLayerCache.png)
 
@@ -1584,7 +1584,7 @@ aws configure list
 
 #### ・build-and-push-image
 
-CircleCIコンテナでDockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を用いて、Docker Layer Cacheを有効化できる。
+CircleCIコンテナでdockerイメージをビルドし、ECRにデプロイする。```remote-docker-layer-caching```を用いて、Docker Layer Cacheを有効化できる。
 
 **＊実装例＊**
 
