@@ -175,6 +175,6 @@
         * [📖 ︎GitHub](public/software_development_methodology/software_development_methodology_git_github.md)
         * [📖 ︎Gitコマンド](public/software_development_methodology/software_development_methodology_git_command.md)
 
-* 📊 統計解析
+* 📊 統計分析
     * [📖 ︎R言語](public/statistic_analysis/statistic_analysis_r.md)
 
