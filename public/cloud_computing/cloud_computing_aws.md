@@ -2018,9 +2018,9 @@ Dockerのベストプラクティスに則り、タグ名にlatestを使用し�
 
 <br>
 
-## 14-01. ECS
+## 14. ECS、EKS：Elastic Container／Kubernetes Service
 
-### ECSとは
+### ECS、EKSとは
 
 コンテナオーケストレーションを実行する環境を提供する。VPCの外に存在している。ECS、EKS、Fargate、EC2の対応関係は以下の通り。
 
@@ -2047,7 +2047,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 14-03. ECS on Fargate：Elastic Container Service
+## 14-03. ECS on Fargate
 
 ### ECSクラスター
 
@@ -2226,7 +2226,7 @@ exit ${EXIT_CODE}
 
 ####  ・ECS Exec
 
-ECSタスクのコンテナに対して、シェルログインを実行する。ECSサービスにおけるECS-Execオプションの有効化、ssmmessagesエンドポイントの作成、System ManagerにアクセスするためのIAMポリシーの作成、ECSタスク実行ロールへのIAMポリシーの付与、IAMユーザへのポリシーの付与、が必要になる。
+ECSタスクのコンテナに対して、シェルログインを実行する。ECSサービスにおけるECS-Execオプションの有効化、ssmmessagesエンドポイントの作成、SMセッションマネージャーにアクセスするためのIAMポリシーの作成、ECSタスク実行ロールへのIAMポリシーの付与、IAMユーザへのポリシーの付与、が必要になる。
 
 参考：
 
@@ -2340,7 +2340,7 @@ aws ecs execute-command \
 | logConfiguration<br>(logDriver) | ```--log-driver```                           | ログドライバーを指定することにより、ログの出力先を設定する。 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | ```--log-opt```                              | ログドライバーに応じて、詳細な設定を行う。                   |                                                              |
 | portMapping                      | ```--publish```<br>```--expose```            | ホストマシンとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。 | ```containerPort```のみを設定し、```hostPort```は設定しなければ、EXPOSEとして定義できる。<br>参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/APIReference/API_PortMapping.html |
-| secrets<br>(volumesFrom)         |                                              | SSMパラメータストアから出力する変数を設定する。              |                                                              |
+| secrets<br>(volumesFrom)         |                                              | パラメータストアから出力する環境変数を設定する。            |  |
 | memory                           | ```--memory```<br>```--memory-reservation``` | タスク全体に割り当てられたメモリ（タスクメモリ）のうち、該当のコンテナに割り当てるメモリ分を設定する。 |  |
 | mountPoints                      |                                              |                                                              |                                                              |
 | ulimit                           | Linuxコマンドの<br>```--ulimit```に相当      |                                                              |                                                              |
@@ -2401,7 +2401,7 @@ aws ecs execute-command \
 
 **＊実装例＊**
 
-SSMパラメータストアから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
+パラメータストアから変数を取得するために、ECSタスクロールにインラインポリシーをアタッチする。
 
 ```bash
 {
@@ -2532,13 +2532,13 @@ VPCエンドポイントを設け、これに対してアウトバウンド通�
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs_vpc-endpoint.png)
 
-| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                               |
-| ------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。  |
-| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。            |
-| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため   |
-| SSMパラメータストア       | ```ssm.ap-northeast-1.amazonaws.com```<br>                   | SSMパラメータストアにGETリクエストを送信するため。 |
-| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を用いるため。       |
+| VPCエンドポイントの接続先 | プライベートDNS名                                            | 説明                                              |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| CloudWatchログ            | ```logs.ap-northeast-1.amazonaws.com```                      | ECSコンテナのログをPOSTリクエストを送信するため。 |
+| ECR                       | ```api.ecr.ap-northeast-1.amazonaws.com```<br>```*.dkr.ecr.ap-northeast-1.amazonaws.com``` | イメージのGETリクエストを送信するため。           |
+| S3                        | なし                                                         | イメージのレイヤーをPOSTリクエストを送信するため  |
+| パラメータストア          | ```ssm.ap-northeast-1.amazonaws.com```<br>                   | パラメータストアにGETリクエストを送信するため。   |
+| SSMシークレットマネージャ | ```ssmmessage.ap-northeast-1.amazonaws.com```                | シークレットマネージャの機能を用いるため。        |
 
 <br>
 
@@ -2563,6 +2563,16 @@ FargateにパブリックIPアドレスを持たせたい場合、Elastic IPア�
 そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由するようにする（Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い）。これによって、Nat GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱える。ようになる。
 
 参考：https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
+
+<br>
+
+## 14-04. EKS
+
+### シークレット
+
+パラメータストアをkubernetesシークレットとして使用する。
+
+参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/integrating_csi_driver.html
 
 <br>
 
@@ -4605,19 +4615,27 @@ DBインスタンスがマルチAZ構成の場合、以下の手順を用いて�
 
 <br>
 
-## 23. RegionとZone
+## 23. リージョン、ゾーン
 
-### Region
+### リージョン
 
-#### ・Regionとは
+#### ・リージョンとは
 
 物理サーバのあるデータセンターの地域名のこと。
 
-#### ・Globalとエッジロケーションとは
+#### ・グローバルサービス
 
-Regionとは別に、物理サーバが世界中にあり、これらの間ではグローバルネットワークが構築されている。そのため、Globalなサービスは、特定のRegionに依存せずに、全てのRegionと連携できる。
+グローバルサービスは、物理サーバが世界中にあり、これらの間ではグローバルネットワークが構築されている。そのため、特定のリージョンに依存せずに、全てのリージョンと連携できる。
 
 ![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/edge-location.png)
+
+<br>
+
+### ゾーン
+
+#### ・アベイラビリティゾーンとは
+
+リージョンは、さらに、各データセンターは物理的に独立したアベイラビリティゾーンというロケーションから構成されている。例えば、東京リージョンには、3つのアベイラビリティゾーンがある。AZの中に、VPCサブネットを作ることができ、そこにEC2を構築できる。
 
 <br>
 
@@ -5051,14 +5069,6 @@ CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあ
 
 <br>
 
-### Zone
-
-#### ・Availability Zoneとは
-
-Regionは、さらに、各データセンターは物理的に独立したAvailability Zoneというロケーションから構成されている。例えば、東京Regionには、3つのAvailability Zoneがある。AZの中に、VPCサブネットを作ることができ、そこにEC2を構築できる。
-
-<br>
-
 ## 27. SES：Simple Email Service
 
 ### SESとは
@@ -5118,7 +5128,53 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 <br>
 
-## 28. SNS：Simple Notification Service
+## 28. SM：Systems Manager
+
+### パラメータストア
+
+#### ・パラメータストアとは
+
+機密性の高い値を暗号化した状態で管理し、復号化しつつEC2／ECS／EKSに環境変数として出力する。Kubernetesのシークレットの概念が取り入れられている。
+
+#### ・KMSを用いた暗号化と復号化
+
+![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/parameter-store_kms.png)
+
+パラメータストアで管理される環境変数はKMSによって暗号化されており、EC2／ECS／EKSで参照する時に復号化される。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/kms/latest/developerguide/services-parameter-store.html
+- https://note.com/hamaa_affix_tech/n/n02eb412d0327
+
+<br>
+
+### セッションマネージャー
+
+#### ・セッションマネージャーとは
+
+EC2／ECSへのセッションを管理する。
+
+参考：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#session-manager-features
+
+#### ・AWSセッション
+
+TLS、Sigv4、KMSを用いて暗号化された接続のこと。
+
+参考：：https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+
+#### ・同時AWSセッションの上限数
+
+同時AWSセッションの上限数は『```２```』までである。以下のようなエラーが出た時は、セッション途中のユーザが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
+
+```bash
+# ECS Execの場合
+An error occurred (ClientException) when calling the ExecuteCommand operation: Unable to start new execute sessions because the maximum session limit of 2 has been reached.
+```
+
+<br>
+
+## 29. SNS：Simple Notification Service
 
 ### SNSとは
 
@@ -5161,7 +5217,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 <br>
 
-## 29. SQS：Simple Queue Service
+## 30. SQS：Simple Queue Service
 
 ### SQSとは
 
@@ -5225,7 +5281,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 <br>
 
-## 30. STS：Security Token Service
+## 31. STS：Security Token Service
 
 ### STSとは
 
@@ -5383,7 +5439,7 @@ aws s3 ls --profile <プロファイル名>
 
 <br>
 
-## 31. Step Functions
+## 32. Step Functions
 
 ### Step Functionsとは
 
@@ -5464,15 +5520,13 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 }
 ```
 
-
-
 <br>
 
-## 32. VPC：Virtual Private Cloud
+## 33. VPC：Virtual Private Cloud
 
 ### VPCとは
 
-クラウドプライベートネットワークとして働く。プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に構築できる。異なるAvailability Zoneに渡ってEC2を立ち上げることによって、クラウドサーバをデュアル化することできる。VPCのパケット通信の仕組みについては、以下のリンク先を参考にせよ。
+クラウドプライベートネットワークとして働く。プライベートIPアドレスが割り当てられた、VPCと呼ばれるプライベートネットワークを仮想的に構築できる。異なるアベイラビリティゾーンに渡ってEC2を立ち上げることによって、クラウドサーバをデュアル化することできる。VPCのパケット通信の仕組みについては、以下のリンク先を参考にせよ。
 
 参考：https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
@@ -5697,7 +5751,7 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 
 <br>
 
-## 32-02. VPC間、VPC-オンプレ間の通信
+## 33-02. VPC間、VPC-オンプレ間の通信
 
 ### VPCピアリング接続
 
@@ -5759,7 +5813,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 <br>
 
-## 33. WAF：Web Applicarion Firewall
+## 34. WAF：Web Applicarion Firewall
 
 ### 設定項目
 
@@ -6024,7 +6078,7 @@ WAFマネージドルールを用いている場合、マネージドルール�
 
 <br>
 
-## 34. WorkMail
+## 35. WorkMail
 
 ### WorkMailとは
 
@@ -6042,7 +6096,7 @@ Gmail、サンダーバード、Yahooメールなどと同類のメール管理�
 
 <br>
 
-## 35. 負荷テスト
+## 36. 負荷テスト
 
 ### Distributed Load Testing（分散負荷テスト）
 
@@ -6058,7 +6112,7 @@ AWSから提供されている負荷を発生させるインフラ環境のこ�
 
 <br>
 
-## 36. タグ
+## 37. タグ
 
 ### タグ付け戦略
 

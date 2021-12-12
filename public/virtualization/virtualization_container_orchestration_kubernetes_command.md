@@ -208,6 +208,10 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 セキュリティに関するデータを管理し、コンテナに選択的に提供する。
 
+#### ・コンテナの環境変数として
+
+参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
+
 <br>
 
 ### レプリカセット
@@ -425,6 +429,41 @@ service/foo-service created
 $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 ```
 
+#### ・secret generic
+
+シークレットを作成する。
+
+参考：
+
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
+- https://qiita.com/toshihirock/items/38d09b2822a347c3f958
+
+**＊実行例＊**
+
+指定した```.env```ファイルからシークレットを作成する。
+
+```bash
+$ kubectl create secret generic foo-secret --from-env-file=./foo/.env
+
+secret/foo-secret created
+```
+
+指定した```.env```ファイル以外からシークレットを作成する。
+
+```bash
+$ kubectl create secret generic foo-secret --from-file=./foo/values.txt
+
+secret/foo-secret created
+```
+
+キー名と値からシークレットを作成する。
+
+```bash
+$ kubectl create secret generic foo-secret --from-literal=username="test" --from-literal=password="test"
+
+secret/foo-secret created
+```
+
 <br>
 
 ### exec
@@ -502,7 +541,7 @@ $ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート�
 
 #### ・node
 
-構築済みのノードを表示する。
+指定したノードの情報を表示する。
 
 **＊実行例＊**
 
@@ -515,7 +554,7 @@ docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノ
 
 #### ・pod
 
-構築済みのポッドを表示する。
+指定したポッドの情報を表示する。
 
 **＊実行例＊**
 
@@ -526,9 +565,35 @@ NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    0/2     ImagePullBackOff   0          7m52s
 ```
 
+#### ・secrets
+
+指定したシークレットの情報を表示する。
+
+**＊実行例＊**
+
+指定したシークレットをYAML形式で表示する。
+
+```bash
+$ kubectl get secret <シークレット名> -o yaml
+
+apiVersion: v1
+data:
+  FOO: ***** # base64エンコード値
+  BAR: *****
+  BAZ: *****
+kind: Secret
+metadata:
+  creationTimestamp: "2021-12-00T00:00:00Z"
+  name: swp-secret
+  namespace: default
+  resourceVersion: "18329"
+  uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
+type: Opaque
+```
+
 #### ・services
 
-構築済みのサービスを表示する。
+指定したサービスの情報を表示する。
 
 **＊実行例＊**
 
