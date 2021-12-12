@@ -115,7 +115,7 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 | userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-userspace |
 | ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-ipvs |
 
-#### ・ポッドとは
+#### ・ポッド
 
 コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動／停止や水平スケールイン／スケールアウトを実行する。
 
@@ -124,6 +124,14 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 AWS ECSタスクにおける類似するessential機能やオートスケーリングについては、以下のリンクを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
+
+同じポッド内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
+
+参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+
+異なるポッドのコンテナ間は、サービスを経由して通信できる。
+
+参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 **＊例＊**
 
@@ -143,13 +151,13 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・ClusterIPサービス
 
-クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター内部からのみアクセスできる。
+クラスターのIPアドレスを返却し、サービスに対するリクエストをポッドに転送する。クラスター内部からのみアクセスできる。
 
 参考：https://thinkit.co.jp/article/18263
 
 #### ・LoadBalancerサービス
 
-ロードバランサーからアクセスできるIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからリクエストを受信する場合に使用する。ロードバランサーから各サービスにリクエストを転送することになるため、通信数が増え、金銭的負担が大きい。
+ロードバランサーのみからアクセスできるIPアドレスを返却し、サービスに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからリクエストを受信する場合に使用する。ロードバランサーから各サービスにリクエストを転送することになるため、通信数が増え、金銭的負担が大きい。
 
 参考：
 
@@ -158,12 +166,24 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・NodePortサービス
 
-ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。１つのポートから１つのサービスにしか転送できない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのクラスターエンドポイントには、NodePortの概念が取り入れられている。
+ノードのIPアドレスを返却し、サービスの指定したポートに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。１つのポートから１つのサービスにしか転送できない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのクラスターエンドポイントには、NodePortの概念が取り入れられている。
 
 参考：
 
 - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 - https://thinkit.co.jp/article/18263
+
+#### ・ExternalNameサービス
+
+ポッドのCNAMEを返却し、サービスに対するリクエストをポッドに転送する。
+
+参考：https://thinkit.co.jp/article/13739
+
+#### ・Headlessサービス
+
+ポッドのIPアドレスを返却し、サービスに対するリクエストをポッドに転送する。ポッドが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却される。
+
+参考：https://thinkit.co.jp/article/13739
 
 <br>
 
@@ -397,7 +417,7 @@ service/foo-service created
 
 #### ・deployment
 
-ポッドを管理するレプリカセットを作成する。
+ポッド数を維持管理するレプリカセットを作成する。ポッドを削除するためには、デプロイメント自体を削除しなければならない。
 
 **＊実行例＊**
 

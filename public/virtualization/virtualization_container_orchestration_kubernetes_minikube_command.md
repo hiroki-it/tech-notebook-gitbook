@@ -154,21 +154,30 @@ $ minikube service list
 
 #### ・--url
 
-指定したサービスにアクセスするためのURLを表示する。IPアドレスは、minikubeのInternal IPと同じになる。
+指定したサービスにアクセスするためのURLを表示する。ブラウザ上からサービスにリクエストを送信できるようになる。
 
 ```bash
-$ minikube service <サービス名> --url
+ $ minikube service <サービス名> --url
+🏃  Starting tunnel for service <サービス名>.
+|-----------|--------------|-------------|------------------------|
+| NAMESPACE |     NAME     | TARGET PORT |          URL           |
+|-----------|--------------|-------------|------------------------|
+| default   | <サービス名>   |             | http://127.0.0.1:57761 |
+|-----------|--------------|-------------|------------------------|
+http://127.0.0.1:57761
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
 
-http://nnn.nnn.nn.n:30000
+IPアドレスは、minikubeのInternal IPと同じになる。
 
-
+```bash
 $ kubectl get node -o wide
 
 NAME       STATUS   ROLES                  AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE              KERNEL-VERSION   CONTAINER-RUNTIME
 minikube   Ready    control-plane,master   4d15h   v1.22.3   nnn.nnn.nn.n   <none>        Buildroot 2021.02.4   4.19.202         docker://20.10.8
 ```
 
-ちなみに、サービスにリクエストを送信するためには、あらかじめ```ssh```コマンドで仮想環境に接続しておく必要がある。
+ちなみに、```ssh```コマンドで仮想環境に接続しても、同様にサービスにリクエストを送信できるようになる。
 
 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
