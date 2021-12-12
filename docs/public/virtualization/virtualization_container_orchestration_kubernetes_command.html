@@ -2754,6 +2754,8 @@
 <h3 id="&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;"><a name="&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;</h3>
 <h4 id="&#x30FB;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3068;&#x306F;</h4>
 <p>&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x7BA1;&#x7406;&#x3057;&#x3001;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x9078;&#x629E;&#x7684;&#x306B;&#x63D0;&#x4F9B;&#x3059;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x74B0;&#x5883;&#x5909;&#x6570;&#x3068;&#x3057;&#x3066;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables" target="_blank">https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></p>
 <p><br></p>
 <h3 id="&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;"><a name="&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;" class="plugin-anchor" href="#&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;</h3>
 <h4 id="&#x30FB;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EC;&#x30D7;&#x30EA;&#x30AB;&#x30BB;&#x30C3;&#x30C8;&#x3068;&#x306F;</h4>
@@ -2900,6 +2902,29 @@ service/foo-service created
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 </code></pre>
+<h4 id="&#x30FB;secret-generic"><a name="&#x30FB;secret-generic" class="plugin-anchor" href="#&#x30FB;secret-generic"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;secret generic</h4>
+<p>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-</a></li>
+<li><a href="https://qiita.com/toshihirock/items/38d09b2822a347c3f958" target="_blank">https://qiita.com/toshihirock/items/38d09b2822a347c3f958</a></li>
+</ul>
+<p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-env-file<span class="token operator">=</span>./foo/.env
+
+secret/foo-secret created
+</code></pre>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x4EE5;&#x5916;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-file<span class="token operator">=</span>./foo/values.txt
+
+secret/foo-secret created
+</code></pre>
+<p>&#x30AD;&#x30FC;&#x540D;&#x3068;&#x5024;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-literal<span class="token operator">=</span>username<span class="token operator">=</span><span class="token string">&quot;test&quot;</span> --from-literal<span class="token operator">=</span>password<span class="token operator">=</span><span class="token string">&quot;test&quot;</span>
+
+secret/foo-secret created
+</code></pre>
 <p><br></p>
 <h3 id="exec"><a name="exec" class="plugin-anchor" href="#exec"><i class="fa fa-link" aria-hidden="true"></i></a>exec</h3>
 <h4 id="&#x30FB;exec&#x3068;&#x306F;"><a name="&#x30FB;exec&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;exec&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;exec&#x3068;&#x306F;</h4>
@@ -2941,7 +2966,7 @@ Defaulted container <span class="token string">&quot;foo-container&quot;</span> 
 <p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get</a></p>
 <h4 id="&#x30FB;node"><a name="&#x30FB;node" class="plugin-anchor" href="#&#x30FB;node"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;node</h4>
-<p>&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;&#x30CE;&#x30FC;&#x30C9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl get nodes 
 
@@ -2949,15 +2974,35 @@ NAME             STATUS   ROLES                  AGE   VERSION
 docker-desktop   Ready    control-plane,master   12h   v1.21.5 <span class="token comment"># &#x30DE;&#x30B9;&#x30BF;&#x30FC;&#x30CE;&#x30FC;&#x30C9;</span>
 </code></pre>
 <h4 id="&#x30FB;pod"><a name="&#x30FB;pod" class="plugin-anchor" href="#&#x30FB;pod"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;pod</h4>
-<p>&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;&#x30DD;&#x30C3;&#x30C9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30DD;&#x30C3;&#x30C9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl get pods
 
 NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    <span class="token number">0</span>/2     ImagePullBackOff   <span class="token number">0</span>          7m52s
 </code></pre>
+<h4 id="&#x30FB;secrets"><a name="&#x30FB;secrets" class="plugin-anchor" href="#&#x30FB;secrets"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;secrets</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;YAML&#x5F62;&#x5F0F;&#x3067;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get secret <span class="token operator">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -o yaml
+
+apiVersion: v1
+data:
+  FOO: ***** <span class="token comment"># base64&#x30A8;&#x30F3;&#x30B3;&#x30FC;&#x30C9;&#x5024;</span>
+  BAR: *****
+  BAZ: *****
+kind: Secret
+metadata:
+  creationTimestamp: <span class="token string">&quot;2021-12-00T00:00:00Z&quot;</span>
+  name: swp-secret
+  namespace: default
+  resourceVersion: <span class="token string">&quot;18329&quot;</span>
+  uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
+type: Opaque
+</code></pre>
 <h4 id="&#x30FB;services"><a name="&#x30FB;services" class="plugin-anchor" href="#&#x30FB;services"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;services</h4>
-<p>&#x69CB;&#x7BC9;&#x6E08;&#x307F;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl get services
 
@@ -3071,7 +3116,7 @@ Starting to serve on <span class="token punctuation">[</span>::<span class="toke
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"︎Kubernetes","level":"1.10.2.2.3","depth":4,"ref":"","articles":[{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"📖 ︎skaffold","level":"1.10.2.2.3.4","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","articles":[]},{"title":"📖 ︎Istio","level":"1.10.2.2.3.5","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","mtime":"2021-12-12T10:38:54.642Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-12T10:38:59.338Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"︎Kubernetes","level":"1.10.2.2.3","depth":4,"ref":"","articles":[{"title":"📖 ︎kubernetesコマンド","level":"1.10.2.2.3.1","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"📖 ︎skaffold","level":"1.10.2.2.3.4","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","articles":[]},{"title":"📖 ︎Istio","level":"1.10.2.2.3.5","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_command.md","mtime":"2021-12-12T16:55:58.605Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-12T16:56:02.717Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
