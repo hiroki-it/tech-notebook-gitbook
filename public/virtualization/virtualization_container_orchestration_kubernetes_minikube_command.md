@@ -168,6 +168,17 @@ NAME       STATUS   ROLES                  AGE     VERSION   INTERNAL-IP    EXTE
 minikube   Ready    control-plane,master   4d15h   v1.22.3   nnn.nnn.nn.n   <none>        Buildroot 2021.02.4   4.19.202         docker://20.10.8
 ```
 
+ちなみに、サービスにリクエストを送信するためには、あらかじめ```ssh```コマンドで仮想環境に接続しておく必要がある。
+
+参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
+
+```bash
+$ minikube ssh
+
+# 仮想環境の中
+$ curl http://nnn.nnn.nn.n:30000
+```
+
 <br>
 
 ### ssh
@@ -322,6 +333,27 @@ NAME           STATUS   ROLES                  AGE   VERSION
 minikube       Ready    control-plane,master   76s   v1.20.2
 minikube-m02   Ready    <none>                 42s   v1.20.2
 minikube-m03   Ready    <none>                 19s   v1.20.2
+```
+
+<br>
+
+### tunnel
+
+#### ・tunnelとは
+
+LoadBalancerサービスを使用している場合に、ホストと仮想環境内LoadBalancerサービスを接続する。
+
+参考：
+
+- https://minikube.sigs.k8s.io/docs/commands/tunnel/
+- https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
+
+#### ・オプションなし
+
+**＊実行例＊**
+
+```bash
+$ minikube tunnel
 ```
 
 <br>

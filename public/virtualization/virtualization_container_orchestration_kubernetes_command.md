@@ -103,7 +103,7 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kubelet.png)
 
-#### ・Kubeプロキシ
+#### ・kube-proxy
 
 ワーカーノード外からのリクエストをポッドに転送する。モードごとに、ポッドの名前解決の方法が異なる。
 
@@ -143,7 +143,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・ClusterIPサービス
 
-クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター内部からのみアクセスできる。AWSのAurora RDSのクラスターエンドポイントには、ClusterIPの概念が取り入れられている。
+クラスターにIPアドレスを割り当て、これに対するリクエストをポッドに転送する。クラスター内部からのみアクセスできる。
 
 参考：https://thinkit.co.jp/article/18263
 
@@ -158,7 +158,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・NodePortサービス
 
-ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。１つのポートから１つのサービスにしか転送できない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。<br>
+ノードのIPアドレスにおける特定のポートに対するリクエストをポッドに転送する。クラスター外部／内部の両方からアクセスできる。１つのポートから１つのサービスにしか転送できない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのクラスターエンドポイントには、NodePortの概念が取り入れられている。
 
 参考：
 
@@ -375,7 +375,7 @@ $kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コ
 
 #### ・createとは
 
-オブジェクトを作成する。同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる。
+様々なオブジェクトを作成する。```expose```コマンドと```run```コマンドで作成できるオブジェクトを含む様々なものを作成できるが、オプションが少ない。そのため、```f```オプションでマニフェストファイルを指定し、おぶえジェクトを作成した方が良い。同じ識別子（オブジェクト名）のオブジェクトが存在する場合は重複エラーになる。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
@@ -407,8 +407,6 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 <br>
 
-
-
 ### exec
 
 #### ・execとは
@@ -436,6 +434,41 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 ```bash
 $ kubectl exec -it <ポッド名> -- bash
 ```
+
+<br>
+
+### expose
+
+#### ・exposeとは
+
+サービスを作成する。
+
+参考：
+
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
+- https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+
+**＊実行例＊**
+
+ClusterIPサービスを作成する。
+
+```bash
+$ kubectl expose <サービス名> --type=ClusterIP --port=<受信ポート番号> --target-port=<転送先ポート番号>
+```
+
+NodePortサービスを作成する。
+
+```bash
+$ kubectl expose <サービス名> --type=NodePort --port=<受信ポート番号> --target-port=<転送先ポート番号>
+```
+
+LoadBalancerサービスを作成する。
+
+```bash
+$ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート番号> --target-port=<転送先ポート番号>
+```
+
+
 
 <br>
 
@@ -504,12 +537,12 @@ kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 ポッド名とコンテナ名を指定し、コンテナのログを表示する。
 
 ```bash
-$ kubectl logs <ポッド名> <コンテナ名>
+$ kubectl logs -n <名前空間> <ポッド名> -c <コンテナ名>
 
 2021/11/27 08:34:01 [emerg] *****
 ```
 
-名前空間、ポッド名、コンテナ名を指定し、Kubeプロキシのログを確認する。
+名前空間、ポッド名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
 kubectl logs -n kube-system <ポッド名> -c kube-proxy
@@ -536,15 +569,17 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 
 #### ・port-forwardとは
 
-ホストのポートから、指定したオブジェクトのポートに対して、ポートフォワーディングを実行する。SQLクライアントを用いて、ポッド内のDBコンテナに接続したい時に使用する。
+ホストのポートから指定したオブジェクトのポートに対して、ポートフォワーディングを実行する。開発環境にて、サービスを経由せずに直接ポッドにリクエストを送信したい場合や、SQLクライアントを用いてポッド内のDBコンテナにTCP/IP接続したい場合に使用する。
 
 参考：
 
 - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 
+**＊実行例＊**
+
 ```bash
-$ kubectl port-forward foo-pod-mysql-1234567  33061:3306
+$ kubectl port-forward <ポッド名> <ホストポート>:<ポッドポート>
 ```
 
 <br>
@@ -553,7 +588,7 @@ $ kubectl port-forward foo-pod-mysql-1234567  33061:3306
 
 #### ・proxyとは
 
-ローカルホストとkube-apiserverの間にプロキシとして機能するオブジェクトを作成する。Kubeプロキシとは異なるオブジェクトであることに注意する。
+ローカルホストとkube-apiserverの間にプロキシとして機能するオブジェクトを作成する。kube-proxyとは異なるオブジェクトであることに注意する。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
@@ -563,5 +598,36 @@ $ kubectl port-forward foo-pod-mysql-1234567  33061:3306
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
 
 Starting to serve on [::]:8001
+```
+
+<br>
+
+### run
+
+#### ・runとは
+
+デプロイメント、ポッド、ジョブを作成する。
+
+参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+
+**＊実行例＊**
+
+もし```restart```オプションが```Always```なら、デプロイメントが作成される。
+
+
+```bash
+$ kubectl run <デプロイメント名> --restart=Always --image=<イメージ名>:<タグ名> --port=<ポート番号>
+```
+
+もし```restart```オプションが```Never```なら、ポッドが作成される。
+
+```bash
+$ kubectl run <ポッド名> --restart=Never --image=<イメージ名>:<タグ名> --port=<ポート番号>
+```
+
+もし```restart```オプションが```OnFailure```なら、ジョブが作成される。
+
+```bash
+$ kubectl run <ジョブ名> --restart=OnFailure --image=<イメージ名>:<タグ名> --port=<ポート番号>
 ```
 
