@@ -210,6 +210,8 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・コンテナの環境変数として
 
+機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてポッドに出力する。
+
 参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
 <br>

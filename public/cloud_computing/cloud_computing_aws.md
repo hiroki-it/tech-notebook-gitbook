@@ -1153,23 +1153,13 @@ AWSリソースで発生したデータポイントのメトリクスを収集�
 
 <br>
 
-### データポイント、メトリクス
-
-以下のリンク先を参考にせよ。
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html
-
-<br>
-
-### メトリクスの分類名
-
-#### ・ディメンション、名前空間、メトリクス名
+### ディメンション、名前空間、メトリクス名
 
 | 分類群         | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| ディメンション | インスタンスを単位とした分類名。インスタンスIDで命名される。 |
-| 名前空間       | AWSリソースを単位とした分類名。AWSリソース名で表現される。   |
-| メトリクス名   | 集計対象のデータポイントの発生領域を単位とした分類名。データポイントの発生領域名で表現される。 |
+| ディメンション | インスタンスの設定値を単位とした収集グループのこと。設定値によるグループには、例えばインスタンス別、スペック別、AZ別、などがある。 |
+| 名前空間       | AWSリソースを単位とした収集グループのこと。AWSリソース名で表現される。 |
+| メトリクス名   | 集計対象のデータポイントの発生領域を単位とした収集グループのこと。データポイントの発生領域名で表現される。 |
 
 参考：
 
@@ -1184,11 +1174,74 @@ CloudWatchメトリクス上では、以下のように確認できる。
 
 <br>
 
-### CloudWatch Synthetics
+### 注視するべきメトリクス一覧
 
-#### ・CloudWatch Syntheticsとは
+#### ・ALB
 
-合成監視を行えるようになる。
+ALBで注視するべきメトリクスを示す。
+
+参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
+
+| メトリクス名                   | 単位     | 説明 |      |
+| ------------------------------ | -------- | ---- | ---- |
+| HealthyHostCount               | カウント |      |      |
+| HTTPCode_ELB_4XX_Count         | カウント |      |      |
+| HTTPCode_ELB_5XX_Count         | カウント |      |      |
+| HTTPCode_TARGET_4XX_Count      | カウント |      |      |
+| HTTPCode_TARGET_5XX_Count      | カウント |      |      |
+| RejectedConnectionCount        | カウント |      |      |
+| TargetConnectionErrorCount     | カウント |      |      |
+| TargetTLSNegotiationErrorCount | カウント |      |      |
+
+#### ・API Gateway
+
+API Gatewayで注視するべきメトリクスを示す。
+
+参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
+
+| メトリクス名       | 単位     | 説明                                                         |
+| ------------------ | -------- | ------------------------------------------------------------ |
+| IntegrationLatency | ms       | API Gatewayがリクエストをバックエンドに転送してから、バックエンドからレスポンスを受信するまでを表す。 |
+| Latency            | ms       | API Gatewayがクライアントからリクエストを受信してから、クライアントにこれを返信するまでを表す。 |
+| 4XXError           | カウント |                                                              |
+| 5XXError           | カウント |                                                              |
+
+#### ・ECS
+
+ECSクラスターまたはサービスで注視するべきメトリクスを示す。ClusterNameディメンションとServiceNameディメンションを用いて、ECSクラスターとECSサービスのメトリクスを区別できる。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
+
+| メトリクス名      | 単位     | 説明                                                         |
+| ----------------- | -------- | ------------------------------------------------------------ |
+| CPUUtilization    | %        | ECSクラスターまたはサービスで使用されているCPU使用率を表す。 |
+| MemoryUtilization | %        | ECSクラスターまたはサービスで使用されているメモリ使用率を表す。 |
+| RunningTaskCount  | カウント | 稼働中のECSタスク数を表す。                                  |
+
+#### ・RDS（Aurora）
+
+RDS（Aurora）で注視するべきメトリクスを示す。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
+
+| メトリクス名        | 単位     | 説明                                                         |      | 補足                                                         |
+| ------------------- | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| CPUUtilization      | %        | Aurora DBインスタンスのCPU使用率を表す。                     |      |                                                              |
+| DatabaseConnections | カウント | Aurora DBインスタンスへのセッション数を表す。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 |      | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
+| FreeableMemory      | Bytes    | Aurora DBインスタンスの使用可能なメモリ容量を表す。          |      |                                                              |
+| EngineUptime        | s        |                                                              |      |                                                              |
+
+#### ・RDS（非Aurora）
+
+RDS（非Aurora）で注視するべきメトリクスを示す。RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
+
+| メトリクス名        | 単位     | 説明                                                         |      | 補足                                                         |
+| ------------------- | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| CPUUtilization      | %        | DBインスタンスのCPU使用率を表す。                            |      |                                                              |
+| DatabaseConnections | カウント | DBインスタンスへのセッション数を表す。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 |      | クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。 |
+| FreeableMemory      | Bytes    | DBインスタンスの使用可能なメモリ容量を表す。                 |      |                                                              |
 
 <br>
 
@@ -1196,13 +1249,14 @@ CloudWatchメトリクス上では、以下のように確認できる。
 
 #### ・インサイトメトリクスは
 
-パフォーマンスに関するメトリクスを収集する。
+複数のCloudWatchメトリクスの結果を集計し、パフォーマンスに関するデータを収集する。
 
 #### ・パフォーマンスインサイト
 
 RDS（Aurora、非Aurora）のパフォーマンスに関するメトリクスを収集する。SQLレベルで監視できるようになる。パラメータグループの```performance_schema```を有効化する必要がある。対応するエンジンバージョンとインスタンスタイプについては、以下のリンク先を参考にせよ。
 
 参考：
+
 - https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html
 - https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
 
@@ -1455,6 +1509,14 @@ $ aws cloudwatch set-alarm-state \
   --state-value ALARM \
   --state-reason "アラーム!!"
 ```
+
+<br>
+
+## 09-05. CloudWatch Synthetics
+
+### CloudWatch Syntheticsとは
+
+合成監視を行えるようになる。
 
 <br>
 
@@ -3586,7 +3648,7 @@ $ aws iam update-user \
 | ディレクトリ名   | S3への転送時に、S3に作成するディレクトリの名前を設定できる。デフォルトで```YYYY/MM/dd/HH```形式でディレクトリが作成され、2021/11/09現在はUTCのみ設定できる。もしJSTにしたい場合はLambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>参考：https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549 |
 | バッファー       | Kinesis Data Firehoseでは、受信したログテキストを一旦バッファーに蓄え、一定期間あるいは一定容量が蓄えられた時点で、ログファイルとして転送する。この時、バッファーに蓄える期間や上限量を設定できる。<br>参考：https://docs.aws.amazon.com/ja_jp/firehose/latest/dev/basic-deliver.html#frequency |
 | ファイル形式     | 転送時のファイル形式を設定できる。ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3からさらに他のツール（例：Datadog）に転送する場合はデータ形式を設定しない方が良い。 |
-| バックアップ     | 収集したデータを加工する場合、加工前データを保管しておく。 |
+| バックアップ     | 収集したデータを加工する場合、加工前データを保管しておく。   |
 | 暗号化           |                                                              |
 | エラーログの収集 | データの転送時にエラーが発生した場合、エラーログをCloudWatchログに送信する。 |
 | IAMロール        | Kinesis Data FirehoseがAWSリソースにデータを転送できるように、権限を設定する。 |
@@ -3621,7 +3683,7 @@ $ aws iam update-user \
 
 | 設定項目                           | 説明                                                         | 補足                                                         |
 | ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ランタイム                         | 関数の実装に用いる言語を設定する。                         | コンテナイメージの関数では使用できない。                     |
+| ランタイム                         | 関数の実装に用いる言語を設定する。                           | コンテナイメージの関数では使用できない。                     |
 | ハンドラ                           | 関数の実行時にコールしたい具体的メソッド名を設定する。       | ・コンテナイメージの関数では使用できない。<br>・Node.js：```index.js``` というファイル名で ```exports.handler``` メソッドを呼び出したい場合、ハンドラ名を```index.handler```とする |
 | レイヤー                           | 異なる関数の間で、特定の処理を共通化できる。                 | コンテナイメージの関数では使用できない。                     |
 | メモリ                             | Lambdaに割り当てるメモリ量を設定する。                       | 最大10240MBまで増設でき、増設するほどパフォーマンスが上がる。<br>参考：https://www.business-on-it.com/2003-aws-lambda-performance-check/ |
@@ -5134,7 +5196,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 #### ・パラメータストアとは
 
-機密性の高い値を暗号化した状態で管理し、復号化しつつEC2／ECS／EKSに環境変数として出力する。Kubernetesのシークレットの概念が取り入れられている。
+機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてEC2／ECS／EKSに出力する。Kubernetesのシークレットの概念が取り入れられている。
 
 #### ・KMSを用いた暗号化と復号化
 
@@ -5165,7 +5227,7 @@ TLS、Sigv4、KMSを用いて暗号化された接続のこと。
 
 #### ・同時AWSセッションの上限数
 
-同時AWSセッションの上限数は『```２```』までである。以下のようなエラーが出た時は、セッション途中のユーザが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
+同時AWSセッションの上限数は２つまでである。以下のようなエラーが出た時は、セッション途中のユーザが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
 
 ```bash
 # ECS Execの場合
