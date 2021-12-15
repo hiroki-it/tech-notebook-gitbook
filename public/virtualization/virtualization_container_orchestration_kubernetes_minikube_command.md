@@ -18,6 +18,30 @@
 
 <br>
 
+### addons
+
+#### ・addonsとは
+
+minikubeのプラグインを操作する。
+
+#### ・enable
+
+プラグインを有効化する。
+
+参考：https://minikube.sigs.k8s.io/docs/commands/addons/
+
+**＊実行例＊**
+
+開発環境専用のイングレスコントローラを有効化する。本番環境では代わりにALBやNginxなどを使用する。
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+
+```bash
+$ minikube addons enable ingress
+```
+
+<br>
+
 ### config
 
 #### ・configとは
@@ -30,9 +54,25 @@ minikubeコマンドに関するパラメータを操作する。
 
 **＊実行例＊**
 
+デフォルトのドライバーを設定する。
+
 ```bash
 $ minikube config set driver virtualbox
 ```
+
+デフォルトのメモリ容量を設定する。
+
+```bash
+$ minikube config set cpus 12
+```
+
+デフォルトのCPU容量を設定する。
+
+```bash
+$ minikube config set memory 4096
+```
+
+
 
 <br>
 

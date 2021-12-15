@@ -373,7 +373,7 @@ spec:
 
 ####  ・targetPort
 
-ポッドに対してリクエストを転送するために、転送先ポートを設定する。
+ポッドに対してリクエストを転送するために、転送先ポートを設定する。ポッド内で最初にリクエストを受信するコンテナの```containerPort```の番号に合わせるようにする。
 
 ```yaml
 spec:
@@ -406,11 +406,11 @@ spec:
 - https://zenn.dev/smiyoshi/articles/c86fc3532b4f8a
 - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
-| 値           | IPアドレスの公開範囲   |
-| ------------ | ---------------------- |
-| ClusterIP    | クラスター内部からのみ |
-| NodePort     | クラスター外部／内部   |
-| LoadBalancer | クラスター外部／内部   |
+| 値                        | IPアドレスの公開範囲   |
+| ------------------------- | ---------------------- |
+| ClusterIP（デフォルト値） | クラスター内部からのみ |
+| NodePort                  | クラスター外部／内部   |
+| LoadBalancer              | クラスター外部／内部   |
 
 <br>
 

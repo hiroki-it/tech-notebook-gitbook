@@ -4515,7 +4515,7 @@ return [
 #### ・マイグレーションファイルを作成
 
 ```bash
-$ php artisan make:migrate create_<テーブル名>_table
+$ php artisan make:migration create_<テーブル名>_table
 ```
 
 #### ・テーブル作成
@@ -6135,6 +6135,27 @@ class CreateFooTable extends Migration
     }
 }
 ```
+
+最後に、```app.php```ファイルにて、MigrationMacroServiceProviderを新しく読み込む。
+
+```php
+<?php
+
+return [
+    
+    # 中略
+    
+    'providers' => [
+        // マクロサービスプロバイダー
+        App\Providers\MigrationMacroServiceProvider::class,  
+    ],
+    
+    # 中略
+    
+];        
+```
+
+
 
 <br>
 

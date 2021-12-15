@@ -193,12 +193,18 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-クラスター外部からのリクエストを受信し、サービスに転送する。NodePortサービスやLoadBalancerサービスと同様に、外部からのリクエストを受信する方法の１つである。
+クラスター外部からのリクエストを受信し、単一／複数のサービスにルーティングする。NodePortサービスやLoadBalancerサービスと同様に、外部からのリクエストを受信する方法の１つである。
 
 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 - https://thinkit.co.jp/article/18263
+
+#### ・イングレスコントローラ
+
+イングレスを実行する。
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
 
 <br>
 
