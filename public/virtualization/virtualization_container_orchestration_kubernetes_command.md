@@ -115,15 +115,23 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 | userspace | ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_userspace.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-userspace |
 | ipvs      | ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_kube-proxy_ipvs.png) | 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/#proxy-mode-ipvs |
 
-#### ・ポッド
+<br>
+
+### ポッド
+
+#### ・ポッドとは
 
 コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動／停止や水平スケールイン／スケールアウトを実行する。
 
 参考：https://kubernetes.io/ja/docs/concepts/workloads/pods/
 
-AWS ECSタスクにおける類似するessential機能やオートスケーリングについては、以下のリンクを参考にせよ。
+**＊例＊**
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
+PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPodに配置する。
+
+![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
+
+#### ・同じポッド内／異なるポッド間の通信方法
 
 同じポッド内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
 
@@ -132,12 +140,6 @@ AWS ECSタスクにおける類似するessential機能やオートスケーリ�
 異なるポッドのコンテナ間は、サービスを経由して通信できる。
 
 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
-
-**＊例＊**
-
-PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同じPodに配置する。
-
-![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
 <br>
 
@@ -202,7 +204,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・イングレスコントローラ
 
-イングレスを実行する。
+イングレスを実行する。開発環境ではminikubeのアドオンを、また本番環境ではAWS ALB／GCP CLB／Nginx Ingressコントローラを、イングレスコントローラとして使用する。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
 

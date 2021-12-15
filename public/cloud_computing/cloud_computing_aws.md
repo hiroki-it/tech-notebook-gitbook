@@ -1212,11 +1212,11 @@ ECSクラスターまたはサービスで注視するべきメトリクスを�
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
 
-| メトリクス名      | 単位     | 説明                                                         |
-| ----------------- | -------- | ------------------------------------------------------------ |
-| CPUUtilization    | %        | ECSクラスターまたはサービスで使用されているCPU使用率を表す。 |
-| MemoryUtilization | %        | ECSクラスターまたはサービスで使用されているメモリ使用率を表す。 |
-| RunningTaskCount  | カウント | 稼働中のECSタスク数を表す。                                  |
+| メトリクス名      | 単位     | 説明                                                         | 補足                                                         |
+| ----------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| CPUUtilization    | %        | ECSクラスターまたはサービスで使用されているCPU使用率を表す。 |                                                              |
+| MemoryUtilization | %        | ECSクラスターまたはサービスで使用されているメモリ使用率を表す。 |                                                              |
+| RunningTaskCount  | カウント | 稼働中のECSタスク数を表す。                                  | ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。 |
 
 #### ・RDS（Aurora）
 
@@ -2164,14 +2164,6 @@ ECSタスクへのロードバランシング、タスクの数の維持管理�
 5. リクエスト数が減少し、CPU使用率が20%に低下する。
 6. タスク数が2つにスケールインし、CPU使用率40%に維持される。
 
-#### ・マイクロサービスアーキテクチャ風
-
-マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用し、またインフラとしてEKSを用いるのが基本である。ただし、モノリスなアプリケーションをECSサービスで分割し、Fargateで稼働させることにより、マイクロサービスアーキテクチャ風のインフラを構築できる。
-
-参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
-
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
-
 <br>
 
 ### ECSタスク
@@ -2611,6 +2603,29 @@ VPCエンドポイントを設け、これに対してアウトバウンド通�
 以下のノートを参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/summary.html?q=firelens
+
+<br>
+
+### マイクロサービスアーキテクチャ風
+
+#### ・複数のECSサービス構成
+
+マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用し、またインフラとしてEKSを用いるのが基本である。ただし、モノリスなアプリケーションをECSサービスで分割し、Fargateで稼働させることにより、マイクロサービスアーキテクチャ風のインフラを構築できる。
+
+参考：https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-fargate_microservices.png)
+
+#### ・ECSサービスディスカバリー
+
+Istioと同様にして、マイクロサービスが他のマイクロサービスにリクエストを送信する時に、Route53を用いてIPアドレスの名前解決を行う。オートスケーリングなどでマイクロサービスのIPアドレスが変更されても、動的にレコードを変更する。
+
+参考：
+
+- https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
+- https://dev.classmethod.jp/articles/ecs-service-discovery/
+
+![esc_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/esc_service-discovery.png)
 
 <br>
 
@@ -4206,11 +4221,11 @@ DBクラスター／DBインスタンスの設定の変更をスケジューリ�
 
 参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
 
-#### ・保留中のメンテナンスとは
+#### ・『保留中の変更』『保留中のメンテナンス』
 
 ![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
 
-ユーザが予定した設定変更に加えて、定期的に行われるハードウェア／OS／DBエンジンのバージョンを強制的にアップグレードが表示される。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。
+ユーザが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア／OS／DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
 
@@ -4273,6 +4288,22 @@ $ aws rds apply-pending-maintenance-action \
   --resource-identifier arn:aws:rds:ap-northeast-1:*****:db:prd-foo-instance \
   --opt-in-type undo-opt-in \
   --apply-action <取り消したいアクション名>
+```
+
+#### ・『保留中の変更』の取り消し
+
+保留中の変更を画面上からは取り消せない。しかし、CLIを用いると戻せる。
+
+参考：
+
+- https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
+- https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
+
+```bash
+$ aws rds modify-db-instance \
+    --db-instance-identifier prd-foo-instance \
+    <変更前の設定項目> <変更前の設定値> \
+    --apply-immediately
 ```
 
 #### ・ミドルウェアのアップグレードの調査書

@@ -55,12 +55,13 @@
 
 #### ・Envoyとは
 
-プロキシ機能サイドカーコンテナとして稼働し、マイクロサービス間のリクエスト送受信に関する機能を提供する。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
+マイクロサービスのプロキシ機能コンテナとして稼働し、マイクロサービス間のリクエスト送受信に関する機能を提供する。アンバサダーパターンに基づいている。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
 
 参考：
 
 - https://blog.linkode.co.jp/entry/2020/07/06/162915
 - https://openstandia.jp/oss_info/envoy/
+- https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
 #### ・サービスディスカバリ
 #### ・ 負荷分散
@@ -78,7 +79,12 @@
 
 #### ・Istiodとは
 
-各Envoyを統括的に管理する。
+各マイクロサービスのプロキシサイドカーコンテナを統括的に管理する。
+
+参考：
+
+- https://istio.io/latest/docs/ops/deployment/architecture/
+- https://speakerdeck.com/kurochan/ru-men-envoy?slide=34
 
 #### ・Mixer
 
