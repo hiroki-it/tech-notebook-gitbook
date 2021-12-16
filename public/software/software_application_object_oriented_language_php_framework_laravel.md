@@ -901,7 +901,7 @@ class FooController extends Controller
 
 #### ・```find```メソッド
 
-レコードを１つ取得するSELECT句を発行する。Eloquentモデルには```find```メソッドがないため、代わりにEloquentビルダーが持つ```find```メソッドがコールされる。引数としてプライマリキーを渡した場合、指定したプライマリキーを持つEloquentモデルを返却する。```toArray```メソッドで配列型に変換できる。
+レコードを1つ取得するSELECT句を発行する。Eloquentモデルには```find```メソッドがないため、代わりにEloquentビルダーが持つ```find```メソッドがコールされる。引数としてプライマリキーを渡した場合、指定したプライマリキーを持つEloquentモデルを返却する。```toArray```メソッドで配列型に変換できる。
 
 参考：
 
@@ -936,7 +936,7 @@ class FooController extends Controller
 
 #### ・```first```メソッド
 
-取得されたコレクション型データの１つ目の要素の値を取得する。ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは１つである。foreachを用いてコレクションからEloquentモデルを取り出してもよいが、無駄が多い。そこで、```first```メソッドを用いて、Eloquentモデルを直接取得する。
+取得されたコレクション型データの1つ目の要素の値を取得する。ユニーク制約の課せられたカラムを```where```メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。foreachを用いてコレクションからEloquentモデルを取り出してもよいが、無駄が多い。そこで、```first```メソッドを用いて、Eloquentモデルを直接取得する。
 
 **＊実装例＊**
 
@@ -1412,7 +1412,7 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 ### 背景
 
-LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただ、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを用いたい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の１つになる。リポジトリパターンについては、以下のリンク先を参考にせよ。
+LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。ただ、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを用いたい場面がある。その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。リポジトリパターンについては、以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
 
@@ -1956,7 +1956,7 @@ event(new UserCreatedEvent($user));
 
 #### ・イベントとリスナーの紐付け
 
-EventServiceProviderクラスにて、Eventクラスに紐付ける１つ以上のListenerクラスを設定する。
+EventServiceProviderクラスにて、Eventクラスに紐付ける1つ以上のListenerクラスを設定する。
 
 **＊実装例＊**
 
@@ -2160,7 +2160,7 @@ class ExecutorConstant
 
 ### Laravelにおけるエラーハンドリング
 
-エラーハンドリングは４つのステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
+エラーハンドリングは4つのステップからなる。LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。また加えて、異常系レスポンスを自動で返信してくれる。エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_error_and_error_handling.html
 
@@ -2672,7 +2672,7 @@ Route::prefix("foos")->group(function () {
 
 **＊実装例＊**
 
-userIdの形式を『0〜9が１つ以上』に設定している。
+userIdの形式を『0〜9が1つ以上』に設定している。
 
 ```php
 <?php
@@ -2717,7 +2717,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // バリデーションルールとして『0〜9が１つ以上』を定義する。
+        // バリデーションルールとして『0〜9が1つ以上』を定義する。
         Route::pattern('fooId', '[0-9]+');
         
         // 〜 中略 〜
@@ -2946,7 +2946,7 @@ Storage::put("file.txt", "file.txt");
 
 #### ・Validatorクラス、```fails```メソッド
 
-Validateファサードの```make```メソッドを用いて、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、１つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを用いて、バリデーションでエラーが起こった場合の処理を定義する。
+Validateファサードの```make```メソッドを用いて、ルールを定義する。この時、第一引数で、バリデーションを行うリクエストデータを渡す。ルールに反すると、1つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。次に、```fails```メソッドを用いて、バリデーションでエラーが起こった場合の処理を定義する。
 
 **＊実装例＊**
 
@@ -3825,7 +3825,7 @@ $ php artisan make:request <Request名>
 
 #### ・ルール定義 ＆ バリデーション手動実行
 
-同じくFormRequestクラスの```validate```メソッドを用いて、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、１つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+同じくFormRequestクラスの```validate```メソッドを用いて、ルールを定義し、さらにバリデーションを実行する。```validated```メソッドと間違わないように注意する。ルールに反すると、1つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
 
 参考：
 
@@ -3948,7 +3948,7 @@ class FooController extends Controller
 }
 ```
 
-FormRequestクラスの```rules```メソッドを用いて、ルールを定義する。ルールに反すると、１つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
+FormRequestクラスの```rules```メソッドを用いて、ルールを定義する。ルールに反すると、1つ目のルール名（例えば```required```）に基づき、```validation.php```ファイルから対応するエラーメッセージを自動的に選択する。
 
 **＊実装例＊**
 
@@ -4548,10 +4548,10 @@ $ php artisan migrate:status
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
-実際の使用場面として、マイグレーションに失敗した場合、１つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
+実際の使用場面として、マイグレーションに失敗した場合、1つ前の状態にロールバックしてマイグレーションファイルを修正した後、再びマイグレーションを行う。
 
 ```bash
-# マイグレーションに失敗したので、１つ前の状態にロールバック。
+# マイグレーションに失敗したので、1つ前の状態にロールバック。
 $ php artisan migrate:rollback --step=1
 
 # ファイル修正後にマイグレーションを実行
@@ -5918,7 +5918,7 @@ class FoosServiceProvider extends ServiceProvider
     }
     
     /**
-    * １つ目のクラスをバインド
+    * 1つ目のクラスをバインド
     */
     private function registerFoo()
     {
@@ -6361,7 +6361,7 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 #### ・単一のデータベースの場合
 
-単一のデータベースに接続する場合、```DB_HOST```を１つだけ設定する。
+単一のデータベースに接続する場合、```DB_HOST```を1つだけ設定する。
 
 ```php
 <?php
@@ -6525,11 +6525,11 @@ FormRequestクラスの```session```メソッドはStoreクラスを返却する
 
 | メソッド名   | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| ```get```    | セッションのキー名を指定して、１つの値を取得する。           |
+| ```get```    | セッションのキー名を指定して、1つの値を取得する。           |
 | ```all```    | セッションの全ての値を取得する。                             |
 | ```forget``` | セッションのキー名を指定して、値を取得する。キー名を配列で渡して、複数個を削除することも可能。 |
 | ```flush```  | セッションの全ての値を取得する。                             |
-| ```pull```   | セッションのキー名を指定して、１つの値を取得し、取得後に削除する。 |
+| ```pull```   | セッションのキー名を指定して、1つの値を取得し、取得後に削除する。 |
 | ```has```    | セッションのキー名を指定して、値が存在しているかを検証する。```null```は```false```として判定する。 |
 
 参考：https://laravel.com/api/8.x/Illuminate/Session/Store.html
@@ -8112,7 +8112,32 @@ $staff->roleType->isSalesRole(); // false
 
 PHPStromでLaravelを開発する場合、拡張機能を提供する。
 
-参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+参考：
+
+- https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+- https://pleiades.io/help/phpstorm/laravel.html
+
+プロバイダーの登録が必要。
+
+```php
+<?php
+    
+return [
+
+    // ...
+
+    'providers' => [
+        
+        // ...
+        
+        // Laravel IDE helper
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class',
+    ],
+    
+    // ...
+
+];
+```
 
 #### ・Facade
 

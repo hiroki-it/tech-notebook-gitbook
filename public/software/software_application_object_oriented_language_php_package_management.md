@@ -136,7 +136,7 @@ $ composer clear-cache
 
 ### create-project
 
-パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```し、この中で```composer install```を実行することと同じである。新しいディレクトリを作成しつつ、プロジェクトのファイルを展開することもできるが、カレントディレクトリにそのまま展開した方が便利である。なお、ファイルが１つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
+パッケージが既に組み込まれたプロジェクトを作成する。プロジェクトを```git clone```し、この中で```composer install```を実行することと同じである。新しいディレクトリを作成しつつ、プロジェクトのファイルを展開することもできるが、カレントディレクトリにそのまま展開した方が便利である。なお、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
 参考：https://getcomposer.org/doc/03-cli.md#create-project
 
@@ -279,6 +279,10 @@ phpのメモリ上限を無しにして、任意のcomposerコマンドを実行
 
 ```bash
 $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
+```
+
+```bash
+$ COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -vvv
 ```
 
 <br>

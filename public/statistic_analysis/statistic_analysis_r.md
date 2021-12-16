@@ -57,7 +57,7 @@ cor(ts, method = "pearson")
 
 ### 単回帰分析
 
-原因と結果が１つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
+原因と結果が1つずつと仮定した時に、最も当てはまりの良い線形モデルを推定できる。
 
 <img src = "https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/単回帰分析.png" width = 60%>
 
@@ -96,7 +96,7 @@ summary(Reg)
 
 ### 重回帰分析
 
-原因が二つ以上で結果が１つと仮定した時に、最も当てはまりの良い線形モデルを推定できる。ただし、グラフでは、モデルは平面で表される。
+原因が二つ以上で結果が1つと仮定した時に、最も当てはまりの良い線形モデルを推定できる。ただし、グラフでは、モデルは平面で表される。
 
 ![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/重回帰分析.png)
 

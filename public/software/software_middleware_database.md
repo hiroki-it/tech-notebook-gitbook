@@ -85,7 +85,7 @@ NoSQLは、データ同士が関係を持たないデータ格納形式である
 
 2. **第一正規化（繰り返し要素の排除）**
 
-   レコードを１つずつに分割。
+   レコードを1つずつに分割。
 
    ![第一正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/第一正規形.png)
 

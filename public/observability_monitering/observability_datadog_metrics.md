@@ -8,27 +8,27 @@
 
 <br>
 
-## 01. Ec2におけるメトリクス収集
+## 01. サーバのメトリクス収集
 
-### Datadogエージェント on EC2とは
+### サーバdatadogエージェント
 
-#### ・Datadogエージェント on EC2とは
+#### ・サーバdatadogエージェントとは
 
 常駐プログラムであり、アプリケーションをメトリクスを収集し、Datadogに転送する。
 
-参考：https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli
+参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
 
 <br>
 
-## 02. Fargateにおけるメトリクス収集
+## 02. コンテナのメトリクス収集（AWSの場合）
 
-### Datadogエージェント  on Fargate
+### コンテナdatadogエージェント
 
-#### ・Datadogエージェント  on Fargateとは
+#### ・コンテナdatadogエージェントとは
 
-常駐プログラムであり、アプリケーションからメトリクスをDatadogに転送する。EC2用のDatadogエージェントとは異なり、ログは転送しない。
+常駐プログラムであり、アプリケーションからメトリクスをDatadogに転送する。
 
 参考：https://docs.datadoghq.com/ja/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 

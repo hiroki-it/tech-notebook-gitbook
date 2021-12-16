@@ -719,7 +719,7 @@ class Foo
      */
     public function quickSort(array $array): array
     {
-        // 配列の要素数が１つしかない場合、クイックソートする必要がないので、返却する。
+        // 配列の要素数が1つしかない場合、クイックソートする必要がないので、返却する。
         if (count($array) <= 1) {
             return $array;
         }

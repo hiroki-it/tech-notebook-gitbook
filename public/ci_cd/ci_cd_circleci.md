@@ -455,7 +455,7 @@ workflows:
 
 #### ・jobsとは
 
-複数の```job```を定義する。Workflowsを使わない場合は、少なくとも１つの```job```には```build```という名前を使用しなければならない。
+複数の```job```を定義する。Workflowsを使わない場合は、少なくとも1つの```job```には```build```という名前を使用しなければならない。
 
 #### ・jobの粒度
 
@@ -586,7 +586,7 @@ workflows:
 
 ![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CircleCIキャッシュ.png)
 
-ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、１つのWorkflowの中でも利用できる。
+ビルドのアーティファクトのキャッシュを作成する。この機能を使用しない場合、例えば、CircleCIコンテナで```composer install```を実行すると、毎回のWorkflowで同じライブラリがインストールされる。しかし、Workflowのたびに、ライブラリをインストールするのは非効率である。そこで、```composer.json```ファイルの実装が変更されない限り、前回のWorkflowのビルド時に、vendorディレクトリに配置されたアーティファクトを再利用するようにする。この機能は、複数のWorkflowの間だけでなく、1つのWorkflowの中でも利用できる。
 
 参考：https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 

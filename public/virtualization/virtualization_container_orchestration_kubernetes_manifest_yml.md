@@ -53,9 +53,64 @@ metadata:
 
 ## 05. spec（Ingressの場合）
 
+### rules
 
+サービスへのルーティングルールを設定する。複数のサービスにリクエストを振り分けられる。
+
+```yaml
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /foo
+            pathType: Prefix
+            backend:
+              service:
+                name: foo-service
+                port:
+                  number: 80
+    - http:
+        paths:
+          - path: /bar
+            pathType: Prefix
+            backend:
+              service:
+                name: bar-service
+                port:
+                  number: 80
+```
+
+<br>
 
 ## 05. spec（Deploymentの場合）
+
+### selector
+
+#### ・matchLabels
+
+デプロイメントで管理するポッドのラベルを指定する。ポッドに複数のラベルが付与されている時は、これらを全て指定する必要がある。
+
+参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
+
+```yaml
+metadata:
+  name: foo-pod
+  labels:
+    app: foo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo
+      type: web
+  template:
+    metadata:
+      labels:
+        app: foo
+        type: web
+```
+
+<br>
 
 ### template
 
@@ -70,11 +125,11 @@ spec:
     spec:
       containers:
         - name: foo-lumen
-          image: foo-lumen:dev
+          image: foo-lumen:latest
           ports:
             - containerPort: 9000
         - name: foo-nginx
-          image: foo-nginx:dev
+          image: foo-nginx:latest
           ports:
             - containerPort: 8000
 ```
@@ -243,11 +298,11 @@ spec:
 spec:
   containers:
     - name: foo-lumen
-      image: foo-lumen:dev
+      image: foo-lumen:latest
       ports:
         - containerPort: 9000
     - name: foo-nginx
-      image: foo-nginx:dev
+      image: foo-nginx:latest
       ports:
         - containerPort: 8000
 ```
@@ -260,14 +315,14 @@ spec:
 spec:
   containers:
     - name: foo-lumen
-      image: foo-lumen:dev
+      image: foo-lumen:latest
       ports:
         - containerPort: 9000
       volumeMounts:
          - name: foo-nginx
            mountPath: /var/www/foo
     - name: foo-lumen
-      image: foo-lumen:dev
+      image: foo-lumen:latest
       ports:
         - containerPort: 9000
       volumeMounts:

@@ -220,7 +220,7 @@ Javaでは、JVM：Java Virtual Machine（Java仮想マシン）が、メモリ�
 
 ### RAID：Redundant Arrays of Inexpensive Disks
 
-複数のHDDを仮想的に１つのHDDであるかのようにして、データを管理する技術。
+複数のHDDを仮想的に1つのHDDであるかのようにして、データを管理する技術。
 
 #### ・RAID0（Striping）
 

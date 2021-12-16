@@ -20,7 +20,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 #### ・RESTfulとRESTful APIとは
 
-RESTに基づいた設計をRESTfulという。RESTful設計が用いられたWebAPIをRESTful APIという。例えば、RESTful APIの場合、DBにおけるUserInfoのCRUDに対して、１つの『/UserInfo』というURIを対応づけている。
+RESTに基づいた設計をRESTfulという。RESTful設計が用いられたWebAPIをRESTful APIという。例えば、RESTful APIの場合、DBにおけるUserInfoのCRUDに対して、1つの『/UserInfo』というURIを対応づけている。
 
 ![RESTfulAPIを用いたリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/RESTfulAPIを用いたリクエスト.png)
 
@@ -28,22 +28,21 @@ RESTに基づいた設計をRESTfulという。RESTful設計が用いられたWe
 
 ### RESTの４原則
 
-#### ・Stateless
+#### ・Statelessであること
 
-クライアントに対してレスポンスを返信した後に、クライアントの情報を保持せずに破棄する仕組みのこと。擬似的にStatefulな通信を行う時は、キャッシュ、Cookie、セッションIDを用いて、クライアントの情報を保持する。
+クライアントに対してレスポンスを返信した後に、クライアントの情報を保持せずに破棄する仕組みのこと。擬似的にステートフルな通信を行う時は、キャッシュ、Cookie、セッションIDを用いて、クライアントの情報を保持する。
 
-| Statelessプロトコル | Statefulプロトコル |
-| ------------------- | ------------------ |
-| HTTP                | SSH                |
-| HTTPS               | TLS/SSL            |
-| -                   | SFTP               |
+| プロトコル         | 種類 |
+| ------------------ | --------- |
+| HTTP、HTTPS        | ステートレス |
+| SSH、TLS/SSL、SFTP | ステートフル  |
 
-#### ・Connectability
-#### ・Uniform Interface
+#### ・Connectabilityであること
+#### ・Uniform Interfaceであること
 
 HTTPプロトコルを用いたリクエストを、『リソースに対する操作』とらえ、リクエストにHTTPメソッドを対応づけるようにする。
 
-#### ・Addressability
+#### ・Addressabilityであること
 
 エンドポイントによって、特定のリソースを操作できること。
 
@@ -53,7 +52,7 @@ HTTPプロトコルを用いたリクエストを、『リソースに対する�
 
 ### エンドポイントとは
 
-特定のリソースを操作するための固有のURIのこと。エンドポイント は、リソース１つごと、あるいはまとまりごとに割り振られる。
+特定のリソースを操作するための固有のURIのこと。エンドポイント は、リソース1つごと、あるいはまとまりごとに割り振られる。
 
 <br>
 
@@ -80,7 +79,7 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 
 |                            | POST送信                                           | PUT送信                                                      |
 | -------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
-| データ作成の冪等性         | リクエスト１つにつき、１つのデータを作成（非冪等的） | リクエスト数に限らず、１つのデータを作成する（冪等的）。古いデータを新しいデータに置換する行為に近い。 |
+| データ作成の冪等性         | リクエスト1つにつき、1つのデータを作成（非冪等的） | リクエスト数に限らず、1つのデータを作成する（冪等的）。古いデータを新しいデータに置換する行為に近い。 |
 | リクエストパラメータの場所 | メッセージボディにJSONデータなどを割り当てる。     | パスパラメータにidなど、またメッセージボディにJSONデータなどを割り当てる。 |
 
 <br>
@@ -780,13 +779,13 @@ GET https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
 
 <br>
 
-## 05. Statelessプロトコルにおける擬似Stateful化
+## 05. HTTP/HTTPSプロトコルの擬似ステートフル化
 
 ### Cookie、Cookie情報（キー名／値）
 
 #### ・Cookie、Cookie情報とは
 
-クライアントからの次回のリクエスト時でも、Cookie情報（キー名／値のセット）を用いて、同一クライアントと認識できる仕組みをCookieという。HTTPはStatelessプロトコルであるが、Cookie情報により擬似的にStatefulな通信を行える。
+クライアントからの次回のリクエスト時でも、Cookie情報（キー名／値のセット）を用いて、同一クライアントと認識できる仕組みをCookieという。HTTPはステートレスなプロトコルであるが、Cookie情報により擬似的にステートフルな通信を行える。
 
 #### ・Cookie情報に関わるヘッダー
 
@@ -820,7 +819,15 @@ $_COOKIE = ["Cookie名" => "値"]
 ```php
 <?php
 
-setcookie(Cookie名, Cookie値, 有効日時, パス, ドメイン, HTTPS接続のみ, Javascript無効）
+setcookie(
+    Cookie名,
+    Cookie値,
+    有効日時,
+    パス,
+    ドメイン,
+    HTTPS接続のみ,
+    Javascript無効
+    ）
 ```
 
 3. ブラウザは、そのCookie情報を保存する。
@@ -836,7 +843,7 @@ setcookie(Cookie名, Cookie値, 有効日時, パス, ドメイン, HTTPS接続�
 
 ![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id_page-transition.png)
 
-特定のサイトを訪問してから、離脱するまでの一連のユーザ操作を『セッション』という。この時、セッションIDを用いると、セッションの各リクエストの送信元を同一クライアントとして識別できる。HTTPはStatelessプロトコルであるが、セッションIDにより擬似的にStatefulな通信を行える。例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザからのリクエストとして認識できる。セッションIDは、Cookie情報の１つとして、CookieヘッダーとSet-Cookieヘッダーを用いて送受信される。
+特定のサイトを訪問してから、離脱するまでの一連のユーザ操作を『セッション』という。この時、セッションIDを用いると、セッションの各リクエストの送信元を同一クライアントとして識別できる。HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザからのリクエストとして認識できる。セッションIDは、Cookie情報の1つとして、CookieヘッダーとSet-Cookieヘッダーを用いて送受信される。
 
 ```http
 # リクエストヘッダーの場合

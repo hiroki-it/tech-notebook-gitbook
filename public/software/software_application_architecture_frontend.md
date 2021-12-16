@@ -19,7 +19,7 @@
 | Rendering                      | ブラウザ |
 | Paiting                        | ブラウザ |
 
-１つのWebページの中で、サーバとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを生成する方法のこと。クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。非同期通信は、Ajaxの手法を用いて実現される。また、静的ファイルの部分的な生成は、MVVMアーキテクチャによって実現する。SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。２回目以降は、ページ部分的にリクエストを行い、サーバ側からJSONを受け取っていく。
+1つのWebページの中で、サーバとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを生成する方法のこと。クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。非同期通信は、Ajaxの手法を用いて実現される。また、静的ファイルの部分的な生成は、MVVMアーキテクチャによって実現する。SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。２回目以降は、ページ部分的にリクエストを行い、サーバ側からJSONを受け取っていく。
 
 参考：https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications?hl=ja
 
@@ -43,7 +43,7 @@ View層とModel層の間にViewModel層を置き、View層とViewModel層の間�
 
 #### ・処理速度
 
-MPAと比較して、データを非同期的に通信できるため、１つのWebページの中で必要なデータだけを通信すればよく、レンダリングが速い。
+MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータだけを通信すればよく、レンダリングが速い。
 
 ![従来WebアプリとSPアプリの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
 

@@ -308,7 +308,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | 使用量プラン             | 有料サービスとしてAPIを公開し、料金体系に応じてリクエスト量を制限するために用いる。APIキーにリクエスト量のレートを設定する。 | 有料サービスとして使用しないAPIの場合は、レートを設定する必要はない。 |
 | APIキー                  | APIキー認証を設定する。                                      | ・その他のアクセス制御の方法として、以下がある。<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
 | クライアント証明書       | SSL証明書をAPI Gatewayに割り当てる。                   | APIが、API Gatewayから転送されたリクエストであること識別できるようになる。 |
-| CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう、ロールを設定する。 | １つのAWS環境につき、１つのロールを設定すればよい。          |
+| CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう、ロールを設定する。 | 1つのAWS環境につき、1つのロールを設定すればよい。          |
 
 <br>
 
@@ -597,7 +597,7 @@ X-Rayを用いて、API Gatewayを起点とした分散トレースを収集す�
 | 種類                       | 説明                                                         | 補足                                                         |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | シンプルスケーリング       | 特定のメトリクスに単一の閾値を設定し、それに応じてスケーリングを行う。 |                                                              |
-| ステップスケーリング       | 特定のメトリクスに段階的な閾値を設定し、それに応じて段階的にスケーリングを実行する。 | （例）CPU平均使用率に段階的な閾値を設定する。<br>・40%の時にEC2インスタンスが１つスケールアウト<br>・70%の時にEC2インスタンスを２つスケールアウト<br>・90%の時にEC2インスタンスを３つスケールアウト |
+| ステップスケーリング       | 特定のメトリクスに段階的な閾値を設定し、それに応じて段階的にスケーリングを実行する。 | （例）CPU平均使用率に段階的な閾値を設定する。<br>・40%の時にEC2インスタンスが1つスケールアウト<br>・70%の時にEC2インスタンスを2つスケールアウト<br>・90%の時にEC2インスタンスを3つスケールアウト |
 | ターゲット追跡スケーリング | 特定のメトリクス（CPU平均使用率やMemory平均使用率）にターゲット値を設定し、それに収束するように自動的にスケールインとスケールアウトを実行する。 | ターゲット値を設定できるリソースの例<br>・ECSサービスのタスク数<br>・DBクラスターのAuroraのリードレプリカ数<br>・Lambdaのスクリプト同時実行数 |
 
 <br>
@@ -865,7 +865,7 @@ CloudFront-Forwarded-Proto: https
 
 #### ・CloudFrontとオリジン間のHTTPS通信
 
-CloudFrontとオリジン間でHTTPS通信を行う場合、両方にドメイン証明書を割り当てる必要がある。割り当てたとしても、以下の条件を満たさないとHTTPS通信を行うことはできない。CLoudFronからオリジンにHostヘッダーを転送しない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。一方で、Hostヘッダーを転送しない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、Hostヘッダーの値と一致するドメイン名が含まれている必要がある。
+CloudFrontとオリジン間でHTTPS通信を行う場合、両方にドメイン証明書を割り当てる必要がある。割り当てたとしても、以下の条件を満たさないとHTTPS通信を行うことはできない。CLoudFrontからオリジンにHostヘッダーを転送しない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。一方で、Hostヘッダーを転送しない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、Hostヘッダーの値と一致するドメイン名が含まれている必要がある。
 
 <br>
 
@@ -1034,7 +1034,7 @@ $ nslookup <割り当てられた文字列>.cloudfront.net
 
 オリジンに該当のファイルが存在しない場合、オリジンはCloudFrontに以下の403ステータスのレスポンスを返信する。カスタムエラーページを設定しない場合、CloudFrontはこの403ステータスをそのままレスポンスしてしまうため、オリジンに配置したカスタムエラーページを404ステータスでレスポンスするように設定する。
 
-```xml
+```
 This XML file does not appear to have any style information associated with it. The document tree is shown below.
 <Error>
 <Code>AccessDenied</Code>
@@ -1286,7 +1286,7 @@ Lambdaのパフォーマンスに関するメトリクスを収集する。
 
 | 設定項目                     | 説明                                                         | 補足                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する。   | 基本的に、ログファイルはグループ化せずに、１つのロググループには１つのログストリームしか含まれないようにする。 |
+| ロググループ                 | ログストリームをグループ化して収集するかどうかを設定する。   | 基本的に、ログファイルはグループ化せずに、1つのロググループには1つのログストリームしか含まれないようにする。 |
 | メトリクスフィルター         | フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。これを収集するメトリクスを設定する。 |                                                              |
 | サブスクリプションフィルター |                                                              |                                                              |
 
@@ -2104,7 +2104,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 | 戦略    | 説明                                         |
 | ------- | -------------------------------------------- |
 | Spread  | ECSタスクを各場所にバランスよく配置する         |
-| Binpack | ECSタスクを１つの場所にできるだけ多く配置する。 |
+| Binpack | ECSタスクを1つの場所にできるだけ多く配置する。 |
 | Random  | ECSタスクをランダムに配置する。                 |
 
 <br>
@@ -2294,7 +2294,7 @@ ECSタスクのコンテナに対して、シェルログインを実行する�
     {
       "Effect": "Allow",
       "Action": [
-        # ssmmesages APIへのアクセス権限
+        # ssmmessages APIへのアクセス権限
         "ssmmessages:CreateControlChannel",
         "ssmmessages:CreateDataChannel",
         "ssmmessages:OpenControlChannel",
@@ -2377,7 +2377,7 @@ aws ecs execute-command \
 
 #### ・コンテナ定義
 
-タスク内のコンテナ１つに対して、環境を設定する。
+タスク内のコンテナ1つに対して、環境を設定する。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/task_definition_parameters.html
 
@@ -2750,7 +2750,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 | エンジンバージョンの互換性       | 全てのRedisノードのキャッシュエンジンのバージョンを設定する。 | マイナーバージョンが自動的に更新されないように、例えば『```6.x```』は設定しない方がよい。 |
 | パラメータグループ               | 全てのRedisノードのグローバルパラメータを設定する。          | デフォルトを使用せずに独自定義する場合、事前に構築しておく必要がある。 |
 | ノードのタイプ                   |                                                              |                                                              |
-| レプリケーション数               | プライマリノードとは別に、リードレプリカノードをいくつ構築するかを設定する。 | マルチAZにプライマリノードとリードレプリカノードを１つずつ配置させる場合、ここでは『１個』を設定する。 |
+| レプリケーション数               | プライマリノードとは別に、リードレプリカノードをいくつ構築するかを設定する。 | マルチAZにプライマリノードとリードレプリカノードを1つずつ配置させる場合、ここでは『１個』を設定する。 |
 | マルチAZ                         | プライマリノードとリードレプリカを異なるAZに配置するかどうかを設定する。合わせて、自動フェイルオーバーを実行できるようになる。 |                                                              |
 | サブネットグループ               | Redisにアクセスできるサブネットを設定する。                  |                                                              |
 | セキュリティ                     | セキュリティグループを設定する。                             |                                                              |
@@ -2776,7 +2776,7 @@ fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www
 
 #### ・クラスターモード
 
-クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが構築される。反対に無効化すると、シャードは１つだけ構築される。
+クラスターモードを有効にすると、Redisクラスター内に複数のRedisシャードが構築される。反対に無効化すると、シャードは1つだけ構築される。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
 
@@ -2914,7 +2914,7 @@ redis xxxxx:6379> monitor
 
 | 障害の発生したノード | 挙動                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| プライマリノード     | リードレプリカの１つがプライマリノードに昇格し、障害が起きたプライマリノードと置き換えられる。 |
+| プライマリノード     | リードレプリカの1つがプライマリノードに昇格し、障害が起きたプライマリノードと置き換えられる。 |
 | リードレプリカノード | 障害が起きたリードレプリカノードが、別の新しいものに置き換えられる。 |
 
 <br>
@@ -3725,7 +3725,7 @@ $ aws iam update-user \
 
 #### ・Lambdaサービス
 
-コンソール画面のLamdaに相当する。
+コンソール画面のLambdaに相当する。
 
 #### ・関数の実行環境
 
@@ -3733,7 +3733,7 @@ Lambdaの実行環境は、API（ランタイムAPI、ログAPI、拡張API）�
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle
 
-実行環境には、３つのフェーズがある。
+実行環境には、3つのフェーズがある。
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle
 
@@ -3855,7 +3855,7 @@ $ curl \
 
 #### ・同時実行の予約
 
-Lambdaは、関数の実行中に再びリクエストが送信されると、関数のインスタンスを新しく作成する。そして、各関数インスタンスを用いて、同時並行的にリクエストに応じる。デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。同時実行の予約数を```0```個とした場合、Lambdがスケーリングしなくなる。
+Lambdaは、関数の実行中に再びリクエストが送信されると、関数のインスタンスを新しく作成する。そして、各関数インスタンスを用いて、同時並行的にリクエストに応じる。デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で```1000```個までしかスケーリングして同時実行できない。関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。同時実行の予約数を```0```個とした場合、Lambdaがスケーリングしなくなる。
 
 参考：https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved
 
@@ -4220,6 +4220,10 @@ SHOW variables LIKE '%version%';
 DBクラスター／DBインスタンスの設定の変更をスケジューリングする。
 
 参考：https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+
+#### ・メンテナンスの適切な曜日／時間帯
+
+CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DBのセッション数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定するようにする。また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する（メンテナンスウィンドウがUTCであることに注意）。
 
 #### ・『保留中の変更』『保留中のメンテナンス』
 
@@ -5115,7 +5119,7 @@ ALBに割り振られる可能性のあるIPアドレスを許可するために
 
 | タイプ | プロトコル | ポート   | ソース                     | 説明                             |
 | ------ | ---------- | -------- | -------------------------- | -------------------------------- |
-| SSH    | TCP        | ```22``` | 社内のグローバルIPアドレス | SSH access from global ip addess |
+| SSH    | TCP        | ```22``` | 社内のグローバルIPアドレス | SSH access from global ip address |
 
 #### ・EFSの例
 
@@ -5217,7 +5221,7 @@ SESはデフォルトではSandboxモードになっている。Sandboxモード
 
 一般的なSMTP-AUTHでは、クライアントユーザの認証が必要である。同様にして、AWSにおいてもこれが必要であり、IAMユーザを用いてこれを実現する。送信元となるアプリケーションにIAMユーザを紐付け、このIAMユーザにはユーザ名とパスワードを設定する。アプリケーションがSESを介してメールを送信する時、アプリケーションに対して、SESがユーザ名とパスワードを用いた認証を実行する。ユーザ名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTHの仕組みについては、以下のリンク先を参考にせよ。
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html?h=smtp
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html?h=smtp
 
 <br>
 
@@ -5258,7 +5262,7 @@ TLS、Sigv4、KMSを用いて暗号化された接続のこと。
 
 #### ・同時AWSセッションの上限数
 
-同時AWSセッションの上限数は２つまでである。以下のようなエラーが出た時は、セッション途中のユーザが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
+同時AWSセッションの上限数は2つまでである。以下のようなエラーが出た時は、セッション途中のユーザが他ににいるか、過去のセッションを終了できていない可能性がある。セッションマネージャーで既存のセッションを終了できる。
 
 ```bash
 # ECS Execの場合
@@ -5366,7 +5370,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
             "Body": "<メッセージの内容>", 
             "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=", 
             "MD5OfBody": "6699d5711c044a109a6aff9fc193aada", 
-            "MessageId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "MessageId": "*****"
         }
     ]
  }
@@ -5558,7 +5562,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-northeast-1:xxxxx:foo-function:1"
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:*****:foo-function:1"
       },
       "Retry": [
         {
@@ -5604,7 +5608,7 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ・レスポンス構造
 
-以下がレスポンスされれば、API GatewayがStepFucntionsをコールできたことになる。
+以下がレスポンスされれば、API GatewayがStepFunctionsをコールできたことになる。
 
 ```bash
 {
@@ -5633,15 +5637,15 @@ AWSサービスを組み合わせて、イベント駆動型アプリケーシ�
 
 #### ・Internet Gatewayとは
 
-VPCの出入り口に設置され、グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ。１つのパブリックIPに対して、１つのEC2のプライベートIPを紐付けられる。NAT（静的NAT）については、以下のリンク先を参考にせよ。
+VPCの出入り口に設置され、グローバルネットワークとプライベートネットワーク間（ここではVPC）におけるNAT（静的NAT）の機能を持つ。1つのパブリックIPに対して、1つのEC2のプライベートIPを紐付けられる。NAT（静的NAT）については、以下のリンク先を参考にせよ。
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・NAT Gatewayとは
 
-NAPT（動的NAT）の機能を持つ。１つのパブリックIPに対して、複数のEC2のプライベートIPを紐付けられる。パブリックサブネットに置き、プライベートサブネットのEC2からのレスポンスを受け付ける。NAPT（動的NAT）については、以下のリンク先を参考にせよ。
+NAPT（動的NAT）の機能を持つ。1つのパブリックIPに対して、複数のEC2のプライベートIPを紐付けられる。パブリックサブネットに置き、プライベートサブネットのEC2からのレスポンスを受け付ける。NAPT（動的NAT）については、以下のリンク先を参考にせよ。
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・比較表
 
@@ -5770,7 +5774,7 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 
 クラウドネットワークインターフェースとして働く。物理ネットワークにおけるNICについては以下を参考にせよ。
 
-参考：hhttps://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html
 
 #### ・紐付けられるリソース
 
@@ -5808,7 +5812,7 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 
 ### VPCのCIDR設計の手順
 
-１つのVPC内には複数のサブネットが入る。そのため、サブネットのIPアドレス範囲は、サブネットの個数だけ含めなければならない。また、VPCがもつIPアドレス範囲から、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならない。VPC内でIPアドレスが枯渇しないように、以下の手順で、割り当てを考える。
+1つのVPC内には複数のサブネットが入る。そのため、サブネットのIPアドレス範囲は、サブネットの個数だけ含めなければならない。また、VPCがもつIPアドレス範囲から、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならない。VPC内でIPアドレスが枯渇しないように、以下の手順で、割り当てを考える。
 
 参考：https://note.com/takashi_sakurada/n/n502fb0299938
 
@@ -5836,9 +5840,9 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 
 | AWSサービスの種類  | 最低限のIPアドレス数                    |
 | ------------------ | --------------------------------------- |
-| ALB                | ALB１つ当たり、8個                       |
+| ALB                | ALB1つ当たり、8個                       |
 | オートスケーリング | 水平スケーリング時のEC2最大数と同じ個数 |
-| VPCエンドポイント  | VPCエンドポイント１つ当たり、1個         |
+| VPCエンドポイント  | VPCエンドポイント1つ当たり、IPアドレス1つ         |
 | ECS、EKS           | Elastic Network Interface 数と同じ個数  |
 | Lambda             | Elastic Network Interface 数と同じ個数  |
 
@@ -5859,9 +5863,9 @@ ECS Fargateをプライベートサブネットに置いた場合、ECS Fargate�
 | アカウント   | VPCのあるリージョン | VPC内のCIDRブロック    | 接続の可否 |
 | ------------ | ------------------- | ---------------------- | ---------- |
 | 同じ／異なる | 同じ／異なる        | 全て異なる             | **〇**     |
-|              |                     | 同じものが１つでもある | ✕          |
+|              |                     | 同じものが1つでもある | ✕          |
 
-VPC に複数の IPv4 CIDR ブロックがあり、１つでも 同じCIDR ブロックがある場合は、VPC ピアリング接続はできない。
+VPC に複数の IPv4 CIDR ブロックがあり、1つでも 同じCIDR ブロックがある場合は、VPC ピアリング接続はできない。
 
 ![VPCピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VPCピアリング接続不可の場合-1.png)
 
@@ -5906,7 +5910,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 
 <br>
 
-## 34. WAF：Web Applicarion Firewall
+## 34. WAF：Web Application Firewall
 
 ### 設定項目
 
@@ -5948,7 +5952,7 @@ VPCエンドポイントとは異なる機能なので注意。Interface型のVP
 | ------------------ | ------------------------------------------------- | ------------------------------------------------------------ |
 | Web ACLs           | アクセス許可と拒否のルールを定義する。            |                                                              |
 | Bot Control        | Botに関するアクセス許可と拒否のルールを定義する。 |                                                              |
-| IP Sets            | IPアドレスの共通部品を管理する。                  | アクセスを許可したいIPアドレスセットを作成する時、全てのIPアドレスを１つのセットで管理してしまうと、何のIPアドレスかわらなあくなってしまう。そこで、許可するIPアドレスのセットを種類（自社、外部のA社／B社、など）で分割するとよい。 |
+| IP Sets            | IPアドレスの共通部品を管理する。                  | アクセスを許可したいIPアドレスセットを作成する時、全てのIPアドレスを1つのセットで管理してしまうと、何のIPアドレスかわらなあくなってしまう。そこで、許可するIPアドレスのセットを種類（自社、外部のA社／B社、など）で分割するとよい。 |
 | Regex pattern sets | 正規表現パターンの共通部品を管理する。            |                                                              |
 | Rule groups        | ルールの共通部品を管理する。                      | 各WAFに同じルールを設定する場合、ルールグループを用いるべきである。ただ、ルールグループを用いると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。 |
 
@@ -5999,7 +6003,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 #### ・ルールの粒度のコツ
 
-わかりやすさの観点から、可能な限り設定するステートメントを少なくし、１つのルールに１つの意味合いだけを持たせるように命名する。
+わかりやすさの観点から、可能な限り設定するステートメントを少なくし、1つのルールに1つの意味合いだけを持たせるように命名する。
 
 #### ・Count（検知）モード
 
@@ -6185,7 +6189,7 @@ Gmail、サンダーバード、Yahooメールなどと同類のメール管理�
 | --------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
 | Users                 | WorkMailで管理するユーザを設定する。                     |                                                              |
 | Domains               | ユーザに割り当てるメールアドレスのドメイン名を設定する。 | ```@{組織名}.awsapps.com```をドメイン名としてもらえる。ドメイン名の検証が完了した独自ドメイン名を設定することもできる。 |
-| Access Controle rules | 受信するメール、受信を遮断するメール、の条件を設定する。 |                                                              |
+| Access Control rules | 受信するメール、受信を遮断するメール、の条件を設定する。 |                                                              |
 
 <br>
 

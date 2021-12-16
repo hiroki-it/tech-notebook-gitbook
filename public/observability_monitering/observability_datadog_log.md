@@ -36,17 +36,19 @@
 
 <br>
 
-## 02. Ec2におけるログ収集
+## 02. サーバのログ収集
 
-### Datadogエージェント on EC2とは
-
-#### ・Datadogエージェント on EC2とは
+### サーバdatadogエージェント
 
 常駐プログラムであり、アプリケーションログを収集し、Datadogに転送する。
 
-参考：https://docs.datadoghq.com/ja/agent/amazon_ecs/?tab=awscli
+参考：https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog-agent_on-server.png)
+
+<br>
+
+### 導入方法
 
 #### ・ログ収集の有効化
 
@@ -58,13 +60,22 @@ logs_enabled: true
 
 <br>
 
-## 03. Fargateにおけるログ収集
+## 03. コンテナのログ収集（AWSの場合）
+
+### コンテナdatadogエージェント
+
+コンテナdatadogエージェントはコンテナからログを収集できないため、代わりにFireLensコンテナを用いる必要がある。メトリクスと分散トレースであれば収集できる。
+
+参考：
+
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_distributed_trace.html
+
+<br>
 
 ### FireLensコンテナ
 
-#### ・FireLensコンテナとは
-
-Datadogコンテナはコンテナからログを収集できないため、代わりにFireLensコンテナを用いる必要がある。以下のリンク先を参考にせよ。
+FluentBitを稼働させたコンテナのこと。Datadogの代わりにログを収集する。
 
 参考：
 
@@ -73,9 +84,9 @@ Datadogコンテナはコンテナからログを収集できないため、代�
 
 <br>
 
-### FireLensコンテナのベースイメージ
+### 導入方法
 
-#### ・Datadogイメージ
+#### ・ベースイメージ
 
 DatadogコンテナのベースイメージとなるDatadogイメージがDatadog公式から提供されている。パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と、プライベートECRリポジトリで再管理してから用いる場合がある。
 
@@ -100,13 +111,130 @@ FROM data/agent:latest
 
 <br>
 
-### 標準設定の上書き
+### ユーザ設定
+
+デフォルトで組み込まれている設定ファイルを置換する。
 
 参考：https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
 
 <br>
 
-## 04. ログの識別子
+## 04. ブラウザログの収集
+
+### ブラウザログSDK
+
+#### ・ブラウザログSDKとは
+
+ブラウザ上のJavaScriptで実行され、```console.error```メソッドの実行結果、キャッチされていない例外、ネットワークエラー、を含む構造化ログをDatadogに送信する。
+
+参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript
+
+#### ・パラメータ
+
+参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript/#%E5%88%9D%E6%9C%9F%E5%8C%96%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%BC
+
+#### ・送信される構造化ログ
+
+参考：https://docs.datadoghq.com/ja/logs/log_collection/javascript/#%E7%B5%90%E6%9E%9C
+
+```bash
+{
+  "content": {
+    "attributes": {
+      "error": {
+        "origin": "network",
+        "stack": "Failed to load"
+      },
+      "http": {
+        "useragent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36"
+      },
+      "network": {
+        "client": {
+          "ip": "18.180.199.160"
+        }
+      },
+      "service": "prd-foo-ssg",
+      "session_id": "*****",
+      # ブラウザログのステータス
+      "status": "error",
+      # ブラウザで表示されたページのURL。非同期リクエストのエラーは、こちらではなくmessageに記載される。
+      "view": {
+        "referrer": "",
+        "url": "http://example.jp/"
+      }
+    },
+    # ブラウザログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。
+    "message": "XHR error POST https://async.jp",
+    "service": "prd-foo-ssg",
+    "tags": [
+      "version:1.0.0",
+      "sdk_version:*.*.*",
+      "service:prd-foo-ssg",
+      "source:browser",
+      "env:prd"
+    ]
+  },
+  "id": "*****"
+}
+```
+
+<br>
+
+### 導入方法
+
+#### ・NPMの場合
+
+**＊実装例＊**
+
+Nuxtjsの場合、エントリポイントは```nuxt.config```ファイルである。プラグインとして実装し、これをエントリポイントで読み込むようにする。
+
+```javascript
+import { Configuration } from '@nuxt/types'
+import baseConfig from './nuxt.config'
+
+const nuxtConfig: Configuration = {
+    
+    # ～ 中略 ～
+    
+    plugins: [
+        ...(baseConfig.plugins || []),
+        '@/plugins/datadog/browserLogsForSsg'
+    ],
+        
+    # ～ 中略 ～   
+     
+}
+```
+
+```javascript
+
+import { Plugin, Context } from '@nuxt/types'
+import { datadogLogs } from '@datadog/browser-logs'
+
+const browserLogsForSsgPlugin: Plugin = ({ $config }: Context) => {
+
+  // クライアントトークンが設定されていない環境ではログ収集を開始しない。
+  if (!$config.datadog.clientToken) {
+    return
+  }
+
+  // ログ収集を開始する。
+  datadogLogs.init({
+    clientToken: $config.datadog.clientToken,
+    env: $config.datadog.env,
+    service: $config.datadog.service + '-ssg',
+    version: $config.datadog.version,
+  })
+}
+
+export default browserLogsForSsgPlugin
+```
+
+
+
+<br>
+
+## 05. ログの識別子
 
 ### attribute（属性）
 
@@ -225,7 +353,7 @@ Nginxの場合
 
 <br>
 
-## 05. 収集されたログの送信
+## 06. 収集されたログの送信
 
 ### EC2におけるログの送信
 
@@ -262,7 +390,7 @@ FireLensコンテナで稼働するFluentBitが、Datadogにログを送信す�
 
 <br>
 
-## 06. ログパイプライン
+## 07. ログパイプライン
 
 ### ログパイプラインとは
 
@@ -784,7 +912,7 @@ error   @http.status_code:[500 TO 599]
 
 <br>
 
-## 06-02. ログインテグレーション
+## 07-02. ログインテグレーション
 
 ### ログインテグレーションとは
 
@@ -823,13 +951,13 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 <br>
 
-## 06-03. ログパイプラインの後処理
+## 07-03. ログパイプラインの後処理
 
 ### 標準属性の付与
 
 <br>
 
-## 06-04. オプション処理
+## 07-04. オプション処理
 
 ### ログのメトリクス
 
@@ -862,7 +990,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 <br>
 
-## 07. ログエクスプローラ
+## 08. ログエクスプローラ
 
 ### Live Tail
 

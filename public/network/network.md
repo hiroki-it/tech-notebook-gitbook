@@ -177,7 +177,7 @@ DB管理システムがインストールされている。DBの情報が保存�
 
 ![デュプレックスシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/デュプレックスシステム.png)
 
-従系システムの待機方法には２つの種類がある。
+従系システムの待機方法には2つの種類がある。
 
 #### ・ホットスタンバイ
 
