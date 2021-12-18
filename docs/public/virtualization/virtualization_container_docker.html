@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎Docker Swarm · 俺のドキュメントサイト</title>
+        <title>📖 ︎Docker · 俺のドキュメントサイト</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,8 +73,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="virtualization_container_docker_command.html" />
     
-    <link rel="prev" href="virtualization_container_orchestration_kubernetes_istio.html" />
     
 
     </head>
@@ -1957,7 +1957,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.2.1.1" data-path="virtualization_container_docker.html">
+        <li class="chapter active" data-level="1.10.2.1.1" data-path="virtualization_container_docker.html">
             
                 <a href="virtualization_container_docker.html">
             
@@ -2170,7 +2170,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.2.2.4" data-path="virtualization_container_orchestration_docker_swarm.html">
+        <li class="chapter " data-level="1.10.2.2.4" data-path="virtualization_container_orchestration_docker_swarm.html">
             
                 <a href="virtualization_container_orchestration_docker_swarm.html">
             
@@ -2627,7 +2627,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎Docker Swarm</a>
+        <a href="../.." >📖 ︎Docker</a>
     </h1>
 </div>
 
@@ -2642,13 +2642,279 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="docker-swarm"><a name="docker-swarm" class="plugin-anchor" href="#docker-swarm"><i class="fa fa-link" aria-hidden="true"></i></a>Docker Swarm</h1>
+                                <h1 id="docker"><a name="docker" class="plugin-anchor" href="#docker"><i class="fa fa-link" aria-hidden="true"></i></a>Docker</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-&#x6982;&#x5FF5;"><a name="01-&#x6982;&#x5FF5;" class="plugin-anchor" href="#01-&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x6982;&#x5FF5;</h2>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/DockerSwarm&#x306E;&#x4ED5;&#x7D44;&#x307F;.png" alt="DockerSwarm&#x306E;&#x4ED5;&#x7D44;&#x307F;"></p>
+<h2 id="01-docker&#x306E;&#x64CD;&#x4F5C;"><a name="01-docker&#x306E;&#x64CD;&#x4F5C;" class="plugin-anchor" href="#01-docker&#x306E;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>01. Docker&#x306E;&#x64CD;&#x4F5C;</h2>
+<h3 id="docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;"><a name="docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;" class="plugin-anchor" href="#docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
+<p>docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306F;&#x3001;docker&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;API&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle" target="_blank">https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle</a></p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-client.png" alt="docker-daemon"></p>
+<p><br></p>
+<h3 id="docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;"><a name="docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;" class="plugin-anchor" href="#docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;</h3>
+<h4 id="&#x30FB;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3068;&#x306F;</h4>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x3067;&#x7A3C;&#x50CD;&#x3057;&#x3001;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x64CD;&#x4F5C;&#x3092;&#x62C5;&#x3046;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3002;docker&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306B;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;API&#x3092;&#x516C;&#x958B;&#x3059;&#x308B;&#x3002;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304C;docker&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3068;&#x3001;docker&#x30C7;&#x30FC;&#x30E2;&#x30F3;API&#x304C;&#x30B3;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x3001;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x6CBF;&#x3063;&#x3066;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304C;&#x64CD;&#x4F5C;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker-daemon.png" alt="docker-daemon"></p>
+<p><br></p>
+<h2 id="02-&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><a name="02-&#x30DE;&#x30A6;&#x30F3;&#x30C8;" class="plugin-anchor" href="#02-&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x30DE;&#x30A6;&#x30F3;&#x30C8;</h2>
+<h3 id="&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><a name="&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_bind-mount.png" alt="docker_bind-mount"></p>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306B;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3002;&#x30DB;&#x30B9;&#x30C8;&#x3067;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x7D99;&#x7D9A;&#x7684;&#x306B;&#x5909;&#x5316;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x9069;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x4F8B;&#x3048;&#x3070;&#x958B;&#x767A;&#x74B0;&#x5883;&#x3067;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30DB;&#x30B9;&#x30C8;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x3068;&#x5171;&#x6709;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6C38;&#x7D9A;&#x5316;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x306F;&#x4E0D;&#x9069;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.docker.com/storage/bind-mounts/" target="_blank">https://docs.docker.com/storage/bind-mounts/</a></li>
+<li><a href="https://www.takapy.work/entry/2019/02/24/110932" target="_blank">https://www.takapy.work/entry/2019/02/24/110932</a></li>
+</ul>
+<h4 id="&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><a name="&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</h4>
+<p>Dockerfile&#x3084;<code>docker-compose.yml</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x5B9A;&#x7FA9;&#x3001;<code>docker</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x3001;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x304C;&#x3001;<code>docker-compose.yml</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306E;&#x5B9A;&#x7FA9;&#x304C;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</span>
+$ docker run -d -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> /bin/bash <span class="token punctuation">\</span>
+  --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>bind, <span class="token assign-left variable">src</span><span class="token operator">=</span>home/projects/<span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>, <span class="token assign-left variable">dst</span><span class="token operator">=</span>/var/www/<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<h4 id="&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x5143;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;"><a name="&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x5143;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;" class="plugin-anchor" href="#&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x5143;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x5143;&#x3068;&#x3057;&#x3066;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</h4>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x901A;&#x308A;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x5143;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x306F;&#x3044;&#x304F;&#x3064;&#x304B;&#x9078;&#x629E;&#x80A2;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x308B;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;.png" alt="&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x308B;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C6;&#x3099;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;"></p>
+<p><br></p>
+<h3 id="&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><a name="&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_volume-mount.png" alt="docker_volume-mount"></p>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x306B;&#x3042;&#x308B;docker&#x30A8;&#x30EA;&#x30A2;&#xFF08;<code>/var/lib/docker/volumes</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#xFF09;&#x306E;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#xFF08;<code>/var/lib/docker/volumes/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;</span><span class="token punctuation">&gt;</span></span>/_data</code>&#xFF09;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306B;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3002;&#x30DB;&#x30B9;&#x30C8;&#x3067;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3081;&#x3063;&#x305F;&#x306B;&#x5909;&#x66F4;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x306B;&#x9069;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x4F8B;&#x3048;&#x3070;DB&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30DB;&#x30B9;&#x30C8;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x3068;&#x5171;&#x6709;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x4F8B;&#x3048;&#x3070;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3084;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3068;&#x3044;&#x3063;&#x305F;&#x3088;&#x3046;&#x306A;&#x5909;&#x66F4;&#x3055;&#x308C;&#x3084;&#x3059;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5171;&#x6709;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x306F;&#x4E0D;&#x9069;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.docker.com/storage/volumes/" target="_blank">https://docs.docker.com/storage/volumes/</a></li>
+<li><a href="https://www.takapy.work/entry/2019/02/24/110932" target="_blank">https://www.takapy.work/entry/2019/02/24/110932</a></li>
+</ul>
+<h4 id="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x306F;"><a name="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x306F;</h4>
+<p>&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;docker&#x30A8;&#x30EA;&#x30A2;&#xFF08;<code>/var/lib/docker/volumes</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#xFF09;&#x306B;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x308B;&#x6C38;&#x7D9A;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3068;&#x3044;&#x3046;&#x3002;&#x307E;&#x305F;&#x3001;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3078;&#x306E;&#x30D1;&#x30B9;&#xFF08;<code>/var/lib/docker/volumes/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;</span><span class="token punctuation">&gt;</span></span>/_data</code>&#xFF09;&#x3092;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x3044;&#x3046;&#x3002;</p>
+<h4 id="&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><a name="&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</h4>
+<p>Dockerfile&#x3084;<code>docker-compose.yml</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x5B9A;&#x7FA9;&#x3001;<code>docker</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x3001;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x304C;&#x3001;<code>docker-compose.yml</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x306E;&#x5B9A;&#x7FA9;&#x304C;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</span>
+$ docker run -d -it --name <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> /bin/bash <span class="token punctuation">\</span>
+  --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>volume, <span class="token assign-left variable">src</span><span class="token operator">=</span>home/projects/<span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>, <span class="token assign-left variable">dst</span><span class="token operator">=</span>/var/www/<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5074;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<h4 id="&#x30FB;data-volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x3088;&#x308B;&#x6C38;&#x7D9A;&#x5316;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x63D0;&#x4F9B;"><a name="&#x30FB;data-volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x3088;&#x308B;&#x6C38;&#x7D9A;&#x5316;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x63D0;&#x4F9B;" class="plugin-anchor" href="#&#x30FB;data-volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x3088;&#x308B;&#x6C38;&#x7D9A;&#x5316;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x63D0;&#x4F9B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Data Volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x3088;&#x308B;&#x6C38;&#x7D9A;&#x5316;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x63D0;&#x4F9B;</h4>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x914D;&#x7F6E;&#x624B;&#x6CD5;&#x306E;&#x4E00;&#x7A2E;&#x3002;docker&#x30A8;&#x30EA;&#x30A2;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;Data Volume&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x7528;&#x3044;&#x308B;&#x6642;&#x306F;&#x3001;docker&#x30A8;&#x30EA;&#x30A2;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x306E;&#x3067;&#x306F;&#x306A;&#x304F;&#x3001;Data Volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/data-volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;.png" alt="data-volume&#x30B3;&#x30F3;&#x30C6;&#x30CA;"></p>
+<p><br></p>
+<h3 id="&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;-vs-&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><a name="&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;-vs-&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;" class="plugin-anchor" href="#&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;-vs-&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8; vs. &#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;</h3>
+<h4 id="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x65B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3088;&#x308A;&#x3082;&#x5B89;&#x5168;"><a name="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x65B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3088;&#x308A;&#x3082;&#x5B89;&#x5168;" class="plugin-anchor" href="#&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x65B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3088;&#x308A;&#x3082;&#x5B89;&#x5168;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x65B9;&#x304C;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3088;&#x308A;&#x3082;&#x5B89;&#x5168;</h4>
+<p>&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x304B;&#x3089;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x6280;&#x8853;&#x7684;&#x306B;&#x53EF;&#x80FD;&#x3067;&#x3042;&#x308B;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3067;&#x306F;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x304C;&#x4F9D;&#x5B58;&#x3057;&#x5408;&#x3046;&#x305F;&#x3081;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x3069;&#x3061;&#x3089;&#x304B;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5909;&#x5316;&#x3057;&#x305F;&#x6642;&#x306B;&#x3001;&#x3082;&#x3046;&#x4E00;&#x65B9;&#x3082;&#x5F71;&#x97FF;&#x304C;&#x51FA;&#x308B;&#x3002;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x306B;&#x3042;&#x308B;docker&#x30A8;&#x30EA;&#x30A2;&#x5185;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306F;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x304B;&#x3089;&#x5909;&#x66F4;&#x3057;&#x306B;&#x304F;&#x304F;&#x3001;&#x3088;&#x308A;&#x5B89;&#x5168;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.ibm.com/docs/en/zos/2.4.0?topic=zcx-bind-mounts-docker-volumes" target="_blank">https://www.ibm.com/docs/en/zos/2.4.0?topic=zcx-bind-mounts-docker-volumes</a></li>
+<li><a href="https://www.takapy.work/entry/2019/02/24/110932" target="_blank">https://www.takapy.work/entry/2019/02/24/110932</a></li>
+</ul>
+<h4 id="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;copy&#x3092;&#x4F7F;&#x7528;"><a name="&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;copy&#x3092;&#x4F7F;&#x7528;" class="plugin-anchor" href="#&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;copy&#x3092;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306E;&#x4EE3;&#x308F;&#x308A;&#x306B;<code>COPY</code>&#x3092;&#x4F7F;&#x7528;</h4>
+<p>&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x306F;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#xFF08;<code>VOLUME</code>&#xFF09;&#x3084;<code>COPY</code>&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306B;&#x7D44;&#x307F;&#x8FBC;&#x3080;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments" target="_blank">https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments</a></p>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3067;&#x306F;&#x3001;&#x7D44;&#x307F;&#x8FBC;&#x3093;&#x3060;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8D77;&#x52D5;&#x5F8C;&#x3057;&#x304B;&#x53C2;&#x7167;&#x3067;&#x304D;&#x306A;&#x3044;&#x305F;&#x3081;&#x3001;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x8D77;&#x52D5;&#x524D;&#x306B;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x4F55;&#x304B;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;<code>COPY</code>&#x306E;&#x65B9;&#x304C;&#x4FBF;&#x5229;&#x3067;&#x3042;&#x308B;&#x3002;&#x65B9;&#x6CD5;&#x3068;&#x3057;&#x3066;&#x3001;&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;&#x30EA;&#x30DD;&#x30B8;&#x30C8;&#x30EA;&#x306B;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D3;&#x30EB;&#x30C9;&#x6642;&#x306B;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x5074;&#x306B;<code>COPY</code>&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x306F;&#x3053;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x30D7;&#x30EB;&#x3057;&#x3055;&#x3048;&#x3059;&#x308C;&#x3070;&#x3001;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.nyamucoro.com/entry/2018/03/15/200412" target="_blank">https://www.nyamucoro.com/entry/2018/03/15/200412</a></li>
+<li><a href="https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/" target="_blank">https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/</a></li>
+</ul>
+<p><br></p>
+<h2 id="03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><a name="03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;" class="plugin-anchor" href="#03-&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</h2>
+<h3 id="bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><a name="bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;" class="plugin-anchor" href="#bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</h3>
+<h4 id="&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><a name="&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;bridge&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;</h4>
+<p>&#x8907;&#x6570;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x63A5;&#x7D9A;&#x3055;&#x305B;&#x308B;&#x3002;&#x307E;&#x305F;&#x3001;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3092;&#x7269;&#x7406;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306E;&#x9593;&#x3092;&#x3001;&#x4EEE;&#x60F3;&#x30D6;&#x30EA;&#x30C3;&#x30B8;&#x3092;&#x7528;&#x3044;&#x3066;bridge&#x63A5;&#x7D9A;&#x3059;&#x308B;&#x3002;&#x307B;&#x3068;&#x3093;&#x3069;&#x306E;&#x5834;&#x5408;&#x3001;&#x3053;&#x306E;&#x65B9;&#x6CD5;&#x3092;&#x7528;&#x3044;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html" target="_blank">https://www.itmedia.co.jp/enterprise/articles/1609/21/news001.html</a></p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Docker&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x5185;&#x306E;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;.jpg" alt="Docker&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x5185;&#x306E;&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"></p>
+<p>&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x3078;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x304C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5C4A;&#x304F;&#x307E;&#x3067;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#x3002;&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x306E;<code>8080</code>&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x3068;&#x3001;WWW&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;<code>80</code>&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x9593;&#x3067;&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x884C;&#x3046;&#x3002;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x300E;<code>http://<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#xFF08;localhost&#xFF09;</span><span class="token punctuation">&gt;</span></span>:8080</code>&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3068;&#x3001;WWW&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308B;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x51E6;&#x7406;&#x5834;&#x6240;</th>
+<th style="text-align:left">&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306E;&#x6D41;&#x308C;</th>
+<th style="text-align:left">&#x30D7;&#x30E9;&#x30A4;&#x30D9;&#x30FC;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x4F8B;</th>
+<th>&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x30D7;&#x30ED;&#x30BB;&#x30B9;</td>
+<td style="text-align:left">&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30EA;&#x30C3;&#x30B9;&#x30F3;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;</td>
+<td style="text-align:left"></td>
+<td><code>:80</code></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x2191;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;</td>
+<td style="text-align:left">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30DD;&#x30FC;&#x30C8;</td>
+<td style="text-align:left">&#x30FB;<code>http://127.0.0.1</code><br>&#x30FB;<code>http://<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Docker&#x306E;hostname&#x306E;&#x8A2D;&#x5B9A;&#x5024;</span><span class="token punctuation">&gt;</span></span></code></td>
+<td><code>:80</code></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x2191;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;OS</td>
+<td style="text-align:left">&#x4EEE;&#x60F3;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</td>
+<td style="text-align:left"><code>http://172.XX.XX.XX</code></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x2191;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;OS</td>
+<td style="text-align:left">&#x4EEE;&#x60F3;&#x30D6;&#x30EA;&#x30C3;&#x30B8;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">&#x2191;</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">&#x30DB;&#x30B9;&#x30C8;&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;</td>
+<td style="text-align:left">&#x7269;&#x7406;&#x30B5;&#x30FC;&#x30D0;&#x306E;NIC&#xFF08; Ethernet&#x30AB;&#x30FC;&#x30C9;&#xFF09;</td>
+<td style="text-align:left"><code>http://127.0.0.1</code></td>
+<td><code>:8080</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><a name="none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;" class="plugin-anchor" href="#none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</h3>
+<h4 id="&#x30FB;none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><a name="&#x30FB;none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;none&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;</h4>
+<p>&#x7279;&#x5B9A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x3084;&#x4ED6;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x306F;&#x3001;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;&#x3055;&#x305B;&#x306A;&#x3044;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ docker network list
+
+NETWORK ID          NAME                    DRIVER              SCOPE
+7edf2be856d7        none                    null                <span class="token builtin class-name">local</span>
+</code></pre>
+<p><br></p>
+<h3 id="host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><a name="host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;" class="plugin-anchor" href="#host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</h3>
+<h4 id="&#x30FB;host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><a name="&#x30FB;host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;host&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x3068;&#x306F;</h4>
+<p>&#x7279;&#x5B9A;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x540C;&#x3058;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x60C5;&#x5831;&#x3092;&#x3082;&#x305F;&#x305B;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ docker network list
+
+NETWORK ID          NAME                    DRIVER              SCOPE
+ac017dda93d6        <span class="token function">host</span>                    <span class="token function">host</span>                <span class="token builtin class-name">local</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306E;&#x63A5;&#x7D9A;&#x65B9;&#x6CD5;"><a name="&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306E;&#x63A5;&#x7D9A;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306E;&#x63A5;&#x7D9A;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306E;&#x63A5;&#x7D9A;&#x65B9;&#x6CD5;</h3>
+<h4 id="&#x30FB;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;localhost&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;localhost&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;localhost&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;<code>localhost</code>&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</h4>
+<p>&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;&#x3053;&#x3053;&#x3067;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306F;&#x3001;&#x300E;<code>localhost</code>&#x300F;&#x3068;&#x306A;&#x308B;&#x3002;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#x3002;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;&#x306E;&#x6210;&#x5426;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x3068;app&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x6210;&#x5426;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30DB;&#x30B9;&#x30C8;&#x3067;&#x5B9F;&#x884C;</span>
+$ <span class="token function">curl</span> --fail http://localhost:8080/
+</code></pre>
+<h4 id="&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</h4>
+<p>&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;&#x3053;&#x3053;&#x3067;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306F;&#x3001;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x300E;<code>/etc/hosts</code>&#x300F;&#x306B;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x3082;&#x306E;&#x3068;&#x306A;&#x308B;&#x3002;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#x30DB;&#x30B9;&#x30C8;&#x3092;&#x7D4C;&#x7531;&#x305B;&#x305A;&#x3001;&#x305D;&#x306E;&#x307E;&#x307E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x3002;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;&#x306E;&#x6210;&#x5426;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#x3002;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306E;&#x5B9A;&#x7FA9;&#x65B9;&#x6CD5;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x53C2;&#x8003;&#x306B;&#x305B;&#x3088;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html</a></p>
+<p><strong>&#xFF0A;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x300E;app&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;nginx&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x3001;app&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;nginx&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x6210;&#x5426;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x5B9F;&#x884C;</span>
+$ <span class="token function">curl</span> --fail http://<span class="token operator">&lt;</span>nginx&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5272;&#x308A;&#x5F53;&#x3066;&#x305F;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span>:80/
+</code></pre>
+<h4 id="&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;hostdockerinternal&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><a name="&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;hostdockerinternal&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;" class="plugin-anchor" href="#&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;hostdockerinternal&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#xFF08;<code>host.docker.internal</code>&#xFF09;&#x300F;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</h4>
+<p>&#x300E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x300F;&#x304B;&#x3089;&#x300E;&#x30DB;&#x30B9;&#x30C8;&#x300F;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;&#x3053;&#x3053;&#x3067;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x5074;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&#x306F;&#x3001;&#x300E;<code>host.docker.internal</code>&#x300F;&#x306B;&#x306A;&#x308B;&#x3002;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#x3001;&#x30DB;&#x30B9;&#x30C8;&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#x3002;&#x30DB;&#x30B9;&#x30C8;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x9593;&#x306E;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x63A5;&#x7D9A;&#x306E;&#x6210;&#x5426;&#x3092;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x3067;&#x5B9F;&#x884C;</span>
+$ <span class="token function">curl</span> --fail http://host.docker.internal:8080/
+</code></pre>
+<p><br></p>
+<h2 id="04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><a name="04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;" class="plugin-anchor" href="#04-&#x30ED;&#x30AE;&#x30F3;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>04. &#x30ED;&#x30AE;&#x30F3;&#x30B0;</h2>
+<h3 id="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><a name="&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;" class="plugin-anchor" href="#&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;</h3>
+<h4 id="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><a name="&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3068;&#x306F;</h4>
+<p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF08;<code>/dev/stdout</code>&#xFF09;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#xFF08;<code>/dev/stderr</code>&#xFF09;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x5BFE;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ docker run -d -it --log-driver <span class="token operator">&lt;</span>&#x30ED;&#x30AE;&#x30F3;&#x30B0;&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x540D;<span class="token operator">&gt;</span> --name  <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x4F7F;&#x7528;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;<span class="token operator">&gt;</span> /bin/bash
+</code></pre>
+<h4 id="&#x30FB;json-file"><a name="&#x30FB;json-file" class="plugin-anchor" href="#&#x30FB;json-file"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;json-file</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x3001;<code>/var/lib/docker/containers/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;/&#xFF1C;&#x30B3;&#x30F3;&#x30C6;&#x30CA;ID&#xFF1E;-json.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#x5024;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;json-file&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;max-size&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;10m&quot;</span>,
+    <span class="token string">&quot;max-file&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;3&quot;</span> 
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;fluentd"><a name="&#x30FB;fluentd" class="plugin-anchor" href="#&#x30FB;fluentd"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;fluentd</h4>
+<p>&#x69CB;&#x9020;&#x5316;&#x30ED;&#x30B0;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3001;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3059;&#x308B;Fluentd&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;ECS&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;awsfirelens&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x306F;&#x3001;fluentd&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x30FC;&#x3092;&#x30E9;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x3082;&#x306E;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://docs.docker.com/config/containers/logging/fluentd/" target="_blank">https://docs.docker.com/config/containers/logging/fluentd/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/" target="_blank">https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/</a></li>
+</ul>
+<pre class="language-"><code class="lang-bash"> <span class="token punctuation">{</span>
+   <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;fluentd&quot;</span>,
+   <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+     <span class="token string">&quot;fluentd-address&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;&lt;Fluentd&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;&gt;:24224&quot;</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;none"><a name="&#x30FB;none" class="plugin-anchor" href="#&#x30FB;none"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;none</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;API&#x306B;&#x8EE2;&#x9001;&#x3057;&#x306A;&#x3044;&#x3002; &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#x3001;&#x958B;&#x767A;&#x74B0;&#x5883;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30B5;&#x30A4;&#x30BA;&#x306E;&#x80A5;&#x5927;&#x5316;&#x3092;&#x9632;&#x3050;&#x3002;</p>
+<h4 id="&#x30FB;awslogs"><a name="&#x30FB;awslogs" class="plugin-anchor" href="#&#x30FB;awslogs"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;awslogs</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;CloudWatch-API&#x306B;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/awslogs/" target="_blank">https://docs.docker.com/config/containers/logging/awslogs/</a></p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;awslogs&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;awslogs-region&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;us-east-1&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="&#x30FB;gcplogs"><a name="&#x30FB;gcplogs" class="plugin-anchor" href="#&#x30FB;gcplogs"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;gcplogs</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x51FA;&#x529B;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x3001;Google Cloud Logging&#x306E;API&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/gcplogs/" target="_blank">https://docs.docker.com/config/containers/logging/gcplogs/</a></p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">{</span>
+  <span class="token string">&quot;log-driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;gcplogs&quot;</span>,
+  <span class="token string">&quot;log-opts&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;gcp-meta-name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;example-instance-12345&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
+<h3 id="&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;"><a name="&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;" class="plugin-anchor" href="#&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5404;&#x30D9;&#x30F3;&#x30C0;&#x30FC;&#x306E;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x5148;</h3>
+<h4 id="&#x30FB;docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;"><a name="&#x30FB;docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;" class="plugin-anchor" href="#&#x30FB;docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;</h4>
+<p>Linux&#x3067;&#x306F;&#x3001;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306F;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/1</code>&#x300F;&#x3001;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306F;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/2</code>&#x300F;&#x3067;&#x3042;&#x308B;&#x3002;docker&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x306F;&#x3001;&#x300E;<code>/dev/stdout</code>&#x300F;&#x304C;&#x300E;<code>/proc/self/fd/1</code>&#x300F;&#x306E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3001;&#x307E;&#x305F;&#x300E;<code>/dev/stderr</code>&#x300F;&#x304C;&#x300E;<code>/proc/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;ID</span><span class="token punctuation">&gt;</span></span>/fd/2</code>&#x300F;&#x306E;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>root@*****:/dev<span class="token punctuation">]</span> <span class="token function">ls</span> -la
+total <span class="token number">4</span>
+drwxr-xr-x <span class="token number">5</span> root root  <span class="token number">340</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 <span class="token builtin class-name">.</span>
+drwxr-xr-x <span class="token number">1</span> root root <span class="token number">4096</span> Oct <span class="token number">14</span> <span class="token number">11</span>:28 <span class="token punctuation">..</span>
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">11</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 core -<span class="token operator">&gt;</span> /proc/kcore
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">13</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 fd -<span class="token operator">&gt;</span> /proc/self/fd
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">7</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 full
+drwxrwxrwt <span class="token number">2</span> root root   <span class="token number">40</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 mqueue
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">3</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 null
+lrwxrwxrwx <span class="token number">1</span> root root    <span class="token number">8</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 ptmx -<span class="token operator">&gt;</span> pts/ptmx
+drwxr-xr-x <span class="token number">2</span> root root    <span class="token number">0</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 pts
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">8</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 random
+drwxrwxrwt <span class="token number">2</span> root root   <span class="token number">40</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 shm
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stderr -<span class="token operator">&gt;</span> /proc/self/fd/2 <span class="token comment"># &#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;</span>
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stdin -<span class="token operator">&gt;</span> /proc/self/fd/0
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">15</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 stdout -<span class="token operator">&gt;</span> /proc/self/fd/1 <span class="token comment"># &#x6A19;&#x6E96;&#x51FA;&#x529B;</span>
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">5</span>, <span class="token number">0</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 <span class="token function">tty</span>
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">9</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 urandom
+crw-rw-rw- <span class="token number">1</span> root root <span class="token number">1</span>, <span class="token number">5</span> Oct <span class="token number">14</span> <span class="token number">11</span>:36 zero
+</code></pre>
+<h4 id="&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><a name="&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
+<p>&#x516C;&#x5F0F;&#x306E;nginx&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#x3001;<code>/dev/stdout</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x3001;<code>/var/log/nginx/access.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#x3002;&#x307E;&#x305F;&#x3001;<code>/dev/stderr</code>&#x3068;&#x3044;&#x3046;&#x30B7;&#x30F3;&#x30DC;&#x30EA;&#x30C3;&#x30AF;&#x30EA;&#x30F3;&#x30AF;&#x3092;&#x3001;<code>/var/log/nginx/error.log</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x3044;&#x308B;&#x3002;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x3053;&#x308C;&#x3089;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x306F;&#x3001;<code>/dev/stdout</code>&#x3068;<code>/dev/stderr</code>&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.docker.com/config/containers/logging/" target="_blank">https://docs.docker.com/config/containers/logging/</a></p>
+<h4 id="&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><a name="&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;php-fpm&#x30A4;&#x30E1;&#x30FC;&#x30B8;</h4>
+<p>&#x8981;&#x52C9;&#x5F37;&#x3002;</p>
 
                                 
                                 </section>
@@ -2676,10 +2942,10 @@
 
             
                 
-                <a href="virtualization_container_orchestration_kubernetes_istio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎Istio">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="virtualization_container_docker_command.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎dockerコマンド">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2688,7 +2954,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Docker Swarm","level":"1.10.2.2.4","depth":4,"next":{"title":"仮想サーバ（仮想マシン）","level":"1.10.3","depth":2,"ref":"","articles":[{"title":"📖 ︎仮想サーバ（仮想マシン）","level":"1.10.3.1","depth":3,"path":"public/virtualization/virtualization_server.md","ref":"public/virtualization/virtualization_server.md","articles":[]}]},"previous":{"title":"📖 ︎Istio","level":"1.10.2.2.3.6","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_istio.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_docker_swarm.md","mtime":"2021-12-18T07:51:13.119Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-18T07:51:18.723Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Docker","level":"1.10.2.1.1","depth":4,"next":{"title":"📖 ︎dockerコマンド","level":"1.10.2.1.2","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},"previous":{"title":"Docker","level":"1.10.2.1","depth":3,"ref":"","articles":[{"title":"📖 ︎Docker","level":"1.10.2.1.1","depth":4,"path":"public/virtualization/virtualization_container_docker.md","ref":"public/virtualization/virtualization_container_docker.md","articles":[]},{"title":"📖 ︎dockerコマンド","level":"1.10.2.1.2","depth":4,"path":"public/virtualization/virtualization_container_docker_command.md","ref":"public/virtualization/virtualization_container_docker_command.md","articles":[]},{"title":"📖 ︎Dockerfile","level":"1.10.2.1.3","depth":4,"path":"public/virtualization/virtualization_container_docker_dockerfile.md","ref":"public/virtualization/virtualization_container_docker_dockerfile.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_docker.md","mtime":"2021-12-18T07:51:13.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-18T07:51:18.723Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

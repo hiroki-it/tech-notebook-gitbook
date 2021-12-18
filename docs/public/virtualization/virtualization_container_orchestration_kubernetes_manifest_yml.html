@@ -1959,7 +1959,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.2.1.1" data-path="virtualization_container_docker_command.html">
+        <li class="chapter " data-level="1.10.2.1.1" data-path="virtualization_container_docker.html">
+            
+                <a href="virtualization_container_docker.html">
+            
+                    
+                    📖 ︎Docker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.1.2" data-path="virtualization_container_docker_command.html">
             
                 <a href="virtualization_container_docker_command.html">
             
@@ -1972,7 +1985,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.1.2" data-path="virtualization_container_docker_dockerfile.html">
+        <li class="chapter " data-level="1.10.2.1.3" data-path="virtualization_container_docker_dockerfile.html">
             
                 <a href="virtualization_container_docker_dockerfile.html">
             
@@ -2076,7 +2089,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.2.2.3.1" data-path="virtualization_container_orchestration_kubernetes_command.html">
+        <li class="chapter " data-level="1.10.2.2.3.1" data-path="virtualization_container_orchestration_kubernetes.html">
+            
+                <a href="virtualization_container_orchestration_kubernetes.html">
+            
+                    
+                    📖 ︎Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2.3.2" data-path="virtualization_container_orchestration_kubernetes_command.html">
             
                 <a href="virtualization_container_orchestration_kubernetes_command.html">
             
@@ -2089,7 +2115,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.2.3.2" data-path="virtualization_container_orchestration_kubernetes_minikube_command.html">
+        <li class="chapter " data-level="1.10.2.2.3.3" data-path="virtualization_container_orchestration_kubernetes_minikube_command.html">
             
                 <a href="virtualization_container_orchestration_kubernetes_minikube_command.html">
             
@@ -2102,7 +2128,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.2.2.3.3" data-path="virtualization_container_orchestration_kubernetes_manifest_yml.html">
+        <li class="chapter active" data-level="1.10.2.2.3.4" data-path="virtualization_container_orchestration_kubernetes_manifest_yml.html">
             
                 <a href="virtualization_container_orchestration_kubernetes_manifest_yml.html">
             
@@ -2115,7 +2141,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.2.3.4" data-path="virtualization_container_orchestration_kubernetes_skaffold.html">
+        <li class="chapter " data-level="1.10.2.2.3.5" data-path="virtualization_container_orchestration_kubernetes_skaffold.html">
             
                 <a href="virtualization_container_orchestration_kubernetes_skaffold.html">
             
@@ -2128,7 +2154,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.2.3.5" data-path="virtualization_container_orchestration_kubernetes_istio.html">
+        <li class="chapter " data-level="1.10.2.2.3.6" data-path="virtualization_container_orchestration_kubernetes_istio.html">
             
                 <a href="virtualization_container_orchestration_kubernetes_istio.html">
             
@@ -2629,7 +2655,7 @@
 </code></pre>
 <p><br></p>
 <h2 id="02-kind"><a name="02-kind" class="plugin-anchor" href="#02-kind"><i class="fa fa-link" aria-hidden="true"></i></a>02. kind</h2>
-<p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x7A2E;&#x985E;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
 </code></pre>
 <table>
@@ -2645,8 +2671,8 @@
 <td></td>
 </tr>
 <tr>
-<td>Service</td>
-<td></td>
+<td>Ingress</td>
+<td>&#x4ED6;&#x306E;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x306F;apiVersion&#x304C;&#x7570;&#x306A;&#x308A;&#x3001;<code>networking.k8s.io/v1</code>&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</td>
 </tr>
 <tr>
 <td>PersistentVolume</td>
@@ -2666,6 +2692,14 @@
 </tr>
 <tr>
 <td>ReplicaSet</td>
+<td></td>
+</tr>
+<tr>
+<td>Service</td>
+<td></td>
+</tr>
+<tr>
+<td>StatefulSet</td>
 </tr>
 </tbody>
 </table>
@@ -2677,7 +2711,7 @@
   <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>service
 </code></pre>
 <p><br></p>
-<h2 id="05-spec&#xFF08;ingress&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;ingress&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;ingress&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;Ingress&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-spec&#xFF08;kind-ingress&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;kind-ingress&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;kind-ingress&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;<code>kind: Ingress</code>&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="rules"><a name="rules" class="plugin-anchor" href="#rules"><i class="fa fa-link" aria-hidden="true"></i></a>rules</h3>
 <p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3078;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x8907;&#x6570;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x632F;&#x308A;&#x5206;&#x3051;&#x3089;&#x308C;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -2743,7 +2777,7 @@
             <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8000</span>
 </code></pre>
 <p><br></p>
-<h2 id="05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-02-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-02. spec&#xFF08;PersistentVolume&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-02-spec&#xFF08;kind-persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-02-spec&#xFF08;kind-persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-02-spec&#xFF08;kind-persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-02. spec&#xFF08;<code>kind: PersistentVolume</code>&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="accessmodes"><a name="accessmodes" class="plugin-anchor" href="#accessmodes"><i class="fa fa-link" aria-hidden="true"></i></a>accessModes</h3>
 <h4 id="&#x30FB;readwritemany"><a name="&#x30FB;readwritemany" class="plugin-anchor" href="#&#x30FB;readwritemany"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadWriteMany</h4>
 <p>&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#xFF0F;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
@@ -2814,7 +2848,7 @@
   <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
 </code></pre>
 <p><br></p>
-<h2 id="05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-03-spec&#xFF08;persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-03. spec&#xFF08;PersistentVolumeClaim&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-03-spec&#xFF08;kind-persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-03-spec&#xFF08;kind-persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-03-spec&#xFF08;kind-persistentvolumeclaim&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-03. spec&#xFF08;<code>kind: PersistentVolumeClaim</code>&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="accessmodes"><a name="accessmodes" class="plugin-anchor" href="#accessmodes"><i class="fa fa-link" aria-hidden="true"></i></a>accessModes</h3>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
@@ -2871,15 +2905,30 @@
 <p><br></p>
 <h3 id="volume"><a name="volume" class="plugin-anchor" href="#volume"><i class="fa fa-link" aria-hidden="true"></i></a>volume</h3>
 <h4 id="&#x30FB;name"><a name="&#x30FB;name" class="plugin-anchor" href="#&#x30FB;name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;name</h4>
-<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x8981;&#x6C42;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <h4 id="&#x30FB;persistentvolumeclaimclaimname"><a name="&#x30FB;persistentvolumeclaimclaimname" class="plugin-anchor" href="#&#x30FB;persistentvolumeclaimclaimname"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;persistentVolumeClaim.claimName</h4>
-<p>&#x4F7F;&#x7528;&#x3059;&#x308B;PersistentVolumeClaim&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;persistentVolume&#x306F;&#x5225;&#x9014;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x3059;&#x308B;PersistentVolumeClaim&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/" target="_blank">https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
   volumes
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>db
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>volume
       <span class="token key atrule">persistentVolumeClaim</span><span class="token punctuation">:</span>
-        <span class="token key atrule">claimName</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>persistent<span class="token punctuation">-</span>volume
+        <span class="token key atrule">claimName</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>slow<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>claim
+</code></pre>
+<p>persistentVolume&#x306F;&#x5225;&#x9014;&#x4F5C;&#x6210;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>slow<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>claim
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> foo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+    <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+      <span class="token key atrule">storage</span><span class="token punctuation">:</span> 5Gi
 </code></pre>
 <h4 id="&#x30FB;emptydir"><a name="&#x30FB;emptydir" class="plugin-anchor" href="#&#x30FB;emptydir"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;emptyDir</h4>
 <p>EmptyDir&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x300E;&#x30DD;&#x30C3;&#x30C9;&#x300F;&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3068;&#x3053;&#x306E;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3082;&#x540C;&#x6642;&#x306B;&#x524A;&#x9664;&#x3055;&#x308C;&#x308B;&#x3002;</p>
@@ -2909,7 +2958,7 @@
       <span class="token key atrule">type</span><span class="token punctuation">:</span> DirectoryOrCreate <span class="token comment"># &#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x304C;&#x306A;&#x3051;&#x308C;&#x3070;&#x4F5C;&#x6210;&#x3059;&#x308B;</span>
 </code></pre>
 <p><br></p>
-<h2 id="05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-05-spec&#xFF08;service&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-05. spec&#xFF08;Service&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-05-spec&#xFF08;kind-service&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-05-spec&#xFF08;kind-service&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-05-spec&#xFF08;kind-service&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-05. spec&#xFF08;<code>kind: Service</code>&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="ports"><a name="ports" class="plugin-anchor" href="#ports"><i class="fa fa-link" aria-hidden="true"></i></a>ports</h3>
 <h4 id="&#x30FB;protocol"><a name="&#x30FB;protocol" class="plugin-anchor" href="#&#x30FB;protocol"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;protocol</h4>
 <p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x53D7;&#x4FE1;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
@@ -2968,6 +3017,23 @@
 </tbody>
 </table>
 <p><br></p>
+<h2 id="05-06-spec&#xFF08;kind-statefulset&#xFF09;"><a name="05-06-spec&#xFF08;kind-statefulset&#xFF09;" class="plugin-anchor" href="#05-06-spec&#xFF08;kind-statefulset&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05-06. spec&#xFF08;<code>kind: StatefulSet</code>&#xFF09;</h2>
+<h3 id="volumeclaimtemplates"><a name="volumeclaimtemplates" class="plugin-anchor" href="#volumeclaimtemplates"><i class="fa fa-link" aria-hidden="true"></i></a>volumeClaimTemplates</h3>
+<p>PersistentVolumeClaim&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;&#x8A2D;&#x5B9A;&#x306E;&#x9805;&#x76EE;&#x306F;<code>kind: PersistentVolumeClaim</code>&#x306E;&#x5834;&#x5408;&#x3068;&#x540C;&#x3058;&#x3067;&#x3042;&#x308B;&#x3002;StatefulSet&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x3066;&#x3082;&#x3001;&#x3053;&#x308C;&#x306F;&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">volumeClaimTemplates</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>slow<span class="token punctuation">-</span>volume<span class="token punctuation">-</span>claim
+        <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+          <span class="token key atrule">app</span><span class="token punctuation">:</span> foo
+      <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+        <span class="token key atrule">storageClassName</span><span class="token punctuation">:</span> slow
+        <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> ReadWriteOnce
+        <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+            <span class="token key atrule">storage</span><span class="token punctuation">:</span> 2Gi
+</code></pre>
 
                                 
                                 </section>
@@ -3011,7 +3077,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.3","depth":5,"next":{"title":"📖 ︎skaffold","level":"1.10.2.2.3.4","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","articles":[]},"previous":{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.2","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-12-16T22:59:20.959Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-16T22:59:25.652Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.2.2.3.4","depth":5,"next":{"title":"📖 ︎skaffold","level":"1.10.2.2.3.5","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md","articles":[]},"previous":{"title":"📖 ︎minikubeコマンド","level":"1.10.2.2.3.3","depth":5,"path":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","ref":"public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md","mtime":"2021-12-18T07:51:13.137Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-18T07:51:18.723Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
