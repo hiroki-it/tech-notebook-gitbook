@@ -18,13 +18,14 @@
             * [📖 ︎言語別の処理方式](public/software/software_basic_language_processor_process_mode.md)
             * [📖 ︎機械語と進数](public/software/software_basic_language_processor_machine_language_and_radix.md)
     * ミドルウェア
-        * [📖 ︎OS標準搭載のミドルウェア](public/software/software_middleware_os.md) 
-        * Web関連
+        * OS系
+            * [📖 ︎OS標準搭載](public/software/software_middleware_os.md) 
+        * Web系
             * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
             * [📖 ︎Apache](public/software/software_middleware_web_apache.md)
-        * アプリケーション関連
+        * アプリケーション系
             * [📖 ︎PHP-FPM](public/software/software_middleware_application_php_fpm.md)
-        * データベース関連
+        * データベース系
             * [📖 ︎データベース](public/software/software_middleware_database.md)
             * [📖 My︎SQL](public/software/software_middleware_database_mysql.md)
     * アプリケーションソフトウェア
