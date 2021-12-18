@@ -4229,7 +4229,7 @@ CloudWatchメトリクスの```DatabaseConnections```メトリクスから、DB�
 
 ![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/rds_pending-maintenance.png)
 
-ユーザが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア／OS／DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。実行しない選択肢はないが、実行タイミングだけはメンテナンスウィンドウを用いて設定できる。
+ユーザが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア／OS／DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。『次のメンテナンスウィンドウ』を選択すれば実行タイミングをメンテナンスウィンドウの間設定できるが、これを行わない場合は『日付の適用』に表示された時間帯に強制実行される。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
 

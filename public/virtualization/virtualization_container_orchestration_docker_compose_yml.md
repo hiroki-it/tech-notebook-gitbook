@@ -267,7 +267,7 @@ services:
 
 ### ```networks```
 
-![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/dockerエンジン内の仮想ネットワーク.jpg)
+![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
 コンテナを接続する内部／外部ネットワークのエイリアス名を設定する。ネットワーク名ではなく、エイリアス名を指定することに注意する。
 
@@ -443,14 +443,18 @@ services:
 
 最上層と```service```内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。dockerエリアにVolumeが作成され、```service```オプション内に設定した```volumes```オプションでボリュームマウントを行う。
 
+参考：https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
+
 **＊実装例＊**
+
+MySQLコンテナのdatadir（```/var/lib/mysql```）に、dockerエリアのボリュームをマウントする。
 
 ```yaml
 service:
   db:
     volumes:
       # ボリュームマウント
-      - mysql_volume:/var/www/lib/mysql
+      - mysql_volume:/var/lib/mysql
       
 volumes:
   # ボリューム名
@@ -458,6 +462,14 @@ volumes:
     # localで、ホスト側のdockerエリアを指定
     driver: local   
 ```
+
+権限、バインドvol.で```datadir```ディレクトリにマウントしようとすると、権限エラーになる。
+
+```bash
+mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
+```
+
+参考：https://t-cr.jp/memo/c5179ef2b476237a
 
 <br>
 
@@ -665,7 +677,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql_volume:/var/www/lib/mysql
+      - mysql_volume:/var/lib/mysql
       # docker-entrypoint-initdb.dディレクトリにバインドマウントを行う。
       - ./infra/docker/mysql/init:/docker-entrypoint-initdb.d
     environment:

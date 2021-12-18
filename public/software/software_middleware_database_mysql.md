@@ -8,9 +8,42 @@
 
 <br>
 
-## 01. 設定ファイル
+## 01. 設定ファイル（Docker MySQL）
 
-元々の値をコメントアウトで示す
+### ```/etc/mysql/my.cnf```ファイル
+
+#### ・```/etc/mysql/my.cnf```ファイルとは
+
+MySQLの設定値を定義する。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている。
+
+```bash
+# Copyright (c) 2016, 2021, Oracle and/or its affiliates.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License, version 2.0,
+# as published by the Free Software Foundation.
+#
+# This program is also distributed with certain software (including
+# but not limited to OpenSSL) that is licensed under separate terms,
+# as designated in a particular file or component or in included license
+# documentation.  The authors of MySQL hereby grant you an additional
+# permission to link the program and your derivative works with the
+# separately licensed software that they have included with MySQL.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License, version 2.0, for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+```
+
+このファイルを上書きすることで、設定値を上書きできる。
 
 ```bash
 [mysqld]
@@ -49,6 +82,37 @@ default-character-set = utf8mb4 # utf8
 
 [client]
 default-character-set = utf8mb4 # utf8
+```
+
+<br>
+
+### ```datadir```ディレクトリ
+
+MySQLのDBやテーブルの情報を管理する。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのボリュームのマウント先として指定される。
+
+```bash
+[root@foo:/var/lib/mysql] $ ls -la
+
+drwxrwxrwt 7 mysql mysql     4096 Dec 17 12:55 .
+drwxr-xr-x 1 root  root      4096 Dec  2 11:24 ..
+-rw-r----- 1 mysql mysql       56 Dec 17 09:54 auto.cnf
+-rw------- 1 mysql mysql     1680 Dec 17 09:54 ca-key.pem
+-rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 ca.pem
+-rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 client-cert.pem
+-rw------- 1 mysql mysql     1680 Dec 17 09:54 client-key.pem
+drwxr-x--- 2 mysql mysql     4096 Dec 17 10:23 foo_db # foo DB
+-rw-r----- 1 mysql mysql     1352 Dec 17 09:54 ib_buffer_pool
+-rw-r----- 1 mysql mysql 50331648 Dec 17 10:23 ib_logfile0
+-rw-r----- 1 mysql mysql 50331648 Dec 17 09:54 ib_logfile1
+-rw-r----- 1 mysql mysql 79691776 Dec 17 10:23 ibdata1
+-rw-r----- 1 mysql mysql 12582912 Dec 17 12:54 ibtmp1
+drwxr-x--- 2 mysql mysql     4096 Dec 17 09:54 mysql
+drwxr-x--- 2 mysql mysql     4096 Dec 17 09:54 performance_schema
+-rw------- 1 mysql mysql     1680 Dec 17 09:54 private_key.pem
+-rw-r--r-- 1 mysql mysql      452 Dec 17 09:54 public_key.pem
+-rw-r--r-- 1 mysql mysql     1112 Dec 17 09:54 server-cert.pem
+-rw------- 1 mysql mysql     1680 Dec 17 09:54 server-key.pem
+drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 ```
 
 <br>

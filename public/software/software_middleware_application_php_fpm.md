@@ -36,13 +36,13 @@ PHPのために実装されたFastCGIのこと。WebサーバとPHPファイル�
 
 <br>
 
-## 02. 設定
+## 02. 設定ファイル（Docker PHP-FPM）
 
 ### ```/etc/php-fpm.d/www.conf```ファイル
 
 #### ・```/etc/php-fpm.d/www.conf```ファイルとは
 
-PHP-FPMの設定を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
+PHP-FPMの設定値を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 

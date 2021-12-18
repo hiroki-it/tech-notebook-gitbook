@@ -20,7 +20,7 @@ apiVersion: v1
 
 ## 02. kind
 
-オブジェクトの種類を設定する。
+作成されるオブジェクトの種類を設定する。
 
 ```yaml
 kind: Service
@@ -29,12 +29,14 @@ kind: Service
 | 種類                  | 補足                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | Deployment            |                                                              |
-| Service               |                                                              |
+| Ingress               | 他のオブジェクトとはapiVersionが異なり、```networking.k8s.io/v1```を指定する必要がある。 |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
 | Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
 | ReplicaController     | 旧Deployment。非推奨である。<br>参考：https://stackoverflow.com/questions/37423117/replication-controller-vs-deployment-in-kubernetes |
 | ReplicaSet            |                                                              |
+| Service               |                                                              |
+| StatefulSet           |                                                              |
 
 <br>
 
@@ -51,7 +53,7 @@ metadata:
 
 <br>
 
-## 05. spec（Ingressの場合）
+## 05. spec（```kind: Ingress```の場合）
 
 ### rules
 
@@ -136,7 +138,7 @@ spec:
 
 <br>
 
-## 05-02. spec（PersistentVolumeの場合）
+## 05-02. spec（```kind: PersistentVolume```の場合）
 
 ### accessModes
 
@@ -264,7 +266,7 @@ spec:
 
 <br>
 
-## 05-03. spec（PersistentVolumeClaimの場合）
+## 05-03. spec（```kind: PersistentVolumeClaim```の場合）
 
 ### accessModes
 
@@ -349,20 +351,38 @@ spec:
 
 #### ・name
 
-ボリューム名を設定する。
+要求によって作成するボリューム名を設定する。
 
 #### ・persistentVolumeClaim.claimName
 
-使用するPersistentVolumeClaimオブジェクトの名前を設定する。persistentVolumeは別途作成しておく必要がある。
+使用するPersistentVolumeClaimオブジェクトの名前を設定する。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
 ```yaml
 spec:
   volumes
-    - name: foo-db
+    - name: foo-volume
       persistentVolumeClaim:
-        claimName: foo-persistent-volume
+        claimName: foo-slow-volume-claim
+```
+
+persistentVolumeは別途作成しておく必要がある。
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: foo-slow-volume-claim
+  labels:
+    app: foo
+spec:
+  storageClassName: slow
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
 ```
 
 #### ・emptyDir
@@ -402,7 +422,7 @@ HostPathボリュームを作成する。そのため、『ノード』が削除
 
 <br>
 
-## 05-05. spec（Serviceの場合）
+## 05-05. spec（```kind: Service```の場合）
 
 ### ports
 
@@ -468,6 +488,28 @@ spec:
 | LoadBalancer              | クラスター外部／内部   |
 
 <br>
+
+## 05-06. spec（```kind: StatefulSet```）
+
+### volumeClaimTemplates
+
+PersistentVolumeClaimを作成する。設定の項目は```kind: PersistentVolumeClaim```の場合と同じである。StatefulSetが削除されても、これは削除されない。
+
+```yaml
+spec:
+  volumeClaimTemplates:
+    - metadata:
+        name: foo-slow-volume-claim
+        labels:
+          app: foo
+      spec:
+        storageClassName: slow
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
+```
 
 
 

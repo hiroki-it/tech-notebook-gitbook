@@ -198,7 +198,7 @@ const nuxtConfig: Configuration = {
     
     plugins: [
         ...(baseConfig.plugins || []),
-        '@/plugins/datadog/browserLogsForSsg'
+        { src: '@/plugins/datadog/browserLogsForSsg', mode: 'client' },
     ],
         
     # ～ 中略 ～   
@@ -230,7 +230,16 @@ const browserLogsForSsgPlugin: Plugin = ({ $config }: Context) => {
 export default browserLogsForSsgPlugin
 ```
 
+```bash
+# ～ 中略 ～
 
+# Datadogにおけるクライアントトークン
+DATADOG_CLIENT_TOKEN=
+# Datadogにおけるログのタグ値
+DATADOG_ENV=
+DATADOG_SERVICE=
+DATADOG_VERSION=
+```
 
 <br>
 

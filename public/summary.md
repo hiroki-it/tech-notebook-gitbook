@@ -145,6 +145,7 @@
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
 * コンテナ
     * Docker
+        * [📖 ︎Docker](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker.html)
         * [📖 ︎dockerコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_command.html)
         * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker_dockerfile.html)
     * コンテナオーケストレーション
@@ -153,6 +154,7 @@
             * [📖 ︎docker-composeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_command.html)
             * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_docker_compose_yml.html)
         * Kubernetes
+            * [📖 ︎Kubernetes](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes.html)
             * [📖 ︎kubernetesコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_command.html)
             * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.html)
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.html)
