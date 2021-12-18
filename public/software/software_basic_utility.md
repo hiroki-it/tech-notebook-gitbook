@@ -12,20 +12,7 @@
 
 ### Unixの場合
 
-今回、以下に紹介するものをまとめる。RedHat系とDebian系のユーティリティが入り混じっているかもしれないため、要調査。
-
-| ファイルシステム系 | プロセス管理系 | ネットワーク系 | テキスト処理系 | 環境変数系  | ハードウェア系 |
-| ------------------ | -------------- | -------------- | -------------- | :---------- | -------------- |
-| mkdir              | batch          | nslookup       | tail           | export      | df             |
-| ls                 | ps             | curl           | vim            | printenv    | free           |
-| cp                 | kill           | netstat        | grep           | timedatectl | -              |
-| find               | systemctl      | route          | history        | -           | -              |
-| chmod              | cron           | ssh            | -              | -           | -              |
-| rm                 | -              | -              | -              | -           | -              |
-| chown              | -              | -              | -              | -           | -              |
-| ln                 | -              | -              | -              | -           | -              |
-| od                 | -              | -              | -              | -           | -              |
-| tar                |                |                |                |             |                |
+このノートにまとめる（RedHat系とDebian系のユーティリティを別々に整理したい...）
 
 <br>
 
@@ -42,9 +29,11 @@ Windowsは、GUIでユーティリティを用いる。よく使うものを記�
 
 <br>
 
-### ユーティリティのバイナリファイルの場所
+## 02. ユーティリティのバイナリファイルの場所
 
-| バイナリファイルのディレクトリ | バイナリファイルの種類                                       |
+### ディレクトリとバイナリファイルの種類
+
+| バイナリファイルのディレクトリ | 配置されているバイナリファイルの種類                         |
 | ------------------------------ | ------------------------------------------------------------ |
 | ```/bin```                     | Unixユーティリティのバイナリファイルの多く。                 |
 | ```/usr/bin```                 | 管理ユーティリティによってインストールされるバイナリファイルの多く。 |
@@ -52,6 +41,8 @@ Windowsは、GUIでユーティリティを用いる。よく使うものを記�
 | ```/sbin```                    | Unixユーティリティのバイナリファイルうち、```sudo```権限が必要なもの。 |
 | ```/usr/sbin```                | 管理ユーティリティによってインストールされたバイナリファイルのうち、```sudo```権限が必要なもの。 |
 | ```/usr/local/sbin```          | Unix外のソフトウェアによってインストールされたバイナリファイルのうち、```sudo```権限が必要なもの。最初は空になっている。 |
+
+### バイナリファイルの場所の探し方
 
 ```bash
 # バイナリファイルが全ての場所で見つからないエラー
@@ -65,341 +56,7 @@ $ which python3
 
 <br>
 
-## 02. 入力と出力
-
-### 標準入出力
-
-#### ・標準入出力とは
-
-| 種類                     | 説明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| stddin（標準入力）       | キーボードからのコマンドに対して、データを入力するためのインターフェースのこと。プロセスごとに存在する。 |
-| stdout（標準出力）       | コマンドからターミナルに対して、エラー以外のデータを出力するためのインターフェースのこと。プロセスごとに存在する。 |
-| stderr（標準エラー出力） | コマンドからターミナルに対して、エラーデータを出力するためのインターフェースのこと。プロセスごとに存在する。 |
-
-![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.jpg)
-
-#### ・標準出力に全て出力
-
-コマンド処理の後に、『```2>&1```』を追加すると、標準エラー出力への出力を標準出力にリダイレクトすることにより、処理の全ての結果を標準出力に出力できるうになる。
-
-参考：https://teratail.com/questions/1285
-
-**＊コマンド例＊**
-
-```bash
-$ echo "text" 2>&1
-```
-
-また、プロセスの標準出力は```/proc/<プロセスID>/fd```ディレクトリのファイルディスクリプタ番号（１番）で確認できる。プロセスIDは```ps```コマンドで事前に確認する。
-
-**＊コマンド例＊**
-
-PHP-FPMの稼働するアプリケーションの例
-
-```bash
-$ ps -aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.6  83736 25408 ?        Ss   01:56   0:03 php-fpm: master process (/usr/local/etc/php-fpm.conf)
-www-data  2739  3.6  0.7 247968 29296 ?        Sl   13:24   1:36 php-fpm: pool www
-www-data  2815  3.6  0.7 247968 29288 ?        Sl   13:43   0:55 php-fpm: pool www
-www-data  2902  3.6  0.7 247968 29304 ?        Sl   14:05   0:07 php-fpm: pool www
-root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
-
-# 標準出力を確認
-$ cat /proc/1/fd/1
-```
-
-参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
-
-#### ・標準エラー出力に全て出力
-
-コマンド処理の後に、『```1>&2```』を追加すると、標準出力への出力を標準エラー出力にリダイレクトすることにより、処理の全ての結果を標準エラー出力に出力できるうになる。
-
-参考：https://teratail.com/questions/1285
-
-**＊コマンド例＊**
-
-```bash
-$ echo "text" 1>&2
-```
-
-また、プロセスの標準出力は```/proc/<プロセスID>/fd```ディレクトリのファイルディスクリプタ番号（２番）で確認できる。プロセスIDは```ps```コマンドで事前に確認する。
-
-**＊コマンド例＊**
-
-PHP-FPMの稼働するアプリケーションの例
-
-```bash
-$ ps -aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.6  83736 25408 ?        Ss   01:56   0:03 php-fpm: master process (/usr/local/etc/php-fpm.conf)
-www-data  2739  3.6  0.7 247968 29296 ?        Sl   13:24   1:36 php-fpm: pool www
-www-data  2815  3.6  0.7 247968 29288 ?        Sl   13:43   0:55 php-fpm: pool www
-www-data  2902  3.6  0.7 247968 29304 ?        Sl   14:05   0:07 php-fpm: pool www
-root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
-
-# 標準エラー出力を確認
-$ cat /proc/1/fd/2
-```
-
-参考：https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
-
-#### ・標準出力とファイルに出力
-
-パイプラインで```tee```コマンドを繋ぐと、標準出力とファイルの両方に出力できる。
-
-参考：https://glorificatio.org/archives/2903
-
-**＊コマンド例＊**
-
-```bash
-$ echo "text" | tee stdout.log
-```
-
-
-
-<br>
-
-### pipeline
-
-#### ・pipelineとは
-
-『```|```』の縦棒記号のこと。複数のプログラムの入出力を繋げる。
-
-![pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/pipeline.png)
-
-#### ・grepとの組み合わせ
-
-コマンドの出力結果を```grep```コマンドに渡し、フィルタリングを行う。
-
-**＊コマンド例＊**
-
-検索されたファイル内で、さらに文字列を検索する。
-
-```bash
-$ find /* \
-  -type f | xargs grep "<検索文字>"
-```
-
-#### ・killとの組み合わせ
-
-コマンドの出力結果に対して、```kill```コマンドを行う。
-
-**＊コマンド例＊**
-
-フィルタリングされたプロセスを削除する。
-
-```bash
-$ sudo pgrep \
-  -f <コマンド名> | sudo xargs kill -9
-```
-
-#### ・awkとの組み合わせ
-
-コマンドの出力結果に対して、```awk```コマンドを行う。
-
-**＊コマンド例＊**
-
-検索されたファイルの容量を合計する。
-
-```bash
-$ find ./* -name "*.js" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.css" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-$ find ./* -name "*.png" -type f -printf "%s\n" | awk "{ sum += $1; } END { print sum; }"
-```
-
-#### ・sortとの組み合わせ
-
-コマンドの出力結果に対して、並び順を変更する。
-
-**＊コマンド例＊**
-
-表示された環境変数をAZ昇順に並び替える。
-
-```bash
-$ printenv | sort -f
-```
-
-<br>
-
-## 03. シェルスクリプト／Makefile
-
-### シェルスクリプト
-
-#### ・シェルスクリプトとは
-
-ユーティリティの処理を手続き的に実装したファイル。最初の『```#!```』をシェバンという。
-
-**＊実装例＊**
-
-```bash
-#!/bin/bash
-
-echo "foo"
-echo "bar"
-echo "baz"
-```
-
-<br>
-
-### Makefile
-
-#### ・Makefileとは
-
-ユーティリティの処理を手続き的に実装したファイル。ターゲットごとに処理を実装する。複数のターゲット名を割り当てられる。
-
-```makefile
-foo:
-  echo "foo"
-  
-bar:
-  echo "bar"
-  
-baz qux: # 複数のターゲット名
-  echo "baz"
-```
-
-#### ・ターゲット間依存関係
-
-特定のターゲットの実行前に、他のターゲットを実行しておきたい場合、依存関係を定義できる。これは複数定義できる。
-
-```makefile
-foo:
-  echo "foo"
-  
-bar: foo # fooを事前に実行する。
-  echo "bar"
-  
-baz: foo baz # foo、bazを事前に実行する。
-  echo "baz"
-```
-
-<br>
-
-### シェルスクリプトの実行方法
-
-#### ・source
-
-現在開かれているインタラクティブで処理を実行する。そのため、シェルスクリプト内で定義した変数は、シェルスクリプトの実行後も維持される。
-
-```bash
-$ source hello.sh
-```
-
-#### ・bash
-
-新しくインタラクティブを開き、処理を実行する。そのため、シェルスクリプト内で定義した変数は、シェルスクリプトの実行後に破棄される。
-
-```bash
-$ bash hello.sh
-```
-
-#### ・ドット
-
-```bash
-$ . hello.sh
-```
-
-#### ・パス指定
-
-相対パスもしくは絶対パスでシェルスクリプトを指定する。実行するファイルをカレントディレクトリに置くことはできない。
-
-```bash
-$ ./hello.sh
-```
-
-<br>
-
-### Makefileの実行方法とオプション
-
-#### ・make
-
-Makefileが置かれた階層で、makeコマンドの引数としてターゲット名や環境変数を渡せる。Makefile内で環境変数のデフォルト値を定義できる。
-
-```bash
-$ make <ターゲット名> <環境変数名>=<値>
-```
-
-**＊実装例＊**
-
-```bash
-$ make foo FOO=foo
-```
-
-```makefile
-FOO=default
-
-foo:
-  echo ${FOO}
-```
-
-<br>
-
-### ロジック
-
-#### ・ヒアドキュメント
-
-ヒアドキュメントで作成したシェルスクリプトには、各行にechoが追加される。
-
-```bash
-#!/bin/bash
-
-cat << EOF > "echo.sh"
-#!/bin/bash
-hoge
-fuga
-EOF
-```
-
-```bash
-#!/bin/bash
-echo hoge
-echo fuga
-```
-
-#### ・for
-
-**＊実装例＊**
-
-```bash
-#!/bin/bash
- 
-for i in 1 2 3 4 5
-do
-   echo "$i"
-done
-```
-
-#### ・switch-case
-
-変数に代入された値によって、処理を分ける。全ての場合以外をアスタリスクで定義する。
-
-**＊実装例＊**
-
-```bash
-#!/bin/bash
-
-case "$ENV" in
-    "dev")
-        VAR="foo"
-    ;;
-    "stg")
-        VAR="bar"
-    ;;
-    "prd")
-        VAR="baz"
-    ;;
-    *)
-        echo "The parameter ${ENV} is invalid."
-        exit 1
-    ;;
-esac
-```
-
-<br>
-
-## 04. ファイルシステム系
+## 03. ユーティリティ
 
 ### chmod：change mode
 
@@ -470,460 +127,6 @@ $ cp -Rp /<ディレクトリ名>/ /<ディレクトリ名>
 
 ```bash
 $ cp -p <ファイル名> <ファイル名>.`date +"%Y%m%d"`
-```
-
-<br>
-
-### echo
-
-#### ・オプション無し
-
-定義されたシェル変数を出力する。変数名には```$```マークを付ける。ダブルクオートはあってもなくてもよい。
-
-```bash
-$ <変数名>=<値>
-
-$ echo $<変数名>
-
-$ echo "$<変数名>"
-```
-
-<br>
-
-### file
-
-#### ・オプション無し
-
-ファイルの改行コードを表示する。
-
-```bash
-# LFの場合（何も表示されない）
-$ file foo.txt
-foo.txt: ASCII text
-
-# CRLFの場合
-$ file foo.txt
-foo.txt: ASCII text, with CRLF line terminators
-
-# CRの場合
-$ file foo.txt
-foo.txt: ASCII text, with CR line terminators<br>
-```
-
-<br>
-
-### find
-
-#### ・-type
-
-ファイルを検索するためのユーティリティ。アスタリスクを付けなくとも、自動的にワイルドカードが働く。
-
-```bash
-$ find /* -type f | xargs grep "<検索文字>"
-```
-
-```bash
-# パーミッションエラーなどのログを破棄して検索。
-$ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
-```
-
-#### ・-name
-
-名前が .conf で終わるファイルを全て検索する。
-
-```bash
-$ find /* -name "*.conf" -type f
-```
-
-名前が dir で終わるディレクトリを全て検索する。
-
-```bash
-$ find /* -name "*dir" -type d
-```
-
-ルートディレクトリ以下で、 <検索文字> という文字をもち、ファイル名が .conf で終わるファイルを全て検索する。
-
-```bash
-$ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
-```
-
-<br>
-
-### ln
-
-####  ・シンボリックリンクとは
-
-ファイルやディレクトリのショートカットのこと。シンボリックリンクに対する処理は、リンク元のファイルやディレクトリに転送される。
-
-#### ・-s
-
-カレントディレクトリに、シンボリックリンクを作成する。リンクの元になるディレクトリやファイルパスを指定する。
-
-```bash
-$ ln -s <リンク元までのパス> <シンボリックリンク名> 
-```
-
-<br>
-
-### ls
-
-#### ・-l、-a
-
-隠しファイルや隠しディレクトリも含めて、全ての詳細を表示する。
-
-```bash
-$ ls -l -a
-```
-
-<br>
-
-### mkdir
-
-#### ・-p
-
-複数階層のディレクトリを作成する。
-
-```bash
-$ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
-```
-
-<br>
-
-### rm
-
-#### ・-R
-
-ディレクトリ自体と中のファイルを再帰的に削除する。
-
-```bash
-$ rm -R <ディレクトリ名> 
-```
-
-<br>
-
-### od：octal dump
-
-#### ・オプション無し
-
-ファイルを8進数の機械語で出力する。
-
-```bash
-$ od <ファイル名>
-```
-
-#### ・-Ad、-tx
-
-ファイルを16進数の機械語で出力する。
-
-```bash
-$ od -Ad -tx <ファイル名>
-```
-
-<br>
-
-### set
-
-#### ・オプション無し
-
-現在設定されているシェル変数を一覧で表示する。
-
-```bash
-$ set
-```
-
-#### ・-n
-
-シェルスクリプトの構文解析を行う。
-
-```bash
-$ set -n
-```
-
-#### ・-e
-
-一連の処理の途中で```0```以外の終了ステータスが出力された場合、全ての処理を終了する。
-
-```bash
-$ set -e
-```
-
-#### ・-x
-
-一連の処理をデバッグ情報として出力する。
-
-```bash
-$ set -x
-```
-
-#### ・-u
-
-一連の処理の中で、未定義の変数が存在した場合、全ての処理を終了する。
-
-```bash
-$ set -u
-```
-
-#### ・-o pipefail
-
-パイプライン（```|```）内の一連の処理の途中で、エラーが発生した場合、その終了ステータスを出力し、全ての処理を終了する。
-
-```bash
-$ set -o pipefail
-```
-
-<br>
-
-### tar
-
-#### ・-x
-
-圧縮ファイルを解凍する。
-
-```bash
-$ tar -xf foo.tar.gz
-```
-
-#### ・-f
-
-圧縮ファイル名を指定する。これを付けない場合、テープドライブが指定される。
-
-```bash
-$ tar -xf foo.tar.gz
-```
-
-#### ・-v
-
-解凍中のディレクトリ／ファイルの生成ログを表示する。
-
-```bash
-$ tar -xvf foo.tar.gz
-
-./
-./opt/
-./opt/foo/
-./opt/foo/bar/
-./opt/foo/bar/install.sh
-./opt/foo/bar/baz/
-./opt/foo/bar/baz/init.sh
-```
-
-#### ・-g
-
-gzip拡張子の圧縮ファイルを解凍する。ただし、デフォルトで有効になっているため、オプションは付けないくても問題ない。
-
-```bash
-$ tar -zxf foo.tar.gz
-```
-
-<br>
-
-### unlink
-
-#### ・オプション無し
-
-カレントディレクトリのシンボリックリンクを削除する。
-
-```bash
-$ unlink <シンボリックリンク名>
-```
-
-<br>
-
-## 04-02. ネットワーク系
-
-### curl
-
-#### ・オプション無し
-
-GETリクエストを送信する。```jq```コマンドを用いると、レスポンスを整形できる。
-
-```bash
-$ curl http://example.co.jp/foos/1 | jq . 
-```
-
-#### ・-X、-T、-d
-
-Content-Typeを指定して、POSTリクエストを送信する。
-
-```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.co.jp/foos
-```
-
-#### ・-o（小文字）
-
-インストール後のファイル名を定義する。これを指定しない場合、```-O```オプションを有効化する必要がある。
-
-```bash
-$ curl -o <ファイル名> https://example.co.jp
-```
-
-#### ・-O（大文字）
-
-インストール後のファイル名はそのままでインストールする。これを指定しない場合、```-o```オプションを有効化する必要がある。
-
-#### ・-L
-
-指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
-
-```bash
-$ curl -L https://example.co.jp/foos
-```
-
-<br>
-
-### nslookup
-
-#### ・-type
-
-指定したレコードタイプの値をドメインレジストラに問い合わせる。実際のドメインの名前解決の仕組みでは、DNSサーバは問い合わせでレスポンスされたNSレコード値を持つネームサーバ（例：Route53）に再び問い合わせ、リクエスト先のサーバのIPアドレスをレスポンスしてもらう。
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
-
-**＊例＊**
-
-NSレコードの値をドメインレジストラに問い合わせる。
-
-```bash
-$ nslookup -type=NS example.co.jp
-
-# ～ 中略 ～
-
-example.co.jp        nameserver = ns-*****.awsdns-*****.net
-example.co.jp        nameserver = ns-*****.awsdns-*****.co.uk
-example.co.jp        nameserver = ns-*****.awsdns-*****.org
-example.co.jp        nameserver = ns-*****.awsdns-*****.com
-
-# ～ 中略 ～
-```
-
-<br>
-
-### ssh：secure shell
-
-#### ・-l、-p、<ポート>、-i、-T
-
-事前に、秘密鍵の権限は『600』にしておく。tty（擬似ターミナル）を用いる場合は、```-T```オプションをつける。
-
-```bash
-$ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T
-```
-
-#### ・-l、-p、<ポート>、-i、-T、-vvv
-
-```bash
-# -vvv：ログを出力する
-$ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
-```
-
-#### ・設定ファイル（```~/.ssh/config```）
-
-設定が面倒な```ssh```コマンドのオプションの引数を、```~/.ssh/config```ファイルに記述しておく。
-
-```bash
-# サーバ１
-Host <接続名1>
-    User <サーバ１のユーザ名>
-    Port 22
-    HostName <サーバ１のホスト名>
-    IdentityFile <秘密鍵へのパス>
-
-# サーバ２
-Host <接続名２>
-    User <サーバ２のユーザ名>
-    Port 22
-    HostName <サーバ２のホスト名>
-    IdentityFile <秘密へのパス>
-```
-
-これにより、コマンド実行時の値渡しを省略できる。tty（擬似ターミナル）を用いる場合は、-Tオプションをつける。
-
-```bash
-# 秘密鍵の権限は、事前に『600』にしておく
-$ ssh <接続名> -T
-```
-
-<br>
-
-## 04-03. プロセス系
-
-### ps： process status
-
-#### ・-aux
-
-稼働しているプロセスの詳細情報を表示するためのユーティリティ。
-
-```bash
-# 稼働しているプロセスのうち、詳細情報に『xxx』を含むものを表示する。
-$ ps -aux | grep "<検索文字>"
-```
-
-<br>
-
-### systemctl：system control（旧service）
-
-#### ・systemctlとは
-
-デーモンを起動するsystemdを制御するためのユーティリティ。
-
-#### ・list-unit-files
-
-デーモンのUnitを一覧で表示する。
-
-```bash
-$ systemctl list-unit-files --type=service
-
-crond.service           enabled  # enable：自動起動する
-supervisord.service     disabled # disable：自動起動しない
-systemd-reboot.service  static   # enable：他サービス依存
-```
-
-#### ・enable
-
-マシン起動時にデーモンが自動起動するように設定する。
-
-```bash
-$ systemctl enable <プロセス名>
-
-# 例：Cron、Apache
-$ systemctl enable crond.service
-$ systemctl enable httpd.service
-```
-#### ・disable
-
-マシン起動時にデーモンが自動起動しないように設定する。
-
-```bash
-$ systemctl disable <プロセス名>
-
-# 例：Cron、Apache
-$ systemctl disable crond.service
-$ systemctl disable httpd.service
-```
-
-#### ・systemd：system daemon のUnitの種類
-
-各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でUnit別に管理し、Unitごとに起動する。Unitは拡張子の違いで判別する。
-
-| Unitの拡張子 | 意味                                       | デーモン例         |
-| ------------ | ------------------------------------------ | ------------------ |
-| mount        | ファイルのマウントに関するデーモン。       |                    |
-| service      | プロセス起動停止に関するデーモン。         | httpd：http daemon |
-| socket       | ソケットとプロセスの紐付けに関するデーモン |                    |
-
-### kill
-
-#### ・-9
-
-指定したPIDのプロセスを削除する。
-
-```bash
-$ kill -9 <プロセスID（PID）>
-```
-
-指定したコマンドによるプロセスを全て削除する。
-
-```bash
-$ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 ```
 
 <br>
@@ -1034,6 +237,22 @@ directory=/var/www/tech-notebook
 
 <br>
 
+### crond
+
+#### ・crondとは
+
+cronデーモンを起動するためのプログラム
+
+#### ・-n
+
+フォアグラウンドプロセスとしてcronを起動
+
+```bash
+$ crond -n
+```
+
+<br>
+
 ### crontab
 
 #### ・crontabとは
@@ -1131,193 +350,42 @@ foo.txt: ASCII text
 
 <br>
 
-### crond
-
-#### ・crondとは
-
-cronデーモンを起動するためのプログラム
-
-#### ・-n
-
-フォアグラウンドプロセスとしてcronを起動
-
-```bash
-$ crond -n
-```
-
-<br>
-
-### logrotate
-
-#### ・logrotate
-
-ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
-
-参考：
-
-- http://proger.blog10.fc2.com/blog-entry-66.html
-- https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
-
-<br>
-
-## 04-04. テキスト処理系
-
-### vim：Vi Imitaion、Vi Improved  
+### curl
 
 #### ・オプション無し
 
-vim上でファイルを開く。
+GETリクエストを送信する。```jq```コマンドを用いると、レスポンスを整形できる。
 
 ```bash
-$ vim <ファイル名>
+$ curl http://example.co.jp/foos/1 | jq . 
 ```
 
-<br>
+#### ・-X、-T、-d
 
-### history
-
-#### ・オプション無し
-
-履歴1000件の中からコマンドを検索する。
+Content-Typeを指定して、POSTリクエストを送信する。
 
 ```bash
-$ history | grep <過去のコマンド>
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.co.jp/foos
 ```
 
-<br>
+#### ・-o（小文字）
 
-### tr
+インストール後のファイル名を定義する。これを指定しない場合、```-O```オプションを有効化する必要がある。
 
 ```bash
-#!/bin/bash
-
-cat ./src.txt | tr "\n" "," > ./dst.txt
+$ curl -o <ファイル名> https://example.co.jp
 ```
 
-<br>
+#### ・-O（大文字）
 
-## 04-05. 環境変数系
+インストール後のファイル名はそのままでインストールする。これを指定しない場合、```-o```オプションを有効化する必要がある。
 
+#### ・-L
 
-### export
-
-#### ・オプション無し
-
-基本的な手順としては、シェル変数を設定し、これを環境変数に追加する。
+指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
 
 ```bash
-# シェル変数を設定
-$ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
-# 環境変数に追加
-$ export PATH
-```
-
-シェル変数の設定と、環境変数への追加は、以下の通り同時に記述できる。
-
-```bash
-# 環状変数として、指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを追加。
-# バイナリファイルを入力すると、絶対パス
-$ export PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
-```
-
-```bash
-# 不要なパスを削除したい場合はこちら
-# 環状変数として、指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを上書き
-$ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
-```
-
-#### ・```.bashrc```への追記
-
-
-exportの結果は、OSの再起動で初期化されてしまう。そのため、再起動時に自動的に実行されるよう、```/home/centos/.bashrc```に追記しておく。
-
-```bash
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
-# User specific environment
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-
-# xxxバイナリファイルのファイルパスを追加 を追加 <--- ここに追加
-PATH=$PATH:/usr/local/sbin/xxxx
-
-export PATH
-
-# Uncomment the following line if you don"t like systemctl"s auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-```
-
-<br>
-
-### printenv
-
-#### ・オプション無し
-
-全ての環境変数を表示する。
-
-```bash
-$ printenv
-```
-
-また、特定の環境変数を表示する。
-
-```bash
-$ printenv VAR
-```
-
-<br>
-
-### timedatactl
-
-#### ・set-timezone
-
-```bash
-# タイムゾーンを日本時間に変更
-$ timedatectl set-timezone Asia/Tokyo
-
-# タイムゾーンが変更されたかを確認
-$ date
-```
-
-<br>
-
-## 04-06. ハードウェア系
-
-
-### top
-
-#### ・オプション無し
-
-各プロセスの稼働情報（ユーザ名、CPU、メモリ）を表示する。 CPU使用率昇順に並べる
-
-```bash
-$ top
-```
-
-#### ・-a
-
-メモリ使用率昇順に表示する。
-
-```bash
-$ top -a
-```
-
-<br>
-
-### free
-
-#### ・-m、-total
-
-物理メモリ、スワップ領域、の使用状況をメガバイトで表示する。
-
-```bash
-# m：Mega Bytes
-# t: -total
-$ free -m -total
+$ curl -L https://example.co.jp/foos
 ```
 
 <br>
@@ -1396,11 +464,237 @@ $ du -x ./ | sort -n
 
 <br>
 
+### echo
+
+#### ・オプション無し
+
+定義されたシェル変数を出力する。変数名には```$```マークを付ける。ダブルクオートはあってもなくてもよい。
+
+```bash
+$ <変数名>=<値>
+
+$ echo $<変数名>
+
+$ echo "$<変数名>"
+```
+
+<br>
+
+### export
+
+#### ・オプション無し
+
+基本的な手順としては、シェル変数を設定し、これを環境変数に追加する。
+
+```bash
+# シェル変数を設定
+$ PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
+# 環境変数に追加
+$ export PATH
+```
+
+シェル変数の設定と、環境変数への追加は、以下の通り同時に記述できる。
+
+```bash
+# 環状変数として、指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを追加。
+# バイナリファイルを入力すると、絶対パス
+$ export PATH=$PATH:<バイナリファイルへのあるディレクトリへの絶対パス>
+```
+
+```bash
+# 不要なパスを削除したい場合はこちら
+# 環状変数として、指定したバイナリファイル（bin）のあるディレクトリへの絶対パスを上書き
+$ export PATH=/sbin:/bin:/usr/sbin:/usr/bin
+```
+
+#### ・```.bashrc```への追記
+
+
+exportの結果は、OSの再起動で初期化されてしまう。そのため、再起動時に自動的に実行されるよう、```/home/centos/.bashrc```に追記しておく。
+
+```bash
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific environment
+PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
+# xxxバイナリファイルのファイルパスを追加 を追加 <--- ここに追加
+PATH=$PATH:/usr/local/sbin/xxxx
+
+export PATH
+
+# Uncomment the following line if you don"t like systemctl"s auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+```
+
+<br>
+
 ### fdisk
 
 #### ・-l
 
 パーティションで区切られた全てのストレージを表示する。
+
+<br>
+
+### file
+
+#### ・オプション無し
+
+ファイルの改行コードを表示する。
+
+```bash
+# LFの場合（何も表示されない）
+$ file foo.txt
+foo.txt: ASCII text
+
+# CRLFの場合
+$ file foo.txt
+foo.txt: ASCII text, with CRLF line terminators
+
+# CRの場合
+$ file foo.txt
+foo.txt: ASCII text, with CR line terminators<br>
+```
+
+<br>
+
+### find
+
+#### ・-type
+
+ファイルを検索するためのユーティリティ。アスタリスクを付けなくとも、自動的にワイルドカードが働く。
+
+```bash
+$ find /* -type f | xargs grep "<検索文字>"
+```
+
+```bash
+# パーミッションエラーなどのログを破棄して検索。
+$ find /* -type f | xargs grep "<検索文字>" 2> /dev/null
+```
+
+#### ・-name
+
+名前が .conf で終わるファイルを全て検索する。
+
+```bash
+$ find /* -name "*.conf" -type f
+```
+
+名前が dir で終わるディレクトリを全て検索する。
+
+```bash
+$ find /* -name "*dir" -type d
+```
+
+ルートディレクトリ以下で、 <検索文字> という文字をもち、ファイル名が .conf で終わるファイルを全て検索する。
+
+```bash
+$ find /* -name "*.conf" -type f | xargs grep "<検索文字>"
+```
+
+<br>
+
+### free
+
+#### ・-m、-total
+
+物理メモリ、スワップ領域、の使用状況をメガバイトで表示する。
+
+```bash
+# m：Mega Bytes
+# t: -total
+$ free -m -total
+```
+
+<br>
+
+### kill
+
+#### ・-9
+
+指定したPIDのプロセスを削除する。
+
+```bash
+$ kill -9 <プロセスID（PID）>
+```
+
+指定したコマンドによるプロセスを全て削除する。
+
+```bash
+$ sudo pgrep -f <コマンド名> | sudo xargs kill -9
+```
+
+<br>
+
+### history
+
+#### ・オプション無し
+
+履歴1000件の中からコマンドを検索する。
+
+```bash
+$ history | grep <過去のコマンド>
+```
+
+<br>
+
+### ln
+
+####  ・シンボリックリンクとは
+
+ファイルやディレクトリのショートカットのこと。シンボリックリンクに対する処理は、リンク元のファイルやディレクトリに転送される。
+
+#### ・-s
+
+カレントディレクトリに、シンボリックリンクを作成する。リンクの元になるディレクトリやファイルパスを指定する。
+
+```bash
+$ ln -s <リンク元までのパス> <シンボリックリンク名> 
+```
+
+<br>
+
+### logrotate
+
+#### ・logrotate
+
+ファイルには```2```GBを超えてテキストを書き込めない。そのため、ログを継続的にファイルに書き込む場合は、定期的に、書き込み先を新しいファイルに移行する必要がある。
+
+参考：
+
+- http://proger.blog10.fc2.com/blog-entry-66.html
+- https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
+
+<br>
+
+### ls
+
+#### ・-l、-a
+
+隠しファイルや隠しディレクトリも含めて、全ての詳細を表示する。
+
+```bash
+$ ls -l -a
+```
+
+<br>
+
+### mkdir
+
+#### ・-p
+
+複数階層のディレクトリを作成する。
+
+```bash
+$ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
+```
 
 <br>
 
@@ -1418,15 +712,18 @@ $ du -x ./ | sort -n
 # 指定したディレクトリをスワップ領域として使用
 $ mkswap /swap_volume
 ```
+
 ```bash
 # スワップ領域を有効化
 # 優先度のプログラムが、メモリからディレクトリに、一時的に退避されるようになる
 $ swapon /swap_volume
 ```
+
 ```bash
 # スワップ領域の使用状況を確認
 $ swapon -s
 ```
+
 ```bash
 # スワップ領域を無効化
 $ swapoff /swap_volume
@@ -1434,311 +731,362 @@ $ swapoff /swap_volume
 
 <br>
 
-##  05. 管理ユーティリティ
+### nslookup
 
-### 管理ユーティリティの種類
+#### ・-type
 
-#### ・管理ユーティリティの対象
+指定したレコードタイプの値をドメインレジストラに問い合わせる。実際のドメインの名前解決の仕組みでは、DNSサーバは問い合わせでレスポンスされたNSレコード値を持つネームサーバ（例：Route53）に再び問い合わせ、リクエスト先のサーバのIPアドレスをレスポンスしてもらう。
 
-様々なレベルを対象にした管理ユーティリティがある。
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
-![ライブラリ、パッケージ、モジュールの違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ライブラリ、パッケージ、モジュールの違い.png)
+**＊例＊**
 
-#### ・ライブラリ管理ユーティリティ
-
-| ユーティリティ名                  | 対象プログラミング言語 |
-| --------------------------------- | ---------------------- |
-| composer.phar：Composer           | PHP                    |
-| pip：Package Installer for Python | Python                 |
-| npm：Node Package Manager         | Node.js                |
-| maven：Apache Maven               | Java                   |
-| gem：Ruby Gems                    | Ruby                   |
-
-#### ・パッケージ管理ユーティリティ
-
-| ユーティリティ名                                        | 対象OS       | 依存関係のインストール可否 |
-| ------------------------------------------------------- | ------------ | -------------------------- |
-| Rpm：Red Hat Package Manager                            | RedHat系     | ✕                          |
-| Yum：Yellow dog Updater Modified<br>DNF：Dandified Yum | RedHat系     | 〇                         |
-| Apt：Advanced Packaging Tool                            | Debian系     | 〇                         |
-| Apk：Alpine Linux package management                    | Alpine Linux | 〇                         |
-
-#### ・言語バージョン管理ユーティリティ
-
-| ユーティリティ名 | 対象プログラミング言語 |
-| ---------------- | ---------------------- |
-| phpenv           | PHP                    |
-| pyenv            | Python                 |
-| rbenv            | Ruby                   |
-
-<br>
-
-## 05-02. ライブラリ管理ユーティリティ
-
-### pip
-
-#### ・install
-
-指定したライブラリをインストールする。
+NSレコードの値をドメインレジストラに問い合わせる。
 
 ```bash
-# /usr/local 以下にインストール
-$ pip install --user <ライブラリ名>
-```
-```bash
-# requirements.txt を元にライブラリをインストール
-$ pip install -r requirements.txt
+$ nslookup -type=NS example.co.jp
 
-# 指定したディレクトリにライブラリをインストール
-pip install -r requirements.txt　--prefix=/usr/local
-```
+# ～ 中略 ～
 
-#### ・freeze
+example.co.jp        nameserver = ns-*****.awsdns-*****.net
+example.co.jp        nameserver = ns-*****.awsdns-*****.co.uk
+example.co.jp        nameserver = ns-*****.awsdns-*****.org
+example.co.jp        nameserver = ns-*****.awsdns-*****.com
 
-pipでインストールされたパッケージを元に、要件ファイルを作成する。
-
-```bash
-$ pip freeze > requirements.txt
-```
-
-#### ・show
-
-pipでインストールしたパッケージ情報を表示する。
-
-```bash
-$ pip show sphinx
-
-Name: Sphinx
-Version: 3.2.1
-Summary: Python documentation generator
-Home-page: http://sphinx-doc.org/
-Author: Georg Brandl
-Author-email: georg@python.org
-License: BSD
-# インストール場所
-Location: /usr/local/lib/python3.8/site-packages
-# このパッケージの依存対象
-Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializinghtml, snowballstemmer, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-jsmath, setuptools, packaging, Pygments, babel, alabaster, sphinxcontrib-qthelp, requests, Jinja2
-# このパッケージを依存対象としているパッケージ
-Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
+# ～ 中略 ～
 ```
 
 <br>
 
-### npm
+### od：octal dump
 
-#### ・入手方法
+#### ・オプション無し
+
+ファイルを8進数の機械語で出力する。
 
 ```bash
-# リポジトリの作成
-$ curl -sL https://rpm.nodesource.com/setup_<バージョン>.x | bash -
-
-# nodejsのインストールにnpmも含まれる
-$ yum install nodejs
+$ od <ファイル名>
 ```
 
-#### ・init
+#### ・-Ad、-tx
 
-package.jsonを生成する。
-
-```bash
-$ npm init
-```
-
-#### ・install
-
-ディレクトリにパッケージをインストール
+ファイルを16進数の機械語で出力する。
 
 ```bash
-# ローカルディレクトリにパッケージをインストール
-$ npm install <パッケージ名>
-```
-
-```bash
-# グローバルディレクトリにインストール（あまり使わない）
-$ npm install -g <パッケージ名>
+$ od -Ad -tx <ファイル名>
 ```
 
 <br>
 
-## 05-03. パッケージ管理ユーティリティ
+### printenv
 
-### rpm
+#### ・オプション無し
 
-#### ・-ivh
-
-パッケージをインストールまたは更新する。一度に複数のオプションを組み合わせて記述する。インストール時にパッケージ間の依存関係を解決できないので注意。
+全ての環境変数を表示する。
 
 ```bash
-# パッケージをインストール
-# -ivh：--install -v --hash 
-$ rpm -ivh <パッケージ名>
+$ printenv
 ```
 
-```bash
-# パッケージを更新
-# -Uvh：--upgrade -v --hash 
-$ rpm -Uvh <パッケージ名>
-```
-
-#### ・-qa
-
-インストールされた全てのパッケージの中で、指定した文字を名前に含むものを表示する。
+また、特定の環境変数を表示する。
 
 ```bash
-# -qa：
-$ rpm -qa | grep <検索文字>
-```
-
-#### ・-ql
-
-指定したパッケージ名で、関連する全てのファイルの場所を表示する。
-
-```bash
-# -ql：
-$ rpm -ql <パッケージ名>
-```
-
-#### ・-qi
-
-指定したパッケージ名で、インストール日などの情報を表示する。
-
-```bash
-# -qi：
-$ rpm -qi <パッケージ名>
+$ printenv VAR
 ```
 
 <br>
 
-### yum、dnf
+### ps： process status
 
-#### ・install、reinstall
+#### ・-aux
 
-rpmと同様の使い方ができる。また、インストール時にパッケージ間の依存関係を解決できる。
-
-```bash
-# パッケージをインストール
-$ yum install -y <パッケージ名>
-
-# 再インストールする時は、reinstallとすること
-$ yum reinstall -y <パッケージ名>
-```
-
-#### ・list
-
-インストールされた全てのパッケージを表示する。
+稼働しているプロセスの詳細情報を表示するためのユーティリティ。
 
 ```bash
-# 指定した文字を名前に含むものを表示。
-$ yum list | grep <検索文字>
-```
-
-#### ・EPELリポジトリ、Remiリポジトリ
-
-CentOS公式リポジトリはパッケージのバージョンが古いことがある。そこで、```--enablerepo```オプションを用いると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ（EPEL、Remi）から、パッケージをインストールできる。外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
-
-1. CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、/etc/yu.repos.d/* に配置される。
-
-```bash
-# CentOS7系の場合
-$ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-# CentOS8系の場合
-$ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-
-# こちらでもよい
-$ yum install -y epel-release でもよい
-```
-2. CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、```/etc/yu.repos.d/*```に配置される。
-
-```bash
-# CentOS7系の場合
-$ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-
-# CentOS8系の場合
-$ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-```
-
-4. 設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
-
-```bash
-[epel]
-name=Extra Packages for Enterprise Linux 6 - $basearch
-#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-
-[epel-debuginfo]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
-#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch/debug
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-gpgcheck=1
-
-[epel-source]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Source
-#baseurl=http://download.fedoraproject.org/pub/epel/6/SRPMS
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-gpgcheck=1
-```
-
-5. Remiリポジトリの有効化オプションを永続的に使用できるようにする。
-
-```bash
-# CentOS7の場合
-$ yum install -y yum-utils
-# 永続的に有効化
-$ yum-config-manager --enable remi-php74
-
-
-# CentOS8の場合（dnf moduleコマンドを使用）
-$ dnf module enable php:remi-7.4
-```
-
-6. remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは```/opt/remi/*```に配置される。
-
-```bash
-# CentOS7の場合
-# 一時的に有効化できるオプションを用いて、明示的にremiを指定
-$ yum install --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
-
-
-# CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプション無し
-$ dnf install -y php php-mbstring php-mcrypt
-```
-
-7. 再インストールする時は、reinstallとすること。
-
-```bash
-# CentOS7の場合
-# 一時的に有効化できるオプションを用いて、明示的にremiを指定
-$ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
-
-
-# CentOS8の場合
-# リポジトリの認識に失敗することがあるのでオプション無し
-$ dnf reinstall -y php php-mbstring php-mcrypt
+# 稼働しているプロセスのうち、詳細情報に『xxx』を含むものを表示する。
+$ ps -aux | grep "<検索文字>"
 ```
 
 <br>
 
-## 05-04. 言語バージョン管理ユーティリティ
+### rm
 
-### pyenv
+#### ・-R
 
-#### ・which
+ディレクトリ自体と中のファイルを再帰的に削除する。
 
 ```bash
-# pythonのインストールディレクトリを確認
-$ pyenv which python
-/.pyenv/versions/3.8.0/bin/python
+$ rm -R <ディレクトリ名> 
 ```
+
+<br>
+
+### set
+
+#### ・オプション無し
+
+現在設定されているシェル変数を一覧で表示する。
+
+```bash
+$ set
+```
+
+#### ・-n
+
+シェルスクリプトの構文解析を行う。
+
+```bash
+$ set -n
+```
+
+#### ・-e
+
+一連の処理の途中で```0```以外の終了ステータスが出力された場合、全ての処理を終了する。
+
+```bash
+$ set -e
+```
+
+#### ・-x
+
+一連の処理をデバッグ情報として出力する。
+
+```bash
+$ set -x
+```
+
+#### ・-u
+
+一連の処理の中で、未定義の変数が存在した場合、全ての処理を終了する。
+
+```bash
+$ set -u
+```
+
+#### ・-o pipefail
+
+パイプライン（```|```）内の一連の処理の途中で、エラーが発生した場合、その終了ステータスを出力し、全ての処理を終了する。
+
+```bash
+$ set -o pipefail
+```
+
+<br>
+
+### ssh：secure shell
+
+#### ・-l、-p、<ポート>、-i、-T
+
+事前に、秘密鍵の権限は『600』にしておく。tty（擬似ターミナル）を用いる場合は、```-T```オプションをつける。
+
+```bash
+$ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T
+```
+
+#### ・-l、-p、<ポート>、-i、-T、-vvv
+
+```bash
+# -vvv：ログを出力する
+$ ssh -l <サーバのユーザ名>@<サーバのホスト名> -p 22 -i <秘密鍵のパス> -T -vvv
+```
+
+#### ・設定ファイル（```~/.ssh/config```）
+
+設定が面倒な```ssh```コマンドのオプションの引数を、```~/.ssh/config```ファイルに記述しておく。
+
+```bash
+# サーバ１
+Host <接続名1>
+    User <サーバ１のユーザ名>
+    Port 22
+    HostName <サーバ１のホスト名>
+    IdentityFile <秘密鍵へのパス>
+
+# サーバ２
+Host <接続名２>
+    User <サーバ２のユーザ名>
+    Port 22
+    HostName <サーバ２のホスト名>
+    IdentityFile <秘密へのパス>
+```
+
+これにより、コマンド実行時の値渡しを省略できる。tty（擬似ターミナル）を用いる場合は、-Tオプションをつける。
+
+```bash
+# 秘密鍵の権限は、事前に『600』にしておく
+$ ssh <接続名> -T
+```
+
+<br>
+
+### systemctl：system control（旧service）
+
+#### ・systemctlとは
+
+デーモンを起動するsystemdを制御するためのユーティリティ。
+
+#### ・list-unit-files
+
+デーモンのUnitを一覧で表示する。
+
+```bash
+$ systemctl list-unit-files --type=service
+
+crond.service           enabled  # enable：自動起動する
+supervisord.service     disabled # disable：自動起動しない
+systemd-reboot.service  static   # enable：他サービス依存
+```
+
+#### ・enable
+
+マシン起動時にデーモンが自動起動するように設定する。
+
+```bash
+$ systemctl enable <プロセス名>
+
+# 例：Cron、Apache
+$ systemctl enable crond.service
+$ systemctl enable httpd.service
+```
+
+#### ・disable
+
+マシン起動時にデーモンが自動起動しないように設定する。
+
+```bash
+$ systemctl disable <プロセス名>
+
+# 例：Cron、Apache
+$ systemctl disable crond.service
+$ systemctl disable httpd.service
+```
+
+#### ・systemd：system daemon のUnitの種類
+
+各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でUnit別に管理し、Unitごとに起動する。Unitは拡張子の違いで判別する。
+
+| Unitの拡張子 | 意味                                       | デーモン例         |
+| ------------ | ------------------------------------------ | ------------------ |
+| mount        | ファイルのマウントに関するデーモン。       |                    |
+| service      | プロセス起動停止に関するデーモン。         | httpd：http daemon |
+| socket       | ソケットとプロセスの紐付けに関するデーモン |                    |
+
+<br>
+
+### tar
+
+#### ・-x
+
+圧縮ファイルを解凍する。
+
+```bash
+$ tar -xf foo.tar.gz
+```
+
+#### ・-f
+
+圧縮ファイル名を指定する。これを付けない場合、テープドライブが指定される。
+
+```bash
+$ tar -xf foo.tar.gz
+```
+
+#### ・-v
+
+解凍中のディレクトリ／ファイルの生成ログを表示する。
+
+```bash
+$ tar -xvf foo.tar.gz
+
+./
+./opt/
+./opt/foo/
+./opt/foo/bar/
+./opt/foo/bar/install.sh
+./opt/foo/bar/baz/
+./opt/foo/bar/baz/init.sh
+```
+
+#### ・-g
+
+gzip拡張子の圧縮ファイルを解凍する。ただし、デフォルトで有効になっているため、オプションは付けないくても問題ない。
+
+```bash
+$ tar -zxf foo.tar.gz
+```
+
+<br>
+
+### timedatactl
+
+#### ・set-timezone
+
+```bash
+# タイムゾーンを日本時間に変更
+$ timedatectl set-timezone Asia/Tokyo
+
+# タイムゾーンが変更されたかを確認
+$ date
+```
+
+<br>
+
+
+### top
+
+#### ・オプション無し
+
+各プロセスの稼働情報（ユーザ名、CPU、メモリ）を表示する。 CPU使用率昇順に並べる
+
+```bash
+$ top
+```
+
+#### ・-a
+
+メモリ使用率昇順に表示する。
+
+```bash
+$ top -a
+```
+
+<br>
+
+### tr
+
+#### ・オプション無し
+
+指定した文字列をトリミングする。
+
+```bash
+#!/bin/bash
+
+cat ./src.txt | tr "\n" "," > ./dst.txt
+```
+
+<br>
+
+### unlink
+
+#### ・オプション無し
+
+カレントディレクトリのシンボリックリンクを削除する。
+
+```bash
+$ unlink <シンボリックリンク名>
+```
+
+<br>
+
+### vim：Vi Imitaion、Vi Improved  
+
+#### ・オプション無し
+
+vim上でファイルを開く。
+
+```bash
+$ vim <ファイル名>
+```
+
+
+

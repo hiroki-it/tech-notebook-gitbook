@@ -130,7 +130,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 <br>
 
-## 03. ネットワーク
+## 03. ネットワーキング
 
 ### bridgeネットワーク
 

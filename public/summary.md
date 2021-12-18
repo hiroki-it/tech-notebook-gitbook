@@ -4,22 +4,26 @@
 
 * [📖 ︎ソフトウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software.html)
 * 基本ソフトウェア（OS）
-    * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
     * カーネル
         * [📖 ︎カーネル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel.html)
         * [📖メモリ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel_memory_management.html)
+    * ユーティリティ
+        * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
+        * [📖 ︎管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_management.html)
+        * [📖 ︎シェル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_shell.html)
     * 言語プロセッサ
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
         * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_machine_language_and_radix.html)
 * ミドルウェア
-    * [📖 ︎OS標準搭載のミドルウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_os.html)
-    * Web関連
+    * OS系
+        * [📖 ︎OS標準搭載](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_os.html)
+    * Web系
         * [📖 ︎Nginx](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html)
         * [📖 ︎Apache](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html)
-    * アプリケーション関連
+    * アプリケーション系
         * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_application_php_fpm.html)
-    * データベース関連
+    * データベース系
         * [📖 ︎データベース](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html)
         * [📖 My︎SQL](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database_mysql.html)
 * アプリケーションソフトウェア
