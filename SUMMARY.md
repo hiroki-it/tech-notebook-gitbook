@@ -132,6 +132,7 @@
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
     * コンテナ
         * Docker
+            * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
             * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
             * [📖 ︎Dockerfile](public/virtualization/virtualization_container_docker_dockerfile.md)
         * コンテナオーケストレーション
@@ -140,6 +141,7 @@
                 * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
                 * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
             * ︎Kubernetes
+                * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
                 * [📖 ︎kubernetesコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
                 * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
                 * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
