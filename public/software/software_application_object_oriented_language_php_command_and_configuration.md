@@ -62,6 +62,52 @@ drwxr-xr-x 1 root root  4096 Sep 25 12:22 conf.d
 
 <br>
 
+### -m
+
+インストールされているモジュールを表示する。
+
+**＊コマンド例＊**
+
+```bash
+$ php -m
+
+[PHP Modules]
+bcmath
+Core
+ctype
+
+# ～ 中略 ～
+
+xmlreader
+xmlwriter
+zlib
+
+[Zend Modules]
+```
+
+なお、実際に読み込まれているかどうかは、```get_loaded_extensions```メソッドで確認できる。`
+
+参考：https://stackoverflow.com/questions/478844/how-do-i-see-the-extensions-loaded-by-php
+
+```bash
+$ php -r 'print_r(get_loaded_extensions());'
+
+Array
+(
+    [0] => Core
+    [1] => date
+    [2] => libxml
+    
+    # 〜 中略 〜
+    
+    [33] => bcmath
+    [34] => pdo_mysql
+    [35] => sodium
+)
+```
+
+<br>
+
 ### --ri
 
 拡張モジュールの設定値を表示する。
@@ -98,15 +144,39 @@ zend.exception_ignore_args => Off => Off
 
 <br>
 
-## 02. 設定
+## 02. 設定ファイル（Docker PHP）
 
 ### ```php.ini```ファイル
 
 #### ・```php.ini```ファイルとは
 
-PHPの設定を行う。
+PHPの設定値を定義する。Docker PHPでは、```/usr/local/etc/php```ディレクトリに配置された```php.ini```ファイルや、追加ディレクト以下に配置された任意の```ini```ファイルに実装された設定値が、ユーザ定義のカスタム値として読み込まれる。また、それ以外の設定値はデフォルト値となる。
 
 参考：https://www.php.net/manual/ja/configuration.file.php
+
+```bash
+$ php --ini
+
+Configuration File (php.ini) Path: /usr/local/etc/php
+Loaded Configuration File:         (none) # iniファイルがまだ配置されていない
+Scan for additional .ini files in: /usr/local/etc/php/conf.d
+Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcmath.ini,
+/usr/local/etc/php/conf.d/docker-php-ext-pdo_mysql.ini,
+/usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
+```
+
+```/usr/local/etc/php```ディレクトリには```php.ini-development```ファイルと```php.ini-production```ファイルが最初から配置されている。これをコピーして設定値を変更し、読み込まれるようにファイル名を```php.ini```に変えて配置する（これ以外のファイル名でｊは読み込まれない）。あるいは、最小限の設定値のみを変更した```php.ini```ファイルを自身で作成し、同じく配置しても良い。
+
+```bash
+$ ls -la /usr/local/etc/php
+
+drwxr-xr-x 1 root root  4096 Dec  2 13:39 .
+drwxr-xr-x 1 root root  4096 Dec  2 13:39 ..
+drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
+-rw-r--r-- 1 root root 72382 Dec  2 13:39 php.ini-development
+-rw-r--r-- 1 root root 72528 Dec  2 13:39 php.ini-production
+# php.iniファイルをここに配置する
+```
 
 #### ・開発環境用```php.ini```ファイル
 

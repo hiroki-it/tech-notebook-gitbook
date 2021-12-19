@@ -86,6 +86,30 @@ spec:
 
 ## 05. spec（Deploymentの場合）
 
+<br>
+
+### replicas
+
+ポッドの複製数を設定する。
+
+```yaml
+spec:
+  replicas: 1
+```
+
+<br>
+
+### revisionHistoryLimit
+
+保存されるリビジョン番号の履歴数を設定する。もし依存のリビジョン番号にロールバックすることがあるのであれば、必要数を設定しておく。
+
+```yaml
+spec:
+  revisionHistoryLimit: 5
+```
+
+<br>
+
 ### selector
 
 #### ・matchLabels
@@ -100,14 +124,13 @@ metadata:
   labels:
     app: foo
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: foo
       type: web
   template:
     metadata:
-      labels:
+      labels: # ポッドのラベル
         app: foo
         type: web
 ```

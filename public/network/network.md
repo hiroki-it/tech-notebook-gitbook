@@ -84,7 +84,7 @@ URLとメールアドレスは完全修飾ドメイン名を持つ。
 
 プライベートネットワークは、外部公開用ネットワーク、非武装地帯、内部ネットワークに分類される。
 
-![内部、DMZ、外部](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/内部、DMZ、外部.png)
+![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/internal_dmz_external.png)
 
 #### ・非武装地帯のサーバの種類
 

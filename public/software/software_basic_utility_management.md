@@ -1,12 +1,20 @@
 # 管理ユーティリティ
 
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
 ##  01. 管理ユーティリティの種類
 
 ### 様々な管理ユーティリティ
 
 様々な粒度のプログラムを対象にした管理ユーティリティがある。
 
-![ライブラリ、パッケージ、モジュールの違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ライブラリ、パッケージ、モジュールの違い.png)
+![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/library_package_module.png)
 
 <br>
 
@@ -138,7 +146,7 @@ $ npm install -g <パッケージ名>
 
 #### ・search
 
-指定したファイルを持つパッケージを検索する。
+指定したファイルを持つパッケージを検索する。拡張子も指定しても、ファイル名までしか絞れない。
 
 参考：
 

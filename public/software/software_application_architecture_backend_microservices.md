@@ -215,6 +215,31 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 <br>
 
+### 通信方法
+
+#### ・サービスメッシュ
+
+![service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/service-mesh.png)
+
+従来のマイクロサービスアーキテクチャでは、マイクロサービス間で直接リクエストを送受信していた。しかし、以下のような問題が起こる。
+
+- ソフトウェアのコンポーネント間通信を制御しきれない。
+- 障害時に何が起こるか分からない。
+- 鍵と証明書を管理しきれない。
+- ソフトウェアの全体像が把握できない
+
+そこで、マイクロサービス間で直接リクエストを送受信するのではなく、これをプロキシ機能を持つサイドカーコンテナ経由で行う。また、各サイドカーコンテナをコントロールプレーンで統括的に管理する。
+
+参考：https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
+
+#### ・gRPC
+
+HTTPに代わる通信プロトコル。HTTPであると、通信相手のサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラのメソッドが実行される。一方でgRPCであると、通信相手のサービスのメソッドを直接実行できる。そのため、HTTPよりも分散システムの連携に適している。
+
+参考：https://techdozo.dev/grpc-for-microservices-communication/
+
+<br>
+
 ## 04. データ永続化方式
 
 ### ローカルトランザクション
@@ -225,13 +250,24 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 #### ・Sagaパターンとは
 
-ローカルトランザクションの時に、インフラストラクチャ層を実現する設計方法。上流サービスのデータベースの操作完了をイベントとして、下流サービスのデータベースの操作処理を連続的にコールする。ロールバック時には補償トランザクションが実行され、逆順にデータベースの状態が元に戻される。
+ローカルトランザクションを連続的に実行する方法。上流サービスのローカルトランザクションの完了をイベントとして、下流サービスのDB処理を連続的にコールしていく。ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を逆順に元に戻すような処理が実行される。
+
+参考：
+
+- https://thinkit.co.jp/article/14639?page=0%2C1
+- https://qiita.com/nk2/items/d9e9a220190549107282
 
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
 
+**＊例＊**
+
+参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+
+![saga-pattern_example](/Users/h.hasegawa/Documents/Drive1st/プログラミング/tech-notebook/images/saga-pattern_example.png)
+
 <br>
 
-### グローバルトランザクション
+### グローバルトランザクション（分散トランザクション）
 
 #### ・グローバルトランザクションとは
 

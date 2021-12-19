@@ -8096,14 +8096,6 @@ $staff->roleType->isDevelopmentRole(); // true
 $staff->roleType->isSalesRole(); // false
 ```
 
-**＊実装例＊**
-
-リクエストメッセージからデータを取り出した後、これを元にEnumクラスを作成する。
-
-```
-
-```
-
 <br>
 
 ### laravel-ide-helper
@@ -8141,13 +8133,19 @@ return [
 
 #### ・Facade
 
+PHPStromで、メソッドが定義された場所にジャンプできるように、```_ide_helper.php```ファイルを生成する。
+
+参考：https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+
 ```bash
 $ php artisan ide-helper:generate
 ```
 
 #### ・アノテーション生成
 
-LaravelのEloquentモデルで、アノテーションを自動生成する。
+PHPStromで、LaravelのEloquentモデルでのアノテーションを自動生成する。
+
+参考：https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
 ```bash
 $ php artisan ide-helper:models
@@ -8155,7 +8153,9 @@ $ php artisan ide-helper:models
 
 #### ・予測表示
 
-Laravelのメソッドを予測表示するため、```phpstorm.meta.php```ファイルを生成する。
+PHPStromで、Laravelのメソッドを予測表示できるように、phpstorm.meta.php```ファイルを生成する。
+
+参考：https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 
 ```bash
 $ php artisan ide-helper:meta
