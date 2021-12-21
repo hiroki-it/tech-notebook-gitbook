@@ -134,6 +134,8 @@
 
 * 📦 仮想化
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
+    * 仮想サーバ（仮想マシン）
+        * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
     * コンテナ
         * Docker
             * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
@@ -146,15 +148,17 @@
                 * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
             * ︎Kubernetes
                 * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
-                * [📖 ︎kubernetesコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
+                * [📖 ︎kubectlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
                 * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
                 * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
                 * [📖 ︎skaffold](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md)
+            * Docker Swarm
+                * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
+        * サービスメッシュ
+            * Istio
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
-            * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
-    * 仮想サーバ（仮想マシン）
-        * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
-
+                * [📖 istioctlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_istio_command.md) 
+ 
 * ♾️ CICD
     * [📖 ︎CICD](public/ci_cd/ci_cd.md)
     * [📖 ︎CircleCI](public/ci_cd/ci_cd_circleci.md)
