@@ -156,9 +156,11 @@
                 * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
         * サービスメッシュ
             * Istio
-                * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_kubernetes_istio.md)
-                * [📖 istioctlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_istio_command.md) 
- 
+                * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_service_mesh_istio.md)
+                * [📖 istioctlコマンド](public/virtualization/virtualization_container_orchestration_service_mesh_istio_command.md) 
+            * Envoy
+                * [📖 ︎Envoy](public/virtualization/virtualization_container_orchestration_service_mesh_envoy.md)
+
 * ♾️ CICD
     * [📖 ︎CICD](public/ci_cd/ci_cd.md)
     * [📖 ︎CircleCI](public/ci_cd/ci_cd_circleci.md)
