@@ -157,7 +157,7 @@ FROM data/agent:latest
       "session_id": "*****",
       # ブラウザログのステータス
       "status": "error",
-      # ブラウザで表示されたページのURL。非同期リクエストのエラーは、こちらではなくmessageに記載される。
+      # ブラウザで表示されたページのURL。非同期リクエストのエラーは、こちらではなく```message```属性に記載される。
       "view": {
         "referrer": "",
         "url": "http://example.jp/"
@@ -186,7 +186,7 @@ FROM data/agent:latest
 
 **＊実装例＊**
 
-Nuxtjsの場合、エントリポイントは```nuxt.config```ファイルである。プラグインとして実装し、これをエントリポイントで読み込むようにする。
+Nuxt.jsの場合、エントリポイントは```nuxt.config```ファイルである。プラグインとして実装し、これをエントリポイントで読み込むようにする。
 
 ```javascript
 import { Configuration } from '@nuxt/types'
@@ -198,6 +198,7 @@ const nuxtConfig: Configuration = {
     
     plugins: [
         ...(baseConfig.plugins || []),
+        # SSGのみで使用するため、clinetモードとする。
         { src: '@/plugins/datadog/browserLogsForSsg', mode: 'client' },
     ],
         
@@ -251,14 +252,14 @@ DATADOG_VERSION=
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/
 
-| 属性名         | 説明                                           | 補足                                                         | 例                                                           |
-| -------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ```host```     | ログの生成元のホスト名を示す。                 | ログが生成元とは別の場所から送信されている場合に役立つ。Datadogコンテナの環境変数にて、```DD_HOSTNAME```を用いて```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
-| ```source```   | ログの生成元の名前を示す。                     | ベンダー名を用いるとわかりやすい。                         | ・```laravel```<br>・```nginx```<br>・```redis```            |
-| ```status```   | ログのレベルを示す。                           |                                                              |                                                              |
-| ```service```  | ログの生成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。 | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
-| ```trace_id``` | ログを分散トレースやスパンと紐付けるIDを示す。 |                                                              |                                                              |
-| ```message```  | ログメッセージを示す。                         |                                                              |                                                              |
+| 属性名                  | 説明                                           | 補足                                                         | 例                                                           |
+| ----------------------- | ---------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ```host```              | ログの生成元のホスト名を示す。                 | ログが生成元とは別の場所から送信されている場合に役立つ。Datadogコンテナの環境変数にて、```DD_HOSTNAME```を用いて```host```属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるだけでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・```foo```<br>・```foo-backend```<br>・```foo-frontend```<br>・```foo-log-group```<br>・```foo-bucket``` |
+| ```source```            | ログの生成元の名前を示す。                     | ベンダー名を用いるとわかりやすい。                           | ・```laravel```<br>・```nginx```<br>・```redis```            |
+| ```status```            | ログのレベルを示す。                           |                                                              |                                                              |
+| ```service```           | ログの生成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。 | ・```foo```<br>・```bar-backend```<br>・```baz-frontend```   |
+| ```trace_id```          | ログを分散トレースやスパンと紐付けるIDを示す。 |                                                              |                                                              |
+| ```message```属性 | ログメッセージを示す。                         | 受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの```message```属性に割り当てられる。一方で、構造化ログであった場合は```message```属性は使用されない。 |                                                              |
 
 #### ・標準属性
 
@@ -266,101 +267,25 @@ DATADOG_VERSION=
 
 参考：https://docs.datadoghq.com/ja/logs/log_configuration/attributes_naming_convention/#%E6%A8%99%E6%BA%96%E5%B1%9E%E6%80%A7
 
-**＊例＊**
-
-Laravelの場合
-
-```bash
-{
-  "container_id": "*****",
-  "container_name": "/prd-foo-ecs-container",
-  "date": 12345,
-  "log_status": "NOTICE",
-  "service": "foo",
-  "source": "laravel",
-  "timestamp": 12345
-}
-```
-
-**＊例＊**
-
-Nginxの場合
-
-```bash
-{
-  "content": {
-    "attributes": {
-      "date_access": 12345,
-      "http": {
-        "method": "GET",
-        "referer": "-",
-        "status_category": "info",
-        "status_code": 200,
-        "url": "/healthcheck",
-        "url_details": {
-          "path": "/healthcheck"
-        },
-        "useragent": "ELB-HealthChecker/2.0",
-        "useragent_details": {
-          "browser": {
-            "family": "Other"
-          },
-          "device": {
-            "category": "Other",
-            "family": "Other"
-          },
-          "os": {
-            "family": "Other"
-          }
-        },
-        "version": "1.1"
-      },
-      "network": {
-        "bytes_written": 17,
-        "client": {
-          "ip": "nn.nnn.nn.nnn"
-        }
-      },
-      "service": "foo",
-      "timestamp": 12345
-    },
-    "message": "nn.nnn.nn.nnn - - [01/Sep/2021:00:00:00 +0000] \"GET /healthcheck HTTP/1.1\" 200 17 \"-\" \"ELB-HealthChecker/2.0\"",
-    "service": "foo",
-    "tags": [
-      "source:nginx",
-      "env:prd"
-    ],
-    "timestamp": "2021-09-01T00:00:00.000Z"
-  },
-  "id": "*****"
-}
-```
-
 #### ・スタックトレース属性
 
 スタックトレースログを構成する要素に付与される属性のこと。
 
 参考：https://docs.datadoghq.com/ja/logs/log_collection/?tab=host#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%81%AE%E5%B1%9E%E6%80%A7
 
-| 属性名                   | 説明                                             |
-| ------------------------ | ------------------------------------------------ |
-| ```logger.name```        | ログライブラリの名前を示す。                     |
-| ```logger.thread_name``` | スレッド名を示す。                               |
-| ```error.stack```        | スタックトレースログ全体を示す。                 |
-| ```error.message```      | スタックトレースログのメッセージ部分を示す。     |
-| ```error.kind```         | エラーの種類（Exception、OSError、など）を示す。 |
+| 属性名                        | 説明                                             |
+| ----------------------------- | ------------------------------------------------ |
+| ```logger.name```             | ログライブラリの名前を示す。                     |
+| ```logger.thread_name```      | スレッド名を示す。                               |
+| ```error.stack```             | スタックトレースログ全体を示す。                 |
+| ```error.```message```属性``` | スタックトレースログのメッセージ部分を示す。     |
+| ```error.kind```              | エラーの種類（Exception、OSError、など）を示す。 |
 
 <br>
 
 ### タグ
 
-| 属性名    |      |
-| --------- | ---- |
-| ```env``` |      |
-|           |      |
-|           |      |
-
-<br>
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_telemetry_association.html
 
 ## 06. 収集されたログの送信
 
@@ -537,12 +462,15 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ・Grokパーサー
 
-パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて、属性にログ値を割り当てる。
+パースルール（```%{MATCHER:EXTRACT:FILTER}```）を用いて、```message```属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extract機能を用いると、```message```属性以外に対してGrokパーサーを用いることができるようになるため、構造化ログも扱えるようになる。
 
 参考：
 
 - https://docs.datadoghq.com/ja/logs/processing/parsing/?tab=matcher
 - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
+- https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-a-specific-text-attribute
+
+**＊例＊**
 
 Laravelから、以下のような非構造化ログを受信する例を考える。
 
@@ -554,18 +482,99 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 [2021-01-01 00:00:00] production.ERROR: ログのメッセージ
 ```
 
+非構造化ログのため、ログは基底構造化ログの```message```属性に割り当てられる。
+
+```bash
+{
+  "content": {
+    "attributes": {
+      # ～ 中略 ～
+    },
+    "message": "[2021-01-01 00:00:00] staging.ERROR: ログのメッセージ",
+    "service": "prd-foo",
+    "tags": [
+      # ～ 中略 ～
+    ]
+  },
+  "id": "*****"
+}
+```
+
 以下のようなGrokパーサールールを定義する。```date```マッチャーを用いて、```date```属性にタイムスタンプ値を割り当てる。また、```word```マッチャーを用いて、```log_status```カスタム属性にステータス値を割り当てる。任意のルール名を設定できる。
 
 ```bash
 FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:log_status}\:.+
 ```
 
-これにより、構造化ログの各属性に値が割り当てられる。
+これにより、非構造化ログは以下のように構造化され、構造化ログに付与される。
 
 ```bash
 {
   "date": 1630454400000,
   "log_status": "INFO"
+}
+```
+
+**＊例＊**
+
+AWS WAFから以下のような構造化ログを受信する例を考える。
+
+```bash
+{
+    "timestamp": 1639459445119,
+    "formatVersion": 1,
+    "webaclId": "arn:aws:wafv2:ap-northeast-1:123456789:regional/webacl/prd-foo-alb-waf/123456789",
+    "terminatingRuleId": "block-according-to-core-rule-set",
+    "action": "ALLOW",
+    "ruleGroupList": [
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": [
+                {
+                    "exclusionType": "EXCLUDED_AS_COUNT",
+                    "ruleId": "NoUserAgent_HEADER"
+                }
+            ]
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        },
+        {
+            "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
+            "terminatingRule": null,
+            "nonTerminatingMatchingRules": [],
+            "excludedRules": null
+        }
+    ],
+    "uri": "/foo",
+    "args": "",
+    "httpVersion": "HTTP/1.1",
+    "httpMethod": "GET",
+}
+```
+
+以下のようなGrokパーサールールを定義する。
+
+```bash
+Rule .*\/webacl\/%{data:wafacl_name}\/.*
+```
+
+また、Extract機能の対象キーを```webaclId```属性とする。これにより、```webaclId```属性の非構造化ログは以下のように構造化され、構造化ログに付与される。
+
+```bash
+{
+  "wafacl_name": "prd-foo-alb-waf"
 }
 ```
 
@@ -581,6 +590,24 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 ```log
 192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
+```
+
+非構造化ログのため、ログは基底構造化ログの```message```属性に割り当てられる。
+
+```bash
+{
+  "content": {
+    "attributes": {
+      # ～ 中略 ～
+    },
+    "message": "192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200",
+    "service": "prd-foo",
+    "tags": [
+      # ～ 中略 ～
+    ]
+  },
+  "id": "*****"
+}
 ```
 
 以下のようなGrokパーサのルールを定義する。各マッチャーでカスタム属性に値を割り当てる。
@@ -643,7 +670,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
       "aws": {
         "awslogs": {
           "logGroup": "prd-foo-api-access-log",
-          "logStream": "be4fcfca38da39f3ad4190e2f325e5d8",
+          "logStream": "*****",
           "owner": "123456789"
         },
         "function_version": "$LATEST",
@@ -652,10 +679,10 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
       "caller": "-",
       "host": "prd-foo-api-access-log",
       "httpMethod": "GET",
-      "id": "36472822677180929652719686832176844832038235205288853504",
+      "id": "*****",
       "ip": "nnn.nn.nnn.nnn",
       "protocol": "HTTP/1.1",
-      "requestId": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
+      "requestId": "*****",
       "requestTime": "01/Jan/2021:12:00:00 +0000",
       "resourcePath": "/users/{userId}",
       "responseLength": "26",
@@ -675,7 +702,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
     ],
     "timestamp": "2021-01-01T12:00:00.000Z"
   },
-  "id": "AQAAAXzLRfjkXhzqsgAAAABBWHpMUmxPM0FBQTFWVnRrNTVXbkx3QUE"
+  "id": "*****"
 }
 ```
 
@@ -725,7 +752,7 @@ nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17
 ```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
 ```
 
 これにより、構造化ログの各属性に値が割り当てられる。
@@ -853,7 +880,7 @@ nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17
 ```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?"%{_referer}" "%{_user_agent}"( "%{_x_forwarded_for}")?.*
-error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.message}(, %{data::keyvalue(": ",",")})?
+error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data:error.```message```属性}(, %{data::keyvalue(": ",",")})?
 ```
 
 これにより、構造化ログの各属性に値が割り当てられる。

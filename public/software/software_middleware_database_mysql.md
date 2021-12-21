@@ -91,7 +91,7 @@ default-character-set = utf8mb4 # utf8
 MySQLのDBやテーブルの情報を管理する。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのボリュームのマウント先として指定される。
 
 ```bash
-[root@foo:/var/lib/mysql] $ ls -la
+[root@<ホスト名>:/var/lib/mysql] $ ls -la
 
 drwxrwxrwt 7 mysql mysql     4096 Dec 17 12:55 .
 drwxr-xr-x 1 root  root      4096 Dec  2 11:24 ..

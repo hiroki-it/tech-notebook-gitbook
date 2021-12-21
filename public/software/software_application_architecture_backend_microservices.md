@@ -250,20 +250,26 @@ HTTPに代わる通信プロトコル。HTTPであると、通信相手のサー
 
 #### ・Sagaパターンとは
 
-ローカルトランザクションを連続的に実行する方法。上流サービスのローカルトランザクションの完了をイベントとして、下流サービスのDB処理を連続的にコールしていく。ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を逆順に元に戻すような処理が実行される。
+![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
+
+ローカルトランザクションを連続的に実行する方法。上流サービスのローカルトランザクションの完了をイベントとして、下流サービスのDB処理を連続的にコールしていく。ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。
 
 参考：
 
 - https://thinkit.co.jp/article/14639?page=0%2C1
 - https://qiita.com/nk2/items/d9e9a220190549107282
 
-![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern.png)
-
 **＊例＊**
+
+受注に関するトランザクションが異なるサービスにまたがる例。
 
 参考：https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
 
-![saga-pattern_example](/Users/h.hasegawa/Documents/Drive1st/プログラミング/tech-notebook/images/saga-pattern_example.png)
+![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_example.png)
+
+補償トランザクションでは、各ローカルトランザクションを元に戻す逆順のクエリ処理が実行される。
+
+![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/saga-pattern_compensating-transaction_example.png)
 
 <br>
 

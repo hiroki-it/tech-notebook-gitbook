@@ -195,7 +195,7 @@ Dockerfileを用いない場合、各イメージレイヤーのインストー�
 $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 # コンテナの中
-root@xxxxxxxxxx: 
+/var/lib/mysql
 ```
 
 <br>

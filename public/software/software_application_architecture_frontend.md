@@ -98,7 +98,31 @@ SSGの発展型。SSGとは異なり、事前にビルドせず、静的ファ�
 
 <br>
 
-## 05. マイクロサービスアーキテクチャにおけるフロントエンド
+## 05. Atomic Design
+
+### Atmic Designとは
+
+フロントエンドを構成する要素を、５つのレイヤー（Atoms、Molecules、Organisms、Templates、Pages）に分ける設計方法のこと。
+
+参考：https://atomicdesign.bradfrost.com/
+
+<br>
+
+### Nuxt.jsを参考に考える
+
+Nuxt.jsとAtomic Designのレイヤーは以下のように対応する。
+
+参考：https://tec.tecotec.co.jp/entry/2020/03/27/090000
+
+| Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
+| --------------------- | --------------------------- |
+| components            | Atoms、Molecules、Organisms |
+| pages                 | Pages                       |
+| layouts               | Templates                   |
+
+<br>
+
+## 06. マイクロサービスアーキテクチャにおけるフロントエンド
 
 ### UI部品合成
 

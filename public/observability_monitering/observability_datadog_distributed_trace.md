@@ -49,7 +49,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 ```bash
 # 成功の場合
-root@*****:/ php --ri=ddtrace
+$ php --ri=ddtrace
 
 ddtrace
 
@@ -63,7 +63,7 @@ For help, check out the documentation at https://docs.datadoghq.com/tracing/lang
 
 ```bash
 # 失敗の場合
-root@*****:/ php --ri=ddtrace
+$  php --ri=ddtrace
 Extension 'ddtrace' not present.
 ```
 
@@ -83,7 +83,7 @@ Extension 'ddtrace' not present.
 トレーサーの設定の状態は、```php --ri=ddtrace```コマンドの結果得られるJSONを整形することで確認できる。
 
 ```bash
-root@*****:/ php --ri=ddtrace
+$ php --ri=ddtrace
 
 Datadog tracing support => enabled
 Version => 0.57.0
@@ -205,26 +205,26 @@ Datadogにおいて、スパンはJSON型データとして定義される。ア
 
 ```bash
 [
-    [
-        {
-            "duration": 123,           # 処理の所要時間
-            "error": 0,                # エラーの有無
-            "meta": {       
-                "env": "prd"           # タグのり
-            },
-            "metrics": {               
-                "baz-sum": 123         # サービスのメトリクス
-            },
-            "name": "laravel.request", # スパン名
-            "parent_id": 123,          # 親スパンID
-            "resource": "/foos",       # アクセスされたリソース
-            "service": "laravel",      # サービス名
-            "span_id": 123456789,      # スパンID
-            "start": 0,                # 処理開始時間
-            "trace_id": 123456789,     # トレースID
-            "type": "web"              # サービスのタイプ
-        }
-    ]
+  [
+    {
+      "duration": 123,           # 処理の所要時間
+      "error": 0,                # エラーの有無
+      "meta": {
+        "env": "prd"           # タグのり
+      },
+      "metrics": {
+        "baz-sum": 123         # サービスのメトリクス
+      },
+      "name": "laravel.request", # スパン名
+      "parent_id": 123,          # 親スパンID
+      "resource": "/foos",       # アクセスされたリソース
+      "service": "laravel",      # サービス名
+      "span_id": 123456789,      # スパンID
+      "start": 0,                # 処理開始時間
+      "trace_id": 123456789,     # トレースID
+      "type": "web"              # サービスのタイプ
+    }
+  ]
 ]
 
 ```
@@ -261,8 +261,6 @@ PHPトレーサーでlaravel内からタグを収集した例
     "process_id": 100
 }
 ```
-
-
 
 <br>
 
@@ -302,6 +300,16 @@ PHPトレーサーでlaravel内からタグを収集した例
 - ```trace.<スパン名>.duration```（該当スパンの処理時間）
 - ```trace.<スパン名>.duration.by.*****```（該当スパンの処理時間の割合）
 - ```trace.<スパン名>.errors.*****```（該当スパンにおけるエラー数）
+
+<br>
+
+### エラートラッキング
+
+#### ・仕組み
+
+エントリす
+
+参考：https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 
 <br>
 

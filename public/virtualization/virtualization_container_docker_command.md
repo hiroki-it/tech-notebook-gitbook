@@ -133,13 +133,13 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 $ docker attach <起動中コンテナ名>
 
 # PID=1で、1つの/bin/bashプロセスが稼働していることを確認できる
-[root@<ホスト名>:~] ps aux
+[root@<ホスト名>:~] $ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
 root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 
 # コンテナとの接続を切断
-[root@<ホスト名>:~] exit
+[root@<ホスト名>:~] $ exit
 
 # コンテナの状態を確認
 $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがEXITedになっている
@@ -155,14 +155,14 @@ $ docker run -d -it --name <コンテナ名> <使用イメージ名>:<タグ> /b
 $ docker exec -it <起動中コンテナ名> /bin/bash # もしくはbin/sh
 
 # PID=1,17で、2つの/bin/bashプロセスが稼働していることを確認できる
-[root@<ホスト名>:~] ps aux
+[root@<ホスト名>:~] $ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.1  16152  3872 pts/0    Ss+  18:06   0:00 /bin/bash
 root        17  0.0  0.1  16152  4032 pts/1    Ss   18:21   0:00 /bin/bash
 root        34  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 
 # コンテナとの接続を切断
-[root@<ホスト名>:~] exit
+[root@<ホスト名>:~] $ exit
 
 # コンテナの状態を確認
 $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになっている
@@ -374,7 +374,7 @@ $ docker rm --force $(docker ps --all --quiet)
 $ docker run -d -it --hostname <ホスト名> --name <コンテナ名> --publish=8080:80 <用いるイメージ名>:<タグ> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/bash
 
-[root@<ホスト名>:/] cat /etc/hosts
+[root@<ホスト名>:/] $ cat /etc/hosts
 
 127.0.0.1	localhost
 ::1	localhost ip6-localhost ip6-loopback

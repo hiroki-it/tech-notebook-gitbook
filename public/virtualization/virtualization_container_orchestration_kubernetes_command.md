@@ -1,4 +1,4 @@
-# kubernetesコマンド
+# kubectlコマンド
 
 ## はじめに
 
@@ -228,8 +228,6 @@ LoadBalancerサービスを作成する。
 ```bash
 $ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート番号> --target-port=<転送先ポート番号>
 ```
-
-
 
 <br>
 

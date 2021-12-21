@@ -3557,6 +3557,7 @@ class FooController extends Controller
 
 参考：
 
+- https://technote.space/posts/wpdb-laravel-get-url-parameter/
 - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_route
 - https://laravel.com/api/8.x/Illuminate/Routing/Route.html#method_parameter
 
@@ -3585,7 +3586,7 @@ class FooController extends Controller
 }
 ```
 
-コントローラの第二引数にパスパラメータ名を記述することで、パスパラメータの値を取得できる。
+あるいは、コントローラの第二引数にパスパラメータ名を記述することで、パスパラメータの値を取得できる。
 
 **＊実装例＊**
 

@@ -250,7 +250,7 @@ $ minikube ssh
 $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 # コンテナの中
-root@xxxxxxxxxx: 
+[root@<ホスト名>:~] $ ls -la 
 ```
 
 #### ・オプション無し

@@ -317,7 +317,7 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 kubectl exec -it foo-pod-***** -c foo-container -- bash
 
 # ストレージを表示する
-[root@*****:/var/www/html] df -h
+[root@<ホスト名>:/var/www/html] $ df -h
 
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          59G   36G   20G  65% /

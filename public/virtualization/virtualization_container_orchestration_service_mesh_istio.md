@@ -24,9 +24,48 @@
 
 <br>
 
-## 01-02. Istioの構成要素
+### minikubeのためのIstioをインストール
 
-### 全体像
+参考：https://istio.io/latest/docs/setup/getting-started/#download
+
+（１）インストール先のディレクトリに移動する。
+
+```bash
+$ cd ${HOME}/projects/hiroki-it
+```
+
+（２）インストールする。
+
+```bash
+$ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
+```
+
+（３）istioctlへのパスを環境変数に登録する。
+
+```bash
+$ cd istio-1.12.1
+$ export PATH=$PWD/bin:$PATH
+```
+
+（４）設定ファイルをインストール
+
+参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+
+```bash
+$ istioctl install --set profile=demo -y
+```
+
+（５）minikubeでIstioを使用できるようにする。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようにする。
+
+```bash
+$ kubectl label namespace default istio-injection=enabled
+```
+
+<br>
+
+## 02. Istio Mesh
+
+### Istio Meshとは
 
 参考：https://istio.io/latest/docs/ops/deployment/architecture/
 
@@ -34,27 +73,23 @@
 
 <br>
 
-### Envoy
+### Destination Rule
 
-#### ・Envoyとは
+<br>
 
-マイクロサービスのプロキシ機能コンテナとして稼働し、マイクロサービス間のリクエスト送受信に関する機能を提供する。Istioに内蔵されているが、これ単体でも使用できる。アンバサダーパターンに基づいている。マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト送信先のマイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
+### Gateway
 
-参考：
+#### ・Gatewayとは
 
-- https://blog.linkode.co.jp/entry/2020/07/06/162915
-- https://openstandia.jp/oss_info/envoy/
-- https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
+参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
-#### ・サービスディスカバリ
-#### ・ 負荷分散
-#### ・ TLS終端
-#### ・ HTTP/2、gRPCのプロキシ
-#### ・ サーキットブレイカー
-#### ・ ヘルスチェック
-#### ・ A/Bテスト
-#### ・ フォールとインジェクション
-#### ・ メトリクスの収集
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
+
+#### ・Ingress Gateway
+
+#### ・Mesh Gateway
+
+#### ・Egress Gateway
 
 <br>
 
@@ -80,3 +115,13 @@
 #### ・Citadal
 
 サービス間のリクエスト送受信に認可機能を提供する。
+
+<br>
+
+### Service Entry
+
+<br>
+
+### Vertual Service
+
+
