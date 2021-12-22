@@ -45,6 +45,14 @@ $ go get <ドメインをルートとしたURL>
 $ go build ./cmd
 ```
 
+もし、ビルドのエラー時に終了コードのみが返却され、原因が不明の場合、```panic```メソッドが原因を握りつぶしている可能性を考える。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html
+
+```bash
+exit status 2. Docker build ran into internal error. Please retry. If this keeps happening, please open an issue..
+```
+
 #### ・```-o```
 
 指定したパスにビルドのアーティファクトを生成する。ビルド対象パスを指定しない場合、ルートディレクトリのgoファイルをビルドの対象とする。

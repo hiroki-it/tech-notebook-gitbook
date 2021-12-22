@@ -1040,7 +1040,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 ### ログクエリ
 
-#### ・ログクエリ
+#### ・ログクエリとは
 
 構造化ログの属性名と値に基づいて、ログを絞り込める。
 
@@ -1065,6 +1065,14 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 『```service:foo```』を非オートコンプリートで入力する。
 
 ![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/log-query_non-auto-complete.png)
+
+#### ・文法
+
+| ユースケース             | 例                 |
+| ------------------------ | ------------------ |
+| 一致するものを抽出する。 | ```service:foo```  |
+| 一致するものを除外する。 | ```-service:foo``` |
+|                          |                    |
 
 <br>
 

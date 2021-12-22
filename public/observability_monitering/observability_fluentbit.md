@@ -66,8 +66,13 @@ Available Options
 
 **＊実装例＊**
 
+フラッシュについては、以下のリンクを参考にせよ。
+
+参考：https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
+
 ```bash
 [SERVICE]
+    # バッファに蓄えられた全てのログを宛先に出力する間隔
     Flush 1
     # 猶予時間
     Grace 30
@@ -120,8 +125,6 @@ Fluent Bit v1.8.6
 [2021/01/01 12:00:00] [debug] [router] match rule forward.0:null.0
 [2021/01/01 12:00:00] [ info] [sp] stream processor started
 ```
-
-
 
 <br>
 
@@ -421,7 +424,7 @@ Fluent Bit v1.8.6
 
 ![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
 
-バッファーとして機能するメモリ／ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番に転送する。Fluentdから概念図を拝借した。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている。
+Fluentdから概念図を拝借した。バッファーとして機能するメモリ／ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番に転送する。プロセスが再起動されると、メモリ／ファイルに蓄えられたログテキストは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている。
 
 参考：
 

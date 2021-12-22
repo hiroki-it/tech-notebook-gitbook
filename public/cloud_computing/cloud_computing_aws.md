@@ -1175,11 +1175,15 @@ AWSリソースで発生したデータポイントのメトリクスを収集�
 
 ### ディメンション、名前空間、メトリクス名
 
+#### ・分類
+
 | 分類群         | 説明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | ディメンション | インスタンスの設定値を単位とした収集グループのこと。設定値によるグループには、例えばインスタンス別、スペック別、AZ別、などがある。 |
 | 名前空間       | AWSリソースを単位とした収集グループのこと。AWSリソース名で表現される。 |
 | メトリクス名   | 集計対象のデータポイントの発生領域を単位とした収集グループのこと。データポイントの発生領域名で表現される。 |
+
+#### ・概念図
 
 参考：
 
@@ -1202,16 +1206,16 @@ ALBで注視するべきメトリクスを示す。
 
 参考：https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
 
-| メトリクス名                   | 単位     | 説明 |      |
-| ------------------------------ | -------- | ---- | ---- |
-| HealthyHostCount               | カウント |      |      |
-| HTTPCode_ELB_4XX_Count         | カウント |      |      |
-| HTTPCode_ELB_5XX_Count         | カウント |      |      |
-| HTTPCode_TARGET_4XX_Count      | カウント |      |      |
-| HTTPCode_TARGET_5XX_Count      | カウント |      |      |
-| RejectedConnectionCount        | カウント |      |      |
-| TargetConnectionErrorCount     | カウント |      |      |
-| TargetTLSNegotiationErrorCount | カウント |      |      |
+| メトリクス名                   | 単位     | 説明 |
+| ------------------------------ | -------- | ---- |
+| HealthyHostCount               | カウント |      |
+| HTTPCode_ELB_4XX_Count         | カウント |      |
+| HTTPCode_ELB_5XX_Count         | カウント |      |
+| HTTPCode_TARGET_4XX_Count      | カウント |      |
+| HTTPCode_TARGET_5XX_Count      | カウント |      |
+| RejectedConnectionCount        | カウント |      |
+| TargetConnectionErrorCount     | カウント |      |
+| TargetTLSNegotiationErrorCount | カウント |      |
 
 #### ・API Gateway
 
@@ -1224,7 +1228,18 @@ API Gatewayで注視するべきメトリクスを示す。
 | IntegrationLatency | マイクロ秒 | API Gatewayがリクエストをバックエンドに転送してから、バックエンドからレスポンスを受信するまでを表す。 |
 | Latency            | マイクロ秒 | API Gatewayがクライアントからリクエストを受信してから、クライアントにこれを返信するまでを表す。 |
 | 4XXError           | カウント   |                                                              |
-| 5XXError           | カウント   |                                                              |
+| 5XXError           | カウント   | サーバやコンテナが停止してしまうようなインシデントを検出することに適する。 |
+
+#### ・EC2
+
+EC2で注視するべきメトリクスを示す。
+
+参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
+
+| メトリクス名               | 単位     | 説明                                                         |
+| -------------------------- | -------- | ------------------------------------------------------------ |
+| StatusCheckFailed_Instance | カウント | インスタンスのインスタンスステータスの失敗数を表す。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |
+| StatusCheckFailed_System   | カウント | インスタンスのシステムステータスの失敗数を表す。AWSの障害によるインシデントの検出に適する。<br>参考：https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |
 
 #### ・ECS
 

@@ -12,7 +12,7 @@
 
 ### 特徴
 
-マイクロサービスアーキテクチャにおけるサービスメッシュを実装する。Istioを必ずしも用いる必要はなく、Kubernetesの機能でこれを実現してもよい。
+マイクロサービスアーキテクチャにおけるサービスメッシュを実装する。Istioを必ずしも用いる必要はなく、KubernetesやOpenShiftの機能でこれを実現してもよい。
 
 参考：https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 
@@ -24,7 +24,7 @@
 
 <br>
 
-### minikubeのためのIstioをインストール
+### minikubeのためにIstioをインストール
 
 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
