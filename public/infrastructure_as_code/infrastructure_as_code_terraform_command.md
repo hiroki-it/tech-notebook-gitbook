@@ -151,7 +151,7 @@ $ terraform import \
 ```bash
 $ terraform import \
     -var-file=foo.tfvars \
-    module.ecr.aws_ecr_repository.www xxxxxxxxx
+    module.ecr.aws_ecr_repository.www *****
 ```
 
 そして、ローカルのstateファイルと実インフラの差分が無くなるまで、```import```を繰り返す。
@@ -175,7 +175,7 @@ Error: InvalidParameterException: Creation of service was not idempotent.
 （エラー例2）
 
 ```bash
-Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id 'XXXXXXXXXXXX'
+Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
 ```
 
 <br>

@@ -124,9 +124,9 @@ $ npm install @nuxtjs/dotenv
 
 ```bash
 # APIのURL。サーバ上のJavaScriptからAPIへのリクエストで用いる。
-API_URL=https://example.co.jp/api
+API_URL=https://example.com/api
 # APIのURL。ブラウザ上のJavaScriptからAPIへのリクエストで用いる。
-API_URL_BROWSER=https://example.co.jp/api
+API_URL_BROWSER=https://example.com/api
 # APIのOauth認証の情報
 OAUTH_CLIENT_ID=
 OAUTH_CLIENT_SECRET=
@@ -238,7 +238,7 @@ const nuxtConfig: Configuration = {
 
 ```bash
 # .envファイル
-API_URL=https://example.co.jp/api
+API_URL=https://example.com/api
 ```
 
 ```javascript

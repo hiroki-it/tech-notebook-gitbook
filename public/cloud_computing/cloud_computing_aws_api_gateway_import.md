@@ -225,10 +225,10 @@ openapi: 3.0.0
 info:
   title: example-api-with-proxy-integration # API名
   description: The API for example with proxy integration # APIの説明
-  termsOfService: https://www.example.com/terms/ # 利用規約
+  termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://www.example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関するURL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
@@ -635,10 +635,10 @@ openapi: 3.0.0
 info:
   title: example-api-with-non-proxy-integration # API名
   description: The API for example with non-proxy integration. # APIの説明
-  termsOfService: https://www.example.com/terms/ # 利用規約
+  termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://www.example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関するURL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
@@ -1083,10 +1083,10 @@ openapi: 3.0.0
 info:
   title: example-api-with-mock-integration # API名
   description: The API for example with mock integration # APIの説明
-  termsOfService: https://www.example.com/terms/ # 利用規約
+  termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://www.example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関するURL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス

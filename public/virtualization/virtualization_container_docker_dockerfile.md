@@ -110,7 +110,7 @@ Dockerfileで```CMD```を指定しない場合、イメージのデフォルト�
 
 ```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
-2b2d3dfafee8   xxxxx   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   xxxxx
+2b2d3dfafee8   *****   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   foo-image
 ```
 
 静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。その場合、```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。しかし、```bin```ディレクトリへのアクセス権限がないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを置くようにする。

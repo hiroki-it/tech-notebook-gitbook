@@ -132,7 +132,7 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 #### ・Fatal Error
 
 ```log
-Fatal error: Allowed memory size of xxxxx bytes exhausted (tried to allocate 16 bytes)
+Fatal error: Allowed memory size of ***** bytes exhausted (tried to allocate 16 bytes)
 ```
 
 

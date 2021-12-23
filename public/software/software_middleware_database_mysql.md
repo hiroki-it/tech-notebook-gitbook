@@ -698,7 +698,7 @@ SELECT LAST_INSERT_ID();
 文字列をハッシュ化
 
 ```sql
-SELECT MD5("xxxxx");
+SELECT MD5("foo");
 ```
 
 <br>
@@ -833,7 +833,7 @@ SELECT
 FROM
     { テーブル名 }
 WHERE
-    { カラム名 } in (xxx, xxx,...);
+    { カラム名 } in (foo, bar,...);
 ```
 指定したカラムで、指定した値以外の『フィールド』を取得する。
 ```sql
@@ -897,7 +897,7 @@ SELECT
 FROM
     { テーブル名 }
 WHERE
-    { カラム名 } = ANY(xxx, xxx, xxx);
+    { カラム名 } = ANY(foo, bar, baz);
 ```
 
 <br>

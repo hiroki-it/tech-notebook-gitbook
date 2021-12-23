@@ -231,6 +231,12 @@ $ curl --fail http://host.docker.internal:8080/
 
 <br>
 
+### ポートフォワーディング
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html
+
+<br>
+
 ## 04. ロギング
 
 ### ロギングドライバー

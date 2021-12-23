@@ -38,7 +38,7 @@
 最初、クライアントは、認証後にアクセスできるページのリクエストをサーバに送信する。
 
 ```http
-GET https://example.co.jp/foo-form HTTP/2
+GET https://example.com/foo-form HTTP/2
 ```
 
 サーバは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザに示して、ユーザ名とパスワードの入力を求められる。ユーザに表示するための認証領域には、任意の値を持たせることができ、サイト名が設定されることが多い。
@@ -51,7 +51,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
 
 ```http
-POST https://example.co.jp/foo-form HTTP/2
+POST https://example.com/foo-form HTTP/2
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
@@ -67,7 +67,7 @@ WWW-Authenticate: Basic realm=""
 参考：https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 ```http
-POST https://example.co.jp/foo-form/logout HTTP/2
+POST https://example.com/foo-form/logout HTTP/2
 authorization: Basic <誤った認証情報>
 ```
 
@@ -91,7 +91,7 @@ WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
 ```http
-POST https://example.co.jp/foo-form HTTP/2
+POST https://example.com/foo-form HTTP/2
 authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した任意の文字列>" algorithm="<ハッシュ関数名>" qoq="auth"
 ```
 
@@ -119,7 +119,7 @@ authorization: Digest realm="<認証領域>" nonce="<サーバ側が生成した
 - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
 ```http
-POST https://example.co.jp/foo HTTP/2
+POST https://example.com/foo HTTP/2
 Content-Type: application/x-www-form-urlencoded
     
 # ボディ
@@ -154,7 +154,7 @@ Content-Type: application/json
 - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
 ```http
-POST https://example.co.jp/foo HTTP/2
+POST https://example.com/foo HTTP/2
 authorization: Bearer <Bearerトークン>
 ```
 
@@ -245,7 +245,7 @@ OAuthの項目を参考にせよ。
 最初、ユーザ作成の段階で、クライアントが認証情報をサーバに送信する。サーバは、認証情報をデータベースに保存する。
 
 ```http
-POST https://example.co.jp/users HTTP/2
+POST https://example.com/users HTTP/2
 
 {
     "email_address": "foo@gmail.com",
@@ -256,7 +256,7 @@ POST https://example.co.jp/users HTTP/2
 次回の認証時に、再びユーザが認証情報を送信する。
 
 ```http
-POST https://example.co.jp/foo-form HTTP/2
+POST https://example.com/foo-form HTTP/2
 
 {
     "email_address": "foo@gmail.com",
@@ -281,7 +281,7 @@ Set-Cookie: sessionid=<セッションID>
 サーバは、セッションIDとユーザIDを紐付けてサーバ内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを用いて、セッションIDをクライアントに送信する。サーバは、保存されたセッションIDに紐付くユーザIDから、ユーザを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
 
 ```http
-POST https://example.co.jp/foo-form HTTP/2
+POST https://example.com/foo-form HTTP/2
 cookie: sessionid=<セッションID>
 ```
 
@@ -323,7 +323,7 @@ cookie: sessionid=<セッションID>
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
 ```http
-GET https://example.co.jp/bar.php HTTP/2
+GET https://example.com/bar.php HTTP/2
 x-api-key: <APIキー>
 ```
 
@@ -338,7 +338,7 @@ x-api-key: <APIキー>
 参考：https://www.contentful.com/help/personal-access-tokens/
 
 ```http
-GET https://example.co.jp/bar.php HTTP/2
+GET https://example.com/bar.php HTTP/2
 authorization: <Personal Acccess Token>
 ```
 
@@ -414,6 +414,8 @@ authorization: <Personal Acccess Token>
 
 #### ・OAuthプロトコル、OAuth認証とは
 
+![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
+
 認証認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを用いたクライアントの照合方法を『OAuth認証』と呼ぶ。認証フェーズと認可フェーズでは、3つの役割が定義されていることを説明したが、OAuthプロトコル```2.0```では、より具体的に4つの役割が定義されている。
 
 | 役割              | 名称               | 説明                                                         | 補足                                                         |
@@ -423,24 +425,90 @@ authorization: <Personal Acccess Token>
 | Identity Provider | 認可サーバ         | リソースサーバがリソースオーナーにアクセスできるトークンを生成するサーバのこと。 | 認可サーバがリダイレクト先のクライアントアプリのURLをレスポンスに割り当てられるように、クライアントアプリの開発者がURLを事前登録しておく必要がある。認可サーバを利用する開発者用に、コンソール画面が用意されていることが多い。<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | APIサーバ         | リソースサーバ     | クライアントのアカウント情報を持っているサーバのこと。       |                                                              |
 
-![Oauthの具体例](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Oauthの具体例.png)
+#### ・認可コードフローの場合
 
-1. ユーザは、Facebookアカウントを用いてInstagramにログインしようとし、ブラウザはFacebookにリクエストを送信する。FacebookはInstagramにアカウント連携の承認ボタンをレスポンスとして返信する。
-2. ユーザが表示された承認ボタンを押し、ブラウザはFacebookにリクエストを送信する。
-3. アクセストークンを発行してもらうため、ブラウザはInstagram認可サーバにリクエストを送信する。Instagramは、アクセストークンを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLと認可レスポンスパラメータを割り当て、ブラウザにレスポンスを返信する。ブラウザはFacebookにリクエストを再送信し、Facebookは認可レスポンスパラメータを受け取る。
+OAuth認証には、仕組み別に『認可コードフロー』『インプリシットフロー』『リソースオーナー・パスワード・クレデンシャルズフロー』などのいくつかの種類がある。ここでは、最も基本的な認可コードフローを説明する。
+
+参考：
+
+- https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
+- https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
+
+（１）ユーザが、Facebookアカウントを用いてInstagramにログインしようとする。この時、ブラウザはFacebookにリクエストを送信する。
+
+（２）Facebookはブラウザににアカウント連携の承認ボタンをレスポンスとして返信する。ユーザは、表示された承認ボタンを押し、ブラウザはFacebookにリクエストを送信する。
+
+（３）一時的に有効な認可コードを発行してもらうため、FacebookはInstagram認可サーバに認可リクエストを送信する。
+
+```http
+GET https://www.instagram.com/auth?<下表で説明> HTTP/1.1
+HOST: authorization-server.com # 認可サーバのホスト
+```
+
+| クエリストリングの種類 | 値              | 必須／任意     |
+| ---------------------- | --------------- | -------------- |
+| response_type          | code            | 必須           |
+| client_id              | クライアントID  | 必須           |
+| redirect_uri           | リダイレクトURL | 条件により必須 |
+| state                  | 任意の文字列    | 推奨           |
+| scope                  | 認可スコープ    | 任意           |
+| code_challenge         | チャレンジ      | 任意           |
+| code_challege_method   | メソッド        | 任意           |
+
+（４）Instagramの認可サーバは認可リクエストを受信し、認可コードを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLと認可レスポンスパラメータを割り当て、ブラウザにレスポンスを返信する。ブラウザはFacebookにリクエストを再送信し、Facebookは認可レスポンスパラメータを受け取る。
 
 ```http
 302 Found
-Location: https://example.com/foo.php?code=123&state=abc
+Location: https://www.facebook.com/login?<下表で説明>
 ```
 
-1. Facebookは、アクセストークンを割り当てたリクエストをInstagramのサーバに送信する。
-2. Instagramは、アクセストークンを認証し、データへのアクセスを許可する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLを割り当て、ブラウザにレスポンスを返信する。ブラウザからFacebookにレスポンスがリダイレクトされる。ブラウザはFacebookにリクエストを再送信する。
+| クエリストリングのキーの種類 | 値           | 必須／任意                                                   |
+| ---------------------------- | ------------ | ------------------------------------------------------------ |
+| code                         | 認可コード   | 必須                                                         |
+| state                        | 任意の文字列 | 認可リクエストのクエリストリングで、stateキーが使用されていれば必須 |
+
+（５）Facebookは、認可コードを割り当てた認可リクエストをInstagramのサーバに送信する。
+
+```http
+POST https://www.instagram.com/auth? HTTP/1.1
+Host: authorization-server.com # 認可サーバのホスト
+Content-Type: application/x-www-form-urlencoded
+
+# ボディ
+# 下表で説明
+```
+
+| ボディのキーの種類 | 値                 | 必須／任意                                                   |
+| ------------------ | ------------------ | ------------------------------------------------------------ |
+| grant_type         | authorization_code | 必須                                                         |
+| code               | 認可コード         | 必須                                                         |
+| redirect_uri       | リダイレクトURL    | 認可リクエストのクエリストリングで、redirect_uriキーが使用されていれば必須 |
+| code_verifier      | ベリファイア       | 認可リクエストのクエリストリングで、code_verifierキーが使用されていれば必須 |
+| client_id          | クライアントID     | 条件により必須                                               |
+| client_secret      | シークレット値     | 条件により必須                                               |
+
+（６）Instagramは認可コードを照合し、アクセストークンを発行する。また、Facebookにリダイレクトできるように、```Location```ヘッダーにURLを割り当て、ブラウザにレスポンスを返信する。ブラウザからFacebookにレスポンスがリダイレクトされる。ブラウザはFacebookにリクエストを再送信する。
 
 参考：
 
 - https://boxil.jp/mag/a3207/
 - https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844
+
+```http
+302 Found
+Location: https://www.facebook.com/login
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "access_token":"<アクセストークン>",       # 必須
+  "token_type":"<トークンタイプ>",          # 必須
+  "expires_in":<有効秒数>,                 # 任意
+  "refresh_token":"<リフレッシュトークン>", # 任意
+  "scope":"<認可スコープ>"                  # 要求したスコープ群と差異があれば必須
+}
+```
 
 #### ・用いられる認証スキーム
 
@@ -448,17 +516,17 @@ OAuth認証では、認証スキーマとしてBearer認証が選ばれること
 
 #### ・付与タイプ
 
-OAuth認証のトークンの付与方法には種類がある。
+認可サーバによるOAuth認証のトークンの付与方法には種類がある。
 
 参考：https://oauth.net/2/grant-types/
 
-| 付与タイプ名             | 説明                                                         | 使用例                          |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------- |
-| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に用いる。推奨されている。<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携 |
-| Client Credentials Grant | 推奨されている。<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                 |
-| Device Code              | 推奨されている。<br>参考：https://oauth.net/2/grant-types/device-code/ |                                 |
-| Implicit Grant           | 非推奨されている。<br>参考：https://oauth.net/2/grant-types/implicit/ |                                 |
-| Password Grant           | ユーザ名とパスワードを元に、トークンを付与する。非推奨されている。<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant |                                 |
+| 付与タイプ名             | 説明                                                         | 使用例                                                       |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Authorization Code Grant | アプリケーションが他のAPIにアクセスする場合に用いる。推奨されている。<br>参考：https://oauth.net/2/grant-types/authorization-code/ | 他のSNSアプリとのアカウント連携                              |
+| Client Credentials Grant | 推奨されている。<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                                              |
+| Device Code              | 推奨されている。<br>参考：https://oauth.net/2/grant-types/device-code/ |                                                              |
+| Implicit Grant           | 非推奨されている。<br>参考：https://oauth.net/2/grant-types/implicit/ |                                                              |
+| Password Grant           | ユーザ名とパスワードを照合し、トークンを付与する。非推奨されている。<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを使用している。<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
 <br>
 
@@ -481,7 +549,7 @@ OAuth認証のトークンの付与方法には種類がある。
 『ヘッダー』『ペイロード』『署名』のそれぞれのJSONデータをBase64urlによってエンコードし、ドットでつないだトークン。Bear認証やOauth認証のトークンとして使用できる。ランダムな文字列をこれら認証のトークンとするより、JWTを用いた方がより安全である。
 
 ```http
-GET https://example.co.jp/bar.php HTTP/2
+GET https://example.com/bar.php HTTP/2
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 

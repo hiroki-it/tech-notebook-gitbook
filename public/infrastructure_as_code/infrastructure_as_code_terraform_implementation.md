@@ -420,8 +420,8 @@ resource "aws_acm_certificate" "example" {
   # CloudFrontの仕様のため、us-east-1リージョンでSSL証明書を作成します。
   provider = aws
 
-  domain_name               = "example.co.jp"
-  subject_alternative_names = ["*.example.co.jp"]
+  domain_name               = "example.com"
+  subject_alternative_names = ["*.example.com"]
   validation_method         = "DNS"
 
   tags = {
@@ -619,7 +619,7 @@ $ terraform plan -var="foo=foo" -var="bar=bar"
 ```
 
 ```bash
-$ terraform plan -var-file=xxxxx.tfvars
+$ terraform plan -var-file=foo.tfvars
 ```
 
 #### ・```*.auto.tfvars```ファイル、```*.auto.tfvars.json```ファイル  
@@ -752,8 +752,8 @@ waf_allowed_global_ip_addresses = [
 ]
 
 waf_blocked_user_agents = [
-  "XXXXX",
-  "YYYYY"
+  "foo-agent",
+  "bar-agent"
 ]
 ```
 

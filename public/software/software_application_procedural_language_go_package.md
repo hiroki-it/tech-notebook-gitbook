@@ -173,6 +173,56 @@ Go製のORMである。
 
 <br>
 
+### DBとの接続
+
+#### ・MySQLの場合
+
+参考：https://gorm.io/ja_JP/docs/connecting_to_the_database.html#MySQL
+
+```go
+func NewDB() (*gorm.DB, error) {
+    
+    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_DATABASE"),
+	)
+
+    // DBに接続します。
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
+
+func Close(db *gorm.DB) error {
+
+	sqlDb, err := db.DB()
+
+	if err != nil {
+		return err
+	}
+
+    // DBとの接続を切断します。
+	err = sqlDb.Close()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+<br>
+
 ### Gormモデル
 
 #### ・Gormモデル埋め込み
@@ -232,19 +282,16 @@ type User struct {
 ```
 
 ```go
-user := User{Id:111}
+user := User{Id: 111}
 
-// user's ID is `111`
-db.Delete(&user)
 // UPDATE users SET deleted_at="2013-10-29 10:23" WHERE id = 111;
+db.Delete(&user)
 
-// Batch Delete
-db.Where("age = ?", 20).Delete(&User{})
 // UPDATE users SET deleted_at="2013-10-29 10:23" WHERE age = 20;
+db.Where("age = ?", 20).Delete(&User{})
 
-// Soft deleted records will be ignored when querying
-db.Where("age = 20").Find(&user)
 // SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;
+db.Where("age = 20").Find(&user)
 ```
 
 <br>

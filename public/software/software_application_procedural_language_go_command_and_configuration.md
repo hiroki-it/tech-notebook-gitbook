@@ -74,7 +74,7 @@ $ go build -o $HOME/go/bin ./cmd
  ちなみに、事前のインストールに失敗に、ビルド対象が存在していないと、以下のようなエラーになる。
 
 ```bash
-package xxxxx is not in GOROOT (/usr/local/go/src/xxxxx)
+package foo is not in GOROOT (/usr/local/go/src/foo)
 ```
 
 <br>
@@ -163,7 +163,7 @@ $ go vet ./...
 
 #### ・オプション無し
 
-指定したパスの```xxxxx_test.go```ファイルで『```Test```』から始まるテスト関数を実行する。testディレクトリ内を再帰的に実行するのがおすすめ。
+指定したパスの```foo_test.go```ファイルで『```Test```』から始まるテスト関数を実行する。testディレクトリ内を再帰的に実行するのがおすすめ。
 
 ```bash
 $ go test ./...
@@ -179,7 +179,7 @@ $ go test -v ./...
 
 #### ・-cover
 
-テスト時に、```xxxxx_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する。反対に、```xxxxx_test.go```ファイルがなければ、そのパッケージの網羅率は解析しない。網羅条件については、以下のリンク先を参考にせよ。
+テスト時に、```foo_test.go```ファイルがあるパッケージ内ファイルの命令網羅の網羅率を解析する。反対に、```foo_test.go```ファイルがなければ、そのパッケージの網羅率は解析しない。網羅条件については、以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_testing_based_on_code.html
 

@@ -241,11 +241,11 @@ PHPトレーサーでlaravel内からタグを収集した例
 {
     "env": "prd",
     "http": {
-        "host": "example.co.jp",
+        "host": "example.com",
         "method": "GET",
         "path_group": "/foos",
         "status_code": 200,
-        "url": "https://example.co.jp/foos/1"
+        "url": "https://example.com/foos/1"
     },
     "laravel": {
         "route": {

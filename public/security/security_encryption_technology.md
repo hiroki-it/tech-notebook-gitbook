@@ -198,7 +198,7 @@ Webコンテンツデータ、メールデータ、その他
 
 ```bash
 # ローカルの20000番ポートが割り当てられたアプリケーションに対する通信を、RDSの3306番ポートのアプリケーションに転送。
-[local pc] $ ssh -L20000:xxxx.rds.amazonaws.com:3306 username@fumidai.com 
+[local pc] $ ssh -L20000:*****.rds.amazonaws.com:3306 username@fumidai.com 
 ```
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ssh-port-forward.png)
@@ -207,7 +207,7 @@ Webコンテンツデータ、メールデータ、その他
 
 このリモートサーバが仮想サーバ／コンテナの場合もあり、ホストと仮想サーバ／コンテナの接続でもSSHポートフォワーディングが用いられている。ホスト外部のパソコンから、ホスト上の仮想サーバ／コンテナに接続したい場合、SSHポートフォワーディングを用いることによって、ホストを踏み台とした仮想サーバ／コンテナへの接続が行えるようになる。
 
-![Dockerにおけるポートフォワーディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerにおけるポートフォワーディング.png)
+![docker_port-fowarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/docker_port-fowarding.png)
 
 <br>
 

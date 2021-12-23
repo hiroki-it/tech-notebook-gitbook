@@ -18,15 +18,15 @@
 
 #### ・ MVVMアーキテクチャにおける各層の責務
 
-1. View層（```xxx.html```、```/xxx.twig```、```xxx-component.vue```の```template```タグ部分）
+1. View層（```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
 
 ViewModel層から渡されたデータを出力するだけ。
 
-2. ViewModel層（```index.js```、```xxx-component.vue```の```script```タグ部分）
+2. ViewModel層（```index.js```、```foo-component.vue```の```script```タグ部分）
 
 プレゼンテーションロジック（フォーマット整形、バリデーション、ページのローディング、エラーハンドリング、イベント発火など）や、ビジネスロジック（※控えめに）を記述する。scriptタグによって、JavaScriptが組み込まれている。
 
-3. Model層（```store.js```または```xxx.js```)
+3. Model層（```store.js```または```foo.js```)
 
 ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。
 
@@ -34,10 +34,10 @@ ViewModel層から渡されたデータを出力するだけ。
 
 Vueは、アプリケーションの設計にMVVMアーキテクチャを用いることを前提として、双方向データバインディングを実現できるような機能を提供する。
 
-1. View層では、```xxx.html```、```/xxx.twig```、```xxx-component.vue```の```template```タグ部分）
-2. ViewModel層では、```index.js```、```xxx-component.vue```の```script```タグ部分
+1. View層では、```foo.html```、```/foo.twig```、```foo-component.vue```の```template```タグ部分）
+2. ViewModel層では、```index.js```、```foo-component.vue```の```script```タグ部分
 
-3. Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```xxx.js```）を設置する。
+3. Model層では、Vuex（```store.js```)やJavaScriptからなるモデル（```foo.js```）を設置する。
 4. これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。
 
 ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/VueにおけるMVVMアーキテクチャ.png)
@@ -47,7 +47,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを用い�
 
 #### ・親子コンポーネント間のデータ渡しの仕組み（Props Down, Events Up）
 
-まず、双方向データバインディングとは異なる概念なので、混乱しないように注意する。コンポーネント（```xxx-component.vue```）の```script```タグ部分（ViewModel層）の親子間では、```props```と```$emit()```を用いて、データを渡す。この仕組みを、Props Down, Events Upという。
+まず、双方向データバインディングとは異なる概念なので、混乱しないように注意する。コンポーネント（```foo-component.vue```）の```script```タグ部分（ViewModel層）の親子間では、```props```と```$emit()```を用いて、データを渡す。この仕組みを、Props Down, Events Upという。
 
 ![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/親子コンポーネント間の双方向データバインディング.png)
 
@@ -57,7 +57,7 @@ Vueは、アプリケーションの設計にMVVMアーキテクチャを用い�
 
 ### MVVMアーキテクチャの実装例
 
-#### (1) 【View層】テンプレート（```xxx.html```、```xxx.twig```）
+#### (1) 【View層】テンプレート（```foo.html```、```foo.twig```）
 
 データが、テンプレートからJavaScriptファイルに渡される仕組みは、フレークワークを使わない場合と同じである。データがJavaScriptファイルに渡される状況としては、イベント発火時である。
 
@@ -184,14 +184,14 @@ var vm = new Vue({
     component: {
 
         //『HTMLでのコンポーネントのタグ名：子コンポーネント』
-        "v-foo-component-1": require(".../component/xxx-1.vue"),
-        "v-foo-component-2": require(".../component/xxx-2.vue"),
-        "v-foo-component-3": require(".../component/xxx-3.vue")
+        "v-foo-component-1": require(".../component/foo-1.vue"),
+        "v-foo-component-2": require(".../component/foo-2.vue"),
+        "v-foo-component-3": require(".../component/foo-3.vue")
     },
 })
 
 ```
-#### (2) 【View + ViewModel層】単一ファイルコンポーネントとしてのコンポーネント（```xxx-component.vue```）
+#### (2) 【View + ViewModel層】単一ファイルコンポーネントとしてのコンポーネント（```foo-component.vue```）
 
 コンポーネントは、View層としての```template```タグ、ViewModel層としての```script```タグと```style```タグを用いて、単一ファイルコンポーネントとする。
 
@@ -286,8 +286,8 @@ var vm = new Vue({
       component: {
           
         // 子コンポーネントと孫コンポーネントの対応関係
-        "v-foo-component-4": require("./xxx/xxx/xxx-4"),
-        "v-foo-component-5": require("./xxx/xxx/xxx-5"),
+        "v-foo-component-4": require("./xxx/xxx/foo-4"),
+        "v-foo-component-5": require("./xxx/xxx/foo-5"),
       },
     }
   }
@@ -298,7 +298,7 @@ var vm = new Vue({
 
 Vuexについては、以降の説明を参照せよ。
 
-#### (3-2) 【Model層】オブジェクトとしてのJavaScript（```xxx.js```）
+#### (3-2) 【Model層】オブジェクトとしてのJavaScript（```foo.js```）
 
 クラス宣言で実装する。
 
@@ -445,7 +445,7 @@ View層で```input```タグで、一文字でも値が入力された時点で�
 
 #### ・```v-show```／```v-if```とは
 
-条件分岐を行うタグであり、```v-show```または```v-if```を用いて、プロパティ名を指定する。（```v-xxx="<propsのプロパティ名>"```）で記述する。親テンプレートから渡された```props```内のプロパティ名がもつ値が```TRUE```の時に表示し、```FALSE```の時に非表示にする。もし頻繁に表示と非表示の切り替えを行うようなら、```v-if```の方が、描画コストが重たくなるリスクが高くなる為、```v-show```推奨である。
+条件分岐を行うタグであり、```v-show```または```v-if```を用いて、プロパティ名を指定する。（```v-foo="<propsのプロパティ名>"```）で記述する。親テンプレートから渡された```props```内のプロパティ名がもつ値が```TRUE```の時に表示し、```FALSE```の時に非表示にする。もし頻繁に表示と非表示の切り替えを行うようなら、```v-if```の方が、描画コストが重たくなるリスクが高くなる為、```v-show```推奨である。
 
 | タグ   | 使い分け                        |
 | ------ | :------------------------------ |
@@ -503,7 +503,7 @@ View層で```input```タグで、一文字でも値が入力された時点で�
 
 ```javascript
 Vue.component("v-foo-component", {
-    template: require("./xxx/xxx/xxx")
+    template: require("./xxx/xxx/foo")
 });
 
 // 変数への格納を省略してもよい
@@ -519,7 +519,7 @@ var vm = new Vue({
 ```javascript
 var vFooComponent = {
     // テンプレートと親コンポーネントの対応関係
-    template: require("./xxx/xxx/xxx"),
+    template: require("./xxx/xxx/foo"),
 };
 
 // 変数への格納を省略してもよい
@@ -547,7 +547,7 @@ var vm = new Vue({
 
     components: {
         // テンプレートと親コンポーネントの対応関係
-        "v-foo-component": require("./xxx/xxx/xxx"),
+        "v-foo-component": require("./xxx/xxx/foo"),
     }
 
 })
@@ -567,7 +567,7 @@ var vm = new Vue({
 ルーティングライブラリの一種。コンポーネントに対してルーティングを行い、```/<ルート>/<パラメータ>```に応じて、コールするコンポーネントを動的に切り替えられる。
 
 ```http
-GET http://www.example.co.jp:80/<ルート>/<パスパラメータ>?text1=a&text2=b HTTP/2
+GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b HTTP/2
 ```
 
 **＊実装例＊**

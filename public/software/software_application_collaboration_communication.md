@@ -63,7 +63,7 @@ JavaScriptで非同期通信を実現する手法のこと。JavaScript、HTML�
 
 ```javascript
 // URL
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 const xhr = new XMLHttpRequest();
 
@@ -90,7 +90,7 @@ xhr.send();
 
 ```javascript
 // URL
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 // メッセージボディ
 const body = {
@@ -137,7 +137,7 @@ xhr.send(queryString);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 $.get(url);
 ```
@@ -147,7 +147,7 @@ $.get(url);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 const body = {
     name: 'Hiroki',
@@ -209,7 +209,7 @@ $.ajax({
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 axios.get(url);
 ```
@@ -219,7 +219,7 @@ axios.get(url);
 **＊実装例＊**
 
 ```javascript
-const url = 'https://example.co.jp/';
+const url = 'https://example.com/';
 
 const body = {
     name: 'Hiroki',

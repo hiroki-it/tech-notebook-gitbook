@@ -9,7 +9,8 @@
         * [📖メモリ管理](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_kernel_memory_management.html)
     * ユーティリティ
         * [📖 ︎ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility.html)
-        * [📖 ︎管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_management.html)
+        * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_package.html)
+        * [📖 ︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_package_management.html)
         * [📖 ︎シェル](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_utility_shell.html)
     * 言語プロセッサ
         * [📖 ︎言語プロセッサ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor.html)
@@ -39,7 +40,6 @@
     * アプリケーション間連携
         * [📖 ︎JSON](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_json.html)
         * [📖 ︎アプリケーション間通信](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_communication.html)
-        * [📖 ︎認証／認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html)
         * RESTful-API
             * [📖 ︎RESTful-API](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html)
             * [📖 ︎API仕様書](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful_api_specification.html)
@@ -114,6 +114,7 @@
 
 * [📖 ︎サイバー攻撃](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html)
 * [📖 ︎通信データの暗号化技術](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_encryption_technology.html)
+* [📖 ︎認証／認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html)
 
 <br>
 

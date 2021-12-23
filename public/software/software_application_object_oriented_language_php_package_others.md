@@ -196,7 +196,7 @@ $client = new Client();
 // GET送信
 $response = $client->request(
     "GET",
-    "https://xxxxxxxx",
+    "https://example.com",
     [
         "query" => [
             "id" => 1
@@ -223,7 +223,7 @@ $json = json_encode([
 // POST送信
 $response = $client->request(
     "POST",
-    "https://xxxxxxxx",
+    "https://example.com",
     [
         "headers"     => [
             "Authorization"  => $this->token,
@@ -259,7 +259,7 @@ $json = json_encode([
 // POST送信
 $response = $client->request(
     "POST",
-    "https://xxxxxxxx",
+    "https://example.com",
     [
         "headers"     => [
             "Authorization"  => $this->token,

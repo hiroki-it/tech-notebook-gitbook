@@ -168,8 +168,6 @@ root        34  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 $ docker container ps -a --no-trunc # ==> コンテナのSTATUSがUPになっている
 ```
 
-
-
 <br>
 
 ### search
@@ -220,28 +218,6 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 <br>
 
-### log
-
-#### ・--follow
-
-ログを表示し続ける。ロギングドライバーが```json-file```の場合のみ有効。
-
-```bash
-$ docker logs -f <コンテナ名>
-```
-
-#### ・--tail
-
-**＊コマンド例＊**
-
-指定した行数だけ、ログを表示する。ロギングドライバーが```json-file```の場合のみ有効。
-
-```bash
-$ docker logs --follow=true --tail=500 <コンテナ名>
-```
-
-<br>
-
 ### inspect
 
 #### ・オプション無し
@@ -264,6 +240,28 @@ json-fileドライバーを用いている時に、ログファイルの出力�
  $ docker inspect <起動中コンテナ名> | grep 'LogPath'
  
  "LogPath": "/var/lib/docker/containers/*****-json.log",
+```
+
+<br>
+
+### log
+
+#### ・--follow
+
+ログを表示し続ける。ロギングドライバーが```json-file```の場合のみ有効。
+
+```bash
+$ docker logs -f <コンテナ名>
+```
+
+#### ・--tail
+
+**＊コマンド例＊**
+
+指定した行数だけ、ログを表示する。ロギングドライバーが```json-file```の場合のみ有効。
+
+```bash
+$ docker logs --follow=true --tail=500 <コンテナ名>
 ```
 
 <br>
@@ -561,5 +559,4 @@ RUN echo "hello world" > /myvol/greeting
 # マウント先のコンテナ側ディレクトリ名
 VOLUME /myvol
 ```
-
 

@@ -2877,7 +2877,25 @@ HTTPクライアントまたはWebサーバを提供する。そのため、Go�
 **＊実装例＊**
 
 ```go
-package mainimport (	"fmt"    "log"	"net/http")func main() {    	response, err := http.Get("http://xxx/api.com")	defer response.Body.Close()	if err != nil {		log.Fatal(err)	}	fmt.Println(response.Body)}
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+func main() {
+	response, err := http.Get("https://example/api.com")
+
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.Body)
+}
 ```
 
 #### ・```Post```メソッド
@@ -2885,7 +2903,48 @@ package mainimport (	"fmt"    "log"	"net/http")func main() {    	response, err :
 **＊実装例＊**
 
 ```go
-package mainimport (	"bytes"	"encoding/json"	"fmt"	"log"	"net/http")type User struct {	id   int    `json:"id"`	name string `json:"name"`}// コンストラクタfunc NewUser(id int, name string) *User {	return &User{		id:   id,		name: name,	}}func main() {	user := NewUser(1, "Hiroki")	byteJson, err := json.Marshal(user)	response, err := http.Post(		"http://xxx/api.com",      // URL		"application/json",        // Content-Type		bytes.NewBuffer(byteJson), // メッセージボディ	)	defer response.Body.Close()	if err != nil {		log.Fatal(err)	}	fmt.Println(response.Body)}
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type User struct {
+	id   int    `json:"id"`
+	name string `json:"name"`
+}
+
+// コンストラクタ
+func NewUser(id int, name string) *User {
+	return &User{
+		id:   id,
+		name: name,
+	}
+}
+
+func main() {
+	user := NewUser(1, "Hiroki")
+
+	byteJson, err := json.Marshal(user)
+
+	response, err := http.Post(
+		"http://xxx/api.com",      // URL
+		"application/json",        // Content-Type
+		bytes.NewBuffer(byteJson), // メッセージボディ
+	)
+
+	defer response.Body.Close()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(response.Body)
+}
 ```
 
 #### ・```NewRequest```メソッド
@@ -2926,7 +2985,7 @@ func main() {
 	// リクエストを作成する。
 	request, err := http.NewRequest(
 		"POST",                    // HTTPメソッド
-		"http://xxx/api.com",      // URL
+		"https://example.api.com",      // URL
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
 
@@ -3084,17 +3143,22 @@ package main
 
 import (
     "fmt"
-    "os"
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
 )
 
 func main() {
-    file, err := os.Open("filename.txt")
-    
-    if err != nil {
-        log.Fatalf("ERROR: %#v\n", err)
-    }
-    
-    fmt.Printf("%#v\n", file)
+	file, err := os.Open("filename.txt")
+
+	if err != nil {
+		log.Fatalf("ERROR: %#v\n", err)
+	}
+
+	fmt.Printf("%#v\n", file)
 }
 ```
 

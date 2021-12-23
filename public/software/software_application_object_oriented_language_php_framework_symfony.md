@@ -331,7 +331,7 @@ public function handle
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\XxxReposiroy;
+use App\Repository\FooReposiroy;
 
 class ExampleController extends AbstractController 
 {
@@ -340,8 +340,8 @@ class ExampleController extends AbstractController
         // Ajaxによるリクエストの場合。
         if ($req->headers->get("content-type") === "application/json") {
             
-            $xxxRepository = new XxxRepository;
-            $entityObject = $xxxRepository->getEntity();
+            $fooRepository = new FooRepository;
+            $entityObject = $FooRepository->getEntity();
             
             //-- entityをObject型からArray型に変換する何らかの処理。--//
             
@@ -351,7 +351,7 @@ class ExampleController extends AbstractController
               ]);
         }
     
-        return $this->render(".../xxx.twig")->setStatusCode(200);
+        return $this->render(".../foo.twig")->setStatusCode(200);
     }
 }
 ```

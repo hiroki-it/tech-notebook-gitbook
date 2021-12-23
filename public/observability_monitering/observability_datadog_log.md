@@ -160,7 +160,7 @@ FROM data/agent:latest
       # ブラウザで表示されたページのURL。非同期リクエストのエラーは、こちらではなく```message```属性に記載される。
       "view": {
         "referrer": "",
-        "url": "http://example.jp/"
+        "url": "https://example.com/"
       }
     },
     # ブラウザログの内容。非同期リクエストのエラーは、view.urlではなくこちらに記載される。

@@ -601,7 +601,7 @@ class Foo extends Model
 
 #### ・ゲッター
 
-Laravelでは、```getXxxxYyyyAttribute```という名前のメソッドを、```xxx_yyy```という名前でコールできる。一見、プロパティをコールしているように見えるため、注意が必要である。
+Laravelでは、```getFooBarAttribute```という名前のメソッドを、```foo_bar```という名前でコールできる。一見、プロパティをコールしているように見えるため、注意が必要である。
 
 **＊実装例＊**
 
@@ -3233,7 +3233,7 @@ class FooController extends Controller
     
 Route::get('/foos', [FooController::class, 'index'])->name('foos_index');
     
-// https://example.co.jp/foos
+// https://example.com/foos
 $url = route('foos_index');
 ```
 
@@ -3296,7 +3296,7 @@ $path = storage_path("app/file.txt");
 ```php
 <?php
 
-// https://example.co.jp/foos
+// https://example.com/foos
 $url = url('/foos');
 ```
 
@@ -4530,7 +4530,7 @@ $ php artisan migrate
 コマンド実行時、以下のエラーが出ることがある。マイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
 
 ```bash
-Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateXxxxxTable" not found
+Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" not found
 ```
 
 #### ・マイグレーションの結果を確認
@@ -6938,7 +6938,7 @@ MessageBagクラスの```all```メソッドで、全てのエラーメッセー�
 | ガードの種類 | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Webガード    | セッションIDを用いたForm認証のために用いる。               |
-| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために用いる。それぞれの認証方法に違いについては、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| APIガード    | Bearer認証、APIキー認証、OAuth認証、などのために用いる。それぞれの認証方法に違いについては、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 
 #### ・カスタムガード
 
@@ -7470,7 +7470,7 @@ class FooController extends Controller
 
 Ouath認証を実装できる。OAuth認証については、以下のリンク先を参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html
 
 <br>
 
@@ -7527,22 +7527,29 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 $ php artisan passport:install
 
 Personal access client created successfully.
-Client ID: 3
-Client secret: xxxxxxxxxxxx
+Client ID: 1
+Client secret: *****
 Password grant client created successfully.
-Client ID: 4
-Client secret: xxxxxxxxxxxx
+Client ID: 2
+Client secret: *****
 ```
 
-ただし、生成コマンドを個別に実行してもよい。
+これにより、例えばoauth_clientsテーブルでは以下が作成される。
+
+| id      | user_id    | name                                 | secret      | ...  |
+| ------- | ---------- | ------------------------------------ | ----------- | ---- |
+| ```1``` | ```NULL``` | ```Laravel Personal Access Client``` | ```*****``` | ...  |
+| ```2``` | ```NULL``` | ```Laravel Password Grant Client```  | ```*****``` | ...  |
+
+あるいは、```/storage/oauth```キー、Personal Access Client、Password Grant Clientを個別に作成してもよい。
 
 ```bash
-# 暗号キーを生成
+# oauthキーを生成
 $ php artisan passport:keys
 
-# クライアントを生成
-## Persinal Access Tokenの場合
+# Persinal Access Tokenを作成する。
 $ php artisan passport:client --personal
+
 ## Password Grant Tokenの場合
 $ php artisan passport:client --password
 ```
@@ -7557,16 +7564,16 @@ OAuth認証に関して、以下のトークン付与タイプを実装できる
 
 | 付与タイプ               | 説明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
-| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
-| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
-| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Authorization Code Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
+| Client Credentials Grant | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
+| Implicit Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
+| Password Grant           | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 
 #### ・その他
 
 | 認証方法              | 説明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| Personal Access Token | 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 
 <br>
 
@@ -7730,7 +7737,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 {
   "token_type":"Bearer",
   "expires_in":31536000,
-  "access_token":"xxxxx"
+  "access_token":"*****"
 }
 ```
 
@@ -7744,7 +7751,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 $response = $client->request("GET", "/api/user", [
     "headers" => [
         "Accept"        => "application/json",
-        "Authorization" => "Bearer xxxxx",
+        "Authorization" => "Bearer *****",
     ]
 ]);
 
@@ -7851,7 +7858,7 @@ APIキー認証とセッションIDを用いたForm認証機能の認証処理�
 
 APIキー認証とセッションIDを用いたForm認証については、以下のリンク先を参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html
 
 <br>
 

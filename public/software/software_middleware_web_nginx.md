@@ -79,7 +79,7 @@ server {
     root        /var/www/example/public;
     index       index.php index.html;
 
-    include /etc/nginx/default/xxx.conf;
+    include /etc/nginx/default/foo.conf;
 
     #『/』で始まる全てのリクエストの場合
     location / {
@@ -409,11 +409,11 @@ location / {
 
 | 優先順位 | prefix | ルートの一致条件                         | ルート例                                               |
 | :------: | :----: | ---------------------------------------- | ------------------------------------------------------------ |
-|    1     |   =    | 指定したルートに一致する場合。           | ```http://example.com/```                                    |
-|    2     |   ^~   | 指定したルートで始まる場合。             | ```http://example.com/images/foo.gif```                      |
-|    3     |   ~    | 正規表現（大文字・小文字を区別する）。   | ```http://example.com/images/FOO.jpg```                      |
-|    4     |   ~*   | 正規表現（大文字・小文字を区別しない）。 | ```http://example.com/images/foo.jpg```                      |
-|    5     |  なし  | 指定したルートで始まる場合。             | ・```http://example.com/foo.html```<br>・```http://example.com/docs/foo.html``` |
+|    1     |   =    | 指定したルートに一致する場合。           | ```https://example.com/```                                    |
+|    2     |   ^~   | 指定したルートで始まる場合。             | ```https://example.com/images/foo.gif```                      |
+|    3     |   ~    | 正規表現（大文字・小文字を区別する）。   | ```https://example.com/images/FOO.jpg```                      |
+|    4     |   ~*   | 正規表現（大文字・小文字を区別しない）。 | ```https://example.com/images/foo.jpg```                      |
+|    5     |  なし  | 指定したルートで始まる場合。             | ・```https://example.com/foo.html```<br>・```https://example.com/docs/foo.html``` |
 
 #### ・```server```
 

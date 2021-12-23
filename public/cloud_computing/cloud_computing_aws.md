@@ -326,7 +326,7 @@ API Gatewayは、メソッドリクエスト、統合リクエスト、統合レ
 | ダッシュボード           |                                                              |                                                              |
 | APIの設定                |                                                              |                                                              |
 | 使用量プラン             | 有料サービスとしてAPIを公開し、料金体系に応じてリクエスト量を制限するために用いる。APIキーにリクエスト量のレートを設定する。 | 有料サービスとして使用しないAPIの場合は、レートを設定する必要はない。 |
-| APIキー                  | APIキー認証を設定する。                                      | ・その他のアクセス制御の方法として、以下がある。<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| APIキー                  | APIキー認証を設定する。                                      | ・その他のアクセス制御の方法として、以下がある。<br>参考：https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-control-access-to-api.html<br>・APIキー認証については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 | クライアント証明書       | SSL証明書をAPI Gatewayに割り当てる。                   | APIが、API Gatewayから転送されたリクエストであること識別できるようになる。 |
 | CloudWatchログの設定     | API GatewayがCloudWatchログにアクセスできるよう、ロールを設定する。 | 1つのAWS環境につき、1つのロールを設定すればよい。          |
 
@@ -812,7 +812,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Price Class         | 用いるエッジロケーションを設定する。                       | Asiaが含まれているものを選択。                               |
 | AWS WAF             | CloudFrontに紐付けるWAFを設定する。                          |                                                              |
-| CNAME               | CloudFrontのデフォルトドメイン名（```xxxxx.cloudfront.net.```）に紐付けるRoute53レコード名を設定する。 | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。 |
+| CNAME               | CloudFrontのデフォルトドメイン名（```*****.cloudfront.net.```）に紐付けるRoute53レコード名を設定する。 | ・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。 |
 | SSL Certificate     | HTTPSプロトコルでオリジンに転送する場合に設定する。          | 上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを用いる場合、この証明書は『バージニア北部』で申請する必要がある。 |
 | Security Policy     | リクエストの送信者が用いるSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。 | ・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、転送元のAWSリソース、などを含む。<br>・参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html |
 | Default Root Object | オリジンのドキュメントルートを設定する。                     | ・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『```/```』でリクエストした時に、オリジンのルートディレクトリにある```index,html```ファイルがドキュメントルートになる。 |
@@ -823,7 +823,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | 設定項目               | 説明                                                         | 補足                                                         |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Origin Domain Name     | CloudFrontをリバースプロキシとして、AWSリソースのエンドポイントやDNSにルーティングする。 | ・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であってもよい。 |
-| Origin Path            | オリジンのルートディレクトリを設定する。                     | ・何も設定しないと、デフォルトは『```/```』のなる。Behaviorでは、『```/```』の後にパスが追加される。<br>・『```/var/www/app```』を設定すると、Behaviorで設定したパスが『```/var/www/app/xxxxx```』のように追加される。 |
+| Origin Path            | オリジンのルートディレクトリを設定する。                     | ・何も設定しないと、デフォルトは『```/```』のなる。Behaviorでは、『```/```』の後にパスが追加される。<br>・『```/var/www/app```』を設定すると、Behaviorで設定したパスが『```/var/www/app/foo```』のように追加される。 |
 | Origin Access Identity | リクエストの転送先となるAWSリソースでアクセス権限のアタッチが必要な場合に設定する。転送先のAWSリソースでは、アクセスポリシーをアタッチする。 | CloudFrontがS3に対して読み出しを行うために必要。             |
 | Origin Protocol Policy | リクエストの転送先となるAWSリソースに対して、HTTPとHTTPSのいずれのプロトコルで転送するかを設定する。 | ・ALBで必要。ALBのリスナーのプロトコルに合わせて設定する。<br>・```HTTP Only```：HTTPで転送<br>・```HTTPS Only```：HTTPSで転送<br>・```Match Viewer```：両方で転送 |
 | HTTPポート             | 転送時に指定するオリジンのHTTPのポート番号                   |                                                              |
@@ -840,7 +840,7 @@ AWSリソースのイベントを、EventBridge（CloudWatchイベント）を�
 | Allowed HTTP Methods           | リクエストのHTTPメソッドのうち、オリジンへの転送を許可するものを設定 | ・パスパターンが静的ファイルへのリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルへのリクエストの場合、全てのメソッドを許可。 |
 | Object Caching                 | CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。 | ・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。 |
 | TTL                            | CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。   | ・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、```Cache-Control```ヘッダー、```Expires```ヘッダーの値の組み合わせによって決まる。 |
-| Whitelist Header               | Headers を参考にせよ。                                       | 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist・```Accept-xxxxx```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-xxxxx-Viewer```：デバイスタイプのBool値が格納されている。 |
+| Whitelist Header               | Headers を参考にせよ。                                       | 参考：https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist・```Accept-*****```：アプリケーションにレスポンスして欲しいデータの種類（データ型など）を指定。<br>・ ```CloudFront-Is-*****-Viewer```：デバイスタイプのBool値が格納されている。 |
 | Restrict Viewer Access         | リクエストの送信元を制限するかどうかを設定できる。           | セキュリティグループで制御できるため、ここでは設定しなくてよい。 |
 | Compress Objects Automatically | レスポンス時にgzipを圧縮するかどうかを設定                   | ・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するかどうかを設定する。設定しない場合、圧縮せずにレスポンスを送信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。 |
 
@@ -986,11 +986,11 @@ CloudFrontは、クエリストリングによってオリジンからレスポ�
 リクエスト時のクエリストリングの順番が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。そのため、クエリストリングの順番を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
 
 ```http
-GET https://example.co.jp?fooId=1&barId=2
+GET https://example.com?fooId=1&barId=2
 ```
 
 ```http
-GET https://example.co.jp?barId=2&fooId=1
+GET https://example.com?barId=2&fooId=1
 ```
 
 #### ・クエリストリングの大文字小文字表記を固定する
@@ -998,11 +998,11 @@ GET https://example.co.jp?barId=2&fooId=1
 リクエスト時のクエリストリングの大文字小文字表記が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。そのため、クエリストリングの大文字小文字表記を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。
 
 ```http
-GET https://example.co.jp?fooId=1&barId=2
+GET https://example.com?fooId=1&barId=2
 ```
 
 ```http
-GET https://example.co.jp?FooId=1&BarId=2
+GET https://example.com?FooId=1&BarId=2
 ```
 
 #### ・署名付きURLと同じクエリストリングを使用しない
@@ -2753,15 +2753,15 @@ $ mount -t <ファイルシステムタイプ> -o tls <ファイルシステムI
 
 ```bash
 # EFSで、マウントポイントを登録
-$ mount -t efs -o tls fs-xxxxx:/ /var/www/app
+$ mount -t efs -o tls fs-*****:/ /var/www/app
 
 # マウントポイントを解除
 $ umount /var/www/app
 
 # dfコマンドでマウントしているディレクトリを確認できる
 $ df
-Filesystem                                1K-blocks Used Available Use% Mounted on
-fs-xxx.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
+Filesystem                                  1K-blocks Used Available Use% Mounted on
+fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/www/cerenavi
 ```
 
 <br>
@@ -2924,19 +2924,19 @@ $ /usr/local/sbin/redis-stable/src/redis-cli \
 ```bash
 # Redis接続中の状態
 # 全てのキーを表示
-redis xxxxx:6379> keys *
+redis *****:6379> keys *
 ```
 
 ```bash
 # Redis接続中の状態
 # キーを指定して、対応する値を表示
-redis xxxxx:6379> type <キー名>
+redis *****:6379> type <キー名>
 ```
 
 ```bash
 # Redis接続中の状態
 # Redisが受け取ったコマンドをフォアグラウンドで表示
-redis xxxxx:6379> monitor
+redis *****:6379> monitor
 ```
 
 <br>
@@ -4519,7 +4519,7 @@ BASTION_USER=""
 DB_HOST=""
 DB_PASSWORD=""
 DB_USER=""
-SECRET_KEY="~/.ssh/xxx.pem"
+SECRET_KEY="~/.ssh/foo.pem"
 SQL="SELECT NOW();"
 
 ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
@@ -4544,7 +4544,7 @@ BASTION_USER=""
 DB_HOST=""
 DB_PASSWORD=""
 DB_USER=""
-SECRET_KEY="~/.ssh/xxx.pem"
+SECRET_KEY="~/.ssh/foo.pem"
 SQL="SELECT NOW();"
 
 ssh -o serveraliveinterval=60 -f -N -L 3306:${DB_HOST}:3306 -i ${SECRET_KEY} ${BASTION_USER}@${BASTION_HOST} -p 22
@@ -5952,7 +5952,7 @@ VPC に複数の IPv4 CIDR ブロックがあり、1つでも 同じCIDR ブロ�
 
 #### ・VPCエンドポイントサービスとは
 
-VPCエンドポイントとは異なる機能なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。エンドポイントのサービス名は、『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-xxxxx```』になる。API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
+VPCエンドポイントとは異なる機能なので注意。Interface型のVPCエンドポイント（プライベートリンク）をNLBに紐付けることにより、『一対多』の関係で、『異なるVPC間』の双方向通信を可能にする。エンドポイントのサービス名は、『``` com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****```』になる。API GatewayのVPCリンクは、VPCエンドポイントサービスに相当する。
 
 <br>
 

@@ -64,11 +64,11 @@ RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の4つを用�
 
 | HTTPメソッド | エンドポイント                         | ユースケース                                                 | メソッド名の例  |
 | ------------ | -------------------------------------- | ------------------------------------------------------------ | --------------- |
-| GET          | ```https://example.co.jp/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   | index           |
-|              | ```https://example.co.jp/users/{id}``` | IDに基づくデータの取得                                       | show            |
-| POST         | ```https://example.co.jp/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン／ログアウト | create、store   |
-| PUT`         | ```https://example.co.jp/users/{id}``` | データの更新（置換）                                         | update          |
-| DELETE       | ```https://example.co.jp/users/{id}``` | データの削除                                                 | delete、destroy |
+| GET          | ```https://example.com/users```      | ・全データのインデックス取得<br>・条件に基づくデータの取得   | index           |
+|              | ```https://example.com/users/{id}``` | IDに基づくデータの取得                                       | show            |
+| POST         | ```https://example.com/users```      | ・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン／ログアウト | create、store   |
+| PUT`         | ```https://example.com/users/{id}``` | データの更新（置換）                                         | update          |
+| DELETE       | ```https://example.com/users/{id}``` | データの削除                                                 | delete、destroy |
 
 POST送信とPUT送信の重要な違いについてまとめる。データを作成するユースケースの時はPOST送信、または更新する時はPUT送信を用いる。ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。
 
@@ -105,17 +105,17 @@ POST送信とPUT送信の重要な違いについてまとめる。データを�
 **＊悪い実装例＊**
 
 ```http
-GET https://example.co.jp/show-user/12345
+GET https://example.com/show-user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 ```http
-GET https://example.co.jp/users/hiroki_hasegawa
+GET https://example.com/users/hiroki_hasegawa
 ```
 
 **＊認証の場合＊**
@@ -123,11 +123,11 @@ GET https://example.co.jp/users/hiroki_hasegawa
 動詞を許容するのであれば```login```や```logout```とし、名詞を採用するのであれば```session```とする。
 
 ```http
-GET https://example.co.jp/login
+GET https://example.com/login
 ```
 
 ```http
-GET https://example.co.jp/session
+GET https://example.com/session
 ```
 
 #### ・短くすること
@@ -138,14 +138,14 @@ GET https://example.co.jp/session
 
 
 ```http
-GET https://example.co.jp/service/api/users/12345
+GET https://example.com/service/api/users/12345
 ```
 
 **＊良い実装例＊**
 
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 #### ・略称を使わないこと
@@ -155,7 +155,7 @@ GET https://example.co.jp/users/12345
 ここで、Usersを意味する『```u```』といった略称は、当時の設計者しかわからないため、不要である。
 
 ```http
-GET https://example.co.jp/u/12345
+GET https://example.com/u/12345
 ```
 
 **＊良い実装例＊**
@@ -163,7 +163,7 @@ GET https://example.co.jp/u/12345
 略称を使わずに、『users』とする。
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 #### ・小文字を使うこと
@@ -171,13 +171,13 @@ GET https://example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET https://example.co.jp/Users/12345
+GET https://example.com/Users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 #### ・ケバブケースを使うこと
@@ -185,7 +185,7 @@ GET https://example.co.jp/users/12345
 **＊悪い実装例＊**
 
 ```http
-GET https://example.co.jp/users_id/12345
+GET https://example.com/users_id/12345
 ```
 
 **＊良い実装例＊**
@@ -193,13 +193,13 @@ GET https://example.co.jp/users_id/12345
 スネークケースやキャメケースを使わずに、ケバブケースを用いる。
 
 ```http
-GET https://example.co.jp/users-id/12345
+GET https://example.com/users-id/12345
 ```
 
 ただ、そもそもケバブ方式も利用せずに、スラッシュで区切ってしまうのも手である
 
 ```http
-GET https://example.co.jp/users/id/12345
+GET https://example.com/users/id/12345
 ```
 
 #### ・複数形を用いること
@@ -209,13 +209,13 @@ GET https://example.co.jp/users/id/12345
 Usersという集合の中に、Idが存在しているため、単数形は使わない。
 
 ```http
-GET https://example.co.jp/user/12345
+GET https://example.com/user/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 #### ・システムの設計方法がバレないURIにすること
@@ -225,13 +225,13 @@ GET https://example.co.jp/users/12345
 悪意のあるユーザに、脆弱性を狙われる可能性があるため、ソフトウェアの設計方法がばれないアーキテクチャにすること。ミドルウェアにCGIプログラムが使用されていることや、phpを用いていることがばれてしまう。
 
 ```http
-GET https://example.co.jp/cgi-bin/get_users.php
+GET https://example.com/cgi-bin/get_users.php
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 #### ・HTTPメソッドの名前を使用しないこと
@@ -241,38 +241,38 @@ GET https://example.co.jp/users/12345
 メソッドから、処理の目的はわかるので、URIに対応する動詞名を実装する必要はない。
 
 ```http
-GET https://example.co.jp/users/get/12345
+GET https://example.com/users/get/12345
 ```
 
 ```http
-POST https://example.co.jp/users/create/12345
+POST https://example.com/users/create/12345
 ```
 
 
 ```http
-PUT https://example.co.jp/users/update/12345
+PUT https://example.com/users/update/12345
 ```
 
 ```http
-DELETE https://example.co.jp/users/delete/12345
+DELETE https://example.com/users/delete/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/{id}
+GET https://example.com/users/{id}
 ```
 
 ```http
-POST https://example.co.jp/users
+POST https://example.com/users
 ```
 
 ```http
-PUT https://example.co.jp/users/{id}
+PUT https://example.com/users/{id}
 ```
 
 ```http
-DELETE https://example.co.jp/users/{id}
+DELETE https://example.com/users/{id}
 ```
 
 #### ・数字、バージョン番号を可能な限り使用しないこと
@@ -282,13 +282,13 @@ DELETE https://example.co.jp/users/{id}
 ここで、```alpha```、```v2```、といったキーワードは、当時の設計者しかわからないため、あまり良くない。ただし、利便上、使う場合もある。
 
 ```http
-GET https://example.co.jp/v2/users/12345
+GET https://example.com/v2/users/12345
 ```
 
 **＊良い実装例＊**
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 URLにバージョンを表記しない代わりに、リクエストヘッダーの```X-api-Version```にバージョン情報を格納する方法がより良い。
@@ -304,11 +304,11 @@ X-Api-Version: 1
 GET送信とPOST送信の間で、IDパラメータのHTTPメソッドが統一されていない。
 
 ```http
-GET https://example.co.jp/users/?id=12345
+GET https://example.com/users/?id=12345
 ```
 
 ```http
-POST https://example.co.jp/users/12345/messages
+POST https://example.com/users/12345/messages
 ```
 
 **＊良い実装例＊**
@@ -317,11 +317,11 @@ POST https://example.co.jp/users/12345/messages
 
 
 ```http
-GET https://example.co.jp/users/12345
+GET https://example.com/users/12345
 ```
 
 ```http
-POST https://example.co.jp/users/12345/messages
+POST https://example.com/users/12345/messages
 ```
 
 <br>
@@ -334,12 +334,12 @@ POST https://example.co.jp/users/12345/messages
 URIの構造のうち、パスまたはクエリストリングにパラメータを割り当てて送信する。それぞれ、パスパラメータまたはクエリパラメータという。
 
 ```http
-GET https://example.co.jp:80/users/777?text1=a&text2=b
+GET https://example.com:80/users/777?text1=a&text2=b
 ```
 
 | 完全修飾ドメイン名          | 送信先のポート番号（```80```の場合は省略可） | ルート      | パスパラメータ | ？      | クエリパラメータ（GET送信時のみ） |
 | --------------------------- | -------------------------------------------- | ----------- | -------------- | ------- | --------------------------------- |
-| ```https://example.co.jp``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
+| ```https://example.com``` | ```80```                                     | ```users``` | ```{id}```     | ```?``` | ```text1=a&text2=b```             |
 
 #### ・使い分け（再掲）
 
@@ -355,7 +355,7 @@ GET https://example.co.jp:80/users/777?text1=a&text2=b
 JSON型データ内に定義し、メッセージボディにパラメータを割り当てて送信する。
 
 ```http
-POST https://example.co.jp HTTP/2
+POST https://example.com HTTP/2
 
 # メッセージボディ
 {
@@ -371,7 +371,7 @@ POST https://example.co.jp HTTP/2
 参考：https://developer.mozilla.org/ja/docs/Web/HTTP/Headers
 
 ```http
-POST https://example.co.jp HTTP/2
+POST https://example.com HTTP/2
 # Authorizationヘッダー
 authorization: Bearer ${Token}
 # APIキーヘッダー
@@ -399,7 +399,7 @@ x-api-key: *****
 | 409    | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として用いているデータの重複や、楽観的ロックによる排他制御が起こる場合に用いる。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。 |
 | 422    | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメータが誤っていることを表す。 |
-| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_authentication_authorization.html |
+| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。 |
 
 #### ・リダイレクトとリライトの違い
@@ -461,9 +461,9 @@ JavaScriptのフレームワーク。コンテキストオブジェクトが用�
 クエリパラメータに送信するデータを記述する方法。リクエストメッセージは、以下の要素に分類できる。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。
 
 ```http
-GET https://example.co.jp/bar-form.php?text1=a&text2=b HTTP/2
+GET https://example.com/bar-form.php?text1=a&text2=b HTTP/2
 # リクエストされたドメイン名
-Host: example.co.jp
+Host: example.com
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
@@ -489,15 +489,15 @@ X-Forwarded-For: <client>, <proxy1>, <proxy2>
 クエリパラメータを、URLに記述せず、メッセージボディに記述してリクエストメッセージを送る方法。以下では、Web APIのうち、特にRESTfulAPIに対して送信するためのリクエストメッセージの構造を説明する。メッセージボディに情報が記述されるため、履歴では確認できない。また、SSLによって暗号化されるため、傍受できない。リクエストメッセージは、以下の要素に分類できる。
 
 ```http
-POST https://example.co.jp/bar-form.php HTTP/2
+POST https://example.com/bar-form.php HTTP/2
 # リクエストされたドメイン名
-Host: example.co.jp
+Host: example.com
 Connection: keep-alive
 Content-Length: 15
 # ブラウザキャッシュの最大有効期限（リクエストヘッダーとレスポンスヘッダーの両方で定義可能）
 Cache-Control: no-store
 # オリジン（プロトコル＋ドメイン＋ポート番号）
-Origin: https://example.co.jp
+Origin: https://example.com
 Upgrade-Insecure-Requests: 1
 # リクエストで送信するMIMEタイプ
 Content-Type: application/x-www-firm-urlencoded
@@ -698,7 +698,7 @@ RFC3339（W3C-DTF）形式でオブジェクトデータに含めて送受信す
 **＊例＊**
 
 ```http
-GET https://example.co.jp/users/12345?date=2020-07-07T12:00:00%2B09:00
+GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00
 ```
 
 <br>
@@ -764,7 +764,7 @@ POST／PUT送信において、ボディパラメータのデータ形式を表�
 最も良い方法は、リクエストのContent-Typeヘッダーに、『```application/json```』を設定することである。
 
 ```http
-POST https://example.co.jp/users/12345
+POST https://example.com/users/12345
 # ヘッダー
 Content-Type: application/json
 ```
@@ -772,7 +772,7 @@ Content-Type: application/json
 他に、URIでデータ型を記述する方法がある。
 
 ```http
-POST https://example.co.jp/users/12345?format=json
+POST https://example.com/users/12345?format=json
 ```
 
 <br>

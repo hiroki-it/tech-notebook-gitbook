@@ -75,7 +75,7 @@ Authorの情報は、コミット時に反映される。（Committerは表示�
 $ git log
 
 commit ee299250a4741555eb5027ad3e56ce782fe90ccb
-Author: hiroki-it <xxexample@gmail.com>
+Author: hiroki-it <example@gmail.com>
 Date:   Sat Sep 12 00:00:00 2020 +0900
 
     add ◯◯を実装した。
@@ -243,7 +243,7 @@ $ git checkout -b feature/3 d7e49b04
 
 ### cherry-pick
 
-#### ・```cherry-pick -m 1 <コミットID>```
+#### ・```cherry-pick <コミットID>```
 
 現在のブランチに対して、指定したコミットそれ単体をマージする。
 
@@ -251,7 +251,7 @@ $ git checkout -b feature/3 d7e49b04
 $ git cherry-pick 1d0ddeb9e52
 ```
 
-プルリクのマージによるマージコミットを指定すると、そのプルリクで変更されたファイルのみがコミットの内容として取得できる。これにより、developブランチ上の必要な変更のみをリリースすることも可能である。ただし、マージコミットを指定する時はmオプションを有効化しないとエラーになることに注意する。
+プルリクのマージによるマージコミットを指定すると、そのプルリクで変更されたファイルのみがコミットの内容として取得できる。これにより、developブランチ上の必要な変更のみをリリースすることも可能である。ただし、マージコミットを指定する時は```-m```オプションを有効化しないとエラーになることに注意する。また、マージコミットには2つの親がおり、マージ先の起点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。前者は1番、また後者は2番となっており、1番を選ぶこと。
 
 ```bash
 # cherrypickブランチにチェックアウト
@@ -320,7 +320,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ```bash
 $ git stash -u
-Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 xxx
+Saved working directory and index state WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 *****
 ```
 
 これらのファイルの変更点を一時的に退避できる。
@@ -338,7 +338,7 @@ git stash -- src/...
 
 ```bash
 $ git stash list
-stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 xxx
+stash@{0}: WIP on 2019/Symfony2_Nyumon/feature/6: 649995e update #6 *****
 ```
 
 #### ・```stash pop stash@{<番号>}```
@@ -476,13 +476,13 @@ commit 41cc21bb53a8597270b5deae3259751df18bce81
 Author: hiroki-it <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
-    add #0 xxxさんのREADME_2を追加
+    add #0 fooさんのREADME_2を追加
 
 commit f81c813a1ead9a968c109671e6d83934debcab2e
 Author: hiroki-it <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
-    add #0 xxxさんのREADME_1を追加
+    add #0 fooさんのREADME_1を追加
 ```
 
 2. 指定のコミットまで履歴を戻す。
@@ -539,13 +539,13 @@ commit 41cc21bb53a8597270b5deae3259751df18bce81
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
-    add #0 xxxさんのREADME_2を追加
+    add #0 fooさんのREADME_2を追加
 
 commit f81c813a1ead9a968c109671e6d83934debcab2e
 Author: Hiroki Hasegawa <example@gmail.com>
 Date:   Wed Mar 20 20:54:34 2019 +0900
 
-    add #0 xxxさんのREADME_1を追加
+    add #0 fooさんのREADME_1を追加
 ```
 
 2. 指定した履歴の削除
@@ -556,7 +556,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 とすると、タブが表示され、指定のコミットIDの履歴が表示される
 
 ```bash
-pick b1b5c0f add #0 xxxxxxxxxx
+pick b1b5c0f add #0 *****
 ```
 
 『挿入モード』に変更し、この一行の```pick```を```edit```に変更。その後、
@@ -648,10 +648,10 @@ $ git rebase --interactive --root
 とすると、最初の履歴が記述されたタブが表示される
 
 ```bash
-pick b1b5c0f add #0 xxxxxxxxxx
+pick b1b5c0f add #0 *****
 ```
 
-（２）```pick b1b5c0f add #0 xxxxxxxxxx```の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
+（２）```pick b1b5c0f add #0 *****```の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
 
 ```bash
 :qa!

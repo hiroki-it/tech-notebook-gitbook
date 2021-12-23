@@ -226,7 +226,7 @@ class FooNotification
         try {
             $this->httpClient->request(
                 "POST",
-                "https://xxxxxxxx",
+                "https://example.com",
                 [
                     "headers" => [
                         "Authorization" => $this->token,
@@ -415,7 +415,7 @@ class FooControllerTest extends TestCase
         $client = new Client();
         $response = $client->request(
             "GET",
-            "https://xxxxxxxx",
+            "https://example.com",
             [
                 "query" => [
                     "id" => 1
@@ -512,7 +512,7 @@ class FooControllerTest extends TestCase
                 "message" => "Hello World!"
             ],
             [
-                "HTTP_X_API_Token" => "Bearer xxxxxx"
+                "HTTP_X_API_Token" => "Bearer *****"
             ]
         );
 
@@ -568,7 +568,7 @@ class FooControllerTest extends TestCase
                 "message" => ""
             ],
             [
-                "HTTP_X_API_Token" => "Bearer xxxxxx"
+                "HTTP_X_API_Token" => "Bearer *****"
             ]
         );
 

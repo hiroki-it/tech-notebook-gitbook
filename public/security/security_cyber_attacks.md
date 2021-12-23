@@ -195,7 +195,7 @@ X-CSRF-TOKEN: <トークン>
 認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。どちらを用いるかは、バックエンド側の仕様によって異なる。
 
 ```http
-POST https://example.co.jp/bar-form.php HTTP/2
+POST https://example.com/bar-form.php HTTP/2
 # 独自ヘッダー
 x-csrf-token: <トークン>
 
@@ -341,7 +341,7 @@ return new Promise((resolve, reject) => {
 ```http
 200 OK
 # 許可された送信元オリジン
-Access-Control-Allow-Origin: https://example.co.jp
+Access-Control-Allow-Origin: https://example.com
 # リクエストメッセージがCookieヘッダーを持つことを許可する場合
 Access-Control-Allow-Credentials: true
 # 許可するHTTPメソッド
@@ -370,17 +370,17 @@ Access-Control-Allow-Headers: *
 
 **＊実装例＊**
 
-Domain属性に```example.co.jp```が割り当てられていたとする。最初にドットがついているドメイン（```.example.co.jp```）でも、同じ値として認識される。この場合、```example.co.jp```に加えて、サブドメイン（```foo.example.co.jp```）に対しても、```Cookie```ヘッダーを持つリクエストを送信できる。
+Domain属性に```example.com```が割り当てられていたとする。最初にドットがついているドメイン（```.example.com```）でも、同じ値として認識される。この場合、```example.com```に加えて、サブドメイン（```foo.example.com```）に対しても、```Cookie```ヘッダーを持つリクエストを送信できる。
 
 ```http
 200 OK
-Set-Cookie: domain=example.co.jp
+Set-Cookie: domain=example.com
 ```
 
 ```http
-POST http://foo.example.co.jp/bar-form.php HTTP/2
+POST http://foo.example.com/bar-form.php HTTP/2
 # 送信元オリジン
-Origin: http://example.co.jp
+Origin: https://example.com
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>
 ```
 

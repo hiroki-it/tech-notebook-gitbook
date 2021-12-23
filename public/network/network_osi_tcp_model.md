@@ -345,19 +345,19 @@ DNSサーバよりも先に参照されるマッピングファイル。Webサ�
 1. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『メールサーバの待ち受けポート番号```110```（POP3）』を指定して、メールサーバにリクエスト。
 
 ```http
-GET http://www.example.co.jp:110/
+GET https://example.com:110/
 ```
 
 2. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『Webサーバの待ち受けポート番号```80```（HTTP）』を指定して、Webサーバにリクエスト。ただし。```80```は、省略可能。
 
 ```http
-GET http://www.example.co.jp:80/
+GET https://example.com:80/
 ```
 
 3. 『送信元プライベートIPアドレス』『送信先グローバルIPアドレス』『DNSサーバの待ち受けポート番号```53```（DNS）』を指定して、DNSサーバにリクエスト
 
 ```http
-GET http://www.example.co.jp:53/
+GET https://example.com:53/
 ```
 
 4. これらの『送信元プライベートIPアドレス』が、NATルータで、グローバルIPアドレスに変換される。

@@ -364,8 +364,8 @@ CREATE TABLE IF NOT EXISTS `mst_staff` (
 -- Dumping data for table kizukeba_pronami_php.mst_staff: ~8 rows (approximately)
 /*!40000 ALTER TABLE `mst_staff` DISABLE KEYS */;
 INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
-    (1, "秦基博", "xxxxxxx"),
-    (2, "藤原基央", "xxxxxxx");
+    (1, "秦基博", "*****"),
+    (2, "藤原基央", "*****");
 /*!40000 ALTER TABLE `mst_staff` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, "") */;

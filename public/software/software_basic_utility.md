@@ -186,54 +186,9 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 
 複数のcronファイルで全ての1つのディレクトリで管理する場合に用いる。
 
-| ディレクトリ名 | 利用者 | 主な用途                                           |
-| -------------- | ------ | -------------------------------------------------- |
-| /etc/cron.d    | root   | 上記以外の自動タスク設定ファイルを置くディレクトリ |
-
-#### ・supervisorとの組み合わせ
-
-ユーザーが、OS上のプロセスを制御できるようにするためのプログラム。
-
-```bash
-# インストール
-$ pip3 install supervisor
-```
-
-```bash
-# /etc/supervisor/supervisord.conf に設定ファイルを置いて起動。
-$ /usr/local/bin/supervisord
-```
-
-以下に設定ファイルの例を以下に示す。
-
-**＊実装例＊**
-
-```bash
-[supervisord]
-# 実行ユーザ
-user=root
-# フォアグラウンドで起動
-nodaemon=true
-# ログ
-logfile=/var/log/supervisord.log
-# Pid
-pidfile=/var/tmp/supervisord.pid
-
-[program:crond]
-# 実行コマンド
-command=/usr/sbin/crond -n
-# プログラムの自動起動
-autostart=true
-# プログラム停止後の再起動
-autorestart=true
-# コマンドの実行ログ
-stdout_logfile=/var/log/command.log
-stderr_logfile=/var/log/command-error.log
-# コマンドの実行ユーザ
-user=root
-# コマンドの実行ディレクトリ
-directory=/var/www/tech-notebook
-```
+| ディレクトリ名    | 利用者 | 主な用途                                           |
+| ----------------- | ------ | -------------------------------------------------- |
+| ```/etc/cron.d``` | root   | 上記以外の自動タスク設定ファイルを置くディレクトリ |
 
 <br>
 
@@ -288,34 +243,34 @@ $ crontab -l
 # cron-hourly.txt
 # 毎時・1分
 1 * * * * root run-parts /etc/cron.hourly
-
+# <- 最後は改行する。
 ```
 
 ```bash
 # cron-daily.txt
 # 毎日・2時5分
 5 2 * * * root run-parts /etc/cron.daily
-
+# <- 最後は改行する。                         
 ```
 
 ```bash
 # cron-monthly.txt
 # 毎週日曜日・2時20分
 20 2 * * 0 root run-parts /etc/cron.weekly
-
+# <- 最後は改行する。
 ```
 
 ```bash
 # cron-weekly.txt
 # 毎月一日・2時40分
 40 2 1 * * root run-parts /etc/cron.monthly
-
+# <- 最後は改行する。
 ```
 
 ```bash
 # cron起動時に一度だけ
 @reboot make clean html
-
+# <- 最後は改行する。
 ```
 
 ２. このファイルをcrontabコマンドで登録する。cronファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。
@@ -332,7 +287,7 @@ $ crontab -l
 1 * * * * root run-parts /etc/cron.hourly
 ```
 
-４. ログに表示されているかを確認。
+４. ログに表示されているかを確認する。
 
 ```bash
 $ cd /var/log
@@ -357,7 +312,7 @@ foo.txt: ASCII text
 GETリクエストを送信する。```jq```コマンドを用いると、レスポンスを整形できる。
 
 ```bash
-$ curl http://example.co.jp/foos/1 | jq . 
+$ curl https://example.com/foos/1 | jq . 
 ```
 
 #### ・-X、-T、-d
@@ -365,7 +320,7 @@ $ curl http://example.co.jp/foos/1 | jq .
 Content-Typeを指定して、POSTリクエストを送信する。
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.co.jp/foos
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foos
 ```
 
 #### ・-o（小文字）
@@ -373,7 +328,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.co.jp
 インストール後のファイル名を定義する。これを指定しない場合、```-O```オプションを有効化する必要がある。
 
 ```bash
-$ curl -o <ファイル名> https://example.co.jp
+$ curl -o <ファイル名> https://example.com
 ```
 
 #### ・-O（大文字）
@@ -385,7 +340,7 @@ $ curl -o <ファイル名> https://example.co.jp
 指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
 
 ```bash
-$ curl -L https://example.co.jp/foos
+$ curl -L https://example.com/foos
 ```
 
 <br>
@@ -686,7 +641,7 @@ $ ls -l -a
 
 <br>
 
-### lsof
+### lsof：List open file
 
 #### ・-i、-P
 
@@ -765,14 +720,14 @@ $ swapoff /swap_volume
 NSレコードの値をドメインレジストラに問い合わせる。
 
 ```bash
-$ nslookup -type=NS example.co.jp
+$ nslookup -type=NS example.com
 
 # ～ 中略 ～
 
-example.co.jp        nameserver = ns-*****.awsdns-*****.net
-example.co.jp        nameserver = ns-*****.awsdns-*****.co.uk
-example.co.jp        nameserver = ns-*****.awsdns-*****.org
-example.co.jp        nameserver = ns-*****.awsdns-*****.com
+example.com        nameserver = ns-*****.awsdns-*****.net
+example.com        nameserver = ns-*****.awsdns-*****.co.uk
+example.com        nameserver = ns-*****.awsdns-*****.org
+example.com        nameserver = ns-*****.awsdns-*****.com
 
 # ～ 中略 ～
 ```
@@ -1108,6 +1063,4 @@ vim上でファイルを開く。
 ```bash
 $ vim <ファイル名>
 ```
-
-
 
