@@ -44,7 +44,6 @@
         * アプリケーション間連携
             * [📖 ︎JSON](public/software/software_application_collaboration_json.md)
             * [📖 ︎アプリケーション間通信](public/software/software_application_collaboration_communication.md)
-            * [📖 ︎認証／認可](public/software/software_application_collaboration_authentication_authorization.md)
             * RESTful-API
                 * [📖 ︎RESTful-API](public/software/software_application_collaboration_api_restful.md)
                 * [📖 ︎API仕様書](public/software/software_application_collaboration_api_restful_api_specification.md)
@@ -110,6 +109,7 @@
 * 🔐 セキュリティ
     * [📖 ︎サイバー攻撃](public/security/security_cyber_attacks.md)
     * [📖 ︎通信データの暗号化技術](public/security/security_encryption_technology.md)
+    * [📖 ︎認証／認可](public/security/security_authentication_authorization.md)
 
 * ⛅️ クラウドコンピューティング
     * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
