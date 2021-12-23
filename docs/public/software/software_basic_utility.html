@@ -73,7 +73,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="software_basic_utility_management.html" />
+    <link rel="next" href="software_basic_utility_package.html" />
     
     
 
@@ -255,12 +255,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2.2.2" data-path="software_basic_utility_management.html">
+        <li class="chapter " data-level="1.4.2.2.2" data-path="software_basic_utility_package.html">
             
-                <a href="software_basic_utility_management.html">
+                <a href="software_basic_utility_package.html">
             
                     
-                    📖 ︎管理ユーティリティ
+                    📖 ︎パッケージ
             
                 </a>
             
@@ -268,7 +268,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2.2.3" data-path="software_basic_utility_shell.html">
+        <li class="chapter " data-level="1.4.2.2.3" data-path="software_basic_utility_package_management.html">
+            
+                <a href="software_basic_utility_package_management.html">
+            
+                    
+                    📖 ︎パッケージ管理ユーティリティ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2.4" data-path="software_basic_utility_shell.html">
             
                 <a href="software_basic_utility_shell.html">
             
@@ -711,20 +724,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.3" data-path="software_application_collaboration_authentication_authorization.html">
-            
-                <a href="software_application_collaboration_authentication_authorization.html">
-            
-                    
-                    📖 ︎認証／認可
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4.2.4" >
+        <li class="chapter " data-level="1.4.4.2.3" >
             
                 <span>
             
@@ -738,7 +738,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.4.2.4.1" data-path="software_application_collaboration_api_restful.html">
+        <li class="chapter " data-level="1.4.4.2.3.1" data-path="software_application_collaboration_api_restful.html">
             
                 <a href="software_application_collaboration_api_restful.html">
             
@@ -751,7 +751,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.4.2" data-path="software_application_collaboration_api_restful_api_specification.html">
+        <li class="chapter " data-level="1.4.4.2.3.2" data-path="software_application_collaboration_api_restful_api_specification.html">
             
                 <a href="software_application_collaboration_api_restful_api_specification.html">
             
@@ -1671,6 +1671,19 @@
             
                     
                     📖 ︎通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../security/security_authentication_authorization.html">
+            
+                <a href="../security/security_authentication_authorization.html">
+            
+                    
+                    📖 ︎認証／認可
             
                 </a>
             
@@ -3110,47 +3123,12 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 </thead>
 <tbody>
 <tr>
-<td>/etc/cron.d</td>
+<td><code>/etc/cron.d</code></td>
 <td>root</td>
 <td>&#x4E0A;&#x8A18;&#x4EE5;&#x5916;&#x306E;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</td>
 </tr>
 </tbody>
 </table>
-<h4 id="&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisor&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
-<p>&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x3001;OS&#x4E0A;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x5236;&#x5FA1;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3002;</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</span>
-$ pip3 <span class="token function">install</span> supervisor
-</code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># /etc/supervisor/supervisord.conf &#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x3044;&#x3066;&#x8D77;&#x52D5;&#x3002;</span>
-$ /usr/local/bin/supervisord
-</code></pre>
-<p>&#x4EE5;&#x4E0B;&#x306B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4F8B;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3059;&#x3002;</p>
-<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>supervisord<span class="token punctuation">]</span>
-<span class="token comment"># &#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;</span>
-<span class="token assign-left variable">user</span><span class="token operator">=</span>root
-<span class="token comment"># &#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x8D77;&#x52D5;</span>
-<span class="token assign-left variable">nodaemon</span><span class="token operator">=</span>true
-<span class="token comment"># &#x30ED;&#x30B0;</span>
-<span class="token assign-left variable">logfile</span><span class="token operator">=</span>/var/log/supervisord.log
-<span class="token comment"># Pid</span>
-<span class="token assign-left variable">pidfile</span><span class="token operator">=</span>/var/tmp/supervisord.pid
-
-<span class="token punctuation">[</span>program:crond<span class="token punctuation">]</span>
-<span class="token comment"># &#x5B9F;&#x884C;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
-<span class="token assign-left variable">command</span><span class="token operator">=</span>/usr/sbin/crond -n
-<span class="token comment"># &#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x81EA;&#x52D5;&#x8D77;&#x52D5;</span>
-<span class="token assign-left variable">autostart</span><span class="token operator">=</span>true
-<span class="token comment"># &#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x505C;&#x6B62;&#x5F8C;&#x306E;&#x518D;&#x8D77;&#x52D5;</span>
-<span class="token assign-left variable">autorestart</span><span class="token operator">=</span>true
-<span class="token comment"># &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x30ED;&#x30B0;</span>
-<span class="token assign-left variable">stdout_logfile</span><span class="token operator">=</span>/var/log/command.log
-<span class="token assign-left variable">stderr_logfile</span><span class="token operator">=</span>/var/log/command-error.log
-<span class="token comment"># &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;</span>
-<span class="token assign-left variable">user</span><span class="token operator">=</span>root
-<span class="token comment"># &#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</span>
-<span class="token assign-left variable">directory</span><span class="token operator">=</span>/var/www/tech-notebook
-</code></pre>
 <p><br></p>
 <h3 id="crond"><a name="crond" class="plugin-anchor" href="#crond"><i class="fa fa-link" aria-hidden="true"></i></a>crond</h3>
 <h4 id="&#x30FB;crond&#x3068;&#x306F;"><a name="&#x30FB;crond&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;crond&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;crond&#x3068;&#x306F;</h4>
@@ -3180,21 +3158,26 @@ $ /usr/local/bin/supervisord
 <pre class="language-"><code class="lang-bash"><span class="token comment"># cron-hourly.txt</span>
 <span class="token comment"># &#x6BCE;&#x6642;&#x30FB;1&#x5206;</span>
 <span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
+<span class="token comment"># &lt;- &#x6700;&#x5F8C;&#x306F;&#x6539;&#x884C;&#x3059;&#x308B;&#x3002;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># cron-daily.txt</span>
 <span class="token comment"># &#x6BCE;&#x65E5;&#x30FB;2&#x6642;5&#x5206;</span>
 <span class="token number">5</span> <span class="token number">2</span> * * * root run-parts /etc/cron.daily
+<span class="token comment"># &lt;- &#x6700;&#x5F8C;&#x306F;&#x6539;&#x884C;&#x3059;&#x308B;&#x3002;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># cron-monthly.txt</span>
 <span class="token comment"># &#x6BCE;&#x9031;&#x65E5;&#x66DC;&#x65E5;&#x30FB;2&#x6642;20&#x5206;</span>
 <span class="token number">20</span> <span class="token number">2</span> * * <span class="token number">0</span> root run-parts /etc/cron.weekly
+<span class="token comment"># &lt;- &#x6700;&#x5F8C;&#x306F;&#x6539;&#x884C;&#x3059;&#x308B;&#x3002;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># cron-weekly.txt</span>
 <span class="token comment"># &#x6BCE;&#x6708;&#x4E00;&#x65E5;&#x30FB;2&#x6642;40&#x5206;</span>
 <span class="token number">40</span> <span class="token number">2</span> <span class="token number">1</span> * * root run-parts /etc/cron.monthly
+<span class="token comment"># &lt;- &#x6700;&#x5F8C;&#x306F;&#x6539;&#x884C;&#x3059;&#x308B;&#x3002;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
 @reboot <span class="token function">make</span> clean html
+<span class="token comment"># &lt;- &#x6700;&#x5F8C;&#x306F;&#x6539;&#x884C;&#x3059;&#x308B;&#x3002;</span>
 </code></pre>
 <p>&#xFF12;. &#x3053;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3059;&#x308B;&#x3002;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5B9F;&#x4F53;&#x306F;&#x306A;&#x3044;&#x3053;&#x3068;&#x3068;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#x767B;&#x9332;&#x3057;&#x76F4;&#x3055;&#x306A;&#x3051;&#x308C;&#x3070;&#x3044;&#x3051;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">crontab</span> /foo/cron-hourly.txt
@@ -3204,7 +3187,7 @@ $ /usr/local/bin/supervisord
 
 <span class="token number">1</span> * * * * root run-parts /etc/cron.hourly
 </code></pre>
-<p>&#xFF14;. &#x30ED;&#x30B0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3002;</p>
+<p>&#xFF14;. &#x30ED;&#x30B0;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3092;&#x78BA;&#x8A8D;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token builtin class-name">cd</span> /var/log
 
 $ <span class="token function">tail</span> -f <span class="token function">cron</span>
@@ -3218,21 +3201,21 @@ foo.txt: ASCII text
 <h3 id="curl"><a name="curl" class="plugin-anchor" href="#curl"><i class="fa fa-link" aria-hidden="true"></i></a>curl</h3>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p>GET&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;<code>jq</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x7528;&#x3044;&#x308B;&#x3068;&#x3001;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x6574;&#x5F62;&#x3067;&#x304D;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> http://example.co.jp/foos/1 <span class="token operator">|</span> jq <span class="token builtin class-name">.</span>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> https://example.com/foos/1 <span class="token operator">|</span> jq <span class="token builtin class-name">.</span>
 </code></pre>
 <h4 id="&#x30FB;-x&#x3001;-t&#x3001;-d"><a name="&#x30FB;-x&#x3001;-t&#x3001;-d" class="plugin-anchor" href="#&#x30FB;-x&#x3001;-t&#x3001;-d"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-X&#x3001;-T&#x3001;-d</h4>
 <p>Content-Type&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3001;POST&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -X POST -H <span class="token string">&quot;Content-Type: application/json&quot;</span> -d <span class="token string">&apos;{}&apos;</span> https://example.co.jp/foos
+<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -X POST -H <span class="token string">&quot;Content-Type: application/json&quot;</span> -d <span class="token string">&apos;{}&apos;</span> https://example.com/foos
 </code></pre>
 <h4 id="&#x30FB;-o&#xFF08;&#x5C0F;&#x6587;&#x5B57;&#xFF09;"><a name="&#x30FB;-o&#xFF08;&#x5C0F;&#x6587;&#x5B57;&#xFF09;" class="plugin-anchor" href="#&#x30FB;-o&#xFF08;&#x5C0F;&#x6587;&#x5B57;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-o&#xFF08;&#x5C0F;&#x6587;&#x5B57;&#xFF09;</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x5F8C;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;<code>-O</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -o <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span> https://example.co.jp
+<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -o <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span> https://example.com
 </code></pre>
 <h4 id="&#x30FB;-o&#xFF08;&#x5927;&#x6587;&#x5B57;&#xFF09;"><a name="&#x30FB;-o&#xFF08;&#x5927;&#x6587;&#x5B57;&#xFF09;" class="plugin-anchor" href="#&#x30FB;-o&#xFF08;&#x5927;&#x6587;&#x5B57;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-O&#xFF08;&#x5927;&#x6587;&#x5B57;&#xFF09;</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x5F8C;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;&#x3053;&#x308C;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x3001;<code>-o</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
 <h4 id="&#x30FB;-l"><a name="&#x30FB;-l" class="plugin-anchor" href="#&#x30FB;-l"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-L</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;URL&#x3067;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x304C;&#x884C;&#x308F;&#x308C;&#x3066;&#x3082;&#x3001;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5F8C;&#x306E;URL&#x304B;&#x3089;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -L https://example.co.jp/foos
+<pre class="language-"><code class="lang-bash">$ <span class="token function">curl</span> -L https://example.com/foos
 </code></pre>
 <p><br></p>
 <h3 id="df"><a name="df" class="plugin-anchor" href="#df"><i class="fa fa-link" aria-hidden="true"></i></a>df</h3>
@@ -3417,7 +3400,7 @@ $ <span class="token function">free</span> -m -total
 <pre class="language-"><code class="lang-bash">$ <span class="token function">ls</span> -l -a
 </code></pre>
 <p><br></p>
-<h3 id="lsof"><a name="lsof" class="plugin-anchor" href="#lsof"><i class="fa fa-link" aria-hidden="true"></i></a>lsof</h3>
+<h3 id="lsof&#xFF1A;list-open-file"><a name="lsof&#xFF1A;list-open-file" class="plugin-anchor" href="#lsof&#xFF1A;list-open-file"><i class="fa fa-link" aria-hidden="true"></i></a>lsof&#xFF1A;List open file</h3>
 <h4 id="&#x30FB;-i&#x3001;-p"><a name="&#x30FB;-i&#x3001;-p" class="plugin-anchor" href="#&#x30FB;-i&#x3001;-p"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-i&#x3001;-P</h4>
 <p>&#x4F7F;&#x7528;&#x4E2D;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x5225;&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">lsof</span> -i -P <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;LISTEN&quot;</span>
@@ -3463,14 +3446,14 @@ $ swapoff /swap_volume
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html</a></p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>NS&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x5024;&#x3092;&#x30C9;&#x30E1;&#x30A4;&#x30F3;&#x30EC;&#x30B8;&#x30B9;&#x30C8;&#x30E9;&#x306B;&#x554F;&#x3044;&#x5408;&#x308F;&#x305B;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">nslookup</span> -type<span class="token operator">=</span>NS example.co.jp
+<pre class="language-"><code class="lang-bash">$ <span class="token function">nslookup</span> -type<span class="token operator">=</span>NS example.com
 
 <span class="token comment"># &#xFF5E; &#x4E2D;&#x7565; &#xFF5E;</span>
 
-example.co.jp        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.net
-example.co.jp        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.co.uk
-example.co.jp        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.org
-example.co.jp        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.com
+example.com        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.net
+example.com        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.co.uk
+example.com        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.org
+example.com        nameserver <span class="token operator">=</span> ns-*****.awsdns-*****.com
 
 <span class="token comment"># &#xFF5E; &#x4E2D;&#x7565; &#xFF5E;</span>
 </code></pre>
@@ -3710,7 +3693,7 @@ $ <span class="token function">date</span>
             
                 
                 
-                <a href="software_basic_utility_management.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎管理ユーティリティ">
+                <a href="software_basic_utility_package.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎パッケージ">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3721,7 +3704,7 @@ $ <span class="token function">date</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎管理ユーティリティ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_management.md","ref":"public/software/software_basic_utility_management.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎管理ユーティリティ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_management.md","ref":"public/software/software_basic_utility_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2021-12-22T11:14:06.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-22T11:14:11.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.4","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2021-12-23T11:32:36.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

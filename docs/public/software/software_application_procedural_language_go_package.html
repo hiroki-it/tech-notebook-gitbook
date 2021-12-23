@@ -255,12 +255,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2.2.2" data-path="software_basic_utility_management.html">
+        <li class="chapter " data-level="1.4.2.2.2" data-path="software_basic_utility_package.html">
             
-                <a href="software_basic_utility_management.html">
+                <a href="software_basic_utility_package.html">
             
                     
-                    📖 ︎管理ユーティリティ
+                    📖 ︎パッケージ
             
                 </a>
             
@@ -268,7 +268,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2.2.3" data-path="software_basic_utility_shell.html">
+        <li class="chapter " data-level="1.4.2.2.3" data-path="software_basic_utility_package_management.html">
+            
+                <a href="software_basic_utility_package_management.html">
+            
+                    
+                    📖 ︎パッケージ管理ユーティリティ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2.4" data-path="software_basic_utility_shell.html">
             
                 <a href="software_basic_utility_shell.html">
             
@@ -711,20 +724,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.3" data-path="software_application_collaboration_authentication_authorization.html">
-            
-                <a href="software_application_collaboration_authentication_authorization.html">
-            
-                    
-                    📖 ︎認証／認可
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4.2.4" >
+        <li class="chapter " data-level="1.4.4.2.3" >
             
                 <span>
             
@@ -738,7 +738,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.4.2.4.1" data-path="software_application_collaboration_api_restful.html">
+        <li class="chapter " data-level="1.4.4.2.3.1" data-path="software_application_collaboration_api_restful.html">
             
                 <a href="software_application_collaboration_api_restful.html">
             
@@ -751,7 +751,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4.2.4.2" data-path="software_application_collaboration_api_restful_api_specification.html">
+        <li class="chapter " data-level="1.4.4.2.3.2" data-path="software_application_collaboration_api_restful_api_specification.html">
             
                 <a href="software_application_collaboration_api_restful_api_specification.html">
             
@@ -1671,6 +1671,19 @@
             
                     
                     📖 ︎通信データの暗号化技術
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../security/security_authentication_authorization.html">
+            
+                <a href="../security/security_authentication_authorization.html">
+            
+                    
+                    📖 ︎認証／認可
             
                 </a>
             
@@ -2911,6 +2924,50 @@ go 1.16
 <h3 id="gorm&#x3068;&#x306F;"><a name="gorm&#x3068;&#x306F;" class="plugin-anchor" href="#gorm&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>gorm&#x3068;&#x306F;</h3>
 <p>Go&#x88FD;&#x306E;ORM&#x3067;&#x3042;&#x308B;&#x3002;</p>
 <p><br></p>
+<h3 id="db&#x3068;&#x306E;&#x63A5;&#x7D9A;"><a name="db&#x3068;&#x306E;&#x63A5;&#x7D9A;" class="plugin-anchor" href="#db&#x3068;&#x306E;&#x63A5;&#x7D9A;"><i class="fa fa-link" aria-hidden="true"></i></a>DB&#x3068;&#x306E;&#x63A5;&#x7D9A;</h3>
+<h4 id="&#x30FB;mysql&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;mysql&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;mysql&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;MySQL&#x306E;&#x5834;&#x5408;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://gorm.io/ja_JP/docs/connecting_to_the_database.html#MySQL" target="_blank">https://gorm.io/ja_JP/docs/connecting_to_the_database.html#MySQL</a></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">NewDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">*</span>gorm<span class="token punctuation">.</span>DB<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// &#x63A5;&#x7D9A;&#x60C5;&#x5831;&#x3002;sprintf&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#x3001;&#x53EF;&#x8AAD;&#x6027;&#x304C;&#x9AD8;&#x3044;&#x3002;</span>
+    dsn <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span>
+        <span class="token string">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;</span><span class="token punctuation">,</span>
+        os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">&quot;DB_USER&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">&quot;DB_PASSWORD&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">&quot;DB_HOST&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">&quot;DB_PORT&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">&quot;DB_DATABASE&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token comment">// DB&#x306B;&#x63A5;&#x7D9A;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+    db<span class="token punctuation">,</span> err <span class="token operator">:=</span> gorm<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>mysql<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>dsn<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>gorm<span class="token punctuation">.</span>Config<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> db<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">Close</span><span class="token punctuation">(</span>db <span class="token operator">*</span>gorm<span class="token punctuation">.</span>DB<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+
+    sqlDb<span class="token punctuation">,</span> err <span class="token operator">:=</span> db<span class="token punctuation">.</span><span class="token function">DB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// DB&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x3092;&#x5207;&#x65AD;&#x3057;&#x307E;&#x3059;&#x3002;</span>
+    err <span class="token operator">=</span> sqlDb<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><br></p>
 <h3 id="gorm&#x30E2;&#x30C7;&#x30EB;"><a name="gorm&#x30E2;&#x30C7;&#x30EB;" class="plugin-anchor" href="#gorm&#x30E2;&#x30C7;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>Gorm&#x30E2;&#x30C7;&#x30EB;</h3>
 <h4 id="&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;"><a name="&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;" class="plugin-anchor" href="#&#x30FB;gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Gorm&#x30E2;&#x30C7;&#x30EB;&#x57CB;&#x3081;&#x8FBC;&#x307F;</h4>
 <p>&#x69CB;&#x9020;&#x4F53;&#x306B;Gorm&#x30E2;&#x30C7;&#x30EB;&#x3092;&#x57CB;&#x3081;&#x8FBC;&#x3080;&#x3068;&#x3001;ID&#x3084;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3068;&#x3057;&#x3066;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#x3002;&#x69CB;&#x9020;&#x4F53;&#x3092;&#x30DE;&#x30C3;&#x30D4;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306B;&#x3001;<code>id</code>&#x30AB;&#x30E9;&#x30E0;&#x3001;<code>created_at</code>&#x30AB;&#x30E9;&#x30E0;&#x3001;<code>updated_at</code>&#x30AB;&#x30E9;&#x30E0;&#x3001;<code>deleted_at</code>&#x30AB;&#x30E9;&#x30E0;&#x304C;&#x8FFD;&#x52A0;&#x3055;&#x308C;&#x308B;&#x3002;</p>
@@ -2951,19 +3008,16 @@ go 1.16
     Name    <span class="token builtin">string</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-"><code class="lang-go">user <span class="token operator">:=</span> User<span class="token punctuation">{</span>Id<span class="token punctuation">:</span><span class="token number">111</span><span class="token punctuation">}</span>
+<pre class="language-"><code class="lang-go">user <span class="token operator">:=</span> User<span class="token punctuation">{</span>Id<span class="token punctuation">:</span> <span class="token number">111</span><span class="token punctuation">}</span>
 
-<span class="token comment">// user&apos;s ID is `111`</span>
-db<span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
 <span class="token comment">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE id = 111;</span>
+db<span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
 
-<span class="token comment">// Batch Delete</span>
-db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = ?&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token comment">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE age = 20;</span>
+db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = ?&quot;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Delete</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>User<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// Soft deleted records will be ignored when querying</span>
-db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = 20&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Find</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
 <span class="token comment">// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;</span>
+db<span class="token punctuation">.</span><span class="token function">Where</span><span class="token punctuation">(</span><span class="token string">&quot;age = 20&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Find</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>user<span class="token punctuation">)</span>
 </code></pre>
 <p><br></p>
 <h3 id="&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30DE;&#x30A4;&#x30B0;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h3>
@@ -3421,7 +3475,7 @@ db<span class="token punctuation">.</span><span class="token function">Save</spa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 パッケージ","level":"1.4.4.3.2.1.4.1","depth":7,"next":{"title":"📖 Gin","level":"1.4.4.3.2.1.4.2","depth":7,"path":"public/software/software_application_procedural_language_go_framework_gin.md","ref":"public/software/software_application_procedural_language_go_framework_gin.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.4.3.2.1.4","depth":6,"ref":"","articles":[{"title":"📖 パッケージ","level":"1.4.4.3.2.1.4.1","depth":7,"path":"public/software/software_application_procedural_language_go_package.md","ref":"public/software/software_application_procedural_language_go_package.md","articles":[]},{"title":"📖 Gin","level":"1.4.4.3.2.1.4.2","depth":7,"path":"public/software/software_application_procedural_language_go_framework_gin.md","ref":"public/software/software_application_procedural_language_go_framework_gin.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_procedural_language_go_package.md","mtime":"2021-12-22T11:14:06.005Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-22T11:14:11.484Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 パッケージ","level":"1.4.4.3.2.1.4.1","depth":7,"next":{"title":"📖 Gin","level":"1.4.4.3.2.1.4.2","depth":7,"path":"public/software/software_application_procedural_language_go_framework_gin.md","ref":"public/software/software_application_procedural_language_go_framework_gin.md","articles":[]},"previous":{"title":"パッケージ／フレームワーク","level":"1.4.4.3.2.1.4","depth":6,"ref":"","articles":[{"title":"📖 パッケージ","level":"1.4.4.3.2.1.4.1","depth":7,"path":"public/software/software_application_procedural_language_go_package.md","ref":"public/software/software_application_procedural_language_go_package.md","articles":[]},{"title":"📖 Gin","level":"1.4.4.3.2.1.4.2","depth":7,"path":"public/software/software_application_procedural_language_go_framework_gin.md","ref":"public/software/software_application_procedural_language_go_framework_gin.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_procedural_language_go_package.md","mtime":"2021-12-23T11:32:36.787Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
