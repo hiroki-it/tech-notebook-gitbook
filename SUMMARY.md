@@ -14,7 +14,8 @@
             * [📖 ︎メモリ管理](public/software/software_basic_kernel_memory_management.md)
         * ユーティリティ
             * [📖 ︎ユーティリティ](public/software/software_basic_utility.md)
-            * [📖 ︎管理ユーティリティ](public/software/software_basic_utility_management.md)
+            * [📖 ︎パッケージ](public/software/software_basic_utility_package.md)
+            * [📖 ︎パッケージ管理ユーティリティ](public/software/software_basic_utility_package_management.md)
             * [📖 ︎シェル](public/software/software_basic_utility_shell.md)
         * 言語プロセッサ
             * [📖 ︎言語プロセッサ](public/software/software_basic_language_processor.md)
