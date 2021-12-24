@@ -126,9 +126,10 @@
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
     * Terraform
         * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_terraform_command.md)
-        * [📖 ︎Terraformの実装](public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md)
+        * [📖 ︎ロジック](public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md)
+        * [📖 ︎ポリシー](public/infrastructure_as_code/infrastructure_as_code_terraform_policy.md)
         * [📖 ︎AWSプロバイダー](public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md)
-        * [📖 ︎TerraformのCICDフロー](public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md)
+        * [📖 ︎CICD](public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md)
     * Serverless Framework
         * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md)
         * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md)
