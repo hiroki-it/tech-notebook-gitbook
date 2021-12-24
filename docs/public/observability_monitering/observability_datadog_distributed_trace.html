@@ -1887,12 +1887,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_implementation.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_logic.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_implementation.html">
+                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_logic.html">
             
                     
-                    📖 ︎Terraformの実装
+                    📖 ︎ロジック
             
                 </a>
             
@@ -1900,7 +1900,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.3" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_policy.html">
+            
+                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_policy.html">
+            
+                    
+                    📖 ︎ポリシー
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
             
                 <a href="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
             
@@ -1913,12 +1926,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.4" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
+        <li class="chapter " data-level="1.9.2.5" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
             
                 <a href="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
             
                     
-                    📖 ︎TerraformのCICDフロー
+                    📖 ︎CICD
             
                 </a>
             
@@ -2955,7 +2968,7 @@ DATADOG TRACER CONFIGURATION <span class="token operator">=</span><span class="t
 <h4 id="&#x30FB;typescript&#x3084;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x30D0;&#x30F3;&#x30C9;&#x30EB;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;"><a name="&#x30FB;typescript&#x3084;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x30D0;&#x30F3;&#x30C9;&#x30EB;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;typescript&#x3084;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x30D0;&#x30F3;&#x30C9;&#x30EB;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;TypeScript&#x3084;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x30D0;&#x30F3;&#x30C9;&#x30EB;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;</h4>
 <p>&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3068;&#x306A;&#x308B;<code>nuxt.config.js</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3066;&#x3001;&#x4E00;&#x756A;&#x6700;&#x521D;&#x306B;Datadog&#x306E;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3001;&#x521D;&#x671F;&#x5316;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC" target="_blank">https://docs.datadoghq.com/ja/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC</a></p>
-<pre class="language-"><code class="lang-typescript"><span class="token keyword">import</span> <span class="token string">&apos;dd-trace/init&apos;</span>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token string">&apos;dd-trace/init&apos;</span>
 
 <span class="token comment">// &#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3092;&#x542B;&#x3080;&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x304C;&#x7D9A;&#x304F;</span>
 </code></pre>
@@ -3138,7 +3151,7 @@ DATADOG TRACER CONFIGURATION <span class="token operator">=</span><span class="t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎分散トレース収集","level":"1.12.4.3","depth":3,"next":{"title":"📖 ︎テレメトリー間の紐づけ","level":"1.12.4.4","depth":3,"path":"public/observability_monitering/observability_datadog_telemetry_association.md","ref":"public/observability_monitering/observability_datadog_telemetry_association.md","articles":[]},"previous":{"title":"📖 ︎ログ収集","level":"1.12.4.2","depth":3,"path":"public/observability_monitering/observability_datadog_log.md","ref":"public/observability_monitering/observability_datadog_log.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability_monitering/observability_datadog_distributed_trace.md","mtime":"2021-12-23T11:32:36.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎分散トレース収集","level":"1.12.4.3","depth":3,"next":{"title":"📖 ︎テレメトリー間の紐づけ","level":"1.12.4.4","depth":3,"path":"public/observability_monitering/observability_datadog_telemetry_association.md","ref":"public/observability_monitering/observability_datadog_telemetry_association.md","articles":[]},"previous":{"title":"📖 ︎ログ収集","level":"1.12.4.2","depth":3,"path":"public/observability_monitering/observability_datadog_log.md","ref":"public/observability_monitering/observability_datadog_log.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/observability_monitering/observability_datadog_distributed_trace.md","mtime":"2021-12-24T10:11:20.138Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-24T10:11:23.739Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

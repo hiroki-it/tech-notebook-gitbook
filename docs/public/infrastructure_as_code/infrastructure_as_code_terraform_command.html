@@ -73,7 +73,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="infrastructure_as_code_terraform_implementation.html" />
+    <link rel="next" href="infrastructure_as_code_terraform_logic.html" />
     
     
 
@@ -1885,12 +1885,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2" data-path="infrastructure_as_code_terraform_implementation.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="infrastructure_as_code_terraform_logic.html">
             
-                <a href="infrastructure_as_code_terraform_implementation.html">
+                <a href="infrastructure_as_code_terraform_logic.html">
             
                     
-                    📖 ︎Terraformの実装
+                    📖 ︎ロジック
             
                 </a>
             
@@ -1898,7 +1898,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.3" data-path="infrastructure_as_code_terraform_aws_provider.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="infrastructure_as_code_terraform_policy.html">
+            
+                <a href="infrastructure_as_code_terraform_policy.html">
+            
+                    
+                    📖 ︎ポリシー
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="infrastructure_as_code_terraform_aws_provider.html">
             
                 <a href="infrastructure_as_code_terraform_aws_provider.html">
             
@@ -1911,12 +1924,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.4" data-path="infrastructure_as_code_terraform_ci_cd.html">
+        <li class="chapter " data-level="1.9.2.5" data-path="infrastructure_as_code_terraform_ci_cd.html">
             
                 <a href="infrastructure_as_code_terraform_ci_cd.html">
             
                     
-                    📖 ︎TerraformのCICDフロー
+                    📖 ︎CICD
             
                 </a>
             
@@ -2845,7 +2858,7 @@ $ terraform -chdir<span class="token operator">=</span><span class="token operat
     -backend<span class="token operator">=</span>true <span class="token punctuation">\</span>
     -reconfigure <span class="token punctuation">\</span>
     <span class="token comment"># &#x30D0;&#x30B1;&#x30C3;&#x30C8;&#x540D;</span>
-    -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=foo-tfstate-bucket&quot;</span> <span class="token punctuation">\</span>
+    -backend-config<span class="token operator">=</span><span class="token string">&quot;bucket=prd-foo-tfstate-bucket&quot;</span> <span class="token punctuation">\</span>
     <span class="token comment"># tfstate&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span>
     -backend-config<span class="token operator">=</span><span class="token string">&quot;key=terraform.tfstate&quot;</span> <span class="token punctuation">\</span>
     <span class="token comment"># credentials&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span>
@@ -3147,7 +3160,7 @@ module.vpc_module.aws_vpc.vpc
             
                 
                 
-                <a href="infrastructure_as_code_terraform_implementation.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎Terraformの実装">
+                <a href="infrastructure_as_code_terraform_logic.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎ロジック">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3158,7 +3171,7 @@ module.vpc_module.aws_vpc.vpc
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎terraformコマンド","level":"1.9.2.1","depth":3,"next":{"title":"📖 ︎Terraformの実装","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md","articles":[]},"previous":{"title":"Terraform","level":"1.9.2","depth":2,"ref":"","articles":[{"title":"📖 ︎terraformコマンド","level":"1.9.2.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","articles":[]},{"title":"📖 ︎Terraformの実装","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.md","articles":[]},{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.3","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},{"title":"📖 ︎TerraformのCICDフロー","level":"1.9.2.4","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","mtime":"2021-12-23T11:32:36.713Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎terraformコマンド","level":"1.9.2.1","depth":3,"next":{"title":"📖 ︎ロジック","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md","articles":[]},"previous":{"title":"Terraform","level":"1.9.2","depth":2,"ref":"","articles":[{"title":"📖 ︎terraformコマンド","level":"1.9.2.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","articles":[]},{"title":"📖 ︎ロジック","level":"1.9.2.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md","articles":[]},{"title":"📖 ︎ポリシー","level":"1.9.2.3","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_policy.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_policy.md","articles":[]},{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.4","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},{"title":"📖 ︎CICD","level":"1.9.2.5","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_command.md","mtime":"2021-12-24T10:11:19.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-24T10:11:23.739Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

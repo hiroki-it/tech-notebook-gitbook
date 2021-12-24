@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎TerraformのCICDフロー · 俺のドキュメントサイト</title>
+        <title>📖 ︎CICD · 俺のドキュメントサイト</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -1885,12 +1885,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2" data-path="infrastructure_as_code_terraform_implementation.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="infrastructure_as_code_terraform_logic.html">
             
-                <a href="infrastructure_as_code_terraform_implementation.html">
+                <a href="infrastructure_as_code_terraform_logic.html">
             
                     
-                    📖 ︎Terraformの実装
+                    📖 ︎ロジック
             
                 </a>
             
@@ -1898,7 +1898,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.3" data-path="infrastructure_as_code_terraform_aws_provider.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="infrastructure_as_code_terraform_policy.html">
+            
+                <a href="infrastructure_as_code_terraform_policy.html">
+            
+                    
+                    📖 ︎ポリシー
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="infrastructure_as_code_terraform_aws_provider.html">
             
                 <a href="infrastructure_as_code_terraform_aws_provider.html">
             
@@ -1911,12 +1924,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.4" data-path="infrastructure_as_code_terraform_ci_cd.html">
+        <li class="chapter active" data-level="1.9.2.5" data-path="infrastructure_as_code_terraform_ci_cd.html">
             
                 <a href="infrastructure_as_code_terraform_ci_cd.html">
             
                     
-                    📖 ︎TerraformのCICDフロー
+                    📖 ︎CICD
             
                 </a>
             
@@ -2806,7 +2819,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎TerraformのCICDフロー</a>
+        <a href="../.." >📖 ︎CICD</a>
     </h1>
 </div>
 
@@ -2821,7 +2834,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;"><a name="terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;" class="plugin-anchor" href="#terraform&#x306E;cicd&#x30D5;&#x30ED;&#x30FC;"><i class="fa fa-link" aria-hidden="true"></i></a>Terraform&#x306E;CICD&#x30D5;&#x30ED;&#x30FC;</h1>
+                                <h1 id="cicd"><a name="cicd" class="plugin-anchor" href="#cicd"><i class="fa fa-link" aria-hidden="true"></i></a>CICD</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
@@ -3252,7 +3265,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
 <p><br></p>
 <h2 id="03-tfnotify"><a name="03-tfnotify" class="plugin-anchor" href="#03-tfnotify"><i class="fa fa-link" aria-hidden="true"></i></a>03. tfnotify</h2>
 <h3 id="tfnotify&#x3068;&#x306F;"><a name="tfnotify&#x3068;&#x306F;" class="plugin-anchor" href="#tfnotify&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>tfnotify&#x3068;&#x306F;</h3>
-<p>terraform&#x306E;<code>plan</code>&#x307E;&#x305F;&#x306F;<code>apply</code>&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#x3001;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#x3002;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;CircleCI&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x305F;tfnotify&#x306E;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#x3002;</p>
+<p>terraform&#x306E;<code>plan</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x307E;&#x305F;&#x306F;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x51E6;&#x7406;&#x7D50;&#x679C;&#x3092;&#x3001;POST&#x3067;&#x9001;&#x4FE1;&#x3059;&#x308B;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x3053;&#x3068;&#x3002;URL&#x3084;&#x9001;&#x4FE1;&#x5185;&#x5BB9;&#x3092;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;CircleCI&#x3067;&#x5229;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x305F;tfnotify&#x306E;&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;&#x74B0;&#x5883;&#x5225;&#x306B;tfnotify&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3068;&#x3088;&#x3044;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/mercari/tfnotify/releases/tag/v0.7.0" target="_blank">https://github.com/mercari/tfnotify/releases/tag/v0.7.0</a></p>
 <p><br></p>
 <h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
@@ -3361,7 +3374,7 @@ terraform -chdir<span class="token operator">=</span>./<span class="token variab
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎TerraformのCICDフロー","level":"1.9.2.4","depth":3,"next":{"title":"Serverless Framework","level":"1.9.3","depth":2,"ref":"","articles":[{"title":"📖 ︎serverlessコマンド","level":"1.9.3.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md","articles":[]},{"title":"📖 ︎serverless.yml","level":"1.9.3.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md","articles":[]}]},"previous":{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.3","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","mtime":"2021-12-23T11:32:36.699Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎CICD","level":"1.9.2.5","depth":3,"next":{"title":"Serverless Framework","level":"1.9.3","depth":2,"ref":"","articles":[{"title":"📖 ︎serverlessコマンド","level":"1.9.3.1","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md","articles":[]},{"title":"📖 ︎serverless.yml","level":"1.9.3.2","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md","articles":[]}]},"previous":{"title":"📖 ︎AWSプロバイダー","level":"1.9.2.4","depth":3,"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md","mtime":"2021-12-24T10:11:19.954Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-24T10:11:23.739Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

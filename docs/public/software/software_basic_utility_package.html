@@ -1887,12 +1887,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_implementation.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_logic.html">
             
-                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_implementation.html">
+                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_logic.html">
             
                     
-                    📖 ︎Terraformの実装
+                    📖 ︎ロジック
             
                 </a>
             
@@ -1900,7 +1900,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.3" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_policy.html">
+            
+                <a href="../infrastructure_as_code/infrastructure_as_code_terraform_policy.html">
+            
+                    
+                    📖 ︎ポリシー
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
             
                 <a href="../infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html">
             
@@ -1913,12 +1926,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.4" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
+        <li class="chapter " data-level="1.9.2.5" data-path="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
             
                 <a href="../infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html">
             
                     
-                    📖 ︎TerraformのCICDフロー
+                    📖 ︎CICD
             
                 </a>
             
@@ -2825,26 +2838,38 @@
                                 
                                 <h1 id="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><a name="&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;" class="plugin-anchor" href="#&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D1;&#x30C3;&#x30B1;&#x30FC;&#x30B8;</h1>
 <h2 id="01-supervisor"><a name="01-supervisor" class="plugin-anchor" href="#01-supervisor"><i class="fa fa-link" aria-hidden="true"></i></a>01. supervisor</h2>
-<h3 id="supervisor&#x3068;&#x306F;"><a name="supervisor&#x3068;&#x306F;" class="plugin-anchor" href="#supervisor&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>supervisor&#x3068;&#x306F;</h3>
+<h3 id="supervisor&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;"><a name="supervisor&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;" class="plugin-anchor" href="#supervisor&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;"><i class="fa fa-link" aria-hidden="true"></i></a>supervisor&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;</h3>
+<h4 id="&#x30FB;supervisor"><a name="&#x30FB;supervisor" class="plugin-anchor" href="#&#x30FB;supervisor"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisor</h4>
 <p>Python&#x88FD;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x3067;&#x3042;&#x308A;&#x3001;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x4E00;&#x62EC;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/index.html" target="_blank">http://supervisord.org/index.html</a></p>
 <pre class="language-"><code class="lang-bash">$ pip3 <span class="token function">install</span> supervisor
 </code></pre>
-<p><br></p>
-<h3 id="supervisord"><a name="supervisord" class="plugin-anchor" href="#supervisord"><i class="fa fa-link" aria-hidden="true"></i></a>supervisord</h3>
-<h4 id="&#x30FB;supervisord&#x3068;&#x306F;"><a name="&#x30FB;supervisord&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;supervisord&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisord&#x3068;&#x306F;</h4>
+<h4 id="&#x30FB;supervisorctl"><a name="&#x30FB;supervisorctl" class="plugin-anchor" href="#&#x30FB;supervisorctl"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisorctl</h4>
+<p>supervisord&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/introduction.html#supervisor-components" target="_blank">http://supervisord.org/introduction.html#supervisor-components</a></p>
+<h4 id="&#x30FB;supervisord"><a name="&#x30FB;supervisord" class="plugin-anchor" href="#&#x30FB;supervisord"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisord</h4>
 <p>supervisor&#x81EA;&#x4F53;&#x306E;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x3053;&#x3068;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/introduction.html#supervisor-components" target="_blank">http://supervisord.org/introduction.html#supervisor-components</a></p>
-<h4 id="&#x30FB;supervisord"><a name="&#x30FB;supervisord" class="plugin-anchor" href="#&#x30FB;supervisord"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>[supervisord]</code></h4>
+<p><br></p>
+<h3 id="supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
+<h4 id="&#x30FB;supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisord&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
 <p>supervisord&#x306B;&#x3064;&#x3044;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/configuration.html#supervisord-section-settings" target="_blank">http://supervisord.org/configuration.html#supervisord-section-settings</a></p>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>supervisord<span class="token punctuation">]</span>
 
 <span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
 </code></pre>
+<h4 id="&#x30FB;directory"><a name="&#x30FB;directory" class="plugin-anchor" href="#&#x30FB;directory"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;directory</h4>
+<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x4F5C;&#x696D;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">directory</span><span class="token operator">=</span>/var/www/foo
+</code></pre>
 <h4 id="&#x30FB;logfile"><a name="&#x30FB;logfile" class="plugin-anchor" href="#&#x30FB;logfile"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;logfile</h4>
 <p>supervisord&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5834;&#x6240;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">logfile</span><span class="token operator">=</span>/var/log/supervisor/supervisord.log
+</code></pre>
+<h4 id="&#x30FB;loglevel"><a name="&#x30FB;loglevel" class="plugin-anchor" href="#&#x30FB;loglevel"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;loglevel</h4>
+<p>supervisord&#x306E;&#x30ED;&#x30B0;&#x30EC;&#x30D9;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">loglevel</span><span class="token operator">=</span>info
 </code></pre>
 <h4 id="&#x30FB;nodaemon"><a name="&#x30FB;nodaemon" class="plugin-anchor" href="#&#x30FB;nodaemon"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nodaemon</h4>
 <p>supervisord&#x3092;&#x30D5;&#x30A9;&#x30A2;&#x30B0;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x3067;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
@@ -2854,15 +2879,23 @@
 <p>supervisord&#x306E;pid&#x304C;&#x8A18;&#x8F09;&#x3055;&#x308C;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">pidfile</span><span class="token operator">=</span>/var/tmp/supervisor/supervisord.pid
 </code></pre>
+<h4 id="&#x30FB;redirectstderr"><a name="&#x30FB;redirectstderr" class="plugin-anchor" href="#&#x30FB;redirectstderr"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;redirect_stderr</h4>
+<p>&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3078;&#x306E;&#x51FA;&#x529B;&#x3092;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x53EF;&#x52D5;&#x5316;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">redirect_stderr</span><span class="token operator">=</span>true
+</code></pre>
 <h4 id="&#x30FB;user"><a name="&#x30FB;user" class="plugin-anchor" href="#&#x30FB;user"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;user</h4>
 <p>supervisord&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">user</span><span class="token operator">=</span>root
 </code></pre>
 <p><br></p>
-<h3 id="&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7BA1;&#x7406;"><a name="&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7BA1;&#x7406;" class="plugin-anchor" href="#&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7BA1;&#x7406;</h3>
-<h4 id="&#x30FB;program&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;"><a name="&#x30FB;program&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;" class="plugin-anchor" href="#&#x30FB;program&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>[program:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;</span><span class="token punctuation">&gt;</span></span>]</code></h4>
+<h3 id="program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
+<h4 id="&#x30FB;program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><a name="&#x30FB;program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;program&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x306F;</h4>
 <p>&#x7BA1;&#x7406;&#x5BFE;&#x8C61;&#x306E;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306B;&#x3064;&#x3044;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/configuration.html#program-x-section-settings" target="_blank">http://supervisord.org/configuration.html#program-x-section-settings</a></p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="http://supervisord.org/configuration.html#program-x-section-settings" target="_blank">http://supervisord.org/configuration.html#program-x-section-settings</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/2015/07/21/215525" target="_blank">https://christina04.hatenablog.com/entry/2015/07/21/215525</a></li>
+</ul>
 <pre class="language-"><code class="lang-bash"><span class="token punctuation">[</span>program:php-fpm<span class="token punctuation">]</span>
 
 <span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
@@ -2872,19 +2905,27 @@
 <span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
 </code></pre>
 <h4 id="&#x30FB;autorestart"><a name="&#x30FB;autorestart" class="plugin-anchor" href="#&#x30FB;autorestart"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;autorestart</h4>
-<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7570;&#x5E38;&#x505C;&#x6B62;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3055;&#x305B;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3001;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7570;&#x5E38;&#x505C;&#x6B62;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3055;&#x305B;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">autorestart</span><span class="token operator">=</span>true
 </code></pre>
 <h4 id="&#x30FB;autostart"><a name="&#x30FB;autostart" class="plugin-anchor" href="#&#x30FB;autostart"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;autostart</h4>
-<p>OS&#x306E;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3055;&#x305B;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3001;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>supervisord&#x306E;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x8D77;&#x52D5;&#x3055;&#x305B;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3001;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">autostart</span><span class="token operator">=</span>true
 </code></pre>
 <h4 id="&#x30FB;command"><a name="&#x30FB;command" class="plugin-anchor" href="#&#x30FB;command"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;command</h4>
 <p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">command</span><span class="token operator">=</span>/usr/sbin/crond -n
 </code></pre>
-<h4 id="&#x30FB;stdoutlogfile&#x3001;stderrlogfile&#x3001;stdoutlogfilemaxbytes"><a name="&#x30FB;stdoutlogfile&#x3001;stderrlogfile&#x3001;stdoutlogfilemaxbytes" class="plugin-anchor" href="#&#x30FB;stdoutlogfile&#x3001;stderrlogfile&#x3001;stdoutlogfilemaxbytes"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;stdout_logfile&#x3001;stderr_logfile&#x3001;stdout_logfile_maxbytes</h4>
-<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#xFF0F;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;<code>/var/log/supervisor</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x3042;&#x308B;&#x3002;&#x3082;&#x3057;&#x3001;<code>/dev/stdout</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x307E;&#x305F;&#x306F;<code>/dev/stderr</code>&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;<code>logfile_maxbytes</code>&#x3092;<code>0</code>&#x3068;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;redirectstderr"><a name="&#x30FB;redirectstderr" class="plugin-anchor" href="#&#x30FB;redirectstderr"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;redirect_stderr</h4>
+<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3078;&#x306E;&#x51FA;&#x529B;&#x3092;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">redirect_stderr</span><span class="token operator">=</span>true
+</code></pre>
+<h4 id="&#x30FB;startretries"><a name="&#x30FB;startretries" class="plugin-anchor" href="#&#x30FB;startretries"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;startretries</h4>
+<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x306B;&#x5931;&#x6557;&#x3057;&#x305F;&#x5834;&#x5408;&#x306B;&#x3001;&#x4F55;&#x56DE;&#x518D;&#x8A66;&#x884C;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">startretries</span><span class="token operator">=</span><span class="token number">10</span>
+</code></pre>
+<h4 id="&#x30FB;stdoutlogfile&#x3001;stderrlogfile"><a name="&#x30FB;stdoutlogfile&#x3001;stderrlogfile" class="plugin-anchor" href="#&#x30FB;stdoutlogfile&#x3001;stderrlogfile"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;stdout_logfile&#x3001;stderr_logfile</h4>
+<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x6A19;&#x6E96;&#x51FA;&#x529B;&#x3068;&#x6A19;&#x6E96;&#x30A8;&#x30E9;&#x30FC;&#x51FA;&#x529B;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x306F;<code>/var/log/supervisor</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x3042;&#x308B;&#x3002;&#x3082;&#x3057;&#x3001;<code>/dev/stdout</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x307E;&#x305F;&#x306F;<code>/dev/stderr</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;<code>logfile_maxbytes</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x5024;&#x3092;<code>0</code>&#xFF08;&#x7121;&#x5236;&#x9650;&#xFF09;&#x3068;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/configuration.html#supervisord-section-values" target="_blank">http://supervisord.org/configuration.html#supervisord-section-values</a></p>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x6A19;&#x6E96;&#x51FA;&#x529B;&#x306E;&#x5834;&#x6240;</span>
 <span class="token assign-left variable">stdout_logfile</span><span class="token operator">=</span>/dev/stdout
@@ -2894,19 +2935,29 @@
 <span class="token assign-left variable">stderr_logfile</span><span class="token operator">=</span>/dev/stderr
 <span class="token assign-left variable">stderr_logfile_maxbytes</span><span class="token operator">=</span><span class="token number">0</span>
 </code></pre>
-<p>&#x30FB;user</p>
+<h4 id="&#x30FB;stdoutlogfilebackups"><a name="&#x30FB;stdoutlogfilebackups" class="plugin-anchor" href="#&#x30FB;stdoutlogfilebackups"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;stdout_logfile_backups</h4>
+<p>&#x30ED;&#x30B0;&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;&#x306B;&#x3088;&#x3063;&#x3066;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x306E;&#x4E16;&#x4EE3;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">stdout_logfile_backups</span><span class="token operator">=</span><span class="token number">10</span>
+</code></pre>
+<h4 id="&#x30FB;stdoutlogfilemaxbytes"><a name="&#x30FB;stdoutlogfilemaxbytes" class="plugin-anchor" href="#&#x30FB;stdoutlogfilemaxbytes"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;stdout_logfile_maxbytes</h4>
+<p>&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x6700;&#x5927;&#x30B5;&#x30A4;&#x30BA;&#x3002;&#x8A2D;&#x5B9A;&#x5024;&#x3092;&#x8D85;&#x3048;&#x308B;&#x3068;&#x3001;&#x30ED;&#x30B0;&#x30ED;&#x30FC;&#x30C6;&#x30FC;&#x30C8;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3002;&#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x3001;&#x65B0;&#x3057;&#x3044;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">stdout_logfile_maxbytes</span><span class="token operator">=</span>50MB
+</code></pre>
+<h4 id="&#x30FB;user"><a name="&#x30FB;user" class="plugin-anchor" href="#&#x30FB;user"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;user</h4>
 <p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x5B9F;&#x884C;&#x30E6;&#x30FC;&#x30B6;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token assign-left variable">user</span><span class="token operator">=</span>root
 </code></pre>
-<h4 id="&#x30FB;directory"><a name="&#x30FB;directory" class="plugin-anchor" href="#&#x30FB;directory"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;directory</h4>
-<p>&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x8D77;&#x52D5;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x4F5C;&#x696D;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">directory</span><span class="token operator">=</span>/var/www/foo
+<p><br></p>
+<h3 id="group&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><a name="group&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#group&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>group&#x30BB;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
+<h4 id="&#x30FB;priority"><a name="&#x30FB;priority" class="plugin-anchor" href="#&#x30FB;priority"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;priority</h4>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">priority</span><span class="token operator">=</span><span class="token number">999</span>
+</code></pre>
+<h4 id="&#x30FB;programs"><a name="&#x30FB;programs" class="plugin-anchor" href="#&#x30FB;programs"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;programs</h4>
+<p>&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3059;&#x308B;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token assign-left variable">programs</span><span class="token operator">=</span>bar,baz
 </code></pre>
 <p><br></p>
 <h3 id="supervisorctl"><a name="supervisorctl" class="plugin-anchor" href="#supervisorctl"><i class="fa fa-link" aria-hidden="true"></i></a>supervisorctl</h3>
-<h4 id="&#x30FB;supervisorctl&#x3068;&#x306F;"><a name="&#x30FB;supervisorctl&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;supervisorctl&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;supervisorctl&#x3068;&#x306F;</h4>
-<p>supervisord&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/introduction.html#supervisor-components" target="_blank">http://supervisord.org/introduction.html#supervisor-components</a></p>
 <h4 id="&#x30FB;restart"><a name="&#x30FB;restart" class="plugin-anchor" href="#&#x30FB;restart"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;restart</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;<code>all</code>&#x3068;&#x3057;&#x305F;&#x5834;&#x5408;&#x306F;&#x3001;&#x5168;&#x3066;&#x3092;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/running.html#supervisorctl-actions" target="_blank">http://supervisord.org/running.html#supervisorctl-actions</a></p>
@@ -2959,7 +3010,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"next":{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},"previous":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility_package.md","mtime":"2021-12-23T11:32:36.780Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-23T11:32:42.249Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"next":{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},"previous":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility_package.md","mtime":"2021-12-24T10:11:20.037Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-24T10:11:23.739Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
