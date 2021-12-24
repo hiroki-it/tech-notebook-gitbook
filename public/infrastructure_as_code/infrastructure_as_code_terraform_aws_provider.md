@@ -26,7 +26,7 @@ resource "aws_acm_certificate" "www_an1" {
   validation_method         = "EMAIL"
 
   tags = {
-    Name = "${var.environment}-${var.service}-www-an1-cert"
+    Name = "prd-foo-www-an1-cert"
   }
 
   lifecycle {
@@ -52,7 +52,7 @@ resource "aws_acm_certificate" "www_an1" {
   validation_method         = "DNS"
 
   tags = {
-    Name = "${var.environment}-${var.service}-www-an1-cert"
+    Name = "prd-foo-www-an1-cert"
   }
 
   lifecycle {
@@ -142,7 +142,7 @@ data "aws_ami" "bastion" {
 
 ### （１）取得するAMIのバージョンを固定
 
-取得するAMIが常に最新になっていると、EC2が再構築されなねない。そこで、特定のAMIを取得できるようにしておく。```most_recent```は無効化しておき、特定のAMをフィルタリングする。
+取得するAMIが常に最新になっていると、EC2が再構築されなねない。そこで、特定のAMIを取得できるようにしておく。```most_recent```は無効化しておき、特定のAMIをフィルタリングする。
 
 <br>
 
@@ -215,7 +215,7 @@ resource "aws_api_gateway_stage" "foo" {
 
 <br>
 
-### （※）ステージ名を取得する方法はない
+### （＊）ステージ名を取得する方法はない
 
 API Gatewayのステージ名を参照するためには、resourceを用いる必要があり、dataではこれを取得できない。もしステージをコンソール画面上から構築している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。API Gatewayの各ARNについては、以下を参考にせよ。
 
@@ -363,10 +363,10 @@ resource "aws_cloudfront_distribution" "this" {
     compress               = true
 
     forwarded_values {
-      query_string = true
+      query_string = true # クエリストリングのキャッシュ
 
       cookies {
-        forward = "none"
+        forward = "none" # Cookieのキャッシュ
       }
     }
   }
@@ -398,11 +398,11 @@ resource "aws_cloudfront_distribution" "this" {
     compress               = true
 
     forwarded_values {
-      query_string = true
-      headers      = ["*"]
+      query_string = true # クエリストリングのキャッシュ
+      headers      = ["*"] # ヘッダーのキャッシュ
 
       cookies {
-        forward = "all"
+        forward = "all" # Cookieのキャッシュ
       }
     }
   }
@@ -541,23 +541,27 @@ AutoScalingによって、タスク数が増減するため、これを無視す
 
 <br>
 
-### （※）タスク定義の更新
+### （＊）タスク定義の更新
 
 Terraformでタスク定義を更新すると、現在動いているECSで稼働しているタスクはそのままに、新しいリビジョン番号のタスク定義が作成される。コンソール画面の『新しいリビジョンの作成』と同じ挙動である。実際にタスクが増えていることは、サービスに紐付くタスク定義一覧から確認できる。次のデプロイ時に、このタスクが用いられる。
 
 <br>
 
-### （※）サービスのデプロイの削除時間
+### （＊）サービスのデプロイの削除時間
 
 ECSサービスの削除には『ドレイニング』の時間が発生する。約2分30秒かかるため、気長に待つこと。
 
 <br>
 
-### （※）ローリングアップデート
+### （＊）ローリングアップデート
 
 applyで、新しいリビジョン番号のタスク定義を作成すると、これを用いてローリングアップデートが自動で実行されることに注意する。ただ、ローリングアップデートの仕組み上、新しいタスクのヘルスチェックが失敗すれば、既存のタスクは停止せずにそのまま稼働するため、安心ではあるが。
 
 <br>
+
+### （＊）ECSコンテナ名
+
+コンテナ名は、役割名（app、web、monitering、など）ではなく、ベンダー名（laravel、nginx、datadog、など）とする。ただ、AWS FireLensコンテナはlog_routerとしなければならない仕様であり、ベンダー名を使用できない場合は役割名になることを許容する。
 
 ## 07. EC2
 
@@ -998,7 +1002,7 @@ NLBに紐付くターゲットグループはスロースタートに非対応�
 
 <br>
 
-### （※）ターゲットグループの削除時にリスナーを先に削除できない。
+### （＊）ターゲットグループの削除時にリスナーを先に削除できない。
 
 LBリスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしないため、以下のようなエラーが発生する。
 
@@ -1275,7 +1279,44 @@ NLBのアクセスログを送信するバケット内には、自動的に『/A
 
 <br>
 
-## 15. WAF
+## 15. SM
+
+### まとめ
+
+```elixir
+###############################################
+# For RDS
+###############################################
+output "rds_db_name_ssm_parameter_value" {
+  sensitive = true # 後述の説明を参考にせよ。（１）
+  value     = data.aws_ssm_parameter.rds_db_name.value
+}
+
+output "rds_db_master_password_ssm_parameter_value" {
+  sensitive = true
+  value     = data.aws_ssm_parameter.rds_db_master_password.value
+}
+
+output "rds_db_master_username_ssm_parameter_value" {
+  sensitive = true
+  value     = data.aws_ssm_parameter.rds_db_master_username.value
+}
+
+output "rds_db_port_ssm_parameter_value" {
+  sensitive = true
+  value     = data.aws_ssm_parameter.rds_db_port.value
+}
+```
+
+<br>
+
+### （１）```plan```コマンド時に非表示
+
+CIの```plan```コマンド時に値が公開されないように```output```で```sensitive```オプションを有効化する。
+
+<br>
+
+## 16. WAF
 
 ### ruleブロック
 
@@ -1517,7 +1558,7 @@ WAFのIPセットと他設定の依存関係に癖がある。新しいIPセッ�
 
 <br>
 
-## 16. 共通の設定
+## 17. 共通の設定
 
 ### Terraform管理外のAWSリソース
 

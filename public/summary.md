@@ -136,9 +136,10 @@
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
 * Terraform
     * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
-    * [📖 ︎Terraformの実装](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_implementation.html)
+    * [📖 ︎ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_logic.html)
+    * [📖 ︎ポリシー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
     * [📖 ︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html)
-    * [📖 ︎TerraformのCICDフロー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
+    * [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
 * Serverless Framework
     * [📖 ︎serverlessコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
     * [📖 ︎serverless.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)

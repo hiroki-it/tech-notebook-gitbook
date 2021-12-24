@@ -45,7 +45,7 @@ $ go get <ドメインをルートとしたURL>
 $ go build ./cmd
 ```
 
-もし、ビルドのエラー時に終了コードのみが返却され、原因が不明の場合、```panic```メソッドが原因を握りつぶしている可能性を考える。
+もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、```panic```メソッドが原因を握りつぶしている可能性を考える。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html
 

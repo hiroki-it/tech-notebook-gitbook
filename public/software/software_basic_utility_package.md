@@ -2,7 +2,9 @@
 
 ## 01. supervisor
 
-### supervisorとは
+### supervisorの構成要素
+
+#### ・supervisor
 
 Python製のユーティリティであり、常駐プロセスを一括で管理する。
 
@@ -12,17 +14,23 @@ Python製のユーティリティであり、常駐プロセスを一括で管�
 $ pip3 install supervisor
 ```
 
-<br>
+#### ・supervisorctl
 
-### supervisord
+supervisordを操作する。
 
-#### ・supervisordとは
+参考：http://supervisord.org/introduction.html#supervisor-components
+
+#### ・supervisord
 
 supervisor自体のプロセスのこと。
 
 参考：http://supervisord.org/introduction.html#supervisor-components
 
-#### ・```[supervisord]```
+<br>
+
+### supervisordセクション
+
+#### ・supervisordセクションとは
 
 supervisordについて設定する。
 
@@ -34,12 +42,28 @@ supervisordについて設定する。
 # 〜 中略 〜
 ```
 
+#### ・directory
+
+常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する。
+
+```bash
+directory=/var/www/foo
+```
+
 #### ・logfile
 
 supervisordのログファイルの場所を設定する。
 
 ```bash
 logfile=/var/log/supervisor/supervisord.log
+```
+
+#### ・loglevel
+
+supervisordのログレベルを設定する。
+
+```bash
+loglevel=info
 ```
 
 #### ・nodaemon
@@ -58,6 +82,14 @@ supervisordのpidが記載されるファイルを設定する。
 pidfile=/var/tmp/supervisor/supervisord.pid
 ```
 
+#### ・redirect_stderr
+
+標準出力への出力を標準エラー出力に転送する可動化を設定する。
+
+```bash
+redirect_stderr=true
+```
+
 #### ・user
 
 supervisordの実行ユーザを設定する。
@@ -68,13 +100,16 @@ user=root
 
 <br>
 
-### 常駐プロセスの管理
+### programセクション
 
-#### ・```[program:<常駐プロセス名>]```
+#### ・programセクションとは
 
 管理対象の常駐プロセスについて設定する。
 
-参考：http://supervisord.org/configuration.html#program-x-section-settings
+参考：
+
+- http://supervisord.org/configuration.html#program-x-section-settings
+- https://christina04.hatenablog.com/entry/2015/07/21/215525
 
 ```bash
 [program:php-fpm]
@@ -88,7 +123,7 @@ user=root
 
 #### ・autorestart
 
-常駐プロセスの異常停止時に自動的に起動させるかどうか、を設定する。
+常駐プロセスの異常停止時に自動的に起動させるかどうかを設定する。
 
 ```bash
 autorestart=true
@@ -96,7 +131,7 @@ autorestart=true
 
 #### ・autostart
 
-OSの起動時に常駐プロセスを自動的に起動させるかどうか、を設定する。
+supervisordの起動時に常駐プロセスを自動的に起動させるかどうか、を設定する。
 
 ```bash
 autostart=true
@@ -110,9 +145,25 @@ autostart=true
 command=/usr/sbin/crond -n
 ```
 
-#### ・stdout_logfile、stderr_logfile、stdout_logfile_maxbytes
+#### ・redirect_stderr
 
-常駐プロセスの標準出力／標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```を使用する場合は、```logfile_maxbytes ```を```0```とする必要がある。
+常駐プロセスの標準出力への出力を標準エラー出力に転送するかどうかを設定する。
+
+```bash
+redirect_stderr=true
+```
+
+#### ・startretries
+
+常駐プロセスの起動に失敗した場合に、何回再試行するかを設定する。
+
+```bash
+startretries=10
+```
+
+#### ・stdout_logfile、stderr_logfile
+
+常駐プロセスの標準出力と標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
@@ -126,7 +177,23 @@ stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 ```
 
-・user
+#### ・stdout_logfile_backups
+
+ログローテートによって作成されるバックアップの世代数。
+
+```bash
+stdout_logfile_backups=10
+```
+
+#### ・stdout_logfile_maxbytes
+
+ログファイルの最大サイズ。設定値を超えると、ログローテートが実行される。これにより、ログファイルがバックアップとして保存され、新しいログファイルが作成される。
+
+```bash
+stdout_logfile_maxbytes=50MB
+```
+
+#### ・user
 
 常駐プロセスの実行ユーザを設定する。
 
@@ -134,23 +201,27 @@ stderr_logfile_maxbytes=0
 user=root
 ```
 
-#### ・directory
+<br>
 
-常駐プロセスの起動コマンドを実行する作業ディレクトリを設定する。
+### groupセクション
+
+#### ・priority
 
 ```bash
-directory=/var/www/foo
+priority=999
+```
+
+#### ・programs
+
+グループ化する常駐プロセス名を設定する。
+
+```bash
+programs=bar,baz
 ```
 
 <br>
 
 ### supervisorctl
-
-#### ・supervisorctlとは
-
-supervisordを操作する。
-
-参考：http://supervisord.org/introduction.html#supervisor-components
 
 #### ・restart
 

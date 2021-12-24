@@ -81,15 +81,25 @@ $ kubectl label namespace default istio-injection=enabled
 
 #### ・Gatewayとは
 
+クラスター内外間の通信を制御する。
+
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
 
 #### ・Ingress Gateway
 
+クラスター外部から受信されるインバウンド通信をフィルタリングする。
+
+参考：https://knowledge.sakura.ad.jp/20489/
+
 #### ・Mesh Gateway
 
 #### ・Egress Gateway
+
+クラスター内部から送信されるアウトバウンド通信をフィルタリングする。
+
+参考：https://knowledge.sakura.ad.jp/20489/
 
 <br>
 
@@ -104,17 +114,25 @@ $ kubectl label namespace default istio-injection=enabled
 - https://istio.io/latest/docs/ops/deployment/architecture/
 - https://speakerdeck.com/kurochan/ru-men-envoy?slide=34
 
+#### ・Citadal
+
+暗号鍵やSSL証明書を管理する。
+
+参考：https://knowledge.sakura.ad.jp/20489/
+
+#### ・Galley
+
+#### ・sidecar-injector
+
+Envoyコンテナをサイドカーとして稼働させる。
+
 #### ・Mixer
 
-各マイクロサービスのデータをEnvoy経由で収集し、アクセス制御を実行する。
+認証やデータ収集を行う。
 
 #### ・Pilot
 
 サービスディスカバリやトラフィックの管理を行う。
-
-#### ・Citadal
-
-サービス間のリクエスト送受信に認可機能を提供する。
 
 <br>
 
@@ -124,4 +142,6 @@ $ kubectl label namespace default istio-injection=enabled
 
 ### Vertual Service
 
+Gatewayによって受信したインバウンド通信をサービスにルーティングする。
 
+参考：https://knowledge.sakura.ad.jp/20489/

@@ -1,4 +1,4 @@
-# Terraformの実装
+# ロジック
 
 ## はじめに
 
@@ -8,231 +8,7 @@
 
 <br>
 
-## 01. バージョン
-
-### バージョン管理
-
-#### ・```lock```ファイル
-
-現在使用中のプロバイダーのバージョンが定義される。これにより、他の人がリポジトリを用いる時に、異なるバージョンのプロバイダーを宣言できないようにする。もし、異なるバージョンを用いたい場合は、以下のコマンドを実行する。これにより、```lock```ファイルのアップグレード／ダウングレードが実行される。
-
-```bash
-$ terraform init -upgrade
-```
-
-<br>
-
-### Terraform／プロバイダーのアップグレード
-
-#### 1. 現在のTerraformのバージョンで```apply```コマンドを実行
-
-アップグレードと同時に新しいAWSリソースをデプロイせずに、アップグレードのみに専念する。そのために、現在のTerraformのバージョンで```apply```コマンドを実行し、差分が無いようにしておく。
-
-#### 2. アップグレード以外の作業を済ませておく
-
-低いバージョンのTerraformに対して、より高いバージョンをデプロイすることは可能である。反対に、高いバージョンのTerraoformに対して、より低いバージョンをデプロイできない。そのため、アップグレードしてしまうと、それ以外のTeraformバージョンの異なる作業に影響が出る。
-
-#### 3. メジャーバージョン単位でアップグレード
-
-Terraformでは、メジャーバージョン単位でアップグレードを行うことが推奨されている。そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず1つずつメジャーバージョンをアップグレードするように気をつける。
-
-参考：https://www.terraform.io/upgrade-guides/1-0.html 
-
-#### 4. ```plan```コマンドの警告／エラーを解消
-
-アップグレードに伴って、非推奨／廃止の機能がリリースされ、警告／エラーが出力される場合がある。警告／エラーを解消できるように、記法やオプション値を修正する。場合によってはtfstateファイルの差分として表示されているだけで、実インフラとの差分ではない場合もあるため、planで差分があったとしても、実インフラに影響がなければ問題ない。
-
-#### 5. プロバイダーをアップグレードしたい場合はTerraformもアップグレード
-
-Terraformとプロバイダーのバージョンは独立して管理されている。プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。
-
-#### 6. Terraformとプロバイダーのアップグレードは別々にリリース
-
-プロバイダーをアップグレードしたい場合はTerraformもアップグレードすることになる。この場合、可能であればリリースは分けた方が良い。Terraformまたはプロバイダーのアップグレードを別々にリリースするようにすれば、リリース時にインシデントが起こった時に、どちらが原因なのかを明確化できる。反対に、一緒にリリースしてしまうとどちらが原因なのかわかりにくくなってしまう。
-
-<br>
-
-##  01-02. ディレクトリ構成
-
-### ルートモジュールの構成
-
-#### ・稼働環境別
-
-稼働環境別に、```foo.tfvars```ファイルで値を定義する。
-
-```bash
-terraform_project/
-├── modules
-│   ├── route53 # Route53
-│   │   ├── dev # 開発
-│   |   ├── prd # 本番
-│   |   └── stg # ステージング
-│   | 
-│   ├── ssm # SSM
-|   |   ├── dev
-│   |   ├── prd
-│   |   └── stg
-│   | 
-│   └── waf # WAF
-|       ├── dev
-│       ├── prd
-│       └── stg
-|
-├── dev # 開発環境ルートモジュール
-│   ├── dev.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
-├── prd # 本番環境ルートモジュール
-│   ├── prd.tfvars
-│   ├── main.tf
-│   ├── providers.tf
-│   ├── tfnotify.yml
-│   └── variables.tf
-│
-└── stg # ステージング環境ルートモジュール
-      ├── stg.tfvars
-      ├── main.tf
-      ├── providers.tf
-      ├── tfnotify.yml
-      └── variables.tf
-```
-
-<br>
-
-### リソースのモジュールの構成
-
-####　・対象リソース別
-
-1つのリソースの設定が対象のリソースごとに異なる場合、冗長性よりも保守性を重視して、リソースに応じたディレクトリに分割する。
-
-```bash
-terraform_project/
-└── modules
-    ├── cloudwatch # CloudWatch
-    │   ├── alb        # ALB
-    |   ├── cloudfront # CloudFront
-    |   ├── ecs        # ECS
-    |   ├── lambda     # Lambda
-    |   └── rds        # RDS    
-    |
-    └── waf # WAF
-        ├── alb         # ALB
-        ├── api_gateway # API Gateway
-        └── cloudfront  # CloudFront
-```
-
-#### ・稼働環境別
-
-1つのリソースの設定が稼働環境ごとに異なる場合、冗長性よりも保守性を重視して、稼働環境に応じたディレクトリに分割する。
-
-```bash
-terraform_project/
-└── modules
-    ├── route53 # Route53
-    │   ├── dev # 開発
-    |   ├── prd # 本番
-    |   └── stg # ステージング
-    | 
-    ├── ssm # SSM
-    |   ├── dev
-    |   ├── prd
-    |   └── stg
-    | 
-    └── waf # WAF
-        └── alb 
-            ├── dev
-            ├── prd
-            └── stg
-```
-
-#### ・リージョン別
-
-1つのリソースの設定がリージョンごとに異なる場合、冗長性よりも保守性を重視して、リージョンに応じたディレクトリに分割する。
-
-```bash
-terraform_project/
-└── modules
-    └── acm # ACM
-        ├── ap-northeast-1 # 東京リージョン
-        └── us-east-1      # バージニアリージョン  
-```
-
-#### ・共通セット別
-
-WAFで用いるIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。Regionalタイプは、同じリージョンの異なるAWSリソース間で共通して使用できるため、共通セットとしてディレクトリ分割を行う。
-
-```bash
-terraform_project/
-└── modules
-    └── waf # WAF
-        ├── alb
-        ├── api_gateway
-        ├── cloudfront       
-        └── regional_sets # Regionalタイプのセット
-            ├── ip_sets   # IPセット
-            |   ├── prd
-            |   └── stg
-            |    
-            └── regex_pattern_sets # 正規表現パターンセット
-                ├── prd
-                └── stg
-```
-
-#### ・ファイルの切り分け
-
-ポリシーのためにJSONを定義する場合、Terraformのソースコードにハードコーディングせずに、切り分けるようにする。また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。なお、```templatefile```メソッドでこれを読みこむ時、```bash```ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。
-
-```bash
-terraform_project/
-└── modules 
-    ├── ecr #ECR
-    │   └── ecr_lifecycle_policy.tpl # ECRライフサイクル
-    │
-    ├── ecs # ECS
-    │   └── container_definitions.tpl # コンテナ定義
-    │
-    ├── iam # IAM
-    │   └── policies  
-    |       ├── customer_managed_policies # カスタム管理ポリシー
-    |       |   ├── aws_cli_executor_access_policy.tpl
-    |       |   ├── aws_cli_executor_access_address_restriction_policy.tpl
-    |       |   ├── cloudwatch_logs_access_policy.tpl
-    |       |   └── lambda_edge_execution_policy.tpl
-    |       |     
-    |       ├── inline_policies # インラインポリシー
-    |       |   └── ecs_task_policy.tpl
-    |       |     
-    |       └── trust_policies # 信頼ポリシー
-    |           ├── cloudwatch_events_policy.tpl
-    |           ├── ecs_task_policy.tpl
-    |           ├── lambda_policy.tpl
-    |           └── rds_policy.tpl
-    |
-    └── s3 # S3
-        └── policies # バケットポリシー
-            └── alb_bucket_policy.tpl
-```
-
-<br>
-
-### CI/CDディレクトリ
-
-#### ・opsディレクトリ
-
-TerraformのCI/CDで必要なシェルスクリプトは、```ops```ディレクトリで管理する。
-
-```bash
-terraform_project/
-├── .circleci # CI/CDツールの設定ファイル
-└── ops # TerraformのCI/CDの自動化シェルスクリプト
-```
-
-<br>
-
-## 02. ルートモジュールにおける実装
+## 01. ルートモジュールにおける実装
 
 ### tfstateファイル
 
@@ -294,7 +70,7 @@ terraform {
   # S3で管理するように設定
   backend "s3" {
     # バケット名
-    bucket                  = "foo-tfstate-bucket"
+    bucket                  = "prd-foo-tfstate-bucket"
     # stateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
@@ -318,7 +94,7 @@ terraform {
             "Effect": "Deny",
             "Principal": "*",
             "Action": "s3:DeleteObject",
-            "Resource": "arn:aws:s3:::foo-tfstate-bucket/*"
+            "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*"
         }
     ]
 }
@@ -456,7 +232,7 @@ terraform {
   }
   
   backend "s3" {
-    bucket     = "foo-tfstate-bucket"
+    bucket     = "prd-foo-tfstate-bucket"
     key        = "terraform.tfstate"
     region     = "ap-northeast-1"
     # アクセスキー
@@ -510,7 +286,7 @@ terraform {
   # credentialsファイルから、アクセスキー、シークレットアクセスキーを読み込む
   backend "s3" {
     # バケット名
-    bucket                  = "foo-tfstate-bucket"
+    bucket                  = "prd-foo-tfstate-bucket"
     # stateファイル名
     key                     = "terraform.tfstate"
     region                  = "ap-northeast-1"
@@ -594,14 +370,14 @@ module "alb" {
   # モジュールのResourceを参照
   source = "../modules/alb"
   
-  # モジュールに他のモジュールのアウトプット値を渡す。
+  # モジュールに他のモジュールのoutputを渡す。
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
 
 <br>
 
-## 03. 変数
+## 02. 変数
 
 ### 環境変数
 
@@ -752,8 +528,8 @@ waf_allowed_global_ip_addresses = [
 ]
 
 waf_blocked_user_agents = [
-  "foo-agent",
-  "bar-agent"
+  "baz-agent",
+  "qux-agent"
 ]
 ```
 
@@ -797,7 +573,7 @@ variable "rds_parameter_group_values" {
 
 <br>
 
-## 04. リソースの実装
+## 03. リソースの実装
 
 ### resource
 
@@ -852,7 +628,7 @@ data "aws_ecs_task_definition" "this" {
 
 **＊実装例＊**
 
-例として、AMIをフィルタリングした上で、AWSから特定のAMIの値を取得する。
+例として、AMIを検索した上で、AWSから特定のAMIの値を取得する。
 
 ```elixir
 ###############################################
@@ -891,17 +667,17 @@ data "aws_ami" "bastion" {
 
 <br>
 
-### output
+### ```output```
 
-#### ・outputとは
+#### ・```output```とは
 
-モジュールで構築されたリソースがもつ特定の値を出力する。可読性の観点から、リソース一括ではなく、具体的なattributeをアウトプットする。
+モジュールで構築されたリソースがもつ特定の値を出力する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力するようにした方がよい。
 
 #### ・実装方法
 
 **＊実装例＊**
 
-例として、ALBを示す。```resource```ブロックと```data```ブロックでアウトプットの方法が異なる。
+例として、ALBを示す。```resource```ブロックと```data```ブロックで```output```の方法が異なる。
 
 ```elixir
 ###############################################
@@ -915,17 +691,17 @@ output "elb_service_account_arn" {
   value = data.aws_elb_service_account.this.arn
 }
 ```
-#### ・count関数のアウトプット
+#### ・count関数の```output```
 
 後述の説明を参考にせよ。
 
-#### ・for_each関数のアウトプット
+#### ・for_each関数の```output```
 
 後述の説明を参考にせよ。
 
 <br>
 
-## 05. メタ引数
+## 04. メタ引数
 
 ### メタ引数とは
 
@@ -1048,7 +824,7 @@ resource "aws_nat_gateway" "this" {
 
 # foo bucket
 resource "aws_s3_bucket" "foo" {
-  bucket = "prd-foo-foo-bucket"
+  bucket = "prd-foo-bucket"
   acl    = "private"
 }
 
@@ -1082,7 +858,7 @@ resource "aws_s3_bucket_policy" "foo" {
 
 #### ・countとは
 
-指定した数だけ、リソースの構築を繰り返す。```count.index```でインデックス数を出力する。
+指定した数だけ、リソースの構築を繰り返す。```count.index```でインデックス数を展開する。
 
 **＊実装例＊**
 
@@ -1102,9 +878,9 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ・list型でアウトプット
+#### ・list型で```output```
 
-リソースの構築に```count```関数を用いた場合、そのリソースはlist型として扱われる。そのため、キー名を指定してアウトプットできる。この時、アウトプットはlist型になる。ちなみに、```for_each```関数で構築したリソースはアスタリスクでインデックス名を指定できないので、注意。
+リソースの構築に```count```関数を用いた場合、そのリソースはlist型として扱われる。そのため、キー名を指定して```output```できる。この時、```output```はlist型になる。ちなみに、```for_each```関数で構築したリソースはアスタリスクでインデックス名を指定できないので、注意。
 
 **＊実装例＊**
 
@@ -1283,9 +1059,9 @@ resource "aws_nat_gateway" "this" {
 
 
 
-#### ・単一値でアウトプット
+#### ・単一値で```output```
 
-リソースの構築に```for_each```関数を用いた場合、そのリソースはmap型として扱われる。そのため、キー名を指定してアウトプットできる。
+リソースの構築に```for_each```関数を用いた場合、そのリソースはmap型として扱われる。そのため、キー名を指定して```output```できる。
 
 ```elixir
 ###############################################
@@ -1307,7 +1083,7 @@ output "public_c_subnet_id" {
 }
 ```
 
-#### ・map型でアウトプット
+#### ・map型で```output```
 
 **＊実装例＊**
 
@@ -1600,7 +1376,7 @@ resource "aws_foo" "foo" {
 
 <br>
 
-## 06. tpl形式の切り出しと読み出し
+## 05. tpl形式の切り出しと読み出し
 
 ### templatefile関数
 
@@ -1628,7 +1404,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-バケットポリシーを定義するtpl形式ファイルでは、string型で出力する場合は```"${}"```で、int型で出力する場合は```${}```で出力する。ここで拡張子をjsonにしてしまうと、int型の出力をjsonの構文エラーとして扱われてしまう。
+バケットポリシーを定義するtpl形式ファイルでは、string型の場合は```"${}"```で、int型の場合は```${}```で変数を展開する。ここで拡張子をjsonにしてしまうと、int型の出力をjsonの構文エラーとして扱われてしまう。
 
 ```bash
 {
@@ -1685,7 +1461,7 @@ int型を変数として渡せるように、拡張子をjsonではなくtplと�
     # コンテナ名
     "name": "laravel",
     # ECRのURL。タグを指定しない場合はlatestが割り当てられる。
-    "image": "*****.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-laravel-repository",
+    "image": "${laravel_ecr_repository_url}",
     "essential": true,
     "portMappings": [
       {
@@ -1743,291 +1519,3 @@ int型を変数として渡せるように、拡張子をjsonではなくtplと�
 ]
 ```
 
-<br>
-
-## 07. 命名規則
-
-### module
-
-AWSリソースのアルファベット順にmoduleを並べる。また、変数やアウトプット値をモジュールに渡す時もAWSリソースのアルファベット順とする。
-
-
-
-### 変数の命名
-
-#### ・単数形と複数形の命名分け
-
-複数の値を持つlist型の変数であれば複数形で命名する。一方で、string型など値が1つしかなければ単数形とする。
-
-**＊実装例＊**
-
-例として、VPCを示す。
-
-```elixir
-###############################################
-# VPC variables
-###############################################
-vpc_availability_zones             = { a = "a", c = "c" }
-vpc_cidr                           = "n.n.n.n/23"
-vpc_subnet_private_datastore_cidrs = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-vpc_subnet_private_app_cidrs       = { a = "n.n.n.n/25", c = "n.n.n.n/25" }
-vpc_subnet_public_cidrs            = { a = "n.n.n.n/27", c = "n.n.n.n/27" }
-```
-
-<br>
-
-### 環境変数の命名
-
-AWSリソースのアルファベット順に環境変数を並べる、環境変数の名前は、用いるAWSリソースの名前を最初につけるようにする。list型またはmap型であれば複数形、それ以外であれば単数形とする。
-
-```elixir
-###############################################
-# Route53
-###############################################
-
-# ～ 中略 ～
-
-###############################################
-# VPC
-###############################################
-
-# ～ 中略 ～
-
-###############################################
-# WAF
-###############################################
-waf_blocked_user_agents = [
-  "AdCrawler",
-]
-```
-
-複数のAWSリソースで用いる場合は、『General』とし、グローバルな名前にする。
-
-```elixir
-###############################################
-# General
-###############################################
-camel_case_prefix = "Bar"
-region            = "ap-northeast-1"
-environment       = "stg"
-service           = "bar"
-```
-
-<br>
-
-### リソースとデータリソースの命名
-
-#### ・リソース名で種類を表現
-
-リソース名において、リソースタイプを繰り返さないようにする。もし種類がある場合、リソース名でその種類を表現する。
-
-**＊実装例＊**
-
-例として、VPCを示す。
-
-```elixir
-###############################################
-# VPC route table
-###############################################
-
-# 良い例
-resource "aws_route_table" "public" {
-
-}
-
-resource "aws_route_table" "private" {
-
-}
-```
-
-```elixir
-###############################################
-# VPC route table
-###############################################
-
-# 悪い例
-resource "aws_route_table" "route_table_public" {
-
-}
-
-resource "aws_route_table" "route_table_private" {
-
-}
-```
-
-#### ・this
-
-1つのリソースタイプに、1つのリソースしか種類が存在しない場合、```this```で命名する。ただし、後から種類が増えることがよくあるため、非推奨である。
-
-**＊実装例＊**
-
-```elixir
-resource "aws_internet_gateway" "this" {
-
-}
-```
-
-#### ・AWSリソース名
-
-1. `<接頭辞>-<種類>-<接尾辞>`とする。
-2. 接頭辞は、 `<稼働環境>-<サービス名>`とする。
-3. 接尾辞は、AWSリソース名とする。
-
-**＊実装例＊**
-
-例として、CloudWatchを示す。この時、他のresourceと比較して、種類はALBのHTTPCode_TARGET_4XX_Countメトリクスに関するアラームと見なせる。そのため、`alb_httpcode_4xx_count`と名付けている。
-
-```elixir
-resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
-
-  alarm_name = "prd-foo-alb-httpcode-target-4xx-count-alarm"
-  
-}
-```
-
-#### ・設定の順序、行間
-
-最初に`count`や`for_each`を設定し改行する。その後、各リソース別の設定を行間を空けずに記述する（この順番にルールはなし）。最後に共通の設定として、`tags`、`depends_on`、`lifecycle`、の順で配置する。ただし実際、これらの全ての設定が必要なリソースはない。
-
-**＊実装例＊**
-
-```elixir
-###############################################
-# EXAMPLE
-###############################################
-resource "aws_baz" "this" {
-  for_each = var.vpc_availability_zones # 最初にfor_each
-  # スペース
-  subnet_id = aws_subnet.public[*].id # 各設定（順番にルールなし）
-  # スペース
-  tags = {
-    Name = format(
-      "prd-foo-%d-baz",
-      each.value
-    )
-  }
-  # スペース
-  depends_on = []
-  # スペース
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-```
-
-<br>
-
-### アウトプット値の命名
-
-#### ・基本ルール
-
-アウトプット値の名前は、『```<リソース名>_<リソースタイプ>_<attribute名>```』で命名する。
-
-**＊実装例＊**
-
-例として、CloudWatchを示す。リソース名は`ecs_container_nginx`、リソースタイプは`aws_cloudwatch_log_group`、attributeは`name`オプションである。
-
-```elixir
-output "ecs_container_nginx_cloudwatch_log_group_name" {
-  value = aws_cloudwatch_log_group.ecs_container_nginx.name
-}
-```
-
-**＊実装例＊**
-
-例として、IAM Roleを示す。
-
-```elixir
-###############################################
-# Output IAM Role
-###############################################
-output "ecs_task_execution_iam_role_arn" {
-  value = aws_iam_role.ecs_task_execution.arn
-}
-
-output "lambda_execute_iam_role_arn" {
-  value = aws_iam_role.lambda_execute.arn
-}
-
-output "rds_enhanced_monitoring_iam_role_arn" {
-  value = aws_iam_role.rds_enhanced_monitoring.arn
-}
-```
-
-#### ・thisは省略
-
-リソース名が```this```である場合、アウトプット値名ではこれを省略してもよい。
-
-**＊実装例＊**
-
-例として、ALBを示す。
-
-```elixir
-###############################################
-# Output ALB
-###############################################
-output "alb_zone_id" {
-  value = aws_lb.this.zone_id
-}
-
-output "alb_dns_name" {
-  value = aws_lb.this.dns_name
-}
-```
-
-#### ・冗長なattribute名は省略
-
-**＊実装例＊**
-
-例として、ECRを示す。
-
-```elixir
-###############################################
-# Output ECR
-###############################################
-output "laravel_ecr_repository_url" {
-  value = aws_ecr_repository.laravel.repository_url
-}
-
-output "nginx_ecr_repository_url" {
-  value = aws_ecr_repository.nginx.repository_url
-}
-```
-
-<br>
-
-## 08. レビュー手順
-
-### （１）コンソール画面にログイン
-
-ただソースコードを眺めているより、レビュー対象がコンソール画面のどこに相当するのかも並行して確認した方が、Terraformを理解しやすい。コンソール画面にログインする。
-
-<br>
-
-### （２）AWSのドキュメントや技術記事を確認
-
-コンソール画面の相当する設定箇所がわかったところで、設定値が正しいかどうかを確認する。以下を確認する。
-
-- AWSのドキュメント
-- 技術記事
-
-<br>
-
-### （３）Terraformのドキュメントや技術記事を確認
-
-AWSを構築する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
-
-- TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-- 技術記事
-
-注意点として、AWSプロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。以下の点でレビューする。
-
-- 実装方法がプロジェクトの実装ルールに即しているか
-- リファレンスに非推奨と注意書きされた方法で実装していないか
-- リリースの粒度は適切か
-
-<br>
-
-### （４）developブランチへのマージは問題ないか
-
-developブランチにマージするコミット = 次にリリースするコミット である。他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、developブランチへのマージに『待った！』をかけること。

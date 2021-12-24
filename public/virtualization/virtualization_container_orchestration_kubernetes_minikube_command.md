@@ -72,8 +72,6 @@ $ minikube config set cpus 12
 $ minikube config set memory 4096
 ```
 
-
-
 <br>
 
 ### dashboard

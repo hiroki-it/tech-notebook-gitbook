@@ -42,7 +42,7 @@ $ terraform init \
     -backend=true \
     -reconfigure \
     # バケット名
-    -backend-config="bucket=foo-tfstate-bucket" \
+    -backend-config="bucket=prd-foo-tfstate-bucket" \
     # tfstateファイル名
     -backend-config="key=terraform.tfstate" \
     # credentialsファイルのプロファイル名
