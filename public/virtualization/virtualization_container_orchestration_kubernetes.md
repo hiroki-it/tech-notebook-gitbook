@@ -14,7 +14,7 @@
 
 #### ・kubernetesクライアントとは
 
-kubernetesクライアントは、kubectlコマンドを使用して、kubernetesマスターAPIをコールできる。
+kubernetesクライアントは、kubectlコマンドを用いて、kubernetesマスターAPIをコールできる。
 
 <br>
 
@@ -104,7 +104,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ・ワーカーノードとは
 
-ポッドが稼働するサーバ単位こと。
+ポッドが稼働するサーバー単位こと。
 
 参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
 
@@ -184,9 +184,22 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 #### ・ClusterIPサービス
 
-クラスターのIPアドレスを返却し、サービスに対するインバウンド通信をポッドにルーティングする。クラスター内部からのみアクセスできる。
+クラスターのIPアドレスを返却し、サービスに対するインバウンド通信をポッドにルーティングする。クラスター内部からのみアクセスできる。クラスターのIPアドレスは、ポッドの```/etc/resolv.conf ```ファイルに記載されている。ポッド内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。
 
-参考：https://thinkit.co.jp/article/18263
+参考：
+
+- https://zenn.dev/suiudou/articles/aa2194b6f53f8f
+- https://thinkit.co.jp/article/18263
+
+```bash
+$ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+
+[root@<ポッド名>] $ cat /etc/resolv.conf 
+
+nameserver nn.nn.n.nn # クラスターのIPアドレス
+search default.svc.cluster.local svc.cluster.local cluster.local 
+options ndots:5
+```
 
 #### ・LoadBalancerサービス
 
@@ -317,10 +330,10 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 ```bash
 # ポッドに接続する
-kubectl exec -it foo-pod-***** -c foo-container -- bash
+kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
 
 # ストレージを表示する
-[root@<ホスト名>:/var/www/html] $ df -h
+[root@<ポッド名>:/var/www/html] $ df -h
 
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          59G   36G   20G  65% /
@@ -350,7 +363,9 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 ```bash
 # ノード内でdockerコマンドを実行
-$ docker inspect c38b90c9c9e9
+$ docker inspect <コンテナID>
+  
+    {
 
         # 〜 中略 〜
 
@@ -381,6 +396,8 @@ $ docker inspect c38b90c9c9e9
             },
 
             # 〜 中略 〜
+        ]
+    }
 ```
 
 #### ・EmptyDir
@@ -391,7 +408,7 @@ $ docker inspect c38b90c9c9e9
 
 #### ・外部ボリューム
 
-Kubernetes外のストレージを使用したボリュームのこと。クラウドベンダー、NFS、などがある。
+Kubernetes外のストレージを使用したボリュームのこと。外部ボリュームには、クラウドベンダーのものやNFS、などがある。
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
@@ -401,7 +418,7 @@ Kubernetes外のストレージを使用したボリュームのこと。クラ�
 
 ### サービスの名前解決
 
-#### ・ドメイン名
+#### ・レコードタイプとドメイン名の関係
 
 クラスター内の全てのサービスにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
 
@@ -411,6 +428,30 @@ Kubernetes外のストレージを使用したボリュームのこと。クラ�
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | A/AAAAレコード | ```<サービス名>.<名前空間>.svc.<クラスターのドメイン名>```   | 通常のサービスの名前解決ではClusterIPが返却される。一方でHeadlessサービスの名前解決ではポッドのIPアドレスが返却される。 |
 | SRVレコード    | ```_<ポート名>._<プロトコル>.<サービス名>.<名前空間>.svc.cluster.local``` | 要勉強                                                       |
+
+#### ・名前解決
+
+サービスのドメイン名を用いて、ポッド内から```nslookup```コマンドの正引きを実行する。サービスに```meta.name```タグが設定されている場合、サービスのドメイン名は、```meta.name```タグの値になる。
+
+参考：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
+
+```bash
+# ポッド内から正引き
+[root@<ポッド名>:〜] $ nslookup <サービスのmeta.name値>
+
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:  <サービスのmeta.name値>.default.svc.cluster.local
+Address:  10.105.157.184
+```
+
+異なる名前空間にあるサービスの名前解決を行う場合は、サービスのドメイン名の後に名前空間を指定する必要がある。
+
+```bash
+# ポッド内から正引き
+[root@<ポッド名>:〜] $ nslookup <サービスのmeta.name値>.<名前空間>
+```
 
 <br>
 
@@ -426,4 +467,3 @@ Kubernetes外のストレージを使用したボリュームのこと。クラ�
 | -------------- | ------------------------------------------------------- | -------------------------------- |
 | A/AAAAレコード | ```<ポッドのIPアドレス>.<名前空間>.pod.cluster.local``` | ポッドのIPアドレスが返却される。 |
 
-#### 

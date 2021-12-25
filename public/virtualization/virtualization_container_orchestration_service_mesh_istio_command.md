@@ -15,7 +15,8 @@
 Ingress Gateway、Egress Gateway、プロキシコンテナのステータスを表示する。
 
 ```bash
-$ istioctl proxy-status              
+$ istioctl proxy-status  
+
 NAME                                      CDS        LDS        EDS        RDS          ISTIOD           VERSION
 istio-egressgateway-*****.istio-system    SYNCED     SYNCED     SYNCED     NOT SENT     istiod-*****     1.12.1
 istio-ingressgateway-*****.istio-system   SYNCED     SYNCED     SYNCED     NOT SENT     istiod-*****     1.12.1

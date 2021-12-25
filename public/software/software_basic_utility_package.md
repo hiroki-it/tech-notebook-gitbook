@@ -1,6 +1,111 @@
 # パッケージ
 
-## 01. supervisor
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/
+
+<br>
+
+## 01. dnsutils
+
+### インストール
+
+#### ・apt-get経由
+
+``` bash
+$ apt-get install dnsutils
+```
+
+#### ・yum経由
+
+```bash
+$ yum install bind-utils
+```
+
+<br>
+
+### nslookup
+
+#### ・オプション無し
+
+正引き／逆引きによる名前解決を行う。もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。
+
+**＊例＊**
+
+```bash
+# 正引き
+$ nslookup google.co.jp
+
+Non-authoritative answer:
+Server:  UnKnown
+Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
+
+Name:  google.co.jp
+Addresses:  2404:6800:4004:80f::2003 # IPv6アドレス
+            172.217.175.3            # IPv4アドレス
+```
+
+```bash
+# 逆引き
+$ nslookup 172.217.175.3
+
+Server:  UnKnown
+Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
+
+Name:  nrt20s18-in-f3.1e100.net # IPv4アドレスにマッピングされたドメイン名
+Address:  172.217.175.3 # IPv4アドレス
+```
+
+#### ・-type
+
+正引き／逆引きによる名前解決を行い、この時に指定したレコードタイプのレコード値を返却させる。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
+
+**＊例＊**
+
+名前解決を行い、NSレコード値を返却させる。
+
+```bash
+$ nslookup -type=NS google.co.jp
+
+Non-authoritative answer:
+Server:  UnKnown
+Address:  2400:2650:7e1:5a00:1111:1111:1111:1111
+
+google.co.jp    nameserver = ns3.google.com
+google.co.jp    nameserver = ns4.google.com
+google.co.jp    nameserver = ns2.google.com
+google.co.jp    nameserver = ns1.google.com
+
+ns1.google.com  AAAA IPv6 address = 2001:4860:4802:32::a
+ns2.google.com  AAAA IPv6 address = 2001:4860:4802:34::a
+ns3.google.com  AAAA IPv6 address = 2001:4860:4802:36::a
+ns4.google.com  AAAA IPv6 address = 2001:4860:4802:38::a
+ns1.google.com  internet address = 216.239.32.10
+ns2.google.com  internet address = 216.239.34.10
+ns3.google.com  internet address = 216.239.36.10
+ns4.google.com  internet address = 216.239.38.10
+(root)  ??? unknown type 41 ???
+```
+
+<br>
+
+## 02. supervisor
+
+### インストール
+
+#### ・pip経由
+
+参考：http://supervisord.org/installing.html#installing-a-distribution-package
+
+```bash
+$ pip3 install supervisor
+```
+
+<br>
 
 ### supervisorの構成要素
 
@@ -9,10 +114,6 @@
 Python製のユーティリティであり、常駐プロセスを一括で管理する。
 
 参考：http://supervisord.org/index.html
-
-```bash
-$ pip3 install supervisor
-```
 
 #### ・supervisorctl
 
@@ -242,6 +343,4 @@ $ supervisorctl restart <常駐プロセス名>
 ```
 $ supervisorctl update
 ```
-
-
 

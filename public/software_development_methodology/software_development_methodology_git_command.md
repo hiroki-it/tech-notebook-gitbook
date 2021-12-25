@@ -22,10 +22,10 @@ $ git clone https://github.com/<組織名>/<リポジトリ名>.git
 
 #### ・```clone <SSH接続>```
 
-サーバ接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、Githubの接続名は、『```github.com```』になっている。
+サーバー接続名は、SSH接続の設定ファイル（```~/.ssh/config```）に記載されている。デフォルトでは、Githubの接続名は、『```github.com```』になっている。
 
 ```bash
-$ git clone git@<ssh-configファイルでのサーバ接続名>:<組織名>/<リポジトリ名>.git
+$ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<リポジトリ名>.git
 ```
 
 <br>
@@ -522,7 +522,7 @@ To github.com:hiroki-it/Symfony2_Nyumon.git
 
 派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを行う。
 
-**＊コマンド例（コミットメッセージの変更）＊**
+**＊例（コミットメッセージの変更）＊**
 
 1. まず、```log ```コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
@@ -593,7 +593,7 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 ```
 で解決し、```push```する。
 
-**＊コマンド例（Author名とCommiter名の変更）＊**
+**＊例（Author名とCommiter名の変更）＊**
 
 1. ハッシュ値を指定して、```rebase```コマンドを実行する。
 

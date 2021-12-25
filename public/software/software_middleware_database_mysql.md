@@ -91,7 +91,7 @@ default-character-set = utf8mb4 # utf8
 MySQLのDBやテーブルの情報を管理する。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのボリュームのマウント先として指定される。
 
 ```bash
-[root@<ホスト名>:/var/lib/mysql] $ ls -la
+[root@<コンテナID>:/var/lib/mysql] $ ls -la
 
 drwxrwxrwt 7 mysql mysql     4096 Dec 17 12:55 .
 drwxr-xr-x 1 root  root      4096 Dec  2 11:24 ..
@@ -129,7 +129,7 @@ mysqlコマンドのみをインストールしたい場合
 $ dnf install -y mysql
 ```
 
-mysqlコマンド、データベースサーバ機能、をインストールしたい場合はこちら
+mysqlコマンド、データベースサーバー機能、をインストールしたい場合はこちら
 
 ```bash
 $ dnf install -y mysql-server
@@ -483,7 +483,7 @@ GRANT SELECT ON {DB名}.* TO "{ ユーザ名 }";
 SHOW GRANTS FOR "{ ユーザ名 }";
 ```
 
-作成しただけで権限を何も付与してないユーザの場合、『データベースサーバ内の全データベースに関して、全権限なし』を表す```USAGE```として表示される。
+作成しただけで権限を何も付与してないユーザの場合、『データベースサーバー内の全データベースに関して、全権限なし』を表す```USAGE```として表示される。
 
 ```sql
 GRANT USAGE ON *.* TO "{ ユーザー名 }";

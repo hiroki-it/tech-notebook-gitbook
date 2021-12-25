@@ -433,7 +433,7 @@ TF_VAR_ecr_image_tag=foo
 ###############################
 # VPC
 ###############################
-vpc_cidr_block = "n.n.n.n/n" # IPv4アドレス範囲
+vpc_cidr_block = "n.n.n.n/n" # IPアドレス範囲
 ```
 
 #### ・値のデータ型

@@ -18,7 +18,7 @@
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
-**＊実行例＊**
+**＊例＊**
 
 マニフェストファイルを指定し、```apply```コマンドを実行する。
 
@@ -49,7 +49,7 @@ kubernetesコマンドに関するパラメータを操作する。
 
 パラメータのデフォルト値が設定された```~/.kude/config```ファイルを表示する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl config view
@@ -105,7 +105,7 @@ $kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コ
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 
-**＊実行例＊**
+**＊例＊**
 
 マニフェストファイルを指定し、```create```コマンドを実行する。
 
@@ -125,7 +125,7 @@ service/foo-service created
 
 ポッド数を維持管理するレプリカセットを作成する。ポッドを削除するためには、デプロイメント自体を削除しなければならない。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
@@ -140,7 +140,7 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
 - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
 
-**＊実行例＊**
+**＊例＊**
 
 指定した```.env```ファイルからシークレットを作成する。
 
@@ -176,24 +176,22 @@ secret/foo-secret created
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
-**＊実行例＊**
+**＊例＊**
 
-コンテナを指定して、 ```exec```コマンドを実行する。コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。ポッドのラベル名ではなく、ポッド名であることに注意する。
+コンテナを指定して、デタッチモードで ```exec```コマンドを実行する。
 
 ```bash
 $ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+
+[root@<ポッド名>] $ ls -la 
 ```
+
+コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。ポッドのラベル名ではなく、ポッド名であることに注意する。
 
 ```bash
 $ kubectl exec -it <ポッド名> -- bash
 
 Defaulted container "foo-container" out of: foo-container, bar-container
-```
-
-デタッチモードを用いて、起動中コンテナ内でコマンドを実行する。
-
-```bash
-$ kubectl exec -it <ポッド名> -- bash
 ```
 
 <br>
@@ -209,7 +207,7 @@ $ kubectl exec -it <ポッド名> -- bash
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
-**＊実行例＊**
+**＊例＊**
 
 ClusterIPサービスを作成する。
 
@@ -243,7 +241,7 @@ $ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート�
 
 指定したノードの情報を表示する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl get nodes 
@@ -256,7 +254,7 @@ docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノ
 
 指定したポッドの情報を表示する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl get pods
@@ -269,7 +267,7 @@ foo-pod    0/2     ImagePullBackOff   0          7m52s
 
 指定したシークレットの情報を表示する。
 
-**＊実行例＊**
+**＊例＊**
 
 指定したシークレットをYAML形式で表示する。
 
@@ -295,7 +293,7 @@ type: Opaque
 
 指定したサービスの情報を表示する。
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl get services
@@ -303,6 +301,40 @@ $ kubectl get services
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 foo-service    ClusterIP   nn.nnn.nnn.n   <none>        80/TCP    10s
 kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
+```
+
+<br>
+
+### label
+
+#### ・labelとは
+
+指定したオブジェクトのラベルを操作する。
+
+#### ・オプション無し
+
+**＊例＊**
+
+指定したオブジェクトにラベルを作成する。
+
+```bash
+$ kubectl label <オブジェクト名> foo=bar
+```
+
+指定したオブジェクトのラベルを削除する。
+
+```bash
+$ kubectl label <オブジェクト名> foo-
+```
+
+#### ・--overwrite
+
+**＊例＊**
+
+指定したオブジェクトにラベルの値を変更する。
+
+```bash
+$ kubectl label --overwrite <オブジェクト名> foo=bar
 ```
 
 <br>
@@ -317,7 +349,7 @@ kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 
 #### ・オプション無し
 
-**＊実行例＊**
+**＊例＊**
 
 ポッド名とコンテナ名を指定し、コンテナのログを表示する。
 
@@ -330,7 +362,7 @@ $ kubectl logs -n <名前空間> <ポッド名> -c <コンテナ名>
 名前空間、ポッド名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
-kubectl logs -n kube-system <ポッド名> -c kube-proxy
+$ kubectl logs -n kube-system <ポッド名> -c kube-proxy
 
 I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: nnn.nnn.nn.n
 I1211 05:34:22.263084       1 server_others.go:140] Detected node IP nnn.nnn.nn.n
@@ -361,7 +393,7 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
 - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl port-forward <ポッド名> <ホストポート>:<ポッドポート>
@@ -377,7 +409,7 @@ $ kubectl port-forward <ポッド名> <ホストポート>:<ポッドポート>
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
-**＊実行例＊**
+**＊例＊**
 
 ```bash
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'  
@@ -395,7 +427,7 @@ Starting to serve on [::]:8001
 
 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
-**＊実行例＊**
+**＊例＊**
 
 もし```restart```オプションが```Always```なら、デプロイメントが作成される。
 

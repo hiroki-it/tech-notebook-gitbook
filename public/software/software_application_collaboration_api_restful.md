@@ -399,18 +399,18 @@ x-api-key: *****
 | 409    | 競合エラー                                     | 誤ったリクエストである。CREATE処理やUPDATE処理によって、新しいデータと現在のDBのデータの間で競合が起こっていることを表す。一意な識別子として用いているデータの重複や、楽観的ロックによる排他制御が起こる場合に用いる。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_database.html |
 | 412    | リソースアクセスエラー                         | 誤ったリクエストである。リソースへのアクセスに失敗したことを表す。 |
 | 422    | バリデーションエラー                           | 誤ったリクエストである。送信されたパラメータが誤っていることを表す。 |
-| 500    | サーバエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
+| 500    | サーバーエラー                                   | サーバーの処理でランタイムエラーが起こっていることを表す。エラーの種類については、以下のリンク先を参考にせよ。<br>参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html |
 | 503    | ビジネスロジックエラー                         | エラーは起こらないが、ビジネス上ありえないデータをリクエストしていることを表す。 |
 
 #### ・リダイレクトとリライトの違い
 
-リダイレクトでは、リクエストされたURLをサーバ側で新しいURLに書き換えてブラウザに返信し、ブラウザがリクエストを再送信する。そのため、クライアント側は新しいURLで改めてリクエストを送信することになる。一方で、リライトでは、リクエストされたURLをサーバ側で異なるURLに書き換え、サーバがそのままリクエストを送信する。そのため、クライアント側は古いURLのままリクエストを送信することになる。その他の違いについては、以下を参考にせよ。
+リダイレクトでは、リクエストされたURLをサーバー側で新しいURLに書き換えてブラウザに返信し、ブラウザがリクエストを再送信する。そのため、クライアント側は新しいURLで改めてリクエストを送信することになる。一方で、リライトでは、リクエストされたURLをサーバー側で異なるURLに書き換え、サーバーがそのままリクエストを送信する。そのため、クライアント側は古いURLのままリクエストを送信することになる。その他の違いについては、以下を参考にせよ。
 
 参考：https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
 
 #### ・リライトとフォワードの違い
 
-リライトでは異なるサーバにリクエストを送信できるが、フォワードでは同一サーバ内の異なるファイルにアクセスすることしかできない。
+リライトでは異なるサーバーにリクエストを送信できるが、フォワードでは同一サーバー内の異なるファイルにアクセスすることしかできない。
 
 <br>
 
@@ -418,7 +418,7 @@ x-api-key: *****
 
 ### メッセージとは
 
-アプリケーション層で生成されるデータを、メッセージという。リクエスト時にクライアント側で生成されるメッセージをリクエストメッセージ、レスポンス時にサーバ側で生成されるメッセージをレスポンスメッセージという。
+アプリケーション層で生成されるデータを、メッセージという。リクエスト時にクライアント側で生成されるメッセージをリクエストメッセージ、レスポンス時にサーバー側で生成されるメッセージをレスポンスメッセージという。
 
 <br>
 
@@ -479,7 +479,7 @@ Accept-Language: ja, en-US; q=0.9, en; q=0.8
 # 遷移元のページ
 Referer: https://foo.co.jp/
 # 送信元IPアドレス
-# ※プロキシサーバ（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
+# ※プロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ```
 
@@ -514,7 +514,7 @@ Referer: https://foo.co.jp/
 # 各Cookieの値（二回目のリクエスト時に設定される）
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 # 送信元IPアドレス
-# ※プロキシサーバ（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
+# ※プロキシサーバー（ALBやCloudFrontなども含む）を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 
 # ボディ。（SSLによって暗号化されるため閲覧不可）
@@ -580,7 +580,7 @@ curl_close($curl);
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
 Connection: close
-# Webサーバ（nginx、apache、AmazonS3などが表示される）
+# Webサーバー（nginx、apache、AmazonS3などが表示される）
 Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
 # リファラポリシー（nginx、apache、などで実装可能）
@@ -787,7 +787,7 @@ POST https://example.com/users/12345?format=json
 
 #### ・Cookie情報に関わるヘッダー
 
-最初、サーバからのレスポンス時、Set-Cookieヘッダーを用いて送信される。反対に、クライアントからのリクエスト時、Cookie情報は、Cookieヘッダーを用いて送信される。
+最初、サーバーからのレスポンス時、Set-Cookieヘッダーを用いて送信される。反対に、クライアントからのリクエスト時、Cookie情報は、Cookieヘッダーを用いて送信される。
 
 
 | HTTPメッセージの種類 | ヘッダー名 | 属性     | 内容                                                         |
@@ -812,7 +812,7 @@ $_COOKIE = ["Cookie名" => "値"]
 #### ・仕組み
 
 1. 最初、ブラウザはリクエストでデータを送信する。
-2. サーバは、レスポンスヘッダーのSet-CookieヘッダーにCookie情報を埋め込んで送信する。
+2. サーバーは、レスポンスヘッダーのSet-CookieヘッダーにCookie情報を埋め込んで送信する。
 
 ```php
 <?php
@@ -829,7 +829,7 @@ setcookie(
 ```
 
 3. ブラウザは、そのCookie情報を保存する。
-4. 2回目以降のリクエストでは、ブラウザは、リクエストヘッダーのCookieヘッダーにCookie情報を埋め込んでサーバに送信する。サーバは、Cookie情報に紐付くクライアントのデータをReadする。
+4. 2回目以降のリクエストでは、ブラウザは、リクエストヘッダーのCookieヘッダーにCookie情報を埋め込んでサーバーに送信する。サーバーは、Cookie情報に紐付くクライアントのデータをReadする。
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/cookie.png)
 
@@ -887,7 +887,7 @@ session.save_handler = files
 session.save_path = "/tmp"
 ```
 
-セッションファイルは、サーバ外（PHP Redis、ElastiCache Redisなど）に保存することもできる。```/etc/php-fpm.d/www.conf```ファイルではなく、```/etc/php.ini```ファイルにて保存先の指定が必要である。ElastiCache Redisについては、以下のリンク先を参考にせよ。
+セッションファイルは、サーバー外（PHP Redis、ElastiCache Redisなど）に保存することもできる。```/etc/php-fpm.d/www.conf```ファイルではなく、```/etc/php.ini```ファイルにて保存先の指定が必要である。ElastiCache Redisについては、以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
@@ -933,8 +933,8 @@ session.gc_divisor = 1
 #### ・仕組み
 
 1. 最初、ブラウザはリクエストでデータを送信する。セッションIDを発行し、セッションIDごとに```sess_*****```ファイルを生成。
-2. サーバは、レスポンスヘッダ情報のCookieヘッダーを用いて、セッションIDを送信する。
+2. サーバーは、レスポンスヘッダ情報のCookieヘッダーを用いて、セッションIDを送信する。
 3. ブラウザは、そのセッションIDを保存する。
-4. 2回目以降のリクエストでは、ブラウザは、リクエストヘッダ情報のCookieヘッダーを用いて、セッションIDをサーバに送信する。サーバは、セッションIDに紐付くクライアントのデータをReadする。
+4. 2回目以降のリクエストでは、ブラウザは、リクエストヘッダ情報のCookieヘッダーを用いて、セッションIDをサーバーに送信する。サーバーは、セッションIDに紐付くクライアントのデータをReadする。
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/session-id.png)

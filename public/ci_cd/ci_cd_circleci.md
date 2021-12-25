@@ -510,7 +510,7 @@ jobs:
 
 #### ・machineタイプとは
 
-Linuxサーバを実行環境として設定する。
+Linuxサーバーを実行環境として設定する。
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/machine_executor.png)
 

@@ -14,7 +14,7 @@
 
 #### ・dockerクライアントとは
 
-dockerクライアントは、dockerコマンドを使用してdockerデーモンAPIをコールできる。
+dockerクライアントは、dockerコマンドを用いてdockerデーモンAPIをコールできる。
 
 参考：https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle
 
@@ -51,7 +51,7 @@ dockerクライアントは、dockerコマンドを使用してdockerデーモ�
 
 Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 # ホストをコンテナ側にバインドマウント
@@ -88,7 +88,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 Dockerfileや```docker-compose.yml```ファイルへの定義、```docker```コマンドの実行、で使用できるが、```docker-compose.yml```ファイルでの定義が推奨である。
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 # ホストをコンテナ側にバインドマウント
@@ -117,7 +117,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 #### ・ボリュームマウントの代わりに```COPY```を使用
 
-本番環境ではボリュームマウント（```VOLUME```）や```COPY```を使用して、アプリケーションをdockerイメージに組み込む。
+本番環境ではボリュームマウント（```VOLUME```）や```COPY```を用いて、アプリケーションをdockerイメージに組み込む。
 
 参考：https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments
 
@@ -142,7 +142,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 
 ![Dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
 
-物理サーバへのリクエストメッセージがコンテナに届くまでを以下に示す。物理サーバの```8080```番ポートと、WWWコンテナの```80```番ポートのアプリケーションの間で、ポートフォワーディングを行う。これにより、『```http://<物理サーバのプライベートIPアドレス（localhost）>:8080```』にリクエストを送信すると、WWWコンテナのポート番号に転送されるようになる。
+物理サーバーへのリクエストメッセージがコンテナに届くまでを以下に示す。物理サーバーの```8080```番ポートと、WWWコンテナの```80```番ポートのアプリケーションの間で、ポートフォワーディングを行う。これにより、『```http://<物理サーバーのプライベートIPアドレス（localhost）>:8080```』にリクエストを送信すると、WWWコンテナのポート番号に転送されるようになる。
 
 | 処理場所           | リクエストメッセージの流れ         | プライベートIPアドレス例                                     | ポート番号例 |
 | :----------------- | :--------------------------------- | :----------------------------------------------------------- | ------------ |
@@ -154,7 +154,7 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
 |                    | ↑                                  |                                                              |              |
 | ホストOS           | 仮想ブリッジ                       |                                                              |              |
 |                    | ↑                                  |                                                              |              |
-| ホストハードウェア | 物理サーバのNIC（ Ethernetカード） | ```http://127.0.0.1```                                       | ```:8080```  |
+| ホストハードウェア | 物理サーバーのNIC（ Ethernetカード） | ```http://127.0.0.1```                                       | ```:8080```  |
 
 <br>
 
@@ -196,7 +196,7 @@ ac017dda93d6        host                    host                local
 
 『ホスト』から『ホスト』に対して、アウトバウンド通信を送信する。ここでのホスト側のホスト名は、『```localhost```』となる。リクエストは、ポートフォワーディングされたコンテナに転送される。ホストとコンテナの間のネットワーク接続の成否を確認できる。
 
-**＊コマンド例＊**
+**＊例＊**
 
 『ホスト』から『ホスト』に対してアウトバウンド通信を送信し、ホストとappコンテナの間の成否を確認する。
 
@@ -211,7 +211,7 @@ $ curl --fail http://localhost:8080/
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html
 
-**＊コマンド例＊**
+**＊例＊**
 
 『appコンテナ』から『nginxコンテナ』に対して、アウトバウンド通信を送信し、appコンテナとnginxコンテナの間の成否を確認する。
 
@@ -324,7 +324,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。dockerコンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
 
 ```bash
-[root@<ホスト名>:/dev] $ ls -la
+[root@<コンテナID>:/dev] $ ls -la
 total 4
 drwxr-xr-x 5 root root  340 Oct 14 11:36 .
 drwxr-xr-x 1 root root 4096 Oct 14 11:28 ..

@@ -137,6 +137,29 @@ spec:
 
 <br>
 
+### strategy
+
+#### ・RollingUpdate
+
+ローリングアップデートを用いて、新しいポッドをデプロイする。
+
+参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
+
+```yaml
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100% # ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイする。
+      maxUnavailable: 0% # ポッドの停止数がレプリカ数を下回らないようにする。
+```
+
+```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイするようになる。また、ポッドの停止数がレプリカ数を下回らないようになる。
+
+![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
+
+<br>
+
 ### template
 
 スケーリング時に複製の鋳型とするポッドを設定する。
@@ -196,8 +219,6 @@ spec:
   accessModes:
     - ReadWriteOnce
 ```
-
-
 
 <br>
 

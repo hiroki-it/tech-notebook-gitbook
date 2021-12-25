@@ -163,7 +163,7 @@ var vm = new Vue({
                 .done((data) => {
 
                     /*
-                    サーバサイドからのJSONをデシリアライズ。             
+                    サーバーサイドからのJSONをデシリアライズ。             
                     dataオプションに設定。
                     */
                     this.staffData = _.map(

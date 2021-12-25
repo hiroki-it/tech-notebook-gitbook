@@ -17,8 +17,8 @@
         * [📖 ︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_process_mode.html)
         * [📖 ︎機械語と進数](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_basic_language_processor_machine_language_and_radix.html)
 * ミドルウェア
-    * OS系
-        * [📖 ︎OS標準搭載](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_os.html)
+    * Linux系
+        * [📖 ︎︎標準搭載ミドルウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_linux.html)
     * Web系
         * [📖 ︎Nginx](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html)
         * [📖 ︎Apache](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html)
@@ -150,8 +150,8 @@
 
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
 
-* 仮想サーバ（仮想マシン）
-    * [📖 ︎仮想サーバ（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)
+* 仮想サーバー（仮想マシン）
+    * [📖 ︎仮想サーバー（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)
     
 * コンテナ
     * Docker

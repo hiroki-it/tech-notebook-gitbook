@@ -99,15 +99,15 @@ $ sudo apachectl graceful
 
 ## 02. 機能の種類
 
-### Webサーバのミドルウェアとして
+### Webサーバーのミドルウェアとして
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png)
 
 <br>
 
-### Appサーバのミドルウェアとして
+### Appサーバーのミドルウェアとして
 
-mod_phpモジュールを読み込むことによって、Appサーバのミドルウェアとしても機能させられる。
+mod_phpモジュールを読み込むことによって、Appサーバーのミドルウェアとしても機能させられる。
 
 <br>
 
@@ -139,7 +139,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 #### ・```VirtualHost```とは
 
-ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを定義する。VirtualHostという名前の通り、1 つのサーバ上で、仮想的に複数のドメインを扱うような処理も定義できる。複数のVirtualHostを設定した場合、1つ目がデフォルト設定として認識される。
+ディレクティブを囲うディレクティブの一種。特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを定義する。VirtualHostという名前の通り、1 つのサーバー上で、仮想的に複数のドメインを扱うような処理も定義できる。複数のVirtualHostを設定した場合、1つ目がデフォルト設定として認識される。
 
 **＊実装例＊**
 
@@ -147,7 +147,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 Listen 80
 NameVirtualHost *:80
 
-# Defaultサーバとして扱う。
+# Defaultサーバーとして扱う。
 <VirtualHost *:80>
     DocumentRoot /www/foo
     ServerName www.example.com
@@ -509,13 +509,13 @@ ErrorLog /var/log/httpd/error_log
 
 | ログレベル | 意味                                   | 設定の目安       |
 | ---------- | -------------------------------------- | ---------------- |
-| emerg      | サーバが稼動できないほどの重大なエラー |                  |
+| emerg      | サーバーが稼動できないほどの重大なエラー |                  |
 | alert      | critよりも重大なエラー                 |                  |
 | crit       | 重大なエラー                           |                  |
 | error      | エラー                                 |                  |
 | warn       | 警告                                   | 本番環境         |
 | notice     | 通知メッセージ                         |                  |
-| info       | サーバ情報                             | ステージング環境 |
+| info       | サーバー情報                             | ステージング環境 |
 | debug      | デバック用の情報                       |                  |
 
 <br>

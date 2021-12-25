@@ -567,7 +567,7 @@ output "nginx_ecr_repository_url" {
 
 ### descriptionオプション
 
-一部のAWSリソースでは、`description`オプションで説明文を設定できる。基本的には英語で説明する。また、文章ではなく、『関係代名詞／形容詞／副詞／前置詞 ＋ 単語』を使用して、『〇〇 な △△』『〇〇 の △△』といった説明になるようにする。
+一部のAWSリソースでは、`description`オプションで説明文を設定できる。基本的には英語で説明する。また、文章ではなく、『関係代名詞／形容詞／副詞／前置詞 ＋ 単語』を用いて、『〇〇 な △△』『〇〇 の △△』といった説明になるようにする。
 
 <br>
 
@@ -590,7 +590,7 @@ output "nginx_ecr_repository_url" {
 
 ### （３）Terraformのドキュメントや技術記事を確認
 
-AWSを構築する場合、TerraformのAWSプロバイダーを使用している。以下を確認する。
+AWSを構築する場合、TerraformのAWSプロバイダーを用いている。以下を確認する。
 
 - TerraformのAWSプロバイダーのドキュメント：https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 - 技術記事

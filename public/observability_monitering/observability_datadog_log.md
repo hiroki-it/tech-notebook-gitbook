@@ -14,7 +14,7 @@
 
 ![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/datadog_log-collection.png)
 
-（１）サーバの場合、稼働するDatadogエージェントが、Datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。
+（１）サーバーの場合、稼働するDatadogエージェントが、Datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。
 
 （２）Datadogにて、ログはパイプラインで処理され、構造化ログになる。
 
@@ -36,9 +36,9 @@
 
 <br>
 
-## 02. サーバのログ収集
+## 02. サーバーのログ収集
 
-### サーバdatadogエージェント
+### サーバーdatadogエージェント
 
 常駐プログラムであり、アプリケーションログを収集し、Datadogに転送する。
 

@@ -24,7 +24,9 @@
 
 <br>
 
-### minikubeのためにIstioをインストール
+### minikubeにおけるIstioの有効化
+
+#### ・istioctlのインストール
 
 参考：https://istio.io/latest/docs/setup/getting-started/#download
 
@@ -47,7 +49,9 @@ $ cd istio-1.12.1
 $ export PATH=$PWD/bin:$PATH
 ```
 
-（４）設定ファイルをインストール
+#### ・Istioの有効化
+
+（１）設定ファイルをインストール
 
 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -55,7 +59,7 @@ $ export PATH=$PWD/bin:$PATH
 $ istioctl install --set profile=demo -y
 ```
 
-（５）minikubeでIstioを使用できるようにする。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようにする。
+（２）minikubeでIstioを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled

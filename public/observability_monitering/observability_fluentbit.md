@@ -197,7 +197,7 @@ Inputs
     Dummy  {"message":"dummy"}
 ```
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 fluent-bit/bin/fluent-bit -i dummy -o stdout
@@ -237,7 +237,7 @@ Fluent Bit v1.8.6
 [2021/01/01 12:00:00] [ info] [sp] stream processor started
 ```
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 $ fluent-bit/bin/fluent-bit \
@@ -274,7 +274,7 @@ log_router:
     - ./storage/logs:/var/www/foo/storage/logs
 ```
 
-**＊コマンド例＊**
+**＊例＊**
 
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
 
@@ -385,7 +385,7 @@ Filters
     Match *
 ```
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 $ fluent-bit/bin/fluent-bit \
@@ -712,7 +712,7 @@ newRelicプラグインがあらかじめインストールされているベー
     match  *
 ```
 
-**＊コマンド例＊**
+**＊例＊**
 
 ```bash
 $ fluent-bit/bin/fluent-bit \

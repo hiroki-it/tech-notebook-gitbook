@@ -56,6 +56,14 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 バックグラウンドで、イメージのビルド／デプロイを実行する。
 
+#### ・--no-prune、--cache-artifacts
+
+イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```run```コマンドを実行する。
+
+```bash
+$ skaffold run --no-prune=false --cache-artifacts=false
+```
+
 #### ・--tail
 
 フォアグラウンドで```run```コマンドを実行する。
