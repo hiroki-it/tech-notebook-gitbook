@@ -136,8 +136,8 @@
 
 * 📦 仮想化
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
-    * 仮想サーバ（仮想マシン）
-        * [📖 ︎仮想サーバ（仮想マシン）](public/virtualization/virtualization_server.md)
+    * 仮想サーバー（仮想マシン）
+        * [📖 ︎仮想サーバー（仮想マシン）](public/virtualization/virtualization_server.md)
     * コンテナ
         * Docker
             * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
