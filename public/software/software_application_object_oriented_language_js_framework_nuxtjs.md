@@ -214,7 +214,7 @@ export function foo() {
 
 #### ・```publicRuntimeConfig```
 
-サーバーサイドとクライアントサイドの両方で参照できる環境変数を定義する。すなわち、全モード（SSG／SPA／SSRモード）が対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
+サーバーサイドとクライアントサイドの両方で参照できる環境変数を定義する。すなわち、全モード（SSG/SPA/SSRモード）が対応している。環境変数は、```pages```、```store```、```components```、```plugin```ディレクトリで使用できる。環境変数は、```context```オブジェクトの```config```変数から取得できる。
 
 参考：
 
@@ -253,7 +253,7 @@ export function foo() {
 
 #### ・```quiet```
 
-ビルド時にログを最小限にする。CICDツールでログが確認できなくなるため、無効化しておいた方が良い。
+ビルド時にログを最小限にする。CI/CDツールでログが確認できなくなるため、無効化しておいた方が良い。
 
 参考：https://ja.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#quiet
 

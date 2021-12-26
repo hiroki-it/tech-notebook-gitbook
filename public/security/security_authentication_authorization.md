@@ -1,4 +1,4 @@
-# Authenticate（認証）／Authorization（認可）
+# Authenticate（認証）/Authorization（認可）
 
 ## はじめに
 
@@ -158,14 +158,14 @@ POST https://example.com/foo HTTP/2
 authorization: Bearer <Bearerトークン>
 ```
 
-サーバーは、Bearerトークンを照合し、合致していれば、認証後ページのレスポンスを送信する。無効なBearerトークンをブラックリストとしてRedis／DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
+サーバーは、Bearerトークンを照合し、合致していれば、認証後ページのレスポンスを送信する。無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理した方が良い。
 
 ```http
 200 OK
 WWW-Authenticate: Bearer realm=""
 ```
 
-認証の解除時は、Redis／DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
+認証の解除時は、Redis/DBでBearerトークンの状態を無効化する。またサーバーは、```401```ステータスでレスポンスを返信し、認証が解除される。
 
 参考：
 
@@ -177,7 +177,7 @@ WWW-Authenticate: Bearer realm=""
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-#### ・正常系／異常系レスポンス
+#### ・正常系/異常系レスポンス
 
 参考：https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
 
@@ -207,7 +207,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 #### ・```Authorization```ヘッダーのトークンのクライアント保持
 
-不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルPCに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、LocalStorage／SessionStorageに保持される。LocalStorageはSessionStorageと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンク先を参考にせよ
+不便ではあるが、```Authorization```ヘッダーは```Cookie```ヘッダーとは異なり、ローカルPCに保存できない。その代わり、ブラウザの設定によって、ブラウザのWebStorageでも保持できる。Chromeでは、LocalStorage/SessionStorageに保持される。LocalStorageはSessionStorageと比べて保存期間が長いため、XSSの危険性がより高い。これらの確認方法については、以下のリンク先を参考にせよ
 
 参考：
 
@@ -445,7 +445,7 @@ GET https://www.instagram.com/auth?<下表で説明> HTTP/1.1
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
-| クエリストリングの種類 | 値              | 必須／任意     |
+| クエリストリングの種類 | 値              | 必須/任意     |
 | ---------------------- | --------------- | -------------- |
 | response_type          | code            | 必須           |
 | client_id              | クライアントID  | 必須           |
@@ -462,7 +462,7 @@ HOST: authorization-server.com # 認可サーバーのホスト
 Location: https://www.facebook.com/login?<下表で説明>
 ```
 
-| クエリストリングのキーの種類 | 値           | 必須／任意                                                   |
+| クエリストリングのキーの種類 | 値           | 必須/任意                                                   |
 | ---------------------------- | ------------ | ------------------------------------------------------------ |
 | code                         | 認可コード   | 必須                                                         |
 | state                        | 任意の文字列 | 認可リクエストのクエリストリングで、stateキーが使用されていれば必須 |
@@ -478,7 +478,7 @@ Content-Type: application/x-www-form-urlencoded
 # 下表で説明
 ```
 
-| ボディのキーの種類 | 値                 | 必須／任意                                                   |
+| ボディのキーの種類 | 値                 | 必須/任意                                                   |
 | ------------------ | ------------------ | ------------------------------------------------------------ |
 | grant_type         | authorization_code | 必須                                                         |
 | code               | 認可コード         | 必須                                                         |

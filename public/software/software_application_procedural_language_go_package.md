@@ -357,7 +357,7 @@ result.RowsAffected // returns found records count, equals `len(users)`
 result.Error        // returns error
 ```
 
-#### ・単一／複数カラム取得
+#### ・単一/複数カラム取得
 
 Gormモデルとプライマリキーを指定して、プライマリキーのモデルに紐付けられたカラムを取得する。
 

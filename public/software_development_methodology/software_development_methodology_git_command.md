@@ -430,11 +430,11 @@ $ git revert -m 1 xyz
 
 ![reset.png](https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png)
 
-#### ・```reset HEAD <ファイル名／ファイルパス>```
+#### ・```reset HEAD <ファイル名/ファイルパス>```
 インデックスから、指定したファイルを削除。
 
 ```bash
-$ git reset HEAD <ファイル名／ファイルパス>
+$ git reset HEAD <ファイル名/ファイルパス>
 ```
 
 #### ・```reset --soft <コミットID>```

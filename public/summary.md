@@ -49,7 +49,7 @@
                 * [📖 PHPコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_command_and_configuration.html)
                 * クラスベース
                     * [📖 ︎クラス](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html)
-                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based_method_data.html)
+                    * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based_method_data.html)
                     * [📖 ︎データ構造](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based_data_structure.html)
                 * ロジック
                     * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_logic_validation.html)
@@ -72,11 +72,11 @@
             * JavaScript
                 * プロトタイプベース
                     * [📖 ︎プロトタイプ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based.html)
-                    * [📖 ︎メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based_method_data.html)
+                    * [📖 ︎メソッド/データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_prototype_based_method_data.html)
                 * ロジック
                     * [📖 ︎検証ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_logic_validation.html)
                     * [📖 ︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_logic_asynchronous_process.html)
-                * パッケージ／フレームワーク
+                * パッケージ/フレームワーク
                     * [📖 ︎パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_package.html)
                     * [📖 ︎Vue.js](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_framework_vuejs.html)
                     * [📖 ︎Nuxt.js](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_framework_nuxtjs.html)
@@ -89,8 +89,8 @@
                 * [📖 Goとは](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go.html)
                 * [📖 Goコマンドと設定](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_command_and_configuration.html)
                 * ロジック
-                    * [📖 メソッド／データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html)
-                * パッケージ／フレームワーク
+                    * [📖 メソッド/データ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html)
+                * パッケージ/フレームワーク
                     * [📖 パッケージ](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_package.html)
                     * [📖 Gin](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_framework_gin.html)
 
@@ -106,7 +106,7 @@
 ## 🌏 ネットワーク
 
 * [📖 ︎ネットワーク](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network.html)
-* [📖 ︎OSI参照モデル／TCP階層モデル](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html)
+* [📖 ︎OSI参照モデル/TCP階層モデル](https://hiroki-it.github.io/tech-notebook-gitbook/public/network/network_osi_tcp_model.html)
 
 <br>
 
@@ -114,7 +114,7 @@
 
 * [📖 ︎サイバー攻撃](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_cyber_attacks.html)
 * [📖 ︎通信データの暗号化技術](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_encryption_technology.html)
-* [📖 ︎認証／認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html)
+* [📖 ︎認証/認可](https://hiroki-it.github.io/tech-notebook-gitbook/public/security/security_authentication_authorization.html)
 
 <br>
 
@@ -139,7 +139,7 @@
     * [📖 ︎ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_logic.html)
     * [📖 ︎ポリシー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
     * [📖 ︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.html)
-    * [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
+    * [📖 ︎CI/CD](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.html)
 * Serverless Framework
     * [📖 ︎serverlessコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
     * [📖 ︎serverless.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)
@@ -181,20 +181,20 @@
 
 <br>
 
-## ♾️ CICD
+## ♾️ CI/CD
 
-* [📖 ︎CICD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
+* [📖 ︎CI/CD](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd.html)
 * [📖 ︎CircleCI](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_circleci.html)
 * [📖 ︎Capistrano](https://hiroki-it.github.io/tech-notebook-gitbook/public/ci_cd/ci_cd_capistrano.html)
 
 <br>
 
-## 🔎 可観測性／監視
+## 🔎 可観測性/監視
 
 * [📖 ︎可観測性](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability.html)
 * [📖 ︎監視](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/monitering.html)
-* Fluentd／FluentBit
-    * [📖 ︎Fluentd／FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentd_and_fluentbit.html)
+* Fluentd/FluentBit
+    * [📖 ︎Fluentd/FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentd_and_fluentbit.html)
     * [📖 ︎FluentBit](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_fluentbit.html)
 * Datadog
     * [📖 ︎メトリクス収集](https://hiroki-it.github.io/tech-notebook-gitbook/public/observability_monitering/observability_datadog_metrics.html)
@@ -205,7 +205,7 @@
 
 <br>
 
-## 👥 ソフトウェア開発手法論／SRE
+## 👥 ソフトウェア開発手法論/SRE
 
 * [📖 ︎ソフトウェア開発手法論](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology.html)
 * [📖 ︎SRE：Site Reliability Engineering](https://hiroki-it.github.io/tech-notebook-gitbook/public/software_development_methodology/software_development_methodology_site_reliability_engineering.html)

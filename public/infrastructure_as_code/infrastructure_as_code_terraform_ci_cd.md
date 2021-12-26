@@ -1,4 +1,4 @@
-# CICD
+# CI/CD
 
 ## はじめに
 
@@ -45,7 +45,7 @@ Terraformには、インフラのバージョンのロールバック機能が�
 
 
 
-## 02. CircleCIを用いたCICD
+## 02. CircleCIを用いたCI/CD
 
 ### 要素
 

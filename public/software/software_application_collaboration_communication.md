@@ -42,7 +42,7 @@ JavaScriptで非同期通信を実現する手法のこと。JavaScript、HTML�
 
 歴史的に、Ajaxを実装するための方法がいくつかある。
 
-| 種類                | 提供                   | 説明                                                         | 補足                                                         |
+| オブジェクト/メソッド                | 提供                   | 説明                                                         | 補足                                                         |
 | ------------------- | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | xhrオブジェクト     | ビルトインオブジェクト | 今では使うことは少ないが、Ajaxが登場した初期の頃によく使われた。 | 参考：https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest |
 | ```fetch```メソッド | ビルトイン関数         |                                                              | 参考：https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch |

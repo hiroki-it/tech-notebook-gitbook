@@ -424,7 +424,7 @@ Fluent Bit v1.8.6
 
 ![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
 
-Fluentdから概念図を拝借した。バッファーとして機能するメモリ／ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番に転送する。プロセスが再起動されると、メモリ／ファイルに蓄えられたログテキストは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている。
+Fluentdから概念図を拝借した。バッファーとして機能するメモリ/ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番に転送する。プロセスが再起動されると、メモリ/ファイルに蓄えられたログテキストは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている。
 
 参考：
 
@@ -730,7 +730,7 @@ $ fluent-bit/bin/fluent-bit \
 
 #### ・FireLensコンテナとは
 
-AWSが提供するFluentBit／Fluentdイメージによって構築されるコンテナであり、Fargateコンテナのサイドカーコンテナとして配置される。Fargateコンテナからログが送信されると、コンテナ内で稼働するFluentBit／Fluentdがこれを収集し、これを他のサービスに転送する。構築のための実装例については、以下のリンクを参考にせよ。
+AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり、Fargateコンテナのサイドカーコンテナとして配置される。Fargateコンテナからログが送信されると、コンテナ内で稼働するFluentBit/Fluentdがこれを収集し、これを他のサービスに転送する。構築のための実装例については、以下のリンクを参考にせよ。
 
 参考：
 
@@ -739,7 +739,7 @@ AWSが提供するFluentBit／Fluentdイメージによって構築されるコ�
 
 #### ・ログの転送先
 
-FluentBit／Fluentdが対応する他のサービスにログを転送できる。
+FluentBit/Fluentdが対応する他のサービスにログを転送できる。
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -753,9 +753,9 @@ FluentBit／Fluentdが対応する他のサービスにログを転送できる�
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html
 
-#### ・ログの収集／転送の仕組み
+#### ・ログの収集/転送の仕組み
 
-以下の順番でログの収集／転送を実行する。
+以下の順番でログの収集/転送を実行する。
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 

@@ -74,7 +74,7 @@ $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 $ sudo httpd -S
 ```
 
-#### ・強制的な起動／停止／再起動
+#### ・強制的な起動/停止/再起動
 
 ```bash
 # 起動

@@ -251,7 +251,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ・json-file
 
-標準出力／標準エラー出力に出力されたログを、```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する。デフォルトの設定値である。
+標準出力/標準エラー出力に出力されたログを、```/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log```ファイルに転送する。デフォルトの設定値である。
 
 ```bash
 {
@@ -283,11 +283,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ・none
 
-標準出力／標準エラー出力に出力されたログを、ファイルやAPIに転送しない。 ファイルに出力しないことで、開発環境のアプリケーションサイズの肥大化を防ぐ。
+標準出力/標準エラー出力に出力されたログを、ファイルやAPIに転送しない。 ファイルに出力しないことで、開発環境のアプリケーションサイズの肥大化を防ぐ。
 
 #### ・awslogs
 
-標準出力／標準エラー出力に出力されたログをCloudWatch-APIに送信する。
+標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。
 
 参考：https://docs.docker.com/config/containers/logging/awslogs/
 
@@ -302,7 +302,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ・gcplogs
 
-標準出力／標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
+標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
 
 参考：https://docs.docker.com/config/containers/logging/gcplogs/
 
@@ -319,7 +319,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 ### 各ベンダーのイメージのログ出力先
 
-#### ・dockerコンテナの標準出力／標準エラー出力
+#### ・dockerコンテナの標準出力/標準エラー出力
 
 Linuxでは、標準出力は『```/proc/<プロセスID>/fd/1```』、標準エラー出力は『```/proc/<プロセスID>/fd/2```』である。dockerコンテナでは、『```/dev/stdout```』が『```/proc/self/fd/1```』のシンボリックリンク、また『```/dev/stderr```』が『```/proc/<プロセスID>/fd/2```』のシンボリックリンクとして設定されている。
 

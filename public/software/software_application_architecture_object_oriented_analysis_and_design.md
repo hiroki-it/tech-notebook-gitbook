@@ -211,7 +211,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### 状態遷移図とは
 
-状態（丸）と⁠遷移（矢印）の関係性に基づいて、ソフトウェアの『動的な振舞』を表現する。矢印の横の説明は、遷移のきっかけとなる『イベント（入力）⁠／アクション（出力）⁠』を表現する。
+状態（丸）と⁠遷移（矢印）の関係性に基づいて、ソフトウェアの『動的な振舞』を表現する。矢印の横の説明は、遷移のきっかけとなる『イベント（入力）⁠/アクション（出力）⁠』を表現する。
 
 ![状態遷移図](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ストップウォッチ状態遷移図.jpg)
 
@@ -275,7 +275,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 <br>
 
-### 構造とビジネスルール／制約の視点
+### 構造とビジネスルール/制約の視点
 
 ドメインモデル図がある。
 
@@ -309,11 +309,11 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 
-#### ・use（引数型／返却値型として用いる関係性）
+#### ・use（引数型/返却値型として用いる関係性）
 
 ![引数型または返却値型として用いる関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/引数型または返却値型として用いる関係性.png)
 
-『use』な関係と表現され、より具体的に説明すると、と引数型／返却値型として用いる関係性である。Dependency（依存）が用いられる。実装例は以下のリンク先を参考にせよ。
+『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として用いる関係性である。Dependency（依存）が用いられる。実装例は以下のリンク先を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_class_based.html
 
@@ -329,7 +329,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 #### ・記法
 
-| 保持する／保持されるクラスの個数 |    記法    |
+| 保持する/保持されるクラスの個数 |    記法    |
 | :------------------------------- | :--------: |
 | 1                                |  ```1```   |
 | 0以上1以下（つまり、0または1）   | ```0..1``` |

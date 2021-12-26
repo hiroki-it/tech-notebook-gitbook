@@ -32,7 +32,7 @@ $ skaffold build --cache-artifacts=false
 
 #### ・dev
 
-アプリケーションのソースコードを監視し、変更が検出された時に、イメージの再ビルド／プッシュ／デプロイを実行する。
+アプリケーションのソースコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。
 
 #### ・--trigger
 
@@ -54,7 +54,7 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 #### ・run
 
-バックグラウンドで、イメージのビルド／デプロイを実行する。
+バックグラウンドで、イメージのビルド/デプロイを実行する。
 
 #### ・--no-prune、--cache-artifacts
 

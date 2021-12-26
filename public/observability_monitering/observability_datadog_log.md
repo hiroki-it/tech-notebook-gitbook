@@ -336,7 +336,7 @@ Datadogに送信されたログのメッセージから値を抽出し、構造�
 
 #### ・リマッパー
 
-指定した属性／タグに割り当てられた値を、別の属性に割り当て直す。再割り当て時に、元々のデータ型を変更できる。
+指定した属性/タグに割り当てられた値を、別の属性に割り当て直す。再割り当て時に、元々のデータ型を変更できる。
 
 **＊例＊**
 
@@ -442,7 +442,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ・ログステータスリマッパー
 
-指定した属性／タグに割り当てられた値を、ルールに基づいて、ステータスファセットの各ステータス（```INFO```、```WARNING```、```ERROR```、など）として登録する。ログコンソール画面にて、ステータスファセットとして表示される。判定ルールについては、以下のリンク先を参考にせよ。
+指定した属性/タグに割り当てられた値を、ルールに基づいて、ステータスファセットの各ステータス（```INFO```、```WARNING```、```ERROR```、など）として登録する。ログコンソール画面にて、ステータスファセットとして表示される。判定ルールについては、以下のリンク先を参考にせよ。
 
 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 
@@ -450,7 +450,7 @@ CloudWatchログから、以下のようなAPI Gatewayアクセスログの構�
 
 #### ・サービスリマッパー
 
-指定した属性／タグに割り当てられた値を、サービスファセットのサービス名として登録する。
+指定した属性/タグに割り当てられた値を、サービスファセットのサービス名として登録する。
 
 参考：https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
 
@@ -975,7 +975,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
-（２）CloudFormationにより、メトリクス／ログ／分散トレースを転送するLambdaやIAMロールを構築する。構築されたIAMロール（```DatadogIntegrationRole```）をDatadogのIAMユーザ（```464622532012```）に委譲できるように、アカウントIDとロール名をDatadogの設定画面に入力する。
+（２）CloudFormationにより、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを構築する。構築されたIAMロール（```DatadogIntegrationRole```）をDatadogのIAMユーザ（```464622532012```）に委譲できるように、アカウントIDとロール名をDatadogの設定画面に入力する。
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
@@ -999,7 +999,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 #### ・ログのメトリクスとは
 
-パイプラインで処理を終えたログに関して、属性／タグに基づくメトリクスを作成する。メトリクスを作成しておくと、ログのレポートとして使用できる。
+パイプラインで処理を終えたログに関して、属性/タグに基づくメトリクスを作成する。メトリクスを作成しておくと、ログのレポートとして使用できる。
 
 参考：https://www.amazon.co.jp/dp/1800568738
 
@@ -1080,7 +1080,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 #### ・ファセットとは
 
-属性／タグの値に基づいて、ログをグルーピングしたもの。
+属性/タグの値に基づいて、ログをグルーピングしたもの。
 
 参考：https://docs.datadoghq.com/ja/logs/explorer/facets/#%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%89%E3%83%91%E3%83%8D%E3%83%AB
 

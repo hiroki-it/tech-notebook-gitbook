@@ -263,7 +263,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 ![ActiveRecord](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ActiveRecord.png)
 
-#### ・メリット／デメリット
+#### ・メリット/デメリット
 
 | 項目             | メリット                                                     | デメリット                                                   |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -515,7 +515,7 @@ class Foo extends Model
 }
 ```
 
-#### ・変更可能／不可能なカラムの定義
+#### ・変更可能/不可能なカラムの定義
 
 変更可能なカラム名を```fillable```プロパティを用いて定義する。カラムが増えるたびに、実装する必要がある。
 
@@ -746,7 +746,7 @@ $filtered = $collection->first(function ($value, $key) {
 
 <br>
 
-## 05-02. Eloquentモデル／ビルダーによるCRUD
+## 05-02. Eloquentモデル/ビルダーによるCRUD
 
 ### CRUDメソッドの返却値型と返却値
 
@@ -774,8 +774,8 @@ Eloquentビルダーが持つcrudを実行するメソッドの返却値型と�
 
 | CRUDメソッドの種類 |          返却値型          |               返却値               | 返却値の説明         |
 | :----------------: | :------------------------: | :--------------------------------: | :------------------- |
-|       create       |     collection／$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
-|        find        | collection／Builder／Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
+|       create       |     collection/$this      |     ```{id:1, name: テスト}```     | 作成したオブジェクト |
+|        find        | collection/Builder/Model |     ```{id:1, name:テスト}```      | 取得したオブジェクト |
 |       update       |           mixed            | ```0```、```1```、```2```、```3``` | 変更したレコード数   |
 |       delete       |           mixed            | ```0```、```1```、```2```、```3``` | 変更したレコード数   |
 
@@ -1002,7 +1002,7 @@ class FooController extends Controller
 
 #### ・```orderBy```メソッド
 
-指定したカラムの昇順／降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを用いる。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを用いて、プライマリキーの昇順を明示的に設定する。
+指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。並び替えた結果を取得するためには、```get```メソッドを用いる。プライマリキーの昇順で取得する場合、```all```メソッドではなく、```orderBy```メソッドを用いて、プライマリキーの昇順を明示的に設定する。
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
@@ -1273,13 +1273,13 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ・```destroy```／```delete```メソッド（物理削除）
+#### ・```destroy```/```delete```メソッド（物理削除）
 
-DELETE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを用いる。手順として、Eloquentビルダーの```find```メソッドで削除対象のModelを検索する。返却されたEloquentビルダーの```destroy```／```delete```メソッドをコールし、自身を削除する。
+DELETE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを用いる。手順として、Eloquentビルダーの```find```メソッドで削除対象のModelを検索する。返却されたEloquentビルダーの```destroy```/```delete```メソッドをコールし、自身を削除する。
 
 #### ・SoftDeletesの有効化（論理削除）
 
-削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```／```delete```メソッドを用いる。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+削除フラグを更新するUPDATE文を実行する。Eloquentモデルの```destroy```/```delete```メソッドを用いる。手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。マイグレーション時に追加される```delete_at```カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
 
 **＊実装例＊**
 
@@ -1351,7 +1351,7 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で、同様に```destroy```／```delete```メソッドを用いて、自身を削除する。物理削除ではなく、```deleled_at```カラムが更新されるようになる。```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
+上記の状態で、同様に```destroy```/```delete```メソッドを用いて、自身を削除する。物理削除ではなく、```deleled_at```カラムが更新されるようになる。```find```メソッドは、```deleled_at```カラムが```NULL```でないレコードを読み出さないため、論理削除を実現できる。
 
 <br>
 
@@ -1727,7 +1727,7 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ・```destroy```／```delete```メソッド
+#### ・```destroy```/```delete```メソッド
 
 **＊実装例＊**
 
@@ -1799,7 +1799,7 @@ class FooController extends Controller
 
 <br>
 
-## 	06. Event／Listener
+## 	06. Event/Listener
 
 ### Event
 
@@ -2443,7 +2443,7 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ・```transaction```メソッド
 
-一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。さらに```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、用いるとアプリケーションがデータベースを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う／行わない場合を比較して、処理時間が17%弱長くなったとのこと。
+一連のトランザクション処理を実行する。引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。例外が発生しなかった場合、無名関数の返却値が、そのまま```transaction```メソッドの返却値になる。さらに```transaction```メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。ちなみに、トランザクション処理は必須ではなく、用いるとアプリケーションがデータベースを操作するために要する時間が増えるため、使用しなくても良い。参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
 参考：https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5
 
@@ -3483,7 +3483,7 @@ $ php artisan make:controller <Controller名>
 
 ### リクエストパラメータの取得
 
-#### ・クエリパラメータ／メッセージボディ
+#### ・クエリパラメータ/メッセージボディ
 
 クエリパラメータとメッセージボディの両方を取得する。
 
@@ -3822,7 +3822,7 @@ $ php artisan make:request <Request名>
 
 <br>
 
-### クエリパラメータ／メッセージボディのバリデーション
+### クエリパラメータ/メッセージボディのバリデーション
 
 #### ・ルール定義 ＆ バリデーション手動実行
 
@@ -4168,7 +4168,7 @@ class FooRequest extends FormRequest
 }
 ```
 
-#### ・独自ルール／メッセージ
+#### ・独自ルール/メッセージ
 
 独自ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、```rule```メソッドの中でインスタンスを作成する。独自Ruleクラスでは、```passes```メソッドでルールを定義する。また、```messages```メソッドでバリデーションメッセージを定義する。```validation.php```ファイルでメッセージを定義し、これを参照しても良い。
 
@@ -4326,7 +4326,7 @@ LOG_CHANNEL=<オプション名>
 
 #### ・```stack```キー
 
-他の単一／複数のチャンネルを利用するチャンネル。
+他の単一/複数のチャンネルを利用するチャンネル。
 
 ```php
 return [
@@ -4596,7 +4596,7 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ・確認画面の入力をスキップ
 
-マイグレーション時、本当に実行して良いか確認画面（Yes／No）が表示される。CICDにおいて、この確認画面でYes／Noを入力できないため、確認画面をスキップできるようにする必要がある。
+マイグレーション時、本当に実行して良いか確認画面（Yes/No）が表示される。CI/CDにおいて、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
 
 参考：https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
 
@@ -4606,7 +4606,7 @@ $ php artisan migrate --force
 
 <br>
 
-### テーブルの作成／削除
+### テーブルの作成/削除
 
 #### ・```up```メソッド、```down```メソッド
 
@@ -4653,7 +4653,7 @@ class CreateFooTable extends Migration
 
 <br>
 
-### カラムの追加／変更／削除
+### カラムの追加/変更/削除
 
 #### ・なし
 
@@ -5503,7 +5503,7 @@ class Kernel extends HttpKernel
 Route::get('/users/{user}', 'UserController@index');
 ```
 
-かつ、コントローラのメソッドの引数型／変数名を```User```／```$user```とする。または。この時、『```/users/1```』に対してリクエストが送信されると、ユーザIDが```1```のユーザがDBから読み出され、コントローラにインジェクションされる。
+かつ、コントローラのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストが送信されると、ユーザIDが```1```のユーザがDBから読み出され、コントローラにインジェクションされる。
 
 ```php
 <?php
@@ -5783,7 +5783,7 @@ interface Container extends ContainerInterface
 
 ### AppServiceProvider
 
-#### ・単一のクラスをバインド／リゾルブ
+#### ・単一のクラスをバインド/リゾルブ
 
 AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。これにより、メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するだけでインスタンスが生成されるため、以下の実装を実行する必要はない。ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
@@ -5888,7 +5888,7 @@ $foo3 = new Foo3();
 $qux = new Qux($foo1);
 ```
 
-#### ・複数のクラスをバインド／リゾルブ
+#### ・複数のクラスをバインド/リゾルブ
 
 メソッドの引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
 
@@ -7818,7 +7818,7 @@ $ php artisan passport:client --personal
 
 ```php
 /**
- * 全認証／認可の登録
+ * 全認証/認可の登録
  *
  * @return void
  */
