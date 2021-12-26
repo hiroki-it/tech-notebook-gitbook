@@ -54,7 +54,7 @@
                     * [📖 ︎PHPコマンドと設定](public/software/software_application_object_oriented_language_php_command_and_configuration.md)
                     * クラスベース
                         * [📖 ︎クラス](public/software/software_application_object_oriented_language_php_class_based.md)
-                        * [📖 ︎メソッド、データ](public/software/software_application_object_oriented_language_php_class_based_method_data.md)
+                        * [📖 ︎メソッド/データ](public/software/software_application_object_oriented_language_php_class_based_method_data.md)
                         * [📖 ︎データ構造](public/software/software_application_object_oriented_language_php_class_based_data_structure.md)
                     * ロジック
                         * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_php_logic_validation.md)
@@ -77,11 +77,11 @@
                 * JavaScript
                     * プロトタイプベース
                         * [📖 ︎プロトタイプ](public/software/software_application_object_oriented_language_js_prototype_based.md)
-                        * [📖 ︎メソッド、データ](public/software/software_application_object_oriented_language_js_prototype_based_method_data.md)
+                        * [📖 ︎メソッド/データ](public/software/software_application_object_oriented_language_js_prototype_based_method_data.md)
                     * ロジック
                         * [📖 ︎検証ロジック](public/software/software_application_object_oriented_language_js_logic_validation.md)
                         * [📖 ︎非同期処理ロジック](public/software/software_application_object_oriented_language_js_logic_asynchronous_process.md)
-                    * パッケージ、フレームワーク
+                    * パッケージ/フレームワーク
                         * [📖 ︎パッケージ](public/software/software_application_object_oriented_language_js_package.md)
                         * [📖 ︎Vue.js](public/software/software_application_object_oriented_language_js_framework_vuejs.md)
                         * [📖 ︎Nuxt.js](public/software/software_application_object_oriented_language_js_framework_nuxtjs.md)
@@ -94,8 +94,8 @@
                     * [📖 Goとは](public/software/software_application_procedural_language_go.md)
                     * [📖 Goコマンドと設定](public/software/software_application_procedural_language_go_command_and_configuration.md)
                     * ロジック
-                        * [📖 メソッド、データ](public/software/software_application_procedural_language_go_logic_method_data.md)
-                    * パッケージ、フレームワーク
+                        * [📖 メソッド/データ](public/software/software_application_procedural_language_go_logic_method_data.md)
+                    * パッケージ/フレームワーク
                         * [📖 パッケージ](public/software/software_application_procedural_language_go_package.md)
                         * [📖 Gin](public/software/software_application_procedural_language_go_framework_gin.md)
 
@@ -105,12 +105,12 @@
 
 * 🌏 ネットワーク
     * [📖 ︎ネットワーク](public/network/network.md)
-    * [📖 ︎OSI参照モデル、TCP階層モデル](public/network/network_osi_tcp_model.md)
+    * [📖 ︎OSI参照モデル/TCP階層モデル](public/network/network_osi_tcp_model.md)
 
 * 🔐 セキュリティ
     * [📖 ︎サイバー攻撃](public/security/security_cyber_attacks.md)
     * [📖 ︎通信データの暗号化技術](public/security/security_encryption_technology.md)
-    * [📖 ︎認証、認可](public/security/security_authentication_authorization.md)
+    * [📖 ︎認証/認可](public/security/security_authentication_authorization.md)
 
 * ⛅️ クラウドコンピューティング
     * [📖 ︎クラウドコンピューティング](public/cloud_computing/cloud_computing.md)
@@ -168,11 +168,11 @@
     * [📖 ︎CircleCI](public/ci_cd/ci_cd_circleci.md)
     * [📖 ︎Capistrano](public/ci_cd/ci_cd_capistrano.md)
 
-* 🔎 可観測性、監視
+* 🔎 可観測性/監視
     * [📖 ︎可観測性](public/observability_monitering/observability.md)
     * [📖 ︎監視](public/observability_monitering/monitering.md)
-    * Fluentd、FluentBit
-        * [📖 ︎Fluentd、FluentBit](public/observability_monitering/observability_fluentd_and_fluentbit.md)
+    * Fluentd/FluentBit
+        * [📖 ︎Fluentd/FluentBit](public/observability_monitering/observability_fluentd_and_fluentbit.md)
         * [📖 ︎FluentBit](public/observability_monitering/observability_fluentbit.md)
     * Datadog
         * [📖 ︎メトリクス収集](public/observability_monitering/observability_datadog_metrics.md)
@@ -181,7 +181,7 @@
         * [📖 ︎テレメトリー間の紐づけ](public/observability_monitering/observability_datadog_telemetry_association.md)
         * [📖 ︎監視](public/observability_monitering/observability_datadog_monitering.md)
 
-* 👥 ソフトウェア開発手法論、SRE
+* 👥 ソフトウェア開発手法論/SRE
     * [📖 ︎ソフトウェア開発手法論](public/software_development_methodology/software_development_methodology.md)
     * [📖 ︎SRE：Site Reliability Engineering](public/software_development_methodology/software_development_methodology_site_reliability_engineering.md)
     * [📖 ︎プロジェクト管理](public/software_development_methodology/software_development_methodology_project_management.md)
