@@ -2156,20 +2156,48 @@ EBSボリュームのコピーのこと。ソフトウェアとEBSボリュー�
 
 ### ECRとは
 
-AWSが提供するdockerイメージのレジストリサービス
+dockerイメージやHelmチャートを管理できる。
 
 <br>
 
 ### 設定項目
 
-#### ・概要
-
 | 設定項目                 | 説明                                                         | 補足                                                         |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 可視性                   | リポジトリをパブリックアクセス/プライベートアクセスにするかを設定する。 | 様々なベンダーがパブリックリポジトリでECRイメージを提供している。<br>参考：https://gallery.ecr.aws/ |
-| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、イメージタグを上書き可能/不可能かを設定できる。 |                                                              |
+| タグのイミュータビリティ | 同じタグ名でイメージがプッシュされた場合、イメージタグを上書き可能/不可能かを設定できる。 | -                                                            |
 | プッシュ時にスキャン     | イメージがプッシュされた時に、イメージにインストールされているライブラリの脆弱性を検証し、一覧表示する。 | 参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/image-scanning.html |
-| 暗号化設定               |                                                              |                                                              |
+| 暗号化設定               | -                                                            | -                                                            |
+
+<br>
+
+### イメージのプッシュ
+
+#### ・Dockerイメージの場合
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
+（１）ECRにログインする。
+
+```bash
+$ aws ecr get-login-password --region <リージョン> | docker login --username AWS --password-stdin <リポジトリURL>
+```
+
+（２）イメージにタグを付与する。
+
+```bash
+$ docker tag <イメージID> <リポジトリURL>/<リポジトリ名>:<タグ名>
+```
+
+（３）ECRにイメージをプッシュする。
+
+```bash
+$ docker push <リポジトリURL>/<リポジトリ名>:<タグ名>
+```
+
+#### ・Helmチャートの場合
+
+参考：https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/push-oci-artifact.html
 
 <br>
 

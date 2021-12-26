@@ -1,4 +1,4 @@
-# skaffold
+# skaffold.yml
 
 ## はじめに
 
@@ -8,83 +8,43 @@
 
 <br>
 
-## 01. コマンド
+## 01 構成
 
-### build
+### パイプライン
 
-#### ・buildとは
+KubernetesのためのCICDパイプラインを自動化する。
 
-全てのイメージをビルドする。
+参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
 
-参考：https://skaffold.dev/docs/references/cli/#skaffold-build
-
-#### ・--cache-artifacts
-
-キャッシュを無効化し、```build```コマンドを実行する。
-
-```bash
-$ skaffold build --cache-artifacts=false
-```
+![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
 <br>
 
-### dev
+### buildセクション
 
-#### ・dev
+dockerイメージのビルド方法を定義する。
 
-アプリケーションのソースコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。
-
-#### ・--trigger
-
-一定間隔でソースコードの変更を監視しつつ、```dev```コマンドを実行する。
-
-```bash
-$ skaffold dev --trigger=polling
-```
-
-#### ・--no-prune、--cache-artifacts
-
-イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```dev```コマンドを実行する。
-
-```bash
-$ skaffold dev --no-prune=false --cache-artifacts=false
-```
+参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
 
-#### ・run
+### testセクション
 
-バックグラウンドで、イメージのビルド/デプロイを実行する。
+kubernetesオブジェクトのテスト方法を定義する。
 
-#### ・--no-prune、--cache-artifacts
-
-イメージをキャッシュせず、また後処理で全てのイメージを削除しつつ、```run```コマンドを実行する。
-
-```bash
-$ skaffold run --no-prune=false --cache-artifacts=false
-```
-
-#### ・--tail
-
-フォアグラウンドで```run```コマンドを実行する。
-
-```bash
-$ skaffold run --tail
-```
+参考：https://skaffold.dev/docs/pipeline-stages/testers/
 
 <br>
 
-## 02. apiVersion
+### deployセクション
 
-参考：https://skaffold.dev/docs/references/yaml/#apiVersion
+kubernetesオブジェクトのデプロイ方法を定義する。
 
-```yaml
-apiVersion: skaffold/v2beta1
-```
+参考：https://skaffold.dev/docs/pipeline-stages/deployers/
 
 <br>
 
-## 03. build
+## 02. buildセクション
 
 ### artifacts
 
@@ -200,7 +160,34 @@ build:
 
 <br>
 
-## 04. deploy
+## 04. testセクション
+
+### structureTests
+
+ファイルを指定し、コンテナ構造テストを実行する。
+
+参考：https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+
+```yaml
+test:
+  - image: <リポジトリURL>
+    structureTests:
+      - ./structure-tests/foo.yml
+```
+
+```yaml
+schemaVersion: 2.0.0
+
+# イメージにファイルが存在するかどうかをテストする。
+fileExistenceTests:
+  - name: PHP file
+    path: /var/www/public/index.php
+    shouldExist: true
+```
+
+<br>
+
+## 03. deployセクション
 
 ### kubectl
 
@@ -214,10 +201,3 @@ deploy:
 ```
 
 <br>
-
-## 05. kind
-
-```yaml
-kind: Config
-```
-
