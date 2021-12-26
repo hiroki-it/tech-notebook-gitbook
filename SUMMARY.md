@@ -153,7 +153,9 @@
                 * [📖 ︎kubectlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
                 * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
                 * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
-                * [📖 ︎skaffold](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold.md)
+                * skaffold
+                    * [📖 ︎skaffoldコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_command.md)
+                    * [📖 ︎skaffold.yml](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_yml.md)
             * Docker Swarm
                 * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
         * サービスメッシュ
