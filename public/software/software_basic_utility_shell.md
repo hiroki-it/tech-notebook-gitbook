@@ -192,7 +192,7 @@ baz: foo baz # foo、bazを事前に実行する。
 
 #### ・標準入出力とは
 
-標準入力、標準出力、標準エラー出力、のこと。
+標準入力/標準出力/標準エラー出力、のこと。
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/stdin_stdout_stderr.jpg)
 

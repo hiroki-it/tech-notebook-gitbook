@@ -10,6 +10,10 @@
 
 参考：https://skaffold.dev/docs/references/cli/#skaffold-build
 
+```bash
+$ skaffold build
+```
+
 #### ・--cache-artifacts
 
 キャッシュを無効化し、```build```コマンドを実行する。
@@ -24,7 +28,18 @@ $ skaffold build --cache-artifacts=false
 
 #### ・dev
 
-アプリケーションのソースコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。
+アプリケーションのソースコードを監視し、変更が検出された時に、イメージの再ビルド/プッシュ/デプロイを実行する。また、ポートフォワーディングを実行する。
+
+```bash
+$ skaffold dev
+```
+
+| コマンド                              | ポートフォワーディングの可否       |
+| ------------------------------------- | ---------------------------------- |
+| ```skaffold dev```                    | ユーザ定義を参照                   |
+| ```skaffold dev --port-forward```     | ユーザ定義を参照、サービス         |
+| ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
+
 
 #### ・--trigger
 
@@ -42,11 +57,29 @@ $ skaffold dev --trigger=polling
 $ skaffold dev --no-prune=false --cache-artifacts=false
 ```
 
+#### ・--port-forward
+
+ポートフォワードを実行しつつ、```dev```コマンドを実行する。
+
+```bash
+$ skaffold dev --port-forward
+```
+
+
 <br>
 
 #### ・run
 
 バックグラウンドで、イメージのビルド/デプロイを実行する。
+
+```bash
+$ skaffold run
+```
+
+| コマンド                          | ポートフォワーディングの可否       |
+| --------------------------------- | ---------------------------------- |
+| ```skaffold run```                | ポートフォワーディングを実行しない |
+| ```skaffold run --port-forward``` | ユーザ定義を参照、サービス         |
 
 #### ・--no-prune、--cache-artifacts
 
@@ -62,5 +95,13 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 ```bash
 $ skaffold run --tail
+```
+
+#### ・--port-forward
+
+ポートフォワードを実行しつつ、```run```コマンドを実行する。
+
+```bash
+$ skaffold run --port-forward
 ```
 

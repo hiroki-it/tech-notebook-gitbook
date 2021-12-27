@@ -276,10 +276,10 @@ plot(cluster1)
 
 ## 05. グラフ生成関数
 
-### ```ggplot()```
+### ```ggplot```メソッド
 
-1. ```ggplot()```：グラフのキャンバスを準備
-2. ```geom_XXX()```：グラフをプロット
-3. ```theme()```：グラフを追加加工
+1. ```ggplot```メソッド：グラフのキャンバスを準備
+2. ```geom_XXX```メソッド：グラフをプロット
+3. ```theme```メソッド：グラフを追加加工
 
 ![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ggplotの概念.png)

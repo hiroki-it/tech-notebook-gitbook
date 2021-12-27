@@ -8,43 +8,33 @@
 
 <br>
 
-## 01 構成
+## 01 skaffoldの機能
 
-### パイプライン
+### 構成
 
-KubernetesのためのCICDパイプラインを自動化する。
-
-参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+CICDパイプラインと同様の、build/test/deployステージに加えて、反復的な開発に役立つステージを持つ。
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline.png)
 
 <br>
 
-### buildセクション
+### 各ステップのツールの選択
+
+参考：https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+
+![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/skaffold-pipeline_tools.png)
+
+<br>
+
+## 02. buildステージ
+
+### buildステージとは
 
 dockerイメージのビルド方法を定義する。
 
 参考：https://skaffold.dev/docs/pipeline-stages/builders/
 
 <br>
-
-### testセクション
-
-kubernetesオブジェクトのテスト方法を定義する。
-
-参考：https://skaffold.dev/docs/pipeline-stages/testers/
-
-<br>
-
-### deployセクション
-
-kubernetesオブジェクトのデプロイ方法を定義する。
-
-参考：https://skaffold.dev/docs/pipeline-stages/deployers/
-
-<br>
-
-## 02. buildセクション
 
 ### artifacts
 
@@ -160,7 +150,33 @@ build:
 
 <br>
 
-## 04. testセクション
+## 03. portForwardステージ
+
+skaffoldコマンド時に、同時にポートフォワーディングを実行する。すでにポート番号が使用中だった場合は、```+1```されたポート番号が自動的に使用される。
+
+```yaml
+portForward:
+  - resourceType: pod
+    resourceName: foo-mysql-pod-0
+    localPort: 3308 
+    port: 3306
+  - resourceType: pod
+    resourceName: bar-mysql-pod-0  
+    localPort: 3309
+    port: 3306
+```
+
+<br>
+
+## 04. testステージ
+
+### testステージとは
+
+kubernetesオブジェクトのテスト方法を定義する。
+
+参考：https://skaffold.dev/docs/pipeline-stages/testers/
+
+<br>
 
 ### structureTests
 
@@ -187,11 +203,23 @@ fileExistenceTests:
 
 <br>
 
-## 03. deployセクション
+## 05. deployステージ
+
+### deployステージとは
+
+kubernetesオブジェクトのデプロイ方法を定義する。
+
+参考：https://skaffold.dev/docs/pipeline-stages/deployers/
+
+<br>
 
 ### kubectl
 
-#### ・manifests
+#### ・kubectlとは
+
+kubectlを用いて、kubernetesオブジェクトをデプロイする。
+
+参考：https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
 
 ```yaml
 deploy:
@@ -201,3 +229,31 @@ deploy:
 ```
 
 <br>
+
+### helm
+
+#### ・helm
+
+helmを用いて、kubernetesオブジェクトをデプロイする。
+
+参考：https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+
+```yaml
+deploy:
+  helm:
+    releases:
+    - name: <リリース名>
+      artifactOverrides:
+        image: <イメージ名> # buildステージのイメージ名と合わせる。
+      imageStrategy:
+        helm: {}
+```
+
+ちなみに、```artifactOverrides```キーのイメージ名とbuildステージのイメージ名は合わせる必要がある。
+
+```yaml
+build:
+  artifacts:
+    - image: <イメージ名> # artifactOverridesのイメージ名と合わせる。
+```
+

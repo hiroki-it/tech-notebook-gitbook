@@ -42,7 +42,7 @@ const obj = new Object();
 
 ### Array
 
-#### ・```Array.prototype.entries()```
+#### ・```Array.prototype.entries```メソッド
 
 配列からkeyとvalueを取得する。
 
@@ -64,7 +64,7 @@ for (const value of iterator) {
 // [ 2, 'baz' ]
 ```
 
-#### ・```Array.prototype.map()```
+#### ・```Array.prototype.map```メソッド
 
 **＊実装例＊**
 
@@ -73,7 +73,7 @@ for (const value of iterator) {
 // ここに実装例
 ```
 
-#### ・```Array.prototype.filter()```
+#### ・```Array.prototype.filter```メソッド
 
 **＊実装例＊**
 
@@ -309,7 +309,7 @@ console.log(
 
 #### ・JavaScriptのクラスとは
 
-ES6から、糖衣構文の```class```によって、オブジェクトを宣言できるようになった。クラス宣言あるいはクラス式で記述する。オブジェクトの生成時、```constructor()```でオブジェクトの初期化を行う。パスカルケース（大文字から始める記法）を用いる。
+ES6から、糖衣構文の```class```によって、オブジェクトを宣言できるようになった。クラス宣言あるいはクラス式で記述する。オブジェクトの生成時、```constructor```メソッドでオブジェクトの初期化を行う。パスカルケース（大文字から始める記法）を用いる。
 
 #### ・クラス宣言記法
 
@@ -383,7 +383,7 @@ foo.getValue();
 
 オブジェクトが暗示的に持つ```prototype```プロパティに、別のオブジェクトのメンバを追加することによって、そのオブジェクトのプロトタイプを継承できる。オブジェクトからプロパティやメソッドをコールした時、そのオブジェクトにこれらが存在しなければ、継承元まで辿る仕組みを『プロトタイプチェーン』という。クラスベースのオブジェクト指向で用いられるクラスチェーンについては、別ノートを参照せよ。
 
-#### ・```new Obejct()```を用いた継承
+#### ・```new Obejct```メソッドを用いた継承
 
 **＊実装例＊**
 
@@ -435,7 +435,7 @@ const result = SubFoo.getValue()
 console.log(result);
 ```
 
-#### ・```Object.create()```を用いた継承とメンバ追加
+#### ・```Object.create```メソッドを用いた継承とメンバ追加
 
 **＊実装例＊**
 
@@ -465,7 +465,7 @@ const result = SubFoo.getValue();
 console.log(result);
 ```
 
-また、```Object.create()```を用いる場合、継承だけでなく、メンバを新しく追加することもできる。
+また、```Object.create```メソッドを用いる場合、継承だけでなく、メンバを新しく追加することもできる。
 
 **＊実装例＊**
 
