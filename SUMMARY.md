@@ -62,7 +62,10 @@
                         * [📖 ︎反復ロジック](public/software/software_application_object_oriented_language_php_logic_iteration.md)
                         * [📖 ︎アルゴリズム](public/software/software_application_object_oriented_language_php_logic_algorithm.md)
                     * フレームワーク
-                        * [📖 ︎Laravel](public/software/software_application_object_oriented_language_php_framework_laravel.md)
+                        * Laravel
+                            * [📖 ︎Laravelコンポーネント](public/software/software_application_object_oriented_language_php_framework_laravel_component.md)
+                            * [📖 ︎Eloquent](public/software/software_application_object_oriented_language_php_framework_laravel_eloquent.md)
+                            * [📖 ︎認証認可](public/software/software_application_object_oriented_language_php_framework_laravel_auth.md)
                         * [📖 ︎Symfony](public/software/software_application_object_oriented_language_php_framework_symfony.md)
                     * パッケージ
                         * [📖 ︎パッケージ管理](public/software/software_application_object_oriented_language_php_package_management.md)
