@@ -154,7 +154,7 @@ spec:
       maxUnavailable: 0% # ポッドの停止数がレプリカ数を下回らないようにする。
 ```
 
-```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイするようになる。また、ポッドの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイするようになる。また、ポッドの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 
