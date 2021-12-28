@@ -151,7 +151,9 @@
             * Docker Compose
                 * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
                 * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
-︎            * Kubernetes
+            * Docker Swarm
+                * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
+            * Kubernetes
                 * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
                 * [📖 ︎kubectlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
                 * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
@@ -159,8 +161,6 @@
                 * skaffold
                     * [📖 ︎skaffoldコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_command.md)
                     * [📖 ︎skaffold.yml](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_yml.md)
-            * Docker Swarm
-                * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
         * サービスメッシュ
             * Istio
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_service_mesh_istio.md)
