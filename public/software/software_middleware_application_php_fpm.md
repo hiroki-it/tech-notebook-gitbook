@@ -42,7 +42,7 @@ PHP-FPMとPHPのプロセスは独立している。そのため、設定値を�
 
 <br>
 
-## 02. 設定ファイル（PHP-FPM@Docker）
+## 02. セットアップ（@Docker）
 
 ### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
 

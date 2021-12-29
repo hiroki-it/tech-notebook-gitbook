@@ -8,30 +8,12 @@
 
 <br>
 
-## 01. Istioのインストール
-
-（１）設定ファイルをインストール
-
-参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
-
-```bash
-$ istioctl install --set profile=demo -y
-```
-
-（２）minikubeでIstioを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
-
-```bash
-$ kubectl label namespace default istio-injection=enabled
-```
-
-<br>
-
 ## 02. apiVersion
 
-Istio-APIのバージョンを設定する。
+Istio-APIのバージョンを設定する。Kubernetesとは異なることに注意する。
 
 ```yaml
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.istio.io/v1beta1
 ```
 
 <br>

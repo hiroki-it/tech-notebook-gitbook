@@ -8,11 +8,69 @@
 
 <br>
 
-## 01. 設定ファイル（MySQL@Docker）
+## 01. セットアップ（@サーバー）
+
+### インストール
+
+#### ・dnf経由
+
+mysqlコマンドのみをインストールしたい場合
+
+```bash
+$ dnf install -y mysql
+```
+
+mysqlコマンド、データベースサーバー機能、をインストールしたい場合はこちら
+
+```bash
+$ dnf install -y mysql-server
+```
+
+<br>
+
+### 接続確認
+
+DBに接続する。pオプションの値にはスペースが不要であることに注意する。
+
+```bash
+$ mysql -u <ユーザ名> -p<パスワード> -h <DBホスト名> <DB名>
+```
+
+<br>
+
+### パラメータ
+
+#### ・パラメータの表示
+
+データベースに登録されているグローバルパラメータとセッションパラメータを表示する。
+
+```sql
+-- セッション/グローバルパラメータを表示
+SHOW SESSION VARIABLES;
+SHOW GLOBAL VARIABLES;
+
+-- OSとDBのタイムゾーンに関するパラメータを表示
+SHOW SESSION VARIABLES LIKE "%time_zone";
+SHOW GLOBAL VARIABLES LIKE "%time_zone";
+```
+
+#### ・パラメータの設定
+
+```sql
+-- グローバルパラメータの場合
+SET GLOBAL time_zone = "Asia/Tokyo";
+
+-- セッションパラメータの場合
+SET time_zone = "Asia/Tokyo";
+```
+
+<br>
+
+## 01-02. セットアップ（@Docker）
 
 ### ```/etc/mysql/my.cnf```ファイル
 
-#### ・```/etc/mysql/my.cnf```ファイルとは
+#### ・```my.cnf```ファイルとは
 
 MySQLの設定値を定義する。MySQL@Dockerでは、```/etc/mysql```ディレクトリに配置されている。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている。
 
@@ -88,6 +146,8 @@ default-character-set = utf8mb4 # utf8
 
 ### ```datadir```ディレクトリ
 
+#### ・```datadir```ディレクトリとは
+
 MySQLのDBやテーブルの情報を管理する。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのボリュームのマウント先として指定される。
 
 ```bash
@@ -117,63 +177,7 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 <br>
 
-## 02. データベース
-
-### MySQLの準備
-
-#### ・CentOSにインストール
-
-mysqlコマンドのみをインストールしたい場合
-
-```bash
-$ dnf install -y mysql
-```
-
-mysqlコマンド、データベースサーバー機能、をインストールしたい場合はこちら
-
-```bash
-$ dnf install -y mysql-server
-```
-
-#### ・DBに接続
-
-DBに接続する。pオプションの値にはスペースが不要であることに注意する。
-
-```bash
-$ mysql -u <ユーザ名> -p<パスワード> -h <DBホスト名> <DB名>
-```
-
-<br>
-
-### パラメータ
-
-#### ・パラメータの表示
-
-データベースに登録されているグローバルパラメータとセッションパラメータを表示する。
-
-```sql
--- セッション/グローバルパラメータを表示
-SHOW SESSION VARIABLES;
-SHOW GLOBAL VARIABLES;
-
--- OSとDBのタイムゾーンに関するパラメータを表示
-SHOW SESSION VARIABLES LIKE "%time_zone";
-SHOW GLOBAL VARIABLES LIKE "%time_zone";
-```
-
-#### ・パラメータの設定
-
-```sql
--- グローバルパラメータの場合
-SET GLOBAL time_zone = "Asia/Tokyo";
-
--- セッションパラメータの場合
-SET time_zone = "Asia/Tokyo";
-```
-
-<br>
-
-## 03. テーブル
+## 02. テーブル
 
 ### ```CREATE TABLE```句
 
@@ -406,7 +410,7 @@ DBにテーブルをインポートする。forceオプションで、エラー�
 
 <br>
 
-## 04. ユーザの管理
+## 03. ユーザの管理
 
 ### CREATE
 
@@ -518,7 +522,7 @@ RENAME USER "{ 古いユーザ名 }" TO "{ 新しいユーザ名 }";
 
 <br>
 
-## 04-02. ユーザの準備手順
+## 04. ユーザの準備手順
 
 ### 1. ユーザの作成
 
