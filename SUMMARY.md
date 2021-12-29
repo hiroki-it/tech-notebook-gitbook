@@ -165,6 +165,7 @@
             * Istio
                 * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_service_mesh_istio.md)
                 * [📖 istioctlコマンド](public/virtualization/virtualization_container_orchestration_service_mesh_istio_command.md) 
+                * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_service_mesh_istio_manifest_yml.md)
             * Envoy
                 * [📖 ︎Envoy](public/virtualization/virtualization_container_orchestration_service_mesh_envoy.md)
 
