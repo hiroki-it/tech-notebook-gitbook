@@ -1,10 +1,8 @@
 # 俺のドキュメントサイトについて
 
-## サイトの作成方法
+## 俺のドキュメントサイトとは
 
-GitBookを使用して、mdファイルからHTMLを生成しております。
-
-生成元のmdファイルは、[hiroki-it/tech-notebook-gitbook](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) リポジトリにて管理しております。
+どこにでもいるエンジニアの [長谷川広樹](https://hiroki-it.github.io/tech-notebook-gitbook/public/self_introduction.html) が、技術的な知見をドキュメント形式で整理したサイトです。
 
 <br>
 
@@ -28,7 +26,7 @@ GitBookを使用して、mdファイルからHTMLを生成しております。
 
 ## サイトの目的
 
-どこにでもいるエンジニアの [長谷川広樹](https://hiroki-it.github.io/tech-notebook-gitbook/public/self_introduction.html) が、以下の目的のために使用しています。
+以下の目的のために使用しています。
 
 - インプットしたことを自分の言葉で書き、アウトプットを行う。
 - 誤った知識をその都度修正し、また体系的に整理する。
@@ -49,6 +47,14 @@ GitBookを使用して、mdファイルからHTMLを生成しております。
 - 概念図（視覚優位な学習）
 
 そのため、冗長な記載となることをご容赦いただけると幸いです。
+
+<br>
+
+## サイトの作成方法
+
+GitBookを使用して、mdファイルからHTMLを生成しております。
+
+生成元のmdファイルは、[hiroki-it/tech-notebook-gitbook](https://github.com/hiroki-it/tech-notebook-gitbook/tree/main/public) リポジトリにて管理しております。
 
 <br>
 
