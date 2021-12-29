@@ -8,7 +8,19 @@
 
 <br>
 
-## 01. コマンド
+## 01. 手順
+
+1. Docker Hubから、ベースとなるイメージをインストールする。
+2. Dockerfileがイメージレイヤーからなるイメージをビルド。
+3. コマンドによって、イメージ上にコンテナレイヤーを生成し、コンテナを構築。
+4. コマンドによって、停止中コンテナを起動。
+5. コマンドによって、起動中コンテナに接続。
+
+![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
+
+<br>
+
+## 02. コマンド
 
 ### attach
 

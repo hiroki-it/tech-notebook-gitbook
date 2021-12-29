@@ -22,14 +22,11 @@ apiVersion: v1
 
 作成されるオブジェクトの種類を設定する。
 
-```yaml
-kind: Service
-```
-
 | オブジェクト名                  | 補足                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | Deployment            |                                                              |
 | Ingress               | 他のオブジェクトとはapiVersionが異なり、```networking.k8s.io/v1```を指定する必要がある。 |
+| Namespace |  |
 | PersistentVolume      |                                                              |
 | PersistentVolumeClaim |                                                              |
 | Pod                   | PodをDeploymentやReplicaSetに紐づけずに使用することは非推奨である。<br>参考：https://kubernetes.io/ja/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs |
@@ -48,51 +45,19 @@ kind: Service
 
 ```yaml
 metadata:
-  name: foo-service
+  name: foo
 ```
 
 <br>
 
-## 05. spec（```kind: Ingress```の場合）
-
-### rules
-
-サービスへのルーティングルールを設定する。複数のサービスにリクエストを振り分けられる。
-
-```yaml
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /foo
-            pathType: Prefix
-            backend:
-              service:
-                name: foo-service
-                port:
-                  number: 80
-    - http:
-        paths:
-          - path: /bar
-            pathType: Prefix
-            backend:
-              service:
-                name: bar-service
-                port:
-                  number: 80
-```
-
-<br>
-
-## 05. spec（Deploymentの場合）
-
-<br>
+## 04. spec（Deploymentの場合）
 
 ### replicas
 
 ポッドの複製数を設定する。
 
 ```yaml
+kind: Deployment
 spec:
   replicas: 1
 ```
@@ -104,6 +69,7 @@ spec:
 保存されるリビジョン番号の履歴数を設定する。もし依存のリビジョン番号にロールバックすることがあるのであれば、必要数を設定しておく。
 
 ```yaml
+kind: Deployment
 spec:
   revisionHistoryLimit: 5
 ```
@@ -119,6 +85,7 @@ spec:
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
 ```yaml
+kind: Deployment
 metadata:
   name: foo-pod
   labels:
@@ -146,6 +113,7 @@ spec:
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
 ```yaml
+kind: Deployment
 spec:
   strategy:
     type: RollingUpdate
@@ -164,7 +132,10 @@ spec:
 
 スケーリング時に複製の鋳型とするポッドを設定する。
 
+**＊実装例＊**
+
 ```yaml
+kind: Deployment
 spec:
   template:
     metadata:
@@ -184,7 +155,58 @@ spec:
 
 <br>
 
-## 05-02. spec（```kind: PersistentVolume```の場合）
+## 04-02. spec（Ingressの場合）
+
+### rules
+
+サービスへのルーティングルールを設定する。複数のサービスにリクエストを振り分けられる。
+
+```yaml
+kind: Ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /foo
+            pathType: Prefix
+            backend:
+              service:
+                name: foo-service
+                port:
+                  number: 80
+    - http:
+        paths:
+          - path: /bar
+            pathType: Prefix
+            backend:
+              service:
+                name: bar-service
+                port:
+                  number: 80
+```
+
+<br>
+
+## 04-03. spec（Namespaceの場合）
+
+### labels
+
+他のオブジェクトの```label```とは異なり、何らかの機能を有効化するための設定値になることがある。
+
+**＊実装例＊**
+
+Istioを有効化する。
+
+```yaml
+kind: Namespace
+metadata:
+  labels:
+    istio-injection: enabled
+```
+
+<br>
+
+## 04-04. spec（PersistentVolumeの場合）
 
 ### accessModes
 
@@ -193,7 +215,10 @@ spec:
 
 複数ノードから読み出し/書き込みできる。ノード間でDBを共有したい場合に使用する。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   accessModes:
     - ReadWriteMany
@@ -203,7 +228,10 @@ spec:
 
 複数ノードから読み出しでき、また単一ノードのみから書き込みできる。ノード間で読み出し処理のみDBを共有したい場合に使用する。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   accessModes:
     - ReadOnlyMany
@@ -211,10 +239,12 @@ spec:
 
 #### ・ReadWriteOnce
 
-
 単一ノードからのみ読み出し/書き込みできる。ノードごとにDBを分割したい場合に使用する。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   accessModes:
     - ReadWriteOnce
@@ -224,7 +254,10 @@ spec:
 
 ### capacity
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   capacity:
     storage: 10G
@@ -234,7 +267,10 @@ spec:
 
 ### mountOptions
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   mountOptions:
     - hard
@@ -245,6 +281,7 @@ spec:
 ### nfs
 
 ```yaml
+kind: PersistentVolume
 spec:
   nfs:
     server: nnn.nnn.nnn.nnn
@@ -259,7 +296,10 @@ spec:
 
 PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolumeも自動的に削除する。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Delete
 ```
@@ -268,7 +308,10 @@ spec:
 
 PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除された場合に、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Recycle
 ```
@@ -277,7 +320,10 @@ spec:
 
 PersistentVolumeを指定する```spec.persistentVolumeClaim```が削除されたとしても、PersistentVolumeは削除しない。
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   persistentVolumeReclaimPolicy: Retain
 ```
@@ -292,7 +338,10 @@ SSDをPersistentVolumeとして使用する。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   storageClassName: fast
 ```
@@ -303,18 +352,24 @@ HDをPersistentVolumeとして使用する。
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/_print/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolume
 spec:
   storageClassName: slow
 ```
 
 <br>
 
-## 05-03. spec（```kind: PersistentVolumeClaim```の場合）
+## 04-05. spec（PersistentVolumeClaimの場合）
 
 ### accessModes
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolumeClaim
 spec:
   accessModes:
     - ReadWriteMany
@@ -324,7 +379,10 @@ spec:
 
 ### resources
 
+**＊実装例＊**
+
 ```yaml
+kind: PersistentVolumeClaim
 spec:
   resources:
     - ReadWriteMany
@@ -332,7 +390,7 @@ spec:
 
 <br>
 
-## 05-04. spec（Podの場合）
+## 04-06. spec（Podの場合）
 
 ### containers
 
@@ -340,7 +398,10 @@ spec:
 
 ポッドを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
 
+**＊実装例＊**
+
 ```yaml
+kind: Pod
 spec:
   containers:
     - name: foo-lumen
@@ -357,7 +418,10 @@ spec:
 
 ボリュームマウントを実行する。```spec.volume```で設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
 
+**＊実装例＊**
+
 ```yaml
+kind: Pod
 spec:
   containers:
     - name: foo-lumen
@@ -384,7 +448,10 @@ spec:
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
+**＊実装例＊**
+
 ```yaml
+kind: Pod
 spec:
   hostname: foo-pod
 ```
@@ -403,7 +470,10 @@ spec:
 
 参考：https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/
 
+**＊実装例＊**
+
 ```yaml
+kind: Pod
 spec:
   volumes
     - name: foo-volume
@@ -412,6 +482,8 @@ spec:
 ```
 
 persistentVolumeは別途作成しておく必要がある。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -438,7 +510,10 @@ EmptyDirボリュームを作成する。そのため、『ポッド』が削除
 - https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
+**＊実装例＊**
+
 ```yaml
+kind: Pod
 spec:
   volumes
     - name: foo-lumen
@@ -456,8 +531,12 @@ HostPathボリュームを作成する。そのため、『ノード』が削除
 - https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
 - https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
+**＊実装例＊**
+
 ```yaml
-  volumes:
+kind: Pod
+spec:
+  volumes
   - name: foo-lumen
     hostPath:
       path: /data
@@ -466,7 +545,7 @@ HostPathボリュームを作成する。そのため、『ノード』が削除
 
 <br>
 
-## 05-05. spec（```kind: Service```の場合）
+## 04-07. spec（Serviceの場合）
 
 ### ports
 
@@ -474,7 +553,10 @@ HostPathボリュームを作成する。そのため、『ノード』が削除
 
 サービスでリクエストを受信するために、受信プロトコルを設定する。
 
+**＊実装例＊**
+
 ```yaml
+kind: Service
 spec:
   ports:
   - protocol: TCP
@@ -484,7 +566,10 @@ spec:
 
 サービスでリクエストを受信するために、受信ポートを設定する。
 
+**＊実装例＊**
+
 ```yaml
+kind: Service
 spec:
   ports:
   - port: 80
@@ -494,7 +579,10 @@ spec:
 
 ポッドに対してリクエストを転送するために、転送先ポートを設定する。ポッド内で最初にリクエストを受信するコンテナの```containerPort```の番号に合わせるようにする。
 
+**＊実装例＊**
+
 ```yaml
+kind: Service
 spec:
   ports:
   - targetPort: 9376
@@ -508,7 +596,10 @@ spec:
 
 参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
+**＊実装例＊**
+
 ```yaml
+kind: Service
 spec:
   selector:
     app: foo
@@ -533,13 +624,16 @@ spec:
 
 <br>
 
-## 05-06. spec（```kind: StatefulSet```）
+## 04-08. spec（StatefulSetの場合）
 
 ### volumeClaimTemplates
 
 PersistentVolumeClaimを作成する。設定の項目は```kind: PersistentVolumeClaim```の場合と同じである。StatefulSetが削除されても、これは削除されない。
 
+**＊実装例＊**
+
 ```yaml
+kind: StatefulSet
 spec:
   volumeClaimTemplates:
     - metadata:
@@ -554,6 +648,5 @@ spec:
           requests:
             storage: 2Gi
 ```
-
 
 

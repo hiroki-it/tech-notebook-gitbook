@@ -8,41 +8,261 @@
 
 <br>
 
-## 01. コンテナに接続するまでの手順
+## 01. Dockerfileとは
 
-### 手順の流れ
+### レイヤー
 
-1. Docker Hubから、ベースとなるイメージをインストールする。
-2. Dockerfileがイメージレイヤーからなるイメージをビルド。
-3. コマンドによって、イメージ上にコンテナレイヤーを生成し、コンテナを構築。
-4. コマンドによって、停止中コンテナを起動。
-5. コマンドによって、起動中コンテナに接続。
+#### ・イメージレイヤー
 
-![Dockerfileの作成からコンテナ構築までの手順](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileの作成からコンテナ構築までの手順.png)
+![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
+
+Dockerfileでは、一つの命令につき、一層のレイヤーが積み重ねられる。任意のイメージをベースとして、新しいイメージをビルドするためには、ベースのイメージの上に、他のイメージレイヤーを積み重ねる必要がある。
+
+#### ・コンテナレイヤー
+
+イメージからコンテナを構築する時に、イメージレイヤーの上にコンテナレイヤーが積み重ねられる。
+
+![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
 
 <br>
 
-## 02. Dockerfileの実装
+### メリット
 
-### 記法
+Dockerfileを用いることで、イメージの作成からコンテナの構築までを自動化できる。Dockerfileを用いない場合、各イメージレイヤーのインストールを手動で行わなければならない。
 
-#### ・命令の種類
+![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)<br>
 
-| 種類               | 処理                                                         |
-| -------------------- | ------------------------------------------------------------ |
-| **```ADD```**     | ```COPY```と同様にして、ホスト側のファイルを、コンテナの指定ディレクトリにコピーする。インターネットからファイルをダウンロードし、解凍も行う。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。 |
-| **```ARG```**        | Dockerfikeの命令で扱える変数を定義する。OS上のコマンド処理では扱えない。 |
-| **```CMD```**        | イメージのプロセスの起動コマンドを実行。```run```コマンドの引数として、上書きできる。命令のパラメータの記述形式には、文字列形式、JSON形式がある。 |
-| **```COPY```**       | ホスト側（第一引数）のディレクトリ/ファイルをコンテナ側（第二引数）にコピーする。コンテナ側のファイルパスは、```WORKDIR```をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『/』で終える必要がある。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストからコンテナにコピーしたい時によく使う。 |
-| **```ENTRYPOINT```** | イメージのプロセスの起動コマンドを実行。```CMD```とは異なり、後から上書き実行できない。使用者に、コンテナの起動方法を強制させたい場合に適する。 |
-| **```ENV```**        | OS上のコマンド処理で扱える変数を定義する。Dockerfileの命令では扱えない。 |
-| **```EXPOSE```**     | コンテナのポートを開放する。また、イメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある。<br>参考：<br>・https://docs.docker.com/engine/reference/builder/#expose<br>・https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/<br><br>また加えて、プロセス自体が命令をリッスンできるようにポートを設定する必要がある。ただし、多くの場合デフォルトでこれが設定されている。（例：PHP-FPMでは、```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには、```listen = 127.0.0.1:9000```の設定がある） |
-| **```FROM```**       | ベースのイメージを、コンテナにインストール.            |
-| **```RUN```**        | ベースイメージ上に、ソフトウェアをインストール.              |
-| **```VOLUME```**     | ボリュームマウントを行う。<br>参考：https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d |
-| **```WORKDIR```** | ビルド中の各命令の作業ディレクトリを絶対パスで指定する。また、コンテナ接続時の最初のディレクトリも定義できる。 |
+### イメージのデバッグ
+
+**＊例＊**
+
+ビルドに失敗したイメージからコンテナを構築し、接続する。```rm```オプションを設定し、接続の切断後にコンテナを削除する。Dockerfileにおいて、イメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は、後から上書きできなくなるため、```run```コマンドの引数として新しいコマンドを渡せずに、デバッグができないことがある。
+
+```bash
+$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
+```
+
+<br>
+
+## 02. 命令
+
+### ADD
+
+#### ・ADDとは
+
+ホスト側のファイルを、コンテナの指定ディレクトリにコピーし、このファイルが```tar```ファイルの場合は解凍する。また、URLを直接指定して、ダウンロードから解凍までを実行することもできる。
+
+参考：https://docs.docker.com/engine/reference/builder/#add
+
+#### ・COPYとの違い
+
+似た命令として```COPY```がある。```ADD```は```COPY```とは異なり、インターネットからファイルをダウンロードし、解凍も行う。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、```COPY```が推奨である。
+
+参考：
+
+- https://qiita.com/zembutsu/items/a96b68277d699f79418d
+- https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles
 
 **＊実装例＊**
+
+以下では```ADD```を使用している。URLを直接指定し、ダウンロードから解答までを実行している。
+
+```dockerfile
+ADD http://example.com/big.tar.xz /usr/src/things/
+RUN tar -xJf /usr/src/things/big.tar.xz -C /usr/src/things
+RUN make -C /usr/src/things all
+```
+
+これは、次のように書き換えるべきである。
+
+```dockerfile
+RUN mkdir -p /usr/src/things \
+    && curl -SL http://example.com/big.tar.xz \
+    | tar -xJC /usr/src/things \
+    && make -C /usr/src/things all
+```
+
+<br>
+
+### ARG
+
+#### ・ARGとは
+
+Dockerfikeの命令で扱える変数を定義する。
+
+#### ・ENVとの違い
+
+似た命令として```ENV```がある。```ARG```は```ENV```とは異なり、OS上のコマンド処理に展開するための変数として定義できない。
+
+```dockerfile
+# ARGは、OS上のコマンド処理に展開するための変数として定義できない。
+ARG PYTHON_VERSION="3.8.0"
+RUN pyenv install ${PYTHON_VERSION} # ===> 変数を展開できない
+
+# ENVは、OS上のコマンド処理に展開するための変数として定義できる。
+ARG PYTHON_VERSION="3.8.0"
+RUN pyenv install ${PYTHON_VERSION}
+```
+
+一方で、Dockerfikeの命令に展開するための変数として定義できる。
+
+```dockerfile
+# ARGは、Dockerfikeの命令に展開するための変数として定義できる。
+ARG OS_VERSION="8"
+FROM centos:${OS_VERSION}
+
+# ENVは、Dockerfikeの命令に展開するため変数として定義できない。
+ENV OS_VERSION "8"
+FROM centos:${OS_VERSION} # ===> 変数を展開できない
+```
+
+そのため、以下のように使い分けることになる。
+
+```dockerfile
+# 最初に全て、ARGで定義
+ARG CENTOS_VERSION="8"
+ARG PYTHON_VERSION="3.8.0"
+
+# 変数展開できる
+FROM centos:${OS_VERSION}
+
+# ARGを事前に宣言
+ARG PYTHON_VERSION
+# 必要に応じて、事前にENVに詰め替える。
+ENV PYTHON_VERSION ${PYTHON_VERSION}
+
+# 変数展開できる
+RUN pyenv install ${PYTHON_VERSION}
+```
+
+<br>
+
+### CMD
+
+#### ・CMDとは
+
+イメージのプロセスの起動コマンドを実行する。パラメータの記述形式には、文字列形式、JSON形式がある。
+
+参考：https://docs.docker.com/engine/reference/builder/#cmd
+
+#### ・注意点
+
+Dockerfileで```CMD```を指定しない場合、イメージのデフォルトのバイナリファイルが割り当てられる。一旦、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装するようにする。
+
+```bash
+CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
+2b2d3dfafee8   *****   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   foo-image
+```
+
+静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。その場合、```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。しかし、```bin```ディレクトリへのアクセス権限がないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを置くようにする。
+
+```bash
+# /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを置く。
+ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
+
+```
+
+<br>
+
+### COPY
+
+#### ・COPYとは
+
+ホスト側（第一引数）のディレクトリ/ファイルをコンテナ側（第二引数）にコピーする。コンテナ側のファイルパスは、```WORKDIR```をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『```/```』で終える必要がある。イメージのビルド時にコピーされるだけで、ビルド後のコードの変更は反映されない。```nginx.conf```ファイル、```php.ini```ファイル、などの設定ファイルをホストからコンテナにコピーしたい時によく使う。
+
+参考：https://docs.docker.com/engine/reference/builder/#copy
+
+<br>
+
+### ENTRYPOINT
+
+#### ・ENTRYPOINTとは
+
+イメージのプロセスの起動コマンドを実行する。
+
+参考：https://docs.docker.com/engine/reference/builder/#entrypoint
+
+#### ・CMDとの違い
+
+似た命令として```CMD```がある。```CMD```とは異なり、後から上書き実行できない。使用者に、コンテナの起動方法を強制させたい場合に適する。イメージのプロセスの起動コマンドを後から上書きできなくなるため、```run```コマンドの引数として新しいコマンドを渡せずに、デバッグができないことがある。
+
+```bash
+# 上書きできず、失敗してしまう。
+$ docker run --rm -it <イメージ名> /bin/bash
+```
+
+<br>
+
+### ENV
+
+#### ・ENVとは
+
+OS上のコマンド処理で展開できる変数を定義できる。
+
+参考：https://docs.docker.com/engine/reference/builder/#env
+
+<br>
+
+### EXPOSE
+
+#### ・EXPOSEとは
+
+コンテナのポートを開放する。また、イメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用可能なコンテナポートとして保証する機能もある。
+
+参考：
+
+- https://docs.docker.com/engine/reference/builder/#expose
+
+- https://www.whitesourcesoftware.com/free-developer-tools/blog/docker-expose-port/
+
+#### ・プロセスによるポートリッスン
+
+コンテナのポートを開放するだけでは不十分である。プロセス自体が命令をリッスンできるようにポートを設定する必要がある。ただし、多くの場合デフォルトでこれが設定されている。例えば、PHP-FPMでは、```/usr/local/etc/www.conf.default```ファイルと```/usr/local/etc/php-fpm.d/www.conf```ファイルには、```listen```オプションの値に```127.0.0.1:9000```が割り当てられている。
+
+<br>
+
+### FROM
+
+#### ・FROMとは
+
+ベースのイメージを、コンテナにインストールする。
+
+参考：https://docs.docker.com/engine/reference/builder/#from
+
+<br>
+
+### RUN
+
+#### ・RUNとは
+
+ベースイメージ上に、ソフトウェアをインストールする。
+
+参考：https://docs.docker.com/engine/reference/builder/#run
+
+<br>
+
+### VOLUME
+
+#### ・VOLUMEとは
+
+ボリュームマウントを行う。
+
+参考：
+
+- https://docs.docker.com/engine/reference/builder/#volume
+- https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
+
+<br>
+
+### WORKDIR
+
+#### ・WORKDIRとは
+
+ビルド中の各命令の作業ディレクトリを絶対パスで指定する。また、コンテナ接続時の最初のディレクトリも定義できる。
+
+参考：https://docs.docker.com/engine/reference/builder/#workdir
+
+#### ・実装例
 
 PHPのイメージをビルドするためのDockerfileを示す。
 
@@ -80,8 +300,6 @@ LABEL mantainer=${LABEL}
 COPY ./ /var/www/foo/
 ```
 
-**＊実装例＊**
-
 NginxのイメージをビルドするためのDockerfileを示す。
 
 ```dockerfile
@@ -104,116 +322,9 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 EXPOSE 80
 ```
 
-#### ・CMDの決め方
-
-Dockerfileで```CMD```を指定しない場合、イメージのデフォルトのバイナリファイルが割り当てられる。一旦、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装するようにする。
-
-```bash
-CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
-2b2d3dfafee8   *****   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   foo-image
-```
-
-静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。その場合、```bin```ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。しかし、```bin```ディレクトリへのアクセス権限がないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを置くようにする。
-
-```bash
-# /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを置く。
-ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "/go/bin": permission denied: unknown
-
-```
-
-#### ・ENTRYPOINTの注意点
-
-イメージのプロセスの起動コマンドを後から上書きできなくなるため、```run```コマンドの引数として新しいコマンドを渡せずに、デバッグができないことがある。
-
-```bash
-# 上書きできず、失敗してしまう。
-$ docker run --rm -it <イメージ名> /bin/bash
-```
-
-#### ・ENVとARGの違い
-
-1つ目に、```ENV```が使えて、```ARG```が使えない例。
-
-```dockerfile
-# ENVは、OS上のコマンド処理で扱える変数を定義
-ARG PYTHON_VERSION="3.8.0"
-RUN pyenv install ${PYTHON_VERSION}
-
-# ARGは、OS上のコマンド処理では扱えない
-ARG PYTHON_VERSION="3.8.0"
-RUN pyenv install ${PYTHON_VERSION} # ===> 変数を展開できない
-```
-
-二つ目に、```ARG```が使えて、```ENV```が使えない例。
-
-```dockerfile
-# ARGは,Dockerfikeの命令で扱える変数を定義
-ARG OS_VERSION="8"
-FROM centos:${OS_VERSION}
-
-# ENVは、OS上のコマンド処理では扱えない
-ENV OS_VERSION "8"
-FROM centos:${OS_VERSION} # ===> 変数を展開できない
-```
-
-三つ目に、これらの違いによる可読性の悪さの対策として、```ENV```と```ARG```を組み合わせた例。
-
-```dockerfile
-# 最初に全て、ARGで定義
-ARG CENTOS_VERSION="8"
-ARG PYTHON_VERSION="3.8.0"
-
-# 変数展開できる
-FROM centos:${OS_VERSION}
-
-# ARGを事前に宣言
-ARG PYTHON_VERSION
-# 必要に応じて、事前にENVに詰め替える。
-ENV PYTHON_VERSION ${PYTHON_VERSION}
-
-# 変数展開できる
-RUN pyenv install ${PYTHON_VERSION}
-```
-
 <br>
 
-### Dockerfileを用いるメリット
-
-Dockerfileを用いない場合、各イメージレイヤーのインストールを手動で行わなければならない。しかし、Dockerfileを用いることで、これを自動化できる。
-
-![Dockerfileのメリット](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Dockerfileのメリット.png)
-
-<br>
-
-### イメージのデバッグ
-
-**＊例＊**
-
-ビルドに失敗したイメージからコンテナを構築し、接続する。```rm```オプションを設定し、接続の切断後にコンテナを削除する。Dockerfileにおいて、イメージのプロセスの起動コマンドを```ENTRYPOINT```で設定している場合は、後から上書きできなくなるため、```run```コマンドの引数として新しいコマンドを渡せずに、デバッグができないことがある。
-
-```bash
-$ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
-```
-
-<br>
-
-### レイヤー
-
-#### ・イメージレイヤー
-
-![イメージレイヤーからなるイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージのビルド.png)
-
-任意のイメージをベースとして、新しいイメージをビルドするためには、ベースのイメージの上に、他のイメージレイヤーを積み重ねる必要がある。この時、Dockerfileを用いて、各命令によってイメージレイヤーを積み重ねていく。
-
-#### ・コンテナレイヤー
-
-イメージレイヤーの上に積み重ねられる
-
-![イメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/イメージ上へのコンテナレイヤーの積み重ね.png)
-
-<br>
-
-## 02-02. ベースイメージ
+## 03. ベースイメージ
 
 ### イメージリポジトリ
 
@@ -254,7 +365,7 @@ Dockerは全てのPCで稼働できるわけではなく、イメージごとに
 
 <br>
 
-## 03-02 イメージの軽量化
+## 04. イメージの軽量化
 
 ### プロセス単位でDockerfileを分割する
 
@@ -501,3 +612,4 @@ COPY ./infra/docker/www/production.nginx.conf /etc/nginx/nginx.conf
 ```dockerfile
 # ここに実装例
 ```
+

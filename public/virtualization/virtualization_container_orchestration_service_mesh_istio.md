@@ -36,6 +36,12 @@
 
 ### Destination Rule
 
+#### ・Destination Rule
+
+VirtualServiceから受信したインバウンド通信をサービスにルーティングする時に、より詳細なルーティングルールを適用する。
+
+
+
 <br>
 
 ### Gateway
@@ -99,29 +105,28 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 ### Service Entry
 
+#### ・Service Entryとは
+
+ポッドから受信したアウトバウンド通信を、パブリックネットワークやその他のオブジェクトにルーティングする。
+
+参考：https://tech.uzabase.com/entry/2018/11/26/110407
+
+![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png)
+
 <br>
 
-### Vertual Service
+### Virtual Service
 
-Gatewayによって受信したインバウンド通信をサービスにルーティングする。
+#### ・Virtual Serviceとは
 
-参考：https://knowledge.sakura.ad.jp/20489/
+Gatewayから受信したインバウンド通信をサービスにルーティングする。
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: VirtualService
-metadata:
-  name: foo-virtual-service
-spec:
-  hosts:
-    - "*"
-  gateway:
-    - ingress-gateway
-  http:
-    - route:
-        - destination:
-            host: foo-service
-            port:
-              number: 80
-```
+参考：
+
+- https://tech.uzabase.com/entry/2018/11/26/110407
+- https://knowledge.sakura.ad.jp/20489/
+
+![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service.png)
+
+
 

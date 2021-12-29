@@ -8,13 +8,13 @@
 
 <br>
 
-## 01. 設定ファイル（Docker MySQL）
+## 01. 設定ファイル（MySQL@Docker）
 
 ### ```/etc/mysql/my.cnf```ファイル
 
 #### ・```/etc/mysql/my.cnf```ファイルとは
 
-MySQLの設定値を定義する。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている。
+MySQLの設定値を定義する。MySQL@Dockerでは、```/etc/mysql```ディレクトリに配置されている。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている。
 
 ```bash
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.

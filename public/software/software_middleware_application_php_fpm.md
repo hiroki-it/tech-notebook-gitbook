@@ -34,15 +34,21 @@ PHPのために実装されたFastCGIのこと。WebサーバとPHPファイル�
 
 ![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
 
+#### ・独立したプロセス
+
+PHP-FPMとPHPのプロセスは独立している。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_framework_laravel_component.html
+
 <br>
 
-## 02. 設定ファイル（Docker PHP-FPM）
+## 02. 設定ファイル（PHP-FPM@Docker）
 
-### ```/etc/php-fpm.d/www.conf```ファイル
+### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
-#### ・```/etc/php-fpm.d/www.conf```ファイルとは
+#### ・```www.conf```ファイルとは
 
-PHP-FPMの設定値を定義する。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
+PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
 
 参考：https://www.php.net/manual/ja/install.unix.nginx.php
 
@@ -69,9 +75,6 @@ listen.mode = 0660
 
 # TCPソケットのIPアドレス
 listen.allowed_clients = 127.0.0.1
-
-# アクセスログを標準出力に出力する。
-access.log = /dev/stdout
 
 pm = dynamic
 
@@ -101,7 +104,7 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 ```
 
-#### ・Dockerで用いる場合
+#### ・注意点
 
 PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
@@ -109,6 +112,32 @@ PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込�
 
 ```dockerfile
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+```
+
+<br>
+
+### ```/usr/local/etc/php-fpm.d/docker.conf```ファイル
+
+#### ・```docker.conf```ファイルとは
+
+PHP-FPMの特にログ項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。
+
+```bash
+[global]
+error_log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+
+; https://github.com/docker-library/php/pull/725#issuecomment-443540114
+log_limit = 8192
+
+[www]
+; if we send this to /proc/self/fd/1, it never appears
+access.log = /proc/self/fd/2 # /dev/stderr（標準エラー出力）へのシンボリックリンクになっている。
+
+clear_env = no
+
+; Ensure worker stdout and stderr are sent to the main error log.
+catch_workers_output = yes
+decorate_workers_output = no
 ```
 
 <br>

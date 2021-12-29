@@ -2782,6 +2782,12 @@ Authファサードの説明を参考にせよ。
 LOG_CHANNEL=<オプション名>
 ```
 
+#### ・PHP-FPMのログについて
+
+LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。
+
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_application_php_fpm.html
+
 #### ・```stack```キー
 
 他の単一/複数のチャンネルを利用するチャンネル。

@@ -8,7 +8,42 @@
 
 <br>
 
-## 01. コマンド
+## 01. インストール
+
+### brew経由
+
+```bash
+$ brew install istioctl
+```
+
+<br>
+
+### curl経由
+
+参考：https://istio.io/latest/docs/setup/getting-started/#download
+
+（１）インストール先のディレクトリに移動する。
+
+```bash
+$ cd ${HOME}/projects/hiroki-it
+```
+
+（２）インストールする。
+
+```bash
+$ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
+```
+
+（３）istioctlへのパスを環境変数に登録する。
+
+```bash
+$ cd istio-1.12.1
+$ export PATH=$PWD/bin:$PATH
+```
+
+<br>
+
+## 02. コマンド
 
 ### proxy-status
 

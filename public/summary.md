@@ -192,6 +192,7 @@
     * Istio 
         * [📖 ︎Istio](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_service_mesh_istio.html)
         * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_service_mesh_istio_command.html)
+        * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_service_mesh_istio_manifest_yml.html)
     * Envoy 
         * [📖 ︎Envoy](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration_service_mesh_envoy.html)
 
