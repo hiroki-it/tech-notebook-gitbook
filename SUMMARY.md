@@ -127,15 +127,40 @@
 
 * ⚙️ Infrastructure as Code
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
-    * Terraform
-        * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_terraform_command.md)
-        * [📖 ︎ロジック](public/infrastructure_as_code/infrastructure_as_code_terraform_logic.md)
-        * [📖 ︎ポリシー](public/infrastructure_as_code/infrastructure_as_code_terraform_policy.md)
-        * [📖 ︎AWSプロバイダー](public/infrastructure_as_code/infrastructure_as_code_terraform_aws_provider.md)
-        * [📖 ︎CICD](public/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd.md)
-    * Serverless Framework
-        * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.md)
-        * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.md)
+    * コンテナのプロビジョニング
+        * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_dockerfile.md)
+        * コンテナオーケストレーション
+            * [📖 ︎コンテナオーケストレーション](public/infrastructure_as_code/infrastructure_as_code_container.md)
+            * Docker Compose
+                * [📖 ︎docker-composeコマンド](public/infrastructure_as_code/infrastructure_as_code_container_docker_compose_command.md)
+                * [📖 ︎docker-compose.yml](public/infrastructure_as_code/infrastructure_as_code_container_docker_compose_yml.md)
+            * Docker Swarm
+                * [📖 ︎Docker Swarm](public/infrastructure_as_code/infrastructure_as_code_container_docker_swarm.md)
+            * Kubernetes
+                * [📖 ︎Kubernetes](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes.md)
+                * [📖 ︎kubectlコマンド](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes_command.md)
+                * [📖 ︎minikubeコマンド](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes_minikube_command.md)
+                * [📖 ︎manifest.yml](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes_manifest_yml.md)
+                * skaffold
+                    * [📖 ︎skaffoldコマンド](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes_skaffold_command.md)
+                    * [📖 ︎skaffold.yml](public/infrastructure_as_code/infrastructure_as_code_container_kubernetes_skaffold_yml.md)
+        * サービスメッシュ
+            * Istio
+                * [📖 ︎Istio](public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_istio.md)
+                * [📖 ︎istioctlコマンド](public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_istio_command.md)
+                * [📖 ︎manifest.yml](public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_istio_manifest_yml.md)
+            * Envoy
+                * [📖 ︎Envoy](public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_envoy.md)
+    * クラウドインフラのプロビジョニング
+        * Terraform
+            * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md)
+            * [📖 ︎ロジック](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md)
+            * [📖 ︎ポリシー](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md)
+            * [📖 ︎AWSプロバイダー](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md)
+            * [📖 ︎CI/CD](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md)
+        * Serverless Framework
+            * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md)
+            * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md)
 
 * 📦 仮想化
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
@@ -145,29 +170,6 @@
         * Docker
             * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
             * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
-            * [📖 ︎Dockerfile](public/virtualization/virtualization_container_docker_dockerfile.md)
-    * コンテナオーケストレーション
-        * [📖 ︎コンテナオーケストレーション](public/virtualization/virtualization_container_orchestration.md)
-        * Docker Compose
-            * [📖 ︎docker-composeコマンド](/public/virtualization/virtualization_container_orchestration_docker_compose_command.md)
-            * [📖 ︎docker-compose.yml](public/virtualization/virtualization_container_orchestration_docker_compose_yml.md)
-        * Docker Swarm
-            * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
-        * Kubernetes
-            * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
-            * [📖 ︎kubectlコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_command.md)
-            * [📖 ︎minikubeコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_minikube_command.md)
-            * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_kubernetes_manifest_yml.md)
-            * skaffold
-                * [📖 ︎skaffoldコマンド](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_command.md)
-                * [📖 ︎skaffold.yml](public/virtualization/virtualization_container_orchestration_kubernetes_skaffold_yml.md)
-        * サービスメッシュ
-            * Istio
-                * [📖 ︎Istio](public/virtualization/virtualization_container_orchestration_service_mesh_istio.md)
-                * [📖 istioctlコマンド](public/virtualization/virtualization_container_orchestration_service_mesh_istio_command.md) 
-                * [📖 ︎manifest.yml](public/virtualization/virtualization_container_orchestration_service_mesh_istio_manifest_yml.md)
-            * Envoy
-                * [📖 ︎Envoy](public/virtualization/virtualization_container_orchestration_service_mesh_envoy.md)
 
 * ♾️ CI/CD
     * [📖 ︎CI/CD](public/ci_cd/ci_cd.md)
@@ -197,4 +199,3 @@
 
 * 📊 統計分析
     * [📖 ︎R言語](public/statistic_analysis/statistic_analysis_r.md)
-
