@@ -51,31 +51,23 @@ Istioの機能のセットを提供する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
-#### ・インストール
-
-参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
-
-```bash
-$ istioctl install --set profile=<プロファイル名> -y
-```
-
-#### ・各プロファイルの違い
+#### ・プロファイルの種類
 
 参考：
 
 - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
 - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 
-| ユースケース         | default  | demo     | external | empty                         | minimal              | openshift | preview | remote |
-| :------------------- | :------- | :------- | -------- | :---------------------------- | :------------------- | --------- | ------- | ------ |
-| 概要                 | 本番環境 | 開発環境 | -        | Istioを全てカスタマイズしたい | 最小限の機能が欲しい | ？        | -       | ？     |
-| istio-egressgateway  | -        | ○        | -        | -                             | -                    | ？        | -       | ？     |
-| istio-ingressgateway | ○        | ○        | -        | -                             | -                    | ？        | ○       | ？     |
-| istiod               | ○        | ○        | -        | -                             | ○                    | ？        | ○       | ？     |
-| grafana              | -        | -        | -        | -                             | -                    | -         | -       | -      |
-| istio-tracing        | -        | -        | -        | -                             | -                    | -         | -       | -      |
-| kiali                | -        | -        | -        | -                             | -                    | -         | -       | -      |
-| prometheus           | -        | -        | -        | -                             | -                    | -         | -       | -      |
+| ユースケース         | default  | demo     | empty                         | external | minimal              | openshift | preview | remote |
+| :------------------- | :------- | :------- | :---------------------------- | -------- | :------------------- | --------- | ------- | ------ |
+| 概要                 | 本番環境 | 開発環境 | Istioを全てカスタマイズしたい | -        | 最小限の機能が欲しい | ？        | -       | ？     |
+| istio-egressgateway  | -        | ○        | -                             | -        | -                    | ？        | -       | ？     |
+| istio-ingressgateway | ○        | ○        | -                             | -        | -                    | ？        | ○       | ？     |
+| istiod               | ○        | ○        | -                             | -        | ○                    | ？        | ○       | ？     |
+| grafana              | -        | -        | -                             | -        | -                    | -         | -       | -      |
+| istio-tracing        | -        | -        | -                             | -        | -                    | -         | -       | -      |
+| kiali                | -        | -        | -                             | -        | -                    | -         | -       | -      |
+| prometheus           | -        | -        | -                             | -        | -                    | -         | -       | -      |
 
 <br>
 
@@ -129,9 +121,51 @@ $ istioctl analyze -n foo-namespace
 
 <br>
 
+### diff
+
+#### ・diffとは
+
+ymlファイルの差分を表示する。
+
+```bash
+$ istioctl diff <変更前ymlファイル> <変更後ymlファイル>
+```
+
+<br>
+
+### install
+
+#### ・installとは
+
+プロファイルをインストールし、また設定値を変更する。
+
+参考：https://istio.io/latest/docs/setup/install/istioctl/
+
+#### ・--set
+
+インストールするもの、または変更する項目を指定する。
+
+**＊実行例＊**
+
+指定したプロファイルをインストールする。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+
+```bash
+$ istioctl install --set profile=<プロファイル名> -y
+```
+
+アクセスログの出力先を標準出力に変更する。
+
+```bash
+$ istioctl install --set meshConfig.accessLogFile=/dev/stdout
+```
+
+<br>
+
 ### profile
 
-#### ・profile
+#### ・profileとは
 
 Istioのプロファイルを操作する。
 

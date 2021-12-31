@@ -159,7 +159,7 @@ spec:
 
 ### rules
 
-サービスへのルーティングルールを設定する。複数のサービスにリクエストを振り分けられる。
+サービスへのルーティングルールを設定する。複数のサービスにインバウンド通信を振り分けられる。
 
 ```yaml
 kind: Ingress
@@ -549,9 +549,43 @@ spec:
 
 ### ports
 
+#### ・appProtocol
+
+インバウンド通信を受信するためのプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+
+```yaml
+ kind: Service
+ spec:
+   ports:
+   - appProtocol: http
+```
+
+もしIstio Virtual Serviceからインバウンド通信を受信する場合に、```appProtocol```キーが使用しなければ、```name```キーを『```<プロトコル名>-<任意の文字列>```』で命名しなければならない。
+
+参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
+
+```yaml
+kind: Service
+spec:
+  ports:
+  - name: http-foo # Istio Gatewayからインバウンド通信を受信
+    # appProtocolを使用しない。
+```
+
+#### ・name
+
+受信するためのプロトコルのポート名を設定する。
+
+```yaml
+ kind: Service
+ spec:
+   ports:
+   - name: http
+```
+
 #### ・protocol
 
-サービスでリクエストを受信するために、受信プロトコルを設定する。
+インバウンド通信を受信するためのプロトコルを設定する。
 
 **＊実装例＊**
 
@@ -564,7 +598,7 @@ spec:
 
 #### ・port
 
-サービスでリクエストを受信するために、受信ポートを設定する。
+インバウンド通信を受信するためのポート番号を設定する。
 
 **＊実装例＊**
 
@@ -577,7 +611,7 @@ spec:
 
 ####  ・targetPort
 
-ポッドに対してリクエストを転送するために、転送先ポートを設定する。ポッド内で最初にリクエストを受信するコンテナの```containerPort```の番号に合わせるようにする。
+インバウンド通信をポッドに転送するために、転送先ポートを設定する。ポッド内で最初に通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
 
 **＊実装例＊**
 
@@ -592,7 +626,7 @@ spec:
 
 ### selector
 
-リクエストの転送先とするポッドのラベルのキー名と値を設定する。
+インバウンド通信の転送先とするポッドのラベルのキー名と値を設定する。
 
 参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
@@ -648,5 +682,4 @@ spec:
           requests:
             storage: 2Gi
 ```
-
 

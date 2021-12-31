@@ -24,7 +24,13 @@
 
 ### OSI参照モデル
 
-#### ・各概念層のヘッダ情報追加
+#### ・OSI参照モデルとは
+
+コンピュータのソフトウェアとハードウェアによる通信機能を、７つのレイヤーに分割したもの。
+
+参考：https://www.infraexpert.com/study/networking3.html
+
+#### ・各レイヤーの責務
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSI参照モデル.png)
 
@@ -32,9 +38,15 @@
 
 ### TCP階層モデル
 
-#### ・プロトコルの分類と扱われる階層
+#### ・TCP階層モデルとは
 
-TCP/IPモデルで用いられるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。
+コンピュータのソフトウェアとハードウェアによる通信機能を、５つのレイヤーに分割したもの。TCP/IPモデルで用いられるプロトコルのうち、最も代表的な『TCP』と『IP』から名前をとって『TCP/IP』と名付けられた。
+
+#### ・各レイヤーの責務
+
+各レイヤーで異なるプロトコルを扱う。プロトコルとしての暗号化技術である『セキュアプロトコル』は、赤色で示してある。レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
+
+参考：https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
 
 ![セキュアプロトコル](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/セキュアプロトコル.png)
 

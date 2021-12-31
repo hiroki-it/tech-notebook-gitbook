@@ -8,7 +8,7 @@
 
 <br>
 
-## 02. apiVersion
+## 01. apiVersion
 
 Istio-APIのバージョンを設定する。Kubernetesとは異なることに注意する。
 
@@ -18,7 +18,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 03. kind
+## 02. kind
 
 | オブジェクト名  | 補足 |
 | --------------- | ---- |
@@ -28,7 +28,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 04. spec（DestinationRuleの場合）
+## 03. spec（DestinationRuleの場合）
 
 ### host
 
@@ -70,13 +70,13 @@ spec:
 
 <br>
 
-## 05. spec（Gatewayの場合）
+## 04. spec（Gatewayの場合）
 
 ### servers
 
 #### ・port
 
-受信するインバウンド通信のプロトコルを設定する。
+受信するインバウンド通信のプロトコルを設定する。プロトコルに応じて、自動的に
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -87,6 +87,7 @@ kind: Gateway
 spec:
   servers:
   - port:
+      name: http
       protocol: HTTP
       number: 80
 ```
@@ -127,7 +128,7 @@ spec:
 
 <br>
 
-## 06. spec（VirtualServiceの場合）
+## 05. spec（VirtualServiceの場合）
 
 ### gateways
 
@@ -143,6 +144,12 @@ spec:
 <br>
 
 ### http
+
+#### ・httpとは
+
+HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をサービスにルーティングする。ルーティング先のサービスを厳格に指定するために、サービスの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+
+参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
 #### ・match
 
@@ -176,7 +183,7 @@ spec:
 
 #### ・route
 
-受信するインバウンド通信のルーティング先のサービスを設定する。
+受信するインバウンド通信のルーティング先のサービスやポートを設定する。
 
 **＊実装例＊**
 
@@ -190,4 +197,12 @@ spec:
             port:
               number: 80
 ```
+
+<br>
+
+### tcp
+
+#### ・tcpとは
+
+TCP/IPのプロトコルによるインバウンド通信をサービスにルーティングする。
 

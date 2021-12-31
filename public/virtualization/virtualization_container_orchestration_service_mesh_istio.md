@@ -126,5 +126,22 @@ Gatewayから受信したインバウンド通信をサービスにルーティ�
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service.png)
 
+<br>
 
+## 03. テスト
+
+### Fault Injection
+
+#### ・Fault Injectionとは
+
+障害を意図的に注入し、サービスメッシュの動作を検証する。
+
+参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
+
+#### ・テストの種類
+
+| テスト名         | 内容                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Deplay Injection | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abort Injection  | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を引き起こす。<br>参考：https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
