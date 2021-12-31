@@ -24,7 +24,7 @@
 
 Teraformとプロバイダーを別々にリリースする。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_terraform.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_cloud_terraform.html
 
 #### ・DBインスタンスの設定変更でダウンタイムが発生する場合
 

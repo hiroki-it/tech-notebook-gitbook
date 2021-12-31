@@ -12,7 +12,7 @@
 
 ### IaCとは
 
-構成ファイルの実装に基づいて、物理インフラや仮想インフラを管理する手法のこと。
+構成ファイルの実装に基づいて、物理インフラや仮想インフラの構成を管理する手法のこと。
 
 https://en.wikipedia.org/wiki/Infrastructure_as_code
 
@@ -73,11 +73,12 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 - Ansible
 - Chef
+- Vagrant
 
 #### ・コンテナ
 
-- Dockerfile
 - Ansible Container
+- Dockerfile
 
 #### ・クラウドインフラストラクチャ
 
@@ -89,7 +90,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### 宣言型とは
 
-構成ファイルに定義されたインフラの最終的な状態に基づいて、インフラを構築/更新/削除する手法のこと。ツールごとに独自の宣言方法を持っており、学習コストが高い。その一方で、最終的な状態を定義しさえすれば、構築/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
+構成ファイルに定義されたインフラの最終的な状態に基づいて、インフラの構成を管理する手法のこと。ツールごとに独自の宣言方法を持っており、学習コストが高い。その一方で、最終的な状態を定義しさえすれば、構築/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
 
 参考：
 
@@ -112,11 +113,11 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 #### ・クラウドインフラストラクチャ
 
-- Terraform
 - AWS CloudFormation
 - Azure Resource Manager
-- Deployment Manager
+- GCP Deployment Manager
 - Serverless Framework
 - SAM
+- Terraform
 
 <br>
