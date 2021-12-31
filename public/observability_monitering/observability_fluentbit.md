@@ -751,7 +751,7 @@ FluentBit/Fluentdが対応する他のサービスにログを転送できる。
 
 サイドカーコンテナパターンを含むコンテナデザインパターンについては、以下のリンクを参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration.html
 
 #### ・ログの収集/転送の仕組み
 

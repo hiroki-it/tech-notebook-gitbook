@@ -185,7 +185,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 クラスのメソッドが、それ単体で仕様通りに処理が動作するかを検証する方法。検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを行う必要がある。この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意した方が良い。テスト用DBを```docker-compose.yml```ファイルによって用意する方法については、以下を参考にせよ。
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration.html
 
 **＊実装例＊**
 
