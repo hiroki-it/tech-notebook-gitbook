@@ -125,6 +125,13 @@
     * GCP
         * [📖 ︎GCP](public/cloud_computing/cloud_computing_gcp.md)
 
+* 📦 仮想化
+    * [📖 ︎仮想化](public/virtualization/virtualization.md)
+    * コンテナ
+        * Docker
+            * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
+            * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
+
 * ⚙️ Infrastructure as Code
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
     * 仮想サーバー（仮想マシン）プロビジョニング
@@ -163,13 +170,6 @@
         * Serverless Framework
             * [📖 ︎serverlessコマンド](public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md)
             * [📖 ︎serverless.yml](public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md)
-
-* 📦 仮想化
-    * [📖 ︎仮想化](public/virtualization/virtualization.md)
-    * コンテナ
-        * Docker
-            * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
-            * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
 
 * ♾️ CI/CD
     * [📖 ︎CI/CD](public/ci_cd/ci_cd.md)
