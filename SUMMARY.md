@@ -134,7 +134,7 @@
 
 * ⚙️ Infrastructure as Code
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
-    * 仮想サーバー（仮想マシン）プロビジョニング
+    * サーバープロビジョニング
         * [📖 ︎Vagrant](public/infrastructure_as_code/infrastructure_as_code_server_vagrant.md)
     * コンテナプロビジョニング
         * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_dockerfile.md)
