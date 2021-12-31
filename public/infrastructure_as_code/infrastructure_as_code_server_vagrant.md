@@ -8,61 +8,67 @@
 
 <br>
 
-## 01. Providerによる仮想サーバー（仮想マシン）の構築
+## 01. Vagrantとは
 
-![Vagrantの仕組み_オリジナル](https://user-images.githubusercontent.com/42175286/60393574-b18de200-9b52-11e9-803d-ef44d6e50b08.png)
+### Vagrantファイル
+
+![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
+
+プロバイダーとプロビジョナーの一連の操作を設定する。チームメンバーが別々に仮想サーバーを構築する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantファイルにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
+
+参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
 <br>
 
-### Providerの操作
-
-#### ・Providerとは
+### プロバイダー
 
 基本ソフトウェアにおける制御プログラムや一連のハードウェアを仮想的に構築できる。これを、仮想サーバー（仮想マシンとも）という。構築方法の違いによって、『ホスト型』、『ハイパーバイザ型』に分類できる。
 
 <br>
 
-### Provisionerの操作
+### プロビジョナー
 
-#### ・Provisionerとは
-
-Providerによって構築された仮想サーバーに、Web開発のためのソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
+プロバイダーによって構築された仮想サーバーに、Web開発のためのソフトウェアをインストールできる（構成管理できる）。具体的には、プログラミング言語やファイアウォールをインストールする。
 
 <br>
 
-### VagrantによるProviderとProvisionerの操作
+## 02. コマンド
 
-#### ・Vagrantとは
+### global-status
 
-ProviderとProvisionerの操作を自動化できる。チームメンバーが別々に仮想サーバーを構築する場合、ProviderとProvisionerの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantを使う場合、ProviderとProvisionerによる処理方法は、Vagrantfileに記述されている。このために、Vagrantを用いれば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
-
-#### ・サーバーの情報の管理方法
-
-サーバーの情報は、```.env```ファイルで以下の様に管理する。全ての値が文字列として認識されるため、数値や真偽値は使用できない。
+起動中の仮想サーバを一覧で表示する。
 
 ```bash
-#=======================================
-# Webサーバー情報
-#=======================================
-WEB_HOST=
-
-#=======================================
-# データベースサーバー情報
-#=======================================
-DB_HOST=foo-db
-DB_NAME=foo
-DB_USER=foo
-DB_PASSWORD=*****
+$ vagrant global-status
 ```
 
-#### ・主な```vagrant```コマンド
+<br>
 
-| コマンド                        | 処理                       |
-| ------------------------------- | :------------------------- |
-| **```vagrant up```**            | 仮想サーバー起動             |
-| **```vagrant halt```**          | 仮想サーバー停止             |
-| **```vagrant ssh```**           | 仮想サーバーへのリモート接続 |
-| **```vagrant global-status```** | 起動中仮想サーバーの一覧     |
+### halt
 
+仮想サーバーを停止する。
 
+```bash
+$ vagrant halt
+```
+
+<br>
+
+### ssh
+
+仮想サーバーにSSH接続を行う。
+
+```bash
+$ vagrant ssh
+```
+
+<br>
+
+### up
+
+仮想サーバーを起動する。
+
+```bash
+$ vagrant up
+```
 
