@@ -153,7 +153,7 @@
                 * [📖 ︎manifest.yml](public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md)
             * Envoy
                 * [📖 ︎Envoy](public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy.md)
-    * クラウドインフラのプロビジョニング
+    * クラウドインフラプロビジョニング
         * Terraform
             * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md)
             * [📖 ︎ロジック](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md)
