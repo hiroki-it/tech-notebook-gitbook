@@ -151,8 +151,6 @@
 ## 📦 仮想化
 
 * [📖 ︎仮想化](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization.html)
-* 仮想サーバー（仮想マシン）
-    * [📖 ︎仮想サーバー（仮想マシン）](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_server.html)
 * コンテナ
     * Docker
         * [📖 ︎Docker](https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_docker.html)
@@ -163,7 +161,9 @@
 ## ⚙️ Infrastructure as Code
 
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
-* コンテナのプロビジョニング
+* 仮想サーバー（仮想マシン）プロビジョニング
+    * [📖 ︎Vagrant](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant.html)
+* コンテナプロビジョニング
     * [📖 ︎Dockerfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_dockerfile.html)
     * コンテナオーケストレーション
         * [📖 ︎コンテナオーケストレーション](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration.html)
@@ -187,7 +187,7 @@
             * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_istio_manifest_yml.html)
         * Envoy
             * [📖 ︎Envoy](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_service_mesh_envoy.html)
-* クラウドインフラのプロビジョニング
+* クラウドインフラプロビジョニング
     * Terraform
         * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)
         * [📖 ︎ロジック](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.html)
