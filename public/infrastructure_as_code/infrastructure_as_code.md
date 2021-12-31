@@ -92,7 +92,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### ツールの種類
 
-#### ・物理/仮想サーバー
+#### ・物理/仮想サーバー（仮想マシン）
 
 - Ansible
 - Chef
@@ -124,7 +124,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### ツールの種類
 
-#### ・物理/仮想サーバ
+#### ・物理/仮想サーバ（仮想マシン）
 
 - CFEngine
 - Puppet

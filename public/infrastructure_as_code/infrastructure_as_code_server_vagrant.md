@@ -14,7 +14,7 @@
 
 ![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/vagrant_provider_provisioner.png)
 
-プロバイダーとプロビジョナーの一連の操作を設定する。チームメンバーが別々に仮想サーバーを構築する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantファイルにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
+プロバイダーとプロビジョナーの一連の操作を設定する。チームメンバーが別々に仮想サーバー（仮想マシン）を構築する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。Vagrantファイルにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを構築し、ソフトウェアをインストールできる。
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 
@@ -38,6 +38,8 @@
 
 起動中の仮想サーバを一覧で表示する。
 
+参考：https://www.vagrantup.com/docs/cli/global-status
+
 ```bash
 $ vagrant global-status
 ```
@@ -47,6 +49,8 @@ $ vagrant global-status
 ### halt
 
 仮想サーバーを停止する。
+
+参考：https://www.vagrantup.com/docs/cli/halt
 
 ```bash
 $ vagrant halt
@@ -58,6 +62,8 @@ $ vagrant halt
 
 仮想サーバーにSSH接続を行う。
 
+参考：https://www.vagrantup.com/docs/cli/ssh
+
 ```bash
 $ vagrant ssh
 ```
@@ -67,6 +73,8 @@ $ vagrant ssh
 ### up
 
 仮想サーバーを起動する。
+
+参考：https://www.vagrantup.com/docs/cli/up
 
 ```bash
 $ vagrant up

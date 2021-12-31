@@ -91,6 +91,8 @@ $ kubectl label namespace default istio-injection=enabled
 
 Istioが正しく機能しているかどうかを検証する。
 
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
+
 **＊実行例＊**
 
 成功した場合を以下に示す。
@@ -121,14 +123,16 @@ $ istioctl analyze -n foo-namespace
 
 <br>
 
-### diff
+### manifest diff
 
 #### ・diffとは
 
 ymlファイルの差分を表示する。
 
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
+
 ```bash
-$ istioctl diff <変更前ymlファイル> <変更後ymlファイル>
+$ istioctl manifest diff <変更前ymlファイル> <変更後ymlファイル>
 ```
 
 <br>
@@ -163,11 +167,27 @@ $ istioctl install --set meshConfig.accessLogFile=/dev/stdout
 
 <br>
 
+### kube-inject
+
+#### ・kube-injectとは
+
+Envoyコンテナをサイドカーコンテナとして構築する。代わりに、```enabled```値が割り当てられた```istio-injection```タグを名前空間に付与しても良い。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
+
+```bash
+$ istioctl kube-inject
+```
+
+<br>
+
 ### profile
 
 #### ・profileとは
 
 Istioのプロファイルを操作する。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
 
 #### ・list
 
@@ -197,6 +217,8 @@ Istio configuration profiles:
 
 Ingress Gateway、Egress Gateway、プロキシコンテナのステータスを表示する。
 
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
+
 **＊実行例＊**
 
 ```bash
@@ -217,6 +239,8 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 #### ・verify-installとは
 
 Istioのインストールが正しく実行されたかを検証する。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
 
 **＊実行例＊**
 
