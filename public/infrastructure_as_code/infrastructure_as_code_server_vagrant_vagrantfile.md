@@ -8,7 +8,124 @@
 
 <br>
 
-## 01. 命令
+## 01. Vagrant.configure
+
+### Vagrant.configureとは
+
+Vagrantfileのバージョンを設定する。
+
+参考：https://www.vagrantup.com/docs/vagrantfile/version
+
+```bash
+Vagrant.configure("2") do |config|
+
+end
+```
+
+<br>
+
+## 02. config.vm
+
+### config.vmとは
+
+仮想サーバーの構成を設定する。
+
+<br>
+
+### box
+
+#### ・boxとは
+
+仮想サーバーの名前を設定する。
+
+参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
+
+```bash
+box = "foo"
+```
+
+<br>
+
+### box_check_update
+
+#### ・box_check_updateとは
+
+vagrantの更新通知を設定する。
+
+```bash
+config.vm.box_check_update = false
+```
+
+<br>
+
+### network
+
+#### ・networkとは
+
+仮想サーバーのネットワークを設定する。
+
+参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-network
+
+#### ・forwarded_port
+
+ホストから仮想サーバへポートフォワーディングを設定する。
+
+参考；https://www.vagrantup.com/docs/networking/forwarded_ports
+
+```bash
+config.vm.network "forwarded_port", guest: 80, host: 8080
+```
+
+<br>
+
+### provider
+
+#### ・providerとは
+
+プロバイダー固有のオプションを設定する。
+
+参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
+
+```bash
+config.vm.provider "virtualbox" do |vb|
+  vb.gui = true
+  vb.memory = "1024"
+end
+```
+
+<br>
+
+### provision
+
+#### ・provisionとは
+
+仮想サーバーのプロビジョニングを設定する。
+
+参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provision
+
+```bash
+config.vm.provision "shell", inline: <<-SHELL
+  apt-get update
+  apt-get install -y apache2
+SHELL
+```
+
+<br>
+
+### synced_folder
+
+#### ・synced_folderとは
+
+ホスト上のディレクトリを仮想サーバにマウントする。
+
+```bash
+config.vm.synced_folder ".", "/var/www/foo"
+```
+
+<br>
+
+### 実装例
+
 
 ```bash
 # -*- mode: ruby -*-
@@ -25,7 +142,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "base"
+  box = "base"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -56,7 +173,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder ".", "/var/www/foo"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
