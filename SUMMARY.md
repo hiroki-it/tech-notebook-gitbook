@@ -137,7 +137,8 @@
     * サーバープロビジョニング
         * [📖 ︎Vagrant](public/infrastructure_as_code/infrastructure_as_code_server_vagrant.md)
     * コンテナプロビジョニング
-        * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_dockerfile.md)
+        * Docker
+            * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md)
         * コンテナオーケストレーション
             * [📖 ︎コンテナオーケストレーション](public/infrastructure_as_code/infrastructure_as_code_container_orchestration.md)
             * Docker Compose
