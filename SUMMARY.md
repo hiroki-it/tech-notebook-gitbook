@@ -128,26 +128,31 @@
 * 📦 仮想化
     * [📖 ︎仮想化](public/virtualization/virtualization.md)
     * コンテナ
-        * Docker
-            * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
-            * [📖 ︎dockerコマンド](public/virtualization/virtualization_container_docker_command.md)
+        * [📖 ︎Docker](public/virtualization/virtualization_container_docker.md)
+    * コンテナオーケストレーション
+        * [📖 ︎コンテナオーケストレーション](public/virtualization/virtualization_container_orchestration.md)
+        * [📖 ︎Kubernetes](public/virtualization/virtualization_container_orchestration_kubernetes.md)
+        * [📖 ︎Docker Swarm](public/virtualization/virtualization_container_orchestration_docker_swarm.md)
+    * サービスメッシュ
+        * [📖 ︎Istio](public/virtualization/virtualization_service_mesh_istio.md)
+        * [📖 ︎Envoy](public/virtualization/virtualization_service_mesh_envoy.md)
 
 * ⚙️ Infrastructure as Code
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
     * サーバープロビジョニング
-        * [📖 ︎Vagrant](public/infrastructure_as_code/infrastructure_as_code_server_vagrant.md)
+        * Vagrant
+            * [📖 vagrantコマンド](public/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md)            * 
+            * [📖 Vagrantfile](public/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md)
     * コンテナプロビジョニング
-        * Docker
-            * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md)
+        * コンテナ
+            * Docker
+                * [📖 ︎dockerコマンド](public/infrastructure_as_code/infrastructure_as_code_container_docker_command.md)
+                * [📖 ︎Dockerfile](public/infrastructure_as_code/infrastructure_as_code_container_docker_dockerfile.md)
         * コンテナオーケストレーション
-            * [📖 ︎コンテナオーケストレーション](public/infrastructure_as_code/infrastructure_as_code_container_orchestration.md)
             * Docker Compose
                 * [📖 ︎docker-composeコマンド](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_command.md)
                 * [📖 ︎docker-compose.yml](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.md)
-            * Docker Swarm
-                * [📖 ︎Docker Swarm](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_swarm.md)
             * Kubernetes
-                * [📖 ︎Kubernetes](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes.md)
                 * [📖 ︎kubectlコマンド](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md)
                 * [📖 ︎minikubeコマンド](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md)
                 * [📖 ︎manifest.yml](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md)
@@ -156,11 +161,8 @@
                     * [📖 ︎skaffold.yml](public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md)
         * サービスメッシュ
             * Istio
-                * [📖 ︎Istio](public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio.md)
                 * [📖 ︎istioctlコマンド](public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md)
                 * [📖 ︎manifest.yml](public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md)
-            * Envoy
-                * [📖 ︎Envoy](public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy.md)
     * クラウドインフラプロビジョニング
         * Terraform
             * [📖 ︎terraformコマンド](public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md)
