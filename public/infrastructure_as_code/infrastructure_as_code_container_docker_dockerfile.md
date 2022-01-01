@@ -262,7 +262,11 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 参考：https://docs.docker.com/engine/reference/builder/#workdir
 
-#### ・実装例
+<br>
+
+### 実装例
+
+#### ・PHPの場合
 
 PHPのイメージをビルドするためのDockerfileを示す。
 
@@ -299,6 +303,8 @@ LABEL mantainer=${LABEL}
 # ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『/』で終える必要がある。
 COPY ./ /var/www/foo/
 ```
+
+#### ・Nginxの場合
 
 NginxのイメージをビルドするためのDockerfileを示す。
 
