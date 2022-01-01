@@ -141,6 +141,7 @@
     * [📖 ︎Infrastructure as Code](public/infrastructure_as_code/infrastructure_as_code.md)
     * サーバープロビジョニング
         * Vagrant
+            * [📖 Vagrant](public/infrastructure_as_code/infrastructure_as_code_server_vagrant.md)
             * [📖 vagrantコマンド](public/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.md)            * 
             * [📖 Vagrantfile](public/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.md)
     * コンテナプロビジョニング
