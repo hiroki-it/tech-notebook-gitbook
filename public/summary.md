@@ -168,6 +168,7 @@
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
 * 仮想サーバー（仮想マシン）プロビジョニング
     * Vagrant
+        * [📖 Vagrant](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant.html)
         * [📖 vagrantコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
         * [📖 Vagrantfile](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant_vagrantfile.html)
 * コンテナプロビジョニング
@@ -179,7 +180,7 @@
         * [📖 ︎docker-compose.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_docker_compose_yml.html)
     * Kubernetes
         * [📖 ︎kubectlコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.html)
-            * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.html)
+        * [📖 ︎minikubeコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.html)
         * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.html)
         * skaffold
             * [📖 ︎skaffoldコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.html)
