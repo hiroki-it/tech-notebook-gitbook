@@ -96,7 +96,6 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 - Ansible
 - Chef
-- Vagrant
 
 #### ・コンテナ
 
@@ -128,6 +127,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 - CFEngine
 - Puppet
+- Vagrantfile
 
 #### ・コンテナオーケストレーション
 

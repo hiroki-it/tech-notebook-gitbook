@@ -34,13 +34,6 @@ $ skaffold build --cache-artifacts=false
 $ skaffold dev
 ```
 
-| コマンド                              | ポートフォワーディングの可否       |
-| ------------------------------------- | ---------------------------------- |
-| ```skaffold dev```                    | ユーザ定義を参照                   |
-| ```skaffold dev --port-forward```     | ユーザ定義を参照、サービス         |
-| ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
-
-
 #### ・--trigger
 
 一定間隔でソースコードの変更を監視しつつ、```dev```コマンドを実行する。
@@ -77,10 +70,13 @@ $ skaffold dev --port-forward
 $ skaffold run
 ```
 
-| コマンド                          | ポートフォワーディングの可否       |
-| --------------------------------- | ---------------------------------- |
-| ```skaffold run```                | ポートフォワーディングを実行しない |
-| ```skaffold run --port-forward``` | ユーザ定義を参照、サービス         |
+#### ・force
+
+オブジェクトを強制的にデプロイしつつ、```run```コマンドを実行する。
+
+```bash
+$ skaffold run --force
+```
 
 #### ・--no-prune、--cache-artifacts
 
@@ -106,3 +102,18 @@ $ skaffold run --tail
 $ skaffold run --port-forward
 ```
 
+<br>
+
+## 02. ポートフォワーディング
+
+### コマンド別
+
+参考：https://skaffold.dev/docs/pipeline-stages/port-forwarding/
+
+| コマンド                          | ポートフォワーディングの可否       |
+| --------------------------------- | ---------------------------------- |
+| ```skaffold dev```                    | ユーザ定義を参照                   |
+| ```skaffold dev --port-forward```     | ユーザ定義を参照、サービス         |
+| ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
+| ```skaffold run```                | ポートフォワーディングを実行しない |
+| ```skaffold run --port-forward``` | ユーザ定義を参照、サービス         |

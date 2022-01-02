@@ -3846,7 +3846,7 @@ class FooController extends Controller
 #### ・ルーティング一覧
 
 ```bash
-# ルーティングを一覧で表示
+# ルーティングの一覧を表示する
 $ php artisan route:list
 ```
 

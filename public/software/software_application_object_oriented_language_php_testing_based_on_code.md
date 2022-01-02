@@ -54,7 +54,7 @@ OK (1 tests, 1 assertions)
 
 #### ・--list-tests
 
-実行の対象となるテストファイルを一覧で表示する。
+実行の対象となるテストファイルの一覧を表示する。
 
 ```bash
 $ vendor/bin/phpunit --list-tests

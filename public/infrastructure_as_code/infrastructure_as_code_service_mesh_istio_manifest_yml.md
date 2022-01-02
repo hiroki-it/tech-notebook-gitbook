@@ -20,15 +20,26 @@ apiVersion: networking.istio.io/v1beta1
 
 ## 02. kind
 
-| オブジェクト名  | 補足 |
-| --------------- | ---- |
-| DestinationRule |      |
-| Gateway         |      |
-| VirtualService  |      |
+- DestinationRule
+- Gateway
+- VirtualService
 
 <br>
 
-## 03. spec（DestinationRuleの場合）
+## 03. metadata
+
+### namespace
+
+Istioオブジェクトを作成する名前空間を設定する。デフォルトで```istio-system```になる。
+
+```yaml
+metadata:
+  namespace: istio-system
+```
+
+<br>
+
+## 04. spec（DestinationRuleの場合）
 
 ### host
 
@@ -70,7 +81,7 @@ spec:
 
 <br>
 
-## 04. spec（Gatewayの場合）
+## 05. spec（Gatewayの場合）
 
 ### servers
 
@@ -128,7 +139,53 @@ spec:
 
 <br>
 
-## 05. spec（VirtualServiceの場合）
+## 06. spec（IstioOperatorの場合）
+
+### meshConfig
+
+サービスメッシュのオプションを設定する。
+
+参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    accessLogFile: /dev/stdout
+    enableTracing: true
+```
+
+<br>
+
+### namespace
+
+Istiodをインストールする名前空間を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+
+```yaml
+kind: IstioOperator
+spec:
+  namespace: foo
+```
+
+<br>
+
+### profile
+
+Istioのプロファイルをインストールする。
+
+参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+
+```yaml
+kind: IstioOperator
+spec:
+  profile: default
+```
+
+<br>
+
+## 07. spec（VirtualServiceの場合）
 
 ### gateways
 

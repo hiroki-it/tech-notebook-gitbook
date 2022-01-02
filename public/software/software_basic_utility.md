@@ -774,7 +774,7 @@ $ rm -R <ディレクトリ名>
 
 #### ・オプション無し
 
-現在設定されているシェル変数を一覧で表示する。
+現在設定されているシェル変数の一覧を表示する。
 
 ```bash
 $ set
@@ -876,7 +876,7 @@ $ ssh <接続名> -T
 
 #### ・list-unit-files
 
-デーモンのUnitを一覧で表示する。
+デーモンのUnitの一覧を表示する。
 
 ```bash
 $ systemctl list-unit-files --type=service

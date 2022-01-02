@@ -40,6 +40,50 @@ minikubeのプラグインを操作する。
 $ minikube addons enable ingress
 ```
 
+#### ・list
+
+有効可能なプラグインの一覧を表示する。
+
+```bash
+$ minikube addons list
+
+|-----------------------------|----------|--------------|-----------------------|
+|         ADDON NAME          | PROFILE  |    STATUS    |      MAINTAINER       |
+|-----------------------------|----------|--------------|-----------------------|
+| ambassador                  | minikube | disabled     | unknown (third-party) |
+| auto-pause                  | minikube | disabled     | google                |
+| csi-hostpath-driver         | minikube | disabled     | kubernetes            |
+| dashboard                   | minikube | enabled ✅   | kubernetes            |
+| default-storageclass        | minikube | enabled ✅   | kubernetes            |
+| efk                         | minikube | disabled     | unknown (third-party) |
+| freshpod                    | minikube | disabled     | google                |
+| gcp-auth                    | minikube | disabled     | google                |
+| gvisor                      | minikube | disabled     | google                |
+| helm-tiller                 | minikube | disabled     | unknown (third-party) |
+| ingress                     | minikube | enabled ✅   | unknown (third-party) |
+| ingress-dns                 | minikube | disabled     | unknown (third-party) |
+| istio                       | minikube | disabled     | unknown (third-party) |
+| istio-provisioner           | minikube | disabled     | unknown (third-party) |
+| kubevirt                    | minikube | disabled     | unknown (third-party) |
+| logviewer                   | minikube | disabled     | google                |
+| metallb                     | minikube | disabled     | unknown (third-party) |
+| metrics-server              | minikube | disabled     | kubernetes            |
+| nvidia-driver-installer     | minikube | disabled     | google                |
+| nvidia-gpu-device-plugin    | minikube | disabled     | unknown (third-party) |
+| olm                         | minikube | disabled     | unknown (third-party) |
+| pod-security-policy         | minikube | disabled     | unknown (third-party) |
+| portainer                   | minikube | disabled     | portainer.io          |
+| registry                    | minikube | disabled     | google                |
+| registry-aliases            | minikube | disabled     | unknown (third-party) |
+| registry-creds              | minikube | disabled     | unknown (third-party) |
+| storage-provisioner         | minikube | enabled ✅   | kubernetes            |
+| storage-provisioner-gluster | minikube | disabled     | unknown (third-party) |
+| volumesnapshots             | minikube | disabled     | kubernetes            |
+|-----------------------------|----------|--------------|-----------------------|
+```
+
+
+
 <br>
 
 ### config

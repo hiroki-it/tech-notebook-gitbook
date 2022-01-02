@@ -166,7 +166,7 @@
 ## ⚙️ Infrastructure as Code
 
 * [📖 ︎Infrastructure as Code](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code.html)
-* 仮想サーバー（仮想マシン）プロビジョニング
+* サーバープロビジョニング
     * Vagrant
         * [📖 Vagrant](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant.html)
         * [📖 vagrantコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_server_vagrant_command.html)
