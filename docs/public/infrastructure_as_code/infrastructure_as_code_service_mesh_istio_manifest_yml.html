@@ -3037,29 +3037,20 @@
 </code></pre>
 <p><br></p>
 <h2 id="02-kind"><a name="02-kind" class="plugin-anchor" href="#02-kind"><i class="fa fa-link" aria-hidden="true"></i></a>02. kind</h2>
-<table>
-<thead>
-<tr>
-<th>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x540D;</th>
-<th>&#x88DC;&#x8DB3;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DestinationRule</td>
-<td></td>
-</tr>
-<tr>
-<td>Gateway</td>
-<td></td>
-</tr>
-<tr>
-<td>VirtualService</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>DestinationRule</li>
+<li>Gateway</li>
+<li>VirtualService</li>
+</ul>
 <p><br></p>
-<h2 id="03-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="03-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#03-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>03. spec&#xFF08;DestinationRule&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="03-metadata"><a name="03-metadata" class="plugin-anchor" href="#03-metadata"><i class="fa fa-link" aria-hidden="true"></i></a>03. metadata</h2>
+<h3 id="namespace"><a name="namespace" class="plugin-anchor" href="#namespace"><i class="fa fa-link" aria-hidden="true"></i></a>namespace</h3>
+<p>Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;<code>istio-system</code>&#x306B;&#x306A;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>system
+</code></pre>
+<p><br></p>
+<h2 id="04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>04. spec&#xFF08;DestinationRule&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="host"><a name="host" class="plugin-anchor" href="#host"><i class="fa fa-link" aria-hidden="true"></i></a>host</h3>
 <p>&#x3044;&#x305A;&#x308C;&#x306E;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3078;&#x306E;&#x8EE2;&#x9001;&#x6642;&#x306B;&#x3001;DestinationRule&#x3092;&#x9069;&#x7528;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule" target="_blank">https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule</a></p>
@@ -3085,7 +3076,7 @@
       <span class="token key atrule">version</span><span class="token punctuation">:</span> v2
 </code></pre>
 <p><br></p>
-<h2 id="04-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="04-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#04-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>04. spec&#xFF08;Gateway&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;Gateway&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="servers"><a name="servers" class="plugin-anchor" href="#servers"><i class="fa fa-link" aria-hidden="true"></i></a>servers</h3>
 <h4 id="&#x30FB;port"><a name="&#x30FB;port" class="plugin-anchor" href="#&#x30FB;port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;port</h4>
 <p>&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x3001;&#x81EA;&#x52D5;&#x7684;&#x306B;</p>
@@ -3122,7 +3113,34 @@
       <span class="token key atrule">privateKey</span><span class="token punctuation">:</span> /etc/certs/privatekey.pem
 </code></pre>
 <p><br></p>
-<h2 id="05-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;VirtualService&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>06. spec&#xFF08;IstioOperator&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="meshconfig"><a name="meshconfig" class="plugin-anchor" href="#meshconfig"><i class="fa fa-link" aria-hidden="true"></i></a>meshConfig</h3>
+<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig" target="_blank">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
+    <span class="token key atrule">accessLogFile</span><span class="token punctuation">:</span> /dev/stdout
+    <span class="token key atrule">enableTracing</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre>
+<p><br></p>
+<h3 id="namespace"><a name="namespace" class="plugin-anchor" href="#namespace"><i class="fa fa-link" aria-hidden="true"></i></a>namespace</h3>
+<p>Istiod&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec" target="_blank">https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> foo
+</code></pre>
+<p><br></p>
+<h3 id="profile"><a name="profile" class="plugin-anchor" href="#profile"><i class="fa fa-link" aria-hidden="true"></i></a>profile</h3>
+<p>Istio&#x306E;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec" target="_blank">https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profile</span><span class="token punctuation">:</span> default
+</code></pre>
+<p><br></p>
+<h2 id="07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>07. spec&#xFF08;VirtualService&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="gateways"><a name="gateways" class="plugin-anchor" href="#gateways"><i class="fa fa-link" aria-hidden="true"></i></a>gateways</h3>
 <p>&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x3044;&#x305A;&#x308C;&#x306E;Gateway&#x304B;&#x3089;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> VirtualService
@@ -3211,7 +3229,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"next":{"title":"クラウドインフラプロビジョニング","level":"1.10.4","depth":2,"ref":"","articles":[{"title":"Terraform","level":"1.10.4.1","depth":3,"ref":"","articles":[{"title":"📖 ︎terraformコマンド","level":"1.10.4.1.1","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md","articles":[]},{"title":"📖 ︎ロジック","level":"1.10.4.1.2","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md","articles":[]},{"title":"📖 ︎ポリシー","level":"1.10.4.1.3","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md","articles":[]},{"title":"📖 ︎AWSプロバイダー","level":"1.10.4.1.4","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md","articles":[]},{"title":"📖 ︎CI/CD","level":"1.10.4.1.5","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md","articles":[]}]},{"title":"Serverless Framework","level":"1.10.4.2","depth":3,"ref":"","articles":[{"title":"📖 ︎serverlessコマンド","level":"1.10.4.2.1","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md","articles":[]},{"title":"📖 ︎serverless.yml","level":"1.10.4.2.2","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md","articles":[]}]}]},"previous":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","mtime":"2022-01-01T15:05:06.932Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-01T15:05:10.367Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"next":{"title":"クラウドインフラプロビジョニング","level":"1.10.4","depth":2,"ref":"","articles":[{"title":"Terraform","level":"1.10.4.1","depth":3,"ref":"","articles":[{"title":"📖 ︎terraformコマンド","level":"1.10.4.1.1","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.md","articles":[]},{"title":"📖 ︎ロジック","level":"1.10.4.1.2","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_logic.md","articles":[]},{"title":"📖 ︎ポリシー","level":"1.10.4.1.3","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_policy.md","articles":[]},{"title":"📖 ︎AWSプロバイダー","level":"1.10.4.1.4","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_aws_provider.md","articles":[]},{"title":"📖 ︎CI/CD","level":"1.10.4.1.5","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_ci_cd.md","articles":[]}]},{"title":"Serverless Framework","level":"1.10.4.2","depth":3,"ref":"","articles":[{"title":"📖 ︎serverlessコマンド","level":"1.10.4.2.1","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_command.md","articles":[]},{"title":"📖 ︎serverless.yml","level":"1.10.4.2.2","depth":4,"path":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_cloud_serverless_framework_serverless_yml.md","articles":[]}]}]},"previous":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","mtime":"2022-01-02T04:14:21.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-02T04:14:28.583Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
