@@ -2451,6 +2451,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.10.3.3.2" >
+            
+                <span>
+            
+                    
+                    Envoy
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.3.3.2.1" data-path="infrastructure_as_code_service_mesh_envoy_envoy_yml.html">
+            
+                <a href="infrastructure_as_code_service_mesh_envoy_envoy_yml.html">
+            
+                    
+                    📖 envoy.yml
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -3170,6 +3202,14 @@ Defaulted container <span class="token string">&quot;foo-container&quot;</span> 
 <h4 id="&#x30FB;get&#x3068;&#x306F;"><a name="&#x30FB;get&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;get&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;get&#x3068;&#x306F;</h4>
 <p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get</a></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465" target="_blank">https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465</a></p>
+<pre class="language-"><code class="lang-bash">$ kubectl get <span class="token function">pv</span> <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">tail</span> -n+2 <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">&apos;{print $1}&apos;</span> <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">{</span><span class="token punctuation">}</span> kubectl patch <span class="token function">pv</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> -p <span class="token string">&apos;{&quot;metadata&quot;:{&quot;finalizers&quot;: null}}&apos;</span>
+</code></pre>
 <h4 id="&#x30FB;node"><a name="&#x30FB;node" class="plugin-anchor" href="#&#x30FB;node"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;node</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
@@ -3338,7 +3378,7 @@ Starting to serve on <span class="token punctuation">[</span>::<span class="toke
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"Kubernetes","level":"1.10.3.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","mtime":"2022-01-02T04:14:21.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-02T04:14:28.583Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"Kubernetes","level":"1.10.3.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","mtime":"2022-01-02T17:49:04.106Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-02T17:49:08.814Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
