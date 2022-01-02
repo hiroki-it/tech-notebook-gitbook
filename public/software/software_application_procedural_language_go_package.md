@@ -182,7 +182,7 @@ Go製のORMである。
 ```go
 func NewDB() (*gorm.DB, error) {
     
-    // 接続情報。sprintfメソッドを使用すると、可読性が高い。
+    // 接続情報。sprintfメソッドを用いると、可読性が高い。
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("DB_USER"),

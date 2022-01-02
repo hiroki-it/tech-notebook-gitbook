@@ -145,6 +145,14 @@ $ istioctl manifest diff <変更前ymlファイル> <変更後ymlファイル>
 
 参考：https://istio.io/latest/docs/setup/install/istioctl/
 
+#### ・-f
+
+マニフェストファイルを用いて、プロファイルをインストールする。
+
+```bash
+$ istioctl install -f ./istio-manifests/<マニフェストファイル>.yml -y
+```
+
 #### ・--set
 
 インストールするもの、または変更する項目を指定する。

@@ -753,7 +753,7 @@ class Handler extends ExceptionHandler
 
 Facadeに登録されたクラス（Facadeクラス）とServiceContainerを繋ぐ静的プロキシとして働く。メソッドをコールできるようになる。
 
-#### ・Facadeを使用しない場合
+#### ・Facadeを用いない場合
 
 new演算子でインスタンスを作成する。
 
@@ -889,7 +889,7 @@ NotifiableトレイトをUserクラスで使用せずに、Notificationファサ
 
 #### ・Authファサードとは
 
-認証に関する処理を提供する。Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを用いて、認証ロジックを実装できる。
+認証に関する処理を提供する。Laravelからあらかじめ提供されている認証を用いない場合、Authファサードを用いて、認証ロジックを実装できる。
 
 <br>
 
@@ -4778,7 +4778,7 @@ class EventServiceProvider extends ServiceProvider
 </form>
 ```
 
-Bladeを使用しない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで用いる必要がある。
+Bladeを用いない場合、セッション開始時のレスポンスの```Set-Cookie```にCSRFトークンが割り当てられるため、これを取り出して```X-CSRF-TOKEN```ヘッダーや```X-XSRF-TOKEN```ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで用いる必要がある。
 
 参考：
 

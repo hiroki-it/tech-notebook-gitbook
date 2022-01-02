@@ -189,6 +189,8 @@
     * Istio
         * [📖 ︎istioctlコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.html)
         * [📖 ︎manifest.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html)
+    * Envoy
+        * [📖 ︎envoy.yml](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.html)
 * クラウドインフラプロビジョニング
     * Terraform
         * [📖 ︎terraformコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_cloud_terraform_command.html)

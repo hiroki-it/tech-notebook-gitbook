@@ -237,6 +237,19 @@ $ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート�
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
+**＊実行例＊**
+
+削除されないボリュームを削除する。
+
+参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+
+```bash
+$ kubectl get pv \
+  | tail -n+2 \
+  | awk '{print $1}' \
+  | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
+```
+
 #### ・node
 
 指定したノードの情報を表示する。

@@ -349,7 +349,7 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ・PersistentVolume
 
-ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを使用するためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを用いるためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
 
 参考：https://thinkit.co.jp/article/14195
 

@@ -149,7 +149,7 @@ $ composer create-project --prefer-dist laravel/lumen .
 
 ### diagnose
 
-composerを使用するための準備が揃っているかを検証する。
+composerを用いるための準備が揃っているかを検証する。
 
 ```bash
 $ composer diagnose

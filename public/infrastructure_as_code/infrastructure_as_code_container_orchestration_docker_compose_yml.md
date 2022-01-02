@@ -627,7 +627,7 @@ NETWORK ID       NAME        DRIVER     SCOPE
 
 <br>
 
-## 04. プラグイン
+## 03. プラグイン
 
 ### Volumeプラグイン
 
@@ -660,7 +660,7 @@ volumes:
 
 <br>
 
-## 05. イメージ別Tips
+## 04. イメージ別Tips
 
 ### mysqlイメージ
 

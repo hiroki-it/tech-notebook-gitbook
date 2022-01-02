@@ -407,7 +407,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 #### ・UPDATE処理競合問題の許容
 
-UPDATE処理競合問題を許容し、排他制御を使用しない選択肢もある。
+UPDATE処理競合問題を許容し、排他制御を用いない選択肢もある。
 
 <br>
 

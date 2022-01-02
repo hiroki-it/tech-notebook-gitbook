@@ -65,7 +65,7 @@ $ docker run --rm -it <ビルドに失敗したイメージID> /bin/bash
 
 **＊実装例＊**
 
-以下では```ADD```を使用している。URLを直接指定し、ダウンロードから解答までを実行している。
+以下では```ADD```を用いている。URLを直接指定し、ダウンロードから解答までを実行している。
 
 ```dockerfile
 ADD http://example.com/big.tar.xz /usr/src/things/

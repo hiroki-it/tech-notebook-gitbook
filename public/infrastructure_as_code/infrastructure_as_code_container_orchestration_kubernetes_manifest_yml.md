@@ -569,7 +569,7 @@ kind: Service
 spec:
   ports:
   - name: http-foo # Istio Gatewayからインバウンド通信を受信
-    # appProtocolを使用しない。
+    # appProtocolを用いない。
 ```
 
 #### ・name

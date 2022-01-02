@@ -143,15 +143,31 @@ spec:
 
 ### meshConfig
 
-サービスメッシュのオプションを設定する。
+#### ・meshConfig
+
+サービスメッシュツールのオプションを設定する。ここではEnvoyを使用した場合を説明する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+
+#### ・accessLogFile
+
+Envoyプロセスのアクセスログの出力先を設定する。
 
 ```yaml
 kind: IstioOperator
 spec:
   meshConfig:
     accessLogFile: /dev/stdout
+```
+
+#### ・enableTracing
+
+分散トレースの収集を有効化するかどうかを設定する。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
     enableTracing: true
 ```
 

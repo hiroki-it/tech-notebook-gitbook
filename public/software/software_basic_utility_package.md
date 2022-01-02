@@ -264,7 +264,7 @@ startretries=10
 
 #### ・stdout_logfile、stderr_logfile
 
-常駐プロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを使用する場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
+常駐プロセスの標準出力/標準エラー出力の出力先を設定する。デフォルト値は```/var/log/supervisor```ディレクトリである。もし、```/dev/stdout```ディレクトリまたは```/dev/stderr```ディレクトリを用いる場合は、```logfile_maxbytes ```オプションの値を```0```（無制限）とする必要がある。
 
 参考：http://supervisord.org/configuration.html#supervisord-section-values
 
