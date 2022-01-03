@@ -123,7 +123,7 @@ https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 ### ツールの種類
 
-#### ・物理/仮想サーバ（仮想マシン）
+#### ・物理/仮想サーバー（仮想マシン）
 
 - CFEngine
 - Puppet

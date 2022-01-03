@@ -65,7 +65,7 @@ https://hiroki-it.github.io/tech-notebook-gitbook/
 
 参考：https://www.php.net/manual/ja/exception.construct.php
 
-エラーコードはステータスコードと異なり、例外を識別するためのものである。異常系レスポンスのエラーコードデータとして用いられる。混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。ステータスコードはコントローラにおけるレスポンス処理で割り当てる。
+エラーコードはステータスコードと異なり、例外を識別するためのものである。異常系レスポンスのエラーコードデータとして用いられる。混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html
 
@@ -300,9 +300,9 @@ class Foo
 
 ### 例外キャッチのレイヤー
 
-#### ・コントローラ/ミドルウェア派
+#### ・コントローラー/ミドルウェア派
 
-想定外のエラーも含めて、全てのエラーを検出できるように、コントローラまたはミドルウェアにtry-catch文を実装する。
+想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。
 
 参考：
 
@@ -311,7 +311,7 @@ class Foo
 
 #### ・ユースケース派
 
-コントローラの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。
+コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catch文を実装する。
 
 参考：https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/
 

@@ -720,7 +720,7 @@ class Handler extends ExceptionHandler
 
 #### ・```render```メソッド
 
-Laravel内部でキャッチされた例外に基づいて、異常系レスポンスを自動で返信する。異常系レスポンスの返信処理をこれに追加することも可能であるが、異常系レスポンス間が密結合になるため、できるだけいじらない。その代わりに、各コントローラに```try-catch```と異常系レスポンスの返信処理を実装するようにする。
+Laravel内部でキャッチされた例外に基づいて、異常系レスポンスを自動で返信する。異常系レスポンスの返信処理をこれに追加することも可能であるが、異常系レスポンス間が密結合になるため、できるだけいじらない。その代わりに、各コントローラーに```try-catch```と異常系レスポンスの返信処理を実装するようにする。
 
 参考：https://cpoint-lab.co.jp/article/201905/9841/
 
@@ -1042,7 +1042,7 @@ Route::get("/healthcheck", function () {
 
 #### ・```middleware```メソッド
 
-コントローラへのルーティング時に実行するMiddlewareクラスを設定する。引数として、```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
+コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。引数として、```App\Http\Kernel.php```ファイルで定義されたMiddlewareクラスのエイリアス名を設定する。
 
 **＊実装例＊**
 
@@ -1933,7 +1933,7 @@ class DatabaseSeeder extends Seeder
 #### ・クラスの自動生成
 
 ```bash
-# コントローラクラスを自動作成
+# コントローラークラスを自動作成
 $ php artisan make:controller <Controller名>
 ```
 
@@ -2044,7 +2044,7 @@ class FooController extends Controller
 }
 ```
 
-あるいは、コントローラの第二引数にパスパラメータ名を記述することで、パスパラメータの値を取得できる。
+あるいは、コントローラーの第二引数にパスパラメータ名を記述することで、パスパラメータの値を取得できる。
 
 **＊実装例＊**
 
@@ -2088,13 +2088,13 @@ $ php artisan make:middleware <Middleware名>
 
 #### ・Middlewareの種類
 
-ルーティング後にコントローラメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある
+ルーティング後にコントローラーメソッドの前にコールされるBeforeMiddleと、レスポンスの実行時にコールされるAfterMiddlewareがある
 
 ![Laravelのミドルウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
 #### ・BeforeMiddleware
 
-ルーティング時のコントローラメソッドのコール前に実行する処理を設定できる。一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+ルーティング時のコントローラーメソッドのコール前に実行する処理を設定できる。一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
 
 **＊実装例＊**
 
@@ -2123,7 +2123,7 @@ class FooBeforeMiddleware
 
 #### ・AfterMiddleware
 
-コントローラメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
+コントローラーメソッドのレスポンスの実行後（テンプレートのレンダリングを含む）に実行する処理を設定できる。あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。これらのクラスはClosure（無名関数）として、```next```変数に格納されている。
 
 **＊実装例＊**
 
@@ -2368,7 +2368,7 @@ class FooController extends Controller
 
 #### ・ルール定義 & バリデーション自動実行
 
-Controllerで、FormRequestクラスを引数に指定すると、コントローラのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを用いて、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
+Controllerで、FormRequestクラスを引数に指定すると、コントローラーのメソッドをコールする前にバリデーションを自動的に実行する。そのため、コントローラーの中ではバリデーションを実行する必要はない。代わりに、ルールをFormRequestクラスの```rule```メソッドに定義する必要がある。FormRequestクラスの```validated```メソッドを用いて、バリデーション済みのデータを取得できる。バリデーションでエラーが起こった場合、Handlerクラスの```invalid```メソッドがコールされ、元々のページにリダイレクトされる。
 
 **＊実装例＊**
 
@@ -2744,7 +2744,7 @@ $request->session()
 
 #### ・```authorize```メソッド
 
-ユーザがリソースに対してCRUD操作を行う権限を持っているかを、コントローラのメソッドを実行する前に、判定する。
+ユーザがリソースに対してCRUD操作を行う権限を持っているかを、コントローラーのメソッドを実行する前に、判定する。
 
 **＊実装例＊**
 
@@ -3951,9 +3951,9 @@ class Kernel extends HttpKernel
 
 ### 暗黙のモデル結合
 
-#### ・コントローラ使用時
+#### ・コントローラー使用時
 
-ルーティング時に用いるパラメータ名とコントローラのメソッドの引数型と変数名が同じであり、かつパラメータに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
+ルーティング時に用いるパラメータ名とコントローラーのメソッドの引数型と変数名が同じであり、かつパラメータに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。
 
 参考：https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
 
@@ -3967,7 +3967,7 @@ class Kernel extends HttpKernel
 Route::get('/users/{user}', 'UserController@index');
 ```
 
-かつ、コントローラのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストが送信されると、ユーザIDが```1```のユーザがDBから読み出され、コントローラにインジェクションされる。
+かつ、コントローラーのメソッドの引数型/変数名を```User```/```$user```とする。または。この時、『```/users/1```』に対してリクエストが送信されると、ユーザIDが```1```のユーザがDBから読み出され、コントローラーにインジェクションされる。
 
 ```php
 <?php
@@ -4181,7 +4181,7 @@ $ php artisan make:provider <クラス名>
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | AppServiceProvider                                           | ・ServiceContainerへのクラスのバインド（登録）<br>・ServiceContainerからのインスタンスのリゾルブ（生成） |
 | MacroServiceProvider                                         | ServiceContainerへのメソッドのバインド（登録）               |
-| RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラの対応関係の定義                   |
+| RouteServiceProvider<br>（```app.php```、```web.php```も使用） | ルーティングとコントローラーの対応関係の定義                   |
 | EventServiceProvider                                         | EventListenerとEventhandler関数の対応関係の定義              |
 
 #### ・ServiceProviderのコール

@@ -72,7 +72,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ・kube-controller-managerとは
 
-様々なコントローラを統括的に実行する。
+様々なコントローラーを統括的に実行する。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -82,7 +82,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ・kuebe-schedulerとは
 
-ワーカーノードとポッドのスペックに基づいて、ワーカーノードに配置される適切なポッド数を決定する。
+ワーカーノードとPodのスペックに基づいて、ワーカーノードに配置される適切なPod数を決定する。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -104,7 +104,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ・ワーカーノードとは
 
-ポッドが稼働するサーバー単位こと。
+Podが稼働するサーバー単位こと。
 
 参考：https://kubernetes.io/ja/docs/concepts/architecture/nodes/
 
@@ -124,7 +124,7 @@ kubernetesクライアントにkueneretes-APIを公開する。クライアン�
 
 #### ・kubeletとは
 
-kube-apiserverからコールされる。ワーカーノードのコンテナランタイムを操作し、ポッドを作成する。
+kube-apiserverからコールされる。ワーカーノードのコンテナランタイムを操作し、Podを作成する。
 
 参考：https://thinkit.co.jp/article/17453
 
@@ -136,7 +136,7 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 
 #### ・kube-proxyとは
 
-ワーカーノード外部からのインバウンド通信をポッドにルーティングする。モードごとに、ポッドの名前解決の方法が異なる。
+ワーカーノード外部からのインバウンド通信をPodにルーティングする。モードごとに、Podの名前解決の方法が異なる。
 
 参考：https://qiita.com/tkusumi/items/c2a92cd52bfdb9edd613
 
@@ -148,9 +148,9 @@ kube-apiserverからコールされる。ワーカーノードのコンテナラ
 
 <br>
 
-### ポッド
+### Pod
 
-#### ・ポッドとは
+#### ・Podとは
 
 コンテナの最小グループ単位のこと。Podを単位として、コンテナ起動/停止や水平スケールイン/スケールアウトを実行する。
 
@@ -162,29 +162,29 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_pod_php-fpm_nginx.png)
 
-#### ・同じポッド内/異なるポッド間の通信方法
+#### ・同じPod内/異なるPod間の通信方法
 
-同じポッド内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
+同じPod内のコンテナ間は、『```localhost:<ポート番号>```』で通信できる。
 
 参考：https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
-異なるポッドのコンテナ間は、サービスを経由して通信できる。
+異なるPodのコンテナ間は、Serviceを経由して通信できる。
 
 参考：https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
 <br>
 
-### サービス
+### Service
 
-#### ・サービスとは
+#### ・Serviceとは
 
-サービスタイプごとに、特定のネットワーク範囲にポッドを公開する。マイクロサービスアーキテクチャのコンポーネントである『サービス』とは区別する。
+Serviceタイプごとに、特定のネットワーク範囲にPodを公開する。マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/service/
 
-#### ・ClusterIPサービス
+#### ・ClusterIP Service
 
-クラスターのIPアドレスを返却し、サービスに対するインバウンド通信をポッドにルーティングする。クラスター内部からのみアクセスできる。クラスターのIPアドレスは、ポッドの```/etc/resolv.conf ```ファイルに記載されている。ポッド内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。
+クラスターのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。クラスター内部からのみアクセスできる。クラスターのIPアドレスは、Podの```/etc/resolv.conf ```ファイルに記載されている。Pod内に複数のコンテナがある場合、各コンテナに同じ内容の```/etc/resolv.conf ```ファイルが配置される。
 
 参考：
 
@@ -192,90 +192,100 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 - https://thinkit.co.jp/article/18263
 
 ```bash
-$ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-[root@<ポッド名>] $ cat /etc/resolv.conf 
+[root@<Pod名>] $ cat /etc/resolv.conf 
 
 nameserver nn.nn.n.nn # クラスターのIPアドレス
 search default.svc.cluster.local svc.cluster.local cluster.local 
 options ndots:5
 ```
 
-#### ・LoadBalancerサービス
+#### ・LoadBalancer Service
 
-ロードバランサーのみからアクセスできるIPアドレスを返却し、サービスに対するインバウンド通信をポッドにルーティングする。クラスター外部/内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各サービスにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
-
-参考：
-
-- https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
-- https://thinkit.co.jp/article/18263
-
-#### ・NodePortサービス
-
-ノードのIPアドレスを返却し、サービスの指定したポートに対するインバウンド通信をポッドにルーティングする。クラスター外部/内部の両方からアクセスできる。1つのポートから1つのサービスにしかルーティングできない。サービスノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのクラスターエンドポイントには、NodePortの概念が取り入れられている。
+ロードバランサーのみからアクセスできるIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。クラスター外部/内部の両方からアクセスできる。本番環境をクラウドインフラ上で稼働させ、AWS ALBからインバウンド通信を受信する場合に使用する。ロードバランサーから各Serviceにインバウンド通信をルーティングすることになるため、通信数が増え、金銭的負担が大きい。
 
 参考：
 
 - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 - https://thinkit.co.jp/article/18263
 
-#### ・ExternalNameサービス
+#### ・NodePort Service
 
-ポッドのCNAMEを返却し、サービスに対するインバウンド通信をポッドにルーティングする。
+ノードのIPアドレスを返却し、Serviceの指定したポートに対するインバウンド通信をPodにルーティングする。クラスター外部/内部の両方からアクセスできる。1つのポートから1つのServiceにしかルーティングできない。ServiceノードのIPアドレスは別に確認する必要があり、ノードのIPアドレスが変わるたびに、これに合わせて他の設定を変更しなければならず、本番環境には向いていない。AWSのAurora RDSのクラスターエンドポイントには、NodePortの概念が取り入れられている。
+
+参考：
+
+- https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+- https://thinkit.co.jp/article/18263
+
+#### ・ExternalName Service
+
+PodのCNAMEを返却し、Serviceに対するインバウンド通信をPodにルーティングする。
 
 参考：https://thinkit.co.jp/article/13739
 
-#### ・Headlessサービス
+#### ・Headless Service
 
-ポッドのIPアドレスを返却し、サービスに対するインバウンド通信をポッドにルーティングする。ポッドが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却される。
+PodのIPアドレスを返却し、Serviceに対するインバウンド通信をPodにルーティングする。Podが複数ある場合は、DNSラウンドロビンのルールでIPアドレスが返却される。
 
 参考：https://thinkit.co.jp/article/13739
 
 <br>
 
-### イングレス
+### Ingress
 
-#### ・イングレスとは
+#### ・Ingressとは
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_ingress.png)
 
-イングレスコントローラによってクラスター外部から受信したインバウンド通信を、単一/複数のサービスにルーティングする。NodePortサービスやLoadBalancerサービスと同様に、外部からのインバウンド通信を受信する方法の1つである。
+Ingressコントローラーによってクラスター外部から受信したインバウンド通信を、単一/複数のServiceにルーティングする。NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
 
 参考：
 
 - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
 - https://thinkit.co.jp/article/18263
 
-#### ・イングレスコントローラ
+#### ・Ingressコントローラー
 
-クラスター外部のインバウンド通信をイングレスにルーティングする。開発環境ではminikubeのアドオンを、また本番環境ではAWS ALB/GCP CLB/Nginx Ingressコントローラを、イングレスコントローラとして使用する。
+クラスター外部のインバウンド通信をIngressにルーティングする。
 
-参考：
+参考：https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 
-- https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
-- https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
+#### ・Ingressコントローラーとして使用可能なもの
+
+参考：https://kubernetes.io/ja/docs/concepts/services-networking/ingress-controllers/
+
+| コントローラー名                                      | 開発環境 | 本番環境 |
+| ----------------------------------------------------- | -------- | -------- |
+| minikubeアドオン（実体はNginx Ingressコントローラー） | ◯        | ×        |
+| AWS ALBコントローラー                                 | ×        | ◯        |
+| GCP CLBコントローラー                                 | ×        | ◯        |
+| Nginx Ingressコントローラー                           | ◯        | ◯        |
+| Istio Ingress                                         | ◯        | ◯        |
+| Istio Gateway（Ingressとしても使用できる）            | ◯        | ◯        |
 
 <br>
 
-### シークレット
+### Secret
 
-#### ・シークレットとは
+#### ・Secretとは
 
 セキュリティに関するデータを管理し、コンテナに選択的に提供する。
 
 #### ・コンテナの環境変数として
 
-機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてポッドに出力する。
+機密性の高い値を暗号化した状態で管理し、復号化した上で、環境変数としてPodに出力する。
 
 参考：https://kubernetes.io/ja/docs/concepts/configuration/secret/#using-secrets-as-environment-variables
 
 <br>
 
-### レプリカセット
+### ReplicaSet
 
-#### ・レプリカセットとは
+#### ・ReplicaSetとは
 
-ワーカーノード上のポッド数を維持管理する。ただしデーモンセットとは異なり、ポッドを指定した個数に維持管理できる。ワーカーノードのCPUやメモリの使用率に合わせて、ポッドを動的に増減させる。直接レプリカセットを操作するのではなく、デプロイメント用いてこれを行うことが推奨される。
+ワーカーノード上のPod数を維持管理する。ただしDaemonSetとは異なり、Podを指定した個数に維持管理できる。ワーカーノードのCPUやメモリの使用率に合わせて、Podを動的に増減させる。直接ReplicaSetを操作するのではなく、Deployment用いてこれを行うことが推奨される。
 
 参考：
 
@@ -284,21 +294,21 @@ options ndots:5
 
 <br>
 
-### デーモンセット
+### DaemonSet
 
-#### ・デーモンセットとは
+#### ・DaemonSetとは
 
-ワーカーノード上のポッド数を維持管理する。ただしレプリカセットとは異なり、ポッドを1つだけ維持管理する。ワーカーノードで1つだけ稼働させる必要のあるプロセス（FluentBit、Datadogなど）のために用いられる。
+ワーカーノード上のPod数を維持管理する。ただしReplicaSetとは異なり、Podを1つだけ維持管理する。ワーカーノードで1つだけ稼働させる必要のあるプロセス（FluentBit、Datadogなど）のために用いられる。
 
 参考：https://thinkit.co.jp/article/13611
 
 <br>
 
-### ステートフルセット
+### StatefulSet
 
-・ステートフルセットとは
+・StatefulSetとは
 
-レプリカセットを操作し、ワーカーノードのCPUやメモリの使用率に合わせて、ポッドを動的に増減させる。ただしデプロイメントとは異なり、ストレートフルなコンテナを含むポッドを扱うことができる。ポッドが削除されてもPersistentVolumeClaimsは削除されないため、新しいポッドにも同じPersistentVolumeを継続的にマウントできる。その代わり、ステートフル作成後に一部の設定変更が禁止されている。
+ReplicaSetを操作し、ワーカーノードのCPUやメモリの使用率に合わせて、Podを動的に増減させる。ただしDeploymentとは異なり、ストレートフルなコンテナを含むPodを扱うことができる。Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
 
 ```bash
 The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
@@ -311,11 +321,11 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 
 <br>
 
-### デプロイメント
+### Deployment
 
-#### ・デプロイメントとは
+#### ・Deploymentとは
 
-レプリカセットを操作し、ワーカーノードのCPUやメモリの使用率に合わせて、ポッドを動的に増減させる。ただしステートフルセットとは異なり、ストレートレスなコンテナを含むポッドを扱う。
+ReplicaSetを操作し、ワーカーノードのCPUやメモリの使用率に合わせて、Podを動的に増減させる。ただしStatefulSetとは異なり、ストレートレスなコンテナを含むPodを扱う。
 
 参考：
 
@@ -329,11 +339,11 @@ The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset sp
 #### ・確認方法
 
 ```bash
-# ポッドに接続する
-kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+# Podに接続する
+kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 # ストレージを表示する
-[root@<ポッド名>:/var/www/html] $ df -h
+[root@<Pod名>:/var/www/html] $ df -h
 
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          59G   36G   20G  65% /
@@ -349,13 +359,13 @@ tmpfs           3.9G     0  3.9G   0% /sys/firmware
 
 #### ・PersistentVolume
 
-ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できる。ポッドがPersistentVolumeを用いるためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、ポッドでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できる。PodがPersistentVolumeを用いるためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
 
 参考：https://thinkit.co.jp/article/14195
 
 #### ・HostPath（本番では非推奨）
 
-ノードのストレージを使用したボリュームのこと。ホストとポッド内コンテナ間のバインドマウントによって作成され、ノード上のポッド間でボリュームを共有できる。
+ノードのストレージを使用したボリュームのこと。ホストとPod内コンテナ間のバインドマウントによって作成され、ノード上のPod間でボリュームを共有できる。
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -402,7 +412,7 @@ $ docker inspect <コンテナID>
 
 #### ・EmptyDir
 
-ポッドのストレージを使用したボリュームのこと。そのため、ポッドが削除されると、このボリュームも同時に削除される。ボリュームマウントによって作成され、ノード上のポッド間でボリュームを共有できない。
+Podのストレージを使用したボリュームのこと。そのため、Podが削除されると、このボリュームも同時に削除される。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できない。
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -416,54 +426,54 @@ Kubernetes外のストレージを使用したボリュームのこと。外部�
 
 ## 04. ネットワーキング
 
-### サービスの名前解決
+### Serviceの名前解決
 
 #### ・レコードタイプとドメイン名の関係
 
-クラスター内の全てのサービスにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
+クラスター内の全てのServiceにDNS名が割り当てられている。レコードタイプごとに、DNS名が異なる。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#services
 
 | レコードタイプ | 完全修飾ドメイン名                                           | 名前解決の仕組み                                             |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| A/AAAAレコード | ```<サービス名>.<名前空間>.svc.<クラスターのドメイン名>```   | 通常のサービスの名前解決ではClusterIPが返却される。一方でHeadlessサービスの名前解決ではポッドのIPアドレスが返却される。 |
-| SRVレコード    | ```_<ポート名>._<プロトコル>.<サービス名>.<名前空間>.svc.cluster.local``` | 要勉強                                                       |
+| A/AAAAレコード | ```<Service名>.<名前空間>.svc.<クラスターのドメイン名>```   | 通常のServiceの名前解決ではClusterIPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。 |
+| SRVレコード    | ```_<ポート名>._<プロトコル>.<Service名>.<名前空間>.svc.cluster.local``` | 要勉強                                                       |
 
 #### ・名前解決
 
-サービスのドメイン名を用いて、ポッド内から```nslookup```コマンドの正引きを実行する。サービスに```meta.name```タグが設定されている場合、サービスのドメイン名は、```meta.name```タグの値になる。ドメイン名の設定を要求された時は、設定ミスを防げるため、```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である。
+Serviceのドメイン名を用いて、Pod内から```nslookup```コマンドの正引きを実行する。Serviceに```meta.name```タグが設定されている場合、Serviceのドメイン名は、```meta.name```タグの値になる。ドメイン名の設定を要求された時は、設定ミスを防げるため、```meta.name```タグの値よりも完全修飾ドメイン名の方が推奨である。
 
 参考：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
 ```bash
-# ポッド内から正引き
-[root@<ポッド名>:〜] $ nslookup <サービスのmeta.name値>
+# Pod内から正引き
+[root@<Pod名>:〜] $ nslookup <Serviceのmeta.name値>
 
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <サービスのmeta.name値>.default.svc.cluster.local
+Name:  <Serviceのmeta.name値>.default.svc.cluster.local
 Address:  10.105.157.184
 ```
 
-異なる名前空間にあるサービスの名前解決を行う場合は、サービスのドメイン名の後に名前空間を指定する必要がある。
+異なる名前空間にあるServiceの名前解決を行う場合は、Serviceのドメイン名の後に名前空間を指定する必要がある。
 
 ```bash
-# ポッド内から正引き
-[root@<ポッド名>:〜] $ nslookup <サービスのmeta.name値>.<名前空間>
+# Pod内から正引き
+[root@<Pod名>:〜] $ nslookup <Serviceのmeta.name値>.<名前空間>
 ```
 
 <br>
 
-### ポッドの名前解決
+### Podの名前解決
 
 #### ・ドメイン名
 
-クラスター内の全てのポッドにDNS名が割り当てられている。レコードタイプはA/AAAAレコードのみである。
+クラスター内の全てのPodにDNS名が割り当てられている。レコードタイプはA/AAAAレコードのみである。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod
 
 | レコードタイプ | ドメイン名                                              | 名前解決の仕組み                 |
 | -------------- | ------------------------------------------------------- | -------------------------------- |
-| A/AAAAレコード | ```<ポッドのIPアドレス>.<名前空間>.pod.cluster.local``` | ポッドのIPアドレスが返却される。 |
+| A/AAAAレコード | ```<PodのIPアドレス>.<名前空間>.pod.cluster.local``` | PodのIPアドレスが返却される。 |
 

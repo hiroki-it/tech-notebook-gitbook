@@ -76,7 +76,7 @@ config.vm.box_check_update = false
 
 #### ・forwarded_port
 
-ホストから仮想サーバへポートフォワーディングを設定する。
+ホストから仮想サーバーへポートフォワーディングを設定する。
 
 参考；https://www.vagrantup.com/docs/networking/forwarded_ports
 
@@ -124,7 +124,7 @@ SHELL
 
 #### ・synced_folderとは
 
-ホスト上のディレクトリを仮想サーバにマウントする。
+ホスト上のディレクトリを仮想サーバーにマウントする。
 
 ```bash
 config.vm.synced_folder ".", "/var/www/foo"

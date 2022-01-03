@@ -32,7 +32,7 @@ minikubeのプラグインを操作する。
 
 **＊例＊**
 
-開発環境専用のイングレスコントローラとして、Nginxイングレスコントローラを有効化する。本番環境では、同じくNginxイングレスコントローラや、クラウドベンダーのロードバランサーなどを用いる。
+開発環境専用のIngressコントローラーとして、NginxIngressコントローラーを有効化する。本番環境では、同じくNginxIngressコントローラーや、クラウドベンダーのロードバランサーなどを用いる。
 
 参考：https://kubernetes.io/ja/docs/tasks/access-application-cluster/ingress-minikube/
 
@@ -81,8 +81,6 @@ $ minikube addons list
 | volumesnapshots             | minikube | disabled     | kubernetes            |
 |-----------------------------|----------|--------------|-----------------------|
 ```
-
-
 
 <br>
 
@@ -213,11 +211,11 @@ $ minikube mount /Users/hiroki-it/projects/foo:/data
 
 #### ・serviceとは
 
-サービスを操作する。
+Serviceを操作する。
 
 #### ・list
 
-全てのサービスの情報を表示する。
+全てのServiceの情報を表示する。
 
 ```bash
 $ minikube service list
@@ -236,15 +234,15 @@ $ minikube service list
 
 #### ・--url
 
-指定したサービスにアクセスするためのURLを表示する。ブラウザ上からサービスにリクエストを送信できるようになる。
+指定したServiceにアクセスするためのURLを表示する。ブラウザ上からServiceにリクエストを送信できるようになる。
 
 ```bash
- $ minikube service <サービス名> --url
-🏃  Starting tunnel for service <サービス名>.
+ $ minikube service <Service名> --url
+🏃  Starting tunnel for service <Service名>.
 |-----------|--------------|-------------|------------------------|
 | NAMESPACE |     NAME     | TARGET PORT |          URL           |
 |-----------|--------------|-------------|------------------------|
-| default   | <サービス名>   |             | http://127.0.0.1:57761 |
+| default   | <Service名>   |             | http://127.0.0.1:57761 |
 |-----------|--------------|-------------|------------------------|
 http://nnn.nnn.nn.n:57761
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
@@ -258,7 +256,7 @@ $ minikube ip
 nnn.nnn.nn.n
 ```
 
-ちなみに、```ssh```コマンドで仮想環境に接続しても、同様にサービスにリクエストを送信できるようになる。
+ちなみに、```ssh```コマンドで仮想環境に接続しても、同様にServiceにリクエストを送信できるようになる。
 
 参考：https://stackoverflow.com/questions/50564446/minikube-how-to-access-pod-via-pod-ip-using-curl
 
@@ -431,7 +429,7 @@ minikube-m03   Ready    <none>                 19s   v1.20.2
 
 #### ・tunnelとは
 
-LoadBalancerサービスを用いている場合に、ホストと仮想環境内LoadBalancerサービスを接続する。
+LoadBalancerServiceを用いている場合に、ServiceのクラスターIPを外部エンドポイントにし、Serviceを公開する。
 
 参考：
 
@@ -488,7 +486,7 @@ $ minikube start
 
 #### ・標準のワーカーノード-コンテナ間マウント
 
-ゲスト仮想環境内のワーカーノードでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、ポッドでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーノードのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを用いる場合は、この機能がないことに注意する。
+ゲスト仮想環境内のワーカーノードでは、以下のディレクトリからPersistentVolumeが自動的に作成される。そのため、Podでは作成されたPersistentVolumeをPersistentVolumeClaimで指定しさえすればよく、わざわざワーカーノードのPersistentVolumeを作成する必要がない。ただし、DockerドライバーとPodmanドライバーを用いる場合は、この機能がないことに注意する。
 
 参考：https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
@@ -507,7 +505,7 @@ $ minikube start
 
 #### ・ホストをコンテナにマウントする方法
 
-minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、仮想化ドライバーごとのを用いて、ホスト側のディレクトリをゲスト仮想環境内のワーカーノードのディレクトリにマウントできる。またワーカーノードでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、ポッドのPersistentVolumeClaimで指定する。このように、ホストからワーカーノード、ワーカーノードからポッドへマウントを実行することにより、ホスト側のディレクトリをポッド内のコンテナに間接的にマウントできる。
+minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/files```ディレクトリ、仮想化ドライバーごとのを用いて、ホスト側のディレクトリをゲスト仮想環境内のワーカーノードのディレクトリにマウントできる。またワーカーノードでは、決められたディレクトリからPersistentVolumeを自動的に作成する。ここで作成されたPersistentVolumeを、PodのPersistentVolumeClaimで指定する。このように、ホストからワーカーノード、ワーカーノードからPodへマウントを実行することにより、ホスト側のディレクトリをPod内のコンテナに間接的にマウントできる。
 
 参考：https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -521,7 +519,7 @@ minikubeでは、```mount```コマンド、ホスト側の```$MINIKUBE_HOME/file
 $ minikube start --driver=hyperkit --mount=true --mount-string="/Users/h.hasegawa/projects/foo:/data"
 ```
 
-（２）ワーカーノードのボリュームをポッド内のコンテナにマウントする。
+（２）ワーカーノードのボリュームをPod内のコンテナにマウントする。
 
 ```yaml
 apiVersion: apps/v1

@@ -81,18 +81,18 @@ users:
 
 #### ・cpとは
 
-ホストPCのファイルまたはディレクトリを指定したポッド内のコンテナにコピーする。
+ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
 
 #### ・オプション無し
 
 ```bash
-$ kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コンテナのファイルパス>
+$ kubectl cp <ホストPCのファイルパス> <名前空間>/<PodID>:<コンテナのファイルパス>
 ```
 
 ```bash
-$ kubectl cp <ホストPCのファイルパス> <名前空間>/<ポッドID>:<コンテナのディレクトリパス>/
+$ kubectl cp <ホストPCのファイルパス> <名前空間>/<PodID>:<コンテナのディレクトリパス>/
 ```
 
 <br>
@@ -123,7 +123,7 @@ service/foo-service created
 
 #### ・deployment
 
-ポッド数を維持管理するレプリカセットを作成する。ポッドを削除するためには、デプロイメント自体を削除しなければならない。
+Pod数を維持管理するReplicaSetを作成する。Podを削除するためには、Deployment自体を削除しなければならない。
 
 **＊例＊**
 
@@ -172,7 +172,7 @@ secret/foo-secret created
 
 #### ・execとは
 
-指定したポッド内のコンテナでコマンドを実行する。
+指定したPod内のコンテナでコマンドを実行する。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 
@@ -181,15 +181,15 @@ secret/foo-secret created
 コンテナを指定して、デタッチモードで ```exec```コマンドを実行する。
 
 ```bash
-$ kubectl exec -it <ポッド名> -c <コンテナ名> -- bash
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-[root@<ポッド名>] $ ls -la 
+[root@<Pod名>] $ ls -la 
 ```
 
-コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。ポッドのラベル名ではなく、ポッド名であることに注意する。
+コンテナを指定しない場合は、デフォルトのコンテナが選ばれる。Podのラベル名ではなく、Pod名であることに注意する。
 
 ```bash
-$ kubectl exec -it <ポッド名> -- bash
+$ kubectl exec -it <Pod名> -- bash
 
 Defaulted container "foo-container" out of: foo-container, bar-container
 ```
@@ -200,7 +200,7 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 #### ・exposeとは
 
-サービスを作成する。
+Serviceを作成する。
 
 参考：
 
@@ -209,22 +209,22 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 **＊例＊**
 
-ClusterIPサービスを作成する。
+ClusterIP Serviceを作成する。
 
 ```bash
-$ kubectl expose <サービス名> --type=ClusterIP --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> --type=ClusterIP --port=<受信ポート番号> --target-port=<転送先ポート番号>
 ```
 
-NodePortサービスを作成する。
+NodePort Serviceを作成する。
 
 ```bash
-$ kubectl expose <サービス名> --type=NodePort --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> --type=NodePort --port=<受信ポート番号> --target-port=<転送先ポート番号>
 ```
 
-LoadBalancerサービスを作成する。
+LoadBalancer Serviceを作成する。
 
 ```bash
-$ kubectl expose <サービス名> --type=LoadBalancer --port=<受信ポート番号> --target-port=<転送先ポート番号>
+$ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号> --target-port=<転送先ポート番号>
 ```
 
 <br>
@@ -265,7 +265,7 @@ docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノ
 
 #### ・pod
 
-指定したポッドの情報を表示する。
+指定したPodの情報を表示する。
 
 **＊例＊**
 
@@ -304,7 +304,7 @@ type: Opaque
 
 #### ・services
 
-指定したサービスの情報を表示する。
+指定したServiceの情報を表示する。
 
 **＊例＊**
 
@@ -364,18 +364,18 @@ $ kubectl label --overwrite <オブジェクト名> foo=bar
 
 **＊例＊**
 
-ポッド名とコンテナ名を指定し、コンテナのログを表示する。
+Pod名とコンテナ名を指定し、コンテナのログを表示する。
 
 ```bash
-$ kubectl logs -n <名前空間> <ポッド名> -c <コンテナ名>
+$ kubectl logs -n <名前空間> <Pod名> -c <コンテナ名>
 
 2021/11/27 08:34:01 [emerg] *****
 ```
 
-名前空間、ポッド名、コンテナ名を指定し、kube-proxyのログを確認する。
+名前空間、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。
 
 ```bash
-$ kubectl logs -n kube-system <ポッド名> -c kube-proxy
+$ kubectl logs -n kube-system <Pod名> -c kube-proxy
 
 I1211 05:34:22.262955       1 node.go:172] Successfully retrieved node IP: nnn.nnn.nn.n
 I1211 05:34:22.263084       1 server_others.go:140] Detected node IP nnn.nnn.nn.n
@@ -399,7 +399,7 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 
 #### ・port-forwardとは
 
-ホストのポートから指定したオブジェクトのポートに対して、ポートフォワーディングを実行する。開発環境にて、サービスを経由せずに直接ポッドにリクエストを送信したい場合や、SQLクライアントを用いてポッド内のDBコンテナにTCP/IP接続したい場合に使用する。
+ホストのポートから指定したオブジェクトのポートに対して、ポートフォワーディングを実行する。開発環境にて、Serviceを経由せずに直接Podにリクエストを送信したい場合や、SQLクライアントを用いてPod内のDBコンテナにTCP/IP接続したい場合に使用する。
 
 参考：
 
@@ -409,7 +409,7 @@ I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for serv
 **＊例＊**
 
 ```bash
-$ kubectl port-forward <ポッド名> <ホストポート>:<ポッドポート>
+$ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 ```
 
 <br>
@@ -436,23 +436,23 @@ Starting to serve on [::]:8001
 
 #### ・runとは
 
-デプロイメント、ポッド、ジョブを作成する。
+Deployment、Pod、ジョブを作成する。
 
 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
 **＊例＊**
 
-もし```restart```オプションが```Always```なら、デプロイメントが作成される。
+もし```restart```オプションが```Always```なら、Deploymentが作成される。
 
 
 ```bash
-$ kubectl run <デプロイメント名> --restart=Always --image=<イメージ名>:<タグ名> --port=<ポート番号>
+$ kubectl run <Deployment名> --restart=Always --image=<イメージ名>:<タグ名> --port=<ポート番号>
 ```
 
-もし```restart```オプションが```Never```なら、ポッドが作成される。
+もし```restart```オプションが```Never```なら、Podが作成される。
 
 ```bash
-$ kubectl run <ポッド名> --restart=Never --image=<イメージ名>:<タグ名> --port=<ポート番号>
+$ kubectl run <Pod名> --restart=Never --image=<イメージ名>:<タグ名> --port=<ポート番号>
 ```
 
 もし```restart```オプションが```OnFailure```なら、ジョブが作成される。

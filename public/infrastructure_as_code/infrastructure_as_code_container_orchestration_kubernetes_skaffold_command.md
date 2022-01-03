@@ -113,7 +113,7 @@ $ skaffold run --port-forward
 | コマンド                          | ポートフォワーディングの可否       |
 | --------------------------------- | ---------------------------------- |
 | ```skaffold dev```                    | ユーザ定義を参照                   |
-| ```skaffold dev --port-forward```     | ユーザ定義を参照、サービス         |
+| ```skaffold dev --port-forward```     | ユーザ定義を参照         |
 | ```skaffold dev --port-forward=off``` | ポートフォワーディングを実行しない |
 | ```skaffold run```                | ポートフォワーディングを実行しない |
-| ```skaffold run --port-forward``` | ユーザ定義を参照、サービス         |
+| ```skaffold run --port-forward``` | ユーザ定義を参照         |

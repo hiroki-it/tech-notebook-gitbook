@@ -38,7 +38,7 @@
 
 #### ・Destination Rule
 
-VirtualServiceから受信したインバウンド通信をサービスにルーティングする時に、より詳細なルーティングルールを適用する。
+VirtualServiceから受信したインバウンド通信をServiceにルーティングする時に、より詳細なルーティングルールを適用する。
 
 <br>
 
@@ -54,15 +54,16 @@ VirtualServiceから受信したインバウンド通信をサービスにルー
 
 #### ・Ingress Gateway
 
-クラスター外部から送信されるインバウンド通信をフィルタリングする。
+クラスター外部から送信されるインバウンド通信をフィルタリングし、Virtual Serviceにルーティングする。IngressとIngressコントローラーの両方の機能を併せ持つ。
 
-参考：https://knowledge.sakura.ad.jp/20489/
+参考：
 
-#### ・Mesh Gateway
+- https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
 
 #### ・Egress Gateway
 
-クラスター内部から送信されるアウトバウンド通信をフィルタリングする。
+クラスター内部から送信されるアウトバウンド通信をフィルタリングし、パブリックネットワークにルーティングする。
 
 参考：https://knowledge.sakura.ad.jp/20489/
 
@@ -97,7 +98,7 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 #### ・Pilot
 
-サービスディスカバリやトラフィックの管理を行う。
+Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
@@ -105,7 +106,7 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 #### ・Service Entryとは
 
-ポッドから受信したアウトバウンド通信を、パブリックネットワークやその他のオブジェクトにルーティングする。
+Podから受信したアウトバウンド通信のうち、送信可能なもののみを指定したドメインやEgress Gatewayにルーティングする。Service Entryを使用しない場合は、全てのアウトバウンド通信がルーティングされる。
 
 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 
@@ -117,7 +118,7 @@ Envoyコンテナをサイドカーとして稼働させる。
 
 #### ・Virtual Serviceとは
 
-Gatewayから受信したインバウンド通信をサービスにルーティングする。
+Gatewayから受信したインバウンド通信をServiceにルーティングする。
 
 参考：
 

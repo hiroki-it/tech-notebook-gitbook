@@ -10,9 +10,9 @@
 
 ## 01. 導入方法
 
-### Istioを用いない場合
+### Dockerイメージに組み込む場合
 
-Istioを用いてEnvoyを導入する場合、Envoyのオプションは```envoy.yml```ファイルから設定する。
+Dockerfileにて、独自の```envoy.yml```ファイルを組み込む。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -23,9 +23,9 @@ COPY envoy.yml /etc/envoy/envoy.yml
 
 <br>
 
-### Istioを用いる場合
+### annotationsに組み込む場合
 
-Istioを用いてEnvoyを導入する場合、EnvoyのオプションはIstioOperatorオブジェクトの```spec.meshConfig```キーから設定する。
+Kubernetesオブジェクトの```annotations```の```proxy.istio.io/config```にて、独自の```envoy.yml```ファイルを組み込む。または、オプションを設定する。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.html
 

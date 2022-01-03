@@ -882,7 +882,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-コントローラにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを用いて、テーブルにおける一対多のリレーションを定義しておく。
+コントローラーにて、Department（親）と、これに紐付くEmployee（子）を読み出す。これらのモデルの間では、```hasMany```メソッドと```belongsTo```メソッドを用いて、テーブルにおける一対多のリレーションを定義しておく。
 
 ```php
 <?php

@@ -264,7 +264,7 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 
 1. カーネルオブジェクトの```handle```メソッド
 
-   送られてきたURLを基にしたコントローラ/アクションへのルートの特定、特定されたコントローラ/アクションの実行、テンプレートのレンダリング
+   送られてきたURLを基にしたコントローラー/アクションへのルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
 
 1. Responseオブジェクト
 
@@ -273,7 +273,7 @@ for f in `seq 0 10 59`; do (sleep {$f}; create:example) & done;
 #### ・オブジェクトから取り出されたメソッドの役割
 
 1. カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
-1. カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラアクションを探し、実行させる。その後、テンプレートがURLを生成。
+1. カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを生成。
 1. カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
    このカーネルを、特別に『HTTPカーネル』と呼ぶ。
 
@@ -422,12 +422,12 @@ Symfonyから提供されるDIコンテナのこと。
 
 #### ・RoutingConfiguratorとは
 
-コントローラへのルーティングを設定する。
+コントローラーへのルーティングを設定する。
 
 ```php
 <?php
     
-use App\Controller\BlogApiController; // ルーティング先のコントローラを読み込み
+use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み込み
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return function (RoutingConfigurator $routes) {

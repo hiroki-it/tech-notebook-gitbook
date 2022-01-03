@@ -28,7 +28,7 @@ CGIプロトコルのパフォーマンスを向上させたプロトコル仕�
 
 #### ・PHP-FPMとは
 
-PHPのために実装されたFastCGIのこと。WebサーバとPHPファイルの間でデータ通信を行う。
+PHPのために実装されたFastCGIのこと。WebサーバーとPHPファイルの間でデータ通信を行う。
 
 参考：https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
 

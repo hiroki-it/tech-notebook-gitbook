@@ -10,6 +10,8 @@
 
 ## 01. apiVersion
 
+### apiVersionとは
+
 Kubernetes-APIのバージョンを設定する。
 
 ```yaml
@@ -19,6 +21,8 @@ apiVersion: v1
 <br>
 
 ## 02. kind
+
+### kindとは
 
 作成されるオブジェクトの種類を設定する。
 
@@ -39,9 +43,17 @@ apiVersion: v1
 
 ## 03. metadata
 
+### metadataとは
+
+Kubernetesオブジェクトの一意に識別するための情報を設定する。
+
+参考：https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields
+
+<br>
+
 ### name
 
-オブジェクトを一意に識別するための名前を設定する。
+Kubernetesオブジェクトを一意に識別するための名前を設定する。
 
 ```yaml
 metadata:
@@ -54,7 +66,7 @@ metadata:
 
 ### replicas
 
-ポッドの複製数を設定する。
+Podの複製数を設定する。
 
 ```yaml
 kind: Deployment
@@ -80,7 +92,7 @@ spec:
 
 #### ・matchLabels
 
-デプロイメントで管理するポッドのラベルを指定する。ポッドに複数のラベルが付与されている時は、これらを全て指定する必要がある。
+Deploymentで管理するPodのラベルを指定する。Podに複数のラベルが付与されている時は、これらを全て指定する必要がある。
 
 参考：https://cstoku.dev/posts/2018/k8sdojo-08/#label-selector
 
@@ -97,7 +109,7 @@ spec:
       type: web
   template:
     metadata:
-      labels: # ポッドのラベル
+      labels: # Podのラベル
         app: foo
         type: web
 ```
@@ -108,7 +120,7 @@ spec:
 
 #### ・RollingUpdate
 
-ローリングアップデートを用いて、新しいポッドをデプロイする。
+ローリングアップデートを用いて、新しいPodをデプロイする。
 
 参考：https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 
@@ -118,11 +130,11 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 100% # ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイする。
-      maxUnavailable: 0% # ポッドの停止数がレプリカ数を下回らないようにする。
+      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodをデプロイする。
+      maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
 ```
 
-もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、ポッドのレプリカ数と同じ数だけ新しいポッドをデプロイするようになる。また、ポッドの停止数がレプリカ数を下回らないようになる。
+もし```maxSurge```オプションを```100```%、また```maxUnavailable```オプションを```0```%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodをデプロイするようになる。また、Podの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/kubernetes_deployment_strategy.png)
 
@@ -130,7 +142,7 @@ spec:
 
 ### template
 
-スケーリング時に複製の鋳型とするポッドを設定する。
+スケーリング時に複製の鋳型とするPodを設定する。
 
 **＊実装例＊**
 
@@ -159,7 +171,7 @@ spec:
 
 ### rules
 
-サービスへのルーティングルールを設定する。複数のサービスにインバウンド通信を振り分けられる。
+Serviceへのルーティングルールを設定する。複数のServiceにインバウンド通信を振り分けられる。
 
 ```yaml
 kind: Ingress
@@ -396,7 +408,7 @@ spec:
 
 #### ・name、image、port
 
-ポッドを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
+Podを構成するコンテナの名前、ベースイメージ、受信ポートを設定する。
 
 **＊実装例＊**
 
@@ -444,7 +456,7 @@ spec:
 
 ### hostname
 
-ポッドのホスト名を設定する。また、```spec.hostname```が設定されていない時は、```metadata.name```がホスト名として使用される。
+Podのホスト名を設定する。また、```spec.hostname```が設定されていない時は、```metadata.name```がホスト名として使用される。
 
 参考：https://kubernetes.io/ja/docs/concepts/services-networking/dns-pod-service/#pod%E3%81%AEhostname%E3%81%A8subdomain%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89
 
@@ -503,7 +515,7 @@ spec:
 
 #### ・emptyDir
 
-EmptyDirボリュームを作成する。そのため、『ポッド』が削除されるとこのボリュームも同時に削除される。
+EmptyDirボリュームを作成する。そのため、『Pod』が削除されるとこのボリュームも同時に削除される。
 
 参考：
 
@@ -551,7 +563,7 @@ spec:
 
 #### ・appProtocol
 
-インバウンド通信を受信するためのプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+受信可能なインバウンド通信のプロトコルを設定する。```protocol```キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
 
 ```yaml
  kind: Service
@@ -574,7 +586,7 @@ spec:
 
 #### ・name
 
-受信するためのプロトコルのポート名を設定する。
+プロトコルのポート名を設定する。
 
 ```yaml
  kind: Service
@@ -585,7 +597,7 @@ spec:
 
 #### ・protocol
 
-インバウンド通信を受信するためのプロトコルを設定する。
+受信可能なインバウンド通信のプロトコルを設定する。
 
 **＊実装例＊**
 
@@ -598,7 +610,7 @@ spec:
 
 #### ・port
 
-インバウンド通信を受信するためのポート番号を設定する。
+受信可能なインバウンド通信のポート番号を設定する。
 
 **＊実装例＊**
 
@@ -611,7 +623,7 @@ spec:
 
 ####  ・targetPort
 
-インバウンド通信をポッドに転送するために、転送先ポートを設定する。ポッド内で最初に通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
+受信したインバウンド通信をPodに転送する時に、いずれのポート番号を指定するかどうかを設定する。Pod内で最初に通信を受信するコンテナの```containerPort```の番号に合わせるようにする。
 
 **＊実装例＊**
 
@@ -626,7 +638,7 @@ spec:
 
 ### selector
 
-インバウンド通信の転送先とするポッドのラベルのキー名と値を設定する。
+インバウンド通信の転送先とするPodのラベルのキー名と値を設定する。
 
 参考：https://v1-18.docs.kubernetes.io/ja/docs/concepts/overview/working-with-objects/labels/
 
@@ -643,7 +655,7 @@ spec:
 
 ### type
 
-サービスのタイプを設定する。
+Serviceのタイプを設定する。
 
 参考：
 
@@ -658,7 +670,52 @@ spec:
 
 <br>
 
-## 04-08. spec（StatefulSetの場合）
+## 04-08. spec（ServiceEntryの場合）
+
+### hosts
+
+送信可能なアウトバウンド通信のドメイン名を設定する。
+
+```yaml
+kind: ServiceEntry
+spec:
+  hosts:
+  - '*'
+```
+
+<br>
+
+### ports
+
+送信可能なアウトバウンド通信のポート番号を設定する。
+
+```yaml
+kind: ServiceEntry
+spec:
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  - name: https
+    number: 443
+    protocol: HTTPS
+```
+
+<br>
+
+### resolution
+
+送信可能なアウトバウンド通信のIPアドレスの設定する。
+
+```yaml
+kind: ServiceEntry
+spec:
+  resolution: DNS # DNSサーバーから返却されたIPアドレスを許可する。
+```
+
+<br>
+
+## 04-09. spec（StatefulSetの場合）
 
 ### volumeClaimTemplates
 

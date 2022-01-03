@@ -12,7 +12,7 @@
 
 ### global-status
 
-起動中の仮想サーバの一覧を表示する。
+起動中の仮想サーバーの一覧を表示する。
 
 参考：https://www.vagrantup.com/docs/cli/global-status
 

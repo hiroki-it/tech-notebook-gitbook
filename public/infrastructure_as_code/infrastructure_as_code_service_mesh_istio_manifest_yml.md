@@ -8,7 +8,76 @@
 
 <br>
 
-## 01. apiVersion
+## 01. annotations
+
+### annotationsとは
+
+各Podで個別に使用するサービスメッシュのオプションを設定する。
+
+<br>
+
+### proxy.istio.io/config
+
+#### ・proxy.istio.io/configとは
+
+プロキシーコンテナのオプションを上書きで設定する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+#### ・configPath
+
+参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+```yaml
+annotations:
+  proxy.istio.io/config:
+    configPath: ./envoy/envoy.yml
+```
+
+<br>
+
+### sidecar.istio.io/proxyCPU
+
+#### ・sidecar.istio.io/proxyCPUとは
+
+プロキシーコンテナで使用するCPU容量を設定する。
+
+```yaml
+annotations:
+  sidecar.istio.io/proxyCPU: 2
+```
+
+<br>
+
+### sidecar.istio.io/proxyImage
+
+#### ・sidecar.istio.io/proxyImageとは
+
+プロキシーコンテナの構築に使用するDockerイメージを設定する。
+
+```yaml
+annotations:
+  sidecar.istio.io/proxyImage: foo-envoy
+```
+
+<br>
+
+### sidecar.istio.io/proxyMemory
+
+#### ・sidecar.istio.io/proxyMemoryとは
+
+プロキシーコンテナで使用するメモリ容量を設定する。
+
+```yaml
+annotations:
+  sidecar.istio.io/proxyMemory: 4
+```
+
+<br>
+
+## 02. apiVersion
+
+### apiVersionとは
 
 Istio-APIのバージョンを設定する。Kubernetesとは異なることに注意する。
 
@@ -18,7 +87,11 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 02. kind
+## 03. kind
+
+### kindとは
+
+構築するIstioオブジェクトを設定する。
 
 - DestinationRule
 - Gateway
@@ -26,7 +99,13 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 03. metadata
+## 04. metadata
+
+### metadataとは
+
+Istioオブジェクトの一意に識別するための情報を設定する。
+
+<br>
 
 ### namespace
 
@@ -39,11 +118,11 @@ metadata:
 
 <br>
 
-## 04. spec（DestinationRuleの場合）
+## 05. spec（DestinationRuleの場合）
 
 ### host
 
-いずれのサービスへの転送時に、DestinationRuleを適用するかを設定する。
+いずれのServiceへの転送時に、DestinationRuleを適用するかを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
 
@@ -65,7 +144,7 @@ spec:
 
 **＊実装例＊**
 
-サブネット名が```v1```の時には、```version```タグが```v1```であるサービスに転送する。```v2```も同様である。
+サブネット名が```v1```の時には、```version```タグが```v1```であるServiceに転送する。```v2```も同様である。
 
 ```yaml
 kind: DestinationRule
@@ -81,7 +160,7 @@ spec:
 
 <br>
 
-## 05. spec（Gatewayの場合）
+## 06. spec（Gatewayの場合）
 
 ### servers
 
@@ -139,11 +218,30 @@ spec:
 
 <br>
 
-## 06. spec（IstioOperatorの場合）
+## 07. spec（IstioOperatorの場合）
+
+### component
+
+#### ・componentとは
+
+#### ・egressGateways
+
+Egress Gatewayのオプションを設定する。
+
+```yaml
+kind: IstioOperator
+spec:
+  components:
+    egressGateways:
+    - name: istio-egressgateway
+      enabled: true
+```
+
+<br>
 
 ### meshConfig
 
-#### ・meshConfig
+#### ・meshConfigとは
 
 サービスメッシュツールのオプションを設定する。ここではEnvoyを使用した場合を説明する。
 
@@ -170,6 +268,32 @@ spec:
   meshConfig:
     enableTracing: true
 ```
+
+#### ・ingressSelector
+
+使用するIngressコントローラーを設定する。Ingress GatewayをIngressコントローラーとして使用できる。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    ingressSelector: istio-ingressgateway
+```
+
+#### ・ingressService
+
+使用するIngressを設定する。Ingress GatewayをIngressとして使用できる。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    ingressService: istio-ingressgateway
+```
+
+
+
+
 
 <br>
 
@@ -201,7 +325,7 @@ spec:
 
 <br>
 
-## 07. spec（VirtualServiceの場合）
+## 08. spec（VirtualServiceの場合）
 
 ### gateways
 
@@ -220,7 +344,7 @@ spec:
 
 #### ・httpとは
 
-HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をサービスにルーティングする。ルーティング先のサービスを厳格に指定するために、サービスの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
+HTTP/1.1、HTTP/2、gRPC、のプロトコルによるインバウンド通信をServiceにルーティングする。ルーティング先のServiceを厳格に指定するために、Serviceの```appProtocol```キーまたはプロトコル名をIstioのルールに沿ったものにする必要がある。
 
 参考：https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/#explicit-protocol-selection
 
@@ -256,7 +380,7 @@ spec:
 
 #### ・route
 
-受信するインバウンド通信のルーティング先のサービスやポートを設定する。
+受信するインバウンド通信のルーティング先のServiceやポートを設定する。
 
 **＊実装例＊**
 
@@ -266,7 +390,7 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service # または、サービスの完全修飾ドメイン名でもよい。
+            host: foo-service # または、Serviceの完全修飾ドメイン名でもよい。
             port:
               number: 80
 ```
@@ -277,5 +401,5 @@ spec:
 
 #### ・tcpとは
 
-TCP/IPのプロトコルによるインバウンド通信をサービスにルーティングする。
+TCP/IPのプロトコルによるインバウンド通信をServiceにルーティングする。
 
