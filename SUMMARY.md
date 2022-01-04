@@ -25,8 +25,12 @@
         * Linux系
             * [📖 ︎標準搭載ミドルウェア](public/software/software_middleware_linux.md) 
         * Web系
-            * [📖 ︎Nginx](public/software/software_middleware_web_nginx.md)
-            * [📖 ︎Apache](public/software/software_middleware_web_apache.md)
+            * Nginx
+              * [📖 ︎nginx.conf](public/software/software_middleware_web_nginx_conf.md)
+              * [📖 ︎nginxコマンド](public/software/software_middleware_web_nginx_command.md)
+            * Apache
+              * [📖 ︎apache.conf](public/software/software_middleware_web_apache_conf.md)
+              * [📖 ︎apacheコマンド](public/software/software_middleware_web_apache_command.md)
         * アプリケーション系
             * [📖 ︎PHP-FPM](public/software/software_middleware_application_php_fpm.md)
         * データベース系
