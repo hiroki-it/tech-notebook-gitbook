@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎Apache · 俺のドキュメントサイト</title>
+        <title>📖 ︎apache.conf · 俺のドキュメントサイト</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,8 +73,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="software_middleware_web_apache_command.html" />
     
-    <link rel="prev" href="software_middleware_web_nginx.html" />
     
 
     </head>
@@ -422,12 +422,26 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.3.2.1" data-path="software_middleware_web_nginx.html">
+        <li class="chapter " data-level="1.4.3.2.1" >
             
-                <a href="software_middleware_web_nginx.html">
+                <span>
             
                     
-                    📖 ︎Nginx
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.2.1.1" data-path="software_middleware_web_nginx_conf.html">
+            
+                <a href="software_middleware_web_nginx_conf.html">
+            
+                    
+                    📖 ︎nginx.conf
             
                 </a>
             
@@ -435,16 +449,66 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.3.2.2" data-path="software_middleware_web_apache.html">
+        <li class="chapter " data-level="1.4.3.2.1.2" data-path="software_middleware_web_nginx_command.html">
             
-                <a href="software_middleware_web_apache.html">
+                <a href="software_middleware_web_nginx_command.html">
             
                     
-                    📖 ︎Apache
+                    📖 ︎nginxコマンド
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2" >
+            
+                <span>
+            
+                    
+                    Apache
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.3.2.2.1" data-path="software_middleware_web_apache_conf.html">
+            
+                <a href="software_middleware_web_apache_conf.html">
+            
+                    
+                    📖 ︎apache.conf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2.2" data-path="software_middleware_web_apache_command.html">
+            
+                <a href="software_middleware_web_apache_command.html">
+            
+                    
+                    📖 ︎apacheコマンド
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -3043,7 +3107,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎Apache</a>
+        <a href="../.." >📖 ︎apache.conf</a>
     </h1>
 </div>
 
@@ -3058,70 +3122,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="apache"><a name="apache" class="plugin-anchor" href="#apache"><i class="fa fa-link" aria-hidden="true"></i></a>Apache</h1>
+                                <h1 id="apacheconf"><a name="apacheconf" class="plugin-anchor" href="#apacheconf"><i class="fa fa-link" aria-hidden="true"></i></a>apache.conf</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#01-&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30B3;&#x30DE;&#x30F3;&#x30C9;</h2>
-<h3 id="&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;"><a name="&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;" class="plugin-anchor" href="#&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;</h3>
-<h4 id="&#x30FB;httpd"><a name="&#x30FB;httpd" class="plugin-anchor" href="#&#x30FB;httpd"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;httpd</h4>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://httpd.apache.org/docs/trunk/ja/programs/httpd.html" target="_blank">https://httpd.apache.org/docs/trunk/ja/programs/httpd.html</a></p>
-<h4 id="&#x30FB;apachectl"><a name="&#x30FB;apachectl" class="plugin-anchor" href="#&#x30FB;apachectl"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;apachectl</h4>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html" target="_blank">https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html</a></p>
-<p><br></p>
-<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
-<h4 id="&#x30FB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x5B9F;&#x88C5;&#x5834;&#x6240;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x5B9F;&#x88C5;&#x5834;&#x6240;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x5B9F;&#x88C5;&#x5834;&#x6240;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x5B9F;&#x88C5;&#x5834;&#x6240;&#x306E;&#x4E00;&#x89A7;</h4>
-<p>&#x7279;&#x5B9A;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3079;&#x304D;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> httpd -L
-</code></pre>
-<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># systemctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x5B9F;&#x884C;&#x4E0D;&#x53EF;&#x80FD;</span>
-
-$ <span class="token function">sudo</span> <span class="token function">service</span> httpd configtest
-
-$ <span class="token function">sudo</span> apachectl configtest
-
-$ <span class="token function">sudo</span> apachectl -t
-</code></pre>
-<h4 id="&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;</h4>
-<p>&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x306E;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x3089;&#x3068;&#x3044;&#x3063;&#x3066;&#x3001;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x306F;&#x9650;&#x3089;&#x306A;&#x3044;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> httpd -l
-</code></pre>
-<h4 id="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x4E00;&#x89A7;</h4>
-<p>&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6E08;&#x307F;&#x306E;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306E;&#x3046;&#x3061;&#x3067;&#x3001;&#x5B9F;&#x969B;&#x306B;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> httpd -M
-</code></pre>
-<h4 id="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;conf&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x6E08;&#x307F;<code>conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;</h4>
-<p>&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;<code>conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;&#x3053;&#x306E;&#x7D50;&#x679C;&#x304B;&#x3089;&#x3001;&#x4F7F;&#x308F;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;<code>conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3082;&#x3092;&#x691C;&#x51FA;&#x3067;&#x304D;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> httpd -t -D DUMP_CONFIG <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;# In&quot;</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">&quot;{print <span class="token variable">$4</span>}&quot;</span>
-</code></pre>
-<h4 id="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;virtualhost&#x8A2D;&#x5B9A;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;virtualhost&#x8A2D;&#x5B9A;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;virtualhost&#x8A2D;&#x5B9A;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;VirtualHost&#x8A2D;&#x5B9A;&#x306E;&#x4E00;&#x89A7;</h4>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> httpd -S
-</code></pre>
-<h4 id="&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#x505C;&#x6B62;&#x518D;&#x8D77;&#x52D5;"><a name="&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#x505C;&#x6B62;&#x518D;&#x8D77;&#x52D5;" class="plugin-anchor" href="#&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;&#x505C;&#x6B62;&#x518D;&#x8D77;&#x52D5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5F37;&#x5236;&#x7684;&#x306A;&#x8D77;&#x52D5;/&#x505C;&#x6B62;/&#x518D;&#x8D77;&#x52D5;</h4>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8D77;&#x52D5;</span>
-$ <span class="token function">sudo</span> systemctl start httpd
-
-<span class="token comment"># &#x505C;&#x6B62;</span>
-$ <span class="token function">sudo</span> systemctl stop httpd
-
-<span class="token comment"># &#x518D;&#x8D77;&#x52D5;</span>
-$ <span class="token function">sudo</span> systemctl restart httpd
-</code></pre>
-<h4 id="&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;"><a name="&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;" class="plugin-anchor" href="#&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<p>Apache&#x3092;&#x6BB5;&#x968E;&#x7684;&#x306B;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;&#x5B89;&#x5168;&#x306B;&#x518D;&#x8D77;&#x52D5;&#x3067;&#x304D;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> apachectl graceful
-</code></pre>
-<p><br></p>
-<h2 id="02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;"><a name="02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;</h2>
+<h2 id="01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;"><a name="01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;</h2>
 <h3 id="web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><a name="web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/web-server_app-server_db-server.png" alt="web-server_app-server_db-server"></p>
 <p><br></p>
 <h3 id="app&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><a name="app&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#app&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>App&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p>mod_php&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x3080;&#x3053;&#x3068;&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;App&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;&#x3082;&#x6A5F;&#x80FD;&#x3055;&#x305B;&#x3089;&#x308C;&#x308B;&#x3002;</p>
 <p><br></p>
-<h2 id="03-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="03-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#03-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>03. Core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="02-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="02-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#02-core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>02. Core&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="serverroot"><a name="serverroot" class="plugin-anchor" href="#serverroot"><i class="fa fa-link" aria-hidden="true"></i></a>ServerRoot</h3>
 <h4 id="&#x30FB;serverroot&#x3068;&#x306F;"><a name="&#x30FB;serverroot&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;serverroot&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>ServerRoot</code>&#x3068;&#x306F;</h4>
 <p>&#x4ED6;&#x306E;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3067;&#x3001;&#x76F8;&#x5BFE;&#x30D1;&#x30B9;&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#x3002;&#x305D;&#x306E;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3172,6 +3185,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     <span class="token directive-inline property">ServerName</span> www.example.com
 <span class="token directive-block tag"><span class="token directive-block tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
+<p><br></p>
 <h3 id="directory"><a name="directory" class="plugin-anchor" href="#directory"><i class="fa fa-link" aria-hidden="true"></i></a>Directory</h3>
 <h4 id="&#x30FB;directory&#x3068;&#x306F;"><a name="&#x30FB;directory&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;directory&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>Directory</code>&#x3068;&#x306F;</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x56F2;&#x3046;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x4E00;&#x7A2E;&#x3002;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x3042;&#x3063;&#x305F;&#x6642;&#x306B;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3213,7 +3227,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <span class="token directive-inline property">MaxKeepAliveRequests</span> 1000
 </code></pre>
 <p><br></p>
-<h2 id="04-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04. mod_so&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="03-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="03-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#03-modso&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>03. mod_so&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="loadmodule"><a name="loadmodule" class="plugin-anchor" href="#loadmodule"><i class="fa fa-link" aria-hidden="true"></i></a>LoadModule</h3>
 <h4 id="&#x30FB;loadmodule"><a name="&#x30FB;loadmodule" class="plugin-anchor" href="#&#x30FB;loadmodule"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;LoadModule</h4>
 <p>&#x30E2;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x3001;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x5BA3;&#x8A00;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;</p>
@@ -3224,7 +3238,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <span class="token directive-inline property">LoadModule</span> dir_module modules/mod_dir.so
 </code></pre>
 <p><br></p>
-<h2 id="04-02-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-02-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-02-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-02. mod_dir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="04-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-moddir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04. mod_dir&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="directoryindex"><a name="directoryindex" class="plugin-anchor" href="#directoryindex"><i class="fa fa-link" aria-hidden="true"></i></a>DirectoryIndex</h3>
 <h4 id="&#x30FB;directoryindex&#x3068;&#x306F;"><a name="&#x30FB;directoryindex&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;directoryindex&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;DirectoryIndex&#x3068;&#x306F;</h4>
 <p>Directory&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306B;&#x3088;&#x3063;&#x3066;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3059;&#x308B;&#x3002;</p>
@@ -3265,7 +3279,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">AllowOverride</span> Indexes
 </code></pre>
 <p><br></p>
-<h2 id="04-03-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-03-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-03-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-03. mod_write&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="05-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="05-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#05-modwrite&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>05. mod_write&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="rewritecond"><a name="rewritecond" class="plugin-anchor" href="#rewritecond"><i class="fa fa-link" aria-hidden="true"></i></a>RewriteCond</h3>
 <h4 id="&#x30FB;rewritecond&#x3068;&#x306F;"><a name="&#x30FB;rewritecond&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;rewritecond&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>RewriteCond</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#x3001;&#x305D;&#x308C;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3282,14 +3296,14 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_collaboration_api_restful.html</a></p>
 <h4 id="&#x30FB;rewriterule&#x3068;&#x306F;"><a name="&#x30FB;rewriterule&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;rewriterule&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>RewriteRule</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x306B;&#x3088;&#x308B;&#x51E6;&#x7406;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteRule</span> URL&#x66F8;&#x63DB;&#xFF06;&#x8EE2;&#x9001;&#x306E;&#x8A18;&#x8FF0;
+<pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteRule</span> URL&#x66F8;&#x63DB;&#xFF06;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x306E;&#x8A18;&#x8FF0;
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x3001;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">RewriteRule</span><span class="token regex"> ^(.*)?$</span> https://<span class="token variable">%{HTTP_HOST}</span><span class="token variable">$1</span> <span class="token directive-flags keyword">[R=301,L]</span>
 </code></pre>
 <p><br></p>
-<h2 id="04-04-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-04-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-04-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-04. mod_setenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="06-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="06-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#06-modsetenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>06. mod_setenvif&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="setenvif"><a name="setenvif" class="plugin-anchor" href="#setenvif"><i class="fa fa-link" aria-hidden="true"></i></a>SetEnvIf</h3>
 <h4 id="&#x30FB;setenvif&#x3068;&#x306F;"><a name="&#x30FB;setenvif&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;setenvif&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>SetEnvIf</code>&#x3068;&#x306F;</h4>
 <p>&#x6761;&#x4EF6;&#x5206;&#x5C90;&#x3068;&#x74B0;&#x5883;&#x5909;&#x6570;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3299,7 +3313,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <h4 id="&#x30FB;nolog"><a name="&#x30FB;nolog" class="plugin-anchor" href="#&#x30FB;nolog"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nolog</h4>
 <p>&#x30ED;&#x30B0;&#x3092;&#x51FA;&#x529B;&#x3057;&#x306A;&#x3044;&#x5834;&#x5408;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x3002;</p>
 <p><br></p>
-<h2 id="04-05-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-05-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-05-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-05. mod_log_config&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="07-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="07-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#07-modlogconfig&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>07. mod_log_config&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="logformat"><a name="logformat" class="plugin-anchor" href="#logformat"><i class="fa fa-link" aria-hidden="true"></i></a>LogFormat</h3>
 <h4 id="&#x30FB;logformat&#x3068;&#x306F;"><a name="&#x30FB;logformat&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;logformat&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>LogFormat</code>&#x3068;&#x306F;</h4>
 <p>&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x66F8;&#x5F0F;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3442,7 +3456,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 </tbody>
 </table>
 <p><br></p>
-<h2 id="04-06-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-06-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-06-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-06. mod_ssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="08-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="08-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#08-modssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>08. mod_ssl&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="sslcertificatefile"><a name="sslcertificatefile" class="plugin-anchor" href="#sslcertificatefile"><i class="fa fa-link" aria-hidden="true"></i></a>SSLCertificateFile</h3>
 <h4 id="&#x30FB;sslcertificatefile&#x3068;&#x306F;"><a name="&#x30FB;sslcertificatefile&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;sslcertificatefile&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>SSLCertificateFile</code>&#x3068;&#x306F;</h4>
 <p>PKI&#x306B;&#x304A;&#x3051;&#x308B;&#x516C;&#x958B;&#x9375;&#x306E;&#x691C;&#x8A3C;&#x306B;&#x5FC5;&#x8981;&#x306A;SSL&#x8A3C;&#x660E;&#x66F8;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;&#x672C;&#x756A;&#x74B0;&#x5883;&#x3067;&#x306F;AWS&#x306E;ACM&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7528;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;&#x305F;&#x3081;&#x3001;&#x57FA;&#x672C;&#x7684;&#x306A;&#x7528;&#x9014;&#x3068;&#x3057;&#x3066;&#x306F;&#x3001;&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x958B;&#x767A;&#x3067;&#x306E;&#x30AA;&#x30EC;&#x30AA;&#x30EC;&#x8A3C;&#x660E;&#x66F8;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x305F;&#x3081;&#x306B;&#x7528;&#x3044;&#x308B;&#x3002;</p>
@@ -3457,7 +3471,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">SSLCertificateKeyFile</span> /etc/httpd/conf.d/server.key
 </code></pre>
 <p><br></p>
-<h2 id="04-07-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="04-07-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#04-07-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>04-07. mod_headers&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
+<h2 id="09-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="09-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#09-modheaders&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>09. mod_headers&#x306B;&#x304A;&#x3051;&#x308B;&#x8A2D;&#x5B9A;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h2>
 <h3 id="header"><a name="header" class="plugin-anchor" href="#header"><i class="fa fa-link" aria-hidden="true"></i></a>Header</h3>
 <h4 id="&#x30FB;header&#x3068;&#x306F;"><a name="&#x30FB;header&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;header&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>Header</code>&#x3068;&#x306F;</h4>
 <p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;<code>set</code>&#x3001;<code>append</code>&#x3001;<code>add</code>&#x3001;<code>unset</code>&#x3001;<code>echo</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;<code>2xx</code>&#x3068;<code>3xx</code>&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x3067;&#x8A2D;&#x5B9A;&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#x3002;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x3057;&#x3066;&#x3001;<code>always</code>&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x5168;&#x3066;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x30B3;&#x30FC;&#x30C9;&#x3067;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
@@ -3479,7 +3493,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 <pre class="language-"><code class="lang-apacheconf"><span class="token directive-inline property">Header</span> unset Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span> always
 </code></pre>
 <p><br></p>
-<h2 id="05-htaccess"><a name="05-htaccess" class="plugin-anchor" href="#05-htaccess"><i class="fa fa-link" aria-hidden="true"></i></a>05. htaccess</h2>
+<h2 id="10-htaccess"><a name="10-htaccess" class="plugin-anchor" href="#10-htaccess"><i class="fa fa-link" aria-hidden="true"></i></a>10. htaccess</h2>
 <h3 id="&#x5F71;&#x97FF;&#x7BC4;&#x56F2;"><a name="&#x5F71;&#x97FF;&#x7BC4;&#x56F2;" class="plugin-anchor" href="#&#x5F71;&#x97FF;&#x7BC4;&#x56F2;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5F71;&#x97FF;&#x7BC4;&#x56F2;</h3>
 <h4 id="&#x30FB;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5834;&#x5408;"><a name="&#x30FB;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5834;&#x5408;" class="plugin-anchor" href="#&#x30FB;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5834;&#x5408;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5834;&#x5408;</h4>
 <p>&#x5168;&#x3066;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x304C;&#x9069;&#x7528;&#x3055;&#x308C;&#x308B;&#x3002;</p>
@@ -3514,10 +3528,10 @@ $ <span class="token function">sudo</span> systemctl restart httpd
 
             
                 
-                <a href="software_middleware_web_nginx.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 📖 ︎Nginx">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
+                <a href="software_middleware_web_apache_command.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎apacheコマンド">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -3526,7 +3540,7 @@ $ <span class="token function">sudo</span> systemctl restart httpd
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Apache","level":"1.4.3.2.2","depth":4,"next":{"title":"アプリケーション系","level":"1.4.3.3","depth":3,"ref":"","articles":[{"title":"📖 ︎PHP-FPM","level":"1.4.3.3.1","depth":4,"path":"public/software/software_middleware_application_php_fpm.md","ref":"public/software/software_middleware_application_php_fpm.md","articles":[]}]},"previous":{"title":"📖 ︎Nginx","level":"1.4.3.2.1","depth":4,"path":"public/software/software_middleware_web_nginx.md","ref":"public/software/software_middleware_web_nginx.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_middleware_web_apache.md","mtime":"2022-01-03T17:31:07.241Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-03T17:31:13.162Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎apache.conf","level":"1.4.3.2.2.1","depth":5,"next":{"title":"📖 ︎apacheコマンド","level":"1.4.3.2.2.2","depth":5,"path":"public/software/software_middleware_web_apache_command.md","ref":"public/software/software_middleware_web_apache_command.md","articles":[]},"previous":{"title":"Apache","level":"1.4.3.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎apache.conf","level":"1.4.3.2.2.1","depth":5,"path":"public/software/software_middleware_web_apache_conf.md","ref":"public/software/software_middleware_web_apache_conf.md","articles":[]},{"title":"📖 ︎apacheコマンド","level":"1.4.3.2.2.2","depth":5,"path":"public/software/software_middleware_web_apache_command.md","ref":"public/software/software_middleware_web_apache_command.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_middleware_web_apache_conf.md","mtime":"2022-01-04T16:06:23.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T16:06:28.500Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

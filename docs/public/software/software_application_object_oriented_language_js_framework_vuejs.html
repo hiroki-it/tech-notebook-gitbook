@@ -424,12 +424,26 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.3.2.1" data-path="software_middleware_web_nginx.html">
+        <li class="chapter " data-level="1.4.3.2.1" >
             
-                <a href="software_middleware_web_nginx.html">
+                <span>
             
                     
-                    📖 ︎Nginx
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.2.1.1" data-path="software_middleware_web_nginx_conf.html">
+            
+                <a href="software_middleware_web_nginx_conf.html">
+            
+                    
+                    📖 ︎nginx.conf
             
                 </a>
             
@@ -437,16 +451,66 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3.2.2" data-path="software_middleware_web_apache.html">
+        <li class="chapter " data-level="1.4.3.2.1.2" data-path="software_middleware_web_nginx_command.html">
             
-                <a href="software_middleware_web_apache.html">
+                <a href="software_middleware_web_nginx_command.html">
             
                     
-                    📖 ︎Apache
+                    📖 ︎nginxコマンド
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2" >
+            
+                <span>
+            
+                    
+                    Apache
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.2.2.1" data-path="software_middleware_web_apache_conf.html">
+            
+                <a href="software_middleware_web_apache_conf.html">
+            
+                    
+                    📖 ︎apache.conf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2.2" data-path="software_middleware_web_apache_command.html">
+            
+                <a href="software_middleware_web_apache_command.html">
+            
+                    
+                    📖 ︎apacheコマンド
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -3347,12 +3411,10 @@
 <h4 id="&#x30FB;v-on&#x3068;&#x306F;"><a name="&#x30FB;v-on&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;v-on&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-on:</code>&#x3068;&#x306F;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Vue&#x306B;&#x304A;&#x3051;&#x308B;emit&#x3068;v-on&#x306E;&#x9023;&#x643A;.png" alt="Vue&#x306B;&#x304A;&#x3051;&#x308B;emit&#x3068;v-on&#x306E;&#x9023;&#x643A;"></p>
 <p>View&#x5C64;&#xFF08;<code>template</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF09;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x3092;&#x3001;ViewModel&#x5C64;&#xFF08;<code>script</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF09;&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;<code>methods:</code>&#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;&#x3084;&#x30A4;&#x30F3;&#x30E9;&#x30A4;&#x30F3;JS&#x30B9;&#x30C6;&#x30FC;&#x30C8;&#x30E1;&#x30F3;&#x30C8;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3057;&#x3001;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x767A;&#x706B;&#x3057;&#x305F;&#x6642;&#x70B9;&#x3067;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;<code>script</code>&#x30BF;&#x30B0;&#x90E8;&#x5206;&#xFF08;ViewModel&#x5C64;&#xFF09;&#x306E;&#x89AA;&#x5B50;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x6E21;&#x3057;&#x3067;&#x3042;&#x308B;&#x300E;Props Down, Events Up&#x300F;&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x6982;&#x5FF5;&#x306A;&#x306E;&#x3067;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-vue">v<span class="token operator">-</span>on<span class="token operator">:</span><span class="token punctuation">{</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;<span class="token punctuation">}</span><span class="token operator">=</span><span class="token string">&quot;{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;methods: &#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;}&quot;</span>
-</code></pre>
-<p>&#x307E;&#x305F;&#x306F;&#x3001;&#x7701;&#x7565;&#x3057;&#x3066;&#x3001;</p>
-<pre class="language-"><code class="lang-vue">@<span class="token operator">:</span><span class="token punctuation">{</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;<span class="token punctuation">}</span><span class="token operator">=</span><span class="token string">&quot;&lt;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&gt;&quot;</span>
-</code></pre>
-<p>&#x3067;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code>v-on:{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;}=&quot;{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#xFF08;methods: &#x5185;&#x306B;&#x3042;&#x308B;&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#xFF09;}&quot;
+</code></pre><p>&#x307E;&#x305F;&#x306F;&#x3001;&#x7701;&#x7565;&#x3057;&#x3066;&#x3001;</p>
+<pre class="language-"><code>@:{&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;}=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;
+</code></pre><p>&#x3067;&#x8A18;&#x8FF0;&#x3059;&#x308B;&#x3002;</p>
 <h4 id="&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3001;button&#x30BF;&#x30B0;"><a name="&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3001;button&#x30BF;&#x30B0;" class="plugin-anchor" href="#&#x30FB;v-onsubmit&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3001;button&#x30BF;&#x30B0;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>v-on:submit=&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;</span><span class="token punctuation">&gt;</span></span>&quot;</code>&#x3001;<code>button</code>&#x30BF;&#x30B0;</h4>
 <p>View&#x5C64;&#x306E;&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x9001;&#x4FE1;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x304C;&#x8D77;&#x304D;&#x305F;&#x6642;&#x70B9;&#x3067;&#x3001;ViewModel&#x5C64;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x30B3;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x89AA;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x3067;&#x306F;&#x3001;&#x5B50;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306B;&#x3088;&#x3063;&#x3066;&#x767A;&#x706B;&#x3055;&#x305B;&#x3089;&#x308C;&#x308B;<code>search</code>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;<code>result</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3068;&#x3044;&#x3046;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3092;&#x7D10;&#x4ED8;&#x3051;&#x3066;&#x304A;&#x304F;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -3363,8 +3425,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token comment">&lt;!-- Vue&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x751F;&#x6210;&#x306F;&#x5916;&#x90E8;&#x30B9;&#x30AF;&#x30EA;&#x30D7;&#x30C8;&#x3067;&#x884C;&#x3046;&#x3002; --&gt;</span>
-&lt;script
-        src=&quot;{{ asset(&quot;.../index.js&quot;) }}&quot;&gt;
+&lt;script src=&quot;{{ asset(&quot;.../index.js&quot;) }}&quot;&gt;
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
 <p>index.js&#x306E;<code>methods:</code>&#x5185;&#x306B;&#x306F;&#x3001;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30CF;&#x30F3;&#x30C9;&#x30E9;&#x95A2;&#x6570;&#x3068;&#x3057;&#x3066;<code>result</code>&#x30E1;&#x30BD;&#x30C3;&#x30C9;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;</p>
@@ -3835,7 +3896,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
   <span class="token function">beforeCreate</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -3863,7 +3924,7 @@ undefined
   <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -3889,7 +3950,7 @@ undefined
   <span class="token function">beforeMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -3917,7 +3978,7 @@ undefined
   <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -3942,7 +4003,7 @@ undefined
           <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;Hiroki&quot;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;beforeupdate"><a name="&#x30FB;beforeupdate" class="plugin-anchor" href="#&#x30FB;beforeupdate"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;beforeUpdate</h4>
@@ -3972,7 +4033,7 @@ undefined
   <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -4002,7 +4063,7 @@ undefined
   <span class="token function">beforeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x7D50;&#x679C;</span>
@@ -4055,7 +4116,7 @@ undefined
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Vue.js","level":"1.4.4.3.1.2.3.2","depth":7,"next":{"title":"📖 ︎Nuxt.js","level":"1.4.4.3.1.2.3.3","depth":7,"path":"public/software/software_application_object_oriented_language_js_framework_nuxtjs.md","ref":"public/software/software_application_object_oriented_language_js_framework_nuxtjs.md","articles":[]},"previous":{"title":"📖 ︎パッケージ","level":"1.4.4.3.1.2.3.1","depth":7,"path":"public/software/software_application_object_oriented_language_js_package.md","ref":"public/software/software_application_object_oriented_language_js_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_object_oriented_language_js_framework_vuejs.md","mtime":"2022-01-03T17:31:07.285Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-03T17:31:13.162Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Vue.js","level":"1.4.4.3.1.2.3.2","depth":7,"next":{"title":"📖 ︎Nuxt.js","level":"1.4.4.3.1.2.3.3","depth":7,"path":"public/software/software_application_object_oriented_language_js_framework_nuxtjs.md","ref":"public/software/software_application_object_oriented_language_js_framework_nuxtjs.md","articles":[]},"previous":{"title":"📖 ︎パッケージ","level":"1.4.4.3.1.2.3.1","depth":7,"path":"public/software/software_application_object_oriented_language_js_package.md","ref":"public/software/software_application_object_oriented_language_js_package.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_application_object_oriented_language_js_framework_vuejs.md","mtime":"2022-01-04T16:06:23.909Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T16:06:28.500Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

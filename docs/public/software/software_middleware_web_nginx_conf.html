@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>📖 ︎Nginx · 俺のドキュメントサイト</title>
+        <title>📖 ︎nginx.conf · 俺のドキュメントサイト</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,7 +73,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="software_middleware_web_apache.html" />
+    <link rel="next" href="software_middleware_web_nginx_command.html" />
     
     
 
@@ -422,12 +422,26 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.3.2.1" data-path="software_middleware_web_nginx.html">
+        <li class="chapter " data-level="1.4.3.2.1" >
             
-                <a href="software_middleware_web_nginx.html">
+                <span>
             
                     
-                    📖 ︎Nginx
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.3.2.1.1" data-path="software_middleware_web_nginx_conf.html">
+            
+                <a href="software_middleware_web_nginx_conf.html">
+            
+                    
+                    📖 ︎nginx.conf
             
                 </a>
             
@@ -435,16 +449,66 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3.2.2" data-path="software_middleware_web_apache.html">
+        <li class="chapter " data-level="1.4.3.2.1.2" data-path="software_middleware_web_nginx_command.html">
             
-                <a href="software_middleware_web_apache.html">
+                <a href="software_middleware_web_nginx_command.html">
             
                     
-                    📖 ︎Apache
+                    📖 ︎nginxコマンド
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2" >
+            
+                <span>
+            
+                    
+                    Apache
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.2.2.1" data-path="software_middleware_web_apache_conf.html">
+            
+                <a href="software_middleware_web_apache_conf.html">
+            
+                    
+                    📖 ︎apache.conf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2.2.2" data-path="software_middleware_web_apache_command.html">
+            
+                <a href="software_middleware_web_apache_command.html">
+            
+                    
+                    📖 ︎apacheコマンド
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -3043,7 +3107,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >📖 ︎Nginx</a>
+        <a href="../.." >📖 ︎nginx.conf</a>
     </h1>
 </div>
 
@@ -3058,40 +3122,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="nginx"><a name="nginx" class="plugin-anchor" href="#nginx"><i class="fa fa-link" aria-hidden="true"></i></a>Nginx</h1>
+                                <h1 id="nginxconf"><a name="nginxconf" class="plugin-anchor" href="#nginxconf"><i class="fa fa-link" aria-hidden="true"></i></a>nginx.conf</h1>
 <h2 id="&#x306F;&#x3058;&#x3081;&#x306B;"><a name="&#x306F;&#x3058;&#x3081;&#x306B;" class="plugin-anchor" href="#&#x306F;&#x3058;&#x3081;&#x306B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x306F;&#x3058;&#x3081;&#x306B;</h2>
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-tips"><a name="01-tips" class="plugin-anchor" href="#01-tips"><i class="fa fa-link" aria-hidden="true"></i></a>01. Tips</h2>
-<h3 id="&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;"><a name="&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;" class="plugin-anchor" href="#&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30EA;&#x30D5;&#x30A1;&#x30EC;&#x30F3;&#x30B9;</h3>
-<h4 id="&#x30FB;nginx"><a name="&#x30FB;nginx" class="plugin-anchor" href="#&#x30FB;nginx"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nginx</h4>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html" target="_blank">https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html</a></p>
-<p><br></p>
-<h3 id="&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><a name="&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;" class="plugin-anchor" href="#&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x3088;&#x304F;&#x4F7F;&#x3046;&#x30B3;&#x30DE;&#x30F3;&#x30C9;</h3>
-<h4 id="&#x30FB;&#x8D77;&#x52D5;&#x505C;&#x6B62;"><a name="&#x30FB;&#x8D77;&#x52D5;&#x505C;&#x6B62;" class="plugin-anchor" href="#&#x30FB;&#x8D77;&#x52D5;&#x505C;&#x6B62;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8D77;&#x52D5;/&#x505C;&#x6B62;</h4>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl start nginx
-$ <span class="token function">sudo</span> systemctl stop nginx
-</code></pre>
-<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</h4>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> <span class="token function">service</span> nginx configtest
-
-<span class="token comment"># &#x3082;&#x3057;&#x304F;&#x306F;&#x3053;&#x3061;&#x3089;</span>
-$ <span class="token function">sudo</span> nginx -t
-</code></pre>
-<h4 id="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;"><a name="&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;" class="plugin-anchor" href="#&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x53CD;&#x6620;&#x3068;&#x5B89;&#x5168;&#x306A;&#x518D;&#x8D77;&#x52D5;</h4>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl reload nginx
-</code></pre>
-<h4 id="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x8A2D;&#x5B9A;&#x5024;&#x306E;&#x4E00;&#x89A7;"><a name="&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x8A2D;&#x5B9A;&#x5024;&#x306E;&#x4E00;&#x89A7;" class="plugin-anchor" href="#&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x8A2D;&#x5B9A;&#x5024;&#x306E;&#x4E00;&#x89A7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x305F;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x8A2D;&#x5B9A;&#x5024;&#x306E;&#x4E00;&#x89A7;</h4>
-<p>&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x5168;&#x3066;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;<code>include</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x306E;&#x5BFE;&#x8C61;&#x3082;&#x542B;&#x3080;&#xFF09;&#x306E;&#x5185;&#x5BB9;&#x3092;&#x5C55;&#x958B;&#x3057;&#x3066;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> nginx -T
-</code></pre>
-<p><br></p>
-<h2 id="02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;"><a name="02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#02-&#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>02. &#x6A5F;&#x80FD;&#x306E;&#x7A2E;&#x985E;</h2>
+<h2 id="01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;"><a name="01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#01-&#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x4F7F;&#x3044;&#x65B9;&#x306E;&#x7A2E;&#x985E;</h2>
 <h3 id="web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><a name="web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <h4 id="&#x30FB;php-fpm&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><a name="&#x30FB;php-fpm&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;" class="plugin-anchor" href="#&#x30FB;php-fpm&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;PHP-FPM&#x3068;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;</h4>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;.png" alt="Nginx&#x3068;PHP-FPM&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;"></p>
-<p>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#x3001;Nginx&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x3002;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#x3001;Nginx&#x306F;&#x3001;FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4ECB;&#x3057;&#x3066;&#x3001;PHP-FPM&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#x3001;Nginx&#x306F;&#x305D;&#x306E;&#x307E;&#x307E;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x3002;&#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x304C;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x3066;&#x304D;&#x305F;&#x5834;&#x5408;&#x3001;Nginx&#x306F;&#x3001;FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x4ECB;&#x3057;&#x3066;&#x3001;PHP-FPM&#x306B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;</span>
 $ php-fpm -t
 </code></pre>
@@ -3107,13 +3147,13 @@ $ php-fpm -t
 
     <span class="token directive"><span class="token keyword">include</span> /etc/nginx/default/foo.conf</span><span class="token punctuation">;</span>
 
-    <span class="token comment">#&#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+    <span class="token comment">#&#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
     <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
         <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.php?<span class="token variable">$query_string</span></span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">#--------------------------------------------------</span>
-    <span class="token comment"># FastCGI&#x3092;&#x7528;&#x3044;&#x305F;App&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3078;&#x306E;&#x8EE2;&#x9001;&#x3001;&#x53D7;&#x4FE1;</span>
+    <span class="token comment"># FastCGI&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x8EE2;&#x9001;&#x5148;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</span>
     <span class="token comment"># OS&#x306B;&#x3088;&#x3063;&#x3066;&#x3001;fastcgi_params&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5FC5;&#x8981;&#x306A;&#x8A2D;&#x5B9A;&#x304C;&#x7570;&#x306A;&#x308B;</span>
     <span class="token comment">#--------------------------------------------------</span>
     <span class="token directive"><span class="token keyword">location</span> ~ \.php$</span> <span class="token punctuation">{</span>
@@ -3131,7 +3171,7 @@ $ php-fpm -t
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;etcnginxfastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;etcnginxfastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;etcnginxfastcgiparams&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>/etc/nginx/fastcgi_params</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
-<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;<code>nginx.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#x3002;OS&#x3084;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#x3001;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x3002;&#x5B9F;&#x969B;&#x306B;&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5185;&#x306B;&#x63A5;&#x7D9A;&#x3057;&#x3001;&#x4E0A;&#x66F8;&#x304D;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x3082;&#x306E;&#x3068;&#x4E0D;&#x8981;&#x306A;&#x3082;&#x306E;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;&#x4EE5;&#x4E0B;&#x306F;&#x3001;Debian 10&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x5909;&#x6570;&#x3092;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3002;<code>nginx.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x3088;&#x3063;&#x3066;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#x3002;OS&#x3084;&#x305D;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x3063;&#x3066;&#x306F;&#x3001;&#x5909;&#x6570;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x304C;&#x66F8;&#x304D;&#x63DB;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x3002;&#x5B9F;&#x969B;&#x306B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x8EE2;&#x9001;&#x5148;&#x306B;&#x63A5;&#x7D9A;&#x3057;&#x3001;&#x4E0A;&#x66F8;&#x304D;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x3082;&#x306E;&#x3068;&#x4E0D;&#x8981;&#x306A;&#x3082;&#x306E;&#x3092;&#x5224;&#x65AD;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;&#x4EE5;&#x4E0B;&#x306F;&#x3001;Debian 10&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3067;&#x3042;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/" target="_blank">https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token comment">#-------------------------------------------------------</span>
@@ -3164,7 +3204,7 @@ $ php-fpm -t
 </code></pre>
 <p><br></p>
 <h3 id="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><a name="&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
-<p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3067;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x3001;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x3002;</p>
+<p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3067;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x3001;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5909;&#x63DB;&#x3057;&#x3066;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token comment">#-------------------------------------</span>
 <span class="token comment"># HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
@@ -3203,7 +3243,7 @@ $ php-fpm -t
 <p><br></p>
 <h3 id="&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><a name="&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;" class="plugin-anchor" href="#&#x30EA;&#x30D0;&#x30FC;&#x30B9;proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x3068;&#x3057;&#x3066;</h3>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/&#x30EA;&#x30D0;&#x30FC;&#x30B9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x306E;Nginx.png" alt="&#x30EA;&#x30D0;&#x30FC;&#x30B9;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3068;&#x3057;&#x3066;&#x306E;Nginx"></p>
-<p>&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#x3001;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304B;&#x3089;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x305F;HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x4F8B;&#x3092;&#x8003;&#x3048;&#x308B;&#x3002;&#x9759;&#x7684;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306F;&#x3001;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#xFF08;Nginx&#xFF09;&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x3002;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306F;&#x3001;&#x5FC5;&#x305A;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x3001;&#x52D5;&#x7684;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x524D;&#x63D0;&#x3068;&#x3057;&#x3066;&#x3001;&#x30ED;&#x30FC;&#x30C9;&#x30D0;&#x30E9;&#x30F3;&#x30B5;&#xFF0D;&#x304B;&#x3089;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x305F;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x4F8B;&#x3092;&#x8003;&#x3048;&#x308B;&#x3002;&#x9759;&#x7684;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306F;&#x3001;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#xFF08;Nginx&#xFF09;&#x3067;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x3092;&#x8FD4;&#x4FE1;&#x3059;&#x308B;&#x3002;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306F;&#x3001;&#x5FC5;&#x305A;&#x30EA;&#x30D0;&#x30FC;&#x30B9;Proxy&#x3092;&#x7D4C;&#x7531;&#x3057;&#x3066;&#x3001;&#x52D5;&#x7684;&#x306A;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token comment">#-------------------------------------</span>
 <span class="token comment"># HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;</span>
@@ -3222,7 +3262,7 @@ $ php-fpm -t
     <span class="token punctuation">}</span>
 
     <span class="token comment">#-------------------------------------</span>
-    <span class="token comment"># &#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306B;&#x8EE2;&#x9001;</span>
+    <span class="token comment"># &#x52D5;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x3042;&#x308C;&#x3070;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;</span>
     <span class="token comment">#-------------------------------------</span>
     <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
         <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:8080</span><span class="token punctuation">;</span>
@@ -3230,7 +3270,7 @@ $ php-fpm -t
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-01-core&#x6A5F;&#x80FD;"><a name="03-01-core&#x6A5F;&#x80FD;" class="plugin-anchor" href="#03-01-core&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>03-01. Core&#x6A5F;&#x80FD;</h2>
+<h2 id="02-core&#x6A5F;&#x80FD;"><a name="02-core&#x6A5F;&#x80FD;" class="plugin-anchor" href="#02-core&#x6A5F;&#x80FD;"><i class="fa fa-link" aria-hidden="true"></i></a>02. Core&#x6A5F;&#x80FD;</h2>
 <h3 id="&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;events"><a name="&#x30FB;events" class="plugin-anchor" href="#&#x30FB;events"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>events</code></h4>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/ngx_core_module.html#events" target="_blank">https://nginx.org/en/docs/ngx_core_module.html#events</a></p>
@@ -3284,10 +3324,10 @@ $ php-fpm -t
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">load_module</span> <span class="token string">&quot;/usr/lib64/nginx/modules/ngx_http_image_filter_module.so&quot;</span></span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-02-httpcoremodule"><a name="03-02-httpcoremodule" class="plugin-anchor" href="#03-02-httpcoremodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-02. http_core_module</h2>
+<h2 id="03-httpcoremodule"><a name="03-httpcoremodule" class="plugin-anchor" href="#03-httpcoremodule"><i class="fa fa-link" aria-hidden="true"></i></a>03. http_core_module</h2>
 <h3 id="&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;http"><a name="&#x30FB;http" class="plugin-anchor" href="#&#x30FB;http"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>http</code></h4>
-<p>&#x5168;&#x3066;&#x306E;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306B;&#x5171;&#x901A;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x5171;&#x901A;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#http" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#http</a></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
     <span class="token comment"># Nginx&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;</span>
@@ -3316,32 +3356,32 @@ $ php-fpm -t
 <span class="token punctuation">}</span>
 </code></pre>
 <h4 id="&#x30FB;location"><a name="&#x30FB;location" class="plugin-anchor" href="#&#x30FB;location"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>location</code></h4>
-<p>&#x500B;&#x5225;&#x306E;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x304A;&#x3051;&#x308B;&#x7279;&#x5B9A;&#x306E;URL&#x306E;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x7279;&#x5B9A;&#x306E;&#x30D1;&#x30B9;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x5404;&#x8A2D;&#x5B9A;&#x306E;&#x512A;&#x5148;&#x9806;&#x4F4D;&#x306B;&#x6CBF;&#x3063;&#x305F;&#x4EE5;&#x4E0B;&#x306E;&#x9806;&#x756A;&#x3067;&#x5B9F;&#x88C5;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x3002;</p>
-<pre class="language-"><code class="lang-nginx"><span class="token comment"># 1. &#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<pre class="language-"><code class="lang-nginx"><span class="token comment"># 1. &#x30C9;&#x30AD;&#x30E5;&#x30E1;&#x30F3;&#x30C8;&#x30EB;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
 <span class="token directive"><span class="token keyword">location</span> = /</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
 
-<span class="token comment"># 2. &#x300E;/images/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment"># 2. &#x300E;/images/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
 <span class="token directive"><span class="token keyword">location</span> ^~ /images/</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
 
-<span class="token comment"># 3&#x3068;4. &#x672B;&#x5C3E;&#x304C;&#x3001;&#x300E;gif&#x3001;jpg&#x3001;jpeg&#x306E;&#x5F62;&#x5F0F;&#x300F; &#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment"># 3&#x3068;4. &#x672B;&#x5C3E;&#x304C;&#x3001;&#x300E;gif&#x3001;jpg&#x3001;jpeg&#x306E;&#x5F62;&#x5F0F;&#x300F; &#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
 <span class="token comment"># &#x30D0;&#x30C3;&#x30AF;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x3067;&#x30C9;&#x30C3;&#x30C8;&#x3092;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#x3001;&#x4EFB;&#x610F;&#x306E;&#x6587;&#x5B57;&#x3067;&#x306F;&#x306A;&#x304F;&#x300E;&#x30C9;&#x30C3;&#x30C8;&#x6587;&#x5B57;&#x300F;&#x3068;&#x3057;&#x3066;&#x8A8D;&#x8B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;</span>
 <span class="token directive"><span class="token keyword">location</span> ~* \.(gif|jpg|jpeg)$</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
 
-<span class="token comment"># 5-1. &#x300E;/docs/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment"># 5-1. &#x300E;/docs/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
 <span class="token directive"><span class="token keyword">location</span> /docs/</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
 
-<span class="token comment"># 5-2. &#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x5834;&#x5408;</span>
+<span class="token comment"># 5-2. &#x300E;/&#x300F;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5168;&#x3066;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x5834;&#x5408;</span>
 <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
@@ -3359,25 +3399,25 @@ $ php-fpm -t
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
-<td style="text-align:center">=</td>
+<td style="text-align:center"><code>=</code></td>
 <td>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EB;&#x30FC;&#x30C8;&#x306B;&#x4E00;&#x81F4;&#x3059;&#x308B;&#x5834;&#x5408;&#x3002;</td>
 <td><code>https://example.com/</code></td>
 </tr>
 <tr>
 <td style="text-align:center">2</td>
-<td style="text-align:center">^~</td>
+<td style="text-align:center"><code>^~</code></td>
 <td>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30EB;&#x30FC;&#x30C8;&#x3067;&#x59CB;&#x307E;&#x308B;&#x5834;&#x5408;&#x3002;</td>
 <td><code>https://example.com/images/foo.gif</code></td>
 </tr>
 <tr>
 <td style="text-align:center">3</td>
-<td style="text-align:center">~</td>
+<td style="text-align:center"><code>~</code></td>
 <td>&#x6B63;&#x898F;&#x8868;&#x73FE;&#xFF08;&#x5927;&#x6587;&#x5B57;&#x30FB;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x533A;&#x5225;&#x3059;&#x308B;&#xFF09;&#x3002;</td>
 <td><code>https://example.com/images/FOO.jpg</code></td>
 </tr>
 <tr>
 <td style="text-align:center">4</td>
-<td style="text-align:center">~*</td>
+<td style="text-align:center"><code>~*</code></td>
 <td>&#x6B63;&#x898F;&#x8868;&#x73FE;&#xFF08;&#x5927;&#x6587;&#x5B57;&#x30FB;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x533A;&#x5225;&#x3057;&#x306A;&#x3044;&#xFF09;&#x3002;</td>
 <td><code>https://example.com/images/foo.jpg</code></td>
 </tr>
@@ -3390,7 +3430,7 @@ $ php-fpm -t
 </tbody>
 </table>
 <h4 id="&#x30FB;server"><a name="&#x30FB;server" class="plugin-anchor" href="#&#x30FB;server"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>server</code></h4>
-<p>&#x500B;&#x5225;&#x306E;Web&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x7279;&#x5B9A;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306B;&#x95A2;&#x3059;&#x308B;&#x51E6;&#x7406;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#server</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
@@ -3421,16 +3461,16 @@ $ php-fpm -t
 <p>Content-Type&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x306E;&#x5024;&#x304C;mime.types&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x306A;&#x3044;MIME type&#x3067;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x306B;&#x9069;&#x7528;&#x3059;&#x308B;MIME type&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-nginx"><span class="token comment"># application/octet-stream&#xFF1A;&#x4EFB;&#x610F;&#x306E;MIME type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x3068;&#x898B;&#x306A;&#x3057;&#x3066;&#x9001;&#x4FE1;</span>
-default_type application/octet-stream
+<p>&#x4EFB;&#x610F;&#x306E;MIME type&#xFF08;&#x6307;&#x5B9A;&#x306A;&#x3057;&#xFF09;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x51E6;&#x7406;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-nginx">default_type application/octet-stream
 </code></pre>
 <h4 id="&#x30FB;listen"><a name="&#x30FB;listen" class="plugin-anchor" href="#&#x30FB;listen"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>listen</code></h4>
-<p>HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;80&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;<code>80</code>&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#listen</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
 </code></pre>
-<p>HTTPS&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;443&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;<code>443</code>&#x756A;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl</span><span class="token punctuation">;</span>
 </code></pre>
@@ -3449,7 +3489,7 @@ default_type application/octet-stream
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">server_name</span> 192.168.0.0</span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;ssl"><a name="&#x30FB;ssl" class="plugin-anchor" href="#&#x30FB;ssl"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>ssl</code></h4>
-<p>Nginx&#x3067;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;ssl&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<p>Nginx&#x3067;HTTPS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;SSL/TLS&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl" target="_blank">https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">ssl</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
@@ -3482,15 +3522,15 @@ default_type application/octet-stream
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
-    <span class="token comment"># 1. &#x300E;/foo.html&#x300F;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
-    <span class="token comment"># 2. &#x300E;/foo.html/&#x300F;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
+    <span class="token comment"># 1. &#x300E;/foo.html&#x300F;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
+    <span class="token comment"># 2. &#x300E;/foo.html/&#x300F;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;</span>
     <span class="token comment"># 3. &#x300E;/index.php?query_string&#x300F;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x5185;&#x90E8;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;</span>
     <span class="token directive"><span class="token keyword">try_files</span> <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.php?query_string</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment"># &#x5185;&#x90E8;&#x30EA;&#x30C0;&#x30A4;&#x30EC;&#x30AF;&#x30C8;&#x5F8C;&#x306F;&#x3001;&#x300E;/index.php?foo=bar&#x300F;&#x306E;&#x305F;&#x3081;&#x3001;&#x4EE5;&#x4E0B;&#x3067;&#x51E6;&#x7406;&#x3055;&#x308C;&#x308B;&#x3002;</span>
 <span class="token directive"><span class="token keyword">location</span> ~ \.php$</span> <span class="token punctuation">{</span>
-    <span class="token comment"># php-fpm&#x306B;&#x8EE2;&#x9001;&#x3055;&#x308C;&#x308B;&#x3002;</span>
+    <span class="token comment"># php-fpm&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3055;&#x308C;&#x308B;&#x3002;</span>
     <span class="token directive"><span class="token keyword">fastcgi_pass</span>  127.0.0.1:9000</span><span class="token punctuation">;</span>
     <span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
     <span class="token directive"><span class="token keyword">include</span>       fastcgi_params</span><span class="token punctuation">;</span>
@@ -3530,7 +3570,7 @@ default_type application/octet-stream
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-03-httpindexmodule"><a name="03-03-httpindexmodule" class="plugin-anchor" href="#03-03-httpindexmodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-03. http_index_module</h2>
+<h2 id="04-httpindexmodule"><a name="04-httpindexmodule" class="plugin-anchor" href="#04-httpindexmodule"><i class="fa fa-link" aria-hidden="true"></i></a>04. http_index_module</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;index"><a name="&#x30FB;index" class="plugin-anchor" href="#&#x30FB;index"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>index</code></h4>
 <p>&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;URL&#x304C;&#x30C8;&#x30EC;&#x30A4;&#x30EA;&#x30F3;&#x30B0;&#x30B9;&#x30E9;&#x30C3;&#x30B7;&#x30E5;&#x3067;&#x7D42;&#x308F;&#x308B;&#x5168;&#x3066;&#x306E;&#x5834;&#x5408;&#x3001;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;URL&#x306E;&#x672B;&#x5C3E;&#x306B;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3002;</p>
@@ -3539,7 +3579,7 @@ default_type application/octet-stream
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">index</span> index.php</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-04-httpheadersmodule"><a name="03-04-httpheadersmodule" class="plugin-anchor" href="#03-04-httpheadersmodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-04. http_headers_module</h2>
+<h2 id="05-httpheadersmodule"><a name="05-httpheadersmodule" class="plugin-anchor" href="#05-httpheadersmodule"><i class="fa fa-link" aria-hidden="true"></i></a>05. http_headers_module</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;addheader"><a name="&#x30FB;addheader" class="plugin-anchor" href="#&#x30FB;addheader"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>add_header</code></h4>
 <p>&#x30EC;&#x30B9;&#x30DD;&#x30F3;&#x30B9;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
@@ -3549,41 +3589,40 @@ default_type application/octet-stream
 <span class="token directive"><span class="token keyword">add_header</span> Referrer-Policy <span class="token string">&quot;no-referrer-when-downgrade&quot;</span></span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-05-httpupstreammodule"><a name="03-05-httpupstreammodule" class="plugin-anchor" href="#03-05-httpupstreammodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-05. http_upstream_module</h2>
+<h2 id="06-httpupstreammodule"><a name="06-httpupstreammodule" class="plugin-anchor" href="#06-httpupstreammodule"><i class="fa fa-link" aria-hidden="true"></i></a>06. http_upstream_module</h2>
 <h3 id="&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><a name="&#x30D6;&#x30ED;&#x30C3;&#x30AF;" class="plugin-anchor" href="#&#x30D6;&#x30ED;&#x30C3;&#x30AF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30D6;&#x30ED;&#x30C3;&#x30AF;</h3>
 <h4 id="&#x30FB;upstream"><a name="&#x30FB;upstream" class="plugin-anchor" href="#&#x30FB;upstream"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>upstream</code></h4>
+<p>&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x3092;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5316;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;&#x3001;&#x52A0;&#x91CD;&#x30E9;&#x30A6;&#x30F3;&#x30C9;&#x30ED;&#x30D3;&#x30F3;&#x65B9;&#x5F0F;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x901A;&#x4FE1;&#x3092;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream" target="_blank">https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">upstream</span> big_server_com</span> <span class="token punctuation">{</span>
-    <span class="token directive"><span class="token keyword">server</span> 127.0.0.3:8000 weight=5</span><span class="token punctuation">;</span>
-    <span class="token directive"><span class="token keyword">server</span> 127.0.0.3:8001 weight=5</span><span class="token punctuation">;</span>
-    <span class="token directive"><span class="token keyword">server</span> 192.168.0.1:8000</span><span class="token punctuation">;</span>
-    <span class="token directive"><span class="token keyword">server</span> 192.168.0.1:8001</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">upstream</span> foo_servers</span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.0.1:80</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.0.1:81</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-06-httpfastcgimodule"><a name="03-06-httpfastcgimodule" class="plugin-anchor" href="#03-06-httpfastcgimodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-06. http_fast_cgi_module</h2>
+<h2 id="07-httpfastcgimodule"><a name="07-httpfastcgimodule" class="plugin-anchor" href="#07-httpfastcgimodule"><i class="fa fa-link" aria-hidden="true"></i></a>07. http_fast_cgi_module</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;fastcgiparams"><a name="&#x30FB;fastcgiparams" class="plugin-anchor" href="#&#x30FB;fastcgiparams"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>fastcgi_params</code></h4>
-<p>FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;App&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x8EE2;&#x9001;&#x5148;&#x3067;&#x7528;&#x3044;&#x308B;&#x5909;&#x6570;&#x3068;&#x305D;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x8EE2;&#x9001;&#x5148;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x3067;&#x7528;&#x3044;&#x308B;&#x5909;&#x6570;&#x3068;&#x305D;&#x306E;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param" target="_blank">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">fastcgi_param</span> SCRIPT_FILENAME <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span></span><span class="token punctuation">;</span>
 </code></pre>
 <h4 id="&#x30FB;fastcgipass"><a name="&#x30FB;fastcgipass" class="plugin-anchor" href="#&#x30FB;fastcgipass"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>fastcgi_pass</code></h4>
-<p>FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;App&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x8EE2;&#x9001;&#x5148;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3068;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>FastCGI&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x8EE2;&#x9001;&#x5148;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3068;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass" target="_blank">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">fastcgi_pass</span> 127.0.0.1:9000</span><span class="token punctuation">;</span>
 </code></pre>
 <p><br></p>
-<h2 id="03-07-httpproxymodule"><a name="03-07-httpproxymodule" class="plugin-anchor" href="#03-07-httpproxymodule"><i class="fa fa-link" aria-hidden="true"></i></a>03-07. http_proxy_module</h2>
+<h2 id="08-httpproxymodule"><a name="08-httpproxymodule" class="plugin-anchor" href="#08-httpproxymodule"><i class="fa fa-link" aria-hidden="true"></i></a>08. http_proxy_module</h2>
 <h3 id="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><a name="&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;" class="plugin-anchor" href="#&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</h3>
 <h4 id="&#x30FB;proxypass"><a name="&#x30FB;proxypass" class="plugin-anchor" href="#&#x30FB;proxypass"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>proxy_pass</code></h4>
-<p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;App&#x30B5;&#x30FC;&#x30D0;&#x30FC;/&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x8EE2;&#x9001;&#x5148;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3068;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x8EE2;&#x9001;&#x5148;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5148;&#x306E;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3068;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass" target="_blank">https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:8080/</span><span class="token punctuation">;</span>
+<pre class="language-"><code class="lang-nginx"><span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:80</span><span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -3613,7 +3652,7 @@ default_type application/octet-stream
             
                 
                 
-                <a href="software_middleware_web_apache.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎Apache">
+                <a href="software_middleware_web_nginx_command.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 📖 ︎nginxコマンド">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3624,7 +3663,7 @@ default_type application/octet-stream
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Nginx","level":"1.4.3.2.1","depth":4,"next":{"title":"📖 ︎Apache","level":"1.4.3.2.2","depth":4,"path":"public/software/software_middleware_web_apache.md","ref":"public/software/software_middleware_web_apache.md","articles":[]},"previous":{"title":"Web系","level":"1.4.3.2","depth":3,"ref":"","articles":[{"title":"📖 ︎Nginx","level":"1.4.3.2.1","depth":4,"path":"public/software/software_middleware_web_nginx.md","ref":"public/software/software_middleware_web_nginx.md","articles":[]},{"title":"📖 ︎Apache","level":"1.4.3.2.2","depth":4,"path":"public/software/software_middleware_web_apache.md","ref":"public/software/software_middleware_web_apache.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_middleware_web_nginx.md","mtime":"2022-01-03T17:31:07.335Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-03T17:31:13.162Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎nginx.conf","level":"1.4.3.2.1.1","depth":5,"next":{"title":"📖 ︎nginxコマンド","level":"1.4.3.2.1.2","depth":5,"path":"public/software/software_middleware_web_nginx_command.md","ref":"public/software/software_middleware_web_nginx_command.md","articles":[]},"previous":{"title":"Nginx","level":"1.4.3.2.1","depth":4,"ref":"","articles":[{"title":"📖 ︎nginx.conf","level":"1.4.3.2.1.1","depth":5,"path":"public/software/software_middleware_web_nginx_conf.md","ref":"public/software/software_middleware_web_nginx_conf.md","articles":[]},{"title":"📖 ︎nginxコマンド","level":"1.4.3.2.1.2","depth":5,"path":"public/software/software_middleware_web_nginx_command.md","ref":"public/software/software_middleware_web_nginx_command.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_middleware_web_nginx_conf.md","mtime":"2022-01-04T16:06:23.890Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T16:06:28.500Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
