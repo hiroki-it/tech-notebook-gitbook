@@ -8,69 +8,45 @@
 
 <br>
 
-## 01. コマンド
+## 01. apachectlコマンド
 
-### リファレンス
+### configtest
 
-### httpd
-
-参考：https://httpd.apache.org/docs/trunk/ja/programs/httpd.html
-
-<br>
-
-### apachectl
+設定ファイルのバリデーションを実行する。
 
 参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
-<br>
-
-## 02. apacheプロセスの操作
-
-### ディレクティブの実装場所の一覧
-
-特定のディレクティブを実装するべき設定ファイルの一覧を表示する。
-
 ```bash
-$ sudo httpd -L
+$ sudo apachectl configtest
 ```
 
 <br>
 
-### 設定ファイルのバリデーション
+### graceful
+
+Apacheを段階的に再起動する。安全に再起動できる。
 
 ```bash
-# systemctlコマンドでは実行不可能
+$ sudo apachectl graceful
+```
 
-$ sudo service httpd configtest
+<br>
 
-$ sudo apachectl configtest
+### -t
 
+設定ファイルのバリデーションを実行する。
+
+参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+
+```bash
 $ sudo apachectl -t
 ```
 
 <br>
 
-### コンパイル済みモジュールの一覧
+## 02. httpdコマンド
 
-コンパイル済みのモジュールの一覧を表示する。表示されているからといって、読み込まれているとは限らない。
-
-```bash
-$ sudo httpd -l
-```
-
-<br>
-
-### 読み込み済みモジュールの一覧
-
-コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを表示する。
-
-```bash
-$ sudo httpd -M
-```
-
-<br>
-
-### 読み込み済み```conf```ファイルの一覧
+### -D
 
 読み込まれた```conf```ファイルの一覧を表示する。この結果から、使われていない```conf```ファイルもを検出できる。
 
@@ -80,34 +56,42 @@ $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 
 <br>
 
-### 読み込まれるVirtualHost設定の一覧
+### -l
+
+コンパイル済みのモジュールの一覧を表示する。表示されているからといって、読み込まれているとは限らない。
+
+```bash
+$ sudo httpd -l
+```
+
+<br>
+
+### -L
+
+特定のディレクティブを実装するべき設定ファイルの一覧を表示する。
+
+参考：https://httpd.apache.org/docs/trunk/ja/programs/httpd.html
+
+```bash
+$ sudo httpd -L
+```
+
+<br>
+
+### -M
+
+コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを表示する。
+
+```bash
+$ sudo httpd -M
+```
+
+<br>
+
+### -S
+
+実際に読み込まれたVirtualHostの設定を表示する。
 
 ```bash
 $ sudo httpd -S
 ```
-
-<br>
-
-### 強制的な起動/停止/再起動
-
-```bash
-# 起動
-$ sudo systemctl start httpd
-
-# 停止
-$ sudo systemctl stop httpd
-
-# 再起動
-$ sudo systemctl restart httpd
-```
-
-<br>
-
-### 安全な再起動
-
-Apacheを段階的に再起動する。安全に再起動できる。
-
-```bash
-$ sudo apachectl graceful
-```
-

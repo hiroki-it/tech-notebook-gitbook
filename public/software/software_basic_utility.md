@@ -868,60 +868,6 @@ $ ssh <接続名> -T
 
 <br>
 
-### systemctl：system control（旧service）
-
-#### ・systemctlとは
-
-デーモンを起動するsystemdを制御するためのユーティリティ。
-
-#### ・list-unit-files
-
-デーモンのUnitの一覧を表示する。
-
-```bash
-$ systemctl list-unit-files --type=service
-
-crond.service           enabled  # enable：自動起動する
-supervisord.service     disabled # disable：自動起動しない
-systemd-reboot.service  static   # enable：他サービス依存
-```
-
-#### ・enable
-
-マシン起動時にデーモンが自動起動するように設定する。
-
-```bash
-$ systemctl enable <プロセス名>
-
-# 例：Cron、Apache
-$ systemctl enable crond.service
-$ systemctl enable httpd.service
-```
-
-#### ・disable
-
-マシン起動時にデーモンが自動起動しないように設定する。
-
-```bash
-$ systemctl disable <プロセス名>
-
-# 例：Cron、Apache
-$ systemctl disable crond.service
-$ systemctl disable httpd.service
-```
-
-#### ・systemd：system daemon のUnitの種類
-
-各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でUnit別に管理し、Unitごとに起動する。Unitは拡張子の違いで判別する。
-
-| Unitの拡張子 | 意味                                       | デーモン例         |
-| ------------ | ------------------------------------------ | ------------------ |
-| mount        | ファイルのマウントに関するデーモン。       |                    |
-| service      | プロセス起動停止に関するデーモン。         | httpd：http daemon |
-| socket       | ソケットとプロセスの紐付けに関するデーモン |                    |
-
-<br>
-
 ### tar
 
 #### ・-x

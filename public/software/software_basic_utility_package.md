@@ -344,3 +344,146 @@ $ supervisorctl restart <常駐プロセス名>
 $ supervisorctl update
 ```
 
+<br>
+
+## 03. systemctl：system control（旧service）
+
+### systemctlの構成要素
+
+#### ・systemctl
+
+デーモンを起動するsystemdを制御するためのユーティリティ。
+
+#### ・systemd：system daemon
+
+各デーモンを、```/usr/lib/systemd/system```や```/etc/systemd/system```下でユニット別に管理し、ユニットごとに起動する。ユニットは拡張子の違いで判別する。
+
+| ユニットの拡張子 | 説明                                       | デーモン例         |
+| ---------------- | ------------------------------------------ | ------------------ |
+| mount            | ファイルのマウントに関するデーモン。       |                    |
+| service          | プロセス起動停止に関するデーモン。         | httpd：http daemon |
+| socket           | ソケットとプロセスの紐付けに関するデーモン |                    |
+
+<br>
+
+### インストール
+
+```bash
+$ apt-get install systemd
+```
+
+<br>
+
+### disable
+
+マシン起動時にデーモンが自動起動しないように設定する。
+
+```bash
+$ systemctl disable <プロセス名>
+
+# 例：Cron、Apache
+$ systemctl disable crond.service
+$ systemctl disable httpd.service
+```
+
+### enable
+
+マシン起動時にデーモンが自動起動するように設定する。
+
+```bash
+$ systemctl enable <プロセス名>
+
+# 例：Cron、Apache
+$ systemctl enable crond.service
+$ systemctl enable httpd.service
+```
+
+<br>
+
+### httpd configtest
+
+Apacheの設定ファイルのバリデーションを実行する。
+
+参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+
+```bash
+$ sudo service httpd configtest
+```
+
+<br>
+
+### list-unit-files
+
+デーモンのUnitの一覧を表示する。
+
+```bash
+$ systemctl list-unit-files --type=service
+
+crond.service           enabled  # enable：自動起動する
+supervisord.service     disabled # disable：自動起動しない
+systemd-reboot.service  static   # enable：他サービス依存
+```
+
+<br>
+
+### nginx configtest
+
+Nginxの設定ファイルのバリデーションを実行する。
+
+参考：http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+
+```bash
+$ sudo service nginx configtest
+```
+
+<br>
+
+### reload
+
+プロセスを安全に再起動する。
+
+```bash
+$ sudo systemctl reload nginx
+```
+
+<br>
+
+### restart
+
+プロセスを強制的に再起動する。
+
+```bash
+$ sudo systemctl restart httpd
+```
+
+```bash
+$ sudo systemctl restart nginx
+```
+
+<br>
+
+### start
+
+プロセスを起動する。
+
+```bash
+$ sudo systemctl start httpd
+```
+
+```bash
+$ sudo systemctl start nginx
+```
+
+<br>
+
+### stop
+
+プロセスを停止する。
+
+```bash
+$ sudo systemctl stop nginx
+```
+
+```bash
+$ sudo systemctl stop httpd
+```
