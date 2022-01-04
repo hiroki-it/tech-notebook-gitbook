@@ -3829,61 +3829,6 @@ Host <span class="token operator">&lt;</span>&#x63A5;&#x7D9A;&#x540D;&#xFF12;<sp
 $ <span class="token function">ssh</span> <span class="token operator">&lt;</span>&#x63A5;&#x7D9A;&#x540D;<span class="token operator">&gt;</span> -T
 </code></pre>
 <p><br></p>
-<h3 id="systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;"><a name="systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;" class="plugin-anchor" href="#systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>systemctl&#xFF1A;system control&#xFF08;&#x65E7;service&#xFF09;</h3>
-<h4 id="&#x30FB;systemctl&#x3068;&#x306F;"><a name="&#x30FB;systemctl&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;systemctl&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;systemctl&#x3068;&#x306F;</h4>
-<p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;systemd&#x3092;&#x5236;&#x5FA1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x3002;</p>
-<h4 id="&#x30FB;list-unit-files"><a name="&#x30FB;list-unit-files" class="plugin-anchor" href="#&#x30FB;list-unit-files"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;list-unit-files</h4>
-<p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;Unit&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl list-unit-files --type<span class="token operator">=</span>service
-
-crond.service           enabled  <span class="token comment"># enable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;</span>
-supervisord.service     disabled <span class="token comment"># disable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;</span>
-systemd-reboot.service  static   <span class="token comment"># enable&#xFF1A;&#x4ED6;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x4F9D;&#x5B58;</span>
-</code></pre>
-<h4 id="&#x30FB;enable"><a name="&#x30FB;enable" class="plugin-anchor" href="#&#x30FB;enable"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;enable</h4>
-<p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
-
-<span class="token comment"># &#x4F8B;&#xFF1A;Cron&#x3001;Apache</span>
-$ systemctl <span class="token builtin class-name">enable</span> crond.service
-$ systemctl <span class="token builtin class-name">enable</span> httpd.service
-</code></pre>
-<h4 id="&#x30FB;disable"><a name="&#x30FB;disable" class="plugin-anchor" href="#&#x30FB;disable"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;disable</h4>
-<p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ systemctl disable <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
-
-<span class="token comment"># &#x4F8B;&#xFF1A;Cron&#x3001;Apache</span>
-$ systemctl disable crond.service
-$ systemctl disable httpd.service
-</code></pre>
-<h4 id="&#x30FB;systemd&#xFF1A;system-daemon-&#x306E;unit&#x306E;&#x7A2E;&#x985E;"><a name="&#x30FB;systemd&#xFF1A;system-daemon-&#x306E;unit&#x306E;&#x7A2E;&#x985E;" class="plugin-anchor" href="#&#x30FB;systemd&#xFF1A;system-daemon-&#x306E;unit&#x306E;&#x7A2E;&#x985E;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;systemd&#xFF1A;system daemon &#x306E;Unit&#x306E;&#x7A2E;&#x985E;</h4>
-<p>&#x5404;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x3001;<code>/usr/lib/systemd/system</code>&#x3084;<code>/etc/systemd/system</code>&#x4E0B;&#x3067;Unit&#x5225;&#x306B;&#x7BA1;&#x7406;&#x3057;&#x3001;Unit&#x3054;&#x3068;&#x306B;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;Unit&#x306F;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x9055;&#x3044;&#x3067;&#x5224;&#x5225;&#x3059;&#x308B;&#x3002;</p>
-<table>
-<thead>
-<tr>
-<th>Unit&#x306E;&#x62E1;&#x5F35;&#x5B50;</th>
-<th>&#x610F;&#x5473;</th>
-<th>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mount</td>
-<td>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3002;</td>
-<td></td>
-</tr>
-<tr>
-<td>service</td>
-<td>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x8D77;&#x52D5;&#x505C;&#x6B62;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3002;</td>
-<td>httpd&#xFF1A;http daemon</td>
-</tr>
-<tr>
-<td>socket</td>
-<td>&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x3068;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7D10;&#x4ED8;&#x3051;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
 <h3 id="tar"><a name="tar" class="plugin-anchor" href="#tar"><i class="fa fa-link" aria-hidden="true"></i></a>tar</h3>
 <h4 id="&#x30FB;-x"><a name="&#x30FB;-x" class="plugin-anchor" href="#&#x30FB;-x"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-x</h4>
 <p>&#x5727;&#x7E2E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x89E3;&#x51CD;&#x3059;&#x308B;&#x3002;</p>
@@ -3987,7 +3932,7 @@ $ <span class="token function">date</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.4","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2022-01-04T16:06:23.916Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T16:06:28.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.4","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2022-01-04T17:05:49.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T17:05:53.695Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

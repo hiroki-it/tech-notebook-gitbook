@@ -3323,7 +3323,107 @@ ns4.google.com  internet address <span class="token operator">=</span> <span cla
 <p>&#x3082;&#x3057;<code>supervisord.conf</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x5909;&#x66F4;&#x3057;&#x305F;&#x5834;&#x5408;&#x306B;&#x3001;&#x3053;&#x308C;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x76F4;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://supervisord.org/running.html#supervisorctl-actions" target="_blank">http://supervisord.org/running.html#supervisorctl-actions</a></p>
 <pre class="language-"><code>$ supervisorctl update
+</code></pre><p><br></p>
+<h2 id="03-systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;"><a name="03-systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;" class="plugin-anchor" href="#03-systemctl&#xFF1A;system-control&#xFF08;&#x65E7;service&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>03. systemctl&#xFF1A;system control&#xFF08;&#x65E7;service&#xFF09;</h2>
+<h3 id="systemctl&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;"><a name="systemctl&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;" class="plugin-anchor" href="#systemctl&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;"><i class="fa fa-link" aria-hidden="true"></i></a>systemctl&#x306E;&#x69CB;&#x6210;&#x8981;&#x7D20;</h3>
+<h4 id="&#x30FB;systemctl"><a name="&#x30FB;systemctl" class="plugin-anchor" href="#&#x30FB;systemctl"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;systemctl</h4>
+<p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;systemd&#x3092;&#x5236;&#x5FA1;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x3002;</p>
+<h4 id="&#x30FB;systemd&#xFF1A;system-daemon"><a name="&#x30FB;systemd&#xFF1A;system-daemon" class="plugin-anchor" href="#&#x30FB;systemd&#xFF1A;system-daemon"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;systemd&#xFF1A;system daemon</h4>
+<p>&#x5404;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3092;&#x3001;<code>/usr/lib/systemd/system</code>&#x3084;<code>/etc/systemd/system</code>&#x4E0B;&#x3067;&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x5225;&#x306B;&#x7BA1;&#x7406;&#x3057;&#x3001;&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x3054;&#x3068;&#x306B;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x306F;&#x62E1;&#x5F35;&#x5B50;&#x306E;&#x9055;&#x3044;&#x3067;&#x5224;&#x5225;&#x3059;&#x308B;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x30E6;&#x30CB;&#x30C3;&#x30C8;&#x306E;&#x62E1;&#x5F35;&#x5B50;</th>
+<th>&#x8AAC;&#x660E;</th>
+<th>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mount</td>
+<td>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3002;</td>
+<td></td>
+</tr>
+<tr>
+<td>service</td>
+<td>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x8D77;&#x52D5;&#x505C;&#x6B62;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x3002;</td>
+<td>httpd&#xFF1A;http daemon</td>
+</tr>
+<tr>
+<td>socket</td>
+<td>&#x30BD;&#x30B1;&#x30C3;&#x30C8;&#x3068;&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x7D10;&#x4ED8;&#x3051;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h3>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">apt-get</span> <span class="token function">install</span> systemd
 </code></pre>
+<p><br></p>
+<h3 id="disable"><a name="disable" class="plugin-anchor" href="#disable"><i class="fa fa-link" aria-hidden="true"></i></a>disable</h3>
+<p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ systemctl disable <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+
+<span class="token comment"># &#x4F8B;&#xFF1A;Cron&#x3001;Apache</span>
+$ systemctl disable crond.service
+$ systemctl disable httpd.service
+</code></pre>
+<h3 id="enable"><a name="enable" class="plugin-anchor" href="#enable"><i class="fa fa-link" aria-hidden="true"></i></a>enable</h3>
+<p>&#x30DE;&#x30B7;&#x30F3;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x304C;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ systemctl <span class="token builtin class-name">enable</span> <span class="token operator">&lt;</span>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x540D;<span class="token operator">&gt;</span>
+
+<span class="token comment"># &#x4F8B;&#xFF1A;Cron&#x3001;Apache</span>
+$ systemctl <span class="token builtin class-name">enable</span> crond.service
+$ systemctl <span class="token builtin class-name">enable</span> httpd.service
+</code></pre>
+<p><br></p>
+<h3 id="httpd-configtest"><a name="httpd-configtest" class="plugin-anchor" href="#httpd-configtest"><i class="fa fa-link" aria-hidden="true"></i></a>httpd configtest</h3>
+<p>Apache&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/" target="_blank">http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/</a></p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> <span class="token function">service</span> httpd configtest
+</code></pre>
+<p><br></p>
+<h3 id="list-unit-files"><a name="list-unit-files" class="plugin-anchor" href="#list-unit-files"><i class="fa fa-link" aria-hidden="true"></i></a>list-unit-files</h3>
+<p>&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;Unit&#x306E;&#x4E00;&#x89A7;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ systemctl list-unit-files --type<span class="token operator">=</span>service
+
+crond.service           enabled  <span class="token comment"># enable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3059;&#x308B;</span>
+supervisord.service     disabled <span class="token comment"># disable&#xFF1A;&#x81EA;&#x52D5;&#x8D77;&#x52D5;&#x3057;&#x306A;&#x3044;</span>
+systemd-reboot.service  static   <span class="token comment"># enable&#xFF1A;&#x4ED6;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x4F9D;&#x5B58;</span>
+</code></pre>
+<p><br></p>
+<h3 id="nginx-configtest"><a name="nginx-configtest" class="plugin-anchor" href="#nginx-configtest"><i class="fa fa-link" aria-hidden="true"></i></a>nginx configtest</h3>
+<p>Nginx&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D0;&#x30EA;&#x30C7;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/" target="_blank">http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/</a></p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> <span class="token function">service</span> nginx configtest
+</code></pre>
+<p><br></p>
+<h3 id="reload"><a name="reload" class="plugin-anchor" href="#reload"><i class="fa fa-link" aria-hidden="true"></i></a>reload</h3>
+<p>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x5B89;&#x5168;&#x306B;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl reload nginx
+</code></pre>
+<p><br></p>
+<h3 id="restart"><a name="restart" class="plugin-anchor" href="#restart"><i class="fa fa-link" aria-hidden="true"></i></a>restart</h3>
+<p>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x5F37;&#x5236;&#x7684;&#x306B;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl restart httpd
+</code></pre>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl restart nginx
+</code></pre>
+<p><br></p>
+<h3 id="start"><a name="start" class="plugin-anchor" href="#start"><i class="fa fa-link" aria-hidden="true"></i></a>start</h3>
+<p>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl start httpd
+</code></pre>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl start nginx
+</code></pre>
+<p><br></p>
+<h3 id="stop"><a name="stop" class="plugin-anchor" href="#stop"><i class="fa fa-link" aria-hidden="true"></i></a>stop</h3>
+<p>&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x3092;&#x505C;&#x6B62;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl stop nginx
+</code></pre>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">sudo</span> systemctl stop httpd
+</code></pre>
+
                                 
                                 </section>
                             
@@ -3366,7 +3466,7 @@ ns4.google.com  internet address <span class="token operator">=</span> <span cla
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"next":{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},"previous":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility_package.md","mtime":"2022-01-04T16:06:23.901Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T16:06:28.500Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"next":{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},"previous":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility_package.md","mtime":"2022-01-04T17:05:49.631Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-04T17:05:53.695Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
