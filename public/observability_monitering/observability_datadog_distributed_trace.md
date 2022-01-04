@@ -58,7 +58,8 @@ Datadog PHP tracer extension
 For help, check out the documentation at https://docs.datadoghq.com/tracing/languages/php/
 (c) Datadog 2020
 
-... まだまだ続く
+# 〜 中略 〜
+
 ```
 
 ```bash

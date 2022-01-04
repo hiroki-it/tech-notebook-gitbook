@@ -336,7 +336,7 @@ Laravelのスタックトレースを結合する。
 
 #### ・FILTERセクションとは
 
-特定の文字列を持つログのみをBUFFERセクションに転送する。
+特定の文字列を持つログのみをBUFFERセクションに移行する。
 
 #### ・multilineプラグイン
 
@@ -424,7 +424,7 @@ Fluent Bit v1.8.6
 
 ![buffering_chunk](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/buffering_chunk.png)
 
-Fluentdから概念図を拝借した。バッファーとして機能するメモリ/ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番に転送する。プロセスが再起動されると、メモリ/ファイルに蓄えられたログテキストは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングと転送の仕組みを持っている。
+Fluentdから概念図を拝借した。バッファーとして機能するメモリ/ファイルにて、チャンク化されたログテキストは一旦ステージに蓄えられる。ステージに一定量のチャンクが蓄えられると、チャンクはキューに格納される。キューは、ログテキストを指定された形式でターゲットに順番にルーティングする。プロセスが再起動されると、メモリ/ファイルに蓄えられたログテキストは破棄されてしまう。ちなみに、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。
 
 参考：
 
@@ -567,14 +567,14 @@ cloudwatch_logsプラグインがあらかじめインストールされてい�
 
 ```bash
 #########################
-# CloudWatchログへの転送
+# CloudWatchログへのルーティング
 #########################
 [OUTPUT]
     # プラグイン名
     Name              cloudwatch_logs
-    # 転送対象とするログのタグ
+    # ルーティング対象とするログのタグ
     Match             laravel
-    # アウトプットJSONのうち、宛先に転送するキー名
+    # アウトプットJSONのうち、宛先にルーティングするキー名
     log_key           log
     region            ap-northeast-1
     # 予約変数あり。
@@ -616,14 +616,14 @@ CloudWatchログに送信されるデータはJSON型である。```log```キー
 
 ```bash
 #########################
-# Datadogへの転送
+# Datadogへのルーティング
 #########################
 [OUTPUT]
     # プラグイン名
     Name              datadog
-    # 転送対象とするログのタグ
+    # ルーティング対象とするログのタグ
     Match             laravel
-    # 転送先ホスト
+    # ルーティング先ホスト
     Host              http-intake.logs.datadoghq.com
     TLS               on
     compress          gzip
@@ -730,16 +730,16 @@ $ fluent-bit/bin/fluent-bit \
 
 #### ・FireLensコンテナとは
 
-AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり、Fargateコンテナのサイドカーコンテナとして配置される。Fargateコンテナからログが送信されると、コンテナ内で稼働するFluentBit/Fluentdがこれを収集し、これを他のサービスに転送する。構築のための実装例については、以下のリンクを参考にせよ。
+AWSが提供するFluentBit/Fluentdイメージによって構築されるコンテナであり、Fargateコンテナのサイドカーコンテナとして配置される。Fargateコンテナからログが送信されると、コンテナ内で稼働するFluentBit/Fluentdがこれを収集し、これを他のサービスにルーティングする。構築のための実装例については、以下のリンクを参考にせよ。
 
 参考：
 
 - https://github.com/aws-samples/amazon-ecs-firelens-examples
 - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
-#### ・ログの転送先
+#### ・ログのルーティング先
 
-FluentBit/Fluentdが対応する他のサービスにログを転送できる。
+FluentBit/Fluentdが対応する他のサービスにログをルーティングできる。
 
 参考：https://docs.fluentbit.io/manual/pipeline/outputs
 
@@ -753,9 +753,9 @@ FluentBit/Fluentdが対応する他のサービスにログを転送できる。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/virtualization/virtualization_container_orchestration.html
 
-#### ・ログの収集/転送の仕組み
+#### ・ログの収集/ルーティングの仕組み
 
-以下の順番でログの収集/転送を実行する。
+以下の順番でログの収集/ルーティングを実行する。
 
 参考：https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
 
@@ -767,13 +767,13 @@ FluentBit/Fluentdが対応する他のサービスにログを転送できる。
 
 3. コンテナ内で稼働するFluentBitのログパイプラインのINPUTに渡され、FluentBitはログを処理する。
 
-4. OUTPUTセクションに渡され、FluentBitは指定した外部サービスにログを転送する。
+4. OUTPUTセクションに渡され、FluentBitは指定した外部サービスにログをルーティングする。
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/fluent-bit_aws-firelens.png)
 
-#### ・ログ転送プロセス
+#### ・ログルーティングプロセス
 
-FireLensコンテナでは、FluentBitまたはFlunetdがログ転送プロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働させることも可能であるが、FireLensコンテナを用いれば、主要なセットアップがされているため、より簡単な設定でFluentBitまたはFlunetdを使用できる。FluentBitの方がより低負荷で稼働するため、FluentBitが推奨されている。
+FireLensコンテナでは、FluentBitまたはFlunetdがログルーティングプロセスとして稼働する。FireLensコンテナを使用せずに、独自のコンテナを構築して稼働させることも可能であるが、FireLensコンテナを用いれば、主要なセットアップがされているため、より簡単な設定でFluentBitまたはFlunetdを使用できる。FluentBitの方がより低負荷で稼働するため、FluentBitが推奨されている。
 
 参考：
 
@@ -786,7 +786,7 @@ FireLensコンテナでは、FluentBitまたはFlunetdがログ転送プロセ�
 
 #### ・FluentBitイメージ
 
-FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている。AWSリソースにログを転送するためのプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と、プライベートECRリポジトリで再管理してから用いる場合がある。
+FireLensコンテナのベースイメージとなるFluentBitイメージがAWSから提供されている。AWSリソースにログをルーティングするためのプラグインがすでに含まれている。なお、DatadogプラグインはFluentBit自体にインストール済みである。パブリックECRリポジトリからプルしたイメージをそのまま用いる場合と、プライベートECRリポジトリで再管理してから用いる場合がある。
 
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
@@ -1076,7 +1076,7 @@ FireLensコンテナをサイドカーとして構築するために、コンテ
 | --------------------------------------------- | ------------------------------------------------------------ |
 | ```type```                                    | メインコンテナからFireLensコンテナにログを送信できるように、ログドライバーのタイプとして『```fluentbit```』を設定する。 |
 | ```config-file-type```                        | FluentBitの設定ファイルを読み込むために、```file```とする。  |
-| ```config-file-value```                       | ```options```キーにて、ログ転送を設定できるが、それらは```fluent-bit.conf```ファイルにも設定可能であるため、転送の設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）に転送する。 |
+| ```config-file-value```                       | ```options```キーにて、ログルーティングを設定できるが、それらは```fluent-bit.conf```ファイルにも設定可能であるため、ルーティングの設定はできるだけ```fluent-bit.conf```ファイルに実装する。FireLensコンテナ自体のログは、CloudWatchログに送信するように設定し、メインコンテナから受信したログは監視ツール（Datadogなど）にルーティングする。 |
 | ```enable-ecs-log-metadata```（デフォルトで有効化） | 有効にした場合、Datadogのログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ecs-meta-data_false.png)<br>参考：https://tech.spacely.co.jp/entry/2020/11/28/173356 |
 | ```environment```、```secrets```              | コンテナ内の```fluent-bit.conf```ファイルに変数を出力できるように、コンテナの環境変数に値を定義する。 |
 

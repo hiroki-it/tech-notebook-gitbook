@@ -335,13 +335,13 @@ class Foo {
 
 View層（```template```タグ部分）のイベントを、ViewModel層（```script```タグ部分）のイベントハンドラ関数（```methods:```内にあるメソッド）やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。コンポーネントの```script```タグ部分（ViewModel層）の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。
 
-```vue
+```
 v-on:{イベント名}="{イベントハンドラ関数（methods: 内にあるメソッド）}"
 ```
 
 または、省略して、
 
-```vue
+```
 @:{イベント名}="<イベントハンドラ関数>"
 ```
 
@@ -361,8 +361,7 @@ View層のフォーム送信イベントが起きた時点で、ViewModel層に�
 </div>
 
 <!-- Vueインスタンスの生成は外部スクリプトで行う。 -->
-<script
-        src="{{ asset(".../index.js") }}">
+<script src="{{ asset(".../index.js") }}">
 </script>
 ```
 
@@ -881,7 +880,7 @@ new Vue({
   beforeCreate () {
     console.log(this.name)
   }
-}
+})
 </script>
 ```
 
@@ -919,7 +918,7 @@ var vm = new Vue({
   created() {
     console.log(this.name)
   }
-}
+})
 </script>
 ```
 
@@ -953,7 +952,7 @@ var vm = new Vue({
   beforeMount() {
     this.name = "Hiroki"
   }
-}
+})
 </script>
 ```
 
@@ -991,7 +990,7 @@ var vm = new Vue({
   mounted() {
     this.name = "Hiroki"
   }
-}
+})
 </script>
 ```
 
@@ -1021,7 +1020,7 @@ var vm = new Vue({
           this.name = "Hiroki"
       })
   }
-}
+})
 </script>
 ```
 
@@ -1058,7 +1057,7 @@ var vm = new Vue({
   beforeUpdate(){
       console.log(this.name)
   }
-}
+})
 </script>
 ```
 
@@ -1094,7 +1093,7 @@ var vm = new Vue({
   beforeUpdate(){
       console.log(this.name)
   }
-}
+})
 </script>
 ```
 

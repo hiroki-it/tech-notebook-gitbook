@@ -30,7 +30,7 @@
 
 ```yaml
 annotations:
-  proxy.istio.io/config:
+  proxy.istio.io/config:  |
     configPath: ./envoy/envoy.yml
 ```
 

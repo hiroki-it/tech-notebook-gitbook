@@ -194,15 +194,15 @@ import baseConfig from './nuxt.config'
 
 const nuxtConfig: Configuration = {
     
-    # ～ 中略 ～
+    // ～ 中略 ～
     
     plugins: [
         ...(baseConfig.plugins || []),
-        # SSGのみで使用するため、clinetモードとする。
+        // SSGのみで使用するため、clinetモードとする。
         { src: '@/plugins/datadog/browserLogsForSsg', mode: 'client' },
     ],
         
-    # ～ 中略 ～   
+    // ～ 中略 ～   
      
 }
 ```

@@ -315,7 +315,7 @@ environment       = "stg"
 service           = "bar"
 ```
 
-環境変数の名前は、いかのようにする。
+環境変数の名前は以下のようにする。
 
 ```elixir
 # 種類が無い時（thisの時）

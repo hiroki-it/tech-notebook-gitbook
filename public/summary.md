@@ -30,8 +30,12 @@
 * Linux系
     * [📖 ︎︎標準搭載ミドルウェア](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_linux.html)
 * Web系
-    * [📖 ︎Nginx](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html)
-    * [📖 ︎Apache](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html)
+    * Nginx
+        * [📖 ︎nginx.conf](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx_conf.html)
+        * [📖 ︎nginxコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx_command.html)
+    * Apache
+        * [📖 ︎apache.conf](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache_conf.html)
+        * [📖 ︎apacheコマンド](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache_command.html)
 * アプリケーション系
     * [📖 ︎PHP-FPM](https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_application_php_fpm.html)
 * データベース系

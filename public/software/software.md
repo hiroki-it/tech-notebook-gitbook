@@ -94,11 +94,11 @@ Google Drive、Dropbox
 
 #### ・Apache
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache_conf.html
 
 #### ・Nginx
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_nginx_conf.html
 
 <br>
 
@@ -106,7 +106,7 @@ Google Drive、Dropbox
 
 #### ・Apacheの拡張モジュール
 
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache.html
+参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_middleware_web_apache_conf.html
 
 #### ・PHP-FPM：PHP FastCGI Process Manager
 

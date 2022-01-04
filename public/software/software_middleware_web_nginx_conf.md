@@ -1,4 +1,4 @@
-# Nginx
+# nginx.conf
 
 ## はじめに
 
@@ -8,51 +8,7 @@
 
 <br>
 
-## 01. Tips
-
-### コマンドリファレンス
-
-#### ・nginx
-
-参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
-
-<br>
-
-### よく使うコマンド
-
-#### ・起動/停止
-
-```bash
-$ sudo systemctl start nginx
-$ sudo systemctl stop nginx
-```
-
-#### ・設定ファイルのバリデーション
-
-```bash
-$ sudo service nginx configtest
-
-# もしくはこちら
-$ sudo nginx -t
-```
-
-#### ・設定ファイルの反映と安全な再起動
-
-```bash
-$ sudo systemctl reload nginx
-```
-
-#### ・読み込まれた設定ファイルと設定値の一覧
-
-読み込まれている全ての設定ファイル（```include```ディレクティブの対象も含む）の内容を展開して表示する。
-
-```bash
-$ sudo nginx -T
-```
-
-<br>
-
-## 02. 機能の種類
+## 01. 使い方の種類
 
 ### Webサーバー/コンテナのミドルウェアとして
 
@@ -60,7 +16,7 @@ $ sudo nginx -T
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/NginxとPHP-FPMの組み合わせ.png)
 
-静的ファイルのリクエストが送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのリクエストが送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにリクエストをリダイレクトする。
+静的ファイルのインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。
 
  ```bash
 # 設定ファイルのバリデーション
@@ -81,13 +37,13 @@ server {
 
     include /etc/nginx/default/foo.conf;
 
-    #『/』で始まる全てのリクエストの場合
+    #『/』で始まる全てのインバウンド通信の場合
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
     
     #--------------------------------------------------
-    # FastCGIを用いたAppサーバー/コンテナへの転送、受信
+    # FastCGIを用いて、転送先にルーティングする。
     # OSによって、fastcgi_paramsファイルの必要な設定が異なる
     #--------------------------------------------------
     location ~ \.php$ {
@@ -107,7 +63,7 @@ server {
 
 #### ・```/etc/nginx/fastcgi_params```ファイル
 
-アプリケーションで使用できる変数を定義する。```nginx.conf```ファイルによって読み込まれる。OSやそのバージョンによっては、変数のデフォルト値が書き換えられていることがある。実際にサーバー/コンテナ内に接続し、上書き設定が必要なものと不要なものを判断する必要がある。以下は、Debian 10のデフォルト値である。
+アプリケーションで使用できる変数を定義する。```nginx.conf```ファイルによって読み込まれる。OSやそのバージョンによっては、変数のデフォルト値が書き換えられていることがある。実際にインバウンド通信の転送先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。以下は、Debian 10のデフォルト値である。
 
 参考：https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
 
@@ -147,7 +103,7 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 ### ロードバランサ－のミドルウェアとして
 
-HTTPプロトコルで受信したリクエストを、HTTPSプロトコルに変換して転送する。
+HTTPプロトコルで受信したインバウンド通信を、HTTPSプロトコルに変換してルーティングする。
 
 **＊実装例＊**
 
@@ -193,7 +149,7 @@ server {
 
 ![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/リバースプロキシサーバーとしてのNginx.png)
 
-前提として、ロードバランサ－から転送されたHTTPリクエストを受信する例を考える。静的コンテンツのリクエストは、リバースProxy（Nginx）でレスポンスを返信する。Webサーバーは、必ずリバースProxyを経由して、動的リクエストを受信する。
+前提として、ロードバランサ－からルーティングされたインバウンド通信を受信する例を考える。静的コンテンツのインバウンド通信は、リバースProxy（Nginx）でレスポンスを返信する。Webサーバーは、必ずリバースProxyを経由して、動的なインバウンド通信を受信する。
 
 **＊実装例＊**
 
@@ -215,7 +171,7 @@ server {
     }
 
     #-------------------------------------
-    # 動的ファイルであればWebサーバーに転送
+    # 動的ファイルであればWebサーバーにルーティング
     #-------------------------------------
     location / {
         proxy_pass http://127.0.0.1:8080;
@@ -225,7 +181,7 @@ server {
 
 <br>
 
-## 03-01. Core機能
+## 02. Core機能
 
 ### ブロック
 
@@ -331,13 +287,13 @@ load_module "/usr/lib64/nginx/modules/ngx_http_image_filter_module.so";
 
 <br>
 
-## 03-02. http_core_module
+## 03. http_core_module
 
 ### ブロック
 
 #### ・```http```
 
-全てのWebサーバーに共通する処理を設定する。
+全てのインバウンド通信に共通する処理を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#http
 
@@ -371,7 +327,7 @@ http {
 
 #### ・```location```
 
-個別のWebサーバー/コンテナにおける特定のURLの処理を設定する。
+特定のパスのインバウンド通信に関する処理を設定する。
 
 https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 
@@ -380,28 +336,28 @@ https://nginx.org/en/docs/http/ngx_http_core_module.html#location
 各設定の優先順位に沿った以下の順番で実装した方が良い。
 
 ```nginx
-# 1. ドキュメントルートを指定したリクエストの場合
+# 1. ドキュメントルートを指定したインバウンド通信の場合
 location = / {
 
 }
 
-# 2. 『/images/』で始まるリクエストの場合
+# 2. 『/images/』で始まるインバウンド通信の場合
 location ^~ /images/ {
 
 }
 
-# 3と4. 末尾が、『gif、jpg、jpegの形式』 のリクエストの場合
+# 3と4. 末尾が、『gif、jpg、jpegの形式』 のインバウンド通信の場合
 # バックスラッシュでドットをエスケープし、任意の文字ではなく『ドット文字』として認識できるようにする。
 location ~* \.(gif|jpg|jpeg)$ {
 
 }
 
-# 5-1. 『/docs/』で始まる全てのリクエストの場合
+# 5-1. 『/docs/』で始まる全てのインバウンド通信の場合
 location /docs/ {
 
 }
 
-# 5-2. 『/』で始まる全てのリクエストの場合
+# 5-2. 『/』で始まる全てのインバウンド通信の場合
 location / {
 
 }
@@ -409,17 +365,17 @@ location / {
 
 ルートの一致条件は、以下の通りである。
 
-| 優先順位 | prefix | ルートの一致条件                         | ルート例                                               |
-| :------: | :----: | ---------------------------------------- | ------------------------------------------------------------ |
-|    1     |   =    | 指定したルートに一致する場合。           | ```https://example.com/```                                    |
-|    2     |   ^~   | 指定したルートで始まる場合。             | ```https://example.com/images/foo.gif```                      |
-|    3     |   ~    | 正規表現（大文字・小文字を区別する）。   | ```https://example.com/images/FOO.jpg```                      |
-|    4     |   ~*   | 正規表現（大文字・小文字を区別しない）。 | ```https://example.com/images/foo.jpg```                      |
-|    5     |  なし  | 指定したルートで始まる場合。             | ・```https://example.com/foo.html```<br>・```https://example.com/docs/foo.html``` |
+| 優先順位 |  prefix  | ルートの一致条件                         | ルート例                                                     |
+| :------: | :------: | ---------------------------------------- | ------------------------------------------------------------ |
+|    1     | ```=```  | 指定したルートに一致する場合。           | ```https://example.com/```                                   |
+|    2     | ```^~``` | 指定したルートで始まる場合。             | ```https://example.com/images/foo.gif```                     |
+|    3     | ```~```  | 正規表現（大文字・小文字を区別する）。   | ```https://example.com/images/FOO.jpg```                     |
+|    4     | ```~*``` | 正規表現（大文字・小文字を区別しない）。 | ```https://example.com/images/foo.jpg```                     |
+|    5     |   なし   | 指定したルートで始まる場合。             | ・```https://example.com/foo.html```<br>・```https://example.com/docs/foo.html``` |
 
 #### ・```server```
 
-個別のWebサーバー/コンテナの処理を設定する。
+特定のルーティング先に関する処理を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
@@ -464,14 +420,15 @@ Content-Typeヘッダーの値がmime.typesファイルにないMIME typeであ�
 
 **＊実装例＊**
 
+任意のMIME type（指定なし）のインバウンド通信を処理する。
+
 ```nginx
-# application/octet-stream：任意のMIME type（指定なし）と見なして送信
 default_type application/octet-stream
 ```
 
 #### ・```listen```
 
-HTTPリクエストを80番ポートでリクエストを受信する。
+インバウンド通信を```80```番ポートで受信する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
@@ -481,7 +438,7 @@ HTTPリクエストを80番ポートでリクエストを受信する。
 listen 80;
 ```
 
-HTTPSリクエストを443番ポートでリクエストを受信する。
+インバウンド通信を```443```番ポートで受信する。
 
 **＊実装例＊**
 
@@ -519,7 +476,7 @@ server_name 192.168.0.0;
 
 #### ・```ssl```
 
-NginxでHTTPSプロトコルを受信する場合、sslプロトコルを有効にする必要がある。
+NginxでHTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
@@ -581,15 +538,15 @@ location / {
 
 ```nginx
 location / {
-    # 1. 『/foo.html』のパスでサーバー/コンテナからファイルをレスポンス
-    # 2. 『/foo.html/』のパスでサーバー/コンテナからファイルをレスポンス
+    # 1. 『/foo.html』のパスで、ファイルをレスポンス
+    # 2. 『/foo.html/』のパスで、ファイルをレスポンス
     # 3. 『/index.php?query_string』のパスで内部リダイレクト
     try_files $uri $uri/ /index.php?query_string;
 }
 
 # 内部リダイレクト後は、『/index.php?foo=bar』のため、以下で処理される。
 location ~ \.php$ {
-    # php-fpmに転送される。
+    # php-fpmにルーティングされる。
     fastcgi_pass  127.0.0.1:9000;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include       fastcgi_params;
@@ -643,7 +600,7 @@ server {
 
 <br>
 
-## 03-03. http_index_module
+## 04. http_index_module
 
 ### ディレクティブ
 
@@ -661,7 +618,7 @@ index index.php;
 
 <br>
 
-## 03-04. http_headers_module
+## 05. http_headers_module
 
 ### ディレクティブ
 
@@ -680,34 +637,34 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 <br>
 
-## 03-05. http_upstream_module
+## 06. http_upstream_module
 
 ### ブロック
 
 #### ・```upstream```
+
+インバウンド通信のルーティング先をグループ化する。デフォルトでは、加重ラウンドロビン方式に基づいて通信をルーティングする。
 
 参考：https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 
 **＊実装例＊**
 
 ```nginx
-upstream big_server_com {
-    server 127.0.0.3:8000 weight=5;
-    server 127.0.0.3:8001 weight=5;
-    server 192.168.0.1:8000;
-    server 192.168.0.1:8001;
+upstream foo_servers {
+    server 192.168.0.1:80;
+    server 192.168.0.1:81;
 }
 ```
 
 <br>
 
-## 03-06. http_fast_cgi_module
+## 07. http_fast_cgi_module
 
 ### ディレクティブ
 
 #### ・```fastcgi_params```
 
-FastCGIプロトコルを用いてAppサーバー/コンテナにリクエストを転送する場合、転送先で用いる変数とその値を設定する。
+FastCGIプロトコルを用いて、インバウンド通信を転送先にルーティングする場合、ルーティング先で用いる変数とその値を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
 
@@ -719,7 +676,7 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
 #### ・```fastcgi_pass```
 
-FastCGIプロトコルを用いてAppサーバー/コンテナにリクエストを転送する場合、転送先のアドレスとポートを設定する。
+FastCGIプロトコルを用いて、インバウンド通信を転送先にルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
@@ -731,19 +688,19 @@ fastcgi_pass 127.0.0.1:9000;
 
 <br>
 
-## 03-07. http_proxy_module
+## 08. http_proxy_module
 
 ### ディレクティブ
 
 #### ・```proxy_pass```
 
-HTTPプロトコルを用いてAppサーバー/コンテナにリクエストを転送する場合、転送先のアドレスとポートを設定する。
+HTTPプロトコルを用いて、インバウンド通信を転送先にルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
 
 **＊実装例＊**
 
 ```nginx
-proxy_pass http://127.0.0.1:8080/;
+proxy_pass http://127.0.0.1:80;
 ```
 
