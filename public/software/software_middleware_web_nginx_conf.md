@@ -385,7 +385,7 @@ location / {
 server {
     # 80番ポートで受信
     listen      80;
-    # ホスト名
+    # Hostヘッダーの値
     server_name example.com;
     root        /var/www/example;
     index       index.php index.html;
@@ -428,19 +428,19 @@ default_type application/octet-stream
 
 #### ・```listen```
 
-インバウンド通信を```80```番ポートで受信する。
+受信可能なインバウンド通信のポート番号を設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
 **＊実装例＊**
+
+インバウンド通信を```80```番ポートで受信する。
 
 ```nginx
 listen 80;
 ```
 
 インバウンド通信を```443```番ポートで受信する。
-
-**＊実装例＊**
 
 ```nginx
 listen 443 ssl;
@@ -460,7 +460,7 @@ sendfile on;
 
 #### ・```server_name```
 
-パブリックIPアドレスに紐付くドメイン名を設定する。
+受信可能なインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
@@ -476,7 +476,7 @@ server_name 192.168.0.0;
 
 #### ・```ssl```
 
-NginxでHTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。
+HTTPSプロトコルを受信する場合に、SSL/TLSプロトコルを有効にする必要がある。
 
 参考：https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
@@ -488,7 +488,7 @@ ssl on;
 
 #### ・```ssl_certificate```
 
-PEM証明書のファイルパスを設定する。
+HTTPSプロトコルを受信する場合に、PEM証明書のファイルパスを設定する。
 
 **＊実装例＊**
 
@@ -498,7 +498,7 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 #### ・```ssl_certificate_key```
 
-PEM秘密鍵のファイルパスを設定する。
+HTTPSプロトコルを受信する場合に、PEM秘密鍵のファイルパスを設定する。
 
 **＊実装例＊**
 
@@ -624,7 +624,7 @@ index index.php;
 
 #### ・```add_header```
 
-レスポンスヘッダーを設定する。
+レスポンス時に付与するレスポンスヘッダーを設定する。
 
 参考：https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 

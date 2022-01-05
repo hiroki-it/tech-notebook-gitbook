@@ -49,7 +49,7 @@ Kubernetesオブジェクトの```annotations```の```proxy.istio.io/config```�
 
 #### ・protocol
 
-受信するインバウンド通信のプロトコルを設定する。
+管理ダッシュボードで受信するインバウンド通信のプロトコルを設定する。
 
 ```yaml
 admin:
@@ -60,7 +60,7 @@ admin:
 
 #### ・address
 
-受信するインバウンド通信のIPアドレスを設定する。『```0.0.0.0```』とすると、全てのIPアドレスを指定できる。
+管理ダッシュボードで受信するインバウンド通信のIPアドレスを設定する。『```0.0.0.0```』とすると、全てのIPアドレスを指定できる。
 
 ```yaml
 admin:
@@ -71,7 +71,7 @@ admin:
 
 #### ・port_value
 
-受信するインバウンド通信のポート番号を設定する。
+管理ダッシュボードで受信するインバウンド通信のポート番号を設定する。
 
 ```yaml
 admin:
@@ -147,33 +147,84 @@ static_resources:
 
 #### ・name
 
-特定のインバウンド通信を処理するフィルターの名前を設定する。
+特定のインバウンド通信を処理するフィルターを設定する。
+
+参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
 
 ```yaml
 static_resources:
   listeners:
   - filter_chains:
     - filters:
-      - name: foo-filter
+      - name: envoy.filters.network.http_connection_manager
 ```
 
-#### ・config.access_log
+#### ・typed_config.access_log
 
-アクセスログの出力先を設定する。
+envoyプロセスのアクセスログの出力先を設定する。
 
 ```yaml
 static_resources:
   listeners:
   - filter_chains:
     - filters:
-      - config:
+      - typed_config:
           access_log:
-          - name: foo-access-log
-            config:
-              path: "/dev/stdout"
+            - name: envoy.access_loggers.stdout
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
-#### ・config.stat_prefix
+#### ・typed_config.http_filters
+
+参考：
+
+- https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+- https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+
+```yaml
+static_resources:
+  listeners:
+  - filter_chains:
+    - filters:
+      - typed_config:
+          http_filters:
+          - name: envoy.filters.http.router
+```
+
+#### ・typed_config.route_config
+
+特定のルーティング先に関する処理を設定する。
+
+| 項目          | 説明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| name          | ルーティング名を設定する。                                   |
+| virtual_hosts | ルーティング対象を設定する。特に```domains```キーには、受信可能なインバウンド通信のHostヘッダーの値を設定する。ちなみにHostヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
+
+参考：
+
+- https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
+- https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+
+```yaml
+static_resources:
+  listeners:
+  - filter_chains:
+    - filters:
+      - typed_config:
+          route_config:
+            name: foo_route
+            virtual_hosts:
+            - name: foo_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: foo_cluster
+```
+
+#### ・typed_config.stat_prefix
 
 統計ダッシュボードのメトリクスのプレフィクスを設定する。
 
@@ -187,49 +238,19 @@ static_resources:
   listeners:
   - filter_chains:
     - filters:
-      - config:
-          stat_prefix: foo-stat
+      - typed_config:
+          stat_prefix: ingress_http
 ```
 
-#### ・config.route_config
-
-特定のルーティング先に関する処理を設定する。
-
-参考：https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+#### ・typed_config."@type"
 
 ```yaml
 static_resources:
   listeners:
-  - filter_chains:
-    - filters:
-      - config:
-          route_config:
-            name: foo-route
-            virtual_hosts:
-            - name: foo-service
-              domains: ["*"]
-              routes:
-              - match:
-                  prefix: "/"
-                route:
-                  cluster: foo-cluster
-```
-
-#### ・config.http_filters
-
-参考：
-
-- https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
-- https://i-beam.org/2019/02/03/envoy-static-load-balancer/
-
-```yaml
-static_resources:
-  listeners:
-  - filter_chains:
-    - filters:
-      - config:
-          http_filters:
-          - name: envoy.router
+    - filter_chains:
+      - filters:
+        - typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
 <br>
@@ -238,10 +259,12 @@ static_resources:
 
 インバウンド通信を受信するリスナーの名前を設定する。
 
+参考：https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
+
 ```yaml
 static_resources:
   listeners:
-  - name: foo-listener
+  - name: foo_listener
 ```
 
 <br>
@@ -250,7 +273,7 @@ static_resources:
 
 ### clustersとは
 
-インバウンド通信のルーティング対象のマイクロサービスをグループ化する。
+インバウンド通信のルーティング対象のマイクロサービスをグループ化する。対象が一つであっても、```clusters```キーは必須である。
 
 参考：https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -263,7 +286,7 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - connect_timeout: 0.25s
+  - connect_timeout: 10s
 ```
 
 <br>
@@ -273,7 +296,7 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - dns_lookup_family: V4_ONLY
+  - dns_lookup_family: v4_only
 ```
 
 <br>
@@ -285,7 +308,7 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - lb_policy: ROUND_ROBIN
+  - lb_policy: round_robin
 ```
 
 <br>
@@ -310,6 +333,9 @@ static_resources:
           - endpoint:
               address: 192.168.0.1
               port_value: 81
+          - endpoint:
+              address: bar-service
+              port_value: 82
 ```
 
 #### ・cluster_name
@@ -320,7 +346,7 @@ static_resources:
 static_resources:  
   clusters:
   - load_assignment:
-      cluster_name: foo-cluster
+      cluster_name: foo_cluster
 ```
 
 <br>
@@ -332,7 +358,7 @@ static_resources:
 ```yaml
 static_resources:  
   clusters:
-  - name: foo-cluster
+  - name: foo_cluster
 ```
 
 <br>
@@ -341,6 +367,8 @@ static_resources:
 
 #### ・name
 
+ルーティング時に使用するソケット名を設定する。
+
 ```yaml
 static_resources:  
   clusters:
@@ -348,13 +376,14 @@ static_resources:
       name: envoy.transport_sockets.tls
 ```
 
-#### ・config
+#### ・typed_config
 
 ```yaml
 static_resources:  
   clusters:
   - transport_socket:
-      config:
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
         sni: www.envoyproxy.io
 ```
 
@@ -362,9 +391,13 @@ static_resources:
 
 ### type
 
+サービスディスカバリーの種類を設定する。ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。
+
+参考：https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
+
 ```yaml
 static_resources:  
   clusters:
-  - type: LOGICAL_DNS
+  - type: logical_dns
 ```
 

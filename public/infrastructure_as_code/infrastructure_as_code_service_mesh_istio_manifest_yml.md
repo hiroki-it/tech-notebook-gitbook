@@ -42,6 +42,8 @@ annotations:
 
 プロキシーコンテナで使用するCPU容量を設定する。
 
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
 ```yaml
 annotations:
   sidecar.istio.io/proxyCPU: 2
@@ -55,6 +57,8 @@ annotations:
 
 プロキシーコンテナの構築に使用するDockerイメージを設定する。
 
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
 ```yaml
 annotations:
   sidecar.istio.io/proxyImage: foo-envoy
@@ -67,6 +71,8 @@ annotations:
 #### ・sidecar.istio.io/proxyMemoryとは
 
 プロキシーコンテナで使用するメモリ容量を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
 annotations:

@@ -26,6 +26,8 @@ $ sudo apachectl configtest
 
 Apacheを段階的に再起動する。安全に再起動できる。
 
+参考：https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+
 ```bash
 $ sudo apachectl graceful
 ```
@@ -50,6 +52,8 @@ $ sudo apachectl -t
 
 読み込まれた```conf```ファイルの一覧を表示する。この結果から、使われていない```conf```ファイルもを検出できる。
 
+参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+
 ```bash
 $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 ```
@@ -59,6 +63,8 @@ $ sudo httpd -t -D DUMP_CONFIG 2>/dev/null | grep "# In" | awk "{print $4}"
 ### -l
 
 コンパイル済みのモジュールの一覧を表示する。表示されているからといって、読み込まれているとは限らない。
+
+参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ sudo httpd -l
@@ -70,7 +76,7 @@ $ sudo httpd -l
 
 特定のディレクティブを実装するべき設定ファイルの一覧を表示する。
 
-参考：https://httpd.apache.org/docs/trunk/ja/programs/httpd.html
+参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ sudo httpd -L
@@ -82,6 +88,8 @@ $ sudo httpd -L
 
 コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを表示する。
 
+参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
+
 ```bash
 $ sudo httpd -M
 ```
@@ -91,6 +99,8 @@ $ sudo httpd -M
 ### -S
 
 実際に読み込まれたVirtualHostの設定を表示する。
+
+参考：https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 ```bash
 $ sudo httpd -S

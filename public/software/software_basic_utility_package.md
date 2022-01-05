@@ -368,6 +368,8 @@ $ supervisorctl update
 
 ### インストール
 
+#### ・apt-get経由
+
 ```bash
 $ apt-get install systemd
 ```
@@ -481,9 +483,64 @@ $ sudo systemctl start nginx
 プロセスを停止する。
 
 ```bash
-$ sudo systemctl stop nginx
+$ sudo systemctl stop httpd
 ```
 
 ```bash
-$ sudo systemctl stop httpd
+$ sudo systemctl stop nginx
 ```
+
+<br>
+
+## 04. tcpdump
+
+### インストール
+
+#### ・apt-get経由
+
+```bash
+$ apt-get install tcpdump
+```
+
+#### ・yum経由
+
+```bash
+$ yum install tcpdump
+```
+
+<br>
+
+### -i <ネットワークインターフェース名>
+
+指定したネットワークインターフェースにて、パケットの内容を表示する。
+
+参考：https://qiita.com/tossh/items/4cd33693965ef231bd2a
+
+```
+sudo tcpdump -i eth0
+```
+
+<br>
+
+### -nn <プロトコル名>
+
+全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を表示する。
+
+参考：https://go-journey.club/archives/1472
+
+```bash
+$ sudo tcpdump -nn ip
+```
+
+<br>
+
+### -nn port <ポート番号>
+
+全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を表示する。
+
+参考：https://go-journey.club/archives/1472
+
+````bash
+$ sudo tcpdump -nn port 80
+````
+
