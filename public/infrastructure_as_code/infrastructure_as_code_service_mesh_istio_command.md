@@ -118,7 +118,7 @@ Info [IST0118] (Service default/foo-service) Port name  (port: 80, targetPort: 8
 **＊実行例＊**
 
 ```bash
-$ istioctl analyze -n foo-namespace
+$ istioctl analyze -n <名前空間名>
 ```
 
 <br>
@@ -132,7 +132,7 @@ ymlファイルの差分を表示する。
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
 
 ```bash
-$ istioctl manifest diff <変更前ymlファイル> <変更後ymlファイル>
+$ istioctl manifest diff <変更前マニフェストファイル名>.yml <変更後>.yml
 ```
 
 <br>
@@ -150,7 +150,7 @@ $ istioctl manifest diff <変更前ymlファイル> <変更後ymlファイル>
 マニフェストファイルを用いて、プロファイルをインストールする。
 
 ```bash
-$ istioctl install -f ./istio-manifests/<マニフェストファイル>.yml -y
+$ istioctl install -f ./istio-manifests/<ファイル名>.yml -y
 ```
 
 #### ・--set
@@ -219,6 +219,67 @@ Istio configuration profiles:
 
 <br>
 
+### proxy-config
+
+#### ・proxy-config
+
+指定したIstioオブジェクトの構成情報を表示する。
+
+参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
+
+```bash
+$ istioctl proxy-config <項目> <ポッド名> -n <名前空間名>
+```
+
+**＊実行例＊**
+
+Ingress Gatewayのエンドポイント情報を表示する。
+
+```bash
+$ istioctl proxy-config endpoints <Ingress Gateway名> -n istio-system
+
+ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
+127.0.0.1:15000                  HEALTHY     OK                prometheus_stats
+127.0.0.1:15020                  HEALTHY     OK                agent
+
+# 〜 中略 〜
+
+172.17.0.11:9090                 HEALTHY     OK                outbound|80||kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
+172.17.0.13:80                   HEALTHY     OK                outbound|80||foo-service.microservices-with-kubernetes.svc.cluster.local
+
+# 〜 中略 〜
+
+192.168.64.14:8443               HEALTHY     OK                outbound|443||kubernetes.default.svc.cluster.local
+unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
+unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
+```
+
+Ingress Gatewayのリスナー情報を表示する。
+
+```bash
+$ istioctl proxy-config listeners <Ingress Gateway名> -n istio-system
+
+ADDRESS PORT  MATCH DESTINATION
+0.0.0.0 8080  ALL   Route: http.8080
+0.0.0.0 15021 ALL   Inline Route: /healthz/ready*
+0.0.0.0 15090 ALL   Inline Route: /stats/prometheus*
+```
+
+Ingress Gatewayのルーティング情報を表示する。
+
+```bash
+$ istioctl proxy-config routes <Ingress Gateway名> -n istio-system
+
+NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
+http.8080     *           /*                     foo-virtual-service.istio-system
+              *           /stats/prometheus*     
+              *           /healthz/ready*  
+```
+
+
+
+<br>
+
 ### proxy-status
 
 #### ・proxy-statusとは
@@ -266,5 +327,22 @@ $ istioctl verify-install
 Checked 14 custom resource definitions
 Checked 3 Istio Deployments
 ✔ Istio is installed and verified successfully
+```
+
+<br>
+
+### version
+
+#### ・versionとは
+
+Istiodのバージョンを表示する。
+
+```bash
+$ istioctl version
+
+client version: 1.12.1
+pilot version: 1.12.1
+pilot version: 1.7.2
+data plane version: 1.12.1 (5 proxies)
 ```
 

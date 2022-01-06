@@ -384,7 +384,7 @@ $ git stash clear
 
 #### ・```revert```とは
 
-作業中のローカルブランチにおいて、指定の履歴を削除。
+作業中のローカルブランチで、指定の履歴を削除。
 
 ![revert.png](https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png)
 
@@ -426,7 +426,7 @@ $ git revert -m 1 xyz
 
 #### ・```reset```とは
 
-作業中のローカルブランチにおいて、指定の履歴まで戻し、それ以降を削除。
+作業中のローカルブランチで、指定の履歴まで戻し、それ以降を削除。
 
 ![reset.png](https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png)
 
@@ -438,21 +438,21 @@ $ git reset HEAD <ファイル名/ファイルパス>
 ```
 
 #### ・```reset --soft <コミットID>```
-作業中のローカルブランチにおいて、最新のHEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除する。```commit```のみを取り消したい場合はこれ。
+作業中のローカルブランチで、最新のHEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除する。```commit```のみを取り消したい場合はこれ。
 
 ```bash
 $ git reset --soft <コミットID>
 ```
 
 #### ・```reset --mixed <コミットID>```
-作業中のローカルブランチにおいて、インデックス（=```add```後）、HEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除。```add```と```commit```を取り消したい場合はこれ。
+作業中のローカルブランチで、インデックス（=```add```後）、HEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除。```add```と```commit```を取り消したい場合はこれ。
 
 ```bash
 $ git reset --mixed <コミットID>
 ```
 
 #### ・```reset --hard <コミットID>```
-作業中のローカルブランチにおいて、最新のワークツリー（=フォルダ）、インデックス（=```add```後）、HEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除。
+作業中のローカルブランチで、最新のワークツリー（=フォルダ）、インデックス（=```add```後）、HEAD（=```commit```後）を指定の履歴まで戻し、それ以降を削除。
 <font color="red">**ワークツリー（=フォルダ）内のファイルの状態も戻ってしまうので、取り扱い注意！！**</font>
 
 ```bash
@@ -516,7 +516,7 @@ To github.com:hiroki-it/Symfony2_Nyumon.git
 
 #### ・```rebase```とは（注意点あり）
 
-作業中のローカルブランチにおいて、ブランチの派生元を変更。リモートブランチにpushした後は使ってはならず、他のコマンドを使う。
+作業中のローカルブランチで、ブランチの派生元を変更。リモートブランチにpushした後は使ってはならず、他のコマンドを使う。
 
 #### ・```rebase --interactive <コミットID>```
 
@@ -678,13 +678,13 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 作業中のローカルブランチにおける```(master|REBASE-i)```が、``` (master)```に変更されていることからも確認可能。
 
 ```bash
-hasegawahiroki@Hiroki-Fujitsu MINGW64 /c/Projects/Symfony2_Nyumon
+hiroki-it@PC /var/www/foo (master)
 $ git rebase --interactive
 
-hasegawahiroki@Hiroki-Fujitsu MINGW64 /c/Projects/Symfony2_Nyumon (master|REBASE-i)
+hiroki-it@PC /var/www/foo (master|REBASE-i)
 $ git rebase --abort
 
-hasegawahiroki@Hiroki-Fujitsu MINGW64 /c/Projects/Symfony2_Nyumon (master)
+hiroki-it@PC /var/www/foo (master)
 $
 ```
 
@@ -701,7 +701,9 @@ $ git branch -r \
   | grep -v "\->" \
   | grep -v main \
   | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+  
 $ git fetch --all
+
 $ git pull --all
 ```
 
@@ -776,7 +778,8 @@ $ git filter-branch -f --env-filter \
 
 ```bash
 $ git filter-branch -f --tree-filter \
-    'rm -f <ファイルパス>' HEAD
+    'rm -f <ファイルパス>' \
+    HEAD
 
 # ガベージコレクションを実行
 $ git gc --aggressive --prune=now

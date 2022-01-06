@@ -452,11 +452,11 @@ Serviceのドメイン名を用いて、Pod内から```nslookup```コマンド�
 Server:         10.96.0.10
 Address:        10.96.0.10#53
 
-Name:  <Serviceのmeta.name値>.default.svc.cluster.local
+Name:  <Serviceのmeta.name値>.<名前空間>.svc.cluster.local
 Address:  10.105.157.184
 ```
 
-異なる名前空間にあるServiceの名前解決を行う場合は、Serviceのドメイン名の後に名前空間を指定する必要がある。
+ちなみに、異なる名前空間にあるServiceの名前解決を行う場合は、Serviceのドメイン名の後に名前空間を指定する必要がある。
 
 ```bash
 # Pod内から正引き

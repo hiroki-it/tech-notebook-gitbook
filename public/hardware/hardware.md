@@ -30,7 +30,7 @@ CPUは制御装置と演算装置からなる。CPUの制御部分は、プロ�
 
 IntelとAMDにおけるCPUの歴史を以下に示す。
 
-![IntelとAMDにおけるCPUの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IntelとAMDにおけるCPUの歴史.png)
+![IntelとAMDのCPUの歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/IntelとAMDにおけるCPUの歴史.png)
 
 <br>
 

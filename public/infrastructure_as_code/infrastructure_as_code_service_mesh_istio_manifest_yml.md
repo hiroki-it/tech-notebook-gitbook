@@ -297,10 +297,6 @@ spec:
     ingressService: istio-ingressgateway
 ```
 
-
-
-
-
 <br>
 
 ### namespace
@@ -331,6 +327,23 @@ spec:
 
 <br>
 
+### tag
+
+PilotのDockerイメージのバージョンを指定する。
+
+参考：
+
+- https://hub.docker.com/r/istio/proxyv2/tags
+- https://github.com/istio/istio/blob/master/pilot/docker/Dockerfile.proxyv2
+
+```yaml
+kind: IstioOperator
+spec:
+  tag: 1.12.1
+```
+
+<br>
+
 ## 08. spec（VirtualServiceの場合）
 
 ### gateways
@@ -342,6 +355,15 @@ kind: VirtualService
 spec:
   gateways:
   - foo-gateway
+```
+
+マイクロサービス間で通信を行う場合は、```mesh```を指定する必要がある。
+
+```yaml
+kind: VirtualService
+spec:
+  gateways:
+  - mesh
 ```
 
 <br>

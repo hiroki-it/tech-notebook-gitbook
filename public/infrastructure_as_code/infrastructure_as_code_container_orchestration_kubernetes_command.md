@@ -23,14 +23,15 @@
 マニフェストファイルを指定し、```apply```コマンドを実行する。
 
 ```bash
-$ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
+# オブジェクトを作成する。
+$ kubectl apply -f ./kubernetes-manifests/<マニフェストファイル名>.yml
 
 pod/foo-pod created
 ```
 
 ```bash
-# ベースイメージを変更
-$ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
+# 設定値を変更する。
+$ kubectl apply -f ./kubernetes-manifests/<マニフェストファイル名>.yml
 
 pod/foo-pod configured
 ```
@@ -88,11 +89,11 @@ users:
 #### ・オプション無し
 
 ```bash
-$ kubectl cp <ホストPCのファイルパス> <名前空間>/<PodID>:<コンテナのファイルパス>
+$ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コンテナのファイルパス>
 ```
 
 ```bash
-$ kubectl cp <ホストPCのファイルパス> <名前空間>/<PodID>:<コンテナのディレクトリパス>/
+$ kubectl cp <ホストPCのファイルパス> <名前空間名>/<PodID>:<コンテナのディレクトリパス>/
 ```
 
 <br>
@@ -133,7 +134,7 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 #### ・secret generic
 
-シークレットを作成する。
+Secretを作成する。
 
 参考：
 
@@ -142,7 +143,7 @@ $ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 
 **＊例＊**
 
-指定した```.env```ファイルからシークレットを作成する。
+指定した```.env```ファイルからSecretを作成する。
 
 ```bash
 $ kubectl create secret generic foo-secret --from-env-file=./foo/.env
@@ -150,7 +151,7 @@ $ kubectl create secret generic foo-secret --from-env-file=./foo/.env
 secret/foo-secret created
 ```
 
-指定した```.env```ファイル以外からシークレットを作成する。
+指定した```.env```ファイル以外からSecretを作成する。
 
 ```bash
 $ kubectl create secret generic foo-secret --from-file=./foo/values.txt
@@ -158,7 +159,7 @@ $ kubectl create secret generic foo-secret --from-file=./foo/values.txt
 secret/foo-secret created
 ```
 
-キー名と値からシークレットを作成する。
+キー名と値からSecretを作成する。
 
 ```bash
 $ kubectl create secret generic foo-secret --from-literal=username="test" --from-literal=password="test"
@@ -175,6 +176,8 @@ secret/foo-secret created
 指定したPod内のコンテナでコマンドを実行する。
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+
+#### ・-it
 
 **＊例＊**
 
@@ -207,6 +210,8 @@ Serviceを作成する。
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
 - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
 
+#### ・--type、--port、--target-port
+
 **＊例＊**
 
 ClusterIP Serviceを作成する。
@@ -229,7 +234,7 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 <br>
 
-### get
+### get <オブジェクト>
 
 #### ・getとは
 
@@ -237,24 +242,9 @@ $ kubectl expose <Service名> --type=LoadBalancer --port=<受信ポート番号>
 
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
-**＊実行例＊**
-
-削除されないボリュームを削除する。
-
-参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
-
-```bash
-$ kubectl get pv \
-  | tail -n+2 \
-  | awk '{print $1}' \
-  | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
-```
-
-#### ・node
+**＊例＊**
 
 指定したノードの情報を表示する。
-
-**＊例＊**
 
 ```bash
 $ kubectl get nodes 
@@ -263,11 +253,7 @@ NAME             STATUS   ROLES                  AGE   VERSION
 docker-desktop   Ready    control-plane,master   12h   v1.21.5 # マスターノード
 ```
 
-#### ・pod
-
 指定したPodの情報を表示する。
-
-**＊例＊**
 
 ```bash
 $ kubectl get pods
@@ -276,16 +262,26 @@ NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    0/2     ImagePullBackOff   0          7m52s
 ```
 
-#### ・secrets
+**＊例＊**
 
-指定したシークレットの情報を表示する。
+指定したServiceの情報を表示する。
+
+```bash
+$ kubectl get services
+
+NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+foo-service    ClusterIP   nn.nnn.nnn.n   <none>        80/TCP    10s
+kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
+```
+
+#### ・-o
 
 **＊例＊**
 
-指定したシークレットをYAML形式で表示する。
+指定したSecretをYAML形式で表示する。
 
 ```bash
-$ kubectl get secret <シークレット名> -o yaml
+$ kubectl get secret <Secret名> -o yaml
 
 apiVersion: v1
 data:
@@ -300,20 +296,6 @@ metadata:
   resourceVersion: "18329"
   uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
-```
-
-#### ・services
-
-指定したServiceの情報を表示する。
-
-**＊例＊**
-
-```bash
-$ kubectl get services
-
-NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-foo-service    ClusterIP   nn.nnn.nnn.n   <none>        80/TCP    10s
-kubernetes     ClusterIP   nn.nn.n.n      <none>        443/TCP   12h
 ```
 
 <br>
@@ -367,7 +349,7 @@ $ kubectl label --overwrite <オブジェクト名> foo=bar
 Pod名とコンテナ名を指定し、コンテナのログを表示する。
 
 ```bash
-$ kubectl logs -n <名前空間> <Pod名> -c <コンテナ名>
+$ kubectl logs -n <名前空間名> <Pod名> -c <コンテナ名>
 
 2021/11/27 08:34:01 [emerg] *****
 ```
@@ -391,6 +373,29 @@ I1211 05:34:22.289506       1 config.go:224] Starting endpoint slice config cont
 I1211 05:34:22.289525       1 shared_informer.go:240] Waiting for caches to sync for endpoint slice config
 I1211 05:34:22.389800       1 shared_informer.go:247] Caches are synced for endpoint slice config 
 I1211 05:34:22.389956       1 shared_informer.go:247] Caches are synced for service config 
+```
+
+<br>
+
+### patch
+
+#### ・patchとは
+
+JSON/YAML形式を入力値として、オブジェクトの設定を変更する。
+
+参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+
+**＊例＊**
+
+削除されないボリュームを削除する。
+
+参考：https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+
+```bash
+$ kubectl get pv \
+  | tail -n+2 \
+  | awk '{print $1}' \
+  | xargs -I{} kubectl patch pv {} -p '{"metadata":{"finalizers": null}}'
 ```
 
 <br>
@@ -420,6 +425,8 @@ $ kubectl port-forward <Pod名> <ホストポート>:<Podポート>
 
 ローカルホストとkube-apiserverの間にプロキシとして機能するオブジェクトを作成する。kube-proxyとは異なるオブジェクトであることに注意する。
 
+#### ・--address、--accept-hosts
+
 参考：https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
 
 **＊例＊**
@@ -439,6 +446,8 @@ Starting to serve on [::]:8001
 Deployment、Pod、ジョブを作成する。
 
 参考：https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+
+#### ・--restart、--image、--port
 
 **＊例＊**
 

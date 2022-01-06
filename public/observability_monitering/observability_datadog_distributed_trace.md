@@ -166,7 +166,7 @@ import 'dd-trace/init'
 
 #### ・構造
 
-Datadogにおいて、分散トレースはスパンを持つ配列データとして定義される。
+Datadogで、分散トレースはスパンを持つ配列データとして定義される。
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 
@@ -198,7 +198,7 @@ Datadogにおいて、分散トレースはスパンを持つ配列データと�
 
 #### ・構造
 
-Datadogにおいて、スパンはJSON型データとして定義される。アプリケーション内のトレーサーにおいて、指定されたJSON型のスパンが作成され、スパンはDatadog-APIに送信される。
+Datadogで、スパンはJSON型データとして定義される。アプリケーション内のトレーサーで、指定されたJSON型のスパンが作成され、スパンはDatadog-APIに送信される。
 
 参考：https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/
 

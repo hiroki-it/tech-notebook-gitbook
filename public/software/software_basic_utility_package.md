@@ -93,7 +93,60 @@ ns4.google.com  internet address = 216.239.38.10
 
 <br>
 
-## 02. supervisor
+## 02. net-tools
+
+### インストール
+
+#### ・apt-get経由
+
+```bash
+$ apt-get install net-tools 
+```
+
+#### ・yum経由
+
+```bash
+$ yum install net-tools 
+```
+
+<br>
+
+### 接続状態の一覧
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
+
+<br>
+
+### netstat
+
+ #### ・-plunt
+
+オプション（```-p```、```-l```、```-u```、```-n```、```-t```）の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を表示する。
+
+参考：https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application
+
+```bash
+$ netstat -plunt
+
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name     
+tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::9000                 :::*                    LISTEN      1/php-fpm: master p 
+tcp6       0      0 :::15020                :::*                    LISTEN      -
+```
+
+<br>
+
+## 03. supervisor
 
 ### インストール
 
@@ -346,7 +399,7 @@ $ supervisorctl update
 
 <br>
 
-## 03. systemctl：system control（旧service）
+## 04. systemctl：system control（旧service）
 
 ### systemctlの構成要素
 
@@ -492,7 +545,7 @@ $ sudo systemctl stop nginx
 
 <br>
 
-## 04. tcpdump
+## 05. tcpdump
 
 ### インストール
 

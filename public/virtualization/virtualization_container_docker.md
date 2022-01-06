@@ -202,7 +202,7 @@ ac017dda93d6        host                    host                local
 
 ```bash
 # ホストで実行
-$ curl --fail http://localhost:8080/
+$ curl --fail http://127.0.0.1:8080
 ```
 
 #### ・『コンテナ』から『コンテナ』にリクエスト
@@ -226,7 +226,7 @@ $ curl --fail http://<nginxコンテナに割り当てたホスト名>:80/
 
 ```bash
 # コンテナ内で実行
-$ curl --fail http://host.docker.internal:8080/
+$ curl --fail http://host.docker.internal:8080
 ```
 
 <br>

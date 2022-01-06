@@ -100,7 +100,7 @@ ER図については、以下を参考にせよ。
 
 **＊実装例＊**
 
-Departmentモデルにおいて、```hasMany```メソッドを用いて、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
+Departmentモデルで、```hasMany```メソッドを用いて、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
 
 ```php
 <?php
@@ -128,7 +128,7 @@ class Department extends Model
 }
 ```
 
-また、Employeesモデルにおいては、```belongsTo```メソッドを用いて、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
+また、Employeesモデルでは、```belongsTo```メソッドを用いて、Departmentモデル（親）とEmployeesモデル（子）のテーブル関係を定義する。
 
 ```php
 <?php
@@ -308,7 +308,7 @@ class Foo extends Model
 }
 ```
 
-もしくは、変更不可能なカラム名を```guarded```プロパティで定義する。これらのいずれかの設定は、Eloquentモデルにおいて必須である。
+もしくは、変更不可能なカラム名を```guarded```プロパティで定義する。これらのいずれかの設定は、Eloquentモデルで必須である。
 
 ```php
 <?php
@@ -734,7 +734,7 @@ class FooController extends Controller
 
 #### ・```limit```メソッド、```offset```メソッド
 
-開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。これにより、ページネーションにおいて、１ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。これらのパラメータはクエリパラメータとして渡すとよい。
+開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。これにより、ページネーションで、１ページ当たりのレコード数（```limit```）と、次のページの開始レコード（```offset```）を定義できる。これらのパラメータはクエリパラメータとして渡すとよい。
 
 参考：https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 

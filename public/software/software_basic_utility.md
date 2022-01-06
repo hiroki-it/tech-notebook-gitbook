@@ -315,12 +315,12 @@ GETリクエストを送信する。```jq```コマンドを用いると、レス
 $ curl https://example.com/foos/1 | jq . 
 ```
 
-#### ・-X、-T、-d
+#### ・-L
 
-Content-Typeを指定して、POSTリクエストを送信する。
+指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
 
 ```bash
-$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foos
+$ curl -L https://example.com/foos
 ```
 
 #### ・-o（小文字）
@@ -335,13 +335,31 @@ $ curl -o <ファイル名> https://example.com
 
 インストール後のファイル名はそのままでインストールする。これを指定しない場合、```-o```オプションを有効化する必要がある。
 
-#### ・-L
+#### ・--resolve
 
-指定したURLでリダイレクトが行われても、リダイレクト後のURLからファイルをインストールする。
+ドメインとIPアドレスを紐付け、指定した名前解決を行いつつ、```curl```コマンドを実行する。
 
 ```bash
-$ curl -L https://example.com/foos
+curl --resolve <ドメイン名>:<ポート番号>:<IPアドレス> https://example.com
 ```
+
+**＊実装例＊**
+
+リクエストの名前解決時に、```example.com```を正引きすると```127.0.0.1```が返却されるようにする。
+
+```bash
+curl --resolve example.com:80:127.0.0.1 https://example.com
+```
+
+#### ・-X、-T、-d
+
+Content-Typeを指定して、POSTリクエストを送信する。
+
+```bash
+$ curl -X POST -H "Content-Type: application/json" -d '{}' https://example.com/foos
+```
+
+#### 
 
 <br>
 

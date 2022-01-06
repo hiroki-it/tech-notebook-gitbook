@@ -115,7 +115,7 @@
 
 #### ・ブラウザエラーとは
 
-Datadogにおいて、ブラウザのエラーは以下に分類される。
+Datadogで、ブラウザのエラーは以下に分類される。
 
 参考：https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 

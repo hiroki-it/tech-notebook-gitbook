@@ -22,7 +22,7 @@
 
 #### ・内部ポインタと配列の関係
 
-『内部ポインタ』とは、PHPの配列において、参照したい要素を位置で指定するためのカーソルのこと。Goにおけるポインタは、以下を参考にせよ。
+『内部ポインタ』とは、PHPの配列で、参照したい要素を位置で指定するためのカーソルのこと。Goにおけるポインタは、以下を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_procedural_language_go_logic_method_data.html
 

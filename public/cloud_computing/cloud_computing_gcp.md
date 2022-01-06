@@ -20,13 +20,13 @@ GCPから、グローバルIPアドレスと完全修飾ドメイン名が提供
 
 ### GAE：Google App Engine：GAE
 
-クラウドデプロイサーバーとして働く。AWSにおけるElastic Beanstalkに相当する。
+クラウドデプロイサーバーとして働く。AWSのElastic Beanstalkに相当する。
 
 
 
 ### GCE：Google Compute Engine
 
-クラウドWebサーバーとして働く。AWSにおけるEC2に相当する。
+クラウドWebサーバーとして働く。AWSのEC2に相当する。
 
 
 
