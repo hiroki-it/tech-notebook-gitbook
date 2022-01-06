@@ -3134,12 +3134,13 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply</a></p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3001;<code>apply</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</span>
+$ kubectl apply -f ./kubernetes-manifests/<span class="token operator">&lt;</span>&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.yml
 
 pod/foo-pod created
 </code></pre>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x30D9;&#x30FC;&#x30B9;&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x5909;&#x66F4;</span>
-$ kubectl apply -f ./kubernetes-manifests/foo-pod.yml
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8A2D;&#x5B9A;&#x5024;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3002;</span>
+$ kubectl apply -f ./kubernetes-manifests/<span class="token operator">&lt;</span>&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.yml
 
 pod/foo-pod configured
 </code></pre>
@@ -3179,9 +3180,9 @@ users:
 <p>&#x30DB;&#x30B9;&#x30C8;PC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x307E;&#x305F;&#x306F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x305F;Pod&#x5185;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp</a></p>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
-<pre class="language-"><code class="lang-bash">$ kubectl <span class="token function">cp</span> <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;PC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>PodID<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token function">cp</span> <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;PC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>PodID<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
-<pre class="language-"><code class="lang-bash">$ kubectl <span class="token function">cp</span> <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;PC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>PodID<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>/
+<pre class="language-"><code class="lang-bash">$ kubectl <span class="token function">cp</span> <span class="token operator">&lt;</span>&#x30DB;&#x30B9;&#x30C8;PC&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>PodID<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>/
 </code></pre>
 <p><br></p>
 <h3 id="create"><a name="create" class="plugin-anchor" href="#create"><i class="fa fa-link" aria-hidden="true"></i></a>create</h3>
@@ -3204,24 +3205,24 @@ service/foo-service created
 <pre class="language-"><code class="lang-bash">$ kubectl create deployment -f ./kubernetes-manifests/foo-deployment.yml
 </code></pre>
 <h4 id="&#x30FB;secret-generic"><a name="&#x30FB;secret-generic" class="plugin-anchor" href="#&#x30FB;secret-generic"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;secret generic</h4>
-<p>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>Secret&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-</a></li>
 <li><a href="https://qiita.com/toshihirock/items/38d09b2822a347c3f958" target="_blank">https://qiita.com/toshihirock/items/38d09b2822a347c3f958</a></li>
 </ul>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x3089;Secret&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-env-file<span class="token operator">=</span>./foo/.env
 
 secret/foo-secret created
 </code></pre>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x4EE5;&#x5916;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;<code>.env</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x4EE5;&#x5916;&#x304B;&#x3089;Secret&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-file<span class="token operator">=</span>./foo/values.txt
 
 secret/foo-secret created
 </code></pre>
-<p>&#x30AD;&#x30FC;&#x540D;&#x3068;&#x5024;&#x304B;&#x3089;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30AD;&#x30FC;&#x540D;&#x3068;&#x5024;&#x304B;&#x3089;Secret&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl create secret generic foo-secret --from-literal<span class="token operator">=</span>username<span class="token operator">=</span><span class="token string">&quot;test&quot;</span> --from-literal<span class="token operator">=</span>password<span class="token operator">=</span><span class="token string">&quot;test&quot;</span>
 
 secret/foo-secret created
@@ -3231,6 +3232,7 @@ secret/foo-secret created
 <h4 id="&#x30FB;exec&#x3068;&#x306F;"><a name="&#x30FB;exec&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;exec&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;exec&#x3068;&#x306F;</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;Pod&#x5185;&#x306E;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec</a></p>
+<h4 id="&#x30FB;-it"><a name="&#x30FB;-it" class="plugin-anchor" href="#&#x30FB;-it"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-it</h4>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3066;&#x3001;&#x30C7;&#x30BF;&#x30C3;&#x30C1;&#x30E2;&#x30FC;&#x30C9;&#x3067; <code>exec</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl <span class="token builtin class-name">exec</span> -it <span class="token operator">&lt;</span>Pod&#x540D;<span class="token operator">&gt;</span> -c <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span> -- <span class="token function">bash</span>
@@ -3251,6 +3253,7 @@ Defaulted container <span class="token string">&quot;foo-container&quot;</span> 
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose</a></li>
 <li><a href="https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908" target="_blank">https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908</a></li>
 </ul>
+<h4 id="&#x30FB;--type&#x3001;--port&#x3001;--target-port"><a name="&#x30FB;--type&#x3001;--port&#x3001;--target-port" class="plugin-anchor" href="#&#x30FB;--type&#x3001;--port&#x3001;--target-port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--type&#x3001;--port&#x3001;--target-port</h4>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>ClusterIP Service&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl expose <span class="token operator">&lt;</span>Service&#x540D;<span class="token operator">&gt;</span> --type<span class="token operator">=</span>ClusterIP --port<span class="token operator">=</span><span class="token operator">&lt;</span>&#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;<span class="token operator">&gt;</span> --target-port<span class="token operator">=</span><span class="token operator">&lt;</span>&#x8EE2;&#x9001;&#x5148;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;<span class="token operator">&gt;</span>
@@ -3262,39 +3265,35 @@ Defaulted container <span class="token string">&quot;foo-container&quot;</span> 
 <pre class="language-"><code class="lang-bash">$ kubectl expose <span class="token operator">&lt;</span>Service&#x540D;<span class="token operator">&gt;</span> --type<span class="token operator">=</span>LoadBalancer --port<span class="token operator">=</span><span class="token operator">&lt;</span>&#x53D7;&#x4FE1;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;<span class="token operator">&gt;</span> --target-port<span class="token operator">=</span><span class="token operator">&lt;</span>&#x8EE2;&#x9001;&#x5148;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
-<h3 id="get"><a name="get" class="plugin-anchor" href="#get"><i class="fa fa-link" aria-hidden="true"></i></a>get</h3>
+<h3 id="get-&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><a name="get-&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;" class="plugin-anchor" href="#get-&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>get &lt;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&gt;</h3>
 <h4 id="&#x30FB;get&#x3068;&#x306F;"><a name="&#x30FB;get&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;get&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;get&#x3068;&#x306F;</h4>
 <p>&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get</a></p>
-<p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465" target="_blank">https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465</a></p>
-<pre class="language-"><code class="lang-bash">$ kubectl get <span class="token function">pv</span> <span class="token punctuation">\</span>
-  <span class="token operator">|</span> <span class="token function">tail</span> -n+2 <span class="token punctuation">\</span>
-  <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">&apos;{print $1}&apos;</span> <span class="token punctuation">\</span>
-  <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">{</span><span class="token punctuation">}</span> kubectl patch <span class="token function">pv</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> -p <span class="token string">&apos;{&quot;metadata&quot;:{&quot;finalizers&quot;: null}}&apos;</span>
-</code></pre>
-<h4 id="&#x30FB;node"><a name="&#x30FB;node" class="plugin-anchor" href="#&#x30FB;node"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;node</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl get nodes 
 
 NAME             STATUS   ROLES                  AGE   VERSION
 docker-desktop   Ready    control-plane,master   12h   v1.21.5 <span class="token comment"># &#x30DE;&#x30B9;&#x30BF;&#x30FC;&#x30CE;&#x30FC;&#x30C9;</span>
 </code></pre>
-<h4 id="&#x30FB;pod"><a name="&#x30FB;pod" class="plugin-anchor" href="#&#x30FB;pod"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;pod</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;Pod&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl get pods
 
 NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    <span class="token number">0</span>/2     ImagePullBackOff   <span class="token number">0</span>          7m52s
 </code></pre>
-<h4 id="&#x30FB;secrets"><a name="&#x30FB;secrets" class="plugin-anchor" href="#&#x30FB;secrets"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;secrets</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x3092;YAML&#x5F62;&#x5F0F;&#x3067;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ kubectl get secret <span class="token operator">&lt;</span>&#x30B7;&#x30FC;&#x30AF;&#x30EC;&#x30C3;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -o yaml
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;Service&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get services
+
+NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE
+foo-service    ClusterIP   nn.nnn.nnn.n   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP    10s
+kubernetes     ClusterIP   nn.nn.n.n      <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">443</span>/TCP   12h
+</code></pre>
+<h4 id="&#x30FB;-o"><a name="&#x30FB;-o" class="plugin-anchor" href="#&#x30FB;-o"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-o</h4>
+<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;Secret&#x3092;YAML&#x5F62;&#x5F0F;&#x3067;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl get secret <span class="token operator">&lt;</span>Secret&#x540D;<span class="token operator">&gt;</span> -o yaml
 
 apiVersion: v1
 data:
@@ -3309,15 +3308,6 @@ metadata:
   resourceVersion: <span class="token string">&quot;18329&quot;</span>
   uid: 507e3126-c03b-477d-9fbc-9434e7aa1920
 type: Opaque
-</code></pre>
-<h4 id="&#x30FB;services"><a name="&#x30FB;services" class="plugin-anchor" href="#&#x30FB;services"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;services</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;Service&#x306E;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash">$ kubectl get services
-
-NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE
-foo-service    ClusterIP   nn.nnn.nnn.n   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP    10s
-kubernetes     ClusterIP   nn.nn.n.n      <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">443</span>/TCP   12h
 </code></pre>
 <p><br></p>
 <h3 id="label"><a name="label" class="plugin-anchor" href="#label"><i class="fa fa-link" aria-hidden="true"></i></a>label</h3>
@@ -3344,7 +3334,7 @@ kubernetes     ClusterIP   nn.nn.n.n      <span class="token operator">&lt;</spa
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>Pod&#x540D;&#x3068;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3001;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ kubectl logs -n <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>Pod&#x540D;<span class="token operator">&gt;</span> -c <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-bash">$ kubectl logs -n <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>Pod&#x540D;<span class="token operator">&gt;</span> -c <span class="token operator">&lt;</span>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x540D;<span class="token operator">&gt;</span>
 
 <span class="token number">2021</span>/11/27 08:34:01 <span class="token punctuation">[</span>emerg<span class="token punctuation">]</span> *****
 </code></pre>
@@ -3367,6 +3357,19 @@ I1211 05:34:22.389800       <span class="token number">1</span> shared_informer.
 I1211 05:34:22.389956       <span class="token number">1</span> shared_informer.go:247<span class="token punctuation">]</span> Caches are synced <span class="token keyword">for</span> <span class="token function">service</span> config
 </code></pre>
 <p><br></p>
+<h3 id="patch"><a name="patch" class="plugin-anchor" href="#patch"><i class="fa fa-link" aria-hidden="true"></i></a>patch</h3>
+<h4 id="&#x30FB;patch&#x3068;&#x306F;"><a name="&#x30FB;patch&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;patch&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;patch&#x3068;&#x306F;</h4>
+<p>JSON/YAML&#x5F62;&#x5F0F;&#x3092;&#x5165;&#x529B;&#x5024;&#x3068;&#x3057;&#x3066;&#x3001;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch</a></p>
+<p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
+<p>&#x524A;&#x9664;&#x3055;&#x308C;&#x306A;&#x3044;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3092;&#x524A;&#x9664;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465" target="_blank">https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465</a></p>
+<pre class="language-"><code class="lang-bash">$ kubectl get <span class="token function">pv</span> <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">tail</span> -n+2 <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">&apos;{print $1}&apos;</span> <span class="token punctuation">\</span>
+  <span class="token operator">|</span> <span class="token function">xargs</span> -I<span class="token punctuation">{</span><span class="token punctuation">}</span> kubectl patch <span class="token function">pv</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> -p <span class="token string">&apos;{&quot;metadata&quot;:{&quot;finalizers&quot;: null}}&apos;</span>
+</code></pre>
+<p><br></p>
 <h3 id="port-forward"><a name="port-forward" class="plugin-anchor" href="#port-forward"><i class="fa fa-link" aria-hidden="true"></i></a>port-forward</h3>
 <h4 id="&#x30FB;port-forward&#x3068;&#x306F;"><a name="&#x30FB;port-forward&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;port-forward&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;port-forward&#x3068;&#x306F;</h4>
 <p>&#x30DB;&#x30B9;&#x30C8;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x304B;&#x3089;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x30DD;&#x30FC;&#x30C8;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x30D5;&#x30A9;&#x30EF;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;&#x958B;&#x767A;&#x74B0;&#x5883;&#x306B;&#x3066;&#x3001;Service&#x3092;&#x7D4C;&#x7531;&#x305B;&#x305A;&#x306B;&#x76F4;&#x63A5;Pod&#x306B;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x9001;&#x4FE1;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x3084;&#x3001;SQL&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x3092;&#x7528;&#x3044;&#x3066;Pod&#x5185;&#x306E;DB&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;TCP/IP&#x63A5;&#x7D9A;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
@@ -3382,6 +3385,7 @@ I1211 05:34:22.389956       <span class="token number">1</span> shared_informer.
 <h3 id="proxy"><a name="proxy" class="plugin-anchor" href="#proxy"><i class="fa fa-link" aria-hidden="true"></i></a>proxy</h3>
 <h4 id="&#x30FB;proxy&#x3068;&#x306F;"><a name="&#x30FB;proxy&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;proxy&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy&#x3068;&#x306F;</h4>
 <p>&#x30ED;&#x30FC;&#x30AB;&#x30EB;&#x30DB;&#x30B9;&#x30C8;&#x3068;kube-apiserver&#x306E;&#x9593;&#x306B;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x3068;&#x3057;&#x3066;&#x6A5F;&#x80FD;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;kube-proxy&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
+<h4 id="&#x30FB;--address&#x3001;--accept-hosts"><a name="&#x30FB;--address&#x3001;--accept-hosts" class="plugin-anchor" href="#&#x30FB;--address&#x3001;--accept-hosts"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--address&#x3001;--accept-hosts</h4>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy" target="_blank">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy</a></p>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ kubectl proxy --address<span class="token operator">=</span><span class="token number">0.0</span>.0.0 --accept-hosts<span class="token operator">=</span><span class="token string">&apos;.*&apos;</span>  
@@ -3393,6 +3397,7 @@ Starting to serve on <span class="token punctuation">[</span>::<span class="toke
 <h4 id="&#x30FB;run&#x3068;&#x306F;"><a name="&#x30FB;run&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;run&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;run&#x3068;&#x306F;</h4>
 <p>Deployment&#x3001;Pod&#x3001;&#x30B8;&#x30E7;&#x30D6;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908" target="_blank">https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908</a></p>
+<h4 id="&#x30FB;--restart&#x3001;--image&#x3001;--port"><a name="&#x30FB;--restart&#x3001;--image&#x3001;--port" class="plugin-anchor" href="#&#x30FB;--restart&#x3001;--image&#x3001;--port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--restart&#x3001;--image&#x3001;--port</h4>
 <p><strong>&#xFF0A;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#x3082;&#x3057;<code>restart</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x304C;<code>Always</code>&#x306A;&#x3089;&#x3001;Deployment&#x304C;&#x4F5C;&#x6210;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ kubectl run <span class="token operator">&lt;</span>Deployment&#x540D;<span class="token operator">&gt;</span> --restart<span class="token operator">=</span>Always --image<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x540D;<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>&#x30BF;&#x30B0;&#x540D;<span class="token operator">&gt;</span> --port<span class="token operator">=</span><span class="token operator">&lt;</span>&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;<span class="token operator">&gt;</span>
@@ -3442,7 +3447,7 @@ Starting to serve on <span class="token punctuation">[</span>::<span class="toke
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"Kubernetes","level":"1.10.3.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","mtime":"2022-01-05T15:18:32.457Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-05T15:18:37.207Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"next":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"previous":{"title":"Kubernetes","level":"1.10.3.2.2","depth":4,"ref":"","articles":[{"title":"📖 ︎kubectlコマンド","level":"1.10.3.2.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","articles":[]},{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","articles":[]},{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_command.md","mtime":"2022-01-06T16:16:59.178Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-06T16:17:06.001Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

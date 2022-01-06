@@ -3286,14 +3286,14 @@ Info <span class="token punctuation">[</span>IST0118<span class="token punctuati
 <h4 id="&#x30FB;-n"><a name="&#x30FB;-n" class="plugin-anchor" href="#&#x30FB;-n"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-n</h4>
 <p>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3064;&#x3064;&#x3001;<code>analyze</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3092;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
-<pre class="language-"><code class="lang-bash">$ istioctl analyze -n foo-namespace
+<pre class="language-"><code class="lang-bash">$ istioctl analyze -n <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><br></p>
 <h3 id="manifest-diff"><a name="manifest-diff" class="plugin-anchor" href="#manifest-diff"><i class="fa fa-link" aria-hidden="true"></i></a>manifest diff</h3>
 <h4 id="&#x30FB;diff&#x3068;&#x306F;"><a name="&#x30FB;diff&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;diff&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;diff&#x3068;&#x306F;</h4>
 <p>yml&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x5DEE;&#x5206;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff" target="_blank">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff</a></p>
-<pre class="language-"><code class="lang-bash">$ istioctl manifest <span class="token function">diff</span> <span class="token operator">&lt;</span>&#x5909;&#x66F4;&#x524D;yml&#x30D5;&#x30A1;&#x30A4;&#x30EB;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x5909;&#x66F4;&#x5F8C;yml&#x30D5;&#x30A1;&#x30A4;&#x30EB;<span class="token operator">&gt;</span>
+<pre class="language-"><code class="lang-bash">$ istioctl manifest <span class="token function">diff</span> <span class="token operator">&lt;</span>&#x5909;&#x66F4;&#x524D;&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.yml <span class="token operator">&lt;</span>&#x5909;&#x66F4;&#x5F8C;<span class="token operator">&gt;</span>.yml
 </code></pre>
 <p><br></p>
 <h3 id="install"><a name="install" class="plugin-anchor" href="#install"><i class="fa fa-link" aria-hidden="true"></i></a>install</h3>
@@ -3302,7 +3302,7 @@ Info <span class="token punctuation">[</span>IST0118<span class="token punctuati
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/install/istioctl/" target="_blank">https://istio.io/latest/docs/setup/install/istioctl/</a></p>
 <h4 id="&#x30FB;-f"><a name="&#x30FB;-f" class="plugin-anchor" href="#&#x30FB;-f"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-f</h4>
 <p>&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7528;&#x3044;&#x3066;&#x3001;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ istioctl <span class="token function">install</span> -f ./istio-manifests/<span class="token operator">&lt;</span>&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;<span class="token operator">&gt;</span>.yml -y
+<pre class="language-"><code class="lang-bash">$ istioctl <span class="token function">install</span> -f ./istio-manifests/<span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.yml -y
 </code></pre>
 <h4 id="&#x30FB;--set"><a name="&#x30FB;--set" class="plugin-anchor" href="#&#x30FB;--set"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;--set</h4>
 <p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3082;&#x306E;&#x3001;&#x307E;&#x305F;&#x306F;&#x5909;&#x66F4;&#x3059;&#x308B;&#x9805;&#x76EE;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
@@ -3342,6 +3342,48 @@ Istio configuration profiles:
     remote
 </code></pre>
 <p><br></p>
+<h3 id="proxy-config"><a name="proxy-config" class="plugin-anchor" href="#proxy-config"><i class="fa fa-link" aria-hidden="true"></i></a>proxy-config</h3>
+<h4 id="&#x30FB;proxy-config"><a name="&#x30FB;proxy-config" class="plugin-anchor" href="#&#x30FB;proxy-config"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy-config</h4>
+<p>&#x6307;&#x5B9A;&#x3057;&#x305F;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x69CB;&#x6210;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config" target="_blank">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config</a></p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config <span class="token operator">&lt;</span>&#x9805;&#x76EE;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30DD;&#x30C3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> -n <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
+<p>Ingress Gateway&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config endpoints <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+
+ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
+<span class="token number">127.0</span>.0.1:15000                  HEALTHY     OK                prometheus_stats
+<span class="token number">127.0</span>.0.1:15020                  HEALTHY     OK                agent
+
+<span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
+
+<span class="token number">172.17</span>.0.11:9090                 HEALTHY     OK                outbound<span class="token operator">|</span><span class="token number">80</span><span class="token operator">||</span>kubernetes-dashboard.kubernetes-dashboard.svc.cluster.local
+<span class="token number">172.17</span>.0.13:80                   HEALTHY     OK                outbound<span class="token operator">|</span><span class="token number">80</span><span class="token operator">||</span>foo-service.microservices-with-kubernetes.svc.cluster.local
+
+<span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
+
+<span class="token number">192.168</span>.64.14:8443               HEALTHY     OK                outbound<span class="token operator">|</span><span class="token number">443</span><span class="token operator">||</span>kubernetes.default.svc.cluster.local
+unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
+unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
+</code></pre>
+<p>Ingress Gateway&#x306E;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config listeners <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+
+ADDRESS PORT  MATCH DESTINATION
+<span class="token number">0.0</span>.0.0 <span class="token number">8080</span>  ALL   Route: http.8080
+<span class="token number">0.0</span>.0.0 <span class="token number">15021</span> ALL   Inline Route: /healthz/ready*
+<span class="token number">0.0</span>.0.0 <span class="token number">15090</span> ALL   Inline Route: /stats/prometheus*
+</code></pre>
+<p>Ingress Gateway&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config routes <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+
+NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
+http.8080     *           /*                     foo-virtual-service.istio-system
+              *           /stats/prometheus*     
+              *           /healthz/ready*
+</code></pre>
+<p><br></p>
 <h3 id="proxy-status"><a name="proxy-status" class="plugin-anchor" href="#proxy-status"><i class="fa fa-link" aria-hidden="true"></i></a>proxy-status</h3>
 <h4 id="&#x30FB;proxy-status&#x3068;&#x306F;"><a name="&#x30FB;proxy-status&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;proxy-status&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy-status&#x3068;&#x306F;</h4>
 <p>Ingress Gateway&#x3001;Egress Gateway&#x3001;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
@@ -3375,6 +3417,17 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 Checked <span class="token number">14</span> custom resource definitions
 Checked <span class="token number">3</span> Istio Deployments
 &#x2714; Istio is installed and verified successfully
+</code></pre>
+<p><br></p>
+<h3 id="version"><a name="version" class="plugin-anchor" href="#version"><i class="fa fa-link" aria-hidden="true"></i></a>version</h3>
+<h4 id="&#x30FB;version&#x3068;&#x306F;"><a name="&#x30FB;version&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;version&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;version&#x3068;&#x306F;</h4>
+<p>Istiod&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl version
+
+client version: <span class="token number">1.12</span>.1
+pilot version: <span class="token number">1.12</span>.1
+pilot version: <span class="token number">1.7</span>.2
+data plane version: <span class="token number">1.12</span>.1 <span class="token punctuation">(</span><span class="token number">5</span> proxies<span class="token punctuation">)</span>
 </code></pre>
 
                                 
@@ -3415,7 +3468,7 @@ Checked <span class="token number">3</span> Istio Deployments
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"next":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]},"previous":{"title":"Istio","level":"1.10.3.3.1","depth":4,"ref":"","articles":[{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","mtime":"2022-01-05T15:18:32.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-05T15:18:37.207Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"next":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]},"previous":{"title":"Istio","level":"1.10.3.3.1","depth":4,"ref":"","articles":[{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","mtime":"2022-01-06T16:16:59.180Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-06T16:17:06.001Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
