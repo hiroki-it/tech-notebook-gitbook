@@ -3127,57 +3127,99 @@
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-istio"><a name="01-istio" class="plugin-anchor" href="#01-istio"><i class="fa fa-link" aria-hidden="true"></i></a>01. Istio</h2>
-<h3 id="&#x7279;&#x5FB4;"><a name="&#x7279;&#x5FB4;" class="plugin-anchor" href="#&#x7279;&#x5FB4;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7279;&#x5FB4;</h3>
+<h2 id="01-&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;"><a name="01-&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;" class="plugin-anchor" href="#01-&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;"><i class="fa fa-link" aria-hidden="true"></i></a>01. &#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</h2>
+<h3 id="&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h3>
+<h4 id="&#x30FB;istioctl&#x7D4C;&#x7531;"><a name="&#x30FB;istioctl&#x7D4C;&#x7531;" class="plugin-anchor" href="#&#x30FB;istioctl&#x7D4C;&#x7531;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;istioctl&#x7D4C;&#x7531;</h4>
+<p>&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x3001;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile" target="_blank">https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile</a></p>
+<pre class="language-"><code class="lang-bash">$ istioctl <span class="token function">install</span> --set <span class="token assign-left variable">profile</span><span class="token operator">=</span>demo
+</code></pre>
+<h4 id="&#x30FB;istiooperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x7D4C;&#x7531;"><a name="&#x30FB;istiooperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x7D4C;&#x7531;" class="plugin-anchor" href="#&#x30FB;istiooperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x7D4C;&#x7531;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;IstioOperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x7D4C;&#x7531;</h4>
+<p>&#xFF08;&#xFF11;&#xFF09;&#x307E;&#x305A;&#x306F;&#x3001;IstioOperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;IstioOperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F;&#x3001;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;<code>istio-system</code>&#x306B;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/install/operator/" target="_blank">https://istio.io/latest/docs/setup/install/operator/</a></p>
+<pre class="language-"><code class="lang-bash">$ istioctl operator init
+
+Installing operator controller <span class="token keyword">in</span> namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Operator controller will <span class="token function">watch</span> namespaces: istio-system
+&#x2714; Istio operator installed
+&#x2714; Installation complete
+</code></pre>
+<p>&#xFF08;&#xFF12;&#xFF09;IstioOperator&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30DE;&#x30CB;&#x30D5;&#x30A7;&#x30B9;&#x30C8;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x3001;<code>istioctl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x307E;&#x305F;&#x306F;<code>kubectl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x64CD;&#x4F5C;&#x3057;&#x3001;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;<code>kubectl</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x7D50;&#x679C;&#x306F;&#x3001;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x305F;&#x3053;&#x3068;&#x304C;&#x308F;&#x304B;&#x308A;&#x306B;&#x304F;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># istioctl&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+$ istioctl <span class="token function">install</span> -y -f ./istio-manifests/operator.yml
+&#x2714; Istio core installed
+&#x2714; Istiod installed
+&#x2714; Ingress gateways installed
+&#x2714; Installation complete
+Making this installation the default <span class="token keyword">for</span> injection and validation.
+</code></pre>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># kubectl&#x30B3;&#x30DE;&#x30F3;&#x30C9;</span>
+$ kubectl apply -f ./istio-manifests/operator.yml
+
+istiooperator.install.istio.io/istio-operator created
+</code></pre>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile" target="_blank">https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator" target="_blank">https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator</a></li>
+</ul>
+<p><br></p>
+<h3 id="&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><a name="&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;" class="plugin-anchor" href="#&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</h3>
+<h4 id="&#x30FB;istioctl&#x7D4C;&#x7531;"><a name="&#x30FB;istioctl&#x7D4C;&#x7531;" class="plugin-anchor" href="#&#x30FB;istioctl&#x7D4C;&#x7531;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;istioctl&#x7D4C;&#x7531;</h4>
+<p>Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x5168;&#x3066;&#x30A2;&#x30F3;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl x uninstall --purge
+</code></pre>
+<p><br></p>
+<h2 id="02-istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><a name="02-istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;" class="plugin-anchor" href="#02-istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>02. Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h2>
+<h3 id="istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><a name="istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;" class="plugin-anchor" href="#istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h3>
+<p>Istio&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3053;&#x3068;&#x3067;&#x3001;&#x5B9F;&#x4F53;&#x306F;Kubernetes&#x306E;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x30EA;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x3042;&#x308B;&#x3002;</p>
+<p><br></p>
+<h3 id="istio&#x30E1;&#x30C3;&#x30B7;&#x30E5;"><a name="istio&#x30E1;&#x30C3;&#x30B7;&#x30E5;" class="plugin-anchor" href="#istio&#x30E1;&#x30C3;&#x30B7;&#x30E5;"><i class="fa fa-link" aria-hidden="true"></i></a>Istio&#x30E1;&#x30C3;&#x30B7;&#x30E5;</h3>
 <p>&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x306B;&#x304A;&#x3051;&#x308B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C3;&#x30B7;&#x30E5;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3002;Istio&#x3092;&#x5FC5;&#x305A;&#x3057;&#x3082;&#x7528;&#x3044;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x304F;&#x3001;Kubernetes&#x3084;OpenShift&#x306E;&#x6A5F;&#x80FD;&#x3067;&#x3053;&#x308C;&#x3092;&#x5B9F;&#x73FE;&#x3057;&#x3066;&#x3082;&#x3088;&#x3044;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://qiita.com/Ladicle/items/4ba57078128d6affadd5" target="_blank">https://qiita.com/Ladicle/items/4ba57078128d6affadd5</a></p>
-<p><br></p>
-<h3 id="&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306E;&#x89E3;&#x6C7A;"><a name="&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306E;&#x89E3;&#x6C7A;" class="plugin-anchor" href="#&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306E;&#x89E3;&#x6C7A;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x306E;&#x89E3;&#x6C7A;</h3>
-<p>&#x6A5F;&#x80FD;&#x300E;<code>A ---&gt; B ---&gt; C ---&gt; D</code>&#x300F;&#x3092;&#x6301;&#x3064;&#x30E2;&#x30CE;&#x30EA;&#x30B7;&#x30C3;&#x30AF;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x3042;&#x308B;&#x3068;&#x3059;&#x308B;&#x3002;&#x3053;&#x308C;&#x3092;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x5316;&#x3057;&#x3066;&#x3001;ABCD&#x3092;&#x5225;&#x3005;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5206;&#x5272;&#x3059;&#x308B;&#x3002;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x304C;Pod&#x4E0A;&#x3067;&#x7A3C;&#x50CD;&#x3059;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x308B;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x3053;&#x308C;&#x3060;&#x3051;&#x3067;&#x306F;ABCD&#x304C;&#x72EC;&#x7ACB;&#x3057;&#x3066;&#x304A;&#x3089;&#x305A;&#x3001;&#x5404;&#x6A5F;&#x80FD;&#x306F;1&#x3064;&#x524D;&#x306E;&#x6A5F;&#x80FD;&#x306B;&#x4F9D;&#x5B58;&#x3057;&#x3066;&#x3044;&#x308B;&#x3002;&#x3053;&#x306E;&#x4F9D;&#x5B58;&#x95A2;&#x4FC2;&#x3092;&#x89E3;&#x6C7A;&#x3059;&#x308B;&#x3002;</p>
-<p><br></p>
-<h2 id="02-istio-mesh"><a name="02-istio-mesh" class="plugin-anchor" href="#02-istio-mesh"><i class="fa fa-link" aria-hidden="true"></i></a>02. Istio Mesh</h2>
-<h3 id="istio-mesh&#x3068;&#x306F;"><a name="istio-mesh&#x3068;&#x306F;" class="plugin-anchor" href="#istio-mesh&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>Istio Mesh&#x3068;&#x306F;</h3>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/ops/deployment/architecture/" target="_blank">https://istio.io/latest/docs/ops/deployment/architecture/</a></p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/deployment/architecture/" target="_blank">https://istio.io/latest/docs/ops/deployment/architecture/</a></li>
+<li><a href="https://qiita.com/Ladicle/items/4ba57078128d6affadd5" target="_blank">https://qiita.com/Ladicle/items/4ba57078128d6affadd5</a></li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png" alt="istio_overview"></p>
 <p><br></p>
-<h3 id="destination-rule"><a name="destination-rule" class="plugin-anchor" href="#destination-rule"><i class="fa fa-link" aria-hidden="true"></i></a>Destination Rule</h3>
-<h4 id="&#x30FB;destination-rule"><a name="&#x30FB;destination-rule" class="plugin-anchor" href="#&#x30FB;destination-rule"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Destination Rule</h4>
-<p>VirtualService&#x304B;&#x3089;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;Service&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x6642;&#x306B;&#x3001;&#x3088;&#x308A;&#x8A73;&#x7D30;&#x306A;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x30EB;&#x30FC;&#x30EB;&#x3092;&#x9069;&#x7528;&#x3059;&#x308B;&#x3002;</p>
-<p><br></p>
-<h3 id="gateway"><a name="gateway" class="plugin-anchor" href="#gateway"><i class="fa fa-link" aria-hidden="true"></i></a>Gateway</h3>
-<h4 id="&#x30FB;gateway&#x3068;&#x306F;"><a name="&#x30FB;gateway&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;gateway&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Gateway&#x3068;&#x306F;</h4>
-<p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5185;&#x5916;&#x9593;&#x306E;&#x901A;&#x4FE1;&#x3092;&#x5236;&#x5FA1;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/blog/2018/v1alpha3-routing/" target="_blank">https://istio.io/latest/blog/2018/v1alpha3-routing/</a></p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png" alt="istio_gateway"></p>
-<h4 id="&#x30FB;ingress-gateway"><a name="&#x30FB;ingress-gateway" class="plugin-anchor" href="#&#x30FB;ingress-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Ingress Gateway</h4>
-<p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x3001;Virtual Service&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;Ingress&#x3068;Ingress&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306E;&#x4E21;&#x65B9;&#x306E;&#x6A5F;&#x80FD;&#x3092;&#x4F75;&#x305B;&#x6301;&#x3064;&#x3002;</p>
+<h2 id="02-02-&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><a name="02-02-&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;" class="plugin-anchor" href="#02-02-&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>02-02. &#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h2>
+<h3 id="ingress-gateway"><a name="ingress-gateway" class="plugin-anchor" href="#ingress-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>Ingress Gateway</h3>
+<h4 id="&#x30FB;ingress-gateway&#x3068;&#x306F;"><a name="&#x30FB;ingress-gateway&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;ingress-gateway&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Ingress Gateway&#x3068;&#x306F;</h4>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png" alt="istio_ingress-gateway"></p>
+<p>Gateway&#x3001;Service&#x3001;Destination Rule&#x306E;&#x8A2D;&#x5B9A;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x3001;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x3001;&#x7279;&#x5B9A;&#x306E;Service&#x306E;Pod&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/" target="_blank">https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/</a></li>
 <li><a href="https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/" target="_blank">https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/</a></li>
+<li><a href="https://qiita.com/kenyashiro/items/b94197890de434ed9ceb" target="_blank">https://qiita.com/kenyashiro/items/b94197890de434ed9ceb</a></li>
+<li><a href="https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/" target="_blank">https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/</a></li>
 </ul>
-<h4 id="&#x30FB;egress-gateway"><a name="&#x30FB;egress-gateway" class="plugin-anchor" href="#&#x30FB;egress-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Egress Gateway</h4>
-<p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5185;&#x90E8;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x3001;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://knowledge.sakura.ad.jp/20489/" target="_blank">https://knowledge.sakura.ad.jp/20489/</a></p>
 <p><br></p>
-<h3 id="istiod"><a name="istiod" class="plugin-anchor" href="#istiod"><i class="fa fa-link" aria-hidden="true"></i></a>Istiod</h3>
-<h4 id="&#x30FB;istiod&#x3068;&#x306F;"><a name="&#x30FB;istiod&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;istiod&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Istiod&#x3068;&#x306F;</h4>
-<p>&#x5404;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x7D71;&#x62EC;&#x7684;&#x306B;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3002;</p>
+<h3 id="gateway"><a name="gateway" class="plugin-anchor" href="#gateway"><i class="fa fa-link" aria-hidden="true"></i></a>Gateway</h3>
+<h4 id="&#x30FB;gateway&#x3068;&#x306F;"><a name="&#x30FB;gateway&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;gateway&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Gateway&#x3068;&#x306F;</h4>
+<p>Ingress Gateway&#x306E;&#x6A5F;&#x80FD;&#x306E;&#x3046;&#x3061;&#x3001;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x3092;&#x62C5;&#x3046;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/blog/2018/v1alpha3-routing/" target="_blank">https://istio.io/latest/blog/2018/v1alpha3-routing/</a></p>
+<p><br></p>
+<h3 id="virtual-service"><a name="virtual-service" class="plugin-anchor" href="#virtual-service"><i class="fa fa-link" aria-hidden="true"></i></a>Virtual Service</h3>
+<h4 id="&#x30FB;virtual-service&#x3068;&#x306F;"><a name="&#x30FB;virtual-service&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;virtual-service&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Virtual Service&#x3068;&#x306F;</h4>
+<p>Ingress Gateway&#x306E;&#x6A5F;&#x80FD;&#x306E;&#x3046;&#x3061;&#x3001;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5BFE;&#x8C61;&#x306E;Service&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x3092;&#x62C5;&#x3046;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/deployment/architecture/" target="_blank">https://istio.io/latest/docs/ops/deployment/architecture/</a></li>
-<li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=34" target="_blank">https://speakerdeck.com/kurochan/ru-men-envoy?slide=34</a></li>
+<li><a href="https://tech.uzabase.com/entry/2018/11/26/110407" target="_blank">https://tech.uzabase.com/entry/2018/11/26/110407</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/20489/" target="_blank">https://knowledge.sakura.ad.jp/20489/</a></li>
 </ul>
-<h4 id="&#x30FB;citadal"><a name="&#x30FB;citadal" class="plugin-anchor" href="#&#x30FB;citadal"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Citadal</h4>
-<p>&#x6697;&#x53F7;&#x9375;&#x3084;SSL&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3002;</p>
+<p><br></p>
+<h3 id="destination-rule"><a name="destination-rule" class="plugin-anchor" href="#destination-rule"><i class="fa fa-link" aria-hidden="true"></i></a>Destination Rule</h3>
+<h4 id="&#x30FB;destination-rule"><a name="&#x30FB;destination-rule" class="plugin-anchor" href="#&#x30FB;destination-rule"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Destination Rule</h4>
+<p>Ingress Gateway&#x306E;&#x6A5F;&#x80FD;&#x306E;&#x3046;&#x3061;&#x3001;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x5BFE;&#x8C61;&#x306E;Pod&#x3092;&#x6C7A;&#x5B9A;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x3092;&#x62C5;&#x3046;&#x3002;</p>
+<p><br></p>
+<h2 id="02-03-&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><a name="02-03-&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;" class="plugin-anchor" href="#02-03-&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>02-03. &#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306B;&#x95A2;&#x3059;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</h2>
+<h3 id="egress-gateway"><a name="egress-gateway" class="plugin-anchor" href="#egress-gateway"><i class="fa fa-link" aria-hidden="true"></i></a>Egress Gateway</h3>
+<h4 id="&#x30FB;egress-gateway&#x3068;&#x306F;"><a name="&#x30FB;egress-gateway&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;egress-gateway&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Egress Gateway&#x3068;&#x306F;</h4>
+<p>&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5185;&#x90E8;&#x304B;&#x3089;&#x9001;&#x4FE1;&#x3055;&#x308C;&#x308B;&#x30A2;&#x30A6;&#x30C8;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x30D5;&#x30A3;&#x30EB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3057;&#x3001;&#x30D1;&#x30D6;&#x30EA;&#x30C3;&#x30AF;&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://knowledge.sakura.ad.jp/20489/" target="_blank">https://knowledge.sakura.ad.jp/20489/</a></p>
-<h4 id="&#x30FB;galley"><a name="&#x30FB;galley" class="plugin-anchor" href="#&#x30FB;galley"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Galley</h4>
-<h4 id="&#x30FB;sidecar-injector"><a name="&#x30FB;sidecar-injector" class="plugin-anchor" href="#&#x30FB;sidecar-injector"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar-injector</h4>
-<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#x308B;&#x3002;</p>
-<h4 id="&#x30FB;mixer"><a name="&#x30FB;mixer" class="plugin-anchor" href="#&#x30FB;mixer"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Mixer</h4>
-<p>&#x8A8D;&#x8A3C;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x53CE;&#x96C6;&#x3092;&#x884C;&#x3046;&#x3002;</p>
-<h4 id="&#x30FB;pilot"><a name="&#x30FB;pilot" class="plugin-anchor" href="#&#x30FB;pilot"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Pilot</h4>
-<p>Service&#x30C7;&#x30A3;&#x30B9;&#x30AB;&#x30D0;&#x30EA;&#x3084;&#x30C8;&#x30E9;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x306E;&#x7BA1;&#x7406;&#x3092;&#x884C;&#x3046;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png" alt="istio_gateway"></p>
 <p><br></p>
 <h3 id="service-entry"><a name="service-entry" class="plugin-anchor" href="#service-entry"><i class="fa fa-link" aria-hidden="true"></i></a>Service Entry</h3>
 <h4 id="&#x30FB;service-entry&#x3068;&#x306F;"><a name="&#x30FB;service-entry&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;service-entry&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Service Entry&#x3068;&#x306F;</h4>
@@ -3185,17 +3227,45 @@
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://tech.uzabase.com/entry/2018/11/26/110407" target="_blank">https://tech.uzabase.com/entry/2018/11/26/110407</a></p>
 <p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_service-entry.png" alt="istio_service-entry"></p>
 <p><br></p>
-<h3 id="virtual-service"><a name="virtual-service" class="plugin-anchor" href="#virtual-service"><i class="fa fa-link" aria-hidden="true"></i></a>Virtual Service</h3>
-<h4 id="&#x30FB;virtual-service&#x3068;&#x306F;"><a name="&#x30FB;virtual-service&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;virtual-service&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Virtual Service&#x3068;&#x306F;</h4>
-<p>Gateway&#x304B;&#x3089;&#x53D7;&#x4FE1;&#x3057;&#x305F;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;Service&#x306B;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x3002;</p>
+<h2 id="02-04-istiod"><a name="02-04-istiod" class="plugin-anchor" href="#02-04-istiod"><i class="fa fa-link" aria-hidden="true"></i></a>02-04. Istiod</h2>
+<h3 id="istiod&#x3068;&#x306F;"><a name="istiod&#x3068;&#x306F;" class="plugin-anchor" href="#istiod&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>Istiod&#x3068;&#x306F;</h3>
+<p>&#x5404;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x7D71;&#x62EC;&#x7684;&#x306B;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
-<li><a href="https://tech.uzabase.com/entry/2018/11/26/110407" target="_blank">https://tech.uzabase.com/entry/2018/11/26/110407</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/20489/" target="_blank">https://knowledge.sakura.ad.jp/20489/</a></li>
+<li><a href="https://istio.io/latest/docs/ops/deployment/architecture/" target="_blank">https://istio.io/latest/docs/ops/deployment/architecture/</a></li>
+<li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=34" target="_blank">https://speakerdeck.com/kurochan/ru-men-envoy?slide=34</a></li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service.png" alt="istio_virtual-service"></p>
 <p><br></p>
-<h2 id="03-&#x30C6;&#x30B9;&#x30C8;"><a name="03-&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#03-&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>03. &#x30C6;&#x30B9;&#x30C8;</h2>
+<h3 id="citadal"><a name="citadal" class="plugin-anchor" href="#citadal"><i class="fa fa-link" aria-hidden="true"></i></a>Citadal</h3>
+<h4 id="&#x30FB;citadal&#x3068;&#x306F;"><a name="&#x30FB;citadal&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;citadal&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Citadal&#x3068;&#x306F;</h4>
+<p>&#x6697;&#x53F7;&#x9375;&#x3084;SSL&#x8A3C;&#x660E;&#x66F8;&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://knowledge.sakura.ad.jp/20489/" target="_blank">https://knowledge.sakura.ad.jp/20489/</a></p>
+<p><br></p>
+<h3 id="galley"><a name="galley" class="plugin-anchor" href="#galley"><i class="fa fa-link" aria-hidden="true"></i></a>Galley</h3>
+<h4 id="&#x30FB;galley&#x3068;&#x306F;"><a name="&#x30FB;galley&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;galley&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Galley&#x3068;&#x306F;</h4>
+<p><br></p>
+<h3 id="sidecar-injector"><a name="sidecar-injector" class="plugin-anchor" href="#sidecar-injector"><i class="fa fa-link" aria-hidden="true"></i></a>sidecar-injector</h3>
+<h4 id="&#x30FB;sidecar-injector&#x3068;&#x306F;"><a name="&#x30FB;sidecar-injector&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;sidecar-injector&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar-injector&#x3068;&#x306F;</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x3068;&#x3057;&#x3066;&#x7A3C;&#x50CD;&#x3055;&#x305B;&#x308B;&#x3002;</p>
+<p><br></p>
+<h3 id="mixer"><a name="mixer" class="plugin-anchor" href="#mixer"><i class="fa fa-link" aria-hidden="true"></i></a>Mixer</h3>
+<h4 id="&#x30FB;mixer&#x3068;&#x306F;"><a name="&#x30FB;mixer&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;mixer&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Mixer&#x3068;&#x306F;</h4>
+<p>&#x8A8D;&#x8A3C;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x53CE;&#x96C6;&#x3092;&#x884C;&#x3046;&#x3002;</p>
+<p><br></p>
+<h3 id="pilot"><a name="pilot" class="plugin-anchor" href="#pilot"><i class="fa fa-link" aria-hidden="true"></i></a>Pilot</h3>
+<h4 id="&#x30FB;pilot&#x3068;&#x306F;"><a name="&#x30FB;pilot&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;pilot&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Pilot&#x3068;&#x306F;</h4>
+<p>Service&#x30C7;&#x30A3;&#x30B9;&#x30AB;&#x30D0;&#x30EA;&#x3084;&#x30C8;&#x30E9;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x306E;&#x7BA1;&#x7406;&#x3092;&#x884C;&#x3046;&#x3002;</p>
+<p><br></p>
+<h2 id="02-05-istiooperator"><a name="02-05-istiooperator" class="plugin-anchor" href="#02-05-istiooperator"><i class="fa fa-link" aria-hidden="true"></i></a>02-05. IstioOperator</h2>
+<h3 id="istiooperator&#x3068;&#x306F;"><a name="istiooperator&#x3068;&#x306F;" class="plugin-anchor" href="#istiooperator&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>IstioOperator&#x3068;&#x306F;</h3>
+<p>Istio&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3084;&#x3001;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x64CD;&#x4F5C;&#x304C;&#x53EF;&#x80FD;&#x306A;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x3053;&#x3068;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/" target="_blank">https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/</a></li>
+<li><a href="https://istio.io/latest/docs/setup/install/operator/#update" target="_blank">https://istio.io/latest/docs/setup/install/operator/#update</a></li>
+</ul>
+<p><br></p>
+<h2 id="03-injection&#x30C6;&#x30B9;&#x30C8;"><a name="03-injection&#x30C6;&#x30B9;&#x30C8;" class="plugin-anchor" href="#03-injection&#x30C6;&#x30B9;&#x30C8;"><i class="fa fa-link" aria-hidden="true"></i></a>03. Injection&#x30C6;&#x30B9;&#x30C8;</h2>
 <h3 id="fault-injection"><a name="fault-injection" class="plugin-anchor" href="#fault-injection"><i class="fa fa-link" aria-hidden="true"></i></a>Fault Injection</h3>
 <h4 id="&#x30FB;fault-injection&#x3068;&#x306F;"><a name="&#x30FB;fault-injection&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;fault-injection&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Fault Injection&#x3068;&#x306F;</h4>
 <p>&#x969C;&#x5BB3;&#x3092;&#x610F;&#x56F3;&#x7684;&#x306B;&#x6CE8;&#x5165;&#x3057;&#x3001;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x691C;&#x8A3C;&#x3059;&#x308B;&#x3002;</p>
@@ -3258,7 +3328,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎Istio","level":"1.9.4.1","depth":3,"next":{"title":"📖 ︎Envoy","level":"1.9.4.2","depth":3,"path":"public/virtualization/virtualization_service_mesh_envoy.md","ref":"public/virtualization/virtualization_service_mesh_envoy.md","articles":[]},"previous":{"title":"サービスメッシュ","level":"1.9.4","depth":2,"ref":"","articles":[{"title":"📖 ︎Istio","level":"1.9.4.1","depth":3,"path":"public/virtualization/virtualization_service_mesh_istio.md","ref":"public/virtualization/virtualization_service_mesh_istio.md","articles":[]},{"title":"📖 ︎Envoy","level":"1.9.4.2","depth":3,"path":"public/virtualization/virtualization_service_mesh_envoy.md","ref":"public/virtualization/virtualization_service_mesh_envoy.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_service_mesh_istio.md","mtime":"2022-01-06T16:16:59.200Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-06T16:17:06.001Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎Istio","level":"1.9.4.1","depth":3,"next":{"title":"📖 ︎Envoy","level":"1.9.4.2","depth":3,"path":"public/virtualization/virtualization_service_mesh_envoy.md","ref":"public/virtualization/virtualization_service_mesh_envoy.md","articles":[]},"previous":{"title":"サービスメッシュ","level":"1.9.4","depth":2,"ref":"","articles":[{"title":"📖 ︎Istio","level":"1.9.4.1","depth":3,"path":"public/virtualization/virtualization_service_mesh_istio.md","ref":"public/virtualization/virtualization_service_mesh_istio.md","articles":[]},{"title":"📖 ︎Envoy","level":"1.9.4.2","depth":3,"path":"public/virtualization/virtualization_service_mesh_envoy.md","ref":"public/virtualization/virtualization_service_mesh_envoy.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/virtualization/virtualization_service_mesh_istio.md","mtime":"2022-01-08T09:50:19.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-08T09:50:25.181Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
