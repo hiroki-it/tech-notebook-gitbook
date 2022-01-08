@@ -8,7 +8,7 @@
 
 <br>
 
-## 01. セットアップ（@サーバー）
+## 01. セットアップ
 
 ### インストール
 
@@ -66,11 +66,9 @@ SET time_zone = "Asia/Tokyo";
 
 <br>
 
-## 01-02. セットアップ（@Docker）
+### 設定ファイル
 
-### ```/etc/mysql/my.cnf```ファイル
-
-#### ・```my.cnf```ファイルとは
+#### ・```/etc/mysql/my.cnf```ファイル
 
 MySQLの設定値を定義する。MySQL@Dockerでは、```/etc/mysql```ディレクトリに配置されている。ただ実際には、```/etc/mysql/conf.d/```ディレクトリと```/etc/mysql/mysql.conf.d/```ディレクトリ以下にある```*.cnf```ファイルを読み込むようになっている。
 
@@ -144,9 +142,7 @@ default-character-set = utf8mb4 # utf8
 
 <br>
 
-### ```datadir```ディレクトリ
-
-#### ・```datadir```ディレクトリとは
+#### ・```datadir```ディレクトリ
 
 MySQLのDBやテーブルの情報を管理する。DB固有の情報は、DB名のディレクトリで管理されている。dockerエリアのボリュームのマウント先として指定される。
 

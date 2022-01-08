@@ -8,7 +8,7 @@
 
 <br>
 
-## 01. dnsutils
+## 01. dnsutils/bind-utils
 
 ### インストール
 

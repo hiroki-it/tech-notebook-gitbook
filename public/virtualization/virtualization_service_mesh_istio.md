@@ -8,37 +8,110 @@
 
 <br>
 
-## 01. Istio
+## 01. セットアップ
 
-### 特徴
+### インストール
+
+#### ・istioctl経由
+
+プロファイルを指定し、Istioオブジェクトをインストールする。
+
+参考：https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+
+```bash
+$ istioctl install --set profile=demo
+```
+
+#### ・IstioOperatorオブジェクト経由
+
+（１）まずは、IstioOperatorオブジェクトをインストールする。IstioOperatorオブジェクトは、デフォルトで```istio-system```にIstioオブジェクトをインストールするようになっている。
+
+参考：https://istio.io/latest/docs/setup/install/operator/
+
+```bash
+$ istioctl operator init
+
+Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:1.12.1
+Operator controller will watch namespaces: istio-system
+✔ Istio operator installed
+✔ Installation complete
+```
+
+（２）IstioOperatorオブジェクトが定義されたマニフェストファイルを、```istioctl```コマンドまたは```kubectl```コマンドで操作し、Istioオブジェクトをインストールする。```kubectl```コマンドの実行結果は、インストールされたことがわかりにくいことに注意する。
+
+```bash
+# istioctlコマンド
+$ istioctl install -y -f ./istio-manifests/operator.yml
+✔ Istio core installed
+✔ Istiod installed
+✔ Ingress gateways installed
+✔ Installation complete
+Making this installation the default for injection and validation.
+```
+
+```bash
+# kubectlコマンド
+$ kubectl apply -f ./istio-manifests/operator.yml
+
+istiooperator.install.istio.io/istio-operator created
+```
+
+参考：
+
+- https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+- https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
+
+<br>
+
+### アンインストール
+
+#### ・istioctl経由
+
+Istioオブジェクトを全てアンインストールする。
+
+```bash
+$ istioctl x uninstall --purge
+```
+
+<br>
+
+## 02. Istioオブジェクト
+
+### Istioオブジェクト
+
+Istioを構成するオブジェクトことで、実体はKubernetesのカスタムリソースである。
+
+<br>
+
+### Istioメッシュ
 
 マイクロサービスアーキテクチャにおけるサービスメッシュを実装する。Istioを必ずしも用いる必要はなく、KubernetesやOpenShiftの機能でこれを実現してもよい。
 
-参考：https://qiita.com/Ladicle/items/4ba57078128d6affadd5
+参考：
 
-<br>
-
-### 依存関係の解決
-
-機能『```A ---> B ---> C ---> D```』を持つモノリシックアプリケーションがあるとする。これをマイクロサービス化して、ABCDを別々のアプリケーションに分割する。それぞれのアプリケーションがPod上で稼働することになる。しかし、これだけではABCDが独立しておらず、各機能は1つ前の機能に依存している。この依存関係を解決する。
-
-<br>
-
-## 02. Istio Mesh
-
-### Istio Meshとは
-
-参考：https://istio.io/latest/docs/ops/deployment/architecture/
+- https://istio.io/latest/docs/ops/deployment/architecture/
+- https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 
 ![istio_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png)
 
 <br>
 
-### Destination Rule
+## 02-02. インバウンド通信に関するオブジェクト
 
-#### ・Destination Rule
+### Ingress Gateway
 
-VirtualServiceから受信したインバウンド通信をServiceにルーティングする時に、より詳細なルーティングルールを適用する。
+#### ・Ingress Gatewayとは
+
+![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
+
+Gateway、Service、Destination Ruleの設定に基づいて、クラスター外部から送信されるインバウンド通信をフィルタリングし、特定のServiceのPodにルーティングする。
+
+参考：
+
+- https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
+- https://qiita.com/kenyashiro/items/b94197890de434ed9ceb
+- https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 
 <br>
 
@@ -46,59 +119,44 @@ VirtualServiceから受信したインバウンド通信をServiceにルーテ�
 
 #### ・Gatewayとは
 
-クラスター内外間の通信を制御する。
+Ingress Gatewayの機能のうち、クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う。
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
-![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
+<br>
 
-#### ・Ingress Gateway
+### Virtual Service
 
-クラスター外部から送信されるインバウンド通信をフィルタリングし、Virtual Serviceにルーティングする。IngressとIngressコントローラーの両方の機能を併せ持つ。
+#### ・Virtual Serviceとは
+
+Ingress Gatewayの機能のうち、ルーティング対象のServiceを決定する機能を担う。
 
 参考：
 
-- https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
-- https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
+- https://tech.uzabase.com/entry/2018/11/26/110407
+- https://knowledge.sakura.ad.jp/20489/
 
-#### ・Egress Gateway
+<br>
+
+### Destination Rule
+
+#### ・Destination Rule
+
+Ingress Gatewayの機能のうち、ルーティング対象のPodを決定する機能を担う。
+
+<br>
+
+## 02-03. アウトバウンド通信に関するオブジェクト
+
+### Egress Gateway
+
+#### ・Egress Gatewayとは
 
 クラスター内部から送信されるアウトバウンド通信をフィルタリングし、パブリックネットワークにルーティングする。
 
 参考：https://knowledge.sakura.ad.jp/20489/
 
-<br>
-
-### Istiod
-
-#### ・Istiodとは
-
-各マイクロサービスのプロキシサイドカーコンテナを統括的に管理する。
-
-参考：
-
-- https://istio.io/latest/docs/ops/deployment/architecture/
-- https://speakerdeck.com/kurochan/ru-men-envoy?slide=34
-
-#### ・Citadal
-
-暗号鍵やSSL証明書を管理する。
-
-参考：https://knowledge.sakura.ad.jp/20489/
-
-#### ・Galley
-
-#### ・sidecar-injector
-
-Envoyコンテナをサイドカーとして稼働させる。
-
-#### ・Mixer
-
-認証やデータ収集を行う。
-
-#### ・Pilot
-
-Serviceディスカバリやトラフィックの管理を行う。
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_gateway.png)
 
 <br>
 
@@ -114,22 +172,73 @@ Serviceディスカバリやトラフィックの管理を行う。
 
 <br>
 
-### Virtual Service
+## 02-04. Istiod
 
-#### ・Virtual Serviceとは
+### Istiodとは
 
-Gatewayから受信したインバウンド通信をServiceにルーティングする。
+各マイクロサービスのプロキシサイドカーコンテナを統括的に管理する。
 
 参考：
 
-- https://tech.uzabase.com/entry/2018/11/26/110407
-- https://knowledge.sakura.ad.jp/20489/
-
-![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_virtual-service.png)
+- https://istio.io/latest/docs/ops/deployment/architecture/
+- https://speakerdeck.com/kurochan/ru-men-envoy?slide=34
 
 <br>
 
-## 03. テスト
+### Citadal
+
+#### ・Citadalとは
+
+暗号鍵やSSL証明書を管理する。
+
+参考：https://knowledge.sakura.ad.jp/20489/
+
+<br>
+
+### Galley
+
+#### ・Galleyとは
+
+<br>
+
+### sidecar-injector
+
+#### ・sidecar-injectorとは
+
+Envoyコンテナをサイドカーとして稼働させる。
+
+<br>
+
+### Mixer
+
+#### ・Mixerとは
+
+認証やデータ収集を行う。
+
+<br>
+
+### Pilot
+
+#### ・Pilotとは
+
+Serviceディスカバリやトラフィックの管理を行う。
+
+<br>
+
+## 02-05. IstioOperator
+
+### IstioOperatorとは
+
+Istioのインストールや、Istioオブジェクトの操作が可能なオブジェクトのこと。
+
+参考：
+
+- https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/
+- https://istio.io/latest/docs/setup/install/operator/#update
+
+<br>
+
+## 03. Injectionテスト
 
 ### Fault Injection
 

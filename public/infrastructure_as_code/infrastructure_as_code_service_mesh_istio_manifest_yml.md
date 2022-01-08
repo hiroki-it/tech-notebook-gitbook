@@ -20,18 +20,20 @@
 
 #### ・proxy.istio.io/configとは
 
-プロキシーコンテナのオプションを上書きで設定する。
+プロキシコンテナのオプションを上書きで設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 #### ・configPath
+
+プロキシコンテナの設定ファイルのパスを指定する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
 ```yaml
 annotations:
   proxy.istio.io/config:  |
-    configPath: ./envoy/envoy.yml
+    configPath: ./etc/istio/proxy
 ```
 
 <br>
@@ -40,7 +42,7 @@ annotations:
 
 #### ・sidecar.istio.io/proxyCPUとは
 
-プロキシーコンテナで使用するCPU容量を設定する。
+プロキシコンテナで使用するCPU容量を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -55,7 +57,7 @@ annotations:
 
 #### ・sidecar.istio.io/proxyImageとは
 
-プロキシーコンテナの構築に使用するDockerイメージを設定する。
+プロキシコンテナの構築に使用するDockerイメージを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -70,7 +72,7 @@ annotations:
 
 #### ・sidecar.istio.io/proxyMemoryとは
 
-プロキシーコンテナで使用するメモリ容量を設定する。
+プロキシコンテナで使用するメモリ容量を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
@@ -229,6 +231,10 @@ spec:
 ### component
 
 #### ・componentとは
+
+Istioオブジェクトを作成する。
+
+参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
 #### ・egressGateways
 

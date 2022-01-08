@@ -8,45 +8,48 @@
 
 <br>
 
-## 01. CGIについて
+## 01. PHP-FPM
+
+### PHP-FPMとは
+
+![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
+
+PHPのために実装されたFastCGIのこと。WebサーバーとPHPファイルの間でデータ通信を行う。PHP-FPMとPHPのプロセスは独立している。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
+
+参考：
+
+- https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
+- https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_framework_laravel_component.html
+
+<br>
+
+### CGI
 
 #### ・CGIとは
 
 ![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/CGIの仕組み.png)
 
-<br>
-
-### FastCGI：Fast Common Gateway Interface
-
-#### ・FastCGIとは
+#### ・FastCGI：Fast Common Gateway Interface
 
 CGIプロトコルのパフォーマンスを向上させたプロトコル仕様のこと。
 
 <br>
 
-### PHP-FPM
+## 02. セットアップ
 
-#### ・PHP-FPMとは
+### インストール
 
-PHPのために実装されたFastCGIのこと。WebサーバーとPHPファイルの間でデータ通信を行う。
+#### ・apt-get経由
 
-参考：https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-
-![php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/php-fpm.png)
-
-#### ・独立したプロセス
-
-PHP-FPMとPHPのプロセスは独立している。そのため、設定値を別々に設定する必要がある。例えば、ログの出力先はそれぞれ個別に設定する必要がある。
-
-参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_php_framework_laravel_component.html
+```bash
+$ apt-get install php-fpm
+```
 
 <br>
 
-## 02. セットアップ（@Docker）
+### 設定ファイル
 
-### ```/usr/local/etc/php-fpm.d/www.conf```ファイル
-
-#### ・```www.conf```ファイルとは
+#### ・```/usr/local/etc/php-fpm.d/www.conf```ファイル
 
 PHP-FPMのログ以外の項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。```php.ini```ファイルによって読み込まれる。```php.ini```ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。Nginxからリクエストを受信する場合、```/usr/local/etc/php-fpm.d/www.conf```ファイルと```/etc/nginx/nginx.conf```ファイルの両方で、プロセスのユーザ名を『```www-data```』とする必要がある。『```www-data```』はApacheプロセスのユーザ名のデフォルト値である。
 
@@ -104,8 +107,6 @@ php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazon
 php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 ```
 
-#### ・注意点
-
 PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。これに後勝ちするために、ホストでは```www.conf```ファイルとして定義しておき、コンテナ側にコピーする時は```zzz-www.conf```ファイルとする。
 
 参考：https://kengotakimoto.com/docker-laravel/#toc8
@@ -114,11 +115,7 @@ PHP-FPMベースイメージには```zz-docker.conf ```ファイルが組み込�
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
-<br>
-
-### ```/usr/local/etc/php-fpm.d/docker.conf```ファイル
-
-#### ・```docker.conf```ファイルとは
+#### ・```/usr/local/etc/php-fpm.d/docker.conf```ファイル
 
 PHP-FPMの特にログ項目を設定する。PHP-FPM@Dockerでは、```/usr/local/etc/php-fpm.d```以下に配置されている。
 
@@ -142,11 +139,11 @@ decorate_workers_output = no
 
 <br>
 
-## 04. ログ
+## 03. ログ
 
 ### ログの種類
 
-### ・NOTICE
+#### ・NOTICE
 
 ```log
 [01-Sep-2021 00:00:00] NOTICE: fpm is running, pid 1

@@ -103,6 +103,18 @@ $ chmod -R 600 <ディレクトリ名>
 | 644  | rw-    | r--      | r--    | 所有者以外にWrite、Execute権限なし |
 | 755  | rwx    | r-x      | r-x    | 所有者以外にWrite権限なし          |
 
+#### ・go
+
+```chmod```コマンドの実行者以外にアクセス権限を付与する。
+
+参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
+
+```
+$ chmod go+r <ファイル名>
+```
+
+
+
 <br>
 
 ### cp
