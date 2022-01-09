@@ -594,7 +594,7 @@ Reset側に『1』を入力すると、両方の出力結果は変化する。
 ーーーーーーーーーーー
  0000 0000 0000 1000
 
-引用：https://ameblo.jp/kou05/entry-10883110086.html
+参考：https://ameblo.jp/kou05/entry-10883110086.html
 
 **＊例題＊**
 

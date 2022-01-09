@@ -8,82 +8,7 @@
 
 <br>
 
-## 01. annotations
-
-### annotationsとは
-
-各Podで個別に使用するサービスメッシュのオプションを設定する。
-
-<br>
-
-### proxy.istio.io/config
-
-#### ・proxy.istio.io/configとは
-
-プロキシコンテナのオプションを上書きで設定する。
-
-参考：https://istio.io/latest/docs/reference/config/annotations/
-
-#### ・configPath
-
-プロキシコンテナの設定ファイルのパスを指定する。
-
-参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-
-```yaml
-annotations:
-  proxy.istio.io/config:  |
-    configPath: ./etc/istio/proxy
-```
-
-<br>
-
-### sidecar.istio.io/proxyCPU
-
-#### ・sidecar.istio.io/proxyCPUとは
-
-プロキシコンテナで使用するCPU容量を設定する。
-
-参考：https://istio.io/latest/docs/reference/config/annotations/
-
-```yaml
-annotations:
-  sidecar.istio.io/proxyCPU: 2
-```
-
-<br>
-
-### sidecar.istio.io/proxyImage
-
-#### ・sidecar.istio.io/proxyImageとは
-
-プロキシコンテナの構築に使用するDockerイメージを設定する。
-
-参考：https://istio.io/latest/docs/reference/config/annotations/
-
-```yaml
-annotations:
-  sidecar.istio.io/proxyImage: foo-envoy
-```
-
-<br>
-
-### sidecar.istio.io/proxyMemory
-
-#### ・sidecar.istio.io/proxyMemoryとは
-
-プロキシコンテナで使用するメモリ容量を設定する。
-
-参考：https://istio.io/latest/docs/reference/config/annotations/
-
-```yaml
-annotations:
-  sidecar.istio.io/proxyMemory: 4
-```
-
-<br>
-
-## 02. apiVersion
+## 01. apiVersion
 
 ### apiVersionとは
 
@@ -95,7 +20,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 03. kind
+## 02. kind
 
 ### kindとは
 
@@ -107,7 +32,7 @@ apiVersion: networking.istio.io/v1beta1
 
 <br>
 
-## 04. metadata
+## 03. metadata
 
 ### metadataとは
 
@@ -126,7 +51,92 @@ metadata:
 
 <br>
 
-## 05. spec（DestinationRuleの場合）
+## 03-02. metadata（KubernetesのNamespaceにて）
+
+### labels
+
+#### ・istio-injection
+
+サイドカーコンテナとして、Envoyコンテナを構築するかどうかを設定する。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
+
+```yaml
+kind: Namespace
+metadata:
+  labels:
+    istio-injection: enabled
+```
+
+<br>
+
+## 03-03. metadata（KubernetesnのPodにて）
+
+### annotations
+
+#### ・annotations
+
+KubernetesのPodやDeploymentの```template```キーの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+ただし、Envoyコンテナごとのオプション値を```annotations```キーから設定することは非推奨であり、```istio-proxy```コンテナから設定した方が良い。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+
+#### ・proxy.istio.io/config.configPath
+
+Envoyコンテナの構成情報をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリにファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+
+参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+
+```yaml
+kind: Namespace
+metadata:
+  annotations:
+    proxy.istio.io/config:  |
+      configPath: ./etc/istio/proxy
+```
+
+#### ・sidecar.istio.io/proxyCPU
+
+Envoyコンテナで使用するCPU容量を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+```yaml
+metadata:
+  annotations:
+    sidecar.istio.io/proxyCPU: 2
+```
+
+#### ・sidecar.istio.io/proxyImage
+
+Envoyコンテナの構築に使用するDockerイメージを設定する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+```yaml
+metadata:
+  annotations:
+    sidecar.istio.io/proxyImage: foo-envoy
+```
+
+#### ・sidecar.istio.io/proxyMemory
+
+Envoyコンテナで使用するメモリ容量を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/annotations/
+
+```yaml
+metadata:
+  annotations:
+    sidecar.istio.io/proxyMemory: 4
+```
+
+<br>
+
+## 04. spec（DestinationRuleの場合）
 
 ### host
 
@@ -168,7 +178,24 @@ spec:
 
 <br>
 
-## 06. spec（Gatewayの場合）
+## 05. spec（Gatewayの場合）
+
+### selector
+
+#### ・selectorとは
+
+Gatewayの適用対象のIngress Gatewayに付与されたラベルを設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+
+```yaml
+kind: Gateway
+spec:
+  selector:
+    istio: ingress-gateway
+```
+
+<br>
 
 ### servers
 
@@ -226,19 +253,115 @@ spec:
 
 <br>
 
-## 07. spec（IstioOperatorの場合）
+## 06. spec（IstioOperatorの場合）
 
 ### component
 
 #### ・componentとは
 
-Istioオブジェクトを作成する。
+IstioOperator経由でIstioオブジェクトをインストールする。
 
 参考：https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 
+#### ・ingressGateways
+
+IstioOperator経由でインストールされるIngress Gatewayのオプションを設定する。Gatewayとは異なるオブジェクトであることに注意する。ingressGatewaysの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+
+参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
+
+```yaml
+kind: IstioOperator
+spec:
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway
+        enabled: true
+        k8s:
+          service:
+            ports:
+              - name: http
+                port: 80
+                protocol: TCP
+                targetPort: 80
+  values:
+    gateways:
+      istio-ingressgateway:
+        runAsRoot: true
+```
+
+ちなみに、以下の方法で独自のIngress Gatewayを作成できる（かなり大変）。
+
+参考：
+
+- https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
+- https://github.com/istio/istio/issues/23303
+
+最終的な設定値は、```kubectl get```コマンドで確認できる。
+
+```yaml
+$ kubectl -n istio-system get service istio-ingressgateway -o yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {...} # ここにも、JSON形式で設定値が記載されている。
+  creationTimestamp: "2022-01-01T12:00:00Z"
+  labels:
+    app: istio-ingressgateway
+    install.operator.istio.io/owning-resource: istio-operator
+    install.operator.istio.io/owning-resource-namespace: istio-system
+    istio: ingressgateway
+    istio.io/rev: default
+    operator.istio.io/component: IngressGateways
+    operator.istio.io/managed: Reconcile
+    operator.istio.io/version: 1.12.1
+    release: istio
+  name: istio-ingressgateway
+  namespace: istio-system
+  resourceVersion: "322999"
+  uid: 7c292753-6219-4e4b-bd81-9012fabb97b3
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.108.30.158
+  clusterIPs:
+  - 10.108.30.158
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http2
+    nodePort: 30548
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  - name: status-port
+    nodePort: 31817
+    port: 15021
+    protocol: TCP
+    targetPort: 15021
+  - name: https
+    nodePort: 32016
+    port: 443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: istio-ingressgateway
+    istio: ingressgateway
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.108.30.158
+```
+
 #### ・egressGateways
 
-Egress Gatewayのオプションを設定する。
+IstioOperator経由でインストールされるEgress Gatewayのオプションを設定する。
 
 ```yaml
 kind: IstioOperator
@@ -255,13 +378,13 @@ spec:
 
 #### ・meshConfigとは
 
-サービスメッシュツールのオプションを設定する。ここではEnvoyを使用した場合を説明する。
+全てのEnvoyコンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
 #### ・accessLogFile
 
-Envoyプロセスのアクセスログの出力先を設定する。
+全てのEnvoyコンテナに関して、アクセスログの出力先を設定する。
 
 ```yaml
 kind: IstioOperator
@@ -270,9 +393,21 @@ spec:
     accessLogFile: /dev/stdout
 ```
 
+#### ・defaultConfig
+
+Envoyコンテナ別に設定値を上書きしたい時に、そのデフォルト値を設定する。これを上書きしたい場合は、各Podの```metadata.annotations.proxy.istio.io/config.configPath```キーにオプションを設定する。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    defaultConfig:
+    # 〜 中略 〜
+```
+
 #### ・enableTracing
 
-分散トレースの収集を有効化するかどうかを設定する。
+全てのEnvoyコンテナに関して、分散トレースの収集を有効化するかどうかを設定する。
 
 ```yaml
 kind: IstioOperator
@@ -283,31 +418,53 @@ spec:
 
 #### ・ingressSelector
 
-使用するIngressコントローラーを設定する。Ingress GatewayをIngressコントローラーとして使用できる。
+全てのEnvoyコンテナに関して、使用するGatewayの```istio```ラベル値を設定する。Ingress GatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator
 spec:
   meshConfig:
-    ingressSelector: istio-ingressgateway
+    ingressSelector: ingressgateway
 ```
 
 #### ・ingressService
 
-使用するIngressを設定する。Ingress GatewayをIngressとして使用できる。
+全てのEnvoyコンテナに関して、使用するIngressコントローラーの```istio```ラベル値を設定する。Ingress GatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator
 spec:
   meshConfig:
-    ingressService: istio-ingressgateway
+    ingressService: ingressgateway
+```
+
+#### ・proxyHttpPort
+
+全てのEnvoyコンテナに関して、クラスター外部からのインバウンド通信（特にHTTPプロトコル通信）を受信するポート番号を設定する。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    proxyHttpPort: 80
+```
+
+#### ・proxyListenPort
+
+全てのEnvoyコンテナに関して、他マイクロサービスからのインバウンド通信を受信するポート番号を設定する。
+
+```yaml
+kind: IstioOperator
+spec:
+  meshConfig:
+    proxyListenPort: 80
 ```
 
 <br>
 
 ### namespace
 
-Istiodをインストールする名前空間を設定する。
+IstioOperator経由でインストールされるIstioオブジェクトの名前空間を設定する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -321,7 +478,7 @@ spec:
 
 ### profile
 
-Istioのプロファイルをインストールする。
+インストールに使用するプロファイルを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
 
@@ -335,7 +492,7 @@ spec:
 
 ### tag
 
-PilotのDockerイメージのバージョンを指定する。
+PilotのDockerイメージのバージョンを設定する。
 
 参考：
 
@@ -350,7 +507,32 @@ spec:
 
 <br>
 
-## 08. spec（VirtualServiceの場合）
+### values
+
+#### ・sidecarInjectorWebhook
+
+Envoyコンテナごとのオプション値を```spec```として設定する。
+
+参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
+
+```yaml
+kind: IstioOperator
+spec:
+  values:
+    sidecarInjectorWebhook:
+      templates:
+        custom: |
+          spec:
+            containers:
+            - name: istio-proxy
+              env:
+              - name: FOO
+                value: foo
+```
+
+<br>
+
+## 07. spec（VirtualServiceの場合）
 
 ### gateways
 

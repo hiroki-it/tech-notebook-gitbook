@@ -73,7 +73,7 @@ Istioの機能のセットを提供する。
 
 ### KubernetesにおけるIstioの有効化
 
-KubernetesでIstioを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。プロキシコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
+KubernetesでIstioを使用できるように、```istio-injection```ラベルの値に```enabled```を設定する。Envoyコンテナをサイドカーコンテナとして自動的にデプロイできるようになる。```default```以外の名前空間名をつける場合は、コマンドではなく、マニフェストファイル上でこれを設定できる。
 
 **＊実行例＊**
 
@@ -284,7 +284,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 
 #### ・proxy-statusとは
 
-Ingress Gateway、Egress Gateway、プロキシコンテナのステータスを表示する。
+Ingress Gateway、Egress Gateway、Envoyコンテナのステータスを表示する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 

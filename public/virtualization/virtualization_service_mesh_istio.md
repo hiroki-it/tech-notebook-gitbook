@@ -77,7 +77,7 @@ $ istioctl x uninstall --purge
 
 ## 02. Istioオブジェクト
 
-### Istioオブジェクト
+### Istioオブジェクトとは
 
 Istioを構成するオブジェクトことで、実体はKubernetesのカスタムリソースである。
 
@@ -85,14 +85,22 @@ Istioを構成するオブジェクトことで、実体はKubernetesのカス�
 
 ### Istioメッシュ
 
-マイクロサービスアーキテクチャにおけるサービスメッシュを実装する。Istioを必ずしも用いる必要はなく、KubernetesやOpenShiftの機能でこれを実現してもよい。
+#### ・Istioメッシュとは
+
+Istioオブジェクトを組み合わせて、サービスメッシュを実装する。マイクロサービス間の通信を透過的にする（通信の存在を感じさせない）ことを思想としている。Istioを必ずしも用いる必要はなく、KubernetesやOpenShiftの機能でこれを実現してもよい。
 
 参考：
 
 - https://istio.io/latest/docs/ops/deployment/architecture/
-- https://qiita.com/Ladicle/items/4ba57078128d6affadd5
+- https://techblog.zozo.com/entry/zozotown-istio-production-ready
 
 ![istio_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png)
+
+#### ・思想
+
+
+
+
 
 <br>
 
@@ -104,7 +112,7 @@ Istioを構成するオブジェクトことで、実体はKubernetesのカス�
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、Service、Destination Ruleの設定に基づいて、クラスター外部から送信されるインバウンド通信をフィルタリングし、特定のServiceのPodにルーティングする。
+Gateway、Service、Destination Ruleの設定に基づいて、クラスター外部から送信されるインバウンド通信をPodにルーティングする。
 
 参考：
 
@@ -176,7 +184,7 @@ Ingress Gatewayの機能のうち、ルーティング対象のPodを決定す�
 
 ### Istiodとは
 
-各マイクロサービスのプロキシサイドカーコンテナを統括的に管理する。
+サイドカーコンテナのEnvoyコンテナを統括的に管理する。
 
 参考：
 

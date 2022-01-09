@@ -660,7 +660,7 @@ pick b1b5c0f add #0 *****
 ここで未知のエラー
 
 ```bash
-CONFLICT (modify/delete): README.md deleted in HEAD and modified in 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載
+CONFLICT (modify/delete): README.md deleted in HEAD and modified in 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した
 した. Version 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した of README.md left in tree.
 error: could not apply 37bee65... update #0 README.mdに本レポジトリのタイトルと引用を記載した
 

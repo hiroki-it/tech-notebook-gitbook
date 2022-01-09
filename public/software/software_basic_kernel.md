@@ -30,7 +30,7 @@
 
 マスタスケジュラは、ジョブスケジュラにジョブの実行を命令する。データをコンピュータに入力し、複数の処理が実行され、結果が出力されるまでの一連の処理のこと。『Task』と『Job』の定義は曖昧なので、『process』と『set of processes』を使うべきとのこと。
 
-引用：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
+参考：https://stackoverflow.com/questions/3073948/job-task-and-process-whats-the-difference/31212568
 
 複数のジョブ（プログラムやバッチ）の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。ややこしいことに、タスクスケジューラとも呼ぶ。
 

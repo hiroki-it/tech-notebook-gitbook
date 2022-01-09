@@ -10,23 +10,21 @@
 
 ## 01. ソフトウェアとは
 
-### ユーザの操作による命令の流れ
+### 構成
+
+ソフトウェアは、『OS』『ミドルウェア』『アプリケーション（アプリケーションソフトウェア）』から構成される。OSとミドルウェアに『ハードウェア』を加えて、インフラとも呼ぶ。
+
+参考：https://thinkit.co.jp/article/11526
+
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/software.png)
+
+<br>
+
+### 構成要素の関係性
 
 ユーザの操作による命令が、ソフトウェアを介して、ハードウェアに伝わるまで、を以下に示す。
 
 ![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/ソフトウェアとハードウェア.png)
-
-### ソフトウェアの種類
-
-#### 1. アプリケーションソフトウェア（応用ソフトウェア）
-
-#### 2. ミドルウェア
-
-#### 3. 基本ソフトウェア（広義のOS）
-
-#### 4. Firmware
-
-#### 5. デバイスドライバ
 
 <br>
 
@@ -263,6 +261,6 @@ Windows 8以降で採用されている新しいFirmware
 
 ### 種類
 
-![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)
+参考：https://openstandia.jp/oss_info/
 
-引用：https://openstandia.jp/oss_info/
+![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/OSS一覧.png)

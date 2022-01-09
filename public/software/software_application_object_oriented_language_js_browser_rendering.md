@@ -331,7 +331,7 @@ HTMLパーサーは、オブジェクトをノードとして、DOMツリーを�
 
 ![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
 
-引用：Real-time Generalization of Geodata in the WEB、https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
+参考：https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
 <br>
 

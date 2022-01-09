@@ -201,21 +201,6 @@ spec:
 
 ## 04-03. spec（Namespaceの場合）
 
-### labels
-
-他のオブジェクトの```label```とは異なり、何らかの機能を有効化するための設定値になることがある。
-
-**＊実装例＊**
-
-Istioを有効化する。
-
-```yaml
-kind: Namespace
-metadata:
-  labels:
-    istio-injection: enabled
-```
-
 <br>
 
 ## 04-04. spec（PersistentVolumeの場合）

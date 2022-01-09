@@ -230,7 +230,10 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 そこで、マイクロサービス間で直接リクエストを送受信するのではなく、これをプロキシ機能を持つサイドカーコンテナ経由で行う。また、各サイドカーコンテナをコントロールプレーンで統括的に管理する。
 
-参考：https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
+参考：
+
+- https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
+- https://qiita.com/Ladicle/items/4ba57078128d6affadd5
 
 #### ・gRPC
 
