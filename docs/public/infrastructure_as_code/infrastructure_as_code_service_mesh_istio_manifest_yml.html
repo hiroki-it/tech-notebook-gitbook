@@ -3127,53 +3127,13 @@
 <p>&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x3064;&#x304D;&#x307E;&#x3057;&#x3066;&#x3001;&#x4EE5;&#x4E0B;&#x3092;&#x3054;&#x8A8D;&#x8B58;&#x306E;&#x307B;&#x3069;&#x5B9C;&#x3057;&#x304F;&#x304A;&#x9858;&#x3044;&#x3044;&#x305F;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://hiroki-it.github.io/tech-notebook-gitbook/" target="_blank">https://hiroki-it.github.io/tech-notebook-gitbook/</a></p>
 <p><br></p>
-<h2 id="01-annotations"><a name="01-annotations" class="plugin-anchor" href="#01-annotations"><i class="fa fa-link" aria-hidden="true"></i></a>01. annotations</h2>
-<h3 id="annotations&#x3068;&#x306F;"><a name="annotations&#x3068;&#x306F;" class="plugin-anchor" href="#annotations&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>annotations&#x3068;&#x306F;</h3>
-<p>&#x5404;Pod&#x3067;&#x500B;&#x5225;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C3;&#x30B7;&#x30E5;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p><br></p>
-<h3 id="proxyistioioconfig"><a name="proxyistioioconfig" class="plugin-anchor" href="#proxyistioioconfig"><i class="fa fa-link" aria-hidden="true"></i></a>proxy.istio.io/config</h3>
-<h4 id="&#x30FB;proxyistioioconfig&#x3068;&#x306F;"><a name="&#x30FB;proxyistioioconfig&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;proxyistioioconfig&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy.istio.io/config&#x3068;&#x306F;</h4>
-<p>&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
-<h4 id="&#x30FB;configpath"><a name="&#x30FB;configpath" class="plugin-anchor" href="#&#x30FB;configpath"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;configPath</h4>
-<p>&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig" target="_blank">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">annotations</span><span class="token punctuation">:</span>
-  <span class="token key atrule">proxy.istio.io/config</span><span class="token punctuation">:</span>  <span class="token punctuation">|</span><span class="token scalar string">
-    configPath: ./etc/istio/proxy</span>
-</code></pre>
-<p><br></p>
-<h3 id="sidecaristioioproxycpu"><a name="sidecaristioioproxycpu" class="plugin-anchor" href="#sidecaristioioproxycpu"><i class="fa fa-link" aria-hidden="true"></i></a>sidecar.istio.io/proxyCPU</h3>
-<h4 id="&#x30FB;sidecaristioioproxycpu&#x3068;&#x306F;"><a name="&#x30FB;sidecaristioioproxycpu&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxycpu&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyCPU&#x3068;&#x306F;</h4>
-<p>&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;CPU&#x5BB9;&#x91CF;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">annotations</span><span class="token punctuation">:</span>
-  <span class="token key atrule">sidecar.istio.io/proxyCPU</span><span class="token punctuation">:</span> <span class="token number">2</span>
-</code></pre>
-<p><br></p>
-<h3 id="sidecaristioioproxyimage"><a name="sidecaristioioproxyimage" class="plugin-anchor" href="#sidecaristioioproxyimage"><i class="fa fa-link" aria-hidden="true"></i></a>sidecar.istio.io/proxyImage</h3>
-<h4 id="&#x30FB;sidecaristioioproxyimage&#x3068;&#x306F;"><a name="&#x30FB;sidecaristioioproxyimage&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxyimage&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyImage&#x3068;&#x306F;</h4>
-<p>&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">annotations</span><span class="token punctuation">:</span>
-  <span class="token key atrule">sidecar.istio.io/proxyImage</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>envoy
-</code></pre>
-<p><br></p>
-<h3 id="sidecaristioioproxymemory"><a name="sidecaristioioproxymemory" class="plugin-anchor" href="#sidecaristioioproxymemory"><i class="fa fa-link" aria-hidden="true"></i></a>sidecar.istio.io/proxyMemory</h3>
-<h4 id="&#x30FB;sidecaristioioproxymemory&#x3068;&#x306F;"><a name="&#x30FB;sidecaristioioproxymemory&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxymemory&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyMemory&#x3068;&#x306F;</h4>
-<p>&#x30D7;&#x30ED;&#x30AD;&#x30B7;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30E1;&#x30E2;&#x30EA;&#x5BB9;&#x91CF;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
-<pre class="language-"><code class="lang-yaml"><span class="token key atrule">annotations</span><span class="token punctuation">:</span>
-  <span class="token key atrule">sidecar.istio.io/proxyMemory</span><span class="token punctuation">:</span> <span class="token number">4</span>
-</code></pre>
-<p><br></p>
-<h2 id="02-apiversion"><a name="02-apiversion" class="plugin-anchor" href="#02-apiversion"><i class="fa fa-link" aria-hidden="true"></i></a>02. apiVersion</h2>
+<h2 id="01-apiversion"><a name="01-apiversion" class="plugin-anchor" href="#01-apiversion"><i class="fa fa-link" aria-hidden="true"></i></a>01. apiVersion</h2>
 <h3 id="apiversion&#x3068;&#x306F;"><a name="apiversion&#x3068;&#x306F;" class="plugin-anchor" href="#apiversion&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>apiVersion&#x3068;&#x306F;</h3>
 <p>Istio-API&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Kubernetes&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1beta1
 </code></pre>
 <p><br></p>
-<h2 id="03-kind"><a name="03-kind" class="plugin-anchor" href="#03-kind"><i class="fa fa-link" aria-hidden="true"></i></a>03. kind</h2>
+<h2 id="02-kind"><a name="02-kind" class="plugin-anchor" href="#02-kind"><i class="fa fa-link" aria-hidden="true"></i></a>02. kind</h2>
 <h3 id="kind&#x3068;&#x306F;"><a name="kind&#x3068;&#x306F;" class="plugin-anchor" href="#kind&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>kind&#x3068;&#x306F;</h3>
 <p>&#x69CB;&#x7BC9;&#x3059;&#x308B;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <ul>
@@ -3182,7 +3142,7 @@
 <li>VirtualService</li>
 </ul>
 <p><br></p>
-<h2 id="04-metadata"><a name="04-metadata" class="plugin-anchor" href="#04-metadata"><i class="fa fa-link" aria-hidden="true"></i></a>04. metadata</h2>
+<h2 id="03-metadata"><a name="03-metadata" class="plugin-anchor" href="#03-metadata"><i class="fa fa-link" aria-hidden="true"></i></a>03. metadata</h2>
 <h3 id="metadata&#x3068;&#x306F;"><a name="metadata&#x3068;&#x306F;" class="plugin-anchor" href="#metadata&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>metadata&#x3068;&#x306F;</h3>
 <p>Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x4E00;&#x610F;&#x306B;&#x8B58;&#x5225;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x60C5;&#x5831;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p><br></p>
@@ -3192,7 +3152,56 @@
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>system
 </code></pre>
 <p><br></p>
-<h2 id="05-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;DestinationRule&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="03-02-metadata&#xFF08;kubernetes&#x306E;namespace&#x306B;&#x3066;&#xFF09;"><a name="03-02-metadata&#xFF08;kubernetes&#x306E;namespace&#x306B;&#x3066;&#xFF09;" class="plugin-anchor" href="#03-02-metadata&#xFF08;kubernetes&#x306E;namespace&#x306B;&#x3066;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>03-02. metadata&#xFF08;Kubernetes&#x306E;Namespace&#x306B;&#x3066;&#xFF09;</h2>
+<h3 id="labels"><a name="labels" class="plugin-anchor" href="#labels"><i class="fa fa-link" aria-hidden="true"></i></a>labels</h3>
+<h4 id="&#x30FB;istio-injection"><a name="&#x30FB;istio-injection" class="plugin-anchor" href="#&#x30FB;istio-injection"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;istio-injection</h4>
+<p>&#x30B5;&#x30A4;&#x30C9;&#x30AB;&#x30FC;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3068;&#x3057;&#x3066;&#x3001;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection" target="_blank">https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Namespace
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">istio-injection</span><span class="token punctuation">:</span> enabled
+</code></pre>
+<p><br></p>
+<h2 id="03-03-metadata&#xFF08;kubernetesn&#x306E;pod&#x306B;&#x3066;&#xFF09;"><a name="03-03-metadata&#xFF08;kubernetesn&#x306E;pod&#x306B;&#x3066;&#xFF09;" class="plugin-anchor" href="#03-03-metadata&#xFF08;kubernetesn&#x306E;pod&#x306B;&#x3066;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>03-03. metadata&#xFF08;Kubernetesn&#x306E;Pod&#x306B;&#x3066;&#xFF09;</h2>
+<h3 id="annotations"><a name="annotations" class="plugin-anchor" href="#annotations"><i class="fa fa-link" aria-hidden="true"></i></a>annotations</h3>
+<h4 id="&#x30FB;annotations"><a name="&#x30FB;annotations" class="plugin-anchor" href="#&#x30FB;annotations"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;annotations</h4>
+<p>Kubernetes&#x306E;Pod&#x3084;Deployment&#x306E;<code>template</code>&#x30AD;&#x30FC;&#x306E;<code>metadata</code>&#x30AD;&#x30FC;&#x306B;&#x3066;&#x3001;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3054;&#x3068;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Deployment&#x306E;<code>metadata</code>&#x30AD;&#x30FC;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
+<p>&#x305F;&#x3060;&#x3057;&#x3001;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3054;&#x3068;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5024;&#x3092;<code>annotations</code>&#x30AD;&#x30FC;&#x304B;&#x3089;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x975E;&#x63A8;&#x5968;&#x3067;&#x3042;&#x308A;&#x3001;<code>istio-proxy</code>&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x304B;&#x3089;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x65B9;&#x304C;&#x826F;&#x3044;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection" target="_blank">https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection</a></p>
+<h4 id="&#x30FB;proxyistioioconfigconfigpath"><a name="&#x30FB;proxyistioioconfigconfigpath" class="plugin-anchor" href="#&#x30FB;proxyistioioconfigconfigpath"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy.istio.io/config.configPath</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x6210;&#x60C5;&#x5831;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x3057;&#x3066;&#x751F;&#x6210;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x3053;&#x308C;&#x306E;&#x751F;&#x6210;&#x5148;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;&#x3001;<code>./etc/istio/proxy</code>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x751F;&#x6210;&#x3055;&#x308C;&#x308B;&#x3002;<code>IstioOperator</code>&#x306E;<code>meshConfig.defaultConfig</code>&#x30AD;&#x30FC;&#x306B;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig" target="_blank">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Namespace
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">proxy.istio.io/config</span><span class="token punctuation">:</span>  <span class="token punctuation">|</span><span class="token scalar string">
+      configPath: ./etc/istio/proxy</span>
+</code></pre>
+<h4 id="&#x30FB;sidecaristioioproxycpu"><a name="&#x30FB;sidecaristioioproxycpu" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxycpu"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyCPU</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;CPU&#x5BB9;&#x91CF;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">sidecar.istio.io/proxyCPU</span><span class="token punctuation">:</span> <span class="token number">2</span>
+</code></pre>
+<h4 id="&#x30FB;sidecaristioioproxyimage"><a name="&#x30FB;sidecaristioioproxyimage" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxyimage"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyImage</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x69CB;&#x7BC9;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">sidecar.istio.io/proxyImage</span><span class="token punctuation">:</span> foo<span class="token punctuation">-</span>envoy
+</code></pre>
+<h4 id="&#x30FB;sidecaristioioproxymemory"><a name="&#x30FB;sidecaristioioproxymemory" class="plugin-anchor" href="#&#x30FB;sidecaristioioproxymemory"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecar.istio.io/proxyMemory</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30E1;&#x30E2;&#x30EA;&#x5BB9;&#x91CF;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/annotations/" target="_blank">https://istio.io/latest/docs/reference/config/annotations/</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">sidecar.istio.io/proxyMemory</span><span class="token punctuation">:</span> <span class="token number">4</span>
+</code></pre>
+<p><br></p>
+<h2 id="04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#04-spec&#xFF08;destinationrule&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>04. spec&#xFF08;DestinationRule&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="host"><a name="host" class="plugin-anchor" href="#host"><i class="fa fa-link" aria-hidden="true"></i></a>host</h3>
 <p>&#x3044;&#x305A;&#x308C;&#x306E;Service&#x3078;&#x306E;&#x8EE2;&#x9001;&#x6642;&#x306B;&#x3001;DestinationRule&#x3092;&#x9069;&#x7528;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule" target="_blank">https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule</a></p>
@@ -3218,7 +3227,17 @@
       <span class="token key atrule">version</span><span class="token punctuation">:</span> v2
 </code></pre>
 <p><br></p>
-<h2 id="06-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="06-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#06-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>06. spec&#xFF08;Gateway&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#05-spec&#xFF08;gateway&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>05. spec&#xFF08;Gateway&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="selector"><a name="selector" class="plugin-anchor" href="#selector"><i class="fa fa-link" aria-hidden="true"></i></a>selector</h3>
+<h4 id="&#x30FB;selector&#x3068;&#x306F;"><a name="&#x30FB;selector&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;selector&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;selector&#x3068;&#x306F;</h4>
+<p>Gateway&#x306E;&#x9069;&#x7528;&#x5BFE;&#x8C61;&#x306E;Ingress Gateway&#x306B;&#x4ED8;&#x4E0E;&#x3055;&#x308C;&#x305F;&#x30E9;&#x30D9;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway" target="_blank">https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Gateway
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">istio</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>gateway
+</code></pre>
+<p><br></p>
 <h3 id="servers"><a name="servers" class="plugin-anchor" href="#servers"><i class="fa fa-link" aria-hidden="true"></i></a>servers</h3>
 <h4 id="&#x30FB;port"><a name="&#x30FB;port" class="plugin-anchor" href="#&#x30FB;port"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;port</h4>
 <p>&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x306B;&#x5FDC;&#x3058;&#x3066;&#x3001;&#x81EA;&#x52D5;&#x7684;&#x306B;</p>
@@ -3255,13 +3274,100 @@
       <span class="token key atrule">privateKey</span><span class="token punctuation">:</span> /etc/certs/privatekey.pem
 </code></pre>
 <p><br></p>
-<h2 id="07-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="07-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#07-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>07. spec&#xFF08;IstioOperator&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h2 id="06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#06-spec&#xFF08;istiooperator&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>06. spec&#xFF08;IstioOperator&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="component"><a name="component" class="plugin-anchor" href="#component"><i class="fa fa-link" aria-hidden="true"></i></a>component</h3>
 <h4 id="&#x30FB;component&#x3068;&#x306F;"><a name="&#x30FB;component&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;component&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;component&#x3068;&#x306F;</h4>
-<p>Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;</p>
+<p>IstioOperator&#x7D4C;&#x7531;&#x3067;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&amp;locale=en" target="_blank">https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&amp;locale=en</a></p>
+<h4 id="&#x30FB;ingressgateways"><a name="&#x30FB;ingressgateways" class="plugin-anchor" href="#&#x30FB;ingressgateways"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ingressGateways</h4>
+<p>IstioOperator&#x7D4C;&#x7531;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;Ingress Gateway&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Gateway&#x3068;&#x306F;&#x7570;&#x306A;&#x308B;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3059;&#x308B;&#x3002;ingressGateways&#x306E;&#x8A2D;&#x5B9A;&#x5024;&#x3092;&#x5909;&#x66F4;&#x3059;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;<code>runAsRoot</code>&#x30AD;&#x30FC;&#x3067;&#x30EB;&#x30FC;&#x30C8;&#x6A29;&#x9650;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022" target="_blank">https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">components</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ingressGateways</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+        <span class="token key atrule">k8s</span><span class="token punctuation">:</span>
+          <span class="token key atrule">service</span><span class="token punctuation">:</span>
+            <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+                <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+                <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+                <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">values</span><span class="token punctuation">:</span>
+    <span class="token key atrule">gateways</span><span class="token punctuation">:</span>
+      <span class="token key atrule">istio-ingressgateway</span><span class="token punctuation">:</span>
+        <span class="token key atrule">runAsRoot</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre>
+<p>&#x3061;&#x306A;&#x307F;&#x306B;&#x3001;&#x4EE5;&#x4E0B;&#x306E;&#x65B9;&#x6CD5;&#x3067;&#x72EC;&#x81EA;&#x306E;Ingress Gateway&#x3092;&#x4F5C;&#x6210;&#x3067;&#x304D;&#x308B;&#xFF08;&#x304B;&#x306A;&#x308A;&#x5927;&#x5909;&#xFF09;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d" target="_blank">https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d</a></li>
+<li><a href="https://github.com/istio/istio/issues/23303" target="_blank">https://github.com/istio/istio/issues/23303</a></li>
+</ul>
+<p>&#x6700;&#x7D42;&#x7684;&#x306A;&#x8A2D;&#x5B9A;&#x5024;&#x306F;&#x3001;<code>kubectl get</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml">$ kubectl <span class="token punctuation">-</span>n istio<span class="token punctuation">-</span>system get service istio<span class="token punctuation">-</span>ingressgateway <span class="token punctuation">-</span>o yaml
+
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubectl.kubernetes.io/last-applied-configuration</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      {...} # &#x3053;&#x3053;&#x306B;&#x3082;&#x3001;JSON&#x5F62;&#x5F0F;&#x3067;&#x8A2D;&#x5B9A;&#x5024;&#x304C;&#x8A18;&#x8F09;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3002;</span>
+  <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token string">&quot;2022-01-01T12:00:00Z&quot;</span>
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+    <span class="token key atrule">install.operator.istio.io/owning-resource</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>operator
+    <span class="token key atrule">install.operator.istio.io/owning-resource-namespace</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>system
+    <span class="token key atrule">istio</span><span class="token punctuation">:</span> ingressgateway
+    <span class="token key atrule">istio.io/rev</span><span class="token punctuation">:</span> default
+    <span class="token key atrule">operator.istio.io/component</span><span class="token punctuation">:</span> IngressGateways
+    <span class="token key atrule">operator.istio.io/managed</span><span class="token punctuation">:</span> Reconcile
+    <span class="token key atrule">operator.istio.io/version</span><span class="token punctuation">:</span> 1.12.1
+    <span class="token key atrule">release</span><span class="token punctuation">:</span> istio
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>system
+  <span class="token key atrule">resourceVersion</span><span class="token punctuation">:</span> <span class="token string">&quot;322999&quot;</span>
+  <span class="token key atrule">uid</span><span class="token punctuation">:</span> 7c292753<span class="token punctuation">-</span>6219<span class="token punctuation">-</span>4e4b<span class="token punctuation">-</span>bd81<span class="token punctuation">-</span>9012fabb97b3
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">allocateLoadBalancerNodePorts</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> 10.108.30.158
+  <span class="token key atrule">clusterIPs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> 10.108.30.158
+  <span class="token key atrule">externalTrafficPolicy</span><span class="token punctuation">:</span> Cluster
+  <span class="token key atrule">internalTrafficPolicy</span><span class="token punctuation">:</span> Cluster
+  <span class="token key atrule">ipFamilies</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> IPv4
+  <span class="token key atrule">ipFamilyPolicy</span><span class="token punctuation">:</span> SingleStack
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http2
+    <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">30548</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> status<span class="token punctuation">-</span>port
+    <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">31817</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">15021</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">15021</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+    <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">32016</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8443</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+    <span class="token key atrule">istio</span><span class="token punctuation">:</span> ingressgateway
+  <span class="token key atrule">sessionAffinity</span><span class="token punctuation">:</span> None
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> LoadBalancer
+<span class="token key atrule">status</span><span class="token punctuation">:</span>
+  <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">ingress</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">ip</span><span class="token punctuation">:</span> 10.108.30.158
+</code></pre>
 <h4 id="&#x30FB;egressgateways"><a name="&#x30FB;egressgateways" class="plugin-anchor" href="#&#x30FB;egressgateways"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;egressGateways</h4>
-<p>Egress Gateway&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>IstioOperator&#x7D4C;&#x7531;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;Egress Gateway&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">components</span><span class="token punctuation">:</span>
@@ -3272,39 +3378,61 @@
 <p><br></p>
 <h3 id="meshconfig"><a name="meshconfig" class="plugin-anchor" href="#meshconfig"><i class="fa fa-link" aria-hidden="true"></i></a>meshConfig</h3>
 <h4 id="&#x30FB;meshconfig&#x3068;&#x306F;"><a name="&#x30FB;meshconfig&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;meshconfig&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;meshConfig&#x3068;&#x306F;</h4>
-<p>&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x30E1;&#x30C3;&#x30B7;&#x30E5;&#x30C4;&#x30FC;&#x30EB;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x3053;&#x3053;&#x3067;&#x306F;Envoy&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3092;&#x8AAC;&#x660E;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x5171;&#x901A;&#x3059;&#x308B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x3053;&#x3053;&#x3067;&#x306F;Envoy&#x3092;&#x4F7F;&#x7528;&#x3057;&#x305F;&#x5834;&#x5408;&#x3092;&#x8AAC;&#x660E;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig" target="_blank">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig</a></p>
 <h4 id="&#x30FB;accesslogfile"><a name="&#x30FB;accesslogfile" class="plugin-anchor" href="#&#x30FB;accesslogfile"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;accessLogFile</h4>
-<p>Envoy&#x30D7;&#x30ED;&#x30BB;&#x30B9;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x306E;&#x51FA;&#x529B;&#x5148;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
     <span class="token key atrule">accessLogFile</span><span class="token punctuation">:</span> /dev/stdout
 </code></pre>
+<h4 id="&#x30FB;defaultconfig"><a name="&#x30FB;defaultconfig" class="plugin-anchor" href="#&#x30FB;defaultconfig"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;defaultConfig</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x5225;&#x306B;&#x8A2D;&#x5B9A;&#x5024;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x305F;&#x3044;&#x6642;&#x306B;&#x3001;&#x305D;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x3053;&#x308C;&#x3092;&#x4E0A;&#x66F8;&#x304D;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x5404;Pod&#x306E;<code>metadata.annotations.proxy.istio.io/config.configPath</code>&#x30AD;&#x30FC;&#x306B;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
+    <span class="token key atrule">defaultConfig</span><span class="token punctuation">:</span>
+    <span class="token comment"># &#x301C; &#x4E2D;&#x7565; &#x301C;</span>
+</code></pre>
 <h4 id="&#x30FB;enabletracing"><a name="&#x30FB;enabletracing" class="plugin-anchor" href="#&#x30FB;enabletracing"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;enableTracing</h4>
-<p>&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x306E;&#x53CE;&#x96C6;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x5206;&#x6563;&#x30C8;&#x30EC;&#x30FC;&#x30B9;&#x306E;&#x53CE;&#x96C6;&#x3092;&#x6709;&#x52B9;&#x5316;&#x3059;&#x308B;&#x304B;&#x3069;&#x3046;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
     <span class="token key atrule">enableTracing</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre>
 <h4 id="&#x30FB;ingressselector"><a name="&#x30FB;ingressselector" class="plugin-anchor" href="#&#x30FB;ingressselector"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ingressSelector</h4>
-<p>&#x4F7F;&#x7528;&#x3059;&#x308B;Ingress&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Ingress Gateway&#x3092;Ingress&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x4F7F;&#x7528;&#x3059;&#x308B;Gateway&#x306E;<code>istio</code>&#x30E9;&#x30D9;&#x30EB;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Ingress Gateway&#x3092;Ingress&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x3001;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;&#x306F;<code>ingressgateway</code>&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
-    <span class="token key atrule">ingressSelector</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+    <span class="token key atrule">ingressSelector</span><span class="token punctuation">:</span> ingressgateway
 </code></pre>
 <h4 id="&#x30FB;ingressservice"><a name="&#x30FB;ingressservice" class="plugin-anchor" href="#&#x30FB;ingressservice"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ingressService</h4>
-<p>&#x4F7F;&#x7528;&#x3059;&#x308B;Ingress&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Ingress Gateway&#x3092;Ingress&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x4F7F;&#x7528;&#x3059;&#x308B;Ingress&#x30B3;&#x30F3;&#x30C8;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306E;<code>istio</code>&#x30E9;&#x30D9;&#x30EB;&#x5024;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;Ingress Gateway&#x3092;Ingress&#x3068;&#x3057;&#x3066;&#x4F7F;&#x7528;&#x3067;&#x304D;&#x3001;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x3067;&#x306F;&#x306F;<code>ingressgateway</code>&#x304C;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
-    <span class="token key atrule">ingressService</span><span class="token punctuation">:</span> istio<span class="token punctuation">-</span>ingressgateway
+    <span class="token key atrule">ingressService</span><span class="token punctuation">:</span> ingressgateway
+</code></pre>
+<h4 id="&#x30FB;proxyhttpport"><a name="&#x30FB;proxyhttpport" class="plugin-anchor" href="#&#x30FB;proxyhttpport"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxyHttpPort</h4>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x30FC;&#x5916;&#x90E8;&#x304B;&#x3089;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#xFF08;&#x7279;&#x306B;HTTP&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x901A;&#x4FE1;&#xFF09;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
+    <span class="token key atrule">proxyHttpPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre>
+<h4 id="&#x30FB;proxylistenport"><a name="&#x30FB;proxylistenport" class="plugin-anchor" href="#&#x30FB;proxylistenport"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxyListenPort</h4>
+<p>&#x5168;&#x3066;&#x306E;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x4ED6;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304B;&#x3089;&#x306E;&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x30DD;&#x30FC;&#x30C8;&#x756A;&#x53F7;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">meshConfig</span><span class="token punctuation">:</span>
+    <span class="token key atrule">proxyListenPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
 </code></pre>
 <p><br></p>
 <h3 id="namespace"><a name="namespace" class="plugin-anchor" href="#namespace"><i class="fa fa-link" aria-hidden="true"></i></a>namespace</h3>
-<p>Istiod&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>IstioOperator&#x7D4C;&#x7531;&#x3067;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3055;&#x308C;&#x308B;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x540D;&#x524D;&#x7A7A;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec" target="_blank">https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3312,7 +3440,7 @@
 </code></pre>
 <p><br></p>
 <h3 id="profile"><a name="profile" class="plugin-anchor" href="#profile"><i class="fa fa-link" aria-hidden="true"></i></a>profile</h3>
-<p>Istio&#x306E;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30D7;&#x30ED;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec" target="_blank">https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3320,7 +3448,7 @@
 </code></pre>
 <p><br></p>
 <h3 id="tag"><a name="tag" class="plugin-anchor" href="#tag"><i class="fa fa-link" aria-hidden="true"></i></a>tag</h3>
-<p>Pilot&#x306E;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>Pilot&#x306E;Docker&#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306E;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
 <ul>
 <li><a href="https://hub.docker.com/r/istio/proxyv2/tags" target="_blank">https://hub.docker.com/r/istio/proxyv2/tags</a></li>
@@ -3331,7 +3459,25 @@
   <span class="token key atrule">tag</span><span class="token punctuation">:</span> 1.12.1
 </code></pre>
 <p><br></p>
-<h2 id="08-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="08-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#08-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>08. spec&#xFF08;VirtualService&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
+<h3 id="values"><a name="values" class="plugin-anchor" href="#values"><i class="fa fa-link" aria-hidden="true"></i></a>values</h3>
+<h4 id="&#x30FB;sidecarinjectorwebhook"><a name="&#x30FB;sidecarinjectorwebhook" class="plugin-anchor" href="#&#x30FB;sidecarinjectorwebhook"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;sidecarInjectorWebhook</h4>
+<p>Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3054;&#x3068;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x5024;&#x3092;<code>spec</code>&#x3068;&#x3057;&#x3066;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental" target="_blank">https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental</a></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> IstioOperator
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">values</span><span class="token punctuation">:</span>
+    <span class="token key atrule">sidecarInjectorWebhook</span><span class="token punctuation">:</span>
+      <span class="token key atrule">templates</span><span class="token punctuation">:</span>
+        <span class="token key atrule">custom</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          spec:
+            containers:
+            - name: istio-proxy
+              env:
+              - name: FOO
+                value: foo</span>
+</code></pre>
+<p><br></p>
+<h2 id="07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#07-spec&#xFF08;virtualservice&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>07. spec&#xFF08;VirtualService&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="gateways"><a name="gateways" class="plugin-anchor" href="#gateways"><i class="fa fa-link" aria-hidden="true"></i></a>gateways</h3>
 <p>&#x30A4;&#x30F3;&#x30D0;&#x30A6;&#x30F3;&#x30C9;&#x901A;&#x4FE1;&#x3092;&#x3044;&#x305A;&#x308C;&#x306E;Gateway&#x304B;&#x3089;&#x53D7;&#x4FE1;&#x3059;&#x308B;&#x304B;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> VirtualService
@@ -3426,7 +3572,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"next":{"title":"Envoy","level":"1.10.3.3.2","depth":4,"ref":"","articles":[{"title":"📖 envoy.yml","level":"1.10.3.3.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md","articles":[]}]},"previous":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","mtime":"2022-01-08T09:50:19.281Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-08T09:50:25.181Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"next":{"title":"Envoy","level":"1.10.3.3.2","depth":4,"ref":"","articles":[{"title":"📖 envoy.yml","level":"1.10.3.3.2.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_envoy_envoy_yml.md","articles":[]}]},"previous":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","mtime":"2022-01-09T12:03:21.569Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-09T12:03:28.504Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
