@@ -105,11 +105,11 @@ $ chmod -R 600 <ディレクトリ名>
 
 #### ・go
 
-```chmod```コマンドの実行者以外にアクセス権限を付与する。
+現在の```chmod```コマンドの実行者以外にアクセス権限を付与する。
 
 参考：http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
 
-```
+```bash
 $ chmod go+r <ファイル名>
 ```
 
