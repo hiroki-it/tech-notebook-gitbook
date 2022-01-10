@@ -96,12 +96,6 @@ Istioオブジェクトを組み合わせて、サービスメッシュを実装
 
 ![istio_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png)
 
-#### ・思想
-
-
-
-
-
 <br>
 
 ## 02-02. インバウンド通信に関するオブジェクト

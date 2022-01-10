@@ -68,6 +68,8 @@ metadata:
 
 Podの複製数を設定する。
 
+参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
+
 ```yaml
 kind: Deployment
 spec:
@@ -79,6 +81,8 @@ spec:
 ### revisionHistoryLimit
 
 保存されるリビジョン番号の履歴数を設定する。もし依存のリビジョン番号にロールバックすることがあるのであれば、必要数を設定しておく。
+
+参考：https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 
 ```yaml
 kind: Deployment
@@ -207,10 +211,16 @@ spec:
 
 ### accessModes
 
+#### ・accessModesとは
+
+ボリュームへのアクセス権限を設定する。
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+
 
 #### ・ReadWriteMany
 
-複数ノードから読み出し/書き込みできる。ノード間でDBを共有したい場合に使用する。
+ボリュームに対して、複数ノードから読み出し/書き込みできるようにする。ノード間でDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -223,7 +233,7 @@ spec:
 
 #### ・ReadOnlyMany
 
-複数ノードから読み出しでき、また単一ノードのみから書き込みできる。ノード間で読み出し処理のみDBを共有したい場合に使用する。
+ボリュームに対して、複数ノードから読み出しでき、また単一ノードのみから書き込みできるようにする。ノード間で読み出し処理のみDBを共有したい場合に使用する。
 
 **＊実装例＊**
 
@@ -236,7 +246,7 @@ spec:
 
 #### ・ReadWriteOnce
 
-単一ノードからのみ読み出し/書き込みできる。ノードごとにDBを分割したい場合に使用する。
+ボリュームに対して、単一ノードからのみ読み出し/書き込みできるようにする。ノードごとにDBを分割したい場合に使用する。
 
 **＊実装例＊**
 
@@ -251,6 +261,10 @@ spec:
 
 ### capacity
 
+#### ・capacityとは
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
+
 **＊実装例＊**
 
 ```yaml
@@ -262,7 +276,59 @@ spec:
 
 <br>
 
+### hostPath
+
+#### ・hostPathとは
+
+ノード上にストレージ領域を新しく作成し、これをボリュームとする。
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+
+**＊実装例＊**
+
+```yaml
+kind: PersistentVolume
+spec:
+  hostPath:
+    path: /data
+    type: DirectoryOrCreate
+```
+
+<br>
+
+### local
+
+#### ・localとは
+
+ノード上にストレージ領域を新しく作成し、これをボリュームとする。```nodeAffinity```キーの設定が必須であり、ノードを明示的に指定できる。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+- https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
+
+```yaml
+kind: PersistentVolume
+spec:
+  local:
+    path: /data
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - foo-node
+```
+
+<br>
+
 ### mountOptions
+
+#### ・mountOptionsとは
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
 
 **＊実装例＊**
 
@@ -277,6 +343,10 @@ spec:
 
 ### nfs
 
+#### ・nfsとは
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+
 ```yaml
 kind: PersistentVolume
 spec:
@@ -288,6 +358,12 @@ spec:
 <br>
 
 ### persistentVolumeReclaimPolicy
+
+#### ・persistentVolumeReclaimPolicyとは
+
+PersistentVolumeのライフサイクルを設定する。
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy
 
 #### ・Delete
 

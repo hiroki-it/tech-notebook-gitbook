@@ -1029,7 +1029,7 @@ steps:
 
 #### ・```.env```ファイルの安全な複製方法
 
-アプリケーションの```.env```ファイルをCirlcCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。ここで出力している環境変数は、以下のノートを参考にせよ
+アプリケーションの```.env```ファイルをCirlcCI内で用いたい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CirlcleCI内でデコードするようにすれば、envファイルを安全に複製できる。ここで出力している環境変数は、以下のノートを参考にせよ
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/software/software_application_object_oriented_language_js_framework_nuxtjs.html
 

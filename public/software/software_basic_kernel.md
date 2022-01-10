@@ -183,13 +183,20 @@ crw-rw-rw-   1 root        wheel            2,   0 Oct 19 09:34 tty
 
 <br>
 
-### パーティション
+### パーティションとボリューム
 
-#### ・パーティションとは
+#### ・パーティションとボリュームとは
 
-物理ストレージの仮想的な仕切りのこと。1つのストレージを複数に見せかけることができる。```/dev```ディレクトリ以下に物理ストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。Windowsでは、CドライブとDドライブがパーティションに相当する。
+![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/partition_volume.png)
 
-参考：http://www.miloweb.net/partition.html
+物理ストレージの仮想的な仕切りを『ボリューム』、また仕切られたストレージ領域を『ボリューム』という。1つのストレージを複数に見せかけることができる。```/dev```ディレクトリ以下に物理ストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。Windowsでは、CドライブとDドライブがパーティションに相当する。
+
+参考：
+
+- http://www.miloweb.net/partition.html
+- https://win2012r2.com/2018/05/13/post-268/
+
+#### ・確認方法
 
 **＊例＊**
 

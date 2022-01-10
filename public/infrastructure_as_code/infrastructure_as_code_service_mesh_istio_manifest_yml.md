@@ -57,7 +57,7 @@ metadata:
 
 #### ・istio-injection
 
-サイドカーコンテナとして、Envoyコンテナを構築するかどうかを設定する。
+アドミッションコントローラーを用いて、Envoyコンテナを自動的に構築するかどうかを設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#automatic-sidecar-injection
 
@@ -76,26 +76,57 @@ metadata:
 
 #### ・annotations
 
-KubernetesのPodやDeploymentの```template```キーの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
+Deploymentの```template```キーやPodの```metadata```キーにて、Envoyコンテナごとのオプション値を設定する。Deploymentの```metadata```キーで定義しないように注意する。
 
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
-ただし、Envoyコンテナごとのオプション値を```annotations```キーから設定することは非推奨であり、```istio-proxy```コンテナから設定した方が良い。
+ただし、Envoyコンテナごとのオプション値を```annotations```キーから設定することは非推奨であり、DeploymentやPodでistio-proxyコンテナを定義することで設定を上書きした方が良い。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
 
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: foo-container
+          image: foo-mage
+        - name: istio-proxy
+```
+
+ちなみに、Envoyコンテナではなく```envoy.yaml```ファイルの設定値を変更する場合は、EnvoyFilterを定義する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+
 #### ・proxy.istio.io/config.configPath
 
-Envoyコンテナの構成情報をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリにファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。
+Envoyコンテナのプロセスの設定値をファイルとして生成するために、これの生成先ディレクトリを設定する。デフォルトでは、```./etc/istio/proxy```ディレクトリにファイルが生成される。```IstioOperator```の```meshConfig.defaultConfig```キーにデフォルト値を設定できる。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
 
 ```yaml
-kind: Namespace
-metadata:
-  annotations:
-    proxy.istio.io/config:  |
-      configPath: ./etc/istio/proxy
+kind: Deployment # もしくはPod
+spec:
+  template:
+    metadata:
+      annotations:
+        proxy.istio.io/config:  |
+          configPath: ./etc/istio/proxy
+```
+
+#### ・sidecar.istio.io/inject
+
+Envoyコンテナを自動的に構築しないようにする。
+
+```yaml
+kind: Deployment # もしくはPod
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: false
 ```
 
 #### ・sidecar.istio.io/proxyCPU
@@ -105,9 +136,12 @@ Envoyコンテナで使用するCPU容量を設定する。
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
-metadata:
-  annotations:
-    sidecar.istio.io/proxyCPU: 2
+kind: Deployment # もしくはPod
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/proxyCPU: 2
 ```
 
 #### ・sidecar.istio.io/proxyImage
@@ -117,9 +151,12 @@ Envoyコンテナの構築に使用するDockerイメージを設定する。
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
-metadata:
-  annotations:
-    sidecar.istio.io/proxyImage: foo-envoy
+kind: Deployment # もしくはPod
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/proxyImage: foo-envoy
 ```
 
 #### ・sidecar.istio.io/proxyMemory
@@ -129,9 +166,12 @@ Envoyコンテナで使用するメモリ容量を設定する。
 参考：https://istio.io/latest/docs/reference/config/annotations/
 
 ```yaml
-metadata:
-  annotations:
-    sidecar.istio.io/proxyMemory: 4
+kind: Deployment # もしくはPod
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/proxyMemory: 4
 ```
 
 <br>
@@ -178,7 +218,92 @@ spec:
 
 <br>
 
-## 05. spec（Gatewayの場合）
+## 05. spec（EnvoyFilterの場合）
+
+### configPatches
+
+#### ・ApplyTo
+
+変更を適用する```envoy.yaml```ファイルの項目を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+
+```yaml
+kind: EnvoyFilter
+spec:
+  configPatches:
+    - applyTo: NETWORK_FILTER
+```
+
+#### ・ClusterMatch
+
+変更を適用するクラスターを設定する。
+
+```yaml
+kind: EnvoyFilter
+spec:
+  configPatches:
+    - match:
+        cluster:
+          name: foo-cluster
+```
+
+#### ・ListenerMatch
+
+変更を適用するリスナーを設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+
+```yaml
+kind: EnvoyFilter
+spec:
+  configPatches:
+    - match:
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+```
+
+#### ・PatchContext
+
+変更を適用する通信の方向を設定する。
+
+参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
+
+```yaml
+kind: EnvoyFilter
+spec:
+  configPatches:
+    - match:
+        context: SIDECAR_INBOUND
+```
+
+#### ・Patch
+
+変更方法と変更内容を設定する。
+
+```yaml
+kind: EnvoyFilter
+spec:
+  configPatches:
+    - patch:
+        operation: MERGE
+        value:
+          name: "envoy.filters.network.http_connection_manager"
+          typed_config:
+            "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
+```
+
+参考：
+
+- https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
+- https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+- https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
+
+<br>
+
+## 06. spec（Gatewayの場合）
 
 ### selector
 
@@ -253,7 +378,7 @@ spec:
 
 <br>
 
-## 06. spec（IstioOperatorの場合）
+## 07. spec（IstioOperatorの場合）
 
 ### component
 
@@ -378,7 +503,7 @@ spec:
 
 #### ・meshConfigとは
 
-全てのEnvoyコンテナに共通する値を設定する。ここではEnvoyを使用した場合を説明する。
+全てのEnvoyコンテナに共通する値を設定する。ここではEnvoyを用いた場合を説明する。
 
 参考：https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
 
@@ -509,9 +634,20 @@ spec:
 
 ### values
 
+#### ・gateways.istio-ingressgateway.runAsRoot
+
+```yaml
+kind: IstioOperator
+spec:
+  values:
+    gateways:
+      istio-ingressgateway:
+        runAsRoot: true
+```
+
 #### ・sidecarInjectorWebhook
 
-Envoyコンテナごとのオプション値を```spec```として設定する。
+Envoyコンテナごとのオプション値を設定する。
 
 参考：https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
 
@@ -525,14 +661,12 @@ spec:
           spec:
             containers:
             - name: istio-proxy
-              env:
-              - name: FOO
-                value: foo
+              # ～ 中略 ～
 ```
 
 <br>
 
-## 07. spec（VirtualServiceの場合）
+## 08. spec（VirtualServiceの場合）
 
 ### gateways
 

@@ -334,38 +334,19 @@ ReplicaSetを操作し、ワーカーノードのCPUやメモリの使用率に�
 
 <br>
 
-### ボリューム
+## 04. ボリューム
 
-#### ・確認方法
+### Volume
 
-```bash
-# Podに接続する
-kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+#### ・Volumeとは
 
-# ストレージを表示する
-[root@<Pod名>:/var/www/html] $ df -h
-
-Filesystem      Size  Used Avail Use% Mounted on
-overlay          59G   36G   20G  65% /
-tmpfs            64M     0   64M   0% /dev
-tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
-/dev/vda1        59G   36G   20G  65% /etc/hosts
-shm              64M     0   64M   0% /dev/shm
-overlay          59G   36G   20G  65% /var/www/foo # 作成したボリューム
-tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
-tmpfs           3.9G     0  3.9G   0% /proc/acpi
-tmpfs           3.9G     0  3.9G   0% /sys/firmware
-```
-
-#### ・PersistentVolume
-
-ノードのストレージを使用したボリュームのこと。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できる。PodがPersistentVolumeを用いるためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+既存のボリュームをそのままKubernetesのボリュームとして用いる方法のこと。
 
 参考：https://thinkit.co.jp/article/14195
 
-#### ・HostPath（本番では非推奨）
+#### ・HostPath（本番環境で非推奨）
 
-ノードのストレージを使用したボリュームのこと。ホストとPod内コンテナ間のバインドマウントによって作成され、ノード上のPod間でボリュームを共有できる。
+ノード上の既存のストレージ領域をボリュームとし、コンテナにマウントする。ノードとPod内コンテナ間のバインドマウントによって作成され、同一ノード上のPod間でこのボリュームを共有できる。
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
@@ -412,19 +393,67 @@ $ docker inspect <コンテナID>
 
 #### ・EmptyDir
 
-Podのストレージを使用したボリュームのこと。そのため、Podが削除されると、このボリュームも同時に削除される。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できない。
+Podの既存のストレージ領域をボリュームとし、コンテナにマウントする。そのため、Podが削除されると、このボリュームも同時に削除される。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できない。
 
 参考：https://qiita.com/umkyungil/items/218be95f7a1f8d881415
 
 #### ・外部ボリューム
 
-Kubernetes外のストレージを使用したボリュームのこと。外部ボリュームには、クラウドベンダーのものやNFS、などがある。
+クラウドベンダーやNFSから提供されるストレージ領域を用いたボリュームとし、コンテナにマウントする。
 
 参考：https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0
 
 <br>
 
-## 04. ネットワーキング
+### PersistentVolume
+
+#### ・PersistentVolumeとは
+
+新しく作成したストレージ領域をPluggableなボリュームとし、これをコンテナにマウントする方法のこと。ボリュームマウントによって作成され、ノード上のPod間でボリュームを共有できる。PodがPersistentVolumeを用いるためには、PersistentVolumeClaimオブジェクトにPersistentVolumeを要求させておき、PodでこのPersistentVolumeClaimオブジェクトを指定する必要がある。
+
+参考：https://thinkit.co.jp/article/14195
+
+#### ・HostPath（本番環境で非推奨）
+
+ノード上に新しく作成したストレージ領域をボリュームとし、これをコンテナにマウントする。機能としては、VolumeでのHostPathと同じである。マルチノードには対応していないため、本番環境では非推奨である。
+
+参考：https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes
+
+#### ・Local（本番環境で推奨）
+
+ノード上に新しく作成したストレージ領域をボリュームとし、これをコンテナにマウントする。マルチノードに対応している（明言されているわけではく、HostPathとの明確な違いがよくわからない）。
+
+参考：
+
+- https://kubernetes.io/docs/concepts/storage/volumes/#local
+- https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local
+
+<br>
+
+### 確認方法
+
+```bash
+# Podに接続する
+kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+# ストレージを表示する
+[root@<Pod名>:/var/www/html] $ df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          59G   36G   20G  65% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           3.9G     0  3.9G   0% /sys/fs/cgroup
+/dev/vda1        59G   36G   20G  65% /etc/hosts
+shm              64M     0   64M   0% /dev/shm
+overlay          59G   36G   20G  65% /var/www/foo # 作成したボリューム
+tmpfs           7.8G   12K  7.8G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs           3.9G     0  3.9G   0% /proc/acpi
+tmpfs           3.9G     0  3.9G   0% /sys/firmware
+```
+
+<br>
+
+## 05. ネットワーキング
 
 ### Serviceの名前解決
 

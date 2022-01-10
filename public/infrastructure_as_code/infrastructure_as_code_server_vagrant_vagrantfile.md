@@ -58,7 +58,7 @@ box = "foo"
 
 #### ・box_check_updateとは
 
-vagrantの更新通知を設定する。
+Vagrantの更新通知を設定する。
 
 ```bash
 config.vm.box_check_update = false
@@ -129,5 +129,4 @@ SHELL
 ```bash
 config.vm.synced_folder ".", "/var/www/foo"
 ```
-
 
