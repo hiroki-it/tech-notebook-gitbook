@@ -3200,6 +3200,7 @@
 <h2 id="04-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="04-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#04-spec&#xFF08;deployment&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>04. spec&#xFF08;Deployment&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="replicas"><a name="replicas" class="plugin-anchor" href="#replicas"><i class="fa fa-link" aria-hidden="true"></i></a>replicas</h3>
 <p>Pod&#x306E;&#x8907;&#x88FD;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps" target="_blank">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">1</span>
@@ -3207,6 +3208,7 @@
 <p><br></p>
 <h3 id="revisionhistorylimit"><a name="revisionhistorylimit" class="plugin-anchor" href="#revisionhistorylimit"><i class="fa fa-link" aria-hidden="true"></i></a>revisionHistoryLimit</h3>
 <p>&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x308B;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306E;&#x5C65;&#x6B74;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;&#x3082;&#x3057;&#x4F9D;&#x5B58;&#x306E;&#x30EA;&#x30D3;&#x30B8;&#x30E7;&#x30F3;&#x756A;&#x53F7;&#x306B;&#x30ED;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#x3042;&#x308C;&#x3070;&#x3001;&#x5FC5;&#x8981;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps" target="_blank">https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">revisionHistoryLimit</span><span class="token punctuation">:</span> <span class="token number">5</span>
@@ -3299,8 +3301,11 @@
 <p><br></p>
 <h2 id="04-04-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><a name="04-04-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;" class="plugin-anchor" href="#04-04-spec&#xFF08;persistentvolume&#x306E;&#x5834;&#x5408;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>04-04. spec&#xFF08;PersistentVolume&#x306E;&#x5834;&#x5408;&#xFF09;</h2>
 <h3 id="accessmodes"><a name="accessmodes" class="plugin-anchor" href="#accessmodes"><i class="fa fa-link" aria-hidden="true"></i></a>accessModes</h3>
+<h4 id="&#x30FB;accessmodes&#x3068;&#x306F;"><a name="&#x30FB;accessmodes&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;accessmodes&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;accessModes&#x3068;&#x306F;</h4>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3078;&#x306E;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></p>
 <h4 id="&#x30FB;readwritemany"><a name="&#x30FB;readwritemany" class="plugin-anchor" href="#&#x30FB;readwritemany"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadWriteMany</h4>
-<p>&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;/&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;/&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3308,7 +3313,7 @@
     <span class="token punctuation">-</span> ReadWriteMany
 </code></pre>
 <h4 id="&#x30FB;readonlymany"><a name="&#x30FB;readonlymany" class="plugin-anchor" href="#&#x30FB;readonlymany"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadOnlyMany</h4>
-<p>&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x3067;&#x304D;&#x3001;&#x307E;&#x305F;&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x304B;&#x3089;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x51E6;&#x7406;&#x306E;&#x307F;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x8907;&#x6570;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x3067;&#x304D;&#x3001;&#x307E;&#x305F;&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x306E;&#x307F;&#x304B;&#x3089;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x9593;&#x3067;&#x8AAD;&#x307F;&#x51FA;&#x3057;&#x51E6;&#x7406;&#x306E;&#x307F;DB&#x3092;&#x5171;&#x6709;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3316,7 +3321,7 @@
     <span class="token punctuation">-</span> ReadOnlyMany
 </code></pre>
 <h4 id="&#x30FB;readwriteonce"><a name="&#x30FB;readwriteonce" class="plugin-anchor" href="#&#x30FB;readwriteonce"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;ReadWriteOnce</h4>
-<p>&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x306E;&#x307F;&#x8AAD;&#x307F;&#x51FA;&#x3057;/&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x3054;&#x3068;&#x306B;DB&#x3092;&#x5206;&#x5272;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3001;&#x5358;&#x4E00;&#x30CE;&#x30FC;&#x30C9;&#x304B;&#x3089;&#x306E;&#x307F;&#x8AAD;&#x307F;&#x51FA;&#x3057;/&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x3002;&#x30CE;&#x30FC;&#x30C9;&#x3054;&#x3068;&#x306B;DB&#x3092;&#x5206;&#x5272;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3325,6 +3330,8 @@
 </code></pre>
 <p><br></p>
 <h3 id="capacity"><a name="capacity" class="plugin-anchor" href="#capacity"><i class="fa fa-link" aria-hidden="true"></i></a>capacity</h3>
+<h4 id="&#x30FB;capacity&#x3068;&#x306F;"><a name="&#x30FB;capacity&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;capacity&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;capacity&#x3068;&#x306F;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3332,7 +3339,43 @@
     <span class="token key atrule">storage</span><span class="token punctuation">:</span> 10G
 </code></pre>
 <p><br></p>
+<h3 id="hostpath"><a name="hostpath" class="plugin-anchor" href="#hostpath"><i class="fa fa-link" aria-hidden="true"></i></a>hostPath</h3>
+<h4 id="&#x30FB;hostpath&#x3068;&#x306F;"><a name="&#x30FB;hostpath&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;hostpath&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;hostPath&#x3068;&#x306F;</h4>
+<p>&#x30CE;&#x30FC;&#x30C9;&#x4E0A;&#x306B;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x9818;&#x57DF;&#x3092;&#x65B0;&#x3057;&#x304F;&#x4F5C;&#x6210;&#x3057;&#x3001;&#x3053;&#x308C;&#x3092;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3068;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></p>
+<p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /data
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> DirectoryOrCreate
+</code></pre>
+<p><br></p>
+<h3 id="local"><a name="local" class="plugin-anchor" href="#local"><i class="fa fa-link" aria-hidden="true"></i></a>local</h3>
+<h4 id="&#x30FB;local&#x3068;&#x306F;"><a name="&#x30FB;local&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;local&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;local&#x3068;&#x306F;</h4>
+<p>&#x30CE;&#x30FC;&#x30C9;&#x4E0A;&#x306B;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x9818;&#x57DF;&#x3092;&#x65B0;&#x3057;&#x304F;&#x4F5C;&#x6210;&#x3057;&#x3001;&#x3053;&#x308C;&#x3092;&#x30DC;&#x30EA;&#x30E5;&#x30FC;&#x30E0;&#x3068;&#x3059;&#x308B;&#x3002;<code>nodeAffinity</code>&#x30AD;&#x30FC;&#x306E;&#x8A2D;&#x5B9A;&#x304C;&#x5FC5;&#x9808;&#x3067;&#x3042;&#x308A;&#x3001;&#x30CE;&#x30FC;&#x30C9;&#x3092;&#x660E;&#x793A;&#x7684;&#x306B;&#x6307;&#x5B9A;&#x3067;&#x304D;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity</a></li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">local</span><span class="token punctuation">:</span>
+    <span class="token key atrule">path</span><span class="token punctuation">:</span> /data
+  <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">required</span><span class="token punctuation">:</span>
+      <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/hostname
+          <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+          <span class="token key atrule">values</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> foo<span class="token punctuation">-</span>node
+</code></pre>
+<p><br></p>
 <h3 id="mountoptions"><a name="mountoptions" class="plugin-anchor" href="#mountoptions"><i class="fa fa-link" aria-hidden="true"></i></a>mountOptions</h3>
+<h4 id="&#x30FB;mountoptions&#x3068;&#x306F;"><a name="&#x30FB;mountoptions&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;mountoptions&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;mountOptions&#x3068;&#x306F;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
@@ -3341,6 +3384,8 @@
 </code></pre>
 <p><br></p>
 <h3 id="nfs"><a name="nfs" class="plugin-anchor" href="#nfs"><i class="fa fa-link" aria-hidden="true"></i></a>nfs</h3>
+<h4 id="&#x30FB;nfs&#x3068;&#x306F;"><a name="&#x30FB;nfs&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;nfs&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;nfs&#x3068;&#x306F;</h4>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</a></p>
 <pre class="language-"><code class="lang-yaml"><span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">nfs</span><span class="token punctuation">:</span>
@@ -3349,6 +3394,9 @@
 </code></pre>
 <p><br></p>
 <h3 id="persistentvolumereclaimpolicy"><a name="persistentvolumereclaimpolicy" class="plugin-anchor" href="#persistentvolumereclaimpolicy"><i class="fa fa-link" aria-hidden="true"></i></a>persistentVolumeReclaimPolicy</h3>
+<h4 id="&#x30FB;persistentvolumereclaimpolicy&#x3068;&#x306F;"><a name="&#x30FB;persistentvolumereclaimpolicy&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;persistentvolumereclaimpolicy&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;persistentVolumeReclaimPolicy&#x3068;&#x306F;</h4>
+<p>PersistentVolume&#x306E;&#x30E9;&#x30A4;&#x30D5;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy" target="_blank">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy</a></p>
 <h4 id="&#x30FB;delete"><a name="&#x30FB;delete" class="plugin-anchor" href="#&#x30FB;delete"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;Delete</h4>
 <p>PersistentVolume&#x3092;&#x6307;&#x5B9A;&#x3059;&#x308B;<code>spec.persistentVolumeClaim</code>&#x304C;&#x524A;&#x9664;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x306B;&#x3001;PersistentVolume&#x3082;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x524A;&#x9664;&#x3059;&#x308B;&#x3002;</p>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
@@ -3693,7 +3741,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"next":{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]},"previous":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","mtime":"2022-01-09T12:05:09.004Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-09T12:05:11.802Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎manifest.yml","level":"1.10.3.2.2.3","depth":5,"next":{"title":"skaffold","level":"1.10.3.2.2.4","depth":5,"ref":"","articles":[{"title":"📖 ︎skaffoldコマンド","level":"1.10.3.2.2.4.1","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_command.md","articles":[]},{"title":"📖 ︎skaffold.yml","level":"1.10.3.2.2.4.2","depth":6,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_skaffold_yml.md","articles":[]}]},"previous":{"title":"📖 ︎minikubeコマンド","level":"1.10.3.2.2.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_minikube_command.md","articles":[]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_container_orchestration_kubernetes_manifest_yml.md","mtime":"2022-01-10T15:55:34.397Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-10T15:55:39.519Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

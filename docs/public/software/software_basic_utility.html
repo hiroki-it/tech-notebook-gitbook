@@ -3329,8 +3329,9 @@ $ <span class="token function">which</span> python3
 <h4 id="&#x30FB;go"><a name="&#x30FB;go" class="plugin-anchor" href="#&#x30FB;go"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;go</h4>
 <p>&#x73FE;&#x5728;&#x306E;<code>chmod</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x5B9F;&#x884C;&#x8005;&#x4EE5;&#x5916;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x6A29;&#x9650;&#x3092;&#x4ED8;&#x4E0E;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html" target="_blank">http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html</a></p>
-<pre class="language-"><code>$ chmod go+r <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span><span class="token punctuation">&gt;</span></span>
-</code></pre><p><br></p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">chmod</span> go+r <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>
+</code></pre>
+<p><br></p>
 <h3 id="cp"><a name="cp" class="plugin-anchor" href="#cp"><i class="fa fa-link" aria-hidden="true"></i></a>cp</h3>
 <h4 id="&#x30FB;-rp"><a name="&#x30FB;-rp" class="plugin-anchor" href="#&#x30FB;-rp"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-Rp</h4>
 <p>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306E;&#x5C5E;&#x6027;&#x60C5;&#x5831;&#x3082;&#x542B;&#x3081;&#x3066;&#x3001;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x69CB;&#x9020;&#x3068;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x518D;&#x5E30;&#x7684;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#x3002;</p>
@@ -3341,14 +3342,14 @@ $ <span class="token function">which</span> python3
 $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>/ /<span class="token operator">&lt;</span>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;-p"><a name="&#x30FB;-p" class="plugin-anchor" href="#&#x30FB;-p"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-p</h4>
-<p>&#x300E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;.YYYYmmdd&#x300F;&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;</p>
+<p>&#x300E;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;</span><span class="token punctuation">&gt;</span></span>.YYYYmmdd</code>&#x300F;&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x30D0;&#x30C3;&#x30AF;&#x30A2;&#x30C3;&#x30D7;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">cp</span> -p <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;<span class="token operator">&gt;</span>.<span class="token variable"><span class="token variable">`</span><span class="token function">date</span> +<span class="token string">&quot;%Y%m%d&quot;</span><span class="token variable">`</span></span>
 </code></pre>
 <p><br></p>
 <h3 id="cron"><a name="cron" class="plugin-anchor" href="#cron"><i class="fa fa-link" aria-hidden="true"></i></a>cron</h3>
 <h4 id="&#x30FB;cron&#x3068;&#x306F;"><a name="&#x30FB;cron&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;cron&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron&#x3068;&#x306F;</h4>
 <p>&#x6307;&#x5B9A;&#x3057;&#x305F;&#x30B9;&#x30B1;&#x30B8;&#x30E5;&#x30FC;&#x30EB;&#x306B;&#x5F93;&#x3063;&#x3066;&#x3001;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3092;&#x5B9A;&#x671F;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5E38;&#x99D0;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x3002;</p>
-<h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
+<h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>cron</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
 <table>
 <thead>
 <tr>
@@ -3359,37 +3360,35 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 </thead>
 <tbody>
 <tr>
-<td>/etc/crontab</td>
+<td><code>/etc/crontab</code></td>
 <td>root</td>
 <td>&#x6BCE;&#x6642;&#x3001;&#x6BCE;&#x65E5;&#x3001;&#x6BCE;&#x6708;&#x3001;&#x6BCE;&#x9031;&#x306E;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x30E1;&#x30A4;&#x30F3;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</td>
 </tr>
 <tr>
-<td>/etc/cron.hourly</td>
+<td><code>/etc/cron.hourly</code></td>
 <td>root</td>
 <td>&#x6BCE;&#x6642;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</td>
 </tr>
 <tr>
-<td>/etc/cron.daily</td>
+<td><code>/etc/cron.daily</code></td>
 <td>root</td>
 <td>&#x6BCE;&#x65E5;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</td>
 </tr>
 <tr>
-<td>/etc/cron.monthly</td>
+<td><code>/etc/cron.monthly</code></td>
 <td>root</td>
 <td>&#x6BCE;&#x6708;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</td>
 </tr>
 <tr>
-<td>/etc/cron.weekly</td>
+<td><code>/etc/cron.weekly</code></td>
 <td>root</td>
 <td>&#x6BCE;&#x9031;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x81EA;&#x52D5;&#x30BF;&#x30B9;&#x30AF;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7F6E;&#x304F;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;</td>
 </tr>
 </tbody>
 </table>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
-<ol>
-<li>&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x3001;&#x5404;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</li>
-<li>cron&#x3068;&#x3057;&#x3066;&#x767B;&#x9332;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;<code>run-parts</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x3001;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6642;&#x9593;&#x306B;&#x3001;&#x5404;cron&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4E00;&#x62EC;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</li>
-</ol>
+<p>&#xFF08;&#xFF11;&#xFF09;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x3001;&#x5404;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x914D;&#x7F6E;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
+<p>&#xFF08;&#xFF12;&#xFF09;cron&#x3068;&#x3057;&#x3066;&#x767B;&#x9332;&#x3059;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3002;<code>run-parts</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x3001;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x6642;&#x9593;&#x306B;&#x3001;&#x5404;cron&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;<code>cron</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x4E00;&#x62EC;&#x3067;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A18;&#x8FF0;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8A2D;&#x5B9A;</span>
 <span class="token assign-left variable"><span class="token environment constant">SHELL</span></span><span class="token operator">=</span>/bin/bash
 <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/sbin:/bin:/usr/sbin:/usr/bin
@@ -3417,7 +3416,7 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 @reboot <span class="token function">make</span> clean html <span class="token comment"># cron&#x8D77;&#x52D5;&#x6642;&#x306B;&#x4E00;&#x5EA6;&#x3060;&#x3051;</span>
 </code></pre>
 <h4 id="&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><a name="&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;" class="plugin-anchor" href="#&#x30FB;crond&#x30D5;&#x30A1;&#x30A4;&#x30EB;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h4>
-<p>&#x8907;&#x6570;&#x306E;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5168;&#x3066;&#x306E;1&#x3064;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#x3002;</p>
+<p>&#x8907;&#x6570;&#x306E;<code>cron</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x5168;&#x3066;&#x306E;1&#x3064;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x7BA1;&#x7406;&#x3059;&#x308B;&#x5834;&#x5408;&#x306B;&#x7528;&#x3044;&#x308B;&#x3002;</p>
 <table>
 <thead>
 <tr>
@@ -3447,7 +3446,7 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 <h4 id="&#x30FB;crontab&#x3068;&#x306F;"><a name="&#x30FB;crontab&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;crontab&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;crontab&#x3068;&#x306F;</h4>
 <p>cron&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;&#x52D5;&#x4F5C;&#x304C;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;crontab&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x30E6;&#x30FC;&#x30C6;&#x30A3;&#x30EA;&#x30C6;&#x30A3;&#x3002;</p>
 <h4 id="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><a name="&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;" class="plugin-anchor" href="#&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x7121;&#x3057;</h4>
-<p>&#x4F5C;&#x6210;&#x3057;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#x3002;cron.d&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x306A;&#x3044;&#x3002;</p>
+<p>&#x4F5C;&#x6210;&#x3057;&#x305F;<code>cron</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x767B;&#x9332;&#x3059;&#x308B;&#x3002;<code>cron.d</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306F;&#x64CD;&#x4F5C;&#x3067;&#x304D;&#x306A;&#x3044;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">crontab</span> <span class="token operator">&lt;</span>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;<span class="token operator">&gt;</span>
 </code></pre>
 <h4 id="&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;"><a name="&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;" class="plugin-anchor" href="#&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;&#x3092;&#x78BA;&#x8A8D;</h4>
@@ -3456,7 +3455,7 @@ $ <span class="token function">cp</span> -Rp /<span class="token operator">&lt;<
 <span class="token comment"># crontab&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x767B;&#x9332;&#x3055;&#x308C;&#x305F;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x51E6;&#x7406;</span>
 <span class="token number">1</span> * * * * <span class="token function">rm</span> foo
 </code></pre>
-<h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><a name="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;" class="plugin-anchor" href="#&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;</h4>
+<h4 id="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><a name="&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;" class="plugin-anchor" href="#&#x30FB;cron&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>cron</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x767B;&#x9332;&#x624B;&#x9806;</h4>
 <p><strong>&#xFF0A;&#x5B9F;&#x88C5;&#x4F8B;&#xFF0A;</strong></p>
 <p>&#xFF11;. &#x62E1;&#x5F35;&#x5B50;&#x306F;&#x81EA;&#x7531;&#x3067;&#x3001;&#x6642;&#x523B;&#x3068;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x304C;&#x5B9F;&#x88C5;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x7528;&#x610F;&#x3059;&#x308B;&#x3002;&#x3053;&#x306E;&#x6642;&#x3001;&#x6700;&#x5F8C;&#x306B;&#x6539;&#x884C;&#x304C;&#x306A;&#x3044;&#x3068;&#x30A8;&#x30E9;&#x30FC;&#xFF08;<code>premature EOF</code>&#xFF09;&#x306B;&#x306A;&#x308B;&#x305F;&#x3081;&#x3001;&#x6539;&#x884C;&#x3092;&#x8FFD;&#x52A0;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;</p>
@@ -3557,7 +3556,7 @@ map auto_home            <span class="token number">0</span>         <span class
 $ <span class="token function">df</span> -h -m -t
 </code></pre>
 <h4 id="&#x30FB;fdisk&#x3068;&#x306E;&#x9055;&#x3044;"><a name="&#x30FB;fdisk&#x3068;&#x306E;&#x9055;&#x3044;" class="plugin-anchor" href="#&#x30FB;fdisk&#x3068;&#x306E;&#x9055;&#x3044;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;fdisk&#x3068;&#x306E;&#x9055;&#x3044;</h4>
-<p>df&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x3001;&#x30D1;&#x30FC;&#x30C6;&#x30A3;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x533A;&#x5207;&#x3089;&#x308C;&#x305F;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306E;&#x3046;&#x3061;&#x3067;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x3082;&#x306E;&#x306E;&#x307F;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;&#x4E00;&#x65B9;&#x3067;fdisk&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x5426;&#x304B;&#x306B;&#x95A2;&#x308F;&#x3089;&#x305A;&#x3001;&#x30D1;&#x30FC;&#x30C6;&#x30A3;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x533A;&#x5207;&#x3089;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x985E;&#x4F3C;&#x3059;&#x308B;<code>df</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x3001;&#x30D1;&#x30FC;&#x30C6;&#x30A3;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x533A;&#x5207;&#x3089;&#x308C;&#x305F;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306E;&#x3046;&#x3061;&#x3067;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x305F;&#x3082;&#x306E;&#x306E;&#x307F;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;&#x4E00;&#x65B9;&#x3067;<code>fdisk</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x3001;&#x30DE;&#x30A6;&#x30F3;&#x30C8;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;&#x5426;&#x304B;&#x306B;&#x95A2;&#x308F;&#x3089;&#x305A;&#x3001;&#x30D1;&#x30FC;&#x30C6;&#x30A3;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x533A;&#x5207;&#x3089;&#x308C;&#x305F;&#x5168;&#x3066;&#x306E;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command" target="_blank">https://stackoverflow.com/questions/16307484/difference-between-df-h-and-fdisk-command</a></p>
 <p><br></p>
 <h3 id="du"><a name="du" class="plugin-anchor" href="#du"><i class="fa fa-link" aria-hidden="true"></i></a>du</h3>
@@ -3609,7 +3608,7 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 $ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/sbin:/bin:/usr/sbin:/usr/bin
 </code></pre>
 <h4 id="&#x30FB;bashrc&#x3078;&#x306E;&#x8FFD;&#x8A18;"><a name="&#x30FB;bashrc&#x3078;&#x306E;&#x8FFD;&#x8A18;" class="plugin-anchor" href="#&#x30FB;bashrc&#x3078;&#x306E;&#x8FFD;&#x8A18;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;<code>.bashrc</code>&#x3078;&#x306E;&#x8FFD;&#x8A18;</h4>
-<p>export&#x306E;&#x7D50;&#x679C;&#x306F;&#x3001;OS&#x306E;&#x518D;&#x8D77;&#x52D5;&#x3067;&#x521D;&#x671F;&#x5316;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x518D;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x3001;<code>/home/centos/.bashrc</code>&#x306B;&#x8FFD;&#x8A18;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
+<p>OS&#x3092;&#x518D;&#x8D77;&#x52D5;&#x3059;&#x308B;&#x3068;&#x3001;<code>export</code>&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306E;&#x7D50;&#x679C;&#x306F;&#x6D88;&#x53BB;&#x3055;&#x308C;&#x3066;&#x3057;&#x307E;&#x3046;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x518D;&#x8D77;&#x52D5;&#x6642;&#x306B;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x3088;&#x3046;&#x3001;<code>/home/centos/.bashrc</code>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x8FFD;&#x8A18;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;</p>
 <pre class="language-"><code class="lang-bash"><span class="token comment"># Source global definitions</span>
 <span class="token keyword">if</span> <span class="token punctuation">[</span> -f /etc/bashrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
     <span class="token builtin class-name">.</span> /etc/bashrc
@@ -3658,13 +3657,13 @@ foo.txt: ASCII text, with CR line terminators<span class="token operator">&lt;</
 $ <span class="token function">find</span> /* -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span> <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span> /dev/null
 </code></pre>
 <h4 id="&#x30FB;-name"><a name="&#x30FB;-name" class="plugin-anchor" href="#&#x30FB;-name"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-name</h4>
-<p>&#x540D;&#x524D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C;<code>.conf</code> &#x3067;&#x7D42;&#x308F;&#x308B;&#x3082;&#x306E;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f
 </code></pre>
 <p>&#x540D;&#x524D;&#x304C; dir &#x3067;&#x7D42;&#x308F;&#x308B;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*dir&quot;</span> -type d
 </code></pre>
-<p>&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x3067;&#x3001; &lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt; &#x3068;&#x3044;&#x3046;&#x6587;&#x5B57;&#x3092;&#x3082;&#x3061;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C; .conf &#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x30EB;&#x30FC;&#x30C8;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x4EE5;&#x4E0B;&#x3067;&#x3001; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>&#x691C;&#x7D22;&#x6587;&#x5B57;</span><span class="token punctuation">&gt;</span></span></code>&#x3068;&#x3044;&#x3046;&#x6587;&#x5B57;&#x3092;&#x3082;&#x3061;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304C;<code>.conf</code>&#x3067;&#x7D42;&#x308F;&#x308B;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x5168;&#x3066;&#x691C;&#x7D22;&#x3059;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">find</span> /* -name <span class="token string">&quot;*.conf&quot;</span> -type f <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;&#x691C;&#x7D22;&#x6587;&#x5B57;&gt;&quot;</span>
 </code></pre>
 <p><br></p>
@@ -3814,7 +3813,7 @@ $ <span class="token function">ps</span> -aux <span class="token operator">|</sp
 <p><br></p>
 <h3 id="ssh&#xFF1A;secure-shell"><a name="ssh&#xFF1A;secure-shell" class="plugin-anchor" href="#ssh&#xFF1A;secure-shell"><i class="fa fa-link" aria-hidden="true"></i></a>ssh&#xFF1A;secure shell</h3>
 <h4 id="&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t"><a name="&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t" class="plugin-anchor" href="#&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-l&#x3001;-p&#x3001;&lt;&#x30DD;&#x30FC;&#x30C8;&gt;&#x3001;-i&#x3001;-T</h4>
-<p>&#x4E8B;&#x524D;&#x306B;&#x3001;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#x300E;600&#x300F;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;tty&#xFF08;&#x64EC;&#x4F3C;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#xFF09;&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;<code>-T</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308B;&#x3002;</p>
+<p>&#x4E8B;&#x524D;&#x306B;&#x3001;&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x6A29;&#x9650;&#x306F;&#x300E;<code>600</code>&#x300F;&#x306B;&#x3057;&#x3066;&#x304A;&#x304F;&#x3002;tty&#xFF08;&#x64EC;&#x4F3C;&#x30BF;&#x30FC;&#x30DF;&#x30CA;&#x30EB;&#xFF09;&#x3092;&#x7528;&#x3044;&#x308B;&#x5834;&#x5408;&#x306F;&#x3001;<code>-T</code>&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x3064;&#x3051;&#x308B;&#x3002;</p>
 <pre class="language-"><code class="lang-bash">$ <span class="token function">ssh</span> -l <span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x540D;<span class="token operator">&gt;</span>@<span class="token operator">&lt;</span>&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30DB;&#x30B9;&#x30C8;&#x540D;<span class="token operator">&gt;</span> -p <span class="token number">22</span> -i <span class="token operator">&lt;</span>&#x79D8;&#x5BC6;&#x9375;&#x306E;&#x30D1;&#x30B9;<span class="token operator">&gt;</span> -T
 </code></pre>
 <h4 id="&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t&#x3001;-vvv"><a name="&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t&#x3001;-vvv" class="plugin-anchor" href="#&#x30FB;-l&#x3001;-p&#x3001;&#x30DD;&#x30FC;&#x30C8;&#x3001;-i&#x3001;-t&#x3001;-vvv"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;-l&#x3001;-p&#x3001;&lt;&#x30DD;&#x30FC;&#x30C8;&gt;&#x3001;-i&#x3001;-T&#x3001;-vvv</h4>
@@ -3945,7 +3944,7 @@ $ <span class="token function">date</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.4","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2022-01-09T12:05:09.123Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-09T12:05:11.802Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"next":{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},"previous":{"title":"ユーティリティ","level":"1.4.2.2","depth":3,"ref":"","articles":[{"title":"📖 ︎ユーティリティ","level":"1.4.2.2.1","depth":4,"path":"public/software/software_basic_utility.md","ref":"public/software/software_basic_utility.md","articles":[]},{"title":"📖 ︎パッケージ","level":"1.4.2.2.2","depth":4,"path":"public/software/software_basic_utility_package.md","ref":"public/software/software_basic_utility_package.md","articles":[]},{"title":"📖 ︎パッケージ管理ユーティリティ","level":"1.4.2.2.3","depth":4,"path":"public/software/software_basic_utility_package_management.md","ref":"public/software/software_basic_utility_package_management.md","articles":[]},{"title":"📖 ︎シェル","level":"1.4.2.2.4","depth":4,"path":"public/software/software_basic_utility_shell.md","ref":"public/software/software_basic_utility_shell.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/software/software_basic_utility.md","mtime":"2022-01-10T15:55:34.536Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-10T15:55:39.519Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
