@@ -18,15 +18,13 @@ confファイルでセクションを設定できる。
 
 参考：https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/configuration-file
 
-設定ファイルのバリデーションは以下から行う。
-
-参考：https://cloud.calyptia.com/visualizer
-
 #### ・コマンド
 
 コマンドでセクションを実行できる。
 
 ```bash
+$ /fluent-bit/bin/fluent-bit --help
+
 Available Options
   -b  --storage_path=PATH specify a storage buffering path
   -c  --config=FILE       specify an optional configuration file
@@ -52,6 +50,16 @@ Available Options
   -S, --sosreport         support report for Enterprise customers
   -V, --version           show version number
   -h, --help              print this help
+```
+
+#### ・バリデーション
+
+設定ファイルのバリデーションは、開発環境にて、以下サイトや再起動を伴う```--config```オプションから行う。これら以外に再起動を伴わない```--dry-run```オプションがあるが、このオプションは経験則で精度が低いため、参考程度にする。
+
+参考：https://cloud.calyptia.com/visualizer
+
+```bash
+$ /fluent-bit/bin/fluent-bit --config=/fluent-bit/etc/fluent-bit_custom.conf
 ```
 
 <br>
@@ -200,7 +208,7 @@ Inputs
 **＊例＊**
 
 ```bash
-fluent-bit/bin/fluent-bit -i dummy -o stdout
+$ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 ```
 
 #### ・forwardプラグイン
@@ -240,7 +248,7 @@ Fluent Bit v1.8.6
 **＊例＊**
 
 ```bash
-$ fluent-bit/bin/fluent-bit \
+$ /fluent-bit/bin/fluent-bit \
   -i forward \
   -o stdout
 ```
@@ -279,7 +287,10 @@ log_router:
 参考：https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line
 
 ```bash
-$ fluent-bit -i tail -p path=/var/www/foo/storage/logs/*.log -o stdout
+$ fluent-bit \
+  -i tail \
+  -p path=/var/www/foo/storage/logs/*.log \
+  -o stdout
 ```
 
 **＊実行ログ例＊**
@@ -388,7 +399,7 @@ Filters
 **＊例＊**
 
 ```bash
-$ fluent-bit/bin/fluent-bit \
+$ /fluent-bit/bin/fluent-bit \
   -i <インプット名> \
   -F stdout \
   -m '*' \
@@ -715,7 +726,7 @@ newRelicプラグインがあらかじめインストールされているベー
 **＊例＊**
 
 ```bash
-$ fluent-bit/bin/fluent-bit \
+$ /fluent-bit/bin/fluent-bit \
   -i <インプット名> \
   -F stdout \
   -m '*' \
@@ -791,7 +802,7 @@ FireLensコンテナのベースイメージとなるFluentBitイメージがAWS
 参考：https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
 
 ```bash
-[/fluent-bit]$ ls -la
+[root@<コンテナID>:/fluent-bit]$ ls -la
 
 -rw-r--r-- 1 root root 26624256 Sep  1 18:04 cloudwatch.so # 旧cloudwatch_logsプラグイン
 -rw-r--r-- 1 root root 26032656 Sep  1 18:04 firehose.so   # kinesis_firehoseプラグイン 
@@ -828,7 +839,7 @@ FROM amazon/aws-for-fluent-bit:latest
 aws-for-fluent-bitイメージの```/fluent-bit/etc```ディレクトリにはデフォルトで設定ファイルが用意されている。追加設定を実行するファイルはここに配置する。
 
 ```bash
-[/fluent-bit/etc]$ ls -la
+[root@<コンテナID>:/fluent-bit/etc]$ ls -la
 
 -rw-r--r-- 1 root root  251 Sep  1 17:57 fluent-bit.conf
 -rw-r--r-- 1 root root 1564 Sep 27 02:15 fluent-bit_custom.conf # 追加設定用

@@ -92,7 +92,7 @@ UML、概念データモデリング、構造化分析、リアルタイム分�
 
 #### ・機能の視点
 
-ユーザの要求に対するソフトウェアの機能に注目するダイアグラムが属する。
+ユーザーの要求に対するソフトウェアの機能に注目するダイアグラムが属する。
 
 #### ・振舞の視点
 
@@ -130,7 +130,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ### ユースケース図とは
 
-アクターとユースケースと関係性に基づいて、アクターの要求に対するソフトウェアの具体的な『機能』を表現する。ユースケース図はソフトウェアの構造を表現できないため、設計の前段階としてはあまり役立たない。そのため、ユースケース図は、オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる。オブジェクト図の方が、設計の前段階の参考資料として適している。ユースケース名は、『ソフトウェアは、ユーザが〇〇を△△する機能を提供する。』と考え、〇〇（名詞）をオブジェクト図に反映させる。
+アクターとユースケースと関係性に基づいて、アクターの要求に対するソフトウェアの具体的な『機能』を表現する。ユースケース図はソフトウェアの構造を表現できないため、設計の前段階としてはあまり役立たない。そのため、ユースケース図は、オブジェクト図の前段階としてオブジェクトの具体例を抽出することにとどめる。オブジェクト図の方が、設計の前段階の参考資料として適している。ユースケース名は、『ソフトウェアは、ユーザーが〇〇を△△する機能を提供する。』と考え、〇〇（名詞）をオブジェクト図に反映させる。
 
 <br>
 
@@ -145,7 +145,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 | 記号名                                                       | 説明                                                         | 補足                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------- |
-| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザや、連携する他のソフトウェアを表現する。 |                                  |
+| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_actor.png) | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表現する。 |                                  |
 | ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表現する。                       |                                  |
 | サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_subject.png) | アクターとソフトウェアの境界線を表現する。                   |                                  |
 | パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/usecase-diagram_package.png) | アクターによって提供する機能に違いがある場合、これの境界線を表現する。 |                                  |
@@ -197,7 +197,7 @@ DFD、ユースケース図、アクティビティ図、などがある。
 
 ![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/system-sequence-diagram.png)
 
-アクターとソフトウェアの出入力に基づいて、ユーザの要求に対するソフトウェアの『動的な振舞』を表現する。オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
+アクターとソフトウェアの出入力に基づいて、ユーザーの要求に対するソフトウェアの『動的な振舞』を表現する。オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
 
 参考：
 

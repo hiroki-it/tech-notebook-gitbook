@@ -256,9 +256,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: ユーザ情報取得
-      description: 全ユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: ユーザー情報取得
+      description: 全ユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -269,7 +269,7 @@ paths:
         - in: query # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -325,9 +325,9 @@ paths:
     #===========================
     post:
       tags:
-        - ユーザ情報作成エンドポイント
-      summary: ユーザ情報作成
-      description: ユーザ情報を作成する。
+        - ユーザー情報作成エンドポイント
+      summary: ユーザー情報作成
+      description: ユーザー情報を作成する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -336,7 +336,7 @@ paths:
         - apiKeyAuth: [ ] # APIキーの必須化
       parameters: [ ]
       requestBody: # リクエストボディにパラメータを割り当てる。
-        description: ユーザID
+        description: ユーザーID
         content:
           application/json: # MIME type
             example: # リクエストボディ例
@@ -364,7 +364,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -394,9 +394,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: 指定ユーザ情報取得
-      description: 指定したユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: 指定ユーザー情報取得
+      description: 指定したユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -407,7 +407,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -434,7 +434,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -449,7 +449,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -474,9 +474,9 @@ paths:
     #===========================                
     put:
       tags:
-        - ユーザ情報更新エンドポイント
-      summary: 指定ユーザ更新
-      description: 指定したユーザ情報を更新する。
+        - ユーザー情報更新エンドポイント
+      summary: 指定ユーザー更新
+      description: 指定したユーザー情報を更新する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -487,7 +487,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -514,7 +514,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -529,7 +529,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。      
@@ -590,7 +590,7 @@ components:
   # schemaキーの共通化
   #===========================
   schemas:
-    # ユーザ
+    # ユーザー
     user:
       type: object
       properties:
@@ -666,9 +666,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: ユーザ情報取得
-      description: 全ユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: ユーザー情報取得
+      description: 全ユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -679,7 +679,7 @@ paths:
         - in: query # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -741,9 +741,9 @@ paths:
     #===========================
     post:
       tags:
-        - ユーザ情報作成エンドポイント
-      summary: ユーザ情報作成
-      description: ユーザ情報を作成する。
+        - ユーザー情報作成エンドポイント
+      summary: ユーザー情報作成
+      description: ユーザー情報を作成する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -752,7 +752,7 @@ paths:
         - apiKeyAuth: [ ] # APIキーの必須化
       parameters: [ ]
       requestBody: # リクエストボディにパラメータを割り当てる。
-        description: ユーザID
+        description: ユーザーID
         content:
           application/json: # MIME type
             example: # リクエストボディ例
@@ -780,7 +780,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -819,9 +819,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: 指定ユーザ情報取得
-      description: 指定したユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: 指定ユーザー情報取得
+      description: 指定したユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -832,7 +832,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -859,7 +859,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -874,7 +874,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -907,9 +907,9 @@ paths:
     #===========================                
     put:
       tags:
-        - ユーザ情報更新エンドポイント
-      summary: 指定ユーザ更新
-      description: 指定したユーザ情報を更新する。
+        - ユーザー情報更新エンドポイント
+      summary: 指定ユーザー更新
+      description: 指定したユーザー情報を更新する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -920,7 +920,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -947,7 +947,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -962,7 +962,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。      
@@ -1029,7 +1029,7 @@ components:
   # schemaキーの共通化
   #===========================
   schemas:
-    # ユーザ
+    # ユーザー
     user:
       type: object
       properties:
@@ -1114,9 +1114,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: ユーザ情報取得
-      description: 全ユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: ユーザー情報取得
+      description: 全ユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -1127,7 +1127,7 @@ paths:
         - in: query # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -1184,9 +1184,9 @@ paths:
     #===========================
     post:
       tags:
-        - ユーザ情報作成エンドポイント
-      summary: ユーザ情報作成
-      description: ユーザ情報を作成する。
+        - ユーザー情報作成エンドポイント
+      summary: ユーザー情報作成
+      description: ユーザー情報を作成する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -1195,7 +1195,7 @@ paths:
         - apiKeyAuth: [ ] # APIキーの必須化
       parameters: [ ]
       requestBody: # リクエストボディにパラメータを割り当てる。
-        description: ユーザID
+        description: ユーザーID
         content:
           application/json: # MIME type
             example: # リクエストボディ例
@@ -1223,7 +1223,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -1256,9 +1256,9 @@ paths:
     #===========================
     get:
       tags:
-        - ユーザ情報取得エンドポイント
-      summary: 指定ユーザ情報取得
-      description: 指定したユーザ情報を取得する。
+        - ユーザー情報取得エンドポイント
+      summary: 指定ユーザー情報取得
+      description: 指定したユーザー情報を取得する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -1269,7 +1269,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -1296,7 +1296,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -1311,7 +1311,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -1339,9 +1339,9 @@ paths:
     #===========================                
     put:
       tags:
-        - ユーザ情報更新エンドポイント
-      summary: 指定ユーザ更新
-      description: 指定したユーザ情報を更新する。
+        - ユーザー情報更新エンドポイント
+      summary: 指定ユーザー更新
+      description: 指定したユーザー情報を更新する。
       #===========================
       # メソッドリクエスト
       #===========================
@@ -1352,7 +1352,7 @@ paths:
         - in: path # パスにパラメータを割り当てる。
           name: userId
           required: true
-          description: ユーザID
+          description: ユーザーID
           schema:
             type: string
             example: # パスパラメータ例
@@ -1379,7 +1379,7 @@ paths:
                 title: Bad Request
                 errors:
                   messages: [
-                      "ユーザIDは必ず指定してください。"
+                      "ユーザーIDは必ず指定してください。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
@@ -1394,7 +1394,7 @@ paths:
                 title: Not Found
                 errors:
                   messages: [
-                      "対象のユーザが見つかりませんでした。"
+                      "対象のユーザーが見つかりませんでした。"
                   ]
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。      
@@ -1456,7 +1456,7 @@ components:
   # schemaキーの共通化
   #===========================
   schemas:
-    # ユーザ
+    # ユーザー
     user:
       type: object
       properties:

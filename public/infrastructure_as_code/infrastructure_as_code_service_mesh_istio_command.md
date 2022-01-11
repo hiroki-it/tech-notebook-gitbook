@@ -223,9 +223,12 @@ Istio configuration profiles:
 
 #### ・proxy-config
 
-指定したIstioオブジェクトの構成情報を表示する。
+Istio上で管理されるEnvoyの構成情報を表示する。
 
-参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
+参考：
+
+- https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
+- https://sreake.com/blog/istio/
 
 ```bash
 $ istioctl proxy-config <項目> <ポッド名> -n <名前空間名>
@@ -233,10 +236,10 @@ $ istioctl proxy-config <項目> <ポッド名> -n <名前空間名>
 
 **＊実行例＊**
 
-Ingress Gatewayのエンドポイント情報を表示する。
+Envoyのエンドポイント情報を表示する。
 
 ```bash
-$ istioctl proxy-config endpoints <Ingress Gateway名> -n istio-system
+$ istioctl proxy-config endpoints <IngressGateway名> -n istio-system
 
 ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
 127.0.0.1:15000                  HEALTHY     OK                prometheus_stats
@@ -254,10 +257,10 @@ unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 ```
 
-Ingress Gatewayのリスナー情報を表示する。
+Envoyのリスナー情報を表示する。
 
 ```bash
-$ istioctl proxy-config listeners <Ingress Gateway名> -n istio-system
+$ istioctl proxy-config listeners <IngressGateway名> -n istio-system
 
 ADDRESS PORT  MATCH DESTINATION
 0.0.0.0 8080  ALL   Route: http.8080
@@ -265,10 +268,10 @@ ADDRESS PORT  MATCH DESTINATION
 0.0.0.0 15090 ALL   Inline Route: /stats/prometheus*
 ```
 
-Ingress Gatewayのルーティング情報を表示する。
+のルーティング情報を表示する。
 
 ```bash
-$ istioctl proxy-config routes <Ingress Gateway名> -n istio-system
+$ istioctl proxy-config routes <IngressGateway名> -n istio-system
 
 NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
 http.8080     *           /*                     foo-virtual-service.istio-system
@@ -276,15 +279,13 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
               *           /healthz/ready*  
 ```
 
-
-
 <br>
 
 ### proxy-status
 
 #### ・proxy-statusとは
 
-Ingress Gateway、Egress Gateway、Envoyコンテナのステータスを表示する。
+IngressGateway、EgressGateway、Envoyコンテナのステータスを表示する。
 
 参考：https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
 

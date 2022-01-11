@@ -416,7 +416,7 @@ class EnginnerShainManagement extends ShainManagement
 
 **＊例＊**
 
-オープンソースのライブラリは、ユーザが実装クラスを自身で追加実装することも考慮して、Realizationが用いられている。
+オープンソースのライブラリは、ユーザーが実装クラスを自身で追加実装することも考慮して、Realizationが用いられている。
 
 **＊例＊**
 

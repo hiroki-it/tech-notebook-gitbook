@@ -96,9 +96,9 @@ spec:
         - name: istio-proxy
 ```
 
-ちなみに、Envoyコンテナではなく```envoy.yaml```ファイルの設定値を変更する場合は、EnvoyFilterを定義する。
+ちなみに、Envoyコンテナではなく```envoy.yaml```ファイルの設定値は、VirtualServiceとDestinationRuleの設定値に相当する。
 
-参考：https://istio.io/latest/docs/reference/config/networking/envoy-filter/
+参考：https://sreake.com/blog/istio/
 
 #### ・proxy.istio.io/config.configPath
 
@@ -189,7 +189,7 @@ spec:
 ```yaml
 kind: DestinationRule
 spec:
-  host: foo-service # 完全修飾ドメイン名でも良い。
+  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
 ```
 
 <br>
@@ -214,6 +214,38 @@ spec:
   - name: v2
     labels:
       version: v2
+```
+
+<br>
+
+### trafficPolicy
+
+#### ・loadBalancer
+
+```yaml
+kind: DestinationRule
+spec:
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    portLevelSettings:
+      - port:
+          number: 9000
+        loadBalancer:
+          simple: ROUND_ROBIN
+```
+
+#### ・portLevelSettings
+
+```yaml
+kind: DestinationRule
+spec:
+  trafficPolicy:
+    portLevelSettings:
+      - port:
+          number: 9000
+        loadBalancer:
+          simple: ROUND_ROBIN
 ```
 
 <br>
@@ -309,7 +341,7 @@ spec:
 
 #### ・selectorとは
 
-Gatewayの適用対象のIngress Gatewayに付与されたラベルを設定する。
+Gatewayの適用対象のIngressGatewayに付与されたラベルを設定する。
 
 参考：https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
 
@@ -390,7 +422,7 @@ IstioOperator経由でIstioオブジェクトをインストールする。
 
 #### ・ingressGateways
 
-IstioOperator経由でインストールされるIngress Gatewayのオプションを設定する。Gatewayとは異なるオブジェクトであることに注意する。ingressGatewaysの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
+IstioOperator経由でインストールされるIngressGatewayのオプションを設定する。Gatewayとは異なるオブジェクトであることに注意する。ingressGatewaysの設定値を変更する場合は、```runAsRoot```キーでルート権限を有効化する必要がある。
 
 参考：https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -414,7 +446,7 @@ spec:
         runAsRoot: true
 ```
 
-ちなみに、以下の方法で独自のIngress Gatewayを作成できる（かなり大変）。
+ちなみに、以下の方法で独自のIngressGatewayを作成できる（かなり大変）。
 
 参考：
 
@@ -486,7 +518,7 @@ status:
 
 #### ・egressGateways
 
-IstioOperator経由でインストールされるEgress Gatewayのオプションを設定する。
+IstioOperator経由でインストールされるEgressGatewayのオプションを設定する。
 
 ```yaml
 kind: IstioOperator
@@ -543,7 +575,7 @@ spec:
 
 #### ・ingressSelector
 
-全てのEnvoyコンテナに関して、使用するGatewayの```istio```ラベル値を設定する。Ingress GatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、使用するGatewayの```istio```ラベル値を設定する。IngressGatewayをIngressコントローラーとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator
@@ -554,7 +586,7 @@ spec:
 
 #### ・ingressService
 
-全てのEnvoyコンテナに関して、使用するIngressコントローラーの```istio```ラベル値を設定する。Ingress GatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
+全てのEnvoyコンテナに関して、使用するIngressコントローラーの```istio```ラベル値を設定する。IngressGatewayをIngressとして使用でき、デフォルトではは```ingressgateway```が設定される。
 
 ```yaml
 kind: IstioOperator

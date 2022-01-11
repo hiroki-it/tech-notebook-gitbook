@@ -284,7 +284,7 @@ workflows:
 
 #### ・```assume_role.sh```ファイル
 
-Assume Roleを実行し、CircleCIで使用するIAMユーザにロールを一時的に委譲する。
+Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
@@ -511,7 +511,7 @@ notifier:
     # 環境変数に登録したパーソナルアクセストークン
     token: $GITHUB_TOKEN
     repository:
-      # 送信先のユーザ名もしくは組織名
+      # 送信先のユーザー名もしくは組織名
       owner: "foo-company"
       name: "foo-repository"
 

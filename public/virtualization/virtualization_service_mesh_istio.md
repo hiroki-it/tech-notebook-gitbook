@@ -96,17 +96,23 @@ Istioオブジェクトを組み合わせて、サービスメッシュを実装
 
 ![istio_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_overview.png)
 
+#### ・istio-proxyコンテナ
+
+Istioによって、プロキシ機能を持つistio-proxyコンテナが自動的に構築される。istio-proxyコンテナではEnvoyが稼働しており、VirtualServiceとDestinationRuleの設定値はenvoyの構成情報としてコンテナに適用される。
+
+参考：https://sreake.com/blog/istio/
+
 <br>
 
 ## 02-02. インバウンド通信に関するオブジェクト
 
-### Ingress Gateway
+### IngressGateway
 
-#### ・Ingress Gatewayとは
+#### ・IngressGatewayとは
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook/master/images/istio_ingress-gateway.png)
 
-Gateway、Service、Destination Ruleの設定に基づいて、クラスター外部から送信されるインバウンド通信をPodにルーティングする。
+Gateway、Service、DestinationRuleの設定に基づいて、クラスター外部から送信されるインバウンド通信をPodにルーティングする。
 
 参考：
 
@@ -121,38 +127,50 @@ Gateway、Service、Destination Ruleの設定に基づいて、クラスター�
 
 #### ・Gatewayとは
 
-Ingress Gatewayの機能のうち、クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う。
+IngressGatewayの機能のうち、クラスター外部から送信されるインバウンド通信をフィルタリングする機能を担う。
 
 参考：https://istio.io/latest/blog/2018/v1alpha3-routing/
 
 <br>
 
-### Virtual Service
+### VirtualService
 
-#### ・Virtual Serviceとは
+#### ・VirtualServiceとは
 
-Ingress Gatewayの機能のうち、ルーティング対象のServiceを決定する機能を担う。
+IngressGatewayの機能のうち、ルーティング対象のServiceを決定する機能を担う。
 
 参考：
 
 - https://tech.uzabase.com/entry/2018/11/26/110407
 - https://knowledge.sakura.ad.jp/20489/
 
+#### ・Envoyの設定値として
+
+VirtualServiceの設定値は、Envoyのlisteners値として、istio-proxyコンテナに適用される。
+
+参考：https://sreake.com/blog/istio/
+
 <br>
 
-### Destination Rule
+### DestinationRule
 
-#### ・Destination Rule
+#### ・DestinationRule
 
-Ingress Gatewayの機能のうち、ルーティング対象のPodを決定する機能を担う。
+IngressGatewayの機能のうち、ルーティング対象のPodを決定する機能を担う。
+
+#### ・Envoyの設定値として
+
+DestinationRuleの設定値は、Envoyのclusters値として、istio-proxyコンテナに適用される。
+
+参考：https://sreake.com/blog/istio/
 
 <br>
 
 ## 02-03. アウトバウンド通信に関するオブジェクト
 
-### Egress Gateway
+### EgressGateway
 
-#### ・Egress Gatewayとは
+#### ・EgressGatewayとは
 
 クラスター内部から送信されるアウトバウンド通信をフィルタリングし、パブリックネットワークにルーティングする。
 
@@ -162,11 +180,11 @@ Ingress Gatewayの機能のうち、ルーティング対象のPodを決定す�
 
 <br>
 
-### Service Entry
+### ServiceEntry
 
-#### ・Service Entryとは
+#### ・ServiceEntryとは
 
-アウトバウンド通信のうち、送信可能なもののみを指定したドメインやEgress Gatewayにルーティングする。Service Entryを使用しない場合は、全てのアウトバウンド通信がルーティングされる。
+アウトバウンド通信のうち、送信可能なもののみを指定したドメインやEgressGatewayにルーティングする。ServiceEntryを使用しない場合は、全てのアウトバウンド通信がルーティングされる。
 
 参考：https://tech.uzabase.com/entry/2018/11/26/110407
 

@@ -79,7 +79,7 @@ return [
 
 #### ・ルーティングの保護
 
-BeforeMiddlwareで認証済みのユーザかどうかを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。これにより、未認証のユーザがコントローラーを実行することを防ぐ。
+BeforeMiddlwareで認証済みのユーザーかどうかを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
 
 参考：https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
 
@@ -101,7 +101,7 @@ BeforeMiddlwareで認証済みのユーザかどうかを検証し、もし未�
 
 sessionドライバーを選択する。
 
-#### ・全てのユーザが同一権限を持つ場合
+#### ・全てのユーザーが同一権限を持つ場合
 
 SessionGuardクラスの```attempt```メソッドをコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。認証が成功すると、認証セッションを開始する。```redirect```メソッドで、認証後の初期ページにリダイレクトする。
 
@@ -156,15 +156,15 @@ class RouteServiceProvider extends ServiceProvider
 }
 ```
 
-#### ・一部のユーザが異なる権限を持つ場合
+#### ・一部のユーザーが異なる権限を持つ場合
 
-ユーザごとに認証方法を区別しつつ、同一の認証後ページにリダイレクトさせられる。
+ユーザーごとに認証方法を区別しつつ、同一の認証後ページにリダイレクトさせられる。
 
 参考：https://blog.capilano-fw.com/?p=8159
 
 **＊実装例＊**
 
-権限の異なるユーザに応じたガード、またガードに紐付けるEloquentモデルをプロバイダを定義しておく。
+権限の異なるユーザーに応じたガード、またガードに紐付けるEloquentモデルをプロバイダを定義しておく。
 
 ```php
 <?php
@@ -183,7 +183,7 @@ return [
             'provider' => 'users',
             'hash'     => false,
         ],
-        // 一般ユーザ
+        // 一般ユーザー
         'users'          => [
             'driver'   => 'session',
             'provider' => 'users',
@@ -197,7 +197,7 @@ return [
 
     // プロバイダ
     'providers' => [
-        // 一般ユーザ
+        // 一般ユーザー
         'users'          => [
             'driver' => 'eloquent',
             'model'  => App\Models\User::class,
@@ -212,7 +212,7 @@ return [
 
 ```
 
-Authファサードの```guard```メソッドを用いて、ガードに応じた認証を実行する。これにより、同一の認証後ページにリダイレクトした後に、ユーザのEloquentモデルに応じた処理を実行できるようになる。
+Authファサードの```guard```メソッドを用いて、ガードに応じた認証を実行する。これにより、同一の認証後ページにリダイレクトした後に、ユーザーのEloquentモデルに応じた処理を実行できるようになる。
 
 ```php
 <?php
@@ -239,7 +239,7 @@ final class AuthenticationController
             // セッションID固定化を防ぐために、認証後にセッションを再作成します。
             $authenticationRequest->session()->regenerate();
 
-            // ユーザ用認証後ページにリダイレクトします。
+            // ユーザー用認証後ページにリダイレクトします。
             return redirect(RouteServiceProvider::HOME);
         }
 
@@ -256,7 +256,7 @@ final class AuthenticationController
 
 #### ・```user```メソッド
 
-現在のセッションにおけるユーザが認証済みであれば、ユーザのEloquentモデルを取得する。
+現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。
 
 ```php
 <?php
@@ -268,11 +268,11 @@ $user = auth()->user();
 
 #### ・```check```メソッド
 
-現在のセッションにおけるユーザが認証済みであれば、```true```を返却する。
+現在のセッションにおけるユーザーが認証済みであれば、```true```を返却する。
 
 **＊実装例＊**
 
-認証済みのユーザがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを用いて、認証済みのユーザからのリクエストを認証済みページにリダイレクトさせる。
+認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている（例：ログアウトしない）限り、認証処理を改めて実行する必要はない。そのために、BeforeMiddlewareを用いて、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
 
 ````php
 <?php
@@ -298,7 +298,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (auth()->guard($guard)->check()) {
-                // ユーザが認証済みの場合は、認証後のページにリダイレクトします。
+                // ユーザーが認証済みの場合は、認証後のページにリダイレクトします。
                 return redirect(RouteServiceProvider::HOME);
             }
         }
@@ -325,7 +325,7 @@ Eloquentモデルレベルの認可スコープを定義する。指定したElo
 
 #### ・ポリシーとは
 
-DBレコードレベルの認可スコープを定義する。Eloquentモデルに紐付く特定のレコードにアクセスできなくなる。Policyクラスのメソッドによって、リクエスト中の認証済みユーザが自動的にインジェクションされる。EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
+DBレコードレベルの認可スコープを定義する。Eloquentモデルに紐付く特定のレコードにアクセスできなくなる。Policyクラスのメソッドによって、リクエスト中の認証済みユーザーが自動的にインジェクションされる。EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する
 
 参考：https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
 
@@ -348,7 +348,7 @@ final class FooPolicy
      */
     public function create(User $user): bool
     {
-        $id = $user->id; // 認証中のユーザ
+        $id = $user->id; // 認証中のユーザー
     }
 
     /**
@@ -445,7 +445,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 #### ・```authorization```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザのDBアクセスが認可スコープの範囲内かどうかを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスするようにする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する。基底コントローラーを継承したコントローラーでは```authorization```メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内かどうかを検証する。第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で```403```ステータスのレスポンスするようにする。
 
 参考：
 
@@ -454,7 +454,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 **＊実装例＊**
 
-ユーザが該当IDのFooモデルを更新する権限があるかどうかを検証する。
+ユーザーが該当IDのFooモデルを更新する権限があるかどうかを検証する。
 
 ```php
 <?php
@@ -499,7 +499,7 @@ class FooController extends Controller
 
 #### ・```can```メソッドによる認可
 
-コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザの認可スコープの範囲内かどうかを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスするようにする。
+コントローラー実行時にDBレコードレベルの認可スコープを定義する。現在認証されているユーザーのインスタンスから```can```メソッドをコールできる。第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。DBアクセスが、そのユーザーの認可スコープの範囲内かどうかを検証する。認可に失敗した場合に```false```を返却するため、その後は自前で```403```ステータスのレスポンスするようにする。
 
 参考：
 
@@ -508,7 +508,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-ユーザがFooモデルを作成する権限があるかどうかを検証する。
+ユーザーがFooモデルを作成する権限があるかどうかを検証する。
 
 ```php
 <?php
@@ -730,7 +730,7 @@ return [
 ];
 ```
 
-4. Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuth認証に成功したユーザのみがルーティングを行えるようになる。
+4. Userへのルーティング時に、```middleware```メソッドによる認証ガードを行う。これにより、OAuth認証に成功したユーザーのみがルーティングを行えるようになる。
 
 **＊実装例＊**
 
@@ -781,7 +781,7 @@ class AuthServiceProvider extends ServiceProvider
 }
 ```
 
-7. 暗号キーとユーザを作成する。
+7. 暗号キーとユーザーを作成する。
 
 ```bash
 $ php artisan passport:keys
@@ -791,7 +791,7 @@ $ php artisan passport:client --password
 
 #### ・クライアントアプリ側の実装
 
-1. 『認証』のために、アクセストークンのリクエストを送信する。ユーザ側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを用いて、リクエストを送信するものとする。
+1. 『認証』のために、アクセストークンのリクエストを送信する。ユーザー側のアプリケーションは、```/oauth/authorize```へリクエストを送信する必要がある。ここでは、リクエストGuzzleパッケージを用いて、リクエストを送信するものとする。
 
 **＊実装例＊**
 
@@ -861,8 +861,8 @@ class CreateUsersTable extends Migration
     {
         Schema::create("users", function (Blueprint $table) {
             
-            $table->bigIncrements("user_id")->comment("ユーザID");
-            $table->string("name")->comment("ユーザ名");
+            $table->bigIncrements("user_id")->comment("ユーザーID");
+            $table->string("name")->comment("ユーザー名");
             $table->string("api_token")->unique()->comment("APIトークン");
 
             // MigrationMacroServiceProviderのメソッドを用いる。
@@ -889,7 +889,7 @@ class CreateUsersTable extends Migration
 
 #### ・バックエンド側の実装
 
-1. 暗号キーとユーザを作成する。
+1. 暗号キーとユーザーを作成する。
 
 ```bash
 $ php artisan passport:keys
@@ -897,7 +897,7 @@ $ php artisan passport:keys
 $ php artisan passport:client --personal
 ```
 
-2. 作成したユーザに、クライアントIDを付与する。
+2. 作成したユーザーに、クライアントIDを付与する。
 
 ```php
 /**
@@ -915,7 +915,7 @@ public function boot()
 }
 ```
 
-3. ユーザからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
+3. ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。
 
 ```php
 <?php

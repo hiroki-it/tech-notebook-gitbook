@@ -32,7 +32,7 @@
 | 役割         | 説明                                                         |
 | ------------ | ------------------------------------------------------------ |
 | クライアント | リクエスト送信元のアプリケーションのこと。文脈によっては、ブラウザがクライアントである場合とそうでない場合（例：OAuth認証）がある。 |
-| ユーザ       | クライアントを用いている人物のこと。                       |
+| ユーザー       | クライアントを用いている人物のこと。                       |
 | サーバー       | クライアントからリクエストを受信し、レスポンスを送信するアプリケーションのこと。 |
 
 最初、クライアントは、認証後にアクセスできるページのリクエストをサーバーに送信する。
@@ -41,21 +41,21 @@
 GET https://example.com/foo-form HTTP/2
 ```
 
-サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザに示して、ユーザ名とパスワードの入力を求められる。ユーザに表示するための認証領域には、任意の値を持たせることができ、サイト名が設定されることが多い。
+サーバーは、これ拒否し、```401```ステータスで認証領域を設定し、レスポンスを送信する。これにより、認証領域の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。ユーザーに表示するための認証領域には、任意の値を持たせることができ、サイト名が設定されることが多い。
 
 ```http
 401 Unauthorized
 WWW-Authenticate: Basic realm="<認証領域>", charaset="UTF-8"
 ```
 
-『```<ユーザ名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
+『```<ユーザー名>:<パスワード>```』をBase64でエンコードした値を```authorization```ヘッダーに割り当て、リクエストを送信する。
 
 ```http
 POST https://example.com/foo-form HTTP/2
 authorization: Basic bG9naW46cGFzc3dvcmQ=
 ```
 
-サーバーは、ユーザ名とパスワードを照合し、合致していれば、認証後ページのレスポンスを送信する。また、認証情報をブラウザのWebストレージに保存する。
+サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後ページのレスポンスを送信する。また、認証情報をブラウザのWebストレージに保存する。
 
 ```http
 200 OK
@@ -242,7 +242,7 @@ OAuthの項目を参考にせよ。
 
 セッションIDを```Cookie```ヘッダーに割り当て、リクエストを送信する。
 
-最初、ユーザ作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をデータベースに保存する。
+最初、ユーザー作成の段階で、クライアントが認証情報をサーバーに送信する。サーバーは、認証情報をデータベースに保存する。
 
 ```http
 POST https://example.com/users HTTP/2
@@ -253,7 +253,7 @@ POST https://example.com/users HTTP/2
 }
 ```
 
-次回の認証時に、再びユーザが認証情報を送信する。
+次回の認証時に、再びユーザーが認証情報を送信する。
 
 ```http
 POST https://example.com/foo-form HTTP/2
@@ -278,7 +278,7 @@ POST https://example.com/foo-form HTTP/2
 Set-Cookie: sessionid=<セッションID>
 ```
 
-サーバーは、セッションIDとユーザIDを紐付けてサーバー内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを用いて、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザIDから、ユーザを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
+サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。さらに次回のログイン時、クライアントは、リクエストの```Cookie```ヘッダーを用いて、セッションIDをクライアントに送信する。サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。これにより、改めて認証情報を送信せずに、素早くログインできるようになる。
 
 ```http
 POST https://example.com/foo-form HTTP/2
@@ -312,7 +312,7 @@ cookie: sessionid=<セッションID>
 
 #### ・APIキー認証とは
 
-事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザを照合する方法のこと。API GatewayにおけるAPIキー認証については、以下を参考にせよ。
+事前にAPIキーとなる文字列を配布し、認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと。API GatewayにおけるAPIキー認証については、以下を参考にせよ。
 
 参考：https://hiroki-it.github.io/tech-notebook-gitbook/public/cloud_computing/cloud_computing_aws.html
 
@@ -333,7 +333,7 @@ x-api-key: <APIキー>
 
 #### ・PATによる認証
 
-クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザを照合する方法のこと。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
+クライアントがPersonal Access Token（個人用アクセストークン）の付与をリクエストし、認証フェースは行わずに認可フェーズのみでユーザーを照合する方法のこと。```Authorization```ヘッダーにPATを割りあてて、リクエストを送信する。作成時以降、アクセストークンを確認できなくなるため、クライアントがアクセストークンを管理する必要がある。
 
 参考：https://www.contentful.com/help/personal-access-tokens/
 
@@ -421,7 +421,7 @@ authorization: <Personal Acccess Token>
 | 役割              | 名称               | 説明                                                         | 補足                                                         |
 | ----------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | APIクライアント   | クライアントアプリ | リソースオーナに対するアクション機能を持つサーバーのこと。     | OAuthの文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを介したリダイレクトによって実現することに注意する。 |
-|                   | リソースオーナー   | クライアントを用いているユーザのこと。                     |                                                              |
+|                   | リソースオーナー   | クライアントを用いているユーザーのこと。                     |                                                              |
 | Identity Provider | 認可サーバー         | リソースサーバーがリソースオーナーにアクセスできるトークンを生成するサーバーのこと。 | 認可サーバーがリダイレクト先のクライアントアプリのURLをレスポンスに割り当てられるように、クライアントアプリの開発者がURLを事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>参考：https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | APIサーバー         | リソースサーバー     | クライアントのアカウント情報を持っているサーバーのこと。       |                                                              |
 
@@ -434,9 +434,9 @@ OAuth認証には、仕組み別に『認可コードフロー』『インプリ
 - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
 - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
 
-（１）ユーザが、Facebookアカウントを用いてInstagramにログインしようとする。この時、ブラウザはFacebookにリクエストを送信する。
+（１）ユーザーが、Facebookアカウントを用いてInstagramにログインしようとする。この時、ブラウザはFacebookにリクエストを送信する。
 
-（２）Facebookはブラウザににアカウント連携の承認ボタンをレスポンスとして返信する。ユーザは、表示された承認ボタンを押し、ブラウザはFacebookにリクエストを送信する。
+（２）Facebookはブラウザににアカウント連携の承認ボタンをレスポンスとして返信する。ユーザーは、表示された承認ボタンを押し、ブラウザはFacebookにリクエストを送信する。
 
 （３）一時的に有効な認可コードを発行してもらうため、FacebookはInstagram認可サーバーに認可リクエストを送信する。
 
@@ -526,7 +526,7 @@ OAuth認証では、認証スキーマとしてBearer認証が選ばれること
 | Client Credentials Grant | 推奨されている。<br>参考：https://oauth.net/2/grant-types/client-credentials/ |                                                              |
 | Device Code              | 推奨されている。<br>参考：https://oauth.net/2/grant-types/device-code/ |                                                              |
 | Implicit Grant           | 非推奨されている。<br>参考：https://oauth.net/2/grant-types/implicit/ |                                                              |
-| Password Grant           | ユーザ名とパスワードを照合し、トークンを付与する。非推奨されている。<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを用いている。<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+| Password Grant           | ユーザー名とパスワードを照合し、トークンを付与する。非推奨されている。<br>参考：<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | LaravelのPassword Grant Token機能は、Password Grantタイプを用いている。<br>参考：https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
 <br>
 
@@ -592,11 +592,11 @@ const header = {
 
 #### ・ペイロードのJSONデータの生成
 
-ペイロードは以下のJSONデータで定義される。ペイロードには、実際に送信したいJSONを設定するようにする。必ず設定しなければならない『予約済みクレーム』と、ユーザ側が自由に定義できる『プライベートクレーム』がある。
+ペイロードは以下のJSONデータで定義される。ペイロードには、実際に送信したいJSONを設定するようにする。必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。
 
 | 予約済みクレーム名         | 役割                      | 例       |
 | -------------------------- | ------------------------- | -------- |
-| ```sub```：Subject         | 一意な識別子を設定する。  | ユーザID |
+| ```sub```：Subject         | 一意な識別子を設定する。  | ユーザーID |
 | ```iss```：Issuer          |                           |          |
 | ```aud```：Audience        |                           |          |
 | ```exp```：Expiration Time | JWTの有効期限を設定する。 |          |

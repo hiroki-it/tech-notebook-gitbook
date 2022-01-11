@@ -40,21 +40,21 @@ end
 
 <br>
 
-### box
+### config.vm.box
 
 #### ・boxとは
 
-仮想サーバーの名前を設定する。
+仮想サーバーのベースとするボックス名を設定する。
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-box
 
 ```bash
-box = "foo"
+config.vm.box = "foo"
 ```
 
 <br>
 
-### box_check_update
+### config.vm.box_check_update
 
 #### ・box_check_updateとは
 
@@ -66,7 +66,7 @@ config.vm.box_check_update = false
 
 <br>
 
-### network
+### config.vm.network
 
 #### ・networkとは
 
@@ -84,9 +84,19 @@ config.vm.box_check_update = false
 config.vm.network "forwarded_port", guest: 80, host: 8080
 ```
 
+#### ・private_network
+
+仮想サーバーのプライベートIPアドレスを設定する。他の仮想サーバーとIPアドレスが重複しないようにする必要がある。
+
+参考：https://www.vagrantup.com/docs/networking/private_network
+
+```bash
+config.vm.network "private_network", ip: "10.0.0.2"
+```
+
 <br>
 
-### provider
+### config.vm.provider
 
 #### ・providerとは
 
@@ -94,16 +104,33 @@ config.vm.network "forwarded_port", guest: 80, host: 8080
 
 参考：https://www.vagrantup.com/docs/vagrantfile/machine_settings#config-vm-provider
 
+#### ・virtualbox
+
+参考：https://www.vagrantup.com/docs/providers/virtualbox/configuration
+
 ```bash
 config.vm.provider "virtualbox" do |vb|
+  vb.cpus = "2"
   vb.gui = true
   vb.memory = "1024"
 end
 ```
 
+#### ・docker
+
+参考：https://www.vagrantup.com/docs/providers/docker/configuration
+
+```bash
+config.vm.provider "docker" do |docker|
+  docker.build_dir = "./docker/Dockerfile"
+
+  docker.has_ssh = true
+end
+```
+
 <br>
 
-### provision
+### config.vm.provision
 
 #### ・provisionとは
 
@@ -114,13 +141,13 @@ end
 ```bash
 config.vm.provision "shell", inline: <<-SHELL
   apt-get update
-  apt-get install -y apache2
+  apt-get install -y ansible
 SHELL
 ```
 
 <br>
 
-### synced_folder
+### config.vm.synced_folder
 
 #### ・synced_folderとは
 

@@ -16,7 +16,13 @@ https://circleci.com/docs/reference-2-1/#circleci-2-1-reference
 
 <br>
 
-### 設定ファイルのデバッグ
+### セットアップ
+
+#### ・Webhook
+
+CircleCIの鍵をGitHubに登録すると、リポジトリへのプッシュによって、CircleCIをフック（プッシュフック）できるようになる。鍵のうちでデプロイキーを使用することが推奨されている。なお、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。
+
+参考：https://circleci.com/docs/2.0/gh-bb-integration/
 
 #### ・デバッグの事前準備
 
@@ -1400,9 +1406,9 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: <ユーザ名>/<リポジトリ名>
+          image: <ユーザー名>/<リポジトリ名>
       - docker/push:
-          image: <ユーザ名>/<リポジトリ名>
+          image: <ユーザー名>/<リポジトリ名>
 ```
 
 <br>
@@ -1490,7 +1496,7 @@ aws-cliコマンドのインストールと、Credentials情報の設定を行�
 
 **＊実装例＊**
 
-CloudFrontに保存されているキャッシュを削除する。フロントエンドをデプロイしたとしても、CloudFrontに保存されているキャッシュを削除しない限り、キャッシュがHitしたユーザには過去のファイルがレスポンスされてしまう。そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
+CloudFrontに保存されているキャッシュを削除する。フロントエンドをデプロイしたとしても、CloudFrontに保存されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。そのため、S3へのデプロイ後に、キャッシュを削除する必要がある。
 
 ```yaml
 version: 2.1

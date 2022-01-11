@@ -10,7 +10,7 @@
 
 ## 01. Vagrantとは
 
-Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し、火葬サーバーを構築する。
+Vagrantfileを用いて、プロバイダーとプロビジョナーを操作し、仮想サーバーを構築する。
 
 参考：https://computationalmodelling.bitbucket.io/tools/vagrant.html
 

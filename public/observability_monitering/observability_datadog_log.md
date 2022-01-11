@@ -18,7 +18,7 @@
 
 （２）Datadogにて、ログはパイプラインで処理され、構造化ログになる。
 
-（３）ユーザは、ログの属性値に基づいて、ログを検索できるようになる。
+（３）ユーザーは、ログの属性値に基づいて、ログを検索できるようになる。
 
 参考：https://developers.cyberagent.co.jp/blog/archives/12565/
 
@@ -30,7 +30,7 @@
 
 （２）Datadogにて、ログはパイプラインで処理され、構造化ログになる。
 
-（３）ユーザは、ログの属性値に基づいて、ログを検索できるようになる。
+（３）ユーザーは、ログの属性値に基づいて、ログを検索できるようになる。
 
 参考：https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
 
@@ -111,7 +111,7 @@ FROM data/agent:latest
 
 <br>
 
-### ユーザ設定
+### ユーザー設定
 
 デフォルトで組み込まれている設定ファイルを置換する。
 
@@ -735,9 +735,9 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:19283746
 
 これに対して、サービスリマッパーのルールを定義する。```service```属性のサービス値が、サービスファセットとして登録されるようにする。
 
-#### ・ユーザエージェントパーサー
+#### ・ユーザーエージェントパーサー
 
-ユーザエージェントの文字列を解析し、詳細な項目ごとに分解した構造化ログとして出力する。
+ユーザーエージェントの文字列を解析し、詳細な項目ごとに分解した構造化ログとして出力する。
 
 **＊例＊**
 
@@ -747,7 +747,7 @@ Nginxから、以下のような非構造化ログを受信する例を考える
 nn.nnn.nn.nn - - [01/Sep/2021:00:00:00 +0000] "GET /healthcheck HTTP/1.1" 200 17 "-" "ELB-HealthChecker/2.0"
 ```
 
-これに対して、以下のようなGrokパーサーのルールを定義する。```http.useragent```属性にユーザエージェント値を割り当てる。
+これに対して、以下のようなGrokパーサーのルールを定義する。```http.useragent```属性にユーザーエージェント値を割り当てる。
 
 ```bash
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
@@ -777,7 +777,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 }
 ```
 
-これに対して、ユーザエージェントパーサーのルールを定義する。```http.useragent```属性の値を分解し、```useragent_details```属性に振り分けるようにする。これにより、構造化ログの各属性に値が割り当てられる。
+これに対して、ユーザーエージェントパーサーのルールを定義する。```http.useragent```属性の値を分解し、```useragent_details```属性に振り分けるようにする。これにより、構造化ログの各属性に値が割り当てられる。
 
 ```bash
 {
@@ -975,7 +975,7 @@ AWSリソースで生成されたログをDaadogに転送できるようにし�
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 
-（２）CloudFormationにより、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを構築する。構築されたIAMロール（```DatadogIntegrationRole```）をDatadogのIAMユーザ（```464622532012```）に委譲できるように、アカウントIDとロール名をDatadogの設定画面に入力する。
+（２）CloudFormationにより、メトリクス/ログ/分散トレースを転送するLambdaやIAMロールを構築する。構築されたIAMロール（```DatadogIntegrationRole```）をDatadogのIAMユーザー（```464622532012```）に委譲できるように、アカウントIDとロール名をDatadogの設定画面に入力する。
 
 参考：https://app.datadoghq.com/account/settings#integrations/amazon-web-services
 

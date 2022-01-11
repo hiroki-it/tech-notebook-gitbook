@@ -162,7 +162,7 @@ static_resources:
 
 #### ・typed_config.access_log
 
-envoyプロセスのアクセスログの出力先を設定する。
+Envoyのアクセスログの出力先を設定する。
 
 ```yaml
 static_resources:

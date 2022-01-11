@@ -47,21 +47,6 @@ ENV PARAM=${PARAM}
 
 ### ```build```
 
-#### ・```dockerfile```
-
-Dockerfileまでのファイルパスを設定する。
-
-**＊実装例＊**
-
-```yaml
-services:
-  app:
-    build:
-      dockerfile: ./docker/app/Dockerfile
-```
-
-<br>
-
 #### ・```context```
 
 指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。 
@@ -75,7 +60,18 @@ services:
       context: .
 ```
 
-<br>
+#### ・```dockerfile```
+
+Dockerfileまでのファイルパスを設定する。
+
+**＊実装例＊**
+
+```yaml
+services:
+  app:
+    build:
+      dockerfile: ./docker/app/Dockerfile
+```
 
 #### ・```target```
 
@@ -153,33 +149,48 @@ services:
     env_file:
       - .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # rootユーザのパス
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # rootユーザーのパス
       MYSQL_DATABASE: ${DB_DATABASE} # データベース名
-      MYSQL_USER: ${DB_USER} # 一般ユーザ名
-      MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザのパス
+      MYSQL_USER: ${DB_USER} # 一般ユーザー名
+      MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザーのパス
 ```
 
 ```bash
 # .envファイル
-MYSQL_ROOT_PASSWORD=foo # rootユーザのパス
+MYSQL_ROOT_PASSWORD=foo # rootユーザーのパス
 MYSQL_DATABASE=bar # データベース名
-MYSQL_USER=baz # 一般ユーザ名
-MYSQL_PASSWORD=qux # 一般ユーザのパス
+MYSQL_USER=baz # 一般ユーザー名
+MYSQL_PASSWORD=qux # 一般ユーザーのパス
 ```
 
-mysqlイメージでは、環境変数の設定に応じて、コンテナ起動時にSQLが実行されるようになっている。データベース名の環境変数が設定されている場合は『```CREATE DATABASE```』、またユーザ名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される。
+mysqlイメージでは、環境変数の設定に応じて、コンテナ起動時にSQLが実行されるようになっている。データベース名の環境変数が設定されている場合は『```CREATE DATABASE```』、またユーザー名とパスワードが設定されている場合は『```CREATE USER```』と『```GRANT ALL ```』のSQLが実行される。
 
 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
 
-ルートユーザ名は定義できず、『```root```』となる。
+ルートユーザー名は定義できず、『```root```』となる。
 
 参考：https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
 
 <br>
 
+### ```expose```
+
+他のコンテナに対してコンテナポートを開放する。ホスト側からはアクセスできないことに注意する。
+
+参考：https://docs.docker.com/compose/compose-file/compose-file-v3/#expose
+
+```
+services:
+  web:
+    expose:
+      - "80"
+```
+
+<br>
+
 ### ```extra_host```
 
-コンテナに、ユーザ定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。マッピングは、```/etc/hosts```ファイルに書き込まれる。もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
+コンテナに、ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。マッピングは、```/etc/hosts```ファイルに書き込まれる。もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
 
 ```yaml
 services:
@@ -197,7 +208,7 @@ fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
-# ユーザ定義のプライベートIPアドレスと、これにマッピングされたホスト名
+# ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名
 162.242.195.82       web
 172.23.0.3      c9bd8ace335d
 ```
@@ -251,7 +262,7 @@ services:
 
 #### ・```fluentd```
 
-コンテナで生成されたログをFluentdコンテナに転送する。
+コンテナで生成されたログをFluentdコンテナに転送する。ログの転送元よりも先に起動するようにしておく必要がある。
 
 参考：https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
 
@@ -261,12 +272,16 @@ services:
 services:
   app:
     logging:
-      driver: fluentbit
+      driver: fluentd
       options:
         fluentd-address: localhost:24224
         tag: app
+    depends_on:
+      - log_router
   log_router:
-    build: ./docker/fluentd/Dockerfile
+    build:
+      context: .
+      dockerfile: ./docker/fluentd/Dockerfile
     ports:
       - "24224:24224"
 ```
@@ -508,12 +523,12 @@ services:
 
 #### ・```name```
 
-ネットワーク名をユーザ定義名にする。
+ネットワーク名をユーザー定義名にする。
 
 ```yaml
 networks:
   default:    
-    # ユーザ定義のネットワーク名とエイリアス名    
+    # ユーザー定義のネットワーク名とエイリアス名    
     name: foo-network
 ```
 
