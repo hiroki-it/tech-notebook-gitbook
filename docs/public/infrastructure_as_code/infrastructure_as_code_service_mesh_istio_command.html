@@ -3344,13 +3344,17 @@ Istio configuration profiles:
 <p><br></p>
 <h3 id="proxy-config"><a name="proxy-config" class="plugin-anchor" href="#proxy-config"><i class="fa fa-link" aria-hidden="true"></i></a>proxy-config</h3>
 <h4 id="&#x30FB;proxy-config"><a name="&#x30FB;proxy-config" class="plugin-anchor" href="#&#x30FB;proxy-config"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy-config</h4>
-<p>&#x6307;&#x5B9A;&#x3057;&#x305F;Istio&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306E;&#x69CB;&#x6210;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config" target="_blank">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config</a></p>
+<p>Istio&#x4E0A;&#x3067;&#x7BA1;&#x7406;&#x3055;&#x308C;&#x308B;Envoy&#x306E;&#x69CB;&#x6210;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config" target="_blank">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config</a></li>
+<li><a href="https://sreake.com/blog/istio/" target="_blank">https://sreake.com/blog/istio/</a></li>
+</ul>
 <pre class="language-"><code class="lang-bash">$ istioctl proxy-config <span class="token operator">&lt;</span>&#x9805;&#x76EE;<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>&#x30DD;&#x30C3;&#x30C9;&#x540D;<span class="token operator">&gt;</span> -n <span class="token operator">&lt;</span>&#x540D;&#x524D;&#x7A7A;&#x9593;&#x540D;<span class="token operator">&gt;</span>
 </code></pre>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
-<p>Ingress Gateway&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ istioctl proxy-config endpoints <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+<p>Envoy&#x306E;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config endpoints <span class="token operator">&lt;</span>IngressGateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
 
 ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
 <span class="token number">127.0</span>.0.1:15000                  HEALTHY     OK                prometheus_stats
@@ -3367,16 +3371,16 @@ ENDPOINT                         STATUS      OUTLIER CHECK     CLUSTER
 unix://./etc/istio/proxy/SDS     HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS     HEALTHY     OK                xds-grpc
 </code></pre>
-<p>Ingress Gateway&#x306E;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ istioctl proxy-config listeners <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+<p>Envoy&#x306E;&#x30EA;&#x30B9;&#x30CA;&#x30FC;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config listeners <span class="token operator">&lt;</span>IngressGateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
 
 ADDRESS PORT  MATCH DESTINATION
 <span class="token number">0.0</span>.0.0 <span class="token number">8080</span>  ALL   Route: http.8080
 <span class="token number">0.0</span>.0.0 <span class="token number">15021</span> ALL   Inline Route: /healthz/ready*
 <span class="token number">0.0</span>.0.0 <span class="token number">15090</span> ALL   Inline Route: /stats/prometheus*
 </code></pre>
-<p>Ingress Gateway&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ istioctl proxy-config routes <span class="token operator">&lt;</span>Ingress Gateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
+<p>&#x306E;&#x30EB;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x60C5;&#x5831;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">$ istioctl proxy-config routes <span class="token operator">&lt;</span>IngressGateway&#x540D;<span class="token operator">&gt;</span> -n istio-system
 
 NAME          DOMAINS     MATCH                  VIRTUAL SERVICE
 http.8080     *           /*                     foo-virtual-service.istio-system
@@ -3386,7 +3390,7 @@ http.8080     *           /*                     foo-virtual-service.istio-syste
 <p><br></p>
 <h3 id="proxy-status"><a name="proxy-status" class="plugin-anchor" href="#proxy-status"><i class="fa fa-link" aria-hidden="true"></i></a>proxy-status</h3>
 <h4 id="&#x30FB;proxy-status&#x3068;&#x306F;"><a name="&#x30FB;proxy-status&#x3068;&#x306F;" class="plugin-anchor" href="#&#x30FB;proxy-status&#x3068;&#x306F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x30FB;proxy-status&#x3068;&#x306F;</h4>
-<p>Ingress Gateway&#x3001;Egress Gateway&#x3001;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
+<p>IngressGateway&#x3001;EgressGateway&#x3001;Envoy&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x306E;&#x30B9;&#x30C6;&#x30FC;&#x30BF;&#x30B9;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#xFF1A;<a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status" target="_blank">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status</a></p>
 <p><strong>&#xFF0A;&#x5B9F;&#x884C;&#x4F8B;&#xFF0A;</strong></p>
 <pre class="language-"><code class="lang-bash">$ istioctl proxy-status  
@@ -3468,7 +3472,7 @@ data plane version: <span class="token number">1.12</span>.1 <span class="token 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"next":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]},"previous":{"title":"Istio","level":"1.10.3.3.1","depth":4,"ref":"","articles":[{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","mtime":"2022-01-10T15:55:34.392Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-10T15:55:39.519Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"next":{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]},"previous":{"title":"Istio","level":"1.10.3.3.1","depth":4,"ref":"","articles":[{"title":"📖 ︎istioctlコマンド","level":"1.10.3.3.1.1","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","articles":[]},{"title":"📖 ︎manifest.yml","level":"1.10.3.3.1.2","depth":5,"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","ref":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_manifest_yml.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["advanced-emoji","anchors","back-to-top-button","copy-code-button","ga","hide-published-with","-highlight","intopic-toc","prism","-sharing","-lunr","-search","expand-active-chapter","expandable-chapters","search-pro-fixed"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-tomorrow.css"],"lang":{"dockerfile":"docker","elixir":"hcl","sh":"bash","shell":"bash","vue":"javascript"}},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"項目一覧","maxDepth":3,"mode":"nested","selector":"","visible":true},"search-pro-fixed":{},"hide-published-with":{},"fontsettings":{"theme":"white","family":"sans","size":2},"back-to-top-button":{},"expand-active-chapter":{},"copy-code-button":{},"ga":{"configuration":"auto","token":"UA-127492119-2"},"advanced-emoji":{"embedEmojis":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"俺のドキュメントサイト","language":"ja","gitbook":"*","description":"This is Hiroki-IT/tech-notebook_gitbook"},"file":{"path":"public/infrastructure_as_code/infrastructure_as_code_service_mesh_istio_command.md","mtime":"2022-01-11T12:32:23.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-11T12:32:28.449Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
