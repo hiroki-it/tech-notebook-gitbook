@@ -14,7 +14,7 @@ commit-note:
 	git add public
 	git commit -m "update ノートを更新した．"
 
-commit-note-static: build commit-note
+commit-note-static: build
 	git checkout develop
 	git add docs
 	git commit -m "update 静的ファイルを更新した．"
